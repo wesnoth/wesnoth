@@ -415,6 +415,12 @@ public:
 	{
 		return description_;
 	}
+
+	/** A detailed description of this unit. */
+	void set_unit_description(const t_string& new_desc)
+	{
+		description_ = new_desc;
+	}
 	
 	/** The unit's special notes. */
 	const std::vector<t_string>& unit_special_notes() const
@@ -617,6 +623,12 @@ public:
 	const config& recall_filter() const
 	{
 		return filter_recall_;
+	}
+
+	/** Sets the filter constraints upon which units this unit may recall, if able. */
+	void set_recall_filter(const config& filter)
+	{
+		filter_recall_ = filter;
 	}
 
 	/**

@@ -55,6 +55,7 @@ std::array<cursor_data, cursor::NUM_CURSORS> available_cursors {{
 #ifdef __APPLE__
 	{ nullptr, boost::indeterminate, "normal.png",          "normal.png",      0, 0  },
 	{ nullptr, boost::indeterminate, "wait-alt.png",        "wait.png",        0, 0  },
+	{ nullptr, boost::indeterminate, "ibeam.png",           "ibeam.png",       14, 14 },
 	{ nullptr, boost::indeterminate, "move.png",            "move.png",        0, 0  },
 	{ nullptr, boost::indeterminate, "attack.png",          "attack.png",      0, 0  },
 	{ nullptr, boost::indeterminate, "select.png",          "select.png",      0, 0  },
@@ -64,6 +65,7 @@ std::array<cursor_data, cursor::NUM_CURSORS> available_cursors {{
 #else
 	{ nullptr, boost::indeterminate, "normal.png",      "normal.png",      0, 0  },
 	{ nullptr, boost::indeterminate, "wait.png",        "wait.png",        0, 0  },
+	{ nullptr, boost::indeterminate, "ibeam.png",       "ibeam.png",       14, 14 },
 	{ nullptr, boost::indeterminate, "move.png",        "move.png",        0, 0  },
 	{ nullptr, boost::indeterminate, "attack.png",      "attack.png",      0, 0  },
 	{ nullptr, boost::indeterminate, "select.png",      "select.png",      0, 0  },

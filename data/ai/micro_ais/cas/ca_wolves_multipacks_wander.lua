@@ -27,7 +27,7 @@ function ca_wolves_multipacks_wander:execution(cfg)
         -- If any of the wolves has a goal set, this is used for the entire pack
         local wolves, goal = {}, {}
         for _,loc in ipairs(pack) do
-            local wolf = wesnoth.get_unit(loc.x, loc.y)
+            local wolf = wesnoth.units.get(loc.x, loc.y)
             table.insert(wolves, wolf)
 
             -- If any of the wolves in the pack has a goal set, we use that one

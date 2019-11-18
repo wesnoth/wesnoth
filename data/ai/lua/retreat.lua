@@ -167,7 +167,7 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts)
         base_rating = base_rating * 1000
 
         for j,loc in ipairs(possible_locations) do
-            local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
+            local unit_in_way = wesnoth.units.get(loc[1], loc[2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
                 or ((unit_in_way.moves > 0) and (unit_in_way.side == wesnoth.current.side))
             then

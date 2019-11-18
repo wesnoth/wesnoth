@@ -85,6 +85,7 @@ mp_create_game::mp_create_game(const config& cfg, saved_game& state, bool local_
 	, observers_(register_bool("observers", true, prefs::allow_observers, prefs::set_allow_observers))
 	, registered_users_(register_bool("registered_users", true, prefs::registered_users_only, prefs::set_registered_users_only))
 	, strict_sync_(register_bool("strict_sync", true))
+	, private_replay_(register_bool("private_replay", true))
 	, turns_(register_integer("turn_count", true, prefs::turns, prefs::set_turns))
 	, gold_(register_integer("village_gold", true, prefs::village_gold, prefs::set_village_gold))
 	, support_(register_integer("village_support", true, prefs::village_support, prefs::set_village_support))
@@ -320,6 +321,7 @@ void mp_create_game::pre_show(window& win)
 
 		observers_->widget_set_enabled(win, false, false);
 		strict_sync_->widget_set_enabled(win, false, false);
+		private_replay_->widget_set_enabled(win, false, false);
 	}
 
 	//
@@ -381,6 +383,7 @@ void mp_create_game::pre_show(window& win)
 		UPDATE_ATTRIBUTE(observers, to_bool);
 		UPDATE_ATTRIBUTE(registered_users, to_bool);
 		UPDATE_ATTRIBUTE(strict_sync, to_bool);
+		UPDATE_ATTRIBUTE(private_replay, to_bool);
 		UPDATE_ATTRIBUTE(shuffle_sides, to_bool);
 	}, true);
 
@@ -931,6 +934,7 @@ void mp_create_game::post_show(window& window)
 
 		config_engine_->set_allow_observers(observers_->get_widget_value(window));
 		config_engine_->set_registered_users_only(registered_users_->get_widget_value(window));
+		config_engine_->set_private_replay(private_replay_->get_widget_value(window));
 		config_engine_->set_oos_debug(strict_sync_->get_widget_value(window));
 		config_engine_->set_shuffle_sides(shuffle_sides_->get_widget_value(window));
 

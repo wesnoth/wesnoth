@@ -293,6 +293,42 @@ static int intf_wml_matches_filter(lua_State* L)
 	return 1;
 }
 
+static int intf_wml_merge(lua_State* L) {
+	config base = luaW_checkconfig(L, 1);
+	config merge = luaW_checkconfig(L, 2);
+	const std::string mode = lua_isstring(L, 3) ? luaL_checkstring(L, 3) : "merge";
+	if(mode == "append") {
+		base.merge_attributes(merge);
+		base.append_children(merge);
+	} else {
+		if(mode == "replace") {
+			for(const auto& c : merge.all_children_range()) {
+				base.clear_children(c.key);
+			}
+		} else if(mode != "merge") {
+			return luaL_argerror(L, 3, "invalid merge mode - must be merge, append, or replace");
+		}
+		base.merge_with(merge);
+	}
+	luaW_pushconfig(L, base);
+	return 1;
+}
+
+static int intf_wml_diff(lua_State* L) {
+	config lhs = luaW_checkconfig(L, 1);
+	config rhs = luaW_checkconfig(L, 2);
+	luaW_pushconfig(L, lhs.get_diff(rhs));
+	return 1;
+}
+
+static int intf_wml_patch(lua_State* L) {
+	config base = luaW_checkconfig(L, 1);
+	config patch = luaW_checkconfig(L, 2);
+	base.apply_diff(patch);
+	luaW_pushconfig(L, base);
+	return 1;
+}
+
 /**
 * Logs a message
 * Arg 1: (optional) Logger
@@ -551,19 +587,7 @@ lua_kernel_base::lua_kernel_base()
 		lua_setfield(L, -3, function);
 	}
 	lua_pop(L, 1);
-
-	// Disable functions from debug which we don't want.
-	lua_getglobal(L, "debug");
-	lua_pushnil(L);
-	while(lua_next(L, -2) != 0) {
-		lua_pop(L, 1);
-		char const* function = lua_tostring(L, -1);
-		if(strcmp(function, "traceback") == 0 || strcmp(function, "getinfo") == 0) continue;	//traceback is needed for our error handler
-		lua_pushnil(L);										//getinfo is needed for ilua strict mode
-		lua_setfield(L, -3, function);
-	}
-	lua_pop(L, 1);
-
+	
 	// Delete dofile and loadfile.
 	lua_pushnil(L);
 	lua_setglobal(L, "dofile");
@@ -593,19 +617,16 @@ lua_kernel_base::lua_kernel_base()
 
 	static luaL_Reg const callbacks[] {
 		{ "compare_versions",         &intf_compare_versions         		},
-		{ "debug",                    &intf_wml_tostring                           },
 		{ "deprecated_message",       &intf_deprecated_message              },
 		{ "have_file",                &lua_fileops::intf_have_file          },
 		{ "read_file",                &lua_fileops::intf_read_file          },
 		{ "canonical_path",           &lua_fileops::intf_canonical_path     },
 		{ "textdomain",               &lua_common::intf_textdomain   		},
-		{ "tovconfig",                &lua_common::intf_tovconfig		},
 		{ "get_dialog_value",         &lua_gui2::intf_get_dialog_value		},
 		{ "set_dialog_tooltip",       &lua_gui2::intf_set_dialog_tooltip	},
 		{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
 		{ "set_dialog_visible",       &lua_gui2::intf_set_dialog_visible    },
 		{ "add_dialog_tree_node",     &lua_gui2::intf_add_dialog_tree_node	},
-		{ "add_widget_definition",    &lua_gui2::intf_add_widget_definition },
 		{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},
 		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
 		{ "set_dialog_focus",         &lua_gui2::intf_set_dialog_focus      },
@@ -616,12 +637,6 @@ lua_kernel_base::lua_kernel_base()
 		{ "require",                  &dispatch<&lua_kernel_base::intf_require>          },
 		{ "kernel_type",              &dispatch<&lua_kernel_base::intf_kernel_type>          },
 		{ "show_dialog",              &lua_gui2::show_dialog   },
-		{ "show_menu",                &lua_gui2::show_menu  },
-		{ "show_message_dialog",      &lua_gui2::show_message_dialog },
-		{ "show_popup_dialog",        &lua_gui2::show_popup_dialog   },
-		{ "show_story",               &lua_gui2::show_story          },
-		{ "show_message_box",         &lua_gui2::show_message_box    },
-		{ "show_lua_console",	      &dispatch<&lua_kernel_base::intf_show_lua_console> },
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
@@ -645,15 +660,37 @@ lua_kernel_base::lua_kernel_base()
 	//lua_cpp::set_functions(L, cpp_callbacks, 0);
 	lua_setglobal(L, "wesnoth");
 
+	cmd_log_ << "Adding wml module...\n";
 	static luaL_Reg const wml_callbacks[]= {
 		{ "load",      &intf_load_wml},
 		{ "parse",     &intf_parse_wml},
 		{ "clone",     &intf_clone_wml},
+		{ "merge",     &intf_wml_merge},
+		{ "diff",     &intf_wml_diff},
+		{ "patch",     &intf_wml_patch},
+		{ "matches_filter", &intf_wml_matches_filter},
+		{ "tostring",       &intf_wml_tostring},
+		{ "tovconfig",      &lua_common::intf_tovconfig},
 		{ nullptr, nullptr },
 	};
 	lua_newtable(L);
 	luaL_setfuncs(L, wml_callbacks, 0);
 	lua_setglobal(L, "wml");
+
+	cmd_log_ << "Adding gui module...\n";
+	static luaL_Reg const gui_callbacks[]= {
+		{ "show_menu",          &lua_gui2::show_menu },
+		{ "show_narration",     &lua_gui2::show_message_dialog },
+		{ "show_popup",         &lua_gui2::show_popup_dialog },
+		{ "show_story",         &lua_gui2::show_story },
+		{ "show_prompt",        &lua_gui2::show_message_box },
+		{ "show_lua_console",	&dispatch<&lua_kernel_base::intf_show_lua_console> },
+		{ "add_widget_definition",    &lua_gui2::intf_add_widget_definition },
+		{ nullptr, nullptr },
+	};
+	lua_newtable(L);
+	luaL_setfuncs(L, gui_callbacks, 0);
+	lua_setglobal(L, "gui");
 
 	// Override the print function
 	cmd_log_ << "Redirecting print function...\n";
@@ -760,6 +797,19 @@ lua_kernel_base::lua_kernel_base()
 		cmd_log_ << "Error: failed to load ilua.\n";
 	}
 	lua_settop(L, 0);
+
+	// Disable functions from debug which we don't want.
+	// We do this last because ilua needs to be able to use debug.getmetatable
+	lua_getglobal(L, "debug");
+	lua_pushnil(L);
+	while(lua_next(L, -2) != 0) {
+		lua_pop(L, 1);
+		char const* function = lua_tostring(L, -1);
+		if(strcmp(function, "traceback") == 0 || strcmp(function, "getinfo") == 0) continue;	//traceback is needed for our error handler
+		lua_pushnil(L);										//getinfo is needed for ilua strict mode
+		lua_setfield(L, -3, function);
+	}
+	lua_pop(L, 1);
 }
 
 lua_kernel_base::~lua_kernel_base()

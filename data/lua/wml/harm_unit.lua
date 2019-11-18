@@ -21,7 +21,7 @@ function wml_actions.harm_unit(cfg)
 
 	local this_unit = utils.start_var_scope("this_unit")
 
-	for index, unit_to_harm in ipairs(wesnoth.get_units(filter)) do
+	for index, unit_to_harm in ipairs(wesnoth.units.find_on_map(filter)) do
 		if unit_to_harm.valid then
 			-- block to support $this_unit
 			wml.variables["this_unit"] = nil -- clearing this_unit
@@ -36,12 +36,12 @@ function wml_actions.harm_unit(cfg)
 			local harmer_filter = wml.get_child(cfg, "filter_second")
 			local experience = cfg.experience
 			local resistance_multiplier = tonumber(cfg.resistance_multiplier) or 1
-			if harmer_filter then harmer = wesnoth.get_units(harmer_filter)[1] end
+			if harmer_filter then harmer = wesnoth.units.find_on_map(harmer_filter)[1] end
 			-- end of block to support $this_unit
 
 			if animate then
 				if animate ~= "defender" and harmer and harmer.valid then
-					wesnoth.scroll_to_tile(harmer.x, harmer.y, true)
+					wesnoth.interface.scroll_to_hex(harmer.x, harmer.y, true)
 					wml_actions.animate_unit {
 						flag = "attack",
 						hits = true,
@@ -52,7 +52,7 @@ function wml_actions.harm_unit(cfg)
 						T.facing { x = unit_to_harm.x, y = unit_to_harm.y },
 					}
 				end
-				wesnoth.scroll_to_tile(unit_to_harm.x, unit_to_harm.y, true)
+				wesnoth.interface.scroll_to_hex(unit_to_harm.x, unit_to_harm.y, true)
 			end
 
 			-- the two functions below are taken straight from the C++ engine,
@@ -91,7 +91,7 @@ function wml_actions.harm_unit(cfg)
 				amount,
 				cfg.alignment or "neutral",
 				wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).lawful_bonus,
-				wesnoth.unit_resistance( unit_to_harm, cfg.damage_type or "dummy" ),
+				unit_to_harm:resistance( cfg.damage_type or "dummy" ),
 				resistance_multiplier
 			)
 
@@ -130,8 +130,8 @@ function wml_actions.harm_unit(cfg)
 			set_status("unhealable", _"unhealable", _"female^unhealable")
 
 			-- Extract unit and put it back to update animation if status was changed
-			wesnoth.extract_unit(unit_to_harm)
-			wesnoth.put_unit(unit_to_harm)
+			unit_to_harm:extract()
+			unit_to_harm:to_map()
 
 			if add_tab then
 				text = string.format("%s%s", "\t", text)
@@ -160,7 +160,7 @@ function wml_actions.harm_unit(cfg)
 				end
 			end
 
-			wesnoth.float_label( unit_to_harm.x, unit_to_harm.y, string.format( "<span foreground='red'>%s</span>", text ) )
+			wesnoth.interface.float_label( unit_to_harm.x, unit_to_harm.y, string.format( "<span foreground='red'>%s</span>", text ) )
 
 			local function calc_xp( level ) -- to calculate the experience in case of kill
 				if level == 0 then return math.ceil(wesnoth.game_config.kill_experience / 2)
@@ -183,7 +183,7 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			if animate then
-				wesnoth.delay(delay)
+				wesnoth.interface.delay(delay)
 			end
 
 			if variable then

@@ -8,7 +8,7 @@ function wesnoth.wml_actions.kill(cfg)
 	local secondary_unit = wml.get_child(cfg, "secondary_unit")
 	local killer_loc = {0, 0}
 	if secondary_unit then
-		secondary_unit = wesnoth.get_units(secondary_unit)[1]
+		secondary_unit = wesnoth.units.find_on_map(secondary_unit)[1]
 		if cfg.fire_event then
 			if secondary_unit then
 				killer_loc = { x = tonumber(secondary_unit.x) or 0, y = tonumber(secondary_unit.y) or 0 }
@@ -17,7 +17,7 @@ function wesnoth.wml_actions.kill(cfg)
 			end
 		end
 	end
-	local dead_men_walking = wesnoth.get_units(cfg)
+	local dead_men_walking = wesnoth.units.find_on_map(cfg)
 	for i,unit in ipairs(dead_men_walking) do
 		local death_loc = {x = tonumber(unit.x) or 0, y = tonumber(unit.y) or 0}
 		if not secondary_unit then killer_loc = death_loc end
@@ -42,7 +42,7 @@ function wesnoth.wml_actions.kill(cfg)
 			wesnoth.fire_event("last breath", death_loc, killer_loc)
 		end
 		if cfg.animate and unit.valid == "map" then
-			wesnoth.scroll_to_tile(death_loc, true)
+			wesnoth.interface.scroll_to_hex(death_loc, true)
 			local anim = wesnoth.create_animator()
 			local primary = wml.get_child(cfg, "primary_attack")
 			local secondary = wml.get_child(cfg, "secondary_attack")
@@ -93,7 +93,7 @@ function wesnoth.wml_actions.kill(cfg)
 	end
 
 	if (cfg.x == "recall" or cfg.x == nil) and (cfg.y == "recall" or cfg.y == nil) then
-		local dead_men_sleeping = wesnoth.get_recall_units(cfg)
+		local dead_men_sleeping = wesnoth.units.find_on_recall(cfg)
 		for i,unit in ipairs(dead_men_sleeping) do
 			unit:erase()
 		end

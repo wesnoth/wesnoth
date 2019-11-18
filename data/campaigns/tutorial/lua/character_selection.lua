@@ -88,7 +88,7 @@ function wml_actions.select_character()
 	local unit = wml.variables.student_store
 
 	if character == 2 then
-		wesnoth.put_unit({
+		wesnoth.units.to_map({
 			type = "Fighteress",
 			id = unit.id,
 			name = _"Li’sar",
@@ -101,7 +101,7 @@ function wml_actions.select_character()
 		-- enable the help to display this unit's page
 		wesnoth.add_known_unit("Fighteress")
 	else
-		wesnoth.put_unit(unit)
+		wesnoth.units.to_map(unit)
 	end
 
 	wesnoth.redraw {}

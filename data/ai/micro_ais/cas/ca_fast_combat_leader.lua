@@ -151,7 +151,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
                 end
 
                 if acceptable_attack then
-                    local target = wesnoth.get_unit(attack.target.x, attack.target.y)
+                    local target = wesnoth.units.get(attack.target.x, attack.target.y)
                     local target_info = FAU.get_unit_info(target, gamedata)
 
                     local att_stat, def_stat = FAU.battle_outcome(

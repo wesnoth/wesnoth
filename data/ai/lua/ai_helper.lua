@@ -311,7 +311,7 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
     local src_x, src_y = src.x or src[1], src.y or src[2] -- this works with units or locations
     local dst_x, dst_y = dst.x or dst[1], dst.y or dst[2]
 
-    local unit = wesnoth.get_unit(src_x, src_y)
+    local unit = wesnoth.units.get(src_x, src_y)
     if (not unit) then
         return ai_helper.dummy_check_action(false, false, 'robust_move_and_attack::NO_UNIT')
     end
@@ -320,7 +320,7 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
     local target, target_x, target_y
     if target_loc then
         target_x, target_y = target_loc.x or target_loc[1], target_loc.y or target_loc[2]
-        target = wesnoth.get_unit(target_x, target_y)
+        target = wesnoth.units.get(target_x, target_y)
 
         if (not target) then
             return ai_helper.dummy_check_action(false, false, 'robust_move_and_attack::NO_TARGET')
@@ -344,7 +344,7 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
         else
             local unit_old_moves = unit.moves
 
-            local unit_in_way = wesnoth.get_unit(dst_x, dst_y)
+            local unit_in_way = wesnoth.units.get(dst_x, dst_y)
             if unit_in_way and (unit_in_way.side == wesnoth.current.side) and (unit_in_way.moves > 0) then
                 local uiw_old_moves = unit_in_way.moves
                 ai_helper.move_unit_out_of_way(ai, unit_in_way, cfg)
@@ -363,7 +363,7 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
                 end
 
                 -- Check whether dst hex is free now (an event could have done something funny)
-                local unit_in_way = wesnoth.get_unit(dst_x, dst_y)
+                local unit_in_way = wesnoth.units.get(dst_x, dst_y)
                 if unit_in_way then
                     return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::ANOTHER_UNIT_IN_WAY')
                 end
@@ -1058,7 +1058,7 @@ end
 
 function ai_helper.get_live_units(filter)
     -- Note: the order of the filters and the [and] tags are important for speed reasons
-    return wesnoth.get_units { { "not", { status = "petrified" } }, { "and", filter } }
+    return wesnoth.units.find_on_map { { "not", { status = "petrified" } }, { "and", filter } }
 end
 
 function ai_helper.get_units_with_moves(filter, exclude_guardians)
@@ -1068,7 +1068,7 @@ function ai_helper.get_units_with_moves(filter, exclude_guardians)
     if exclude_guardians then
         exclude_status = exclude_status .. ',guardian'
     end
-    return wesnoth.get_units {
+    return wesnoth.units.find_on_map {
         { "and", { formula = "moves > 0" } },
         { "not", { status = exclude_status } },
         { "and", filter }
@@ -1077,7 +1077,7 @@ end
 
 function ai_helper.get_units_with_attacks(filter)
     -- Note: the order of the filters and the [and] tags are important for speed reasons
-    return wesnoth.get_units {
+    return wesnoth.units.find_on_map {
         { "and", { formula = "attacks_left > 0 and size(attacks) > 0" } },
         { "not", { status = "petrified" } },
         { "and", filter }
@@ -1109,7 +1109,7 @@ function ai_helper.get_visible_units(viewing_side, filter)
     end
 
     local units = {}
-    local all_units = wesnoth.get_units()
+    local all_units = wesnoth.units.find_on_map()
     for _,unit in ipairs(all_units) do
         if unit:matches(filter_plus_vision) then
             table.insert(units, unit)
@@ -1169,7 +1169,7 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     end
 
     local enemies = {}
-    local all_units = wesnoth.get_units()
+    local all_units = wesnoth.units.find_on_map()
     for _,unit in ipairs(all_units) do
         if wesnoth.is_enemy(side, unit.side)
            and (not unit.status.petrified)
@@ -1221,7 +1221,7 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
 
     local x, y
     if not loc then
-        local leader = wesnoth.get_units { side = side, canrecruit = 'yes' }[1]
+        local leader = wesnoth.units.find_on_map { side = side, canrecruit = 'yes' }[1]
         x, y = leader.x, leader.y
     else
         x, y = loc[1], loc[2]
@@ -1316,7 +1316,7 @@ function ai_helper.get_dst_src(units, cfg)
     --   all parameters for wesnoth.find_reach
 
     if (not units) then
-        units = wesnoth.get_units { side = wesnoth.current.side }
+        units = wesnoth.units.find_on_map { side = wesnoth.current.side }
     end
 
     return ai_helper.get_dst_src_units(units, cfg)
@@ -1328,7 +1328,7 @@ function ai_helper.get_enemy_dst_src(enemies, cfg)
     --   all parameters for wesnoth.find_reach
 
     if (not enemies) then
-        enemies = wesnoth.get_units {
+        enemies = wesnoth.units.find_on_map {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side} } } }
         }
     end
@@ -1405,7 +1405,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
             -- Check for unit in way only if cfg.ignore_units is not set
             local unit_in_way
             if (not cfg) or (not cfg.ignore_units) then
-                unit_in_way = wesnoth.get_unit(path[i][1], path[i][2])
+                unit_in_way = wesnoth.units.get(path[i][1], path[i][2])
 
                 -- If ignore_own_units is set, ignore own side units that can move out of the way
                 if cfg and cfg.ignore_own_units then
@@ -1442,7 +1442,7 @@ function ai_helper.can_reach(unit, x, y, cfg)
     local viewing_side = cfg.viewing_side or unit.side
 
     -- Is there a unit at the goal hex?
-    local unit_in_way = wesnoth.get_unit(x, y)
+    local unit_in_way = wesnoth.units.get(x, y)
     if (cfg.exclude_occupied)
       and unit_in_way and ai_helper.is_visible_unit(viewing_side, unit_in_way)
     then
@@ -1509,7 +1509,7 @@ function ai_helper.get_reachmap(unit, cfg)
         if cfg and cfg.avoid_map and cfg.avoid_map:get(loc[1], loc[2]) then
             is_available = false
         else
-            local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
+            local unit_in_way = wesnoth.units.get(loc[1], loc[2])
             if unit_in_way and (unit_in_way.id ~= unit.id) and ai_helper.is_visible_unit(viewing_side, unit_in_way) then
                 if cfg and cfg.exclude_occupied then
                     is_available = false
@@ -1558,7 +1558,7 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
     if wesnoth.sides[viewing_side] and wesnoth.sides[viewing_side].shroud then
         local extracted_units = {}
         if (not cfg) or (not cfg.ignore_units) then
-            local all_units = wesnoth.get_units()
+            local all_units = wesnoth.units.find_on_map()
             for _,u in ipairs(all_units) do
                 if (u.side ~= viewing_side)
                     and (not ai_helper.is_visible_unit(viewing_side, u))
@@ -1651,7 +1651,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
 
     local max_rating, best_hex = - math.huge
     for _,loc in ipairs(reach) do
-        local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
+        local unit_in_way = wesnoth.units.get(loc[1], loc[2])
         if (not unit_in_way)       -- also excludes current hex
             or (not ai_helper.is_visible_unit(viewing_side, unit_in_way))
         then
@@ -1716,7 +1716,7 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     -- Only move unit out of way if the main unit can get there
     local path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
     if (cost <= unit.moves) then
-        local unit_in_way = wesnoth.get_unit(x, y)
+        local unit_in_way = wesnoth.units.get(x, y)
         if unit_in_way and (unit_in_way ~= unit)
             and ai_helper.is_visible_unit(viewing_side, unit_in_way)
         then
@@ -1777,7 +1777,7 @@ function ai_helper.get_attacks(units, cfg)
 
     -- Note: the remainder is optimized for speed, so we only get_units once,
     -- do not use WML filters, etc.
-    local all_units = wesnoth.get_units()
+    local all_units = wesnoth.units.find_on_map()
 
     local enemy_map, my_unit_map, other_unit_map = LS.create(), LS.create(), LS.create()
     for i,unit in ipairs(all_units) do
@@ -1848,7 +1848,7 @@ function ai_helper.get_attacks(units, cfg)
                         -- unit that is moving out of the way of the initial unit (etc.).
                         for _,uiw_loc in ipairs(uiw_reach) do
                             -- Unit in the way of the unit in the way
-                            local uiw_uiw = wesnoth.get_unit(uiw_loc[1], uiw_loc[2])
+                            local uiw_uiw = wesnoth.units.get(uiw_loc[1], uiw_loc[2])
                             if (not uiw_uiw) or (not ai_helper.is_visible_unit(viewing_side, uiw_uiw)) then
                                 add_target = true
                                 break
@@ -1990,7 +1990,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     -- TODO: generalize it so that it works not only for units with moves=0, but blocked units etc.
     local blocked_hexes = LS.create()
     if units[1] and (units[1].side == wesnoth.current.side) then
-        local all_units = wesnoth.get_units { side = wesnoth.current.side }
+        local all_units = wesnoth.units.find_on_map { side = wesnoth.current.side }
         for _,unit in ipairs(all_units) do
             if (unit.moves == 0) then
                 blocked_hexes:insert(unit.x, unit.y)

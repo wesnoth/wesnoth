@@ -91,15 +91,25 @@ function wesnoth.wml_actions.modify_side(cfg)
 			end
 		end
 
+		local ai, replace_ai = {}, false
+		for k, v in ipairs(cfg) do
+			local tag, content = v[1], v[2]
+			if tag == "ai" then
+				table.insert(ai, T.ai(content))
+				if content.ai_algorithm then
+					replace_ai = true
+				end
+			elseif tag == "set_variable" then
+				wesnoth.wml_actions.set_variable(v[2], side.variables)
+			elseif tag == "clear_variable" then
+				wesnoth.wml_actions.clear_variable(cfg, side.variables)
+			elseif tag == "variables" then
+				side.variables.__cfg = wml.merge(side.variables.__cfg, content, cfg.var_merge_mode or "replace")
+			end
+		end
+		
 		if cfg.switch_ai then
 			wesnoth.switch_ai(side.side, cfg.switch_ai)
-		end
-		local ai, replace_ai = {}, false
-		for next_ai in wml.child_range(cfg, "ai") do
-			table.insert(ai, T.ai(next_ai))
-			if next_ai.ai_algorithm then
-				replace_ai = true
-			end
 		end
 		if #ai > 0 then
 			if replace_ai then

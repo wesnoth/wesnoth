@@ -2,6 +2,7 @@
  ### AI:
  ### Campaigns
    * Descent into Darkness:
+     * Add new portrait for Dela Keshar
      * Remove dark adepts from recruit list
      * Add special units and AMLA paths
      * Revised dialogue
@@ -14,26 +15,55 @@
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Portuguese (Brazil),
      Russian
+   * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Terrains
    * Add Stone Walls variation Catacombs (Xot) including some overlays
    * Fixes and touchups to mushroom terrains Tb and Tf
  ### User interface
+   * Moved tutorial to campaigns menu
+   * Moved language button to icon
    * "Core" type add-ons are now only accessible via hotkey.
    * Removed "Classic" in-game theme.
-   * Textboxes now have a hover effect.
+   * Textboxes now have a hover effect as well as an I-beam cursor.
+   * Added the Private Replay checkbox to the Multiplayer Create Game screen. This separates
+     whether observers are allowed from whether the replay will be publicly available.
+   * Reworked styling of progress bars and the network transfer progress dialog.
+   * Moved the MP server list from a separate dialog to the Connect to Server dialog proper
+     and added functionality for managing player-defined servers (issue #4564).
  ### Units
    * Add mushroom defense cap to mounted and some flying units
-   * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
+   * Decreased hitpoints of Dwarvish Lord from 79 to 74
+   * Decreased hitpoints of Dwarvish Steelclad from 59 to 55
+   * Increased hitpoints of Dwarvish Thunderguard from 44 to 47
+   * Increased hitpoints of Dwarvish Pathfinder from 42 to 45
+   * Increased melee damage of Dwarvish Stalwart from 7-3 to 8-3
+   * Increased melee damage of Dwarvish Sentinel from 9-3 to 10-3
    * Dunefolk: rebalancing and renaming of various units
  ### User interface
    * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
-   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions (in the current language)
+   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
      into account.
  ### Lua API
    * unit:transform() now takes an optional variation parameter
+   * Support side.variables for access to side variables, similar to unit.variables
+   * New read-write keys in unit userdata: ellipse, halo, description, renamable
+   * New functions for working with WML: wml.merge, wml.diff, wml.patch
+   * wesnoth.wml_matches_filter renamed to wml.matches_filter (the old name still works)
+   * Moved to units module: wesnoth.create_unit, wesnoth.get_unit, wesnoth.get_units, wesnoth.get_recall_units
+   * The wesnoth.units module now acts like a metatable for unit userdata.
+   * New wesnoth.units.find gets units on either the map or any side's recall list.
+   * Moved to interface module: wesnoth.scroll, wesnoth.zoom, wesnoth.get_mouseover_tile
+   * wesnoth.interface.get_displayed_unit aliased to wesnoth.unit.get_hovered
+   * unit portrait and recall_filter are now writable
+   * Moved to new sides module: wesnoth.get_sides, wesnoth.is_enemy, wesnoth.match_side, wesnoth.get_starting_location, wesnoth.set_side_id, all AI-related functions
+   * Functions that previously only took a side index as the first parameter now also accept the side proxy userdata.
+   * The wesnoth.sides module acts like a metatable for the side userdata.
+   * Added `__tostring` functions to a number of Wesnoth userdata types.
  ### WML engine
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full
+   * Support [set/clear_variable] inside [modify_unit/side]
+   * Support [variables] in [modify_side], as in [modify_unit]
    * [filter_weapon] implemented in abilities used as weapons specials to be the same as true weapons specials (implement filter_weapon in [filter_student] instead of [filter_self])
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
@@ -47,6 +77,7 @@
      always be used.
    * Make wmllint ignore race= keys if they are part of filters inside [unit_type] (issue #4105)
    * Removed a few assserts from wmllint and postponed a few unit sanity checks to the closing of a [unit_type] tag (issue #4102)
+   * Added `tmx_trackplacer` tool, a file converter for editing map tracks with Tiled (PR #4464)
 
 ## Version 1.15.2
  ### AI:
@@ -289,7 +320,7 @@
    * Support male_voice and female_voice in [message]
    * Support [break], [continue], and [return] in [random_placement]
    * [remove_sound_source] now accepts a comma-separated ID list
-   * Support [filter_team] in [side] in addition to team_name=
+   * Support [filter_team] in [item] in addition to team_name=
    * Support an optional EXTRA_WML argument to {REMOVE_LABEL}.
    * Support [disallow_end_turn]reason=
    * The {SPECIAL_NOTES_*} macros now start with a newline and a bullet point.

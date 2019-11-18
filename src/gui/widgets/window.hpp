@@ -20,7 +20,6 @@
 
 #pragma once
 
-#include "cursor.hpp"
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
@@ -60,7 +59,7 @@ class distributor;
  * base class of top level items, the only item
  * which needs to store the final canvases to draw on
  */
-class window : public panel, public cursor::setter
+class window : public panel
 {
 	friend class debug_layout_graph;
 	friend window* build(const builder_window::window_resolution*);

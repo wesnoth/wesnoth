@@ -18,9 +18,9 @@ function wml_actions.object(cfg)
 
 	local filter = wml.get_child(cfg, "filter")
 	if filter then
-		unit = wesnoth.get_units(filter)[1]
+		unit = wesnoth.units.find_on_map(filter)[1]
 	else
-		unit = wesnoth.get_unit(context.x1, context.y1)
+		unit = wesnoth.units.get(context.x1, context.y1)
 	end
 
 	-- If a unit matches the filter, proceed
@@ -45,14 +45,14 @@ function wml_actions.object(cfg)
 		local dvs = cfg.delayed_variable_substitution
 		local add = cfg.no_write ~= true
 		if dvs then
-			wesnoth.add_modification(unit, "object", wml.literal(cfg), add)
+			unit:add_modification("object", wml.literal(cfg), add)
 		else
-			wesnoth.add_modification(unit, "object", wml.parsed(cfg), add)
+			unit:add_modification("object", wml.parsed(cfg), add)
 		end
 
 		if not silent then
-			wesnoth.select_unit(unit, false)
-			wesnoth.highlight_hex(unit.x, unit.y)
+			unit:select(false)
+			wesnoth.interface.highlight_hex(unit.x, unit.y)
 		end
 
 		-- Mark this item as used up
@@ -62,7 +62,7 @@ function wml_actions.object(cfg)
 	if not silent then
 		wml_actions.redraw{}
 		local name = tostring(cfg.name or "")
-		wesnoth.show_popup_dialog(name, text, cfg.image)
+		gui.show_popup(name, text, cfg.image)
 	end
 
 	for cmd in wml.child_range(cfg, command_type) do
@@ -81,8 +81,8 @@ end
 
 function wml_actions.remove_object(cfg)
 	local obj_id = cfg.object_id
-	for _,unit in ipairs(wesnoth.get_units(cfg)) do
-		wesnoth.remove_modifications(unit, {id = obj_id})
+	for _,unit in ipairs(wesnoth.units.find_on_map(cfg)) do
+		unit:remove_modifications({id = obj_id})
 	end
 end
 

@@ -49,7 +49,7 @@ function ca_grab_villages:evaluation(cfg, data)
         -- First collect all information that only depends on the village
         local village_rating = 0  -- This is the unit independent rating
 
-        local unit_in_way = wesnoth.get_unit(v[1], v[2])
+        local unit_in_way = wesnoth.units.get(v[1], v[2])
 
         -- If an enemy can get within one move of the village, we want to hold it
         if enemy_attack_map:get(v[1], v[2]) then

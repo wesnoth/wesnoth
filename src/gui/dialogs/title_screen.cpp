@@ -516,7 +516,7 @@ void title_screen::button_callback_multiplayer(window& window)
 
 		switch(res) {
 		case 0:
-			game_.select_mp_server(preferences::server_list().front().address);
+			game_.select_mp_server(preferences::builtin_servers_list().front().address);
 			window.set_retval(MP_CONNECT);
 			break;
 		case 1:

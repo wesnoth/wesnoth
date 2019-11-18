@@ -128,6 +128,7 @@ config mp_game_settings::to_config() const
 	cfg["mp_random_start_time"] = random_start_time;
 	cfg["observer"] = allow_observers;
 	cfg["registered_users_only"] = registered_users_only;
+	cfg["private_replay"] = private_replay;
 	cfg["shuffle_sides"] = shuffle_sides;
 	cfg["random_faction_mode"] = random_faction_mode;
 	cfg["savegame"] = saved_game;

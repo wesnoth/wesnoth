@@ -158,7 +158,7 @@ function ca_goto:execution(cfg, data)
                 else
                     local enemy_at_goal
                     if cfg.ignore_enemy_at_goal then
-                        enemy_at_goal = wesnoth.get_unit(loc[1], loc[2])
+                        enemy_at_goal = wesnoth.units.get(loc[1], loc[2])
                         if enemy_at_goal and wesnoth.is_enemy(wesnoth.current.side, enemy_at_goal.side) then
                              enemy_at_goal:extract()
                         else
@@ -179,7 +179,7 @@ function ca_goto:execution(cfg, data)
                 local rating = - cost
 
                 -- Add a small penalty for hexes occupied by an allied unit
-                local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
+                local unit_in_way = wesnoth.units.get(loc[1], loc[2])
                 if unit_in_way and (unit_in_way ~= unit) then
                     rating = rating - 0.01
                 end
@@ -214,7 +214,7 @@ function ca_goto:execution(cfg, data)
     for i = 2,#best_path do
         local sub_path, sub_cost = AH.find_path_with_shroud(best_unit, best_path[i][1], best_path[i][2], cfg)
         if sub_cost <= best_unit.moves then
-            local unit_in_way = wesnoth.get_unit(best_path[i][1], best_path[i][2])
+            local unit_in_way = wesnoth.units.get(best_path[i][1], best_path[i][2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                 closest_hex = best_path[i]
             end

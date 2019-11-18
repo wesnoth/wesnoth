@@ -156,13 +156,6 @@ window* unit_test_window(const modeless_dialog& dialog)
 	return dialog.window_.get();
 }
 
-class mp_server_list;
-
-modal_dialog* unit_test_mp_server_list()
-{
-	return mp_connect::mp_server_list_for_unit_test();
-}
-
 } // namespace dialogs
 } // namespace gui2
 
@@ -471,7 +464,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<mp_join_game_password_prompt>();
 	test<mp_login>();
 	test<mp_method_selection>();
-	test<mp_server_list>();
 	//test<mp_staging>();
 	//test<outro>();
 	test<simple_item_selector>();
@@ -1060,15 +1052,6 @@ struct dialog_tester<folder_create>
 	folder_create* create()
 	{
 		return new folder_create(folder_name);
-	}
-};
-
-template<>
-struct dialog_tester<mp_server_list>
-{
-	static modal_dialog* create()
-	{
-		return unit_test_mp_server_list();
 	}
 };
 

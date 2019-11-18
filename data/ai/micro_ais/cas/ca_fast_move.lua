@@ -23,7 +23,7 @@ function ca_fast_move:execution(cfg)
         if (not unit.status.guardian) then table.insert(units, unit) end
     end
 
-    local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+    local leader = wesnoth.units.find_on_map { side = wesnoth.current.side, canrecruit = 'yes' }[1]
 
     local goals = {}
 
@@ -206,7 +206,7 @@ function ca_fast_move:execution(cfg)
 
                     local unit_in_way
                     if (rating > max_rating) then
-                        unit_in_way = wesnoth.get_unit(loc[1], loc[2])
+                        unit_in_way = wesnoth.units.get(loc[1], loc[2])
                         if (unit_in_way == unit) or (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                             unit_in_way = nil
                         end

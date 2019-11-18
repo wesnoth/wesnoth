@@ -97,7 +97,7 @@ function ca_attack_highxp:evaluation(cfg, data)
         local attack_hexes = LS.create()
         for xa,ya in H.adjacent_tiles(target.x, target.y) do
             if (not avoid_map:get(xa, ya)) then
-                local unit_in_way = wesnoth.get_unit(xa, ya)
+                local unit_in_way = wesnoth.units.get(xa, ya)
 
                 if AH.is_visible_unit(wesnoth.current.side, unit_in_way) then
                     if (unit_in_way.side == wesnoth.current.side) then
@@ -115,7 +115,7 @@ function ca_attack_highxp:evaluation(cfg, data)
                         local can_move = false
                         for _,uiw_loc in ipairs(uiw_reach) do
                             -- Unit in the way of the unit in the way
-                            local uiw_uiw = wesnoth.get_unit(uiw_loc[1], uiw_loc[2])
+                            local uiw_uiw = wesnoth.units.get(uiw_loc[1], uiw_loc[2])
                             if (not AH.is_visible_unit(wesnoth.current.side, uiw_uiw)) then
                                 can_move = true
                                 break

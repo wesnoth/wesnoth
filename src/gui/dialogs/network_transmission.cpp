@@ -83,8 +83,6 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 
 		find_widget<label>(&(window_.get()), "numeric_progress", false)
 			.set_label(ss.str());
-
-		window_->invalidate_layout();
 	}
 }
 

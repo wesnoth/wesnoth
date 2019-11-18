@@ -1,26 +1,23 @@
 -- Note: This file is loaded automatically by the engine.
 
-function wesnoth.alert(title, msg)
+function gui.alert(title, msg)
 	if not msg then
 		msg = title;
 		title = "";
 	end
-	wesnoth.show_message_box(title, msg, "ok", true)
+	gui.show_prompt(title, msg, "ok", true)
 end
 
-function wesnoth.confirm(title, msg)
+function gui.confirm(title, msg)
 	if not msg then
 		msg = title;
 		title = "";
 	end
-	return wesnoth.show_message_box(title, msg, "yes_no", true)
+	return gui.show_prompt(title, msg, "yes_no", true)
 end
 
 
 --[========[Config Manipulation Functions]========]
-
-wml.tovconfig = wesnoth.tovconfig
-wml.tostring = wesnoth.debug
 
 local function ensure_config(cfg)
 	if type(cfg) == 'table' then
@@ -193,7 +190,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		error(wesnoth.format(_"Invalid deprecation level $level (should be 1-4)", err_params))
 	end
 	local msg_shown = false
-	if type(elem) == "function" then
+	if type(elem) == "function" or getmetatable(elem) == "function" then
 		return function(...)
 			if not msg_shown then
 				msg_shown = true
@@ -204,6 +201,11 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 	elseif type(elem) == "table" then
 		-- Don't clobber the old metatable.
 		local old_mt = getmetatable(elem) or {}
+		if type(old_mt) ~= "table" then
+			wesnoth.log('warn', "Attempted to deprecate a table with a masked metatable: " ..
+				elem_name .. " -> " .. replacement .. ", where getmetatable(" .. elem_name .. ") = " .. tostring(old_mt))
+			return elem
+		end
 		local mt = {}
 		for k,v in pairs(old_mt) do
 			mt[k] = old_mt[v]
@@ -462,28 +464,12 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	--[========[Game Interface Control]========]
 
-	wesnoth.interface = {
-		delay = wesnoth.delay,
-		float_label = wesnoth.float_label,
-		select_unit = wesnoth.select_unit,
-		highlight_hex = wesnoth.highlight_hex,
-		deselect_hex = wesnoth.deselect_hex,
-		get_selected_hex = wesnoth.get_selected_tile,
-		scroll_to_hex = wesnoth.scroll_to_tile,
-		lock = wesnoth.lock_view,
-		is_locked = wesnoth.view_locked,
-		is_skipping_messages = wesnoth.is_skipping_messages,
-		skip_messages = wesnoth.skip_messages,
-		add_hex_overlay = wesnoth.add_tile_overlay,
-		remove_hex_overlay = wesnoth.remove_tile_overlay,
-		game_display = wesnoth.theme_items,
-		get_displayed_unit = wesnoth.get_displayed_unit,
-	}
+	wesnoth.interface.select_unit = wesnoth.units.select
 
 	--! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
 	--! @note Usable only during WML actions.
 	function wesnoth.interface.move_unit_fake(filter, to_x, to_y)
-		local moving_unit = wesnoth.get_units(filter)[1]
+		local moving_unit = wesnoth.units.find_on_map(filter)[1]
 		local from_x, from_y = moving_unit.x, moving_unit.y
 
 		wesnoth.interface.scroll_to_hex(from_x, from_y)
@@ -510,31 +496,14 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	--[========[Units module]========]
-	-- TODO: Eventually this could actually be the units metatable, allowing people to add new methods to it.
-	wesnoth.units = {}
-	wesnoth.units.matches = wesnoth.match_unit
-	wesnoth.units.to_recall = wesnoth.put_recall_unit
-	wesnoth.units.to_map = wesnoth.put_unit
-	wesnoth.units.erase = wesnoth.erase_unit
-	wesnoth.units.clone = wesnoth.copy_unit
-	wesnoth.units.extract = wesnoth.extract_unit
-	wesnoth.units.advance = wesnoth.advance_unit
-	wesnoth.units.add_modification = wesnoth.add_modification
-	wesnoth.units.remove_modifications = wesnoth.remove_modifications
-	wesnoth.units.resistance = wesnoth.unit_resistance
-	wesnoth.units.defense = wesnoth.unit_defense
-	wesnoth.units.movement = wesnoth.unit_movement_cost
-	wesnoth.units.vision = wesnoth.unit_vision_cost
-	wesnoth.units.jamming = wesnoth.unit_jamming_cost
-	wesnoth.units.ability = wesnoth.unit_ability
-	wesnoth.units.transform = wesnoth.transform_unit
-	wesnoth.units.select = wesnoth.select_unit
+	
+	wesnoth.units.scroll_to = wesnoth.interface.scroll_to_hex
 
 	--! Modifies all the units satisfying the given @a filter.
 	--! @param vars key/value pairs that need changing.
 	--! @note Usable only during WML actions.
 	function wesnoth.units.modify(filter, vars)
-		local units = wesnoth.get_units(filter)
+		local units = wesnoth.units.find(filter)
 		for u in pairs(units) do
 			for k, v in pairs(vars) do
 				-- Minor TODO: What if you want to change values of subtags?
@@ -544,24 +513,42 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			end
 		end
 	end
+
+	-- gets map and recalllist units.
+	function wesnoth.units.find(filter)
+		local res = wesnoth.units.find_on_map(filter)
+		for i, u in ipairs(wesnoth.units.find_on_recall(filter)) do
+			table.insert(res, u)
+		end
+		return res
+	end
+
+	--[========[Sides module]========]
+	
+	local sides_mt = {
+		__metatable = "sides",
+		__index = function(_, key)
+			-- Only called if the key doesn't exist, so return nil if it's not a number
+			if type(key) == 'number' then
+				return wesnoth.sides.get(key)
+			end
+		end,
+		__len = function(_)
+			return #wesnoth.sides.find{}
+		end
+	}
+	setmetatable(wesnoth.sides, sides_mt)
+	
+	-- Deprecated functions
+	function wesnoth.set_side_variable(side, var, val)
+		wesnoth.sides[side].variables[var] = val
+	end
+	function wesnoth.get_side_variable(side, var)
+		return wesnoth.sides[side].variables[var]
+	end
 end
 
 --[========[GUI2 Dialog Manipulations]========]
-
-gui = {}
-
-gui.show_menu = wesnoth.show_menu
-gui.show_narration = wesnoth.show_message_dialog
-gui.show_popup = wesnoth.show_popup_dialog
-gui.show_story = wesnoth.show_story
-gui.show_prompt = wesnoth.show_message_box
-gui.alert = wesnoth.alert
-gui.confirm = wesnoth.confirm
-gui.show_lua_console = wesnoth.show_lua_console
-if wesnoth.kernel_type() == "Game Lua Kernel" then
-	gui.show_inspector = wesnoth.gamestate_inspector
-end
-gui.add_widget_definition = wesnoth.add_widget_definition
 
 --! Displays a WML message box with attributes from table @attr and options
 --! from table @options.
@@ -600,11 +587,12 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	-- Interface module
 	wesnoth.delay = wesnoth.deprecate_api('wesnoth.delay', 'wesnoth.interface.delay', 1, nil, wesnoth.interface.delay)
 	wesnoth.float_label = wesnoth.deprecate_api('wesnoth.float_label', 'wesnoth.interface.float_label', 1, nil, wesnoth.interface.float_label)
-	wesnoth.select_unit = wesnoth.deprecate_api('wesnoth.select_unit', 'wesnoth.interface.select_unit', 1, nil, wesnoth.interface.select_unit)
 	wesnoth.highlight_hex = wesnoth.deprecate_api('wesnoth.highlight_hex', 'wesnoth.interface.highlight_hex', 1, nil, wesnoth.interface.highlight_hex)
 	wesnoth.deselect_hex = wesnoth.deprecate_api('wesnoth.deselect_hex', 'wesnoth.interface.deselect_hex', 1, nil, wesnoth.interface.deselect_hex)
 	wesnoth.get_selected_tile = wesnoth.deprecate_api('wesnoth.get_selected_tile', 'wesnoth.interface.get_selected_hex', 1, nil, wesnoth.interface.get_selected_hex)
+	wesnoth.get_mouseover_tile = wesnoth.deprecate_api('wesnoth.get_mouseover_tile', 'wesnoth.interface.get_hovered_hex', 1, nil, wesnoth.interface.get_hovered_hex)
 	wesnoth.scroll_to_tile = wesnoth.deprecate_api('wesnoth.scroll_to_tile', 'wesnot.interface.scroll_to_hex', 1, nil, wesnoth.interface.scroll_to_hex)
+	wesnoth.scroll = wesnoth.deprecate_api('wesnoth.scroll', 'wesnot.interface.scroll', 1, nil, wesnoth.interface.scroll)
 	wesnoth.lock_view = wesnoth.deprecate_api('wesnoth.lock_view', 'wesnoth.interface.lock', 1, nil, wesnoth.interface.lock)
 	wesnoth.view_locked = wesnoth.deprecate_api('wesnoth.view_locked', 'wesnoth.interface.is_locked', 1, nil, wesnoth.interface.is_locked)
 	wesnoth.is_skipping_messages = wesnoth.deprecate_api('wesnoth.is_skipping_messages', 'wesnoth.interface.is_skipping_messages', 1, nil, wesnoth.interface.is_skipping_messages)
@@ -613,7 +601,12 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.remove_tile_overlay = wesnoth.deprecate_api('wesnoth.remove_tile_overlay', 'wesnoth.interface.remove_hex_overlay', 1, nil, wesnoth.interface.remove_hex_overlay)
 	wesnoth.theme_items = wesnoth.deprecate_api('wesnoth.theme_items', 'wesnoth.interface.game_display', 1, nil, wesnoth.interface.game_display)
 	wesnoth.get_displayed_unit = wesnoth.deprecate_api('wesnoth.get_displayed_unit', 'wesnoth.interface.get_displayed_unit', 1, nil, wesnoth.interface.get_displayed_unit)
+	wesnoth.zoom = wesnoth.deprecate_api('wesnoth.zoom', 'wesnoth.interface.zoom', 1, nil, wesnoth.interface.zoom)
 	wesnoth.gamestate_inspector = wesnoth.deprecate_api('wesnoth.gamestate_inspector', 'gui.show_inspector', 1, nil, gui.show_inspector)
+	-- No deprecation for these since since they're not actually public API yet
+	wesnoth.color_adjust = wesnoth.interface.color_adjust
+	wesnoth.set_menu_item = wesnoth.interface.set_menu_item
+	wesnoth.clear_menu_item = wesnoth.interface.clear_menu_item 
 	-- Units module
 	wesnoth.match_unit = wesnoth.deprecate_api('wesnoth.match_unit', 'wesnoth.units.matches', 1, nil, wesnoth.units.matches)
 	wesnoth.put_recall_unit = wesnoth.deprecate_api('wesnoth.put_recall_unit', 'wesnoth.units.to_recall', 1, nil, wesnoth.units.to_recall)
@@ -632,15 +625,32 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.unit_ability = wesnoth.deprecate_api('wesnoth.unit_ability', 'wesnoth.units.ability', 1, nil, wesnoth.units.ability)
 	wesnoth.transform_unit = wesnoth.deprecate_api('wesnoth.transform_unit', 'wesnoth.units.transform', 1, nil, wesnoth.units.transform)
 	wesnoth.select_unit = wesnoth.deprecate_api('wesnoth.select_unit', 'wesnoth.units.select', 1, nil, wesnoth.units.select)
+	wesnoth.create_unit = wesnoth.deprecate_api('wesnoth.create_unit', 'wesnoth.units.create', 1, nil, wesnoth.units.create)
+	wesnoth.get_unit = wesnoth.deprecate_api('wesnoth.get_unit', 'wesnoth.units.get', 1, nil, wesnoth.units.get)
+	wesnoth.get_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_map', 1, nil, wesnoth.units.find_on_map)
+	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_recall', 1, nil, wesnoth.units.find_on_recall)
+	wesnoth.get_side_variable = wesnoth.deprecate_api('wesnoth.get_side_variable', 'wesnoth.sides[].variables', 1, nil, wesnoth.get_side_variable)
+	wesnoth.set_side_variable = wesnoth.deprecate_api('wesnoth.set_side_variable', 'wesnoth.sides[].variables', 1, nil, wesnoth.set_side_variable)
+	wesnoth.get_starting_location = wesnoth.deprecate_api('wesnoth.get_starting_location', 'wesnoth.sides.get_starting_location', 1, nil, wesnoth.sides.get_starting_location)
+	wesnoth.is_enemy = wesnoth.deprecate_api('wesnoth.is_enemy', 'wesnoth.sides.is_enemy', 1, nil, wesnoth.sides.is_enemy)
+	wesnoth.match_side = wesnoth.deprecate_api('wesnoth.match_side', 'wesnoth.sides.matches', 1, nil, wesnoth.sides.matches)
+	wesnoth.set_side_id = wesnoth.deprecate_api('wesnoth.set_side_id', 'wesnoth.sides.set_id', 1, nil, wesnoth.sides.set_id)
+	wesnoth.append_ai = wesnoth.deprecate_api('wesnoth.append_ai', 'wesnoth.sides.append_ai', 1, nil, wesnoth.sides.append_ai)
+	wesnoth.debug_ai = wesnoth.deprecate_api('wesnoth.debug_ai', 'wesnoth.sides.debug_ai', 1, nil, wesnoth.sides.debug_ai)
+	wesnoth.switch_ai = wesnoth.deprecate_api('wesnoth.switch_ai', 'wesnoth.sides.switch_ai', 1, nil, wesnoth.sides.switch_ai)
+	wesnoth.add_ai_component = wesnoth.deprecate_api('wesnoth.add_ai_component', 'wesnoth.sides.add_ai_component', 1, nil, wesnoth.sides.add_ai_component)
+	wesnoth.delete_ai_component = wesnoth.deprecate_api('wesnoth.delete_ai_component', 'wesnoth.sides.delete_ai_component', 1, nil, wesnoth.sides.delete_ai_component)
+	wesnoth.change_ai_component = wesnoth.deprecate_api('wesnoth.change_ai_component', 'wesnoth.sides.change_ai_component', 1, nil, wesnoth.sides.change_ai_component)
+	wesnoth.get_sides = wesnoth.deprecate_api('wesnoth.get_sides', 'wesnoth.sides.find', 1, nil, wesnoth.sides.find)
 end
-wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 1, nil, wesnoth.tovconfig)
-wesnoth.debug = wesnoth.deprecate_api('wesnoth.debug', 'wml.tostring', 1, nil, wesnoth.debug)
+wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 1, nil, wml.tovconfig)
+wesnoth.debug = wesnoth.deprecate_api('wesnoth.debug', 'wml.tostring', 1, nil, wml.tostring)
 -- GUI module
 wesnoth.show_menu = wesnoth.deprecate_api('wesnoth.show_menu', 'gui.show_menu', 1, nil, gui.show_menu)
 wesnoth.show_message_dialog = wesnoth.deprecate_api('wesnoth.show_message_dialog', 'gui.show_narration', 1, nil, gui.show_narration)
 wesnoth.show_popup_dialog = wesnoth.deprecate_api('wesnoth.show_popup_dialog', 'gui.show_popup', 1, nil, gui.show_popup)
 wesnoth.show_story = wesnoth.deprecate_api('wesnoth.show_story', 'gui.show_story', 1, nil, gui.show_story)
-wesnoth.show_prompt = wesnoth.deprecate_api('wesnoth.show_message_box', 'gui.show_prompt', 1, nil, gui.show_prompt)
+wesnoth.show_message_box = wesnoth.deprecate_api('wesnoth.show_message_box', 'gui.show_prompt', 1, nil, gui.show_prompt)
 wesnoth.alert = wesnoth.deprecate_api('wesnoth.alert', 'gui.alert', 1, nil, gui.alert)
 wesnoth.confirm = wesnoth.deprecate_api('wesnoth.confirm', 'gui.confirm', 1, nil, gui.confirm)
 wesnoth.show_lua_console = wesnoth.deprecate_api('wesnoth.show_lua_console', 'gui.show_lua_console', 1, nil, gui.show_lua_console)

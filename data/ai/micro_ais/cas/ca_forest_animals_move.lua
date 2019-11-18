@@ -12,7 +12,7 @@ local function get_forest_animals(cfg)
     }
 
     local tusker_type = cfg.tusker_type or "no_unit_of_this_type"
-    local all_tuskers = wesnoth.get_units { side = wesnoth.current.side, type = tusker_type }
+    local all_tuskers = wesnoth.units.find_on_map { side = wesnoth.current.side, type = tusker_type }
     for _,tusker in ipairs(all_tuskers) do
         if (tusker.moves > 0) then table.insert(forest_animals, tusker) end
     end
@@ -20,7 +20,7 @@ local function get_forest_animals(cfg)
     -- Tusklets get moved by this CA if there are no tuskers left
     if not all_tuskers[1] then
         local tusklet_type = cfg.tusklet_type or "no_unit_of_this_type"
-        local tusklets = wesnoth.get_units { side = wesnoth.current.side, type = tusklet_type }
+        local tusklets = wesnoth.units.find_on_map { side = wesnoth.current.side, type = tusklet_type }
         for _,tusklet in ipairs(tusklets) do
             if (tusklet.moves > 0) then table.insert(forest_animals, tusklet) end
         end
@@ -43,7 +43,7 @@ function ca_forest_animals_move:execution(cfg)
 
     -- Get the locations of all the rabbit holes
     wesnoth.wml_actions.store_items { variable = 'holes_wml' }
-    local all_items = wml.array_access.get('holes_wml')
+    local all_items = wml.array_variables['holes_wml']
     wesnoth.wml_actions.clear_variable { name = 'holes_wml' }
 
     -- If cfg.rabbit_hole_img is set, only items with that image or halo count as holes

@@ -12,4 +12,4 @@ RUN cd /src/boost && ./bootstrap.sh --with-libraries=iostreams,regex,system,file
 COPY start.sh /staging/start.sh
 RUN mkdir /staging/lib64 && cp /lib/libicu*.so.* /lib/x86_64-linux-gnu/libhistory.so.6 /staging/lib64/
 
-ENTRYPOINT mkdir /build && cd /build && scons -j `nproc` ctool=gcc-5 cxxtool=g++-5 boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt -Y /wesnoth && cp /build/wesnoth /output/ && cp /build/wesnothd /output/ && cp -r /staging/* /output/
+ENTRYPOINT mkdir -p /build && cd /build && scons -j `nproc` ctool=gcc-5 cxxtool=g++-5 boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt -Y /wesnoth && cp /build/wesnoth /output/ && cp /build/wesnothd /output/ && cp -r /staging/* /output/

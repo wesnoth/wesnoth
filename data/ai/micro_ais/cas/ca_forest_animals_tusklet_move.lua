@@ -10,7 +10,7 @@ local function get_tusklets(cfg)
 end
 
 local function get_tuskers(cfg)
-    local tuskers = wesnoth.get_units {
+    local tuskers = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         type = cfg.tusker_type
     }

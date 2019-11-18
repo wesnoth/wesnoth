@@ -175,17 +175,6 @@ function helper.rand (possible_values, random_func)
 	return nil
 end
 
-function helper.deprecate(msg, f)
-	return function(...)
-		if msg then
-			wesnoth.log("warn", msg, wesnoth.game_config.debug)
-			-- trigger the message only once
-			msg = nil
-		end
-		return f(...)
-	end
-end
-
 function helper.round( number )
 	-- code converted from util.hpp, round_portable function
 	-- round half away from zero method

@@ -26,7 +26,7 @@ function ca_protect_unit_move:execution(cfg, data)
     -- as long as they can still move
     for _,unit in ipairs(protected_units) do unit:extract() end
 
-    local units = wesnoth.get_units { side = wesnoth.current.side }
+    local units = wesnoth.units.find_on_map { side = wesnoth.current.side }
     local enemy_units = AH.get_attackable_enemies()
 
     local attack_map = BC.get_attack_map(units).units  -- enemy attack map

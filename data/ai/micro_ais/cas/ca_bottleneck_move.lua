@@ -16,8 +16,8 @@ local function bottleneck_is_my_territory(map, enemy_map)
     -- Get copy of leader to do pathfinding from each hex to the
     -- front-line hexes, both own (stored in @map) and enemy (@enemy_map) front-line hexes
     -- If there is no leader, use first unit found
-    local unit = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
-    if (not unit) then unit = wesnoth.get_units { side = wesnoth.current.side }[1] end
+    local unit = wesnoth.units.find_on_map { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+    if (not unit) then unit = wesnoth.units.find_on_map { side = wesnoth.current.side }[1] end
     local dummy_unit = unit:clone()
 
     local territory_map = LS.create()
@@ -140,7 +140,7 @@ local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, data
         -- If leadership unit is injured -> prefer hexes next to healers
         if (unit.hitpoints < unit.max_hitpoints) then
             for xa,ya in H.adjacent_tiles(x, y) do
-                local adjacent_unit = wesnoth.get_unit(xa, ya)
+                local adjacent_unit = wesnoth.units.get(xa, ya)
                 if adjacent_unit and (adjacent_unit.__cfg.usage == "healer") then
                     leadership_rating = leadership_rating + 100
                     break
@@ -269,7 +269,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
 
     -- Healing map: positions next to healers
     -- Healers get moved with higher priority, so don't need to check their MP
-    local healers = wesnoth.get_units { side = wesnoth.current.side, ability = "healing" }
+    local healers = wesnoth.units.find_on_map { side = wesnoth.current.side, ability = "healing" }
     BD_healing_map = LS.create()
     for _,healer in ipairs(healers) do
         for xa,ya in H.adjacent_tiles(healer.x, healer.y) do
@@ -294,7 +294,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
     --   1. the rating of the unit on the target hex (if there is one)
     --   2. the rating of the currently considered unit on its current hex
 
-    local all_units = wesnoth.get_units { side = wesnoth.current.side }
+    local all_units = wesnoth.units.find_on_map { side = wesnoth.current.side }
     local current_rating_map = LS.create()
 
     for _,unit in ipairs(all_units) do
@@ -317,7 +317,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
     for _,enemy in ipairs(enemies) do
         for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
             if BD_is_my_territory:get(xa, ya) then
-                local unit_in_way = wesnoth.get_unit(xa, ya)
+                local unit_in_way = wesnoth.units.get(xa, ya)
                 if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                     unit_in_way = nil
                 end
@@ -433,7 +433,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
         BD_bottleneck_moves_done = true
     else
         -- If there's another unit in the best location, moving it out of the way becomes the best move
-        local unit_in_way = wesnoth.get_units { x = best_hex[1], y = best_hex[2],
+        local unit_in_way = wesnoth.units.find_on_map { x = best_hex[1], y = best_hex[2],
             { "not", { id = best_unit.id } }
         }[1]
         if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then

@@ -2,4 +2,6 @@
 
 cd mingw
 docker build -t mingw-wesnoth .
-docker run -it -v "$PWD"/../../..:/wesnoth -v "$PWD"/../mingwbuild:/output mingw-wesnoth
+rm -rf ../mingwbuild
+mkdir ../mingwbuild
+docker run -it -v "$PWD"/../../..:/wesnoth -v "$PWD"/../mingwbuild:/output --tmpfs /build -u "$UID" mingw-wesnoth

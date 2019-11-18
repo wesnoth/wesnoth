@@ -6,7 +6,7 @@ return {
 
         -- This is taken almost literally from 'Ka'lian under Attack' in 'Legend of Wesmere'
         function urudin:retreat()
-            local urudin = wesnoth.get_units({ side = 3, id = "Urudin" })[1]
+            local urudin = wesnoth.units.find_on_map({ side = 3, id = "Urudin" })[1]
             if urudin and urudin.valid then
                 local max_hp, hp = urudin.max_hitpoints, urudin.hitpoints
                 local turn = wesnoth.current.turn

@@ -8,7 +8,7 @@ local function get_units_target(cfg)
         { "and", wml.get_child(cfg, "filter") }
     }
 
-    local target = wesnoth.get_units {
+    local target = wesnoth.units.find_on_map {
         { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
         { "and", wml.get_child(cfg, "filter_second") }
     }[1]
@@ -151,7 +151,7 @@ function ca_assassin_move:execution(cfg)
     for i = 2,#path do
         local sub_path, sub_cost = AH.find_path_with_shroud(unit, path[i][1], path[i][2])
         if sub_cost <= unit.moves then
-            local unit_in_way = wesnoth.get_unit(path[i][1], path[i][2])
+            local unit_in_way = wesnoth.units.get(path[i][1], path[i][2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                 farthest_hex = path[i]
             end

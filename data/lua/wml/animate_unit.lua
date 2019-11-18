@@ -7,12 +7,12 @@ local function add_animation(anim, cfg)
 	local filter = wml.get_child(cfg, "filter")
 	local unit
 	if filter then
-		unit = wesnoth.get_units{
+		unit = wesnoth.units.find_on_map{
 			limit = 1,
 			T["and"](filter)
 		}[1]
 	else
-		unit = wesnoth.get_unit(
+		unit = wesnoth.units.get(
 			wesnoth.current.event_context.x1,
 			wesnoth.current.event_context.y1
 		)
@@ -69,7 +69,7 @@ local function add_animation(anim, cfg)
 
 		-- TODO: The last argument is currently unused
 		-- (should make the game not scroll if view locked or prefs disables it)
-		wesnoth.scroll_to_tile(unit.x, unit.y, true, false, true, false)
+		wesnoth.interface.scroll_to_hex(unit.x, unit.y, true, false, true, false)
 
 		local facing = wml.get_child(cfg, "facing")
 		if facing then

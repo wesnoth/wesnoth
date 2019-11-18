@@ -111,7 +111,7 @@ function micro_ai_helper.delete_CAs(side, ca_id_core, CA_parms)
         wesnoth.delete_ai_component(side, "stage[main_loop].candidate_action[" .. ca_id .. "]")
 
         -- Also need to delete variable stored in all units of the side, so that later MAIs can use these units
-        local units = wesnoth.get_units { side = side }
+        local units = wesnoth.units.find_on_map { side = side }
         for _,unit in ipairs(units) do
             MAIUV.delete_mai_unit_variables(unit, CA_parms.ai_id)
         end

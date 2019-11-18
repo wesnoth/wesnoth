@@ -37,7 +37,7 @@ function ca_protect_unit_attack:evaluation(cfg)
             and (attack.att_stats.slowed == 0)
         then
             -- Get maximum possible counter attack damage by enemies on their turn
-            local unit = wesnoth.get_unit(attack.src.x, attack.src.y)
+            local unit = wesnoth.units.get(attack.src.x, attack.src.y)
 
             local max_counter_damage = 0
             for _,enemy_attack in ipairs(enemy_attacks) do

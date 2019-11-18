@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+"""
+tmx_trackplacer -- a tool for placing map tracks using Tiled
+
+This creates .tmx files (Tiled's format) based on the trackplacer's journey data.
+The journey can be edited in Tiled using the "Insert Tile" tool, and then the .tmx
+data converted back to the trackplacer parts of the .cfg file.
+
+It can also read in a .cfg and then re-export it to a new .cfg file, to see if the
+data is preserved. The format is chosen by the filename given to the --output option.
+
+If a .jpg or .png file is given as the input, then the output will be a template .tmx
+or .cfg file for drawing a track on top of that image.
+
+Example usage:
+* data/tools/tmx_trackplacer images/campaign_map.png --output temp.tmx
+* data/tools/tmx_trackplacer data/campaigns/Northern_Rebirth/utils/bigmap.cfg --output temp.tmx
+* data/tools/tmx_trackplacer data/campaigns/Northern_Rebirth/utils/bigmap.cfg --output temp.cfg
+"""
+
+import wesnoth.trackplacer3 as tp3
+
+import argparse
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser(usage=__doc__)
+    ap.add_argument("file", metavar="string", help="Read input from this file")
+    ap.add_argument("-o", "--output", metavar="string",
+                            help='Write output into the specified file')
+    ap.add_argument("--data-dir", metavar="dir",
+                            help='Same as Wesnoth’s “--data-dir” argument')
+    options = ap.parse_args()
+
+    if options.data_dir is None:
+        import os, sys
+        APP_DIR,APP_NAME=os.path.split(os.path.realpath(sys.argv[0]))
+        WESNOTH_ROOT_DIR=os.sep.join(APP_DIR.split(os.sep)[:-2])  # pop out "data" and "tools"
+        options.data_dir=os.path.join(WESNOTH_ROOT_DIR,"data")
+
+    journey = None
+    if options.file:
+        if options.file.endswith(".cfg"):
+            reader = tp3.CfgFileFormat()
+            (journey, metadata) = reader.read(options.file)
+        elif options.file.endswith(".tmx"):
+            reader = tp3.TmxFileFormat(wesnoth_data_dir=options.data_dir)
+            (journey, metadata) = reader.read(options.file)
+        elif options.file.endswith(".png") or options.file.endswith(".jpg"):
+            journey = tp3.Journey()
+            journey.mapfile = options.file
+            metadata = None
+        else:
+            raise RuntimeError("Don't know how to handle input from this file type")
+
+    if journey:
+        print("Read data:", str(journey))
+    else:
+        raise RuntimeError("Failed to read journey data")
+
+    if options.output:
+        if options.output.endswith(".cfg"):
+            print("Exporting as cfg")
+            exporter = tp3.CfgFileFormat()
+            exporter.write(options.output, journey, metadata)
+        elif options.output.endswith(".tmx"):
+            print("Exporting as tmx")
+            exporter = tp3.TmxFileFormat(wesnoth_data_dir=options.data_dir)
+            exporter.write(options.output, journey, metadata)
+        else:
+            raise RuntimeError("Don't know how to handle output to this file type")

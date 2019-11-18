@@ -2239,6 +2239,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		const unit_type*  base_type = unit_types.find(type().base_id());
 		assert(base_type != nullptr);
 		advance_to(*base_type);
+		if(effect["heal_full"].to_bool(false)) {
+			heal_fully();
+		}
 	} else if(effect["apply_to"] == "type") {
 		std::string prev_type = effect["prev_type"];
 		if(prev_type.empty()) {

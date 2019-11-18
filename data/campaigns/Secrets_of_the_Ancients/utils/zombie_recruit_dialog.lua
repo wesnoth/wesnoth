@@ -137,16 +137,16 @@ while zombies[zArrayIndex] and zExists == false do
     zArrayIndex = zArrayIndex + 1
 end
 
-wesnoth.set_variable( "recruitedZombieType", "cancel" ) -- default value
+wml.variables["recruitedZombieType"] = "cancel" -- default value
 
 if zExists==false then
-    wesnoth.show_message_box("", _ "There are no corpses available.", "")
+    gui.show_prompt("", _ "There are no corpses available.", "")
 else
     local returned = wesnoth.show_dialog(zombie_recruit_dialog, preshow, postshow)
     if  returned ~= -2 and sides[1].gold  < recruitCost then
-        wesnoth.show_message_box("", _ "You do not have enough gold to recruit that unit", "")
+        gui.show_prompt("", _ "You do not have enough gold to recruit that unit", "")
     elseif returned ~= -2 and (sides[1].gold ) >= recruitCost then
-        wesnoth.set_variable( "recruitedZombieType", recruitedType )
-        wesnoth.set_variable( "recruitedZombieCost", recruitCost )
+        wml.variables["recruitedZombieType"] = recruitedType
+        wml.variables["recruitedZombieCost"] = recruitCost
     end
 end

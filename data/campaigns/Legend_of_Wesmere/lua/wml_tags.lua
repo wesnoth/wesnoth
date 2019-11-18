@@ -59,7 +59,7 @@ function wesnoth.wml_actions.replace_map_section(cfg)
 end
 
 function wesnoth.wml_actions.unstore_left_behind_units(cfg)
-	if wesnoth.get_variable("l3_store_kalenz") ~= nil then
+	if wml.variables["l3_store_kalenz"] ~= nil then
 		l3_store_kalenz = helper.get_variable_array("l3_store_kalenz")
 		for i,_ in ipairs(l3_store_kalenz) do
 			var_name = "l3_store_kalenz[" .. tostring(i-1) .. "]"
@@ -69,9 +69,9 @@ function wesnoth.wml_actions.unstore_left_behind_units(cfg)
 				y = "recall"
 			}
 		end
-		wesnoth.set_variable("l3_store_kalenz",nil)
+		wml.variables["l3_store_kalenz"] = nil
 	end
-	if wesnoth.get_variable("l3_store_landar") ~= nil then
+	if wml.variables["l3_store_landar"] ~= nil then
 		l3_store_landar = helper.get_variable_array("l3_store_landar")
 		for i,_ in ipairs(l3_store_landar) do
 			var_name = "l3_store_landar[" .. tostring(i-1) .. "]"
@@ -81,7 +81,7 @@ function wesnoth.wml_actions.unstore_left_behind_units(cfg)
 				y = "recall"
 			}
 		end
-		wesnoth.set_variable("l3_store_landar",nil)
+		wml.variables["l3_store_landar"] = nil
 	end
 end
 
@@ -141,7 +141,7 @@ function wesnoth.wml_actions.persistent_carryover_unstore(cfg)
 		end
 		for i = 1, vars["side_store.unit.length"] do
 			vars[string.format("side_store.unit[%d].side", i - 1)] = num
-			local u = wesnoth.get_unit(vars[string.format("side_store.unit[%d].id", i - 1)])
+			local u = wesnoth.units.get(vars[string.format("side_store.unit[%d].id", i - 1)])
 
 			if u then
 				vars[string.format("side_store.unit[%d].x", i - 1)] = u.x
