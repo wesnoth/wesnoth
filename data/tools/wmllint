@@ -962,6 +962,7 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     # macros.
     if "scenario" in ancestors and closer == "side" and "type" not in attributes and \
        ("no_leader" not in attributes or attributes["no_leader"] != "yes") and \
+       attributes.get("controller") != "null" and \
        "multiplayer" not in ancestors and "leader" not in subtags and attributes:
         print('"%s", line %d: [side] without type attribute' % (filename, lineno))
     # This assumes that conversion will always happen in units/ files.
