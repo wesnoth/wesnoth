@@ -76,7 +76,9 @@
      always be used.
    * Make wmllint ignore race= keys if they are part of filters inside [unit_type] (issue #4105)
    * Removed a few assserts from wmllint and postponed a few unit sanity checks to the closing of a [unit_type] tag (issue #4102)
-   * Added `tmx_trackplacer` tool, a file converter for editing map tracks with Tiled (PR #4464)
+   * Added tool `tmx_trackplacer`, a file converter for editing map tracks with Tiled (PR #4464)
+   * Added tool trackviewer, which has the animation-preview functions of trackplacer (PR #4574)
+   * Removed the python2 trackplacer tool (issue #4365)
 
 ## Version 1.15.2
  ### AI:
