@@ -1168,6 +1168,13 @@ void game::handle_random_choice(const simple_wml::node&)
 	record_data(mdata);
 }
 
+void game::handle_add_side_wml(const simple_wml::node&)
+{
+	++nsides_;
+	side_controllers_.push_back(CONTROLLER::EMPTY);
+	sides_.emplace_back();
+}
+
 void game::handle_controller_choice(const simple_wml::node& req)
 {
 	const std::size_t side_index = req["side"].to_int() - 1;
@@ -1270,6 +1277,8 @@ void game::handle_choice(const simple_wml::node& data, const socket_ptr& user)
 		handle_random_choice(*rand);
 	} else if(const simple_wml::node* ccw = data.child("change_controller_wml")) {
 		handle_controller_choice(*ccw);
+	} else if(const simple_wml::node* asw = data.child("add_side_wml")) {
+		handle_add_side_wml(*asw);
 	} else {
 		send_and_record_server_message("Found unknown server choice request: [" + data.first_child().to_string() + "]");
 	}

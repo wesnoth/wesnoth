@@ -773,6 +773,16 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 	return 0;
 }
 
+
+int game_lua_kernel::intf_create_side(lua_State *L)
+{
+	int new_side_num = board().teams().size() + 1;
+	config cfg = luaW_checkconfig(L, 1);
+	game_state_.add_side_wml(cfg);
+
+	return 0;
+}
+
 int game_lua_kernel::intf_set_menu_item(lua_State *L)
 {
 	game_state_.get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2));
@@ -4213,6 +4223,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "is_shrouded",               &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, false  >        },
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
+		{ "create_side",               &dispatch<&game_lua_kernel::intf_create_side                >        },
 		{ "set_next_scenario",         &dispatch<&game_lua_kernel::intf_set_next_scenario          >        },
 		{ "set_terrain",               &dispatch<&game_lua_kernel::intf_set_terrain                >        },
 		{ "set_variable",              &dispatch<&game_lua_kernel::intf_set_variable               >        },
