@@ -776,7 +776,6 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 
 int game_lua_kernel::intf_create_side(lua_State *L)
 {
-	int new_side_num = board().teams().size() + 1;
 	config cfg = luaW_checkconfig(L, 1);
 	game_state_.add_side_wml(cfg);
 
