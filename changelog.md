@@ -39,6 +39,7 @@
    * Increased melee damage of Dwarvish Stalwart from 7-3 to 8-3
    * Increased melee damage of Dwarvish Sentinel from 9-3 to 10-3
    * Dunefolk: rebalancing and renaming of various units
+   * Orcs: revise some unit descriptions
  ### User interface
    * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
    * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
