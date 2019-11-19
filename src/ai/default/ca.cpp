@@ -280,8 +280,21 @@ double move_leader_to_goals_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	const unit_map::iterator leader = resources::gameboard->units().find_leader(get_side());
-	if (!leader.valid() || leader->incapacitated()) {
+	const unit_map &units_ = resources::gameboard->units();
+	const std::vector<unit_map::const_iterator> leaders = units_.find_leaders(get_side());
+	if (leaders.empty()) {
+		return BAD_SCORE;
+	}
+
+	const unit* leader = nullptr;
+	for (const unit_map::const_iterator& l_itor : leaders) {
+		if (!l_itor->incapacitated() && l_itor->movement_left() > 0) {
+			leader = &(*l_itor);
+			break;
+		}
+	}
+
+	if (leader == nullptr) {
 		WRN_AI_TESTING_AI_DEFAULT << "Leader not found" << std::endl;
 		return BAD_SCORE;
 	}
