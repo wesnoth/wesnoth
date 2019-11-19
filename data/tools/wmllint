@@ -2203,7 +2203,7 @@ def global_sanity_check(filename, lines):
     for num, line in enumerate(lines, start=1):
         if "#textdomain" in line:
             textdomains.append(num)
-        elif "wmllint: no translatables":
+        elif "wmllint: no translatables" in line:
             no_text = True
     if not no_text:
         if not textdomains:
