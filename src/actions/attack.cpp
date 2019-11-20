@@ -1688,12 +1688,11 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 	unit_ability_list abil = un->get_abilities(ability);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const config &filter = (*i->first).child("filter_opponent");
-		const config &filter_student = (*i->first).child("filter_student");
 		const config &filter_attacker = (*i->first).child("filter_attacker");
 		const config &filter_defender = (*i->first).child("filter_defender");
 		bool show_result = false;
-		if(up == units.end() && !filter_student && !filter && !filter_attacker && !filter_defender) {
-			show_result = un->abilities_filter_matches(*i->first, attacker, abil_value);
+		if(up == units.end() && !filter && !filter_attacker && !filter_defender) {
+			show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || ability_apply_filter(un, un, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon));
 		} else if(up == units.end() && (filter_student || filter || filter_attacker || filter_defender)) {
 			return {abil_value, false};
 		} else {
