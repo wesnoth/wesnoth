@@ -1693,7 +1693,7 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 		bool show_result = false;
 		if(up == units.end() && !filter && !filter_attacker && !filter_defender) {
 			show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || ability_apply_filter(un, un, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon));
-		} else if(up == units.end() && (filter_student || filter || filter_attacker || filter_defender)) {
+		} else if(up == units.end() && (filter || filter_attacker || filter_defender)) {
 			return {abil_value, false};
 		} else {
 			bool active_on_bool = un->abilities_filter_matches(*i->first, attacker, abil_value);
