@@ -1716,14 +1716,15 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 		const config &filter_attacker = (*i->first).child("filter_attacker");
 		const config &filter_defender = (*i->first).child("filter_defender");
 		bool show_result = false;
+		bool active_on_bool = un->abilities_filter_matches(*i->first, attacker, abil_value);
+		bool weapon_filter = !(un->ability_affects_weapon(*i->first, weapon, false) && un->ability_affects_weapon(*i->first, opp_weapon, true));
+		bool fighter_filter = ability_apply_filter(un, un, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon);
 		if(up == units.end() && !filter && !(filter_attacker && !attacker) && !(filter_defender && attacker)) {
-			show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value)|| ability_apply_filter(un, un, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon));
+			show_result = !(!active_on_bool || fighter_filter || weapon_filter);
 		} else if(up == units.end() && (filter || (filter_attacker && !attacker) || (filter_defender && attacker))) {
 			return {abil_value, false};
 		} else {
-			bool active_on_bool = un->abilities_filter_matches(*i->first, attacker, abil_value);
-			bool fighter_filter = ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon);
-			bool weapon_filter = !(un->ability_affects_weapon(*i->first, weapon, false) && un->ability_affects_weapon(*i->first, opp_weapon, true));
+			fighter_filter = ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon);
 			show_result = !(!active_on_bool || fighter_filter || weapon_filter);
 		}
 
