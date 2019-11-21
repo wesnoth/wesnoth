@@ -33,6 +33,9 @@ function ca_move_to_any_enemy:evaluation(cfg, data)
 
             local x, y = wesnoth.find_vacant_tile(target.x, target.y)
             destination = AH.next_hop(unit, x, y)
+            if (destination[1] == unit.x) and (destination[2] == unit.y) then
+                destination = nil
+            end
 
             if destination then
                 break
