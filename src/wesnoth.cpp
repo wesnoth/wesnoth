@@ -765,13 +765,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 		plugins.play_slice();
 		plugins.play_slice();
 
-		if(cmdline_opts.unit_test) {
-			int worker_result = game->unit_test();
-			std::cerr << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
-					  << ((worker_result == 3) ? "(INVALID REPLAY)" : "")
-					  << ((worker_result == 4) ? "(ERRORED REPLAY)" : "") << ": " << *cmdline_opts.unit_test
-					  << std::endl;
-			return worker_result;
+		if(!cmdline_opts.unit_test.empty()) {
+			return static_cast<int>(game->unit_test());
 		}
 
 		if(game->play_test() == false) {
