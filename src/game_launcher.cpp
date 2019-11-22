@@ -112,7 +112,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	hotkey_manager_(),
 	music_thinker_(),
 	music_muter_(),
-	test_scenario_("test"),
+	test_scenarios_{"test"},
 	screenshot_map_(),
 	screenshot_filename_(),
 	state_(),
@@ -254,14 +254,11 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	if (cmdline_opts_.test)
 	{
 		if (!cmdline_opts_.test->empty())
-			test_scenario_ = *cmdline_opts_.test;
+			test_scenarios_ = {*cmdline_opts_.test};
 	}
-	if (cmdline_opts_.unit_test)
+	if (!cmdline_opts_.unit_test.empty())
 	{
-		if (!cmdline_opts_.unit_test->empty()) {
-			test_scenario_ = *cmdline_opts_.unit_test;
-		}
-
+		test_scenarios_ = cmdline_opts_.unit_test;
 	}
 	if (cmdline_opts_.windowed)
 		video().set_fullscreen(false);
@@ -454,6 +451,9 @@ void game_launcher::set_test(const std::string& id)
 
 bool game_launcher::play_test()
 {
+	// This first_time variable was added in 70f3c80a3e2 so that using the GUI
+	// menu to load a game works. That seems to have edge-cases, for example if
+	// you try to load a game a second time then Wesnoth exits.
 	static bool first_time = true;
 
 	if(!cmdline_opts_.test) {
@@ -464,8 +464,15 @@ bool game_launcher::play_test()
 
 	first_time = false;
 
-	set_test(test_scenario_);
-	state_.classification().campaign_define = "TEST";
+	if(test_scenarios_.size() == 0) {
+		// shouldn't happen, as test_scenarios_ is initialised to {"test"}
+		std::cerr << "Error in the test handling code" << std::endl;
+		return false;
+	}
+	if(test_scenarios_.size() > 1) {
+		std::cerr << "You can't run more than one unit test in interactive mode" << std::endl;
+	}
+	set_test(test_scenarios_.at(0));
 
 	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());
@@ -481,26 +488,51 @@ bool game_launcher::play_test()
 	return false;
 }
 
+/**
+ * Runs unit tests specified on the command line.
+ *
+ * If multiple unit tests were specified, then this will stop at the first test
+ * which returns a non-zero status.
+ */
 // Same as play_test except that we return the results of play_game.
-int game_launcher::unit_test()
+// \todo "same ... except" ... and many other changes, such as testing the replay
+game_launcher::unit_test_result game_launcher::unit_test()
 {
-	static bool first_time_unit = true;
-
-	if(!cmdline_opts_.unit_test) {
-		return 0;
+	// There's no copy of play_test's first_time variable. That seems to be for handling
+	// the player loading a game via the GUI, which makes no sense in a non-interactive test.
+	if(cmdline_opts_.unit_test.empty()) {
+		return unit_test_result::TEST_FAIL;
 	}
-	if(!first_time_unit)
-		return 0;
 
-	first_time_unit = false;
+	auto ret = unit_test_result::TEST_FAIL; // will only be returned if no test is run
+	for(const auto& scenario : test_scenarios_) {
+		set_test(scenario);
+		ret = single_unit_test();
+		const char* describe_result;
+		switch(ret) {
+			case unit_test_result::TEST_PASS:
+				describe_result = "PASS TEST";
+				break;
+			case unit_test_result::TEST_FAIL_LOADING_REPLAY:
+				describe_result = "FAIL TEST (INVALID REPLAY)";
+				break;
+			case unit_test_result::TEST_FAIL_PLAYING_REPLAY:
+				describe_result = "FAIL TEST (ERRORED REPLAY)";
+				break;
+			default:
+				describe_result = "FAIL TEST";
+				break;
+		}
+		std::cerr << describe_result << ": " << scenario << std::endl;
+		if (ret != unit_test_result::TEST_PASS) {
+			break;
+		}
+	}
+	return ret;
+}
 
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
-	state_.classification().campaign_define = "TEST";
-	state_.set_carryover_sides_start(
-		config {"next_scenario", test_scenario_}
-	);
-
-
+game_launcher::unit_test_result game_launcher::single_unit_test()
+{
 	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());
 
@@ -508,17 +540,17 @@ int game_launcher::unit_test()
 		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types(), true);
 		LEVEL_RESULT res = ccontroller.play_game();
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
-			return 1;
+			return unit_test_result::TEST_FAIL;
 		}
 	} catch(const wml_exception& e) {
 		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl;
-		return 1;
+		return unit_test_result::TEST_FAIL;
 	}
 
 	savegame::clean_saves(state_.classification().label);
 
 	if (cmdline_opts_.noreplaycheck)
-		return 0; //we passed, huzzah!
+		return unit_test_result::TEST_PASS; //we passed, huzzah!
 
 	savegame::replay_savegame save(state_, compression::NONE);
 	save.save_game_automatic(false, "unit_test_replay"); //false means don't check for overwrite
@@ -527,7 +559,7 @@ int game_launcher::unit_test()
 
 	if (!load_game()) {
 		std::cerr << "Failed to load the replay!" << std::endl;
-		return 3; //failed to load replay
+		return unit_test_result::TEST_FAIL_LOADING_REPLAY; //failed to load replay
 	}
 
 	try {
@@ -535,14 +567,14 @@ int game_launcher::unit_test()
 		LEVEL_RESULT res = ccontroller.play_replay();
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			std::cerr << "Observed failure on replay" << std::endl;
-			return 4;
+			return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 		}
 	} catch(const wml_exception& e) {
 		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl;
-		return 4; //failed with an error during the replay
+		return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 	}
 
-	return 0; //we passed, huzzah!
+	return unit_test_result::TEST_PASS; //we passed, huzzah!
 }
 
 bool game_launcher::play_screenshot_mode()
