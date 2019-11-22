@@ -54,7 +54,12 @@ function ca_attack_highxp:evaluation(cfg, data, filter_own)
     -- but it is much faster than path finding, so it is done for preselection.
     local target_infos = {}
     for i_t,enemy in ipairs(attacks_aspect.enemy) do
-        if AH.is_attackable_enemy(enemy) then
+        local enemy_can_advance = true
+        if (not enemy.advances_to[1]) and (not wml.get_child(enemy.__cfg, 'advancement')) then
+            enemy_can_advance = false
+        end
+
+        if enemy_can_advance and AH.is_attackable_enemy(enemy) then
             local XP_to_levelup = enemy.max_experience - enemy.experience
             if (max_unit_level * wesnoth.game_config.combat_experience >= XP_to_levelup) then
                 local potential_target = false
