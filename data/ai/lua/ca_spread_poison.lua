@@ -7,7 +7,7 @@ local SP_attack
 
 local ca_spread_poison = {}
 
-function ca_spread_poison:evaluation(cfg, data)
+function ca_spread_poison:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'spread_poison'
     if AH.print_eval() then AH.print_ts('     - Evaluating spread_poison CA:') end
 
@@ -21,7 +21,8 @@ function ca_spread_poison:evaluation(cfg, data)
                 } }
             } }
         } },
-        canrecruit = 'no'
+        canrecruit = 'no',
+        { "and", filter_own }
     }
     if (not poisoners[1]) then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end

@@ -6,7 +6,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local ca_village_hunt = {}
 
-function ca_village_hunt:evaluation(cfg, data)
+function ca_village_hunt:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'village_hunt'
     if AH.print_eval() then AH.print_ts('     - Evaluating village_hunt CA:') end
 
@@ -30,7 +30,11 @@ function ca_village_hunt:evaluation(cfg, data)
         return 0
     end
 
-    local units = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)
+    local units = AH.get_units_with_moves({
+        side = wesnoth.current.side,
+        canrecruit = 'no',
+        { "and", filter_own }
+    }, true)
 
     if not units[1] then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
@@ -41,8 +45,12 @@ function ca_village_hunt:evaluation(cfg, data)
     return 30000
 end
 
-function ca_village_hunt:execution(cfg, data)
-    local unit = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)[1]
+function ca_village_hunt:execution(cfg, data, filter_own)
+    local unit = AH.get_units_with_moves({
+        side = wesnoth.current.side,
+        canrecruit = 'no',
+        { "and", filter_own }
+    }, true)[1]
 
     if AH.print_exec() then AH.print_ts('   Executing village_hunt CA') end
 

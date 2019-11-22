@@ -439,7 +439,8 @@ public:
 	{
 		this->valid_lua_ = true;
 		this->value_lua_.reset(new lua_object<T>);
-		handler_->handle(params_, true, this->value_lua_);
+		const config empty_cfg;
+		handler_->handle(params_, empty_cfg, true, this->value_lua_);
 	}
 
 	config to_config() const

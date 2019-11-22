@@ -9,13 +9,14 @@ local MTAE_unit, MTAE_destination
 
 local ca_move_to_any_enemy = {}
 
-function ca_move_to_any_enemy:evaluation(cfg, data)
+function ca_move_to_any_enemy:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'move_to_any_enemy'
     if AH.print_eval() then AH.print_ts('     - Evaluating move_to_any_enemy CA:') end
 
     local units = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        canrecruit = 'no'
+        canrecruit = 'no',
+        { "and", filter_own }
     }
 
     if (not units[1]) then
@@ -33,6 +34,9 @@ function ca_move_to_any_enemy:evaluation(cfg, data)
 
             local x, y = wesnoth.find_vacant_tile(target.x, target.y)
             destination = AH.next_hop(unit, x, y)
+            if (destination[1] == unit.x) and (destination[2] == unit.y) then
+                destination = nil
+            end
 
             if destination then
                 break

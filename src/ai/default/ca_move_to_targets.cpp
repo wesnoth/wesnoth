@@ -290,7 +290,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 	//now find the first eligible remaining unit
 	for(u = units_.begin(); u != units_.end(); ++u) {
-		if (!(u->side() != get_side() || (u->can_recruit() && !get_leader_ignores_keep()) || u->movement_left() <= 0 || u->incapacitated())) {
+		if (!(u->side() != get_side() || (u->can_recruit() && !get_leader_ignores_keep()) || u->movement_left() <= 0 || u->incapacitated() || !is_allowed_unit(*u))) {
 			break;
 		}
 	}
@@ -393,7 +393,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		for(++u; u != units_.end(); ++u) {
 			if (u->side() != get_side() || (u->can_recruit() && !get_leader_ignores_keep()) ||
 			    u->movement_left() <= 0 || u->get_state("guardian") ||
-			    u->incapacitated())
+			    u->incapacitated() || !is_allowed_unit(*u))
 			{
 				continue;
 			}

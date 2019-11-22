@@ -439,7 +439,8 @@ aspect_attacks_lua::aspect_attacks_lua(readonly_context &context, const config &
 void aspect_attacks_lua::recalculate() const
 {
 	obj_.reset(new lua_object<aspect_attacks_lua_filter>);
-	handler_->handle(params_, true, obj_);
+	const config empty_cfg;
+	handler_->handle(params_, empty_cfg, true, obj_);
 	aspect_attacks_lua_filter filt = *obj_->get();
 	aspect_attacks_base::recalculate();
 	if(filt.lua) {
