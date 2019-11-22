@@ -1572,7 +1572,9 @@ int under_leadership(const unit &u, const map_location& loc, const_attack_ptr we
 {
 	unit_ability_list abil = u.get_abilities("leadership", loc);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-		if(!u.ability_affects_weapon(*i->first, weapon, false) || !u.ability_affects_weapon(*i->first, opp_weapon, true)) {
+		bool affect_weapon = !u.ability_affects_weapon(*i->first, weapon, false) || !u.ability_affects_weapon(*i->first, opp_weapon, true);
+		bool filter_student = !u.ability_filter_fighter("leadership", "filter_student" , *i->first, loc, weapon);
+		if(affect_weapon || filter_student) {
 			i = abil.erase(i);
 		} else {
 			++i;
