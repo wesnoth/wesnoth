@@ -8,12 +8,16 @@ local GV_unit, GV_village
 
 local ca_grab_villages = {}
 
-function ca_grab_villages:evaluation(cfg, data)
+function ca_grab_villages:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'grab_villages'
     if AH.print_eval() then AH.print_ts('     - Evaluating grab_villages CA:') end
 
     -- Check if there are units with moves left
-    local units = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)
+    local units = AH.get_units_with_moves({
+        side = wesnoth.current.side,
+        canrecruit = 'no',
+        { "and", filter_own }
+    }, true)
     if (not units[1]) then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
         return 0

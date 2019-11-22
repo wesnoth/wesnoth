@@ -7,11 +7,14 @@ local retreat_unit, retreat_loc
 
 local ca_retreat_injured = {}
 
-function ca_retreat_injured:evaluation(cfg, data)
+function ca_retreat_injured:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'retreat_injured'
     if AH.print_eval() then AH.print_ts('     - Evaluating retreat_injured CA:') end
 
-    local units = AH.get_units_with_moves({ side = wesnoth.current.side }, true)
+    local units = AH.get_units_with_moves({
+        side = wesnoth.current.side,
+        { "and", filter_own }
+    }, true)
     local unit, loc = R.retreat_injured_units(units)
     if unit then
         retreat_unit = unit
