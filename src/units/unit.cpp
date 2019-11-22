@@ -1683,7 +1683,9 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 
 	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
 	for(unit_ability_list::iterator i = resistance_abilities.begin(); i != resistance_abilities.end();) {
-		if(!resistance_filter_matches(*i->first, attacker, damage_name, 100-res) || !(ability_affects_weapon(*i->first, weapon, false) && ability_affects_weapon(*i->first, opp_weapon, true))) {
+		bool affect_weapon = !ability_affects_weapon(*i->first, weapon, false) || !ability_affects_weapon(*i->first, opp_weapon, true);
+		bool filter_student = !ability_filter_fighter("resistance", "filter_student" , *i->first, loc, weapon);
+		if(!resistance_filter_matches(*i->first, attacker, damage_name, 100-res) || affect_weapon || filter_student) {
 			i = resistance_abilities.erase(i);
 		} else {
 			++i;
