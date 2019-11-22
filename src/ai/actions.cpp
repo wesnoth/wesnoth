@@ -423,7 +423,7 @@ void move_result::do_check_after()
 	}
 
 	if (!unreach_is_ok_ && unit_location_!=to_) {
-		set_error(E_NOT_REACHED_DESTINATION);
+		DBG_AI_ACTIONS << "Unit did not reach destination in " << do_describe(); //Demotes to DBG "not reached destination" warning
 		return;
 	}
 }
@@ -1086,7 +1086,6 @@ const std::string& actions::get_error_name(int error_code)
 		error_names_.emplace(move_result::E_INCAPACITATED_UNIT, "move_result::E_INCAPACITATED_UNIT");
 		error_names_.emplace(move_result::E_AMBUSHED, "move_result::E_AMBUSHED");
 		error_names_.emplace(move_result::E_FAILED_TELEPORT, "move_result::E_FAILED_TELEPORT");
-		error_names_.emplace(move_result::E_NOT_REACHED_DESTINATION, "move_result::E_NOT_REACHED_DESTINATION");
 		error_names_.emplace(move_result::E_NO_ROUTE, "move_result::E_NO_ROUTE");
 
 		error_names_.emplace(recall_result::E_NOT_AVAILABLE_FOR_RECALLING, "recall_result::E_NOT_AVAILABLE_FOR_RECALLING");
