@@ -712,12 +712,12 @@ config readonly_context_impl::get_leader_goal() const
 }
 
 
-bool readonly_context_impl::get_leader_ignores_keep() const
+std::string readonly_context_impl::get_leader_ignores_keep() const
 {
 	if (leader_ignores_keep_) {
 		return leader_ignores_keep_->get();
 	}
-	return false;
+	return std::string();
 }
 
 
@@ -1275,6 +1275,28 @@ bool readonly_context_impl::is_active(const std::string &time_of_day, const std:
 			return false;
 		}
 		return true;
+}
+
+bool readonly_context_impl::applies_to_leader(const std::string &aspect_value, const std::string &id) const
+{
+		if(aspect_value == "yes") {
+			return true;
+		}
+		if(aspect_value == "no") {
+			return false;
+		}
+		std::vector<std::string> aspect_ids = utils::split(aspect_value);
+		for(std::vector<std::string>::const_iterator aspect_id = aspect_ids.begin(); aspect_id != aspect_ids.end() ; ++aspect_id ) {
+			if(*aspect_id == id) {
+				return true;
+			}
+		}
+		return false;
+}
+
+bool readonly_context_impl::is_keep_ignoring_leader(const std::string &id) const
+{
+		return applies_to_leader(leader_ignores_keep_->get(), id);
 }
 
 } //of namespace ai

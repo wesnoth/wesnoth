@@ -276,7 +276,7 @@ public:
 	virtual config get_leader_goal() const = 0;
 
 
-	virtual bool get_leader_ignores_keep() const = 0;
+	virtual std::string get_leader_ignores_keep() const = 0;
 
 
 	virtual double get_leader_value() const = 0;
@@ -329,6 +329,8 @@ public:
 
 
 	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const = 0;
+
+	virtual bool is_keep_ignoring_leader(const std::string &id) const = 0;
 
 	virtual bool is_dst_src_valid_lua() const = 0;
 
@@ -752,7 +754,7 @@ public:
 	}
 
 
-	virtual bool get_leader_ignores_keep() const override
+	virtual std::string get_leader_ignores_keep() const override
 	{
 		return target_->get_leader_ignores_keep();
 	}
@@ -864,6 +866,11 @@ public:
 	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const override
 	{
 		return target_->is_active(time_of_day, turns);
+	}
+
+	virtual bool is_keep_ignoring_leader(const std::string &id) const override
+	{
+		return target_->is_keep_ignoring_leader(id);
 	}
 
 	virtual bool is_dst_src_valid_lua() const override
@@ -1351,7 +1358,7 @@ public:
 	virtual config get_leader_goal() const override;
 
 
-	virtual bool get_leader_ignores_keep() const override;
+	virtual std::string get_leader_ignores_keep() const override;
 
 
 	virtual double get_leader_value() const override;
@@ -1403,6 +1410,8 @@ public:
 
 
 	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const override;
+
+	virtual bool is_keep_ignoring_leader(const std::string &id) const override;
 
 	virtual bool is_dst_src_valid_lua() const override;
 
@@ -1467,6 +1476,8 @@ private:
 	template<typename T>
 	void add_known_aspect(const std::string &name, typesafe_aspect_ptr<T>& where);
 
+	bool applies_to_leader(const std::string &aspect_value, const std::string &id) const;
+
 	const config cfg_;
 
 	/**
@@ -1492,7 +1503,7 @@ private:
 	mutable keeps_cache keeps_;
 	typesafe_aspect_ptr<double> leader_aggression_;
 	typesafe_aspect_ptr<config> leader_goal_;
-	typesafe_aspect_ptr<bool> leader_ignores_keep_;
+	typesafe_aspect_ptr<std::string> leader_ignores_keep_;
 	typesafe_aspect_ptr<double> leader_value_;
 	mutable bool move_maps_enemy_valid_;
 	mutable bool move_maps_valid_;

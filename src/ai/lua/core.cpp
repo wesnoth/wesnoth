@@ -438,8 +438,8 @@ static int cfun_ai_get_leader_goal(lua_State *L)
 static int cfun_ai_get_leader_ignores_keep(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("leader_ignores_keep");
-	bool leader_ignores_keep = get_readonly_context(L).get_leader_ignores_keep();
-	lua_pushboolean(L, leader_ignores_keep);
+	std::string leader_ignores_keep = get_readonly_context(L).get_leader_ignores_keep();
+	lua_pushstring(L, leader_ignores_keep.c_str());
 	return 1;
 }
 

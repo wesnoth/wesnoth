@@ -206,7 +206,7 @@ static register_aspect_factory< composite_aspect<double>>
 static register_aspect_factory< composite_aspect<config>>
 	leader_goal__composite_aspect_factory("leader_goal*composite_aspect");
 
-static register_aspect_factory< composite_aspect<bool>>
+static register_aspect_factory< composite_aspect<std::string>>
 	leader_igores_keep__composite_aspect_factory("leader_ignores_keep*composite_aspect");
 
 static register_aspect_factory< composite_aspect<double>>
@@ -277,7 +277,7 @@ static register_aspect_factory< standard_aspect<double>>
 static register_aspect_factory< standard_aspect<config>>
 	leader_goal__standard_aspect_factory("leader_goal*standard_aspect");
 
-static register_aspect_factory< standard_aspect<bool>>
+static register_aspect_factory< standard_aspect<std::string>>
 	leader_ignores_keep__standard_aspect_factory("leader_ignores_keep*standard_aspect");
 
 static register_aspect_factory< standard_aspect<double>>
@@ -352,7 +352,7 @@ static register_aspect_factory< standard_aspect<double>>
 static register_aspect_factory< standard_aspect<config>>
 	leader_goal__standard_aspect_factory2("leader_goal*");
 
-static register_aspect_factory< standard_aspect<bool>>
+static register_aspect_factory< standard_aspect<std::string>>
 	leader_ignores_keep__standard_aspect_factory2("leader_ignores_keep*");
 
 static register_aspect_factory< standard_aspect<double>>
@@ -423,7 +423,7 @@ static register_lua_aspect_factory< lua_aspect<double>>
 static register_lua_aspect_factory< lua_aspect<config>>
 	leader_goal__lua_aspect_factory("leader_goal*lua_aspect");
 
-static register_lua_aspect_factory< lua_aspect<bool>>
+static register_lua_aspect_factory< lua_aspect<std::string>>
 	leader_ignores_keep__lua_aspect_factory("leader_ignores_keep*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<double>>

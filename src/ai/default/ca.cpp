@@ -407,7 +407,7 @@ move_leader_to_keep_phase::~move_leader_to_keep_phase()
 
 double move_leader_to_keep_phase::evaluate()
 {
-	if (get_leader_ignores_keep()) {
+	if (is_keep_ignoring_leader("")) {
 		return BAD_SCORE;
 	}
 	if (get_passive_leader() && !get_passive_leader_shares_keep()) {
@@ -434,7 +434,7 @@ double move_leader_to_keep_phase::evaluate()
 	int shortest_distance = 99999;
 
 	for (const unit_map::const_iterator& leader : leaders) {
-		if (leader->incapacitated() || leader->movement_left() == 0 || !is_allowed_unit(*leader)) {
+		if (leader->incapacitated() || leader->movement_left() == 0 || !is_allowed_unit(*leader) || is_keep_ignoring_leader(leader->id())) {
 			continue;
 		}
 

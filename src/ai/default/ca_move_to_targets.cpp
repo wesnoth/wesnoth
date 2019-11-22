@@ -280,7 +280,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 	//take care of all the guardians first
 	for(u = units_.begin(); u != units_.end(); ++u) {
-		if (!(u->side() != get_side() || (u->can_recruit() && !get_leader_ignores_keep()) || u->movement_left() <= 0 || u->incapacitated())) {
+		if (!(u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) || u->movement_left() <= 0 || u->incapacitated())) {
 			if (u->get_state("guardian")) {
 				LOG_AI << u->type_id() << " is guardian, staying still\n";
 				return std::make_pair(u->get_location(), u->get_location());
@@ -290,7 +290,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 	//now find the first eligible remaining unit
 	for(u = units_.begin(); u != units_.end(); ++u) {
-		if (!(u->side() != get_side() || (u->can_recruit() && !get_leader_ignores_keep()) || u->movement_left() <= 0 || u->incapacitated() || !is_allowed_unit(*u))) {
+		if (!(u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) || u->movement_left() <= 0 || u->incapacitated() || !is_allowed_unit(*u))) {
 			break;
 		}
 	}
@@ -391,7 +391,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		LOG_AI << "complex targeting...\n";
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
-			if (u->side() != get_side() || (u->can_recruit() && !get_leader_ignores_keep()) ||
+			if (u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) ||
 			    u->movement_left() <= 0 || u->get_state("guardian") ||
 			    u->incapacitated() || !is_allowed_unit(*u))
 			{
@@ -694,7 +694,7 @@ map_location move_to_targets_phase::form_group(const std::vector<map_location>& 
 				++n;
 			} else {
 				const unit_map::const_iterator un = units_.find(j->second);
-				if(un == units_.end() || (un->can_recruit() && !get_leader_ignores_keep()) || un->movement_left() < un->total_movement()) {
+				if(un == units_.end() || (un->can_recruit() && !is_keep_ignoring_leader(un->id())) || un->movement_left() < un->total_movement()) {
 					continue;
 				}
 
