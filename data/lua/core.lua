@@ -202,6 +202,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		-- Don't clobber the old metatable.
 		local old_mt = getmetatable(elem) or {}
 		if type(old_mt) ~= "table" then
+			-- See https://github.com/wesnoth/wesnoth/issues/4584#issuecomment-555788446
 			wesnoth.log('warn', "Attempted to deprecate a table with a masked metatable: " ..
 				elem_name .. " -> " .. replacement .. ", where getmetatable(" .. elem_name .. ") = " .. tostring(old_mt))
 			return elem
