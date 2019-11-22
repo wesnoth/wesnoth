@@ -80,7 +80,7 @@ double goto_phase::evaluate()
 	for(std::vector<map_location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
 		unit_map::const_iterator ui = units_.find(*g);
 		// passive_leader: never moves or attacks
-		if(ui->can_recruit() && get_passive_leader() && !get_passive_leader_shares_keep()){
+		if(ui->can_recruit() && get_passive_leader()){
 			continue;
 		}
 		// end of passive_leader

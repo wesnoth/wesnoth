@@ -1149,7 +1149,7 @@ void readonly_context_impl::recalculate_move_maps() const
 	possible_moves_ = moves_map();
 	srcdst_ = move_map();
 	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
-	if (get_passive_leader()||get_passive_leader_shares_keep()) {
+	if (get_passive_leader() && !get_passive_leader_shares_keep()) {
 		unit_map::iterator i = resources::gameboard->units().find_leader(get_side());
 		if (i.valid()) {
 			map_location loc = i->get_location();
