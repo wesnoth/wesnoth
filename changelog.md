@@ -1,6 +1,8 @@
 ## Version 1.15.2+dev
  ### AI:
  ### Campaigns
+   * An Orcish Incursion:
+     * Moved to addons server
    * Descent into Darkness:
      * Add new portrait for Dela Keshar
      * Remove dark adepts from recruit list
