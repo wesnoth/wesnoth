@@ -782,6 +782,8 @@ static int impl_ai_aspect_get(lua_State* L)
 		lua_pushinteger(L, aspect_as_int->get());
 	} else if(typesafe_aspect<double>* aspect_as_double = try_aspect_as<double>(iter->second)) {
 		lua_pushnumber(L, aspect_as_double->get());
+	} else if(typesafe_aspect<std::string>* aspect_as_string = try_aspect_as<std::string>(iter->second)) {
+		lua_pushstring(L, aspect_as_string->get().c_str());
 	} else if(typesafe_aspect<config>* aspect_as_config = try_aspect_as<config>(iter->second)) {
 		luaW_pushconfig(L, aspect_as_config->get());
 	} else if(typesafe_aspect<string_list>* aspect_as_string_list = try_aspect_as<string_list>(iter->second)) {
