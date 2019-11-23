@@ -185,7 +185,7 @@ function wml_actions.objectives(cfg)
 		cfg = wml.parsed(cfg)
 	end
 
-	local sides_cfg = wesnoth.get_sides(cfg)
+	local sides_cfg = wesnoth.sides.find(cfg)
 	local silent = cfg.silent
 
 	local objectives = generate_objectives(cfg)
@@ -226,7 +226,7 @@ function wml_actions.show_objectives(cfg)
 			team.objectives_changed = true
 		end
 	end
-	local sides = wesnoth.get_sides(cfg)
+	local sides = wesnoth.sides.find(cfg)
 	if #sides == 0 then
 		local_show_objectives(wesnoth.sides)
 	else

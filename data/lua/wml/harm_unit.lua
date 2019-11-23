@@ -168,7 +168,7 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			if experience ~= false and harmer and harmer.valid
-				and wesnoth.is_enemy( unit_to_harm.side, harmer.side )
+				and wesnoth.sides.is_enemy( unit_to_harm.side, harmer.side )
 			then
 				if kill ~= false and unit_to_harm.hitpoints <= 0 then
 					harmer.experience = harmer.experience + calc_xp( unit_to_harm.__cfg.level )

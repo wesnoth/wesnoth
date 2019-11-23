@@ -65,7 +65,7 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
         if (not owner) then
             village_rating = village_rating + 10000
         else
-            if wesnoth.is_enemy(owner, wesnoth.current.side) then village_rating = village_rating + 20000 end
+            if wesnoth.sides.is_enemy(owner, wesnoth.current.side) then village_rating = village_rating + 20000 end
         end
 
         local village_closest_enemy, enemy_distance_from_village = AH.get_closest_enemy(v)

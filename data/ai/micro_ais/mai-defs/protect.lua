@@ -23,7 +23,7 @@ function wesnoth.micro_ais.protect_unit(cfg)
 	-- Optional key disable_move_leader_to_keep: needs to be dealt with
 	-- separately as it affects a default CA
 	if cfg.disable_move_leader_to_keep then
-		wesnoth.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[move_leader_to_keep]")
+		wesnoth.sides.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[move_leader_to_keep]")
 	end
 
 	-- attacks aspects also needs to be set separately
@@ -47,7 +47,7 @@ function wesnoth.micro_ais.protect_unit(cfg)
 		MAIH.delete_aspects(cfg.side, aspect_parms)
 		-- We also need to add the move_leader_to_keep CA back in
 		-- This works even if it was not removed, it simply overwrites the existing CA
-		wesnoth.add_ai_component(side, "stage[main_loop].candidate_action",
+		wesnoth.side.add_ai_component(side, "stage[main_loop].candidate_action",
 			{
 				id="move_leader_to_keep",
 				engine="cpp",

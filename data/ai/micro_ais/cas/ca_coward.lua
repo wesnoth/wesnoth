@@ -99,7 +99,7 @@ function ca_coward:execution(cfg)
         local max_rating, best_target = - math.huge
         for xa,ya in H.adjacent_tiles(coward.x, coward.y) do
             local target = wesnoth.units.get(xa, ya)
-            if target and wesnoth.is_enemy(coward.side, target.side) then
+            if target and wesnoth.sides.is_enemy(coward.side, target.side) then
                 local rating = - target.hitpoints
 
                 if (rating > max_rating) then

@@ -159,7 +159,7 @@ function ca_goto:execution(cfg, data)
                     local enemy_at_goal
                     if cfg.ignore_enemy_at_goal then
                         enemy_at_goal = wesnoth.units.get(loc[1], loc[2])
-                        if enemy_at_goal and wesnoth.is_enemy(wesnoth.current.side, enemy_at_goal.side) then
+                        if enemy_at_goal and wesnoth.sides.is_enemy(wesnoth.current.side, enemy_at_goal.side) then
                              enemy_at_goal:extract()
                         else
                             enemy_at_goal = nil

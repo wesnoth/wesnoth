@@ -7,7 +7,7 @@ local recruitedType
 local recruitCost
 
 local zombies = V.zombies
-local sides = wesnoth.get_sides()
+local sides = wesnoth.sides.find()
 
 local unit_row = T.row {
     T.column { grow_factor=0, border="right", border_size=5, horizontal_alignment = "left", T.image { id = "unit_sprite" } },

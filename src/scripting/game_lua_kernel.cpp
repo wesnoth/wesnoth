@@ -3508,7 +3508,7 @@ static int intf_modify_ai_old(lua_State *L)
 	config cfg;
 	luaW_toconfig(L, 1, cfg);
 	int side = cfg["side"];
-	deprecated_message("wesnoth.modify_ai", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use wesnoth.add_ai_component, wesnoth.delete_ai_component, or wesnoth.change_ai_component.");
+	deprecated_message("wesnoth.modify_ai", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use wesnoth.sides.add_ai_component, wesnoth.sides.delete_ai_component, or wesnoth.sides.change_ai_component.");
 	ai::manager::get_singleton().modify_active_ai_for_side(side, cfg);
 	return 0;
 }

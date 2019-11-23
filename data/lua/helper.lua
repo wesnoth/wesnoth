@@ -10,7 +10,7 @@ function helper.get_sides(cfg)
 		local i = s.i
 		while i < #wesnoth.sides do
 			i = i + 1
-			if wesnoth.match_side(i, cfg) then
+			if wesnoth.sides.matches(i, cfg) then
 				s.i = i
 				return wesnoth.sides[i], i
 			end

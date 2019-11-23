@@ -15,11 +15,11 @@ function wesnoth.wml_actions.modify_ai(cfg)
 		end
 		component = wml.parsed(component)
 	end
-	for i = 1, #sides do
+	for _, side in ipairs(sides) do
 		if cfg.action == "add" then
-			wesnoth.add_ai_component(sides[i].side, cfg.path, component)
+			side:add_ai_component(cfg.path, component)
 		elseif cfg.action == "delete" or cfg.action == "try_delete" then
-			wesnoth.delete_ai_component(sides[i].side, cfg.path)
+			side:delete_ai_component(cfg.path)
 		elseif cfg.action == "change" then
 			local id_start = final + 2
 			local id_final = string.len(cfg.path) - 1
@@ -29,7 +29,7 @@ function wesnoth.wml_actions.modify_ai(cfg)
 			elseif not component.id and not id:match("[0-9]+") then
 				component.id = id
 			end
-			wesnoth.change_ai_component(sides[i].side, cfg.path, component)
+			side:change_ai_component(cfg.path, component)
 		end
 	end
 end

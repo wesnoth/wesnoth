@@ -304,7 +304,7 @@ return {
                 -- positive only because it is used to estimate the number of enemy units that could appear
                 -- and negative numbers shouldn't subtract from the number of units on the map
                 local gold = 0
-                local sides = wesnoth.get_sides(side_filter)
+                local sides = wesnoth.sides.find(side_filter)
                 for i,s in ipairs(sides) do
                     if s.gold > 0 then
                         gold = gold + s.gold
@@ -410,7 +410,7 @@ return {
                 add_unit_type(unit.type)
             end
             -- Collect all possible enemy recruits and count them as virtual enemies
-            local enemy_sides = wesnoth.get_sides({
+            local enemy_sides = wesnoth.sides.find({
                 { "enemy_of", {side = wesnoth.current.side} },
                 { "has_unit", { canrecruit = true }} })
             for i, side in ipairs(enemy_sides) do
@@ -680,7 +680,7 @@ return {
             -- If no enemy is on the map, then we first use closest enemy start hex,
             -- and if that does not exist either, a location mirrored w.r.t the center of the map
             if not enemy_location then
-                local enemy_sides = wesnoth.get_sides({ { "enemy_of", {side = wesnoth.current.side} } })
+                local enemy_sides = wesnoth.sides.find({ { "enemy_of", {side = wesnoth.current.side} } })
                 local min_dist = math.huge
                 for _, side in ipairs(enemy_sides) do
                     local enemy_start_hex = wesnoth.special_locations[side.side]
@@ -909,7 +909,7 @@ return {
             local villages = {}
             for _,v in ipairs(all_villages) do
                 local owner = wesnoth.get_village_owner(v[1], v[2])
-                if ((not owner) or wesnoth.is_enemy(owner, wesnoth.current.side))
+                if ((not owner) or wesnoth.sides.is_enemy(owner, wesnoth.current.side))
                     and (not exclude_map:get(v[1], v[2]))
                 then
                     for _,loc in ipairs(data.castle.locs) do

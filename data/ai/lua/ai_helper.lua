@@ -1171,7 +1171,7 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     local enemies = {}
     local all_units = wesnoth.units.find_on_map()
     for _,unit in ipairs(all_units) do
-        if wesnoth.is_enemy(side, unit.side)
+        if wesnoth.sides.is_enemy(side, unit.side)
            and (not unit.status.petrified)
            and unit:matches(filter_plus_vision)
         then
@@ -1195,7 +1195,7 @@ function ai_helper.is_attackable_enemy(unit, side, cfg)
     local viewing_side = cfg and cfg.viewing_side or side
 
     if (not unit)
-        or (not wesnoth.is_enemy(side, unit.side))
+        or (not wesnoth.sides.is_enemy(side, unit.side))
         or unit.status.petrified
         or (not ai_helper.is_visible_unit(viewing_side, unit))
     then

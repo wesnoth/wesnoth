@@ -58,7 +58,7 @@ function wml_actions.sync_variable(cfg)
 end
 
 function wml_actions.chat(cfg)
-	local side_list = wesnoth.get_sides(cfg)
+	local side_list = wesnoth.sides.find(cfg)
 	local speaker = tostring(cfg.speaker or "WML")
 	local message = tostring(cfg.message or
 		helper.wml_error "[chat] missing required message= attribute."
@@ -74,7 +74,7 @@ function wml_actions.chat(cfg)
 	local observable = cfg.observable ~= false
 
 	if observable then
-		local all_sides = wesnoth.get_sides()
+		local all_sides = wesnoth.sides.find()
 		local has_human_side = false
 		for index, side in ipairs(all_sides) do
 			if side.controller == "human" and side.is_local then
@@ -92,7 +92,7 @@ end
 function wml_actions.gold(cfg)
 	local amount = tonumber(cfg.amount) or
 		helper.wml_error "[gold] missing required amount= attribute."
-	local sides = wesnoth.get_sides(cfg)
+	local sides = wesnoth.sides.find(cfg)
 	for index, team in ipairs(sides) do
 		team.gold = team.gold + amount
 	end
@@ -101,7 +101,7 @@ end
 --note: This tag can't easily (without deprecation) be extended to store an array,
 --since the gold is stored in a scalar variable, not a container (there's no key).
 function wml_actions.store_gold(cfg)
-	local team = wesnoth.get_sides(cfg)[1]
+	local team = wesnoth.sides.find(cfg)[1]
 	if team then wml.variables[cfg.variable or "gold"] = team.gold end
 end
 
@@ -157,7 +157,7 @@ end
 
 function wml_actions.allow_recruit(cfg)
 	local unit_types = cfg.type or helper.wml_error("[allow_recruit] missing required type= attribute")
-	for index, team in ipairs(wesnoth.get_sides(cfg)) do
+	for index, team in ipairs(wesnoth.sides.find(cfg)) do
 		local v = team.recruit
 		for type in utils.split(unit_types) do
 			table.insert(v, type)
@@ -181,7 +181,7 @@ end
 
 function wml_actions.disallow_recruit(cfg)
 	local unit_types = cfg.type
-	for index, team in ipairs(wesnoth.get_sides(cfg)) do
+	for index, team in ipairs(wesnoth.sides.find(cfg)) do
 		if unit_types then
 			local v = team.recruit
 			for w in utils.split(unit_types) do
@@ -217,7 +217,7 @@ end
 
 function wml_actions.set_recruit(cfg)
 	local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
-	for index, team in ipairs(wesnoth.get_sides(cfg)) do
+	for index, team in ipairs(wesnoth.sides.find(cfg)) do
 		local v = {}
 		for w in utils.split(recruit) do
 			table.insert(v, w)
@@ -505,7 +505,7 @@ function wml_actions.capture_village(cfg)
 	if side then side = tonumber(side) or helper.wml_error("invalid side in [capture_village]") end
 	if filter_side then
 		if side then helper.wml_error("duplicate side information in [capture_village]") end
-		side = wesnoth.get_sides(filter_side)[1]
+		side = wesnoth.sides.find(filter_side)[1]
 		if side then side = side.side end
 	end
 	local locs = wesnoth.get_locations(cfg)
@@ -654,8 +654,8 @@ end
 
 function wml_actions.store_starting_location(cfg)
 	local writer = utils.vwriter.init(cfg, "location")
-	for _, side in ipairs(wesnoth.get_sides(cfg)) do
-		local loc = wesnoth.get_starting_location(side.side)
+	for _, side in ipairs(wesnoth.sides.find(cfg)) do
+		local loc = side.starting_location
 		if loc then
 			local terrain = wesnoth.get_terrain(loc[1], loc[2])
 			local result = { x = loc[1], y = loc[2], terrain = terrain }
@@ -916,7 +916,7 @@ end
 local function parse_fog_cfg(cfg)
 	-- Side filter
 	local ssf = wml.get_child(cfg, "filter_side")
-	local sides = wesnoth.get_sides(ssf or {})
+	local sides = wesnoth.sides.find(ssf or {})
 	-- Location filter
 	local locs = wesnoth.get_locations(cfg)
 	return locs, sides

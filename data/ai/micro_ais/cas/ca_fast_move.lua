@@ -39,7 +39,7 @@ function ca_fast_move:execution(cfg)
                 table.remove(villages, i)
             else
                 local owner = wesnoth.get_village_owner(villages[i][1], villages[i][2])
-                if owner and (not wesnoth.is_enemy(owner, wesnoth.current.side)) then
+                if owner and (not wesnoth.sides.is_enemy(owner, wesnoth.current.side)) then
                     table.remove(villages, i)
                 elseif (not leader) and (not owner) then
                     table.remove(villages, i)

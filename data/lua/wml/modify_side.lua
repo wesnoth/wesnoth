@@ -49,7 +49,7 @@ function wesnoth.wml_actions.modify_side(cfg)
 			side.hidden = cfg.hidden
 		end
 		if cfg.color or cfg.flag then
-			wesnoth.set_side_id(side.side, cfg.flag, cfg.color)
+			side:set_id(cfg.flag, cfg.color)
 		end
 		if cfg.flag_icon then
 			side.flag_icon = cfg.flag_icon
@@ -109,13 +109,13 @@ function wesnoth.wml_actions.modify_side(cfg)
 		end
 		
 		if cfg.switch_ai then
-			wesnoth.switch_ai(side.side, cfg.switch_ai)
+			side:switch_ai(cfg.switch_ai)
 		end
 		if #ai > 0 then
 			if replace_ai then
-				wesnoth.switch_ai(side.side, ai)
+				side:switch_ai(ai)
 			else
-				wesnoth.append_ai(side.side, ai)
+				side:append_ai(ai)
 			end
 		end
 	end

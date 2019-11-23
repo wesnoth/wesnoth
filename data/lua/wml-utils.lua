@@ -58,9 +58,9 @@ function utils.get_sides(cfg, key_name, filter_name)
 		if cfg[key_name] then
 			wesnoth.log('warn', "ignoring duplicate side filter information (inline side=)")
 		end
-		return wesnoth.get_sides(filter)
+		return wesnoth.sides.findd(filter)
 	else
-		return wesnoth.get_sides{side = cfg[key_name]}
+		return wesnoth.sides.findd{side = cfg[key_name]}
 	end
 end
 
