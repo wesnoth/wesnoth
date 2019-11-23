@@ -2412,7 +2412,7 @@ static int intf_unit_resistance(lua_State *L)
 		loc = luaW_checklocation(L, 3);
 	}
 
-	lua_pushinteger(L, u.resistance_against(m, a, loc));
+	lua_pushinteger(L, 100 - u.resistance_against(m, a, loc));
 	return 1;
 }
 
@@ -2425,8 +2425,14 @@ static int intf_unit_resistance(lua_State *L)
 static int intf_unit_movement_cost(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
-	char const *m = luaL_checkstring(L, 2);
-	t_translation::terrain_code t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t;
+	map_location loc;
+	if(luaW_tolocation(L, 2, loc)) {
+		t = resources::gameboard->map()[loc];
+	} else if(lua_isstring(L, 2)) {
+		char const *m = luaL_checkstring(L, 2);
+		t = t_translation::read_terrain_code(m);
+	} else return luaW_type_error(L, 2, "location or terrain string");
 	lua_pushinteger(L, u.movement_cost(t));
 	return 1;
 }
@@ -2440,8 +2446,14 @@ static int intf_unit_movement_cost(lua_State *L)
 static int intf_unit_vision_cost(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
-	char const *m = luaL_checkstring(L, 2);
-	t_translation::terrain_code t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t;
+	map_location loc;
+	if(luaW_tolocation(L, 2, loc)) {
+		t = resources::gameboard->map()[loc];
+	} else if(lua_isstring(L, 2)) {
+		char const *m = luaL_checkstring(L, 2);
+		t = t_translation::read_terrain_code(m);
+	} else return luaW_type_error(L, 2, "location or terrain string");
 	lua_pushinteger(L, u.vision_cost(t));
 	return 1;
 }
@@ -2455,8 +2467,14 @@ static int intf_unit_vision_cost(lua_State *L)
 static int intf_unit_jamming_cost(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
-	char const *m = luaL_checkstring(L, 2);
-	t_translation::terrain_code t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t;
+	map_location loc;
+	if(luaW_tolocation(L, 2, loc)) {
+		t = resources::gameboard->map()[loc];
+	} else if(lua_isstring(L, 2)) {
+		char const *m = luaL_checkstring(L, 2);
+		t = t_translation::read_terrain_code(m);
+	} else return luaW_type_error(L, 2, "location or terrain string");
 	lua_pushinteger(L, u.jamming_cost(t));
 	return 1;
 }
@@ -2470,9 +2488,15 @@ static int intf_unit_jamming_cost(lua_State *L)
 static int intf_unit_defense(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
-	char const *m = luaL_checkstring(L, 2);
-	t_translation::terrain_code t = t_translation::read_terrain_code(m);
-	lua_pushinteger(L, u.defense_modifier(t));
+	t_translation::terrain_code t;
+	map_location loc;
+	if(luaW_tolocation(L, 2, loc)) {
+		t = resources::gameboard->map()[loc];
+	} else if(lua_isstring(L, 2)) {
+		char const *m = luaL_checkstring(L, 2);
+		t = t_translation::read_terrain_code(m);
+	} else return luaW_type_error(L, 2, "location or terrain string");
+	lua_pushinteger(L, 100 - u.defense_modifier(t));
 	return 1;
 }
 
@@ -4308,11 +4332,11 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"transform", &intf_transform_unit},
 		
 		{"ability", &dispatch<&game_lua_kernel::intf_unit_ability>},
-		{"defense", &intf_unit_defense},
-		{"jamming", &intf_unit_jamming_cost},
-		{"movement", &intf_unit_movement_cost},
-		{"resistance", intf_unit_resistance},
-		{"vision", &intf_unit_vision_cost},
+		{"defense_on", &intf_unit_defense},
+		{"jamming_on", &intf_unit_jamming_cost},
+		{"movement_on", &intf_unit_movement_cost},
+		{"resistance_against", intf_unit_resistance},
+		{"vision_on", &intf_unit_vision_cost},
 		
 		{"add_modification", &intf_add_modification},
 		{"remove_modifications", &intf_remove_modifications},

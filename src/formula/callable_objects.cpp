@@ -260,6 +260,35 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.alignment().to_string());
 	} else if(key == "facing") {
 		return variant(map_location::write_direction(u_.facing()));
+	} else if(key == "resistance" || key == "movement_cost" || key == "vision_cost" || key == "jamming_cost" || key == "defense") {
+		const auto& mt = u_.movement_type();
+		config cfg;
+		bool needs_flip = false;
+		if(key == "resistance") {
+			mt.get_resistances().write(cfg);
+			needs_flip = true;
+		} else if(key == "movement_cost") {
+			mt.get_movement().write(cfg);
+		} else if(key == "vision_cost") {
+			mt.get_vision().write(cfg);
+		} else if(key == "jamming_cost") {
+			mt.get_vision().write(cfg);
+		} else if(key == "defense") {
+			mt.get_defense().write(cfg);
+			needs_flip = true;
+		}
+		std::map<variant, variant> res;
+		for(const auto& p : cfg.attribute_range()) {
+			int val = p.second;
+			if(needs_flip) {
+				val = 100 - val;
+			}
+			res.emplace(p.first, val);
+		}
+
+		return variant(res);
+	} else if(key == "flying") {
+		return variant(u_.is_flying());
 	} else if(key == "vars") {
 		if(u_.formula_manager().formula_vars()) {
 			return variant(u_.formula_manager().formula_vars());
@@ -317,6 +346,12 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "zoc");
 	add_input(inputs, "alignment");
 	add_input(inputs, "facing");
+	add_input(inputs, "resistance");
+	add_input(inputs, "movement_cost");
+	add_input(inputs, "vision_cost");
+	add_input(inputs, "jamming_cost");
+	add_input(inputs, "defense");
+	add_input(inputs, "flying");
 	add_input(inputs, "vars");
 	add_input(inputs, "wml_vars");
 }

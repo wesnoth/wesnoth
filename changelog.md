@@ -60,6 +60,13 @@
    * Functions that previously only took a side index as the first parameter now also accept the side proxy userdata.
    * The wesnoth.sides module acts like a metatable for the side userdata.
    * Added `__tostring` functions to a number of Wesnoth userdata types.
+   * Unit movetype functions renamed (defense_on, movement_on, vision_on, jamming_on, resistance_against).
+     The defense_on and resistance_against functions return the actual values, rather than the raw WML values.
+   * New function wesnoth.units.chance_to_be_hit is equivalent to deprecated wesonth.units.defense but conveys the meaning better.
+   * Unit movetype functions (excluding resistance) can take a location instead of a terrain code, for convenience
+ ### WFL engine
+   * New functions resistance_on(), vision_cost(), jamming_cost() that work in gameplay contexts (eg filters)
+   * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying variables
  ### WML engine
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full
