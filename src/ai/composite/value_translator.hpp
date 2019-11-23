@@ -59,6 +59,35 @@ public:
 
 
 template<>
+class config_value_translator<std::string> {
+public:
+
+	static std::string cfg_to_value(const config &cfg)
+	{
+		return cfg["value"].str();
+	}
+
+	static void cfg_to_value(const config &cfg, std::string &value)
+	{
+		value = cfg_to_value(cfg);
+	}
+
+	static void value_to_cfg(const std::string &value, config &cfg)
+	{
+		cfg["value"] = value;
+	}
+
+	static config value_to_cfg(const std::string &value)
+	{
+		config cfg;
+		value_to_cfg(value,cfg);
+		return cfg;
+	}
+
+};
+
+
+template<>
 class config_value_translator<bool> {
 public:
 
