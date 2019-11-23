@@ -66,7 +66,8 @@
    * Unit movetype functions (excluding resistance) can take a location instead of a terrain code, for convenience
  ### WFL engine
    * New functions resistance_on(), vision_cost(), jamming_cost() that work in gameplay contexts (eg filters)
-   * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying variables
+   * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying 
+   * For FormulaAI, the game map object has an alternate access mode - `map.gamemap[loc(x,y)]`
  ### WML engine
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full

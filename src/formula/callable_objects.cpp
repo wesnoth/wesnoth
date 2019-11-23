@@ -607,8 +607,6 @@ const gamemap& gamemap_callable::get_gamemap() const {
 
 void gamemap_callable::get_inputs(formula_input_vector& inputs) const
 {
-	add_input(inputs, "gamemap");
-	add_input(inputs, "terrain");
 	add_input(inputs, "w");
 	add_input(inputs, "h");
 }
@@ -624,6 +622,19 @@ variant gamemap_callable::get_value(const std::string& key) const
 			for(int j = 0; j < h; j++) {
 				const map_location loc(i, j);
 				vars.emplace_back(std::make_shared<terrain_callable>(board_, loc));
+			}
+		}
+
+		return variant(vars);
+	} else if(key == "gamemap") {
+		int w = get_gamemap().w();
+		int h = get_gamemap().h();
+
+		std::map<variant, variant> vars;
+		for(int i = 0; i < w; i++) {
+			for(int j = 0; j < h; j++) {
+				const map_location loc(i, j);
+				vars.emplace(std::make_shared<location_callable>(loc), std::make_shared<terrain_callable>(board_, loc));
 			}
 		}
 
