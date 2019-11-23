@@ -52,6 +52,9 @@ public:
 	virtual std::shared_ptr<wfl::variant> get_variant_ptr() const = 0;
 
 
+	virtual void get_lua(lua_State* L) const = 0;
+
+
 	virtual void recalculate() const = 0;
 
 
@@ -150,6 +153,13 @@ public:
 			}
 		}
 		return value_variant_;
+	}
+
+	void get_lua(lua_State* L) const {
+		if(auto p = get_ptr()) {
+			lua_object<T> obj(get());
+			obj.push(L);
+		} else lua_pushnil(L);
 	}
 
 	virtual void recalculate() const = 0;

@@ -775,24 +775,8 @@ static int impl_ai_aspect_get(lua_State* L)
 		return 0;
 	}
 
-	typedef std::vector<std::string> string_list;
-	if(typesafe_aspect<bool>* aspect_as_bool = try_aspect_as<bool>(iter->second)) {
-		lua_pushboolean(L, aspect_as_bool->get());
-	} else if(typesafe_aspect<int>* aspect_as_int = try_aspect_as<int>(iter->second)) {
-		lua_pushinteger(L, aspect_as_int->get());
-	} else if(typesafe_aspect<double>* aspect_as_double = try_aspect_as<double>(iter->second)) {
-		lua_pushnumber(L, aspect_as_double->get());
-	} else if(typesafe_aspect<std::string>* aspect_as_string = try_aspect_as<std::string>(iter->second)) {
-		lua_pushstring(L, aspect_as_string->get().c_str());
-	} else if(typesafe_aspect<config>* aspect_as_config = try_aspect_as<config>(iter->second)) {
-		luaW_pushconfig(L, aspect_as_config->get());
-	} else if(typesafe_aspect<string_list>* aspect_as_string_list = try_aspect_as<string_list>(iter->second)) {
-		lua_push(L, aspect_as_string_list->get());
-	} else if(typesafe_aspect<terrain_filter>* aspect_as_terrain_filter = try_aspect_as<terrain_filter>(iter->second)) {
-		std::set<map_location> result;
-		aspect_as_terrain_filter->get().get_locations(result);
-		lua_push(L, result);
-	} else if(typesafe_aspect<attacks_vector>* aspect_as_attacks_vector = try_aspect_as<attacks_vector>(iter->second)) {
+	// A few aspects require special delicate handling...
+	if(typesafe_aspect<attacks_vector>* aspect_as_attacks_vector = try_aspect_as<attacks_vector>(iter->second)) {
 		using ai_default_rca::aspect_attacks_base;
 		aspect_attacks_base* real_aspect = dynamic_cast<aspect_attacks_base*>(aspect_as_attacks_vector);
 		while(real_aspect == nullptr) {
@@ -826,7 +810,6 @@ static int impl_ai_aspect_get(lua_State* L)
 			lua_rawseti(L, -2, i + 1);
 		}
 		lua_setfield(L, -2, "enemy");
-		return 1;
 	} else if(typesafe_aspect<unit_advancements_aspect>* aspect_as_unit_advancements_aspects = try_aspect_as<unit_advancements_aspect>(iter->second)) {
 		const unit_advancements_aspect& val = aspect_as_unit_advancements_aspects->get();
 		int my_side = get_engine(L).get_readonly_context().get_side();
@@ -841,7 +824,7 @@ static int impl_ai_aspect_get(lua_State* L)
 			lua_settable(L, -3);
 		}
 	} else {
-		lua_pushnil(L);
+		iter->second->get_lua(L);
 	}
 	return 1;
 }
