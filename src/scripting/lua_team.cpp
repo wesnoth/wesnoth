@@ -21,6 +21,7 @@
 #include "resources.hpp" // for gameboard
 #include "game_board.hpp"
 #include "game_display.hpp"
+#include "map/map.hpp"
 
 #include <string>
 
@@ -109,6 +110,13 @@ static int impl_side_get(lua_State *L)
 		lua_pushvalue(L, 1);
 		lua_rawseti(L, -2, 1);
 		luaL_setmetatable(L, teamVar);
+		return 1;
+	}
+	if(strcmp(m, "starting_location") == 0) {
+		const map_location& starting_pos = resources::gameboard->map().starting_position(t.side());
+		if(!resources::gameboard->map().on_board(starting_pos)) return 0;
+
+		luaW_pushlocation(L, starting_pos);
 		return 1;
 	}
 

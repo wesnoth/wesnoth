@@ -64,6 +64,7 @@
      The defense_on and resistance_against functions return the actual values, rather than the raw WML values.
    * New function wesnoth.units.chance_to_be_hit is equivalent to deprecated wesonth.units.defense but conveys the meaning better.
    * Unit movetype functions (excluding resistance) can take a location instead of a terrain code, for convenience
+   * Side proxy now has starting_location member
  ### WFL engine
    * New functions resistance_on(), vision_cost(), jamming_cost() that work in gameplay contexts (eg filters)
    * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying 

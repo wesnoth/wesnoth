@@ -1314,28 +1314,6 @@ int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 }
 
 /**
- * Returns the starting position of a side.
- * Arg 1: side number
- * Ret 1: table with unnamed indices holding wml coordinates x and y
-*/
-int game_lua_kernel::intf_get_starting_location(lua_State* L)
-{
-	int side;
-	if(team* t = luaW_toteam(L, 1)) {
-		side = t->side();
-	} else {
-		side = luaL_checkinteger(L, 1);
-	}
-	if(side < 1 || static_cast<int>(teams().size()) < side)
-		return luaL_argerror(L, 1, "out of bounds");
-	const map_location& starting_pos = board().map().starting_position(side);
-	if(!board().map().on_board(starting_pos)) return 0;
-
-	luaW_pushlocation(L, starting_pos);
-	return 1;
-}
-
-/**
  * Gets a table for an era tag.
  * - Arg 1: userdata (ignored).
  * - Arg 2: string containing id of the desired era
@@ -4357,7 +4335,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	// Create sides module
 	cmd_log_ << "Adding sides module...\n";
 	static luaL_Reg const side_callbacks[] {
-		{ "get_starting_location", &dispatch<&game_lua_kernel::intf_get_starting_location> },
 		{ "is_enemy", &dispatch<&game_lua_kernel::intf_is_enemy> },
 		{ "matches", &dispatch<&game_lua_kernel::intf_match_side> },
 		{ "set_id", &dispatch<&game_lua_kernel::intf_set_side_id> },

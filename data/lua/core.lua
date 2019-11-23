@@ -556,6 +556,11 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	function wesnoth.get_side_variable(side, var)
 		return wesnoth.sides[side].variables[var]
 	end
+	function wesnoth.get_starting_location(side)
+		local side = side
+		if type(side) == 'number' then side = wesnoth.sides[side] end
+		return side.starting_location
+	end
 end
 
 --[========[GUI2 Dialog Manipulations]========]
@@ -646,7 +651,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_recall', 1, nil, wesnoth.units.find_on_recall)
 	wesnoth.get_side_variable = wesnoth.deprecate_api('wesnoth.get_side_variable', 'wesnoth.sides[].variables', 1, nil, wesnoth.get_side_variable)
 	wesnoth.set_side_variable = wesnoth.deprecate_api('wesnoth.set_side_variable', 'wesnoth.sides[].variables', 1, nil, wesnoth.set_side_variable)
-	wesnoth.get_starting_location = wesnoth.deprecate_api('wesnoth.get_starting_location', 'wesnoth.sides.get_starting_location', 1, nil, wesnoth.sides.get_starting_location)
+	wesnoth.get_starting_location = wesnoth.deprecate_api('wesnoth.get_starting_location', 'wesnoth.sides[].starting_location', 1, nil, wesnoth.get_starting_location)
 	wesnoth.is_enemy = wesnoth.deprecate_api('wesnoth.is_enemy', 'wesnoth.sides.is_enemy', 1, nil, wesnoth.sides.is_enemy)
 	wesnoth.match_side = wesnoth.deprecate_api('wesnoth.match_side', 'wesnoth.sides.matches', 1, nil, wesnoth.sides.matches)
 	wesnoth.set_side_id = wesnoth.deprecate_api('wesnoth.set_side_id', 'wesnoth.sides.set_id', 1, nil, wesnoth.sides.set_id)

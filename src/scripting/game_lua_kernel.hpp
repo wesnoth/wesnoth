@@ -101,7 +101,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_map_size(lua_State *L);
 	int intf_get_mouseover_tile(lua_State *L);
 	int intf_get_selected_tile(lua_State *L);
-	int intf_get_starting_location(lua_State* L);
 	int impl_game_config_get(lua_State *L) override;
 	int impl_game_config_set(lua_State *L) override;
 	int impl_current_get(lua_State *L);
