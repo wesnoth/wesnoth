@@ -18,14 +18,15 @@ local params = { score_function = (function() return 196000 end) }
 if ca_castle_switch then
     params.min_turn_1_recruit = (function() return ca_castle_switch:evaluation({}, dummy_engine.data) > 0 end)
     params.leader_takes_village = (function(leader)
-            if ca_castle_switch:evaluation({}, dummy_engine.data, nil, leader) > 0 then
+            local castle_switch_score = ca_castle_switch:evaluation({}, dummy_engine.data, nil, leader)
+            if castle_switch_score > 0 then
                 local take_village = #(wesnoth.get_villages {
                     x = dummy_engine.data.CS_leader_target[1],
                     y = dummy_engine.data.CS_leader_target[2]
                 }) > 0
-                return take_village
+                return castle_switch_score, take_village
             end
-            return not ai.aspects.passive_leader
+            return 0
         end
     )
 end

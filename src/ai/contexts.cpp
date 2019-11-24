@@ -730,21 +730,21 @@ double readonly_context_impl::get_leader_value() const
 }
 
 
-bool readonly_context_impl::get_passive_leader() const
+std::string readonly_context_impl::get_passive_leader() const
 {
 	if (passive_leader_) {
 		return passive_leader_->get();
 	}
-	return false;
+	return std::string();
 }
 
 
-bool readonly_context_impl::get_passive_leader_shares_keep() const
+std::string readonly_context_impl::get_passive_leader_shares_keep() const
 {
 	if (passive_leader_shares_keep_) {
 		return passive_leader_shares_keep_->get();
 	}
-	return false;
+	return std::string();
 }
 
 
@@ -1149,7 +1149,7 @@ void readonly_context_impl::recalculate_move_maps() const
 	possible_moves_ = moves_map();
 	srcdst_ = move_map();
 	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
-	if (get_passive_leader() && !get_passive_leader_shares_keep()) {
+	if (is_passive_leader("") && !is_passive_keep_sharing_leader("")) {
 		unit_map::iterator i = resources::gameboard->units().find_leader(get_side());
 		if (i.valid()) {
 			map_location loc = i->get_location();
@@ -1297,6 +1297,16 @@ bool readonly_context_impl::applies_to_leader(const std::string &aspect_value, c
 bool readonly_context_impl::is_keep_ignoring_leader(const std::string &id) const
 {
 		return applies_to_leader(leader_ignores_keep_->get(), id);
+}
+
+bool readonly_context_impl::is_passive_leader(const std::string &id) const
+{
+		return applies_to_leader(passive_leader_->get(), id);
+}
+
+bool readonly_context_impl::is_passive_keep_sharing_leader(const std::string &id) const
+{
+		return applies_to_leader(passive_leader_shares_keep_->get(), id);
 }
 
 } //of namespace ai

@@ -80,7 +80,7 @@ double goto_phase::evaluate()
 	for(std::vector<map_location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
 		unit_map::const_iterator ui = units_.find(*g);
 		// passive_leader: never moves or attacks
-		if(ui->can_recruit() && get_passive_leader()){
+		if(ui->can_recruit() && is_passive_leader(ui->id())){
 			continue;
 		}
 		// end of passive_leader
@@ -410,9 +410,6 @@ double move_leader_to_keep_phase::evaluate()
 	if (is_keep_ignoring_leader("")) {
 		return BAD_SCORE;
 	}
-	if (get_passive_leader() && !get_passive_leader_shares_keep()) {
-		return BAD_SCORE;
-	}
 
 	// 1. Collect all leaders in a list
 	// 2. Get the suitable_keep for each leader
@@ -434,7 +431,7 @@ double move_leader_to_keep_phase::evaluate()
 	int shortest_distance = 99999;
 
 	for (const unit_map::const_iterator& leader : leaders) {
-		if (leader->incapacitated() || leader->movement_left() == 0 || !is_allowed_unit(*leader) || is_keep_ignoring_leader(leader->id())) {
+		if (leader->incapacitated() || leader->movement_left() == 0 || !is_allowed_unit(*leader) || is_keep_ignoring_leader(leader->id()) || (is_passive_leader(leader->id()) && !is_passive_keep_sharing_leader(leader->id()))) {
 			continue;
 		}
 
@@ -638,7 +635,7 @@ void get_villages_phase::get_villages(
 	treachmap reachmap;
 	for(unit_map::const_iterator u_itor = units_.begin();
 			u_itor != units_.end(); ++u_itor) {
-		if(u_itor->can_recruit() && get_passive_leader()){
+		if(u_itor->can_recruit() && is_passive_leader(u_itor->id())){
 			continue;
 		}
 		if(u_itor->side() == get_side() && u_itor->movement_left() && is_allowed_unit(*u_itor)) {
@@ -685,8 +682,6 @@ void get_villages_phase::find_villages(
 {
 	std::map<map_location, double> vulnerability;
 
-	const bool passive_leader = get_passive_leader();
-
 	std::size_t min_distance = 100000;
 	const gamemap &map_ = resources::gameboard->map();
 	std::vector<team> &teams_ = resources::gameboard->teams();
@@ -701,10 +696,6 @@ void get_villages_phase::find_villages(
 		const map_location &current_loc = j->first;
 
 		if(j->second == leader_loc_) {
-			if(passive_leader) {
-				continue;
-			}
-
 			const std::size_t distance = distance_between(keep_loc_, current_loc);
 			if(distance < min_distance) {
 				min_distance = distance;
@@ -753,7 +744,7 @@ void get_villages_phase::find_villages(
 		}
 
 		const unit_map::const_iterator u = resources::gameboard->units().find(j->second);
-		if (u == resources::gameboard->units().end() || u->get_state("guardian") || !is_allowed_unit(*u)) {
+		if (u == resources::gameboard->units().end() || u->get_state("guardian") || !is_allowed_unit(*u) || (u->can_recruit() && is_passive_leader(u->id()))) {
 			continue;
 		}
 
@@ -1351,7 +1342,7 @@ double get_healing_phase::evaluate()
 	for(; u_it != units_.end(); ++u_it) {
 		unit &u = *u_it;
 
-		if(u.can_recruit() && get_passive_leader()){
+		if(u.can_recruit() && is_passive_leader(u.id())){
 			continue;
 		}
 
@@ -1613,9 +1604,18 @@ leader_shares_keep_phase::~leader_shares_keep_phase()
 
 double leader_shares_keep_phase::evaluate()
 {
-	if(get_passive_leader() && !get_passive_leader_shares_keep()){
+	bool have_active_leader = false;
+	std::vector<unit_map::unit_iterator> ai_leaders = resources::gameboard->units().find_leaders(get_side());
+	for (unit_map::unit_iterator &ai_leader : ai_leaders) {
+	        if (!is_passive_leader(ai_leader->id()) || is_passive_keep_sharing_leader(ai_leader->id())) {
+			have_active_leader = true;
+			break;
+		}
+	}
+	if(!have_active_leader) {
 		return BAD_SCORE;
 	}
+
 	bool allied_leaders_available = false;
 	for(team &tmp_team : resources::gameboard->teams()) {
 		if(!current_team().is_enemy(tmp_team.side())){
@@ -1645,7 +1645,7 @@ void leader_shares_keep_phase::execute()
 
 	//check for each ai leader if he should move away from his keep
 	for (unit_map::unit_iterator &ai_leader : ai_leaders) {
-		if(!ai_leader.valid() || !is_allowed_unit(*ai_leader)) {
+		if(!ai_leader.valid() || !is_allowed_unit(*ai_leader) || (is_passive_leader(ai_leader->id()) && !is_passive_keep_sharing_leader(ai_leader->id()))) {
 			//This can happen if wml killed or moved a leader during a movement events of another leader
 			continue;
 		}

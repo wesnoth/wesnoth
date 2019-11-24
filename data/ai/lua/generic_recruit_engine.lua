@@ -12,8 +12,9 @@ return {
     --          (default = 0.1)
     --      min_turn_1_recruit: function that returns true if only enough units to grab nearby villages should be recruited turn 1, false otherwise
     --          (default always returns false)
-    --      leader_takes_village: function that returns true if and only if the leader is going to move to capture a village this turn
-    --          (default returns 'not ai.aspects.passive_leader')
+    --      leader_takes_village: function that returns the score of the castle_switch CA as its first parameter.
+    --          If this score is greater than zero, the second parameter is a boolean indicating whether the
+    --          castle switch move will make the leader end up on a village.
     --      enemy_types: array of default enemy unit types to consider if there are no enemies on the map
     --          and no enemy sides exist or have recruit lists
     -- Note: the recruiting code assumes full knowledge of units on the map and the recruit lists of other sides for the purpose of
@@ -928,7 +929,18 @@ return {
                 data.castle.assigned_villages_x = {}
                 data.castle.assigned_villages_y = {}
 
-                if not ai.aspects.passive_leader and (not params.leader_takes_village or params.leader_takes_village(leader)) then
+                -- If castle_switch CA makes the unit end up on a village, skip one village for the leader.
+                -- Also do so if the leader is not passive. Note that the castle_switch CA will also return zero
+                -- when the leader is passive, but not only in that case.
+                local ltv_score, skip_one_village = 0
+                if params.leader_takes_village then
+                    ltv_score, skip_one_village = params.leader_takes_village(leader)
+                end
+                if (ltv_score == 0) then
+                    skip_one_village = not AH.is_passive_leader(ai.aspects.passive_leader, leader.id)
+                end
+
+                if skip_one_village then
                     -- skip one village for the leader
                     for i,v in ipairs(villages) do
                         local path, cost = wesnoth.find_path(leader, v[1], v[2], {max_cost = leader.max_moves+1})

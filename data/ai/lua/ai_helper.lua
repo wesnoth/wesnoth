@@ -1062,6 +1062,20 @@ end
 
 --------- Unit related helper functions ----------
 
+function ai_helper.is_passive_leader(aspect_value, id)
+    if (aspect_value == 'yes') then return true end
+    if (aspect_value == 'no') then return false end
+
+    local aspect_ids = ai_helper.split(aspect_value)
+    for _,aspect_id in ipairs(aspect_ids) do
+        if (aspect_id == id) then
+            return true
+        end
+    end
+
+    return false
+end
+
 function ai_helper.get_live_units(filter)
     -- Note: the order of the filters and the [and] tags are important for speed reasons
     return wesnoth.units.find_on_map { { "not", { status = "petrified" } }, { "and", filter } }

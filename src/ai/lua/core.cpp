@@ -454,16 +454,16 @@ static int cfun_ai_get_leader_value(lua_State *L)
 static int cfun_ai_get_passive_leader(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("passive_leader");
-	bool passive_leader = get_readonly_context(L).get_passive_leader();
-	lua_pushboolean(L, passive_leader);
+	std::string passive_leader = get_readonly_context(L).get_passive_leader();
+	lua_pushstring(L, passive_leader.c_str());
 	return 1;
 }
 
 static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("passive_leader_shares_keep");
-	bool passive_leader_shares_keep = get_readonly_context(L).get_passive_leader_shares_keep();
-	lua_pushboolean(L, passive_leader_shares_keep);
+	std::string passive_leader_shares_keep = get_readonly_context(L).get_passive_leader_shares_keep();
+	lua_pushstring(L, passive_leader_shares_keep.c_str());
 	return 1;
 }
 

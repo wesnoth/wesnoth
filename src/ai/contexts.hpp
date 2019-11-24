@@ -282,10 +282,10 @@ public:
 	virtual double get_leader_value() const = 0;
 
 
-	virtual bool get_passive_leader() const = 0;
+	virtual std::string get_passive_leader() const = 0;
 
 
-	virtual bool get_passive_leader_shares_keep() const = 0;
+	virtual std::string get_passive_leader_shares_keep() const = 0;
 
 
 	virtual const moves_map& get_possible_moves() const = 0;
@@ -331,6 +331,10 @@ public:
 	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const = 0;
 
 	virtual bool is_keep_ignoring_leader(const std::string &id) const = 0;
+
+	virtual bool is_passive_leader(const std::string &id) const = 0;
+
+	virtual bool is_passive_keep_sharing_leader(const std::string &id) const = 0;
 
 	virtual bool is_dst_src_valid_lua() const = 0;
 
@@ -766,13 +770,13 @@ public:
 	}
 
 
-	virtual bool get_passive_leader() const override
+	virtual std::string get_passive_leader() const override
 	{
 		return target_->get_passive_leader();
 	}
 
 
-	virtual bool get_passive_leader_shares_keep() const override
+	virtual std::string get_passive_leader_shares_keep() const override
 	{
 		return target_->get_passive_leader_shares_keep();
 	}
@@ -871,6 +875,16 @@ public:
 	virtual bool is_keep_ignoring_leader(const std::string &id) const override
 	{
 		return target_->is_keep_ignoring_leader(id);
+	}
+
+	virtual bool is_passive_leader(const std::string &id) const override
+	{
+		return target_->is_passive_leader(id);
+	}
+
+	virtual bool is_passive_keep_sharing_leader(const std::string &id) const override
+	{
+		return target_->is_passive_keep_sharing_leader(id);
 	}
 
 	virtual bool is_dst_src_valid_lua() const override
@@ -1364,10 +1378,10 @@ public:
 	virtual double get_leader_value() const override;
 
 
-	virtual bool get_passive_leader() const override;
+	virtual std::string get_passive_leader() const override;
 
 
-	virtual bool get_passive_leader_shares_keep() const override;
+	virtual std::string get_passive_leader_shares_keep() const override;
 
 
 	virtual const moves_map& get_possible_moves() const override;
@@ -1412,6 +1426,10 @@ public:
 	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const override;
 
 	virtual bool is_keep_ignoring_leader(const std::string &id) const override;
+
+	virtual bool is_passive_leader(const std::string &id) const override;
+
+	virtual bool is_passive_keep_sharing_leader(const std::string &id) const override;
 
 	virtual bool is_dst_src_valid_lua() const override;
 
@@ -1511,8 +1529,8 @@ private:
 	mutable bool dst_src_enemy_valid_lua_;
 	mutable bool src_dst_valid_lua_;
 	mutable bool src_dst_enemy_valid_lua_;
-	typesafe_aspect_ptr<bool> passive_leader_;
-	typesafe_aspect_ptr<bool> passive_leader_shares_keep_;
+	typesafe_aspect_ptr<std::string> passive_leader_;
+	typesafe_aspect_ptr<std::string> passive_leader_shares_keep_;
 	mutable moves_map possible_moves_;
 	typesafe_aspect_ptr<double> recruitment_diversity_;
 	typesafe_aspect_ptr<config> recruitment_instructions_;
