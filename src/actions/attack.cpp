@@ -1760,28 +1760,32 @@ bool bool_leadership(const std::string& ability,const unit &un, unit_const_ptr u
 bool attack_type::bool_ability(const std::string& ability) const
 {
 	bool abil_bool= get_special_bool(ability);
-
-	if(leadership_affects_self(ability, *self_, self_loc_, is_attacker_)) {
-		abil_bool = get_special_bool(ability) || bool_leadership(ability, *self_, other_, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
+	if(self_){
+		if(leadership_affects_self(ability, *self_, self_loc_, is_attacker_)) {
+			abil_bool = get_special_bool(ability) || bool_leadership(ability, *self_, other_, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
+		}
 	}
-
-	if(other_ && leadership_affects_opponent(ability, *other_, other_loc_, !is_attacker_)) {
-		abil_bool = get_special_bool(ability) || bool_leadership(ability, *other_, self_, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
-	}
+    if(other_){
+	    if(leadership_affects_opponent(ability, *other_, other_loc_, !is_attacker_)) {
+		    abil_bool = get_special_bool(ability) || bool_leadership(ability, *other_, self_, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
+	    }
+    }
 	return abil_bool;
 }
 
 //emulate numerical special for self/adjacent and/or opponent.
 std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int abil_value, bool backstab_pos) const
 {
-
-	if(leadership_affects_self(ability, *self_, self_loc_, is_attacker_)) {
-		return ability_leadership(ability, *self_, other_, self_loc_, other_loc_, is_attacker_, abil_value, backstab_pos, shared_from_this(), other_attack_);
-
-	}
-	if(other_ && leadership_affects_opponent(ability, *other_, other_loc_, !is_attacker_)) {
-		return ability_leadership(ability, *other_, self_, other_loc_,self_loc_, !is_attacker_, abil_value, backstab_pos, other_attack_, shared_from_this());
-	}
+    if(self_){
+	    if(leadership_affects_self(ability, *self_, self_loc_, is_attacker_)) {
+		    return ability_leadership(ability, *self_, other_, self_loc_, other_loc_, is_attacker_, abil_value, backstab_pos, shared_from_this(), other_attack_);
+	    }
+    }
+    if(other_){
+	    if(leadership_affects_opponent(ability, *other_, other_loc_, !is_attacker_)) {
+		    return ability_leadership(ability, *other_, self_, other_loc_,self_loc_, !is_attacker_, abil_value, backstab_pos, other_attack_, shared_from_this());
+	    }
+    }
 	return {abil_value, false};
 }
 //end of emulate weapon special functions.
