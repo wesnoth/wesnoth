@@ -513,12 +513,6 @@ game_launcher::unit_test_result game_launcher::unit_test()
 			case unit_test_result::TEST_PASS:
 				describe_result = "PASS TEST";
 				break;
-			case unit_test_result::TEST_FAIL_LOADING_REPLAY:
-				describe_result = "FAIL TEST (INVALID REPLAY)";
-				break;
-			case unit_test_result::TEST_FAIL_PLAYING_REPLAY:
-				describe_result = "FAIL TEST (ERRORED REPLAY)";
-				break;
 			default:
 				describe_result = "FAIL TEST";
 				break;
@@ -559,7 +553,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 
 	if (!load_game()) {
 		std::cerr << "Failed to load the replay!" << std::endl;
-		return unit_test_result::TEST_FAIL_LOADING_REPLAY; //failed to load replay
+		return unit_test_result::TEST_FAIL; //failed to load replay
 	}
 
 	try {
@@ -567,11 +561,11 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 		LEVEL_RESULT res = ccontroller.play_replay();
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			std::cerr << "Observed failure on replay" << std::endl;
-			return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
+			return unit_test_result::TEST_FAIL;
 		}
 	} catch(const wml_exception& e) {
 		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl;
-		return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
+		return unit_test_result::TEST_FAIL;
 	}
 
 	return unit_test_result::TEST_PASS; //we passed, huzzah!

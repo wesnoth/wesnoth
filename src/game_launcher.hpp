@@ -64,8 +64,6 @@ public:
 	enum class unit_test_result : int {
 		TEST_PASS = 0,
 		TEST_FAIL = 1,
-		TEST_FAIL_LOADING_REPLAY = 3,
-		TEST_FAIL_PLAYING_REPLAY = 4,
 	};
 
 	bool init_video();
