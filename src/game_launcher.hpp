@@ -64,8 +64,11 @@ public:
 	enum class unit_test_result : int {
 		TEST_PASS = 0,
 		TEST_FAIL = 1,
+		// 2 is reserved for timeouts
 		TEST_FAIL_LOADING_REPLAY = 3,
 		TEST_FAIL_PLAYING_REPLAY = 4,
+		TEST_FAIL_BROKE_STRICT = 5,
+		TEST_FAIL_WML_EXCEPTION = 6,
 	};
 
 	bool init_video();
