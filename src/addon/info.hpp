@@ -57,11 +57,6 @@ struct addon_info
 	std::time_t updated;
 	std::time_t created;
 
-	// Artificial upload order index used to preserve add-ons upload order
-	// until we have actual first-upload timestamps implemented. This index
-	// is not serialized anywhere.
-	unsigned order;
-
 	// Flag to indicate whether this object was generaled from pbl info for an addon
 	// not previously published.
 	bool local_only;
@@ -75,7 +70,6 @@ struct addon_info
 		, feedback_url()
 		, updated()
 		, created()
-		, order()
 		, local_only(false)
 	{}
 
@@ -88,7 +82,6 @@ struct addon_info
 		, feedback_url()
 		, updated()
 		, created()
-		, order()
 		, local_only(false)
 	{
 		this->read(cfg);
@@ -113,7 +106,6 @@ struct addon_info
 			this->feedback_url = o.feedback_url;
 			this->updated = o.updated;
 			this->created = o.created;
-			this->order = o.order;
 			this->local_only = o.local_only;
 		}
 		return *this;
