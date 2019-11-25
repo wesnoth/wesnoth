@@ -722,21 +722,6 @@ const team& play_controller::current_team() const
 	return gamestate().board_.get_team(current_side());
 }
 
-/// @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
-static int modulo(int num, int mod, int min)
-{
-	assert(mod > 0);
-	int n = (num - min) % mod;
-	if (n < 0)
-		n += mod;
-	//n is now in [0, mod)
-	n = n + min;
-	return n;
-	// the following properties are easy to verify:
-	//  1) For all m: modulo(num, mod, min) == modulo(num + mod*m, mod, min)
-	//  2) For all 0 <= m < mod: modulo(min + m, mod, min) == min + m
-}
-
 bool play_controller::is_team_visible(int team_num, bool observer) const
 {
 	const team& t = gamestate().board_.get_team(team_num);

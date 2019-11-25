@@ -3788,6 +3788,11 @@ int game_lua_kernel::intf_set_time_of_day(lua_State * L)
 			return luaL_argerror(L, 1, "invalid time of day ID");
 		}
 	}
+
+	if(new_time == 0 && num_times == 0) {
+		//ignore this case, because we don't want code like set_current_time(get_current_time()) to fail if num_times is 0.
+		return 0;
+	}
 	if(new_time < 0 || new_time >= num_times) {
 		return luaL_argerror(L, 1, "invalid time of day index");
 	}

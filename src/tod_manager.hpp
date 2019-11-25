@@ -195,11 +195,19 @@ class tod_manager
 		 * for_turn_number: for which current turn
 		 * current_time: the main or time area's current time
 		 */
-		int calculate_current_time(
-			const int number_of_times,
-			const int for_turn_number,
-			const int current_time,
-			const bool only_to_allowed_range = false) const;
+		static int fix_time_index(
+			int number_of_times,
+			int time);
+		/**
+		 * Computes for the main time or a time area the index of its times where we're currently at.
+		 * number_of_times: size of that main time or time area's times vector
+		 * for_turn_number: for which current turn
+		 * current_time: the main or time area's current time
+		 */
+		int calculate_time_index_at_turn(
+			int number_of_times,
+			int for_turn_number,
+			int current_time) const;
 		/**
 		 * Computes the maximum absolute value of lawful_bonus in the schedule.
 		 */
@@ -210,7 +218,6 @@ class tod_manager
 		 * and all time areas.
 		 */
 		void set_new_current_times(const int new_current_turn_number);
-
 
 		struct area_time_of_day {
 			area_time_of_day() :
