@@ -19,7 +19,8 @@ function ca_healer_move:evaluation(cfg, data)
 
     local healers, healers_noMP = {}, {}
     for _,healer in ipairs(all_healers) do
-        if (healer.moves > 0) then
+        -- For the purpose of this evaluation, guardians count as units without moves
+        if (healer.moves > 0) and (not healer.status.guardian) then
             table.insert(healers, healer)
         else
             table.insert(healers_noMP, healer)

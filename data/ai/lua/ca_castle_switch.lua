@@ -35,12 +35,12 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
         return 0
     end
 
-    local leader = wesnoth.units.find_on_map {
-            side = wesnoth.current.side,
-            canrecruit = 'yes',
-            formula = '(movement_left = total_movement) and (hitpoints = max_hitpoints)',
-            { "and", filter_own }
-        }[1]
+    local leader = AH.get_units_with_moves({
+        side = wesnoth.current.side,
+        canrecruit = 'yes',
+        formula = '(movement_left = total_movement) and (hitpoints = max_hitpoints)',
+        { "and", filter_own }
+    }, true)[1]
     if not leader then
         -- CA is irrelevant if no leader or the leader may have moved from another CA
         data.leader_target = nil
@@ -191,11 +191,11 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
 end
 
 function ca_castle_switch:execution(cfg, data, filter_own)
-    local leader = wesnoth.units.find_on_map {
+    local leader = AH.get_units_with_moves({
         side = wesnoth.current.side,
         canrecruit = 'yes',
         { "and", filter_own }
-    }[1]
+    }, true)[1]
 
     if AH.print_exec() then AH.print_ts('   Executing castle_switch CA') end
     if AH.show_messages() then wesnoth.wml_actions.message { speaker = leader.id, message = 'Switching castles' } end
