@@ -35,13 +35,30 @@ void one_item::set_item_shown(const unsigned index, const bool show)
 		do_select_item(index);
 	} else if(!show && is_selected(index)) {
 		do_deselect_item(index);
-
-		for(unsigned i = 1; i < get_item_count(); ++i) {
-			unsigned new_index = (index + i) % get_item_count();
-			if(get_item_shown(new_index)) {
-				do_select_item(new_index);
-				break;
+		if(get_selected_item_count() == 0) {
+			bool found_new_item = false;
+			const unsigned item_count = get_item_count();
+			const unsigned ordered_index = get_ordered_index(index);
+			// find the next shown item
+			for(unsigned i = ordered_index + 1; i < item_count; ++i) {
+				unsigned new_index = get_item_at_ordered(i);
+				if(get_item_shown(new_index)) {
+					do_select_item(new_index);
+					found_new_item = true;
+					break;
+				}
 			}
+			// fall back to finding the previous shown item
+			if(!found_new_item) {
+				for(signed i = static_cast<signed>(ordered_index) - 1; i >= 0; --i) {
+					unsigned new_index = get_item_at_ordered(static_cast<unsigned>(i));
+					if(get_item_shown(new_index)) {
+						do_select_item(new_index);
+						break;
+					}
+				}
+			}
+			// if neither search found a new item, accept that there are zero items selected
 		}
 	}
 }
@@ -65,28 +82,8 @@ bool one_item::deselect_item(const unsigned index)
 
 void one_item::delete_item(const unsigned index)
 {
-	/** @todo do_select_item needs to test for shown flag. */
-
-	if(is_selected(index)) {
-		do_deselect_item(index);
-
-		if(get_selected_item_count() == 0) {
-			// Are there items left?
-			const unsigned item_count = get_item_count();
-			const unsigned visible_index = get_ordered_index(index);
-
-			if(item_count > 1) {
-				// Is the last item deselected?
-				if(visible_index == item_count - 1) {
-					// Select the second last.
-					do_select_item(get_item_at_ordered(visible_index - 1));
-				} else {
-					// Select the next item.
-					do_select_item(get_item_at_ordered(visible_index + 1));
-				}
-			}
-		}
-	}
+	// this needs the same logic for ensuring that at least one item is selected
+	set_item_shown(index, false);
 }
 
 void no_item::set_item_shown(const unsigned index, const bool show)
