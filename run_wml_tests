@@ -1,391 +1,222 @@
-#!/bin/bash
-#This script runs a sequence of wml unit test scenarios.
-#Use -h to get help with usage.
+#!/usr/bin/env python3
+# encoding: utf-8
+"""
+This script runs a sequence of wml unit test scenarios.
+"""
 
-usage()
-{
-  echo "Usage:" $0 "[OPTIONS] [EXTRA-ARGS]"
-  echo "Executes a series of wml unit test scenarios found in a file."
-  echo
-  echo -e "Options:"
-  echo -e "\t-h\tShows this help."
-  echo -e "\t-v\tVerbose mode."
-  echo -e "\t-w\tVery verbose mode. (Debug script.)"
-  echo -e "\t-c\tClean mode. (Don't load any add-ons. Used for mainline tests.)"
-  echo -e "\t-a arg\tAdditional arguments to go to wesnoth."
-  echo -e "\t-t arg\tNew timer value to use, instead of 10s as default."
-  echo -e "\t  \t0s means no timer, and also skips tests that expect timeout."
-  echo -e "\t-s\tDisable strict mode. By default, we run wesnoth with option"
-  echo -e "\t  \t'--log-strict=warning' to ensure errors result in a failed test."
-  echo -e "\t-d\tRun wesnoth-debug binary instead of wesnoth."
-  echo -e "\t-g\tIf we encounter a crash, generate a backtrace using gdb. Must have gdb installed for this option."
-  echo -e "\t-p arg\tPath to wesnoth binary. By default assume it is with this script."
-  if [ $(uname) = "Darwin" ]; then
-    echo -e "\t  \tThe special value xcode searches in XCode's DerivedProducts directory."
-  fi
-  echo -e "\t-l arg\tLoads list of tests from the given file."
-  echo -e "\t  \tBy default, the file is wml_test_schedule."
-  echo
-  echo "Each line in the list of tests should be formatted:"
-  echo -e "\n\t<expected return code> <name of unit test scenario>\n"
-  echo "Lines beginning # are treated as comments."
-  echo "Expected return codes:"
-  for i in `seq 0 4`;
-  do
-    get_code_string $i
-    echo -e "\t" $i "-" $CodeString
-  done
-  echo
-  echo "Extra arguments besides these options are saved and passed on to wesnoth."
-}
+import argparse, enum, os, re, subprocess, sys
 
-get_code_string()
-{
-  case ${1} in
-  0)
-    CodeString="PASS"
-    ;;
-  1)
-    CodeString="FAIL"
-    ;;
-  2)
-    CodeString="FAIL (TIMEOUT)"
-    ;;
-  3)
-    CodeString="FAIL (INVALID REPLAY)"
-    ;;
-  4)
-    CodeString="FAIL (ERRORED REPLAY)"
-    ;;
-  124)
-    CodeString="FAIL (TIMEOUT, by TERM signal)"
-    ;;
-  137)
-    CodeString="FAIL (TIMEOUT, by KILL signal)"
-    ;;
-  134)
-    CodeString="FAIL (ASSERTION FAILURE ? ? ?)"
-    ;;
-  139)
-    CodeString="FAIL (SEGFAULT ? ? ?)"
-    ;;
-  *)
-    CodeString="FAIL (? ? ?)"
-    ;;
-  esac
-}
+class UnexpectedTestStatusException(Exception):
+    """Exception raised when a unit test doesn't return the expected result."""
+    pass
 
-check_errs()
-{
-  # Argument 1 is the name of the test.
-  # Argument 2 is the wesnoth error code for the test.
-  # Argument 3 is the expected error code.
-  if [ "${2}" -eq 124 -a "${3}" -eq 2 ]; then
-    if [ "$Verbose" -ge 2 ]; then
-      echo "Caught return code 124 from timeout"
-      echo "This signal means that the unix timeout utility killed wesnoth with TERM."
-      echo "Since we expected timeout, the test passes."
-    fi
-    return 0
-  elif [ "${2}" -eq 137 -a "${3}" -eq 2 ]; then
-    if [ "$Verbose" -ge 2 ]; then
-      echo "Caught return code 137 from timeout"
-      echo "This signal means that the unix timeout utility killed wesnoth with KILL."
-      echo "Since we expected timeout, the test passes."
-    fi
-    return 0
-  elif [ "${2}" -ne "${3}" ]; then
-    echo "${1}" ":"
-    get_code_string ${2}
-    printf '%-55s %3d - %s\n' "  Observed result :" "${2}" "$CodeString"
-    get_code_string ${3}
-    printf '%-55s %3d - %s\n' "  Expected result :" "${3}" "$CodeString"
-    if [ "$Verbose" -ge 2 -a -f "error.log" ]; then
-      echo ""
-      echo "Found error.log:"
-      cat error.log
-    fi
-    return 1
-  fi
-  return 0
-}
+class UnitTestResult(enum.Enum):
+    """Enum corresponding to game_launcher.hpp's unit_test_result"""
+    PASS = 0
+    FAIL = 1
+    TIMEOUT = 2
+    FAIL_LOADING_REPLAY = 3
+    FAIL_PLAYING_REPLAY = 4
 
-handle_error_log()
-{
-  if [ -f "error.log" ]; then
-    if [ "${1}" -ne 0 ]; then
-      if [ -f "errors.log" ]; then
-        echo -e "\n--- next unit test ---\n" >> errors.log
-        cat error.log >> errors.log
-      else
-        cp error.log errors.log
-      fi
-    fi
+class TestCase:
+    """Represents a single line of the wml_test_schedule."""
+    def __init__(self, status, name):
+        self.status = status
+        self.name = name
 
-    rm error.log
-  fi
-}
+    def __str__(self):
+        return "TestCase<{status}, {name}>".format(status=self.status, name=self.name)
 
-run_test()
-{
-  # Argument 1 is the expected error code
-  # Argument 2 is the name of the test scenario
-  # Argument 3 (optional) overrides strict mode (0 to disable, 1 to enable)
+class TestListParser:
+    """Each line in the list of tests should be formatted:
+        <expected return code><space><name of unit test scenario>
 
-  preopts=""
-  binary="$BinPath"
-  opts="-u$2 "
+    For example:
+        0 test_functionality
 
-  timer=$basetimer
+    Lines beginning # are treated as comments.
+    """
+    def __init__(self, options):
+        self.verbose = options.verbose
+        self.filename = options.list
 
-  if [ "$DebugMode" -eq 1 ]; then
-    binary+="wesnoth-debug "
-  else
-    binary+="wesnoth "
-  fi
+    def get(self):
+        status_name_re = re.compile(r"^(\d+) ([\w-]+)$")
+        test_list = []
+        for line in open(self.filename, mode="rt"):
+            line = line.strip()
+            if line == "" or line.startswith("#"):
+                continue
 
-  # Use validcache on tests that aren't the first test.
-  if [ "$FirstTest" -eq 1 ]; then
-    ((timer *= 2))
-  else
-    opts+="--validcache "
-  fi
+            x = status_name_re.match(line)
+            if x is None:
+                print("Could not parse test list file: ", line)
 
-  # Add a timeout using unix timeout utility
-  if [ $timer -gt 0 ]; then
-    # Some versions might not support the --kill-after option
-    timeout --kill-after=5 1 true
-    # Exit code of timeout is 125 if the command itself fails, like if we passed a bad argument
-    if [ $? -ne 125 ]; then
-      timer1=$((timer+1))
-      preopts+="timeout --kill-after=$timer1 $timer "
-    else
-      preopts+="timeout $timer "
-    fi
-  elif [ $1 -eq 2 ]; then
-    # If timeout is disabled, skip tests that expect it
-    return 100
-  fi
+            t = TestCase(UnitTestResult(int(x.groups()[0])), x.groups()[1])
+            if self.verbose > 1:
+                print(t)
+            test_list.append(t)
+        return test_list
 
-  strict_mode=$3
-  if [ -z "$strict_mode" ]; then
-    strict_mode=$StrictMode
-  fi
+def run_with_rerun_for_sdl_video(args, timeout):
+    """A wrapper for subprocess.run with a workaround for the issue of travis+18.04
+    intermittently failing to initialise SDL.
+    """
+    # Sanity check on the number of retries. It's a rare failure, a single retry would probably
+    # be enough.
+    sdl_retries = 0
+    while sdl_retries < 10:
+        # For compatibility with Ubuntu 16.04 LTS, this has to run on Python3.5,
+        # so the capture_output argument is not available.
+        res = subprocess.run(args, timeout=timeout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        if res.stderr.find(b"Could not initialize SDL_video") == -1:
+            return res
+        sdl_retries += 1
+        print("Could not initialise SDL_video error, attempt", sdl_retries)
 
-  # If running strict, then set strict level to "warning"
-  if [ "$strict_mode" -eq 1 ]; then
-    opts+="--log-strict=warning "
-  fi
+class WesnothRunner:
+    def __init__(self, options):
+        self.verbose = options.verbose
+        if options.path is None:
+            path = os.path.split(os.path.realpath(sys.argv[0]))[0]
+        elif options.path in ["XCode", "xcode", "Xcode"]:
+            import glob
+            path_list = []
+            for build in ["Debug", "Release"]:
+                pattern = os.path.join("~/Library/Developer/XCode/DerivedData/Wesnoth*",
+                    build, "Build/Products/Release/Wesnoth.app/Contents/MacOS/")
+                path_list.extend(glob.glob(os.path.expanduser(pattern)))
+            if len(path_list) == 0:
+                raise FileNotFoundError("Couldn't find your xcode build dir")
+            if len(path_list) > 1:
+                # seems better than choosing one at random
+                raise RuntimeError("Found more than one xcode build dir")
+            path = path_list[0]
+        else:
+            path = options.path
+        path += "/wesnoth"
+        if options.debug_bin:
+            path += "-debug"
+        self.common_args = [path]
+        if options.strict_mode:
+            self.common_args.append("--log-strict=warning")
+        if options.clean:
+            self.common_args.append("--noaddons")
+        if options.additional_arg is not None:
+            self.common_args.extend(options.additional_arg)
+        self.timeout = options.timeout
+        if self.verbose > 1:
+            print("Options that will be used for all Wesnoth instances:", repr(self.common_args))
 
-  # If running clean mode, then pass "--noaddons"
-  if [ "$CleanMode" -eq 1 ]; then
-    opts+="--noaddons "
-  fi
+    def run_tests(self, test_list):
+        """Run all of the tests in a single instance of Wesnoth"""
+        if len(test_list) == 0:
+            raise ValueError("Running an empty test list")
+        if len(test_list) > 1:
+            for test in test_list:
+                if test.status != UnitTestResult.PASS:
+                    raise NotImplementedError("run_tests doesn't yet support batching tests with non-zero statuses")
+        expected_result = test_list[0].status
+        args = self.common_args.copy()
+        for test in test_list:
+            args.append("-u")
+            args.append(test.name)
+        if self.timeout == 0:
+            timeout = None
+        else:
+            # could add a separate option for batch timeouts, but for now this is enough
+            timeout = int (self.timeout * (1 + 0.2 * len(test_list)))
+        if len(test_list) == 1:
+            print("Running test", test_list[0].name)
+        else:
+            print("Running", len(test_list), "tests")
+        if self.verbose > 1:
+            print(repr(args))
+        try:
+            res = run_with_rerun_for_sdl_video(args, timeout)
+        except subprocess.TimeoutExpired as e:
+            # Using subprocess.run we can't access the captured output,
+            # for now just create a result so that this can be handled
+            # by the same code path as other statuses.
+            res = subprocess.CompletedProcess(args, UnitTestResult.TIMEOUT.value,
+                stderr = "Timed out (killed by Python timeout implementation)")
+        if self.verbose > 1:
+            print("Result:", res.returncode, "\n", res.stderr)
+        if res.returncode < 0:
+            print("Wesnoth exited because of signal", -res.returncode)
+            if options.backtrace:
+                print("Launching GDB for a backtrace...")
+                gdb_args = ["gdb", "-q", "-batch", "-ex", "start", "-ex", "continue", "-ex", "bt", "-ex", "quit", "--args"]
+                gdb_args.extend(args)
+                subprocess.run(gdb_args, timeout=240)
+            raise UnexpectedTestStatusException()
+        if res.returncode != expected_result.value:
+            print("Result:", res.returncode, "Expected:", expected_result)
+            raise UnexpectedTestStatusException()
 
-  # Assemble command
-  command="$preopts"
-  command+="$binary"
-  command+="$opts"
-  command+="$extra_opts"
-  if [ "$Verbose" -eq 1 ]; then
-    echo "$command"
-  elif [ "$Verbose" -eq 2 ]; then
-    echo "$command" "2> error.log"
-  fi
-  $command 2> error.log
-  error_code="$?"
-  # workaround to fix issue in travis+18.04
-  while grep -q 'Could not initialize SDL_video' error.log; do
-    echo "Could not initialize SDL_video error, retrying..."
-    $command 2> error.log
-    error_code="$?"
-  done
-  if check_errs $2 $error_code $1; then
-    FirstTest=0 #Only start using validcache flag when at least one test has passed without error
-    handle_error_log 0
-    return 0
-  else
-    # If we got a code of value at least 128, and it wasn't KILL timeout, it means we segfaulted / failed assertion etc. most likely, so run gdb to get a backtrace
-    if [ "$GdbBacktraceMode" -eq 1 -a "$error_code" -ge 128 -a "$error_code" -ne 137 ]; then
-        echo -e "\n* Launching gdb for a backtrace...\n" >>error.log
-        gdb -q -batch -ex start -ex continue -ex bt -ex quit --args $binary $opts $extra_opts >>error.log
-    fi
+def test_batcher(test_list):
+    """A generator function that collects tests into batches which a single
+    instance of Wesnoth can run.
+    """
+    expected_to_pass = []
+    for test in test_list:
+        if test.status == UnitTestResult.PASS:
+            expected_to_pass.append(test)
+        else:
+            yield [test]
+    yield expected_to_pass
 
-    handle_error_log 1
-    return 1
-  fi
-}
+if __name__ == '__main__':
+    ap = argparse.ArgumentParser()
+    # The options that are mandatory to support (because they're used in the Travis script)
+    # are the one-letter forms of verbose, clean, timeout and backtrace.
+    ap.add_argument("-v", "--verbose", action="count", default=0,
+        help="Verbose mode. Use -v twice for very verbose mode.")
+    ap.add_argument("-c", "--clean", action="store_true",
+        help="Clean mode. (Don't load any add-ons. Used for mainline tests.)")
+    ap.add_argument("-a", "--additional_arg", action="append",
+        help="Additional arguments to go to wesnoth. For options that start with a hyphen, '--add_argument --data-dir' will give an error, use '--add_argument=--data-dir' instead.")
+    ap.add_argument("-t", "--timeout", type=int, default=10,
+        help="New timer value to use, instead of 10s as default. The value 0 means no timer, and also skips tests that expect timeout.")
+    ap.add_argument("-s", "--no-strict", dest="strict_mode", action="store_false",
+        help="Disable strict mode. By default, we run wesnoth with the option --log-strict=warning to ensure errors result in a failed test.")
+    ap.add_argument("-d", "--debug_bin", action="store_true",
+        help="Run wesnoth-debug binary instead of wesnoth.")
+    ap.add_argument("-g", "--backtrace", action="store_true",
+        help="If we encounter a crash, generate a backtrace using gdb. Must have gdb installed for this option.")
+    ap.add_argument("-p", "--path", metavar="dir",
+        help="Path to wesnoth binary. By default assume it is with this script.")
+    ap.add_argument("-l", "--list", metavar="filename",
+        help="Loads list of tests from the given file.",
+    default="wml_test_schedule")
 
+    # Workaround for argparse not accepting option values that start with a hyphen,
+    # for example "-a --user-data-dir". https://bugs.python.org/issue9334
+    # New callers can use "-a=--user-data-dir", but compatibility with the old version
+    # of run_wml_tests needs support for "-a --user-data-dir".
+    try:
+        while True:
+            i = sys.argv.index("-a")
+            sys.argv[i] = "=".join(["-a", sys.argv.pop(i + 1)])
+    except IndexError:
+        pass
+    except ValueError:
+        pass
 
-### Main Script Starts Here ###
+    options = ap.parse_args()
 
-Verbose=0
-UnixTimeout=0
-CleanMode=0
-LoadFile="wml_test_schedule"
-BinPath="./"
-StrictMode=1
-DebugMode=0
-GdbBacktraceMode=0
-extra_opts=""
-basetimer=10
-export OMP_WAIT_POLICY=PASSIVE
+    if options.verbose > 1:
+        print(repr(options))
 
-while getopts ":hvwcusdgp:l:a:t:" Option
-do
-  case $Option in
-    h )
-      usage
-      exit 0;
-      ;;
-    v )
-      if [ "$Verbose" -lt 1 ]; then
-        Verbose=1
-      fi
-      ;;
-    w )
-      if [ "$Verbose" -lt 2 ]; then
-        Verbose=2
-      fi
-      ;;
-    c )
-      CleanMode=1
-      ;;
-    u )
-      UnixTimeout=1
-      ;;
-    s )
-      StrictMode=0
-      ;;
-    d )
-      DebugMode=1
-      ;;
-    g )
-      GdbBacktraceMode=1
-      ;;
-    p )
-      if [ "$OPTARG" = "XCode" -o "$OPTARG" = "xcode" -o "$OPTARG" = "Xcode" ]; then
-        # Find it in XCode's build dir
-        path_list=( ~/Library/Developer/XCode/DerivedData/Wesnoth*/Build/Products/{Debug,Release}/Wesnoth.app/Contents/MacOS/ )
-        BinPath="${path_list[0]}"
-      else
-        BinPath="$OPTARG"
-      fi
-      ;;
-    l )
-      LoadFile="$OPTARG"
-      ;;
-    a )
-      extra_opts+=" $OPTARG"
-      ;;
-    t )
-      echo "Replacing default timer of 10 with" "$OPTARG" "seconds."
-      basetimer="$OPTARG"
-      ;;
-  esac
-done
-shift $(($OPTIND - 1))
+    test_list = TestListParser(options).get()
+    runner = WesnothRunner(options)
 
-extra_opts+="$*"
+    a_test_failed = False
+    for batch in test_batcher(test_list):
+        try:
+            runner.run_tests(batch)
+        except UnexpectedTestStatusException:
+            a_test_failed = True
 
-# Make sure the binary exists
-if [ "$DebugMode" -eq 1 ]; then
-  if [ ! -x "$BinPath/wesnoth-debug" ]; then
-    echo "Wesnoth binary not found at $BinPath/wesnoth-debug"
-    exit 1
-  fi
-else
-  if [ ! -x "$BinPath/wesnoth" ]; then
-    echo "Wesnoth binary not found at $BinPath/wesnoth"
-    exit 1
-  fi
-fi
-
-if [ "$Verbose" -ge 2 ]; then
-  if [ "${#extra_opts}" -ge 0 ]; then
-    echo "Found additional arguments to wesnoth: " "$extra_opts"
-  fi
-  if [ "$UnixTimeout" -eq 1 ]; then
-    echo "Wesnoth built-in timeout was disabled. This script was updated, and -u is now unnecessary and has no effect."
-  fi
-fi
-
-# Disable timeouts if the timeout utility is missing
-if [ ! $(which timeout) ]; then
-  echo 'timeout not found; skipping timeout tests'
-  basetimer=0
-fi
-
-echo "Getting tests from" "$LoadFile" "..."
-
-old_IFS=$IFS
-IFS=$'\n'
-schedule=($(cat $LoadFile)) # array
-IFS=$old_IFS
-
-NumTests=0
-NumComments=0
-
-for line in "${schedule[@]}"
-do
-    if [[ "$line" =~ \#.* ]]; then
-      NumComments=$((NumComments+1))
-    else
-      NumTests=$((NumTests+1))
-    fi
-done
-
-echo "Running" $NumTests "test scenarios."
-
-if [ -f "errors.log" ]; then
-  rm errors.log
-fi
-
-AllPassed=1
-FirstTest=1
-TotalPassed=0
-
-for line in "${schedule[@]}"
-do
-    if [[ "$line" =~ \#.* ]]; then
-      if [ "$Verbose" -ge 2 ]; then
-        echo "comment:" $line
-      fi
-    else
-      if [ "$Verbose" -eq 0 ]; then
-        echo -n "."
-      fi
-      if run_test $line; then #note: don't put run_test inside a pipe implicitly by using ! or something, this will cause the FirstTest variable not to work properly
-        if [ "$Verbose" -ge 2 ]; then
-          echo "good"
-        elif [ "$Verbose" -eq 0 ]; then
-          echo -ne '\b:'
-        fi
-        TotalPassed=$((TotalPassed+1))
-      elif [ $? -ne 100 ]; then
-        if [ "$Verbose" -eq 0 ]; then
-          echo -ne '\b!'
-        fi
-        AllPassed=0
-      fi
-    fi
-done
-
-if [ "$Verbose" -eq 0 ]; then
-  echo ''
-fi
-
-if [ "$AllPassed" -eq 0 ]; then
-  if [ "$StrictMode" -eq 1 ]; then
-    echo "$TotalPassed" "out of" "$NumTests" "tests were correct."
-  else
-    echo "$TotalPassed" "out of" "$NumTests" "tests were correct. (However, some tests may expect to be running in strict mode, and not fail as expected otherwise.)"
-  fi
-  echo "Not all tests gave the correct result."
-  echo "Check errors.log for error reports."
-  exit 2
-else
-  echo "All tests gave the correct result."
-  exit 0
-fi
-
+    if a_test_failed:
+        sys.exit(1)
