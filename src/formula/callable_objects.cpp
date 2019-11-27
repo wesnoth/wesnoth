@@ -283,7 +283,7 @@ variant unit_callable::get_value(const std::string& key) const
 			if(needs_flip) {
 				val = 100 - val;
 			}
-			res.emplace(p.first, val);
+			res.emplace(variant(p.first), variant(val));
 		}
 
 		return variant(res);
