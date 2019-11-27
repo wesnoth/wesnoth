@@ -1584,6 +1584,184 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
     return path, cost
 end
 
+function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally_map, enemy_map, enemy_zoc_map, strict_avoid)
+    -- Custom cost function for path finding which takes hexes to be avoided into account.
+    -- See the notes in function ai_helper.find_path_with_avoid()
+    --
+    -- For efficiency reasons, this function requires quite a few arguments to be passed to it.
+    -- Function ai_helper.find_path_with_avoid() does most of this automatically, but the custom cost
+    -- function can be accessed directly also for even more customized behavior.
+
+    if enemy_map and enemy_map:get(x, y) then
+        return ai_helper.no_path
+    end
+    if strict_avoid and avoid_map and avoid_map:get(x, y) then
+        return ai_helper.no_path
+    end
+
+    local max_moves = unit.max_moves
+    local terrain = wesnoth.get_terrain(x, y)
+    local move_cost = wesnoth.unit_movement_cost(unit, terrain)
+
+    if (move_cost > max_moves) then
+        return ai_helper.no_path
+    end
+
+    local prev_moves = math.floor(prev_cost)  -- remove all the minor ratings
+    -- Note that prev_moves_left == max_moves if the unit ended turn on previous hex, as it should
+    local prev_moves_left = max_moves - (unit.max_moves - unit.moves + prev_moves) % max_moves
+
+    if enemy_zoc_map and enemy_zoc_map:get(x,y) then
+        if (move_cost < prev_moves_left) then
+            move_cost = prev_moves_left
+        end
+    end
+
+    local moves_left = prev_moves_left - move_cost
+
+    -- Determine whether previous hex was marked as unusable for ending the turn on (in the ones' place
+    -- after multiplying by 100000), and also how many allied units are lines up along the path (tenth' place)
+    -- Working with large integers for this part, in order to prevent rounding errors
+    local prev_cost_int = math.floor(prev_cost * 100000 + 0.001)
+    local unit_penalty = math.floor((prev_cost * 100000 - prev_cost_int + 0.001) * 10) / 10
+    local avoid_penalty = math.floor(prev_cost_int - math.floor(prev_cost_int / 10) * 10 + 0.001)
+    local move_cost_int = math.floor(move_cost * 100000 + 0.001)
+
+    -- Apply unit_penalty only for the first turn
+    local is_first_turn = false
+    if (prev_moves < unit.moves) then is_first_turn = true end
+
+    if is_first_turn then
+        -- If the hex is both not-avoided and does not have a unit on it, we clear unit_penalty.
+        -- Otherwise we add in the move cost of the current hex.
+        -- The purpose of this is to have units spread out rather than move in a line, but note
+        -- that this only works between paths to the hex that use up the same movement cost.
+        -- It is fundamentally impossible with the Wesnoth A* search algorithm to make the unit
+        -- choose a longer path in this way.
+        if (ally_map and ally_map:get(x, y)) or (avoid_map and avoid_map:get(x, y)) then
+            unit_penalty = unit_penalty + move_cost / 10
+            -- We restrict this two 9 MP, even for units with more moves
+            if (unit_penalty > 0.9) then unit_penalty = 0.9 end
+            move_cost_int = move_cost_int + unit_penalty
+        else
+            move_cost_int = move_cost_int - unit_penalty
+            unit_penalty = 0
+        end
+    end
+
+    if (moves_left < 0) then
+        -- This is the situation when there were moves left on the previous hex,
+        -- but not enough to enter this hex. In this case, we need to apply the appropriate penalty:
+        --  - If avoided hex: disqualify it
+        --  - Otherwise use up full move on previous hex
+        --  - Also, apply the unit line-up penalty, but only if this is the first move
+        if (avoid_penalty > 0) then -- avoided hex
+            return ai_helper.no_path
+        end
+        move_cost_int = move_cost_int + prev_moves_left * 100000
+        if is_first_turn then
+            move_cost_int = move_cost_int + unit_penalty * 10 * 100000 -- unit_penalty is multiples of 0.1
+        end
+    elseif (moves_left == 0) then
+        -- And this is the case when moving to this hex uses up all moves for the turn
+        if avoid_map and avoid_map:get(x, y) then
+            return ai_helper.no_path
+        end
+        if is_first_turn then
+            move_cost_int = move_cost_int + unit_penalty * 10 * 100000 -- unit_penalty is multiples of 0.1
+        end
+    end
+
+    -- Here's the part that marks the hex as (un)usable
+    -- We first need to subtract out the previous penalty
+    move_cost_int = move_cost_int - avoid_penalty
+    -- Then we need to add in a small number (remember everything is divided by 100000 at the end)
+    -- because the move cost returned by this functions needs to be >= 1.  Use defense for this,
+    -- thus giving a small bonus (low resulting move cost) for good terrain.
+    -- Note that the returned cost is rounded to an integer by the engine, so for very long paths this
+    -- will potentially add to the cost and might make the path inaccurate. However, for an average
+    -- defense of 50 along the path, this will not happen until the path is 1000 hexes long. Also,
+    -- in most cases this will simply add to the cost, rather than change the path itself.
+    local defense = unit:defense(terrain)
+    -- We need this to be multiples of 10 for the penalty identification to work
+    defense = H.round(defense / 10) * 10
+    if (defense > 90) then defense = 90 end
+    if (defense < 10) then defense = 10 end
+    move_cost_int = move_cost_int + defense
+    -- And finally we add a (very small) penalty for this hex if it is to be avoided
+    -- This is used for the next hex to determine whether the previous hex was to be
+    -- avoided via avoid_penalty above.
+    if avoid_map and avoid_map:get(x, y) then
+        move_cost_int = move_cost_int + 1
+    end
+
+    return move_cost_int / 100000
+end
+
+function ai_helper.find_path_with_avoid(unit, x, y, avoid_map, options)
+    -- Find path while taking hexes to be avoided into account. In its default setting,
+    -- it also finds the path so that the unit does not end a move on a hex with an allied
+    -- unit, which is one of the main shortcomings of the default path finder.
+    --
+    -- Important notes:
+    --  - There are two modes of avoiding hexes: the default for which the unit may move through
+    --    the avoided area but not end a move on it; and a "strict avoid" mode for which the
+    --    path may not lead through the avoided area at all.
+    --  - Not ending turns on hexes with allied units is meant to with units moving around each other,
+    --    but this can cause problems in narrow passages. It can therefore also be turned off.
+    --  - This cost function does not provide all the configurability of the default path finder.
+    --    The functionality is as follows:
+    --     - Hexes with visible enemy units are always excluded, and enemy ZoC is taken into account
+    --     - Invisible enemies are always ignored (including those under shroud)
+    --     - Hexes with higher terrain defense are preferred, all else being equal.
+    --
+    -- OPTIONAL INPUTS:
+    --  @options: Note that this is not the same as the @cfg table that can be passed to wesnoth.find_path().
+    --    Possible fields are:
+    --     @strict_avoid: if 'true', trigger the "strict avoid" mode described above
+    --     @ignore_allies: if 'true', allied units will not be taken into account.
+
+    options = options or {}
+
+    -- This needs to be done separately, otherwise a path that only goes a short time into the
+    -- avoided area might not be disqualified correctly. It also saves evaluation time in other cases.
+    if avoid_map:get(x,y) then
+        return nil, ai_helper.no_path
+    end
+
+    local all_units = wesnoth.get_units()
+    local ally_map, enemy_map = LS.create(), LS.create()
+    for _,u in ipairs(all_units) do
+        if (u.id ~= unit.id) and ai_helper.is_visible_unit(wesnoth.current.side, u) then
+            if wesnoth.sides.is_enemy(u.side, wesnoth.current.side) then
+                enemy_map:insert(u.x, u.y, u.level)
+            else
+                if (not options.ignore_allies) then
+                    ally_map:insert(u.x, u.y, u.level)
+                end
+            end
+        end
+    end
+
+    local enemy_zoc_map = LS.create()
+    if (not unit:ability("skirmisher")) then
+        enemy_map:iter(function(x, y, level)
+            if (level > 0) then
+                for xa,ya in H.adjacent_tiles(x, y) do
+                    enemy_zoc_map:insert(xa, ya, level)
+                end
+            end
+        end)
+    end
+
+    -- Note: even though the cost function returns a float, the engine rounds the cost to an integer
+    return ai_helper.find_path_with_shroud(unit, x, y, {
+        calculate = function(xc, yc, current_cost)
+            return ai_helper.custom_cost_with_avoid(xc, yc, current_cost, unit, avoid_map, ally_map, enemy_map, enemy_zoc_map, options.strict_avoid)
+        end
+    })
+end
+
 function ai_helper.find_best_move(units, rating_function, cfg)
     -- Find the best move and best unit based on @rating_function
     -- INPUTS:
