@@ -217,7 +217,7 @@ inline void lua_object<terrain_filter>::from_type(lua_State *L, std::shared_ptr<
 		lua_createtable(L, locs.size(), 0);
 		for(const map_location& loc : locs) {
 			luaW_pushlocation(L, loc);
-			lua_rawseti(L, -1, lua_rawlen(L, -2) + 1);
+			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
 		}
 	} else lua_pushnil(L);
 }
