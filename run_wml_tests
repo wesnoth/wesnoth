@@ -129,7 +129,8 @@ class WesnothRunner:
         if len(test_list) == 1:
             print("Running test", test_list[0].name)
         else:
-            print("Running", len(test_list), "tests")
+            print("Running {count} tests ({names})".format(count=len(test_list),
+                names=", ".join([test.name for test in test_list])))
         if self.verbose > 1:
             print(repr(args))
         try:
@@ -151,7 +152,8 @@ class WesnothRunner:
                 subprocess.run(gdb_args, timeout=240)
             raise UnexpectedTestStatusException()
         if res.returncode != expected_result.value:
-            print("Result:", res.returncode, "Expected:", expected_result)
+            print(str(res.stderr, encoding="utf-8", errors="backslashreplace"))
+            print("Failure, Wesnoth returned", res.returncode, "but we expected", expected_result.value)
             raise UnexpectedTestStatusException()
 
 def test_batcher(test_list):
