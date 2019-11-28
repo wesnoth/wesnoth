@@ -1388,10 +1388,16 @@ function ai_helper.next_hop(unit, x, y, cfg)
     --     viewing_side: see comments at beginning of this file. Defaults to side of @unit
     --   plus:
     --     ignore_own_units: if set to true, then own units that can move out of the way are ignored
+    --     path: if given, find the next hop along this path, rather than doing new path finding
+    --       In this case, it is assumed that the path is possible, in other words, that cost has been checked
 
-    local path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
-
-    if cost >= ai_helper.no_path then return nil, cost end
+    local path, cost
+    if cfg and cfg.path then
+        path = cfg.path
+    else
+        path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
+        if cost >= ai_helper.no_path then return nil, cost end
+    end
 
     -- If none of the hexes are unoccupied, use current position as default
     local next_hop, nh_cost = { unit.x, unit.y }, 0
