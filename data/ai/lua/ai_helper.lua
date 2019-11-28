@@ -1155,6 +1155,7 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     --   - enemies of the side defined in @side,
     --   - not petrified
     --   - and visible to the side defined in @cfg.viewing_side.
+    --   - have at least one adjacent hex that is not inside an area to avoid
     -- For speed reasons, this is done separately, rather than calling ai_helper.get_visible_units().
     --
     -- Optional parameters:
@@ -1164,6 +1165,8 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     -- @side: side number, if side other than current side is to be considered
     -- @cfg: table with optional configuration parameters:
     --   viewing_side: see comments at beginning of this file. Defaults to @side.
+    --   avoid_map: if given, an enemy is included only if it does not have at least one
+    --     adjacent hex outside of avoid_map
 
     side = side or wesnoth.current.side
     local viewing_side = cfg and cfg.viewing_side or side
@@ -1181,7 +1184,19 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
            and (not unit.status.petrified)
            and unit:matches(filter_plus_vision)
         then
-            table.insert(enemies, unit)
+            local is_avoided = false
+            if cfg and cfg.avoid_map then
+                is_avoided = true
+                for xa,ya in H.adjacent_tiles(unit.x, unit.y) do
+                    if (not cfg.avoid_map:get(xa, ya)) then
+                        is_avoided = false
+                        break
+                    end
+                end
+            end
+            if (not is_avoided) then
+                table.insert(enemies, unit)
+            end
         end
     end
 
