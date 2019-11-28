@@ -1390,6 +1390,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
     --     ignore_own_units: if set to true, then own units that can move out of the way are ignored
     --     path: if given, find the next hop along this path, rather than doing new path finding
     --       In this case, it is assumed that the path is possible, in other words, that cost has been checked
+    --     avoid_map: a location set with the hexes the unit is not allowed to step on
 
     local path, cost
     if cfg and cfg.path then
@@ -1405,28 +1406,30 @@ function ai_helper.next_hop(unit, x, y, cfg)
     -- Go through loop to find reachable, unoccupied hex along the path
     -- Start at second index, as first is just the unit position itself
     for i = 2,#path do
-        local sub_path, sub_cost = ai_helper.find_path_with_shroud(unit, path[i][1], path[i][2], cfg)
+        if (not cfg) or (not cfg.avoid_map) or (not cfg.avoid_map:get(path[i][1], path[i][2])) then
+            local sub_path, sub_cost = ai_helper.find_path_with_shroud(unit, path[i][1], path[i][2], cfg)
 
-        if sub_cost <= unit.moves then
-            -- Check for unit in way only if cfg.ignore_units is not set
-            local unit_in_way
-            if (not cfg) or (not cfg.ignore_units) then
-                unit_in_way = wesnoth.units.get(path[i][1], path[i][2])
+            if sub_cost <= unit.moves then
+                -- Check for unit in way only if cfg.ignore_units is not set
+                local unit_in_way
+                if (not cfg) or (not cfg.ignore_units) then
+                    unit_in_way = wesnoth.units.get(path[i][1], path[i][2])
 
-                -- If ignore_own_units is set, ignore own side units that can move out of the way
-                if cfg and cfg.ignore_own_units then
-                    if unit_in_way and (unit_in_way.side == unit.side) then
-                        local reach = ai_helper.get_reachable_unocc(unit_in_way, cfg)
-                        if (reach:size() > 1) then unit_in_way = nil end
+                    -- If ignore_own_units is set, ignore own side units that can move out of the way
+                    if cfg and cfg.ignore_own_units then
+                        if unit_in_way and (unit_in_way.side == unit.side) then
+                            local reach = ai_helper.get_reachable_unocc(unit_in_way, cfg)
+                            if (reach:size() > 1) then unit_in_way = nil end
+                        end
                     end
                 end
-            end
 
-            if not unit_in_way then
-                next_hop, nh_cost = path[i], sub_cost
+                if not unit_in_way then
+                    next_hop, nh_cost = path[i], sub_cost
+                end
+            else
+                break
             end
-        else
-            break
         end
     end
 
