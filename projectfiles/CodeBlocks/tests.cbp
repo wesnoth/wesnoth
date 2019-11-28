@@ -6,9 +6,8 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Script file="lib_finder.script" />
 			<Target title="Release">
-				<Option output="../../wesnoth" prefix_auto="1" extension_auto="1" />
+				<Option output="../../tests" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../../" />
 				<Option object_output=".objs-release" />
 				<Option type="0" />
@@ -18,7 +17,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Debug">
-				<Option output="../../wesnoth-debug" prefix_auto="1" extension_auto="1" />
+				<Option output="../../tests-debug" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../../" />
 				<Option object_output=".objs-debug" />
 				<Option type="0" />
