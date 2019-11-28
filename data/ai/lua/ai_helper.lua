@@ -89,11 +89,17 @@ function ai_helper.put_labels(map, cfg)
     --   - keys: (array) if the value to be displayed is a subelement of the LS data,
     --     use these keys to access it. For example, if we want to display data[3]
     --     set keys = { 3 }, if it's data.arg[3], set keys = { 'arg', 3 }
+    --   - clear=true: (boolean) if set to 'false', do not clear existing labels
+    --   - color=nil: (string) the color string to be used for the output
 
     cfg = cfg or {}
     local factor = cfg.factor or 1
 
-    ai_helper.clear_labels()
+    local clear_labels = cfg.clear
+    if (clear_labels == nil) then clear_labels = true end
+    if clear_labels then
+        ai_helper.clear_labels()
+    end
 
     map:iter(function(x, y, data)
         local out
@@ -111,7 +117,7 @@ function ai_helper.put_labels(map, cfg)
         end
 
         if (type(out) == 'number') then out = out * factor end
-        wesnoth.label { x = x, y = y, text = out }
+        wesnoth.label { x = x, y = y, text = out, color = cfg.color }
     end)
 end
 
