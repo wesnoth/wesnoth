@@ -172,9 +172,9 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
                 local unit = wesnoth.units.get(loc[1], loc[2])
                 if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                     should_wait = false
-                    break
                 elseif unit.moves > 0 then
                     should_wait = true
+                    break
                 end
             end
             if should_wait then
