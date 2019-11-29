@@ -33,7 +33,7 @@ end
 
 -- Given a set of units, return one from the set that should retreat and the location to retreat to
 -- Return nil if no unit needs to retreat
-function retreat_functions.retreat_injured_units(units)
+function retreat_functions.retreat_injured_units(units, avoid_map)
     -- Split units into those that regenerate and those that do not
     local regen, regen_amounts, non_regen = {}, {}, {}
     for i,u in ipairs(units) do
@@ -60,7 +60,7 @@ function retreat_functions.retreat_injured_units(units)
     -- First we retreat non-regenerating units to healing terrain, if they can get to a safe location
     local unit_nr, loc_nr, threat_nr
     if non_regen[1] then
-        unit_nr, loc_nr, threat_nr = retreat_functions.get_retreat_injured_units(non_regen, {})
+        unit_nr, loc_nr, threat_nr = retreat_functions.get_retreat_injured_units(non_regen, {}, avoid_map)
         if unit_nr and (threat_nr == 0) then
             return unit_nr, loc_nr, threat_nr
         end
@@ -69,7 +69,7 @@ function retreat_functions.retreat_injured_units(units)
     -- Then we retreat regenerating units to terrain with high defense, if they can get to a safe location
     local unit_r, loc_r, threat_r
     if regen[1] then
-        unit_r, loc_r, threat_r = retreat_functions.get_retreat_injured_units(regen, regen_amounts)
+        unit_r, loc_r, threat_r = retreat_functions.get_retreat_injured_units(regen, regen_amounts, avoid_map)
         if unit_r and (threat_r == 0) then
             return unit_r, loc_r, threat_r
         end
@@ -118,7 +118,7 @@ function retreat_functions.get_healing_locations()
     return healing_locs
 end
 
-function retreat_functions.get_retreat_injured_units(healees, regen_amounts)
+function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avoid_map)
     -- Only retreat to safe locations
     local enemies = AH.get_attackable_enemies()
     local enemy_attack_map = BC.get_attack_map(enemies)
@@ -134,20 +134,22 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts)
             -- Unit cannot self heal, make the terrain do it for us if possible
             local location_subset = {}
             for j,loc in ipairs(possible_locations) do
-                local heal_amount = wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1], loc[2])).healing or 0
-                if heal_amount == true then
-                    -- handle deprecated syntax
-                    -- TODO: remove this when removed from game
-                    heal_amount = 8
+                if (not avoid_map) or (not avoid_map:get(loc[1], loc[2])) then
+                    local heal_amount = wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1], loc[2])).healing or 0
+                    if heal_amount == true then
+                        -- handle deprecated syntax
+                        -- TODO: remove this when removed from game
+                        heal_amount = 8
+                    end
+                    local curing = 0
+                    if heal_amount > 0 then
+                        curing = 2
+                    end
+                    local healer_values = healing_locs:get(loc[1], loc[2]) or {0, 0}
+                    heal_amount = math.max(heal_amount, healer_values[1])
+                    curing = math.max(curing, healer_values[2])
+                    table.insert(location_subset, {loc[1], loc[2], heal_amount, curing})
                 end
-                local curing = 0
-                if heal_amount > 0 then
-                    curing = 2
-                end
-                local healer_values = healing_locs:get(loc[1], loc[2]) or {0, 0}
-                heal_amount = math.max(heal_amount, healer_values[1])
-                curing = math.max(curing, healer_values[2])
-                table.insert(location_subset, {loc[1], loc[2], heal_amount, curing})
             end
 
             possible_locations = location_subset

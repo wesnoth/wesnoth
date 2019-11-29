@@ -6,7 +6,7 @@ local M = wesnoth.map
 local CS_leader_score
 -- Note that leader_target is also needed by the recruiting CA, so it must be stored in 'data'
 
-local function get_reachable_enemy_leaders(unit)
+local function get_reachable_enemy_leaders(unit, avoid_map)
     -- We're cheating a little here and also find hidden enemy leaders. That's
     -- because a human player could make a pretty good educated guess as to where
     -- the enemy leaders are likely to be while the AI does not know how to do that.
@@ -14,10 +14,13 @@ local function get_reachable_enemy_leaders(unit)
         { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
     }
     local enemy_leaders = {}
-    for j,e in ipairs(potential_enemy_leaders) do
-        local path, cost = wesnoth.find_path(unit, e.x, e.y, { ignore_units = true, viewing_side = 0 })
-        if cost < AH.no_path then
-            table.insert(enemy_leaders, e)
+    for _,e in ipairs(potential_enemy_leaders) do
+        -- Cannot use AH.find_path_with_avoid() here as there might be enemies all around the enemy leader
+        if (not avoid_map:get(e.x, e.y)) then
+            local path, cost = wesnoth.find_path(unit, e.x, e.y, { ignore_units = true, viewing_side = 0 })
+            if cost < AH.no_path then
+                table.insert(enemy_leaders, e)
+            end
         end
     end
 
@@ -50,12 +53,17 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
 
     local cheapest_unit_cost = AH.get_cheapest_recruit_cost()
 
+    local avoid_map = AH.get_avoid_map(ai, nil, true)
+
     if data.leader_target and wesnoth.sides[wesnoth.current.side].gold >= cheapest_unit_cost then
         -- make sure move is still valid
-        local next_hop = AH.next_hop(leader, data.leader_target[1], data.leader_target[2])
+        local path, cost = AH.find_path_with_avoid(leader, data.leader_target[1], data.leader_target[2], avoid_map)
+        local next_hop = AH.next_hop(leader, nil, nil, { path = path, avoid_map = avoid_map })
         if next_hop and next_hop[1] == data.leader_target[1]
         and next_hop[2] == data.leader_target[2] then
             return CS_leader_score
+        else
+        	data.leader_target = nil
         end
     end
 
@@ -81,13 +89,13 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
         return 0
     end
 
-    local enemy_leaders = get_reachable_enemy_leaders(leader)
+    local enemy_leaders = get_reachable_enemy_leaders(leader, avoid_map)
 
     -- Look for the best keep
-    local best_score, best_loc, best_turns = 0, {}, 3
+    local best_score, best_loc, best_turns, best_path = 0, {}, 3
     for i,loc in ipairs(keeps) do
         -- Only consider keeps within 2 turns movement
-        local path, cost = wesnoth.find_path(leader, loc[1], loc[2])
+        local path, cost = AH.find_path_with_avoid(leader, loc[1], loc[2], avoid_map)
         local score = 0
         -- Prefer closer keeps to enemy
         local turns = math.ceil(cost/leader.max_moves)
@@ -101,6 +109,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
                 best_score = score
                 best_loc = loc
                 best_turns = turns
+                best_path = path
             end
         end
     end
@@ -130,7 +139,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
     end
 
     if best_score > 0 then
-        local next_hop = AH.next_hop(leader, best_loc[1], best_loc[2])
+        local next_hop = AH.next_hop(leader, nil, nil, { path = best_path, avoid_map = avoid_map })
 
         if next_hop and ((next_hop[1] ~= leader.x) or (next_hop[2] ~= leader.y)) then
             -- See if there is a nearby village that can be captured without delaying progress
@@ -138,12 +147,12 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
                 { "and", { x = next_hop[1], y = next_hop[2], radius = leader.max_moves }},
                 owner_side = 0 })
             for i,loc in ipairs(close_villages) do
-                local path_village, cost_village = wesnoth.find_path(leader, loc[1], loc[2])
+                local path_village, cost_village = AH.find_path_with_avoid(leader, loc[1], loc[2], avoid_map)
                 if cost_village <= leader.moves then
                     local dummy_leader = leader:clone()
                     dummy_leader.x = loc[1]
                     dummy_leader.y = loc[2]
-                    local path_keep, cost_keep = wesnoth.find_path(dummy_leader, best_loc[1], best_loc[2])
+                    local path_keep, cost_keep = wesnoth.find_path(dummy_leader, best_loc[1], best_loc[2], avoid_map)
                     local turns_from_keep = math.ceil(cost_keep/leader.max_moves)
                     if turns_from_keep < best_turns
                     or (turns_from_keep == 1 and wesnoth.sides[wesnoth.current.side].gold < cheapest_unit_cost)

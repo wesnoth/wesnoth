@@ -1,6 +1,7 @@
 ------- Retreat CA --------------
 
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local LS = wesnoth.require "location_set"
 local R = wesnoth.require "ai/lua/retreat.lua"
 
 local retreat_unit, retreat_loc
@@ -15,7 +16,8 @@ function ca_retreat_injured:evaluation(cfg, data, filter_own)
         side = wesnoth.current.side,
         { "and", filter_own }
     }, true)
-    local unit, loc = R.retreat_injured_units(units)
+    local avoid_map = LS.of_pairs(ai.aspects.avoid)
+    local unit, loc = R.retreat_injured_units(units, avoid_map)
     if unit then
         retreat_unit = unit
         retreat_loc = loc

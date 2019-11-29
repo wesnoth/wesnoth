@@ -2,6 +2,7 @@
 
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
+local LS = wesnoth.require "location_set"
 local M = wesnoth.map
 
 local GV_unit, GV_village
@@ -25,8 +26,15 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
 
     local enemies = AH.get_attackable_enemies()
 
-    local villages = wesnoth.get_villages()
-    -- Just in case:
+    local avoid_map = LS.of_pairs(ai.aspects.avoid)
+
+    local all_villages, villages = wesnoth.get_villages(), {}
+    for _,village in ipairs(all_villages) do
+        if (not avoid_map:get(village[1], village[2])) then
+            table.insert(villages, village)
+        end
+    end
+
     if (not villages[1]) then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
         return 0
