@@ -1412,6 +1412,12 @@ function ai_helper.next_hop(unit, x, y, cfg)
     --     path: if given, find the next hop along this path, rather than doing new path finding
     --       In this case, it is assumed that the path is possible, in other words, that cost has been checked
     --     avoid_map: a location set with the hexes the unit is not allowed to step on
+    --     fan_out=true: prior to Wesnoth 1.16, the unit strictly followed the path, which can lead to
+    --       a line-up of units if there are allied units in the way (e.g. when multiple units are
+    --       moved by the same candidate action. Now they fan out instead, trying to get as close to
+    --       the ideal next_hop goal (defined as where the unit could get if there were no allied units
+    --       in the way) as possible. Setting 'fan_out=false' restores the old behavior. The main
+    --       disadvantage of the new method is that it needs to do more path finding and therefore takes longer.
 
     local path, cost
     if cfg and cfg.path then
@@ -1423,6 +1429,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
 
     -- If none of the hexes are unoccupied, use current position as default
     local next_hop, nh_cost = { unit.x, unit.y }, 0
+    local next_hop_ideal = { unit.x, unit.y }
 
     -- Go through loop to find reachable, unoccupied hex along the path
     -- Start at second index, as first is just the unit position itself
@@ -1448,8 +1455,60 @@ function ai_helper.next_hop(unit, x, y, cfg)
                 if not unit_in_way then
                     next_hop, nh_cost = path[i], sub_cost
                 end
+                next_hop_ideal = path[i]
             else
                 break
+            end
+        end
+    end
+
+    local fan_out = cfg and cfg.fan_out
+    if (fan_out == nil) then fan_out = true end
+    if fan_out and ((next_hop[1] ~= next_hop_ideal[1]) or (next_hop[2] ~= next_hop_ideal[2]))
+    then
+        -- If we cannot get to the ideal next hop, try fanning out instead
+        local reach = wesnoth.find_reach(unit, cfg)
+
+        -- Need the reach map of the unit from the ideal next hop hex
+        -- There will always be another unit there, otherwise we would not have gotten here
+        local unit_in_way = wesnoth.get_unit(next_hop_ideal[1], next_hop_ideal[2])
+        unit_in_way:extract()
+        local old_x, old_y = unit.x, unit.y
+        unit:extract()
+        unit:to_map(next_hop_ideal[1], next_hop_ideal[2])
+        local inverse_reach = wesnoth.find_reach(unit, { ignore_units = true }) -- no ZoC
+        unit:extract()
+        unit:to_map(old_x, old_y)
+        unit_in_way:to_map()
+
+        local terrain = wesnoth.get_terrain(next_hop_ideal[1], next_hop_ideal[2])
+        local move_cost_endpoint = wesnoth.unit_movement_cost(unit, terrain)
+        local inverse_reach_map = LS.create()
+        for _,r in pairs(inverse_reach) do
+            -- We want the moves left for moving into the opposite direction in which the reach map was calculated
+            local terrain = wesnoth.get_terrain(r[1], r[2])
+            local move_cost = wesnoth.unit_movement_cost(unit, terrain)
+            local inverse_cost = r[3] + move_cost - move_cost_endpoint
+            inverse_reach_map:insert(r[1], r[2], inverse_cost)
+        end
+
+        local units = ai_helper.get_visible_units(
+            cfg and cfg.viewing_side or unit.side,
+            { { "not", { id = unit.id } }
+        })
+        local unit_map = LS.create()
+        for _,u in ipairs(units) do unit_map:insert(u.x, u.y, u.id) end
+
+        local max_rating = inverse_reach_map:get(next_hop[1], next_hop[2]) -- do not move farther away
+        for _,loc in ipairs(reach) do
+            if (not unit_map:get(loc[1], loc[2]))
+                and ((not cfg) or (not cfg.avoid_map) or (not cfg.avoid_map:get(loc[1], loc[2])))
+            then
+                local rating = inverse_reach_map:get(loc[1], loc[2]) or - math.huge
+                if (rating > max_rating) then
+                    max_rating = rating
+                    next_hop = { loc[1], loc[2] } -- eliminating the third argument
+                end
             end
         end
     end
