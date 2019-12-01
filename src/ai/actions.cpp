@@ -171,8 +171,9 @@ team& action_result::get_my_team() const
 
 
 // attack_result
-attack_result::attack_result( side_number side, const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon, double aggression, const unit_advancements_aspect& advancements)
-	: action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon), aggression_(aggression), advancements_(advancements){
+attack_result::attack_result( side_number side, const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon, double aggression)
+	: action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon), aggression_(aggression)
+{
 }
 
 void attack_result::do_check_before()
@@ -285,23 +286,26 @@ void attack_result::do_execute()
 		return;
 	}
 
-	//FIXME: find a way to 'ask' the ai which advancement should be chosen from synced_commands.cpp .
-	if(!synced_context::is_synced()) //RAII block for set_scontext_synced
+	if(!synced_context::is_synced())
 	{
-		wb::real_map rm;
-		//we don't use synced_context::run_in_synced_context because that wouldn't allow us to pass advancements_
-		resources::recorder->add_synced_command("attack", replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
-			d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
-			resources::tod_manager->get_time_of_day()));
-		set_scontext_synced sync;
-		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
-		resources::controller->check_victory();
-		resources::controller->maybe_throw_return_to_play_side();
-		sync.do_final_checkup();
+		synced_context::run_and_throw("attack",
+			replay_helper::get_attack(
+				attacker_loc_,
+				defender_loc_,
+				attacker_weapon,
+				defender_weapon,
+				a_->type_id(),
+				d_->type_id(),
+				a_->level(),
+				d_->level(),
+				resources::tod_manager->turn(),
+				resources::tod_manager->get_time_of_day()
+			)
+		);
 	}
 	else
 	{
-		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
+		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true);
 	}
 
 
@@ -996,10 +1000,9 @@ attack_result_ptr actions::execute_attack_action(side_number side,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		int attacker_weapon,
-		double aggression,
-		const unit_advancements_aspect& advancements)
+		double aggression)
 {
-	attack_result_ptr action(new attack_result(side, attacker_loc, defender_loc, attacker_weapon, aggression, advancements));
+	attack_result_ptr action(new attack_result(side, attacker_loc, defender_loc, attacker_weapon, aggression));
 	execute_or_check(*action, execute);
 	return action;
 }

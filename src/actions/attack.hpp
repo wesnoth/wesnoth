@@ -269,8 +269,7 @@ void attack_unit_and_advance(const map_location& attacker,
 		const map_location& defender,
 		int attack_with,
 		int defend_with,
-		bool update_display = true,
-		const ai::unit_advancements_aspect& ai_advancement = ai::unit_advancements_aspect());
+		bool update_display = true);
 
 /**
  * Tests if the unit at loc is currently affected by leadership.

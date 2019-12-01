@@ -227,8 +227,7 @@ static int ai_attack(lua_State *L, bool exec)
 		aggression = lua_tonumber(L, 4);
 	}
 
-	unit_advancements_aspect advancements = context.get_advancements();
-	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,exec,attacker,defender,attacker_weapon,aggression,advancements);
+	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,exec,attacker,defender,attacker_weapon,aggression);
 	return transform_ai_action(L,attack_result);
 }
 
