@@ -715,6 +715,10 @@ game_info& manager::get_ai_info()
 	return ai_info_;
 }
 
+const ai::unit_advancements_aspect& manager::get_advancement_aspect_for_side(side_number side)
+{
+	return get_active_ai_holder_for_side(side).get_ai_ref().get_advancements();
+}
 
 // =======================================================================
 // PROXY
