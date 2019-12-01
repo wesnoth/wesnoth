@@ -111,9 +111,10 @@ namespace
 		const std::vector<std::string>& options = u->advances_to();
 		std::vector<config> mod_options = u->get_modification_advances();
 
+		assert(options.size() + mod_options.size() > 0);
 		if (choice >= options.size() + mod_options.size()) {
-			LOG_DP << "animate_unit_advancement suppressed: invalid option\n";
-			return false;
+			LOG_DP << "animate_unit_advancement: invalid option, using first option\n";
+			choice = 0;
 		}
 
 		// When the unit advances, it fades to white, and then switches
