@@ -180,8 +180,8 @@ namespace
 	class unit_advancement_choice : public mp_sync::user_choice
 	{
 	public:
-		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, const ai::unit_advancements_aspect* ai_advancement, bool force_dialog)
-			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), ai_advancement_(ai_advancement), force_dialog_(force_dialog)
+		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, bool force_dialog)
+			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), force_dialog_(force_dialog)
 		{
 		}
 
@@ -209,28 +209,21 @@ namespace
 			{
 				res = randomness::generator->get_random_int(0, nb_options_-1);
 
-				// if we are called from an [event] (for example [unstore_unit] triggered an
-				// advancement of an ai unit during an ai turn) then ai_advancement_ will be empty.
-				// TODO: can we now remove the ai_advancement_ paraemter from this function or are there cases
-				// where this returns something different than  ai_advancement_ ?
-				const ai::unit_advancements_aspect* ai_advancement = ai_advancement_ ? ai_advancement_ : &ai::manager::get_singleton().get_advancement_aspect_for_side(side_num_);
+				const ai::unit_advancements_aspect& ai_advancement = ai::manager::get_singleton().get_advancement_aspect_for_side(side_num_);
 				//if ai_advancement_ is the default advancement the following code will
 				//have no effect because get_advancements returns an empty list.
-				if(ai_advancement != nullptr)
-				{
-					unit_map::iterator u = resources::gameboard->units().find(loc_);
-					if(!u) {
-						ERR_NG << "unit_advancement_choice: unit not found\n";
-						return config{};
-					}
+				unit_map::iterator u = resources::gameboard->units().find(loc_);
+				if(!u) {
+					ERR_NG << "unit_advancement_choice: unit not found\n";
+					return config{};
+				}
 
-					std::vector<std::string> allowed = ai_advancement->get_advancements(u);
-					if(!allowed.empty()){
-						std::string pick = allowed[randomness::generator->get_random_int(0, allowed.size() - 1)];
-						int res_new = get_advancement_index(*u, pick);
-						if(res_new != -1) {
-							res = res_new;
-						}
+				std::vector<std::string> allowed = ai_advancement.get_advancements(u);
+				if(!allowed.empty()){
+					std::string pick = allowed[randomness::generator->get_random_int(0, allowed.size() - 1)];
+					int res_new = get_advancement_index(*u, pick);
+					if(res_new != -1) {
+						res = res_new;
 					}
 				}
 			}
@@ -264,7 +257,6 @@ namespace
 		const map_location loc_;
 		int nb_options_;
 		int side_num_;
-		const ai::unit_advancements_aspect* ai_advancement_;
 		bool force_dialog_;
 	};
 }
@@ -299,7 +291,7 @@ void advance_unit_at(const advance_unit_params& params)
 		//we don't want to let side 1 decide it during start/prestart.
 		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
 		config selected = mp_sync::get_user_choice("choose",
-			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.ai_advancements_, params.force_dialog_), side_for);
+			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.force_dialog_), side_for);
 		//calls actions::advance_unit.
 		bool result = animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
 

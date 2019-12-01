@@ -1552,19 +1552,18 @@ void attack_unit_and_advance(const map_location& attacker,
 		const map_location& defender,
 		int attack_with,
 		int defend_with,
-		bool update_display,
-		const ai::unit_advancements_aspect& ai_advancement)
+		bool update_display)
 {
 	attack_unit(attacker, defender, attack_with, defend_with, update_display);
 
 	unit_map::const_iterator atku = resources::gameboard->units().find(attacker);
 	if(atku != resources::gameboard->units().end()) {
-		advance_unit_at(advance_unit_params(attacker).ai_advancements(ai_advancement));
+		advance_unit_at(advance_unit_params(attacker));
 	}
 
 	unit_map::const_iterator defu = resources::gameboard->units().find(defender);
 	if(defu != resources::gameboard->units().end()) {
-		advance_unit_at(advance_unit_params(defender).ai_advancements(ai_advancement));
+		advance_unit_at(advance_unit_params(defender));
 	}
 }
 
