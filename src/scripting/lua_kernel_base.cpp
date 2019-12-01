@@ -329,6 +329,22 @@ static int intf_wml_patch(lua_State* L) {
 	return 1;
 }
 
+static int intf_wml_equal(lua_State* L) {
+	config left = luaW_checkconfig(L, 1);
+	config right = luaW_checkconfig(L, 2);
+	lua_pushboolean(L, left == right);
+	return 1;
+}
+
+static int intf_wml_valid(lua_State* L) {
+	config test;
+	if(luaW_toconfig(L, 1, test)) {
+		// The validate_wml call is PROBABLY redundant, but included just in case validation changes and toconfig isn't updated to match
+		lua_pushboolean(L, test.validate_wml());
+	} else lua_pushboolean(L, false);
+	return 1;
+}
+
 /**
 * Logs a message
 * Arg 1: (optional) Logger
@@ -668,9 +684,10 @@ lua_kernel_base::lua_kernel_base()
 		{ "merge",     &intf_wml_merge},
 		{ "diff",     &intf_wml_diff},
 		{ "patch",     &intf_wml_patch},
+		{ "equal",     &intf_wml_equal},
+		{ "valid",     &intf_wml_valid},
 		{ "matches_filter", &intf_wml_matches_filter},
 		{ "tostring",       &intf_wml_tostring},
-		{ "tovconfig",      &lua_common::intf_tovconfig},
 		{ nullptr, nullptr },
 	};
 	lua_newtable(L);

@@ -21,7 +21,7 @@ end
 
 local function ensure_config(cfg)
 	if type(cfg) == 'table' then
-		return true
+		return wml.valid(cfg)
 	end
 	if type(cfg) == 'userdata' then
 		if getmetatable(cfg) == 'wml object' then return true end
@@ -35,6 +35,7 @@ end
 --! Returns the first subtag of @a cfg with the given @a name.
 --! If @a id is not nil, the "id" attribute of the subtag has to match too.
 --! The function also returns the index of the subtag in the array.
+--! Returns nil if no matching subtag is found
 function wml.get_child(cfg, name, id)
 	ensure_config(cfg)
 	for i,v in ipairs(cfg) do
@@ -48,6 +49,7 @@ end
 --! Returns the nth subtag of @a cfg with the given @a name.
 --! (Indices start at 1, as always with Lua.)
 --! The function also returns the index of the subtag in the array.
+--! Returns nil if no matching subtag is found
 function wml.get_nth_child(cfg, name, n)
 	ensure_config(cfg)
 	for i,v in ipairs(cfg) do
@@ -56,6 +58,36 @@ function wml.get_nth_child(cfg, name, n)
 			if n == 0 then return v[2], i end
 		end
 	end
+end
+
+--! Returns the first subtag of @a cfg with the given @a name that matches the @a filter.
+--! If @a name is omitted, any subtag can match regardless of its name.
+--! The function also returns the index of the subtag in the array.
+--! Returns nil if no matching subtag is found
+function wml.find_child(cfg, name, filter)
+	ensure_config(cfg)
+	if filter == nil then
+		filter = name
+		name = nil
+	end
+	for i,v in ipairs(cfg) do
+		if name == nil or v[1] == name then
+			local w = v[2]
+			if wml.matches_filter(w, filter) then return w, i end
+		end
+	end
+end
+
+--! Returns the number of attributes of the config
+function wml.attribute_count(cfg)
+	ensure_config(cfg)
+	local count = 0
+	for k,v in pairs(cfg) do
+		if type(k) == 'string' then
+			count = count + 1
+		end
+	end
+	return count
 end
 
 --! Returns the number of subtags of @a with the given @a name.
@@ -129,6 +161,8 @@ local create_tag_mt = {
 wml.tag = setmetatable({}, create_tag_mt)
 
 --[========[Config / Vconfig Unified Handling]========]
+
+-- These are slated to be moved to game kernel only
 
 function wml.literal(cfg)
 	if type(cfg) == "userdata" then
@@ -562,6 +596,28 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		if type(side) == 'number' then side = wesnoth.sides[side] end
 		return side.starting_location
 	end
+else
+	--[========[Backwards compatibility for wml.tovconfig]========]
+	local fake_vconfig_mt = {
+		__index = function(self, key)
+			if key == '__literal' or key == '__parsed' or key == '__shallow_literal' or key == '__shallow_parsed' then
+				return self
+			end
+			return self[key]
+		end
+	}
+	
+	local function tovconfig_fake(cfg)
+		ensure_config(cfg)
+		return setmetatable(cfg, fake_vconfig_mt)
+	end
+	
+	wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.valid', 1, null, tovconfig_fake, 'tovconfig is now deprecated in plugin or map generation contexts; if you need to check whether a table is valid as a WML object, use wml.valid instead.')
+	wml.tovconfig = wesnoth.deprecate_api('wml.tovconfig', 'wml.valid', 1, null, tovconfig_fake, 'tovconfig is now deprecated in plugin or map generation contexts; if you need to check whether a table is valid as a WML object, use wml.valid instead.')
+	wml.literal = wesnoth.deprecate_api('wml.literal', '(no replacement)', 1, null, wml.literal, 'Since vconfigs are not supported outside of the game kernel, this function is redundant and will be removed from plugin and map generation contexts. It will continue to work in the game kernel.')
+	wml.parsed = wesnoth.deprecate_api('wml.parsed', '(no replacement)', 1, null, wml.parsed, 'Since vconfigs are not supported outside of the game kernel, this function is redundant and will be removed from plugin and map generation contexts. It will continue to work in the game kernel.')
+	wml.shallow_literal = wesnoth.deprecate_api('wml.shallow_literal', '(no replacement)', 1, null, wml.shallow_literal, 'Since vconfigs are not supported outside of the game kernel, this function is redundant and will be removed from plugin and map generation contexts. It will continue to work in the game kernel.')
+	wml.shallow_parsed = wesnoth.deprecate_api('wml.shallow_parsed', '(no replacement)', 1, null, wml.shallow_parsed, 'Since vconfigs are not supported outside of the game kernel, this function is redundant and will be removed from plugin and map generation contexts. It will continue to work in the game kernel.')
 end
 
 --[========[GUI2 Dialog Manipulations]========]

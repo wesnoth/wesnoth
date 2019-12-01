@@ -4296,6 +4296,12 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "current");
 	lua_pop(L, 1);
 	
+	// Add tovconfig to the WML module
+	lua_getglobal(L, "wml");
+	lua_pushcfunction(L, &lua_common::intf_tovconfig);
+	lua_setfield(L, -2, "tovconfig");
+	lua_pop(L, 1);
+	
 	// Create the units module
 	cmd_log_ << "Adding units module...\n";
 	static luaL_Reg const unit_callbacks[] {

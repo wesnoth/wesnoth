@@ -781,7 +781,9 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 		int indextype = lua_type(L, -2);
 		if (indextype == LUA_TNUMBER) continue;
 		if (indextype != LUA_TSTRING) return_misformed();
-		config::attribute_value &v = cfg[lua_tostring(L, -2)];
+		const char* m = lua_tostring(L, -2);
+		if(!m || !config::valid_attribute(m)) return_misformed();
+		config::attribute_value &v = cfg[m];
 		if (lua_istable(L, -1)) {
 			int subindex = lua_absindex(L, -1);
 			std::ostringstream str;
