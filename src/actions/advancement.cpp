@@ -20,6 +20,7 @@
 
 #include "actions/vision.hpp"
 
+#include "ai/manager.hpp"  // for manager, holder
 #include "ai/lua/aspect_advancements.hpp"
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
@@ -154,6 +155,27 @@ namespace
 		return true;
 	}
 
+	int get_advancement_index(const unit& u, const std::string& id)
+	{
+		const std::vector<std::string>& type_options = u.advances_to();
+		{
+			auto pick_iter = std::find(type_options.begin(), type_options.end(), id);
+			if(pick_iter != type_options.end()) {
+				return std::distance(type_options.begin(), pick_iter);
+			}
+		}
+		{
+			auto amla_options = u.get_modification_advances();
+			auto pick_iter = std::find_if(amla_options.begin(), amla_options.end(), [&](const config& adv){
+				return adv["id"].str() == id;
+			});
+			if(pick_iter != amla_options.end()) {
+				return type_options.size() + std::distance(amla_options.begin(), pick_iter);
+			}
+		}
+		return -1;
+	}
+
 	class unit_advancement_choice : public mp_sync::user_choice
 	{
 	public:
@@ -186,26 +208,30 @@ namespace
 			{
 				res = randomness::generator->get_random_int(0, nb_options_-1);
 
+				// if we are called from an [event] (for example [unstore_unit] triggered an
+				// advancement of an ai unit during an ai turn) then ai_advancement_ will be empty.
+				// TODO: can we now remove the ai_advancement_ paraemter from this function or are there cases
+				// where this returns something different than  ai_advancement_ ?
+				const ai::unit_advancements_aspect* ai_advancement = ai_advancement_ ? ai_advancement_ : &ai::manager::get_singleton().get_advancement_aspect_for_side(side_num_);
 				//if ai_advancement_ is the default advancement the following code will
 				//have no effect because get_advancements returns an empty list.
-				if(ai_advancement_ != nullptr)
+				if(ai_advancement != nullptr)
 				{
 					unit_map::iterator u = resources::gameboard->units().find(loc_);
 					if(!u) {
 						ERR_NG << "unit_advancement_choice: unit not found\n";
 						return config{};
 					}
-					const std::vector<std::string>& options = u->advances_to();
-					const std::vector<std::string>& allowed = ai_advancement_->get_advancements(u);
 
-					for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
-						if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
-							res = std::distance(options.begin(), a);
-							break;
+					std::vector<std::string> allowed = ai_advancement->get_advancements(u);
+					if(!allowed.empty()){
+						std::string pick = allowed[randomness::generator->get_random_int(0, allowed.size() - 1)];
+						int res_new = get_advancement_index(*u, pick);
+						if(res_new != -1) {
+							res = res_new;
 						}
 					}
 				}
-
 			}
 			else
 			{
