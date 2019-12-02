@@ -24,7 +24,7 @@ local function add_overlay(x, y, cfg)
 		})
 end
 
-local function remove_overlay(x, y, name)
+function wesnoth.interface.remove_overlay(x, y, name)
 	local items = scenario_items[x * 10000 + y]
 	if not items then return end
 	wesnoth.interface.remove_hex_overlay(x, y, name)
@@ -110,8 +110,6 @@ function wml_actions.store_items(cfg)
 		end
 	end
 end
-
-wesnoth.interface.remove_item = remove_overlay
 
 function wesnoth.interface.add_item_image(x, y, name)
 	add_overlay(x, y, { x = x, y = y, image = name })
