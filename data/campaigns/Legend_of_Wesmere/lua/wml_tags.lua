@@ -7,8 +7,6 @@ local wml_actions = wesnoth.wml_actions
 local T = wml.tag
 local vars = wml.variables
 
-helper = wesnoth.require "lua/helper.lua"
-
 function wesnoth.wml_actions.shift_labels(cfg)
 	for k, v in ipairs(labels) do
 		wml_label { x = v.x, y = v.y }
@@ -60,7 +58,7 @@ end
 
 function wesnoth.wml_actions.unstore_left_behind_units(cfg)
 	if wml.variables["l3_store_kalenz"] ~= nil then
-		l3_store_kalenz = helper.get_variable_array("l3_store_kalenz")
+		l3_store_kalenz = wml.array_variables["l3_store_kalenz"]
 		for i,_ in ipairs(l3_store_kalenz) do
 			var_name = "l3_store_kalenz[" .. tostring(i-1) .. "]"
 			wml_actions.unstore_unit {
@@ -72,7 +70,7 @@ function wesnoth.wml_actions.unstore_left_behind_units(cfg)
 		wml.variables["l3_store_kalenz"] = nil
 	end
 	if wml.variables["l3_store_landar"] ~= nil then
-		l3_store_landar = helper.get_variable_array("l3_store_landar")
+		l3_store_landar = wml.array_variables["l3_store_landar"]
 		for i,_ in ipairs(l3_store_landar) do
 			var_name = "l3_store_landar[" .. tostring(i-1) .. "]"
 			wml_actions.unstore_unit {

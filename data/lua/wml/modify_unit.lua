@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 
@@ -90,7 +89,7 @@ local function is_simple(cfg)
 end
 
 local function simple_modify_unit(cfg)
-	local filter = wml.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
+	local filter = wml.get_child(cfg, "filter") or wml.error "[modify_unit] missing required [filter] tag"
 	-- todo: investigate the following attrtibutes:
 	--       id, alpha, flying, overlays
 	local simple_attributes = {
@@ -160,7 +159,7 @@ local function simple_modify_unit(cfg)
 				if wesnoth.effects[apply_to] then
 					wesnoth.effects[apply_to](u, tagcontent)
 				else
-					helper.wml_error("[modify_unit] had invalid [effect]apply_to value")
+					wml.error("[modify_unit] had invalid [effect]apply_to value")
 				end
 			elseif tagname == "status" then
 				for i, v in pairs(tagcontent) do
@@ -234,7 +233,7 @@ function wml_actions.modify_unit(cfg)
 		end
 	end
 
-	local filter = wml.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
+	local filter = wml.get_child(cfg, "filter") or wml.error "[modify_unit] missing required [filter] tag"
 	local function handle_unit(unit_num)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
@@ -268,7 +267,7 @@ function wml_actions.modify_unit(cfg)
 					unit = unit.__cfg;
 					wml.variables[unit_path] = unit
 				else
-					helper.wml_error("[modify_unit] had invalid [effect]apply_to value")
+					wml.error("[modify_unit] had invalid [effect]apply_to value")
 				end
 			elseif current_tag == "set_variable" then
 				local unit = wesnoth.units.create(wml.variables[unit_path])

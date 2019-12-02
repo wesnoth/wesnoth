@@ -6,11 +6,11 @@ local wml_actions = wesnoth.wml_actions
 local T = wml.tag
 
 function wml_actions.spawn_units(cfg)
-	local x = cfg.x or helper.wml_error("[spawn_units] missing required x= attribute.")
-	local y = cfg.y or helper.wml_error("[spawn_units] missing required y= attribute.")
-	local types = cfg.types or helper.wml_error("[spawn_units] missing required types= attribute.")
-	local count = cfg.count or helper.wml_error("[spawn_units] missing required count= attribute.")
-	local side = cfg.side or helper.wml_error("[spawn_units] missing required side= attribute.")
+	local x = cfg.x or wml.error("[spawn_units] missing required x= attribute.")
+	local y = cfg.y or wml.error("[spawn_units] missing required y= attribute.")
+	local types = cfg.types or wml.error("[spawn_units] missing required types= attribute.")
+	local count = cfg.count or wml.error("[spawn_units] missing required count= attribute.")
+	local side = cfg.side or wml.error("[spawn_units] missing required side= attribute.")
 
 	local done = 0
 	for i=1,count do

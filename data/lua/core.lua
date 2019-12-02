@@ -645,7 +645,7 @@ end
 --! from table @options.
 --! @return the index of the selected option.
 --! @code
---! local result = helper.get_user_choice({ speaker = "narrator" },
+--! local result = gui.get_user_choice({ speaker = "narrator" },
 --!     { "Choice 1", "Choice 2" })
 --! @endcode
 function gui.get_user_choice(attr, options)

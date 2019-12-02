@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 
 local function path_locs(path)
@@ -50,7 +49,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 		path = {to_x = cfg.to_x, to_y = cfg.to_y}
 	end
 	if not path then
-		helper.wml_error(coordinate_error)
+		wml.error(coordinate_error)
 	end
 	local fire_event = cfg.fire_event
 	local unshroud = cfg.clear_shroud
@@ -72,10 +71,10 @@ function wesnoth.wml_actions.move_unit(cfg)
 			local x, y = xs(current_unit), ys(current_unit)
 			local prevX, prevY = tonumber(current_unit.x), tonumber(current_unit.y)
 			while true do
-				x = tonumber(x) or helper.wml_error(coordinate_error)
-				y = tonumber(y) or helper.wml_error(coordinate_error)
+				x = tonumber(x) or wml.error(coordinate_error)
+				y = tonumber(y) or wml.error(coordinate_error)
 				if not (x == prevX and y == prevY) then x, y = wesnoth.find_vacant_tile(x, y, pass_check) end
-				if not x or not y then helper.wml_error("Could not find a suitable hex near to one of the target hexes in [move_unit].") end
+				if not x or not y then wml.error("Could not find a suitable hex near to one of the target hexes in [move_unit].") end
 				move_string_x = string.format("%s,%u", move_string_x, x)
 				move_string_y = string.format("%s,%u", move_string_y, y)
 				local next_x, next_y = xs(current_unit), ys(current_unit)

@@ -1,5 +1,4 @@
 
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local _ = wesnoth.textdomain "wesnoth"
 
@@ -32,7 +31,7 @@ local function get_image(cfg, speaker)
 	elseif cfg.image_pos == 'right' then
 		left_side = false
 	elseif cfg.image_pos ~= nil then
-		helper.wml_error('Invalid [message]image_pos - should be left or right')
+		wml.error('Invalid [message]image_pos - should be left or right')
 	end
 
 	return image, left_side

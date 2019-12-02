@@ -4,9 +4,9 @@ local wml_actions = wesnoth.wml_actions
 local T = wml.tag
 
 function wml_actions.harm_unit(cfg)
-	local filter = wml.get_child(cfg, "filter") or helper.wml_error("[harm_unit] missing required [filter] tag")
+	local filter = wml.get_child(cfg, "filter") or wml.error("[harm_unit] missing required [filter] tag")
 	-- we need to use shallow_literal field, to avoid raising an error if $this_unit (not yet assigned) is used
-	if not wml.shallow_literal(cfg).amount then helper.wml_error("[harm_unit] has missing required amount= attribute") end
+	if not wml.shallow_literal(cfg).amount then wml.error("[harm_unit] has missing required amount= attribute") end
 	local variable = cfg.variable -- kept out of the way to avoid problems
 	local _ = wesnoth.textdomain "wesnoth"
 	-- #textdomain wesnoth

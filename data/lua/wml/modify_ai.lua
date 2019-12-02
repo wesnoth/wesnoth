@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 
 function wesnoth.wml_actions.modify_ai(cfg)
@@ -11,7 +10,7 @@ function wesnoth.wml_actions.modify_ai(cfg)
 		local comp_type = string.sub(cfg.path, start, final)
 		component = wml.get_child(cfg, comp_type)
 		if component == nil then
-			helper.wml_error("Missing component definition in [modify_ai]")
+			wml.error("Missing component definition in [modify_ai]")
 		end
 		component = wml.parsed(component)
 	end
@@ -25,7 +24,7 @@ function wesnoth.wml_actions.modify_ai(cfg)
 			local id_final = string.len(cfg.path) - 1
 			local id = string.sub(cfg.path, id_start, id_final)
 			if id == "*" then
-				helper.wml_error("[modify_ai] can only change one component at a time")
+				wml.error("[modify_ai] can only change one component at a time")
 			elseif not component.id and not id:match("[0-9]+") then
 				component.id = id
 			end

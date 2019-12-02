@@ -3,7 +3,7 @@ local T = wml.tag
 
 local function add_animation(anim, cfg)
 	cfg = wml.shallow_parsed(cfg)
-	local flag = cfg.flag or helper.wml_error("[animate_unit] is missing flag")
+	local flag = cfg.flag or wml.error("[animate_unit] is missing flag")
 	local filter = wml.get_child(cfg, "filter")
 	local unit
 	if filter then

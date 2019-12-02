@@ -1,5 +1,4 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local H = wesnoth.require "helper"
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
 function wesnoth.micro_ais.big_animals(cfg)
@@ -171,7 +170,7 @@ end
 function wesnoth.micro_ais.hunter(cfg)
 	if (cfg.action ~= 'delete') then
 	    if (not cfg.id) and (not wml.get_child(cfg, "filter")) then
-			H.wml_error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
+			wml.error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
 		end
 		AH.get_named_loc_xy('home', cfg, 'Hunter [micro_ai] tag')
 	end

@@ -101,9 +101,9 @@ function ca_goto:execution(cfg, data)
     local enemy_map, enemy_attack_map
     if cfg.avoid_enemies then
         if (type(cfg.avoid_enemies) ~= 'number') then
-            H.wml_error("Goto AI avoid_enemies= requires a number as argument")
+            wml.error("Goto AI avoid_enemies= requires a number as argument")
         elseif (cfg.avoid_enemies <= 0) then
-            H.wml_error("Goto AI avoid_enemies= argument must be >0")
+            wml.error("Goto AI avoid_enemies= argument must be >0")
         end
 
         local enemies = AH.get_visible_units(wesnoth.current.side, {

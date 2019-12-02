@@ -20,7 +20,7 @@ That means before loading the WML tags via wesnoth.require "wml".
 ]]
 
 function wml_actions.sync_variable(cfg)
-	local names = cfg.name or helper.wml_error "[sync_variable] missing required name= attribute."
+	local names = cfg.name or wml.error "[sync_variable] missing required name= attribute."
 	local result = wesnoth.synchronize_choice(
 		function()
 			local res = {}
@@ -61,7 +61,7 @@ function wml_actions.chat(cfg)
 	local side_list = wesnoth.sides.find(cfg)
 	local speaker = tostring(cfg.speaker or "WML")
 	local message = tostring(cfg.message or
-		helper.wml_error "[chat] missing required message= attribute."
+		wml.error "[chat] missing required message= attribute."
 	)
 
 	for index, side in ipairs(side_list) do
@@ -91,7 +91,7 @@ end
 
 function wml_actions.gold(cfg)
 	local amount = tonumber(cfg.amount) or
-		helper.wml_error "[gold] missing required amount= attribute."
+		wml.error "[gold] missing required amount= attribute."
 	local sides = wesnoth.sides.find(cfg)
 	for index, team in ipairs(sides) do
 		team.gold = team.gold + amount
@@ -107,7 +107,7 @@ end
 
 function wml_actions.clear_variable(cfg, variables)
 	local names = cfg.name or
-		helper.wml_error "[clear_variable] missing required name= attribute."
+		wml.error "[clear_variable] missing required name= attribute."
 	if variables == nil then variables = wml.variables end
 	for w in utils.split(names) do
 		variables[utils.trim(w)] = nil
@@ -126,11 +126,11 @@ end
 
 function wml_actions.store_unit_type(cfg)
 	local types = cfg.type or
-		helper.wml_error "[store_unit_type] missing required type= attribute."
+		wml.error "[store_unit_type] missing required type= attribute."
 	local writer = utils.vwriter.init(cfg, "unit_type")
 	for w in utils.split(types) do
 		local unit_type = wesnoth.unit_types[w] or
-			helper.wml_error(string.format("Attempt to store nonexistent unit type '%s'.", w))
+			wml.error(string.format("Attempt to store nonexistent unit type '%s'.", w))
 		utils.vwriter.write(writer, unit_type.__cfg)
 	end
 end
@@ -156,7 +156,7 @@ function wml_actions.fire_event(cfg)
 end
 
 function wml_actions.allow_recruit(cfg)
-	local unit_types = cfg.type or helper.wml_error("[allow_recruit] missing required type= attribute")
+	local unit_types = cfg.type or wml.error("[allow_recruit] missing required type= attribute")
 	for index, team in ipairs(wesnoth.sides.find(cfg)) do
 		local v = team.recruit
 		for type in utils.split(unit_types) do
@@ -168,7 +168,7 @@ function wml_actions.allow_recruit(cfg)
 end
 
 function wml_actions.allow_extra_recruit(cfg)
-	local recruits = cfg.extra_recruit or helper.wml_error("[allow_extra_recruit] missing required extra_recruit= attribute")
+	local recruits = cfg.extra_recruit or wml.error("[allow_extra_recruit] missing required extra_recruit= attribute")
 	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local v = unit.extra_recruit
 		for recruit in utils.split(recruits) do
@@ -200,7 +200,7 @@ function wml_actions.disallow_recruit(cfg)
 end
 
 function wml_actions.disallow_extra_recruit(cfg)
-	local recruits = cfg.extra_recruit or helper.wml_error("[disallow_extra_recruit] missing required extra_recruit= attribute")
+	local recruits = cfg.extra_recruit or wml.error("[disallow_extra_recruit] missing required extra_recruit= attribute")
 	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local v = unit.extra_recruit
 		for w in utils.split(recruits) do
@@ -216,7 +216,7 @@ function wml_actions.disallow_extra_recruit(cfg)
 end
 
 function wml_actions.set_recruit(cfg)
-	local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
+	local recruit = cfg.recruit or wml.error("[set_recruit] missing required recruit= attribute")
 	for index, team in ipairs(wesnoth.sides.find(cfg)) do
 		local v = {}
 		for w in utils.split(recruit) do
@@ -227,7 +227,7 @@ function wml_actions.set_recruit(cfg)
 end
 
 function wml_actions.set_extra_recruit(cfg)
-	local recruits = cfg.extra_recruit or helper.wml_error("[set_extra_recruit] missing required extra_recruit= attribute")
+	local recruits = cfg.extra_recruit or wml.error("[set_extra_recruit] missing required extra_recruit= attribute")
 	local v = {}
 
 	for w in utils.split(recruits) do
@@ -249,7 +249,7 @@ end
 
 function wml_actions.unit_worth(cfg)
 	local u = wesnoth.units.find_on_map(cfg)[1] or
-		helper.wml_error "[unit_worth]'s filter didn't match any unit"
+		wml.error "[unit_worth]'s filter didn't match any unit"
 	local ut = wesnoth.unit_types[u.type]
 	local hp = u.hitpoints / u.max_hitpoints
 	local xp = u.experience / u.max_experience
@@ -353,7 +353,7 @@ local function get_overlay_object_id(overlay)
 end
 
 function wml_actions.unit_overlay(cfg)
-	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
+	local img = cfg.image or wml.error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local has_already = false
 		for i, w in ipairs(u.overlays) do
@@ -373,7 +373,7 @@ function wml_actions.unit_overlay(cfg)
 end
 
 function wml_actions.remove_unit_overlay(cfg)
-	local img = cfg.image or helper.wml_error( "[remove_unit_overlay] missing required image= attribute" )
+	local img = cfg.image or wml.error( "[remove_unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local has_already = false
 		for i, w in ipairs(u.overlays) do
@@ -398,7 +398,7 @@ end
 
 function wml_actions.store_unit(cfg)
 	local filter = wml.get_child(cfg, "filter") or
-		helper.wml_error "[store_unit] missing required [filter] tag"
+		wml.error "[store_unit] missing required [filter] tag"
 	local kill_units = cfg.kill
 
 	--cache the needed units here, since the filter might reference the to-be-cleared variable(s)
@@ -418,7 +418,7 @@ function wml_actions.store_unit(cfg)
 end
 
 function wml_actions.sound(cfg)
-	local name = cfg.name or helper.wml_error("[sound] missing required name= attribute")
+	local name = cfg.name or wml.error("[sound] missing required name= attribute")
 	wesnoth.play_sound(name, cfg["repeat"])
 end
 
@@ -440,11 +440,11 @@ end
 
 function wml_actions.store_reachable_locations(cfg)
 	local unit_filter = wml.get_child(cfg, "filter") or
-		helper.wml_error "[store_reachable_locations] missing required [filter] tag"
+		wml.error "[store_reachable_locations] missing required [filter] tag"
 	local location_filter = wml.get_child(cfg, "filter_location")
 	local range = cfg.range or "movement"
 	local moves = cfg.moves or "current"
-	local variable = cfg.variable or helper.wml_error "[store_reachable_locations] missing required variable= key"
+	local variable = cfg.variable or wml.error "[store_reachable_locations] missing required variable= key"
 	local reach_param = { viewing_side = cfg.viewing_side or 0 }
 	if range == "vision" then
 		moves = "max"
@@ -502,9 +502,9 @@ function wml_actions.capture_village(cfg)
 	local side = cfg.side
 	local filter_side = wml.get_child(cfg, "filter_side")
 	local fire_event = cfg.fire_event
-	if side then side = tonumber(side) or helper.wml_error("invalid side in [capture_village]") end
+	if side then side = tonumber(side) or wml.error("invalid side in [capture_village]") end
 	if filter_side then
-		if side then helper.wml_error("duplicate side information in [capture_village]") end
+		if side then wml.error("duplicate side information in [capture_village]") end
 		side = wesnoth.sides.find(filter_side)[1]
 		if side then side = side.side end
 	end
@@ -516,7 +516,7 @@ function wml_actions.capture_village(cfg)
 end
 
 function wml_actions.terrain(cfg)
-	local terrain = cfg.terrain or helper.wml_error("[terrain] missing required terrain= attribute")
+	local terrain = cfg.terrain or wml.error("[terrain] missing required terrain= attribute")
 	cfg = wml.shallow_parsed(cfg)
 	cfg.terrain = nil
 	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
@@ -526,14 +526,14 @@ end
 
 function wml_actions.delay(cfg)
 	local delay = tonumber(cfg.time) or
-		helper.wml_error "[delay] missing required time= attribute."
+		wml.error "[delay] missing required time= attribute."
 	local accelerate = cfg.accelerate or false
 	wesnoth.interface.delay(delay, accelerate)
 end
 
 function wml_actions.floating_text(cfg)
 	local locs = wesnoth.get_locations(cfg)
-	local text = cfg.text or helper.wml_error("[floating_text] missing required text= attribute")
+	local text = cfg.text or wml.error("[floating_text] missing required text= attribute")
 
 	for i, loc in ipairs(locs) do
 		wesnoth.interface.float_label(loc[1], loc[2], text, cfg.color)
@@ -613,10 +613,10 @@ end
 
 function wml_actions.add_ai_behavior(cfg)
 	local unit = wesnoth.units.find_on_map(wml.get_child(cfg, "filter"))[1] or
-		helper.wml_error("[add_ai_behavior]: no unit specified")
+		wml.error("[add_ai_behavior]: no unit specified")
 
 	local side = cfg.side or
-		helper.wml_error("[add_ai_behavior]: no side attribute given")
+		wml.error("[add_ai_behavior]: no side attribute given")
 
 	local sticky = cfg.sticky or false
 	local loop_id = cfg.loop_id or "main_loop"
@@ -628,7 +628,7 @@ function wml_actions.add_ai_behavior(cfg)
 	local uy = unit.y
 
 	if not (eval and exec) then
-		helper.wml_error("[add_ai_behavior]: invalid execution/evaluation handler(s)")
+		wml.error("[add_ai_behavior]: invalid execution/evaluation handler(s)")
 	end
 
 	local path = "stage[" .. loop_id .. "].candidate_action[" .. id .. "]" -- bca: behavior candidate action
@@ -740,7 +740,7 @@ function wml_actions.time_area(cfg)
 end
 
 function wml_actions.remove_time_area(cfg)
-	local id = cfg.id or helper.wml_error("[remove_time_area] missing required id= key")
+	local id = cfg.id or wml.error("[remove_time_area] missing required id= key")
 
 	for w in utils.split(id) do
 		wesnoth.remove_time_area(w)
@@ -781,7 +781,7 @@ function wml_actions.event(cfg)
 end
 
 function wml_actions.remove_event(cfg)
-	local id = cfg.id or helper.wml_error("[remove_event] missing required id= key")
+	local id = cfg.id or wml.error("[remove_event] missing required id= key")
 
 	for w in utils.split(id) do
 		wesnoth.remove_event_handler(w)
@@ -834,10 +834,10 @@ local function on_board(x, y)
 end
 
 wml_actions.unstore_unit = function(cfg)
-	local variable = cfg.variable or helper.wml_error("[unstore_unit] missing required 'variable' attribute")
-	local unit_cfg = wml.variables[variable] or helper.wml_error("[unstore_unit]: variable '" .. variable .. "' doesn't exist")
+	local variable = cfg.variable or wml.error("[unstore_unit] missing required 'variable' attribute")
+	local unit_cfg = wml.variables[variable] or wml.error("[unstore_unit]: variable '" .. variable .. "' doesn't exist")
 	if type(unit_cfg) ~= "table" or unit_cfg.type == nil then
-		helper.wml_error("[unstore_unit]: variable '" .. variable .. "' doesn't contain unit data")
+		wml.error("[unstore_unit]: variable '" .. variable .. "' doesn't contain unit data")
 	end
 	local unit = wesnoth.units.create(unit_cfg)
 	local advance = cfg.advance ~= false
@@ -891,7 +891,7 @@ wml_actions.teleport = function(cfg)
 end
 
 function wml_actions.remove_sound_source(cfg)
-	local ids = cfg.id or helper.wml_error("[remove_sound_source] missing required id= attribute")
+	local ids = cfg.id or wml.error("[remove_sound_source] missing required id= attribute")
 	for id in utils.split(ids) do
 		wesnoth.remove_sound_source(id)
 	end
@@ -904,7 +904,7 @@ end
 function wml_actions.deprecated_message(cfg)
 	if type(cfg.level) ~= "number" or cfg.level < 1 or cfg.level > 4 then
 		local _ = wesnoth.textdomain "wesnoth"
-		helper.wml_error(_"Invalid deprecation level (should be 1-4)")
+		wml.error(_"Invalid deprecation level (should be 1-4)")
 	end
 	wesnoth.deprecated_message(cfg.what, cfg.level, cfg.version, cfg.message or '')
 end
@@ -951,7 +951,7 @@ function wesnoth.wml_actions.zoom(cfg)
 end
 
 function wesnoth.wml_actions.story(cfg)
-	local title = cfg.title or helper.wml_error "Missing title key in [story] ActionWML"
+	local title = cfg.title or wml.error "Missing title key in [story] ActionWML"
 	gui.show_story(cfg, title)
 end
 
@@ -960,7 +960,7 @@ function wesnoth.wml_actions.cancel_action(cfg)
 end
 
 function wesnoth.wml_actions.store_unit_defense(cfg)
-	local unit = wesnoth.units.find_on_map(cfg)[1] or helper.wml_error "[store_unit_defense]'s filter didn't match any unit"
+	local unit = wesnoth.units.find_on_map(cfg)[1] or wml.error "[store_unit_defense]'s filter didn't match any unit"
 	local terrain = cfg.terrain
 	local defense
 
@@ -975,14 +975,14 @@ function wesnoth.wml_actions.store_unit_defense(cfg)
 end
 
 function wml_actions.terrain_mask(cfg)
-	cfg = helper.parsed(cfg)
+	cfg = wml.parsed(cfg)
 
 	local alignment = cfg.alignment
 	local is_odd = false
 	local border = cfg.border
 	local mask = cfg.mask
-	local x = cfg.x or helper.wml_error("[terrain_mask] missing x attribute")
-	local y = cfg.y or helper.wml_error("[terrain_mask] missing y attribute")
+	local x = cfg.x or wml.error("[terrain_mask] missing x attribute")
+	local y = cfg.y or wml.error("[terrain_mask] missing y attribute")
 	if alignment == "even" then
 		is_odd = false
 	elseif alignment == "odd" then

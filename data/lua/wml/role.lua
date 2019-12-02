@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 
 function wesnoth.wml_actions.role(cfg)
@@ -8,7 +7,7 @@ function wesnoth.wml_actions.role(cfg)
 	local filter = wml.shallow_literal(cfg)
 
 	if role == nil then
-		helper.wml_error("missing role= in [role]")
+		wml.error("missing role= in [role]")
 	end
 
 	local types = {}

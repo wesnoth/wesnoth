@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 
@@ -12,7 +11,7 @@ end
 
 wml_actions["if"] = function(cfg)
 	if not (wml.get_child(cfg, 'then') or wml.get_child(cfg, 'elseif') or wml.get_child(cfg, 'else')) then
-		helper.wml_error("[if] didn't find any [then], [elseif], or [else] children.")
+		wml.error("[if] didn't find any [then], [elseif], or [else] children.")
 	end
 
 	if wesnoth.eval_conditional(cfg) then -- evaluate [if] tag
@@ -42,7 +41,7 @@ end
 
 wml_actions["while"] = function( cfg )
 	if wml.child_count(cfg, "do") == 0 then
-		helper.wml_error "[while] does not contain any [do] tags"
+		wml.error "[while] does not contain any [do] tags"
 	end
 
 	-- execute [do] up to 65536 times
@@ -78,7 +77,7 @@ end
 
 wesnoth.wml_actions["for"] = function(cfg)
 	if wml.child_count(cfg, "do") == 0 then
-		helper.wml_error "[for] does not contain any [do] tags"
+		wml.error "[for] does not contain any [do] tags"
 	end
 
 	local loop_lim = {}
@@ -103,7 +102,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 	end
 	loop_lim = wml.tovconfig(loop_lim)
 	if loop_lim.step == 0 then -- Sanity check
-		helper.wml_error("[for] has a step of 0!")
+		wml.error("[for] has a step of 0!")
 	end
 	if (first < loop_lim.last and loop_lim.step <= 0)
 			or (first > loop_lim.last and loop_lim.step >= 0) then
@@ -152,7 +151,7 @@ end
 
 wml_actions["repeat"] = function(cfg)
 	if wml.child_count(cfg, "do") == 0 then
-		helper.wml_error "[repeat] does not contain any [do] tags"
+		wml.error "[repeat] does not contain any [do] tags"
 	end
 
 	local times = cfg.times or 1
@@ -174,10 +173,10 @@ end
 
 function wml_actions.foreach(cfg)
 	if wml.child_count(cfg, "do") == 0 then
-		helper.wml_error "[foreach] does not contain any [do] tags"
+		wml.error "[foreach] does not contain any [do] tags"
 	end
 
-	local array_name = cfg.array or helper.wml_error "[foreach] missing required array= attribute"
+	local array_name = cfg.array or wml.error "[foreach] missing required array= attribute"
 	local array = wml.array_variables[array_name]
 	if #array == 0 then return end -- empty and scalars unwanted
 	local item_name = cfg.variable or "this_item"
@@ -190,7 +189,7 @@ function wml_actions.foreach(cfg)
 		-- Some protection against external modification
 		-- It's not perfect, though - it'd be nice if *any* change could be detected
 		if array_length ~= wml.variables[array_name .. ".length"] then
-			helper.wml_error("WML array length changed during [foreach] iteration")
+			wml.error("WML array length changed during [foreach] iteration")
 		end
 		wml.variables[item_name] = value
 		-- set index variable

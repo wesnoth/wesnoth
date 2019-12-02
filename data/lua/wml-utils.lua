@@ -1,5 +1,4 @@
 
-local helper = wesnoth.require "helper"
 local utils = {vwriter = {}}
 
 function utils.trim(s)
@@ -17,7 +16,7 @@ function utils.check_key(val, key, tag, convert_spaces)
 		val = tostring(val):gsub(' ', '_')
 	end
 	if not val:match('^[a-zA-Z0-9_]+$') then
-		helper.wml_error("Invalid " .. key .. "= in [" .. tag .. "]")
+		wml.error("Invalid " .. key .. "= in [" .. tag .. "]")
 	end
 	return val
 end
@@ -117,7 +116,7 @@ function utils.handle_event_commands(cfg, scope_type)
 		if cmd == "insert_tag" then
 			cmd = arg.name
 			local from = arg.variable or
-				helper.wml_error("[insert_tag] found with no variable= field")
+				wml.error("[insert_tag] found with no variable= field")
 
 			arg = wml.variables[from]
 			if type(arg) ~= "table" then
@@ -131,7 +130,7 @@ function utils.handle_event_commands(cfg, scope_type)
 		end
 		if not string.find(cmd, "^filter") then
 			cmd = wesnoth.wml_actions[cmd] or
-				helper.wml_error(string.format("[%s] not supported", cmd))
+				wml.error(string.format("[%s] not supported", cmd))
 			if insert_from then
 				local j = 0
 				repeat
@@ -150,7 +149,7 @@ function utils.handle_event_commands(cfg, scope_type)
 	scope_stack:pop()
 	if #scope_stack == 0 then
 		if current_exit == "continue" and scope_type ~= "loop" then
-			helper.wml_error("[continue] found outside a loop scope!")
+			wml.error("[continue] found outside a loop scope!")
 		end
 		current_exit = "none"
 	end

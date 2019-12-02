@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
 
 local scenario_items = (wesnoth.require "location_set").create()
@@ -69,7 +68,7 @@ function wml_actions.item(cfg)
 		next_item_name = next_item_name + 1
 	end
 	if not cfg.image and not cfg.halo then
-		helper.wml_error "[item] missing required image= and halo= attributes."
+		wml.error "[item] missing required image= and halo= attributes."
 	end
 	for i, loc in ipairs(locs) do
 		add_overlay(loc[1], loc[2], cfg)
@@ -91,7 +90,7 @@ end
 function wml_actions.store_items(cfg)
 	local variable = cfg.variable or "items"
 	local item_name = cfg.item_name
-	variable = tostring(variable or helper.wml_error("invalid variable= in [store_items]"))
+	variable = tostring(variable or wml.error("invalid variable= in [store_items]"))
 	wml.variables[variable] = nil
 	local index = 0
 	for i, loc in ipairs(wesnoth.get_locations(cfg)) do

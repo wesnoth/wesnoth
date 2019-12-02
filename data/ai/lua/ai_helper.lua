@@ -656,7 +656,7 @@ function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
         if loc then
             return loc
         else
-            H.wml_error("Named location does not exist: " .. loc_id)
+            wml.error("Named location does not exist: " .. loc_id)
         end
     end
 
@@ -666,14 +666,14 @@ function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
     if x and y then
         local width, height = wesnoth.get_map_size()
         if (x < 1) or (x > width) or (y < 1) or (y > height) then
-            H.wml_error("Location is not on map: " .. param_x .. ',' .. param_y .. ' = ' .. x .. ',' .. y)
+            wml.error("Location is not on map: " .. param_x .. ',' .. param_y .. ' = ' .. x .. ',' .. y)
         end
 
         return { x, y }
     end
 
     if required_for then
-        H.wml_error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
+        wml.error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
     end
 end
 
@@ -705,7 +705,7 @@ function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
         local xs = ai_helper.split(cfg_x, ",")
         local ys = ai_helper.split(cfg_y, ",")
         if (#xs ~= #ys) then
-            H.wml_error("Coordinate lists need to have same number of elements: " .. param_x .. ' and ' .. param_y)
+            wml.error("Coordinate lists need to have same number of elements: " .. param_x .. ' and ' .. param_y)
         end
 
         for i,x in ipairs(xs) do
@@ -719,7 +719,7 @@ function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
     end
 
     if required_for then
-        H.wml_error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
+        wml.error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
     end
 
     return locs

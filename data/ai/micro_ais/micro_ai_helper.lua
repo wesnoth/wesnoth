@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local T = wml.tag
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
@@ -169,14 +168,14 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
         if v:match('%[[a-zA-Z0-9_]+%]')  then
             v = v:sub(2,-2)
             if not wml.get_child(cfg, v) then
-                H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. v .. "]")
+                wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. v .. "]")
             end
             for child in wml.child_range(cfg, v) do
                 table.insert(CA_cfg, T[v](child))
             end
         else
             if not cfg[v] then
-                H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. v .."=")
+                wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. v .."=")
             end
             CA_cfg[v] = cfg[v]
         end

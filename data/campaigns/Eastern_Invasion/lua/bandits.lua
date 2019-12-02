@@ -8,10 +8,10 @@ local T = wml.tag
 local vars = wml.variables
 
 function wml_actions.spread_bandit_villages(cfg)
-	local x = cfg.x or helper.wml_error("[spread_bandit_villages] missing required x= attribute.")
-	local y = cfg.y or helper.wml_error("[spread_bandit_villages] missing required y= attribute.")
-	local count = cfg.count or helper.wml_error("[spread_bandit_villages] missing required count= attribute.")
-	local types = cfg.types or helper.wml_error("[spread_bandit_villages] missing required types= attribute.")
+	local x = cfg.x or wml.error("[spread_bandit_villages] missing required x= attribute.")
+	local y = cfg.y or wml.error("[spread_bandit_villages] missing required y= attribute.")
+	local count = cfg.count or wml.error("[spread_bandit_villages] missing required count= attribute.")
+	local types = cfg.types or wml.error("[spread_bandit_villages] missing required types= attribute.")
 
 	vars.villages_visited = 0
 	vars.boss_found = false
@@ -70,8 +70,8 @@ end
 
 function wml_actions.bandit_village_capture(cfg)
 	local bandit_villages = wml.array_access.get_proxy("bandit_villages")
-	local x = cfg.x or helper.wml_error("[bandit_village_capture] missing required x= attribute.")
-	local y = cfg.y or helper.wml_error("[bandit_village_capture] missing required y= attribute.")
+	local x = cfg.x or wml.error("[bandit_village_capture] missing required x= attribute.")
+	local y = cfg.y or wml.error("[bandit_village_capture] missing required y= attribute.")
 
 	for i=1,#bandit_villages do
 		if bandit_villages[i].x == x and bandit_villages[i].y == y then
