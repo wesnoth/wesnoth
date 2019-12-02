@@ -52,7 +52,7 @@ function wesnoth.wml_actions.kill(cfg)
 			-- In the victory animation, this is simply swapped.
 			if primary then
 				if secondary_unit then
-					primary = helper.find_attack(secondary_unit, primary)
+					primary = secondary_unit:find_attack(primary)
 				else
 					primary = wesnoth.create_weapon(primary)
 				end
@@ -60,7 +60,7 @@ function wesnoth.wml_actions.kill(cfg)
 			end
 			if secondary then
 				if primary then
-					secondary = helper.find_attack(unit, secondary)
+					secondary = unit:find_attack(secondary)
 				else
 					secondary = wesnoth.create_weapon(secondary)
 				end

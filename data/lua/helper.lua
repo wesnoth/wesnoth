@@ -201,12 +201,6 @@ function helper.shuffle( t, random_func )
 	end
 end
 
-function helper.find_attack(unit, filter)
-	for i, atk in ipairs(unit.attacks) do
-		if atk:matches(filter) then return atk end
-	end
-end
-
 -- Compatibility and deprecations
 helper.distance_between = wesnoth.deprecate_api('helper.distance_between', 'wesnoth.map.distance_between', 1, nil, wesnoth.map.distance_between)
 helper.get_child = wesnoth.deprecate_api('helper.get_child', 'wml.get_child', 1, nil, wml.get_child)
@@ -221,6 +215,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	helper.wml_error = wesnoth.deprecate_api('helper.wml_error', 'wml.error', 1, nil, wml.error)
 	helper.move_unit_fake = wesnoth.deprecate_api('helper.move_unit_fake', 'wesnoth.interface.move_unit_fake', 1, nil, wesnoth.interface.move_unit_fake)
 	helper.modify_unit = wesnoth.deprecate_api('helper.modify_unit', 'wesnoth.units.modify', 1, nil, wesnoth.units.modify)
+	helper.find_attack = wesnoth.deprecate_api('helper.find_attack', 'wesnoth.units.find_attack', 1, nil, wesnoth.units.find_attack)
 end
 helper.literal = wesnoth.deprecate_api('helper.literal', 'wml.literal', 1, nil, wml.literal)
 helper.parsed = wesnoth.deprecate_api('helper.parsed', 'wml.parsed', 1, nil, wml.parsed)

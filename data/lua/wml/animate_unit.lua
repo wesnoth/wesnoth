@@ -38,11 +38,11 @@ local function add_animation(anim, cfg)
 				primary = wesnoth.create_weapon(primary)
 			end
 			if secondary then
-				secondary = helper.find_attack(unit, secondary)
+				secondary = unit:find_attack(secondary)
 			end
 		else
 			if primary then
-				primary = helper.find_attack(unit, primary)
+				primary = unit:find_attack(primary)
 			end
 			if secondary then
 				secondary = wesnoth.create_weapon(secondary)

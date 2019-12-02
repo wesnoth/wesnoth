@@ -569,6 +569,12 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 	end
 
+	function wesnoth.units.find_attack(unit, filter)
+		for i, atk in ipairs(unit.attacks) do
+			if atk:matches(filter) then return atk end
+		end
+	end
+
 	-- gets map and recalllist units.
 	function wesnoth.units.find(filter)
 		local res = wesnoth.units.find_on_map(filter)
