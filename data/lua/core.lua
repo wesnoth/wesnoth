@@ -16,6 +16,25 @@ function gui.confirm(title, msg)
 	return gui.show_prompt(title, msg, "yes_no", true)
 end
 
+--[========[Additional string support functions]========]
+
+function stringx.escaped_split(str, sep, esc)
+	esc = esc or '\\'
+	return stringx.split(str, sep, {escape = esc})
+end
+
+function stringx.quoted_split(str, sep, left, right)
+	right = right or left
+	if left == nil and right == nil then
+		left = '('
+		right = ')'
+	end
+	return stringx.split(str, sep, {quote_left = left, quote_right = right})
+end
+
+function stringx.anim_split(str, sep)
+	return stringx.split(str, sep, {expand_anim = true});
+end
 
 --[========[Config Manipulation Functions]========]
 
