@@ -91,6 +91,7 @@
    * Added tool `tmx_trackplacer`, a file converter for editing map tracks with Tiled (PR #4464)
    * Added tool trackviewer, which has the animation-preview functions of trackplacer (PR #4574)
    * Removed the python2 trackplacer tool (issue #4365)
+   * Made wmlscope recognize and analyze optional macro arguments
 
 ## Version 1.15.2
  ### AI:

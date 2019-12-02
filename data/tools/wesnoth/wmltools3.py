@@ -287,9 +287,33 @@ def isresource(filename):
     return ext and ext[1:] in resource_extensions
 
 def parse_macroref(start, line):
+    def handle_argument():
+        nonlocal opt_arg
+        nonlocal arg
+        nonlocal optional_args
+        nonlocal args
+
+        arg = arg.strip()
+        # is this an optional argument?
+        # argument names are usually made of uppercase letters, numbers and underscores
+        # if they're optional, they're followed by an equal sign
+        # stop matching on the first one, because the argument value might contain one too
+        if re.match(r"^([A-Z0-9_]+?)=", arg):
+            opt_arg, arg = arg.split("=", 1)
+        if arg.startswith('"') and arg.endswith('"'):
+            arg = arg[1:-1].strip()
+        if opt_arg:
+            optional_args[opt_arg] = arg
+            opt_arg = ""
+        else:
+            args.append(arg)
+        arg = ""
+
     brackdepth = parendepth = 0
     instring = False
+    optional_args = {}
     args = []
+    opt_arg = ""
     arg = ""
     for i in range(start, len(line)):
         if instring:
@@ -307,11 +331,7 @@ def parse_macroref(start, line):
             brackdepth -= 1
             if brackdepth == 0:
                 if not line[i-1].isspace():
-                    arg = arg.strip()
-                    if arg.startswith('"') and arg.endswith('"'):
-                        arg = arg[1:-1].strip()
-                    args.append(arg)
-                    arg = ""
+                    handle_argument()
                 break
             else:
                 arg += line[i]
@@ -323,14 +343,10 @@ def parse_macroref(start, line):
              line[i].isspace() and \
              brackdepth == 1 and \
              parendepth == 0:
-            arg = arg.strip()
-            if arg.startswith('"') and arg.endswith('"'):
-                arg = arg[1:-1].strip()
-            args.append(arg)
-            arg = ""
+            handle_argument()
         elif not line[i].isspace() or parendepth > 0:
             arg += line[i]
-    return (args, brackdepth, parendepth)
+    return (args, optional_args, brackdepth, parendepth)
 
 def formaltype(f):
     # Deduce the expected type of the formal
@@ -419,10 +435,18 @@ def actualtype(a):
         atype = "string"
     return atype
 
-def argmatch(formals, actuals):
+def argmatch(formals, optional_formals, actuals, optional_actuals):
+    if optional_formals:
+        for key in optional_actuals.keys():
+            if key not in optional_formals:
+                return False
     if len(formals) != len(actuals):
         return False
-    for (f, a) in zip(formals, actuals):
+    opt_formals, opt_actuals = [], []
+    for key, value in optional_actuals.items():
+        opt_formals.append(key)
+        opt_actuals.append(value)
+    for (f, a) in zip(formals + opt_formals, actuals + opt_actuals):
         # Here's the compatibility logic.  First, we catch the situations
         # in which a more restricted actual type matches a more general
         # formal one.  Then we have a fallback rule checking for type
@@ -465,17 +489,18 @@ def argmatch(formals, actuals):
 @total_ordering
 class Reference:
     "Describes a location by file and line."
-    def __init__(self, namespace, filename, lineno=None, docstring=None, args=None):
+    def __init__(self, namespace, filename, lineno=None, docstring=None, args=None, optional_args=None):
         self.namespace = namespace
         self.filename = filename
         self.lineno = lineno
         self.docstring = docstring
         self.args = args
+        self.optional_args = optional_args
         self.references = collections.defaultdict(list)
         self.undef = None
 
-    def append(self, fn, n, a=None):
-        self.references[fn].append((n, a))
+    def append(self, fn, n, args=None, optional_args=None):
+        self.references[fn].append((n, args, optional_args))
 
     def dump_references(self):
         "Dump all known references to this definition."
@@ -495,10 +520,10 @@ class Reference:
             return self.filename > other.filename
 
     def mismatches(self):
-        copy = Reference(self.namespace, self.filename, self.lineno, self.docstring, self.args)
+        copy = Reference(self.namespace, self.filename, self.lineno, self.docstring, self.args, self.optional_args)
         copy.undef = self.undef
         for filename in self.references:
-            mis = [(ln,a) for (ln,a) in self.references[filename] if a is not None and not argmatch(self.args, a)]
+            mis = [(ln,a,oa) for (ln,a,oa) in self.references[filename] if a is not None and not argmatch(self.args, self.optional_args, a, oa)]
             if mis:
                 copy.references[filename] = mis
         return copy
@@ -617,7 +642,7 @@ class CrossRef:
                               % (filename, n+1), file=sys.stderr)
                     else:
                         name = tokens[1]
-                        here = Reference(namespace, filename, n+1, line, args=tokens[2:])
+                        here = Reference(namespace, filename, n+1, line, args=tokens[2:], optional_args=[])
                         here.hash = hashlib.md5()
                         here.docstring = line.lstrip()[8:] # Strip off #define_
                         state = "macro_header"
@@ -641,13 +666,19 @@ class CrossRef:
                         self.xref[name] = []
                     self.xref[name].append(here)
                     state = "outside"
-                elif state == "macro_header" and line.strip() and line.strip()[0] != "#":
-                    state = "macro_body"
+                elif state == "macro_header" and line.strip():
+                    if line.strip().startswith("#arg"):
+                        state = "macro_optional_argument"
+                        here.optional_args.append(line.strip().split()[1])
+                    elif line.strip()[0] != "#":
+                        state = "macro_body"
+                elif state == "macro_optional_argument" and "#endarg" in line:
+                    state = "macro_header"
                 if state == "macro_header":
                     # Ignore macro header commends that are pragmas
                     if "wmlscope" not in line and "wmllint:" not in line:
                         here.docstring += line.lstrip()[1:]
-                if state in ("macro_header", "macro_body"):
+                if state in ("macro_header", "macro_optional_argument", "macro_body"):
                     here.hash.update(line.encode("utf8"))
                 elif line.strip().startswith("#undef"):
                     tokens = line.split()
@@ -712,6 +743,7 @@ class CrossRef:
         self.unresolved = []
         self.missing = []
         formals = []
+        optional_formals = []
         state = "outside"
         if self.warnlevel >=2 or progress:
             print("*** Beginning reference-gathering pass...")
@@ -724,11 +756,17 @@ class CrossRef:
                     have_icon = False
                     beneath = 0
                     ignoreflag = False
+                    in_macro_definition = False
                     for (n, line) in enumerate(rfp):
                         if line.strip().startswith("#define"):
                             formals = line.strip().split()[2:]
+                            in_macro_definition = True
                         elif line.startswith("#enddef"):
                             formals = []
+                            optional_formals = []
+                            in_macro_definition = False
+                        elif in_macro_definition and line.startswith("#arg"):
+                            optional_formals.append(line.strip().split()[1])
                         comment = ""
                         if '#' in line:
                             if "# wmlscope: start ignoring" in line:
@@ -760,15 +798,16 @@ class CrossRef:
                             if self.warnlevel >=2:
                                 print('"%s", line %d: seeking definition of %s' \
                                       % (fn, n+1, name))
-                            if name in formals:
+                            if name in formals or name in optional_formals:
                                 continue
                             elif name in self.xref:
                                 # Count the number of actual arguments.
                                 # Set args to None if the call doesn't
                                 # close on this line
-                                (args, brackdepth, parendepth) = parse_macroref(match.start(0), line)
+                                (args, optional_args, brackdepth, parendepth) = parse_macroref(match.start(0), line)
                                 if brackdepth > 0 or parendepth > 0:
                                     args = None
+                                    optional_args = None
                                 else:
                                     args.pop(0)
                                 #if args:
@@ -777,7 +816,7 @@ class CrossRef:
                                 # Figure out which macros might resolve this
                                 for defn in self.xref[name]:
                                     if self.visible_from(defn, fn, n+1):
-                                        defn.append(fn, n+1, args)
+                                        defn.append(fn, n+1, args, optional_args)
                                         candidates.append(str(defn))
                                 if len(candidates) > 1:
                                     print("%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(candidates)))

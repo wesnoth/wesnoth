@@ -2048,12 +2048,12 @@ def global_sanity_check(filename, lines):
                 # this here rather than hack_syntax so the character can be
                 # recognized.
                 if macname == 'LOYAL_UNIT':
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) == 7:
                         lines[i] = lines[i].replace('{LOYAL_UNIT', '{NAMED_LOYAL_UNIT', 1)
                 # Auto-recognize the people in the {NAMED_*UNIT} macros.
                 if re.match(r'NAMED_[A-Z_]*UNIT$', macname):
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) >= 7 and \
                        re.match(r'([0-9]+|[^\s]*\$[^\s]*side[^\s]*|{[^\s]*SIDE[^\s]*})$', args[1]) and \
                        re.match(r'([0-9]+|[^\s]*\$[^\s]*x[^\s]*|{[^\s]*X[^\s]*})$', args[3]) and \
@@ -2061,20 +2061,20 @@ def global_sanity_check(filename, lines):
                        len(args[5]) > 0:
                         present.append(args[5])
                 elif macname == 'RECALL':
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) == 2 and brack == 0:
                         present.append(args[1])
                 elif macname == 'RECALL_XY':
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) == 4:
                         present.append(args[1])
                 elif macname == 'CLEAR_VARIABLE':
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     for arg in [x.lstrip() for x in args[1].split(',')]:
                         if arg in storedids:
                             del storedids[arg]
                 elif macname in whomacros:
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     present.append(args[whomacros[macname]])
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
         if m:
