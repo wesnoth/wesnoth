@@ -285,6 +285,11 @@ static int intf_random(lua_State *L)
 	}
 }
 
+/**
+* Tests if a WML table matches a filter
+* Arg 1: table to test
+* Arg 2: filter
+*/
 static int intf_wml_matches_filter(lua_State* L)
 {
 	config cfg = luaW_checkconfig(L, 1);
@@ -293,7 +298,13 @@ static int intf_wml_matches_filter(lua_State* L)
 	return 1;
 }
 
-static int intf_wml_merge(lua_State* L) {
+/**
+* Merges two WML tables
+* Arg 1: base table
+* Arg 2: table to merge in
+*/
+static int intf_wml_merge(lua_State* L)
+{
 	config base = luaW_checkconfig(L, 1);
 	config merge = luaW_checkconfig(L, 2);
 	const std::string mode = lua_isstring(L, 3) ? luaL_checkstring(L, 3) : "merge";
@@ -314,14 +325,26 @@ static int intf_wml_merge(lua_State* L) {
 	return 1;
 }
 
-static int intf_wml_diff(lua_State* L) {
+/**
+* Computes a diff of two WML tables
+* Arg 1: left table
+* Arg 2: right table
+*/
+static int intf_wml_diff(lua_State* L)
+{
 	config lhs = luaW_checkconfig(L, 1);
 	config rhs = luaW_checkconfig(L, 2);
 	luaW_pushconfig(L, lhs.get_diff(rhs));
 	return 1;
 }
 
-static int intf_wml_patch(lua_State* L) {
+/**
+* Applies a diff to a WML table
+* Arg 1: base table
+* Arg 2: WML diff
+*/
+static int intf_wml_patch(lua_State* L)
+{
 	config base = luaW_checkconfig(L, 1);
 	config patch = luaW_checkconfig(L, 2);
 	base.apply_diff(patch);
@@ -329,14 +352,25 @@ static int intf_wml_patch(lua_State* L) {
 	return 1;
 }
 
-static int intf_wml_equal(lua_State* L) {
+/**
+* Tests if two WML tables are equal (have the same keys and values, same tags, recursively)
+* Arg 1: left table
+* Arg 2: right table
+*/
+static int intf_wml_equal(lua_State* L)
+{
 	config left = luaW_checkconfig(L, 1);
 	config right = luaW_checkconfig(L, 2);
 	lua_pushboolean(L, left == right);
 	return 1;
 }
 
-static int intf_wml_valid(lua_State* L) {
+/**
+* Tests if a table represents a valid WML table
+* Arg 1: table
+*/
+static int intf_wml_valid(lua_State* L)
+{
 	config test;
 	if(luaW_toconfig(L, 1, test)) {
 		// The validate_wml call is PROBABLY redundant, but included just in case validation changes and toconfig isn't updated to match
@@ -417,6 +451,11 @@ static int intf_get_time_stamp(lua_State *L) {
 	return 1;
 }
 
+/**
+* Formats a message by interpolating WML variable syntax
+* Arg 1: (optional) Logger
+* Arg 2: Message
+*/
 static int intf_format(lua_State* L)
 {
 	config cfg = luaW_checkconfig(L, 2);
@@ -431,6 +470,11 @@ static int intf_format(lua_State* L)
 	return 1;
 }
 
+/**
+* Formats a list into human-readable format
+* Arg 1: default value, used if the list is empty
+* Arg 2: list of strings
+*/
 template<bool conjunct>
 static int intf_format_list(lua_State* L)
 {
@@ -440,6 +484,9 @@ static int intf_format_list(lua_State* L)
 	return 1;
 }
 
+/**
+* Enables indexing a string by an integer, while also treating the stringx module as its metatable.__index
+*/
 static int impl_str_index(lua_State* L)
 {
 	if(lua_type(L, 2) == LUA_TSTRING) {
@@ -460,6 +507,12 @@ static int impl_str_index(lua_State* L)
 	return 0;
 }
 
+/**
+* Splits a string into parts according to options
+* Arg 1: String to split
+* Arg 2: Separator
+* Arg 3: Options table
+*/
 static int intf_str_split(lua_State* L)
 {
 	enum {BASIC, ESCAPED, PAREN, ANIM} type = BASIC;
@@ -529,6 +582,12 @@ static int intf_str_split(lua_State* L)
 	return 1;
 }
 
+/**
+* Splits a string into parenthesized portions and portions between parenthesized portions
+* Arg 1: String to split
+* Arg 2: Possible left parentheses
+* Arg 3: Matching right parentheses
+*/
 static int intf_str_paren_split(lua_State* L)
 {
 	const std::string& str = luaL_checkstring(L, 1);
@@ -542,6 +601,12 @@ static int intf_str_paren_split(lua_State* L)
 	return 1;
 }
 
+/**
+* Splits a string into a map
+* Arg 1: string to split
+* Arg 2: Separator for items
+* Arg 3: Separator for key and value
+*/
 static int intf_str_map_split(lua_State* L)
 {
 	const std::string& str = luaL_checkstring(L, 1);
@@ -571,6 +636,12 @@ static int intf_str_map_split(lua_State* L)
 	return 1;
 }
 
+/**
+* Joins a list into a string; calls __tostring and __index metamethods
+* Arg 1: list to join
+* Arg 2: separator
+* (arguments can be swapped)
+*/
 static int intf_str_join(lua_State* L) {
 	// Support both join(list, [sep]) and join(sep, list)
 	// The latter form means sep:join(list) also works.
@@ -594,6 +665,13 @@ static int intf_str_join(lua_State* L) {
 	return 1;
 }
 
+/**
+* Joins a map into a string; calls __tostring metamethods (on both key and value) but not __index
+* Arg 1: list to join
+* Arg 2: separator for items
+* Arg 3: separator for key and value
+* (list argument can be swapped to any position)
+*/
 static int intf_str_join_map(lua_State* L) {
 	// Support join_map(map, [sep], [kv_sep]), join_map(sep, map, [kv_sep]), and join_map(sep, kv_sep, map)
 	// The latter forms mean sep:join_map(kv_sep, map) and sep:join_map(map) also work.
