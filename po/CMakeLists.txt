@@ -6,7 +6,6 @@ set(NORMAL_DOMAINS
 	wesnoth
 	wesnoth-ai
 	wesnoth-anl
-	wesnoth-aoi
 	wesnoth-did
 	wesnoth-dm
 	wesnoth-dw
