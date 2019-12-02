@@ -24,7 +24,7 @@ local function add_overlay(x, y, cfg)
 		})
 end
 
-function wesnoth.interface.remove_overlay(x, y, name)
+function wesnoth.interface.remove_item(x, y, name)
 	local items = scenario_items[x * 10000 + y]
 	if not items then return end
 	wesnoth.interface.remove_hex_overlay(x, y, name)
@@ -84,7 +84,7 @@ end
 function wml_actions.remove_item(cfg)
 	local locs = wesnoth.get_locations(cfg)
 	for i, loc in ipairs(locs) do
-		remove_overlay(loc[1], loc[2], cfg.image)
+		wesnoth.interface.remove_item(loc[1], loc[2], cfg.image)
 	end
 end
 
@@ -120,7 +120,7 @@ function wesnoth.interface.add_item_halo(x, y, name)
 end
 
 local methods = {
-	remove = wesnoth.deprecate_api('items.remove', 'wesnoth.interface.remove_item', 1, nil, remove_overlay),
+	remove = wesnoth.deprecate_api('items.remove', 'wesnoth.interface.remove_item', 1, nil, wesnoth.interface.remove_item),
 	place_image = wesnoth.deprecate_api('items.place_image', 'wesnoth.interface.add_item_image', 1, nil, wesnoth.interface.add_item_image),
 	place_halo = wesnoth.deprecate_api('items.place_halo', 'wesnoth.interface.add_item_halo', 1, nil, wesnoth.interface.add_item_halo)
 }
