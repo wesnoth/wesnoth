@@ -1,14 +1,14 @@
 local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
 
-local scenario_items = {}
+local scenario_items = (wesnoth.require "location_set").create()
 local next_item_name = 0
 local function add_overlay(x, y, cfg)
 	wesnoth.interface.add_hex_overlay(x, y, cfg)
-	local items = scenario_items[x * 10000 + y]
+	local items = scenario_items:get(x, y)
 	if not items then
 		items = {}
-		scenario_items[x * 10000 + y] = items
+		scenario_items:insert(x, y, items)
 	end
 	table.insert(items,
 		{
@@ -25,7 +25,7 @@ local function add_overlay(x, y, cfg)
 end
 
 function wesnoth.interface.remove_item(x, y, name)
-	local items = scenario_items[x * 10000 + y]
+	local items = scenario_items:get(x, y)
 	if not items then return end
 	wesnoth.interface.remove_hex_overlay(x, y, name)
 	if name then
@@ -37,13 +37,13 @@ function wesnoth.interface.remove_item(x, y, name)
 		end
 	end
 	if not name or #items == 0 then
-		scenario_items[x * 10000 + y] = nil
+		scenario_items:insert(x, y, nil)
 	end
 end
 
 function wesnoth.persistent_tags.item.write(add)
-	for i,v in pairs(scenario_items) do
-		for j,w in ipairs(v) do
+	for x,y,v in scenario_items:iter() do
+		for i,w in ipairs(v) do
 			add(w)
 		end
 	end
@@ -95,7 +95,7 @@ function wml_actions.store_items(cfg)
 	wml.variables[variable] = nil
 	local index = 0
 	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
-		local items = scenario_items[loc[1] * 10000 + loc[2]]
+		local items = scenario_items[loc]
 		if items then
 			for j, item in ipairs(items) do
 				-- note: item_name can not be part of standard location filter because
