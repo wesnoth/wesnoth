@@ -50,7 +50,7 @@
    * unit:transform() now takes an optional variation parameter
    * Support side.variables for access to side variables, similar to unit.variables
    * New read-write keys in unit userdata: ellipse, halo, description, renamable
-   * New functions for working with WML: wml.merge, wml.diff, wml.patch
+   * New functions for working with WML: wml.merge, wml.diff, wml.patch, wml.find_child, wml.attribute_count, wml.equal, wml.valid, wml.interpolate
    * wesnoth.wml_matches_filter renamed to wml.matches_filter (the old name still works)
    * Moved to units module: wesnoth.create_unit, wesnoth.get_unit, wesnoth.get_units, wesnoth.get_recall_units
    * The wesnoth.units module now acts like a metatable for unit userdata.
@@ -67,6 +67,9 @@
    * New function wesnoth.units.chance_to_be_hit is equivalent to deprecated wesonth.units.defense but conveys the meaning better.
    * Unit movetype functions (excluding resistance) can take a location instead of a terrain code, for convenience
    * Side proxy now has starting_location member
+   * Fix ai.aspects.grouping not returning the aspect's value
+   * New stringx module exposes various split/join functions used by the engine
+   * location_set module extended to support set operators (& | ~ -) as well as a few additional functions
  ### WFL engine
    * New functions resistance_on(), vision_cost(), jamming_cost() that work in gameplay contexts (eg filters)
    * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying 
