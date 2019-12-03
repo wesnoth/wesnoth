@@ -815,10 +815,3 @@ inline config::config(config_key_type first, T&&... args)
 	detail::config_construct_unpacker<config_key_type, T...> unpack;
 	unpack.visit(*this, first, std::forward<T>(args)...);
 }
-
-class variable_set
-{
-public:
-	virtual ~variable_set() {}
-	virtual config::attribute_value get_variable_const(const std::string &id) const = 0;
-};

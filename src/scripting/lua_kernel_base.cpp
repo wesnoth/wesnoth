@@ -818,6 +818,20 @@ static int intf_clone_wml(lua_State* L)
 	return 1;
 }
 
+/**
+* Interpolates variables into a WML table, including [insert_tag]
+* Arg 1: WML table to interpolate into
+* Arg 2: WML table of variables
+*/
+static int intf_wml_interpolate(lua_State* L)
+{
+	config cfg = luaW_checkconfig(L, 1), vars_cfg = luaW_checkconfig(L, 2);
+	config_variable_set vars(vars_cfg);
+	vconfig vcfg(cfg, vars);
+	luaW_pushconfig(L, vcfg.get_parsed_config());
+	return 1;
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -981,6 +995,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "valid",     &intf_wml_valid},
 		{ "matches_filter", &intf_wml_matches_filter},
 		{ "tostring",       &intf_wml_tostring},
+		{ "interpolate",    &intf_wml_interpolate},
 		{ nullptr, nullptr },
 	};
 	lua_newtable(L);

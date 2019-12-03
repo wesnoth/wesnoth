@@ -637,7 +637,7 @@ else
 		return setmetatable(cfg, fake_vconfig_mt)
 	end
 	
-	wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.valid', 1, null, tovconfig_fake, 'tovconfig is now deprecated in plugin or map generation contexts; if you need to check whether a table is valid as a WML object, use wml.valid instead.')
+	wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.valid or wml.interpolate', 1, null, tovconfig_fake, 'tovconfig is now deprecated in plugin or map generation contexts; if you need to check whether a table is valid as a WML object, use wml.valid instead, and use wml.interpolate if you need to substitute variables into a WML object.')
 	wml.tovconfig = wesnoth.deprecate_api('wml.tovconfig', 'wml.valid', 1, null, tovconfig_fake, 'tovconfig is now deprecated in plugin or map generation contexts; if you need to check whether a table is valid as a WML object, use wml.valid instead.')
 	wml.literal = wesnoth.deprecate_api('wml.literal', '(no replacement)', 1, null, wml.literal, 'Since vconfigs are not supported outside of the game kernel, this function is redundant and will be removed from plugin and map generation contexts. It will continue to work in the game kernel.')
 	wml.parsed = wesnoth.deprecate_api('wml.parsed', '(no replacement)', 1, null, wml.parsed, 'Since vconfigs are not supported outside of the game kernel, this function is redundant and will be removed from plugin and map generation contexts. It will continue to work in the game kernel.')

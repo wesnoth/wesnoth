@@ -18,6 +18,7 @@
 
 #include "config.hpp"
 #include "map/location.hpp"
+#include "variable_info.hpp"
 
 #include <utility>
 
@@ -28,6 +29,7 @@ class config_variable_set : public variable_set {
 public:
 	config_variable_set(const config& cfg) : cfg_(cfg) {}
 	virtual config::attribute_value get_variable_const(const std::string &id) const;
+	virtual variable_access_const get_variable_access_read(const std::string& varname) const;
 };
 
 /**
@@ -55,13 +57,18 @@ private:
 
 	vconfig();
 	vconfig(const config & cfg, const std::shared_ptr<const config> & cache);
+	vconfig(const config& cfg, const std::shared_ptr<const config> & cache, const variable_set& variables);
 public:
 	/// Constructor from a config.
 	/// Equivalent to vconfig(cfg, false).
 	/// Do not use if the vconfig will persist after @a cfg is destroyed!
-	explicit vconfig(const config &cfg) : cache_(), cfg_(&cfg) {}
-	explicit vconfig(config &&cfg) : cache_(new config(std::move(cfg))), cfg_(cache_.get()) { }
-	vconfig(const config &cfg, bool manage_memory);
+	explicit vconfig(const config &cfg);// : cache_(), cfg_(&cfg) {}
+	explicit vconfig(config &&cfg);// : cache_(new config(std::move(cfg))), cfg_(cache_.get()) { }
+	// Construct a vconfig referencing a non-default set of variables.
+	// Note that the vconfig does NOT take ownership of these variables,
+	// so you need to make sure that their scope encloses the vconfig's scope!
+	vconfig(const config& cfg, const variable_set& variables);
+	vconfig(const config &cfg, bool manage_memory, const variable_set* variables = nullptr);
 	~vconfig();
 
 	static vconfig empty_vconfig(); // Valid to dereference. Contains nothing
@@ -109,13 +116,13 @@ public:
 		typedef const pointer_proxy pointer;
 		typedef const config::attribute reference;
 		typedef config::const_attribute_iterator Itor;
-		explicit attribute_iterator(const Itor &i): i_(i) {}
+		explicit attribute_iterator(const Itor &i, const variable_set& vars): i_(i), variables_(&vars) {}
 
 		attribute_iterator &operator++() { ++i_; return *this; }
-		attribute_iterator operator++(int) { return attribute_iterator(i_++); }
+		attribute_iterator operator++(int) { return attribute_iterator(i_++, *variables_); }
 
 		attribute_iterator &operator--() { --i_; return *this; }
-		attribute_iterator operator--(int) { return attribute_iterator(i_--); }
+		attribute_iterator operator--(int) { return attribute_iterator(i_--, *variables_); }
 
 		reference operator*() const;
 		pointer operator->() const;
@@ -125,11 +132,12 @@ public:
 
 	private:
 		Itor i_;
+		const variable_set* variables_;
 	};
 
 	boost::iterator_range<attribute_iterator> attribute_range() {
 		config::const_attr_itors range = cfg_->attribute_range();
-		return boost::make_iterator_range(attribute_iterator(range.begin()), attribute_iterator(range.end()));
+		return boost::make_iterator_range(attribute_iterator(range.begin(), *variables_), attribute_iterator(range.end(), *variables_));
 	}
 
 	struct all_children_iterator
@@ -142,8 +150,8 @@ public:
 		typedef const pointer_proxy pointer;
 		typedef const value_type reference;
 		typedef config::const_all_children_iterator Itor;
-		explicit all_children_iterator(const Itor &i);
-		all_children_iterator(const Itor &i, const std::shared_ptr<const config> & cache);
+		explicit all_children_iterator(const Itor &i, const variable_set& vars);
+		all_children_iterator(const Itor &i, const variable_set& vars, const std::shared_ptr<const config> & cache);
 
 		all_children_iterator& operator++();
 		all_children_iterator  operator++(int);
@@ -176,6 +184,7 @@ public:
 		*/
 		int inner_index_;
 		std::shared_ptr<const config> cache_;
+		const variable_set* variables_;
 	};
 
 	struct recursion_error : public config::error {
@@ -198,6 +207,7 @@ private:
 	mutable std::shared_ptr<const config> cache_;
 	/// Used to access our config (original or copy, as appropriate).
 	mutable const config* cfg_;
+	const variable_set* variables_;
 	static const config default_empty_config;
 };
 
