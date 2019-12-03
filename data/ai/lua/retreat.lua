@@ -12,7 +12,16 @@ local retreat_functions = {}
 function retreat_functions.min_hp(unit)
     -- The minimum hp to retreat is a function of level and terrain defense
     -- We want to stay longer on good terrain and leave early on very bad terrain
-    local hp_per_level = unit:defense(wesnoth.get_terrain(unit.x, unit.y))/15
+
+    -- Take caution into account here. We want the multiplier to be:
+    --   1 for default caution (0.25)
+    --   0 for minimal caution <= 0
+    --   2 for caution = 1
+    local caution_factor = ai.aspects.caution
+    if (caution_factor < 0) then caution_factor = 0 end
+    caution_factor = math.sqrt(caution_factor) * 2
+
+    local hp_per_level = unit:defense(wesnoth.get_terrain(unit.x, unit.y))/15 * caution_factor
     local level = unit.level
 
     -- Leaders are considered to be higher level because of their value
@@ -23,9 +32,13 @@ function retreat_functions.min_hp(unit)
     -- Account for poison damage on next turn
     if unit.status.poisoned then min_hp = min_hp + wesnoth.game_config.poison_amount end
 
-    -- Make sure that units are actually injured
-    if min_hp > unit.max_hitpoints - 4 then
-        min_hp = unit.max_hitpoints - 4
+    -- Make sure that units are actually injured (only relevant for low-HP units)
+    -- Want this to be roughly half the units HP at caution=0, close to full HP at caution=1
+    local hp_factor = 0.5 + 0.25 * caution_factor
+    if (hp_factor > 1) then hp_factor = 1 end
+    local max_min_hp = (unit.max_hitpoints - 4) * hp_factor
+    if (min_hp > max_min_hp) then
+        min_hp = max_min_hp
     end
 
     return min_hp
