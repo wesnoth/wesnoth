@@ -1808,6 +1808,7 @@ function ai_helper.find_path_with_avoid(unit, x, y, avoid_map, options)
     --  @options: Note that this is not the same as the @cfg table that can be passed to wesnoth.find_path().
     --    Possible fields are:
     --     @strict_avoid: if 'true', trigger the "strict avoid" mode described above
+    --     @ignore_enemies: if 'true', enemies will not be taken into account.
     --     @ignore_allies: if 'true', allied units will not be taken into account.
 
     options = options or {}
@@ -1823,7 +1824,9 @@ function ai_helper.find_path_with_avoid(unit, x, y, avoid_map, options)
     for _,u in ipairs(all_units) do
         if (u.id ~= unit.id) and ai_helper.is_visible_unit(wesnoth.current.side, u) then
             if wesnoth.sides.is_enemy(u.side, wesnoth.current.side) then
-                enemy_map:insert(u.x, u.y, u.level)
+                if (not options.ignore_enemies) then
+                    enemy_map:insert(u.x, u.y, u.level)
+                end
             else
                 if (not options.ignore_allies) then
                     ally_map:insert(u.x, u.y, u.level)
@@ -1833,7 +1836,7 @@ function ai_helper.find_path_with_avoid(unit, x, y, avoid_map, options)
     end
 
     local enemy_zoc_map = LS.create()
-    if (not unit:ability("skirmisher")) then
+    if (not options.ignore_enemies) and (not unit:ability("skirmisher")) then
         enemy_map:iter(function(x, y, level)
             if (level > 0) then
                 for xa,ya in H.adjacent_tiles(x, y) do
