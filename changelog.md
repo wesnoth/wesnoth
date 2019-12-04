@@ -15,8 +15,8 @@
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
  ### Editor
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), French, Portuguese (Brazil),
-     Russian
+   * Updated translations: Ancient Greek, Chinese (Traditional), French,
+     Portuguese (Brazil), Russian
    * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Terrains
    * Add Stone Walls variation Catacombs (Xot) including some overlays
