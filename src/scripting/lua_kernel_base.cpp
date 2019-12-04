@@ -720,6 +720,19 @@ static int intf_str_trim(lua_State* L)
 	return 1;
 }
 
+/**
+ * Parses a range string of the form a-b into an interval pair
+ * Accepts the string "infinity" as representing a Very Large Number
+ */
+static int intf_parse_range(lua_State* L)
+{
+	const std::string str = luaL_checkstring(L, 1);
+	auto interval = utils::parse_range(str);
+	lua_pushnumber(L, interval.first);
+	lua_pushnumber(L, interval.second);
+	return 2;
+}
+
 static int intf_get_language(lua_State* L)
 {
 	lua_push(L, get_language().localename);
@@ -968,6 +981,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "join",                &intf_str_join },
 		{ "join_map",            &intf_str_join_map },
 		{ "trim",                &intf_str_trim },
+		{ "parse_range",         &intf_parse_range },
 		{ "vformat",                  &intf_format                   },
 		{ "format_conjunct_list",     &intf_format_list<true>        },
 		{ "format_disjunct_list",     &intf_format_list<false>       },

@@ -36,6 +36,27 @@ function stringx.anim_split(str, sep)
 	return stringx.split(str, sep, {expand_anim = true, strip_spaces = true, remove_empty = true});
 end
 
+function stringx.iter_range(str)
+	return coroutine.wrap(function()
+		local lo, hi = stringx.parse_range(str)
+		for i = lo, hi do
+			coroutine.yield(i)
+		end
+	end)
+end
+
+function stringx.iter_ranges(str)
+	return coroutine.wrap(function()
+		local split = str:split()
+		for _,s in ipairs(split) do
+			local lo, hi = s:parse_range()
+			for i = lo, hi do
+				coroutine.yield(i)
+			end
+		end
+	end)
+end
+
 --[========[Config Manipulation Functions]========]
 
 local function ensure_config(cfg)
