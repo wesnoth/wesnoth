@@ -1,8 +1,6 @@
 
 local utils = {vwriter = {}}
 
-utils.trim = wesnoth.deprecate_api('wml_utils.trim', 'stringx.trim', 1, nil, stringx.trim)
-
 function utils.split(s)
 	return tostring(s or ""):gmatch("[^%s,][^,]*")
 end
@@ -153,37 +151,13 @@ function utils.handle_event_commands(cfg, scope_type)
 	return current_exit
 end
 
--- Splits the string argument on commas, excepting those commas that occur
--- within paired parentheses. The result is returned as a (non-empty) table.
--- (The table might have a single entry that is an empty string, though.)
--- Spaces around splitting commas are stripped (as in the C++ version).
--- Empty strings are not removed (unlike the C++ version).
+--[[ Set options to preserve legacy behavior:
+- Only real parentheses protect commas, not square brackets or anything else
+- String spaces surrounding the commas
+- Don't remove empty elements
+]]
 function utils.parenthetical_split(str)
-	local t = {""}
-	-- To simplify some logic, end the string with paired parentheses.
-	local formatted = (str or "") .. ",()"
-
-	-- Isolate paired parentheses.
-	for prefix,paren in string.gmatch(formatted, "(.-)(%b())") do
-		-- Separate on commas
-		for comma,text in string.gmatch(prefix, "(,?)([^,]*)") do
-			if comma == "" then
-				-- We are continuing the last string found.
-				t[#t] = t[#t] .. text
-			else
-				-- We are starting the next string.
-				-- (Now that we know the last string is complete,
-				-- strip leading and trailing spaces from it.)
-				t[#t] = string.match(t[#t], "^%s*(.-)%s*$")
-				table.insert(t, text)
-			end
-		end
-		-- Add the parenthetical part to the last string found.
-		t[#t] = t[#t] .. paren
-	end
-	-- Remove the empty parentheses we had added to the end.
-	table.remove(t)
-	return t
+	return stringx.split(str, ',', {quote_left = '(', quote_right = ')', strip_spaces = true, remove_empty = false})
 end
 
 --note: when using these, make sure that nothing can throw over the call to end_var_scope
@@ -202,5 +176,8 @@ function utils.end_var_scope(name, var)
 		wml.variables[name] = var
 	end
 end
+
+utils.trim = wesnoth.deprecate_api('wml_utils.trim', 'stringx.trim', 1, nil, stringx.trim)
+utils.parenthetical_split = wesnoth.deprecate_api('wml_utils.parenthetical_split', 'stringx.quoted_split or stringx.split', 1, nil, utils.parenthetical_split)
 
 return utils
