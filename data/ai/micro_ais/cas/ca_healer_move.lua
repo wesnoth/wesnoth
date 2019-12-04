@@ -19,8 +19,10 @@ function ca_healer_move:evaluation(cfg, data)
 
     local healers, healers_noMP = {}, {}
     for _,healer in ipairs(all_healers) do
-        -- For the purpose of this evaluation, guardians count as units without moves
-        if (healer.moves > 0) and (not healer.status.guardian) then
+        -- For the purpose of this evaluation, guardians count as units without moves, as do passive leaders
+        if (healer.moves > 0) and (not healer.status.guardian)
+            and ((not healer.canrecruit) or (not ai.aspects.passive_leader))
+        then
             table.insert(healers, healer)
         else
             table.insert(healers_noMP, healer)

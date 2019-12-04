@@ -50,7 +50,9 @@ function retreat_functions.retreat_injured_units(units, avoid_map)
     -- Split units into those that regenerate and those that do not
     local regen, regen_amounts, non_regen = {}, {}, {}
     for i,u in ipairs(units) do
-        if u.hitpoints < retreat_functions.min_hp(u) then
+        if (u.hitpoints < retreat_functions.min_hp(u))
+            and ((not u.canrecruit) or (not ai.aspects.passive_leader))
+        then
             if u:ability('regenerate') then
                 -- Find the best regeneration ability and use it to estimate hp regained by regeneration
                 local abilities = wml.get_child(u.__cfg, "abilities")
