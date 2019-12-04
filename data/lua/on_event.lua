@@ -1,4 +1,3 @@
-local utils = wesnoth.require "wml-utils"
 -- registers an event handler. note that, like all lua variables this is not persitent in savefiles,
 -- so you have to call this function from a toplevel lua tag or from a preload event.
 -- It is also not possible to use this for first_time_only=yes events.

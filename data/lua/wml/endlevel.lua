@@ -1,4 +1,3 @@
-local utils = wesnoth.require "wml-utils"
 local already_ended = false
 
 function wesnoth.wml_actions.endlevel(cfg)

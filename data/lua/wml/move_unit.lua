@@ -1,4 +1,3 @@
-local utils = wesnoth.require "wml-utils"
 
 local function path_locs(path)
 	if path.location_id then
