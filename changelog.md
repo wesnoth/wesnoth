@@ -68,7 +68,8 @@
    * Unit movetype functions (excluding resistance) can take a location instead of a terrain code, for convenience
    * Side proxy now has starting_location member
    * Fix ai.aspects.grouping not returning the aspect's value
-   * New stringx module exposes various split/join functions used by the engine
+   * New stringx module exposes various split/join functions used by the engine, as well as trim
+   * Wesnoth's format functions moved to stringx (format_conjunct_list, format_disjunct_list, vformat)
    * location_set module extended to support set operators (& | ~ -) as well as a few additional functions
  ### WFL engine
    * New functions resistance_on(), vision_cost(), jamming_cost() that work in gameplay contexts (eg filters)
