@@ -675,6 +675,7 @@ end
 -- Some C++ functions are deprecated; apply the messages here.
 -- Note: It must happen AFTER the C++ functions are reassigned above to their new location.
 -- These deprecated functions will probably never be removed.
+wesnoth.wml_matches_filter = wesnoth.deprecate_api('wesnoth.wml_matches_filter', 'wml.matches_filter', 1, nil, wml.matches_filter)
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.get_variable = wesnoth.deprecate_api('wesnoth.get_variable', 'wml.variables', 1, nil, wesnoth.get_variable)
 	wesnoth.set_variable = wesnoth.deprecate_api('wesnoth.set_variable', 'wml.variables', 1, nil, wesnoth.set_variable)

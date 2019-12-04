@@ -945,7 +945,6 @@ lua_kernel_base::lua_kernel_base()
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
 		{ "random",                   &intf_random                   },
-		{ "wml_matches_filter",       &intf_wml_matches_filter       },
 		{ "log",                      &intf_log                      },
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_time_stamp",           &intf_get_time_stamp           },
