@@ -2,7 +2,12 @@
 local utils = {vwriter = {}}
 
 function utils.split(s)
-	return tostring(s or ""):gmatch("[^%s,][^,]*")
+	return coroutine.wrap(function()
+		local split = s:split()
+		for _,s in ipairs(split) do
+			coroutine.yield(s)
+		end
+	end)
 end
 
 function utils.check_key(val, key, tag, convert_spaces)
@@ -179,5 +184,6 @@ end
 
 utils.trim = wesnoth.deprecate_api('wml_utils.trim', 'stringx.trim', 1, nil, stringx.trim)
 utils.parenthetical_split = wesnoth.deprecate_api('wml_utils.parenthetical_split', 'stringx.quoted_split or stringx.split', 1, nil, utils.parenthetical_split)
+utils.split = wesnoth.deprecate_api('wml_utils.split', 'stringx.split', 1, nil, utils.split)
 
 return utils
