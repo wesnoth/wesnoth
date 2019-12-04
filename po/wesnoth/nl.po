@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-06-30 20:13+0200\n"
+"PO-Revision-Date: 2019-11-25 21:51+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -7100,16 +7100,16 @@ msgid "Switch a side to/from AI control."
 msgstr "Schakel een kant naar/van AI controle."
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<zijde>[on/off]]"
+msgstr ""
 
 #: src/menu_events.cpp:1192
 msgid "Switch a side to/from idle state."
 msgstr "Schakel een kant naar/van wachtstand."
 
 #: src/menu_events.cpp:1193
+#, fuzzy
+#| msgid "command_idle^[<side> [on/off]]"
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<zijde>[on/off]]"
 
@@ -7479,7 +7479,7 @@ msgstr "Geen bevriende spiegel"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Een spel ($name|, $scenario|) is aangemaakt"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7928,6 +7928,13 @@ msgid "Units"
 msgstr "Eenheden"
 
 #: src/reports.cpp:1445
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. It is equal to "
+#| "the number of unit levels not supported by villages. The second is the "
+#| "total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -7946,17 +7953,22 @@ msgid "Upkeep"
 msgstr "Onderhoud"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid "income"
 msgid "Income"
-msgstr "Inkomen"
+msgstr "inkomen"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid ""
+#| "The net amount of gold you gain or lose each turn, taking into account "
+#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
-"Het aantal goudstukken dat je iedere beurt ontvangt voor het in bezit hebben "
-"van dorpen, of het aantal goudstukken dat je iedere beurt verliest voor het "
-"onderhouden van je eenheden."
+"Het netto aantal goudstukken dat je iedere beurt verdient of kwijtraakt. "
+"Waarin het inkomen uit dorpen en de uitgaven aan onderhoud zijn meegenomen."
 
 #: src/reports.cpp:1650
 msgid "Observers:"
@@ -8482,32 +8494,35 @@ msgstr "Verberg plannen voor $player"
 msgid "Whiteboard Options"
 msgstr "Whiteboard Opties"
 
-#, fuzzy
-#~| msgid "undead"
-#~ msgid "Undead"
-#~ msgstr "ondood"
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Mysterieuze eenheden bereiken hun volledige sterkte enkel tijdens de "
+#~ "schemering.\n"
+#~ "\n"
+#~ "Dag: −25% Schade\n"
+#~ "Nacht: −25% Schade"
 
-#, fuzzy
-#~| msgid "Attack"
-#~| msgid_plural "Attacks"
-#~ msgid "Attacks"
-#~ msgstr "Aanval"
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Er zijn geen specifieke opties beschikbaar voor het geselecteerde "
+#~ "tijdperk, spel of aanpassing."
 
-#, fuzzy
-#~| msgid "Choose a Map to Open"
-#~ msgid "Choose a Corpse"
-#~ msgstr "Kies wapen:"
+#~ msgid "Defaults"
+#~ msgstr "Standaard"
 
-#~ msgid "Recruit"
-#~ msgstr "Rekruteren"
+#~ msgid "Connected Players"
+#~ msgstr "Verbonden Spelers"
 
-#~ msgid "XP: "
-#~ msgstr "XP: "
-
-#, fuzzy
-#~| msgid "There are no save files to load"
-#~ msgid "There are no corpses available."
-#~ msgstr "Er zijn geen opgeslagen bestanden om te laden"
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(deze beurt over)"
+#~ msgstr[1] "(%d beurten over)"
 
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "registratie met wachtwoord *** en zonder e-mailadres"
@@ -8544,34 +8559,54 @@ msgstr "Whiteboard Opties"
 #~ "Vraag een lijst aan van details die je kunt instellen voor je "
 #~ "geregistreerde bijnaam."
 
-#~ msgid "Ping timeout"
-#~ msgstr "Ping time-out"
+#~ msgid ""
+#~ "[all|<command>]\n"
+#~ "“all” = overview of all commands, <command> = name of a specific command "
+#~ "(provides more detail)"
+#~ msgstr ""
+#~ "[all]<command>]\n"
+#~ "\"all\" = overzicht van alle commando's, <command> = naam van een "
+#~ "specifiek commando (geeft gedetailleerde informatie)"
+
+#~ msgid "command^Alias:"
+#~ msgid_plural "Aliases:"
+#~ msgstr[0] "Alias:"
+#~ msgstr[1] "Aliassen:"
 
 #~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
+#~ "[<side> [on/off]]\n"
+#~ "“on” = enable control by the AI, “off” = side is controlled by the player"
 #~ msgstr ""
-#~ "Aantal seconden te wachten op een ping antwoord voordat we een time-out "
-#~ "genereren. Schakel uit met 0"
+#~ "[<side> [on/off]]\n"
+#~ "“on” = laat de besturing over aan AI, “off” = kant wordt bestuurd door de "
+#~ "speler"
+
+#~ msgid "Show fps (Frames Per Second)."
+#~ msgstr "Toon fps (Frames Per Second)"
+
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr ""
+#~ "Kan de ongeldige zijde '$side' niet door de computer laten besturen."
 
 #~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
 #~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
+#~ "Do you want to save the game?"
 #~ msgstr ""
-#~ "Mysterieuze eenheden bereiken hun volledige sterkte enkel tijdens de "
-#~ "schemering.\n"
 #~ "\n"
-#~ "Dag: −25% Schade\n"
-#~ "Nacht: −25% Schade"
+#~ "Wil je dit spel opslaan?"
 
-#, fuzzy
-#~| msgid "(this turn left)"
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(deze beurt over)"
-#~ msgstr[1] "(deze beurt over)"
+#~ msgid ""
+#~ "This game has been ended.\n"
+#~ "Reason: "
+#~ msgstr ""
+#~ "Het spel is beëindigd.\n"
+#~ "Rede: "
+
+#~ msgid "Net Income"
+#~ msgstr "Netto Inkomen"
+
+#~ msgid "Empty"
+#~ msgstr "Leeg"
 
 #~ msgid ""
 #~ "In many campaign scenarios, you may issue simple instructions for your "
@@ -8583,28 +8618,21 @@ msgstr "Whiteboard Opties"
 #~ msgid "An invalid defender weapon got selected."
 #~ msgstr "Ongeldig verdedigingswapen geselecteerd."
 
-#~ msgid "Empty"
-#~ msgstr "Leeg"
-
-#, fuzzy
-#~| msgid " (missing)"
-#~ msgid "$era_name (missing)"
-#~ msgstr "(ontbrekend)"
+#~ msgid "Advances to:"
+#~ msgstr "Promoveert naar: "
 
 #, fuzzy
 #~| msgid " (missing)"
 #~ msgid "(missing)"
 #~ msgstr "(ontbrekend)"
 
+#, fuzzy
+#~| msgid " (missing)"
+#~ msgid "$era_name (missing)"
+#~ msgstr "(ontbrekend)"
+
 #~ msgid "none"
 #~ msgstr "geen"
-
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr ""
-#~ "Kan de ongeldige zijde '$side' niet door de computer laten besturen."
-
-#~ msgid "Advances to:"
-#~ msgstr "Promoveert naar: "
 
 #~ msgid "None"
 #~ msgstr "Geen"
@@ -8617,18 +8645,15 @@ msgstr "Whiteboard Opties"
 #~ msgstr[0] "goudstukken"
 #~ msgstr[1] "goudstukken"
 
+#~ msgid "Ping timeout"
+#~ msgstr "Ping time-out"
+
 #~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
+#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+#~ "disable"
 #~ msgstr ""
-#~ "Er zijn geen specifieke opties beschikbaar voor het geselecteerde "
-#~ "tijdperk, spel of aanpassing."
-
-#~ msgid "Defaults"
-#~ msgstr "Standaard"
-
-#~ msgid "Connected Players"
-#~ msgstr "Verbonden Spelers"
+#~ "Aantal seconden te wachten op een ping antwoord voordat we een time-out "
+#~ "genereren. Schakel uit met 0"
 
 #, fuzzy
 #~| msgid "Size: "
@@ -9611,6 +9636,9 @@ msgstr "Whiteboard Opties"
 #~ msgid "Scroll To"
 #~ msgstr "Ga naar"
 
+#~ msgid "Recruit"
+#~ msgstr "Rekruteren"
+
 #~ msgid "Select unit:"
 #~ msgstr "Selecteer een eenheid:"
 
@@ -9622,6 +9650,9 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "level"
 #~ msgstr "rang"
+
+#~ msgid "XP: "
+#~ msgstr "XP: "
 
 #, fuzzy
 #~| msgid "Connecting..."
@@ -10373,6 +10404,7 @@ msgstr "Whiteboard Opties"
 #~ msgid "Compress savegames using bzip2"
 #~ msgstr "Gecomprimeerde opgeslagen bestanden"
 
+#~| msgid "Settings..."
 #~ msgid "Options..."
 #~ msgstr "Opties..."
 
@@ -10405,66 +10437,87 @@ msgstr "Whiteboard Opties"
 #~ msgid "Multiplayer_AI^Experimental AI"
 #~ msgstr "Multiplayer"
 
+#~| msgid "Enemy unit sighted!"
+#~| msgid_plural "$enemies enemy units sighted!"
 #~ msgid "Enemy unit weight  (default: 100)"
 #~ msgstr "Vijandelijke eenheid in zicht!"
 
+#~| msgid "race^Orcs"
 #~ msgid "Orcs"
 #~ msgstr "Boemannen"
 
+#~| msgid "Move leader here"
 #~ msgid "Move Konrad here"
 #~ msgstr "Verplaats leider hierheen"
 
+#~| msgid "race^Humans"
 #~ msgid "Humans"
 #~ msgstr "Mensen"
 
+#~| msgid "race^Wolves"
 #~ msgid "Wolves"
 #~ msgstr "Wolven"
 
+#~| msgid "help"
 #~ msgid "Whelps"
 #~ msgstr "help"
 
 #~ msgid "End scenario"
 #~ msgstr "Einde scenario"
 
+#~| msgid "Save the Map As"
 #~ msgid "Take the pass"
 #~ msgstr "Kaart opslaan als"
 
+#~| msgid "Defeat"
 #~ msgid "Defeat Rowck"
 #~ msgstr "Nederlaag"
 
+#~| msgid "Defeat enemy leader"
 #~ msgid "Death of the bat leader"
 #~ msgstr "Dood de vijandelijke leider"
 
+#~| msgid "race^Saurians"
 #~ msgid "Saurians"
 #~ msgstr "Saurianen"
 
+#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Footpad"
 #~ msgstr "Grifioen"
 
+#~| msgid "race^Gryphons"
 #~ msgid "Gryphons"
 #~ msgstr "Griffioenen"
 
+#~| msgid "Forward >"
 #~ msgid "Coward 1"
 #~ msgstr "Volgende >"
 
+#~| msgid "Forward >"
 #~ msgid "coward r=5"
 #~ msgstr "Volgende >"
 
+#~| msgid "Forward >"
 #~ msgid "Coward 2"
 #~ msgstr "Volgende >"
 
+#~| msgid "Forward >"
 #~ msgid "Coward 3"
 #~ msgstr "Volgende >"
 
+#~| msgid "Forward >"
 #~ msgid "Coward 4"
 #~ msgstr "Volgende >"
 
+#~| msgid "Faction"
 #~ msgid "Station 1"
 #~ msgstr "Factie"
 
+#~| msgid "Faction"
 #~ msgid "Station 2"
 #~ msgstr "Factie"
 
+#~| msgid "Forward >"
 #~ msgid "Coward"
 #~ msgstr "Volgende >"
 
@@ -10474,33 +10527,43 @@ msgstr "Whiteboard Opties"
 #~ "Overwinning\n"
 #~ "@Dood de vijandelijke leider(s)"
 
+#~| msgid "teleport"
 #~ msgid "Healer Support"
 #~ msgstr "teleportatie"
 
+#~| msgid "Notes:"
 #~ msgid "Notes"
 #~ msgstr "Opmerkingen:"
 
+#~| msgid "Clear all orders"
 #~ msgid "Defeat all lurkers"
 #~ msgstr "Alle bevelen annuleren"
 
+#~| msgid "Message:"
 #~ msgid "Messenger"
 #~ msgstr "Bericht:"
 
+#~| msgid "Move leader here"
 #~ msgid "AI moves Messenger here"
 #~ msgstr "Verplaats leider hierheen"
 
+#~| msgid "Defeat enemy leader"
 #~ msgid "Defeat the messenger"
 #~ msgstr "Dood de vijandelijke leider"
 
+#~| msgid "Language"
 #~ msgid "Langzhar"
 #~ msgstr "Taal"
 
+#~| msgid "Move leader here"
 #~ msgid "Move Rossauba here"
 #~ msgstr "Verplaats leider hierheen"
 
+#~| msgid "Take it"
 #~ msgid "I made it"
 #~ msgstr "Neem het"
 
+#~| msgid "Recruit"
 #~ msgid "Recruiting"
 #~ msgstr "Rekruteren"
 
@@ -10508,18 +10571,23 @@ msgstr "Whiteboard Opties"
 #~ msgid "Swarm"
 #~ msgstr "Moeras"
 
+#~| msgid "race^Bats"
 #~ msgid "Bats"
 #~ msgstr "Vleermuizen"
 
+#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Gryphon"
 #~ msgstr "Grifioen"
 
+#~| msgid "race^Wolves"
 #~ msgid "More Wolves"
 #~ msgstr "Wolven"
 
+#~| msgid "Wesnoth Developers"
 #~ msgid "AI Developer"
 #~ msgstr "Wesnoth ontwikkelaars"
 
+#~| msgid "Invalid location"
 #~ msgid "AI Location:"
 #~ msgstr "Ongeldige locatie"
 
@@ -10533,18 +10601,26 @@ msgstr "Whiteboard Opties"
 #~ msgid "Multiplayer_AI^RCA AI"
 #~ msgstr "RCA AI"
 
+#~| msgid "invisible: "
 #~ msgid "invisible"
 #~ msgstr "onzichtbaar: "
 
+#~| msgid "female^slowed"
 #~ msgid "female^invisible"
 #~ msgstr "vertraagd"
 
+#~| msgid "Fire a game event."
 #~ msgid "I triggered a moveto event."
 #~ msgstr "Vuur een spelgebeurtenis af."
 
+#~| msgid "drains"
 #~ msgid "drains 20%"
 #~ msgstr "bloedzuiger"
 
+#~| msgid ""
+#~| "Drain:\n"
+#~| "This unit drains health from living units, healing itself for half the "
+#~| "amount of damage it deals (rounded down)."
 #~ msgid ""
 #~ "Drain 20%:\n"
 #~ "This unit drains health from living units, healing itself for 20% of the "
@@ -10554,12 +10630,18 @@ msgstr "Whiteboard Opties"
 #~ "Deze eenheid zuigt energie uit levende eenheden en geneest zichzelf met "
 #~ "de helft van de schade die hij toebrengt (naar beneden afgerond)."
 
+#~| msgid "invisible: "
 #~ msgid "It is invisible!"
 #~ msgstr "onzichtbaar: "
 
+#~| msgid "drains"
 #~ msgid "drains 100%"
 #~ msgstr "bloedzuiger"
 
+#~| msgid ""
+#~| "Drain:\n"
+#~| "This unit drains health from living units, healing itself for half the "
+#~| "amount of damage it deals (rounded down)."
 #~ msgid ""
 #~ "Drain 100%:\n"
 #~ "This unit drains health from living units, healing itself for 100% of the "
@@ -10569,18 +10651,27 @@ msgstr "Whiteboard Opties"
 #~ "Deze eenheid zuigt energie uit levende eenheden en geneest zichzelf met "
 #~ "de helft van de schade die hij toebrengt (naar beneden afgerond)."
 
+#~| msgid "Choose weapon:"
+#~ msgid "Choose a Map to Open"
+#~ msgstr "Kies wapen:"
+
+#~| msgid "Choose the game to load"
 #~ msgid "Choose a Mask to Apply"
 #~ msgstr "Kies een spel om te laden"
 
+#~| msgid "Choose weapon:"
 #~ msgid "Choose Target Map"
 #~ msgstr "Kies wapen:"
 
+#~| msgid "The map already exists. Do you want to overwrite it?"
 #~ msgid "The file already exists. Do you want to overwrite it?"
 #~ msgstr "De kaart bestaat al. Wil je hem overschrijven?"
 
+#~| msgid "No era information found."
 #~ msgid "No random map generators found."
 #~ msgstr "Geen tijdperkinformatie gevonden."
 
+#~| msgid "Installation failed"
 #~ msgid "Map creation failed."
 #~ msgstr "Installatie mislukt"
 
@@ -10590,6 +10681,7 @@ msgstr "Whiteboard Opties"
 #~ msgid "Sending add-on"
 #~ msgstr "Add-on wordt verstuurd"
 
+#~| msgid "Requesting list of add-ons"
 #~ msgid "Requesting the addon to be deleted"
 #~ msgstr "Bezig met het opvragen van een lijst met add-ons"
 
@@ -10660,6 +10752,7 @@ msgstr "Whiteboard Opties"
 #~ msgid "A map without a header is not supported"
 #~ msgstr "Een kaart zonder header wordt niet ondersteund"
 
+#~| msgid "Local time of day light effect (use more memory)."
 #~ msgid "Custom lighting for local time of day areas (uses more memory)"
 #~ msgstr "Lokale tijd-van-de-daglichteffecten (gebruikt meer geheugen)."
 
@@ -10695,12 +10788,15 @@ msgstr "Whiteboard Opties"
 #~ msgid "Difficulty: Hard"
 #~ msgstr "Niveau: Moeilijk"
 
+#~| msgid "Campaign: $campaign_name"
 #~ msgid "Main campaign define"
 #~ msgstr "Veldtocht: $campaign_name"
 
+#~| msgid "Campaign Design"
 #~ msgid "Extra campaign define"
 #~ msgstr "Veldtochtontwerp"
 
+#~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "Multiplayer"
 
@@ -10728,6 +10824,7 @@ msgstr "Whiteboard Opties"
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "Add-on '$addon|' verwijderd."
 
+#~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "Ongeldige locatie"
 
@@ -14284,6 +14381,9 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "Zero upkeep"
 #~ msgstr "Geen onderhoudskosten"
+
+#~ msgid "undead"
+#~ msgstr "ondood"
 
 #~ msgid "Immune to drain, poison and plague"
 #~ msgstr "Immuun voor bloedzuigen, vergif en pest"

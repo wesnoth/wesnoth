@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:40+0300\n"
-"PO-Revision-Date: 2019-06-30 20:14+0200\n"
+"PO-Revision-Date: 2019-11-25 21:56+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -685,6 +685,19 @@ msgstr "Rotsige Grot"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:973
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
+#| "water and wind, carrying erosive particles that carve the rock. It "
+#| "resembles a scraggy underground cavern which shoulders defense, but is "
+#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
+#| "and trolls, are fully capable of navigating such topography.\n"
+#| "\n"
+#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
+#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
+#| "in rockbound caves.\n"
+#| "\n"
+#| "Occasionally caves are <italic>text='illuminated'</italic>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -709,8 +722,7 @@ msgstr ""
 "ruiters hebben 40%. Dwergen, mede dankzij hun kleine gestalte, hebben 60% "
 "verdediging in rotsige grotten.\n"
 "\n"
-"Af en toe zijn grotten <ref>dst='terrain_illuminated_cave' text='verlicht'</"
-"ref>."
+"Af en toe zijn grotten <italic>text='verlicht'</italic>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1603,6 +1615,24 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2737
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
+#| "with enough room for a unit to pass.\n"
+#| "Most units are wholly unfamiliar with the terrain, and thus are both "
+#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
+#| "homes in caves, both have a relatively easy time navigating this terrain, "
+#| "especially dwarves, who by dint of their small size can navigate many "
+#| "obstacles that other races cannot. Occasionally caves are "
+#| "<italic>text='illuminated'</italic>.\n"
+#| "\n"
+#| "Rare patches of the underground world are illuminated by light from the "
+#| "surface shining down into the gloomy darkness. This provides an attack "
+#| "bonus for lawful units and removes the attack bonus from chaotic units. "
+#| "In all other regards this terrain is functionally identical to normal "
+#| "cave terrains.\n"
+#| "\n"
+#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1626,8 +1656,7 @@ msgstr ""
 "De meeste eenheden zijn geheel onbekend met het terrein, en kunnen er dus "
 "enkel langzaam verplaatsen en zich slecht verdedigen. Dwergen en Trollen "
 "wonen in grotten en kunnen zich er juist goed verplaatsen, vooral Dwergen "
-"omdat ze kleiner zijn. Soms zijn grotten <ref>dst='terrain_illuminated_cave' "
-"text='verlicht'</ref>.\n"
+"omdat ze kleiner zijn. Soms zijn grotten <italic>text='verlicht'</italic>.\n"
 "\n"
 "Sommige stukken van de ondergrondse wereld worden verlicht door licht van "
 "bovenaf. Deze plekken geven gezagsgetrouwe eenheden hun bonus en zorgt "
@@ -3895,17 +3924,13 @@ msgstr "Wanneer een nieuwe beurt is begonnen"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created:"
-msgstr "Spel data:"
+msgstr "Spel aangemaakt:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "Wanneer een nieuwe beurt is begonnen"
+msgstr "Wanneer een nieuw spel is aangemaakt"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
@@ -7759,10 +7784,36 @@ msgstr ""
 "De sleutel '$deprecated_key' is hernoemd naar '$key'. Ondersteuning voor "
 "'$deprecated_key' zal verwijderd worden in versie $removal_version."
 
+#~ msgid "Reason:"
+#~ msgstr "Reden:"
+
+#~ msgid "Stop Game"
+#~ msgstr "Spel Beëindigen"
+
+#~ msgid "feature^Experimental OpenMP support"
+#~ msgstr "Experimentele OpenMP ondersteuning"
+
 #, fuzzy
-#~| msgid "Rusty Gate"
-#~ msgid "Rusty Open Gate"
-#~ msgstr "Roestige Poort"
+#~| msgid "Speed: "
+#~ msgid "Speed:"
+#~ msgstr "Snelheid:"
+
+#~ msgid "Units move and fight speed"
+#~ msgstr "Vecht- en beweegsnelheid eenheden"
+
+#, fuzzy
+#~| msgid "Scenario start"
+#~ msgid "Scenario"
+#~ msgstr "Scenario Begin"
+
+#, fuzzy
+#~| msgid "Campaign"
+#~ msgid "Campaign"
+#~ msgstr "Veldtocht"
+
+#, fuzzy
+#~ msgid "No era information found."
+#~ msgstr "Er is geen server gedefiniëerd."
 
 #, fuzzy
 #~ msgid "Wooden Open Door"
@@ -7776,6 +7827,16 @@ msgstr ""
 
 #~ msgid "Alphabetically"
 #~ msgstr "Alfabetisch"
+
+#, fuzzy
+#~| msgid "Unlimited"
+#~ msgid "FPS limiter"
+#~ msgstr "Ongelimiteerd"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgid "Settings:"
+#~ msgstr "Instellingen"
 
 #~ msgid "Refresh"
 #~ msgstr "Ververs"
@@ -7807,59 +7868,9 @@ msgstr ""
 #~ "org/forum/"
 
 #, fuzzy
-#~| msgid "Show team colors"
-#~ msgid "The team color"
-#~ msgstr "Toon teamkleuren"
-
-#, fuzzy
-#~| msgid "Speed: "
-#~ msgid "Speed:"
-#~ msgstr "Snelheid:"
-
-#~ msgid "Units move and fight speed"
-#~ msgstr "Vecht- en beweegsnelheid eenheden"
-
-#, fuzzy
-#~| msgid "Available at main menu"
-#~ msgid "Available at titlescreen"
-#~ msgstr "Beschikbaar in hoofdmenu"
-
-#, fuzzy
-#~| msgid "Scenario start"
-#~ msgid "Scenario"
-#~ msgstr "Scenario Begin"
-
-#, fuzzy
-#~| msgid "Campaign"
-#~ msgid "Campaign"
-#~ msgstr "Veldtocht"
-
-#~ msgid "feature^Experimental OpenMP support"
-#~ msgstr "Experimentele OpenMP ondersteuning"
-
-#, fuzzy
 #~| msgid "None"
 #~ msgid "None"
 #~ msgstr "Geen"
-
-#, fuzzy
-#~| msgid "Settings"
-#~ msgid "Settings:"
-#~ msgstr "Instellingen"
-
-#, fuzzy
-#~| msgid "Registered Users Only"
-#~ msgid "Registered users only:"
-#~ msgstr "Enkel Geregistreerde Gebruikers"
-
-#, fuzzy
-#~ msgid "No era information found."
-#~ msgstr "Er is geen server gedefiniëerd."
-
-#, fuzzy
-#~| msgid "Unlimited"
-#~ msgid "FPS limiter"
-#~ msgstr "Ongelimiteerd"
 
 #~ msgid "Password Reminder"
 #~ msgstr "Wachtwoordherinnering"
@@ -7926,9 +7937,6 @@ msgstr ""
 
 #~ msgid "Moderating"
 #~ msgstr "Modereren"
-
-#~ msgid "Reason:"
-#~ msgstr "Reden:"
 
 #~ msgid "Time:"
 #~ msgstr "Tijd:"

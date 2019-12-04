@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-06-30 20:26+0200\n"
+"PO-Revision-Date: 2019-07-01 18:43+0200\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -178,7 +178,7 @@ msgstr ""
 "dit geval Konrad, worden de vakken waarnaar hij kan verplaatsen gemarkeerd. "
 "Alle eenheden hebben een bepaald aantal <i>verplaatsingspunten</i>, die "
 "bepalen hoeveel vakken de eenheid kan verplaatsen per beurt. Normaal "
-"gebruikt het verplaatsen op vlak terrein een verplaatsingspunt. Om te "
+"gebruikt het verplaatsen op vlak terrein één verplaatsingspunt. Om te "
 "verplaatsen, klik je eenvoudig op Konrad en vervolgens op de bestemming. (Je "
 "kan op <b>u</b> drukken om een verplaatsing ongedaan te maken als je naar de "
 "verkeerde plaats gaat.)"
@@ -198,9 +198,9 @@ msgstr ""
 "Alle eenheden hebben een bepaald aantal <i>verplaatsingspunten</i>, die "
 "bepalen hoeveel vakken de eenheid kan verplaatsen per beurt. Normaal "
 "gebruikt het verplaatsen op vlak terrein een verplaatsingspunt. Om te "
-"verplaatsen, klik je eenvoudig op Konrad en vervolgens op de bestemming. (Je "
-"kan op <b>u</b> drukken om een verplaatsing ongedaan te maken als je naar de "
-"verkeerde plaats gaat.)"
+"verplaatsen, klik je op Li'sar en vervolgens op de bestemming. (Je kan op "
+"<b>u</b> drukken om een verplaatsing ongedaan te maken als je naar de "
+"verkeerde plaats bent gegaan.)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:380
@@ -215,12 +215,12 @@ msgstr "Plaats Li'sar naast Delfador"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:399
 msgid "Good morning, Delfador! Is it time to attack things?"
-msgstr "Goedemorgen Delfador! Kunnen we dingen gaan aanvallen?"
+msgstr "Goedemorgen Delfador! Kunnen we iets gaan aanvallen?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:400
 msgid "female^Good morning, Delfador! Is it time to attack things?"
-msgstr "Goedemorgen Delfador! Kunnen we dingen gaan aanvallen?"
+msgstr "Goedemorgen Delfador! Kunnen we iets gaan aanvallen?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:405
@@ -230,12 +230,12 @@ msgstr "Ehm, nou..."
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:410
 msgid "Have you found an orc for me to fight, huh? A troll?"
-msgstr "Heb je een ork voor me gevonden om tegen te vechten? Of een trol?"
+msgstr "Mag ik eindelijk tegen een ork vechten? Of een trol?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:411
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
-msgstr "Heb je een ork voor me gevonden om tegen te vechten? Of een trol?"
+msgstr "Mag ik eindelijk tegen een ork vechten? Of een trol?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:416
@@ -272,8 +272,8 @@ msgid ""
 "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
 "sure you’ll win."
 msgstr ""
-"Jonge dame, je hebt $student_hp hitpoints en een zwaard. Ik ben er vrij "
-"zeker van dat je het wel zult winnen."
+"Jongedame, je hebt $student_hp hitpoints en een zwaard. Ik ben er vrij zeker "
+"van dat je het wel zult winnen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:512
@@ -674,7 +674,7 @@ msgid ""
 "have been safer."
 msgstr ""
 "Je elf heeft aangevallen met een zwaard (5x4, oftewel 5 schade wanneer je "
-"raakt, met 4 kansen), een wapen dat van <i>dichtbij<i> gebruikt wordt, en "
+"raakt, met 4 kansen), een wapen dat van <i>dichtbij</i> gebruikt wordt, en "
 "dus heeft de stropop kunnen verdedigen met zijn eigen wapen voor dichtbij-"
 "aanvallen (3x5; oftewel 3 schade wanneer hij raakt, met 5 kansen). De aanval "
 "op afstand (de pijl en boog) was veiliger geweest."
@@ -687,9 +687,9 @@ msgid ""
 "attack, so it could not defend itself."
 msgstr ""
 "Je elf viel aan met de pijl en boog, een aanval op <i>afstand</i> (3x3; "
-"oftewel 3 schade wanneer je raakt, met 3 kansen). De stropop wapen waarmee "
-"hij kan aanvallen op afstand, alleen van dichtbij, daarom heeft hij zich "
-"niet kunnen verdedigen."
+"oftewel 3 schade wanneer je raakt, met 3 kansen). De stropop heeft geen "
+"wapen waarmee hij kan aanvallen op afstand, alleen van dichtbij, daarom "
+"heeft hij zich niet kunnen verdedigen."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:937
@@ -712,7 +712,7 @@ msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
 "Je kunt met je rechter muisknop op een eenheid klikken om een gedetailleerde "
-"<b>Eenheidsbeschrijving</b> te bekijken."
+"<b>Eenheid beschrijving</b> te bekijken."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:974
@@ -825,7 +825,7 @@ msgid ""
 "we have real work to do..."
 msgstr ""
 "Voor nu, Konrad, zal ik je nog wat poppen geven om op te oefenen! Daarna "
-"hebben we echt werk te doen..."
+"kunnen we beginnen aan het echte werk..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1088
@@ -834,7 +834,7 @@ msgid ""
 "we have real work to do..."
 msgstr ""
 "Voor nu, Li'sar, zal ik je nog wat poppen geven om op te oefenen! Daarna "
-"hebben we echt werk te doen..."
+"kunnen we beginnen aan het echte werk..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1164
@@ -2197,8 +2197,7 @@ msgid ""
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
 "\n"
-"<big>Klik met een muisknop of druk op de spatiebalk om verder te gaan...</"
-"big>"
+"<big>Klik met de muis of druk op de spatiebalk om verder te gaan...</big>"
 
 #, fuzzy
 #~ msgid ""

@@ -15,7 +15,7 @@
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
  ### Editor
  ### Language and i18n
-   * Updated translations: Ancient Greek, Chinese (Traditional), French,
+   * Updated translations: Ancient Greek, Chinese (Traditional), Dutch, French,
      Portuguese (Brazil), Russian
    * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Terrains
