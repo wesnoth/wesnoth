@@ -26,11 +26,7 @@ function wesnoth.wml_actions.modify_side(cfg)
 			side.defeat_condition = cfg.defeat_condition
 		end
 		if cfg.recruit then
-			local recruits = {}
-			for recruit in utils.split(cfg.recruit) do
-				table.insert(recruits, recruit)
-			end
-			side.recruit = recruits
+			side.recruit = cfg.recruit:split()
 		end
 		if cfg.village_support then
 			side.village_support = cfg.village_support

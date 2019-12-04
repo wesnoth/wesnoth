@@ -24,7 +24,7 @@ end
 
 local function on_event(eventname, arg1, arg2)
 	if string.match(eventname, ",") then
-		for elem in utils.split(eventname or "") do
+		for _,elem in ipairs((eventname or ""):split()) do
 			on_event(elem, arg1, arg2)
 		end
 		return

@@ -13,7 +13,7 @@ function wesnoth.wml_actions.role(cfg)
 	local types = {}
 
 	if cfg.type then
-		for value in utils.split(cfg.type) do
+		for _,value in ipairs(cfg.type:split()) do
 			table.insert(types, value:trim())
 		end
 	end

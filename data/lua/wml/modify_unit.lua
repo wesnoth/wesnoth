@@ -6,16 +6,6 @@ local wml_actions = wesnoth.wml_actions
 --  in the first part of this file and the fallback (old) implementation in the
 --  second part of this file
 
-local function split_to_array(str)
-	-- Split string @str into a table using the delimiter @sep (default: ',')
-
-	local fields = {}
-	for c in utils.split(str) do
-		fields[#fields+1] = c
-	end
-	return fields
-end
-
 local function make_set(t)
 	local res = {}
 	for i, v in ipairs(t) do
@@ -125,7 +115,7 @@ local function simple_modify_unit(cfg)
 			u["goto"] = { cfg.goto_x or u["goto"][1] , cfg.goto_y or u["goto"][2] }
 		end
 		if cfg.extra_recruit then
-			u.extra_recruit = split_to_array(cfg.extra_recruit)
+			u.extra_recruit = cfg.extra_recruit:split()
 		end
 		if cfg.ai_special == "guardian" then
 			u.status.guardian = true

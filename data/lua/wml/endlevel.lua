@@ -85,10 +85,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 	local victory = there_is_a_local_human_victory or (not there_is_a_local_human_defeat and proceed_to_next_level)
 
 	if cfg.music then
-		local music = {}
-		for track in utils.split(cfg.music) do
-			table.insert(music, track)
-		end
+		local music = cfg.music:split()
 		if victory then
 			wesnoth.game_config.victory_music = music
 		else

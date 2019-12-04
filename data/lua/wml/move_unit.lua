@@ -5,7 +5,7 @@ local function path_locs(path)
 		-- Index is 1 for x, 2 for y
 		local function special_locations(index)
 			return function()
-				for loc in utils.split(path.location_id) do
+				for _,loc in ipairs(tostring(path.location_id):split()) do
 					loc = wesnoth.special_locations[loc]
 					if loc then coroutine.yield(loc[index]) end
 				end
@@ -18,7 +18,7 @@ local function path_locs(path)
 		local function relative_locations(index)
 			return function(u)
 				local last = {x = u.x, y = u.y}
-				for dir in utils.split(cfg.dir) do
+				for _,dir in ipairs(cfg.dir:split()) do
 					local count = 1
 					if dir:find(":") then
 						local error_dir = dir
@@ -34,7 +34,13 @@ local function path_locs(path)
 			end
 		end
 	else
-		return utils.split(path.to_x), utils.split(path.to_y)
+		-- Index is 1 for x, 2 for y
+		local function abs_locations(coord)
+			for _,s in tostring(path[coord]):split() do
+				coroutine.yield(tonumber(s))
+			end
+		end
+		return coroutine.wrap(abs_locations('to_x')), coroutine.wrap(abs_locations('to_y'))
 	end
 end
 

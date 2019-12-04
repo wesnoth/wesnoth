@@ -24,7 +24,7 @@ function wml_actions.sync_variable(cfg)
 	local result = wesnoth.synchronize_choice(
 		function()
 			local res = {}
-			for name_raw in utils.split(names) do
+			for _,name_raw in ipairs(names:split()) do
 				local name = name_raw:trim()
 				local variable_type = string.sub(name, string.len(name)) == "]" and "indexed" or ( wml.variables[name .. ".length"] > 0 and "array" or "attribute")
 				local variable_info = { name = name, type = variable_type }
@@ -109,7 +109,7 @@ function wml_actions.clear_variable(cfg, variables)
 	local names = cfg.name or
 		wml.error "[clear_variable] missing required name= attribute."
 	if variables == nil then variables = wml.variables end
-	for w in utils.split(names) do
+	for _,w in ipairs(names:split()) do
 		variables[w:trim()] = nil
 	end
 end
@@ -128,7 +128,7 @@ function wml_actions.store_unit_type(cfg)
 	local types = cfg.type or
 		wml.error "[store_unit_type] missing required type= attribute."
 	local writer = utils.vwriter.init(cfg, "unit_type")
-	for w in utils.split(types) do
+	for _,w in ipairs(types:split()) do
 		local unit_type = wesnoth.unit_types[w] or
 			wml.error(string.format("Attempt to store nonexistent unit type '%s'.", w))
 		utils.vwriter.write(writer, unit_type.__cfg)
@@ -159,7 +159,7 @@ function wml_actions.allow_recruit(cfg)
 	local unit_types = cfg.type or wml.error("[allow_recruit] missing required type= attribute")
 	for index, team in ipairs(wesnoth.sides.find(cfg)) do
 		local v = team.recruit
-		for type in utils.split(unit_types) do
+		for _,type in ipairs(unit_types:split()) do
 			table.insert(v, type)
 			wesnoth.add_known_unit(type)
 		end
@@ -171,7 +171,7 @@ function wml_actions.allow_extra_recruit(cfg)
 	local recruits = cfg.extra_recruit or wml.error("[allow_extra_recruit] missing required extra_recruit= attribute")
 	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local v = unit.extra_recruit
-		for recruit in utils.split(recruits) do
+		for _,recruit in iapirs(recruits:split()) do
 			table.insert(v, recruit)
 			wesnoth.add_known_unit(recruit)
 		end
@@ -184,7 +184,7 @@ function wml_actions.disallow_recruit(cfg)
 	for index, team in ipairs(wesnoth.sides.find(cfg)) do
 		if unit_types then
 			local v = team.recruit
-			for w in utils.split(unit_types) do
+			for _,w in ipairs(unit_types:split()) do
 				for i, r in ipairs(v) do
 					if r == w then
 						table.remove(v, i)
@@ -203,7 +203,7 @@ function wml_actions.disallow_extra_recruit(cfg)
 	local recruits = cfg.extra_recruit or wml.error("[disallow_extra_recruit] missing required extra_recruit= attribute")
 	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local v = unit.extra_recruit
-		for w in utils.split(recruits) do
+		for _,w in ipairs(recruits:split()) do
 			for i, r in ipairs(v) do
 				if r == w then
 					table.remove(v, i)
@@ -218,21 +218,13 @@ end
 function wml_actions.set_recruit(cfg)
 	local recruit = cfg.recruit or wml.error("[set_recruit] missing required recruit= attribute")
 	for index, team in ipairs(wesnoth.sides.find(cfg)) do
-		local v = {}
-		for w in utils.split(recruit) do
-			table.insert(v, w)
-		end
-		team.recruit = v
+		team.recruit = recruit:split()
 	end
 end
 
 function wml_actions.set_extra_recruit(cfg)
 	local recruits = cfg.extra_recruit or wml.error("[set_extra_recruit] missing required extra_recruit= attribute")
-	local v = {}
-
-	for w in utils.split(recruits) do
-		table.insert(v, w)
-	end
+	local v = recruits:split()
 
 	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		unit.extra_recruit = v
@@ -254,7 +246,7 @@ function wml_actions.unit_worth(cfg)
 	local hp = u.hitpoints / u.max_hitpoints
 	local xp = u.experience / u.max_experience
 	local best_adv = ut.cost
-	for w in utils.split(ut.__cfg.advances_to) do
+	for _,w in ipairs(ut.advances_to) do
 		local uta = wesnoth.unit_types[w]
 		if uta and uta.cost > best_adv then best_adv = uta.cost end
 	end
@@ -742,7 +734,7 @@ end
 function wml_actions.remove_time_area(cfg)
 	local id = cfg.id or wml.error("[remove_time_area] missing required id= key")
 
-	for w in utils.split(id) do
+	for _,w in ipairs(id:split()) do
 		wesnoth.remove_time_area(w)
 	end
 end
@@ -783,7 +775,7 @@ end
 function wml_actions.remove_event(cfg)
 	local id = cfg.id or wml.error("[remove_event] missing required id= key")
 
-	for w in utils.split(id) do
+	for _,w in ipairs(id:split()) do
 		wesnoth.remove_event_handler(w)
 	end
 end
@@ -892,7 +884,7 @@ end
 
 function wml_actions.remove_sound_source(cfg)
 	local ids = cfg.id or wml.error("[remove_sound_source] missing required id= attribute")
-	for id in utils.split(ids) do
+	for _,id in ipairs(ids:split()) do
 		wesnoth.remove_sound_source(id)
 	end
 end
