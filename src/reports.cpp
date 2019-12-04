@@ -767,7 +767,6 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		int base_damage = at.damage();
 		int specials_damage = at.modified_damage(false);
 		int damage_multiplier = 100;
-		const_attack_ptr weapon  = at.shared_from_this();
 		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), u.alignment(), u.is_fearless());
 		damage_multiplier += tod_bonus;
 		int leader_bonus = at.combat_ability("leadership").first;
