@@ -25,7 +25,7 @@ function wml_actions.sync_variable(cfg)
 		function()
 			local res = {}
 			for name_raw in utils.split(names) do
-				local name = utils.trim(name_raw)
+				local name = name_raw:trim()
 				local variable_type = string.sub(name, string.len(name)) == "]" and "indexed" or ( wml.variables[name .. ".length"] > 0 and "array" or "attribute")
 				local variable_info = { name = name, type = variable_type }
 				table.insert(res, { "variable", variable_info })
@@ -110,7 +110,7 @@ function wml_actions.clear_variable(cfg, variables)
 		wml.error "[clear_variable] missing required name= attribute."
 	if variables == nil then variables = wml.variables end
 	for w in utils.split(names) do
-		variables[utils.trim(w)] = nil
+		variables[w:trim()] = nil
 	end
 end
 

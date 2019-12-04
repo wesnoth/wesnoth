@@ -1,10 +1,7 @@
 
 local utils = {vwriter = {}}
 
-function utils.trim(s)
-	-- use (f(a)) to get first argument
-	return (tostring(s):gsub("^%s*(.-)%s*$", "%1"))
-end
+utils.trim = wesnoth.deprecate_api('wml_utils.trim', 'stringx.trim', 1, nil, stringx.trim)
 
 function utils.split(s)
 	return tostring(s or ""):gmatch("[^%s,][^,]*")

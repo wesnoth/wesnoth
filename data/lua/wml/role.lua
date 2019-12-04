@@ -14,7 +14,7 @@ function wesnoth.wml_actions.role(cfg)
 
 	if cfg.type then
 		for value in utils.split(cfg.type) do
-			table.insert(types, utils.trim(value))
+			table.insert(types, value:trim())
 		end
 	end
 
