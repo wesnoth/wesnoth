@@ -58,6 +58,7 @@
 #include <sstream>
 #include <vector>
 #include <fstream>
+#include <boost/algorithm/string/trim.hpp>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -708,6 +709,17 @@ static int intf_str_join_map(lua_State* L) {
 	return 1;
 }
 
+/**
+ * Trims whitespace from the beginning and end of a string
+ */
+static int intf_str_trim(lua_State* L)
+{
+	std::string str = luaL_checkstring(L, 1);
+	boost::trim(str);
+	lua_pushlstring(L, str.c_str(), str.size());
+	return 1;
+}
+
 static int intf_get_language(lua_State* L)
 {
 	lua_push(L, get_language().localename);
@@ -896,12 +908,6 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Adding error handler...\n";
 	push_error_handler(L);
 
-	// Create the gettext metatable.
-	cmd_log_ << lua_common::register_gettext_metatable(L);
-
-	// Create the tstring metatable.
-	cmd_log_ << lua_common::register_tstring_metatable(L);
-
 
 	lua_settop(L, 0);
 
@@ -943,9 +949,6 @@ lua_kernel_base::lua_kernel_base()
 		{ "log",                      &intf_log                      },
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_time_stamp",           &intf_get_time_stamp           },
-		{ "format",                   &intf_format                   },
-		{ "format_conjunct_list",     &intf_format_list<true>        },
-		{ "format_disjunct_list",     &intf_format_list<false>       },
 		{ "get_language",             &intf_get_language             },
 		{ nullptr, nullptr }
 	};
@@ -965,6 +968,10 @@ lua_kernel_base::lua_kernel_base()
 		{ "map_split",           &intf_str_map_split },
 		{ "join",                &intf_str_join },
 		{ "join_map",            &intf_str_join_map },
+		{ "trim",                &intf_str_trim },
+		{ "vformat",                  &intf_format                   },
+		{ "format_conjunct_list",     &intf_format_list<true>        },
+		{ "format_disjunct_list",     &intf_format_list<false>       },
 		{ nullptr, nullptr },
 	};
 	lua_newtable(L);
@@ -982,6 +989,11 @@ lua_kernel_base::lua_kernel_base()
 	lua_pushcfunction(L, &impl_str_index);
 	lua_setfield(L, -2, "__index");
 	lua_setmetatable(L, -2);
+
+	// Create the gettext metatable.
+	cmd_log_ << lua_common::register_gettext_metatable(L);
+	// Create the tstring metatable.
+	cmd_log_ << lua_common::register_tstring_metatable(L);
 
 	cmd_log_ << "Adding wml module...\n";
 	static luaL_Reg const wml_callbacks[]= {

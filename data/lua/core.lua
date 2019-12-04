@@ -20,7 +20,7 @@ end
 
 function stringx.escaped_split(str, sep, esc)
 	esc = esc or '\\'
-	return stringx.split(str, sep, {escape = esc})
+	return stringx.split(str, sep, {escape = esc, strip_spaces = true, remove_empty = true})
 end
 
 function stringx.quoted_split(str, sep, left, right)
@@ -29,11 +29,11 @@ function stringx.quoted_split(str, sep, left, right)
 		left = '('
 		right = ')'
 	end
-	return stringx.split(str, sep, {quote_left = left, quote_right = right})
+	return stringx.split(str, sep, {quote_left = left, quote_right = right, strip_spaces = true, remove_empty = true})
 end
 
 function stringx.anim_split(str, sep)
-	return stringx.split(str, sep, {expand_anim = true});
+	return stringx.split(str, sep, {expand_anim = true, strip_spaces = true, remove_empty = true});
 end
 
 --[========[Config Manipulation Functions]========]
@@ -232,15 +232,13 @@ local _ = wesnoth.textdomain "wesnoth"
 function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, detail_msg)
 	local message = detail_msg or ''
 	if replacement then
-		message = message .. " " .. wesnoth.format(
-			_"(Note: You should use $replacement instead in new code)",
-			{replacement = replacement})
+		message = message .. " " .. (_"(Note: You should use $replacement instead in new code)"):format{replacement = replacement}
 	end
 	if type(level) ~= "number" or level < 1 or level > 4 then
 		local err_params = {level = level}
 		-- Note: This message is duplicated in src/deprecation.cpp
 		-- Any changes should be mirrorred there.
-		error(wesnoth.format(_"Invalid deprecation level $level (should be 1-4)", err_params))
+		error((_"Invalid deprecation level $level (should be 1-4)"):format(err_params))
 	end
 	local msg_shown = false
 	if type(elem) == "function" or getmetatable(elem) == "function" then
@@ -757,3 +755,7 @@ wesnoth.alert = wesnoth.deprecate_api('wesnoth.alert', 'gui.alert', 1, nil, gui.
 wesnoth.confirm = wesnoth.deprecate_api('wesnoth.confirm', 'gui.confirm', 1, nil, gui.confirm)
 wesnoth.show_lua_console = wesnoth.deprecate_api('wesnoth.show_lua_console', 'gui.show_lua_console', 1, nil, gui.show_lua_console)
 wesnoth.add_widget_definition = wesnoth.deprecate_api('wesnoth.add_widget_definition', 'gui.add_widget_definition', 1, nil, gui.add_widget_definition)
+-- StringX module
+wesnoth.format = wesnoth.deprecate_api('wesnoth.format', 'stringx.vformat', 1, nil, stringx.vformat)
+wesnoth.format_conjunct_list = wesnoth.deprecate_api('wesnoth.format_conjunct_list', 'stringx.format_conjunct_list', 1, nil, stringx.format_conjunct_list)
+wesnoth.format_disjunct_list = wesnoth.deprecate_api('wesnoth.format_disjunct_list', 'stringx.format_disjunct_list', 1, nil, stringx.format_disjunct_list)

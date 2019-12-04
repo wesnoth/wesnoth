@@ -442,6 +442,11 @@ std::string register_tstring_metatable(lua_State *L)
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
+	
+	lua_createtable(L, 0, 1);
+	luaW_getglobal(L, "stringx", "vformat");
+	lua_setfield(L, -2, "format");
+	lua_setfield(L, -2, "__index");
 
 	lua_pushstring(L, "translatable string");
 	lua_setfield(L, -2, "__metatable");
