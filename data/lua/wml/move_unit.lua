@@ -33,6 +33,7 @@ local function path_locs(path)
 				end
 			end
 		end
+		return coroutine.wrap(relative_locations(1)), coroutine.wrap(relative_locations(2))
 	else
 		-- Index is 1 for x, 2 for y
 		local function abs_locations(coord)
