@@ -18,8 +18,8 @@
    * Tutorial:
      * S2: Make the first grunt cross the bridge, otherwise the scenario is too hard
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), Czech, French, Italian, Korean,
-     Portuguese (Brazil), Russian
+   * Updated translations: Chinese (Simplified), Czech, Dutch, French, Italian,
+     Korean, Portuguese (Brazil), Russian
    * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Lua API
    * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables (issue #4079).

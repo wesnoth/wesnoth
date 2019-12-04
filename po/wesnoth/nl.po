@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-06-30 20:13+0200\n"
+"PO-Revision-Date: 2019-11-25 21:51+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -4154,12 +4154,10 @@ msgstr "Nederlaag:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
 msgstr[0] "(deze beurt over)"
-msgstr[1] "(deze beurt over)"
+msgstr[1] "(%d beurten over)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -6987,6 +6985,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all]<command>]\n"
+"\"all\" = overzicht van alle commando's, <command> = naam van een specifiek "
+"commando (geeft gedetailleerde informatie)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -7022,8 +7023,8 @@ msgstr "Gebruik:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Alias:"
+msgstr[1] "Aliassen:"
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -7160,6 +7161,9 @@ msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
+"[<side> [on/off]]\n"
+"“on” = laat de besturing over aan AI, “off” = kant wordt bestuurd door de "
+"speler"
 
 #: src/menu_events.cpp:1190
 msgid "Switch a side to/from idle state."
@@ -7169,8 +7173,6 @@ msgstr "Schakel een kant naar/van wachtstand."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1194
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<zijde>[on/off]]"
 
@@ -7204,7 +7206,7 @@ msgstr "Debug de lagen van het terrein onder de muisaanwijzer."
 
 #: src/menu_events.cpp:1204
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "Toon fps (Frames Per Second)"
 
 #: src/menu_events.cpp:1206
 msgid "Save game."
@@ -7521,7 +7523,7 @@ msgstr "Geen bevriende spiegel"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Een spel ($name|, $scenario|) is aangemaakt"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7647,20 +7649,20 @@ msgstr ""
 "worden. Wil je het spel opslaan?"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Weet je zeker dat je dit spel wilt opgeven?"
+msgstr ""
+"\n"
+"Wil je dit spel opslaan?"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "Het spel is opgeslagen."
+msgstr ""
+"Het spel is beëindigd.\n"
+"Rede: "
 
 #: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
@@ -7986,12 +7988,6 @@ msgid "Units"
 msgstr "Eenheden"
 
 #: src/reports.cpp:1344
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8011,23 +8007,16 @@ msgid "Upkeep"
 msgstr "Onderhoud"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "Inkomen"
+msgstr "Netto Inkomen"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"Het aantal goudstukken dat je iedere beurt ontvangt voor het in bezit hebben "
-"van dorpen, of het aantal goudstukken dat je iedere beurt verliest voor het "
-"onderhouden van je eenheden."
+"Het netto aantal goudstukken dat je iedere beurt verdient of kwijtraakt. "
+"Waarin het inkomen uit dorpen en de uitgaven aan onderhoud zijn meegenomen."
 
 #: src/reports.cpp:1549
 msgid "Observers:"
