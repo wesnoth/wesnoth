@@ -170,7 +170,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
             end
 
 
-            -- if we're on a keep, wait until there are no movable units on the castle before moving off
+            -- if we're on a keep, wait until there are no movable non-leader units on the castle before moving off
             local leader_score = 195000
             if wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep then
                 local castle = AH.get_locations_no_borders {
@@ -182,9 +182,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
                 local should_wait = false
                 for i,loc in ipairs(castle) do
                     local unit = wesnoth.units.get(loc[1], loc[2])
-                    if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
-                        should_wait = false
-                    elseif unit.moves > 0 then
+                    if unit and (unit.side == wesnoth.current.side) and (not unit.canrecruit) and (unit.moves > 0) then
                         should_wait = true
                         break
                     end
