@@ -6,6 +6,9 @@ local M = wesnoth.map
 local CS_leader_score
 -- Note that CS_leader and CS_leader_target are also needed by the recruiting CA, so they must be stored in 'data'
 
+local high_score = 195000
+local low_score = 15000
+
 local function get_reachable_enemy_leaders(unit, avoid_map)
     -- We're cheating a little here and also find hidden enemy leaders. That's
     -- because a human player could make a pretty good educated guess as to where
@@ -25,6 +28,32 @@ local function get_reachable_enemy_leaders(unit, avoid_map)
     end
 
     return enemy_leaders
+end
+
+local function other_units_on_keep(leader)
+    -- if we're on a keep, wait until there are no movable non-leader units on the castle before moving off
+    local leader_score = high_score
+    if wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep then
+        local castle = AH.get_locations_no_borders {
+            { "and", {
+                x = leader.x, y = leader.y, radius = 200,
+                { "filter_radius", { terrain = 'C*,K*,C*^*,K*^*,*^K*,*^C*' } }
+            }}
+        }
+        local should_wait = false
+        for i,loc in ipairs(castle) do
+            local unit = wesnoth.units.get(loc[1], loc[2])
+            if unit and (unit.side == wesnoth.current.side) and (not unit.canrecruit) and (unit.moves > 0) then
+                should_wait = true
+                break
+            end
+        end
+        if should_wait then
+            leader_score = low_score
+        end
+    end
+
+    return leader_score
 end
 
 local ca_castle_switch = {}
@@ -57,6 +86,11 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
     local avoid_map = AH.get_avoid_map(ai, nil, true)
 
     if data.CS_leader and wesnoth.sides[wesnoth.current.side].gold >= cheapest_unit_cost then
+        -- If the saved score is the low score, check whether there are still other units on the keep
+        if (CS_leader_score == low_score) then
+            CS_leader_score = other_units_on_keep(data.CS_leader)
+        end
+
         -- make sure move is still valid
         local path, cost = AH.find_path_with_avoid(data.CS_leader, data.CS_leader_target[1], data.CS_leader_target[2], avoid_map)
         local next_hop = AH.next_hop(data.CS_leader, nil, nil, { path = path, avoid_map = avoid_map })
@@ -169,29 +203,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
                 end
             end
 
-
-            -- if we're on a keep, wait until there are no movable non-leader units on the castle before moving off
-            local leader_score = 195000
-            if wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep then
-                local castle = AH.get_locations_no_borders {
-                    { "and", {
-                        x = leader.x, y = leader.y, radius = 200,
-                        { "filter_radius", { terrain = 'C*,K*,C*^*,K*^*,*^K*,*^C*' } }
-                    }}
-                }
-                local should_wait = false
-                for i,loc in ipairs(castle) do
-                    local unit = wesnoth.units.get(loc[1], loc[2])
-                    if unit and (unit.side == wesnoth.current.side) and (not unit.canrecruit) and (unit.moves > 0) then
-                        should_wait = true
-                        break
-                    end
-                end
-                if should_wait then
-                    leader_score = 15000
-                end
-            end
-
+            local leader_score = other_units_on_keep(leader)
             best_score = best_score + leader_score
 
             if (best_score > overall_best_score) then
