@@ -58,7 +58,10 @@ end
 
 local ca_castle_switch = {}
 
-function ca_castle_switch:evaluation(cfg, data, filter_own)
+function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
+    -- @recruiting_leader is passed from the recuit_rushers CA for the leader_takes_village()
+    -- evaluation. If it is set, we do the castle switch evaluation only for that leader
+
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'castle_switch'
     if AH.print_eval() then AH.print_ts('     - Evaluating castle_switch CA:') end
 
@@ -67,12 +70,19 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
         return 0
     end
 
-    local leaders = AH.get_units_with_moves({
-        side = wesnoth.current.side,
-        canrecruit = 'yes',
-        formula = '(movement_left = total_movement) and (hitpoints = max_hitpoints)',
-        { "and", filter_own }
-    }, true)
+    local leaders
+    if recruiting_leader then
+        -- Note that doing this might set the stored castle switch information to a different leader.
+        -- This is fine though, the order in which these are done is not particularly important.
+        leaders = { recruiting_leader }
+    else
+        leaders = AH.get_units_with_moves({
+            side = wesnoth.current.side,
+            canrecruit = 'yes',
+            formula = '(movement_left = total_movement) and (hitpoints = max_hitpoints)',
+            { "and", filter_own }
+        }, true)
+    end
 
     if (not leaders[1]) then
         -- CA is irrelevant if no leader or the leader may have moved from another CA
@@ -85,7 +95,9 @@ function ca_castle_switch:evaluation(cfg, data, filter_own)
 
     local avoid_map = AH.get_avoid_map(ai, nil, true)
 
-    if data.CS_leader and wesnoth.sides[wesnoth.current.side].gold >= cheapest_unit_cost then
+    if data.CS_leader and wesnoth.sides[wesnoth.current.side].gold >= cheapest_unit_cost
+        and ((not recruiting_leader) or (recruiting_leader.id == data.CS_leader.id))
+    then
         -- If the saved score is the low score, check whether there are still other units on the keep
         if (CS_leader_score == low_score) then
             CS_leader_score = other_units_on_keep(data.CS_leader)
