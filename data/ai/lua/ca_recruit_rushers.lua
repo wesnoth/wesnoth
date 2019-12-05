@@ -20,8 +20,8 @@ if ca_castle_switch then
     params.leader_takes_village = (function()
             if ca_castle_switch:evaluation({}, dummy_engine.data) > 0 then
                 local take_village = #(wesnoth.get_villages {
-                    x = dummy_engine.data.leader_target[1],
-                    y = dummy_engine.data.leader_target[2]
+                    x = dummy_engine.data.CS_leader_target[1],
+                    y = dummy_engine.data.CS_leader_target[2]
                 }) > 0
                 return take_village
             end
