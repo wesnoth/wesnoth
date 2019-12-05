@@ -1283,13 +1283,20 @@ function ai_helper.has_weapon_special(unit, special)
     return false
 end
 
-function ai_helper.get_cheapest_recruit_cost()
+function ai_helper.get_cheapest_recruit_cost(leader)
+    -- Optional input @leader: if given, find the cheapest recruit cost for this leader,
+    --   otherwise for the combination of all leaders of the current side
     local recruit_ids = {}
     for _,recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
         table.insert(recruit_ids, recruit_id)
     end
 
-    local leaders = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }
+    local leaders
+    if leader then
+        leaders = { leader }
+    else
+        leaders = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }
+    end
     for _,l in ipairs(leaders) do
         for _,recruit_id in ipairs(l.extra_recruit) do
             table.insert(recruit_ids, recruit_id)
