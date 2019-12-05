@@ -1284,8 +1284,20 @@ function ai_helper.has_weapon_special(unit, special)
 end
 
 function ai_helper.get_cheapest_recruit_cost()
-    local cheapest_unit_cost = math.huge
+    local recruit_ids = {}
     for _,recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+        table.insert(recruit_ids, recruit_id)
+    end
+
+    local leaders = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }
+    for _,l in ipairs(leaders) do
+        for _,recruit_id in ipairs(l.extra_recruit) do
+            table.insert(recruit_ids, recruit_id)
+        end
+    end
+
+    local cheapest_unit_cost = math.huge
+    for _,recruit_id in ipairs(recruit_ids) do
         if wesnoth.unit_types[recruit_id].cost < cheapest_unit_cost then
             cheapest_unit_cost = wesnoth.unit_types[recruit_id].cost
         end
