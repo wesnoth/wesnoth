@@ -720,6 +720,27 @@ static int intf_str_trim(lua_State* L)
 	return 1;
 }
 
+// Override string.format to coerce the format to a string
+static int intf_str_format(lua_State* L)
+{
+	int nargs = lua_gettop(L);
+	if(luaW_iststring(L, 1)) {
+		// get the tostring() function and call it on the first argument
+		lua_getglobal(L, "tostring");
+		lua_pushvalue(L, 1);
+		lua_call(L, 1, 1);
+		// replace the first argument with the coerced value
+		lua_replace(L, 1);
+	}
+	// grab the original string.format function from the closure...
+	lua_pushvalue(L, lua_upvalueindex(1));
+	// ...move it to the bottom of the stack...
+	lua_insert(L, 1);
+	// ...and finally pass along all the arguments to it.
+	lua_call(L, nargs, 1);
+	return 1;
+}
+
 /**
  * Parses a range string of the form a-b into an interval pair
  * Accepts the string "infinity" as representing a Very Large Number
@@ -1002,6 +1023,13 @@ lua_kernel_base::lua_kernel_base()
 	lua_pushcfunction(L, &impl_str_index);
 	lua_setfield(L, -2, "__index");
 	lua_setmetatable(L, -2);
+	
+	// Override string.format
+	lua_getglobal(L, "string");
+	lua_getfield(L, -1, "format");
+	lua_pushcclosure(L, &intf_str_format, 1);
+	lua_setfield(L, -2, "format");
+	lua_pop(L, 1);
 
 	// Create the gettext metatable.
 	cmd_log_ << lua_common::register_gettext_metatable(L);
