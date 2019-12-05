@@ -91,11 +91,9 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
         return 0
     end
 
-    local cheapest_unit_cost = AH.get_cheapest_recruit_cost()
-
     local avoid_map = AH.get_avoid_map(ai, nil, true)
 
-    if data.CS_leader and wesnoth.sides[wesnoth.current.side].gold >= cheapest_unit_cost
+    if data.CS_leader and wesnoth.sides[wesnoth.current.side].gold >= AH.get_cheapest_recruit_cost(data.CS_leader)
         and ((not recruiting_leader) or (recruiting_leader.id == data.CS_leader.id))
     then
         -- If the saved score is the low score, check whether there are still other units on the keep
@@ -196,6 +194,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
                 local close_villages = wesnoth.get_villages( {
                     { "and", { x = next_hop[1], y = next_hop[2], radius = leader.max_moves }},
                     owner_side = 0 })
+                local cheapest_unit_cost = AH.get_cheapest_recruit_cost(leader)
                 for i,loc in ipairs(close_villages) do
                     local path_village, cost_village = AH.find_path_with_avoid(leader, loc[1], loc[2], avoid_map)
                     if cost_village <= leader.moves then
