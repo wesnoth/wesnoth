@@ -71,7 +71,7 @@ end
 
 function ca_move_to_any_enemy:execution(cfg, data)
     if AH.print_exec() then AH.print_ts('   Executing move_to_any_enemy CA') end
-    AH.checked_move_full(ai, MTAE_unit, MTAE_destination[1], MTAE_destination[2])
+    AH.robust_move_and_attack(ai, MTAE_unit, MTAE_destination)
     MTAE_unit, MTAE_destination = nil,nil
 end
 

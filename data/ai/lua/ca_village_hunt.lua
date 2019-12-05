@@ -92,7 +92,7 @@ end
 function ca_village_hunt:execution(cfg, data, filter_own)
     if AH.print_exec() then AH.print_ts('   Executing village_hunt CA') end
 
-    AH.checked_move_full(ai, VH_unit, VH_dst[1], VH_dst[2])
+    AH.robust_move_and_attack(ai, VH_unit, VH_dst)
     VH_unit, VH_dst = nil, nil
 end
 

@@ -239,7 +239,7 @@ function ca_castle_switch:execution(cfg, data, filter_own)
     if AH.print_exec() then AH.print_ts('   Executing castle_switch CA') end
     if AH.show_messages() then wesnoth.wml_actions.message { speaker = leader.id, message = 'Switching castles' } end
 
-    AH.checked_move(ai, data.CS_leader, data.CS_leader_target[1], data.CS_leader_target[2])
+    AH.robust_move_and_attack(ai, data.CS_leader, data.CS_leader_target, nil, { partial_move = true })
     data.CS_leader, data.CS_leader_target = nil
 end
 
