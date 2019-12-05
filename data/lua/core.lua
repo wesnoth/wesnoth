@@ -251,6 +251,7 @@ local _ = wesnoth.textdomain "wesnoth"
 ---- elem: The actual element being deprecated
 ---- detail_msg: An optional message to add to the deprecation message
 function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, detail_msg)
+	if wesnoth.strict then return nil end
 	local message = detail_msg or ''
 	if replacement then
 		message = message .. " " .. (_"(Note: You should use $replacement instead in new code)"):format{replacement = replacement}
