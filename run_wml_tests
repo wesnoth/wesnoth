@@ -140,7 +140,7 @@ class WesnothRunner:
             # for now just create a result so that this can be handled
             # by the same code path as other statuses.
             res = subprocess.CompletedProcess(args, UnitTestResult.TIMEOUT.value,
-                stderr = "Timed out (killed by Python timeout implementation)")
+                stderr = b"Timed out (killed by Python timeout implementation)")
         if self.verbose > 1:
             print("Result:", res.returncode, "\n", res.stderr)
         if res.returncode < 0:
