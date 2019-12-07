@@ -36,7 +36,7 @@ function wesnoth.interface.remove_item(x, y, name)
 		end
 	end
 	if not name or #items == 0 then
-		scenario_items:insert(x, y, nil)
+		scenario_items:remove(x, y)
 	end
 end
 

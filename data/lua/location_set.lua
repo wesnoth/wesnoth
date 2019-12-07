@@ -29,10 +29,12 @@ function locset_meta:__index(loc)
 end
 
 function locset_meta:__newindex(loc, val)
+	local fcn = methods.insert
+	if val == nil then fcn = methods.remove end
 	if loc.x and loc.y then
-		self:insert(loc.x, loc.y, val)
+		fcn(self, loc.x, loc.y, val)
 	else
-		self:insert(loc[1], loc[2], val)
+		fcn(self, loc[1], loc[2], val)
 	end
 end
 
