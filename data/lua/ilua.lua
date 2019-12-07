@@ -69,9 +69,8 @@ end
 
 -- Need to save this locally because the debug module will be disabled right after this file is loaded
 -- The or clause is so that it doesn't totally break if someone decides to force-reload ilua during a session.
-local rawgetmetatable = debug.getmetatable or getmetatable
-local function getmetatable(t)
-    return rawgetmetatable(t) or {}
+local function rawgetmetatable(t)
+    return (debug.getmetatable or getmetatable)(t) or {}
 end
 
 function ilua.val2str(val)
@@ -79,13 +78,13 @@ function ilua.val2str(val)
     if tp == 'function' then
         return tostring(val)
     elseif tp == 'table' then
-        if getmetatable(val).__tostring  then
+        if rawgetmetatable(val).__tostring  then
             return tostring(val)
         else
             return '{'..ilua.join(val,',')..'}'
         end
     elseif tp == 'userdata' then
-        local mt = getmetatable(val)
+        local mt = rawgetmetatable(val)
         if mt.__len and mt.__pairs then
             return '{'..ilua.join(val,',')..'}'
         else
