@@ -254,13 +254,13 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 	if wesnoth.strict then return nil end
 	local message = detail_msg or ''
 	if replacement then
-		message = message .. " " .. (_"(Note: You should use $replacement instead in new code)"):format{replacement = replacement}
+		message = message .. " " .. (_"(Note: You should use $replacement instead in new code)"):vformat{replacement = replacement}
 	end
 	if type(level) ~= "number" or level < 1 or level > 4 then
 		local err_params = {level = level}
 		-- Note: This message is duplicated in src/deprecation.cpp
 		-- Any changes should be mirrorred there.
-		error((_"Invalid deprecation level $level (should be 1-4)"):format(err_params))
+		error((_"Invalid deprecation level $level (should be 1-4)"):vformat(err_params))
 	end
 	local msg_shown = false
 	if type(elem) == "function" or getmetatable(elem) == "function" then
