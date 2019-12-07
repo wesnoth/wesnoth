@@ -73,6 +73,8 @@ static lg::log_domain log_user("scripting/lua/user");
 
 // Registry key for metatable
 static const char * Gen = "name generator";
+// Registry key for lua interpreter environment
+static const char * Interp = "lua interpreter";
 
 // Callback implementations
 
@@ -1154,6 +1156,16 @@ lua_kernel_base::lua_kernel_base()
 	// Create formula bridge metatables
 	cmd_log_ << lua_formula_bridge::register_metatables(L);
 
+	// Create the Lua interpreter table
+	cmd_log_ << "Sandboxing Lua interpreter...\nTo make variables visible outside the interpreter, assign to _G.variable.\n";
+	cmd_log_ << "The special variable _ holds the result of the last expression (if any).\n";
+	lua_newtable(L);
+	lua_createtable(L, 0, 1);
+	lua_getglobal(L, "_G");
+	lua_setfield(L, -2, "__index");
+	lua_setmetatable(L, -2);
+	lua_setfield(L, LUA_REGISTRYINDEX, Interp);
+
 	// Loading ilua:
 	cmd_log_ << "Loading ilua...\n";
 
@@ -1263,7 +1275,6 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 bool lua_kernel_base::load_string(char const * prog, const std::string& name, error_handler e_h)
 {
 	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
-	// todo: maybe allow a 'name' parameter to give better error messages.
 	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? name.c_str() : prog, "t");
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(mState, -1);
@@ -1301,13 +1312,18 @@ void lua_kernel_base::run_lua_tag(const config& cfg)
 }
 // Call load_string and protected call. Make them throw exceptions.
 //
-void lua_kernel_base::throwing_run(const char * prog, const std::string& name, int nArgs)
+void lua_kernel_base::throwing_run(const char * prog, const std::string& name, int nArgs, bool in_interpreter)
 {
 	cmd_log_ << "$ " << prog << "\n";
 	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
 	this->load_string(prog, name, eh);
+	if(in_interpreter) {
+		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
+		if(lua_setupvalue(mState, -2, 1) == nullptr)
+			lua_pop(mState, 1);
+	}
 	lua_insert(mState, -nArgs - 1);
-	this->protected_call(nArgs, 0, eh);
+	this->protected_call(nArgs, in_interpreter ? LUA_MULTRET : 0, eh);
 }
 
 // Do a throwing run, but if we catch a lua_error, reformat it with signature for this function and log it.
@@ -1323,22 +1339,48 @@ void lua_kernel_base::run(const char * prog, const std::string& name, int nArgs)
 
 // Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.
 void lua_kernel_base::interactive_run(char const * prog) {
-	std::string experiment = "ilua._pretty_print(";
+	std::string experiment = "return ";
 	experiment += prog;
-	experiment += ")";
+	int top = lua_gettop(mState);
 
 	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+	luaW_getglobal(mState, "ilua", "_pretty_print");
 
 	try {
 		// Try to load the experiment without syntax errors
 		this->load_string(experiment.c_str(), "interactive", eh);
+		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
+		if(lua_setupvalue(mState, -2, 1) == nullptr)
+			lua_pop(mState, 1);
 	} catch (const game::lua_error &) {
-		this->throwing_run(prog, "interactive", 0);	// Since it failed, fall back to the usual throwing_run, on the original input.
+		this->throwing_run(prog, "interactive", 0, true);	// Since it failed, fall back to the usual throwing_run, on the original input.
+		if(lua_gettop(mState) == top + 1) {
+			// Didn't return anything
+			lua_settop(mState, top);
 		return;
+		} else goto PRINT;
 	}
 	// experiment succeeded, now run but log normally.
 	cmd_log_ << "$ " << prog << "\n";
-	this->protected_call(0, 0, eh);
+	this->protected_call(0, LUA_MULTRET, eh);
+PRINT:
+	int nRets = lua_gettop(mState) - top - 1;
+	{
+		// Assign first result to _
+		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
+		int env_idx = lua_gettop(mState);
+		lua_pushvalue(mState, top + 2);
+		lua_setfield(mState, -2, "_");
+		// Now duplicate EVERY result and pass it to table.pack, assigning to _all
+		luaW_getglobal(mState, "table", "pack");
+		for(int i = top + 2; i < env_idx; i++)
+			lua_pushvalue(mState, i);
+		this->protected_call(nRets, 1, eh);
+		lua_setfield(mState, -2, "_all");
+		lua_pop(mState, 1);
+	}
+	// stack is now ilua._pretty_print followed by any results of prog
+	this->protected_call(lua_gettop(mState) - top - 1, 0, eh);
 }
 /**
  * Loads and executes a Lua file.

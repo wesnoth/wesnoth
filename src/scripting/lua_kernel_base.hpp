@@ -35,7 +35,7 @@ public:
 	void run(char const *prog, const std::string& name, int nArgs = 0);
 
 	/** Runs a plain script, but reports errors by throwing lua_error.*/
-	void throwing_run(char const * prog, const std::string& name, int nArgs);
+	void throwing_run(char const * prog, const std::string& name, int nArgs, bool in_interpreter = false);
 
 	/** Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.*/
 	void interactive_run(char const * prog);
