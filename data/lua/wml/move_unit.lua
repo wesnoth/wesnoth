@@ -34,10 +34,11 @@ local function path_locs(path)
 		end
 		return coroutine.wrap(relative_locations(1)), coroutine.wrap(relative_locations(2))
 	else
-		-- Index is 1 for x, 2 for y
 		local function abs_locations(coord)
-			for _,s in tostring(path[coord]):split() do
-				coroutine.yield(tonumber(s))
+			return function()
+				for _,s in ipairs(tostring(path[coord]):split()) do
+					coroutine.yield(tonumber(s))
+				end
 			end
 		end
 		return coroutine.wrap(abs_locations('to_x')), coroutine.wrap(abs_locations('to_y'))
