@@ -13,6 +13,9 @@
      * S5: adjust enemy recruits and gold
    * Secrets of the Ancients:
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
+     * Fix last breath dialog for bats firing multiple times in the campaign
+     * Fix bug of regular WC appearing in recruit list in S05 Blackwater
+     * Fix special plauge attack making rats when spiders are called for
  ### Editor
  ### Language and i18n
    * Updated translations: Ancient Greek, Chinese (Traditional), Dutch, French,
