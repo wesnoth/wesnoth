@@ -36,6 +36,8 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
         return 0
     end
 
+    local aggression = ai.aspects.aggression
+    if (aggression > 1) then aggression = 1 end
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
 
     -- Go through all possible attacks with poisoners
@@ -72,6 +74,7 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
                 -- More priority to enemies on strong terrain
                 local defense_rating = (100 - defender:defense(defender_terrain)) / 100
 
+                attacker_rating = attacker_rating * (1 - aggression)
                 local combat_rating = attacker_rating + defender_rating + additional_poison_rating
                 local total_rating = combat_rating + defense_rating
 
