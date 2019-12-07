@@ -58,6 +58,12 @@ class TestListParser:
             test_list.append(t)
         return test_list
 
+def get_output_filename(args):
+    for i,arg in enumerate(args):
+        if arg == "-u":
+            return "test-output-"+args[i+1]
+    raise RuntimeError("No -u option found!")
+
 def run_with_rerun_for_sdl_video(args, timeout):
     """A wrapper for subprocess.run with a workaround for the issue of travis+18.04
     intermittently failing to initialise SDL.
@@ -68,9 +74,14 @@ def run_with_rerun_for_sdl_video(args, timeout):
     while sdl_retries < 10:
         # For compatibility with Ubuntu 16.04 LTS, this has to run on Python3.5,
         # so the capture_output argument is not available.
-        res = subprocess.run(args, timeout=timeout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        if res.stderr.find(b"Could not initialize SDL_video") == -1:
-            return res
+        filename = get_output_filename(args)
+        res = subprocess.run(args, timeout=timeout, stdout=open(filename, "w"), stderr=subprocess.STDOUT)
+        retry = False
+        with open(filename, "r") as output:
+            if "Could not initialize SDL_video" in output.read():
+                retry = True
+        if not retry:
+        	  return res
         sdl_retries += 1
         print("Could not initialise SDL_video error, attempt", sdl_retries)
 
@@ -105,6 +116,7 @@ class WesnothRunner:
         if options.additional_arg is not None:
             self.common_args.extend(options.additional_arg)
         self.timeout = options.timeout
+        self.batch_timeout = options.batch_timeout
         if self.verbose > 1:
             print("Options that will be used for all Wesnoth instances:", repr(self.common_args))
 
@@ -124,8 +136,10 @@ class WesnothRunner:
         if self.timeout == 0:
             timeout = None
         else:
-            # could add a separate option for batch timeouts, but for now this is enough
-            timeout = int (self.timeout * (1 + 0.2 * len(test_list)))
+            if len(test_list) == 1:
+                timeout = self.timeout
+            else:
+                timeout = self.batch_timeout
         if len(test_list) == 1:
             print("Running test", test_list[0].name)
         else:
@@ -136,13 +150,10 @@ class WesnothRunner:
         try:
             res = run_with_rerun_for_sdl_video(args, timeout)
         except subprocess.TimeoutExpired as e:
-            # Using subprocess.run we can't access the captured output,
-            # for now just create a result so that this can be handled
-            # by the same code path as other statuses.
-            res = subprocess.CompletedProcess(args, UnitTestResult.TIMEOUT.value,
-                stderr = b"Timed out (killed by Python timeout implementation)")
+            print("Timed out (killed by Python timeout implementation)")
+            res = subprocess.CompletedProcess(args, UnitTestResult.TIMEOUT.value)
         if self.verbose > 1:
-            print("Result:", res.returncode, "\n", res.stderr)
+            print("Result:", res.returncode)
         if res.returncode < 0:
             print("Wesnoth exited because of signal", -res.returncode)
             if options.backtrace:
@@ -152,7 +163,9 @@ class WesnothRunner:
                 subprocess.run(gdb_args, timeout=240)
             raise UnexpectedTestStatusException()
         if res.returncode != expected_result.value:
-            print(str(res.stderr, encoding="utf-8", errors="backslashreplace"))
+            with open(get_output_filename(args), "r") as output:
+                for line in output.readlines():
+                	print(line)
             print("Failure, Wesnoth returned", res.returncode, "but we expected", expected_result.value)
             raise UnexpectedTestStatusException()
 
@@ -180,6 +193,8 @@ if __name__ == '__main__':
         help="Additional arguments to go to wesnoth. For options that start with a hyphen, '--add_argument --data-dir' will give an error, use '--add_argument=--data-dir' instead.")
     ap.add_argument("-t", "--timeout", type=int, default=10,
         help="New timer value to use, instead of 10s as default. The value 0 means no timer, and also skips tests that expect timeout.")
+    ap.add_argument("-bt", "--batch-timeout", type=int, default=300,
+        help="New timer value to use for batched tests, instead of 300s as default.")
     ap.add_argument("-s", "--no-strict", dest="strict_mode", action="store_false",
         help="Disable strict mode. By default, we run wesnoth with the option --log-strict=warning to ensure errors result in a failed test.")
     ap.add_argument("-d", "--debug_bin", action="store_true",
