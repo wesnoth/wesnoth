@@ -259,7 +259,7 @@ void aspect_attacks_base::do_attack_analysis(
 				}
 			}
 
-			int best_leadership_bonus=0;
+			int best_leadership_bonus = 0;
 			for(const attack_type& a : unit_itor->attacks()) {
 				best_leadership_bonus= a.combat_ability("leadership", 0, backstab).first;
 			}
