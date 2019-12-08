@@ -1259,7 +1259,7 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
                 best_enemy = enemy
             end
         end
-        unit_ratings[i] = { rating = max_rating, unit_id = u.id, enemy_id = best_enemy.id }
+        unit_ratings[i] = { rating = max_rating, unit_id = unit.id, enemy_id = best_enemy.id }
     end
 
     -- Then we want the same thing for all of the enemy units (for the counter attack on enemy turn)
