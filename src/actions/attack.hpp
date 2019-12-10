@@ -279,7 +279,6 @@ void attack_unit_and_advance(const map_location& attacker,
  */
 bool leadership_affects_self(const std::string& ability, const unit &un, const map_location& loc, bool attacker=true);
 bool leadership_affects_opponent(const std::string& ability, const unit &un, const map_location& loc, bool attacker=true);
-bool bool_leadership(const std::string& ability, const unit &un, unit_const_ptr up,const map_location& loc, const map_location& opp_loc, bool attacker=true, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr);
 unit_ability_list list_leadership(const std::string& ability,const unit &un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker=true, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr);
 
 /**
