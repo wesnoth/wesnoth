@@ -240,7 +240,7 @@ function wml_actions.switch(cfg)
 
 	-- Execute all the [case]s where the value matches.
 	for v in wml.child_range(cfg, "case") do
-		for _,w in ipairs(v.value:split()) do
+		for _,w in ipairs(tostring(v.value):split()) do
 			if w == tostring(var_value) then
 				local action = utils.handle_event_commands(v, "switch")
 				found = true
