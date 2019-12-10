@@ -181,16 +181,14 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	return false;
 }
 
-unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
 	unit_ability_list res(loc_);
 
 	for(const config& i : this->abilities_.child_range(tag_name)) {
 		if(ability_active(tag_name, i, loc)
-			&& ability_affects_self(tag_name, i, loc)
-			&& ability_affects_weapon(i, weapon, false)
-			&& ability_affects_weapon(i, opp_weapon, true)
-		) {
+			&& ability_affects_self(tag_name, i, loc))
+			{
 			res.emplace_back(&i, loc);
 		}
 	}
@@ -214,9 +212,8 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		for(const config& j : it->abilities_.child_range(tag_name)) {
 			if(affects_side(j, side(), it->side())
 				&& it->ability_active(tag_name, j, adjacent[i])
-				&& ability_affects_adjacent(tag_name, j, i, loc, *it) && ability_affects_weapon(j, weapon, false)
-				&& ability_affects_weapon(j, opp_weapon, true)
-			) {
+				&& ability_affects_adjacent(tag_name, j, i, loc, *it))
+				{
 				res.emplace_back(&j, adjacent[i]);
 			}
 		}
@@ -447,6 +444,34 @@ bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bo
 	const std::string filter_tag_name = is_opp ? "filter_second_weapon" : "filter_weapon";
 	if(!cfg.has_child(filter_tag_name)) {
 		return true;
+	}
+	const config& filter_student_name= cfg.child("filter_student");
+	if(filter_student_name){
+        const config& filter_weapon_name= filter_student_name.child("filter_weapon");
+        if(filter_weapon_name && !is_opp){
+            return true;
+        }
+	}
+	const config& filter_opponent_name= cfg.child("filter_opponent");
+	if(filter_opponent_name){
+        const config& filter_weapon_name= filter_opponent_name.child("filter_weapon");
+        if(filter_weapon_name && is_opp){
+            return true;
+        }
+	}
+	const config& filter_attacker_name= cfg.child("filter_attacker");
+	if(filter_attacker_name){
+        const config& filter_weapon_name= filter_attacker_name.child("filter_weapon");
+        if(filter_weapon_name){
+            return true;
+        }
+	}
+	const config& filter_defender_name= cfg.child("filter_defender");
+	if(filter_defender_name){
+        const config& filter_weapon_name= filter_defender_name.child("filter_weapon");
+        if(filter_weapon_name){
+            return true;
+        }
 	}
 	const config& filter = cfg.child(filter_tag_name);
 	if(!weapon) {
@@ -952,6 +977,9 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
 
 	// Apply [swarm].
 	unit_ability_list swarm_specials = get_specials("swarm");
+	if(!list_ability("swarm").empty()){
+            swarm_specials = list_ability("swarm");
+	}
 	if ( !swarm_specials.empty() ) {
 		min_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_min").first);
 		max_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_max", attacks_value).first);
