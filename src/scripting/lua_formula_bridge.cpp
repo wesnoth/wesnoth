@@ -574,6 +574,50 @@ static int impl_fcntb_set(lua_State* L)
 	lua_kernel_base& kernel = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
 	formula_function_ptr fcn(new lua_formula_function_defn(fcn_name, min_args - 1, max_args - 1, kernel));
 	lua_pushvalue(L, 3);
+	if(fcn_info.nups > 0) {
+		// Replace _ENV with a minimal environment containing only pure functions
+		static const char*const globals[] = {
+			// Basic iteration functions
+			"pairs", "ipairs", "next",
+			// Basic information functions
+			"type", "select", "rawget", "rawlen", "rawequal", "_VERSION",
+			// Conversions
+			"tostring", "tonumber",
+			// Pure modules
+			"math", "mathx", "string", "stringx", "utf8",
+		};
+		static const char*const wesnoth[] = {
+			// Version info
+			"current_version", "version",
+			// Misc functions
+			"ms_since_init", "named_tuple", "textdomain",
+			// Global data
+			"colors", "game_config", "get_language",
+		};
+		static const char*const wml[] = {
+			"attribute_count", "child_array", "child_count", "child_range", "find_child",
+			"get_child", "get_nth_child", "tag", "clone", "equal", "valid", "matches_filter",
+			"parse", "merge", "diff", "patch", "interpolate", "tostring"
+		};
+		lua_newtable(L);
+		for(auto glob : globals) {
+			lua_getglobal(L, glob);
+			lua_setfield(L, -2, glob);
+		}
+		lua_newtable(L);
+		for(auto wes : wesnoth) {
+			luaW_getglobal(L, "wesnoth", wes);
+			lua_setfield(L, -2, wes);
+		}
+		lua_setfield(L, -2, "wesnoth");
+		lua_newtable(L);
+		for(auto w : wml) {
+			luaW_getglobal(L, "wml", w);
+			lua_setfield(L, -2, w);
+		}
+		lua_setfield(L, -2, "wml");
+		lua_setupvalue(L, -2, 1);
+	}
 	lua_rawsetp(L, LUA_REGISTRYINDEX, fcn.get());
 	tb->add_function(fcn_name, std::move(fcn));
 	return 0;
