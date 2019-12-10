@@ -43,6 +43,7 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
+#include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_type.hpp"
@@ -966,4 +967,27 @@ int intf_add_widget_definition(lua_State* L)
 	}
 	return 0;
 }
+
+int luaW_open(lua_State* L) {
+	auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
+	lk.add_log("Adding gui module...\n");
+	static luaL_Reg const gui_callbacks[] = {
+		{ "show_menu",          &show_menu },
+		{ "show_narration",     &show_message_dialog },
+		{ "show_popup",         &show_popup_dialog },
+		{ "show_story",         &show_story },
+		{ "show_prompt",        &show_message_box },
+		{ "add_widget_definition",    &intf_add_widget_definition },
+		{ nullptr, nullptr },
+	};
+	std::vector<lua_cpp::Reg> const cpp_gui_callbacks {
+		{"show_lua_console", std::bind(&lua_kernel_base::intf_show_lua_console, &lk, _1)},
+		{nullptr, nullptr}
+	};
+	lua_newtable(L);
+	luaL_setfuncs(L, gui_callbacks, 0);
+	lua_cpp::set_functions(L, cpp_gui_callbacks);
+	return 1;
+}
+
 } // end namespace lua_gui2
