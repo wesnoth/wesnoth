@@ -69,6 +69,7 @@ public:
 	// In action/attack.cpp
 	std::pair<int, bool> combat_ability(const std::string& ability, int abil_value = 0, bool backstab_pos = false) const;
 	bool bool_ability(const std::string& ability) const;
+	unit_ability_list list_ability(const std::string& ability) const;
 
 
 	// In unit_abilities.cpp:
