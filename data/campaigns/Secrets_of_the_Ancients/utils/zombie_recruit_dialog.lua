@@ -6,7 +6,7 @@ local listedZombies = {}
 local recruitedType
 local recruitCost
 
-local zombies = V.zombies
+local zombies = wml.array_access.get("zombies")
 local sides = wesnoth.sides.find()
 
 local unit_row = T.row {
@@ -94,7 +94,7 @@ local function preshow()
     wesnoth.set_dialog_callback( general_help, "help_button" )
     wesnoth.set_dialog_callback( unit_help, "unit_help_button" )
 
-    local zArrayIndex = 0  -- Index of the original, zero-indexed array from WML.
+    local zArrayIndex = 1  -- Start index of the WML array in lua.
     local zListIndex = 1  -- Index of the list of recrutable zombies in this dialog box.
     while zombies[zArrayIndex] do
         local z=zombies[zArrayIndex]
@@ -127,7 +127,7 @@ end
 
 -- Find out if there is at least one zombie in the list box.
 -- This will only be necessary if the WML changes, but it could, so we'll check.
-local zArrayIndex = 0  -- Index of the original, zero-indexed array from WML.
+local zArrayIndex = 1  -- Start index of the WML array in lua.
 local zExists = false
 while zombies[zArrayIndex] and zExists == false do
     local z=zombies[zArrayIndex]
