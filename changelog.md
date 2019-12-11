@@ -83,6 +83,9 @@
    * [effect]apply_to=variation now supports heal_full
    * Support [set/clear_variable] inside [modify_unit/side]
    * Support [variables] in [modify_side], as in [modify_unit]
+   * [filter_weapon] implemented in abilities used as weapons specials to be the same as true weapons specials (implement filter_weapon in [filter_student] instead of [filter_self])
+   * [leadership] can now, like the special weapons-based abilities, use all their options (active_on = (defense, offense, both), apply_to = self, opponent, etc.) as well as their filters ([filter_student / opponent , etc.])
+   * [heal_on_hit],[plague] and [swarm] implemented in abilities used like weapon specials like the others
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
