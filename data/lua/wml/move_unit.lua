@@ -1,23 +1,20 @@
 
 local function path_locs(path)
 	if path.location_id then
-		-- Index is 1 for x, 2 for y
-		local function special_locations(index)
+		local function special_locations()
 			return function()
 				for _,loc in ipairs(tostring(path.location_id):split()) do
 					loc = wesnoth.special_locations[loc]
-					if loc then coroutine.yield(loc[index]) end
+					if loc then coroutine.yield(loc[1], loc[2]) end
 				end
 			end
 		end
-		return coroutine.wrap(special_locations(1)), coroutine.wrap(special_locations(2))
+		return coroutine.wrap(special_locations())
 	elseif path.dir then
-		local coord = {'x', 'y'}
-		-- Index is 1 for x, 2 for y
-		local function relative_locations(index)
+		local function relative_locations()
 			return function(u)
 				local last = {x = u.x, y = u.y}
-				for _,dir in ipairs(cfg.dir:split()) do
+				for _,dir in ipairs(path.dir:split()) do
 					local count = 1
 					if dir:find(":") then
 						local error_dir = dir
@@ -27,12 +24,12 @@ local function path_locs(path)
 						end
 					end
 					next_loc = wesnoth.map.get_direction(last.x, last.y, dir, count)
-					coroutine.yield(next_loc[index])
+					coroutine.yield(next_loc[1], next_loc[2])
 					last.x, last.y = next_loc[1], next_loc[2]
 				end
 			end
 		end
-		return coroutine.wrap(relative_locations(1)), coroutine.wrap(relative_locations(2))
+		return coroutine.wrap(relative_locations())
 	else
 		local function abs_locations(coord)
 			return function()
@@ -41,7 +38,14 @@ local function path_locs(path)
 				end
 			end
 		end
-		return coroutine.wrap(abs_locations('to_x')), coroutine.wrap(abs_locations('to_y'))
+		-- Double-coroutining seems a bit excessive but I can't think of a better way to do this?
+		return coroutine.wrap(function()
+			local xs, ys = coroutine.wrap(abs_locations('to_x')), coroutine.wrap(abs_locations('to_y'))
+			repeat
+				local x, y = xs(), ys()
+				coroutine.yield(x, y)
+			until x == nil or y == nil
+		end)
 	end
 end
 
@@ -69,22 +73,22 @@ function wesnoth.wml_actions.move_unit(cfg)
 
 	for current_unit_index, current_unit in ipairs(units) do
 		if not fire_event or current_unit.valid then
-			local xs, ys = path_locs(path)
-			local move_string_x = current_unit.x
-			local move_string_y = current_unit.y
+			local locs = path_locs(path)
+			local x_list = {current_unit.x}
+			local y_list = {current_unit.y}
 			local pass_check = nil
 			if check_passability then pass_check = current_unit end
 
-			local x, y = xs(current_unit), ys(current_unit)
+			local x, y = locs(current_unit)
 			local prevX, prevY = tonumber(current_unit.x), tonumber(current_unit.y)
 			while true do
 				x = tonumber(x) or wml.error(coordinate_error)
 				y = tonumber(y) or wml.error(coordinate_error)
 				if not (x == prevX and y == prevY) then x, y = wesnoth.find_vacant_tile(x, y, pass_check) end
 				if not x or not y then wml.error("Could not find a suitable hex near to one of the target hexes in [move_unit].") end
-				move_string_x = string.format("%s,%u", move_string_x, x)
-				move_string_y = string.format("%s,%u", move_string_y, y)
-				local next_x, next_y = xs(current_unit), ys(current_unit)
+				table.insert(x_list, x)
+				table.insert(y_list, y)
+				local next_x, next_y = locs(current_unit)
 				if not next_x and not next_y then break end
 				prevX, prevY = x, y
 				x, y = next_x, next_y
@@ -102,8 +106,8 @@ function wesnoth.wml_actions.move_unit(cfg)
 				variation = current_unit_cfg.variation,
 				image_mods = current_unit.image_mods,
 				side = current_unit_cfg.side,
-				x = move_string_x,
-				y = move_string_y,
+				x = x_list,
+				y = y_list,
 				force_scroll = muf_force_scroll
 			}
 			local x2, y2 = current_unit.x, current_unit.y
