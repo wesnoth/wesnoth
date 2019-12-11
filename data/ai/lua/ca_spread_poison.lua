@@ -12,22 +12,25 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'spread_poison'
     if AH.print_eval() then AH.print_ts('     - Evaluating spread_poison CA:') end
 
-    -- If a unit with a poisoned weapon can make an attack, we'll do that preferentially
-    -- (with some exceptions)
-    local poisoners = AH.get_units_with_attacks { side = wesnoth.current.side,
-        { "filter_wml", {
-            { "attack", {
-                { "specials", {
-                    { "poison", { } }
-                } }
-            } }
-        } },
-        canrecruit = 'no',
-        { "and", filter_own }
-    }
+    local attacks_aspect = ai.aspects.attacks
+
+    local poisoners = {}
+    for _,unit in ipairs(attacks_aspect.own) do
+        if (unit.attacks_left > 0) and (#unit.attacks > 0) and AH.has_weapon_special(unit, "poison")
+            and (not unit.canrecruit) and unit:matches(filter_own)
+        then
+            table.insert(poisoners, unit)
+        end
+    end
+
     if (not poisoners[1]) then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
         return 0
+    end
+
+    local target_map = LS.create()
+    for _,enemy in ipairs(attacks_aspect.enemy) do
+        target_map:insert(enemy.x, enemy.y)
     end
 
     local attacks = AH.get_attacks(poisoners)
@@ -43,7 +46,7 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
     -- Go through all possible attacks with poisoners
     local max_rating, best_attack = - math.huge
     for i,a in ipairs(attacks) do
-        if (not avoid_map:get(a.dst.x, a.dst.y)) then
+        if target_map:get(a.target.x, a.target.y) and (not avoid_map:get(a.dst.x, a.dst.y)) then
             local attacker = wesnoth.units.get(a.src.x, a.src.y)
             local defender = wesnoth.units.get(a.target.x, a.target.y)
 
