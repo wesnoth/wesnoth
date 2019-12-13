@@ -122,6 +122,7 @@
    * Added tool trackviewer, which has the animation-preview functions of trackplacer (PR #4574)
    * Removed the python2 trackplacer tool (issue #4365)
    * Made wmlscope recognize and analyze optional macro arguments
+   * Made `map_file=Example.map` support looking in the `[binary_path]`'s "maps/" directory (issue #4633)
 
 ## Version 1.15.2
  ### AI:
