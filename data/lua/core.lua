@@ -216,7 +216,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 				msg_shown = true
 				wesnoth.deprecated_message(elem_name, level, version, message)
 			end
-			return elem[val]
+			return elem[key]
 		end
 		mt.__newindex = function(self, key, val)
 			if not msg_shown then
