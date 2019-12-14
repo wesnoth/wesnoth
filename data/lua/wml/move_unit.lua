@@ -79,6 +79,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 			local pass_check = nil
 			if check_passability then pass_check = current_unit end
 
+			current_unit:extract()
 			local x, y = locs(current_unit)
 			local prevX, prevY = tonumber(current_unit.x), tonumber(current_unit.y)
 			while true do
@@ -98,7 +99,6 @@ function wesnoth.wml_actions.move_unit(cfg)
 			elseif current_unit.x > x then current_unit.facing = "sw"
 			end
 
-			current_unit:extract()
 			local current_unit_cfg = current_unit.__cfg
 			wesnoth.wml_actions.move_unit_fake {
 				type = current_unit_cfg.type,
