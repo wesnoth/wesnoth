@@ -1042,6 +1042,11 @@ int main(int argc, char** argv)
 		   args[k] == "--render-image" ||
 		   args[k] == "--report" ||
 		   args[k] == "-R" ||
+		   args[k] == "-V" ||
+		   args[k] == "-D" ||
+		   args[k] == "-P" ||
+		   args[k] == "-p" ||
+		   args[k] == "--preprocess" ||
 		   args[k] == "--screenshot" ||
 		   args[k] == "--data-path" ||
 		   args[k] == "--diff" ||

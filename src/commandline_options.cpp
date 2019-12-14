@@ -284,7 +284,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		;
 
 	po::options_description parsing_opts("WML parsing options");
-	testing_opts.add_options()
+	parsing_opts.add_options()
 		("use-schema,S", po::value<std::string>(), "specify a schema to validate WML against (defaults to the core schema)")
 		("validate,V", po::value<std::string>(), "validate a specified WML file against a schema")
 		("validate-addon", po::value<std::string>(), "validate the specified addon's WML against the schema")
