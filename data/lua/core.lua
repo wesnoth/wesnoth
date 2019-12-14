@@ -289,27 +289,12 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 				msg_shown = true
 				wesnoth.deprecated_message(elem_name, level, version, message)
 			end
-			local val = elem[key]
-			if val then return val end
-			if type(old_mt) == "table" then
-				if type(old_mt.__index) == 'function' then
-					return old_mt.__index(self, key)
-				elseif type(old_mt.__index) == 'table' then
-					return old_mt.__index[key]
-				else
-					-- As of 2019, __index must be either a function or a table. If you ever run into this error,
-					-- add an elseif branch for wrapping old_mt.__index appropriately. 
-					wml.error('The wrapped __index metamethod of a deprecated object is neither a function nor a table')
-				end
-			end
+			return elem[key]
 		end
 		mt.__newindex = function(self, key, val)
 			if not msg_shown then
 				msg_shown = true
 				wesnoth.deprecated_message(elem_name, level, version, message)
-			end
-			if type(old_mt) == "table" and old_mt.__newindex ~= nil then
-				return old_mt.__newindex(self, key, val)
 			end
 			elem[key] = val
 		end
