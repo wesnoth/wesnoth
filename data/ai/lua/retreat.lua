@@ -12,7 +12,16 @@ local retreat_functions = {}
 function retreat_functions.min_hp(unit)
     -- The minimum hp to retreat is a function of level and terrain defense
     -- We want to stay longer on good terrain and leave early on very bad terrain
-    local hp_per_level = unit:defense(wesnoth.get_terrain(unit.x, unit.y))/15
+
+    -- Take caution into account here. We want the multiplier to be:
+    --   1 for default caution (0.25)
+    --   0 for minimal caution <= 0
+    --   2 for caution = 1
+    local caution_factor = ai.aspects.caution
+    if (caution_factor < 0) then caution_factor = 0 end
+    caution_factor = math.sqrt(caution_factor) * 2
+
+    local hp_per_level = unit:defense(wesnoth.get_terrain(unit.x, unit.y))/15 * caution_factor
     local level = unit.level
 
     -- Leaders are considered to be higher level because of their value
@@ -23,9 +32,13 @@ function retreat_functions.min_hp(unit)
     -- Account for poison damage on next turn
     if unit.status.poisoned then min_hp = min_hp + wesnoth.game_config.poison_amount end
 
-    -- Make sure that units are actually injured
-    if min_hp > unit.max_hitpoints - 4 then
-        min_hp = unit.max_hitpoints - 4
+    -- Make sure that units are actually injured (only relevant for low-HP units)
+    -- Want this to be roughly half the units HP at caution=0, close to full HP at caution=1
+    local hp_factor = 0.5 + 0.25 * caution_factor
+    if (hp_factor > 1) then hp_factor = 1 end
+    local max_min_hp = (unit.max_hitpoints - 4) * hp_factor
+    if (min_hp > max_min_hp) then
+        min_hp = max_min_hp
     end
 
     return min_hp
@@ -33,11 +46,13 @@ end
 
 -- Given a set of units, return one from the set that should retreat and the location to retreat to
 -- Return nil if no unit needs to retreat
-function retreat_functions.retreat_injured_units(units)
+function retreat_functions.retreat_injured_units(units, avoid_map)
     -- Split units into those that regenerate and those that do not
     local regen, regen_amounts, non_regen = {}, {}, {}
     for i,u in ipairs(units) do
-        if u.hitpoints < retreat_functions.min_hp(u) then
+        if (u.hitpoints < retreat_functions.min_hp(u))
+            and ((not u.canrecruit) or (not ai.aspects.passive_leader))
+        then
             if u:ability('regenerate') then
                 -- Find the best regeneration ability and use it to estimate hp regained by regeneration
                 local abilities = wml.get_child(u.__cfg, "abilities")
@@ -60,7 +75,7 @@ function retreat_functions.retreat_injured_units(units)
     -- First we retreat non-regenerating units to healing terrain, if they can get to a safe location
     local unit_nr, loc_nr, threat_nr
     if non_regen[1] then
-        unit_nr, loc_nr, threat_nr = retreat_functions.get_retreat_injured_units(non_regen, {})
+        unit_nr, loc_nr, threat_nr = retreat_functions.get_retreat_injured_units(non_regen, {}, avoid_map)
         if unit_nr and (threat_nr == 0) then
             return unit_nr, loc_nr, threat_nr
         end
@@ -69,7 +84,7 @@ function retreat_functions.retreat_injured_units(units)
     -- Then we retreat regenerating units to terrain with high defense, if they can get to a safe location
     local unit_r, loc_r, threat_r
     if regen[1] then
-        unit_r, loc_r, threat_r = retreat_functions.get_retreat_injured_units(regen, regen_amounts)
+        unit_r, loc_r, threat_r = retreat_functions.get_retreat_injured_units(regen, regen_amounts, avoid_map)
         if unit_r and (threat_r == 0) then
             return unit_r, loc_r, threat_r
         end
@@ -118,7 +133,7 @@ function retreat_functions.get_healing_locations()
     return healing_locs
 end
 
-function retreat_functions.get_retreat_injured_units(healees, regen_amounts)
+function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avoid_map)
     -- Only retreat to safe locations
     local enemies = AH.get_attackable_enemies()
     local enemy_attack_map = BC.get_attack_map(enemies)
@@ -134,20 +149,22 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts)
             -- Unit cannot self heal, make the terrain do it for us if possible
             local location_subset = {}
             for j,loc in ipairs(possible_locations) do
-                local heal_amount = wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1], loc[2])).healing or 0
-                if heal_amount == true then
-                    -- handle deprecated syntax
-                    -- TODO: remove this when removed from game
-                    heal_amount = 8
+                if (not avoid_map) or (not avoid_map:get(loc[1], loc[2])) then
+                    local heal_amount = wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1], loc[2])).healing or 0
+                    if heal_amount == true then
+                        -- handle deprecated syntax
+                        -- TODO: remove this when removed from game
+                        heal_amount = 8
+                    end
+                    local curing = 0
+                    if heal_amount > 0 then
+                        curing = 2
+                    end
+                    local healer_values = healing_locs:get(loc[1], loc[2]) or {0, 0}
+                    heal_amount = math.max(heal_amount, healer_values[1])
+                    curing = math.max(curing, healer_values[2])
+                    table.insert(location_subset, {loc[1], loc[2], heal_amount, curing})
                 end
-                local curing = 0
-                if heal_amount > 0 then
-                    curing = 2
-                end
-                local healer_values = healing_locs:get(loc[1], loc[2]) or {0, 0}
-                heal_amount = math.max(heal_amount, healer_values[1])
-                curing = math.max(curing, healer_values[2])
-                table.insert(location_subset, {loc[1], loc[2], heal_amount, curing})
             end
 
             possible_locations = location_subset

@@ -1,6 +1,7 @@
 ------- Spread Poison CA --------------
 
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "location_set"
 
 local SP_attack
@@ -11,22 +12,25 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'spread_poison'
     if AH.print_eval() then AH.print_ts('     - Evaluating spread_poison CA:') end
 
-    -- If a unit with a poisoned weapon can make an attack, we'll do that preferentially
-    -- (with some exceptions)
-    local poisoners = AH.get_units_with_attacks { side = wesnoth.current.side,
-        { "filter_wml", {
-            { "attack", {
-                { "specials", {
-                    { "poison", { } }
-                } }
-            } }
-        } },
-        canrecruit = 'no',
-        { "and", filter_own }
-    }
+    local attacks_aspect = ai.aspects.attacks
+
+    local poisoners = {}
+    for _,unit in ipairs(attacks_aspect.own) do
+        if (unit.attacks_left > 0) and (#unit.attacks > 0) and AH.has_weapon_special(unit, "poison")
+            and (not unit.canrecruit) and unit:matches(filter_own)
+        then
+            table.insert(poisoners, unit)
+        end
+    end
+
     if (not poisoners[1]) then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
         return 0
+    end
+
+    local target_map = LS.create()
+    for _,enemy in ipairs(attacks_aspect.enemy) do
+        target_map:insert(enemy.x, enemy.y)
     end
 
     local attacks = AH.get_attacks(poisoners)
@@ -35,12 +39,14 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
         return 0
     end
 
+    local aggression = ai.aspects.aggression
+    if (aggression > 1) then aggression = 1 end
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
 
     -- Go through all possible attacks with poisoners
     local max_rating, best_attack = - math.huge
     for i,a in ipairs(attacks) do
-        if (not avoid_map:get(a.dst.x, a.dst.y)) then
+        if target_map:get(a.target.x, a.target.y) and (not avoid_map:get(a.dst.x, a.dst.y)) then
             local attacker = wesnoth.units.get(a.src.x, a.src.y)
             local defender = wesnoth.units.get(a.target.x, a.target.y)
 
@@ -55,30 +61,30 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
             local about_to_level = defender.max_experience - defender.experience <= (attacker.level * 2 * wesnoth.game_config.combat_experience)
 
             if (not cant_poison) and (healing == 0) and (not about_to_level) then
-                -- Strongest enemy gets poisoned first
-                local rating = defender.hitpoints
+                local _, poison_weapon = AH.has_weapon_special(attacker, "poison")
+                local dst = { a.dst.x, a.dst.y }
+                local att_stats, def_stats = BC.simulate_combat_loc(attacker, dst, defender, poison_weapon)
+                local _, defender_rating, attacker_rating = BC.attack_rating(attacker, defender, dst, { att_stats = att_stats, def_stats = def_stats })
 
-                -- Always attack enemy leader, if possible
-                if defender.canrecruit then rating = rating + 1000 end
-
-                -- Enemies that can regenerate are not good targets
-                if defender:ability('regenerate') then rating = rating - 1000 end
+                -- As this is the spread poison CA, we want to emphasize poison damage more, but only for non-regenerating units.
+                -- For regenerating units this is actually a penalty, as the poison might be more useful elsewhere.
+                local additional_poison_rating = wesnoth.game_config.poison_amount * (def_stats.poisoned - def_stats.hp_chance[0])
+                additional_poison_rating = additional_poison_rating / defender.max_hitpoints * defender.cost
+                if defender:ability('regenerate') then
+                    additional_poison_rating = - additional_poison_rating
+                end
 
                 -- More priority to enemies on strong terrain
-                local defender_defense = 100 - defender:defense(defender_terrain)
-                rating = rating + defender_defense / 4.
+                local defense_rating = (100 - defender:defense(defender_terrain)) / 100
 
-                -- For the same attacker/defender pair, go to strongest terrain
-                local attacker_terrain = wesnoth.get_terrain(a.dst.x, a.dst.y)
-                local attacker_defense = 100 - attacker:defense(attacker_terrain)
-                rating = rating + attacker_defense / 2.
+                attacker_rating = attacker_rating * (1 - aggression)
+                local combat_rating = attacker_rating + defender_rating + additional_poison_rating
+                local total_rating = combat_rating + defense_rating
 
-                -- And from village everything else being equal
-                local is_village = wesnoth.get_terrain_info(attacker_terrain).village
-                if is_village then rating = rating + 0.5 end
-
-                if rating > max_rating then
-                    max_rating, best_attack = rating, a
+                -- Only do the attack if combat_rating is positive. As there is a sizable
+                -- bonus for poisoning, this will be the case for most attacks.
+                if (combat_rating > 0) and (total_rating > max_rating) then
+                    max_rating, best_attack = total_rating, a
                 end
             end
         end
