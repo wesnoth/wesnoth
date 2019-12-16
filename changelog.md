@@ -1,8 +1,11 @@
 ## Version 1.14.9+dev
  ### AI:
-   * Experimental AI: fix poisoners ignoring [avoid] tag
+   * Experimental AI:
+     * Spread poison: bug fix for units ignoring [avoid] tag
+     * Castle switch: bug fix for units-on-keep check
    * Fix bug crashing some AIs when units with chance-to-hit specials without id are on map
-   * Lua AIs: several minor behind-the-scenes bug fixes
+   * Fast Micro AI: fix re-adding default CAs when deleting the MAI
+   * Lua AIs: several other minor behind-the-scenes bug fixes
  ### Campaigns
    * Descent into Darkness:
      * S1: reduced difficulty
