@@ -30,6 +30,8 @@
      * Increased map interactability
      * S3: reworked scenario
      * S5: adjust enemy recruits and gold
+   * Legend of Wesmere:
+     * S3: fix scenario-breaking bug introduced in 1.15.2
    * Secrets of the Ancients:
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
      * Fix last breath dialog for bats firing multiple times in the campaign
