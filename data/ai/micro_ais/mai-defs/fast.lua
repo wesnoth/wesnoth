@@ -17,10 +17,10 @@ function wesnoth.micro_ais.fast_ai(cfg)
 		-- This can be done independently of whether these were removed earlier
 		wesnoth.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
 			{
-				id="high_xp_attack"
-				engine="lua"
-				name="ai_default_rca::high_xp_attack"
-				location="ai/lua/ca_high_xp_attack.lua"
+				id="high_xp_attack",
+				engine="lua",
+				name="ai_default_rca::high_xp_attack",
+				location="ai/lua/ca_high_xp_attack.lua",
 				max_score=100010
 			}
 		)
