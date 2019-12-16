@@ -116,7 +116,7 @@ local function bottleneck_create_positioning_map(max_value, data)
     return map
 end
 
-local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, data)
+local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, on_my_territory, data)
     -- Calculate rating of a unit @unit at coordinates (@x,@y).
     -- Don't want to extract @is_healer and @has_leadership inside this function, as it is very slow.
     -- Thus they are provided as parameters from the calling function.
@@ -161,13 +161,20 @@ local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, data
 
     -- If this did not produce a positive rating, we add a
     -- distance-based rating, to get units to the bottleneck in the first place
-    if (rating <= 0) and data.BD_is_my_territory:get(x, y) then
+    if (rating <= 0) then
         local combined_dist = 0
         data.BD_def_map:iter(function(x_def, y_def, v)
             combined_dist = combined_dist + M.distance_between(x, y, x_def, y_def)
         end)
         combined_dist = combined_dist / data.BD_def_map:size()
-        rating = 1000 - combined_dist * 10.
+
+        if data.BD_is_my_territory:get(x, y) then
+            rating = 1000 - combined_dist * 10.
+        elseif (not on_my_territory) then
+            -- If the unit is itself on enemy territory, we also give an (even smaller) distance-based rating
+            -- in order to make it move toward own territory if it cannot get there on the current move
+            rating = 10 - combined_dist / 100.
+        end
     end
 
     -- Now add the unit specific rating.
@@ -299,15 +306,18 @@ function ca_bottleneck_move:evaluation(cfg, data)
         -- Is this a healer or leadership unit?
         local is_healer = (unit.__cfg.usage == "healer")
         local has_leadership = AH.has_ability(unit, "leadership")
+        local on_my_territory = data.BD_is_my_territory:get(unit.x, unit.y)
 
-        local rating = bottleneck_get_rating(unit, unit.x, unit.y, has_leadership, is_healer, data)
+        local rating = bottleneck_get_rating(unit, unit.x, unit.y, has_leadership, is_healer, on_my_territory, data)
         current_rating_map:insert(unit.x, unit.y, rating)
 
         -- A unit that cannot move any more, (or at least cannot move out of the way)
         -- must be considered to have a very high rating (it's in the best position
-        -- it can possibly achieve)
-        local best_move_away = bottleneck_move_out_of_way(unit, data)
-        if (not best_move_away) then current_rating_map:insert(unit.x, unit.y, 20000) end
+        -- it can possibly achieve), but only if it is in own territory
+        if on_my_territory then
+            local best_move_away = bottleneck_move_out_of_way(unit, data)
+            if (not best_move_away) then current_rating_map:insert(unit.x, unit.y, 20000) end
+        end
     end
 
     local enemies = AH.get_attackable_enemies()
@@ -345,10 +355,11 @@ function ca_bottleneck_move:evaluation(cfg, data)
     for _,unit in ipairs(units) do
         local is_healer = (unit.__cfg.usage == "healer")
         local has_leadership = AH.has_ability(unit, "leadership")
+        local on_my_territory = data.BD_is_my_territory:get(unit.x, unit.y)
 
         local reach = wesnoth.find_reach(unit)
         for _,loc in ipairs(reach) do
-            local rating = bottleneck_get_rating(unit, loc[1], loc[2], has_leadership, is_healer, data)
+            local rating = bottleneck_get_rating(unit, loc[1], loc[2], has_leadership, is_healer, on_my_territory, data)
 
             -- A move is only considered if it improves the overall rating,
             -- that is, its rating must be higher than:
