@@ -1,5 +1,24 @@
 ## Version 1.15.2+dev
- ### AI:
+ ### AI
+   * Merge most of Experimental AI candidate actions (CAs) into default AI
+     * CAs merged: castle switch, retreat injured, spread poison, place healers, move to any enemy
+     * CAs not merged: grab villages and village hunt, as the respective default AI CAs
+       are better as general purpose CAs. Also not merged was recruit rushers, which is too different
+       from default recruiting (would change balance too much) and because it can currently not deal
+       with multiple leaders and all the recruitment aspects. An option to use this alternative
+       recruiting will be provided in the future.
+     * Previous default AI CA removed: retreat phase
+     * The previous default CA is still available by using `[ai]ai_algorithm=ai_default_rca_1_14` or
+       by selecting "1.14 Default AI" in the multiplayer computer player selection menu
+     * The Experimental AI is now only available in debug mode (in MP) as it is mostly identical to the new default AI
+     * Many improvement were made to the new default CAs, to make them work correctly and consistently
+       in general settings, such a taken AI aspects (aggression, attacks, [avoid], caution, ...) and unit guardian
+       status into account, improved attack ratings and multi-leader functionality, and bug fixes
+   * Healer Support Micro AI: take unit guardian status and passive_leader aspect into account
+   * New ai_helper functionality: path finding, next_hop and get_attackable_enemies taking avoid into
+     account; next_hop with pre-calculated path and fanning out; new options to get_cheapest_recruit_cost
+   * Add [filter_own] optional tag to all default and Experimental AI candidate actions
+   * Fix [leader_goal] for sides with multiple leaders
  ### Campaigns
    * An Orcish Incursion:
      * Moved to addons server
@@ -76,7 +95,7 @@
    * location_set module extended to support set operators (& | ~ -) as well as a few additional functions
  ### WFL engine
    * New functions resistance_on(), vision_cost(), jamming_cost() that work in gameplay contexts (eg filters)
-   * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying 
+   * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying
    * For FormulaAI, the game map object has an alternate access mode - `map.gamemap[loc(x,y)]`
  ### WML engine
    * Support upkeep in StandardUnitFilter
