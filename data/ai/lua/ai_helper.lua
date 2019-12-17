@@ -1295,7 +1295,7 @@ function ai_helper.get_cheapest_recruit_cost(leader)
     if leader then
         leaders = { leader }
     else
-        leaders = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }
+        leaders = wesnoth.units.find_on_map { side = wesnoth.current.side, canrecruit = 'yes' }
     end
     for _,l in ipairs(leaders) do
         for _,recruit_id in ipairs(l.extra_recruit) do
@@ -1490,7 +1490,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
 
         -- Need the reach map of the unit from the ideal next hop hex
         -- There will always be another unit there, otherwise we would not have gotten here
-        local unit_in_way = wesnoth.get_unit(next_hop_ideal[1], next_hop_ideal[2])
+        local unit_in_way = wesnoth.units.get(next_hop_ideal[1], next_hop_ideal[2])
         unit_in_way:extract()
         local old_x, old_y = unit.x, unit.y
         unit:extract()
@@ -1501,12 +1501,12 @@ function ai_helper.next_hop(unit, x, y, cfg)
         unit_in_way:to_map()
 
         local terrain = wesnoth.get_terrain(next_hop_ideal[1], next_hop_ideal[2])
-        local move_cost_endpoint = wesnoth.unit_movement_cost(unit, terrain)
+        local move_cost_endpoint = wesnoth.units.movement_on(unit, terrain)
         local inverse_reach_map = LS.create()
         for _,r in pairs(inverse_reach) do
             -- We want the moves left for moving into the opposite direction in which the reach map was calculated
             local terrain = wesnoth.get_terrain(r[1], r[2])
-            local move_cost = wesnoth.unit_movement_cost(unit, terrain)
+            local move_cost = wesnoth.units.movement_on(unit, terrain)
             local inverse_cost = r[3] + move_cost - move_cost_endpoint
             inverse_reach_map:insert(r[1], r[2], inverse_cost)
         end
@@ -1709,7 +1709,7 @@ function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally
 
     local max_moves = unit.max_moves
     local terrain = wesnoth.get_terrain(x, y)
-    local move_cost = wesnoth.unit_movement_cost(unit, terrain)
+    local move_cost = wesnoth.units.movement_on(unit, terrain)
 
     if (move_cost > max_moves) then
         return ai_helper.no_path
@@ -1790,7 +1790,7 @@ function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally
     -- will potentially add to the cost and might make the path inaccurate. However, for an average
     -- defense of 50 along the path, this will not happen until the path is 1000 hexes long. Also,
     -- in most cases this will simply add to the cost, rather than change the path itself.
-    local defense = unit:defense(terrain)
+    local defense = unit:defense_on(terrain)
     -- We need this to be multiples of 10 for the penalty identification to work
     defense = H.round(defense / 10) * 10
     if (defense > 90) then defense = 90 end
@@ -1838,7 +1838,7 @@ function ai_helper.find_path_with_avoid(unit, x, y, avoid_map, options)
         return nil, ai_helper.no_path
     end
 
-    local all_units = wesnoth.get_units()
+    local all_units = wesnoth.units.find_on_map()
     local ally_map, enemy_map = LS.create(), LS.create()
     for _,u in ipairs(all_units) do
         if (u.id ~= unit.id) and ai_helper.is_visible_unit(wesnoth.current.side, u) then

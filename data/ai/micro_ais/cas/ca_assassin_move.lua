@@ -95,7 +95,7 @@ function ca_assassin_move:execution(cfg)
     -- Penalties for damage by enemies
     local enemy_rating_map = LS.create()
     enemy_damage_map:iter(function(x, y, enemy_damage)
-        local hit_chance = (unit:defense(wesnoth.get_terrain(x, y))) / 100.
+        local hit_chance = (unit:defense_on(wesnoth.get_terrain(x, y))) / 100.
 
         local rating = hit_chance * enemy_damage
         rating = rating / unit.max_hitpoints

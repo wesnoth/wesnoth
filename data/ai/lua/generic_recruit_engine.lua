@@ -85,7 +85,7 @@ return {
             local best_defense = 100
 
             for i, terrain in ipairs(terrain_archetypes) do
-                local defense = unit:defense(terrain)
+                local defense = unit:defense_on(terrain)
                 if defense < best_defense then
                     best_defense = defense
                 end
@@ -195,7 +195,7 @@ return {
                                 if (sp[1] == 'drains') and drainable(attacker) then
                                     -- TODO: calculate chance to hit
                                     -- currently assumes 50% chance to hit using supplied constant
-                                    local attacker_resistance = attacker:resistance(defender_attack.type)
+                                    local attacker_resistance = attacker:resistance_against(defender_attack.type)
                                     drain_recovery = (defender_attack.damage*defender_attack.number*attacker_resistance*attacker_defense/2)/10000
                                 end
                             end
@@ -203,7 +203,7 @@ return {
                     end
 
                     defense = defense/100.0
-                    local resistance = defender:resistance(attack.type)
+                    local resistance = defender:resistance_against(attack.type)
                     if steadfast and (resistance < 100) then
                         resistance = 100 - ((100 - resistance) * 2)
                         if (resistance < 50) then
@@ -257,7 +257,7 @@ return {
                 random_gender = false
             }
             local can_poison = poisonable(unit) and (not unit:ability('regenerate'))
-            local flat_defense = unit:defense("Gt")
+            local flat_defense = unit:defense_on("Gt")
             local best_defense = get_best_defense(unit)
 
             local recruit = wesnoth.units.create {
@@ -266,7 +266,7 @@ return {
                 name = "X",
                 random_gender = false
             }
-            local recruit_flat_defense = recruit:defense("Gt")
+            local recruit_flat_defense = recruit:defense_on("Gt")
             local recruit_best_defense = get_best_defense(recruit)
 
             local can_poison_retaliation = poisonable(recruit) and (not recruit:ability('regenerate'))
