@@ -1260,11 +1260,25 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
     return closest_enemy, closest_distance
 end
 
-function ai_helper.has_ability(unit, ability)
+function ai_helper.has_ability(unit, ability, exact_match)
     -- Returns true/false depending on whether unit has the given ability
+    -- OPTIONAL INPUT:
+    --   - exact_match=true: (boolean) If set to true (the default), the ability id
+    --     has to match @ability exactly, otherwise it is sufficient if @ability appears
+    --     in the id. This is done so that, for example, regeneration abilities with
+    --     ids 'regenerates' and 'regenerates_4' can be matched simultaneously.
+
+    if (exact_match == nil) then exact_match = true end
+
     for _,ability_id in ipairs(unit.abilities) do
-        if (ability == ability_id) then
-            return true
+        if exact_match then
+            if (ability == ability_id) then
+                return true
+            end
+        else
+            if string.find(ability_id, ability) then
+                return true
+            end
         end
     end
     return false
