@@ -14,10 +14,10 @@ local battle_calcs = {}
 function battle_calcs.unit_attack_info(unit, cache)
     -- Return a table containing information about attack-related properties of @unit
     -- The result can be cached if variable @cache is given
-    -- This is done in order to avoid duplication of slow processes, such as access to unit.__cfg
+    -- This is done in order to avoid duplication of slow processes
 
     -- Return table has fields:
-    --  - attacks: the attack tables from unit.__cfg
+    --  - attacks: the attack tables
     --  - resist_mod: resistance modifiers (multiplicative factors) index by attack type
     --  - alignment: just that
 
@@ -32,11 +32,10 @@ function battle_calcs.unit_attack_info(unit, cache)
     end
 
     -- Otherwise collect the information
-    local unit_cfg = unit.__cfg
     local unit_info = {
         attacks = {},
         resist_mod = {},
-        alignment = unit_cfg.alignment
+        alignment = unit.alignment
     }
     local attacks = unit.attacks
     for i_a = 1,#attacks do

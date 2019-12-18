@@ -141,7 +141,7 @@ local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, on_m
         if (unit.hitpoints < unit.max_hitpoints) then
             for xa,ya in H.adjacent_tiles(x, y) do
                 local adjacent_unit = wesnoth.units.get(xa, ya)
-                if adjacent_unit and (adjacent_unit.__cfg.usage == "healer") then
+                if adjacent_unit and (adjacent_unit.usage == "healer") then
                     leadership_rating = leadership_rating + 100
                     break
                 end
@@ -306,7 +306,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
 
     for _,unit in ipairs(all_units) do
         -- Is this a healer or leadership unit?
-        local is_healer = (unit.__cfg.usage == "healer")
+        local is_healer = (unit.usage == "healer")
         local has_leadership = AH.has_ability(unit, "leadership")
         local on_my_territory = BD_is_my_territory:get(unit.x, unit.y)
 
@@ -355,7 +355,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
 
     local max_rating, best_unit, best_hex = 0
     for _,unit in ipairs(units) do
-        local is_healer = (unit.__cfg.usage == "healer")
+        local is_healer = (unit.usage == "healer")
         local has_leadership = AH.has_ability(unit, "leadership")
         local on_my_territory = BD_is_my_territory:get(unit.x, unit.y)
 

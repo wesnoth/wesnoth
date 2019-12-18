@@ -1262,12 +1262,12 @@ end
 
 function ai_helper.has_ability(unit, ability)
     -- Returns true/false depending on whether unit has the given ability
-    local has_ability = false
-    local abilities = wml.get_child(unit.__cfg, "abilities")
-    if abilities then
-        if wml.get_child(abilities, ability) then has_ability = true end
+    for _,ability_id in ipairs(unit.abilities) do
+        if (ability == ability_id) then
+            return true
+        end
     end
-    return has_ability
+    return false
 end
 
 function ai_helper.has_weapon_special(unit, special)

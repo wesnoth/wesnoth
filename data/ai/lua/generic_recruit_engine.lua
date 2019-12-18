@@ -758,7 +758,7 @@ return {
                 if eta_turn <= wesnoth.game_config.last_turn then
                     lawful_bonus = wesnoth.get_time_of_day(wesnoth.current.turn + eta).lawful_bonus / eta^2
                 end
-                local damage_bonus = AH.get_unit_time_of_day_bonus(recruit_unit.__cfg.alignment, lawful_bonus)
+                local damage_bonus = AH.get_unit_time_of_day_bonus(recruit_unit.alignment, lawful_bonus)
                 -- Estimate effectiveness on offense and defense
                 local offense_score =
                     (recruit_effectiveness[recruit_id].damage*damage_bonus+recruit_effectiveness[recruit_id].poison_damage)
@@ -847,7 +847,7 @@ return {
                 for attack_range, count in pairs(unit_attack_range_count[recruit_id]) do
                     bonus = bonus + 0.02 * most_common_range_count / (attack_range_count[attack_range]+1)
                 end
-                local race = wesnoth.races[wesnoth.unit_types[recruit_id].__cfg.race]
+                local race = wesnoth.races[wesnoth.unit_types[recruit_id].race]
                 local num_traits = race and race.num_traits or 0
                 bonus = bonus + 0.03 * num_traits^2
                 if target_hex[1] then
