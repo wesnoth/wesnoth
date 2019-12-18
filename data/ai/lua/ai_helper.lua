@@ -1515,12 +1515,12 @@ function ai_helper.next_hop(unit, x, y, cfg)
         unit_in_way:to_map()
 
         local terrain = wesnoth.get_terrain(next_hop_ideal[1], next_hop_ideal[2])
-        local move_cost_endpoint = wesnoth.units.movement_on(unit, terrain)
+        local move_cost_endpoint = unit:movement_on(terrain)
         local inverse_reach_map = LS.create()
         for _,r in pairs(inverse_reach) do
             -- We want the moves left for moving into the opposite direction in which the reach map was calculated
             local terrain = wesnoth.get_terrain(r[1], r[2])
-            local move_cost = wesnoth.units.movement_on(unit, terrain)
+            local move_cost = unit:movement_on(terrain)
             local inverse_cost = r[3] + move_cost - move_cost_endpoint
             inverse_reach_map:insert(r[1], r[2], inverse_cost)
         end
@@ -1723,7 +1723,7 @@ function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally
 
     local max_moves = unit.max_moves
     local terrain = wesnoth.get_terrain(x, y)
-    local move_cost = wesnoth.units.movement_on(unit, terrain)
+    local move_cost = unit:movement_on(terrain)
 
     if (move_cost > max_moves) then
         return ai_helper.no_path
@@ -1809,7 +1809,7 @@ function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally
     defense = H.round(defense / 10) * 10
     if (defense > 90) then defense = 90 end
     if (defense < 10) then defense = 10 end
-    move_cost_int = move_cost_int + defense
+    move_cost_int = move_cost_int + (100 - defense)
     -- And finally we add a (very small) penalty for this hex if it is to be avoided
     -- This is used for the next hex to determine whether the previous hex was to be
     -- avoided via avoid_penalty above.

@@ -75,7 +75,7 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
                 end
 
                 -- More priority to enemies on strong terrain
-                local defense_rating = (100 - defender:defense_on(defender_terrain)) / 100
+                local defense_rating = defender:defense_on(defender_terrain) / 100
 
                 attacker_rating = attacker_rating * (1 - aggression)
                 local combat_rating = attacker_rating + defender_rating + additional_poison_rating

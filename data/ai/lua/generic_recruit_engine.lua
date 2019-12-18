@@ -85,7 +85,7 @@ return {
             local best_defense = 100
 
             for i, terrain in ipairs(terrain_archetypes) do
-                local defense = unit:defense_on(terrain)
+                local defense = 100 - unit:defense_on(terrain)
                 if defense < best_defense then
                     best_defense = defense
                 end
@@ -196,7 +196,7 @@ return {
                                     -- TODO: calculate chance to hit
                                     -- currently assumes 50% chance to hit using supplied constant
                                     local attacker_resistance = attacker:resistance_against(defender_attack.type)
-                                    drain_recovery = (defender_attack.damage*defender_attack.number*attacker_resistance*attacker_defense/2)/10000
+                                    drain_recovery = (defender_attack.damage*defender_attack.number*(100-attacker_resistance)*attacker_defense/2)/10000
                                 end
                             end
                         end
@@ -204,14 +204,14 @@ return {
 
                     defense = defense/100.0
                     local resistance = defender:resistance_against(attack.type)
-                    if steadfast and (resistance < 100) then
-                        resistance = 100 - ((100 - resistance) * 2)
-                        if (resistance < 50) then
+                    if steadfast and (resistance > 0) then
+                        resistance = resistance * 2
+                        if (resistance > 50) then
                             resistance = 50
                         end
                     end
-                    local base_damage = (weapon_damage+damage_bonus)*resistance*damage_multiplier
-                    if (resistance > 100) then
+                    local base_damage = (weapon_damage+damage_bonus)*(100-resistance)*damage_multiplier
+                    if (resistance < 0) then
                         base_damage = base_damage-1
                     end
                     base_damage = math.floor(base_damage/100 + 0.5)
@@ -257,7 +257,7 @@ return {
                 random_gender = false
             }
             local can_poison = poisonable(unit) and (not unit:ability('regenerate'))
-            local flat_defense = unit:defense_on("Gt")
+            local flat_defense = 100 - unit:defense_on("Gt")
             local best_defense = get_best_defense(unit)
 
             local recruit = wesnoth.units.create {
@@ -266,7 +266,7 @@ return {
                 name = "X",
                 random_gender = false
             }
-            local recruit_flat_defense = recruit:defense_on("Gt")
+            local recruit_flat_defense = 100 - recruit:defense_on("Gt")
             local recruit_best_defense = get_best_defense(recruit)
 
             local can_poison_retaliation = poisonable(recruit) and (not recruit:ability('regenerate'))

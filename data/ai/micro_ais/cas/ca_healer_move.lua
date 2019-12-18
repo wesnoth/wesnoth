@@ -104,7 +104,7 @@ function ca_healer_move:evaluation(cfg, data)
                 local is_village = wesnoth.get_terrain_info(terrain).village
                 if is_village then rating = rating + 2 end
 
-                local defense = 100 - healer:defense_on(terrain)
+                local defense = healer:defense_on(terrain)
                 rating = rating + defense / 10.
             end
 
