@@ -183,7 +183,7 @@ syn keyword wesmlStdTag contained show_objectives side side_playing snapshot sou
 syn keyword wesmlStdTag contained sound_source source split statistics status
 syn keyword wesmlStdTag contained store_gold store_items store_locations store_map_dimensions store_reachable_locations
 syn keyword wesmlStdTag contained store_side store_starting_location store_time_of_day store_unit store_unit_type
-syn keyword wesmlStdTag contained store_unit_type_ids store_villagesstory switch target team
+syn keyword wesmlStdTag contained store_unit_type_ids store_villages story switch target team
 syn keyword wesmlStdTag contained teleport teleport_anim terrain terrain_graphics terrain_mask
 syn keyword wesmlStdTag contained terrain_type test textdomain text_input theme
 syn keyword wesmlStdTag contained then tile time time_area time_of_day
