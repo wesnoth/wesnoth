@@ -576,7 +576,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	function wesnoth.units.find_attack(unit, filter)
 		for i, atk in ipairs(unit.attacks) do
-			if atk:matches(filter) then return atk end
+			if atk:matches(filter) then return atk, i end
 		end
 	end
 
