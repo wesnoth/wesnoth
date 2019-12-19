@@ -36,8 +36,8 @@
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
      * Fix last breath dialog for bats firing multiple times in the campaign
      * Fix bug of regular WC appearing in recruit list in S05 Blackwater
-     * Fix special plauge attack making rats when spiders are called for
-    * Tutorial:
+     * Fix special plague attack making rats when spiders are called for
+   * Tutorial:
      * Redraw S2 and reduce difficulty
  ### Editor
  ### Language and i18n
