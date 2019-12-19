@@ -16,7 +16,7 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
 
     local poisoners = {}
     for _,unit in ipairs(attacks_aspect.own) do
-        if (unit.attacks_left > 0) and (#unit.attacks > 0) and AH.has_weapon_special(unit, "poison")
+        if (unit.attacks_left > 0) and (#unit.attacks > 0) and unit:find_attack { special_id = "poison" }
             and (not unit.canrecruit) and unit:matches(filter_own)
         then
             table.insert(poisoners, unit)
@@ -61,7 +61,7 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
             local about_to_level = defender.max_experience - defender.experience <= (attacker.level * 2 * wesnoth.game_config.combat_experience)
 
             if (not cant_poison) and (healing == 0) and (not about_to_level) then
-                local _, poison_weapon = AH.has_weapon_special(attacker, "poison")
+                local _, poison_weapon = attacker:find_attack { special_id = "poison" }
                 local dst = { a.dst.x, a.dst.y }
                 local att_stats, def_stats = BC.simulate_combat_loc(attacker, dst, defender, poison_weapon)
                 local _, defender_rating, attacker_rating = BC.attack_rating(attacker, defender, dst, { att_stats = att_stats, def_stats = def_stats })
@@ -102,7 +102,7 @@ end
 function ca_spread_poison:execution(cfg, data)
     local attacker = wesnoth.units.get(SP_attack.src.x, SP_attack.src.y)
     -- If several attacks have poison, this will always find the last one
-    local is_poisoner, poison_weapon = AH.has_weapon_special(attacker, "poison")
+    local is_poisoner, poison_weapon = attacker:find_attack { special_id = "poison" }
 
     if AH.print_exec() then AH.print_ts('   Executing spread_poison CA') end
     if AH.show_messages() then wesnoth.wml_actions.message { speaker = attacker.id, message = 'Poison attack' } end

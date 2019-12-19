@@ -1287,6 +1287,9 @@ end
 function ai_helper.has_weapon_special(unit, special)
     -- Returns true/false depending on whether @unit has a weapon with special @special
     -- Also returns the number of the first weapon with this special
+
+    wesnoth.deprecated_message('ai_helper.has_weapon_special', 3, '1.17.0', "Use unit:find_attack() instead, noting that the argument needs to be a filter, such as { special_id = 'poison' }.")
+
     for weapon_number,att in ipairs(unit.attacks) do
         for _,sp in ipairs(att.specials) do
             if (sp[1] == special) then
