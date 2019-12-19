@@ -37,6 +37,8 @@
      * Fix last breath dialog for bats firing multiple times in the campaign
      * Fix bug of regular WC appearing in recruit list in S05 Blackwater
      * Fix special plauge attack making rats when spiders are called for
+    * Turorial:
+     * Redraw S2 and reduce difficulty
  ### Editor
  ### Language and i18n
    * Updated translations: Ancient Greek, Chinese (Traditional), Dutch, French,
