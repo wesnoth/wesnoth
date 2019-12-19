@@ -230,9 +230,9 @@ function ca_bottleneck_move:evaluation(cfg, data)
 
     local units = {}
     if MAISD.get_mai_self_data(data, cfg.ai_id, "side_leader_activated") then
-        units = AH.get_units_with_moves { side = wesnoth.current.side }
+        units = AH.get_units_with_moves { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") } }
     else
-        units = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }
+        units = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no', { "and", wml.get_child(cfg, "filter") } }
     end
     if (not units[1]) then return 0 end
 
@@ -469,9 +469,9 @@ function ca_bottleneck_move:execution(cfg, data)
     if BD_bottleneck_moves_done then
         local units = {}
         if MAISD.get_mai_self_data(data, cfg.ai_id, "side_leader_activated") then
-            units = AH.get_units_with_moves { side = wesnoth.current.side }
+            units = AH.get_units_with_moves { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") } }
         else
-            units = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }
+            units = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no', { "and", wml.get_child(cfg, "filter") } }
         end
 
         for _,unit in ipairs(units) do
