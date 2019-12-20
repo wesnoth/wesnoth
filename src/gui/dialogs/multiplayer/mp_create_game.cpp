@@ -712,6 +712,10 @@ void mp_create_game::update_details(window& win)
 			const std::string map_data = !current_scenario->data()["map_data"].empty()
 				? current_scenario->data()["map_data"]
 				: filesystem::read_map(current_scenario->data()["map_file"]);
+			if (current_scenario->data()["map_data"].empty()) {
+				current_scenario->data()["map_data"] = map_data;
+				current_scenario->set_metadata();
+			}
 			find_widget<minimap>(&win, "minimap", false).set_map_data(map_data);
 
 			players.set_label(std::to_string(current_scenario->num_players()));
