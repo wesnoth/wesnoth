@@ -205,8 +205,7 @@ if __name__ == "__main__":
         return uploads, version
 
     def fixup(column):
-        column = column.replace("\n", "\\n")
-        return column
+        return column.replace("\n", "\\n").replace("\t", "\\t")
 
     campaign_list = None
 
@@ -219,7 +218,6 @@ if __name__ == "__main__":
                 for campaign in campaigns.get_all(tag = "campaign"):
                     print(campaign.debug())
             else:
-                column_sizes = [10, 5, 10, 7, 8, 8, 10, 5, 10, 13]
                 columns = [["type", "name", "title", "author",
                     "version", "uploads", "downloads",
                     "size", "timestamp", "translate"]]
@@ -236,13 +234,8 @@ if __name__ == "__main__":
                         time.ctime(int(campaign.get_text_val("timestamp", "0"))),
                         campaign.get_text_val("translate", "?")]
                     columns.append(column)
-                    for i, s in enumerate(column_sizes):
-                        if 1 + len(column[i]) > s:
-                            column_sizes[i] = 1 + len(column[i])
                 for c in columns:
-                    for i, f in enumerate(c):
-                        sys.stdout.write(fixup(f).ljust(column_sizes[i]))
-                    sys.stdout.write("\n")
+                    print(*map(fixup, c), sep="\t", end="\n")
             print_messages(data)
         else:
             sys.stderr.write("Could not connect.\n")
