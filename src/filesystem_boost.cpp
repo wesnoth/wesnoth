@@ -1356,6 +1356,7 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 		return std::string();
 	}
 
+	std::string result;
 	for(const std::string& bp : get_binary_paths(type)) {
 		bfs::path bpath(bp);
 		bpath /= filename;
@@ -1364,12 +1365,17 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 
 		if(file_exists(bpath)) {
 			DBG_FS << "  found at '" << bpath.string() << "'\n";
-			return bpath.string();
+			if(result.empty()) {
+				result = bpath.string();
+			} else {
+				WRN_FS << "Conflicting files in binary_path: '" << sanitize_path(result)
+					   << "' and '" << sanitize_path(bpath.string()) << "'\n";
+			}
 		}
 	}
 
 	DBG_FS << "  not found\n";
-	return std::string();
+	return result;
 }
 
 std::string get_binary_dir_location(const std::string& type, const std::string& filename)
