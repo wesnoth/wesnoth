@@ -1586,8 +1586,9 @@ int under_leadership(const unit &u, const map_location& loc, const_attack_ptr we
 //begin of weapon emulates function.
 //functions for emulate weapon specials.
 static bool ability_filter_fighter(const std::string& ability,
-				   const std::string & child_tag,
-				   const config& cfg,const map_location & loc,
+				   const std::string & filter_attacker,
+				   const config& cfg,
+				   const map_location & loc,
 				   unit_const_ptr & u,
 				   unit_const_ptr & u2,
 				   const_attack_ptr weapon)
@@ -1604,7 +1605,7 @@ static bool ability_filter_fighter(const std::string& ability,
 		return false;
 	}
 	
-	if ( const config & filter_weapon = filter_child.child("filter_weapon") ) {
+	if ( const config & filter_weapon = filter.child("filter_weapon") ) {
 		if ( !weapon || !weapon->matches_filter(filter_weapon) )
 			return false;
 	}
