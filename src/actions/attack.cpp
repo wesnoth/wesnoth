@@ -1587,39 +1587,36 @@ static bool ability_filter_fighter(const std::string& ability,
                                  unit_const_ptr & u2,
                                  const_attack_ptr weapon)
 {
-		if (!loc.valid()){
-			return true;
-			}
+	if (!loc.valid()){
+		return true;
+	}
 
-		const config & filter_child = cfg.child(child_tag);
-		if ( !filter_child ){
-			// The special does not filter on this unit, so we pass.
-			return true;
-			}
-
-		// If the primary unit doesn't exist, there's nothing to match
-		if (!u) {
+	const config & filter_child = cfg.child(child_tag);
+	if ( !filter_child ){
+		return true;
+	}
+	
+	if (!u) {
+		return false;
+	}
+	
+	unit_filter ufilt{vconfig(filter_child)};
+	if ( const config & filter_weapon = filter_child.child("filter_weapon") ) {
+		if ( !weapon || !weapon->matches_filter(filter_weapon) )
 			return false;
-		}
-
-		unit_filter ufilt{vconfig(filter_child)};
-		if ( const config & filter_weapon = filter_child.child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(filter_weapon) )
-				return false;
-		}
-
-		if (!u2) {
-			return ufilt.set_use_flat_tod(ability == "illuminates").matches(*u, loc);
-		}
-		return ufilt.set_use_flat_tod(ability == "illuminates").matches(*u, loc, *u2);
+	}
+	if (!u2) {
+		return ufilt.set_use_flat_tod(ability == "illuminates").matches(*u, loc);
+	}
+	return ufilt.set_use_flat_tod(ability == "illuminates").matches(*u, loc, *u2);
 }
 
 static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-    bool filter_opponent = !ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, up, un, opp_weapon);
-    bool filter_student = !ability_filter_fighter(ability, "filter_student", cfg, loc, un, up, weapon);
-    bool filter_attacker = (attacker && !ability_filter_fighter(ability, "filter_attacker", cfg, loc, un, up, weapon)) || (!attacker && !ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, up, un, opp_weapon));
-    bool filter_defender = (!attacker && !ability_filter_fighter(ability, "filter_defender", cfg, loc,un, up, weapon)) || (attacker && !ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, up, un, opp_weapon));
+	bool filter_opponent = !ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, up, un, opp_weapon);
+	bool filter_student = !ability_filter_fighter(ability, "filter_student", cfg, loc, un, up, weapon);
+	bool filter_attacker = (attacker && !ability_filter_fighter(ability, "filter_attacker", cfg, loc, un, up, weapon)) || (!attacker && !ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, up, un, opp_weapon));
+	bool filter_defender = (!attacker && !ability_filter_fighter(ability, "filter_defender", cfg, loc,un, up, weapon)) || (attacker && !ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, up, un, opp_weapon));
 	if(filter_student || filter_opponent || filter_attacker || filter_defender){
 		return true;
 	}
