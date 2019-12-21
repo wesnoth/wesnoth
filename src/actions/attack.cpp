@@ -1585,14 +1585,12 @@ int under_leadership(const unit &u, const map_location& loc, const_attack_ptr we
 
 //begin of weapon emulates function.
 //functions for emulate weapon specials.
-//filter opponent and affect self/opponent/both option.
 static bool ability_filter_fighter(const std::string& ability,
-                                 const std::string & child_tag,
-                                 const config& cfg,
-                                 const map_location & loc,
-                                 unit_const_ptr & u,
-                                 unit_const_ptr & u2,
-                                 const_attack_ptr weapon)
+				   const std::string & child_tag,
+				   const config& cfg,const map_location & loc,
+				   unit_const_ptr & u,
+				   unit_const_ptr & u2,
+				   const_attack_ptr weapon)
 {
 	if (!loc.valid()){
 		return true;
@@ -1630,6 +1628,7 @@ static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std
 	return false;
 }
 
+//filter opponent and affect self/opponent/both option.
 bool leadership_affects_self(const std::string& ability, const unit &un, const map_location& loc, bool attacker)
 {
 	unit_ability_list abil = un.get_abilities(ability, loc);
