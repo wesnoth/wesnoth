@@ -1,4 +1,4 @@
-## Version 1.15.2+dev 
+## Version 1.15.2+dev
  ### AI
    * Merge most of Experimental AI candidate actions (CAs) into default AI
      * CAs merged: castle switch, retreat injured, spread poison, place healers, move to any enemy
