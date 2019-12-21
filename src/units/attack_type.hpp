@@ -87,6 +87,7 @@ public:
 	                      unsigned & max_attacks) const;
 	/// Returns the damage per attack of this weapon, considering specials.
 	int modified_damage(bool is_backstab) const;
+	unit_ability_list list_ability(const std::string& ability) const;
 
 	// In unit_types.cpp:
 
