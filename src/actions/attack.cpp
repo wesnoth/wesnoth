@@ -52,8 +52,6 @@
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/dynamic_bitset.hpp>
-#include <boost/algorithm/string/predicate.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -1579,44 +1577,34 @@ void attack_unit_and_advance(const map_location& attacker,
 //begin of weapon emulates function.
 //functions for emulate weapon specials.
 //filter opponent and affect self/opponent/both option.
-static bool ability_filter_fighter(const std::string& ability,
-                                 const std::string & child_tag,
-                                 const config& cfg,
-                                 const map_location & loc,
-                                 unit_const_ptr & u,
-                                 unit_const_ptr & u2,
-                                 const_attack_ptr weapon)
+bool unit::ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc, unit_const_ptr u2, const_attack_ptr weapon) const
 {
 	if (!loc.valid()){
 		return true;
 	}
-
-	const config & filter_child = cfg.child(child_tag);
-	if ( !filter_child ){
+	
+	const config &filter = cfg.child(filter_attacker);
+	if(!filter) {
 		return true;
 	}
-	
-	if (!u) {
-		return false;
+
+	if ( const config & filter_weapon = filter.child("filter_weapon") ) {
+			if ( !weapon || !weapon->matches_filter(filter_weapon) )
+				return false;
 	}
 	
-	unit_filter ufilt{vconfig(filter_child)};
-	if ( const config & filter_weapon = filter_child.child("filter_weapon") ) {
-		if ( !weapon || !weapon->matches_filter(filter_weapon) )
-			return false;
-	}
 	if (!u2) {
-		return ufilt.set_use_flat_tod(ability == "illuminates").matches(*u, loc);
+		return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 	}
-	return ufilt.set_use_flat_tod(ability == "illuminates").matches(*u, loc, *u2);
+	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc, *u2);
 }
 
 static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-	bool filter_opponent = !ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, up, un, opp_weapon);
-	bool filter_student = !ability_filter_fighter(ability, "filter_student", cfg, loc, un, up, weapon);
-	bool filter_attacker = (attacker && !ability_filter_fighter(ability, "filter_attacker", cfg, loc, un, up, weapon)) || (!attacker && !ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, up, un, opp_weapon));
-	bool filter_defender = (!attacker && !ability_filter_fighter(ability, "filter_defender", cfg, loc,un, up, weapon)) || (attacker && !ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, up, un, opp_weapon));
+    bool filter_opponent = !(*un).ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, un, opp_weapon);
+    bool filter_student = !(*up).ability_filter_fighter(ability, "filter_student", cfg, loc, up, weapon);
+    bool filter_attacker = (attacker && !(*un).ability_filter_fighter(ability, "filter_attacker", cfg, loc, up, weapon)) || (!attacker && !(*up).ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, un, opp_weapon));
+    bool filter_defender = (!attacker && !(*un).ability_filter_fighter(ability, "filter_defender", cfg, loc, up, weapon)) || (attacker && !(*up).ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, un, opp_weapon));
 	if(filter_student || filter_opponent || filter_attacker || filter_defender){
 		return true;
 	}
