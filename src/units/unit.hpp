@@ -1618,16 +1618,16 @@ public:
 	 * @param loc The location to use for resolving abilities
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type.
 	 * @param tag_name The type of ability to check for
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
+	unit_ability_list get_abilities(const std::string& tag_name) const
 	{
-		return get_abilities(tag_name, loc_, weapon, opp_weapon);
+		return get_abilities(tag_name, loc_);
 	}
 
 	/**
