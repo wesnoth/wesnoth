@@ -17,6 +17,7 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
+#include "actions/attack.hpp"
 #include "display.hpp"
 #include "display_context.hpp"
 #include "font/text_formatting.hpp"
@@ -1092,6 +1093,44 @@ namespace { // Helpers for attack_type::special_active()
  *                              (usually true since backstab is usually accounted
  *                              for elsewhere)
  */
+unit_ability_list attack_type::list_ability(const std::string& ability) const
+{
+
+	const unit_map& units = display::get_singleton()->get_units();
+
+	unit_const_ptr self = self_;
+	unit_const_ptr other = other_;
+
+	if(self == nullptr) {
+		unit_map::const_iterator it = units.find(self_loc_);
+		if(it.valid()) {
+			self = it.get_shared_ptr().get();
+		}
+	}
+	if(other == nullptr) {
+		unit_map::const_iterator it = units.find(other_loc_);
+		if(it.valid()) {
+			other = it.get_shared_ptr().get();
+		}
+	}
+
+	// Make sure they're facing each other.
+	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
+	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
+	unit_ability_list abil_list(self_loc_);
+	if(self){
+		if(leadership_affects_self(ability, *self, self_loc_, is_attacker_)) {
+			abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
+		}
+	}
+	if(other){
+		if(leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_)) {
+			abil_list = list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
+		}
+	}
+	return abil_list;
+}
+
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
                                  bool include_backstab) const
 {
