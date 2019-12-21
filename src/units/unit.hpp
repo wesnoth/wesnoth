@@ -1677,6 +1677,7 @@ public:
 	 */
 	void remove_ability_by_id(const std::string& ability);
 
+	bool ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc, const unit& u2) const;
 	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 private:
