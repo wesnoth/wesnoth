@@ -219,11 +219,13 @@ namespace
 				}
 
 				std::vector<std::string> allowed = ai_advancement.get_advancements(u);
-				if(!allowed.empty()){
-					std::string pick = allowed[randomness::generator->get_random_int(0, allowed.size() - 1)];
-					int res_new = get_advancement_index(*u, pick);
+				for(const auto& adv_id : allowed) {
+					int res_new = get_advancement_index(*u, adv_id);
 					if(res_new != -1) {
+						// if the advancement ids were really unique we could also make this function return the
+						// advancements id instead of its index. But i dont think there are guaraenteed to be unique.
 						res = res_new;
+						break;
 					}
 				}
 			}
