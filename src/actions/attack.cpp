@@ -1584,20 +1584,6 @@ int under_leadership(const unit &u, const map_location& loc, const_attack_ptr we
 }
 
 //begin of weapon emulates function.
-
-bool unit::abilities_filter_matches(const config& cfg, bool attacker, int res) const
-{
-	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"] == "offense") || (!attacker && cfg["active_on"] == "defense"))) {
-		return false;
-	}
-
-	if(!unit_abilities::filter_base_matches(cfg, res)) {
-		return false;
-	}
-
-	return true;
-}
-
 //functions for emulate weapon specials.
 //filter opponent and affect self/opponent/both option.
 static bool ability_filter_fighter(const std::string& ability,
