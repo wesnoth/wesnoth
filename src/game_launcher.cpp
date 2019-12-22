@@ -519,6 +519,12 @@ game_launcher::unit_test_result game_launcher::unit_test()
 			case unit_test_result::TEST_FAIL_PLAYING_REPLAY:
 				describe_result = "FAIL TEST (ERRORED REPLAY)";
 				break;
+			case unit_test_result::TEST_FAIL_BROKE_STRICT:
+				describe_result = "FAIL TEST (BROKE STRICT)";
+				break;
+			case unit_test_result::TEST_FAIL_WML_EXCEPTION:
+				describe_result = "FAIL TEST (WML EXCEPTION)";
+				break;
 			default:
 				describe_result = "FAIL TEST";
 				break;
@@ -539,12 +545,17 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	try {
 		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types(), true);
 		LEVEL_RESULT res = ccontroller.play_game();
-		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
+		if (res != LEVEL_RESULT::VICTORY) {
 			return unit_test_result::TEST_FAIL;
+		}
+		if (lg::broke_strict()) {
+			// Test for LEVEL_RESULT::VICTORY before this, as the warning printed by
+			// a failing ASSERT will also set broke_strict()'s flag.
+			return unit_test_result::TEST_FAIL_BROKE_STRICT;
 		}
 	} catch(const wml_exception& e) {
 		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl;
-		return unit_test_result::TEST_FAIL;
+		return unit_test_result::TEST_FAIL_WML_EXCEPTION;
 	}
 
 	savegame::clean_saves(state_.classification().label);
