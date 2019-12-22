@@ -1051,8 +1051,7 @@ static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std
 	return false;
 }
 
-//The two functions below are used to manage the application of the ability to the unit (master or student),
-// to his enemy, or either to the attacker or to the defender.
+
 bool leadership_affects_self(const std::string& ability, const unit &un, const map_location& loc, bool attacker)
 {
 	unit_ability_list abil = un.get_abilities(ability, loc);
@@ -1091,11 +1090,6 @@ bool leadership_affects_opponent(const std::string& ability, const unit &un, con
 	return false;
 }
 
-//This sub-function establishes the list of capacities according
-//to the name of the capacity, activation in attack and / or defense,
-//filters ([filter_student, opponent, etc ..])
-//or the old filter of attack ([filter (_second) _weapon]), list used to determine
-//if the capacity exists and is active
 unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	unit_ability_list abiln (loc);
@@ -1121,10 +1115,6 @@ unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un,
 	return abil;
 }
 
-//This function uses the previous sub-function to apply it
-//either to the unit (master or student) or to its enemy (or both)
-//and can be used independently or inside the boolean functions or
-//to return a value that follow.
 unit_ability_list attack_type::list_ability(const std::string& ability) const
 {
 	const unit_map& units = display::get_singleton()->get_units();
@@ -1162,8 +1152,6 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	return abil_list;
 }
 
-//bool_ability is used to manage the capacities and weapon like poison, slow or 
-//petrification types as well as for the drain
 bool attack_type::bool_ability(const std::string& ability) const
 {
 	bool abil_bool= get_special_bool(ability);
@@ -1175,9 +1163,6 @@ bool attack_type::bool_ability(const std::string& ability) const
 	return abil_bool;
 }
 
-//combat_ability returns a numeric value to emulate the luck_to_hit, damage and attack abilities,
-//but is also used for leadership, the boolean value is used for the drain ability which must be managed independently
-//of the special weapon
 std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int abil_value, bool backstab_pos) const
 {
 	unit_ability_list abil(self_loc_);
