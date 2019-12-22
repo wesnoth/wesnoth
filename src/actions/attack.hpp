@@ -272,14 +272,16 @@ void attack_unit_and_advance(const map_location& attacker,
 		bool update_display = true);
 
 /**
- * Tests if the unit at loc is currently affected by leadership.
- * (i.e. has a higher-level unit with the 'leadership' ability next to it).
- *
- * Returns the bonus percentage (possibly 0 if there's no leader adjacent).
+ * Test if the unit is affected and/or if is his opponent.
+ * 
  */
 bool leadership_affects_self(const std::string& ability, const unit &un, const map_location& loc, bool attacker=true);
 bool leadership_affects_opponent(const std::string& ability, const unit &un, const map_location& loc, bool attacker=true);
-unit_ability_list list_leadership(const std::string& ability,unit_const_ptr un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker=true, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr);
+/**
+  * return an ability list if conditional matches(filters and active_on)
+  * un is the unit affected by leadership and up his opponent
+  */
+unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker=true, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by
