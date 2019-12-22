@@ -1101,7 +1101,7 @@ unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un,
 	unit_ability_list abiln (loc);
 	unit_ability_list abil = (*un).get_abilities(ability, loc);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-        const config &filter = (*i->first).child("filter_opponent");
+		const config &filter = (*i->first).child("filter_opponent");
 		const config &filter_attacker = (*i->first).child("filter_attacker");
 		const config &filter_defender = (*i->first).child("filter_defender");
 		bool fighter_filter = ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon);
