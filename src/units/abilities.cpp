@@ -1010,12 +1010,12 @@ int attack_type::modified_damage(bool is_backstab) const
 //special weapons ([filter_self] is replaced by [filter_student])
 static bool ability_filter_fighter(const std::string& ability,
 				   const std::string & filter_attacker,
-				   const config& cfg,
-				   const map_location & loc,
+				   const config& cfg, const map_location & loc,
 				   unit_const_ptr & u,
 				   unit_const_ptr & u2,
 				   const_attack_ptr weapon)
 {
+	
 	if (!loc.valid()){
 		return true;
 	}
@@ -1036,19 +1036,18 @@ static bool ability_filter_fighter(const std::string& ability,
 	if (!u2) {
 		return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*u, loc);
 	}
-	
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*u, loc, *u2);
 }
 
 static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-    bool filter_opponent = !ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, up, un, opp_weapon);
-    bool filter_student = !ability_filter_fighter(ability, "filter_student", cfg, loc, un, up, weapon);
-    bool filter_attacker = (attacker && !ability_filter_fighter(ability, "filter_attacker", cfg, loc, un, up, weapon)) || (!attacker && !ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, up, un, opp_weapon));
-    bool filter_defender = (!attacker && !ability_filter_fighter(ability, "filter_defender", cfg, loc,un, up, weapon)) || (attacker && !ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, up, un, opp_weapon));
-    if(filter_student || filter_opponent || filter_attacker || filter_defender){
-	    return true;
-    }
+	bool filter_opponent = !ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, up, un, opp_weapon);
+	bool filter_student = !ability_filter_fighter(ability, "filter_student", cfg, loc, un, up, weapon);
+	bool filter_attacker = (attacker && !ability_filter_fighter(ability, "filter_attacker", cfg, loc, un, up, weapon)) || (!attacker && !ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, up, un, opp_weapon));
+	bool filter_defender = (!attacker && !ability_filter_fighter(ability, "filter_defender", cfg, loc,un, up, weapon)) || (attacker && !ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, up, un, opp_weapon));
+	if(filter_student || filter_opponent || filter_attacker || filter_defender){
+		return true;
+	}
 	return false;
 }
 
@@ -1120,7 +1119,6 @@ unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un,
 		}
 	}
 	return abil;
-
 }
 
 //This function uses the previous sub-function to apply it
@@ -1129,7 +1127,6 @@ unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un,
 //to return a value that follow.
 unit_ability_list attack_type::list_ability(const std::string& ability) const
 {
-
 	const unit_map& units = display::get_singleton()->get_units();
 
 	unit_const_ptr self = self_;
@@ -1183,10 +1180,10 @@ bool attack_type::bool_ability(const std::string& ability) const
 //of the special weapon
 std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int abil_value, bool backstab_pos) const
 {
-    unit_ability_list abil(self_loc_);
-    abil = list_ability(ability);
-
-    if(!abil.empty()) {
+	unit_ability_list abil(self_loc_);
+	abil = list_ability(ability);
+	
+	if(!abil.empty()) {
 		unit_abilities::effect leader_effect(abil, abil_value, backstab_pos);
 		return {leader_effect.get_composite_value(), true};
 	}
