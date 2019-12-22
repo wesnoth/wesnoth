@@ -967,9 +967,7 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
 	unit_abilities::effect attacks_effect(get_specials("attacks"),
 	                                      num_attacks(), is_backstab);
 	int attacks_value = attacks_effect.get_composite_value();
-	if ( combat_ability("attacks", attacks_value, is_backstab).second ) {
-		attacks_value = combat_ability("attacks", attacks_value, is_backstab).first;
-	}
+	attacks_value = combat_ability("attacks", attacks_value, is_backstab).first;
 
 	if ( attacks_value < 0 ) {
 		attacks_value = num_attacks();
@@ -978,6 +976,10 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
 
 	// Apply [swarm].
 	unit_ability_list swarm_specials = get_specials("swarm");
+	unit_ability_list alt_swarm_specials = list_ability("swarm");
+	if(!alt_swarm_specials.empty()){
+            swarm_specials = alt_swarm_specials;    
+	}
 	if ( !swarm_specials.empty() ) {
 		min_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_min").first);
 		max_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_max", attacks_value).first);
@@ -994,9 +996,7 @@ int attack_type::modified_damage(bool is_backstab) const
 {
 	unit_abilities::effect dmg_effect(get_specials("damage"), damage(), is_backstab);
 	int damage_value = dmg_effect.get_composite_value();
-	if ( combat_ability("damage", damage_value, is_backstab).second ) {
-		damage_value = combat_ability("damage", damage_value, is_backstab).first;
-	}
+	damage_value = combat_ability("damage", damage_value, is_backstab).first;
 	return damage_value;
 }
 
