@@ -238,7 +238,6 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos);
 	drain_constant += heal_on_hit_effects.get_composite_value();
 	drain_constant += weapon->combat_ability("heal_on_hit", drain_constant, backstab_pos).first;
-	}
 
 	drains = drain_constant || drain_percent;
 
