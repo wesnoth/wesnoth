@@ -1260,19 +1260,36 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
     return closest_enemy, closest_distance
 end
 
-function ai_helper.has_ability(unit, ability)
+function ai_helper.has_ability(unit, ability, exact_match)
     -- Returns true/false depending on whether unit has the given ability
-    local has_ability = false
-    local abilities = wml.get_child(unit.__cfg, "abilities")
-    if abilities then
-        if wml.get_child(abilities, ability) then has_ability = true end
+    -- OPTIONAL INPUT:
+    --   - exact_match=true: (boolean) If set to true (the default), the ability id
+    --     has to match @ability exactly, otherwise it is sufficient if @ability appears
+    --     in the id. This is done so that, for example, regeneration abilities with
+    --     ids 'regenerates' and 'regenerates_4' can be matched simultaneously.
+
+    if (exact_match == nil) then exact_match = true end
+
+    for _,ability_id in ipairs(unit.abilities) do
+        if exact_match then
+            if (ability == ability_id) then
+                return true
+            end
+        else
+            if string.find(ability_id, ability) then
+                return true
+            end
+        end
     end
-    return has_ability
+    return false
 end
 
 function ai_helper.has_weapon_special(unit, special)
     -- Returns true/false depending on whether @unit has a weapon with special @special
     -- Also returns the number of the first weapon with this special
+
+    wesnoth.deprecated_message('ai_helper.has_weapon_special', 3, '1.17.0', "Use unit:find_attack() instead, noting that the argument needs to be a filter, such as { special_id = 'poison' }.")
+
     for weapon_number,att in ipairs(unit.attacks) do
         for _,sp in ipairs(att.specials) do
             if (sp[1] == special) then
@@ -1501,12 +1518,12 @@ function ai_helper.next_hop(unit, x, y, cfg)
         unit_in_way:to_map()
 
         local terrain = wesnoth.get_terrain(next_hop_ideal[1], next_hop_ideal[2])
-        local move_cost_endpoint = wesnoth.units.movement_on(unit, terrain)
+        local move_cost_endpoint = unit:movement_on(terrain)
         local inverse_reach_map = LS.create()
         for _,r in pairs(inverse_reach) do
             -- We want the moves left for moving into the opposite direction in which the reach map was calculated
             local terrain = wesnoth.get_terrain(r[1], r[2])
-            local move_cost = wesnoth.units.movement_on(unit, terrain)
+            local move_cost = unit:movement_on(terrain)
             local inverse_cost = r[3] + move_cost - move_cost_endpoint
             inverse_reach_map:insert(r[1], r[2], inverse_cost)
         end
@@ -1709,7 +1726,7 @@ function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally
 
     local max_moves = unit.max_moves
     local terrain = wesnoth.get_terrain(x, y)
-    local move_cost = wesnoth.units.movement_on(unit, terrain)
+    local move_cost = unit:movement_on(terrain)
 
     if (move_cost > max_moves) then
         return ai_helper.no_path
@@ -1795,7 +1812,7 @@ function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally
     defense = H.round(defense / 10) * 10
     if (defense > 90) then defense = 90 end
     if (defense < 10) then defense = 10 end
-    move_cost_int = move_cost_int + defense
+    move_cost_int = move_cost_int + (100 - defense)
     -- And finally we add a (very small) penalty for this hex if it is to be avoided
     -- This is used for the next hex to determine whether the previous hex was to be
     -- avoided via avoid_penalty above.

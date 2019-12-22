@@ -556,7 +556,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	--[========[Units module]========]
-	
+
 	wesnoth.units.scroll_to = wesnoth.interface.scroll_to_hex
 
 	--! Modifies all the units satisfying the given @a filter.
@@ -576,7 +576,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	function wesnoth.units.find_attack(unit, filter)
 		for i, atk in ipairs(unit.attacks) do
-			if atk:matches(filter) then return atk end
+			if atk:matches(filter) then return atk, i end
 		end
 	end
 
@@ -588,18 +588,18 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 		return res
 	end
-	
+
 	function wesnoth.units.chance_to_be_hit(...)
 		return 100 - wesnoth.units.defense_on(...)
 	end
-	
+
 	-- Deprecated function
 	function wesnoth.units.resistance(...)
 		return 100 - wesnoth.units.resistance_against(...)
 	end
 
 	--[========[Sides module]========]
-	
+
 	local sides_mt = {
 		__metatable = "sides",
 		__index = function(_, key)
@@ -613,7 +613,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 	}
 	setmetatable(wesnoth.sides, sides_mt)
-	
+
 	-- Deprecated functions
 	function wesnoth.set_side_variable(side, var, val)
 		wesnoth.sides[side].variables[var] = val
@@ -636,12 +636,12 @@ else
 			return self[key]
 		end
 	}
-	
+
 	local function tovconfig_fake(cfg)
 		ensure_config(cfg)
 		return setmetatable(cfg, fake_vconfig_mt)
 	end
-	
+
 	wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.valid or wml.interpolate', 1, nil, tovconfig_fake, 'tovconfig is now deprecated in plugin or map generation contexts; if you need to check whether a table is valid as a WML object, use wml.valid instead, and use wml.interpolate if you need to substitute variables into a WML object.')
 	wml.tovconfig = wesnoth.deprecate_api('wml.tovconfig', 'wml.valid', 1, nil, tovconfig_fake, 'tovconfig is now deprecated in plugin or map generation contexts; if you need to check whether a table is valid as a WML object, use wml.valid instead.')
 	wml.literal = wesnoth.deprecate_api('wml.literal', '(no replacement)', 1, nil, wml.literal, 'Since vconfigs are not supported outside of the game kernel, this function is redundant and will be removed from plugin and map generation contexts. It will continue to work in the game kernel.')
@@ -709,7 +709,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	-- No deprecation for these since since they're not actually public API yet
 	wesnoth.color_adjust = wesnoth.interface.color_adjust
 	wesnoth.set_menu_item = wesnoth.interface.set_menu_item
-	wesnoth.clear_menu_item = wesnoth.interface.clear_menu_item 
+	wesnoth.clear_menu_item = wesnoth.interface.clear_menu_item
 	-- Units module
 	wesnoth.match_unit = wesnoth.deprecate_api('wesnoth.match_unit', 'wesnoth.units.matches', 1, nil, wesnoth.units.matches)
 	wesnoth.put_recall_unit = wesnoth.deprecate_api('wesnoth.put_recall_unit', 'wesnoth.units.to_recall', 1, nil, wesnoth.units.to_recall)

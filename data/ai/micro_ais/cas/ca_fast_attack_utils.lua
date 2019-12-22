@@ -157,7 +157,7 @@ function ca_fast_attack_utils.get_unit_defense(unit_copy, x, y, defense_maps)
     if (not defense_maps[unit_copy.id][x]) then defense_maps[unit_copy.id][x] = {} end
 
     if (not defense_maps[unit_copy.id][x][y]) then
-        local defense = (100. - unit_copy:defense_on(wesnoth.get_terrain(x, y))) / 100.
+        local defense = unit_copy:defense_on(wesnoth.get_terrain(x, y)) / 100.
         defense_maps[unit_copy.id][x][y] = { defense = defense }
     end
 
