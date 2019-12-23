@@ -17,6 +17,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt install -y -qq libpng12-0 libpng12-dev libreadline6-dev libvorbis-dev libcairo2 libcairo2-dev libpango-1.0-0 libpango1.0-dev libfribidi0 libfribidi-dev libbz2-1.0 libbz2-dev zlib1g zlib1g-dev libpangocairo-1.0-0 libssl-dev expect-dev
 
 # programs
-RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang
+RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang python3
 
 WORKDIR /home/wesnoth-travis
