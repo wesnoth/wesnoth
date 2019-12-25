@@ -20,6 +20,8 @@ if "%~f1%" == "" (
 	py -3 .\run_wml_tests -p "%~f1%" -c -v
 )
 
-:: restore the state before execution
+:: restore the state before execution, but return the result of run_wml_tests
+set RESULT=%ERRORCODE%
 cd %~p0
 echo on
+@exit /b RESULT
