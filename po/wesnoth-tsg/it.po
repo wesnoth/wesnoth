@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-09-15 10:37+0200\n"
+"PO-Revision-Date: 2019-12-15 15:05+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
@@ -1858,6 +1858,10 @@ msgstr "Mebrin! Dove sei?!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:650
+#, fuzzy
+#| msgid ""
+#| "His home is empty... There are several sets of footprints leading away to "
+#| "the south..."
 msgid "His home is empty... There are footprints leading away to the south..."
 msgstr ""
 "La sua casa è vuota... Ci sono delle impronte che sembrano andare verso "
@@ -1870,26 +1874,41 @@ msgstr "Forse chi ha evocato questi non-morti sa dove si trova?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:660
+#, fuzzy
+#| msgid ""
+#| "I am not sure. There is no blood here and very little sign of struggle. "
+#| "If it had been the undead, I suspect they would have slain him and made "
+#| "him one of them."
 msgid ""
 "There is no blood here, so he must have been taken by surprise. But I "
 "suspect the undead would have slain him and made him one of them."
 msgstr ""
-"Non vi è sangue qui e Mebrin non si vede. Qualcuno deve averlo colto di "
-"sorpresa. Ma i non-morti lo avrebbero ucciso e trasformato in uno di loro."
+"Non ne sono sicuro. Qui non c’è sangue e solo qualche piccolo segno di "
+"lotta. Se fossero stati i non-morti, credo che potrebbero averlo ucciso e "
+"trasformato in uno di loro."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:665
+#, fuzzy
+#| msgid "Then maybe the bandits who have been summoning the undead took him?"
 msgid "Maybe the bandits who have been summoning the undead took him?"
 msgstr "Forse lo hanno preso i banditi che hanno evocato i non-morti?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:670
+#, fuzzy
+#| msgid ""
+#| "We cannot be sure. I should think that he would have put up a fight, but "
+#| "if he were ambushed or taken by surprise, he may not have had the chance. "
+#| "Ethiliel, what do you think?"
 msgid ""
 "We cannot be sure. I still find it strange that there is no sign of a battle "
 "here. Ethiliel, what do you think?"
 msgstr ""
 "Non possiamo esserne sicuri. Trovo ancora strano che qui non ci siano segni "
-"di una battaglia. Ethiliel, cosa ne pensi?"
+"di una battaglia, ma se gli fosse stata tesa un’imboscata o fosse stato "
+"colto di sorpresa, potrebbe non aver avuto la possibilità di combattere. "
+"Ethiliel, cosa ne pensi?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:675
@@ -1918,6 +1937,11 @@ msgstr ""
 
 #. [message]: speaker=Necro
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:730
+#, fuzzy
+#| msgid ""
+#| "So the elves finally come to defend their valley. Pity, they showed up "
+#| "too late. We will stop them here and prevent them from reclaiming the "
+#| "knowledge that was once theirs!"
 msgid ""
 "So the elves finally come to defend their valley. Pity, they showed up a "
 "little late. We will stop them here and prevent them from reclaiming the "
@@ -5339,13 +5363,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:124
-#, fuzzy
-#| msgid ""
-#| "<i>“These are our terms: no human will be permitted in the forests or "
-#| "hills of the Aetherwood, and likewise, we elves will not traverse the "
-#| "plains and farmlands belonging to you humans. No more will the elves send "
-#| "ambassadors or councilors to Westin, and no more will men wander the "
-#| "green woods.”</i>"
 msgid ""
 "<i>“These are our terms: no human will be permitted in the forests or hills "
 "of the Aethenwood, and likewise, we elves will not traverse the plains and "
@@ -5373,14 +5390,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:132
-#, fuzzy
-#| msgid ""
-#| "Thus, an uneasy peace was established between man and elf. For many "
-#| "weeks, the South Guard patrolled the borders of the elven woods and "
-#| "watched over the growing farms and villages. The threat from the elves "
-#| "was enough to keep the villagers from entering the now forbidding "
-#| "Aetherwood, and despite the palpable tension at the forest border, the "
-#| "truce was maintained without incident."
 msgid ""
 "Thus, an uneasy peace was established between man and elf. For many weeks, "
 "the South Guard patrolled the borders of the elven woods and watched over "
@@ -5391,10 +5400,10 @@ msgid ""
 msgstr ""
 "In questo modo tra uomini e elfi fu stabilita una fragile pace. Per molte "
 "settimane la Guardia del Sud pattugliò i confini della foresta degli elfi e "
-"sorvegliò le fattorie e i villaggi. La minaccia degli elfi era sufficiente "
-"per impedire agli abitanti dei villaggi di entrare nella foresta proibita di "
-"Aethem e a dispetto della palpabile tensione ai bordi della foresta la "
-"tregua tenne senza particolari incidenti."
+"sorvegliò le fattorie in crescita e i villaggi. La minaccia degli elfi era "
+"sufficiente per impedire agli abitanti dei villaggi di entrare nella foresta "
+"proibita di Aethem e, a dispetto della palpabile tensione ai bordi della "
+"foresta, la tregua tenne senza particolari incidenti."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:136
@@ -5522,8 +5531,11 @@ msgid ""
 msgstr ""
 "Deoran passò i giorni visitando i feriti e dirigendo la ricostruzione delle "
 "mura divelte e le fortificazioni della città. Lentamente, un senso di "
-"normalità ritornò nella provincia di Kerlath, a causa della ricostruzione di "
-"Westin e la Guardia del Sud riprese di nuovo a pattugliare i villaggi. "
+"normalità ritornò nella provincia di Kerlath, mentre Westin veniva "
+"ricostruita e la Guardia del Sud riprese di nuovo a pattugliare i villaggi. "
+
+#~ msgid "Perhaps he was taken by the undead?"
+#~ msgstr "Forse è stato rapito dai non-morti?"
 
 #~ msgid "Tidings, Good and Ill"
 #~ msgstr "Buone e cattive notizie"
