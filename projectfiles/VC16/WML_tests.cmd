@@ -24,4 +24,4 @@ if "%~f1%" == "" (
 set RESULT=%ERRORCODE%
 cd %~p0
 echo on
-@exit /b RESULT
+@exit /b %RESULT%
