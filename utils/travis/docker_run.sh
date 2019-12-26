@@ -26,7 +26,7 @@ BOOST_TEST="${11}"
 LTO="${12}"
 SAN="${13}"
 VALIDATE="${14}"
-TYPE="${15}"
+LTS="${15}"
 
 if [ "$OPT" == "-O0" ]; then
     STRICT="true"
@@ -55,25 +55,39 @@ echo "BOOST_TEST: $BOOST_TEST"
 echo "LTO: $LTO"
 echo "SAN: $SAN"
 echo "VALIDATE: $VALIDATE"
-echo "TYPE: $TYPE"
+echo "LTS: $LTS"
 
 echo "STRICT: $STRICT"
 echo "build_timeout(mins): $build_timeout"
 
 $CXX --version
 
-if [ "$NLS" == "true" ]; then
+if [ "$NLS" == "true" ] && [ "$LTS" != "flatpak" ]; then
     cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false
     make VERBOSE=1 -j2 || exit 1
     make clean
 
     scons translations build=release --debug=time nls=true jobs=2
-elif [ "$TYPE" == "mingw" ]; then
+elif [ "$LTS" == "flatpak" ]; then
+# docker's --volume means the directory is on a separate filesystem
+# flatpak-builder doesn't support this
+# therefore manually move stuff between where flatpak needs it and where travis' caching can see it
+
+    rm -R .flatpak-builder/*
+    cp -R flatpak-cache/. .flatpak-builder/
+    jq '.modules[2].sources[0]={"type":"dir","path":"/home/wesnoth-travis"} | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > utils/dockerbuilds/travis/org.wesnoth.Wesnoth.json
+    flatpak-builder --ccache --force-clean --disable-rofiles-fuse wesnoth-app utils/dockerbuilds/travis/org.wesnoth.Wesnoth.json
+    BUILD_RET=$?
+    rm -R flatpak-cache/*
+    cp -R .flatpak-builder/. flatpak-cache/
+    chmod -R 777 flatpak-cache/
+    exit $BUILD_RET
+elif [ "$LTS" == "mingw" ]; then
     scons wesnoth wesnothd build=release \
         cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" \
         nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
         arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32
-elif [ "$TYPE" == "steamrt" ]; then
+elif [ "$LTS" == "steamrt" ]; then
     scons ctool=$CC cxxtool=$CXX boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt \
         cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
         build=release
