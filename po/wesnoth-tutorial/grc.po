@@ -1,25 +1,27 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-08-27 19:41 UTC\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2019-12-03 21:53+0200\n"
+"Last-Translator: Μιχαήλ Χατζηασεμίδης\n"
 "Language-Team: none\n"
 "Language: grc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2;\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:25
 msgid "Select Character"
-msgstr ""
+msgstr "Χαρακτῆρα ἐπιλέγειν"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:36
 msgid "Who do you want to play?"
-msgstr ""
+msgstr "Ὡς τίς παῖξαι βούλει;"
 
 #. [side]: type=Fighter, id=student
 #. [lua]: wml_actions.select_character
@@ -27,7 +29,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:32
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
-msgstr ""
+msgstr "Κορράδος"
 
 #. [modify_side]
 #. [lua]: wml_actions.select_character
@@ -35,7 +37,7 @@ msgstr ""
 #: data/campaigns/tutorial/lua/character_selection.lua:94
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:173
 msgid "Li’sar"
-msgstr ""
+msgstr "Λί'σαρ"
 
 #. [tutorial]: id=tutorial
 #. Hello, translators! The tutorial is meant to be a bit funny at the start,
@@ -43,7 +45,7 @@ msgstr ""
 #. If you have any questions, ask in the forums or in the #wesnoth-dev channel on the Freenode IRC network.
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:8
 msgid "Wesnoth Tutorial — Part I"
-msgstr ""
+msgstr "Μάθημα Οὐέσνοθ — μέρος αʹ"
 
 #. [side]: type=Fighter, id=student
 #. [side]
@@ -51,12 +53,12 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:99
 msgid "team_name^Student"
-msgstr ""
+msgstr "team_name^Μαθητής"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:74
 msgid "Delfador"
-msgstr ""
+msgstr "Δελφάδωρ"
 
 #. [objectives]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:118
@@ -67,6 +69,11 @@ msgid ""
 "• <small>Healing</small>\n"
 "• <small>Recruiting</small>"
 msgstr ""
+"Μαθητέα σοι τὰ πρῶτα τῶν:\n"
+"• <small>Κινήσεως</small>\n"
+"• <small>Ἐπιθέσεως</small>\n"
+"• <small>Ἀκέσεως</small>\n"
+"• <small>Στρατολογίας</small>"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:124
@@ -349,7 +356,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:795
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:417
 msgid "End your turn"
-msgstr ""
+msgstr "Σειρὰν λήγειν"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:630
@@ -377,7 +384,7 @@ msgstr ""
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:652
 msgid "Village"
-msgstr ""
+msgstr "Κώμη"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:665
@@ -392,7 +399,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:680
 msgid "Villages"
-msgstr ""
+msgstr "Κῶμαι"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:682
@@ -639,7 +646,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1020
 msgid "Defenses"
-msgstr ""
+msgstr "Ἄμυναι"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1023
@@ -718,7 +725,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1192
 msgid "Victory"
-msgstr ""
+msgstr "Νίκη"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1194
@@ -733,12 +740,12 @@ msgstr ""
 #. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:5
 msgid "Wesnoth Tutorial — Part II"
-msgstr ""
+msgstr "Μάθημα Οὐέσνοθ — μέρος βʹ"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:43
 msgid "team_name^Orcs"
-msgstr ""
+msgstr "team_name^Δαιμόνια"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:47
@@ -748,7 +755,7 @@ msgstr ""
 #. [unit]: id=Galdrad, type=Elvish Champion
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:105
 msgid "Galdrad"
-msgstr ""
+msgstr "Γαλδράδος"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:119
@@ -799,17 +806,17 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:136
 msgid "Death of Konrad"
-msgstr ""
+msgstr "Κορράδου θάνατος"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:147
 msgid "Death of Li’sar"
-msgstr ""
+msgstr "Λί'σαρος θάνατος"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:158
 msgid "Death of Galdrad"
-msgstr ""
+msgstr "Γαλδράδου θάνατος"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:179
@@ -1029,7 +1036,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:341
 msgid "Elvish Archer"
-msgstr ""
+msgstr "Σάτυρος τοξότης"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:342
@@ -1353,7 +1360,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:699
 msgid "Time of Day"
-msgstr ""
+msgstr "Ὥρα τῆς ἡμέρας"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:701
@@ -1695,7 +1702,7 @@ msgstr ""
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:4
 msgid "Warrior"
-msgstr ""
+msgstr "Πολεμιστής"
 
 #. [unit_type]: id=Warrior, race=human
 #. [unit_type]: id=Warrioress, race=human
