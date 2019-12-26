@@ -438,8 +438,17 @@ static int cfun_ai_get_leader_goal(lua_State *L)
 static int cfun_ai_get_leader_ignores_keep(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("leader_ignores_keep");
-	std::string leader_ignores_keep = get_readonly_context(L).get_leader_ignores_keep();
-	lua_pushstring(L, leader_ignores_keep.c_str());
+	boost::variant<bool, std::vector<std::string>> leader_ignores_keep = get_readonly_context(L).get_leader_ignores_keep();
+	if (leader_ignores_keep.which() == 0) {
+		lua_pushboolean(L, boost::get<bool>(leader_ignores_keep));
+	} else {
+		std::vector<std::string> strlist = boost::get<std::vector<std::string>>(leader_ignores_keep);
+		lua_createtable(L, strlist.size(), 0);
+		for(const std::string& str : strlist) {
+			lua_pushlstring(L, str.c_str(), str.size());
+			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+		}
+	}
 	return 1;
 }
 
@@ -454,16 +463,34 @@ static int cfun_ai_get_leader_value(lua_State *L)
 static int cfun_ai_get_passive_leader(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("passive_leader");
-	std::string passive_leader = get_readonly_context(L).get_passive_leader();
-	lua_pushstring(L, passive_leader.c_str());
+	boost::variant<bool, std::vector<std::string>> passive_leader = get_readonly_context(L).get_passive_leader();
+	if (passive_leader.which() == 0) {
+		lua_pushboolean(L, boost::get<bool>(passive_leader));
+	} else {
+		std::vector<std::string> strlist = boost::get<std::vector<std::string>>(passive_leader);
+		lua_createtable(L, strlist.size(), 0);
+		for(const std::string& str : strlist) {
+			lua_pushlstring(L, str.c_str(), str.size());
+			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+		}
+	}
 	return 1;
 }
 
 static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("passive_leader_shares_keep");
-	std::string passive_leader_shares_keep = get_readonly_context(L).get_passive_leader_shares_keep();
-	lua_pushstring(L, passive_leader_shares_keep.c_str());
+	boost::variant<bool, std::vector<std::string>> passive_leader_shares_keep = get_readonly_context(L).get_passive_leader_shares_keep();
+	if (passive_leader_shares_keep.which() == 0) {
+		lua_pushboolean(L, boost::get<bool>(passive_leader_shares_keep));
+	} else {
+		std::vector<std::string> strlist = boost::get<std::vector<std::string>>(passive_leader_shares_keep);
+		lua_createtable(L, strlist.size(), 0);
+		for(const std::string& str : strlist) {
+			lua_pushlstring(L, str.c_str(), str.size());
+			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+		}
+	}
 	return 1;
 }
 

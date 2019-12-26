@@ -30,6 +30,7 @@
 #include "ai/composite/ai.hpp"             // for ai_composite
 #include "ai/composite/component.hpp"      // for component_manager
 #include "ai/composite/engine.hpp"         // for engine
+#include "ai/composite/value_translator.hpp"
 #include "ai/configuration.hpp"            // for configuration
 #include "ai/contexts.hpp"                 // for readonly_context, etc
 #include "ai/default/contexts.hpp"  // for default_ai_context, etc
@@ -234,16 +235,20 @@ const std::string holder::get_ai_overview()
 	if (!this->ai_) {
 		get_ai_ref();
 	}
+	// These assignments are necessary because the code will otherwise not compile on some platforms with an lvalue/rvalue mismatch error
+	boost::variant<bool, std::vector<std::string>> lik = this->ai_->get_leader_ignores_keep();
+	boost::variant<bool, std::vector<std::string>> pl = this->ai_->get_passive_leader();
+	boost::variant<bool, std::vector<std::string>> plsk = this->ai_->get_passive_leader_shares_keep();
 	std::stringstream s;
 	s << "advancements:  " << this->ai_->get_advancements().get_value() << std::endl;
 	s << "aggression:  " << this->ai_->get_aggression() << std::endl;
 	s << "caution:  " << this->ai_->get_caution() << std::endl;
 	s << "grouping:  " << this->ai_->get_grouping() << std::endl;
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
-	s << "leader_ignores_keep:  " << this->ai_->get_leader_ignores_keep() << std::endl;
+	s << "leader_ignores_keep:  " << boost::apply_visitor(leader_aspects_visitor(), lik) << std::endl;
 	s << "leader_value:  " << this->ai_->get_leader_value() << std::endl;
-	s << "passive_leader:  " << this->ai_->get_passive_leader() << std::endl;
-	s << "passive_leader_shares_keep:  " << this->ai_->get_passive_leader_shares_keep() << std::endl;
+	s << "passive_leader:  " << boost::apply_visitor(leader_aspects_visitor(), pl) << std::endl;
+	s << "passive_leader_shares_keep:  " << boost::apply_visitor(leader_aspects_visitor(), plsk) << std::endl;
 	s << "recruitment_diversity:  " << this->ai_->get_recruitment_diversity() << std::endl;
 	s << "recruitment_instructions:  " << std::endl << "----config begin----" << std::endl;
 	s << this->ai_->get_recruitment_instructions() << "-----config end-----" << std::endl;

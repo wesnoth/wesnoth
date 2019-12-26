@@ -206,16 +206,16 @@ static register_aspect_factory< composite_aspect<double>>
 static register_aspect_factory< composite_aspect<config>>
 	leader_goal__composite_aspect_factory("leader_goal*composite_aspect");
 
-static register_aspect_factory< composite_aspect<std::string>>
+static register_aspect_factory< composite_aspect<boost::variant<bool, std::vector<std::string>>>>
 	leader_igores_keep__composite_aspect_factory("leader_ignores_keep*composite_aspect");
 
 static register_aspect_factory< composite_aspect<double>>
 	leader_value__composite_aspect_factory("leader_value*composite_aspect");
 
-static register_aspect_factory< composite_aspect<std::string>>
+static register_aspect_factory< composite_aspect<boost::variant<bool, std::vector<std::string>>>>
 	passive_leader__composite_aspect_factory("passive_leader*composite_aspect");
 
-static register_aspect_factory< composite_aspect<std::string>>
+static register_aspect_factory< composite_aspect<boost::variant<bool, std::vector<std::string>>>>
 	passive_leader_shares_keep__composite_aspect_factory("passive_leader_shares_keep*composite_aspect");
 
 static register_aspect_factory< composite_aspect<double>>
@@ -277,16 +277,16 @@ static register_aspect_factory< standard_aspect<double>>
 static register_aspect_factory< standard_aspect<config>>
 	leader_goal__standard_aspect_factory("leader_goal*standard_aspect");
 
-static register_aspect_factory< standard_aspect<std::string>>
+static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
 	leader_ignores_keep__standard_aspect_factory("leader_ignores_keep*standard_aspect");
 
 static register_aspect_factory< standard_aspect<double>>
 	leader_value__standard_aspect_factory("leader_value*standard_aspect");
 
-static register_aspect_factory< standard_aspect<std::string>>
+static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
 	passive_leader__standard_aspect_factory("passive_leader*standard_aspect");
 
-static register_aspect_factory< standard_aspect<std::string>>
+static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
 	passive_leader_shares_keep__standard_aspect_factory("passive_leader_shares_keep*standard_aspect");
 
 static register_aspect_factory< standard_aspect<double>>
@@ -352,16 +352,16 @@ static register_aspect_factory< standard_aspect<double>>
 static register_aspect_factory< standard_aspect<config>>
 	leader_goal__standard_aspect_factory2("leader_goal*");
 
-static register_aspect_factory< standard_aspect<std::string>>
+static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
 	leader_ignores_keep__standard_aspect_factory2("leader_ignores_keep*");
 
 static register_aspect_factory< standard_aspect<double>>
 	leader_value__standard_aspect_factory2("leader_value*");
 
-static register_aspect_factory< standard_aspect<std::string>>
+static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
 	passive_leader__standard_aspect_factory2("passive_leader*");
 
-static register_aspect_factory< standard_aspect<std::string>>
+static register_aspect_factory< standard_aspect<boost::variant<bool, std::vector<std::string>>>>
 	passive_leader_shares_keep__standard_aspect_factory2("passive_leader_shares_keep*");
 
 static register_aspect_factory< standard_aspect<double>>
@@ -423,16 +423,16 @@ static register_lua_aspect_factory< lua_aspect<double>>
 static register_lua_aspect_factory< lua_aspect<config>>
 	leader_goal__lua_aspect_factory("leader_goal*lua_aspect");
 
-static register_lua_aspect_factory< lua_aspect<std::string>>
+static register_lua_aspect_factory< lua_aspect<boost::variant<bool, std::vector<std::string>>>>
 	leader_ignores_keep__lua_aspect_factory("leader_ignores_keep*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<double>>
 	leader_value__lua_aspect_factory("leader_value*lua_aspect");
 
-static register_lua_aspect_factory< lua_aspect<std::string>>
+static register_lua_aspect_factory< lua_aspect<boost::variant<bool, std::vector<std::string>>>>
 	passive_leader__lua_aspect_factory("passive_leader*lua_aspect");
 
-static register_lua_aspect_factory< lua_aspect<std::string>>
+static register_lua_aspect_factory< lua_aspect<boost::variant<bool, std::vector<std::string>>>>
 	passive_leader_shares_keep__lua_aspect_factory("passive_leader_shares_keep*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<double>>

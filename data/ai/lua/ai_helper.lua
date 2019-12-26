@@ -1063,11 +1063,9 @@ end
 --------- Unit related helper functions ----------
 
 function ai_helper.is_passive_leader(aspect_value, id)
-    if (aspect_value == 'yes') then return true end
-    if (aspect_value == 'no') then return false end
+    if (type(aspect_value) == 'boolean') then return aspect_value end
 
-    local aspect_ids = ai_helper.split(aspect_value)
-    for _,aspect_id in ipairs(aspect_ids) do
+    for _,aspect_id in ipairs(aspect_value) do
         if (aspect_id == id) then
             return true
         end

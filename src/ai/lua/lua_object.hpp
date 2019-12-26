@@ -31,6 +31,7 @@
 #include "ai/default/contexts.hpp"
 #include "ai/lua/aspect_advancements.hpp"
 
+#include <boost/variant/get.hpp>
 #include <iterator>
 #include <string>
 #include <vector>
@@ -116,6 +117,44 @@ template <>
 inline std::shared_ptr<std::string> lua_object<std::string>::to_type(lua_State *L, int n)
 {
 	return std::make_shared<std::string>(lua_tostring(L, n));
+}
+
+template <>
+inline void lua_object<boost::variant<bool, std::vector<std::string>>>::from_type(lua_State *L, std::shared_ptr<boost::variant<bool, std::vector<std::string>>> value)
+{
+	if(value) {
+		if (value->which() == 0) {
+			lua_pushboolean(L, boost::get<bool>(*value));
+		} else {
+			std::vector<std::string> strlist = boost::get<std::vector<std::string>>(*value);
+			lua_createtable(L, strlist.size(), 0);
+			for(const std::string& str : strlist) {
+				lua_pushlstring(L, str.c_str(), str.size());
+				lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+			}
+		}
+	} else lua_pushnil(L);
+}
+
+template <>
+inline std::shared_ptr< boost::variant<bool, std::vector<std::string>> > lua_object< boost::variant<bool, std::vector<std::string>> >::to_type(lua_State *L, int n)
+{
+	if (lua_isboolean(L, n)) {
+		return std::make_shared<boost::variant<bool, std::vector<std::string>>>(luaW_toboolean(L, n));
+	} else {
+		std::shared_ptr<std::vector<std::string>> v(new std::vector<std::string>());
+		int l = lua_rawlen(L, n);
+		for (int i = 1; i < l + 1; ++i)
+		{
+			lua_pushinteger(L, i);
+			lua_gettable(L, n);
+			std::string s = lua_tostring(L, -1);
+			lua_settop(L, n);
+			v->push_back(s);
+		}
+
+		return std::make_shared<boost::variant<bool, std::vector<std::string>>>(*v);
+	}
 }
 
 template <>
