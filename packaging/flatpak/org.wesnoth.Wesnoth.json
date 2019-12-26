@@ -19,6 +19,14 @@
         "/share/man",
         "*.la", "*.a"
     ],
+    "build-options": {
+        "cflags-override": true,
+        "cppflags-override": true,
+        "cxxflags-override": true,
+        "cflags": "",
+        "cppflags": "",
+        "cxxflags": ""
+    },
     "modules": [
         {
             "name": "boost",
@@ -32,7 +40,7 @@
             ],
             "build-commands": [
                 "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread",
-                "./b2 -j4 install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
+                "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
 ]
         },
 	{
@@ -57,7 +65,7 @@
                 "/share/applications/wesnoth_editor.desktop"
             ],
             "build-commands": [
-                "python3 /app/bin/scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app ccache=true install wesnoth wesnothd"
+                "python3 /app/bin/scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app ccache=true --debug=time install wesnoth wesnothd"
 	    ],
             "sources": [
                 {

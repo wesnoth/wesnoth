@@ -8,6 +8,7 @@ cache:
   ccache: true
   directories:
     - $HOME/build-cache
+    - $HOME/flatpak-cache
 
 git:
   depth: 5
@@ -35,6 +36,8 @@ matrix:
     - env: CXXSTD=14 NLS=false LTS=mingw BRANCH=master STRICT=false
     
     - env: CXXSTD=14 NLS=false LTS=steamrt BRANCH=master CC=gcc-5 CXX=g++-5
+
+    - env: NLS=true LTS=flatpak BRANCH=master
 
     - os: osx
       compiler: clang
