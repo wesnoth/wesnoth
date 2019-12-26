@@ -175,7 +175,7 @@ inline void lua_object< std::vector<std::string> >::from_type(lua_State *L, std:
 		lua_createtable(L, value->size(), 0);
 		for(const std::string& str : *value) {
 			lua_pushlstring(L, str.c_str(), str.size());
-			lua_rawseti(L, -1, lua_rawlen(L, -2) + 1);
+			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
 		}
 	} else lua_pushnil(L);
 }
