@@ -66,7 +66,8 @@ public:
 	void set_defense_weight(double value) { defense_weight_ = value; set_changed(true); }
 	void set_specials(config value) { specials_ = value; set_changed(true); }
 
-
+	// In action/attack.cpp
+	int under_leadership() const;
 	// In unit_abilities.cpp:
 
 	/// @return True iff the special @a special is active.
@@ -85,8 +86,6 @@ public:
 	int modified_damage(bool is_backstab) const;
 	/// Returns list for weapon like abilities
 	unit_ability_list list_ability(const std::string& ability) const;
-	///return an numerical value for abilite like weapon like chance_to_hit, damage but also for leadership
-	std::pair<int, bool> combat_ability(const std::string& ability, int abil_value = 0, bool backstab_pos = false) const;
 	///return an boolean value for abilities like poison slow firstrike or petrifies
 	bool bool_ability(const std::string& ability) const;
 

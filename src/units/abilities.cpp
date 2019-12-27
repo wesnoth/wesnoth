@@ -964,10 +964,9 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
                                    unsigned & max_attacks) const
 {
 	// Apply [attacks].
-	unit_abilities::effect attacks_effect(get_specials("attacks"),
+	unit_abilities::effect attacks_effect(list_ability("attacks"),
 	                                      num_attacks(), is_backstab);
 	int attacks_value = attacks_effect.get_composite_value();
-	attacks_value = combat_ability("attacks", attacks_value, is_backstab).first;
 
 	if ( attacks_value < 0 ) {
 		attacks_value = num_attacks();
@@ -975,11 +974,7 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
 	}
 
 	// Apply [swarm].
-	unit_ability_list swarm_specials = get_specials("swarm");
-	unit_ability_list alt_swarm_specials = list_ability("swarm");
-	if(!alt_swarm_specials.empty()){
-            swarm_specials = alt_swarm_specials;    
-	}
+	unit_ability_list swarm_specials = list_ability("swarm");
 	if ( !swarm_specials.empty() ) {
 		min_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_min").first);
 		max_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_max", attacks_value).first);
@@ -994,9 +989,9 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
  */
 int attack_type::modified_damage(bool is_backstab) const
 {
-	unit_abilities::effect dmg_effect(get_specials("damage"), damage(), is_backstab);
+	unit_abilities::effect dmg_effect(list_ability("damage"), damage(), is_backstab);
 	int damage_value = dmg_effect.get_composite_value();
-	damage_value = combat_ability("damage", damage_value, is_backstab).first;
+
 	return damage_value;
 }
 
@@ -1149,20 +1144,22 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 			abil_list = list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
 		}
 	}
-	if(shared_from_this()){
-		for(const config& i : specials_.child_range(ability)) {
-			if(special_active(i, AFFECT_SELF, ability)) {
-				abil_list.emplace_back(&i, self_loc_);
+	if(!abil_list.empty()){
+		if(shared_from_this()){
+			for(const config& i : specials_.child_range(ability)) {
+				if(special_active(i, AFFECT_SELF, ability)) {
+					abil_list.emplace_back(&i, self_loc_);
+				}
 			}
 		}
-	}
-	if(other_attack_){
-		for(const config& j : other_attack_->specials_.child_range(ability)) {
-			if(other_attack_->special_active(j, AFFECT_OTHER, ability)) {
-				abil_list.emplace_back(&j, other_loc_);
+		if(other_attack_){
+			for(const config& j : other_attack_->specials_.child_range(ability)) {
+				if(other_attack_->special_active(j, AFFECT_OTHER, ability)) {
+					abil_list.emplace_back(&j, other_loc_);
+				}
 			}
 		}
-	}	
+	} else {abil_list = get_specials(ability);}	
 	return abil_list;
 }
 

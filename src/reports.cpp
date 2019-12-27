@@ -769,7 +769,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		int damage_multiplier = 100;
 		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), u.alignment(), u.is_fearless());
 		damage_multiplier += tod_bonus;
-		int leader_bonus = at.combat_ability("leadership").first;
+		int leader_bonus = at.under_leadership();
 		if (leader_bonus != 0)
 			damage_multiplier += leader_bonus;
 
