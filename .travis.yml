@@ -15,6 +15,12 @@ git:
 
 matrix:
   include:
+    - os: windows
+      env: OPT=Debug
+
+    - os: windows
+      env: OPT=Release
+
     - compiler: gcc
       env: CXXSTD=14 NLS=true LTS=1604 BRANCH=master
 
