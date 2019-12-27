@@ -68,6 +68,8 @@ public:
 
 	// In action/attack.cpp
 	int under_leadership() const;
+
+
 	// In unit_abilities.cpp:
 
 	/// @return True iff the special @a special is active.
