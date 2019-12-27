@@ -991,7 +991,6 @@ int attack_type::modified_damage(bool is_backstab) const
 {
 	unit_abilities::effect dmg_effect(list_ability("damage"), damage(), is_backstab);
 	int damage_value = dmg_effect.get_composite_value();
-
 	return damage_value;
 }
 
@@ -1165,25 +1164,13 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 
 bool attack_type::bool_ability(const std::string& ability) const
 {
-	bool abil_bool= get_special_bool(ability);
+	bool abil_bool = get_special_bool(ability);
 	unit_ability_list abil(self_loc_);
 	abil = list_ability(ability);
 	if(!abil.empty()) {
 		abil_bool = true;
 	}
 	return abil_bool;
-}
-
-std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int abil_value, bool backstab_pos) const
-{
-	unit_ability_list abil(self_loc_);
-	abil = list_ability(ability);
-	
-	if(!abil.empty()) {
-		unit_abilities::effect leader_effect(abil, abil_value, backstab_pos);
-		return {leader_effect.get_composite_value(), true};
-	}
-	return {abil_value, false};
 }
 //end of emulate weapon special functions.
 
