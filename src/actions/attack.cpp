@@ -159,7 +159,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	// Handle plague.
 	unit_ability_list plague_specials = weapon->get_specials("plague");
 	unit_ability_list alt_plague_specials = weapon->list_ability("plague");
-	if(!alt_plague_specials.empty()){
+	if(!alt_plague_specials.empty() && plague_specials.empty()){
 		plague_specials = alt_plague_specials;
 	}
 	plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
