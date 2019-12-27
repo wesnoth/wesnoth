@@ -1142,11 +1142,21 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	if(self){
 		if(leadership_affects_self(ability, *self, self_loc_, is_attacker_)) {
 			abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
+			for(const config& i : specials_.child_range(ability)) {
+				if(special_active(i, AFFECT_SELF, ability)) {
+					abil_list.emplace_back(&i, self_loc_);
+				}
+			}
 		}
 	}
 	if(other){
-		if(leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_)) {
+		if(other_attack_ && leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_)) {
 			abil_list = list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
+			for(const config& i : other_attack_->specials_.child_range(ability)) {
+				if(other_attack_->special_active(i, AFFECT_OTHER, ability)) {
+					abil_list.emplace_back(&i, other_loc_);
+				}
+			}
 		}
 	}
 	return abil_list;
