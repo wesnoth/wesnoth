@@ -39,6 +39,11 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
                   make VERBOSE=1 -j2
         fi
     fi
+elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
+    powershell "MSBuild.exe projectfiles/VC14/wesnoth.sln -p:PlatformToolset=v141 -p:Configuration=$OPT"
+    if [ "$OPT" == "Release" ]; then
+        ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
+    fi
 else
 # additional permissions required due to flatpak's use of bubblewrap
     docker run --cap-add=ALL --privileged \

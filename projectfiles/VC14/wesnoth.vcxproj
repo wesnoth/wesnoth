@@ -189,10 +189,6 @@
     <Manifest>
       <AdditionalManifestFiles>../../packaging/windows/wesnoth.exe.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
-    <PostBuildEvent>
-      <Message>WML unit tests for Wesnoth</Message>
-      <Command>WML_tests.cmd</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">
     <BuildLog>
@@ -271,10 +267,6 @@
     <Manifest>
       <AdditionalManifestFiles>../../packaging/windows/wesnoth.exe.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
-    <PostBuildEvent>
-      <Message>WML unit tests for Wesnoth</Message>
-      <Command>WML_tests.cmd $(OutDir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">
     <BuildLog>
@@ -317,10 +309,6 @@
     <Manifest>
       <AdditionalManifestFiles>../../packaging/windows/wesnoth.exe.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
-    <PostBuildEvent>
-      <Message>WML unit tests for Wesnoth</Message>
-      <Command>WML_tests.cmd</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\packaging\windows\wesnoth.rc" />
