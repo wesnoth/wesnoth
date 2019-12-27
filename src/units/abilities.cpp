@@ -1140,38 +1140,29 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 	unit_ability_list abil_list(self_loc_);
 	if(self){
-		if(shared_from_this() && leadership_affects_self(ability, *self, self_loc_, is_attacker_)) {
+		if(leadership_affects_self(ability, *self, self_loc_, is_attacker_)) {
 			abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
-			for(const config& i : specials_.child_range(ability)) {
-				if(special_active(i, AFFECT_SELF, ability)) {
-					abil_list.emplace_back(&i, self_loc_);
-				}
-			}
-			if(other_attack_){
-				for(const config& j : other_attack_->specials_.child_range(ability)) {
-					if(other_attack_->special_active(j, AFFECT_OTHER, ability)) {
-						abil_list.emplace_back(&j, other_loc_);
-					}
-				}
-			}
+		}
 	}
 	if(other){
-		if(other_attack_ && leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_)) {
+		if(leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_)) {
 			abil_list = list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
-			for(const config& i : other_attack_->specials_.child_range(ability)) {
-				if(other_attack_->special_active(i, AFFECT_OTHER, ability)) {
-					abil_list.emplace_back(&i, other_loc_);
-				}
-			}
-			if(shared_from_this()){
-				for(const config& j : specials_.child_range(ability)) {
-					if(special_active(j, AFFECT_SELF, ability)) {
-						abil_list.emplace_back(&j, self_loc_);
-					}
-				}
+		}
+	}
+	if(shared_from_this()){
+		for(const config& i : specials_.child_range(ability)) {
+			if(special_active(i, AFFECT_SELF, ability)) {
+				abil_list.emplace_back(&i, self_loc_);
 			}
 		}
 	}
+	if(other_attack_){
+		for(const config& j : other_attack_->specials_.child_range(ability)) {
+			if(other_attack_->special_active(j, AFFECT_OTHER, ability)) {
+				abil_list.emplace_back(&j, other_loc_);
+			}
+		}
+	}	
 	return abil_list;
 }
 
