@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 
+#include "filesystem.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
@@ -672,7 +673,9 @@ void mp_create_game::update_details(window& win)
 
 	if(create_engine_.current_level_type() == ng::level::TYPE::RANDOM_MAP) {
 		// If the current random map doesn't have data, generate it
-		if(create_engine_.generator_assigned() && create_engine_.current_level().data()["map_data"].empty()) {
+		if(create_engine_.generator_assigned() &&
+			create_engine_.current_level().data()["map_data"].empty() &&
+			create_engine_.current_level().data()["map_file"].empty()) {
 			create_engine_.init_generated_level_data();
 		}
 
@@ -705,7 +708,14 @@ void mp_create_game::update_details(window& win)
 			create_engine_.get_state().classification().campaign = "";
 
 			find_widget<stacked_widget>(&win, "minimap_stack", false).select_layer(0);
-			find_widget<minimap>(&win, "minimap", false).set_map_data(current_scenario->data()["map_data"]);
+			const std::string map_data = !current_scenario->data()["map_data"].empty()
+				? current_scenario->data()["map_data"]
+				: filesystem::read_map(current_scenario->data()["map_file"]);
+			if (current_scenario->data()["map_data"].empty()) {
+				current_scenario->data()["map_data"] = map_data;
+				current_scenario->set_metadata();
+			}
+			find_widget<minimap>(&win, "minimap", false).set_map_data(map_data);
 
 			players.set_label(std::to_string(current_scenario->num_players()));
 			map_size.set_label(current_scenario->map_size());
