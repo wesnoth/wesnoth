@@ -1143,22 +1143,21 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 			abil_list = list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
 		}
 	}
-	if(!abil_list.empty()){
-		if(shared_from_this()){
-			for(const config& i : specials_.child_range(ability)) {
-				if(!get_specials(ability).empty()) {
-					abil_list.emplace_back(&i, self_loc_);
-				}
+
+	if(shared_from_this()){
+		for(const config& i : specials_.child_range(ability)) {
+			if(!get_specials(ability).empty()) {
+				abil_list.emplace_back(&i, self_loc_);
 			}
 		}
-		if(other_attack_){
-			for(const config& j : other_attack_->specials_.child_range(ability)) {
-				if(!other_attack_->get_specials(ability).empty()) {
-					abil_list.emplace_back(&j, other_loc_);
-				}
+	}
+	if(other_attack_){
+		for(const config& j : other_attack_->specials_.child_range(ability)) {
+			if(!get_specials(ability).empty()) {
+				abil_list.emplace_back(&j, other_loc_);
 			}
 		}
-	} else { abil_list = get_specials(ability);}
+	}
 	return abil_list;
 }
 
@@ -1202,6 +1201,18 @@ bool attack_type::bool_ability(const std::string& ability) const
 		abil_bool = true;
 	}
 	return abil_bool;
+}
+
+int attack_type::under_leadership() const
+{
+    unit_ability_list abil(self_loc_);
+    abil = list_ability("leadership");
+
+    if(!abil.empty()) {
+		unit_abilities::effect leader_effect(abil, 0, false);
+		return leader_effect.get_composite_value();
+	}
+	return 0;
 }
 //end of emulate weapon special functions.
 
