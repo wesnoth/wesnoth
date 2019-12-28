@@ -49,6 +49,8 @@
      This file should contain one of the following values based on where the package is for:
      Default, Steam, SourceForge, Flatpak, macOS App Store, Linux repository, iOS, Android, BSD repository
  ### Miscellaneous and bug fixes
+   * New build-dependency: Python3 is required to run the WML unit tests (on non-Windows)
+   * 80% of WML unit tests now run in a batch using a single instance of Wesnoth (non-Windows only)
    * New help topic outlining common (and less commons) reasons for losing a scenario (PR #4217).
    * Add help text for some debug commands (part of issue #2500).
    * Make wmllint recognize `[load_resource]` (issue #4538).
