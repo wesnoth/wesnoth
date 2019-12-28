@@ -1676,7 +1676,7 @@ public:
 	 * @param ability The type of ability (tag name) to remove.
 	 */
 	void remove_ability_by_id(const std::string& ability);
-
+	///filters the weapons that condition the use of abilities for combat (leadership, resistance or abilities used like specials)
 	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 private:
