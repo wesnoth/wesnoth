@@ -111,13 +111,15 @@
      This file should contain one of the following values based on where the package is for:
      Default, Steam, SourceForge, Flatpak, macOS App Store, Linux repository, iOS, Android, BSD repository
  ### Miscellaneous and bug fixes
+   * New build-dependency: Python3 is required to run the WML unit tests (on non-Windows)
+   * 80% of WML unit tests now run in a batch using a single instance of Wesnoth (non-Windows only)
    * Fix --userdata-dir deprecation warning being printed when starting wesnoth without arguments
      when -DPREFERENCES_DIR="..." was defined at compile time.
    * Make wmllint recognize `[load_resource]` (issue #4538).
    * Removed map scaling algorithm customization. Nearest-neighbor scaling will now
      always be used.
    * Make wmllint ignore race= keys if they are part of filters inside [unit_type] (issue #4105)
-   * Removed a few assserts from wmllint and postponed a few unit sanity checks to the closing of a [unit_type] tag (issue #4102)
+   * Removed a few asserts from wmllint and postponed a few unit sanity checks to the closing of a [unit_type] tag (issue #4102)
    * Added tool `tmx_trackplacer`, a file converter for editing map tracks with Tiled (PR #4464)
    * Added tool trackviewer, which has the animation-preview functions of trackplacer (PR #4574)
    * Removed the python2 trackplacer tool (issue #4365)
