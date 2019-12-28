@@ -66,9 +66,6 @@ public:
 	void set_defense_weight(double value) { defense_weight_ = value; set_changed(true); }
 	void set_specials(config value) { specials_ = value; set_changed(true); }
 
-	// In action/attack.cpp
-	int under_leadership() const;
-
 
 	// In unit_abilities.cpp:
 
@@ -86,10 +83,12 @@ public:
 	                      unsigned & max_attacks) const;
 	/// Returns the damage per attack of this weapon, considering specials.
 	int modified_damage(bool is_backstab) const;
-	/// Returns list for weapon like abilities
+	/// Returns list for weapon like abilities, ability value is tag_name.
 	unit_ability_list list_ability(const std::string& ability) const;
 	///return an boolean value for abilities like poison slow firstrike or petrifies
 	bool bool_ability(const std::string& ability) const;
+	/// return leader_bonus for units affected by [leadership] ability
+	int under_leadership() const;
 
 	// In unit_types.cpp:
 
