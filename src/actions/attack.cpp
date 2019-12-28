@@ -1561,18 +1561,6 @@ void attack_unit_and_advance(const map_location& attacker,
 	}
 }
 
-int attack_type::under_leadership() const
-{
-    unit_ability_list abil(self_loc_);
-    abil = list_ability("leadership");
-
-    if(!abil.empty()) {
-		unit_abilities::effect leader_effect(abil, 0, false);
-		return leader_effect.get_composite_value();
-	}
-	return 0;
-}
-
 int combat_modifier(const unit_map& units,
 		const gamemap& map,
 		const map_location& loc,
