@@ -4,9 +4,8 @@ set -ev
 
 if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
 
-	brew update
-	brew install scons cairo pango moreutils sdl2_image sdl2_ttf sdl2_mixer
-  brew reinstall libffi
+	HOMEBREW_NO_AUTO_UPDATE=1 brew install scons cairo pango moreutils sdl2_image sdl2_ttf sdl2_mixer
+	HOMEBREW_NO_AUTO_UPDATE=1 brew reinstall libffi
 
 else
 
