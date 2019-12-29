@@ -723,6 +723,15 @@ void create_engine::init_all_levels()
 	// Campaigns.
 	for(const config& data : game_config_.child_range("campaign"))
 	{
+		if(data["id"].empty()) {
+			if(data["name"].empty()) {
+				ERR_CF << "Found a [campaign] with neither a name nor an id attribute, ignoring it" << std::endl;
+			} else {
+				ERR_CF << "Ignoring a [campaign] with no id attribute, but name '" << data["name"] << "'" << std::endl;
+			}
+			continue;
+		}
+
 		const std::string& type = data["type"];
 		bool mp = state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
