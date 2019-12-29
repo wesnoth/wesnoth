@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-09-30 23:56+0200\n"
+"PO-Revision-Date: 2019-12-19 13:40+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -126,7 +126,7 @@ msgid ""
 "to disable."
 msgstr ""
 "Nombre de minutes à attendre avant de supprimer un message de la discussion "
-"pendant une partie. Mettre à 0 pour désactiver"
+"pendant une partie. Mettre à 0 pour désactiver."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -156,14 +156,15 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:125
 msgid "Editor recent files limit"
-msgstr "Limite du nombre de fichier récents dans l'éditeur"
+msgstr "Limite du nombre de fichiers récents dans l'éditeur"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:126
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
-"Nombre maximum d'entrée à afficher dans le menu Fichiers récents de l'éditeur"
+"Nombre maximum d'entrées à afficher dans le menu Fichiers récents de "
+"l'éditeur"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:136
@@ -193,7 +194,7 @@ msgstr "Journalisation"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:162
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr "Active le calcul des dommages avec une simulation de type Monte Carlo"
+msgstr "Activer le calcul des dommages avec une simulation de type Monte Carlo"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:163
@@ -217,7 +218,7 @@ msgstr "Afficher les effets graphiques spéciaux des unités"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:178
 msgid "Show deprecation messages in-game"
-msgstr "Afficher les messages de dépréciation en jeu."
+msgstr "Afficher les messages de dépréciation en jeu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:179
@@ -234,7 +235,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:186
 msgid "Use experimental PRNG combat"
-msgstr "Utilisation du PRNG experimental pour le combat"
+msgstr "Utilisation du PRNG expérimental pour le combat"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
@@ -246,9 +247,9 @@ msgid ""
 "Note: this option only affects singleplayer, and the ‘Save random seed’ "
 "option must also be enabled when creating a game for this to work."
 msgstr ""
-"Active des calculs plus détermistes pour les chances de toucher. Il s'agit "
-"d'une fonctionnalité experimentale visanat à rapprocher le taux de touché/"
-"manqué de celui indiqué par les poucentages.\n"
+"Active des calculs plus déterministes pour les chances de toucher. Il s'agit "
+"d'une fonctionnalité expérimentale visant à rapprocher le taux de touché/"
+"manqué de celui indiqué par les pourcentages.\n"
 "\n"
 "Note : cette option n'agit qu'en mode un seul joueur, de plus l'option « "
 "Sauvegarder la graine aléatoire » doit être activée lors de la création de "
@@ -3268,7 +3269,7 @@ msgstr "Ceci est le dernier scénario."
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:58
 msgid "No turn limit"
-msgstr "Pas de limite de tour"
+msgstr "Pas de limite de tours"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:58
@@ -3352,7 +3353,7 @@ msgstr "Thème romantique"
 #. [music]
 #: data/core/macros/sound-utils.cfg:241
 msgid "Loyalists"
-msgstr "Loyaliste"
+msgstr "Loyalistes"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:247
@@ -4234,7 +4235,7 @@ msgstr "%d%% de l'or sera conservé dans le scénario suivant."
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:156
 #: src/game_initialization/mp_game_utils.cpp:76
 msgid "Defeat enemy leader(s)"
-msgstr "Vaincre le(s) chef(s) ennemi(s)"
+msgstr "Tuez tous les chefs ennemis"
 
 #: data/scenario-test.cfg:1023 src/game_initialization/depcheck.cpp:491
 msgid "OK"
@@ -4486,10 +4487,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
@@ -5292,7 +5289,7 @@ msgid ""
 "You must accept some losses in battle. It is not uncommon for beginners to "
 "lose sight of victory as they attempt to keep every unit alive."
 msgstr ""
-"Vous devez accepter quelques perte lors de la bataille. Il n'est pas rare "
+"Vous devez accepter quelques pertes lors de la bataille. Il n'est pas rare "
 "que les débutants perdent de vue la victoire en voulant garder chaque unité "
 "en vie."
 
@@ -5304,7 +5301,7 @@ msgstr "<i>- Reine Asheviere, 503 ap. W.</i>"
 #. [tip]
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
-msgstr "L'utilisation d'unités de niveau inférieur peut être très rentable"
+msgstr "L'utilisation d'unités de niveau inférieur peut être très rentable."
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5469,7 +5466,7 @@ msgid ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
 "L'extension <i>$addon_title</i> possède un nom de fichier ou de répertoire "
-"invalide et ne peut donc pas être publié. Les noms de fichiers et de "
+"invalide et ne peut donc pas être publiée. Les noms de fichiers et de "
 "répertoires ne doivent pas contenir '..' ou finir par '.' ou être plus long "
 "que 255 caractères. Ils ne devraient pas non plus avoir d'espace, caractères "
 "de contrôle ou aucun des caractères suivants :\n"
@@ -5482,9 +5479,9 @@ msgid ""
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 msgstr ""
-"L'extension <i>$addon_title</i> possède des fichier ou des répertoires avec "
+"L'extension <i>$addon_title</i> possède des fichiers ou des répertoires avec "
 "des conflits de casse. Les noms de fichiers et de répertoires ne peuvent pas "
-"exister avec des casse différentes pour une même chaîne de caractères."
+"exister avec des casses différentes pour une même chaîne de caractères."
 
 #: src/addon/client.cpp:184
 msgid "Sending add-on <i>$addon_title</i>..."
@@ -5511,8 +5508,8 @@ msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
-"L'extension <i>$addon_title</i> possède un nom de fichier ou de répertoire "
-"invalide. Cela peut causer des problèmes."
+"L'extension <i>$addon_title</i> possède un fichier ou un répertoire avec un "
+"conflit de casse. Cela peut causer des problèmes."
 
 #: src/addon/client.cpp:321
 msgid "The server responded with an error:"
@@ -5672,7 +5669,7 @@ msgstr ""
 
 #: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:314
 msgid "The add-ons server address specified is not valid."
-msgstr "L'adresse du serveur d'extension spécifiée n'est pas valide."
+msgstr "L'adresse du serveur d'extensions spécifiée n'est pas valide."
 
 #: src/addon/manager_ui.cpp:118
 msgid "You have no add-ons installed."
@@ -5807,7 +5804,7 @@ msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
-"Bannir et rejeter un jouer ou un observateur. S'il est absent du jeu mais "
+"Bannir et rejeter un joueur ou un observateur. S'il est absent du jeu mais "
 "qu'il se trouve sur le serveur, il sera seulement banni."
 
 #: src/chat_command_handler.hpp:93 src/chat_command_handler.hpp:96
@@ -6110,7 +6107,7 @@ msgid ""
 "loading add-ons."
 msgstr ""
 "Erreur lors du chargement des fichiers de configuration personnalisés du "
-"jeu. Les extension ne seront pas chargées."
+"jeu. Les extensions ne seront pas chargées."
 
 #: src/game_config_manager.cpp:320
 msgid ""
@@ -6162,7 +6159,7 @@ msgstr "Info : "
 
 #: src/game_initialization/configure_engine.cpp:65
 msgid "$login|’s game"
-msgstr "Jeu de $login"
+msgstr "Partie de $login"
 
 #: src/game_initialization/connect_engine.cpp:104
 msgid "Team"
@@ -6638,7 +6635,7 @@ msgstr "Erreur lors du démarrage du serveur : "
 
 #: src/game_launcher.cpp:888
 msgid "Connection failed: "
-msgstr "Délai de connexion dépassé : "
+msgstr "Erreur de connexion : "
 
 #: src/generators/default_map_generator_job.cpp:711
 msgid "Random maps with an odd width aren't supported."
@@ -6675,7 +6672,7 @@ msgstr[1] ""
 
 #: src/gui/dialogs/game_load.hpp:40
 msgid "No Saved Games"
-msgstr "Aucun jeu sauvegardé"
+msgstr "Aucune partie sauvegardée"
 
 #: src/gui/dialogs/game_load.hpp:40
 msgid "There are no save files to load"
@@ -7090,6 +7087,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<commande>]\n"
+"“all” = vue d'ensemble des commandes, <commande> = nom d'une commande (plus "
+"de détails)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -7118,7 +7118,7 @@ msgstr " Aucune aide disponible."
 
 #: src/map_command_handler.hpp:332
 msgid "Usage:"
-msgstr "Usage :"
+msgstr "Utilisation :"
 
 #. TRANSLATORS: alternative names for command-line commands, only shown if
 #. there is at least one of them.
@@ -7269,6 +7269,9 @@ msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
+"[<camp> [on/off]]\n"
+"“on” = active le contrôle par l'IA, “off” = le camp est contrôlé par le "
+"joueur"
 
 #: src/menu_events.cpp:1190
 msgid "Switch a side to/from idle state."
@@ -7315,7 +7318,7 @@ msgstr "Affiche les IPS (Images par seconde)."
 
 #: src/menu_events.cpp:1206
 msgid "Save game."
-msgstr "Sauvegarder le jeu."
+msgstr "Sauvegarder la partie."
 
 #: src/menu_events.cpp:1208
 msgid "Quit game."
@@ -7755,8 +7758,8 @@ msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Une déconnexion réseau est survenue et le jeu ne peut pas continuer. Voulez-"
-"vous sauvegarder la partie ?"
+"Une déconnexion réseau est survenue et la partie ne peut pas continuer. "
+"Voulez-vous sauvegarder la partie ?"
 
 #: src/playsingle_controller.cpp:349
 msgid ""
@@ -7800,7 +7803,7 @@ msgstr "Mettre ce camp en pause"
 
 #: src/playturn.cpp:294
 msgid "Save and abort game"
-msgstr "Sauvegarder puis arrêter le jeu"
+msgstr "Sauvegarder puis arrêter la partie"
 
 #: src/playturn.cpp:298
 msgid ""
@@ -7858,7 +7861,7 @@ msgstr ""
 
 #: src/reports.cpp:342
 msgid "slowed: "
-msgstr "ralentie : "
+msgstr "ralenti : "
 
 #: src/reports.cpp:343
 msgid ""
@@ -7938,10 +7941,8 @@ msgid "vision:"
 msgstr "vision :"
 
 #: src/reports.cpp:625 src/reports.cpp:626
-#, fuzzy
-#| msgid "Warning: "
 msgid "jamming:"
-msgstr "Avertissement : "
+msgstr "brouillage :"
 
 #: src/reports.cpp:655
 msgid "Movement Costs:"
@@ -8039,10 +8040,8 @@ msgstr[0] "Attaque"
 msgstr[1] "Attaques"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Moment de la journée : "
+msgstr "Planificateur du moment de la journée :"
 
 #: src/reports.cpp:1176
 msgid "Time of day:"
@@ -8073,8 +8072,8 @@ msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
-"Lorsque le jeu atteint le nombre de tour indiqué par le second nombre, il se "
-"termine."
+"Lorsque le jeu atteint le nombre de tours indiqué par le second nombre, il "
+"se termine."
 
 #: src/reports.cpp:1310
 msgid "Gold"
@@ -8104,12 +8103,6 @@ msgid "Units"
 msgstr "Unités"
 
 #: src/reports.cpp:1344
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8118,9 +8111,10 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "La dépense nécessaire à la fin de chaque tour pour l'entretien de votre "
-"armée. Le premier nombre est la quantité d'or qui sera prélevée. Le second "
-"est le coût total d'entretien, y compris celui couvert par les villages — "
-"c'est-à-dire la quantité d'or qui serait prélevée si vous perdiez tous vos "
+"armée. Le premier nombre est la quantité d'or qui sera prélevée. Il est égal "
+"au nombre de niveaux d'unités non-supportés par des villages. Le second est "
+"le coût total d'entretien, y compris celui couvert par les villages — c'est-"
+"à-dire la quantité d'or qui serait prélevée si vous perdiez tous vos "
 "villages."
 
 #: src/reports.cpp:1344
@@ -8203,7 +8197,7 @@ msgstr ""
 
 #: src/savegame.cpp:253 src/savegame.cpp:297
 msgid "Load Game"
-msgstr "Charger un jeu"
+msgstr "Charger une partie"
 
 #: src/savegame.cpp:297
 msgid "Replays are not supported in multiplayer mode."
@@ -8215,7 +8209,7 @@ msgstr "Cette sauvegarde n'est pas celle d'une partie multijoueur."
 
 #: src/savegame.cpp:331
 msgid "The game could not be saved: "
-msgstr "Le jeu n'a pas pu être sauvegardé : "
+msgstr "La partie n'a pas pu être sauvegardée : "
 
 #: src/savegame.cpp:399
 msgid "Save already exists. Do you want to overwrite it?"
@@ -8238,7 +8232,7 @@ msgstr "Sauvegardé"
 
 #: src/savegame.cpp:456
 msgid "The game has been saved."
-msgstr "Le jeu a été sauvegardé."
+msgstr "La partie a été sauvegardée."
 
 #: src/savegame.cpp:486 src/savegame.cpp:506
 msgid "Could not write to file"
@@ -8259,7 +8253,7 @@ msgstr ""
 
 #: src/savegame.cpp:611
 msgid "Save Game"
-msgstr "Sauvegarder le jeu"
+msgstr "Sauvegarder la partie"
 
 #: src/savegame.cpp:625
 msgid "Game state is corrupted"
@@ -8471,9 +8465,10 @@ msgstr "Village possédé"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size doit être compris entre 0.0 et 0.5."
 
+# Il n'y a quasiment jamais deux raccourcis, donc ça paraît plus simple de le mettre au singulier.
 #: src/theme.cpp:557 src/theme.cpp:562
 msgid "Hotkey(s): "
-msgstr "Raccourci(s) : "
+msgstr "Raccourci : "
 
 # Ne devrait pas être affiché (cf. code source)
 # (bouchon plutôt que bidon ?)
