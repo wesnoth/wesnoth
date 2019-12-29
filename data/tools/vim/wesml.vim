@@ -147,40 +147,40 @@ syn region wesmlLuaQ start=+\(^[^#]*code\s*=\s*"\)\@<=+ skip=+""+ end=+\ze"+ con
 syn keyword wesmlStdTag contained abilities about advanced_preference advancefrom advancement
 syn keyword wesmlStdTag contained advances ai allow_end_turn allow_extra_recruit allow_recruit
 syn keyword wesmlStdTag contained allow_undo and animate_unit animation array
-syn keyword wesmlStdTag contained attack attack_filter attacks avoid base_unit
+syn keyword wesmlStdTag contained attack attack_anim attack_filter attacks avoid base_unit
 syn keyword wesmlStdTag contained binary_path bold brush campaign capture_village
 syn keyword wesmlStdTag contained case chat choose clear_global_variable clear_menu_item
-syn keyword wesmlStdTag contained clear_variable colour_adjust command damage deaths
+syn keyword wesmlStdTag contained clear_variable color_adjust command damage death deaths
 syn keyword wesmlStdTag contained defend defends defense delay deprecated_message
 syn keyword wesmlStdTag contained destination disallow_end_turn disallow_extra_recruit disallow_recruit do
 syn keyword wesmlStdTag contained editor_group editor_music editor_times effect
-syn keyword wesmlStdTag contained else endlevel end_turn era event
-syn keyword wesmlStdTag contained expenses filter filter filter_attack filter_attack
-syn keyword wesmlStdTag contained filter_condition filter_location filter_second filter_second filter_second_attack
+syn keyword wesmlStdTag contained else endlevel end_turn entry era event
+syn keyword wesmlStdTag contained expenses fake_unit filter filter_adjacent filter_attack filter_attack
+syn keyword wesmlStdTag contained filter_condition filter_location filter_second
 syn keyword wesmlStdTag contained filter_second_attack filter_side filter_vision filter_wml find_path
-syn keyword wesmlStdTag contained fire_event floating_text format frame game_config
+syn keyword wesmlStdTag contained fire_event floating_text for foreach format frame game_config
 syn keyword wesmlStdTag contained generator get_global_variable gold harm_unit have_location
 syn keyword wesmlStdTag contained have_unit header heal_unit hide_help hide_unit
-syn keyword wesmlStdTag contained if image img income init_side
+syn keyword wesmlStdTag contained idle_anim if image img income init_side
 syn keyword wesmlStdTag contained insert_tag inspect italic item jump
 syn keyword wesmlStdTag contained join kill killed label language
 syn keyword wesmlStdTag contained leader_goal locale lua main_map menu
-syn keyword wesmlStdTag contained message mini_map missile_frame modifications modify_ai
+syn keyword wesmlStdTag contained message micro_ai mini_map missile_frame modifications modify_ai
 syn keyword wesmlStdTag contained modify_side modify_turns modify_unit move move_unit
-syn keyword wesmlStdTag contained move_unit_fake move_units_fake movement costs movetype
+syn keyword wesmlStdTag contained move_unit_fake move_units_fake movement_costs movetype
 syn keyword wesmlStdTag contained multiplayer multiplayer_side music not num_units
 syn keyword wesmlStdTag contained object objectives objective observers open_help
 syn keyword wesmlStdTag contained option or panel part petrify
-syn keyword wesmlStdTag contained place_shroud position print protect_location protect_unit
-syn keyword wesmlStdTag contained race random recall recalls recruit
+syn keyword wesmlStdTag contained place_shroud position primary_unit print protect_location protect_unit
+syn keyword wesmlStdTag contained race random recall recalls recruit recruiting_anim
 syn keyword wesmlStdTag contained recruits redraw ref remove_shroud remove_unit_overlay
-syn keyword wesmlStdTag contained removeitem remove_sound_source replace_map replace_schedule replay
+syn keyword wesmlStdTag contained remove_item remove_sound_source replace_map replace_schedule replay
 syn keyword wesmlStdTag contained replay_start resistance resolution results role
 syn keyword wesmlStdTag contained save scenario scroll scroll_to scroll_to_unit
-syn keyword wesmlStdTag contained secondary_attack_filter secondary_unit_filter section select_unit set_global_variable
-syn keyword wesmlStdTag contained set_menu_item set_recruit set_extra_recruit set_variable set_variables
-syn keyword wesmlStdTag contained show_objectives side side_playing snapshot sound
-syn keyword wesmlStdTag contained sound_source source split statistics status
+syn keyword wesmlStdTag contained secondary_attack_filter secondary_unit secondary_unit_filter section select_unit
+syn keyword wesmlStdTag contained set_global_variable set_menu_item set_recruit set_extra_recruit set_variable
+syn keyword wesmlStdTag contained set_variables show_objectives side side_playing snapshot sound
+syn keyword wesmlStdTag contained sound_source source specials split statistics status
 syn keyword wesmlStdTag contained store_gold store_items store_locations store_map_dimensions store_reachable_locations
 syn keyword wesmlStdTag contained store_side store_starting_location store_time_of_day store_unit store_unit_type
 syn keyword wesmlStdTag contained store_unit_type_ids store_villages story switch target team
@@ -192,7 +192,7 @@ syn keyword wesmlStdTag contained turn tutorial unhide_unit unit unit_abilities
 syn keyword wesmlStdTag contained unit_alignment unit_description unit_filter unit_hp unit_image
 syn keyword wesmlStdTag contained unit_level unit_moves unit_overlay unit_profile unit_status
 syn keyword wesmlStdTag contained unit_traits unit_type unit_weapons unit_xp units
-syn keyword wesmlStdTag contained unpetrify unstore_unit upkeep variable variables
+syn keyword wesmlStdTag contained unpetrify unstore_unit upkeep variable variables variation
 syn keyword wesmlStdTag contained village villages volume while wml_message
 
 " GUI tags, listed via grep "\[[[:lower:]_-]\+\]" data/gui/default/w*/*.cfg -ho | sort -u
