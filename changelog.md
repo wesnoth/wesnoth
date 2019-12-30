@@ -58,6 +58,10 @@
    * Reworked styling of progress bars and the network transfer progress dialog.
    * Moved the MP server list from a separate dialog to the Connect to Server dialog proper
      and added functionality for managing player-defined servers (issue #4564).
+   * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
+   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
+     into account.
+   * The recruit and recall dialogs have a tooltip over the level number to show what the unit can advance to (issue #4135)
  ### Units
    * Add mushroom defense cap to mounted and some flying units
    * Decreased hitpoints of Dwarvish Lord from 79 to 74
@@ -68,10 +72,6 @@
    * Increased melee damage of Dwarvish Sentinel from 9-3 to 10-3
    * Dunefolk: rebalancing and renaming of various units
    * Orcs: revise some unit descriptions
- ### User interface
-   * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
-   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
-     into account.
  ### Lua API
    * unit:transform() now takes an optional variation parameter
    * Support side.variables for access to side variables, similar to unit.variables
