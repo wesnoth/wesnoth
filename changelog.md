@@ -11,6 +11,11 @@
      * Increased map interactability
      * S3: reworked scenario
      * S5: adjust enemy recruits and gold
+   * Sceptre of Fire:
+     * General prose/dialogue revision
+     * New scenario (now the third)
+     * Various map and scenario updates
+     * Make use of rails terrain
    * Secrets of the Ancients:
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
      * Fix last breath dialog for bats firing multiple times in the campaign
