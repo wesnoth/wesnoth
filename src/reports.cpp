@@ -261,9 +261,7 @@ REPORT_GENERATOR(selected_unit_side, rc)
 static config unit_level(const unit* u)
 {
 	if (!u) return config();
-	std::ostringstream str, tooltip;
-	str << u->level();
-	return text_report(str.str(), unit_helper::unit_level_tooltip(*u));
+	return text_report(std::to_string(u->level()), unit_helper::unit_level_tooltip(*u));
 }
 REPORT_GENERATOR(unit_level, rc)
 {
