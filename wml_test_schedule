@@ -14,7 +14,7 @@
 # Security test
 #
 0 cve_2018_1999023
-1 cve_2018_1999023_2
+5 cve_2018_1999023_2
 #
 # Test Check Victory (If this isn't working other tests may have dubious value)
 #
@@ -54,12 +54,12 @@
 0 unit_spawns_at_nearest_vacant_hex
 0 units_offmap_goto_recall
 0 test_move
-1 test_move_fail_1
-1 test_move_fail_2
-1 test_move_fail_3
-1 test_move_fail_4
-1 test_move_fail_5
-1 test_move_fail_6
+5 test_move_fail_1
+5 test_move_fail_2
+5 test_move_fail_3
+5 test_move_fail_4
+5 test_move_fail_5
+5 test_move_fail_6
 0 test_move_unit
 0 test_move_unit_in_circle
 0 sighted_events
@@ -175,9 +175,9 @@
 # Standard Unit Filter tests
 0 filter_this_unit_wml
 0 filter_this_unit_tl
-0 filter_this_unit_fai
-0 filter_fai_unit
-1 filter_fai_unit_error
+0 filter_this_unit_formula
+0 filter_formula_unit
+5 filter_formula_unit_error
 # Interrupt tag tests
 0 check_interrupts_break
 0 check_interrupts_return

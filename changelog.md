@@ -1,5 +1,24 @@
 ## Version 1.15.2+dev
- ### AI:
+ ### AI
+   * Merge most of Experimental AI candidate actions (CAs) into default AI
+     * CAs merged: castle switch, retreat injured, spread poison, place healers, move to any enemy
+     * CAs not merged: grab villages and village hunt, as the respective default AI CAs
+       are better as general purpose CAs. Also not merged was recruit rushers, which is too different
+       from default recruiting (would change balance too much) and because it can currently not deal
+       with multiple leaders and all the recruitment aspects. An option to use this alternative
+       recruiting will be provided in the future.
+     * Previous default AI CA removed: retreat phase
+     * The previous default CA is still available by using `[ai]ai_algorithm=ai_default_rca_1_14` or
+       by selecting "1.14 Default AI" in the multiplayer computer player selection menu
+     * The Experimental AI is now only available in debug mode (in MP) as it is mostly identical to the new default AI
+     * Many improvement were made to the new default CAs, to make them work correctly and consistently
+       in general settings, such a taken AI aspects (aggression, attacks, [avoid], caution, ...) and unit guardian
+       status into account, improved attack ratings and multi-leader functionality, and bug fixes
+   * Healer Support Micro AI: take unit guardian status and passive_leader aspect into account
+   * New ai_helper functionality: path finding, next_hop and get_attackable_enemies taking avoid into
+     account; next_hop with pre-calculated path and fanning out; new options to get_cheapest_recruit_cost
+   * Add [filter_own] optional tag to all default and Experimental AI candidate actions
+   * Fix [leader_goal] for sides with multiple leaders
  ### Campaigns
    * An Orcish Incursion:
      * Moved to addons server
@@ -11,6 +30,8 @@
      * Increased map interactability
      * S3: reworked scenario
      * S5: adjust enemy recruits and gold
+   * Legend of Wesmere:
+     * S3: fix scenario-breaking bug introduced in 1.15.2
    * Sceptre of Fire:
      * General prose/dialogue revision
      * New scenario (now the third)
@@ -20,11 +41,13 @@
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
      * Fix last breath dialog for bats firing multiple times in the campaign
      * Fix bug of regular WC appearing in recruit list in S05 Blackwater
-     * Fix special plauge attack making rats when spiders are called for
+     * Fix special plague attack making rats when spiders are called for
+   * Tutorial:
+     * Redraw S2 and reduce difficulty
  ### Editor
  ### Language and i18n
    * Updated translations: Ancient Greek, Chinese (Traditional), Dutch, French,
-     Portuguese (Brazil), Russian
+     Italian, Korean, Portuguese (Brazil), Russian
    * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Terrains
    * Add Stone Walls variation Catacombs (Xot) including some overlays
@@ -81,7 +104,7 @@
    * location_set module extended to support set operators (& | ~ -) as well as a few additional functions
  ### WFL engine
    * New functions resistance_on(), vision_cost(), jamming_cost() that work in gameplay contexts (eg filters)
-   * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying 
+   * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying
    * For FormulaAI, the game map object has an alternate access mode - `map.gamemap[loc(x,y)]`
  ### WML engine
    * Support upkeep in StandardUnitFilter
@@ -93,17 +116,20 @@
      This file should contain one of the following values based on where the package is for:
      Default, Steam, SourceForge, Flatpak, macOS App Store, Linux repository, iOS, Android, BSD repository
  ### Miscellaneous and bug fixes
+   * New build-dependency: Python3 is required to run the WML unit tests (on non-Windows)
+   * 80% of WML unit tests now run in a batch using a single instance of Wesnoth (non-Windows only)
    * Fix --userdata-dir deprecation warning being printed when starting wesnoth without arguments
      when -DPREFERENCES_DIR="..." was defined at compile time.
    * Make wmllint recognize `[load_resource]` (issue #4538).
    * Removed map scaling algorithm customization. Nearest-neighbor scaling will now
      always be used.
    * Make wmllint ignore race= keys if they are part of filters inside [unit_type] (issue #4105)
-   * Removed a few assserts from wmllint and postponed a few unit sanity checks to the closing of a [unit_type] tag (issue #4102)
+   * Removed a few asserts from wmllint and postponed a few unit sanity checks to the closing of a [unit_type] tag (issue #4102)
    * Added tool `tmx_trackplacer`, a file converter for editing map tracks with Tiled (PR #4464)
    * Added tool trackviewer, which has the animation-preview functions of trackplacer (PR #4574)
    * Removed the python2 trackplacer tool (issue #4365)
    * Made wmlscope recognize and analyze optional macro arguments
+   * Made `map_file=Example.map` support looking in the `[binary_path]`'s "maps/" directory (issue #4633)
 
 ## Version 1.15.2
  ### AI:

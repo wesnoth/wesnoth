@@ -22,7 +22,7 @@ Please see the wiki for information regarding The Battle for Wesnoth's licensing
 Installing
 ----------
 
-See INSTALL.md for instructions on how to build the game from source code.
+See [INSTALL](/INSTALL.md) for instructions on how to build the game from source code.
 
 
 More Information

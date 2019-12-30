@@ -17,6 +17,8 @@ class UnitTestResult(enum.Enum):
     TIMEOUT = 2
     FAIL_LOADING_REPLAY = 3
     FAIL_PLAYING_REPLAY = 4
+    FAIL_BROKE_STRICT = 5
+    FAIL_WML_EXCEPTION = 6
 
 class TestCase:
     """Represents a single line of the wml_test_schedule."""

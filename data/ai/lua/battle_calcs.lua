@@ -14,10 +14,10 @@ local battle_calcs = {}
 function battle_calcs.unit_attack_info(unit, cache)
     -- Return a table containing information about attack-related properties of @unit
     -- The result can be cached if variable @cache is given
-    -- This is done in order to avoid duplication of slow processes, such as access to unit.__cfg
+    -- This is done in order to avoid duplication of slow processes
 
     -- Return table has fields:
-    --  - attacks: the attack tables from unit.__cfg
+    --  - attacks: the attack tables
     --  - resist_mod: resistance modifiers (multiplicative factors) index by attack type
     --  - alignment: just that
 
@@ -32,11 +32,10 @@ function battle_calcs.unit_attack_info(unit, cache)
     end
 
     -- Otherwise collect the information
-    local unit_cfg = unit.__cfg
     local unit_info = {
         attacks = {},
         resist_mod = {},
-        alignment = unit_cfg.alignment
+        alignment = unit.alignment
     }
     local attacks = unit.attacks
     for i_a = 1,#attacks do
@@ -73,7 +72,7 @@ function battle_calcs.unit_attack_info(unit, cache)
 
     local attack_types = { "arcane", "blade", "cold", "fire", "impact", "pierce" }
     for _,attack_type in ipairs(attack_types) do
-        unit_info.resist_mod[attack_type] = unit:resistance(attack_type) / 100.
+        unit_info.resist_mod[attack_type] = 1 - unit:resistance_against(attack_type) / 100.
     end
 
     if cache then cache[cind] = unit_info end
@@ -117,6 +116,7 @@ function battle_calcs.strike_damage(attacker, defender, att_weapon, def_weapon, 
 
     -- Opponent resistance modifier
     local att_multiplier = defender_info.resist_mod[attacker_info.attacks[att_weapon].type] or 1
+
 
     -- TOD modifier
     att_multiplier = att_multiplier * AH.get_unit_time_of_day_bonus(attacker_info.alignment, att_lawful_bonus)
@@ -677,8 +677,8 @@ function battle_calcs.battle_outcome(attacker, defender, cfg, cache)
     if (def_max_hits > att_strikes) then def_max_hits = att_strikes end
 
     -- Probability of landing a hit
-    local att_hit_prob = defender:defense(wesnoth.get_terrain(defender.x, defender.y)) / 100.
-    local def_hit_prob = attacker:defense(wesnoth.get_terrain(dst[1], dst[2])) / 100.
+    local att_hit_prob = 1 - defender:defense_on(wesnoth.get_terrain(defender.x, defender.y)) / 100.
+    local def_hit_prob = 1 - attacker:defense_on(wesnoth.get_terrain(dst[1], dst[2])) / 100.
 
     -- Magical: attack and defense, and under all circumstances
     if att_attack.magical then att_hit_prob = 0.7 end
@@ -924,7 +924,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- We don't need a bonus for good terrain for the attacker, as that is covered in the damage calculation
     -- However, we add a small bonus for good terrain defense of the _defender_ on the _attack_ hex
     -- This is in order to take good terrain away from defender on next move, all else being equal
-    local defender_defense = - defender:defense(wesnoth.get_terrain(dst[1], dst[2])) / 100.
+    local defender_defense = - (100 - defender:defense_on(wesnoth.get_terrain(dst[1], dst[2]))) / 100.
     defender_value = defender_value + defender_defense * defense_weight
 
     -- Get a very small bonus for hexes in between defender and AI leader
@@ -1019,7 +1019,7 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
             -- If attacker has attack with 'slow' special, it should always go first
             -- Almost, bonus should not be quite as high as a really high CTK
             -- This isn't quite true in reality, but can be refined later
-            if AH.has_weapon_special(attacker, "slow") then
+            if attacker:find_attack { special_id = "slow" } then
                 rating = rating + defender.cost / 2.
             end
 
@@ -1316,7 +1316,7 @@ function battle_calcs.best_defense_map(units, cfg)
         if max_moves then unit.moves = old_moves end
 
         for _,loc in ipairs(reach) do
-            local defense = 100 - unit:defense(wesnoth.get_terrain(loc[1], loc[2]))
+            local defense = unit:defense_on(wesnoth.get_terrain(loc[1], loc[2]))
 
             if (defense > (defense_map:get(loc[1], loc[2]) or - math.huge)) then
                 defense_map:insert(loc[1], loc[2], defense)
@@ -1524,7 +1524,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
                     -- Store information about it in 'loc' and add this to 'locs'
                     -- Want coordinates (dst) and terrain defense (for sorting)
                     loc.dst = xa * 1000 + ya
-                    loc.hit_prob = unit:defense(wesnoth.get_terrain(xa, ya))
+                    loc.hit_prob = 100 - unit:defense_on(wesnoth.get_terrain(xa, ya))
                     table.insert(locs, loc)
 
                     -- Also mark this hex as usable

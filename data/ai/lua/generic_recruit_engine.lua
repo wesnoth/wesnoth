@@ -85,7 +85,7 @@ return {
             local best_defense = 100
 
             for i, terrain in ipairs(terrain_archetypes) do
-                local defense = unit:defense(terrain)
+                local defense = 100 - unit:defense_on(terrain)
                 if defense < best_defense then
                     best_defense = defense
                 end
@@ -195,23 +195,23 @@ return {
                                 if (sp[1] == 'drains') and drainable(attacker) then
                                     -- TODO: calculate chance to hit
                                     -- currently assumes 50% chance to hit using supplied constant
-                                    local attacker_resistance = attacker:resistance(defender_attack.type)
-                                    drain_recovery = (defender_attack.damage*defender_attack.number*attacker_resistance*attacker_defense/2)/10000
+                                    local attacker_resistance = attacker:resistance_against(defender_attack.type)
+                                    drain_recovery = (defender_attack.damage*defender_attack.number*(100-attacker_resistance)*attacker_defense/2)/10000
                                 end
                             end
                         end
                     end
 
                     defense = defense/100.0
-                    local resistance = defender:resistance(attack.type)
-                    if steadfast and (resistance < 100) then
-                        resistance = 100 - ((100 - resistance) * 2)
-                        if (resistance < 50) then
+                    local resistance = defender:resistance_against(attack.type)
+                    if steadfast and (resistance > 0) then
+                        resistance = resistance * 2
+                        if (resistance > 50) then
                             resistance = 50
                         end
                     end
-                    local base_damage = (weapon_damage+damage_bonus)*resistance*damage_multiplier
-                    if (resistance > 100) then
+                    local base_damage = (weapon_damage+damage_bonus)*(100-resistance)*damage_multiplier
+                    if (resistance < 0) then
                         base_damage = base_damage-1
                     end
                     base_damage = math.floor(base_damage/100 + 0.5)
@@ -257,7 +257,7 @@ return {
                 random_gender = false
             }
             local can_poison = poisonable(unit) and (not unit:ability('regenerate'))
-            local flat_defense = unit:defense("Gt")
+            local flat_defense = 100 - unit:defense_on("Gt")
             local best_defense = get_best_defense(unit)
 
             local recruit = wesnoth.units.create {
@@ -266,7 +266,7 @@ return {
                 name = "X",
                 random_gender = false
             }
-            local recruit_flat_defense = recruit:defense("Gt")
+            local recruit_flat_defense = 100 - recruit:defense_on("Gt")
             local recruit_best_defense = get_best_defense(recruit)
 
             local can_poison_retaliation = poisonable(recruit) and (not recruit:ability('regenerate'))
@@ -758,7 +758,7 @@ return {
                 if eta_turn <= wesnoth.game_config.last_turn then
                     lawful_bonus = wesnoth.get_time_of_day(wesnoth.current.turn + eta).lawful_bonus / eta^2
                 end
-                local damage_bonus = AH.get_unit_time_of_day_bonus(recruit_unit.__cfg.alignment, lawful_bonus)
+                local damage_bonus = AH.get_unit_time_of_day_bonus(recruit_unit.alignment, lawful_bonus)
                 -- Estimate effectiveness on offense and defense
                 local offense_score =
                     (recruit_effectiveness[recruit_id].damage*damage_bonus+recruit_effectiveness[recruit_id].poison_damage)
@@ -847,7 +847,7 @@ return {
                 for attack_range, count in pairs(unit_attack_range_count[recruit_id]) do
                     bonus = bonus + 0.02 * most_common_range_count / (attack_range_count[attack_range]+1)
                 end
-                local race = wesnoth.races[wesnoth.unit_types[recruit_id].__cfg.race]
+                local race = wesnoth.races[wesnoth.unit_types[recruit_id].race]
                 local num_traits = race and race.num_traits or 0
                 bonus = bonus + 0.03 * num_traits^2
                 if target_hex[1] then

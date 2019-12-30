@@ -7,6 +7,7 @@ local ca_bottleneck_attack = {}
 function ca_bottleneck_attack:evaluation(cfg, data)
     local attackers = AH.get_units_with_attacks {
         side = wesnoth.current.side,
+        { "and", wml.get_child(cfg, "filter") },
         { "filter_adjacent", {
             { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
         } }
@@ -63,7 +64,7 @@ end
 
 function ca_bottleneck_attack:execution(cfg, data)
     if BD_bottleneck_attacks_done then
-        local units = AH.get_units_with_attacks { side = wesnoth.current.side }
+        local units = AH.get_units_with_attacks { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") } }
         for _,unit in ipairs(units) do
             AH.checked_stopunit_attacks(ai, unit)
         end
