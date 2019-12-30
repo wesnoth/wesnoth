@@ -32,6 +32,11 @@
      * S5: adjust enemy recruits and gold
    * Legend of Wesmere:
      * S3: fix scenario-breaking bug introduced in 1.15.2
+   * Sceptre of Fire:
+     * General prose/dialogue revision
+     * New scenario (now the third)
+     * Various map and scenario updates
+     * Make use of rails terrain
    * Secrets of the Ancients:
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
      * Fix last breath dialog for bats firing multiple times in the campaign
