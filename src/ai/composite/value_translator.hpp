@@ -116,7 +116,13 @@ public:
 
 class leader_aspects_visitor : public boost::static_visitor<std::string> {
 public:
-	std::string operator()(const bool b) const { return utils::bool_string(b); }
+	std::string operator()(const bool b) const {
+		if (b) {
+			return "yes";
+		} else {
+			return "no";
+		}
+	}
 	std::string operator()(const std::vector<std::string> s) const { return utils::join(s); }
 };
 

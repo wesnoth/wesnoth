@@ -239,6 +239,10 @@ const std::string holder::get_ai_overview()
 	boost::variant<bool, std::vector<std::string>> lik = this->ai_->get_leader_ignores_keep();
 	boost::variant<bool, std::vector<std::string>> pl = this->ai_->get_passive_leader();
 	boost::variant<bool, std::vector<std::string>> plsk = this->ai_->get_passive_leader_shares_keep();
+	// In order to display booleans as yes/no rather than 1/0 or true/false
+	config cfg;
+	cfg["simple_targeting"] = this->ai_->get_simple_targeting();
+	cfg["support_villages"] = this->ai_->get_support_villages();
 	std::stringstream s;
 	s << "advancements:  " << this->ai_->get_advancements().get_value() << std::endl;
 	s << "aggression:  " << this->ai_->get_aggression() << std::endl;
@@ -258,8 +262,8 @@ const std::string holder::get_ai_overview()
 	s << "recruitment_save_gold:  " << std::endl << "----config begin----" << std::endl;
 	s << this->ai_->get_recruitment_save_gold() << "-----config end-----" << std::endl;
 	s << "scout_village_targeting:  " << this->ai_->get_scout_village_targeting() << std::endl;
-	s << "simple_targeting:  " << this->ai_->get_simple_targeting() << std::endl;
-	s << "support_villages:  " << this->ai_->get_support_villages() << std::endl;
+	s << "simple_targeting:  " << cfg["simple_targeting"] << std::endl;
+	s << "support_villages:  " << cfg["support_villages"] << std::endl;
 	s << "village_value:  " << this->ai_->get_village_value() << std::endl;
 	s << "villages_per_scout:  " << this->ai_->get_villages_per_scout() << std::endl;
 
