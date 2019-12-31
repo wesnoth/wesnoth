@@ -439,40 +439,11 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	if (!filter || !affect_self) return affect_self;
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
-
 bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const
 {
 	const std::string filter_tag_name = is_opp ? "filter_second_weapon" : "filter_weapon";
 	if(!cfg.has_child(filter_tag_name)) {
 		return true;
-	}
-	const config& filter_student_name= cfg.child("filter_student");
-	if(filter_student_name){
-        const config& filter_weapon_name= filter_student_name.child("filter_weapon");
-        if(filter_weapon_name && !is_opp){
-            return true;
-        }
-	}
-	const config& filter_opponent_name= cfg.child("filter_opponent");
-	if(filter_opponent_name){
-        const config& filter_weapon_name= filter_opponent_name.child("filter_weapon");
-        if(filter_weapon_name && is_opp){
-            return true;
-        }
-	}
-	const config& filter_attacker_name= cfg.child("filter_attacker");
-	if(filter_attacker_name){
-        const config& filter_weapon_name= filter_attacker_name.child("filter_weapon");
-        if(filter_weapon_name){
-            return true;
-        }
-	}
-	const config& filter_defender_name= cfg.child("filter_defender");
-	if(filter_defender_name){
-        const config& filter_weapon_name= filter_defender_name.child("filter_weapon");
-        if(filter_weapon_name){
-            return true;
-        }
 	}
 	const config& filter = cfg.child(filter_tag_name);
 	if(!weapon) {
@@ -1213,12 +1184,11 @@ unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un,
 		bool fighter_filter = ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon);
 		const std::string& active_on = (*i->first)["active_on"];
 		bool active_on_bool = !(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense"));
-		bool weapon_filter = !((*un).ability_affects_weapon(*i->first, weapon, false) && (*un).ability_affects_weapon(*i->first, opp_weapon, true));
 		if(!up &&(filter || (filter_attacker && !attacker) || (filter_defender && attacker))) {
 			return abiln;
 		}
 
-		if(active_on_bool || fighter_filter || weapon_filter || abil_affect) {
+		if(active_on_bool || fighter_filter || abil_affect) {
 			i = abil.erase(i);
 		} else {
 			++i;
