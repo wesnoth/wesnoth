@@ -439,6 +439,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	if (!filter || !affect_self) return affect_self;
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
+
 bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const
 {
 	const std::string filter_tag_name = is_opp ? "filter_second_weapon" : "filter_weapon";
@@ -1172,7 +1173,7 @@ unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un,
 		const config &filter = (*i->first).child("filter_opponent");
 		const config &filter_attacker = (*i->first).child("filter_attacker");
 		const config &filter_defender = (*i->first).child("filter_defender");
-		bool abil_affect;
+		bool abil_affect;//used for determine if abilities with special_affects_self or opponent must be erased of list
 		if(affect_self && !affect_other){
 			abil_affect = !special_affects_self((*i->first), attacker);
 		} else if(affect_other && !affect_self){
@@ -1221,17 +1222,18 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 	unit_ability_list abil_list(self_loc_);
-	if(self){
+	if(self){// leadership_affect_self/opponent are udes there for determine is special_affects_self/opponent
+		 // or none must be used in list_leadership
 		if(!other){
 			if(leadership_affects_self(ability, *self, self_loc_, is_attacker_)) {
 				abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, false);
 			}
 		}
 		if(other){
-			if(leadership_affects_self(ability, *self, self_loc_, is_attacker_)&& !leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_)) {
+			if(leadership_affects_self(ability, *self, self_loc_, is_attacker_) && !leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_)) {
 				abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, false);
 			}
-			if(leadership_affects_self(ability, *self, self_loc_, is_attacker_)&& leadership_affects_opponent(ability, *other, other_loc_, is_attacker_)) {
+			if(leadership_affects_self(ability, *self, self_loc_, is_attacker_) && leadership_affects_opponent(ability, *other, other_loc_, is_attacker_)) {
 				abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, true);
 			}
 		}
