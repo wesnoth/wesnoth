@@ -1278,6 +1278,8 @@
 		ECD39893194B830300CF2125 /* saved_game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD39891194B830300CF2125 /* saved_game.cpp */; };
 		ECD39895194B844A00CF2125 /* display_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD39894194B844A00CF2125 /* display_context.cpp */; };
 		ECD5D7BF1A22DC8600114175 /* lua_cpp_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD5D7BE1A22DC8600114175 /* lua_cpp_function.cpp */; };
+		ECDC907E23BBDFC400A07ADA /* lua_stringx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF0F80023A09929004A2011 /* lua_stringx.cpp */; };
+		ECDC907F23BBDFC900A07ADA /* lua_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF0F80223A09932004A2011 /* lua_wml.cpp */; };
 		ECDEAF72194FE84000DB2F47 /* fake_unit_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF6D194FE84000DB2F47 /* fake_unit_manager.cpp */; };
 		ECDEAF77194FEA8500DB2F47 /* syncmp_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF76194FEA8400DB2F47 /* syncmp_handler.cpp */; };
 		ECDEAF79194FEA9D00DB2F47 /* game_classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */; };
@@ -5879,6 +5881,7 @@
 				91E356FC1CACC9B200774252 /* configure_engine.cpp in Sources */,
 				91E356FD1CACC9B200774252 /* connect_engine.cpp in Sources */,
 				91E356FE1CACC9B200774252 /* create_engine.cpp in Sources */,
+				ECDC907F23BBDFC900A07ADA /* lua_wml.cpp in Sources */,
 				91E356FF1CACC9B200774252 /* depcheck.cpp in Sources */,
 				91E357001CACC9B200774252 /* flg_manager.cpp in Sources */,
 				91E357011CACC9B200774252 /* mp_game_utils.cpp in Sources */,
@@ -6063,6 +6066,7 @@
 				91A215B11CAD925D00927AEA /* hash.cpp in Sources */,
 				46B58F4421E097A80070BB8E /* parse_network_address.cpp in Sources */,
 				91A215B21CAD926900927AEA /* log.cpp in Sources */,
+				ECDC907E23BBDFC400A07ADA /* lua_stringx.cpp in Sources */,
 				91A215B31CAD926F00927AEA /* map.cpp in Sources */,
 				91A215B51CAD928C00927AEA /* mt_rng.cpp in Sources */,
 				91A215B71CAD92A100927AEA /* seed_rng.cpp in Sources */,
