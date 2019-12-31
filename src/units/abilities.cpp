@@ -1231,12 +1231,12 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	if(self){
 		if(!other){
 			if(affect_self){
-			abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, false);
+				abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, false);
 			}
 		}
 		if(other){
 			if(affect_self && !affect_opponent){
-			abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, false);
+				abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, false);
 			}
 			if(affect_self && affect_opponent) {
 				abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, true);
@@ -1251,7 +1251,7 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	if(other){
 		if(!affect_self && affect_opponent) {
 			abil_list = list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this(), false, true);
-	    }
+		}
 		if(affect_self && affect_opponent) {
 			abil_list = list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this(), true, true);
 		}
