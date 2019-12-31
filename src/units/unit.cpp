@@ -1681,9 +1681,9 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 {
 	int res = movement_type_.resistance_against(damage_name);
 
-	unit_ability_list resistance_abilities = get_abilities("resistance",loc, weapon, opp_weapon);
+	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
 	for(unit_ability_list::iterator i = resistance_abilities.begin(); i != resistance_abilities.end();) {
-		if(!resistance_filter_matches(*i->first, attacker, damage_name, 100-res)) {
+		if(!resistance_filter_matches(*i->first, attacker, damage_name, 100-res) || (!ability_affects_weapon(*i->first, weapon, false) || !ability_affects_weapon(*i->first, opp_weapon, true);)) {
 			i = resistance_abilities.erase(i);
 		} else {
 			++i;

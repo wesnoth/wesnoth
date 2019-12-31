@@ -1618,16 +1618,16 @@ public:
 	 * @param loc The location to use for resolving abilities
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type.
 	 * @param tag_name The type of ability to check for
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
+	unit_ability_list get_abilities(const std::string& tag_name) const
 	{
-		return get_abilities(tag_name, loc_, weapon, opp_weapon);
+		return get_abilities(tag_name, loc_);
 	}
 
 	/**
@@ -1677,8 +1677,8 @@ public:
 	 */
 	void remove_ability_by_id(const std::string& ability);
 
-	bool abilities_filter_matches(const config& cfg, bool attacker, int res) const;
-	bool ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc, const unit& u2) const;
+	///filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials(deprecated in two last cases)
+	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 private:
 	/**
@@ -1706,8 +1706,6 @@ private:
 	 * @param loc The location on which to resolve the ability
 	 */
 	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
-
-	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 public:
 	/** Get the unit formula manager. */
