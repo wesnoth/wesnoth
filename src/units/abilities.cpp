@@ -1222,27 +1222,31 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 	unit_ability_list abil_list(self_loc_);
-	if(self){// leadership_affect_self/opponent are udes there for determine is special_affects_self/opponent
-		 // or none must be used in list_leadership
-		if(!other){
-			if(leadership_affects_self(ability, *self, self_loc_, is_attacker_)) {
-				abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, false);
-			}
+	// leadership_affect_self/opponent are used there for determine is special_affects_self/opponent
+	// or none must be used in list_leadership
+	bool affect_self= leadership_affects_self(ability, *self, self_loc_, is_attacker_);
+	bool affect_opponent;
+	if(other){affect_opponent = leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_);}
+	if(self){
+		if((!other && affect_self) ||((other && affect_self && !affect_opponent))){
+			abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, false);
 		}
 		if(other){
-			if(leadership_affects_self(ability, *self, self_loc_, is_attacker_) && !leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_)) {
-				abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, false);
-			}
-			if(leadership_affects_self(ability, *self, self_loc_, is_attacker_) && leadership_affects_opponent(ability, *other, other_loc_, is_attacker_)) {
+			if(affect_self && affect_opponent) {
 				abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, true);
 			}
 		}
 	}
+
+	if(!other_attack_){
+		return abil_list;
+	}
+	
 	if(other){
-		if(leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_) && !leadership_affects_self(ability, *self, self_loc_, is_attacker_)) {
+		if(!affect_self && affect_opponent) {
 			abil_list = list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this(), false, true);
-		}
-		if(leadership_affects_opponent(ability, *other, other_loc_, !is_attacker_) && leadership_affects_self(ability, *self, self_loc_, is_attacker_)) {
+	    }
+		if(affect_self && affect_opponent) {
 			abil_list = list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this(), true, true);
 		}
 	}
@@ -1255,7 +1259,7 @@ unit_ability_list attack_type::get_special_ability(const std::string& ability) c
 	abil_list = list_ability(ability);
 	if(!abil_list.empty()){
 		for(const config& i : specials_.child_range(ability)) {
-			if(!get_specials(ability).empty()) {
+			if(special_active(i, AFFECT_SELF, ability)) {
 				abil_list.emplace_back(&i, self_loc_);
 			}
 		}
@@ -1265,11 +1269,11 @@ unit_ability_list attack_type::get_special_ability(const std::string& ability) c
 		}
 		
 		for(const config& i : other_attack_->specials_.child_range(ability)) {
-			if(!get_specials(ability).empty()) {
+			if(other_attack_->special_active(i, AFFECT_OTHER, ability)) {
 				abil_list.emplace_back(&i, other_loc_);
 			}
 		}
-	} else {abil_list =get_specials(ability);}
+	} else {abil_list = get_specials(ability);}
 	return abil_list;
 }
 
