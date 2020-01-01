@@ -87,6 +87,13 @@ public:
 	void emplace_back(T&&... args) { cfgs_.emplace_back(args...); }
 
 	const map_location& loc() const { return loc_; }
+
+	/// Appens the abilities from @a other to @a this, ignores other.loc()
+	void append(const unit_ability_list& other)
+	{
+		std::copy( other.begin(), other.end(), std::back_inserter(cfgs_ ));
+	}
+	
 private:
 	// Data
 	std::vector<unit_ability> cfgs_;
