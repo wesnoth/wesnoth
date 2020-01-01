@@ -89,8 +89,6 @@ public:
 	unit_ability_list get_special_ability(const std::string& ability) const;
 	///return an boolean value for abilities like poison slow firstrike or petrifies
 	bool bool_ability(const std::string& ability) const;
-	/// return leader_bonus for units affected by [leadership] ability
-	int under_leadership() const;
 
 	// In unit_types.cpp:
 
