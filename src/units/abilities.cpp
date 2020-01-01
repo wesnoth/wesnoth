@@ -1178,9 +1178,10 @@ unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un,
 			abil_affect = !special_affects_self((*i->first), attacker);
 		} else if(affect_other && !affect_self){
 			abil_affect = !special_affects_opponent((*i->first), attacker);
-		}
-		else if(affect_other && affect_self){
-			abil_affect = false;
+		} else if(attacker && affect_other && affect_self){
+			abil_affect = (attacker  &&  apply_to == "attacker");
+		} else if(!attacker && affect_other && affect_self){
+			abil_affect = (!attacker  &&  apply_to == "defender");
 		}
 		bool fighter_filter = ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon);
 		const std::string& active_on = (*i->first)["active_on"];
