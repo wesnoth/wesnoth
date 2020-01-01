@@ -1114,6 +1114,8 @@ static bool ability_filter_fighter(const std::string& ability,
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*u, loc, *u2);
 }
 
+//ability_apply_filter manages combat filters like filter_student or filter_opponent,
+//if all the conditions match the filters then list_leadership deletes all the non-matching abilities from the list.
 static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
     bool filter_opponent = ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, up, un, opp_weapon);
