@@ -1195,24 +1195,8 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 unit_ability_list attack_type::get_special_ability(const std::string& ability) const
 {
 	unit_ability_list abil_list(self_loc_);
-	abil_list = list_ability(ability);
-	if(!abil_list.empty()){
-		for(const config& i : specials_.child_range(ability)) {
-			if(special_active(i, AFFECT_SELF, ability)) {
-				abil_list.emplace_back(&i, self_loc_);
-			}
-		}
-		
-		if(!other_attack_) {
-			return abil_list;
-		}
-		
-		for(const config& i : other_attack_->specials_.child_range(ability)) {
-			if(other_attack_->special_active(i, AFFECT_OTHER, ability)) {
-				abil_list.emplace_back(&i, other_loc_);
-			}
-		}
-	} else {abil_list = get_specials(ability);}
+	abil_list = get_specials(ability);
+	abil_list.append(list_ability(ability));
 	return abil_list;
 }
 
