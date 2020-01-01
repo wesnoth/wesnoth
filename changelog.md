@@ -51,6 +51,8 @@
    * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Terrains
    * Add Stone Walls variation Catacombs (Xot) including some overlays
+   * New dwarf castle variations: Non-cave (Cf), ruined (Cfr) and snow (Cfa)
+   * New elf castle variation: snow (Cva)
    * Fixes and touchups to mushroom terrains Tb and Tf
  ### User interface
    * Moved tutorial to campaigns menu
