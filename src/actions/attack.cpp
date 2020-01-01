@@ -198,7 +198,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 
 	// Leadership bonus.
-	int leader_bonus = weapon->under_leadership();
+	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
 	if(leader_bonus != 0) {
 		damage_multiplier += leader_bonus;
 	}
@@ -1559,6 +1559,20 @@ void attack_unit_and_advance(const map_location& attacker,
 	if(defu != resources::gameboard->units().end()) {
 		advance_unit_at(advance_unit_params(defender));
 	}
+}
+
+int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
+{
+	unit_ability_list abil = u.get_abilities("leadership", loc);
+	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
+		if((!ability_affects_weapon(*i->first, weapon, false) || !ability_affects_weapon(*i->first, opp_weapon, true))) {
+			i = abil.erase(i);
+		} else {
+			++i;
+		}
+	}
+	unit_abilities::effect leader_effect(abil, 0, false);
+	return leader_effect.get_composite_value();
 }
 
 int combat_modifier(const unit_map& units,
