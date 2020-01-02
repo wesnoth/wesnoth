@@ -529,59 +529,6 @@ return {
             self.data.retreat_loc = nil
         end
 
-        ------- Village Hunt CA --------------
-        -- Give extra priority to seeking villages if we have less than our share
-        -- our share is defined as being slightly more than the total/the number of sides
-
-        function generic_rush:village_hunt_eval()
-            local villages = wesnoth.get_villages()
-
-            if not villages[1] then
-                return 0
-            end
-
-            local my_villages = wesnoth.get_villages { owner_side = wesnoth.current.side }
-
-            if #my_villages > #villages / #wesnoth.sides then
-                return 0
-            end
-
-            local allied_villages = wesnoth.get_villages { {"filter_owner", { {"ally_of", { side = wesnoth.current.side }} }} }
-            if #allied_villages == #villages then
-                return 0
-            end
-
-            local units = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)
-
-            if not units[1] then
-                return 0
-            end
-
-            return 30000
-        end
-
-        function generic_rush:village_hunt_exec()
-            local unit = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)[1]
-
-            local villages = wesnoth.get_villages()
-            local target, best_cost = nil, AH.no_path
-            for i,v in ipairs(villages) do
-                if not wesnoth.match_location(v[1], v[2], { {"filter_owner", { {"ally_of", { side = wesnoth.current.side }} }} }) then
-                    local path, cost = wesnoth.find_path(unit, v[1], v[2], { ignore_units = true, max_cost = best_cost })
-                    if cost < best_cost then
-                        target = v
-                        best_cost = cost
-                    end
-                end
-            end
-
-            if target then
-                local x, y = wesnoth.find_vacant_tile(target[1], target[2], unit)
-                local dest = AH.next_hop(unit, x, y)
-                if dest then AH.checked_move(ai, unit, dest[1], dest[2]) end
-            end
-        end
-
         return generic_rush
     end
 }
