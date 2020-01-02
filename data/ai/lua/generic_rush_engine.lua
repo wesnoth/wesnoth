@@ -578,7 +578,7 @@ return {
             if target then
                 local x, y = wesnoth.find_vacant_tile(target[1], target[2], unit)
                 local dest = AH.next_hop(unit, x, y)
-                AH.checked_move(ai, unit, dest[1], dest[2])
+                if dest then AH.checked_move(ai, unit, dest[1], dest[2]) end
             end
         end
 
