@@ -312,7 +312,17 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "leader_ignores_keep")
 	{
-		return variant(get_leader_ignores_keep());
+		boost::variant<bool, std::vector<std::string>> leader_ignores_keep = get_leader_ignores_keep();
+		if (leader_ignores_keep.which() == 0) {
+			return variant(boost::get<bool>(leader_ignores_keep));
+		} else {
+			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(leader_ignores_keep);
+			std::vector<variant> vars;
+			for(const std::string &i : strlist) {
+				vars.emplace_back(i);
+			}
+			return variant(vars);
+		}
 
 	} else if(key == "leader_value")
 	{
@@ -320,11 +330,31 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "passive_leader")
 	{
-		return variant(get_passive_leader());
+		boost::variant<bool, std::vector<std::string>> passive_leader = get_passive_leader();
+		if (passive_leader.which() == 0) {
+			return variant(boost::get<bool>(passive_leader));
+		} else {
+			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(passive_leader);
+			std::vector<variant> vars;
+			for(const std::string &i : strlist) {
+				vars.emplace_back(i);
+			}
+			return variant(vars);
+		}
 
 	} else if(key == "passive_leader_shares_keep")
 	{
-		return variant(get_passive_leader_shares_keep());
+		boost::variant<bool, std::vector<std::string>> passive_leader_shares_keep = get_passive_leader_shares_keep();
+		if (passive_leader_shares_keep.which() == 0) {
+			return variant(boost::get<bool>(passive_leader_shares_keep));
+		} else {
+			std::vector<std::string> &strlist = boost::get<std::vector<std::string>>(passive_leader_shares_keep);
+			std::vector<variant> vars;
+			for(const std::string &i : strlist) {
+				vars.emplace_back(i);
+			}
+			return variant(vars);
+		}
 
 	} else if(key == "recruitment_pattern")
 	{

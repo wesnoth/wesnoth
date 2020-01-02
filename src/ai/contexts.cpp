@@ -712,12 +712,12 @@ config readonly_context_impl::get_leader_goal() const
 }
 
 
-bool readonly_context_impl::get_leader_ignores_keep() const
+boost::variant<bool, std::vector<std::string>> readonly_context_impl::get_leader_ignores_keep() const
 {
 	if (leader_ignores_keep_) {
 		return leader_ignores_keep_->get();
 	}
-	return false;
+	return boost::variant<bool, std::vector<std::string>>();
 }
 
 
@@ -730,21 +730,21 @@ double readonly_context_impl::get_leader_value() const
 }
 
 
-bool readonly_context_impl::get_passive_leader() const
+boost::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader() const
 {
 	if (passive_leader_) {
 		return passive_leader_->get();
 	}
-	return false;
+	return boost::variant<bool, std::vector<std::string>>();
 }
 
 
-bool readonly_context_impl::get_passive_leader_shares_keep() const
+boost::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader_shares_keep() const
 {
 	if (passive_leader_shares_keep_) {
 		return passive_leader_shares_keep_->get();
 	}
-	return false;
+	return boost::variant<bool, std::vector<std::string>>();
 }
 
 
@@ -1149,7 +1149,7 @@ void readonly_context_impl::recalculate_move_maps() const
 	possible_moves_ = moves_map();
 	srcdst_ = move_map();
 	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
-	if (get_passive_leader()||get_passive_leader_shares_keep()) {
+	if (is_passive_leader("") && !is_passive_keep_sharing_leader("")) {
 		unit_map::iterator i = resources::gameboard->units().find_leader(get_side());
 		if (i.valid()) {
 			map_location loc = i->get_location();
@@ -1275,6 +1275,36 @@ bool readonly_context_impl::is_active(const std::string &time_of_day, const std:
 			return false;
 		}
 		return true;
+}
+
+bool readonly_context_impl::applies_to_leader(const boost::variant<bool, std::vector<std::string>> &aspect_value, const std::string &id) const
+{
+		if (aspect_value.which() == 0) {
+			return boost::get<bool>(aspect_value);
+		} else {
+			std::vector<std::string> aspect_ids = boost::get<std::vector<std::string>>(aspect_value);
+			for(std::vector<std::string>::const_iterator aspect_id = aspect_ids.begin(); aspect_id != aspect_ids.end() ; ++aspect_id ) {
+				if(*aspect_id == id) {
+					return true;
+				}
+			}
+		}
+		return false;
+}
+
+bool readonly_context_impl::is_keep_ignoring_leader(const std::string &id) const
+{
+		return applies_to_leader(leader_ignores_keep_->get(), id);
+}
+
+bool readonly_context_impl::is_passive_leader(const std::string &id) const
+{
+		return applies_to_leader(passive_leader_->get(), id);
+}
+
+bool readonly_context_impl::is_passive_keep_sharing_leader(const std::string &id) const
+{
+		return applies_to_leader(passive_leader_shares_keep_->get(), id);
 }
 
 } //of namespace ai

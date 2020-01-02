@@ -82,7 +82,7 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 
 		std::vector<map_location> unit_locs;
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-			if (i->side() == get_side() && i->attacks_left() && !(i->can_recruit() && get_passive_leader())) {
+			if (i->side() == get_side() && i->attacks_left() && !(i->can_recruit() && is_passive_leader(i->id()))) {
 				if (!is_allowed_attacker(*i)) {
 					continue;
 				}

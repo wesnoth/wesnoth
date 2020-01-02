@@ -84,7 +84,15 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
         }, true)
     end
 
-    if (not leaders[1]) then
+    local leader
+    for _,l in pairs(leaders) do
+        if (not AH.is_passive_leader(ai.aspects.passive_leader, l.id)) then
+            leader = l
+            break
+        end
+    end
+
+    if not leader then
         -- CA is irrelevant if no leader or the leader may have moved from another CA
         data.CS_leader, data.CS_leader_target = nil, nil
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
@@ -237,7 +245,7 @@ end
 
 function ca_castle_switch:execution(cfg, data, filter_own)
     if AH.print_exec() then AH.print_ts('   Executing castle_switch CA') end
-    if AH.show_messages() then wesnoth.wml_actions.message { speaker = leader.id, message = 'Switching castles' } end
+    if AH.show_messages() then wesnoth.wml_actions.message { speaker = data.leader.id, message = 'Switching castles' } end
 
     AH.robust_move_and_attack(ai, data.CS_leader, data.CS_leader_target, nil, { partial_move = true })
     data.CS_leader, data.CS_leader_target = nil
