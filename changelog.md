@@ -3,8 +3,11 @@
    * Experimental AI:
      * Spread poison: bug fix for units ignoring [avoid] tag
      * Castle switch: bug fix for units-on-keep check
+     * Remove village hunt CA
+     * Add ids for candidate actions
    * Fix bug crashing some AIs when units with chance-to-hit specials without id are on map
    * Fast Micro AI: fix re-adding default CAs when deleting the MAI
+   * Bottleneck Defense Micro AI: fix bug of units not participating if too far in front of the bottleneck
    * Lua AIs: several other minor behind-the-scenes bug fixes
  ### Campaigns
    * Descent into Darkness:
