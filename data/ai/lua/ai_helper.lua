@@ -1274,6 +1274,9 @@ end
 
 function ai_helper.has_ability(unit, ability, exact_match)
     -- Returns true/false depending on whether unit has the given ability type (tag name)
+
+    wesnoth.deprecated_message('ai_helper.has_ability', 3, '1.17.0', "Use unit:matches { ability_type = ability } instead.")
+
     return unit:matches { ability_type = ability }
 end
 

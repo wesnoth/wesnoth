@@ -307,7 +307,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
     for _,unit in ipairs(all_units) do
         -- Is this a healer or leadership unit?
         local is_healer = (unit.usage == "healer")
-        local has_leadership = AH.has_ability(unit, "leadership")
+        local has_leadership = unit:matches { ability_type = "leadership" }
         local on_my_territory = BD_is_my_territory:get(unit.x, unit.y)
 
         local rating = bottleneck_get_rating(unit, unit.x, unit.y, has_leadership, is_healer, on_my_territory, data)
@@ -356,7 +356,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
     local max_rating, best_unit, best_hex = 0
     for _,unit in ipairs(units) do
         local is_healer = (unit.usage == "healer")
-        local has_leadership = AH.has_ability(unit, "leadership")
+        local has_leadership = unit:matches { ability_type = "leadership" }
         local on_my_territory = BD_is_my_territory:get(unit.x, unit.y)
 
         local reach = wesnoth.find_reach(unit)
