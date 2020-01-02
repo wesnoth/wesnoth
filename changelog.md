@@ -112,7 +112,6 @@
    * Support [set/clear_variable] inside [modify_unit/side]
    * Support [variables] in [modify_side], as in [modify_unit]
    * [filter_weapon] implemented in abilities used as weapons specials to be the same as true weapons specials (implement filter_weapon in [filter_student] instead of [filter_self])
-   * [leadership] can now, like the special weapons-based abilities, use all their options (active_on = (defense, offense, both), apply_to = self, opponent, etc.) as well as their filters ([filter_student / opponent , etc.])
    * All special weapons can be used in [abilities] now (this was not the case yet for [heal_on_hit], [plague] and [swarm])
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
