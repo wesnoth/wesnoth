@@ -1127,6 +1127,10 @@ static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std
 	return false;
 }
 
+/**
+  * return an ability list if conditional matches(filters and active_on)
+  * un is the unit affected by leadership and up his opponent
+  */
 static unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon, bool affect_other)
 {
 	unit_ability_list abiln (loc);
