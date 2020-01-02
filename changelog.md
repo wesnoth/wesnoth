@@ -14,11 +14,17 @@
      * Many improvement were made to the new default CAs, to make them work correctly and consistently
        in general settings, such a taken AI aspects (aggression, attacks, [avoid], caution, ...) and unit guardian
        status into account, improved attack ratings and multi-leader functionality, and bug fixes
+   * Bottleneck Defense Micro AI:
+     * New optional parameter [filter]
+     * Fix bug of units not participating if too far in front of the bottleneck
    * Healer Support Micro AI: take unit guardian status and passive_leader aspect into account
    * New ai_helper functionality: path finding, next_hop and get_attackable_enemies taking avoid into
      account; next_hop with pre-calculated path and fanning out; new options to get_cheapest_recruit_cost
    * Add [filter_own] optional tag to all default and Experimental AI candidate actions
+   * Allow comma-separated list of ids in addition to 'yes/no' for AI aspects leader_ignores_keep,
+     passive_leader and passive_leader_shares_keep
    * Fix [leader_goal] for sides with multiple leaders
+   * Change E_NOT_REACHED_DESTINATION from error to warning
  ### Campaigns
    * An Orcish Incursion:
      * Moved to addons server
