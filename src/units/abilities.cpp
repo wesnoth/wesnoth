@@ -17,7 +17,6 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
-#include "actions/attack.hpp"
 #include "display.hpp"
 #include "display_context.hpp"
 #include "font/text_formatting.hpp"
@@ -1128,7 +1127,7 @@ static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std
 	return false;
 }
 
-unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon, bool affect_self, bool affect_other)
+static unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon, bool affect_other)
 {
 	unit_ability_list abiln (loc);
 	unit_ability_list abil = (*un).get_abilities(ability, loc);
@@ -1136,11 +1135,11 @@ unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un,
 		const config &filter = (*i->first).child("filter_opponent");
 		const config &filter_attacker = (*i->first).child("filter_attacker");
 		const config &filter_defender = (*i->first).child("filter_defender");
-		bool abil_affect;//used for determine if abilities with special_affects_self or opponent must be erased of list
-		if(affect_self && !affect_other){
-			abil_affect = !special_affects_self((*i->first), attacker);
-		} else if(affect_other && !affect_self){
+		bool abil_affect = false;//used for determine if abilities with special_affects_self or opponent must be erased of list
+		if(affect_other){
 			abil_affect = !special_affects_opponent((*i->first), attacker);
+		} else {
+			abil_affect = !special_affects_self((*i->first), attacker);
 		}
 		bool fighter_filter = !ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon);
 		const std::string& active_on = (*i->first)["active_on"];
@@ -1185,11 +1184,11 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	// leadership_affect_self/opponent are used there for determine is special_affects_self/opponent
 	// or none must be used in list_leadership
 	if(self){
-		abil_list.append(list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, true, false));
+		abil_list.append(list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, false));
 	}
 
 	if(other && other_attack_) {
-		abil_list.append(list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this(), false, true));
+		abil_list.append(list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this(), true));
 	}
 	return abil_list;
 }
