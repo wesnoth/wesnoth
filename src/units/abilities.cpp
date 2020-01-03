@@ -1132,9 +1132,6 @@ static unit_ability_list list_leadership(const std::string& ability, unit_const_
 {
 	unit_ability_list abil = (*un).get_abilities(ability, loc);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-		const config &filter = (*i->first).child("filter_opponent");
-		const config &filter_attacker = (*i->first).child("filter_attacker");
-		const config &filter_defender = (*i->first).child("filter_defender");
 		bool abil_affect = false;//used for determine if abilities with special_affects_self or opponent must be erased of list
 		if(affect_other){
 			abil_affect = !special_affects_opponent((*i->first), attacker);
@@ -1191,8 +1188,7 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 
 unit_ability_list attack_type::get_special_ability(const std::string& ability) const
 {
-	unit_ability_list abil_list(self_loc_);
-	abil_list = get_specials(ability);
+	unit_ability_list abil_list = get_specials(ability);
 	abil_list.append(list_ability(ability));
 	return abil_list;
 }
@@ -1200,8 +1196,7 @@ unit_ability_list attack_type::get_special_ability(const std::string& ability) c
 bool attack_type::bool_ability(const std::string& ability) const
 {
 	bool abil_bool = get_special_bool(ability);
-	unit_ability_list abil(self_loc_);
-	abil = list_ability(ability);
+	unit_ability_list abil = list_ability(ability);
 	if(!abil.empty()) {
 		abil_bool = true;
 	}
