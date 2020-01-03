@@ -42,11 +42,19 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     powershell "MSBuild.exe projectfiles/VC14/wesnoth.sln -p:PlatformToolset=v141 -p:Configuration=$OPT"
     BUILD_RET=$?
+
+    if [ "$BUILD_RET" != "0" ]; then
+        sqlite3 "projectfiles/VC14/$OPT/filehashes.sqlite" "update FILES set MD5 = OLD_MD5, OLD_MD5 = '-' where OLD_MD5 != '-'"
+    else
+        sqlite3 "projectfiles/VC14/$OPT/filehashes.sqlite" "update FILES set OLD_MD5 = '-' where OLD_MD5 != '-'"
+    fi
+
     if [ "$OPT" == "Release" ] && [ "$BUILD_RET" == "0" ]; then
         ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
-    else
-        exit $BUILD_RET
+        BUILD_RET=$?
     fi
+
+    exit $BUILD_RET
 else
 # additional permissions required due to flatpak's use of bubblewrap
     docker run --cap-add=ALL --privileged \
