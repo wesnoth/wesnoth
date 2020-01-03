@@ -38,6 +38,12 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     mv external-VC15 external
     cd $start
     export PATH="/c/Python36:"$PATH":/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin/amd64:$start/../external/dll"
+    if [ "$(which python3)" == "" ] || [ ! -d "../external" ]; then
+      echo "Failed to retrieve dependencies!"
+      exit 1
+    else
+      echo "Dependencies retrieved and installed!"
+    fi
 else
     if [ "$NLS" != "true" ]; then
         echo "po/" >> .dockerignore
