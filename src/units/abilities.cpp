@@ -757,7 +757,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 
 	for(const config& i : other_attack_->specials_.child_range(special)) {
 		if(other_attack_->special_active(i, AFFECT_OTHER, special)) {
-			res.emplace_back(&i, other_->get_location());
+			res.emplace_back(&i, other_loc_);
 		}
 	}
 	return res;
