@@ -1130,7 +1130,6 @@ static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std
   */
 static unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon, bool affect_other)
 {
-	unit_ability_list abiln (loc);
 	unit_ability_list abil = (*un).get_abilities(ability, loc);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const config &filter = (*i->first).child("filter_opponent");
