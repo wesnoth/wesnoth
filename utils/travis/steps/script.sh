@@ -41,14 +41,17 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     fi
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     powershell "MSBuild.exe projectfiles/VC14/wesnoth.sln -p:PlatformToolset=v141 -p:Configuration=$OPT"
-    if [ "$OPT" == "Release" ]; then
+    BUILD_RET=$?
+    if [ "$OPT" == "Release" ] && [ "$BUILD_RET" == "0" ]; then
         ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
+    else
+        exit $BUILD_RET
     fi
 else
 # additional permissions required due to flatpak's use of bubblewrap
     docker run --cap-add=ALL --privileged \
-    					 --volume "$HOME"/build-cache:/home/wesnoth-travis/build \
-    					 --volume "$HOME"/flatpak-cache:/home/wesnoth-travis/flatpak-cache \
+               --volume "$HOME"/build-cache:/home/wesnoth-travis/build \
+               --volume "$HOME"/flatpak-cache:/home/wesnoth-travis/flatpak-cache \
                --volume "$HOME"/.ccache:/root/.ccache \
                --tty wesnoth-repo:"$LTS"-"$BRANCH" \
                unbuffer ./utils/travis/docker_run.sh "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN" "$VALIDATE" "$LTS"
