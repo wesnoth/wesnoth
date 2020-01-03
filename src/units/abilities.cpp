@@ -743,7 +743,7 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 unit_ability_list attack_type::get_specials(const std::string& special) const
 {
 	//log_scope("get_specials");
-	const map_location loc = self_ ? self_->get_location() : map_location();
+	const map_location &loc = self_ ? self_->get_location() : map_location();
 	unit_ability_list res(loc);
 
 	for(const config& i : specials_.child_range(special)) {
@@ -1174,7 +1174,7 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	// Make sure they're facing each other.
 	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
-	const map_location loc = self_ ? self_->get_location() : map_location();
+	const map_location &loc = self_ ? self_->get_location() : map_location();
 	unit_ability_list abil_list(loc);
 	if(self){
 		abil_list.append(list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, false));
