@@ -1174,8 +1174,6 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 	unit_ability_list abil_list(self_loc_);
-	// leadership_affect_self/opponent are used there for determine is special_affects_self/opponent
-	// or none must be used in list_leadership
 	if(self){
 		abil_list.append(list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, false));
 	}
