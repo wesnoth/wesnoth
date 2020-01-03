@@ -54,7 +54,7 @@
     <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)\..\..\</OutDir>
     <IntDir>$(Configuration)\wesnothd\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
@@ -64,7 +64,7 @@
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)\..\..\</OutDir>
     <IntDir>$(Configuration)\wesnothd\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
