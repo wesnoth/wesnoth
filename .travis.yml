@@ -9,6 +9,8 @@ cache:
   directories:
     - $HOME/build-cache
     - $HOME/flatpak-cache
+    - $TRAVIS_BUILD_DIR/projectfiles/VC14/Debug
+    - $TRAVIS_BUILD_DIR/projectfiles/VC14/Release
 
 git:
   depth: 5
