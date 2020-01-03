@@ -1175,7 +1175,7 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 	unit_ability_list abil_list(self_loc_);
 	if(self){
-		abil_list.append(list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, false));
+		abil_list = list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, false);
 	}
 
 	if(other && other_attack_) {
