@@ -1186,8 +1186,8 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 
 unit_ability_list attack_type::get_special_ability(const std::string& ability) const
 {
-	unit_ability_list abil_list = get_specials(ability);
-	abil_list.append(list_ability(ability));
+	unit_ability_list abil_list = list_ability(ability);
+	abil_list.append(get_specials(ability));
 	return abil_list;
 }
 
