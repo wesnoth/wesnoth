@@ -1090,9 +1090,6 @@ static bool ability_filter_fighter(const std::string& ability,
 				   const_attack_ptr weapon)
 {
 	
-	if (!loc.valid()){
-		return true;
-	}
 	const config &filter = cfg.child(filter_attacker);
 	if(!filter) {
 		return true;
@@ -1148,10 +1145,6 @@ static unit_ability_list list_leadership(const std::string& ability, unit_const_
 		bool fighter_filter = !ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon);
 		const std::string& active_on = (*i->first)["active_on"];
 		bool active_on_bool = !(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense"));
-		if(!up &&(filter || (filter_attacker && !attacker) || (filter_defender && attacker))) {
-			return abiln;
-		}
-
 		if(active_on_bool || fighter_filter || abil_affect) {
 			i = abil.erase(i);
 		} else {
