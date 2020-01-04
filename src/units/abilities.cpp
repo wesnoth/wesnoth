@@ -1081,8 +1081,16 @@ namespace { // Helpers for attack_type::special_active()
 //beneficiary unit does not have a corresponding weapon
 //(defense against ranged weapons abilities for a unit that only has melee attacks)
 
-//The two functions below are used to manage filters similar to those of
-//special weapons ([filter_self] is replaced by [filter_student])
+/**
+ * returns whether @a u matches @a cfg .child( @a filter_attacker ). But also check for [filter_weapon] subtags writ the current attack context.
+ *
+ * @param[in]  ability The tagname of the ability, needed because some tagnames need special handling
+ * @param[in]  loc      The location where we assume the filtered unit to be at
+ * @param[in]  u2    the 'other unit' in the filter
+ * @param[in]  weapon used for [filter_weapon]
+*
+ * @returns true if the unit passed the filter.
+ */
 static bool ability_filter_fighter(const std::string& ability,
 				   const std::string & filter_attacker,
 				   const config& cfg, const map_location & loc,
@@ -1111,8 +1119,16 @@ static bool ability_filter_fighter(const std::string& ability,
 	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*u, loc, *u2);
 }
 
-//ability_apply_filter manages combat filters like filter_student or filter_opponent,
-//if all the conditions match the filters then list_leadership deletes all the non-matching abilities from the list.
+/**
+* checks whether a single ability passes attack related filters, in particular for example [filter_student][filter_weapon]
+ *
+ * @param[in]  un, up The units filtered(in that example un is 'self and ip 'ther' unit)
+ * @param[in]  ability The tagname of the ability, needed because some tagnames need special handling
+ * @param[in]  loc, opp_loc      The locations where we assume the filtered units un and up to be at(here loc is used)
+ * @param[in]  weapon, opp_weapon used for [filter_weapon](weapon in that example)
+*
+ * @returns true if the units passed all filters.
+ */
 static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
     bool filter_opponent = ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, up, un, opp_weapon);
@@ -1126,9 +1142,18 @@ static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std
 }
 
 /**
-  * return an ability list if conditional matches(filters and active_on)
-  * un is the unit affected by leadership and up his opponent
-  */
+ * like to un->get_abilities() this returns the active abilities on this unit. That is. abilities of this unit and abilities of adjacent units that affect this unit. Unlike un->get_abilities() this  also checks for attack related filters.
+ * @param[in]  un The current unit
+ * @param[in]  ability The tagname of the ability, for filtered the abilities type
+ * @param[in]  loc The location where we assume the un unit to be at
+ * @param[in]  up The opponent
+ * @param[in]  opp_loc The location where we assume the opponent to be at
+ * @param[in]  attacker the condition for matches 'active_on=offense/defense' and @a special_affects_self/opponent
+ * @param[in]  weapon, opp_weapon used for [filter_weapon] in @a ability_filter_fighter
+ * @param[in]  affect_other if true we will only return abilities that affect the opponent otherwise we will return abilities that affect @a un
+ *
+ * @returns an unit_ability_list containing all abilities active in the current attack context.
+ */
 static unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon, bool affect_other)
 {
 	unit_ability_list abil = (*un).get_abilities(ability, loc);
