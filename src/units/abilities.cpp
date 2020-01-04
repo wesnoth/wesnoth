@@ -1122,7 +1122,7 @@ static bool ability_filter_fighter(const std::string& ability,
 /**
 * checks whether a single ability passes attack related filters, in particular for example [filter_student][filter_weapon]
  *
- * @param[in]  un, up The units filtered(in that example un is 'self and ip 'ther' unit)
+ * @param[in]  un, up The units filtered(in that example un is 'self and up 'other' unit)
  * @param[in]  ability The tagname of the ability, needed because some tagnames need special handling
  * @param[in]  loc, opp_loc      The locations where we assume the filtered units un and up to be at(here loc is used)
  * @param[in]  weapon, opp_weapon used for [filter_weapon](weapon in that example)
