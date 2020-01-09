@@ -86,7 +86,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 	pre_show(*window_);
 
 	{ // Scope the window stack
-		cursor::setter{cursor::NORMAL};
+		cursor::setter cur{cursor::NORMAL};
 		window_stack_handler push_window_stack(window_);
 		retval_ = window_->show(restore_, auto_close_time);
 	}
