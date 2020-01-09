@@ -48,6 +48,7 @@
      * Fix last breath dialog for bats firing multiple times in the campaign
      * Fix bug of regular WC appearing in recruit list in S05 Blackwater
      * Fix special plague attack making rats when spiders are called for
+     * Fix missing portraits for Shynal
    * Tutorial:
      * Redraw S2 and reduce difficulty
  ### Editor
