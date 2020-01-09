@@ -47,6 +47,7 @@
      whether observers are allowed from whether the replay will be publicly available.
    * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
      are grayed out. (PR#4362, PR#4444, part of Issue#1282)
+   * Reworked styling of progress bars and the network transfer progress dialog.
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
