@@ -324,8 +324,8 @@ env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 
 # Some tests require at least C++11
 if "gcc" in env["TOOLS"]:
-    env.AppendUnique(CCFLAGS = Split("-Wall -Wextra -Werror=non-virtual-dtor"))
-    env.AppendUnique(CXXFLAGS = "-std=c++" + env["cxx_std"])
+    env.AppendUnique(CCFLAGS = Split("-Wall -Wextra"))
+    env.AppendUnique(CXXFLAGS = Split("-Werror=non-virtual-dtor -std=c++" + env["cxx_std"]))
 
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
