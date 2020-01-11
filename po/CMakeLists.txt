@@ -29,7 +29,6 @@ set(NORMAL_DOMAINS
 	wesnoth-tutorial
 	wesnoth-units
 	wesnoth-utbs
-	wesnoth-wov
 )
 
 # All available domains.
