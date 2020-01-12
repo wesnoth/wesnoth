@@ -43,6 +43,7 @@
      * New scenario (now the third)
      * Various map and scenario updates
      * Make use of rails terrain
+     * Dwarves can purchase runes (temporary status boosts)
    * Secrets of the Ancients:
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
      * Fix last breath dialog for bats firing multiple times in the campaign
