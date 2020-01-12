@@ -61,7 +61,7 @@ void show_unit_description(const unit &u)
 
 void show_terrain_description(const terrain_type &t)
 {
-	help::show_terrain_help(t.id(), t.hide_in_editor() || t.is_combined());
+	help::show_terrain_help(t.id(), t.hide_help());
 }
 
 void show_unit_description(const unit_type &t)
