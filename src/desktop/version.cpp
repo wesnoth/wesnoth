@@ -72,23 +72,6 @@ bool on_wine()
 
 	return GetProcAddress(ntdll, "wine_get_version") != nullptr;
 }
-
-/**
- * Tries to find out the Windows 10 release number.
- *
- * This depends on the registry having special information in it. This may or
- * may not break in the future or be faked by the application compatibility
- * layer. Take with a grain of salt.
- */
-std::string windows_release_id()
-{
-	char buf[256]{""};
-	DWORD size = sizeof(buf);
-
-	const auto res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "ReleaseId", RRF_RT_REG_SZ, nullptr, buf, &size);
-	return std::string{res == ERROR_SUCCESS ? buf : ""};
-}
-
 #endif
 
 #if defined(_X11)
@@ -258,11 +241,6 @@ std::string os_version()
 		case 1000:
 			if(v.wProductType == VER_NT_WORKSTATION) {
 				version = "10";
-				const auto& release_id = windows_release_id();
-				if(!release_id.empty()) {
-					version += ' ';
-					version += release_id;
-				}
 				break;
 			} // else fallback to default
 		default:
