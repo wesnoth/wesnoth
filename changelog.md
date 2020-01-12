@@ -36,6 +36,7 @@
    * Sun Singer and Sun Sylph: modify faerie fire colors
    * Add various new death, standing, and idle animations
  ### User interface
+   * Fixed some severe game rendering issues with SDL 2.0.10 (issue #4245).
    * Draw ellipses during draw/sheath animations (issue #1527).
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer))
