@@ -851,7 +851,7 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 
 		const terrain_type& info = tdata->get_terrain_info(t);
 
-		bool hidden = info.is_combined() || info.hide_help();
+		bool hidden = info.hide_help();
 
 		if (preferences::encountered_terrains().find(t)
 				== preferences::encountered_terrains().end() && !info.is_overlay())

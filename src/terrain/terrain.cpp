@@ -238,7 +238,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	overlay_(false),
 	combined_(true),
 	editor_default_base_(),
-	hide_help_(base.hide_help_ || overlay.hide_help_),
+	hide_help_(true),
 	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_),
 	hide_if_impassable_(base.hide_if_impassable_ || overlay.hide_if_impassable_)
 {
