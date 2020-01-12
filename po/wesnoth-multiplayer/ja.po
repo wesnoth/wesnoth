@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-09-16 08:33 UTC\n"
+"POT-Creation-Date: 2020-01-12 16:29 UTC\n"
 "PO-Revision-Date: 2018-07-11 10:25+0000\n"
 "Last-Translator: tamanegi, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -415,7 +415,10 @@ msgstr "南軍"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
-msgid "Defeat enemy leader(s)"
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:155
+#, fuzzy
+#| msgid "Defeat enemy leader(s)"
+msgid "Defeat the enemy leader"
 msgstr "全ての敵のリーダーを倒す"
 
 #. [note]
@@ -507,8 +510,6 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
 #: data/multiplayer/scenarios/4p_Clash.cfg:29
 #: data/multiplayer/scenarios/4p_Clash.cfg:51
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:30
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:43
 #: data/multiplayer/scenarios/4p_Underworld.cfg:31
@@ -541,8 +542,6 @@ msgstr "東軍"
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
 #: data/multiplayer/scenarios/4p_Clash.cfg:18
 #: data/multiplayer/scenarios/4p_Clash.cfg:40
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:17
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:56
 #: data/multiplayer/scenarios/4p_Underworld.cfg:20
@@ -1077,7 +1076,9 @@ msgid "teamname^Human"
 msgstr "人間"
 
 #. [then]
+#. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:106
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:256
 msgid "Death of your leader"
 msgstr "チームリーダーの死。"
 
@@ -1805,7 +1806,7 @@ msgstr ""
 "あなたのリーダーはこの地を争いの騒乱に巻き込むことを選んだ。"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:161
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:159
 msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
@@ -1814,7 +1815,7 @@ msgstr ""
 "れます。"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:164
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:162
 msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
@@ -1840,19 +1841,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3p — Alirok の沼地"
 
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
-#. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1947,6 +1948,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:54
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:65
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:20
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:42
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:64
@@ -1960,6 +1962,7 @@ msgstr "チーム 1"
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:43
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:76
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:31
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:53
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:75
@@ -2044,6 +2047,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:56
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:20
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:58
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:29
@@ -2059,6 +2063,7 @@ msgstr "南西軍"
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:32
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:44
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:44
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:34
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:53
@@ -2073,8 +2078,8 @@ msgstr "北東軍"
 msgid "4p — King of the Hill"
 msgstr "4p — 丘の王"
 
-#. [multiplayer]: id=multiplayer_King_of_the_Hill
 #. [multiplayer]: id=multiplayer_Siege_Castles
+#. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
@@ -2093,6 +2098,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:32
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:43
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:46
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:42
@@ -2106,6 +2112,7 @@ msgstr "南東軍"
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:21
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:54
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
@@ -2228,7 +2235,7 @@ msgstr ""
 "なので、中央以外のプレイヤーは 75 ゴルードを推奨。"
 
 #. [side]
-#: data/multiplayer/scenarios/5p_Auction-X.cfg:69
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:70
 msgid "teamname^Center"
 msgstr "中央軍"
 
@@ -2243,25 +2250,77 @@ msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "この混じりあった地形の中、5 つの軍隊が覇権を巡って戦う。"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:37
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:49
 msgid "5p — The Wilderlands"
 msgstr "5p — ワイルダーランド"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #. [multiplayer]: id=multiplayer_Crusaders_Field
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:50
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
 msgstr " 村あたり 1 ゴールドの設定を推奨。"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:50
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
 "自然のまま手つかずの荒野の巨大な地域、その地形に森林と洞窟と川と古代の要塞の"
 "廃墟が点在する。"
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:87
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Team 3"
+msgstr "チーム 1"
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:98
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Team 4"
+msgstr "チーム 1"
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:119
+#, fuzzy
+#| msgid "teamname^Center"
+msgid "teamname^Monsters"
+msgstr "中央軍"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:229
+#, fuzzy
+#| msgid "Defeat enemy leader(s)"
+msgid "Defeat all enemy leaders"
+msgstr "全ての敵のリーダーを倒す"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:246
+msgid "Defeat all monsters"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:264
+#, fuzzy
+#| msgid "Defeat enemy leader(s)"
+msgid "Defeat the enemy leaders"
+msgstr "全ての敵のリーダーを倒す"
+
+#. [objective]: condition=lose
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:269
+#, fuzzy
+#| msgid "Death of your team leaders"
+msgid "Death of all your units"
+msgstr "チームリーダーの死。"
+
+#. [note]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:274
+msgid "You cannot recruit units."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5

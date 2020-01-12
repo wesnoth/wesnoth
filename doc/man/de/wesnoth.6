@@ -420,14 +420,12 @@ Im Regelfall ist der Rückgabewert 0. Ein Rückgabewert von 1 weist auf einen
 Initialisierungsfehler (SDL, Video, Schriften, usw.) hin. Ein Rückgabewert
 von 2 deutet auf einen Fehler mit den Optionen auf der Befehlszeile hin.
 .br
-Wenn Unit Tests benutzt werden (mittels\fB\ \-u\fP) hat der Rückgabecwert eine
-andere Bedeutung. In diesem Fall bedeutet ein Rückgabewert von 0 das
-Bestehen der Test, und 1 das scheitern. Ein Rückgabewert von 3 bedeutet zwar
-ein Bestehen der Tests, jedoch ist die Datei für die Spielaufzeichnung
-kaputt. Ein Rückgabewert von 4 bedeutet dass die Tests bestehen, aber die
-Spielaufzeichnung Fehler generiert. Ein Rückgabewert von 2 kennzeichnet eine
-Zeitüberschreitung der Tests, wir allerdings nur in Zusammenhang mir der
-veralteten \fB\-\-timeout\fP Option benutzt.
+When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
+status of 0 indicates that the test passed, and 1 indicates that the test
+failed. An exit status of 3 indicates that the test passed, but produced an
+invalid replay file. An exit status of 4 indicates that the test passed, but
+the replay produced errors. These latter two are only returned if
+\fB\-\-noreplaycheck\fP is not passed.
 .
 .SH AUTOR
 .

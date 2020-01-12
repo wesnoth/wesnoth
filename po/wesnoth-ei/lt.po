@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-09-16 08:32 UTC\n"
+"POT-Creation-Date: 2020-01-12 16:28 UTC\n"
 "PO-Revision-Date: 2019-01-21 23:27+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -202,10 +202,10 @@ msgid ""
 msgstr ""
 
 #. [side]
+#. [side]: type=Dwarvish Steelclad, id=Knutan
 #. [side]: type=Lieutenant, id=Gweddry
 #. [side]: type=General, id=Konrad II
 #. [side]: type=Great Mage, id=Kaldor
-#. [side]: type=Dwarvish Steelclad, id=Knutan
 #. [side]: type=General, id=Halrad
 #. [side]: type=General, id=Halric
 #. [side]: type=General, id=Halrod
@@ -244,18 +244,22 @@ msgstr ""
 msgid "Wesnothians"
 msgstr "Vesnotiečiai"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Skraat
-#. [side]: type=Lich, id=Mal-Telnarad
+#. [side]
 #. [side]: type=Dark Sorcerer, id=Mal-Marak
 #. [side]: type=Dark Sorcerer, id=Mal-Galkar
 #. [side]: type=Death Knight, id=Ravanal-Guard
-#. [side]
-#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Necromancer, id=Mal-un-Karad
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
 #. [side]: type=Necromancer, id=Mal-un-Darak
 #. [side]: type=Necromancer, id=Mal-un-Zanrad
 #. [side]: type=Necromancer, id=Mal-un-Xadrux
-#. [side]: type=Necromancer, id=Mal-un-Karad
-#. [side]: type=Lich Lord, id=Mal-Ravanal
+#. [side]: type=Lich, id=Mal-Grekulak
+#. [side]: type=Lich, id=Mal-Xakralan
+#. [side]: type=Lich, id=Mal-Uknalu
+#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Lich, id=Mal-Telnarad
 #. [side]: type=Lich, id=Lich2
 #. [side]: type=Lich, id=Lich3
 #. [side]: type=Lich, id=Lich4
@@ -263,15 +267,11 @@ msgstr "Vesnotiečiai"
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
+#. [side]: type=Bone Knight, id=Garnad
+#. [side]: type=Lich Lord, id=Mal-Ravanal
 #. [side]: type=Dark Sorcerer, id=Mal-Sakkat
 #. [side]: type=Dark Sorcerer, id=Mal-Talar
 #. [side]: type=Lich, id=Mal-Uldhar
-#. [side]: type=Bone Knight, id=Garnad
-#. [side]: type=Lich, id=Mal-Grekulak
-#. [side]: type=Lich, id=Mal-Xakralan
-#. [side]: type=Lich, id=Mal-Uknalu
-#. [side]: type=Dark Adept, id=Mal-Tar
-#. [side]: type=Dark Sorcerer, id=Mal-Kallat
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -491,11 +491,11 @@ msgstr "Vyrai, paskui mane! Pro tunelį!"
 msgid "The Escape Tunnel"
 msgstr "Pabėgimo tunelis"
 
-#. [side]
 #. [side]: type=Troll, id=Kabak
-#. [side]: type=Ogre, id=Grug
+#. [side]
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Gryphon, id=Kraagak
+#. [side]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:43
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:68
@@ -778,8 +778,8 @@ msgstr "Sąjungininkai"
 msgid "Volas"
 msgstr "Volesas"
 
-#. [side]: type=Orcish Warrior, id=Gruga-Har
 #. [side]: type=Orcish Warlord, id=King Dra-Nak
+#. [side]: type=Orcish Warrior, id=Gruga-Har
 #. [side]: type=Orcish Nightblade, id=Bagork
 #. [side]: type=Orcish Warlord, id=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:75
@@ -1474,11 +1474,11 @@ msgstr "Du keliai"
 
 #. [side]: type=Orcish Warlord, id=Wak-Rano
 #. [side]: type=Dark Sorcerer, id=Mal-Arnai
+#. [side]
+#. [side]: type=Orcish Ruler, id=Draka-Kura
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
 #. [side]: type=Troll Warrior, id=Unhk
 #. [side]: type=Orcish Warlord, id=Ran-Lar
-#. [side]
-#. [side]: type=Orcish Ruler, id=Draka-Kura
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:60
@@ -1617,8 +1617,8 @@ msgstr ""
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:153
 msgid ""
-"Across this river lies the Northlands. If we can get there, we may be able "
-"to get some ogres to help us — but the orcs will definitely attack us before "
+"Across this river lie the Northlands. If we can get there, we may be able to "
+"get some ogres to help us — but the orcs will definitely attack us before "
 "that happens."
 msgstr ""
 
@@ -1734,7 +1734,7 @@ msgstr ""
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:121
 msgid ""
-"Across this river lies the Northland. Ogres live there, as do orcs. We "
+"Across this river lie the Northlands. Ogres live there, as do orcs. We "
 "should proceed with caution. The undead are dangerous, but the orcs may be "
 "more dangerous still."
 msgstr ""
@@ -2111,7 +2111,7 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:150
-msgid "But what happened to the people living on it?"
+msgid "But what happened to the people who lived there?"
 msgstr ""
 
 #. [message]: speaker=Dacyn
@@ -3080,8 +3080,8 @@ msgstr "Pradėsiu ruošti mūsų karius."
 msgid "The Duel"
 msgstr "Dvikova"
 
-#. [side]: type=Lich Lord, id=Mal-Ravanal
 #. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
+#. [side]: type=Lich Lord, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:339
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:29
@@ -3549,16 +3549,21 @@ msgstr ""
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
-#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:9
 msgid "shock"
 msgstr ""
 
 #. [attacks]: id=shock
-#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:10
-#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:9
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
+msgstr ""
+
+#. You can copy the translation from the wesnoth-utbs textdomain
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:21
+msgid ""
+" This unit’s melee attack can overwhelm the defenses of enemies, preventing "
+"them from retaliating as effectively."
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:15

@@ -274,8 +274,7 @@ Games”之外。在Windows下，也可以使用以“.\e”或“..\e”开头�
 和 \fBexperimental_ai\fP。
 .TP 
 \fB\-\-controller\fP\fI\ number\fP\fB:\fP\fIvalue\fP
-selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP and
-\fBnull\fP.
+选择该阵营的控制者。可选值有：\fBhuman\fP，\fBai\fP和\fBnull\fP。
 .TP 
 \fB\-\-era\fP\fI\ value\fP
 使用这个选项来选择一个时代以代替\fB默认\fP时代。所选时代由id确定。时代信息在\fBdata/multiplayer/eras.cfg\fP文件中描述。
@@ -308,9 +307,12 @@ selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP an
 .
 正常退出时的状态码为0。退出状态码1代表发生了（SDL、视频、字体等）初始化错误。退出状态码2代表命令行选项中有错误。
 .br
-运行单元测试（使用 \fB\ \-u\fP
-时），退出状态码是不同的。退出状态码0代表测试通过，而1代表测试失败。退出状态码3代表测试通过，但生成了无效的录像文件。退出状态码4代表测试通过，但录像中产生了错误。后两个状态码仅在不传入
-\fB\-\-noreplaycheck\fP 参数时才会返回。当与已废弃的 \fB\-\-timeout\fP 选项共同使用时，退出状态码2代表测试超时。
+When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
+status of 0 indicates that the test passed, and 1 indicates that the test
+failed. An exit status of 3 indicates that the test passed, but produced an
+invalid replay file. An exit status of 4 indicates that the test passed, but
+the replay produced errors. These latter two are only returned if
+\fB\-\-noreplaycheck\fP is not passed.
 .
 .SH 作者
 .

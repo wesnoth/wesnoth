@@ -398,14 +398,12 @@ Normal çıkış durumu 0'dır. 1 çıkış durumu bir (SDL, video, fontlar, vb.
 ilklendirme hatasını gösterir. 2 çıkış durumu, komut satırı seçeneklerinde
 hata olduğunu gösterir.
 .br
-Birim sınamalarını çalıştırırken (\fB\ \-u\fP ile), çıkış durumu farklıdır. 0
-çıkış durumu, sınamanın başarılı olduğunu ve 1 başarısız olduğunu
-gösterir. 3 çıkış durumu, sınamanın geçtiğini ancak geçersiz bir yeniden
-oynatma dosyası üretildiğini gösterir. 4 çıkış durumu, sınamanın geçtiğini
-ancak yeniden oynatma dosyasının hatalar ürettiğini gösterir. Bu son ikisi,
-yalnızca \fB\-\-noreplaycheck\fP kullanılmazsa döndürülür. 2 çıkış durumu,
-\fB\-\-timeout\fP seçeneğiyle kullanıldığında sınamanın zaman aşımına uğradığını
-gösterir.
+When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
+status of 0 indicates that the test passed, and 1 indicates that the test
+failed. An exit status of 3 indicates that the test passed, but produced an
+invalid replay file. An exit status of 4 indicates that the test passed, but
+the replay produced errors. These latter two are only returned if
+\fB\-\-noreplaycheck\fP is not passed.
 .
 .SH YAZAN
 .

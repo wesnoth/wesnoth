@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
+"POT-Creation-Date: 2020-01-12 16:28 UTC\n"
 "PO-Revision-Date: 2019-07-27 16:49+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -376,28 +376,28 @@ msgstr "维伦"
 msgid "T’baran"
 msgstr "特巴兰"
 
+#. [side]: type=Saurian Flanker, id=Huurgh
+#. [side]: type=Saurian Oracle, id=Shhar
+#. [side]: type=Arch Mage, id=Aquagar
+#. [side]: type=Troll Warrior, id=Trigrul
+#. [side]: type=Troll Warrior, id=Tafrul
+#. [side]
+#. [side]: type=Saurian Ambusher, id=Shurm
+#. [side]: type=Saurian Ambusher, id=Trigr
+#. [side]: type=Orcish Warlord, id=Urug-Tar
+#. [side]: type=Orcish Warlord, id=Graur-Tan
+#. [side]: type=Troll Warrior, id=Traur
+#. [side]: id=Hraurg, type=Saurian Ambusher
+#. [side]: type=Saurian Ambusher, id=Spahr
+#. [side]: type=Orcish Warlord, id=Kior-Pur
+#. [side]: type=Orcish Warlord, id=Mbiran
+#. [side]: type=Orcish Warlord, id=Tan-Durr
 #. [side]: id=Tbaran, type=Orcish Warrior
 #. [side]: id=Wrulf, type=Orcish Warrior
 #. [side]: type=Orcish Warrior, id=Qumseh
 #. [side]: type=Orcish Warrior, id=Graur-Tan
 #. [modify_side]
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#. [side]
-#. [side]: id=Hraurg, type=Saurian Ambusher
-#. [side]: type=Saurian Ambusher, id=Spahr
-#. [side]: type=Orcish Warlord, id=Urug-Tar
-#. [side]: type=Orcish Warlord, id=Graur-Tan
-#. [side]: type=Troll Warrior, id=Traur
-#. [side]: type=Saurian Ambusher, id=Shurm
-#. [side]: type=Saurian Ambusher, id=Trigr
-#. [side]: type=Saurian Flanker, id=Huurgh
-#. [side]: type=Saurian Oracle, id=Shhar
-#. [side]: type=Troll Warrior, id=Tafrul
-#. [side]: type=Arch Mage, id=Aquagar
-#. [side]: type=Troll Warrior, id=Trigrul
-#. [side]: type=Orcish Warlord, id=Kior-Pur
-#. [side]: type=Orcish Warlord, id=Mbiran
-#. [side]: type=Orcish Warlord, id=Tan-Durr
 #. [side]: type=Saurian Flanker, id=Spahr
 #. [side]: type=Saurian Flanker, id=Hgyr
 #. [side]: type=Elvish Marshal, id=Crintil
@@ -451,8 +451,8 @@ msgstr "沃若夫"
 msgid "Qumseh"
 msgstr "库姆塞"
 
-#. [side]: type=Orcish Warrior, id=Graur-Tan
 #. [side]: type=Orcish Warlord, id=Graur-Tan
+#. [side]: type=Orcish Warrior, id=Graur-Tan
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:312
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:161
 msgid "Graur-Tan"
@@ -1117,8 +1117,8 @@ msgstr "沙门"
 msgid "Trigr"
 msgstr "泰格"
 
-#. [objectives]
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:170
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:210
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:368
@@ -1794,8 +1794,8 @@ msgid ""
 "the next scenario with a preset amount."
 msgstr " 已经把剩余的全部金币放进了精灵金库。你会以预设的数量开始下一幕场景。"
 
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:574
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:41
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:51
@@ -1837,8 +1837,8 @@ msgstr " 已经把剩余的全部金币放进了精灵金库。你会以预设�
 msgid "Kalenz"
 msgstr "卡雷兹"
 
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:580
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:61
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:81
@@ -1949,9 +1949,15 @@ msgstr "厄伊索密瑟"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:46
+#, fuzzy
+#| msgid ""
+#| "Leave the Humans out of this. King Haldric has broken the treaty we "
+#| "signed with him eleven years ago, and has sent back all our emissaries. "
+#| "When he arrived on our shore he was very humble, but now his arrogance "
+#| "knows no bounds. He believes the Orcs will not dare to fight him."
 msgid ""
 "Leave the Humans out of this. King Haldric has broken the treaty we signed "
-"with him eleven years ago, and has sent back all our emissaries. When he "
+"with him eighteen years ago, and has sent back all our emissaries. When he "
 "arrived on our shore he was very humble, but now his arrogance knows no "
 "bounds. He believes the Orcs will not dare to fight him."
 msgstr ""
@@ -2481,8 +2487,8 @@ msgstr "精灵和矮人加快脚步，奔向那股浓烟……"
 msgid "Aquagar"
 msgstr "阿库阿伽"
 
-#. [side]: type=Elder Mage, id=Crelanu
 #. [part]
+#. [side]: type=Elder Mage, id=Crelanu
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:128
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:22
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:32

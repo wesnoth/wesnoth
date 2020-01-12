@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-nr\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
+"POT-Creation-Date: 2020-01-12 16:28 UTC\n"
 "PO-Revision-Date: 2012-01-02 16:43+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -762,15 +762,15 @@ msgstr ""
 "gyorsan összeszedelőzködtek, élelmet és fegyvert vettek magukhoz, majd "
 "megkezdték leereszkedésüket a barlangok sötétjébe."
 
-#. [side]: type=Troll, id=Franik
-#. [side]: type=Troll, id=Henie
-#. [side]: type=Troll, id=Knash
-#. [side]: type=Troll, id=Krog
-#. [side]: type=Troll Warrior, id=Thung
 #. [side]: type=Troll Warrior, id=Tor
 #. [side]: type=Troll Hero, id=Bor
 #. [side]: type=Troll Rocklobber, id=Oof
 #. [side]: type=Troll Hero, id=Glu
+#. [side]: type=Troll, id=Knash
+#. [side]: type=Troll, id=Krog
+#. [side]: type=Troll Warrior, id=Thung
+#. [side]: type=Troll, id=Franik
+#. [side]: type=Troll, id=Henie
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:71
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:85
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:158
@@ -793,8 +793,8 @@ msgstr "Knash"
 msgid "Krog"
 msgstr "Krog"
 
-#. [unit]: type=Dwarvish Lord, id=Hamel
 #. [side]: type=Dwarvish Lord, id=Hamel
+#. [unit]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:105
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:48
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:42
@@ -809,14 +809,14 @@ msgstr "Hamel"
 #. [side]: type=Draug, id=Herlin
 #. [side]: type=Draug, id=Fervin
 #. [side]: type=Draug, id=Hellian
+#. [side]: type=Death Knight, id=Mal Barath
+#. [side]: type=Death Knight, id=Delzath
+#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Death Knight, id=Hettel
 #. [side]: type=Death Knight, id=Tervor
 #. [side]: type=Death Knight, id=Author
 #. [side]: type=Death Knight, id=Boblin
 #. [side]: type=Death Knight, id=Antrasis
-#. [side]: type=Death Knight, id=Mal Barath
-#. [side]: type=Death Knight, id=Delzath
-#. [side]: type=Death Knight, id=Mal Tath
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:142
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:186
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:203
@@ -1210,10 +1210,10 @@ msgstr ""
 "felejcsük a régi köteléket. Légy üdvözölve az erődünkben. Jöjj, beszélj "
 "törzsfőnökünkkel, Lord Hamellal!"
 
-#. [message]: speaker=Father Morvin
-#. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Tallin
 #. [message]: speaker=unit
+#. [message]: speaker=Father Morvin
+#. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:883
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1323
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2310
@@ -1620,8 +1620,8 @@ msgstr ""
 msgid "Ahahahaha! Yes, smash the skeletons! Smash them!"
 msgstr ""
 
-#. [message]: speaker=Tallin
 #. [message]: role=Supporter
+#. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:176
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:184
 msgid "..."
@@ -1731,8 +1731,8 @@ msgid "When the party finally reached the mines, they were not disappointed."
 msgstr ""
 "Mikor a csapat végre elérte a bányákat, egyáltalán nem érte őket meglepetés."
 
-#. [side]: type=Lieutenant, id=Tallin
 #. [side]
+#. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Hamel
 #. [side]: type=Elvish Avenger, id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:29
@@ -1754,8 +1754,8 @@ msgstr ""
 msgid "Alliance"
 msgstr "Szövetség"
 
-#. [unit]: type=Ancient Lich, id=Malifor
 #. [side]: type=Ancient Lich, id=Malifor
+#. [unit]: type=Ancient Lich, id=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:49
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:53
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:249
@@ -3732,8 +3732,8 @@ msgstr ""
 "TELE KÍNNAL ÉS SZENVEDÉSSEL! NÉPED SOHA NE NYERJE EL SZABADSÁGÁT! PUSZTULJON "
 "EL MINDEN, AMI KEDVES SZÁMODRA! CSAPJON BELÉD A MÉNKŰ! LEGYEN..."
 
-#. [message]: speaker=Sister Thera
 #. [message]: speaker=Tallin
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2804
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:468
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:677
@@ -3749,8 +3749,8 @@ msgstr ""
 "NYÍLJON MEG LÁBAD ALATT A FÖLD, ÉS NYELJEN EL! HULLJON KI AZ ÖSSZES FOGAD! "
 "LÉGY RÁNCOS VÉNEMBER! LÉGY..."
 
-#. [message]: speaker=Father Morvin
 #. [message]: speaker=second_unit
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2824
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:483
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:692
@@ -4181,9 +4181,9 @@ msgstr ""
 "Úgy döntöttek, hogy Tallin emberei támadják meg az orkokat, míg Hamelék "
 "fedezik a hátukat, biztosítva a visszavonulási lehetőséget a barlangokba."
 
-#. [side]: type=Great Mage, id=Camerin
 #. [side]
 #. [side]: type=Dwarvish Lord, id=Stalrag
+#. [side]: type=Great Mage, id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:130
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:148
@@ -4334,7 +4334,7 @@ msgid "Defeat Rakshas, if you can..."
 msgstr "Legyőzöd Rakshast, ha tudod..."
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:311
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:297
 msgid ""
 "Come on, why are we just sitting here in these caves?! Have you forgotten "
 "already all these orcs have done to us! Let us spill their foul blood on the "
@@ -4344,7 +4344,7 @@ msgstr ""
 "velünk az orkok? Öntözzük meg a földet az aljasok vérével!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:330
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:314
 msgid ""
 "So! Your forces are managing to advance upon me, are they? Very impressive, "
 "but it shall do you no good. KNIGHTS!!"
@@ -4353,17 +4353,17 @@ msgstr ""
 "kását. LOVAGOK!!"
 
 #. [message]: type=Goblin Knight
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:373
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:357
 msgid "HAHAHA! GOT YOU, SUCKERS!"
 msgstr "HAHAHA, MEGSZÍVTÁTOK PANCSEREK!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:378
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:362
 msgid "CHARGE!!"
 msgstr "ROHAM!!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:383
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:367
 msgid ""
 "Oh, hell! Form up, men, back to back! Don’t let them penetrate our ranks!"
 msgstr ""
@@ -4371,44 +4371,44 @@ msgstr ""
 "sorainkat!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:388
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:372
 msgid "That’s not all, my friends. GENERALS, CALL THE RESERVES!"
 msgstr "Ez még nem minden barátocskáim. TÁBORNOKOK, HÍVJÁTOK A TARTALÉKOKAT!"
 
 #. [message]: id=Drung
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:393
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:377
 msgid "Oh yeah!"
 msgstr "Ó igen!"
 
-#. [message]: speaker=Malifor
 #. [message]: id=Poul
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:398
+#. [message]: speaker=Malifor
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:382
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:294
 msgid "HAHAHA!"
 msgstr "HAHAHA!"
 
 #. [message]: id=Drung
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:403
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:387
 msgid "You are so dead, you human vermin!"
 msgstr "Mindannyian megdöglötök emberférgek."
 
 #. [message]: id=Poul
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:408
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:392
 msgid "Oooooooh! Time to start the fun!"
 msgstr "Oooooooh! Kezdődik a műsor!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:420
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:404
 msgid "This doesn’t look good..."
 msgstr "Ez nem sok jót ígér..."
 
 #. [message]: id=Drung
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:433
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:417
 msgid "Argh! I have been slain!"
 msgstr "Argh! Levágtak!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:438
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:422
 #, fuzzy
 #| msgid ""
 #| "Killed him! Got his gold too. Lets see, hmmm, about 500 gold pieces. Not "
@@ -4421,12 +4421,12 @@ msgstr ""
 "rossz."
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:448
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:432
 msgid "They have killed one of my generals! REINFORCEMENTS!"
 msgstr "Megölték az egyik tábornokomat! ERŐSÍTÉST!"
 
 #. [message]: id=Poul
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:466
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:450
 msgid ""
 "My death will only make the Master’s punishment for you worse, you fools!"
 msgstr ""
@@ -4434,38 +4434,38 @@ msgstr ""
 "rólatok, ostobák!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:471
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:455
 msgid "Your death makes your Master’s punishment from us one step closer!"
 msgstr "A te haláloddal egy lépéssel közelebb kerülünk a mesteredhez is."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:476
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:460
 msgid "But— my my, what’s in that big pouch? 300 gold! Not bad."
 msgstr ""
 "Nahát, nahát – mi lehet ebben a nagy erszényben? 300 arany! Nem is rossz."
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:486
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:470
 msgid "You vermin will pay for that! REINFORCEMENTS!"
 msgstr "Büdös csúszómászók, ezért megfizettek! ERŐSÍTÉST!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:504
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:488
 msgid "Ahhhh! Run for your life!"
 msgstr "Ahhhh! Fussatok az életetekért!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:509
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:493
 msgid "What the... Hey, where do you think you are running off to, you coward!"
 msgstr "Mi az ... Hé, hová futsz, te gyáva!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:514
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:498
 msgid "Stop him!"
 msgstr "Állítsátok meg!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:519
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:503
 msgid ""
 "It’s too late! I am sorry, Tallin, he got away! We did not expect he would "
 "flee like a coward."
@@ -4474,7 +4474,7 @@ msgstr ""
 "mint egy gyáva nyúl!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:524
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:508
 msgid ""
 "Damn! We had the opportunity to end the war in one stroke there. Now we will "
 "have to go after him, assuming we can break this siege!"
@@ -4484,7 +4484,7 @@ msgstr ""
 "seregen!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:535
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:519
 msgid ""
 "Geez, we have been fighting them for three whole days and nights now with no "
 "end in sight. Now the fourth night is approaching, what should we do?"
@@ -4493,7 +4493,7 @@ msgstr ""
 "leszállt az éj, mit csináljunk?"
 
 #. [message]: id=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:540
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:524
 msgid ""
 "It seems hopeless to continue on like this. The orcs’ numbers are unlimited "
 "and Rakshas is very well guarded. The only possible outcome to all this is "
@@ -4503,7 +4503,7 @@ msgstr ""
 "jól őrzik. Itt csak lemészárolnak minket!"
 
 #. [message]: id=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:545
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:529
 #, fuzzy
 #| msgid ""
 #| "I propose that we retreat back into the caves and consult with the "
@@ -4513,18 +4513,18 @@ msgstr ""
 "Szerintem vonuljunk vissza a barlangokba, és tanácskozzunk a törpökkel."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:550
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:534
 msgid "I agree, Tallin, it is pointless to carry on."
 msgstr ""
 "Egyetértek Tallin, nincs értelme tovább folytatni ezt a parttalan öldöklést."
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:555
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:539
 msgid "Very well. Everyone fall back!"
 msgstr "Jól van. Mindenki vonuljon vissza!"
 
 #. [message]: id=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:560
+#: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:544
 msgid "Awwwww! Just when I was having the most fun!"
 msgstr "Óóóóó! Pont most, amikor már igazán belelendültem..."
 
@@ -4968,8 +4968,8 @@ msgstr ""
 msgid "(<i>Giggle</i>) Something like that."
 msgstr " <i>Kuncog</i>Valami olyasmit."
 
-#. [story]
 #. [message]: speaker=Tallin
+#. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:91
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:170
 msgid "(<i>Rolls eyes</i>)"
@@ -5068,8 +5068,8 @@ msgstr "Stalrag"
 msgid "Liches"
 msgstr ""
 
-#. [side]: type=Ancient Lich, id=Ro'Arthian
 #. [modify_side]
+#. [side]: type=Ancient Lich, id=Ro'Arthian
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:222
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:256
@@ -5077,8 +5077,8 @@ msgstr ""
 msgid "Ro’Arthian"
 msgstr "Ro’Arthian"
 
-#. [unit]: type=Lich, id=Ro'Sothian
 #. [modify_side]
+#. [unit]: type=Lich, id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:261
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:282
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:503
@@ -5557,10 +5557,10 @@ msgstr ""
 "Várj egy pillanatot, Tallin! Azt akarod mondani, hogy hagyjuk itt a hazánkat "
 "ezeknek a nyomorult mágusoknak?!"
 
-#. [message]: speaker=Ro'Arthian
 #. [message]: id=Ro'Sothian
-#. [message]: speaker=Eryssa
 #. [message]: speaker=Ro'Sothian
+#. [message]: speaker=Ro'Arthian
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:877
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1039
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:522
@@ -6232,14 +6232,14 @@ msgstr "Ro’Sothian elesik"
 
 #. [note]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:322
-msgid "Even if your rescue fails, you will still advance to the next scenario"
+msgid "Even if your rescue fails, you will still advance to the next scenario."
 msgstr ""
 
 #. [note]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:325
 msgid ""
 "You will win this scenario immediately upon moving onto the hex containing "
-"the Princess’s cage"
+"the Princess’s cage."
 msgstr ""
 
 #. [message]: speaker=narrator
@@ -8336,8 +8336,8 @@ msgstr "Pofa be, te gyáva féreg!"
 msgid "Help Tallin defeat the enemy leaders"
 msgstr "Segítesz Tallinnak legyőzni az ellenséges vezéreket"
 
-#. [unit]: type=Elvish Marshal, id=Hidel
 #. [unit]: id=Hidel, type=Elvish Marshal
+#. [unit]: type=Elvish Marshal, id=Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:754
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1057
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:251

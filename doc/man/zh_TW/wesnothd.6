@@ -175,53 +175,47 @@ fifo 的伺服器指令。
 on which user handler is set with the \fBuser_handler\fP key. If no
 \fB[user_handler]\fP section is present in the configuration the server will
 run without any nick registration service. All additional tables that are
-needed for the forum_user_handler to function can be found in
+needed for the \fBforum_user_handler\fP to function can be found in
 table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
-（如果user_handler=forum）資料庫伺服器的主機名
+（對於 user_handler=forum）資料庫伺服器的主機名稱
 .TP 
 \fBdb_name\fP
-（如果user_handler=forum）資料庫名
+（對於 user_handler=forum）資料庫名稱
 .TP 
 \fBdb_user\fP
-（如果user_handler=forum）資料庫登錄用戶名
+（對於 user_handler=forum）資料庫下所記錄的用戶名
 .TP 
 \fBdb_password\fP
-（如果user_handler=forum）這個用戶的密碼
+（對於 user_handler=forum）這個用戶的密碼
 .TP 
 \fBdb_users_table\fP
-（如果user_handler=forum）phpbb
+（對於 user_handler=forum）phpbb
 論壇中存放用戶資料的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
 .TP 
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually.
+（對於 user_handler = forum）wesnothd 將在其中保存其自己的有關用戶的數據列表名稱。 您必須手動建立此表單。
 .TP 
 \fBdb_game_info_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about games.
+（對於 user_handler = forum）wesnothd 將在其中保存其自己的有關遊戲的數據列表名稱。
 .TP 
 \fBdb_game_player_info_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about the players in a game.
+（對於 user_handler = forum）wesnothd 將在其中保存其自己的有關玩家在遊戲中的數據列表名稱。
 .TP 
 \fBdb_game_modification_info_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about the modifications used in a game.
+（對於 user_handler = forum）wesnothd 將在其中保存其自己的有關在遊戲中使用模組的數據列表名稱。
 .TP 
 \fBdb_user_group_table\fP
-(for user_handler=forum) The name of the table in which your phpbb forums
-saves its user group data. Most likely this will be
-<table\-prefix>_user_group (e.g. phpbb3_user_group).
+（對於 user_handler=forum）phpbb 論壇中存放用戶群組資料的表名。很可能是
+<table\-prefix>_user_group（例如 phpbb3_user_group）。
 .TP 
 \fBmp_mod_group\fP
-(for user_handler=forum) The ID of the forum group to be considered as
-having moderation authority.
+（ 對於user_handler = forum）被視為具有審核權限的論壇組的 ID。
 .TP 
 \fBuser_expiration\fP
-（如果user_handler=sample）註冊暱稱的失效時間（單位是天數）。
+（對於 user_handler=sample）註冊暱稱的失效時間（單位是天數）。
 .RE
 .P
 \fB[mail]\fP 設置一個SMTP伺服器，通過用戶處理程序可以發送郵件。目前只在樣本用戶處理程序中使用。

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-utbs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
+"POT-Creation-Date: 2020-01-12 16:29 UTC\n"
 "PO-Revision-Date: 2019-07-01 22:17+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -172,10 +172,10 @@ msgstr "Kuyenot Elfleri"
 msgid "Monsters"
 msgstr "Yaratıklar"
 
-#. [side]
 #. [side]: id=Panok, type=Direwolf Rider, type=Goblin Knight
 #. [side]: id=Turg, type=Orcish Warrior, type=Orcish Warlord
 #. [side]: id=Ug'lok, type=Orcish Warrior, type=Orcish Warlord
+#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:93
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:55
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:101
@@ -421,8 +421,8 @@ msgstr "Sevil"
 msgid "Kaleh, Nym, help us!"
 msgstr "Kaleh, Nim, bize yardım edin!"
 
-#. [message]: speaker=Nym
 #. [message]: speaker=Kaleh
+#. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:388
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:585
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:785
@@ -1159,8 +1159,8 @@ msgstr ""
 msgid "Do you remember anything about these sands?"
 msgstr "Bu kumlar hakkında bir şeyler hatırlıyor musun?"
 
-#. [unit]: type=Defeated Corrupted Quenoth Elf, id=Garak_defeated
 #. [message]: speaker=narrator
+#. [unit]: type=Defeated Corrupted Quenoth Elf, id=Garak_defeated
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:285
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1856
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2044
@@ -3475,9 +3475,9 @@ msgstr ""
 "anlaşılmaz bir şey beni buraya gelmeye zorladı fakat benden ne yapmamı "
 "istediğini bilmiyorum."
 
-#. [unit]: type=Dark Assassin1, id=Cloaked Figure
-#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #. [unit]: type=Dark Assassin3, id=Cloaked Figure
+#. [unit]: type=Dark Assassin2, id=Cloaked Figure
+#. [unit]: type=Dark Assassin1, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:933
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2405
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2407
@@ -4056,8 +4056,8 @@ msgstr ""
 "Henüz işimiz bitmemiş görünüyor. Pekala, herkes buraya! Zurg’u takip "
 "ediyoruz."
 
-#. [event]
 #. [unit]: type=Dwarvish Pathfinder, id=Grimnir
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:943
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:275
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1654
@@ -4207,9 +4207,13 @@ msgstr "Dayanın çocuklar, buraya geliyorlar!"
 
 #. [message]: speaker=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1236
+#, fuzzy
+#| msgid ""
+#| "You invade our tunnels, you slaughter our women and children, by Griknagh "
+#| "we will make you pay!"
 msgid ""
-"You invade our tunnels, you slaughter our women and children, by Griknagh we "
-"will make you pay!"
+"You invade our tunnels, you slaughter our people, by Griknagh we will make "
+"you pay!"
 msgstr ""
 "Tünellerimize izinsiz girdiniz, kadınlarımızı ve çocuklarımızı öldürdünüz. "
 "Griknaf’a göre bunu size ödeteceğiz!"
@@ -4838,10 +4842,10 @@ msgstr "Askerleriniz yerlerini aldığında duvarı uçuracağım."
 msgid "Troll Brute"
 msgstr "Zalim Trol"
 
+#. [event]
 #. [unit]: type=Troll
 #. [unit]: type=Troll Rocklobber
 #. [unit]: type=Troll Whelp
-#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:495
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:498
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:502
@@ -5410,8 +5414,8 @@ msgid "Enemies"
 msgstr "Düşmanlar"
 
 #. [side]: id=King Thurongar, type=Dwarvish Lord
-#. [side]: id=Great Leader Darmog, type=Great Troll
 #. [side]: id=Melusand, type=Mermaid Diviner
+#. [side]: id=Great Leader Darmog, type=Great Troll
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:76
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:52
@@ -10598,8 +10602,20 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1830
+#, fuzzy
+#| msgid ""
+#| "She claims to be the one who has shepherded us during his journey, but "
+#| "who protected you across the harsh sands, who fought the orcs and led you "
+#| "under the mountains, who led you out again, against all odds? I did. I "
+#| "have bled for you, every step of the way. If you will not trust me based "
+#| "on my words, then trust me based on my actions. I have done the best I "
+#| "could for my people, and I stand by my actions. I believe that the "
+#| "merfolk are our friends, as the dwarves were. I refuse to bow down to "
+#| "harsh words and threats; we elves have always been free to make our own "
+#| "choices. We are not slaves, and will not blindly follow either humans or "
+#| "some false god."
 msgid ""
-"She claims to be the one who has shepherded us during his journey, but who "
+"She claims to be the one who has shepherded us during this journey, but who "
 "protected you across the harsh sands, who fought the orcs and led you under "
 "the mountains, who led you out again, against all odds? I did. I have bled "
 "for you, every step of the way. If you will not trust me based on my words, "
@@ -10652,8 +10668,20 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1844
+#, fuzzy
+#| msgid ""
+#| "She claims to be the one who has shepherded us during his journey, but "
+#| "who protected you across the harsh sands, who fought the orcs and led you "
+#| "under the mountains, who led you out again, against all odds? I did. I "
+#| "have bled for you, every step of the way. If you will not trust me based "
+#| "on my words, then trust me based on my actions. I have done the best I "
+#| "could for my people, and I stand by my actions. I believe that the "
+#| "merfolk are our friends, as the trolls were. I refuse to bow down to "
+#| "harsh words and threats; we elves have always been free to make our own "
+#| "choices. We are not slaves, and will not blindly follow either the humans "
+#| "or some false god."
 msgid ""
-"She claims to be the one who has shepherded us during his journey, but who "
+"She claims to be the one who has shepherded us during this journey, but who "
 "protected you across the harsh sands, who fought the orcs and led you under "
 "the mountains, who led you out again, against all odds? I did. I have bled "
 "for you, every step of the way. If you will not trust me based on my words, "
@@ -14562,9 +14590,9 @@ msgstr ""
 msgid "Central Body"
 msgstr "Ana Gövde"
 
-#. [unit_type]: id=Crawling Horror, race=monster
-#. [unit_type]: id=Pulsing Spire, race=monster
 #. [unit_type]: id=Central Body Base, race=monster
+#. [unit_type]: id=Pulsing Spire, race=monster
+#. [unit_type]: id=Crawling Horror, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Minion.cfg:26
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Spire.cfg:33
@@ -14780,8 +14808,8 @@ msgid "Naga Guardian"
 msgstr "Naga Koruyucu"
 
 #. [unit_type]: id=Naga Guardian, race=naga
-#. [unit_type]: id=Naga Sentinel, race=naga
 #. [unit_type]: id=Naga Warden, race=naga
+#. [unit_type]: id=Naga Sentinel, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardian.cfg:21
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Sentinel.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Warden.cfg:21
@@ -15398,15 +15426,25 @@ msgstr "Kuyenot Amazon"
 
 #. [unit_type]: id=Quenoth Sun Singer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Faerie and elven magic have oft been aptly associated with life, from "
+#| "which they draw the majority of their power. However, with the death of "
+#| "much of Irdya’s wildlife, the Quenoth Elves were forced to seek another "
+#| "source for their sorcery. In time, they learned how to harness the power "
+#| "of the twin suns, Sela and Naia, which razed the once sprawling forests "
+#| "of Irdya to ashes, but still spring the energy that sparks all life. "
+#| "Those who master this new form of magic sing of the dual nature of these "
+#| "embodiments of fire: flames that are both life and life’s demise."
 msgid ""
 "Faerie and elven magic have oft been aptly associated with life, from which "
 "they draw the majority of their power. However, with the death of much of "
-"Irdya’s wildlife, the Quenoth Elves were forced to seek another source for "
-"their sorcery. In time, they learned how to harness the power of the twin "
-"suns, Sela and Naia, which razed the once sprawling forests of Irdya to "
-"ashes, but still spring the energy that sparks all life. Those who master "
-"this new form of magic sing of the dual nature of these embodiments of fire: "
-"flames that are both life and life’s demise."
+"Irdya’s flora, the Quenoth Elves were forced to seek another source for "
+"their sorcery. In time, they learned to harness the power of the suns Sela "
+"and Naia - the twin stars that had razed the forests of Irdya to ashes, yet "
+"still spring forth the energy required for sparking life. Those who master "
+"this new magic sing of the dual nature of these embodiments of fire: flames "
+"that are both life and life’s demise."
 msgstr ""
 "Peri ve elf büyüsü, güçlerinin çoğunluğunu aldıkları yaşamla doğrudan "
 "ilişkiliydi. Ancak, Iridya’nın vahşi hayatının çoğunun ölümü ile birlikte "
@@ -15596,11 +15634,11 @@ msgstr ""
 "şişiren rüzgar gibidir. Bu mahkumiyetin sonucu olarak bu mekanizma, "
 "efendisinin verdiği göreve sıkı sıkıya bağlı yorulmaz hizmetçiler oluşturur."
 
-#. [unit_type]: id=EGhost
-#. [unit_type]: id=ENightgaunt
 #. [unit_type]: id=EShadow
 #. [unit_type]: id=ESpectre
 #. [unit_type]: id=EWraith
+#. [unit_type]: id=ENightgaunt
+#. [unit_type]: id=EGhost
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Ghost.cfg:18
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Nightgaunt.cfg:20
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Shadow.cfg:23

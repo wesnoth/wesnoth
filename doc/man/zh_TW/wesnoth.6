@@ -279,8 +279,7 @@ https://wiki.wesnoth.org/ImagePathFunctionWML。
 "data/ai/dev"，或是模組裡的演算法。可選擇的值包含 \fBidle_ai\fP 及 \fBexperimental_ai\fP。
 .TP 
 \fB\-\-controller\fP\fI\ number\fP\fB:\fP\fIvalue\fP
-selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP and
-\fBnull\fP.
+選擇這個陣營的控制者。可選值有：\fBhuman\fP、\fBai\fP 和 \fBnull\fP。
 .TP 
 \fB\-\-era\fP\fI\ value\fP
 使用這個選項選擇一個模式來代替 \fBDefault\fP 模式。所選模式由 ID 決定。模式在 \fBdata/multiplayer/eras.cfg\fP
@@ -315,8 +314,12 @@ selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP an
 .
 正常退出時的狀態碼為0。狀態碼1代表發生了（SDL、視訊、字型等）初始化錯誤。狀態碼2代表指令行選項中有錯誤。
 .br
-當執行單位測試（使用 \fB\ \-u\fP），狀態碼會不同。狀態碼0表示通過測試，狀態碼1表示測試失敗。狀態碼3表示通過測試，但無法建立回放檔案。狀態碼4表示測試通過，但回放檔案錯誤。後兩個狀態碼只有在
-\fB\-\-noreplaycheck\fP 不通過的情況下返回。狀態碼2是測試時間逾時，當與 \fB\-\-timeout\fP 使用時才會出現。
+When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
+status of 0 indicates that the test passed, and 1 indicates that the test
+failed. An exit status of 3 indicates that the test passed, but produced an
+invalid replay file. An exit status of 4 indicates that the test passed, but
+the replay produced errors. These latter two are only returned if
+\fB\-\-noreplaycheck\fP is not passed.
 .
 .SH 作者
 .

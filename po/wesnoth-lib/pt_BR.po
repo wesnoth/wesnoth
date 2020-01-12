@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-09-16 11:33+0300\n"
+"POT-Creation-Date: 2020-01-12 13:29-0300\n"
 "PO-Revision-Date: 2019-11-04 23:51-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -3333,10 +3333,10 @@ msgstr "Procurar"
 # File: data/gui/default/window/game_load.cfg, line: 265
 # File: data/gui/default/window/mp_server_list.cfg, line: 107
 #. [toggle_button]: id=sort_0
-#. [label]: id=name
-#. [label]
 #. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
+#. [label]
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:243
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -3464,8 +3464,8 @@ msgstr "Esperando mensagens"
 # File: data/gui/default/window/message.cfg, line: 135
 # File: src/construct_dialog.cpp, line: 135
 # File: src/mapgen_dialog.cpp, line: 110
-#. [button]: id=click_dismiss
 #. [button]: id=close_window
+#. [button]: id=click_dismiss
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
@@ -3488,8 +3488,8 @@ msgstr "Fechar"
 
 #. [button]: id=type_profile
 #: data/gui/widget/unit_preview_pane.cfg:113
-#: data/gui/widget/unit_preview_pane.cfg:296
-#: data/gui/widget/unit_preview_pane.cfg:356
+#: data/gui/widget/unit_preview_pane.cfg:345
+#: data/gui/widget/unit_preview_pane.cfg:405
 #: data/gui/window/mp_faction_select.cfg:140
 msgid "Profile"
 msgstr "Perfil"
@@ -3715,14 +3715,14 @@ msgstr "Conectar"
 #: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:177
 #: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:216
 #: data/gui/window/mp_connect.cfg:173
-#: data/gui/window/mp_create_game/default_resolution.cfg:461
-#: data/gui/window/mp_create_game/small_resolution.cfg:374
-#: data/gui/window/mp_create_game/tiny_resolution.cfg:334
+#: data/gui/window/mp_create_game/default_resolution.cfg:464
+#: data/gui/window/mp_create_game/small_resolution.cfg:380
+#: data/gui/window/mp_create_game/tiny_resolution.cfg:337
 #: data/gui/window/mp_faction_select.cfg:400
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_server_list.cfg:231 data/gui/window/mp_staging.cfg:433
-#: data/gui/window/network_transmission.cfg:114
+#: data/gui/window/network_transmission.cfg:111
 #: data/gui/window/select_orb_colors.cfg:124
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
@@ -3754,7 +3754,7 @@ msgstr "Versão:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:588
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:589
 msgid "No description available."
 msgstr "Nenhuma descrição disponível."
 
@@ -4311,8 +4311,8 @@ msgstr ""
 # File: data/gui/default/window/campaign_difficulty.cfg, line: 57
 # File: data/gui/default/window/campaign_difficulty.cfg, line: 57
 # File: data/gui/default/window/campaign_difficulty.cfg, line: 57
-#. [label]: id=title
 #. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
@@ -4361,8 +4361,8 @@ msgstr "Último"
 # File: data/gui/default/window/title_screen.cfg, line: 195
 # File: data/gui/default/window/chat_log.cfg, line: 79
 # File: data/gui/default/window/title_screen.cfg, line: 195
-#. [button]: id=previous_tip
 #. [button]: id=previous_page
+#. [button]: id=previous_tip
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Anterior"
@@ -4392,8 +4392,8 @@ msgstr "Página anterior"
 # File: data/gui/default/window/editor_settings.cfg, line: 79
 # File: data/gui/default/window/editor_settings.cfg, line: 80
 # File: data/gui/default/window/title_screen.cfg, line: 210
-#. [button]: id=next_tip
 #. [button]: id=next_page
+#. [button]: id=next_tip
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Próximo"
@@ -4503,7 +4503,7 @@ msgstr "Editar Período do Dia"
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
-#: src/gui/dialogs/unit_recall.cpp:260
+#: src/gui/dialogs/unit_recall.cpp:320
 msgid "Name:"
 msgstr "Nome:"
 
@@ -5011,8 +5011,8 @@ msgstr "Escolha um gerador de mapa:"
 # File: data/gui/default/window/editor_generate_map.cfg, line: 86
 # File: data/gui/default/window/editor_generate_map.cfg, line: 87
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=settings
 #. [button]: id=random_map_settings
+#. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 #: src/gui/dialogs/multiplayer/lobby.cpp:481
@@ -5053,8 +5053,8 @@ msgstr "Novo Mapa"
 # File: src/mapgen_dialog.cpp, line: 121
 # File: data/gui/default/window/editor_new_map.cfg, line: 54
 # File: src/mapgen_dialog.cpp, line: 121
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
@@ -5067,8 +5067,8 @@ msgstr "Largura:"
 # File: src/mapgen_dialog.cpp, line: 122
 # File: data/gui/default/window/editor_new_map.cfg, line: 81
 # File: src/mapgen_dialog.cpp, line: 122
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -5416,8 +5416,8 @@ msgstr "Você realmente quer apagar este jogo?"
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 79
 # File: data/gui/default/window/game_delete.cfg, line: 80
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 79
-#. [toggle_button]: id=dont_ask_again
 #. [toggle_button]: id=do_not_show_again
+#. [toggle_button]: id=dont_ask_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
@@ -5621,8 +5621,10 @@ msgstr "Ouro"
 # File: src/mapgen_dialog.cpp, line: 125
 # File: src/mapgen_dialog.cpp, line: 125
 # File: src/mapgen_dialog.cpp, line: 125
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:76
+#: src/generators/default_map_generator.cpp:197
 msgid "Villages"
 msgstr "Aldeias"
 
@@ -5718,7 +5720,7 @@ msgstr ""
 # File: data/gui/default/window/lobby_main.cfg, line: 338
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:252
+#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:253
 msgid "Current Status"
 msgstr "Estatísticas Atuais"
 
@@ -5740,7 +5742,7 @@ msgstr "Estatísticas do Jogo"
 # File: src/hotkeys.cpp, line: 149
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:252
+#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:253
 msgid "Scenario Settings"
 msgstr "Configurações do Cenário"
 
@@ -5925,7 +5927,7 @@ msgstr "Configurações do gerador de mapa"
 #: data/gui/window/generator_settings.cfg:105
 #: data/gui/window/mp_create_game.cfg:683
 #: data/gui/window/mp_create_game/default_resolution.cfg:132
-#: data/gui/window/mp_create_game/small_resolution.cfg:147
+#: data/gui/window/mp_create_game/small_resolution.cfg:153
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:137
 msgid "Players:"
 msgstr "Jogadores:"
@@ -6074,8 +6076,8 @@ msgstr "É necessário senha para entrar"
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 # File: data/gui/default/window/lobby_main.cfg, line: 586
-#. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
+#. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:338
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -6124,16 +6126,16 @@ msgstr "Terminar Sessão"
 # File: data/gui/default/window/mp_create_game.cfg, line: 41
 # File: data/gui/default/window/lobby_main.cfg, line: 686
 # File: data/gui/default/window/mp_create_game.cfg, line: 41
+#. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:407 data/gui/window/lobby_main.cfg:573
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
-#: data/gui/window/mp_create_game/default_resolution.cfg:446
+#: data/gui/window/mp_create_game/default_resolution.cfg:449
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
-#: data/gui/window/mp_create_game/small_resolution.cfg:359
+#: data/gui/window/mp_create_game/small_resolution.cfg:365
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:47
-#: data/gui/window/mp_create_game/tiny_resolution.cfg:320
+#: data/gui/window/mp_create_game/tiny_resolution.cfg:323
 msgid "Create Game"
 msgstr "Criar Jogo"
 
@@ -6151,9 +6153,9 @@ msgstr "Criar Jogo"
 # File: src/game_preferences_display.cpp, line: 63
 # File: src/hotkeys.cpp, line: 106
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#. [label]: id=title
 #. [button]: id=show_preferences
+#. [label]: id=title
+#. [grid]
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:561
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:118
@@ -6239,15 +6241,15 @@ msgstr "Informações do Jogador — "
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
-#. [button]: id=add_friend
 #. [button]: id=add_to_friends
+#. [button]: id=add_friend
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
 msgstr "Adicionar como Amigo"
 
-#. [button]: id=add_ignored
 #. [button]: id=add_to_ignores
+#. [button]: id=add_ignored
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
@@ -6583,11 +6585,11 @@ msgstr "Quando um novo for criado"
 # File: src/hotkey_preferences_display.cpp, line: 169
 # File: src/hotkey_preferences_display.cpp, line: 169
 # File: src/hotkey_preferences_display.cpp, line: 169
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
+#. [button]: id=btn_reset_hotkeys
 #: data/gui/window/mp_alerts_options.cfg:234
-#: data/gui/window/preferences/02_hotkeys.cfg:293
+#: data/gui/window/preferences/02_hotkeys.cfg:296
 #: data/gui/window/select_orb_colors.cfg:102
 msgid "Defaults"
 msgstr "Resetar"
@@ -6859,8 +6861,8 @@ msgstr "Tempo para cada ataque, recrutamento e captura"
 # File: data/gui/default/window/editor_generate_map.cfg, line: 97
 # File: data/gui/default/window/editor_generate_map.cfg, line: 97
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=tab_label
 #. [widget]: id=label
+#. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/hotkey/hotkey_command.cpp:38
@@ -6955,6 +6957,20 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "Verificações mais rigorosas para erros de dessincronização"
 
 #
+# File: src/hotkeys.cpp, line: 91
+# File: src/hotkeys.cpp, line: 91
+# File: src/hotkeys.cpp, line: 91
+#: data/gui/window/mp_create_game.cfg:945
+#, fuzzy
+#| msgid "Save Replay"
+msgid "Private Replay"
+msgstr "Salvar Replay"
+
+#: data/gui/window/mp_create_game.cfg:945
+msgid "Whether the replay will be publicly available"
+msgstr ""
+
+#
 # File: data/gui/default/window/mp_create_game.cfg, line: 70
 # File: data/gui/default/window/mp_create_game.cfg, line: 85
 # File: data/gui/default/window/mp_create_game.cfg, line: 70
@@ -6962,7 +6978,7 @@ msgstr "Verificações mais rigorosas para erros de dessincronização"
 # File: data/gui/default/window/mp_create_game.cfg, line: 70
 # File: data/gui/default/window/mp_create_game.cfg, line: 85
 #. [label]
-#: data/gui/window/mp_create_game.cfg:957
+#: data/gui/window/mp_create_game.cfg:961
 msgid "Name of game:"
 msgstr "Nome do jogo:"
 
@@ -6974,7 +6990,7 @@ msgstr "Nome do jogo:"
 # File: data/gui/default/window/mp_create_game_set_password.cfg, line: 90
 # File: data/gui/default/window/mp_login.cfg, line: 144
 #. [label]
-#: data/gui/window/mp_create_game.cfg:990
+#: data/gui/window/mp_create_game.cfg:994
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
@@ -6985,7 +7001,7 @@ msgstr "Senha:"
 # File: data/gui/default/window/mp_create_game_set_password.cfg, line: 61
 # File: data/gui/default/window/mp_create_game_set_password.cfg, line: 61
 #. [text_box]: id=game_password
-#: data/gui/window/mp_create_game.cfg:1004
+#: data/gui/window/mp_create_game.cfg:1008
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
@@ -6998,7 +7014,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
-#: data/gui/window/mp_create_game/small_resolution.cfg:177
+#: data/gui/window/mp_create_game/small_resolution.cfg:183
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
 #: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Map size:"
@@ -7027,6 +7043,7 @@ msgstr "Gênero:"
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:176
 #: src/gui/dialogs/multiplayer/faction_select.cpp:158
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:467
 msgid "Random"
 msgstr "Aleatório"
 
@@ -7034,8 +7051,8 @@ msgstr "Aleatório"
 # File: data/gui/default/window/unit_create.cfg, line: 77
 # File: data/gui/default/window/unit_create.cfg, line: 77
 # File: data/gui/default/window/unit_create.cfg, line: 77
-#. [row]
 #. [toggle_button]: id=male_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:217
 msgid "Male"
@@ -7045,8 +7062,8 @@ msgstr "Masculino"
 # File: data/gui/default/window/unit_create.cfg, line: 87
 # File: data/gui/default/window/unit_create.cfg, line: 87
 # File: data/gui/default/window/unit_create.cfg, line: 87
-#. [row]
 #. [toggle_button]: id=female_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
@@ -7086,8 +7103,8 @@ msgstr "Posição Inicial:"
 # File: data/gui/default/window/mp_method_selection.cfg, line: 166
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 40
 # File: data/gui/default/window/mp_method_selection.cfg, line: 166
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -7219,9 +7236,9 @@ msgstr "Salvar senha localmente (encriptado)"
 # File: data/gui/default/window/title_screen.cfg, line: 258
 # File: src/gui/dialogs/game_load.cpp, line: 296
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#. [label]
 #. [widget]: id=label
+#. [label]
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
 #: src/gui/dialogs/game_load.cpp:389
@@ -7654,33 +7671,42 @@ msgstr "Ação"
 msgid "Hotkey"
 msgstr "Atalho"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
-#: data/gui/window/preferences/02_hotkeys.cfg:134
+#. Translate G as the initial letter for Game
+#: data/gui/window/preferences/02_hotkeys.cfg:135
+#: src/gui/dialogs/preferences_dialog.cpp:817
 msgid "game_hotkeys^G"
 msgstr "G"
 
 #. [toggle_button]: id=sort_2
-#: data/gui/window/preferences/02_hotkeys.cfg:135
+#: data/gui/window/preferences/02_hotkeys.cfg:136
 msgid "Available in game"
 msgstr "Disponível dentro do jogo"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
-#: data/gui/window/preferences/02_hotkeys.cfg:146
+#. Translate E as the initial letter for Editor
+#: data/gui/window/preferences/02_hotkeys.cfg:148
+#: src/gui/dialogs/preferences_dialog.cpp:818
 msgid "editor_hotkeys^E"
 msgstr "E"
 
 #. [toggle_button]: id=sort_3
-#: data/gui/window/preferences/02_hotkeys.cfg:147
+#: data/gui/window/preferences/02_hotkeys.cfg:149
 msgid "Available in editor"
 msgstr "Disponível no editor"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
-#: data/gui/window/preferences/02_hotkeys.cfg:158
+#. Translate T as the initial letter for Title Screen
+#: data/gui/window/preferences/02_hotkeys.cfg:161
+#: src/gui/dialogs/preferences_dialog.cpp:819
 msgid "titlescreen_hotkeys^T"
 msgstr "T"
 
 #. [toggle_button]: id=sort_4
-#: data/gui/window/preferences/02_hotkeys.cfg:159
+#: data/gui/window/preferences/02_hotkeys.cfg:162
 msgid "Available at main menu"
 msgstr "Disponível no menu principal"
 
@@ -7689,7 +7715,7 @@ msgstr "Disponível no menu principal"
 # File: src/hotkey_preferences_display.cpp, line: 245
 # File: src/hotkey_preferences_display.cpp, line: 245
 #. [button]: id=btn_add_hotkey
-#: data/gui/window/preferences/02_hotkeys.cfg:271
+#: data/gui/window/preferences/02_hotkeys.cfg:274
 msgid "Add Hotkey"
 msgstr "Adicionar Atalho"
 
@@ -7698,7 +7724,7 @@ msgstr "Adicionar Atalho"
 # File: src/hotkey_preferences_display.cpp, line: 246
 # File: src/hotkey_preferences_display.cpp, line: 246
 #. [button]: id=btn_clear_hotkey
-#: data/gui/window/preferences/02_hotkeys.cfg:282
+#: data/gui/window/preferences/02_hotkeys.cfg:285
 msgid "Clear Hotkey"
 msgstr "Limpar Atalho"
 
@@ -8803,24 +8829,24 @@ msgstr "Estatística"
 msgid "HP"
 msgstr "HP"
 
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr "Lvl"
 
-#. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
+#. [toggle_button]: id=sort_5
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr "XP"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_6
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
-#: src/gui/widgets/unit_preview_pane.cpp:351
-#: src/gui/widgets/unit_preview_pane.cpp:500
+#: src/gui/widgets/unit_preview_pane.cpp:364
+#: src/gui/widgets/unit_preview_pane.cpp:513
 msgid "Traits"
 msgstr "Características"
 
@@ -8839,9 +8865,14 @@ msgstr "Lista de Unidades"
 # File: src/hotkeys.cpp, line: 87
 # File: src/hotkeys.cpp, line: 87
 #. [label]: id=title
-#: data/gui/window/unit_recall.cfg:291
+#: data/gui/window/unit_recall.cfg:290
 msgid "Recall Unit"
 msgstr "Convocar unidade"
+
+#. [text_box]: id=filter_box
+#: data/gui/window/unit_recall.cfg:341
+msgid "Search for unit name, unit type name, unit level, or trait."
+msgstr ""
 
 #
 # File: src/hotkeys.cpp, line: 87
@@ -8909,7 +8940,9 @@ msgid "Details:"
 msgstr "Detalhes:"
 
 #: src/build_info.cpp:268
-msgid "feature^JPG screenshots"
+#, fuzzy
+#| msgid "feature^JPG screenshots"
+msgid "feature^JPEG screenshots"
 msgstr "Capturas de tela JPG"
 
 #: src/build_info.cpp:275
@@ -9216,7 +9249,7 @@ msgstr "O grupo linkado '$id' possui múltiplas definições."
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
 #: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:241
 #: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:313
-#: src/gui/widgets/unit_preview_pane.cpp:586
+#: src/gui/widgets/unit_preview_pane.cpp:596
 msgid "No grid defined."
 msgstr "Nenhuma grade definida."
 
@@ -9642,11 +9675,23 @@ msgstr ""
 msgid "No usable weapon"
 msgstr "Nenhuma arma usável"
 
-#: src/gui/dialogs/attack_predictions.cpp:188
+#: src/gui/dialogs/attack_predictions.cpp:189
 msgid "Defender resistance vs"
 msgstr "Resistências do defensor vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:190
+#: src/gui/dialogs/attack_predictions.cpp:191
+#, fuzzy
+#| msgid "Attacker vulnerability vs"
+msgid "Defender vulnerability vs"
+msgstr "Vulnerabilidades do atacante vs"
+
+#: src/gui/dialogs/attack_predictions.cpp:195
+#, fuzzy
+#| msgid "Defender resistance vs"
+msgid "Attacker resistance vs"
+msgstr "Resistências do defensor vs"
+
+#: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilidades do atacante vs"
 
@@ -9654,7 +9699,7 @@ msgstr "Vulnerabilidades do atacante vs"
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-#: src/gui/dialogs/campaign_selection.cpp:318
+#: src/gui/dialogs/campaign_selection.cpp:323
 #: src/gui/dialogs/multiplayer/lobby.cpp:465
 msgid "active_modifications^None"
 msgstr "Nenhum"
@@ -9943,7 +9988,7 @@ msgstr "Ocioso"
 # File: src/hotkeys.cpp, line: 423
 # File: src/hotkeys.cpp, line: 423
 # File: src/hotkeys.cpp, line: 423
-#: src/gui/dialogs/game_stats.cpp:109 src/gui/dialogs/label_settings.cpp:78
+#: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
 msgstr "Desconhecido"
 
@@ -9951,7 +9996,7 @@ msgstr "Desconhecido"
 # File: src/game_preferences_display.cpp, line: 1073
 # File: src/game_preferences_display.cpp, line: 1090
 # File: src/game_preferences_display.cpp, line: 1090
-#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
+#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
 #: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "no"
 msgstr "não"
@@ -9960,7 +10005,7 @@ msgstr "não"
 # File: src/game_preferences_display.cpp, line: 1071
 # File: src/game_preferences_display.cpp, line: 1088
 # File: src/game_preferences_display.cpp, line: 1088
-#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
+#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
 #: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "yes"
 msgstr "sim"
@@ -10339,7 +10384,7 @@ msgstr "Lado $side"
 # File: src/gui/dialogs/game_load.cpp, line: 312
 # File: src/gui/dialogs/game_load.cpp, line: 312
 # File: src/gui/dialogs/game_load.cpp, line: 312
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
 msgid "Scenarios"
 msgstr "Cenários"
 
@@ -10347,7 +10392,7 @@ msgstr "Cenários"
 # File: src/game_preferences_display.cpp, line: 186
 # File: src/game_preferences_display.cpp, line: 186
 # File: src/game_preferences_display.cpp, line: 186
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
 msgid "Multiplayer Campaigns"
 msgstr "Campanhas Multiplayer"
 
@@ -10355,7 +10400,7 @@ msgstr "Campanhas Multiplayer"
 # File: data/gui/default/window/title_screen.cfg, line: 257
 # File: data/gui/default/window/title_screen.cfg, line: 257
 # File: data/gui/default/window/title_screen.cfg, line: 257
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
 msgid "Singleplayer Campaigns"
 msgstr "Campanhas para um jogador"
 
@@ -10363,7 +10408,7 @@ msgstr "Campanhas para um jogador"
 # File: data/gui/default/window/formula_debugger.cfg, line: 94
 # File: data/gui/default/window/formula_debugger.cfg, line: 94
 # File: data/gui/default/window/formula_debugger.cfg, line: 94
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
 msgid "Custom Maps"
 msgstr "Mapas personalizados"
 
@@ -10371,7 +10416,7 @@ msgstr "Mapas personalizados"
 # File: src/gui/dialogs/game_load.cpp, line: 300
 # File: src/gui/dialogs/game_load.cpp, line: 300
 # File: src/gui/dialogs/game_load.cpp, line: 300
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:106
 msgid "Custom Scenarios"
 msgstr "Cenários Personalizados"
 
@@ -10379,52 +10424,52 @@ msgstr "Cenários Personalizados"
 # File: data/gui/default/window/editor_generate_map.cfg, line: 35
 # File: data/gui/default/window/editor_generate_map.cfg, line: 35
 # File: data/gui/default/window/editor_generate_map.cfg, line: 35
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:107
 msgid "Random Maps"
 msgstr "Mapas Aleatórios"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:179
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:180
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:181
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:182
 msgid "No games found."
 msgstr "Nenhuma partida encontrada."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:247
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:249
 msgid "No eras found."
 msgstr "Nenhuma era encontrada."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:248
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:250
 msgid "No eras found"
 msgstr "Nenhuma era encontrada"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:276
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
 msgid "Independent: Random factions assigned independently"
 msgstr "Independente: Facções aleatórias são atribuídas independentemente"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
 msgid "No Mirror: No two players will get the same faction"
 msgstr "Não espelhar: Jogadores não recebem facções idênticas"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr "Não Espelhar Aliados: Aliados não recebem facções idênticas"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:534
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:535
 msgid "No eras available for this game."
 msgstr "Nenhuma era disponível para este jogo."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:732
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:742
 msgid "number of players^$min to $max"
 msgstr "$min a $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:829
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:839
 msgid "The selected game has no sides!"
 msgstr "O jogo selecionado não possui lados!"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:895
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:905
 msgid "Choose Starting Scenario"
 msgstr "Escolha um Cenário Inicial"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:895
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:905
 msgid "Select at which point to begin this campaign."
 msgstr "Selecione onde deseja começar esta campanha."
 
@@ -10529,16 +10574,12 @@ msgstr "Nome de usuário inválido"
 msgid "Not on friends or ignore lists"
 msgstr "Não está na lista de amigos nem na lista de ignorados"
 
-#: src/gui/dialogs/preferences_dialog.cpp:816
-msgid "&#9679;"
-msgstr "&#9679;"
-
-#: src/gui/dialogs/preferences_dialog.cpp:850
-#: src/gui/dialogs/preferences_dialog.cpp:920
+#: src/gui/dialogs/preferences_dialog.cpp:853
+#: src/gui/dialogs/preferences_dialog.cpp:923
 msgid "No hotkey selected"
 msgstr "Nenhum atalho selecionado"
 
-#: src/gui/dialogs/preferences_dialog.cpp:881
+#: src/gui/dialogs/preferences_dialog.cpp:884
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -10550,7 +10591,7 @@ msgstr ""
 # File: src/hotkey_preferences_display.cpp, line: 658
 # File: src/hotkey_preferences_display.cpp, line: 658
 # File: src/hotkey_preferences_display.cpp, line: 658
-#: src/gui/dialogs/preferences_dialog.cpp:887
+#: src/gui/dialogs/preferences_dialog.cpp:890
 msgid "Reassign Hotkey"
 msgstr "Mudar Atalho"
 
@@ -10558,7 +10599,7 @@ msgstr "Mudar Atalho"
 # File: src/hotkey_preferences_display.cpp, line: 148
 # File: src/hotkey_preferences_display.cpp, line: 148
 # File: src/hotkey_preferences_display.cpp, line: 148
-#: src/gui/dialogs/preferences_dialog.cpp:904
+#: src/gui/dialogs/preferences_dialog.cpp:907
 msgid "All hotkeys have been reset to their default values."
 msgstr "Todos os Atalhos foram redefinidos para os seus valores padões."
 
@@ -10566,11 +10607,11 @@ msgstr "Todos os Atalhos foram redefinidos para os seus valores padões."
 # File: src/hotkey_preferences_display.cpp, line: 147
 # File: src/hotkey_preferences_display.cpp, line: 147
 # File: src/hotkey_preferences_display.cpp, line: 147
-#: src/gui/dialogs/preferences_dialog.cpp:904
+#: src/gui/dialogs/preferences_dialog.cpp:907
 msgid "Hotkeys Reset"
 msgstr "Resetar Atalhos"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1040
+#: src/gui/dialogs/preferences_dialog.cpp:1043
 msgid "∞"
 msgstr "∞"
 
@@ -10715,15 +10756,25 @@ msgstr "Captura de Tela"
 msgid "Choose Test"
 msgstr "Escolher Teste"
 
+#: src/gui/dialogs/unit_recall.cpp:225
+msgid ""
+"This unit cannot be recalled because you will not have enough gold at this "
+"point in your plan."
+msgstr ""
+
+#: src/gui/dialogs/unit_recall.cpp:227
+msgid "This unit cannot be recalled because you do not have enough gold."
+msgstr ""
+
 #
 # File: src/hotkeys.cpp, line: 87
 # File: src/hotkeys.cpp, line: 87
 # File: src/hotkeys.cpp, line: 87
-#: src/gui/dialogs/unit_recall.cpp:259 src/hotkey/hotkey_command.cpp:96
+#: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
 msgstr "Renomear Unidade"
 
-#: src/gui/dialogs/unit_recall.cpp:292
+#: src/gui/dialogs/unit_recall.cpp:352
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Esta unidade é leal e por isto não requer manutenção."
 
@@ -10734,8 +10785,8 @@ msgstr "Esta unidade é leal e por isto não requer manutenção."
 # File: src/hotkeys.cpp, line: 1235
 # File: src/hotkeys.cpp, line: 885
 # File: src/hotkeys.cpp, line: 1235
-#: src/gui/dialogs/unit_recall.cpp:293 src/gui/dialogs/unit_recall.cpp:298
-#: src/gui/dialogs/unit_recall.cpp:303
+#: src/gui/dialogs/unit_recall.cpp:353 src/gui/dialogs/unit_recall.cpp:358
+#: src/gui/dialogs/unit_recall.cpp:363
 msgid "Do you really want to dismiss him?"
 msgstr "Você realmente quer dispensá-lo?"
 
@@ -10746,20 +10797,20 @@ msgstr "Você realmente quer dispensá-lo?"
 # File: src/hotkeys.cpp, line: 1235
 # File: src/hotkeys.cpp, line: 885
 # File: src/hotkeys.cpp, line: 1235
-#: src/gui/dialogs/unit_recall.cpp:294 src/gui/dialogs/unit_recall.cpp:299
-#: src/gui/dialogs/unit_recall.cpp:304
+#: src/gui/dialogs/unit_recall.cpp:354 src/gui/dialogs/unit_recall.cpp:359
+#: src/gui/dialogs/unit_recall.cpp:364
 msgid "Do you really want to dismiss her?"
 msgstr "Você realmente quer dispensá-la?"
 
-#: src/gui/dialogs/unit_recall.cpp:297
+#: src/gui/dialogs/unit_recall.cpp:357
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Esta unidade é veterana, tendo evoluido ao menos uma vez."
 
-#: src/gui/dialogs/unit_recall.cpp:302
+#: src/gui/dialogs/unit_recall.cpp:362
 msgid "This unit is close to advancing a level."
 msgstr "Esta unidade está prestes a avançar de nível."
 
-#: src/gui/dialogs/unit_recall.cpp:308
+#: src/gui/dialogs/unit_recall.cpp:368
 msgid "Dismiss Unit"
 msgstr "Dispensar Unidade"
 
@@ -11034,24 +11085,24 @@ msgstr "Custo de Movimento:"
 msgid "Attacks"
 msgstr "Ataques"
 
-#: src/gui/widgets/unit_preview_pane.cpp:271
-#: src/gui/widgets/unit_preview_pane.cpp:301
-#: src/gui/widgets/unit_preview_pane.cpp:422
-#: src/gui/widgets/unit_preview_pane.cpp:453
+#: src/gui/widgets/unit_preview_pane.cpp:284
+#: src/gui/widgets/unit_preview_pane.cpp:314
+#: src/gui/widgets/unit_preview_pane.cpp:435
+#: src/gui/widgets/unit_preview_pane.cpp:466
 msgid "Lvl $lvl"
 msgstr "Lvl $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:308
 #: src/gui/widgets/unit_preview_pane.cpp:321
-#: src/gui/widgets/unit_preview_pane.cpp:461
-#: src/gui/widgets/unit_preview_pane.cpp:480
+#: src/gui/widgets/unit_preview_pane.cpp:334
+#: src/gui/widgets/unit_preview_pane.cpp:474
+#: src/gui/widgets/unit_preview_pane.cpp:493
 msgid "HP: "
 msgstr "HP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:310
-#: src/gui/widgets/unit_preview_pane.cpp:326
-#: src/gui/widgets/unit_preview_pane.cpp:463
-#: src/gui/widgets/unit_preview_pane.cpp:485
+#: src/gui/widgets/unit_preview_pane.cpp:323
+#: src/gui/widgets/unit_preview_pane.cpp:339
+#: src/gui/widgets/unit_preview_pane.cpp:476
+#: src/gui/widgets/unit_preview_pane.cpp:498
 msgid "XP: "
 msgstr "XP: "
 
@@ -11062,18 +11113,18 @@ msgstr "XP: "
 # File: data/gui/default/window/mp_create_game.cfg, line: 420
 # File: data/gui/default/window/lobby_main.cfg, line: 184
 # File: data/gui/default/window/mp_create_game.cfg, line: 420
-#: src/gui/widgets/unit_preview_pane.cpp:328
-#: src/gui/widgets/unit_preview_pane.cpp:487
+#: src/gui/widgets/unit_preview_pane.cpp:341
+#: src/gui/widgets/unit_preview_pane.cpp:500
 msgid "Experience Modifier: "
 msgstr "Modificador de experiência: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:331
-#: src/gui/widgets/unit_preview_pane.cpp:490
+#: src/gui/widgets/unit_preview_pane.cpp:344
+#: src/gui/widgets/unit_preview_pane.cpp:503
 msgid "MP: "
 msgstr "PM: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:369
-#: src/gui/widgets/unit_preview_pane.cpp:518
+#: src/gui/widgets/unit_preview_pane.cpp:382
+#: src/gui/widgets/unit_preview_pane.cpp:531
 msgid "Abilities"
 msgstr "Habilidades"
 
@@ -11722,7 +11773,9 @@ msgstr "Próximo Movimento"
 # File: src/hotkeys.cpp, line: 124
 # File: src/hotkeys.cpp, line: 124
 #: src/hotkey/hotkey_command.cpp:138
-msgid "Full Map"
+#, fuzzy
+#| msgid "Full Map"
+msgid "View: Full Map"
 msgstr "Mapa Completo"
 
 #
@@ -11730,7 +11783,9 @@ msgstr "Mapa Completo"
 # File: src/hotkeys.cpp, line: 125
 # File: src/hotkeys.cpp, line: 125
 #: src/hotkey/hotkey_command.cpp:139
-msgid "Each Team"
+#, fuzzy
+#| msgid "Each Team"
+msgid "View: Each Team"
 msgstr "Cada time"
 
 #
@@ -11738,7 +11793,9 @@ msgstr "Cada time"
 # File: data/core/terrain.cfg, line: 1686
 # File: data/core/terrain.cfg, line: 1686
 #: src/hotkey/hotkey_command.cpp:140
-msgid "Human Team"
+#, fuzzy
+#| msgid "Human Team"
+msgid "View: Human Team"
 msgstr "Time Humano"
 
 #
@@ -12857,6 +12914,9 @@ msgid ""
 msgstr ""
 "A chave '$deprecated_key' foi renomeada para '$key'. Suporte para "
 "'$deprecated_key' será removido na versão $removal_version."
+
+#~ msgid "&#9679;"
+#~ msgstr "&#9679;"
 
 #
 # File: data/gui/default/window/lobby_player_info.cfg, line: 155
