@@ -546,7 +546,11 @@ void help_text_area::draw_contents()
 						it->rect.h - i * 2
 					};
 
-					sdl::draw_rectangle(draw_rect, {0, 0, 0, 0});
+					// SDL 2.0.10's render batching changes result in the
+					// surface's clipping rectangle being overridden even if
+					// no render clipping rectangle set operaton was queued,
+					// so let's not use the render API to draw the rectangle.
+					SDL_FillRect(screen, &draw_rect, 0);
 					++dst.x;
 					++dst.y;
 				}

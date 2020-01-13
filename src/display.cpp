@@ -1830,7 +1830,25 @@ void display::draw_minimap()
 		view_h + 2
 	};
 
-	sdl::draw_rectangle(outline_rect, {255, 255, 255, 255});
+	// SDL 2.0.10's render batching changes result in the
+	// surface's clipping rectangle being overridden even if
+	// no render clipping rectangle set operaton was queued,
+	// so let's not use the render API to draw the rectangle.
+
+	const SDL_Rect outline_parts[] = {
+		// top
+		{ outline_rect.x,                      outline_rect.y,                  outline_rect.w, 1              },
+		// bottom
+		{ outline_rect.x,                      outline_rect.y + outline_rect.h, outline_rect.w, 1              },
+		// left
+		{ outline_rect.x,                      outline_rect.y,                  1,              outline_rect.h },
+		// right
+		{ outline_rect.x + outline_rect.w - 1, outline_rect.y,                  1,              outline_rect.h },
+	};
+
+	for(const auto& r : outline_parts) {
+		SDL_FillRect(screen_.getSurface(), &r, 0x00FFFFFF);
+	}
 }
 
 void display::draw_minimap_units()
@@ -1884,7 +1902,12 @@ void display::draw_minimap_units()
 				, round_double(u_h)
 		};
 
-		sdl::fill_rectangle(r, col);
+		// SDL 2.0.10's render batching changes result in the
+		// surface's clipping rectangle being overridden even if
+		// no render clipping rectangle set operaton was queued,
+		// so let's not use the render API to draw the rectangle.
+
+		SDL_FillRect(screen_.getSurface(), &r, col.to_argb_bytes());
 	}
 }
 
