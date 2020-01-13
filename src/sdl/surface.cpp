@@ -171,3 +171,21 @@ bool operator<(const surface& a, const surface& b)
 {
 	return a.get() < b.get();
 }
+
+std::ostream& operator<<(std::ostream& stream, const surface& surf)
+{
+	if(!surf.get()) {
+		stream << "<null surface>";
+	} else if(!surf->format) {
+		stream << "<invalid surface>";
+	} else {
+		stream << "{ " << surf->w << 'x' << surf->h << '@'
+			   << unsigned(surf->format->BitsPerPixel) << "bpp"
+			   << (surf->format->palette ? " indexed" : "")
+			   << " clip_rect=[" << surf->clip_rect
+			   << "] refcount=" << surf->refcount
+			   << " }";
+	}
+
+	return stream;
+}

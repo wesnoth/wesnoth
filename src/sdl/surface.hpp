@@ -18,6 +18,8 @@
 
 #include <SDL2/SDL.h>
 
+#include <ostream>
+
 class CVideo;
 
 class surface
@@ -118,6 +120,8 @@ private:
 };
 
 bool operator<(const surface& a, const surface& b);
+
+std::ostream& operator<<(std::ostream& stream, const surface& surf);
 
 struct surface_restorer
 {
