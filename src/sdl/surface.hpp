@@ -183,17 +183,24 @@ struct clip_rect_setter
 	// if r is nullptr, clip to the full size of the surface.
 	clip_rect_setter(const surface &surf, const SDL_Rect* r, bool operate = true) : surface_(surf), rect_(), operate_(operate)
 	{
-		if(operate_){
+		if(operate_ && surface_.get()){
 			SDL_GetClipRect(surface_, &rect_);
-			SDL_Rect final_rect;
-			SDL_IntersectRect(&rect_, r, &final_rect);
+			SDL_Rect final_rect = { 0, 0, 0, 0 };
+
+			if(r) {
+				SDL_IntersectRect(&rect_, r, &final_rect);
+			} else {
+				final_rect.w = surface_->w;
+				final_rect.h = surface_->h;
+			}
+
 			SDL_SetClipRect(surface_, &final_rect);
 		}
 	}
 
 	~clip_rect_setter()
 	{
-		if(operate_) {
+		if(operate_ && surface_.get()) {
 			SDL_SetClipRect(surface_, &rect_);
 		}
 	}
