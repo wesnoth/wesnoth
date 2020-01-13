@@ -343,7 +343,6 @@ class CampaignClient:
         data.append(put_dir(name, directory))
 
         packet = self.make_packet(request)
-        open("packet.dump", "wb").write(packet)
         self.send_packet(packet)
 
         response = self.read_packet()
