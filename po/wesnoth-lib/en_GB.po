@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 13:29-0300\n"
-"PO-Revision-Date: 2019-09-17 11:34+1000\n"
+"PO-Revision-Date: 2020-01-13 18:00+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -4112,14 +4112,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "Stricter checks for out-of-sync errors"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Save Replay"
+msgstr "Private Replay"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Whether the replay will be publicly available"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -5292,7 +5290,7 @@ msgstr "Recall Unit"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:341
 msgid "Search for unit name, unit type name, unit level, or trait."
-msgstr ""
+msgstr "Search for unit name, unit type name, unit level, or trait."
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
@@ -5337,10 +5335,8 @@ msgid "Details:"
 msgstr "Details:"
 
 #: src/build_info.cpp:268
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "JPG screenshots"
+msgstr "JPEG screenshots"
 
 #: src/build_info.cpp:275
 msgid "feature^Lua console completion"
@@ -5832,16 +5828,12 @@ msgid "Defender resistance vs"
 msgstr "Defender resistance vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:191
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "Attacker vulnerability vs"
+msgstr "Defender vulnerability vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:195
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "Defender resistance vs"
+msgstr "Attacker resistance vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Attacker vulnerability vs"
@@ -6510,10 +6502,12 @@ msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"This unit cannot be recalled because you will not have enough gold at this "
+"point in your plan."
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "This unit cannot be recalled because you do not have enough gold."
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -7010,22 +7004,16 @@ msgid "Next Move"
 msgstr "Next Move"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Full Map"
+msgstr "View: Full Map"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Each Team"
+msgstr "View: Each Team"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Human Team"
+msgstr "View: Human Team"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"

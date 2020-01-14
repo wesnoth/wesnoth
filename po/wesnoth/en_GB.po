@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 13:29-0300\n"
-"PO-Revision-Date: 2019-09-17 11:35+1000\n"
+"PO-Revision-Date: 2020-01-13 17:30+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -5206,14 +5206,15 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"If a unit is positioned next to healers from two allied sides, the unit will "
+"be healed on both sides’ turns. This way, a unit can be healed faster than "
+"otherwise possible."
 
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:267
-#, fuzzy
-#| msgid "<i>― Kai Laudiss, 623YW</i>"
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr "<i>― Kai Laudiss, 623YW</i>"
+msgstr "<i>― Vank of Galun’s Flight, 6YW</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5262,10 +5263,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "You do not have a leader to recruit with."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "None of your leaders are able to recruit that unit."
+msgstr "None of your leaders are able to recruit this unit."
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -6594,34 +6593,24 @@ msgid "Only available during a scenario."
 msgstr "Only available during a scenario."
 
 #: src/help/help_impl.cpp:358 src/help/help_impl.cpp:394
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "Time of day schedule:"
+msgstr "Time of Day Schedule"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Lawful units: "
+msgstr "Lawful Bonus:"
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Neutral units: "
+msgstr "Neutral Bonus:"
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Chaotic units: "
+msgstr "Chaotic Bonus:"
 
 #: src/help/help_impl.cpp:388
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "Liminal units: "
+msgstr "Liminal Bonus:"
 
 #: src/help/help_impl.cpp:389
 msgid "Schedule"
@@ -7041,72 +7030,55 @@ msgid "You have no units available to recruit."
 msgstr "You have no units available to recruit."
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "No unit recruited"
+msgstr "No unit recruited."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "Internal error. Please report this as a bug! Details:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "You cannot recruit a $unit_type_name at this time."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "You do not have enough gold to recruit that unit"
+msgstr ""
+"At this point in your plan, you will not have enough gold to recruit this "
+"unit."
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "You do not have enough gold to recruit that unit"
+msgstr "You do not have enough gold to recruit this unit."
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "You are separated from your soldiers and may not recall them"
+msgstr "You are separated from your soldiers and may not recall them."
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
-"There are no troops available to recall\n"
-"(You must have veteran survivors from a previous scenario)"
+"There are no troops available to recall.\n"
+"(You must have veteran survivors from a previous scenario.)"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "You currently can’t recall at the highlighted location"
+msgstr "You currently can't recall at the highlighted location."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "No unit recalled"
+msgstr "No unit recalled."
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "You must have at least 1 gold piece to recall a unit"
-msgstr[1] "You must have at least $cost gold pieces to recall this unit"
+msgstr[0] "You must have at least 1 gold piece to recall a unit."
+msgstr[1] "You must have at least $cost gold pieces to recall this unit."
 
 #: src/menu_events.cpp:572
 msgid "You cannot end your turn yet!"
@@ -7194,7 +7166,7 @@ msgstr "[<side> [on/off]]"
 
 #: src/menu_events.cpp:1227
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Change the in-game theme."
 
 #: src/menu_events.cpp:1229
 msgid "<side> <nickname>"
@@ -7342,12 +7314,12 @@ msgstr "Show a scenario variable."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1276
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
-msgstr "Modify a unit variable. (Only top level keys are supported.)"
+msgstr ""
+"Modify a unit variable. (Only top level keys are supported, and "
+"advances=<number>.)"
 
 #: src/menu_events.cpp:1283
 msgid "Discover all units in help."
@@ -7359,7 +7331,7 @@ msgstr "'Undiscover' all units in help."
 
 #: src/menu_events.cpp:1285
 msgid "<unit type id>"
-msgstr ""
+msgstr "<unit type id>"
 
 #: src/menu_events.cpp:1285
 msgid "Create a unit."
@@ -7375,17 +7347,15 @@ msgstr "Toggle shroud for the current player."
 
 #: src/menu_events.cpp:1288
 msgid "<amount>"
-msgstr ""
+msgstr "<amount>"
 
 #: src/menu_events.cpp:1288
 msgid "Give gold to the current player."
 msgstr "Give gold to the current player."
 
 #: src/menu_events.cpp:1289
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<nickname>"
+msgstr "<event name>"
 
 #: src/menu_events.cpp:1289
 msgid "Fire a game event."
