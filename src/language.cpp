@@ -133,6 +133,67 @@ void set_min_translation_percent(int percent) {
 	min_translation_percent = percent;
 }
 
+#ifdef _WIN32
+// Simplified translation table from unix locale symbols to win32 locale strings
+static const std::map<std::string, std::string> win32_locales_map = {
+	{ "af", "Afrikaans" },
+	{ "ang", "C" },
+	{ "ar", "Arabic" },
+	{ "bg", "Bulgarian" },
+	{ "ca", "Catalan" },
+	{ "cs", "Czech" },
+	{ "da", "Danish" },
+	{ "de", "German" },
+	{ "el", "Greek" },
+	{ "en", "English" },
+	{ "eo", "C" },
+	{ "es", "Spanish" },
+	{ "et", "Estonian" },
+	{ "eu", "Basque" },
+	{ "fi", "Finnish" },
+	{ "fr", "French" },
+	{ "fur", "C" },
+	{ "ga", "Irish_Ireland" }, // Yes, "Irish" alone does not work
+	{ "gl", "Galician" },
+	{ "he", "Hebrew" },
+	{ "hr", "Croatian" },
+	{ "hu", "Hungarian" },
+	{ "id", "Indonesian" },
+	{ "is", "Icelandic" },
+	{ "it", "Italian" },
+	{ "ja", "Japanese" },
+	{ "ko", "Korean" },
+	{ "la", "C" },
+	{ "lt", "Lithuanian" },
+	{ "lv", "Latvian" },
+	{ "mk", "Macedonian" },
+	{ "mr", "C" },
+	{ "nb", "Norwegian" },
+	{ "nl", "Dutch" },
+	{ "pl", "Polish" },
+	{ "pt", "Portuguese" },
+	{ "racv", "C" },
+	{ "ro", "Romanian" },
+	{ "ru", "Russian" },
+	{ "sk", "Slovak" },
+	{ "sl", "Slovenian" },
+	{ "sr", "Serbian" },
+	{ "sv", "Swedish" },
+	{ "tl", "Filipino" },
+	{ "tr", "Turkish" },
+	{ "uk", "Ukrainian" },
+	{ "vi", "Vietnamese" },
+	{ "zh", "Chinese" },
+};
+
+static const std::string& posix_locale_to_win32(const std::string& posix)
+{
+	auto it = win32_locales_map.find(posix);
+	return it != win32_locales_map.end() ? it->second : posix;
+}
+
+#endif
+
 static void wesnoth_setlocale(int category, const std::string& slocale,
 	std::vector<std::string> const *alternates)
 {
@@ -156,14 +217,7 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 
 #ifdef _WIN32
 	std::string win_locale(locale, 0, 2);
-	#include "language_win32.ii"
-	//if(category == LC_MESSAGES) {
-	//	SetEnvironmentVariableA("LANG", win_locale.c_str());
-	//	std::string env = "LANGUAGE=" + locale;
-	//	_putenv(env.c_str());
-	//	return;
-	//}
-	locale = win_locale;
+	locale = posix_locale_to_win32(win_locale);
 #endif
 
 	char *res = nullptr;
@@ -281,9 +335,7 @@ const language_def& get_locale()
 #if 0
 	const char* const locale = getenv("LANG");
 	#ifdef _WIN32
-	    std::string win_locale = locale
-		#include "language_win32.ii"
-		return win_locale;
+	    return posix_locale_to_win32(locale);
 	#endif
 	if(locale != nullptr && strlen(locale) >= 2) {
 		//we can't pass pointers into the string to the std::string
