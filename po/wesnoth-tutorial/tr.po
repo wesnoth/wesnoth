@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 16:29 UTC\n"
-"PO-Revision-Date: 2019-06-08 01:42+0300\n"
+"PO-Revision-Date: 2020-01-14 16:56+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -545,13 +545,6 @@ msgstr "Mizaçlar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
-#, fuzzy
-#| msgid ""
-#| "Be sure to examine the <i>traits</i> of your new recruits. They are "
-#| "listed under its race in the sidebar. Traits can subtly affect how you "
-#| "use your troops. For example, units with the <i>quick</i> trait can move "
-#| "a extra hex each turn, and units with the <i>intelligent</i> trait "
-#| "require 20% less experience to level up."
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -559,11 +552,11 @@ msgid ""
 "each turn, and units with the <i>intelligent</i> trait require 20% less "
 "experience to level up."
 msgstr ""
-"Yeni alımlarının <i>Mizaçlar</i>ına bakın. kenar çubuğunda ırkının altında "
-"listelenmişlerdir. Nitelikler askerlerini nasıl kullandığını biraz "
-"etkileyebilir. Örneğin <i>hızlı</i> mizaca sahip birimler her el bir altıgen "
-"fazla ilerleyebilirken <i>zeki</i> birimlerin terfi etmek için %20 daha az "
-"deneyim kazanması yeterlidir."
+"Yeni alımlarının <i>Mizaçlar</i>ına bakın. Kenar çubuğunda ırkının altında "
+"listelenmiştir. Mizaçlar askerlerini nasıl kullandığını biraz etkileyebilir. "
+"Örneğin <i>hızlı</i> mizaca sahip birimler her el bir altıgen fazla "
+"ilerleyebilirken <i>zeki</i> birimlerin terfi etmek için %20 daha az deneyim "
+"kazanması yeterlidir."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:826
@@ -934,7 +927,7 @@ msgstr "Galdrad’ın ölümü"
 msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
-msgstr ""
+msgstr "Birimlerinizi askere alıp bir köy ele geçirmeden eli bitiremezsiniz!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
@@ -1023,13 +1016,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the east; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1037,10 +1023,10 @@ msgid ""
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
 "Suyun koyu mavi olduğu yeri görüyor musun? Orası karşıya geçilemeyecek kadar "
-"derin demektir. Orklar doğudaki açık mavi renkli sığ bölümden yavaş yavaş "
-"karşıya geçmeye çalışabilirler. Fakat biz de onları karşı kıyıda bekleyip "
-"onları sudan çıkmadan savaşmaya zorlayacağız. Onlar su içinde telef olurken "
-"bizi orman korur."
+"derin demektir. Orklar kuzeydeki açık mavi renkli sığ bölümden yavaş yavaş "
+"karşıya geçmeye çalışabilirler. Fakat biz de karşı kıyıda bekleyip onları "
+"sudan çıkmadan savaşmaya zorlayacağız. Onlar su içinde telef olurken bizi "
+"orman korur."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:231
@@ -1170,25 +1156,21 @@ msgstr "Elf Şaman"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
-#| "friendly units around her. She also has a special attack which <i>slows</"
-#| "i> enemies, halving the damage they do for one turn."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
-"Şaman oldukça zayıf bir birimdir, ancak etrafındakileri <i>iyileştirme</i> "
-"yeteneğine sahiptir. Ayrıca düşmanları 1 el boyunca <i>yavaşlat</i>an ve "
-"daha az hasar vermelerine sebep olan özel bir saldırısı vardır."
+"Şaman etrafındakileri <i>iyileştirme</i> yeteneğine sahiptir. Ayrıca "
+"düşmanları 1 el boyunca <i>yavaşlat</i>an ve daha az hasar vermelerine sebep "
+"olan özel bir saldırısı vardır. Ancak, fiziken Savaşçı ve Okçulardan daha "
+"zayıftır, bu bakımdan onu bir çarpışmaya gönderirken dikkatli olun."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "<i>Tedavi</i> Yeteneği"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
@@ -1202,28 +1184,21 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"Her elin başında Şamanın yanında duran birimler 4 yaşam puanı kazanır. Bu "
+"bir köyün sağladığının yarısıdır. Şaman bu işlemden dolayı tecrübe kazanmaz, "
+"sadece dövüşten kazanır. Fakat terfi ettirmek yararlıdır — onun ikinci "
+"seviye terfisi olan Elf Rahip bir köye eşdeğer iyileşme sağlar.\n"
+"\n"
+"Tedavi ile ilgili ayrıntılı açıkalamayı yardım (kısayol: <b>F1</b>) altında "
+"<i>Oynanış</i> bölümünde bulabilirsiniz."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Abilities and Weapon Specials"
 msgid "Weapon Specials"
-msgstr "Yetenekler ve Silah Özellikleri"
+msgstr "Silah Özellikleri"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1236,21 +1211,21 @@ msgid ""
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Silah özellikleri bazı saldırıları daha güçlü kılan özel saldırı "
-"değiştiricileridir. Yine burada Şamanın sarmalama saldırısında Yavaşlatma "
-"özelliği var. Bu saldırı düşman üzerinde kullanıldığında 1 el boyunca "
-"düşmanın hasarını yarıya indirir. Diğer silah özelliklerinden biri de "
-"saldıran taraf fark etmeksizin ilk vuruşu o birimin yapmasını sağlayan İlk "
-"Vuruş. Diğeri de her şartta o saldırıya sabit %70 vurma olasılığı veren "
-"Sihirli özelliği.\n"
+"değiştiricileridir. Şamanın sarmalama saldırısında Yavaşlatma özelliği var. "
+"Bu saldırı düşmana isabet ettiğinde 1 el boyunca düşmanın hasarını yarıya "
+"indirir. Diğer silah özelliklerinden biri de saldıran taraf fark etmeksizin "
+"ilk vuruşu o birimin yapmasını sağlayan İlk Vuruş özelliğidir. Diğeri de her "
+"şartta o saldırıya sabit %70 isabet şansı veren Sihirli saldırı "
+"özelliğidir.\n"
 "\n"
-"Yardım kısmında yetenekler, silah özellikleri ve mizaçların tam listesi "
-"bulunur."
+"Yardım (kısayol: <b>F1</b>) kısmında yetenekler, silah özellikleri ve "
+"mizaçların tam listesi bulunur."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Multiple Healers"
-msgstr ""
+msgstr "Çok Sayıda Şifacı"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1264,6 +1239,13 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"Şimdi iki şifacınız var. Ancak, her birim tek bir şifacıdan şifa alabilir — "
+"bir birim iki şamanın da yanında duruyor olsa bile sadece 4 yaşam puanı "
+"iyileşebilir.\n"
+"\n"
+"Şamanlar terfi edip Rahip olduklarında yanlarındaki birimleri her el 8 yaşam "
+"puanı iyileştirebilir. Birden fazla şifacının yanında duran bir birim en "
+"kıdemli şifacıdan şifa alır."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1274,18 +1256,21 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"Şimdi iki şifacınız var. Şamanınızın 4YP şifasına karşılık Rahip 8YP şifa "
+"verir. Ancak, her birim tek bir şifacıdan şifa alabilir — birden fazla "
+"şifacının yanında duran bir birim en kıdemli şifacıdan şifa alır."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
 msgid "Healers and Villages"
-msgstr ""
+msgstr "Şifacılar ve Köyler"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:384
 msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
-msgstr ""
+msgstr "Köydeki bir birim yanındaki şifacılardan değil, köyden şifa alır."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
@@ -1295,6 +1280,11 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"Birden fazla şifacı birbirlerini iyileştirmelerini sağlamaktan başka savaş "
+"alanının farklı yerlerinde de faydalı olabilirler. Bir taktik hareket "
+"olanağı da vardır— dinlenme halinde elde edilen 2 yaşam puanı diğer "
+"kaynaklardan elde edilen şifaya eklendiğinden yaralıyı şifacıya değil "
+"şifacıyı yaralıya götürmek daha iyidir."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:403
@@ -1343,28 +1333,22 @@ msgstr "Bir köyü ele geçir"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:448
-#, fuzzy
-#| msgid "Capture a village"
 msgid "You still have to capture a village!"
-msgstr "Bir köyü ele geçir"
+msgstr "Hala bir köyü ele geçirmek zorundasınız!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:479
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things if you make a "
-#| "mistake."
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"Unutmayın, hata yaparsanız çoğu hareketi <b>u</b> tuşuna basarak geri "
-"alabilirsiniz."
+"Asker almayı unuttunuz! Son hareketinizi geri almak için <b>u</b> tuşuna "
+"basabilirsiniz."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "Hala asker almak zorundasınız!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:490
@@ -1415,14 +1399,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:568
-#, fuzzy
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"*Hoop!\n"
-"Yanlış yere gittiniz! Bu iletiden sonra hareketi geri almak için ‘U’ tuşuna "
-"basıp tekrar deneyin."
+"Bir köy ele geçirmeyi unuttunuz! Son hareketinizi geri almak için <b>u</b> "
+"tuşuna basabilirsiniz."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:588
@@ -1572,7 +1554,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "Öğretici o kadar zor değil"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:714
@@ -1583,6 +1565,11 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"Adadaki orkun aynı anda birkaç elf tarafından saldırıya uğrayabilmesi için "
+"köprünün üzerinden geçmesi gerekiyordu. Orku savunmada bırakarak senaryoyu "
+"daha da zorlaştıracak bir şey betiği bozdu.\n"
+"\n"
+"Lütfen bu hatayı bildirin."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:727
@@ -1652,11 +1639,6 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:779
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
@@ -1668,30 +1650,21 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:784
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Eğer Şamanlarından biri yaralı birimlerin hemen arkasında durursa onları her "
-"elin başlangıcında 4 puan iyileştirir."
+"Eğer Şamanlardan biri hemen arkanızda durursa her elin başlangıcında sizi 4 "
+"puan iyileştirir."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:790
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
 "closer for next turn."
 msgstr ""
-"Umarım İzbandudu bu el öldüremezsem birimlerim karşı saldırıya dayanır! Daha "
+"İzbandudu bu el öldüremezsem umarım birimlerim karşı saldırıya dayanır! Daha "
 "fazla köy ele geçirmeye çalışmak ve herkesi sonraki el hedefe yaklaştırmak "
 "daha iyi olacak."
 
@@ -1776,19 +1749,14 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it next turn! "
-#| "Move a unit into the village to stop the orcs capturing it. Whichever "
-#| "unit you choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"Adadaki köyü ele geçirmemiz lazım, yoksa gelecek el onlar ele geçirecek! "
-"Orkların köyü almasını engellemek için bir birimi köye götürün. Seçtiğiniz "
-"birim köyün iyileştirme özelliğinden de yararlanacaktır."
+"Adadaki köyü ele geçirmemiz lazım, yoksa onlar ele geçirecek! Orkların köyü "
+"almasını engellemek için bir birimi köye götürün. Seçtiğiniz birim köyün "
+"iyileştirme özelliğinden de yararlanacaktır."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:947
@@ -1841,6 +1809,16 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"Yaralı birimlerinizi cephe gerisindeki köylere götürmeyi ihmal etmeyin. "
+"Şamanlar her el 4 YP iyileştirirken köyler daha fazla, 8YP iyileştirir.\n"
+"\n"
+"Farklı kaynaklardan gelen şifalar birleştirilmez. Bir birim ele çok sayıda "
+"şifacının yanındayken veya bir köyde yanında şifacı da varken başlarsa "
+"sadece birinden şifa alır.\n"
+"\n"
+"Dinlenme sırasında iyileşme bu kurala bir istisnadır — bir birim bir el "
+"hiçbir şey yapmadan durursa köyler veya şifacılar gibi kaynaklardan aldığı "
+"şifaya ek olarak 2YP iyileşir. Toplamda bir elde 10YP iyileşmek olasıdır."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1000
@@ -2018,16 +1996,12 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1294
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. Goodbye, $unit."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr ""
-"Yüksek seviyeden birimler güçlüdür, fakat yenilmez değildirler! Elveda $unit."
-"name|."
+"Yüksek seviyeden birimler güçlüdür, fakat yenilmez değildir! $unit.name|, "
+"seni özleyeceğiz."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1308
@@ -2189,26 +2163,18 @@ msgstr "Bu... aptalcaydı. Gelecek sefer daha dikkatli olmalıyım."
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1464
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "Aah! Sizi şimdi zafere kim yönlendirecek?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1479
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try one of the rookie-level "
-#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#| "i> is the easiest and is the recommended first campaign. In <i>An Orcish "
-#| "Incursion</i> you have an Elvish army, similarly to this tutorial, but "
-#| "with seven scenarios for your units to gain experience and advance levels."
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
 "is the easiest and is the recommended first campaign."
 msgstr ""
 "Orkları yendin! Strateji ipuçları içeren toy seviyesinde bir seferberlik "
-"denemek isteyebilirsin. <i>İki Kardeşin Hikayesi</i> en kolay ve önerilen "
-"seferberlik. <i>Bir Ork Saldırısı</i>nda ise deneyim kazanıp seviye "
-"atlayabilmen için yedi senaryolu öğreticidekine benzer bir elf ordun var."
+"denemek isteyebilirsin. <i>İki Kardeşin Hikayesi</i> en kolayıdır ve ilk "
+"seferberlik olarak en iyisidir."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1484

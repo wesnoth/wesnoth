@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 16:29 UTC\n"
-"PO-Revision-Date: 2019-06-19 10:06+0300\n"
+"PO-Revision-Date: 2020-01-14 15:26+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <>\n"
 "Language: tr\n"
@@ -439,10 +439,8 @@ msgstr "Güney"
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:155
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat the enemy leader"
-msgstr "Düşman lider(ler)ini öldür"
+msgstr "Düşman liderini yen"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
@@ -912,25 +910,6 @@ msgstr "Bramvitil"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:196
-#, fuzzy
-#| msgid ""
-#| "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
-#| "other Woses. More than any other Wose, he enjoyed simply standing alone "
-#| "in the sun, arms upraised, admiring the beauty of the empty sky. Once, "
-#| "even, he confided in a fellow that his greatest wish was to be able to "
-#| "bask forever in the sun’s glory.\n"
-#| "\n"
-#| "However, not long after, the local wose community heard of the approach "
-#| "of a horrible monster, powerful enough to easily destroy the few woses "
-#| "that lived in the area. They quickly moved off (quickly for Woses, "
-#| "anyway), but Bramwythl was left behind — in their haste, no one had "
-#| "remembered to find him and tell him of the danger.\n"
-#| "\n"
-#| "He was taken quite unawares by the Basilisk, and turned to stone before "
-#| "he even recognized the beast. His petrified form still stands there "
-#| "today, warmed by the sun’s rays, under an open sky. His greatest wish has "
-#| "been granted.\n"
-#| "(inscribed by Elvish Pillager)"
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other woses. More than any other wose, he enjoyed simply standing alone in "
@@ -954,7 +933,7 @@ msgstr ""
 "kabul edilirdi. Güneşin altında tek başına durmaktan diğerlerine göre daha "
 "fazla zevk alırdı, kollarını kaldırıp, boş gökyüzünün güzelliğine hayran "
 "hayran bakardı. Hatta bir keresinde bir arkadaşına, en büyük arzusunun "
-"güneşin ihtişamı altında sonsuza dek güneşlenebilmek olduğunu anlatmıştı.\n"
+"güneşin ihtişamı altında sonsuza dek güneşlenebilmek olduğunu söylemişti.\n"
 "\n"
 "Ancak, çok geçmeden, yerel ulu ağaç topluluğu, bölgede yaşayan az sayıdaki "
 "ulu ağacı kolayca yok edecek kadar güçlü, korkunç bir canavarın yaklaştığını "
@@ -2361,57 +2340,43 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:87
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Team 3"
-msgstr "1. Takım"
+msgstr "3. Takım"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:98
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Team 4"
-msgstr "1. Takım"
+msgstr "4. Takım"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:119
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Monsters"
-msgstr "Merkezi"
+msgstr "Canavarlar"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:229
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat all enemy leaders"
-msgstr "Düşman lider(ler)ini öldür"
+msgstr "Tüm düşman liderlerini yen"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:246
-#, fuzzy
-#| msgid "Defeat all waves"
 msgid "Defeat all monsters"
-msgstr "Tüm akınları bertaraf et"
+msgstr "Tüm canavarları yen"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:264
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat the enemy leaders"
-msgstr "Düşman lider(ler)ini öldür"
+msgstr "Düşman liderlerini yen"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:269
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of all your units"
-msgstr "Ekip liderlerininizin ölümü"
+msgstr "Birimlerinizin tamamı ölürse"
 
 #. [note]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:274
 msgid "You cannot recruit units."
-msgstr ""
+msgstr "Birimleri askere alamazsınız."
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5

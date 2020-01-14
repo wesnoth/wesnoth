@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 13:29-0300\n"
-"PO-Revision-Date: 2019-07-02 10:10+0300\n"
+"PO-Revision-Date: 2020-01-14 10:37+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -4152,8 +4152,8 @@ msgstr "Mağlubiyet:"
 #: data/lua/wml/objectives.lua:57
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(bu son el)"
+msgstr[1] "(%d el kaldı)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -4649,10 +4649,10 @@ msgid ""
 "a village or next to a unit with the <i>Cures</i> ability."
 msgstr ""
 "Zehirlenen birimler bir yaşam puanları kalana dek her el sekiz puan "
-"kaybederler. Zehir giderilene kadar ölümün eşiğinde kalırlar. "
-"İyileştiriciler zehrin hasar vermesini engelleyebilir ama zehir; birim "
-"yenilenene kadar veya ele bir köyde veya <i>Tedavi</i> yeteneği olan bir "
-"birimin yanında başlayana kadar geçmez."
+"kaybederler. Zehir giderilene kadar ölümün eşiğinde kalırlar. Şifacılar "
+"zehrin hasar vermesini engelleyebilir ama zehir; birim yenilenene kadar veya "
+"ele bir köyde veya <i>Tedavi</i> yeteneği olan bir birimin yanında başlayana "
+"kadar geçmez."
 
 #. [tip]
 #: data/tips.cfg:80
@@ -4929,8 +4929,8 @@ msgid ""
 "Use healers to support your attacks — they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Saldırılara destek için iyileştiricileri kullanın ―  hiç kimseye saldırma "
-"ihtiyacı duymaksızın savaşları kazanmanıza yardım ederler."
+"Saldırılara destek için şifacıları kullanın ―  hiç kimseye saldırma ihtiyacı "
+"duymaksızın savaşları kazanmanıza yardım ederler."
 
 #. [tip]
 #: data/tips.cfg:173 data/tips.cfg:218
@@ -5209,6 +5209,8 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"Eğer bir birim iki müttefik şifacının yanında duruyorsa her iki taraftan da "
+"sıraları geldiğinde şifa alır. Bu yolla birim çok daha hızlı iyileşir."
 
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
@@ -5265,10 +5267,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "Asker alabilecek bir liderin yok."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "O birimi askere alacak liderin yok."
+msgstr "Liderinin hiçbiri bu birimi askere alamaz."
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -6596,34 +6596,24 @@ msgid "Only available during a scenario."
 msgstr "Sadece senaryo sırasında var"
 
 #: src/help/help_impl.cpp:358 src/help/help_impl.cpp:394
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "Günün saati zamanlaması: "
+msgstr "Günün Saati Zamanlaması"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Adil birimler: "
+msgstr "Adil Ödülü: "
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Tarafsız birimler: "
+msgstr "Tarafsız Ödülü: "
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Kaypak birimler: "
+msgstr "Kaypak Ödülü: "
 
 #: src/help/help_impl.cpp:388
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "İntikalî birimler: "
+msgstr "İntikalî Ödülü: "
 
 #: src/help/help_impl.cpp:389
 msgid "Schedule"
@@ -6971,6 +6961,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<komut>]\n"
+"“all” = tüm komutları gösterir, <komut> = belli bir komut ismi (daha fazla "
+"ayrıntı verir)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -7006,8 +6999,8 @@ msgstr "Kullanım:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Takma Ad:"
+msgstr[1] "Takma Adlar:"
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -7038,72 +7031,57 @@ msgid "You have no units available to recruit."
 msgstr "Askere alabilecek birimin yok."
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
 msgstr "Askere alınmış birim yok."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
 msgstr ""
+"Dahili hata. Bunu lütfen bir yazılım hatası (bug) olarak bildirin! "
+"Ayrıntılar:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "Artık bir $unit_type_name askere alamazsınız."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "Bu birimi askere almak için yeterli altınınız yok"
+msgstr ""
+"Planladığınız gibi bu noktada, bu birimi askere almak için yeterli altınınız "
+"olmayacak."
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "Bu birimi askere almak için yeterli altınınız yok"
+msgstr "Bu birimi askere almak için yeterli altınınız yok."
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "Askerlerinizden ayrı durumdasınız ve onları çağırmanız mümkün değil"
+msgstr "Askerlerinizden ayrı durumdasınız ve onları çağırmanız mümkün değil."
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
 "Geri çağırılabilecek askeriniz yok\n"
-"(Önceki oyunlarda sağ kalmış kıdemlilerin olması lazım.)"
+"(Önceki senaryoda sağ kalmış kıdemlilerin olması lazım.)"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "Belirtilmiş bölgede birim çağıramazsın"
+msgstr "Belirtilen bölgede birim çağıramazsın."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
 msgstr "Çağrılmış birim yok."
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "Bir birimi tekrar çağırmak için en az 1 altınınız olmalı"
-msgstr[1] "Bu birimi tekrar çağırmak için en az $cost altınınız olmalı"
+msgstr[0] "Bir birimi tekrar çağırmak için en az 1 altınınız olmalı."
+msgstr[1] "Bu birimi tekrar çağırmak için en az $cost altınınız olmalı."
 
 #: src/menu_events.cpp:572
 msgid "You cannot end your turn yet!"
@@ -7177,6 +7155,8 @@ msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
+"[<taraf> [on/off]]\n"
+"“on” = denetimi YZ'ye verir, “off” = denetimi oyuncuya verir"
 
 #: src/menu_events.cpp:1222
 msgid "Switch a side to/from idle state."
@@ -7186,14 +7166,12 @@ msgstr "Bir tarafın denetimini boşa/geri alır"
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1226
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<taraf>[on/off]]"
 
 #: src/menu_events.cpp:1227
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Oyunun iç temasını değiştirir"
 
 #: src/menu_events.cpp:1229
 msgid "<side> <nickname>"
@@ -7225,7 +7203,7 @@ msgstr "Farenin altındaki arazinin katmanlarını ayıkla."
 
 #: src/menu_events.cpp:1236
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "Saniyedeki kara sayısını gösterir."
 
 #: src/menu_events.cpp:1238
 msgid "Save game."
@@ -7341,14 +7319,12 @@ msgstr "Bir senaryo değişkenini gösterir."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1276
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
 "Bir birim değişkeninin değerini değiştirir. (Sadece tepe düzeyde tanımlı "
-"değişkenler desteklenir.)"
+"değişkenler desteklenir; advances=<sayı>.)"
 
 #: src/menu_events.cpp:1283
 msgid "Discover all units in help."
@@ -7360,7 +7336,7 @@ msgstr "Yardım kısmındaki bütün birimleri unut."
 
 #: src/menu_events.cpp:1285
 msgid "<unit type id>"
-msgstr ""
+msgstr "<birim türü kimliği>"
 
 #: src/menu_events.cpp:1285
 msgid "Create a unit."
@@ -7376,17 +7352,15 @@ msgstr "Geçerli oyuncu için örtüyü açıp kapar."
 
 #: src/menu_events.cpp:1288
 msgid "<amount>"
-msgstr ""
+msgstr "<miktar>"
 
 #: src/menu_events.cpp:1288
 msgid "Give gold to the current player."
 msgstr "Geçerli oyuncuya altın verir."
 
 #: src/menu_events.cpp:1289
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<takma ad>"
+msgstr "<olay adı>"
 
 #: src/menu_events.cpp:1289
 msgid "Fire a game event."
@@ -7558,7 +7532,7 @@ msgstr "Müttefik yansı yok"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Oyun ($name|, $scenario|) hazır"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7637,20 +7611,20 @@ msgstr ""
 "istiyor musunuz?"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Oyunu vermek istediğinize emin misiniz?"
+msgstr ""
+"\n"
+"Oyunu kaydetmek ister misiniz?"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "Oyun kaydedildi."
+msgstr ""
+"Oyun bitirildi.\n"
+"Sebep: "
 
 #: src/playmp_controller.cpp:368
 msgid ""
@@ -8013,12 +7987,6 @@ msgid "Units"
 msgstr "Birimler"
 
 #: src/reports.cpp:1345
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8027,30 +7995,25 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "Her elin sonunda ordunuzun bakımının çıkardığı masraflar. İlk sayı eksilecek "
-"altın miktarıdır. ikinci sayı ise köy gelirlerinin kapattıkları da dahil "
-"toplam bakım masrafı. — yani köyleriniz olmasaydı eksilecek altın miktarı."
+"altın miktarıdır. Köyler tarafından desteklenen birimlerinizin seviyelerinin "
+"toplamdır. İkinci sayı ise köy gelirlerinin kapattıkları da dahil toplam "
+"bakım masrafı — yani köyleriniz olmasaydı eksilecek altın miktarı."
 
 #: src/reports.cpp:1345
 msgid "Upkeep"
 msgstr "Gider"
 
 #: src/reports.cpp:1382
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "Gelir"
+msgstr "Net Gelir"
 
 #: src/reports.cpp:1382
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"Elinizde bulunan köylerden her el kazandığınız altın miktarı, ya da birim "
-"bakımı için her el kaybettiğiniz altın miktarı."
+"Elinizde bulunan köylerden her el kazandığınız net altın miktarı, ya da "
+"birim bakımı için her el kaybettiğiniz altın miktarı."
 
 #: src/reports.cpp:1550
 msgid "Observers:"
@@ -8541,11 +8504,11 @@ msgstr "Sunucudan kopuldu."
 
 #: src/whiteboard/manager.cpp:1123
 msgid "SHOW ALL allies’ plans"
-msgstr "BÜTÜN müttefiklerin planlarını göster"
+msgstr "TÜM müttefik planlarını GÖSTER"
 
 #: src/whiteboard/manager.cpp:1124
 msgid "HIDE ALL allies’ plans"
-msgstr "BÜTÜN müttefiklerin planlarını gizle"
+msgstr "TÜM müttefik planlarını GİZLE"
 
 #: src/whiteboard/manager.cpp:1138
 msgid "Show plans for $player"
