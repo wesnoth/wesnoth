@@ -675,7 +675,7 @@ void unit_attack(display * disp, game_board & board,
 		unit_map::const_iterator helper = board.units().find(ability.second);
 		assert(helper.valid());
 		helper->set_facing(ability.second.get_relative_dir(b));
-		animator.add_animation(&*helper, "resist_anim", ability.second,
+		animator.add_animation(&*helper, "helping", ability.second,
 			def->get_location(), damage, true,  "", {0,0,0},
 			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
