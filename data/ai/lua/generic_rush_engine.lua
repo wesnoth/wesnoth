@@ -229,7 +229,7 @@ return {
                     }
                     local should_wait = false
                     for i,loc in ipairs(castle) do
-                        local unit = wesnoth.units.get(loc[1], loc[2])
+                        local unit = wesnoth.get_unit(loc[1], loc[2])
                         if unit and (unit.side == wesnoth.current.side) and (not unit.canrecruit) and (unit.moves > 0) then
                             should_wait = true
                             break
