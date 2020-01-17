@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-07-03 11:22+0200\n"
+"PO-Revision-Date: 2020-01-16 12:36+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -2043,12 +2043,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:221
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2061,7 +2055,9 @@ msgstr ""
 "disponibles varían según cual servicio ha sido activado con la opción "
 "B<user_handler>. Si no hay ninguna sección B<[user_handler]> en la "
 "configuración, el servidor funcionará sin ningún servicio de registro de "
-"usuarios."
+"usuarios. Todas las tablas adicionales que se necesitan para que funcione el "
+"forum_user_handler pueden encontrarse en table_definitions.sql en el "
+"repositorio de fuentes de Wesnoth."
 
 #. type: TP
 #: doc/man/wesnothd.6:222
@@ -2137,119 +2133,90 @@ msgstr "B<db_extra_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:240
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually."
 msgstr ""
-"(para user_handler=forum) El nombre de la tabla en que phpBB almacena los "
-"datos de sus usuarios. Generalmente éste será E<lt>table-prefixE<gt>_users "
-"(por ej.: phpbb3_users)."
+"(para user_handler=forum) El nombre de la tabla en que wesnothd guardará sus "
+"propios datos sobre los usuarios. Tendrá que crear esta tabla de forma "
+"manual."
 
 #. type: TP
 #: doc/man/wesnothd.6:240
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:243
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about games."
 msgstr ""
-"(para user_handler=forum) El nombre del usuario con el cual iniciar sesión "
-"en la base de datos"
+"(para user_handler=forum) El nombre de la tabla en la que wesnothd guardará "
+"sus propios datos sobre las partidas."
 
 #. type: TP
 #: doc/man/wesnothd.6:243
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_player_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_player_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:246
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about the players in a game."
 msgstr ""
-"(para user_handler=forum) El nombre del usuario con el cual iniciar sesión "
-"en la base de datos"
+"(para user_handler=forum) El nombre de la tabla en la que wesnothd guardará "
+"sus propios datos acerca de los jugadores jugando."
 
 #. type: TP
 #: doc/man/wesnothd.6:246
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
-msgstr ""
+msgstr "B<db_game_modification_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:249
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about the modifications used in a game."
 msgstr ""
-"(para user_handler=forum) El nombre del usuario con el cual iniciar sesión "
-"en la base de datos"
+"(para user_handler=forum) El nombre de la tabla en la que wesnothd guardará "
+"sus propios datos acerca de las modificaciones usadas en una partida."
 
 #. type: TP
 #: doc/man/wesnothd.6:249
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_user_group_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:252
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "(for user_handler=forum) The name of the table in which your phpbb forums "
 "saves its user group data. Most likely this will be E<lt>table-"
 "prefixE<gt>_user_group (e.g. phpbb3_user_group)."
 msgstr ""
-"(para user_handler=forum) El nombre de la tabla en que phpBB almacena los "
-"datos de sus usuarios. Generalmente éste será E<lt>table-prefixE<gt>_users "
-"(por ej.: phpbb3_users)."
+"(para user_handler=forum) El nombre de la tabla en la que sus foros phpbb "
+"almacenan los datos de sus grupos de usuarios. Generalmente éste será "
+"E<lt>table-prefixE<gt>_user_group (por ej.: phpbb3_user_group)."
 
 #. type: TP
 #: doc/man/wesnothd.6:252
 #, no-wrap
 msgid "B<mp_mod_group>"
-msgstr ""
+msgstr "B<mp_mod_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:255
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The ID of the forum group to be considered as "
 "having moderation authority."
 msgstr ""
-"(para user_handler=forum) El nombre del usuario con el cual iniciar sesión "
-"en la base de datos"
+"(para user_handler=forum) El ID del grupo del foro que se considera que "
+"tiene autorización para moderar."
 
 #. type: TP
 #: doc/man/wesnothd.6:255
