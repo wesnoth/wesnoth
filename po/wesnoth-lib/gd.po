@@ -5,7 +5,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# GunChleoc, 2018
+# GunChleoc, 2019
 #
 #, fuzzy
 msgid ""
@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 13:29-0300\n"
-"PO-Revision-Date: 2017-05-31 13:43+0000\n"
-"Last-Translator: GunChleoc, 2018\n"
+"PO-Revision-Date: 2020-01-13 11:44+0000\n"
+"Last-Translator: GunChleoc, 2019\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -690,20 +690,6 @@ msgstr "Uamh chreagach"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which shoulders defense, but is "
-#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
-#| "and trolls, are fully capable of navigating such topography.\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
-#| "in rockbound caves.\n"
-#| "\n"
-#| "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-#| "text='illuminated'</ref>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -728,8 +714,7 @@ msgstr ""
 "tha eachraidh cuingichte gu 40%. Gheibh troichean 60% de dhìon ann an uamhan "
 "creagach on a tha iad beag.\n"
 "\n"
-"Aig amannan, bidh uamhan <ref>dst='terrain_illuminated_cave' "
-"text='soillseach'</ref>."
+"Aig amannan, bidh uamhan <italic>text='soillseach'</italic>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1615,24 +1600,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2732
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1657,14 +1624,13 @@ msgstr ""
 "Bhon a bhuineas iad ri uamhan, tha e reusanta furasta do throichean is "
 "athaich siubhal tromhpa, gu sònraichte do na troichean a bhios beag gu leòr "
 "gus faighinn seachad air cnapan-starra a bhacadh na cinnidhean eile. Aig "
-"amannan, bidh uamhan <ref>dst='terrain_illuminated_cave' text='soillseach'</"
-"ref>.\n"
+"amannan, bidh uamhan <italic>text='soillseach'</italic>.\n"
 "\n"
 "Tha badain ainneamh an t-saoghail fon talamh soillsichte le solas bhon "
 "uachdar a dhealraicheas sìos don dorchadas chiar. Bheir seo buannachd "
 "ionnsaighe do dh’aonadan dligheach is caillidh na h-aonadan coimeasgach am "
 "buannachd ionnsaighe. Sa h-uile dòigh eile, tha an cruth-tìre seo co-ionnan "
-"ri <ref>dst='terrain_cave' text='uamhan'</ref>.\n"
+"ri uamhan àbhisteach.\n"
 "\n"
 "Tha 20% gu 40% de dhìon aig a’ mhòrchuid a dh’aonadan ann an uamhan fhad ’s "
 "a gheibh troichean 50%."
@@ -3715,7 +3681,7 @@ msgstr "Gnìomhan nam maor"
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
 msgid "Reason:"
-msgstr ""
+msgstr "Adhbhar:"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:198
@@ -3739,10 +3705,8 @@ msgstr "Bròg + Toirmeasg"
 
 #. [button]: id=stopgame
 #: data/gui/window/lobby_player_info.cfg:274
-#, fuzzy
-#| msgid "Load Game"
 msgid "Stop Game"
-msgstr "Luchdaich geama"
+msgstr "Cuir stad air a’ gheama"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
@@ -3915,17 +3879,13 @@ msgstr "Nuair a thòisich cuairt ùr"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created:"
-msgstr "Dàta a’ gheama:"
+msgstr "Chaidh an geama a chruthachadh:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "Nuair a thòisich cuairt ùr"
+msgstr "Nuair a bhios geama ùr air a chruthachadh"
 
 #. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
@@ -4181,14 +4141,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "Dearbhadh nas teinne a thaobh mearachdan call sioncronachaidh"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Sàbhail ath-chluiche"
+msgstr "Ath-chluiche phrìobhaideach"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Co-dhiù am bi ath-chluiche ri faighinn gu poblach gus nach bi"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -4434,10 +4392,8 @@ msgstr "An sgioba ris a bhuineas an taobh seo"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-#, fuzzy
-#| msgid "The team color"
 msgid "This side’s color"
-msgstr "Dath an sgioba"
+msgstr "Dath an taoibh seo"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
@@ -5391,7 +5347,7 @@ msgstr "Ais-ghairm aonad"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:341
 msgid "Search for unit name, unit type name, unit level, or trait."
-msgstr ""
+msgstr "Lorg ainm aonaid, ainm seòrsa aonaid, rang aonaid no feart."
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
@@ -5436,10 +5392,8 @@ msgid "Details:"
 msgstr "Fiosrachadh: "
 
 #: src/build_info.cpp:268
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "Glacaidhean-sgrìn JPG"
+msgstr "Glacaidhean-sgrìn JPEG"
 
 #: src/build_info.cpp:275
 msgid "feature^Lua console completion"
@@ -5543,63 +5497,63 @@ msgstr "$prefix no $last"
 
 #: src/formula/string_utils.cpp:285 src/formula/string_utils.cpp:314
 msgid "timespan^expired"
-msgstr ""
+msgstr "dh’fhalbh an ùine air"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num year"
-msgstr ""
+msgstr "$num bhliadhna"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num years"
-msgstr ""
+msgstr "$num bliadhna(ichean)"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num month"
-msgstr ""
+msgstr "$num mhìos"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num months"
-msgstr ""
+msgstr "$num mìos(an)"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num week"
-msgstr ""
+msgstr "$num sheachdain"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num weeks"
-msgstr ""
+msgstr "$num seachdain(ean)"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num day"
-msgstr ""
+msgstr "$num là"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num days"
-msgstr ""
+msgstr "$num là(ithean)"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hour"
-msgstr ""
+msgstr "$num uair a thìde"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hours"
-msgstr ""
+msgstr "$num uair(ean) a thìde"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minute"
-msgstr ""
+msgstr "$num mhionaid"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minutes"
-msgstr ""
+msgstr "$num mionaid(ean)"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num second"
-msgstr ""
+msgstr "$num diog"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num seconds"
-msgstr ""
+msgstr "$num diog(an)"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -5937,16 +5891,12 @@ msgid "Defender resistance vs"
 msgstr "Seasamh an dìonadair an aghaidh"
 
 #: src/gui/dialogs/attack_predictions.cpp:191
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "Ionnsaighear so-leònta a thaobh"
+msgstr "Dìonadair so-leònta a thaobh"
 
 #: src/gui/dialogs/attack_predictions.cpp:195
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "Seasamh an dìonadair an aghaidh"
+msgstr "Seasamh an ionnsaigheir an aghaidh"
 
 #: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Attacker vulnerability vs"
@@ -6536,7 +6486,7 @@ msgstr "Chan eil iad air liosta nan caraidean no neo-shuime agad"
 #: src/gui/dialogs/preferences_dialog.cpp:853
 #: src/gui/dialogs/preferences_dialog.cpp:923
 msgid "No hotkey selected"
-msgstr ""
+msgstr "Cha deach grad-iuchair a thaghadh"
 
 #: src/gui/dialogs/preferences_dialog.cpp:884
 msgid ""
@@ -6626,10 +6576,12 @@ msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"Cha ghabh an t-aonad seo ais-ghairm oir cha bhi òr gu leòr agad aig an àm "
+"seo dhen phlana agad."
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "Cha ghabh an t-aonad seo ais-ghairm oir chan eil òr gu leòr agad."
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -7131,22 +7083,16 @@ msgid "Next Move"
 msgstr "An t-ath ghluasad"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Mapa slàn"
+msgstr "Sealladh: mapa slàn"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Gach sgioba"
+msgstr "Sealladh: gach sgioba"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Sgioba daoine"
+msgstr "Sealladh: sgioba daoine"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
@@ -7821,12 +7767,3 @@ msgstr ""
 "Chaidh an iuchair “$deprecated_key” ath-ainmeachadh gu “$key|.” Thèid gach "
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
-
-#~ msgid "&#9679;"
-#~ msgstr "&#9679;"
-
-#~ msgid "Kick / ban reason:"
-#~ msgstr "Adhbhar bròige / toirmisg:"
-
-#~ msgid "feature^Experimental OpenMP support"
-#~ msgstr "Taic dheuchainneach ri OpenMP"

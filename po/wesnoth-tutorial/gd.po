@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 16:29 UTC\n"
-"PO-Revision-Date: 2017-05-31 13:44+0000\n"
+"PO-Revision-Date: 2020-01-17 10:48+0000\n"
 "Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
@@ -562,13 +562,6 @@ msgstr "Feartan"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
-#, fuzzy
-#| msgid ""
-#| "Be sure to examine the <i>traits</i> of your new recruits. They are "
-#| "listed under its race in the sidebar. Traits can subtly affect how you "
-#| "use your troops. For example, units with the <i>quick</i> trait can move "
-#| "a extra hex each turn, and units with the <i>intelligent</i> trait "
-#| "require 20% less experience to level up."
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -975,6 +968,8 @@ msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
 msgstr ""
+"Chan urrainn dhut crìoch a chur air a’ chuairt agad mus trus thu aonadan ’s "
+"mus glac thu baile!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
@@ -1064,13 +1059,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the east; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1079,7 +1067,7 @@ msgid ""
 msgstr ""
 "Am faic thu an t-uisge dubh-ghorm ud? Tha e ro dhomhain ach an rachadh duine "
 "troimhe. Tha mi ’n dùil gun grunndaich na deamhain gu slaodach thar an àth "
-"dhe thalanach bàn-ghorm taobh an ear; ach b’ urrainn dhuinn seasamh air a’ "
+"dhe thalanach bàn-ghorm taobh tuath; ach b’ urrainn dhuinn seasamh air a’ "
 "chladaich is toirt orra sabaid bhon uisge far a bheil iad fosgailte is sinne "
 "’gar dìon leis a’ choille."
 
@@ -1215,26 +1203,22 @@ msgstr "Ban-seuman-shìthe"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
-#| "friendly units around her. She also has a special attack which <i>slows</"
-#| "i> enemies, halving the damage they do for one turn."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
-"’S e aonad caran lag a th’ anns a’ bhan-sheuman-shìthe, ach tha an comas "
-"aice gus aonadan càirdeil eile mu a cuairt a <i>shlànachadh</i>. Cuideachd, "
-"tha ionnsaigh sònraichte aice a bheir <i>maille</i> air nàimhdean gus nach "
-"dèan iad ach leth-dhochann fad cuairt."
+"Tha comas aig a’ Bhan-sheuman Shìthiche gus aonadan càirdeil eile mu a "
+"cuairt a <i>shlànachadh</i>. Cuideachd, tha ionnsaigh sònraichte aice a "
+"bheir <i>maille</i> air nàimhdean gus nach dèan iad ach leth-dhochann fad "
+"cuairt. Gidheadh, tha a bodhaig nas laige na bodhaigean chathaichean is "
+"bhoghadairean, mar sin thoir an aire nuair a chuireas tu air a’ bhlàr i."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "Am comas <i>slànachaidh</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
@@ -1248,28 +1232,23 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"Aig toiseach gach cuairte, thèid 4 puingean-beatha aiseag do dh’aonadan "
+"caidreabhach ri taobh na Ban-seuman ’s chan e seo an dàrna leth dhe na "
+"puingean a sholaireadh baile. Cha bhuannaich a’ Bhan-seuman eòlas on t-"
+"slànachadh ach buannaichidh on chòmhrag. Gidheadh, ’s fhiach a h-àrdachadh "
+"–  bidh comas slànachaidh co-ionnann ri baile aice nuair a thèid i ’na Ban-"
+"draoidh Shìthiche air an dàrna rang.\n"
+"\n"
+"Gheibh thu mìneachadh nas doimhne air slànachadh san earrann <i>A’ cluiche "
+"a’ gheama</i> dhen chobhair (grad-iuchair thùsail: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Abilities and Weapon Specials"
 msgid "Weapon Specials"
-msgstr "Comasan is ionnsaighean sònraichte"
+msgstr "Ionnsaighean sònraichte"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1282,22 +1261,23 @@ msgid ""
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Bheir ionnsaighean sònraichte atharrachadh air cuid a dh’ionnsaighean ach am "
-"bi iad nas cumhachdaiche. A-rithist, ’s e aonad sònraichte a tha sa Bhan-"
-"seuman on a tha feart sònraichte “maille” aig an ionnsaigh “amail” aice. "
-"Nuair a chleachdas i an ionnsaigh seo air nàmhaid, cha dèan iad ach an dàrna "
-"leth de dhochann fad cuairte. Tha ionnsaighean sònraichte eile ann mar “ciad "
-"bhuille” a leigeas leis an ionnsaigh sin bualadh an toiseach ge b’ e cò tha "
-"a’ toirt ionnsaigh sa chiad dol a-mach, agus “draoidheach” a bheir seans "
-"bualaidh cunbhalach de 70% air gach ionnsaigh.\n"
+"bi iad nas cumhachdaiche. San t-seagh seo, ’s e aonad sònraichte a tha sa "
+"Bhan-seuman on a tha feart sònraichte “maille” aig an ionnsaigh “amail” "
+"aice. Nuair a thèid leatha an ionnsaigh seo a thoirt air nàmhaid, cha dèan "
+"iadsan ach an dàrna leth de dhochann fad cuairte. Tha ionnsaighean "
+"sònraichte eile ann mar “ciad bhuille” a leigeas leis an ionnsaigh sin "
+"bualadh an toiseach ge b’ e cò tha a’ toirt ionnsaigh sa chiad dol a-mach, "
+"agus “draoidheach” a bheir seans bualaidh cunbhalach de 70% air gach "
+"ionnsaigh.\n"
 "\n"
 "Gheibh thu liosta slàn dhe na feartan, comasan is ionnsaighean sònraichte sa "
-"chobhair."
+"chobhair (grad-iuchair thùsail: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Multiple Healers"
-msgstr ""
+msgstr "Iomadh slànaighear"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1311,6 +1291,14 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"Tha dithis shlànaighear agad a-nis. Gidheadh, chan fhaigh gach aonad "
+"slànachadh ach o aon shlànaighear – mar sin cha dèid còrr is 4 puingean-"
+"beatha a shlànachadh air aonad gach cuairt fiù ma bhios an dithis "
+"shlànaighear ri thaobh.\n"
+"\n"
+"Ma thèid gin dhe na Ban-seumanan ’na Bhan-draoidh, slànaichidh i 8 puingean-"
+"beatha air gach aonad ri a taobh gach cuairt. Thèid aonad a tha ri taobh "
+"iomadh slànaigheir a shlànachadh leis an tè as àirde rang."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1321,11 +1309,16 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"Tha dithis shlànaighear agad a-nis. Nì a’ Bhan-draoidh agad slànachadh dhe 8 "
+"puingean-beatha air na h-aonadan ri a taobh gach cuairt an coimeas ris na 4 "
+"aig a’ Bhan-seuman agad. Gidheadh, chan fhaigh gach aonad slànachadh ach o "
+"aon shlànaighear – thèid aonad a tha ri taobh iomadh slànaigheir a "
+"shlànachadh leis an tè as àirde rang."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
 msgid "Healers and Villages"
-msgstr ""
+msgstr "Slànaighearan ’s bailtean"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:384
@@ -1333,6 +1326,8 @@ msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
 msgstr ""
+"Gheibh aonad ann am baile slànachadh on bhaile seach o na slànaighearan ri "
+"thaobh."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
@@ -1342,6 +1337,11 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"Ma tha barrachd air aon shlànaighear agad, ’s urrainn dhaibh càch a chèile a "
+"shlànachadh no ceàrnaidhean eadar-dhealaichte dhen blàr a chòmhdachadh. "
+"Bheir seo gluasad innleachdach nas fheàrr dhaibh cuideachd – thèid an 2 "
+"phuing o shlànachadh tàimh a chur ri tùsan slànachaidh eile, mar sin bi e "
+"nas fheàrr an slànaighear a ghluasad seach an t-aonad leòinte mar as trice."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:403
@@ -1391,28 +1391,22 @@ msgstr "Gabh baile."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:448
-#, fuzzy
-#| msgid "Capture a village"
 msgid "You still have to capture a village!"
-msgstr "Gabh baile."
+msgstr "Feumaidh tu baile a ghabhail fhathast!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:479
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things if you make a "
-#| "mistake."
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"Cùm an aire gur urrainn dhut brùthadh air <b>u</b> gus a’ mhòrchuid dhe "
-"ghnìomhan a neo-dhèanamh ma rinn thu mearachd."
+"Dhìochuimhnich thu aonadan a thrusadh! ’S urrainn dhut brùdhadh air <b>u</b> "
+"a neo-dhèanamh a’ ghluasaid mu dheireadh agad."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "Feumaidh tu aonadan a thrusadh fhathast!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:490
@@ -1469,6 +1463,8 @@ msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
+"Dhìochuimhnich thu baile a ghabhail! ’S urrainn dhut brùdhadh air <b>u</b> a "
+"neo-dhèanamh a’ ghluasaid mu dheireadh agad."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:588
@@ -1633,7 +1629,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "Chan eil fainear dhan t-oideachadh seo a bhith cho doirbh sin"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:714
@@ -1644,11 +1640,17 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"Bu chòir dhan deamhan san eilean a ghluasad thar na drochaide ach am b’ "
+"urrainn do dh’iomadh duine-sìthe ionnsaigh a thoirt air aig an aon àm. Tha "
+"rudeigin ceàrr air tachartas an sgriobt agus nì seo a’ chnàmh-sgeul nas "
+"dorra on a mhaireas e ann an àite a tha furasta dìon dha.\n"
+"\n"
+"An dèan thu aithris air a’ bhuga?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:727
 msgid "Tracking Enemy Movement"
-msgstr "Lorgaich gluasadan an nàmhad"
+msgstr "A’ cumail sùil air gluasadan an nàmhad"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:729
@@ -1715,41 +1717,27 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:779
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
 "move everyone closer for next turn."
 msgstr ""
-"Tha mi ’n dòchas gum mair na h-aonadan agam beò an aghaidh fhrith-ionnsaighe "
-"mura cuir mi às don mhadagan sa chuairt seo! Bu chòir dhomh barrachd "
-"bhailtean a ghlacadh is a h-uile duine a ghluasad nas fhaisge air airson na "
-"h-ath chuairte."
+"Tha mi ’n dòchas gum mairinn beò an aghaidh fhrith-ionnsaighe mura cuir na h-"
+"aonadan agam às don mhadagan sa chuairt seo! Bu chòir dhomh toirt orra "
+"barrachd bhailtean a ghlacadh mas urrainn dhaibh is a h-uile duine a "
+"ghluasad nas fhaisge air airson na h-ath chuairte."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:784
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Ma sheasas a’ Bhan-seuman ri cùlaibh nan aonadan leònta agad, slànaichidh i "
-"gach fear dhiubh le 4 puingean-beatha iad aig toiseach na h-ath chuairte."
+"Ma sheasas a’ Bhan-seuman ri do chùlaibh, slànaichidh i dhut le 4 puingean-"
+"beatha aig toiseach na h-ath chuairte."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:790
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
@@ -1848,17 +1836,12 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it next turn! "
-#| "Move a unit into the village to stop the orcs capturing it. Whichever "
-#| "unit you choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"Feumaidh sinn am baile seo a ghabhail oir gheibh iadsan e an ath chuairt! "
+"Feumaidh sinn am baile seo a ghabhail oir gheibh iadsan e a dh’aithghearr! "
 "Gluais aonad dhan bhaile gus stad a chur air na deamhain. Gheibh an t-aonad "
 "buannachd às an t-slànachadh cuideachd."
 
@@ -1917,11 +1900,23 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"Cuimhnich gun cùlaich thu na h-aonadan leòinte agad dha na bailtean. Cha "
+"shlànaidh Ban-seuman ach 4 puingean-beatha gach cuairt fhad ’s a "
+"shlànaicheas baile nas luaithe iad le 8 puingean gach cuairt.\n"
+"\n"
+"San fharsaingeachd, cha dèid iomadh tùs slànachaidh a chur ri chèile. Ma "
+"thòisicheas aonad a chuairt ri taobh iomadh slànaigheir no air baile agus ri "
+"taobh slànaigheir, cha dèid a shlànachadh ach aon turas co-dhiù.\n"
+"\n"
+"’S e slànachadh tàimh a tha san aon mhura-bhith – mura dèan aonad dad fad "
+"cuairt, thèid 2 phuing-beatha a bharrachd a shlànachadh air thairis air "
+"slànachadh sam bith a gheibh e o bhaile no slànaighear agus tillidh seo 10 "
+"puingean-beatha dha gach cuairt air a char as àirde."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1000
 msgid "Tracking Unused Units"
-msgstr "Lorg aonadan gun chleachdadh"
+msgstr "A’ lorg aonadan gun chleachdadh"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1002
@@ -2099,16 +2094,12 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1294
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. Goodbye, $unit."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr ""
-"Tha aonadan le rang àrd cumhachdach, ach chan eil iad do-leònta! Sìth dha "
-"anam $unit.name|."
+"Tha aonadan le rang àrd cumhachdach, ach chan eil iad do-leònta! Bidh sinn "
+"’gad ionndrainn, $unit.name|."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1308
@@ -2242,41 +2233,29 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1419
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I am particularly good with the "
-#| "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
-#| "abilities of the Elvish Captain, my superior fighting skills allow my "
-#| "attacks to do more damage!"
 msgid ""
 "Advancing a level has fully healed me! I have become better at using the "
 "sword, dealing 9 damage in 4 attacks. Although I do not have any special "
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Thug an t-àrdachadh slànachadh iomlan dhomh! Tha mi gu sònraichte math air "
-"a’ chlaidheamh is nì mi 8 dochann le 4 ionnsaighean. Ged nach eil comasan "
-"ceannardais a' chaiptein-shìthe agam, nì mi barrachd dochann leis na comasan "
-"sabaid nas fhearr a th' agam!"
+"Shlànaich àrdachadh gu rang ùr mi gu lèir! Tha mi nas fheàrr air a’ "
+"chlaidheamh a-nis agus bheir mi seachad 9 a dhochann le 4 ionnsaighean. Ged "
+"nach eil comasan sònraichte agam, leigidh na sgilean sabaid agam leam ruaig "
+"a chur air na deamhain le barrachd dochainn orra!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1420
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I am particularly good with the "
-#| "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
-#| "abilities of the Elvish Captain, my superior fighting skills allow my "
-#| "attacks to do more damage!"
 msgid ""
 "female^Advancing a level has fully healed me! I have become better at using "
 "the sword, dealing 9 damage in 4 attacks. Although I do not have any special "
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Thug an t-àrdachadh slànachadh iomlan dhomh! Tha mi gu sònraichte math air "
-"a’ chlaidheamh is nì mi 8 dochann le 4 ionnsaighean. Ged nach eil comasan "
-"ceannardais a' chaiptein-shìthe agam, nì mi barrachd dochann leis na comasan "
-"sabaid nas fhearr a th' agam!"
+"Shlànaich àrdachadh gu rang ùr mi gu lèir! Tha mi nas fheàrr air a’ "
+"chlaidheamh a-nis agus bheir mi seachad 9 a dhochann le 4 ionnsaighean. Ged "
+"nach eil comasan sònraichte agam, leigidh na sgilean sabaid agam leam ruaig "
+"a chur air na deamhain le barrachd dochainn orra!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1429
@@ -2302,17 +2281,10 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1464
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "Iochd! Cò stiùireas dhan bhuaidh sibh a-nis?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1479
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try one of the rookie-level "
-#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#| "i> is the easiest and is the recommended first campaign. In <i>An Orcish "
-#| "Incursion</i> you have an Elvish army, similarly to this tutorial, but "
-#| "with seven scenarios for your units to gain experience and advance levels."
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
@@ -2321,10 +2293,7 @@ msgstr ""
 "Chaidh an latha leat an aghaidh nan deamhan! ’S dòcha gum feuch thu tè dhe "
 "na h-iomairtean air ìre glas-laoich a-nis anns am faigh thu gliocasan mun ro-"
 "innleachd. Is <i>Sgeulachd dithis bhràithrean</i> an tè as fhasa agus "
-"mholamaid gun toisich thu leatha-se. Ann am <i>Foghail nan deamhan</i>, bidh "
-"feachd-sìthe agad coltach ris an oideachadh seo ach bidh seachd cnàmh-"
-"sgeulan ann ach am buannaich na h-aonadan agad eòlas ach an àrdaich iad gu "
-"rangan ùra."
+"mholamaid gun toisich thu leatha-se."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1484
@@ -2375,7 +2344,7 @@ msgstr ""
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:4
 msgid "Warrior"
-msgstr ""
+msgstr "Gaisgeach"
 
 #. [unit_type]: id=Warrioress, race=human
 #. [unit_type]: id=Warrior, race=human
@@ -2385,13 +2354,13 @@ msgid ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
 msgstr ""
+"Le barrachd eòlas, thug na Cathaichean piseach air na sgilean claidheimh aca "
+"’s chaidh iad nan Gaisgeach cumhachdach."
 
 #. [unit_type]: id=Warrioress, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
-#, fuzzy
-#| msgid "female^Fighter"
 msgid "female^Warrior"
-msgstr "Ban-cathach"
+msgstr "Ban-ghaisgeach"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:63
@@ -2415,36 +2384,3 @@ msgstr ""
 "\n"
 "<big>Briog air an luchag no brùth air an spacebar gus leantainn air adhart..."
 "</big>"
-
-#~ msgid ""
-#~ "Certain unit types have special <i>abilities</i>. Unlike traits, which "
-#~ "usually provide small buffs or debuffs, abilities give units special "
-#~ "behaviors that normal units do not have. In this case, the Elvish Shaman "
-#~ "has the Heal ability, which allows her to heal allied adjacent units 4 "
-#~ "hitpoints at the start of each turn. Unit types with abilities, "
-#~ "especially ones like Heal, can be very useful, so be careful when sending "
-#~ "them into battle."
-#~ msgstr ""
-#~ "Bidh <i>comasan</i> sònraichte aig cuid a sheòrsa aonaid. Chan eil iad "
-#~ "coltach ri feartan a gheibh buannachdan no easbhaidhean beaga do "
-#~ "dh’aonadan ach bheir iad giùlan sònraichte dhaibh nach eil aig aonadan "
-#~ "àbhaisteach. Tha comas sònraichte slànachaidh aig a’ bhan-seuman-shìthe "
-#~ "agus leigidh seo leatha gach aonad caidreabhach ri a taobh a shlànachadh "
-#~ "le 4 puingean-beatha aig toiseach gach cuairte. Faodaidh seòrsaichean "
-#~ "aonaid le comasan sònraichte mar an slànachadh a bhith glè fheumail, mar "
-#~ "sin bidh cùramach nuair a chuireas tu gun bhlàr iad."
-
-#~ msgid ""
-#~ "Remember to retreat your wounded units to villages. Healers can only heal "
-#~ "4 hitpoints at a time, while villages can heal 8 (the maximum healing for "
-#~ "any unit)."
-#~ msgstr ""
-#~ "Cuimhnich gun cùlaich thu na h-aonadan leònta agad dha bhailtean. Cha "
-#~ "slànaich lighichean ach 4 puingean-beatha aig an aon àm fhad ’s a "
-#~ "shlànaicheas bailtean 8 puingean-beatha (an slànachadh as motha aig gach "
-#~ "aonad)."
-
-#~ msgid "Agh! Now who will teach you how to defeat these orcs!"
-#~ msgstr ""
-#~ "Iochd! Cò dh’ionnsaicheas dhut mar a chuireas tu ruaig air na deamhain a-"
-#~ "nis?"
