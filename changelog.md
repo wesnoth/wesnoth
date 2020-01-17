@@ -27,8 +27,8 @@
      * Sun Singer and Sun Sylph: modify faerie fire colors
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified),
-     Chinese (Traditional), Czech, Dutch, French, German, Italian, Korean,
-     Portuguese (Brazil), Russian, Turkish
+     Chinese (Traditional), Czech, Dutch, Esperanto, French, German, Italian,
+     Korean, Portuguese (Brazil), Russian, Turkish
    * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Lua API
    * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables (issue #4079).
