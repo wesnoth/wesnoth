@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-08-29 08:38+0200\n"
+"PO-Revision-Date: 2020-01-16 12:37+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -5359,8 +5359,10 @@ msgid "You do not have a leader to recruit with."
 msgstr "No tiene un líder con el que reclutar."
 
 #: src/actions/create.cpp:478
+#, fuzzy
+#| msgid "None of your leaders are able to recruit this unit."
 msgid "None of your leaders are able to recruit that unit."
-msgstr "Ninguno de sus líderes puede reclutar esa unidad."
+msgstr "Ninguno de sus líderes puede reclutar esta unidad."
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -7088,40 +7090,56 @@ msgid "You have no units available to recruit."
 msgstr "No tiene unidades disponibles para reclutar."
 
 #: src/menu_events.cpp:283
+#, fuzzy
+#| msgid "No unit recruited."
 msgid "No unit recruited"
-msgstr "No se ha reclutado ninguna unidad"
+msgstr "No se ha reclutado ninguna unidad."
 
 #: src/menu_events.cpp:315
+#, fuzzy
+#| msgid "You do not have enough gold to recruit this unit."
 msgid "You do not have enough gold to recruit that unit"
-msgstr "No tiene suficiente oro para reclutar a esa unidad"
+msgstr "No tiene oro suficiente para reclutar esta unidad."
 
 #: src/menu_events.cpp:351
+#, fuzzy
+#| msgid "You are separated from your soldiers and may not recall them."
 msgid "You are separated from your soldiers and may not recall them"
-msgstr "Está separado de sus soldados y no puede reincorporarlos"
+msgstr "Está alejado de sus tropas y no puede reincorporarlas."
 
 #: src/menu_events.cpp:370
+#, fuzzy
+#| msgid ""
+#| "There are no troops available to recall.\n"
+#| "(You must have veteran survivors from a previous scenario.)"
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"No hay tropas disponibles para reincorporar\n"
-"(Debe tener veteranos supervivientes de un escenario previo)"
+"No hay tropas disponibles para reincorporar.\n"
+"(Debería tener veteranos supervivientes de un escenario anterior.)"
 
 #: src/menu_events.cpp:374
+#, fuzzy
+#| msgid "You currently can't recall at the highlighted location."
 msgid "You currently can't recall at the highlighted location"
-msgstr "Ahora no puede reincorporar en el lugar resaltado"
+msgstr "No puede reincorporar en este momento en el lugar resaltado."
 
 #: src/menu_events.cpp:386
+#, fuzzy
+#| msgid "No unit recalled."
 msgid "No unit recalled"
-msgstr "No se ha reincorporado ninguna unidad"
+msgstr "No se ha reincorporado ninguna unidad."
 
 #: src/menu_events.cpp:403
+#, fuzzy
+#| msgid "You must have at least 1 gold piece to recall a unit."
+#| msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall this unit"
-msgstr[0] ""
-"Ha de tener por lo menos 1 pieza de oro para reincorporar a una unidad"
+msgstr[0] "Ha de tener al menos 1 pieza de oro para reincorporar unidades."
 msgstr[1] ""
-"Ha de tener por lo menos $cost piezas de oro para reincorporar a una unidad"
+"Ha de tener al menos $cost piezas de oro para reincorporar esta unidad."
 
 #: src/menu_events.cpp:549
 msgid "You cannot end your turn yet!"
@@ -7189,18 +7207,18 @@ msgid "Switch a side to/from AI control."
 msgstr "Cambia un bando al/del control de la IA."
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<bando> [on/off]]"
+msgstr ""
 
 #: src/menu_events.cpp:1192
 msgid "Switch a side to/from idle state."
 msgstr "Cambia un bando al/del estado inactivo."
 
 #: src/menu_events.cpp:1193
+#, fuzzy
+#| msgid "do not translate the 'all'^[all|<command>]"
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<bando> [on/off]]"
+msgstr "[all|<orden>]"
 
 #: src/menu_events.cpp:1196
 msgid "<side> <nickname>"
@@ -7352,10 +7370,14 @@ msgid "Show a scenario variable."
 msgstr "Mostrar una variable de escenario."
 
 #: src/menu_events.cpp:1242
+#, fuzzy
+#| msgid ""
+#| "Modify a unit variable. (Only top level keys are supported, and "
+#| "advances=<number>.)"
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Modificar una variable de unidad. (Sólo se soportan atributos de nivel "
-"superior.)"
+"superior y advances=<número>.)"
 
 #: src/menu_events.cpp:1248
 msgid "Discover all units in help."
@@ -7578,7 +7600,7 @@ msgstr "Sin aliado espejo"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Una partida ($name|, $scenario|) ha sido creada"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -8029,15 +8051,23 @@ msgid "Units"
 msgstr "Unidades"
 
 #: src/reports.cpp:1445
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. It is equal to "
+#| "the number of unit levels not supported by villages. The second is the "
+#| "total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
-"Los gastos sufridos al final de cada turno para mantener a sus tropas. El "
-"primer número es la cantidad de oro que será descontada. El segundo es el "
-"coste total de mantenimiento, incluido el que cubren las aldeas — en otras "
+"Los gastos contraidos al final de cada turno para mantener a sus tropas. El "
+"primer número es la cantidad de oro que será descontada. Equivale al número "
+"de niveles de unidades no mantenidos por las aldeas. El segundo es el coste "
+"total de mantenimiento, incluido el que cubren las aldeas — en otras "
 "palabras, la cantidad de oro que sería descontada si perdiera todas sus "
 "aldeas."
 
@@ -8046,17 +8076,22 @@ msgid "Upkeep"
 msgstr "Mantenimiento"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid "income"
 msgid "Income"
-msgstr "Ingresos"
+msgstr "ingresos"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid ""
+#| "The net amount of gold you gain or lose each turn, taking into account "
+#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
-"La cantidad de oro que gana en cada turno por las aldeas que controla, o la "
-"cantidad de oro que perdería en cada turno por el mantenimiento de las "
-"unidades."
+"La cantidad neta de oro que gana o pierde en cada turno, teniendo en cuenta "
+"los ingresos de las aldeas controladas y los pagos por mantenimiento."
 
 #: src/reports.cpp:1650
 msgid "Observers:"
@@ -8612,6 +8647,25 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "Connected Players"
 #~ msgstr "Jugadores conectados"
 
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(este turno restante)"
+#~ msgstr[1] "(%d turnos restantes)"
+
+#~ msgid ""
+#~ "If a unit is positioned next to healers from two allied sides, the unit "
+#~ "will be healed on both sides’ turns. This way, a unit can be healed "
+#~ "faster than otherwise possible."
+#~ msgstr ""
+#~ "Si una unidad está situada al lado de sanadores de dos bandos aliados, la "
+#~ "unidad será sanada durante el turno de cada uno de los bandos. De este "
+#~ "modo, una unidad puede sanarse más rápido de lo que sería posible en otro "
+#~ "caso."
+
+# ¿Cómo traducirlo si aún no está traducida la campaña Wings of Victory? Esa campaña no es de la versión 1.14 estable sino de la versión 1.15 de desarrollo. Quizás sea un vuelo, pero también una expedición o una incursión. No conocemos el contexto.
+#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
+#~ msgstr "<i>― Vank del vuelo de Galun, 6 AñW</i>"
+
 #~ msgid "registering with password *** and no email address"
 #~ msgstr ""
 #~ "registrando con contraseña *** y sin dirección de correo electrónico"
@@ -8650,8 +8704,96 @@ msgstr "Opciones del modo pizarra"
 #~ "Solicita una lista de detalles que puede establecer para su nombre de "
 #~ "usuario registrado."
 
+#~ msgid "Time of Day Schedule"
+#~ msgstr "Plantilla de franjas horarias"
+
+#~ msgid "Lawful Bonus:"
+#~ msgstr "Bonificación legal:"
+
+#~ msgid "Neutral Bonus:"
+#~ msgstr "Bonificación neutral:"
+
+#~ msgid "Chaotic Bonus:"
+#~ msgstr "Bonificación caótica:"
+
+#~ msgid "Liminal Bonus:"
+#~ msgstr "Bonificación crepuscular:"
+
+#~ msgid ""
+#~ "[all|<command>]\n"
+#~ "“all” = overview of all commands, <command> = name of a specific command "
+#~ "(provides more detail)"
+#~ msgstr ""
+#~ "[all|<command>]\n"
+#~ "“all” = resumen de todos los comandos, <command> = nombre de un comando "
+#~ "en concreto (proporciona más información)"
+
+#~ msgid "command^Alias:"
+#~ msgid_plural "Aliases:"
+#~ msgstr[0] "Alias:"
+#~ msgstr[1] "Alias:"
+
+#~ msgid "Internal error. Please report this as a bug! Details:\n"
+#~ msgstr ""
+#~ "Error interno. ¡Haga el favor de informar sobre este error! Detalles:\n"
+
+#~ msgid "You cannot recruit a $unit_type_name at this time."
+#~ msgstr "No puede reclutar una unidad $unit_type_name en este momento."
+
+#~ msgid ""
+#~ "At this point in your plan, you will not have enough gold to recruit this "
+#~ "unit."
+#~ msgstr ""
+#~ "En este punto de su plan, no tiene oro suficiente para reclutar esta "
+#~ "unidad."
+
+#~ msgid ""
+#~ "[<side> [on/off]]\n"
+#~ "“on” = enable control by the AI, “off” = side is controlled by the player"
+#~ msgstr ""
+#~ "[<side> [on/off]]\n"
+#~ "“on” = activa el control por parte de la IA, “off” = el bando está "
+#~ "controlado por el jugador"
+
+#~ msgid "command_idle^[<side> [on/off]]"
+#~ msgstr "[<bando> [on/off]]"
+
+#~ msgid "Change the in-game theme."
+#~ msgstr "Cambia el tema del juego."
+
+#~ msgid "Show fps (Frames Per Second)."
+#~ msgstr "Muestra los fps (fotogramas por segundo)."
+
+#~ msgid "<unit type id>"
+#~ msgstr "<id del tipo de unidad>"
+
+#~ msgid "<amount>"
+#~ msgstr "<cantidad>"
+
+#~ msgid "<event name>"
+#~ msgstr "<nombre del evento>"
+
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr "No se puede automatizar una IA local del bando: «$side»."
+
+#~| msgid "Do you really want to surrender the game?"
+#~ msgid ""
+#~ "\n"
+#~ "Do you want to save the game?"
+#~ msgstr ""
+#~ "\n"
+#~ "¿Quiere guardar la partida?"
+
+#~| msgid "The game has been saved."
+#~ msgid ""
+#~ "This game has been ended.\n"
+#~ "Reason: "
+#~ msgstr ""
+#~ "Esta partida ha finalizado.\n"
+#~ "Motivo: "
+
+#~ msgid "Net Income"
+#~ msgstr "Ingresos netos"
 
 #~ msgid "Empty"
 #~ msgstr "Vacío"
@@ -8672,11 +8814,6 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "Advances to:"
 #~ msgstr "Se convierte en:"
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(este turno restante)"
-#~ msgstr[1] "(%d turnos restantes)"
 
 #~ msgid "S"
 #~ msgstr "S"

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:40+0300\n"
-"PO-Revision-Date: 2019-07-05 14:14+0200\n"
+"PO-Revision-Date: 2020-01-15 09:54+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:470
 msgid "Fence"
-msgstr "Cerco"
+msgstr "Cerca"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -693,6 +693,19 @@ msgstr "Cueva accidentada"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:973
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
+#| "water and wind, carrying erosive particles that carve the rock. It "
+#| "resembles a scraggy underground cavern which shoulders defense, but is "
+#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
+#| "and trolls, are fully capable of navigating such topography.\n"
+#| "\n"
+#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
+#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
+#| "in rockbound caves.\n"
+#| "\n"
+#| "Occasionally caves are <italic>text='illuminated'</italic>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -707,19 +720,18 @@ msgid ""
 "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
 "text='illuminated'</ref>."
 msgstr ""
-"El terreno <italic>text='cavernoso accidentado'</italic> se ha formado por "
-"la acción del agua y el viento, que transportan partículas erosivas que "
-"tallan la roca. Se asemeja a una estrecha caverna subterránea que reduce la "
-"movilidad de la mayoría de las unidades, pero apoya su defensa. Solo los "
-"moradores de las cuevas, como los enanos y los troles, pueden atravesar este "
+"El terreno <italic>text='cueva accidentada'</italic> se ha formado por la "
+"acción del agua y el viento, que transportan partículas erosivas que tallan "
+"la roca. Se asemeja a una estrecha caverna subterránea difícil de transitar "
+"por la mayoría de las unidades, aunque fácil de defender. Solo los moradores "
+"de las cuevas, como los enanos y los troles, pueden transitar por este "
 "terreno con relativa facilidad.\n"
 "\n"
-"La mayoría de las unidades tienen un 50% de defensa en el terreno «cavernoso "
-"accidentado», donde la caballería está limitada a un 40%. Los enanos, debido "
-"a su pequeño tamaño, disfrutan de un 60% de defensa en este terreno.\n"
+"La mayoría de las unidades tienen un 50% de defensa en las cuevas "
+"accidentadas, mientras que la caballería está limitada a un 40%. Los enanos, "
+"debido a su pequeño tamaño, disfrutan de un 60% de defensa en este terreno.\n"
 "\n"
-"En ocasiones las cuevas están <ref>dst='terrain_illuminated_cave' "
-"text='iluminadas'</ref>."
+"En ocasiones las cuevas están <italic>text='iluminadas'</italic>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1617,6 +1629,24 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2737
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
+#| "with enough room for a unit to pass.\n"
+#| "Most units are wholly unfamiliar with the terrain, and thus are both "
+#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
+#| "homes in caves, both have a relatively easy time navigating this terrain, "
+#| "especially dwarves, who by dint of their small size can navigate many "
+#| "obstacles that other races cannot. Occasionally caves are "
+#| "<italic>text='illuminated'</italic>.\n"
+#| "\n"
+#| "Rare patches of the underground world are illuminated by light from the "
+#| "surface shining down into the gloomy darkness. This provides an attack "
+#| "bonus for lawful units and removes the attack bonus from chaotic units. "
+#| "In all other regards this terrain is functionally identical to normal "
+#| "cave terrains.\n"
+#| "\n"
+#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1643,7 +1673,7 @@ msgstr ""
 "tienen una relativa facilidad para circular por este tipo de terreno, y en "
 "especial los enanos, que debido a su pequeña talla pueden ignorar muchos "
 "obstáculos que otras razas no. De vez en cuando las cuevas están "
-"<ref>dst='terrain_illuminated_cave' text='iluminadas'</ref>.\n"
+"<italic>text='iluminadas'</italic>..\n"
 "\n"
 "En muy raras ocasiones, algunas zonas del mundo subterráneo se ven "
 "iluminadas por la luz de la superficie que resplandece en las sombrías "
@@ -3944,17 +3974,13 @@ msgstr "Cuando ha comenzado un nuevo turno"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created:"
-msgstr "Datos del juego:"
+msgstr "Partida creada:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "Cuando ha comenzado un nuevo turno"
+msgstr "Cuando se ha creado una nueva partida"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
@@ -5456,8 +5482,10 @@ msgid "Details:"
 msgstr "Detalles:"
 
 #: src/build_info.cpp:269
+#, fuzzy
+#| msgid "feature^JPEG screenshots"
 msgid "feature^JPG screenshots"
-msgstr "Capturas de pantalla JPG"
+msgstr "Capturas de pantalla JPEG"
 
 #: src/build_info.cpp:276
 msgid "feature^Lua console completion"
@@ -7160,16 +7188,22 @@ msgid "Next Move"
 msgstr "Siguiente movimiento"
 
 #: src/hotkey/hotkey_command.cpp:138
+#, fuzzy
+#| msgid "View: Full Map"
 msgid "Full Map"
-msgstr "Todo el mapa"
+msgstr "Vista: Todo el mapa"
 
 #: src/hotkey/hotkey_command.cpp:139
+#, fuzzy
+#| msgid "View: Each Team"
 msgid "Each Team"
-msgstr "Cada equipo"
+msgstr "Vista: Cada equipo"
 
 #: src/hotkey/hotkey_command.cpp:140
+#, fuzzy
+#| msgid "View: Human Team"
 msgid "Human Team"
-msgstr "Equipo humano"
+msgstr "Vista: Equipo humano"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
@@ -7834,6 +7868,39 @@ msgstr ""
 "«$deprecated_key|» dejará de tener mantenimiento en la versión "
 "$removal_version."
 
+#~ msgid "Reason:"
+#~ msgstr "Razón:"
+
+#~ msgid "Stop Game"
+#~ msgstr "Detener partida"
+
+#~ msgid "Private Replay"
+#~ msgstr "Repetición privada"
+
+#~ msgid "Whether the replay will be publicly available"
+#~ msgstr "Si la repetición estará disponible publicamente"
+
+#~ msgid "Search for unit name, unit type name, unit level, or trait."
+#~ msgstr "Búsqueda por nombre, tipo, nivel o rasgo de unidad."
+
+#~ msgid "Defender vulnerability vs"
+#~ msgstr "Vulnerabilidad del defensor contra"
+
+#~ msgid "Attacker resistance vs"
+#~ msgstr "Resistencia del atacante contra"
+
+#~ msgid ""
+#~ "This unit cannot be recalled because you will not have enough gold at "
+#~ "this point in your plan."
+#~ msgstr ""
+#~ "No se puede reincorporar esta unidad debido a que no dispondrá de oro "
+#~ "suficiente en este punto de su plan."
+
+#~ msgid "This unit cannot be recalled because you do not have enough gold."
+#~ msgstr ""
+#~ "No se puede reincorporar esta unidad debido a que no dispone de oro "
+#~ "suficiente."
+
 #~ msgid "feature^Experimental OpenMP support"
 #~ msgstr "Soporte OpenMP experimental"
 
@@ -7977,9 +8044,6 @@ msgstr ""
 
 #~ msgid "Moderating"
 #~ msgstr "Moderando"
-
-#~ msgid "Reason:"
-#~ msgstr "Razón:"
 
 #~ msgid "Time:"
 #~ msgstr "Tiempo:"

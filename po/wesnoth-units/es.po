@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-07-29 12:37+0200\n"
+"PO-Revision-Date: 2020-01-16 08:37+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: wesnoth-es-trad-1_14@googlegroups.com\n"
 "Language: es\n"
@@ -1451,6 +1451,13 @@ msgstr "Draco celeste"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:17
+#, fuzzy
+#| msgid ""
+#| "The lightweight ceramic armor that the Sky Drakes wear is a symbol of "
+#| "their rank, glazed silver to honor their connection to the air. As "
+#| "leaders of the hunt, they are often away from their homes for long "
+#| "periods of time. Each tries to bring as much game home as possible, "
+#| "competing to gain the respect of their tribe."
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -1463,8 +1470,7 @@ msgstr ""
 "su rango, satinada en plata en honor a su conexión con el aire. Como líderes "
 "de la caza, suelen estar largos periodos de tiempo lejos de su hogar. Cada "
 "uno intenta llevar a casa toda la caza posible, compitiendo por ganarse el "
-"respeto de su tribu y, de ser posible, algún tiempo con una de las tan "
-"vigiladas hembras draco."
+"respeto de su tribu."
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -3003,7 +3009,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr "Chamán elfa"
+msgstr "Chamana elfa"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:19
@@ -3540,6 +3546,12 @@ msgstr "Coracero"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Cavaliers are masters at the use of both sword and crossbow from "
+#| "horseback. Their combination of striking power and mobility is fearsome, "
+#| "and they have a reputation for dash and aggressiveness to match it. The "
+#| "daring deeds of Cavaliers are the subject of many a tale and song."
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome; and they have "
@@ -3547,9 +3559,9 @@ msgid ""
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
 "Los coraceros son maestros del uso de la espada y la ballesta desde la grupa "
-"de un caballo. Su combinación de fuerza de choque y movilidad es "
-"terrorífica; les precede su reputación por su ímpetu y agresividad. Las "
-"osadas hazañas de los coraceros son tema de más de una canción o cuento."
+"de un caballo. Su combinación de fuerza de choque y movilidad es terrorífica "
+"y les precede su reputación por su ímpetu y agresividad. Las osadas hazañas "
+"de los coraceros son tema de más de una canción o cuento."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -7245,6 +7257,20 @@ msgid ""
 msgstr ""
 
 #~ msgid ""
+#~ "Compared to other drakes, Drake Arbiters have a higher resistance to "
+#~ "‘pierce’ attacks."
+#~ msgstr ""
+#~ "En comparación con otros dracos, los árbitros draco tienen una "
+#~ "resistencia más alta al daño de penetración."
+
+#~ msgid ""
+#~ "Compared to other drakes, Drake Wardens have a higher resistance to "
+#~ "‘pierce’ attacks."
+#~ msgstr ""
+#~ "En comparación con otros dracos, los guardianes dracos tienen una "
+#~ "resistencia mayor a los ataques de penetración."
+
+#~ msgid ""
 #~ "Some men excel at medicine the way others do at strength of arms, and the "
 #~ "Apothecaries are those whose knowledge is without peer outside of the "
 #~ "Dunefolk. Their remedies can not only heal wounds but remove infection "
@@ -7589,6 +7615,90 @@ msgstr ""
 #~ "mostrando sus excepcionales habilidades, cabalgando a gran velocidad a "
 #~ "través de las lineas de batalla para lanzar una lluvia de flechas sobre "
 #~ "el enemigo."
+
+#~ msgid ""
+#~ "Compared to other elves, Elvish Avengers have superior movement and "
+#~ "defense on sand, shallow water, and mountains."
+#~ msgstr ""
+#~ "Comparados con otros elfos, los vengadores elfos tienen un superior "
+#~ "movimiento y defensa sobre la arena, las aguas superficiales y las "
+#~ "montañas."
+
+#~ msgid ""
+#~ "Compared to other elves, Elvish Rangers have superior movement and "
+#~ "defense on sand, shallow water, and mountains."
+#~ msgstr ""
+#~ "Comparados con otros elfos, los montaraces elfos tienen un superior "
+#~ "movimiento y defensa sobre la arena, las aguas superficiales y las "
+#~ "montañas."
+
+#~ msgid ""
+#~ "Compared to other loyalists, Halberdiers have a higher resistance to "
+#~ "‘pierce’ attacks."
+#~ msgstr ""
+#~ "Comparados con otros leales, los alabarderos tienen una resistencia mayor "
+#~ "a los ataques de penetración."
+
+#~ msgid ""
+#~ "Compared to other loyalists, Pikemen have a higher resistance to ‘pierce’ "
+#~ "attacks."
+#~ msgstr ""
+#~ "Comparados con otros leales, los piqueros tienen una resistencia mayor a "
+#~ "los ataques de penetración."
+
+#~ msgid ""
+#~ "Compared to other loyalists, Royal Guards have a higher resistance to "
+#~ "‘blade’ and ‘impact’ attacks."
+#~ msgstr ""
+#~ "Comparados con otros leales, los guardias reales tienen una resistencia "
+#~ "mayor a los ataques de corte y de impacto."
+
+#~ msgid "Compared to other loyalists, Royal Guards have more movepoints."
+#~ msgstr ""
+#~ "Comparados con otros leales, los guardias reales tienen más puntos de "
+#~ "movimiento."
+
+#~ msgid ""
+#~ "Compared to other loyalists, Swordsmen have a higher resistance to "
+#~ "‘blade’ and ‘impact’ attacks."
+#~ msgstr ""
+#~ "Comparados con otros leales, los espadachines tienen una resistencia "
+#~ "mayor a los ataques de corte y de impacto."
+
+#~ msgid ""
+#~ "Compared to other mages, Arch Mages have a higher resistance to ‘fire’ "
+#~ "attacks."
+#~ msgstr ""
+#~ "Comparados con otros magos, los archimagos tienen una resistencia mayor a "
+#~ "los ataques de fuego."
+
+#~ msgid ""
+#~ "Compared to other mages, Great Mages have a higher resistance to ‘fire’ "
+#~ "attacks."
+#~ msgstr ""
+#~ "Comparados con otros magos, los grandes magos tienen una resistencia "
+#~ "mayor a los ataques de fuego."
+
+#~ msgid ""
+#~ "Compared to other mages, Red Mages have a higher resistance to ‘fire’ "
+#~ "attacks."
+#~ msgstr ""
+#~ "Comparados con otros magos, los magos rojos tienen una resistencia mayor "
+#~ "a los ataques de fuego."
+
+#~ msgid ""
+#~ "Compared to other mages, White Mages have a higher resistance to ‘arcane’ "
+#~ "attacks."
+#~ msgstr ""
+#~ "Comparados con otros magos, los magos blancos tienen una resistencia "
+#~ "mayor a los ataques arcanos."
+
+#~ msgid ""
+#~ "Compared to other mages, Mages of Light have a higher resistance to "
+#~ "‘arcane’ attacks."
+#~ msgstr ""
+#~ "Comparados con otros magos, los magos de la luz tienen una resistencia "
+#~ "mayor a los ataques arcanos."
 
 # Aunque caballero es un nombre a modo de burla, lobero es más corto y manejable
 #~ msgid ""
