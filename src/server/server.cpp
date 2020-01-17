@@ -1636,6 +1636,12 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 				} else {
 					version = player->info().version();
 					source = player->info().source();
+
+					if(source != "Default" && source != "Steam" && source != "SourceForge" && source != "Flatpak"
+					&& source != "macOS App Store" && source != "Linux repository" && source != "iOS" && source != "Android"
+					&& source != "BSD repository") {
+						source = "Default";
+					}
 				}
 				user_handler_->db_insert_game_player_info(uuid_, g.id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
 			}
