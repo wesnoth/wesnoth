@@ -9,13 +9,13 @@
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010, 2011.
 # Luciano Montanaro <mikelima@gmail.com>, 2012.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2019.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 13:29-0300\n"
-"PO-Revision-Date: 2019-09-24 11:16+0200\n"
+"PO-Revision-Date: 2020-01-13 10:28+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -127,7 +127,7 @@ msgid ""
 "to disable."
 msgstr ""
 "Numero di minuti di attesa prima della rimozione dei messaggi di chat nel "
-"corso di una partita. Digita 0 per disabilitare"
+"corso di una partita. Digita 0 per disabilitare."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -5284,14 +5284,15 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"Se una unità è posizionata vicino a due curatori di due squadre alleate, "
+"l’unità verrà curata in entrambi i turni delle squadre. In questo modo, una "
+"unità può guarire più velocemente possibile."
 
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:267
-#, fuzzy
-#| msgid "<i>― Kai Laudiss, 623YW</i>"
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr "<i>― Kai Laudiss, 623AW</i>"
+msgstr "<i>― Vank dello Stormo di Galun, 6AW</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5342,8 +5343,6 @@ msgid "You do not have a leader to recruit with."
 msgstr "Non hai un condottiero in grado di reclutare unità."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
 msgstr "Nessuno dei tuoi condottieri è in grado di reclutare quell’unità."
 
@@ -6730,34 +6729,24 @@ msgid "Only available during a scenario."
 msgstr "Disponibile solamente nel corso di uno scenario."
 
 #: src/help/help_impl.cpp:358 src/help/help_impl.cpp:394
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "Programma del Periodo della giornata:"
+msgstr "Programma del Periodo della giornata"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Unità legali: "
+msgstr "Bonus unità Legali:"
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Unità neutrali: "
+msgstr "Bonus unità Neutrali:"
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Unità caotiche: "
+msgstr "Bonus unità Caotiche:"
 
 #: src/help/help_impl.cpp:388
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "Unità liminali: "
+msgstr "Bonus unità Liminali:"
 
 #: src/help/help_impl.cpp:389
 msgid "Schedule"
@@ -7180,45 +7169,36 @@ msgid "You have no units available to recruit."
 msgstr "Non hai unità disponibili per il reclutamento."
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "Nessuna unità reclutata"
+msgstr "Nessuna unità reclutata."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "Errore interno. Si prega di notificare questo bug! Dettagli:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
 msgstr ""
+"In questo momento non puoi reclutare una unità di tipo $unit_type_name."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "Non hai abbastanza monete d’oro per reclutare l’unità"
+msgstr ""
+"In questo momento della tua pianificazione, non hai abbastanza monete d’oro "
+"per reclutare questa unità."
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "Non hai abbastanza monete d’oro per reclutare l’unità"
+msgstr "Non hai abbastanza monete d’oro per reclutare l’unità."
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "Sei separato dai tuoi soldati e non puoi richiamarli"
+msgstr "Sei separato dai tuoi soldati e non puoi richiamarli."
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7227,25 +7207,18 @@ msgstr ""
 "(Devi avere dei veterani sopravvissuti ad uno scenario precedente)"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "Al momento non puoi richiamare unità nella casella evidenziata"
+msgstr "Al momento non puoi richiamare unità nella casella evidenziata."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "Nessuna unità richiamata"
+msgstr "Nessuna unità richiamata."
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "Devi avere almeno 1 moneta d’oro per richiamare un’unità"
-msgstr[1] "Devi avere almeno $cost monete d’oro per richiamare questa unità"
+msgstr[0] "Devi avere almeno 1 moneta d’oro per richiamare un’unità."
+msgstr[1] "Devi avere almeno $cost monete d’oro per richiamare questa unità."
 
 #: src/menu_events.cpp:572
 msgid "You cannot end your turn yet!"
@@ -7339,7 +7312,7 @@ msgstr "[<squadra> [on/off]]"
 
 #: src/menu_events.cpp:1227
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Cambia il tema in gioco."
 
 #: src/menu_events.cpp:1229
 msgid "<side> <nickname>"
@@ -7491,14 +7464,12 @@ msgstr "Mostra una variabile dello scenario."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1276
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
-"Modifica la variabile di un’unità (Solo le chiavi di livello superiore sono "
-"supportate)."
+"Modifica la variabile di un’unità. (Solo le chiavi di livello superiore sono "
+"supportate e advances=<numero>.)"
 
 #: src/menu_events.cpp:1283
 msgid "Discover all units in help."
@@ -7510,7 +7481,7 @@ msgstr "Dimentica la scoperta di tutte le unità nella sezione Aiuto."
 
 #: src/menu_events.cpp:1285
 msgid "<unit type id>"
-msgstr ""
+msgstr "<id tipo di unità>"
 
 #: src/menu_events.cpp:1285
 msgid "Create a unit."
@@ -7526,17 +7497,15 @@ msgstr "Attiva/disattiva l’oscurità per il giocatore attuale."
 
 #: src/menu_events.cpp:1288
 msgid "<amount>"
-msgstr ""
+msgstr "<ammontare>"
 
 #: src/menu_events.cpp:1288
 msgid "Give gold to the current player."
 msgstr "Dona dell’oro al giocatore attuale."
 
 #: src/menu_events.cpp:1289
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<nickname>"
+msgstr "<nome evento>"
 
 #: src/menu_events.cpp:1289
 msgid "Fire a game event."
@@ -8735,22 +8704,6 @@ msgstr "Nascondi i piani di $player"
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
 
-#~ msgid " replay"
-#~ msgstr " replay"
-
-# tra i "sergenti" va tradotto?
-#~ msgid "do not translate the 'all'^[all|<command>]"
-#~ msgstr "[all|<comando>]"
-
-#~ msgid "aliases:"
-#~ msgstr "alias:"
-
-#~ msgid "Show fps."
-#~ msgstr "Mostra FPS."
-
-#~ msgid "Empty"
-#~ msgstr "Vuota"
-
 #~ msgid ""
 #~ "In many campaign scenarios, you may issue simple instructions for your "
 #~ "computer-controlled allies using the right-click context menu."
@@ -8758,15 +8711,6 @@ msgstr "Opzioni della lavagna"
 #~ "In molti scenari legati a varie campagne, puoi dare semplici istruzioni "
 #~ "ai tuoi alleati controllati dal computer utilizzando il menù contestuale "
 #~ "che appare facendo clic col tasto destro."
-
-#~ msgid "An invalid defender weapon got selected."
-#~ msgstr "È stata selezionata un’arma di difesa non valida."
-
-#~ msgid "Advances to:"
-#~ msgstr "Avanza come:"
-
-#~ msgid "Ping timeout"
-#~ msgstr "Timeout del ping"
 
 #~ msgid ""
 #~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
@@ -8803,115 +8747,3 @@ msgstr "Opzioni della lavagna"
 #~ "Sono presenti almeno duecento tipi di unità, sedici razze, sette fazioni "
 #~ "principali e centinaia di anni di storia.\n"
 #~ "\n"
-
-#~ msgid ""
-#~ "(17 Single Player Campaigns with 211 Scenarios,\n"
-#~ "One Multiplayer Campaign with 14 Scenarios,\n"
-#~ "7 Factions battling on 46 Multiplayer Maps/Scenarios,\n"
-#~ "500+ Add-ons.)"
-#~ msgstr ""
-#~ "(17 campagne per giocatore singolo con 211 scenari,\n"
-#~ "1 campagna multigiocatore con 14 scenari,\n"
-#~ "7 fazioni in battaglia lungo 46 mappe/scenari multigiocatore,\n"
-#~ "oltre 500 estensioni.)"
-
-#~ msgid "$era_name (missing)"
-#~ msgstr "$era_name (mancante)"
-
-#~ msgid "(missing)"
-#~ msgstr "(mancante)"
-
-#~ msgid "S"
-#~ msgstr "S"
-
-#~ msgid "C"
-#~ msgstr "C"
-
-#~ msgid "none"
-#~ msgstr "nessuno"
-
-#~ msgid "None"
-#~ msgstr "Nessuno"
-
-#~ msgid "<span color=\"$color\">$number_or_percent movement</span> point"
-#~ msgid_plural ""
-#~ "<span color=\"$color\">$number_or_percent movement</span> points"
-#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> punto movimento"
-#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> punti movimento"
-
-#~ msgid "Unit with negative HP found"
-#~ msgstr "Trovata unità con PF negativi"
-
-#, fuzzy
-#~| msgid "Screenshot"
-#~ msgid "Screenshots..."
-#~ msgstr "Schermata"
-
-#, fuzzy
-#~| msgid "Saved"
-#~ msgid "Save"
-#~ msgstr "Partita salvata"
-
-#~ msgid "wesnoth"
-#~ msgstr "Wesnoth"
-
-#, fuzzy
-#~| msgid "$elem has been deprecated and will be removed in the next version."
-#~ msgid ""
-#~ "$elem has been deprecated and will be removed in the next version "
-#~ "($version)."
-#~ msgstr "$elem è stato deprecato e verrà rimosso nella prossima versione."
-
-#~ msgid ""
-#~ "Screenshot creation failed.\n"
-#~ "\n"
-#~ "Make sure there is enough space on the drive holding Wesnoth’s player "
-#~ "resource files and that file permissions are set up correctly."
-#~ msgstr ""
-#~ "Creazione della schermata non riuscita.\n"
-#~ "\n"
-#~ "Accertarsi che vi sia spazio sufficiente nel drive contenente i file "
-#~ "delle risorse giocatore di Wesnoth e che i permessi di accesso ai file "
-#~ "siano impostati correttamente."
-
-#~ msgid "theme^UnitBox"
-#~ msgstr "UnitBox"
-
-#~ msgid "An experimental work-in-progress replacement for the default theme"
-#~ msgstr "Tema sperimentale in sostituzione di quello predefinito"
-
-#~ msgid "theme^Widescreen"
-#~ msgstr "Widescreen"
-
-#~ msgid "An experimental theme optimized for widescreen resolutions"
-#~ msgstr "Tema sperimentale ottimizzato per risoluzioni a schermo largo"
-
-#~ msgid "--give--"
-#~ msgstr "--assegna--"
-
-#~ msgid "User made map"
-#~ msgstr "Mappa creata da altro utente"
-
-#~ msgid "Unknown era: $era_id"
-#~ msgstr "Era sconosciuta: $era_id"
-
-#~ msgid "(S)"
-#~ msgstr "(S)"
-
-#~ msgid "Unknown scenario: $scenario_id"
-#~ msgstr "Scenario sconosciuto: $scenario_id"
-
-#~ msgid "(C)"
-#~ msgstr "(C)"
-
-#~ msgid "Unknown campaign: $campaign_id"
-#~ msgstr "Campagna sconosciuta: $campaign_id"
-
-#~ msgid "wfl"
-#~ msgstr "wfl"
-
-#~ msgid " and "
-#~ msgstr " e "
-
-#~ msgid "$percent|% accuracy"
-#~ msgstr "$percent|% accuratezza"
