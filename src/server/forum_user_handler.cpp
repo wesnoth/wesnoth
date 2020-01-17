@@ -418,21 +418,12 @@ std::string fuh::get_uuid(){
 	}
 }
 
-void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name){
+void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password){
 	try {
-		prepared_statement<void>("INSERT INTO `" + db_game_info_table_ + "`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME) VALUES(?, ?, ?, ?)",
-		uuid, game_id, version, name);
+		prepared_statement<void>("INSERT INTO `" + db_game_info_table_ + "`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME, MAP_NAME, ERA_NAME, RELOAD, OBSERVERS, PUBLIC, PASSWORD) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+		uuid, game_id, version, name, map_name, era_name, reload, observers, is_public, has_password);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not insert into table `" + db_game_info_table_ + "`:" << e.message << std::endl;
-	}
-}
-
-void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password){
-	try {
-		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET START_TIME = CURRENT_TIMESTAMP, MAP_NAME = ?, ERA_NAME = ?, RELOAD = ?, OBSERVERS = ?, PUBLIC = ?, PASSWORD = ? WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
-		map_name, era_name, reload, observers, is_public, has_password, uuid, game_id);
-	} catch (const sql_error& e) {
-		ERR_UH << "Could not update the game's starting information on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
 	}
 }
 

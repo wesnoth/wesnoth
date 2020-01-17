@@ -1298,10 +1298,6 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 	}
 
 	create_game.copy_into(g.level().root());
-
-	if(user_handler_) {
-		user_handler_->db_insert_game_info(uuid_, g.id(), game_config::wesnoth_version.str(), g.name());
-	}
 }
 
 void server::cleanup_game(game* game_ptr)
@@ -1625,7 +1621,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 
 		if(user_handler_) {
 			const simple_wml::node& m = *g.level().root().child("multiplayer");
-			user_handler_->db_update_game_start(uuid_, g.id(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
+			user_handler_->db_insert_game_info(uuid_, g.id(), game_config::wesnoth_version.str(), g.name(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
