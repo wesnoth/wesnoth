@@ -5,13 +5,13 @@
 #
 # Automatically generated, 2004.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2010.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2019.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:40+0300\n"
-"PO-Revision-Date: 2019-09-24 11:33+0200\n"
+"PO-Revision-Date: 2020-01-13 10:37+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -5469,8 +5469,10 @@ msgid "Details:"
 msgstr "Dettagli:"
 
 #: src/build_info.cpp:269
+#, fuzzy
+#| msgid "feature^JPEG screenshots"
 msgid "feature^JPG screenshots"
-msgstr "Istantanee JPG"
+msgstr "Istantanee JPEG"
 
 #: src/build_info.cpp:276
 msgid "feature^Lua console completion"
@@ -7176,16 +7178,22 @@ msgid "Next Move"
 msgstr "Mossa successiva"
 
 #: src/hotkey/hotkey_command.cpp:138
+#, fuzzy
+#| msgid "View: Full Map"
 msgid "Full Map"
-msgstr "Mappa completa"
+msgstr "Vista: Mappa Completa"
 
 #: src/hotkey/hotkey_command.cpp:139
+#, fuzzy
+#| msgid "View: Each Team"
 msgid "Each Team"
-msgstr "Ogni squadra"
+msgstr "Vista: Ogni Schieramento"
 
 #: src/hotkey/hotkey_command.cpp:140
+#, fuzzy
+#| msgid "View: Human Team"
 msgid "Human Team"
-msgstr "Schieramento umano"
+msgstr "Vista: Schieramento Umano"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
@@ -7856,6 +7864,34 @@ msgstr ""
 
 #~ msgid "Stop Game"
 #~ msgstr "Arresta una partita"
+
+#~ msgid "Private Replay"
+#~ msgstr "Replay Privato"
+
+#~ msgid "Whether the replay will be publicly available"
+#~ msgstr "Se un replay debba essere disponibile per tutti"
+
+#~ msgid "Search for unit name, unit type name, unit level, or trait."
+#~ msgstr ""
+#~ "Cerca il nome, il tipo, il livello o la caratteristica di una unità."
+
+#~ msgid "Defender vulnerability vs"
+#~ msgstr "Vulnerabilità attaccante vs"
+
+#~ msgid "Attacker resistance vs"
+#~ msgstr "Resistenza difensore vs"
+
+#~ msgid ""
+#~ "This unit cannot be recalled because you will not have enough gold at "
+#~ "this point in your plan."
+#~ msgstr ""
+#~ "Questa unità non può essere richiamata perché a questo punto della tua "
+#~ "pianificazione non hai abbastanza monete d’oro."
+
+#~ msgid "This unit cannot be recalled because you do not have enough gold."
+#~ msgstr ""
+#~ "Questa unità non può essere richiamata perché non hai abbastanza monete "
+#~ "d’oro."
 
 #~ msgid "feature^Experimental OpenMP support"
 #~ msgstr "support sperimentale OpenMP"

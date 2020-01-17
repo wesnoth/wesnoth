@@ -8,14 +8,14 @@
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2009, 2011.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2019.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-09-07 15:16+0200\n"
+"PO-Revision-Date: 2020-01-13 15:20+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -453,8 +453,10 @@ msgstr "Sud"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
+#, fuzzy
+#| msgid "Defeat all enemy leaders"
 msgid "Defeat enemy leader(s)"
-msgstr "Sconfiggi il/i condottieri nemici"
+msgstr "Sconfiggi tutti i condottieri nemici"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
@@ -2766,6 +2768,30 @@ msgstr ""
 msgid "Testing new lua mapgen features"
 msgstr ""
 
+#~ msgid "Defeat the enemy leader"
+#~ msgstr "Sconfiggi il condottiero nemico"
+
+#~ msgid "teamname^Team 3"
+#~ msgstr "Squadra 3"
+
+#~ msgid "teamname^Team 4"
+#~ msgstr "Squadra 4"
+
+#~ msgid "teamname^Monsters"
+#~ msgstr "Mostri"
+
+#~ msgid "Defeat all monsters"
+#~ msgstr "Sconfiggi tutti i mostri"
+
+#~ msgid "Defeat the enemy leaders"
+#~ msgstr "Sconfiggi i condottieri nemici"
+
+#~ msgid "Death of all your units"
+#~ msgstr "Morte di tutte le tue unità"
+
+#~ msgid "You cannot recruit units."
+#~ msgstr "Non puoi reclutare unità."
+
 #~ msgid "Default + Khalifate"
 #~ msgstr "Era predefinita + Califfato"
 
@@ -2854,9 +2880,6 @@ msgstr ""
 
 #~ msgid "Survive and defeat the waves of opposition."
 #~ msgstr "Sopravvivi e sconfiggi le ondate degli avversari."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Sconfiggi tutte le ondate"
 
 #~ msgid "Lose all your team’s leaders"
 #~ msgstr "Morte di tutti i tuoi condottieri"
