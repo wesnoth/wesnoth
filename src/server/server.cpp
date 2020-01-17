@@ -250,6 +250,7 @@ server::server(int port,
 	, save_replays_(false)
 	, replay_save_path_()
 	, allow_remote_shutdown_(false)
+	, client_sources_()
 	, tor_ip_list_()
 	, failed_login_limit_()
 	, failed_login_ban_()
@@ -458,6 +459,10 @@ void server::load_config()
 	deny_unregistered_login_ = cfg_["deny_unregistered_login"].to_bool();
 
 	allow_remote_shutdown_ = cfg_["allow_remote_shutdown"].to_bool();
+
+	for(const std::string& source : utils::split(cfg_["client_sources"].str())) {
+		client_sources_.insert(source);
+	}
 
 	disallowed_names_.clear();
 	if(cfg_["disallow_names"].empty()) {
@@ -1637,9 +1642,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 					version = player->info().version();
 					source = player->info().source();
 
-					if(source != "Default" && source != "Steam" && source != "SourceForge" && source != "Flatpak"
-					&& source != "macOS App Store" && source != "Linux repository" && source != "iOS" && source != "Android"
-					&& source != "BSD repository") {
+					if(client_sources_.count(source) == 0) {
 						source = "Default";
 					}
 				}
