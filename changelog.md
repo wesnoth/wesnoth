@@ -54,8 +54,8 @@
      * Redraw S2 and reduce difficulty
  ### Editor
  ### Language and i18n
-   * Updated translations: Ancient Greek, Chinese (Traditional), Dutch, French,
-     Italian, Korean, Portuguese (Brazil), Russian, Turkish
+   * Updated translations: Ancient Greek, Chinese (Traditional), Dutch,
+     Esperanto, French, Italian, Korean, Portuguese (Brazil), Russian, Turkish
    * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Terrains
    * Add Stone Walls variation Catacombs (Xot) including some overlays
