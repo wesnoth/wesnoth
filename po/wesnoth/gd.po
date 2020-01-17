@@ -5,7 +5,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# GunChleoc, 2018
+# GunChleoc, 2019
 #
 #, fuzzy
 msgid ""
@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2017-05-31 12:13+0000\n"
-"Last-Translator: GunChleoc, 2018\n"
+"PO-Revision-Date: 2020-01-13 11:39+0000\n"
+"Last-Translator: GunChleoc, 2019\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -120,10 +120,6 @@ msgstr "Aois teachdaireachdan cabadaich"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -4175,10 +4171,8 @@ msgstr "Frithealaiche Bheasnaid oifigeil"
 
 #. [server]
 #: data/game_config.cfg:8
-#, fuzzy
-#| msgid "Official Wesnoth Server"
 msgid "Alternate Wesnoth Server"
-msgstr "Frithealaiche Bheasnaid oifigeil"
+msgstr "Frithealaiche Bheasnaid eile"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -4552,10 +4546,6 @@ msgstr "rg"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
@@ -4570,30 +4560,22 @@ msgstr "<i>– Treòir Dealbhachaidh Bheasnaid</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Cruthaich <i>Cnàmh-sgeul ùr</i> sa chlàr-taice <i>Faidhle</i> aig an "
-"deasaiche gus feartan adhartach a chleachdadh."
+"Ann an deasaiche nam mapa, tagh <i>Cnàmh-sgeul ùr</i> sa chlàr-taice "
+"<i>Faidhle</i> gus gleusan adhartach a chleachdadh."
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"’S urrainn dhut na cnàmh-sgeulan a shàbhail thu sa phasgan tùsail leis an "
-"deasaiche a thaghadh san earrann <i>Cnàmh-sgeulan a’ chleachdaiche</i> nuair "
-"a chruthaicheas tu geama ioma-chluicheadair."
+"’S urrainn dhut na cnàmh-sgeulan a shàbhail thu sa phasgan tùsail a thaghadh "
+"san earrann <i>Cnàmh-sgeulan a’ chleachdaiche</i> air sgrìn “Cruthaich "
+"geama” ioma-chluicheadair."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -5439,10 +5421,8 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
-msgstr "taghadh àrdachaidh"
+msgstr "air taghadh àrdachaidh"
 
 #: src/actions/attack.cpp:600 src/actions/attack.cpp:1350
 msgid "An invalid attacker weapon got selected."
@@ -5476,6 +5456,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "Chan eil ceannard agad gus trusadh a dhèanamh."
 
 #: src/actions/create.cpp:478
+#, fuzzy
+#| msgid "None of your leaders are able to recruit this unit."
 msgid "None of your leaders are able to recruit that unit."
 msgstr ""
 "Chan urrainn dha gin dhe na cheannardan agad an t-aonad seo a thrusadh."
@@ -6307,7 +6289,7 @@ msgstr "Ionadail"
 
 #: src/game_initialization/connect_engine.cpp:1294
 msgid "Nobody"
-msgstr ""
+msgstr "Gun_ainm"
 
 #: src/game_initialization/connect_engine.cpp:1297
 msgid "Reserved"
@@ -6541,11 +6523,10 @@ msgstr ""
 "Chan eil far-ainmean gun chlàradh ceadaichte air an fhrithealaiche seo."
 
 #: src/game_initialization/multiplayer.cpp:323
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
-"Chaidh am far-ainm “$nick” a thoirmeasg air bòrd-brath an fhrithealaiche seo."
+"Chaidh am far-ainm “$nick” a thoirmeasg air bòrd-brath an fhrithealaiche seo "
+"fad $duration|."
 
 #: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
@@ -6553,11 +6534,10 @@ msgstr ""
 "Chaidh am far-ainm “$nick” a thoirmeasg air bòrd-brath an fhrithealaiche seo."
 
 #: src/game_initialization/multiplayer.cpp:329
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
-"Chaidh an seòladh IP agad a thoirmeasg air bòrd-brath an fhrithealaiche seo."
+"Chaidh an seòladh IP agad a thoirmeasg air bòrd-brath an fhrithealaiche seo "
+"fad $duration|."
 
 #: src/game_initialization/multiplayer.cpp:331
 msgid "Your IP address is banned on this server’s forums."
@@ -6565,16 +6545,12 @@ msgstr ""
 "Chaidh an seòladh IP agad a thoirmeasg air bòrd-brath an fhrithealaiche seo."
 
 #: src/game_initialization/multiplayer.cpp:335
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
 "Chaidh seòladh puist-d an fhar-ainm “$nick” a thoirmeasg air bòrd-brath an "
-"fhrithealaiche seo."
+"fhrithealaiche seo fad $duration|."
 
 #: src/game_initialization/multiplayer.cpp:337
 msgid ""
@@ -7241,7 +7217,7 @@ msgstr ""
 
 #: src/map_command_handler.hpp:218
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr "[all|<command>]"
+msgstr ""
 
 #: src/map_command_handler.hpp:263
 msgid "Missing argument $arg_id"
@@ -7274,7 +7250,7 @@ msgstr "Cleachdadh:"
 
 #: src/map_command_handler.hpp:334
 msgid "aliases:"
-msgstr "far-ainmean:"
+msgstr ""
 
 #: src/menu_events.cpp:177
 msgid "Save Map As"
@@ -7306,47 +7282,63 @@ msgstr "Chan eil aonadan agad airson trusadh."
 
 #: src/menu_events.cpp:283
 #, fuzzy
-#| msgid "No unit recalled"
+#| msgid "No unit recruited."
 msgid "No unit recruited"
-msgstr "Cha deach aonad ais-ghairm"
+msgstr "Cha deach aonad a thrusadh."
 
 #: src/menu_events.cpp:315
+#, fuzzy
+#| msgid "You do not have enough gold to recruit this unit."
 msgid "You do not have enough gold to recruit that unit"
-msgstr "Chan eil òr gu leòr agad gus an t-aonad seo a thrusadh"
+msgstr "Chan eil òr gu leòr agad gus an t-aonad seo a thrusadh."
 
 #: src/menu_events.cpp:351
+#, fuzzy
+#| msgid "You are separated from your soldiers and may not recall them."
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
-"Tha thu sgaraichte bho na saighdearan agad is chan urrainn dhut an ais-ghairm"
+"Tha thu sgaraichte bho na saighdearan agad is chan urrainn dhut an ais-"
+"ghairm."
 
 #: src/menu_events.cpp:370
+#, fuzzy
+#| msgid ""
+#| "There are no troops available to recall.\n"
+#| "(You must have veteran survivors from a previous scenario.)"
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"Chan eil saighdearan ri ais-ghairm ann\n"
+"Chan eil saighdearan ri ais-ghairm ann.\n"
 "(Feumaidh seann-ghaisgich a bhith agad air mairsinn beò bho chnàmh-sgeul "
-"roimhe)"
+"roimhe.)"
 
 #: src/menu_events.cpp:374
+#, fuzzy
+#| msgid "You currently can't recall at the highlighted location."
 msgid "You currently can't recall at the highlighted location"
-msgstr "Chan urrainn dhut ais-ghairm air an àite comharraichte an-dràsta"
+msgstr "Chan urrainn dhut ais-ghairm air an àite comharraichte an-dràsta."
 
 #: src/menu_events.cpp:386
+#, fuzzy
+#| msgid "No unit recalled."
 msgid "No unit recalled"
-msgstr "Cha deach aonad ais-ghairm"
+msgstr "Cha deach aonad ais-ghairm."
 
 #: src/menu_events.cpp:403
+#, fuzzy
+#| msgid "You must have at least 1 gold piece to recall a unit."
+#| msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgstr[0] ""
-"Feumaidh co-dhiù $cost bhonn òir a bhith agad gus an t-aonad seo ais-ghairm"
+"Feumaidh co-dhiù $cost bhonn òir a bhith agad gus an t-aonad seo ais-ghairm."
 msgstr[1] ""
-"Feumaidh co-dhiù $cost bhonn òir a bhith agad gus an t-aonad seo ais-ghairm"
+"Feumaidh co-dhiù $cost bhonn òir a bhith agad gus an t-aonad seo ais-ghairm."
 msgstr[2] ""
-"Feumaidh co-dhiù $cost buinn òir a bhith agad gus an t-aonad seo ais-ghairm"
+"Feumaidh co-dhiù $cost buinn òir a bhith agad gus an t-aonad seo ais-ghairm."
 msgstr[3] ""
-"Feumaidh co-dhiù $cost bonn òir a bhith agad gus an t-aonad seo ais-ghairm"
+"Feumaidh co-dhiù $cost bonn òir a bhith agad gus an t-aonad seo ais-ghairm."
 
 #: src/menu_events.cpp:549
 msgid "You cannot end your turn yet!"
@@ -7417,16 +7409,16 @@ msgid "Switch a side to/from AI control."
 msgstr "Dèan suids air taobh dha/bho smachd an IF."
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<taobh> [on/off]]"
+msgstr ""
 
 #: src/menu_events.cpp:1192
 msgid "Switch a side to/from idle state."
 msgstr "Dèan suids air taobh dha/bho staid ’na thàmh."
 
 #: src/menu_events.cpp:1193
+#, fuzzy
+#| msgid "command_idle^[<side> [on/off]]"
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<taobh> [on/off]]"
 
@@ -7460,7 +7452,7 @@ msgstr "Dì-bhugaich fillidhean bhon chruth-tìre fon luchag."
 
 #: src/menu_events.cpp:1203
 msgid "Show fps."
-msgstr "Seall fps."
+msgstr ""
 
 #: src/menu_events.cpp:1205
 msgid "Save game."
@@ -7562,7 +7554,7 @@ msgstr "<ainm>[=<àithne>]"
 
 #: src/menu_events.cpp:1237
 msgid "Set or show alias to a command"
-msgstr "Cuir ainm-brèige air àithne no seall e."
+msgstr "Cuir alias air àithne no seall e."
 
 #: src/menu_events.cpp:1239
 msgid "<var>=<value>"
@@ -7581,10 +7573,14 @@ msgid "Show a scenario variable."
 msgstr "Seall caochladair cnàmh-sgeòil."
 
 #: src/menu_events.cpp:1242
+#, fuzzy
+#| msgid ""
+#| "Modify a unit variable. (Only top level keys are supported, and "
+#| "advances=<number>.)"
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Atharraich caochladair aonaid. (Cha chuirear taic ach ri iuchraichean prìomh-"
-"ìre.)"
+"ìre agus ri advances=<number>.)"
 
 #: src/menu_events.cpp:1248
 msgid "Discover all units in help."
@@ -7810,7 +7806,7 @@ msgstr "Gun sgàthan caidreabhach"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Chaidh geama ($name|, $scenario|) a chruthachadh"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7850,7 +7846,7 @@ msgstr "Thachradh air cruth-tìre le cosgais ghluasaid nas lugha na 1."
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "air caochladair uile-choitcheann"
 
 #: src/play_controller.cpp:247
 msgid "time left for current turn"
@@ -7990,7 +7986,7 @@ msgstr "Seòrsa: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Taobh:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -8096,16 +8092,12 @@ msgid "Defense: "
 msgstr "Dìon: "
 
 #: src/reports.cpp:631 src/reports.cpp:632
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "tionndadh: "
+msgstr "lèirsinn:"
 
 #: src/reports.cpp:636 src/reports.cpp:637
-#, fuzzy
-#| msgid "Jamming:"
 msgid "jamming:"
-msgstr "Casg:"
+msgstr "casg:"
 
 #: src/reports.cpp:666
 msgid "Movement Costs:"
@@ -8204,16 +8196,12 @@ msgstr[2] "Ionnsaighean"
 msgstr[3] "Ionnsaighean"
 
 #: src/reports.cpp:1216
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Àm dhen latha: "
+msgstr "Sgeideal àm dhen latha:"
 
 #: src/reports.cpp:1265
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Àm dhen latha: "
+msgstr "Àm dhen latha:"
 
 #: src/reports.cpp:1266 src/reports.cpp:1320
 msgid "Lawful units: "
@@ -8271,6 +8259,13 @@ msgid "Units"
 msgstr "Aonadan"
 
 #: src/reports.cpp:1445
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. It is equal to "
+#| "the number of unit levels not supported by villages. The second is the "
+#| "total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -8279,26 +8274,33 @@ msgid ""
 msgstr ""
 "A’ chosgais a dh’èireas air deireadh gach cuairte gus am feachd agad a "
 "chumail. ’S e an uiread a thèid a thoirt air falbh a tha sa chiad àireamh. "
-"’S e na chosgas a’ chumail a tha san dàrna àireamh, a’ gabhail a-steach na "
-"bheir na bailtean dhut – is ciall dha seo an uiread a dh’òr a rachadh a "
-"thoirt air falbh uat nan robh thu air na bailtean uile a chall."
+"Tha e co-ionnann ri àireamh de rangan nan aonadan nach fhaigh taic o "
+"bhailtean. ’S e na chosgas a’ chumail a tha san dàrna àireamh, a’ gabhail a-"
+"steach na bheir na bailtean dhut – is ciall dha seo an uiread a dh’òr a "
+"rachadh a thoirt air falbh uat nan robh thu air na bailtean uile a chall."
 
 #: src/reports.cpp:1445
 msgid "Upkeep"
 msgstr "Beathachadh"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid "income"
 msgid "Income"
-msgstr "Teachd a-steach"
+msgstr "teachd a-steach"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid ""
+#| "The net amount of gold you gain or lose each turn, taking into account "
+#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
-"an uiread a dh’òr a bhuannaicheas tu gach cuairt o na bailtean fo do smachd "
-"no an uiread a dh’òr a chailleas tu gach cuairt gus na h-aonadan agad a "
-"chumail."
+"Seo an t-uiread lom a dh’airgead a bhuannaicheas no chailleas tu gach "
+"cuairt, le aire air an teachd a-steach a gheibh thu o bhailtean fo do smachd "
+"agus pàigheadh a’ bheathachaidh."
 
 #: src/reports.cpp:1650
 msgid "Observers:"
@@ -8329,8 +8331,10 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %d %b %H:%M %Y"
 
 #: src/save_index.cpp:240 src/save_index.cpp:247
+#, fuzzy
+#| msgid "replay"
 msgid " replay"
-msgstr " ath-chluiche"
+msgstr "ath-chluiche"
 
 #: src/save_index.cpp:313 src/savegame.cpp:69 src/savegame.cpp:582
 #: src/savegame.cpp:584
@@ -8620,7 +8624,7 @@ msgstr[3] "a’ feitheamh air $desc o thaobhan $sides"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "air ion-chur"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8848,21 +8852,50 @@ msgstr "Falaich na planaichean aig $player"
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
 
-#, fuzzy
-#~| msgid "Attack"
-#~| msgid_plural "Attacks"
-#~ msgid "Attacks"
-#~ msgstr "Ionnsaigh"
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Cha bhuannaich na h-aonadan stairsnich an làn-neart aca ach air a’ "
+#~ "chiaradh is chamhanaich.\n"
+#~ "\n"
+#~ "Latha: -25% dhe dhochann\n"
+#~ "Oidhche: -25% dhe dhochann"
 
-#, fuzzy
-#~| msgid "Recruits"
-#~ msgid "Recruit"
-#~ msgstr "Luchd air trusadh"
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Chan eil roghainn gnàthaichte ri fhaighinn airson an linn, a’ gheama no "
+#~ "an tuilleadain."
 
-#, fuzzy
-#~| msgid "There are no save files to load"
-#~ msgid "There are no corpses available."
-#~ msgstr "Chan eil faidhle sàbhalaidh ri luchdadh ann"
+#~ msgid "Defaults"
+#~ msgstr "Bun-roghainnean"
+
+#~ msgid "Connected Players"
+#~ msgstr "Cluicheadairean ceangailte"
+
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(%d chuairt air fhàgail)"
+#~ msgstr[1] "(%d chuairt air fhàgail)"
+#~ msgstr[2] "(%d cuairtean air am fàgail)"
+#~ msgstr[3] "(%d cuairt air fhàgail)"
+
+#~ msgid ""
+#~ "If a unit is positioned next to healers from two allied sides, the unit "
+#~ "will be healed on both sides’ turns. This way, a unit can be healed "
+#~ "faster than otherwise possible."
+#~ msgstr ""
+#~ "Ma chuireas tu aonad ri taobh aonadan slànachaidh dithis chaidreabhach, "
+#~ "thèid an t-aonad a shlànachadh air gach cuairt an dithis chaidreabhach. "
+#~ "Mar sin dheth, thèid an t-aonad a shlànachadh nas luaithe na ghabhas gun "
+#~ "taic do chaidreabhaich."
+
+#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
+#~ msgstr "<i>– Bainc itealadh Ghaluin, 6YW</i>"
 
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "a’ clàradh le facal-faire *** is gun seòladh puist-d"
@@ -8899,94 +8932,92 @@ msgstr "Roghainnean a’ bhùird-ghil"
 #~ "Iarr liosta dhe dh’fhiosrachadh as urrainn dhut a shuidheachadh airson an "
 #~ "fhar-ainm chlàraichte agad."
 
-#, fuzzy
-#~| msgid "Connection timed out"
-#~ msgid "Ping timeout"
-#~ msgstr "Dh’fhalbh an ùine air a’ cheangal"
+#~ msgid "Time of Day Schedule"
+#~ msgstr "Sgeideal àm dhen latha"
 
-#, fuzzy
-#~| msgid ""
-#~| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#~| "0 to disable"
+#~ msgid "Lawful Bonus:"
+#~ msgstr "Duais dligheachd:"
+
+#~ msgid "Neutral Bonus:"
+#~ msgstr "Duais neodrachd:"
+
+#~ msgid "Chaotic Bonus:"
+#~ msgstr "Duais coimeasgachd:"
+
+#~ msgid "Liminal Bonus:"
+#~ msgstr "Duais stairsnich:"
+
 #~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
+#~ "[all|<command>]\n"
+#~ "“all” = overview of all commands, <command> = name of a specific command "
+#~ "(provides more detail)"
 #~ msgstr ""
-#~ "An àireamh dhe mhionaidean a mhaireas teachdaireachd cabadaich sa gheama. "
-#~ "Tagh 0 gus a chur à comas."
+#~ "[all|<command>]\n"
+#~ "“all” = foir-shealladh air na h-àitheantan uile, <command> = ainm àithne "
+#~ "sònraichte (heibh thu barrachd fiosrachaidh)"
+
+#~ msgid "command^Alias:"
+#~ msgid_plural "Aliases:"
+#~ msgstr[0] "Alias:"
+#~ msgstr[1] "Aliasan:"
+#~ msgstr[2] "Aliasan:"
+#~ msgstr[3] "Aliasan:"
+
+#~ msgid "Internal error. Please report this as a bug! Details:\n"
+#~ msgstr ""
+#~ "Mearachd inntearnail. Nach dèan thu aithris air a’ bhuga seo? Mion-"
+#~ "fhiosrachadh:\n"
+
+#~ msgid "You cannot recruit a $unit_type_name at this time."
+#~ msgstr "Chan urrainn dhut $unit_type_name a thrusadh aig an àm seo."
 
 #~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
+#~ "At this point in your plan, you will not have enough gold to recruit this "
+#~ "unit."
 #~ msgstr ""
-#~ "Cha bhuannaich na h-aonadan stairsnich an làn-neart aca ach air a’ "
-#~ "chiaradh is chamhanaich.\n"
-#~ "\n"
-#~ "Latha: -25% dhe dhochann\n"
-#~ "Oidhche: -25% dhe dhochann"
+#~ "Aig an àm seo dhen phlana agad, cha bhi òr gu leòr agad airson an t-aonad "
+#~ "seo a thrusadh."
 
-#, fuzzy
-#~| msgid ""
-#~| "In this scenario, you may issue instructions to an allied side by right-"
-#~| "clicking on a unit that belongs to it."
 #~ msgid ""
-#~ "In many campaign scenarios, you may issue simple instructions for your "
-#~ "computer-controlled allies using the right-click context menu."
+#~ "[<side> [on/off]]\n"
+#~ "“on” = enable control by the AI, “off” = side is controlled by the player"
 #~ msgstr ""
-#~ "Sa chnàmh-sgeul seo, faodaidh tu iarrtasan a thoirt dha thaobh "
-#~ "caidreabhach le briogadh deas air aonad a bheil aigesan."
+#~ "[<taobh> [on/off]]\n"
+#~ "“on” = cuir an comas smachd leis an IF, “off” = bidh smachd aig "
+#~ "cluicheadair air an taobh seo"
 
-#, fuzzy
-#~| msgid "An invalid attacker weapon got selected."
-#~ msgid "An invalid defender weapon got selected."
-#~ msgstr "Chaidh airm ionnsaighe mì-dhligheach a thaghadh."
+#~ msgid "Change the in-game theme."
+#~ msgstr "Atharraich ùrlar a’ gheama."
 
-#~ msgid "Empty"
-#~ msgstr "Falamh"
+#~ msgid "Show fps (Frames Per Second)."
+#~ msgstr "Seall FPS (frèaman gach diog)."
 
-#, fuzzy
-#~| msgid "(observing)"
-#~ msgid "(missing)"
-#~ msgstr "(ag amharc)"
+#~ msgid "<unit type id>"
+#~ msgstr "<id seòrsa an aonaid>"
 
-#, fuzzy
-#~| msgid "none set."
-#~ msgid "none"
-#~ msgstr "gin air shuidheachadh."
+#~ msgid "<amount>"
+#~ msgstr "<co mheud>"
+
+#~ msgid "<event name>"
+#~ msgstr "<ainm an tachartais>"
 
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr ""
 #~ "Chan urrainn dhan IF smachd a ghabhail air taobh ionadail: “$side|.”"
 
-#, fuzzy
-#~| msgid "Advances to: "
-#~ msgid "Advances to:"
-#~ msgstr "Àrdaichidh e gu: "
-
-#, fuzzy
-#~| msgid "<span color=\"$color\">$number_or_percent</span> movement point"
-#~| msgid_plural ""
-#~| "<span color=\"$color\">$number_or_percent</span> movement points"
-#~ msgid "<span color=\"$color\">$number_or_percent movement</span> point"
-#~ msgid_plural ""
-#~ "<span color=\"$color\">$number_or_percent movement</span> points"
-#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> puing gluasaid"
-#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> phuing gluasaid"
-#~ msgstr[2] ""
-#~ "<span color=\"$color\">$number_or_percent</span> puingean gluasaid"
-#~ msgstr[3] "<span color=\"$color\">$number_or_percent</span> puing gluasaid"
+#~ msgid ""
+#~ "\n"
+#~ "Do you want to save the game?"
+#~ msgstr ""
+#~ "\n"
+#~ "A bheil thu airson an geama a shàbhaladh?"
 
 #~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
+#~ "This game has been ended.\n"
+#~ "Reason: "
 #~ msgstr ""
-#~ "Chan eil roghainn gnàthaichte ri fhaighinn airson an linn, a’ gheama no "
-#~ "an tuilleadain."
+#~ "Thàinig an geama seo gu crìoch.\n"
+#~ "Adhbhar: "
 
-#~ msgid "Defaults"
-#~ msgstr "Bun-roghainnean"
-
-#~ msgid "Connected Players"
-#~ msgstr "Cluicheadairean ceangailte"
+#~ msgid "Net Income"
+#~ msgstr "Teachd a-steach lom"
