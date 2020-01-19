@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-did\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 16:29 UTC\n"
-"PO-Revision-Date: 2019-05-23 21:06+0300\n"
+"PO-Revision-Date: 2020-01-19 14:33+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -69,6 +69,11 @@ msgid ""
 "sacrificing his own soul in the process.\n"
 "\n"
 msgstr ""
+"Kuzey sınır kenti Parthyn, her yıl komşu ork kabileleri tarafından "
+"yağmalanırdı. Dışlanmış bir büyücü olan Malin Keşnar, kendi ruhunu feda "
+"etmek anlamına gelse bile, buna dur demek için evini savunmayı ve orklardan "
+"intikam almayı amaç edinir.\n"
+"\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
@@ -197,15 +202,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:53
-#, fuzzy
-#| msgid ""
-#| "The silence was broken by the irregular shuffle of a man emerging from "
-#| "the trees. He stood before them, a hunched figure with a rasping voice "
-#| "reminiscent of crackling bones. <i>“I am Darken Volk. While I know you do "
-#| "not love my kind, I think it is vital that we put aside our differences "
-#| "for the moment. The orcish menace grows in the north and they will soon "
-#| "return in even greater force. You cannot hope to defend against them "
-#| "without my... help.”</i>"
 msgid ""
 "The silence was broken by the irregular shuffle of a man emerging from the "
 "trees. He stood before them, a hunched figure with a rasping voice "
@@ -220,8 +216,8 @@ msgstr ""
 "Kara Volk’um. Krallığınızda benim gibilerin sevilmediğini bildiğimden, "
 "farklarımızı şimdilik bir tarafa bırakmamız daha yararlı olacaktır. Kuzeyde "
 "ork tehdidi büyüyor ve yardım almaksızın sınır kentlerinin ayakta "
-"kalabileceğine ihtimal vermiyorum. Şimdilik, tek isteğim bir kaç gün "
-"kentinizde kalmaktır.”</i>"
+"kalabileceğine ihtimal vermiyorum. Şimdilik, tek isteğim dinlenmek için bir "
+"kaç gün kentinizde kalmaktır.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:57
@@ -339,10 +335,8 @@ msgstr "Malin Keşnar’ın ölümü"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:197
-#, fuzzy
-#| msgid "Death of Malin Keshar"
 msgid "Death of Dela Keshar"
-msgstr "Malin Keşnar’ın ölümü"
+msgstr "Dela Keşnar’ın ölümü"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:201
@@ -351,16 +345,12 @@ msgstr "Drogan’ın ölümü"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:218
-#, fuzzy
-#| msgid ""
-#| "Was it really a good idea to send out a raiding party so soon after the "
-#| "orcs just attacked us? Even father is no longer here..."
 msgid ""
 "Was it really a good idea to send out a raiding party so soon after the orcs "
 "just attacked us? Even Father is no longer here..."
 msgstr ""
 "Orklar bize saldırdıktan hemen sonra, bir akıncı ekibi göndermek gerçekten "
-"iyi bir fikir miydi? Babam bile artık burada değil ..."
+"iyi bir fikir miydi? Babam bile artık burada değil..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:223
@@ -432,20 +422,14 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:272
-#, fuzzy
-#| msgid ""
-#| "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
-#| "before he left. While I have no love for it, without the help of the "
-#| "dead, we consign ourselves and our families to orcish stewpots!"
 msgid ""
 "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
 "before he left. While I have no love for it, we cannot hope to repel the "
 "orcs without the help of the dead!"
 msgstr ""
 "Hayır, Drogan. Kara Volk’un gitmeden önce bana öğrettiği şekilde bu cesedi "
-"ben ayağa kaldırdım. Bunu pek sevmesem de ölülerin yardımı olmaksızın "
-"kendimizi ve ailelerimizi orkların kaynar kazanlarına teslim etmiş oluruz! "
-"Bu kadarını bile göremiyor musun?!"
+"ben ayağa kaldırdım. Bunu pek sevmesem de ölülerin yardımı olmadan orkları "
+"geri püskürtemeyiz!"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:277
@@ -463,20 +447,14 @@ msgstr "Ne? Ben asla kötü biri değilim Drogan!"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:287
-#, fuzzy
-#| msgid ""
-#| "You say that, brother, but you have been very close-mouthed about why the "
-#| "mages sent you home from Alduin. I am beginning to think that you were "
-#| "already dabbling in this witchcraft even before you met that necromancer!"
 msgid ""
 "You say that, Brother, but you have been very close-mouthed about why the "
 "mages sent you home from Alduin. I am beginning to think that you were "
 "already dabbling in this witchcraft even before you met that necromancer!"
 msgstr ""
-"Ölülerimizin gövdelerini ayağa kaldırmanın bedelinin düşük olmasının bir "
-"yararı yok! Büyücülerin neden seni Alduin’den evine gönderdikleri konusunda "
-"çok ağzı sıkıydın; bunun sebebi böyle sanatlarla uğraşmaksa bu "
-"kanaatlerinden dolayı endişeye gerek yok demektir!"
+"Böyle diyorsun kardeşim ama, büyücülerin neden seni Alduin’den evine "
+"gönderdikleri konusunda çok ağzı sıkıydın. Bu büyücüyle tanışmadan önce de "
+"bu tür büyülerle uğraşmakta olduğunu düşünmeye başladım!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:292
@@ -620,12 +598,6 @@ msgstr "Defol, Malin. Yüzünü bir daha görmek istemiyorum."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:505
-#, fuzzy
-#| msgid ""
-#| "That was bravely done, lad, holding the orcs off by yourself. But I fear "
-#| "the raiding party brings grave news from the north. More warlords have "
-#| "begun to mass armies in the hills, no more than a few days north of the "
-#| "Great River. I do not know if we possess the strength to fight them off."
 msgid ""
 "That was bravely done, lad, holding the orcs off by yourself. But I fear the "
 "raiding party brings grave news from the north. More warlords have begun to "
@@ -1634,13 +1606,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Malin and Darken Volk continue their raids on the orcs and eventually "
-#| "force the usually fractious Whitefang chieftains to unite in opposition. "
-#| "The orcs pursue the two necromancers east toward the mouth of the river "
-#| "men call the Longlier and Elves call the Arkan-thoria, where they manage "
-#| "to surround the humans and force a fight."
 msgid ""
 "Malin and Darken Volk continue their raids on the orcs and eventually force "
 "the usually fractious Whitefang chieftains to unite in opposition. The orcs "
@@ -1648,10 +1613,10 @@ msgid ""
 "Longlier and Elves call the Arkan-thoria, where they manage to surround the "
 "humans and force a fight."
 msgstr ""
-"Malin ve Kara Volk’un yıllarca verdikleri zarar genellikle huysuz olan bölge "
-"şeflerini karşı tarafta birleşmeye zorlamıştı. Sonunda, Elflerin Arkantorya "
-"dedikleri dar nehir vadisinde insanları kuşatmaya ve bir dövüşe zorlamaya "
-"karar verdiler."
+"Malin ve Kara Volk’un yıllarca verdikleri zarar Beyaz diş dağlarının huysuz "
+"bölge şeflerini karşı tarafta birleşmeye zorlamıştı. Sonunda, Elflerin Eski "
+"Torya dedikleri dar nehir vadisinde insanları kuşatmaya ve bir dövüşe "
+"zorlamaya karar verdiler."
 
 #. [side]: type=Orcish Warlord, id=Borth
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:71
@@ -2388,15 +2353,6 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:856
-#, fuzzy
-#| msgid ""
-#| "O Gods, how did it come to this? My own sister determined to personally "
-#| "see to my demise. Banished from Parthyn, my country, my home... spurned "
-#| "by my people, whom I have given everything for... nothing has gone right "
-#| "ever since I got into an argument with that fat, orc-loving toad Zephrin "
-#| "and tried to curse him. I was only testing my new spell on him! It was "
-#| "only supposed to be a simple curse! How was I supposed to know it would "
-#| "kill him? Blasted Academy."
 msgid ""
 "O gods, how did it come to this? My own sister determined to personally see "
 "to my demise. Banished from Parthyn, my country, my home... spurned by my "
@@ -2408,10 +2364,10 @@ msgid ""
 msgstr ""
 "Aman Allah, bu nasıl oldu? Kız kardeşim ölümümü şahsen görmeye kararlı. "
 "Partin'den kovuldum, ülkem, evim ... herşeyimi verdiğim halkım tarafından "
-"kovuldum ... o şişko, orc seven kurbağa Zefrin ile tartışmaya başladığımdan "
-"beri hiçbir şey yolunda gitmedi onu. Sadece üzerinde yeni büyümü test "
-"ediyordum! Sadece basit bir lanet olması gerekiyordu! Onu öldüreceğini nasıl "
-"bilebilirdim?"
+"kovuldum ... o şişko, ork seven kurbağa Zefrin ile tartışmaya başladığımdan "
+"beri hiçbir şey yolunda gitmedi onu. Sadece üzerinde yeni büyümü deniyordum! "
+"Sadece basit bir lanet olması gerekiyordu! Onu öldüreceğini nasıl "
+"bilebilirdim? Lanet olası Akademi."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:861
@@ -3048,17 +3004,17 @@ msgstr "Bekle, beni burada bırakmayacaksın, değil mi?"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1057
-#, fuzzy
-#| msgid "Escape via the tunnel in the northeast cellar"
 msgid ""
 "Escape the manor (Malin reaches the tunnel in the northeast cellar before "
 "Darken Volk)"
-msgstr "Kuzeydoğu mahzenindeki tünelden kaç"
+msgstr ""
+"Malikaneye kaç (Malin,  kuzeydoğu mahzenindeki tünelden Kara Volk'dan önce "
+"kaçarsa)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1061
 msgid "Darken Volk reaches the tunnel before Malin does"
-msgstr ""
+msgstr "Kara Volk, Malin'den önce tünele ulaşırsa"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1085
@@ -3216,15 +3172,10 @@ msgstr "Neden hiçbir şey söylemiyorsun? Hiç mi umursamıyorsun?"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:327
-#, fuzzy
-#| msgid ""
-#| "... you can’t abandon me too, not the way they did... father, Drogan, "
-#| "Dela..."
 msgid ""
 "... you can’t abandon me too, not the way they did... Father, Drogan, Dela..."
 msgstr ""
-"... sen de terk edemezsin beni, ... babam, Drogan, Dela ... onlar gibi "
-"yapma..."
+"... sen de terk edemezsin beni... babam, Drogan, Dela... onlar gibi yapma..."
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:335
@@ -5233,16 +5184,6 @@ msgstr "Hudut Baronesi"
 
 #. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
-#, fuzzy
-#| msgid ""
-#| "At Wesnoth’s frontiers, all able-bodied men and women must be able to "
-#| "defend their homes at need. Men are most often trained in the use of "
-#| "sword or bow and are used as soldiers who withstand the brunt of orcish "
-#| "assaults to hold the raiders at bay. Women, instead, learn to use the "
-#| "staff and sling and are most effective as scouts and ambushers. The most "
-#| "proficient are powerful skirmishers and are highly adept at "
-#| "reconnaissance, allowing them to often outmaneuver and entrap orcish "
-#| "raiders."
 msgid ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "
 "their homes in times of need. Men are most often trained in the use of sword "
@@ -5252,14 +5193,13 @@ msgid ""
 "powerful skirmishers and are highly adept at reconnaissance, allowing them "
 "to often outmaneuver and entrap orcish raiders."
 msgstr ""
-"Vesnot’un sınırlarında, tüm güçlü vücutlu erkekler ve kadınlar ihtiyaç "
-"duyduklarında yurtlarını savunabilmelidir. Erkekler genellikle kılıç veya "
-"yay kullanımı konusunda eğitilir ve akıncıları uzak tutmak için ork "
-"saldırılarına karşı koyan askerler olarak kullanılır. Kadınlar ise,  sopa ve "
-"sapan kullanmayı öğreniyorlar ve izciler ve pusucular kadar etkili "
-"oluyorlar. En yetkin olanları güçlü avcılardır ve keşif konusunda ustaca "
-"davranırlar, böylece ork akıncılara sık sık saldırmalarını ve onları "
-"avlanmalarını sağlarlar."
+"Vesnot’un sınırlarında, tüm güçlü erkekler ve kadınlar ihtiyaç duyduklarında "
+"yurtlarını savunabilmelidir. Erkekler genellikle kılıç veya yay kullanımı "
+"konusunda eğitilir ve akıncıları uzak tutmak için ork saldırılarına karşı "
+"koyan askerler bunlardan oluşur. Kadınlar ise,  sopa ve sapan kullanmayı "
+"öğrenirek izciler ve pusucular kadar etkili olurlar. En yetkin olanları "
+"güçlü avcılar haline gelir ve keşif konusunda ustalaşırlar, böylece ork "
+"akıncılara sık sık saldırıp onları avlarlar."
 
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:28
 msgid "Dela Keshar"
