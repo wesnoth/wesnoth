@@ -216,8 +216,8 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 #endif
 
 #ifdef _WIN32
-	std::string win_locale(locale, 0, 2);
-	locale = posix_locale_to_win32(win_locale);
+	std::string lang_code{locale, 0, locale.find_first_of("_@.")};
+	locale = posix_locale_to_win32(lang_code);
 #endif
 
 	char *res = nullptr;
