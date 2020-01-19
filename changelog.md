@@ -52,6 +52,7 @@
    * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
      are grayed out (PR #4362, PR #4444, part of issue #1282).
    * Reworked styling of progress bars and the network transfer progress dialog.
+   * Removed "Classic" in-game theme.
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on what distribution channel the package is for:
