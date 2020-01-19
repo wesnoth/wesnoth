@@ -58,6 +58,8 @@
      Esperanto, French, Italian, Korean, Portuguese (Brazil), Russian, Spanish,
      Turkish
    * Fix Rename Unit dialog having untranslated text (issue #4569).
+   * Use <game dir>/translations instead of <process working dir>/translations to find core
+     translation catalogues on Windows.
  ### Terrains
    * Add Stone Walls variation Catacombs (Xot) including some overlays
    * New dwarf castle variations: Non-cave (Cf), ruined (Cfr) and snow (Cfa)
