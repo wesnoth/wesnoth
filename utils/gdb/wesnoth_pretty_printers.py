@@ -269,8 +269,8 @@ class ConfigPrinter(object):
     def children(self):
         if RecursionManager.should_display():
             #yield "invalid",  self.val['invalid']
-            yield "values", self.lval['values']
-            yield "children", self.lval['children']
+            yield "values", self.lval['values_']
+            yield "children", self.lval['children_']
             RecursionManager.inc()
             try:
                 yield "ordered_children", self.lval['ordered_children']
