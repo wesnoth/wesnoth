@@ -12,7 +12,8 @@ import re
 import itertools
 
 import wesnoth_type_tools
-reload(wesnoth_type_tools)
+import importlib
+importlib.reload(wesnoth_type_tools)
 from wesnoth_type_tools import strip_all_type
 
 
@@ -34,7 +35,7 @@ def create_wesnoth_lookup_function(pretty_printers_dict):
         "Look-up and return a pretty-printer that can print val."
 
         #If it is a null pointer or object return the null pointer printer
-        if (val.type.code == gdb.TYPE_CODE_PTR and long(val) == 0) or (val.address == 0):
+        if (val.type.code == gdb.TYPE_CODE_PTR and int(val) == 0) or (val.address == 0):
             return NullPointerPrinter(val)
 
         # Get the type name.
@@ -65,7 +66,7 @@ def register(new_pretty_printers):
     #delete all previous wesnoth printers
     remove_printers=[]
     for a in gdb.pretty_printers:
-        if a.__name__ == 'wesnoth_lookup_function':
+        if a.name == 'wesnoth_lookup_function':
             remove_printers.append(a)
             for a in remove_printers:
                 gdb.pretty_printers.remove(a)

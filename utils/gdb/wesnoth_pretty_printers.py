@@ -7,7 +7,8 @@ import itertools
 
 
 import wesnoth_type_tools
-reload(wesnoth_type_tools)
+import importlib
+importlib.reload(wesnoth_type_tools)
 from wesnoth_type_tools import strip_all_type, dereference_if_possible
 
 
@@ -112,7 +113,7 @@ class TstringPrinter(object):
         #Print the untranslated string or an error
         try:
             ret = shared.dereference()['val']['value_']['iter_']['first']
-        except RuntimeError, e:
+        except RuntimeError as e:
             return "wesnoth_gdb error invalid tstring"
         return ret
 
@@ -162,7 +163,7 @@ class AttributeValuePrinter(object):
             else:
                 yield 'unknown', "unknown type code = " + ('%d' % attr_type)
 
-        except RuntimeError, e:
+        except RuntimeError as e:
             yield 'error', "wesnoth_gdb error invalid %s" % self.val.type
 
     def display_hint(self):
@@ -192,7 +193,7 @@ class BoostUnorderedMapPrinter(object):
         def __iter__(self):
             return self
 
-        def next(self):
+        def __next__(self):
             if self.buckets == 0 or not RecursionManager.should_display():
                 raise StopIteration
             while not self.node:
@@ -274,7 +275,7 @@ class ConfigPrinter(object):
             RecursionManager.inc()
             try:
                 yield "ordered_children", self.lval['ordered_children']
-            except RuntimeError, e:
+            except RuntimeError as e:
                 RecursionManager.dec()
             else:
                 RecursionManager.dec()
