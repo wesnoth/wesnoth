@@ -1,50 +1,48 @@
-
 # This file loads Wesnoth specific code into gdb
 
 """
-Usage:
-1. Add these lines line into your .gdbinit that you use for wesnoth file:
+# Usage:
+# Add these lines line into your .gdbinit file that you use for wesnoth, or add then
+# to a different file and run it with gdb's -x option.
 
-#Load the wesnoth pretty-printers
+# Load the wesnoth pretty-printers. If you use a separate build tree, edit this and
+# replace the os.path.abspath('utils/gdb/') with hardcoding the correct directory.
 python import os
 python sys.path.append(os.path.abspath('utils/gdb/'))
 python import wesnoth_gdb
 
-#Get help with
-python print wesnoth_gdb.__doc__
+# Show a help banner when GDB starts
+python wesnoth_gdb.help()
 
-#Set expanded printing on
+# Set expanded printing on, but hide static members
 set print pretty on
-
-#Hide static members
 set print static-members off
-
 """
 
-__doc__ = """
+documentation_banner = """Commands for controlling the Wesnoth pretty-printers:
+
 python reload(wesnoth_gdb)              #Interactively reload wesnoth_gdb
-python wesnoth.gdb.help()               #Help message
-python print wesnoth_gdb.__doc__        #Help message
+python wesnoth_gdb.help()               #Help message
 
-python print wesnoth_gdb.set_levels_of_recursion( number )  #Sets the levels of recursion (default 1)
-python print wesnoth_gdb.get_levels_of_recursion( )         #Gets the levels of recursion (default 1)
-
+python wesnoth_gdb.set_levels_of_recursion( number )  #Sets the levels of recursion (default 1)
+python print(wesnoth_gdb.get_levels_of_recursion())   #Gets the levels of recursion (default 1)
 """
 
 import sys, gdb
+import importlib
 
 
 def help():
-    print __doc__
+    print(documentation_banner)
 
 #Force a reload, which is handy if you are interactively editing
 if 'register_wesnoth_pretty_printers' in sys.modules:
-    reload(register_wesnoth_pretty_printers)
+    importlib.reload(register_wesnoth_pretty_printers)
 else:
     import register_wesnoth_pretty_printers
 
 if 'wesnoth_pretty_printers' in sys.modules:
-    reload(wesnoth_pretty_printers)
+    importlib.reload(wesnoth_pretty_printers)
 else:
     import wesnoth_pretty_printers
 
