@@ -164,14 +164,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			if(infofile.is_open()){
 				infofile >> info;
 				infofile.close();
-
-				if(info == "Default" || info == "Steam" || info == "SourceForge" || info == "Flatpak"
-				 || info == "macOS App Store" || info == "Linux repository" || info == "iOS" || info == "Android"
-				 || info == "BSD repository") {
-					 cfg["client_source"] = info;
-				} else {
-					cfg["client_source"] = "Default";
-				}
+				cfg["client_source"] = info;
 			} else {
 				cfg["client_source"] = "Default";
 			}

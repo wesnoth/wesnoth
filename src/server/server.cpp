@@ -252,6 +252,7 @@ server::server(int port,
 	, save_replays_(false)
 	, replay_save_path_()
 	, allow_remote_shutdown_(false)
+	, client_sources_()
 	, tor_ip_list_()
 	, failed_login_limit_()
 	, failed_login_ban_()
@@ -463,6 +464,10 @@ void server::load_config()
 	deny_unregistered_login_ = cfg_["deny_unregistered_login"].to_bool();
 
 	allow_remote_shutdown_ = cfg_["allow_remote_shutdown"].to_bool();
+
+	for(const std::string& source : utils::split(cfg_["client_sources"].str())) {
+		client_sources_.insert(source);
+	}
 
 	disallowed_names_.clear();
 	if(cfg_["disallow_names"].empty()) {
@@ -1416,10 +1421,6 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 	}
 
 	create_game.copy_into(g.level().root());
-
-	if(user_handler_) {
-		user_handler_->db_insert_game_info(uuid_, g.id(), game_config::wesnoth_version.str(), g.name());
-	}
 }
 
 void server::cleanup_game(game* game_ptr)
@@ -1747,7 +1748,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			// 1.14.9 and earlier also use whether observers are allowed to determine if the replay should be public
 			// 1.14.10+ have a separate attribute for that
 			bool is_public = m["private_replay"].to_string() == "" ? m["observer"].to_bool() : !m["private_replay"].to_bool();
-			user_handler_->db_update_game_start(uuid_, g.id(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), is_public, g.has_password());
+			user_handler_->db_insert_game_info(uuid_, g.id(), game_config::wesnoth_version.str(), g.name(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), is_public, g.has_password());
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
@@ -1763,6 +1764,10 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 				} else {
 					version = player->info().version();
 					source = player->info().source();
+
+					if(client_sources_.count(source) == 0) {
+						source = "Default";
+					}
 				}
 				user_handler_->db_insert_game_player_info(uuid_, g.id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
 			}

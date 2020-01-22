@@ -238,11 +238,8 @@ std::string suh::get_uuid(){
 	return "";
 }
 
-void suh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name){
-	std::cout << uuid << " - " << game_id << " - " << version << " - " << name << std::endl;
-}
-void suh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password){
-	std::cout << uuid << " - " << game_id << " - " << map_name << " - " << era_name << " - " << reload << " - " << observers << " - " << is_public << " - " << has_password << std::endl;
+void suh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password){
+	std::cout << uuid << " - " << game_id << " - " << version << " - " << name << " - " << map_name << " - " << era_name << " - " << reload << " - " << observers << " - " << is_public << " - " << has_password << std::endl;
 }
 void suh::db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location){
 	std::cout << uuid << " - " << game_id << " - " << replay_location << std::endl;
