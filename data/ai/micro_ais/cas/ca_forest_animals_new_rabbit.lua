@@ -22,22 +22,25 @@ function ca_forest_animals_new_rabbit:execution(cfg)
 
     -- Eliminate all holes that have an enemy within 'rabbit_enemy_distance' hexes
     -- We also add a random number to the ones we keep, for selection of the holes later
+    local width, height = wesnoth.get_map_size()
     local holes = {}
     for _,item in ipairs(all_items) do
-        local enemies = AH.get_attackable_enemies {
-            { "filter_location", { x = item.x, y = item.y, radius = rabbit_enemy_distance } }
-        }
+        if (item.x > 0) and (item.x <= width) and (item.y > 0) and (item.y <= height) then
+            local enemies = AH.get_attackable_enemies {
+                { "filter_location", { x = item.x, y = item.y, radius = rabbit_enemy_distance } }
+            }
 
-        if (not enemies[1]) then
-            -- If cfg.rabbit_hole_img is set, only items with that image or halo count as holes
-            if cfg.rabbit_hole_img then
-                if (item.image == cfg.rabbit_hole_img) or (item.halo == cfg.rabbit_hole_img) then
+            if (not enemies[1]) then
+                -- If cfg.rabbit_hole_img is set, only items with that image or halo count as holes
+                if cfg.rabbit_hole_img then
+                    if (item.image == cfg.rabbit_hole_img) or (item.halo == cfg.rabbit_hole_img) then
+                        item.random = math.random(100)
+                        table.insert(holes, item)
+                    end
+                else
                     item.random = math.random(100)
                     table.insert(holes, item)
                 end
-            else
-                item.random = math.random(100)
-                table.insert(holes, item)
             end
         end
     end
