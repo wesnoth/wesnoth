@@ -53,6 +53,7 @@
      are grayed out (PR #4362, PR #4444, part of issue #1282).
    * Reworked styling of progress bars and the network transfer progress dialog.
    * Removed "Classic" in-game theme.
+   * Textboxes now have a hover effect as well as an I-beam cursor.
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on what distribution channel the package is for:

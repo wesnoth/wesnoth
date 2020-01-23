@@ -27,7 +27,7 @@ struct manager
 	~manager();
 };
 
-enum CURSOR_TYPE { NORMAL, WAIT, MOVE, ATTACK, HYPERLINK, MOVE_DRAG, ATTACK_DRAG, NO_CURSOR, NUM_CURSORS };
+enum CURSOR_TYPE { NORMAL, WAIT, IBEAM, MOVE, ATTACK, HYPERLINK, MOVE_DRAG, ATTACK_DRAG, NO_CURSOR, NUM_CURSORS };
 
 /**
  * Use the default parameter to reset cursors.
