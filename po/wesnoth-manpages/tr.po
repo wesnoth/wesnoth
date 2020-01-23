@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-07-02 23:50+0300\n"
+"PO-Revision-Date: 2020-01-23 14:10+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -2213,12 +2213,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:221
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2229,8 +2223,10 @@ msgid ""
 msgstr ""
 "B<[user_handler]> Kullanıcı işlemcisini yapılandırır.  Kullanılabilecek "
 "anahtarlar B<user_handler> anahtarı ile hangi kullanıcı işlemcisinin "
-"tanımlandığına bağlıdır. Yapılandırmada bir [user_handler] bölümü yoksa "
-"sunucu herhangi bir kullanıcı kayıt hizmeti olmadan çalışacaktır."
+"tanımlandığına bağlıdır. Yapılandırmada bir [user_handler bölümü yoksa "
+"sunucu herhangi bir kullanıcı kayıt hizmeti olmadan çalışacaktır. "
+"forum_user_handler'ın çalışması için gereken tüm ek tablolar Wesnoth kaynak "
+"deposundaki table_definitions.sql dosyasında bulunabilir."
 
 # type: TP
 #. type: TP
@@ -2316,123 +2312,98 @@ msgstr "B<db_extra_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:240
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually."
 msgstr ""
-"(user_handler=forum için) phpbb forumlarınızın kullanıcı verilerini "
-"saklayacağı tablonun ismi. Bu tablo genellikle şöyle belirtilir: E<lt>tablo-"
-"önekiE<gt>_users (örnek: phpbb3_users)."
+"(user_handler=forum için) wesnothd uygulamasının kullanıcılar hakkındaki "
+"kendi verilerini kaydedeceği tablonun adı. Bu tabloyu kendiniz oluşturmanız "
+"gerekecek."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:240
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_info_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:243
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about games."
 msgstr ""
-"(user_handler=forum için) Veritabanına girişte kullanılacak kullanıcı ismi."
+"(user_handler=forum için) wesnothd uygulamasının oyunlar hakkındaki kendi "
+"verilerini kaydedeceği tablonun adı."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:243
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_player_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_player_info_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:246
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about the players in a game."
 msgstr ""
-"(user_handler=forum için) Veritabanına girişte kullanılacak kullanıcı ismi."
+"(user_handler=forum için) wesnothd uygulamasının bir oyundaki kullanıcılar "
+"hakkındaki kendi verilerini kaydedeceği tablonun adı."
 
 #. type: TP
 #: doc/man/wesnothd.6:246
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
-msgstr ""
+msgstr "B<db_game_modification_info_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:249
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about the modifications used in a game."
 msgstr ""
-"(user_handler=forum için) Veritabanına girişte kullanılacak kullanıcı ismi."
+"(user_handler=forum için) wesnothd uygulamasının bir oyunda yapılan "
+"değişiklikler hakkındaki kendi verilerini kaydedeceği tablonun adı."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:249
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_user_group_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_user_group_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:252
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "(for user_handler=forum) The name of the table in which your phpbb forums "
 "saves its user group data. Most likely this will be E<lt>table-"
 "prefixE<gt>_user_group (e.g. phpbb3_user_group)."
 msgstr ""
-"(user_handler=forum için) phpbb forumlarınızın kullanıcı verilerini "
-"saklayacağı tablonun ismi. Bu tablo genellikle şöyle belirtilir: E<lt>tablo-"
-"önekiE<gt>_users (örnek: phpbb3_users)."
+"(user_handler=forum için) phpbb forumlarınızdaki kullanıcıların grup "
+"verilerinin saklanacağı tablonun ismi. Bu tablo genellikle şöyle belirtilir: "
+"E<lt>tablo-önekiE<gt>_users_group (örnek: phpbb3_users_group)."
 
 #. type: TP
 #: doc/man/wesnothd.6:252
 #, no-wrap
 msgid "B<mp_mod_group>"
-msgstr ""
+msgstr "B<mp_mod_group>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:255
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The ID of the forum group to be considered as "
 "having moderation authority."
 msgstr ""
-"(user_handler=forum için) Veritabanına girişte kullanılacak kullanıcı ismi."
+"(user_handler=forum için) Yönetme yetkisine sahip olduğu kabul edilecek "
+"forum grubunun kimliği."
 
 # type: TP
 #. type: TP
