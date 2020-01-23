@@ -100,6 +100,5 @@ validate_campaign "The_South_Guard"         "CAMPAIGN_THE_SOUTH_GUARD"         "
 validate_campaign "tutorial"                "TUTORIAL"                         "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "Two_Brothers"            "CAMPAIGN_TWO_BROTHERS"            "EASY" "HARD"                      || RET=1
 validate_campaign "Under_the_Burning_Suns"  "CAMPAIGN_UNDER_THE_BURNING_SUNS"  "EASY" "NORMAL" "HARD"             || RET=1
-validate_campaign "Wings_of_Victory"        "CAMPAIGN_WINGS_OF_VICTORY"        "EASY" "NORMAL" "HARD"             || RET=1
 
 exit $RET
