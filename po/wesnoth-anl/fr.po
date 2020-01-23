@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: A_New_Land-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 08:32 UTC\n"
-"PO-Revision-Date: 2018-04-15 18:02+0200\n"
+"PO-Revision-Date: 2020-01-20 13:48+0100\n"
 "Last-Translator: Pascal Guillaume <guillaume.pascal43@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -32,17 +32,12 @@ msgstr "4j - Un pays neuf"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. The recommended starting gold is 100."
 msgstr ""
 "Ce scénario de survie à 4 joueurs vous permet d'aménager le terrain et de "
-"construire des bâtiments. Utilisez les paramètres de la carte. 100 pièces "
-"d'or sont recommandées pour démarrer."
+"construire des bâtiments. 100 pièces d'or sont recommandées pour démarrer."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:26
@@ -101,10 +96,8 @@ msgstr "Prisonniers"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:266
-#, fuzzy
-#| msgid "teamname^Prisoners"
 msgid "teamname^Monsters"
-msgstr "Prisonniers"
+msgstr "Monstres"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:462
@@ -372,10 +365,8 @@ msgstr "Un pays neuf - Aide"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:95
-#, fuzzy
-#| msgid "Select a topic."
 msgid "Select a topic:"
-msgstr "Choisissez un sujet."
+msgstr "Choisissez un sujet :"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:98
@@ -549,51 +540,49 @@ msgstr ""
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:5
 msgid "In this scenario you build up an economy"
-msgstr ""
+msgstr "Dans ce scénario, vous construisez une économie"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:9
 msgid "Move any unit next to captives and they will join your side"
 msgstr ""
+"Déplacer n'importe quelle unité à côté d'un captif pour qu'il rejoigne votre "
+"camp"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:13
 msgid "Right-click on a leader to read about the game mechanics"
-msgstr ""
+msgstr "Les mécaniques de jeu sont expliquées via un clic-droit sur votre chef"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:17
 msgid "Rules:"
-msgstr ""
+msgstr "Règles :"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:21
 msgid "Goal:"
-msgstr ""
+msgstr "Objectif :"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:25
 msgid "Hint:"
-msgstr ""
+msgstr "Astuce :"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:29
 msgid "Hints:"
-msgstr ""
+msgstr "Astuces :"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:33
-#, fuzzy
-#| msgid "Defeat enemy leader"
 msgid "Defeat all enemy leaders"
-msgstr "Mort du chef ennemi."
+msgstr "Mort de tous les chefs ennemis"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:37
-#, fuzzy
-#| msgid "You must survive until turn 25."
 msgid "You must survive until turn 25"
-msgstr "Vous devez survivre jusqu'au tour 25."
+msgstr "Vous devez survivre jusqu'au tour 25"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:45
