@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-12-19 13:40+0100\n"
+"PO-Revision-Date: 2020-01-20 13:40+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -5363,6 +5363,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "Vous n'avez pas de chef pour pouvoir recruter des unités."
 
 #: src/actions/create.cpp:478
+#, fuzzy
+#| msgid "None of your leaders are able to recruit this unit."
 msgid "None of your leaders are able to recruit that unit."
 msgstr "Aucun de vos chefs n'est capable de recruter cette unité."
 
@@ -7096,41 +7098,58 @@ msgid "You have no units available to recruit."
 msgstr "Il n'y a pas d'unité à recruter."
 
 #: src/menu_events.cpp:283
+#, fuzzy
+#| msgid "No unit recruited."
 msgid "No unit recruited"
-msgstr "Aucune unité recrutée"
+msgstr "Aucune unité recrutée."
 
 #: src/menu_events.cpp:315
+#, fuzzy
+#| msgid "You do not have enough gold to recruit this unit."
 msgid "You do not have enough gold to recruit that unit"
-msgstr "Vous n'avez pas assez d'or pour recruter cette unité"
+msgstr "Vous n'avez pas assez d'or pour recruter cette unité."
 
 #: src/menu_events.cpp:351
+#, fuzzy
+#| msgid "You are separated from your soldiers and may not recall them."
 msgid "You are separated from your soldiers and may not recall them"
-msgstr "Vous êtes séparés de vos soldats et ne pouvez les rappeler"
+msgstr "Vous êtes séparés de vos soldats et ne pouvez les rappeler."
 
 #: src/menu_events.cpp:370
+#, fuzzy
+#| msgid ""
+#| "There are no troops available to recall.\n"
+#| "(You must have veteran survivors from a previous scenario.)"
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"Il n'y a pas de troupes à rappeler\n"
-"(Vous devez avoir des survivants d'un précédent scénario)"
+"Il n'y a pas de troupes à rappeler.\n"
+"(Vous devez avoir des survivants d'un précédent scénario.)"
 
 #: src/menu_events.cpp:374
+#, fuzzy
+#| msgid "You currently can't recall at the highlighted location."
 msgid "You currently can't recall at the highlighted location"
 msgstr ""
 "Vous ne pouvez pas rappeler d'unités à la position actuellement en "
-"surbrillance"
+"surbrillance."
 
 #: src/menu_events.cpp:386
+#, fuzzy
+#| msgid "No unit recalled."
 msgid "No unit recalled"
-msgstr "Aucune unité rappelée"
+msgstr "Aucune unité rappelée."
 
 #: src/menu_events.cpp:403
+#, fuzzy
+#| msgid "You must have at least 1 gold piece to recall a unit."
+#| msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall this unit"
-msgstr[0] "Vous devez posséder au moins 1 pièce d'or pour rappeler une unité"
+msgstr[0] "Vous devez posséder au moins 1 pièce d'or pour rappeler une unité."
 msgstr[1] ""
-"Vous devez posséder au moins $cost pièces d'or pour rappeler cette unité"
+"Vous devez posséder au moins $cost pièces d'or pour rappeler cette unité."
 
 #: src/menu_events.cpp:549
 msgid "You cannot end your turn yet!"
@@ -7361,10 +7380,14 @@ msgid "Show a scenario variable."
 msgstr "Afficher une variable du scénario."
 
 #: src/menu_events.cpp:1242
+#, fuzzy
+#| msgid ""
+#| "Modify a unit variable. (Only top level keys are supported, and "
+#| "advances=<number>.)"
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Modifier la valeur d'une variable d'unité. (Seules les clés de premier "
-"niveau sont prises en charge.)"
+"niveau sont prises en charge, et advances=<nombre>.)"
 
 #: src/menu_events.cpp:1248
 msgid "Discover all units in help."
@@ -8645,6 +8668,18 @@ msgstr "Options de planification"
 #~ msgstr[0] "(dernier tour restant)"
 #~ msgstr[1] "(%d tours restants)"
 
+#~ msgid ""
+#~ "If a unit is positioned next to healers from two allied sides, the unit "
+#~ "will be healed on both sides’ turns. This way, a unit can be healed "
+#~ "faster than otherwise possible."
+#~ msgstr ""
+#~ "Si une unité est placée à côté de soigneurs de deux camps alliés, l'unité "
+#~ "sera soignée lors du tour de chaque camp. Ainsi, une unité peut être "
+#~ "soignée plus rapidement qu'à l'accoutumée."
+
+#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
+#~ msgstr "<i>- Vank de la Nuée de Galun, 6 ap. W.</i>"
+
 #~ msgid "registering with password *** and no email address"
 #~ msgstr ""
 #~ "enregistrement avec le mot de passe *** et aucune adresse électronique"
@@ -8682,6 +8717,21 @@ msgstr "Options de planification"
 #~ "Demander une liste des détails que vous pouvez établir pour votre "
 #~ "pseudonyme enregistré."
 
+#~ msgid "Time of Day Schedule"
+#~ msgstr "Planificateur du moment de la journée"
+
+#~ msgid "Lawful Bonus:"
+#~ msgstr "Bonus d'unité loyale : "
+
+#~ msgid "Neutral Bonus:"
+#~ msgstr "Bonus d'unités neutres : "
+
+#~ msgid "Chaotic Bonus:"
+#~ msgstr "Bonus d'unités chaotiques : "
+
+#~ msgid "Liminal Bonus:"
+#~ msgstr "Bonus d'unités liminales : "
+
 #~ msgid ""
 #~ "[all|<command>]\n"
 #~ "“all” = overview of all commands, <command> = name of a specific command "
@@ -8696,6 +8746,19 @@ msgstr "Options de planification"
 #~ msgstr[0] "Alias:"
 #~ msgstr[1] "Alias:"
 
+#~ msgid "Internal error. Please report this as a bug! Details:\n"
+#~ msgstr "Erreur interne. Merci de remonter ce bug ! Détails :\n"
+
+#~ msgid "You cannot recruit a $unit_type_name at this time."
+#~ msgstr "Vous ne pouvez pas recruter une unité $unit_type_nam actuellement."
+
+#~ msgid ""
+#~ "At this point in your plan, you will not have enough gold to recruit this "
+#~ "unit."
+#~ msgstr ""
+#~ "Dans cette phase de votre plan, vous n'aurez pas assez d'or pour recruter "
+#~ "cette unité"
+
 #~ msgid ""
 #~ "[<side> [on/off]]\n"
 #~ "“on” = enable control by the AI, “off” = side is controlled by the player"
@@ -8707,8 +8770,20 @@ msgstr "Options de planification"
 #~ msgid "command_idle^[<side> [on/off]]"
 #~ msgstr "[<camp> [on/off]]"
 
+#~ msgid "Change the in-game theme."
+#~ msgstr "Modifie le thème en jeu."
+
 #~ msgid "Show fps (Frames Per Second)."
 #~ msgstr "Affiche les IPS (Images par seconde)."
+
+#~ msgid "<unit type id>"
+#~ msgstr "<id du type d'unité>"
+
+#~ msgid "<amount>"
+#~ msgstr "<montant>"
+
+#~ msgid "<event name>"
+#~ msgstr "<événement>"
 
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr "Impossible de robotiser ce camp (IA locale) : « $side »."
