@@ -293,6 +293,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 
 		label_level_->set_label("<b>" + l_str + "</b>");
+		label_level_->set_tooltip(unit_helper::unit_level_tooltip(type));
 		label_level_->set_use_markup(true);
 	}
 
@@ -444,6 +445,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
 
 		label_level_->set_label("<b>" + l_str + "</b>");
+		label_level_->set_tooltip(unit_helper::unit_level_tooltip(u));
 		label_level_->set_use_markup(true);
 	}
 
