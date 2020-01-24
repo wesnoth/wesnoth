@@ -1205,7 +1205,7 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 		abil_list.append(list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, false));
 	}
 
-	if(other && other_attack_) {
+	if(other) {
 		abil_list.append(list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this(), true));
 	}
 	return abil_list;
