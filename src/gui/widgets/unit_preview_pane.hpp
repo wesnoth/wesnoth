@@ -81,7 +81,7 @@ private:
 	image* icon_alignment_;
 
 	label* label_name_;
-	styled_widget* label_level_;
+	label* label_level_;
 	label* label_race_;
 
 	styled_widget* label_details_;

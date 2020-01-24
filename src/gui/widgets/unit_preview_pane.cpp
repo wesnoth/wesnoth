@@ -77,7 +77,7 @@ void unit_preview_pane::finalize_setup()
 
 	// Labels
 	label_name_             = find_widget<label>(this, "type_name", false, false);
-	label_level_            = find_widget<styled_widget>(this, "type_level", false, false);
+	label_level_            = find_widget<label>(this, "type_level", false, false);
 	label_race_             = find_widget<label>(this, "type_race_label", false, false);
 	label_details_          = find_widget<styled_widget>(this, "type_details_minimal", false, false);
 
@@ -292,11 +292,8 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	if(label_level_) {
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 
-		label_level_->set_members({
-			{ "label", "<b>" + l_str + "</b>" },
-			{ "tooltip", unit_helper::unit_level_tooltip(type) }
-		});
-
+		label_level_->set_label("<b>" + l_str + "</b>");
+		label_level_->set_tooltip(unit_helper::unit_level_tooltip(type));
 		label_level_->set_use_markup(true);
 	}
 
@@ -447,11 +444,8 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	if(label_level_) {
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
 
-		label_level_->set_members({
-			{ "label", "<b>" + l_str + "</b>" },
-			{ "tooltip", unit_helper::unit_level_tooltip(u) }
-		});
-
+		label_level_->set_label("<b>" + l_str + "</b>");
+		label_level_->set_tooltip(unit_helper::unit_level_tooltip(u));
 		label_level_->set_use_markup(true);
 	}
 
