@@ -1,21 +1,22 @@
 # translation of wesnoth-ei.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2019 Wesnoth development team
+# Copyright (C) 2004 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
 #
 #
 # Honza <Honza-mistic@seznam.cz>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 16:28 UTC\n"
-"PO-Revision-Date: 2019-08-26 03:51+0200\n"
+"PO-Revision-Date: 2020-01-25 15:00+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:13
@@ -81,7 +82,7 @@ msgstr ""
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
 msgid "(Novice level, 16 scenarios.)"
-msgstr "(Obtížnost: nováček, 16 scénářů)"
+msgstr "(Úroveň nováček, 16 scénářů.)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -1696,19 +1697,14 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:153
-#, fuzzy
-#| msgid ""
-#| "Across this river lies the Northlands. If we can get there, we may be "
-#| "able to get some ogres to help us — but the orcs will definitely attack "
-#| "us before that happens."
 msgid ""
 "Across this river lie the Northlands. If we can get there, we may be able to "
 "get some ogres to help us — but the orcs will definitely attack us before "
 "that happens."
 msgstr ""
-"Za touto řekou leží severní země. Pokud se tam dostaneme, mohli bychom být "
-"schopni získat nějaké obry, aby nám pomohli — obávám se ale, že nás zcela "
-"najisto dříve napadnou skřeti."
+"Za touto řekou leží Severní země. Pokud se tam dostaneme, mohli bychom být "
+"schopni získat nějaké obry, aby nám pomohli — ale ještě předtím nás zcela "
+"určitě napadnou skřeti."
 
 #. [message]: speaker=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:157
@@ -1836,17 +1832,12 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:121
-#, fuzzy
-#| msgid ""
-#| "Across this river lies the Northland. Ogres live there, as do orcs. We "
-#| "should proceed with caution. The undead are dangerous, but the orcs may "
-#| "be more dangerous still."
 msgid ""
 "Across this river lie the Northlands. Ogres live there, as do orcs. We "
 "should proceed with caution. The undead are dangerous, but the orcs may be "
 "more dangerous still."
 msgstr ""
-"Za touto řekou leží Severní země. Žijí tam obři, a také skřeti. Musíme "
+"Za touto řekou leží Severní země. Žijí tam obři a také skřeti. Musíme "
 "pokračovat obezřetně. Nemrtví jsou nebezpeční, ale obři by mohli být ještě "
 "horší."
 
@@ -2246,10 +2237,8 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:150
-#, fuzzy
-#| msgid "But what happened to the people living on it?"
 msgid "But what happened to the people who lived there?"
-msgstr "Ale co se stalo lidem co tam žili?"
+msgstr "Ale co se stalo lidem, kteří tam žili?"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:154
@@ -2258,7 +2247,7 @@ msgid ""
 "mountains. But now the school is deserted, and has been for decades."
 msgstr ""
 "Hodně málo jich tu zůstalo po té, co se trollové a gryfoni usadili v horách. "
-"Teď je, ale škola už po několik desetiletí opuštěná."
+"Teď je ale škola už po několik desetiletí opuštěná."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:158
@@ -2671,8 +2660,8 @@ msgid ""
 "We have to get out of the Northlands as quickly as possible! Run for your — "
 "what the...?! Who are you?"
 msgstr ""
-"Musíme se ze Severních zemích dostat tak rychle jak to jen bude možné! "
-"Bežte, co to... co to...?!? Kdo jsi?"
+"Musíme se ze Severních zemí dostat tak rychle, jak to jen bude možné! "
+"Zachraň se, kdo – co to...?! Kdo jsi?"
 
 #. [message]: speaker=Engineer
 #. This is thickly accented English
@@ -3888,6 +3877,8 @@ msgid ""
 " This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
+"U této jednotky může útok na blízko převálcovat obranu nepřátel, takže "
+"protiúder není tak účinný."
 
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:15
 msgid "Dacyn"

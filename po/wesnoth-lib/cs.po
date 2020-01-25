@@ -1,7 +1,7 @@
 # translation of wesnoth-lib.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2019 Wesnoth development team
+# Copyright (C) 2004 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -11,15 +11,15 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
-# Michal Žejdl <lachim@emer.cz>, 2019.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 13:29-0300\n"
-"PO-Revision-Date: 2019-10-14 19:36+0200\n"
+"PO-Revision-Date: 2020-01-25 15:00+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Gtranslator 3.30.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -121,7 +121,7 @@ msgstr "Šedý pobřežní útes"
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:110
 msgid "Medium Coastal Reef"
-msgstr "Střední Pobřežní útes"
+msgstr "Střední pobřežní útes"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:121
@@ -139,7 +139,7 @@ msgstr "Močál"
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:134
 msgid "Swamp Water Reed"
-msgstr "Mokřinný porost"
+msgstr "Močálový rákos"
 
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:145
@@ -305,7 +305,7 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
-"Oáza je uvítána každým cestovatelem, umožňuje jednotkám uzdravit se jako ve "
+"Oáza je vítána každým cestovatelem, umožňuje jednotkám uzdravit se jako ve "
 "vesnici, ale neposkytuje žádný příjem ani obranou výhodu."
 
 #. [terrain_type]: id=sand_rubble
@@ -601,22 +601,22 @@ msgstr "Základní kamenná podlaha"
 #: data/core/terrain.cfg:831 data/core/terrain.cfg:841
 #: data/core/terrain.cfg:851
 msgid "Rug"
-msgstr ""
+msgstr "Kobereček"
 
 #. [terrain_type]: id=rug_floor
 #: data/core/terrain.cfg:834
 msgid "Royal Rug"
-msgstr ""
+msgstr "Královský kobereček"
 
 #. [terrain_type]: id=rug2_floor
 #: data/core/terrain.cfg:844
 msgid "Normal Rug"
-msgstr "Normální pokrývka"
+msgstr "Obyčejný kobereček"
 
 #. [terrain_type]: id=rug3_floor
 #: data/core/terrain.cfg:854
 msgid "Cave Rug"
-msgstr "Jeskynní pokrývka"
+msgstr "Jeskynní kobereček"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:861
@@ -691,19 +691,6 @@ msgstr "Skalnatá jeskyně"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which reduces efficiency of most "
-#| "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#| "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#| "who by dint of their small size have the full advantage of navigation in "
-#| "such topography. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -718,14 +705,16 @@ msgid ""
 "Occasionally caves are <italic>text='illuminated'</italic>."
 msgstr ""
 "<italic>text='Skalnatá jeskyně'</italic> je terén utvářený erozivní činností "
-"vody a větru ve skále. Připomíná rozeklanou podzemní dutinu, která snižuje "
-"efektivitu většiny jednotek a zvyšuje obranné možnosti. Trpaslíci a trollové "
-"žijící v jeskyních nemají s pohybem v tomto terénu problémy, zvláště "
-"trpaslíci díky jejich malému vzrůstu. Někdy jsou jeskyně "
-"<ref>dst='terrain_illuminated_cave' text='osvětlené'</ref>\n"
+"vody a větru ve skále. Připomíná rozeklanou podzemní dutinu, která zvyšuje "
+"obranné možnosti, ale pro většinu jednotek je obtížné ji přejít. Pouze "
+"obyvatelé jeskyň, jako trpaslíci a trollové, jsou zcela schopni najít "
+"v takovém terénu správný směr.\n"
 "\n"
-"Většina jednotek má ve skalnatých jeskyních obranný bonus okolo 50%, jízda "
-"pouze 40% a trpaslíci 60%."
+"Většina jednotek má ve skalnatých jeskyních obranný bonus okolo 50%, zatímco "
+"jízda je omezena na 40%. Trpaslíci, díky jejich malému vzrůstu, se ve "
+"skalnatých jeskyních těší obraně 60%.\n"
+"\n"
+"Někdy jsou jeskyně <italic>text='osvětlené'</italic>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1263,7 +1252,7 @@ msgstr "Zatopená zřícenina"
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:2006
 msgid "Swamp Human Ruin"
-msgstr "Lidská propadlá zřícenina"
+msgstr "Močálová lidská zřícenina"
 
 #. [terrain_type]: id=sand_castle
 #: data/core/terrain.cfg:2019
@@ -1391,7 +1380,7 @@ msgstr "Potopená lidská hradní tvrz"
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:2252
 msgid "Swamp Human Castle Keep"
-msgstr "Bažinná lidská hradní tvrz"
+msgstr "Močálová lidská hradní tvrz"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:2265
@@ -1554,7 +1543,7 @@ msgstr "Mimo mapu"
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2668
 msgid "Fake Map Border"
-msgstr ""
+msgstr "Falešný okraj mapy"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -1566,10 +1555,8 @@ msgstr "Zahalení tmou"
 
 #. [terrain_type]: id=fake_shroud_overlay
 #: data/core/terrain.cfg:2690
-#, fuzzy
-#| msgid "Shroud"
 msgid "Fake Shroud"
-msgstr "Zahalení tmou"
+msgstr "Falešné zahalení tmou"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
@@ -1607,24 +1594,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2732
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1643,19 +1612,20 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
-"<italic>text='Jeskyně'</italic> představuje jakoukoliv podzemní sluj s "
-"dostatkem místa pro pohyb.\n"
-"Většina jednotek se v tomto terénu neumí pohybovat a tak jsou zpomaleny a "
-"překáží jim to v obraně. Trpaslíci a Trollové, kteří zde bydlí, tu jsou jako "
-"doma, a to zejména trpaslíci, kteří se zde mohou díky své malé výšce snadno "
-"pohybovat a překonávat překážky. To jiným činí problémy. Někdy jsou jeskyně "
-"<ref>dst='terrain_illuminated_cave' text='osvětlené'</ref>\n"
+"<italic>text='Jeskyně'</italic> představuje jakoukoliv podzemní sluj "
+"s dostatkem místa pro pohyb.\n"
+"Většina jednotek se v tomto terénu neumí pohybovat a tak jsou zpomaleny "
+"a překáží jim to v obraně. Trpaslíci a trollové, kteří zde bydlí, tu jsou "
+"jako doma, a to zejména trpaslíci, kteří se zde mohou díky své malé výšce "
+"snadno pohybovat a překonávat překážky. To jiným činí problémy. Někdy jsou "
+"jeskyně <italic>text='osvětlené'</italic>.\n"
 "\n"
-"Výjimečně jsou podzemní cesty osvětlené světlem z povrchu. Taková místa "
-"poskytují bonusy zákonným jednotkám a naopak ruší bonusy pro jednotky "
-"chaotické. Ve všech ostatních ohledech je osvětlená jeskyně shodná s "
-"normální jeskyní. Většina jednotek zde získá 20 až 40% obranný bonus, "
-"zatímco trpaslíci 50%."
+"Výjimečně jsou podzemní cesty osvětlené světlem z povrchu. Taková místa "
+"poskytují bonusy zákonným jednotkám a naopak ruší bonusy pro jednotky "
+"chaotické. Ve všech ostatních ohledech je osvětlená jeskyně shodná "
+"s normální jeskyní.\n"
+"\n"
+"Většina jednotek zde získá 20 až 40% obranný bonus, zatímco trpaslíci 50%."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2745
@@ -2571,7 +2541,7 @@ msgstr "Zkopíruj log do schránky"
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
 msgid "Load Core"
-msgstr "Načíst zdroje"
+msgstr "Načíst jádro"
 
 #. [button]: id=copy_
 #. [button]: id=copy
@@ -3666,7 +3636,7 @@ msgstr "Informace o hráči - "
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
-msgstr "Přidej přítele"
+msgstr "Přidat přítele"
 
 #. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
@@ -3717,40 +3687,38 @@ msgstr "Vyhodit + zablokovat"
 
 #. [button]: id=stopgame
 #: data/gui/window/lobby_player_info.cfg:274
-#, fuzzy
-#| msgid "Load Game"
 msgid "Stop Game"
-msgstr "Načti hru"
+msgstr "Zastavit hru"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
 msgid "Logging Options"
-msgstr "Nastavení logování"
+msgstr "Možnosti zaznamenávání"
 
 #. [row]
 #: data/gui/window/logging.cfg:136
 msgid "Debug level logging: maximum information"
-msgstr ""
+msgstr "Úroveň zaznamenávání debug: maximum informací"
 
 #. [row]
 #: data/gui/window/logging.cfg:137
 msgid "Info level logging: more information"
-msgstr ""
+msgstr "Úroveň zaznamenávání info: více informací"
 
 #. [row]
 #: data/gui/window/logging.cfg:138
 msgid "Warning level logging: less information"
-msgstr ""
+msgstr "Úroveň zaznamenávání warning: méně informací"
 
 #. [row]
 #: data/gui/window/logging.cfg:139
 msgid "Error level logging: minimum information"
-msgstr ""
+msgstr "Úroveň zaznamenávání error: minimum informací"
 
 #. [row]
 #: data/gui/window/logging.cfg:140
 msgid "Disable logging"
-msgstr "Vypnout logování"
+msgstr "Vypnout zaznamenávání"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -3894,17 +3862,13 @@ msgstr "Když začne další tah"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created:"
-msgstr "Herní údaje:"
+msgstr "Hra vytvořena:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "Když začne další tah"
+msgstr "Když byla vytvořena nová hra"
 
 #. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
@@ -3998,7 +3962,7 @@ msgstr "Zlato na vesnici"
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
 msgid "The number of unit levels each village can support"
-msgstr ""
+msgstr "Počet úrovní jednotek, které může každá vesnice podporovat"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
@@ -4160,14 +4124,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "Striktnější kontroly toho, jestli není hra mimo synchronizaci"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Ulož záznam"
+msgstr "Neveřejný záznam"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Zda bude záznam veřejně dostupný"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -4395,17 +4357,13 @@ msgstr "Vybrat"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the side's controller"
-msgstr "Změna hlasitosti hudebního doprovodu"
+msgstr "Změnit, kdo ovládá tuto stranu"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the AI side's behaviour"
-msgstr "Změna hlasitosti hudebního doprovodu"
+msgstr "Změnit chování strany s UI"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
@@ -4414,10 +4372,8 @@ msgstr "Jakému týmu náleží tato strana"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-#, fuzzy
-#| msgid "The team color"
 msgid "This side’s color"
-msgstr "Barva týmu"
+msgstr "Barva této strany"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
@@ -4458,12 +4414,12 @@ msgstr "Změna rychlosti posouvání mapy"
 #. [toggle_button]: id=skip_ai_moves
 #: data/gui/window/preferences/01_general.cfg:54
 msgid "Skip AI moves"
-msgstr "Přeskakuj tahy počítače"
+msgstr "Přeskočit tahy počítače"
 
 #. [toggle_button]: id=skip_ai_moves
 #: data/gui/window/preferences/01_general.cfg:55
 msgid "Do not animate AI units moving"
-msgstr "Neanimuj jednotky ovládané počítačem"
+msgstr "Neanimovat pohyb jednotek ovládaných počítačem"
 
 #. [toggle_button]: id=turbo_toggle
 #: data/gui/window/preferences/01_general.cfg:68
@@ -4486,6 +4442,8 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
+"Rychlost, kterou se pohybuje jednotka a přehrávají animace, když je zapnuta "
+"‚Zrychlená hra‘ nebo když je ve hře držen stisknutý Shift."
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -4505,7 +4463,7 @@ msgstr "Dialog tahu"
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/window/preferences/01_general.cfg:115
 msgid "Display a dialog at the beginning of your turn"
-msgstr "Zobraz dialog na začátku tvého kola"
+msgstr "Zobrazit dialog na začátku tvého kola"
 
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/window/preferences/01_general.cfg:128
@@ -4535,7 +4493,7 @@ msgstr "Přerušit pohyb při spatření přátelské jednotky"
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
 #: data/gui/window/preferences/01_general.cfg:157
 msgid "Sighting an allied unit interrupts your unit’s movement"
-msgstr "Přeruší pohyb jednotek při spatření spřátelené jednotky"
+msgstr "Tvá jednotka přeruší pohyb při spatření spřátelené jednotky"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/window/preferences/01_general.cfg:172
@@ -4545,7 +4503,9 @@ msgstr "Ukládat na konci scénářů záznam"
 #. [toggle_button]: id=save_replays
 #: data/gui/window/preferences/01_general.cfg:173
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
-msgstr "Ukládá záznamy vyhraných i prohraných her při hře více hráčů"
+msgstr ""
+"Uložit záznamy vyhraných her ve všech režimech a záznamy prohraných her při "
+"hře více hráčů"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:186
@@ -4595,7 +4555,7 @@ msgstr "Filtr:"
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "Filtry na popis klávesové zkratky."
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -4649,7 +4609,7 @@ msgstr "Dostupné v hlavní nabídce"
 #. [button]: id=btn_add_hotkey
 #: data/gui/window/preferences/02_hotkeys.cfg:274
 msgid "Add Hotkey"
-msgstr "Přidat Klávesovou zkratku"
+msgstr "Přidat klávesovou zkratku"
 
 #. [button]: id=btn_clear_hotkey
 #: data/gui/window/preferences/02_hotkeys.cfg:285
@@ -4679,7 +4639,7 @@ msgstr "Přepnout mezi režimem celé obrazovky a režimem okna"
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:68
 msgid "Show floating labels"
-msgstr "Zobrazuj plovoucí popisky"
+msgstr "Zobrazit plovoucí popisky"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:69
@@ -4689,7 +4649,7 @@ msgstr "Zobrazit počty ubraných a vyléčených životů nad jednotkou"
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:82
 msgid "Show team colors"
-msgstr "Zobrazuj barvy týmů"
+msgstr "Zobrazit barvy týmů"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:83
@@ -4697,17 +4657,17 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Zobrazuj pod jednotkou barevnou kružnici ukazující, za kterou stranu hraje"
+"Zobrazit pod jednotkou barevnou kružnici ukazující, za kterou stranu hraje"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:98
 msgid "Show grid"
-msgstr "Zobrazuj mřížku"
+msgstr "Zobrazit mřížku"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:99
 msgid "Overlay a grid over the map"
-msgstr "Nakresli přes mapu mřížku"
+msgstr "Nakreslit přes mapu mřížku"
 
 #. [toggle_button]: id=animate_terrains
 #: data/gui/window/preferences/03_display.cfg:114
@@ -4727,12 +4687,12 @@ msgstr "Animovat vodu"
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:129
 msgid "Display animated water graphics (can be slow)"
-msgstr "Zobraz animace vody (může být pomalé)"
+msgstr "Zobrazit animace vody (může být pomalé)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:142
 msgid "Show unit standing animations"
-msgstr "Zobrazuj náhodné animace jednotek"
+msgstr "Zobrazit náhodné animace jednotek"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:143
@@ -4780,16 +4740,18 @@ msgid ""
 "Disabling this increases CPU usage to 100% but may slightly improve "
 "performance at high resolutions"
 msgstr ""
+"Vypnutí zvýší využití CPU na 100%, ale může trochu zlepšit výkon při "
+"vysokých rozlišeních."
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:291
 msgid "Theme"
-msgstr "Téma"
+msgstr "Motiv"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:292
 msgid "Change the in-game theme"
-msgstr "Změna tématu hry"
+msgstr "Změnit motiv hry"
 
 #. [label]
 #: data/gui/window/preferences/04_sound.cfg:38
@@ -4854,7 +4816,7 @@ msgstr "Změna hlasitosti zvonku na konci kola"
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:137
 msgid "Turn menu and button sounds on/off"
-msgstr "Zapne/vypne zvukové efekty menu a tlačítek"
+msgstr "Zapnout/vypnout zvukové efekty menu a tlačítek"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:137
@@ -4874,7 +4836,7 @@ msgstr "Řádek chatu:"
 #. [slider]: id=chat_lines
 #: data/gui/window/preferences/05_multiplayer.cfg:36
 msgid "Set the number of chat lines shown"
-msgstr "Nastav počet zobrazovaných řádek chatu"
+msgstr "Nastavit počet zobrazovaných řádek chatu"
 
 #. [toggle_button]: id=chat_timestamps
 #: data/gui/window/preferences/05_multiplayer.cfg:52
@@ -4884,12 +4846,12 @@ msgstr "Časování chatu"
 #. [toggle_button]: id=chat_timestamps
 #: data/gui/window/preferences/05_multiplayer.cfg:53
 msgid "Add a timestamp to chat messages"
-msgstr "Přiřaď čas k chatové zprávě"
+msgstr "Přiřadit čas k chatové zprávě"
 
 #. [toggle_button]: id=remember_password
 #: data/gui/window/preferences/05_multiplayer.cfg:69
 msgid "Uncheck to delete the saved password (on exit)"
-msgstr "Odklikněte pro smazání uložených hesel (při ukončení programu)."
+msgstr "Odklikněte pro smazání uložených hesel (při ukončení programu)"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:84
@@ -4904,32 +4866,32 @@ msgstr "Přijímat soukromé zprávy pouze od lidí ve vašem seznamu přátel"
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/window/preferences/05_multiplayer.cfg:101
 msgid "Do not show lobby joins"
-msgstr "Neukazuj připojení uživatelů"
+msgstr "Neukazovat připojení uživatelů"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/window/preferences/05_multiplayer.cfg:102
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Neukazuj zprávy o hráčích, kteří se připojili k serveru"
+msgstr "Neukazovat zprávy o hráčích, kteří se připojili k serveru"
 
 #. [toggle_button]: id=lobby_joins_friends
 #: data/gui/window/preferences/05_multiplayer.cfg:116
 msgid "Show lobby joins of friends only"
-msgstr "Ukaž pouze připojení přátel"
+msgstr "Ukázat pouze připojení přátel"
 
 #. [toggle_button]: id=lobby_joins_friends
 #: data/gui/window/preferences/05_multiplayer.cfg:117
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Ukazuj zprávy o tvých přátelích, kteří se připojili k serveru"
+msgstr "Ukázat zprávy o tvých přátelích, kteří se připojili k serveru"
 
 #. [toggle_button]: id=lobby_joins_all
 #: data/gui/window/preferences/05_multiplayer.cfg:131
 msgid "Show all lobby joins"
-msgstr "Ukaž všechna připojení uživatelů"
+msgstr "Ukázat všechna připojení uživatelů"
 
 #. [toggle_button]: id=lobby_joins_all
 #: data/gui/window/preferences/05_multiplayer.cfg:132
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "Ukazuj zprávy o všech hráčích, kteří se připojili k serveru"
+msgstr "Ukázat zprávy o všech hráčích, kteří se připojili k serveru"
 
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:149
@@ -4949,7 +4911,8 @@ msgstr "Soubor spouštící server"
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:163
 msgid "Find and set path to MP server to host LAN games"
-msgstr "Najdi a nastav cestu k serveru hry více hráčů pro hostování her na LAN"
+msgstr ""
+"Najít a nastavit cestu k serveru hry více hráčů pro hostování her na LAN"
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
@@ -4977,7 +4940,7 @@ msgstr "Odstraň tuto přezdívku ze seznamu"
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or ignored any other players."
-msgstr ""
+msgstr "Nespřátelil ses s dalšími hráči ani jsi žádné neignoroval."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5146,7 +5109,7 @@ msgstr "Vlajky"
 #. [label]
 #: data/gui/window/theme_list.cfg:51
 msgid "Choose Theme"
-msgstr "Vyber téma"
+msgstr "Vybrat motiv"
 
 #. [button]: id=help
 #: data/gui/window/title_screen.cfg:175
@@ -5166,7 +5129,7 @@ msgstr "Zobrazit další tip"
 #. [grid]
 #: data/gui/window/title_screen.cfg:251
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Spustí výcvik, umožňující seznámení se hrou"
+msgstr "Spustit výcvik umožňující seznámení se hrou"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -5182,7 +5145,7 @@ msgstr "Tažení"
 #. [grid]
 #: data/gui/window/title_screen.cfg:252
 msgid "Start a new single player campaign"
-msgstr "Spustí nové tažení pro jednoho hráče"
+msgstr "Spustit nové tažení pro jednoho hráče"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:253
@@ -5190,8 +5153,8 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"Hraj spolu s více hráči (na místě, přes LAN nebo po internetu), nebo jediný "
-"scénář proti AI"
+"Hrát spolu s více hráči (na místě, přes LAN nebo po internetu) nebo jediný "
+"scénář proti UI"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:254
@@ -5211,17 +5174,17 @@ msgstr "Rozšíření"
 #. [grid]
 #: data/gui/window/title_screen.cfg:255
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr "Stažení balíčků map, ér, tažení apod. vytvořených komunitou"
+msgstr "Stáhnout balíčky tažení, ér nebo map vytvořené uživateli"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
 msgid "Cores"
-msgstr "Zdroje"
+msgstr "Jádra"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
 msgid "Select the game core data"
-msgstr "Zvolte zdrojová herní data"
+msgstr "Vybrat data pro jádro hry"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
@@ -5241,7 +5204,7 @@ msgstr "Změnit používaný jazyk"
 #. [grid]
 #: data/gui/window/title_screen.cfg:259
 msgid "Configure the game’s settings"
-msgstr "Konfigurovat nastavení hry"
+msgstr "Upravit nastavení hry"
 
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. [grid]
@@ -5277,7 +5240,7 @@ msgstr "Výpočet poškození"
 #. [button]: id=ok
 #: data/gui/window/unit_attack.cfg:220
 msgid "Attack"
-msgstr "Útok!"
+msgstr "Zaútočit"
 
 #. [label]
 #: data/gui/window/unit_attack.cfg:305
@@ -5361,18 +5324,18 @@ msgstr "Propustit"
 #. [button]: id=ok
 #: data/gui/window/unit_recall.cfg:442 src/hotkey/hotkey_command.cpp:105
 msgid "Recall"
-msgstr "Přivolej"
+msgstr "Přivolat"
 
 #. [label]
 #: data/gui/window/unit_recruit.cfg:155
 msgid "Recruit Unit"
-msgstr "Naverbuj"
+msgstr "Naverbovat jednotku"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recruit.cfg:231 src/hotkey/hotkey_command.cpp:103
 msgid "Recruit"
-msgstr "Naverbuj"
+msgstr "Naverbovat"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5390,10 +5353,8 @@ msgid "Details:"
 msgstr "Podrobnosti:"
 
 #: src/build_info.cpp:268
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "zachycení obrazovky v JPG"
+msgstr "zachycení obrazovky v JPEG"
 
 #: src/build_info.cpp:275
 msgid "feature^Lua console completion"
@@ -5672,7 +5633,7 @@ msgstr "Modifikace"
 
 #: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Cores"
-msgstr "Zdroje"
+msgstr "Jádra"
 
 #: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^Resources"
@@ -5882,16 +5843,12 @@ msgid "Defender resistance vs"
 msgstr "Odolnost obránce vs."
 
 #: src/gui/dialogs/attack_predictions.cpp:191
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "Zranitelnost útočníka vs."
+msgstr "Zranitelnost obránce vs."
 
 #: src/gui/dialogs/attack_predictions.cpp:195
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "Odolnost obránce vs."
+msgstr "Odolnost útočníka vs."
 
 #: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Attacker vulnerability vs"
@@ -6075,7 +6032,7 @@ msgstr "Rozšíření: "
 
 #: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^AI"
-msgstr "AI"
+msgstr "UI"
 
 #: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Idle"
@@ -6963,7 +6920,7 @@ msgstr "Zobraz/skryj popisky"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "End Turn"
-msgstr "Ukonči kolo"
+msgstr "Ukončit kolo"
 
 #: src/hotkey/hotkey_command.cpp:109
 msgid "Toggle Ellipses"
@@ -7019,11 +6976,11 @@ msgstr "Umísti týmový popisek"
 
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Set Label"
-msgstr "Nastav popisek"
+msgstr "Nastavit popisek"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Clear Labels"
-msgstr "Smaž popisky"
+msgstr "Smazat popisky"
 
 #: src/hotkey/hotkey_command.cpp:129
 msgid "Show Enemy Moves"
@@ -7058,22 +7015,16 @@ msgid "Next Move"
 msgstr "Další tah"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Celá mapa"
+msgstr "Pohled: Celá mapa"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Všechny týmy"
+msgstr "Pohled: Každý tým"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Tým hráčů"
+msgstr "Pohled: Člověčí tým"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
@@ -7537,7 +7488,7 @@ msgstr "Odebrat stranu"
 
 #: src/hotkey/hotkey_command.cpp:271
 msgid "Delay Shroud Updates"
-msgstr "Pozdrž překreslování mlhy"
+msgstr "Pozdržet překreslování mlhy"
 
 #: src/hotkey/hotkey_command.cpp:272
 msgid "Update Shroud Now"
@@ -7613,7 +7564,7 @@ msgstr "Spravuj rozšíření"
 
 #: src/hotkey/hotkey_command.cpp:292
 msgid "Manage Cores"
-msgstr "Sloučit zdroje"
+msgstr "Spravuj jádra"
 
 #: src/hotkey/hotkey_command.cpp:293
 msgid "Start Editor"
@@ -7657,7 +7608,7 @@ msgstr "cs"
 
 #: src/preferences/display.cpp:122
 msgid "No known themes. Try changing from within an existing game."
-msgstr "Žádná známá témata. Zkus změnit během existující hry."
+msgstr "Žádné známé motivy. Zkus změnit během existující hry."
 
 #: src/preferences/display.cpp:164
 msgid ""
@@ -7665,6 +7616,9 @@ msgid ""
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
+"Aplikace serveru <b>$filename</b> poskytuje funkce serveru pro hru více "
+"hráčů a je požadována pro pořádání her na místní síti. Obvykle se nachází ve "
+"stejné složce jako spustitelný soubor hry."
 
 #: src/preferences/display.cpp:168
 msgid "Find Server Application"
