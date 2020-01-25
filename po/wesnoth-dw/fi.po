@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:40 UTC\n"
+"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
 "PO-Revision-Date: 2012-05-15 03:23+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <wiki.wesnoth.org/FinnishTranslation>\n"
@@ -111,7 +111,7 @@ msgstr "Skriptien korjailut"
 msgid "Artwork"
 msgstr "Taiteellinen työ"
 
-#. [lua]: wesnoth.theme_items.unit_status
+#. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Dead_Water/_main.cfg:88
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
@@ -245,8 +245,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Epäkuolleet"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -687,8 +687,8 @@ msgstr "Odota!  Ehkä nyt, kun sen mestari on poissa, se kaipaa uutta."
 msgid "If it does not attack, do not kill it. Let us see if it follows us."
 msgstr "Jos se ei hyökkää, älä tapa sitä. Katsotaan, seuraako hän meitä."
 
-#. [message]: speaker=unit
 #. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:507
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:633
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:745
@@ -750,8 +750,8 @@ msgstr "Etkö aio tappaa sitä? Meidän täytyy jatkaa matkaa."
 msgid "I would feel bad about that. It is, uh, licking my hand."
 msgstr "Minusta tämä tuntuu pahalta. Se, uh, nuolee käsiäni."
 
-#. [message]: speaker=Friendly Bat
 #. [message]: speaker=unit
+#. [message]: speaker=Friendly Bat
 #. This should just be "translated" to whatever noise a bat makes in your language.
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:615
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:649
@@ -2201,8 +2201,8 @@ msgid ""
 msgstr ""
 "Tämä paikka on kuin tehty suurille parville. Tuossa ei varmasti ollut kaikki."
 
-#. [unit]: type=Silver Mage, id=Caladon
 #. [side]
+#. [unit]: type=Silver Mage, id=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:383
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:95
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:97
@@ -2294,20 +2294,20 @@ msgstr ""
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:486
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1096
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1097
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:135
 msgid "Cylanna! I need you!"
 msgstr "Cylanna! Minä tarvitsen sinua!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:490
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1100
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1101
 msgid "Tyegëa will never forgive me. We are lost."
 msgstr "Tyegëa ei ikinä anna tätä anteeksi. Olemme tuhoon tuomitut."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:504
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1114
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1115
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:149
 msgid "We are lost without our king!"
 msgstr "Olemme hukassa ilman kuningastamme!"
@@ -2362,7 +2362,7 @@ msgid "Death of Caladon"
 msgstr "Caladonin kuolema"
 
 #. [message]: speaker=$spy_unit.id
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:268
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:269
 msgid ""
 "(whisper) Kai, I heard Caladon muttering about the sword. I think he may try "
 "to take it for himself."
@@ -2371,7 +2371,7 @@ msgstr ""
 "sen itselleen."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:272
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:273
 msgid ""
 "Thank you, $spy_unit.name|. I will keep that in mind, but it may be hard for "
 "us to stop him with that teleporting trick he has."
@@ -2380,7 +2380,7 @@ msgstr ""
 "kaukosiirtotemppunsa takia hänen pidättely voi olla vaikeaa."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:281
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:282
 msgid ""
 "Here we are. There’s a castle up ahead in the fog. That’s where Agnovon has "
 "the sword."
@@ -2389,12 +2389,12 @@ msgstr ""
 "miekkoineen."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:285
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:286
 msgid "The lich is Agnovon?"
 msgstr "Agnovon on se kuolonvelho?!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:289
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:290
 msgid ""
 "Well, he calls himself Mal-Govon now, but yes. He called this land the "
 "KINGDOM of Agnovon. He was its first king. And its last, and every one in "
@@ -2411,7 +2411,7 @@ msgstr ""
 "KATSOKAA!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:293
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:294
 msgid ""
 "Suddenly, Caladon’s strident voice shrieked out louder than seemed possible, "
 "as if there were dozens of men shouting at once."
@@ -2420,7 +2420,7 @@ msgstr ""
 "huutanut yhtä aikaa."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:298
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:299
 msgid ""
 "AGNOVON, I’VE COME FOR YOUR SWORD! TODAY YOU WILL REMEMBER FEAR! Heh heh. "
 "Nice trick, huh?"
@@ -2429,7 +2429,7 @@ msgstr ""
 "Jännää, eikö?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:303
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:304
 msgid ""
 "A voice came back like wind moaning through dry leaves. Though it was only "
 "whispered, all heard it better than they wanted."
@@ -2438,7 +2438,7 @@ msgstr ""
 "kaikki kuulivat sen pelottavan hyvin."
 
 #. [message]: speaker=Mal-Govon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:308
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:309
 #, fuzzy
 #| msgid ""
 #| "What I remember, you old fool, is you leaving behind the smoldering "
@@ -2458,12 +2458,12 @@ msgstr ""
 "i> pelosta!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:312
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:313
 msgid "We are here of our own accord, and we will take that sword."
 msgstr "Meillä on omat tarkoitusperämme ja me OTAMME miekkasi."
 
 #. [message]: speaker=Mal-Govon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:316
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:317
 msgid ""
 "The merman speaks. Tell it to go away, Caladon, if it doesn’t want to get "
 "hurt."
@@ -2472,12 +2472,12 @@ msgstr ""
 "suomujaan."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:320
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:321
 msgid "That does it. Attack!"
 msgstr "Selvä. Hakkaa päälle!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:329
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:330
 msgid ""
 "A word of warning, young Kai. I carry a staff of righteous FLAME. If you let "
 "me die, I will take YOU all with me!"
@@ -2486,19 +2486,19 @@ msgstr ""
 "kuolla, TE tulette mukaan."
 
 #. [unit]: type=Outlaw, id=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:351
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:352
 msgid "Howyrth"
 msgstr "Howyrth"
 
 #. [message]: speaker=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:365
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:366
 msgid ""
 "Hello there! Who are you? Were you the ones shouting about taking a sword?"
 msgstr ""
 "Hei, te siellä! Keitä te olette? Tekö huutelitte jostain miekan ottamisesta?"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:370
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:371
 msgid ""
 "I am Kai Krellis of Jotha. I am attempting to defeat Mal-Govon and take his "
 "sword. Will you to join us in battle against a common enemy?"
@@ -2507,7 +2507,7 @@ msgstr ""
 "Liityttekö taisteluun yhteistä vihollista vastaan?"
 
 #. [message]: speaker=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:375
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:376
 msgid ""
 "I don’t know if that creature really is our enemy. He has never bothered us, "
 "and I should stay at my post anyway. However, I’m sure many townsfolk would "
@@ -2519,7 +2519,7 @@ msgstr ""
 "ylimääräiset värväystulot. Ehkä hänet voisi kukistaa ihan varmuuden vuoksi..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:379
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:380
 msgid ""
 "You can now recruit human villagers, but you will not be able to recall them "
 "in future scenarios."
@@ -2528,7 +2528,7 @@ msgstr ""
 "skenaarioissa."
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:428
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:429
 msgid ""
 "Kai Krellis! What are you doing here? I thought you were traveling south "
 "when I met you."
@@ -2537,17 +2537,17 @@ msgstr ""
 "viimekstavattiin!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:432
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:433
 msgid "Friend Siddry!"
 msgstr "Siddry, vanha kaveri!"
 
 #. [message]: speaker=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:436
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:437
 msgid "You know each other?!"
 msgstr "Tunnetteko te?!"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:440
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:441
 msgid ""
 "Kai Krellis is the one who saved me from slavery, Howyrth. I told him I "
 "would repay him if I could, and here is my chance. My friends and I will "
@@ -2559,12 +2559,12 @@ msgstr ""
 "korvausta."
 
 #. [message]: speaker=Dorcyn
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:498
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:499
 msgid "I’ll join you right now! That monster is just unnatural."
 msgstr "Mä liity mukaan nyt! Se hirviö ei... vain ole luonnollinen."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:572
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:573
 #, fuzzy
 #| msgid ""
 #| "The mermen clapped their hands over their ears as a terrible wail echoed "
@@ -2577,18 +2577,18 @@ msgstr ""
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:603
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:609
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:604
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:610
 msgid "Now we have the sword!"
 msgstr "Miekkä on nyt meillä!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:616
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:617
 msgid "Correction. Now I have the sword!"
 msgstr "Väärin! Miekka on nyt minulla!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:674
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:675
 msgid ""
 "It’s MINE! The Flaming Sword of Agnovon IS ALL MINE! I can feel warmth "
 "SPREADING through me!"
@@ -2597,12 +2597,12 @@ msgstr ""
 "sisimmässäni!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:699
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:700
 msgid "What? We won that sword!"
 msgstr "Mitä? Me voitimme tuon miekan!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:704
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:705
 msgid ""
 "Well, it’s true that you helped, so I won’t kill you. But I don’t trust you, "
 "so leave my realm. Go on. I will grant you some time. The benevolence of "
@@ -2613,19 +2613,19 @@ msgstr ""
 "hyväntahtoisuus on LEGENDAARISTA! Ha ha ha HA HA HAA!"
 
 #. [message]: speaker=$staff_tip_off
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:709
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:710
 msgid "Kai! He dropped his staff! We can attack him whenever we want now!"
 msgstr "Kai! Hän pudotti sauvansa! Voimme hyökätä koska vain!"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:713
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:714
 msgid ""
 "We can pretend we are going to leave though. That would buy me some time to "
 "heal the wounded."
 msgstr "Esitetään lähtevämme. Ehkä saamme aikaa parantaa haavoittuneet."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:749
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:750
 msgid ""
 "You DARE attack ME! You will regret that. Witness the POWER of the Flaming "
 "Sword of Caladon! I call on the ELEMENT OF FIRE to DO MY BIDDING!"
@@ -2634,7 +2634,7 @@ msgstr ""
 "MAHTIA! Kutsun TULIEN VOIMAA! TOTEUTTAKAA TAHTONI!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:816
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:817
 msgid ""
 "You haven’t left yet? My patience is at an END! Witness the POWER of the "
 "Flaming Sword of Caladon! I call on the ELEMENT OF FIRE to DO MY BIDDING!"
@@ -2643,49 +2643,49 @@ msgstr ""
 "MIEKAN MAHTIA!  Kutsun TULIEN VOIMAA! TOTEUTTAKAA TAHTONI!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:908
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:909
 msgid "Now we can finally grab that sword."
 msgstr "Nyt saamme vihdoinkin sen miekan."
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:924
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:925
 msgid "I am not going with you. One of your people should take the sword."
 msgstr "En ole tulossa mukaan. Joku muu saa ottaa tämän."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:942
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:943
 msgid "This is not food. And it is definitely not a toy. Leave it."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:971
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:972
 #, fuzzy
 #| msgid "This sword is 8-4, magical, with <i>fire</i> damage."
 msgid "This sword is 8×4, magical, with <i>fire</i> damage."
 msgstr "Miekka tekee 8-4 maagista <i>tulivahinkoa</i>."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:978
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:979
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
 msgstr "Minä kannan miekkaa ja tuhoan epäkuolleet sen tulella."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:987
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:988
 msgid "This sword is not right for me. Let someone else have it."
 msgstr "Tämä miekka ei käy minulle. Joku toinen saa sen."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1022
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1023
 msgid "I’ll carry the sword."
 msgstr "Minä voin kantaa miekkaa."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1031
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1032
 msgid "Let someone else have it."
 msgstr "Antakaa tämä jollekkin muulle."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1069
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1070
 msgid ""
 "We thank all you humans for your help, and release you from any farther "
 "obligations. Where we are going, you cannot easily follow."
@@ -2694,19 +2694,19 @@ msgstr ""
 "mihin olemme matkalla, ei ihminen voi jalallaan astua."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1130
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1131
 #, fuzzy
 #| msgid "CURSE you mermen!"
 msgid "CURSE you merfolk!"
 msgstr "KIROTTUJA olkaa te merenmiehet!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1145
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1146
 msgid "Aghh! Die!"
 msgstr "Aaagh! Kuole!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1150
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1151
 msgid "He has that staff of..."
 msgstr "Hänellä on se sauva..."
 
@@ -3165,14 +3165,14 @@ msgstr ""
 "pyrstöllä kuin muilla aseilla."
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
+#: data/campaigns/Dead_Water/units/Brawler.cfg:96
+#: data/campaigns/Dead_Water/units/Brawler.cfg:143
 msgid "stunned"
 msgstr "tainnutettu"
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
+#: data/campaigns/Dead_Water/units/Brawler.cfg:97
+#: data/campaigns/Dead_Water/units/Brawler.cfg:144
 msgid "female^stunned"
 msgstr "tainnutettu"
 
@@ -3422,24 +3422,24 @@ msgstr ""
 "Ihmisvelholla oli sormus! Ehkä se on maaginen. Kokeilkaa sitä ja katsokaa "
 "mitä tapahtuu."
 
-#: data/campaigns/Dead_Water/utils/specials.cfg:4
+#. [special_note]
+#: data/campaigns/Dead_Water/utils/specials.cfg:5
 #, fuzzy
 #| msgid ""
 #| " This unit is able to stun its enemies, disrupting their zones of control."
 msgid ""
-"\n"
-"• This unit is able to stun its enemies, disrupting their zones of control."
+"This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
 "Tämä yksikkö voi tainnuttaa vihollisia, poistaen yksikön hallitseman alueen "
 "vaikutuksen."
 
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:10
+#: data/campaigns/Dead_Water/utils/specials.cfg:12
 msgid "stun"
 msgstr "tainnutus"
 
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:11
+#: data/campaigns/Dead_Water/utils/specials.cfg:13
 #, fuzzy
 #| msgid ""
 #| "This attack hits so hard that the defender is dazed and can no longer "

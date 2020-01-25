@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
 "PO-Revision-Date: 2018-04-08 14:05+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -28,10 +28,12 @@ msgstr ""
 msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr "IA predeterminada (RCA)"
 
-#. [ai]: id=experimental_ai
-#: data/ai/ais/ai_experimental.cfg:9
-msgid "Multiplayer_AI^Experimental AI"
-msgstr "IA experimental"
+#. [ai]: id=ai_default_rca_1_14
+#: data/ai/ais/ai_default_rca_1_14.cfg:9
+#, fuzzy
+#| msgid "Multiplayer_AI^Default AI (RCA)"
+msgid "Multiplayer_AI^1.14 Default AI"
+msgstr "IA predeterminada (RCA)"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
@@ -44,6 +46,11 @@ msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr ""
 "IA de desenvolvemento: IA predeterminada (RCA) cun sistema de recrutamento "
 "alternativo"
+
+#. [ai]: id=experimental_ai
+#: data/ai/dev/ai_experimental.cfg:11
+msgid "Multiplayer_AI^Experimental AI"
+msgstr "IA experimental"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
@@ -88,10 +95,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
+#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:97
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:111
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:129
@@ -333,8 +340,8 @@ msgstr ""
 "que non supoñen unha ameaza os uns para os outros, e non se atacan entre "
 "eles, o que demostra o gran poder de autocontrol dos cans pastores."
 
-#. [test]: id=animals
 #. [event]
+#. [test]: id=animals
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -345,10 +352,10 @@ msgstr "Animais"
 msgid "Rutburt"
 msgstr "Rubur"
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -377,8 +384,8 @@ msgstr "Arañas"
 msgid "Yetis"
 msgstr "Homes das neves"
 
-#. [side]
 #. [event]
+#. [side]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -392,10 +399,10 @@ msgid "Whelps"
 msgstr "Cachorros"
 
 # Optimizado para a interface.
-#. [set_menu_item]: id=m01_end_animals
 #. [event]
 #. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -557,12 +564,12 @@ msgstr "Orco grande e malo"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "Meus, temos que pararlles os pés a eses ogros."
 
-#. [message]: speaker=Big Bad Orc
 #. [message]: speaker=Another Bad Orc
 #. [message]: speaker=Vanak
+#. [message]: speaker=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:572
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:148
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:142
 msgid "They there!  We them get!"
 msgstr "Están alí! Collámolos!"
 
@@ -645,8 +652,8 @@ msgstr ""
 "Pode que eu caese, pero os demais seguirán defendendo o paso ata que non "
 "quede ningún en pé!"
 
-#. [test]: id=dragon
 #. [event]
+#. [test]: id=dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -1812,7 +1819,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:159
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
 #: data/ai/micro_ais/scenarios/patrols.cfg:238
 #: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
@@ -1900,9 +1907,9 @@ msgstr "Escolta dun mensaxeiro"
 msgid "Vanak"
 msgstr "Vanan"
 
-#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1910,27 +1917,27 @@ msgid "Messenger"
 msgstr "Mensaxeiro"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:131
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
 msgid "Messenger Waypoint 1"
 msgstr "Punto 1 do camiño do mensaxeiro"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:133
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
 msgid "Messenger Waypoint 2"
 msgstr "Punto 2 do camiño do mensaxeiro"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:129
 msgid "Messenger Waypoint 3"
 msgstr "Punto 3 do camiño do mensaxeiro"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:138
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:132
 msgid "AI moves Messenger here"
 msgstr "A IA coloca o mensaxeiro aquí."
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:147
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
@@ -1939,7 +1946,7 @@ msgstr ""
 "mensaxe ao noso líder. Poñamos rumbo alí e intentemos chegar canto antes."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:160
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:154
 #, fuzzy
 #| msgid ""
 #| "The Messenger Escort AI will try to move the dragoon messenger to the "
@@ -1997,32 +2004,32 @@ msgstr ""
 "para obter máis información."
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:167
 msgid "Defeat the messenger"
 msgstr "Derrota ao mensaxeiro."
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:177
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:171
 msgid "Messenger gets to the signpost"
 msgstr "Que o mensaxeiro chegue ao sinal."
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:181
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:175
 msgid "Death of Vanak"
 msgstr "Morte de Vanan."
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:197
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:191
 msgid "I made it!  Now our people will be safe."
 msgstr "Cheguei! Agora a nosa xente estará a salvo."
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:212
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:206
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "Non! Todo está perdido. Agora xa nunca conseguiremos deter aos orcos!"
 
-#. [test]: id=patrols
 #. [event]
+#. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -2231,8 +2238,8 @@ msgstr "Non estivo mal. Agora vou quedar aquí e ver como eses dous camiñan…"
 msgid "Let's go home, chaps."
 msgstr "Veña, rapaces, a casa."
 
-#. [test]: id=protect_unit
 #. [event]
+#. [test]: id=protect_unit
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2885,22 +2892,31 @@ msgstr "Ural"
 
 #. [message]: speaker=sergeant
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:125
-msgid "General Grospur, what do we do?  These undead will surely wipe us out."
+#, fuzzy
+#| msgid ""
+#| "General Grospur, what do we do?  These undead will surely wipe us out."
+msgid "General Grospur, what do we do? These undead will surely wipe us out."
 msgstr "Xeneral Grospur, que facemos?  Estes non mortos han acabar connosco."
 
 #. [message]: speaker=Grospur
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:129
+#, fuzzy
+#| msgid ""
+#| "Don't be such a chicken, Sergeant!  I have placed units with lots of "
+#| "experience around the perimeter. The undead will not dare to attack them. "
+#| "And those few that sneak through... we can easily dispose of them once "
+#| "they make it inside.\n"
+#| "\n"
+#| "<i>In other words, the Wesnoth AI does generally not attack units one XP "
+#| "from leveling if there is no chance of killing the unit with a single "
+#| "attack. However, some of the attacks by the undead are handled by the "
+#| "Simple Attack Micro AI in this scenario. General Grospur might be in for "
+#| "a surprise.</i>"
 msgid ""
-"Don't be such a chicken, Sergeant!  I have placed units with lots of "
+"Don’t be such a chicken, Sergeant! I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
 "And those few that sneak through... we can easily dispose of them once they "
-"make it inside.\n"
-"\n"
-"<i>In other words, the Wesnoth AI does generally not attack units one XP "
-"from leveling if there is no chance of killing the unit with a single "
-"attack. However, some of the attacks by the undead are handled by the Simple "
-"Attack Micro AI in this scenario. General Grospur might be in for a surprise."
-"</i>"
+"make it inside."
 msgstr ""
 "Non sexa caguiñas, sarxento! Teño unidades con moita experiencia apostadas "
 "no perímetro. Os non mortos non se atreverán a atacalas. E se algúns deles "
@@ -2913,36 +2929,21 @@ msgstr ""
 "intelixencia artificial de ataque simple. Pode que o xeneral Grospur leve "
 "unha sorpresa.</i>"
 
-#. [objectives]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:135
-msgid "Watch the undead take care of business"
-msgstr "Observa como os non mortos manexan o asunto"
-
-#. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:137
-msgid "Don't even try. You can't reach the Lich."
-msgstr "Nin o intentes. Non podes chegar ata o liche."
-
-#. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:141
-msgid "Death of the last of Grospur's units"
-msgstr "Morte da última das uniades de Grospur."
-
-#. [note]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:145
-msgid "When your leader dies, side leadership passes on to another unit"
-msgstr ""
-"Cando morra o teu líder, o liderado do teu bando traspásase a outra unidade."
-
-#. [message]: speaker=$second_unit.id
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:172
+#. [message]: speaker=sergeant
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:133
 msgid ""
-"What the ... ?!?  They are not supposed to attack me. That just doesn't "
-"happen in Wesnoth!"
-msgstr "Que cara… Non deberían atacarme! Iso non ocorre neste xogo!!!"
+"General Grospur, you’re still thinking of Wesnoth 1.12. The default AI is "
+"smarter than that now.\n"
+"\n"
+"<i>If you’re porting an old scenario, you may find the Simple Attack Micro "
+"AI used in a way that’s unnecessary since 1.14. The 1.12 AI generally "
+"doesn’t attack units one XP from leveling if there is no chance of killing "
+"the unit with a single attack. One way of making 1.12 do those attacks was "
+"to use the Simple Attack Micro AI.</i>"
+msgstr ""
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:176
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:139
 #, fuzzy
 #| msgid ""
 #| "Hahahahaha !! I have given special instruction to my Soulless to attack "
@@ -2959,18 +2960,23 @@ msgstr "Que cara… Non deberían atacarme! Iso non ocorre neste xogo!!!"
 #| "default Wesnoth attack mechanism kick in to attack with the remaining "
 #| "units (skeletons).</i>"
 msgid ""
-"Hahahahaha!! I have given special instruction to my Soulless to attack all "
-"your almost-advanced units first. Also watch how those same Soulless will "
-"throw themselves mercilessly at your pitiful soldiers after that, saving my "
-"more valuable skeleton minions for later. I have taken the term 'disposable "
-"units' to a whole new level. Watch in awe!!\n"
+"Hahahahaha!! Indeed, my skeletons are smarter than General Grospur. Worse "
+"for you, I have given special instruction to my Soulless to attack all your "
+"almost-advanced units first. Also watch how those same Soulless will throw "
+"themselves mercilessly at your pitiful soldiers after that, saving my more "
+"valuable skeleton minions for later. I have taken the term ‘disposable "
+"units’ to a whole new level. Watch in awe!!\n"
 "\n"
 "<i>Translation: The undead side includes two instances of the Simple Attack "
-"Micro AI.  The first makes the Soulless attack all units 1 XP from leveling "
-"up, such that they can be eliminated afterward.  The second executes all "
+"Micro AI. The first makes the Soulless attack all units 1 XP from leveling "
+"up, such that they can be eliminated afterward. The second executes all "
 "remaining attacks possible by Soulless (and Walking Corpses), without regard "
-"for their own safety.  Only after that does the default Wesnoth attack "
-"mechanism kick in to attack with the remaining units (skeletons).</i>"
+"for their own safety. Only after that does the default Wesnoth attack "
+"mechanism kick in to attack with the remaining units (skeletons), and it "
+"moves the remaining units with high caution and low aggression.</i>\n"
+"\n"
+"<i>The difference to the 1.12 version of this demo is that the 1.12 "
+"skeletons still had high aggression.</i>"
 msgstr ""
 "Ha ha ha ha ha! Dinlles instrucións especiais aos inanimados: atacar "
 "primeiro a todas as unidades a piques de avanzar. Observa tamén como eses "
@@ -2986,14 +2992,41 @@ msgstr ""
 "súa propia seguridade. Só entón entra en xogo o mecanismo de ataque "
 "predeterminado do xogo para as unidades restantes (os esqueletos).</i>"
 
+#. [objectives]
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:147
+msgid "Watch the undead take care of business"
+msgstr "Observa como os non mortos manexan o asunto"
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:149
+#, fuzzy
+#| msgid "Don't even try. You can't reach the Lich."
+msgid "Don’t even try. You can’t reach the Lich."
+msgstr "Nin o intentes. Non podes chegar ata o liche."
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:153
+#, fuzzy
+#| msgid "Death of the last of Grospur's units"
+msgid "Death of the last of Grospur’s units"
+msgstr "Morte da última das uniades de Grospur."
+
+#. [note]
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:157
+msgid "When your leader dies, side leadership passes on to another unit"
+msgstr ""
+"Cando morra o teu líder, o liderado do teu bando traspásase a outra unidade."
+
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:195
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:188
 msgid "Rise, minions!"
 msgstr "Erguédevos, súbditos!"
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:241
-msgid "And that's how the undead AI executes total annihilation ..."
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:234
+#, fuzzy
+#| msgid "And that's how the undead AI executes total annihilation ..."
+msgid "And that’s how the undead AI executes total annihilation ..."
 msgstr ""
 "E así é como a intelixencia artificial dos non mortos consegue unha masacre…"
 
@@ -3403,6 +3436,11 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr "Quires"
+
+#~ msgid ""
+#~ "What the ... ?!?  They are not supposed to attack me. That just doesn't "
+#~ "happen in Wesnoth!"
+#~ msgstr "Que cara… Non deberían atacarme! Iso non ocorre neste xogo!!!"
 
 #~ msgid "Use the Patrols Micro AI instead of patrol.lua."
 #~ msgstr ""

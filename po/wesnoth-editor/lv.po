@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 22:40+0300\n"
+"POT-Creation-Date: 2020-01-25 15:18-0300\n"
 "PO-Revision-Date: 2015-02-15 14:48+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none <>\n"
@@ -148,28 +148,13 @@ msgstr "Vasara"
 msgid "Winter"
 msgstr "Ziema"
 
-#. [editor_times]: id=underground
-#: data/core/editor/time-of-day.cfg:40
-msgid "Underground"
-msgstr "Pazeme"
-
-#. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:46
-msgid "Deep Underground"
-msgstr "Dziļa pazeme"
-
-#. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:52
-msgid "Indoors"
-msgstr "Iekštelpas"
-
 #. [editor_times]: id=24
-#: data/core/editor/time-of-day.cfg:58
+#: data/core/editor/time-of-day.cfg:60
 msgid "24 Hour Schedule"
 msgstr "24 stundu grafiks"
 
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:64
+#: data/core/editor/time-of-day.cfg:66
 msgid "After the Fall"
 msgstr "Pēc rudens"
 
@@ -253,27 +238,31 @@ msgstr "Spēlējamais saraksts"
 msgid "Assign Time Schedule"
 msgstr "Norīkot laika grafiku"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:62
+#: src/editor/action/mouse/mouse_action_unit.cpp:68
+msgid "(Unknown unit type: $type)"
+msgstr ""
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:72
 msgid "Identifier: "
 msgstr "Identificētājs: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
+#: src/editor/action/mouse/mouse_action_unit.cpp:73
 msgid "Name: "
 msgstr "Vārds: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:74
 msgid "Type: "
 msgstr "Tips: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
+#: src/editor/action/mouse/mouse_action_unit.cpp:75
 msgid "Level: "
 msgstr "Līmenis: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:76
 msgid "Cost: "
 msgstr "Cena: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:77
 msgid "Recruit: "
 msgstr "Iesaucamais: "
 
@@ -552,6 +541,15 @@ msgstr "Neviens"
 #: src/gui/dialogs/editor/set_starting_position.cpp:97
 msgid "Player $player_number"
 msgstr "Spēlētājs $player_number"
+
+#~ msgid "Underground"
+#~ msgstr "Pazeme"
+
+#~ msgid "Deep Underground"
+#~ msgstr "Dziļa pazeme"
+
+#~ msgid "Indoors"
+#~ msgstr "Iekštelpas"
 
 #~ msgid "None"
 #~ msgstr "Neviens"

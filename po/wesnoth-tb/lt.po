@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
 "PO-Revision-Date: 2019-02-09 00:09+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -63,7 +63,9 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-msgid "(Rookie level, 4 scenarios.)"
+#, fuzzy
+#| msgid "(Rookie level, 4 scenarios.)"
+msgid "(Novice level, 4 scenarios.)"
 msgstr "(Pradedančiojo lygis, 4 scenarijai.)"
 
 #. [about]
@@ -214,10 +216,10 @@ msgstr ""
 msgid "Humans"
 msgstr "Žmonės"
 
-#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Orcish Warlord, id=Tairach
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
+#. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -283,7 +285,7 @@ msgstr "Nužudykite Mordaką, piktąjį magą"
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:165
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:292
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:336
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:339
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:143
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:288
 msgid "Death of Arvith"
@@ -951,10 +953,10 @@ msgstr "Rotarikas"
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:102
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:111
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:119
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:581
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:591
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:600
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:610
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:583
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:593
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:602
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
 msgid "Guard"
 msgstr "Sargybinis"
 
@@ -973,39 +975,41 @@ msgid "Castle Guard"
 msgstr "Pilies sargybinis"
 
 #. [time]: id=indoors_dark_castle
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:235
+#. similar string in the wesnoth-help textdomain
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:236
 msgid "Indoors (dark castle)"
 msgstr ""
 
 #. [time]: id=indoors_dark_castle_lit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:250
+#. similar string in th4e wesnoth-help textdomain
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:252
 msgid "Indoors (lit)"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:306
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:309
 msgid "Rescue Baran"
 msgstr "Išvaduokite Bareną"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:318
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:321
 msgid "Kill the dark sorcerer to get the cell key"
 msgstr "Nužudykite tamsos burtininką, kad gautumėte vienutės raktą"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:332
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:335
 msgid "Move Arvith to the cell with his brother to free him"
 msgstr "Nuveskite Arvitą iki vienutės su jo broliu, kad išlaisvintumėte"
 
 #. [objective]: condition=lose
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:345
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:348
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:147
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:292
 msgid "Death of Baran"
 msgstr "Bareno mirtis"
 
 #. [objectives]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:357
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:360
 msgid ""
 "When facing an unknown situation, take into account details from story and "
 "dialog to inform your strategy."
@@ -1014,7 +1018,7 @@ msgstr ""
 "detales ir dialogą, kad tinkamai pasirinktumėte strategiją."
 
 #. [objectives]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:366
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:369
 msgid ""
 "The dark sorcerer is a strong unit; attack him with multiple units at once "
 "and try to force him off his keep."
@@ -1023,7 +1027,7 @@ msgstr ""
 "ir pabandykite jį išstumti iš jo bokšto."
 
 #. [objectives]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:376
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:379
 msgid ""
 "Markings or decorations on hexes may indicate something to be found. If you "
 "can, it is usually a good idea to investigate."
@@ -1032,7 +1036,7 @@ msgstr ""
 "būti rasta. Jei gali, paprastai yra verta ištirti."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:413
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:416
 msgid ""
 "Arvith and his men halt outside of the castle, gazing for a moment at the "
 "hulking mass of stone looming in the fog. There is movement in the mist."
@@ -1041,42 +1045,42 @@ msgstr ""
 "stūksančią akmens masę. Pro rūką matėsi kažkoks judesys."
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:418
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:421
 msgid "Halt! Friend or foe? Give the password."
 msgstr "Stok! Draugas ar priešas? Sakyk slaptažodį."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:423
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:426
 msgid "The password is"
 msgstr "Slaptažodis yra"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:426
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:429
 msgid "Sithrak!"
 msgstr "Sitrakai!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:429
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:432
 msgid "Eleben!"
 msgstr "Elebenas!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:432
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:435
 msgid "Jarlom!"
 msgstr "Džarlomas!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:435
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:438
 msgid "Hamik!"
 msgstr "Hamikas!"
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:448
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:451
 msgid "Pass, friend."
 msgstr "Praeik, drauge."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:463
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:466
 msgid ""
 "The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
 "it may be; cut him loose, and let’s be rid of him."
@@ -1085,12 +1089,12 @@ msgstr ""
 "keistas. Nukirskite jo pančius ir tegul nešdinasi."
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:474
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:477
 msgid "Wrong! Die!"
 msgstr "Neteisingai! Mirkite!"
 
 #. [message]: speaker=Knago-Brek
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:492
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:495
 #, fuzzy
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
@@ -1100,7 +1104,7 @@ msgstr ""
 "žmones!!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:497
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:500
 #, fuzzy
 msgid ""
 "My sword-arm shall have a say in who will do the dying. Come on, men, let’s "
@@ -1109,72 +1113,72 @@ msgstr ""
 "Mano kardas-ranka pasakys, kas mirs! Pirmyn, vyrai, nužudykime keletą orkų."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:509
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:512
 msgid "One less braggart orc in the world."
 msgstr "Vienu orku-pagyrūnu pasaulyje mažiau."
 
 #. [message]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:518
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:520
 msgid "Captain, what are <i>orcs</i> doing this far south?"
 msgstr "Kapitone, ką <i>orkai</i> daro taip toli pietuose?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:523
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:525
 msgid "Good question. Perhaps my brother will have found out."
 msgstr "Geras klausimas. Galbūt mano brolis bus išsiaiškinęs."
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:623
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:625
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
 msgstr "Ar jūs esate mūsų pamaina? Ar tai reiškia, kad jau galime išeiti?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:628
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:630
 msgid "Um, yes. Fine. You can go."
 msgstr "Hm, taip. Gerai. Galite eiti."
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:633
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:635
 msgid "Um, you’re supposed to give the password."
 msgstr "Hm, jūs turėtumėte pasakyti slaptažodį."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:638
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:640
 msgid "Oh, of course. I had nearly forgotten."
 msgstr "O, žinoma. Jau beveik užmiršau."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:641
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:643
 msgid "Akranbral!"
 msgstr "Akranbral!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:644
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:646
 msgid "Drakanal!"
 msgstr "Drakanal!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:647
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:649
 msgid "Xaskanat!"
 msgstr "Zaskanatas!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:650
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:652
 msgid "Katklagad!"
 msgstr "Katklagadas!"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:663
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:665
 msgid "Thanks! Irritating little formality, isn’t it?"
 msgstr "Dėkui! Mažas erzinantis formalumas, ar ne?"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:673
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:675
 msgid "That’s the wrong password! These aren’t our relief! Get them!"
 msgstr "Slaptažodis neteisingas! Tai ne mūsų pamaina! Čiupkite juos!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:681
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:683
 msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
@@ -1183,22 +1187,22 @@ msgstr ""
 "galimybę išvaduoti savo brolį."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:693
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:695
 msgid "Your hand or Tairach’s, death is still death... (argh)"
 msgstr "Tavo ranka, ar Tairačo, mirtis lieka mirtimi... (argh)"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:703
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:705
 msgid "‘Tairach’? Who or what is Tairach?"
 msgstr "„Tairačas?“ Kas tas Tairačas?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:708
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:710
 msgid "There’s a key in his robes."
 msgstr "Jo rūbuose yra raktas."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:718
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:720
 msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
@@ -1207,17 +1211,17 @@ msgstr ""
 "Paimsiu jį."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:746
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:748
 msgid "It may be important, I best take it."
 msgstr "Jis gali būti svarbus, geriau jį paimsiu."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:764
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:766
 msgid "This castle seems as dark as a cave!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:770
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:772
 msgid ""
 "This castle is under a constant, <i>chaotic</i> time of day (equivalent to "
 "permanent night), except for illuminated hexes adjacent to lit stone walls "
@@ -1226,39 +1230,39 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:790
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:792
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
 msgstr "Žiūrėkite, ką čia radau! Priskaičiuoju šimtą auksinių."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:804
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:806
 msgid "Look what I have found in here! I can count fifty pieces of gold."
 msgstr "Žiūrėkite ką čia radau! Priskaičiuoju penkiasdešimt auksinių."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:843
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:845
 msgid "I found Baran. He is in this cell."
 msgstr "Radau Bareną. Jis šioje vienutėje."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:854
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:856
 msgid "It’s good to see you, Arvith."
 msgstr "Džiaugiuosi tave matydamas, Arvitai."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:859
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:861
 msgid "And you too, brother."
 msgstr "Ir tave, broli."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:865
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:867
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
 msgstr ""
 "Tu turbūt vienas iš Arvito vyrų. Prašau, padėk man ištrūkti iš šito požemio."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:872
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:874
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
@@ -1269,14 +1273,14 @@ msgstr ""
 "Privalai jį atimti iš burtininko, kad mane išlaisvintum."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:884
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:886
 msgid ""
 "I have already met, and killed, the sorcerer. Is this the key to which you "
 "referred?"
 msgstr "Jau sutikau ir užmušiau magą.  Ar tai raktas, kurį paminėjai?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:888
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:890
 msgid ""
 "Yes, it is. Come, unlock this cell door, and let us depart this place, "
 "brother!"
@@ -1285,17 +1289,17 @@ msgstr ""
 "vietos, broli!"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:942
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:944
 msgid "Thank you for saving me. I... was not certain you would come."
 msgstr "Ačiū, kad mane išgelbėjai. Aš... nebuvau tikras, kad ateisi."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:947
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:949
 msgid "Have you no faith in your brother, Baran?"
 msgstr "Ar jau visai nebetiki savo broliu, Barenai?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:952
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:954
 msgid ""
 "It’s not that. Perhaps I deserved to rot here. I failed you. I failed you "
 "again."
@@ -1304,7 +1308,7 @@ msgstr ""
 "tave nuvyliau."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:957
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:959
 msgid ""
 "That is as may be. But you are my brother still. And... I never doubted you "
 "would have come for me."
@@ -1313,7 +1317,7 @@ msgstr ""
 "neabejojau, kad ateisi manęs."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:962
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:964
 msgid ""
 "It was no great trial, after all. A few elves, one or two dark sorcerers, a "
 "gang of orcs and some undead. Really just a day’s work for the company."
@@ -1322,22 +1326,22 @@ msgstr ""
 "burtininkai, krūvelė orkų ir kažkiek nemirėlių. Nuobodi samdinių kasdienybė."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:967
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:969
 msgid "Thank you for coming to my aid. Let us return to the village."
 msgstr "Ačiū, kad atėjai į pagalbą. Grįžkime į kaimą."
 
 #. [unit]: id=Rotharik, type=Orcish Assassin
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1001
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1003
 msgid "Minion of Tairach"
 msgstr "Tairačo pakalikas"
 
 #. [message]: speaker=Rotharik
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1013
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1015
 msgid "You are too late! Your brother is already dead! Muahahaha...!"
 msgstr "Pavėlavai! Tavo brolis jau miręs! Muchachachacha!.."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1018
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1020
 msgid "Argh!!"
 msgstr "Argh!!"
 

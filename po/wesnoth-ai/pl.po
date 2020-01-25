@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,9 +26,9 @@ msgstr ""
 msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr ""
 
-#. [ai]: id=experimental_ai
-#: data/ai/ais/ai_experimental.cfg:9
-msgid "Multiplayer_AI^Experimental AI"
+#. [ai]: id=ai_default_rca_1_14
+#: data/ai/ais/ai_default_rca_1_14.cfg:9
+msgid "Multiplayer_AI^1.14 Default AI"
 msgstr ""
 
 #. [ai]: id=idle_ai
@@ -39,6 +39,11 @@ msgstr ""
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
+msgstr ""
+
+#. [ai]: id=experimental_ai
+#: data/ai/dev/ai_experimental.cfg:11
+msgid "Multiplayer_AI^Experimental AI"
 msgstr ""
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
@@ -82,10 +87,10 @@ msgstr ""
 msgid "Urug-Telfar"
 msgstr ""
 
+#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:97
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:111
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:129
@@ -254,8 +259,8 @@ msgid ""
 "self control of a well trained sheep dog."
 msgstr ""
 
-#. [test]: id=animals
 #. [event]
+#. [test]: id=animals
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -266,10 +271,10 @@ msgstr ""
 msgid "Rutburt"
 msgstr ""
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -298,8 +303,8 @@ msgstr ""
 msgid "Yetis"
 msgstr ""
 
-#. [side]
 #. [event]
+#. [side]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -312,10 +317,10 @@ msgstr ""
 msgid "Whelps"
 msgstr ""
 
-#. [set_menu_item]: id=m01_end_animals
 #. [event]
 #. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -445,12 +450,12 @@ msgstr ""
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr ""
 
-#. [message]: speaker=Big Bad Orc
 #. [message]: speaker=Another Bad Orc
 #. [message]: speaker=Vanak
+#. [message]: speaker=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:572
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:148
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:142
 msgid "They there!  We them get!"
 msgstr ""
 
@@ -513,8 +518,8 @@ msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
 msgstr ""
 
-#. [test]: id=dragon
 #. [event]
+#. [test]: id=dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -1388,7 +1393,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:159
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
 #: data/ai/micro_ais/scenarios/patrols.cfg:238
 #: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
@@ -1450,9 +1455,9 @@ msgstr ""
 msgid "Vanak"
 msgstr ""
 
-#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1460,34 +1465,34 @@ msgid "Messenger"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:131
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
 msgid "Messenger Waypoint 1"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:133
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
 msgid "Messenger Waypoint 2"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:129
 msgid "Messenger Waypoint 3"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:138
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:132
 msgid "AI moves Messenger here"
 msgstr ""
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:147
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:160
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:154
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1508,32 +1513,32 @@ msgid ""
 msgstr ""
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:167
 msgid "Defeat the messenger"
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:177
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:171
 msgid "Messenger gets to the signpost"
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:181
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:175
 msgid "Death of Vanak"
 msgstr ""
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:197
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:191
 msgid "I made it!  Now our people will be safe."
 msgstr ""
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:212
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:206
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr ""
 
-#. [test]: id=patrols
 #. [event]
+#. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -1694,8 +1699,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr ""
 
-#. [test]: id=protect_unit
 #. [event]
+#. [test]: id=protect_unit
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2231,76 +2236,81 @@ msgstr ""
 
 #. [message]: speaker=sergeant
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:125
-msgid "General Grospur, what do we do?  These undead will surely wipe us out."
+msgid "General Grospur, what do we do? These undead will surely wipe us out."
 msgstr ""
 
 #. [message]: speaker=Grospur
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:129
 msgid ""
-"Don't be such a chicken, Sergeant!  I have placed units with lots of "
+"Don’t be such a chicken, Sergeant! I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
 "And those few that sneak through... we can easily dispose of them once they "
-"make it inside.\n"
+"make it inside."
+msgstr ""
+
+#. [message]: speaker=sergeant
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:133
+msgid ""
+"General Grospur, you’re still thinking of Wesnoth 1.12. The default AI is "
+"smarter than that now.\n"
 "\n"
-"<i>In other words, the Wesnoth AI does generally not attack units one XP "
-"from leveling if there is no chance of killing the unit with a single "
-"attack. However, some of the attacks by the undead are handled by the Simple "
-"Attack Micro AI in this scenario. General Grospur might be in for a surprise."
-"</i>"
+"<i>If you’re porting an old scenario, you may find the Simple Attack Micro "
+"AI used in a way that’s unnecessary since 1.14. The 1.12 AI generally "
+"doesn’t attack units one XP from leveling if there is no chance of killing "
+"the unit with a single attack. One way of making 1.12 do those attacks was "
+"to use the Simple Attack Micro AI.</i>"
+msgstr ""
+
+#. [message]: speaker=Uralt
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:139
+msgid ""
+"Hahahahaha!! Indeed, my skeletons are smarter than General Grospur. Worse "
+"for you, I have given special instruction to my Soulless to attack all your "
+"almost-advanced units first. Also watch how those same Soulless will throw "
+"themselves mercilessly at your pitiful soldiers after that, saving my more "
+"valuable skeleton minions for later. I have taken the term ‘disposable "
+"units’ to a whole new level. Watch in awe!!\n"
+"\n"
+"<i>Translation: The undead side includes two instances of the Simple Attack "
+"Micro AI. The first makes the Soulless attack all units 1 XP from leveling "
+"up, such that they can be eliminated afterward. The second executes all "
+"remaining attacks possible by Soulless (and Walking Corpses), without regard "
+"for their own safety. Only after that does the default Wesnoth attack "
+"mechanism kick in to attack with the remaining units (skeletons), and it "
+"moves the remaining units with high caution and low aggression.</i>\n"
+"\n"
+"<i>The difference to the 1.12 version of this demo is that the 1.12 "
+"skeletons still had high aggression.</i>"
 msgstr ""
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:135
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:147
 msgid "Watch the undead take care of business"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:137
-msgid "Don't even try. You can't reach the Lich."
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:149
+msgid "Don’t even try. You can’t reach the Lich."
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:141
-msgid "Death of the last of Grospur's units"
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:153
+msgid "Death of the last of Grospur’s units"
 msgstr ""
 
 #. [note]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:145
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:157
 msgid "When your leader dies, side leadership passes on to another unit"
 msgstr ""
 
-#. [message]: speaker=$second_unit.id
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:172
-msgid ""
-"What the ... ?!?  They are not supposed to attack me. That just doesn't "
-"happen in Wesnoth!"
-msgstr ""
-
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:176
-msgid ""
-"Hahahahaha!! I have given special instruction to my Soulless to attack all "
-"your almost-advanced units first. Also watch how those same Soulless will "
-"throw themselves mercilessly at your pitiful soldiers after that, saving my "
-"more valuable skeleton minions for later. I have taken the term 'disposable "
-"units' to a whole new level. Watch in awe!!\n"
-"\n"
-"<i>Translation: The undead side includes two instances of the Simple Attack "
-"Micro AI.  The first makes the Soulless attack all units 1 XP from leveling "
-"up, such that they can be eliminated afterward.  The second executes all "
-"remaining attacks possible by Soulless (and Walking Corpses), without regard "
-"for their own safety.  Only after that does the default Wesnoth attack "
-"mechanism kick in to attack with the remaining units (skeletons).</i>"
-msgstr ""
-
-#. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:195
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:188
 msgid "Rise, minions!"
 msgstr ""
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:241
-msgid "And that's how the undead AI executes total annihilation ..."
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:234
+msgid "And that’s how the undead AI executes total annihilation ..."
 msgstr ""
 
 #. [side]

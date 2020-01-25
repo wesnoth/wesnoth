@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 22:40+0300\n"
+"POT-Creation-Date: 2020-01-25 15:18-0300\n"
 "PO-Revision-Date: 2019-07-15 20:04-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -234,33 +234,10 @@ msgid "Winter"
 msgstr "Inverno"
 
 #
-# File: data/core/editor/time-of-day.cfg, line: 27
-# File: data/core/editor/time-of-day.cfg, line: 27
-# File: data/core/editor/time-of-day.cfg, line: 27
-#. [editor_times]: id=underground
-#: data/core/editor/time-of-day.cfg:40
-msgid "Underground"
-msgstr "Subterrâneo"
-
-#
-# File: data/core/editor/time-of-day.cfg, line: 33
-# File: data/core/editor/time-of-day.cfg, line: 33
-# File: data/core/editor/time-of-day.cfg, line: 33
-#. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:46
-msgid "Deep Underground"
-msgstr "Profundezas"
-
-#. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:52
-msgid "Indoors"
-msgstr "Espaço fechado"
-
-#
 # File: data/core/editor/time-of-day.cfg, line: 39
 # File: data/core/editor/time-of-day.cfg, line: 39
 #. [editor_times]: id=24
-#: data/core/editor/time-of-day.cfg:58
+#: data/core/editor/time-of-day.cfg:60
 msgid "24 Hour Schedule"
 msgstr "Período de 24 Horas"
 
@@ -269,7 +246,7 @@ msgstr "Período de 24 Horas"
 # File: data/core/editor/time-of-day.cfg, line: 46
 # File: data/core/editor/time-of-day.cfg, line: 46
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:64
+#: data/core/editor/time-of-day.cfg:66
 msgid "After the Fall"
 msgstr "Após o Outono"
 
@@ -391,33 +368,37 @@ msgstr "Playlist"
 msgid "Assign Time Schedule"
 msgstr "Especificar Período do Dia"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:62
+#: src/editor/action/mouse/mouse_action_unit.cpp:68
+msgid "(Unknown unit type: $type)"
+msgstr ""
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:72
 msgid "Identifier: "
 msgstr "Identificador: "
 
 #
 # File: src/editor/action/mouse/mouse_action_unit.cpp, line: 59
 # File: src/editor/action/mouse/mouse_action_unit.cpp, line: 59
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
+#: src/editor/action/mouse/mouse_action_unit.cpp:73
 msgid "Name: "
 msgstr "Nome: "
 
 #
 # File: src/editor/action/mouse/mouse_action_unit.cpp, line: 60
 # File: src/editor/action/mouse/mouse_action_unit.cpp, line: 60
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:74
 msgid "Type: "
 msgstr "Tipo: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
+#: src/editor/action/mouse/mouse_action_unit.cpp:75
 msgid "Level: "
 msgstr "Nível: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:76
 msgid "Cost: "
 msgstr "Custo: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:77
 msgid "Recruit: "
 msgstr "Recrutar: "
 
@@ -872,6 +853,23 @@ msgstr "nenhum"
 #: src/gui/dialogs/editor/set_starting_position.cpp:97
 msgid "Player $player_number"
 msgstr "Jogador $player_number"
+
+#
+# File: data/core/editor/time-of-day.cfg, line: 27
+# File: data/core/editor/time-of-day.cfg, line: 27
+# File: data/core/editor/time-of-day.cfg, line: 27
+#~ msgid "Underground"
+#~ msgstr "Subterrâneo"
+
+#
+# File: data/core/editor/time-of-day.cfg, line: 33
+# File: data/core/editor/time-of-day.cfg, line: 33
+# File: data/core/editor/time-of-day.cfg, line: 33
+#~ msgid "Deep Underground"
+#~ msgstr "Profundezas"
+
+#~ msgid "Indoors"
+#~ msgstr "Espaço fechado"
 
 #~ msgid "None"
 #~ msgstr "Nenhum"

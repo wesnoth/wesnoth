@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 22:40+0300\n"
+"POT-Creation-Date: 2020-01-25 15:18-0300\n"
 "PO-Revision-Date: 2018-05-06 10:20+0000\n"
 "Last-Translator: tamanegi, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -27,8 +27,9 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [time]: id=underground
+#. [editor_times]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
-#: data/core/macros/schedules.cfg:109
+#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:109
 msgid "Underground"
 msgstr "地下"
 
@@ -96,123 +97,236 @@ msgstr ""
 msgid "Map and Scenario Editor"
 msgstr "マップ・シナリオエディタ"
 
-#. [topic]: id=editor_brush
-#: data/core/editor/help.cfg:13
-msgid "Editor Brush"
-msgstr "エディタブラシ"
+#. [section]: id=editor_mode_terrain
+#. [topic]: id=..editor_mode_terrain
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:272
+msgid "Terrain Editor"
+msgstr "地形エディタ"
 
-#. [topic]: id=editor_brush
-#. [topic]: id=editor_clipboard
+#. [section]: id=editor_mode_scenario
+#: data/core/editor/help.cfg:20
+#, fuzzy
+#| msgid "Map/Scenario Editor"
+msgid "Scenario Editor"
+msgstr "マップ・シナリオエディタ"
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:28
+msgid "Paint Tool"
+msgstr "ペイントツール"
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:29
+msgid ""
+"Paint terrain tiles on the map.\n"
+"\n"
+"The paint tool utilizes the brush sizes and the terrain palette.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: If a base terrain is selected, change the base without "
+"changing the overlay. If an overlay is selected, change the overlay without "
+"changing the base.\n"
+"• Control+mouse click: Select the terrain under the mouse cursor, as if it "
+"had been selected on the terrain palette (picks up both base and overlay).\n"
+"\n"
+"<bold>text='Brush Sizes'</bold>\n"
+"\n"
+"The selected brush changes the size of the tool:"
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:41
+msgid "Paint single hexes."
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:42
+msgid "Paint seven hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:43
+msgid "Paint nineteen hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
+msgid "Paint three hexes in a line."
+msgstr ""
+
+#. [topic]: id=editor_tool_fill
+#: data/core/editor/help.cfg:52
+msgid "Fill Tool"
+msgstr "塗り潰しツール"
+
+#. [topic]: id=editor_tool_fill
+#: data/core/editor/help.cfg:53
+msgid ""
+"Fill continuous regions of terrain with a different one.\n"
+"\n"
+"The fill tool utilizes the terrain palette.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: If a base terrain is selected, change the base without "
+"changing the overlay. If an overlay is selected, change the overlay without "
+"changing the base.\n"
+"• Control+mouse click: Select the terrain under the mouse cursor, as if it "
+"had been selected on the terrain palette (picks up both base and overlay)."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:67
+msgid "Select Tool"
+msgstr "選択ツール"
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:68
+msgid ""
+"Selects a set of hex fields, for use with with the cut, copy and fill-"
+"selection buttons below the menu bar.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: ‘Magic Wand’ mode, select the hex under the mouse "
+"cursor, and adjoining hexes of the same terrain type.\n"
+"• Control+mouse click: Unselect hexes.\n"
+"\n"
+"<bold>text='Brush Sizes'</bold>\n"
+"\n"
+"The selected brush changes the size of the tool:"
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:78
+msgid "Select single hexes."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:79
+msgid "Select seven hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:80
+msgid "Select nineteen hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
+msgid "Select three hexes in a line."
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:89
+msgid "Clipboard and Paste Tool"
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:90
+msgid ""
+"Rotate, flip and paste the terrain in the clipboard\n"
+"\n"
+"Hexes can be cut or copied to the clipboard using the "
+"<ref>dst='editor_tool_select' text='Select Tool'</ref>.\n"
+"\n"
+"The paste tool shows an outline of the clipboard, which can be pasted with a "
+"mouse-click. Only the outline is shown, but mistakes can be corrected with "
+"the undo function, which is bound to both Control+Z and to the same key as "
+"the in-game undo function.\n"
+"\n"
+"The paste tool also has some clipboard-manipulation functions:"
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:97
+msgid "Rotate clockwise by 60°."
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:98
+msgid "Rotate counter-clockwise by 60°."
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:99
+msgid "Flip horizontally"
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:100
+msgid "Flip vertically"
+msgstr ""
+
+#. [topic]: id=editor_tool_starting
+#: data/core/editor/help.cfg:107
+#, fuzzy
+#| msgid "Starting Positions Howto"
+msgid "Starting Locations Tool"
+msgstr "開始地点の使い方"
+
+#. [topic]: id=editor_tool_starting
+#: data/core/editor/help.cfg:108
+msgid ""
+"Defines the side leader starting position\n"
+"\n"
+"This tool sets the side leaders’ default starting locations, and named "
+"special locations. Both types of location are enabled in both <ref>dst='.."
+"editor_mode_terrain' text='Terrain Editor'</ref> and Scenario Editor modes. "
+"The location names are shown as a list in the editor palette, clicking on "
+"the map will place that name on a hex, each location can only be placed on a "
+"single hex, and the editor will only allow one location per hex.\n"
+"\n"
+"To add named special locations, click “Add” at the bottom of the editor "
+"palette, and enter the name. These names must start with a letter and may "
+"contain numbers and underscores.\n"
+"\n"
+"More than nine teams can be added to a map, by clicking “Add” and entering a "
+"number, for example “10”. The UI will automatically show this as “Player "
+"10”.\n"
+"\n"
+"Named locations can be accessed from WML using the Standard Location "
+"Filter’s <italic>text='location_id='</italic>. Player starts can also be "
+"accessed from WML using <italic>text='location_id=1'</italic>, "
+"<italic>text='location_id=2'</italic>, etc — use only the number, without "
+"adding “Player ” in front of the number.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Control+mouse click on a hex that already has a location: select that "
+"location for placing with a subsequent mouse click, as if it was selected in "
+"the editor palette."
+msgstr ""
+
+#. [topic]: id=editor_tool_label
+#: data/core/editor/help.cfg:127
+msgid "Label Tool"
+msgstr "ラベルツール"
+
 #. [topic]: id=editor_tool_label
 #. [topic]: id=editor_tool_item
 #. [topic]: id=editor_tool_village
 #. [topic]: id=editor_tool_unit
 #. [topic]: id=editor_time_schedule
-#. [topic]: id=editor_starting_positions_in_general
-#: data/core/editor/help.cfg:14 data/core/editor/help.cfg:22
-#: data/core/editor/help.cfg:78 data/core/editor/help.cfg:86
-#: data/core/editor/help.cfg:104 data/core/editor/help.cfg:112
-#: data/core/editor/help.cfg:251 data/core/editor/help.cfg:289
+#: data/core/editor/help.cfg:128 data/core/editor/help.cfg:136
+#: data/core/editor/help.cfg:154 data/core/editor/help.cfg:162
+#: data/core/editor/help.cfg:293
 msgid "TODO"
 msgstr "TODO"
 
-#. [topic]: id=editor_clipboard
-#: data/core/editor/help.cfg:21
-msgid "Terrain Clipboard"
-msgstr "地形のクリップボード"
-
-#. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:29
-msgid "Paint Tool"
-msgstr "ペイントツール"
-
-#. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:30
-msgid ""
-"Paint terrain tiles on the map.\n"
-"\n"
-"The paint tool utilizes the brushes and the terrain palette."
-msgstr ""
-"地形タイルをマップ上に描画します。\n"
-"\n"
-"ペイントツールはエディタブラシと地形パレットを利用します。"
-
-#. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:39
-msgid "Fill Tool"
-msgstr "塗り潰しツール"
-
-#. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:40
-msgid ""
-"Fill continuous regions of terrain with a different one!\n"
-"\n"
-"The fill tool utilizes the terrain palette."
-msgstr ""
-"同じ地形が続いているエリアを違う地形で塗りつぶします！\n"
-"\n"
-"塗り潰しに使われる地形は、地形パレットのものを利用します。"
-
-#. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:49
-msgid "Select Tool"
-msgstr "選択ツール"
-
-#. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:50
-msgid ""
-"Selects a set of hex fields. The best tool ever!\n"
-"\n"
-"This tool utilizes the brushes."
-msgstr ""
-"複数のヘクスを選択します。素晴らしいツールですよ！\n"
-"\n"
-"このツールはブラシを利用します。"
-
-#. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:59
-msgid "Paste Tool"
-msgstr "貼り付けツール"
-
-#. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:60
-msgid "Paste the terrain in the clipboard"
-msgstr "クリップボードに記録されている地形を貼り付けます。"
-
-#. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:67
-msgid "Starting Tool"
-msgstr "開始地点ツール"
-
-#. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:68
-msgid ""
-"Defines the side leader starting position\n"
-"\n"
-"This tool sets the side leaders' default starting locations, and named "
-"special locations."
-msgstr ""
-"陣営リーダーの開始地点を定義\n"
-"\n"
-"このツールは、陣営リーダーの開始地点と、名前付きの特別な場所を定義できます。"
-
-#. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:77
-msgid "Label Tool"
-msgstr "ラベルツール"
-
 #. [topic]: id=editor_tool_item
-#: data/core/editor/help.cfg:85
+#: data/core/editor/help.cfg:135
 msgid "Item Tool"
 msgstr "アイテムツール"
 
 #. [topic]: id=editor_tool_soundsource
-#: data/core/editor/help.cfg:93
+#: data/core/editor/help.cfg:143
 msgid "Soundsource Tool"
 msgstr "音源ツール"
 
 #. [topic]: id=editor_tool_soundsource
-#: data/core/editor/help.cfg:94
+#: data/core/editor/help.cfg:144
 msgid ""
 "Places Soundsources on your maps!\n"
 "\n"
@@ -223,22 +337,22 @@ msgstr ""
 "このツールはまだ実装されていません。"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:103
+#: data/core/editor/help.cfg:153
 msgid "Village Ownership Tool"
 msgstr "村の所有権ツール"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:111
+#: data/core/editor/help.cfg:161
 msgid "Unit Tool"
 msgstr "ユニットツール"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:119
+#: data/core/editor/help.cfg:169
 msgid "Named Areas"
 msgstr "名前付き領域"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:120
+#: data/core/editor/help.cfg:170
 msgid ""
 "Named Areas are sets of gamefields which can be addressed during scenario "
 "scripting by a given name.\n"
@@ -256,12 +370,12 @@ msgstr ""
 "装することが可能となります。これは非常に強力な仕組みです。"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:130
+#: data/core/editor/help.cfg:180
 msgid "Playlist Manager"
 msgstr "プレイリストマネージャー"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:131
+#: data/core/editor/help.cfg:181
 msgid ""
 "Saves a list of music tracks defining a random playlist to the scenario.\n"
 "\n"
@@ -273,119 +387,71 @@ msgstr ""
 "でしょう。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:140
+#: data/core/editor/help.cfg:190
 msgid "Map/Scenario Editor"
 msgstr "マップ・シナリオエディタ"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:142
+#: data/core/editor/help.cfg:192
 msgid ""
-"Wesnoth's Map and Scenario Editor allows users to create and edit the maps "
+"Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
 "of features for setting up a basic scenario.\n"
 "\n"
-"The editor can be launched from the <italic>text='Map Editor'</italic>"
-msgstr ""
-"Wesnoth のマップ・シナリオエディタは、シナリオで使用されるマップを作成・変更"
-"することができます。また、標準的なシナリオ作成に必要な機能もいくつか備えてい"
-"ます。\n"
+"The editor can be launched from the <italic>text='Map Editor'</italic> "
+"option at the title screen.\n"
 "\n"
-"エディタはタイトルスクリーンの<italic>text='マップエディタ'</italic>"
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:144
-msgid ""
-" option at the title screen.\n"
+"<header>text='What you get'</header>\n"
 "\n"
-"<header>text='What you get'</header>"
-msgstr ""
-"から起動できます。\n"
-"\n"
-"<header>text='機能'</header>"
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:146
-msgid ""
-"\n"
-"\n"
-"• <ref>dst='editor_terrain' text='Terrain Editor'</ref>\n"
+"• <ref>dst='..editor_mode_terrain' text='Terrain Editor'</ref>\n"
 "An easy to use map editor, similar to simple paint applications.\n"
 "\n"
 "• Scenario Editor\n"
 "\n"
-"• <ref>dst='editor_playlist' text='Playlist Manager'</ref>"
-msgstr ""
-"\n"
-"\n"
-"• <ref>dst='editor_terrain' text='地形エディタ'</ref>\n"
-"簡単に使用できるマップエディタです。ペイントソフトのように操作できます。\n"
-"\n"
-"• シナリオエディタ\n"
-"\n"
-"• <ref>dst='editor_playlist' text='プレイリストマネージャ'</ref>"
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:153
-msgid ""
-"\n"
-"Predefine the scenario's music track playlist.\n"
+"• <ref>dst='editor_playlist' text='Playlist Manager'</ref>\n"
+"Predefine the scenario’s music track playlist.\n"
 "\n"
 "• Time Schedule Editor\n"
 "\n"
-msgstr ""
-"\n"
-"シナリオで使用される BGM のプレイリストを定義できます。\n"
-"\n"
-"• タイムスケジュールエディタ\n"
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:158
-msgid ""
-"\n"
+"<header>text='What you do *not* get'</header>\n"
 "\n"
 "• What-you-see-is-what-you-get\n"
 "The editor is not a WYSIWYG application.\n"
 "\n"
 "Because which exact graphic tile represents a terrain in the map depends on "
 "all terrain rules loaded (which is different between the editor and each "
-"other use case) the map won't look exactly the same.\n"
+"other use case) the map won’t look exactly the same.\n"
 "\n"
 "• Event handlers and scripting\n"
-"The editor is not a tool to help you scripting the scenario's event "
+"The editor is not a tool to help you scripting the scenario’s event "
 "handlers.\n"
 "\n"
 "• Infinite Backwards Compatibility\n"
-"The editor can't load maps from versions prior to 1.10.\n"
-"TODO is that true?\n"
-"\n"
+"The editor can load most maps from older versions of Wesnoth, but not all. "
+"Maps from 1.3.2 and later will normally be supported, unless they use "
+"terrains which are no longer in mainline Wesnoth. Maps from add-ons which "
+"have their own terrains will need that add-on to tell the editor about their "
+"terrains."
 msgstr ""
-"\n"
-"\n"
-"• WYSIWYG\n"
-"このエディタは WYSIWYG （見たものがそのまま得られる）ではありません。\n"
-"\n"
-"なぜなら、エディタ上で表示されるグラフィックタイルはマップ中の地形に相当しま"
-"すが、それらは読み込まれた地形ルールに依存しているからです。実際に使用する状"
-"況では、エディタとは地形ルールが異なっている場合があります。\n"
-"\n"
-"• イベントハンドラとスクリプト\n"
-"このエディタにはシナリオのイベントハンドラスクリプトの記述を補助する機能はあ"
-"りません。\n"
-"\n"
-"• 後方互換性\n"
-"このエディタはバージョン1.10以前のマップを読み込むことはできません。\n"
-"TODOは間違っているかも？\n"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:172
+#: data/core/editor/help.cfg:221
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
+#| "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
+#| "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
+#| "• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if "
+#| "it needs a topic on its own\n"
+#| "• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
 msgid ""
-"\n"
+"<header>text='Basic Concepts'</header>\n"
 "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
 "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
 "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-"• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if it "
-"needs a topic on its own\n"
-"• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
+"• The clipboard is described in the <ref>dst='editor_tool_paste' text='Paste "
+"Tool'</ref>"
 msgstr ""
 "\n"
 "• <ref>dst='editor_modes' text='エディタモード'</ref>\n"
@@ -396,101 +462,25 @@ msgstr ""
 "• <ref>dst='editor_clipboard' text='エディタクリップボード'</ref>"
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:184
+#: data/core/editor/help.cfg:231
 msgid "Editing Modes"
 msgstr "エディタモード"
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:185
+#: data/core/editor/help.cfg:232
 msgid ""
+"The editor features two modes of operation:\n"
 "\n"
-"\n"
-"<header>text='Pure Map Mode'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='ピュアマップモード'</header>"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:185
-msgid "The editor features two separate modes of operation:"
-msgstr "このエディタは操作用の2つのモードを持っています。"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:187
-msgid ""
-"\n"
+"<header>text='Terrain-only Mode'</header>\n"
 "\n"
 "Allows only the composing of the terrain map itself and the definition of "
-"leader starting positions."
-msgstr ""
+"leader starting positions.\n"
 "\n"
+"When saved using “Save Map As” and saving to the default directory, the "
+"produced map can be found in the “User Maps” game type of the create "
+"multiplayer game dialog.\n"
 "\n"
-"地形マップの構築とリーダーの開始地点の定義を行うことができます。"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:189
-msgid ""
-"\n"
-"How the information is saved depends on the loaded file:\n"
-"\n"
-"<bold>text='Native'</bold>"
-msgstr ""
-"\n"
-"情報の保存形式は読み込まれたファイルに依存します。\n"
-"\n"
-"<bold>text='ネイティブ'</bold>"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:192
-msgid ""
-"\n"
-"A new map or file containing only the arguments to the map_data attribute.\n"
-"\n"
-"The produced map can be played in the “User Maps” game type at the create "
-"multiplayer game dialog if saved to the default directory.\n"
-"\n"
-"<bold>text='Embedded'</bold>"
-msgstr ""
-"\n"
-"新しいマップか、map_data 属性のみを含むファイルです。\n"
-"\n"
-"作成したマップをデフォルトディレクトリに保存することで、マルチプレイヤーゲー"
-"ム作成ダイアログの「ユーザーマップ」からプレイすることができます。\n"
-"\n"
-"<bold>text='埋め込み'</bold>"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:197
-msgid ""
-"\n"
-"Scenario files containing a valid map_data attribute (not a file include) "
-"will be opened in this submode. The editor replaces only the content of "
-"map_data and leaves everything else in the scenario untouched. Maps opened "
-"this way are marked [e] in the Maps menu."
-msgstr ""
-"\n"
-"有効な map_data 属性を含むシナリオファイルはこのモードで開かれます（map_data "
-"属性が別のファイルに保存されており、それをシナリオファイルから読み込んでいる"
-"場合は除きます）。エディタは map_data のコンテンツのみを変更し、シナリオの他"
-"の部分には手を加えません。この方法でマップが開かれた場合、マップメニューに"
-"「e」が表示されます。"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:198
-msgid ""
-"\n"
-"\n"
-"<header>text='Scenario Mode'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='シナリオモード'</header>"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:200
-msgid ""
-"\n"
+"<header>text='Scenario Mode'</header>\n"
 "\n"
 "The Scenario mode allows several extra tools to be used, such as the Unit "
 "tool. At least one side must be defined in order to use these tools, "
@@ -499,21 +489,14 @@ msgid ""
 "In this mode, terrain data is stored in the map_data attribute and saved "
 "into a file with any applicable WML."
 msgstr ""
-"\n"
-"\n"
-"シナリオモード時にはユニットツールなどの追加のツールが使用できます。これらの"
-"ツールを使用するには 1 つ以上の陣営が定義されている必要があります。\n"
-"\n"
-"このモード時には、地形データは map_data 属性に格納され、WML が適用できるファ"
-"イルに保存されます。"
 
 #. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:211
+#: data/core/editor/help.cfg:249
 msgid "Editor Tools"
 msgstr "エディタツール"
 
 #. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:212
+#: data/core/editor/help.cfg:250
 #, fuzzy
 #| msgid ""
 #| "The editor provides several tools for editing your maps and scenarios. At "
@@ -535,22 +518,24 @@ msgstr "エディタツール"
 #| "\n"
 msgid ""
 "The editor provides several tools for editing your maps and scenarios. At "
-"all times, one of the editor tools is active. The active tool's context "
+"all times, one of the editor tools is active. The active tool’s context "
 "determines the content of the editor palette and context menu.\n"
 "\n"
-"These following tools are provided:\n"
+"These tools are available in both terrain-only mode and scenario mode:\n"
 "\n"
 "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
 "• <ref>dst='editor_tool_fill' text='Fill Tool'</ref>\n"
 "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
 "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-"• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
+"• <ref>dst='editor_tool_starting' text='Starting Locations Tool'</ref>\n"
+"\n"
+"These tools are only available in scenario mode:\n"
+"\n"
 "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
 "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
 "• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
 "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-"• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
-"\n"
+"• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
 msgstr ""
 "エディタにはマップやシナリオを編集するためのツールがいくつかあります。エディ"
 "タ上では、それらのツールの内のどれかが有効になっています。有効になっている"
@@ -570,29 +555,27 @@ msgstr ""
 "• <ref>dst='editor_tool_unit' text='ユニットツール'</ref>\n"
 "\n"
 
-#. [topic]: id=editor_terrain
-#: data/core/editor/help.cfg:234
-msgid "Terrain Editor"
-msgstr "地形エディタ"
-
-#. [topic]: id=editor_terrain
-#: data/core/editor/help.cfg:235
+#. [topic]: id=..editor_mode_terrain
+#: data/core/editor/help.cfg:273
 msgid ""
-"The terrain editor's functionality is covered by the "
-"<ref>dst='editor_tool_paint' text='Paint'</ref> and "
-"<ref>dst='editor_tool_fill' text='Fill Tool'</ref>."
+"The terrain editor’s functionality is similar to a simple paint "
+"application.\n"
+"\n"
+"The right-hand sidebar contains, from top to bottom, the mini-map, "
+"<ref>dst='editor_toolkit' text='Toolkit'</ref>, tool options, and "
+"<ref>dst='editor_palette' text='Palette'</ref>.\n"
+"\n"
+"To get started, refer to the <ref>dst='editor_tool_paint' text='Paint Tool'</"
+"ref>’s page."
 msgstr ""
-"地形エディタの機能については<ref>dst='editor_tool_paint' text='ペイント'</"
-"ref>と<ref>dst='editor_tool_fill' text='塗り潰しツール'</ref>を参照してくださ"
-"い。"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:242
+#: data/core/editor/help.cfg:284
 msgid "Editor Mask Usage"
 msgstr "エディタマスクの使い方"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:243
+#: data/core/editor/help.cfg:285
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -601,66 +584,126 @@ msgstr ""
 "シナリオで共有することができます。"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:250
+#: data/core/editor/help.cfg:292
 msgid "Time Schedule Editor"
 msgstr "タイムスケジュールエディタ"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:258
+#: data/core/editor/help.cfg:300
 msgid "Editor Palette"
 msgstr "エディタパレット"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:259
+#: data/core/editor/help.cfg:301
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
 "list of all available terrains, and the unit tool will provide a list of "
-"available units."
+"available units. When using the Starting Locations Tool, the palette changes "
+"to a list of “Player 1”, “Player 2”, etc.\n"
+"\n"
+"<bold>text='Filter'</bold>\n"
+"\n"
+"There is a filter function to show only a subset of the available items — "
+"this is the leftmost of the four buttons at the top of the palette, and the "
+"graphic changes depending on what is selected. Examples:"
 msgstr ""
-"エディタパレットは現在使用しているツールで利用可能なアイテムを格納していま"
-"す。例えば、ペイントツールの場合は全ての利用可能な地形のリストを表示し、ユ"
-"ニットツールの場合は提供されているユニットのリストが表示されます。"
+
+#. [topic]: id=editor_palette
+#: data/core/editor/help.cfg:306
+msgid "Show all kinds of terrain"
+msgstr ""
+
+#. [topic]: id=editor_palette
+#: data/core/editor/help.cfg:307
+msgid "Show only water terrains"
+msgstr ""
+
+#. [topic]: id=editor_palette
+#: data/core/editor/help.cfg:308
+msgid "Show only villages"
+msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:266
+#: data/core/editor/help.cfg:318
 msgid "Wesnoth Map Format"
 msgstr "Wesnoth マップフォーマット"
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:267
+#: data/core/editor/help.cfg:319
+msgid "Wesnoth stores its maps in human readable plain text files."
+msgstr ""
+
+#. [topic]: id=map_format
+#: data/core/editor/help.cfg:321
 msgid ""
-"Wesnoth stores its maps in human readable plain text files.\n"
+"<header>text='Native'</header>\n"
 "\n"
 "A map file consists of rows with comma separated terrain code strings. The "
-"files can be edited with a general purpose text editor like notepad.\n"
+"only non-terrain information provided by the map syntax are the locations "
+"created by the <ref>dst='editor_tool_starting' text='Starting Locations "
+"Tool'</ref>. The files can be edited with a general purpose text editor like "
+"notepad.\n"
 "\n"
-"The only additional information provided by the map syntax are the starting "
-"positions of the scenario's sides.\n"
+"These files can be used directly for multiplayer games, the number of "
+"players is automatically determined by the number of starting positions. "
+"When saved in the default directory, the map can be found in the “Custom "
+"Maps” game type of the multiplayer “Create Game” dialog; you may need to "
+"refresh the cache (press F5 on the title screen) before a newly-created map "
+"appears.\n"
 "\n"
-"Additional information, such as teams, custom events, and complex side "
-"setups still need to be manually coded in WML."
+"These files can be used in a scenario’s .cfg file, with the scenario’s WML "
+"providing additional information such as teams, custom events, and complex "
+"side setups. The .cfg file loads the map file with either of:\n"
+"\n"
+"• map_file=maps/01_First_Map.map <italic>text='— supported since Wesnoth "
+"1.14'</italic>\n"
+"• map_data=\"{maps/01_First_Map.map}\" <italic>text='— a WML preprocessor "
+"include'</italic>\n"
+"\n"
+"The <italic>text='map_file'</italic> method is preferred over using a "
+"preprocessor include."
 msgstr ""
-"Wesnoth のマップは人間でも読むことができるプレーンテキストファイルとして保存"
-"されます。\n"
-"\n"
-"マップファイルはコンマで区切られた地形コード文字列から成り立っています。マッ"
-"プファイルはメモ帳などの一般的なテキストエディタで編集可能です。\n"
-"\n"
-"マップに含まれているその他の情報は、シナリオの各陣営の開始地点のみです。\n"
-"\n"
-"開始地点以外の追加情報（チーム、カスタムイベント、複雑な陣営の設定など）は "
-"WML の中に手動で記述する必要があります。"
 
-#. [topic]: id=scenario_format
-#: data/core/editor/help.cfg:280
-msgid "Scenario Format"
-msgstr "シナリオフォーマット"
+#. [topic]: id=map_format
+#: data/core/editor/help.cfg:334
+msgid ""
+"<header>text='Embedded'</header>\n"
+"\n"
+"The map data can stored as part of a scenario’s .cfg file, directly in the "
+"<italic>text='map_data'</italic> attribute. In other words, in the place "
+"that the preprocessor would include it when using the preprocessor-include "
+"method.\n"
+"\n"
+"<bold>text='Using Embedded Format in Terrain Mode'</bold>\n"
+"\n"
+"If you are editing the map and not using the Scenario Mode support, then "
+"it’s trivial to move the data to a native map file before opening it in the "
+"editor. This conversion is recommended — the editor supports editing the "
+"content of map_data while leaving everything else in the file untouched, but "
+"this is rarely-used code. Maps opened this way are marked (E) in the Window "
+"menu."
+msgstr ""
 
-#. [topic]: id=editor_starting_positions_in_general
-#: data/core/editor/help.cfg:288
-msgid "Starting Positions Howto"
-msgstr "開始地点の使い方"
+#. [topic]: id=map_format
+#: data/core/editor/help.cfg:342
+msgid ""
+"<bold>text='Using Embedded Format in Scenario Mode'</bold>\n"
+"\n"
+"TODO: add documentation about the scenario mode."
+msgstr ""
+
+#. [editor_times]: id=deep_underground
+#. [time]: id=deep_underground
+#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
+msgid "Deep Underground"
+msgstr "深い地下"
+
+#. [editor_times]: id=indoors
+#. [time]: id=indoors
+#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
+msgid "Indoors"
+msgstr "屋内"
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -701,11 +744,17 @@ msgstr "大いなる川"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
+#, fuzzy
+#| msgid ""
+#| "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
+#| "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
+#| "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
+#| "text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgid ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
-"text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
+"text='ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
 "大いなる川（The Great River）は<ref>dst='kingdom_wesnoth' text='Wesnoth王国' "
 "</ref>と<ref>dst='northlands' text='北の大地'</ref>の境界を成しています．最終"
@@ -813,13 +862,67 @@ msgstr "Wesnoth 王国（Kingdom of Wesnoth）"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
+#, fuzzy
+#| msgid ""
+#| "The Kingdom of Wesnoth is located in the north-central portion of the "
+#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
+#| "mainline campaigns revolve around it. It is bounded on the map by the "
+#| "Great River to the north, the shore of the Great Ocean to the west, the "
+#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
+#| "ref>, and the Bitter Swamp to the southeast (lower right corner of the "
+#| "main map).\n"
+#| "\n"
+#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
+#| "region. It is bounded to the south (off-map) by dense woods of which the "
+#| "Aethenwood may be considered a northernmost extension.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Weldyn: The capital of Wesnoth.\n"
+#| "    • Aldril: City lying on the Bay of Pearls.\n"
+#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
+#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
+#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
+#| "country, just west and north of Weldyn.\n"
+#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
+#| "confluence of the Weldyn River and the Great River.\n"
+#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
+#| "south road crossing the River Aethen.\n"
+#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
+#| "the wilderness country around the east of the Brown Hills and north to "
+#| "the Ford of Abez.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
+#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
+#| "controlled by Wesnothian forces.\n"
+#| "    • Weldyn River: It branches from the Great River and goes south.\n"
+#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
+#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
+#| "population.\n"
+#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
+#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
+#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
+#| "well-populated and occasionally very dangerous.\n"
+#| "    • Horse Plains: Region of rolling plains just south of the Great "
+#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
+#| "east; the southern reach merges into the Central Plain. Home of the "
+#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
+#| "    • Estmark Hills: Largish range rising south of the Great River and "
+#| "east of the Weldyn River. The northernmost portion, nearest the River "
+#| "Weldyn, has at various times been settled by Wesnothians, but the "
+#| "Kingdom’s control is tenuous at best and banditry is common.\n"
+#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
+#| "of Haldric II’s sons.\n"
+#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
+#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-"mainline campaigns revolve around it. It is bounded on the map by the Great "
-"River to the north, the shore of the Great Ocean to the west, the Aethenwood "
-"to the <ref>dst='southwest_elven_lands' text='southwest'</ref>, and the "
-"Bitter Swamp to the southeast (lower right corner of the main map).\n"
+"mainline campaigns revolve around it. It is bounded on the map by the "
+"<ref>dst='great_river' text='Great River'</ref> to the north, the shore of "
+"the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Aethenwood to "
+"the <ref>dst='southwest_elven_lands' text='southwest'</ref>, and the Bitter "
+"Swamp to the southeast.\n"
 "\n"
 "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier region. "
 "It is bounded to the south (off-map) by dense woods of which the Aethenwood "
@@ -861,7 +964,7 @@ msgid ""
 "tenuous at best and banditry is common.\n"
 "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one of "
 "Haldric II’s sons.\n"
-"    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, located "
+"    • Grey Woods: Large forest in the heart of the wilds of Wesnoth, located "
 "between Carcyn and Aldril and generally considered to be haunted."
 msgstr ""
 "Wesnoth 王国は<ref>dst='great_continent' text='大陸'</ref>北部の中央に位置し"
@@ -922,17 +1025,36 @@ msgstr "Elensefar"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
+#, fuzzy
+#| msgid ""
+#| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
+#| "text='Wesnoth'</ref>, at times an independent country, and at times in a "
+#| "treaty federation with Wesnoth. Its borders are the Great River to the "
+#| "north, a loosely defined line with Wesnoth to the east, the Bay of Pearls "
+#| "to the south, and the <ref>dst='great_ocean' text='ocean'</ref> to the "
+#| "west. More information is found in the historical narrative of Wesnoth.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Elensefar: The capital, located on an island in the "
+#| "<ref>dst='great_river' text='Great River'</ref> delta.\n"
+#| "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with "
+#| "Wesnoth.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
+#| "this point, and only ships can cross it."
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
-"treaty federation with Wesnoth. Its borders are the Great River to the "
-"north, a loosely defined line with Wesnoth to the east, the Bay of Pearls to "
-"the south, and the <ref>dst='great_ocean' text='ocean'</ref> to the west. "
-"More information is found in the historical narrative of Wesnoth.\n"
+"treaty federation with Wesnoth. Its borders are the <ref>dst='great_river' "
+"text='Great River'</ref> to the north, a loosely defined line with Wesnoth "
+"to the east, the Bay of Pearls to the south, and the <ref>dst='great_ocean' "
+"text='ocean'</ref> to the west. More information is found in the historical "
+"narrative of Wesnoth.\n"
 "\n"
 "<header>text='Notable cities:'</header>\n"
-"    • Elensefar: The capital, located on an island in the "
-"<ref>dst='great_river' text='Great River'</ref> delta.\n"
+"    • Elensefar: The capital, located on an island in the Great River "
+"delta.\n"
 "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth.\n"
 "\n"
 "<header>text='Notable land features:'</header>\n"
@@ -963,12 +1085,52 @@ msgstr "北の大地（Northlands）"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:120
+#, fuzzy
+#| msgid ""
+#| "There is no government of the Northlands. Various groups of orcs, "
+#| "dwarves, barbarian men and even elves populate the region. The northern "
+#| "and eastern borders are not defined, the southern border is the "
+#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
+#| "is the <ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Glamdrol: An Orcish tribal capital.\n"
+#| "    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
+#| "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga "
+#| "in the southern Heart Mountains. A major trade center.\n"
+#| "    • Dallben and Delwyn: Human villages originally built by settlers who "
+#| "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
+#| "abandoned. The forested area northeast of Elensefar, where these villages "
+#| "were located, was named the Annuvin province by men but was known by the "
+#| "elves as Wesmere.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Heart Mountains: A virtually impassable barrier between the river "
+#| "country and the Northern Plains.\n"
+#| "    • Heartfangs: the particularly forbidding stretch of high peaks "
+#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
+#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
+#| "madmen, and mages live there.\n"
+#| "    • Swamp of Dread: a very large bog located between the Heart "
+#| "Mountains and the Great River. A notoriously dangerous place.\n"
+#| "    • Lake Vrug: A large mountain lake whose river carves the only "
+#| "pathway through the Northern Mountains.\n"
+#| "    • Arkan-thoria: The river that comes out of Lake Vrug. This is the "
+#| "elvish name; among humans it is called Longlier.\n"
+#| "    • River Listra: The south-running tributary of the Great River into "
+#| "which the Arkan-thoria empties.\n"
+#| "    • Lintanir Forest: The southernmost portion of the Great Northern "
+#| "Forest, a gigantic wood whose eastern and northern boundaries are known "
+#| "only to the elves. Their capital, Elensiria, has only seldom been visited "
+#| "by humans.\n"
+#| "    • Great River: The origin of this river is somewhere in the east of "
+#| "the northern lands."
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
 "borders are not defined, the southern border is the <ref>dst='great_river' "
 "text='Great River'</ref>, and the western border is the "
-"<ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
+"<ref>dst='great_ocean' text='ocean'</ref>.\n"
 "\n"
 "<header>text='Notable cities:'</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
@@ -977,13 +1139,13 @@ msgid ""
 "the southern Heart Mountains. A major trade center.\n"
 "    • Dallben and Delwyn: Human villages originally built by settlers who "
 "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
-"abandoned. The forested area northeast of Elensefar, where these villages "
-"were located, was named the Annuvin province by men but was known by the "
-"elves as Wesmere.\n"
+"abandoned. The forested area northeast of <ref>dst='elensefar' "
+"text='Elensefar'</ref>, where these villages were located, was named the "
+"Annuvin province by men but was known by the elves as Wesmere.\n"
 "\n"
 "<header>text='Notable land features:'</header>\n"
-"    • Heart Mountains: A virtually impassable barrier between the river "
-"country and the Northern Plains.\n"
+"    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A virtually "
+"impassable barrier between the river country and the Northern Plains.\n"
 "    • Heartfangs: the particularly forbidding stretch of high peaks "
 "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
 "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
@@ -992,16 +1154,17 @@ msgid ""
 "and the Great River. A notoriously dangerous place.\n"
 "    • Lake Vrug: A large mountain lake whose river carves the only pathway "
 "through the Northern Mountains.\n"
-"    • Arkan-thoria: The river that comes out of Lake Vrug. This is the "
-"elvish name; among humans it is called Longlier.\n"
+"    • <ref>dst='arkan_thoria' text='Arkan-thoria'</ref>: The river that "
+"comes out of Lake Vrug. This is the elvish name; among humans it is called "
+"Longlier.\n"
 "    • River Listra: The south-running tributary of the Great River into "
 "which the Arkan-thoria empties.\n"
 "    • Lintanir Forest: The southernmost portion of the Great Northern "
 "Forest, a gigantic wood whose eastern and northern boundaries are known only "
 "to the elves. Their capital, Elensiria, has only seldom been visited by "
 "humans.\n"
-"    • Great River: The origin of this river is somewhere in the east of the "
-"northern lands."
+"    • <ref>dst='great_river' text='Great River'</ref>: The origin of this "
+"river is somewhere in the east of the northern lands."
 msgstr ""
 "北の大地を統一する政府はありません。オークやドワーフ、野蛮人、エルフなどがそ"
 "れぞれ集団を作って住んでいます。北と東の境界線は不明瞭ですが、南は"
@@ -1046,10 +1209,28 @@ msgstr "南西のエルフ王国（Southwest Elven Lands）"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:142
+#, fuzzy
+#| msgid ""
+#| "The Wood Elves are separate from those of the north, and have only "
+#| "intermittent relations with them and most other countries. Its borders "
+#| "are the <ref>dst='great_ocean' text='Ocean'</ref> to the west, the Black "
+#| "River to the south and southeast, the lands of Wesnoth to the north and "
+#| "the Kerlath province to the east.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • None known.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Aethenwood: The largest southern forest, it extends far to the "
+#| "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
+#| "the elves make no such distinction, the southern part of the forest has "
+#| "been named Southwood by denizens of Kerlath.\n"
+#| "    • Black Forest: An ancient forest of which very little is known, "
+#| "abandoned by the elves long ago."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
-"the <ref>dst='great_ocean' text='Ocean'</ref> to the west, the Black River "
+"the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black River "
 "to the south and southeast, the lands of Wesnoth to the north and the "
 "Kerlath province to the east.\n"
 "\n"
@@ -1169,72 +1350,90 @@ msgstr ""
 "    • 不毛の平野（Barren Plains）"
 
 #. [section]: id=schedule
-#: data/core/help.cfg:14
+#: data/core/help.cfg:10
 msgid "Time of Day Schedule"
 msgstr "時刻スケジュール"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
-#: data/core/help.cfg:21 data/core/help.cfg:99
+#: data/core/help.cfg:17 data/core/help.cfg:95
 msgid "Introduction"
 msgstr "はじめに"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:27 data/core/help.cfg:171
+#: data/core/help.cfg:23 data/core/help.cfg:167
 msgid "Gameplay"
 msgstr "ゲームの遊び方"
 
+#. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:454
+#: data/core/help.cfg:29 data/core/help.cfg:460
+#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:462
 msgid "Traits"
 msgstr "特性"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:41 data/core/help.cfg:122
+#: data/core/help.cfg:37 data/core/help.cfg:118
 msgid "Units"
 msgstr "ユニット"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:50 data/core/help.cfg:142
+#: data/core/help.cfg:46 data/core/help.cfg:138
 msgid "Abilities"
 msgstr "能力"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:58 data/core/help.cfg:151
+#: data/core/help.cfg:54 data/core/help.cfg:147
 msgid "Weapon Specials"
 msgstr "特殊武器"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:66 data/core/help.cfg:131
+#: data/core/help.cfg:62 data/core/help.cfg:127
 msgid "Eras"
 msgstr "時代"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:74 data/core/help.cfg:469
+#: data/core/help.cfg:70 data/core/help.cfg:475
 msgid "Terrains"
 msgstr "地形"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:82 data/core/help.cfg:522
+#: data/core/help.cfg:78 data/core/help.cfg:528
 msgid "Add-ons"
 msgstr "アドオン"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:595
+#: data/core/help.cfg:84 data/core/help.cfg:601
 msgid "Commands"
 msgstr "コマンド"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:100
+#: data/core/help.cfg:96
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
+#| "strategy game somewhat unusual among modern strategy games. While other "
+#| "games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
+#| "strives for simplicity of both rules and gameplay. This does not make the "
+#| "game simple, however — from these simple rules arise a wealth of "
+#| "strategy, making the game easy to learn but a challenge to master.\n"
+#| "\n"
+#| "The following pages outline all you need to know to play Wesnoth. As you "
+#| "play, new information is added to the various categories as you come "
+#| "across new aspects of the game. For more detailed information on special "
+#| "situations and exceptions, follow the included links."
 msgid ""
 "\n"
 "\n"
@@ -1242,7 +1441,7 @@ msgid ""
 "game somewhat unusual among modern strategy games. While other games strive "
 "for complexity, <italic>text='Battle for Wesnoth'</italic> strives for "
 "simplicity of both rules and gameplay. This does not make the game simple, "
-"however — from these simple rules arise a wealth of strategy, making the "
+"however — from these simple rules arises a wealth of strategy, making the "
 "game easy to learn but a challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
@@ -1265,12 +1464,12 @@ msgstr ""
 "知りたければ、ページに含まれているリンクを参照すると良いでしょう。"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:110
+#: data/core/help.cfg:106
 msgid "About the Game"
 msgstr "このゲームについて"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:111
+#: data/core/help.cfg:107
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -1315,7 +1514,7 @@ msgstr ""
 "ンティアの人々によって支えられてきました。"
 
 #. [topic]: id=..units
-#: data/core/help.cfg:123
+#: data/core/help.cfg:119
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1333,7 +1532,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:132
+#: data/core/help.cfg:128
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1344,7 +1543,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:134
+#: data/core/help.cfg:130
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -1357,7 +1556,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:143
+#: data/core/help.cfg:139
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1373,7 +1572,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:152
+#: data/core/help.cfg:148
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1389,12 +1588,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:161
+#: data/core/help.cfg:157
 msgid "Unknown Unit"
 msgstr "未知のユニット"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:162
+#: data/core/help.cfg:158
 msgid ""
 "\n"
 "\n"
@@ -1406,7 +1605,7 @@ msgstr ""
 "で、ユニットの詳細を確認できるようになります。"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:172
+#: data/core/help.cfg:168
 #, fuzzy
 #| msgid ""
 #| "Wesnoth is comprised of a series of battles, called "
@@ -1500,7 +1699,7 @@ msgstr ""
 "より高くなり、それを越えるためにはより熟練したプレイが必要となります。"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:181
+#: data/core/help.cfg:177
 msgid ""
 "\n"
 "\n"
@@ -1513,7 +1712,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:181
+#: data/core/help.cfg:177
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
@@ -1527,12 +1726,12 @@ msgstr ""
 "たな要素を見つけた時にこの機能が役に立つでしょう。"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:193
+#: data/core/help.cfg:189
 msgid "Victory and Defeat"
 msgstr "勝利と敗北"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:194
+#: data/core/help.cfg:190
 msgid ""
 "\n"
 "\n"
@@ -1549,7 +1748,7 @@ msgstr ""
 "ゲームの場合には）ほかのプレイヤーとチャットしたりできます。"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:194
+#: data/core/help.cfg:190
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. In most scenarios, you will achieve victory "
@@ -1566,12 +1765,12 @@ msgstr ""
 "く、指定のターン数耐える、といったものがあります。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:203
+#: data/core/help.cfg:199
 msgid "Recruiting and Recalling"
 msgstr "雇用と召還"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:200
 msgid ""
 "\n"
 "\n"
@@ -1588,7 +1787,7 @@ msgstr ""
 "また、雇用するときには所持金より多くのゴールドを消費することはできません。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:200
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1613,7 +1812,7 @@ msgstr ""
 "す。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:206
+#: data/core/help.cfg:202
 msgid ""
 "\n"
 "\n"
@@ -1626,7 +1825,7 @@ msgstr ""
 "つをランダムに獲得します。特性は、ユニットの能力を変化させます。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:208
+#: data/core/help.cfg:204
 msgid ""
 "\n"
 "\n"
@@ -1641,7 +1840,7 @@ msgstr ""
 "は 20 ゴールドを支払うことで選択したユニットを呼び出すことができます。"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:210
+#: data/core/help.cfg:206
 msgid ""
 "\n"
 "\n"
@@ -1654,25 +1853,23 @@ msgstr ""
 "<ref>dst='income_and_upkeep' text='収入と維持'</ref>を参照してください。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:219
+#: data/core/help.cfg:215
 msgid "Income and Upkeep"
 msgstr "収入と維持費"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:216
 msgid ""
 "\n"
 "\n"
 "Income is simple. You have a base income of 2 gold per turn. For every "
-"village you control, you gain one additional gold each turn. (In general "
-"this is configurable but in campaigns it is almost always one gold per "
-"village.) Thus, if you have ten villages, you would normally gain 12 gold "
-"each turn. Your upkeep costs are subtracted from this income, as detailed "
-"below."
+"village you control, you gain one additional gold each turn. Thus, if you "
+"have ten villages, you would normally gain 12 gold each turn. Your upkeep "
+"costs are subtracted from this income, as detailed below."
 msgstr ""
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:216
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1686,7 +1883,7 @@ msgstr ""
 "italic>を理解しなければなりません。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:220
 msgid ""
 "\n"
 "\n"
@@ -1706,7 +1903,7 @@ msgstr ""
 "費としてターン毎に 2 ゴールド払うことになります。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:224
+#: data/core/help.cfg:222
 msgid ""
 "\n"
 "\n"
@@ -1721,6 +1918,19 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:226
+msgid ""
+"\n"
+"\n"
+"In general, the base income, the amount of gold you get per village per "
+"turn, and the number of unit levels each village can support are "
+"configurable, but in campaigns they are almost always the values described "
+"above. The <italic>text='Scenario Settings'</italic> tab of the "
+"<italic>text='Status Table'</italic> dialog shows the values for the current "
+"scenario."
+msgstr ""
+
+#. [topic]: id=income_and_upkeep
+#: data/core/help.cfg:228
 msgid ""
 "\n"
 "\n"
@@ -1741,12 +1951,12 @@ msgstr ""
 "しょう。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:235
+#: data/core/help.cfg:237
 msgid "Hitpoints and Experience"
 msgstr "ヒットポイントと経験値"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:236
+#: data/core/help.cfg:238
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1760,7 +1970,7 @@ msgstr ""
 "す。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:240
+#: data/core/help.cfg:242
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1770,7 +1980,7 @@ msgstr ""
 "を使って表示されます。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:242
+#: data/core/help.cfg:244
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1783,12 +1993,12 @@ msgstr ""
 "プ'</ref>できます。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:249
+#: data/core/help.cfg:251
 msgid "Advancement"
 msgstr "レベルアップ"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:252
 msgid ""
 "\n"
 "\n"
@@ -1805,7 +2015,7 @@ msgstr ""
 "プ先が複数あれば、レベルアップ先の選択を行う必要があります。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:252
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1819,7 +2029,7 @@ msgstr ""
 "ニットのレベル x 8 の経験値を獲得できます。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:254
 msgid ""
 "\n"
 "\n"
@@ -1848,12 +2058,12 @@ msgstr ""
 "でしょう。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:261
+#: data/core/help.cfg:263
 msgid "Movement"
 msgstr "移動"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:264
 msgid ""
 "\n"
 "\n"
@@ -1879,7 +2089,7 @@ msgstr ""
 "italic>の項目を見てください。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:264
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1909,7 +2119,7 @@ msgstr ""
 "しても、まだ攻撃を行っていなければ、攻撃することは可能です。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:266
 msgid ""
 "\n"
 "\n"
@@ -1931,7 +2141,7 @@ msgstr ""
 "ニットは ZOC の影響を受けません。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:266
+#: data/core/help.cfg:268
 msgid ""
 "\n"
 "\n"
@@ -1946,12 +2156,12 @@ msgstr ""
 "の移動可能な範囲が表示されます。"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:275
+#: data/core/help.cfg:277
 msgid "Shroud and Fog of War"
 msgstr "幕と戦雲（霧）"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:276
+#: data/core/help.cfg:278
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1996,12 +2206,24 @@ msgstr ""
 "す。"
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:284
+#: data/core/help.cfg:287
 msgid "Save-loading"
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:285
+#: data/core/help.cfg:288
+msgid ""
+"\n"
+"\n"
+"One of the challenges of the game is to work out how to protect your heroes. "
+"Small risks quickly build up: if you have five important units, and they "
+"each have just a 1% chance of death each turn, you can "
+"<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
+"you’ll rarely make it through a scenario without having it happen."
+msgstr ""
+
+#. [topic]: id=saveload
+#: data/core/help.cfg:288
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck. This is an expected part of the game, and one of the aims of "
@@ -2009,17 +2231,23 @@ msgid ""
 "all of the mainline campaigns, on hard, without needing to save-load. Going "
 "back to a previous turn to try a different strategy is a part of learning "
 "the game, but we recommend against reloading merely to try the same strategy "
-"again while hoping for better luck.\n"
+"again while hoping for better luck."
+msgstr ""
+
+#. [topic]: id=saveload
+#: data/core/help.cfg:290
+msgid ""
 "\n"
-"One of the challenges of the game is to work out how to protect your heroes. "
-"Small risks quickly build up: if you have five important units, and they "
-"each have just a 1% chance of death each turn, you can "
-"<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
-"you’ll rarely make it through a scenario without having it happen.\n"
 "\n"
 "The following points are under discussion on the forums. At least for the "
 "1.15.x series before 1.16.0 please assume that the forum threads are more "
-"authoritative than the text on this page.\n"
+"authoritative than the text on this page."
+msgstr ""
+
+#. [topic]: id=saveload
+#: data/core/help.cfg:292
+msgid ""
+"\n"
 "\n"
 "In the mainline campaigns, on hard:\n"
 "• A sufficiently skilled player will have a good chance to win each scenario "
@@ -2028,45 +2256,85 @@ msgid ""
 "• This assumes that the player picks up all of the clues given in the "
 "dialogue.\n"
 "• There are more experience points available than on easy, and the player "
-"will be able to train enough troops to cope with losing some L2 or L3 "
-"units.\n"
+"will be able to train enough troops to cope with losing some L2 or L3 units."
+msgstr ""
+
+#. [topic]: id=saveload
+#: data/core/help.cfg:297
+msgid ""
+"\n"
 "\n"
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:301
+#: data/core/help.cfg:306
 msgid "Learning from Losses"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:302
+#: data/core/help.cfg:307
 msgid ""
 "<italic>text='Why did I lose that scenario?'</italic>\n"
 "\n"
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
-"was lost.\n"
+"was lost."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:309
+msgid ""
+"\n"
 "\n"
 "When you first start playing, you will probably lose some scenarios. That is "
 "normal, and is part of learning the game. When that happens, try to learn "
 "from your mistakes: watch the replay, try to understand what you did wrong, "
-"then <ref>dst='saveload' text='restart the scenario'</ref> and try again.\n"
+"then <ref>dst='saveload' text='restart the scenario'</ref> and try again."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:311
+msgid ""
 "\n"
-"Some common reasons for losing a scenario are:\n"
+"\n"
+"Some common reasons for losing a scenario are:"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:313
+msgid ""
+"\n"
 "\n"
 "• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
-"level'</ref>. Try restarting the scenario at an easier difficulty.\n"
+"level'</ref>. Try restarting the scenario at an easier difficulty."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:315
+msgid ""
+"\n"
 "\n"
 "• Playing a poor strategy: for example, recruiting the wrong types of units, "
 "fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
-"taking advantage of terrain features or units’ special abilities, and so "
-"on.\n"
+"taking advantage of terrain features or units’ special abilities, and so on."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:317
+msgid ""
+"\n"
 "\n"
 "• Missing clues. Often there will be hints in the campaign’s story and "
 "dialog about what to expect from a difficult scenario and how to prepare for "
 "it. If you have a loyal mage on your side, take the time to listen to its "
-"advice; it may save your life.\n"
+"advice; it may save your life."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:319
+msgid ""
+"\n"
 "\n"
 "• Barely scraping a victory in a previous scenario. At all difficulties "
 "except “Beginner” (TODO: and “Easy”?), campaigns assume that you will have "
@@ -2077,30 +2345,74 @@ msgid ""
 "even for a more experienced player. If you find yourself in this situation, "
 "you may try to go back a scenario or two and win them more convincingly, or "
 "change to an easier difficulty. (However, remember that <italic>text='some'</"
-"italic> losses are expected, particularly at higher difficulties.)\n"
+"italic> losses are expected, particularly at higher difficulties.)"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:321
+msgid ""
+"\n"
 "\n"
 "• Poor gold management. At higher difficulties, managing gold — capturing "
 "villages to increase the income, and using low-level units and fresh "
 "recruits to reduce the spending — becomes important. If you use many high-"
 "level units, you might win a scenario easily but have not enough gold "
 "carryover for the next scenario. (This would be an example of “barely "
-"scraping a victory”.)\n"
+"scraping a victory”.)"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:323
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Cores'</header>"
+msgid ""
 "\n"
-"<header>text='Unlikely reasons'</header>\n"
+"\n"
+"<header>text='Unlikely reasons'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='コア'</header>"
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:325
+msgid ""
+"\n"
 "\n"
 "In addition to the common reasons, listed above, there are a few other "
-"reasons which are unlikely, though not impossible. They are:\n"
+"reasons which are unlikely, though not impossible. They are:"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:327
+msgid ""
+"\n"
 "\n"
 "• You may have played a strategy that the campaign developer did not "
 "anticipate, and ended up with a set of high-level units not suitable for the "
-"next scenario.\n"
+"next scenario."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:329
+msgid ""
+"\n"
 "\n"
 "• You may have found a scenario that can only be won on the second or third "
 "time through, whether by requiring above-average luck or by expecting the "
 "players to have foreknowledge — to know what surprises are coming up before "
 "they happen. (It is under discussion whether foreknowledge is expected at "
 "the highest difficulties. Requiring above-average luck, however, would "
-"qualify as a bug.)\n"
+"qualify as a bug.)"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:331
+msgid ""
+"\n"
 "\n"
 "• Unusually-bad luck. Whether an attack hits or misses is random, so it "
 "could happen that the enemy was very lucky and had many hits, while you were "
@@ -2113,19 +2425,37 @@ msgid ""
 "average” luck does not excuse a loss; having below-average luck is perfectly "
 "normal, and scenarios are designed to be winnable even with below-average "
 "luck. It is only exceedingly bad luck, over multiple turns, that we mean "
-"here.\n"
+"here."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:333
+msgid ""
+"\n"
 "\n"
 "Be wary of attributing a loss to any of these reasons. If you are not a "
 "veteran player, it is far more likely that your loss was caused by one of "
 "the <italic>text='common'</italic> errors, listed above, and is not "
 "indicative of a bug in the campaign. However, if you still think you found a "
-"bug, then by all means, report it!\n"
+"bug, then by all means, report it!"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:335
+msgid ""
+"\n"
 "\n"
 "The “Damage Calculations” dialog shows some statistics that can help "
 "determine whether a match was very lucky or very unlucky. However, reading "
 "the statistics is no substitute to watching the replay and looking for "
 "strategic mistakes, or small bits of luck at critical points in the "
-"engagement.\n"
+"engagement."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:337
+msgid ""
+"\n"
 "\n"
 "TODO: link to a forum thread where new players can post their replays and "
 "get review/corrections (like https://forums.wesnoth.org/viewtopic.php?"
@@ -2133,12 +2463,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:341
+#: data/core/help.cfg:347
 msgid "Combat"
 msgstr "戦闘"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:342
+#: data/core/help.cfg:348
 msgid ""
 "\n"
 "\n"
@@ -2149,7 +2479,7 @@ msgstr ""
 "<header>text='攻撃の順序と回数'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:342
+#: data/core/help.cfg:348
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2172,7 +2502,7 @@ msgstr ""
 "や槍、火の玉などを飛ばす<italic>text='遠隔'</italic>です。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:344
+#: data/core/help.cfg:350
 msgid ""
 "\n"
 "\n"
@@ -2194,7 +2524,7 @@ msgstr ""
 "しか攻撃できません。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:346
+#: data/core/help.cfg:352
 msgid ""
 "\n"
 "\n"
@@ -2205,7 +2535,7 @@ msgstr ""
 "<header>text='命中率'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:348
+#: data/core/help.cfg:354
 msgid ""
 "\n"
 "\n"
@@ -2227,7 +2557,7 @@ msgstr ""
 "撃するときの命中率は、攻撃ユニットのいる地形に依存します。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:350
+#: data/core/help.cfg:356
 msgid ""
 "\n"
 "\n"
@@ -2245,7 +2575,7 @@ msgstr ""
 "は、攻撃時に限り、地形に関わらず最低でも 60% の命中率となります。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:352
+#: data/core/help.cfg:358
 msgid ""
 "\n"
 "\n"
@@ -2256,7 +2586,7 @@ msgstr ""
 "<header>text='ダメージ'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:354
+#: data/core/help.cfg:360
 msgid ""
 "\n"
 "\n"
@@ -2278,7 +2608,7 @@ msgstr ""
 "を選択して下さい。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:356
+#: data/core/help.cfg:362
 msgid ""
 "\n"
 "\n"
@@ -2295,12 +2625,12 @@ msgstr ""
 "撃すると、攻撃側と防御側の両方のダメージ量が倍となります。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:364
+#: data/core/help.cfg:370
 msgid "Damage Types and Resistance"
 msgstr "ダメージ型と耐性"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:365
+#: data/core/help.cfg:371
 msgid ""
 "\n"
 "\n"
@@ -2319,7 +2649,7 @@ msgstr ""
 "ジが 100% 増加します。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:365
+#: data/core/help.cfg:371
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2334,7 +2664,7 @@ msgstr ""
 "て耐性を持っており、耐性によって受けるダメージが変化します。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:367
+#: data/core/help.cfg:373
 msgid ""
 "\n"
 "\n"
@@ -2348,7 +2678,7 @@ msgstr ""
 "炎には弱く、さらに秘術に対しては非常に脆弱です。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:369
+#: data/core/help.cfg:375
 msgid ""
 "\n"
 "\n"
@@ -2362,12 +2692,12 @@ msgstr ""
 "たとえ防御側がそのダメージ型に 100% の耐性を持っていても、ということです。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:377
+#: data/core/help.cfg:383
 msgid "Orbs"
 msgstr "宝珠"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:378
+#: data/core/help.cfg:384
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2377,40 +2707,40 @@ msgstr ""
 "す。宝珠には複数の色があり、それぞれの色はユニットの状態を表しています。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:380
+#: data/core/help.cfg:386
 msgid " green if it hasn’t moved this turn,"
 msgstr "緑色の場合、このターンまだ移動を行っていません。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:381
+#: data/core/help.cfg:387
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 "黄色の場合、すでに移動を行っていますが、移動力がまだ余っているか、攻撃を行う"
 "ことができます。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:382
+#: data/core/help.cfg:388
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr "赤の場合、このターン中はもう移動・攻撃できません。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:383
+#: data/core/help.cfg:389
 msgid " blue if the unit is an ally you do not control."
 msgstr "青色の場合は、同盟軍のユニットです。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:384
+#: data/core/help.cfg:390
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr "敵ユニットには宝珠は表示されません。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:391
+#: data/core/help.cfg:397
 msgid "Time of Day"
 msgstr "時刻"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:392
+#: data/core/help.cfg:398
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -2443,7 +2773,7 @@ msgstr ""
 "ます。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:397
+#: data/core/help.cfg:403
 msgid ""
 "\n"
 "\n"
@@ -2459,52 +2789,52 @@ msgstr ""
 "して扱われます。\n"
 "\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
-#: data/core/help.cfg:401 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:407 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "夜明け"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:402 data/core/macros/schedules.cfg:26
+#. [time]: id=morning
+#: data/core/help.cfg:408 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "朝"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:403 data/core/macros/schedules.cfg:44
+#. [time]: id=afternoon
+#: data/core/help.cfg:409 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "午後"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
-#: data/core/help.cfg:404 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:410 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "夕暮れ"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:405 data/core/macros/schedules.cfg:65
+#. [time]: id=first_watch
+#: data/core/help.cfg:411 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "夜"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:406 data/core/macros/schedules.cfg:89
+#. [time]: id=second_watch
+#: data/core/help.cfg:412 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "深夜"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:408
+#: data/core/help.cfg:414
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
@@ -2513,7 +2843,7 @@ msgstr ""
 "ので注意しましょう！\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:410
+#: data/core/help.cfg:416
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
@@ -2522,7 +2852,7 @@ msgstr ""
 "じように扱われます。\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:412
+#: data/core/help.cfg:418
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
@@ -2531,7 +2861,7 @@ msgstr ""
 "夕暮れや夜明けと同じように扱われます。\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:414
+#: data/core/help.cfg:420
 msgid ""
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
@@ -2543,12 +2873,12 @@ msgstr ""
 "ユニットの時刻ボーナスを変化させます。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:421
+#: data/core/help.cfg:427
 msgid "Healing"
 msgstr "回復"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:422
+#: data/core/help.cfg:428
 msgid ""
 "\n"
 "\n"
@@ -2561,7 +2891,7 @@ msgstr ""
 "HP が 2 回復します。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:422
+#: data/core/help.cfg:428
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2572,7 +2902,7 @@ msgstr ""
 "復は他の回復手段と併用できます。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:424
+#: data/core/help.cfg:430
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2585,7 +2915,7 @@ msgstr ""
 "れば、回復の代わりに解毒されます。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:425
+#: data/core/help.cfg:431
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2598,7 +2928,7 @@ msgstr ""
 "復する代わりに解毒します。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:426
+#: data/core/help.cfg:432
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2616,7 +2946,7 @@ msgstr ""
 "ではありません）。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:427
+#: data/core/help.cfg:433
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -2630,7 +2960,7 @@ msgstr ""
 "（もし回復能力も持っていれば、回復よりも治療が優先されます）。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:428
+#: data/core/help.cfg:434
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2643,7 +2973,7 @@ msgstr ""
 "と、十分な XP が溜まれば、レベルアップによって回復します。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:429
+#: data/core/help.cfg:435
 msgid ""
 "\n"
 "\n"
@@ -2658,7 +2988,7 @@ msgstr ""
 "次のシナリオに進む際には、ユニットは完全に回復します。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:431
+#: data/core/help.cfg:437
 msgid ""
 "\n"
 "\n"
@@ -2669,7 +2999,7 @@ msgstr ""
 "<bold>text='上級編'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:433
+#: data/core/help.cfg:439
 msgid ""
 "\n"
 "\n"
@@ -2688,12 +3018,12 @@ msgstr ""
 "せることで、各ヒーラーのターンに傷ついたユニットを回復することができます。"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:441
+#: data/core/help.cfg:447
 msgid "Wrap Up"
 msgstr "おわりに"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:442
+#: data/core/help.cfg:448
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2708,12 +3038,12 @@ msgstr ""
 "italic>を遊ぶには十分です。さあ、ゲームを楽しみましょう！"
 
 #. [topic]: id=license
-#: data/core/help.cfg:447
+#: data/core/help.cfg:453
 msgid "License"
 msgstr "ライセンス"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:456
+#: data/core/help.cfg:462
 msgid ""
 "\n"
 "\n"
@@ -2730,7 +3060,7 @@ msgstr ""
 "持ちます）。ウーズは特性を持ちません。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:456
+#: data/core/help.cfg:462
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2742,7 +3072,7 @@ msgstr ""
 "<italic>text='種族'</italic>ごとに決まっています。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:458
+#: data/core/help.cfg:464
 msgid ""
 "\n"
 "\n"
@@ -2759,7 +3089,7 @@ msgstr ""
 "<ref>dst='traits_strong' text='強力'</ref>です。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:460
+#: data/core/help.cfg:466
 msgid ""
 "\n"
 "\n"
@@ -2782,7 +3112,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:470
+#: data/core/help.cfg:476
 msgid ""
 "\n"
 "\n"
@@ -2795,7 +3125,7 @@ msgstr ""
 "<italic>text='複合地形'</italic>です。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:470
+#: data/core/help.cfg:476
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -2804,7 +3134,7 @@ msgstr ""
 "ニットの移動力と回避率に影響します。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:472
+#: data/core/help.cfg:478
 msgid ""
 "\n"
 "\n"
@@ -2815,7 +3145,7 @@ msgstr ""
 "<header>text='基本地形'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:474
+#: data/core/help.cfg:480
 msgid ""
 "\n"
 "\n"
@@ -2831,7 +3161,7 @@ msgstr ""
 "には、これまでに見つけた基本地形の一覧が表示されています。\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:478
+#: data/core/help.cfg:484
 msgid ""
 "\n"
 "\n"
@@ -2847,7 +3177,7 @@ msgstr ""
 "「照らされた場所」のように固有の特性を持つ場合があります。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:480
+#: data/core/help.cfg:486
 msgid ""
 "\n"
 "\n"
@@ -2858,7 +3188,7 @@ msgstr ""
 "<header>text='複合地形'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:482
+#: data/core/help.cfg:488
 msgid ""
 "\n"
 "\n"
@@ -2880,7 +3210,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:486
+#: data/core/help.cfg:492
 msgid ""
 "\n"
 "\n"
@@ -2904,7 +3234,7 @@ msgstr ""
 "行ユニットでも通過することができます。\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:490
+#: data/core/help.cfg:496
 msgid ""
 "\n"
 "\n"
@@ -2920,7 +3250,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:494
+#: data/core/help.cfg:500
 msgid ""
 "\n"
 "\n"
@@ -2938,7 +3268,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:498
+#: data/core/help.cfg:504
 msgid ""
 "\n"
 "\n"
@@ -2952,7 +3282,7 @@ msgstr ""
 "ことで、（標準のテーマでは）画面の右上の地形アイコンから確認できます。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:500
+#: data/core/help.cfg:506
 msgid ""
 "\n"
 "\n"
@@ -2967,7 +3297,7 @@ msgstr ""
 "<italic>text='地形情報'</italic>をホットキーか右クリックから開いてください。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:502
+#: data/core/help.cfg:508
 msgid ""
 "\n"
 "\n"
@@ -2978,7 +3308,7 @@ msgstr ""
 "<header>text='上限回避率'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:504
+#: data/core/help.cfg:510
 msgid ""
 "\n"
 "\n"
@@ -2993,7 +3323,7 @@ msgstr ""
 "ことはありません。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:506
+#: data/core/help.cfg:512
 msgid ""
 "\n"
 "\n"
@@ -3009,7 +3339,7 @@ msgstr ""
 "30%が回避率として適用されます。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:508
+#: data/core/help.cfg:514
 msgid ""
 "\n"
 "\n"
@@ -3022,7 +3352,7 @@ msgstr ""
 "その値となります（上限回避率より高くなることはありません）。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:510
+#: data/core/help.cfg:516
 msgid ""
 "\n"
 "\n"
@@ -3035,7 +3365,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:523
+#: data/core/help.cfg:529
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3047,12 +3377,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:533
+#: data/core/help.cfg:539
 msgid "Using Add-ons"
 msgstr "アドオンの使い方"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:534
+#: data/core/help.cfg:540
 msgid ""
 "\n"
 "\n"
@@ -3063,7 +3393,7 @@ msgstr ""
 "<header>text='キャンペーンとシナリオ'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:534
+#: data/core/help.cfg:540
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -3072,7 +3402,7 @@ msgstr ""
 "のアドオンを有効にできるゲームモードも異なります。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:536
+#: data/core/help.cfg:542
 msgid ""
 "\n"
 "\n"
@@ -3088,7 +3418,7 @@ msgstr ""
 "<italic>text='キャンペーン'</italic>メニューから遊ぶことができます。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:538
+#: data/core/help.cfg:544
 msgid ""
 "\n"
 "\n"
@@ -3099,7 +3429,7 @@ msgstr ""
 "<header>text='MP(マルチプレイヤー) キャンペーン、シナリオ、マップ集'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:540
+#: data/core/help.cfg:546
 msgid ""
 "\n"
 "\n"
@@ -3114,7 +3444,7 @@ msgstr ""
 "できます。別々のMPシナリオをまとめたセットも存在します。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:542
+#: data/core/help.cfg:548
 msgid ""
 "\n"
 "\n"
@@ -3125,7 +3455,7 @@ msgstr ""
 "<header>text='MPの時代(MP Era)、党派(MP Faction)'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:544
+#: data/core/help.cfg:550
 msgid ""
 "\n"
 "\n"
@@ -3149,7 +3479,7 @@ msgstr ""
 "とができます。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:548
+#: data/core/help.cfg:554
 msgid ""
 "\n"
 "\n"
@@ -3162,7 +3492,7 @@ msgstr ""
 "eras_section'</ref>から確認できます。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:550
+#: data/core/help.cfg:556
 msgid ""
 "\n"
 "\n"
@@ -3173,7 +3503,7 @@ msgstr ""
 "<header>text='Mod'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:552
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "\n"
@@ -3188,7 +3518,7 @@ msgstr ""
 "す。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:554
+#: data/core/help.cfg:560
 msgid ""
 "\n"
 "\n"
@@ -3199,7 +3529,7 @@ msgstr ""
 "<header>text='コア'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:556
+#: data/core/help.cfg:562
 msgid ""
 "\n"
 "\n"
@@ -3223,7 +3553,7 @@ msgstr ""
 "す。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:560
+#: data/core/help.cfg:566
 msgid ""
 "\n"
 "\n"
@@ -3234,7 +3564,7 @@ msgstr ""
 "<header>text='クリエイター用の素材集'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:562
+#: data/core/help.cfg:568
 msgid ""
 "\n"
 "\n"
@@ -3252,12 +3582,12 @@ msgstr ""
 "のインストール時に素材集も必要とされることがあります。"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:571
+#: data/core/help.cfg:577
 msgid "Installing Add-ons"
 msgstr "アドオンのインストール"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:572
+#: data/core/help.cfg:578
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3304,12 +3634,12 @@ msgstr ""
 "る翻訳) を詳しく見ることができます。"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:585
+#: data/core/help.cfg:591
 msgid "Removing Add-ons"
 msgstr "アドオンの削除"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:586
+#: data/core/help.cfg:592
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3331,14 +3661,14 @@ msgstr ""
 "イルマネージャで削除しなければなりません。"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:601
+#: data/core/help.cfg:607
 msgid "General Commands"
 msgstr "一般的なコマンド"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:603 data/core/help.cfg:646 data/core/help.cfg:684
+#: data/core/help.cfg:609 data/core/help.cfg:652 data/core/help.cfg:690
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3349,7 +3679,7 @@ msgstr ""
 "つことで実行できます (チャット欄は「m」で開けます) 。\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:605
+#: data/core/help.cfg:611
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3360,7 +3690,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:608
+#: data/core/help.cfg:614
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3377,7 +3707,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:612
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3397,7 +3727,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:615
+#: data/core/help.cfg:621
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3408,7 +3738,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:618
+#: data/core/help.cfg:624
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3419,7 +3749,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:621
+#: data/core/help.cfg:627
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3430,7 +3760,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:624
+#: data/core/help.cfg:630
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3441,7 +3771,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:627
+#: data/core/help.cfg:633
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3452,7 +3782,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:630
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3463,7 +3793,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:633
+#: data/core/help.cfg:639
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3474,7 +3804,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:636
+#: data/core/help.cfg:642
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3483,12 +3813,12 @@ msgstr ""
 "ゲームを保存してシナリオを終了します（確認なし）。"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:645
+#: data/core/help.cfg:651
 msgid "Multiplayer Commands"
 msgstr "マルチプレイヤーコマンド"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:648
+#: data/core/help.cfg:654
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3503,7 +3833,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:651
+#: data/core/help.cfg:657
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3523,7 +3853,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:654
+#: data/core/help.cfg:660
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3535,7 +3865,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:657
+#: data/core/help.cfg:663
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3548,7 +3878,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:660
+#: data/core/help.cfg:666
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3563,7 +3893,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:663
+#: data/core/help.cfg:669
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3577,7 +3907,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:666
+#: data/core/help.cfg:672
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3590,7 +3920,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:669
+#: data/core/help.cfg:675
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3601,7 +3931,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:672
+#: data/core/help.cfg:678
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3615,7 +3945,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:675
+#: data/core/help.cfg:681
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3626,12 +3956,12 @@ msgstr ""
 "禁止ユーザーの一覧が消去されます。"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:683
+#: data/core/help.cfg:689
 msgid "Debug Mode Commands"
 msgstr "デバッグモードコマンド"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:686
+#: data/core/help.cfg:692
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3643,7 +3973,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:689
+#: data/core/help.cfg:695
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3654,7 +3984,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:692
+#: data/core/help.cfg:698
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3665,7 +3995,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:695
+#: data/core/help.cfg:701
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3676,7 +4006,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:698
+#: data/core/help.cfg:704
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3687,7 +4017,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:701
+#: data/core/help.cfg:707
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3698,7 +4028,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:704
+#: data/core/help.cfg:710
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3709,7 +4039,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:707
+#: data/core/help.cfg:713
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3720,7 +4050,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:710
+#: data/core/help.cfg:716
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3733,7 +4063,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:713
+#: data/core/help.cfg:719
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3814,21 +4144,21 @@ msgstr ""
 "このユニットはターンごとに自身の HP を 8 回復します。毒を受けているなら、回復"
 "する代わりに毒を取り除きます。"
 
-#. [heals]: id=regenerates_4
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:83
 #, fuzzy
 #| msgid "regenerates"
 msgid "regenerates +4"
 msgstr "再生"
 
-#. [heals]: id=regenerates_4
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:84
 #, fuzzy
 #| msgid "female^regenerates"
 msgid "female^regenerates +4"
 msgstr "再生"
 
-#. [heals]: id=regenerates_4
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:85
 #, fuzzy
 #| msgid ""
@@ -4266,16 +4596,6 @@ msgstr "昼の 12 時"
 msgid "Midnight"
 msgstr "夜の 12 時"
 
-#. [time]: id=indoors
-#: data/core/macros/schedules.cfg:101
-msgid "Indoors"
-msgstr "屋内"
-
-#. [time]: id=deep_underground
-#: data/core/macros/schedules.cfg:121
-msgid "Deep Underground"
-msgstr "深い地下"
-
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:203
 msgid "Second Watch — First Hour"
@@ -4451,89 +4771,82 @@ msgstr "長い夜(3)"
 msgid "The Long Dark (4)"
 msgstr "長い夜(4)"
 
-#: data/core/macros/special-notes.cfg:3
-msgid ""
-"\n"
-"\n"
-"Special Notes:"
+#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:549
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
 msgstr ""
 "\n"
 "\n"
 "特記事項:"
 
-#: data/core/macros/special-notes.cfg:8
+#: data/core/macros/special-notes.cfg:15
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
 #| "over open water."
 msgid ""
-"\n"
-"• Spirits have very unusual resistances to damage, and move quite slowly "
-"over open water."
+"Spirits have very unusual resistances to damage, and move quite slowly over "
+"open water."
 msgstr ""
 " 霊魂はダメージに対して飛び抜けた耐性があり、水の上をきわめてゆっくりと移動し"
 "ます。"
 
-#: data/core/macros/special-notes.cfg:12
+#: data/core/macros/special-notes.cfg:18
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
 #| "and even some to mundane creatures."
 msgid ""
-"\n"
-"• This unit’s arcane attack deals tremendous damage to magical creatures, "
-"and even some to mundane creatures."
+"This unit’s arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
 msgstr ""
 " このユニットの秘術による攻撃は魔法で作られた者に著しいダメージを与えます。 "
 "またこの世の生物にさえもかなりのダメージを与えます。"
 
-#: data/core/macros/special-notes.cfg:16
+#: data/core/macros/special-notes.cfg:21
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
-msgid ""
-"\n"
-"• This unit is capable of basic healing."
-msgstr " このユニットには簡易な回復能力があります。"
-
-#: data/core/macros/special-notes.cfg:20
-#, fuzzy
-#| msgid " This unit is capable of rapid healing."
-msgid ""
-"\n"
-"• This unit is capable of rapid healing."
+msgid "This unit is capable of basic healing."
 msgstr " このユニットには簡易な回復能力があります。"
 
 #: data/core/macros/special-notes.cfg:24
+#, fuzzy
+#| msgid " This unit is capable of rapid healing."
+msgid "This unit is capable of rapid healing."
+msgstr " このユニットには簡易な回復能力があります。"
+
+#: data/core/macros/special-notes.cfg:27
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
 #| "poison."
 msgid ""
-"\n"
-"• This unit is capable of healing those around it, and curing them of poison."
+"This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
 " このユニットはその周りにいるユニットを回復し、毒を治療することができます。"
 
-#: data/core/macros/special-notes.cfg:28
+#: data/core/macros/special-notes.cfg:30
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
 #| "around it."
 msgid ""
-"\n"
-"• This unit is capable of neutralizing the effects of poison in units around "
+"This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr " このユニットは周りにいるユニットの毒を中和する能力があります。"
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:33
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
 #| "stationed in a village."
 msgid ""
-"\n"
-"• This unit regenerates, which allows it to heal as though always stationed "
-"in a village."
+"This unit regenerates, which allows it to heal as though always stationed in "
+"a village."
 msgstr ""
 " このユニットは再生能力があり、これによって常に村にいるかのように回復すること"
 "ができます。"
@@ -4544,289 +4857,275 @@ msgstr ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
 #| "while defending."
 msgid ""
-"\n"
-"• The steadiness of this unit reduces damage from some attacks, but only "
-"while defending."
+"The steadiness of this unit reduces damage from some attacks, but only while "
+"defending."
 msgstr ""
 " このユニットの堅実さのおかげで、ある種の攻撃によるダメージを減らすことができ"
 "ます。しかし、防御時のみです。"
 
-#: data/core/macros/special-notes.cfg:40
+#: data/core/macros/special-notes.cfg:39
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
 #| "deal more damage in combat, though this only applies to units of lower "
 #| "level."
 msgid ""
-"\n"
-"• The leadership of this unit enables adjacent units of the same side to "
-"deal more damage in combat, though this only applies to units of lower level."
+"The leadership of this unit enables adjacent units of the same side to deal "
+"more damage in combat, though this only applies to units of lower level."
 msgstr ""
 " このユニットの統率力により、隣接する同一陣営のユニットは戦闘においてより大き"
 "なダメージを与えることができます。これはより下位レベルのユニットにのみ適用さ"
 "れます。"
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:42
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 #| "control and thus move unhindered around them."
 msgid ""
-"\n"
-"• This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
+"This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
 " このユニットの散兵能力により、敵の支配領域を無視することができます。そのた"
 "め、敵に囲まれても移動が妨害されることはありません。"
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:45
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
-msgid ""
-"\n"
-"• Illumination increases the lighting level in adjacent areas."
+msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " 照明は隣接する領域を明るくします。"
 
-#: data/core/macros/special-notes.cfg:52
+#: data/core/macros/special-notes.cfg:48
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
 #| "controlled by its side."
 msgid ""
-"\n"
-"• This unit can use one move to teleport between any two empty villages "
+"This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
 " このユニットは 1 回の移動を使用して、その陣営に支配されている誰もいない 2 つ"
 "の村の間を瞬間移動することができます。"
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:51
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
 #| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
-"\n"
-"• In woodlands, this unit’s ambush skill renders it invisible to enemies "
+"In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
 " 森林地では、このユニットの伏兵能力によって敵から見えなくなります。すぐ隣にい"
 "るか、攻撃することによって自らあらわれた場合を除いて。"
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:54
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
-msgid ""
-"\n"
-"• This unit is able to hide at night, leaving no trace of its presence."
+msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 " このユニットは夜間に隠れることができ、ユニットが存在したという痕跡をまったく"
 "残しません。"
 
-#: data/core/macros/special-notes.cfg:64
+#: data/core/macros/special-notes.cfg:57
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
 #| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
-"\n"
-"• This unit can hide in villages (with the exception of water villages), and "
+"This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
 " このユニットは村（水中の村を除く）の中に隠れることができ、敵から見えなくなり"
 "ます。敵の隣にいる場合を除いて。"
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:60
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
 #| "surface."
 msgid ""
-"\n"
-"• This unit can move unseen in deep water, requiring no air from the surface."
+"This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 " このユニットは深海では目に触れることなく移動することができます。水面から空気"
 "を得る必要もありません。"
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:63
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
 #| "living unit."
 msgid ""
-"\n"
-"• This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr " このユニットは生きているユニットを殺すことで最大HPが 1 増加します。"
 
-#: data/core/macros/special-notes.cfg:76
+#: data/core/macros/special-notes.cfg:66
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
 #| "attack until either it or its enemy lies dead."
 msgid ""
-"\n"
-"• Whenever its berserk attack is used, this unit continues to push the "
-"attack until either it or its enemy lies dead."
+"Whenever its berserk attack is used, this unit continues to push the attack "
+"until either it or its enemy lies dead."
 msgstr ""
 " このユニットの狂戦攻撃が使われた場合、このユニットはそのユニット自身か敵が倒"
 "れるまで攻撃し続けます。"
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:69
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
 #| "while attacking it, this unit may backstab, inflicting double damage by "
 #| "creeping around behind that enemy."
 msgid ""
-"\n"
-"• If there is an enemy of the target on the opposite side of the target "
-"while attacking it, this unit may backstab, inflicting double damage by "
-"creeping around behind that enemy."
+"If there is an enemy of the target on the opposite side of the target while "
+"attacking it, this unit may backstab, inflicting double damage by creeping "
+"around behind that enemy."
 msgstr ""
 " 攻撃時に標的のユニットの反対側にそのユニットの敵がいれば、奇襲を食らわせ、倍"
 "のダメージを与えるでしょう。"
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:72
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
 #| "they are standing on a village."
 msgid ""
-"\n"
-"• Foes who lose their life to the plague will rise again in unlife, unless "
+"Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
 " 疫病で命を落とした敵は、死者としてよみがえるでしょう。村の上に立っていない限"
 "りは。"
 
-#: data/core/macros/special-notes.cfg:88
+#: data/core/macros/special-notes.cfg:75
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
 #| "attack damage until they end a turn."
 msgid ""
-"\n"
-"• This unit is able to slow its enemies, halving their movement speed and "
+"This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
 " このユニットは敵を遅くすることができ、敵のターンが終わるまでの間、敵の移動速"
 "度と攻撃ダメージを半減させることができます。"
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:78
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
 #| "dangerous."
 msgid ""
-"\n"
-"• The ability to turn the living to stone makes this unit extremely "
-"dangerous."
+"The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 " 生物を石に変えてしまう能力を持っているため、このユニットはきわめて危険です。"
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:81
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
 #| "enemies, but only on the attack."
 msgid ""
-"\n"
-"• This unit’s marksmanship gives it a high chance of hitting targeted "
-"enemies, but only on the attack."
+"This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
+"but only on the attack."
 msgstr ""
 " このユニットの精密な攻撃は目標とされた敵に高い確率で命中します。しかし、攻撃"
 "側の場合だけです。"
 
-#: data/core/macros/special-notes.cfg:100
+#: data/core/macros/special-notes.cfg:84
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
 #| "hitting an opponent."
 msgid ""
-"\n"
-"• This unit has magical attacks, which always have a high chance of hitting "
-"an opponent."
+"This unit has magical attacks, which always have a high chance of hitting an "
+"opponent."
 msgstr ""
 " このユニットは魔法攻撃を保有し、その攻撃は常に高い確率で敵に命中します。"
 
-#: data/core/macros/special-notes.cfg:104
+#: data/core/macros/special-notes.cfg:87
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
 #| "members are wounded."
 msgid ""
-"\n"
-"• The swarming attacks of this unit become less deadly whenever its members "
+"The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
 " このユニットの群れによる攻撃はそのメンバーが傷つくと壊滅的に弱くなります。"
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:90
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
 #| "does not affect defensive retaliation."
 msgid ""
-"\n"
-"• Using a charging attack doubles both damage dealt and received; this does "
+"Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
 " 突撃を使うことで、与えるダメージ、受けるダメージ共に倍となります。これは防御"
 "側での反撃には影響しません。"
 
-#: data/core/macros/special-notes.cfg:112
+#: data/core/macros/special-notes.cfg:93
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
 #| "health."
 msgid ""
-"\n"
-"• During battle, this unit can drain life from victims to renew its own "
-"health."
+"During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
 " 戦闘中、このユニットは犠牲者から体力を奪い、自身の健康を回復することができま"
 "す。"
 
-#: data/core/macros/special-notes.cfg:116
+#: data/core/macros/special-notes.cfg:96
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
 #| "even in defense."
 msgid ""
-"\n"
-"• The length of this unit’s weapon allows it to strike first in melee, even "
-"in defense."
+"The length of this unit’s weapon allows it to strike first in melee, even in "
+"defense."
 msgstr ""
 " このユニットの武器の長さのおかげで、たとえ防御時であっても、近接戦では先に攻"
 "撃します。"
 
-#: data/core/macros/special-notes.cfg:120
+#: data/core/macros/special-notes.cfg:99
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
 #| "they can be cured in town or by a unit which cures."
 msgid ""
-"\n"
-"• The victims of this unit’s poison will continually take damage until they "
+"The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
 " このユニットの毒による犠牲者は、村か治療能力のあるユニットによって治療される"
 "まで継続的にダメージを受けるでしょう。"
 
-#: data/core/macros/special-notes.cfg:124
+#: data/core/macros/special-notes.cfg:102
 #, fuzzy
 #| msgid ""
 #| " This unit has a defense cap on certain terrain types — it cannot achieve "
 #| "a higher defense rating on mixed terrains with such terrain types."
 msgid ""
-"\n"
-"• This unit has a defense cap on certain terrain types — it cannot achieve a "
+"This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 "このユニットは特定の地形に対して上限回避率を持ちます。その地形を含む複合地形"
 "では、上限回避率以上の回避率を得ることができません。"
+
+#. [special_note]
+#: data/core/macros/special-notes.cfg:156
+#, fuzzy
+#| msgid ""
+#| " This unit regenerates, which allows it to heal as though always "
+#| "stationed in a village."
+msgid ""
+"This unit heals itself each turn, though not as much as if stationed in a "
+"village."
+msgstr ""
+" このユニットは再生能力があり、これによって常に村にいるかのように回復すること"
+"ができます。"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6562,10 +6861,47 @@ msgstr "トロル"
 
 #. [race]: id=troll
 #: data/core/units.cfg:334
+#, fuzzy
+#| msgid ""
+#| "Trolls are ancient creatures, one of the oldest known races known to "
+#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
+#| "live extremely long lives inside deep caves or atop high mountains. The "
+#| "most unique characteristic of trolls is an internal vitality that "
+#| "sustains and heals them from within. As a result they live very different "
+#| "lives from almost any known creature. Trolls have few real needs: they "
+#| "require little food or water, and thus they have little incentive to "
+#| "pursue much besides protection from those who are hostile towards them. "
+#| "This in turn means they rarely have to worry about anything and can spend "
+#| "much of their time sleeping or in contemplation. Trolls have a curious "
+#| "affinity with nature. They do not relate with living things like elves "
+#| "do, but instead with earth and stone. They are also somewhat curious of "
+#| "their surroundings and many younger whelps even enjoy traveling and "
+#| "seeing the world. As trolls grow older they tend to become increasingly "
+#| "passive, gradually losing interest in their environment and spending more "
+#| "of their time sleeping in a quiet, familiar corner of their home cave. "
+#| "This is until they finally pass away as their bodies themselves slowly "
+#| "turn into lifeless statues of stone.\n"
+#| "\n"
+#| "Trolls are seen by many as being little more than yet another race of "
+#| "savage monsters. This common misconception is in part perpetuated by orcs "
+#| "to persuade trolls to join their armies. Because they are rather simple "
+#| "and do not understand the ways of other races or sometimes cannot even "
+#| "tell them apart, it is usually easy for an orcish band to convince a "
+#| "group of trolls that by joining them they get to exact revenge on those "
+#| "that have before hunted them. These new recruits are then directed to "
+#| "attack whoever the orcs themselves are currently in conflict with, "
+#| "whether previously a foe of the trolls or not, accumulating even more "
+#| "enemies for the misled trolls. The most common enemy of trolls are "
+#| "dwarves, and the animosity between these two races is ancient.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "Trolls have inhabited the mountains of the Great Continent longer than "
+#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
+#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
-"the Great Continent. They are large, slow, simple-minded, and live extremely "
-"long lives inside deep caves or atop high mountains. The most unique "
+"the Great Continent. They are large, slow, simple, and live extremely long "
+"lives inside deep caves or atop high mountains. The most unique "
 "characteristic of trolls is an internal vitality that sustains and heals "
 "them from within. As a result they live very different lives from almost any "
 "known creature. Trolls have few real needs: they require little food or "
@@ -6809,17 +7145,489 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "最大 HP +1"
 
-#: src/help/help.cpp:181
+#: src/help/help.cpp:180
 msgid "Close"
 msgstr "閉じる"
 
-#: src/help/help.cpp:184
+#: src/help/help.cpp:183
 msgid "The Battle for Wesnoth Help"
 msgstr "The Battle for Wesnoth ヘルプ"
 
-#: src/help/help.cpp:241
-msgid "Parse error when parsing help text: "
+#: src/help/help.cpp:237 src/help/help.cpp:241
+#, fuzzy
+#| msgid "Parse error when parsing help text: "
+msgid "Parse error when parsing help text:"
 msgstr "ヘルプ文書を解析中にエラー："
+
+#: src/help/help_topic_generators.cpp:64
+msgid "Best of"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:64
+msgid "Worst of"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:157
+#, fuzzy
+#| msgid "Terrains"
+msgid "Base Terrain: "
+msgstr "地形"
+
+#: src/help/help_topic_generators.cpp:177
+msgid "Movement properties: "
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:181
+msgid "Defense properties: "
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:261
+msgid "Level"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:322
+#, fuzzy
+#| msgid "Advancement"
+msgid "Advances from: "
+msgstr "レベルアップ"
+
+#: src/help/help_topic_generators.cpp:324
+#, fuzzy
+#| msgid "Advancement"
+msgid "Advances to: "
+msgstr "レベルアップ"
+
+#: src/help/help_topic_generators.cpp:353
+msgid "Base unit: "
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:358
+msgid "Base units: "
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:376
+msgid "Variations: "
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:400
+#, fuzzy
+#| msgid "race^Merman"
+msgid "race^Miscellaneous"
+msgstr "マーフォーク"
+
+#: src/help/help_topic_generators.cpp:402
+msgid "Race: "
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:472
+#, fuzzy
+#| msgid "Abilities"
+msgid "Abilities: "
+msgstr "能力"
+
+#: src/help/help_topic_generators.cpp:490
+msgid "Ability Upgrades: "
+msgstr ""
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:512
+msgid "HP:"
+msgstr ""
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:516
+msgid "Moves:"
+msgstr ""
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:521
+msgid "Vision:"
+msgstr ""
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:527
+msgid "Jamming:"
+msgstr ""
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:532
+msgid "Cost:"
+msgstr ""
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:536
+msgid "Alignment:"
+msgstr ""
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  It uses
+#. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
+#. translation use non-breaking spaces as appropriate for the target language.
+#: src/help/help_topic_generators.cpp:543
+msgid "Required XP:"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:558
+msgid "unit help^Attacks"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:565
+msgid "unit help^Name"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:566
+msgid "Strikes"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:567
+msgid "Range"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:568
+msgid "Type"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:569
+#, fuzzy
+#| msgid "Weapon Specials"
+msgid "Special"
+msgstr "特殊武器"
+
+#: src/help/help_topic_generators.cpp:647
+msgid "Resistances"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:651
+msgid "Attack Type"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:652
+msgid "Resistance"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:681
+#, fuzzy
+#| msgid "Terrain Editor"
+msgid "Terrain Modifiers"
+msgstr "地形エディタ"
+
+#: src/help/help_topic_generators.cpp:685
+#, fuzzy
+#| msgid "Terrains"
+msgid "Terrain"
+msgstr "地形"
+
+#: src/help/help_topic_generators.cpp:686
+msgid "Defense"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:687
+#, fuzzy
+#| msgid "Movement"
+msgid "Movement Cost"
+msgstr "移動"
+
+#: src/help/help_topic_generators.cpp:691
+msgid "Defense Cap"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:696
+msgid "Vision Cost"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:700
+msgid "Jamming Cost"
+msgstr ""
+
+#~ msgid "Editor Brush"
+#~ msgstr "エディタブラシ"
+
+#~ msgid "Terrain Clipboard"
+#~ msgstr "地形のクリップボード"
+
+#~ msgid ""
+#~ "Paint terrain tiles on the map.\n"
+#~ "\n"
+#~ "The paint tool utilizes the brushes and the terrain palette."
+#~ msgstr ""
+#~ "地形タイルをマップ上に描画します。\n"
+#~ "\n"
+#~ "ペイントツールはエディタブラシと地形パレットを利用します。"
+
+#~ msgid ""
+#~ "Fill continuous regions of terrain with a different one!\n"
+#~ "\n"
+#~ "The fill tool utilizes the terrain palette."
+#~ msgstr ""
+#~ "同じ地形が続いているエリアを違う地形で塗りつぶします！\n"
+#~ "\n"
+#~ "塗り潰しに使われる地形は、地形パレットのものを利用します。"
+
+#~ msgid ""
+#~ "Selects a set of hex fields. The best tool ever!\n"
+#~ "\n"
+#~ "This tool utilizes the brushes."
+#~ msgstr ""
+#~ "複数のヘクスを選択します。素晴らしいツールですよ！\n"
+#~ "\n"
+#~ "このツールはブラシを利用します。"
+
+#~ msgid "Paste Tool"
+#~ msgstr "貼り付けツール"
+
+#~ msgid "Paste the terrain in the clipboard"
+#~ msgstr "クリップボードに記録されている地形を貼り付けます。"
+
+#~ msgid "Starting Tool"
+#~ msgstr "開始地点ツール"
+
+#~ msgid ""
+#~ "Defines the side leader starting position\n"
+#~ "\n"
+#~ "This tool sets the side leaders' default starting locations, and named "
+#~ "special locations."
+#~ msgstr ""
+#~ "陣営リーダーの開始地点を定義\n"
+#~ "\n"
+#~ "このツールは、陣営リーダーの開始地点と、名前付きの特別な場所を定義できま"
+#~ "す。"
+
+#~ msgid ""
+#~ "Wesnoth's Map and Scenario Editor allows users to create and edit the "
+#~ "maps on which every Wesnoth scenario takes place. It also provides a "
+#~ "limited set of features for setting up a basic scenario.\n"
+#~ "\n"
+#~ "The editor can be launched from the <italic>text='Map Editor'</italic>"
+#~ msgstr ""
+#~ "Wesnoth のマップ・シナリオエディタは、シナリオで使用されるマップを作成・変"
+#~ "更することができます。また、標準的なシナリオ作成に必要な機能もいくつか備え"
+#~ "ています。\n"
+#~ "\n"
+#~ "エディタはタイトルスクリーンの<italic>text='マップエディタ'</italic>"
+
+#~ msgid ""
+#~ " option at the title screen.\n"
+#~ "\n"
+#~ "<header>text='What you get'</header>"
+#~ msgstr ""
+#~ "から起動できます。\n"
+#~ "\n"
+#~ "<header>text='機能'</header>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "• <ref>dst='editor_terrain' text='Terrain Editor'</ref>\n"
+#~ "An easy to use map editor, similar to simple paint applications.\n"
+#~ "\n"
+#~ "• Scenario Editor\n"
+#~ "\n"
+#~ "• <ref>dst='editor_playlist' text='Playlist Manager'</ref>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "• <ref>dst='editor_terrain' text='地形エディタ'</ref>\n"
+#~ "簡単に使用できるマップエディタです。ペイントソフトのように操作できます。\n"
+#~ "\n"
+#~ "• シナリオエディタ\n"
+#~ "\n"
+#~ "• <ref>dst='editor_playlist' text='プレイリストマネージャ'</ref>"
+
+#~ msgid ""
+#~ "\n"
+#~ "Predefine the scenario's music track playlist.\n"
+#~ "\n"
+#~ "• Time Schedule Editor\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "シナリオで使用される BGM のプレイリストを定義できます。\n"
+#~ "\n"
+#~ "• タイムスケジュールエディタ\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "• What-you-see-is-what-you-get\n"
+#~ "The editor is not a WYSIWYG application.\n"
+#~ "\n"
+#~ "Because which exact graphic tile represents a terrain in the map depends "
+#~ "on all terrain rules loaded (which is different between the editor and "
+#~ "each other use case) the map won't look exactly the same.\n"
+#~ "\n"
+#~ "• Event handlers and scripting\n"
+#~ "The editor is not a tool to help you scripting the scenario's event "
+#~ "handlers.\n"
+#~ "\n"
+#~ "• Infinite Backwards Compatibility\n"
+#~ "The editor can't load maps from versions prior to 1.10.\n"
+#~ "TODO is that true?\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "• WYSIWYG\n"
+#~ "このエディタは WYSIWYG （見たものがそのまま得られる）ではありません。\n"
+#~ "\n"
+#~ "なぜなら、エディタ上で表示されるグラフィックタイルはマップ中の地形に相当し"
+#~ "ますが、それらは読み込まれた地形ルールに依存しているからです。実際に使用す"
+#~ "る状況では、エディタとは地形ルールが異なっている場合があります。\n"
+#~ "\n"
+#~ "• イベントハンドラとスクリプト\n"
+#~ "このエディタにはシナリオのイベントハンドラスクリプトの記述を補助する機能は"
+#~ "ありません。\n"
+#~ "\n"
+#~ "• 後方互換性\n"
+#~ "このエディタはバージョン1.10以前のマップを読み込むことはできません。\n"
+#~ "TODOは間違っているかも？\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Pure Map Mode'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='ピュアマップモード'</header>"
+
+#~ msgid "The editor features two separate modes of operation:"
+#~ msgstr "このエディタは操作用の2つのモードを持っています。"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Allows only the composing of the terrain map itself and the definition of "
+#~ "leader starting positions."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "地形マップの構築とリーダーの開始地点の定義を行うことができます。"
+
+#~ msgid ""
+#~ "\n"
+#~ "How the information is saved depends on the loaded file:\n"
+#~ "\n"
+#~ "<bold>text='Native'</bold>"
+#~ msgstr ""
+#~ "\n"
+#~ "情報の保存形式は読み込まれたファイルに依存します。\n"
+#~ "\n"
+#~ "<bold>text='ネイティブ'</bold>"
+
+#~ msgid ""
+#~ "\n"
+#~ "A new map or file containing only the arguments to the map_data "
+#~ "attribute.\n"
+#~ "\n"
+#~ "The produced map can be played in the “User Maps” game type at the create "
+#~ "multiplayer game dialog if saved to the default directory.\n"
+#~ "\n"
+#~ "<bold>text='Embedded'</bold>"
+#~ msgstr ""
+#~ "\n"
+#~ "新しいマップか、map_data 属性のみを含むファイルです。\n"
+#~ "\n"
+#~ "作成したマップをデフォルトディレクトリに保存することで、マルチプレイヤー"
+#~ "ゲーム作成ダイアログの「ユーザーマップ」からプレイすることができます。\n"
+#~ "\n"
+#~ "<bold>text='埋め込み'</bold>"
+
+#~ msgid ""
+#~ "\n"
+#~ "Scenario files containing a valid map_data attribute (not a file include) "
+#~ "will be opened in this submode. The editor replaces only the content of "
+#~ "map_data and leaves everything else in the scenario untouched. Maps "
+#~ "opened this way are marked [e] in the Maps menu."
+#~ msgstr ""
+#~ "\n"
+#~ "有効な map_data 属性を含むシナリオファイルはこのモードで開かれます"
+#~ "（map_data 属性が別のファイルに保存されており、それをシナリオファイルから"
+#~ "読み込んでいる場合は除きます）。エディタは map_data のコンテンツのみを変更"
+#~ "し、シナリオの他の部分には手を加えません。この方法でマップが開かれた場合、"
+#~ "マップメニューに「e」が表示されます。"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Scenario Mode'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='シナリオモード'</header>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "The Scenario mode allows several extra tools to be used, such as the Unit "
+#~ "tool. At least one side must be defined in order to use these tools, "
+#~ "however.\n"
+#~ "\n"
+#~ "In this mode, terrain data is stored in the map_data attribute and saved "
+#~ "into a file with any applicable WML."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "シナリオモード時にはユニットツールなどの追加のツールが使用できます。これら"
+#~ "のツールを使用するには 1 つ以上の陣営が定義されている必要があります。\n"
+#~ "\n"
+#~ "このモード時には、地形データは map_data 属性に格納され、WML が適用できる"
+#~ "ファイルに保存されます。"
+
+#~ msgid ""
+#~ "The terrain editor's functionality is covered by the "
+#~ "<ref>dst='editor_tool_paint' text='Paint'</ref> and "
+#~ "<ref>dst='editor_tool_fill' text='Fill Tool'</ref>."
+#~ msgstr ""
+#~ "地形エディタの機能については<ref>dst='editor_tool_paint' text='ペイント'</"
+#~ "ref>と<ref>dst='editor_tool_fill' text='塗り潰しツール'</ref>を参照してく"
+#~ "ださい。"
+
+#~ msgid ""
+#~ "The editor palette contains the applicable items you may use with the "
+#~ "currently selected tool. For example, the Paint tool will display a full "
+#~ "list of all available terrains, and the unit tool will provide a list of "
+#~ "available units."
+#~ msgstr ""
+#~ "エディタパレットは現在使用しているツールで利用可能なアイテムを格納していま"
+#~ "す。例えば、ペイントツールの場合は全ての利用可能な地形のリストを表示し、ユ"
+#~ "ニットツールの場合は提供されているユニットのリストが表示されます。"
+
+#~ msgid ""
+#~ "Wesnoth stores its maps in human readable plain text files.\n"
+#~ "\n"
+#~ "A map file consists of rows with comma separated terrain code strings. "
+#~ "The files can be edited with a general purpose text editor like notepad.\n"
+#~ "\n"
+#~ "The only additional information provided by the map syntax are the "
+#~ "starting positions of the scenario's sides.\n"
+#~ "\n"
+#~ "Additional information, such as teams, custom events, and complex side "
+#~ "setups still need to be manually coded in WML."
+#~ msgstr ""
+#~ "Wesnoth のマップは人間でも読むことができるプレーンテキストファイルとして保"
+#~ "存されます。\n"
+#~ "\n"
+#~ "マップファイルはコンマで区切られた地形コード文字列から成り立っています。"
+#~ "マップファイルはメモ帳などの一般的なテキストエディタで編集可能です。\n"
+#~ "\n"
+#~ "マップに含まれているその他の情報は、シナリオの各陣営の開始地点のみです。\n"
+#~ "\n"
+#~ "開始地点以外の追加情報（チーム、カスタムイベント、複雑な陣営の設定など）"
+#~ "は WML の中に手動で記述する必要があります。"
+
+#~ msgid "Scenario Format"
+#~ msgstr "シナリオフォーマット"
 
 #~ msgid "This race does not have a description yet."
 #~ msgstr "この種族の説明はまだありません。"

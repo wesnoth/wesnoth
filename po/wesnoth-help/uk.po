@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 22:40+0300\n"
+"POT-Creation-Date: 2020-01-25 15:18-0300\n"
 "PO-Revision-Date: 2019-02-01 16:40+0200\n"
 "Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
 "Language-Team: \n"
@@ -22,8 +22,9 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 
 #. [time]: id=underground
+#. [editor_times]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
-#: data/core/macros/schedules.cfg:109
+#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:109
 msgid "Underground"
 msgstr "Підземелля"
 
@@ -90,124 +91,236 @@ msgstr ""
 msgid "Map and Scenario Editor"
 msgstr "Редактор карт та сценаріїв"
 
-#. [topic]: id=editor_brush
-#: data/core/editor/help.cfg:13
-msgid "Editor Brush"
-msgstr "Пензлі редактора"
+#. [section]: id=editor_mode_terrain
+#. [topic]: id=..editor_mode_terrain
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:272
+msgid "Terrain Editor"
+msgstr "Редактор місцевості"
 
-#. [topic]: id=editor_brush
-#. [topic]: id=editor_clipboard
+#. [section]: id=editor_mode_scenario
+#: data/core/editor/help.cfg:20
+#, fuzzy
+#| msgid "Map/Scenario Editor"
+msgid "Scenario Editor"
+msgstr "Редактор карт/сценаріїв"
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:28
+msgid "Paint Tool"
+msgstr "Інструмент малювання"
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:29
+msgid ""
+"Paint terrain tiles on the map.\n"
+"\n"
+"The paint tool utilizes the brush sizes and the terrain palette.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: If a base terrain is selected, change the base without "
+"changing the overlay. If an overlay is selected, change the overlay without "
+"changing the base.\n"
+"• Control+mouse click: Select the terrain under the mouse cursor, as if it "
+"had been selected on the terrain palette (picks up both base and overlay).\n"
+"\n"
+"<bold>text='Brush Sizes'</bold>\n"
+"\n"
+"The selected brush changes the size of the tool:"
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:41
+msgid "Paint single hexes."
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:42
+msgid "Paint seven hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:43
+msgid "Paint nineteen hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_paint
+#: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
+msgid "Paint three hexes in a line."
+msgstr ""
+
+#. [topic]: id=editor_tool_fill
+#: data/core/editor/help.cfg:52
+msgid "Fill Tool"
+msgstr "Інструмент заповнення"
+
+#. [topic]: id=editor_tool_fill
+#: data/core/editor/help.cfg:53
+msgid ""
+"Fill continuous regions of terrain with a different one.\n"
+"\n"
+"The fill tool utilizes the terrain palette.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: If a base terrain is selected, change the base without "
+"changing the overlay. If an overlay is selected, change the overlay without "
+"changing the base.\n"
+"• Control+mouse click: Select the terrain under the mouse cursor, as if it "
+"had been selected on the terrain palette (picks up both base and overlay)."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:67
+msgid "Select Tool"
+msgstr "Інструмент вибору"
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:68
+msgid ""
+"Selects a set of hex fields, for use with with the cut, copy and fill-"
+"selection buttons below the menu bar.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: ‘Magic Wand’ mode, select the hex under the mouse "
+"cursor, and adjoining hexes of the same terrain type.\n"
+"• Control+mouse click: Unselect hexes.\n"
+"\n"
+"<bold>text='Brush Sizes'</bold>\n"
+"\n"
+"The selected brush changes the size of the tool:"
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:78
+msgid "Select single hexes."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:79
+msgid "Select seven hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:80
+msgid "Select nineteen hexes at a time."
+msgstr ""
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
+msgid "Select three hexes in a line."
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:89
+msgid "Clipboard and Paste Tool"
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:90
+msgid ""
+"Rotate, flip and paste the terrain in the clipboard\n"
+"\n"
+"Hexes can be cut or copied to the clipboard using the "
+"<ref>dst='editor_tool_select' text='Select Tool'</ref>.\n"
+"\n"
+"The paste tool shows an outline of the clipboard, which can be pasted with a "
+"mouse-click. Only the outline is shown, but mistakes can be corrected with "
+"the undo function, which is bound to both Control+Z and to the same key as "
+"the in-game undo function.\n"
+"\n"
+"The paste tool also has some clipboard-manipulation functions:"
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:97
+msgid "Rotate clockwise by 60°."
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:98
+msgid "Rotate counter-clockwise by 60°."
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:99
+msgid "Flip horizontally"
+msgstr ""
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:100
+msgid "Flip vertically"
+msgstr ""
+
+#. [topic]: id=editor_tool_starting
+#: data/core/editor/help.cfg:107
+#, fuzzy
+#| msgid "Starting Tool"
+msgid "Starting Locations Tool"
+msgstr "Інструмент Початкова позиція"
+
+#. [topic]: id=editor_tool_starting
+#: data/core/editor/help.cfg:108
+msgid ""
+"Defines the side leader starting position\n"
+"\n"
+"This tool sets the side leaders’ default starting locations, and named "
+"special locations. Both types of location are enabled in both <ref>dst='.."
+"editor_mode_terrain' text='Terrain Editor'</ref> and Scenario Editor modes. "
+"The location names are shown as a list in the editor palette, clicking on "
+"the map will place that name on a hex, each location can only be placed on a "
+"single hex, and the editor will only allow one location per hex.\n"
+"\n"
+"To add named special locations, click “Add” at the bottom of the editor "
+"palette, and enter the name. These names must start with a letter and may "
+"contain numbers and underscores.\n"
+"\n"
+"More than nine teams can be added to a map, by clicking “Add” and entering a "
+"number, for example “10”. The UI will automatically show this as “Player "
+"10”.\n"
+"\n"
+"Named locations can be accessed from WML using the Standard Location "
+"Filter’s <italic>text='location_id='</italic>. Player starts can also be "
+"accessed from WML using <italic>text='location_id=1'</italic>, "
+"<italic>text='location_id=2'</italic>, etc — use only the number, without "
+"adding “Player ” in front of the number.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Control+mouse click on a hex that already has a location: select that "
+"location for placing with a subsequent mouse click, as if it was selected in "
+"the editor palette."
+msgstr ""
+
+#. [topic]: id=editor_tool_label
+#: data/core/editor/help.cfg:127
+msgid "Label Tool"
+msgstr "Інструмент Мітка"
+
 #. [topic]: id=editor_tool_label
 #. [topic]: id=editor_tool_item
 #. [topic]: id=editor_tool_village
 #. [topic]: id=editor_tool_unit
 #. [topic]: id=editor_time_schedule
-#. [topic]: id=editor_starting_positions_in_general
-#: data/core/editor/help.cfg:14 data/core/editor/help.cfg:22
-#: data/core/editor/help.cfg:78 data/core/editor/help.cfg:86
-#: data/core/editor/help.cfg:104 data/core/editor/help.cfg:112
-#: data/core/editor/help.cfg:251 data/core/editor/help.cfg:289
+#: data/core/editor/help.cfg:128 data/core/editor/help.cfg:136
+#: data/core/editor/help.cfg:154 data/core/editor/help.cfg:162
+#: data/core/editor/help.cfg:293
 msgid "TODO"
 msgstr "Зробити"
 
-#. [topic]: id=editor_clipboard
-#: data/core/editor/help.cfg:21
-msgid "Terrain Clipboard"
-msgstr "Буфер обміну для місцевості"
-
-#. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:29
-msgid "Paint Tool"
-msgstr "Інструмент малювання"
-
-#. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:30
-msgid ""
-"Paint terrain tiles on the map.\n"
-"\n"
-"The paint tool utilizes the brushes and the terrain palette."
-msgstr ""
-"Малює клітинки місцевості на карті.\n"
-"\n"
-"Інструмент малювання використовує пензлі та палітру місцевостей."
-
-#. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:39
-msgid "Fill Tool"
-msgstr "Інструмент заповнення"
-
-#. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:40
-msgid ""
-"Fill continuous regions of terrain with a different one!\n"
-"\n"
-"The fill tool utilizes the terrain palette."
-msgstr ""
-"Заповнює один суцільний регіон певної місцевості іншою!\n"
-"\n"
-"Інструмент заповнення використовує палітру місцевостей."
-
-#. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:49
-msgid "Select Tool"
-msgstr "Інструмент вибору"
-
-#. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:50
-msgid ""
-"Selects a set of hex fields. The best tool ever!\n"
-"\n"
-"This tool utilizes the brushes."
-msgstr ""
-"Вибирає набір клітинок. Найкращий інструмент!\n"
-"\n"
-"Цей інструмент використовує пензлі."
-
-#. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:59
-msgid "Paste Tool"
-msgstr "Інструмент вставки"
-
-#. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:60
-msgid "Paste the terrain in the clipboard"
-msgstr "Вставляє місцевість до буфера обміну"
-
-#. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:67
-msgid "Starting Tool"
-msgstr "Інструмент Початкова позиція"
-
-#. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:68
-msgid ""
-"Defines the side leader starting position\n"
-"\n"
-"This tool sets the side leaders' default starting locations, and named "
-"special locations."
-msgstr ""
-"Визначає початкові позиції для лідерів сторін\n"
-"\n"
-"Цей інструмент встановлює типові стартові клітинки для лідерів та називає "
-"спеціальні локації."
-
-#. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:77
-msgid "Label Tool"
-msgstr "Інструмент Мітка"
-
 #. [topic]: id=editor_tool_item
-#: data/core/editor/help.cfg:85
+#: data/core/editor/help.cfg:135
 msgid "Item Tool"
 msgstr "Інструмент Предмет"
 
 #. [topic]: id=editor_tool_soundsource
-#: data/core/editor/help.cfg:93
+#: data/core/editor/help.cfg:143
 msgid "Soundsource Tool"
 msgstr "Інструмент Джерело звуку"
 
 #. [topic]: id=editor_tool_soundsource
-#: data/core/editor/help.cfg:94
+#: data/core/editor/help.cfg:144
 msgid ""
 "Places Soundsources on your maps!\n"
 "\n"
@@ -218,22 +331,22 @@ msgstr ""
 "Цей інструмент ще не реалізовано."
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:103
+#: data/core/editor/help.cfg:153
 msgid "Village Ownership Tool"
 msgstr "Інструмент Власник села"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:111
+#: data/core/editor/help.cfg:161
 msgid "Unit Tool"
 msgstr "Інструмент Боєць"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:119
+#: data/core/editor/help.cfg:169
 msgid "Named Areas"
 msgstr "Іменовані області"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:120
+#: data/core/editor/help.cfg:170
 msgid ""
 "Named Areas are sets of gamefields which can be addressed during scenario "
 "scripting by a given name.\n"
@@ -252,12 +365,12 @@ msgstr ""
 "мають однакові імена областей."
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:130
+#: data/core/editor/help.cfg:180
 msgid "Playlist Manager"
 msgstr "Менеджер списоку музики"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:131
+#: data/core/editor/help.cfg:181
 msgid ""
 "Saves a list of music tracks defining a random playlist to the scenario.\n"
 "\n"
@@ -269,174 +382,84 @@ msgstr ""
 "На сервері аддонів можна знайти доступні додаткові музичні доріжки."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:140
+#: data/core/editor/help.cfg:190
 msgid "Map/Scenario Editor"
 msgstr "Редактор карт/сценаріїв"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:142
+#: data/core/editor/help.cfg:192
 msgid ""
-"Wesnoth's Map and Scenario Editor allows users to create and edit the maps "
+"Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
 "of features for setting up a basic scenario.\n"
 "\n"
-"The editor can be launched from the <italic>text='Map Editor'</italic>"
-msgstr ""
-"Редактор карт та сценаріїв Весноту дозволяє користувачам створювати та "
-"редагувати карти, на яких грається кожен сценарій Весноту. Також надаються "
-"обмежені інструменти для налаштування простого сценарію.\n"
+"The editor can be launched from the <italic>text='Map Editor'</italic> "
+"option at the title screen.\n"
 "\n"
-"Редактор можна запустити, натиснувши <italic>text='Редактор карт'</italic>"
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:144
-msgid ""
-" option at the title screen.\n"
+"<header>text='What you get'</header>\n"
 "\n"
-"<header>text='What you get'</header>"
-msgstr ""
-" у головному меню.\n"
-"\n"
-"<header>text='Що там є'</header>"
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:146
-msgid ""
-"\n"
-"\n"
-"• <ref>dst='editor_terrain' text='Terrain Editor'</ref>\n"
+"• <ref>dst='..editor_mode_terrain' text='Terrain Editor'</ref>\n"
 "An easy to use map editor, similar to simple paint applications.\n"
 "\n"
 "• Scenario Editor\n"
 "\n"
-"• <ref>dst='editor_playlist' text='Playlist Manager'</ref>"
-msgstr ""
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:153
-msgid ""
-"\n"
-"Predefine the scenario's music track playlist.\n"
+"• <ref>dst='editor_playlist' text='Playlist Manager'</ref>\n"
+"Predefine the scenario’s music track playlist.\n"
 "\n"
 "• Time Schedule Editor\n"
 "\n"
-msgstr ""
-
-#. [topic]: id=..editor
-#: data/core/editor/help.cfg:158
-msgid ""
-"\n"
+"<header>text='What you do *not* get'</header>\n"
 "\n"
 "• What-you-see-is-what-you-get\n"
 "The editor is not a WYSIWYG application.\n"
 "\n"
 "Because which exact graphic tile represents a terrain in the map depends on "
 "all terrain rules loaded (which is different between the editor and each "
-"other use case) the map won't look exactly the same.\n"
+"other use case) the map won’t look exactly the same.\n"
 "\n"
 "• Event handlers and scripting\n"
-"The editor is not a tool to help you scripting the scenario's event "
+"The editor is not a tool to help you scripting the scenario’s event "
 "handlers.\n"
 "\n"
 "• Infinite Backwards Compatibility\n"
-"The editor can't load maps from versions prior to 1.10.\n"
-"TODO is that true?\n"
-"\n"
+"The editor can load most maps from older versions of Wesnoth, but not all. "
+"Maps from 1.3.2 and later will normally be supported, unless they use "
+"terrains which are no longer in mainline Wesnoth. Maps from add-ons which "
+"have their own terrains will need that add-on to tell the editor about their "
+"terrains."
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:172
+#: data/core/editor/help.cfg:221
 msgid ""
-"\n"
+"<header>text='Basic Concepts'</header>\n"
 "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
 "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
 "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-"• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if it "
-"needs a topic on its own\n"
-"• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
+"• The clipboard is described in the <ref>dst='editor_tool_paste' text='Paste "
+"Tool'</ref>"
 msgstr ""
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:184
+#: data/core/editor/help.cfg:231
 msgid "Editing Modes"
 msgstr "Режими редагування"
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:185
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
+#: data/core/editor/help.cfg:232
 msgid ""
+"The editor features two modes of operation:\n"
 "\n"
-"\n"
-"<header>text='Pure Map Mode'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Ресурси творця'</header>"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:185
-msgid "The editor features two separate modes of operation:"
-msgstr ""
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:187
-msgid ""
-"\n"
+"<header>text='Terrain-only Mode'</header>\n"
 "\n"
 "Allows only the composing of the terrain map itself and the definition of "
-"leader starting positions."
-msgstr ""
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:189
-msgid ""
+"leader starting positions.\n"
 "\n"
-"How the information is saved depends on the loaded file:\n"
+"When saved using “Save Map As” and saving to the default directory, the "
+"produced map can be found in the “User Maps” game type of the create "
+"multiplayer game dialog.\n"
 "\n"
-"<bold>text='Native'</bold>"
-msgstr ""
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:192
-msgid ""
-"\n"
-"A new map or file containing only the arguments to the map_data attribute.\n"
-"\n"
-"The produced map can be played in the “User Maps” game type at the create "
-"multiplayer game dialog if saved to the default directory.\n"
-"\n"
-"<bold>text='Embedded'</bold>"
-msgstr ""
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:197
-msgid ""
-"\n"
-"Scenario files containing a valid map_data attribute (not a file include) "
-"will be opened in this submode. The editor replaces only the content of "
-"map_data and leaves everything else in the scenario untouched. Maps opened "
-"this way are marked [e] in the Maps menu."
-msgstr ""
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:198
-msgid ""
-"\n"
-"\n"
-"<header>text='Scenario Mode'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Режим Сценарій'</header>"
-
-#. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:200
-msgid ""
-"\n"
+"<header>text='Scenario Mode'</header>\n"
 "\n"
 "The Scenario mode allows several extra tools to be used, such as the Unit "
 "tool. At least one side must be defined in order to use these tools, "
@@ -447,105 +470,181 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:211
+#: data/core/editor/help.cfg:249
 msgid "Editor Tools"
 msgstr "Інструменти редактора"
 
 #. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:212
+#: data/core/editor/help.cfg:250
 msgid ""
 "The editor provides several tools for editing your maps and scenarios. At "
-"all times, one of the editor tools is active. The active tool's context "
+"all times, one of the editor tools is active. The active tool’s context "
 "determines the content of the editor palette and context menu.\n"
 "\n"
-"These following tools are provided:\n"
+"These tools are available in both terrain-only mode and scenario mode:\n"
 "\n"
 "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
 "• <ref>dst='editor_tool_fill' text='Fill Tool'</ref>\n"
 "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
 "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-"• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
+"• <ref>dst='editor_tool_starting' text='Starting Locations Tool'</ref>\n"
+"\n"
+"These tools are only available in scenario mode:\n"
+"\n"
 "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
 "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
 "• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
 "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-"• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
-"\n"
+"• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
 msgstr ""
 
-#. [topic]: id=editor_terrain
-#: data/core/editor/help.cfg:234
-msgid "Terrain Editor"
-msgstr "Редактор місцевості"
-
-#. [topic]: id=editor_terrain
-#: data/core/editor/help.cfg:235
+#. [topic]: id=..editor_mode_terrain
+#: data/core/editor/help.cfg:273
 msgid ""
-"The terrain editor's functionality is covered by the "
-"<ref>dst='editor_tool_paint' text='Paint'</ref> and "
-"<ref>dst='editor_tool_fill' text='Fill Tool'</ref>."
+"The terrain editor’s functionality is similar to a simple paint "
+"application.\n"
+"\n"
+"The right-hand sidebar contains, from top to bottom, the mini-map, "
+"<ref>dst='editor_toolkit' text='Toolkit'</ref>, tool options, and "
+"<ref>dst='editor_palette' text='Palette'</ref>.\n"
+"\n"
+"To get started, refer to the <ref>dst='editor_tool_paint' text='Paint Tool'</"
+"ref>’s page."
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:242
+#: data/core/editor/help.cfg:284
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:243
+#: data/core/editor/help.cfg:285
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
 msgstr ""
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:250
+#: data/core/editor/help.cfg:292
 msgid "Time Schedule Editor"
 msgstr "Редактор часу доби"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:258
+#: data/core/editor/help.cfg:300
 msgid "Editor Palette"
 msgstr "Палітра редактора"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:259
+#: data/core/editor/help.cfg:301
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
 "list of all available terrains, and the unit tool will provide a list of "
-"available units."
+"available units. When using the Starting Locations Tool, the palette changes "
+"to a list of “Player 1”, “Player 2”, etc.\n"
+"\n"
+"<bold>text='Filter'</bold>\n"
+"\n"
+"There is a filter function to show only a subset of the available items — "
+"this is the leftmost of the four buttons at the top of the palette, and the "
+"graphic changes depending on what is selected. Examples:"
+msgstr ""
+
+#. [topic]: id=editor_palette
+#: data/core/editor/help.cfg:306
+msgid "Show all kinds of terrain"
+msgstr ""
+
+#. [topic]: id=editor_palette
+#: data/core/editor/help.cfg:307
+msgid "Show only water terrains"
+msgstr ""
+
+#. [topic]: id=editor_palette
+#: data/core/editor/help.cfg:308
+msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:266
+#: data/core/editor/help.cfg:318
 msgid "Wesnoth Map Format"
 msgstr "Формат карт Весноту"
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:267
+#: data/core/editor/help.cfg:319
+msgid "Wesnoth stores its maps in human readable plain text files."
+msgstr ""
+
+#. [topic]: id=map_format
+#: data/core/editor/help.cfg:321
 msgid ""
-"Wesnoth stores its maps in human readable plain text files.\n"
+"<header>text='Native'</header>\n"
 "\n"
 "A map file consists of rows with comma separated terrain code strings. The "
-"files can be edited with a general purpose text editor like notepad.\n"
+"only non-terrain information provided by the map syntax are the locations "
+"created by the <ref>dst='editor_tool_starting' text='Starting Locations "
+"Tool'</ref>. The files can be edited with a general purpose text editor like "
+"notepad.\n"
 "\n"
-"The only additional information provided by the map syntax are the starting "
-"positions of the scenario's sides.\n"
+"These files can be used directly for multiplayer games, the number of "
+"players is automatically determined by the number of starting positions. "
+"When saved in the default directory, the map can be found in the “Custom "
+"Maps” game type of the multiplayer “Create Game” dialog; you may need to "
+"refresh the cache (press F5 on the title screen) before a newly-created map "
+"appears.\n"
 "\n"
-"Additional information, such as teams, custom events, and complex side "
-"setups still need to be manually coded in WML."
+"These files can be used in a scenario’s .cfg file, with the scenario’s WML "
+"providing additional information such as teams, custom events, and complex "
+"side setups. The .cfg file loads the map file with either of:\n"
+"\n"
+"• map_file=maps/01_First_Map.map <italic>text='— supported since Wesnoth "
+"1.14'</italic>\n"
+"• map_data=\"{maps/01_First_Map.map}\" <italic>text='— a WML preprocessor "
+"include'</italic>\n"
+"\n"
+"The <italic>text='map_file'</italic> method is preferred over using a "
+"preprocessor include."
 msgstr ""
 
-#. [topic]: id=scenario_format
-#: data/core/editor/help.cfg:280
-msgid "Scenario Format"
-msgstr "Формат сценаріїв"
-
-#. [topic]: id=editor_starting_positions_in_general
-#: data/core/editor/help.cfg:288
-msgid "Starting Positions Howto"
+#. [topic]: id=map_format
+#: data/core/editor/help.cfg:334
+msgid ""
+"<header>text='Embedded'</header>\n"
+"\n"
+"The map data can stored as part of a scenario’s .cfg file, directly in the "
+"<italic>text='map_data'</italic> attribute. In other words, in the place "
+"that the preprocessor would include it when using the preprocessor-include "
+"method.\n"
+"\n"
+"<bold>text='Using Embedded Format in Terrain Mode'</bold>\n"
+"\n"
+"If you are editing the map and not using the Scenario Mode support, then "
+"it’s trivial to move the data to a native map file before opening it in the "
+"editor. This conversion is recommended — the editor supports editing the "
+"content of map_data while leaving everything else in the file untouched, but "
+"this is rarely-used code. Maps opened this way are marked (E) in the Window "
+"menu."
 msgstr ""
+
+#. [topic]: id=map_format
+#: data/core/editor/help.cfg:342
+msgid ""
+"<bold>text='Using Embedded Format in Scenario Mode'</bold>\n"
+"\n"
+"TODO: add documentation about the scenario mode."
+msgstr ""
+
+#. [editor_times]: id=deep_underground
+#. [time]: id=deep_underground
+#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
+msgid "Deep Underground"
+msgstr "Глибоке підземелля"
+
+#. [editor_times]: id=indoors
+#. [time]: id=indoors
+#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
+msgid "Indoors"
+msgstr "В приміщенні"
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -586,11 +685,17 @@ msgstr "Велика ріка"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
+#, fuzzy
+#| msgid ""
+#| "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
+#| "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
+#| "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
+#| "text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgid ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
-"text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
+"text='ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
 "Велика ріка утворює природній бар'єр між <ref>dst='kingdom_wesnoth' "
 "text='Королівством Веснот'</ref> та <ref>dst='northlands' text='Північними "
@@ -702,13 +807,67 @@ msgstr "Королівство Веснот"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
+#, fuzzy
+#| msgid ""
+#| "The Kingdom of Wesnoth is located in the north-central portion of the "
+#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
+#| "mainline campaigns revolve around it. It is bounded on the map by the "
+#| "Great River to the north, the shore of the Great Ocean to the west, the "
+#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
+#| "ref>, and the Bitter Swamp to the southeast (lower right corner of the "
+#| "main map).\n"
+#| "\n"
+#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
+#| "region. It is bounded to the south (off-map) by dense woods of which the "
+#| "Aethenwood may be considered a northernmost extension.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Weldyn: The capital of Wesnoth.\n"
+#| "    • Aldril: City lying on the Bay of Pearls.\n"
+#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
+#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
+#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
+#| "country, just west and north of Weldyn.\n"
+#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
+#| "confluence of the Weldyn River and the Great River.\n"
+#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
+#| "south road crossing the River Aethen.\n"
+#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
+#| "the wilderness country around the east of the Brown Hills and north to "
+#| "the Ford of Abez.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
+#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
+#| "controlled by Wesnothian forces.\n"
+#| "    • Weldyn River: It branches from the Great River and goes south.\n"
+#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
+#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
+#| "population.\n"
+#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
+#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
+#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
+#| "well-populated and occasionally very dangerous.\n"
+#| "    • Horse Plains: Region of rolling plains just south of the Great "
+#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
+#| "east; the southern reach merges into the Central Plain. Home of the "
+#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
+#| "    • Estmark Hills: Largish range rising south of the Great River and "
+#| "east of the Weldyn River. The northernmost portion, nearest the River "
+#| "Weldyn, has at various times been settled by Wesnothians, but the "
+#| "Kingdom’s control is tenuous at best and banditry is common.\n"
+#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
+#| "of Haldric II’s sons.\n"
+#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
+#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-"mainline campaigns revolve around it. It is bounded on the map by the Great "
-"River to the north, the shore of the Great Ocean to the west, the Aethenwood "
-"to the <ref>dst='southwest_elven_lands' text='southwest'</ref>, and the "
-"Bitter Swamp to the southeast (lower right corner of the main map).\n"
+"mainline campaigns revolve around it. It is bounded on the map by the "
+"<ref>dst='great_river' text='Great River'</ref> to the north, the shore of "
+"the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Aethenwood to "
+"the <ref>dst='southwest_elven_lands' text='southwest'</ref>, and the Bitter "
+"Swamp to the southeast.\n"
 "\n"
 "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier region. "
 "It is bounded to the south (off-map) by dense woods of which the Aethenwood "
@@ -750,7 +909,7 @@ msgid ""
 "tenuous at best and banditry is common.\n"
 "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one of "
 "Haldric II’s sons.\n"
-"    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, located "
+"    • Grey Woods: Large forest in the heart of the wilds of Wesnoth, located "
 "between Carcyn and Aldril and generally considered to be haunted."
 msgstr ""
 "Королівство Веснот розташоване на півночі центральної частини "
@@ -812,17 +971,36 @@ msgstr "Еленсефар"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
+#, fuzzy
+#| msgid ""
+#| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
+#| "text='Wesnoth'</ref>, at times an independent country, and at times in a "
+#| "treaty federation with Wesnoth. Its borders are the Great River to the "
+#| "north, a loosely defined line with Wesnoth to the east, the Bay of Pearls "
+#| "to the south, and the <ref>dst='great_ocean' text='ocean'</ref> to the "
+#| "west. More information is found in the historical narrative of Wesnoth.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Elensefar: The capital, located on an island in the "
+#| "<ref>dst='great_river' text='Great River'</ref> delta.\n"
+#| "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with "
+#| "Wesnoth.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
+#| "this point, and only ships can cross it."
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
-"treaty federation with Wesnoth. Its borders are the Great River to the "
-"north, a loosely defined line with Wesnoth to the east, the Bay of Pearls to "
-"the south, and the <ref>dst='great_ocean' text='ocean'</ref> to the west. "
-"More information is found in the historical narrative of Wesnoth.\n"
+"treaty federation with Wesnoth. Its borders are the <ref>dst='great_river' "
+"text='Great River'</ref> to the north, a loosely defined line with Wesnoth "
+"to the east, the Bay of Pearls to the south, and the <ref>dst='great_ocean' "
+"text='ocean'</ref> to the west. More information is found in the historical "
+"narrative of Wesnoth.\n"
 "\n"
 "<header>text='Notable cities:'</header>\n"
-"    • Elensefar: The capital, located on an island in the "
-"<ref>dst='great_river' text='Great River'</ref> delta.\n"
+"    • Elensefar: The capital, located on an island in the Great River "
+"delta.\n"
 "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth.\n"
 "\n"
 "<header>text='Notable land features:'</header>\n"
@@ -852,12 +1030,52 @@ msgstr "Північні землі"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:120
+#, fuzzy
+#| msgid ""
+#| "There is no government of the Northlands. Various groups of orcs, "
+#| "dwarves, barbarian men and even elves populate the region. The northern "
+#| "and eastern borders are not defined, the southern border is the "
+#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
+#| "is the <ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Glamdrol: An Orcish tribal capital.\n"
+#| "    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
+#| "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga "
+#| "in the southern Heart Mountains. A major trade center.\n"
+#| "    • Dallben and Delwyn: Human villages originally built by settlers who "
+#| "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
+#| "abandoned. The forested area northeast of Elensefar, where these villages "
+#| "were located, was named the Annuvin province by men but was known by the "
+#| "elves as Wesmere.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Heart Mountains: A virtually impassable barrier between the river "
+#| "country and the Northern Plains.\n"
+#| "    • Heartfangs: the particularly forbidding stretch of high peaks "
+#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
+#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
+#| "madmen, and mages live there.\n"
+#| "    • Swamp of Dread: a very large bog located between the Heart "
+#| "Mountains and the Great River. A notoriously dangerous place.\n"
+#| "    • Lake Vrug: A large mountain lake whose river carves the only "
+#| "pathway through the Northern Mountains.\n"
+#| "    • Arkan-thoria: The river that comes out of Lake Vrug. This is the "
+#| "elvish name; among humans it is called Longlier.\n"
+#| "    • River Listra: The south-running tributary of the Great River into "
+#| "which the Arkan-thoria empties.\n"
+#| "    • Lintanir Forest: The southernmost portion of the Great Northern "
+#| "Forest, a gigantic wood whose eastern and northern boundaries are known "
+#| "only to the elves. Their capital, Elensiria, has only seldom been visited "
+#| "by humans.\n"
+#| "    • Great River: The origin of this river is somewhere in the east of "
+#| "the northern lands."
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
 "borders are not defined, the southern border is the <ref>dst='great_river' "
 "text='Great River'</ref>, and the western border is the "
-"<ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
+"<ref>dst='great_ocean' text='ocean'</ref>.\n"
 "\n"
 "<header>text='Notable cities:'</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
@@ -866,13 +1084,13 @@ msgid ""
 "the southern Heart Mountains. A major trade center.\n"
 "    • Dallben and Delwyn: Human villages originally built by settlers who "
 "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
-"abandoned. The forested area northeast of Elensefar, where these villages "
-"were located, was named the Annuvin province by men but was known by the "
-"elves as Wesmere.\n"
+"abandoned. The forested area northeast of <ref>dst='elensefar' "
+"text='Elensefar'</ref>, where these villages were located, was named the "
+"Annuvin province by men but was known by the elves as Wesmere.\n"
 "\n"
 "<header>text='Notable land features:'</header>\n"
-"    • Heart Mountains: A virtually impassable barrier between the river "
-"country and the Northern Plains.\n"
+"    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A virtually "
+"impassable barrier between the river country and the Northern Plains.\n"
 "    • Heartfangs: the particularly forbidding stretch of high peaks "
 "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
 "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
@@ -881,16 +1099,17 @@ msgid ""
 "and the Great River. A notoriously dangerous place.\n"
 "    • Lake Vrug: A large mountain lake whose river carves the only pathway "
 "through the Northern Mountains.\n"
-"    • Arkan-thoria: The river that comes out of Lake Vrug. This is the "
-"elvish name; among humans it is called Longlier.\n"
+"    • <ref>dst='arkan_thoria' text='Arkan-thoria'</ref>: The river that "
+"comes out of Lake Vrug. This is the elvish name; among humans it is called "
+"Longlier.\n"
 "    • River Listra: The south-running tributary of the Great River into "
 "which the Arkan-thoria empties.\n"
 "    • Lintanir Forest: The southernmost portion of the Great Northern "
 "Forest, a gigantic wood whose eastern and northern boundaries are known only "
 "to the elves. Their capital, Elensiria, has only seldom been visited by "
 "humans.\n"
-"    • Great River: The origin of this river is somewhere in the east of the "
-"northern lands."
+"    • <ref>dst='great_river' text='Great River'</ref>: The origin of this "
+"river is somewhere in the east of the northern lands."
 msgstr ""
 "Північ — нічийна земля. Населена групами орків, гномів, людей-варварів, а "
 "іноді й ельфами. Північна та східна межі не визначені, на півдні обмежена "
@@ -933,10 +1152,28 @@ msgstr "Південно-західні ельфійські землі"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:142
+#, fuzzy
+#| msgid ""
+#| "The Wood Elves are separate from those of the north, and have only "
+#| "intermittent relations with them and most other countries. Its borders "
+#| "are the <ref>dst='great_ocean' text='Ocean'</ref> to the west, the Black "
+#| "River to the south and southeast, the lands of Wesnoth to the north and "
+#| "the Kerlath province to the east.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • None known.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Aethenwood: The largest southern forest, it extends far to the "
+#| "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
+#| "the elves make no such distinction, the southern part of the forest has "
+#| "been named Southwood by denizens of Kerlath.\n"
+#| "    • Black Forest: An ancient forest of which very little is known, "
+#| "abandoned by the elves long ago."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
-"the <ref>dst='great_ocean' text='Ocean'</ref> to the west, the Black River "
+"the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black River "
 "to the south and southeast, the lands of Wesnoth to the north and the "
 "Kerlath province to the east.\n"
 "\n"
@@ -1051,72 +1288,90 @@ msgstr ""
 "    • Дикий Степ"
 
 #. [section]: id=schedule
-#: data/core/help.cfg:14
+#: data/core/help.cfg:10
 msgid "Time of Day Schedule"
 msgstr "Розклад часу доби"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
-#: data/core/help.cfg:21 data/core/help.cfg:99
+#: data/core/help.cfg:17 data/core/help.cfg:95
 msgid "Introduction"
 msgstr "Вступ"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:27 data/core/help.cfg:171
+#: data/core/help.cfg:23 data/core/help.cfg:167
 msgid "Gameplay"
 msgstr "Геймплей"
 
+#. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:454
+#: data/core/help.cfg:29 data/core/help.cfg:460
+#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:462
 msgid "Traits"
 msgstr "Риси"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:41 data/core/help.cfg:122
+#: data/core/help.cfg:37 data/core/help.cfg:118
 msgid "Units"
 msgstr "Бійці"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:50 data/core/help.cfg:142
+#: data/core/help.cfg:46 data/core/help.cfg:138
 msgid "Abilities"
 msgstr "Здібності"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:58 data/core/help.cfg:151
+#: data/core/help.cfg:54 data/core/help.cfg:147
 msgid "Weapon Specials"
 msgstr "Особливості зброї"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:66 data/core/help.cfg:131
+#: data/core/help.cfg:62 data/core/help.cfg:127
 msgid "Eras"
 msgstr "Ери"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:74 data/core/help.cfg:469
+#: data/core/help.cfg:70 data/core/help.cfg:475
 msgid "Terrains"
 msgstr "Місцевості"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:82 data/core/help.cfg:522
+#: data/core/help.cfg:78 data/core/help.cfg:528
 msgid "Add-ons"
 msgstr "Аддони"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:595
+#: data/core/help.cfg:84 data/core/help.cfg:601
 msgid "Commands"
 msgstr "Команди"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:100
+#: data/core/help.cfg:96
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
+#| "strategy game somewhat unusual among modern strategy games. While other "
+#| "games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
+#| "strives for simplicity of both rules and gameplay. This does not make the "
+#| "game simple, however — from these simple rules arise a wealth of "
+#| "strategy, making the game easy to learn but a challenge to master.\n"
+#| "\n"
+#| "The following pages outline all you need to know to play Wesnoth. As you "
+#| "play, new information is added to the various categories as you come "
+#| "across new aspects of the game. For more detailed information on special "
+#| "situations and exceptions, follow the included links."
 msgid ""
 "\n"
 "\n"
@@ -1124,7 +1379,7 @@ msgid ""
 "game somewhat unusual among modern strategy games. While other games strive "
 "for complexity, <italic>text='Battle for Wesnoth'</italic> strives for "
 "simplicity of both rules and gameplay. This does not make the game simple, "
-"however — from these simple rules arise a wealth of strategy, making the "
+"however — from these simple rules arises a wealth of strategy, making the "
 "game easy to learn but a challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
@@ -1147,12 +1402,12 @@ msgstr ""
 "більш докладної інформації про особливі ситуації та винятки."
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:110
+#: data/core/help.cfg:106
 msgid "About the Game"
 msgstr "Про Гру"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:111
+#: data/core/help.cfg:107
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -1194,7 +1449,7 @@ msgstr ""
 "пір і понині його розвивають численні добровольці."
 
 #. [topic]: id=..units
-#: data/core/help.cfg:123
+#: data/core/help.cfg:119
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1211,7 +1466,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:132
+#: data/core/help.cfg:128
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1222,7 +1477,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:134
+#: data/core/help.cfg:130
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -1235,7 +1490,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:143
+#: data/core/help.cfg:139
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1252,7 +1507,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:152
+#: data/core/help.cfg:148
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1270,12 +1525,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:161
+#: data/core/help.cfg:157
 msgid "Unknown Unit"
 msgstr "Невідомий боєць"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:162
+#: data/core/help.cfg:158
 msgid ""
 "\n"
 "\n"
@@ -1288,7 +1543,7 @@ msgstr ""
 "його опис."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:172
+#: data/core/help.cfg:168
 #, fuzzy
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
@@ -1343,7 +1598,7 @@ msgstr ""
 "переходити на складніші.\n"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:181
+#: data/core/help.cfg:177
 msgid ""
 "\n"
 "\n"
@@ -1356,7 +1611,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:181
+#: data/core/help.cfg:177
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
@@ -1370,12 +1625,12 @@ msgstr ""
 "abilities_section' text='здібностей'</ref>."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:193
+#: data/core/help.cfg:189
 msgid "Victory and Defeat"
 msgstr "Перемога і Поразка"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:194
+#: data/core/help.cfg:190
 msgid ""
 "\n"
 "\n"
@@ -1392,7 +1647,7 @@ msgstr ""
 "поспілкуватися в чаті з іншими гравцями у мультиплеєрі."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:194
+#: data/core/help.cfg:190
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. In most scenarios, you will achieve victory "
@@ -1410,12 +1665,12 @@ msgstr ""
 "або протриматися під облогою протягом певної кількості ходів."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:203
+#: data/core/help.cfg:199
 msgid "Recruiting and Recalling"
 msgstr "Вербування і Заклик"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:200
 msgid ""
 "\n"
 "\n"
@@ -1433,7 +1688,7 @@ msgstr ""
 "маєте."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:200
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1459,7 +1714,7 @@ msgstr ""
 "завербувати бійця."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:206
+#: data/core/help.cfg:202
 msgid ""
 "\n"
 "\n"
@@ -1472,7 +1727,7 @@ msgstr ""
 "text='риси'</ref>, які змінюють їх характеристики."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:208
+#: data/core/help.cfg:204
 msgid ""
 "\n"
 "\n"
@@ -1488,7 +1743,7 @@ msgstr ""
 "сценаріях."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:210
+#: data/core/help.cfg:206
 msgid ""
 "\n"
 "\n"
@@ -1503,21 +1758,29 @@ msgstr ""
 "<ref>dst='income_and_upkeep' text='прибуток і утримання'</ref>."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:219
+#: data/core/help.cfg:215
 msgid "Income and Upkeep"
 msgstr "Прибуток і Утримання"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:216
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Income is simple. You have a base income of 2 gold per turn. For every "
+#| "village you control, you gain one additional gold each turn. (In general "
+#| "this is configurable but in campaigns it is almost always one gold per "
+#| "village.) Thus, if you have ten villages, you would normally gain 12 gold "
+#| "each turn. Your upkeep costs are subtracted from this income, as detailed "
+#| "below."
 msgid ""
 "\n"
 "\n"
 "Income is simple. You have a base income of 2 gold per turn. For every "
-"village you control, you gain one additional gold each turn. (In general "
-"this is configurable but in campaigns it is almost always one gold per "
-"village.) Thus, if you have ten villages, you would normally gain 12 gold "
-"each turn. Your upkeep costs are subtracted from this income, as detailed "
-"below."
+"village you control, you gain one additional gold each turn. Thus, if you "
+"have ten villages, you would normally gain 12 gold each turn. Your upkeep "
+"costs are subtracted from this income, as detailed below."
 msgstr ""
 "\n"
 "\n"
@@ -1528,7 +1791,7 @@ msgstr ""
 "хід. Утримання віднімається з прибутку, як описано нижче."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:216
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1541,7 +1804,7 @@ msgstr ""
 "italic> і <italic>text='утримання'</italic>."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:220
 msgid ""
 "\n"
 "\n"
@@ -1562,7 +1825,7 @@ msgstr ""
 "бійців Ви платитимете дві золоті монети в хід."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:224
+#: data/core/help.cfg:222
 msgid ""
 "\n"
 "\n"
@@ -1578,6 +1841,19 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:226
+msgid ""
+"\n"
+"\n"
+"In general, the base income, the amount of gold you get per village per "
+"turn, and the number of unit levels each village can support are "
+"configurable, but in campaigns they are almost always the values described "
+"above. The <italic>text='Scenario Settings'</italic> tab of the "
+"<italic>text='Status Table'</italic> dialog shows the values for the current "
+"scenario."
+msgstr ""
+
+#. [topic]: id=income_and_upkeep
+#: data/core/help.cfg:228
 msgid ""
 "\n"
 "\n"
@@ -1598,12 +1874,12 @@ msgstr ""
 "граєте Ви (наприклад Конрад), майже завжди є лідером."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:235
+#: data/core/help.cfg:237
 msgid "Hitpoints and Experience"
 msgstr "Здоров'я та Досвід"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:236
+#: data/core/help.cfg:238
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1618,7 +1894,7 @@ msgstr ""
 "ворогами."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:240
+#: data/core/help.cfg:242
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1628,7 +1904,7 @@ msgstr ""
 "і максимально можливе для цього бійця значения)."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:242
+#: data/core/help.cfg:244
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1641,12 +1917,12 @@ msgstr ""
 "<ref>dst='advancement' text='просування'</ref>."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:249
+#: data/core/help.cfg:251
 msgid "Advancement"
 msgstr "Просування"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:252
 msgid ""
 "\n"
 "\n"
@@ -1663,7 +1939,7 @@ msgstr ""
 "зцілюється. Іноді Вам запропонують декілька варіантів просування на вибір."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:252
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1676,7 +1952,7 @@ msgstr ""
 "бійця 3-го рівня, і так далі."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:254
 msgid ""
 "\n"
 "\n"
@@ -1705,12 +1981,12 @@ msgstr ""
 "просувати бійців нижчих рівнів."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:261
+#: data/core/help.cfg:263
 msgid "Movement"
 msgstr "Рухи"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:264
 msgid ""
 "\n"
 "\n"
@@ -1736,7 +2012,7 @@ msgstr ""
 "пункт <bold>text='Модифікатори місцевості'</bold>."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:264
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1765,7 +2041,7 @@ msgstr ""
 "очки, але все ще зможе нападати."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:266
 msgid ""
 "\n"
 "\n"
@@ -1787,7 +2063,7 @@ msgstr ""
 "text='авангардисти'</ref> можуть їх ігнорувати."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:266
+#: data/core/help.cfg:268
 msgid ""
 "\n"
 "\n"
@@ -1802,12 +2078,12 @@ msgstr ""
 "ваших бійців не було на карті і вони не блокували б його переміщення."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:275
+#: data/core/help.cfg:277
 msgid "Shroud and Fog of War"
 msgstr "Пелена та Туман Війни"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:276
+#: data/core/help.cfg:278
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1851,12 +2127,24 @@ msgstr ""
 "скінчиться ваш хід). Таким чином це дозволить вам скасовувати переміщення."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:284
+#: data/core/help.cfg:287
 msgid "Save-loading"
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:285
+#: data/core/help.cfg:288
+msgid ""
+"\n"
+"\n"
+"One of the challenges of the game is to work out how to protect your heroes. "
+"Small risks quickly build up: if you have five important units, and they "
+"each have just a 1% chance of death each turn, you can "
+"<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
+"you’ll rarely make it through a scenario without having it happen."
+msgstr ""
+
+#. [topic]: id=saveload
+#: data/core/help.cfg:288
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck. This is an expected part of the game, and one of the aims of "
@@ -1864,17 +2152,23 @@ msgid ""
 "all of the mainline campaigns, on hard, without needing to save-load. Going "
 "back to a previous turn to try a different strategy is a part of learning "
 "the game, but we recommend against reloading merely to try the same strategy "
-"again while hoping for better luck.\n"
+"again while hoping for better luck."
+msgstr ""
+
+#. [topic]: id=saveload
+#: data/core/help.cfg:290
+msgid ""
 "\n"
-"One of the challenges of the game is to work out how to protect your heroes. "
-"Small risks quickly build up: if you have five important units, and they "
-"each have just a 1% chance of death each turn, you can "
-"<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
-"you’ll rarely make it through a scenario without having it happen.\n"
 "\n"
 "The following points are under discussion on the forums. At least for the "
 "1.15.x series before 1.16.0 please assume that the forum threads are more "
-"authoritative than the text on this page.\n"
+"authoritative than the text on this page."
+msgstr ""
+
+#. [topic]: id=saveload
+#: data/core/help.cfg:292
+msgid ""
+"\n"
 "\n"
 "In the mainline campaigns, on hard:\n"
 "• A sufficiently skilled player will have a good chance to win each scenario "
@@ -1883,45 +2177,85 @@ msgid ""
 "• This assumes that the player picks up all of the clues given in the "
 "dialogue.\n"
 "• There are more experience points available than on easy, and the player "
-"will be able to train enough troops to cope with losing some L2 or L3 "
-"units.\n"
+"will be able to train enough troops to cope with losing some L2 or L3 units."
+msgstr ""
+
+#. [topic]: id=saveload
+#: data/core/help.cfg:297
+msgid ""
+"\n"
 "\n"
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:301
+#: data/core/help.cfg:306
 msgid "Learning from Losses"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:302
+#: data/core/help.cfg:307
 msgid ""
 "<italic>text='Why did I lose that scenario?'</italic>\n"
 "\n"
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
-"was lost.\n"
+"was lost."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:309
+msgid ""
+"\n"
 "\n"
 "When you first start playing, you will probably lose some scenarios. That is "
 "normal, and is part of learning the game. When that happens, try to learn "
 "from your mistakes: watch the replay, try to understand what you did wrong, "
-"then <ref>dst='saveload' text='restart the scenario'</ref> and try again.\n"
+"then <ref>dst='saveload' text='restart the scenario'</ref> and try again."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:311
+msgid ""
 "\n"
-"Some common reasons for losing a scenario are:\n"
+"\n"
+"Some common reasons for losing a scenario are:"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:313
+msgid ""
+"\n"
 "\n"
 "• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
-"level'</ref>. Try restarting the scenario at an easier difficulty.\n"
+"level'</ref>. Try restarting the scenario at an easier difficulty."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:315
+msgid ""
+"\n"
 "\n"
 "• Playing a poor strategy: for example, recruiting the wrong types of units, "
 "fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
-"taking advantage of terrain features or units’ special abilities, and so "
-"on.\n"
+"taking advantage of terrain features or units’ special abilities, and so on."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:317
+msgid ""
+"\n"
 "\n"
 "• Missing clues. Often there will be hints in the campaign’s story and "
 "dialog about what to expect from a difficult scenario and how to prepare for "
 "it. If you have a loyal mage on your side, take the time to listen to its "
-"advice; it may save your life.\n"
+"advice; it may save your life."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:319
+msgid ""
+"\n"
 "\n"
 "• Barely scraping a victory in a previous scenario. At all difficulties "
 "except “Beginner” (TODO: and “Easy”?), campaigns assume that you will have "
@@ -1932,30 +2266,74 @@ msgid ""
 "even for a more experienced player. If you find yourself in this situation, "
 "you may try to go back a scenario or two and win them more convincingly, or "
 "change to an easier difficulty. (However, remember that <italic>text='some'</"
-"italic> losses are expected, particularly at higher difficulties.)\n"
+"italic> losses are expected, particularly at higher difficulties.)"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:321
+msgid ""
+"\n"
 "\n"
 "• Poor gold management. At higher difficulties, managing gold — capturing "
 "villages to increase the income, and using low-level units and fresh "
 "recruits to reduce the spending — becomes important. If you use many high-"
 "level units, you might win a scenario easily but have not enough gold "
 "carryover for the next scenario. (This would be an example of “barely "
-"scraping a victory”.)\n"
+"scraping a victory”.)"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:323
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Cores'</header>"
+msgid ""
 "\n"
-"<header>text='Unlikely reasons'</header>\n"
+"\n"
+"<header>text='Unlikely reasons'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Ядра'</header>"
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:325
+msgid ""
+"\n"
 "\n"
 "In addition to the common reasons, listed above, there are a few other "
-"reasons which are unlikely, though not impossible. They are:\n"
+"reasons which are unlikely, though not impossible. They are:"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:327
+msgid ""
+"\n"
 "\n"
 "• You may have played a strategy that the campaign developer did not "
 "anticipate, and ended up with a set of high-level units not suitable for the "
-"next scenario.\n"
+"next scenario."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:329
+msgid ""
+"\n"
 "\n"
 "• You may have found a scenario that can only be won on the second or third "
 "time through, whether by requiring above-average luck or by expecting the "
 "players to have foreknowledge — to know what surprises are coming up before "
 "they happen. (It is under discussion whether foreknowledge is expected at "
 "the highest difficulties. Requiring above-average luck, however, would "
-"qualify as a bug.)\n"
+"qualify as a bug.)"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:331
+msgid ""
+"\n"
 "\n"
 "• Unusually-bad luck. Whether an attack hits or misses is random, so it "
 "could happen that the enemy was very lucky and had many hits, while you were "
@@ -1968,19 +2346,37 @@ msgid ""
 "average” luck does not excuse a loss; having below-average luck is perfectly "
 "normal, and scenarios are designed to be winnable even with below-average "
 "luck. It is only exceedingly bad luck, over multiple turns, that we mean "
-"here.\n"
+"here."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:333
+msgid ""
+"\n"
 "\n"
 "Be wary of attributing a loss to any of these reasons. If you are not a "
 "veteran player, it is far more likely that your loss was caused by one of "
 "the <italic>text='common'</italic> errors, listed above, and is not "
 "indicative of a bug in the campaign. However, if you still think you found a "
-"bug, then by all means, report it!\n"
+"bug, then by all means, report it!"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:335
+msgid ""
+"\n"
 "\n"
 "The “Damage Calculations” dialog shows some statistics that can help "
 "determine whether a match was very lucky or very unlucky. However, reading "
 "the statistics is no substitute to watching the replay and looking for "
 "strategic mistakes, or small bits of luck at critical points in the "
-"engagement.\n"
+"engagement."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:337
+msgid ""
+"\n"
 "\n"
 "TODO: link to a forum thread where new players can post their replays and "
 "get review/corrections (like https://forums.wesnoth.org/viewtopic.php?"
@@ -1988,12 +2384,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:341
+#: data/core/help.cfg:347
 msgid "Combat"
 msgstr "Битва"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:342
+#: data/core/help.cfg:348
 msgid ""
 "\n"
 "\n"
@@ -2004,7 +2400,7 @@ msgstr ""
 "<header>text='Порядок і Кількість Атак'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:342
+#: data/core/help.cfg:348
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2029,7 +2425,7 @@ msgstr ""
 "вогняні кулі."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:344
+#: data/core/help.cfg:350
 msgid ""
 "\n"
 "\n"
@@ -2052,7 +2448,7 @@ msgstr ""
 "удар)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:346
+#: data/core/help.cfg:352
 msgid ""
 "\n"
 "\n"
@@ -2063,7 +2459,7 @@ msgstr ""
 "<header>text='Шанс попадания'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:348
+#: data/core/help.cfg:354
 msgid ""
 "\n"
 "\n"
@@ -2086,7 +2482,7 @@ msgstr ""
 "нападника залежить від типу місцевості, на якій стоїть нападник."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:350
+#: data/core/help.cfg:356
 msgid ""
 "\n"
 "\n"
@@ -2105,7 +2501,7 @@ msgstr ""
 "незалежно від місцевості, але лише при нападі."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:352
+#: data/core/help.cfg:358
 msgid ""
 "\n"
 "\n"
@@ -2116,7 +2512,7 @@ msgstr ""
 "<header>text=Шкода</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:354
+#: data/core/help.cfg:360
 msgid ""
 "\n"
 "\n"
@@ -2138,7 +2534,7 @@ msgstr ""
 "<bold>text='Обчислення ушкоджень'</bold> у вікні вибору атаки."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:356
+#: data/core/help.cfg:362
 msgid ""
 "\n"
 "\n"
@@ -2155,12 +2551,12 @@ msgstr ""
 "нанесену шкоду як атакувальника так і того хто захищається."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:364
+#: data/core/help.cfg:370
 msgid "Damage Types and Resistance"
 msgstr "Типи шкоди і Опірність"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:365
+#: data/core/help.cfg:371
 msgid ""
 "\n"
 "\n"
@@ -2179,7 +2575,7 @@ msgstr ""
 "ушкоджень."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:365
+#: data/core/help.cfg:371
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2195,7 +2591,7 @@ msgstr ""
 "кожного типу атаки."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:367
+#: data/core/help.cfg:373
 msgid ""
 "\n"
 "\n"
@@ -2210,7 +2606,7 @@ msgstr ""
 "містичного нападу."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:369
+#: data/core/help.cfg:375
 msgid ""
 "\n"
 "\n"
@@ -2224,12 +2620,12 @@ msgstr ""
 "стається навіть якщо ворог має опірність 100% проти атаки відповідного типу."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:377
+#: data/core/help.cfg:383
 msgid "Orbs"
 msgstr "Кулі"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:378
+#: data/core/help.cfg:384
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2238,18 +2634,18 @@ msgstr ""
 "куля означає:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:380
+#: data/core/help.cfg:386
 msgid " green if it hasn’t moved this turn,"
 msgstr " зелений, якщо боєць не рухався цьому ходу,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:381
+#: data/core/help.cfg:387
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 " жовтий, якщо він рухався, але все ще може рухатися далі або нападати, або"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:382
+#: data/core/help.cfg:388
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
@@ -2257,22 +2653,22 @@ msgstr ""
 "хід бійця."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:383
+#: data/core/help.cfg:389
 msgid " blue if the unit is an ally you do not control."
 msgstr " синій, якщо боєць — ваш союзник, яким ви не можете керувати."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:384
+#: data/core/help.cfg:390
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " Бійці противника не мають кулі над смужкою здоров'я."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:391
+#: data/core/help.cfg:397
 msgid "Time of Day"
 msgstr "Час Доби"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:392
+#: data/core/help.cfg:398
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -2303,7 +2699,7 @@ msgstr ""
 "• <bold>text='Тіньові'</bold> бійці наносять −25% шкоди вдень і вночі."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:397
+#: data/core/help.cfg:403
 msgid ""
 "\n"
 "\n"
@@ -2319,52 +2715,52 @@ msgstr ""
 "варта вважаються за ніч:\n"
 "\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
-#: data/core/help.cfg:401 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:407 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Світанок"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:402 data/core/macros/schedules.cfg:26
+#. [time]: id=morning
+#: data/core/help.cfg:408 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Ранок"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:403 data/core/macros/schedules.cfg:44
+#. [time]: id=afternoon
+#: data/core/help.cfg:409 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "День"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
-#: data/core/help.cfg:404 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:410 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Вечір"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:405 data/core/macros/schedules.cfg:65
+#. [time]: id=first_watch
+#: data/core/help.cfg:411 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Перша варта"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:406 data/core/macros/schedules.cfg:89
+#. [time]: id=second_watch
+#: data/core/help.cfg:412 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Друга варта"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:408
+#: data/core/help.cfg:414
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
@@ -2372,7 +2768,7 @@ msgstr ""
 "Пам'ятайте, що деякі сценарії відбуваються в підземеллі, де завжди ніч!\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:410
+#: data/core/help.cfg:416
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
@@ -2381,7 +2777,7 @@ msgstr ""
 "ніччю.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:412
+#: data/core/help.cfg:418
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
@@ -2390,7 +2786,7 @@ msgstr ""
 "проміжні.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:414
+#: data/core/help.cfg:420
 msgid ""
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
@@ -2403,12 +2799,12 @@ msgstr ""
 "навколо."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:421
+#: data/core/help.cfg:427
 msgid "Healing"
 msgstr "Зцілення"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:422
+#: data/core/help.cfg:428
 msgid ""
 "\n"
 "\n"
@@ -2421,7 +2817,7 @@ msgstr ""
 "був атакований, буде зцілений на 2 ЗД під час наступного ходу."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:422
+#: data/core/help.cfg:428
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2432,7 +2828,7 @@ msgstr ""
 "сумісні між собою, і боєць за хід може бути вилікуваним лише одним з них."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:424
+#: data/core/help.cfg:430
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2445,7 +2841,7 @@ msgstr ""
 "отруєний, то натомість він виліковується від отрути."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:425
+#: data/core/help.cfg:431
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2458,7 +2854,7 @@ msgstr ""
 "боєць був отруєний, то натомість він зцілюється від отрути."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:426
+#: data/core/help.cfg:432
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2475,7 +2871,7 @@ msgstr ""
 "ref>, або стримуватимуть шкоду від отруєння."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:427
+#: data/core/help.cfg:433
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -2489,7 +2885,7 @@ msgstr ""
 "(замість зцілення, якщо у них є і це уміння)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:428
+#: data/core/help.cfg:434
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2502,7 +2898,7 @@ msgstr ""
 "він набирає достатньо досвіду, незалежно від того, чий зараз хід."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:429
+#: data/core/help.cfg:435
 msgid ""
 "\n"
 "\n"
@@ -2517,7 +2913,7 @@ msgstr ""
 "кращий варіант. І нарешті, бійці повністю відновлюються між сценаріями."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:431
+#: data/core/help.cfg:437
 msgid ""
 "\n"
 "\n"
@@ -2528,7 +2924,7 @@ msgstr ""
 "<bold>text='Додатково'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:433
+#: data/core/help.cfg:439
 msgid ""
 "\n"
 "\n"
@@ -2547,12 +2943,12 @@ msgstr ""
 "то його будуть лікувати на кожному ході союзної сторони."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:441
+#: data/core/help.cfg:447
 msgid "Wrap Up"
 msgstr "Підсумок"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:442
+#: data/core/help.cfg:448
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2567,12 +2963,12 @@ msgstr ""
 "<italic>text='Спадкоємець престолу'</italic>. Насолоджуйтесь та удачі!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:447
+#: data/core/help.cfg:453
 msgid "License"
 msgstr "Ліцензія"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:456
+#: data/core/help.cfg:462
 msgid ""
 "\n"
 "\n"
@@ -2588,7 +2984,7 @@ msgstr ""
 "<italic>text='безстрашний'</italic>, а лісовики взагалі не мають ніяких рис. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:456
+#: data/core/help.cfg:462
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2600,7 +2996,7 @@ msgstr ""
 "головним чином визначаються його расою."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:458
+#: data/core/help.cfg:464
 msgid ""
 "\n"
 "\n"
@@ -2617,7 +3013,7 @@ msgstr ""
 "та <ref>dst='traits_strong' text='сильний'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:460
+#: data/core/help.cfg:466
 msgid ""
 "\n"
 "\n"
@@ -2640,7 +3036,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:470
+#: data/core/help.cfg:476
 msgid ""
 "\n"
 "\n"
@@ -2653,7 +3049,7 @@ msgstr ""
 "<italic>text='змішані'</italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:470
+#: data/core/help.cfg:476
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -2662,7 +3058,7 @@ msgstr ""
 "пересування бійців, так і на рівень їх захисту."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:472
+#: data/core/help.cfg:478
 msgid ""
 "\n"
 "\n"
@@ -2673,7 +3069,7 @@ msgstr ""
 "<header>text='Базові види місцевостей'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:474
+#: data/core/help.cfg:480
 msgid ""
 "\n"
 "\n"
@@ -2690,7 +3086,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:478
+#: data/core/help.cfg:484
 msgid ""
 "\n"
 "\n"
@@ -2705,7 +3101,7 @@ msgstr ""
 "місцевість може мати унікальні властивості, наприклад бути освітленою."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:480
+#: data/core/help.cfg:486
 msgid ""
 "\n"
 "\n"
@@ -2716,7 +3112,7 @@ msgstr ""
 "<header>text='Змішані типи місцевостей'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:482
+#: data/core/help.cfg:488
 msgid ""
 "\n"
 "\n"
@@ -2739,7 +3135,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:486
+#: data/core/help.cfg:492
 msgid ""
 "\n"
 "\n"
@@ -2763,7 +3159,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:490
+#: data/core/help.cfg:496
 msgid ""
 "\n"
 "\n"
@@ -2779,7 +3175,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:494
+#: data/core/help.cfg:500
 msgid ""
 "\n"
 "\n"
@@ -2795,7 +3191,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:498
+#: data/core/help.cfg:504
 msgid ""
 "\n"
 "\n"
@@ -2810,7 +3206,7 @@ msgstr ""
 "вгорі."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:500
+#: data/core/help.cfg:506
 msgid ""
 "\n"
 "\n"
@@ -2826,7 +3222,7 @@ msgstr ""
 "натиснувши на гарячу клавішу або вибравши цей пункт у контекстному меню."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:502
+#: data/core/help.cfg:508
 msgid ""
 "\n"
 "\n"
@@ -2837,7 +3233,7 @@ msgstr ""
 "<header>text='Поріг захисту'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:504
+#: data/core/help.cfg:510
 msgid ""
 "\n"
 "\n"
@@ -2853,7 +3249,7 @@ msgstr ""
 "перевищити цього порогу."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:506
+#: data/core/help.cfg:512
 msgid ""
 "\n"
 "\n"
@@ -2870,7 +3266,7 @@ msgstr ""
 "змішаній місцевості не може перевищити поріг."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:508
+#: data/core/help.cfg:514
 msgid ""
 "\n"
 "\n"
@@ -2883,7 +3279,7 @@ msgstr ""
 "як і захист на ній (і не може бути більше)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:510
+#: data/core/help.cfg:516
 msgid ""
 "\n"
 "\n"
@@ -2896,7 +3292,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:523
+#: data/core/help.cfg:529
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2909,12 +3305,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:533
+#: data/core/help.cfg:539
 msgid "Using Add-ons"
 msgstr "Використання Аддонів"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:534
+#: data/core/help.cfg:540
 msgid ""
 "\n"
 "\n"
@@ -2925,7 +3321,7 @@ msgstr ""
 "<header>text='Кампанії та Сценарії'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:534
+#: data/core/help.cfg:540
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -2934,7 +3330,7 @@ msgstr ""
 "аддонів."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:536
+#: data/core/help.cfg:542
 msgid ""
 "\n"
 "\n"
@@ -2951,7 +3347,7 @@ msgstr ""
 "головному вікні."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:538
+#: data/core/help.cfg:544
 msgid ""
 "\n"
 "\n"
@@ -2962,7 +3358,7 @@ msgstr ""
 "<header>text='Кампанії, Сценарії та Пакети Карт Мультиплеєру'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:540
+#: data/core/help.cfg:546
 msgid ""
 "\n"
 "\n"
@@ -2978,7 +3374,7 @@ msgstr ""
 "індивідуальних мультиплеєрних сценаріїв."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:542
+#: data/core/help.cfg:548
 msgid ""
 "\n"
 "\n"
@@ -2989,7 +3385,7 @@ msgstr ""
 "<header>text='Ери та Фракції Мультиплеєру'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:544
+#: data/core/help.cfg:550
 msgid ""
 "\n"
 "\n"
@@ -3013,7 +3409,7 @@ msgstr ""
 "встановлюючи їх сторони і команди."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:548
+#: data/core/help.cfg:554
 msgid ""
 "\n"
 "\n"
@@ -3026,7 +3422,7 @@ msgstr ""
 "eras_section'</ref> цієї довідки."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:550
+#: data/core/help.cfg:556
 msgid ""
 "\n"
 "\n"
@@ -3037,7 +3433,7 @@ msgstr ""
 "<header>text='Модифікації'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:552
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "\n"
@@ -3052,7 +3448,7 @@ msgstr ""
 "вибрати і налаштувати модифікації при створенні нової гри."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:554
+#: data/core/help.cfg:560
 msgid ""
 "\n"
 "\n"
@@ -3063,7 +3459,7 @@ msgstr ""
 "<header>text='Ядра'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:556
+#: data/core/help.cfg:562
 msgid ""
 "\n"
 "\n"
@@ -3087,7 +3483,7 @@ msgstr ""
 "на ній."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:560
+#: data/core/help.cfg:566
 msgid ""
 "\n"
 "\n"
@@ -3098,7 +3494,7 @@ msgstr ""
 "<header>text='Ресурси творця'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:562
+#: data/core/help.cfg:568
 msgid ""
 "\n"
 "\n"
@@ -3118,12 +3514,12 @@ msgstr ""
 "залежати і пропонувати або вимагати їх встановлення впродовж завантаження."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:571
+#: data/core/help.cfg:577
 msgid "Installing Add-ons"
 msgstr "Встановлення Аддонів"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:572
+#: data/core/help.cfg:578
 #, fuzzy
 #| msgid ""
 #| "User-made add-ons can be obtained and updated through the "
@@ -3195,12 +3591,12 @@ msgstr ""
 "опис, статус встановлення, та наявні переклади."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:585
+#: data/core/help.cfg:591
 msgid "Removing Add-ons"
 msgstr "Видалення Аддонів"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:586
+#: data/core/help.cfg:592
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3222,14 +3618,14 @@ msgstr ""
 "або аддони безпосередньо, користуючись файловим менеджером вашої платформи."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:601
+#: data/core/help.cfg:607
 msgid "General Commands"
 msgstr "Основні команди"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:603 data/core/help.cfg:646 data/core/help.cfg:684
+#: data/core/help.cfg:609 data/core/help.cfg:652 data/core/help.cfg:690
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3242,7 +3638,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:605
+#: data/core/help.cfg:611
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3253,7 +3649,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:608
+#: data/core/help.cfg:614
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3268,7 +3664,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:612
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3288,7 +3684,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:615
+#: data/core/help.cfg:621
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3299,7 +3695,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:618
+#: data/core/help.cfg:624
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3310,7 +3706,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:621
+#: data/core/help.cfg:627
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3321,7 +3717,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:624
+#: data/core/help.cfg:630
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3332,7 +3728,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:627
+#: data/core/help.cfg:633
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3343,7 +3739,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:630
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3354,7 +3750,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:633
+#: data/core/help.cfg:639
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3365,7 +3761,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:636
+#: data/core/help.cfg:642
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3374,12 +3770,12 @@ msgstr ""
 "Зберегти гру і вийти зі сценарію (без підтвердження)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:645
+#: data/core/help.cfg:651
 msgid "Multiplayer Commands"
 msgstr "Команди мультиплеєру"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:648
+#: data/core/help.cfg:654
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3394,7 +3790,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:651
+#: data/core/help.cfg:657
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3415,7 +3811,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:654
+#: data/core/help.cfg:660
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3427,7 +3823,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:657
+#: data/core/help.cfg:663
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3440,7 +3836,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:660
+#: data/core/help.cfg:666
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3455,7 +3851,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:663
+#: data/core/help.cfg:669
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3469,7 +3865,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:666
+#: data/core/help.cfg:672
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3482,7 +3878,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:669
+#: data/core/help.cfg:675
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3493,7 +3889,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:672
+#: data/core/help.cfg:678
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3506,7 +3902,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:675
+#: data/core/help.cfg:681
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3517,12 +3913,12 @@ msgstr ""
 "то перелік заборонених імен очищується."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:683
+#: data/core/help.cfg:689
 msgid "Debug Mode Commands"
 msgstr "Команди режиму налагодження"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:686
+#: data/core/help.cfg:692
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3534,7 +3930,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:689
+#: data/core/help.cfg:695
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3545,7 +3941,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:692
+#: data/core/help.cfg:698
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3556,7 +3952,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:695
+#: data/core/help.cfg:701
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3567,7 +3963,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:698
+#: data/core/help.cfg:704
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3578,7 +3974,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:701
+#: data/core/help.cfg:707
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3589,7 +3985,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:704
+#: data/core/help.cfg:710
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3600,7 +3996,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:707
+#: data/core/help.cfg:713
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3611,7 +4007,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:710
+#: data/core/help.cfg:716
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3623,7 +4019,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:713
+#: data/core/help.cfg:719
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3703,21 +4099,21 @@ msgstr ""
 "Цей боєць зцілює себе на 8 ЗД за хід. Якщо він отруєний, він замість "
 "зцілення лікує себе від отрути."
 
-#. [heals]: id=regenerates_4
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:83
 #, fuzzy
 #| msgid "regenerates"
 msgid "regenerates +4"
 msgstr "регенерує"
 
-#. [heals]: id=regenerates_4
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:84
 #, fuzzy
 #| msgid "female^regenerates"
 msgid "female^regenerates +4"
 msgstr "регенерує"
 
-#. [heals]: id=regenerates_4
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:85
 #, fuzzy
 #| msgid ""
@@ -4154,16 +4550,6 @@ msgstr "День"
 msgid "Midnight"
 msgstr "Північ"
 
-#. [time]: id=indoors
-#: data/core/macros/schedules.cfg:101
-msgid "Indoors"
-msgstr "В приміщенні"
-
-#. [time]: id=deep_underground
-#: data/core/macros/schedules.cfg:121
-msgid "Deep Underground"
-msgstr "Глибоке підземелля"
-
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:203
 msgid "Second Watch — First Hour"
@@ -4339,88 +4725,81 @@ msgstr "Довга ніч (3)"
 msgid "The Long Dark (4)"
 msgstr "Довга ніч (4)"
 
-#: data/core/macros/special-notes.cfg:3
-msgid ""
-"\n"
-"\n"
-"Special Notes:"
+#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:549
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
 msgstr ""
 "\n"
 "\n"
 "Спеціальні нотатки:"
 
-#: data/core/macros/special-notes.cfg:8
+#: data/core/macros/special-notes.cfg:15
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
 #| "over open water."
 msgid ""
-"\n"
-"• Spirits have very unusual resistances to damage, and move quite slowly "
-"over open water."
+"Spirits have very unusual resistances to damage, and move quite slowly over "
+"open water."
 msgstr ""
 " Духи мають дуже незвичайну опірність, і над відкритою водою рухаються "
 "досить повільно."
 
-#: data/core/macros/special-notes.cfg:12
+#: data/core/macros/special-notes.cfg:18
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
 #| "and even some to mundane creatures."
 msgid ""
-"\n"
-"• This unit’s arcane attack deals tremendous damage to magical creatures, "
-"and even some to mundane creatures."
+"This unit’s arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
 msgstr ""
 " Містична атака цього бійця завдає величезної шкоди магічним істотам і "
 "навіть деяку шкоду звичайним істотам."
 
-#: data/core/macros/special-notes.cfg:16
+#: data/core/macros/special-notes.cfg:21
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
-msgid ""
-"\n"
-"• This unit is capable of basic healing."
+msgid "This unit is capable of basic healing."
 msgstr " Цей боєць володіє основами зцілення."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:24
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
-msgid ""
-"\n"
-"• This unit is capable of rapid healing."
+msgid "This unit is capable of rapid healing."
 msgstr " Цей боєць швидко зцілюється."
 
-#: data/core/macros/special-notes.cfg:24
+#: data/core/macros/special-notes.cfg:27
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
 #| "poison."
 msgid ""
-"\n"
-"• This unit is capable of healing those around it, and curing them of poison."
+"This unit is capable of healing those around it, and curing them of poison."
 msgstr " Цей боєць здатний зцілювати сусідів і лікувати їх від отрути."
 
-#: data/core/macros/special-notes.cfg:28
+#: data/core/macros/special-notes.cfg:30
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
 #| "around it."
 msgid ""
-"\n"
-"• This unit is capable of neutralizing the effects of poison in units around "
+"This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr " Цей боєць здатний нейтралізувати дію отрути на бійців навколо нього."
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:33
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
 #| "stationed in a village."
 msgid ""
-"\n"
-"• This unit regenerates, which allows it to heal as though always stationed "
-"in a village."
+"This unit regenerates, which allows it to heal as though always stationed in "
+"a village."
 msgstr ""
 " Цей боєць регенерує здоров'я, що дозволяє йому відновлювати здоров'я так, "
 "ніби він завжди знаходиться в селі."
@@ -4431,290 +4810,276 @@ msgstr ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
 #| "while defending."
 msgid ""
-"\n"
-"• The steadiness of this unit reduces damage from some attacks, but only "
-"while defending."
+"The steadiness of this unit reduces damage from some attacks, but only while "
+"defending."
 msgstr ""
 " Стійкість цього бійця знижує отриману шкоду від деяких атак, але лише при "
 "захисті."
 
-#: data/core/macros/special-notes.cfg:40
+#: data/core/macros/special-notes.cfg:39
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
 #| "deal more damage in combat, though this only applies to units of lower "
 #| "level."
 msgid ""
-"\n"
-"• The leadership of this unit enables adjacent units of the same side to "
-"deal more damage in combat, though this only applies to units of lower level."
+"The leadership of this unit enables adjacent units of the same side to deal "
+"more damage in combat, though this only applies to units of lower level."
 msgstr ""
 " Лідерство цього бійця дозволяє сусіднім бійцям дружніх військ наносити "
 "більше шкоди в бою, хоча це працює лише з бійцями нижчого рівня."
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:42
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 #| "control and thus move unhindered around them."
 msgid ""
-"\n"
-"• This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
+"This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
 " Здібності авангардиста дозволяють цьому бійцеві ігнорувати зони контролю "
 "ворогів і проходити повз них безперешкодно."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:45
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
-msgid ""
-"\n"
-"• Illumination increases the lighting level in adjacent areas."
+msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " Освітлення підвищує рівень світла в суміжних полях."
 
-#: data/core/macros/special-notes.cfg:52
+#: data/core/macros/special-notes.cfg:48
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
 #| "controlled by its side."
 msgid ""
-"\n"
-"• This unit can use one move to teleport between any two empty villages "
+"This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
 " Цей боєць може використати один хід, щоб телепортуватися між двома "
 "порожніми селами, що належать його стороні."
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:51
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
 #| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
-"\n"
-"• In woodlands, this unit’s ambush skill renders it invisible to enemies "
+"In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
 " У лісі цей боєць може замаскуватися і стати невидимим для ворога до тих "
 "пір, поки ворог не стане поряд з ним, чи боєць не виявить себе атакою."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:54
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
-msgid ""
-"\n"
-"• This unit is able to hide at night, leaving no trace of its presence."
+msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 " Цей боєць вміє ховатися в ночі, не залишаючи слідів своєї присутності."
 
-#: data/core/macros/special-notes.cfg:64
+#: data/core/macros/special-notes.cfg:57
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
 #| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
-"\n"
-"• This unit can hide in villages (with the exception of water villages), and "
+"This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
 " Цей боєць може ховатися в селах (за винятком водних) і залишатися "
 "непоміченим для противника, поки ворог не стане поряд."
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:60
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
 #| "surface."
 msgid ""
-"\n"
-"• This unit can move unseen in deep water, requiring no air from the surface."
+"This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 " Цей боєць може пересуватися непоміченим в глибокій воді, йому не треба "
 "повітря для дихання."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:63
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
 #| "living unit."
 msgid ""
-"\n"
-"• This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
 " Цей боєць збільшує своє максимальне здоров'я на 1 кожного разу, коли вбиває "
 "живого ворога."
 
-#: data/core/macros/special-notes.cfg:76
+#: data/core/macros/special-notes.cfg:66
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
 #| "attack until either it or its enemy lies dead."
 msgid ""
-"\n"
-"• Whenever its berserk attack is used, this unit continues to push the "
-"attack until either it or its enemy lies dead."
+"Whenever its berserk attack is used, this unit continues to push the attack "
+"until either it or its enemy lies dead."
 msgstr ""
 " Незалежно від того, захищається чи атакує берсерк, він завдаватиме ударів "
 "до тих пір, поки не буде вбитий він або його ворог."
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:69
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
 #| "while attacking it, this unit may backstab, inflicting double damage by "
 #| "creeping around behind that enemy."
 msgid ""
-"\n"
-"• If there is an enemy of the target on the opposite side of the target "
-"while attacking it, this unit may backstab, inflicting double damage by "
-"creeping around behind that enemy."
+"If there is an enemy of the target on the opposite side of the target while "
+"attacking it, this unit may backstab, inflicting double damage by creeping "
+"around behind that enemy."
 msgstr ""
 " Якщо при атаці хто-небудь із союзників стоїть навпроти противника, цей "
 "боєць може крадькома ударити в спину, заподіявши подвійну шкоду."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:72
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
 #| "they are standing on a village."
 msgid ""
-"\n"
-"• Foes who lose their life to the plague will rise again in unlife, unless "
+"Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
 " Вороги, що померли від чуми, будуть відроджені як мерці, якщо не "
 "знаходилися в селі."
 
-#: data/core/macros/special-notes.cfg:88
+#: data/core/macros/special-notes.cfg:75
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
 #| "attack damage until they end a turn."
 msgid ""
-"\n"
-"• This unit is able to slow its enemies, halving their movement speed and "
+"This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
 " Цей боєць здатний уповільнювати ворогів, удвічі зменшуючи швидкість "
 "пересування і шкоду від атаки до його наступного ходу."
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:78
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
 #| "dangerous."
 msgid ""
-"\n"
-"• The ability to turn the living to stone makes this unit extremely "
-"dangerous."
+"The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 " Здатність перетворювати живих в камінь робить цього бійця дуже небезпечним."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:81
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
 #| "enemies, but only on the attack."
 msgid ""
-"\n"
-"• This unit’s marksmanship gives it a high chance of hitting targeted "
-"enemies, but only on the attack."
+"This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
+"but only on the attack."
 msgstr ""
 " Висока точність стрільби цього бійця дає високі шанси вразити мішень, але "
 "лише при нападі."
 
-#: data/core/macros/special-notes.cfg:100
+#: data/core/macros/special-notes.cfg:84
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
 #| "hitting an opponent."
 msgid ""
-"\n"
-"• This unit has magical attacks, which always have a high chance of hitting "
-"an opponent."
+"This unit has magical attacks, which always have a high chance of hitting an "
+"opponent."
 msgstr ""
 " Цей боєць володіє магічними атаками, які завжди мають високу вірогідність "
 "враження противника."
 
-#: data/core/macros/special-notes.cfg:104
+#: data/core/macros/special-notes.cfg:87
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
 #| "members are wounded."
 msgid ""
-"\n"
-"• The swarming attacks of this unit become less deadly whenever its members "
+"The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr " При пораненні ройова атака цього бійця стає менш убивчою."
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:90
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
 #| "does not affect defensive retaliation."
 msgid ""
-"\n"
-"• Using a charging attack doubles both damage dealt and received; this does "
+"Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
 " Атака наскоком подвоює нанесену та отриману шкоду. Це не діє при ударі в "
 "стані оборони."
 
-#: data/core/macros/special-notes.cfg:112
+#: data/core/macros/special-notes.cfg:93
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
 #| "health."
 msgid ""
-"\n"
-"• During battle, this unit can drain life from victims to renew its own "
-"health."
+"During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
 " Під час битви цей боєць здатний висмоктувати життєві сили у жертви, "
 "збільшуючи власне здоров'я."
 
-#: data/core/macros/special-notes.cfg:116
+#: data/core/macros/special-notes.cfg:96
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
 #| "even in defense."
 msgid ""
-"\n"
-"• The length of this unit’s weapon allows it to strike first in melee, even "
-"in defense."
+"The length of this unit’s weapon allows it to strike first in melee, even in "
+"defense."
 msgstr ""
 " Довжина зброї цього бійця дозволяє йому завдавати удару першим, навіть в "
 "обороні."
 
-#: data/core/macros/special-notes.cfg:120
+#: data/core/macros/special-notes.cfg:99
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
 #| "they can be cured in town or by a unit which cures."
 msgid ""
-"\n"
-"• The victims of this unit’s poison will continually take damage until they "
+"The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
 " Жертви отрути цього бійця постійно втрачатимуть здоров'я, поки не будуть "
 "вилікувані в селі або лікарем."
 
-#: data/core/macros/special-notes.cfg:124
+#: data/core/macros/special-notes.cfg:102
 #, fuzzy
 #| msgid ""
 #| " This unit has a defense cap on certain terrain types — it cannot achieve "
 #| "a higher defense rating on mixed terrains with such terrain types."
 msgid ""
-"\n"
-"• This unit has a defense cap on certain terrain types — it cannot achieve a "
+"This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 " Цей боєць має поріг захисту на деяких типах місцевостей — на змішаних типах "
 "місцевості (які включають в себе ці місцевості) його захист не може "
 "перевищити цього порогу."
+
+#. [special_note]
+#: data/core/macros/special-notes.cfg:156
+#, fuzzy
+#| msgid ""
+#| " This unit regenerates, which allows it to heal as though always "
+#| "stationed in a village."
+msgid ""
+"This unit heals itself each turn, though not as much as if stationed in a "
+"village."
+msgstr ""
+" Цей боєць регенерує здоров'я, що дозволяє йому відновлювати здоров'я так, "
+"ніби він завжди знаходиться в селі."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6538,10 +6903,47 @@ msgstr "Тролі"
 
 #. [race]: id=troll
 #: data/core/units.cfg:334
+#, fuzzy
+#| msgid ""
+#| "Trolls are ancient creatures, one of the oldest known races known to "
+#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
+#| "live extremely long lives inside deep caves or atop high mountains. The "
+#| "most unique characteristic of trolls is an internal vitality that "
+#| "sustains and heals them from within. As a result they live very different "
+#| "lives from almost any known creature. Trolls have few real needs: they "
+#| "require little food or water, and thus they have little incentive to "
+#| "pursue much besides protection from those who are hostile towards them. "
+#| "This in turn means they rarely have to worry about anything and can spend "
+#| "much of their time sleeping or in contemplation. Trolls have a curious "
+#| "affinity with nature. They do not relate with living things like elves "
+#| "do, but instead with earth and stone. They are also somewhat curious of "
+#| "their surroundings and many younger whelps even enjoy traveling and "
+#| "seeing the world. As trolls grow older they tend to become increasingly "
+#| "passive, gradually losing interest in their environment and spending more "
+#| "of their time sleeping in a quiet, familiar corner of their home cave. "
+#| "This is until they finally pass away as their bodies themselves slowly "
+#| "turn into lifeless statues of stone.\n"
+#| "\n"
+#| "Trolls are seen by many as being little more than yet another race of "
+#| "savage monsters. This common misconception is in part perpetuated by orcs "
+#| "to persuade trolls to join their armies. Because they are rather simple "
+#| "and do not understand the ways of other races or sometimes cannot even "
+#| "tell them apart, it is usually easy for an orcish band to convince a "
+#| "group of trolls that by joining them they get to exact revenge on those "
+#| "that have before hunted them. These new recruits are then directed to "
+#| "attack whoever the orcs themselves are currently in conflict with, "
+#| "whether previously a foe of the trolls or not, accumulating even more "
+#| "enemies for the misled trolls. The most common enemy of trolls are "
+#| "dwarves, and the animosity between these two races is ancient.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "Trolls have inhabited the mountains of the Great Continent longer than "
+#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
+#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
-"the Great Continent. They are large, slow, simple-minded, and live extremely "
-"long lives inside deep caves or atop high mountains. The most unique "
+"the Great Continent. They are large, slow, simple, and live extremely long "
+"lives inside deep caves or atop high mountains. The most unique "
 "characteristic of trolls is an internal vitality that sustains and heals "
 "them from within. As a result they live very different lives from almost any "
 "known creature. Trolls have few real needs: they require little food or "
@@ -6834,17 +7236,318 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 максимум ЗД"
 
-#: src/help/help.cpp:181
+#: src/help/help.cpp:180
 msgid "Close"
 msgstr "Закрити"
 
-#: src/help/help.cpp:184
+#: src/help/help.cpp:183
 msgid "The Battle for Wesnoth Help"
 msgstr "Довідка гри Битва за Веснот"
 
-#: src/help/help.cpp:241
-msgid "Parse error when parsing help text: "
+#: src/help/help.cpp:237 src/help/help.cpp:241
+#, fuzzy
+#| msgid "Parse error when parsing help text: "
+msgid "Parse error when parsing help text:"
 msgstr "Синтаксична помилка при читанні довідки: "
+
+#: src/help/help_topic_generators.cpp:64
+msgid "Best of"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:64
+msgid "Worst of"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:157
+#, fuzzy
+#| msgid "Terrain"
+msgid "Base Terrain: "
+msgstr "Місцевість"
+
+#: src/help/help_topic_generators.cpp:177
+#, fuzzy
+#| msgid "Movement Cost"
+msgid "Movement properties: "
+msgstr "Ціна ходу"
+
+#: src/help/help_topic_generators.cpp:181
+msgid "Defense properties: "
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:261
+#, fuzzy
+#| msgid "level"
+msgid "Level"
+msgstr "рівень"
+
+#: src/help/help_topic_generators.cpp:322
+msgid "Advances from: "
+msgstr "Просувається від: "
+
+#: src/help/help_topic_generators.cpp:324
+#, fuzzy
+#| msgid "Advances from: "
+msgid "Advances to: "
+msgstr "Просувається від: "
+
+#: src/help/help_topic_generators.cpp:353
+msgid "Base unit: "
+msgstr "Базовий боєць:"
+
+#: src/help/help_topic_generators.cpp:358
+#, fuzzy
+#| msgid "Base unit: "
+msgid "Base units: "
+msgstr "Базовий боєць:"
+
+#: src/help/help_topic_generators.cpp:376
+msgid "Variations: "
+msgstr "Варіації: "
+
+#: src/help/help_topic_generators.cpp:400
+msgid "race^Miscellaneous"
+msgstr "Різні"
+
+#: src/help/help_topic_generators.cpp:402
+msgid "Race: "
+msgstr "Раса: "
+
+#: src/help/help_topic_generators.cpp:472
+msgid "Abilities: "
+msgstr "Здібності: "
+
+#: src/help/help_topic_generators.cpp:490
+msgid "Ability Upgrades: "
+msgstr "Поліпшення здібності: "
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:512
+#, fuzzy
+#| msgid "HP: "
+msgid "HP:"
+msgstr "ЗД: "
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:516
+#, fuzzy
+#| msgid "Moves: "
+msgid "Moves:"
+msgstr "Ходів: "
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:521
+#, fuzzy
+#| msgid "Vision: "
+msgid "Vision:"
+msgstr "Бачення: "
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:527
+#, fuzzy
+#| msgid "Jamming: "
+msgid "Jamming:"
+msgstr "Заклинювання: "
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:532
+#, fuzzy
+#| msgid "Cost: "
+msgid "Cost:"
+msgstr "Ціна: "
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
+#. unpleasant line breaks (issue #3256).
+#: src/help/help_topic_generators.cpp:536
+#, fuzzy
+#| msgid "Alignment: "
+msgid "Alignment:"
+msgstr "Групування: "
+
+#. TRANSLATORS: This string is used in the help page of a single unit.  It uses
+#. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
+#. translation use non-breaking spaces as appropriate for the target language.
+#: src/help/help_topic_generators.cpp:543
+#, fuzzy
+#| msgid "Required XP: "
+msgid "Required XP:"
+msgstr "Необхідний ДВ: "
+
+#: src/help/help_topic_generators.cpp:558
+msgid "unit help^Attacks"
+msgstr "Атаки"
+
+#: src/help/help_topic_generators.cpp:565
+msgid "unit help^Name"
+msgstr "Ім'я"
+
+#: src/help/help_topic_generators.cpp:566
+msgid "Strikes"
+msgstr "Удари"
+
+#: src/help/help_topic_generators.cpp:567
+msgid "Range"
+msgstr "Дальність"
+
+#: src/help/help_topic_generators.cpp:568
+msgid "Type"
+msgstr "Тип"
+
+#: src/help/help_topic_generators.cpp:569
+msgid "Special"
+msgstr "Спеціальне"
+
+#: src/help/help_topic_generators.cpp:647
+msgid "Resistances"
+msgstr "Опірності"
+
+#: src/help/help_topic_generators.cpp:651
+msgid "Attack Type"
+msgstr "Тип атаки"
+
+#: src/help/help_topic_generators.cpp:652
+msgid "Resistance"
+msgstr "Опір"
+
+#: src/help/help_topic_generators.cpp:681
+#, fuzzy
+#| msgid "Terrain Editor"
+msgid "Terrain Modifiers"
+msgstr "Редактор місцевості"
+
+#: src/help/help_topic_generators.cpp:685
+msgid "Terrain"
+msgstr "Місцевість"
+
+#: src/help/help_topic_generators.cpp:686
+msgid "Defense"
+msgstr "Захист"
+
+#: src/help/help_topic_generators.cpp:687
+msgid "Movement Cost"
+msgstr "Ціна ходу"
+
+#: src/help/help_topic_generators.cpp:691
+#, fuzzy
+#| msgid "Defense"
+msgid "Defense Cap"
+msgstr "Захист"
+
+#: src/help/help_topic_generators.cpp:696
+msgid "Vision Cost"
+msgstr "Ціна бачення"
+
+#: src/help/help_topic_generators.cpp:700
+msgid "Jamming Cost"
+msgstr "Ціна заклинювання"
+
+#~ msgid "Editor Brush"
+#~ msgstr "Пензлі редактора"
+
+#~ msgid "Terrain Clipboard"
+#~ msgstr "Буфер обміну для місцевості"
+
+#~ msgid ""
+#~ "Paint terrain tiles on the map.\n"
+#~ "\n"
+#~ "The paint tool utilizes the brushes and the terrain palette."
+#~ msgstr ""
+#~ "Малює клітинки місцевості на карті.\n"
+#~ "\n"
+#~ "Інструмент малювання використовує пензлі та палітру місцевостей."
+
+#~ msgid ""
+#~ "Fill continuous regions of terrain with a different one!\n"
+#~ "\n"
+#~ "The fill tool utilizes the terrain palette."
+#~ msgstr ""
+#~ "Заповнює один суцільний регіон певної місцевості іншою!\n"
+#~ "\n"
+#~ "Інструмент заповнення використовує палітру місцевостей."
+
+#~ msgid ""
+#~ "Selects a set of hex fields. The best tool ever!\n"
+#~ "\n"
+#~ "This tool utilizes the brushes."
+#~ msgstr ""
+#~ "Вибирає набір клітинок. Найкращий інструмент!\n"
+#~ "\n"
+#~ "Цей інструмент використовує пензлі."
+
+#~ msgid "Paste Tool"
+#~ msgstr "Інструмент вставки"
+
+#~ msgid "Paste the terrain in the clipboard"
+#~ msgstr "Вставляє місцевість до буфера обміну"
+
+#~ msgid ""
+#~ "Defines the side leader starting position\n"
+#~ "\n"
+#~ "This tool sets the side leaders' default starting locations, and named "
+#~ "special locations."
+#~ msgstr ""
+#~ "Визначає початкові позиції для лідерів сторін\n"
+#~ "\n"
+#~ "Цей інструмент встановлює типові стартові клітинки для лідерів та називає "
+#~ "спеціальні локації."
+
+#~ msgid ""
+#~ "Wesnoth's Map and Scenario Editor allows users to create and edit the "
+#~ "maps on which every Wesnoth scenario takes place. It also provides a "
+#~ "limited set of features for setting up a basic scenario.\n"
+#~ "\n"
+#~ "The editor can be launched from the <italic>text='Map Editor'</italic>"
+#~ msgstr ""
+#~ "Редактор карт та сценаріїв Весноту дозволяє користувачам створювати та "
+#~ "редагувати карти, на яких грається кожен сценарій Весноту. Також "
+#~ "надаються обмежені інструменти для налаштування простого сценарію.\n"
+#~ "\n"
+#~ "Редактор можна запустити, натиснувши <italic>text='Редактор карт'</italic>"
+
+#~ msgid ""
+#~ " option at the title screen.\n"
+#~ "\n"
+#~ "<header>text='What you get'</header>"
+#~ msgstr ""
+#~ " у головному меню.\n"
+#~ "\n"
+#~ "<header>text='Що там є'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Creator Resources'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Pure Map Mode'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Ресурси творця'</header>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Scenario Mode'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Режим Сценарій'</header>"
+
+#~ msgid "Scenario Format"
+#~ msgstr "Формат сценаріїв"
 
 #, fuzzy
 #~| msgid ""
@@ -7239,103 +7942,6 @@ msgstr "Синтаксична помилка при читанні довідк
 
 #~ msgid "Factions are only used in multiplayer"
 #~ msgstr "Фракції є лише в мультиплеєрі"
-
-#, fuzzy
-#~| msgid "Terrain"
-#~ msgid "Base Terrain: "
-#~ msgstr "Місцевість"
-
-#~ msgid "level"
-#~ msgstr "рівень"
-
-#~ msgid "Advances from: "
-#~ msgstr "Просувається від: "
-
-#~ msgid "Base unit: "
-#~ msgstr "Базовий боєць:"
-
-#, fuzzy
-#~| msgid "Base unit: "
-#~ msgid "Base units: "
-#~ msgstr "Базовий боєць:"
-
-#~ msgid "Variations: "
-#~ msgstr "Варіації: "
-
-#~ msgid "race^Miscellaneous"
-#~ msgstr "Різні"
-
-#~ msgid "Race: "
-#~ msgstr "Раса: "
-
-#~ msgid "Abilities: "
-#~ msgstr "Здібності: "
-
-#~ msgid "Ability Upgrades: "
-#~ msgstr "Поліпшення здібності: "
-
-#~ msgid "HP: "
-#~ msgstr "ЗД: "
-
-#~ msgid "Moves: "
-#~ msgstr "Ходів: "
-
-#~ msgid "Vision: "
-#~ msgstr "Бачення: "
-
-#~ msgid "Jamming: "
-#~ msgstr "Заклинювання: "
-
-#~ msgid "Cost: "
-#~ msgstr "Ціна: "
-
-#~ msgid "Alignment: "
-#~ msgstr "Групування: "
-
-#~ msgid "Required XP: "
-#~ msgstr "Необхідний ДВ: "
-
-#~ msgid "unit help^Attacks"
-#~ msgstr "Атаки"
-
-#~ msgid "unit help^Name"
-#~ msgstr "Ім'я"
-
-#~ msgid "Type"
-#~ msgstr "Тип"
-
-#~ msgid "Strikes"
-#~ msgstr "Удари"
-
-#~ msgid "Range"
-#~ msgstr "Дальність"
-
-#~ msgid "Special"
-#~ msgstr "Спеціальне"
-
-#~ msgid "Resistances"
-#~ msgstr "Опірності"
-
-#~ msgid "Attack Type"
-#~ msgstr "Тип атаки"
-
-#~ msgid "Resistance"
-#~ msgstr "Опір"
-
-#~ msgid "Terrain"
-#~ msgstr "Місцевість"
-
-#~ msgid "Defense"
-#~ msgstr "Захист"
-
-#~ msgid "Movement Cost"
-#~ msgstr "Ціна ходу"
-
-#~ msgid "Vision Cost"
-#~ msgstr "Ціна бачення"
-
-#~ msgid "Jamming Cost"
-#~ msgstr "Ціна заклинювання"
 
 #~ msgid " < Back"
 #~ msgstr " < Назад"
