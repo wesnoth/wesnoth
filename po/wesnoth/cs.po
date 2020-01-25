@@ -1,7 +1,7 @@
 # translation of wesnoth.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2019 Wesnoth development team
+# Copyright (C) 2004 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -11,15 +11,15 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007, 2010.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
-# Michal Žejdl <lachim@emer.cz>, 2019.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-10-15 04:28+0200\n"
+"PO-Revision-Date: 2020-01-25 15:00+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Gtranslator 3.30.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -190,7 +190,7 @@ msgstr "Vybrat barvy orbů"
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:156
 msgid "Logging"
-msgstr "Logování"
+msgstr "Zaznamenávání"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:162
@@ -909,7 +909,7 @@ msgstr "Runové kladivo"
 #. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
-msgstr "Posvěcená voda"
+msgstr "Svěcená voda"
 
 #. [item]: id=key
 #: data/core/editor/items.cfg:288
@@ -1640,10 +1640,8 @@ msgid "holy water^Leave it"
 msgstr "Nech ji zde"
 
 #: data/core/macros/items.cfg:276
-#, fuzzy
-#| msgid "I am not suited to the use of this item! Let another take it."
 msgid "$unit.name has no need for this Holy Water! Let another take it."
-msgstr "Nedokáži použít tento předmět! Ať ho vezme někdo jiný."
+msgstr "$unit.name nepotřebuje tuto svěcenou vodu! Ať ji vezme někdo jiný."
 
 #. [object]
 #: data/core/macros/items.cfg:281
@@ -3642,7 +3640,7 @@ msgstr "Wesnoth (Výchozí)"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr "Standartní jádro Wesnothu."
+msgstr "Standardní jádro Wesnothu."
 
 #. [language]
 #: data/english.cfg:3
@@ -4183,7 +4181,7 @@ msgstr "Druh pohledu"
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:530
 msgid "Continue Play"
-msgstr "Pokračovat v přehrávání"
+msgstr "Hrát dál"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:531
@@ -4208,12 +4206,12 @@ msgstr "pozastavit"
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
 msgid "theme^Classic"
-msgstr "Klasické"
+msgstr "Klasický"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:13
 msgid "The classic, pre-1.12 theme"
-msgstr "Klasické téma z doby před verzí 1.12"
+msgstr "Klasický motiv z doby před verzí 1.12"
 
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:86 data/themes/cutscene.cfg:37
@@ -4230,7 +4228,7 @@ msgstr "Akce"
 #: data/themes/classic.cfg:120 data/themes/cutscene.cfg:53
 #: data/themes/default.cfg:131
 msgid "End Turn"
-msgstr "Ukonči kolo"
+msgstr "Ukončit kolo"
 
 # !!!!
 #. [action]: id=button-endturn
@@ -4339,8 +4337,8 @@ msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Abyste mohli použít pokročilé vlastnosti, vyberte v menu <i>Soubor</i> "
-"možnost <i>Nový scénář</i>."
+"Abyste mohli v editoru map použít pokročilé prvky, vyberte v menu <i>Soubor</"
+"i> možnost <i>Nový scénář</i>."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -4348,8 +4346,8 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"Scénáře uložené v editoru do výchozího umístění můžete vybrat v sekci "
-"<i>Uživatelský scénář</i> při vytváření nové hry pro více hráčů."
+"Scénáře uložené v editoru do výchozího umístění můžete vybrat v sekci "
+"<i>Vlastní scénáře</i> při vytváření nové hry pro více hráčů."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -4436,9 +4434,10 @@ msgid ""
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
-"Příkazy pro verbování a přivolávání je možno aktivovat i z menu po kliknutí "
-"pravým tlačítkem na políčko hradu. To vám umožní přesně určit, kam umístit "
-"novou jednotku, což někdy může pomoci — například získat vesnici o tah dříve."
+"Příkazy pro <b>verbování</b> a <b>přivolávání</b> je možno aktivovat i z "
+"menu po kliknutí pravým tlačítkem na políčko hradu. To vám umožní přesně "
+"určit, kam umístit novou jednotku, což někdy může pomoci — například získat "
+"vesnici o tah dříve."
 
 #. [tip]
 #: data/tips.cfg:36
@@ -4448,7 +4447,7 @@ msgid ""
 "you are doing in comparison."
 msgstr ""
 "Z hlavního menu lze otevřít několik užitečných souhrnů: například "
-"„<b>Přehledová tabulka</b>“ přehledně ukazuje, jak si vedete ve srovnání s "
+"<b>Přehledová tabulka</b> přehledně ukazuje, jak si vedete ve srovnání s "
 "nepřítelem ohledně financí a velikosti armády."
 
 #. [tip]
@@ -4458,9 +4457,9 @@ msgid ""
 "can be very important when moving through difficult terrain such as water or "
 "caves. It can make the difference between being able to move one hex or two."
 msgstr ""
-"Jednotky s vlastností „<i>rychlý</i>“ mohou dojít o jedno políčko za tah "
-"dále. Při pohybu členitým terénem jako jeskyně nebo voda to může "
-"představovat podstatnou výhodu celého jednoho hexu."
+"Jednotky s vlastností <i>rychlý</i> mohou dojít o jedno políčko za tah dále. "
+"Při pohybu členitým terénem jako jeskyně nebo voda to může představovat "
+"podstatnou výhodu celého jednoho hexu."
 
 #. [tip]
 #: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:226 data/tips.cfg:238
@@ -4474,8 +4473,8 @@ msgid ""
 "the <b>Help</b> screen carefully. Details become important as scenarios get "
 "harder!"
 msgstr ""
-"Až dohrajete vašich prvních pár scénářů, přečtěte si sekci „<b>Pravidla hry</"
-"b>“ v nápovědě. Jak se scénáře stávají těžšími, záleží na detailech čím dál "
+"Až dohrajete vašich prvních pár scénářů, přečtěte si sekci <b>Pravidla hry</"
+"b> v nápovědě. Jak se scénáře stávají těžšími, záleží na detailech čím dál "
 "více!"
 
 #. [tip]
@@ -4542,9 +4541,9 @@ msgid ""
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
 "Pokud hrajete se zapnutou <b>mlhou</b> či <b>zahalením tmou</b>, není jasné, "
-"proti čemu stojíte. V takovém případě se velmi hodí průzkumné jednotky s "
-"velkou rychlostí pohybu. Oblast, kterou jednotka vidí, odpovídá tomu kam "
-"dojde v příštím tahu, takže je vhodné uvážit i rychlost pohybu na různých "
+"proti čemu stojíte. V takovém případě se velmi hodí průzkumné jednotky "
+"s velkou rychlostí pohybu. Oblast, kterou jednotka vidí, odpovídá tomu, kam "
+"dojde v příštím tahu, takže je vhodné uvážit i rychlost pohybu na různých "
 "terénech pro co největší rozhled."
 
 #. [tip]
@@ -4557,10 +4556,10 @@ msgid ""
 "affect it the most."
 msgstr ""
 "Existuje šest druhů útoku: <i>čepelí</i>, <i>bodnutím</i>, <i>úderem</i>, "
-"<i>ohněm</i>, <i>chladem</i> a <i>nezemský</i> útok. Různé jednotky jsou "
+"<i>ohněm</i>, <i>chladem</i> a <i>nezemský</i> útok. Různé jednotky jsou "
 "snadno zranitelné různými typy útoku. Klikni na jednotku pravým tlačítkem "
-"myši a vyber „<b>Popis jednotky</b>“ pro zobrazení informací, jak je "
-"jednotka odolná vůči jednotlivým typům útoku."
+"myši a vyber <b>Popis jednotky</b> pro zobrazení informací, jak je jednotka "
+"odolná vůči jednotlivým typům útoku."
 
 #. [tip]
 #: data/tips.cfg:72
@@ -4570,9 +4569,9 @@ msgid ""
 "in the currently selected terrain is displayed in the top right corner of "
 "the screen."
 msgstr ""
-"Terén, ve kterém jsou tvé jednotky, určuje šanci, že je tvůj soupeř v bitvě "
-"zasáhne. Hodnocení obrany právě vybrané jednotky v právě vybraném terénu se "
-"zobrazuje v pravém horním rohu obrazovky."
+"Terén, ve kterém jsou tvé jednotky, určuje šanci, že je tvůj soupeř v bitvě "
+"zasáhne. Hodnocení obrany právě vybrané jednotky v právě vybraném terénu se "
+"zobrazuje v pravém horním rohu obrazovky."
 
 #. [tip]
 #: data/tips.cfg:76
@@ -4583,11 +4582,11 @@ msgid ""
 "poison will not be removed unless the unit regenerates, or begins a turn in "
 "a village or next to a unit with the <i>Cures</i> ability."
 msgstr ""
-"Otrávené jednotky ztrácejí každé kolo 8 životů, dokud jim nezbude jeden "
-"jediný. Tak zůstanou až do doby, než jsou uzdraveny. Léčitelé mohou pozdržet "
-"účinky jedu, ale jed odstraní pouze schopnost „<i>regenerace</i>“, pobyt na "
-"začátku kola ve vesnici nebo vedle jednotky se schopností „<i>uzdravování</"
-"i>“."
+"Otrávené jednotky ztrácejí každé kolo osm bodů života, dokud jim nezbude "
+"jeden jediný. Pak zůstanou na prahu smrti až do doby, než jsou uzdraveny. "
+"Léčitelé mohou pozdržet účinky jedu, ale jed odstraní pouze schopnost "
+"<i>regenerace</i>, pobyt na začátku kola ve vesnici nebo vedle jednotky se "
+"schopností <i>uzdravování</i>."
 
 #. [tip]
 #: data/tips.cfg:80
@@ -4596,9 +4595,9 @@ msgid ""
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"Můžeš využívat jednotky z minulých scénářů vybráním „<b>Přivolej</b>“ z menu "
-"„<b>Akce</b>“. Přivoláváním stále stejných jednotek znovu a znovu lze "
-"vybudovat silnou a zkušenou armádu."
+"Můžeš využívat jednotky z minulých scénářů vybráním <b>Přivolej</b> z menu "
+"<b>Akce</b>. Přivoláváním stále stejných jednotek znovu a znovu lze "
+"vybudovat silnou a zkušenou armádu."
 
 #. [tip]
 #: data/tips.cfg:84
@@ -4609,12 +4608,11 @@ msgid ""
 "between them and still create a barrier to the enemy. Beware, though: "
 "skirmishers can pass through these gaps."
 msgstr ""
-"Všechny jednotky mají <i>oblast kontroly</i> skládající se ze sousedních "
-"políček. Pokud se jednotka posune do oblasti kontroly nepřítele, nemůže se "
-"už v tomto kole pohnout dále. Znamená to také, že pro vytvoření neprůchodné "
-"linie stačí umístit jednotky dvě políčka od sebe. (Jednotky stupně 0 jsou "
-"pro vytvoření oblasti kontroly příliš slabé; průbojné jednotky jsou natolik "
-"obratné, že tyto oblasti ignorují.)"
+"Jednotky úrovně jedna a vyšší mají <i>oblast kontroly</i> skládající se ze "
+"sousedních políček. Pokud se jednotka posune do oblasti kontroly nepřítele, "
+"nemůže se už v tomto kole pohnout dále. Znamená to také, že pro vytvoření "
+"neprůchodné linie stačí umístit jednotky dvě políčka od sebe. Přesto pozor: "
+"průbojné jednotky jsou natolik obratné, že tyto oblasti ignorují."
 
 #. [tip]
 #: data/tips.cfg:88
@@ -4651,9 +4649,9 @@ msgid ""
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
-"Pokud to není zapotřebí, nepřesunuj raněné jednotky - nech je na místě. "
-"Jednotky, které se nepohnou ani neútočí během svého kola, odpočívají a "
-"uzdraví se na začátku příštího kola o dva životy."
+"Pokud to není zapotřebí, nepřesunuj raněné jednotky – nech je na místě. "
+"Jednotky, které se nepohnou ani neútočí během svého kola, odpočívají "
+"a uzdraví se na začátku příštího kola o dva životy."
 
 #. [tip]
 #: data/tips.cfg:100
@@ -4675,9 +4673,9 @@ msgid ""
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
-"Většina pěších jednotek se brání lépe ve vesnicích a hradech než ve většině "
-"ostatních terénů, zatímco většina jízdních jednotek nezískává ve vesnicích a "
-"hradech žádnou obrannou výhodu."
+"Většina pěších jednotek se brání lépe ve vesnicích a hradech než ve většině "
+"ostatních terénů, zatímco většina jízdních jednotek nezískává ve vesnicích "
+"a hradech žádnou obrannou výhodu."
 
 #. [tip]
 #: data/tips.cfg:105 data/tips.cfg:189
@@ -4718,8 +4716,8 @@ msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
-"Elfské jednotky se pohybují a bojují velmi dobře v lese. Trpasličí jednotky "
-"se pohybují a bojují velmi dobře v kopcích a horách."
+"Elfské jednotky se pohybují a bojují velmi dobře v lese. Trpasličí jednotky "
+"se pohybují a bojují velmi dobře v kopcích a horách."
 
 #. [tip]
 #: data/tips.cfg:120
@@ -4792,7 +4790,7 @@ msgid ""
 "the same side fight better. You can move these units slowly along your "
 "battle lines and give bonuses to large numbers of lower-level troops."
 msgstr ""
-"Jednotky se schopností „<i>velení</i>“ zlepšují bojové schopnosti jednotek "
+"Jednotky se schopností <i>velení</i> zlepšují bojové schopnosti jednotek "
 "nižší úrovně na sousedních polích. Posunováním velitelů podél početné linie "
 "jednotek nižší úrovně lze dosáhnout značné výhody."
 
@@ -4804,8 +4802,8 @@ msgid ""
 "village."
 msgstr ""
 "Zpravidla netáhni do těsné blízkosti neobsazené vesnice. Může se do ní "
-"přesunout nepřátelská jednotka a zaútočit na tebe, využívajíc přitom výhod "
-"vesnice - obranu a léčení."
+"přesunout nepřátelská jednotka a zaútočit na tebe, využívajíc přitom výhod "
+"vesnice – obranu a léčení."
 
 #. [tip]
 #: data/tips.cfg:152
@@ -4815,6 +4813,11 @@ msgid ""
 "villages unoccupied, but keep in mind that an enemy unit becomes much harder "
 "to dislodge from a village! Plan your movements accordingly."
 msgstr ""
+"Ať už se to týká jakéhokoli hráče, často je klíčem k vítězství ve scénáři "
+"ovládání vesnic. Této znalosti můžeš využít, abys vlákal své protivníky do "
+"pasti tím, že necháš některé vesnice neobsazené, ale měj na paměti, že "
+"vypudit nepřátelskou jednotku z vesnice je o moc těžší! Podle toho plánuj "
+"své přesuny."
 
 #. [tip]
 #: data/tips.cfg:153
@@ -4834,7 +4837,9 @@ msgstr "<i>― princezna Lisar, 515 YW</i>"
 #. [tip]
 #: data/tips.cfg:160
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "Přečti si seznam „<b>Klávesové zkratky</b>“ v menu <b>Nastavení</b>."
+msgstr ""
+"Přečti si seznam klávesových zkratek – <b>Klávesy</b> v menu <b>Nastavení</"
+"b>."
 
 #. [tip]
 #: data/tips.cfg:164
@@ -4860,7 +4865,7 @@ msgid ""
 "Use healers to support your attacks — they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Ber s sebou do útoků i léčitele — vyhrají tvé bitvy, aniž musí sami zaútočit."
+"Ber s sebou do útoků i léčitele – vyhrají tvé bitvy, aniž musí sami zaútočit."
 
 #. [tip]
 #: data/tips.cfg:173 data/tips.cfg:218
@@ -4873,7 +4878,7 @@ msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
 msgstr ""
-"Útok „<i>zpomalení</i>“ jednak zpomaluje pohyb nepřátelských jednotek, ale "
+"Útok <i>zpomalení</i> jednak zpomaluje pohyb nepřátelských jednotek, ale "
 "také zmenšuje poškození způsobená jakýmkoliv jejich útokem na polovinu, a to "
 "do konce kola."
 
@@ -4914,8 +4919,8 @@ msgid ""
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
-"Namísto povyšování mají jednotky na nejvyšší úrovni schopnost „<i>rozvoje po "
-"dosažení maximální úrovně</i>“ (<i>After Maximum Level Advancement — AMLA</"
+"Namísto povyšování mají jednotky na nejvyšší úrovni schopnost <i>rozvoje po "
+"dosažení maximální úrovně</i> (<i>After Maximum Level Advancement — AMLA</"
 "i>), která obvykle zvýší maximální počet životů o 3 a uzdraví je. Toto není "
 "velký zisk, a navíc každá dosažená AMLA ztíží podmínky pro dosažení další; "
 "proto je většinou vhodnější pokusit se povýšit jednotky nižší úrovně."
@@ -4956,8 +4961,8 @@ msgid ""
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
 "Pohyb odstraňující mlhu nebo zahalení tmou nelze vrátit. Pokud potřebujete "
-"přesouvat jednotky při zachování možnosti vracení, zapněte volbu „<b>Pozdrž "
-"překreslování mlhy</b>“ nebo využijte plánovací režim."
+"přesouvat jednotky při zachování možnosti vracení, zapněte volbu <b>Pozdrž "
+"překreslování mlhy</b> nebo využijte plánovací režim."
 
 #. [tip]
 #: data/tips.cfg:209
@@ -4977,8 +4982,8 @@ msgid ""
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
 "Ve vodě má dobrou obranu velmi málo jednotek. Linie jednotek podél vody "
-"dokáže nepříteli bojujícímu z ní způsobit těžké ztráty. Podobně lze využít i "
-"další rozhraní oblastí s nízkou a vysokou obranou - např. elfy v lese, "
+"dokáže nepříteli bojujícímu z ní způsobit těžké ztráty. Podobně lze využít "
+"i další rozhraní oblastí s nízkou a vysokou obranou – např. elfy v lese, "
 "trpaslíky na horách atd."
 
 #. [tip]
@@ -4993,9 +4998,9 @@ msgid ""
 msgstr ""
 "Schopnost <i>zpomalení</i> je velmi silná, neboť má nepřímo vliv na mnoho "
 "dalších efektů. Nepřátelští nemrtví získají <i>vysátím</i> pouze polovinu "
-"výhody, bonus za útok <i>zezadu</i> nebo s <i>výpadem</i> je zrušen, boje "
-"<i>na život a na smrt</i> jsou také slabší. Rychlí nepřátelé již neuniknou, "
-"pomalí se téměř nehnou, a tvé jednotky jsou méně zraněny při nepřátelské "
+"výhody, bonus za útok <i>zezadu</i> nebo s <i>výpadem</i> je zrušen, boje "
+"<i>na život a na smrt</i> jsou také slabší. Rychlí nepřátelé již neuniknou, "
+"pomalí se téměř nehnou a tvé jednotky jsou méně zraněny při nepřátelské "
 "obraně, takže je není třeba tolik uzdravovat."
 
 #. [tip]
@@ -5030,9 +5035,9 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
-"Před propuštěním jednotek ze seznamu pro přivolání se raději rozmysli. I "
-"kdyby jednotka neměla žádné zkušenosti, znalost jejích vlastností a možnost "
-"volby mají také svou cenu."
+"Před propuštěním jednotek ze seznamu pro přivolání se raději rozmysli. "
+"I kdyby jednotka neměla žádné zkušenosti, znalost jejích vlastností "
+"a možnost volby mají také svou cenu."
 
 #. [tip]
 #: data/tips.cfg:233
@@ -5057,9 +5062,9 @@ msgid ""
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
-"Kombnace několika speciláních schopností může být smrtící. I když bude "
+"Kombinace několika speciálních schopností může být smrtící. I když bude "
 "obtížnější připravit celou situaci, například současné použití <i>velení</"
-"i>, <i>osvětlení</i> a <i>výpadu</i> proti zpomalenému protivníkovi, účinky "
+"i>, <i>osvětlení</i> a <i>výpadu</i> proti zpomalenému protivníkovi, účinky "
 "mohou být naprosto drtivé."
 
 #. [tip]
@@ -5152,8 +5157,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "výběr povýšení"
 
@@ -5187,6 +5190,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "Nemáš vůdce, který by verboval či přivolával."
 
 #: src/actions/create.cpp:478
+#, fuzzy
+#| msgid "None of your leaders are able to recruit this unit."
 msgid "None of your leaders are able to recruit that unit."
 msgstr "Tuto jednotku není schopen naverbovat žádný ze Tvých vůdců."
 
@@ -5290,17 +5295,14 @@ msgid ""
 msgstr ""
 
 #: src/addon/client.cpp:168
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 msgstr ""
-"Rozšíření <i>$addon_title</i> obsahuje neplatný název souboru nebo složky a "
-"nebude instalováno."
+"Rozšíření <i>$addon_title</i> obsahuje soubory nebo adresáře s kolizí malých "
+"a velkých písmen. Názvy souborů nebo adresářů nesmí být shodné řetězce znaků "
+"lišící se pouze velikostí písmen."
 
 #: src/addon/client.cpp:180
 msgid "Sending add-on <i>$addon_title</i>..."
@@ -5323,16 +5325,12 @@ msgstr ""
 "nebude instalováno."
 
 #: src/addon/client.cpp:260
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
-"Rozšíření <i>$addon_title</i> obsahuje neplatný název souboru nebo složky a "
-"nebude instalováno."
+"Rozšíření <i>$addon_title</i> má názvy souborů nebo adresářů s kolizí malých "
+"a velkých písmen. To může způsobit problémy."
 
 #: src/addon/client.cpp:317
 msgid "The server responded with an error:"
@@ -5443,7 +5441,7 @@ msgstr "Modifikace"
 
 #: src/addon/info.cpp:174
 msgid "addon_type^Core"
-msgstr "Zdroje"
+msgstr "Jádro"
 
 #: src/addon/info.cpp:176
 msgid "addon_type^Resources"
@@ -5593,7 +5591,7 @@ msgstr "vyžaduji informace o uživateli $nick"
 
 #: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
-msgstr "(A) - administrátorský příkaz"
+msgstr "(A) – administrátorský příkaz"
 
 #: src/chat_command_handler.hpp:58 src/menu_events.cpp:1159
 msgid "(admin only)"
@@ -5827,21 +5825,21 @@ msgstr "Neplatná barva v rozsahu: "
 #: src/game_config_manager.cpp:201 src/game_config_manager.cpp:210
 #: src/game_config_manager.cpp:222
 msgid "Error validating data core."
-msgstr "Chyba při ověřování datového zdroje."
+msgstr "Chyba při ověřování datového jádra."
 
 #: src/game_config_manager.cpp:202
 msgid "Found a core without id attribute."
-msgstr "Nalezen zdroj bez atributu id."
+msgstr "Nalezeno jádro bez atributu id."
 
 #: src/game_config_manager.cpp:203 src/game_config_manager.cpp:213
 #: src/game_config_manager.cpp:226
 msgid "Skipping the core."
-msgstr "Vynechávání zdroje."
+msgstr "Vynechávání jádra."
 
 #: src/game_config_manager.cpp:211 src/game_config_manager.cpp:223
 #: src/game_config_manager.cpp:246
 msgid "Core ID: "
-msgstr "ID zdroje: "
+msgstr "ID jádra: "
 
 #: src/game_config_manager.cpp:212
 msgid "The ID is already in use."
@@ -5849,7 +5847,7 @@ msgstr "Toto ID už někdo používá."
 
 #: src/game_config_manager.cpp:224
 msgid "Core Path: "
-msgstr "Cesta ke zdroji: "
+msgstr "Cesta k jádru: "
 
 #: src/game_config_manager.cpp:225
 msgid "File not found."
@@ -5857,19 +5855,19 @@ msgstr "Soubor nenalezen."
 
 #: src/game_config_manager.cpp:245 src/game_config_manager.cpp:257
 msgid "Error loading core data."
-msgstr "Chyba při načítání zdrojových dat."
+msgstr "Chyba při načítání jaderných dat."
 
 #: src/game_config_manager.cpp:247
 msgid "Error loading the core with named id."
-msgstr "Chyba při načítání zdroje s pojmenovaným id."
+msgstr "Chyba při načítání jádra s pojmenovaným id."
 
 #: src/game_config_manager.cpp:248
 msgid "Falling back to the default core."
-msgstr "Použití výchozího zdroje."
+msgstr "Použití výchozího jádra."
 
 #: src/game_config_manager.cpp:258
 msgid "Can't locate the default core."
-msgstr "Nepodařilo se najít výchozí zdroj."
+msgstr "Nepodařilo se najít výchozí jádro."
 
 #: src/game_config_manager.cpp:259
 msgid "The game will now exit."
@@ -5889,7 +5887,7 @@ msgid ""
 "default core files."
 msgstr ""
 "Chyba při nahrávání konfiguračních souborů. Hra se načte za použití "
-"výchozích zdrojových souborů."
+"výchozích souborů jádra."
 
 #: src/game_config_manager.cpp:336
 msgid ""
@@ -6268,7 +6266,7 @@ msgstr "Zlata dohromady: "
 
 #: src/game_initialization/playcampaign.cpp:73
 msgid "Carryover percentage: "
-msgstr "Podíl přenesených peněz: "
+msgstr "Procento přenesených peněz: "
 
 #: src/game_initialization/playcampaign.cpp:76
 msgid "Bonus gold: "
@@ -6519,7 +6517,7 @@ msgstr "<header>text='Jednotky s touto schopností'</header>"
 
 #: src/help/help_impl.cpp:552
 msgid "Era:"
-msgstr "Věk:"
+msgstr "Éra:"
 
 #: src/help/help_impl.cpp:560
 msgid "Factions"
@@ -6552,7 +6550,7 @@ msgstr "Dostupnost: "
 
 #: src/help/help_impl.cpp:699
 msgid "Must-have"
-msgstr ""
+msgstr "Musí mít"
 
 #: src/help/help_impl.cpp:701
 msgid "Unavailable"
@@ -6910,43 +6908,60 @@ msgid "You have no units available to recruit."
 msgstr "Nemáš žádné jednotky k naverbování."
 
 #: src/menu_events.cpp:283
+#, fuzzy
+#| msgid "No unit recruited."
 msgid "No unit recruited"
-msgstr "Žádná jednotka nebyla naverbována"
+msgstr "Žádná jednotka nebyla naverbována."
 
 #: src/menu_events.cpp:315
+#, fuzzy
+#| msgid "You do not have enough gold to recruit this unit."
 msgid "You do not have enough gold to recruit that unit"
-msgstr "K naverbování této jednotky nemáš dost peněz"
+msgstr "K naverbování této jednotky nemáš dost peněz."
 
 #: src/menu_events.cpp:351
+#, fuzzy
+#| msgid "You are separated from your soldiers and may not recall them."
 msgid "You are separated from your soldiers and may not recall them"
-msgstr "Jsi oddělen od svých vojáků a nemůžeš je přivolat"
+msgstr "Jsi oddělen od svých vojáků a nemůžeš je přivolat."
 
 #: src/menu_events.cpp:370
+#, fuzzy
+#| msgid ""
+#| "There are no troops available to recall.\n"
+#| "(You must have veteran survivors from a previous scenario.)"
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"Nelze přivolat jednotky\n"
-"(musíš mít zkušené jednotky, které přežily předchozí scénář)."
+"Nelze přivolat jednotky.\n"
+"(Musíš mít zkušené jednotky, které přežily předchozí scénář.)"
 
 #: src/menu_events.cpp:374
+#, fuzzy
+#| msgid "You currently can't recall at the highlighted location."
 msgid "You currently can't recall at the highlighted location"
-msgstr "V tuto chvíli nelze ve vybraném umístění přivolávat"
+msgstr "V tuto chvíli nelze ve vybraném umístění přivolávat."
 
 #: src/menu_events.cpp:386
+#, fuzzy
+#| msgid "No unit recalled."
 msgid "No unit recalled"
-msgstr "Žádná jednotka nebyla přivolána"
+msgstr "Žádná jednotka nebyla přivolána."
 
 #: src/menu_events.cpp:403
+#, fuzzy
+#| msgid "You must have at least 1 gold piece to recall a unit."
+#| msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall this unit"
-msgstr[0] "K přivolání jednotky potřebuješ nejméně 1 zlaťák"
-msgstr[1] "K přivolání jednotky potřebuješ nejméně $cost zlaťáky"
-msgstr[2] "K přivolání jednotky potřebuješ nejméně $cost zlaťáků"
+msgstr[0] "K přivolání jednotky potřebuješ nejméně 1 zlaťák."
+msgstr[1] "K přivolání jednotky potřebuješ nejméně $cost zlaťáky."
+msgstr[2] "K přivolání jednotky potřebuješ nejméně $cost zlaťáků."
 
 #: src/menu_events.cpp:549
 msgid "You cannot end your turn yet!"
-msgstr "Ještě nelze ukončit tah!"
+msgstr "Ještě nemůžeš ukončit své kolo!"
 
 #: src/menu_events.cpp:564
 msgid ""
@@ -7007,7 +7022,7 @@ msgstr "Obnoví grafické rozhraní."
 
 #: src/menu_events.cpp:1190
 msgid "Switch a side to/from AI control."
-msgstr "Předá/odejme ovládání strany AI."
+msgstr "Předá/odejme ovládání strany umělé inteligenci."
 
 #: src/menu_events.cpp:1191
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
@@ -7168,8 +7183,14 @@ msgid "Show a scenario variable."
 msgstr "Zobrazí proměnnou stavu hry."
 
 #: src/menu_events.cpp:1242
+#, fuzzy
+#| msgid ""
+#| "Modify a unit variable. (Only top level keys are supported, and "
+#| "advances=<number>.)"
 msgid "Modify a unit variable. (Only top level keys are supported.)"
-msgstr "Upraví vlastnost jednotky (pouze na svrchní úrovni)."
+msgstr ""
+"Upravit proměnnou jednotky. (Podporovány jsou pouze klíče nejvyšší úrovně "
+"a advances=<číslo>.)"
 
 #: src/menu_events.cpp:1248
 msgid "Discover all units in help."
@@ -7660,7 +7681,7 @@ msgstr "Obrana: "
 
 #: src/reports.cpp:631 src/reports.cpp:632
 msgid "vision:"
-msgstr "vidění:"
+msgstr "rozhled:"
 
 #: src/reports.cpp:636 src/reports.cpp:637
 msgid "jamming:"
@@ -7826,16 +7847,28 @@ msgid "Units"
 msgstr "Jednotek"
 
 #: src/reports.cpp:1445
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. It is equal to "
+#| "the number of unit levels not supported by villages. The second is the "
+#| "total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
+"Výdaje na zaopatření tvého vojska vzniklé na konci každého kola. První číslo "
+"je množství zlatých, které bude odečteno. Je stejné, jako počet úrovní "
+"jednotek, které nejsou podporovány vesnicemi. Druhé číslo jsou celkové "
+"náklady na údržbu zahrnující ty, které jsou kryty vesnicemi – jinými slovy "
+"množství zlatých, které bude odečteno, pokud ztratíš všechny vesnice."
 
 #: src/reports.cpp:1445
 msgid "Upkeep"
-msgstr "Výdaje"
+msgstr "Údržba"
 
 #: src/reports.cpp:1482
 #, fuzzy
@@ -7844,10 +7877,16 @@ msgid "Income"
 msgstr "příjmy"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid ""
+#| "The net amount of gold you gain or lose each turn, taking into account "
+#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
+"Čisté množství zlatých, které každé kolo získáš nebo ztratíš s ohledem na "
+"příjem z ovládaných vesnic a platbu za údržbu."
 
 #: src/reports.cpp:1650
 msgid "Observers:"
@@ -8196,13 +8235,11 @@ msgstr "Tato denní doba je pouze útržek!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:378
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
-msgstr[0] "útok za kolo"
-msgstr[1] "útok za kolo"
-msgstr[2] "útok za kolo"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> poškození"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> poškození"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> poškození"
 
 #: src/units/attack_type.cpp:387
 msgid "$number damage"
@@ -8213,13 +8250,11 @@ msgstr[2] "$number poškození"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:396
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
-msgstr[0] "útok za kolo"
-msgstr[1] "útok za kolo"
-msgstr[2] "útok za kolo"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> úder"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> údery"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> úderů"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:405
@@ -8236,10 +8271,8 @@ msgstr "$number| přesnost"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:421
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
-msgstr "útok za kolo"
+msgstr "<span color=\"$color\">$number_or_percent|%</span> přesnost"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:428
@@ -8248,10 +8281,8 @@ msgstr "$number vykrývání"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:435
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
-msgstr "útok za kolo"
+msgstr "<span color=\"$color\">$number_or_percent</span> vykrývání"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:442
@@ -8263,13 +8294,11 @@ msgstr[2] "$number bodů pohybu"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:451
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "útok za kolo"
-msgstr[1] "útok za kolo"
-msgstr[2] "útok za kolo"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> bod pohybu"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> body pohybu"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> bodů pohybu"
 
 #: src/units/types.cpp:545 src/units/types.hpp:180
 msgid "chaotic"
@@ -8308,53 +8337,40 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/units/unit.cpp:1860
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
-msgstr "útok za kolo"
+msgstr "<span color=\"$color\">$number_or_percent</span> bodů života"
 
 #: src/units/unit.cpp:1870
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
-msgstr[0] "útok za kolo"
-msgstr[1] "útok za kolo"
-msgstr[2] "útok za kolo"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> krok"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> kroky"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> kroků"
 
 #: src/units/unit.cpp:1876
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
-msgstr "útok za kolo"
+msgstr "<span color=\"$color\">$number_or_percent</span> rozhled"
 
 #: src/units/unit.cpp:1880
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
-msgstr "útok za kolo"
+msgstr "<span color=\"$color\">$number_or_percent</span> rušení"
 
 #: src/units/unit.cpp:1885
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
-msgstr "útok za kolo"
+msgstr ""
+"<span color=\"$color\">$number_or_percent</span> bodů zkušenosti k postupu"
 
 #: src/units/unit.cpp:1889
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
-msgstr[0] "útok za kolo"
-msgstr[1] "útok za kolo"
-msgstr[2] "útok za kolo"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> útok za kolo"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> útoky za kolo"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoků za kolo"
 
 #: src/units/unit.cpp:1896
-#, fuzzy
-#| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
-msgstr "útok za kolo"
+msgstr "<span color=\"$color\">$number_or_percent</span> cena za přivolání"
 
 #: src/units/unit.cpp:2296
 msgid "$effect_description per level"
@@ -8434,6 +8450,18 @@ msgstr "Nastavení plánovacího módu"
 #~ msgstr[1] "(zbývají %d tahy)"
 #~ msgstr[2] "(zbývá %d tahů)"
 
+#~ msgid ""
+#~ "If a unit is positioned next to healers from two allied sides, the unit "
+#~ "will be healed on both sides’ turns. This way, a unit can be healed "
+#~ "faster than otherwise possible."
+#~ msgstr ""
+#~ "Pokud je jednotka umístěna vedle léčitelů ze dvou spojeneckých stran, "
+#~ "bude léčena v kolech obou stran. Takto může být jednotka léčena rychleji, "
+#~ "než by jinak bylo možné."
+
+#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
+#~ msgstr "<i>― Vank z Galunovy letky, 6 YW</i>"
+
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "registruji s heslem *** a bez e-mailové adresy"
 
@@ -8468,32 +8496,76 @@ msgstr "Nastavení plánovacího módu"
 #~ "Vyžádá seznam podrobností, které můžete nastavit pro vaši registrovanou "
 #~ "přezdívku."
 
-#, fuzzy
-#~| msgid "do not translate the on/off^[<side> [on/off]]"
+#~ msgid "Time of Day Schedule"
+#~ msgstr "Rozvrh denní doby"
+
+#~ msgid "Lawful Bonus:"
+#~ msgstr "Bonus zákonných:"
+
+#~ msgid "Neutral Bonus:"
+#~ msgstr "Bonus neutrálních:"
+
+#~ msgid "Chaotic Bonus:"
+#~ msgstr "Bonus chaotických:"
+
+#~ msgid "Liminal Bonus:"
+#~ msgstr "Bonus šerých:"
+
+#~ msgid "Internal error. Please report this as a bug! Details:\n"
+#~ msgstr "Vnitřní chyba. Prosím nahlaš to jako chybu programu! Podrobnosti:\n"
+
+#~ msgid "You cannot recruit a $unit_type_name at this time."
+#~ msgstr "V tuto chvíli nemůžeš verbovat jednotku $unit_type_name."
+
+#~ msgid ""
+#~ "At this point in your plan, you will not have enough gold to recruit this "
+#~ "unit."
+#~ msgstr ""
+#~ "V tomto bodě tvého plánu nebudeš mít dost zlata k naverbování této "
+#~ "jednotky."
+
+#~ msgid ""
+#~ "[<side> [on/off]]\n"
+#~ "“on” = enable control by the AI, “off” = side is controlled by the player"
+#~ msgstr ""
+#~ "[<strana> [on/off]]\n"
+#~ "„on“ = zapnout ovládání umělou inteligencí, „off“ = strana je ovládána "
+#~ "hráčem"
+
 #~ msgid "command_idle^[<side> [on/off]]"
-#~ msgstr "[<strana> on/off]"
+#~ msgstr "[<strana> [on/off]]"
+
+#~ msgid "Change the in-game theme."
+#~ msgstr "Změnit motiv hry."
+
+#~ msgid "<unit type id>"
+#~ msgstr "<id typu jednotky>"
+
+#~ msgid "<amount>"
+#~ msgstr "<množství>"
+
+#~ msgid "<event name>"
+#~ msgstr "<název události>"
 
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr "Kontrolu nad stranou „$side“ nelze předat počítači."
 
-#, fuzzy
-#~| msgid "Do you really want to surrender the game?"
 #~ msgid ""
 #~ "\n"
 #~ "Do you want to save the game?"
-#~ msgstr "Opravdu se chcete v této hře vzdát?"
+#~ msgstr ""
+#~ "\n"
+#~ "Chcete uložit hru?"
 
-#, fuzzy
-#~| msgid "The game has been saved."
 #~ msgid ""
 #~ "This game has been ended.\n"
 #~ "Reason: "
-#~ msgstr "Hra byla uložena."
+#~ msgstr ""
+#~ "Tato hra byla ukončena.\n"
+#~ "Důvod: "
 
-#, fuzzy
-#~| msgid "Income"
 #~ msgid "Net Income"
-#~ msgstr "Příjmy"
+#~ msgstr "Čistý příjem"
 
 #~ msgid "Empty"
 #~ msgstr "Prázdný"

@@ -1,7 +1,7 @@
 # translation of wesnoth-utbs.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2006 - 2019 Wesnoth development team
+# Copyright (C) 2006 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -10,14 +10,15 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2006 - 2011.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007.
 # Honza <Honza-mistic@seznam.cz>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-08-26 04:29+0200\n"
+"PO-Revision-Date: 2020-01-25 15:00+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -25,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -55,7 +56,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:22
 msgid "(Expert level, 10 scenarios.)"
-msgstr "(Obtížnost: expert, 10 scénářů.)"
+msgstr "(Úroveň expert, 10 scénářů.)"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
@@ -1806,8 +1807,8 @@ msgid ""
 "Here, take this vial of holy water. You’ll need it with all the undead "
 "around."
 msgstr ""
-"Tady máte, vezměte si tuto lahvičku svaté vody. Bude se vám hodit při všech "
-"těch nemrtvých okolo."
+"Tady máte, vezměte si tuto lahvičku svěcené vody. Bude se vám hodit při "
+"všech těch nemrtvých okolo."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1488
@@ -1825,19 +1826,19 @@ msgid ""
 "creatures. Vials such as these are rare and valuable. We should choose "
 "carefully who will use it."
 msgstr ""
-"Je to svatá voda. Zbraň jí potřená se stává smrtící pro magické tvory. "
+"Je to svěcená voda. Zbraň jí potřená se stává smrtící pro magické tvory. "
 "Lahvičky jako tato jsou velmi vzácné a cenné. Měli bychom dobře uvážit, kdo "
 "ji použije."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1516
 msgid "Should I take the holy water?"
-msgstr "Mám si vzít tuto svatou vodu?"
+msgstr "Mám si vzít tuto svěcenou vodu?"
 
 #. [object]: id=PureWater
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1523
 msgid "Holy Water"
-msgstr "Svatá voda"
+msgstr "Svěcená voda"
 
 #. [object]: id=PureWater
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1525
@@ -3917,12 +3918,16 @@ msgstr "Držte se pevně, chlapci, už jsou tady!"
 
 #. [message]: speaker=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:991
+#, fuzzy
+#| msgid ""
+#| "You invade our tunnels, you slaughter our people, by Griknagh we will "
+#| "make you pay!"
 msgid ""
 "You invade our tunnels, you slaughter our women and children, by Griknagh we "
 "will make you pay!"
 msgstr ""
-"Zabíráte naše tunely, zabíjíte naše ženy a děti, u Grišnáka, donutíme vás za "
-"to draze zaplatit!"
+"Zabíráte naše tunely, zabíjíte naše lidi, u Grišnáka, donutíme vás za to "
+"draze zaplatit!"
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:996
@@ -3931,7 +3936,7 @@ msgid ""
 "won’t let a couple of trolls keep them from us."
 msgstr ""
 "Jsou to ale vytrvalí barbaři, že? Jenže ty tunely jsou bohaté na rudu a my "
-"nenecháme pár trollů okupovat je."
+"nenecháme pár trollů je okupovat."
 
 #. [message]: speaker=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1001
@@ -3946,14 +3951,12 @@ msgstr "Eh...."
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1011
 msgid "What by the names of my forefathers are they?"
-msgstr "Jaké jména mých předků by to mohla být?"
+msgstr "Ve jménu mých předků, co jsou zač?"
 
 #. [message]: speaker=first_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1016
-#, fuzzy
-#| msgid "Wait a minute... Blond hair, pointy ears — they must be elves."
 msgid "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
-msgstr "Počkat... světlé vlasy, špičaté uši, musí to být elfové."
+msgstr "Počkej chvilku... Prázdný pohled, špičaté uši – to musí být elfové."
 
 #. [message]: speaker=second_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1021
@@ -10577,6 +10580,18 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1795
+#, fuzzy
+#| msgid ""
+#| "She claims to be the one who has shepherded us during this journey, but "
+#| "who protected you across the harsh sands, who fought the orcs and led you "
+#| "under the mountains, who led you out again, against all odds? I did. I "
+#| "have bled for you, every step of the way. If you will not trust me based "
+#| "on my words, then trust me based on my actions. I have done the best I "
+#| "could for my people, and I stand by my actions. I believe that the "
+#| "merfolk are our friends, as the dwarves were. I refuse to bow down to "
+#| "harsh words and threats; we elves have always been free to make our own "
+#| "choices. We are not slaves, and will not blindly follow either humans or "
+#| "some false god."
 msgid ""
 "She claims to be the one who has shepherded us during his journey, but who "
 "protected you across the harsh sands, who fought the orcs and led you under "
@@ -10588,16 +10603,16 @@ msgid ""
 "threats; we elves have always been free to make our own choices. We are not "
 "slaves, and will not blindly follow either humans or some false god."
 msgstr ""
-"Prohlašuje že to byla ona, kdo nás strážil během celé naší cesty, ale kdo "
+"Prohlašuje, že to byla ona, kdo se o nás staral během této cesty, ale kdo "
 "vás chránil, když jste šli přes nehostinné písky, kdo bojoval se skřety a "
 "vedl vás pod hory, kdo vás pak opět vyvedl ven, navzdory všem protivenstvím? "
 "Já to byl. Krvácel jsem pro vás, každý krok na té dlouhé cestě. Pokud "
 "nevěříte mým slovům, věřte alespoň mým činům. Udělal jsem pro svůj lid to "
-"nejlepší, co jsem mohl, a za svými činy si stojím. Věřím, že mořští lidé "
-"jsou našimi přáteli, tak jako byli trpaslíci. Odmítám se klanět tvrdým "
-"slovům a výhrůžkám; my elfové jsme vždy měli volnost konání podle naší "
-"vlastní volby. Nejsme otroci a nebudeme slepě následovat ani lidi, ani "
-"nějakého falešného boha."
+"nejlepší, co jsem mohl a za svými činy si stojím. Věřím, že mořští lidé jsou "
+"našimi přáteli, tak jako byli trpaslíci. Odmítám se klanět tvrdým slovům a "
+"výhrůžkám; my elfové jsme vždy měli volnost konání podle naší vlastní volby. "
+"Nejsme otroci a nebudeme slepě následovat ani lidi, ani nějakého falešného "
+"boha."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1801
@@ -10631,6 +10646,18 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1809
+#, fuzzy
+#| msgid ""
+#| "She claims to be the one who has shepherded us during this journey, but "
+#| "who protected you across the harsh sands, who fought the orcs and led you "
+#| "under the mountains, who led you out again, against all odds? I did. I "
+#| "have bled for you, every step of the way. If you will not trust me based "
+#| "on my words, then trust me based on my actions. I have done the best I "
+#| "could for my people, and I stand by my actions. I believe that the "
+#| "merfolk are our friends, as the trolls were. I refuse to bow down to "
+#| "harsh words and threats; we elves have always been free to make our own "
+#| "choices. We are not slaves, and will not blindly follow either the humans "
+#| "or some false god."
 msgid ""
 "She claims to be the one who has shepherded us during his journey, but who "
 "protected you across the harsh sands, who fought the orcs and led you under "
@@ -10642,16 +10669,16 @@ msgid ""
 "threats; we elves have always been free to make our own choices. We are not "
 "slaves, and will not blindly follow either the humans or some false god."
 msgstr ""
-"Prohlašuje že to byla ona, kdo nás strážil během celé naší cesty, ale kdo "
+"Prohlašuje, že to byla ona, kdo se o nás staral během této cesty, ale kdo "
 "vás chránil, když jste šli přes nehostinné písky, kdo bojoval se skřety a "
 "vedl vás pod hory, kdo vás pak opět vyvedl ven, navzdory všem protivenstvím? "
 "Já to byl. Krvácel jsem pro vás, každý krok na té dlouhé cestě. Pokud "
 "nevěříte mým slovům, věřte alespoň mým činům. Udělal jsem pro svůj lid to "
-"nejlepší, co jsem mohl, a za svými činy si stojím. Věřím, že mořští lidé "
-"jsou našimi přáteli, tak jako byli trollové. Odmítám se klanět tvrdým slovům "
-"a výhrůžkám; my elfové jsme vždy měli volnost konání podle naší vlastní "
-"volby. Nejsme otroci a nebudeme slepě následovat ani lidi, ani nějakého "
-"falešného boha."
+"nejlepší, co jsem mohl a za svými činy si stojím. Věřím, že mořští lidé jsou "
+"našimi přáteli, tak jako byli trollové. Odmítám se klanět tvrdým slovům a "
+"výhrůžkám; my elfové jsme vždy měli volnost konání podle naší vlastní volby. "
+"Nejsme otroci a nebudeme slepě následovat ani lidi, ani nějakého falešného "
+"boha."
 
 #. [message]: speaker=Tanstafaal
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1815
@@ -15767,11 +15794,17 @@ msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:181
+#, fuzzy
+#| msgid ""
+#| " This unit’s melee attack can overwhelm the defenses of enemies, "
+#| "preventing them from retaliating as effectively."
 msgid ""
 "\n"
 "• This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
+"U této jednotky může útok na blízko převálcovat obranu nepřátel, takže "
+"protiúder není tak účinný."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:185
 msgid ""

@@ -1,7 +1,7 @@
 # translation of wesnoth-multiplayer.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2019 Wesnoth development team
+# Copyright (C) 2004 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -11,15 +11,15 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
-# Michal Žejdl <lachim@emer.cz>, 2019.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-09-22 10:17+0200\n"
+"PO-Revision-Date: 2020-01-25 15:00+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Gtranslator 3.30.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -42,7 +42,7 @@ msgstr "Náhodný"
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:53
 msgid "Default"
-msgstr "Standardní"
+msgstr "Základní"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:54
@@ -63,24 +63,17 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
-"Věk obsahující jdnotky na vyšších úrovních: velitele na úrovni tři schopného "
-"verbovat jedotky na úrovních jedna a dva. Nepokládá se za vyrovnaný."
+"Věk obsahující jednotky na vyšších úrovních: velitele na úrovni tři schopné "
+"verbovat jednotky na úrovních jedna a dva. Sestává ze šesti frakcí. "
+"Nepokládá se za vyrovnaný."
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Dunefolk"
-msgstr ""
+msgstr "Základní + pouštní lid"
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:84
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from "
-#| "Default Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
 "Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
@@ -89,30 +82,20 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"Věk který kromě šesti základních ras obsahuje některé navíc. Jednotky "
-"Chalífátu nepoužívají magii, ale místo toho spoléhají na precizní využití "
-"povrchu a koordinované údery za svítání nebo soumraku.\n"
+"Věk, který kromě šesti základních ras, obsahuje některé navíc. Jednotky "
+"pouštního lidu spoléhají na precizní využití povrchu a koordinované údery za "
+"svítání nebo soumraku.\n"
 "\n"
-"Tento věk je stále ve vývoji, takže buďte prosím tolerantní a všechny "
+"Tento věk je stále ve vývoji, takže buďte prosím tolerantní a všechny "
 "nalezené problémy hlašte."
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:94
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Dunefolk"
-msgstr "Věk hrdinů"
+msgstr "Věk hrdinů + pouštní lid"
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:95
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from Age "
-#| "of Heroes Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
 "Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
@@ -121,11 +104,11 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"Věk který kromě šesti základních ras obsahuje některé rasy z Věku hrdinů "
-"navíc. Jednotky Chalífátu nepoužívají magii, ale místo toho spoléhají a "
-"precizní využití povrchu a koordinované údery za svítání nebo soumraku.\n"
+"Věk, který kromě šesti základních ras, obsahuje navíc některé rasy z Věku "
+"hrdinů. Jednotky pouštního lidu spoléhají na precizní využití povrchu "
+"a koordinované údery za svítání nebo soumraku.\n"
 "\n"
-"Tento věk je stále ve vývoji, takže buďte prosím tolerantní a všechny "
+"Tento věk je stále ve vývoji, takže buďte prosím tolerantní a všechny "
 "nalezené problémy hlašte."
 
 #. [lua]: f
@@ -187,7 +170,7 @@ msgstr ""
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
-msgstr ""
+msgstr "Pouštní lid"
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:14
@@ -467,9 +450,9 @@ msgstr "Jižané"
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 #, fuzzy
-#| msgid "Death of your team leaders"
+#| msgid "Defeat all enemy leaders"
 msgid "Defeat enemy leader(s)"
-msgstr "Vůdci tvých týmů zemřou"
+msgstr "Poraz všechny vůdce nepřátel"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
@@ -631,10 +614,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "teamname^Statues"
-msgstr "Jihozápadní"
+msgstr "Sochy"
 
 # pův.: "Větry temné oblohy duly tak chladně\n
 # Měsíc byl vysoko, noc byla stará\n
@@ -1816,10 +1797,8 @@ msgstr "2p — Pevnost tisíce žihadel"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
-#, fuzzy
-#| msgid "A strange place. Designed by Doc Paterson"
 msgid "A strange place. Designed by Doc Paterson."
-msgstr "Podivné místo. Návrhl Doc Patterson."
+msgstr "Podivné místo. Navrhl Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:93
@@ -2776,6 +2755,30 @@ msgstr ""
 #: data/multiplayer/scenarios/test_lua_mapgen.cfg:17
 msgid "Testing new lua mapgen features"
 msgstr ""
+
+#~ msgid "Defeat the enemy leader"
+#~ msgstr "Poraz vůdce nepřítele"
+
+#~ msgid "teamname^Team 3"
+#~ msgstr "Tým 3"
+
+#~ msgid "teamname^Team 4"
+#~ msgstr "Tým 4"
+
+#~ msgid "teamname^Monsters"
+#~ msgstr "Příšery"
+
+#~ msgid "Defeat all monsters"
+#~ msgstr "Poraz všechny příšery"
+
+#~ msgid "Defeat the enemy leaders"
+#~ msgstr "Poraz vůdce nepřátel"
+
+#~ msgid "Death of all your units"
+#~ msgstr "Všechny tvé jednotky zemřou"
+
+#~ msgid "You cannot recruit units."
+#~ msgstr "Nemůžeš verbovat jednotky."
 
 #~ msgid "Default + Khalifate"
 #~ msgstr "Výchozí + Chalífát"

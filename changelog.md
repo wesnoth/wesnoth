@@ -54,7 +54,7 @@
      * Redraw S2 and reduce difficulty
  ### Editor
  ### Language and i18n
-   * Updated translations: Ancient Greek, Chinese (Traditional), Dutch,
+   * Updated translations: Ancient Greek, Chinese (Traditional), Czech, Dutch,
      Esperanto, French, Italian, Korean, Portuguese (Brazil), Russian, Spanish,
      Turkish
    * Fix Rename Unit dialog having untranslated text (issue #4569).
