@@ -461,7 +461,10 @@ static bool localized_file_uptodate(const std::string& loc_file)
 	if(fuzzy_localized_files.empty()) {
 		// First call, parse track index to collect fuzzy files by path.
 		std::string fsep = "\xC2\xA6"; // UTF-8 for "broken bar"
-		std::string trackpath = filesystem::get_binary_file_location("", "l10n-track");
+		// Issue #4716 is that passing an empty string as the first argument of get_binary_file_location
+		// causes that function to find the file in both "wesnoth_dir//l10n-track" and "wesnoth_dir/l10n-track",
+		// triggering the warning about conflicting files with the same name.
+		std::string trackpath = filesystem::get_binary_file_location("workaround_for_issue_4716", "l10n-track");
 
 		// l10n-track file not present. Assume image is up-to-date.
 		if(trackpath.empty()) {
