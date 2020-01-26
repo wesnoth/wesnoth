@@ -15,6 +15,7 @@
 #include "game_initialization/multiplayer.hpp"
 
 #include "addon/manager.hpp" // for installed_addons
+#include "build_info.hpp"
 #include "events.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
@@ -149,16 +150,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			config cfg;
 			config res;
 			cfg["version"] = game_config::wesnoth_version.str();
-
-			std::string info;
-			std::ifstream infofile("./data/dist");
-			if(infofile.is_open()){
-				infofile >> info;
-				infofile.close();
-				cfg["client_source"] = info;
-			} else {
-				cfg["client_source"] = "Default";
-			}
+			cfg["client_source"] = game_config::dist_channel_id();
 			res.add_child("version", std::move(cfg));
 			sock->send_data(res);
 		}
