@@ -1,7 +1,13 @@
 ## Version 1.14.10+dev
+ ### Language and i18n
+   * Updated translations: German.
+ ### Packaging
+   * Fixed data/dist information not being found on many platforms other than Windows (only
+     with the installer-created shortcut), as well as only the very first word being read instead
+     of the whole line.
 
 ## Version 1.14.10
- ### AI:
+ ### AI
    * Experimental AI:
      * Spread poison: bug fix for units ignoring [avoid] tag
      * Castle switch: bug fix for units-on-keep check
