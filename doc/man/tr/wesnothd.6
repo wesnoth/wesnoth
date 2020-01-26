@@ -238,29 +238,30 @@ saklayacağı tablonun ismi. Bu tablo genellikle şöyle belirtilir:
 <tablo\-öneki>_users (örnek: phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually.
+(user_handler=forum için) wesnothd uygulamasının kullanıcılar hakkındaki
+kendi verilerini kaydedeceği tablonun adı. Bu tabloyu kendiniz oluşturmanız
+gerekecek.
 .TP 
 \fBdb_game_info_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about games.
+(user_handler=forum için) wesnothd uygulamasının oyunlar hakkındaki kendi
+verilerini kaydedeceği tablonun adı.
 .TP 
 \fBdb_game_player_info_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about the players in a game.
+(user_handler=forum için) wesnothd uygulamasının bir oyundaki kullanıcılar
+hakkındaki kendi verilerini kaydedeceği tablonun adı.
 .TP 
 \fBdb_game_modification_info_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about the modifications used in a game.
+(user_handler=forum için) wesnothd uygulamasının bir oyunda yapılan
+değişiklikler hakkındaki kendi verilerini kaydedeceği tablonun adı.
 .TP 
 \fBdb_user_group_table\fP
-(for user_handler=forum) The name of the table in which your phpbb forums
-saves its user group data. Most likely this will be
-<table\-prefix>_user_group (e.g. phpbb3_user_group).
+(user_handler=forum için) phpbb forumlarınızdaki kullanıcıların grup
+verilerinin saklanacağı tablonun ismi. Bu tablo genellikle şöyle belirtilir:
+<tablo\-öneki>_users_group (örnek: phpbb3_users_group).
 .TP 
 \fBmp_mod_group\fP
-(for user_handler=forum) The ID of the forum group to be considered as
-having moderation authority.
+(user_handler=forum için) Yönetme yetkisine sahip olduğu kabul edilecek
+forum grubunun kimliği.
 .TP 
 \fBuser_expiration\fP
 (user_handler=sample için) Kayıtlı bir oyuncu adının geçerli kalacağı gün
