@@ -24,12 +24,14 @@
 #include "serialization/unicode.hpp"
 
 #include <algorithm>
+#include <fstream>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
 
+#include <boost/algorithm/string.hpp>
 #include <boost/version.hpp>
 
 #ifndef __APPLE__
@@ -345,6 +347,23 @@ const std::string& library_name(LIBRARY_ID lib)
 	return versions.names[lib];
 }
 
+std::string dist_channel_id()
+{
+	std::string info;
+	std::ifstream infofile(game_config::path + "/data/dist");
+	if(infofile.is_open()) {
+		std::getline(infofile, info);
+		infofile.close();
+		boost::trim(info);
+	}
+
+	if(info.empty()) {
+		return "Default";
+	}
+
+	return info;
+}
+
 namespace {
 
 bool strlen_comparator(const std::string& a, const std::string& b)
@@ -445,6 +464,7 @@ std::string full_build_report()
 
 	o << "The Battle for Wesnoth version " << game_config::revision << '\n'
 	  << "Running on " << desktop::os_version() << '\n'
+	  << "Distribution channel: " << dist_channel_id() << '\n'
 	  << '\n'
 	  << report_heading("Game paths")
 	  << '\n'
