@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-26 00:01 UTC\n"
-"PO-Revision-Date: 2019-08-05 00:11+0200\n"
+"PO-Revision-Date: 2020-01-25 20:26+0100\n"
 "Last-Translator: Rhonda D'Vine <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:25
@@ -958,6 +958,8 @@ msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
 msgstr ""
+"Ihr könnt Euren Zug nicht beenden bevor Ihr Truppen rekrutiert habt und ein "
+"Dorf in besitzt genommen habt!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
@@ -1047,20 +1049,13 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the east; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
 "the north; but we could stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
-"Siehst du dieses dunkelblaue Wasser? Es kann weder von uns noch von den Orks "
+"Seht Ihr dieses dunkelblaue Wasser? Es kann weder von uns noch von den Orks "
 "durchquert werden. Die einzige Möglichkeit bestünde darin, durch das "
 "seichte, hellblaue Wasser im Osten zu waten. Es wäre daher klug, wenn du "
 "einige unserer Krieger an das bewaldete Ufer schickst, damit sie die Orks in "
@@ -1197,11 +1192,6 @@ msgstr "$unit.language_name"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
-#| "friendly units around her. She also has a special attack which <i>slows</"
-#| "i> enemies, halving the damage they do for one turn."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
@@ -1210,13 +1200,13 @@ msgid ""
 msgstr ""
 "Die Elfenschamanin ist eine ziemlich schwache Einheit, beherrscht aber die "
 "Fertigkeit, alle Einheiten in direkt benachbarten Feldern zu <i>heilen</i>. "
-"Sie hat auch einen speziellen Angriff, der Feinde <i>verlangsamt</i> und "
-"dadurch den Schaden, den sie verursachen, halbiert."
+"Sie verfügt auch über einen speziellen Angriff, der Feinde <i>verlangsamt</"
+"i> und dadurch deren Schaden halbiert."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "Die <i>Heilen</i>-Fertigkeit"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
@@ -1230,28 +1220,23 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"Zu Beginn einer Runde werden verbündete Einheiten neben einer Schamanin um 4 "
+"LP geheilt – dies ist halb so viel wie in Dörfern. Die Schamanin erhält "
+"keine Erfahrung durch das Heilen, sondern ausschließlich im Kampf. Es lohnt "
+"sich jedoch ungemein Schamaninnen auf eine neue Stufe aufsteigen zu lassen – "
+"die Elfendruidin auf Stude 2 heilt soviel wie ein Dorf.\n"
+"\n"
+"Eine detaillierte Erklärung der Heilenfertigkeit kann in der Abteilung "
+"<i>Spielregeln</i> in der Hilfe eingesehen werden (erreichbar über "
+"Tastenkürzel <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Abilities and Weapon Specials"
 msgid "Weapon Specials"
-msgstr "Fertigkeiten und Waffenfähigkeiten"
+msgstr "Waffenfähigkeiten"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1271,13 +1256,14 @@ msgstr ""
 "mit der Waffenfähigkeit Magie, womit ein Angriff immer eine 70%ige "
 "Trefferchance hat, habt Ihr im Training bereits bekämpft.\n"
 "\n"
-"Eine Liste der Fertigkeiten und Waffenfähigkeiten gibt es in der Hilfe."
+"Eine Liste der Fertigkeiten und Waffenfähigkeiten gibt es in der Hilfe "
+"(Erreichbar über Tastenkürzel <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Multiple Healers"
-msgstr ""
+msgstr "Mehrere Heiler"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1291,6 +1277,13 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"Ihr habt nun zwei Heiler. Allerdings kann eine Einheit nur von einer geheilt "
+"werden – selbst wenn mehrere Heiler neben einer Einheit stehen erhält sie "
+"nur 4 LP pro Runde.\n"
+"\n"
+"Sollte es Euch gelingen, eine Schamanin zu eine Druidin aufsteigen zu "
+"lassen, so kann sie 8 LP pro Runde heilen. Eine Einheit neben mehreren "
+"Heilern wird von dem besten Heiler geheilt"
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1301,11 +1294,15 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"Ihr habt nun zwei Heiler. Eure Druidin kann nahestehende Einheiten um 8 LP "
+"heilen, während eure Schamanin um 4 LP heilt. Allerdings kann eine Einheit "
+"nicht von mehreren geheilt werden – ist eine Einheit neben beiden Heilern, "
+"wird sie von der besseren Einheit geheilt."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
 msgid "Healers and Villages"
-msgstr ""
+msgstr "Heiler und Dörfer"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:384
@@ -1313,6 +1310,8 @@ msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
 msgstr ""
+"Eine in einem Dorf stationierte Einheit wird dort geheilt, unabhängig von "
+"nahestehenden Heilern."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
@@ -1322,6 +1321,12 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"Hat man mehr als einen Heiler, so können sie sich gegenseitig heilen – oder "
+"Ihr könnt sie in verschiedenen Gebieten des Schlachtfeldes einsetzen. Es "
+"gibt auch noch eine weitere Einsatzmöglichkeit: die 2 LP Heilung welche "
+"durch Rast erhalten können, lassen sich mit der Heilung durch andere "
+"Einheiten kombinieren. Um schneller zu heilen ist es deshalb oft besser, den "
+"Heiler anstatt der verletzten Einheit zu bewegen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:403
@@ -1370,28 +1375,22 @@ msgstr "Nehmt ein Dorf in Besitz"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:448
-#, fuzzy
-#| msgid "Capture a village"
 msgid "You still have to capture a village!"
-msgstr "Nehmt ein Dorf in Besitz"
+msgstr "Ihr müsst noch ein Dorf einnehmen!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:479
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things if you make a "
-#| "mistake."
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"Vergesst nicht, Ihr könnt oftmals <b>u</b> verwenden, um Eure Aktionen "
-"rückgängig zu machen, nützlich um Fehler zu korrigieren."
+"Ihr habt vergessen Truppen auszubilden. Nach dieser Meldung könnt Ihr <b>u</"
+"b> drücken, um den Zug zurückzunehmen. Niemand kämpft ohne Truppen."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "Ihr müsst noch Truppen rekrutieren!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:490
@@ -1446,15 +1445,11 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:568
-#, fuzzy
-#| msgid ""
-#| "You moved to the wrong place! After this message, you can press <b>u</b> "
-#| "to undo, then try again."
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"Ihr habt Euch zum falschen Ziel bewegt! Nach dieser Meldung könnt Ihr <b>u</"
+"Ihr habt vegressen ein Dorf einzunehmen! Nach dieser Meldung könnt Ihr <b>u</"
 "b> drücken, um den Zug zurückzunehmen und es dann erneut versuchen."
 
 #. [message]: speaker=Galdrad
@@ -1618,7 +1613,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:711
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "Das Tutorial sollte eigentlich einfacher sein …"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
@@ -1629,6 +1624,11 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"Der Ork auf der Insel sollte eigentlich die Brücke überqueren, so dass Ihr "
+"in mit mehreren Einheiten angreifen könnt. Offensichtlich ist dies nicht "
+"passiert …\n"
+"\n"
+"Bitte meldet diesen Fehler."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:726
@@ -1701,11 +1701,6 @@ msgstr ""
 # XXX - female shaman -- two strings needed
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:778
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
@@ -1718,25 +1713,16 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:783
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Ja. Wenn deine Schamanin direkt hinter der Einheit auf der Brücke steht, "
-"wird sie sie am Anfang des nächsten Zuges um 4 Lebenspunkte heilen."
+"Wenn eine Eurer Schamaninen direkt hinter einer Einheit steht, wird sie sie "
+"am Anfang des nächsten Zuges um 4 Lebenspunkte heilen."
 
 # XXX - female shaman -- two strings needed
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
@@ -1832,20 +1818,14 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:940
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it next turn! "
-#| "Move a unit into the village to stop the orcs capturing it. Whichever "
-#| "unit you choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"Wir müssen dieses Dorf einnehmen, sonst werden es die Orks im nächsten Zug "
-"tun! Bewege eine Einheit in das Dorf, um zu verhindern, dass die Orks sie "
-"einnehmen. Die Einheit, die du wählst, wird auch von der Heilung des Dorfes "
-"profitieren."
+"Wir müssen dieses Dorf einnehmen, sonst werden es die Orks bald tun! Bewege "
+"eine Einheit in das Dorf, um zu verhindern, dass die Orks sie einnehmen. Die "
+"Einheit, die du wählst, wird auch von der Heilung des Dorfes profitieren."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:946
@@ -1899,6 +1879,15 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"Denkt daran, Eure verletzten Einheiten zurückzuziehen. Shamaninnen können 4 "
+"LP pro Runde heilen, aber Dörfer heilen 8 LP.\n"
+"\n"
+"Mann kann nicht Heiler und Dörfer kombinieren, nur der höhere Heilwert "
+"zählt.\n"
+"\n"
+"Eine Ausnahme ist das Heilen durch Rast – wenn eine Einheit in einer Runde "
+"nichts unternimmt, wird sie um 2 LP geheilt, zusätzlich zu möglichen anderen "
+"Effekten. Auf diese Art kann bis zu 10 LP pro Runde regeneriert werden."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
@@ -2080,15 +2069,11 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1293
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. Goodbye, $unit."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr ""
-"Einheiten der zweiten Stufe sind mächtig, aber nicht unverwundbar! Tschüss, "
+"Einheiten höherer Stufen sind mächtig, aber nicht unverwundbar! Tschüss, "
 "$unit.name|."
 
 #. [message]: speaker=Galdrad
@@ -2264,17 +2249,10 @@ msgstr "Das … war töricht. Ich sollte das nächste Mal besser aufpassen."
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1463
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "Arg! Wer wird Euch jetzt noch lehren, diese Orks zu besiegen …"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try one of the rookie-level "
-#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#| "i> is the easiest and is the recommended first campaign. In <i>An Orcish "
-#| "Incursion</i> you have an Elvish army, similarly to this tutorial, but "
-#| "with seven scenarios for your units to gain experience and advance levels."
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
@@ -2283,9 +2261,7 @@ msgstr ""
 "Ihr wart siegreich! Vielleicht mögt Ihr Euch nun an einer der "
 "Einsteigerkampagnen versuchen, diese enthalten Strategietipps. <i>Die "
 "Geschichte zweier Brüder</i> ist die einfachste und als erste Kampagne "
-"empfohlen. In <i>Einmarsch der Orks</i> habt Ihr wie hier eine Armee von "
-"Elfen, mit vier Einheitentypen, welche Ihr über sieben Szenarien hinweg "
-"aufsteigen lassen könnt."
+"empfohlen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1483
@@ -2425,9 +2401,6 @@ msgstr ""
 #~ msgstr "Szenario beenden"
 
 #, fuzzy
-#~| msgid ""
-#~| "Do you want to keep practicing? You can end this scenario at any time by "
-#~| "using the <b>End Scenario</b> item in the context menu."
 #~ msgid ""
 #~ "Do you want to keep practicing? You can end this scenario at any time by "
 #~ "using the <b>End Scenario</b> item in the context menu to move on to the "
@@ -2440,7 +2413,6 @@ msgstr ""
 #~ msgstr "Ja! Ich möchte noch weiter üben."
 
 #, fuzzy
-#~| msgid "Yes, I’m still figuring it out."
 #~ msgid "female^Yes, I’m still figuring it out."
 #~ msgstr "Ja! Ich möchte noch weiter üben."
 
@@ -2448,7 +2420,6 @@ msgstr ""
 #~ msgstr "Nein! Ich denke, ich hab es verstanden."
 
 #, fuzzy
-#~| msgid "No, I think I’ve got it."
 #~ msgid "female^No, I think I’ve got it."
 #~ msgstr "Nein! Ich denke, ich hab es verstanden."
 
@@ -2462,7 +2433,6 @@ msgstr ""
 #~ msgstr "Dreschflegel"
 
 #, fuzzy
-#~| msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
 #~ msgid ""
 #~ "You have $student_hp hitpoints and a sword, boy. I’m fairly sure you’ll "
 #~ "win."
