@@ -197,7 +197,7 @@ void mp_connect::on_server_add()
 
 	const std::size_t mem_pos = selection.user_defined() && !user_servers_.empty()
 			? 1 + selection.relative_index() : 0;
-	const unsigned int ui_pos = 1 + selection.row();
+	const unsigned int ui_pos = selection.user_defined() ? 1 + selection.row() : builtin_servers_.size();
 
 	std::string name;
 
