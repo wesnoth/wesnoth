@@ -1,4 +1,4 @@
-## Version 1.14.9+dev
+## Version 1.14.10
  ### AI:
    * Experimental AI:
      * Spread poison: bug fix for units ignoring [avoid] tag
