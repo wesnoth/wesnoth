@@ -189,6 +189,7 @@
 import sys, os, re, argparse, string, copy, difflib, time, gzip, codecs
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
+from collections import defaultdict
 
 # Changes meant to be done on maps and .cfg lines.
 mapchanges = (
@@ -1056,10 +1057,10 @@ def standard_unit_filter():
 # Sanity checking
 
 # Associations for the ability sanity checks.
+# Please note that a special note can be associated with multiple abilities
+# but any given ability can be associated with only one special note
+# Some notes are handled directly in the global_sanity_check() function
 notepairs = [
-    ("movement_type=mounted", "{NOTE_DEFENSE_CAP}"),
-    ("movement_type=undeadspirit", "{NOTE_SPIRIT}"),
-    ("type=arcane", "{NOTE_ARCANE}"),
     ("{ABILITY_HEALS}", "{NOTE_HEALS}"),
     ("{ABILITY_EXTRA_HEAL}", "{NOTE_EXTRA_HEAL}"),
     ("{ABILITY_UNPOISON}", "{NOTE_UNPOISON}"),
@@ -1458,7 +1459,11 @@ def global_sanity_check(filename, lines):
     in_unit_type = None
     notecheck = True
     trait_note = dict(notepairs)
-    note_trait = {p[1]:p[0] for p in notepairs}
+    # it's possible that a note might be associated with two abilities
+    # use a multimap-like data structure for this reason
+    note_trait = defaultdict(list) # {p[1]:p[0] for p in notepairs}
+    for pair in notepairs:
+        note_trait[pair[1]].append(pair[0])
     unit_id = ""
     base_unit = ""
     for nav in WmllintIterator(lines, filename):
@@ -1481,6 +1486,9 @@ def global_sanity_check(filename, lines):
             temp_movetypes = []
             temp_races = []
             temp_advances = []
+            arcane_note_needed = False
+            spirit_note_needed = False
+            defense_cap_note_needed = False
             continue
         elif nav.element == "[/unit_type]":
             #print('"%s", %d: unit has traits %s and notes %s' \
@@ -1501,15 +1509,31 @@ def global_sanity_check(filename, lines):
                 derived_units.append((filename, nav.lineno + 1, unit_id, base_unit))
             if unit_id and not base_unit:
                 missing_notes = []
+                if arcane_note_needed and "{NOTE_ARCANE}" not in notes:
+                    missing_notes.append("{NOTE_ARCANE}")
+                if spirit_note_needed and "{NOTE_SPIRIT}" not in notes:
+                    missing_notes.append("{NOTE_SPIRIT}")
+                if defense_cap_note_needed and "{NOTE_DEFENSE_CAP}" not in notes:
+                    missing_notes.append("{NOTE_DEFENSE_CAP}")
                 for trait in traits:
                     tn = trait_note[trait]
                     if tn not in notes and tn not in missing_notes:
                         missing_notes.append(tn)
                 missing_traits = []
+                if (not arcane_note_needed) and "{NOTE_ARCANE}" in notes:
+                    missing_traits.append("type=arcane")
+                if (not spirit_note_needed) and "{NOTE_SPIRIT}" in notes:
+                    missing_traits.append("movement_type=undeadspirit")
+                if (not defense_cap_note_needed) and "{NOTE_DEFENSE_CAP}" in notes:
+                    missing_traits.append("movement_type=mounted or [defense] tag")
                 for note in notes:
-                    nt = note_trait[note]
-                    if nt not in traits and nt not in missing_traits:
-                        missing_traits.append(nt)
+                    for nt in note_trait[note]: # defaultdict makes nt a list, not a string!
+                        if nt in traits:
+                            break
+                    else: # this is done only if there isn't at least one trait matching the note
+                        for nt in note_trait[note]:
+                            if nt not in missing_traits:
+                                missing_traits.append(nt)
                 # If the unit didn't specify hitpoints, there is some wacky
                 # stuff going on (possibly pseudo-[base_unit] behavior via
                 # macro generation) so disable some of the consistency checks.
@@ -1538,6 +1562,9 @@ def global_sanity_check(filename, lines):
             temp_movetypes = []
             temp_races = []
             temp_advances = []
+            arcane_note_needed = False
+            spirit_note_needed = False
+            defense_cap_note_needed = False
         # the glob pattern matches any WML tag starting with filter, including [filter] itself
         if '[unit_type]' in nav.ancestors() and not nav.glob_ancestors("[[]filter*[]]"):
             try:
@@ -1559,6 +1586,10 @@ def global_sanity_check(filename, lines):
                     if '{' not in value:
                         assert(unit_id)
                         unit_movetypes.append((unit_id, filename, nav.lineno + 1, value))
+                    if value == "undeadspirit":
+                        spirit_note_needed = True
+                    elif value == "mounted":
+                        defense_cap_note_needed = True
                 elif key == "race":
                     if '{' not in value:
                         assert(unit_id or base_unit)
@@ -1569,6 +1600,10 @@ def global_sanity_check(filename, lines):
                     advancements = value
                     if advancements.strip() != "null":
                         advances.append((unit_id, filename, nav.lineno + 1, advancements))
+                elif key == "type" and value == "arcane" and "[attack]" in nav.ancestors():
+                    arcane_note_needed = True
+                elif "[defense]" in nav.ancestors() and re.match(r"\-\d+",value):
+                    defense_cap_note_needed = True
             except TypeError:
                 pass
             precomment = nav.text
@@ -1576,6 +1611,10 @@ def global_sanity_check(filename, lines):
                 precomment = nav.text[:nav.text.find("#")]
             if "{NOTE" in precomment:
                 has_special_notes = True
+            # these special cases are handled better outside of notepairs
+            for note in ("{NOTE_DEFENSE_CAP}","{NOTE_SPIRIT}","{NOTE_ARCANE}"):
+                if note in precomment:
+                    notes.append(note)
             for (p, q) in notepairs:
                 if p in precomment:
                     traits.append(p)
