@@ -328,7 +328,7 @@ bool attack_type::apply_modification(const config& cfg)
 
 	if (set_specials) {
 		const std::string &mode = set_specials["mode"];
-		if (mode != "append") {
+		if (mode == "replace") {
 			specials_.clear();
 		}
 		for (const config::any_child &value : set_specials.all_children_range()) {
