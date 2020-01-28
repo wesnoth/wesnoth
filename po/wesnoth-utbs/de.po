@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 16:29 UTC\n"
-"PO-Revision-Date: 2020-01-13 03:40+0100\n"
+"PO-Revision-Date: 2020-01-28 22:39+0100\n"
 "Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -1167,6 +1167,8 @@ msgid ""
 "Your units become dehydrated during the day, losing hitpoints and damage "
 "when they are not on a water hex"
 msgstr ""
+"Tagsüber leiden Einheiten an Durst, außer sie stehen auf einem Wasserfeld. "
+"Dadurch verlieren sie an Angriffstärke und Lebenspunkten"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:218
@@ -1174,16 +1176,18 @@ msgid ""
 "Units are refreshed at the start of your turn when they are on a water or "
 "oasis hex"
 msgstr ""
+"Zu Beginn jeden Zuges wird jede Einheit, welche auf einem Wasser- oder "
+"Oasenfeld steht, sich erfrischen"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:221
 msgid "Healers can prevent dehydration from getting worse, but cannot heal it"
-msgstr ""
+msgstr "Heiler können Dehydration verhindern, aber sie können sie nicht heilen"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:224
 msgid "Healers are unable to heal adjacent units during the day"
-msgstr ""
+msgstr "Tagesüber können Heiler benachbarte Einheiten nicht heilen"
 
 #. [label]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:248
@@ -1509,7 +1513,7 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:731
 msgid "Nym! No! Don’t open—"
-msgstr "Nym! Nein! nicht öffnen–"
+msgstr "Nym! Nein! Nicht öffnen—"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:741
@@ -1736,20 +1740,15 @@ msgstr ""
 
 #. [message]: speaker=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1287
-#, fuzzy
-#| msgid ""
-#| "Elf with a bow, I remember you. You thought me defeated, but I am back "
-#| "even more powerful than before. Death reigns eternal, your scorched bones "
-#| "and lifeless body will join my host."
 msgid ""
 "Elf of the sands, I remember you. You thought me defeated, but I am back "
 "even more powerful than before. Death reigns eternal, your scorched bones "
 "and lifeless body will join my host."
 msgstr ""
-"Elfe mit dem Bogen, ich erinnere mich an dich. Du hast gedacht, ich sei "
-"besiegt, aber ich bin zurück und noch mächtiger als zuvor. Der Tod herrscht "
-"ewig und bald werden deine verbrannten Gebeine und dein lebloser Körper "
-"einem neuen Herrn gehorchen!"
+"Elf des Sandes, ich erinnere mich an dich. Du hast gedacht, ich sei besiegt, "
+"aber ich bin zurück und noch mächtiger als zuvor. Der Tod herrscht ewig und "
+"bald werden deine verbrannten Gebeine und dein lebloser Körper einem neuen "
+"Herrn gehorchen."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1292
@@ -2299,7 +2298,7 @@ msgid ""
 "hordes!"
 msgstr ""
 "Aber wenn sich die Schlacht ausweitet, werden die Horden der Untoten unsere "
-"Leute niedermetzeln."
+"Leute niedermetzeln!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:414
@@ -2413,7 +2412,7 @@ msgstr ""
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:686
 msgid "righteous rage"
-msgstr ""
+msgstr "Rechtschaffener Zorn"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
@@ -2421,11 +2420,15 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the champions is slain, or 30 rounds of attacks have occurred."
 msgstr ""
+"Gegen einen der Meisterkämpfer sind die Wut und Rachedurst dieser Einheit "
+"unbändig. Ob als Angreifer oder Verteidiger, sie ruht nicht eher, als bis "
+"der Tod die Entscheidung fällt oder im Kampfrausch 30 Runden verstrichen "
+"sind."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:697
 msgid "true strike"
-msgstr ""
+msgstr "Zielsicherer Angriff"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:699
@@ -2433,6 +2436,9 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
 msgstr ""
+"In Angriff gegen einen der Meisterkämpfe hat dieser Angriff eine 70% "
+"Trefferwahrscheinlichkeit, unabhängig von der Verteidigungsstärke des "
+"Gegners."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:763
@@ -3695,7 +3701,7 @@ msgstr "Kaleh, ich bin der leibhaftigeTod."
 #. [message]: speaker=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:958
 msgid "And I shall avenge all those you have killed!"
-msgstr "Und ich werde alle rächen, die du getötet hast."
+msgstr "Und ich werde all jene rächen, die du getötet hast!"
 
 #. [message]: speaker=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:974
@@ -4133,8 +4139,8 @@ msgid ""
 "Kill the elves! We must stop them here. This is our land, crush the "
 "intruders!"
 msgstr ""
-"Tötet Elfen! Wir müssen sie aufhalten. Das unser Land, vernichtet "
-"Eindringlinge."
+"Tötet die Elfen! Wir müssen sie aufhalten. Dies ist unser Land, vernichtet "
+"diese Eindringlinge!"
 
 #. [scenario]: id=05_A_Subterranean_Struggle
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:739
@@ -4440,16 +4446,12 @@ msgstr "Haltet stand, Jungs, da kommen sie!"
 
 #. [message]: speaker=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1236
-#, fuzzy
-#| msgid ""
-#| "You invade our tunnels, you slaughter our women and children, by Griknagh "
-#| "we will make you pay!"
 msgid ""
 "You invade our tunnels, you slaughter our people, by Griknagh we will make "
 "you pay!"
 msgstr ""
-"Ihr eindringen in unsere Tunnel, schlachten unsere Frauen und Kinder, bei "
-"Griknagh, wir lassen euch dafür bezahlen!"
+"Ihr eindringen in unsere Tunnel, schlachten uns, bei Griknagh, wir lassen "
+"euch dafür bezahlen!"
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1241
@@ -4480,7 +4482,7 @@ msgstr "Was … Wer … sind das?"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1261
 msgid "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
 msgstr ""
-"Einen Moment... ausdruckslose Augen, spitze Ohren, es müssen Elfen sein!"
+"Einen Moment... ausdruckslose Augen, spitze Ohren - das müssen Elfen sein."
 
 # Anm. nine hells ? drei Teufels Namen
 # --> Idiom
@@ -4743,7 +4745,7 @@ msgid ""
 msgstr ""
 "Ich muss zurückgehen und Verstärkung holen. Kaleh, wir brauchen deine "
 "Kämpfer, um uns Deckung zu geben. Tu dein Bestes, Junge, und mögen deine "
-"Ahnen dich beschützen!"
+"Ahnen dich schützen."
 
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1954
@@ -4963,8 +4965,8 @@ msgid ""
 "Oh no, we took too long and enemy reinforcements have arrived. We’ll surely "
 "be overwhelmed now!"
 msgstr ""
-"Oh nein, wir haben zu lange gebraucht, und die feindliche Verstärkung ist "
-"eingetroffen. Jetzt werden wir mit Sicherheit überwältigt."
+"Oh nein, wir haben zu lange gebraucht, und feindliche Verstärkung ist "
+"eingetroffen. Jetzt werden wir mit Sicherheit überwältigt!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:4
 msgid ""
@@ -5252,8 +5254,8 @@ msgid ""
 msgstr ""
 "Äh, ich nehme das zurück. Trotzdem scheinen die Trolle vorzurücken. Ich "
 "denke, sie gehen davon aus, dass uns die Lava zurückhalten wird. Nun, dann "
-"wollen wir ihnen das Gegenteil beweisen. Es gehört mehr dazu als ein "
-"bisschen Hitze, um uns aufzuhalten."
+"wollen wir ihnen das Gegenteil beweisen. Es braucht schon mehr als ein "
+"bisschen Hitze, um uns aufzuhalten!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:980
@@ -5399,7 +5401,7 @@ msgstr ""
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1411
 msgid "May Griknagh protect you. I’ll be back soon!"
-msgstr "Griknagh beschütze dich! Ich werde bald zurück sein."
+msgstr "Griknagh beschütze dich! Ich werde bald zurück sein!"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1449
@@ -5885,7 +5887,7 @@ msgstr "Stetige Wachsamkeit, Knaben! Der Feind kann überall sein!"
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:649
 msgid "But sir—"
-msgstr "Aber Meister..."
+msgstr "Aber Sir—"
 
 #. [message]: speaker=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:654
@@ -5898,14 +5900,14 @@ msgid ""
 "I was killing trolls when you were in swaddling clothes. I wrote the book on "
 "killing trolls. And you’re not going anywhere until I’m done with you."
 msgstr ""
-"Ich habe schon Trolle getötet, als du noch in den Windeln gelegen hast. Ich "
-"bin gewissermaßen der Erfinder des Trolltötens. Und du wirst dich hier nicht "
-"von der Stelle rühren, solange ich nicht mit dir fertig bin!"
+"Ich habe schon Trolle getötet, als du noch in den Windeln gelegen bist. Ich "
+"bin gewissermaßen der Erfinder des Trolltötens. Und du kommst hier nicht "
+"weg, ehe ich mit dir fertig bin."
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:664
 msgid "But sir, behind you...!"
-msgstr "Aber Meister, hinter Euch..."
+msgstr "Aber Sir, hinter Euch!"
 
 #. [message]: speaker=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:669
@@ -6098,7 +6100,7 @@ msgstr ""
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1297
 msgid "What are those?!"
-msgstr "Was ist das?!?"
+msgstr "Was ist das?!"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1305
@@ -11196,18 +11198,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1830
-#, fuzzy
-#| msgid ""
-#| "She claims to be the one who has shepherded us during his journey, but "
-#| "who protected you across the harsh sands, who fought the orcs and led you "
-#| "under the mountains, who led you out again, against all odds? I did. I "
-#| "have bled for you, every step of the way. If you will not trust me based "
-#| "on my words, then trust me based on my actions. I have done the best I "
-#| "could for my people, and I stand by my actions. I believe that the "
-#| "merfolk are our friends, as the dwarves were. I refuse to bow down to "
-#| "harsh words and threats; we elves have always been free to make our own "
-#| "choices. We are not slaves, and will not blindly follow either humans or "
-#| "some false god."
 msgid ""
 "She claims to be the one who has shepherded us during this journey, but who "
 "protected you across the harsh sands, who fought the orcs and led you under "
@@ -11266,18 +11256,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1844
-#, fuzzy
-#| msgid ""
-#| "She claims to be the one who has shepherded us during his journey, but "
-#| "who protected you across the harsh sands, who fought the orcs and led you "
-#| "under the mountains, who led you out again, against all odds? I did. I "
-#| "have bled for you, every step of the way. If you will not trust me based "
-#| "on my words, then trust me based on my actions. I have done the best I "
-#| "could for my people, and I stand by my actions. I believe that the "
-#| "merfolk are our friends, as the trolls were. I refuse to bow down to "
-#| "harsh words and threats; we elves have always been free to make our own "
-#| "choices. We are not slaves, and will not blindly follow either the humans "
-#| "or some false god."
 msgid ""
 "She claims to be the one who has shepherded us during this journey, but who "
 "protected you across the harsh sands, who fought the orcs and led you under "
@@ -11328,10 +11306,6 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1858
-#, fuzzy
-#| msgid ""
-#| "I have followed you this far Kaleh, I will not abandon you now. But I "
-#| "admit that my faith is shaken. If that is not our god, than what is it?"
 msgid ""
 "I have followed you this far Kaleh, I will not abandon you now. But I admit "
 "that my faith is shaken. If that is not our god, then what is it?"
@@ -15850,13 +15824,6 @@ msgstr "Quenoth-Bogenschütze"
 #. [unit_type]: id=Quenoth Archer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:21
 #, fuzzy
-#| msgid ""
-#| "With the open sands providing much less protection than their old forests "
-#| "did, the wide ranks of elvish archers that could once have stopped an "
-#| "advancing orcish horde in its tracks have all but disappeared. Instead, "
-#| "the few who still choose to dedicate themselves to the traditional weapon "
-#| "of their ancestors practise the art from the saddle, easily avoiding the "
-#| "perils of melee combat."
 msgid ""
 "With the open sands providing much less protection than the old forests did, "
 "the wide ranks of elvish archers that once formed the core of the elvish "
@@ -15865,7 +15832,7 @@ msgid ""
 "from the saddle, allowing them to more easily avoid the perils of melee "
 "combat."
 msgstr ""
-"Da die offene Wüste weitaus weniger Schutz bot als die alten Wälder, sind "
+"Da die offene Wüste weitaus weniger Schutz bietet als die alten Wälder, sind "
 "die großen Verbände elfischer Bogenschützen, die einst eine herannahende "
 "orkische Horde hätten stoppen können, allesamt verschwunden. Stattdessen "
 "praktizieren die einigen wenigen, welche ihr Leben noch immer dieser "
@@ -16747,6 +16714,13 @@ msgid ""
 "Magical attacks will still have a 70% chance to hit.\n"
 "Marksman attacks are only affected if the chance to hit is greater than 60%."
 msgstr ""
+"Wenn dieser Angriff trifft, wird der Gegner einen 10% Malus für eine Runde "
+"sowohl auf Verteidigung als auch seine Trefferchance erleiden.\n"
+"\n"
+"Magieangriffe sind nicht beeinflusst, und haben wie immer eine 70% "
+"Trefferwahrscheinlichkeit.\n"
+"Angriff mit Treffsicherheit sind nur beeinflusst, wenn die "
+"Trefferwahrscheinlichkeit besser als 60% ist."
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:129
