@@ -17,6 +17,8 @@ ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/wesnothd@BINARY_SUFFIX@ -t 2 -T 5
 # e.g. -c /home/user/.local/share/wesnoth/1.14/lan_server.cfg
 # (and make sure wesnothd has the required access permissions)
 
+ExecReload=/bin/kill -s SIGHUP $MAINPID
+
 ExecStopPost=/bin/rm -f @FIFO_DIR@/socket
 
 SyslogIdentifier=Wesnothd@BINARY_SUFFIX@
