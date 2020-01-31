@@ -23,6 +23,14 @@ matrix:
     - os: windows
       env: OPT=Release
 
+    - os: osx
+      compiler: clang
+      env: TOOL=scons CXXSTD=14 NLS=false OPT=-O0
+
+    - os: osx
+      compiler: clang
+      env: TOOL=xcodebuild
+
     - compiler: gcc
       env: CXXSTD=14 NLS=true LTS=1604 BRANCH=master
 
@@ -46,14 +54,6 @@ matrix:
     - env: CXXSTD=14 NLS=false LTS=steamrt BRANCH=master CC=gcc-5 CXX=g++-5
 
     - env: NLS=true LTS=flatpak BRANCH=master
-
-    - os: osx
-      compiler: clang
-      env: TOOL=scons CXXSTD=14 NLS=false OPT=-O0
-
-    - os: osx
-      compiler: clang
-      env: TOOL=xcodebuild
 
 install:
     - . ./utils/travis/steps/install.sh
