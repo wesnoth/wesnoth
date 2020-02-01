@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 13:28-0300\n"
-"PO-Revision-Date: 2020-01-13 03:29+0100\n"
-"Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
+"PO-Revision-Date: 2020-02-01 11:03+0100\n"
+"Last-Translator: Whiskeyjack\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -122,7 +122,7 @@ msgstr "TODO"
 #. [topic]: id=editor_clipboard
 #: data/core/editor/help.cfg:21
 msgid "Terrain Clipboard"
-msgstr "Gelände Zwischenablage"
+msgstr "Gelände-Zwischenablage"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
@@ -2072,7 +2072,7 @@ msgstr ""
 #. [topic]: id=saveload
 #: data/core/help.cfg:290
 msgid "Save-loading"
-msgstr ""
+msgstr "Früheren Speicherstand laden"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
@@ -2085,6 +2085,13 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
+"\n"
+"Eine der Herausforderungen des Spiels liegt im Schutz Eurer Helden. Kleine "
+"Risiken sind schnell aufaddiert: wenn fünf Eurer Einheiten jede Runde einer "
+"1-prozentigen Todeswahrscheinlichkeit ausgesetzt sind, so könnt Ihr "
+"<italic>text='erwarten'</italic>, dass ungefähr alle 20 Runden eine von "
+"ihnen stirbt. Ihr würdet es also nur selten durch ein Szenario schaffen, "
+"ohne dass dies geschieht."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
@@ -2097,6 +2104,14 @@ msgid ""
 "the game, but we recommend against reloading merely to try the same strategy "
 "again while hoping for better luck."
 msgstr ""
+"Zufall gehört zu Wesnoth. Angriffe können verfehlen und Einheiten können "
+"durch Pech sterben. Dies ist ein erwarteter Teil des Spiels und eines seiner "
+"Ziele ist, dass ausreichend gute Spieler in der Lage sind, alle offiziellen "
+"Kampagnen auf schwer ohne das Laden alter Speicherstände abzuschließen. Zu "
+"einem früheren Zug zurückzugehen, um eine andere Strategie auszuprobieren, "
+"gehört dazu, wenn man das Spiel lernt. Aber wir empfehlen, keine Züge neu zu "
+"laden, nur um die gleiche Strategie erneut zu versuchen und auf besseres "
+"Glück zu hoffen."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:293
@@ -2107,6 +2122,12 @@ msgid ""
 "1.15.x series before 1.16.0 please assume that the forum threads are more "
 "authoritative than the text on this page."
 msgstr ""
+"\n"
+"\n"
+"Die Folgenden Punkte werden aktuell in den Foren diskutiert. Zumindest für "
+"die 1.15.x-Reihe, bevor 1.16.0 veröffentlicht wird, sollte angenommen "
+"werden, dass die Foren-Themen aussagekräftiger sind, als die Aussagen dieser "
+"Seite."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:295
@@ -2122,6 +2143,17 @@ msgid ""
 "• There are more experience points available than on easy, and the player "
 "will be able to train enough troops to cope with losing some L2 or L3 units."
 msgstr ""
+"\n"
+"\n"
+"Für die offiziellen Kampagnen auf schwer:\n"
+"• Ein ausreichend guter Spieler hat eine gute Chance, jedes Szenario im "
+"ersten Versuch zu bewältigen, ohne vorher zu Wissen, was in diesem "
+"passiert.\n"
+"• Dies steht unter der Annahme, dass der Spieler alle Hinweise, die durch "
+"Charakter-Unterhaltungen gegeben werden, bemerkt.\n"
+"• Es stehen mehr Erfahrungspunkte zur Verfügung als auf leicht und der "
+"Spieler wird in der Lage sein, mehr Einheiten aufsteigen zu lassen, um "
+"Verluste von Level 2 und 3 Einheiten ausgleichen zu können."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:300
@@ -2131,11 +2163,15 @@ msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
+"\n"
+"\n"
+"Dennoch gilt: Wesnoth ist ein Spiel; die beste Art, es zu spielen, ist die, "
+"die Euch die meiste Freude macht!"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:307
 msgid "Learning from Losses"
-msgstr ""
+msgstr "Aus Niederlagen lernen"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:308
@@ -2145,6 +2181,10 @@ msgid ""
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
 msgstr ""
+"<italic>text='Warum habe ich dieses Szenario verloren?'</italic>\n"
+"\n"
+"Mit am schwersten in Wesnoth ist es, zu verstehen, warum ein Szenario in "
+"einer Niederlage geendet hat."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:310
@@ -2156,6 +2196,14 @@ msgid ""
 "from your mistakes: watch the replay, try to understand what you did wrong, "
 "then <ref>dst='saveload' text='restart the scenario'</ref> and try again."
 msgstr ""
+"\n"
+"\n"
+"Wenn Ihr zum ersten Mal Wesnoth spielt, werdet ihr voraussichtlich einige "
+"Szenarios verlieren. Das ist normal und gehört zum Lernen des Spiels dazu. "
+"Wenn es passiert, versucht, aus Euren Fehlern zu lernen: schaut Euch die "
+"Aufzeichnung an, versucht zu verstehen, was Ihr falsch gemacht habt, dann "
+"<ref>dst='saveload' text='startet das Szenario noch einmal'</ref> und "
+"versucht es erneut."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:312
@@ -2164,6 +2212,9 @@ msgid ""
 "\n"
 "Some common reasons for losing a scenario are:"
 msgstr ""
+"\n"
+"\n"
+"Einige übliche Gründe für Szenario-Niederlagen sind:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:314
@@ -2173,6 +2224,11 @@ msgid ""
 "• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
 "level'</ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
+"\n"
+"\n"
+"• Eine Kampagne auf zu hohem <ref>dst='..gameplay' "
+"text='Schwierigkeitsgrad'</ref> zu spielen. Versucht das Szenario auf einem "
+"einfacheren Schwierigkeitsgrad nochmal."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:316
@@ -2183,6 +2239,12 @@ msgid ""
 "fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
 "taking advantage of terrain features or units’ special abilities, and so on."
 msgstr ""
+"\n"
+"\n"
+"• Verfolgen einer schlechten Strategie: zum Beispiel das Rekrutieren der "
+"falschen Einheiten, Kämpfen zur falschen <ref>dst='time_of_day' "
+"text='Tageszeit'</ref>, Geländeeigenschaften oder Spezialfähigkeiten von "
+"Einheiten nicht ausnutzen und so weiter."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:318
@@ -2194,6 +2256,12 @@ msgid ""
 "it. If you have a loyal mage on your side, take the time to listen to its "
 "advice; it may save your life."
 msgstr ""
+"\n"
+"\n"
+"• Fehlende Hinweise. Oft finden sich in Geschichte und Dialogen der Kampagne "
+"Fingerzeige darauf, was in einem schweren Szenario zu erwarten ist und wie "
+"man sich darauf vorbereiten kann. Habt Ihr einen loyalen Magier an Eurer "
+"Seite, so hört auf seinen Rat; es könnte Euch das Leben retten."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:320
@@ -2211,6 +2279,20 @@ msgid ""
 "change to an easier difficulty. (However, remember that <italic>text='some'</"
 "italic> losses are expected, particularly at higher difficulties.)"
 msgstr ""
+"\n"
+"\n"
+"• Ein knapp errungener Sieg im vorhergehenden Szenario. Auf allen außer der "
+"leichtesten Schwierigkeitsstufe wird in Kampagnen davon ausgegangen, dass "
+"Ihr etwas <italic>text='Bonusgold'</italic> und einige aufgestiegene "
+"Einheiten auf eurer <italic>text='Einberufungsliste'</italic> habt. (Diese "
+"Konzepte werden in der Einführung erklärt.) Wenn Ihr ein Szenario gewinnt, "
+"aber dabei die meisten Eurer aufgestiegenen Einheiten und große Teile eures "
+"Goldes verliert, wird das folgende Szenario selbst für erfahrene Spieler "
+"schwer zu gewinnen sein. Findet Ihr euch in dieser Situation wieder, "
+"empfiehlt es sich, ein oder zwei Szenarios zurückzugehen und zu versuchen, "
+"diese entscheidender zu gewinnen. (Behaltet jedoch im Hinterkopf, dass "
+"<italic>text='einige'</italic> Verluste immer zu erwarten sind, insbesondere "
+"auf höheren Schwierigkeitsstufen.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:322
@@ -2224,14 +2306,18 @@ msgid ""
 "carryover for the next scenario. (This would be an example of “barely "
 "scraping a victory”.)"
 msgstr ""
+"\n"
+"\n"
+"Schlechte Gold-Verwaltung. Auf höheren Schwierigkeitsstufen wird das "
+"Verwalten Eures Goldes - Einnehmen von Dörfern, um das Einkommen zu erhöhen, "
+"und die Verwendung niedrigstufiger und frisch rekrutierter Einheiten, um "
+"Ausgaben niedrig zu halten - zunehmend wichtig. Verwendet Ihr viele "
+"hochstufige Einheiten, gewinnt ihr möglicherweise ein Szenario leicht, habt "
+"aber nicht genug Bonusgold für das nächste Szenario. (Dies ist ein Beispiel "
+"für einen »knapp errungenen Sieg«.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:324
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Cores'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2239,7 +2325,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kerne'</header>"
+"<header>text='Seltene Ursachen'</header>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:326
@@ -2249,6 +2335,10 @@ msgid ""
 "In addition to the common reasons, listed above, there are a few other "
 "reasons which are unlikely, though not impossible. They are:"
 msgstr ""
+"\n"
+"\n"
+"Zusätzlich zu den üblichen Ursachen, die weiter oben aufgeführt werden, gibt "
+"es einige, die selten auftreten, aber nicht unmöglich sind. Dies sind:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:328
@@ -2259,6 +2349,11 @@ msgid ""
 "anticipate, and ended up with a set of high-level units not suitable for the "
 "next scenario."
 msgstr ""
+"\n"
+"\n"
+"• Ihr habt möglicherweise eine Strategie verfolgt, die von den Entwicklern "
+"der Kampagne nicht vorausgesehen wurde, und habt lediglich eine Gruppe "
+"hochstufiger Einheiten, die für das nächste Szenario nicht geeignet sind."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:330
@@ -2272,6 +2367,15 @@ msgid ""
 "the highest difficulties. Requiring above-average luck, however, would "
 "qualify as a bug.)"
 msgstr ""
+"\n"
+"\n"
+"• Ihr seid auf ein Szenario gestoßen, dass nur im zweiten oder dritten "
+"Anlauf gewonnen werden kann, ob das nun an der Notwendigkeit "
+"überdurchschnittlichen Glücks oder einer Erwartung an Spieler liegt, bereits "
+"Vorwissen mitzubringen - zu wissen, welche Überraschungen kommen, bevor sie "
+"auftreten. (Es wird diskutiert, ob Vorwissen für die höchsten "
+"Schwierigkeitsstufen erwartet werden kann. Die Notwendigkeit "
+"überdurchschnittlichen Glücks hingegen wäre als Gestaltungsfehler zu werten.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:332
@@ -2291,6 +2395,20 @@ msgid ""
 "luck. It is only exceedingly bad luck, over multiple turns, that we mean "
 "here."
 msgstr ""
+"\n"
+"\n"
+"• Ungewöhnliches Pech. Ob Angriffe treffen oder verfehlen ist zufällig. "
+"Daher kann es passieren, dass Gegner großes Glück haben und viele Treffer "
+"landen, während Ihr häufig verfehlt. Dies tritt jedoch selten auf und kann "
+"praktisch nur in den kürzesten, kleinsten Szenarios passieren. Für "
+"gewöhnlich sind Niederlagen eher auf <italic>text='schlechte'</italic> "
+"Strategien der Spieler bei <italic>text='überdurchschnittlichem'</italic> "
+"Glück zurückzuführen als auf <italic>text='gute'</italic> Strategien mit "
+"<italic>text='unterdurchschnittlichem'</italic> Glück. Weiterhin gilt, dass "
+"lediglich »unterdurchschnittliches« Glück zu haben eine Niederlage nicht "
+"erklärt; Pech zu haben ist völlig normal und Szenarios sind darauf "
+"ausgelegt, auch bei unterdurchschnittlichem Glück gewinnbar zu sein. Es sind "
+"ausschließlich mehrere Züge andauernde Pechsträhnen, die hier gemeint sind."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:334
@@ -2303,6 +2421,13 @@ msgid ""
 "indicative of a bug in the campaign. However, if you still think you found a "
 "bug, then by all means, report it!"
 msgstr ""
+"\n"
+"\n"
+"Sei vorsichtig, Niederlagen auf eine dieser Ursachen zurückzuführen. Wenn "
+"Ihr kein altgedienter Spieler seid, wurden Eure Niederlagen eher durch einen "
+"der <italic>text='üblichen'</italic> Fehler, die oben aufgelistet sind, "
+"verursacht und ist kein Hinweis auf einen Fehler der Kampagne. Solltet Ihr "
+"es dennoch für einen Fehler halten, tut Euch keinen Zwang an, dies zu melden!"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:336
@@ -2315,6 +2440,13 @@ msgid ""
 "strategic mistakes, or small bits of luck at critical points in the "
 "engagement."
 msgstr ""
+"\n"
+"\n"
+"Der Dialog »Schadensberechnung« zeigt einige Statistiken, die dabei helfen "
+"können, zu bestimmen, ob ein Kampf besonders glücklich oder unglücklich "
+"ausging. Die Statistiken anzuschauen ist jedoch kein Ersatz dafür, die "
+"Aufzeichnung durchzugehen und nach strategischen Fehlern oder kleinen "
+"(Un-)Glücksmomenten in kritischen Phasen Ausschau zu halten."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:345
@@ -2776,7 +2908,8 @@ msgstr ""
 "\n"
 "• <bold>text='Dörfer'</bold>: befindet sich eine Einheit zu Beginn ihres "
 "Zuges in einem Dorf oder einer <ref>dst='terrain_oasis' text='Oase'</ref> "
-"erhält sie 8 LP zurück. Falls sie vergiftet ist wird dies stattdessen kurier"
+"erhält sie 8 LP zurück. Falls sie vergiftet ist wird dies stattdessen "
+"kuriert."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:429
@@ -5167,9 +5300,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Diese Einheiten bestehen aus Energie oder Urstoffen (Wasser, Feuer, "
-"Stein ...), zusätzliche Charakteristiken haben sie in aller Regel nicht und "
-"Gift, Lebensentzug oder Untote Plage zeigen keine Wirkung."
+"Diese Einheiten bestehen aus Energie oder Urstoffen (Wasser, Feuer, Stein "
+"…), zusätzliche Charakteristiken haben sie in aller Regel nicht und Gift, "
+"Lebensentzug oder Untote Plage zeigen keine Wirkung."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:80
@@ -6245,6 +6378,7 @@ msgstr "Mensch (Wüstenvolk)"
 msgid "race+plural^Dunefolk"
 msgstr "Menschen (Wüstenvolk)"
 
+# Zusätzliche Anmerkung im Deutschen, um den Namen »Wüstenvolk« auch unterzubringen
 #. [race]: id=dunefolk
 #: data/core/units.cfg:211
 msgid ""
@@ -6358,12 +6492,14 @@ msgstr ""
 "Flügeln, den Wyvern, ermöglicht ihre Synergie mit diesen Kreaturen eine "
 "große Vielseitigkeit im Kampf. Die Ursprünge dieser Praxis liegen "
 "wahrscheinlich im Erbe der fernen Vergangenheit des Dünenvolks in den "
-"exotischen, weit entfernten Ecken von Irdya."
+"exotischen, weit entfernten Ecken von Irdya.\n"
+"\n"
+"Gemeinhin wird das Dünenvolk auch als dan Wüstenvolk bezeichnet."
 
 #. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:236
 msgid "This race does not have a description yet."
-msgstr "Eine Beschreibung dieser Ethnie ist derzeit noch in Bearbeitung."
+msgstr "Siege die Beschreibung des Wüstenvolkes für diese Spezies."
 
 #. [race]: id=lizard
 #: data/core/units.cfg:247
@@ -7015,7 +7151,7 @@ msgstr ""
 "Was treibt ein des Willens beraubtes Wesen, selbständig und unabhängig den "
 "Befehl seines Meisters auszuführen? Nur eines weiß man – Nekromanten müssen "
 "sich nur sehr selten – ein einziges Mal vielleicht nach Ablauf mehrerer "
-"Monde – des Gehorsams ihrer Sklaven rückversichern...\n"
+"Monde – des Gehorsams ihrer Sklaven rückversichern…\n"
 " \n"
 "Totenbeschwörung wird fast ausschließlich von Menschen betrieben. Selbst in "
 "den Legenden zaubermächtigerer Rassen wie den Elfen oder das Meervolk finden "
