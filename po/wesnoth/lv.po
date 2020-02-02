@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 21:01-0300\n"
+"POT-Creation-Date: 2020-02-01 22:39-0300\n"
 "PO-Revision-Date: 2015-08-08 13:56+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -5160,7 +5160,7 @@ msgid "Do you really wish to continue?"
 msgstr "Vai tiešām vēlies turpināt?"
 
 #: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:248
+#: src/game_initialization/multiplayer.cpp:240
 msgid "Confirm"
 msgstr "Apstiprināt"
 
@@ -5939,7 +5939,7 @@ msgstr "Nav atrasta ēra $era"
 msgid "Connection timed out"
 msgstr "Iestājās savienojuma noilgums"
 
-#: src/game_initialization/multiplayer.cpp:126
+#: src/game_initialization/multiplayer.cpp:127
 #, fuzzy
 #| msgid ""
 #| "The server accepts versions '$version1' while you are using version "
@@ -5950,11 +5950,11 @@ msgid ""
 msgstr ""
 "Serverim nepieciešama versija '$version1', tu lieto versiju '$version2'"
 
-#: src/game_initialization/multiplayer.cpp:136
+#: src/game_initialization/multiplayer.cpp:137
 msgid "Server-side redirect loop"
 msgstr "Servera puses pārvirzīšanas cilpa"
 
-#: src/game_initialization/multiplayer.cpp:221
+#: src/game_initialization/multiplayer.cpp:213
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -5964,29 +5964,29 @@ msgstr ""
 "esi aktivizējis savu kontu caur e-pastu vai paprasījis administratoram to "
 "izdarīt tavā vietā."
 
-#: src/game_initialization/multiplayer.cpp:230
+#: src/game_initialization/multiplayer.cpp:222
 msgid "Do you want to continue?"
 msgstr "Vai vēlies turpināt?"
 
-#: src/game_initialization/multiplayer.cpp:232
+#: src/game_initialization/multiplayer.cpp:224
 msgid "Warning"
 msgstr "Brīdinājums"
 
-#: src/game_initialization/multiplayer.cpp:275
-#: src/game_initialization/multiplayer.cpp:291
-#: src/game_initialization/multiplayer.cpp:294
+#: src/game_initialization/multiplayer.cpp:267
+#: src/game_initialization/multiplayer.cpp:283
+#: src/game_initialization/multiplayer.cpp:286
 msgid "Bad data received from server"
 msgstr "No servera saņemti slikti dati"
 
-#: src/game_initialization/multiplayer.cpp:327
+#: src/game_initialization/multiplayer.cpp:319
 msgid "You must login first."
 msgstr "Vispirms ir jāautorizējas."
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:321
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Lietotājvārds '$nick' jau ir aizņemts."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:323
 #, fuzzy
 #| msgid ""
 #| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
@@ -5998,47 +5998,47 @@ msgstr ""
 "Lietotājvārds '$nick' satur neatļautas zīmes. Ir atļauti tikai burti, "
 "cipari, zemsvītras un domuzīmes."
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:327
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Lietotājvārds '$nick' ir pārāk garš. Lietotājvārds nedrīkst būt garāks par "
 "20 zīmēm."
 
-#: src/game_initialization/multiplayer.cpp:338
+#: src/game_initialization/multiplayer.cpp:330
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Lietotājvārds '$nick' ir rezervēts, un spēlētāji to nevar izmantot."
 
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:332
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Lietotājvārds '$nick' nav reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:333
 msgid " This server disallows unregistered nicknames."
 msgstr " Šis serveris neatļauj nereģistrētus lietotājvārdus."
 
-#: src/game_initialization/multiplayer.cpp:344
+#: src/game_initialization/multiplayer.cpp:336
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:346
+#: src/game_initialization/multiplayer.cpp:338
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:350
+#: src/game_initialization/multiplayer.cpp:342
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:352
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:356
+#: src/game_initialization/multiplayer.cpp:348
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
@@ -6046,19 +6046,19 @@ msgid ""
 "for $duration|."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:358
+#: src/game_initialization/multiplayer.cpp:350
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:361
-#: src/game_initialization/multiplayer.cpp:363
+#: src/game_initialization/multiplayer.cpp:353
+#: src/game_initialization/multiplayer.cpp:355
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:364
+#: src/game_initialization/multiplayer.cpp:356
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6066,17 +6066,17 @@ msgstr ""
 "BRĪDINĀJUMS: Viens lietotājs jau izmanto šo lietotājvārdu, ielogojošanās "
 "izsauks tā lietotāja izmešanu!"
 
-#: src/game_initialization/multiplayer.cpp:367
+#: src/game_initialization/multiplayer.cpp:359
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Kļūda žurnalēšanas procedūrā (serverim nebija atbildes tavam savienojumam)."
 
-#: src/game_initialization/multiplayer.cpp:370
+#: src/game_initialization/multiplayer.cpp:362
 msgid "The password you provided was incorrect."
 msgstr "Tevis ierakstītā parole bija nepareiza."
 
-#: src/game_initialization/multiplayer.cpp:372
+#: src/game_initialization/multiplayer.cpp:364
 msgid "You have made too many login attempts."
 msgstr "Tu esi veicis pārāk lielu skaitu autentifikācijas mēģinājumu."
 

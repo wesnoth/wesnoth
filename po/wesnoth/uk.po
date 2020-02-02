@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 21:01-0300\n"
+"POT-Creation-Date: 2020-02-01 22:39-0300\n"
 "PO-Revision-Date: 2019-04-18 00:31+0300\n"
 "Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
 "Language-Team: \n"
@@ -5420,7 +5420,7 @@ msgid "Do you really wish to continue?"
 msgstr "Ви дійсно хочете продовжити?"
 
 #: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:248
+#: src/game_initialization/multiplayer.cpp:240
 msgid "Confirm"
 msgstr "Підтвердити"
 
@@ -6177,7 +6177,7 @@ msgstr "Не вдалось знайти еру $era"
 msgid "Connection timed out"
 msgstr "Перевищена межа часу під'єднання"
 
-#: src/game_initialization/multiplayer.cpp:126
+#: src/game_initialization/multiplayer.cpp:127
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6185,11 +6185,11 @@ msgstr ""
 "Серверу потрібна версія '$required_version' тоді як Ви використовуєте версію "
 "'$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:136
+#: src/game_initialization/multiplayer.cpp:137
 msgid "Server-side redirect loop"
 msgstr "Циклічне перенаправлення з боку сервера"
 
-#: src/game_initialization/multiplayer.cpp:221
+#: src/game_initialization/multiplayer.cpp:213
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6199,29 +6199,29 @@ msgstr ""
 "не активуєте свій акаунт по email або не попросите адміністратора зробити це "
 "за Вас."
 
-#: src/game_initialization/multiplayer.cpp:230
+#: src/game_initialization/multiplayer.cpp:222
 msgid "Do you want to continue?"
 msgstr "Ви хочете продовжити?"
 
-#: src/game_initialization/multiplayer.cpp:232
+#: src/game_initialization/multiplayer.cpp:224
 msgid "Warning"
 msgstr "Попередження"
 
-#: src/game_initialization/multiplayer.cpp:275
-#: src/game_initialization/multiplayer.cpp:291
-#: src/game_initialization/multiplayer.cpp:294
+#: src/game_initialization/multiplayer.cpp:267
+#: src/game_initialization/multiplayer.cpp:283
+#: src/game_initialization/multiplayer.cpp:286
 msgid "Bad data received from server"
 msgstr "Сервер прислав невірні дані"
 
-#: src/game_initialization/multiplayer.cpp:327
+#: src/game_initialization/multiplayer.cpp:319
 msgid "You must login first."
 msgstr "Спочатку ввійдіть."
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:321
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Прізвисько '$nick' вже зайняте."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:323
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6229,43 +6229,43 @@ msgstr ""
 "Нік '$nick' містить заборонені символи. Дозволені лише алфавітно-цифрові "
 "символи (не менше одного), знаки підкреслення і дефіси."
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:327
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "Нік '$nick' занадто довгий. Ники має бути не довший 20 символів."
 
-#: src/game_initialization/multiplayer.cpp:338
+#: src/game_initialization/multiplayer.cpp:330
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Нік '$nick' зарезервований, його не можна використовувати."
 
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:332
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Нік '$nick' на цьому сервері не зареєстрований."
 
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:333
 msgid " This server disallows unregistered nicknames."
 msgstr " Цей сервер не дозволяє використовувати незареєстровані ніки."
 
-#: src/game_initialization/multiplayer.cpp:344
+#: src/game_initialization/multiplayer.cpp:336
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Нік '$nick' заблокований на форумі цього серверу."
 
-#: src/game_initialization/multiplayer.cpp:346
+#: src/game_initialization/multiplayer.cpp:338
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Нік '$nick' заблокований на форумі цього серверу."
 
-#: src/game_initialization/multiplayer.cpp:350
+#: src/game_initialization/multiplayer.cpp:342
 #, fuzzy
 #| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Ваша IP адреса заблокована на форумі цього серверу."
 
-#: src/game_initialization/multiplayer.cpp:352
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Ваша IP адреса заблокована на форумі цього серверу."
 
-#: src/game_initialization/multiplayer.cpp:356
+#: src/game_initialization/multiplayer.cpp:348
 #, fuzzy
 #| msgid ""
 #| "The email address for the nickname ‘$nick’ is banned on this server’s "
@@ -6275,17 +6275,17 @@ msgid ""
 "for $duration|."
 msgstr "E-mail адреса для ніку '$nick' заблокована на форумі цього серверу."
 
-#: src/game_initialization/multiplayer.cpp:358
+#: src/game_initialization/multiplayer.cpp:350
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "E-mail адреса для ніку '$nick' заблокована на форумі цього серверу."
 
-#: src/game_initialization/multiplayer.cpp:361
-#: src/game_initialization/multiplayer.cpp:363
+#: src/game_initialization/multiplayer.cpp:353
+#: src/game_initialization/multiplayer.cpp:355
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Нік '$nick' зареєстрований на цьому сервері."
 
-#: src/game_initialization/multiplayer.cpp:364
+#: src/game_initialization/multiplayer.cpp:356
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6293,16 +6293,16 @@ msgstr ""
 "УВАГА: Один з клієнтів вже використовує цей нік, якщо Ви під ним "
 "залогінитесь, інший буде копнутий!"
 
-#: src/game_initialization/multiplayer.cpp:367
+#: src/game_initialization/multiplayer.cpp:359
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Помилка при вході (сервер не відповідає на ваше підключення)."
 
-#: src/game_initialization/multiplayer.cpp:370
+#: src/game_initialization/multiplayer.cpp:362
 msgid "The password you provided was incorrect."
 msgstr "Ви ввели неправильний пароль."
 
-#: src/game_initialization/multiplayer.cpp:372
+#: src/game_initialization/multiplayer.cpp:364
 msgid "You have made too many login attempts."
 msgstr "Ви намагалися увійти надто багато разів."
 

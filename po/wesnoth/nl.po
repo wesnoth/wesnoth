@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 21:01-0300\n"
+"POT-Creation-Date: 2020-02-01 22:39-0300\n"
 "PO-Revision-Date: 2019-11-25 21:51+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -5457,7 +5457,7 @@ msgid "Do you really wish to continue?"
 msgstr "Weet je zeker dat je wilt verdergaan?"
 
 #: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:248
+#: src/game_initialization/multiplayer.cpp:240
 msgid "Confirm"
 msgstr "Bevestigen"
 
@@ -6213,17 +6213,17 @@ msgstr "Kan tijdperk $era niet vinden"
 msgid "Connection timed out"
 msgstr "Verbinding time-out"
 
-#: src/game_initialization/multiplayer.cpp:126
+#: src/game_initialization/multiplayer.cpp:127
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr "De server vereist versie '$version1'. Jij hebt versie '$version2'."
 
-#: src/game_initialization/multiplayer.cpp:136
+#: src/game_initialization/multiplayer.cpp:137
 msgid "Server-side redirect loop"
 msgstr "Server-side verwijzingslus"
 
-#: src/game_initialization/multiplayer.cpp:221
+#: src/game_initialization/multiplayer.cpp:213
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6233,29 +6233,29 @@ msgstr ""
 "je account hebt geactiveerd via e-mail of een administrator hebt gevraagd "
 "did voor je te doen."
 
-#: src/game_initialization/multiplayer.cpp:230
+#: src/game_initialization/multiplayer.cpp:222
 msgid "Do you want to continue?"
 msgstr "Wil je verdergaan?"
 
-#: src/game_initialization/multiplayer.cpp:232
+#: src/game_initialization/multiplayer.cpp:224
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: src/game_initialization/multiplayer.cpp:275
-#: src/game_initialization/multiplayer.cpp:291
-#: src/game_initialization/multiplayer.cpp:294
+#: src/game_initialization/multiplayer.cpp:267
+#: src/game_initialization/multiplayer.cpp:283
+#: src/game_initialization/multiplayer.cpp:286
 msgid "Bad data received from server"
 msgstr "Slechte gegevens ontvangen van de server"
 
-#: src/game_initialization/multiplayer.cpp:327
+#: src/game_initialization/multiplayer.cpp:319
 msgid "You must login first."
 msgstr "Je moet eerst inloggen."
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:321
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "De bijnaam '$nick' is al in gebruik."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:323
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6263,42 +6263,42 @@ msgstr ""
 "De bijnaam '$nick' bevat ongeldige tekens. Alleen alfanumerieke tekens "
 "(minimaal één), underscores ('_') en koppeltekens ('-') zijn toegestaan."
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:327
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "De bijnaam '$nick' is te lang. Bijnamen moeten 20 tekens lang of korter zijn."
 
-#: src/game_initialization/multiplayer.cpp:338
+#: src/game_initialization/multiplayer.cpp:330
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "De bijnaam '$nick' is gereserveerd en kan niet door spelers worden gebruikt."
 
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:332
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "De bijnaam '$nick' is niet geregistreerd op deze server."
 
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:333
 msgid " This server disallows unregistered nicknames."
 msgstr " Deze server staat geen ongeregistreerde bijnamen toe."
 
-#: src/game_initialization/multiplayer.cpp:344
+#: src/game_initialization/multiplayer.cpp:336
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 "De bijnaam '$nick' is verbannen van deze server forums voor $duration|."
 
-#: src/game_initialization/multiplayer.cpp:346
+#: src/game_initialization/multiplayer.cpp:338
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "De bijnaam '$nick' is verbannen van deze server forums."
 
-#: src/game_initialization/multiplayer.cpp:350
+#: src/game_initialization/multiplayer.cpp:342
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Je IP-adres is verbannen van deze server forums voor duration."
 
-#: src/game_initialization/multiplayer.cpp:352
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Je IP-adres is verbannen van deze server forums."
 
-#: src/game_initialization/multiplayer.cpp:356
+#: src/game_initialization/multiplayer.cpp:348
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -6306,18 +6306,18 @@ msgstr ""
 "Het e-mailadres voor de bijnaam '$nick' is verbannen van de server forums "
 "voor $duration|."
 
-#: src/game_initialization/multiplayer.cpp:358
+#: src/game_initialization/multiplayer.cpp:350
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "Het e-mailadres voor de bijnaam '$nick' is verbannen van de server forums."
 
-#: src/game_initialization/multiplayer.cpp:361
-#: src/game_initialization/multiplayer.cpp:363
+#: src/game_initialization/multiplayer.cpp:353
+#: src/game_initialization/multiplayer.cpp:355
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "De bijnaam '$nick' is geregistreerd op deze server."
 
-#: src/game_initialization/multiplayer.cpp:364
+#: src/game_initialization/multiplayer.cpp:356
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6325,17 +6325,17 @@ msgstr ""
 "WAARSCHUWING: Er is al een gebruiker met deze bijnaam, inloggen zal deze van "
 "de server schoppen!"
 
-#: src/game_initialization/multiplayer.cpp:367
+#: src/game_initialization/multiplayer.cpp:359
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Fout in de loginprocedure (de server had geen bron voor jouw verbinding)."
 
-#: src/game_initialization/multiplayer.cpp:370
+#: src/game_initialization/multiplayer.cpp:362
 msgid "The password you provided was incorrect."
 msgstr "Het wachtwoord dat je hebt ingevuld was niet correct."
 
-#: src/game_initialization/multiplayer.cpp:372
+#: src/game_initialization/multiplayer.cpp:364
 msgid "You have made too many login attempts."
 msgstr "Je hebt te veel aanmeldpogingen gedaan."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 21:01-0300\n"
+"POT-Creation-Date: 2020-02-01 22:39-0300\n"
 "PO-Revision-Date: 2019-11-04 23:52-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -7719,7 +7719,7 @@ msgstr "Você realmente deseja continuar?"
 # File: src/addon/manager_ui.cpp, line: 970
 # File: src/multiplayer.cpp, line: 272
 #: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:248
+#: src/game_initialization/multiplayer.cpp:240
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -9188,7 +9188,7 @@ msgstr "A conexão expirou"
 # File: src/multiplayer.cpp, line: 177
 # File: src/multiplayer.cpp, line: 177
 # File: src/multiplayer.cpp, line: 177
-#: src/game_initialization/multiplayer.cpp:126
+#: src/game_initialization/multiplayer.cpp:127
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -9200,7 +9200,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 188
 # File: src/multiplayer.cpp, line: 188
 # File: src/multiplayer.cpp, line: 188
-#: src/game_initialization/multiplayer.cpp:136
+#: src/game_initialization/multiplayer.cpp:137
 msgid "Server-side redirect loop"
 msgstr "Redirecionamento em loop do servidor"
 
@@ -9208,7 +9208,7 @@ msgstr "Redirecionamento em loop do servidor"
 # File: src/multiplayer.cpp, line: 247
 # File: src/multiplayer.cpp, line: 247
 # File: src/multiplayer.cpp, line: 247
-#: src/game_initialization/multiplayer.cpp:221
+#: src/game_initialization/multiplayer.cpp:213
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -9222,7 +9222,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 256
 # File: src/multiplayer.cpp, line: 256
 # File: src/multiplayer.cpp, line: 256
-#: src/game_initialization/multiplayer.cpp:230
+#: src/game_initialization/multiplayer.cpp:222
 msgid "Do you want to continue?"
 msgstr "Você deseja continuar?"
 
@@ -9230,7 +9230,7 @@ msgstr "Você deseja continuar?"
 # File: src/multiplayer.cpp, line: 258
 # File: src/multiplayer.cpp, line: 258
 # File: src/multiplayer.cpp, line: 258
-#: src/game_initialization/multiplayer.cpp:232
+#: src/game_initialization/multiplayer.cpp:224
 msgid "Warning"
 msgstr "Atenção"
 
@@ -9238,9 +9238,9 @@ msgstr "Atenção"
 # File: src/multiplayer.cpp, line: 302
 # File: src/multiplayer.cpp, line: 302
 # File: src/multiplayer.cpp, line: 302
-#: src/game_initialization/multiplayer.cpp:275
-#: src/game_initialization/multiplayer.cpp:291
-#: src/game_initialization/multiplayer.cpp:294
+#: src/game_initialization/multiplayer.cpp:267
+#: src/game_initialization/multiplayer.cpp:283
+#: src/game_initialization/multiplayer.cpp:286
 msgid "Bad data received from server"
 msgstr "Dados corrompidos recebido do servidor"
 
@@ -9248,7 +9248,7 @@ msgstr "Dados corrompidos recebido do servidor"
 # File: src/multiplayer.cpp, line: 343
 # File: src/multiplayer.cpp, line: 343
 # File: src/multiplayer.cpp, line: 343
-#: src/game_initialization/multiplayer.cpp:327
+#: src/game_initialization/multiplayer.cpp:319
 msgid "You must login first."
 msgstr "Você precisa logar primeiro."
 
@@ -9256,7 +9256,7 @@ msgstr "Você precisa logar primeiro."
 # File: src/multiplayer.cpp, line: 345
 # File: src/multiplayer.cpp, line: 345
 # File: src/multiplayer.cpp, line: 345
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:321
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "O apelido '$nick' já está sendo usado."
 
@@ -9264,7 +9264,7 @@ msgstr "O apelido '$nick' já está sendo usado."
 # File: src/multiplayer.cpp, line: 347
 # File: src/multiplayer.cpp, line: 347
 # File: src/multiplayer.cpp, line: 347
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:323
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -9276,7 +9276,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 351
 # File: src/multiplayer.cpp, line: 351
 # File: src/multiplayer.cpp, line: 351
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:327
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "O apelido '$nick' é muito grande. Apelidos precisam ter 20 caracteres ou "
@@ -9286,7 +9286,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 354
 # File: src/multiplayer.cpp, line: 354
 # File: src/multiplayer.cpp, line: 354
-#: src/game_initialization/multiplayer.cpp:338
+#: src/game_initialization/multiplayer.cpp:330
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "O apelido '$nick' está reservado e não pode ser usado por jogadores."
 
@@ -9294,7 +9294,7 @@ msgstr "O apelido '$nick' está reservado e não pode ser usado por jogadores."
 # File: src/multiplayer.cpp, line: 356
 # File: src/multiplayer.cpp, line: 356
 # File: src/multiplayer.cpp, line: 356
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:332
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "O apelido '$nick' não está registrado neste servidor."
 
@@ -9302,7 +9302,7 @@ msgstr "O apelido '$nick' não está registrado neste servidor."
 # File: src/multiplayer.cpp, line: 357
 # File: src/multiplayer.cpp, line: 357
 # File: src/multiplayer.cpp, line: 357
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:333
 msgid " This server disallows unregistered nicknames."
 msgstr " Este servidor não permite apelidos não registrados."
 
@@ -9313,7 +9313,7 @@ msgstr " Este servidor não permite apelidos não registrados."
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:344
+#: src/game_initialization/multiplayer.cpp:336
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 "O apelido '$nick' está banido nos fóruns deste servidor por $duration|."
@@ -9325,16 +9325,16 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:346
+#: src/game_initialization/multiplayer.cpp:338
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "O apelido '$nick' está banido nos fóruns deste servidor."
 
-#: src/game_initialization/multiplayer.cpp:350
+#: src/game_initialization/multiplayer.cpp:342
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
 "O seu endereço de IP está banido nos fóruns deste servidor por $duration|."
 
-#: src/game_initialization/multiplayer.cpp:352
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Your IP address is banned on this server’s forums."
 msgstr "O seu endereço de IP está banido nos fóruns deste servidor."
 
@@ -9345,7 +9345,7 @@ msgstr "O seu endereço de IP está banido nos fóruns deste servidor."
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:356
+#: src/game_initialization/multiplayer.cpp:348
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -9360,7 +9360,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:358
+#: src/game_initialization/multiplayer.cpp:350
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
@@ -9374,8 +9374,8 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:361
-#: src/game_initialization/multiplayer.cpp:363
+#: src/game_initialization/multiplayer.cpp:353
+#: src/game_initialization/multiplayer.cpp:355
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "O nick '$nick' está registrado neste servidor."
 
@@ -9383,7 +9383,7 @@ msgstr "O nick '$nick' está registrado neste servidor."
 # File: src/multiplayer.cpp, line: 362
 # File: src/multiplayer.cpp, line: 362
 # File: src/multiplayer.cpp, line: 362
-#: src/game_initialization/multiplayer.cpp:364
+#: src/game_initialization/multiplayer.cpp:356
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -9395,7 +9395,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 365
 # File: src/multiplayer.cpp, line: 365
 # File: src/multiplayer.cpp, line: 365
-#: src/game_initialization/multiplayer.cpp:367
+#: src/game_initialization/multiplayer.cpp:359
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
@@ -9406,7 +9406,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 368
 # File: src/multiplayer.cpp, line: 368
 # File: src/multiplayer.cpp, line: 368
-#: src/game_initialization/multiplayer.cpp:370
+#: src/game_initialization/multiplayer.cpp:362
 msgid "The password you provided was incorrect."
 msgstr "Você forneceu uma incorreta."
 
@@ -9415,7 +9415,7 @@ msgstr "Você forneceu uma incorreta."
 # File: src/multiplayer.cpp, line: 370
 # File: src/multiplayer.cpp, line: 370
 # File: src/multiplayer.cpp, line: 370
-#: src/game_initialization/multiplayer.cpp:372
+#: src/game_initialization/multiplayer.cpp:364
 msgid "You have made too many login attempts."
 msgstr "Você fez muitas tentativas de login."
 

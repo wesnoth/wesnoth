@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-26 00:01 UTC\n"
+"POT-Creation-Date: 2020-02-02 01:38 UTC\n"
 "PO-Revision-Date: 2019-01-27 20:27+0100\n"
 "Last-Translator: PaulP <paulp@hotmail.sk>\n"
 "Language-Team: none\n"
@@ -346,7 +346,7 @@ msgstr "Ubráň základňu"
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:213
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:445
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:155
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:463
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:465
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:158
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:118
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:107
@@ -372,7 +372,7 @@ msgstr "Zomrie Gweddry"
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:217
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:449
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:159
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:467
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:469
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:162
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:122
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:111
@@ -531,7 +531,7 @@ msgstr "Knutan"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:151
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:459
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:461
 msgid "Move Gweddry to the tunnel exit"
 msgstr "Dostaneš Gweddryho k východu z tunela"
 
@@ -607,7 +607,8 @@ msgstr ""
 "zaslúži pomoc."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:322
+#. shown only if the undead have arrived
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:323
 msgid ""
 "Thank you. Now, I invite you to join us. Undead have followed us into these "
 "caves, and they will kill you if you stay behind."
@@ -616,7 +617,8 @@ msgstr ""
 "týchto jaskýň, a zabijú ťa, ak zostaneš pozadu."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:328
+#. shown if the undead didn't show up yet
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:330
 msgid ""
 "Thank you. Now, I invite you to join us. Undead are in these lands, and they "
 "will find these caves."
@@ -625,7 +627,7 @@ msgstr ""
 "a nájdu tieto jaskyne."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:335
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:337
 msgid ""
 "My clan ha’ lived in these caves for centuries. We’ll no’ be scattered now "
 "by a few undead."
@@ -634,14 +636,14 @@ msgstr ""
 "nejakej tlupe nemŕtvych."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:340
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:342
 msgid ""
 "Very well. The best of luck in your battle. Gweddry, we may be able to avoid "
 "the bulk of the trolls by going through the dwarves’ tunnel."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:378
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:380
 msgid ""
 "It seems these trolls were hiding some gold. I think I can count fifty gold "
 "pieces!"
@@ -649,17 +651,17 @@ msgstr ""
 "Zdá sa, že trolovia skrývali nejaké zlato. Myslím, že som narátal 50 zlatých."
 
 #. [unit]: type=Necromancer, id=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:437
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:439
 msgid "Mal-Bakral"
 msgstr "Mal-Bakral"
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:447
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:449
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "Našli sme ťa, kopa mäsa! Priprav sa na smrť!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:452
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:454
 #, fuzzy
 #| msgid ""
 #| "They follow us... we must get out of this tunnel. It looks like it is "
@@ -675,7 +677,7 @@ msgstr ""
 "možnosť."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:489
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:491
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "Dosiahli sme koniec tunela. Nad nami vidím denné svetlo!"
 

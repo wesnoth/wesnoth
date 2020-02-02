@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-26 00:01 UTC\n"
+"POT-Creation-Date: 2020-02-02 01:38 UTC\n"
 "PO-Revision-Date: 2020-01-13 17:32+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -347,7 +347,7 @@ msgstr "Defend the outpost"
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:213
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:445
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:155
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:463
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:465
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:158
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:118
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:107
@@ -373,7 +373,7 @@ msgstr "Death of Gweddry"
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:217
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:449
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:159
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:467
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:469
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:162
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:122
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:111
@@ -534,7 +534,7 @@ msgstr "Knutan"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:151
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:459
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:461
 msgid "Move Gweddry to the tunnel exit"
 msgstr "Move Gweddry to the tunnel exit"
 
@@ -603,7 +603,8 @@ msgstr ""
 "them deserves some help, I think."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:322
+#. shown only if the undead have arrived
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:323
 msgid ""
 "Thank you. Now, I invite you to join us. Undead have followed us into these "
 "caves, and they will kill you if you stay behind."
@@ -612,7 +613,8 @@ msgstr ""
 "caves, and they will kill you if you stay behind."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:328
+#. shown if the undead didn't show up yet
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:330
 msgid ""
 "Thank you. Now, I invite you to join us. Undead are in these lands, and they "
 "will find these caves."
@@ -621,7 +623,7 @@ msgstr ""
 "will find these caves."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:335
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:337
 msgid ""
 "My clan ha’ lived in these caves for centuries. We’ll no’ be scattered now "
 "by a few undead."
@@ -630,7 +632,7 @@ msgstr ""
 "by a few undead."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:340
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:342
 msgid ""
 "Very well. The best of luck in your battle. Gweddry, we may be able to avoid "
 "the bulk of the trolls by going through the dwarves’ tunnel."
@@ -639,7 +641,7 @@ msgstr ""
 "the bulk of the trolls by going through the dwarves’ tunnel."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:378
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:380
 msgid ""
 "It seems these trolls were hiding some gold. I think I can count fifty gold "
 "pieces!"
@@ -648,17 +650,17 @@ msgstr ""
 "pieces!"
 
 #. [unit]: type=Necromancer, id=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:437
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:439
 msgid "Mal-Bakral"
 msgstr "Mal-Bakral"
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:447
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:449
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "We have found you, fleshbag! Prepare to die!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:452
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:454
 msgid ""
 "They follow us... we must escape through this tunnel. That is unfortunate, "
 "for it will take us into the Estmark hills, beyond the borders of Wesnoth. "
@@ -669,7 +671,7 @@ msgstr ""
 "But it is our only option."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:489
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:491
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "We have reached the end of the tunnel. I see daylight above us!"
 

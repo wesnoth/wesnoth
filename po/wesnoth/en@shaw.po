@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 21:01-0300\n"
+"POT-Creation-Date: 2020-02-01 22:39-0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -5162,7 +5162,7 @@ msgid "Do you really wish to continue?"
 msgstr "𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑿𐑼 𐑜𐑱𐑥?"
 
 #: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:248
+#: src/game_initialization/multiplayer.cpp:240
 msgid "Confirm"
 msgstr "𐑒𐑪𐑯𐑓𐑻𐑥"
 
@@ -5978,7 +5978,7 @@ msgstr "𐑒𐑨𐑯𐑪𐑑 𐑓𐑲𐑯𐑛 𐑽𐑩 $era"
 msgid "Connection timed out"
 msgstr "𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑑𐑲𐑥𐑛 𐑬𐑑"
 
-#: src/game_initialization/multiplayer.cpp:126
+#: src/game_initialization/multiplayer.cpp:127
 #, fuzzy
 #| msgid ""
 #| "The server requires version '$version1' while you are using version "
@@ -5988,46 +5988,46 @@ msgid ""
 "'$your_version'"
 msgstr "𐑞 𐑕𐑻𐑝𐑻 𐑮𐑦𐑒𐑢𐑲𐑼𐑟 𐑝𐑻𐑠𐑩𐑯 '$version1' 𐑢𐑲𐑤 𐑿 𐑸 𐑿𐑟𐑦𐑙 𐑝𐑻𐑠𐑩𐑯 '$version2'"
 
-#: src/game_initialization/multiplayer.cpp:136
+#: src/game_initialization/multiplayer.cpp:137
 msgid "Server-side redirect loop"
 msgstr "𐑕𐑻𐑝𐑻-𐑕𐑲𐑛 𐑮𐑰𐑛𐑻𐑧𐑒𐑑 𐑤𐑵𐑐"
 
-#: src/game_initialization/multiplayer.cpp:221
+#: src/game_initialization/multiplayer.cpp:213
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:230
+#: src/game_initialization/multiplayer.cpp:222
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
 msgstr "𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑿𐑼 𐑜𐑱𐑥?"
 
-#: src/game_initialization/multiplayer.cpp:232
+#: src/game_initialization/multiplayer.cpp:224
 #, fuzzy
 #| msgid "Warning: "
 msgid "Warning"
 msgstr "𐑢𐑹𐑯𐑦𐑙: "
 
-#: src/game_initialization/multiplayer.cpp:275
-#: src/game_initialization/multiplayer.cpp:291
-#: src/game_initialization/multiplayer.cpp:294
+#: src/game_initialization/multiplayer.cpp:267
+#: src/game_initialization/multiplayer.cpp:283
+#: src/game_initialization/multiplayer.cpp:286
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:327
+#: src/game_initialization/multiplayer.cpp:319
 msgid "You must login first."
 msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑤𐑪𐑜𐑦𐑯 𐑓𐑻𐑕𐑑."
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:321
 #, fuzzy
 #| msgid "The nick '$nick' is already taken."
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑑𐑱𐑒𐑩𐑯."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:323
 #, fuzzy
 #| msgid ""
 #| "The nick '$nick' contains invalid characters. Only alpha-numeric "
@@ -6039,52 +6039,52 @@ msgstr ""
 "𐑞 𐑯𐑦𐑒 '$nick' 𐑒𐑩𐑯𐑑𐑱𐑯𐑟 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑒𐑨𐑮𐑩𐑒𐑑𐑼𐑟. 𐑴𐑯𐑤𐑦 𐑨𐑤𐑓𐑩-𐑯𐑿𐑥𐑧𐑮𐑦𐑒 𐑒𐑨𐑮𐑩𐑒𐑑𐑼𐑟, 𐑩𐑯𐑛𐑻𐑕𐑒𐑹𐑟 "
 "𐑯 𐑣𐑲𐑓𐑧𐑯𐑕 𐑸 𐑩𐑤𐑬𐑛."
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:327
 #, fuzzy
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑑𐑵 𐑤𐑪𐑙. 𐑯𐑦𐑒𐑕 𐑥𐑳𐑕𐑑 𐑚𐑰 18 𐑒𐑨𐑮𐑩𐑒𐑑𐑼𐑟 𐑹 𐑤𐑧𐑕."
 
-#: src/game_initialization/multiplayer.cpp:338
+#: src/game_initialization/multiplayer.cpp:330
 #, fuzzy
 #| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑦𐑟𐑻𐑝𐑛 𐑯 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑫𐑸𐑹𐑴𐑖𐑱𐑿𐑟𐑛 𐑚𐑲 𐑐𐑤𐑱𐑼𐑟."
 
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:332
 #, fuzzy
 #| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑯𐑪𐑑 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:333
 #, fuzzy
 #| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
 msgstr "𐑞𐑦𐑕 𐑕𐑻𐑝𐑻 𐑛𐑦𐑕𐑩𐑤𐑬𐑕 𐑩𐑯𐑮𐑧𐑡𐑦𐑕𐑑𐑻𐑛 𐑯𐑦𐑒𐑕."
 
-#: src/game_initialization/multiplayer.cpp:344
+#: src/game_initialization/multiplayer.cpp:336
 #, fuzzy
 #| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/game_initialization/multiplayer.cpp:346
+#: src/game_initialization/multiplayer.cpp:338
 #, fuzzy
 #| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/game_initialization/multiplayer.cpp:350
+#: src/game_initialization/multiplayer.cpp:342
 #, fuzzy
 #| msgid "The nick '$nick' is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/game_initialization/multiplayer.cpp:352
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:356
+#: src/game_initialization/multiplayer.cpp:348
 #, fuzzy
 #| msgid "The nick '$nick' is registered on this server."
 msgid ""
@@ -6092,21 +6092,21 @@ msgid ""
 "for $duration|."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/game_initialization/multiplayer.cpp:358
+#: src/game_initialization/multiplayer.cpp:350
 #, fuzzy
 #| msgid "The nick '$nick' is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/game_initialization/multiplayer.cpp:361
-#: src/game_initialization/multiplayer.cpp:363
+#: src/game_initialization/multiplayer.cpp:353
+#: src/game_initialization/multiplayer.cpp:355
 #, fuzzy
 #| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/game_initialization/multiplayer.cpp:364
+#: src/game_initialization/multiplayer.cpp:356
 #, fuzzy
 #| msgid ""
 #| "WARNING: There is already a client using this nick, logging in will cause "
@@ -6118,16 +6118,16 @@ msgstr ""
 "𐑢𐑹𐑯𐑦𐑙: 𐑞𐑺 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑩 𐑒𐑤𐑲𐑩𐑯𐑑 𐑿𐑟𐑦𐑙 𐑞𐑦𐑕 𐑯𐑦𐑒, 𐑤𐑪𐑜𐑦𐑙 𐑦𐑯 𐑢𐑦𐑤 𐑒𐑷𐑟 𐑞𐑨𐑑 𐑒𐑤𐑲𐑩𐑯𐑑 𐑑 𐑚𐑰 "
 "𐑒𐑦𐑒𐑑!"
 
-#: src/game_initialization/multiplayer.cpp:367
+#: src/game_initialization/multiplayer.cpp:359
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "𐑻𐑹 𐑦𐑯 𐑞 𐑤𐑪𐑜𐑦𐑯 𐑐𐑮𐑩𐑕𐑰𐑡𐑻 (𐑞 𐑕𐑻𐑝𐑻 𐑣𐑨𐑛 𐑯𐑴 𐑕𐑰𐑛 𐑓𐑹 𐑿𐑼 𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯)."
 
-#: src/game_initialization/multiplayer.cpp:370
+#: src/game_initialization/multiplayer.cpp:362
 msgid "The password you provided was incorrect."
 msgstr "𐑞 𐑐𐑭𐑕𐑢𐑻𐑛 𐑿 𐑐𐑮𐑩𐑝𐑲𐑛𐑩𐑛 𐑢𐑪𐑟 𐑦𐑯𐑒𐑩𐑮𐑧𐑒𐑑."
 
-#: src/game_initialization/multiplayer.cpp:372
+#: src/game_initialization/multiplayer.cpp:364
 msgid "You have made too many login attempts."
 msgstr ""
 
