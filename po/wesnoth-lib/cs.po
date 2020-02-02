@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-25 15:18-0300\n"
-"PO-Revision-Date: 2020-01-25 15:00+0100\n"
+"PO-Revision-Date: 2020-02-01 23:00+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -374,7 +374,7 @@ msgstr "Táborák"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:450
 msgid "Sconce"
-msgstr ""
+msgstr "Šikovnost"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:460
@@ -749,19 +749,6 @@ msgstr "Skalnatá jeskyně"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:1033
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which shoulders defense, but is "
-#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
-#| "and trolls, are fully capable of navigating such topography.\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
-#| "in rockbound caves.\n"
-#| "\n"
-#| "Occasionally caves are <italic>text='illuminated'</italic>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -990,7 +977,7 @@ msgstr "Dřevěné dveře"
 #: data/core/terrain.cfg:1410 data/core/terrain.cfg:1422
 #: data/core/terrain.cfg:1435
 msgid "Open Rusty Gate"
-msgstr ""
+msgstr "Otevřít rezavou bránu"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
@@ -1758,24 +1745,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2908
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<italic>text='illuminated'</italic>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -2134,7 +2103,7 @@ msgstr ""
 #. [settings]
 #: data/gui/default.cfg:23
 msgid " (Press '$hotkey' for more information)"
-msgstr ""
+msgstr " (Pro více informací stiskněte '$hotkey')"
 
 #: data/gui/macros/_initial.cfg:338
 msgid "Search"
@@ -2556,7 +2525,7 @@ msgstr "Hraj tažení"
 #. [toggle_button]: id=sort_name
 #: data/gui/window/campaign_dialog.cfg:232
 msgid "Sort by full campaign name in alphabetical order"
-msgstr ""
+msgstr "Řadit dle jména tažení v abecedním pořadí"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:245
@@ -2566,7 +2535,7 @@ msgstr "Data"
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:246
 msgid "Sort in approximate chronological order of story events"
-msgstr ""
+msgstr "Řadit dle přibližného chronologického rozložení událostí v příběhu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3032,7 +3001,7 @@ msgstr "Nastavení"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:161
 msgid "Numerical seed:"
-msgstr ""
+msgstr "Číselný seed:"
 
 #. [button]: id=ok
 #: data/gui/window/editor_generate_map.cfg:202
@@ -3130,12 +3099,12 @@ msgstr "Místa"
 #. [button]: id=add_bookmark
 #: data/gui/window/file_dialog.cfg:299
 msgid "Bookmarks the current folder"
-msgstr ""
+msgstr "Přidat současnou složku do záložek"
 
 #. [button]: id=remove_bookmark
 #: data/gui/window/file_dialog.cfg:312
 msgid "Removes the current bookmark"
-msgstr ""
+msgstr "Odebrat současnou záložku ze záložek"
 
 #. [button]: id=delete_file
 #. [button]: id=delete
@@ -3287,12 +3256,12 @@ msgstr "Zbývající zlato:"
 #. [grid]
 #: data/gui/window/game_load.cfg:95
 msgid "Active Troops:"
-msgstr ""
+msgstr "Aktivních jednotek:"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:98
 msgid "Reserve Troops:"
-msgstr ""
+msgstr "Rezervních jednotek:"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_load.cfg:171
@@ -3345,7 +3314,7 @@ msgstr "Všechny nevyhodnocené pohyby jednotek v uložené hře zrušit"
 #. [button]: id=browse_saves_folder
 #: data/gui/window/game_load.cfg:599
 msgid "Open saves folder"
-msgstr ""
+msgstr "Otevřít složku s uloženými soubory"
 
 #. [button]: id=ok
 #. [grid]
@@ -3892,7 +3861,7 @@ msgstr "Vyčistit konzoli"
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:118
 msgid "Clear the log area"
-msgstr ""
+msgstr "Vyčistit oblast logů"
 
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. [label]: id=title
@@ -4426,7 +4395,7 @@ msgstr "Čekárna"
 #: data/gui/window/mp_staging.cfg:806
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:486
 msgid "Waiting for players to join..."
-msgstr "Čeká se, než se hráči připojí…"
+msgstr "Čeká se, než se hráči připojí..."
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game_password_prompt.cfg:42
@@ -5518,8 +5487,6 @@ msgid "Details:"
 msgstr "Podrobnosti:"
 
 #: src/build_info.cpp:269
-#, fuzzy
-#| msgid "feature^JPEG screenshots"
 msgid "feature^JPEG screenshots"
 msgstr "zachycení obrazovky v JPEG"
 
@@ -6013,7 +5980,7 @@ msgstr ""
 #: src/gui/dialogs/addon/manager.cpp:741 src/gui/dialogs/addon/manager.cpp:744
 #: src/gui/dialogs/addon/manager.cpp:783
 msgid "The server responded with an error:"
-msgstr ""
+msgstr "Server odpověděl chybou:"
 
 #: src/gui/dialogs/addon/manager.cpp:742
 msgid "Terms"
@@ -6564,7 +6531,7 @@ msgstr "Pro tuto hru není k dispozici žádný věk."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:743
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "$min až $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:840
 msgid "The selected game has no sides!"
@@ -6610,7 +6577,7 @@ msgstr "Tým:"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:487
 msgid "Waiting for players to choose factions..."
-msgstr ""
+msgstr "Čekání na hráče, kteří si vybírají frakci..."
 
 #: src/gui/dialogs/outro.cpp:42
 msgid "The End"
@@ -6640,7 +6607,7 @@ msgstr "Není v seznamu přátel ani ignorovaných"
 #: src/gui/dialogs/preferences_dialog.cpp:852
 #: src/gui/dialogs/preferences_dialog.cpp:922
 msgid "No hotkey selected"
-msgstr ""
+msgstr "Nepřiřazeno"
 
 #: src/gui/dialogs/preferences_dialog.cpp:883
 msgid ""
@@ -6754,7 +6721,7 @@ msgstr ""
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "Jednotka nemůže být přivolána z důvodu nedostatku zlata."
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -6762,7 +6729,7 @@ msgstr "Přejmenuj"
 
 #: src/gui/dialogs/unit_recall.cpp:352
 msgid "This unit is loyal and requires no upkeep."
-msgstr ""
+msgstr "Tato jednotka je věrná a nevyžaduje žádný příjem."
 
 #: src/gui/dialogs/unit_recall.cpp:353 src/gui/dialogs/unit_recall.cpp:358
 #: src/gui/dialogs/unit_recall.cpp:363
@@ -6780,7 +6747,7 @@ msgstr ""
 
 #: src/gui/dialogs/unit_recall.cpp:362
 msgid "This unit is close to advancing a level."
-msgstr ""
+msgstr "Tato jednotka bude brzy povýšena na další úroveň."
 
 #: src/gui/dialogs/unit_recall.cpp:368
 msgid "Dismiss Unit"
@@ -6885,7 +6852,7 @@ msgstr[2] ""
 #: src/gui/widgets/multimenu_button.cpp:174
 #: src/gui/widgets/multimenu_button.cpp:231
 msgid "multimenu^None Selected"
-msgstr "Žádný nevybrán"
+msgstr "Žádné nevybráno"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
@@ -7256,20 +7223,14 @@ msgid "Next Move"
 msgstr "Další tah"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "View: Full Map"
 msgid "View: Full Map"
 msgstr "Pohled: Celá mapa"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "View: Each Team"
 msgid "View: Each Team"
 msgstr "Pohled: Každý tým"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "View: Human Team"
 msgid "View: Human Team"
 msgstr "Pohled: Člověčí tým"
 
@@ -7970,9 +7931,6 @@ msgstr ""
 #~ msgid "Sort by:"
 #~ msgstr "Řadit podle:"
 
-#~ msgid "Kick / ban reason:"
-#~ msgstr "Důvod vyhození / zákazu:"
-
 #~ msgid "You will now connect to the multiplayer server."
 #~ msgstr "Nyní se připojíš na server."
 
@@ -7994,11 +7952,14 @@ msgstr ""
 #~ msgid "Select the game core data"
 #~ msgstr "Vybrat data pro jádro hry"
 
+#~ msgid "No server has been defined."
+#~ msgstr "Nebyl definován žádný server."
+
 #~ msgid "&#9679;"
 #~ msgstr "&#9679;"
 
-#~ msgid "No server has been defined."
-#~ msgstr "Nebyl definován žádný server."
+#~ msgid "Kick / ban reason:"
+#~ msgstr "Důvod vyhození / zákazu:"
 
 #~ msgid "feature^Experimental OpenMP support"
 #~ msgstr "Experimentální podpora OpenMP"
