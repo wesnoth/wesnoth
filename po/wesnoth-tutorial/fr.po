@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Tutorial-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-25 18:18 UTC\n"
-"PO-Revision-Date: 2019-02-09 14:10+0100\n"
+"PO-Revision-Date: 2020-02-02 10:56+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
@@ -116,9 +116,15 @@ msgstr "Vous faire tuer"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:136
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
+"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
+"capturé un village !"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:145
@@ -331,8 +337,14 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:526
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
 msgstr ""
+"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
+"capturé un village !"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:540
@@ -451,9 +463,15 @@ msgstr "Terminez votre tour"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:630
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
+"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
+"capturé un village !"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:641
@@ -515,9 +533,15 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:697
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
+"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
+"capturé un village !"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:706
@@ -608,13 +632,6 @@ msgstr "Traits"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:787
-#, fuzzy
-#| msgid ""
-#| "Be sure to examine the <i>traits</i> of your new recruits. They are "
-#| "listed under its race in the sidebar. Traits can subtly affect how you "
-#| "use your troops. For example, units with the <i>quick</i> trait can move "
-#| "a extra hex each turn, and units with the <i>intelligent</i> trait "
-#| "require 20% less experience to level up."
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -631,9 +648,15 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:829
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
+"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
+"capturé un village !"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:838
@@ -1077,6 +1100,8 @@ msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
 msgstr ""
+"Vous ne pouvez pas terminer votre tour avant d'avoir recruter des troupes et "
+"capturé un village !"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
@@ -1166,13 +1191,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the east; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1181,7 +1199,7 @@ msgid ""
 msgstr ""
 "Vous voyez cette eau d'un bleu sombre ? Elle est trop profonde pour que "
 "quiconque puisse passer. Les orcs pourraient se frayer lentement un chemin "
-"par cette mince bande d'eau peu profonde, d'un bleu plus clair, à l'est, "
+"par cette mince bande d'eau peu profonde, d'un bleu plus clair, au nord, "
 "mais alors nous pourrions nous tenir sur le rivage et les forcer à nous "
 "combattre depuis l'eau, où ils seraient plus exposés alors que nous serions "
 "protégés par la forêt."
@@ -1316,26 +1334,22 @@ msgstr "Chamane elfe"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
-#| "friendly units around her. She also has a special attack which <i>slows</"
-#| "i> enemies, halving the damage they do for one turn."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
-"La chamane est une unité plutôt vulnérable, mais qui a la capacité de "
-"<i>soigner</i> les unités alliées adjacentes. Elle dispose aussi d'une "
-"attaque spéciale capable de <i>ralentir</i> les ennemis, réduisant de moitié "
-"les dégâts qu'ils font, pendant un tour."
+"La chamane a la capacité de <i>soigner</i> les unités alliées adjacentes. "
+"Elle dispose aussi d'une attaque spéciale capable de <i>ralentir</i> les "
+"ennemis, réduisant de moitié les dégâts qu'ils font, pendant un tour. "
+"Cependant, elle est physiquement plus vulnérable que les guerriers et les "
+"archers, soyez donc prudent en l'envoyant dans la bataille."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "Le capacité <i>Soin</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
@@ -1349,29 +1363,23 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"Au début de chaque tour, les unités alliées adjacentes à une chamane "
+"récupère 4 points de vie, soit seulement la moitié de ce qu'offre un "
+"village. La Chamane ne gagne pas d'expérience lors du soin, seulement en "
+"combattant, mais son avancement est rétributif : son deuxième niveau, "
+"Druidesse elfe, permet la même récupération de point qu'un village.\n"
+"\n"
+"Une explication détaillée du soin est disponible dans la section <i>Jeu<i> "
+"de l'aide (raccourci par défaut : <b>F1</b>)."
 
 # "Capacité" et "Attaque spéciale" sont les termes employés dans l'aide en ligne du jeu.
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Abilities and Weapon Specials"
 msgid "Weapon Specials"
-msgstr "Capacités et attaques spéciales"
+msgstr "Attaques spéciales"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1384,22 +1392,22 @@ msgid ""
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Les attaques spéciales sont des modificateurs qui rendent certaines attaques "
-"plus puissantes. Le modificateur Ralentissement est ainsi associé à "
-"l'attaque Enchevêtrement de la chamane. Lorsque cette attaque touche un "
-"ennemi, elle divise par deux les dégât que celui-ci infligera durant un tour "
-"entier. Il existe d'autres modificateurs tels que l'Initiative, qui permet à "
-"l'unité possédant l'attaque associée de toujours frapper en premier lors "
-"d'un échange de coups, et Magique, qui donne à l'attaque une probabilité de "
-"toucher constante de 70 %.\n"
+"plus puissantes. En l'occurrence, le modificateur Ralentissement est ainsi "
+"associé à l'attaque Enchevêtrement de la chamane. Lorsque cette attaque "
+"touche un ennemi, elle divise par deux les dégât que celui-ci infligera "
+"durant un tour entier. Il existe d'autres modificateurs tels que "
+"l'Initiative, qui permet à l'unité possédant l'attaque associée de toujours "
+"frapper en premier lors d'un échange de coups, et Magique, qui donne à "
+"l'attaque une probabilité de toucher constante de 70 %.\n"
 "\n"
-"L'aide du jeu contient la liste complète des capacités et attaques "
-"spéciales, ainsi que des traits."
+"L'aide du jeu contient la liste complète des capacités et attaques spéciales "
+"(raccourci par défaut : <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Multiple Healers"
-msgstr ""
+msgstr "Soigneurs multiples"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1413,6 +1421,13 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"Vous avez à présent deux soigneurs. Cependant, chaque unité ne peut recevoir "
+"de soin que d'un seul soigneur. Une unité sera seulement soignée de 4 points "
+"de vie par tour si elle est à côté de deux chamanes.\n"
+"\n"
+"Si une chamane devint druide, alors elle soignera de 8 points de vie chaque "
+"unité adjacente. Une unité à côté de plusieurs soigneurs est soignée par la "
+"plus avancée."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1423,11 +1438,15 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"Vous avez à présent deux soigneurs. Votre druide peut soigner 8 points de "
+"vie par tour comparé aux 4 points de vie d'une chamane. Cependant, chaque "
+"unité ne peut recevoir de soin que d'un seul soigneur. Une unité à côté de "
+"plusieurs soigneurs est soignée par la plus avancée."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
 msgid "Healers and Villages"
-msgstr ""
+msgstr "Soigneurs et Villages"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:384
@@ -1435,6 +1454,8 @@ msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
 msgstr ""
+"Une unité dans un village recevra des soins par le village, à la place des "
+"éventuels soigneurs adjacents."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
@@ -1444,6 +1465,11 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"Posséder plusieurs soigneurs leur permet de se soigner mutuellement ou de "
+"couvrir des zones séparées du champ de bataille. Cela permet également une "
+"meilleure tactique dans les mouvements : les 2 points de vie pour inaction "
+"se combinent avec les autres sources de soin, il est ainsi plus judicieux de "
+"déplacer un soigneur qu'une unité blessée."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:403
@@ -1492,28 +1518,22 @@ msgstr "Capturez un village"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:448
-#, fuzzy
-#| msgid "Capture a village"
 msgid "You still have to capture a village!"
-msgstr "Capturez un village"
+msgstr "Vous devez toujours capturer un village"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:479
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things if you make a "
-#| "mistake."
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"N'oubliez pas, vous pouvez appuyer sur <b>u</b> pour annuler la plupart des "
-"actions si vous faites une erreur."
+"Vous avez oublié de recruter des troupes ! Vous pouvez appuyer sur <b>u</b> "
+"pour annuler le dernier déplacement."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "Vous devez toujours recruter des troupes !"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:490
@@ -1568,16 +1588,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:568
-#, fuzzy
-#| msgid ""
-#| "You moved to the wrong place! After this message, you can press <b>u</b> "
-#| "to undo, then try again."
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"Vous êtes allés au mauvais endroit ! Après ce message, vous pouvez appuyer "
-"sur <b>u</b> pour ann<b>u</b>ler, puis réessayez."
+"Vous avez oublié de capturer un village ! Vous pouvez appuyer sur <b>u</b> "
+"pour annuler votre dernier déplacement."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:588
@@ -1747,7 +1763,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "Ce tutoriel n'est pas prévu pour être difficile"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:714
@@ -1758,6 +1774,12 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"L'orc sur l'île était supposé avancer sur le pont, afin d'être attaqué par "
+"plusieurs elfes à la fois. Quelque chose à casser l'évènement scripté, ce "
+"qui rendra le scénario plus difficile en laissant l'orc dans une position "
+"défensive.\n"
+"\n"
+"Rapportez le bogue s'il vous plait."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:727
@@ -1831,40 +1853,27 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:779
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
 "move everyone closer for next turn."
 msgstr ""
-"J'espère que mes unités survivront à la contre-attaque si je ne peux pas "
-"supprimer ce grognard orc ce tour-ci. Je ferais mieux de conquérir plus de "
-"villages si je le peux et de rapprocher tout le monde pour le prochain tour."
+"J'espère survivre à la contre-attaque si mes unités ne peuvent pas supprimer "
+"ce grognard orc ce tour-ci. Je devrais leur donner l'ordre de capturer plus "
+"de villages si elles le peuvent et de rapprocher tout le monde pour le "
+"prochain tour."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:784
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Si l'une de vos chamanes se tient juste derrière vos unités blessées, elle "
-"les guérira chacune de 4 points de vie au début du tour suivant."
+"Si l'une de vos chamanes se tient juste derrière vous, elle vous guérira de "
+"4 points de vie au début du tour suivant."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:790
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
@@ -1962,17 +1971,12 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it next turn! "
-#| "Move a unit into the village to stop the orcs capturing it. Whichever "
-#| "unit you choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"Nous devons occuper ce village, sinon ils s'en empareront au tour suivant ! "
+"Nous devons occuper ce village, sinon ils s'en empareront rapidement ! "
 "Déplacez une unité dans ce village pour empêcher les orcs de le prendre. "
 "Quelle que soit l'unité que vous choisirez, elle bénéficiera aussi du soin "
 "apporté par le village."
@@ -2033,6 +2037,18 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"Pensez à protéger vos unités blessées dans un village. Les chamanes ne peut "
+"restaurer que 4 points de vie par tour, alors que les villages peuvent "
+"soigner 8 points par tour.\n"
+"\n"
+"Les différentes sources de soin ne se combinent généralement pas. Si une "
+"unité commence son tour à côté de plusieurs soigneurs, ou sur un village "
+"adjacent à un soigneur, elle ne sera soigné qu'une seule fois.\n"
+"\n"
+"Le soin par l'inaction est une exception à cette règle : si une unité ne "
+"fait rien pendant un tour, elle recevra 2 points de vie en plus des autres "
+"soins (d'un village ou d'un soigneur), permettant un total maximum de 10 "
+"points de vie par tour."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1000
@@ -2217,16 +2233,12 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1294
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. Goodbye, $unit."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr ""
-"Les unités de haut niveau sont puissantes mais pas invulnérables. Au revoir "
-"$unit.name|."
+"Les unités de haut niveau sont puissantes mais pas invulnérables. Tu nous "
+"manquera, $unit.name|."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1308
@@ -2358,43 +2370,29 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1419
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I am particularly good with the "
-#| "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
-#| "abilities of the Elvish Captain, my superior fighting skills allow my "
-#| "attacks to do more damage!"
 msgid ""
 "Advancing a level has fully healed me! I have become better at using the "
 "sword, dealing 9 damage in 4 attacks. Although I do not have any special "
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Monter d'un niveau a complètement guéri mes blessures ! Je suis "
-"particulièrement bon à l'épée : je peux porter 4 attaques infligeant 8 "
-"points de dégâts chacune. Bien que je ne possède pas la capacité de "
-"commandement d'un capitaine elfe, mon aptitude supérieure au combat permet à "
-"mes attaques d'infliger plus de dégâts !"
+"Monter d'un niveau a complètement guéri mes blessures ! Je suis devenu "
+"meilleur à l'épée : je peux porter 4 attaques infligeant 9 points de dégâts "
+"chacune. Bien que je ne possède pas de capacité spéciale, mon aptitude au "
+"combat me permet de battre ces orcs en infligeant plus de dégâts !"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1420
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I am particularly good with the "
-#| "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
-#| "abilities of the Elvish Captain, my superior fighting skills allow my "
-#| "attacks to do more damage!"
 msgid ""
 "female^Advancing a level has fully healed me! I have become better at using "
 "the sword, dealing 9 damage in 4 attacks. Although I do not have any special "
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Monter d'un niveau a complètement guéri mes blessures ! Je suis "
-"particulièrement bon à l'épée : je peux porter 4 attaques infligeant 8 "
-"points de dégâts chacune. Bien que je ne possède pas la capacité de "
-"commandement d'un capitaine elfe, mon aptitude supérieure au combat permet à "
-"mes attaques d'infliger plus de dégâts !"
+"Monter d'un niveau a complètement guéri mes blessures ! Je suis devenu "
+"meilleure à l'épée : je peux porter 4 attaques infligeant 9 points de dégâts "
+"chacune. Bien que je ne possède pas de capacité spéciale, mon aptitude au "
+"combat me permet de battre ces orcs en infligeant plus de dégâts !"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1429
@@ -2416,17 +2414,10 @@ msgstr "C'était... stupide. La prochaine fois je serai plus prudente."
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1464
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "Agh ! Qui vous guidera à la victoire maintenant ?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1479
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try one of the rookie-level "
-#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#| "i> is the easiest and is the recommended first campaign. In <i>An Orcish "
-#| "Incursion</i> you have an Elvish army, similarly to this tutorial, but "
-#| "with seven scenarios for your units to gain experience and advance levels."
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
@@ -2434,10 +2425,7 @@ msgid ""
 msgstr ""
 "Vous avez vaincu les orcs ! Vous pouvez dorénavant essayer les campagnes "
 "faciles, qui comportent des astuces stratégiques. <i>L'Histoire de deux "
-"frères</i> est la campagne la plus facile pour débuter. Dans <i>Une "
-"incursion orc</i>, vous aurez une armée elfe, similaire à celle du tutoriel, "
-"mais avec sept scénarios pour faire gagner de l'expérience à vos unités et "
-"les faire monter de niveau."
+"frères</i> est la campagne recommandée et la plus facile pour débuter"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1484
@@ -2488,23 +2476,24 @@ msgstr ""
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:4
 msgid "Warrior"
-msgstr ""
+msgstr "Guerrier"
 
 #. [unit_type]: id=Warrioress, race=human
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:19
 #: data/campaigns/tutorial/units/Warrioress.cfg:21
+#, fuzzy
 msgid ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
 msgstr ""
+"Avec plus d'expérience, les Guerriers ont aiguisé leurs aptitudes à l'épée "
+"et sont devenus des Guerriers."
 
 #. [unit_type]: id=Warrioress, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
-#, fuzzy
-#| msgid "female^Fighter"
 msgid "female^Warrior"
-msgstr "Combattante"
+msgstr "Guerrière"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:63
