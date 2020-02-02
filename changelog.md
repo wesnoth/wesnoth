@@ -1,4 +1,4 @@
-## Version 1.14.10+dev
+## Version 1.14.11
  ### Language and i18n
    * Updated translations: Czech, German.
  ### Packaging
