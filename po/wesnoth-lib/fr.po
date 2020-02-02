@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-02-01 22:39-0300\n"
-"PO-Revision-Date: 2019-10-25 11:19+0200\n"
+"PO-Revision-Date: 2020-01-27 13:30+0100\n"
 "Last-Translator: Clémence\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -4165,14 +4165,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "Vérification plus stricte concernant les erreurs de désynchronisation"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Sauvegarder le film"
+msgstr "Film privé"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Si le film doit être disponible publiquement ou non"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -5359,6 +5357,8 @@ msgstr "Rappeler l'unité"
 #: data/gui/window/unit_recall.cfg:341
 msgid "Search for unit name, unit type name, unit level, or trait."
 msgstr ""
+"Recherche à partir du nom de l'unité, de son type, de son niveau ou de ses "
+"capacités"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
@@ -5403,10 +5403,8 @@ msgid "Details:"
 msgstr "Détails :"
 
 #: src/build_info.cpp:270
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "Capture d'écran au format PNG"
+msgstr "Capture d'écran au format JPEG"
 
 #: src/build_info.cpp:277
 msgid "feature^Lua console completion"
@@ -5904,16 +5902,12 @@ msgid "Defender resistance vs"
 msgstr "Résistance du défenseur contre"
 
 #: src/gui/dialogs/attack_predictions.cpp:191
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "Vulnérabilité de l'attaquant contre"
+msgstr "Vulnérabilité du défenseur contre"
 
 #: src/gui/dialogs/attack_predictions.cpp:195
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "Résistance du défenseur contre"
+msgstr "Résistance de l'attaquant contre"
 
 #: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Attacker vulnerability vs"
@@ -6596,10 +6590,12 @@ msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"Cette unité ne peut être rappelée car vous n'aurez pas assez d'or à cette "
+"étape de votre plan."
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "Cette unité ne peut être rappelée car vous n'avez pas assez d'or."
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -7100,22 +7096,16 @@ msgid "Next Move"
 msgstr "Déplacement suivant"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Carte complète"
+msgstr "Vue : Carte complète"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Chaque équipe"
+msgstr "Vue : Chaque équipe"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Équipe humaine"
+msgstr "Vue : Équipe humaine"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
