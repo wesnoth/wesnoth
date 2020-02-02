@@ -5,7 +5,9 @@
    * Fixed data/dist information not being found on many platforms other than Windows (only
      with the installer-created shortcut), as well as only the very first word being read instead
      of the whole line.
-   * Added support for systemctl reload
+   * Added support for systemctl reload.
+ ### Miscellaneous and bug fixes
+   * Silenced spurious warning about conflicting l10n-track files (issue #4716).
 
 ## Version 1.14.10
  ### AI
