@@ -420,8 +420,33 @@
    * Game bans are now also enforced by username. (PR#4139)
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
-## Version 1.14.9+dev
+## Version 1.14.11+dev
+
+## Version 1.14.11
+ ### Language and i18n
+   * Updated translations: Czech, German.
+ ### Packaging
+   * Fixed data/dist information not being found on many platforms other than Windows (only
+     with the installer-created shortcut), as well as only the very first word being read instead
+     of the whole line.
+   * Added support for systemctl reload.
+ ### Miscellaneous and bug fixes
+   * Silenced spurious warning about conflicting l10n-track files (issue #4716).
+
+## Version 1.14.10
+ ### AI
+   * Experimental AI:
+     * Spread poison: bug fix for units ignoring [avoid] tag
+     * Castle switch: bug fix for units-on-keep check
+     * Remove village hunt CA
+     * Add ids for candidate actions
+   * Fix bug crashing some AIs when units with chance-to-hit specials without id are on map
+   * Fast Micro AI: fix re-adding default CAs when deleting the MAI
+   * Bottleneck Defense Micro AI: fix bug of units not participating if too far in front of the bottleneck
+   * Lua AIs: several other minor behind-the-scenes bug fixes
  ### Campaigns
+   * Descent into Darkness:
+     * S1: reduced difficulty
    * Heir to the Throne:
      * Modify campaign starting date
    * Legend of Wesmere:
@@ -433,30 +458,48 @@
      * S7b/S8b: reduce enemy gold values and modify dialogue upon allied unit death
    * Tutorial:
      * S2: Make the first grunt cross the bridge, otherwise the scenario is too hard
+   * Under the Burning Suns:
+     * Sun Singer and Sun Sylph: modify faerie fire colors
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), Italian, Korean,
-     Portuguese (Brazil)
+   * Updated translations: British English, Chinese (Simplified),
+     Chinese (Traditional), Czech, Dutch, Esperanto, French, German, Italian,
+     Korean, Portuguese (Brazil), Russian, Spanish, Turkish
+   * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Lua API
-   * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
- ### Multiplayer
-   * Auction X: Exclude the center side from "shuffle sides"
+   * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables (issue #4079).
+ ### Music and sound effects
+   * Removed accidental silence of two seconds after the first track of each scenario
+     (issue #4459).
  ### Units
-   * Sun Singer and Sun Sylph: modify faerie fire colors
    * Add various new death, standing, and idle animations
  ### User interface
-   * Draw ellipses during draw/sheath animations. (Issue#1527)
+   * Fixed some severe game rendering issues with SDL 2.0.10 (issue #4237, issue #4245,
+     issue #4510).
+   * Draw ellipses during draw/sheath animations (issue #1527).
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
-     the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
-     (Issue#4142)
-   * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
-   * Zooming in doesn't move the center of the viewport when the map is wider/taller
-     than the available width/height (PR#4442)
-   * Help pages for unit types show base abilities and AMLA abilities separately. (#2907)
+     the help on the correct unit variation (e.g., Walking Corpse (Swimmer))
+     (issue #4142).
+   * Ensure enough space to display turn numbers in the hundreds.
+   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
+     into account.
+   * Added the Private Replay checkbox to the Multiplayer Create Game screen. This separates
+     whether observers are allowed from whether the replay will be publicly available.
+   * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
+     are grayed out (PR #4362, PR #4444, part of issue #1282).
+   * Reworked styling of progress bars and the network transfer progress dialog.
+   * Removed "Classic" in-game theme.
+   * Textboxes now have a hover effect as well as an I-beam cursor.
+ ### Packaging
+   * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
+     This file should contain one of the following values based on what distribution channel the package is for:
+     Default, Steam, SourceForge, Flatpak, macOS App Store, Linux repository, iOS, Android, BSD repository
  ### Miscellaneous and bug fixes
-   * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
-   * Add help text for some debug commands (part of Issue#2500)
-   * More deprecation warnings logged by default (part of PR#4449)
+   * New build-dependency: Python3 is required to run the WML unit tests (on non-Windows)
+   * 80% of WML unit tests now run in a batch using a single instance of Wesnoth (non-Windows only)
+   * New help topic outlining common (and less common) reasons for losing a scenario (PR #4217).
+   * Add help text for some debug commands (part of issue #2500).
    * Make wmllint recognize `[load_resource]` (issue #4538).
+   * Make wesnoth_addon_manager not generate packet.dump files any more (issue #4651)
 
 ## Version 1.14.9
  ### AI:
@@ -534,7 +577,6 @@
    * Added HighContrast icon variant
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
-   * The message of [print] is now shown centered within the map area
  ### Miscellaneous and bug fixes
    * Update various references of mermen to merfolk or mer
    * Adjust several maps to use different castle graphics
