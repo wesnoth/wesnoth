@@ -89,6 +89,7 @@
    * Increased melee damage of Dwarvish Stalwart from 7-3 to 8-3
    * Increased melee damage of Dwarvish Sentinel from 9-3 to 10-3
    * Dunefolk: rebalancing and renaming of various units
+   * Dunefolk: some graphics additions and updates
    * Orcs: revise some unit descriptions
  ### Lua API
    * unit:transform() now takes an optional variation parameter
