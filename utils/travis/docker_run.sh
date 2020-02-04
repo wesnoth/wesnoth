@@ -26,7 +26,6 @@ BOOST_TEST="${11}"
 LTO="${12}"
 SAN="${13}"
 VALIDATE="${14}"
-LTS="${15}"
 
 if [ "$OPT" == "-O0" ]; then
     STRICT="true"
@@ -56,6 +55,10 @@ echo "LTO: $LTO"
 echo "SAN: $SAN"
 echo "VALIDATE: $VALIDATE"
 echo "LTS: $LTS"
+echo "TRAVIS_COMMIT: $TRAVIS_COMMIT"
+echo "BRANCH: $BRANCH"
+echo "UPLOAD_ID: $UPLOAD_ID"
+echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
 
 echo "STRICT: $STRICT"
 echo "build_timeout(mins): $build_timeout"
@@ -87,6 +90,10 @@ elif [ "$LTS" == "mingw" ]; then
         cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" \
         nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
         arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32
+
+    if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+        ./utils/travis/sftp
+    fi
 elif [ "$LTS" == "steamrt" ]; then
     scons ctool=$CC cxxtool=$CXX boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt \
         cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
@@ -116,6 +123,10 @@ else
 
     if [ $BUILD_RET != 0 ]; then
         exit $BUILD_RET
+    fi
+
+    if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+        ./utils/travis/sftp
     fi
 
     if (( SECONDS > 60*build_timeout )); then

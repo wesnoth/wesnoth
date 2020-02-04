@@ -14,7 +14,9 @@ RUN apt install -y -qq libsdl2-2.0-0 libsdl2-dev libsdl2-image-2.0-0 libsdl2-ima
 ENV DEBIAN_FRONTEND=noninteractive
 
 # misc
-RUN apt install -y -qq libpng12-0 libpng12-dev libreadline6-dev libvorbis-dev libcairo2 libcairo2-dev libpango-1.0-0 libpango1.0-dev libfribidi0 libfribidi-dev libbz2-1.0 libbz2-dev zlib1g zlib1g-dev libpangocairo-1.0-0 libssl-dev libmysqlclient-dev expect-dev
+RUN apt install -y -qq libpng12-0 libpng12-dev libreadline6-dev libvorbis-dev libcairo2 libcairo2-dev libpango-1.0-0 libpango1.0-dev libfribidi0 libfribidi-dev libbz2-1.0 libbz2-dev zlib1g zlib1g-dev libpangocairo-1.0-0 libssl-dev libmysqlclient-dev expect-dev python3-pip
+RUN pip3 install --upgrade pip
+RUN yes | pip3 install paramiko
 
 # programs
 RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang python3
