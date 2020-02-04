@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-25 15:18-0300\n"
-"PO-Revision-Date: 2019-11-04 23:52-0300\n"
+"PO-Revision-Date: 2020-02-03 08:47-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -7195,19 +7195,16 @@ msgid ""
 msgstr ""
 
 #
-# File: data/hardwired/tips.cfg, line: 5
-# File: data/hardwired/tips.cfg, line: 137
-# File: data/hardwired/tips.cfg, line: 5
-# File: data/hardwired/tips.cfg, line: 137
-# File: data/hardwired/tips.cfg, line: 5
-# File: data/hardwired/tips.cfg, line: 137
+# File: data/hardwired/tips.cfg, line: 13
+# File: data/hardwired/tips.cfg, line: 13
+# File: data/hardwired/tips.cfg, line: 13
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:268
 #, fuzzy
-#| msgid "<i>― Great Mage Delfador, 516YW</i>"
+#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>― Grande Mago Delfador, 516YW</i>"
+msgstr "<i>― Vank do Voo de Galun, 6YW</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -7216,6 +7213,9 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"Se uma unidade estiver posicionada adjacente a curandeiros de dois lados "
+"aliados, a unidade será curada no turno dos dois lados. Desta forma é "
+"possível curar uma unidade mais rapidamente do que o normal."
 
 #
 # File: data/hardwired/tips.cfg, line: 13
@@ -7224,10 +7224,8 @@ msgstr ""
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:273
-#, fuzzy
-#| msgid "<i>― Kai Laudiss, 623YW</i>"
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr "<i>― Kai Laudiss, 623YW</i>"
+msgstr "<i>― Vank do Voo de Galun, 6YW</i>"
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -7332,10 +7330,8 @@ msgstr "Você não tem um líder com quem recrutar."
 # File: src/actions/create.cpp, line: 743
 # File: src/actions/create.cpp, line: 743
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "Nenhum de seus líderes é capaz de recrutar esta unidade."
+msgstr "Nenhum de seus líderes é capaz de recrutar essa unidade."
 
 #
 # File: src/actions/create.cpp, line: 747
@@ -8763,7 +8759,7 @@ msgstr "Jogador Local"
 
 #: src/game_initialization/connect_engine.cpp:1295
 msgid "Nobody"
-msgstr "Ningém"
+msgstr "Ninguém"
 
 #
 # File: src/multiplayer_connect.cpp, line: 763
@@ -9823,50 +9819,40 @@ msgstr "Disponível apenas durante um cenário."
 # File: src/reports.cpp, line: 689
 # File: src/reports.cpp, line: 689
 #: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "Cronograma de período do dia:"
+msgstr "Cronograma do Período do Dia"
 
 #
 # File: src/reports.cpp, line: 1078
 # File: src/reports.cpp, line: 1078
 # File: src/reports.cpp, line: 1078
 #: src/help/help_impl.cpp:384
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Unidades Ordeiras: "
+msgstr "Bônus Ordeiro:"
 
 #
 # File: src/reports.cpp, line: 1080
 # File: src/reports.cpp, line: 1080
 # File: src/reports.cpp, line: 1080
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Unidades Neutras: "
+msgstr "Bônus Neutro:"
 
 #
 # File: src/reports.cpp, line: 1081
 # File: src/reports.cpp, line: 1081
 # File: src/reports.cpp, line: 1081
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Unidades Caóticas: "
+msgstr "Bônus Caótico:"
 
 #
 # File: src/reports.cpp, line: 1083
 # File: src/reports.cpp, line: 1083
 # File: src/reports.cpp, line: 1083
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "Unidades Liminares: "
+msgstr "Bônus Liminal:"
 
 #: src/help/help_impl.cpp:388
 msgid "Schedule"
@@ -10288,18 +10274,16 @@ msgstr "Você não tem unidades disponíveis para recrutar."
 # File: src/multiplayer_create.cpp, line: 266
 # File: src/multiplayer_create.cpp, line: 266
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "Nenhuma unidade recrutada"
+msgstr "Nenhuma unidade recrutada."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "Erro interno. Por favor, relate este bug! Detalhes:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "Você não pode recrutar uma $unit_type_name neste momento."
 
 #
 # File: src/menu_events.cpp, line: 618
@@ -10307,48 +10291,40 @@ msgstr ""
 # File: src/menu_events.cpp, line: 618
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "Você não tem ouro suficiente para recrutar essa unidade"
+msgstr ""
+"Neste momento do seu planejamento, você não possui ouro suficiente para "
+"recrutar essa unidade."
 
 #
 # File: src/menu_events.cpp, line: 618
 # File: src/menu_events.cpp, line: 618
 # File: src/menu_events.cpp, line: 618
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "Você não tem ouro suficiente para recrutar essa unidade"
+msgstr "Você não tem ouro suficiente para recrutar essa unidade."
 
 #
 # File: src/menu_events.cpp, line: 650
 # File: src/menu_events.cpp, line: 650
 # File: src/menu_events.cpp, line: 650
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "Você está afastado dos seus soldados e por isso não pode convocá-los"
+msgstr "Você está afastado dos seus soldados e por isso não pode convocá-los."
 
 #
 # File: src/menu_events.cpp, line: 677
 # File: src/menu_events.cpp, line: 677
 # File: src/menu_events.cpp, line: 677
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
-"Não há tropas para serem convocadas\n"
-"(É necessário que tropas tenham sobrevivido a um cenário anterior)"
+"Não há tropas para serem convocadas.\n"
+"(É necessário que tropas tenham sobrevivido a um cenário anterior.)"
 
 #
 # out.2012
@@ -10356,31 +10332,24 @@ msgstr ""
 # File: src/menu_events.cpp, line: 683
 # File: src/menu_events.cpp, line: 683
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "Você não pode convocar no local destacado"
+msgstr "Você não pode convocar no local destacado."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "Nenhuma unidade convocada"
+msgstr "Nenhuma unidade convocada."
 
 #
 # File: src/menu_events.cpp, line: 695
 # File: src/menu_events.cpp, line: 695
 # File: src/menu_events.cpp, line: 695
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] ""
-"Você precisa ter pelo menos 1 peça de ouro para recrutar uma unidade"
+"Você precisa ter pelo menos 1 peça de ouro para recrutar uma unidade."
 msgstr[1] ""
-"Você precisa ter pelo menos $cost peças de ouro para recrutar esta unidade"
+"Você precisa ter pelo menos $cost peças de ouro para recrutar esta unidade."
 
 #
 # File: src/menu_events.cpp, line: 814
@@ -10556,7 +10525,7 @@ msgstr "[<side> [on/off]]"
 
 #: src/menu_events.cpp:1235
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Muda o tema dentro da partida."
 
 #
 # File: src/menu_events.cpp, line: 1966
@@ -10837,14 +10806,12 @@ msgstr "Mostra uma variável do cenário."
 # File: src/menu_events.cpp, line: 2025
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1284
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
 "Modifica uma variável de unidade. (Somente chaves de nível alto são "
-"suportadas.)"
+"suportadas, e advances=<number>.)"
 
 #
 # File: src/menu_events.cpp, line: 2032
@@ -10864,7 +10831,7 @@ msgstr "'Revela' todas as unidades na secção ajuda."
 
 #: src/menu_events.cpp:1293
 msgid "<unit type id>"
-msgstr ""
+msgstr "<tipo da unidade id>"
 
 #
 # File: src/menu_events.cpp, line: 2036
@@ -10892,7 +10859,7 @@ msgstr "Alterna escuridão para o jogador atual."
 
 #: src/menu_events.cpp:1296
 msgid "<amount>"
-msgstr ""
+msgstr "<quantidade>"
 
 #
 # File: src/menu_events.cpp, line: 2042
@@ -10931,10 +10898,8 @@ msgstr "Dá ouro para o jogador atual."
 # File: src/menu_events.cpp, line: 1795
 # File: src/menu_events.cpp, line: 1809
 #: src/menu_events.cpp:1297
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<apelido>"
+msgstr "<nome do evento>"
 
 #
 # File: src/menu_events.cpp, line: 2044
@@ -12138,13 +12103,6 @@ msgid "Units"
 msgstr "Unidades"
 
 #: src/reports.cpp:1443
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. It is equal to "
-#| "the number of unit levels not supported by villages. The second is the "
-#| "total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -12188,10 +12146,6 @@ msgid "Net Income"
 msgstr "Receita Positiva"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid ""
-#| "The net amount of gold you gain or lose each turn, taking into account "
-#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -13341,145 +13295,127 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>(bônus de término antecipado)</small>"
 
+#
+# File: data/english.cfg, line: 17
+# File: data/english.cfg, line: 17
+# File: data/english.cfg, line: 17
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Unidades de liminar só atingem sua força total durante períodos de "
+#~ "penumbra.\n"
+#~ "\n"
+#~ "Dia: −25% Dano\n"
+#~ "Noite: −25% Dano"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Não há opções de personalização disponíveis para a era, jogo ou "
+#~ "modificação selecionada."
+
+#~ msgid "Defaults"
+#~ msgstr "Padrões"
+
+#
+# File: src/multiplayer_connect.cpp, line: 647
+# File: src/multiplayer_connect.cpp, line: 1658
+# File: src/multiplayer_connect.cpp, line: 647
+# File: src/multiplayer_connect.cpp, line: 1658
+# File: src/multiplayer_connect.cpp, line: 647
+# File: src/multiplayer_connect.cpp, line: 1658
+#~ msgid "Connected Players"
+#~ msgstr "Jogadores Conectados"
+
 #~ msgid "(Note: You should use $replacement instead in new code)"
 #~ msgstr "(Nota: Você deve usar $replacement no seu novo código)"
 
-#~ msgid "theme^Classic"
-#~ msgstr "Clássico"
-
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "O tema clássico pre-1.12"
+#
+# File: data/core/macros/objective-utils.cfg, line: 29
+# File: data/lua/wml/objectives.lua, line: 11988
+# File: data/core/macros/objective-utils.cfg, line: 29
+# File: data/lua/wml/objectives.lua, line: 1547
+# File: data/core/macros/objective-utils.cfg, line: 29
+# File: data/lua/wml/objectives.lua, line: 1547
+#~ msgid "%d%% of gold carried over to the next scenario."
+#~ msgstr "%d%% de ouro tranferido para o próximo cenário."
 
 #
-# File: data/themes/default.cfg, line: 224
-# File: data/themes/dfool.cfg, line: 258
-# File: data/themes/experimental.cfg, line: 197
-# File: data/themes/widescreen.cfg, line: 276
-# File: data/themes/default.cfg, line: 217
-# File: data/themes/dfool.cfg, line: 258
-# File: data/themes/experimental.cfg, line: 197
-# File: data/themes/widescreen.cfg, line: 276
-# File: data/themes/default.cfg, line: 217
-# File: data/themes/dfool.cfg, line: 258
-# File: data/themes/experimental.cfg, line: 197
-# File: data/themes/widescreen.cfg, line: 276
-#~ msgid "gold"
-#~ msgstr "ouro"
+# File: src/menu_events.cpp, line: 2372
+# File: src/menu_events.cpp, line: 2371
+# File: src/menu_events.cpp, line: 2371
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "registrando com senha *** e sem endereço de email"
 
 #
-# File: data/themes/default.cfg, line: 233
-# File: data/themes/dfool.cfg, line: 267
-# File: data/themes/experimental.cfg, line: 206
-# File: data/themes/widescreen.cfg, line: 285
-# File: data/themes/default.cfg, line: 226
-# File: data/themes/dfool.cfg, line: 267
-# File: data/themes/experimental.cfg, line: 206
-# File: data/themes/widescreen.cfg, line: 285
-# File: data/themes/default.cfg, line: 226
-# File: data/themes/dfool.cfg, line: 267
-# File: data/themes/experimental.cfg, line: 206
-# File: data/themes/widescreen.cfg, line: 285
-#~ msgid "villages"
-#~ msgstr "aldeias"
+# File: src/menu_events.cpp, line: 2376
+# File: src/menu_events.cpp, line: 2375
+# File: src/menu_events.cpp, line: 2375
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "registrando com senha *** e endereço de email $email"
 
 #
-# File: data/themes/default.cfg, line: 242
-# File: data/themes/dfool.cfg, line: 276
-# File: data/themes/experimental.cfg, line: 215
-# File: data/themes/widescreen.cfg, line: 294
-# File: data/themes/default.cfg, line: 235
-# File: data/themes/dfool.cfg, line: 276
-# File: data/themes/experimental.cfg, line: 215
-# File: data/themes/widescreen.cfg, line: 294
-# File: data/themes/default.cfg, line: 235
-# File: data/themes/dfool.cfg, line: 276
-# File: data/themes/experimental.cfg, line: 215
-# File: data/themes/widescreen.cfg, line: 294
-#~ msgid "units"
-#~ msgstr "unidades"
+# File: src/menu_events.cpp, line: 2390
+# File: src/menu_events.cpp, line: 2389
+# File: src/menu_events.cpp, line: 2389
+#~ msgid "dropping your username"
+#~ msgstr "descartando seu nome de usuário"
 
 #
-# File: data/themes/default.cfg, line: 251
-# File: data/themes/dfool.cfg, line: 285
-# File: data/themes/experimental.cfg, line: 224
-# File: data/themes/widescreen.cfg, line: 303
-# File: data/themes/default.cfg, line: 244
-# File: data/themes/dfool.cfg, line: 285
-# File: data/themes/experimental.cfg, line: 224
-# File: data/themes/widescreen.cfg, line: 303
-# File: data/themes/default.cfg, line: 244
-# File: data/themes/dfool.cfg, line: 285
-# File: data/themes/experimental.cfg, line: 224
-# File: data/themes/widescreen.cfg, line: 303
-#~ msgid "upkeep"
-#~ msgstr "manutenção"
+# File: src/menu_events.cpp, line: 2408
+# File: src/menu_events.cpp, line: 2407
+# File: src/menu_events.cpp, line: 2407
+#~ msgid "setting $var to $value"
+#~ msgstr "configurando o valor de $var para $value"
 
 #
-# File: data/themes/default.cfg, line: 260
-# File: data/themes/dfool.cfg, line: 294
-# File: data/themes/experimental.cfg, line: 233
-# File: data/themes/widescreen.cfg, line: 312
-# File: data/themes/default.cfg, line: 253
-# File: data/themes/dfool.cfg, line: 294
-# File: data/themes/experimental.cfg, line: 233
-# File: data/themes/widescreen.cfg, line: 312
-# File: data/themes/default.cfg, line: 253
-# File: data/themes/dfool.cfg, line: 294
-# File: data/themes/experimental.cfg, line: 233
-# File: data/themes/widescreen.cfg, line: 312
-#~ msgid "income"
-#~ msgstr "receita"
+# File: src/menu_events.cpp, line: 1802
+# File: src/menu_events.cpp, line: 1802
+# File: src/menu_events.cpp, line: 1802
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<senha> <email (opcional)>"
 
 #
-# File: data/themes/default.cfg, line: 422
-# File: data/themes/dfool.cfg, line: 464
-# File: data/themes/experimental.cfg, line: 367
-# File: data/themes/widescreen.cfg, line: 491
-# File: data/themes/widescreen.cfg, line: 617
-# File: data/themes/default.cfg, line: 415
-# File: data/themes/dfool.cfg, line: 464
-# File: data/themes/experimental.cfg, line: 367
-# File: data/themes/widescreen.cfg, line: 491
-# File: data/themes/widescreen.cfg, line: 617
-# File: data/themes/default.cfg, line: 415
-# File: data/themes/dfool.cfg, line: 464
-# File: data/themes/experimental.cfg, line: 367
-# File: data/themes/widescreen.cfg, line: 491
-# File: data/themes/widescreen.cfg, line: 617
-#~ msgid "statuspanel^level"
-#~ msgstr "nível"
+# File: src/menu_events.cpp, line: 1804
+# File: src/menu_events.cpp, line: 1804
+# File: src/menu_events.cpp, line: 1804
+#~ msgid "Register your nickname"
+#~ msgstr "Registre o seu apelido"
 
 #
-# File: data/themes/default.cfg, line: 452
-# File: data/themes/experimental.cfg, line: 397
-# File: data/themes/widescreen.cfg, line: 521
-# File: data/themes/widescreen.cfg, line: 647
-# File: data/themes/default.cfg, line: 445
-# File: data/themes/experimental.cfg, line: 397
-# File: data/themes/widescreen.cfg, line: 521
-# File: data/themes/widescreen.cfg, line: 647
-# File: data/themes/default.cfg, line: 445
-# File: data/themes/experimental.cfg, line: 397
-# File: data/themes/widescreen.cfg, line: 521
-# File: data/themes/widescreen.cfg, line: 647
-#~ msgid "statuspanel^moves"
-#~ msgstr "movimentos"
+# File: src/menu_events.cpp, line: 1804
+# File: src/menu_events.cpp, line: 1804
+# File: src/menu_events.cpp, line: 1804
+#~ msgid "Drop your nickname."
+#~ msgstr "Descartar o seu apelido."
 
 #
-# File: data/themes/default.cfg, line: 461
-# File: data/themes/experimental.cfg, line: 406
-# File: data/themes/widescreen.cfg, line: 530
-# File: data/themes/widescreen.cfg, line: 656
-# File: data/themes/default.cfg, line: 454
-# File: data/themes/experimental.cfg, line: 406
-# File: data/themes/widescreen.cfg, line: 530
-# File: data/themes/widescreen.cfg, line: 656
-# File: data/themes/default.cfg, line: 454
-# File: data/themes/experimental.cfg, line: 406
-# File: data/themes/widescreen.cfg, line: 530
-# File: data/themes/widescreen.cfg, line: 656
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "def. do terreno."
+# File: src/menu_events.cpp, line: 1806
+# File: src/menu_events.cpp, line: 1806
+# File: src/menu_events.cpp, line: 1806
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "Atualiza detalhes deo seu apelido. Para mais detalhes veja '/details'."
+
+#
+# File: src/menu_events.cpp, line: 1807
+# File: src/menu_events.cpp, line: 1807
+# File: src/menu_events.cpp, line: 1807
+#~ msgid "<detail> <value>"
+#~ msgstr "<detalhe> <valor>"
+
+#
+# File: src/menu_events.cpp, line: 1811
+# File: src/menu_events.cpp, line: 1811
+# File: src/menu_events.cpp, line: 1811
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr ""
+#~ "Solicita a lista de detalhes que você pode definir para o seu apelido."
 
 #
 # File: src/dialogs.cpp, line: 945
@@ -13638,6 +13574,25 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "Nome"
 
 #
+# File: src/addon/manager_ui.cpp, line: 174
+# File: src/addon/manager_ui.cpp, line: 528
+# File: src/dialogs.cpp, line: 321
+# File: src/dialogs.cpp, line: 496
+# File: src/menu_events.cpp, line: 965
+# File: src/addon/manager_ui.cpp, line: 174
+# File: src/addon/manager_ui.cpp, line: 528
+# File: src/dialogs.cpp, line: 321
+# File: src/dialogs.cpp, line: 496
+# File: src/menu_events.cpp, line: 965
+# File: src/addon/manager_ui.cpp, line: 174
+# File: src/addon/manager_ui.cpp, line: 528
+# File: src/dialogs.cpp, line: 321
+# File: src/dialogs.cpp, line: 496
+# File: src/menu_events.cpp, line: 965
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#
 # File: src/unit_types.cpp, line: 250
 # File: src/unit_types.cpp, line: 327
 # File: src/unit_types.cpp, line: 250
@@ -13656,25 +13611,6 @@ msgstr "Opções do Quadro-Branco"
 # File: data/core/team-colors.cfg, line: 107
 #~ msgid "Range"
 #~ msgstr "Alcance"
-
-#
-# File: src/addon/manager_ui.cpp, line: 174
-# File: src/addon/manager_ui.cpp, line: 528
-# File: src/dialogs.cpp, line: 321
-# File: src/dialogs.cpp, line: 496
-# File: src/menu_events.cpp, line: 965
-# File: src/addon/manager_ui.cpp, line: 174
-# File: src/addon/manager_ui.cpp, line: 528
-# File: src/dialogs.cpp, line: 321
-# File: src/dialogs.cpp, line: 496
-# File: src/menu_events.cpp, line: 965
-# File: src/addon/manager_ui.cpp, line: 174
-# File: src/addon/manager_ui.cpp, line: 528
-# File: src/dialogs.cpp, line: 321
-# File: src/dialogs.cpp, line: 496
-# File: src/menu_events.cpp, line: 965
-#~ msgid "Type"
-#~ msgstr "Tipo"
 
 #
 # File: src/reports.cpp, line: 713
@@ -13749,44 +13685,84 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "Custo de Interferencia"
 
 #
-# File: src/menu_events.cpp, line: 1482
-# File: src/menu_events.cpp, line: 1482
-# File: src/menu_events.cpp, line: 1482
-#~ msgid "do not translate the 'all'^[all|<command>]"
-#~ msgstr "[all|<commando>]"
-
-#
-# File: src/menu_events.cpp, line: 1602
-# File: src/menu_events.cpp, line: 1602
-# File: src/menu_events.cpp, line: 1602
-#~ msgid "aliases:"
-#~ msgstr "pseudônimo:"
-
-#
-# File: src/menu_events.cpp, line: 1963
-# File: src/menu_events.cpp, line: 1963
-# File: src/menu_events.cpp, line: 1963
-#~ msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-#~ msgstr "[<lado> [on/off/full]]"
-
-#
-# File: src/menu_events.cpp, line: 1963
-# File: src/menu_events.cpp, line: 1963
-# File: src/menu_events.cpp, line: 1963
-#, fuzzy
-#~| msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-#~ msgid "do not translate the on/off^[<side> [on/off]]"
-#~ msgstr "[<lado> [on/off/full]]"
-
-#
-# File: src/menu_events.cpp, line: 1975
-# File: src/menu_events.cpp, line: 1975
-# File: src/menu_events.cpp, line: 1975
-#~ msgid "Show fps."
-#~ msgstr "Mostrar fps."
+# File: src/menu_events.cpp, line: 2578
+# File: src/menu_events.cpp, line: 2577
+# File: src/menu_events.cpp, line: 2577
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "Não é possível 'droid' num aldo para a aai local: '$side'."
 
 #~ msgid "Side:"
 #~ msgstr "Lado:"
+
+#~ msgid "theme^Classic"
+#~ msgstr "Clássico"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "O tema clássico pre-1.12"
+
+#
+# File: data/themes/default.cfg, line: 224
+# File: data/themes/dfool.cfg, line: 258
+# File: data/themes/experimental.cfg, line: 197
+# File: data/themes/widescreen.cfg, line: 276
+# File: data/themes/default.cfg, line: 217
+# File: data/themes/dfool.cfg, line: 258
+# File: data/themes/experimental.cfg, line: 197
+# File: data/themes/widescreen.cfg, line: 276
+# File: data/themes/default.cfg, line: 217
+# File: data/themes/dfool.cfg, line: 258
+# File: data/themes/experimental.cfg, line: 197
+# File: data/themes/widescreen.cfg, line: 276
+#~ msgid "gold"
+#~ msgstr "ouro"
+
+#
+# File: data/themes/default.cfg, line: 233
+# File: data/themes/dfool.cfg, line: 267
+# File: data/themes/experimental.cfg, line: 206
+# File: data/themes/widescreen.cfg, line: 285
+# File: data/themes/default.cfg, line: 226
+# File: data/themes/dfool.cfg, line: 267
+# File: data/themes/experimental.cfg, line: 206
+# File: data/themes/widescreen.cfg, line: 285
+# File: data/themes/default.cfg, line: 226
+# File: data/themes/dfool.cfg, line: 267
+# File: data/themes/experimental.cfg, line: 206
+# File: data/themes/widescreen.cfg, line: 285
+#~ msgid "villages"
+#~ msgstr "aldeias"
+
+#
+# File: data/themes/default.cfg, line: 242
+# File: data/themes/dfool.cfg, line: 276
+# File: data/themes/experimental.cfg, line: 215
+# File: data/themes/widescreen.cfg, line: 294
+# File: data/themes/default.cfg, line: 235
+# File: data/themes/dfool.cfg, line: 276
+# File: data/themes/experimental.cfg, line: 215
+# File: data/themes/widescreen.cfg, line: 294
+# File: data/themes/default.cfg, line: 235
+# File: data/themes/dfool.cfg, line: 276
+# File: data/themes/experimental.cfg, line: 215
+# File: data/themes/widescreen.cfg, line: 294
+#~ msgid "units"
+#~ msgstr "unidades"
+
+#
+# File: data/themes/default.cfg, line: 251
+# File: data/themes/dfool.cfg, line: 285
+# File: data/themes/experimental.cfg, line: 224
+# File: data/themes/widescreen.cfg, line: 303
+# File: data/themes/default.cfg, line: 244
+# File: data/themes/dfool.cfg, line: 285
+# File: data/themes/experimental.cfg, line: 224
+# File: data/themes/widescreen.cfg, line: 303
+# File: data/themes/default.cfg, line: 244
+# File: data/themes/dfool.cfg, line: 285
+# File: data/themes/experimental.cfg, line: 224
+# File: data/themes/widescreen.cfg, line: 303
+#~ msgid "upkeep"
+#~ msgstr "manutenção"
 
 #
 # File: data/themes/default.cfg, line: 260
@@ -13801,10 +13777,59 @@ msgstr "Opções do Quadro-Branco"
 # File: data/themes/dfool.cfg, line: 294
 # File: data/themes/experimental.cfg, line: 233
 # File: data/themes/widescreen.cfg, line: 312
-#, fuzzy
-#~| msgid "income"
-#~ msgid "Income"
+#~ msgid "income"
 #~ msgstr "receita"
+
+#
+# File: data/themes/default.cfg, line: 422
+# File: data/themes/dfool.cfg, line: 464
+# File: data/themes/experimental.cfg, line: 367
+# File: data/themes/widescreen.cfg, line: 491
+# File: data/themes/widescreen.cfg, line: 617
+# File: data/themes/default.cfg, line: 415
+# File: data/themes/dfool.cfg, line: 464
+# File: data/themes/experimental.cfg, line: 367
+# File: data/themes/widescreen.cfg, line: 491
+# File: data/themes/widescreen.cfg, line: 617
+# File: data/themes/default.cfg, line: 415
+# File: data/themes/dfool.cfg, line: 464
+# File: data/themes/experimental.cfg, line: 367
+# File: data/themes/widescreen.cfg, line: 491
+# File: data/themes/widescreen.cfg, line: 617
+#~ msgid "statuspanel^level"
+#~ msgstr "nível"
+
+#
+# File: data/themes/default.cfg, line: 452
+# File: data/themes/experimental.cfg, line: 397
+# File: data/themes/widescreen.cfg, line: 521
+# File: data/themes/widescreen.cfg, line: 647
+# File: data/themes/default.cfg, line: 445
+# File: data/themes/experimental.cfg, line: 397
+# File: data/themes/widescreen.cfg, line: 521
+# File: data/themes/widescreen.cfg, line: 647
+# File: data/themes/default.cfg, line: 445
+# File: data/themes/experimental.cfg, line: 397
+# File: data/themes/widescreen.cfg, line: 521
+# File: data/themes/widescreen.cfg, line: 647
+#~ msgid "statuspanel^moves"
+#~ msgstr "movimentos"
+
+#
+# File: data/themes/default.cfg, line: 461
+# File: data/themes/experimental.cfg, line: 406
+# File: data/themes/widescreen.cfg, line: 530
+# File: data/themes/widescreen.cfg, line: 656
+# File: data/themes/default.cfg, line: 454
+# File: data/themes/experimental.cfg, line: 406
+# File: data/themes/widescreen.cfg, line: 530
+# File: data/themes/widescreen.cfg, line: 656
+# File: data/themes/default.cfg, line: 454
+# File: data/themes/experimental.cfg, line: 406
+# File: data/themes/widescreen.cfg, line: 530
+# File: data/themes/widescreen.cfg, line: 656
+#~ msgid "statuspanel^terrain def."
+#~ msgstr "def. do terreno."
 
 #
 # File: src/savegame.cpp, line: 384
@@ -13815,132 +13840,6 @@ msgstr "Opções do Quadro-Branco"
 # File: src/savegame.cpp, line: 386
 #~ msgid " replay"
 #~ msgstr " replay"
-
-#
-# File: data/english.cfg, line: 17
-# File: data/english.cfg, line: 17
-# File: data/english.cfg, line: 17
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "Unidades de liminar só atingem sua força total durante períodos de "
-#~ "penumbra.\n"
-#~ "\n"
-#~ "Dia: −25% Dano\n"
-#~ "Noite: −25% Dano"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr ""
-#~ "Não há opções de personalização disponíveis para a era, jogo ou "
-#~ "modificação selecionada."
-
-#~ msgid "Defaults"
-#~ msgstr "Padrões"
-
-#
-# File: src/multiplayer_connect.cpp, line: 647
-# File: src/multiplayer_connect.cpp, line: 1658
-# File: src/multiplayer_connect.cpp, line: 647
-# File: src/multiplayer_connect.cpp, line: 1658
-# File: src/multiplayer_connect.cpp, line: 647
-# File: src/multiplayer_connect.cpp, line: 1658
-#~ msgid "Connected Players"
-#~ msgstr "Jogadores Conectados"
-
-#
-# File: data/core/macros/objective-utils.cfg, line: 29
-# File: data/lua/wml/objectives.lua, line: 11988
-# File: data/core/macros/objective-utils.cfg, line: 29
-# File: data/lua/wml/objectives.lua, line: 1547
-# File: data/core/macros/objective-utils.cfg, line: 29
-# File: data/lua/wml/objectives.lua, line: 1547
-#~ msgid "%d%% of gold carried over to the next scenario."
-#~ msgstr "%d%% de ouro tranferido para o próximo cenário."
-
-#
-# File: src/menu_events.cpp, line: 2372
-# File: src/menu_events.cpp, line: 2371
-# File: src/menu_events.cpp, line: 2371
-#~ msgid "registering with password *** and no email address"
-#~ msgstr "registrando com senha *** e sem endereço de email"
-
-#
-# File: src/menu_events.cpp, line: 2376
-# File: src/menu_events.cpp, line: 2375
-# File: src/menu_events.cpp, line: 2375
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr "registrando com senha *** e endereço de email $email"
-
-#
-# File: src/menu_events.cpp, line: 2390
-# File: src/menu_events.cpp, line: 2389
-# File: src/menu_events.cpp, line: 2389
-#~ msgid "dropping your username"
-#~ msgstr "descartando seu nome de usuário"
-
-#
-# File: src/menu_events.cpp, line: 2408
-# File: src/menu_events.cpp, line: 2407
-# File: src/menu_events.cpp, line: 2407
-#~ msgid "setting $var to $value"
-#~ msgstr "configurando o valor de $var para $value"
-
-#
-# File: src/menu_events.cpp, line: 1802
-# File: src/menu_events.cpp, line: 1802
-# File: src/menu_events.cpp, line: 1802
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<senha> <email (opcional)>"
-
-#
-# File: src/menu_events.cpp, line: 1804
-# File: src/menu_events.cpp, line: 1804
-# File: src/menu_events.cpp, line: 1804
-#~ msgid "Register your nickname"
-#~ msgstr "Registre o seu apelido"
-
-#
-# File: src/menu_events.cpp, line: 1804
-# File: src/menu_events.cpp, line: 1804
-# File: src/menu_events.cpp, line: 1804
-#~ msgid "Drop your nickname."
-#~ msgstr "Descartar o seu apelido."
-
-#
-# File: src/menu_events.cpp, line: 1806
-# File: src/menu_events.cpp, line: 1806
-# File: src/menu_events.cpp, line: 1806
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr ""
-#~ "Atualiza detalhes deo seu apelido. Para mais detalhes veja '/details'."
-
-#
-# File: src/menu_events.cpp, line: 1807
-# File: src/menu_events.cpp, line: 1807
-# File: src/menu_events.cpp, line: 1807
-#~ msgid "<detail> <value>"
-#~ msgstr "<detalhe> <valor>"
-
-#
-# File: src/menu_events.cpp, line: 1811
-# File: src/menu_events.cpp, line: 1811
-# File: src/menu_events.cpp, line: 1811
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr ""
-#~ "Solicita a lista de detalhes que você pode definir para o seu apelido."
-
-#
-# File: src/menu_events.cpp, line: 2578
-# File: src/menu_events.cpp, line: 2577
-# File: src/menu_events.cpp, line: 2577
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "Não é possível 'droid' num aldo para a aai local: '$side'."
 
 #~ msgid "Lvl 0"
 #~ msgstr "Lvl 0"
@@ -13998,6 +13897,34 @@ msgstr "Opções do Quadro-Branco"
 # File: src/game_controller.cpp, line: 428
 #~ msgid "There are no corpses available."
 #~ msgstr "Não há nenhum corpo disponível."
+
+#
+# File: src/menu_events.cpp, line: 1482
+# File: src/menu_events.cpp, line: 1482
+# File: src/menu_events.cpp, line: 1482
+#~ msgid "do not translate the 'all'^[all|<command>]"
+#~ msgstr "[all|<commando>]"
+
+#
+# File: src/menu_events.cpp, line: 1602
+# File: src/menu_events.cpp, line: 1602
+# File: src/menu_events.cpp, line: 1602
+#~ msgid "aliases:"
+#~ msgstr "pseudônimo:"
+
+#
+# File: src/menu_events.cpp, line: 1963
+# File: src/menu_events.cpp, line: 1963
+# File: src/menu_events.cpp, line: 1963
+#~ msgid "do not translate the on/off/full^[<side> [on/off/full]]"
+#~ msgstr "[<lado> [on/off/full]]"
+
+#
+# File: src/menu_events.cpp, line: 1975
+# File: src/menu_events.cpp, line: 1975
+# File: src/menu_events.cpp, line: 1975
+#~ msgid "Show fps."
+#~ msgstr "Mostrar fps."
 
 #
 # File: data/advanced_preferences.cfg, line: 60
