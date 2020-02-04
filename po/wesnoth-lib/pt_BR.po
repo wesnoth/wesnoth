@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-02-01 22:39-0300\n"
-"PO-Revision-Date: 2019-11-04 23:51-0300\n"
+"PO-Revision-Date: 2020-02-03 08:57-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: pt_BR\n"
@@ -3126,7 +3126,7 @@ msgstr ""
 "A maioria das unidades não podem entrar em águas profundas, sendo um terreno "
 "exclusivo para unidades que voam ou que sejam exímios nadadores.\n"
 "\n"
-"Tritões e nagas possuem 50% de defesa em água profunda e tambékm possuem "
+"Tritões e nagas possuem 50% de defesa em água profunda e também possuem "
 "movimentação plena."
 
 #
@@ -6961,14 +6961,12 @@ msgstr "Verificações mais rigorosas para erros de dessincronização"
 # File: src/hotkeys.cpp, line: 91
 # File: src/hotkeys.cpp, line: 91
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Salvar Replay"
+msgstr "Replay Particular"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Se o replay estará publicamente disponível"
 
 #
 # File: data/gui/default/window/mp_create_game.cfg, line: 70
@@ -8873,6 +8871,8 @@ msgstr "Convocar unidade"
 #: data/gui/window/unit_recall.cfg:341
 msgid "Search for unit name, unit type name, unit level, or trait."
 msgstr ""
+"Procure pelo nome da unidade, o tipo da unidade, o nível da unidade, ou a "
+"característica."
 
 #
 # File: src/hotkeys.cpp, line: 87
@@ -8940,10 +8940,8 @@ msgid "Details:"
 msgstr "Detalhes:"
 
 #: src/build_info.cpp:270
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "Capturas de tela JPG"
+msgstr "Capturas de tela JPEG"
 
 #: src/build_info.cpp:277
 msgid "feature^Lua console completion"
@@ -9680,16 +9678,12 @@ msgid "Defender resistance vs"
 msgstr "Resistências do defensor vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:191
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "Vulnerabilidades do atacante vs"
+msgstr "Vulnerabilidades do Defensor vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:195
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "Resistências do defensor vs"
+msgstr "Resistências do Atacante vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Attacker vulnerability vs"
@@ -10761,10 +10755,13 @@ msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"Esta unidade não pode ser convocada porquê você não possuirá ouro suficiente "
+"nesta etapa do seu planejamento."
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
+"Esta unidade não pode ser convocada porquê você não possui ouro suficiente."
 
 #
 # File: src/hotkeys.cpp, line: 87
@@ -11773,30 +11770,24 @@ msgstr "Próximo Movimento"
 # File: src/hotkeys.cpp, line: 124
 # File: src/hotkeys.cpp, line: 124
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Mapa Completo"
+msgstr "Ver: Mapa Completo"
 
 #
 # File: src/hotkeys.cpp, line: 125
 # File: src/hotkeys.cpp, line: 125
 # File: src/hotkeys.cpp, line: 125
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Cada time"
+msgstr "Ver: Cada time"
 
 #
 # File: data/core/terrain.cfg, line: 1686
 # File: data/core/terrain.cfg, line: 1686
 # File: data/core/terrain.cfg, line: 1686
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Time Humano"
+msgstr "Ver: Time Humano"
 
 #
 # File: src/hotkeys.cpp, line: 127
