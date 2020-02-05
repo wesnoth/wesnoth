@@ -148,6 +148,7 @@
    * Made `map_file=Example.map` support looking in the `[binary_path]`'s "maps/" directory (issue #4633)
    * Make wesnoth_addon_manager not generate packet.dump files any more (issue #4651)
    * Improved handling of defense cap and {NOTE_DEFENSE_CAP} in wmllint (issue #4379)
+   * Removed the leftover Khalifate multiplayer faction files. (PR #4714)
 
 ## Version 1.15.2
  ### AI:
