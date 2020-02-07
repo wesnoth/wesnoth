@@ -11,22 +11,6 @@ die() { error "$*"; exit 1; }
 export DISPLAY=:99.0
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
 
-# name the parameters
-NLS="$1"
-TOOL="$2"
-CC="$3"
-CXX="$4"
-CXXSTD="$5"
-OPT="$6"
-WML_TESTS="$7"
-WML_TEST_TIME="$8"
-PLAY_TEST="$9"
-MP_TEST="${10}"
-BOOST_TEST="${11}"
-LTO="${12}"
-SAN="${13}"
-VALIDATE="${14}"
-
 if [ "$OPT" == "-O0" ]; then
     STRICT="true"
     build_timeout=35
