@@ -74,10 +74,13 @@ elif [ "$LTS" == "mingw" ]; then
         cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" \
         nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
         arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32
+    BUILD_RET=$?
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         ./utils/travis/sftp
     fi
+
+    exit $BUILD_RET=$?
 elif [ "$LTS" == "steamrt" ]; then
     scons ctool=$CC cxxtool=$CXX boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt \
         cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
