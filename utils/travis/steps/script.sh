@@ -58,10 +58,11 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
 else
 # additional permissions required due to flatpak's use of bubblewrap
     docker run --cap-add=ALL --privileged \
-               --env SFTP_PASSWORD --env LTS --env TRAVIS_COMMIT --env BRANCH --env UPLOAD_ID --env TRAVIS_PULL_REQUEST \
+               --env SFTP_PASSWORD --env LTS --env TRAVIS_COMMIT --env BRANCH --env UPLOAD_ID --env TRAVIS_PULL_REQUEST --env NLS --env CC --env CXX --env TOOL \
+                --env CXXSTD --env OPT --env WML_TESTS --env WML_TEST_TIME --env PLAY_TEST --env MP_TEST --env BOOST_TEST --env LTO --env SAN --env VALIDATE \
                --volume "$HOME"/build-cache:/home/wesnoth-travis/build \
                --volume "$HOME"/flatpak-cache:/home/wesnoth-travis/flatpak-cache \
                --volume "$HOME"/.ccache:/root/.ccache \
                --tty wesnoth-repo:"$LTS"-"$BRANCH" \
-               unbuffer ./utils/travis/docker_run.sh "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN" "$VALIDATE"
+               unbuffer ./utils/travis/docker_run.sh
 fi
