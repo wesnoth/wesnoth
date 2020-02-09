@@ -43,13 +43,14 @@ echo "TRAVIS_COMMIT: $TRAVIS_COMMIT"
 echo "BRANCH: $BRANCH"
 echo "UPLOAD_ID: $UPLOAD_ID"
 echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
+echo "TRAVIS_TAG: $TRAVIS_TAG"
 
 echo "STRICT: $STRICT"
 echo "build_timeout(mins): $build_timeout"
 
 $CXX --version
 
-if [ "$NLS" == "true" ] && [ "$LTS" != "flatpak" ]; then
+if [ "$NLS" == "only" ]; then
     cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false
     make VERBOSE=1 -j2 || exit 1
     make clean
@@ -73,17 +74,22 @@ elif [ "$LTS" == "mingw" ]; then
     scons wesnoth wesnothd build=release \
         cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" \
         nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
-        arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32
-    BUILD_RET=$?
+        arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32 || exit 1
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-        ./utils/travis/sftp
+        ./utils/travis/sftp wesnoth.exe wesnothd.exe
     fi
 
-    exit $BUILD_RET
+    if [ "$TRAVIS_TAG" != "" ]; then
+        echo "Creating installer for tag: $TRAVIS_TAG"
+        scons translations build=release --debug=time nls=true jobs=2 || exit 1
+        python3 ./utils/dockerbuilds/mingw/get_dlls.py || exit 1
+        scons windows-installer arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32 || exit 1
+        ./utils/travis/sftp "$(find . -type f -regex '.*win64.*')"
+    fi
 elif [ "$LTS" == "steamrt" ]; then
     scons ctool=$CC cxxtool=$CXX boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt \
-        cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
+        cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
         build=release
 else
     SECONDS=0
@@ -92,7 +98,7 @@ else
         echo "max_size = 200M" > $HOME/.ccache/ccache.conf
         echo "compiler_check = content" >> $HOME/.ccache/ccache.conf
 
-        cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false \
+        cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS="$NLS" \
               -DEXTRA_FLAGS_CONFIG="-pipe" -DOPT="$OPT" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO="$LTO" -DLTO_JOBS=2 -DENABLE_MYSQL=true -DSANITIZE="$SAN" \
               -DCXX_STD="$CXXSTD" -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache && \
               make VERBOSE=1 -j2
@@ -104,7 +110,7 @@ else
         scons wesnoth wesnothd campaignd boost_unit_tests build=release \
               ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
               extra_flags_config="-pipe" opt="$OPT" strict="$STRICT" forum_user_handler=true \
-              nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
+              nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
         BUILD_RET=$?
     fi
 
@@ -113,7 +119,7 @@ else
     fi
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-        ./utils/travis/sftp
+        ./utils/travis/sftp wesnoth wesnothd
     fi
 
     if (( SECONDS > 60*build_timeout )); then

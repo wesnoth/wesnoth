@@ -7,6 +7,7 @@ import os
 import datetime
 import time
 import sys
+import hashlib
 
 start = int(time.time())
 now = datetime.datetime.now()
@@ -45,11 +46,16 @@ with paramiko.Transport(("frs.sourceforge.net", 22)) as transport:
         except:
             pass
 
-        if platform.system() == "Windows" or os.environ["LTS"] == "mingw":
-            sftp.put("wesnoth.exe", dest+"wesnoth.exe")
-            sftp.put("wesnothd.exe", dest+"wesnothd.exe")
-        else:
-            sftp.put("wesnoth", dest+"wesnoth")
-            sftp.put("wesnothd", dest+"wesnothd")
+        for arg in sys.argv[1:]:
+            sftp.put(arg, dest+arg)
+
+            sha256 = hashlib.sha256()
+            with open(arg, "rb") as f:
+                while True:
+                    data = f.read(100000)
+                    if not data:
+                        break
+                    sha256.update(data)
+            print("sha256 of "+arg+": "+sha256.hexdigest())
 
 print("SFTP duration: "+str(int(time.time())-start)+" seconds")
