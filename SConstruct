@@ -403,24 +403,24 @@ if env["prereqs"]:
             have_X = conf.CheckLib('X11')
 
         env["notifications"] = env["notifications"] and conf.CheckPKG("dbus-1")
-        if env["notifications"]:
-            client_env.Append(CPPDEFINES = ["HAVE_LIBDBUS"])
-
         client_env['fribidi'] = client_env['fribidi'] and (conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find FriBiDi, disabling FriBiDi support."))
-        if client_env['fribidi']:
-            client_env.Append(CPPDEFINES = ["HAVE_FRIBIDI"])
-
         env["history"] = env["history"] and (conf.CheckLib("history") or Warning("Can't find GNU history, disabling history support."))
-        if env["history"]:
-            client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
+
+    client_env = conf.Finish()
+
+# We set those outside of Configure() section because SCons doesn't merge CPPPATH var properly in conf.Finish()
+    if env["notifications"]:
+        client_env.Append(CPPDEFINES = ["HAVE_LIBDBUS"])
+    if client_env['fribidi']:
+        client_env.Append(CPPDEFINES = ["HAVE_FRIBIDI"])
+    if env["history"]:
+        client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 
     if env["forum_user_handler"]:
         mysql_config = check_output(["mysql_config", "--libs", "--cflags"]).decode("utf-8").replace("\n", " ").replace("-DNDEBUG", "")
         mysql_flags = env.ParseFlags(mysql_config)
         env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
         env.MergeFlags(mysql_flags)
-
-    client_env = conf.Finish()
 
     test_env = client_env.Clone()
     conf = test_env.Configure(**configure_args)
