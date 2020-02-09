@@ -40,15 +40,15 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     cd $start
     export PATH="/c/Python36:"$PATH":/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin/amd64:$start/../external/dll"
     if [ "$(which python3)" == "" ] || [ "$(which sqlite3)" == "" ] || [ ! -d "../external" ]; then
-      echo "Failed to retrieve dependencies!"
-      exit 1
+        echo "Failed to retrieve dependencies!"
+        exit 1
     else
-      echo "Dependencies retrieved and installed!"
+        echo "Dependencies retrieved and installed!"
     fi
 
     ./utils/travis/windows-file-hasher.sh "projectfiles/VC14/$OPT/filehashes.sqlite"
 else
-    if [ "$NLS" != "true" ]; then
+    if [ "$NLS" == "false" ]; then
         echo "po/" >> .dockerignore
     fi
 
