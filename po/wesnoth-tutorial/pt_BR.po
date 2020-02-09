@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-25 18:18 UTC\n"
-"PO-Revision-Date: 2019-07-16 10:17-0300\n"
+"PO-Revision-Date: 2020-02-05 15:25-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -154,9 +154,15 @@ msgstr "Perder o seu líder"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:136
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
+"Você não pode terminar o seu turno até que você tenha recrutado tropas e "
+"capturado uma aldeia!"
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 213
@@ -442,8 +448,14 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:526
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
 msgstr ""
+"Você não pode terminar o seu turno até que você tenha recrutado tropas e "
+"capturado uma aldeia!"
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 443
@@ -593,9 +605,15 @@ msgstr "Termine o seu turno"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:630
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
+"Você não pode terminar o seu turno até que você tenha recrutado tropas e "
+"capturado uma aldeia!"
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 518
@@ -680,9 +698,15 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:697
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
+"Você não pode terminar o seu turno até que você tenha recrutado tropas e "
+"capturado uma aldeia!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:706
@@ -819,9 +843,15 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:829
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
+"Você não pode terminar o seu turno até que você tenha recrutado tropas e "
+"capturado uma aldeia!"
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 760
@@ -1410,6 +1440,8 @@ msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
 msgstr ""
+"Você não pode terminar o seu turno até que você tenha recrutado tropas e "
+"capturado uma aldeia!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
@@ -1528,13 +1560,6 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 501
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the east; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1543,7 +1568,7 @@ msgid ""
 msgstr ""
 "Vê essa água azul escura? Ela é muito funda para qualquer um dos times "
 "atravessar. Os orcs poderiam passar lentamente por aquela parte estreita de "
-"água rasa azul clara ao leste; mas nós poderiamos nos posicionar na costa e "
+"água rasa azul clara ao norte; mas nós poderiamos nos posicionar na costa e "
 "força-los a nos enfrentar estando na água, onde eles estariam expostos e nós "
 "estariamos protegidos pelas florestas."
 
@@ -1686,26 +1711,22 @@ msgstr "Xamã Élfico"
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 670
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
-#| "friendly units around her. She also has a special attack which <i>slows</"
-#| "i> enemies, halving the damage they do for one turn."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
-"O Xamã é uma unidade bem fraca que tem a habilidade de <i>curar</i>as "
-"unidades ao seu redor. Além disso, também tem um ataque especial que causa "
-"<i>lentidão</i> nos inimigos, reduzindo o dano que eles causam pela metade "
-"até o começo do próximo."
+"A Xamã possui a habilidade de <i>curar</i>as unidades ao seu redor. Além "
+"disso, também tem um ataque especial que causa <i>lentidão</i> nos inimigos, "
+"reduzindo o dano que eles causam pela metade até o começo do próximo. "
+"Entretanto, ela é fisicamente mais fraca do que guerreiros e arqueiros, "
+"então, cuidado quando mandá-la para batalha."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "A Habilidade de <i>Medicar</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
@@ -1719,28 +1740,22 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"No início de cada turno, unidades aliadas adjacentes a uma xamã recuperam 4 "
+"pontos de vida (apenas metade da cura de uma aldeia). A Xamã não ganha "
+"pontos de experiência ao curar unidades, apenas ao combater unidades, mas "
+"ainda assim é uma boa fazer com que ela ganhe níveis — sua versão de nível "
+"dois Druida Élfica cura tanto quanto uma aldeia.\n"
+"\n"
+"Uma explicação detalhada sobre recuperação de pontos de vida encontra-se na "
+"secção <i>O Jogo</i> da ajuda (atalho padrão: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Abilities and Weapon Specials"
 msgid "Weapon Specials"
-msgstr "Habilidades e Efeitos das Armas"
+msgstr "Efeitos das Armas"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1753,21 +1768,21 @@ msgid ""
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Efeitos das armas são modificadores especiais que fazem alguns ataques serem "
-"mais fortes. O ataque de emaranhar do xamã causa lentidão. Quando esse "
-"ataque é usado, o dano da unidade acertada será reduzido pela metade até o "
-"próximo turno. Dentre os efeitos especiais de arma estão Iniciativa, que faz "
-"com que aquele ataque seja sempre o primeiro independentemente de quem "
-"começou atacando, e Mágico, que faz com que o ataque sempre tenha 70% de "
-"chance de acerto\n"
+"mais fortes. Neste caso, o ataque de emaranhar do xamã causa lentidão. "
+"Quando esse ataque é usado, o dano da unidade acertada será reduzido pela "
+"metade até o próximo turno. Dentre os efeitos especiais de arma estão "
+"Iniciativa, que faz com que aquele ataque seja sempre o primeiro "
+"independentemente de quem começou atacando, e Mágico, que faz com que o "
+"ataque sempre tenha 70% de chance de acerto\n"
 "\n"
 "A lista completa com todas as habilidades e efeitos das armas se encontra na "
-"sessão de ajuda."
+"sessão de ajuda (atalho padrão: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Multiple Healers"
-msgstr ""
+msgstr "Múltiplos Curandeiros"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1781,6 +1796,13 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"Agora você possui duas curandeiras. Entretanto, cada unidade só recebe cura "
+"de uma curandeira— uma unidade ainda sim só recuperará 4 pontos de vida por "
+"turno mesmo que esteja adjacente às duas Xamãs.\n"
+"\n"
+"Se uma Xamã avançar de nível e se tornar uma Druida, ela será capaz de curar "
+"8 pontos de vida das unidades aliadas por turno. Uma unidade adjacente a "
+"múltiplos curandeiros só será curada pelo curandeiro mais avançado."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1791,11 +1813,15 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"Agora você tem duas curandeiras. Sua Druida cura 8 pontos de vida das "
+"unidades adjacentes. Em comparação, uma Xamã cura 4. Entretanto, cada "
+"unidade só pode ser curada por um curandeiro — uma unidade adjacente a "
+"múltiplos curandeiros será curada pelo melhor curandeiro."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
 msgid "Healers and Villages"
-msgstr ""
+msgstr "Curandeiros e Aldeias"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:384
@@ -1803,6 +1829,8 @@ msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
 msgstr ""
+"Uma unidade dentro da aldeia será curada pela aldeia ao invés dos "
+"curandeiros adjacentes."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
@@ -1812,6 +1840,11 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"Ter mais de um curandeiro permite que eles curem um ao outro ou que usem "
+"suas habilidades em diferentes partes do campo de batalha. Também permite "
+"melhores movimentações táticas — os 2 pontos de vida ganhos ao descansar não "
+"são anulados por outras fontes de cura, então geralmente é melhor mover um "
+"curandeiro do que uma unidade ferida."
 
 #
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 620
@@ -1875,10 +1908,8 @@ msgstr "Capture uma aldeia"
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 675
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:448
-#, fuzzy
-#| msgid "Capture a village"
 msgid "You still have to capture a village!"
-msgstr "Capture uma aldeia"
+msgstr "Você ainda precisa capturar uma aldeia!"
 
 #
 # File: data/campaigns/tutorial/scenarios/2_Speaking.cfg, line: 32
@@ -1886,20 +1917,16 @@ msgstr "Capture uma aldeia"
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:479
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things if you make a "
-#| "mistake."
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"Não se esqueça que você pode apertar <b>u</b> para desfazer a maioria das "
-"ações caso você faça algo errado sem querer."
+"Você esqueceu de recrutar unidades! Você apertar <b>u</b> para desfazer sua "
+"última ação."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "Você ainda tem que recrutar unidades!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:490
@@ -1955,16 +1982,12 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 299
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:568
-#, fuzzy
-#| msgid ""
-#| "You moved to the wrong place! After this message, you can press <b>u</b> "
-#| "to undo, then try again."
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"Você se moveu para o lugar errado! Depois desta mensagem, você pode apertar "
-"'u' para desfazer o movimento e então tentar novamente."
+"Você esqueceu de capturar uma aldeia! Você pode apertar <b>u</b> para "
+"desfazer sua última ação."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:588
@@ -2137,7 +2160,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "O tutorial não era pra ser tão difícil"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:714
@@ -2148,6 +2171,12 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"O orc naquela ilha deveria ter se movido para além da ponte, fazendo com que "
+"ele pudesse ser atacado por varios elfos ao mesmo tempo. Alguma coisa fez "
+"com que o evento que era para acontecer não aconteceu, o que fará com que "
+"este cenário seja mais difícil, pois o orc está numa posição defensiva.\n"
+"\n"
+"Por favor, relate o bug."
 
 #
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1468
@@ -2240,11 +2269,6 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1147
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:779
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
@@ -2259,27 +2283,18 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1154
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:784
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Se um dos seus Xamãs ficar ao lado das suas unidades feridas, ela irá curar "
-"4 pontos de vida de cada unidade adjacente a ela no começo do próximo turno."
+"Se um das suas Xamãs ficar logo atrás de você, ela irá curá-lo por 4 pontos "
+"de vida no começo do próximo turno."
 
 #
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1147
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1147
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:790
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
@@ -2389,19 +2404,14 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1229
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it next turn! "
-#| "Move a unit into the village to stop the orcs capturing it. Whichever "
-#| "unit you choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"Nós precisamos ocupar aquela aldeia, caso contrário eles a ocuparão no "
-"próximo turno! Mova uma unidade para a aldeia para evitar que os orcs a "
-"capturem. Qualquer unidade que você utilizar irá se beneficiar da cura."
+"Nós precisamos ocupar aquela aldeia, caso contrário eles ocuparão ela em "
+"breve! Mova uma unidade para a aldeia para evitar que os orcs a capturem. "
+"Qualquer unidade que você utilizar irá se beneficiar da cura."
 
 #
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1241
@@ -2462,6 +2472,16 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"Lembre-se de recuar unidades feridas para as aldeias. Xamãs curam apenas 4 "
+"pontos de vida por turno, já aldeias curam 8 pontos de vida por turno.\n"
+"\n"
+"Diferentes fontes de cura geralmente não são combinadas. Se uma unidade "
+"começar o turno próxima a vários curandeiros, ou numa vila adjacente a um "
+"curandeiro, ela ainda assim só será curada uma vez.\n"
+"\n"
+"Descanso-cura é uma exceção a regra— se uma unidade não fizer nada por um "
+"turno, ela curará 2 pontos de vida a mais e ainda assim será curada pela "
+"aldeia ou curandeiro, recuperando um total de 10 pontos de vida por turno."
 
 #
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1263
@@ -2702,16 +2722,12 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1472
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1294
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. Goodbye, $unit."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr ""
-"Unidades de níveis maiores são fortes, mas não são invulneráveis. Adeus, "
-"$unit.name|."
+"Unidades de níveis maiores são fortes, mas não são invulneráveis. Sentiremos "
+"sua falta, $unit.name|."
 
 #
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1467
@@ -2911,17 +2927,10 @@ msgstr "Isso...foi tolo. É melhor ser mais cuidadosa da próxima vez."
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1464
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "Agh! Agora, quem vai guiá-lo para a vitória?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1479
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try one of the rookie-level "
-#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#| "i> is the easiest and is the recommended first campaign. In <i>An Orcish "
-#| "Incursion</i> you have an Elvish army, similarly to this tutorial, but "
-#| "with seven scenarios for your units to gain experience and advance levels."
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
@@ -2930,9 +2939,7 @@ msgstr ""
 "Você derrotou os orcs! Seria uma boa você começar jogando pelas campanahs de "
 "nível iniciante, pois elas incluem dicas estratégicas. <i>Uma História de "
 "Dois Irmãos</i> é a mais fácil e recomendada para quem não possui "
-"experiência. Na <i>Uma Invasão de Orcs</i> você lidera um exército de Elfos, "
-"assim como no tutorial, mas com sete cenários para suas unidades ganharem "
-"experiência e subirem de nível."
+"experiência."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1484
