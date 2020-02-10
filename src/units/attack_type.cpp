@@ -326,12 +326,17 @@ bool attack_type::apply_modification(const config& cfg)
 		specials_ = new_specials;
 	}
 
-	if (set_specials) {
+	if(set_specials) {
 		const std::string &mode = set_specials["mode"];
-		if (mode != "append") {
+		if(mode.empty()){
+			deprecated_message("[set_specials]mode=<unset>", DEP_LEVEL::INDEFINITE, "",
+				"The mode defaults to 'replace', but should often be 'append' instead. The default may change in a future version, or the attribute may become mandatory.");
+			// fall through to mode != "append"
+		}
+		if(mode != "append") {
 			specials_.clear();
 		}
-		for (const config::any_child &value : set_specials.all_children_range()) {
+		for(const config::any_child &value : set_specials.all_children_range()) {
 			specials_.add_child(value.key, value.cfg);
 		}
 	}
