@@ -164,14 +164,6 @@
   LangString		LWesnoth		${LANG_SPANISH}			"La batalla por Wesnoth"
   LangString		LUserdata		${LANG_SPANISH}			"Datos de usuario"
 
-  !insertmacro		MUI_LANGUAGE	"Turkish"
-  LicenseLangString	MUILicense		${LANG_TURKISH}			"packaging\windows\gpl-2.tr.txt"
-  LangString		LCode			${LANG_TURKISH}			"tr"
-  LangString		LEditor			${LANG_TURKISH}			"Harita Düzenleyici"
-  LangString		LManual			${LANG_TURKISH}			"Kılavuz"
-  LangString		LWesnoth		${LANG_TURKISH}			"Vesnot Savaşı"
-  LangString		LUserdata		${LANG_TURKISH}			"Kullanıcı dizini"
-
   !insertmacro		MUI_LANGUAGE	"TradChinese"
   LicenseLangString	MUILicense		${LANG_TRADCHINESE}		"packaging\windows\gpl-2.zh-tw.txt"
   LangString		LCode			${LANG_TRADCHINESE}		"zh_TW"
