@@ -1148,8 +1148,10 @@ color_t unit::xp_color() const
 
 	color_t color = normal_color;
 	bool major_amla = false;
+	bool has_amla = false;
 	for(const config& adv:get_modification_advances()){
 		major_amla |= adv["major_amla"].to_bool();
+		has_amla = true;
 	}
 	if(advances_to().size() ||major_amla){
 		if(near_advance){
@@ -1159,7 +1161,7 @@ color_t unit::xp_color() const
 		} else if(far_advance){
 			color=far_advance_color;
 		}
-	} else if(get_modification_advances().size()){
+	} else if(has_amla){
 		if(near_advance){
 			color=near_amla_color;
 		} else if(mid_advance){
