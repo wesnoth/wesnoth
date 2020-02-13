@@ -345,8 +345,8 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 				{ "use_markup", "true" },
 				{ "tooltip", get_hp_tooltip(type.movement_type().get_resistances().damage_table(), [&type](const std::string& dt, bool is_attacker) { return type.resistance_against(dt, is_attacker); }) }
 			} },
-			{ "xp",{	// hard-coded span values based on unit::xp_color()
-				{ "label", (formatter() << "<small>" << (type.can_advance() ? "<span color='#00a0e1'>" : "<span color='#aa00ff'>") << "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | </small>").str() },
+			{ "xp",{
+				{ "label", (formatter() << "<small>" << font::span_color(unit::xp_color(100, type.can_advance(), true)) << "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
 				{ "tooltip", (formatter() << _("Experience Modifier: ") << unit_experience_accelerator::get_acceleration() << '%').str() }
 			} },
