@@ -1584,6 +1584,7 @@ public:
 	 * Color for this unit's XP. See also @ref hp_color
 	 */
 	color_t xp_color() const;
+	static color_t xp_color(int xp_to_advance, bool can_advance, bool has_amla);
 
 	/**
 	 * @}
