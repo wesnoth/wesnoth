@@ -55,8 +55,8 @@
  ### Editor
  ### Language and i18n
    * Updated translations: Ancient Greek, Chinese (Traditional), Czech, Dutch,
-     Esperanto, French, Italian, Korean, Portuguese (Brazil), Russian, Spanish,
-     Turkish
+     Esperanto, French, Italian, Korean, Portuguese, Portuguese (Brazil),
+     Russian, Spanish, Turkish
    * Fix Rename Unit dialog having untranslated text (issue #4569).
    * Use <game dir>/translations instead of <process working dir>/translations to find core
      translation catalogues on Windows.
