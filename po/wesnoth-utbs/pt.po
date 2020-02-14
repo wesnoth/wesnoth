@@ -4,15 +4,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-utbs)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-12 16:29 UTC\n"
-"PO-Revision-Date: 2015-01-16 21:10-0000\n"
+"PO-Revision-Date: 2019-01-22 13:36+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
-"Language: pt\n"
+"Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -46,55 +46,38 @@ msgstr ""
 msgid "(Expert level, 10 scenarios.)"
 msgstr "(Nível veterano, 10 cenários)"
 
-#
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "Desert Fighter"
 msgid "Fighter"
-msgstr "Soldado do Deserto"
+msgstr "Soldado"
 
-#
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normal)"
+msgstr "Normal"
 
 #
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Desafiador)"
+msgstr "Desafiante"
 
-#
 #. [advancement]: id=warrior_1
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:44
-#, fuzzy
-#| msgid "Arisen Warrior"
 msgid "Warrior"
-msgstr "Guerreiro Levantado"
+msgstr "Guerreiro"
 
-#
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
-#| msgid "Desert Champion"
 msgid "Champion"
-msgstr "Campeão do Deserto"
+msgstr "Campeão"
 
-#
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
-msgstr "(Pesadelo)"
+msgstr "Pesadelo"
 
 #
 #. [about]
@@ -106,13 +89,13 @@ msgstr "Projeto de Campanha"
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:41
 msgid "Campaign Maintenance"
-msgstr "manutenção da Campanha"
+msgstr "Manutenção da Campanha"
 
 #
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:62
 msgid "Artwork and Graphics Design"
-msgstr "trabalho artístico e Projeto Gráfico"
+msgstr "Trabalho Artístico e Projeto Gráfico"
 
 #
 #. [about]
@@ -137,9 +120,11 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"Sedento: Esta unidade está sedenta. Irá perder 4 HP e os seus danos irão "
+"sedento: Esta unidade está sedenta. Irá perder 4 HP e os seus danos irão "
 "cair por um ponto cada turno de dia a não ser que haja um curandeiro para "
-"prevenir-o ou ela é curada na água de uma oásis."
+"prevenir-o ou ela é curada na água de uma oásis.\n"
+"\n"
+"Unidades não podem ser derrotadas e não provocam qualquer dano neste estado."
 
 #
 #. [lua]: wesnoth.theme_items.unit_status
@@ -209,8 +194,6 @@ msgstr "Maligno"
 #
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:122
-#, fuzzy
-#| msgid "Rescue Surviving Elves"
 msgid "Rescue surviving elves"
 msgstr "Resgata os elfos sobreviventes"
 
@@ -289,7 +272,7 @@ msgstr "Morte de Zhul"
 #. [value]: type=Quenoth Fighter
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:183
 msgid "Lreu"
-msgstr ""
+msgstr "Lreu"
 
 #
 #. [value]: type=Quenoth Fighter
@@ -300,7 +283,7 @@ msgstr "Piyru"
 #. [value]: type=Quenoth Fighter
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:195
 msgid "Feru"
-msgstr ""
+msgstr "Feru"
 
 #
 #. [value]: type=Quenoth Scout
@@ -464,7 +447,7 @@ msgstr "Eranor"
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:349
 msgid "Seil"
-msgstr ""
+msgstr "Seil"
 
 #
 #. [message]: speaker=Vecnu
@@ -526,10 +509,8 @@ msgstr "Eloshi"
 #
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:446
-#, fuzzy
-#| msgid "Illuvia"
 msgid "Illuvin"
-msgstr "Illuvia"
+msgstr "Illuvin"
 
 #
 #. [event]
@@ -553,10 +534,8 @@ msgstr "Jorazan"
 #
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:558
-#, fuzzy
-#| msgid "Zyara"
 msgid "Zyar"
-msgstr "Zyara"
+msgstr "Zyar"
 
 #
 #. [message]: speaker=unit
@@ -834,7 +813,7 @@ msgstr "Eia, Nisa, as pedras pararam de cair. Podes sair agora!"
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:895
 msgid "Nisen"
-msgstr ""
+msgstr "Nisen"
 
 #
 #. [message]: speaker=Nisen
@@ -858,7 +837,7 @@ msgstr ""
 msgid "The encampment is empty. I wonder what happened to the inhabitants?"
 msgstr ""
 "O acampamento está vazio. Pergunto-me o que terá acontecido com os seus "
-"habitantes."
+"habitantes?"
 
 #
 #. [message]: speaker=unit
@@ -890,7 +869,7 @@ msgstr ""
 "vida. Elfos franzinos, vou usar os cadáveres das vossas famílias para criar "
 "um exército de mortos-vivos! Todos devem curvar-se diante Xanthos, o "
 "Necrómante! Oh bom, alguns elfos que sobreviveram neste assentamento "
-"exterior. Concordaram em ajudar-nos a procurar outros sobreviventes."
+"exterior. Concordaram em ajudar-nos a procurar outros sobreviventes!"
 
 #
 #. [message]: speaker=Nym
@@ -1016,7 +995,7 @@ msgstr "Jokli"
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1269
 msgid "Lyer"
-msgstr ""
+msgstr "Lyer"
 
 #
 #. [message]: speaker=Pythos
@@ -1670,13 +1649,13 @@ msgid ""
 "what’s inside..."
 msgstr ""
 "Eia! Olham ali, deixaram cair algo... Uma garrafa de pedra, selada. O que "
-"será que há dentro?"
+"será que há dentro ..."
 
 #
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:731
 msgid "Nym! No! Don’t open—"
-msgstr "Nym! Não! Não abras..."
+msgstr "Nym! Não! Não abras—"
 
 #
 #. [message]: speaker=Nym
@@ -1930,7 +1909,7 @@ msgid ""
 msgstr ""
 "Elfo com um arco, lembro-me de ti. Pensas que estava derrotado, mas agora "
 "voltei mais poderoso do que antes. A morte reina para sempre, e logo os teus "
-"ossos carbonizados e corpos sem vida seguirão a um novo mestre!"
+"ossos carbonizados e corpos sem vida seguirão a um novo mestre."
 
 #
 #. [message]: speaker=Garak
@@ -2196,7 +2175,7 @@ msgid ""
 "tiny cacti, let alone crops."
 msgstr ""
 "É difícil de imaginar. Mal temos chuva o suficiente para manter estes cactos "
-"minúsculos, quanto mais uma quinta inteira!"
+"minúsculos, quanto mais uma quinta inteira."
 
 #
 #. [message]: speaker=Garak
@@ -2344,16 +2323,15 @@ msgstr "Fujam, seus espíritos famintos, e deixam-nos em paz!"
 msgid "A Stirring in the Night"
 msgstr "Movimentos na Escuridão"
 
-#
 #. [time]
 #. Use the same translation as for the string in the wesnoth-help textdomain.
 #. Use the same translation as for the string in the wesnoth-help textdomain.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:19
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:313
 #, fuzzy
-#| msgid "The Morning After"
+#| msgid "The Long Dark (1)"
 msgid "The Long Dark"
-msgstr "A Manhã Seguinte"
+msgstr "A longa escuridão (1)"
 
 #
 #. [side]: id=Azkotep, type=Lich
@@ -2396,13 +2374,10 @@ msgstr "Derrota Ystara"
 msgid "Starting Objectives:"
 msgstr "Objetivos Iniciais:"
 
-#
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:225
-#, fuzzy
-#| msgid "Survive Until Dawn (or)"
 msgid "Survive until dawn"
-msgstr "Sobreviva até o amanhecer (ou)"
+msgstr "Sobreviva até o nascer o dia"
 
 #
 #. [objective]: condition=win
@@ -2673,22 +2648,54 @@ msgstr ""
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
+#, fuzzy
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the champions is slain, or 30 rounds of attacks have occurred."
 msgstr ""
+"#-#-#-#-#  14.po (Battle for Wesnoth 1.12 (wesnoth-manual))  #-#-#-#-#\n"
+"Quando usado ofensivamente ou defensivamente, este ataque continua o combate "
+"até que um dos combatentes sucumbiu, ou 30 rondas de ataques passaram.\n"
+"#-#-#-#-#  45.po (Battle for Wesnoth 1.12 (wesnoth-help))  #-#-#-#-#\n"
+"Sempre que usado ofensivamente ou defensivamente, este ataque mantém o "
+"combate até que um dos combatentes morra, ou 30 rondas de combate passaram.\n"
+"#-#-#-#-#  57.po (Battle for Wesnoth 1.12 (wesnoth-manual))  #-#-#-#-#\n"
+"Quando usado ofensivamente ou defensivamente, este ataque continua o combate "
+"até que um dos combatentes sucumbiu, ou 30 rondas de ataques passaram.\n"
+"#-#-#-#-#  58.po (Battle for Wesnoth 1.3.7+svn)  #-#-#-#-#\n"
+"Se usado ofensivamente ou defensivamente, esse ataque continua o combate até "
+"que um dos combatentes morra ou se 30 rodadas de combate tenham se passado.\n"
+"#-#-#-#-#  8.po (Battle for Wesnoth 1.12 (wesnoth-help))  #-#-#-#-#\n"
+"Sempre que usado ofensivamente ou defensivamente, este ataque mantém o "
+"combate até que um dos combatentes morra, ou 30 rondas de combate passaram."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:697
 msgid "true strike"
-msgstr ""
+msgstr "ataque verdadeiro"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:699
+#, fuzzy
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
 msgstr ""
+"#-#-#-#-#  14.po (Battle for Wesnoth 1.12 (wesnoth-manual))  #-#-#-#-#\n"
+"Este ataque tem sempre uma hipótese de acertar de 70% independentemente da "
+"capacidade defensiva da unidade a ser atacado.\n"
+"#-#-#-#-#  45.po (Battle for Wesnoth 1.12 (wesnoth-help))  #-#-#-#-#\n"
+"Este ataque sempre tem uma hipótese de 70% em acertar, não importando a "
+"habilidade defensiva da unidade a ser atacada.\n"
+"#-#-#-#-#  57.po (Battle for Wesnoth 1.12 (wesnoth-manual))  #-#-#-#-#\n"
+"Este ataque tem sempre uma hipótese de acertar de 70% independentemente da "
+"capacidade defensiva da unidade a ser atacado.\n"
+"#-#-#-#-#  58.po (Battle for Wesnoth 1.3.7+svn)  #-#-#-#-#\n"
+"Esse ataque sempre tem 70% de chance de acertar, não importando a habilidade "
+"defensiva da unidade sendo atacada.\n"
+"#-#-#-#-#  8.po (Battle for Wesnoth 1.12 (wesnoth-help))  #-#-#-#-#\n"
+"Este ataque sempre tem uma hipótese de 70% em acertar, não importando a "
+"habilidade defensiva da unidade a ser atacada."
 
 #
 #. [message]: speaker=Garak
@@ -3013,7 +3020,7 @@ msgid ""
 "I will... not... yield... I defeated... your... champion... I... will... "
 "overcome... you..."
 msgstr ""
-"Vou... não... ceder... Derrotei... o teu... campeão... Eu.. vou... "
+"Vou... não... ceder... Derrotei... o teu... campeão... Eu... vou... "
 "superar... a ti..."
 
 #
@@ -4085,11 +4092,11 @@ msgid ""
 "dangers we don’t. We really are putting our lives in Eloh’s palm; may she "
 "guide us as well as she has before."
 msgstr ""
-"Depois de matar todos os líderes de orcs e gnomos nas imediações, podemos "
-"ter o nosso tempo e não deve ter problemas trazer o resto do nosso povo por "
-"esse caminho. É estranho, penso que estamos a negociar os perigos que "
-"conhecemos pelos os perigos que não temos. Realmente estamos a colocar as "
-"nossas vidas na palma de Eloh, que guia-nos tão bem quanto tem antes."
+"Após matar todos os líderes de orcs e gnomos nas imediações, podemos ter o "
+"nosso tempo e não deve ter problemas trazer o resto do nosso povo por esse "
+"caminho. É estranho, penso que estamos a negociar os perigos que conhecemos "
+"pelos os perigos que não temos. Realmente estamos a colocar as nossas vidas "
+"na palma de Eloh, que guia-nos tão bem quanto tem antes."
 
 #
 #. [message]: speaker=Zhul
@@ -4114,7 +4121,7 @@ msgid ""
 "stars. Still, who knows what we’ll encounter deep under the earth?"
 msgstr ""
 "Só espero poder respirar ar fresco novamente, e ver os sóis e as estrelas. "
-"De qualquer maneira, quem sabe o que encontraremos nas profundezas da terra!"
+"De qualquer maneira, quem sabe o que encontraremos nas profundezas da terra?"
 
 #
 #. [message]: speaker=Kaleh
@@ -4168,13 +4175,10 @@ msgstr "Anões"
 msgid "Explore underground"
 msgstr "Explora o Subsolo"
 
-#
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:301
-#, fuzzy
-#| msgid "Defeat troll leaders"
 msgid "Defeat enemy leaders"
-msgstr "Derrota os líderes trogloditas"
+msgstr "Derrota os líderes inimigos"
 
 #
 #. [unit]: type=Quenoth Fighter
@@ -4499,7 +4503,7 @@ msgid ""
 "anything, everyone."
 msgstr ""
 "Não sei o que “eles” são, mas não podemos voltar. Preparam-se para qualquer "
-"coisa, todos!"
+"coisa, todos."
 
 #
 #. [scenario]: id=05_A_Subterranean_Struggle
@@ -4608,7 +4612,7 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:864
 msgid "The real fighting? I thought that was what we were waist-deep in?"
-msgstr "A verdadeira batalha? Pensei que já estávamos bem no meio dela!"
+msgstr "A verdadeira batalha? Pensei que já estávamos bem no meio dela?"
 
 #
 #. [message]: speaker=Zurg
@@ -6043,7 +6047,6 @@ msgstr ""
 "“defesas leves”. Certamente teria-nos salvado um bocado de luta "
 "desnecessária para chegar ao chefe troglodita."
 
-#
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1680
 msgid ""
@@ -6483,7 +6486,7 @@ msgstr "Vigilância constante, miúdos; o inimigo pode estar em qualquer lugar!"
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:649
 msgid "But sir—"
-msgstr "Mas pai!"
+msgstr "Mas senhor—"
 
 #
 #. [message]: speaker=Dwarf Sergeant
@@ -6499,7 +6502,7 @@ msgid ""
 "killing trolls. And you’re not going anywhere until I’m done with you."
 msgstr ""
 "Matava trogloditas enquanto ainda usavas fraldas. Escrevi um livro sobre "
-"como matar Trogloditas. E não vais a lugar algum até que termine!"
+"como matar Trogloditas. E não vais a lugar algum até que termine."
 
 #
 #. [message]
@@ -6721,7 +6724,7 @@ msgstr ""
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1297
 msgid "What are those?!"
-msgstr "O que são estas coisas?"
+msgstr "O que são estas coisas?!"
 
 #
 #. [message]
@@ -6800,7 +6803,6 @@ msgstr ""
 "defesas”. Isso evitaria bastante luta desnecessária para chegar ao Patriarca "
 "Anão."
 
-#
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1467
 msgid ""
@@ -6904,7 +6906,7 @@ msgstr ""
 #. [message]: speaker=Smaller Tentacle
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1626
 msgid "<i>Splash! Splash!</i>"
-msgstr "<i>Salpico!Salpico!</i>"
+msgstr "<i>Salpico! Salpico!</i>"
 
 #
 #. [message]: speaker=$explorer.id
@@ -7401,18 +7403,14 @@ msgstr ""
 #
 #. [message]: speaker=King Thurongar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:555
-#, fuzzy
-#| msgid ""
-#| "And now I think you should be off as soon as possible. The trolls have "
-#| "retreated back into their holes for the present, but who knows when they "
-#| "will strike again."
 msgid ""
 "And now I think you should be off as soon as possible. The trolls have "
 "retreated into their holes for the present, but who knows when they will "
 "strike again."
 msgstr ""
-"E agora penso que deveria ir o mais cedo possível. Os trogloditas voltaram "
-"para os seus buracos por enquanto, mas quem sabe quando atacarão novamente."
+"E por agora penso que deverias ir o mais cedo possível. Os trogloditas por "
+"enquanto voltaram para os seus buracos, mas quem sabe quando atacarão "
+"novamente."
 
 #
 #. [message]: speaker=Nym
@@ -8284,7 +8282,7 @@ msgstr "Deve haver outro caminho para fora daqui. Tem de haver!"
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1073
 msgid "There might be, but I don’t—"
-msgstr "Podem haver, mas não---"
+msgstr "Podem haver, mas não—"
 
 #
 #. [message]: speaker=Nym
@@ -8575,7 +8573,7 @@ msgstr ""
 #. [message]: speaker=Novice Pior
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1625
 msgid "Yes, sir."
-msgstr "Sim, senhor!"
+msgstr "Sim, senhor."
 
 #
 #. [message]: speaker=Blessed Kali
@@ -8684,7 +8682,7 @@ msgid ""
 "Still lambasting those novices after all these years, that guy definitely "
 "had too much of a work ethic."
 msgstr ""
-"Ainda a criticar os iniciantes depois de todos esses anos, este tipo "
+"Ainda a criticar os iniciantes após todos esses anos, este tipo "
 "definitivamente tinha muito de uma ética de trabalho."
 
 #
@@ -8947,7 +8945,7 @@ msgstr "Não gosto do cheiro deste lugar."
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2145
 msgid "I feel some sort of presence... Ugh... it makes my skin crawl."
-msgstr "Sinto alguma presença... Cóf... faz a minha pele arrepiar"
+msgstr "Sinto alguma presença... Cóf... faz a minha pele arrepiar."
 
 #
 #. [message]: speaker=Nym
@@ -9333,7 +9331,7 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2595
 msgid "You idiot—"
-msgstr "Idiota..."
+msgstr "Idiota—"
 
 #
 #. [message]: speaker=Kaleh
@@ -9429,7 +9427,7 @@ msgid ""
 msgstr ""
 "Consegui seguir o teu rastro, e escondi-me entre o teu povo. Ninguém "
 "reconheceu-me, pois fui esguio. E perguntas-te como poderia seguir-te pelos "
-"túneis? Há, levaste-me tu próprio!"
+"túneis? Há, levaste-me tu próprio."
 
 #
 #. [message]: speaker=Kaleh
@@ -9960,7 +9958,7 @@ msgstr ""
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3210
 msgid "Kaleh, a quick question—"
-msgstr "Kaleh, uma breve pergunta..."
+msgstr "Kaleh, uma breve pergunta—"
 
 #
 #. [message]: speaker=Kaleh
@@ -10125,7 +10123,7 @@ msgstr ""
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3313
 msgid "Well, actually they were fleeing from—"
-msgstr "Bem, na verdade estavam a fugir de-"
+msgstr "Bem, na verdade estavam a fugir de—"
 
 #
 #. [message]: speaker=Sergeant Durstrag
@@ -10157,7 +10155,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3339
 msgid "Look, if you’ll just let me explain—"
-msgstr "Vejam, se ao menos deixas-me explicar-"
+msgstr "Vejam, se ao menos deixas-me explicar—"
 
 #
 #. [message]: speaker=Sergeant Durstrag
@@ -10579,7 +10577,7 @@ msgid ""
 "him!"
 msgstr ""
 "Se aquele mensageiro escapar do vale, estaremos em apuros. Precisamos de "
-"parar-o."
+"parar-o!"
 
 #
 #. [message]: speaker=messenger
@@ -10622,7 +10620,6 @@ msgstr ""
 msgid "Faugh, boy, you know nothing! There are fates worse than death."
 msgstr "Faugh, rapaz, não sabes nada! Há destinos piores que a morte."
 
-#
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3951
 msgid "He killed himself rather than surrender to us!"
@@ -11012,9 +11009,9 @@ msgstr ""
 "a travar uma guerra desesperada contra o ... contra um inimigo poderoso. "
 "Muitas vezes o nosso inimigo tentou assassinar a minha mestra. A minha "
 "mestra teme que a sua presença fosse um perigo para o resto da minha "
-"espécie. Então, mesmo depois de mandar-nos na nossa missão escondeu-se. Sou "
-"o mais novo membro do nosso grupo, e por isso não me foi dito o local. Tens "
-"de entender, há espiões por toda a parte. Apenas os líderes do nosso grupo "
+"espécie. Então, mesmo após mandar-nos na nossa missão escondeu-se. Sou o "
+"mais novo membro do nosso grupo, e por isso não me foi dito o local. Tens de "
+"entender, há espiões por toda a parte. Apenas os líderes do nosso grupo "
 "sabem, mas o resto deles foram todos capturados por aqueles humanos imundos. "
 "Estão detidos no povoado para o norte. Se quisermos ter alguma hipótese de "
 "encontrar a minha mestra, é preciso primeiro salvá-los. Gostaria de fazer "
@@ -11208,7 +11205,7 @@ msgid ""
 "I’m exhausted after walking across all that harsh sand."
 msgstr ""
 "Parece agradável e escuro sob as árvores, menos expostas ao sol escaldante. "
-"Estou exausto, depois de atravessar toda a areia áspera."
+"Estou exausto, após atravessar toda a areia áspera."
 
 #
 #. [message]: speaker=Esanoo
@@ -11594,7 +11591,7 @@ msgstr "Urruga"
 msgid ""
 "Free at last! Thanks be to the Sea God. But wait a minute, you’re elves?!"
 msgstr ""
-"Finalmente livres! Graças ao deus do mar. Mas espera um minuto, são elfos?"
+"Finalmente livres! Graças ao deus do mar. Mas espera um minuto, são elfos?!"
 
 #
 #. [message]: speaker=Urruga
@@ -12582,7 +12579,7 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2028
 msgid "No, I—"
-msgstr "Não, eu ..."
+msgstr "Não, eu—"
 
 #
 #. [message]: speaker=Eloh
@@ -12807,15 +12804,11 @@ msgstr "Gosh, justamente quando as coisas estavam a começar a acalmar-se."
 #
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2337
-#, fuzzy
-#| msgid ""
-#| "Our people are scattered and exhausted, where will we go now Kaleh? Shall "
-#| "we retreat back into the dunes?"
 msgid ""
 "Our people are scattered and exhausted, where will we go now Kaleh? Shall we "
 "retreat into the dunes?"
 msgstr ""
-"O nosso povo está disperso e exausto, para onde iremos agora Kaleh? Vamos "
+"O nosso povo está disperso e exausto, para onde iremos agora Kaleh? Devemos "
 "recuar para as dunas?"
 
 #
@@ -12960,9 +12953,9 @@ msgstr ""
 "águas, e temem-nos muito. Os seus magos das trevas lançaram feitiços "
 "protectores nos barcos, impedindo a qualquer um da minha raça a subir neles. "
 "Temo que não poderemos capturar os barcos para ti. Mas é claro que "
-"ajudaremos-te a lutar contra os humanos. Depois de escaparmos, com a tua "
-"ajuda poderemos tirar o feitiço de proteção, mas por enquanto terão de tomar "
-"os barcos sozinhos."
+"ajudaremos-te a lutar contra os humanos. Após escaparmos, com a tua ajuda "
+"poderemos tirar o feitiço de proteção, mas por enquanto terão de tomar os "
+"barcos sozinhos."
 
 #
 #. [message]: race=merman
@@ -12974,11 +12967,11 @@ msgid ""
 "of your people on board. But we will need all four boats to fit all of your "
 "remaining people."
 msgstr ""
-"Há quatro barcos na lagoa. Depois de teres capturado cada um dos quatro "
-"podemos ajudar-vos orientá-los para fora da água aberta e à liberdade. "
-"Então, podemos pilotá-los para a praia, em segurança longe dos humanos, e "
-"carregar o resto do vosso povo a bordo. Mas vamos precisar de todos os "
-"quatro barcos para caberem todos o vosso povo restantes."
+"Há quatro barcos na lagoa. Após teres capturado cada um dos quatro podemos "
+"ajudar-vos orientá-los para fora da água aberta e à liberdade. Então, "
+"podemos pilotá-los para a praia, em segurança longe dos humanos, e carregar "
+"o resto do vosso povo a bordo. Mas vamos precisar de todos os quatro barcos "
+"para caberem todos o vosso povo restantes."
 
 #
 #. [message]: speaker=Nym
@@ -13071,8 +13064,8 @@ msgid ""
 "whatever she is?"
 msgstr ""
 "Então, quando tiveste aquele estranho encontro com o humano Durstrag e os "
-"seus guardas, mesmo depois de termos escapado das cavernas, estavas a falar "
-"com Eloh, ou quem quer que aquela coisa seja?"
+"seus guardas, mesmo após termos escapado das cavernas, estavas a falar com "
+"Eloh, ou quem quer que aquela coisa seja?"
 
 #
 #. [message]: speaker=Kaleh
@@ -13135,7 +13128,7 @@ msgid ""
 "will show everyone who is stronger!"
 msgstr ""
 "Não podes derrotar-me, sou o protegido da deusa agora. Finalmente, Kaleh, "
-"irei mostrar a todos quem é o mais forte."
+"irei mostrar a todos quem é o mais forte!"
 
 #
 #. [message]: speaker=Kaleh
@@ -13192,7 +13185,7 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2740
 msgid "We’ve captured all four boats!"
-msgstr "Capturamos todos os quatro barcos."
+msgstr "Capturamos todos os quatro barcos!"
 
 #
 #. [message]: speaker=Kaleh
@@ -13279,7 +13272,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:165
 msgid "This is—"
-msgstr "Isto é..."
+msgstr "Isto é—"
 
 #
 #. [message]: speaker=Melusand
@@ -13586,7 +13579,6 @@ msgstr ""
 "vários diários. Com a nossa magia e conhecimento pudemos decifrar o que "
 "estava escrito, e assim fomos reconstruíndo a história do fim da era dourada."
 
-#
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:298
 msgid ""
@@ -13608,11 +13600,11 @@ msgstr ""
 "grossa, e no centro podia ver-se vários cumes altos e rochosos. No maior "
 "destes havia uma estrutura, tipo fortaleza, e à noite víamos estranhas luzes "
 "emanando dela. Enviamos várias expedições à selva para explorar a estrutura, "
-"mas nenhuma delas jamais retornou. Depois de um tempo, os aquáticos que "
-"dormiram perto das praias começaram a desaparecer à noite, sobrando apenas "
-"uma trilha sangrenta que levava para a selva. Estava claro que algo terrível "
-"habitava lá, mas não sabíamos o quê. Os nossos clérigos sentiam uma estranha "
-"presença que não conseguiam compreender, e uma escuridão bloqueava as nossas "
+"mas nenhuma delas jamais retornou. Após um tempo, os aquáticos que dormiram "
+"perto das praias começaram a desaparecer à noite, sobrando apenas uma trilha "
+"sangrenta que levava para a selva. Estava claro que algo terrível habitava "
+"lá, mas não sabíamos o quê. Os nossos clérigos sentiam uma estranha presença "
+"que não conseguiam compreender, e uma escuridão bloqueava as nossas "
 "tentativas de penetrar-a com magia."
 
 #
@@ -13784,7 +13776,6 @@ msgstr ""
 "montanhas, selvagens e humanos estarão a tua procura. O alcance de Eloh é "
 "longo e a sua vingança é terrível."
 
-#
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:369
 msgid ""
@@ -13942,7 +13933,7 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:471
 msgid "This entire journey has been based on a lie—"
-msgstr "A jornada inteira foi baseada numa mentira..."
+msgstr "A jornada inteira foi baseada numa mentira—"
 
 #
 #. [message]: speaker=Kaleh
@@ -14670,9 +14661,9 @@ msgid ""
 msgstr ""
 "Deveríamos encontrar uma fortaleza antes de desembarcarmos o resto do nosso "
 "povo. Não gosto da ideia de descer com todos sem ter um forte para proteger-"
-"nos. Encobertos pelas brumas, estarão seguros de momento. Depois de "
-"encontrarmos um lugar para juntar o nosso povo, podemos trazer o resto deles "
-"e começar a lutar a valer."
+"nos. Encobertos pelas brumas, estarão seguros de momento. Após encontrarmos "
+"um lugar para juntar o nosso povo, podemos trazer o resto deles e começar a "
+"lutar a valer."
 
 #
 #. [message]: race=merman
@@ -15229,7 +15220,7 @@ msgstr "Bem, agora só temos de esperar..."
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1377
 msgid "You aren’t actually going to let him face her alone?!"
-msgstr "Não vais realmente deixá-lo enfrentar-a sozinho?"
+msgstr "Não vais realmente deixá-lo enfrentar-a sozinho?!"
 
 #
 #. [message]: speaker=Zhul
@@ -15636,7 +15627,7 @@ msgstr "Yechnagoth"
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:860
 msgid "What is that thing?!"
-msgstr "O que é esse som!?"
+msgstr "O que é esse som?!"
 
 #
 #. [message]: speaker=Zhul
@@ -16453,14 +16444,14 @@ msgstr ""
 "agradecendo a Eloh e o deus dos aquáticos, e deliciamos-nos com a "
 "generosidade e a beleza da nossa nova casa. E depois começamos a trabalhar "
 "na construção de novas habitações para o nosso povo. Grog ficou para ajudar-"
-"nos com a construção, era o mais trabalhador entre nós. Mas depois de um "
-"tempo veio até mim e disse-me que teve de retornar ao seu próprio povo. Grog "
-"disse que o seu tempo conosco tinha sido como um sonho maravilhoso, e "
-"prometeu que iria lembrar-nos sempre, mas o seu povo precisava dele e teve "
-"que voltar para casa. Disse que um dia iria voltar e visitar-nos novamente, "
-"mas duvido que jamais o veria novamente na vida. Tudo o mesmo guardo a "
-"memória dele e da sua espécie, e vou lembrar por muito tempo a sua lealdade "
-"firme e tudo o que fez para nos ajudar na nossa luta."
+"nos com a construção, era o mais trabalhador entre nós. Mas após um tempo "
+"veio até mim e disse-me que teve de retornar ao seu próprio povo. Grog disse "
+"que o seu tempo conosco tinha sido como um sonho maravilhoso, e prometeu que "
+"iria lembrar-nos sempre, mas o seu povo precisava dele e teve que voltar "
+"para casa. Disse que um dia iria voltar e visitar-nos novamente, mas duvido "
+"que jamais o veria novamente na vida. Tudo o mesmo guardo a memória dele e "
+"da sua espécie, e vou lembrar por muito tempo a sua lealdade firme e tudo o "
+"que fez para nos ajudar na nossa luta."
 
 #
 #. [message]: speaker=Kaleh
@@ -16486,14 +16477,14 @@ msgstr ""
 "e o deus dos aquáticos, e deliciamos-nos com a generosidade e a beleza da "
 "nossa nova casa. E depois começamos a trabalhar na construção de novas "
 "habitações para o nosso povo. Nog ficou para ajudar-nos com a construção, "
-"era o mais trabalhador entre nós. Mas depois de um tempo veio até mim e "
-"disse-me que teve de retornar ao seu próprio povo. Nog disse que o seu tempo "
-"conosco tinha sido como um sonho maravilhoso, e prometeu que iria lembrar-"
-"nos sempre, mas o seu povo precisava dele e teve que voltar para casa. Disse "
-"que um dia iria voltar e visitar-nos novamente, mas duvido que jamais o "
-"veria novamente na vida. Tudo o mesmo guardo a memória dele e da sua "
-"espécie, e vou lembrar por muito tempo a sua lealdade firme e tudo o que fez "
-"para nos ajudar na nossa luta."
+"era o mais trabalhador entre nós. Mas após um tempo veio até mim e disse-me "
+"que teve de retornar ao seu próprio povo. Nog disse que o seu tempo conosco "
+"tinha sido como um sonho maravilhoso, e prometeu que iria lembrar-nos "
+"sempre, mas o seu povo precisava dele e teve que voltar para casa. Disse que "
+"um dia iria voltar e visitar-nos novamente, mas duvido que jamais o veria "
+"novamente na vida. Tudo o mesmo guardo a memória dele e da sua espécie, e "
+"vou lembrar por muito tempo a sua lealdade firme e tudo o que fez para nos "
+"ajudar na nossa luta."
 
 #
 #. [message]: speaker=Kaleh
@@ -16519,8 +16510,8 @@ msgstr ""
 "agradecendo a Eloh e o deus dos aquáticos, e deliciamos-nos com a "
 "generosidade e a beleza da nossa nova casa. Depois que começamos a trabalhar "
 "na construção de novas habitações para o nosso povo. Rogrimir ficou para "
-"ajudar-nos com a construção, era o mais trabalhador entre nós. Mas depois de "
-"um tempo veio até mim e disse-me que teve de retornar ao seu próprio povo. "
+"ajudar-nos com a construção, era o mais trabalhador entre nós. Mas após um "
+"tempo veio até mim e disse-me que teve de retornar ao seu próprio povo. "
 "Rogrimir disse que o seu tempo conosco tinha sido como um sonho maravilhoso, "
 "e prometeu que iria lembrar-nos sempre, mas o seu povo precisava dele e teve "
 "que voltar para casa. Disse que um dia iria voltar e visitar-nos novamente, "
@@ -16552,14 +16543,14 @@ msgstr ""
 "agradecendo a Eloh e o deus dos aquáticos, e deliciamos-nos com a "
 "generosidade e a beleza da nossa nova casa. Depois que começamos a trabalhar "
 "na construção de novas habitações para o nosso povo. Jarl ficou para ajudar-"
-"nos com a construção, era o mais trabalhador entre nós. Mas depois de um "
-"tempo veio até mim e disse-me que teve de retornar ao seu próprio povo. Jarl "
-"disse que o seu tempo conosco tinha sido como um sonho maravilhoso, e "
-"prometeu que iria lembrar-nos sempre, mas o seu povo precisava dele e teve "
-"que voltar para casa. Disse que um dia iria voltar e visitar-nos novamente, "
-"mas duvido que jamais o veria novamente na vida. Tudo o mesmo guardo a "
-"memória dele e da sua espécie, e vou lembrar por muito tempo a sua lealdade "
-"firme e tudo o que fez para nos ajudar na nossa luta."
+"nos com a construção, era o mais trabalhador entre nós. Mas após um tempo "
+"veio até mim e disse-me que teve de retornar ao seu próprio povo. Jarl disse "
+"que o seu tempo conosco tinha sido como um sonho maravilhoso, e prometeu que "
+"iria lembrar-nos sempre, mas o seu povo precisava dele e teve que voltar "
+"para casa. Disse que um dia iria voltar e visitar-nos novamente, mas duvido "
+"que jamais o veria novamente na vida. Tudo o mesmo guardo a memória dele e "
+"da sua espécie, e vou lembrar por muito tempo a sua lealdade firme e tudo o "
+"que fez para nos ajudar na nossa luta."
 
 #
 #. [message]: speaker=Kaleh
@@ -16648,7 +16639,7 @@ msgid ""
 "as a reminder of the evil that once dwelt here and all those who gave their "
 "lives to destroy it."
 msgstr ""
-"Quanto à Citadel Black, depois de muita discussão, decidimos voltar para os "
+"Quanto à Citadel Black, após muita discussão, decidimos voltar para os "
 "antigos rituais de purificação da terra imunda, com o fogo. Enchemos toda a "
 "estrutura com madeira e óleo e pomos o local em chamas para certificar-se "
 "que quaisquer vestígios de infestação de Yechnagoth iria ser purgado pelo "
@@ -16792,26 +16783,30 @@ msgstr "raio de energia"
 
 #. [regenerate]: id=regenerates_yec
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:99
+#, fuzzy
+#| msgid "female^regenerates"
 msgid "alien regenerates"
-msgstr ""
+msgstr "regeneração"
 
-#
 #. [regenerate]: id=regenerates_yec
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:100
 #, fuzzy
-#| msgid "female^stunned"
+#| msgid "female^regenerates"
 msgid "female^alien regenerates"
-msgstr "atordoada"
+msgstr "regeneração"
 
-#
 #. [regenerate]: id=regenerates_yec
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:101
 #, fuzzy
-#| msgid "The unit will heal itself 6 HP per turn on sand or dirt terrain."
+#| msgid ""
+#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
+#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 100 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
-msgstr "A unidade irá curar-se de 6 PV por turno na areia ou terreno sujo."
+msgstr ""
+"A unidade irá curar 8 pontos de vida (PV) por turno. Se envenenada, removerá "
+"o veneno ao invés de curar-se."
 
 #
 #. [unit_type]: id=Central Body2
@@ -16871,32 +16866,22 @@ msgstr ""
 #
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:4
-#, fuzzy
-#| msgid "Monsters"
 msgid "Monster Crab"
-msgstr "Monstros"
+msgstr "Caranguejo Gigante"
 
 #
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Crab Men are part crab, part humanoid, and are certainly one of the "
-#| "most twisted monsters ever recorded by the sages of Wesnoth. Probably the "
-#| "creation of some twisted mage, these monstrosities have spread into the "
-#| "wild and prefer to live around coastal waters, preying on both humans and "
-#| "animals."
 msgid ""
 "The Monster Crab is a semi-sentient crab the size of a horse. It is one of "
 "many twisted monsters recorded by the sages of Wesnoth and probably the "
 "creation of some twisted mage. These monstrosities have spread into the wild "
 "and prefer to live around coastal waters, preying on both humans and animals."
 msgstr ""
-"Os Homens-Caranguejo são parte caranguejo, parte humano, e estão certamente "
-"entre os monstros mais deformados já registados pelos sábios de Wesnoth. "
-"Prováveis criações de um mago enlouquecido, estas monstruosidades espalharam-"
-"se pelos bosques e preferem viver perto do litoral, caçando tanto humanos "
-"como animais."
+"Caranguejos gigantes são criaturas semi sentientes do tamanho de um cavalo. "
+"São dos monstros mais deformados já registados pelos sábios de Wesnoth. "
+"Provavelmente a criação de um mago enlouquecido, estas monstruosidades "
+"escaparam para o litoral, caçando tanto humanos como animais."
 
 #
 #. [unit_type]: id=Dawarf, race=monster
@@ -17155,7 +17140,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:42
 msgid "glaive"
-msgstr ""
+msgstr "gládio"
 
 #
 #. [unit_type]: id=Corrupted Quenoth Elf, race=elf
@@ -17243,10 +17228,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:41
-#, fuzzy
-#| msgid "Melusand"
 msgid "sand"
-msgstr "Melusand"
+msgstr "areia"
 
 #. [unit_type]: id=Quenoth Dustbok, race=monster, description=
 #. Made-up animal name derived from 'dust' (sand) and 'bok' as in real-world steenbok or springbok antelope
@@ -17254,13 +17237,12 @@ msgstr "Melusand"
 msgid "Dustbok"
 msgstr ""
 
-#
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
 #, fuzzy
-#| msgid "Desert Fighter"
+#| msgid "Mounted Fighter"
 msgid "Quenoth Fighter"
-msgstr "Soldado do Deserto"
+msgstr "Combatente Montado"
 
 #. [unit_type]: id=Quenoth Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
@@ -17275,13 +17257,12 @@ msgid ""
 "frontal assault."
 msgstr ""
 
-#
 #. [unit_type]: id=Tauroch Flagbearer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:5
 #, fuzzy
-#| msgid "Troll Flamecaster"
+#| msgid "Flagbearer"
 msgid "Tauroch Flagbearer"
-msgstr "Troglodita Flamejante"
+msgstr "Portador da Estandarte"
 
 #. [unit_type]: id=Tauroch Flagbearer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:32
@@ -17298,8 +17279,10 @@ msgstr ""
 
 #. [unit_type]: id=Quenoth Flanker, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
+#, fuzzy
+#| msgid "Saurian Flanker"
 msgid "Quenoth Flanker"
-msgstr ""
+msgstr "Réptil Flanqueador"
 
 #. [unit_type]: id=Quenoth Flanker, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:23
@@ -17319,13 +17302,12 @@ msgstr ""
 msgid "blowgun"
 msgstr ""
 
-#
 #. [unit_type]: id=Quenoth Marksman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:5
 #, fuzzy
-#| msgid "Desert Marksman"
+#| msgid "Mounted Marksman"
 msgid "Quenoth Marksman"
-msgstr "Atirador do Deserto"
+msgstr "Atirador Montado"
 
 #. [unit_type]: id=Quenoth Marksman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:22
@@ -17412,8 +17394,10 @@ msgstr ""
 
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:5
+#, fuzzy
+#| msgid "Tomb Protector"
 msgid "Tauroch Protector"
-msgstr ""
+msgstr "Protector da Tumba"
 
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:37
@@ -17450,15 +17434,14 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:31
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:43
 msgid "trample"
-msgstr ""
+msgstr "pisada"
 
-#
 #. [unit_type]: id=Quenoth Ranger, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:5
 #, fuzzy
-#| msgid "Desert Ranger"
+#| msgid "Northern Ranger"
 msgid "Quenoth Ranger"
-msgstr "Patrulha do Deserto"
+msgstr "Guarda nortenho"
 
 #. [unit_type]: id=Quenoth Ranger, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:24
@@ -17477,8 +17460,10 @@ msgstr ""
 
 #. [unit_type]: id=Tauroch Rider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:5
+#, fuzzy
+#| msgid "Dark Raider"
 msgid "Tauroch Rider"
-msgstr ""
+msgstr "Ladrilha Obscura"
 
 #. [unit_type]: id=Tauroch Rider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:27
@@ -17555,8 +17540,10 @@ msgstr ""
 
 #. [unit_type]: id=Tauroch Stalwart, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:5
+#, fuzzy
+#| msgid "Dwarvish Stalwart"
 msgid "Tauroch Stalwart"
-msgstr ""
+msgstr "Anão Vagaroso"
 
 #. [unit_type]: id=Tauroch Stalwart, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:36
@@ -17615,8 +17602,10 @@ msgstr ""
 
 #. [unit_type]: id=Tauroch Vanguard, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Vanguard.cfg:5
+#, fuzzy
+#| msgid "The Vanguard"
 msgid "Tauroch Vanguard"
-msgstr ""
+msgstr "A Vanguarda"
 
 #. [unit_type]: id=Tauroch Vanguard, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Vanguard.cfg:31
@@ -17631,13 +17620,12 @@ msgid ""
 "for the many pillagers that rove the deserts."
 msgstr ""
 
-#
 #. [unit_type]: id=Quenoth Warrior, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:5
 #, fuzzy
-#| msgid "Arisen Warrior"
+#| msgid "Mounted Warrior"
 msgid "Quenoth Warrior"
-msgstr "Guerreiro Levantado"
+msgstr "Guerreiro Montado"
 
 #. [unit_type]: id=Quenoth Warrior, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:23
@@ -17684,21 +17672,15 @@ msgstr ""
 "esperta e generosa pode seguir. A sua alegria e energia são bênçãos nos "
 "tempos difíceis."
 
-#
 #. [advancement]: id=hunter_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:76
-#, fuzzy
-#| msgid "Naga Hunter"
 msgid "Hunter"
-msgstr "Caçador Naga"
+msgstr "Caçador"
 
-#
 #. [advancement]: id=leader_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:114
-#, fuzzy
-#| msgid "Naga Leader"
 msgid "Leader"
-msgstr "Líder Naga"
+msgstr "Líder"
 
 #. [advancement]: id=warrior_2_1
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:153
@@ -17730,7 +17712,6 @@ msgstr ""
 msgid "Leader (choose only one): specialize in distracting enemies"
 msgstr ""
 
-#
 #. [unit_type]: id=Quenoth Youth, race=elf, description={QUENOTH_YOUTH_DESCRIPTION}
 #. [unit_type]: id=Quenoth Youth 2, race=elf, description={QUENOTH_YOUTH_DESCRIPTION}
 #. [unit_type]: id=Quenoth Youth 3, race=elf, description={QUENOTH_YOUTH_DESCRIPTION}
@@ -17738,19 +17719,18 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:495
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:552
 #, fuzzy
-#| msgid "Desert Youth"
+#| msgid "Peasant Youth"
 msgid "Quenoth Youth"
-msgstr "Jovem do Deserto"
+msgstr "Jovem aldeão"
 
-#
 #. [female]: description={NYM_DESCRIPTION}
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:480
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:537
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:594
 #, fuzzy
-#| msgid "team_name^Quenoth Elves"
+#| msgid "female^Peasant Youth"
 msgid "female^Quenoth Youth"
-msgstr "Elfos Quenoth"
+msgstr "Jovem Camponesa"
 
 #
 #. [unit_type]: id=EGhost
@@ -17987,15 +17967,14 @@ msgstr ""
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
 msgid "teaching"
-msgstr ""
+msgstr "ensinando"
 
-#
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
 #, fuzzy
-#| msgid "female^Desert Ranger"
+#| msgid "female^trained"
 msgid "female^teaching"
-msgstr "Patrulha do Deserto"
+msgstr "treinada"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
@@ -18004,11 +17983,14 @@ msgid ""
 "all the units of the same side adjacent to it. If no suitable unit is "
 "adjacent, its experience just goes back to zero."
 msgstr ""
+"Ao começo de cada turno esta unidade redistribui os seus pontos de "
+"experiência a todas as unidades aliadas adjacentes. Em case não houver "
+"qualquer unidade, a sua experiência simplesmente retorna a zero."
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
 msgid "shock"
-msgstr ""
+msgstr "choque"
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
@@ -18016,19 +17998,22 @@ msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""
+"Quando este ataque é usado na ofensiva, o oponente irá retaliar com um golpe "
+"a menos que o normal, com um mínimo de um golpe."
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
+#, fuzzy
+#| msgid "Map Information"
 msgid "formation"
-msgstr ""
+msgstr "Informação do Mapa"
 
-#
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
 #, fuzzy
-#| msgid "female^Divine Incarnation"
+#| msgid "Map Information"
 msgid "female^formation"
-msgstr "Incarnação Divina"
+msgstr "Informação do Mapa"
 
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:102
@@ -18040,16 +18025,17 @@ msgstr ""
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:109
+#, fuzzy
+#| msgid "female^Adena"
 msgid "disengage"
-msgstr ""
+msgstr "Adena"
 
-#
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:110
 #, fuzzy
-#| msgid "female^stunned"
+#| msgid "female^Adena"
 msgid "female^disengage"
-msgstr "atordoada"
+msgstr "Adena"
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:111
@@ -18077,15 +18063,14 @@ msgstr ""
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:129
 msgid "distract"
-msgstr ""
+msgstr "distrair"
 
-#
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:130
 #, fuzzy
-#| msgid "female^stunned"
+#| msgid "female^Initiate"
 msgid "female^distract"
-msgstr "atordoada"
+msgstr "Iniciada"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:131
@@ -18093,24 +18078,29 @@ msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
+"Esta unidade nega a Zona de Controlo do seu inimigo a volta de si para "
+"resgatar aliados."
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:142
+#, fuzzy
+#| msgid "Support"
 msgid "support"
-msgstr ""
+msgstr "Apoio"
 
-#
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:143
 #, fuzzy
-#| msgid "female^Desert Star"
+#| msgid "female^spirit"
 msgid "female^support"
-msgstr "Estrela do Deserto"
+msgstr "espírito"
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:144
+#, fuzzy
+#| msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
-msgstr ""
+msgstr "A Grande Horda: o custo de manutenção de cada unidade diminuiu em um."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:149
 msgid ""
@@ -18123,33 +18113,42 @@ msgid " Groups of units of this type are able to shield each other in combat."
 msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:155
+#, fuzzy
+#| msgid "This unit has been petrified. It may not move or attack."
 msgid " This unit can move either before or after attacking."
-msgstr ""
+msgstr "Esta unidade esta petrificada. Não se pode mover ou atacar."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:158
+#, fuzzy
+#| msgid ""
+#| " This unit is able to slow its enemies, halving their movement speed and "
+#| "attack damage until they end a turn."
 msgid ""
 " This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
 msgstr ""
+" Esta unidade é capaz de deixar os seus inimigos atrasados, dividindo o seu "
+"movimento e dano de ataque à metade até o fim do seu turno."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:161
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
+"Esta unidade é capaz de distrair os seus adversários, permitindo a aliados "
+"passar pela Zona de Controlo hostil e mover-se a volta deles."
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:368
 msgid "dazed"
 msgstr ""
 
-#
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:369
 #, fuzzy
-#| msgid "female^stunned"
+#| msgid "female^dancer"
 msgid "female^dazed"
-msgstr "atordoada"
+msgstr "dançarina"
 
 #
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
@@ -18275,7 +18274,7 @@ msgstr "refrescado"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:57
 msgid "+%d XP"
-msgstr ""
+msgstr "+%d XP"
 
 #
 #. [part]
@@ -18903,8 +18902,8 @@ msgid ""
 "away from the front lines through a maze of secret tunnels."
 msgstr ""
 "Capítulo 7: Retornamos depressa e achamos o resto do nosso povo, seguramente "
-"escondidos, algumas milhas para trás da zona de combate. Depois de fazermos "
-"o resto dos elfos entenderem que os trogloditas eram os nossos aliados, Zurg "
+"escondidos, algumas milhas para trás da zona de combate. Após fazermos o "
+"resto dos elfos entenderem que os trogloditas eram os nossos aliados, Zurg "
 "conduziu-nos silenciosamente e rapidamente para longe das linhas de frente "
 "por um labirinto de túneis secretos."
 
@@ -18975,8 +18974,8 @@ msgstr ""
 "Desejava poder ter passado mais tempo a aprender sobre estas criaturas mal "
 "entendidas, mas não pudemos permanecer muito mais. Até mesmo protegidos "
 "pelos trogloditas, travados no meio desta grande guerra, temia pela "
-"segurança do meu povo. E assim depois de alguns dias, estava pronto para ter "
-"uma audiência com o Grande Líder."
+"segurança do meu povo. E assim após alguns dias, estava pronto para ter uma "
+"audiência com o Grande Líder."
 
 #
 #. [part]
@@ -19310,791 +19309,3 @@ msgstr "Castelo Fanstasma"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:50
 msgid "Phantom Keep"
 msgstr "Torre Fantasma"
-
-#
-#, fuzzy
-#~| msgid ""
-#~| "Riding like the wind, Desert Outriders breeze across the sands to strike "
-#~| "at weaker units and exposed flanks. Skilled in the sword, and trained in "
-#~| "the bow, they strike hard before flying off into the sands to evade "
-#~| "response."
-#~ msgid ""
-#~ "Riding like the wind, Outriders breeze across the sands to strike at "
-#~ "weaker units and exposed flanks, before flying off into the sands to "
-#~ "evade response."
-#~ msgstr ""
-#~ "Cavalgando como o vento, Cavaleiros do Deserto passam pelas areias para "
-#~ "acertar unidades mais fracas e em flancos expostos. Habilidosos no uso da "
-#~ "espada, e treinados no arco, atacam duramente antes de desaparecer em "
-#~ "meio das dunas."
-
-#
-#, fuzzy
-#~| msgid ""
-#~| "Desert Scouts move swiftly across the sands. Their skill on horseback is "
-#~| "virtually unmatched, although they do lack power in combat."
-#~ msgid ""
-#~ "The Quenoth Scouts move swiftly across the sands. Their riding skill are "
-#~ "unmatched, and these they use to harry and incapacitate enemies."
-#~ msgstr ""
-#~ "Batedores do Deserto movem-se facilmente através das dunas. A sua perícia "
-#~ "em montaria é virtualmente imbatível, a despeito do facto da sua falta de "
-#~ "efectividade em combate."
-
-#
-#~ msgid "Lrea"
-#~ msgstr "Lrea"
-
-#
-#~ msgid "Frea"
-#~ msgstr "Frea"
-
-#
-#~ msgid "Seela"
-#~ msgstr "Seela"
-
-#
-#~ msgid "Nisa"
-#~ msgstr "Nisa"
-
-#
-#~ msgid "Lyia"
-#~ msgstr "Lyia"
-
-#
-#, fuzzy
-#~| msgid "female^Desert Shyde"
-#~ msgid "female^Quenoth Moon Shyde"
-#~ msgstr "Fada Elfa"
-
-#
-#, fuzzy
-#~| msgid "chill wave"
-#~ msgid "chill gale"
-#~ msgstr "onda gelada"
-
-#
-#, fuzzy
-#~| msgid "female^Desert Ranger"
-#~ msgid "female^Quenoth Moon Singer"
-#~ msgstr "Patrulha do Deserto"
-
-#
-#~ msgid "Rescue Surviving Elves"
-#~ msgstr "Resgata os elfos sobreviventes"
-
-#
-#~ msgid "Kaleh Must Reach the Northern Edge of the Desert"
-#~ msgstr "Kaleh tem de alcançar a borda Norte do deserto"
-
-#
-#~ msgid "Defeat Outlaw Leader"
-#~ msgstr "Derrota o Líder dos Exilados"
-
-#
-#~ msgid "Survive Until Dawn (or)"
-#~ msgstr "Sobreviva até o amanhecer (ou)"
-
-#
-#~ msgid "Defeat all Undead Leaders"
-#~ msgstr "Derrota todos os Líderes Morto-Vivos"
-
-#
-#~ msgid "Defeat Possessed Garak (or)"
-#~ msgstr "Derrota o Possuído Garak (ou)"
-
-#
-#~ msgid ""
-#~ "Remember, Kaleh, it’s nasty fighting underground. Marksmen and "
-#~ "Sharpshooters who can shoot well anywhere will be invaluable, as will "
-#~ "Captains and Marshals who can inspire our people."
-#~ msgstr ""
-#~ "Lembra-te, Kaleh, não é fácil lutar no subterrâneo. Atiradores que podem "
-#~ "atirar em qualquer lugar terão um valor inigualável, assim como Capitães "
-#~ "e Marechal que podem inspirar o nosso povo."
-
-#
-#~ msgid "Explore Underground"
-#~ msgstr "Explora o Subsolo"
-
-#
-#~ msgid "Defeat all Enemies"
-#~ msgstr "Derrota todos os inimigos"
-
-#
-#~ msgid "Kill Troll Leader"
-#~ msgstr "Mata o Líder dos Trogloditas"
-
-#
-#~ msgid ""
-#~ "Any unit that ends its turn on a lava hex, except the Desert Shyde and "
-#~ "Star who can fly over the lava, will take 25 damage at the beginning of "
-#~ "the next turn. This lava damage can kill units. Desert Shydes and Stars "
-#~ "will just take $heat_damage damage per turn when flying over lava, though "
-#~ "they too can die if they spend too much time over lava. Also because of "
-#~ "the heat in the cavern, all units on cave floor hexes will take "
-#~ "$heat_damage damage at the start of each turn. This heat damage can "
-#~ "reduce a unit to 1 hit point, but it can’t kill it."
-#~ msgstr ""
-#~ "Qualquer unidade que termina o seu turno num hexágono de lava, excepto "
-#~ "Fadas e Estrelas do Deserto que podem voar por cima da lava, vão ter 25 "
-#~ "de dano no início do próximo turno. Este dano pode matar unidades. Fadas "
-#~ "e Estrelas do deserto só vão levar $heat_damage dano por turno ao voar "
-#~ "sobre a lava, embora também podem morrer se gastarem demasiado tempo "
-#~ "sobre a lava. Também por causa do calor na caverna, todas as unidades "
-#~ "sobre hexágonos de caverna terão $heat_damage de dano no início de cada "
-#~ "turno. Este dano pode reduzir uma unidade a 1 ponto de vida, mas não pode "
-#~ "matar-a."
-
-#
-#~ msgid ""
-#~ "For a troll this is quite an ornate tomb. The coffin itself is quite "
-#~ "impressive. Inside, the skeleton has crumbled to dust and there are a few "
-#~ "colored stones and trinkets, but what really sticks out is this emerald "
-#~ "wand. I don’t have much experience with magical items, but the asp with "
-#~ "emerald eyes and large fangs carved around its shaft leave little doubt "
-#~ "as to its power. We don’t normally tolerate using poison, but extreme "
-#~ "circumstances call for extreme measures and I have a feeling we may find "
-#~ "this useful before our journey is over."
-#~ msgstr ""
-#~ "Para um troglodita, esta é uma tumba bem ornamentada. O caixão em si é "
-#~ "impressionante. Por dentro, o esqueleto já se desfez em pó, e há algumas "
-#~ "pedras coloridas e tranquilas, mas o que realmente chama a atenção é esta "
-#~ "varinha de esmeralda. Não tenho muita experiência com itens mágicos, mas "
-#~ "a víbora encravada na varinha, com os seus olhos de esmeralda e longas "
-#~ "presas, deixa pouca dúvida do poder desta. Normalmente não toleramos o "
-#~ "uso de veneno, mas circunstâncias extremas requerem atitudes extremas, e "
-#~ "tenho a impressão de que isto será-nos útil antes do fim de nossa jornada."
-
-#
-#~ msgid "Kill Dwarf Chieftain"
-#~ msgstr "Mata o Patriarca Anão"
-
-#
-#~ msgid "Choose a Unit to Take the Fire Blade"
-#~ msgstr "Escolha uma unidade para empunhar a Lâmina Flamejante"
-
-#
-#~ msgid "Escape the Caves"
-#~ msgstr "Fuja das Cavernas"
-
-#
-#~ msgid "Explore Outside"
-#~ msgstr "Explora o Lado de Fora"
-
-#
-#~ msgid "If a human messenger escapes the valley"
-#~ msgstr "Se um mensageiro humano escapar do vale"
-
-#
-#~ msgid "Desert Archer"
-#~ msgstr "Arqueiro do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Archers are trained from youth in archery, and so skilled in long-"
-#~ "range combat. Though their bows are cruder and their arrows less "
-#~ "plentiful than their elvish ancestors, they fight with ferocity that does "
-#~ "credit to their race."
-#~ msgstr ""
-#~ "Arqueiros do Deserto são treinados desde a juventude no arco e flecha e "
-#~ "tornam-se peritos em combate de longa distância. Apesar dos seus arcos "
-#~ "serem mais simples e as suas flechas não serem como as de seus ancestrais "
-#~ "elfos, lutam com um empenho digno da sua raça."
-
-#
-#~ msgid "female^Desert Archer"
-#~ msgstr "Arqueira do Deserto"
-
-#
-#~ msgid "Desert Avenger"
-#~ msgstr "Vingador do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Avengers are extremely skillful and extremely quick, powerful in "
-#~ "all forms of combat. Like their kin, they prefer the sword to the bow and "
-#~ "are adept at sneaking around and backstabbing their enemies."
-#~ msgstr ""
-#~ "Vingadores do deserto são extremamente habilidosos e extremamente "
-#~ "rápidos, poderoso em todas as formas de combate. Como os seus parentes, "
-#~ "preferem a espada ao o arco e são hábeis em esgueirar-se e apunhalar os "
-#~ "seus inimigos."
-
-#
-#~ msgid "female^Desert Avenger"
-#~ msgstr "Vingadora do Deserto"
-
-#
-#~ msgid "Desert Captain"
-#~ msgstr "Capitão do Deserto"
-
-#
-#~ msgid ""
-#~ "Skilled in commanding other elves, Desert Captains provide a bonus to all "
-#~ "level 1 units on adjacent hexes. Desert Captains prefer engaging the "
-#~ "enemy in melee combat, but are trained in archery as well."
-#~ msgstr ""
-#~ "Peritos em comandar outros elfos, os Capitães do Deserto provêem um bónus "
-#~ "a todas as unidades de nível 1 que estejam nos hexágonos adjacentes. "
-#~ "Capitães do Deserto preferem duelar com os seus inimigos, em combates "
-#~ "corpo-a-corpo, mas são bem treinados com o arco e flecha."
-
-#
-#~ msgid "Desert Champion"
-#~ msgstr "Campeão do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Champions are awesome masters of swordsmanship, inflicting "
-#~ "grievous wounds in close combat. Master fighters, they are also skilled "
-#~ "with the bow, able to inflict damage on their enemies from both near and "
-#~ "far."
-#~ msgstr ""
-#~ "Campeões do Deserto são mestres do combate com espadas, infringindo "
-#~ "sérios danos em combate de curto alcance. Mestres na luta, também são "
-#~ "peritos no uso do arco, capazes de causar dano aos seus inimigos de perto "
-#~ "ou de longe."
-
-#
-#~ msgid "female^Desert Druid"
-#~ msgstr "Druida do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Druids are powerful masters of the sands. Brilliant at ensnaring "
-#~ "unwary opponents, they use their vast knowledge of the plants of the "
-#~ "desert to heal allies. Druids are excellent supporting units in any group "
-#~ "of elves."
-#~ msgstr ""
-#~ "Druidas do deserto são poderosas mestras das areias. Brilhantes em "
-#~ "enganarem adversários incautos, usam o seu vasto conhecimento das plantas "
-#~ "do deserto para curar os aliados. Druidas são excelentes unidades de "
-#~ "apoio em qualquer grupo de elfos."
-
-#
-#~ msgid "Desert Fighter"
-#~ msgstr "Soldado do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Fighters make up the bulk of the Quenoth warriors. They are "
-#~ "trained in both sword and bow, though like most of their kin, they prefer "
-#~ "swordplay to archery. These Elves are deft of foot, and fight best in the "
-#~ "open sands."
-#~ msgstr ""
-#~ "Soldados do Deserto são a maioria nas forças guerreiras de Quenoth. São "
-#~ "treinados em combates com espada e arco, como a maioria dos da sua raça, "
-#~ "preferem utilizar a espada ao arco. Esses elfos são rápidos a pé e lutam "
-#~ "melhor nas areias do deserto."
-
-#
-#~ msgid "Desert Hero"
-#~ msgstr "Herói do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Heroes focus on individual performance on the battlefield, having "
-#~ "tweaked their combat skills to the very maximum. Desert Heroes prefer "
-#~ "fighting at close range with the sword, but also have some skill with the "
-#~ "bow."
-#~ msgstr ""
-#~ "Heróis do Deserto concentram-se na sua performance individual em campos "
-#~ "de batalha, tendo atingido o nível máximo nas suas perícias de combate. "
-#~ "Heróis do Deserto preferem lutar corpo-a-corpo, com a espada, mas também "
-#~ "sabem usar o seu arco."
-
-#
-#~ msgid "Desert Horseman"
-#~ msgstr "Escuteiro do Deserto"
-
-#
-#~ msgid ""
-#~ "Trading speed for heavier arms and armament, Elvish Horsemen delight in "
-#~ "riding into danger instead of away from it. The open sands are much more "
-#~ "suited towards mounted combat than their old forests were, and through "
-#~ "the generations the Elves have greatly increased their equestrian skills."
-#~ msgstr ""
-#~ "Trocando a velocidade de armas mais pesadas e armamento, Cavaleiros elfos "
-#~ "têm prazer em andar no perigo, ao invés de ficar longe dele. As areias "
-#~ "abertas são muito mais adequados para o combate montado do que as "
-#~ "florestas antigas eram, e através das gerações, os Elfos têm aumentado "
-#~ "muito as suas capacidades equestres."
-
-#
-#~ msgid "Desert Hunter"
-#~ msgstr "Caçador do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Hunters are trained to scour the sands for prey and enemies. They "
-#~ "can quickly entangle others with their bolas and then finish them off "
-#~ "with their swords."
-#~ msgstr ""
-#~ "Caçadores do Deserto são treinados para vasculhar as dunas em busca de "
-#~ "alimentação e inimigos. Podem rapidamente aprisionar outros com as suas "
-#~ "bolas e finalizá-los com as suas espadas"
-
-#
-#~ msgid "female^Desert Hunter"
-#~ msgstr "Caçadora do Deserto"
-
-#
-#~ msgid "Desert Marksman"
-#~ msgstr "Atirador do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Marksman are expert in use of the bow. Though their bows and "
-#~ "arrows are not as fine as those of their ancestors, they continue to hone "
-#~ "their skill. This great skill with the bow compensates for their lack of "
-#~ "skill in melee combat."
-#~ msgstr ""
-#~ "Atiradores do deserto são especialistas no uso do arco. Embora os seus "
-#~ "arcos e flechas não são tão bons como as dos seus antepassados, continuam "
-#~ "a aperfeiçoar a sua habilidade. Esta grande habilidade com o arco "
-#~ "compensa a sua falta de habilidade em combate corpo a corpo."
-
-#
-#~ msgid "female^Desert Marksman"
-#~ msgstr "Atiradora do Deserto"
-
-#
-#~ msgid "Desert Marshal"
-#~ msgstr "Marechal do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Marshals are master commanders, able to inspire confidence in any "
-#~ "level 1 or 2 unit in adjacent hexes, causing them to fight with increased "
-#~ "skill. Desert Marshals prefer engaging the enemy in melee combat, but are "
-#~ "trained in archery as well."
-#~ msgstr ""
-#~ "Marechais do deserto são comandantes mestres, capazes de inspirar a "
-#~ "confiança em qualquer unidade de nível 1 ou 2 em hexágonos adjacentes, "
-#~ "levando-os a lutar com habilidade maior. Marechais do Deserto preferem "
-#~ "engajar o inimigo em combate corpo a corpo, mas também são treinados no "
-#~ "tiro com arco."
-
-#
-#~ msgid "Desert Outrider"
-#~ msgstr "Cavaleiro do Deserto"
-
-#
-#~ msgid ""
-#~ "Riding like the wind, Desert Outriders breeze across the sands to strike "
-#~ "at weaker units and exposed flanks. Skilled in the sword, and trained in "
-#~ "the bow, they strike hard before flying off into the sands to evade "
-#~ "response."
-#~ msgstr ""
-#~ "Cavalgando como o vento, Cavaleiros do Deserto passam pelas areias para "
-#~ "acertar unidades mais fracas e em flancos expostos. Habilidosos no uso da "
-#~ "espada, e treinados no arco, atacam duramente antes de desaparecer em "
-#~ "meio das dunas."
-
-#
-#~ msgid "Desert Prowler"
-#~ msgstr "Predador do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Prowlers sneak across the sands, searching out enemies and "
-#~ "protecting their people. They are trained to slip past enemies unnoticed "
-#~ "and flank them. The combination of their bolas and blades allows them to "
-#~ "cripple and kill opponents with alarming ease."
-#~ msgstr ""
-#~ "Predadores elfos esgueiram através das areias, procurando inimigos e "
-#~ "proteger o seu povo. São treinados para deslizar entre os inimigos "
-#~ "despercebidos e flanquear-os. A combinação das suas bolas e laminas "
-#~ "permite-lhes paralisar e matar adversários com facilidade alarmante."
-
-#
-#~ msgid "female^Desert Prowler"
-#~ msgstr "Predadora do Deserto"
-
-#
-#~ msgid "Desert Ranger"
-#~ msgstr "Patrulha do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Rangers are quick and powerful. Skilled in both short and long-"
-#~ "range combat, Rangers are truly all-round fighters. Like their kin, they "
-#~ "prefer the sword to the bow and are adept at sneaking around and "
-#~ "backstabbing their enemies."
-#~ msgstr ""
-#~ "Guardas do deserto são rápidos e poderosos. Hábeis no combate tanto a "
-#~ "curto como longo alcance, Guardas são realmente lutadores versáteis. Como "
-#~ "os seus parentes, preferem a espada ao o arco e são hábeis em esgueirar-"
-#~ "se e apunhalar os seus inimigos."
-
-#
-#~ msgid "Desert Rider"
-#~ msgstr "Montador do Deserto"
-
-#
-#~ msgid ""
-#~ "Swift riders, Desert Riders are fast in the open desert. They can use a "
-#~ "bow from horseback, but prefer to engage in melee combat when necessary."
-#~ msgstr ""
-#~ "Rápidos a galope, Montadores do Deserto são rápidos entre as vastas "
-#~ "areias. Podem usar um arco dos seus cavalos, mas preferem lutar corpo-a-"
-#~ "corpo quando necessário."
-
-#
-#~ msgid "Desert Scout"
-#~ msgstr "Batedor do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Scouts move swiftly across the sands. Their skill on horseback is "
-#~ "virtually unmatched, although they do lack power in combat."
-#~ msgstr ""
-#~ "Batedores do Deserto movem-se facilmente através das dunas. A sua perícia "
-#~ "em montaria é virtualmente imbatível, a despeito do facto da sua falta de "
-#~ "efectividade em combate."
-
-#
-#~ msgid "Desert Sentinel"
-#~ msgstr "Sentinela do Deserto"
-
-#
-#~ msgid ""
-#~ "Desert Sentinels patrol the sands; they are trained to avoid enemies when "
-#~ "it is advantageous. They can cripple opponents with their bolas and are "
-#~ "deadly with their swords."
-#~ msgstr ""
-#~ "Sentinelas do deserto patrulham as areias, pois são treinados para evitar "
-#~ "inimigos quando é vantajoso. Podem paralisar os adversários com as suas "
-#~ "bolas e são mortais com as suas espadas."
-
-#
-#~ msgid "female^Desert Sentinel"
-#~ msgstr "Sentinela do Deserto"
-
-#
-#~ msgid "female^Desert Shaman"
-#~ msgstr "Curandeira do Deserto"
-
-#
-#~ msgid "Desert Shamans focus on less violent ways to hinder the enemy."
-#~ msgstr ""
-#~ "Bruxas do Deserto focam-se em maneiras menos violentas para atrasar o seu "
-#~ "adversário."
-
-#
-#~ msgid "Desert Sharpshooter"
-#~ msgstr "Atirador de Elite do Deserto"
-
-#
-#~ msgid ""
-#~ "The most elite archers among the elves, Desert Sharpshooters use the best "
-#~ "bows and arrows available, which makes them just as deadly as their "
-#~ "ancestors. Desert Sharpshooters are incredibly accurate, even when firing "
-#~ "very quickly, which makes them excellent at picking off entrenched "
-#~ "enemies."
-#~ msgstr ""
-#~ "Os arqueiros de elite entre os elfos, Atiradores do deserto usam os "
-#~ "melhores arcos e flechas disponíveis, o que os torna tão mortal quanto os "
-#~ "seus antepassados​​. Atiradores do deserto são incrivelmente precisos, "
-#~ "mesmo quando disparam muito rapidamente, o que os torna excelentes para "
-#~ "escolher os inimigos entrincheirados."
-
-#
-#~ msgid "female^Desert Sharpshooter"
-#~ msgstr "Atiradora de Elite do Deserto"
-
-#
-#~ msgid "female^Desert Shyde"
-#~ msgstr "Fada Elfa"
-
-#
-#~ msgid ""
-#~ "Desert Shydes are elves that are devoted to nature and their faerie side. "
-#~ "Dragonfly wings sprout from their backs and change them into beautiful "
-#~ "creatures. They are capable of gliding unencumbered across almost any "
-#~ "terrain."
-#~ msgstr ""
-#~ "Fadas do deserto são elfos que são dedicados à natureza e o seu lado "
-#~ "fada. Asas da libélula brotam das suas costas e transformá-las em belas "
-#~ "criaturas. São capazes de deslizar livre em quase qualquer terreno."
-
-#
-#~ msgid ""
-#~ "SPECIAL_NOTE^ This unit can fly across any terrain except deep water."
-#~ msgstr ""
-#~ "Esta unidade pode voar em qualquer terreno, excepto águas profundas."
-
-#
-#~ msgid ""
-#~ "Desert Stars are Shydes that have becomes so powerful and holy that they "
-#~ "shine forth the light of Eloh, even in the darkest places. They are "
-#~ "living testaments to the power and glory of Eloh. Like Shydes, they are "
-#~ "capable of gliding unencumbered across almost any terrain. Eloh’s power "
-#~ "also reduces the wounds that Desert Stars suffer when attacked."
-#~ msgstr ""
-#~ "Estrelas do Deserto são Fadas que têm se tornado tão poderosos e sagrados "
-#~ "que brilham a luz de Eloh, mesmo nos lugares mais escuros. São "
-#~ "testemunhos vivos do poder e glória de Eloh. Como Fadas, são capazes de "
-#~ "deslizar desimpedido em quase qualquer terreno. O poder de Eloh também "
-#~ "reduz as feridas que sofrem Estrelas do Deserto, quando atacado."
-
-#
-#~ msgid ""
-#~ "SPECIAL_NOTE^ It also gains a 10% bonus to resistance from all attacks."
-#~ msgstr "Também ganha um bónus de 10% a resistência de todos os ataques."
-
-#
-#~ msgid "a leader in battle"
-#~ msgstr "um líder em batalha"
-
-#
-#~ msgid "trained by Nym in using the bolas"
-#~ msgstr "treinado por Nym no uso das bolas"
-
-#
-#~ msgid "a better swordsman"
-#~ msgstr "um espadachim melhor"
-
-#
-#~ msgid "a better archer"
-#~ msgstr "um arqueiro melhor"
-
-#
-#~ msgid "a marksman with the bow"
-#~ msgstr "um atirador de elite com o arco"
-
-#
-#~ msgid "gain +20% resistance under the sun"
-#~ msgstr "ganha +20% de resistência sob o sol"
-
-#
-#~ msgid "sustenance"
-#~ msgstr "sustância"
-
-#
-#~ msgid ""
-#~ "This unit’s resistances are increased by 20% in daylight, on defense and "
-#~ "attack. Vulnerabilities are not affected."
-#~ msgstr ""
-#~ "As resistências desta unidade são aumentados em 20% durante o dia, em "
-#~ "defesa e ataque. Vulnerabilidades não são afetados."
-
-#
-#~ msgid "gain +10% resistance to blade, pierce and impact"
-#~ msgstr ""
-#~ "ganha +10% de resistência contra ataques de corte, perfuração e impacto"
-
-#
-#~ msgid "gain a stunning attack that disrupts enemy ZOC"
-#~ msgstr "ganha um ataque atordoante que cancela a ZDC inimiga"
-
-#
-#~ msgid "stun"
-#~ msgstr "atordoar"
-
-#
-#~ msgid ""
-#~ "This attack puts enormous pressure on the enemy, disrupting his ZOC if a "
-#~ "hit is landed. Not active on defense."
-#~ msgstr ""
-#~ "Este ataque coloca uma enorme pressão sobre o inimigo, interrompendo a "
-#~ "sua ZDC se um golpe é desembarcado. Não ativo na defesa."
-
-#
-#~ msgid "skilled in surviving the desert"
-#~ msgstr "perito em sobreviver no deserto"
-
-#
-#~ msgid "camouflage"
-#~ msgstr "camuflagem"
-
-#
-#~ msgid ""
-#~ "This unit can hide in desert dunes, desert mountains and craters, and "
-#~ "remain undetected by its enemies.\n"
-#~ "\n"
-#~ "Enemy units cannot see this unit while it is in desert dunes, desert "
-#~ "mountains, oasis and craters, except if they have units next to it. Any "
-#~ "enemy unit that first discovers this unit immediately loses all its "
-#~ "remaining movement."
-#~ msgstr ""
-#~ "Esta unidade pode esconder-se em dunas do deserto, montanhas e crateras "
-#~ "no deserto, e passar despercebido aos seus inimigos.\n"
-#~ "\n"
-#~ "Unidades inimigas não podem ver esta unidade enquanto estiver em dunas do "
-#~ "deserto, montanhas do deserto, oásis e crateras, excepto se tiverem "
-#~ "unidades ao lado dele. Qualquer unidade inimiga que descobre esta unidade "
-#~ "imediatamente perde todo o seu movimento restante."
-
-#
-#~ msgid "Kaleh of the Quenoth Elves"
-#~ msgstr "Kaleh dos elfos de Quenoth."
-
-#
-#~ msgid "Desert Youth"
-#~ msgstr "Jovem do Deserto"
-
-#
-#~ msgid ""
-#~ "Nym is Kaleh’s childhood friend who follows the tradition of a family of "
-#~ "Desert Hunters, as much as that can be said about a young, rebellious "
-#~ "lady with quick wits and strong will. Her high spirits are a great boon "
-#~ "in dark times."
-#~ msgstr ""
-#~ "Nym é a amiga de infância de Kaleh, que segue a tradição da sua família "
-#~ "de Caçadores do Deserto, ou pelo menos o tanto que uma miúda jovem e "
-#~ "rebelde, esperta e generosa pode seguir. A sua alegria e energia são "
-#~ "bênçãos nos tempos difíceis."
-
-#
-#~ msgid "stunned"
-#~ msgstr "atordoado"
-
-#
-#~ msgid ""
-#~ "Very few people who have ever faced an Ixthala Demon have survived to "
-#~ "tell the tale. Some believe that they come from some other plane of "
-#~ "existence, others believe that they were some demented creation of a fire "
-#~ "mage. But whatever they are, all agree that they are extremely dangerous."
-#~ msgstr ""
-#~ "Poucas pessoas que alguma vez enfrentaram Um demónio Ixthala sobreviveram "
-#~ "para contar o conto. Alguns acreditam que vêm de algum outro plano de "
-#~ "existência, outros acreditam que eram uma criação demente de um mago de "
-#~ "fogo. Mas quaisquer que sejam, todos concordam que são extremamente "
-#~ "perigosos."
-
-#
-#, fuzzy
-#~| msgid "Desert Horseman"
-#~ msgid "Quenoth Horseman"
-#~ msgstr "Escuteiro do Deserto"
-
-#
-#~ msgid "sword"
-#~ msgstr "espada"
-
-#
-#~ msgid "bow"
-#~ msgstr "arco"
-
-#
-#~ msgid "staff"
-#~ msgstr "bastão"
-
-#
-#~ msgid "ensnare"
-#~ msgstr "enredar"
-
-#
-#~ msgid "thorns"
-#~ msgstr "espinhos"
-
-#
-#~ msgid "longbow"
-#~ msgstr "arco longo"
-
-#
-#~ msgid "entangle"
-#~ msgstr "amarrar"
-
-#
-#~ msgid "faerie touch"
-#~ msgstr "toque de fada"
-
-#
-#~ msgid "fist"
-#~ msgstr "punho"
-
-#
-#~ msgid "lightbeam"
-#~ msgstr "raio de luz"
-
-#
-#~ msgid "fangs"
-#~ msgstr "presas"
-
-#
-#~ msgid "claws"
-#~ msgstr "garras"
-
-#
-#~ msgid "mace"
-#~ msgstr "maça"
-
-#
-#~ msgid "touch"
-#~ msgstr "toque"
-
-#
-#, fuzzy
-#~| msgid "faerie touch"
-#~ msgid "faerie fire"
-#~ msgstr "toque de fada"
-
-#
-#~ msgid "chill wave"
-#~ msgstr "onda gelada"
-
-#
-#~ msgid "shadow wave"
-#~ msgstr "onda sombria"
-
-#
-#~ msgid "axe"
-#~ msgstr "machado"
-
-#
-#~ msgid "Aaaargh! Fresh meat!"
-#~ msgstr "Aaaaargh! Carne fresca!"
-
-#
-#~ msgid "Gaaaggghhh! Kill!"
-#~ msgstr "Gaaagghhh! MATAR!"
-
-#
-#~ msgid "Crab Man"
-#~ msgstr "Homem Carangueijo"
-
-#
-#~ msgid ""
-#~ "The heavy fighters are the elite guards of the naga. They are slower and "
-#~ "more heavily armored than most naga and wield huge maces which they use "
-#~ "to crush their enemies. They mostly guard naga outposts, but occasionally "
-#~ "participate in offensive raids."
-#~ msgstr ""
-#~ "Esses soldados são a guarda de elite dos Naga. São mais lentos e com mais "
-#~ "proteções corporais que a maioria dos Naga e empunham poderosas maças que "
-#~ "usam para esmagar os seus inimigos. Geralmente montam a guarda em postos "
-#~ "avançados dos Naga, mas ocasionalmente participam de ações ofensivas."
-
-#
-#~ msgid "Epilogue:"
-#~ msgstr "Epílogo:"
-
-#
-#~ msgid ""
-#~ "Chapter 6: The troll Zurg led us through a maze of twisting passages "
-#~ "speaking scarcely a word. Finally after what seemed like hours of "
-#~ "marching he stopped. He motioned us to be very quiet and we crept "
-#~ "forward; all I could hear was the soft patter of feet and my heavy "
-#~ "breathing. Even that little noise seemed to echo off the cramped walls of "
-#~ "our rough-hewn passage. I was suddenly aware of the sheer mass of of rock "
-#~ "and earth above us and for a moment I despaired of ever seeing the sun "
-#~ "again. Then I grabbed my sword with fresh determination and vowed to see "
-#~ "this mission through."
-#~ msgstr ""
-#~ "Capítulo 6: O troglodita Zurg guiou-nos através de um labirinto de "
-#~ "passagens estranhas sem falar uma só palavra. Finalmente, após o que "
-#~ "pareceu horas de marcha, parou. Gesticulou no sentido de que fossemos "
-#~ "muito quietos e então rastejamos adiante; tudo o que podia ouvir era o "
-#~ "leve tamborilar dos pés e a minha respiração pesada. Mesmo este pequeno "
-#~ "barulho pareceu ecoar pelas paredes da nossa mal-talhada passagem. "
-#~ "Repentinamente, estava ciente da grande massa de pedra e terra sobre nós "
-#~ "e, por um momento, desesperei-me por medo de não ver o sol novamente. Mas "
-#~ "então agarrei a minha espada com nova determinação e jurei terminar esta "
-#~ "missão."
-
-#
-#~ msgid "mud glob"
-#~ msgstr "bola de lama"
