@@ -55,7 +55,7 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Rename disk image to match new release version.
  * Unmount it and convert it back using `hdiutil convert /PATH/TO/IMAGE.dmg -format UDBZ -o /PATH/TO/NEW/IMAGE.dmg` command.
  * Sign newly created `.dmg` using `codesign -s "Developer ID Application: Wesnoth, Inc (N5CYW96P9T)" /PATH/TO/NEW/IMAGE.dmg`. You must have Wesnoth's signing certificate.
- * Verify that you signed `.dmg` propertly using `spctl -a -t open --context context:primary-signature -v /PATH/TO/NEW/IMAGE.dmg`.
+ * Verify that you signed `.dmg` properly using `spctl -a -t open --context context:primary-signature -v /PATH/TO/NEW/IMAGE.dmg`.
  * Create SHA-256 checksum using `shasum -a 256 /PATH/TO/NEW/IMAGE.dmg` command.
  * Done! You can release it now.
 
