@@ -81,11 +81,15 @@ elif [ "$LTS" == "mingw" ]; then
     fi
 
     if [ "$TRAVIS_TAG" != "" ]; then
-        echo "Creating installer for tag: $TRAVIS_TAG"
+        echo "Creating Windows installer for tag: $TRAVIS_TAG"
         scons translations build=release --debug=time nls=true jobs=2 || exit 1
         python3 ./utils/dockerbuilds/mingw/get_dlls.py || exit 1
         scons windows-installer arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32 || exit 1
         ./utils/travis/sftp "$(find . -type f -regex '.*win64.*')"
+        echo "Creating .tar.bz2 for tag: $TRAVIS_TAG"
+        git archive --format=tar --prefix="wesnoth-$TRAVIS_TAG/" $BRANCH > "wesnoth-$TRAVIS_TAG.tar" || exit 1
+        bzip2 wesnoth-$TRAVIS_TAG.tar || exit 1
+        ./utils/travis/sftp wesnoth-$TRAVIS_TAG.tar.bz2 || exit 1
     fi
 elif [ "$LTS" == "steamrt" ]; then
     scons ctool=$CC cxxtool=$CXX boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt \
