@@ -22,7 +22,7 @@ env:
 matrix:
   include:
     - os: windows
-      env: OPT=Debug BRANCH=master
+      env: OPT=Debug BRANCH=master UPLOAD_ID=vs-debug
 
     - os: windows
       env: OPT=Release BRANCH=master
