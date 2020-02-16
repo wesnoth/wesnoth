@@ -340,8 +340,8 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 
 		tree_details_->clear();
 		tree_details_->add_node("hp_xp_mp", {
-			{ "hp",{	// hard-coded span values based on unit::hp_color()
-				{ "label", (formatter() << "<small>" << "<span color='#21e100'>" << "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | </small>").str() },
+			{ "hp",{
+				{ "label", (formatter() << "<small>" << font::span_color(unit::hp_color_max()) << "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
 				{ "tooltip", get_hp_tooltip(type.movement_type().get_resistances().damage_table(), [&type](const std::string& dt, bool is_attacker) { return type.resistance_against(dt, is_attacker); }) }
 			} },

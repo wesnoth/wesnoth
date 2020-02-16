@@ -1571,6 +1571,7 @@ public:
 	 *                            The maximum_hitpoints are considered as base.
 	 */
 	color_t hp_color() const;
+	static color_t hp_color_max();
 
 	/**
 	 * Color for this unit's hitpoints.

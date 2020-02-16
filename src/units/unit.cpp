@@ -1131,6 +1131,11 @@ color_t unit::hp_color(int new_hitpoints) const
 	return hp_color_impl(new_hitpoints, hitpoints());
 }
 
+color_t unit::hp_color_max()
+{
+	return hp_color_impl(1, 1);
+}
+
 color_t unit::xp_color(int xp_to_advance, bool can_advance, bool has_amla)
 {
 	const color_t near_advance_color {255,255,255,255};
