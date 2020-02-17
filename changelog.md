@@ -38,6 +38,9 @@
      * S5: adjust enemy recruits and gold
    * Legend of Wesmere:
      * S3: fix scenario-breaking bug introduced in 1.15.2
+   * Liberty
+     * Revise gameplay in scenarios 1-5
+     * Merge S6 and S7 into a new scenario
    * Sceptre of Fire:
      * General prose/dialogue revision
      * New scenario (now the third)
