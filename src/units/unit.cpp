@@ -1131,7 +1131,12 @@ color_t unit::hp_color(int new_hitpoints) const
 	return hp_color_impl(new_hitpoints, hitpoints());
 }
 
-color_t unit::xp_color() const
+color_t unit::hp_color_max()
+{
+	return hp_color_impl(1, 1);
+}
+
+color_t unit::xp_color(int xp_to_advance, bool can_advance, bool has_amla)
 {
 	const color_t near_advance_color {255,255,255,255};
 	const color_t mid_advance_color  {150,255,255,255};
@@ -1142,18 +1147,12 @@ color_t unit::xp_color() const
 	const color_t far_amla_color     {139,0,237,255};
 	const color_t amla_color         {170,0,255,255};
 
-	const bool near_advance = static_cast<int>(experience_to_advance()) <= game_config::kill_experience;
-	const bool mid_advance  = static_cast<int>(experience_to_advance()) <= game_config::kill_experience*2;
-	const bool far_advance  = static_cast<int>(experience_to_advance()) <= game_config::kill_experience*3;
+	const bool near_advance = static_cast<int>(xp_to_advance) <= game_config::kill_experience;
+	const bool mid_advance  = static_cast<int>(xp_to_advance) <= game_config::kill_experience*2;
+	const bool far_advance  = static_cast<int>(xp_to_advance) <= game_config::kill_experience*3;
 
 	color_t color = normal_color;
-	bool major_amla = false;
-	bool has_amla = false;
-	for(const config& adv:get_modification_advances()){
-		major_amla |= adv["major_amla"].to_bool();
-		has_amla = true;
-	}
-	if(advances_to().size() ||major_amla){
+	if(can_advance){
 		if(near_advance){
 			color=near_advance_color;
 		} else if(mid_advance){
@@ -1174,6 +1173,17 @@ color_t unit::xp_color() const
 	}
 
 	return(color);
+}
+
+color_t unit::xp_color() const
+{
+	bool major_amla = false;
+	bool has_amla = false;
+	for(const config& adv:get_modification_advances()){
+		major_amla |= adv["major_amla"].to_bool();
+		has_amla = true;
+	}
+	return xp_color(experience_to_advance(), !advances_to().empty() || major_amla, has_amla);
 }
 
 void unit::set_recruits(const std::vector<std::string>& recruits)
