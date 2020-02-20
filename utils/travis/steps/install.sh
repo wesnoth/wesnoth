@@ -20,6 +20,7 @@ fi
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     HOMEBREW_NO_AUTO_UPDATE=1 brew install ccache scons
+    yes | pip3 install paramiko
     export PATH="/usr/local/opt/gettext/bin:/usr/local/opt/ccache/libexec:$PWD/utils/travis:$PATH"
     export CC=ccache-clang
     export CXX=ccache-clang++
