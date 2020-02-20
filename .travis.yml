@@ -22,10 +22,10 @@ env:
 matrix:
   include:
     - os: windows
-      env: OPT=Debug BRANCH=master UPLOAD_ID=vs-debug
+      env: TOOL=msbuild OPT=Debug BRANCH=master UPLOAD_ID=vs-debug
 
     - os: windows
-      env: OPT=Release BRANCH=master
+      env: TOOL=msbuild OPT=Release BRANCH=master
 
     - os: osx
       compiler: clang
