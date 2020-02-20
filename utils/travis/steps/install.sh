@@ -20,6 +20,11 @@ fi
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     HOMEBREW_NO_AUTO_UPDATE=1 brew install ccache scons
+    export PATH="/usr/local/opt/gettext/bin:/usr/local/opt/ccache/libexec:$PWD/utils/travis:$PATH"
+    export CC=ccache-clang
+    export CXX=ccache-clang++
+    export CCACHE_MAXSIZE=3000M
+    export CCACHE_COMPILERCHECK=content
     travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     start=`pwd`
