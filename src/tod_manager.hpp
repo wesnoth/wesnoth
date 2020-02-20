@@ -33,7 +33,7 @@ class tod_manager
 	public:
 	explicit tod_manager(const config& scenario_cfg = config());
 		~tod_manager() {}
-		tod_manager& operator=(const tod_manager& manager);
+		tod_manager& operator=(const tod_manager& manager) = default;
 
 		config to_config() const;
 		/**
