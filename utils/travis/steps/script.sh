@@ -12,7 +12,7 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     export CCACHE_MAXSIZE=500M
     export CCACHE_COMPILERCHECK=content
 
-    xcodebuild GCC_GENERATE_DEBUGGING_SYMBOLS=NO -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -configuration "$OPT"
+    xcodebuild CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -configuration "$OPT"
 
     BUILD_RET=$?
 
