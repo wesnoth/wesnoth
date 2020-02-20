@@ -29,11 +29,11 @@ matrix:
 
     - os: osx
       compiler: clang
-      env: TOOL=scons CXXSTD=14 NLS=false BRANCH=master OPT=-O0
+      env: TOOL=xcodebuild OPT=Debug NLS=true BRANCH=master
 
     - os: osx
       compiler: clang
-      env: TOOL=xcodebuild BRANCH=master
+      env: TOOL=xcodebuild OPT=Release NLS=true BRANCH=master
 
     - compiler: gcc
       env: CXXSTD=14 NLS=only LTS=1604 BRANCH=master
