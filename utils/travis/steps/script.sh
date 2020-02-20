@@ -1,41 +1,23 @@
 #!/bin/bash
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    if [ "$TOOL" = "xcodebuild" ]; then
-        export PATH="/usr/local/opt/ccache/libexec:$PWD/utils/travis:$PATH"
-        export CC=ccache-clang
-        export CXX=ccache-clang++
+    export PATH="/usr/local/opt/ccache/libexec:$PWD/utils/travis:$PATH"
+    export CC=ccache-clang
+    export CXX=ccache-clang++
 
-        cd ./projectfiles/Xcode
+    cd ./projectfiles/Xcode
 
-        export CCACHE_MAXSIZE=500M
-        export CCACHE_COMPILERCHECK=content
+    export CCACHE_MAXSIZE=500M
+    export CCACHE_COMPILERCHECK=content
 
-        xcodebuild GCC_GENERATE_DEBUGGING_SYMBOLS=NO -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -configuration "$OPT"
+    xcodebuild GCC_GENERATE_DEBUGGING_SYMBOLS=NO -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -configuration "$OPT"
 
-        BUILD_RET=$?
+    BUILD_RET=$?
 
-        ccache -s
-        ccache -z
+    ccache -s
+    ccache -z
 
-        exit $BUILD_RET
-    else
-        "$CXX" --version
-        if [ "$TOOL" = "scons" ]; then
-            ln -s $HOME/build-cache/ build
-            export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
-
-            scons wesnoth wesnothd campaignd boost_unit_tests build=release \
-                  ctool="$CC" cxxtool="$CXX" cxx_std="$CXXSTD" \
-                  extra_flags_config="-pipe" opt="$OPT" strict=true \
-                  nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time
-        else
-            cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false \
-                  -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCXX_STD="$CXXSTD"\
-                  -DEXTRA_FLAGS_CONFIG="-pipe" -DOPT="$OPT" -DENABLE_STRICT_COMPILATION="$STRICT" && \
-                  make VERBOSE=1 -j2
-        fi
-    fi
+    exit $BUILD_RET
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     powershell "MSBuild.exe projectfiles/VC14/wesnoth.sln -p:PlatformToolset=v141 -p:Configuration=$OPT"
     BUILD_RET=$?

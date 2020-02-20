@@ -19,13 +19,8 @@ if [ "$LTO" == "" ]; then
 fi
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    if [ "$TOOL" = "xcodebuild" ]; then
-        HOMEBREW_NO_AUTO_UPDATE=1 brew install ccache
-        travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
-    else
-        HOMEBREW_NO_AUTO_UPDATE=1 brew install scons cairo pango moreutils sdl2_image sdl2_ttf sdl2_mixer glew ccache
-        HOMEBREW_NO_AUTO_UPDATE=1 brew reinstall libffi
-    fi
+    HOMEBREW_NO_AUTO_UPDATE=1 brew install ccache
+    travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     start=`pwd`
     choco install sqlite
