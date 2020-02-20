@@ -19,7 +19,7 @@ if [ "$LTO" == "" ]; then
 fi
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    HOMEBREW_NO_AUTO_UPDATE=1 brew install ccache
+    HOMEBREW_NO_AUTO_UPDATE=1 brew install ccache scons
     travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     start=`pwd`
