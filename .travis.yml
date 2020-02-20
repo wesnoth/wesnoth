@@ -29,7 +29,7 @@ matrix:
 
     - os: osx
       compiler: clang
-      env: TOOL=xcodebuild OPT=Debug NLS=true BRANCH=master
+      env: TOOL=xcodebuild OPT=Debug NLS=true BRANCH=master UPLOAD_ID=xcode-debug
 
     - os: osx
       compiler: clang

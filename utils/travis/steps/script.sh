@@ -6,8 +6,14 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     cd ./projectfiles/Xcode
 
     xcodebuild CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -configuration "$OPT"
-
     BUILD_RET=$?
+
+    if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+# workaround for a bug in hdiutil where it freezes if multiple srcfolder-s are specified
+        cp -R "build/$OPT/The Battle for Wesnoth.app" "../../packaging/macos/The Battle for Wesnoth.app"
+        hdiutil create -volname "Wesnoth_${OPT}" -fs 'HFS+' -srcfolder ../../packaging/macos -ov -format UDBZ "Wesnoth_${OPT}.dmg"
+        ./../../utils/travis/sftp "Wesnoth_${OPT}.dmg"
+    fi
 
     ccache -s
     ccache -z
