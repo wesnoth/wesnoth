@@ -1,9 +1,11 @@
 #!/bin/bash
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    export PATH="/usr/local/opt/ccache/libexec:$PWD/utils/travis:$PATH"
+    export PATH="/usr/local/opt/gettext/bin:/usr/local/opt/ccache/libexec:$PWD/utils/travis:$PATH"
     export CC=ccache-clang
     export CXX=ccache-clang++
+
+    scons translations build=release --debug=time nls=true jobs=2 || exit 1
 
     cd ./projectfiles/Xcode
 
