@@ -51,6 +51,9 @@ echo "build_timeout(mins): $build_timeout"
 $CXX --version
 
 if [ "$NLS" == "only" ]; then
+    ./utils/travis/check_utf8.sh || exit 1
+    ./utils/travis/utf8_bom_dog.sh || exit 1
+
     cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false
     make VERBOSE=1 -j2 || exit 1
     make clean
