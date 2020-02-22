@@ -134,7 +134,11 @@ env = Environment(tools=["tar", "gettext_tool", "install", "python_devel", "scan
 if env["lockfile"]:
     print("Creating lockfile")
     lockfile = os.path.abspath("scons.lock")
-    open(lockfile, "wx").write(str(os.getpid()))
+    if sys.version_info.major >= 3:
+        create = "x"
+    else:
+        create = "wx"
+    open(lockfile, create).write(str(os.getpid()))
     import atexit
     atexit.register(os.remove, lockfile)
 
