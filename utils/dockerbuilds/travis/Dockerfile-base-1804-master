@@ -13,6 +13,10 @@ RUN apt install -y -qq libsdl2-2.0-0 libsdl2-dev libsdl2-image-2.0-0 libsdl2-ima
 # make tzdata not prompt for a timezone
 ENV DEBIAN_FRONTEND=noninteractive
 
+# translations
+RUN apt install -y -qq asciidoc dos2unix xsltproc po4a docbook-xsl language-pack-en
+RUN locale-gen en_US.UTF-8
+
 # misc
 RUN apt install -y -qq libpng16-16 libpng-dev libreadline6-dev libvorbis-dev libcairo2 libcairo2-dev libpango-1.0-0 libpango1.0-dev libfribidi0 libfribidi-dev libbz2-1.0 libbz2-dev zlib1g zlib1g-dev libpangocairo-1.0-0 libssl-dev libmysqlclient-dev expect-dev python3-pip moreutils
 RUN pip3 install --upgrade pip

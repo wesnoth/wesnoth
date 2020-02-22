@@ -51,6 +51,10 @@ echo "build_timeout(mins): $build_timeout"
 $CXX --version
 
 if [ "$NLS" == "only" ]; then
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+
     ./utils/travis/check_utf8.sh || exit 1
     ./utils/travis/utf8_bom_dog.sh || exit 1
 
@@ -58,7 +62,9 @@ if [ "$NLS" == "only" ]; then
     make VERBOSE=1 -j2 || exit 1
     make clean
 
-    scons translations build=release --debug=time nls=true jobs=2
+    scons translations build=release --debug=time nls=true jobs=2 || exit 1
+
+    scons pot-update update-po4a manual
 elif [ "$LTS" == "flatpak" ]; then
 # docker's --volume means the directory is on a separate filesystem
 # flatpak-builder doesn't support this
