@@ -4,7 +4,7 @@
 
 ## Version 1.14.11
  ### Language and i18n
-   * Updated translations: Czech, German.
+   * Updated translations: Czech, Finnish, German.
  ### Packaging
    * Fixed data/dist information not being found on many platforms other than Windows (only
      with the installer-created shortcut), as well as only the very first word being read instead
