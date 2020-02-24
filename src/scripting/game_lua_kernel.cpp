@@ -4525,6 +4525,7 @@ static const std::array<std::string, 23> handled_file_tags {{
 	"map",
 	"menu_item",
 	"modification",
+	"modify_unit_type",
 	"music",
 	"options",
 	"side",
