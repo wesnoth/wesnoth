@@ -4512,7 +4512,7 @@ void game_lua_kernel::set_game_display(game_display * gd) {
 /// These are the child tags of [scenario] (and the like) that are handled
 /// elsewhere (in the C++ code).
 /// Any child tags not in this list will be passed to Lua's on_load event.
-static const std::array<std::string, 23> handled_file_tags {{
+static const std::array<std::string, 24> handled_file_tags {{
 	"color_palette",
 	"color_range",
 	"display",
