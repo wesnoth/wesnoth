@@ -68,6 +68,65 @@
    * New dwarf castle variations: Non-cave (Cf), ruined (Cfr) and snow (Cfa)
    * New elf castle variation: snow (Cva)
    * Fixes and touchups to mushroom terrains Tb and Tf
+ ### Units
+   * Add mushroom defense cap to mounted and some flying units
+   * Decreased hitpoints of Dwarvish Lord from 79 to 74
+   * Decreased hitpoints of Dwarvish Steelclad from 59 to 55
+   * Increased hitpoints of Dwarvish Thunderguard from 44 to 47
+   * Increased hitpoints of Dwarvish Pathfinder from 42 to 45
+   * Increased melee damage of Dwarvish Stalwart from 7-3 to 8-3
+   * Increased melee damage of Dwarvish Sentinel from 9-3 to 10-3
+   * Dunefolk: rebalancing and renaming of various units
+   * Dunefolk: some graphics additions and updates
+   * Orcs: revise some unit descriptions
+   * Cost of Drake Warrior changed from 30 to 32
+   * Cost of Drake Arbiter changed from 31 to 32
+   * Cost of Drake Trasher changed from 31 to 32
+   * Cost of Drake Flare changed from 35 to 33
+   * Cost of Sky Drake changed from	30 to 28
+   * Cost of Saurian Ambusher changed from 30 to 24
+   * Cost of Saurian Oracle changed from 27 to 28
+   * Cost of Saurian Soothsayer changed from 27 to 25
+   * Cost of Dwarvish Steelclad changed from 32 to 36
+   * Cost of Dwarvish Thunderguard changed from 30 to 27
+   * Cost of Dwarvish Stalwart changed from 32 to 30
+   * Cost of Dwarvish Berserker changed from 33 to 30
+   * Cost of Outlaw changed from 28 to 26
+   * Cost of Trapper changed from 27 to 21
+   * Cost of Gryphon Master changed from 37 to 38
+   * Cost of Swordsman changed from 25 to 29
+   * Cost of Knight changed from 40 to 38
+   * Cost of Lancer changed from 40 to 44
+   * Cost of Dragoon changed from 34 to 27
+   * Cost of Duelist changed from 32 to 29
+   * Cost of Lieutenant changed from 35 to 34
+   * Cost of Merman Warrior changed from 28 to 26
+   * Cost of Ogre changed from 33 to 30
+   * Cost of Goblin Knight changed from 32 to 28
+   * Cost of Goblin Pillager changed from 32 to 28
+   * Cost of Troll changed from 29 to 27
+   * Cost of Troll Rocklobber changed from 29 to 25
+   * Cost of Naga Warrior changed from 27 to 24
+   * Cost of Orcish Crossbowman changed from 26 to 21
+   * Cost of Orcish Slayer changed from 33 to 26
+   * Cost of Elvish Hero changed from 30 to 26
+   * Cost of Elvish Captain changed from 32 to 28
+   * Cost of Elvish Marksman changed from 37 to 31
+   * Cost of Elvish Ranger changed from 38 to 31
+   * Cost of Elvish Rider changed from 31 to 32
+   * Cost of Elvish Druid changed from 34 to 27
+   * Cost of Elvish Sorceress changed from 34 to 32
+   * Cost of Elder Wose changed from 31 to 27
+   * Cost of Revenant changed from 28 to 31
+   * Cost of Deathblade changed from 28 to 34
+   * Cost of Dark Sorcerer changed from 32 to 33
+   * Cost of Blood Bat changed from 21 to 22
+   * Cost of Red Mage changed from 40 to 38
+   * Cost of White Mage changed from 40 to 38
+   * MP of Merman Spearman changed from 6 to 7
+   * HP of Merman Spearman changed from 40 to 43
+   * MP of Merman Javelineer increased from 6 to 7
+   * HP of Merman Javelineer changed from 55 to 58
  ### User interface
    * Moved tutorial to campaigns menu
    * Moved language button to icon
@@ -83,17 +142,6 @@
    * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
      into account.
    * The recruit and recall dialogs have a tooltip over the level number to show what the unit can advance to (issue #4135)
- ### Units
-   * Add mushroom defense cap to mounted and some flying units
-   * Decreased hitpoints of Dwarvish Lord from 79 to 74
-   * Decreased hitpoints of Dwarvish Steelclad from 59 to 55
-   * Increased hitpoints of Dwarvish Thunderguard from 44 to 47
-   * Increased hitpoints of Dwarvish Pathfinder from 42 to 45
-   * Increased melee damage of Dwarvish Stalwart from 7-3 to 8-3
-   * Increased melee damage of Dwarvish Sentinel from 9-3 to 10-3
-   * Dunefolk: rebalancing and renaming of various units
-   * Dunefolk: some graphics additions and updates
-   * Orcs: revise some unit descriptions
  ### Lua API
    * unit:transform() now takes an optional variation parameter
    * Support side.variables for access to side variables, similar to unit.variables
