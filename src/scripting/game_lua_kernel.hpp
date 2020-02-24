@@ -101,7 +101,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_map_size(lua_State *L);
 	int intf_get_mouseover_tile(lua_State *L);
 	int intf_get_selected_tile(lua_State *L);
-	int intf_get_starting_location(lua_State* L);
 	int impl_game_config_get(lua_State *L) override;
 	int impl_game_config_set(lua_State *L) override;
 	int impl_current_get(lua_State *L);
@@ -128,6 +127,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_set_end_campaign_credits(lua_State *L);
 	int intf_set_end_campaign_text(lua_State *L);
 	int intf_clear_menu_item(lua_State *L);
+	int intf_create_side(lua_State *L);
 	int intf_set_menu_item(lua_State *L);
 	int intf_set_next_scenario(lua_State *L);
 	int intf_shroud_op(lua_State *L, bool place_shroud);
@@ -145,6 +145,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_set_side_id(lua_State *L);
 	int intf_modify_ai_wml(lua_State *L);
 	int intf_get_sides(lua_State* L);
+	int intf_get_side(lua_State* L);
 	int intf_add_tile_overlay(lua_State *L);
 	int intf_remove_tile_overlay(lua_State *L);
 	int intf_add_event(lua_State *L);
@@ -189,7 +190,7 @@ public:
 		we are currently operating on a unit& and removing it might cause memory corruptions
 		note that we don't check for the dtor of lua owned units because we assume that
 		we operate on such a unit that the lua function that invoked the operation on that unit
-		(like wesnoth.add_modification, wesnoth.match_unit ..) have a local copy of that
+		(like wesnoth.units.add_modification, wesnoth.units.matches ..) have a local copy of that
 		lua_unit* userdata in its stack that prevents it from being collected.
 	*/
 	int map_locked_;

@@ -15,6 +15,7 @@
 #include "help/help_impl.hpp"
 
 #include "about.hpp"                    // for get_text
+#include "actions/attack.hpp"           // for time_of_day bonus
 #include "display.hpp"                  // for display
 #include "display_context.hpp"          // for display_context
 #include "game_config.hpp"              // for debug, menu_contract, etc
@@ -340,6 +341,12 @@ const std::vector<std::string>& topic_text::parsed_text() const
 	return parsed_text_;
 }
 
+std::string time_of_day_bonus_colored(const int time_of_day_bonus)
+{
+	// Use same red/green colouring scheme as time_of_day_at() in reports.cpp for consistency
+	return std::string("<format>color='") + (time_of_day_bonus > 0 ? "green" : (time_of_day_bonus < 0 ? "red" : "white")) + "' text='" + std::to_string(time_of_day_bonus) + "'</format>";
+}
+
 std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 {
 	std::vector<topic> topics;
@@ -347,28 +354,43 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 
 	if (! resources::tod_manager) {
 		toplevel << _("Only available during a scenario.");
-		topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
+		topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
 		return topics;
 	}
+
 	const std::vector<time_of_day>& times = resources::tod_manager->times();
 	for (const time_of_day& time : times)
 	{
 		const std::string id = "time_of_day_" + time.id;
 		const std::string image = "<img>src='" + time.image + "'</img>";
+		const std::string image_lawful = "<img>src='icons/alignments/alignment_lawful_30.png'</img>";
+		const std::string image_neutral = "<img>src='icons/alignments/alignment_neutral_30.png'</img>";
+		const std::string image_chaotic = "<img>src='icons/alignments/alignment_chaotic_30.png'</img>";
+		const std::string image_liminal = "<img>src='icons/alignments/alignment_liminal_30.png'</img>";
 		std::stringstream text;
 
-		toplevel << make_link(time.name.str(), id) << jump_to(160) <<
-				image << jump(30) << time.lawful_bonus << '\n';
+		const int lawful_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LAWFUL, false, resources::tod_manager->get_max_liminal_bonus());
+		const int neutral_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::NEUTRAL, false, resources::tod_manager->get_max_liminal_bonus());
+		const int chaotic_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::CHAOTIC, false, resources::tod_manager->get_max_liminal_bonus());
+		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false, resources::tod_manager->get_max_liminal_bonus());
 
-		text << image << '\n' <<
-				time.description.str() << '\n' <<
-				"Lawful Bonus: " << time.lawful_bonus << '\n' <<
-				'\n' << make_link(_("Schedule"), "..schedule");
+		toplevel << make_link(time.name.str(), id) << jump_to(160) << image << jump(30) <<
+			image_lawful << time_of_day_bonus_colored(lawful_bonus) << jump_to(390) <<
+			image_neutral << time_of_day_bonus_colored(neutral_bonus) << jump_to(450) <<
+			image_chaotic << time_of_day_bonus_colored(chaotic_bonus) << jump_to(520) <<
+			image_liminal << time_of_day_bonus_colored(liminal_bonus) << '\n';
+
+		text << image << '\n' << time.description.str() << '\n' <<
+			image_lawful << _("Lawful Bonus:") << ' ' << time_of_day_bonus_colored(lawful_bonus) << '\n' <<
+			image_neutral << _("Neutral Bonus:") << ' ' << time_of_day_bonus_colored(neutral_bonus) << '\n' <<
+			image_chaotic << _("Chaotic Bonus:") << ' ' << time_of_day_bonus_colored(chaotic_bonus) << '\n' <<
+			image_liminal << _("Liminal Bonus:") << ' ' << time_of_day_bonus_colored(liminal_bonus) << '\n' <<
+			'\n' << make_link(_("Schedule"), "..schedule");
 
 		topics.emplace_back(time.name.str(), id, text.str());
 	}
 
-	topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
+	topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
 	return topics;
 }
 
@@ -829,7 +851,7 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 
 		const terrain_type& info = tdata->get_terrain_info(t);
 
-		bool hidden = info.is_combined() || info.hide_help();
+		bool hidden = info.hide_help();
 
 		if (preferences::encountered_terrains().find(t)
 				== preferences::encountered_terrains().end() && !info.is_overlay())

@@ -32,7 +32,6 @@
 #include "video.hpp"
 
 // Sub-dialog includes
-#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/log_settings.hpp"
@@ -476,8 +475,8 @@ void preferences_dialog::post_build(window& window)
 		idle_anim_rate, set_idle_anim_rate);
 
 	/* FONT SCALING */
-	register_integer("scaling_slider", true,
-		font_scaling, set_font_scaling);
+	//register_integer("scaling_slider", true,
+	//	font_scaling, set_font_scaling);
 
 	/* FPS LIMITER */
 	register_bool("fps_limiter", true,
@@ -990,9 +989,7 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 	const std::string& selected_field = adv_preferences_cfg_[selected_row]["field"].str();
 
 	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
-		if(selected_field == "advanced_graphic_options") {
-			gui2::dialogs::advanced_graphics_options::display();
-		} else if(selected_field == "logging") {
+		if(selected_field == "logging") {
 			gui2::dialogs::log_settings::display();
 		} else if(selected_field == "orb_color") {
 			gui2::dialogs::select_orb_colors::display();
@@ -1045,9 +1042,9 @@ void preferences_dialog::pre_show(window& window)
 
 	gui2::bind_status_label<slider>(&window, "turbo_slider");
 
-	gui2::bind_status_label<slider>(&window, "scaling_slider",   [](slider& s)->std::string {
-		return s.get_value_label() + "%";
-	});
+	//gui2::bind_status_label<slider>(&window, "scaling_slider",   [](slider& s)->std::string {
+	//	return s.get_value_label() + "%";
+	//});
 
 	listbox& selector = find_widget<listbox>(&window, "selector", false);
 	stacked_widget& pager = find_widget<stacked_widget>(&window, "pager", false);

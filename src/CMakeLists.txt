@@ -109,14 +109,15 @@ if(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
 	include_directories(SYSTEM ${FRIBIDI_INCLUDE_DIRS} )
 endif(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
 
-if(X11_FOUND)
-	include_directories(SYSTEM ${X11_INCLUDE_DIR} )
-	set(game-external-libs ${game-external-libs} ${X11_LIBRARIES})
-endif(X11_FOUND)
-
 if(APPLE)
 	set(game-external-libs ${game-external-libs} "-framework IOKit")
 endif(APPLE)
+
+if(MINGW)
+	set(server-external-libs ${server-external-libs} ${MINGW_SYSTEM_LIBS})
+	set(game-external-libs ${game-external-libs} ${MINGW_SYSTEM_LIBS})
+endif(MINGW)
+
 ########### Set Library mode ###############
 
 if(ENABLE_SHARED_LIBRARIES)

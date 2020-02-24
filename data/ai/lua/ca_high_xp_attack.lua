@@ -30,7 +30,7 @@ local XP_attack
 
 local ca_attack_highxp = {}
 
-function ca_attack_highxp:evaluation(cfg, data)
+function ca_attack_highxp:evaluation(cfg, data, filter_own)
     -- Note: (most of) the code below is set up to maximize speed. Do not
     -- "simplify" this unless you understand exactly what that means
 
@@ -38,7 +38,7 @@ function ca_attack_highxp:evaluation(cfg, data)
     local max_unit_level = 0
     local units = {}
     for _,unit in ipairs(attacks_aspect.own) do
-        if (unit.attacks_left > 0) and (#unit.attacks > 0) and (not unit.canrecruit) then
+        if (unit.attacks_left > 0) and (#unit.attacks > 0) and (not unit.canrecruit) and unit:matches(filter_own) then
             table.insert(units, unit)
 
             local level = unit.level
@@ -54,7 +54,12 @@ function ca_attack_highxp:evaluation(cfg, data)
     -- but it is much faster than path finding, so it is done for preselection.
     local target_infos = {}
     for i_t,enemy in ipairs(attacks_aspect.enemy) do
-        if AH.is_attackable_enemy(enemy) then
+        local enemy_can_advance = true
+        if (not enemy.advances_to[1]) and (not wml.get_child(enemy.__cfg, 'advancement')) then
+            enemy_can_advance = false
+        end
+
+        if enemy_can_advance and AH.is_attackable_enemy(enemy) then
             local XP_to_levelup = enemy.max_experience - enemy.experience
             if (max_unit_level * wesnoth.game_config.combat_experience >= XP_to_levelup) then
                 local potential_target = false
@@ -97,7 +102,7 @@ function ca_attack_highxp:evaluation(cfg, data)
         local attack_hexes = LS.create()
         for xa,ya in H.adjacent_tiles(target.x, target.y) do
             if (not avoid_map:get(xa, ya)) then
-                local unit_in_way = wesnoth.get_unit(xa, ya)
+                local unit_in_way = wesnoth.units.get(xa, ya)
 
                 if AH.is_visible_unit(wesnoth.current.side, unit_in_way) then
                     if (unit_in_way.side == wesnoth.current.side) then
@@ -115,7 +120,7 @@ function ca_attack_highxp:evaluation(cfg, data)
                         local can_move = false
                         for _,uiw_loc in ipairs(uiw_reach) do
                             -- Unit in the way of the unit in the way
-                            local uiw_uiw = wesnoth.get_unit(uiw_loc[1], uiw_loc[2])
+                            local uiw_uiw = wesnoth.units.get(uiw_loc[1], uiw_loc[2])
                             if (not AH.is_visible_unit(wesnoth.current.side, uiw_uiw)) then
                                 can_move = true
                                 break

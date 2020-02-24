@@ -16,6 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "formula/string_utils.hpp"
+#include "variable.hpp"
 
 #include "config.hpp"
 #include "log.hpp"
@@ -47,9 +48,17 @@ public:
 			val = itor->second;
 		return val;
 	}
+	virtual variable_access_const get_variable_access_read(const std::string& varname) const
+	{
+		temp_.reset(new config);
+		for(const auto& p : map_) {
+			temp_->insert(p.first, p.second);
+		}
+		return variable_access_const(varname, *temp_);
+	}
 private:
 	const std::map<std::string,T>& map_;
-
+	mutable std::shared_ptr<config> temp_; // only used if get_variable_access_read called
 };
 }
 

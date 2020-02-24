@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-07-21 10:06+0800\n"
+"POT-Creation-Date: 2020-01-25 15:18-0300\n"
+"PO-Revision-Date: 2019-10-19 20:15+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -136,9 +136,13 @@ msgstr "在幫助中顯示所有的單位類型"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
+#, fuzzy
+#| msgid ""
+#| "Show all unit types in the help (requires restart). This does not alter "
+#| "the list of encountered units"
 msgid ""
-"Show all unit types in the help (requires restart). This does not alter the "
-"list of encountered units"
+"Show all unit types in the help (requires restart). If unset, only units "
+"that have been encountered will be shown."
 msgstr ""
 "在幫助中顯示所有的單位類型（需要重新啟動遊戲）。這並不會改變您所遇到的單位清"
 "單"
@@ -166,48 +170,33 @@ msgstr "使用游標顏色"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:144
-msgid "Graphics scaling options"
-msgstr "圖像縮放選項"
-
-#. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:150
 msgid "Customize orb colors"
 msgstr "自訂狀態球顏色"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:156
+#: data/advanced_preferences.cfg:150
 msgid "Logging"
 msgstr "日誌紀錄"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:162
+#: data/advanced_preferences.cfg:156
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "允許使用蒙地卡羅方法來計算傷害值"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:163
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr "允許計算傷害視窗模擬戰鬥來替代精確的機率計算器"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:170
-msgid "Show haloing effects"
-msgstr "顯示光圈效果"
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:171
-msgid "Show special unit graphical effects"
-msgstr "顯示特殊單位的圖像效果"
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:178
+#: data/advanced_preferences.cfg:164
 msgid "Show deprecation messages in-game"
 msgstr "在遊戲中顯示已棄用但尚未移除的訊息"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:179
+#: data/advanced_preferences.cfg:165
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -217,12 +206,12 @@ msgstr ""
 "外，不再維護記錄域控制訊息的顯示數量。"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:186
+#: data/advanced_preferences.cfg:172
 msgid "Use experimental PRNG combat"
 msgstr "在戰鬥中使用測試版的 PRNG"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:187
+#: data/advanced_preferences.cfg:173
 msgid ""
 "Enables more determinstic chance-to-hit calculations. This is an "
 "experimental feature designed to bring the observed hit/miss rate more in "
@@ -234,120 +223,26 @@ msgstr ""
 "開啟具有更準確的命中率計算模式。這是一個測試版的功能，是為了讓遇到的命中/閃避"
 "率和顯示的百分比更接近而設計的。"
 
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:197
-msgid "Joystick support"
-msgstr "支援搖桿"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:204
-msgid "Joystick: number of the scroll X-axis joystick"
-msgstr "搖桿：用於橫向捲軸的搖桿編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:214
-msgid "Joystick: number of the scroll X-axis"
-msgstr "搖桿：用於橫向捲軸的編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:224
-msgid "Joystick: number of the scroll Y-axis joystick"
-msgstr "搖桿：用於縱向捲軸的搖桿編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:234
-msgid "Joystick: number of the scroll Y-axis"
-msgstr "搖桿：用於橫向捲軸的編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:244
-msgid "Joystick: deadzone of the scrolling stick"
-msgstr "搖桿：無效的滾動區"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:254
-msgid "Joystick: number of the cursor X-axis joystick"
-msgstr "搖桿：用於搖桿橫向橫向的游標編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:264
-msgid "Joystick: number of the cursor X-axis"
-msgstr "搖桿：用於橫向移動的游標編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:274
-msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr "搖桿：用於搖桿橫向移動的游標編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:284
-msgid "Joystick: number of the cursor Y-axis"
-msgstr "搖桿：用於縱向移動的游標編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:294
-msgid "Joystick: deadzone of the cursor stick"
-msgstr "搖桿：無效區的游標"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:304
-msgid "Joystick: number of the mouse X-axis joystick"
-msgstr "搖桿：用於滑鼠橫向移動的搖桿編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:314
-msgid "Joystick: number of the mouse X-axis"
-msgstr "搖桿：用於滑鼠橫向移動的編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:324
-msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr "搖桿：用於滑鼠縱向移動的搖桿編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:334
-msgid "Joystick: number of the mouse Y-axis"
-msgstr "搖桿：用於滑鼠縱向移動的編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:344
-msgid "Joystick: deadzone of the mouse stick"
-msgstr "搖桿：無效區的滑鼠"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:354
-msgid "Joystick: number of the thrust axis joystick"
-msgstr "搖桿：用於加速的搖桿編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:364
-msgid "Joystick: number of the thrust axis"
-msgstr "搖桿：用於加速的編號"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:374
-msgid "Joystick: deadzone of the thruster"
-msgstr "搖桿：用於加速搖桿無效區的大小"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1060
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1054
 msgid "poisoned"
 msgstr "中毒"
 
 #. [objectives]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:260
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:236
 #: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
 msgstr "帶走金幣："
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [note]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:272
-#: data/lua/wml/objectives.lua:39
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
+#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "備註："
 
@@ -377,37 +272,37 @@ msgid "Artwork and Graphics"
 msgstr "藝術團隊"
 
 #. [about]
-#: data/core/about.cfg:753
+#: data/core/about.cfg:773
 msgid "Music"
 msgstr "音樂"
 
 #. [about]
-#: data/core/about.cfg:790
+#: data/core/about.cfg:810
 msgid "Sound Effects"
 msgstr "音效"
 
 #. [about]
-#: data/core/about.cfg:814
+#: data/core/about.cfg:834
 msgid "Campaign Design"
 msgstr "戰役設計"
 
 #. [about]
-#: data/core/about.cfg:900
+#: data/core/about.cfg:920
 msgid "Multiplayer Maps and Balancing"
 msgstr "多人地圖設計與遊戲平衡"
 
 #. [about]
-#: data/core/about.cfg:945
+#: data/core/about.cfg:965
 msgid "Packagers"
 msgstr "程式封裝"
 
 #. [about]
-#: data/core/about.cfg:1052
+#: data/core/about.cfg:1072
 msgid "Miscellaneous Contributors"
 msgstr "其他貢獻者"
 
 #. [about]
-#: data/core/about.cfg:1746
+#: data/core/about.cfg:1772
 msgid "Bots"
 msgstr "電腦"
 
@@ -418,146 +313,143 @@ msgstr "南非荷蘭語翻譯"
 
 #. [about]
 #: data/core/about_i18n.cfg:24
+#, fuzzy
+#| msgid "Greek Translation"
+msgid "Ancient Greek Translation"
+msgstr "希臘文翻譯"
+
+#. [about]
+#: data/core/about_i18n.cfg:32
 msgid "Arabic Translation"
 msgstr "阿拉伯語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:31
-msgid "Asturian Translation"
-msgstr "阿斯圖里亞斯語翻譯"
-
-#. [about]
-#: data/core/about_i18n.cfg:37
+#: data/core/about_i18n.cfg:39
 msgid "Basque Translation"
 msgstr "巴斯克語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:50
+#: data/core/about_i18n.cfg:52
 msgid "Bulgarian Translation"
 msgstr "保加利亞文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:73
+#: data/core/about_i18n.cfg:75
 msgid "Catalan Translation"
 msgstr "加泰羅尼亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:114
+#: data/core/about_i18n.cfg:116
 msgid "Chinese Translation"
 msgstr "簡體中文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:202
+#: data/core/about_i18n.cfg:207
 msgid "Chinese (Taiwan) Translation"
 msgstr "繁體中文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:215
+#: data/core/about_i18n.cfg:220
 msgid "Croatian Translation"
 msgstr "克羅地亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:225
+#: data/core/about_i18n.cfg:230
 msgid "Czech Translation"
 msgstr "捷克文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:294
+#: data/core/about_i18n.cfg:299
 msgid "Danish Translation"
 msgstr "丹麥文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:325
+#: data/core/about_i18n.cfg:330
 msgid "Dutch Translation"
 msgstr "荷蘭文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:393
+#: data/core/about_i18n.cfg:398
 msgid "English (GB) Translation"
 msgstr "英文（英國）翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:418
+#: data/core/about_i18n.cfg:423
 msgid "English (Shaw) Translation"
 msgstr "英文（蕭氏字母表）翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:436
+#: data/core/about_i18n.cfg:441
 msgid "Esperanto Translation"
 msgstr "世界語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:455
+#: data/core/about_i18n.cfg:460
 msgid "Estonian Translation"
 msgstr "愛沙尼亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:465
+#: data/core/about_i18n.cfg:470
 msgid "Filipino Translation"
 msgstr "菲律賓文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:475
+#: data/core/about_i18n.cfg:480
 msgid "Finnish Translation"
 msgstr "芬蘭文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:524
+#: data/core/about_i18n.cfg:529
 msgid "French Translation"
 msgstr "法文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:686
-msgid "Friulian Translation"
-msgstr "弗留利語翻譯"
-
-#. [about]
-#: data/core/about_i18n.cfg:693
+#: data/core/about_i18n.cfg:690
 msgid "Galician Translation"
 msgstr "加利西亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:729
+#: data/core/about_i18n.cfg:726
 msgid "German Translation"
 msgstr "德文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:815
+#: data/core/about_i18n.cfg:812
 msgid "Greek Translation"
 msgstr "希臘文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:858
+#: data/core/about_i18n.cfg:855
 msgid "Hebrew Translation"
 msgstr "希伯來文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:871
+#: data/core/about_i18n.cfg:868
 msgid "Hungarian Translation"
 msgstr "匈牙利文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:932
+#: data/core/about_i18n.cfg:929
 msgid "Icelandic Translation"
 msgstr "冰島翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:942
+#: data/core/about_i18n.cfg:939
 msgid "Indonesian Translation"
 msgstr "印度尼西亞語翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:965
+#: data/core/about_i18n.cfg:962
 msgid "Irish Translation"
 msgstr "愛爾蘭翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:972
+#: data/core/about_i18n.cfg:969
 msgid "Italian Translation"
 msgstr "義大利文翻譯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1019
+#: data/core/about_i18n.cfg:1016
 msgid "Japanese Translation"
 msgstr "日文翻譯"
 
@@ -1485,30 +1377,26 @@ msgstr ""
 "currently_doing_special_description"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:43
+#: data/core/macros/deprecated-utils.cfg:34
 msgid "This unit has been renamed to: "
 msgstr "這個單位已重新命名為："
 
-#: data/core/macros/deprecated-utils.cfg:95
-msgid "<small>(early finish bonus)</small>"
-msgstr "<small>（時效獎勵）</small>"
-
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:99 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "時效奬勵。"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:103 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "無時效奬勵。"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:107 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr "沒有剩餘金幣帶到下一個章節。"
 
-#: data/core/macros/deprecated-utils.cfg:111
+#: data/core/macros/deprecated-utils.cfg:63
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1516,7 +1404,7 @@ msgstr ""
 "\n"
 "100% 的金幣會帶到下一個章節。"
 
-#: data/core/macros/deprecated-utils.cfg:116
+#: data/core/macros/deprecated-utils.cfg:68
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1524,7 +1412,7 @@ msgstr ""
 "\n"
 "40% 的金幣會帶到下一個章節。"
 
-#: data/core/macros/deprecated-utils.cfg:121
+#: data/core/macros/deprecated-utils.cfg:73
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -3555,7 +3443,7 @@ msgstr "菇類"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:176
+#: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:187
 msgid "Village"
 msgstr "村莊"
 
@@ -3586,14 +3474,14 @@ msgstr "無法通過的山嶺"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:467
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
 msgid "Fog"
 msgstr "迷霧"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:470
-#: src/game_initialization/lobby_data.cpp:473
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
+#: src/game_initialization/lobby_data.cpp:445
 msgid "Shroud"
 msgstr "戰場黑幕"
 
@@ -4050,49 +3938,38 @@ msgstr ""
 "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansFallbackFull.ttf,"
 "DroidSansJapanese.ttf,Junicode-Regular.ttf"
 
-#. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:186
-msgid "(Note: You should use $replacement instead in new code)"
-msgstr "（備註：你應該使用 $replacement 而不是新的程式碼）"
-
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:193 src/deprecation.cpp:68
-msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr "不正確的不維護等級 $level (應為1到4)"
-
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:912
+#: data/lua/wml-tags.lua:899
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "不正確的不維護等級(應為1到4)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1060
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1054
 msgid "female^poisoned"
 msgstr "中毒"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1067
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1061
 msgid "female^slowed"
 msgstr "緩速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1067
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1061
 msgid "slowed"
 msgstr "緩速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1073
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1067
 msgid "female^petrified"
 msgstr "石化"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1073
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1067
 msgid "petrified"
 msgstr "石化"
 
@@ -4107,6 +3984,13 @@ msgid "unhealable"
 msgstr "無法行走的"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [lua]: wesnoth.wml_actions.message
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2864
+#: src/scripting/game_lua_kernel.cpp:2899
+msgid "input"
+msgstr "輸入"
+
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
@@ -4118,55 +4002,185 @@ msgid "Defeat:"
 msgstr "失敗："
 
 #. [lua]: generate_objectives
+#: data/lua/wml/objectives.lua:57
+#, fuzzy
+#| msgid "(this turn left)"
+#| msgid_plural "(%d turns left)"
+msgid "(this turn left)"
+msgid_plural "($remaining_turns turns left)"
+msgstr[0] "(只剩下本回合)"
+msgstr[1] "(只剩下%d回合)"
+
+#. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
 #, fuzzy
 #| msgid "%d%% of gold carried over to the next scenario."
 msgid "$percent|% of gold carried over to the next scenario."
 msgstr "%d%% 金幣將帶到下一個章節。"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:156
-#: src/game_initialization/mp_game_utils.cpp:76
-msgid "Defeat enemy leader(s)"
-msgstr "擊敗敵人首領"
+#. [leadership]: id=magical_leadership
+#: data/scenario-test.cfg:339
+#, fuzzy
+#| msgid "female^leadership"
+msgid "magical leadership"
+msgstr "領導"
 
-#. [heals]: id=aura of death 4
-#. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:886 data/scenario-test.cfg:914
-msgid "aura of seath ("
+#. [leadership]: id=magical_leadership
+#: data/scenario-test.cfg:340
+#, fuzzy
+#| msgid "female^leadership"
+msgid "female^magical leadership"
+msgstr "領導"
+
+#. [leadership]: id=magical_leadership
+#: data/scenario-test.cfg:341
+#, fuzzy
+#| msgid ""
+#| "Leadership:\n"
+#| "This unit can lead our own units that are next to it, making them fight "
+#| "better.\n"
+#| "\n"
+#| "Adjacent own units of lower level will do more damage in battle. When a "
+#| "unit adjacent to, of a lower level than, and on the same side as a unit "
+#| "with Leadership engages in combat, its attacks do 25% more damage times "
+#| "the difference in their levels."
+msgid ""
+"This unit can lead your own units that are next to it, making them fight "
+"better with magicals weapons.\n"
+"Adjacent own units of lower level will do more damage in battle. When a unit "
+"adjacent to, of a lower level than, and on the same side as a unit with "
+"Leadership engages in combat, its attacks do 25% more damage times the "
+"difference in their levels."
+msgstr ""
+"領導：\n"
+"本單位可以領導相鄰的同盟單位，發揮更強大的戰鬥力。\n"
+"\n"
+"相鄰低等級的同盟單位可得到更強大的殺傷力。當領袖與低等級同盟單位相鄰時，這些"
+"單位的攻撃會比平時增加原本的25%乘以與領袖等級差。"
+
+#. [resistance]: id=melee_steadfast
+#: data/scenario-test.cfg:366
+msgid "steadfast"
+msgstr "堅定"
+
+#. [resistance]: id=melee_steadfast
+#: data/scenario-test.cfg:367
+msgid "female^steadfast"
+msgstr "堅定"
+
+#. [resistance]: id=melee_steadfast
+#: data/scenario-test.cfg:368
+#, fuzzy
+#| msgid ""
+#| "Steadfast:\n"
+#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
+#| "defending. Vulnerabilities are not affected."
+msgid ""
+"This unit’s resistances are added to 20%, up to a maximum of 50%, when "
+"defending to melle attacks. Vulnerabilities are not affected."
+msgstr ""
+"堅定：\n"
+"本單位具有雙倍抗性，最高50%。該單位的弱點不受此能力影響"
+
+#. [plague]: id=plague, type=Walking Corpse
+#: data/scenario-test.cfg:403
+msgid "plague"
+msgstr "瘟疫"
+
+#. [plague]: id=plague, type=Walking Corpse
+#: data/scenario-test.cfg:404
+#, fuzzy
+#| msgid ""
+#| "Plague:\n"
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#| "doesn’t work on Undead or units in villages."
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"瘟疫：\n"
+"當一個單位被瘟疫攻撃撃斃，這個單位會變成殭屍，成為進行瘟疫攻撃單位的戰友。(這"
+"對不死或在村莊中的單位不起作用)。"
+
+#. [firststrike]: id=initiative
+#: data/scenario-test.cfg:465
+#, fuzzy
+#| msgid " (inactive)"
+msgid "initiative"
+msgstr "（遲緩）"
+
+#. [firststrike]: id=initiative
+#: data/scenario-test.cfg:466
+#, fuzzy
+#| msgid ""
+#| " The length of this unit’s weapon allows it to strike first in melee, "
+#| "even in defense."
+msgid ""
+"All adjacent friendly units will strike first in melee combat, even when "
+"defending."
+msgstr ""
+"本單位'毒素'攻撃的受害者將受到持續傷害，直到他們移入村莊或被擁有治愈能力的單"
+"位治好為止。"
+
+#. [chance_to_hit]: id=marksman_leadership
+#: data/scenario-test.cfg:478
+msgid "cantor"
+msgstr ""
+
+#. [chance_to_hit]: id=marksman_leadership
+#: data/scenario-test.cfg:479
+#, fuzzy
+#| msgid "female^chaotic"
+msgid "female^cantor"
+msgstr "混亂"
+
+#. [chance_to_hit]: id=marksman_leadership
+#: data/scenario-test.cfg:480
+msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
 msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:887 data/scenario-test.cfg:915
+#: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
+#, fuzzy
+#| msgid "female^healthy"
+msgid "aura of death ("
+msgstr "活力"
+
+#. [heals]: id=aura of death 4
+#. [heals]: id=aura of death 8
+#: data/scenario-test.cfg:1067 data/scenario-test.cfg:1095
 #, fuzzy
 #| msgid "female^healthy"
 msgid "female^aura of death ("
 msgstr "活力"
 
-#: data/scenario-test.cfg:1073 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1253 src/game_initialization/depcheck.cpp:489
 msgid "OK"
 msgstr "確定"
 
-#: data/scenario-test.cfg:1074
+#: data/scenario-test.cfg:1254
 msgid "Cancel"
 msgstr "取消"
 
 #. [language]
-#: data/scenario-test.cfg:4155
+#: data/scenario-test.cfg:4340
 msgid "very long"
 msgstr "非常長"
 
 #. [language]
-#: data/scenario-test.cfg:4156
+#: data/scenario-test.cfg:4341
 msgid "electrical"
 msgstr "電子"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:588
-msgid "Play"
-msgstr "開始播放"
+#: data/themes/_initial.cfg:428
+#, fuzzy
+#| msgid "replay"
+msgid "replay^Play"
+msgstr "遊戲錄影"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
@@ -4174,9 +4188,11 @@ msgid "continuous replay"
 msgstr "連續播放"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:443 data/themes/_initial.cfg:602
-msgid "Stop"
-msgstr "停止播放"
+#: data/themes/_initial.cfg:443
+#, fuzzy
+#| msgid "replay"
+msgid "replay^Stop"
+msgstr "遊戲錄影"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:444
@@ -4184,9 +4200,11 @@ msgid "pause after current move"
 msgstr "播放完後暫停"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:459 data/themes/_initial.cfg:616
-msgid "Reset"
-msgstr "重置"
+#: data/themes/_initial.cfg:459
+#, fuzzy
+#| msgid "replay"
+msgid "replay^Reset"
+msgstr "遊戲錄影"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
@@ -4248,93 +4266,40 @@ msgstr "省略動畫"
 msgid "Replay"
 msgstr "遊戲錄影"
 
+#. [action]: id=button-playreplay, type=image
+#: data/themes/_initial.cfg:588
+msgid "Play"
+msgstr "開始播放"
+
+#. [action]: id=button-stopreplay, type=image
+#: data/themes/_initial.cfg:602
+msgid "Stop"
+msgstr "停止播放"
+
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:603
 msgid "pause"
 msgstr "暫停"
 
-#. [theme]: id=Classic
-#: data/themes/classic.cfg:11
-msgid "theme^Classic"
-msgstr "傳統"
-
-#. [theme]: id=Classic
-#: data/themes/classic.cfg:13
-msgid "The classic, pre-1.12 theme"
-msgstr "經典佈景主題(1.12版前)"
+#. [action]: id=button-resetreplay, type=image
+#: data/themes/_initial.cfg:616
+msgid "Reset"
+msgstr "重置"
 
 #. [menu]: id=menu-main
-#: data/themes/classic.cfg:86 data/themes/cutscene.cfg:37
-#: data/themes/default.cfg:80
+#: data/themes/cutscene.cfg:37 data/themes/default.cfg:80
 msgid "Menu"
 msgstr "主選單"
 
-#. [menu]: id=actions-menu
-#: data/themes/classic.cfg:97 data/themes/default.cfg:98
-msgid "Actions"
-msgstr "動作"
-
 #. [action]: id=button-endturn
-#: data/themes/classic.cfg:120 data/themes/cutscene.cfg:53
-#: data/themes/default.cfg:131
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:133
 msgid "End Turn"
 msgstr "結束回合"
 
 #. [action]: id=button-endturn
-#: data/themes/classic.cfg:121 data/themes/cutscene.cfg:54
-#: data/themes/default.cfg:132
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:134
 msgid "End Scenario"
 msgstr "結束章節"
-
-#. [label]: id=label-hp
-#: data/themes/classic.cfg:202 data/themes/default.cfg:144
-msgid "HP"
-msgstr "生命值"
-
-#. [label]: id=label-xp
-#: data/themes/classic.cfg:211 data/themes/default.cfg:153
-msgid "XP"
-msgstr "經驗值"
-
-#. [label]: id=gold-icon
-#: data/themes/classic.cfg:221 data/themes/default.cfg:178
-msgid "gold"
-msgstr "金幣"
-
-#. [label]: id=villages-icon
-#: data/themes/classic.cfg:230 data/themes/default.cfg:187
-msgid "villages"
-msgstr "村莊"
-
-#. [label]: id=units-icon
-#: data/themes/classic.cfg:239 data/themes/default.cfg:196
-msgid "units"
-msgstr "單位"
-
-#. [label]: id=upkeep-icon
-#: data/themes/classic.cfg:248 data/themes/default.cfg:205
-msgid "upkeep"
-msgstr "支出"
-
-#. [label]: id=income-icon
-#: data/themes/classic.cfg:257 data/themes/default.cfg:214
-msgid "income"
-msgstr "收入"
-
-#. [unit_level]: id=unit-level
-#: data/themes/classic.cfg:429
-msgid "statuspanel^level"
-msgstr "等級"
-
-#. [unit_moves]: id=unit-moves
-#: data/themes/classic.cfg:459
-msgid "statuspanel^moves"
-msgstr "移動點數"
-
-#. [unit_defense]: id=unit-defense
-#: data/themes/classic.cfg:468
-msgid "statuspanel^terrain def."
-msgstr "地形防禦加成。"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:32
@@ -4351,18 +4316,33 @@ msgstr "預設"
 msgid "Back to..."
 msgstr "回到..."
 
+#. [menu]: id=actions-menu
+#: data/themes/default.cfg:98
+msgid "Actions"
+msgstr "動作"
+
+#. [label]: id=label-hp
+#: data/themes/default.cfg:146
+msgid "HP"
+msgstr "生命值"
+
+#. [label]: id=label-xp
+#: data/themes/default.cfg:155
+msgid "XP"
+msgstr "經驗值"
+
 #. [label]: id=label-mp
-#: data/themes/default.cfg:161
+#: data/themes/default.cfg:163
 msgid "MP"
 msgstr "移動點數"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:169
+#: data/themes/default.cfg:171
 msgid "def"
 msgstr "防禦"
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:406
+#: data/themes/default.cfg:408
 msgid "statuspanel^lvl"
 msgstr "等級"
 
@@ -4428,7 +4408,8 @@ msgstr ""
 #: data/tips.cfg:133 data/tips.cfg:161 data/tips.cfg:165 data/tips.cfg:169
 #: data/tips.cfg:177 data/tips.cfg:185 data/tips.cfg:193 data/tips.cfg:197
 #: data/tips.cfg:206 data/tips.cfg:210 data/tips.cfg:214 data/tips.cfg:222
-#: data/tips.cfg:242 data/tips.cfg:250 data/tips.cfg:258 data/tips.cfg:267
+#: data/tips.cfg:242 data/tips.cfg:250 data/tips.cfg:258 data/tips.cfg:278
+#: data/tips.cfg:283
 msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgstr "<i>― 韋諾 戰術指南</i>"
 
@@ -4973,9 +4954,15 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:221
+#, fuzzy
+#| msgid ""
+#| "Try to operate units with a small number of powerful attacks—such as Dark "
+#| "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or "
+#| "threes. This gives you another try whenever your first devastating attack "
+#| "misses — as inevitably happens from time to time."
 msgid ""
-"Try to operate units with a small number of powerful attacks—such as Dark "
-"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
+"Try to operate units with a small number of powerful attacks — such as Dark "
+"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
@@ -4985,11 +4972,17 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:225
+#, fuzzy
+#| msgid ""
+#| "Units with three or more attacks—especially magical attacks—are ideal for "
+#| "finishing off enemies with only a few hitpoints remaining. Be sure to use "
+#| "leadership—or a strong or dextrous unit—whenever the extra point or two "
+#| "of damage makes a one-hit kill possible."
 msgid ""
-"Units with three or more attacks—especially magical attacks—are ideal for "
-"finishing off enemies with only a few hitpoints remaining. Be sure to use "
-"leadership—or a strong or dextrous unit—whenever the extra point or two of "
-"damage makes a one-hit kill possible."
+"Units with three or more attacks — especially magical attacks — are ideal "
+"for finishing off enemies with only a few hitpoints remaining. Be sure to "
+"use leadership — or a strong or dextrous unit — whenever the extra point or "
+"two of damage makes a one-hit kill possible."
 msgstr ""
 "擁有三種或更多攻擊方式的單位，尤其是魔法攻擊的單位非常適合用來解决生命值只剩"
 "下很少的的敵人。當額外的一兩點傷害可能造成一擊必殺時，一定要使用領導技能，強"
@@ -5101,6 +5094,45 @@ msgstr "<i>― 韋斯廷的格里克爵士，607YW</i>"
 #. [tip]
 #: data/tips.cfg:266
 msgid ""
+"Some types of terrain give unique bonuses, such as healing or illumination."
+msgstr ""
+
+#. [tip]
+#. Translate the word "Flight" as in Wings of Victory
+#: data/tips.cfg:268
+#, fuzzy
+#| msgid "<i>― Great Mage Delfador, 516YW</i>"
+msgid "<i>― Galun, Flight Leader, 5YW</i>"
+msgstr "<i>― 迪法多 大法師，516YW</i>"
+
+#. [tip]
+#: data/tips.cfg:271
+msgid ""
+"If a unit is positioned next to healers from two allied sides, the unit will "
+"be healed on both sides’ turns. This way, a unit can be healed faster than "
+"otherwise possible."
+msgstr ""
+
+#. [tip]
+#. Translate the word "Flight" as in Wings of Victory
+#: data/tips.cfg:273
+#, fuzzy
+#| msgid "<i>― Kai Laudiss, 623YW</i>"
+msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
+msgstr "<i>― 凱．勞迪斯，623YW</i>"
+
+#. [tip]
+#. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
+#: data/tips.cfg:277
+msgid ""
+"Did you know that you can change the difficulty level during a campaign? "
+"Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
+"Game</i> screen when loading start-of-scenario save files."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:282
+msgid ""
 "<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
@@ -5111,11 +5143,11 @@ msgstr ""
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
-#: src/actions/advancement.cpp:234
+#: src/actions/advancement.cpp:256
 msgid "waiting for^an advancement choice"
 msgstr "升級選擇"
 
-#: src/actions/attack.cpp:600 src/actions/attack.cpp:1350
+#: src/actions/attack.cpp:594 src/actions/attack.cpp:1344
 msgid "An invalid attacker weapon got selected."
 msgstr "選擇了無效的進攻武器。"
 
@@ -5144,7 +5176,9 @@ msgid "You do not have a leader to recruit with."
 msgstr "您沒有首領，無法招募單位。"
 
 #: src/actions/create.cpp:478
-msgid "None of your leaders are able to recruit that unit."
+#, fuzzy
+#| msgid "None of your leaders are able to recruit that unit."
+msgid "None of your leaders are able to recruit this unit."
 msgstr "您的首領沒有能招募的單位。"
 
 #: src/actions/create.cpp:482
@@ -5297,7 +5331,7 @@ msgstr[1] ""
 msgid "Broken Dependencies"
 msgstr "來源已損毀"
 
-#: src/addon/client.cpp:418
+#: src/addon/client.cpp:416
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5307,35 +5341,35 @@ msgid_plural ""
 msgstr[0] "這個來源已無法安裝，您依然要繼續嗎？"
 msgstr[1] "這些來源已無法安裝，您依然要繼續嗎？"
 
-#: src/addon/client.cpp:422
+#: src/addon/client.cpp:420
 msgid "Dependencies Installation Failed"
 msgstr "來源安裝失敗"
 
-#: src/addon/client.cpp:445
+#: src/addon/client.cpp:443
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 "這個模組 '$addon|' 已經安裝且包含額外資訊，如果繼續將永久遺失相關資料："
 
-#: src/addon/client.cpp:449
+#: src/addon/client.cpp:447
 msgid "Publishing information file (.pbl)"
 msgstr "發佈訊息檔 (.pbl)"
 
-#: src/addon/client.cpp:453
+#: src/addon/client.cpp:451
 msgid "Version control system (VCS) information"
 msgstr "版本控制系統 (VCS) 資訊"
 
-#: src/addon/client.cpp:457
+#: src/addon/client.cpp:455
 msgid "Do you really wish to continue?"
 msgstr "您想繼續嗎？"
 
-#: src/addon/client.cpp:459 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:227
+#: src/addon/client.cpp:457 src/addon/manager_ui.cpp:174
+#: src/game_initialization/multiplayer.cpp:239
 msgid "Confirm"
 msgstr "確認"
 
-#: src/addon/client.cpp:579
+#: src/addon/client.cpp:577
 msgid "Add-ons Manager"
 msgstr "模組管理員"
 
@@ -5391,7 +5425,7 @@ msgstr "其他"
 msgid "addon_type^(unknown)"
 msgstr "（未知）"
 
-#: src/addon/info.cpp:220
+#: src/addon/info.cpp:217
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -5517,7 +5551,7 @@ msgstr "查看 $nick 玩家的資訊"
 msgid "(A) — admin command"
 msgstr "(A) - 管理者指令"
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1159
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1191
 msgid "(admin only)"
 msgstr "（只限管理者）"
 
@@ -5694,15 +5728,19 @@ msgstr "$elem 不再維護，且將在 $version 版中移除。"
 msgid "$elem has been deprecated and removed."
 msgstr "$elem 不再維護，且已被移除。"
 
+#: src/deprecation.cpp:68
+msgid "Invalid deprecation level $level (should be 1-4)"
+msgstr "不正確的不維護等級 $level (應為1到4)"
+
 #: src/desktop/notifications.cpp:82
 msgid "Chat message"
 msgstr "聊天訊息"
 
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:574
+#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:575
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/font/text_formatting.cpp:47
+#: src/font/text_formatting.cpp:52
 msgid "Invalid Color"
 msgstr "無效顔色"
 
@@ -5730,7 +5768,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:522
+#: src/game_config.cpp:523
 msgid "Invalid color in range: "
 msgstr "無效的色彩範圍："
 
@@ -5816,7 +5854,7 @@ msgid_plural ""
 msgstr[0] "請向此作者或管理員回報這個模組。"
 msgstr[1] "請向此作者或管理員回報這些模組。"
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:915
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:937
 msgid "Error: "
 msgstr "錯誤："
 
@@ -5836,41 +5874,41 @@ msgstr "資訊："
 msgid "$login|’s game"
 msgstr "$login 的遊戲"
 
-#: src/game_initialization/connect_engine.cpp:86
+#: src/game_initialization/connect_engine.cpp:87
 msgid "Team"
 msgstr "團隊"
 
-#: src/game_initialization/connect_engine.cpp:990
+#: src/game_initialization/connect_engine.cpp:991
 msgid "Anonymous player"
 msgstr "匿名玩家"
 
-#: src/game_initialization/connect_engine.cpp:995
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:996
+#: src/game_initialization/connect_engine.cpp:1294
 msgid "Computer Player"
 msgstr "電腦玩家"
 
-#: src/game_initialization/connect_engine.cpp:1037
+#: src/game_initialization/connect_engine.cpp:1038
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1289
+#: src/game_initialization/connect_engine.cpp:1290
 msgid "Network Player"
 msgstr "網絡玩家"
 
-#: src/game_initialization/connect_engine.cpp:1292
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Local Player"
 msgstr "本機玩家"
 
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:1295
 msgid "Nobody"
 msgstr "沒有人"
 
-#: src/game_initialization/connect_engine.cpp:1297
+#: src/game_initialization/connect_engine.cpp:1298
 msgid "Reserved"
 msgstr "保留"
 
 #: src/game_initialization/create_engine.cpp:73
-#: src/game_initialization/create_engine.cpp:666
+#: src/game_initialization/create_engine.cpp:662
 msgid "Map could not be loaded: "
 msgstr "地圖無法載入："
 
@@ -5886,29 +5924,29 @@ msgstr "無法使用。"
 msgid "Custom map."
 msgstr "自訂地圖。"
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:489
 msgid "Failed to resolve dependencies"
 msgstr "相依性處理失敗"
 
-#: src/game_initialization/depcheck.cpp:516
+#: src/game_initialization/depcheck.cpp:514
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr "章節無法啟用。有些資訊遺失："
 
-#: src/game_initialization/depcheck.cpp:570
-#: src/game_initialization/depcheck.cpp:693
+#: src/game_initialization/depcheck.cpp:568
+#: src/game_initialization/depcheck.cpp:691
 msgid "No compatible eras found."
 msgstr "沒有找到相容的時代。"
 
-#: src/game_initialization/depcheck.cpp:585
+#: src/game_initialization/depcheck.cpp:583
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr "時代無法啟用。有些資訊遺失："
 
-#: src/game_initialization/depcheck.cpp:638
-#: src/game_initialization/depcheck.cpp:730
+#: src/game_initialization/depcheck.cpp:636
+#: src/game_initialization/depcheck.cpp:728
 msgid "No compatible scenarios found."
 msgstr "沒有找到相容的章節。"
 
-#: src/game_initialization/depcheck.cpp:667
+#: src/game_initialization/depcheck.cpp:665
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
@@ -5931,64 +5969,64 @@ msgstr "找不到 $faction 的首領類型"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "無法獲得有效領袖 $leader"
 
-#: src/game_initialization/lobby_data.cpp:246
+#: src/game_initialization/lobby_data.cpp:224
 msgid "Missing addon: $name"
 msgstr "丟失的模組：$name"
 
-#: src/game_initialization/lobby_data.cpp:248
+#: src/game_initialization/lobby_data.cpp:226
 msgid "Missing addon: $id"
 msgstr "丟失的模組：$id"
 
-#: src/game_initialization/lobby_data.cpp:285
+#: src/game_initialization/lobby_data.cpp:258
 msgid "Unknown era"
 msgstr "未知時代"
 
-#: src/game_initialization/lobby_data.cpp:353
-#: src/game_initialization/lobby_data.cpp:386
+#: src/game_initialization/lobby_data.cpp:325
+#: src/game_initialization/lobby_data.cpp:358
 msgid "scenario_abbreviation^S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:372
+#: src/game_initialization/lobby_data.cpp:344
 msgid "Remote scenario"
 msgstr "控制章節"
 
-#: src/game_initialization/lobby_data.cpp:394
-#: src/game_initialization/lobby_data.cpp:417
+#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:389
 msgid "campaign_abbreviation^C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:422
+#: src/game_initialization/lobby_data.cpp:394
 msgid "Unknown scenario"
 msgstr "未知章節"
 
-#: src/game_initialization/lobby_data.cpp:432
+#: src/game_initialization/lobby_data.cpp:404
 msgid "Reloaded game"
 msgstr "已載入的遊戲"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:419
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空位："
 msgstr[1] "空位："
 
-#: src/game_initialization/lobby_data.cpp:449
+#: src/game_initialization/lobby_data.cpp:421
 msgid "mp_game_available_slots^Full"
 msgstr "已滿"
 
-#: src/game_initialization/lobby_data.cpp:460
-#: src/game_initialization/lobby_data.cpp:462 src/savegame.cpp:619
+#: src/game_initialization/lobby_data.cpp:432
+#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:639
 msgid "Turn"
 msgstr "回合"
 
-#: src/game_initialization/lobby_data.cpp:475
+#: src/game_initialization/lobby_data.cpp:447
 msgid "vision^none"
 msgstr "無"
 
-#: src/game_initialization/lobby_data.cpp:484
+#: src/game_initialization/lobby_data.cpp:456
 msgid "time limit^none"
 msgstr "無"
 
-#: src/game_initialization/lobby_data.cpp:524
+#: src/game_initialization/lobby_data.cpp:496
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -5996,13 +6034,17 @@ msgstr ""
 "與主機的<i>$addon</i>版本不相容。他們使用<b>$host_ver</b>版，而你使用<b>"
 "$local_ver</b>版。"
 
-#: src/game_initialization/lobby_data.cpp:538
+#: src/game_initialization/lobby_data.cpp:510
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "與你的<i>$addon</i>版本不相容。你使用<b>$local_ver</b>版，而他們使用<b>"
 "$host_ver</b>版。"
+
+#: src/game_initialization/mp_game_utils.cpp:76
+msgid "Defeat enemy leader(s)"
+msgstr "擊敗敵人首領"
 
 #: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
@@ -6012,21 +6054,21 @@ msgstr "無法找到 $era"
 msgid "Connection timed out"
 msgstr "連線愈時"
 
-#: src/game_initialization/multiplayer.cpp:71
+#: src/game_initialization/multiplayer.cpp:73
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:118
+#: src/game_initialization/multiplayer.cpp:120
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr "本伺服器需要版本 '$required_version'，但您的版本是 '$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:128
+#: src/game_initialization/multiplayer.cpp:130
 msgid "Server-side redirect loop"
 msgstr "伺服器檔頭轉址"
 
-#: src/game_initialization/multiplayer.cpp:200
+#: src/game_initialization/multiplayer.cpp:212
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6035,29 +6077,29 @@ msgstr ""
 "此帳號 ‘$nick’ 尚未啟用。你必須使用電子郵件或直接請管理員來幫你啟用，否則無法"
 "取得此帳號的使用權。"
 
-#: src/game_initialization/multiplayer.cpp:209
+#: src/game_initialization/multiplayer.cpp:221
 msgid "Do you want to continue?"
 msgstr "您想儲存遊戲嗎？"
 
-#: src/game_initialization/multiplayer.cpp:211
+#: src/game_initialization/multiplayer.cpp:223
 msgid "Warning"
 msgstr "警告"
 
-#: src/game_initialization/multiplayer.cpp:254
-#: src/game_initialization/multiplayer.cpp:270
-#: src/game_initialization/multiplayer.cpp:273
+#: src/game_initialization/multiplayer.cpp:266
+#: src/game_initialization/multiplayer.cpp:282
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Bad data received from server"
 msgstr "從伺服器收到損毀的資料"
 
-#: src/game_initialization/multiplayer.cpp:306
+#: src/game_initialization/multiplayer.cpp:318
 msgid "You must login first."
 msgstr "您必須先登入。"
 
-#: src/game_initialization/multiplayer.cpp:308
+#: src/game_initialization/multiplayer.cpp:320
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "此帳號 '$nick' 已被使用。"
 
-#: src/game_initialization/multiplayer.cpp:310
+#: src/game_initialization/multiplayer.cpp:322
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6065,110 +6107,110 @@ msgstr ""
 "此帳號 '$nick' 包含無效字元，只能與用數字與英文字母（最少一個數字或字母）、底"
 "線和連字號(-)。"
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:326
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "此帳號 '$nick' 太長，匿稱必須小於20個字元。"
 
-#: src/game_initialization/multiplayer.cpp:317
+#: src/game_initialization/multiplayer.cpp:329
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "此帳號 '$nick' 已被保留，無法被玩家使用。"
 
-#: src/game_initialization/multiplayer.cpp:319
+#: src/game_initialization/multiplayer.cpp:331
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "此帳號 '$nick' 尚未在本伺服器註冊。"
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:332
 msgid " This server disallows unregistered nicknames."
 msgstr "本伺服器不允許使用沒有註冊的帳號"
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:335
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "這個帳號 '$nick' 已經被伺服器的論壇封鎖：$duration|。"
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:337
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "這個帳號 '$nick' 已經被伺服器的論壇封鎖。"
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:341
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "您的 IP 位址已經被伺服器的論壇封鎖：$duration|。"
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:343
 msgid "Your IP address is banned on this server’s forums."
 msgstr "您的 IP 位址已經被伺服器的論壇封鎖。"
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:347
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr "這個帳號 '$nick' 所使用的 e-mail 已經被伺服器的論壇封鎖：$duration|。"
 
-#: src/game_initialization/multiplayer.cpp:337
+#: src/game_initialization/multiplayer.cpp:349
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "這個帳號 '$nick' 所使用的 e-mail 已經被伺服器的論壇封鎖。"
 
-#: src/game_initialization/multiplayer.cpp:340
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:352
+#: src/game_initialization/multiplayer.cpp:354
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "這個帳號 '$nick' 已經在本伺服器註冊。"
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:355
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr "警告：已經有玩家使用這個帳戶登入。如果繼續登入將擠掉先前使用者！"
 
-#: src/game_initialization/multiplayer.cpp:346
+#: src/game_initialization/multiplayer.cpp:358
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "登入錯誤（伺服器沒有連結）。"
 
-#: src/game_initialization/multiplayer.cpp:349
+#: src/game_initialization/multiplayer.cpp:361
 msgid "The password you provided was incorrect."
 msgstr "您輸入的密碼錯誤。"
 
-#: src/game_initialization/multiplayer.cpp:351
+#: src/game_initialization/multiplayer.cpp:363
 msgid "You have made too many login attempts."
 msgstr "您嘗試登入太多次了。"
 
-#: src/game_initialization/playcampaign.cpp:62
+#: src/game_initialization/playcampaign.cpp:63
 msgid "Remaining gold: "
 msgstr "所剩金幣： "
 
-#: src/game_initialization/playcampaign.cpp:66
+#: src/game_initialization/playcampaign.cpp:67
 msgid "Turns finished early: "
 msgstr "提早結束回合數： "
 
-#: src/game_initialization/playcampaign.cpp:67
+#: src/game_initialization/playcampaign.cpp:68
 msgid " per turn"
 msgstr " 金幣/回合"
 
-#: src/game_initialization/playcampaign.cpp:67
+#: src/game_initialization/playcampaign.cpp:68
 msgid "Early finish bonus: "
 msgstr "提早結束奬勵： "
 
-#: src/game_initialization/playcampaign.cpp:68
+#: src/game_initialization/playcampaign.cpp:69
 msgid "Total bonus: "
 msgstr "總奬勵： "
 
-#: src/game_initialization/playcampaign.cpp:70
+#: src/game_initialization/playcampaign.cpp:71
 msgid "Total gold: "
 msgstr "總金幣： "
 
-#: src/game_initialization/playcampaign.cpp:73
+#: src/game_initialization/playcampaign.cpp:74
 msgid "Carryover percentage: "
 msgstr "金幣轉移比例："
 
-#: src/game_initialization/playcampaign.cpp:76
+#: src/game_initialization/playcampaign.cpp:77
 msgid "Bonus gold: "
 msgstr "奬勵金幣: "
 
-#: src/game_initialization/playcampaign.cpp:78
+#: src/game_initialization/playcampaign.cpp:79
 msgid "Retained gold: "
 msgstr "所剩金幣： "
 
-#: src/game_initialization/playcampaign.cpp:91
+#: src/game_initialization/playcampaign.cpp:92
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -6178,7 +6220,7 @@ msgid_plural ""
 msgstr[0] "您將以 $gold 枚金幣開始下一章節。不會是遊戲預設資金。"
 msgstr[1] "您將以 $gold 枚金幣開始下一章節。不會是遊戲預設資金。"
 
-#: src/game_initialization/playcampaign.cpp:99
+#: src/game_initialization/playcampaign.cpp:100
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -6186,7 +6228,7 @@ msgid_plural ""
 msgstr[0] "您將在下一個章節中以預設資金開始遊戲。"
 msgstr[1] "您將在下一個章節中以預設資金開始遊戲。"
 
-#: src/game_initialization/playcampaign.cpp:107
+#: src/game_initialization/playcampaign.cpp:108
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6196,57 +6238,57 @@ msgid_plural ""
 msgstr[0] "您將以 $gold 枚金幣和預設資金中較高那個開始下一章節。"
 msgstr[1] "您將以 $gold 枚金幣和預設資金中較高那個開始下一章節。"
 
-#: src/game_initialization/playcampaign.cpp:137
+#: src/game_initialization/playcampaign.cpp:138
 msgid "Scenario Report"
 msgstr "章節報告"
 
-#: src/game_initialization/playcampaign.cpp:139
+#: src/game_initialization/playcampaign.cpp:140
 msgid "Victory"
 msgstr "勝利"
 
-#: src/game_initialization/playcampaign.cpp:140
+#: src/game_initialization/playcampaign.cpp:141
 msgid "You have emerged victorious!"
 msgstr "您贏得了勝利！"
 
-#: src/game_initialization/playcampaign.cpp:142
+#: src/game_initialization/playcampaign.cpp:143
 msgid "Defeat"
 msgstr "慘敗"
 
-#: src/game_initialization/playcampaign.cpp:143
+#: src/game_initialization/playcampaign.cpp:144
 msgid "You have been defeated!"
 msgstr "您被打敗了！"
 
-#: src/game_initialization/playcampaign.cpp:293 src/game_launcher.cpp:868
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:890
 msgid "The game could not be loaded: "
 msgstr "無法加載遊戲： "
 
-#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:870
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:892
 msgid "Error while playing the game: "
 msgstr "遊戲執行出錯： "
 
-#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:907
+#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:929
 msgid "The game map could not be loaded: "
 msgstr "無法加載遊戲地圖： "
 
-#: src/game_initialization/playcampaign.cpp:305 src/game_launcher.cpp:872
-#: src/game_launcher.cpp:1006
+#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:894
+#: src/game_launcher.cpp:1028
 msgid "Map generator error: "
 msgstr "地圖產生器錯誤："
 
-#: src/game_initialization/playcampaign.cpp:307
+#: src/game_initialization/playcampaign.cpp:311
 msgid "Error while reading the WML: "
 msgstr "讀取 WML 檔案時出錯："
 
-#: src/game_initialization/playcampaign.cpp:344
+#: src/game_initialization/playcampaign.cpp:348
 #: src/playsingle_controller.cpp:312
 msgid "Game Over"
 msgstr "遊戲結束"
 
-#: src/game_initialization/playcampaign.cpp:345
+#: src/game_initialization/playcampaign.cpp:349
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "這個章節已經結束了。您想繼續嗎?"
 
-#: src/game_initialization/playcampaign.cpp:413
+#: src/game_initialization/playcampaign.cpp:417
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知章節： '$scenario|'"
 
@@ -6254,29 +6296,29 @@ msgstr "未知章節： '$scenario|'"
 msgid "No campaigns are available."
 msgstr "沒有可選戰役。"
 
-#: src/game_launcher.cpp:649 src/game_launcher.cpp:667
+#: src/game_launcher.cpp:670 src/game_launcher.cpp:688
 msgid "The file you have tried to load is corrupt"
 msgstr "您想載入的文件已損壞"
 
-#: src/game_launcher.cpp:652 src/game_launcher.cpp:670
-#: src/hotkey/hotkey_handler_sp.cpp:312 src/savegame.cpp:147
-#: src/savegame.cpp:292
+#: src/game_launcher.cpp:673 src/game_launcher.cpp:691
+#: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:154
+#: src/savegame.cpp:309
 msgid "The file you have tried to load is corrupt: '"
 msgstr "您試圖載入的文件已損壞：'"
 
-#: src/game_launcher.cpp:660
+#: src/game_launcher.cpp:681
 msgid "File I/O Error while reading the game"
 msgstr "當讀取遊戲時發生文件 I/O 錯誤"
 
-#: src/game_launcher.cpp:662
+#: src/game_launcher.cpp:683
 msgid "File I/O Error while reading the game: '"
 msgstr "當讀取遊戲時發生文件 I/O 錯誤：'"
 
-#: src/game_launcher.cpp:866
+#: src/game_launcher.cpp:888
 msgid "Error while starting server: "
 msgstr "遊戲執行錯誤："
 
-#: src/game_launcher.cpp:888
+#: src/game_launcher.cpp:910
 msgid "Connection failed: "
 msgstr "連線失敗："
 
@@ -6310,51 +6352,43 @@ msgstr[0] ""
 "選中的模組有以下依賴模組，但它目前是舊版或尚未安裝。你希望安裝它並繼續嗎？"
 msgstr[1] "這些模組必須仰賴這個來源以下的附加模組，您要安裝嗎？"
 
-#: src/gui/dialogs/game_load.hpp:40
-msgid "No Saved Games"
-msgstr "沒有存檔"
-
-#: src/gui/dialogs/game_load.hpp:40
-msgid "There are no save files to load"
-msgstr "沒有可讀取的存檔"
-
 #: src/gui/dialogs/game_stats.hpp:43
 msgid "No visible sides found."
 msgstr "找不到可見的陣營。"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:104
+#: src/gui/dialogs/multiplayer/player_info.cpp:110
 msgid "In game:"
 msgstr "遊戲："
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:106
+#: src/gui/dialogs/multiplayer/player_info.cpp:112
 msgid "(observing)"
 msgstr "（觀察中）"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:108
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "(playing)"
 msgstr "（遊戲中）"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:111
+#: src/gui/dialogs/multiplayer/player_info.cpp:117
 msgid "In lobby"
 msgstr "在大廳"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:140
+#: src/gui/dialogs/multiplayer/player_info.cpp:146
 msgid "On friends list"
 msgstr "在好友清單"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:145
+#: src/gui/dialogs/multiplayer/player_info.cpp:151
 msgid "On ignores list"
 msgstr "在黑名單"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:150
+#: src/gui/dialogs/multiplayer/player_info.cpp:156
 msgid "Neither a friend nor ignored"
 msgstr "不在好友或黑名單中"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:155
+#: src/gui/dialogs/multiplayer/player_info.cpp:161
 msgid "You"
 msgstr "你"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:158
+#: src/gui/dialogs/multiplayer/player_info.cpp:164
 msgid "Error"
 msgstr "錯誤"
 
@@ -6374,252 +6408,107 @@ msgstr "是"
 msgid "Reference to unknown topic: "
 msgstr "引用未知主題： "
 
-#: src/help/help_impl.cpp:349
+#: src/help/help_impl.cpp:356
 msgid "Only available during a scenario."
 msgstr "僅在章節中可用。"
 
-#: src/help/help_impl.cpp:366
+#: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
+#, fuzzy
+#| msgid "Time of day schedule:"
+msgid "Time of Day Schedule"
+msgstr "時段排程："
+
+#: src/help/help_impl.cpp:384
+#, fuzzy
+#| msgid "Lawful units: "
+msgid "Lawful Bonus:"
+msgstr "守序單位："
+
+#: src/help/help_impl.cpp:385
+#, fuzzy
+#| msgid "Neutral units: "
+msgid "Neutral Bonus:"
+msgstr "中立單位："
+
+#: src/help/help_impl.cpp:386
+#, fuzzy
+#| msgid "Chaotic units: "
+msgid "Chaotic Bonus:"
+msgstr "渾沌單位："
+
+#: src/help/help_impl.cpp:387
+#, fuzzy
+#| msgid "Liminal units: "
+msgid "Liminal Bonus:"
+msgstr "閾界單位："
+
+#: src/help/help_impl.cpp:388
 msgid "Schedule"
 msgstr "排程"
 
-#: src/help/help_impl.cpp:458
+#: src/help/help_impl.cpp:480
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='擁有此效果的單位'</header>"
 
-#: src/help/help_impl.cpp:522
+#: src/help/help_impl.cpp:544
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='擁有這個技能的單位'</header>"
 
-#: src/help/help_impl.cpp:552
+#: src/help/help_impl.cpp:574
 msgid "Era:"
 msgstr "時代："
 
-#: src/help/help_impl.cpp:560
+#: src/help/help_impl.cpp:582
 msgid "Factions"
 msgstr "陣營"
 
-#: src/help/help_impl.cpp:609
+#: src/help/help_impl.cpp:630
 msgid "Races: "
 msgstr "種族："
 
-#: src/help/help_impl.cpp:618 src/help/help_impl.cpp:969
+#: src/help/help_impl.cpp:639 src/help/help_impl.cpp:990
 msgid "Alignments: "
 msgstr "立場："
 
-#: src/help/help_impl.cpp:625
+#: src/help/help_impl.cpp:646
 msgid "Leaders"
 msgstr "首領"
 
-#: src/help/help_impl.cpp:634
+#: src/help/help_impl.cpp:655
 msgid "Recruits"
 msgstr "招募"
 
-#: src/help/help_impl.cpp:695 src/units/types.cpp:479
+#: src/help/help_impl.cpp:716 src/units/types.cpp:485
 msgid "No description available."
 msgstr "沒有資料。"
 
-#: src/help/help_impl.cpp:699 src/help/help_impl.cpp:701
+#: src/help/help_impl.cpp:720 src/help/help_impl.cpp:722
 msgid "Availability: "
 msgstr "可得性："
 
-#: src/help/help_impl.cpp:699
+#: src/help/help_impl.cpp:720
 msgid "Must-have"
 msgstr "被動"
 
-#: src/help/help_impl.cpp:701
+#: src/help/help_impl.cpp:722
 msgid "Unavailable"
 msgstr "不可用"
 
-#: src/help/help_impl.cpp:781 src/help/help_impl.cpp:957
-#: src/help/help_topic_generators.cpp:400
+#: src/help/help_impl.cpp:802 src/help/help_impl.cpp:978
 msgid "race^Miscellaneous"
 msgstr "其它"
 
-#: src/help/help_impl.cpp:969 src/reports.cpp:382
+#: src/help/help_impl.cpp:990 src/reports.cpp:369
 msgid "Alignment: "
 msgstr "立場："
 
-#: src/help/help_impl.cpp:976
+#: src/help/help_impl.cpp:997
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='這個種族的單位'</header>"
 
-#: src/help/help_impl.cpp:1287
+#: src/help/help_impl.cpp:1308
 msgid "corrupted original file"
 msgstr "原始文件出錯"
-
-#: src/help/help_topic_generators.cpp:62
-msgid "Best of"
-msgstr "最佳"
-
-#: src/help/help_topic_generators.cpp:62
-msgid "Worst of"
-msgstr "最差"
-
-#: src/help/help_topic_generators.cpp:158
-msgid "Base Terrain: "
-msgstr "基礎地形："
-
-#: src/help/help_topic_generators.cpp:177
-msgid "Movement properties: "
-msgstr "移動特性："
-
-#: src/help/help_topic_generators.cpp:181
-msgid "Defense properties: "
-msgstr "防禦特性："
-
-#: src/help/help_topic_generators.cpp:261
-msgid "Level"
-msgstr "等級"
-
-#: src/help/help_topic_generators.cpp:322
-msgid "Advances from: "
-msgstr "升級自："
-
-#: src/help/help_topic_generators.cpp:324
-msgid "Advances to: "
-msgstr "升級為："
-
-#: src/help/help_topic_generators.cpp:353
-msgid "Base unit: "
-msgstr "基礎單位："
-
-#: src/help/help_topic_generators.cpp:358
-msgid "Base units: "
-msgstr "基礎單位："
-
-#: src/help/help_topic_generators.cpp:376
-msgid "Variations: "
-msgstr "變種："
-
-#: src/help/help_topic_generators.cpp:402 src/reports.cpp:203
-msgid "Race: "
-msgstr "種族："
-
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
-msgid "Traits"
-msgstr "特質"
-
-#: src/help/help_topic_generators.cpp:472
-msgid "Abilities: "
-msgstr "技能："
-
-#: src/help/help_topic_generators.cpp:490
-msgid "Ability Upgrades: "
-msgstr "技能提升："
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:512
-msgid "HP:"
-msgstr "生命："
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:516
-msgid "Moves:"
-msgstr "移動："
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:521
-msgid "Vision:"
-msgstr "視野："
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
-msgid "Jamming:"
-msgstr "干擾："
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
-msgid "Cost:"
-msgstr "價格："
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
-msgid "Alignment:"
-msgstr "立場："
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  It uses
-#. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
-#. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:543
-msgid "Required XP:"
-msgstr "升級所需經驗值："
-
-#: src/help/help_topic_generators.cpp:552
-msgid "unit help^Attacks"
-msgstr "攻撃"
-
-#: src/help/help_topic_generators.cpp:559
-msgid "unit help^Name"
-msgstr "名稱"
-
-#: src/help/help_topic_generators.cpp:560
-msgid "Strikes"
-msgstr "輸出"
-
-#: src/help/help_topic_generators.cpp:561
-msgid "Range"
-msgstr "範圍"
-
-#: src/help/help_topic_generators.cpp:562
-msgid "Type"
-msgstr "類型"
-
-#: src/help/help_topic_generators.cpp:563
-msgid "Special"
-msgstr "特殊"
-
-#: src/help/help_topic_generators.cpp:641
-msgid "Resistances"
-msgstr "抗性"
-
-#: src/help/help_topic_generators.cpp:645
-msgid "Attack Type"
-msgstr "攻撃類型"
-
-#: src/help/help_topic_generators.cpp:646
-msgid "Resistance"
-msgstr "抗性"
-
-#: src/help/help_topic_generators.cpp:675
-msgid "Terrain Modifiers"
-msgstr "地形修正"
-
-#: src/help/help_topic_generators.cpp:679
-msgid "Terrain"
-msgstr "地形"
-
-#: src/help/help_topic_generators.cpp:680
-msgid "Defense"
-msgstr "防禦"
-
-#: src/help/help_topic_generators.cpp:681
-msgid "Movement Cost"
-msgstr "移動消耗"
-
-#: src/help/help_topic_generators.cpp:685
-msgid "Defense Cap"
-msgstr "最高防禦"
-
-#: src/help/help_topic_generators.cpp:690
-msgid "Vision Cost"
-msgstr "視野消耗"
-
-#: src/help/help_topic_generators.cpp:694
-msgid "Jamming Cost"
-msgstr "干擾消耗"
 
 #: src/hotkey/command_executor.cpp:395
 msgid "Do you really want to surrender the game?"
@@ -6633,35 +6522,35 @@ msgstr "投降"
 msgid "Map-Screenshot"
 msgstr "地圖截圖"
 
-#: src/hotkey/hotkey_handler.cpp:217
+#: src/hotkey/hotkey_handler.cpp:221
 msgid "(press $hk to disable)"
 msgstr "（按 $hk 來關閉）"
 
-#: src/hotkey/hotkey_handler.cpp:217
+#: src/hotkey/hotkey_handler.cpp:221
 msgid "Accelerated speed enabled!"
 msgstr "加速已啟用！"
 
-#: src/hotkey/hotkey_handler.cpp:221
+#: src/hotkey/hotkey_handler.cpp:225
 msgid "Accelerated speed disabled!"
 msgstr "加速已關閉！"
 
-#: src/hotkey/hotkey_handler.cpp:414
+#: src/hotkey/hotkey_handler.cpp:421
 msgid "Back to Turn "
 msgstr "回到上一回合"
 
-#: src/hotkey/hotkey_handler.cpp:420
+#: src/hotkey/hotkey_handler.cpp:427
 msgid "Back to Start"
 msgstr "回到初始"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144
+#: src/hotkey/hotkey_handler_sp.cpp:145
 msgid "(press $hotkey to deactivate)"
 msgstr "（按 $hotkey 來取消）"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1980
+#: src/hotkey/hotkey_handler_sp.cpp:145 src/menu_events.cpp:2052
 msgid "Planning mode activated!"
 msgstr "計劃模式已開啟！"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1983
+#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2055
 msgid "Planning mode deactivated!"
 msgstr "計劃模式已關閉！"
 
@@ -6669,27 +6558,27 @@ msgstr "計劃模式已關閉！"
 msgid "System default language"
 msgstr "系統預設語言"
 
-#: src/map/location.cpp:164
+#: src/map/location.cpp:165
 msgid "North"
 msgstr "北"
 
-#: src/map/location.cpp:166
+#: src/map/location.cpp:167
 msgid "North East"
 msgstr "東北"
 
-#: src/map/location.cpp:168
+#: src/map/location.cpp:169
 msgid "North West"
 msgstr "西北"
 
-#: src/map/location.cpp:170
+#: src/map/location.cpp:171
 msgid "South"
 msgstr "南"
 
-#: src/map/location.cpp:172
+#: src/map/location.cpp:173
 msgid "South East"
 msgstr "東南"
 
-#: src/map/location.cpp:174
+#: src/map/location.cpp:175
 msgid "South West"
 msgstr "西南方"
 
@@ -6712,18 +6601,26 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
-"目前可使用的指令列表和特殊指令說明。如果您要查詢目前不可用的命令，請使用"
+"目前可使用的指令列表和特殊指令說明。如果您要查詢目前不可用的命令，請使用 "
 "\"help all\"。"
 
-#: src/map_command_handler.hpp:218
-msgid "do not translate the 'all'^[all|<command>]"
-msgstr "[all|<指令>]"
+#. TRANSLATORS: These are the arguments accepted by the "help" command,
+#. which are either "all" or the name of another command.
+#. As with the command's name, "all" is hardcoded, and shouldn't change in the translation.
+#: src/map_command_handler.hpp:221
+msgid ""
+"[all|<command>]\n"
+"“all” = overview of all commands, <command> = name of a specific command "
+"(provides more detail)"
+msgstr ""
+"[all|<command>]\n"
+"“all” = 對全部指令的總述, <command> = 指令的名稱（提供更多細節）"
 
-#: src/map_command_handler.hpp:263
+#: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
 msgstr "遺失參數 $arg_id"
 
-#: src/map_command_handler.hpp:311
+#: src/map_command_handler.hpp:314
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -6731,26 +6628,30 @@ msgstr ""
 "可用指令 $flags_description：\n"
 "$list_of_commands"
 
-#: src/map_command_handler.hpp:311 src/map_command_handler.hpp:312
-#: src/map_command_handler.hpp:336
+#: src/map_command_handler.hpp:314 src/map_command_handler.hpp:315
+#: src/map_command_handler.hpp:345
 msgid "help"
 msgstr "幫助"
 
-#: src/map_command_handler.hpp:312
+#: src/map_command_handler.hpp:315
 msgid "Type $help_command <command> for more info."
 msgstr "輸入 $help_command <指令> 取得更多資訊。"
 
-#: src/map_command_handler.hpp:323
+#: src/map_command_handler.hpp:326
 msgid " No help available."
 msgstr "無相關資料。"
 
-#: src/map_command_handler.hpp:329
+#: src/map_command_handler.hpp:332
 msgid "Usage:"
 msgstr "用量："
 
-#: src/map_command_handler.hpp:334
-msgid "aliases:"
-msgstr "別名："
+#. TRANSLATORS: alternative names for command-line commands, only shown if
+#. there is at least one of them.
+#: src/map_command_handler.hpp:343
+msgid "command^Alias:"
+msgid_plural "Aliases:"
+msgstr[0] "命令："
+msgstr[1] "命令："
 
 #: src/menu_events.cpp:177
 msgid "Save Map As"
@@ -6764,419 +6665,498 @@ msgstr "地圖已儲存。"
 msgid "Could not save the map: $msg"
 msgstr "無法儲存地圖: $msg"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:220
 msgid "Message:"
 msgstr "訊息："
 
-#: src/menu_events.cpp:223
+#: src/menu_events.cpp:222
 msgid "Send to observers only"
 msgstr "僅發送給觀察者"
 
-#: src/menu_events.cpp:224
+#: src/menu_events.cpp:223
 msgid "Send to allies only"
 msgstr "僅發送給同盟"
 
-#: src/menu_events.cpp:273
+#: src/menu_events.cpp:274
 msgid "You have no units available to recruit."
 msgstr "您沒有可供招募的單位。"
 
-#: src/menu_events.cpp:283
-msgid "No unit recruited"
+#: src/menu_events.cpp:284
+#, fuzzy
+#| msgid "No unit recruited"
+msgid "No unit recruited."
 msgstr "沒有招募單位"
 
+#: src/menu_events.cpp:309
+msgid "Internal error. Please report this as a bug! Details:\n"
+msgstr ""
+
 #: src/menu_events.cpp:315
-msgid "You do not have enough gold to recruit that unit"
+msgid "You cannot recruit a $unit_type_name at this time."
+msgstr ""
+
+#. TRANSLATORS: "plan" refers to Planning Mode
+#: src/menu_events.cpp:329
+#, fuzzy
+#| msgid "You do not have enough gold to recruit that unit"
+msgid ""
+"At this point in your plan, you will not have enough gold to recruit this "
+"unit."
 msgstr "您沒有足夠的金幣招募該單位"
 
-#: src/menu_events.cpp:351
-msgid "You are separated from your soldiers and may not recall them"
+#: src/menu_events.cpp:331
+#, fuzzy
+#| msgid "You do not have enough gold to recruit that unit"
+msgid "You do not have enough gold to recruit this unit."
+msgstr "您沒有足夠的金幣招募該單位"
+
+#: src/menu_events.cpp:374
+#, fuzzy
+#| msgid "You are separated from your soldiers and may not recall them"
+msgid "You are separated from your soldiers and may not recall them."
 msgstr "您與您的單位已分離，因此不能招回他們"
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:395
+#, fuzzy
+#| msgid ""
+#| "There are no troops available to recall\n"
+#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
-"There are no troops available to recall\n"
-"(You must have veteran survivors from a previous scenario)"
+"There are no troops available to recall.\n"
+"(You must have veteran survivors from a previous scenario.)"
 msgstr ""
 "沒有可以招回的單位\n"
 "（只能招回上一章節存活下來的單位）"
 
-#: src/menu_events.cpp:374
-msgid "You currently can't recall at the highlighted location"
+#: src/menu_events.cpp:399
+#, fuzzy
+#| msgid "You currently can't recall at the highlighted location"
+msgid "You currently can't recall at the highlighted location."
 msgstr "您不能在重點位置進行招回"
 
-#: src/menu_events.cpp:386
-msgid "No unit recalled"
+#: src/menu_events.cpp:411
+#, fuzzy
+#| msgid "No unit recalled"
+msgid "No unit recalled."
 msgstr "未招回單位"
 
-#: src/menu_events.cpp:403
-msgid "You must have at least 1 gold piece to recall a unit"
-msgid_plural "You must have at least $cost gold pieces to recall this unit"
+#: src/menu_events.cpp:428
+#, fuzzy
+#| msgid "You must have at least 1 gold piece to recall a unit"
+#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
+msgid "You must have at least 1 gold piece to recall a unit."
+msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "要招回一個單位，您至少需要有1個金幣"
 msgstr[1] "要招回一個單位，你至少需要有 $cost 個金幣"
 
-#: src/menu_events.cpp:549
+#: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
 msgstr "您還不可以結束自己的回合！"
 
-#: src/menu_events.cpp:564
+#: src/menu_events.cpp:589
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "您在這回合還沒有任何動作。您確定想結束本回合嗎？"
 
-#: src/menu_events.cpp:573
+#: src/menu_events.cpp:598
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "有些單位還可以動作。您確定要結束本回合嗎？"
 
-#: src/menu_events.cpp:582
+#: src/menu_events.cpp:607
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "有些單位還沒有動作。您確定要結束本回合嗎？"
 
-#: src/menu_events.cpp:639
+#: src/menu_events.cpp:664
 msgid "Rename Unit"
 msgstr "重新命名單位"
 
-#: src/menu_events.cpp:640
+#: src/menu_events.cpp:665
 msgid "Name:"
 msgstr "名稱："
 
-#: src/menu_events.cpp:815
+#: src/menu_events.cpp:840
 msgid "Clear Labels"
 msgstr "清除標籤"
 
-#: src/menu_events.cpp:816
+#: src/menu_events.cpp:841
 msgid "Are you sure you want to clear map labels?"
 msgstr "您確定要清除地圖標籤嗎？"
 
-#: src/menu_events.cpp:1011
+#: src/menu_events.cpp:1042
 msgid "Search"
 msgstr "搜索"
 
-#: src/menu_events.cpp:1150
+#: src/menu_events.cpp:1182
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) - 偵錯專用, (N) - 網路專用, (A) - 管理者專用"
 
-#: src/menu_events.cpp:1157
+#: src/menu_events.cpp:1189
 msgid "(debug command)"
 msgstr "（偵錯指令）"
 
-#: src/menu_events.cpp:1158
+#: src/menu_events.cpp:1190
 msgid "(network only)"
 msgstr "（只限網路）"
 
-#: src/menu_events.cpp:1160
+#: src/menu_events.cpp:1192
 msgid "(not during other events)"
 msgstr "(不在其它事件流程中)"
 
-#: src/menu_events.cpp:1189
+#: src/menu_events.cpp:1221
 msgid "Refresh gui."
 msgstr "重整介面。"
 
-#: src/menu_events.cpp:1190
+#: src/menu_events.cpp:1222
 msgid "Switch a side to/from AI control."
 msgstr "切換一陣營由AI控制。"
 
-#: src/menu_events.cpp:1191
+#. TRANSLATORS: These are the arguments accepted by the "droid" command,
+#. which must be a side-number and then optionally one of "on", "off" or "full".
+#. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
+#: src/menu_events.cpp:1226
 #, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
-msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<陣營> [on/off]]"
+#| msgid ""
+#| "[<side> [on/off]]\n"
+#| "“on” = enable control by the AI, “off” = side is controlled by the player"
+msgid ""
+"[<side> [on/off/full]]\n"
+"“on” = enable but retain vision, “full” = as if it’s controlled by another "
+"player"
+msgstr ""
+"[<陣營> [on/off]]\n"
+"“on” = 啟動AI控制，“off” = 該陣營由玩家控制"
 
-#: src/menu_events.cpp:1192
+#: src/menu_events.cpp:1227
+msgid "Change terrain type of current hex"
+msgstr ""
+
+#. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
+#: src/menu_events.cpp:1229
+msgid "<terrain type> [both|base|overlay]"
+msgstr ""
+
+#: src/menu_events.cpp:1230
 msgid "Switch a side to/from idle state."
 msgstr "切換一陣營至閒置狀態。"
 
-#: src/menu_events.cpp:1193
-msgid "do not translate the on/off^[<side> [on/off]]"
+#. TRANSLATORS: These are the arguments accepted by the "idle" command,
+#. which must be a side-number and then optionally "on" or "off".
+#. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
+#: src/menu_events.cpp:1234
+msgid "command_idle^[<side> [on/off]]"
 msgstr "[<陣營> [on/off]]"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1235
+msgid "Change the in-game theme."
+msgstr ""
+
+#: src/menu_events.cpp:1237
 msgid "<side> <nickname>"
 msgstr "<陣營> <暱稱>"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1237
 msgid "Assign control of a side to a different player or observer."
 msgstr "將其中一方控制權給予另一玩家或觀察者。"
 
-#: src/menu_events.cpp:1197
+#: src/menu_events.cpp:1238
 msgid "Query the controller status of a side."
 msgstr "詢問一陣營的控制狀態。"
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1239
 msgid "<side>"
 msgstr "<陣營>"
 
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1240
 msgid "Clear chat history."
 msgstr "清除聊天記錄。"
 
-#: src/menu_events.cpp:1200
+#: src/menu_events.cpp:1241
 msgid "Debug foreground terrain."
 msgstr "偵錯前景地形。"
 
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1243
 msgid "Debug layers from terrain under the mouse."
 msgstr "偵錯滑鼠游標所指的地形圖層。"
 
-#: src/menu_events.cpp:1203
-msgid "Show fps."
-msgstr "顯示fps。"
+#: src/menu_events.cpp:1244
+msgid "Show fps (Frames Per Second)."
+msgstr "顯示 FPS（每秒顯示影格數）。"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1246
 msgid "Save game."
 msgstr "儲存遊戲。"
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1248
 msgid "Quit game."
 msgstr "退出遊戲。"
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1251
 msgid "Save and quit."
 msgstr "儲存並離開。"
 
-#: src/menu_events.cpp:1212
+#: src/menu_events.cpp:1253
 msgid "Ignore replay errors."
 msgstr "忽略錯誤回報。"
 
-#: src/menu_events.cpp:1213
+#: src/menu_events.cpp:1254
 msgid "Disable autosaves."
 msgstr "停止自動儲存。"
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1256
 msgid "<id>"
 msgstr "<ID>"
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1256
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "進入下一個章節或選取章節"
 
-#: src/menu_events.cpp:1217
+#: src/menu_events.cpp:1258
 msgid "Choose next scenario"
 msgstr "選擇下一個章節"
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1261
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr "改變回合數（還有時段），如果不設定，則為預設回合數。"
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1261
 msgid "[turn]"
 msgstr "[回合]"
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1264
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr "改變回合數上限，如果值為-1，則回合數無上限。"
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1264
 msgid "[limit]"
 msgstr "[時間限制]"
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1266
 msgid "Turn debug mode on."
 msgstr "開啟除錯模式。"
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1267
 msgid "Turn debug mode off."
 msgstr "關閉除錯模式。"
 
-#: src/menu_events.cpp:1228 src/menu_events.cpp:1232
+#: src/menu_events.cpp:1269 src/menu_events.cpp:1273
 msgid "<command>[;<command>...]"
 msgstr "<指令>[;<指令>...]"
 
-#: src/menu_events.cpp:1228
+#: src/menu_events.cpp:1269
 msgid "Execute a Lua statement."
 msgstr "執行 Lua 狀態。"
 
-#: src/menu_events.cpp:1230
+#: src/menu_events.cpp:1271
 msgid "Grant higher privileges to Lua scripts."
 msgstr "給與 Lua 腳本更高權限。"
 
-#: src/menu_events.cpp:1231
+#: src/menu_events.cpp:1272
 msgid "Set the command used by the custom command hotkey"
 msgstr "自定指令的快捷鍵"
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1275
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "顯示一個多人遊戲陣營的畫面。"
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1276
 msgid "Launch the gamestate inspector"
 msgstr "啟動遊戲狀態檢視器"
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1278
 msgid "<name>[=<command>]"
 msgstr "<名字>[=<指令>]"
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1278
 msgid "Set or show alias to a command"
 msgstr "設定或顯示指令的名稱"
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1280 src/menu_events.cpp:1285
 msgid "<var>=<value>"
 msgstr "<變數>=<值>"
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1280
 msgid "Set a scenario variable."
 msgstr "設定遊戲變數。"
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1281
 msgid "<var>"
 msgstr "<變數>"
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1281
 msgid "Show a scenario variable."
 msgstr "顯示遊戲變數。"
 
-#: src/menu_events.cpp:1242
-msgid "Modify a unit variable. (Only top level keys are supported.)"
+#. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
+#: src/menu_events.cpp:1284
+#, fuzzy
+#| msgid "Modify a unit variable. (Only top level keys are supported.)"
+msgid ""
+"Modify a unit variable. (Only top level keys are supported, and "
+"advances=<number>.)"
 msgstr "修改一個單位的數值。（只能更動最大數）"
 
-#: src/menu_events.cpp:1248
+#: src/menu_events.cpp:1291
 msgid "Discover all units in help."
 msgstr "在說明中已探索所有單位。"
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1292
 msgid "'Undiscover' all units in help."
 msgstr "在說明中設定所有單位為未探索。"
 
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1293
+msgid "<unit type id>"
+msgstr ""
+
+#: src/menu_events.cpp:1293
 msgid "Create a unit."
 msgstr "創造一個單位。"
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1294
 msgid "Toggle fog for the current player."
 msgstr "為當前玩家設置戰爭迷霧。"
 
-#: src/menu_events.cpp:1252
+#: src/menu_events.cpp:1295
 msgid "Toggle shroud for the current player."
 msgstr "為目前玩家設定戰場黑幕。"
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1296
+msgid "<amount>"
+msgstr ""
+
+#: src/menu_events.cpp:1296
 msgid "Give gold to the current player."
 msgstr "給玩家金幣。"
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1297
+#, fuzzy
+#| msgid "<nickname>"
+msgid "<event name>"
+msgstr "<暱稱>"
+
+#: src/menu_events.cpp:1297
 msgid "Fire a game event."
 msgstr "觸發遊戲事件。"
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1300
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "顯示格狀地形X,Y座標。"
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1303
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "顯示格狀地形編碼。"
 
-#: src/menu_events.cpp:1263
+#: src/menu_events.cpp:1306
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "切換多種格狀地圖上的點陣圖。"
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1308
 msgid "Toggle planning mode."
 msgstr "切換模式。"
 
-#: src/menu_events.cpp:1268
+#: src/menu_events.cpp:1311
 msgid "Access whiteboard options dialog."
 msgstr "進入選項對話框。"
 
-#: src/menu_events.cpp:1388
+#: src/menu_events.cpp:1431
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "無法找到含有‘$search’字串的標籤或單位。"
 
-#: src/menu_events.cpp:1434
+#: src/menu_events.cpp:1477
 msgid "Can't droid invalid side: '$side'."
 msgstr "無法關閉/啟用無效陣營：'$side'。"
 
-#: src/menu_events.cpp:1437
+#: src/menu_events.cpp:1480
 msgid "Can't droid networked side: '$side'."
 msgstr "無法關閉/啟用網絡陣營：'$side'。"
 
-#: src/menu_events.cpp:1447
+#: src/menu_events.cpp:1490 src/menu_events.cpp:1522
 msgid "Side '$side' controller is now controlled by: AI."
 msgstr "陣營 '$side' 現在由 AI 控制。"
 
-#: src/menu_events.cpp:1449
+#: src/menu_events.cpp:1492
 msgid "Side '$side' is already droided."
 msgstr "陣營 '$side' 之前已經被託管了。"
 
-#: src/menu_events.cpp:1456
+#: src/menu_events.cpp:1499 src/menu_events.cpp:1517
 msgid "Side '$side' controller is now controlled by: human."
 msgstr "陣營 '$side' 現在由人類控制。"
 
-#: src/menu_events.cpp:1458
+#: src/menu_events.cpp:1501
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already not droided."
 msgstr "陣營 '$side' 之前已經被託管了。"
 
-#: src/menu_events.cpp:1465
+#: src/menu_events.cpp:1508
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side '$side' controller is now fully controlled by: AI."
 msgstr "陣營 '$side' 現在由 AI 控制。"
 
-#: src/menu_events.cpp:1467
+#: src/menu_events.cpp:1510
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already fully AI controlled."
 msgstr "陣營 '$side' 之前已經被託管了。"
 
-#: src/menu_events.cpp:1470
+#: src/menu_events.cpp:1525
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1493
+#: src/menu_events.cpp:1567
 msgid "Can't idle invalid side: '$side'."
 msgstr "無法閒置無效陣營：'$side'。"
 
-#: src/menu_events.cpp:1498
+#: src/menu_events.cpp:1572
 msgid "Can't idle networked side: '$side'."
 msgstr "無法閒置網路陣營：'$side'。"
 
-#: src/menu_events.cpp:1503
+#: src/menu_events.cpp:1577
 msgid "Can't idle local ai side: '$side'."
 msgstr "無法閒置本地AI陣營： '$side'。"
 
-#: src/menu_events.cpp:1563
+#: src/menu_events.cpp:1637
 msgid "Can't change control of invalid side: '$side'."
 msgstr "無法改變無效陣營的控制權：'$side'。"
 
-#: src/menu_events.cpp:1573
+#: src/menu_events.cpp:1647
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "無法改變超出範圍陣營的控制權：'$side'。"
 
-#: src/menu_events.cpp:1590
+#: src/menu_events.cpp:1664
 msgid "Can't query control of invalid side: '$side'."
 msgstr "無法查詢無效陣營的控制權：'$side'。"
 
-#: src/menu_events.cpp:1597
+#: src/menu_events.cpp:1671
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "無法查詢超出範圍陣營的控制權：'$side'。"
 
-#: src/menu_events.cpp:1718
+#: src/menu_events.cpp:1792
 msgid "Choose Scenario (Debug!)"
 msgstr "選擇章節（Debug！）"
 
-#: src/menu_events.cpp:1754
+#: src/menu_events.cpp:1828
 msgid "Debug mode activated!"
 msgstr "除錯模式已開啟！"
 
-#: src/menu_events.cpp:1757
+#: src/menu_events.cpp:1831
 msgid "Debug mode not available in network games"
 msgstr "在除錯模式下無法執行連線遊戲"
 
-#: src/menu_events.cpp:1764
+#: src/menu_events.cpp:1838
 msgid "Debug mode deactivated!"
 msgstr "除錯模式已關閉！"
 
-#: src/menu_events.cpp:1784
+#: src/menu_events.cpp:1858
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "警告！不安全的Lua腳本模式"
 
-#: src/menu_events.cpp:1785
+#: src/menu_events.cpp:1859
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7188,61 +7168,61 @@ msgstr ""
 "\n"
 "除非你了解風險，否則請不要繼續。"
 
-#: src/menu_events.cpp:1790
+#: src/menu_events.cpp:1864
 msgid "Unsafe mode enabled!"
 msgstr "不安全模式已開啟！"
 
-#: src/menu_events.cpp:1839
+#: src/menu_events.cpp:1913
 msgid "Variable not found"
 msgstr "找不到變數"
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1959
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr "無效陣營： '$alignment'，應該為守序、中立、混亂或邊緣。"
 
-#: src/menu_events.cpp:1913
+#: src/menu_events.cpp:1985
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "你希望刪除說明裡的所有已發現的單位嗎？"
 
-#: src/menu_events.cpp:1927
+#: src/menu_events.cpp:1999
 msgid "Invalid unit type"
 msgstr "無效單位類型"
 
-#: src/menu_events.cpp:1934
+#: src/menu_events.cpp:2006
 msgid "Invalid location"
 msgstr "無效位置"
 
-#: src/menu_events.cpp:2007 src/menu_events.cpp:2033
+#: src/menu_events.cpp:2079 src/menu_events.cpp:2105
 msgid "prompt^Command:"
 msgstr "指令："
 
-#: src/mouse_events.cpp:1195
+#: src/mouse_events.cpp:1190
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr "您的領袖必須在主堡裏才能招募或招回單位。"
 
-#: src/mouse_events.cpp:1290
+#: src/mouse_events.cpp:1285
 msgid "This unit has no usable weapons."
 msgstr "此單位沒有可用武器。"
 
-#: src/mp_game_settings.hpp:76
+#: src/mp_game_settings.hpp:77
 msgid "Independent"
 msgstr "獨立"
 
-#: src/mp_game_settings.hpp:77
+#: src/mp_game_settings.hpp:78
 msgid "No Mirror"
 msgstr "不使用鏡像"
 
-#: src/mp_game_settings.hpp:78
+#: src/mp_game_settings.hpp:79
 msgid "No Ally Mirror"
 msgstr "不使用盟友鏡像"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "遊戲（$name|, $scenario|）已經被建立"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7273,6 +7253,17 @@ msgstr "$name 取得控制權"
 msgid "Turn changed"
 msgstr "交換回合"
 
+#: src/panic.cpp:42
+msgid "Battle for Wesnoth"
+msgstr "Battle for Wesnoth"
+
+#: src/panic.cpp:43
+msgid ""
+"This may indicate an issue with your game configuration. If the problem "
+"persists, contact the development team for technical support, including the "
+"full contents of this message (copy with CTRL+C)."
+msgstr ""
+
 #: src/pathfind/pathfind.cpp:747
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "遇到消耗移動力小於1的地形。"
@@ -7284,33 +7275,55 @@ msgstr "遇到消耗移動力小於1的地形。"
 msgid "waiting for^a global variable"
 msgstr "等待連線數據"
 
-#: src/play_controller.cpp:247
+#: src/play_controller.cpp:248
 msgid "time left for current turn"
 msgstr "本回合剩餘時間"
 
-#: src/play_controller.cpp:249
+#: src/play_controller.cpp:250
 msgid "current local time"
 msgstr "當地時間"
 
-#: src/play_controller.cpp:1019
+#: src/play_controller.cpp:1020
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr "這款遊戲無法同步下去，再繼續下去也不會多好玩，您想儲存遊戲嗎？"
 
-#: src/play_controller.cpp:1020
+#: src/play_controller.cpp:1021
 msgid "Error details:"
 msgstr "錯誤詳細訊息："
 
-#: src/play_controller.cpp:1308
+#: src/play_controller.cpp:1309
 msgid "No objectives available"
 msgstr "無有效目標"
 
-#: src/playmp_controller.cpp:149
+#: src/playmp_controller.cpp:150
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "取消還沒傳送至伺服器的移動。"
 
-#: src/playmp_controller.cpp:358
+#: src/playmp_controller.cpp:263 src/playsingle_controller.cpp:347
+msgid ""
+"A network disconnection has occurred, and the game cannot continue. Do you "
+"want to save the game?"
+msgstr "網路連線已中斷，將無法進行遊戲。您要儲存此遊戲嗎？"
+
+#: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
+msgid ""
+"\n"
+"Do you want to save the game?"
+msgstr ""
+"\n"
+"您確定要儲存遊戲嗎？"
+
+#: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
+msgid ""
+"This game has been ended.\n"
+"Reason: "
+msgstr ""
+"此遊戲已經結束。\n"
+"原因："
+
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7324,7 +7337,7 @@ msgstr ""
 "\n"
 "您想要儲存錯誤訊息嗎?"
 
-#: src/playmp_controller.cpp:401
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7350,41 +7363,35 @@ msgstr ""
 msgid "The game is over."
 msgstr "本遊戲已結束。"
 
-#: src/playsingle_controller.cpp:347
-msgid ""
-"A network disconnection has occurred, and the game cannot continue. Do you "
-"want to save the game?"
-msgstr "網路連線已中斷，將無法進行遊戲。您要儲存此遊戲嗎？"
-
-#: src/playsingle_controller.cpp:437
+#: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
 msgstr "輪到 $name| 了"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 msgid "Give control to their ally $player"
 msgstr "交由他的盟友$player控制"
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 msgid "Give control to observer $player"
 msgstr "交由觀察者$player控制"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "用AI替換"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "用本機玩家替換"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr "讓該陣營閒置"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Save and abort game"
 msgstr "儲存並退出遊戲"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -7398,57 +7405,49 @@ msgstr "退出"
 msgid "Do you really want to quit?"
 msgstr "您確定想要離開嗎？"
 
-#: src/reports.cpp:162 src/savegame.cpp:400
+#: src/reports.cpp:164 src/savegame.cpp:418
 msgid "Name: "
 msgstr "名稱："
 
-#: src/reports.cpp:183
+#: src/reports.cpp:185
 msgid "Type: "
 msgstr "類型："
 
-#: src/reports.cpp:235
-msgid "Side:"
-msgstr "陣營："
+#: src/reports.cpp:205
+msgid "Race: "
+msgstr "種族："
 
-#: src/reports.cpp:257
-msgid "Level: "
-msgstr "等級："
+#: src/reports.cpp:224
+msgid "Side: <b>$side_name</b> ($color_name)"
+msgstr ""
 
-#: src/reports.cpp:262
-msgid "Advancements:"
-msgstr "可升級為："
-
-#: src/reports.cpp:275
-msgid "No advancement"
-msgstr "無法升級"
-
-#: src/reports.cpp:315
+#: src/reports.cpp:302
 msgid "Trait: "
 msgstr "特質："
 
-#: src/reports.cpp:338
+#: src/reports.cpp:325
 msgid "invisible: "
 msgstr "隱形："
 
-#: src/reports.cpp:339
+#: src/reports.cpp:326
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "本單位不可見。敵人看不見他，也不能攻撃他。"
 
-#: src/reports.cpp:342
+#: src/reports.cpp:329
 msgid "slowed: "
 msgstr "減速："
 
-#: src/reports.cpp:343
+#: src/reports.cpp:330
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr "本單位被緩速了，移動和攻撃因此減半。"
 
-#: src/reports.cpp:346
+#: src/reports.cpp:333
 msgid "poisoned: "
 msgstr "中毒："
 
-#: src/reports.cpp:347
+#: src/reports.cpp:334
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -7462,355 +7461,372 @@ msgstr ""
 "\n"
 "單位不會因中毒而死。毒素只能使單位的生命值降到1。"
 
-#: src/reports.cpp:350
+#: src/reports.cpp:337
 msgid "petrified: "
 msgstr "石化："
 
-#: src/reports.cpp:351
+#: src/reports.cpp:338
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "本單位已被石化。不能攻撃或移動它。"
 
-#: src/reports.cpp:429
+#: src/reports.cpp:416
 msgid "Ability: "
 msgstr "能力："
 
-#: src/reports.cpp:431 src/reports.cpp:957
+#: src/reports.cpp:418 src/reports.cpp:944
 msgid " (inactive)"
 msgstr "（遲緩）"
 
-#: src/reports.cpp:491
+#: src/reports.cpp:478
 msgid "Resistances: "
 msgstr "抗性："
 
-#: src/reports.cpp:493
+#: src/reports.cpp:480
 msgid "(Att / Def)"
 msgstr "（攻擊/防禦）"
 
-#: src/reports.cpp:524
+#: src/reports.cpp:511
 msgid "Experience Modifier: "
 msgstr "經驗值修正："
 
-#: src/reports.cpp:575
+#: src/reports.cpp:562
 msgid "Terrain: "
 msgstr "地形："
 
-#: src/reports.cpp:592
+#: src/reports.cpp:579
 msgid "maximum^max."
 msgstr "最大。"
 
-#: src/reports.cpp:592
+#: src/reports.cpp:579
 msgid "minimum^min."
 msgstr "最小。"
 
-#: src/reports.cpp:597
+#: src/reports.cpp:584
 msgid "Defense: "
 msgstr "防禦："
 
-#: src/reports.cpp:631 src/reports.cpp:632
+#: src/reports.cpp:618 src/reports.cpp:619
 msgid "vision:"
 msgstr "視野："
 
-#: src/reports.cpp:636 src/reports.cpp:637
+#: src/reports.cpp:623 src/reports.cpp:624
 msgid "jamming:"
 msgstr "干擾："
 
-#: src/reports.cpp:666
+#: src/reports.cpp:653
 msgid "Movement Costs:"
 msgstr "移動點數消耗："
 
-#: src/reports.cpp:791 src/reports.cpp:1046 src/reports.cpp:1058
+#: src/reports.cpp:778 src/reports.cpp:1033 src/reports.cpp:1045
 msgid "Weapon: "
 msgstr "武器："
 
-#: src/reports.cpp:792 src/reports.cpp:1047
+#: src/reports.cpp:779 src/reports.cpp:1034
 msgid "Damage: "
 msgstr "傷害："
 
-#: src/reports.cpp:796
+#: src/reports.cpp:783
 msgid "Base damage: "
 msgstr "基礎傷害："
 
-#: src/reports.cpp:798 src/reports.cpp:832 src/reports.cpp:842
+#: src/reports.cpp:785 src/reports.cpp:819 src/reports.cpp:829
 msgid "With specials: "
 msgstr "特殊："
 
-#: src/reports.cpp:801
+#: src/reports.cpp:788
 msgid "Time of day: "
 msgstr "時刻："
 
-#: src/reports.cpp:805
+#: src/reports.cpp:792
 msgid "Leadership: "
 msgstr "領導："
 
-#: src/reports.cpp:809
+#: src/reports.cpp:796
 msgid "Slowed: "
 msgstr "減速："
 
-#: src/reports.cpp:813
+#: src/reports.cpp:800
 msgid "Attacks: "
 msgstr "攻撃："
 
-#: src/reports.cpp:817
+#: src/reports.cpp:804
 msgid "Max swarm bonus: "
 msgstr "最大連擊奬勵："
 
-#: src/reports.cpp:818 src/reports.cpp:837
+#: src/reports.cpp:805 src/reports.cpp:824
 msgid "Swarm: "
 msgstr "連撃："
 
-#: src/reports.cpp:819 src/reports.cpp:830 src/reports.cpp:841
+#: src/reports.cpp:806 src/reports.cpp:817 src/reports.cpp:828
 msgid "Base attacks: "
 msgstr "基礎攻擊："
 
-#: src/reports.cpp:825
+#: src/reports.cpp:812
 msgid "Specials: "
 msgstr "特殊："
 
-#: src/reports.cpp:835
+#: src/reports.cpp:822
 msgid "Subject to swarm: "
 msgstr "有效連擊："
 
-#: src/reports.cpp:862
+#: src/reports.cpp:849
 msgid "Weapon range: "
 msgstr "武器攻撃範圍："
 
-#: src/reports.cpp:863
+#: src/reports.cpp:850
 msgid "Damage type: "
 msgstr "傷害類型："
 
-#: src/reports.cpp:864
+#: src/reports.cpp:851
 msgid "Damage versus: "
 msgstr "傷害目標："
 
-#: src/reports.cpp:924
+#: src/reports.cpp:911
 msgid "Accuracy:"
 msgstr "命中："
 
-#: src/reports.cpp:929
+#: src/reports.cpp:916
 msgid "Parry:"
 msgstr "格檔："
 
-#: src/reports.cpp:955
+#: src/reports.cpp:942
 msgid "Weapon special: "
 msgstr "武器效果："
 
-#: src/reports.cpp:1030
+#: src/reports.cpp:1017
 msgid "weapon^None"
 msgstr "無"
 
-#: src/reports.cpp:1059
+#: src/reports.cpp:1046
 msgid "Total damage"
 msgstr "總傷害輸出"
 
-#: src/reports.cpp:1123
+#: src/reports.cpp:1110
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "攻撃"
 msgstr[1] "攻撃"
 
-#: src/reports.cpp:1216
+#. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
+#: src/reports.cpp:1118
+msgid "Remaining: $left/$max"
+msgstr ""
+
+#: src/reports.cpp:1122
+#, fuzzy
+#| msgid "This is not a multiplayer save."
+msgid "This unit can attack multiple times per turn."
+msgstr "這不是多人對戰的存檔。"
+
+#: src/reports.cpp:1213
 msgid "Time of day schedule:"
 msgstr "時段排程："
 
-#: src/reports.cpp:1265
+#: src/reports.cpp:1263
 msgid "Time of day:"
 msgstr "時段："
 
-#: src/reports.cpp:1266 src/reports.cpp:1320
+#: src/reports.cpp:1264 src/reports.cpp:1318
 msgid "Lawful units: "
 msgstr "守序單位："
 
-#: src/reports.cpp:1268 src/reports.cpp:1322
+#: src/reports.cpp:1266 src/reports.cpp:1320
 msgid "Neutral units: "
 msgstr "中立單位："
 
-#: src/reports.cpp:1269 src/reports.cpp:1323
+#: src/reports.cpp:1267 src/reports.cpp:1321
 msgid "Chaotic units: "
 msgstr "渾沌單位："
 
-#: src/reports.cpp:1271 src/reports.cpp:1325
+#: src/reports.cpp:1269 src/reports.cpp:1323
 msgid "Liminal units: "
 msgstr "閾界單位："
 
-#: src/reports.cpp:1384
+#: src/reports.cpp:1382
 msgid "Turn Number"
 msgstr "回合數"
 
-#: src/reports.cpp:1386
+#: src/reports.cpp:1384
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr "當遊戲回合數達第二個數字時，遊戲結束。"
 
-#: src/reports.cpp:1411
+#: src/reports.cpp:1409
 msgid "Gold"
 msgstr "金幣"
 
-#: src/reports.cpp:1411
+#: src/reports.cpp:1409
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "目前持有可供招募及維持軍隊的金幣。"
 
-#: src/reports.cpp:1430
+#: src/reports.cpp:1428
 msgid "The fraction of known villages that your side has captured."
 msgstr "您的陣營佔領的村莊比例。"
 
-#: src/reports.cpp:1430
+#: src/reports.cpp:1428
 msgid "Villages"
 msgstr "村莊"
 
-#: src/reports.cpp:1435
+#: src/reports.cpp:1433
 msgid "The total number of units on your side."
 msgstr "您陣營的單位總數。"
 
-#: src/reports.cpp:1435
+#: src/reports.cpp:1433
 msgid "Units"
 msgstr "部隊"
 
-#: src/reports.cpp:1445
+#: src/reports.cpp:1443
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. It is equal to "
+#| "the number of unit levels not supported by villages. The second is the "
+#| "total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
-"first number is the amount of gold that will be deducted. The second is the "
-"total cost of upkeep, including that covered by villages — in other words, "
-"the amount of gold that would be deducted if you lost all villages."
+"first number is the amount of gold that will be deducted. It is equal to the "
+"number of unit levels not supported by villages. The second is the total "
+"cost of upkeep, including that covered by villages — in other words, the "
+"amount of gold that would be deducted if you lost all villages."
 msgstr ""
-"每回合結束時因軍隊維護而產生的開銷。第一個數字是將會被扣除的金幣。第二個數字"
-"是總維護費，這包含因佔領村莊而減免的部份——換句話說，如果你失去所有村莊，你就"
-"必須支付這麼多的金幣。"
+"每回合結束時因營運部隊而產生的開銷。第一個數字是將會被扣除的金幣。該數字等同"
+"於村莊無法負荷的單位等級。第二個數字是總維護費，這包含因佔領村莊而減免的部份"
+"——換句話說，如果你失去所有村莊，你就必須支付這麼多的金幣。"
 
-#: src/reports.cpp:1445
+#: src/reports.cpp:1443
 msgid "Upkeep"
 msgstr "支出"
 
-#: src/reports.cpp:1482
-msgid "Income"
-msgstr "收入"
+#: src/reports.cpp:1480
+msgid "Net Income"
+msgstr "淨收入"
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1480
+#, fuzzy
+#| msgid ""
+#| "The net amount of gold you gain or lose each turn, taking into account "
+#| "income from controlled villages and payment of upkeep."
 msgid ""
-"The amount of gold you gain each turn from your controlled villages, or the "
-"amount of gold you will lose each turn for unit upkeep."
-msgstr "每回合你能從控制的村莊中獲得的金幣，或是每回合因維護費而損失的金幣。"
+"The net amount of gold you gain or lose each turn, taking into account "
+"income from controlled villages and payment of upkeep."
+msgstr ""
+"每回合你所獲得或失去的金幣數量，透過你所控制村莊的收入及支出的開銷將會計算出"
+"該數量"
 
-#: src/reports.cpp:1650
+#: src/reports.cpp:1648
 msgid "Observers:"
 msgstr "觀察者："
 
-#: src/reports.cpp:1692
+#: src/reports.cpp:1690
 msgid "Clock"
 msgstr "時鐘"
 
-#: src/reports.cpp:1703
+#: src/reports.cpp:1701
 msgid "Battery"
 msgstr "電池"
 
-#: src/reports.cpp:1731
+#: src/reports.cpp:1729
 msgid "Countdown until your turn automatically ends."
 msgstr "倒數結束時，您的回合自動結束。"
 
-#: src/reports.cpp:1731
+#: src/reports.cpp:1729
 msgid "Turn Countdown"
 msgstr "回合倒數"
 
-#: src/save_index.cpp:218
+#: src/save_index.cpp:240
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
-#: src/save_index.cpp:219
+#: src/save_index.cpp:241
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/save_index.cpp:240 src/save_index.cpp:247
-msgid " replay"
-msgstr " 遊戲錄影"
+#. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
+#: src/save_index.cpp:261 src/savegame.cpp:566
+msgid "replay"
+msgstr "遊戲錄影"
 
-#: src/save_index.cpp:313 src/savegame.cpp:69 src/savegame.cpp:582
-#: src/savegame.cpp:584
+#: src/save_index.cpp:345 src/savegame.cpp:70 src/savegame.cpp:602
+#: src/savegame.cpp:604
 msgid "Auto-Save"
 msgstr "自動存檔"
 
-#: src/savegame.cpp:192 src/savegame.cpp:196
+#: src/savegame.cpp:204 src/savegame.cpp:208
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告：您試圖載入的文件已損壞。繼續嘗試載入。\n"
 
-#: src/savegame.cpp:243
+#: src/savegame.cpp:255
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
 msgstr ""
 "這個存檔是由一個早期版本儲存的（$version_number|），現在的版本無法載入。"
 
-#: src/savegame.cpp:251
+#: src/savegame.cpp:263
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
 msgstr "這個存檔來自於不同版本的遊戲（$version_number|）。您仍然要載入嗎？"
 
-#: src/savegame.cpp:254 src/savegame.cpp:298
+#: src/savegame.cpp:266 src/savegame.cpp:315
 msgid "Load Game"
 msgstr "載入遊戲"
 
-#: src/savegame.cpp:298
+#: src/savegame.cpp:315
 msgid "Replays are not supported in multiplayer mode."
 msgstr "多人連線不支援紀錄檔。"
 
-#: src/savegame.cpp:305
+#: src/savegame.cpp:322
 msgid "This is not a multiplayer save."
 msgstr "這不是多人對戰的存檔。"
 
-#: src/savegame.cpp:332
+#: src/savegame.cpp:350
 msgid "The game could not be saved: "
 msgstr "無法儲存遊戲： "
 
-#: src/savegame.cpp:400
+#: src/savegame.cpp:418
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "檔案已存在，要覆蓋嗎？"
 
-#: src/savegame.cpp:401
+#: src/savegame.cpp:419
 msgid "Overwrite?"
 msgstr "覆蓋？"
 
-#: src/savegame.cpp:409
+#: src/savegame.cpp:427
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "檔案名稱不能包含 '.gz' 或 '.bz2'。請選擇一個不同的名字。"
 
-#: src/savegame.cpp:457
+#: src/savegame.cpp:475
 msgid "Saved"
 msgstr "已儲存"
 
-#: src/savegame.cpp:457
+#: src/savegame.cpp:475
 msgid "The game has been saved."
 msgstr "遊戲已儲存。"
 
-#: src/savegame.cpp:487 src/savegame.cpp:507
+#: src/savegame.cpp:505 src/savegame.cpp:525
 msgid "Could not write to file"
 msgstr "無法寫入文件"
 
-#: src/savegame.cpp:542
+#: src/savegame.cpp:560
 msgid "Save Replay"
 msgstr "儲存遊戲錄影"
 
-#: src/savegame.cpp:547
-msgid "replay"
-msgstr "遊戲錄影"
-
-#: src/savegame.cpp:565
+#: src/savegame.cpp:584
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "不能自動存儲目前遊戲，請手動存檔。"
 
-#: src/savegame.cpp:612
+#: src/savegame.cpp:632
 msgid "Save Game"
 msgstr "儲存遊戲"
 
-#: src/savegame.cpp:626
+#: src/savegame.cpp:646
 msgid "Game state is corrupted"
 msgstr "遊戲狀態毀損"
-
-#: src/scripting/game_lua_kernel.cpp:2887
-#: src/scripting/game_lua_kernel.cpp:2922
-msgid "input"
-msgstr "輸入"
 
 #: src/serialization/parser.cpp:157
 msgid "Unexpected characters at line start"
@@ -7880,75 +7896,75 @@ msgstr "在$pos"
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "數值： '$value' 先前數值： '$previous_value'"
 
-#: src/serialization/string_utils.cpp:543
+#: src/serialization/string_utils.cpp:544
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:544
+#: src/serialization/string_utils.cpp:545
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:545
+#: src/serialization/string_utils.cpp:546
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:546
+#: src/serialization/string_utils.cpp:547
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:547
+#: src/serialization/string_utils.cpp:548
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:548
+#: src/serialization/string_utils.cpp:549
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:549
+#: src/serialization/string_utils.cpp:550
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:550
+#: src/serialization/string_utils.cpp:551
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:562
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:563
+#: src/serialization/string_utils.cpp:564
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:565
+#: src/serialization/string_utils.cpp:566
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:566
+#: src/serialization/string_utils.cpp:567
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:567
+#: src/serialization/string_utils.cpp:568
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:568
+#: src/serialization/string_utils.cpp:569
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:569
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:571
+#: src/serialization/string_utils.cpp:572
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:585
+#: src/serialization/string_utils.cpp:586
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -7979,7 +7995,7 @@ msgstr "你希望在繼續遊戲前存檔嗎？"
 msgid "Debug Command Used"
 msgstr "除錯指令已被使用"
 
-#: src/synced_commands.cpp:516
+#: src/synced_commands.cpp:536
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "此單位是$player的回合透過除錯模式建立的"
 
@@ -7996,15 +8012,21 @@ msgstr[1] "等待 $sides 陣營的 $desc"
 msgid "waiting for^input"
 msgstr "輸入"
 
-#: src/terrain/terrain.cpp:181
+#. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
+#. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
+#: src/team.cpp:994
+msgid "“$color_id”"
+msgstr ""
+
+#: src/terrain/terrain.cpp:192
 msgid "Allied village"
 msgstr "同盟村莊"
 
-#: src/terrain/terrain.cpp:186
+#: src/terrain/terrain.cpp:197
 msgid "Enemy village"
 msgstr "敵方村莊"
 
-#: src/terrain/terrain.cpp:191
+#: src/terrain/terrain.cpp:202
 msgid "Owned village"
 msgstr "我方村莊"
 
@@ -8025,136 +8047,148 @@ msgid "This Time of Day is only a Stub!"
 msgstr "此時段僅是佔位時段！"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:378
+#: src/units/attack_type.cpp:434
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 傷害"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> 傷害"
 
-#: src/units/attack_type.cpp:387
+#: src/units/attack_type.cpp:443
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number 傷害"
 msgstr[1] "$number 傷害"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:396
+#: src/units/attack_type.cpp:452
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>次攻擊"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>次攻擊"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:405
+#: src/units/attack_type.cpp:461
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number 次攻擊"
 msgstr[1] "$number 次攻擊"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:414
+#: src/units/attack_type.cpp:470
 msgid "$number| accuracy"
 msgstr "$number| 命中"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:421
+#: src/units/attack_type.cpp:477
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> 命中"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:428
+#: src/units/attack_type.cpp:484
 msgid "$number parry"
 msgstr "$number 格檔"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:435
+#: src/units/attack_type.cpp:491
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> 格檔"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:442
+#: src/units/attack_type.cpp:498
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number 移動點數"
 msgstr[1] "$number 移動點數"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:451
+#: src/units/attack_type.cpp:507
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 行動數"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> 行動數"
 
-#: src/units/types.cpp:545 src/units/types.hpp:180
-msgid "chaotic"
-msgstr "混沌"
+#: src/units/helper.cpp:52
+msgid "Level: "
+msgstr "等級："
 
-#: src/units/types.cpp:545 src/units/types.hpp:178
-msgid "lawful"
-msgstr "守序"
+#: src/units/helper.cpp:55
+msgid "Advancements:"
+msgstr "可升級為："
 
-#: src/units/types.cpp:545 src/units/types.hpp:181
-msgid "liminal"
-msgstr "閾界"
+#: src/units/helper.cpp:68
+msgid "No advancement"
+msgstr "無法升級"
 
-#: src/units/types.cpp:545 src/units/types.hpp:179
-msgid "neutral"
-msgstr "中立"
-
-#: src/units/types.cpp:546 src/units/types.cpp:912
-msgid "female^chaotic"
-msgstr "混亂"
-
-#: src/units/types.cpp:546 src/units/types.cpp:910
+#: src/units/types.cpp:914
 msgid "female^lawful"
 msgstr "守序"
 
-#: src/units/types.cpp:546 src/units/types.cpp:911
+#: src/units/types.cpp:915
 msgid "female^neutral"
 msgstr "中立"
 
-#: src/units/types.cpp:547 src/units/types.cpp:913
+#: src/units/types.cpp:916
+msgid "female^chaotic"
+msgstr "混亂"
+
+#: src/units/types.cpp:917
 msgid "female^liminal"
 msgstr "閾界"
 
-#: src/units/unit.cpp:1854
+#: src/units/types.hpp:182
+msgid "lawful"
+msgstr "守序"
+
+#: src/units/types.hpp:183
+msgid "neutral"
+msgstr "中立"
+
+#: src/units/types.hpp:184
+msgid "chaotic"
+msgstr "混沌"
+
+#: src/units/types.hpp:185
+msgid "liminal"
+msgstr "閾界"
+
+#: src/units/unit.cpp:1874
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1880
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
-#: src/units/unit.cpp:1870
+#: src/units/unit.cpp:1890
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 行動數"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> 行動數"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1896
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> 視野"
 
-#: src/units/unit.cpp:1880
+#: src/units/unit.cpp:1900
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> 干擾"
 
-#: src/units/unit.cpp:1885
+#: src/units/unit.cpp:1905
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> 升級所需經驗值"
 
-#: src/units/unit.cpp:1889
+#: src/units/unit.cpp:1909
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 每回合攻擊數"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> 每回合攻擊數"
 
-#: src/units/unit.cpp:1896
+#: src/units/unit.cpp:1916
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> 徵召費用"
 
-#: src/units/unit.cpp:2296
+#: src/units/unit.cpp:2337
 msgid "$effect_description per level"
 msgstr "每級 $effect_description"
 
@@ -8202,32 +8236,277 @@ msgstr "對 $player 隱藏計劃"
 msgid "Whiteboard Options"
 msgstr "白板選項"
 
-#, fuzzy
-#~| msgid "undead"
-#~ msgid "Undead"
-#~ msgstr "不死"
+#~ msgid "Graphics scaling options"
+#~ msgstr "圖像縮放選項"
 
-#, fuzzy
-#~| msgid "Attack"
-#~| msgid_plural "Attacks"
-#~ msgid "Attacks"
+#~ msgid "Show haloing effects"
+#~ msgstr "顯示光圈效果"
+
+#~ msgid "Show special unit graphical effects"
+#~ msgstr "顯示特殊單位的圖像效果"
+
+#~ msgid "Joystick support"
+#~ msgstr "支援搖桿"
+
+#~ msgid "Joystick: number of the scroll X-axis joystick"
+#~ msgstr "搖桿：用於橫向捲軸的搖桿編號"
+
+#~ msgid "Joystick: number of the scroll X-axis"
+#~ msgstr "搖桿：用於橫向捲軸的編號"
+
+#~ msgid "Joystick: number of the scroll Y-axis joystick"
+#~ msgstr "搖桿：用於縱向捲軸的搖桿編號"
+
+#~ msgid "Joystick: number of the scroll Y-axis"
+#~ msgstr "搖桿：用於橫向捲軸的編號"
+
+#~ msgid "Joystick: deadzone of the scrolling stick"
+#~ msgstr "搖桿：無效的滾動區"
+
+#~ msgid "Joystick: number of the cursor X-axis joystick"
+#~ msgstr "搖桿：用於搖桿橫向橫向的游標編號"
+
+#~ msgid "Joystick: number of the cursor X-axis"
+#~ msgstr "搖桿：用於橫向移動的游標編號"
+
+#~ msgid "Joystick: number of the cursor Y-axis joystick"
+#~ msgstr "搖桿：用於搖桿橫向移動的游標編號"
+
+#~ msgid "Joystick: number of the cursor Y-axis"
+#~ msgstr "搖桿：用於縱向移動的游標編號"
+
+#~ msgid "Joystick: deadzone of the cursor stick"
+#~ msgstr "搖桿：無效區的游標"
+
+#~ msgid "Joystick: number of the mouse X-axis joystick"
+#~ msgstr "搖桿：用於滑鼠橫向移動的搖桿編號"
+
+#~ msgid "Joystick: number of the mouse X-axis"
+#~ msgstr "搖桿：用於滑鼠橫向移動的編號"
+
+#~ msgid "Joystick: number of the mouse Y-axis joystick"
+#~ msgstr "搖桿：用於滑鼠縱向移動的搖桿編號"
+
+#~ msgid "Joystick: number of the mouse Y-axis"
+#~ msgstr "搖桿：用於滑鼠縱向移動的編號"
+
+#~ msgid "Joystick: deadzone of the mouse stick"
+#~ msgstr "搖桿：無效區的滑鼠"
+
+#~ msgid "Joystick: number of the thrust axis joystick"
+#~ msgstr "搖桿：用於加速的搖桿編號"
+
+#~ msgid "Joystick: number of the thrust axis"
+#~ msgstr "搖桿：用於加速的編號"
+
+#~ msgid "Joystick: deadzone of the thruster"
+#~ msgstr "搖桿：用於加速搖桿無效區的大小"
+
+#~ msgid "Asturian Translation"
+#~ msgstr "阿斯圖里亞斯語翻譯"
+
+#~ msgid "Friulian Translation"
+#~ msgstr "弗留利語翻譯"
+
+#~ msgid "<small>(early finish bonus)</small>"
+#~ msgstr "<small>（時效獎勵）</small>"
+
+#~ msgid "(Note: You should use $replacement instead in new code)"
+#~ msgstr "（備註：你應該使用 $replacement 而不是新的程式碼）"
+
+#~ msgid "theme^Classic"
+#~ msgstr "傳統"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "經典佈景主題(1.12版前)"
+
+#~ msgid "gold"
+#~ msgstr "金幣"
+
+#~ msgid "villages"
+#~ msgstr "村莊"
+
+#~ msgid "units"
+#~ msgstr "單位"
+
+#~ msgid "upkeep"
+#~ msgstr "支出"
+
+#~ msgid "income"
+#~ msgstr "收入"
+
+#~ msgid "statuspanel^level"
+#~ msgstr "等級"
+
+#~ msgid "statuspanel^moves"
+#~ msgstr "移動點數"
+
+#~ msgid "statuspanel^terrain def."
+#~ msgstr "地形防禦加成。"
+
+#~ msgid "No Saved Games"
+#~ msgstr "沒有存檔"
+
+#~ msgid "There are no save files to load"
+#~ msgstr "沒有可讀取的存檔"
+
+#~ msgid "Best of"
+#~ msgstr "最佳"
+
+#~ msgid "Worst of"
+#~ msgstr "最差"
+
+#~ msgid "Base Terrain: "
+#~ msgstr "基礎地形："
+
+#~ msgid "Movement properties: "
+#~ msgstr "移動特性："
+
+#~ msgid "Defense properties: "
+#~ msgstr "防禦特性："
+
+#~ msgid "Level"
+#~ msgstr "等級"
+
+#~ msgid "Advances from: "
+#~ msgstr "升級自："
+
+#~ msgid "Advances to: "
+#~ msgstr "升級為："
+
+#~ msgid "Base unit: "
+#~ msgstr "基礎單位："
+
+#~ msgid "Base units: "
+#~ msgstr "基礎單位："
+
+#~ msgid "Variations: "
+#~ msgstr "變種："
+
+#~ msgid "Traits"
+#~ msgstr "特質"
+
+#~ msgid "Abilities: "
+#~ msgstr "技能："
+
+#~ msgid "Ability Upgrades: "
+#~ msgstr "技能提升："
+
+#~ msgid "HP:"
+#~ msgstr "生命："
+
+#~ msgid "Moves:"
+#~ msgstr "移動："
+
+#~ msgid "Vision:"
+#~ msgstr "視野："
+
+#~ msgid "Jamming:"
+#~ msgstr "干擾："
+
+#~ msgid "Cost:"
+#~ msgstr "價格："
+
+#~ msgid "Alignment:"
+#~ msgstr "立場："
+
+#~ msgid "Required XP:"
+#~ msgstr "升級所需經驗值："
+
+#~ msgid "unit help^Attacks"
 #~ msgstr "攻撃"
 
+#~ msgid "unit help^Name"
+#~ msgstr "名稱"
+
+#~ msgid "Strikes"
+#~ msgstr "輸出"
+
+#~ msgid "Range"
+#~ msgstr "範圍"
+
+#~ msgid "Type"
+#~ msgstr "類型"
+
+#~ msgid "Special"
+#~ msgstr "特殊"
+
+#~ msgid "Resistances"
+#~ msgstr "抗性"
+
+#~ msgid "Attack Type"
+#~ msgstr "攻撃類型"
+
+#~ msgid "Resistance"
+#~ msgstr "抗性"
+
+#~ msgid "Terrain Modifiers"
+#~ msgstr "地形修正"
+
+#~ msgid "Terrain"
+#~ msgstr "地形"
+
+#~ msgid "Defense"
+#~ msgstr "防禦"
+
+#~ msgid "Movement Cost"
+#~ msgstr "移動消耗"
+
+#~ msgid "Defense Cap"
+#~ msgstr "最高防禦"
+
+#~ msgid "Vision Cost"
+#~ msgstr "視野消耗"
+
+#~ msgid "Jamming Cost"
+#~ msgstr "干擾消耗"
+
+#~ msgid "do not translate the 'all'^[all|<command>]"
+#~ msgstr "[all|<指令>]"
+
+#~ msgid "aliases:"
+#~ msgstr "別名："
+
 #, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose a Corpse"
-#~ msgstr "選擇武器："
+#~| msgid "do not translate the 'all'^[all|<command>]"
+#~ msgid "do not translate the on/off^[<side> [on/off]]"
+#~ msgstr "[all|<指令>]"
 
-#~ msgid "Recruit"
-#~ msgstr "招募"
+#~ msgid "Show fps."
+#~ msgstr "顯示fps。"
 
-#~ msgid "XP: "
-#~ msgstr "經驗值："
+#~ msgid "Side:"
+#~ msgstr "陣營："
 
 #, fuzzy
-#~| msgid "There are no save files to load"
-#~ msgid "There are no corpses available."
-#~ msgstr "沒有可讀取的存檔"
+#~| msgid "income"
+#~ msgid "Income"
+#~ msgstr "收入"
+
+#~ msgid " replay"
+#~ msgstr " 遊戲錄影"
+
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "邊緣單位只有適合在清晨及傍晚戰鬥。\n"
+#~ "\n"
+#~ "白天：-25% 傷害值\n"
+#~ "晚上：−25% 傷害值"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr "這裡沒有自訂選項中可以選擇的時代、遊戲或模組。"
+
+#~ msgid "Defaults"
+#~ msgstr "預設"
+
+#~ msgid "Connected Players"
+#~ msgstr "已連線玩家"
 
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "以密碼 *** 註冊，未輸入電子郵件"
@@ -8259,28 +8538,6 @@ msgstr "白板選項"
 
 #~ msgid "Request a list of details you can set for your registered nickname."
 #~ msgstr "取得您註冊帳號的詳細資訊。"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "邊緣單位只有適合在清晨及傍晚戰鬥。\n"
-#~ "\n"
-#~ "白天：-25% 傷害值\n"
-#~ "晚上：−25% 傷害值"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr "這裡沒有自訂選項中可以選擇的時代、遊戲或模組。"
-
-#~ msgid "Defaults"
-#~ msgstr "預設"
-
-#~ msgid "Connected Players"
-#~ msgstr "已連線玩家"
 
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr "無法託管本地 AI 陣營：'$side'。"
@@ -8329,11 +8586,6 @@ msgstr "白板選項"
 #~ "1個多人戰役共14個章節，\n"
 #~ "7個陣營在46張多人地圖/章節上互戰，\n"
 #~ "500多個模組。)"
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(只剩下本回合)"
-#~ msgstr[1] "(只剩下%d回合)"
 
 #~ msgid ""
 #~ "In many campaign scenarios, you may issue simple instructions for your "
@@ -9335,6 +9587,9 @@ msgstr "白板選項"
 #~ msgid "Scroll To"
 #~ msgstr "移動到"
 
+#~ msgid "Recruit"
+#~ msgstr "招募"
+
 #~ msgid "Select unit:"
 #~ msgstr "選擇單位："
 
@@ -9346,6 +9601,9 @@ msgstr "白板選項"
 
 #~ msgid "level"
 #~ msgstr "等級"
+
+#~ msgid "XP: "
+#~ msgstr "經驗值："
 
 #, fuzzy
 #~| msgid "Connecting..."
@@ -9580,9 +9838,6 @@ msgstr "白板選項"
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "您的好友名單和黑名單是空的."
 
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Battle for Wesnoth"
-
 #~ msgid "save_compression_short^gzip"
 #~ msgstr "gzip"
 
@@ -9651,6 +9906,9 @@ msgstr "白板選項"
 
 #~ msgid "Attack Enemy"
 #~ msgstr "攻撃敵人"
+
+#~ msgid "Choose weapon:"
+#~ msgstr "選擇武器："
 
 #~ msgid "English strings edition"
 #~ msgstr "英文翻譯團隊"
@@ -10448,36 +10706,47 @@ msgstr "白板選項"
 #~ msgid "A map without a header is not supported"
 #~ msgstr "不支援不含標題的地圖"
 
+#~| msgid "Easy"
 #~ msgid "(Easy)"
 #~ msgstr "簡單"
 
+#~| msgid "Normal"
 #~ msgid "(Normal)"
 #~ msgstr "普通"
 
+#~| msgid "Hard"
 #~ msgid "(Hard)"
 #~ msgstr "困難"
 
+#~| msgid "Players: "
 #~ msgid "Players"
 #~ msgstr "玩家： "
 
+#~| msgid "Enemy village"
 #~ msgid "Enemies"
 #~ msgstr "敵人(敵方)"
 
+#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Easy"
 #~ msgstr "難度： "
 
+#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Normal"
 #~ msgstr "難度： "
 
+#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Hard"
 #~ msgstr "難度： "
 
+#~| msgid "Campaign: $campaign_name"
 #~ msgid "Main campaign define"
 #~ msgstr "戰役: $campaign_name"
 
+#~| msgid "Campaign Design"
 #~ msgid "Extra campaign define"
 #~ msgstr "戰役設計"
 
+#~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "多人對戰"
 
@@ -10502,6 +10771,7 @@ msgstr "白板選項"
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "模組'$addon|'已移除"
 
+#~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "無效位置"
 
@@ -12388,41 +12658,8 @@ msgstr "白板選項"
 #~ "恢復：\n"
 #~ "本單位可以每回合恢復8點生命值。如果中毒則以移除中毒效果代替治療。"
 
-#~ msgid "steadfast"
-#~ msgstr "堅定"
-
-#~ msgid "female^steadfast"
-#~ msgstr "堅定"
-
-#~ msgid ""
-#~ "Steadfast:\n"
-#~ "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#~ "defending. Vulnerabilities are not affected."
-#~ msgstr ""
-#~ "堅定：\n"
-#~ "本單位具有雙倍抗性，最高50%。該單位的弱點不受此能力影響"
-
 #~ msgid "leadership"
 #~ msgstr "領導"
-
-#~ msgid "female^leadership"
-#~ msgstr "領導"
-
-#~ msgid ""
-#~ "Leadership:\n"
-#~ "This unit can lead our own units that are next to it, making them fight "
-#~ "better.\n"
-#~ "\n"
-#~ "Adjacent own units of lower level will do more damage in battle. When a "
-#~ "unit adjacent to, of a lower level than, and on the same side as a unit "
-#~ "with Leadership engages in combat, its attacks do 25% more damage times "
-#~ "the difference in their levels."
-#~ msgstr ""
-#~ "領導：\n"
-#~ "本單位可以領導相鄰的同盟單位，發揮更強大的戰鬥力。\n"
-#~ "\n"
-#~ "相鄰低等級的同盟單位可得到更強大的殺傷力。當領袖與低等級同盟單位相鄰時，這"
-#~ "些單位的攻撃會比平時增加原本的25%乘以與領袖等級差。"
 
 #~ msgid "skirmisher"
 #~ msgstr "游撃"
@@ -12580,9 +12817,6 @@ msgstr "白板選項"
 #~ "當該士兵站在敵人背後時，背刺能產生雙倍攻擊力。但有些情況並不適用，例如敵人"
 #~ "被石化或痲痹。"
 
-#~ msgid "plague"
-#~ msgstr "瘟疫"
-
 #~ msgid ""
 #~ "Plague:\n"
 #~ "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -12592,16 +12826,6 @@ msgstr "白板選項"
 #~ "瘟疫：\n"
 #~ "當一個單位被瘟疫攻撃撃斃，這個單位會變成撃斃他的單位，成為進行瘟疫攻撃單位"
 #~ "的戰友。(這對不死或在村莊中的單位不起作用)。 "
-
-#~ msgid ""
-#~ "Plague:\n"
-#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~ "Walking Corpse on the same side as the unit with the Plague attack. This "
-#~ "doesn’t work on Undead or units in villages."
-#~ msgstr ""
-#~ "瘟疫：\n"
-#~ "當一個單位被瘟疫攻撃撃斃，這個單位會變成殭屍，成為進行瘟疫攻撃單位的戰友。"
-#~ "(這對不死或在村莊中的單位不起作用)。"
 
 #~ msgid "slows"
 #~ msgstr "减速"
@@ -12857,13 +13081,6 @@ msgstr "白板選項"
 #~ msgstr "本單位在作戰時可以從對手身上吸血以補充自己的生命值。"
 
 #~ msgid ""
-#~ " The length of this unit’s weapon allows it to strike first in melee, "
-#~ "even in defense."
-#~ msgstr ""
-#~ "本單位'毒素'攻撃的受害者將受到持續傷害，直到他們移入村莊或被擁有治愈能力的"
-#~ "單位治好為止。"
-
-#~ msgid ""
 #~ " The victims of this unit’s poison will continually take damage until "
 #~ "they can be cured in town or by a unit which cures."
 #~ msgstr ""
@@ -12875,6 +13092,9 @@ msgstr "白板選項"
 
 #~ msgid "Zero upkeep"
 #~ msgstr "無支出"
+
+#~ msgid "undead"
+#~ msgstr "不死"
 
 #~ msgid "Immune to drain, poison and plague"
 #~ msgstr "免疫吸血、毒素和瘟疫"

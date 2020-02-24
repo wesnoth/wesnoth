@@ -21,6 +21,7 @@
 
 #include "ai/composite/component.hpp"
 #include "ai/composite/contexts.hpp"
+#include "units/filter.hpp"
 
 //============================================================================
 namespace ai {
@@ -80,6 +81,18 @@ public:
 	 */
 	double get_max_score() const;
 
+
+	/**
+	 * Get the unit filter for allowed units for this candidate action
+	 */
+	std::shared_ptr<unit_filter> get_filter_own() const;
+
+
+	/**
+	 * Flag indicating whether unit may be used by this candidate action
+	 */
+	bool is_allowed_unit(const unit& u) const;
+
 	/**
 	 * Get the name of the candidate action (useful for debug purposes)
 	 */
@@ -123,6 +136,9 @@ private:
 
 
 	double max_score_;
+
+
+	std::shared_ptr<unit_filter> filter_own_;
 
 
 	std::string id_;

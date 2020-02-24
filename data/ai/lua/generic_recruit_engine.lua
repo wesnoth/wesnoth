@@ -12,8 +12,9 @@ return {
     --          (default = 0.1)
     --      min_turn_1_recruit: function that returns true if only enough units to grab nearby villages should be recruited turn 1, false otherwise
     --          (default always returns false)
-    --      leader_takes_village: function that returns true if and only if the leader is going to move to capture a village this turn
-    --          (default returns 'not ai.aspects.passive_leader')
+    --      leader_takes_village: function that returns the score of the castle_switch CA as its first parameter.
+    --          If this score is greater than zero, the second parameter is a boolean indicating whether the
+    --          castle switch move will make the leader end up on a village.
     --      enemy_types: array of default enemy unit types to consider if there are no enemies on the map
     --          and no enemy sides exist or have recruit lists
     -- Note: the recruiting code assumes full knowledge of units on the map and the recruit lists of other sides for the purpose of
@@ -45,7 +46,7 @@ return {
             -- gained from regeneration
             local effective_hp = wesnoth.unit_types[recruit_id].max_hitpoints
 
-            local unit = wesnoth.create_unit {
+            local unit = wesnoth.units.create {
                 type = recruit_id,
                 random_traits = false,
                 name = "X",
@@ -85,7 +86,7 @@ return {
             local best_defense = 100
 
             for i, terrain in ipairs(terrain_archetypes) do
-                local defense = unit:defense(terrain)
+                local defense = 100 - unit:defense_on(terrain)
                 if defense < best_defense then
                     best_defense = defense
                 end
@@ -195,23 +196,23 @@ return {
                                 if (sp[1] == 'drains') and drainable(attacker) then
                                     -- TODO: calculate chance to hit
                                     -- currently assumes 50% chance to hit using supplied constant
-                                    local attacker_resistance = attacker:resistance(defender_attack.type)
-                                    drain_recovery = (defender_attack.damage*defender_attack.number*attacker_resistance*attacker_defense/2)/10000
+                                    local attacker_resistance = attacker:resistance_against(defender_attack.type)
+                                    drain_recovery = (defender_attack.damage*defender_attack.number*(100-attacker_resistance)*attacker_defense/2)/10000
                                 end
                             end
                         end
                     end
 
                     defense = defense/100.0
-                    local resistance = defender:resistance(attack.type)
-                    if steadfast and (resistance < 100) then
-                        resistance = 100 - ((100 - resistance) * 2)
-                        if (resistance < 50) then
+                    local resistance = defender:resistance_against(attack.type)
+                    if steadfast and (resistance > 0) then
+                        resistance = resistance * 2
+                        if (resistance > 50) then
                             resistance = 50
                         end
                     end
-                    local base_damage = (weapon_damage+damage_bonus)*resistance*damage_multiplier
-                    if (resistance > 100) then
+                    local base_damage = (weapon_damage+damage_bonus)*(100-resistance)*damage_multiplier
+                    if (resistance < 0) then
                         base_damage = base_damage-1
                     end
                     base_damage = math.floor(base_damage/100 + 0.5)
@@ -250,23 +251,23 @@ return {
                 return analysis[ally_type]
             end
 
-            local unit = wesnoth.create_unit {
+            local unit = wesnoth.units.create {
                 type = enemy_type,
                 random_traits = false,
                 name = "X",
                 random_gender = false
             }
             local can_poison = poisonable(unit) and (not unit:ability('regenerate'))
-            local flat_defense = unit:defense("Gt")
+            local flat_defense = 100 - unit:defense_on("Gt")
             local best_defense = get_best_defense(unit)
 
-            local recruit = wesnoth.create_unit {
+            local recruit = wesnoth.units.create {
                 type = ally_type,
                 random_traits = false,
                 name = "X",
                 random_gender = false
             }
-            local recruit_flat_defense = recruit:defense("Gt")
+            local recruit_flat_defense = 100 - recruit:defense_on("Gt")
             local recruit_best_defense = get_best_defense(recruit)
 
             local can_poison_retaliation = poisonable(recruit) and (not recruit:ability('regenerate'))
@@ -304,7 +305,7 @@ return {
                 -- positive only because it is used to estimate the number of enemy units that could appear
                 -- and negative numbers shouldn't subtract from the number of units on the map
                 local gold = 0
-                local sides = wesnoth.get_sides(side_filter)
+                local sides = wesnoth.sides.find(side_filter)
                 for i,s in ipairs(sides) do
                     if s.gold > 0 then
                         gold = gold + s.gold
@@ -336,7 +337,11 @@ return {
 
         function do_recruit_eval(data)
             -- Check if leader is on keep
-            local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+            local leader = wesnoth.units.find_on_map {
+                side = wesnoth.current.side,
+                canrecruit = 'yes',
+                { "and", params.filter_own }
+            }[1]
 
             if (not leader) or (not wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep) then
                 return 0
@@ -352,7 +357,7 @@ return {
             get_current_castle(leader, data)
             local no_space = true
             for i,c in ipairs(data.castle.locs) do
-                local unit = wesnoth.get_unit(c[1], c[2])
+                local unit = wesnoth.units.get(c[1], c[2])
                 if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                     no_space = false
                     break
@@ -406,7 +411,7 @@ return {
                 add_unit_type(unit.type)
             end
             -- Collect all possible enemy recruits and count them as virtual enemies
-            local enemy_sides = wesnoth.get_sides({
+            local enemy_sides = wesnoth.sides.find({
                 { "enemy_of", {side = wesnoth.current.side} },
                 { "has_unit", { canrecruit = true }} })
             for i, side in ipairs(enemy_sides) do
@@ -566,7 +571,11 @@ return {
             end
 
             local recruit_type
-            local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+            local leader = wesnoth.units.find_on_map {
+                side = wesnoth.current.side,
+                canrecruit = 'yes',
+                { "and", params.filter_own }
+            }[1]
             repeat
                 recruit_data.recruit.best_hex, recruit_data.recruit.target_hex = ai_cas:find_best_recruit_hex(leader, recruit_data)
                 recruit_type = ai_cas:find_best_recruit(attack_type_count, unit_attack_type_count, recruit_effectiveness, recruit_vulnerability, attack_range_count, unit_attack_range_count, most_common_range_count)
@@ -577,7 +586,7 @@ return {
 
                 -- If the recruited unit cannot reach the target hex, return it to the pool of targets
                 if recruit_data.recruit.target_hex and recruit_data.recruit.target_hex[1] then
-                    local unit = wesnoth.get_unit(recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
+                    local unit = wesnoth.units.get(recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
                     local path, cost = wesnoth.find_path(unit, recruit_data.recruit.target_hex[1], recruit_data.recruit.target_hex[2], {viewing_side=0, max_cost=unit.max_moves+1})
                     if cost > unit.max_moves then
                         -- The last village added to the list should be the one we tried to aim for, check anyway
@@ -634,7 +643,7 @@ return {
 
                 for i,c in ipairs(data.castle.locs) do
                     local rating = 0
-                    local unit = wesnoth.get_unit(c[1], c[2])
+                    local unit = wesnoth.units.get(c[1], c[2])
                     if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                         for j,e in ipairs(enemy_leaders) do
                             rating = rating + 1 / M.distance_between(c[1], c[2], e.x, e.y) ^ 2.
@@ -672,7 +681,7 @@ return {
             -- If no enemy is on the map, then we first use closest enemy start hex,
             -- and if that does not exist either, a location mirrored w.r.t the center of the map
             if not enemy_location then
-                local enemy_sides = wesnoth.get_sides({ { "enemy_of", {side = wesnoth.current.side} } })
+                local enemy_sides = wesnoth.sides.find({ { "enemy_of", {side = wesnoth.current.side} } })
                 local min_dist = math.huge
                 for _, side in ipairs(enemy_sides) do
                     local enemy_start_hex = wesnoth.special_locations[side.side]
@@ -713,7 +722,7 @@ return {
 
                 -- Use time to enemy to encourage recruiting fast units when the opponent is far away (game is beginning or we're winning)
                 -- Base distance on
-                local recruit_unit = wesnoth.create_unit {
+                local recruit_unit = wesnoth.units.create {
                     type = recruit_id,
                     x = best_hex[1],
                     y = best_hex[2],
@@ -750,7 +759,7 @@ return {
                 if eta_turn <= wesnoth.game_config.last_turn then
                     lawful_bonus = wesnoth.get_time_of_day(wesnoth.current.turn + eta).lawful_bonus / eta^2
                 end
-                local damage_bonus = AH.get_unit_time_of_day_bonus(recruit_unit.__cfg.alignment, lawful_bonus)
+                local damage_bonus = AH.get_unit_time_of_day_bonus(recruit_unit.alignment, lawful_bonus)
                 -- Estimate effectiveness on offense and defense
                 local offense_score =
                     (recruit_effectiveness[recruit_id].damage*damage_bonus+recruit_effectiveness[recruit_id].poison_damage)
@@ -839,7 +848,7 @@ return {
                 for attack_range, count in pairs(unit_attack_range_count[recruit_id]) do
                     bonus = bonus + 0.02 * most_common_range_count / (attack_range_count[attack_range]+1)
                 end
-                local race = wesnoth.races[wesnoth.unit_types[recruit_id].__cfg.race]
+                local race = wesnoth.races[wesnoth.unit_types[recruit_id].race]
                 local num_traits = race and race.num_traits or 0
                 bonus = bonus + 0.03 * num_traits^2
                 if target_hex[1] then
@@ -901,7 +910,7 @@ return {
             local villages = {}
             for _,v in ipairs(all_villages) do
                 local owner = wesnoth.get_village_owner(v[1], v[2])
-                if ((not owner) or wesnoth.is_enemy(owner, wesnoth.current.side))
+                if ((not owner) or wesnoth.sides.is_enemy(owner, wesnoth.current.side))
                     and (not exclude_map:get(v[1], v[2]))
                 then
                     for _,loc in ipairs(data.castle.locs) do
@@ -920,7 +929,18 @@ return {
                 data.castle.assigned_villages_x = {}
                 data.castle.assigned_villages_y = {}
 
-                if not ai.aspects.passive_leader and (not params.leader_takes_village or params.leader_takes_village()) then
+                -- If castle_switch CA makes the unit end up on a village, skip one village for the leader.
+                -- Also do so if the leader is not passive. Note that the castle_switch CA will also return zero
+                -- when the leader is passive, but not only in that case.
+                local ltv_score, skip_one_village = 0
+                if params.leader_takes_village then
+                    ltv_score, skip_one_village = params.leader_takes_village(leader)
+                end
+                if (ltv_score == 0) then
+                    skip_one_village = not AH.is_passive_leader(ai.aspects.passive_leader, leader.id)
+                end
+
+                if skip_one_village then
                     -- skip one village for the leader
                     for i,v in ipairs(villages) do
                         local path, cost = wesnoth.find_path(leader, v[1], v[2], {max_cost = leader.max_moves+1})
@@ -953,7 +973,7 @@ return {
                 for _,loc in ipairs(data.castle.locs) do
                     local dist = M.distance_between(v[1], v[2], loc[1], loc[2])
                     if (dist <= fastest_unit_speed) then
-                        if (not wesnoth.get_unit(loc[1], loc[2])) then
+                        if (not wesnoth.units.get(loc[1], loc[2])) then
                            table.insert(close_castle_hexes, loc)
                         end
                     end
@@ -1031,7 +1051,7 @@ return {
                         movetypes[movetype] = wesnoth.unit_types[id].max_moves
                     end
                     num_recruits = num_recruits + 1
-                    test_units[num_recruits] =  wesnoth.create_unit({
+                    test_units[num_recruits] = wesnoth.units.create({
                         type = id,
                         side = wesnoth.current.side,
                         random_traits = false,

@@ -18,7 +18,7 @@ local function messenger_find_enemies_in_way(messenger, goal_x, goal_y)
 
     -- Is there an enemy unit on the second path hex?
     -- This would be caught by the adjacent hex check later, but not in the right order
-    local enemy = wesnoth.get_unit(path[2][1], path[2][2])
+    local enemy = wesnoth.units.get(path[2][1], path[2][2])
     if AH.is_attackable_enemy(enemy) then return enemy end
 
     -- After that, go through adjacent hexes of all the other path hexes
@@ -26,7 +26,7 @@ local function messenger_find_enemies_in_way(messenger, goal_x, goal_y)
         local sub_path, sub_cost = AH.find_path_with_shroud(messenger, path[i][1], path[i][2], { ignore_units = true })
         if (sub_cost <= messenger.moves) then
             for xa,ya in H.adjacent_tiles(path[i][1], path[i][2]) do
-                local enemy = wesnoth.get_unit(xa, ya)
+                local enemy = wesnoth.units.get(xa, ya)
                 if AH.is_attackable_enemy(enemy) then return enemy end
             end
         else  -- If we've reached the end of the path for this turn
@@ -77,7 +77,7 @@ local function messenger_find_clearing_attack(messenger, goal_x, goal_y, cfg)
         local rating = attack.att_stats.average_hp - 2 * attack.def_stats.average_hp
 
         -- Give a huge bonus for closeness to enemy_in_way
-        local tmp_defender = wesnoth.get_unit(attack.target.x, attack.target.y)
+        local tmp_defender = wesnoth.units.get(attack.target.x, attack.target.y)
         local dist = wesnoth.map.distance_between(enemy_in_way.x, enemy_in_way.y, tmp_defender.x, tmp_defender.y)
 
         rating = rating + 100. / dist

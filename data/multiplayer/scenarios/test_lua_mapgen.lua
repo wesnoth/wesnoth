@@ -424,7 +424,7 @@ function set_terrain_impl(data)
 end
 
 function set_terrain_simul(cfg)
-	cfg = helper.parsed(cfg)
+	cfg = wml.parsed(cfg)
 	local data = {}
 	for i, r in ipairs(cfg) do
 		r_new = {

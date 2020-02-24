@@ -87,6 +87,13 @@ public:
 	void emplace_back(T&&... args) { cfgs_.emplace_back(args...); }
 
 	const map_location& loc() const { return loc_; }
+
+	/// Appens the abilities from @a other to @a this, ignores other.loc()
+	void append(const unit_ability_list& other)
+	{
+		std::copy( other.begin(), other.end(), std::back_inserter(cfgs_ ));
+	}
+	
 private:
 	// Data
 	std::vector<unit_ability> cfgs_;
@@ -415,6 +422,12 @@ public:
 	{
 		return description_;
 	}
+
+	/** A detailed description of this unit. */
+	void set_unit_description(const t_string& new_desc)
+	{
+		description_ = new_desc;
+	}
 	
 	/** The unit's special notes. */
 	const std::vector<t_string>& unit_special_notes() const
@@ -617,6 +630,12 @@ public:
 	const config& recall_filter() const
 	{
 		return filter_recall_;
+	}
+
+	/** Sets the filter constraints upon which units this unit may recall, if able. */
+	void set_recall_filter(const config& filter)
+	{
+		filter_recall_ = filter;
 	}
 
 	/**
@@ -1132,6 +1151,41 @@ public:
 	};
 
 	using upkeep_t = boost::variant<upkeep_full, upkeep_loyal, int>;
+	
+	/** Visitor helper class to parse the upkeep value from a config. */
+	class upkeep_parser_visitor : public boost::static_visitor<upkeep_t>
+	{
+	public:
+		template<typename N>
+		std::enable_if_t<std::is_arithmetic<N>::value, upkeep_t>
+		operator()(N n) const
+		{
+			if(n == 0) return upkeep_loyal();
+			if(n < 0) throw std::invalid_argument(std::to_string(n));
+			return n;
+		}
+		
+		template<typename B>
+		std::enable_if_t<std::is_convertible<B, bool>::value && !std::is_arithmetic<B>::value, upkeep_t>
+		operator()(B b) const
+		{
+			throw std::invalid_argument(b.str());
+		}
+		
+		upkeep_t operator()(boost::blank) const
+		{
+			return upkeep_full();
+		}
+		
+		upkeep_t operator()(const std::string& s) const
+		{
+			if(s == "loyal" || s == "free")
+				return upkeep_loyal();
+			if(s == "full")
+				return upkeep_full();
+			throw std::invalid_argument(s);
+		}
+	};
 
 	/**
 	 * Gets the raw variant controlling the upkeep value.
@@ -1517,6 +1571,7 @@ public:
 	 *                            The maximum_hitpoints are considered as base.
 	 */
 	color_t hp_color() const;
+	static color_t hp_color_max();
 
 	/**
 	 * Color for this unit's hitpoints.
@@ -1530,6 +1585,7 @@ public:
 	 * Color for this unit's XP. See also @ref hp_color
 	 */
 	color_t xp_color() const;
+	static color_t xp_color(int xp_to_advance, bool can_advance, bool has_amla);
 
 	/**
 	 * @}
@@ -1571,16 +1627,16 @@ public:
 	 * @param loc The location to use for resolving abilities
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type.
 	 * @param tag_name The type of ability to check for
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
+	unit_ability_list get_abilities(const std::string& tag_name) const
 	{
-		return get_abilities(tag_name, loc_, weapon, opp_weapon);
+		return get_abilities(tag_name, loc_);
 	}
 
 	/**
@@ -1630,8 +1686,8 @@ public:
 	 */
 	void remove_ability_by_id(const std::string& ability);
 
-	bool abilities_filter_matches(const config& cfg, bool attacker, int res) const;
-	bool ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc, const unit& u2) const;
+	///filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials(deprecated in two last cases)
+	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 private:
 	/**
@@ -1659,8 +1715,6 @@ private:
 	 * @param loc The location on which to resolve the ability
 	 */
 	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
-
-	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 public:
 	/** Get the unit formula manager. */

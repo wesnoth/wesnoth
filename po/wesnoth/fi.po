@@ -5,59 +5,56 @@
 # Santtu Pajukanta <santtu@pajukanta.fi>, 2007.
 # Samu Voutilainen <smar@smar.fi>, 2010.
 # Jarkko Patteri <jarkkopatteri@gmail.com>, 2012.
+# TheCoolPenguin <penguinsarecool1110@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2012-05-15 03:21+0300\n"
-"Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
+"POT-Creation-Date: 2020-01-25 15:18-0300\n"
+"PO-Revision-Date: 2020-02-10 20:32+0200\n"
+"Last-Translator: TheCoolPenguin <penguinsarecool1110@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
-#, fuzzy
-#| msgid "Commands"
 msgid "Custom"
-msgstr "Komennot"
+msgstr ""
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
-#, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress saved games"
-msgstr "Tiivistetyt tallennukset"
+msgstr "Pakatut pelitallennukset"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
-msgstr ""
+msgstr "Gzip"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr ""
+msgstr "Tavallinen pakkaus, nopeampi"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
-msgstr ""
+msgstr "Bzip2"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr ""
+msgstr "Paras pakkaus, hitaampi"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr ""
+msgstr "Ei"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
@@ -67,7 +64,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Confirm deleting saves"
-msgstr "Varmista tallennuksien poisto "
+msgstr "Vahvista tallennuksien poisto"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
@@ -118,16 +115,12 @@ msgstr "Viestien vanhentuminen"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
 "Minuuttien määrä ennen kuin viesti poistetaan. Poista käytöstä asettamalla "
-"nollaksi. "
+"nollaksi."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -136,8 +129,6 @@ msgstr "Käytä kahdentoista tunnin kelloa"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:110
-#, fuzzy
-#| msgid "Confirm loading of saves from a different version"
 msgid "Confirm loading saves from a different version"
 msgstr "Hyväksy tallennusten lataaminen eri versioista"
 
@@ -149,11 +140,11 @@ msgstr "Näytä kaikki yksiköt ohjevalikossa"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
 msgid ""
-"Show all unit types in the help (requires restart). This does not alter the "
-"list of encountered units"
+"Show all unit types in the help (requires restart). If unset, only units "
+"that have been encountered will be shown."
 msgstr ""
-"Näytä kaikki yksiköt ohjevalikossa (vaatii uudelleenkäynnistyksen). Ei "
-"vaikuta löydettyjen yksiköiden listaan"
+"Näytä kaikki yksiköt ohjevalikossa (vaatii uudelleenkäynnistyksen). Jos tämä "
+"ei ole valittuna, vain yksiköt, jotka olet tavannut pelissä näytetään. "
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:125
@@ -169,59 +160,44 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:136
 msgid "Show color cursors"
-msgstr ""
+msgstr "Näytä värikkäät kursorit"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:137
 msgid "Use colored mouse cursors"
-msgstr ""
+msgstr "Käytä väritettyjä hiiren kursoreita"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:144
-msgid "Graphics scaling options"
-msgstr ""
-
-#. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:150
 msgid "Customize orb colors"
 msgstr ""
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:156
+#: data/advanced_preferences.cfg:150
 msgid "Logging"
-msgstr ""
+msgstr "Kirjautuminen"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:162
+#: data/advanced_preferences.cfg:156
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr ""
+msgstr "Salli vahinkolaskelmat Monte Carlo -simulaatiolla"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:163
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
+"Salli vahinkolaskelmaikkunan simuloida taisteluita tarkkojen "
+"todennäköisyyksien käyttämisen sijaan."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:170
-#, fuzzy
-#| msgid "Sound Effects"
-msgid "Show haloing effects"
-msgstr "Ääniefektit"
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:171
-msgid "Show special unit graphical effects"
-msgstr ""
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:178
+#: data/advanced_preferences.cfg:164
 msgid "Show deprecation messages in-game"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:179
+#: data/advanced_preferences.cfg:165
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -229,12 +205,12 @@ msgid ""
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:186
+#: data/advanced_preferences.cfg:172
 msgid "Use experimental PRNG combat"
-msgstr ""
+msgstr "Käytä kokeellista PRNG-taistelua"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:187
+#: data/advanced_preferences.cfg:173
 msgid ""
 "Enables more determinstic chance-to-hit calculations. This is an "
 "experimental feature designed to bring the observed hit/miss rate more in "
@@ -244,120 +220,26 @@ msgid ""
 "option must also be enabled when creating a game for this to work."
 msgstr ""
 
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:197
-msgid "Joystick support"
-msgstr "Joystick -tuki"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:204
-msgid "Joystick: number of the scroll X-axis joystick"
-msgstr "Joystick: sauvan X-akselin arvo, joystick"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:214
-msgid "Joystick: number of the scroll X-axis"
-msgstr "Joystick: sauvan X-akselin arvo"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:224
-msgid "Joystick: number of the scroll Y-axis joystick"
-msgstr "Joystick: sauvan Y-akselin arvo, joystick"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:234
-msgid "Joystick: number of the scroll Y-axis"
-msgstr "Joystick: sauvan Y-akselin arvo"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:244
-msgid "Joystick: deadzone of the scrolling stick"
-msgstr "Joystick: sauvan kuollut alue"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:254
-msgid "Joystick: number of the cursor X-axis joystick"
-msgstr "Joystick: kursorin X-akselin arvo, joystick"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:264
-msgid "Joystick: number of the cursor X-axis"
-msgstr "Joystick: kursorin X-akselin arvo"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:274
-msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr "Joystick: kursorin Y-akselin arvo, joystick"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:284
-msgid "Joystick: number of the cursor Y-axis"
-msgstr "Joystick: kursorin Y-akselin arvo"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:294
-msgid "Joystick: deadzone of the cursor stick"
-msgstr "Joystick: kursorisauvan kuollut alue"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:304
-msgid "Joystick: number of the mouse X-axis joystick"
-msgstr "Joystick: hiiren X-akselin arvo, joystick"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:314
-msgid "Joystick: number of the mouse X-axis"
-msgstr "Joystick: hiiren X-akselin arvo"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:324
-msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr "Joystick: hiiren Y-akselin arvo, joystick"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:334
-msgid "Joystick: number of the mouse Y-axis"
-msgstr "Joystick: hiiren Y-akselin arvo"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:344
-msgid "Joystick: deadzone of the mouse stick"
-msgstr "Joystick: hiirisauvan kuollut alue"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:354
-msgid "Joystick: number of the thrust axis joystick"
-msgstr "Joystick: kaasuvivun akselin arvo, joystick"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:364
-msgid "Joystick: number of the thrust axis"
-msgstr "Joystick: kaasuvivun akselin arvo"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:374
-msgid "Joystick: deadzone of the thruster"
-msgstr "Joystick: kaasuvivun kuollut alue"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1060
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1054
 msgid "poisoned"
 msgstr "myrkytetty"
 
 #. [objectives]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:260
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:236
 #: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
 msgstr "Seuraavaan tehtävään siirtyvä kulta:"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [note]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:272
-#: data/lua/wml/objectives.lua:39
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
+#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "Huomautus:"
 
@@ -378,10 +260,8 @@ msgstr "Kansainvälistyksen hallinnoijat"
 
 #. [about]
 #: data/core/about.cfg:323
-#, fuzzy
-#| msgid "Traits"
 msgid "Trailers"
-msgstr "Ominaisuudet"
+msgstr "Trailerit"
 
 #. [about]
 #: data/core/about.cfg:335
@@ -389,37 +269,37 @@ msgid "Artwork and Graphics"
 msgstr "Taide ja grafiikat"
 
 #. [about]
-#: data/core/about.cfg:753
+#: data/core/about.cfg:773
 msgid "Music"
 msgstr "Musiikki"
 
 #. [about]
-#: data/core/about.cfg:790
+#: data/core/about.cfg:810
 msgid "Sound Effects"
 msgstr "Ääniefektit"
 
 #. [about]
-#: data/core/about.cfg:814
+#: data/core/about.cfg:834
 msgid "Campaign Design"
 msgstr "Kampanjasuunnittelu"
 
 #. [about]
-#: data/core/about.cfg:900
+#: data/core/about.cfg:920
 msgid "Multiplayer Maps and Balancing"
 msgstr "Moninpelikartat ja tasapainotus"
 
 #. [about]
-#: data/core/about.cfg:945
+#: data/core/about.cfg:965
 msgid "Packagers"
 msgstr "Pakkaajat"
 
 #. [about]
-#: data/core/about.cfg:1052
+#: data/core/about.cfg:1072
 msgid "Miscellaneous Contributors"
 msgstr "Muut vaikuttajat"
 
 #. [about]
-#: data/core/about.cfg:1746
+#: data/core/about.cfg:1772
 msgid "Bots"
 msgstr "Botit"
 
@@ -430,148 +310,141 @@ msgstr "Afrikaansinkielinen käännös"
 
 #. [about]
 #: data/core/about_i18n.cfg:24
+msgid "Ancient Greek Translation"
+msgstr "Muinaiskreikankielinen käännös"
+
+#. [about]
+#: data/core/about_i18n.cfg:32
 msgid "Arabic Translation"
 msgstr "Arabiankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:31
-#, fuzzy
-#| msgid "Estonian Translation"
-msgid "Asturian Translation"
-msgstr "Eestinkielinen käännös"
-
-#. [about]
-#: data/core/about_i18n.cfg:37
+#: data/core/about_i18n.cfg:39
 msgid "Basque Translation"
 msgstr "Baskinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:50
+#: data/core/about_i18n.cfg:52
 msgid "Bulgarian Translation"
 msgstr "Bulgariankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:73
+#: data/core/about_i18n.cfg:75
 msgid "Catalan Translation"
 msgstr "Katalaaninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:114
+#: data/core/about_i18n.cfg:116
 msgid "Chinese Translation"
 msgstr "Kiinankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:202
+#: data/core/about_i18n.cfg:207
 msgid "Chinese (Taiwan) Translation"
 msgstr "Taiwaninkiinankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:215
+#: data/core/about_i18n.cfg:220
 msgid "Croatian Translation"
 msgstr "Kroatiankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:225
+#: data/core/about_i18n.cfg:230
 msgid "Czech Translation"
 msgstr "Tšekinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:294
+#: data/core/about_i18n.cfg:299
 msgid "Danish Translation"
 msgstr "Tanskankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:325
+#: data/core/about_i18n.cfg:330
 msgid "Dutch Translation"
 msgstr "Hollanninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:393
+#: data/core/about_i18n.cfg:398
 msgid "English (GB) Translation"
 msgstr "Brittienglanninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:418
+#: data/core/about_i18n.cfg:423
 msgid "English (Shaw) Translation"
 msgstr "Eglanninkielinen(Shaw) käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:436
+#: data/core/about_i18n.cfg:441
 msgid "Esperanto Translation"
 msgstr "Esperantonkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:455
+#: data/core/about_i18n.cfg:460
 msgid "Estonian Translation"
 msgstr "Eestinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:465
+#: data/core/about_i18n.cfg:470
 msgid "Filipino Translation"
 msgstr "Filipinonkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:475
+#: data/core/about_i18n.cfg:480
 msgid "Finnish Translation"
 msgstr "Suomenkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:524
+#: data/core/about_i18n.cfg:529
 msgid "French Translation"
 msgstr "Ranskankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:686
-msgid "Friulian Translation"
-msgstr "Friulinkielinen käännös"
-
-#. [about]
-#: data/core/about_i18n.cfg:693
+#: data/core/about_i18n.cfg:690
 msgid "Galician Translation"
 msgstr "Galegonkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:729
+#: data/core/about_i18n.cfg:726
 msgid "German Translation"
 msgstr "Saksankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:815
+#: data/core/about_i18n.cfg:812
 msgid "Greek Translation"
 msgstr "Kreikankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:858
+#: data/core/about_i18n.cfg:855
 msgid "Hebrew Translation"
 msgstr "Hepreankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:871
+#: data/core/about_i18n.cfg:868
 msgid "Hungarian Translation"
 msgstr "Unkarinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:932
+#: data/core/about_i18n.cfg:929
 msgid "Icelandic Translation"
 msgstr "Islanninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:942
+#: data/core/about_i18n.cfg:939
 msgid "Indonesian Translation"
 msgstr "Indonesiankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:965
+#: data/core/about_i18n.cfg:962
 msgid "Irish Translation"
 msgstr "Irlanninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:972
+#: data/core/about_i18n.cfg:969
 msgid "Italian Translation"
 msgstr "Italiankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1019
+#: data/core/about_i18n.cfg:1016
 msgid "Japanese Translation"
 msgstr "Japaninkielinen käännös"
 
@@ -642,10 +515,8 @@ msgstr "Venäjänkielinen käännös"
 
 #. [about]
 #: data/core/about_i18n.cfg:1462
-#, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
-msgstr "Galegonkielinen käännös"
+msgstr "Skotlantilaisen gaelinkielinen käännös"
 
 #. [about]
 #: data/core/about_i18n.cfg:1471
@@ -701,7 +572,7 @@ msgstr "RACV:n käännös"
 #. [item_group]: id=items
 #: data/core/editor/items.cfg:6
 msgid "Items"
-msgstr ""
+msgstr "Esineet"
 
 #. [item]: id=altar_evil
 #: data/core/editor/items.cfg:12
@@ -711,7 +582,7 @@ msgstr ""
 #. [item]: id=altar
 #: data/core/editor/items.cfg:18
 msgid "Altar"
-msgstr ""
+msgstr "alttari"
 
 #. [item]: id=ankh-necklace
 #: data/core/editor/items.cfg:24
@@ -721,72 +592,62 @@ msgstr ""
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:30
 msgid "Anvil"
-msgstr ""
+msgstr "alasin"
 
 #. [item]: id=archery-target
 #: data/core/editor/items.cfg:36
-#, fuzzy
-#| msgid "charge"
 msgid "Archery Target"
-msgstr "rynnäkkö"
+msgstr "maalitaulu"
 
 #. [item]: id=armor-golden
 #: data/core/editor/items.cfg:42
 msgid "Golden Armor"
-msgstr ""
+msgstr "kultainen haarniska"
 
 #. [item]: id=armor
 #: data/core/editor/items.cfg:48
 msgid "Armor"
-msgstr ""
+msgstr "haarniska"
 
 #. [item]: id=axe
 #: data/core/editor/items.cfg:54
 msgid "Axe"
-msgstr ""
+msgstr "kirves"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:60
-#, fuzzy
-#| msgid "Blue"
 msgid "Blue Ball"
-msgstr "Sininen"
+msgstr "sininen pallo"
 
 #. [item]: id=ball-green
 #: data/core/editor/items.cfg:66
-#, fuzzy
-#| msgid "Green"
 msgid "Green Ball"
-msgstr "Vihreä"
+msgstr "vihreä pallo"
 
 #. [item]: id=ball-magenta
 #: data/core/editor/items.cfg:72
 msgid "Magenta Ball"
-msgstr ""
+msgstr "purppurainen pallo"
 
 #. [item]: id=barrel
 #: data/core/editor/items.cfg:78
 msgid "Barrel"
-msgstr ""
+msgstr "tynnyri"
 
 #. [item]: id=bomb
 #: data/core/editor/items.cfg:84
 msgid "Bomb"
-msgstr ""
+msgstr "pommi"
 
 #. [item]: id=bones
 #: data/core/editor/items.cfg:90
-#, fuzzy
-#| msgid "stones"
 msgid "Bones"
-msgstr "kivettää"
+msgstr "luita"
 
 #. [item]: id=bonestack
 #: data/core/editor/items.cfg:96
-#, fuzzy
-#| msgid "stones"
 msgid "Bonestack"
-msgstr "kivettää"
+msgstr "kasa luita"
 
 #. [item]: id=book1
 #. [item]: id=book2
@@ -797,88 +658,82 @@ msgstr "kivettää"
 #: data/core/editor/items.cfg:114 data/core/editor/items.cfg:120
 #: data/core/editor/items.cfg:126
 msgid "Book"
-msgstr ""
+msgstr "kirja"
 
 #. [item]: id=bow-crystal
 #: data/core/editor/items.cfg:132
 msgid "Crystal Bow"
-msgstr ""
+msgstr "kristallijousi"
 
 #. [item]: id=bow-elven
 #: data/core/editor/items.cfg:138
 msgid "Elven Bow"
-msgstr ""
+msgstr "haltiajousi"
 
 #. [item]: id=bow
 #: data/core/editor/items.cfg:144
-#, fuzzy
-#| msgid "Brown"
 msgid "Bow"
-msgstr "Ruskea"
+msgstr "jousi"
 
 #. [item]: id=box
 #: data/core/editor/items.cfg:150
 msgid "Box"
-msgstr ""
+msgstr "laatikko"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:156
 msgid "Brazier"
-msgstr ""
+msgstr "hiilipannu"
 
 #. [item]: id=buckler
 #: data/core/editor/items.cfg:162
 msgid "Buckler"
-msgstr ""
+msgstr "kilpi"
 
 #. [item]: id=burial
 #: data/core/editor/items.cfg:168
-#, fuzzy
-#| msgid "Tutorial"
 msgid "Burial"
-msgstr "Tutoriaali"
+msgstr "hautaaminen"
 
 #. [item]: id=cage
 #: data/core/editor/items.cfg:174
 msgid "Cage"
-msgstr ""
+msgstr "häkki"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:180
 msgid "Closed Plain Chest"
-msgstr ""
+msgstr "suljettu arkku"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:186
 msgid "Open Plain Chest"
-msgstr ""
+msgstr "avoin arkku"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:192
 msgid "Chest"
-msgstr ""
+msgstr "arkku"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:198
-#, fuzzy
-#| msgid "Green"
 msgid "Green Cloak"
-msgstr "Vihreä"
+msgstr "vihreä viitta"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:204
 msgid "Closed Coffin"
-msgstr ""
+msgstr "suljettu ruumisarkku"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:210
 msgid "Dragon Statue"
-msgstr ""
+msgstr "lohikäärmepatsas"
 
 #. [item]: id=flame-sword
 #: data/core/editor/items.cfg:216
 msgid "Flaming Sword"
-msgstr ""
+msgstr "liekehtivä miekka"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -886,10 +741,8 @@ msgstr ""
 #. [item]: id=flower4
 #: data/core/editor/items.cfg:222 data/core/editor/items.cfg:228
 #: data/core/editor/items.cfg:234 data/core/editor/items.cfg:240
-#, fuzzy
-#| msgid "slowed"
 msgid "Flower"
-msgstr "hidastettu"
+msgstr "kukka"
 
 #. [item]: id=gohere
 #: data/core/editor/items.cfg:246
@@ -899,22 +752,22 @@ msgstr ""
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:252
 msgid "Large Pile of Gold Coins"
-msgstr ""
+msgstr "suuri kasa kultaa"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:258
 msgid "Pile of Gold Coins"
-msgstr ""
+msgstr "kasa kultaa"
 
 #. [item]: id=gold-coins-small
 #: data/core/editor/items.cfg:264
 msgid "Small Pile of Gold Coins"
-msgstr ""
+msgstr "pieni kasa kultaa"
 
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:270
 msgid "Grain Sheaf"
-msgstr ""
+msgstr "viljapaisti"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:276
@@ -930,7 +783,7 @@ msgstr "Pyhä vesi"
 #. [item]: id=key
 #: data/core/editor/items.cfg:288
 msgid "Key"
-msgstr ""
+msgstr "avain"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:294
@@ -940,7 +793,7 @@ msgstr ""
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:300
 msgid "Orcish Flag"
-msgstr ""
+msgstr "örkkilippu"
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
@@ -951,78 +804,68 @@ msgstr ""
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:318
 msgid "Blue Potion"
-msgstr ""
+msgstr "sininen taikajuoma"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:324
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Green Potion"
-msgstr "Virheellinen sijainti"
+msgstr "vihreä taikajuoma"
 
 #. [item]: id=potion-gray
 #: data/core/editor/items.cfg:330
 msgid "Gray Potion"
-msgstr ""
+msgstr "harmaa taikajuoma"
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
-msgstr "Myrkky"
+msgstr "myrkky"
 
 #. [item]: id=potion-red
 #: data/core/editor/items.cfg:342
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Red Potion"
-msgstr "Virheellinen sijainti"
+msgstr "Punainen taikajuoma"
 
 #. [item]: id=potion-yellow
 #: data/core/editor/items.cfg:348
 msgid "Yellow Potion"
-msgstr ""
+msgstr "keltainen taikajuoma"
 
 #. [item]: id=ring-brown
 #: data/core/editor/items.cfg:354
-#, fuzzy
-#| msgid "Brown"
 msgid "Brown Ring"
-msgstr "Ruskea"
+msgstr "ruskea sormus"
 
 #. [item]: id=ring-gold
 #: data/core/editor/items.cfg:360
 msgid "Golden Ring"
-msgstr ""
+msgstr "kultainen sormus"
 
 #. [item]: id=ring-red
 #: data/core/editor/items.cfg:366
 msgid "Red Ring"
-msgstr ""
+msgstr "punainen sormus"
 
 #. [item]: id=ring-silver
 #: data/core/editor/items.cfg:372
 msgid "Silver Ring"
-msgstr ""
+msgstr "hopeinen sormus"
 
 #. [item]: id=ring-white
 #: data/core/editor/items.cfg:378
-#, fuzzy
-#| msgid "White"
 msgid "White Ring"
-msgstr "Valkoinen"
+msgstr "valkoinen sormus"
 
 #. [item]: id=scarecrow
 #: data/core/editor/items.cfg:384
 msgid "Scarecrow"
-msgstr ""
+msgstr "variksenpelätti"
 
 #. [item]: id=sceptre-of-fire
 #: data/core/editor/items.cfg:390
-#, fuzzy
-#| msgid "sceptre of fire"
 msgid "Sceptre of Fire"
-msgstr "tulivaltikka"
+msgstr "Tulivaltikka"
 
 #. [item]: id=spear-fancy
 #: data/core/editor/items.cfg:396
@@ -1037,12 +880,12 @@ msgstr ""
 #. [item]: id=staff
 #: data/core/editor/items.cfg:408
 msgid "Staff"
-msgstr ""
+msgstr "sauva"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:414
 msgid "Stone Tablet"
-msgstr ""
+msgstr "kivilaatta"
 
 #. [item]: id=storm-trident
 #. [object]
@@ -1058,23 +901,18 @@ msgstr ""
 
 #. [item]: id=sword
 #: data/core/editor/items.cfg:438
-#, fuzzy
-#| msgid "Password: "
 msgid "Sword"
-msgstr "Salasana: "
+msgstr "miekka"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:444
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenery"
-msgstr "Päätä skenaario"
+msgstr ""
 
 #. [item]: id=castle-ruins
 #: data/core/editor/items.cfg:451
-#, fuzzy
 msgid "Castle Ruins"
-msgstr "linna"
+msgstr "raunioitunut linna"
 
 #. [item]: id=circle-magic-glow
 #: data/core/editor/items.cfg:457
@@ -1089,19 +927,17 @@ msgstr ""
 #. [item]: id=dwarven-doors-closed
 #: data/core/editor/items.cfg:469
 msgid "Closed Dwarven Doors"
-msgstr ""
+msgstr "suljettu kääpiöovet"
 
 #. [item]: id=fire
 #: data/core/editor/items.cfg:476
-#, fuzzy
-#| msgid "fire"
 msgid "Campfire"
-msgstr "tuli"
+msgstr "nuotio"
 
 #. [item]: id=flames
 #: data/core/editor/items.cfg:483
 msgid "Flames"
-msgstr ""
+msgstr "liekit"
 
 #. [item]: id=gate-rusty-se
 #: data/core/editor/items.cfg:489
@@ -1125,20 +961,18 @@ msgstr ""
 
 #. [item]: id=lighthouse
 #: data/core/editor/items.cfg:512
-#, fuzzy
-#| msgid "Light Red"
 msgid "Lighthouse"
-msgstr "Vaaleanpunainen"
+msgstr "majakka"
 
 #. [item]: id=mausoleum
 #: data/core/editor/items.cfg:520
 msgid "Mausoleum"
-msgstr ""
+msgstr "mausoleumi"
 
 #. [item]: id=mine-abandoned
 #: data/core/editor/items.cfg:526
 msgid "Abandoned Mine"
-msgstr ""
+msgstr "hylätty kaivos"
 
 #. [item]: id=monolith1
 #. [item]: id=monolith2
@@ -1147,21 +981,17 @@ msgstr ""
 #: data/core/editor/items.cfg:532 data/core/editor/items.cfg:538
 #: data/core/editor/items.cfg:544 data/core/editor/items.cfg:550
 msgid "Monolith"
-msgstr ""
+msgstr "monoliitti"
 
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:556
-#, fuzzy
-#| msgid "(Empty slot)"
 msgid "Empty Nest"
-msgstr "(tyhjä paikka)"
+msgstr ""
 
 #. [item]: id=nest-full
 #: data/core/editor/items.cfg:562
-#, fuzzy
-#| msgid "Full Heal"
 msgid "Full Nest"
-msgstr "Täysparannus"
+msgstr ""
 
 #. [item]: id=oak-leaning
 #: data/core/editor/items.cfg:568
@@ -1188,12 +1018,12 @@ msgstr ""
 #: data/core/editor/items.cfg:592 data/core/editor/items.cfg:598
 #: data/core/editor/items.cfg:604 data/core/editor/items.cfg:610
 msgid "Rock"
-msgstr ""
+msgstr "kivi"
 
 #. [item]: id=rubble
 #: data/core/editor/items.cfg:616
 msgid "Rubble"
-msgstr ""
+msgstr "kivimurskaa"
 
 #. [item]: id=rune1
 #. [item]: id=rune2
@@ -1223,22 +1053,22 @@ msgstr ""
 #. [item]: id=wreck
 #: data/core/editor/items.cfg:694 data/core/editor/items.cfg:845
 msgid "Shipwreck"
-msgstr ""
+msgstr "hylky"
 
 #. [item]: id=signpost
 #: data/core/editor/items.cfg:699
 msgid "Signpost"
-msgstr ""
+msgstr "tienviitta"
 
 #. [item]: id=slab1
 #: data/core/editor/items.cfg:705
 msgid "Slab"
-msgstr ""
+msgstr "laatta"
 
 #. [item]: id=snowbits
 #: data/core/editor/items.cfg:711
 msgid "Piles of Snow"
-msgstr ""
+msgstr "kasa lunta"
 
 #. [item]: id=summoning-center
 #: data/core/editor/items.cfg:718
@@ -1260,39 +1090,37 @@ msgstr ""
 #. [item]: id=temple1
 #: data/core/editor/items.cfg:760
 msgid "Temple"
-msgstr ""
+msgstr "temppeli"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:766
 msgid "Fancy Red Tent"
-msgstr ""
+msgstr "punainen teltta"
 
 #. [item]: id=tent-ruin-1
 #: data/core/editor/items.cfg:772
 msgid "Ruined Tent"
-msgstr ""
+msgstr "tuhoutunut teltta"
 
 #. [item]: id=tent-shop-weapons
 #: data/core/editor/items.cfg:777
-#, fuzzy
-#| msgid "Weapon Specials"
 msgid "Weapons Shop Tent"
-msgstr "Hyökkäystaidot"
+msgstr "asepajateltta"
 
 #. [item]: id=trapdoor-closed
 #: data/core/editor/items.cfg:784
 msgid "Closed Trapdoor"
-msgstr ""
+msgstr "suljettu lattialuukku"
 
 #. [item]: id=trapdoor-open
 #: data/core/editor/items.cfg:790
 msgid "Open Trapdoor"
-msgstr ""
+msgstr "avoin lattialuukku"
 
 #. [item]: id=trash
 #: data/core/editor/items.cfg:796
 msgid "Trash Pile"
-msgstr ""
+msgstr "kasa jätettä"
 
 #. [item]: id=village-human-burned1
 #. [item]: id=village-human-burned2
@@ -1300,30 +1128,28 @@ msgstr ""
 #. [item]: id=village-human-burned4
 #: data/core/editor/items.cfg:802 data/core/editor/items.cfg:808
 #: data/core/editor/items.cfg:814 data/core/editor/items.cfg:820
-#, fuzzy
-#| msgid "Submerged Village"
 msgid "Burned Human Village"
-msgstr "vedenalainen kylä"
+msgstr "poltettu ihmisten kylä"
 
 #. [item]: id=well
 #: data/core/editor/items.cfg:825
 msgid "Well"
-msgstr ""
+msgstr "kaivo"
 
 #. [item]: id=whirlpool
 #: data/core/editor/items.cfg:831
 msgid "Whirlpool"
-msgstr ""
+msgstr "kurimus"
 
 #. [item]: id=windmill
 #: data/core/editor/items.cfg:839
 msgid "Windmill"
-msgstr ""
+msgstr "tuulimylly"
 
 #. [set_menu_item]: id=ai_controller_unit_control_{UNIT_ID}
 #: data/core/macros/ai_controller.cfg:23
 msgid "Ask $ai_controller_unit.name to move here"
-msgstr ""
+msgstr "Pyydä yksikköä $ai_controller_unit.name liikkumaan tänne"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai_controller.cfg:77
@@ -1407,10 +1233,8 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:253
 #: data/core/macros/ai_controller.cfg:388
 #: data/core/macros/ai_controller.cfg:394
-#, fuzzy
-#| msgid "side $temp_i"
 msgid "Side $temp_i"
-msgstr "osapuoli $temp_i"
+msgstr "Osapuoli $temp_i"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:255
@@ -1421,10 +1245,8 @@ msgstr "osapuoli $temp_i"
 #. [command]
 #: data/core/macros/ai_controller.cfg:270
 #: data/core/macros/ai_controller.cfg:411
-#, fuzzy
-#| msgid "$side_i_leader.name (side $temp_i|)"
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr "$side_i_leader.name (osapuoli $temp_i|)"
+msgstr "osapuoli $temp_i ($side_i_leader.name|)"
 
 #. [value]
 #: data/core/macros/ai_controller.cfg:296
@@ -1560,33 +1382,27 @@ msgstr ""
 "currently_doing_objective_description"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:43
-#, fuzzy
-#| msgid "No usable weapon"
+#: data/core/macros/deprecated-utils.cfg:34
 msgid "This unit has been renamed to: "
-msgstr "Ei käyttökelpoista asetta"
-
-#: data/core/macros/deprecated-utils.cfg:95
-msgid "<small>(early finish bonus)</small>"
-msgstr "<small>(aikaisen lopetuksen bonus)</small>"
+msgstr "Tämä yksikkö on nimetty uudelleen nimellä:"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:99 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "Palkinto aikaisesta lopetuksesta."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:103 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "Ei palkintoa aikaisesta lopetuksesta."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:107 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr ""
 "Skenaariosta ei jäänyt jäljelle yhtään kultaa seuraavaa skenaariota varten."
 
-#: data/core/macros/deprecated-utils.cfg:111
+#: data/core/macros/deprecated-utils.cfg:63
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1594,7 +1410,7 @@ msgstr ""
 "\n"
 "100% lopetuskullasta saatiin mukaan seuraavaan skenaarioon."
 
-#: data/core/macros/deprecated-utils.cfg:116
+#: data/core/macros/deprecated-utils.cfg:68
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1602,7 +1418,7 @@ msgstr ""
 "\n"
 "40% lopetuskullasta saatiin mukaan seuraavaan seuraavaan skenaarioon."
 
-#: data/core/macros/deprecated-utils.cfg:121
+#: data/core/macros/deprecated-utils.cfg:73
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -1694,10 +1510,10 @@ msgid "holy water^Leave it"
 msgstr "Jätä"
 
 #: data/core/macros/items.cfg:276
-#, fuzzy
-#| msgid "I am not suited to the use of this item! Let another take it."
 msgid "$unit.name has no need for this Holy Water! Let another take it."
-msgstr "En sovellu tämän esineen käyttöön! Ottakoon joku muu sen."
+msgstr ""
+"Yksiköllä $unit.name ei ole tarvetta pyhälle vedelle. Anna toisen yksikön "
+"ottaa se."
 
 #. [object]
 #: data/core/macros/items.cfg:281
@@ -1736,7 +1552,7 @@ msgstr "Uusiutumisen sormus"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:393
 msgid "This ring will heal the bearer a little each turn."
-msgstr "Tämä sormus parantaa kantajaa vähän joka vuoro."
+msgstr "Tämä sormus parantaa kantajaansa vähän joka vuoro."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:429
@@ -1780,14 +1596,15 @@ msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
+"$unit.name ei voi käyttää tätä Myrskyjen kolmikärkeä. Anna se merenmiehelle, "
+"joka voi käyttää sitä."
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
-msgstr "Tämä kolmikärki sallii merenmiehen ampua salamoita vihollisiinsa!"
+msgstr ""
+"Tämä kolmikärki antaa merenmiehelle kyvyn ampua vihollisiaan salamoilla. "
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -1842,6 +1659,13 @@ msgid ""
 "suffix=ash|kré|lsh|lin|rutin|shinar|rushi|ka|ash|ag|all|ash|slar|li|dian|"
 "ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}’{suffix}|{prefix}{suffix} {short_name}\n"
+"short_name=Ohm|Ihn|Ohn|Ka|Murr|Kon|Elch|Ko|Græt|Egar\n"
+"prefix=Ga|Ge|Gel|Gi|Go|Gra|Gri|Ka|Ko|Kla|Mar|Di|Mer|Mor|Oma|Re|Vel|Vash|Ver|"
+"Vla\n"
+"suffix=ash|kré|lsh|lin|rutin|shinar|rushi|ka|ash|ag|all|ash|slar|li|dian|"
+"ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 
 #. Generator for female drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:28
@@ -1852,6 +1676,11 @@ msgid ""
 "suffix=en|nash|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
 "short_name=Mal|Ka|Emth|Dar|Eshi\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{suffix} {short_name}\n"
+"prefix=Al|Ali|Ash|Aug|Auug|Da|De|Dem|Din|Ol|Oma|Orri|Oshi|Val|Ver|Vel|Vush\n"
+"suffix=en|nash|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
+"short_name=Mal|Ka|Emth|Dar|Eshi\n"
 
 #: data/core/macros/names.cfg:37
 msgid ""
@@ -1956,6 +1785,15 @@ msgid ""
 "til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
 "centre=lal|mal|ra|dur|thal|thas|ma|gal|thau|ga|ith|ma|cat|la|ral|dur|bur\n"
 msgstr ""
+"\n"
+"main={long_name}\n"
+"long_name={prefix}{centre}{suffix}|{prefix}{centre}{centre}{suffix}\n"
+"short_name={prefix}{suffix}\n"
+"prefix=Ai|Al|A|Du|Glam|Dul|Gom|Nar|Pel|Tri|Dun|Do|Bar|Er|Tim|Al|Du|Bu|Bur|"
+"Nor|Der|Ur|Gar\n"
+"suffix=sil|fur|bor|bus|bur|bor|gos|dor|rin|dur|ing|ras|this|tis|rol|sol|las|"
+"til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
+"centre=lal|mal|ra|dur|thal|thas|ma|gal|thau|ga|ith|ma|cat|la|ral|dur|bur\n"
 
 #: data/core/macros/names.cfg:50
 msgid ""
@@ -2225,6 +2063,20 @@ msgid ""
 "short_centre=lol|febr|tom|lith|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
 "nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 msgstr ""
+"\n"
+"main={generated_prefix}{consonnant}{suffix}|{prefix}{centre}{suffix}\n"
+"generated_prefix={starting_consonnant}{vowel}\n"
+"starting_consonnant=C|D|F|L|M|N|P|Qu|R|S|T|V\n"
+"vowel=a|e|i|o|ae|é|ë\n"
+"consonnant=n|l|r|m|s|v|th|nn\n"
+"prefix={prefix_vc}{vowel}|{prefix_cv}\n"
+"prefix_vc=Lon|Eon|Ad|Sar|Al|Tal|Tin|El|Leg|Or|Tir|Ol|Cál|Cán|Elv|Fan|Fad|"
+"Fith|Fil|Gal|Glad|Leg|Glar|Gli|Hár|Tad|Sór|Pyr\n"
+"prefix_cv=Ama|Ami|Be|Ca|Ga|Isi|Ha|He|Le|Ló|Ny|Ni|Ma|Thu|Thri|Ti|Unu|Ve|Va\n"
+"suffix=or|im|ian|in|ar|iel|as|eon|as|or|ion|al|and|ér|as|ir|el|al|ad|ael\n"
+"centre={short_centre}|{short_centre}|-{short_centre}|{short_centre}-\n"
+"short_centre=lol|febr|tom|lith|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
+"nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 
 #. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:67
@@ -2250,6 +2102,26 @@ msgid ""
 "short_centre_c=enn|all|an|ith|el|il|am|ol|arth|ól|ár|ir|if|im|ion|iw|én|un|"
 "iw\n"
 msgstr ""
+"\n"
+"main={generated_prefix_v}{centre_v}{suffix_v}|{generated_prefix_c}{centre_c}"
+"{suffix_c}\n"
+"generated_prefix_v={starting_consonnant}{vowel}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}\n"
+"starting_consonnant=C|D|F|L|M|N|P|Qu|R|S|T|V\n"
+"vowel=a|e|i|o|ae|é|ë\n"
+"consonnant=n|l|r|m|s|v|th|p|d|f|t\n"
+"prefix_c=Val|Ol|Am|An|El|Fa|El|Glo|Hu|Le|Mil|Nil|Pin|Por|Mot|Mor|Thral|Leg|"
+"Nam|Nym|Sim|Len|Is|Thal\n"
+"prefix_v=La|Va|Tha|Ne|Ay|Ce|Fa|Phe|Ja|Que|Ma|Mi|Pa|Ri|Siu|Ga|Ca|De|Eä|Eo|No|"
+"Pó|Le|Ló|Isá|Pa|Sa|Ni|Ti|Uno|Uni|Vó|Gio\n"
+"suffix_v=thea|nia|lia|kea|ni|ith|niel|wiel|ra|dë|lya|thiel|nna|nne\n"
+"suffix_c=iel|ien|ya|a|ë|i|ia|ea\n"
+"centre_v=|{short_centre_v}\n"
+"short_centre_v=nna|lla|na|thi|saie|li|ma|lo|thra|ló|rá|bri|fi|mi|nio|wi|né|"
+"nu|wi\n"
+"centre_c=|{short_centre_c}\n"
+"short_centre_c=enn|all|an|ith|el|il|am|ol|arth|ól|ár|ir|if|im|ion|iw|én|un|"
+"iw\n"
 
 #: data/core/macros/names.cfg:87
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
@@ -2268,6 +2140,11 @@ msgid ""
 "suffix=aa|eaa|ee|aaa|ssshh|rro|uu|uuu\n"
 "centre=arr|aash|eez|ozz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Gr|Ka|Ke|Ko|Kr|Kz\n"
+"suffix=aa|eaa|ee|aaa|ssshh|rro|uu|uuu\n"
+"centre=arr|aash|eez|ozz\n"
 
 #. Generator for female gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:97
@@ -2278,6 +2155,11 @@ msgid ""
 "suffix=sa|yya|ra|rra\n"
 "centre=err|aash|eez|azz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Kaa|Ka|Ke|Kuu|Ko\n"
+"suffix=sa|yya|ra|rra\n"
+"centre=err|aash|eez|azz\n"
 
 #: data/core/macros/names.cfg:106
 msgid ""
@@ -2492,6 +2374,23 @@ msgid ""
 "centre_c=redd|reor|og|thyn\n"
 "centre_v=rae|ra|thar|gwy\n"
 msgstr ""
+"\n"
+"main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
+"{centre_c}{suffix_c}|{prefix_v}{centre_v}{suffix_v}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}|{starting_vowel}"
+"{consonnant}\n"
+"generated_prefix_v={starting_consonnant}{vowel}|{starting_vowel}\n"
+"starting_consonnant=B|C|D|G|H|L|M|R|Rh|S|T|V\n"
+"starting_vowel=A|E|I|Y|Ae\n"
+"vowel=a|e|i|o|u|y|eo|ae\n"
+"consonnant=w|l|d|n|r|rc|ll|nn|dd|th\n"
+"prefix_c=Add|Den|Derr|Gum|Mad|Mar|Ow|Tedd|T{vowel}n|Var|Vin|Vob|Vug|Yr|Rhyr\n"
+"prefix_v=Ae|Bl{vowel}|C{vowel}|D{vowel}|Gl{vowel}|G{vowel}|Gw{vowel}|Ha|"
+"L{vowel}|M{vowel}|R{vowel}|Rh{vowel}|S{vowel}|S{vowel}|T{vowel}|V{vowel}\n"
+"suffix_c=yn|er|yc|ec|oc|yr|in|aent\n"
+"suffix_v=ry|ryn|ran|lyn|van|nyc\n"
+"centre_c=redd|reor|og|thyn\n"
+"centre_v=rae|ra|thar|gwy\n"
 
 #. Generator for female Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:125
@@ -2514,6 +2413,23 @@ msgid ""
 "centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
 "centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
 msgstr ""
+"\n"
+"main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
+"{centre_c}{suffix_c}|{prefix_v}{centre_v}{suffix_v}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}|{starting_vowel}"
+"{consonnant}\n"
+"generated_prefix_v={starting_consonnant}{vowel}|{starting_vowel}\n"
+"starting_consonnant=B|C|D|G|H|L|M|R|Rh|S|T|V\n"
+"starting_vowel=A|E|I|Y|Ae\n"
+"vowel=a|e|i|o|u|y|eo|ae\n"
+"consonnant=w|l|d|n|r|rc|ll|nn|dd|th\n"
+"prefix_c=Al|El|Mer|Mil|Rer|Ys|M{vowel}r|M{vowel}l\n"
+"prefix_v=A|Br{vowel}|Cl{vowel}|C{vowel}|D{vowel}|Gw{vowel}|He|J{vowel}|"
+"L{vowel}|M{vowel}|N{vowel}|R{vowel}|S{vowel}\n"
+"suffix_c=yan|oic|ell|yll\n"
+"suffix_v=wyn|nna|lla|ra|la|wyan|ssa|ka|ven\n"
+"centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
+"centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
 
 #: data/core/macros/names.cfg:143
 msgid ""
@@ -2679,6 +2595,15 @@ msgid ""
 "Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
 "Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
+"Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
+"Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
+"Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,"
+"Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,"
+"Lama,Lamia,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,"
+"Malika,Marwa,Maryam,Maya,Maysoon,Melissa,Nadia,Nafisa,Nahla,Naila,Najat,"
+"Nasim,Nasrin,Nejla,Nezha,Niusha,Qistina,Rahima,Rana,Rashida,Reem,Ruqayya,"
+"Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
+"Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:146
@@ -2697,6 +2622,19 @@ msgid ""
 "connector= al-| bin | ibn\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|Nur|"
+"Fadl\n"
+"prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|Im|"
+"Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|Lu|"
+"Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|riya|"
+"ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|kib\n"
+"connector= al-| bin | ibn\n"
+"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:157
@@ -2764,6 +2702,13 @@ msgid ""
 "suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
 "centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Am|An|Ar|Bzz|Cha|Clee|Fa|Fi|Fli|Fri|Ha|He|In|Ir|In|Ka|Ke|Jezz|Ji|Ka|"
+"Ke|Lo|Ma|Ox|Po|Sa|Se|Li|Me|Na|Pre|Ska|Sse|Ssi|Sto|Ste|Szi|Sza|Ti|Ve|Vri|Xa|"
+"Xe|Xi|Zan|Zil|Zzu\n"
+"suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
+"centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
 
 #: data/core/macros/names.cfg:188
 msgid ""
@@ -2806,6 +2751,13 @@ msgid ""
 "lau|nik|sa|loa|roa\n"
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=A|Ai|Apa|Bar|Atla|Dha|El|Fa|Ja|La|Ku|Li|Ma|Me|Mi|Na|Ne|Njo|Nua|Nu|Oce|"
+"Okre|Phor|Po|Pro|Ra|Ro|Ryu|Scy|Si|Ta|Thau|Ti|Vi|Tri|Vo|Vou\n"
+"suffix=su|ion|la|ta|ua|mar|re|lau|lu|na|yr|ra|tes|nus|teus|tes|tan|mas|ki|ni|"
+"lau|nik|sa|loa|roa\n"
+"centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 
 #. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:198
@@ -2817,6 +2769,12 @@ msgid ""
 "suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
 "centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Agla|Amphi|A|Ca|Del|Der|Di|El|Ga|Je|Leu|Li|Lo|Ma|Wa|Ma|Mi|Mo|Par|Pel|"
+"Pi|Se|Ste|Ma|The|Ti|Va|Ve\n"
+"suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
+"centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
 
 #: data/core/macros/names.cfg:207
 msgid ""
@@ -2863,6 +2821,13 @@ msgid ""
 "suffix=iss|ail|nal|eii|mol|loss|noss|xos|sal|zel|kps|pek|ness|or|sol|peii|"
 "iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Abra|Ale|Ama|Ax|Bla|Ble|Bre|Bri|Gri|Hai|Har|Hu|Ine|Kle|Krez|Lam|Lin|"
+"Lob|Mai|Lal|Nild|Pon|Pse|Pza|Sa|Se|Sle|So|Sor|Tri|Vi|Vla|Xa|Xi|Xna|Za|Zle|"
+"Zse\n"
+"suffix=iss|ail|nal|eii|mol|loss|noss|xos|sal|zel|kps|pek|ness|or|sol|peii|"
+"iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 
 #. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:216
@@ -2875,6 +2840,13 @@ msgid ""
 "suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
 "na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Ali|Ama|Ax|Bla|Bli|Bra|Bri|Gax|Gri|Hai|Har|Hu|Ina|Iss|Krez|Kzap|Lam|"
+"Lex|Li|Lin|Mai|Mu|Nil|Ox|Pon|Pza|Ri|Sal|Sax|Sek|Snel|Sra|Trix|Vil|Vis|Blan|"
+"Xab|Xam|Xi|Xnam|Xop|Zal|Zle|Zse\n"
+"suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
+"na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 
 #: data/core/macros/names.cfg:224
 msgid ""
@@ -2901,6 +2873,11 @@ msgid ""
 "Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
 "suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Ak|Ar|Bar|Blok|Bor|Bul|Cork|Del|Gar|Gnu|Gra|Gru|Gu|Kal|Kar|Kay|Kel|"
+"Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
+"suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 
 #: data/core/macros/names.cfg:234
 msgid ""
@@ -2986,6 +2963,18 @@ msgid ""
 "ending_consonnant=b|g|r|sh|k\n"
 "ending_vowel=o|u\n"
 msgstr ""
+"\n"
+"main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
+"{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
+"{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
+"{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
+"starting_consonnant=B|Br|D|Dr|G|Gr|Gh|H|Kh|M|N|P|Pr|R|S|Sh|T|V\n"
+"starting_vowel=A|I|O|U\n"
+"consonnant=b|br|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|gz|zg|rb|br|dr|vr|khr|gd|"
+"shn\n"
+"vowel=a|i|o|u\n"
+"ending_consonnant=b|g|r|sh|k\n"
+"ending_vowel=o|u\n"
 
 #: data/core/macros/names.cfg:248
 msgid ""
@@ -3011,6 +3000,14 @@ msgid ""
 "beginning=Ä|Ü|A|U\n"
 "suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 msgstr ""
+"\n"
+"main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
+"short_name={prefix}{middle}{suffix}|{prefix}{middle}{suffix}|{prefix}{middle}"
+"{suffix}|{beginning}{suffix}\n"
+"prefix=B|Br|D|G|Gn|H|K|Kr|L|N|K|P|R|S|Sh|St|Th|Ts|T|V|Z\n"
+"middle=a|o|u|uu|ä|ü\n"
+"beginning=Ä|Ü|A|U\n"
+"suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 
 #: data/core/macros/names.cfg:261
 msgid ""
@@ -3055,6 +3052,17 @@ msgid ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 msgstr ""
+"\n"
+"main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
+"{suffix}\n"
+"prefix=Blu|Bo|Bre|Bro|Bru|Bu|Car|Da|Da|De|Dib|Dol|Dro|Dul|Dum|El|Gre|Gul|Gum|"
+"Laf|Lan|Las|Lef|Lib|Lol|Mon|Mul|Mun|Nan|Nun|Or|Pam|Pom|Rith|Tan|Tem|Ton|"
+"Troom|Tun|Tum|Won|Wun\n"
+"centre=de|bal|drum|wul|del|bem|pom|gon|tan|bom|ken|tan|ton|man|ten|dron|dub|"
+"na|da|ni|mi|lul|mon|duel|lem|num|nob|mand|room|lad|roam|be|lom|sem|nub|di|"
+"wim|din|blem|nand|dul|dil|of|tam|kon|ton|tun|kon|ten|run|mal|do\n"
+"suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
+"dium|numm|dan|doom|tum|din\n"
 
 #: data/core/macros/names.cfg:272
 msgid ""
@@ -3074,6 +3082,11 @@ msgid ""
 "middle=a|e|o|u|i\n"
 "suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 msgstr ""
+"\n"
+"main={prefix}{middle}{suffix}\n"
+"prefix=B|C|D|E|F|Fr|Wat|G|H|K|N|O|R|S|T|W|Y|Ro\n"
+"middle=a|e|o|u|i\n"
+"suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:6
@@ -3093,10 +3106,8 @@ msgid "Bonus objective:"
 msgstr "Ylimääräinen tavoite:"
 
 #: data/core/macros/objective-utils.cfg:30
-#, fuzzy
-#| msgid "Bonus objective:"
 msgid "Optional objective:"
-msgstr "Ylimääräinen tavoite:"
+msgstr "Vapaavalintainen tavoite:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:52
@@ -3106,7 +3117,7 @@ msgstr "Tämä on viimeinen skenaario."
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:58
 msgid "No turn limit"
-msgstr ""
+msgstr "Ei vuorojen ylärajaa"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:58
@@ -3189,10 +3200,8 @@ msgstr ""
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:241
-#, fuzzy
-#| msgid "Loyal"
 msgid "Loyalists"
-msgstr "uskollinen"
+msgstr ""
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:247
@@ -3211,17 +3220,13 @@ msgstr ""
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:265
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Revelation"
-msgstr "Virheellinen sijainti"
+msgstr ""
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:271
-#, fuzzy
-#| msgid "Sand"
 msgid "Sad"
-msgstr "hiekkaa"
+msgstr ""
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:277
@@ -3250,17 +3255,13 @@ msgstr ""
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:307
-#, fuzzy
-#| msgid "Deep Water"
 msgid "The Deep Path"
-msgstr "syvää vettä"
+msgstr ""
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:313
-#, fuzzy
-#| msgid "The game is over."
 msgid "The King is Dead"
-msgstr "Peli on ohitse."
+msgstr ""
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:319
@@ -3295,7 +3296,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:649
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr ""
+msgstr "Saat $amount_gold kultapalaa."
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -3321,10 +3322,8 @@ msgstr "Sininen"
 
 #. [color_range]: id=lightblue
 #: data/core/team-colors.cfg:40
-#, fuzzy
-#| msgid "Light Red"
 msgid "Light blue"
-msgstr "Vaaleanpunainen"
+msgstr "Vaaleansininen"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
@@ -3335,7 +3334,7 @@ msgstr "Vihreä"
 #. [color_range]: id=brightgreen
 #: data/core/team-colors.cfg:53
 msgid "Bright green"
-msgstr ""
+msgstr "Kirkkaanvihreä"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
@@ -3364,7 +3363,7 @@ msgstr "Oranssi"
 #. [color_range]: id=brightorange
 #: data/core/team-colors.cfg:87
 msgid "Bright orange"
-msgstr ""
+msgstr "Kirkkaanoranssi"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
@@ -3381,33 +3380,27 @@ msgstr "Sinivihreä"
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "Kultainen"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:116
 msgid "Reef"
-msgstr ""
+msgstr "Riutta"
 
 #. [color_range]: id=shallow_water
 #: data/core/team-colors.cfg:122
-#, fuzzy
-#| msgid "Shallow Water"
 msgid "Shallow water"
 msgstr "matalaa vettä"
 
 #. [color_range]: id=deep_water
 #: data/core/team-colors.cfg:128
-#, fuzzy
-#| msgid "Deep Water"
 msgid "Deep water"
 msgstr "syvää vettä"
 
 #. [color_range]: id=swamp_water
 #: data/core/team-colors.cfg:134
-#, fuzzy
-#| msgid "Swamp"
 msgid "Swamp water"
-msgstr "suo"
+msgstr "vetinen suo"
 
 #. [color_range]: id=flat
 #: data/core/team-colors.cfg:140
@@ -3447,36 +3440,33 @@ msgstr "luola"
 #. [color_range]: id=fungus
 #: data/core/team-colors.cfg:182
 msgid "Fungus"
-msgstr ""
+msgstr "sieni"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:176
+#: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:187
 msgid "Village"
 msgstr "kylä"
 
 #. [color_range]: id=castle
 #: data/core/team-colors.cfg:194
-#, fuzzy
 msgid "Castle"
 msgstr "linna"
 
 #. [color_range]: id=keep
 #: data/core/team-colors.cfg:200
 msgid "Keep"
-msgstr ""
+msgstr "torni"
 
 #. [color_range]: id=rails
 #: data/core/team-colors.cfg:206
 msgid "Rail"
-msgstr ""
+msgstr "kisko"
 
 #. [color_range]: id=unwalkable
 #: data/core/team-colors.cfg:212
-#, fuzzy
-#| msgid "unhealable"
 msgid "Unwalkable"
-msgstr "ei voi parantaa"
+msgstr "ei käveltävissä"
 
 #. [color_range]: id=impassable
 #: data/core/team-colors.cfg:218
@@ -3485,28 +3475,26 @@ msgstr "ylitsepääsemätön"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:467
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
 msgid "Fog"
 msgstr "Sumu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:470
-#: src/game_initialization/lobby_data.cpp:473
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
+#: src/game_initialization/lobby_data.cpp:445
 msgid "Shroud"
 msgstr "Huntu"
 
 #. [core]: id=default
 #: data/cores.cfg:5
 msgid "Wesnoth (Default)"
-msgstr ""
+msgstr "Wesnoth (oletus)"
 
 #. [core]: id=default
 #: data/cores.cfg:8
-#, fuzzy
-#| msgid "The Battle for Wesnoth Help"
 msgid "The standard Wesnoth core."
-msgstr "Ohje Taisteluun Wesnothista"
+msgstr "Standardi Wesnothin ydin."
 
 #. [language]
 #: data/english.cfg:3
@@ -3563,19 +3551,12 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Liminal units fight better during twilight while fighting normally during "
-#| "day and night.\n"
-#| "\n"
-#| "Twilight: +25% Damage"
 msgid ""
 "Liminal units fight best during the twilight times of day.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Hämärässä viihtyvät yksiköt taistelevat paremmin hämärässä ja normaalisti "
-"valossa tai pimeässä.\n"
+"Hämärässä viihtyvät yksiköt taistelevat parhaiten hämärässä.\n"
 "\n"
 "Hämärä: +25% vahinkoon"
 
@@ -3672,13 +3653,11 @@ msgstr ""
 #. [naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
 #: data/english.cfg:62
-#, fuzzy
-#| msgid "$name|’s Peak,Mount $name"
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
 "\t"
-msgstr "$name|:n huippu, $name|-vuori"
+msgstr ""
 
 #. [naming]
 #. Generator for swamp labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3820,24 +3799,18 @@ msgstr "Vaihtoehtoinen Wesnoth-palvelin"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Install Dependencies"
 msgstr "Asenna riippuvuudet"
 
 #. [button]: id=ok
 #: data/gui/window/install_dependencies.cfg:85
-#, fuzzy
-#| msgid "yes"
 msgid "Yes"
-msgstr "kyllä"
+msgstr "Kyllä"
 
 #. [button]: id=cancel
 #: data/gui/window/install_dependencies.cfg:96
-#, fuzzy
-#| msgid "None"
 msgid "No"
-msgstr "Ei mitään"
+msgstr "Ei"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3868,10 +3841,6 @@ msgstr ""
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:36
-#, fuzzy
-#| msgid ""
-#| "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
-#| "ttf,Junicode-Regular.ttf"
 msgid ""
 "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
@@ -3879,49 +3848,38 @@ msgstr ""
 "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
 "Junicode-Regular.ttf"
 
-#. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:186
-msgid "(Note: You should use $replacement instead in new code)"
-msgstr ""
-
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:193 src/deprecation.cpp:68
-msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr ""
-
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:912
+#: data/lua/wml-tags.lua:899
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1060
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1054
 msgid "female^poisoned"
 msgstr "myrkytetty"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1067
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1061
 msgid "female^slowed"
 msgstr "hidastettu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1067
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1061
 msgid "slowed"
 msgstr "hidastettu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1073
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1067
 msgid "female^petrified"
 msgstr "kivetetty"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1073
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1067
 msgid "petrified"
 msgstr "kivetetty"
 
@@ -3936,6 +3894,13 @@ msgid "unhealable"
 msgstr "ei voi parantaa"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [lua]: wesnoth.wml_actions.message
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2864
+#: src/scripting/game_lua_kernel.cpp:2899
+msgid "input"
+msgstr "syöte"
+
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
@@ -3947,80 +3912,167 @@ msgid "Defeat:"
 msgstr "Tappio:"
 
 #. [lua]: generate_objectives
+#: data/lua/wml/objectives.lua:57
+msgid "(this turn left)"
+msgid_plural "($remaining_turns turns left)"
+msgstr[0] "(viimeinen vuoro)"
+msgstr[1] "($remaining_turns vuoroa jäljellä)"
+
+#. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
-#, fuzzy
-#| msgid "%d%% of gold carried over to the next scenario."
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr "%d%% kullasta siirtyi seuraavaan tehtävään."
+msgstr "$percent|% kullasta siirtyi seuraavaan tehtävään."
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:156
-#: src/game_initialization/mp_game_utils.cpp:76
-msgid "Defeat enemy leader(s)"
-msgstr "Kukista vihollisjohtaja(t)"
+#. [leadership]: id=magical_leadership
+#: data/scenario-test.cfg:339
+msgid "magical leadership"
+msgstr "maaginen johtamistaito"
 
-#. [heals]: id=aura of death 4
-#. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:886 data/scenario-test.cfg:914
-msgid "aura of seath ("
+#. [leadership]: id=magical_leadership
+#: data/scenario-test.cfg:340
+msgid "female^magical leadership"
+msgstr "maaginen johtamistaito"
+
+#. [leadership]: id=magical_leadership
+#: data/scenario-test.cfg:341
+msgid ""
+"This unit can lead your own units that are next to it, making them fight "
+"better with magicals weapons.\n"
+"Adjacent own units of lower level will do more damage in battle. When a unit "
+"adjacent to, of a lower level than, and on the same side as a unit with "
+"Leadership engages in combat, its attacks do 25% more damage times the "
+"difference in their levels."
+msgstr ""
+"Tämä yksikkö voi johtaa viereisiä ystävällisiä yksiköitä, jolloin ne "
+"taistelevat paremmin maagisilla aseilla.\n"
+"Kun tämän yksikön vieressä oleva samalla puolella oleva alempitasoinen "
+"yksikkö joutuu taisteluun, sen hyökkäykset tekevät 25% enemmän vahinkoa "
+"jokaista tasoa kohti, jonka yksikkö on johtajaa alempana."
+
+#. [resistance]: id=melee_steadfast
+#: data/scenario-test.cfg:366
+msgid "steadfast"
+msgstr "vankkumaton"
+
+#. [resistance]: id=melee_steadfast
+#: data/scenario-test.cfg:367
+msgid "female^steadfast"
+msgstr "vankkumaton"
+
+#. [resistance]: id=melee_steadfast
+#: data/scenario-test.cfg:368
+msgid ""
+"This unit’s resistances are added to 20%, up to a maximum of 50%, when "
+"defending to melle attacks. Vulnerabilities are not affected."
+msgstr ""
+"Tämän yksikön vastustuskyvyt tuplataan (korkeintaan 50%:iin) "
+"puolustettaessa. Ei vaikuta heikkouksiin."
+
+#. [plague]: id=plague, type=Walking Corpse
+#: data/scenario-test.cfg:403
+msgid "plague"
+msgstr "rutto"
+
+#. [plague]: id=plague, type=Walking Corpse
+#: data/scenario-test.cfg:404
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Kun yksikkö tapetaan ruttohyökkäyksellä, kyseinen yksikkö korvataan "
+"yksiköllä kävelevällä ruumiilla, joka on samalla on puolella, kuin "
+"ruttohyökkäyksen tehnyt yksikkö. Tämä ei toimi epäkuolleisiin eikä "
+"yksiköihin kylissä."
+
+#. [firststrike]: id=initiative
+#: data/scenario-test.cfg:465
+msgid "initiative"
+msgstr "reaktiokyky"
+
+#. [firststrike]: id=initiative
+#: data/scenario-test.cfg:466
+msgid ""
+"All adjacent friendly units will strike first in melee combat, even when "
+"defending."
+msgstr ""
+"Kaikki yksikön vieressä olevat ystävälliset yksiköt saavat iskeä ensin "
+"lähitaistelussa, myös puolustautuessaan."
+
+#. [chance_to_hit]: id=marksman_leadership
+#: data/scenario-test.cfg:478
+msgid "cantor"
+msgstr ""
+
+#. [chance_to_hit]: id=marksman_leadership
+#: data/scenario-test.cfg:479
+msgid "female^cantor"
+msgstr ""
+
+#. [chance_to_hit]: id=marksman_leadership
+#: data/scenario-test.cfg:480
+msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
 msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:887 data/scenario-test.cfg:915
-#, fuzzy
-#| msgid "female^healthy"
-msgid "female^aura of death ("
-msgstr "elinvoimainen"
+#: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
+msgid "aura of death ("
+msgstr ""
 
-#: data/scenario-test.cfg:1073 src/game_initialization/depcheck.cpp:491
+#. [heals]: id=aura of death 4
+#. [heals]: id=aura of death 8
+#: data/scenario-test.cfg:1067 data/scenario-test.cfg:1095
+msgid "female^aura of death ("
+msgstr ""
+
+#: data/scenario-test.cfg:1253 src/game_initialization/depcheck.cpp:489
 msgid "OK"
 msgstr "OK"
 
-#: data/scenario-test.cfg:1074
+#: data/scenario-test.cfg:1254
 msgid "Cancel"
 msgstr "Peruuta"
 
 #. [language]
-#: data/scenario-test.cfg:4155
+#: data/scenario-test.cfg:4340
 msgid "very long"
 msgstr "hyvin pitkä"
 
 #. [language]
-#: data/scenario-test.cfg:4156
+#: data/scenario-test.cfg:4341
 msgid "electrical"
 msgstr "sähköinen"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:588
-msgid "Play"
-msgstr "Pelaa"
+#: data/themes/_initial.cfg:428
+msgid "replay^Play"
+msgstr "– uusinta"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
 msgid "continuous replay"
-msgstr "jatkuva toisto"
+msgstr "Jatkuva toisto"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:443 data/themes/_initial.cfg:602
-msgid "Stop"
-msgstr "Pysäytä"
+#: data/themes/_initial.cfg:443
+msgid "replay^Stop"
+msgstr "Keskeytä"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:444
 msgid "pause after current move"
-msgstr ""
+msgstr "Keskeytä tämän siirron jälkeen"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:459 data/themes/_initial.cfg:616
-msgid "Reset"
-msgstr "Palaa alkuun"
+#: data/themes/_initial.cfg:459
+msgid "replay^Reset"
+msgstr "Aseta alkutilanteeseen"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
 msgid "reset to beginning"
-msgstr "palauta alkutilanteeseen"
+msgstr "Aseta alkutilanteeseen"
 
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:475 data/themes/_initial.cfg:630
@@ -4030,7 +4082,7 @@ msgstr "Seuraava vuoro"
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:476 data/themes/_initial.cfg:631
 msgid "play turn"
-msgstr "vuorossa"
+msgstr "Toista vuoro"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:491 data/themes/_initial.cfg:644
@@ -4040,21 +4092,17 @@ msgstr "Seuraava puoli"
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:492 data/themes/_initial.cfg:645
 msgid "play side turn"
-msgstr "vuorossa"
+msgstr "Toista osapuolen vuoro"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:506 data/themes/_initial.cfg:658
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
-msgstr "Seuraava puoli"
+msgstr "Seuraava siirto"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:507 data/themes/_initial.cfg:659
-#, fuzzy
-#| msgid "play side turn"
 msgid "play single move"
-msgstr "vuorossa"
+msgstr "Toista yksittäinen siirto"
 
 #. [menu]: id=show-what
 #: data/themes/_initial.cfg:519 data/themes/_initial.cfg:671
@@ -4063,15 +4111,13 @@ msgstr "Näkökulma"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:530
-#, fuzzy
-#| msgid "continuous replay"
 msgid "Continue Play"
-msgstr "jatkuva toisto"
+msgstr "Jatka toistoa"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:531
 msgid "Exit the replay mode and continue playing normally."
-msgstr ""
+msgstr "Poistu uusintatilasta ja jatka pelaamista normaalisti."
 
 #. [action]: id=skip-animation, type=checkbox
 #: data/themes/_initial.cfg:543 data/themes/_initial.cfg:683
@@ -4083,127 +4129,83 @@ msgstr "Älä animoi"
 msgid "Replay"
 msgstr "Uusinta"
 
+#. [action]: id=button-playreplay, type=image
+#: data/themes/_initial.cfg:588
+msgid "Play"
+msgstr "Toista"
+
+#. [action]: id=button-stopreplay, type=image
+#: data/themes/_initial.cfg:602
+msgid "Stop"
+msgstr "Pysäytä"
+
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:603
 msgid "pause"
-msgstr ""
+msgstr "Keskeytä"
 
-#. [theme]: id=Classic
-#: data/themes/classic.cfg:11
-msgid "theme^Classic"
-msgstr ""
-
-#. [theme]: id=Classic
-#: data/themes/classic.cfg:13
-msgid "The classic, pre-1.12 theme"
-msgstr ""
+#. [action]: id=button-resetreplay, type=image
+#: data/themes/_initial.cfg:616
+msgid "Reset"
+msgstr "Palaa alkuun"
 
 #. [menu]: id=menu-main
-#: data/themes/classic.cfg:86 data/themes/cutscene.cfg:37
-#: data/themes/default.cfg:80
+#: data/themes/cutscene.cfg:37 data/themes/default.cfg:80
 msgid "Menu"
 msgstr "Valikko"
 
-#. [menu]: id=actions-menu
-#: data/themes/classic.cfg:97 data/themes/default.cfg:98
-msgid "Actions"
-msgstr "Toiminnot"
-
 #. [action]: id=button-endturn
-#: data/themes/classic.cfg:120 data/themes/cutscene.cfg:53
-#: data/themes/default.cfg:131
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:133
 msgid "End Turn"
 msgstr "Lopeta vuoro"
 
 #. [action]: id=button-endturn
-#: data/themes/classic.cfg:121 data/themes/cutscene.cfg:54
-#: data/themes/default.cfg:132
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:134
 msgid "End Scenario"
 msgstr "Päätä skenaario"
-
-#. [label]: id=label-hp
-#: data/themes/classic.cfg:202 data/themes/default.cfg:144
-msgid "HP"
-msgstr "EP"
-
-#. [label]: id=label-xp
-#: data/themes/classic.cfg:211 data/themes/default.cfg:153
-msgid "XP"
-msgstr "KP"
-
-#. [label]: id=gold-icon
-#: data/themes/classic.cfg:221 data/themes/default.cfg:178
-msgid "gold"
-msgstr "kultapalaa"
-
-#. [label]: id=villages-icon
-#: data/themes/classic.cfg:230 data/themes/default.cfg:187
-msgid "villages"
-msgstr "kyliä"
-
-#. [label]: id=units-icon
-#: data/themes/classic.cfg:239 data/themes/default.cfg:196
-msgid "units"
-msgstr "yksiköitä"
-
-#. [label]: id=upkeep-icon
-#: data/themes/classic.cfg:248 data/themes/default.cfg:205
-msgid "upkeep"
-msgstr "ylläpito"
-
-#. [label]: id=income-icon
-#: data/themes/classic.cfg:257 data/themes/default.cfg:214
-msgid "income"
-msgstr "tulot"
-
-#. [unit_level]: id=unit-level
-#: data/themes/classic.cfg:429
-msgid "statuspanel^level"
-msgstr "kokemustaso"
-
-#. [unit_moves]: id=unit-moves
-#: data/themes/classic.cfg:459
-msgid "statuspanel^moves"
-msgstr "liikepisteet"
-
-#. [unit_defense]: id=unit-defense
-#: data/themes/classic.cfg:468
-msgid "statuspanel^terrain def."
-msgstr "puol. maastossa"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:32
 msgid "theme^Default"
-msgstr ""
+msgstr "Tavallinen"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:33
-#, fuzzy
-#| msgid "Default AI"
 msgid "The default theme"
-msgstr "Tavallinen tietokonepelaaja"
+msgstr "Tavallinen teema"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:90
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to..."
-msgstr "Takaisin vuoron alkuun"
+msgstr "Takaisin vuoroon..."
+
+#. [menu]: id=actions-menu
+#: data/themes/default.cfg:98
+msgid "Actions"
+msgstr "Toiminnot"
+
+#. [label]: id=label-hp
+#: data/themes/default.cfg:146
+msgid "HP"
+msgstr "EP"
+
+#. [label]: id=label-xp
+#: data/themes/default.cfg:155
+msgid "XP"
+msgstr "KP"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:161
+#: data/themes/default.cfg:163
 msgid "MP"
 msgstr "MP"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:169
+#: data/themes/default.cfg:171
 msgid "def"
 msgstr ""
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:406
-#, fuzzy
-#| msgid "statuspanel^level"
+#: data/themes/default.cfg:408
 msgid "statuspanel^lvl"
 msgstr "kokemustaso"
 
@@ -4213,13 +4215,13 @@ msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
+"Käytä karttaeditorin <i>Alueet</i>-valikkoa määrittääksesi alueet, jotka on "
+"myöhemmin käsitelty tapahtumassa tai tekoälyn koodissa."
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
-#, fuzzy
-#| msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr "<i>― Wesnothin taktinen opaskirja</i>"
+msgstr "<i>― Wesnothin suunnitteluopas</i>"
 
 #. [tip]
 #: data/tips.cfg:8
@@ -4227,6 +4229,8 @@ msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
+"Käyttääksesi kehittyneempiä ominaisuuksia valitse karttaeditorissa <i>Uusi "
+"skenaario</i> <i>Tiedosto</i>-valikossa."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -4234,6 +4238,9 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
+"Skenaariot, jotka on tallennettu editorista oletuskansioihinsa, voidaan "
+"valita osiosta <i>Kustomoidut skenaariot</i> moninpelin \"Luo peli\" -"
+"ruudulla."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -4272,7 +4279,8 @@ msgstr ""
 #: data/tips.cfg:133 data/tips.cfg:161 data/tips.cfg:165 data/tips.cfg:169
 #: data/tips.cfg:177 data/tips.cfg:185 data/tips.cfg:193 data/tips.cfg:197
 #: data/tips.cfg:206 data/tips.cfg:210 data/tips.cfg:214 data/tips.cfg:222
-#: data/tips.cfg:242 data/tips.cfg:250 data/tips.cfg:258 data/tips.cfg:267
+#: data/tips.cfg:242 data/tips.cfg:250 data/tips.cfg:258 data/tips.cfg:278
+#: data/tips.cfg:283
 msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgstr "<i>― Wesnothin taktinen opaskirja</i>"
 
@@ -4708,13 +4716,16 @@ msgid ""
 "villages unoccupied, but keep in mind that an enemy unit becomes much harder "
 "to dislodge from a village! Plan your movements accordingly."
 msgstr ""
+"Kenelle tahansa pelaajalle kylien kontrollointi on usein avain voittoon. "
+"Voit käyttää tätä tietoa houkutellaksesi vihollisen ansaan jättämällä "
+"joitakin kyliä tyhjiksi. Muista kuitenkin, että vihollisen yksiköitä on "
+"paljon hankalampi ajaa pois kylistä. Suunnittele siirtosi tilanteen "
+"vaatimalla tavalla. "
 
 #. [tip]
 #: data/tips.cfg:153
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>― Kuningas Konrad, WV 536</i>"
+msgstr "<i>― Kai Laudiss, 623YW</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -4898,8 +4909,8 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:221
 msgid ""
-"Try to operate units with a small number of powerful attacks—such as Dark "
-"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
+"Try to operate units with a small number of powerful attacks — such as Dark "
+"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
@@ -4911,17 +4922,16 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:225
 msgid ""
-"Units with three or more attacks—especially magical attacks—are ideal for "
-"finishing off enemies with only a few hitpoints remaining. Be sure to use "
-"leadership—or a strong or dextrous unit—whenever the extra point or two of "
-"damage makes a one-hit kill possible."
+"Units with three or more attacks — especially magical attacks — are ideal "
+"for finishing off enemies with only a few hitpoints remaining. Be sure to "
+"use leadership — or a strong or dextrous unit — whenever the extra point or "
+"two of damage makes a one-hit kill possible."
 msgstr ""
-"Yksiköt joilla on kolme hyökkäystä tai enemmän, (vielä parempi jos nämä "
-"hyökkäykset ovat maagisia), sopivat hyvin sellaisten vihollisten tappamiseen "
-"joilla on vain muutama kestopiste jäljellä. Jos yksikölle olisi jäämässä "
-"vain yksi tai kaksi kestopistettä, harkitse voisitko käyttää johtamiskykyä "
-"tai kenties vahvaa taikka ketterää yksikköä tappamaan vihollisen yhdellä "
-"iskulla."
+"Yksiköt joilla on kolme hyökkäystä tai enemmän — etenkin maagisia "
+"hyökkäyksiä — sopivat hyvin sellaisten vihollisten tappamiseen joilla on "
+"vain muutama kestopiste jäljellä. Jos yksikölle olisi jäämässä vain yksi tai "
+"kaksi kestopistettä, harkitse voisitko käyttää johtamiskykyä tai kenties "
+"vahvaa taikka tarkkaa yksikköä tappamaan vihollisen yhdellä iskulla."
 
 #. [tip]
 #: data/tips.cfg:229
@@ -4999,6 +5009,10 @@ msgid ""
 "of 20 gold. In a campaign, always check if recalling a unit of the same type "
 "may be cheaper."
 msgstr ""
+"Joidenkin yksiköiden värvääminen voi maksaa enemmän kuin veteraaniyksikön "
+"värvääminen maksaa (20 kultakolikkoa). Kampanjassa sinun kannattaa aina "
+"tarkistaa, jos voit värvätä veteraaniyksikön uuden yksikön värväämisen "
+"sijaan."
 
 #. [tip]
 #: data/tips.cfg:253
@@ -5006,36 +5020,80 @@ msgid ""
 "You must accept some losses in battle. It is not uncommon for beginners to "
 "lose sight of victory as they attempt to keep every unit alive."
 msgstr ""
+"Sinun täytyy hyväksyä joidenkin yksiköiden menettäminen. Ei ole "
+"epätavallista, että aloittelija menettää kyvyn nähdä tien voittoon, kun hän "
+"yrittää pitää jokaisen yksikön elossa. "
 
 #. [tip]
 #: data/tips.cfg:254
-#, fuzzy
-#| msgid "<i>― Queen Li’sar, 528YW</i>"
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― Kuningatar Li’sar, WV 528</i>"
+msgstr "<i>― Kuningatar Asheviere, WV 503</i>"
 
 #. [tip]
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
 msgstr ""
+"Matalatasoisten yksiköiden käyttäminen voi olla hyvin kustannustehokasta."
 
 #. [tip]
 #: data/tips.cfg:261
+#, fuzzy
 msgid ""
 "Some higher-level units have inimitable abilities such as <i>Leadership</i>, "
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"Joillakin korkeamman tason yksiköillä on jäljittelemättömiä erikoistaitoja, "
+"kuten <i>Johtaa</i>, <i>Lääkitsee</i>, tai <i>Nightstalk</i>. Näiden "
+"yksiköiden saaminen aikaisin voi vaikuttaa suuresti kampanjaan."
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Gweddryn muistelmat, WV 627</i>"
+msgstr "<i>― Sir Gerrick of Westin, 607YW</i>"
 
 #. [tip]
 #: data/tips.cfg:266
+#, fuzzy
+msgid ""
+"Some types of terrain give unique bonuses, such as healing or illumination."
+msgstr "Joillakin "
+
+#. [tip]
+#. Translate the word "Flight" as in Wings of Victory
+#: data/tips.cfg:268
+#, fuzzy
+#| msgid "<i>― Great Mage Delfador, 516YW</i>"
+msgid "<i>― Galun, Flight Leader, 5YW</i>"
+msgstr "<i>― Suurmaagi Delfador, 516 WV</i>"
+
+#. [tip]
+#: data/tips.cfg:271
+msgid ""
+"If a unit is positioned next to healers from two allied sides, the unit will "
+"be healed on both sides’ turns. This way, a unit can be healed faster than "
+"otherwise possible."
+msgstr ""
+
+#. [tip]
+#. Translate the word "Flight" as in Wings of Victory
+#: data/tips.cfg:273
+#, fuzzy
+#| msgid "<i>― King Konrad, 536YW</i>"
+msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
+msgstr "<i>― Kuningas Konrad, WV 536</i>"
+
+#. [tip]
+#. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
+#: data/tips.cfg:277
+msgid ""
+"Did you know that you can change the difficulty level during a campaign? "
+"Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
+"Game</i> screen when loading start-of-scenario save files."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:282
 msgid ""
 "<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
 "if they occupy a village hex, they do not gain any defensive benefits from "
@@ -5048,13 +5106,11 @@ msgstr ""
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
-#: src/actions/advancement.cpp:234
-#, fuzzy
-#| msgid "No advancement"
+#: src/actions/advancement.cpp:256
 msgid "waiting for^an advancement choice"
-msgstr "Ei ylennyksiä"
+msgstr ""
 
-#: src/actions/attack.cpp:600 src/actions/attack.cpp:1350
+#: src/actions/attack.cpp:594 src/actions/attack.cpp:1344
 msgid "An invalid attacker weapon got selected."
 msgstr "Epäkelpo hyökkäysväline valittu."
 
@@ -5063,10 +5119,8 @@ msgid "You do not have a leader to recall with."
 msgstr "Sinulla ei ole johtajaa, joka voisi kutsua."
 
 #: src/actions/create.cpp:342
-#, fuzzy
-#| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recall that unit."
-msgstr "Kukaan johtajistasi ei voi kutsua tätä yksikköä."
+msgstr "Kukaan johtajistasi ei voi kutsua sitä yksikköä."
 
 #: src/actions/create.cpp:346
 msgid "You must have a leader on a keep who is able to recall that unit."
@@ -5079,16 +5133,14 @@ msgstr "Linnassa ei ole tyhjää tilaa, johon kutsua yksiköitä."
 
 #: src/actions/create.cpp:360 src/actions/create.cpp:496
 msgid "An unrecognized error has occurred."
-msgstr ""
+msgstr "Tapahtui tuntematon virhe."
 
 #: src/actions/create.cpp:474
 msgid "You do not have a leader to recruit with."
 msgstr "Sinulla ei ole johtajaa, joka voisi värvätä."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders is able to recall that unit."
-msgid "None of your leaders are able to recruit that unit."
+msgid "None of your leaders are able to recruit this unit."
 msgstr "Kukaan johtajistasi ei voi kutsua tätä yksikköä."
 
 #: src/actions/create.cpp:482
@@ -5100,16 +5152,12 @@ msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Linnassa ei ole tyhjää tilaa, johon värvätä."
 
 #: src/actions/heal.cpp:275
-#, fuzzy
-#| msgid "cures"
 msgid "cured"
-msgstr "lääkitsee"
+msgstr "lääkitty"
 
 #: src/actions/heal.cpp:275
-#, fuzzy
-#| msgid "female^cures"
 msgid "female^cured"
-msgstr "lääkitsee"
+msgstr "lääkitty"
 
 #: src/actions/move.cpp:622
 msgid "Ambushed!"
@@ -5152,44 +5200,32 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(paina $hotkey jatkaaksesi)"
 
 #: src/addon/client.cpp:71
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
-msgstr "Yhdistetään palvelimeen..."
+msgstr "Yhdistetään palvelimeen $server_address|..."
 
 #: src/addon/client.cpp:85
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
-msgstr "Pyydetään listaa lisäosista"
+msgstr "Ladataan listaa lisäosista..."
 
 #: src/addon/client.cpp:99
-#, fuzzy
-#| msgid "Requesting terms"
 msgid "Requesting distribution terms..."
-msgstr "Pyydetään listaa lisäosista"
+msgstr "Pyydetään jakeluehtoja"
 
 #: src/addon/client.cpp:123
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
-"Tässä lisäosassa on on epäkelpo tiedosto- tai hakemistonimi, eikä sitä voida "
-"asentaa."
+"Lisäosalla <i>$addon_title</i> on epäkelpo tunniste '$addon_id' eikä sitä "
+"voida julkaista. "
 
 #: src/addon/client.cpp:149
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr ""
-"Tässä lisäosassa on on epäkelpo tiedosto- tai hakemistonimi, eikä sitä voida "
-"asentaa."
+"Lisäosassa <i>$addon_title</i> on tiedosto tai hakemisto, mikä sisältää "
+"epäkelpoja merkkejä eikä sitä voida julkaista."
 
 #: src/addon/client.cpp:157
 msgid ""
@@ -5200,6 +5236,13 @@ msgid ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
+"Lisäosa <i>$addon_title</i> sisältää epäkelvon tiedosto- tai hakemistonimen, "
+"eikä sitä voida julkaista. Tiedosto tai hakemisto ei saa sisältää '..' tai "
+"loppua '.', eikä se saa olla 255 merkkiä pidempi. Se ei myöskään saa "
+"sisältää välilyöntejä, control characters:eja eikä mitään seuraavista "
+"merkeistä:\n"
+"\n"
+"&quot; * / : &lt; &gt; ? \\ | ~"
 
 #: src/addon/client.cpp:168
 #, fuzzy
@@ -5214,121 +5257,97 @@ msgstr ""
 "asentaa."
 
 #: src/addon/client.cpp:180
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
-msgstr "Ladataan lisäosaa: $addon_title|..."
+msgstr "Lähetetään lisäosaa <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:213
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
-msgstr "Ladataan lisäosaa: $addon_title|..."
+msgstr "Poistetaan lisäosaa <i>$addon_title</i> palvelimelta..."
 
 #: src/addon/client.cpp:240
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
-msgstr "Ladataan lisäosaa: $addon_title|..."
+msgstr "Ladataan lisäosaa:<i>$addon_title</i>..."
 
 #: src/addon/client.cpp:254
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
-"Tässä lisäosassa on on epäkelpo tiedosto- tai hakemistonimi, eikä sitä voida "
-"asentaa."
+"Lisäosassa <i>$addon_title</i> on epäkelpo tiedosto- tai hakemistonimi, eikä "
+"sitä voida asentaa."
 
 #: src/addon/client.cpp:260
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
-"Tässä lisäosassa on on epäkelpo tiedosto- tai hakemistonimi, eikä sitä voida "
-"asentaa."
+"Lisäosan <i>$addon_title</i> tiedoston tai hakemiston nimessä on ongelma, "
+"joka koskee suurten ja pienten merkkien konfliktia, eikä sitä voida asentaa."
 
 #: src/addon/client.cpp:317
-#, fuzzy
-#| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
-msgstr "Palvelin vastasi virheellä: \""
+msgstr "Palvelin vastasi virheellä:"
 
 #: src/addon/client.cpp:367
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
 msgid_plural ""
 "The selected add-on has the following dependencies, which are not currently "
 "installed or available from the server. Do you wish to continue?"
-msgstr[0] "Valitsemallasi lisäosalla on seuraava riippuvuus. Asennetaanko se?"
+msgstr[0] ""
+"Valitsemallasi lisäosalla on seuraava riippuvuus, mikä ei ole tällä hetkellä "
+"asennettuna tai saatavilla palvelimelta. Haluatko jatkaa?"
 msgstr[1] ""
-"Valitsemallasi lisäosalla on seuraavat riippuvuudet. Asennetaanko ne?"
+"Valitsemallasi lisäosalla on seuraavia riippuvuuksia, jotka eivät ole tällä "
+"hetkellä asennettuna tai saatavilla palvelimelta. Haluatko jatkaa?"
 
 #: src/addon/client.cpp:376
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Broken Dependencies"
-msgstr "Asenna riippuvuudet"
+msgstr "Hajonneet riippuvuudet"
 
-#: src/addon/client.cpp:418
+#: src/addon/client.cpp:416
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
 msgid_plural ""
 "The following dependencies could not be installed. Do you still wish to "
 "continue?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Seuraavaa riippuvuutta ei voitu asentaa. Haluatko silti jatkaa?"
+msgstr[1] "Seuraavia riippuvuuksia ei voitu asentaa. Haluatko silti jatkaa?"
 
-#: src/addon/client.cpp:422
-#, fuzzy
-#| msgid "Installation failed"
+#: src/addon/client.cpp:420
 msgid "Dependencies Installation Failed"
-msgstr "Asennus epäonnistui"
+msgstr "Riippuvuuksien asentaminen epäonnistui"
 
-#: src/addon/client.cpp:445
+#: src/addon/client.cpp:443
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
+"Lisäosa '$addon|' on jo asennettuna ja sisältää lisätietoa, joka menetetään "
+"lopullisesti, jos jatkat: "
 
-#: src/addon/client.cpp:449
+#: src/addon/client.cpp:447
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:453
+#: src/addon/client.cpp:451
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:457
-#, fuzzy
-#| msgid "Do you want to continue?"
+#: src/addon/client.cpp:455
 msgid "Do you really wish to continue?"
-msgstr "Haluatko jatkaa?"
+msgstr "Haluatko todella jatkaa?"
 
-#: src/addon/client.cpp:459 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:227
+#: src/addon/client.cpp:457 src/addon/manager_ui.cpp:174
+#: src/game_initialization/multiplayer.cpp:239
 msgid "Confirm"
 msgstr "Varmista"
 
-#: src/addon/client.cpp:579
-#, fuzzy
-#| msgid "Add-on Installed"
+#: src/addon/client.cpp:577
 msgid "Add-ons Manager"
-msgstr "Lisäosa asennettu"
+msgstr "Lisäosamanageri"
 
 #: src/addon/info.cpp:156
 msgid "addon_type^Campaign"
@@ -5388,7 +5407,7 @@ msgstr "Muu"
 msgid "addon_type^(unknown)"
 msgstr "(tuntematon)"
 
-#: src/addon/info.cpp:220
+#: src/addon/info.cpp:217
 msgid "unit_byte^B"
 msgstr "t"
 
@@ -5404,7 +5423,7 @@ msgstr "Toinen kone katkaisi yhteyden."
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
-msgstr "Lisäosan tarvitsemien tiedostojen luonnissa oli ongelmia. "
+msgstr "Lisäosan tarvitsemien tiedostojen luonnissa oli ongelmia."
 
 #: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:308
 msgid ""
@@ -5461,10 +5480,8 @@ msgstr[0] "Lisäosa poistettiin onnistuneesti:"
 msgstr[1] "Lisäosat poistettiin onnistuneesti:"
 
 #: src/addon/manager_ui.cpp:270
-#, fuzzy
-#| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr "Virhe kommunikoidessa palvelimen kanssa."
+msgstr "Tapahtui virhe ladattaessa listaa lisäosista palvelimelta. "
 
 #: src/addon/manager_ui.cpp:284
 #, fuzzy
@@ -5516,7 +5533,7 @@ msgstr "pyydetään tietoa nimimerkkiin $nick liittyen"
 msgid "(A) — admin command"
 msgstr "(A) - ylläpitokomento"
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1159
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1191
 msgid "(admin only)"
 msgstr "(vain ylläpitäjä)"
 
@@ -5547,7 +5564,7 @@ msgstr "<nimimerkki>"
 #: src/chat_command_handler.hpp:80
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
-"Poista käyttäjän esto. Hänen ei tarvitse olla pelissä, mutta palvelimella. "
+"Poista käyttäjän esto. Hänen ei tarvitse olla pelissä, mutta palvelimella."
 
 #: src/chat_command_handler.hpp:83
 msgid "Kick a player or observer."
@@ -5573,7 +5590,7 @@ msgid ""
 "mention relevant nicknames, etc."
 msgstr ""
 "Kaikenlaiset kiusanteot, sääntörikkomukset, jne., pitää ilmoittaa palvelimen "
-"moderaattoreille. Varmista, että asianosaisten käyttäjänimet mainitaan. "
+"moderaattoreille. Varmista, että asianosaisten käyttäjänimet mainitaan."
 
 #: src/chat_command_handler.hpp:97
 msgid "<message>"
@@ -5704,17 +5721,19 @@ msgstr ""
 msgid "$elem has been deprecated and removed."
 msgstr ""
 
-#: src/desktop/notifications.cpp:82
-#, fuzzy
-#| msgid "Chat message aging"
-msgid "Chat message"
-msgstr "Viestien vanhentuminen"
+#: src/deprecation.cpp:68
+msgid "Invalid deprecation level $level (should be 1-4)"
+msgstr ""
 
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:574
+#: src/desktop/notifications.cpp:82
+msgid "Chat message"
+msgstr "Viestien"
+
+#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:575
 msgid "The Battle for Wesnoth"
 msgstr "Taistelu Wesnothista"
 
-#: src/font/text_formatting.cpp:47
+#: src/font/text_formatting.cpp:52
 msgid "Invalid Color"
 msgstr "Virheellinen väri"
 
@@ -5739,12 +5758,10 @@ msgid "%b %d"
 msgstr "%b %d"
 
 #: src/format_time_summary.cpp:65
-#, fuzzy
-#| msgid "%b %d %y"
 msgid "%b %d %Y"
-msgstr "%b %d %y"
+msgstr "%b %d %Y"
 
-#: src/game_config.cpp:522
+#: src/game_config.cpp:523
 #, fuzzy
 #| msgid "Invalid color range: "
 msgid "Invalid color in range: "
@@ -5770,20 +5787,16 @@ msgid "Core ID: "
 msgstr ""
 
 #: src/game_config_manager.cpp:212
-#, fuzzy
-#| msgid "The map is invalid."
 msgid "The ID is already in use."
-msgstr "Kartta on virheellinen."
+msgstr "Tunniste on jo käytössä."
 
 #: src/game_config_manager.cpp:224
 msgid "Core Path: "
 msgstr ""
 
 #: src/game_config_manager.cpp:225
-#, fuzzy
-#| msgid "Variable not found"
 msgid "File not found."
-msgstr "Muuttujaa ei löytynyt"
+msgstr "Tiedostoa ei löytynyt."
 
 #: src/game_config_manager.cpp:245 src/game_config_manager.cpp:257
 msgid "Error loading core data."
@@ -5802,10 +5815,8 @@ msgid "Can't locate the default core."
 msgstr ""
 
 #: src/game_config_manager.cpp:259
-#, fuzzy
-#| msgid "' (The game will now exit)"
 msgid "The game will now exit."
-msgstr "' (peli sulkeutuu nyt)"
+msgstr "Peli sulkeutuu nyt. "
 
 #: src/game_config_manager.cpp:320
 #, fuzzy
@@ -5843,13 +5854,13 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:915
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:937
 msgid "Error: "
-msgstr "Virhe:"
+msgstr "Virhe: "
 
 #: src/game_events/pump.cpp:478
 msgid "Warning: "
-msgstr "Varoitus:"
+msgstr "Varoitus: "
 
 #: src/game_events/pump.cpp:480
 msgid "Debug: "
@@ -5863,59 +5874,51 @@ msgstr "Info:"
 msgid "$login|’s game"
 msgstr "$login’n peli"
 
-#: src/game_initialization/connect_engine.cpp:86
+#: src/game_initialization/connect_engine.cpp:87
 msgid "Team"
 msgstr "Joukkue"
 
-#: src/game_initialization/connect_engine.cpp:990
-#, fuzzy
-#| msgid "Anonymous local player"
+#: src/game_initialization/connect_engine.cpp:991
 msgid "Anonymous player"
-msgstr "paikallinen pelaaja"
+msgstr "Anonyymi pelaaja"
 
-#: src/game_initialization/connect_engine.cpp:995
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:996
+#: src/game_initialization/connect_engine.cpp:1294
 msgid "Computer Player"
 msgstr "tietokonepelaaja"
 
-#: src/game_initialization/connect_engine.cpp:1037
+#: src/game_initialization/connect_engine.cpp:1038
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1289
+#: src/game_initialization/connect_engine.cpp:1290
 msgid "Network Player"
 msgstr "verkkopelaaja"
 
-#: src/game_initialization/connect_engine.cpp:1292
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Local Player"
 msgstr "paikallinen pelaaja"
 
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:1295
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1297
+#: src/game_initialization/connect_engine.cpp:1298
 msgid "Reserved"
 msgstr "Varattu"
 
 #: src/game_initialization/create_engine.cpp:73
-#: src/game_initialization/create_engine.cpp:666
-#, fuzzy
-#| msgid "The game could not be loaded: "
+#: src/game_initialization/create_engine.cpp:662
 msgid "Map could not be loaded: "
-msgstr "Peliä ei voitu ladata: "
+msgstr "Karttaa ei voitu ladata: "
 
 #: src/game_initialization/create_engine.cpp:77
-#, fuzzy
-#| msgid "The game could not be loaded: "
 msgid "Map could not be loaded."
-msgstr "Peliä ei voitu ladata: "
+msgstr "Karttaa ei voitu ladata:"
 
 #: src/game_initialization/create_engine.cpp:94
-#, fuzzy
-#| msgid "Era not available"
 msgid "not available."
-msgstr "Aikakausi ei saatavilla"
+msgstr "ei saatavilla. "
 
 #: src/game_initialization/create_engine.cpp:149
 #, fuzzy
@@ -5923,35 +5926,29 @@ msgstr "Aikakausi ei saatavilla"
 msgid "Custom map."
 msgstr "Komennot"
 
-#: src/game_initialization/depcheck.cpp:491
-#, fuzzy
-#| msgid "Install dependencies"
+#: src/game_initialization/depcheck.cpp:489
 msgid "Failed to resolve dependencies"
-msgstr "Asenna riippuvuudet"
+msgstr "Epäonnistui ratkaisemaan riippuvuuksia"
 
-#: src/game_initialization/depcheck.cpp:516
+#: src/game_initialization/depcheck.cpp:514
 msgid "Scenario can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "Skenaariota ei voida aktivoida. Joitakin riippuvuuksia puuttuu:"
 
-#: src/game_initialization/depcheck.cpp:570
-#: src/game_initialization/depcheck.cpp:693
-#, fuzzy
-#| msgid "No eras found."
+#: src/game_initialization/depcheck.cpp:568
+#: src/game_initialization/depcheck.cpp:691
 msgid "No compatible eras found."
-msgstr "Ei löydettyjä aikakausia."
+msgstr "Yhteensopivia aikakausia ei löytynyt."
 
-#: src/game_initialization/depcheck.cpp:585
+#: src/game_initialization/depcheck.cpp:583
 msgid "Era can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "Aikakautta ei voida aktivoida. Joitakin riippuvuuksia puuttuu:"
 
-#: src/game_initialization/depcheck.cpp:638
-#: src/game_initialization/depcheck.cpp:730
-#, fuzzy
-#| msgid "No multiplayer sides found"
+#: src/game_initialization/depcheck.cpp:636
+#: src/game_initialization/depcheck.cpp:728
 msgid "No compatible scenarios found."
-msgstr "Moninpelin puolia ei löytynyt."
+msgstr "Yhteensopivia skenaarioita ei löytynyt. "
 
-#: src/game_initialization/depcheck.cpp:667
+#: src/game_initialization/depcheck.cpp:665
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
@@ -5974,84 +5971,86 @@ msgstr "Ei löydetty johtajaa liittoumalle $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:246
+#: src/game_initialization/lobby_data.cpp:224
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $name"
 msgstr "Komennon parametri $arg_id puuttuu"
 
-#: src/game_initialization/lobby_data.cpp:248
+#: src/game_initialization/lobby_data.cpp:226
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Komennon parametri $arg_id puuttuu"
 
-#: src/game_initialization/lobby_data.cpp:285
+#: src/game_initialization/lobby_data.cpp:258
 msgid "Unknown era"
 msgstr "Tuntematon aikakausi"
 
-#: src/game_initialization/lobby_data.cpp:353
-#: src/game_initialization/lobby_data.cpp:386
-#, fuzzy
-#| msgid "scenario settings^Side"
+#: src/game_initialization/lobby_data.cpp:325
+#: src/game_initialization/lobby_data.cpp:358
 msgid "scenario_abbreviation^S"
-msgstr "Puoli"
+msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:372
+#: src/game_initialization/lobby_data.cpp:344
 msgid "Remote scenario"
 msgstr "Toisella koneella oleva skenaario"
 
-#: src/game_initialization/lobby_data.cpp:394
-#: src/game_initialization/lobby_data.cpp:417
+#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:389
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:422
+#: src/game_initialization/lobby_data.cpp:394
 msgid "Unknown scenario"
 msgstr "Tuntematon skenaario"
 
-#: src/game_initialization/lobby_data.cpp:432
+#: src/game_initialization/lobby_data.cpp:404
 msgid "Reloaded game"
 msgstr "Uudelleenladattu peli"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:419
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vapaa paikka:"
 msgstr[1] "Vapaita paikkoja:"
 
-#: src/game_initialization/lobby_data.cpp:449
+#: src/game_initialization/lobby_data.cpp:421
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:460
-#: src/game_initialization/lobby_data.cpp:462 src/savegame.cpp:619
+#: src/game_initialization/lobby_data.cpp:432
+#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:639
 msgid "Turn"
 msgstr "vuoro"
 
-#: src/game_initialization/lobby_data.cpp:475
+#: src/game_initialization/lobby_data.cpp:447
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "Versio: "
 
-#: src/game_initialization/lobby_data.cpp:484
+#: src/game_initialization/lobby_data.cpp:456
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Aikaraja"
 
-#: src/game_initialization/lobby_data.cpp:524
+#: src/game_initialization/lobby_data.cpp:496
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:538
+#: src/game_initialization/lobby_data.cpp:510
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
+
+#: src/game_initialization/mp_game_utils.cpp:76
+msgid "Defeat enemy leader(s)"
+msgstr "Kukista vihollisjohtaja(t)"
 
 #: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
@@ -6061,11 +6060,11 @@ msgstr "Aikakautta $era ei löydy"
 msgid "Connection timed out"
 msgstr "Yhteys katkaistiin odotuksen jälkeen."
 
-#: src/game_initialization/multiplayer.cpp:71
+#: src/game_initialization/multiplayer.cpp:73
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:118
+#: src/game_initialization/multiplayer.cpp:120
 #, fuzzy
 #| msgid ""
 #| "The server requires version '$version1' while you are using version "
@@ -6076,11 +6075,11 @@ msgid ""
 msgstr ""
 "Palvelin edellyttää versiota '$version1', kun sinulla on versio '$version2.'"
 
-#: src/game_initialization/multiplayer.cpp:128
+#: src/game_initialization/multiplayer.cpp:130
 msgid "Server-side redirect loop"
 msgstr "Palvelinpuolen uudelleenohjaussilmukka"
 
-#: src/game_initialization/multiplayer.cpp:200
+#: src/game_initialization/multiplayer.cpp:212
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6088,31 +6087,31 @@ msgid ""
 msgstr ""
 "Käyttäjänimi ‘$nick’ ei ole aktiivinen. Et voi omistaa tätä käyttäjänimeä "
 "ennen kuin aktivoit tunnuksesi sähköpostilla, tai pyydät ylläpitäjää "
-"tekemään sen puolestasi. "
+"tekemään sen puolestasi."
 
-#: src/game_initialization/multiplayer.cpp:209
+#: src/game_initialization/multiplayer.cpp:221
 msgid "Do you want to continue?"
 msgstr "Haluatko jatkaa?"
 
-#: src/game_initialization/multiplayer.cpp:211
+#: src/game_initialization/multiplayer.cpp:223
 msgid "Warning"
-msgstr "Varoitus:"
+msgstr "Varoitus"
 
-#: src/game_initialization/multiplayer.cpp:254
-#: src/game_initialization/multiplayer.cpp:270
-#: src/game_initialization/multiplayer.cpp:273
+#: src/game_initialization/multiplayer.cpp:266
+#: src/game_initialization/multiplayer.cpp:282
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Bad data received from server"
 msgstr "Virhe palvelimelta saadussa datassa"
 
-#: src/game_initialization/multiplayer.cpp:306
+#: src/game_initialization/multiplayer.cpp:318
 msgid "You must login first."
 msgstr "Sinun täytyy ensin sisäänkirjautua."
 
-#: src/game_initialization/multiplayer.cpp:308
+#: src/game_initialization/multiplayer.cpp:320
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Nimimerkki ”$nick” on jo käytössä."
 
-#: src/game_initialization/multiplayer.cpp:310
+#: src/game_initialization/multiplayer.cpp:322
 #, fuzzy
 #| msgid ""
 #| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
@@ -6124,46 +6123,46 @@ msgstr ""
 "Nimimerkissä ”$nick” on epäkelpoja merkkejä. Nimimerkissä voi olla vain "
 "kirjaimia, numeroita, alaviivoja ja tavuviivoja."
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:326
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Nimimerkki '$nick' on liian pitkä. Nimimerkissä voi olla enintään 20 merkkiä."
 
-#: src/game_initialization/multiplayer.cpp:317
+#: src/game_initialization/multiplayer.cpp:329
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Nimimerkki ”$nick” on varattu, eikä pelaajat voi käyttää sitä."
 
-#: src/game_initialization/multiplayer.cpp:319
+#: src/game_initialization/multiplayer.cpp:331
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Nimimerkki ”$nick” ei ole rekisteröity tällä palvelimella."
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:332
 msgid " This server disallows unregistered nicknames."
 msgstr "Tämä palvelin ei hyväksy rekisteröimättömiä nimimerkkejä."
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:335
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:337
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:341
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:343
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:347
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
@@ -6171,19 +6170,19 @@ msgid ""
 "for $duration|."
 msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
 
-#: src/game_initialization/multiplayer.cpp:337
+#: src/game_initialization/multiplayer.cpp:349
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
 
-#: src/game_initialization/multiplayer.cpp:340
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:352
+#: src/game_initialization/multiplayer.cpp:354
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:355
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6191,70 +6190,58 @@ msgstr ""
 "VAROITUS: Paikalla on jo yksi asiakasohjelma, joka käyttää tätä nimimerkkiä, "
 "sisäänkirjautuminen aiheuttaa tämän asiakasohjelman ulospotkimisen."
 
-#: src/game_initialization/multiplayer.cpp:346
+#: src/game_initialization/multiplayer.cpp:358
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Virhe sisäänkirjautumisprosessissa (palvelimella ei ole esiastetta "
 "yhteydellesi)."
 
-#: src/game_initialization/multiplayer.cpp:349
+#: src/game_initialization/multiplayer.cpp:361
 msgid "The password you provided was incorrect."
 msgstr "Antamasi salasana on väärä."
 
-#: src/game_initialization/multiplayer.cpp:351
+#: src/game_initialization/multiplayer.cpp:363
 msgid "You have made too many login attempts."
 msgstr "Liian monta kirjautumisyritystä."
 
-#: src/game_initialization/playcampaign.cpp:62
+#: src/game_initialization/playcampaign.cpp:63
 msgid "Remaining gold: "
 msgstr "Jäljellä oleva kulta: "
 
-#: src/game_initialization/playcampaign.cpp:66
+#: src/game_initialization/playcampaign.cpp:67
 msgid "Turns finished early: "
 msgstr "Jäljelle jääneet vuorot: "
 
-#: src/game_initialization/playcampaign.cpp:67
-#, fuzzy
-#| msgid "per turn"
+#: src/game_initialization/playcampaign.cpp:68
 msgid " per turn"
-msgstr "jokaisesta vuorosta"
+msgstr "per vuoro"
 
-#: src/game_initialization/playcampaign.cpp:67
+#: src/game_initialization/playcampaign.cpp:68
 msgid "Early finish bonus: "
 msgstr "Palkinto aikaisesta lopetuksesta: "
 
-#: src/game_initialization/playcampaign.cpp:68
-#, fuzzy
-#| msgid "Turn bonus: "
+#: src/game_initialization/playcampaign.cpp:69
 msgid "Total bonus: "
-msgstr "Vuorobonus: "
+msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:70
-#, fuzzy
-#| msgid "Village gold: "
+#: src/game_initialization/playcampaign.cpp:71
 msgid "Total gold: "
-msgstr "Kulta kylistä: "
+msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:73
-#, fuzzy
-#| msgid "Carry over percentage: "
+#: src/game_initialization/playcampaign.cpp:74
 msgid "Carryover percentage: "
 msgstr "Yliviennin prosentti: "
 
-#: src/game_initialization/playcampaign.cpp:76
-#, fuzzy
-#| msgid "Bonus Gold: "
+#: src/game_initialization/playcampaign.cpp:77
 msgid "Bonus gold: "
 msgstr "Palkintokultaa: "
 
-#: src/game_initialization/playcampaign.cpp:78
-#, fuzzy
-#| msgid "Retained Gold: "
+#: src/game_initialization/playcampaign.cpp:79
 msgid "Retained gold: "
 msgstr "Jäljelle jäänyttä kultaa:"
 
-#: src/game_initialization/playcampaign.cpp:91
+#: src/game_initialization/playcampaign.cpp:92
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -6268,7 +6255,7 @@ msgstr[1] ""
 "Aloitat seuraavan skenaarion $gold| kultapalalla ja lisäksi määrätyllä "
 "vähimmäisaloituskullalla."
 
-#: src/game_initialization/playcampaign.cpp:99
+#: src/game_initialization/playcampaign.cpp:100
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -6276,7 +6263,7 @@ msgid_plural ""
 msgstr[0] "Aloitat seuraavan skenaarion määrätyllä vähimmäisaloituskullalla."
 msgstr[1] "Aloitat seuraavan skenaarion määrätyllä vähimmäisaloituskullalla."
 
-#: src/game_initialization/playcampaign.cpp:107
+#: src/game_initialization/playcampaign.cpp:108
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6290,97 +6277,91 @@ msgstr[1] ""
 "Aloitat seuraavan skenaarion $gold| kultapalalla tai määrätyllä "
 "vähimmäisaloituskullalla, riippuen siitä, kumpi on suurempi."
 
-#: src/game_initialization/playcampaign.cpp:137
+#: src/game_initialization/playcampaign.cpp:138
 msgid "Scenario Report"
 msgstr "Taisteluraportti"
 
-#: src/game_initialization/playcampaign.cpp:139
+#: src/game_initialization/playcampaign.cpp:140
 msgid "Victory"
 msgstr "Voitto!"
 
-#: src/game_initialization/playcampaign.cpp:140
+#: src/game_initialization/playcampaign.cpp:141
 msgid "You have emerged victorious!"
 msgstr "Olet voittaja!"
 
-#: src/game_initialization/playcampaign.cpp:142
+#: src/game_initialization/playcampaign.cpp:143
 msgid "Defeat"
 msgstr "Tappio"
 
-#: src/game_initialization/playcampaign.cpp:143
+#: src/game_initialization/playcampaign.cpp:144
 msgid "You have been defeated!"
 msgstr "Sinut on kukistettu!"
 
-#: src/game_initialization/playcampaign.cpp:293 src/game_launcher.cpp:868
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:890
 msgid "The game could not be loaded: "
 msgstr "Peliä ei voitu ladata: "
 
-#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:870
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:892
 msgid "Error while playing the game: "
 msgstr "Virhe pelatessa: "
 
-#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:907
+#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:929
 msgid "The game map could not be loaded: "
 msgstr "Karttaa ei voitu ladata: "
 
-#: src/game_initialization/playcampaign.cpp:305 src/game_launcher.cpp:872
-#: src/game_launcher.cpp:1006
+#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:894
+#: src/game_launcher.cpp:1028
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:307
+#: src/game_initialization/playcampaign.cpp:311
 msgid "Error while reading the WML: "
 msgstr "Virhe luettaessa WML:ää: "
 
-#: src/game_initialization/playcampaign.cpp:344
+#: src/game_initialization/playcampaign.cpp:348
 #: src/playsingle_controller.cpp:312
 msgid "Game Over"
 msgstr "Loppu"
 
-#: src/game_initialization/playcampaign.cpp:345
+#: src/game_initialization/playcampaign.cpp:349
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Skenaario on loppunut. Haluatko jatkaa kampanjaa?"
 
-#: src/game_initialization/playcampaign.cpp:413
+#: src/game_initialization/playcampaign.cpp:417
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Tuntematon skenaario: '$scenario|'"
 
 #: src/game_initialization/singleplayer.cpp:42
-#, fuzzy
-#| msgid "No campaigns are available.\n"
 msgid "No campaigns are available."
-msgstr "Yhtään kampanjaa ei ole saatavilla.\n"
+msgstr "Yhtään kampanjaa ei ole saatavilla."
 
-#: src/game_launcher.cpp:649 src/game_launcher.cpp:667
+#: src/game_launcher.cpp:670 src/game_launcher.cpp:688
 msgid "The file you have tried to load is corrupt"
 msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
 
-#: src/game_launcher.cpp:652 src/game_launcher.cpp:670
-#: src/hotkey/hotkey_handler_sp.cpp:312 src/savegame.cpp:147
-#: src/savegame.cpp:292
+#: src/game_launcher.cpp:673 src/game_launcher.cpp:691
+#: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:154
+#: src/savegame.cpp:309
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tiedosto, jonka yritit ladata, on vahingoittunut: '"
 
-#: src/game_launcher.cpp:660
+#: src/game_launcher.cpp:681
 msgid "File I/O Error while reading the game"
 msgstr "Peliä luettaessa tiedoston I/O -virhe"
 
-#: src/game_launcher.cpp:662
+#: src/game_launcher.cpp:683
 msgid "File I/O Error while reading the game: '"
 msgstr "Pelitiedoston lukuvirhe: '"
 
-#: src/game_launcher.cpp:866
+#: src/game_launcher.cpp:888
 msgid "Error while starting server: "
 msgstr "Virhe käynnistäessä palvelinta:"
 
-#: src/game_launcher.cpp:888
-#, fuzzy
-#| msgid "Connection timed out"
+#: src/game_launcher.cpp:910
 msgid "Connection failed: "
-msgstr "Yhteys katkaistiin odotuksen jälkeen."
+msgstr "Yhteys epäonnistui:"
 
 #: src/generators/default_map_generator_job.cpp:715
-#, fuzzy
-#| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
 msgstr "Satunnaiskartat oudoilla leveyksillä eivät ole tuettuja."
 
@@ -6414,63 +6395,51 @@ msgstr[0] "Valitsemallasi lisäosalla on seuraava riippuvuus. Asennetaanko se?"
 msgstr[1] ""
 "Valitsemallasi lisäosalla on seuraavat riippuvuudet. Asennetaanko ne?"
 
-#: src/gui/dialogs/game_load.hpp:40
-msgid "No Saved Games"
-msgstr "Ei tallennettuja pelejä."
-
-#: src/gui/dialogs/game_load.hpp:40
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
-msgid "There are no save files to load"
-msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
-
 #: src/gui/dialogs/game_stats.hpp:43
 #, fuzzy
 #| msgid "No multiplayer sides found"
 msgid "No visible sides found."
 msgstr "Moninpelin puolia ei löytynyt."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:104
+#: src/gui/dialogs/multiplayer/player_info.cpp:110
 msgid "In game:"
 msgstr "Pelissä:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:106
+#: src/gui/dialogs/multiplayer/player_info.cpp:112
 msgid "(observing)"
 msgstr "(tarkkailee)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:108
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "(playing)"
 msgstr "(pelaa)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:111
+#: src/gui/dialogs/multiplayer/player_info.cpp:117
 msgid "In lobby"
 msgstr "Aulassa"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:140
+#: src/gui/dialogs/multiplayer/player_info.cpp:146
 msgid "On friends list"
 msgstr "Ystävälistalla"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:145
+#: src/gui/dialogs/multiplayer/player_info.cpp:151
 msgid "On ignores list"
 msgstr "Suodatuslistalla"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:150
+#: src/gui/dialogs/multiplayer/player_info.cpp:156
 msgid "Neither a friend nor ignored"
 msgstr "Ei ystävä eikä suodatettuna"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:155
+#: src/gui/dialogs/multiplayer/player_info.cpp:161
 msgid "You"
 msgstr "Sinä"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:158
+#: src/gui/dialogs/multiplayer/player_info.cpp:164
 msgid "Error"
 msgstr "Virhe"
 
 #: src/gui/dialogs/unit_list.hpp:45
-#, fuzzy
-#| msgid "No eras found."
 msgid "No units found."
-msgstr "Ei löydettyjä aikakausia."
+msgstr "Yksiköitä ei löytynyt."
 
 #: src/gui/widgets/status_label_helper.hpp:33
 msgid "no"
@@ -6484,358 +6453,149 @@ msgstr "kyllä"
 msgid "Reference to unknown topic: "
 msgstr "Viittaus tuntemattomaan aiheeseen: "
 
-#: src/help/help_impl.cpp:349
+#: src/help/help_impl.cpp:356
 msgid "Only available during a scenario."
-msgstr ""
+msgstr "Käytettävissä vain skenaarion aikana. "
 
-#: src/help/help_impl.cpp:366
+#: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
+#, fuzzy
+#| msgid "Time of day: "
+msgid "Time of Day Schedule"
+msgstr "Vuorokaudenaika:"
+
+#: src/help/help_impl.cpp:384
+#, fuzzy
+#| msgid "Lawful units: "
+msgid "Lawful Bonus:"
+msgstr "Lainkuuliaiset yksiköt: "
+
+#: src/help/help_impl.cpp:385
+#, fuzzy
+#| msgid "Neutral units: "
+msgid "Neutral Bonus:"
+msgstr "Neutraalit yksiköt: "
+
+#: src/help/help_impl.cpp:386
+#, fuzzy
+#| msgid "Chaotic units: "
+msgid "Chaotic Bonus:"
+msgstr "Kaoottiset yksiköt: "
+
+#: src/help/help_impl.cpp:387
+#, fuzzy
+#| msgid "Liminal units: "
+msgid "Liminal Bonus:"
+msgstr "Hämärässä viihtyvät yksiköt:"
+
+#: src/help/help_impl.cpp:388
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:458
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
+#: src/help/help_impl.cpp:480
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Yksiköt tällä erikoishyökkäyksellä'</header>"
 
-#: src/help/help_impl.cpp:522
-#, fuzzy
-#| msgid "<header>text='Units having this ability'</header>"
+#: src/help/help_impl.cpp:544
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Yksiköt tällä ominaisuudella'</header>"
 
-#: src/help/help_impl.cpp:552
+#: src/help/help_impl.cpp:574
 msgid "Era:"
 msgstr "Aikakausi:"
 
-#: src/help/help_impl.cpp:560
+#: src/help/help_impl.cpp:582
 msgid "Factions"
 msgstr "Liittoumat"
 
-#: src/help/help_impl.cpp:609
-#, fuzzy
-#| msgid "Race: "
+#: src/help/help_impl.cpp:630
 msgid "Races: "
-msgstr "Laji: "
+msgstr "Lajit: "
 
-#: src/help/help_impl.cpp:618 src/help/help_impl.cpp:969
-#, fuzzy
-#| msgid "Alignment: "
+#: src/help/help_impl.cpp:639 src/help/help_impl.cpp:990
 msgid "Alignments: "
-msgstr "Suuntautuminen: "
+msgstr "Suuntautumiset: "
 
-#: src/help/help_impl.cpp:625
-#, fuzzy
-#| msgid "Leaders:"
+#: src/help/help_impl.cpp:646
 msgid "Leaders"
-msgstr "Johtajat:"
+msgstr "Johtajat"
 
-#: src/help/help_impl.cpp:634
+#: src/help/help_impl.cpp:655
 msgid "Recruits"
 msgstr "Värväyksiä"
 
-#: src/help/help_impl.cpp:695 src/units/types.cpp:479
+#: src/help/help_impl.cpp:716 src/units/types.cpp:485
 msgid "No description available."
 msgstr "Kuvausta ei ole saatavilla."
 
-#: src/help/help_impl.cpp:699 src/help/help_impl.cpp:701
-#, fuzzy
-#| msgid "Ability: "
+#: src/help/help_impl.cpp:720 src/help/help_impl.cpp:722
 msgid "Availability: "
-msgstr "Erikoistaito:"
+msgstr "Saatavuus:"
 
-#: src/help/help_impl.cpp:699
+#: src/help/help_impl.cpp:720
 msgid "Must-have"
 msgstr ""
 
-#: src/help/help_impl.cpp:701
-#, fuzzy
-#| msgid "Era not available"
+#: src/help/help_impl.cpp:722
 msgid "Unavailable"
-msgstr "Aikakausi ei saatavilla"
+msgstr "Ei saatavilla"
 
-#: src/help/help_impl.cpp:781 src/help/help_impl.cpp:957
-#: src/help/help_topic_generators.cpp:400
+#: src/help/help_impl.cpp:802 src/help/help_impl.cpp:978
 msgid "race^Miscellaneous"
 msgstr "Sekalainen"
 
-#: src/help/help_impl.cpp:969 src/reports.cpp:382
+#: src/help/help_impl.cpp:990 src/reports.cpp:369
 msgid "Alignment: "
 msgstr "Suuntautuminen: "
 
-#: src/help/help_impl.cpp:976
+#: src/help/help_impl.cpp:997
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Tämänlajiset yksiköt'</header>"
 
-#: src/help/help_impl.cpp:1287
+#: src/help/help_impl.cpp:1308
 msgid "corrupted original file"
 msgstr "turmeltunut alkuperäistiedosto"
 
-#: src/help/help_topic_generators.cpp:62
-msgid "Best of"
-msgstr ""
-
-#: src/help/help_topic_generators.cpp:62
-msgid "Worst of"
-msgstr ""
-
-#: src/help/help_topic_generators.cpp:158
-#, fuzzy
-#| msgid "Terrain: "
-msgid "Base Terrain: "
-msgstr "Maasto:"
-
-#: src/help/help_topic_generators.cpp:177
-#, fuzzy
-#| msgid "Movement Cost"
-msgid "Movement properties: "
-msgstr "Liikkumiskustannus"
-
-#: src/help/help_topic_generators.cpp:181
-#, fuzzy
-#| msgid "Defense: "
-msgid "Defense properties: "
-msgstr "Puolustus:"
-
-#: src/help/help_topic_generators.cpp:261
-#, fuzzy
-#| msgid "Level: "
-msgid "Level"
-msgstr "Taso:"
-
-#: src/help/help_topic_generators.cpp:322
-msgid "Advances from: "
-msgstr "Ylenee yksiköstä: "
-
-#: src/help/help_topic_generators.cpp:324
-msgid "Advances to: "
-msgstr "Ylenee yksiköksi: "
-
-#: src/help/help_topic_generators.cpp:353
-#, fuzzy
-#| msgid "Base attacks: "
-msgid "Base unit: "
-msgstr "Perushyökkäyksiä:"
-
-#: src/help/help_topic_generators.cpp:358
-#, fuzzy
-#| msgid "Lawful units: "
-msgid "Base units: "
-msgstr "Lainkuuliaiset yksiköt: "
-
-#: src/help/help_topic_generators.cpp:376
-#, fuzzy
-#| msgid "Factions:"
-msgid "Variations: "
-msgstr "Liittoumat:"
-
-#: src/help/help_topic_generators.cpp:402 src/reports.cpp:203
-msgid "Race: "
-msgstr "Laji: "
-
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
-msgid "Traits"
-msgstr "Ominaisuudet"
-
-#: src/help/help_topic_generators.cpp:472
-msgid "Abilities: "
-msgstr "Erikoistaidot: "
-
-#: src/help/help_topic_generators.cpp:490
-msgid "Ability Upgrades: "
-msgstr "Taitopäivitykset:"
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
-msgid "HP:"
-msgstr "EP: "
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
-msgid "Moves:"
-msgstr "Liikepisteitä: "
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Version: "
-msgid "Vision:"
-msgstr "Versio: "
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Warning: "
-msgid "Jamming:"
-msgstr "Varoitus:"
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
-msgid "Cost:"
-msgstr "Hinta: "
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
-msgid "Alignment:"
-msgstr "Suuntautuminen: "
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  It uses
-#. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
-#. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
-msgid "Required XP:"
-msgstr "Vaadittu kokemus (KP): "
-
-#: src/help/help_topic_generators.cpp:552
-msgid "unit help^Attacks"
-msgstr "Hyökkäykset"
-
-#: src/help/help_topic_generators.cpp:559
-msgid "unit help^Name"
-msgstr "Nimi"
-
-#: src/help/help_topic_generators.cpp:560
-msgid "Strikes"
-msgstr "iskut"
-
-#: src/help/help_topic_generators.cpp:561
-msgid "Range"
-msgstr "etäisyys"
-
-#: src/help/help_topic_generators.cpp:562
-msgid "Type"
-msgstr "tyyppi"
-
-#: src/help/help_topic_generators.cpp:563
-#, fuzzy
-#| msgid "Special"
-msgid "Special"
-msgstr "erikoisuus"
-
-#: src/help/help_topic_generators.cpp:641
-msgid "Resistances"
-msgstr "Vastustukset"
-
-#: src/help/help_topic_generators.cpp:645
-msgid "Attack Type"
-msgstr "hyökkäystyyppi"
-
-#: src/help/help_topic_generators.cpp:646
-msgid "Resistance"
-msgstr "vastustus"
-
-#: src/help/help_topic_generators.cpp:675
-#, fuzzy
-#| msgid "Terrain Modifiers"
-msgid "Terrain Modifiers"
-msgstr "Maaston vaikutus"
-
-#: src/help/help_topic_generators.cpp:679
-msgid "Terrain"
-msgstr "maasto"
-
-#: src/help/help_topic_generators.cpp:680
-msgid "Defense"
-msgstr "Puolustus"
-
-#: src/help/help_topic_generators.cpp:681
-#, fuzzy
-#| msgid "Movement Cost"
-msgid "Movement Cost"
-msgstr "Liikkumiskustannus"
-
-#: src/help/help_topic_generators.cpp:685
-#, fuzzy
-#| msgid "Defense: "
-msgid "Defense Cap"
-msgstr "Puolustus:"
-
-#: src/help/help_topic_generators.cpp:690
-#, fuzzy
-#| msgid "Version: "
-msgid "Vision Cost"
-msgstr "Versio: "
-
-#: src/help/help_topic_generators.cpp:694
-msgid "Jamming Cost"
-msgstr ""
-
 #: src/hotkey/command_executor.cpp:395
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
-msgstr "Haluatko todellakin tuhota tämän tallennuksen?"
+msgstr "Haluatko varmasti luovuttaa pelin?"
 
 #: src/hotkey/command_executor.cpp:395
 msgid "Surrender"
-msgstr ""
+msgstr "Luovuttaa"
 
 #: src/hotkey/command_executor.cpp:808
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Map-Screenshot"
-msgstr "Kuvankaappaus"
+msgstr "Kartan kuvankaappaus"
 
-#: src/hotkey/hotkey_handler.cpp:217
-#, fuzzy
-#| msgid "(press $hotkey to keep moving)"
+#: src/hotkey/hotkey_handler.cpp:221
 msgid "(press $hk to disable)"
-msgstr "(paina $hotkey jatkaaksesi)"
+msgstr "(paina $hk poistaaksesi käytöstä)"
 
-#: src/hotkey/hotkey_handler.cpp:217
+#: src/hotkey/hotkey_handler.cpp:221
 msgid "Accelerated speed enabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:221
+#: src/hotkey/hotkey_handler.cpp:225
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:414
-#, fuzzy
-#| msgid "Back to turn "
+#: src/hotkey/hotkey_handler.cpp:421
 msgid "Back to Turn "
-msgstr "Takaisin vuoron alkuun"
+msgstr "Takaisin vuoroon"
 
-#: src/hotkey/hotkey_handler.cpp:420
-#, fuzzy
-#| msgid "Back to start"
+#: src/hotkey/hotkey_handler.cpp:427
 msgid "Back to Start"
 msgstr "Takaisin alkuun"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144
-#, fuzzy
-#| msgid "(press $hotkey to keep moving)"
+#: src/hotkey/hotkey_handler_sp.cpp:145
 msgid "(press $hotkey to deactivate)"
-msgstr "(paina $hotkey jatkaaksesi)"
+msgstr "(paina $hotkey poistaaksesi käytöstä)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1980
+#: src/hotkey/hotkey_handler_sp.cpp:145 src/menu_events.cpp:2052
 msgid "Planning mode activated!"
 msgstr "Suunnittelutila otettu käyttöön!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1983
+#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2055
 msgid "Planning mode deactivated!"
 msgstr "Suunnittelutila poistettu käytöstä!"
 
@@ -6843,27 +6603,27 @@ msgstr "Suunnittelutila poistettu käytöstä!"
 msgid "System default language"
 msgstr "järjestelmän oletuskieli"
 
-#: src/map/location.cpp:164
+#: src/map/location.cpp:165
 msgid "North"
 msgstr ""
 
-#: src/map/location.cpp:166
+#: src/map/location.cpp:167
 msgid "North East"
 msgstr ""
 
-#: src/map/location.cpp:168
+#: src/map/location.cpp:169
 msgid "North West"
 msgstr ""
 
-#: src/map/location.cpp:170
+#: src/map/location.cpp:171
 msgid "South"
 msgstr ""
 
-#: src/map/location.cpp:172
+#: src/map/location.cpp:173
 msgid "South East"
 msgstr ""
 
-#: src/map/location.cpp:174
+#: src/map/location.cpp:175
 msgid "South West"
 msgstr ""
 
@@ -6892,15 +6652,21 @@ msgstr ""
 "komennolle, riippuen parametristä. Käytä ”help all” -komentoa nähdäksesi nyt "
 "saavuttamattomissakin olevat komennot."
 
-#: src/map_command_handler.hpp:218
-msgid "do not translate the 'all'^[all|<command>]"
-msgstr "[all|<komento>]"
+#. TRANSLATORS: These are the arguments accepted by the "help" command,
+#. which are either "all" or the name of another command.
+#. As with the command's name, "all" is hardcoded, and shouldn't change in the translation.
+#: src/map_command_handler.hpp:221
+msgid ""
+"[all|<command>]\n"
+"“all” = overview of all commands, <command> = name of a specific command "
+"(provides more detail)"
+msgstr ""
 
-#: src/map_command_handler.hpp:263
+#: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
 msgstr "Komennon parametri $arg_id puuttuu"
 
-#: src/map_command_handler.hpp:311
+#: src/map_command_handler.hpp:314
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -6908,30 +6674,32 @@ msgstr ""
 "Tuetut komennot $flags_description:\n"
 "$list_of_commands"
 
-#: src/map_command_handler.hpp:311 src/map_command_handler.hpp:312
-#: src/map_command_handler.hpp:336
+#: src/map_command_handler.hpp:314 src/map_command_handler.hpp:315
+#: src/map_command_handler.hpp:345
 msgid "help"
 msgstr "apua"
 
-#: src/map_command_handler.hpp:312
+#: src/map_command_handler.hpp:315
 msgid "Type $help_command <command> for more info."
 msgstr "Kirjoita $help_command <komento> saadaksesi lisätietoja"
 
-#: src/map_command_handler.hpp:323
+#: src/map_command_handler.hpp:326
 msgid " No help available."
 msgstr " Ohjetta ei ole saatavilla."
 
-#: src/map_command_handler.hpp:329
+#: src/map_command_handler.hpp:332
 msgid "Usage:"
 msgstr "Käyttö:"
 
-#: src/map_command_handler.hpp:334
-msgid "aliases:"
-msgstr "lyhytkomennot:"
+#. TRANSLATORS: alternative names for command-line commands, only shown if
+#. there is at least one of them.
+#: src/map_command_handler.hpp:343
+msgid "command^Alias:"
+msgid_plural "Aliases:"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/menu_events.cpp:177
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Tallenna kartta nimellä"
 
@@ -6943,58 +6711,75 @@ msgstr "Kartta tallennettu."
 msgid "Could not save the map: $msg"
 msgstr "Ei voitu tallentaa karttaa: $msg"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:220
 msgid "Message:"
 msgstr "Viesti:"
 
-#: src/menu_events.cpp:223
+#: src/menu_events.cpp:222
 msgid "Send to observers only"
 msgstr "Lähetä vain katsojille"
 
-#: src/menu_events.cpp:224
+#: src/menu_events.cpp:223
 msgid "Send to allies only"
 msgstr "Lähetä vain liittolaisille"
 
-#: src/menu_events.cpp:273
+#: src/menu_events.cpp:274
 msgid "You have no units available to recruit."
 msgstr "Sinulla ei ole yksiköitä, joita värvätä."
 
-#: src/menu_events.cpp:283
-#, fuzzy
-#| msgid "No eras found."
-msgid "No unit recruited"
-msgstr "Ei löydettyjä aikakausia."
+#: src/menu_events.cpp:284
+msgid "No unit recruited."
+msgstr "Ei värvättyä yksikköä."
+
+#: src/menu_events.cpp:309
+msgid "Internal error. Please report this as a bug! Details:\n"
+msgstr ""
 
 #: src/menu_events.cpp:315
-msgid "You do not have enough gold to recruit that unit"
+msgid "You cannot recruit a $unit_type_name at this time."
+msgstr "Et voi värvätä yksikköä $unit_type_name tällä hetkellä. "
+
+#. TRANSLATORS: "plan" refers to Planning Mode
+#: src/menu_events.cpp:329
+#, fuzzy
+#| msgid "You do not have enough gold to recruit that unit"
+msgid ""
+"At this point in your plan, you will not have enough gold to recruit this "
+"unit."
 msgstr "Sinulla ei ole tarpeeksi kultaa yksikön värväämiseen."
 
-#: src/menu_events.cpp:351
-msgid "You are separated from your soldiers and may not recall them"
+#: src/menu_events.cpp:331
+msgid "You do not have enough gold to recruit this unit."
+msgstr "Sinulla ei ole tarpeeksi kultaa yksikön värväämiseen."
+
+#: src/menu_events.cpp:374
+msgid "You are separated from your soldiers and may not recall them."
 msgstr "Olet erossa sotilaistasi, etkä voi kutsua heitä."
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:395
 msgid ""
-"There are no troops available to recall\n"
-"(You must have veteran survivors from a previous scenario)"
+"There are no troops available to recall.\n"
+"(You must have veteran survivors from a previous scenario.)"
 msgstr ""
 "Palvelukseen kutsuminen ei onnistu, koska sinulla ei ole jäljellä aiemmista "
 "tehtävistä henkiinjääneitä yksiköitä."
 
-#: src/menu_events.cpp:374
-msgid "You currently can't recall at the highlighted location"
+#: src/menu_events.cpp:399
+#, fuzzy
+#| msgid "You currently can't recall at the highlighted location"
+msgid "You currently can't recall at the highlighted location."
 msgstr "Et voi juuri nyt kutsua haluttuun "
 
-#: src/menu_events.cpp:386
-msgid "No unit recalled"
-msgstr ""
+#: src/menu_events.cpp:411
+msgid "No unit recalled."
+msgstr "Ei värvättyä veteraaniyksikköä. "
 
-#: src/menu_events.cpp:403
+#: src/menu_events.cpp:428
 #, fuzzy
 #| msgid "You must have at least 1 gold piece to recall a unit"
 #| msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgid "You must have at least 1 gold piece to recall a unit"
-msgid_plural "You must have at least $cost gold pieces to recall this unit"
+msgid "You must have at least 1 gold piece to recall a unit."
+msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] ""
 "Sinulla täytyy olla vähintään 1 kultapala voidaksesi kutsua yksikön takaisin "
 "palvelukseen."
@@ -7002,163 +6787,176 @@ msgstr[1] ""
 "Sinulla täytyy olla vähintään $cost kultapalaa voidaksesi kutsua yksikön "
 "takaisin palvelukseen."
 
-#: src/menu_events.cpp:549
+#: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
 msgstr "Et voi lopettaa vuoroasi vielä!"
 
-#: src/menu_events.cpp:564
+#: src/menu_events.cpp:589
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Et ole vielä aloittanut vuoroasi.  Haluatko todellakin lopettaa vuorosi?"
 
-#: src/menu_events.cpp:573
+#: src/menu_events.cpp:598
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Jokin yksiköistäsi voi vielä liikkua. Haluatko todellakin lopettaa vuorosi?"
 
-#: src/menu_events.cpp:582
-#, fuzzy
-#| msgid "Some units have movement left. Do you really want to end your turn?"
+#: src/menu_events.cpp:607
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
-"Jokin yksiköistäsi voi vielä liikkua. Haluatko todellakin lopettaa vuorosi?"
+"Jotkin yksiköistäsi eivät ole vielä liikkuneet. Haluatko todellakin lopettaa "
+"vuorosi?"
 
-#: src/menu_events.cpp:639
+#: src/menu_events.cpp:664
 msgid "Rename Unit"
 msgstr "Vaihda yksikön nimeä"
 
-#: src/menu_events.cpp:640
-#, fuzzy
-#| msgid "Name: "
+#: src/menu_events.cpp:665
 msgid "Name:"
-msgstr "Nimi: "
+msgstr "Nimi:"
 
-#: src/menu_events.cpp:815
-#, fuzzy
-#| msgid "Place Label"
+#: src/menu_events.cpp:840
 msgid "Clear Labels"
-msgstr "Lisää karttamerkintä"
+msgstr "Poista karttamerkinnät"
 
-#: src/menu_events.cpp:816
-#, fuzzy
-#| msgid "Are you sure you want to remove the following installed add-on?"
-#| msgid_plural ""
-#| "Are you sure you want to remove the following installed add-ons?"
+#: src/menu_events.cpp:841
 msgid "Are you sure you want to clear map labels?"
-msgstr "Haluatko varmasti poistaa lisäosan?"
+msgstr "Haluatko varmasti poistaa karttamerkinnät?"
 
-#: src/menu_events.cpp:1011
+#: src/menu_events.cpp:1042
 msgid "Search"
 msgstr "Etsi"
 
-#: src/menu_events.cpp:1150
+#: src/menu_events.cpp:1182
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) - vain testaus, (N) - vain verkko, (A) - vain ylläpito"
 
-#: src/menu_events.cpp:1157
+#: src/menu_events.cpp:1189
 msgid "(debug command)"
 msgstr "(testauskomennot)"
 
-#: src/menu_events.cpp:1158
+#: src/menu_events.cpp:1190
 msgid "(network only)"
 msgstr "(vain verkko)"
 
-#: src/menu_events.cpp:1160
+#: src/menu_events.cpp:1192
 msgid "(not during other events)"
-msgstr ""
+msgstr "(ei muiden tapahtumien aikana)"
 
-#: src/menu_events.cpp:1189
+#: src/menu_events.cpp:1221
 msgid "Refresh gui."
 msgstr "Päivitä käyttöliittymä."
 
-#: src/menu_events.cpp:1190
+#: src/menu_events.cpp:1222
 msgid "Switch a side to/from AI control."
 msgstr "Vaihda puolen kontrolli tietokonelle/tietokoneelta."
 
-#: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
-msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<puoli> [on/off]]"
+#. TRANSLATORS: These are the arguments accepted by the "droid" command,
+#. which must be a side-number and then optionally one of "on", "off" or "full".
+#. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
+#: src/menu_events.cpp:1226
+msgid ""
+"[<side> [on/off/full]]\n"
+"“on” = enable but retain vision, “full” = as if it’s controlled by another "
+"player"
+msgstr ""
 
-#: src/menu_events.cpp:1192
+#: src/menu_events.cpp:1227
+msgid "Change terrain type of current hex"
+msgstr "Vaihda maaston tyyppiä tähän heksaan"
+
+#. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
+#: src/menu_events.cpp:1229
+msgid "<terrain type> [both|base|overlay]"
+msgstr ""
+
+#: src/menu_events.cpp:1230
 #, fuzzy
 #| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
 msgstr "Vaihda puolen kontrolli tietokonelle/tietokoneelta."
 
-#: src/menu_events.cpp:1193
-msgid "do not translate the on/off^[<side> [on/off]]"
+#. TRANSLATORS: These are the arguments accepted by the "idle" command,
+#. which must be a side-number and then optionally "on" or "off".
+#. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
+#: src/menu_events.cpp:1234
+#, fuzzy
+#| msgid "do not translate the on/off^[<side> [on/off]]"
+msgid "command_idle^[<side> [on/off]]"
 msgstr "[<puoli> [on/off]]"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1235
+msgid "Change the in-game theme."
+msgstr "Vaihda pelin sisäistä teemaa. "
+
+#: src/menu_events.cpp:1237
 msgid "<side> <nickname>"
 msgstr "<puoli> <nimimerkki>"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1237
 msgid "Assign control of a side to a different player or observer."
 msgstr "Siirrä puolen kontrolli toiselle pelaajalle tai katsojalle."
 
-#: src/menu_events.cpp:1197
+#: src/menu_events.cpp:1238
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1239
 msgid "<side>"
-msgstr ""
+msgstr "<side>"
 
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1240
 msgid "Clear chat history."
 msgstr "Tyhjennä keskusteluhistoria."
 
-#: src/menu_events.cpp:1200
+#: src/menu_events.cpp:1241
 msgid "Debug foreground terrain."
 msgstr "Testaa edessä oleva maasto"
 
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1243
 msgid "Debug layers from terrain under the mouse."
 msgstr "Testaa maastokerrokset hiiren alapuolella."
 
-#: src/menu_events.cpp:1203
-msgid "Show fps."
-msgstr "Näytä virkistystaajuus"
+#: src/menu_events.cpp:1244
+msgid "Show fps (Frames Per Second)."
+msgstr "Näytä fps (frames per second)."
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1246
 msgid "Save game."
 msgstr "Tallenna peli."
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1248
 msgid "Quit game."
 msgstr "Poistu pelistä."
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1251
 msgid "Save and quit."
 msgstr "Tallenna ja poistu."
 
-#: src/menu_events.cpp:1212
+#: src/menu_events.cpp:1253
 msgid "Ignore replay errors."
 msgstr "Sivuuta uusintojen virheet."
 
-#: src/menu_events.cpp:1213
+#: src/menu_events.cpp:1254
 msgid "Disable autosaves."
 msgstr "Poista automaattitallennukset käytöstä."
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1256
 msgid "<id>"
 msgstr "<tunniste>"
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1256
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 "Jatka seuraavasta skenaariosta tai skenaariosta, joka on identifioitu id:llä "
 "'id'"
 
-#: src/menu_events.cpp:1217
+#: src/menu_events.cpp:1258
 msgid "Choose next scenario"
 msgstr "Valitse seuraava skenaario"
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1261
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -7166,11 +6964,11 @@ msgstr ""
 "Vaihda annettuun vuoroon (myös vuorokaudenaika muuttuu) tai vaihda "
 "seuraavaan vuoroon jos numeroa ei ole annettu."
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1261
 msgid "[turn]"
 msgstr "[vuoro]"
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1264
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7178,222 +6976,239 @@ msgstr ""
 "Aseta pelin enimmäispituus vuoroina tai poista enimmäispituus jos lukuarvoa "
 "ei ole annettu tai jos se on -1."
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1264
 msgid "[limit]"
 msgstr "[enimmäispituus]"
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1266
 msgid "Turn debug mode on."
 msgstr "Käynnistä testaustila."
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1267
 msgid "Turn debug mode off."
 msgstr "Poista virheenetsintätila pois käytöstä."
 
-#: src/menu_events.cpp:1228 src/menu_events.cpp:1232
+#: src/menu_events.cpp:1269 src/menu_events.cpp:1273
 msgid "<command>[;<command>...]"
 msgstr "<komento>[;<komento>...]"
 
-#: src/menu_events.cpp:1228
+#: src/menu_events.cpp:1269
 msgid "Execute a Lua statement."
 msgstr "Suorita Lua-skripti."
 
-#: src/menu_events.cpp:1230
+#: src/menu_events.cpp:1271
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Anna Lua-skripteille enemmän oikeuksia"
 
-#: src/menu_events.cpp:1231
+#: src/menu_events.cpp:1272
 msgid "Set the command used by the custom command hotkey"
 msgstr "Aseta komento käyttäjän omalle komentopikanäppäimelle"
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1275
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "Avaa ikkuna, jolla hallinnoidaan moninpelin puolien vaihtamista."
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1276
 msgid "Launch the gamestate inspector"
 msgstr "Käynnistä pelitilan tarkkailija."
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1278
 msgid "<name>[=<command>]"
 msgstr "<nimi>[=<komento>]"
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1278
 msgid "Set or show alias to a command"
 msgstr "Aseta tai näytä komennon vaihtoehtoinen pikanäppäin"
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1280 src/menu_events.cpp:1285
 msgid "<var>=<value>"
 msgstr "<muuttuja>=<arvo>"
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1280
 msgid "Set a scenario variable."
 msgstr "Aseta skenaariomuuttuja."
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1281
 msgid "<var>"
 msgstr "<muuttuja>"
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1281
 msgid "Show a scenario variable."
 msgstr "Näytä skenaariomuuttuja."
 
-#: src/menu_events.cpp:1242
-msgid "Modify a unit variable. (Only top level keys are supported.)"
+#. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
+#: src/menu_events.cpp:1284
+#, fuzzy
+#| msgid "Modify a unit variable. (Only top level keys are supported.)"
+msgid ""
+"Modify a unit variable. (Only top level keys are supported, and "
+"advances=<number>.)"
 msgstr "Muuta yksikkömuuttujaa (vain ylimmän tason avaimet ovat tuettuja)."
 
-#: src/menu_events.cpp:1248
+#: src/menu_events.cpp:1291
 msgid "Discover all units in help."
-msgstr "Paljasta kaikki yksiköt ohjeessa. "
+msgstr "Paljasta kaikki yksiköt ohjeessa."
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1292
 msgid "'Undiscover' all units in help."
 msgstr "'Piilota' kaikki yksiköt ohjeessa."
 
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1293
+msgid "<unit type id>"
+msgstr ""
+
+#: src/menu_events.cpp:1293
 msgid "Create a unit."
 msgstr "Luo yksikkö."
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1294
 msgid "Toggle fog for the current player."
 msgstr "Kytke sumu nykyiselle pelaajalle."
 
-#: src/menu_events.cpp:1252
+#: src/menu_events.cpp:1295
 msgid "Toggle shroud for the current player."
 msgstr "Kytke huntu nykyiselle pelaajalle."
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1296
+msgid "<amount>"
+msgstr "<määrä>"
+
+#: src/menu_events.cpp:1296
 msgid "Give gold to the current player."
 msgstr "Anna kultaa nykyiselle pelaajalle."
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1297
+msgid "<event name>"
+msgstr "<tapahtuman nimi>"
+
+#: src/menu_events.cpp:1297
 msgid "Fire a game event."
 msgstr "Laukaise pelitapahtuma."
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1300
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Kytke x,y-koordinaattien näyttö heksoissa."
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1303
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Kytke maastokoodien näyttö heksoissa"
 
-#: src/menu_events.cpp:1263
+#: src/menu_events.cpp:1306
 #, fuzzy
 #| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Kytke maastokoodien näyttö heksoissa"
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1308
 msgid "Toggle planning mode."
 msgstr "Ota suunnittelutila käyttöön tai poista se käytöstä"
 
-#: src/menu_events.cpp:1268
+#: src/menu_events.cpp:1311
 msgid "Access whiteboard options dialog."
 msgstr "Valkotaulun asetukset."
 
-#: src/menu_events.cpp:1388
+#: src/menu_events.cpp:1431
 #, fuzzy
 #| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Tekstiä '$search' sisältävää yksikköä tai karttamerkintää ei löytynyt."
 
-#: src/menu_events.cpp:1434
+#: src/menu_events.cpp:1477
 msgid "Can't droid invalid side: '$side'."
 msgstr "Ei voida automatisoida epäkelpoa puolta: '$side'"
 
-#: src/menu_events.cpp:1437
+#: src/menu_events.cpp:1480
 msgid "Can't droid networked side: '$side'."
 msgstr "Ei voida automatisoida verkkopelaajan puolta: '$side'"
 
-#: src/menu_events.cpp:1447
+#: src/menu_events.cpp:1490 src/menu_events.cpp:1522
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr ""
+msgstr "Puolta '$side' kontrolloi nyt: AI. "
 
-#: src/menu_events.cpp:1449
+#: src/menu_events.cpp:1492
 msgid "Side '$side' is already droided."
 msgstr ""
 
-#: src/menu_events.cpp:1456
+#: src/menu_events.cpp:1499 src/menu_events.cpp:1517
 msgid "Side '$side' controller is now controlled by: human."
-msgstr ""
+msgstr "Puolta '$side' kontrolloi nyt: ihminen. "
 
-#: src/menu_events.cpp:1458
+#: src/menu_events.cpp:1501
 msgid "Side '$side' is already not droided."
 msgstr ""
 
-#: src/menu_events.cpp:1465
+#: src/menu_events.cpp:1508
 msgid "Side '$side' controller is now fully controlled by: AI."
-msgstr ""
+msgstr "Puolta '$side' kontrolloi nyt täysin: AI. "
 
-#: src/menu_events.cpp:1467
+#: src/menu_events.cpp:1510
 msgid "Side '$side' is already fully AI controlled."
 msgstr ""
 
-#: src/menu_events.cpp:1470
+#: src/menu_events.cpp:1525
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1493
+#: src/menu_events.cpp:1567
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
 msgstr "Ei voida automatisoida epäkelpoa puolta: '$side'"
 
-#: src/menu_events.cpp:1498
+#: src/menu_events.cpp:1572
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
 msgstr "Ei voida automatisoida verkkopelaajan puolta: '$side'"
 
-#: src/menu_events.cpp:1503
+#: src/menu_events.cpp:1577
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "Ei voida automatisoida epäkelpoa puolta: '$side'"
 
-#: src/menu_events.cpp:1563
+#: src/menu_events.cpp:1637
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Ei voida vaihtaa epäkelvon puolen kontrollia: '$side'."
 
-#: src/menu_events.cpp:1573
+#: src/menu_events.cpp:1647
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Ei voida vaihtaa salaisten joukkueiden puolta: '$side'."
 
-#: src/menu_events.cpp:1590
+#: src/menu_events.cpp:1664
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Ei voida vaihtaa epäkelvon puolen kontrollia: '$side'."
 
-#: src/menu_events.cpp:1597
+#: src/menu_events.cpp:1671
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Ei voida vaihtaa salaisten joukkueiden puolta: '$side'."
 
-#: src/menu_events.cpp:1718
+#: src/menu_events.cpp:1792
 msgid "Choose Scenario (Debug!)"
 msgstr "Valitse skenaario (testaustila!)"
 
-#: src/menu_events.cpp:1754
+#: src/menu_events.cpp:1828
 msgid "Debug mode activated!"
 msgstr "Testaustila otettu käyttöön!"
 
-#: src/menu_events.cpp:1757
+#: src/menu_events.cpp:1831
 msgid "Debug mode not available in network games"
 msgstr "Korjaustila ei ole saatavilla verkkopeleissä"
 
-#: src/menu_events.cpp:1764
+#: src/menu_events.cpp:1838
 msgid "Debug mode deactivated!"
 msgstr "Testaustila poistettu käytöstä!"
 
-#: src/menu_events.cpp:1784
+#: src/menu_events.cpp:1858
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1785
+#: src/menu_events.cpp:1859
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7402,15 +7217,15 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1790
+#: src/menu_events.cpp:1864
 msgid "Unsafe mode enabled!"
 msgstr "Ei-turvallinen tila käytössä!"
 
-#: src/menu_events.cpp:1839
+#: src/menu_events.cpp:1913
 msgid "Variable not found"
 msgstr "Muuttujaa ei löytynyt"
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1959
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7418,23 +7233,23 @@ msgstr ""
 "Suuntautumista '$alignment' ei ymmärretty. Täytyy olla lainkuuliainen, "
 "neutraali, kaoottinen tai liminaali."
 
-#: src/menu_events.cpp:1913
+#: src/menu_events.cpp:1985
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Haluatko poistaa kaikki havaitsemasi yksiköt ohjetiedostosta?"
 
-#: src/menu_events.cpp:1927
+#: src/menu_events.cpp:1999
 msgid "Invalid unit type"
 msgstr "Virheellinen yksikkötyyppi"
 
-#: src/menu_events.cpp:1934
+#: src/menu_events.cpp:2006
 msgid "Invalid location"
 msgstr "Virheellinen sijainti"
 
-#: src/menu_events.cpp:2007 src/menu_events.cpp:2033
+#: src/menu_events.cpp:2079 src/menu_events.cpp:2105
 msgid "prompt^Command:"
 msgstr "Komento:"
 
-#: src/mouse_events.cpp:1195
+#: src/mouse_events.cpp:1190
 #, fuzzy
 #| msgid ""
 #| "You cannot move your leader away from the keep with some planned recruits "
@@ -7446,21 +7261,19 @@ msgstr ""
 "Niin kauan kun suunniteltuja värväyksiä tai kutsumisia on jäljellä, johtajaa "
 "ei voi siirtää pois linnakkeesta."
 
-#: src/mouse_events.cpp:1290
-#, fuzzy
-#| msgid "No usable weapon"
+#: src/mouse_events.cpp:1285
 msgid "This unit has no usable weapons."
-msgstr "Ei käyttökelpoista asetta"
-
-#: src/mp_game_settings.hpp:76
-msgid "Independent"
-msgstr ""
+msgstr "Tällä yksiköllä ei ole käyttökelpoista asetta. "
 
 #: src/mp_game_settings.hpp:77
+msgid "Independent"
+msgstr "Itsenäinen"
+
+#: src/mp_game_settings.hpp:78
 msgid "No Mirror"
 msgstr ""
 
-#: src/mp_game_settings.hpp:78
+#: src/mp_game_settings.hpp:79
 msgid "No Ally Mirror"
 msgstr ""
 
@@ -7470,28 +7283,24 @@ msgstr ""
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
-#, fuzzy
-#| msgid "Help Wesnoth"
 msgid "Wesnoth"
-msgstr "Auta Wesnothia"
+msgstr "Wesnoth"
 
 #: src/mp_ui_alerts.cpp:82
 msgid "A player has joined"
-msgstr ""
+msgstr "Pelaaja on liittynyt"
 
 #: src/mp_ui_alerts.cpp:96
 msgid "A player has left"
-msgstr ""
+msgstr "Pelaaja on lähtenyt"
 
 #: src/mp_ui_alerts.cpp:165
-#, fuzzy
-#| msgid "Back to start"
 msgid "Ready to start!"
-msgstr "Takaisin alkuun"
+msgstr "Valmiina aloittamaan!"
 
 #: src/mp_ui_alerts.cpp:176
 msgid "Game has begun!"
-msgstr ""
+msgstr "Peli on alkanut!"
 
 #: src/mp_ui_alerts.cpp:186
 msgid "$name has taken control"
@@ -7500,6 +7309,17 @@ msgstr "$name on ottanut hallinnan"
 #: src/mp_ui_alerts.cpp:186
 msgid "Turn changed"
 msgstr "Vuoro vaihtui"
+
+#: src/panic.cpp:42
+msgid "Battle for Wesnoth"
+msgstr "Taistelu Wesnothista"
+
+#: src/panic.cpp:43
+msgid ""
+"This may indicate an issue with your game configuration. If the problem "
+"persists, contact the development team for technical support, including the "
+"full contents of this message (copy with CTRL+C)."
+msgstr ""
 
 #: src/pathfind/pathfind.cpp:747
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -7512,15 +7332,15 @@ msgstr "Maastoa yhtä vähemmällä liikkumiskustannuksella kohdattu."
 msgid "waiting for^a global variable"
 msgstr ""
 
-#: src/play_controller.cpp:247
+#: src/play_controller.cpp:248
 msgid "time left for current turn"
 msgstr "Aikaa jäljellä nykyisellä vuorolla"
 
-#: src/play_controller.cpp:249
+#: src/play_controller.cpp:250
 msgid "current local time"
 msgstr "tämänhetkinen paikallinen aika"
 
-#: src/play_controller.cpp:1019
+#: src/play_controller.cpp:1020
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7528,19 +7348,42 @@ msgstr ""
 "Palvelimella on erilainen käsitys pelitilanteesta. Luultavasti kannattaa "
 "lopettaa.. Haluatko tallentaa pelisi?"
 
-#: src/play_controller.cpp:1020
+#: src/play_controller.cpp:1021
 msgid "Error details:"
 msgstr "Virheen kuvaus:"
 
-#: src/play_controller.cpp:1308
+#: src/play_controller.cpp:1309
 msgid "No objectives available"
 msgstr "Ei tavoitteita saatavana"
 
-#: src/playmp_controller.cpp:149
+#: src/playmp_controller.cpp:150
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Siirtojen peruutuksia ei ole vielä toimitettu palvelimelle."
 
-#: src/playmp_controller.cpp:358
+#: src/playmp_controller.cpp:263 src/playsingle_controller.cpp:347
+msgid ""
+"A network disconnection has occurred, and the game cannot continue. Do you "
+"want to save the game?"
+msgstr ""
+"Verkkoyhteys on katkennut, eikä peli voi jatkua. Haluatko tallentaa pelin?"
+
+#: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
+msgid ""
+"\n"
+"Do you want to save the game?"
+msgstr ""
+"\n"
+"Haluatko tallentaa pelin?"
+
+#: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
+msgid ""
+"This game has been ended.\n"
+"Reason: "
+msgstr ""
+"Tämä peli on päättynyt.\n"
+"Syy:"
+
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7557,7 +7400,7 @@ msgstr ""
 "\n"
 "Haluatko tallentaa virhelogin pelistäsi?"
 
-#: src/playmp_controller.cpp:401
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7565,10 +7408,8 @@ msgid ""
 msgstr ""
 
 #: src/playsingle_controller.cpp:153
-#, fuzzy
-#| msgid "Error"
 msgid "Game Error"
-msgstr "Virhe"
+msgstr "Virhe pelissä"
 
 #: src/playsingle_controller.cpp:154
 msgid ""
@@ -7581,48 +7422,41 @@ msgstr ""
 msgid "The game is over."
 msgstr "Peli on ohitse."
 
-#: src/playsingle_controller.cpp:347
-msgid ""
-"A network disconnection has occurred, and the game cannot continue. Do you "
-"want to save the game?"
-msgstr ""
-"Verkkoyhteys on katkennut, eikä peli voi jatkua. Haluatko tallentaa pelin?"
-
-#: src/playsingle_controller.cpp:437
+#: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
 msgstr "Nyt on vuorossa $name"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
 msgstr "Anna kultaa nykyiselle pelaajalle."
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
 msgstr "Anna kultaa nykyiselle pelaajalle."
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Korvaa tietokoneella"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Korvaa paikallisella pelaajalla"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Keskeytä peli"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 #, fuzzy
 #| msgid "$player has left the game. What do you want to do?"
 msgid ""
@@ -7640,51 +7474,41 @@ msgstr "Lopeta"
 msgid "Do you really want to quit?"
 msgstr "Haluatko todella erottaa hänet?"
 
-#: src/reports.cpp:162 src/savegame.cpp:400
+#: src/reports.cpp:164 src/savegame.cpp:418
 msgid "Name: "
 msgstr "Nimi: "
 
-#: src/reports.cpp:183
+#: src/reports.cpp:185
 msgid "Type: "
 msgstr "Tyyppi:"
 
-#: src/reports.cpp:235
-msgid "Side:"
+#: src/reports.cpp:205
+msgid "Race: "
+msgstr "Laji: "
+
+#: src/reports.cpp:224
+msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr ""
 
-#: src/reports.cpp:257
-msgid "Level: "
-msgstr "Taso:"
-
-#: src/reports.cpp:262
-#, fuzzy
-#| msgid "Advancements"
-msgid "Advancements:"
-msgstr "Ylennyksiä"
-
-#: src/reports.cpp:275
-msgid "No advancement"
-msgstr "Ei ylennyksiä"
-
-#: src/reports.cpp:315
+#: src/reports.cpp:302
 msgid "Trait: "
 msgstr "Ominaisuus:"
 
-#: src/reports.cpp:338
+#: src/reports.cpp:325
 msgid "invisible: "
 msgstr "näkymätön: "
 
-#: src/reports.cpp:339
+#: src/reports.cpp:326
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Tämä yksikkö on näkymätön. Vihollisyksiköt eivät näe sitä, eivätkä voi "
 "hyökätä sitä kohti."
 
-#: src/reports.cpp:342
+#: src/reports.cpp:329
 msgid "slowed: "
 msgstr "hidastettu: "
 
-#: src/reports.cpp:343
+#: src/reports.cpp:330
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -7692,11 +7516,11 @@ msgstr ""
 "Tämä yksikkö on hidastettu. Se tekee hyökätessä vain puolet normaalista "
 "vahingostaan ja sen liikkumiskustannukset on tuplattu."
 
-#: src/reports.cpp:346
+#: src/reports.cpp:333
 msgid "poisoned: "
 msgstr "myrkytetty: "
 
-#: src/reports.cpp:347
+#: src/reports.cpp:334
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -7710,408 +7534,400 @@ msgstr ""
 "\n"
 "Myrkky ei tapa yksikköä, vaan jättää jäljelle vähintään 1 EP."
 
-#: src/reports.cpp:350
+#: src/reports.cpp:337
 msgid "petrified: "
 msgstr "kivetetty: "
 
-#: src/reports.cpp:351
+#: src/reports.cpp:338
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Tämä yksikkö on kivetetty. Se ei voi liikkua eikä hyökätä."
 
-#: src/reports.cpp:429
+#: src/reports.cpp:416
 msgid "Ability: "
 msgstr "Erikoistaito:"
 
-#: src/reports.cpp:431 src/reports.cpp:957
+#: src/reports.cpp:418 src/reports.cpp:944
 msgid " (inactive)"
-msgstr ""
+msgstr "(epäaktiivinen)"
 
-#: src/reports.cpp:491
+#: src/reports.cpp:478
 msgid "Resistances: "
 msgstr "Vastustukset: "
 
-#: src/reports.cpp:493
+#: src/reports.cpp:480
 msgid "(Att / Def)"
 msgstr "(hyök. / puol. )"
 
-#: src/reports.cpp:524
+#: src/reports.cpp:511
 msgid "Experience Modifier: "
 msgstr "Vaadittu kokemus: "
 
-#: src/reports.cpp:575
+#: src/reports.cpp:562
 msgid "Terrain: "
 msgstr "Maasto:"
 
-#: src/reports.cpp:592
+#: src/reports.cpp:579
 msgid "maximum^max."
 msgstr "enintään"
 
-#: src/reports.cpp:592
+#: src/reports.cpp:579
 msgid "minimum^min."
 msgstr "vähintään"
 
-#: src/reports.cpp:597
+#: src/reports.cpp:584
 msgid "Defense: "
 msgstr "Puolustus:"
 
-#: src/reports.cpp:631 src/reports.cpp:632
+#: src/reports.cpp:618 src/reports.cpp:619
 #, fuzzy
 #| msgid "Version: "
 msgid "vision:"
 msgstr "Versio: "
 
-#: src/reports.cpp:636 src/reports.cpp:637
+#: src/reports.cpp:623 src/reports.cpp:624
 #, fuzzy
 #| msgid "Warning: "
 msgid "jamming:"
 msgstr "Varoitus:"
 
-#: src/reports.cpp:666
-#, fuzzy
-#| msgid "Movement Cost"
+#: src/reports.cpp:653
 msgid "Movement Costs:"
-msgstr "Liikkumiskustannus"
+msgstr "Liikkumiskustannukset: "
 
-#: src/reports.cpp:791 src/reports.cpp:1046 src/reports.cpp:1058
+#: src/reports.cpp:778 src/reports.cpp:1033 src/reports.cpp:1045
 msgid "Weapon: "
 msgstr "Ase:"
 
-#: src/reports.cpp:792 src/reports.cpp:1047
+#: src/reports.cpp:779 src/reports.cpp:1034
 msgid "Damage: "
 msgstr "Vahinko:"
 
-#: src/reports.cpp:796
+#: src/reports.cpp:783
 msgid "Base damage: "
 msgstr "Perusvahinko:"
 
-#: src/reports.cpp:798 src/reports.cpp:832 src/reports.cpp:842
+#: src/reports.cpp:785 src/reports.cpp:819 src/reports.cpp:829
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "With specials: "
 msgstr "Aseen erikoisuus:"
 
-#: src/reports.cpp:801
+#: src/reports.cpp:788
 msgid "Time of day: "
 msgstr "Vuorokaudenaika:"
 
-#: src/reports.cpp:805
+#: src/reports.cpp:792
 msgid "Leadership: "
 msgstr "Johtamiskyky:"
 
-#: src/reports.cpp:809
+#: src/reports.cpp:796
 msgid "Slowed: "
 msgstr "Hidastettu:"
 
-#: src/reports.cpp:813
+#: src/reports.cpp:800
 msgid "Attacks: "
 msgstr "Hyökkäyksiä:"
 
-#: src/reports.cpp:817
+#: src/reports.cpp:804
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Enimmäis-EP-bonus +"
 
-#: src/reports.cpp:818 src/reports.cpp:837
+#: src/reports.cpp:805 src/reports.cpp:824
 msgid "Swarm: "
 msgstr "Parvi:"
 
-#: src/reports.cpp:819 src/reports.cpp:830 src/reports.cpp:841
+#: src/reports.cpp:806 src/reports.cpp:817 src/reports.cpp:828
 msgid "Base attacks: "
 msgstr "Perushyökkäyksiä:"
 
-#: src/reports.cpp:825
+#: src/reports.cpp:812
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "erikoisuus"
 
-#: src/reports.cpp:835
+#: src/reports.cpp:822
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:862
+#: src/reports.cpp:849
 msgid "Weapon range: "
 msgstr "Aseen kantama:"
 
-#: src/reports.cpp:863
+#: src/reports.cpp:850
 msgid "Damage type: "
 msgstr "Vahinkotyyppi:"
 
-#: src/reports.cpp:864
+#: src/reports.cpp:851
 msgid "Damage versus: "
 msgstr "Vahinko:"
 
-#: src/reports.cpp:924
+#: src/reports.cpp:911
 msgid "Accuracy:"
 msgstr "Tarkkuus:"
 
-#: src/reports.cpp:929
+#: src/reports.cpp:916
 msgid "Parry:"
 msgstr "Torjunnat:"
 
-#: src/reports.cpp:955
+#: src/reports.cpp:942
 msgid "Weapon special: "
 msgstr "Aseen erikoisuus:"
 
-#: src/reports.cpp:1030
+#: src/reports.cpp:1017
 msgid "weapon^None"
-msgstr ""
+msgstr "Ei ole"
 
-#: src/reports.cpp:1059
+#: src/reports.cpp:1046
 msgid "Total damage"
-msgstr "kokonaisvahinko"
+msgstr "Kokonaisvahinko"
 
-#: src/reports.cpp:1123
-#, fuzzy
-#| msgid "Attacker"
+#: src/reports.cpp:1110
 msgid "Attack"
 msgid_plural "Attacks"
-msgstr[0] "Hyökkääjä"
-msgstr[1] "Hyökkääjä"
+msgstr[0] "Hyökkäys"
+msgstr[1] "Hyökkäykset"
 
-#: src/reports.cpp:1216
+#. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
+#: src/reports.cpp:1118
+msgid "Remaining: $left/$max"
+msgstr ""
+
+#: src/reports.cpp:1122
+msgid "This unit can attack multiple times per turn."
+msgstr "Tämä yksikkö voi hyökätä monta kertaa vuoron aikana. "
+
+#: src/reports.cpp:1213
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day schedule:"
 msgstr "Vuorokaudenaika:"
 
-#: src/reports.cpp:1265
-#, fuzzy
-#| msgid "Time of day: "
+#: src/reports.cpp:1263
 msgid "Time of day:"
 msgstr "Vuorokaudenaika:"
 
-#: src/reports.cpp:1266 src/reports.cpp:1320
-#, fuzzy
-#| msgid "Lawful units: "
+#: src/reports.cpp:1264 src/reports.cpp:1318
 msgid "Lawful units: "
-msgstr "Lainkuuliaiset yksiköt: "
+msgstr "Lainkuuliaiset yksiköt:"
 
-#: src/reports.cpp:1268 src/reports.cpp:1322
+#: src/reports.cpp:1266 src/reports.cpp:1320
 msgid "Neutral units: "
 msgstr "Neutraalit yksiköt: "
 
-#: src/reports.cpp:1269 src/reports.cpp:1323
+#: src/reports.cpp:1267 src/reports.cpp:1321
 msgid "Chaotic units: "
 msgstr "Kaoottiset yksiköt: "
 
-#: src/reports.cpp:1271 src/reports.cpp:1325
+#: src/reports.cpp:1269 src/reports.cpp:1323
 msgid "Liminal units: "
 msgstr "Hämärässä viihtyvät yksiköt:"
 
-#: src/reports.cpp:1384
-#, fuzzy
-#| msgid "Turn "
+#: src/reports.cpp:1382
 msgid "Turn Number"
-msgstr "Vuoro"
+msgstr "Vuoro numero"
 
-#: src/reports.cpp:1386
+#: src/reports.cpp:1384
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
+"Kun peli saavuttaa vuoromäärän, jota merkataan toisella numerolla, se "
+"loppuu. "
 
-#: src/reports.cpp:1411
+#: src/reports.cpp:1409
 msgid "Gold"
 msgstr "kultapalaa"
 
-#: src/reports.cpp:1411
+#: src/reports.cpp:1409
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
+"Kultamäärä, joka on tällä hetkellä saatavilla yksiköiden värväämiseen ja "
+"ylläpitoon. "
 
-#: src/reports.cpp:1430
+#: src/reports.cpp:1428
 msgid "The fraction of known villages that your side has captured."
-msgstr ""
+msgstr "Osuus tunnetuista kylistä, jotka sinun puolesi on vallannut. "
 
-#: src/reports.cpp:1430
+#: src/reports.cpp:1428
 msgid "Villages"
 msgstr "Kyliä"
 
-#: src/reports.cpp:1435
+#: src/reports.cpp:1433
 msgid "The total number of units on your side."
-msgstr ""
+msgstr "Sinun puolellasi olevien yksiköiden kokonaismäärä."
 
-#: src/reports.cpp:1435
+#: src/reports.cpp:1433
 msgid "Units"
 msgstr "Yksiköt"
 
-#: src/reports.cpp:1445
+#: src/reports.cpp:1443
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
-"first number is the amount of gold that will be deducted. The second is the "
-"total cost of upkeep, including that covered by villages — in other words, "
-"the amount of gold that would be deducted if you lost all villages."
+"first number is the amount of gold that will be deducted. It is equal to the "
+"number of unit levels not supported by villages. The second is the total "
+"cost of upkeep, including that covered by villages — in other words, the "
+"amount of gold that would be deducted if you lost all villages."
 msgstr ""
+"Armeijasi ylläpidosta joka vuoron lopussa aiheutuneet kulut. Ensimmäinen "
+"numero on kultamäärä joka vähennetään. Se on sama, kuin yksiköidesi tasojen "
+"määrä, jotka eivät ole kylien tukemia. Toinen numero on ylläpidon koko "
+"määrä, sisältäen myös sen, jonka kylät korvaavat. Toisin sanoen se summa "
+"rahaa, joka vähennettäisi, jos menettäisit kaikki kyläsi. "
 
-#: src/reports.cpp:1445
+#: src/reports.cpp:1443
 msgid "Upkeep"
 msgstr "Ylläpito"
 
-#: src/reports.cpp:1482
-msgid "Income"
-msgstr "Tulot"
+#: src/reports.cpp:1480
+msgid "Net Income"
+msgstr "Nettotulo"
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1480
 msgid ""
-"The amount of gold you gain each turn from your controlled villages, or the "
-"amount of gold you will lose each turn for unit upkeep."
+"The net amount of gold you gain or lose each turn, taking into account "
+"income from controlled villages and payment of upkeep."
 msgstr ""
+"Nettosumma kultaa jonka saat tai menetät joka vuoro. Huomioon on otettu "
+"kontrolloiduista kylistä saatavat tulot ja armeijan ylläpidon kulut. "
 
-#: src/reports.cpp:1650
+#: src/reports.cpp:1648
 msgid "Observers:"
 msgstr "Tarkkailijat:"
 
-#: src/reports.cpp:1692
+#: src/reports.cpp:1690
 msgid "Clock"
-msgstr ""
+msgstr "Kello"
 
-#: src/reports.cpp:1703
+#: src/reports.cpp:1701
 msgid "Battery"
-msgstr ""
+msgstr "Akku"
 
-#: src/reports.cpp:1731
+#: src/reports.cpp:1729
 msgid "Countdown until your turn automatically ends."
-msgstr ""
+msgstr "Laskuri vuorosi automaattiseen lopetukseen."
 
-#: src/reports.cpp:1731
+#: src/reports.cpp:1729
 msgid "Turn Countdown"
-msgstr ""
+msgstr "Vuorolaskuri"
 
-#: src/save_index.cpp:218
+#: src/save_index.cpp:240
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%d.%m.%Y %H:%M"
+msgstr "%a %b %d %I:%M %p %Y"
 
-#: src/save_index.cpp:219
+#: src/save_index.cpp:241
 msgid "%a %b %d %H:%M %Y"
-msgstr "%d.%m.%Y %H:%M"
+msgstr "%a %b %d %H:%M %Y"
 
-#: src/save_index.cpp:240 src/save_index.cpp:247
-msgid " replay"
+#. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
+#: src/save_index.cpp:261 src/savegame.cpp:566
+msgid "replay"
 msgstr " – uusinta"
 
-#: src/save_index.cpp:313 src/savegame.cpp:69 src/savegame.cpp:582
-#: src/savegame.cpp:584
+#: src/save_index.cpp:345 src/savegame.cpp:70 src/savegame.cpp:602
+#: src/savegame.cpp:604
 msgid "Auto-Save"
 msgstr "Automaattinen tallennus"
 
-#: src/savegame.cpp:192 src/savegame.cpp:196
+#: src/savegame.cpp:204 src/savegame.cpp:208
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Varoitus: Tiedosto, jonka yritit ladata, on vahingoittunut. Ladataan siitä "
 "huolimatta.\n"
 
-#: src/savegame.cpp:243
-#, fuzzy
-#| msgid "This save is from a version too old to be loaded."
+#: src/savegame.cpp:255
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
-msgstr "Tämä tallenne on aivan liian antiikkinen."
+msgstr ""
+"Tämä tallennus on vanhasta, tukemattomasta versiosta ($version_number|) eikä "
+"sitä voida ladata. "
 
-#: src/savegame.cpp:251
-#, fuzzy
-#| msgid ""
-#| "This save is from a different version of the game. Do you want to try to "
-#| "load it?"
+#: src/savegame.cpp:263
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
-msgstr "Tämä tallenne on pelin eri versiosta. Haluatko yrittää ladata sen?"
+msgstr ""
+"Tämä tallenne on pelin eri versiosta ($version_number|). Haluatko yrittää "
+"ladata sen?"
 
-#: src/savegame.cpp:254 src/savegame.cpp:298
+#: src/savegame.cpp:266 src/savegame.cpp:315
 msgid "Load Game"
 msgstr "Tallennukset"
 
-#: src/savegame.cpp:298
-#, fuzzy
-#| msgid "Factions are only used in multiplayer"
+#: src/savegame.cpp:315
 msgid "Replays are not supported in multiplayer mode."
-msgstr "Liittoumat ovat käytössä vain moninpelissä"
+msgstr "Uusinnat eivät ole tuettuja moninpelissa. "
 
-#: src/savegame.cpp:305
-#, fuzzy
-#| msgid "This is not a multiplayer save"
+#: src/savegame.cpp:322
 msgid "This is not a multiplayer save."
-msgstr "Tämä ei ole moninpelin tallenne"
+msgstr "Tämä ei ole moninpelin tallenne."
 
-#: src/savegame.cpp:332
+#: src/savegame.cpp:350
 msgid "The game could not be saved: "
 msgstr "Peliä ei voitu tallentaa: "
 
-#: src/savegame.cpp:400
+#: src/savegame.cpp:418
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Tallenne on jo olemassa. Haluatko ylikirjoittaa sen?"
 
-#: src/savegame.cpp:401
+#: src/savegame.cpp:419
 msgid "Overwrite?"
 msgstr "Kirjoita päälle?"
 
-#: src/savegame.cpp:409
-#, fuzzy
-#| msgid "Save names should not end on '.gz'. Please choose a different name."
+#: src/savegame.cpp:427
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
-msgstr "Tallenteen nimi ei saa loppua ”.gz”:aan. Valitse toinen nimi."
+msgstr ""
+"Tallenteen nimi ei saa loppua ”.gz”:aan tai \".bz2\":aan. Poista jatke. "
 
-#: src/savegame.cpp:457
+#: src/savegame.cpp:475
 msgid "Saved"
 msgstr "Tallennettu"
 
-#: src/savegame.cpp:457
-#, fuzzy
-#| msgid "The game has been saved"
+#: src/savegame.cpp:475
 msgid "The game has been saved."
 msgstr "Peli on tallennettu."
 
-#: src/savegame.cpp:487 src/savegame.cpp:507
+#: src/savegame.cpp:505 src/savegame.cpp:525
 msgid "Could not write to file"
 msgstr "Ei voitu kirjoittaa tiedostoon"
 
-#: src/savegame.cpp:542
+#: src/savegame.cpp:560
 msgid "Save Replay"
 msgstr "Tallenna uusinta"
 
-#: src/savegame.cpp:547
-msgid "replay"
-msgstr " – uusinta"
-
-#: src/savegame.cpp:565
+#: src/savegame.cpp:584
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Automaattinen tallennus epäonnistui. Yritä tallentaa peli manuaalisesti."
 
-#: src/savegame.cpp:612
+#: src/savegame.cpp:632
 msgid "Save Game"
 msgstr "Tallenna peli"
 
-#: src/savegame.cpp:626
+#: src/savegame.cpp:646
 msgid "Game state is corrupted"
-msgstr ""
-
-#: src/scripting/game_lua_kernel.cpp:2887
-#: src/scripting/game_lua_kernel.cpp:2922
-msgid "input"
-msgstr ""
+msgstr "Pelin tila on korruptoitunut."
 
 #: src/serialization/parser.cpp:157
 msgid "Unexpected characters at line start"
 msgstr "Odottamattomia kirjaimia rivin alussa"
 
 #: src/serialization/parser.cpp:184
-#, fuzzy
-#| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag]"
-msgstr "Sulkemistagi puuttuu tagille $tag paikassa $pos"
+msgstr "Sulkemistagi puuttuu tagille [$tag]"
 
 #: src/serialization/parser.cpp:185
 msgid "expected at $pos"
-msgstr ""
+msgstr "odotettu sijainnista $pos"
 
 #: src/serialization/parser.cpp:186 src/serialization/parser.cpp:273
 msgid "opened at $pos"
-msgstr ""
+msgstr "avattu sijainnissa $pos"
 
 #: src/serialization/parser.cpp:204
 msgid "Unterminated [element] tag"
@@ -8138,17 +7954,12 @@ msgid "Unexpected closing tag"
 msgstr "Odottamaton sulkeva tagi"
 
 #: src/serialization/parser.cpp:272
-#, fuzzy
-#| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
-msgstr ""
-"Löytynyt virheellinen sulkeva tagi $tag2 tagille $tag1 (avattu paikassa $pos)"
+msgstr "Löytynyt virheellinen sulkeva tagi [/$tag2] tagille [$tag1]"
 
 #: src/serialization/parser.cpp:274
-#, fuzzy
-#| msgid "Close"
 msgid "closed at $pos"
-msgstr "Sulje"
+msgstr "suljettu sijainnissa $pos"
 
 #: src/serialization/parser.cpp:310 src/serialization/parser.cpp:326
 msgid "Empty variable name"
@@ -8164,7 +7975,7 @@ msgstr "Päättämätön lainaus"
 
 #: src/serialization/parser.cpp:472
 msgid "at $pos"
-msgstr ""
+msgstr "sijainnissa $pos"
 
 #: src/serialization/parser.cpp:485
 #, fuzzy
@@ -8172,113 +7983,111 @@ msgstr ""
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "$error, arvo ”$value”, edellinen ”$previous_value” sijainnissa $pos"
 
-#: src/serialization/string_utils.cpp:543
+#: src/serialization/string_utils.cpp:544
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:544
+#: src/serialization/string_utils.cpp:545
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:545
+#: src/serialization/string_utils.cpp:546
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:546
+#: src/serialization/string_utils.cpp:547
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:547
+#: src/serialization/string_utils.cpp:548
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:548
+#: src/serialization/string_utils.cpp:549
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:549
+#: src/serialization/string_utils.cpp:550
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:550
+#: src/serialization/string_utils.cpp:551
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:562
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:563
+#: src/serialization/string_utils.cpp:564
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:565
+#: src/serialization/string_utils.cpp:566
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:566
+#: src/serialization/string_utils.cpp:567
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:567
+#: src/serialization/string_utils.cpp:568
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:568
+#: src/serialization/string_utils.cpp:569
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:569
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:571
+#: src/serialization/string_utils.cpp:572
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:585
+#: src/serialization/string_utils.cpp:586
 msgid "infix_binary^i"
 msgstr "i"
 
 #: src/synced_commands.cpp:410
-#, fuzzy
-#| msgid "Unknown era"
 msgid "(unknown player)"
-msgstr "Tuntematon aikakausi"
+msgstr "(tuntematon pelaaja)"
 
 #: src/synced_commands.cpp:415
 msgid "The :$command debug command was used during $player’s turn"
-msgstr ""
+msgstr "Testaustilan komentoa :$command käytettiin pelaajan $player vuorolla. "
 
 #: src/synced_commands.cpp:423
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
+"Pelaaja käytti testaustilan komentoa pelin aikana. Jos tämä on "
+"odottamatonta, on mahdollista, että kyseinen pelaaja huijaa. "
 
 #: src/synced_commands.cpp:425
-#, fuzzy
-#| msgid "Details"
 msgid "Details:"
-msgstr "Tiedot"
+msgstr "Tiedot:"
 
 #: src/synced_commands.cpp:428
 msgid "Do you wish to save the game before continuing?"
-msgstr ""
+msgstr "Haluatko tallentaa pelin ennen jatkamista?"
 
 #: src/synced_commands.cpp:430
-#, fuzzy
-#| msgid "Debug mode commands"
 msgid "Debug Command Used"
-msgstr "Testaustilan komennot"
+msgstr "Testaustilan komennot käytetty"
 
-#: src/synced_commands.cpp:516
+#: src/synced_commands.cpp:536
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
+"Yksikkö luotiin testaustilan komentoja käyttämällä pelaajan $player "
+"vuorolla. "
 
 #: src/synced_user_choice.cpp:330
 msgid "waiting for $desc from side $sides"
@@ -8293,15 +8102,21 @@ msgstr[1] ""
 msgid "waiting for^input"
 msgstr ""
 
-#: src/terrain/terrain.cpp:181
+#. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
+#. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
+#: src/team.cpp:994
+msgid "“$color_id”"
+msgstr "“$color_id”"
+
+#: src/terrain/terrain.cpp:192
 msgid "Allied village"
 msgstr "liittolaisen kylä"
 
-#: src/terrain/terrain.cpp:186
+#: src/terrain/terrain.cpp:197
 msgid "Enemy village"
 msgstr "vihollisen kylä"
 
-#: src/terrain/terrain.cpp:191
+#: src/terrain/terrain.cpp:202
 msgid "Owned village"
 msgstr "sinun kyläsi"
 
@@ -8324,25 +8139,20 @@ msgid "This Time of Day is only a Stub!"
 msgstr ""
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:378
-#, fuzzy
-#| msgid "per turn"
+#: src/units/attack_type.cpp:434
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
-msgstr[0] "jokaisesta vuorosta"
-msgstr[1] "jokaisesta vuorosta"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> vahinko"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> vahinkoa"
 
-#: src/units/attack_type.cpp:387
-#, fuzzy
-#| msgid "damage"
-#| msgid_plural "damage"
+#: src/units/attack_type.cpp:443
 msgid "$number damage"
 msgid_plural "$number damage"
-msgstr[0] "vahinko"
-msgstr[1] "vahinkoa"
+msgstr[0] "$number vahinko"
+msgstr[1] "$number vahinkoa"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:396
+#: src/units/attack_type.cpp:452
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
@@ -8351,45 +8161,40 @@ msgstr[0] "jokaisesta vuorosta"
 msgstr[1] "jokaisesta vuorosta"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:405
-#, fuzzy
-#| msgid "strike"
-#| msgid_plural "strikes"
+#: src/units/attack_type.cpp:461
 msgid "$number strike"
 msgid_plural "$number strikes"
-msgstr[0] "isku"
-msgstr[1] "iskua"
+msgstr[0] "$number isku"
+msgstr[1] "$number iskua"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:414
-#, fuzzy
-#| msgid "% parry"
+#: src/units/attack_type.cpp:470
 msgid "$number| accuracy"
-msgstr "% torjunnat"
+msgstr "$number| tarkkuus"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:421
+#: src/units/attack_type.cpp:477
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "jokaisesta vuorosta"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:428
+#: src/units/attack_type.cpp:484
 #, fuzzy
 #| msgid "% parry"
 msgid "$number parry"
 msgstr "% torjunnat"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:435
+#: src/units/attack_type.cpp:491
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "jokaisesta vuorosta"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:442
+#: src/units/attack_type.cpp:498
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "$number movement point"
@@ -8398,7 +8203,7 @@ msgstr[0] "Liikkumiskustannus"
 msgstr[1] "Liikkumiskustannus"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:451
+#: src/units/attack_type.cpp:507
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
@@ -8406,51 +8211,61 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "jokaisesta vuorosta"
 msgstr[1] "jokaisesta vuorosta"
 
-#: src/units/types.cpp:545 src/units/types.hpp:180
-msgid "chaotic"
-msgstr "kaoottinen"
+#: src/units/helper.cpp:52
+msgid "Level: "
+msgstr "Taso:"
 
-#: src/units/types.cpp:545 src/units/types.hpp:178
-#, fuzzy
-#| msgid "female^lawful"
-msgid "lawful"
-msgstr "lainkuuliainen"
+#: src/units/helper.cpp:55
+msgid "Advancements:"
+msgstr "Ylennyksiä:"
 
-#: src/units/types.cpp:545 src/units/types.hpp:181
-msgid "liminal"
-msgstr "liminaali"
+#: src/units/helper.cpp:68
+msgid "No advancement"
+msgstr "Ei ylennyksiä"
 
-#: src/units/types.cpp:545 src/units/types.hpp:179
-msgid "neutral"
-msgstr "neutraali"
-
-#: src/units/types.cpp:546 src/units/types.cpp:912
-msgid "female^chaotic"
-msgstr "kaoottinen"
-
-#: src/units/types.cpp:546 src/units/types.cpp:910
+#: src/units/types.cpp:914
 msgid "female^lawful"
 msgstr "lainkuuliainen"
 
-#: src/units/types.cpp:546 src/units/types.cpp:911
+#: src/units/types.cpp:915
 msgid "female^neutral"
 msgstr "neutraali"
 
-#: src/units/types.cpp:547 src/units/types.cpp:913
+#: src/units/types.cpp:916
+msgid "female^chaotic"
+msgstr "kaoottinen"
+
+#: src/units/types.cpp:917
 msgid "female^liminal"
 msgstr "liminaali"
 
-#: src/units/unit.cpp:1854
+#: src/units/types.hpp:182
+msgid "lawful"
+msgstr "lainkuuliainen"
+
+#: src/units/types.hpp:183
+msgid "neutral"
+msgstr "neutraali"
+
+#: src/units/types.hpp:184
+msgid "chaotic"
+msgstr "kaoottinen"
+
+#: src/units/types.hpp:185
+msgid "liminal"
+msgstr "liminaali"
+
+#: src/units/unit.cpp:1874
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1880
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "jokaisesta vuorosta"
 
-#: src/units/unit.cpp:1870
+#: src/units/unit.cpp:1890
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8458,25 +8273,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "jokaisesta vuorosta"
 msgstr[1] "jokaisesta vuorosta"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1896
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "jokaisesta vuorosta"
 
-#: src/units/unit.cpp:1880
+#: src/units/unit.cpp:1900
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "jokaisesta vuorosta"
 
-#: src/units/unit.cpp:1885
+#: src/units/unit.cpp:1905
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "jokaisesta vuorosta"
 
-#: src/units/unit.cpp:1889
+#: src/units/unit.cpp:1909
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8485,25 +8300,25 @@ msgid_plural ""
 msgstr[0] "jokaisesta vuorosta"
 msgstr[1] "jokaisesta vuorosta"
 
-#: src/units/unit.cpp:1896
+#: src/units/unit.cpp:1916
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "jokaisesta vuorosta"
 
-#: src/units/unit.cpp:2296
+#: src/units/unit.cpp:2337
 msgid "$effect_description per level"
 msgstr "$effect_description tasoa kohden"
 
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:59
 msgid "$year BW"
-msgstr ""
+msgstr "$year EW"
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr ""
+msgstr "$year WV"
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
@@ -8516,10 +8331,8 @@ msgid "$year AF"
 msgstr ""
 
 #: src/wesnothd_connection.cpp:418
-#, fuzzy
-#| msgid "Connect to Server"
 msgid "Disconnected from server."
-msgstr "Yhdistä palvelimeen"
+msgstr ""
 
 #: src/whiteboard/manager.cpp:1117
 msgid "SHOW ALL allies’ plans"
@@ -8540,6 +8353,268 @@ msgstr "Piilota pelaajan $player suunnitelmat"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Valkotaulun asetukset"
+
+#, fuzzy
+#~| msgid "Sound Effects"
+#~ msgid "Show haloing effects"
+#~ msgstr "Ääniefektit"
+
+#~ msgid "Joystick support"
+#~ msgstr "Joystick -tuki"
+
+#~ msgid "Joystick: number of the scroll X-axis joystick"
+#~ msgstr "Joystick: sauvan X-akselin arvo, joystick"
+
+#~ msgid "Joystick: number of the scroll X-axis"
+#~ msgstr "Joystick: sauvan X-akselin arvo"
+
+#~ msgid "Joystick: number of the scroll Y-axis joystick"
+#~ msgstr "Joystick: sauvan Y-akselin arvo, joystick"
+
+#~ msgid "Joystick: number of the scroll Y-axis"
+#~ msgstr "Joystick: sauvan Y-akselin arvo"
+
+#~ msgid "Joystick: deadzone of the scrolling stick"
+#~ msgstr "Joystick: sauvan kuollut alue"
+
+#~ msgid "Joystick: number of the cursor X-axis joystick"
+#~ msgstr "Joystick: kursorin X-akselin arvo, joystick"
+
+#~ msgid "Joystick: number of the cursor X-axis"
+#~ msgstr "Joystick: kursorin X-akselin arvo"
+
+#~ msgid "Joystick: number of the cursor Y-axis joystick"
+#~ msgstr "Joystick: kursorin Y-akselin arvo, joystick"
+
+#~ msgid "Joystick: number of the cursor Y-axis"
+#~ msgstr "Joystick: kursorin Y-akselin arvo"
+
+#~ msgid "Joystick: deadzone of the cursor stick"
+#~ msgstr "Joystick: kursorisauvan kuollut alue"
+
+#~ msgid "Joystick: number of the mouse X-axis joystick"
+#~ msgstr "Joystick: hiiren X-akselin arvo, joystick"
+
+#~ msgid "Joystick: number of the mouse X-axis"
+#~ msgstr "Joystick: hiiren X-akselin arvo"
+
+#~ msgid "Joystick: number of the mouse Y-axis joystick"
+#~ msgstr "Joystick: hiiren Y-akselin arvo, joystick"
+
+#~ msgid "Joystick: number of the mouse Y-axis"
+#~ msgstr "Joystick: hiiren Y-akselin arvo"
+
+#~ msgid "Joystick: deadzone of the mouse stick"
+#~ msgstr "Joystick: hiirisauvan kuollut alue"
+
+#~ msgid "Joystick: number of the thrust axis joystick"
+#~ msgstr "Joystick: kaasuvivun akselin arvo, joystick"
+
+#~ msgid "Joystick: number of the thrust axis"
+#~ msgstr "Joystick: kaasuvivun akselin arvo"
+
+#~ msgid "Joystick: deadzone of the thruster"
+#~ msgstr "Joystick: kaasuvivun kuollut alue"
+
+#, fuzzy
+#~| msgid "Estonian Translation"
+#~ msgid "Asturian Translation"
+#~ msgstr "Eestinkielinen käännös"
+
+#~ msgid "Friulian Translation"
+#~ msgstr "Friulinkielinen käännös"
+
+#~ msgid "<small>(early finish bonus)</small>"
+#~ msgstr "<small>(aikaisen lopetuksen bonus)</small>"
+
+#~ msgid "gold"
+#~ msgstr "kultapalaa"
+
+#~ msgid "villages"
+#~ msgstr "kyliä"
+
+#~ msgid "units"
+#~ msgstr "yksiköitä"
+
+#~ msgid "upkeep"
+#~ msgstr "ylläpito"
+
+#~ msgid "income"
+#~ msgstr "tulot"
+
+#~ msgid "statuspanel^level"
+#~ msgstr "kokemustaso"
+
+#~ msgid "statuspanel^moves"
+#~ msgstr "liikepisteet"
+
+#~ msgid "statuspanel^terrain def."
+#~ msgstr "puol. maastossa"
+
+#~ msgid "No Saved Games"
+#~ msgstr "Ei tallennettuja pelejä."
+
+#, fuzzy
+#~| msgid "The file you have tried to load is corrupt"
+#~ msgid "There are no save files to load"
+#~ msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
+
+#, fuzzy
+#~| msgid "Terrain: "
+#~ msgid "Base Terrain: "
+#~ msgstr "Maasto:"
+
+#, fuzzy
+#~| msgid "Movement Cost"
+#~ msgid "Movement properties: "
+#~ msgstr "Liikkumiskustannus"
+
+#, fuzzy
+#~| msgid "Defense: "
+#~ msgid "Defense properties: "
+#~ msgstr "Puolustus:"
+
+#, fuzzy
+#~| msgid "Level: "
+#~ msgid "Level"
+#~ msgstr "Taso:"
+
+#~ msgid "Advances from: "
+#~ msgstr "Ylenee yksiköstä: "
+
+#~ msgid "Advances to: "
+#~ msgstr "Ylenee yksiköksi: "
+
+#, fuzzy
+#~| msgid "Base attacks: "
+#~ msgid "Base unit: "
+#~ msgstr "Perushyökkäyksiä:"
+
+#, fuzzy
+#~| msgid "Lawful units: "
+#~ msgid "Base units: "
+#~ msgstr "Lainkuuliaiset yksiköt: "
+
+#, fuzzy
+#~| msgid "Factions:"
+#~ msgid "Variations: "
+#~ msgstr "Liittoumat:"
+
+#~ msgid "Traits"
+#~ msgstr "Ominaisuudet"
+
+#~ msgid "Abilities: "
+#~ msgstr "Erikoistaidot: "
+
+#~ msgid "Ability Upgrades: "
+#~ msgstr "Taitopäivitykset:"
+
+#, fuzzy
+#~| msgid "HP: "
+#~ msgid "HP:"
+#~ msgstr "EP: "
+
+#, fuzzy
+#~| msgid "Moves: "
+#~ msgid "Moves:"
+#~ msgstr "Liikepisteitä: "
+
+#, fuzzy
+#~| msgid "Version: "
+#~ msgid "Vision:"
+#~ msgstr "Versio: "
+
+#, fuzzy
+#~| msgid "Warning: "
+#~ msgid "Jamming:"
+#~ msgstr "Varoitus:"
+
+#, fuzzy
+#~| msgid "Cost: "
+#~ msgid "Cost:"
+#~ msgstr "Hinta: "
+
+#, fuzzy
+#~| msgid "Alignment: "
+#~ msgid "Alignment:"
+#~ msgstr "Suuntautuminen: "
+
+#, fuzzy
+#~| msgid "Required XP: "
+#~ msgid "Required XP:"
+#~ msgstr "Vaadittu kokemus (KP): "
+
+#~ msgid "unit help^Attacks"
+#~ msgstr "Hyökkäykset"
+
+#~ msgid "unit help^Name"
+#~ msgstr "Nimi"
+
+#~ msgid "Strikes"
+#~ msgstr "iskut"
+
+#~ msgid "Range"
+#~ msgstr "etäisyys"
+
+#~ msgid "Type"
+#~ msgstr "tyyppi"
+
+#, fuzzy
+#~| msgid "Special"
+#~ msgid "Special"
+#~ msgstr "erikoisuus"
+
+#~ msgid "Resistances"
+#~ msgstr "Vastustukset"
+
+#~ msgid "Attack Type"
+#~ msgstr "hyökkäystyyppi"
+
+#~ msgid "Resistance"
+#~ msgstr "vastustus"
+
+#, fuzzy
+#~| msgid "Terrain Modifiers"
+#~ msgid "Terrain Modifiers"
+#~ msgstr "Maaston vaikutus"
+
+#~ msgid "Terrain"
+#~ msgstr "maasto"
+
+#~ msgid "Defense"
+#~ msgstr "Puolustus"
+
+#, fuzzy
+#~| msgid "Movement Cost"
+#~ msgid "Movement Cost"
+#~ msgstr "Liikkumiskustannus"
+
+#, fuzzy
+#~| msgid "Defense: "
+#~ msgid "Defense Cap"
+#~ msgstr "Puolustus:"
+
+#, fuzzy
+#~| msgid "Version: "
+#~ msgid "Vision Cost"
+#~ msgstr "Versio: "
+
+#~ msgid "do not translate the 'all'^[all|<command>]"
+#~ msgstr "[all|<komento>]"
+
+#~ msgid "aliases:"
+#~ msgstr "lyhytkomennot:"
+
+#, fuzzy
+#~| msgid "do not translate the on/off^[<side> [on/off]]"
+#~ msgid "do not translate the on/off/full^[<side> [on/off/full]]"
+#~ msgstr "[<puoli> [on/off]]"
+
+#~ msgid "Show fps."
+#~ msgstr "Näytä virkistystaajuus"
+
+#~ msgid " replay"
+#~ msgstr " – uusinta"
 
 #, fuzzy
 #~| msgid "undead"
@@ -8625,13 +8700,6 @@ msgstr "Valkotaulun asetukset"
 #~ "\n"
 #~ "Päivä: -25% vahinkoon\n"
 #~ "Yö: −25% vahinkoon"
-
-#, fuzzy
-#~| msgid "(this turn left)"
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(viimeinen vuoro)"
-#~ msgstr[1] "(viimeinen vuoro)"
 
 #~ msgid ""
 #~ "In many campaign scenarios, you may issue simple instructions for your "
@@ -9856,9 +9924,6 @@ msgstr "Valkotaulun asetukset"
 
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "Sinulla ei ole pelaajia ystävien tai tai torjuttujen listalla."
-
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Taistelu Wesnothista"
 
 #~ msgid "Local time of day area lighting"
 #~ msgstr "Paikallinen vuorokaudenaika"
@@ -14061,44 +14126,8 @@ msgstr "Valkotaulun asetukset"
 #~ "Yksikkö parantaa itseään 8 elämäpistettä vuorossa. Jos yksikkö "
 #~ "myrkytetään, se poistaa myrkyn paranemisen sijasta."
 
-#~ msgid "steadfast"
-#~ msgstr "vankkumaton"
-
-#~ msgid "female^steadfast"
-#~ msgstr "vankkumaton"
-
-#~ msgid ""
-#~ "Steadfast:\n"
-#~ "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#~ "defending. Vulnerabilities are not affected."
-#~ msgstr ""
-#~ "Vankkumaton:\n"
-#~ "Tämän yksikön vastustukset tuplataan (korkeintaan 50%:iin) "
-#~ "puolustettaessa. Ei vaikuta heikkouksiin."
-
 #~ msgid "leadership"
 #~ msgstr "johtaja"
-
-#~ msgid "female^leadership"
-#~ msgstr "johtaja"
-
-#~ msgid ""
-#~ "Leadership:\n"
-#~ "This unit can lead our own units that are next to it, making them fight "
-#~ "better.\n"
-#~ "\n"
-#~ "Adjacent own units of lower level will do more damage in battle. When a "
-#~ "unit adjacent to, of a lower level than, and on the same side as a unit "
-#~ "with Leadership engages in combat, its attacks do 25% more damage times "
-#~ "the difference in their levels."
-#~ msgstr ""
-#~ "Johtaja:\n"
-#~ "Tämä yksikkö voi johtaa viereisiä ystävällisiä yksiköitä, jolloin ne "
-#~ "taistelevat paremmin.\n"
-#~ "\n"
-#~ "Kun tämän yksikön vieressä oleva samalla puolella oleva alempitasoinen "
-#~ "yksikkö joutuu taisteluun, sen hyökkäykset tekevät 25% enemmän vahinkoa "
-#~ "jokaista tasoa kohti, jonka yksikkö on johtajaa alempana."
 
 #~ msgid "skirmisher"
 #~ msgstr "kahakointi"
@@ -14268,9 +14297,6 @@ msgstr "Valkotaulun asetukset"
 #~ "kohteen vastakkaisella puolella on kohteelle vihamielinen ja "
 #~ "taistelukykyinen yksikkö (yksikköä ei ole esimerkiksi  muutettu kiveksi)."
 
-#~ msgid "plague"
-#~ msgstr "rutto"
-
 #~ msgid ""
 #~ "Plague:\n"
 #~ "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -14281,18 +14307,6 @@ msgstr "Valkotaulun asetukset"
 #~ "Kun yksikkö tapetaan ruttohyökkäyksellä, kyseinen yksikkö korvataan "
 #~ "yksiköllä, joka on identtinen ja samalla puolella kuin ruttohyökkäyksen "
 #~ "tehnyt yksikkö. Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä."
-
-#~ msgid ""
-#~ "Plague:\n"
-#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~ "Walking Corpse on the same side as the unit with the Plague attack. This "
-#~ "doesn’t work on Undead or units in villages."
-#~ msgstr ""
-#~ "Rutto:\n"
-#~ "Kun yksikkö tapetaan ruttohyökkäyksellä, kyseinen yksikkö korvataan "
-#~ "yksiköllä kävelevällä ruumiiilla ja samalla on puolella kuin "
-#~ "ruttohyökkäyksen tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä "
-#~ "yksiköihin kylissä)."
 
 #~ msgid "slows"
 #~ msgstr "hidastaa"
@@ -14568,13 +14582,6 @@ msgstr "Valkotaulun asetukset"
 #~ " During battle, this unit can drain life from victims to renew its own "
 #~ "health."
 #~ msgstr " Tämä yksikkö imee uhriensa elinvoiman itselleen."
-
-#~ msgid ""
-#~ " The length of this unit’s weapon allows it to strike first in melee, "
-#~ "even in defense."
-#~ msgstr ""
-#~ " Tällä yksiköllä on pitkä keihäs tai hilpari, joten se saa lyödä "
-#~ "taistelussa ensimmäisenä myös puolustautuessaan."
 
 #~ msgid ""
 #~ " The victims of this unit’s poison will continually take damage until "

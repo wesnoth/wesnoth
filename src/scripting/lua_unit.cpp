@@ -27,6 +27,8 @@
 #include "units/unit.hpp"
 #include "units/map.hpp"
 #include "units/animation_component.hpp"
+#include "game_version.hpp"
+#include "deprecation.hpp"
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"                    // for lua_State, lua_settop, etc
@@ -315,6 +317,8 @@ static int impl_unit_get(lua_State *L)
 	return_string_attrib("type", u.type_id());
 	return_string_attrib("image_mods", u.effect_image_mods());
 	return_string_attrib("usage", u.usage());
+	return_string_attrib("ellipse", u.image_ellipse());
+	return_string_attrib("halo", u.image_halo());
 	return_int_attrib("hitpoints", u.hitpoints());
 	return_int_attrib("max_hitpoints", u.max_hitpoints());
 	return_int_attrib("experience", u.experience());
@@ -325,7 +329,9 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("max_attacks", u.max_attacks());
 	return_int_attrib("attacks_left", u.attacks_left());
 	return_tstring_attrib("name", u.name());
+	return_tstring_attrib("description", u.unit_description());
 	return_bool_attrib("canrecruit", u.can_recruit());
+	return_bool_attrib("renamable", !u.unrenamable());
 	return_int_attrib("level", u.level());
 	return_int_attrib("cost", u.cost());
 
@@ -384,15 +390,20 @@ static int impl_unit_get(lua_State *L)
 		push_unit_attacks_table(L, 1);
 		return 1;
 	}
+	if(strcmp(m, "petrified") == 0) {
+		deprecated_message("(unit).petrified", DEP_LEVEL::INDEFINITE, {1,17,0}, "use (unit).status.petrified instead");
+		lua_pushboolean(L, u.incapacitated());
+		return 1;
+	}
 	return_vector_string_attrib("animations", u.anim_comp().get_flags());
 	return_cfg_attrib("recall_filter", cfg = u.recall_filter());
 	return_bool_attrib("hidden", u.get_hidden());
-	return_bool_attrib("petrified", u.incapacitated());
 	return_bool_attrib("resting", u.resting());
 	return_string_attrib("role", u.get_role());
 	return_string_attrib("race", u.race()->id());
 	return_string_attrib("gender", gender_string(u.gender()));
 	return_string_attrib("variation", u.variation());
+	return_string_attrib("undead_variation", u.undead_variation());
 	return_bool_attrib("zoc", u.get_emit_zoc());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
 	return_string_attrib("portrait", u.big_profile() == u.absolute_image()
@@ -400,7 +411,7 @@ static int impl_unit_get(lua_State *L)
 		: u.big_profile());
 	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
 
-	if(luaW_getmetafield(L, 1, m)) {
+	if(luaW_getglobal(L, "wesnoth", "units", m)) {
 		return 1;
 	}
 	return 0;
@@ -435,13 +446,19 @@ static int impl_unit_set(lua_State *L)
 	modify_int_attrib("level", u.set_level(value));
 	modify_bool_attrib("resting", u.set_resting(value));
 	modify_tstring_attrib("name", u.set_name(value));
+	modify_tstring_attrib("description", u.set_unit_description(value));
+	modify_string_attrib("portrait", u.set_big_profile(value));
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	modify_string_attrib("usage", u.set_usage(value));
 	modify_string_attrib("undead_variation", u.set_undead_variation(value));
+	modify_string_attrib("ellipse", u.set_image_ellipse(value));
+	modify_string_attrib("halo", u.set_image_halo(value));
 	modify_bool_attrib("hidden", u.set_hidden(value));
 	modify_bool_attrib("zoc", u.set_emit_zoc(value));
 	modify_bool_attrib("canrecruit", u.set_can_recruit(value));
+	modify_bool_attrib("renamable", u.set_unrenamable(!value));
+	modify_cfg_attrib("recall_filter", u.set_recall_filter(cfg));
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(value));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(value));
@@ -478,6 +495,11 @@ static int impl_unit_set(lua_State *L)
 		modify_int_attrib("x", loc.set_wml_x(value); u.set_location(loc));
 		modify_int_attrib("y", loc.set_wml_y(value); u.set_location(loc));
 		modify_string_attrib("id", u.set_id(value));
+		if(strcmp(m, "loc") == 0) {
+			luaW_tolocation(L, 3, loc);
+			u.set_location(loc);
+			return 0;
+		}
 	} else {
 		const bool is_key_x = strcmp(m, "x") == 0;
 		const bool is_key_y = strcmp(m, "y") == 0;
@@ -616,10 +638,7 @@ static int impl_unit_variables_set(lua_State *L)
 		return luaL_argerror(L, 2, "unknown unit");
 	}
 	char const *m = luaL_checkstring(L, 2);
-	if(strcmp(m, "__cfg") == 0) {
-		u->variables() = luaW_checkconfig(L, 3);
-		return 0;
-	}
+	modify_cfg_attrib("__cfg", u->variables() = cfg);
 	config& vars = u->variables();
 	if(lua_isnoneornil(L, 3)) {
 		try {
@@ -654,41 +673,6 @@ namespace lua_units {
 		lua_setfield(L, -2, "__newindex");
 		lua_pushstring(L, "unit");
 		lua_setfield(L, -2, "__metatable");
-		// Unit methods
-		luaW_getglobal(L, "wesnoth", "match_unit");
-		lua_setfield(L, -2, "matches");
-		luaW_getglobal(L, "wesnoth", "put_recall_unit");
-		lua_setfield(L, -2, "to_recall");
-		luaW_getglobal(L, "wesnoth", "put_unit");
-		lua_setfield(L, -2, "to_map");
-		luaW_getglobal(L, "wesnoth", "erase_unit");
-		lua_setfield(L, -2, "erase");
-		luaW_getglobal(L, "wesnoth", "copy_unit");
-		lua_setfield(L, -2, "clone");
-		luaW_getglobal(L, "wesnoth", "extract_unit");
-		lua_setfield(L, -2, "extract");
-		luaW_getglobal(L, "wesnoth", "advance_unit");
-		lua_setfield(L, -2, "advance");
-		luaW_getglobal(L, "wesnoth", "add_modification");
-		lua_setfield(L, -2, "add_modification");
-		luaW_getglobal(L, "wesnoth", "unit_resistance");
-		lua_setfield(L, -2, "resistance");
-		luaW_getglobal(L, "wesnoth", "remove_modifications");
-		lua_setfield(L, -2, "remove_modifications");
-		luaW_getglobal(L, "wesnoth", "unit_defense");
-		lua_setfield(L, -2, "defense");
-		luaW_getglobal(L, "wesnoth", "unit_movement_cost");
-		lua_setfield(L, -2, "movement");
-		luaW_getglobal(L, "wesnoth", "unit_vision_cost");
-		lua_setfield(L, -2, "vision");
-		luaW_getglobal(L, "wesnoth", "unit_jamming_cost");
-		lua_setfield(L, -2, "jamming");
-		luaW_getglobal(L, "wesnoth", "unit_ability");
-		lua_setfield(L, -2, "ability");
-		luaW_getglobal(L, "wesnoth", "transform_unit");
-		lua_setfield(L, -2, "transform");
-		luaW_getglobal(L, "wesnoth", "select_unit");
-		lua_setfield(L, -2, "select");
 
 		// Create the unit status metatable.
 		cmd_out << "Adding unit status metatable...\n";

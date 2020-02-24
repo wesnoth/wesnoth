@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 
@@ -6,15 +5,6 @@ local wml_actions = wesnoth.wml_actions
 --  modify_unit has basicially two implementations, the optimized implementation
 --  in the first part of this file and the fallback (old) implementation in the
 --  second part of this file
-
-local function split_to_array(str, sep)
-	-- Split string @str into a table using the delimiter @sep (default: ',')
-
-	local sep, fields = sep or ",", {}
-	local pattern = string.format("([^%s]+)", sep)
-	string.gsub(str, pattern, function(c) fields[#fields+1] = c end)
-	return fields
-end
 
 local function make_set(t)
 	local res = {}
@@ -25,6 +15,7 @@ local function make_set(t)
 end
 
 local known_attributes = make_set {
+	"mode",
 	"x",
 	"y",
 	"ai_special",
@@ -45,14 +36,31 @@ local known_attributes = make_set {
 	"resting",
 	"canrecruit",
 	"type",
+	"variation",
+	"ellipse",
+	"halo",
+	"recall_cost",
+	"description",
+	"hidden",
+	"unrenamable",
+	"profile",
+	"zoc",
+	"usage",
+	"upkeep",
 }
 
 local known_tags = make_set {
 	"object",
 	"advancement",
 	"trait",
+	"effect",
 	"filter",
 	"status",
+	"set_variable",
+	-- todo: "set_variables",
+	"clear_variable",
+	"filter_recall",
+	"variables",
 }
 
 local function is_simple(cfg)
@@ -70,25 +78,16 @@ local function is_simple(cfg)
 	return true
 end
 
--- gets map and recalllist units.
-local function get_all_units(filter)
-	local res = wesnoth.get_units(filter)
-	if (not filter.x or filter.x == "recall") and (not filter.y or filter.y == "recall") then
-		--append recall units to result.
-		for i, u in ipairs(wesnoth.get_recall_units(filter)) do
-			res[#res + 1] = u
-		end
-	end
-	return res
-end
-
 local function simple_modify_unit(cfg)
-	local filter = wml.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
-	-- todo: investigate the follwoing attrtibutes:
-	--       id, ellipse, recall_cost, alpha, flying,
-	--       hidden, halo, description, overlays, unrenamable
-	-- and tags: [status] [variables]
+	local filter = wml.get_child(cfg, "filter") or wml.error "[modify_unit] missing required [filter] tag"
+	-- todo: investigate the following attrtibutes:
+	--       id, alpha, flying, overlays
 	local simple_attributes = {
+		"ellipse",
+		"halo",
+		"recall_cost",
+		"description",
+		"hidden",
 		"side",
 		"name",
 		"role",
@@ -101,7 +100,10 @@ local function simple_modify_unit(cfg)
 		"experience",
 		"max_experience",
 		"resting",
-		"canrecruit"
+		"canrecruit",
+		"zoc",
+		"usage",
+		"upkeep",
 	}
 
 	local function handle_unit(u)
@@ -113,10 +115,16 @@ local function simple_modify_unit(cfg)
 			u["goto"] = { cfg.goto_x or u["goto"][1] , cfg.goto_y or u["goto"][2] }
 		end
 		if cfg.extra_recruit then
-			u.extra_recruit = split_to_array(cfg.extra_recruit)
+			u.extra_recruit = cfg.extra_recruit:split()
 		end
 		if cfg.ai_special == "guardian" then
 			u.status.guardian = true
+		end
+		if cfg.profile ~= nil then
+			u.portrait = profile
+		end
+		if cfg.unrenamable ~= nil then
+			u.renamable = not cfg.unrenamable
 		end
 		---------- SIMPLE ATTRIBUTES  ----------
 		for i, name in ipairs(simple_attributes) do
@@ -126,6 +134,7 @@ local function simple_modify_unit(cfg)
 		end
 
 		---------- TAGS ----------
+		local found_recall, found_variables = false, false
 		for i, t in ipairs(wml.shallow_parsed(cfg)) do
 			local tagname, tagcontent = t[1], t[2]
 			if tagname == "object" or tagname == "trait" or tagname == "advancement" then
@@ -135,29 +144,48 @@ local function simple_modify_unit(cfg)
 					tagcontent = wml.parsed(tagcontent)
 				end
 				u:add_modification(tagname, tagcontent);
-			end
-			if tagname == "status" then
+			elseif tagname == "effect" then
+				local apply_to = tagcontent.apply_to
+				if wesnoth.effects[apply_to] then
+					wesnoth.effects[apply_to](u, tagcontent)
+				else
+					wml.error("[modify_unit] had invalid [effect]apply_to value")
+				end
+			elseif tagname == "status" then
 				for i, v in pairs(tagcontent) do
 					u.status[i] = v
 				end
+			elseif not found_recall and tagname == "filter_recall" then
+				u.recall_filter = wml.merge(u.recall_filter, tagcontent, cfg.mode or "merge")
+				found_recall = true -- Ignore all but the first
+			elseif not found_variables and tagname == "variables" then
+				u.variables.__cfg = wml.merge(u.variables.__cfg, tagcontent, cfg.mode or "merge")
+				found_variables = true -- Ignore all but the first
+			elseif tagname == "set_variable" then
+				wesnoth.wml_actions.set_variable(tagcontent, u.variables)
+			elseif tagname == "clear_variable" then
+				wesnoth.wml_actions.clear_variable(tagcontent, u.variables)
 			end
 		end
 
-		-- handle 'type' last.
+		-- handle 'type' and 'variation' last.
 		if cfg.type == "" then
 			u.experience = u.max_experience
-		elseif cfg.type then
+		elseif cfg.type or cfg.variation then
 			u.experience = 0
-			u:transform(cfg.type)
+			u:transform(cfg.type or u.type, cfg.variation)
 		end
 
 		-- always do an advancement here (not only when experience/max_experience/type was modified)
-		-- for compatability with old code.
-		u:advance()
+		-- for compatibility with old code.
+		-- Skip for recall list units
+		if u.valid == 'map' then
+			u:advance()
+		end
 	end
 
 	local this_unit = utils.start_var_scope("this_unit")
-	for i, u in ipairs(get_all_units(filter)) do
+	for i, u in ipairs(wesnoth.units.find(filter)) do
 		wml.variables["this_unit"] = u.__cfg
 		handle_unit(u)
 	end
@@ -195,7 +223,7 @@ function wml_actions.modify_unit(cfg)
 		end
 	end
 
-	local filter = wml.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
+	local filter = wml.get_child(cfg, "filter") or wml.error "[modify_unit] missing required [filter] tag"
 	local function handle_unit(unit_num)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
@@ -215,8 +243,8 @@ function wml_actions.modify_unit(cfg)
 					mod = wml.parsed(mod)
 				end
 				local unit = wml.variables[unit_path]
-				unit = wesnoth.create_unit(unit)
-				wesnoth.add_modification(unit, current_tag, mod)
+				unit = wesnoth.units.create(unit)
+				unit:add_modification(current_tag, mod)
 				unit = unit.__cfg;
 				wml.variables[unit_path] = unit
 			elseif current_tag == "effect" then
@@ -224,13 +252,21 @@ function wml_actions.modify_unit(cfg)
 				local apply_to = mod.apply_to
 				if wesnoth.effects[apply_to] then
 					local unit = wml.variables[unit_path]
-					unit = wesnoth.create_unit(unit)
+					unit = wesnoth.units.create(unit)
 					wesnoth.effects[apply_to](unit, mod)
 					unit = unit.__cfg;
 					wml.variables[unit_path] = unit
 				else
-					helper.wml_error("[modify_unit] had invalid [effect]apply_to value")
+					wml.error("[modify_unit] had invalid [effect]apply_to value")
 				end
+			elseif current_tag == "set_variable" then
+				local unit = wesnoth.units.create(wml.variables[unit_path])
+				wesnoth.wml_actions.set_variable(current_table[2], unit.variables)
+				wml.variables[unit_path] = unit.__cfg
+			elseif current_tag == "clear_variable" then
+				local unit = wesnoth.units.create(wml.variables[unit_path])
+				wesnoth.wml_actions.clear_variable(current_table[2], unit.variables)
+				wml.variables[unit_path] = unit.__cfg
 			else
 				if replace_mode then
 					wml.variables[string.format("%s.%s", unit_path, current_tag)] = {}

@@ -4,21 +4,21 @@ also belong here. Other utils are in utils/.
 
 == Scripts ==
 
-=== journeylifter ===
-
-A program for converting campaigns to use trackplacer-format journey files.
-All mainline campaigns have already been converted; this is for lifting UMC.
-
 === rmtrans ===
 
 Remove nearly transparent pixels from images using GIMP. It currently affects
 only one image at a time. Batch processing is available within GIMP, but it
 would be useful to expand this to skip files where the pixels did not change.
 
-=== trackplacer ===
+=== `tmx_trackplacer` ===
 
-A visual editor for journey tracks, the icon sequences that appear on
-Wesnoth story screens.
+Converter for journey track files, the .cfg files which control the icon
+sequences that appear on Wesnoth story screens. This can convert them to
+or from the format needed for editing in Tiled.
+
+=== trackviewer.pyw ===
+
+Previews the animation of journey tracks.
 
 === wesnoth_addon_manager ===
 

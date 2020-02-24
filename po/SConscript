@@ -24,7 +24,7 @@ def update_pot(target, source, env):
 
 textdomains = glob("wesnoth*")
 po4a_domains = Split("wesnoth-manpages wesnoth-manual")
-textdomains = [domain for domain in textdomains if os.path.isdir(domain)]
+textdomains = [domain for domain in textdomains if os.path.isdir(domain) and os.path.exists(domain+"/"+domain+".pot")]
 linguas = Split(open("LINGUAS").read())
 
 if "pot-update" in COMMAND_LINE_TARGETS:

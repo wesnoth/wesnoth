@@ -1,15 +1,84 @@
 ## Version 1.15.2+dev
- ### AI:
+ ### AI
+   * Merge most of Experimental AI candidate actions (CAs) into default AI
+     * CAs merged: castle switch, retreat injured, spread poison, place healers, move to any enemy
+     * CAs not merged: grab villages and village hunt, as the respective default AI CAs
+       are better as general purpose CAs. Also not merged was recruit rushers, which is too different
+       from default recruiting (would change balance too much) and because it can currently not deal
+       with multiple leaders and all the recruitment aspects. An option to use this alternative
+       recruiting will be provided in the future.
+     * Previous default AI CA removed: retreat phase
+     * The previous default CA is still available by using `[ai]ai_algorithm=ai_default_rca_1_14` or
+       by selecting "1.14 Default AI" in the multiplayer computer player selection menu
+     * The Experimental AI is now only available in debug mode (in MP) as it is mostly identical to the new default AI
+     * Many improvement were made to the new default CAs, to make them work correctly and consistently
+       in general settings, such a taken AI aspects (aggression, attacks, [avoid], caution, ...) and unit guardian
+       status into account, improved attack ratings and multi-leader functionality, and bug fixes
+   * Bottleneck Defense Micro AI:
+     * New optional parameter [filter]
+     * Fix bug of units not participating if too far in front of the bottleneck
+   * Healer Support Micro AI: take unit guardian status and passive_leader aspect into account
+   * New ai_helper functionality: path finding, next_hop and get_attackable_enemies taking avoid into
+     account; next_hop with pre-calculated path and fanning out; new options to get_cheapest_recruit_cost
+   * Add [filter_own] optional tag to all default and Experimental AI candidate actions
+   * Allow comma-separated list of ids in addition to 'yes/no' for AI aspects leader_ignores_keep,
+     passive_leader and passive_leader_shares_keep
+   * Fix [leader_goal] for sides with multiple leaders
+   * Change E_NOT_REACHED_DESTINATION from error to warning
  ### Campaigns
+   * An Orcish Incursion:
+     * Moved to addons server
    * Descent into Darkness:
+     * Add new portrait for Dela Keshar
+     * Remove dark adepts from recruit list
+     * Add special units and AMLA paths
+     * Revised dialogue
+     * Increased map interactability
+     * S3: reworked scenario
      * S5: adjust enemy recruits and gold
+   * Legend of Wesmere:
+     * S3: fix scenario-breaking bug introduced in 1.15.2
+   * Liberty
+     * Revise gameplay in scenarios 1-5
+     * Merge S6 and S7 into a new scenario
+   * Sceptre of Fire:
+     * General prose/dialogue revision
+     * New scenario (now the third)
+     * Various map and scenario updates
+     * Make use of rails terrain
+     * Dwarves can purchase runes (temporary status boosts)
    * Secrets of the Ancients:
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
+     * Fix last breath dialog for bats firing multiple times in the campaign
+     * Fix bug of regular WC appearing in recruit list in S05 Blackwater
+     * Fix special plague attack making rats when spiders are called for
+     * Fix missing portraits for Shynal
+   * Tutorial:
+     * Redraw S2 and reduce difficulty
  ### Editor
  ### Language and i18n
+   * Updated translations: Ancient Greek, Chinese (Traditional), Czech, Dutch,
+     Esperanto, Finnish, French, Italian, Korean, Portuguese,
+     Portuguese (Brazil), Russian, Spanish, Turkish
+   * Fix Rename Unit dialog having untranslated text (issue #4569).
+   * Use <game dir>/translations instead of <process working dir>/translations to find core
+     translation catalogues on Windows.
  ### Terrains
+   * Add Stone Walls variation Catacombs (Xot) including some overlays
+   * New dwarf castle variations: Non-cave (Cf), ruined (Cfr) and snow (Cfa)
+   * New elf castle variation: snow (Cva)
+   * Fixes and touchups to mushroom terrains Tb and Tf
  ### Units
    * Add mushroom defense cap to mounted and some flying units
+   * Decreased hitpoints of Dwarvish Lord from 79 to 74
+   * Decreased hitpoints of Dwarvish Steelclad from 59 to 55
+   * Increased hitpoints of Dwarvish Thunderguard from 44 to 47
+   * Increased hitpoints of Dwarvish Pathfinder from 42 to 45
+   * Increased melee damage of Dwarvish Stalwart from 7-3 to 8-3
+   * Increased melee damage of Dwarvish Sentinel from 9-3 to 10-3
+   * Dunefolk: rebalancing and renaming of various units
+   * Dunefolk: some graphics additions and updates
+   * Orcs: revise some unit descriptions
    * Cost of Drake Warrior changed from 30 to 32
    * Cost of Drake Arbiter changed from 31 to 32
    * Cost of Drake Trasher changed from 31 to 32
@@ -59,15 +128,78 @@
    * MP of Merman Javelineer increased from 6 to 7
    * HP of Merman Javelineer changed from 55 to 58
  ### User interface
+   * Moved tutorial to campaigns menu
+   * Moved language button to icon
+   * "Core" type add-ons are now only accessible via hotkey.
+   * Removed "Classic" in-game theme.
+   * Textboxes now have a hover effect as well as an I-beam cursor.
+   * Added the Private Replay checkbox to the Multiplayer Create Game screen. This separates
+     whether observers are allowed from whether the replay will be publicly available.
+   * Reworked styling of progress bars and the network transfer progress dialog.
+   * Moved the MP server list from a separate dialog to the Connect to Server dialog proper
+     and added functionality for managing player-defined servers (issue #4564).
+   * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
+   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
+     into account.
+   * The recruit and recall dialogs have a tooltip over the level number to show what the unit can advance to (issue #4135)
  ### Lua API
+   * unit:transform() now takes an optional variation parameter
+   * Support side.variables for access to side variables, similar to unit.variables
+   * New read-write keys in unit userdata: ellipse, halo, description, renamable
+   * New functions for working with WML: wml.merge, wml.diff, wml.patch, wml.find_child, wml.attribute_count, wml.equal, wml.valid, wml.interpolate
+   * wesnoth.wml_matches_filter renamed to wml.matches_filter (the old name still works)
+   * Moved to units module: wesnoth.create_unit, wesnoth.get_unit, wesnoth.get_units, wesnoth.get_recall_units
+   * The wesnoth.units module now acts like a metatable for unit userdata.
+   * New wesnoth.units.find gets units on either the map or any side's recall list.
+   * Moved to interface module: wesnoth.scroll, wesnoth.zoom, wesnoth.get_mouseover_tile
+   * wesnoth.interface.get_displayed_unit aliased to wesnoth.unit.get_hovered
+   * unit portrait and recall_filter are now writable
+   * Moved to new sides module: wesnoth.get_sides, wesnoth.is_enemy, wesnoth.match_side, wesnoth.get_starting_location, wesnoth.set_side_id, all AI-related functions
+   * Functions that previously only took a side index as the first parameter now also accept the side proxy userdata.
+   * The wesnoth.sides module acts like a metatable for the side userdata.
+   * Added `__tostring` functions to a number of Wesnoth userdata types.
+   * Unit movetype functions renamed (defense_on, movement_on, vision_on, jamming_on, resistance_against).
+     The defense_on and resistance_against functions return the actual values, rather than the raw WML values.
+   * New function wesnoth.units.chance_to_be_hit is equivalent to deprecated wesonth.units.defense but conveys the meaning better.
+   * Unit movetype functions (excluding resistance) can take a location instead of a terrain code, for convenience
+   * Side proxy now has starting_location member
+   * Fix ai.aspects.grouping not returning the aspect's value
+   * New stringx module exposes various split/join functions used by the engine, as well as trim
+   * Wesnoth's format functions moved to stringx (format_conjunct_list, format_disjunct_list, vformat)
+   * location_set module extended to support set operators (& | ~ -) as well as a few additional functions
+ ### WFL engine
+   * New functions resistance_on(), vision_cost(), jamming_cost() that work in gameplay contexts (eg filters)
+   * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying
+   * For FormulaAI, the game map object has an alternate access mode - `map.gamemap[loc(x,y)]`
  ### WML engine
+   * Support upkeep in StandardUnitFilter
+   * [effect]apply_to=variation now supports heal_full
+   * Support [set/clear_variable] inside [modify_unit/side]
+   * Support [variables] in [modify_side], as in [modify_unit]
+   * [filter_weapon] implemented in abilities used as weapons specials to be the same as true weapons specials (implement filter_weapon in [filter_student] instead of [filter_self])
+   * All special weapons can be used in [abilities] now (this was not the case yet for [heal_on_hit], [plague] and [swarm])
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
      Default, Steam, SourceForge, Flatpak, macOS App Store, Linux repository, iOS, Android, BSD repository
  ### Miscellaneous and bug fixes
+   * New build-dependency: Python3 is required to run the WML unit tests (on non-Windows)
+   * 80% of WML unit tests now run in a batch using a single instance of Wesnoth (non-Windows only)
    * Fix --userdata-dir deprecation warning being printed when starting wesnoth without arguments
      when -DPREFERENCES_DIR="..." was defined at compile time.
+   * Make wmllint recognize `[load_resource]` (issue #4538).
+   * Removed map scaling algorithm customization. Nearest-neighbor scaling will now
+     always be used.
+   * Make wmllint ignore race= keys if they are part of filters inside [unit_type] (issue #4105)
+   * Removed a few asserts from wmllint and postponed a few unit sanity checks to the closing of a [unit_type] tag (issue #4102)
+   * Added tool `tmx_trackplacer`, a file converter for editing map tracks with Tiled (PR #4464)
+   * Added tool trackviewer, which has the animation-preview functions of trackplacer (PR #4574)
+   * Removed the python2 trackplacer tool (issue #4365)
+   * Made wmlscope recognize and analyze optional macro arguments
+   * Made `map_file=Example.map` support looking in the `[binary_path]`'s "maps/" directory (issue #4633)
+   * Make wesnoth_addon_manager not generate packet.dump files any more (issue #4651)
+   * Improved handling of defense cap and {NOTE_DEFENSE_CAP} in wmllint (issue #4379)
+   * Removed the leftover Khalifate multiplayer faction files. (PR #4714)
 
 ## Version 1.15.2
  ### AI:
@@ -310,7 +442,7 @@
    * Support male_voice and female_voice in [message]
    * Support [break], [continue], and [return] in [random_placement]
    * [remove_sound_source] now accepts a comma-separated ID list
-   * Support [filter_team] in [side] in addition to team_name=
+   * Support [filter_team] in [item] in addition to team_name=
    * Support an optional EXTRA_WML argument to {REMOVE_LABEL}.
    * Support [disallow_end_turn]reason=
    * The {SPECIAL_NOTES_*} macros now start with a newline and a bullet point.
@@ -341,8 +473,33 @@
    * Game bans are now also enforced by username. (PR#4139)
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
-## Version 1.14.9+dev
+## Version 1.14.11+dev
+
+## Version 1.14.11
+ ### Language and i18n
+   * Updated translations: Czech, German.
+ ### Packaging
+   * Fixed data/dist information not being found on many platforms other than Windows (only
+     with the installer-created shortcut), as well as only the very first word being read instead
+     of the whole line.
+   * Added support for systemctl reload.
+ ### Miscellaneous and bug fixes
+   * Silenced spurious warning about conflicting l10n-track files (issue #4716).
+
+## Version 1.14.10
+ ### AI
+   * Experimental AI:
+     * Spread poison: bug fix for units ignoring [avoid] tag
+     * Castle switch: bug fix for units-on-keep check
+     * Remove village hunt CA
+     * Add ids for candidate actions
+   * Fix bug crashing some AIs when units with chance-to-hit specials without id are on map
+   * Fast Micro AI: fix re-adding default CAs when deleting the MAI
+   * Bottleneck Defense Micro AI: fix bug of units not participating if too far in front of the bottleneck
+   * Lua AIs: several other minor behind-the-scenes bug fixes
  ### Campaigns
+   * Descent into Darkness:
+     * S1: reduced difficulty
    * Heir to the Throne:
      * Modify campaign starting date
    * Legend of Wesmere:
@@ -354,28 +511,48 @@
      * S7b/S8b: reduce enemy gold values and modify dialogue upon allied unit death
    * Tutorial:
      * S2: Make the first grunt cross the bridge, otherwise the scenario is too hard
+   * Under the Burning Suns:
+     * Sun Singer and Sun Sylph: modify faerie fire colors
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), Italian, Korean,
-     Portuguese (Brazil)
+   * Updated translations: British English, Chinese (Simplified),
+     Chinese (Traditional), Czech, Dutch, Esperanto, French, German, Italian,
+     Korean, Portuguese (Brazil), Russian, Spanish, Turkish
+   * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Lua API
-   * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
- ### Multiplayer
-   * Auction X: Exclude the center side from "shuffle sides"
+   * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables (issue #4079).
+ ### Music and sound effects
+   * Removed accidental silence of two seconds after the first track of each scenario
+     (issue #4459).
  ### Units
-   * Sun Singer and Sun Sylph: modify faerie fire colors
+   * Add various new death, standing, and idle animations
  ### User interface
-   * Draw ellipses during draw/sheath animations. (Issue#1527)
+   * Fixed some severe game rendering issues with SDL 2.0.10 (issue #4237, issue #4245,
+     issue #4510).
+   * Draw ellipses during draw/sheath animations (issue #1527).
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
-     the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
-     (Issue#4142)
-   * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
-   * Zooming in doesn't move the center of the viewport when the map is wider/taller
-     than the available width/height (PR#4442)
-   * Help pages for unit types show base abilities and AMLA abilities separately. (#2907)
+     the help on the correct unit variation (e.g., Walking Corpse (Swimmer))
+     (issue #4142).
+   * Ensure enough space to display turn numbers in the hundreds.
+   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
+     into account.
+   * Added the Private Replay checkbox to the Multiplayer Create Game screen. This separates
+     whether observers are allowed from whether the replay will be publicly available.
+   * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
+     are grayed out (PR #4362, PR #4444, part of issue #1282).
+   * Reworked styling of progress bars and the network transfer progress dialog.
+   * Removed "Classic" in-game theme.
+   * Textboxes now have a hover effect as well as an I-beam cursor.
+ ### Packaging
+   * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
+     This file should contain one of the following values based on what distribution channel the package is for:
+     Default, Steam, SourceForge, Flatpak, macOS App Store, Linux repository, iOS, Android, BSD repository
  ### Miscellaneous and bug fixes
-   * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
-   * Add help text for some debug commands (part of Issue#2500)
-   * More deprecation warnings logged by default (part of PR#4449)
+   * New build-dependency: Python3 is required to run the WML unit tests (on non-Windows)
+   * 80% of WML unit tests now run in a batch using a single instance of Wesnoth (non-Windows only)
+   * New help topic outlining common (and less common) reasons for losing a scenario (PR #4217).
+   * Add help text for some debug commands (part of issue #2500).
+   * Make wmllint recognize `[load_resource]` (issue #4538).
+   * Make wesnoth_addon_manager not generate packet.dump files any more (issue #4651)
 
 ## Version 1.14.9
  ### AI:
@@ -453,7 +630,6 @@
    * Added HighContrast icon variant
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
-   * The message of [print] is now shown centered within the map area
  ### Miscellaneous and bug fixes
    * Update various references of mermen to merfolk or mer
    * Adjust several maps to use different castle graphics

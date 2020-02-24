@@ -1,10 +1,9 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local H = wesnoth.require "helper"
 
 function wesnoth.micro_ais.patrol(cfg)
 	if (cfg.action ~= 'delete') then
 		if (not cfg.id) and (not wml.get_child(cfg, "filter")) then
-			H.wml_error("Patrol [micro_ai] tag requires either id= key or [filter] tag")
+			wml.error("Patrol [micro_ai] tag requires either id= key or [filter] tag")
 		end
 		AH.get_multi_named_locs_xy('waypoint', cfg, 'Patrol [micro_ai] tag')
 	end

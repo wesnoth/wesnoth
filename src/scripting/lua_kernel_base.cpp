@@ -16,7 +16,7 @@
 
 #include "game_config.hpp"
 #include "game_errors.hpp"
-#include "gui/core/gui_definition.hpp"
+#include "gui/core/gui_definition.hpp" // for remove_single_widget_definition
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
 #include "random.hpp"
@@ -33,6 +33,8 @@
 #include "scripting/lua_fileops.hpp"
 #include "scripting/lua_formula_bridge.hpp"
 #include "scripting/lua_gui2.hpp"
+#include "scripting/lua_wml.hpp"
+#include "scripting/lua_stringx.hpp"
 #include "scripting/lua_map_location_ops.hpp"
 #include "scripting/lua_rng.hpp"
 #include "scripting/push_check.hpp"
@@ -40,16 +42,10 @@
 #include "game_version.hpp"                  // for do_version_check, etc
 #include "picture.hpp"
 
-#include "formula/string_utils.hpp"
-#include "serialization/string_utils.hpp"
-#include "serialization/schema_validator.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/preprocessor.hpp"
 #include "utils/functional.hpp"
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
-#include "variable.hpp" // for config_variable_set
 
 #include <cstring>
 #include <exception>
@@ -57,7 +53,6 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include <fstream>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -72,6 +67,8 @@ static lg::log_domain log_user("scripting/lua/user");
 
 // Registry key for metatable
 static const char * Gen = "name generator";
+// Registry key for lua interpreter environment
+static const char * Interp = "lua interpreter";
 
 // Callback implementations
 
@@ -285,14 +282,6 @@ static int intf_random(lua_State *L)
 	}
 }
 
-static int intf_wml_matches_filter(lua_State* L)
-{
-	config cfg = luaW_checkconfig(L, 1);
-	config filter = luaW_checkconfig(L, 2);
-	lua_pushboolean(L, cfg.matches(filter));
-	return 1;
-}
-
 /**
 * Logs a message
 * Arg 1: (optional) Logger
@@ -365,136 +354,9 @@ static int intf_get_time_stamp(lua_State *L) {
 	return 1;
 }
 
-static int intf_format(lua_State* L)
-{
-	config cfg = luaW_checkconfig(L, 2);
-	config_variable_set variables(cfg);
-	if(lua_isstring(L, 1)) {
-		std::string str = lua_tostring(L, 1);
-		lua_push(L, utils::interpolate_variables_into_string(str, variables));
-		return 1;
-	}
-	t_string str = luaW_checktstring(L, 1);
-	lua_push(L, utils::interpolate_variables_into_tstring(str, variables));
-	return 1;
-}
-
-template<bool conjunct>
-static int intf_format_list(lua_State* L)
-{
-	const t_string empty = luaW_checktstring(L, 1);
-	auto values = lua_check<std::vector<t_string>>(L, 2);
-	lua_push(L, (conjunct ? utils::format_conjunct_list : utils::format_disjunct_list)(empty, values));
-	return 1;
-}
-
 static int intf_get_language(lua_State* L)
 {
 	lua_push(L, get_language().localename);
-	return 1;
-}
-
-/**
-* Dumps a wml table or userdata wml object into a pretty string.
-* - Arg 1: wml table or vconfig userdata
-* - Ret 1: string
-*/
-static int intf_wml_tostring(lua_State* L) {
-	const config& arg = luaW_checkconfig(L, 1);
-	std::ostringstream stream;
-	write(stream, arg);
-	lua_pushstring(L, stream.str().c_str());
-	return 1;
-}
-
-/**
- * Loads a WML file into a config
- * - Arg 1: WML file path
- * - Arg 2: (optional) Array of preprocessor defines, or false to skip preprocessing (true is also valid)
- * - Arg 3: (optional) Path to a schema file for validation (omit for no validation)
- * - Ret: config
- */
-static int intf_load_wml(lua_State* L)
-{
-	std::string file = luaL_checkstring(L, 1);
-	bool preprocess = true;
-	preproc_map defines_map;
-	if(lua_type(L, 2) == LUA_TBOOLEAN) {
-		preprocess = luaW_toboolean(L, 2);
-	} else if(lua_type(L, 2) == LUA_TTABLE || lua_type(L, 2) == LUA_TUSERDATA) {
-		lua_len(L, 2);
-		int n = lua_tonumber(L, -1);
-		lua_pop(L, 1);
-		for(int i = 0; i < n; i++) {
-			lua_geti(L, 2, i);
-			if(!lua_isstring(L, -1)) {
-				return luaL_argerror(L, 2, "expected bool or array of strings");
-			}
-			std::string define = lua_tostring(L, -1);
-			lua_pop(L, 1);
-			if(!define.empty()) {
-				defines_map.emplace(define, preproc_define(define));
-			}
-		}
-	} else if(!lua_isnoneornil(L, 2)) {
-		return luaL_argerror(L, 2, "expected bool or array of strings");
-	}
-	std::string schema_path = luaL_optstring(L, 3, "");
-	std::shared_ptr<schema_validation::schema_validator> validator;
-	if(!schema_path.empty()) {
-		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path)));
-		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
-	}
-	std::string wml_file = filesystem::get_wml_location(file);
-	filesystem::scoped_istream stream;
-	config result;
-	if(preprocess) {
-		stream = preprocess_file(wml_file, &defines_map);
-	} else {
-		stream.reset(new std::ifstream(wml_file));
-	}
-	read(result, *stream, validator.get());
-	luaW_pushconfig(L, result);
-	return 1;
-}
-
-/**
- * Parses a WML string into a config; does not preprocess or validate
- * - Arg 1: WML string
- * - Ret: config
- */
-static int intf_parse_wml(lua_State* L)
-{
-	std::string wml = luaL_checkstring(L, 1);
-	std::string schema_path = luaL_optstring(L, 2, "");
-	std::shared_ptr<schema_validation::schema_validator> validator;
-	if(!schema_path.empty()) {
-		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path)));
-		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
-	}
-	config result;
-	read(result, wml, validator.get());
-	luaW_pushconfig(L, result);
-	return 1;
-}
-
-/**
- * Returns a clone (deep copy) of the passed config, which can be either a normal config or a vconfig
- * If it is a vconfig, the underlying config is also cloned.
- * - Arg 1: a config
- * - Ret: the cloned config
- */
-static int intf_clone_wml(lua_State* L)
-{
-	const vconfig* vcfg = nullptr;
-	const config& cfg = luaW_checkconfig(L, 1, vcfg);
-	if(vcfg) {
-		config clone_underlying = vcfg->get_config();
-		vconfig clone(clone_underlying);
-		luaW_pushvconfig(L, clone);
-	} else {
-		luaW_pushconfig(L, cfg);
-	}
 	return 1;
 }
 
@@ -518,6 +380,12 @@ lua_kernel_base::lua_kernel_base()
 
 	cmd_log_ << "Initializing " << my_name() << "...\n";
 
+	// Define the CPP_function metatable ( so we can override print to point to a C++ member function, add "show_dialog" for this kernel, etc. )
+	// Do it first of all in case C++ functions are ever used in the core Wesnoth libs loaded in the next step
+	cmd_log_ << "Adding boost function proxy...\n";
+
+	lua_cpp::register_metatable(L);
+
 	// Open safe libraries.
 	// Debug and OS are not, but most of their functions will be disabled below.
 	cmd_log_ << "Adding standard libs...\n";
@@ -531,11 +399,15 @@ lua_kernel_base::lua_kernel_base()
 		{ "debug",  luaopen_debug  },
 		{ "os",     luaopen_os     },
 		{ "utf8",	luaopen_utf8   }, // added in Lua 5.3
+		// Wesnoth libraries
+		{ "stringx",lua_stringx::luaW_open },
+		{ "wml",    lua_wml::luaW_open },
+		{ "gui",    lua_gui2::luaW_open },
 		{ nullptr, nullptr }
 	};
 	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
 	{
-		luaL_requiref(L, lib->name, lib->func, 1);
+		luaL_requiref(L, lib->name, lib->func, true);
 		lua_pop(L, 1);  /* remove lib */
 	}
 
@@ -551,19 +423,7 @@ lua_kernel_base::lua_kernel_base()
 		lua_setfield(L, -3, function);
 	}
 	lua_pop(L, 1);
-
-	// Disable functions from debug which we don't want.
-	lua_getglobal(L, "debug");
-	lua_pushnil(L);
-	while(lua_next(L, -2) != 0) {
-		lua_pop(L, 1);
-		char const* function = lua_tostring(L, -1);
-		if(strcmp(function, "traceback") == 0 || strcmp(function, "getinfo") == 0) continue;	//traceback is needed for our error handler
-		lua_pushnil(L);										//getinfo is needed for ilua strict mode
-		lua_setfield(L, -3, function);
-	}
-	lua_pop(L, 1);
-
+	
 	// Delete dofile and loadfile.
 	lua_pushnil(L);
 	lua_setglobal(L, "dofile");
@@ -574,38 +434,24 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Adding error handler...\n";
 	push_error_handler(L);
 
-	// Create the gettext metatable.
-	cmd_log_ << lua_common::register_gettext_metatable(L);
-
-	// Create the tstring metatable.
-	cmd_log_ << lua_common::register_tstring_metatable(L);
-
 
 	lua_settop(L, 0);
-
-	// Define the CPP_function metatable ( so we can override print to point to a C++ member function, add "show_dialog" for this kernel, etc. )
-	cmd_log_ << "Adding boost function proxy...\n";
-
-	lua_cpp::register_metatable(L);
 
 	// Add some callback from the wesnoth lib
 	cmd_log_ << "Registering basic wesnoth API...\n";
 
 	static luaL_Reg const callbacks[] {
 		{ "compare_versions",         &intf_compare_versions         		},
-		{ "debug",                    &intf_wml_tostring                           },
 		{ "deprecated_message",       &intf_deprecated_message              },
 		{ "have_file",                &lua_fileops::intf_have_file          },
 		{ "read_file",                &lua_fileops::intf_read_file          },
 		{ "canonical_path",           &lua_fileops::intf_canonical_path     },
 		{ "textdomain",               &lua_common::intf_textdomain   		},
-		{ "tovconfig",                &lua_common::intf_tovconfig		},
 		{ "get_dialog_value",         &lua_gui2::intf_get_dialog_value		},
 		{ "set_dialog_tooltip",       &lua_gui2::intf_set_dialog_tooltip	},
 		{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
 		{ "set_dialog_visible",       &lua_gui2::intf_set_dialog_visible    },
 		{ "add_dialog_tree_node",     &lua_gui2::intf_add_dialog_tree_node	},
-		{ "add_widget_definition",    &lua_gui2::intf_add_widget_definition },
 		{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},
 		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
 		{ "set_dialog_focus",         &lua_gui2::intf_set_dialog_focus      },
@@ -616,23 +462,13 @@ lua_kernel_base::lua_kernel_base()
 		{ "require",                  &dispatch<&lua_kernel_base::intf_require>          },
 		{ "kernel_type",              &dispatch<&lua_kernel_base::intf_kernel_type>          },
 		{ "show_dialog",              &lua_gui2::show_dialog   },
-		{ "show_menu",                &lua_gui2::show_menu  },
-		{ "show_message_dialog",      &lua_gui2::show_message_dialog },
-		{ "show_popup_dialog",        &lua_gui2::show_popup_dialog   },
-		{ "show_story",               &lua_gui2::show_story          },
-		{ "show_message_box",         &lua_gui2::show_message_box    },
-		{ "show_lua_console",	      &dispatch<&lua_kernel_base::intf_show_lua_console> },
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
 		{ "random",                   &intf_random                   },
-		{ "wml_matches_filter",       &intf_wml_matches_filter       },
 		{ "log",                      &intf_log                      },
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_time_stamp",           &intf_get_time_stamp           },
-		{ "format",                   &intf_format                   },
-		{ "format_conjunct_list",     &intf_format_list<true>        },
-		{ "format_disjunct_list",     &intf_format_list<false>       },
 		{ "get_language",             &intf_get_language             },
 		{ nullptr, nullptr }
 	};
@@ -645,15 +481,10 @@ lua_kernel_base::lua_kernel_base()
 	//lua_cpp::set_functions(L, cpp_callbacks, 0);
 	lua_setglobal(L, "wesnoth");
 
-	static luaL_Reg const wml_callbacks[]= {
-		{ "load",      &intf_load_wml},
-		{ "parse",     &intf_parse_wml},
-		{ "clone",     &intf_clone_wml},
-		{ nullptr, nullptr },
-	};
-	lua_newtable(L);
-	luaL_setfuncs(L, wml_callbacks, 0);
-	lua_setglobal(L, "wml");
+	// Create the gettext metatable.
+	cmd_log_ << lua_common::register_gettext_metatable(L);
+	// Create the tstring metatable.
+	cmd_log_ << lua_common::register_tstring_metatable(L);
 
 	// Override the print function
 	cmd_log_ << "Redirecting print function...\n";
@@ -739,6 +570,16 @@ lua_kernel_base::lua_kernel_base()
 	// Create formula bridge metatables
 	cmd_log_ << lua_formula_bridge::register_metatables(L);
 
+	// Create the Lua interpreter table
+	cmd_log_ << "Sandboxing Lua interpreter...\nTo make variables visible outside the interpreter, assign to _G.variable.\n";
+	cmd_log_ << "The special variable _ holds the result of the last expression (if any).\n";
+	lua_newtable(L);
+	lua_createtable(L, 0, 1);
+	lua_getglobal(L, "_G");
+	lua_setfield(L, -2, "__index");
+	lua_setmetatable(L, -2);
+	lua_setfield(L, LUA_REGISTRYINDEX, Interp);
+
 	// Loading ilua:
 	cmd_log_ << "Loading ilua...\n";
 
@@ -760,6 +601,19 @@ lua_kernel_base::lua_kernel_base()
 		cmd_log_ << "Error: failed to load ilua.\n";
 	}
 	lua_settop(L, 0);
+
+	// Disable functions from debug which we don't want.
+	// We do this last because ilua needs to be able to use debug.getmetatable
+	lua_getglobal(L, "debug");
+	lua_pushnil(L);
+	while(lua_next(L, -2) != 0) {
+		lua_pop(L, 1);
+		char const* function = lua_tostring(L, -1);
+		if(strcmp(function, "traceback") == 0 || strcmp(function, "getinfo") == 0) continue;	//traceback is needed for our error handler
+		lua_pushnil(L);										//getinfo is needed for ilua strict mode
+		lua_setfield(L, -3, function);
+	}
+	lua_pop(L, 1);
 }
 
 lua_kernel_base::~lua_kernel_base()
@@ -835,7 +689,6 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 bool lua_kernel_base::load_string(char const * prog, const std::string& name, error_handler e_h)
 {
 	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
-	// todo: maybe allow a 'name' parameter to give better error messages.
 	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? name.c_str() : prog, "t");
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(mState, -1);
@@ -873,13 +726,18 @@ void lua_kernel_base::run_lua_tag(const config& cfg)
 }
 // Call load_string and protected call. Make them throw exceptions.
 //
-void lua_kernel_base::throwing_run(const char * prog, const std::string& name, int nArgs)
+void lua_kernel_base::throwing_run(const char * prog, const std::string& name, int nArgs, bool in_interpreter)
 {
 	cmd_log_ << "$ " << prog << "\n";
 	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
 	this->load_string(prog, name, eh);
+	if(in_interpreter) {
+		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
+		if(lua_setupvalue(mState, -2, 1) == nullptr)
+			lua_pop(mState, 1);
+	}
 	lua_insert(mState, -nArgs - 1);
-	this->protected_call(nArgs, 0, eh);
+	this->protected_call(nArgs, in_interpreter ? LUA_MULTRET : 0, eh);
 }
 
 // Do a throwing run, but if we catch a lua_error, reformat it with signature for this function and log it.
@@ -895,22 +753,48 @@ void lua_kernel_base::run(const char * prog, const std::string& name, int nArgs)
 
 // Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.
 void lua_kernel_base::interactive_run(char const * prog) {
-	std::string experiment = "ilua._pretty_print(";
+	std::string experiment = "return ";
 	experiment += prog;
-	experiment += ")";
+	int top = lua_gettop(mState);
 
 	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+	luaW_getglobal(mState, "ilua", "_pretty_print");
 
 	try {
 		// Try to load the experiment without syntax errors
 		this->load_string(experiment.c_str(), "interactive", eh);
+		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
+		if(lua_setupvalue(mState, -2, 1) == nullptr)
+			lua_pop(mState, 1);
 	} catch (const game::lua_error &) {
-		this->throwing_run(prog, "interactive", 0);	// Since it failed, fall back to the usual throwing_run, on the original input.
+		this->throwing_run(prog, "interactive", 0, true);	// Since it failed, fall back to the usual throwing_run, on the original input.
+		if(lua_gettop(mState) == top + 1) {
+			// Didn't return anything
+			lua_settop(mState, top);
 		return;
+		} else goto PRINT;
 	}
 	// experiment succeeded, now run but log normally.
 	cmd_log_ << "$ " << prog << "\n";
-	this->protected_call(0, 0, eh);
+	this->protected_call(0, LUA_MULTRET, eh);
+PRINT:
+	int nRets = lua_gettop(mState) - top - 1;
+	{
+		// Assign first result to _
+		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
+		int env_idx = lua_gettop(mState);
+		lua_pushvalue(mState, top + 2);
+		lua_setfield(mState, -2, "_");
+		// Now duplicate EVERY result and pass it to table.pack, assigning to _all
+		luaW_getglobal(mState, "table", "pack");
+		for(int i = top + 2; i < env_idx; i++)
+			lua_pushvalue(mState, i);
+		this->protected_call(nRets, 1, eh);
+		lua_setfield(mState, -2, "_all");
+		lua_pop(mState, 1);
+	}
+	// stack is now ilua._pretty_print followed by any results of prog
+	this->protected_call(lua_gettop(mState) - top - 1, 0, eh);
 }
 /**
  * Loads and executes a Lua file.

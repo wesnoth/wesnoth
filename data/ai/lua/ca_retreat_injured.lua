@@ -1,18 +1,28 @@
 ------- Retreat CA --------------
 
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local LS = wesnoth.require "location_set"
 local R = wesnoth.require "ai/lua/retreat.lua"
 
 local retreat_unit, retreat_loc
 
 local ca_retreat_injured = {}
 
-function ca_retreat_injured:evaluation(cfg, data)
+function ca_retreat_injured:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'retreat_injured'
     if AH.print_eval() then AH.print_ts('     - Evaluating retreat_injured CA:') end
 
-    local units = AH.get_units_with_moves({ side = wesnoth.current.side }, true)
-    local unit, loc = R.retreat_injured_units(units)
+    if (ai.aspects.caution <= 0) then
+        if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
+        return 0
+    end
+
+    local units = AH.get_units_with_moves({
+        side = wesnoth.current.side,
+        { "and", filter_own }
+    }, true)
+    local avoid_map = LS.of_pairs(ai.aspects.avoid)
+    local unit, loc = R.retreat_injured_units(units, avoid_map)
     if unit then
         retreat_unit = unit
         retreat_loc = loc

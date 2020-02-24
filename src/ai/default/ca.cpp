@@ -80,10 +80,14 @@ double goto_phase::evaluate()
 	for(std::vector<map_location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
 		unit_map::const_iterator ui = units_.find(*g);
 		// passive_leader: never moves or attacks
-		if(ui->can_recruit() && get_passive_leader() && !get_passive_leader_shares_keep()){
+		if(ui->can_recruit() && is_passive_leader(ui->id())){
 			continue;
 		}
 		// end of passive_leader
+
+		if(!is_allowed_unit(*ui)){
+			continue;
+		}
 
 		const pathfind::shortest_path_calculator calc(*ui, current_team(), resources::gameboard->teams(), resources::gameboard->map());
 
@@ -161,6 +165,7 @@ combat_phase::~combat_phase()
 
 double combat_phase::evaluate()
 {
+	const unit_map &units_ = resources::gameboard->units();
 	std::vector<std::string> options = get_recruitment_pattern();
 
 	choice_rating_ = -1000.0;
@@ -191,6 +196,22 @@ double combat_phase::evaluate()
 			it != analysis.end(); ++it) {
 
 		if(skip_num > 0 && ((it - analysis.begin())%skip_num) && it->movements.size() > 1)
+			continue;
+
+		// This is somewhat inefficient. It would be faster to exclude these attacks
+		// in get_attacks() above, but the CA filter information is not available inside
+		// the attacks aspect code. Providing the filtering here is only done for consistency
+		// with other CAs though, the recommended method of filtering attacks is via
+		// 'filter_own' of the attacks aspect.
+		bool skip_attack = false;
+		for(std::size_t i = 0; i != it->movements.size(); ++i) {
+			const unit_map::const_iterator u = units_.find(it->movements[i].first);
+			if (!is_allowed_unit(*u)) {
+				skip_attack = true;
+				break;
+			}
+		}
+		if (skip_attack)
 			continue;
 
 		const double rating = it->rating(get_aggression(),*this);
@@ -280,8 +301,21 @@ double move_leader_to_goals_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	const unit_map::iterator leader = resources::gameboard->units().find_leader(get_side());
-	if (!leader.valid() || leader->incapacitated()) {
+	const unit_map &units_ = resources::gameboard->units();
+	const std::vector<unit_map::const_iterator> leaders = units_.find_leaders(get_side());
+	if (leaders.empty()) {
+		return BAD_SCORE;
+	}
+
+	const unit* leader = nullptr;
+	for (const unit_map::const_iterator& l_itor : leaders) {
+		if (!l_itor->incapacitated() && l_itor->movement_left() > 0 && is_allowed_unit(*l_itor)) {
+			leader = &(*l_itor);
+			break;
+		}
+	}
+
+	if (leader == nullptr) {
 		WRN_AI_TESTING_AI_DEFAULT << "Leader not found" << std::endl;
 		return BAD_SCORE;
 	}
@@ -373,10 +407,7 @@ move_leader_to_keep_phase::~move_leader_to_keep_phase()
 
 double move_leader_to_keep_phase::evaluate()
 {
-	if (get_leader_ignores_keep()) {
-		return BAD_SCORE;
-	}
-	if (get_passive_leader() && !get_passive_leader_shares_keep()) {
+	if (is_keep_ignoring_leader("")) {
 		return BAD_SCORE;
 	}
 
@@ -400,7 +431,7 @@ double move_leader_to_keep_phase::evaluate()
 	int shortest_distance = 99999;
 
 	for (const unit_map::const_iterator& leader : leaders) {
-		if (leader->incapacitated() || leader->movement_left() == 0) {
+		if (leader->incapacitated() || leader->movement_left() == 0 || !is_allowed_unit(*leader) || is_keep_ignoring_leader(leader->id()) || (is_passive_leader(leader->id()) && !is_passive_keep_sharing_leader(leader->id()))) {
 			continue;
 		}
 
@@ -604,10 +635,10 @@ void get_villages_phase::get_villages(
 	treachmap reachmap;
 	for(unit_map::const_iterator u_itor = units_.begin();
 			u_itor != units_.end(); ++u_itor) {
-		if(u_itor->can_recruit() && get_passive_leader()){
+		if(u_itor->can_recruit() && is_passive_leader(u_itor->id())){
 			continue;
 		}
-		if(u_itor->side() == get_side() && u_itor->movement_left()) {
+		if(u_itor->side() == get_side() && u_itor->movement_left() && is_allowed_unit(*u_itor)) {
 			reachmap.emplace(u_itor->get_location(),	std::vector<map_location>());
 		}
 	}
@@ -651,8 +682,6 @@ void get_villages_phase::find_villages(
 {
 	std::map<map_location, double> vulnerability;
 
-	const bool passive_leader = get_passive_leader();
-
 	std::size_t min_distance = 100000;
 	const gamemap &map_ = resources::gameboard->map();
 	std::vector<team> &teams_ = resources::gameboard->teams();
@@ -667,10 +696,6 @@ void get_villages_phase::find_villages(
 		const map_location &current_loc = j->first;
 
 		if(j->second == leader_loc_) {
-			if(passive_leader) {
-				continue;
-			}
-
 			const std::size_t distance = distance_between(keep_loc_, current_loc);
 			if(distance < min_distance) {
 				min_distance = distance;
@@ -719,7 +744,7 @@ void get_villages_phase::find_villages(
 		}
 
 		const unit_map::const_iterator u = resources::gameboard->units().find(j->second);
-		if (u == resources::gameboard->units().end() || u->get_state("guardian")) {
+		if (u == resources::gameboard->units().end() || u->get_state("guardian") || !is_allowed_unit(*u) || (u->can_recruit() && is_passive_leader(u->id()))) {
 			continue;
 		}
 
@@ -1317,7 +1342,7 @@ double get_healing_phase::evaluate()
 	for(; u_it != units_.end(); ++u_it) {
 		unit &u = *u_it;
 
-		if(u.can_recruit() && get_passive_leader()){
+		if(u.can_recruit() && is_passive_leader(u.id())){
 			continue;
 		}
 
@@ -1327,7 +1352,7 @@ double get_healing_phase::evaluate()
 		if(u.side() == get_side() &&
 		   (u.max_hitpoints() - u.hitpoints() >= game_config::poison_amount/2
 		   || u.get_state(unit::STATE_POISONED)) &&
-		    !u.get_ability_bool("regenerate"))
+		    !u.get_ability_bool("regenerate") && is_allowed_unit(*u_it))
 		{
 			// Look for the village which is the least vulnerable to enemy attack.
 			typedef std::multimap<map_location,map_location>::const_iterator Itor;
@@ -1431,7 +1456,7 @@ double retreat_phase::evaluate()
 		    i->movement_left() == i->total_movement() &&
 		    //leaders.find(*i) == leaders.end() && //unit_map::const_iterator(i) != leader &&
 		    std::find(leaders.begin(), leaders.end(), i) == leaders.end() &&
-		    !i->incapacitated())
+		    !i->incapacitated() && is_allowed_unit(*i))
 		{
 			// This unit still has movement left, and is a candidate to retreat.
 			// We see the amount of power of each side on the situation,
@@ -1579,9 +1604,18 @@ leader_shares_keep_phase::~leader_shares_keep_phase()
 
 double leader_shares_keep_phase::evaluate()
 {
-	if(get_passive_leader() && !get_passive_leader_shares_keep()){
+	bool have_active_leader = false;
+	std::vector<unit_map::unit_iterator> ai_leaders = resources::gameboard->units().find_leaders(get_side());
+	for (unit_map::unit_iterator &ai_leader : ai_leaders) {
+	        if (!is_passive_leader(ai_leader->id()) || is_passive_keep_sharing_leader(ai_leader->id())) {
+			have_active_leader = true;
+			break;
+		}
+	}
+	if(!have_active_leader) {
 		return BAD_SCORE;
 	}
+
 	bool allied_leaders_available = false;
 	for(team &tmp_team : resources::gameboard->teams()) {
 		if(!current_team().is_enemy(tmp_team.side())){
@@ -1611,7 +1645,7 @@ void leader_shares_keep_phase::execute()
 
 	//check for each ai leader if he should move away from his keep
 	for (unit_map::unit_iterator &ai_leader : ai_leaders) {
-		if(!ai_leader.valid()) {
+		if(!ai_leader.valid() || !is_allowed_unit(*ai_leader) || (is_passive_leader(ai_leader->id()) && !is_passive_keep_sharing_leader(ai_leader->id()))) {
 			//This can happen if wml killed or moved a leader during a movement events of another leader
 			continue;
 		}
@@ -1679,11 +1713,6 @@ void leader_shares_keep_phase::execute()
 			}
 		}
 		ai_leader->remove_movement_ai();
-	}
-	// re-get the AI leaders, in case an event did something
-	ai_leaders = resources::gameboard->units().find_leaders(get_side());
-	for(unit_map::unit_iterator &leader : ai_leaders) {
-		leader->remove_movement_ai();
 	}
 	//ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;
 }

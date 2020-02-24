@@ -125,4 +125,7 @@ public:
 
 	/// Checks if any of the sides leaders can recruit at a location
 	bool side_can_recruit_on(int side, map_location loc) const;
+
+	///creates a new side during a game. todo: maybe add parameters like id etc?
+	void add_side_wml(config cfg);
 };

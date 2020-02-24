@@ -57,6 +57,20 @@ public:
 
 	enum mp_selection {MP_CONNECT, MP_HOST, MP_LOCAL};
 
+	/**
+	 * Status code after running a unit test, should match the run_wml_tests
+	 * script and the documentation for the --unit_test command-line option.
+	 */
+	enum class unit_test_result : int {
+		TEST_PASS = 0,
+		TEST_FAIL = 1,
+		// 2 is reserved for timeouts
+		TEST_FAIL_LOADING_REPLAY = 3,
+		TEST_FAIL_PLAYING_REPLAY = 4,
+		TEST_FAIL_BROKE_STRICT = 5,
+		TEST_FAIL_WML_EXCEPTION = 6,
+	};
+
 	bool init_video();
 	bool init_language();
 	bool init_lua_script();
@@ -64,7 +78,8 @@ public:
 	bool play_test();
 	bool play_screenshot_mode();
 	bool play_render_image_mode();
-	int unit_test();
+	/// Runs unit tests specified on the command line
+	unit_test_result unit_test();
 
 	bool is_loading() const;
 	void clear_loaded_game();
@@ -105,6 +120,10 @@ private:
 
 	editor::EXIT_STATUS start_editor(const std::string& filename);
 
+	/// Internal to the implementation of unit_test(). If a single instance of
+	/// Wesnoth is running multiple unit tests, this gets called once per test.
+	unit_test_result single_unit_test();
+
 	const commandline_options& cmdline_opts_;
 	//Never null.
 	const std::unique_ptr<CVideo> video_;
@@ -117,7 +136,7 @@ private:
 	sound::music_thinker music_thinker_;
 	sound::music_muter music_muter_;
 
-	std::string test_scenario_;
+	std::vector<std::string> test_scenarios_;
 
 	std::string screenshot_map_, screenshot_filename_;
 

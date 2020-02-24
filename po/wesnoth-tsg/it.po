@@ -1,12 +1,12 @@
 # translation of it.po to Italian
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2019.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-09-15 10:37+0200\n"
+"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
+"PO-Revision-Date: 2020-01-15 23:26+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
@@ -27,7 +27,7 @@ msgid "TSG"
 msgstr "LGdS"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:19
+#: data/campaigns/The_South_Guard/_main.cfg:20
 msgid ""
 "A young knight, Deoran, is dispatched to the southern Wesnoth province of "
 "Kerlath to investigate the ravaged towns at the border. Thrust quickly into "
@@ -43,19 +43,10 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:21
-msgid ""
-"This campaign is designed as an introduction to Wesnoth. The ‘Civilian’ "
-"difficulty level is aimed at first-time players."
-msgstr ""
-"Questa campagna è stata pensata come un’introduzione a Wesnoth. La "
-"difficoltà “Civile” è adatta per giocatori alla prima esperienza."
-
-#. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:23
+#: data/campaigns/The_South_Guard/_main.cfg:22
 #, fuzzy
 #| msgid "(Rookie level, 9 scenarios.)"
-msgid "(Rookie level, 8 scenarios.)"
+msgid "(Novice level, 8 scenarios.)"
 msgstr "(Livello per novizi, 9 scenari.)"
 
 #. [campaign]: id=The_South_Guard
@@ -156,11 +147,11 @@ msgstr "La Guardia del Sud"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Bandit, id=Urza Mathin
-#. [side]: type=Outlaw, id=Urza Nalmath
-#. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -175,51 +166,51 @@ msgid "The River Fort"
 msgstr "Il forte sul fiume"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:115
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:116
 msgid "Investigate the river fort"
 msgstr "Esplora il forte sul fiume"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:124
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:125
 msgid "Defeat Urza Mathin"
 msgstr "Sconfiggi Urza Mathin"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:128
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:238
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:129
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:239
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:258
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:297
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:359
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:408
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:574
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:298
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:355
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:397
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:575
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:32
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:334
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:352
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:517
 msgid "Death of Deoran"
 msgstr "Morte di Deoran"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:137
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:242
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:138
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:243
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:262
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:301
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:363
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:578
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:302
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:359
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:579
 msgid "Death of Sir Gerrick"
 msgstr "Morte di Ser Gerrick"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:172
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:173
 msgid "Upon arrival, Deoran found the land completely overrun by bandits."
 msgstr "All’arrivo, Deoran trovò la terra completamente invasa dai banditi."
 
 #. [unit]: id=Moreth
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:186
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:187
 msgid "Moreth"
 msgstr "Moreth"
 
 #. [message]: speaker=Moreth
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:198
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:199
 msgid ""
 "You will never take this village! I have watched too many of your kind "
 "ransack our homes and kill the townsfolk! I’ll defend them to the death if I "
@@ -230,7 +221,7 @@ msgstr ""
 "sino alla morte!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:204
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:205
 msgid ""
 "My kind? I am a knight of Wesnoth and a messenger appointed by the King "
 "himself! What do you mean, <i>“my kind”</i>? And where is the South Guard?"
@@ -240,7 +231,7 @@ msgstr ""
 "Guardia del Sud?"
 
 #. [message]: speaker=Moreth
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:209
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:210
 msgid ""
 "My deepest apologies, sir! Bandits have been pillaging the villages and "
 "killing the peasants — we tried our utmost to resist and expel them, but "
@@ -253,7 +244,7 @@ msgstr ""
 "due che restano. La Guardia del Sud non esiste più."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:214
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:215
 msgid ""
 "What? I was sent here merely to question Sir Loris, but it seems that the "
 "circumstances here are more dire than I had thought. We must arm the "
@@ -264,7 +255,7 @@ msgstr ""
 "armare i cittadini e scacciare i banditi prima che possano fare altri danni!"
 
 #. [message]: speaker=Moreth
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:219
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:220
 msgid ""
 "Then we must head to the river fort! Sir Gerrick is guarding the armory "
 "there!"
@@ -273,7 +264,7 @@ msgstr ""
 "guardia dell’armeria!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:228
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:229
 msgid ""
 "Whenever you see a target that looks like this, you should move your leader "
 "(or whatever unit the dialog just suggested) onto the hex that contains it."
@@ -282,7 +273,7 @@ msgstr ""
 "l’unità suggerita dal gioco) sull’esagono che lo contiene."
 
 #. [message]: speaker=Urza Mathin
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:234
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:235
 msgid ""
 "Ha! This new commander is merely a boy. What kind of fool sent him here to "
 "stop us? This sniveling child will soon share the fate of that swine Loris!"
@@ -292,13 +283,13 @@ msgstr ""
 "stessa fine di quel porco di Loris!"
 
 #. [unit]: type=Infantry Lieutenant, id=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:256
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:793
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:257
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:794
 msgid "Sir Gerrick"
 msgstr "Ser Gerrick"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:268
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:269
 msgid ""
 "At last, reinforcements! Sir Knight, bandits have overrun the whole "
 "countryside, killing and pillaging without regard or mercy. My men and I "
@@ -314,7 +305,7 @@ msgstr ""
 "riuscirò a resistere..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:273
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:274
 msgid ""
 "Do not despair! I am sure we can drive off these brigands if we rally the "
 "villagers and re-man the posts. Are there any weapons left in the citadel’s "
@@ -325,7 +316,7 @@ msgstr ""
 "Ci sono armi rimaste nell’armeria della cittadella?"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:278
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:279
 msgid ""
 "A small supply of spears and bows still remains. I will distribute them to "
 "the peasants if that is your wish, commander."
@@ -334,7 +325,7 @@ msgstr ""
 "contadini se questo è ciò che desideri, comandante."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:283
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:284
 msgid ""
 "<i>So he has decided that I am to take command? Very well, I have never been "
 "one to back down from a challenge.</i> Yes, we should assemble what troops "
@@ -349,7 +340,7 @@ msgstr ""
 "contro i banditi. La Guardia del Sud combatte di nuovo!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:295
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:296
 msgid ""
 "As a senior infantry officer, Sir Gerrick is both a powerful warrior and "
 "capable leader, raising the fighting spirit of less experienced troops near "
@@ -361,7 +352,7 @@ msgstr ""
 "attacchi causino più danni."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:301
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:302
 msgid ""
 "Units that have a <i>hero</i> marker are vital to your campaign. If any of "
 "them die, you will lose the scenario, so guard them carefully!"
@@ -371,12 +362,12 @@ msgstr ""
 "attentamente!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:326
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:327
 msgid "Head back to the encampment where you started and recruit some troops!"
 msgstr "Torna all’accampamento da cui sei partito e recluta un po’ di truppe!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:379
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:380
 msgid ""
 "While you are in your camp, you can recruit more units. Build an army to use "
 "against the bandits that Urza Mathin recruits."
@@ -385,7 +376,7 @@ msgstr ""
 "drappello da usare contro i banditi reclutati da Urza Mathin."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:385
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:386
 msgid ""
 "Bowmen have a strong ranged attack and are very effective against units that "
 "lack a ranged attack, like Thieves and Thugs. They also carry a sword and "
@@ -396,7 +387,7 @@ msgstr ""
 "possono difendersi dagli attacchi corpo a corpo."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:390
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:391
 msgid ""
 "Spearmen have a strong melee attack and are effective against most units. "
 "They also have a weak ranged attack. They form the backbone of the South "
@@ -407,7 +398,7 @@ msgstr ""
 "formano l’ossatura principale della Guardia del Sud."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:394
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:395
 msgid ""
 "The best army will have a mix of units to deal with the different enemies "
 "that you will encounter. For now, concentrate on creating a small corps of "
@@ -418,20 +409,20 @@ msgstr ""
 "piccola squadra di arcieri."
 
 #. [unit]: type=Merman Warrior, type=Merman Warrior, type=Merman Fighter, id=Myssh
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:420
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:510
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:421
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:511
 msgid "Myssh"
 msgstr "Myssh"
 
 #. [unit]: type=Merman Spearman, type=Merman Hunter, type=Merman Hunter, id=Ylla
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:439
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:529
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:440
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:530
 msgid "Ylla"
 msgstr "Ylla"
 
 #. [message]: speaker=Myssh
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:449
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:539
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:450
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:540
 msgid ""
 "Your people have been our allies ever since the days of Lord Typhon. We will "
 "help you drive these bandits from your lands if you allow us to continue "
@@ -442,8 +433,8 @@ msgstr ""
 "vivere qui in pace."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:454
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:544
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:455
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:545
 msgid ""
 "We welcome your aid! The rivers of this land will remain yours when we are "
 "victorious."
@@ -452,8 +443,8 @@ msgstr ""
 "terra saranno vostri se ci aiuterete nelle nostre battaglie."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:461
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:551
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:462
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:552
 msgid ""
 "You may now recruit Merman Hunters. Merfolk are aquatic creatures and fight "
 "best in rivers and swamps. They are much less effective on dry land."
@@ -463,7 +454,7 @@ msgstr ""
 "terreno asciutto e saranno nei guai."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:485
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:486
 msgid ""
 "Bandits are most dangerous at night, Sir Deoran. Let us hold the north bank "
 "of the river until dawn and press our attack in the morning!"
@@ -472,7 +463,7 @@ msgstr ""
 "riva nord del fiume fino all’alba ed attacchiamo durante il mattino!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:491
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:492
 msgid ""
 "All of your units are <i>lawful</i>. This means that they receive a combat "
 "bonus during the day and a penalty at night. Urza Mathin’s units are all "
@@ -486,7 +477,7 @@ msgstr ""
 "sarà quindi molto più efficace per te."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:510
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:511
 msgid ""
 "The dawn breaks — now is the time for us to attack and drive these bandits "
 "from our lands. To me, men of the South Guard!"
@@ -495,7 +486,7 @@ msgstr ""
 "banditi dalle nostre terre. Uomini della Guardia del sud: a me!"
 
 #. [message]: speaker=Urza Mathin
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:516
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:517
 msgid ""
 "Curses! They actually managed to survive the night! I must hold out until my "
 "brothers send more men my way."
@@ -504,7 +495,7 @@ msgstr ""
 "aspettare che i miei fratelli mi mandino dei rinforzi."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:523
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:524
 msgid ""
 "During the day, your units will deal more damage and the bandits will deal "
 "less. The more of Urza Mathin’s troops you can defeat during the day, the "
@@ -515,18 +506,18 @@ msgstr ""
 
 #. [unit]: type=Longbowman, id=Aleron
 #. [unit]: type=Peasant, id=Aleron
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:542
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:578
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:543
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:579
 msgid "Aleron"
 msgstr "Aleron"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:552
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:553
 msgid "Who goes there? Show yourself!"
 msgstr "Chi va là! Uscite da quella casa, subito!"
 
 #. [message]: speaker=Aleron
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:556
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:557
 msgid ""
 "Stay your hand! It is I, Aleron! The villagers hid me from the bandits when "
 "the town was overrun. They tended to my wounds while I was gravely wounded."
@@ -536,7 +527,7 @@ msgstr ""
 "gravemente ferito..."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:560
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:561
 msgid ""
 "Thank the light! I am glad to find you alive, Aleron. We feared the worst "
 "when you did not return after the battle."
@@ -545,7 +536,7 @@ msgstr ""
 "peggio quando non sei tornato dopo la battaglia."
 
 #. [message]: speaker=Aleron
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:564
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:565
 msgid ""
 "No matter, I am healed now and ready to fight. Let us punish these bandits "
 "for their crimes and murders!"
@@ -554,7 +545,7 @@ msgstr ""
 "banditi per i loro crimini ed omicidi!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:568
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:569
 msgid ""
 "Aleron is a Longbowman, stronger and better trained than regular bowmen. His "
 "arrows are deadly to enemies without a ranged attack."
@@ -564,12 +555,12 @@ msgstr ""
 "distanza."
 
 #. [message]: speaker=Aleron
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:588
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:589
 msgid "More bandits? Begone, we have nothing left for you."
 msgstr "Di nuovo banditi? Andatevene, non c’è rimasto più nulla per voi."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:592
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:593
 msgid ""
 "We fight under the banner of the South Guard <i>against</i> the bandits! "
 "Join us if you wish to drive these brigands from your land!"
@@ -578,7 +569,7 @@ msgstr ""
 "i banditi! Aiutateci a scacciare questi criminali dalle vostre terre!"
 
 #. [message]: speaker=Aleron
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:596
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:597
 msgid ""
 "The South Guard has risen again? I would be proud to fight alongside you!"
 msgstr ""
@@ -586,18 +577,18 @@ msgstr ""
 "fianco!"
 
 #. [unit]: type=Footpad, id=Glasar
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:606
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:607
 msgid "Glasar"
 msgstr "Glasar"
 
 #. [message]: speaker=Glasar
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:612
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:613
 msgid "This village is ours to plunder! Leave now or perish!"
 msgstr ""
 "Questo villaggio da saccheggiare è nostro! Andatevene o vi ucciderò tutti!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:616
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:617
 msgid ""
 "Do you not see the banners we bear? The South Guard has risen again! Flee "
 "while you can, or you will meet a swift death at our hand!"
@@ -607,7 +598,7 @@ msgstr ""
 "lance!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:639
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:640
 msgid ""
 "Remember, Moreth told you that you should go meet Sir Gerrick at the river "
 "fort. Move Deoran there and find out what Sir Gerrick has to say!"
@@ -616,7 +607,7 @@ msgstr ""
 "fiume. Manda Deoran laggiù e scopri che cosa ti deve dire!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:672
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:673
 msgid ""
 "Remember, your job is to defeat Urza Mathin. He should be your main target. "
 "Archers will be especially effective against him because he has no ranged "
@@ -627,7 +618,7 @@ msgstr ""
 "contro di lui, dato che non possiede attacchi a distanza."
 
 #. [message]: speaker=Urza Mathin
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:695
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:696
 msgid ""
 "Reinforcements from my brothers! Excellent. Let us go and crush this vermin "
 "boy who fancies himself a knight. These lands belong to the brothers Urza!"
@@ -637,7 +628,7 @@ msgstr ""
 "Urza!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:699
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:700
 msgid ""
 "There are too many of them! I have no choice but to abandon the villagers "
 "here and retreat..."
@@ -645,14 +636,14 @@ msgstr ""
 "Sono troppi! Non ho altra scelta che abbandonare qui i paesani e ritirarmi..."
 
 #. [message]: speaker=Urza Mathin
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:715
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:716
 msgid "My days of pillage and plunder are over! Avenge me, my brothers..."
 msgstr ""
 "I miei giorni di razzie e saccheggi sono finiti! Vendicatemi, fratelli "
 "miei..."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:743
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:744
 msgid ""
 "Urza Mathin is dead! Congratulations, commander, though I am surprised that "
 "the King sent only you to help us. Did Sir Loris not send word of our plight?"
@@ -662,7 +653,7 @@ msgstr ""
 "vi ha fatto recapitare notizie della nostra brutta situazione?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:748
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:749
 msgid ""
 "No. I was originally sent by King Haldric to investigate, as he had not "
 "heard word from you in weeks. I was prepared to take command of the South "
@@ -674,7 +665,7 @@ msgstr ""
 "dovuto combattere contro così tanti banditi alla guida di così pochi uomini!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:753
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:754
 msgid ""
 "Aye, you could not have known if Sir Loris did not report of our "
 "predicament. I do wish that the King had sent more reinforcements, though "
@@ -685,7 +676,7 @@ msgstr ""
 "sembri un comandante abbastanza abile, a dispetto della tua età."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:758
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:759
 msgid ""
 "I have trained with the best, and perhaps that will make up for any "
 "inexperience I may have. At least, we must pray that my being here is enough "
@@ -698,7 +689,7 @@ msgstr ""
 "tempo stai combattendo contro questi banditi?"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:763
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:764
 msgid ""
 "Almost two months! I know not why, but one night, Sir Loris took several of "
 "our patrols along the Westin road and never returned. The very next evening, "
@@ -715,7 +706,7 @@ msgstr ""
 "dato il cambio."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:768
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:769
 msgid ""
 "Your story is indeed most peculiar, but we will not accomplish anything by "
 "staying here. We will have to seek out Sir Loris in Westin for answers. "
@@ -788,26 +779,26 @@ msgid "Bring Deoran to the Citadel of Westin"
 msgstr "Porta Deoran alla cittadella di Westin"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:234
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:235
 msgid "Defeat Urza Nalmath, the bandit leader"
 msgstr "Uccidi Urza Nalmath, il capo dei banditi"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:251
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:252
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:266
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:305
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:367
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:582
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:306
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:363
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:583
 msgid "Death of Minister Hylas"
 msgstr "Morte del Ministro Hylas"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:284
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:285
 msgid "I have reached the citadel!"
 msgstr "Ho raggiunto la cittadella!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:288
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:289
 msgid ""
 "Excellent, but the battle is not won yet, and there is still no sign of Sir "
 "Loris. Sir Deoran, you should secure the keep."
@@ -816,17 +807,17 @@ msgstr ""
 "traccia di Ser Loris. Ser Deoran, dovreste mettere al sicuro l’accampamento."
 
 #. [unit]: type=White Mage, id=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:318
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:319
 msgid "Minister Hylas"
 msgstr "Ministro Hylas"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:331
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:332
 msgid "More bandits?! Prepare to die!"
 msgstr "Altri banditi? Preparatevi a morire!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:335
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:336
 msgid ""
 "Peace, I am a friend! I am Hylas, advisor to Sir Loris and Chief Minister of "
 "the town council. Thanks to your timely arrival, the city is saved!"
@@ -836,7 +827,7 @@ msgstr ""
 "città ora è in salvo!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:339
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:340
 msgid ""
 "Indeed, we have defeated most of the bandits in the city. But where is Sir "
 "Loris? And where is the city garrison?"
@@ -845,7 +836,7 @@ msgstr ""
 "dov’è Ser Loris? E dov’è la guarnigione cittadina?"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:343
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:344
 msgid ""
 "Alas, Sir Loris fell in battle several days ago. For weeks, we warned him of "
 "the new power of these bandits, yet he would never lead his men against them "
@@ -865,7 +856,7 @@ msgstr ""
 "messaggero, avrebbe potuto sopravvivere abbastanza a lungo per vedervi qui."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:349
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:350
 msgid ""
 "Indeed. Foolish though he may have been, it still grieves me to learn of his "
 "death. With him gone, it seems that I must lead the townsfolk against the "
@@ -876,35 +867,35 @@ msgstr ""
 "contro i banditi e cacciarli dalla nostra città."
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:353
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:359
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:365
-msgid "Ufes"
-msgstr "Ufes"
-
-#. [event]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:354
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:360
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:366
-msgid "Joran"
-msgstr "Joran"
+msgid "Ufes"
+msgstr "Ufes"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:355
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:361
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:367
-msgid "Makees"
-msgstr "Makees"
+msgid "Joran"
+msgstr "Joran"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:356
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:362
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:368
+msgid "Makees"
+msgstr "Makees"
+
+#. [event]
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:357
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:363
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:369
 msgid "Tyborg"
 msgstr "Tyborg"
 
 #. [message]: speaker=Ufes
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:373
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:374
 msgid ""
 "We stand with you, Sir Deoran! We will hold the city while you lead your men "
 "across the river and defeat the bandit leader!"
@@ -914,7 +905,7 @@ msgstr ""
 "capo dei banditi!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:415
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:416
 msgid ""
 "They are almost to the great hall! Hurry, Deoran! We must reach the citadel "
 "before it is stormed by the bandits!"
@@ -923,7 +914,7 @@ msgstr ""
 "la cittadella prima che venga distrutta, o tutto sarà perduto!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:423
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:424
 msgid ""
 "You must move someone here by the end of the next turn, or Westin will fall "
 "and you will be defeated!"
@@ -932,12 +923,12 @@ msgstr ""
 "cadrà e tu sarai sconfitto!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:441
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:442
 msgid "We’re too late! They have burned the whole city..."
 msgstr "Siamo arrivati troppo tardi! Stanno bruciando la città..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:446
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:447
 msgid ""
 "Alas, Westin has fallen! There is nothing else I can do here — I can only "
 "return to the King and report our loss here..."
@@ -946,12 +937,12 @@ msgstr ""
 "– devo tornare da Haldric e raccontargli della nostra sconfitta..."
 
 #. [unit]: type=Merman Fighter, id=Absu
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:476
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:477
 msgid "Absu"
 msgstr "Absu"
 
 #. [message]: speaker=Absu
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:486
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:487
 msgid ""
 "The red and white banners of the South Guard! This is a welcome change from "
 "the bandits who have been trying to ransack my home."
@@ -960,7 +951,7 @@ msgstr ""
 "cambiamento rispetto ai banditi che hanno cercato di saccheggiare casa mia."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:490
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:491
 msgid ""
 "Indeed, we have come to drive off these vile brigands. Would you like to "
 "join us in our battle to restore peace to Westin?"
@@ -969,12 +960,12 @@ msgstr ""
 "unirti a noi nella nostra battaglia per riportare la pace a Westin?"
 
 #. [message]: speaker=Absu
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:494
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:495
 msgid "It would be an honor to fight alongside you, Sir Knight."
 msgstr "Sarebbe uno onore combattere al vostro fianco Ser cavaliere."
 
 #. [message]: speaker=Urza Nalmath
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:576
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:577
 msgid ""
 "Now, the South Guard will feel the wrath of my new allies! Rise again, my "
 "undead warriors!"
@@ -983,13 +974,13 @@ msgstr ""
 "miei guerrieri non-morti!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:588
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:589
 msgid "What devilry is this?! Those are no living men that fight for him!"
 msgstr ""
 "Che diavoleria è questa?! Quelli non sono uomini vivi! E combattono per lui!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:593
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:594
 msgid ""
 "This development is troubling to me as well. He must have made some pact "
 "with the undead, but how could a mere brigand gain such powers?"
@@ -999,7 +990,7 @@ msgstr ""
 "tutto questo potere?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:598
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:599
 msgid ""
 "It matters not. No matter how he has done this fell thing, we must defeat "
 "him!"
@@ -1008,7 +999,7 @@ msgstr ""
 "feroce, dobbiamo sconfiggerlo!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:606
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:607
 msgid ""
 "Minister Hylas can heal allied units near him and his <i>arcane</i> attack "
 "deals bonus damage to undead foes."
@@ -1017,33 +1008,33 @@ msgstr ""
 "il suo attacco <i>arcano</i> beneficia di un bonus contro i nemici non-morti."
 
 #. [message]: speaker=Urza Nalmath
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:627
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:628
 msgid "Leave nothing standing! Raze their villages and kill them all!"
 msgstr ""
 "Non lasciate pietra su pietra! Bruciate i loro villaggi e uccideteli tutti!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:631
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:632
 msgid "We will avenge your brother’s death!"
 msgstr "Vendicheremo la morte di tuo fratello!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:635
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:636
 msgid "They are burning our homes! We must stop them!"
 msgstr "Stanno bruciando i nostri villaggi! Dobbiamo fermarli!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:678
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:679
 msgid "My brother has died unavenged! I have failed!"
 msgstr "Mio fratello è morto senza vendetta! Ho fallito!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:688
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:689
 msgid "The bandits are scattering! We have saved Westin!"
 msgstr "I banditi sono in fuga! Abbiamo salvato Westin!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:693
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:694
 msgid ""
 "Indeed. Still, this victory is troubling. How can a mere outlaw have "
 "summoned undead?"
@@ -1052,23 +1043,23 @@ msgstr ""
 "un semplice fuorilegge riesca ad evocare dei non-morti?"
 
 #. [unit]: type=Death Knight, id=Ixlathal
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:708
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:709
 msgid "Ixlathal"
 msgstr "Ixlathal"
 
 #. [message]: speaker=Ixlathal
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:715
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:716
 msgid "The master sends his regards. The command is to raze the city."
 msgstr ""
 "Il maestro ti manda i suoi saluti. La consegna è di radere al suolo la città."
 
 #. [message]: speaker=Urza Nalmath
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:719
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:720
 msgid "I am trying, but their resistance is strong..."
 msgstr "Ci sto provando, ma la resistenza è forte..."
 
 #. [message]: speaker=Ixlathal
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:723
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:724
 msgid ""
 "Then step aside, living one. I will make use of the fresh corpses from this "
 "battle."
@@ -1076,7 +1067,7 @@ msgstr ""
 "Allora fatti da parte, vivente. Userò i cadaveri freschi di questa battaglia."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:814
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:815
 msgid ""
 "More undead! Alas, we cannot hold against a force so great. We will have to "
 "abandon Westin and let them sack the city..."
@@ -1086,7 +1077,7 @@ msgstr ""
 "città..."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:823
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:824
 msgid ""
 "I do not know, but just before the bandit raids began, an ambassador came to "
 "Sir Loris from the elves of the Aethenwood. He asked that a knight be sent "
@@ -1098,12 +1089,12 @@ msgstr ""
 "per Wesnoth."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:828
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:829
 msgid "And did Sir Loris go to the elves?"
 msgstr "Quindi Ser Loris andò dagli elfi?"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:833
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:834
 msgid ""
 "No. He suspected the elves of some trickery and made no reply to them. I "
 "believe that they may know the origin of these dead warriors we now face."
@@ -1112,7 +1103,7 @@ msgstr ""
 "Magari sono a conoscenza dell’origine di questi guerrieri non-morti."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:838
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:839
 msgid ""
 "My men have been trained to fight the living. I do not know that we can "
 "protect the city from foes as unnatural as these by ourselves. It is "
@@ -1124,7 +1115,7 @@ msgstr ""
 "se possono essere di aiuto."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:843
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:844
 msgid ""
 "I will accompany you, Sir Deoran. I have studied sacred arts and my skills "
 "may be of some use against the dark ones."
@@ -1133,7 +1124,7 @@ msgstr ""
 "abilità potrebbero esservi d’aiuto contro queste armate oscure."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:848
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:849
 msgid ""
 "Very well. Although it will probably take too long to send word to the King "
 "for reinforcements, I remember there being a small outpost within a couple "
@@ -1339,46 +1330,45 @@ msgstr "Linderion"
 msgid "Mithalwe"
 msgstr "Mithalwe"
 
-#. [unit]: type=Elvish Marshal, id=Ithelden
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:381
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1216
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:434
-msgid "Ithelden"
-msgstr "Ithelden"
-
-#. [unit]: type=Elvish Avenger, id=Eltenmir
-#. [side]: type=Elvish Avenger, id=Eltenmir
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:382
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:358
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:93
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:449
-msgid "Eltenmir"
-msgstr "Eltenmir"
-
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:383
 msgid "Vardanos"
 msgstr "Vardanos"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:384
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:382
 msgid "Talchar"
 msgstr "Talchar"
 
+#. [unit]: type=Elvish Marshal, id=Ithelden
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:388
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1217
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:450
+msgid "Ithelden"
+msgstr "Ithelden"
+
+#. [unit]: type=Elvish Avenger, id=Eltenmir
+#. [unit]: type=Elvish Outrider, id=Eltenmir
+#. [side]: type=Elvish Outrider, id=Eltenmir
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:402
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:358
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:93
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:466
+msgid "Eltenmir"
+msgstr "Eltenmir"
+
 #. [message]: speaker=Linderion
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:403
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:430
 msgid "Halt! Who enters our sacred grove without leave?"
 msgstr "Fermi! Chi è entrato nella nostra cittadella sacra senza permesso?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:408
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:435
 msgid "De—"
 msgstr "De—"
 
 #. [message]: speaker=Linderion
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:413
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:440
 msgid ""
 "Choose your words wisely, human. Know that the penalty for trespassing on "
 "our lands is death. What is your name?"
@@ -1387,12 +1377,12 @@ msgstr ""
 "sconfinato nelle nostre terre è la morte. Qual è il vostro nome?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:418
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:445
 msgid "Deora—"
 msgstr "Deora—"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:424
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:451
 msgid ""
 "Stay your hand, Linderion. This man bears the banner of Wesnoth and appears "
 "to come to us in peace. What brings you to the hallowed grove of Elrath?"
@@ -1402,7 +1392,7 @@ msgstr ""
 "sacra cittadella di Elrath?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:429
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:456
 msgid ""
 "My lady, we have come to the elves to seek guidance. Bandits and criminals "
 "have summoned the dead to help them plunder our farms and villages. They "
@@ -1419,7 +1409,7 @@ msgstr ""
 "dei non-morti sotto il loro controllo."
 
 #. [message]: speaker=Ithelden
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:434
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:461
 msgid ""
 "We sent you a messenger regarding the undead, did we not? You were "
 "forewarned of the blight marching upon your land, and yet you did not "
@@ -1430,7 +1420,7 @@ msgstr ""
 "non vi siete preparati adeguatamente."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:439
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:466
 msgid ""
 "I do not aim to make excuses, but I have been here for scarcely a week! I do "
 "not know why the previous commander did not act on your advice, but I assure "
@@ -1441,7 +1431,7 @@ msgstr ""
 "vostro consiglio, ma vi assicuro che non farò i suoi stessi errori!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:444
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:471
 msgid ""
 "For your own sake, I hope that you do not. As for the matter at hand, the "
 "elves know of the great southern forest, and have walked its paths many "
@@ -1452,12 +1442,12 @@ msgstr ""
 "attraversato i suoi sentieri molte volte."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:449
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:476
 msgid "And what do you know of the undead?"
 msgstr "E che cosa sapete voi dei non-morti?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:454
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:481
 msgid ""
 "My answer will depend on your motives, human. What would you do, knowing the "
 "secrets of the unholy ones?"
@@ -1466,7 +1456,7 @@ msgstr ""
 "una volta venuto a conoscenza dei segreti degli empi?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:459
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:486
 msgid ""
 "I would lead my men south of the river to find and destroy the source of "
 "these beings of darkness."
@@ -1475,7 +1465,7 @@ msgstr ""
 "queste creature maledette e distruggerle."
 
 #. [message]: speaker=Vardanos
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:464
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:491
 msgid ""
 "A fanciful delusion! A human untrained in the mystic arts stands no chance "
 "against the undead!"
@@ -1484,7 +1474,7 @@ msgstr ""
 "alcuna possibilità contro i non-morti!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:469
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:496
 msgid ""
 "I have proven myself capable of defending my land and leading my men to "
 "victory—"
@@ -1493,7 +1483,7 @@ msgstr ""
 "miei uomini alla vittoria—"
 
 #. [message]: speaker=Eltenmir
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:474
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:501
 msgid ""
 "Only in battles against <i>other humans!</i> To fight such a fell evil is "
 "another matter altogether."
@@ -1502,19 +1492,19 @@ msgstr ""
 "tutto un altro paio di maniche."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:479
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:506
 msgid "But surely I cannot do nothing either!"
 msgstr "Ma certamente non posso non fare nulla!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:484
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:511
 msgid "<i>I warned him that the elves would not easily agree to help us.</i>"
 msgstr ""
 "<i>L’ avevo avvisato che gli elfi non sarebbero stati facili da convincere "
 "ad aiutarci.</i>"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:489
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:516
 msgid ""
 "<i>Indeed, but he is right as well. We must do something, or our people will "
 "surely be slaughtered.</i>"
@@ -1523,7 +1513,7 @@ msgstr ""
 "gente verrà sicuramente macellata.</i>"
 
 #. [message]: speaker=Ithelden
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:494
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:521
 msgid ""
 "Enough, all of you. Ethiliel is the only one of us who has encountered the "
 "undead — she will be the best judge of what aid we would grant the humans "
@@ -1534,7 +1524,7 @@ msgstr ""
 "potremmo concedere agli umani contro questi abomini."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:499
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:526
 msgid ""
 "These men are indeed brave to face such foes, but I fear that they will fall "
 "to the darkness if they fight it alone. There is one elf who still remembers "
@@ -1547,7 +1537,7 @@ msgstr ""
 "vive, da eremita, nelle colline vicine a sud."
 
 #. [message]: speaker=Ithelden
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:504
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:531
 msgid ""
 "Are you sure about this? The road south is no longer as safe as it once was, "
 "and Mebrin is not as powerful as he once was. You would not presume to put "
@@ -1558,7 +1548,7 @@ msgstr ""
 "dei nostri grandi saggi, Ethiliel."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:509
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:536
 msgid ""
 "<i>I</i> will accompany the human and his men to Mebrin, and he can decide "
 "whether or not he wants to help us. I will not ask you to place yourselves "
@@ -1571,17 +1561,17 @@ msgstr ""
 "cosa fare. È equo tutto questo?"
 
 #. [message]: speaker=Ithelden
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:514
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:541
 msgid "Yes, very well."
 msgstr "Sì, molto bene."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:520
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:547
 msgid "I welcome your aid, my lady."
 msgstr "Accolgo con favore il vostro aiuto, mia signora."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:581
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:608
 msgid ""
 "Skeletons approach from the east! This can only mean that they have begun to "
 "attack Kerlath. We will have to return and fight them without the aid of the "
@@ -1601,10 +1591,10 @@ msgstr "La valle delle lacrime"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Soulless, id=Groth
 #. [side]: type=Lich, id=Mal Tera
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #. [side]
 #. [side]: type=Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
@@ -1628,7 +1618,7 @@ msgid "Jera Ilras"
 msgstr "Jera Ilras"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:217
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:218
 msgid ""
 "This is the Vale of Blossoming Trees. Our great sages come here to find "
 "peace and enlightenment. Some other elves also live nearby — mostly artisans "
@@ -1640,7 +1630,7 @@ msgstr ""
 "valle."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:224
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:225
 msgid ""
 "It does seem peaceful, but why are there humans camped to the south of us? "
 "Are they friends of the elves?"
@@ -1649,13 +1639,13 @@ msgstr ""
 "amici degli elfi?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:230
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:231
 msgid ""
 "What?! Those marauders are no friends of ours! We must destroy them at once!"
 msgstr "Cosa?! Quei predoni non sono nostri amici! Dobbiamo distruggerli!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:235
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:236
 msgid ""
 "Perhaps they are allied with the bandits who have been sacking Westin. They "
 "have grown quite bold if they are attacking the elves!"
@@ -1664,7 +1654,7 @@ msgstr ""
 "diventando sempre più spavaldi, se osano attaccare anche gli elfi!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:240
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:241
 msgid ""
 "They would not dare without the aid of the dark ones, but we will vanquish "
 "them all nonetheless. Now, listen well to me, humans. The Great Sage Mebrin "
@@ -1677,12 +1667,12 @@ msgstr ""
 "entrerà per primo nel suo villaggio, certamente ci scaccerà!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:245
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:246
 msgid "Sounds like a charming fellow."
 msgstr "Sembra un tipo affascinante."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:250
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:251
 msgid ""
 "Mebrin can be... difficult, yes. However, should we cleanse the valley and "
 "restore peace to his home, I am sure he will accept your request for his "
@@ -1694,7 +1684,7 @@ msgstr ""
 "lui."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:255
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:256
 msgid ""
 "Very well, we will put our trust in you, Ethiliel. But first, we have a "
 "battle to attend to."
@@ -1703,7 +1693,7 @@ msgstr ""
 "una battaglia da affrontare."
 
 #. [message]: speaker=Jera Ilras
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:260
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:261
 msgid ""
 "Ha, you blabbering buffoons! Even should you defeat us here, it does not "
 "matter! We’ve already taken what we wanted from this valley."
@@ -1712,7 +1702,7 @@ msgstr ""
 "tardi! Abbiamo preso quello che volevamo da questa valle."
 
 #. [message]: speaker=Mal A'kai
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:265
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:266
 msgid ""
 "Weep, filthy flesh bags, weep and know that your tears will become the blood "
 "that stains the trees and feeds our powers!"
@@ -1721,26 +1711,26 @@ msgstr ""
 "diventeranno il sangue che macchia gli alberi e alimenta i nostri poteri!"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:283
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:284
 msgid "Cleanse the Vale of Tears"
 msgstr "Libera la Valle delle Lacrime"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:293
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:294
 msgid "Move Ethiliel to Mebrin’s village"
 msgstr "Sposta Ethiliel sul villaggio di Mebrin"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:309
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:371
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:412
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:310
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:367
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:401
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:36
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:338
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:356
 msgid "Death of Ethiliel"
 msgstr "Morte di Ethiliel"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:348
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:349
 msgid ""
 "Our weapons are useless against these skeletons! They have nothing for our "
 "shafts to pierce but air!"
@@ -1749,7 +1739,7 @@ msgstr ""
 "riescono a perforare null’altro che aria!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:371
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:372
 msgid ""
 "We must clear out these undead if you are to reach Mebrin’s village, but our "
 "weapons are ineffective against them! What should we do?"
@@ -1759,7 +1749,7 @@ msgstr ""
 "facciamo?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:376
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:377
 msgid ""
 "For now, I can slow them down. But where are the elves who used to live in "
 "this valley? They should have come to our aid by now."
@@ -1768,12 +1758,12 @@ msgstr ""
 "valle? Dovrebbero venire in nostro aiuto."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:381
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:382
 msgid "I do hope that nothing terrible has happened to them..."
 msgstr "Spero che non sia accaduto loro nulla di terribile..."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:397
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:398
 msgid ""
 "My friends, do not let me join these accursed undead! Please, bury me "
 "deeply..."
@@ -1782,29 +1772,29 @@ msgstr ""
 "seppellitemi in profondità..."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:407
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:408
 msgid "You shall not die in vain! My bodyguards will avenge you!"
 msgstr "La tua morte non sarà vana! La mia guardia del corpo ti vendicherà!"
 
 #. [message]: speaker=Sir Gerrick
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:422
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:427
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:430
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:435
 msgid "You have bodyguards?!"
 msgstr "Hai una guardia del corpo?!"
 
 #. [unit]: role=Elvish Bodyguard, type=Elvish Ranger
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:480
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:488
 msgid "Elvish Bodyguard"
 msgstr "Guardia del corpo elfica"
 
 #. [then]
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:497
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:505
 msgid "female^Elvish Bodyguard"
 msgstr "Guardia del corpo elfica"
 
 #. [message]: role=Elvish Bodyguard
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:510
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:518
 msgid ""
 "We stand ready to protect you, my lady! We shall lead these men of Wesnoth "
 "into the fray!"
@@ -1813,17 +1803,17 @@ msgstr ""
 "nella mischia!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:522
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:530
 msgid "For my lady I fall..."
 msgstr "Cado per la mia signora..."
 
 #. [message]: speaker=Mal A'kai
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:534
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:542
 msgid "The darkness beckons..."
 msgstr "L’oscurità chiama..."
 
 #. [message]: speaker=Jera Ilras
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:575
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:583
 msgid ""
 "Fools, my death here means nothing! Even if you could find our stronghold, "
 "you will never defeat our master!"
@@ -1832,72 +1822,95 @@ msgstr ""
 "la nostra fortezza, non sconfiggerai mai il nostro padrone!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:580
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:588
 msgid "Perhaps, but you, at least, will trouble us no more!"
 msgstr "Forse, ma tu, almeno, non ci infastidirai più!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:628
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:636
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Sei qui? Siamo venuti a cercare il tuo aiuto!"
 
+#. [message]: speaker=narrator
 #. [message]: speaker=Kramak
 #. [message]: speaker=Ethiliel
-#. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:633
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:644
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:641
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:652
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:238
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:263
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:281
 msgid "..."
 msgstr "..."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:639
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:647
 msgid "Mebrin! Where are you?!"
 msgstr "Mebrin! Dove sei?!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:650
-msgid "His home is empty... There are footprints leading away to the south..."
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:658
+#, fuzzy
+#| msgid ""
+#| "His home is empty... There are several sets of footprints leading away to "
+#| "the south..."
+msgid ""
+"His home is empty... There are several sets of footprints leading away to "
+"the south..."
 msgstr ""
 "La sua casa è vuota... Ci sono delle impronte che sembrano andare verso "
 "sud..."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:655
-msgid "Maybe whoever summoned these undead knows where he is?"
-msgstr "Forse chi ha evocato questi non-morti sa dove si trova?"
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:663
+msgid "Perhaps he was taken by the undead?"
+msgstr "Forse è stato rapito dai non-morti?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:660
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:668
+#, fuzzy
+#| msgid ""
+#| "I am not sure. There is no blood here and very little sign of struggle. "
+#| "If it had been the undead, I suspect they would have slain him and made "
+#| "him one of them."
 msgid ""
-"There is no blood here, so he must have been taken by surprise. But I "
-"suspect the undead would have slain him and made him one of them."
+"I am not sure. There is no blood here and very little sign of struggle. If "
+"it had been the undead, I suspect they would have slain him and made him one "
+"of them."
 msgstr ""
-"Non vi è sangue qui e Mebrin non si vede. Qualcuno deve averlo colto di "
-"sorpresa. Ma i non-morti lo avrebbero ucciso e trasformato in uno di loro."
+"Non ne sono sicuro. Qui non c’è sangue e solo qualche piccolo segno di "
+"lotta. Se fossero stati i non-morti, credo che potrebbero averlo ucciso e "
+"trasformato in uno di loro."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:665
-msgid "Maybe the bandits who have been summoning the undead took him?"
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:673
+#, fuzzy
+#| msgid "Then maybe the bandits who have been summoning the undead took him?"
+msgid "Then maybe the bandits who have been summoning the undead took him?"
 msgstr "Forse lo hanno preso i banditi che hanno evocato i non-morti?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:670
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:678
+#, fuzzy
+#| msgid ""
+#| "We cannot be sure. I should think that he would have put up a fight, but "
+#| "if he were ambushed or taken by surprise, he may not have had the chance. "
+#| "Ethiliel, what do you think?"
 msgid ""
-"We cannot be sure. I still find it strange that there is no sign of a battle "
-"here. Ethiliel, what do you think?"
+"We cannot be sure. I should think that he would have put up a fight, but if "
+"he were ambushed or taken by surprise, he may not have had the chance. "
+"Ethiliel, what do you think?"
 msgstr ""
 "Non possiamo esserne sicuri. Trovo ancora strano che qui non ci siano segni "
-"di una battaglia. Ethiliel, cosa ne pensi?"
+"di una battaglia, ma se gli fosse stata tesa un’imboscata o fosse stato "
+"colto di sorpresa, potrebbe non aver avuto la possibilità di combattere. "
+"Ethiliel, cosa ne pensi?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:675
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:683
 msgid "... Ethiliel? I know you must be distraught, but—"
 msgstr "... Ethiliel? So che devi essere sconvolta, ma—"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:681
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:689
 msgid ""
 "Distraught? <i>Distraught?</i> I am angry! We must follow these footprints "
 "into the woods! Whoever took our greatest sage must pay! Nothing will stop "
@@ -1908,7 +1921,7 @@ msgstr ""
 "potrà fermare la vendetta degli elfi!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:686
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:694
 msgid ""
 "Let us go quickly. <i>And avoid doing anything that might make her angrier "
 "than she already is...</i>"
@@ -1917,18 +1930,23 @@ msgstr ""
 "farla arrabbiare ancora di più di quanto non lo sia già...</i>"
 
 #. [message]: speaker=Necro
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:730
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:738
+#, fuzzy
+#| msgid ""
+#| "So the elves finally come to defend their valley. Pity, they showed up "
+#| "too late. We will stop them here and prevent them from reclaiming the "
+#| "knowledge that was once theirs!"
 msgid ""
-"So the elves finally come to defend their valley. Pity, they showed up a "
-"little late. We will stop them here and prevent them from reclaiming the "
-"knowledge that was once theirs!"
+"So the elves finally come to defend their valley. Pity, they showed up too "
+"late. We will stop them here and prevent them from reclaiming the knowledge "
+"that was once theirs!"
 msgstr ""
 "Quindi gli elfi finalmente vengono a difendere la loro valle. Peccato, si "
 "sono presentati un po’ in ritardo. Li fermeremo qui e impediremo loro di "
 "reclamare la conoscenza che una volta era loro!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:734
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:742
 msgid ""
 "They have reached Mebrin’s village before us! We have no hope of obtaining "
 "his aid now..."
@@ -1937,7 +1955,7 @@ msgstr ""
 "speranza di ottenere il suo aiuto..."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:749
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:757
 msgid ""
 "Come, my bodyguards! We must make haste to follow this trail and find Mebrin."
 msgstr ""
@@ -1952,7 +1970,7 @@ msgstr "Una scelta nella nebbia"
 #. [side]: type=Outlaw, id=Urza Afalas
 #. [unit]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:55
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:473
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:474
 msgid "Urza Afalas"
 msgstr "Urza Afalas"
 
@@ -1971,8 +1989,13 @@ msgstr "Gerd"
 msgid "?"
 msgstr "?"
 
+#. [side]
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:193
+msgid "Monster"
+msgstr "Mostri"
+
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:238
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:234
 msgid ""
 "It’s so cold here! And this fog is so thick. This cannot be natural for a "
 "forest like this."
@@ -1981,18 +2004,18 @@ msgstr ""
 "naturale per una foresta come questa."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:243
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:239
 msgid "I fear this is the effects of powerful, black magics."
 msgstr "Temo che questi siano gli effetti di una potente magia nera."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:248
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:244
 msgid ""
 "This is quite a change from fighting bandits in the farmlands near Westin!"
 msgstr "Che cambiamento rispetto a combattere banditi nei campi di Westin!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:253
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:249
 msgid ""
 "So, even you humans are being affected by the dark sorcery that taints this "
 "land. Then, there is no better place than here. We should stop and rest "
@@ -2003,7 +2026,7 @@ msgstr ""
 "fermarci e riposare prima di procedere."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:258
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:254
 msgid ""
 "This place is indeed foreboding, but why do we need to stop and make camp "
 "specifically here?"
@@ -2012,7 +2035,7 @@ msgstr ""
 "accamparci proprio qui?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:263
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:259
 msgid ""
 "The Black River is before us. Few elves have crossed it, and fewer still "
 "have explored the dark forest beyond. If the undead come from across the "
@@ -2023,7 +2046,7 @@ msgstr ""
 "vengono da oltre il fiume dobbiamo fare molta attenzione nel cercarli."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:268
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:264
 msgid ""
 "Even if this forest is decidedly grim, we must not fear its inhabitants so "
 "much so that we dare not even confront them. I am ready and willing to fight!"
@@ -2033,7 +2056,7 @@ msgstr ""
 "combattere!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:273
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:269
 msgid ""
 "Caution, not fear, human. Anxious as I am to find the whereabouts of our "
 "great sage, it would do us no good to charge straight into the trap of the "
@@ -2048,7 +2071,7 @@ msgstr ""
 "aiutarci. I miei soldati e le sciamane combatteranno al tuo comando."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:280
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:276
 msgid ""
 "You may now recruit Elvish Fighters. Elvish Fighters are mixed fighters who "
 "skillfully wield both a sword and a bow. They are fast warriors and "
@@ -2059,7 +2082,7 @@ msgstr ""
 "guerrieri veloci e particolarmente efficaci nelle foreste."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:285
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:281
 msgid ""
 "You may now recruit Elvish Shamans. Elvish Shamans are ranged support units "
 "who heal adjacent allies every turn and slow their enemies. Use them to heal "
@@ -2071,7 +2094,7 @@ msgstr ""
 "unità nemiche."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:291
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:287
 msgid ""
 "Now, so long as you feel prepared to brave the perils beyond the river, we "
 "can continue onward."
@@ -2080,7 +2103,7 @@ msgstr ""
 "possiamo procedere."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:296
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:292
 msgid ""
 "Thank you for your help, my lady. I am ready for whatever lies in wait for "
 "us, be it man, beast, or skeleton. Sir Gerrick, Minister Hylas?"
@@ -2089,17 +2112,17 @@ msgstr ""
 "attenda, che sia uomo, bestia o scheletro. Ser Gerrick, Ministro Hylas?"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:301
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:297
 msgid "On your order, Sir Deoran."
 msgstr "Ai vostri ordini, Ser Deoran."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:306
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:302
 msgid "Evil never rests — nor does the light that seeks to exterminate it."
 msgstr "Il male non riposa mai, come la luce che lo bracca per sterminarlo."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:311
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:307
 msgid ""
 "Very well then. Come, men, let us gather our wits and probe the forest for "
 "its secrets."
@@ -2108,30 +2131,30 @@ msgstr ""
 "la foresta in cerca dei suoi segreti."
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:317
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:313
 msgid "Investigate the areas to the south of the Black River"
 msgstr "Esplora l’area a sud del Fiume Nero"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:327
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:323
 msgid "Find the source of the undead and destroy it"
 msgstr "Scopri l’origine dei non-morti e distruggila"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:342
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:338
 msgid "Defeat Urza Afalas"
 msgstr "Sconfitta di Urza Afalas"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:387
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:586
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:383
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:587
 msgid "Death of Urza Afalas"
 msgstr "Morte di Urza Afalas"
 
 #. [message]: speaker=second_unit
 #. This message is shown when the frist zombie leader died.
 #. There is a second one, a few hexes next to him, the player most likely saw him already.
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:428
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:424
 msgid "He was not alone."
 msgstr "Non era da solo."
 
@@ -2139,13 +2162,13 @@ msgstr "Non era da solo."
 #. [message]: speaker=Sir Gerrick
 #. Note that masters is in plural.
 #. Note that masters is in plural.
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:471
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:479
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:467
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:475
 msgid "The masters of the undead are defeated!"
 msgstr "I padroni dei non-morti sono stati sconfitti!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:486
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:482
 msgid ""
 "No... I fear there is still much evil present. These were merely servants of "
 "a far more powerful force."
@@ -2154,12 +2177,12 @@ msgstr ""
 "semplici servi di una forza molto più potente."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:508
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:504
 msgid "Two undead leaders have fallen."
 msgstr "Due comandanti non-morti sono caduti."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:512
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:508
 msgid ""
 "Indeed, though we have merely destroyed the servants of a far more powerful "
 "master."
@@ -2168,34 +2191,34 @@ msgstr ""
 "potente."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:519
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:515
 msgid "These were merely servants of a far more powerful master."
 msgstr "Questi erano dei semplici servi di un signore molto più potente."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:528
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:524
 msgid "One fewer evil in this forest."
 msgstr "Un malvagio in meno in questa foresta."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:562
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:558
 msgid "We found the lich!"
 msgstr "Abbiamo trovato il lich!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:599
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:595
 msgid ""
 "I think I see something moving in the fog... it looks like an encampment!"
 msgstr ""
 "Credo di vedere qualcosa che si muove nella nebbia... Sembra un accampamento!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:639
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:635
 msgid "Thank the light, you’re alive!"
 msgstr "Sia lodato il cielo! Sei vivo!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:644
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:640
 msgid ""
 "You need not thank anyone that we are alive, wretched criminals! We know of "
 "your alliance with the undead and the evil you have brought to this land!"
@@ -2205,7 +2228,7 @@ msgstr ""
 "in questa terra!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:649
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:645
 msgid ""
 "Aye, prepare to be slain, you abominable scum! You will pay for what you "
 "have done to our home!"
@@ -2214,7 +2237,7 @@ msgstr ""
 "hai fatto a casa nostra!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:654
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:650
 msgid ""
 "Please, please, just hear me out. I know of these undead that you seek, and "
 "I know that you seek to destroy both them and us out of revenge. I am sorry "
@@ -2227,7 +2250,7 @@ msgstr ""
 "intenzione causare a chiunque così tanta sofferenza."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:659
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:655
 msgid ""
 "Tell us what you know of these undead. Make one wrong move and we will not "
 "hesitate to attack!"
@@ -2236,7 +2259,7 @@ msgstr ""
 "esiteremo ad attaccarti!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:664
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:660
 msgid ""
 "I swear that I am not your enemy! I will gladly tell you what I know. A year "
 "ago, we ventured into the land of the elves in secret and we captured a "
@@ -2248,12 +2271,12 @@ msgstr ""
 "di questa foresta."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:669
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:665
 msgid "You imprisoned Mebrin?! You loathsome vermin!"
 msgstr "Avete catturato Mebrin? Che schifoso parassita!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:674
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:670
 msgid ""
 "Wait, wait, hear me out! He told us that in the woods to the south of here, "
 "there was a powerful nexus of dark energy. He took us there and taught us to "
@@ -2271,17 +2294,17 @@ msgstr ""
 "che avevano cercato di dominare!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:679
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:675
 msgid "A complete and utter lie from complete and utter scum."
 msgstr "Una completa e totale menzogna da una completa e totale feccia."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:684
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:680
 msgid "Please, Ethiliel, let us hear him out. What happened to Mebrin?"
 msgstr "Per favore, Ethiliel, ascoltiamolo. Cosa è successo a Mebrin?"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:689
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:685
 msgid ""
 "I am not sure... he must have known that the undead would corrupt and "
 "enslave us."
@@ -2290,12 +2313,12 @@ msgstr ""
 "corrotto e schiavizzato."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:694
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:690
 msgid "Stop stalling and tell us what happened!"
 msgstr "Smettila di bloccarti e dicci cosa è successo!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:699
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:695
 msgid ""
 "Mebrin was more powerful than any of the undead we summoned, and yet he did "
 "not resist them. He allowed them to make him one of them and became a lich "
@@ -2308,7 +2331,7 @@ msgstr ""
 "altri non-morti e ora li comanda dal profondo dei boschi."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:705
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:701
 msgid ""
 "You dare spew such falsities! Mebrin would never fight for the undead, much "
 "less lead them!"
@@ -2317,7 +2340,7 @@ msgstr ""
 "avrebbe guidati!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:710
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:706
 msgid ""
 "<i>Sir Deoran, sages and mystics of great skill and age are often the first "
 "to succumb to the taint of black magic. Wisdom and power are not enough to "
@@ -2333,7 +2356,7 @@ msgstr ""
 "stato corrotto anche lui.</i>"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:715
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:711
 msgid ""
 "<i>Indeed, these elves are not as incorruptible and pure as they like to "
 "believe they are. I suspect that this sage's pride led him to believe that "
@@ -2344,7 +2367,7 @@ msgstr ""
 "credere di poter dominare un potere incontrollabile. </i>"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:727
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:723
 msgid ""
 "Very well, but even supposing your story is true, you are still criminals!"
 msgstr ""
@@ -2352,7 +2375,7 @@ msgstr ""
 "dei criminali!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:732
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:728
 msgid ""
 "We have committed wrongdoings in the past, but at least in the fight against "
 "the undead, we can be your friends! They are as much our enemies as they are "
@@ -2365,7 +2388,7 @@ msgstr ""
 "di grande aiuto nella vostra battaglia contro di loro!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:738
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:734
 msgid ""
 "Think of the destruction they wrought on your land! Think of how they "
 "trespassed on our lands and kidnapped our wisest sage! No matter what they "
@@ -2378,7 +2401,7 @@ msgstr ""
 "teppisti. Sono malvagi tanto quanto i non-morti!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:743
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:739
 msgid ""
 "Peace, let me think! <i>I must consider this carefully... If I ally with the "
 "elves, I must fight the bandits, but if I ally with the bandits I will make "
@@ -2389,32 +2412,32 @@ msgstr ""
 "inimicherò gli elfi...</i>"
 
 #. [option]
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:745
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:741
 msgid "Your crimes are too great. You will fall with the foul undead!"
 msgstr ""
 "I tuoi crimini sono troppi. Cadrai con i non-morti che hai aiutato a "
 "generare!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:749
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:745
 msgid "Then this parley is over! You may have caused the doom of all of us!"
 msgstr ""
 "Allora questa discussione è finita! Potresti aver decretato la fine per "
 "tutti noi!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:755
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:751
 msgid "You will pay for taking Mebrin from us! If he is harmed..."
 msgstr "Pagherete per aver portato via Mebrin! Se gli avete fatto del male..."
 
 #. [option]
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:774
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:770
 msgid "Very well. All men must unite against the undead."
 msgstr ""
 "Molto bene. Tutti gli uomini devono unirsi contro la minaccia dei non-morti."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:826
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:822
 msgid ""
 "Excellent, we will fight with you. Come, my thugs and footpads, rally to me!"
 msgstr ""
@@ -2422,7 +2445,7 @@ msgstr ""
 "galoppini!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:832
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:828
 msgid ""
 "So it comes to this. All humans are the same! You are no better than these "
 "criminals, the very pigs who sacked your towns and burned your villages! If "
@@ -2441,7 +2464,7 @@ msgstr ""
 "piede nelle nostre terre, umani, non ci avete portato altro che dolore."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:844
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:840
 msgid ""
 "The elves have abandoned us in this accursed forest! We are surely lost!"
 msgstr ""
@@ -2449,7 +2472,7 @@ msgstr ""
 "sicuro!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:849
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:845
 msgid ""
 "Do not fear! I know the way out and can lead you back to your homes after we "
 "defeat the undead."
@@ -2458,7 +2481,7 @@ msgstr ""
 "dopo che avremo sconfitto i non-morti."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:893
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:889
 msgid ""
 "Urza Afalas’s troops are exhausted from battle and cannot attack this turn, "
 "but are still able to withdraw and reposition themselves."
@@ -2468,25 +2491,25 @@ msgstr ""
 "riposizionarsi."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:925
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:921
 msgid "I pay for my crimes, but without me, you cannot fight the undead..."
 msgstr ""
 "Pago per i miei crimini, ma senza di me, non puoi combattere i non-morti..."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:938
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:934
 msgid "Fools! That lich will be the death of us all! Now we are all doomed!"
 msgstr ""
 "Sciocchi! Quel lich sarà la morte di noi tutti! Avete firmato la nostra "
 "condanna a morte!"
 
 #. [unit]: type=Water Serpent, id=Beast of the Lake
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:967
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:963
 msgid "Beast of the Lake"
 msgstr "Mostro del lago"
 
 #. [message]: speaker=Beast of the Lake
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:977
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:973
 msgid "Graar!"
 msgstr "Graar!"
 
@@ -2762,25 +2785,25 @@ msgstr "Groth"
 msgid "Mal Tera"
 msgstr "Mal Tera"
 
-#. [side]: type=Troll Hero, id=Grek
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:232
-msgid "Grek"
-msgstr "Grek"
-
 #. [unit]: type=Eyestalk, id=Eye Guardian
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:256
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:250
 msgid "Eye Guardian"
 msgstr "Occhio guardiano"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:286
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:291
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:296
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:280
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:285
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:290
 msgid "Mal Maul"
 msgstr "Mal Maul"
 
+#. [event]
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:295
+msgid "Grek"
+msgstr "Grek"
+
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:375
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:364
 msgid ""
 "It is so dark down here! It feels like the light from our torches is doing "
 "hardly anything at all."
@@ -2789,7 +2812,7 @@ msgstr ""
 "nulla."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:380
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:369
 msgid ""
 "That would be the work of the undead. We must proceed slowly, for the evils "
 "that the bandits have awoken seem to be quite powerful. We elves are also "
@@ -2802,7 +2825,7 @@ msgstr ""
 "lo siamo nelle nostre foreste. Dovrai aprire la strada."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:385
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:374
 msgid ""
 "Very well. We should all stay close and guard each others’ backs. Something "
 "sinister lurks in this darkness."
@@ -2811,7 +2834,7 @@ msgstr ""
 "qualcosa di sinistro in agguato nell’oscurità."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:391
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:380
 msgid ""
 "Cavalrymen and Dragoons will be less useful underground than soldiers who "
 "fight on foot."
@@ -2820,7 +2843,7 @@ msgstr ""
 "soldati che combattono a piedi."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:396
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:385
 msgid ""
 "Soldiers with the <i>quick</i> trait will be useful for traversing rough "
 "caverns."
@@ -2829,12 +2852,12 @@ msgstr ""
 "percorrere tratti di nuda caverna."
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:404
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:393
 msgid "Find the source of the undead under the citadel"
 msgstr "Scopri l’origine dei non-morti sotto la cittadella"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:442
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:431
 msgid ""
 "What manner of horrid creature is this? I have seen many wicked things in my "
 "life, but never one so perverse."
@@ -2843,7 +2866,7 @@ msgstr ""
 "vita mia, ma mai una così perversa come quella."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:447
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:436
 msgid ""
 "Such creatures may be summoned by conjurers of sufficient skill, though I "
 "suspect that this is some other beast, twisted by the foul energy of this "
@@ -2855,7 +2878,7 @@ msgstr ""
 "piazzato qui come guardiano."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:487
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:476
 msgid ""
 "Who go there? I see... I sees some humans and elfsies! What you doing in our "
 "caves?"
@@ -2864,7 +2887,7 @@ msgstr ""
 "nostre caverne?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:491
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:480
 msgid ""
 "We do not mean to trespass on your territory. We are hunting the undead and "
 "have no quarrel with you."
@@ -2873,7 +2896,7 @@ msgstr ""
 "morti e non abbiamo intenzione di litigare con voi."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:495
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:484
 msgid ""
 "Undead! Pesky skeletons invade our home, drive us into hiding! They too "
 "stupid to find us here, but we no leave here either."
@@ -2883,7 +2906,7 @@ msgstr ""
 "andarcene."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:499
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:488
 msgid ""
 "It seems that we have a common enemy, then. Would you like to join forces to "
 "defeat the undead?"
@@ -2892,7 +2915,7 @@ msgstr ""
 "sconfiggere i non-morti?"
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:503
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:492
 msgid ""
 "Join? Join with humans and elfsies? Hmm. Okay. Humans and elfsies friends. "
 "We help you beat skeletons, but after they gone we take back our home and "
@@ -2903,7 +2926,7 @@ msgstr ""
 "saranno andati, noi torniamo a casa nostra e voi ve ne andrete. Okay?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:507
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:496
 msgid ""
 "Very well. Can you help guide us through these tunnels? We are not well "
 "suited to fighting in the caves."
@@ -2912,27 +2935,27 @@ msgstr ""
 "siamo adatti a combattere nelle caverne."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:511
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:500
 msgid "It okay. Grek lead you to lich. Look there!"
 msgstr "Va bene. Grek conduce voi da lich. Guarda qui!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:600
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:602
 msgid "Excellent. Onwards we go!"
 msgstr "Eccellente. Andiamo avanti!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:632
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:621
 msgid "Mebrin! My old master! Is that truly you?"
 msgstr "Mebrin! Il mio vecchio maestro! Siete veramente voi?"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:638
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:627
 msgid "Eth... Ethiliel?"
 msgstr "Eth... Ethiliel?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:643
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:632
 msgid ""
 "Oh, it truly is you! How did you come to be here, shut away from the trees "
 "and the light of the sun?"
@@ -2941,7 +2964,7 @@ msgstr ""
 "dagli alberi e dalla luce del sole?"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:648
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:637
 msgid ""
 "They bound me, the accursed humans, they bound me in iron! Ahh, the cold "
 "iron on my skin... they burned me with it day and night for days, weeks, "
@@ -2953,7 +2976,7 @@ msgstr ""
 "mi tormenta senza sosta, mentre provano e strapparmi i segreti dei non-morti!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:653
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:642
 msgid ""
 "What is this? Elves bear steel swords! I had no idea iron would hurt your "
 "kind so."
@@ -2962,7 +2985,7 @@ msgstr ""
 "ferro potesse ferire quelli della tua specie."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:658
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:647
 msgid ""
 "All elves feel the shadow of iron, and to those who walk our higher paths, "
 "it is a bane that breaks the body and twists the mind. This touches on "
@@ -2977,7 +3000,7 @@ msgstr ""
 "briganti, non potevano sapere quanto male avevano inflitto al mio padrone."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:663
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:652
 msgid ""
 "They knew, they knew! They reveled in my hurt, relished each and everyone of "
 "my cries of pain! Even as I asked... as I <i>begged</i> for mercy, they "
@@ -2995,12 +3018,12 @@ msgstr ""
 "di bracciali arrugginiti... Era... Umiliante..."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:668
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:657
 msgid "Mebrin..."
 msgstr "Mebrin..."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:673
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:662
 msgid ""
 "At my lowest point, they broke me. I finally gave in, telling them that I "
 "would teach them to raise the dead if they would just take the accursed "
@@ -3018,7 +3041,7 @@ msgstr ""
 "Niente... Niente... se non la vendetta."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:678
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:667
 msgid ""
 "Humans are ultimately a weak breed. I taught them to summon powers they "
 "could not control. In their greed, they never stopped to wonder if they "
@@ -3041,12 +3064,12 @@ msgstr ""
 "quando non sono diventati tutti miei schiavi senza cervello!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:683
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:672
 msgid "Mebrin, please..."
 msgstr "Mebrin, per favore..."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:688
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:677
 msgid ""
 "You were my best pupil, Ethiliel. You surely recognize the greatness that I "
 "have become. Hah! Imagine, a small part of me is actually grateful to those "
@@ -3060,7 +3083,7 @@ msgstr ""
 "dell’immortalità."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:693
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:682
 msgid ""
 "Mebrin... that's enough. I am sorry. I should have protected you. I should "
 "never have let those humans take you and turn you into... into a monster!"
@@ -3070,12 +3093,12 @@ msgstr ""
 "mostro!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:698
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:687
 msgid "What are you saying..?"
 msgstr "Cosa dici...?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:703
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:692
 msgid ""
 "Surely you see it! Take a good look at yourself! Your servants are "
 "abominations worse than any human. They stink of death, and tainted magic, "
@@ -3088,7 +3111,7 @@ msgstr ""
 "saggi. Come ha fatto a diventare una cosa come questa? Mebrin, rispondimi!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:708
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:697
 msgid ""
 "I am called Mal M’Brin now, Ethiliel. It is the name I took when I unchained "
 "myself from the shallow-mindedness of the elves and passed over into "
@@ -3105,12 +3128,12 @@ msgstr ""
 "parte di questo potere senza limiti."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:713
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:702
 msgid "You have become evil!"
 msgstr "Sei diventato malvagio!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:718
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:707
 msgid ""
 "Join me! Stand by my side! We shall rise and eradicate the humans from the "
 "green world. Their corpses will serve us! Their bones will dance for our "
@@ -3122,7 +3145,7 @@ msgstr ""
 "meritano di essere!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:723
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:712
 msgid ""
 "And when that is done, what will we have become? Naught but hungering "
 "shadows, devouring all we once cherished."
@@ -3131,7 +3154,7 @@ msgstr ""
 "che divorano tutto quello che una volta ci era caro."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:729
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:718
 msgid ""
 "No... No. The sage Mebrin is dead. You are not the master I once revered. I "
 "will cleanse your soul and put you to rest, my beloved teacher."
@@ -3140,7 +3163,7 @@ msgstr ""
 "volta. Ripulirò la tua anima e ti metterò a riposo, mio amato insegnante."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:735
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:724
 msgid ""
 "Even a mere human can see that you have become a mockery of all that you "
 "once believed in. I will destroy you and bury your perverse ideals, even if "
@@ -3151,7 +3174,7 @@ msgstr ""
 "che faccio!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:740
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:729
 msgid ""
 "You? Destroy me? Your flesh will provide a fine feast for my ghouls, and "
 "once they are through with you, you will serve me forever in undeath!"
@@ -3160,8 +3183,8 @@ msgstr ""
 "e una volta che avranno finito con te, mi servirai per sempre nelle tua non-"
 "morte!"
 
-#. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:764
+#. [message]: role=smartcombatant
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:776
 msgid ""
 "I feel the touch of dark magic. This is quite a powerful spell — the very "
 "air feels thick and heavy."
@@ -3170,7 +3193,7 @@ msgstr ""
 "potente: l’aria stessa sembra densa e pesante."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:768
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:780
 msgid ""
 "It is Mebrin’s doing. I recognize the energy, though it has been twisted by "
 "the touch of the black arts. He used to use this spell to heal the mind and "
@@ -3183,12 +3206,12 @@ msgstr ""
 "avrà esattamente l’effetto opposto."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:780
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:792
 msgid "I feel... faint..."
 msgstr "Mi sento... spossato..."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:784
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:796
 msgid ""
 "We must hurry! Once Mebrin’s spell takes full effect, none of us will be "
 "able to stop him."
@@ -3196,28 +3219,28 @@ msgstr ""
 "Dobbiamo sbrigarci! Una volta che l’incantesimo di Mebrin sarà completato, "
 "nessuno di noi sarà in grado di fermarlo."
 
-#. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:796
+#. [message]: role=soldier
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:824
 msgid "I feel so weary... I can hardly grasp my weapon anymore..."
 msgstr "Mi sento così stanco... Riesco a malapena ad impugnare la mia arma..."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:809
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:837
 msgid "Taste the breath of oblivion!"
 msgstr "Assaporate l’alito dell’oblio!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:813
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:841
 msgid "Mebrin has caught us in his spell! We are doomed..."
 msgstr "Mebrin ci ha intrappolato nel suo incantesimo! Siamo spacciati..."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:825
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:853
 msgid "Ouch! Me hurt! Me feel cold! Me dying..."
 msgstr "Ouch! Me ferito! Me sente freddo! Me muore..."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:838
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:866
 msgid ""
 "Ethiliel! Wait... think about it! Think of everything you are throwing away! "
 "We could build an empire together, where the humans are our slaves and you "
@@ -3228,7 +3251,7 @@ msgstr ""
 "e tu ed io saremo gli immortali sovrani del mondo!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:843
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:871
 msgid ""
 "It would only be an empire of misery, Mebrin. I wish it had not come to "
 "this, but you have been corrupted beyond saving. Still, I will fondly "
@@ -3239,7 +3262,7 @@ msgstr ""
 "Tuttavia, onorerò con affetto i ricordi che ho di ciò che eri una volta."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:848
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:876
 msgid ""
 "You wouldn’t dare strike me! I am the darkness incarnate! I am your master! "
 "You will obey me!"
@@ -3248,17 +3271,17 @@ msgstr ""
 "Tu mi obbedirai!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:853
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:881
 msgid "Goodbye, Mebrin."
 msgstr "Addio, Mebrin."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:863
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:891
 msgid "It is done."
 msgstr "È fatta."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:868
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:896
 msgid ""
 "Indeed, the lich is destroyed. Let us not linger here any longer than we "
 "need to. This place is filled with only grief and sorrow."
@@ -3267,7 +3290,7 @@ msgstr ""
 "Questo posto e pieno soltanto di dolore e tristezza."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:873
+#: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:901
 msgid ""
 "Yes... just let me gather my thoughts, and I will lead you back to your "
 "homes."
@@ -3281,14 +3304,14 @@ msgid "The Long March"
 msgstr "La lunga marcia"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:499
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:500
 msgid "Deoran and Urza Afalas retreated quickly from Mebrin's fortress..."
 msgstr ""
 "Deoran e Urza Afalas condussero rapidamente le truppe via dalla fortezza di "
 "Mebrin..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:537
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:538
 msgid ""
 "Forest, forest, forest! As far as the eye can see, it is all forest! I am "
 "getting sick of endlessly trudging through these woods. Are you sure you are "
@@ -3299,7 +3322,7 @@ msgstr ""
 "portando nella giusta direzione?"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:541
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:542
 msgid ""
 "Trust me. I have often traveled these woods with my comrades and I know a "
 "secret path through it. I am taking you there so we can avoid the elves on "
@@ -3310,7 +3333,7 @@ msgstr ""
 "questo passaggio così che possiamo evitare gli elfi lungo il ritorno."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:545
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:546
 msgid ""
 "Would that I had listened to Ethiliel... we would be battling the undead by "
 "now, instead of crawling around in these woods like rats!"
@@ -3319,7 +3342,7 @@ msgstr ""
 "non-morti, invece di strisciare in questi boschi come ratti!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:549
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:550
 msgid ""
 "What’s done is done. We must worry about the task at hand. Winter is almost "
 "upon us and it will be much more difficult to forage for food then."
@@ -3328,7 +3351,7 @@ msgstr ""
 "ora. L’invero è alle porte e sarà molto più difficile procacciare del cibo."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:553
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:554
 msgid ""
 "That is not our only problem. I sense that many undead creatures are "
 "approaching us rapidly. It seems as if they are chasing us, though I know "
@@ -3339,7 +3362,7 @@ msgstr ""
 "quale ragione."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:557
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:558
 msgid ""
 "It must be because we destroyed that phantom lich. The corrupted sage is "
 "sending them to hunt us in retaliation. Let’s get out of here quickly so we "
@@ -3350,7 +3373,7 @@ msgstr ""
 "così non dovremo combatterli."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:564
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:565
 msgid ""
 "Also, remember that these woods are crawling with elves. Stay on the path "
 "and perhaps we can avoid at least most of them. If we do get seen, well, "
@@ -3361,12 +3384,12 @@ msgstr ""
 "possiamo sperare che non ci attacchino."
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:570
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:571
 msgid "Move Deoran through the woods and over the river"
 msgstr "Sposta Deoran attraverso i boschi e al di là del fiume"
 
 #. [note]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:598
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:599
 msgid ""
 "At the start of each turn, Urza Afalas will reveal as much of the secret "
 "path as is within his vision range."
@@ -3375,32 +3398,32 @@ msgstr ""
 "segreto che si trova all’interno del suo raggio visivo."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:798
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:799
 msgid "Just a little further!"
 msgstr "Ancora un pochino!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:816
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:817
 msgid "We’re almost there!"
 msgstr "Ci siamo quasi!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:834
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:835
 msgid "Come on! Hurry!"
 msgstr "Forza! Sbrigatevi!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:852
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:853
 msgid "Keep moving!"
 msgstr "Muovetevi!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:871
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:872
 msgid "You can see the banks of the river from here!"
 msgstr "Da qui si riescono a vedere le sponde del fiume!"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:925
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:926
 msgid ""
 "Humans! You are the curs who kidnapped the Sage Mebrin! Tell us where you "
 "have hidden him and perhaps we will grant you a quick death!"
@@ -3409,7 +3432,7 @@ msgstr ""
 "lo avete nascosto e forse vi  concederemo un morte veloce!"
 
 #. [message]: id=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:929
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:930
 msgid ""
 "We have already told you of his whereabouts! Your wise sage now practices "
 "necromancy and commands an army of undead. He means to march on our land and "
@@ -3420,7 +3443,7 @@ msgstr ""
 "sulla nostra terra ed uccidere tutti gli esseri viventi, siano umani o elfi!"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:938
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:939
 msgid ""
 "How dare you speak of Mebrin with such lies?! Though he has knowledge of the "
 "undead, he is no human, so easily corrupted by the temptation of such power. "
@@ -3432,7 +3455,7 @@ msgstr ""
 "storia così palesemente falsa?"
 
 #. [message]: id=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:942
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:943
 msgid ""
 "We are not lying! If you travel south and enter the undead lair, you see "
 "that we speak the truth!"
@@ -3441,7 +3464,7 @@ msgstr ""
 "vedrai che noi diciamo la verità!"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:951
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:952
 msgid ""
 "Enough! I should have known that the stupidity of humans knows no bounds. We "
 "have nothing more to say here."
@@ -3450,17 +3473,17 @@ msgstr ""
 "conosce limiti. Non abbiamo niente altro da dire qui."
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:985
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:986
 msgid "Humans, bandits and abductors! Prepare to be slain!"
 msgstr "Umani, banditi e rapitori! Preparatevi ad essere uccisi!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:989
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:990
 msgid "We don’t want to fight you! We wish only to return to our homes!"
 msgstr "Non vogliamo combattervi! Vogliamo solo tornare alle nostre case!"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:998
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:999
 msgid ""
 "And so does our Sage Mebrin, yet you have not returned him to us! Even if "
 "you did, we would still dispatch of you for your heinous transgressions, you "
@@ -3471,19 +3494,19 @@ msgstr ""
 "trasgressioni, feccia infida!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1002
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1003
 msgid ""
 "There is no reasoning with the elves. We will either have to fight or run."
 msgstr "Non si riesce a ragionare con gli elfi. Dovremo combattere o scappare."
 
 # XXX Space before punctuation
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1036
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1037
 msgid "Get them!"
 msgstr "Prendeteli!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1178
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1179
 msgid ""
 "I pay for my crimes, but without me, you will never make it back to "
 "Kerlath..."
@@ -3492,7 +3515,7 @@ msgstr ""
 "a Kerlath..."
 
 #. [message]: speaker=Ithelden
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1227
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1228
 msgid ""
 "So, these pitiful humans are still alive? Good. I will have the pleasure of "
 "crushing them myself."
@@ -3501,12 +3524,12 @@ msgstr ""
 "il piacere di schiacciarli."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1231
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1232
 msgid "We took too long to escape these forests..."
 msgstr "Ci abbiamo messo troppo tempo per scappare da queste foreste..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1251
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1252
 msgid ""
 "At last, we have escaped that awful forest! It seems that you actually kept "
 "your word about something, Afalas."
@@ -3515,7 +3538,7 @@ msgstr ""
 "tu abbia mantenuto la tua parola su qualcosa, Afalas."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1255
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1256
 msgid ""
 "Good knight, I am not evil as you think I am. I really do mean to aid in "
 "your battle against the undead. I am sorry for my deception before, but that "
@@ -3526,7 +3549,7 @@ msgstr ""
 "ingannato, ma è stato veramente solo perché pensavo che mi avresti ucciso!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1259
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1260
 msgid ""
 "Your past crimes are not easy to overlook, but we will see how you aid us in "
 "the coming battle. As Sir Deoran said, you have kept your word about leading "
@@ -3537,7 +3560,7 @@ msgstr ""
 "la tua parola sul ricondurci a Wesnoth, e questo è un buon inizio."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1263
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1264
 msgid "Thank you. I will help you as much as I can when we return to Westin."
 msgstr "Grazie. Vi aiuterò il più possibile quando torneremo a Westin."
 
@@ -3733,7 +3756,8 @@ msgid "<i>Very well.</i>"
 msgstr "<i>Molto bene.</i>"
 
 #. [message]: speaker=Eltenmir
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:368
+#. Defeat message after time-over
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:369
 msgid ""
 "These human beasts slew our people and murdered Mebrin! We must have "
 "vengeance for this vile atrocity. Burn their city to the ground!"
@@ -3743,7 +3767,8 @@ msgstr ""
 "città!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:372
+#. Defeat message after time-over
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:374
 msgid ""
 "The elves are attacking Westin! They'll surely destroy the city without us "
 "there to defend it..."
@@ -3752,28 +3777,28 @@ msgstr ""
 "difendiamo..."
 
 #. [unit]: type=Lieutenant, id=Liryn
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:392
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:394
 msgid "Liryn"
 msgstr "Liryn"
 
 #. [message]: speaker=Liryn
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:398
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:400
 msgid "Halt! Who comes to the border of Wesnoth?"
 msgstr "Alt! Chi giunge ai confini di Wesnoth?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:403
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:405
 msgid "It is I, Deoran, commander of the South Guard."
 msgstr "Sono io, Deoran, comandante della Guardia del Sud."
 
 #. [message]: speaker=Liryn
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:408
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:410
 msgid ""
 "Deoran? It truly is you? We had thought you had been lost to the undead."
 msgstr "Deoran? Sei veramente tu? Pensavamo che fossi caduto tra i non-morti."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:413
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:415
 msgid ""
 "We and our elvish allies have won a great battle against a lich. The undead "
 "are no more."
@@ -3782,7 +3807,7 @@ msgstr ""
 "I non-morti sono stati spazzati via."
 
 #. [message]: speaker=Liryn
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:418
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:420
 msgid ""
 "This is wonderful news, commander! I shall spread word about your heroic "
 "deed! But... I am afraid there is another problem. There are rumors of "
@@ -3793,7 +3818,7 @@ msgstr ""
 "voci di problemi con gli elfi della Foresta di Aethen."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:423
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:425
 msgid ""
 "That does not surprise me, given our troubles in even getting here. Deoran, "
 "we had best hurry back to your city. I will need to see what the "
@@ -3804,7 +3829,7 @@ msgstr ""
 "vedere quali sono le circostanze attuali."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:428
+#: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:430
 msgid "Very well, let us make haste to Westin."
 msgstr "Molto bene, dirigiamoci velocemente a Westin."
 
@@ -3890,7 +3915,7 @@ msgid "Death Guard"
 msgstr "Guardia della morte"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:235
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:248
 msgid ""
 "We are finally back in Kerlath, but look! The undead have almost caught up "
 "to us!"
@@ -3899,7 +3924,7 @@ msgstr ""
 "raggiunto!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:239
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:252
 msgid ""
 "These forts are ill-equipped for holding back so many undead. I am certain "
 "we will be slaughtered if we try to fight them here!"
@@ -3908,7 +3933,7 @@ msgstr ""
 "morti. Sono certo che saremo massacrati se proviamo a combatterli qui!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:243
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:256
 msgid ""
 "But we cannot flee like this forever... the horses are tired, and the men "
 "are tired, and I am tired as well. The undead can march day and night "
@@ -3921,7 +3946,7 @@ msgstr ""
 "raggiungeranno sicuramente prima di riuscire a tornare a Westin."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:247
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:260
 msgid ""
 "Then we have only one course of action to take. Deoran, you must hasten back "
 "to Westin to prepare a defense against them. I will command the defense of "
@@ -3934,12 +3959,12 @@ msgstr ""
 "uomo, e noi tratterremo i non-morti il più a lungo possibile."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:251
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:264
 msgid "But such a thing will mean certain death!"
 msgstr "Ma una cosa del genere significherà morte certa!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:255
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:268
 msgid ""
 "Deoran, you are still young and have many things to learn. In dire times, "
 "sacrifices must always be made one way or another. If we flee with you, the "
@@ -3953,12 +3978,12 @@ msgstr ""
 "andrà perso!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:259
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:272
 msgid "Even so..."
 msgstr "Anche così..."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:263
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:276
 msgid ""
 "I will stand here with you, Sir Gerrick. You will need my help to slow down "
 "the undead, and I have a debt to repay to you for sparing my life."
@@ -3967,13 +3992,13 @@ msgstr ""
 "i non-morti, e ho un debito da ripagare per avermi salvato la vita."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:267
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:280
 msgid "Those are brave words that I would not have expected from you, Afalas."
 msgstr ""
 "Questo sono parole coraggiose che non mi sarei mai aspettato da te, Afalas."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:271
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:284
 msgid ""
 "All things end one way or another. Alas, I would have liked to see my home "
 "in Westin one more time, but I am too tired. Tired of running, and tired of "
@@ -3989,12 +4014,12 @@ msgstr ""
 "e la gratitudine."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:275
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:288
 msgid "You will not change our minds, Deoran. Go!"
 msgstr "Non ci farai cambiare idea, Deoran. Vai!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:279
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:292
 msgid ""
 "I... I understand. Minister Hylas, come ride with me to Westin. You must "
 "summon the city council while I prepare the defenses. Sir Gerrick, Afalas, "
@@ -4006,7 +4031,7 @@ msgstr ""
 "recupereremo."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:283
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:296
 msgid ""
 "You know what the outcome of our battle here will be. I trust you to protect "
 "our home from the undead and only ask you to remember those who fell "
@@ -4017,17 +4042,17 @@ msgstr ""
 "quelli che sono caduti difendendo la nostra terra. Addio, Ser Deoran!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:287
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:300
 msgid "The light shines upon your souls, brave warriors."
 msgstr "Che la luce risplenda sulle vostre anime, coraggiosi guerrieri."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:294
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:307
 msgid "We will never forget your sacrifice here. Thank you, my friend."
 msgstr "Non dimenticheremo mai il tuo sacrificio. Grazie, amico mio."
 
 #. [message]: speaker=Illan
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:328
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:341
 msgid ""
 "We are yours to command, Sir Gerrick. We will hold back the undead until the "
 "bitter end!"
@@ -4036,12 +4061,12 @@ msgstr ""
 "determinazione, fino alla fine!"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:334
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:347
 msgid "Hold the line: keep Sir Gerrick alive as long as possible"
 msgstr "Mantieni la linea: tieni in vita Ser Gerrick il più a lungo possibile"
 
 #. [note]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:343
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:356
 msgid ""
 "Starting with turn 6, each additional turn you survive strengthens the "
 "defenses of Westin."
@@ -4050,7 +4075,7 @@ msgstr ""
 "difese di Westin."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:349
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:362
 msgid ""
 "Hold off the undead hordes and keep Sir Gerrick alive as long as you can. "
 "Starting on turn 6, every turn that passes strengthens the defenses of "
@@ -4060,19 +4085,28 @@ msgstr ""
 "il più a lungo possibile. A partire del turno 6, ogni turno che passa "
 "rinforza le difese di Westin."
 
+#. [message]: speaker=Sir Gerrick
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:397
+msgid ""
+"Alas, for each casualty we suffer, the ranks of the undead grow. We must "
+"hold fast and survive as long as we can!"
+msgstr ""
+"Ahimè, per ogni caduto che piangeremo, le fila dei non-morti si "
+"ingrosseranno. Dobbiamo resistere e sopravvivere il più a lungo possibile!"
+
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:456
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:482
 msgid "So this is how it ends... I am coming to you, my brothers..."
 msgstr "Quindi finisce così... Sto venendo da voi, fratelli miei..."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:468
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:494
 msgid "I only hope... we have bought enough time... for Deoran..."
 msgstr ""
 "Posso solo sperare... che abbiamo concesso abbastanza tempo... a Deoran..."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:476
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:502
 msgid ""
 "Pesky little humans! You have only delayed the inevitable. We will sweep "
 "through your cities and raze them to the ground! March onward, my skeletons! "
@@ -4116,13 +4150,13 @@ msgstr "Vendetta"
 msgid "Westin Guard"
 msgstr "Guardia di Westin"
 
-#. [side]: type=Elvish Avenger, id=Eltenmir
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:96
+#. [side]: type=Elvish Outrider, id=Eltenmir
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:97
 msgid "Enraged Elves"
 msgstr "Elfi infuriati"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:153
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:154
 msgid ""
 "Finally, we have returned home! The undead and bandits are both defeated and "
 "it seems that the townsfolk have already begun to rebuild. Perhaps now there "
@@ -4136,7 +4170,7 @@ msgstr ""
 "voi."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:157
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:158
 msgid ""
 "Yes... you have done a great deed in destroying the undead, but it was "
 "others of your kind that brought about this evil to begin with. "
@@ -4151,28 +4185,28 @@ msgstr ""
 "cosa posso fare—"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:161
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:171
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:162
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:172
 msgid "Help!"
 msgstr "Aiuto!"
 
 #. [unit]: type=Peasant, id=Poor Farmer
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:183
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:184
 msgid "Poor Farmer"
 msgstr "Povero contadino"
 
 #. [message]: speaker=Eltenmir
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:194
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:195
 msgid "You will pay for Mebrin’s death!"
 msgstr "Pagherai per aver ucciso Mebrin!"
 
 #. [message]: speaker=Poor Farmer
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:198
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:199
 msgid "I am just a farmer! I never killed anyone!"
 msgstr "Sono solo un contadino! Non ho mai ucciso nessuno!"
 
 #. [message]: speaker=Eltenmir
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:202
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:203
 msgid ""
 "You lie! All humans are the same! Your people kidnapped and murdered our "
 "wisest sage! Now you will pay!"
@@ -4180,13 +4214,13 @@ msgstr ""
 "Bugiardo! Tutti gli umani sono uguali! Il tuo popolo ha rapito e ucciso il "
 "nostro più grande saggio! Ed ora tu la pagherai!"
 
-#. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:224
+#. [message]: role=observant
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:242
 msgid "He just killed that innocent farmer! We must stop him!"
 msgstr "Ha appena ucciso quel contadino innocente! Dobbiamo fermarlo!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:228
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:246
 msgid ""
 "Stop, Eltenmir! These humans are not the ones who harmed Mebrin. They have "
 "helped me obtain vengeance on the ones responsible for the horrible deed and "
@@ -4199,7 +4233,7 @@ msgstr ""
 "illecito. Non è più necessario versare altro sangue innocente."
 
 #. [message]: speaker=Eltenmir
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:232
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:250
 msgid ""
 "I can hardly believe my ears. You have always been too soft, Ethiliel, but "
 "to side with the humans? All humans are scum and vermin! Just as they have "
@@ -4213,7 +4247,7 @@ msgstr ""
 "gente e assassinato Mebrin!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:236
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:254
 msgid ""
 "Mebrin was my master, Eltenmir! It is <i>I</i> who grieves the most! I have "
 "spent countless, sleepless nights thinking about his death and missing him "
@@ -4228,7 +4262,7 @@ msgstr ""
 "riconosco che non sono questi gli umani da incolpare."
 
 #. [message]: speaker=Eltenmir
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:240
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:258
 msgid ""
 "It matters not. The humans have spilled the blood of our people, and so "
 "theirs will be spilled in turn. If you stand against us, Ethiliel, we will "
@@ -4239,12 +4273,12 @@ msgstr ""
 "attaccheremo anche te. Faresti meglio a stare fuori dalla questione."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:244
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:262
 msgid "And what do you think Ithelden will have to say about that?"
 msgstr "E cosa pensi che Ithelden dirà a riguardo?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:259
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:277
 msgid ""
 "Eltenmir, answer me! You know you do not have the authority to be attacking "
 "the humans like this, much less me! Eltenmir!"
@@ -4253,7 +4287,7 @@ msgstr ""
 "questi modo, meno di quanta non ne abbia io! Eltenmir!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:267
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:285
 msgid ""
 "Ever the stubborn one. Deoran, we will not be able to fight them for very "
 "long. I will send a messenger to Ithelden and hope he gets here in time "
@@ -4264,14 +4298,14 @@ msgstr ""
 "in tempo prima che la città venga invasa."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:271
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:289
 msgid ""
 "Are you sure that they’ll listen to Ithelden? Or that he’ll even try to stop "
 "them?"
 msgstr "Sei sicura che ascolteranno Ithelden? O che cercherà di fermarli?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:275
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:293
 msgid ""
 "Perhaps not, but we have no other hope right now. We must survive until "
 "Ithelden arrives!"
@@ -4280,22 +4314,22 @@ msgstr ""
 "di Ithelden!"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:330
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:348
 msgid "Survive until end of turns"
 msgstr "Sopravvivi fino alla fine dei turni"
 
 #. [message]
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:413
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:429
 msgid "For every one of us you strike down, more will rise!"
 msgstr "Per ognuno di noi che cade, altri combatteranno!"
 
 #. [message]: speaker=Ithelden
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:442
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:459
 msgid "Eltenmir! What in the world is going on here?"
 msgstr "Eltenmir! Cosa diavolo sta succedendo qui?"
 
 #. [message]: speaker=Eltenmir
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:460
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:478
 msgid ""
 "We are merely giving these human pigs what they deserve. If they wish to "
 "shed the blood of our people, we will do the same to them."
@@ -4305,7 +4339,7 @@ msgstr ""
 "loro."
 
 #. [message]: speaker=Ithelden
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:464
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:482
 msgid ""
 "I know you must be grieving over Mebrin’s death as well, but surely you see "
 "that nothing good can come of doing this. Especially not from attacking "
@@ -4316,14 +4350,14 @@ msgstr ""
 "Ethiliel!"
 
 #. [message]: speaker=Eltenmir
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:468
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:486
 msgid "Then suggest something, for we must have some form of retribution!"
 msgstr ""
 "Allora suggerisci qualcosa, perché dobbiamo avere una qualche forma di "
 "risarcimento!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:472
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:490
 msgid ""
 "The ones who <i>effectively</i> killed Mebrin are dead. I saw to that "
 "personally. We should have no more qualms with the remaining humans here."
@@ -4333,7 +4367,7 @@ msgstr ""
 "rimasti."
 
 #. [message]: speaker=Eltenmir
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:476
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:494
 msgid ""
 "As if we would be satisfied by something like that! Even if what you say is "
 "true, the death of a few bugs in the woods is hardly an equal trade for one "
@@ -4344,12 +4378,12 @@ msgstr ""
 "equo per uno noi nostri più grandi leader!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:480
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:498
 msgid "But the answer cannot be more death and destruction..."
 msgstr "Ma la risposta non può essere altra morte e distruzione..."
 
 #. [message]: speaker=Ithelden
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:484
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:502
 msgid ""
 "No, it might not be, but Eltenmir is right. We cannot sit idly by and forget "
 "this atrocity either. If you wish to prevent a slaughter here, we will have "
@@ -4364,12 +4398,12 @@ msgstr ""
 "Ethiliel. Non appartieni più agli umani."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:488
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:506
 msgid "I... I suppose you are right. I will come."
 msgstr "Io... io suppongo che tu abbia ragione. Verrò con voi."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:518
+#: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:533
 msgid ""
 "Be careful, Deoran. The more blood you spill, the more my people will be "
 "enraged. More will surely come to attack."
@@ -4545,12 +4579,12 @@ msgid "Defeat Mal M’Brin"
 msgstr "Sconfiggi Mal M’Brin"
 
 #. [note]
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:532
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:530
 msgid "More allies will arrive on turn $council_arrive_turn|."
 msgstr "Altri alleati arriveranno al turno $council_arrive_turn|."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:544
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:542
 msgid ""
 "So, the fleshbags have managed to mount a defense. It would seem that the "
 "pesky fly turned out to be more than a minor annoyance after all."
@@ -4560,12 +4594,12 @@ msgstr ""
 "minore, dopo tutto."
 
 #. [message]: speaker=Mal Tera
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:548
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:546
 msgid "What shall we do, master?"
 msgstr "Maestro, cosa dobbiamo fare?"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:552
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:550
 msgid ""
 "Slay them all! Even if we sustain heavy losses here, the city’s inhabitants "
 "will be more than enough to replenish our ranks."
@@ -4606,16 +4640,20 @@ msgstr ""
 "dalla terra nera, le tue ossa risorgeranno per servirmi!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:598
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:599
+#, fuzzy
+#| msgid ""
+#| "Every unit you lose will give the undead gold. Protect your troops and "
+#| "sustain as few losses as possible!"
 msgid ""
-"Every unit you lose will give the undead some gold. Protect your troops and "
+"Every unit you lose will give the undead gold. Protect your troops and "
 "sustain as few losses as possible!"
 msgstr ""
 "Per ogni unità che perdi, i non-morti guadagneranno delle monete d’oro. "
 "Proteggi le tue truppe e riduci le perdite al minimo!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:610
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:612
 msgid ""
 "The shroud of darkness descends once more. Night seeps through the cracks "
 "and crannies in the humans’ defenses, plaguing their minds and bodies with "
@@ -4629,7 +4667,7 @@ msgstr ""
 "tutto quello che resta è una insensata, insensibile schiavitù."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:614
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:616
 msgid ""
 "We do not fear your unholy power, lich. We will not succumb to your dark "
 "magics and we will not be turned into your undead slaves."
@@ -4638,12 +4676,12 @@ msgstr ""
 "oscura e non saremo trasformati in tuo schiavi non-morti."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:618
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:620
 msgid "Believe what you will, human. We shall see if you survive the night."
 msgstr "Credi a quello che vuoi, umano. Vedremo se sopravviverai alla notte."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:626
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:628
 msgid ""
 "Dawn breaks over the horizon! We have weathered the night and can now begin "
 "our counterattack against the undead!"
@@ -4652,7 +4690,7 @@ msgstr ""
 "possiamo iniziare il nostro contrattacco contro i non-morti!"
 
 #. [message]: speaker=Minister Romand
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:645
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:648
 msgid ""
 "We heard your call for help and came as quickly as we could. We are at your "
 "service, Sir Deoran!"
@@ -4661,7 +4699,7 @@ msgstr ""
 "possibile. Siamo al vostro servizio, Ser Deoran!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:649
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:652
 msgid ""
 "Your arrival could not be more timely. With you here, we shall send these "
 "undead back to the dark abyss that spawned them!"
@@ -4670,22 +4708,22 @@ msgstr ""
 "ricacceremo questi non-morti nell’abisso che li ha generati!"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:657
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:660
 msgid "Minister Romand"
 msgstr "Ministro Romand"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:658
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:661
 msgid "Minister Alanafel"
 msgstr "Ministro Alanafel"
 
 #. [message]: speaker=Mal Tera
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:687
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:690
 msgid "The shadows... they beckon..."
 msgstr "Le ombre... chiamano..."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:698
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:701
 msgid ""
 "So, you have defeated my lackey. A great accomplishment, for ones so pitiful."
 msgstr ""
@@ -4693,7 +4731,7 @@ msgstr ""
 "così pietosi."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:702
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:705
 msgid ""
 "What is truly pitiful is the plight you have put yourself in, once wise sage "
 "of the Elves. You have fallen to the black arts, twisted and corrupted by "
@@ -4709,7 +4747,7 @@ msgstr ""
 "Forse proverò conforto nel toglierti dalla tua misera condizione."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:706
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:709
 msgid ""
 "How little you understand. Such pompous words do not befit such an ignorant "
 "boy. Your foolish babble means nothing in the face of my insurmountable "
@@ -4720,7 +4758,7 @@ msgstr ""
 "mio insormontabile potere! Sorgete, miei guerrieri!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:731
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:734
 msgid ""
 "You dare strike me?! Puny humans, I am darkness incarnate! I am power beyond "
 "your comprehension!"
@@ -4729,7 +4767,7 @@ msgstr ""
 "oltre la vostra comprensione!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:736
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:739
 msgid ""
 "You are merely a servant of the power that corrupted you, lich! You have not "
 "mastered the darkness; it, instead, has enslaved you."
@@ -4738,7 +4776,7 @@ msgstr ""
 "aver dominato l’oscurità, è piuttosto lei che ti ha reso schiavo."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:741
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:744
 msgid ""
 "Fools! Imbeciles! You humans are a worthless blight upon this wretched "
 "world! I must purge you all— I must destroy all who live... I must..."
@@ -4748,7 +4786,7 @@ msgstr ""
 "viventi... devo..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:746
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:749
 msgid ""
 "These worthless humans just bested you and your armies. Your time has come, "
 "once wise sage of the elves."
@@ -4758,14 +4796,14 @@ msgstr ""
 "degli Elfi."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:752
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:755
 msgid "Beaten... by mere mortals... how has it come to this..? Nooo..."
 msgstr ""
 "Sconfitto... da dei banali mortali... come è stato possibile arrivare a "
 "questo...? Nooo..."
 
 #. [message]: speaker=Mal Tera
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:766
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:769
 msgid ""
 "The master is slain! With him gone... my soul... is unbound from... this "
 "body..."
@@ -4774,7 +4812,7 @@ msgstr ""
 "a... questo corpo..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:781
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:784
 msgid "At long last, it is done."
 msgstr "Finalmente, è finita."
 
@@ -4804,12 +4842,12 @@ msgstr ""
 "sguardo mortale da lontano non deve essere sottostimato."
 
 #. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:32
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:35
 msgid "smash"
 msgstr "colpo"
 
 #. [attack]: type=arcane
-#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:56
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:59
 msgid "gaze"
 msgstr "sguardo"
 
@@ -4847,8 +4885,8 @@ msgstr ""
 "loro uomini con mano ferma e calma determinazione."
 
 #. [attack]: type=blade
-#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:30
-#: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:29
+#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:32
+#: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:30
 msgid "glaive"
 msgstr "gladio"
 
@@ -4917,39 +4955,40 @@ msgstr ""
 "paura e tenacemente sotto il loro comando."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:21
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "Ho mancato al mio dovere e al mio regno..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:44
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:35
 msgid "Taste cold steel!"
 msgstr "Assaggia il freddo acciaio!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:59
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:50
 msgid ""
 "I have lost everything helping the humans... Now they will surely perish!"
 msgstr "Ho perso tutto, aiutando gli umani... Ora periranno di sicuro!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:73
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
 msgid "I have given all for my kingdom! Avenge me, Deoran!"
 msgstr "Ho dato tutto per il mio regno! Vendicami, Deoran!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:90
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:81
 msgid "May the Light guide you where I have failed..."
 msgstr "Possa il Cielo guidarti ove io ho fallito..."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:107
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:98
 msgid "Far from home I fall — but not in vain! Defend our people, Deoran!"
 msgstr ""
 "Cado lontano da casa – ma non in vano! Proteggi il nostro popolo, Deoran!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:112
+#. Alternative message used in the last scenario.
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:104
 msgid "Far from home I fall — but not in vain!"
 msgstr "Cado lontano da casa – ma non invano!"
 
@@ -5026,7 +5065,8 @@ msgstr ""
 "morte e diventerà a sua volta un morto vivente."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:7
+#. Intro to scenario 1
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:8
 msgid ""
 "The reign of Haldric VII was a time of great prosperity and peace in "
 "Wesnoth. Konrad I had driven off the orcs in the north. The eastern forts "
@@ -5039,7 +5079,8 @@ msgstr ""
 "prospero sud gli uomini costruivano nuove città e fattorie."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:12
+#. Intro to scenario 1
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:14
 msgid ""
 "For eight years, the South Guard had defended the farms and homes "
 "surrounding the city of Westin, the capital of Wesnoth’s frontier province "
@@ -5067,7 +5108,8 @@ msgstr ""
 "la chiamavano casa."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:16
+#. Intro to scenario 1
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:19
 msgid ""
 "Over time, in the absence of pressing danger, the South Guard grew "
 "complacent and lazy. Reports to King Haldric slowed, and in the spring of "
@@ -5080,14 +5122,24 @@ msgstr ""
 "Ser Loris, il re decise di mandare qualcuno ad investigare."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:20
+#. Intro to scenario 1
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:24
+#, fuzzy
+#| msgid ""
+#| "Haldric summoned a young, but promising cavalry officer named Deoran for "
+#| "the task. Though undistinguished, Deoran’s family had a decorated history "
+#| "in the army of Wesnoth: his great-grandfather, Haldiel, had fought "
+#| "alongside Konrad I in the war to reclaim the throne, and his father, "
+#| "Leonard, had served as an officer for thirty years. Thus, with full trust "
+#| "in the young officer, King Haldric knighted Deoran and tasked him with "
+#| "riding to Westin to demand accounting from Sir Loris."
 msgid ""
 "Haldric summoned a young, but promising cavalry officer named Deoran for the "
 "task. Though undistinguished, Deoran’s family had a decorated history in the "
-"army of Wesnoth: his grandfather, Haldiel, had fought alongside Konrad I in "
-"the war to reclaim the throne, and his father, Leonard, had served as an "
-"officer for thirty years. Thus, with full trust in the young officer, King "
-"Haldric knighted Deoran and tasked him with riding to Westin to demand "
+"army of Wesnoth: his great-grandfather, Haldiel, had fought alongside Konrad "
+"I in the war to reclaim the throne, and his father, Leonard, had served as "
+"an officer for thirty years. Thus, with full trust in the young officer, "
+"King Haldric knighted Deoran and tasked him with riding to Westin to demand "
 "accounting from Sir Loris."
 msgstr ""
 "Haldric convocò un giovane ma promettente ufficiale di cavalleria chiamato "
@@ -5100,7 +5152,8 @@ msgstr ""
 "del suo operato."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:30
+#. Intro to scenario 2
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:35
 msgid ""
 "Having defeated Urza Mathin, Deoran immediately sent out scouts into the "
 "whole countryside. His men reported bandits roaming freely through the land, "
@@ -5114,7 +5167,8 @@ msgstr ""
 "nessuna parte."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:35
+#. Intro to scenario 2
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:41
 msgid ""
 "Deoran decided to take action and wipe out the bandits. He and Sir Gerrick "
 "gathered their men and rode in haste to Westin. As they approached, they saw "
@@ -5130,7 +5184,8 @@ msgstr ""
 "passo verso la vecchia città."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:45
+#. Intro to scenario 5
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:52
 msgid ""
 "Ethiliel led the men of the South Guard into the southern forest. The deep "
 "woods were overcast with unnatural shadow as they entered, shrouded with "
@@ -5150,7 +5205,8 @@ msgstr ""
 "inquietante. Persino gli elfi sembravano piuttosto sconcertati."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:51
+#. Intro to scenario 5
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:59
 msgid ""
 "For many weeks they marched down nameless paths that no man had trod before. "
 "From time to time, Deoran fancied that he saw ghostly images of elven "
@@ -5168,7 +5224,8 @@ msgstr ""
 "più su di loro."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:56
+#. Intro to scenario 5
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:65
 msgid ""
 "Finally, Ethiliel told the men to halt and pitch camp — they had reached the "
 "Black River, beyond which no elf or man would willingly pass."
@@ -5178,7 +5235,8 @@ msgstr ""
 "disposto ad andare volontariamente."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:65
+#. Intro to scenario 6a
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:75
 msgid ""
 "At the undead fortress, Deoran watched on as Ethiliel dispelled the magical "
 "barriers guarding the catacombs. One by one, they came undone in flashes of "
@@ -5191,7 +5249,8 @@ msgstr ""
 "ossidiana si diffondevano nell’aria fredda e secca."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:71
+#. Intro to scenario 6a
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:82
 msgid ""
 "He wondered briefly why she had stopped mentioning Mebrin and his "
 "whereabouts, but something told him that now was not the time to mention the "
@@ -5206,7 +5265,8 @@ msgstr ""
 "Forse semplicemente non aveva preso in considerazione questa possibilità."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:76
+#. Intro to scenario 6a
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:88
 msgid ""
 "Eventually, all the wards were gone, and with only a hushed word of "
 "beckoning, Ethiliel led the men down into the crypt."
@@ -5215,7 +5275,8 @@ msgstr ""
 "richiamo, Ethiliel condusse gli uomini nella cripta."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:85
+#. Intro to scenario 7a
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:98
 msgid ""
 "After Mal M’Brin’s defeat, Deoran and his men left the desolate caverns and "
 "returned to the surface of the fortress where the sun had begun to break "
@@ -5238,7 +5299,8 @@ msgstr ""
 "piuttosto cupo."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:91
+#. Intro to scenario 7a
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:105
 msgid ""
 "The wheel of time turned another cycle and fall faded into winter. The last "
 "few colored leaves dropped to the ground, leaving nothing but the spiny "
@@ -5260,7 +5322,8 @@ msgstr ""
 "foresta e ritornarono nelle terre di Wesnoth."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:100
+#. Intro to scenario 7b
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:115
 msgid ""
 "Snow fell as Deoran, Sir Gerrick, and Urza Afalas emerged from the great "
 "southern forest. Yet even as they returned to the land of men, the ominous "
@@ -5282,7 +5345,8 @@ msgstr ""
 "del Sud."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:106
+#. Intro to scenario 7b
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:122
 msgid ""
 "They rode quickly northward. Day and night, they fled without reprieve until "
 "they finally crossed back into Kerlath Province. Deoran and his men entered "
@@ -5294,7 +5358,8 @@ msgstr ""
 "morti alle calcagna."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:115
+#. Epilogue A
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:132
 msgid ""
 "The men of the South Guard held the walls of Westin staunchly, trading "
 "evenly with the elves blow for blow. The night ran its course, and as dawn "
@@ -5316,7 +5381,8 @@ msgstr ""
 "qualsiasi segnale di pericolo."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:120
+#. Epilogue A
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:138
 msgid ""
 "The fog withdrew and sunlight broke through the clouds in scattered beams. "
 "Deoran rode to the forefront of the line of infantry, waiting with bated "
@@ -5338,14 +5404,8 @@ msgstr ""
 "deciso di fare di nuovo la pace.»</i>"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:124
-#, fuzzy
-#| msgid ""
-#| "<i>“These are our terms: no human will be permitted in the forests or "
-#| "hills of the Aetherwood, and likewise, we elves will not traverse the "
-#| "plains and farmlands belonging to you humans. No more will the elves send "
-#| "ambassadors or councilors to Westin, and no more will men wander the "
-#| "green woods.”</i>"
+#. Epilogue A
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:143
 msgid ""
 "<i>“These are our terms: no human will be permitted in the forests or hills "
 "of the Aethenwood, and likewise, we elves will not traverse the plains and "
@@ -5359,7 +5419,8 @@ msgstr ""
 "boschi verdeggianti.»</i>"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:128
+#. Epilogue A
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:148
 msgid ""
 "Ethiliel drew closer to Deoran and her voice dropped to a whisper. <i>“I "
 "have done what I can to ensure peace between elf and man. You may not like "
@@ -5372,15 +5433,8 @@ msgstr ""
 "impresa mi ha procurato abbastanza dolore. Ora me ne vado.»</i>"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:132
-#, fuzzy
-#| msgid ""
-#| "Thus, an uneasy peace was established between man and elf. For many "
-#| "weeks, the South Guard patrolled the borders of the elven woods and "
-#| "watched over the growing farms and villages. The threat from the elves "
-#| "was enough to keep the villagers from entering the now forbidding "
-#| "Aetherwood, and despite the palpable tension at the forest border, the "
-#| "truce was maintained without incident."
+#. Epilogue A
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:153
 msgid ""
 "Thus, an uneasy peace was established between man and elf. For many weeks, "
 "the South Guard patrolled the borders of the elven woods and watched over "
@@ -5391,14 +5445,15 @@ msgid ""
 msgstr ""
 "In questo modo tra uomini e elfi fu stabilita una fragile pace. Per molte "
 "settimane la Guardia del Sud pattugliò i confini della foresta degli elfi e "
-"sorvegliò le fattorie e i villaggi. La minaccia degli elfi era sufficiente "
-"per impedire agli abitanti dei villaggi di entrare nella foresta proibita di "
-"Aethem e a dispetto della palpabile tensione ai bordi della foresta la "
-"tregua tenne senza particolari incidenti."
+"sorvegliò le fattorie in crescita e i villaggi. La minaccia degli elfi era "
+"sufficiente per impedire agli abitanti dei villaggi di entrare nella foresta "
+"proibita di Aethem e, a dispetto della palpabile tensione ai bordi della "
+"foresta, la tregua tenne senza particolari incidenti."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:136
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:177
+#. Is part of both Epilogues
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:158
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:206
 msgid ""
 "Finally, as the snow melted and green buds marked the onset of spring, "
 "Deoran knew the time had come to report back to King Haldric. He bade the "
@@ -5414,7 +5469,8 @@ msgstr ""
 "Deoran e agli eroi della Guardia del Sud."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:146
+#. Epilogue B
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:169
 msgid ""
 "As the lich’s final death scream echoed across the battlefield, his skeletal "
 "form began to crumble. Decayed bones disintegrated into ash, borne away on "
@@ -5438,7 +5494,8 @@ msgstr ""
 "tutto era immoto."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:152
+#. Epilogue B
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:176
 msgid ""
 "Deoran dropped his lance to the ground. The men around him slowly lifted "
 "their helmets from their brows. The battle was over. The undead were gone."
@@ -5448,7 +5505,8 @@ msgstr ""
 "spariti."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:157
+#. Epilogue B
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:182
 msgid ""
 "For several days, the healers of Westin worked feverishly to save as many of "
 "the wounded as they were able. The villagers set out to rebuild their homes "
@@ -5461,7 +5519,8 @@ msgstr ""
 "nord della città, aggiungendo altre tombe a quelle già presenti."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:162
+#. Epilogue B
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:188
 msgid ""
 "After the battle, Deoran led an expedition to the southern border posts, "
 "where the forts had been smashed into crumbled ruins, and blood and broken "
@@ -5485,7 +5544,8 @@ msgstr ""
 "simbolo di sacrificio, lealtà e valore."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:167
+#. Epilogue B
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:194
 msgid ""
 "Urza Afalas earned his own mound as well, a small, inconspicuous thing near "
 "his old home, where his brothers and he used to live before they were exiled "
@@ -5507,7 +5567,8 @@ msgstr ""
 "in pace e dare una mano a ripulire la città."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:172
+#. Epilogue B
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:200
 #, fuzzy
 #| msgid ""
 #| "Deoran spent his days visiting the wounded and directing the men as they "
@@ -5518,12 +5579,22 @@ msgid ""
 "Deoran spent his days visiting the wounded and directing the men as they "
 "rebuilt the shattered walls and ramparts of the city. Slowly, a sense of "
 "normalcy began to return to Kerlath Province as Westin was restored and the "
-"South Guard began to patrol the villages once again. "
+"South Guard began to patrol the villages once again."
 msgstr ""
 "Deoran passò i giorni visitando i feriti e dirigendo la ricostruzione delle "
 "mura divelte e le fortificazioni della città. Lentamente, un senso di "
-"normalità ritornò nella provincia di Kerlath, a causa della ricostruzione di "
-"Westin e la Guardia del Sud riprese di nuovo a pattugliare i villaggi. "
+"normalità ritornò nella provincia di Kerlath, mentre Westin veniva "
+"ricostruita e la Guardia del Sud riprese di nuovo a pattugliare i villaggi."
+
+#~ msgid ""
+#~ "This campaign is designed as an introduction to Wesnoth. The ‘Civilian’ "
+#~ "difficulty level is aimed at first-time players."
+#~ msgstr ""
+#~ "Questa campagna è stata pensata come un’introduzione a Wesnoth. La "
+#~ "difficoltà “Civile” è adatta per giocatori alla prima esperienza."
+
+#~ msgid "Maybe whoever summoned these undead knows where he is?"
+#~ msgstr "Forse chi ha evocato questi non-morti sa dove si trova?"
 
 #~ msgid "Tidings, Good and Ill"
 #~ msgstr "Buone e cattive notizie"

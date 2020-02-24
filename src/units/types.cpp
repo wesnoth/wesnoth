@@ -351,6 +351,7 @@ void unit_type::build_help_index(
 		if(success) {
 			ut->second.debug_id_ = debug_id_ + " [" + var_id + "]";
 			ut->second.base_id_ = base_id_; // In case this is not id_.
+			ut->second.variation_id_ = var_id;
 			ut->second.build_help_index(mv_types, races, traits);
 		} else {
 			ERR_CF << "Skipping duplicate unit variation ID: " << var_id << "\n";

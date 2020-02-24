@@ -433,6 +433,21 @@ void unit_filter_compound::fill(vconfig cfg)
 				return gender == args.u.gender();
 			}
 		);
+		
+		create_attribute(literal["upkeep"],
+			[](const config::attribute_value& c) -> unit::upkeep_t
+			{
+				try {
+					return c.apply_visitor(unit::upkeep_parser_visitor());
+				} catch(std::invalid_argument&) {
+					return unit::upkeep_full();
+				}
+			},
+			[](unit::upkeep_t upkeep, const unit_filter_args& args)
+			{
+				return args.u.upkeep() == boost::apply_visitor(unit::upkeep_value_visitor(args.u), upkeep);
+			}
+		);
 
 		create_attribute(literal["side"],
 			[](const config::attribute_value& c)

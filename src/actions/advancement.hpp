@@ -23,7 +23,6 @@ class  team;
 class  unit;
 class  config;
 #include "units/types.hpp"
-#include "ai/lua/aspect_advancements.hpp"
 
 #include <string>
 #include <vector>
@@ -37,15 +36,13 @@ class  config;
 */
 struct advance_unit_params
 {
-	advance_unit_params(const map_location& loc) : loc_(loc), ai_advancements_(nullptr), force_dialog_(false), fire_events_(true), animate_(true) {}
-	advance_unit_params& ai_advancements(const ai::unit_advancements_aspect& value) {ai_advancements_ = &value; return *this;}
+	advance_unit_params(const map_location& loc) : loc_(loc), force_dialog_(false), fire_events_(true), animate_(true) {}
 	advance_unit_params& force_dialog(bool value) {force_dialog_ = value; return *this;}
 	advance_unit_params& fire_events(bool value) {fire_events_ = value; return *this;}
 	advance_unit_params& animate(bool value) {animate_ = value; return *this;}
 	friend void advance_unit_at(const advance_unit_params&);
 private:
 	map_location loc_;
-	const ai::unit_advancements_aspect* ai_advancements_;
 	bool force_dialog_;
 	bool fire_events_;
 	bool animate_;

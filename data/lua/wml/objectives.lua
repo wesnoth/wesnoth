@@ -55,7 +55,7 @@ local function generate_objectives(cfg)
 				if turn_limit >= current_turn then
 					local turn_count = turn_limit - current_turn + 1
 					turn_counter = _("(this turn left)", "($remaining_turns turns left)", turn_count)
-					turn_counter = wesnoth.format(turn_counter, {remaining_turns = turn_count})
+					turn_counter = turn_counter:vformat{remaining_turns = turn_count}
 					turn_counter = "<span foreground='white'><small> " .. turn_counter .. "</small></span>"
 				end
 			end
@@ -116,7 +116,7 @@ local function generate_objectives(cfg)
 				if obj.carryover_percentage == 0 then
 					carryover_amount_string = _"No gold carried over to the next scenario."
 				else
-					carryover_amount_string = wesnoth.format(_ "$percent|% of gold carried over to the next scenario.", {percent = obj.carryover_percentage})
+					carryover_amount_string = (_ "$percent|% of gold carried over to the next scenario."):vformat{percent = obj.carryover_percentage}
 				end
 
 				gold_carryover = gold_carryover
@@ -185,7 +185,7 @@ function wml_actions.objectives(cfg)
 		cfg = wml.parsed(cfg)
 	end
 
-	local sides_cfg = wesnoth.get_sides(cfg)
+	local sides_cfg = wesnoth.sides.find(cfg)
 	local silent = cfg.silent
 
 	local objectives = generate_objectives(cfg)
@@ -226,7 +226,7 @@ function wml_actions.show_objectives(cfg)
 			team.objectives_changed = true
 		end
 	end
-	local sides = wesnoth.get_sides(cfg)
+	local sides = wesnoth.sides.find(cfg)
 	if #sides == 0 then
 		local_show_objectives(wesnoth.sides)
 	else

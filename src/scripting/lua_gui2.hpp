@@ -42,5 +42,6 @@ int show_message_box(lua_State* L);
 int show_lua_console(lua_State*L, lua_kernel_base * lk);
 int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const game_state& state);
 int intf_remove_dialog_item(lua_State *L);
+int luaW_open(lua_State *L);
 
 } // end namespace lua_gui2

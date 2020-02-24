@@ -142,6 +142,9 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 {
 	BOOST_CHECK_EQUAL( get_binary_dir_location("images", "."), gamedata + "/images/." );
 
+	// This test depends on get_binary_file_location() deterministically choosing
+	// which order to search the [binary_path] entries, as there are four "images"
+	// directories that could match.
 	BOOST_CHECK_EQUAL( get_binary_file_location("images", "././././././"),
 	                   gamedata + "/images/././././././" );
 

@@ -92,7 +92,7 @@ function ca_fast_combat:evaluation(cfg, data)
                     if enemy_map:get(attack.target.x, attack.target.y)
                         and (not avoid_map:get(attack.dst.x, attack.dst.y))
                     then
-                        local target = wesnoth.get_unit(attack.target.x, attack.target.y)
+                        local target = wesnoth.units.get(attack.target.x, attack.target.y)
                         local target_info = FAU.get_unit_info(target, gamedata)
 
                         local att_stat, def_stat = FAU.battle_outcome(

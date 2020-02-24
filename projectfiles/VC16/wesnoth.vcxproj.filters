@@ -180,9 +180,6 @@
     <None Include="..\..\src\filesystem_win32.ii">
       <Filter>Others</Filter>
     </None>
-    <None Include="..\..\src\language_win32.ii">
-      <Filter>Others</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\addon\client.cpp">
@@ -535,9 +532,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\window.cpp">
       <Filter>Gui\Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\advanced_graphics_options.cpp">
-      <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\attack_predictions.cpp">
       <Filter>Gui\Dialogs</Filter>
@@ -1962,9 +1956,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\window_private.hpp">
       <Filter>Gui\Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\advanced_graphics_options.hpp">
-      <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\attack_predictions.hpp">
       <Filter>Gui\Dialogs</Filter>

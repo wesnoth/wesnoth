@@ -39,25 +39,33 @@ static lg::log_domain log_engine("engine");
 namespace
 {
 	const config as_nonempty_range_default("_");
-	config::const_child_itors as_nonempty_range(const std::string& varname)
+	config::const_child_itors as_nonempty_range(const std::string& varname, const variable_set& vars)
 	{
-		config::const_child_itors range = as_nonempty_range_default.child_range("_");
+		config::const_child_itors range = vars.get_variable_access_read(varname).as_array();
 
-		if(resources::gamedata) {
-			config::const_child_itors temp_range = resources::gamedata->get_variable_access_read(varname).as_array();
-
-			if(!temp_range.empty()) {
-				range = temp_range;
-			}
+		if(!range.empty()) {
+			return range;
 		}
 
-		return range;
+		return as_nonempty_range_default.child_range("_");
 	}
+	
+	struct : public variable_set
+	{
+		config::attribute_value get_variable_const(const std::string&) const override
+		{
+			return config::attribute_value();
+		}
+		variable_access_const get_variable_access_read(const std::string& varname) const override
+		{
+			return variable_access_const(varname, config());
+		}
+	} null_variable_set;
 }
 
 config::attribute_value config_variable_set::get_variable_const(const std::string &id) const {
 	try {
-		variable_access_const variable(id, cfg_);
+		variable_access_const variable = get_variable_access_read(id);
 		return variable.as_scalar();
 	} catch(const invalid_variablename_exception&) {
 		ERR_NG << "invalid variablename " << id << "\n";
@@ -65,16 +73,27 @@ config::attribute_value config_variable_set::get_variable_const(const std::strin
 	}
 }
 
+variable_access_const config_variable_set::get_variable_access_read(const std::string &id) const {
+	return variable_access_const(id, cfg_);
+}
+
 const config vconfig::default_empty_config = config();
 
+static const variable_set* try_get_gamedata()
+{
+	if(resources::gamedata) {
+		return resources::gamedata;
+	}
+	return &null_variable_set;
+}
 
 vconfig::vconfig() :
-	cache_(), cfg_(&default_empty_config)
+	cache_(), cfg_(&default_empty_config), variables_(try_get_gamedata())
 {
 }
 
 vconfig::vconfig(const config & cfg, const std::shared_ptr<const config> & cache) :
-	cache_(cache), cfg_(&cfg)
+	cache_(cache), cfg_(&cfg), variables_(try_get_gamedata())
 {
 }
 
@@ -88,11 +107,28 @@ vconfig::vconfig(const config & cfg, const std::shared_ptr<const config> & cache
  *                          If in doubt, set to true; it is less efficient, but safe.
  * See also make_safe().
  */
-vconfig::vconfig(const config &cfg, bool manage_memory) :
-	cache_(manage_memory ? new config(cfg) : nullptr),
-	cfg_(manage_memory ? cache_.get() : &cfg)
+vconfig::vconfig(const config &cfg, bool manage_memory, const variable_set* vars)
+	: cache_(manage_memory ? new config(cfg) : nullptr)
+	, cfg_(manage_memory ? cache_.get() : &cfg)
+	, variables_(vars ? vars : try_get_gamedata())
 {
 }
+
+vconfig::vconfig(const config &cfg)
+	: cache_(), cfg_(&cfg), variables_(try_get_gamedata())
+{}
+
+vconfig::vconfig(config &&cfg)
+	: cache_(new config(std::move(cfg))), cfg_(cache_.get()), variables_(try_get_gamedata())
+{}
+
+vconfig::vconfig(const config& cfg, const std::shared_ptr<const config> & cache, const variable_set& variables)
+	: cache_(cache), cfg_(&cfg), variables_(&variables)
+{}
+
+vconfig::vconfig(const config& cfg, const variable_set& variables)
+	: cache_(), cfg_(&cfg), variables_(&variables)
+{}
 
 /**
  * Default destructor, but defined here for possibly faster compiles
@@ -151,7 +187,7 @@ config vconfig::get_parsed_config() const
 	for (const config::any_child &child : cfg_->all_children_range())
 	{
 		if (child.key == "insert_tag") {
-			vconfig insert_cfg(child.cfg);
+			vconfig insert_cfg(child.cfg, *variables_);
 			std::string name = insert_cfg["name"];
 			std::string vname = insert_cfg["variable"];
 			if(!vconfig_recursion.insert(vname).second) {
@@ -159,10 +195,10 @@ config vconfig::get_parsed_config() const
 			}
 			try
 			{
-				config::const_child_itors range = as_nonempty_range(vname);
+				config::const_child_itors range = as_nonempty_range(vname, *variables_);
 				for (const config& ch : range)
 				{
-					res.add_child(name, vconfig(ch).get_parsed_config());
+					res.add_child(name, vconfig(ch, *variables_).get_parsed_config());
 				}
 			}
 			catch(const invalid_variablename_exception&)
@@ -181,7 +217,7 @@ config vconfig::get_parsed_config() const
 			}
 			vconfig_recursion.erase(vname);
 		} else {
-			res.add_child(child.key, vconfig(child.cfg).get_parsed_config());
+			res.add_child(child.key, vconfig(child.cfg, *variables_).get_parsed_config());
 		}
 	}
 	return res;
@@ -194,17 +230,17 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 	for (const config::any_child &child : cfg_->all_children_range())
 	{
 		if (child.key == key) {
-			res.push_back(vconfig(child.cfg, cache_));
+			res.push_back(vconfig(child.cfg, cache_, *variables_));
 		} else if (child.key == "insert_tag") {
-			vconfig insert_cfg(child.cfg);
+			vconfig insert_cfg(child.cfg, *variables_);
 			if(insert_cfg["name"] == key)
 			{
 				try
 				{
-					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
+					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"], *variables_);
 					for (const config& ch : range)
 					{
-						res.push_back(vconfig(ch, true));
+						res.push_back(vconfig(ch, true, variables_));
 					}
 				}
 				catch(const invalid_variablename_exception&)
@@ -226,12 +262,12 @@ std::size_t vconfig::count_children(const std::string& key) const
 		if (child.key == key) {
 			n++;
 		} else if (child.key == "insert_tag") {
-			vconfig insert_cfg(child.cfg);
+			vconfig insert_cfg(child.cfg, *variables_);
 			if(insert_cfg["name"] == key)
 			{
 				try
 				{
-					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
+					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"], *variables_);
 					n += range.size();
 				}
 				catch(const invalid_variablename_exception&)
@@ -252,17 +288,17 @@ std::size_t vconfig::count_children(const std::string& key) const
 vconfig vconfig::child(const std::string& key) const
 {
 	if (const config &natural = cfg_->child(key)) {
-		return vconfig(natural, cache_);
+		return vconfig(natural, cache_, *variables_);
 	}
 	for (const config &ins : cfg_->child_range("insert_tag"))
 	{
-		vconfig insert_cfg(ins);
+		vconfig insert_cfg(ins, *variables_);
 		if(insert_cfg["name"] == key)
 		{
 			try
 			{
-				config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
-				return vconfig(range.front(), true);
+				config::const_child_itors range = as_nonempty_range(insert_cfg["variable"], *variables_);
+				return vconfig(range.front(), true, variables_);
 			}
 			catch(const invalid_variablename_exception&)
 			{
@@ -283,7 +319,7 @@ bool vconfig::has_child(const std::string& key) const
 	}
 	for (const config &ins : cfg_->child_range("insert_tag"))
 	{
-		vconfig insert_cfg(ins);
+		vconfig insert_cfg(ins, *variables_);
 		if(insert_cfg["name"] == key) {
 			return true;
 		}
@@ -295,16 +331,17 @@ namespace {
 	struct vconfig_expand_visitor : boost::static_visitor<void>
 	{
 		config::attribute_value &result;
+		const variable_set& vars;
 
-		vconfig_expand_visitor(config::attribute_value &r): result(r) {}
+		vconfig_expand_visitor(config::attribute_value &r, const variable_set& vars): result(r), vars(vars) {}
 		template<typename T> void operator()(const T&) const {}
 		void operator()(const std::string &s) const
 		{
-			result = utils::interpolate_variables_into_string(s, *(resources::gamedata));
+			result = utils::interpolate_variables_into_string(s, vars);
 		}
 		void operator()(const t_string &s) const
 		{
-			result = utils::interpolate_variables_into_tstring(s, *(resources::gamedata));
+			result = utils::interpolate_variables_into_tstring(s, vars);
 		}
 	};
 }//unnamed namespace
@@ -312,37 +349,32 @@ namespace {
 config::attribute_value vconfig::expand(const std::string &key) const
 {
 	config::attribute_value val = (*cfg_)[key];
-	if (resources::gamedata)
-		val.apply_visitor(vconfig_expand_visitor(val));
+	val.apply_visitor(vconfig_expand_visitor(val, *variables_));
 	return val;
 }
 
 vconfig::attribute_iterator::reference vconfig::attribute_iterator::operator*() const
 {
 	config::attribute val = *i_;
-	if(resources::gamedata) {
-		val.second.apply_visitor(vconfig_expand_visitor(val.second));
-	}
+	val.second.apply_visitor(vconfig_expand_visitor(val.second, *variables_));
 	return val;
 }
 
 vconfig::attribute_iterator::pointer vconfig::attribute_iterator::operator->() const
 {
 	config::attribute val = *i_;
-	if(resources::gamedata) {
-		val.second.apply_visitor(vconfig_expand_visitor(val.second));
-	}
+	val.second.apply_visitor(vconfig_expand_visitor(val.second, *variables_));
 	pointer_proxy p {val};
 	return p;
 }
 
-vconfig::all_children_iterator::all_children_iterator(const Itor &i) :
-	i_(i), inner_index_(0), cache_()
+vconfig::all_children_iterator::all_children_iterator(const Itor &i, const variable_set& vars) :
+	i_(i), inner_index_(0), cache_(), variables_(&vars)
 {
 }
 
-vconfig::all_children_iterator::all_children_iterator(const Itor &i, const std::shared_ptr<const config> & cache) :
-	i_(i), inner_index_(0), cache_(cache)
+vconfig::all_children_iterator::all_children_iterator(const Itor &i, const variable_set& vars, const std::shared_ptr<const config> & cache) :
+	i_(i), inner_index_(0), cache_(cache), variables_(&vars)
 {
 }
 
@@ -352,7 +384,7 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 	{
 		try
 		{
-			variable_access_const vinfo = resources::gamedata->get_variable_access_read(vconfig(i_->cfg)["variable"]);
+			variable_access_const vinfo = variables_->get_variable_access_read(vconfig(i_->cfg, *variables_)["variable"]);
 
 			config::const_child_itors range = vinfo.as_array();
 
@@ -413,7 +445,7 @@ std::string vconfig::all_children_iterator::get_key() const
 {
 	const std::string &key = i_->key;
 	if (inner_index_ >= 0 && key == "insert_tag") {
-		return vconfig(i_->cfg)["name"];
+		return vconfig(i_->cfg, *variables_)["name"];
 	}
 	return key;
 }
@@ -424,17 +456,17 @@ vconfig vconfig::all_children_iterator::get_child() const
 	{
 		try
 		{
-			config::const_child_itors range = as_nonempty_range(vconfig(i_->cfg)["variable"]);
+			config::const_child_itors range = as_nonempty_range(vconfig(i_->cfg, *variables_)["variable"], *variables_);
 
 			range.advance_begin(inner_index_);
-			return vconfig(range.front(), true);
+			return vconfig(range.front(), true, variables_);
 		}
 		catch(const invalid_variablename_exception&)
 		{
 			return empty_vconfig();
 		}
 	}
-	return vconfig(i_->cfg, cache_);
+	return vconfig(i_->cfg, cache_, *variables_);
 }
 
 bool vconfig::all_children_iterator::operator==(const all_children_iterator &i) const
@@ -444,12 +476,12 @@ bool vconfig::all_children_iterator::operator==(const all_children_iterator &i) 
 
 vconfig::all_children_iterator vconfig::ordered_begin() const
 {
-	return all_children_iterator(cfg_->ordered_begin(), cache_);
+	return all_children_iterator(cfg_->ordered_begin(), *variables_, cache_);
 }
 
 vconfig::all_children_iterator vconfig::ordered_end() const
 {
-	return all_children_iterator(cfg_->ordered_end(), cache_);
+	return all_children_iterator(cfg_->ordered_end(), *variables_, cache_);
 }
 
 scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :

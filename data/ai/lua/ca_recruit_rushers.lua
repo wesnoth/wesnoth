@@ -17,15 +17,16 @@ local dummy_engine = { data = {} }
 local params = { score_function = (function() return 196000 end) }
 if ca_castle_switch then
     params.min_turn_1_recruit = (function() return ca_castle_switch:evaluation({}, dummy_engine.data) > 0 end)
-    params.leader_takes_village = (function()
-            if ca_castle_switch:evaluation({}, dummy_engine.data) > 0 then
+    params.leader_takes_village = (function(leader)
+            local castle_switch_score = ca_castle_switch:evaluation({}, dummy_engine.data, nil, leader)
+            if castle_switch_score > 0 then
                 local take_village = #(wesnoth.get_villages {
-                    x = dummy_engine.data.leader_target[1],
-                    y = dummy_engine.data.leader_target[2]
+                    x = dummy_engine.data.CS_leader_target[1],
+                    y = dummy_engine.data.CS_leader_target[2]
                 }) > 0
-                return take_village
+                return castle_switch_score, take_village
             end
-            return not ai.aspects.passive_leader
+            return 0
         end
     )
 end
@@ -34,9 +35,10 @@ wesnoth.require("ai/lua/generic_recruit_engine.lua").init(dummy_engine, params)
 
 local ca_recruit_rushers = {}
 
-function ca_recruit_rushers:evaluation(cfg, data)
+function ca_recruit_rushers:evaluation(cfg, data, filter_own)
     params.high_level_fraction = cfg.high_level_fraction
     params.randomness = cfg.randomness
+    params.filter_own = filter_own
     return dummy_engine:recruit_rushers_eval()
 end
 

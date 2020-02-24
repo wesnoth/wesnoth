@@ -132,7 +132,7 @@ if(NOT SDL2_BUILDING_LIBRARY)
     # seem to provide SDLmain for compatibility even though they don't
     # necessarily need it.
     find_library(SDL2MAIN_LIBRARY
-      NAMES SDLmain SDLmain-1.1
+      NAMES SDL2main SDLmain SDLmain-1.1
       HINTS
         ENV SDL2DIR
       PATH_SUFFIXES lib ${VC_LIB_PATH_SUFFIX}

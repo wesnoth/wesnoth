@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local T = wml.tag
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
@@ -91,7 +90,7 @@ function micro_ai_helper.add_CAs(side, ca_id_core, CA_parms, CA_cfg)
         CA.location = parms.location
         table.insert(CA, T.args(CA_cfg))
 
-        wesnoth.add_ai_component(side, "stage[main_loop].candidate_action", CA)
+        wesnoth.sides.add_ai_component(side, "stage[main_loop].candidate_action", CA)
     end
 end
 
@@ -108,10 +107,10 @@ function micro_ai_helper.delete_CAs(side, ca_id_core, CA_parms)
     for _,parms in ipairs(CA_parms) do
         local ca_id = ca_id_core .. '_' .. parms.ca_id
 
-        wesnoth.delete_ai_component(side, "stage[main_loop].candidate_action[" .. ca_id .. "]")
+        wesnoth.sides.delete_ai_component(side, "stage[main_loop].candidate_action[" .. ca_id .. "]")
 
         -- Also need to delete variable stored in all units of the side, so that later MAIs can use these units
-        local units = wesnoth.get_units { side = side }
+        local units = wesnoth.units.find_on_map { side = side }
         for _,unit in ipairs(units) do
             MAIUV.delete_mai_unit_variables(unit, CA_parms.ai_id)
         end
@@ -140,7 +139,7 @@ function micro_ai_helper.add_aspects(side, aspect_parms)
     --  }
 
     for _,parms in ipairs(aspect_parms) do
-        wesnoth.add_ai_component(side, "aspect[" .. parms.aspect .. "].facet", parms.facet)
+        wesnoth.sides.add_ai_component(side, "aspect[" .. parms.aspect .. "].facet", parms.facet)
     end
 end
 
@@ -151,7 +150,7 @@ function micro_ai_helper.delete_aspects(side, aspect_parms)
     -- aspect_parms.aspect_id field is needed
 
     for _,parms in ipairs(aspect_parms) do
-        wesnoth.delete_ai_component(side, "aspect[attacks].facet[" .. parms.facet.id .. "]")
+        wesnoth.sides.delete_ai_component(side, "aspect[attacks].facet[" .. parms.facet.id .. "]")
     end
 end
 
@@ -169,14 +168,14 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
         if v:match('%[[a-zA-Z0-9_]+%]')  then
             v = v:sub(2,-2)
             if not wml.get_child(cfg, v) then
-                H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. v .. "]")
+                wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. v .. "]")
             end
             for child in wml.child_range(cfg, v) do
                 table.insert(CA_cfg, T[v](child))
             end
         else
             if not cfg[v] then
-                H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. v .."=")
+                wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. v .."=")
             end
             CA_cfg[v] = cfg[v]
         end

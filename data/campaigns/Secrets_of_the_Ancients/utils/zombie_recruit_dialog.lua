@@ -6,8 +6,8 @@ local listedZombies = {}
 local recruitedType
 local recruitCost
 
-local zombies = V.zombies
-local sides = wesnoth.get_sides()
+local zombies = wml.array_access.get("zombies")
+local sides = wesnoth.sides.find()
 
 local unit_row = T.row {
     T.column { grow_factor=0, border="right", border_size=5, horizontal_alignment = "left", T.image { id = "unit_sprite" } },
@@ -94,7 +94,7 @@ local function preshow()
     wesnoth.set_dialog_callback( general_help, "help_button" )
     wesnoth.set_dialog_callback( unit_help, "unit_help_button" )
 
-    local zArrayIndex = 0  -- Index of the original, zero-indexed array from WML.
+    local zArrayIndex = 1  -- Start index of the WML array in lua.
     local zListIndex = 1  -- Index of the list of recrutable zombies in this dialog box.
     while zombies[zArrayIndex] do
         local z=zombies[zArrayIndex]
@@ -127,7 +127,7 @@ end
 
 -- Find out if there is at least one zombie in the list box.
 -- This will only be necessary if the WML changes, but it could, so we'll check.
-local zArrayIndex = 0  -- Index of the original, zero-indexed array from WML.
+local zArrayIndex = 1  -- Start index of the WML array in lua.
 local zExists = false
 while zombies[zArrayIndex] and zExists == false do
     local z=zombies[zArrayIndex]
@@ -137,16 +137,16 @@ while zombies[zArrayIndex] and zExists == false do
     zArrayIndex = zArrayIndex + 1
 end
 
-wesnoth.set_variable( "recruitedZombieType", "cancel" ) -- default value
+wml.variables["recruitedZombieType"] = "cancel" -- default value
 
 if zExists==false then
-    wesnoth.show_message_box("", _ "There are no corpses available.", "")
+    gui.show_prompt("", _ "There are no corpses available.", "")
 else
     local returned = wesnoth.show_dialog(zombie_recruit_dialog, preshow, postshow)
     if  returned ~= -2 and sides[1].gold  < recruitCost then
-        wesnoth.show_message_box("", _ "You do not have enough gold to recruit that unit", "")
+        gui.show_prompt("", _ "You do not have enough gold to recruit that unit", "")
     elseif returned ~= -2 and (sides[1].gold ) >= recruitCost then
-        wesnoth.set_variable( "recruitedZombieType", recruitedType )
-        wesnoth.set_variable( "recruitedZombieCost", recruitCost )
+        wml.variables["recruitedZombieType"] = recruitedType
+        wml.variables["recruitedZombieCost"] = recruitCost
     end
 end

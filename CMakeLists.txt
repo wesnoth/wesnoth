@@ -83,9 +83,18 @@ find_package(Gettext)
 find_package(X11)
 
 # needed to get some SDL2 defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
-set(SDL2_CONFIG "sdl2-config" CACHE STRING "Path to sdl2-config script")
-exec_program(${SDL2_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL2_CFLAGS)
-add_definitions(${SDL2_CFLAGS})
+if(NOT MINGW)
+	set(SDL2_CONFIG "sdl2-config" CACHE STRING "Path to sdl2-config script")
+	exec_program(${SDL2_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL2_CFLAGS)
+	add_definitions(${SDL2_CFLAGS})
+else()
+	# equivalent to sdl2-config --cflags --libs
+	# since cmake cannot execute sdl2-config in msys2 shell
+	set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -I/mingw64/include/SDL2 -Dmain=SDL_main -L/mingw64/lib -lmingw32 -lSDL2main -lSDL2 -mwindows)
+
+	# MinGW system libraries that should be linked to wesnoth
+	set(MINGW_SYSTEM_LIBS wsock32 ws2_32 shlwapi winmm)
+endif()
 
 if(NOT WIN32)
 	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.

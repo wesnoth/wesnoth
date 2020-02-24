@@ -175,10 +175,23 @@ class CrossRefLister(CrossRef):
         if mismatched:
             print("# Mismatched references:")
             for (n, m) in mismatched:
-                print("%s: macro %s(%s) has mismatches:" % (m, n, ", ".join(["{}={}".format(x, formaltype(x)) for x in m.args])))
+                print("%s: macro %s(%s%s%s) has mismatches:" % (m,
+                                                                n,
+                                                                ", ".join(["{}={}".format(x, formaltype(x)) for x in m.args]),
+                                                                " " if m.optional_args else "",
+                                                                ", ".join(["{}=optional {}".format(x, formaltype(x)) for x in m.optional_args])))
                 for (file, refs) in m.references.items():
-                    for (ln, args) in refs:
-                        print('"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(m.args, args)])))
+                    for (ln, args, optional_args) in refs:
+                        print('"%s", line %d: %s(%s%s%s) with signature (%s%s%s)' %
+                              (file,
+                               ln,
+                               n,
+                               ", ".join(args),
+                               ", " if optional_args else "",
+                               ", ".join(optional_args.values()),
+                               ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(m.args, args)]),
+                               ", " if optional_args else "",
+                               ", ".join(["{}=optional {}".format(f, actualtype(oa)) for f,oa in optional_args.items()])))
 
     def incorrectlysized(self):
         "Report incorrectly sized images that cannot be safely used for their intended purpose"
@@ -258,15 +271,33 @@ class CrossRefLister(CrossRef):
                     if filename.endswith(branch):
                         if name not in already_seen:
                             already_seen.append(name)
-                            print("%s: macro %s(%s):" % (defn, name, ", ".join(["{}={}".format(x, formaltype(x)) for x in defn.args])))
-                        for (ln, args) in refs:
-                            print('"%s", line %d: %s(%s) with signature (%s)' % (filename, ln, name, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(defn.args, args)])))
+                            print("%s: macro %s(%s%s%s):" %
+                                  (defn,
+                                   name,
+                                   ", ".join(["{}={}".format(x, formaltype(x)) for x in defn.args]),
+                                   ", " if defn.optional_args else "",
+                                   ", ".join(["{}=optional {}".format(x, formaltype(x)) for x in defn.optional_args])))
+                        for (ln, args, optional_args) in refs:
+                            print('"%s", line %d: %s(%s%s%s) with signature (%s%s%s)' %
+                                  (filename,
+                                   ln,
+                                   name,
+                                   ", ".join(args),
+                                   ", " if optional_args else "",
+                                   ", ".join(optional_args.values()),
+                                   ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(defn.args, args)]),
+                                   ", " if optional_args else "",
+                                   ", ".join(["{}={}".format(f, actualtype(oa)) for f,oa in optional_args.items()])))
+
     def deflist(self, pred=None):
         "List all resource definitions."
         for name in sorted(self.xref.keys()):
             for defn in self.xref[name]:
                 if not pred or pred(name, defn):
-                    print("macro", name, " ".join(["{}={}".format(x, formaltype(x)) for x in defn.args]))
+                    print("macro",
+                          name,
+                          " ".join(["{}={}".format(x, formaltype(x)) for x in defn.args]),
+                          " ".join(["{}=optional {}".format(x, formaltype(x)) for x in defn.optional_args]))
         for name in sorted(self.fileref.keys()):
             defloc = self.fileref[name]
             if not pred or pred(name, defloc):
@@ -291,7 +322,7 @@ class CrossRefLister(CrossRef):
                     unchecked.append((name, defn))
                     unresolvedcount += len(defn.references)
         if unchecked:
-            print("# %d of %d (%.02f%%) macro definitions and %d of %d calls (%.02f%%) have untyped formals:" \
+            print("# %d of %d (%.02f%%) macro definitions and %d of %d calls (%.02f%%) have untyped required formals:" \
                   % (len(unchecked),
                      defcount,
                      ((100 * len(unchecked)) / defcount),
@@ -301,7 +332,7 @@ class CrossRefLister(CrossRef):
             # sort by checking the 2nd element in the tuple
             unchecked.sort(key=lambda element: element[1])
             for (name, defn) in unchecked:
-                print("%s: %s(%s)" % (defn, name, ", ".join(defn.args)))
+                print("%s: %s(%s)" % (defn, name, ", ".join(defn.args),))
 
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."

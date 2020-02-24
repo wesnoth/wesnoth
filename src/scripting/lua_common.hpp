@@ -345,6 +345,15 @@ do { \
 	} \
 } while(false)
 
+#define modify_cfg_attrib(name, accessor) \
+do { \
+	if (strcmp(m, (name)) == 0) { \
+		const config& cfg = luaW_checkconfig(L, 3); \
+		{accessor;} \
+		return 0; \
+	} \
+} while(false)
+
 #define modify_vector_string_attrib(name, accessor) \
 do { \
 	if (strcmp(m, (name)) == 0) { \

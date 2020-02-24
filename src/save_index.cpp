@@ -43,7 +43,7 @@ void extract_summary_from_config(config&, config&);
 
 void save_index_class::rebuild(const std::string& name)
 {
-	std::time_t modified = filesystem::file_modified_time(filesystem::get_saves_dir() + "/" + name);
+	std::time_t modified = filesystem::file_modified_time(dir_ + "/" + name);
 	rebuild(name, modified);
 }
 
@@ -56,7 +56,7 @@ void save_index_class::rebuild(const std::string& name, const std::time_t& modif
 	try {
 		config full;
 		std::string dummy;
-		read_save_file(name, full, &dummy);
+		read_save_file(dir_, name, full, &dummy);
 
 		extract_summary_from_config(full, summary);
 	} catch(const game::load_game_failed&) {
@@ -92,9 +92,19 @@ config& save_index_class::get(const std::string& name)
 	return result;
 }
 
+const std::string& save_index_class::dir() const
+{
+	return dir_;
+}
+
 void save_index_class::write_save_index()
 {
 	log_scope("write_save_index()");
+
+	if(read_only_) {
+		LOG_SAVE << "no-op: read_only instance";
+		return;
+	}
 
 	try {
 		filesystem::scoped_ostream stream = filesystem::ostream_file(filesystem::get_save_index_file());
@@ -110,11 +120,19 @@ void save_index_class::write_save_index()
 	}
 }
 
-save_index_class::save_index_class()
+save_index_class::save_index_class(const std::string& dir)
 	: loaded_(false)
 	, data_()
 	, modified_()
+	, dir_(dir)
+	, read_only_(true)
 {
+}
+
+save_index_class::save_index_class(create_for_default_saves_dir)
+	: save_index_class(filesystem::get_saves_dir())
+{
+	read_only_ = false;
 }
 
 config& save_index_class::data(const std::string& name)
@@ -167,7 +185,11 @@ void save_index_class::fix_leader_image_path(config& data)
 	}
 }
 
-save_index_class save_index_manager;
+std::shared_ptr<save_index_class> save_index_class::default_saves_dir()
+{
+	static auto instance = std::make_shared<save_index_class>(create_for_default_saves_dir::yes);
+	return instance;
+}
 
 class filename_filter
 {
@@ -187,12 +209,12 @@ private:
 };
 
 /** Get a list of available saves. */
-std::vector<save_info> get_saves_list(const std::string* dir, const std::string* filter)
+std::vector<save_info> save_index_class::get_saves_list(const std::string* filter)
 {
-	create_save_info creator(dir);
+	create_save_info creator(shared_from_this());
 
 	std::vector<std::string> filenames;
-	filesystem::get_files_in_dir(creator.dir, &filenames);
+	filesystem::get_files_in_dir(dir(), &filenames);
 
 	if(filter) {
 		filenames.erase(
@@ -208,7 +230,7 @@ std::vector<save_info> get_saves_list(const std::string* dir, const std::string*
 
 const config& save_info::summary() const
 {
-	return save_index_manager.get(name());
+	return save_index_->get(name());
 }
 
 std::string save_info::format_time_local() const
@@ -255,12 +277,12 @@ bool save_info_less_time::operator()(const save_info& a, const save_info& b) con
 	}
 }
 
-static filesystem::scoped_istream find_save_file(
+static filesystem::scoped_istream find_save_file(const std::string& dir, 
 		const std::string& name, const std::vector<std::string>& suffixes)
 {
 	for(const std::string& suf : suffixes) {
 		filesystem::scoped_istream file_stream =
-			filesystem::istream_file(filesystem::get_saves_dir() + "/" + name + suf);
+			filesystem::istream_file(dir + "/" + name + suf);
 
 		if(!file_stream->fail()) {
 			return file_stream;
@@ -271,10 +293,10 @@ static filesystem::scoped_istream find_save_file(
 	throw game::load_game_failed();
 }
 
-void read_save_file(const std::string& name, config& cfg, std::string* error_log)
+void read_save_file(const std::string& dir, const std::string& name, config& cfg, std::string* error_log)
 {
 	static const std::vector<std::string> suffixes{"", ".gz", ".bz2"};
-	filesystem::scoped_istream file_stream = find_save_file(name, suffixes);
+	filesystem::scoped_istream file_stream = find_save_file(dir, name, suffixes);
 
 	cfg.clear();
 	try {
@@ -312,8 +334,14 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	}
 }
 
-void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
+void save_index_class::delete_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
 {
+	log_scope("delete_old_auto_saves()");
+	if(read_only_) {
+		LOG_SAVE << "no-op: read_only instance";
+		return;
+	}
+
 	const std::string auto_save = _("Auto-Save");
 
 	int countdown = autosavemax;
@@ -321,7 +349,7 @@ void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
 		return;
 	}
 
-	std::vector<save_info> games = get_saves_list(nullptr, &auto_save);
+	std::vector<save_info> games = get_saves_list(&auto_save);
 	for(std::vector<save_info>::iterator i = games.begin(); i != games.end(); ++i) {
 		if(countdown-- <= 0) {
 			LOG_SAVE << "Deleting savegame '" << i->name() << "'\n";
@@ -330,23 +358,28 @@ void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
 	}
 }
 
-void delete_game(const std::string& name)
+void save_index_class::delete_game(const std::string& name)
 {
-	filesystem::delete_file(filesystem::get_saves_dir() + "/" + name);
+	if(read_only_) {
+		log_scope("delete_game()");
+		LOG_SAVE << "no-op: read_only instance";
+		return;
+	}
 
-	save_index_manager.remove(name);
+	filesystem::delete_file(dir() + "/" + name);
+	remove(name);
 }
 
-create_save_info::create_save_info(const std::string* d)
-	: dir(d ? *d : filesystem::get_saves_dir())
+create_save_info::create_save_info(const std::shared_ptr<save_index_class>& manager)
+	: manager_(manager)
 {
 }
 
 save_info create_save_info::operator()(const std::string& filename) const
 {
-	std::time_t modified = filesystem::file_modified_time(dir + "/" + filename);
-	save_index_manager.set_modified(filename, modified);
-	return save_info(filename, modified);
+	std::time_t modified = filesystem::file_modified_time(manager_->dir() + "/" + filename);
+	manager_->set_modified(filename, modified);
+	return save_info(filename, manager_, modified);
 }
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)

@@ -472,7 +472,9 @@ public:
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
+private:
 	void clear_children_impl(config_key_type key);
+public:
 	template<typename... T>
 	void clear_children(T... keys) {
 		for(auto key : {keys...}) {
@@ -813,10 +815,3 @@ inline config::config(config_key_type first, T&&... args)
 	detail::config_construct_unpacker<config_key_type, T...> unpack;
 	unpack.visit(*this, first, std::forward<T>(args)...);
 }
-
-class variable_set
-{
-public:
-	virtual ~variable_set() {}
-	virtual config::attribute_value get_variable_const(const std::string &id) const = 0;
-};

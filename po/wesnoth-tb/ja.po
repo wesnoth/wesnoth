@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
 "PO-Revision-Date: 2018-08-18 04:59+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -63,7 +63,9 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-msgid "(Rookie level, 4 scenarios.)"
+#, fuzzy
+#| msgid "(Rookie level, 4 scenarios.)"
+msgid "(Novice level, 4 scenarios.)"
 msgstr "（入門レベル、4 シナリオ）"
 
 #. [about]
@@ -221,10 +223,10 @@ msgstr ""
 msgid "Humans"
 msgstr "人間"
 
-#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Orcish Warlord, id=Tairach
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
+#. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -290,7 +292,7 @@ msgstr "黒魔術師 Mordak を殺害する"
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:165
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:292
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:336
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:339
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:143
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:288
 msgid "Death of Arvith"
@@ -959,10 +961,10 @@ msgstr "Rotharik"
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:102
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:111
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:119
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:581
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:591
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:600
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:610
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:583
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:593
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:602
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
 msgid "Guard"
 msgstr "見張り"
 
@@ -981,39 +983,41 @@ msgid "Castle Guard"
 msgstr "城の見張り"
 
 #. [time]: id=indoors_dark_castle
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:235
+#. similar string in the wesnoth-help textdomain
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:236
 msgid "Indoors (dark castle)"
 msgstr "屋内（闇の城）"
 
 #. [time]: id=indoors_dark_castle_lit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:250
+#. similar string in th4e wesnoth-help textdomain
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:252
 msgid "Indoors (lit)"
 msgstr "屋内（灯り）"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:306
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:309
 msgid "Rescue Baran"
 msgstr "Baranを助ける"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:318
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:321
 msgid "Kill the dark sorcerer to get the cell key"
 msgstr "独房の鍵を手に入れるために黒魔術師を殺す"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:332
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:335
 msgid "Move Arvith to the cell with his brother to free him"
 msgstr "弟を解放するために独房へArvithを移動させる"
 
 #. [objective]: condition=lose
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:345
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:348
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:147
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:292
 msgid "Death of Baran"
 msgstr "Baranの死"
 
 #. [objectives]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:357
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:360
 msgid ""
 "When facing an unknown situation, take into account details from story and "
 "dialog to inform your strategy."
@@ -1022,7 +1026,7 @@ msgstr ""
 "しょう。"
 
 #. [objectives]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:366
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:369
 msgid ""
 "The dark sorcerer is a strong unit; attack him with multiple units at once "
 "and try to force him off his keep."
@@ -1031,7 +1035,7 @@ msgstr ""
 "きれば彼を主塔から離れるように仕向けましょう。"
 
 #. [objectives]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:376
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:379
 msgid ""
 "Markings or decorations on hexes may indicate something to be found. If you "
 "can, it is usually a good idea to investigate."
@@ -1040,7 +1044,7 @@ msgstr ""
 "ならば、調査するというのが一般に良い案です。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:413
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:416
 msgid ""
 "Arvith and his men halt outside of the castle, gazing for a moment at the "
 "hulking mass of stone looming in the fog. There is movement in the mist."
@@ -1049,42 +1053,42 @@ msgstr ""
 "材をしばらく凝視した。そこには霧の中での行動があった。"
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:418
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:421
 msgid "Halt! Friend or foe? Give the password."
 msgstr "立ち止まれ！仲間か敵か？ 合言葉を言え。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:423
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:426
 msgid "The password is"
 msgstr "合言葉は"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:426
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:429
 msgid "Sithrak!"
 msgstr "Sithrak!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:429
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:432
 msgid "Eleben!"
 msgstr "Eleben!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:432
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:435
 msgid "Jarlom!"
 msgstr "Jarlom!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:435
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:438
 msgid "Hamik!"
 msgstr "Hamik!"
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:448
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:451
 msgid "Pass, friend."
 msgstr "仲間よ、通りたまえ。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:463
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:466
 msgid ""
 "The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
 "it may be; cut him loose, and let’s be rid of him."
@@ -1094,12 +1098,12 @@ msgstr ""
 "優先せよ。"
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:474
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:477
 msgid "Wrong! Die!"
 msgstr "間違いだ！死ね！"
 
 #. [message]: speaker=Knago-Brek
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:492
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:495
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!"
@@ -1108,81 +1112,81 @@ msgstr ""
 "俺たちは人間を殺す！！"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:497
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:500
 msgid ""
 "My sword-arm shall have a say in who will do the dying. Come on, men, let’s "
 "kill some orcs."
 msgstr "誰が死ぬことになるかは私の右腕で決める。お前達、オークどもを殺すのだ。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:509
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:512
 msgid "One less braggart orc in the world."
 msgstr "この世界にはほら吹きオークもいるのだ。"
 
 #. [message]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:518
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:520
 msgid "Captain, what are <i>orcs</i> doing this far south?"
 msgstr "隊長、こんなに南でオーク達はいったい何をしているのでしょうか？"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:523
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:525
 msgid "Good question. Perhaps my brother will have found out."
 msgstr "いい質問だ。おそらく我が弟はその答えを発見したのだろう。"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:623
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:625
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
 msgstr ""
 "お前達は到着することになっている交代か？ これは俺たちが今ここを去ってもよいと"
 "いうことか？"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:628
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:630
 msgid "Um, yes. Fine. You can go."
 msgstr "うむ、そうだ。よいだろう。行ってよいぞ。"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:633
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:635
 msgid "Um, you’re supposed to give the password."
 msgstr "うむ、お前達は合言葉を伝える事になっているな。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:638
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:640
 msgid "Oh, of course. I had nearly forgotten."
 msgstr "あぁ、もちろんだとも。 もう少しで忘れるところだった。"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:641
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:643
 msgid "Akranbral!"
 msgstr "Akranbral!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:644
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:646
 msgid "Drakanal!"
 msgstr "Drakanal!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:647
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:649
 msgid "Xaskanat!"
 msgstr "Xaskanat!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:650
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:652
 msgid "Katklagad!"
 msgstr "Katklagad!"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:663
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:665
 msgid "Thanks! Irritating little formality, isn’t it?"
 msgstr "ありがとう！ 少々形式的でいらいらさせたかな？"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:673
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:675
 msgid "That’s the wrong password! These aren’t our relief! Get them!"
 msgstr "合言葉が間違いだ！ こいつらは交代ではない！ 奴らを捕らえろ！"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:681
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:683
 msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
@@ -1191,41 +1195,41 @@ msgstr ""
 "のがいいだろう。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:693
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:695
 msgid "Your hand or Tairach’s, death is still death... (argh)"
 msgstr ""
 "あなたの手にかかろうが Tairach だろうが、死には変わりありません・・・（ア"
 "グッ）"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:703
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:705
 msgid "‘Tairach’? Who or what is Tairach?"
 msgstr "「Tairach」？Tairach とは何だ、それは物か人か？"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:708
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:710
 msgid "There’s a key in his robes."
 msgstr "彼のローブの中に鍵がある。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:718
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:720
 msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
 msgstr "多分それは、奴らがBaranを捕えている独房の鍵だろう！ 俺が鍵を持とう。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:746
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:748
 msgid "It may be important, I best take it."
 msgstr "重要な鍵かも知れん。俺が持っておこう。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:764
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:766
 msgid "This castle seems as dark as a cave!"
 msgstr "この城は洞窟のように暗いぞ！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:770
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:772
 msgid ""
 "This castle is under a constant, <i>chaotic</i> time of day (equivalent to "
 "permanent night), except for illuminated hexes adjacent to lit stone walls "
@@ -1237,38 +1241,38 @@ msgstr ""
 "トの移動場所には注意しましょう。敵が強化され、味方は弱体化するのですから。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:790
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:792
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
 msgstr "俺がこの中で見つけたものを見てみろ！ 100ゴールドはあるぞ。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:804
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:806
 msgid "Look what I have found in here! I can count fifty pieces of gold."
 msgstr "俺がこの中で見つけたものを見てみろ！ 50ゴールドはあるぞ。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:843
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:845
 msgid "I found Baran. He is in this cell."
 msgstr "Baranを見つけた。彼はこの独房の中だ。"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:854
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:856
 msgid "It’s good to see you, Arvith."
 msgstr "あなたが再び戻って来てくれて嬉しく思う。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:859
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:861
 msgid "And you too, brother."
 msgstr "お前もだよ。弟よ。"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:865
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:867
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
 msgstr "あなたは Arvith の配下の方ですね。この地下牢から出るのを助けて下さい。"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:872
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:874
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
@@ -1279,14 +1283,14 @@ msgstr ""
 "てこなければなりません。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:884
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:886
 msgid ""
 "I have already met, and killed, the sorcerer. Is this the key to which you "
 "referred?"
 msgstr "私はもうその魔術師に遭遇し、倒したぞ。これがお前が言っている鍵か？"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:888
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:890
 msgid ""
 "Yes, it is. Come, unlock this cell door, and let us depart this place, "
 "brother!"
@@ -1295,19 +1299,19 @@ msgstr ""
 "放してください、兄さん！"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:942
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:944
 msgid "Thank you for saving me. I... was not certain you would come."
 msgstr ""
 "助けてくれてありがとう。 あなた達に逃がしてもらえるのではという望みをほとんど"
 "あきらめかけていました。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:947
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:949
 msgid "Have you no faith in your brother, Baran?"
 msgstr "Baran よ、お前はこの兄に信頼を置かなかったのか？"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:952
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:954
 msgid ""
 "It’s not that. Perhaps I deserved to rot here. I failed you. I failed you "
 "again."
@@ -1316,7 +1320,7 @@ msgstr ""
 "ました。私は再び失敗したのです。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:957
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:959
 msgid ""
 "That is as may be. But you are my brother still. And... I never doubted you "
 "would have come for me."
@@ -1325,7 +1329,7 @@ msgstr ""
 "ば、きっとお前は来ることをもう疑うことはない。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:962
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:964
 msgid ""
 "It was no great trial, after all. A few elves, one or two dark sorcerers, a "
 "gang of orcs and some undead. Really just a day’s work for the company."
@@ -1334,22 +1338,22 @@ msgstr ""
 "かのアンデッド。実際、我々傭兵にはほんの1日の仕事だ。"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:967
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:969
 msgid "Thank you for coming to my aid. Let us return to the village."
 msgstr "助けに来てくれてありがとう。村へ帰還しましょう。"
 
 #. [unit]: id=Rotharik, type=Orcish Assassin
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1001
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1003
 msgid "Minion of Tairach"
 msgstr "Tairach の手先"
 
 #. [message]: speaker=Rotharik
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1013
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1015
 msgid "You are too late! Your brother is already dead! Muahahaha...!"
 msgstr "お前は遅すぎた！ お前の弟は既に死んだ！ムッハッハッハッハッ..."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1018
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1020
 msgid "Argh!!"
 msgstr "アー！！！"
 

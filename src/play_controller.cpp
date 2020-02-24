@@ -47,9 +47,10 @@
 #include "replay.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
-#include "savegame.hpp"
-#include "saved_game.hpp"
 #include "save_blocker.hpp"
+#include "save_index.hpp"
+#include "saved_game.hpp"
+#include "savegame.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "sound.hpp"
@@ -721,21 +722,6 @@ const team& play_controller::current_team() const
 	return gamestate().board_.get_team(current_side());
 }
 
-/// @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
-static int modulo(int num, int mod, int min)
-{
-	assert(mod > 0);
-	int n = (num - min) % mod;
-	if (n < 0)
-		n += mod;
-	//n is now in [0, mod)
-	n = n + min;
-	return n;
-	// the following properties are easy to verify:
-	//  1) For all m: modulo(num, mod, min) == modulo(num + mod*m, mod, min)
-	//  2) For all 0 <= m < mod: modulo(min + m, mod, min) == min + m
-}
-
 bool play_controller::is_team_visible(int team_num, bool observer) const
 {
 	const team& t = gamestate().board_.get_team(team_num);
@@ -909,7 +895,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(game_config_, saved_game_);
+	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), game_config_, saved_game_);
 	load.load_game_ingame();
 }
 

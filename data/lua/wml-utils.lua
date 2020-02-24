@@ -1,14 +1,13 @@
 
-local helper = wesnoth.require "helper"
 local utils = {vwriter = {}}
 
-function utils.trim(s)
-	-- use (f(a)) to get first argument
-	return (tostring(s):gsub("^%s*(.-)%s*$", "%1"))
-end
-
 function utils.split(s)
-	return tostring(s or ""):gmatch("[^%s,][^,]*")
+	return coroutine.wrap(function()
+		local split = s:split()
+		for _,s in ipairs(split) do
+			coroutine.yield(s)
+		end
+	end)
 end
 
 function utils.check_key(val, key, tag, convert_spaces)
@@ -17,7 +16,7 @@ function utils.check_key(val, key, tag, convert_spaces)
 		val = tostring(val):gsub(' ', '_')
 	end
 	if not val:match('^[a-zA-Z0-9_]+$') then
-		helper.wml_error("Invalid " .. key .. "= in [" .. tag .. "]")
+		wml.error("Invalid " .. key .. "= in [" .. tag .. "]")
 	end
 	return val
 end
@@ -58,9 +57,9 @@ function utils.get_sides(cfg, key_name, filter_name)
 		if cfg[key_name] then
 			wesnoth.log('warn', "ignoring duplicate side filter information (inline side=)")
 		end
-		return wesnoth.get_sides(filter)
+		return wesnoth.sides.find(filter)
 	else
-		return wesnoth.get_sides{side = cfg[key_name]}
+		return wesnoth.sides.find{side = cfg[key_name]}
 	end
 end
 
@@ -117,7 +116,7 @@ function utils.handle_event_commands(cfg, scope_type)
 		if cmd == "insert_tag" then
 			cmd = arg.name
 			local from = arg.variable or
-				helper.wml_error("[insert_tag] found with no variable= field")
+				wml.error("[insert_tag] found with no variable= field")
 
 			arg = wml.variables[from]
 			if type(arg) ~= "table" then
@@ -131,7 +130,7 @@ function utils.handle_event_commands(cfg, scope_type)
 		end
 		if not string.find(cmd, "^filter") then
 			cmd = wesnoth.wml_actions[cmd] or
-				helper.wml_error(string.format("[%s] not supported", cmd))
+				wml.error(string.format("[%s] not supported", cmd))
 			if insert_from then
 				local j = 0
 				repeat
@@ -150,49 +149,25 @@ function utils.handle_event_commands(cfg, scope_type)
 	scope_stack:pop()
 	if #scope_stack == 0 then
 		if current_exit == "continue" and scope_type ~= "loop" then
-			helper.wml_error("[continue] found outside a loop scope!")
+			wml.error("[continue] found outside a loop scope!")
 		end
 		current_exit = "none"
 	end
 	return current_exit
 end
 
--- Splits the string argument on commas, excepting those commas that occur
--- within paired parentheses. The result is returned as a (non-empty) table.
--- (The table might have a single entry that is an empty string, though.)
--- Spaces around splitting commas are stripped (as in the C++ version).
--- Empty strings are not removed (unlike the C++ version).
+--[[ Set options to preserve legacy behavior:
+- Only real parentheses protect commas, not square brackets or anything else
+- String spaces surrounding the commas
+- Don't remove empty elements
+]]
 function utils.parenthetical_split(str)
-	local t = {""}
-	-- To simplify some logic, end the string with paired parentheses.
-	local formatted = (str or "") .. ",()"
-
-	-- Isolate paired parentheses.
-	for prefix,paren in string.gmatch(formatted, "(.-)(%b())") do
-		-- Separate on commas
-		for comma,text in string.gmatch(prefix, "(,?)([^,]*)") do
-			if comma == "" then
-				-- We are continuing the last string found.
-				t[#t] = t[#t] .. text
-			else
-				-- We are starting the next string.
-				-- (Now that we know the last string is complete,
-				-- strip leading and trailing spaces from it.)
-				t[#t] = string.match(t[#t], "^%s*(.-)%s*$")
-				table.insert(t, text)
-			end
-		end
-		-- Add the parenthetical part to the last string found.
-		t[#t] = t[#t] .. paren
-	end
-	-- Remove the empty parentheses we had added to the end.
-	table.remove(t)
-	return t
+	return stringx.split(str, ',', {quote_left = '(', quote_right = ')', strip_spaces = true, remove_empty = false})
 end
 
 --note: when using these, make sure that nothing can throw over the call to end_var_scope
 function utils.start_var_scope(name)
-	local var = wml.array_access.get(name) --containers and arrays
+	local var = wml.array_variables[name] --containers and arrays
 	if #var == 0 then var = wml.variables[name] end --scalars (and nil/empty)
 	wml.variables[name] = nil
 	return var
@@ -201,10 +176,14 @@ end
 function utils.end_var_scope(name, var)
 	wml.variables[name] = nil
 	if type(var) == "table" then
-		wml.array_access.set(name, var)
+		wml.array_variables[name] = var
 	else
 		wml.variables[name] = var
 	end
 end
+
+utils.trim = wesnoth.deprecate_api('wml_utils.trim', 'stringx.trim', 1, nil, stringx.trim)
+utils.parenthetical_split = wesnoth.deprecate_api('wml_utils.parenthetical_split', 'stringx.quoted_split or stringx.split', 1, nil, utils.parenthetical_split)
+utils.split = wesnoth.deprecate_api('wml_utils.split', 'stringx.split', 1, nil, utils.split)
 
 return utils

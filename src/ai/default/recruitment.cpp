@@ -176,6 +176,12 @@ double recruitment::evaluate() {
 	const std::vector<unit_map::const_iterator> leaders = units.find_leaders(get_side());
 
 	for (const unit_map::const_iterator& leader : leaders) {
+		// Need to check this here, otherwise recruiting might be blacklisted
+		// if no allowed leader is on a keep yet
+		if (!is_allowed_unit(*leader)) {
+			continue;
+		}
+
 		if (leader == resources::gameboard->units().end()) {
 			return BAD_SCORE;
 		}
@@ -215,6 +221,10 @@ void recruitment::execute() {
 
 	for (const unit_map::const_iterator& leader : leaders) {
 		const map_location& keep = leader->get_location();
+		if (!is_allowed_unit(*leader)) {
+			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is not allowed recruiter. \n";
+			continue;
+		}
 		if (!resources::gameboard->map().is_keep(keep)) {
 			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is not on keep. \n";
 			continue;

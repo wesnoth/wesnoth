@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:40 UTC\n"
+"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
 "PO-Revision-Date: 2014-04-30 14:49+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: American English <kde-l10n-hu@kde.org>\n"
@@ -65,8 +65,9 @@ msgstr "Harcos"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:24
-msgid "Hero"
-msgstr "Hős"
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:4
+msgid "Commander"
+msgstr "Vezér"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:24
@@ -84,8 +85,9 @@ msgstr "(embert próbáló)"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:25
-msgid "Champion"
-msgstr "Bajnok"
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:4
+msgid "Lord"
+msgstr "Nemes úr"
 
 #. [about]
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:32
@@ -139,7 +141,7 @@ msgstr "Eljuttatod Konradot északnyugatra, az útjelző táblához"
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:45
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:28
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:33
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:295
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:296
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:96
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:43
@@ -167,7 +169,7 @@ msgstr "Konrad elesik"
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:49
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:32
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:37
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:299
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:300
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:100
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:29
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:47
@@ -177,8 +179,8 @@ msgstr "Konrad elesik"
 msgid "Death of Delfador"
 msgstr "Delfador elesik"
 
-#. [side]: type=Fighter, id=Konrad
 #. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:71
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:63
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:50
@@ -211,16 +213,16 @@ msgstr "Delfador elesik"
 msgid "Konrad"
 msgstr "Konrad"
 
+#. [side]: type=Commander, id=Konrad
 #. [side]: type=Fighter, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
-#. [side]: type=Commander, id=Konrad
-#. [side]: type=Ancient Wose, id=Haralamdum
-#. [side]: type=Elvish Sylph, id=Bona-Melodia
-#. [side]: type=Grand Knight, id=Kaylan
-#. [side]: id=Relgorn, type=Dwarvish Lord
 #. [side]: id=Geldar, type=Dwarvish Lord
 #. [side]
+#. [side]: type=Grand Knight, id=Kaylan
+#. [side]: id=Relgorn, type=Dwarvish Lord
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:80
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:237
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:256
@@ -239,7 +241,7 @@ msgstr "Konrad"
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:84
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:65
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:60
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:113
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:121
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:59
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:75
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:259
@@ -263,6 +265,8 @@ msgstr "Lázadók"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
@@ -271,18 +275,16 @@ msgstr "Urug-Telfar"
 #. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #. [side]: type=Orcish Warlord, id=Urug-Tan
 #. [side]: type=Orcish Sovereign, id=Shuuga-Mool
-#. [side]: type=Goblin Rouser
-#. [side]: type=Orcish Warlord
-#. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #. [side]: type=Orcish Warlord, id=Urag-Tifer
-#. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #. [side]: type=Orcish Warrior, id=Managa'Gwin
-#. [side]: type=Orcish Warlord, id=Kojun Herolm
-#. [side]: type=Orcish Warrior, id=Mokho Kimer
-#. [side]: type=Orcish Warlord, id=Gaga-Breuk
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #. [side]: type=Orcish Warlord, id=Kior-Dal
+#. [side]: type=Goblin Rouser
+#. [side]: type=Orcish Warlord
+#. [side]: type=Troll Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:180
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:193
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:213
@@ -304,6 +306,7 @@ msgstr "Urug-Telfar"
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:329
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:348
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:368
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:100
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:80
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:142
 msgid "Orcs"
@@ -331,10 +334,15 @@ msgstr "Chantal"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:266
+#, fuzzy
+#| msgid ""
+#| "Sixteen years into her rule, Asheviere turned her attention to the wood "
+#| "elves living in the great forest southwest of Wesnoth, whom she despised. "
+#| "Orcish mercenaries were hired and dispatched to bring about their ruin."
 msgid ""
-"Sixteen years into her rule, Asheviere turned her attention to the wood "
-"elves living in the great forest southwest of Wesnoth, whom she despised. "
-"Orcish mercenaries were hired and dispatched to bring about their ruin."
+"Twenty years into her rule, Asheviere turned her attention to the wood elves "
+"living in the great forest southwest of Wesnoth, whom she despised. Orcish "
+"mercenaries were hired and dispatched to bring about their ruin."
 msgstr ""
 "Uralkodásának tizenhatodik évében Asheviere az általa megvetett tündék felé "
 "fordította a figyelmét, akik a Wesnothtól délnyugatra fekvő erdőkben éltek. "
@@ -1120,17 +1128,17 @@ msgid "Bugg"
 msgstr "Bugg"
 
 #. [unit]: type=Naga Fighter, type=Naga Warrior, id=Xnamas
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:153
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:154
 msgid "Xnamas"
 msgstr "Xnamas"
 
 #. [unit]: type=Naga Warrior, type=Naga Fighter, id=Inalai
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:169
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:170
 msgid "Inalai"
 msgstr "Inalai"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:202
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:203
 msgid ""
 "So this is the Bay of Pearls. It looks like they have those merfolk working "
 "hard!"
@@ -1138,7 +1146,7 @@ msgstr ""
 "Tehát ez itt a Gyöngyök Öble! Úgy tűnik, keményen munkára fogták a sellőket!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:206
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:207
 msgid ""
 "Indeed it does. It also looks like they have many, many troops. I should go "
 "around the bay and distract some of them. You and the rest rescue the "
@@ -1149,17 +1157,17 @@ msgstr ""
 "szabadítsd ki a sellőket!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:210
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:211
 msgid "Very well. Be careful!"
 msgstr "Rendben, légy óvatos!"
 
 #. [message]: speaker=Bugg
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:228
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:229
 msgid "But boss, why are we only using bats and nagas?"
 msgstr "De főnök! Miért csak denevéreket és nagákat vetünk be?"
 
 #. [message]: speaker=Dwaba-Kukai
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:233
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:234
 msgid ""
 "Because we need to control the seas and the merfolk, and nagas and bats are "
 "best for doing that!"
@@ -1168,117 +1176,117 @@ msgstr ""
 "pedig a nagák és a denevérek a legjobbak."
 
 #. [message]: speaker=Bugg
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:238
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:239
 msgid "But orcs are the most powerful race in all of..."
 msgstr "De az orkok a leghatalmasabbak az egész..."
 
 #. [message]: speaker=Dwaba-Kukai
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:243
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:244
 msgid "Shut up, worm! I’m the boss!"
 msgstr "Csendet, te féreg! Én vagyok a főnök!"
 
 #. [message]: speaker=Bugg
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:273
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:274
 msgid "Ha ha ha! Now orcs will rule over land and sea!"
 msgstr "Hahaha! Mostantól az orkok uralják a szárazföldet és a tengert is!"
 
 #. [message]: speaker=Dwaba-Kukai
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:278
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:279
 msgid "(Sigh) Will someone kill this idiot for me, please?"
 msgstr "(Sóhajt) Leütné valaki ezt a féleszűt a kedvemért?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:291
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:292
 msgid "But... but... how can this be happening to me?"
 msgstr "De... de... hogy történhet meg ez velem?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:295
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:296
 msgid "Who was that idiot?"
 msgstr "Melyik félkegyelmű volt az?"
 
 #. [unit]: id=Gwaba, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:318
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:319
 msgid "Gwaba"
 msgstr "Gwaba"
 
 #. [unit]: id=Nepba, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:330
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:331
 msgid "Nepba"
 msgstr "Nepba"
 
 #. [unit]: id=Triram, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:342
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:343
 msgid "Triram"
 msgstr "Triram"
 
 #. [unit]: id=Mriram, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:356
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:357
 msgid "Mriram"
 msgstr "Mriram"
 
 #. [message]: speaker=Gwaba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:366
 msgid "Free at last! Now, death to the orcs!"
 msgstr "Végre szabadok vagyunk! Most viszont, halál az orkokra!"
 
 #. [unit]: id=Mabooa, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:387
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:388
 msgid "Mabooa"
 msgstr "Mabooa"
 
 #. [unit]: id=Earooa, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:401
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:402
 msgid "Earooa"
 msgstr "Earooa"
 
 #. [unit]: id=Nethuns, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:413
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:414
 msgid "Nethuns"
 msgstr "Nethuns"
 
 #. [unit]: id=Gwoama, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:426
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:427
 msgid "Gwoama"
 msgstr "Gwoama"
 
 #. [message]: speaker=Mabooa
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:435
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:436
 msgid "Now that we are free, together we can defeat our oppressors!"
 msgstr "Most, hogy kiszabadultunk, együtt legyőzhetjük az elnyomóinkat!"
 
 #. [unit]: id=Kaba, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:457
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:458
 msgid "Kaba"
 msgstr "Kaba"
 
 #. [unit]: id=Kwaboo, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:471
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:472
 msgid "Kwaboo"
 msgstr "Kwaboo"
 
 #. [message]: speaker=Kaba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:481
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:482
 msgid "Freedom! Now where are those orcs? Let me at ’em!"
 msgstr "Szabadság! Na, hol vannak azok az orkok? Hadd mészároljam le őket!"
 
 #. [unit]: id=Gwimli, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:503
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:504
 msgid "Gwimli"
 msgstr "Gwimli"
 
 #. [unit]: id=Jarla, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:515
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:516
 msgid "Jarla"
 msgstr "Jarla"
 
 #. [unit]: id=Gwarloa, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:529
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:530
 msgid "Gwarloa"
 msgstr "Gwarloa"
 
 #. [message]: speaker=Gwimli
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:538
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:539
 #, fuzzy
 #| msgid ""
 #| "Thank you for rescuing us! Now we can help you fight the evil orcs! The "
@@ -1292,37 +1300,37 @@ msgstr ""
 "fogva, északnyugatra van!"
 
 #. [unit]: id=Heldaga, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:560
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:561
 msgid "Heldaga"
 msgstr "Heldaga"
 
 #. [unit]: id=Apalala, type=Merman Hunter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:572
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:573
 msgid "Apalala"
 msgstr "Apalala"
 
 #. [unit]: id=Oceania, type=Mermaid Initiate
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:584
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:585
 msgid "Oceania"
 msgstr "Oceania"
 
 #. [unit]: id=Elcmar, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:597
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:598
 msgid "Elcmar"
 msgstr "Elcmar"
 
 #. [unit]: id=Aigaion, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:609
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:610
 msgid "Aigaion"
 msgstr "Aigaion"
 
 #. [unit]: id=Tini, type=Merman Fighter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:622
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:623
 msgid "Tini"
 msgstr "Tini"
 
 #. [message]: speaker=Heldaga
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:632
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:633
 #, fuzzy
 #| msgid ""
 #| "Death to the orcs! Come, my mer brethren, let us fight the orcs and drive "
@@ -1335,7 +1343,7 @@ msgstr ""
 "őket a partjainkról!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:642
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:643
 #, fuzzy
 #| msgid ""
 #| "At last, we have freed the mermen. Go back to the ocean and live in peace."
@@ -1346,7 +1354,7 @@ msgstr ""
 "békében."
 
 #. [message]: role=ThankfulMerman
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:655
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:656
 msgid ""
 "My lord! You may need the help of some of us who have skill in the sea in "
 "future. We would like to come with you and offer you help."
@@ -1355,23 +1363,23 @@ msgstr ""
 "Hadd ajánljuk fel szolgálatainkat, és hadd csatlakozzunk hozzád!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:662
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:876
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:663
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:877
 msgid "You may now recruit the noble merfolk!"
 msgstr "Most már a nemes sellők közül is toborozhatsz!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:670
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:671
 msgid "Now where is Delfador? I hope he’s safe!"
 msgstr "De hová lett Delfador? Remélem, nem esett baja."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:678
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:679
 msgid "I am perfectly safe, friend!"
 msgstr "Semmi bajom, barátom!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:683
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:684
 msgid ""
 "There you are! I am so glad you are all right! Now we may have a little rest."
 msgstr ""
@@ -1379,7 +1387,7 @@ msgstr ""
 "egy kicsit."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:687
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:688
 msgid ""
 "I am afraid there is no time for rest, Konrad. Asheviere has laid siege to "
 "Elensefar, breaking the century-old treaty between Wesnoth and the Elense "
@@ -1392,14 +1400,14 @@ msgstr ""
 "kezét!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:693
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:821
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:694
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:822
 msgid "Oh no! What shall we do?"
 msgstr "Ó, nem! Mit tegyünk?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:698
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:825
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:699
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:826
 #, fuzzy
 #| msgid ""
 #| "You must lead our men to the city, and help defend it. Or recapture it if "
@@ -1412,13 +1420,13 @@ msgstr ""
 "elesett, foglald vissza!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:703
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:704
 msgid ""
 "I must do that? But what about you, Delfador? You’re coming with me, right?"
 msgstr "Nekem kell megtennem? És te, Delfador? Velem tartasz, ugye?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:708
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:709
 msgid ""
 "I am afraid not, Konrad. I have come across some important documents, and "
 "must make haste with them to the Elven Council. It seems that the time to "
@@ -1429,17 +1437,17 @@ msgstr ""
 "megállítására, mint gondoltam."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:714
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:715
 msgid "But Delfador! I can’t do it on my own!"
 msgstr "De Delfador! Egyedül képtelen vagyok véghezvinni a küldetést!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:728
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:729
 msgid "On your own? My lord! We, your loyal soldiers, will support you!"
 msgstr "Egyedül? Uram! Mi, a te hűséges katonáid, veled tartunk!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:732
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:733
 msgid ""
 "You will prevail. I have faith in you. Head north. Elensefar is but three "
 "days’ travel if you make haste."
@@ -1448,12 +1456,12 @@ msgstr ""
 "alatt Elensefarba érsz."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:736
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:737
 msgid "Very well. But how do I get there?"
 msgstr "Nagyon jó. De hogyan jutok el odáig?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:740
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:741
 #, fuzzy
 #| msgid ""
 #| "It is north-west of here, a few leagues inland. There are two ways to go, "
@@ -1468,30 +1476,30 @@ msgstr ""
 "veszélyei. Neked kell választanod!"
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:742
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:743
 msgid "Ships? Ugh! I have been seasick for the last time. We shall walk!"
 msgstr "Hajók? Uhh! A múltkor is tengeribeteg lettem. Inkább menjünk gyalog!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:746
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:747
 msgid "Safe journey to you, Konrad. Until we meet again!"
 msgstr "Jó utat, Konrad! A mielőbbi viszontlátásra!"
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:757
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:758
 msgid ""
 "Going by ship we may at least get a little rest for ourselves. By sea it is!"
 msgstr ""
 "Ha hajóval megyünk, legalább egy kicsit kipihenhetjük magunkat. Tengerre!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:761
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:762
 msgid "Safe voyage to you then, Konrad. May the weather be fair."
 msgstr ""
 "Akkor jó szelet, Konrad. Kívánom, hogy az időjárás is kedvezzen az utadhoz."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:795
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:796
 msgid ""
 "Have you not been able to defeat our foes in all these days? They have "
 "summoned reinforcements. Surely now our doom is upon us!"
@@ -1500,7 +1508,7 @@ msgstr ""
 "Erősítést szereztek, így most már biztosan végünk van!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:807
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:808
 msgid ""
 "Konrad! We cannot spend any more time here. Though it would be good to "
 "defeat the orcs and free more of their prisoners, more urgent business calls "
@@ -1510,7 +1518,7 @@ msgstr ""
 "orkokkal, s mindenkit felszabadítani, de most sürgősebb feladatunk is van!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:812
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:813
 msgid ""
 "Delfador, thank goodness you have survived! This has been a tough battle, "
 "but why can we not finish it? Why must we leave?"
@@ -1519,7 +1527,7 @@ msgstr ""
 "miért nem fejezhetjük be? Miért kell elhagynunk a csatateret?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:816
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:817
 #, fuzzy
 #| msgid ""
 #| "I bear ill tidings. Asheviere has laid siege to Elensefar, breaking the "
@@ -1535,12 +1543,12 @@ msgstr ""
 "tudja, mekkora területet kebelez még be!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:829
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:830
 msgid "I must do this? But you are coming with me, aren’t you, Delfador?"
 msgstr "És az én dolgom lenne visszaverni? De ugye velem tartasz, Delfador?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:833
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:834
 msgid ""
 "I am afraid not, Konrad. I have found some important documents that need "
 "seeing to. I must ride at once to make council with the elves. I will meet "
@@ -1551,7 +1559,7 @@ msgstr ""
 "tanácsukat. Találkozzunk Elensefar falainál, a csata után."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:837
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:838
 msgid ""
 "I fear I will struggle to do this on my own... but what must be must be. How "
 "do I get to Elensefar?"
@@ -1560,7 +1568,7 @@ msgstr ""
 "jutok Elensefarba?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:850
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:851
 msgid ""
 "Since you have broken the orcs’ hegemony over the seas, going by ship would "
 "be safest. Sail along the coast, and you can land mere miles from Elensefar. "
@@ -1571,7 +1579,7 @@ msgstr ""
 "Elensefartól csupán pár mérföldre partot érhetsz. Rajta, siess!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:862
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:863
 msgid ""
 "With the orcs controlling the seas, going by ship would not be safe. Travel "
 "by land, Elensefar is only six days’ march up the coast. Make haste!"
@@ -1600,24 +1608,26 @@ msgstr "Legyőzöd Muff Malalt"
 msgid "Muff Malal"
 msgstr "Muff Malal"
 
-#. [side]: type=Dark Sorcerer, id=Muff Malal
-#. [side]: type=Ancient Lich, id=Muff Argulak
-#. [side]: id=Haf-Mal, type=Lich
-#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]: type=Lich, id=Galga
 #. [side]: type=Lich, id=Na-alga
 #. [side]: type=Lich, id=Selda-Mana
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #. [side]: type=Death Knight, id=Clarustus
 #. [side]: type=Death Knight, id=Merlunius
 #. [side]: type=Lich, id=Aimucasur
 #. [side]: type=Death Knight, id=Secadius
 #. [side]: type=Death Knight, id=Dafeis
+#. [side]: type=Ancient Lich, id=Muff Argulak
+#. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:78
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:147
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:78
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:121
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:187
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:143
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:103
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:120
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:136
@@ -1844,8 +1854,8 @@ msgstr "A templom üresnek tűnik."
 msgid "Looks like there is somebody hidden in the temple."
 msgstr "Úgy tűnik, valaki elrejtőzött a templomban."
 
-#. [unit]: id=Moremirmu, type=White Mage
 #. [unit]: id=Moremirmu, type=Mage of Light
+#. [unit]: id=Moremirmu, type=White Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:299
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:258
 msgid "Moremirmu"
@@ -1898,7 +1908,7 @@ msgid "Fight on against the undead without me, friends!"
 msgstr "Vívjátok meg nélkülem az élőholtak elleni csatát, barátaim!"
 
 #. [message]: speaker=hidden_advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:481
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:487
 msgid ""
 "Thank goodness we have found you, sir! Come aboard quickly, we shall take "
 "you away from this horrible island!"
@@ -1907,7 +1917,7 @@ msgstr ""
 "menjünk erről az átkozott szigetről!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:506
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:512
 msgid ""
 "We have wrested control of the island from the evil undead! Now all we have "
 "to do is wait for the ship to arrive, so we can make our way to Elensefar!"
@@ -1916,7 +1926,7 @@ msgstr ""
 "várni, amíg befut a hajó, amellyel továbbhaladunk Elensefar felé."
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:519
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:525
 msgid ""
 "Together we have vanquished the foul undead! Come, I will join you on your "
 "noble quest."
@@ -1925,7 +1935,7 @@ msgstr ""
 "csatlakozom hozzátok nemes küldetésetek végrehajtásában."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:539
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:545
 msgid ""
 "It’s a shame complete victory could not be ours, but thank goodness I am "
 "rescued! On to Elensefar!"
@@ -1934,7 +1944,7 @@ msgstr ""
 "megmenekültem! Irány Elensefar!"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:549
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:555
 #, fuzzy
 #| msgid ""
 #| "Thank you for your assistance here brothers. I will stay to continue "
@@ -1950,7 +1960,7 @@ msgstr ""
 "küldetésetekben. Remélem, egy napon még találkozunk!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:564
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:570
 msgid "You regain your lost troops and $isle_damned_starting_gold gold!"
 msgstr ""
 "Visszakapod az elvesztett egységeidet, és kapsz $isle_damned_starting_gold "
@@ -1971,8 +1981,6 @@ msgstr "Elensefar"
 msgid "Agadla"
 msgstr "Agadla"
 
-#. [side]: type=Orcish Warlord, id=Urug-Telfar
-#. [side]: type=Death Knight, id=Unan-Ka'tall
 #. [side]: type=Orcish Warlord, id=Agadla
 #. [side]: type=Dark Sorcerer, id=Muff Jaanal
 #. [side]: id=Brugg, type=Troll Warrior
@@ -1983,8 +1991,6 @@ msgstr "Agadla"
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:88
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:100
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:131
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:100
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:143
 msgid "Evil"
 msgstr "Gonosz"
 
@@ -2419,7 +2425,7 @@ msgstr "Legyőzöd Kojun Herolmot"
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:57
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:40
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:45
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:307
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:308
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:108
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:37
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:55
@@ -2593,8 +2599,8 @@ msgstr "Elmar hídja"
 msgid "Elbridge"
 msgstr "Elbridge"
 
-#. [side]: type=Princess, id=Li'sar
 #. [event]
+#. [side]: type=Princess, id=Li'sar
 #. [unit]: id=Li'sar, type=Princess
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:87
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:68
@@ -2604,16 +2610,16 @@ msgstr "Elbridge"
 msgid "Li’sar"
 msgstr "Li’sar"
 
-#. [side]: type=General, id=Robryn
+#. [side]: type=Princess, id=Li'sar
 #. [side]: type=General, id=Josephus
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=General, id=Malatus
+#. [side]: type=General, id=Robryn
+#. [side]: type=General, id=Honber
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm
 #. [side]: type=Dark Queen, id=Asheviere
-#. [side]: type=Princess, id=Li'sar
-#. [side]: type=General, id=Honber
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:160
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:98
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:83
@@ -3203,6 +3209,7 @@ msgstr "Gaga-Breuk"
 
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:137
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:70
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:169
 msgid "Monsters"
 msgstr "Szörnyek"
@@ -4077,23 +4084,23 @@ msgstr "Merülés a sötétbe"
 msgid "Find the dwarves"
 msgstr "Megtalálod a törpöket"
 
-#. [side]
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:102
+#. [unit]: type=Giant Spider
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:105
 msgid "Hywyn"
 msgstr "Hywyn"
 
 #. [side]: id=Relgorn, type=Dwarvish Lord
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:107
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:115
 msgid "Relgorn"
 msgstr "Relgorn"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:255
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:263
 msgid "It’s so dark in here I can hardly see!"
 msgstr "Oly sötét van itt, alig látni!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:259
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:267
 msgid ""
 "It is dark indeed. We shall have to light torches and tread slowly and "
 "carefully. It may be there are still dwarves down here who can aid us!"
@@ -4103,24 +4110,24 @@ msgstr ""
 "segítségünkre lesznek!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:263
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:271
 msgid "Indeed. We elves do not fare well in these dark pits."
 msgstr ""
 "Én is remélem. Mi, tündék, nem harcolunk túl ügyesen ezekben a sötét "
 "gödrökben."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:280
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:288
 msgid "Who are these that approach? Surface-dwellers! On your guard, men!"
 msgstr "Kik azok ott, akik ide tartanak? Felszínlakók! Riadó, emberek!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:310
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:318
 msgid "We come in peace, friends. We come in peace!"
 msgstr "Békével jöttünk, barátaim. Békével jöttünk!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:315
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:323
 msgid ""
 "Oh, do you? I see that you are accompanied by elves. Can we dwarves not live "
 "in peace without the treacherous elves coming to bother us?"
@@ -4130,13 +4137,13 @@ msgstr ""
 "minket?"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:320
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:328
 msgid "Why such harsh words, dwarf? Elves have never done you any harm."
 msgstr ""
 "Törp uram, mi végre ezek a nyers szavak? A tündék sohasem ártottak nektek."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:325
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:333
 msgid ""
 "‘Never done us any harm?’ Why, I was there myself, when the elves refused to "
 "honor our alliance. Many dwarves were slaughtered, and you cowardly elves "
@@ -4147,7 +4154,7 @@ msgstr ""
 "lemészároltak, de ti, gyáva tündék, egy szalmaszálat sem tettetek keresztbe!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:330
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:338
 msgid ""
 "You go too far! I am Kalenz, a mighty elvish lord! How dare such as you, "
 "sniveling in his tunnel, call me a coward?"
@@ -4156,7 +4163,7 @@ msgstr ""
 "merészel engem gyávának nevezni egy efféle csatornapatkány, mint te?!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:335
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:343
 #, fuzzy
 #| msgid ""
 #| "Peace, friends! Peace! The evil orcs roam the lands above us, we must not "
@@ -4169,7 +4176,7 @@ msgstr ""
 "szabad civakodnunk!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:340
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:348
 msgid ""
 "Very well! Explain your presence here then, human. Who are you? Why have you "
 "risked life and limb to come to Knalga, home of the dwarves?"
@@ -4178,12 +4185,12 @@ msgstr ""
 "kockáztattad az életed, hogy idegyere Knalgába, a törpök hazájába?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:345
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:353
 msgid "Well, we... we..."
 msgstr "Nos, mi... mi, hát..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:350
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:358
 msgid ""
 "We have come so that an heir may claim his inheritance, that a king may "
 "claim his throne. We seek the Sceptre of Fire."
@@ -4192,13 +4199,13 @@ msgstr ""
 "király elfoglalhassa a trónját. A Tűz Jogarát keressük!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:355
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:363
 msgid ""
 "The Sceptre of Fire? Are you out of your minds? Surely you speak in jest!"
 msgstr "A Tűz Jogarát? Elment a józan eszed? Bizonyára csak tréfát űzöl velem!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:360
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:368
 msgid ""
 "We jest not, friend. We seek the Sceptre of Fire. We seek the help of the "
 "dwarves in finding it. But know that we will find it, whether you help us or "
@@ -4208,7 +4215,7 @@ msgstr ""
 "kérjük. De tudd meg, megtaláljuk, akár segítesz, akár nem!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:373
 msgid ""
 "You speak foolishness. No one even knows if the Sceptre of Fire still "
 "exists. And who is this heir, this king that you speak of?"
@@ -4217,12 +4224,12 @@ msgstr ""
 "Jogara. És ki volna ez az örökös, ez a király, akiről beszélsz?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:370
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:378
 msgid "I am, sir."
 msgstr "Én vagyok az, uram."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:375
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:383
 msgid ""
 "You? Ha ha! This boy that stands before me is the king of Wesnoth? Ha ha! I "
 "haven’t had such a laugh in a long time. And who are you, old man?"
@@ -4231,7 +4238,7 @@ msgstr ""
 "nem nevettem ilyen jót! És te ki vagy, öreg?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:380
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:388
 msgid ""
 "I am Delfador, Delfador the Great, Arch Mage to King Garard, and Protector "
 "of his heir."
@@ -4240,7 +4247,7 @@ msgstr ""
 "gyámja."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:385
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:393
 msgid ""
 "You... you are Delfador? I saw Delfador when I was but a young dwarf, and I "
 "will tell you, old man, you are not Delfador. Men! Take these liars out of "
@@ -4251,12 +4258,12 @@ msgstr ""
 "hazugokat! Delfador már sok éve, hogy meghalt."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:416
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:424
 msgid "I am Delfador the Great! Tremble before my wrath!"
 msgstr "Én vagyok a Nagy Delfador! Reszkess, kivívtad haragomat!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:421
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:429
 msgid ""
 "You... you really are Delfador! But we had news that you were dead, years "
 "ago!"
@@ -4265,17 +4272,17 @@ msgstr ""
 "halálodról!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:426
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:434
 msgid "They thought I was dead. They hoped I was dead. Yet still I live."
 msgstr "Csak gondolták, hogy meghaltam. Remélték. De még élek!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:431
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:439
 msgid "And you really think that you can find the Sceptre of Fire?"
 msgstr "Valóban úgy gondolod, hogy megtalálhatjátok a Tűz Jogarát?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:436
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:444
 msgid ""
 "Yes, I do. If you help us, friend, all the treasures of Knalga that we find "
 "are yours. We want only the Sceptre. It will be dangerous. Make no mistake "
@@ -4288,7 +4295,7 @@ msgstr ""
 "jobb, mint férgek módjára bujkálni az orkok elől."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:441
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:449
 #, fuzzy
 #| msgid ""
 #| "You are right, friend. I will put my best men at your disposal. We know "
@@ -4304,17 +4311,17 @@ msgstr ""
 "alagutakban rejtették el."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:446
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:454
 msgid "Then to the eastern tunnels we shall go!"
 msgstr "Akkor menjünk a keleti alagutak felé!"
 
 #. [unit]: type=Elvish Shaman, id=Gryphon Tender
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:511
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:519
 msgid "Gryphon Tender"
 msgstr "Griffdajka"
 
 #. [message]: speaker=Gryphon Tender
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:524
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:532
 msgid ""
 "I am sorry, Prince Konrad. The young gryphons are breaking their ropes. They "
 "are simply getting too large and too restless to restrain anymore!"
@@ -4324,29 +4331,29 @@ msgstr ""
 "őket!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:559
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:567
 msgid "What’s this? Gryphons in my castle? Remove the beasts!"
 msgstr "Ez meg mi? Griffek a váramban? Tüntessétek el ezeket a vadállatokat!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:563
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:571
 msgid "Beasts? We were planning to use them as mounts."
 msgstr "Vadállatok? Azt terveztük, hogy hátasjószágot nevelünk belőlük."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:567
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:575
 msgid "Ha ha! Gryphons as mounts! Is there no end to your folly?"
 msgstr "Haha! Griffekből hátasjószágokat? Az ostobaságotok nem ismer határt!"
 
 #. [message]: speaker=Konrad
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:571
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:579
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:587
 msgid "(looks miffed)"
 msgstr "(sértődötten néz)"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:575
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:583
 msgid ""
 "Well, if you must go on with this mad scheme, I shall supply you with my own "
 "troops as riders! A frail human — or worse, an elf — would never be able to "
@@ -4357,36 +4364,41 @@ msgstr ""
 "sosem lenne képes megzabolázni a griffek vad ösztöneit!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:583
+#. Relgorn is a Dwarvish Lord
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:592
+#, fuzzy
+#| msgid ""
+#| "Temper your anger. Relgorn’s manner may be rough, but surely there is "
+#| "nothing wrong with his suggestion?"
 msgid ""
-"Temper your anger. Relgorn’s manner may be rough, but surely there is "
+"Temper your anger. Lord Relgorn’s manner may be rough, but surely there is "
 "nothing wrong with his suggestion?"
 msgstr ""
 "Fogd vissza a dühödet. Relgorn modora talán egy kissé valóban nyers, de a "
 "javaslata mindenképpen megfontolandó."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:587
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:596
 msgid "Well, I suppose..."
 msgstr "Nos, úgy gondolom..."
 
 #. [unit]: type=Gryphon Rider, id=Mounted Dwarf
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:613
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:622
 msgid "Mounted Dwarf"
 msgstr "Grifflovas törp"
 
 #. [message]: speaker=Mounted Dwarf
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:626
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:635
 msgid "Whoa there... No need to be surly, now. Easy...easy... now GO!"
 msgstr "Húha... Na, csak szelíden. Remek... Megy ez... Na, rajta!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:649
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:658
 msgid "You can now recruit fearsome Gryphon Riders!"
 msgstr "Most már félelmetes grifflovasokat is toborozhatsz!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:654
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:663
 msgid ""
 "Though they stink, gryphons are magnificent animals. They may not be able to "
 "navigate our twisted caverns very well, but if you ever see the surface "
@@ -4397,12 +4409,12 @@ msgstr ""
 "a felszínre, ők fogják uralni az eget. A legjobbakat, Knalga szövetségesei!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:698
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:707
 msgid "Hmm... there seems to be a secret passage behind these rocks!"
 msgstr "Hmm... úgy tűnik, a sziklák mögött egy titkos járat nyílik!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:722
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:731
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold!"
@@ -4618,13 +4630,43 @@ msgstr ""
 "Hát, sellő koma, ezt megcsináltuk. Szolgálataimat az uradnak ajánlom, "
 "kedvemre való fickónak tűnik."
 
+#. [message]: speaker=Konrad
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:365
+msgid ""
+"<i>(motions for silence)</i>\n"
+"\n"
+"<small>What was that raucous noise?</small>"
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:372
+msgid ""
+"That can only have been a Dwarven thunderstick, Konrad. Our Knalgan allies "
+"must be in the thick of battle."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:352
-msgid "These passages seem to have been used recently."
-msgstr "Mintha nemrég használták volna ezt az átjárót."
+#. speaker is a dwarf
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:384
+msgid ""
+"That’ll be Lord Geldar’s clan, my lords. Their scouting patrols should’ve "
+"found us by now."
+msgstr ""
+
+#. [message]: speaker=unit
+#. The unit is saying that a battle between the player's dwarven allies and their enemies is not far, but still under the shroud. Translate freely.
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:391
+msgid "We must hurry to assist them, my lords."
+msgstr ""
+
+#. [message]: speaker=unit
+#. The unit is saying that a battle between the player's dwarven allies and their enemies is not far, but still under the shroud. Translate freely.
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:393
+msgid "female^We must hurry to assist them, my lords."
+msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:380
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:423
 msgid ""
 "You emerge into a vast natural cathedral, the walls arching higher than you "
 "can see in the darkness. Stretching across the gallery is a great chasm, "
@@ -4641,22 +4683,22 @@ msgstr ""
 "a sötétség erői."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:393
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:438
 msgid "There is a big cave-in south of here."
 msgstr "Innen délre van egy nagy kőomlás."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:406
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:451
 msgid "The rocks are moving!"
 msgstr "Megindultak a sziklák!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:468
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:513
 msgid "Who goes there? Friend or foe?"
 msgstr "Ki van ott? Barát vagy ellenség?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:472
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:517
 msgid ""
 "We are desperately trying to rid these tunnels of orcs and trolls! Please "
 "help us in our quest."
@@ -4664,39 +4706,46 @@ msgstr ""
 "Elszántan küzdünk, hogy megtisztítsuk ezeket az alagutakat az alávaló "
 "orkoktól és trolloktól! Kérlek, segíts!"
 
+#. [event]
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:520
+msgid ""
+"The dwarves are your allies in this scenario. If you help their leader "
+"survive the battle, he may provide you with useful information."
+msgstr ""
+
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:486
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:534
 msgid "Vile creature! Let us rid these tunnels of its kind!"
 msgstr ""
 "Micsoda hitvány teremtmény! Rajta, füstöljük ki a fajtáját az alagutakból!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:500
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:548
 msgid "I did not know that the undead were in these pits!"
 msgstr "Nem is tudtam, hogy élőholtak is vannak itt a föld mélyén!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:514
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:562
 msgid "Who is this foul enemy that we fight?"
 msgstr "Egyáltalán ki az, akivel szemben állunk?"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:518
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:566
 msgid "I am Lionel. I am the Lost General. I will avenge myself upon you all!"
 msgstr "Lionel vagyok, az elveszett tábornok. Bosszút állok mindannyiotokon!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:522
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:570
 msgid "Avenge? What have we done to you that you must avenge?"
 msgstr "Bosszú? Mit tettünk, amit meg kell bosszulnod?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:526
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:574
 msgid "Lionel? A General? I remember that name..."
 msgstr "Lionel? Aki tábornok? Valahonnan rémlik ez a név..."
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:530
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:578
 msgid ""
 "Remember me, do you? Aye. I was the king’s finest general, sent down to "
 "these pits to retrieve the Sceptre. But the orcs trapped me and my men in "
@@ -4709,7 +4758,7 @@ msgstr ""
 "segítettek, hagytak meghalni. De most mindannyiótokon bosszút állok!"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:549
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:597
 msgid ""
 "Argh! I am vanquished! But at least by worthy foes, instead of those "
 "disgusting orcs."
@@ -4718,12 +4767,12 @@ msgstr ""
 "förtelmes orkoktól!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:553
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:601
 msgid "Rest in peace, Lionel. The poor, lost general."
 msgstr "Nyugodj békében, Lionel! A szegény, elveszett tábornok."
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:557
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:605
 msgid ""
 "I am destroyed, but my mission must be completed. Though you are foes, you "
 "are at least worthy ones, so I will tell you that the Sceptre is east from "
@@ -4738,12 +4787,12 @@ msgstr ""
 "szerencsével, mint én!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:571
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:619
 msgid "The earth shakes."
 msgstr "A föld megmozdul."
 
 #. [message]: speaker=Geldar
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:607
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:658
 msgid ""
 "Tall ones, I thank ye. Life has been nothing but a struggle recently. We are "
 "the last outpost o’ civilization in these caves."
@@ -4753,18 +4802,15 @@ msgstr ""
 "zászlóvivői."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:611
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:663
 msgid ""
-"These caves are vast. If we are to find the Sceptre of Fire we must hurry. "
-"We are not alone, and now that our foes have smelled our blood it will be "
-"worse."
+"We have fared little better ourselves, friend. We have fled the Aethenwood "
+"last spring and come to these caves to seek the Sceptre of Fire. With the "
+"Sceptre, we hope to put the war to an end."
 msgstr ""
-"Hatalmasak ezek a barlangok. Ha meg akarjuk találni a Tűz Jogarát, sietnünk "
-"kell. Nem vagyunk egyedül, és most, hogy az ellenségeink már szagot fogtak, "
-"még rosszabb lesz."
 
 #. [message]: speaker=Geldar
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:615
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:668
 msgid ""
 "The Sceptre? Ah, the Sceptre ye seek. You surface dwellers are ambitious. "
 "Beyond my citadel the spawn of the darkness hold complete sway. You’ll no’ "
@@ -4775,23 +4821,21 @@ msgstr ""
 "Nem élitek túl segítség nélkül."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:619
-msgid "How will we make it?"
-msgstr "Hogy csináljuk?"
+#. Relgorn is the dwarvish leader from the previous scenario
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:674
+msgid "Lord Relgorn’s troops are fighting at our side, sir."
+msgstr ""
 
 #. [message]: speaker=Geldar
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:623
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:679
 msgid ""
-"Northeast o’ my keep, young human, the tunnels converge towards the deepest "
-"reaches of the underground kingdom. The Sceptre can only be there. Please "
-"accept the service of my guardsmen. These elite warriors will protect you."
+"And fine troops they are, Prince, but no dwarf can match a guardsman’s "
+"resolute defense. Please accept the service o’ my clan’s defenders, to "
+"protect you and your quest."
 msgstr ""
-"Ifjú ember! A várkastélyomtól északkeletre lévő alagutak a földalatti "
-"királyság legmélye felé tartanak. A Jogar csakis ott lehet. Kérlek, fogadd "
-"el az őreim szolgálatait. E kiváló harcosok majd megvédenek."
 
-#. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:633
+#. [message]: speaker=Konrad
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:684
 msgid ""
 "Your boon is most welcome, sir dwarf. Keeping the Sceptre out of the hands "
 "of evil beasts is a common goal for us, and we will prevail with your help."
@@ -4801,12 +4845,44 @@ msgstr ""
 "segítségetekkel győzedelmeskedni fogunk."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:638
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:690
 msgid "You may now recruit the legendary dwarvish guardsmen!"
 msgstr "Ezentúl már legendás törp őröket is toborozhatsz!"
 
+#. [message]: speaker=Geldar
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:699
+#, fuzzy
+#| msgid ""
+#| "Northeast o’ my keep, young human, the tunnels converge towards the "
+#| "deepest reaches of the underground kingdom. The Sceptre can only be "
+#| "there. Please accept the service of my guardsmen. These elite warriors "
+#| "will protect you."
+msgid ""
+"Northeast o’ my keep, Delfador, the tunnels converge towards the deepest "
+"reaches o’ the underground kingdom. The Sceptre can only be there."
+msgstr ""
+"Ifjú ember! A várkastélyomtól északkeletre lévő alagutak a földalatti "
+"királyság legmélye felé tartanak. A Jogar csakis ott lehet. Kérlek, fogadd "
+"el az őreim szolgálatait. E kiváló harcosok majd megvédenek."
+
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:648
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:705
+msgid ""
+"These caves are vast. If we are to find the Sceptre of Fire we must hurry. "
+"We are not alone, and now that our foes have smelled our blood it will be "
+"worse."
+msgstr ""
+"Hatalmasak ezek a barlangok. Ha meg akarjuk találni a Tűz Jogarát, sietnünk "
+"kell. Nem vagyunk egyedül, és most, hogy az ellenségeink már szagot fogtak, "
+"még rosszabb lesz."
+
+#. [message]: speaker=Konrad
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:710
+msgid "How will we make it?"
+msgstr "Hogy csináljuk?"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:715
 msgid ""
 "I do not know, Konrad, but I can sense our path only leads us downward. We "
 "will continue to the northeast, to the deepest depths of these caverns."
@@ -4825,7 +4901,7 @@ msgstr "Kényszerű szövetség"
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:53
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:36
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:41
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:303
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:304
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:104
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:33
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:51
@@ -5006,7 +5082,7 @@ msgid "Thank you. Come, men. Let us find the Sceptre!"
 msgstr "Köszönöm, hercegnő! Gyerünk, katonák, találjuk meg a jogart!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:419
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:417
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:24
 msgid "I can’t believe it should end like this!"
 msgstr "Nem hiszem el, hogy így kell véget érnie!"
@@ -5578,14 +5654,14 @@ msgstr ""
 "magadat a tűzhányó szívében."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:304
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:310
 #, fuzzy
 #| msgid ""
 #| "Your people have already saved me once from a watery death, noble mer, "
 #| "fighting by my side as undead horrors threatened to devour us. I entrust "
 #| "our army to your strength and protection."
 msgid ""
-"Your people have already saved me once from a watery death, noble merfolk, "
+"Your people have already saved me once from a watery death, noble merman, "
 "fighting by my side as undead horrors threatened to devour us. I entrust our "
 "army to your strength and protection."
 msgstr ""
@@ -5594,7 +5670,23 @@ msgstr ""
 "gyötrődtünk. Erős és védelmező kezetekre bízom a seregünket."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:310
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:316
+#, fuzzy
+#| msgid ""
+#| "Your people have already saved me once from a watery death, noble mer, "
+#| "fighting by my side as undead horrors threatened to devour us. I entrust "
+#| "our army to your strength and protection."
+msgid ""
+"Your people have already saved me once from a watery death, noble mermaid, "
+"fighting by my side as undead horrors threatened to devour us. I entrust our "
+"army to your strength and protection."
+msgstr ""
+"Nemes sellő, a néped egyszer már megmentett engem attól, hogy vízben érjen a "
+"halál. Az én oldalamon harcoltak, amikor az élőholt szörnyetegektől "
+"gyötrődtünk. Erős és védelmező kezetekre bízom a seregünket."
+
+#. [message]: speaker=Konrad
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:324
 msgid ""
 "If you are confident you can navigate these waters and guide our forces to "
 "safety, then lead on."
@@ -5603,27 +5695,27 @@ msgstr ""
 "a csapatunkat, akkor mutasd az utat."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:328
 msgid "I am, my liege. We press ahead. Stay close, noble masters."
 msgstr ""
 "Biztos vagyok benne, jó uram. Előremegyünk, de gyertek szorosan mögöttünk, "
 "nemes uraim."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:318
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:332
 msgid "I suspected you would attempt to lead us down the banks of Longlier..."
 msgstr ""
 "Nem gondoltam volna, hogy a Longlier partján vezető útra akarsz rátérni..."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:322
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:336
 msgid "(shock) What!? Konrad, your folly is appalling! Do you flout my advice?"
 msgstr ""
 "(döbbenten) Micsoda!? Konrad, elképesztő az ostobaságod! Ennyire semmibe "
 "veszed a tanácsomat?"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:326
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:340
 msgid ""
 "We are traveling east? Down the river? Konrad, I hope you know what you are "
 "committing us to."
@@ -5632,14 +5724,14 @@ msgstr ""
 "kívánsz tőlünk!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:330
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:344
 msgid "Of course not, whelp, else he would have chosen a safer route."
 msgstr ""
 "Persze, hogy nem tudja, te kis csitri, különben biztonságosabb utat "
 "választott volna!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:335
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:349
 #, fuzzy
 #| msgid ""
 #| "Hold your tongue, Kalenz. The princess is our ally and of royal blood. "
@@ -5652,12 +5744,12 @@ msgstr ""
 "csörgedez az ereiben. Nem érdemli meg, hogy ilyen tiszteletlenül bánj vele."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:339
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:353
 msgid "Delfador, you cannot allow this to happen! We march to our death!"
 msgstr "Delfador, nem nézheted tétlenül, ami történik! A vesztünkbe rohanunk!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:343
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:357
 msgid ""
 "Lord elf, I am in command. I have held council with the Merfolk, and they "
 "believe they can find a path down the river and over the falls. We will take "
@@ -5671,7 +5763,7 @@ msgstr ""
 "vidéket."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:348
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:362
 msgid ""
 "(sigh) I have been spoiled by years of genteel living among your kind, "
 "Kalenz. An elf’s capacity for introspection and serenity is exceeded only by "
@@ -5682,7 +5774,7 @@ msgstr ""
 "dolgok mélyére lásson, csak elszántsága és harci szenvedélye szárnyalja túl."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:353
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:367
 msgid ""
 "It offends your pride and wisdom to suffer the indignity of accepting the "
 "will of humans, especially in such a harsh predicament. I urge you to "
@@ -5697,7 +5789,7 @@ msgstr ""
 "ebül szerzett hatalmára. Szóval: kelet felé megyünk."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:357
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:371
 msgid ""
 "I do not like this, old friend. There are legends of things dwelling on this "
 "river that even I dare not speak of..."
@@ -5706,17 +5798,17 @@ msgstr ""
 "élnek ebben a folyóban. Olyanok, hogy beszélni sem merek róluk..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:379
 msgid "Prince Konrad, are you sure you want to do this?"
 msgstr "Konrad herceg! Biztosan így döntesz?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:369
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:383
 msgid "I say that..."
 msgstr "Azt mondom, hogy..."
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:371
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:385
 msgid ""
 "Our need for speed outweighs the danger. With the Merfolk to help us, we "
 "will win through."
@@ -5725,19 +5817,19 @@ msgstr ""
 "segítségével pedig bizonyára diadalt aratunk."
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:387
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:401
 msgid "On second thought, perhaps we should choose a safer way to go."
 msgstr ""
 "Ha jobban belegondolok, talán mégis egy biztonságosabb utat kéne "
 "választanunk."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:391
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:405
 msgid "As you say, my lord."
 msgstr "Ahogy parancsolod, uram."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:396
+#: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:410
 msgid ""
 "If you want to choose the river path later, move a merman to the right end "
 "of the river again."
@@ -5823,7 +5915,7 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:141
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:378
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:379
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:186
 msgid "He was just someone who couldn’t handle the power given to him."
 msgstr ""
@@ -5831,7 +5923,7 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:145
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:382
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:383
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:190
 msgid "You would do well to learn the lesson he did not."
 msgstr "Jól teszed, ha megtanulod a leckét, amelyet ő nem tanult meg."
@@ -5847,7 +5939,7 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:153
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:390
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:391
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:198
 msgid "Indeed..."
 msgstr "Igaz is..."
@@ -5868,7 +5960,7 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:161
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:398
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:399
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:206
 #, fuzzy
 #| msgid ""
@@ -5889,7 +5981,7 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:165
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:402
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:403
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:210
 msgid ""
 "I became my mother’s most trusted aide-de-camp. I was sent to quiet the "
@@ -5906,7 +5998,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:169
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:406
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:407
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:214
 msgid ""
 "I do know the cup of bitterness poured out on Wesnoth by your mother, child. "
@@ -5922,7 +6014,7 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:174
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:411
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:412
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:219
 #, fuzzy
 #| msgid ""
@@ -5948,7 +6040,7 @@ msgstr "Holtláp"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:24
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:291
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:292
 msgid "Defeat the Lich-Lord Aimucasur"
 msgstr "Legyőzöd Aimucasurt, a delevény nagyurat"
 
@@ -5983,7 +6075,7 @@ msgid "Dafeis"
 msgstr "Dafeis"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:198
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:199
 msgid ""
 "This land is cursed. Liches have existed here for ages, luring adventurers "
 "and soldiers to their deaths and amassing great armies and fortunes."
@@ -5993,7 +6085,7 @@ msgstr ""
 "hogy hatalmas élőholt sereget és vagyont halmozzanak fel."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:203
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:204
 msgid ""
 "Look there! The swamp is infested with all manner of skeletons, corpses, and "
 "worse. I hope I have made a wise choice in taking this path."
@@ -6002,7 +6094,7 @@ msgstr ""
 "Remélem, bölcsen döntöttem, hogy ezt az utat választottam."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:207
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:208
 msgid ""
 "These Death Knights appear to be minions enslaved by the Lich-Lord. This one "
 "must be particularly powerful, since Death Knights are usually strong-willed "
@@ -6013,7 +6105,7 @@ msgstr ""
 "különösen nagy lehet az ereje, ha uralma alá tudta őket hajtani."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:211
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:212
 msgid ""
 "I believe we can destroy the master and release the minions. There is much "
 "fighting to be done before we can pass through these swamps in peace. May "
@@ -6025,7 +6117,7 @@ msgstr ""
 "harcolnak tovább."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:225
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:226
 msgid ""
 "The Death Knight explodes into a cloud of dust as it is eradicated. Its "
 "armor, however, drops to the ground and remains intact. The heavy black "
@@ -6036,12 +6128,12 @@ msgstr ""
 "acél úgy csillog, mint a tükör."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:229
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:230
 msgid "Delfador... that breastplate... how did it end up here?"
 msgstr "Delfador... az a mellvért... hogy került ide?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:233
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:234
 msgid ""
 "Its owner was surely a famous warrior in life. I wonder who it was. That "
 "plate must have a powerful enchantment to have resisted centuries of decay. "
@@ -6053,7 +6145,7 @@ msgstr ""
 "ki, hogy ki öltheti magára."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:275
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:276
 msgid ""
 "As the last of its generals falls, an ear-splitting screech escapes from the "
 "lich. It is clear that controlling such powerful spirits has drained it "
@@ -6064,7 +6156,7 @@ msgstr ""
 "lelkeket irányított, de most az ellened táplált dühtől forrong."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:339
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:340
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. A giant cloud of dust billows out as the remnants of the lich’s "
@@ -6075,7 +6167,7 @@ msgstr ""
 "maradványaiból, melyek most végleg bomlásnak indulnak."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:351
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:352
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. The last of his minions silently falls like a puppet with its "
@@ -6088,7 +6180,7 @@ msgstr ""
 "melyek most végleg bomlásnak indulnak."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:359
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:360
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. His minions fall like puppets with their strings cut. A cloud of "
@@ -6101,12 +6193,12 @@ msgstr ""
 "melyek most végleg bomlásnak indulnak."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:366
 msgid "Aimucasur’s lordship over this cursed ground is broken."
 msgstr "Aimucasur uralma ezen elátkozott föld fölött megtört."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:369
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:370
 #, fuzzy
 #| msgid ""
 #| "Aimucasur? So you know of this Lich-Lord? Did you know him? He was a "
@@ -6119,7 +6211,7 @@ msgstr ""
 "mágus volt?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:374
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:375
 msgid ""
 "Yes, very powerful. I was not certain of his identity at first, but it is "
 "certain now. He lived centuries ago... he appears in our histories, a former "
@@ -6132,7 +6224,7 @@ msgstr ""
 "tudjuk, mi történt vele."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:386
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:387
 msgid ""
 "Move along, Elf, unless you enjoy making camp in this slimy bog. I, for one, "
 "do not!"
@@ -6141,7 +6233,7 @@ msgstr ""
 "Ami engem illet, én továbbmennék."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:394
+#: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:395
 msgid ""
 "Listen, you whose eyes are fair but hide a vacuum, do you not think I know "
 "what power does to one’s soul? What evils a person is capable of when truth "
@@ -6183,7 +6275,7 @@ msgstr "Perzsekények"
 #. [unit]: type=Injured Sergeant, id=Warven
 #. [unit]: type=Sergeant, id=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:222
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:810
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:826
 msgid "Warven"
 msgstr "Warven"
 
@@ -6497,27 +6589,32 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:576
+#, fuzzy
+#| msgid ""
+#| "Keep on going down the river. While we’re at it, let us force as many "
+#| "drakes as possible to pay with their lives. They have defied us, and now "
+#| "they will meet the same fate as their leader!"
 msgid ""
 "Keep on going down the river. While we’re at it, let us force as many drakes "
-"as possible to pay with their lives. They have defied us, and now they will "
-"meet the same fate as their leader!"
+"as possible to pay with their lives. They defy us, and now they will meet "
+"the same fate as their leader!"
 msgstr ""
 "Csak tovább a folyó mentén! És amíg haladunk, annyi perzsekényfej hulljon "
 "porba, amennyi csak lehet! Szembeszálltak velünk, és ezért a vezérük sorsára "
 "jutnak!"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:587
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:593
 msgid "We hear and obey, My Lord."
 msgstr "Kívánságod számunkra parancs, jó uram."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:699
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:705
 msgid "I see someone at the top of the furthermost cliff!"
 msgstr "Látok valakit ott, a legtávolabbi szirt tetején!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:715
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:721
 msgid ""
 "It is a young human sergeant, barely more than a boy. He appears badly hurt "
 "but still alive."
@@ -6526,7 +6623,7 @@ msgstr ""
 "megsérült, de még él."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:720
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:726
 #, fuzzy
 #| msgid ""
 #| "I wonder why the drakes haven’t finished him by now? It is strange that "
@@ -6539,22 +6636,22 @@ msgstr ""
 "hogy közel s távol sincsenek arrafelé sem perzsekények, sem élőholtak."
 
 #. [message]: type=Water Serpent
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:742
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:748
 msgid "Grrroar"
 msgstr "Grrroar"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:750
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:756
 msgid "Well... that answers the question."
 msgstr "Hát... ez mindent megmagyaráz."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:754
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:760
 msgid "We should try to help the injured soldier."
 msgstr "Meg kell próbálnunk segíteni a sebesült katonának."
 
-#. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:758
+#. [message]: speaker=Konrad
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:764
 msgid ""
 "Must I remind you that he, like all the others who died, was sent to kill "
 "us!?"
@@ -6563,7 +6660,7 @@ msgstr ""
 "küldték, hogy végezzen velünk."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:762
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:768
 msgid ""
 "Perhaps he was sent after you, but not after me. I am sure that he is still "
 "loyal to his princess — the heiress to the throne of Wesnoth!"
@@ -6572,7 +6669,7 @@ msgstr ""
 "hogy még mindig hűséges a hercegnőjéhez – Wesnoth trónjának örököséhez!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:766
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:772
 #, fuzzy
 #| msgid ""
 #| "Princess Li’sar, do I have to remind you again that it is Konrad, not "
@@ -6585,18 +6682,30 @@ msgstr ""
 "te."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:770
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:776
+#, fuzzy
+#| msgid ""
+#| "Whatever... I still think we should make an effort to rescue him from the "
+#| "unfortunate position he is in. If you help him, I’ll do my best to "
+#| "convince him that you are not his enemies but his friends..."
 msgid ""
-"Whatever... I still think we should make an effort to rescue him from the "
-"unfortunate position he is in. If you help him, I’ll do my best to convince "
-"him that you are not his enemies but his friends..."
+"Be that as it may, I still think we should make an effort to rescue him from "
+"the unfortunate position he is in. If you help him, I’ll do my best to "
+"convince him that you are not his enemies but his friends."
 msgstr ""
 "Akárhogy is... Továbbra is azt gondolom, hogy okvetlenül meg kell próbálnunk "
 "megmenteni. Nem hagyhatjuk így itt. Ha segítetek, mindent megteszek, hogy "
 "meggyőzzem, nem ellenségek vagytok, hanem barátok..."
 
+#. [message]: speaker=Kalenz
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:780
+msgid ""
+"Very well. If you convince him not to raise his sword against us, the "
+"Lintair elves shall grant him safe passage."
+msgstr ""
+
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:774
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:784
 msgid ""
 "Our main goal remains to survive ourselves, but if we can spare the troops, "
 "we might try to rescue the sergeant stranded on the cliff. However, I make "
@@ -6606,28 +6715,37 @@ msgstr ""
 "tudunk nélkülözni néhány egységet, megpróbáljuk megmenteni az őrmestert. De "
 "nem ígérek semmit."
 
-#. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:778
-msgid "Fair enough!"
-msgstr "Jó, legyen így!"
-
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:782
-msgid "Fair enough."
-msgstr "Jó, legyen így."
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:788
+#, fuzzy
+#| msgid ""
+#| "Ach! I understand, Konrad. I am no stranger to the burden of command. "
+#| "Onward!"
+msgid ""
+"That I do understand, Konrad. I am no stranger to the burden of command."
+msgstr ""
+"Jól van! Értem, Konrad. Nekem sem új, hogy a parancsnokság milyen terheket "
+"ró az emberre. Gyerünk!"
 
-#. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:786
-msgid "Fair enough..."
-msgstr "Jó, legyen így..."
+#. [message]: speaker=Konrad
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:794
+msgid "I’m glad we agree, Li’sar. Now, onward! We must reach the cave."
+msgstr ""
+
+#. [message]: speaker=Konrad
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:800
+msgid ""
+"I’m glad we agree, Li’sar. Now, onward! We must continue downstream, past "
+"these drakes."
+msgstr ""
 
 #. [message]: speaker=Warven
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:824
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:840
 msgid "Who...who are you? A friend or a foe?"
 msgstr "Ki... ki vagy? Barát vagy ellenség?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:828
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:844
 msgid ""
 "We are friends. Don’t worry about it and don’t try to fight us — you are in "
 "no condition to fight."
@@ -6636,7 +6754,7 @@ msgstr ""
 "állapotban, hogy harcolj."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:832
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:848
 #, fuzzy
 #| msgid ""
 #| "I am Princess Li’sar, and we are friends. Join us and wait for the "
@@ -6649,12 +6767,12 @@ msgstr ""
 "őrmester, a gyógyítóink majd meggyógyítanak."
 
 #. [message]: speaker=Warven
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:836
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:852
 msgid "Princess Li’sar — here? Your Highness, I am yours to command!"
 msgstr "Li’sar hercegnő? Itt? Felség, rendelkezz velem!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:840
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:856
 msgid ""
 "Follow us when you think you are capable and beware of monsters. We have "
 "fought many already, and there are sure to be more ahead."
@@ -6663,7 +6781,7 @@ msgstr ""
 "Eddig már sokukkal megküzdöttünk, de még biztos vár ránk néhány."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:857
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:873
 msgid ""
 "There is a cataract ahead. By the thunder of the water and the height of the "
 "spume, it must drop several hundred feet at least. We must leave the river "
@@ -6674,12 +6792,12 @@ msgstr ""
 "magával ránt a mélybe, különben biztosan itt pusztulunk!"
 
 #. [message]: role=merman-advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:874
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:890
 msgid "Even we merfolk cannot swim that. The road east is blocked."
 msgstr "Ott még a sellők sem tudnak úszni. Az út keletre járhatatlan."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:878
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:894
 msgid ""
 "Wait. What about the tributary which flows into the river from inside the "
 "mountain? There seems to be a cave..."
@@ -6688,7 +6806,7 @@ msgstr ""
 "ömlik a folyóba? Úgy tűnik, van ott egy barlang..."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:883
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:899
 msgid ""
 "Legend says that that little river comes from the land of the North Elves. "
 "It is said that it is an outflow of Everlore, which flows in the land of my "
@@ -6713,12 +6831,12 @@ msgstr ""
 "választásunk."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:887
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:903
 msgid "Unfortunately, we have no other options. Onward into the cave!"
 msgstr "Sajnos tényleg nincs más választásunk. Gyerünk a barlangba!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:903
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:919
 msgid ""
 "I’ve reached the cave entrance. There seems to be a system of channels "
 "running through the mountains. Follow me, and let us hope we somehow manage "
@@ -6729,33 +6847,33 @@ msgstr ""
 "sikerül élve kikerülni."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:907
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:923
 msgid "That is so very encouraging..."
 msgstr "Nem túl biztató..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:911
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:927
 msgid "I wonder what kind of monsters await us inside."
 msgstr "Kíváncsi vagyok, miféle szörnyek várnak odabent."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:915
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:931
 msgid "We are soon going to find out."
 msgstr "Nemsokára kiderül."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:919
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:935
 msgid ""
 "Well, there is no point in delaying any further. Let us go and find out."
 msgstr "Hát, semmi értelme, hogy teketóriázzunk. Menjünk be, és járjunk utána."
 
 #. [message]: speaker=Warven
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:924
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:940
 msgid "Yes, my lady!"
 msgstr "Igen, úrnőm!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:928
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:944
 msgid "Everybody inside..."
 msgstr "Mindenki, gyerünk befele..."
 
@@ -6855,7 +6973,7 @@ msgstr "Telerandor"
 #. [message]: speaker=Telerandor
 #. [message]: speaker=Glarilon
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:422
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:567
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:568
 msgid "My lords! I have found you at last."
 msgstr "Nemes urak! Csakhogy rátok bukkantam!"
 
@@ -6989,7 +7107,7 @@ msgstr ""
 "Vigyázzatok, mindannyian nagy veszélyben vagyunk!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:491
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:492
 msgid ""
 "Konrad, the encampment must be torn down. Any delay and these armies will "
 "crush us. Any evidence of our passage through here, and they will chase us."
@@ -6999,12 +7117,12 @@ msgstr ""
 "hajtóvadászatot indítanak ellenünk."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:514
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:515
 msgid "So, Konrad, do you think we can simply trot across the battlefield?"
 msgstr "Hát, Konrad, szerinted egyszerűen átsétálhatunk a csatamezőn?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:518
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:519
 #, fuzzy
 #| msgid ""
 #| "Stop for a moment, princess. Look — you can barely see them in the "
@@ -7023,7 +7141,7 @@ msgstr ""
 "szomjaznak."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:522
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:523
 msgid ""
 "But they will not neglect to notice our presence in their midst! We are "
 "walking into slaughter!"
@@ -7032,7 +7150,7 @@ msgstr ""
 "aprítanak mindnyájunkat!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:526
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:527
 #, fuzzy
 #| msgid ""
 #| "(hushed) Our soldiers will defend us as we rush across the field. Sorry "
@@ -7047,17 +7165,17 @@ msgstr ""
 "élve kell átérniük."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:530
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:531
 msgid "..."
 msgstr "..."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:534
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:535
 msgid "...and Delfador, of course. And Kalenz... and.."
 msgstr "...és Delfadornak, természetesen. És Kalenznek... és..."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:539
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:540
 msgid ""
 "Ach! I understand, Konrad. I am no stranger to the burden of command. Onward!"
 msgstr ""
@@ -7065,32 +7183,32 @@ msgstr ""
 "ró az emberre. Gyerünk!"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:564
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:565
 msgid "Glarilon"
 msgstr "Glarilon"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:576
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:577
 msgid "Thalindil"
 msgstr "Thalindil"
 
 #. [message]: speaker=Thalindil
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:579
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:580
 msgid "(exhausted) We have... (pant) finally found you!"
 msgstr "(kimerülten) Végre... (zihál) megtaláltunk!"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:606
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:607
 msgid "Rholandir"
 msgstr "Rholandir"
 
 #. [message]: speaker=Rholandir
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:609
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:610
 msgid "Lord Kalenz, Lord Konrad, our forces are nigh! Do not lose hope!"
 msgstr "Kalenz úr, Konrad úr, a seregeink már a közelben járnak! Ne adják fel!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:646
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:647
 msgid ""
 "There are some orcs! We must let them fight the men of Wesnoth, and avoid "
 "engaging them at all costs!"
@@ -7099,17 +7217,17 @@ msgstr ""
 "pedig kerüljük velük az összetűzést mindenáron!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:660
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:661
 msgid "There they are! Charge!"
 msgstr "Ott vannak! Roham!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:688
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:689
 msgid "There you are! You must come quickly east to Lintanir!!"
 msgstr "Hát, itt vagytok! Siessetek gyorsan keletre, a Lintanirba!"
 
 #. [message]: speaker=El'rien
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:708
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:709
 msgid ""
 "Greetings, Elf-friend! Welcome to Emetria, my hold in Lintanir. You must "
 "take shelter here until the battle passes. If you stay with me here for a "
@@ -7120,7 +7238,7 @@ msgstr ""
 "maradtok velem, mind biztonságban leszünk."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:712
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:713
 msgid ""
 "Thank you, Lord El’rien. The hospitality of the North Elves is as generous "
 "as that of your kin in the south! My men will help you hold out against our "
@@ -7131,7 +7249,7 @@ msgstr ""
 "az ellenséget."
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:722
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:723
 #, fuzzy
 #| msgid ""
 #| "Greetings, Elf-friend! Welcome to Emetria, my hold in Lintanir. You must "
@@ -7146,7 +7264,7 @@ msgstr ""
 "maradtok velem, mind biztonságban leszünk."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:726
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:727
 #, fuzzy
 #| msgid ""
 #| "Thank you, Lord El’rien. The hospitality of the North Elves is as "
@@ -7161,14 +7279,14 @@ msgstr ""
 "az ellenséget."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:733
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:734
 msgid ""
 "There is nobody here! We can take shelter here, but must hold out against "
 "our enemies alone."
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:749
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:750
 msgid ""
 "Konrad, you have made it to the domain of the North Elves. Continue moving "
 "east and let the elves guard your rear."
@@ -7177,7 +7295,7 @@ msgstr ""
 "az utat kelet felé, az utóvédelmet pedig bízd a tündékre."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:812
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:813
 msgid ""
 "We have not yet reached the forest, and the battle still rages. We are "
 "caught between two vast armies and cannot escape to safety! We are defeated!"
@@ -7186,12 +7304,12 @@ msgstr ""
 "szorításában vergődünk, nincs menekvés! Elvesztünk!"
 
 #. [message]: speaker=El'rien
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:827
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:828
 msgid "Elf-friends, you have made it to safety!"
 msgstr "Barátaim, tündék barátai, most már biztonságban vagytok!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:831
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:832
 msgid ""
 "El’rien, we have the Sceptre of Fire with us! We must escort them to "
 "Elensiria!"
@@ -7200,21 +7318,21 @@ msgstr ""
 "Elensiriába!"
 
 #. [message]: speaker=El'rien
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:835
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:836
 msgid "Indeed. We will escort you to our capital, where we will make Council."
 msgstr ""
 "Úgy lesz. Elkísérünk titeket a fővárosunkba, ott pedig összehívjuk a "
 "Tanácsot."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:845
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:846
 #, fuzzy
 #| msgid "Who then is your leader? Whom do we serve?"
 msgid "Where is your leader? Where is El’rien?"
 msgstr "Akkor most ki is a ti vezéretek? Kit szolgálunk pontosan?"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:849
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:850
 msgid ""
 "Alas, he has fallen just this day! We were told of your coming, Lord Kalenz. "
 "Council has already been called. You must hurry, but we cannot afford the "
@@ -7222,14 +7340,14 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:853
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:854
 msgid ""
 "This is grave news. We will carry word to Elensiria. Hold fast! We will send "
 "reinforcements."
 msgstr ""
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:860
+#: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:861
 msgid ""
 "Where is El’rien? Where are his men? Things are moving quicker than we "
 "feared. Hurry, we must reach Elensiria."
@@ -7660,7 +7778,7 @@ msgstr ""
 "ki benneteket egy wesnothi hercegnő a jelenlétével."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:111
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:112
 msgid ""
 "Silence, foolish girl! With such arrogance, is it any surprise that the "
 "royal family of Wesnoth long ago saw their ancient alliances fall to pieces?"
@@ -7669,7 +7787,7 @@ msgstr ""
 "család régi szövetségesei már jó ideje elpártoltak."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:115
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:116
 msgid ""
 "Yes... you are right, sir. It is I who am honored to be here, and I "
 "apologize for my discourtesy."
@@ -7678,7 +7796,7 @@ msgstr ""
 "bocsánatért esedezem az udvariatlanságomért."
 
 #. [message]: speaker=Uradredia
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:119
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:120
 msgid ""
 "Delfador the Great. As wise with his tongue in advice as he is strong with "
 "his staff in battle. A rare combination, especially among men."
@@ -7688,7 +7806,7 @@ msgstr ""
 "embereknél."
 
 #. [message]: speaker=Parandra
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:123
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:124
 msgid ""
 "How quickly does the race of men mature! Only seventeen winters have passed "
 "since I last laid eyes on you, Konrad, yet you are now a grown man. A proven "
@@ -7699,14 +7817,14 @@ msgstr ""
 "tapasztalt harcost látok magam előtt!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:127
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:128
 msgid "Forgive me, Elf, but I’m afraid I do not recall meeting you before."
 msgstr ""
 "Bocsáss meg nekem, tünde, de bármennyire is töröm a fejem, nem emlékszem, "
 "hogy találkoztunk-e valaha."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:131
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:132
 msgid ""
 "Konrad, this is Parandra. She helped me rescue you from the clutches of "
 "Asheviere."
@@ -7715,14 +7833,14 @@ msgstr ""
 "Asheviere karmai közül."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:135
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:136
 msgid "I had no idea! Thank you, my lady. It is a pleasure to meet you again."
 msgstr ""
 "Ó, nem tudtam! Köszönök mindent. Nagy örömömre szolgál, hogy "
 "viszontláthatlak."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:139
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:140
 msgid ""
 "Rescued him from my mother? But seventeen years ago Konrad would have been "
 "an infant! What is this you are talking about?"
@@ -7731,7 +7849,7 @@ msgstr ""
 "volt! Miről beszélsz?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:143
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:144
 msgid ""
 "Your mother has much blood upon her hands, child. She has had many killed "
 "unjustly. When Konrad was an infant, she ordered all the princes put to "
@@ -7742,7 +7860,7 @@ msgstr ""
 "herceget végezzenek ki, hogy majdan ő gyakorolhasson hatalmat."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:147
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:148
 msgid ""
 "She had them murdered? There were others too, not just Konrad? Surely you do "
 "not speak the truth! Parandra, what do you say?"
@@ -7751,7 +7869,7 @@ msgstr ""
 "Képtelenség, amit állítasz! Parandra, mit szólsz ehhez?"
 
 #. [message]: speaker=Parandra
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:151
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:152
 #, fuzzy
 #| msgid ""
 #| "Princess, when Delfador the Great speaks of the Queen Dowager, Asheviere, "
@@ -7764,12 +7882,12 @@ msgstr ""
 "elrendelte, hogy végezzék ki Wesnoth hercegeit, akkor az úgy is van."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:155
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:156
 msgid "And what say you, Elf-king?"
 msgstr "És te mit mondasz, tündekirály?"
 
 #. [message]: speaker=Uradredia
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:159
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:160
 #, fuzzy
 #| msgid ""
 #| "I did not see it myself, Princess, but I have heard many reliable "
@@ -7786,7 +7904,7 @@ msgstr ""
 "meggyalázzák a földjeinket, teljesen semmibe vette a körülötte élő népeket."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:169
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:170
 msgid ""
 "Well, that is why I must take the Sceptre. I will return, and people will "
 "accept me as Queen. I will rule justly and fairly. My mother is only Queen "
@@ -7798,7 +7916,7 @@ msgstr ""
 "tudom bizonyítani."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:174
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:175
 #, fuzzy
 #| msgid ""
 #| "Princess, there is some good in you, but the throne is not yours to "
@@ -7811,7 +7929,7 @@ msgstr ""
 "jogar. Ő fogja elfoglalni a trónt."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:180
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:181
 msgid ""
 "Well, I have the Sceptre! I will return and the people will accept me as "
 "Queen! My mother is only Queen Dowager. The Throne is rightfully mine, and I "
@@ -7823,7 +7941,7 @@ msgstr ""
 "jóságos uralkodó leszek. Még talán a tanácsosommá is kinevezlek, Delfador."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:185
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:186
 #, fuzzy
 #| msgid ""
 #| "Though you have the Sceptre, Princess, it is rightfully Konrad’s. You "
@@ -7836,12 +7954,12 @@ msgstr ""
 "azért lehet most nálad, mert mi segítettünk neked megszerezni."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:189
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:190
 msgid "And if I refuse to give it to him?"
 msgstr "És ha megtagadom, hogy átadjam neki?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:194
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:195
 #, fuzzy
 #| msgid ""
 #| "If it is necessary, princess, I will ask Konrad to fight you in a duel "
@@ -7852,7 +7970,7 @@ msgstr ""
 "felségedet párbajra."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:198
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:199
 msgid ""
 "Delfador! Li’sar has become our friend. I don’t want to fight her! As long "
 "as she rules well, what does it matter if she becomes queen?"
@@ -7861,12 +7979,12 @@ msgstr ""
 "Amíg igazságosan uralkodik, mit számít, hogy ő az uralkodó?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:203
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:204
 msgid "You are the rightful heir. You should be king, Konrad."
 msgstr "Te vagy a törvényes trónörökös. Neked kell uralkodnod, Konrad!"
 
 #. [message]: speaker=Parandra
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:210
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:211
 msgid ""
 "Delfador, you have raised Konrad to be skillful and wise, honorable and "
 "just. A warrior who has respect, and appreciates peace. Yet the throne is "
@@ -7877,12 +7995,12 @@ msgstr ""
 "mégsem az ő helye. Tudod jól, miről beszélek, Delfador!"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:214
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:215
 msgid "But I do not! What is your meaning, Parandra?"
 msgstr "De én egyáltalán nem! Miről beszélsz, Parandra?"
 
 #. [message]: speaker=Parandra
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:218
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:219
 msgid ""
 "In time, things will be revealed, fair Princess. For the moment, go forth "
 "and claim the throne of Wesnoth."
@@ -7891,7 +8009,7 @@ msgstr ""
 "szerezd meg Wesnoth trónját!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:222
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:223
 msgid ""
 "Parandra, what you say may seem right to some, but as long as you and I "
 "speak to no-one of what we know, I see no reason why Konrad would not best "
@@ -7902,7 +8020,7 @@ msgstr ""
 "kaphatná meg Konrad a trónt."
 
 #. [message]: speaker=Parandra
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:226
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:227
 msgid ""
 "In so many things you are right, Delfador, and your wisdom is unmatched in "
 "the world of men. But in this, you are mistaken. Li’sar is the heir. She "
@@ -7914,12 +8032,12 @@ msgstr ""
 "benne."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:230
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:231
 msgid "She will claim the throne, and not me? What should I do?"
 msgstr "Ő fogja megszerezni a trónt, nem pedig én? És én mit tegyek?"
 
 #. [message]: speaker=Parandra
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:234
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:235
 msgid ""
 "Li’sar should be Queen, but you will go with her. Indeed, I suspect we could "
 "not convince you otherwise. I have seen the way you look at her, Konrad. I "
@@ -7930,14 +8048,14 @@ msgstr ""
 "végére is követnéd."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:238
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:239
 msgid ""
 "With all due respect, my lady, she is my cousin! There is nothing between us!"
 msgstr ""
 "A kellő tisztelettel, asszonyom, de ő az unokatestvérem! Nincs köztünk semmi!"
 
 #. [message]: speaker=Parandra
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:242
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:243
 msgid ""
 "Then if it is as you say, Konrad, perhaps you should stay here with us. It "
 "would surely be safer for you. The elves could show you things that would "
@@ -7949,7 +8067,7 @@ msgstr ""
 "voltak."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:246
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:247
 msgid ""
 "That is a generous offer, my lady, but you are indeed right, I would rather "
 "go with Li’sar."
@@ -7958,19 +8076,19 @@ msgstr ""
 "Li’sarral."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:250
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:251
 msgid "And what say you, Uradredia?"
 msgstr "És te mit mondasz, Uradredia?"
 
 #. [message]: speaker=Uradredia
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:254
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:255
 msgid ""
 "Tell me, Li’sar, are you willing to fight your own mother for the throne?"
 msgstr ""
 "Mondd meg, Li’sar, hajlandó vagy megküzdeni a trónért a saját anyáddal?"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:258
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:259
 msgid ""
 "It is for the good of the country. If it is necessary, I will fight her, Elf-"
 "king."
@@ -7978,7 +8096,7 @@ msgstr ""
 "Ez az ország javát szolgálja. Ha szükséges, szembeszállok vele, tündekirály!"
 
 #. [message]: speaker=Uradredia
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:263
 msgid ""
 "I feel that this lady speaks the truth. Delfador, although I know that you "
 "do not concur, the words of Parandra, daughter of Elandria are wise. Rest "
@@ -7989,13 +8107,16 @@ msgstr ""
 "aztán induljatok tovább velük."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:266
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:267
+#, fuzzy
+#| msgid ""
+#| "And you have been with us for a time, Kalenz son of Kliada, what say you?"
 msgid ""
-"And you have been with us for a time, Kalenz son of Kliada, what say you?"
+"And you who have been with us for a time, Kalenz son of Kliada, what say you?"
 msgstr "Egy ideje már velünk vagy, Kalenz, Kliada fia, te mit mondasz?"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:270
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:271
 msgid ""
 "Wisdom has been spoken here today, Delfador. We have been with Li’sar in the "
 "most trying of times, and risked life and limb with her. Yet we still have "
@@ -8009,7 +8130,7 @@ msgstr ""
 "de idővel jó királynő lesz belőle."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:274
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:275
 msgid ""
 "So, the Elven Council has spoken. But which path should we take on our "
 "journey? The Ford of Abez will not be passable, for surely it will be "
@@ -8020,7 +8141,7 @@ msgstr ""
 "szemét, és őrzik."
 
 #. [message]: speaker=Uradredia
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:278
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:279
 #, fuzzy
 #| msgid ""
 #| "There is another way by which you can return to Wesnoth: past the "
@@ -8038,7 +8159,7 @@ msgstr ""
 "vissza tudtok térni Wesnothba, és meglephetitek a gyanútlan királynőt."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:282
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:283
 msgid ""
 "Mountains of the dragons? That sounds very dangerous! I didn’t even think "
 "there were such things as dragons!"
@@ -8047,7 +8168,7 @@ msgstr ""
 "gondoltam soha, hogy egyáltalán léteznek sárkányok."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:286
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:287
 msgid ""
 "No dragon has been sighted in those mountains for many years, but they "
 "retain their name of old. Still, that path will be dangerous for us. Is "
@@ -8058,7 +8179,7 @@ msgstr ""
 "útvonal, amelyen mehetnénk?"
 
 #. [message]: speaker=Uradredia
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:290
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:291
 msgid ""
 "All routes are dangerous, though there is some hope along this path. Rest, "
 "and then go forth, friends. Fortune has smiled upon you so far, despite "
@@ -8069,7 +8190,7 @@ msgstr ""
 "mosolygott rátok, a nagy veszélyek ellenére. Talán ez továbbra is így marad."
 
 #. [message]: speaker=Parandra
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:294
+#: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:295
 msgid ""
 "Yes, rest. Your soldiers will be tended to and refreshed. We have made sure "
 "you will leave our protection with the resources to finish your journey."
@@ -8270,8 +8391,12 @@ msgstr "Megváltozott a terv. Inkább az életükre törünk!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:323
+#, fuzzy
+#| msgid ""
+#| "We must make haste! Far greater challenges lie before us, by tarrying "
+#| "here we’re diminishing our resources."
 msgid ""
-"We must make haste! Far greater challenges lie before us, by tarrying here "
+"We must make haste! Far greater challenges lie before us. By tarrying here "
 "we’re diminishing our resources."
 msgstr ""
 "Sietnünk kell! Sokkal nagyobb kihívások állnak még előttünk. Ha sokat "
@@ -8281,6 +8406,24 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:4
 msgid "Test of the Clan"
 msgstr "A klánok próbája"
+
+#. [lua]: wesnoth.wml_actions.show_countdown
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:25
+#, fuzzy
+#| msgid "Defeat $units_to_slay enemy units"
+msgid "Defeat one more enemy unit"
+msgid_plural "Defeat $units_to_slay enemy units"
+msgstr[0] "Legyőzöl $units_to_slay ellenséges egységet"
+msgstr[1] "Legyőzöl $units_to_slay ellenséges egységet"
+
+#. [lua]: wesnoth.wml_actions.show_countdown
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:28
+#, fuzzy
+#| msgid "Still $units_to_slay clan members to defeat!"
+msgid "Still $units_to_slay clan member to defeat!"
+msgid_plural "Still $units_to_slay clan members to defeat!"
+msgstr[0] "Még $units_to_slay klántagot kell legyőznöd!"
+msgstr[1] "Még $units_to_slay klántagot kell legyőznöd!"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:70
@@ -8300,31 +8443,31 @@ msgstr "Legyőzöd az összes ellenséges vezért"
 msgid "Plainsmen"
 msgstr "síkföldi emberek"
 
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Alric
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:121
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:206
 msgid "Sir Alric"
 msgstr "Alric úr"
 
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Ruga
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:149
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:197
 msgid "Sir Ruga"
 msgstr "Ruga úr"
 
-#. [then]
 #. [side]: type=Grand Knight, id=Sir Daryn
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:177
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:188
 msgid "Sir Daryn"
 msgstr "Daryn úr"
 
-#. [then]
 #. [side]: type=Grand Knight, id=Bayar
+#. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:205
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:539
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:542
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:179
 msgid "Lord Bayar"
 msgstr "Bayar báró"
@@ -8452,8 +8595,15 @@ msgstr ""
 msgid "Aye."
 msgstr "Rendben."
 
+#. [event]
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:312
+msgid ""
+"If you reduce Lord Bayar, Sir Ruga, Sir Daryn, or Sir Alric to 0HP, you’ll "
+"receive a reward!"
+msgstr ""
+
 #. [message]: speaker=Bayar
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:332
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:335
 msgid ""
 "I cannot believe this! You have defeated me! You are now my liege, and I "
 "leave the battlefield in shame. But the Clan shall fight on!"
@@ -8462,12 +8612,12 @@ msgstr ""
 "a harcmezőről. De a klán még folytatja a harcot!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:336
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:339
 msgid "Their leader has fallen but still they fight!"
 msgstr "A vezérük elesett, ők mégis küzdenek tovább!"
 
 #. [message]: speaker=Sir Daryn
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:360
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:363
 msgid ""
 "You can defeat me, but the Clan will never fall. Our numbers are endless!"
 msgstr ""
@@ -8475,20 +8625,20 @@ msgstr ""
 "még többen lépnek a helyünkbe!"
 
 #. [message]: speaker=Sir Ruga
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:384
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:387
 msgid "Even as I pledge my lance to your service, my Clan fights on!"
 msgstr ""
 "Még ha föl is ajánlom, hogy fegyveremmel téged szolgállak, a klánom továbbra "
 "is folytatja a harcot!"
 
 #. [message]: speaker=Sir Alric
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:408
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:411
 msgid "A humiliating defeat, yet you are no match for the might of the Clan!"
 msgstr ""
 "Megalázó vereséget szenvedtél, nem vagy méltó ellenfele a klán hatalmának!"
 
 #. [message]: role=clanboss
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:437
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:440
 msgid ""
 "Stop! I cannot believe this! You have defeated us! Indeed, you are worthy, "
 "worthy even to claim the throne. The clans will help you. We will fight with "
@@ -8499,19 +8649,19 @@ msgstr ""
 "fogunk az oldaladon a királynő ellen."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:441
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:444
 msgid "So you admit defeat! You will serve me in fighting the evil queen?"
 msgstr ""
 "Tehát elismered a vereséget? Szolgálatomra leszel a gonosz királynő elleni "
 "harcban?"
 
 #. [message]: role=clanboss
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:445
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:448
 msgid "We will serve you, my lord. You will make a worthy king."
 msgstr "Szolgálni fogunk, uram! Érdemes vagy a királyi trónra."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:451
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:454
 msgid ""
 "The mighty riders of the eastern plains, the Knights of the Clans, are now "
 "yours to command!"
@@ -8520,17 +8670,17 @@ msgstr ""
 "parancsodra várnak."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:460
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:463
 msgid "I think you are mistaken! You will help me be queen."
 msgstr "Attól tartok, tévedtek! Énnekem fogtok segíteni, én leszek királynő!"
 
 #. [message]: role=clanboss
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:464
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:467
 msgid "Who then is your leader? Whom do we serve?"
 msgstr "Akkor most ki is a ti vezéretek? Kit szolgálunk pontosan?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:468
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:471
 #, fuzzy
 #| msgid ""
 #| "You will serve us. You will protect our flanks while we make way straight "
@@ -8544,14 +8694,14 @@ msgstr ""
 "rajta."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:472
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:475
 msgid "Delfador, don’t you think it is time we settled this?"
 msgstr ""
 "Delfador, nem gondolod elérkezettnek az időt, hogy pontot tegyünk az ügy "
 "végére?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:476
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:479
 msgid ""
 "Yes, it is time. It is time for the truth to be told. I had hoped to take "
 "this secret to my grave, but it isn’t to be. You elves live too long, and "
@@ -8563,17 +8713,17 @@ msgstr ""
 "érem fel ésszel."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:480
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:483
 #, fuzzy
 #| msgid "Secret? What secret Delfador? What are you talking about?"
 msgid "Secret? What secret, Delfador? What are you talking about?"
 msgstr "Titok? Milyen titok, Delfador? Miről beszélsz?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:485
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:488
 msgid ""
 "We should not speak of it now. Instead come with me, Konrad and Li’sar, to "
-"the top of mount Elnar. To look at Weldyn. To make plans for the battle, and "
+"the top of Mount Elnar. To look at Weldyn. To make plans for the battle, and "
 "to talk."
 msgstr ""
 "Ezt ne most beszéljük meg. Konrad, Li’sar, inkább gyertek velem az Elnar "
@@ -8581,7 +8731,7 @@ msgstr ""
 "megbeszélünk!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:518
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:521
 msgid ""
 "We are routing their forces! Let’s see if the Clan has had enough. Their "
 "help in guarding our flanks will be invaluable."
@@ -8636,9 +8786,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:66
+#, fuzzy
+#| msgid ""
+#| "But I failed. I was too late. I entered the chambers of the youngest "
+#| "prince, prince Konrad, just as one of the evil ones ran him through. All "
+#| "was lost. The heirs were slain. Only Asheviere and her daughter had any "
+#| "claim to the throne."
 msgid ""
 "But I failed. I was too late. I entered the chambers of the youngest prince, "
-"prince Konrad, just as one of the evil ones ran him through. All was lost. "
+"Prince Konrad, just as one of the evil ones ran him through. All was lost. "
 "The heirs were slain. Only Asheviere and her daughter had any claim to the "
 "throne."
 msgstr ""
@@ -8693,10 +8849,17 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:83
+#, fuzzy
+#| msgid ""
+#| "I had thought that we could one day make you king, Konrad. But now I see "
+#| "that fate has made a different choice. That despite all of Asheviere’s "
+#| "evil, this Li’sar is fit for the throne. She is the rightful queen. From "
+#| "a long line of kings, stretching all the way back to the seafarers of old "
+#| "from the west."
 msgid ""
 "I had thought that we could one day make you king, Konrad. But now I see "
 "that fate has made a different choice. That despite all of Asheviere’s evil, "
-"this Li’sar is fit for the throne. She is the rightful queen. From a long "
+"this Li’sar is fit for the throne. She is the rightful queen, from a long "
 "line of kings, stretching all the way back to the seafarers of old from the "
 "west."
 msgstr ""
@@ -8842,10 +9005,15 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:356
+#, fuzzy
+#| msgid ""
+#| "Oh, wretched lady, I am very real. The land has suffered from your greed "
+#| "and ambition. You will now be held to account for your misdeeds. For the "
+#| "young prince Konrad! For WESNOTH!"
 msgid ""
 "Oh, wretched lady, I am very real. The land has suffered from your greed and "
 "ambition. You will now be held to account for your misdeeds. For the young "
-"prince Konrad! For WESNOTH!"
+"Prince Konrad! For WESNOTH!"
 msgstr ""
 "Ó, te tébolyult asszonyság, nagyon is valóságos vagyok. Az ország lángokban "
 "áll a kapzsiságod és a nagyravágyásod miatt. Most számot adsz minden "
@@ -9035,14 +9203,14 @@ msgstr ""
 #. [variation]: race=human
 #. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:4
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:101
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:103
 msgid "female^Battle Princess"
 msgstr "Csatázó hercegnő"
 
 #. [variation]: race=human
 #. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:28
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:123
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:125
 #, fuzzy
 #| msgid ""
 #| "A noble by birth, the Princess has learnt swordplay with the greatest "
@@ -9061,22 +9229,18 @@ msgstr ""
 "segítségével a csatában megnő a körülötte lévő egységek teljesítménye."
 
 #. [attack]: type=fire
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:139
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:108
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:64
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:131
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:99
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:144
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:111
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:65
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:134
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:104
 msgid "sceptre of fire"
 msgstr "tűz jogara"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:4
-msgid "Commander"
-msgstr "Vezér"
 
 #. [variation]
 #. [unit_type]: id=Commander
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:95
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:104
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:105
 msgid ""
 "The rank of Commander is held by those who lead battle groups into combat. "
 "Possessing leadership skills, they give lower-level units in adjacent hexes "
@@ -9107,12 +9271,12 @@ msgstr ""
 "alárendeltjei erejéből ered."
 
 #. [attack]: type=impact
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:24
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:25
 msgid "scepter"
 msgstr "jogar"
 
 #. [attack]: type=cold
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:33
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:34
 msgid "raging blizzard"
 msgstr "dühöngő hóvihar"
 
@@ -9139,14 +9303,10 @@ msgstr ""
 msgid "Injured Sergeant"
 msgstr "Sebesült őrmester"
 
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:4
-msgid "Lord"
-msgstr "Nemes úr"
-
 #. [variation]
 #. [unit_type]: id=Lord
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:109
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:117
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:118
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like Commanders, Lords possess "
@@ -9161,14 +9321,14 @@ msgstr ""
 #. [variation]: race=human
 #. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:4
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:61
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:63
 msgid "female^Princess"
 msgstr "Hercegnő"
 
 #. [variation]: race=human
 #. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:28
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:83
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:85
 #, fuzzy
 #| msgid ""
 #| "A noble by birth, the Princess has learnt swordplay with the greatest "
@@ -9230,14 +9390,14 @@ msgstr ""
 "Minden szomszédos szövetséges egység először támad a közelharcban, még "
 "védekezéskor is."
 
-#: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:18
+#. [special_note]
+#: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:21
 #, fuzzy
 #| msgid ""
 #| "This unit's grasp of melee tactics allows adjacent allies to strike the "
 #| "first blow even when defending."
 msgid ""
-"\n"
-"• This unit's grasp of melee tactics allows adjacent allies to strike the "
+"This unit’s grasp of melee tactics allows adjacent allies to strike the "
 "first blow even when defending."
 msgstr ""
 "Ennek az egységnek a közelharci tudása lehetővé teszi a szomszédos "
@@ -9651,22 +9811,26 @@ msgstr ""
 "erdőbe, és a tündék védelmében felnevelte. Szomorúan szemlélte, ahogyan "
 "Asheviere rémuralma maga alá gyűrte az országot..."
 
+#~ msgid "Hero"
+#~ msgstr "Hős"
+
+#~ msgid "Champion"
+#~ msgstr "Bajnok"
+
+#~ msgid "These passages seem to have been used recently."
+#~ msgstr "Mintha nemrég használták volna ezt az átjárót."
+
+#~ msgid "Fair enough!"
+#~ msgstr "Jó, legyen így!"
+
+#~ msgid "Fair enough."
+#~ msgstr "Jó, legyen így."
+
+#~ msgid "Fair enough..."
+#~ msgstr "Jó, legyen így..."
+
 #~ msgid "Reach the cave"
 #~ msgstr "Eléred a barlangot"
-
-#, fuzzy
-#~| msgid "Defeat $units_to_slay enemy units"
-#~ msgid "Defeat one more enemy unit"
-#~ msgid_plural "Defeat $units_to_slay enemy units"
-#~ msgstr[0] "Legyőzöl $units_to_slay ellenséges egységet"
-#~ msgstr[1] "Legyőzöl $units_to_slay ellenséges egységet"
-
-#, fuzzy
-#~| msgid "Still $units_to_slay clan members to defeat!"
-#~ msgid "Still $units_to_slay clan member to defeat!"
-#~ msgid_plural "Still $units_to_slay clan members to defeat!"
-#~ msgstr[0] "Még $units_to_slay klántagot kell legyőznöd!"
-#~ msgstr[1] "Még $units_to_slay klántagot kell legyőznöd!"
 
 #, fuzzy
 #~| msgid ""

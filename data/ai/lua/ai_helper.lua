@@ -89,11 +89,17 @@ function ai_helper.put_labels(map, cfg)
     --   - keys: (array) if the value to be displayed is a subelement of the LS data,
     --     use these keys to access it. For example, if we want to display data[3]
     --     set keys = { 3 }, if it's data.arg[3], set keys = { 'arg', 3 }
+    --   - clear=true: (boolean) if set to 'false', do not clear existing labels
+    --   - color=nil: (string) the color string to be used for the output
 
     cfg = cfg or {}
     local factor = cfg.factor or 1
 
-    ai_helper.clear_labels()
+    local clear_labels = cfg.clear
+    if (clear_labels == nil) then clear_labels = true end
+    if clear_labels then
+        ai_helper.clear_labels()
+    end
 
     map:iter(function(x, y, data)
         local out
@@ -111,7 +117,7 @@ function ai_helper.put_labels(map, cfg)
         end
 
         if (type(out) == 'number') then out = out * factor end
-        wesnoth.label { x = x, y = y, text = out }
+        wesnoth.label { x = x, y = y, text = out, color = cfg.color }
     end)
 end
 
@@ -311,7 +317,7 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
     local src_x, src_y = src.x or src[1], src.y or src[2] -- this works with units or locations
     local dst_x, dst_y = dst.x or dst[1], dst.y or dst[2]
 
-    local unit = wesnoth.get_unit(src_x, src_y)
+    local unit = wesnoth.units.get(src_x, src_y)
     if (not unit) then
         return ai_helper.dummy_check_action(false, false, 'robust_move_and_attack::NO_UNIT')
     end
@@ -320,7 +326,7 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
     local target, target_x, target_y
     if target_loc then
         target_x, target_y = target_loc.x or target_loc[1], target_loc.y or target_loc[2]
-        target = wesnoth.get_unit(target_x, target_y)
+        target = wesnoth.units.get(target_x, target_y)
 
         if (not target) then
             return ai_helper.dummy_check_action(false, false, 'robust_move_and_attack::NO_TARGET')
@@ -344,7 +350,7 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
         else
             local unit_old_moves = unit.moves
 
-            local unit_in_way = wesnoth.get_unit(dst_x, dst_y)
+            local unit_in_way = wesnoth.units.get(dst_x, dst_y)
             if unit_in_way and (unit_in_way.side == wesnoth.current.side) and (unit_in_way.moves > 0) then
                 local uiw_old_moves = unit_in_way.moves
                 ai_helper.move_unit_out_of_way(ai, unit_in_way, cfg)
@@ -363,7 +369,7 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
                 end
 
                 -- Check whether dst hex is free now (an event could have done something funny)
-                local unit_in_way = wesnoth.get_unit(dst_x, dst_y)
+                local unit_in_way = wesnoth.units.get(dst_x, dst_y)
                 if unit_in_way then
                     return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::ANOTHER_UNIT_IN_WAY')
                 end
@@ -656,7 +662,7 @@ function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
         if loc then
             return loc
         else
-            H.wml_error("Named location does not exist: " .. loc_id)
+            wml.error("Named location does not exist: " .. loc_id)
         end
     end
 
@@ -666,14 +672,14 @@ function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
     if x and y then
         local width, height = wesnoth.get_map_size()
         if (x < 1) or (x > width) or (y < 1) or (y > height) then
-            H.wml_error("Location is not on map: " .. param_x .. ',' .. param_y .. ' = ' .. x .. ',' .. y)
+            wml.error("Location is not on map: " .. param_x .. ',' .. param_y .. ' = ' .. x .. ',' .. y)
         end
 
         return { x, y }
     end
 
     if required_for then
-        H.wml_error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
+        wml.error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
     end
 end
 
@@ -705,7 +711,7 @@ function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
         local xs = ai_helper.split(cfg_x, ",")
         local ys = ai_helper.split(cfg_y, ",")
         if (#xs ~= #ys) then
-            H.wml_error("Coordinate lists need to have same number of elements: " .. param_x .. ' and ' .. param_y)
+            wml.error("Coordinate lists need to have same number of elements: " .. param_x .. ' and ' .. param_y)
         end
 
         for i,x in ipairs(xs) do
@@ -719,7 +725,7 @@ function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
     end
 
     if required_for then
-        H.wml_error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
+        wml.error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
     end
 
     return locs
@@ -1056,9 +1062,21 @@ end
 
 --------- Unit related helper functions ----------
 
+function ai_helper.is_passive_leader(aspect_value, id)
+    if (type(aspect_value) == 'boolean') then return aspect_value end
+
+    for _,aspect_id in ipairs(aspect_value) do
+        if (aspect_id == id) then
+            return true
+        end
+    end
+
+    return false
+end
+
 function ai_helper.get_live_units(filter)
     -- Note: the order of the filters and the [and] tags are important for speed reasons
-    return wesnoth.get_units { { "not", { status = "petrified" } }, { "and", filter } }
+    return wesnoth.units.find_on_map { { "not", { status = "petrified" } }, { "and", filter } }
 end
 
 function ai_helper.get_units_with_moves(filter, exclude_guardians)
@@ -1068,7 +1086,7 @@ function ai_helper.get_units_with_moves(filter, exclude_guardians)
     if exclude_guardians then
         exclude_status = exclude_status .. ',guardian'
     end
-    return wesnoth.get_units {
+    return wesnoth.units.find_on_map {
         { "and", { formula = "moves > 0" } },
         { "not", { status = exclude_status } },
         { "and", filter }
@@ -1077,7 +1095,7 @@ end
 
 function ai_helper.get_units_with_attacks(filter)
     -- Note: the order of the filters and the [and] tags are important for speed reasons
-    return wesnoth.get_units {
+    return wesnoth.units.find_on_map {
         { "and", { formula = "attacks_left > 0 and size(attacks) > 0" } },
         { "not", { status = "petrified" } },
         { "and", filter }
@@ -1109,7 +1127,7 @@ function ai_helper.get_visible_units(viewing_side, filter)
     end
 
     local units = {}
-    local all_units = wesnoth.get_units()
+    local all_units = wesnoth.units.find_on_map()
     for _,unit in ipairs(all_units) do
         if unit:matches(filter_plus_vision) then
             table.insert(units, unit)
@@ -1149,6 +1167,7 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     --   - enemies of the side defined in @side,
     --   - not petrified
     --   - and visible to the side defined in @cfg.viewing_side.
+    --   - have at least one adjacent hex that is not inside an area to avoid
     -- For speed reasons, this is done separately, rather than calling ai_helper.get_visible_units().
     --
     -- Optional parameters:
@@ -1158,6 +1177,8 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     -- @side: side number, if side other than current side is to be considered
     -- @cfg: table with optional configuration parameters:
     --   viewing_side: see comments at beginning of this file. Defaults to @side.
+    --   avoid_map: if given, an enemy is included only if it does not have at least one
+    --     adjacent hex outside of avoid_map
 
     side = side or wesnoth.current.side
     local viewing_side = cfg and cfg.viewing_side or side
@@ -1169,13 +1190,25 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     end
 
     local enemies = {}
-    local all_units = wesnoth.get_units()
+    local all_units = wesnoth.units.find_on_map()
     for _,unit in ipairs(all_units) do
-        if wesnoth.is_enemy(side, unit.side)
+        if wesnoth.sides.is_enemy(side, unit.side)
            and (not unit.status.petrified)
            and unit:matches(filter_plus_vision)
         then
-            table.insert(enemies, unit)
+            local is_avoided = false
+            if cfg and cfg.avoid_map then
+                is_avoided = true
+                for xa,ya in H.adjacent_tiles(unit.x, unit.y) do
+                    if (not cfg.avoid_map:get(xa, ya)) then
+                        is_avoided = false
+                        break
+                    end
+                end
+            end
+            if (not is_avoided) then
+                table.insert(enemies, unit)
+            end
         end
     end
 
@@ -1195,7 +1228,7 @@ function ai_helper.is_attackable_enemy(unit, side, cfg)
     local viewing_side = cfg and cfg.viewing_side or side
 
     if (not unit)
-        or (not wesnoth.is_enemy(side, unit.side))
+        or (not wesnoth.sides.is_enemy(side, unit.side))
         or unit.status.petrified
         or (not ai_helper.is_visible_unit(viewing_side, unit))
     then
@@ -1221,7 +1254,7 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
 
     local x, y
     if not loc then
-        local leader = wesnoth.get_units { side = side, canrecruit = 'yes' }[1]
+        local leader = wesnoth.units.find_on_map { side = side, canrecruit = 'yes' }[1]
         x, y = leader.x, leader.y
     else
         x, y = loc[1], loc[2]
@@ -1239,19 +1272,20 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
     return closest_enemy, closest_distance
 end
 
-function ai_helper.has_ability(unit, ability)
-    -- Returns true/false depending on whether unit has the given ability
-    local has_ability = false
-    local abilities = wml.get_child(unit.__cfg, "abilities")
-    if abilities then
-        if wml.get_child(abilities, ability) then has_ability = true end
-    end
-    return has_ability
+function ai_helper.has_ability(unit, ability, exact_match)
+    -- Returns true/false depending on whether unit has the given ability type (tag name)
+
+    wesnoth.deprecated_message('ai_helper.has_ability', 3, '1.17.0', "Use unit:matches { ability_type = ability } instead.")
+
+    return unit:matches { ability_type = ability }
 end
 
 function ai_helper.has_weapon_special(unit, special)
     -- Returns true/false depending on whether @unit has a weapon with special @special
     -- Also returns the number of the first weapon with this special
+
+    wesnoth.deprecated_message('ai_helper.has_weapon_special', 3, '1.17.0', "Use unit:find_attack() instead, noting that the argument needs to be a filter, such as { special_id = 'poison' }.")
+
     for weapon_number,att in ipairs(unit.attacks) do
         for _,sp in ipairs(att.specials) do
             if (sp[1] == special) then
@@ -1262,9 +1296,28 @@ function ai_helper.has_weapon_special(unit, special)
     return false
 end
 
-function ai_helper.get_cheapest_recruit_cost()
-    local cheapest_unit_cost = math.huge
+function ai_helper.get_cheapest_recruit_cost(leader)
+    -- Optional input @leader: if given, find the cheapest recruit cost for this leader,
+    --   otherwise for the combination of all leaders of the current side
+    local recruit_ids = {}
     for _,recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+        table.insert(recruit_ids, recruit_id)
+    end
+
+    local leaders
+    if leader then
+        leaders = { leader }
+    else
+        leaders = wesnoth.units.find_on_map { side = wesnoth.current.side, canrecruit = 'yes' }
+    end
+    for _,l in ipairs(leaders) do
+        for _,recruit_id in ipairs(l.extra_recruit) do
+            table.insert(recruit_ids, recruit_id)
+        end
+    end
+
+    local cheapest_unit_cost = math.huge
+    for _,recruit_id in ipairs(recruit_ids) do
         if wesnoth.unit_types[recruit_id].cost < cheapest_unit_cost then
             cheapest_unit_cost = wesnoth.unit_types[recruit_id].cost
         end
@@ -1316,7 +1369,7 @@ function ai_helper.get_dst_src(units, cfg)
     --   all parameters for wesnoth.find_reach
 
     if (not units) then
-        units = wesnoth.get_units { side = wesnoth.current.side }
+        units = wesnoth.units.find_on_map { side = wesnoth.current.side }
     end
 
     return ai_helper.get_dst_src_units(units, cfg)
@@ -1328,7 +1381,7 @@ function ai_helper.get_enemy_dst_src(enemies, cfg)
     --   all parameters for wesnoth.find_reach
 
     if (not enemies) then
-        enemies = wesnoth.get_units {
+        enemies = wesnoth.units.find_on_map {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side} } } }
         }
     end
@@ -1388,39 +1441,107 @@ function ai_helper.next_hop(unit, x, y, cfg)
     --     viewing_side: see comments at beginning of this file. Defaults to side of @unit
     --   plus:
     --     ignore_own_units: if set to true, then own units that can move out of the way are ignored
+    --     path: if given, find the next hop along this path, rather than doing new path finding
+    --       In this case, it is assumed that the path is possible, in other words, that cost has been checked
+    --     avoid_map: a location set with the hexes the unit is not allowed to step on
+    --     fan_out=true: prior to Wesnoth 1.16, the unit strictly followed the path, which can lead to
+    --       a line-up of units if there are allied units in the way (e.g. when multiple units are
+    --       moved by the same candidate action. Now they fan out instead, trying to get as close to
+    --       the ideal next_hop goal (defined as where the unit could get if there were no allied units
+    --       in the way) as possible. Setting 'fan_out=false' restores the old behavior. The main
+    --       disadvantage of the new method is that it needs to do more path finding and therefore takes longer.
 
-    local path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
-
-    if cost >= ai_helper.no_path then return nil, cost end
+    local path, cost
+    if cfg and cfg.path then
+        path = cfg.path
+    else
+        path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
+        if cost >= ai_helper.no_path then return nil, cost end
+    end
 
     -- If none of the hexes are unoccupied, use current position as default
     local next_hop, nh_cost = { unit.x, unit.y }, 0
+    local next_hop_ideal = { unit.x, unit.y }
 
     -- Go through loop to find reachable, unoccupied hex along the path
     -- Start at second index, as first is just the unit position itself
     for i = 2,#path do
-        local sub_path, sub_cost = ai_helper.find_path_with_shroud(unit, path[i][1], path[i][2], cfg)
+        if (not cfg) or (not cfg.avoid_map) or (not cfg.avoid_map:get(path[i][1], path[i][2])) then
+            local sub_path, sub_cost = ai_helper.find_path_with_shroud(unit, path[i][1], path[i][2], cfg)
 
-        if sub_cost <= unit.moves then
-            -- Check for unit in way only if cfg.ignore_units is not set
-            local unit_in_way
-            if (not cfg) or (not cfg.ignore_units) then
-                unit_in_way = wesnoth.get_unit(path[i][1], path[i][2])
+            if sub_cost <= unit.moves then
+                -- Check for unit in way only if cfg.ignore_units is not set
+                local unit_in_way
+                if (not cfg) or (not cfg.ignore_units) then
+                    unit_in_way = wesnoth.units.get(path[i][1], path[i][2])
 
-                -- If ignore_own_units is set, ignore own side units that can move out of the way
-                if cfg and cfg.ignore_own_units then
-                    if unit_in_way and (unit_in_way.side == unit.side) then
-                        local reach = ai_helper.get_reachable_unocc(unit_in_way, cfg)
-                        if (reach:size() > 1) then unit_in_way = nil end
+                    -- If ignore_own_units is set, ignore own side units that can move out of the way
+                    if cfg and cfg.ignore_own_units then
+                        if unit_in_way and (unit_in_way.side == unit.side) then
+                            local reach = ai_helper.get_reachable_unocc(unit_in_way, cfg)
+                            if (reach:size() > 1) then unit_in_way = nil end
+                        end
                     end
                 end
-            end
 
-            if not unit_in_way then
-                next_hop, nh_cost = path[i], sub_cost
+                if not unit_in_way then
+                    next_hop, nh_cost = path[i], sub_cost
+                end
+                next_hop_ideal = path[i]
+            else
+                break
             end
-        else
-            break
+        end
+    end
+
+    local fan_out = cfg and cfg.fan_out
+    if (fan_out == nil) then fan_out = true end
+    if fan_out and ((next_hop[1] ~= next_hop_ideal[1]) or (next_hop[2] ~= next_hop_ideal[2]))
+    then
+        -- If we cannot get to the ideal next hop, try fanning out instead
+        local reach = wesnoth.find_reach(unit, cfg)
+
+        -- Need the reach map of the unit from the ideal next hop hex
+        -- There will always be another unit there, otherwise we would not have gotten here
+        local unit_in_way = wesnoth.units.get(next_hop_ideal[1], next_hop_ideal[2])
+        unit_in_way:extract()
+        local old_x, old_y = unit.x, unit.y
+        unit:extract()
+        unit:to_map(next_hop_ideal[1], next_hop_ideal[2])
+        local inverse_reach = wesnoth.find_reach(unit, { ignore_units = true }) -- no ZoC
+        unit:extract()
+        unit:to_map(old_x, old_y)
+        unit_in_way:to_map()
+
+        local terrain = wesnoth.get_terrain(next_hop_ideal[1], next_hop_ideal[2])
+        local move_cost_endpoint = unit:movement_on(terrain)
+        local inverse_reach_map = LS.create()
+        for _,r in pairs(inverse_reach) do
+            -- We want the moves left for moving into the opposite direction in which the reach map was calculated
+            local terrain = wesnoth.get_terrain(r[1], r[2])
+            local move_cost = unit:movement_on(terrain)
+            local inverse_cost = r[3] + move_cost - move_cost_endpoint
+            inverse_reach_map:insert(r[1], r[2], inverse_cost)
+        end
+
+        local units = ai_helper.get_visible_units(
+            cfg and cfg.viewing_side or unit.side,
+            { { "not", { id = unit.id } }
+        })
+        local unit_map = LS.create()
+        for _,u in ipairs(units) do unit_map:insert(u.x, u.y, u.id) end
+
+        local max_rating = inverse_reach_map:get(next_hop[1], next_hop[2]) -- do not move farther away
+        for _,loc in ipairs(reach) do
+            if (not unit_map:get(loc[1], loc[2]))
+                and ((not cfg) or (not cfg.avoid_map) or (not cfg.avoid_map:get(loc[1], loc[2])))
+            then
+                local rating = inverse_reach_map:get(loc[1], loc[2]) or - math.huge
+                if (rating > max_rating) then
+                    max_rating = rating
+                    next_hop = { loc[1], loc[2] } -- eliminating the third argument
+                end
+            end
         end
     end
 
@@ -1442,7 +1563,7 @@ function ai_helper.can_reach(unit, x, y, cfg)
     local viewing_side = cfg.viewing_side or unit.side
 
     -- Is there a unit at the goal hex?
-    local unit_in_way = wesnoth.get_unit(x, y)
+    local unit_in_way = wesnoth.units.get(x, y)
     if (cfg.exclude_occupied)
       and unit_in_way and ai_helper.is_visible_unit(viewing_side, unit_in_way)
     then
@@ -1509,7 +1630,7 @@ function ai_helper.get_reachmap(unit, cfg)
         if cfg and cfg.avoid_map and cfg.avoid_map:get(loc[1], loc[2]) then
             is_available = false
         else
-            local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
+            local unit_in_way = wesnoth.units.get(loc[1], loc[2])
             if unit_in_way and (unit_in_way.id ~= unit.id) and ai_helper.is_visible_unit(viewing_side, unit_in_way) then
                 if cfg and cfg.exclude_occupied then
                     is_available = false
@@ -1558,7 +1679,7 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
     if wesnoth.sides[viewing_side] and wesnoth.sides[viewing_side].shroud then
         local extracted_units = {}
         if (not cfg) or (not cfg.ignore_units) then
-            local all_units = wesnoth.get_units()
+            local all_units = wesnoth.units.find_on_map()
             for _,u in ipairs(all_units) do
                 if (u.side ~= viewing_side)
                     and (not ai_helper.is_visible_unit(viewing_side, u))
@@ -1582,6 +1703,187 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
     end
 
     return path, cost
+end
+
+function ai_helper.custom_cost_with_avoid(x, y, prev_cost, unit, avoid_map, ally_map, enemy_map, enemy_zoc_map, strict_avoid)
+    -- Custom cost function for path finding which takes hexes to be avoided into account.
+    -- See the notes in function ai_helper.find_path_with_avoid()
+    --
+    -- For efficiency reasons, this function requires quite a few arguments to be passed to it.
+    -- Function ai_helper.find_path_with_avoid() does most of this automatically, but the custom cost
+    -- function can be accessed directly also for even more customized behavior.
+
+    if enemy_map and enemy_map:get(x, y) then
+        return ai_helper.no_path
+    end
+    if strict_avoid and avoid_map and avoid_map:get(x, y) then
+        return ai_helper.no_path
+    end
+
+    local max_moves = unit.max_moves
+    local terrain = wesnoth.get_terrain(x, y)
+    local move_cost = unit:movement_on(terrain)
+
+    if (move_cost > max_moves) then
+        return ai_helper.no_path
+    end
+
+    local prev_moves = math.floor(prev_cost)  -- remove all the minor ratings
+    -- Note that prev_moves_left == max_moves if the unit ended turn on previous hex, as it should
+    local prev_moves_left = max_moves - (unit.max_moves - unit.moves + prev_moves) % max_moves
+
+    if enemy_zoc_map and enemy_zoc_map:get(x,y) then
+        if (move_cost < prev_moves_left) then
+            move_cost = prev_moves_left
+        end
+    end
+
+    local moves_left = prev_moves_left - move_cost
+
+    -- Determine whether previous hex was marked as unusable for ending the turn on (in the ones' place
+    -- after multiplying by 100000), and also how many allied units are lines up along the path (tenth' place)
+    -- Working with large integers for this part, in order to prevent rounding errors
+    local prev_cost_int = math.floor(prev_cost * 100000 + 0.001)
+    local unit_penalty = math.floor((prev_cost * 100000 - prev_cost_int + 0.001) * 10) / 10
+    local avoid_penalty = math.floor(prev_cost_int - math.floor(prev_cost_int / 10) * 10 + 0.001)
+    local move_cost_int = math.floor(move_cost * 100000 + 0.001)
+
+    -- Apply unit_penalty only for the first turn
+    local is_first_turn = false
+    if (prev_moves < unit.moves) then is_first_turn = true end
+
+    if is_first_turn then
+        -- If the hex is both not-avoided and does not have a unit on it, we clear unit_penalty.
+        -- Otherwise we add in the move cost of the current hex.
+        -- The purpose of this is to have units spread out rather than move in a line, but note
+        -- that this only works between paths to the hex that use up the same movement cost.
+        -- It is fundamentally impossible with the Wesnoth A* search algorithm to make the unit
+        -- choose a longer path in this way.
+        if (ally_map and ally_map:get(x, y)) or (avoid_map and avoid_map:get(x, y)) then
+            unit_penalty = unit_penalty + move_cost / 10
+            -- We restrict this two 9 MP, even for units with more moves
+            if (unit_penalty > 0.9) then unit_penalty = 0.9 end
+            move_cost_int = move_cost_int + unit_penalty
+        else
+            move_cost_int = move_cost_int - unit_penalty
+            unit_penalty = 0
+        end
+    end
+
+    if (moves_left < 0) then
+        -- This is the situation when there were moves left on the previous hex,
+        -- but not enough to enter this hex. In this case, we need to apply the appropriate penalty:
+        --  - If avoided hex: disqualify it
+        --  - Otherwise use up full move on previous hex
+        --  - Also, apply the unit line-up penalty, but only if this is the first move
+        if (avoid_penalty > 0) then -- avoided hex
+            return ai_helper.no_path
+        end
+        move_cost_int = move_cost_int + prev_moves_left * 100000
+        if is_first_turn then
+            move_cost_int = move_cost_int + unit_penalty * 10 * 100000 -- unit_penalty is multiples of 0.1
+        end
+    elseif (moves_left == 0) then
+        -- And this is the case when moving to this hex uses up all moves for the turn
+        if avoid_map and avoid_map:get(x, y) then
+            return ai_helper.no_path
+        end
+        if is_first_turn then
+            move_cost_int = move_cost_int + unit_penalty * 10 * 100000 -- unit_penalty is multiples of 0.1
+        end
+    end
+
+    -- Here's the part that marks the hex as (un)usable
+    -- We first need to subtract out the previous penalty
+    move_cost_int = move_cost_int - avoid_penalty
+    -- Then we need to add in a small number (remember everything is divided by 100000 at the end)
+    -- because the move cost returned by this functions needs to be >= 1.  Use defense for this,
+    -- thus giving a small bonus (low resulting move cost) for good terrain.
+    -- Note that the returned cost is rounded to an integer by the engine, so for very long paths this
+    -- will potentially add to the cost and might make the path inaccurate. However, for an average
+    -- defense of 50 along the path, this will not happen until the path is 1000 hexes long. Also,
+    -- in most cases this will simply add to the cost, rather than change the path itself.
+    local defense = unit:defense_on(terrain)
+    -- We need this to be multiples of 10 for the penalty identification to work
+    defense = H.round(defense / 10) * 10
+    if (defense > 90) then defense = 90 end
+    if (defense < 10) then defense = 10 end
+    move_cost_int = move_cost_int + (100 - defense)
+    -- And finally we add a (very small) penalty for this hex if it is to be avoided
+    -- This is used for the next hex to determine whether the previous hex was to be
+    -- avoided via avoid_penalty above.
+    if avoid_map and avoid_map:get(x, y) then
+        move_cost_int = move_cost_int + 1
+    end
+
+    return move_cost_int / 100000
+end
+
+function ai_helper.find_path_with_avoid(unit, x, y, avoid_map, options)
+    -- Find path while taking hexes to be avoided into account. In its default setting,
+    -- it also finds the path so that the unit does not end a move on a hex with an allied
+    -- unit, which is one of the main shortcomings of the default path finder.
+    --
+    -- Important notes:
+    --  - There are two modes of avoiding hexes: the default for which the unit may move through
+    --    the avoided area but not end a move on it; and a "strict avoid" mode for which the
+    --    path may not lead through the avoided area at all.
+    --  - Not ending turns on hexes with allied units is meant to with units moving around each other,
+    --    but this can cause problems in narrow passages. It can therefore also be turned off.
+    --  - This cost function does not provide all the configurability of the default path finder.
+    --    The functionality is as follows:
+    --     - Hexes with visible enemy units are always excluded, and enemy ZoC is taken into account
+    --     - Invisible enemies are always ignored (including those under shroud)
+    --     - Hexes with higher terrain defense are preferred, all else being equal.
+    --
+    -- OPTIONAL INPUTS:
+    --  @options: Note that this is not the same as the @cfg table that can be passed to wesnoth.find_path().
+    --    Possible fields are:
+    --     @strict_avoid: if 'true', trigger the "strict avoid" mode described above
+    --     @ignore_enemies: if 'true', enemies will not be taken into account.
+    --     @ignore_allies: if 'true', allied units will not be taken into account.
+
+    options = options or {}
+
+    -- This needs to be done separately, otherwise a path that only goes a short time into the
+    -- avoided area might not be disqualified correctly. It also saves evaluation time in other cases.
+    if avoid_map:get(x,y) then
+        return nil, ai_helper.no_path
+    end
+
+    local all_units = wesnoth.units.find_on_map()
+    local ally_map, enemy_map = LS.create(), LS.create()
+    for _,u in ipairs(all_units) do
+        if (u.id ~= unit.id) and ai_helper.is_visible_unit(wesnoth.current.side, u) then
+            if wesnoth.sides.is_enemy(u.side, wesnoth.current.side) then
+                if (not options.ignore_enemies) then
+                    enemy_map:insert(u.x, u.y, u.level)
+                end
+            else
+                if (not options.ignore_allies) then
+                    ally_map:insert(u.x, u.y, u.level)
+                end
+            end
+        end
+    end
+
+    local enemy_zoc_map = LS.create()
+    if (not options.ignore_enemies) and (not unit:ability("skirmisher")) then
+        enemy_map:iter(function(x, y, level)
+            if (level > 0) then
+                for xa,ya in H.adjacent_tiles(x, y) do
+                    enemy_zoc_map:insert(xa, ya, level)
+                end
+            end
+        end)
+    end
+
+    -- Note: even though the cost function returns a float, the engine rounds the cost to an integer
+    return ai_helper.find_path_with_shroud(unit, x, y, {
+        calculate = function(xc, yc, current_cost)
+            return ai_helper.custom_cost_with_avoid(xc, yc, current_cost, unit, avoid_map, ally_map, enemy_map, enemy_zoc_map, options.strict_avoid)
+        end
+    })
 end
 
 function ai_helper.find_best_move(units, rating_function, cfg)
@@ -1651,7 +1953,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
 
     local max_rating, best_hex = - math.huge
     for _,loc in ipairs(reach) do
-        local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
+        local unit_in_way = wesnoth.units.get(loc[1], loc[2])
         if (not unit_in_way)       -- also excludes current hex
             or (not ai_helper.is_visible_unit(viewing_side, unit_in_way))
         then
@@ -1716,7 +2018,7 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     -- Only move unit out of way if the main unit can get there
     local path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
     if (cost <= unit.moves) then
-        local unit_in_way = wesnoth.get_unit(x, y)
+        local unit_in_way = wesnoth.units.get(x, y)
         if unit_in_way and (unit_in_way ~= unit)
             and ai_helper.is_visible_unit(viewing_side, unit_in_way)
         then
@@ -1777,7 +2079,7 @@ function ai_helper.get_attacks(units, cfg)
 
     -- Note: the remainder is optimized for speed, so we only get_units once,
     -- do not use WML filters, etc.
-    local all_units = wesnoth.get_units()
+    local all_units = wesnoth.units.find_on_map()
 
     local enemy_map, my_unit_map, other_unit_map = LS.create(), LS.create(), LS.create()
     for i,unit in ipairs(all_units) do
@@ -1848,7 +2150,7 @@ function ai_helper.get_attacks(units, cfg)
                         -- unit that is moving out of the way of the initial unit (etc.).
                         for _,uiw_loc in ipairs(uiw_reach) do
                             -- Unit in the way of the unit in the way
-                            local uiw_uiw = wesnoth.get_unit(uiw_loc[1], uiw_loc[2])
+                            local uiw_uiw = wesnoth.units.get(uiw_loc[1], uiw_loc[2])
                             if (not uiw_uiw) or (not ai_helper.is_visible_unit(viewing_side, uiw_uiw)) then
                                 add_target = true
                                 break
@@ -1990,7 +2292,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     -- TODO: generalize it so that it works not only for units with moves=0, but blocked units etc.
     local blocked_hexes = LS.create()
     if units[1] and (units[1].side == wesnoth.current.side) then
-        local all_units = wesnoth.get_units { side = wesnoth.current.side }
+        local all_units = wesnoth.units.find_on_map { side = wesnoth.current.side }
         for _,unit in ipairs(all_units) do
             if (unit.moves == 0) then
                 blocked_hexes:insert(unit.x, unit.y)

@@ -227,8 +227,7 @@ static int ai_attack(lua_State *L, bool exec)
 		aggression = lua_tonumber(L, 4);
 	}
 
-	unit_advancements_aspect advancements = context.get_advancements();
-	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,exec,attacker,defender,attacker_weapon,aggression,advancements);
+	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,exec,attacker,defender,attacker_weapon,aggression);
 	return transform_ai_action(L,attack_result);
 }
 
@@ -439,8 +438,17 @@ static int cfun_ai_get_leader_goal(lua_State *L)
 static int cfun_ai_get_leader_ignores_keep(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("leader_ignores_keep");
-	bool leader_ignores_keep = get_readonly_context(L).get_leader_ignores_keep();
-	lua_pushboolean(L, leader_ignores_keep);
+	boost::variant<bool, std::vector<std::string>> leader_ignores_keep = get_readonly_context(L).get_leader_ignores_keep();
+	if (leader_ignores_keep.which() == 0) {
+		lua_pushboolean(L, boost::get<bool>(leader_ignores_keep));
+	} else {
+		std::vector<std::string> strlist = boost::get<std::vector<std::string>>(leader_ignores_keep);
+		lua_createtable(L, strlist.size(), 0);
+		for(const std::string& str : strlist) {
+			lua_pushlstring(L, str.c_str(), str.size());
+			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+		}
+	}
 	return 1;
 }
 
@@ -455,16 +463,34 @@ static int cfun_ai_get_leader_value(lua_State *L)
 static int cfun_ai_get_passive_leader(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("passive_leader");
-	bool passive_leader = get_readonly_context(L).get_passive_leader();
-	lua_pushboolean(L, passive_leader);
+	boost::variant<bool, std::vector<std::string>> passive_leader = get_readonly_context(L).get_passive_leader();
+	if (passive_leader.which() == 0) {
+		lua_pushboolean(L, boost::get<bool>(passive_leader));
+	} else {
+		std::vector<std::string> strlist = boost::get<std::vector<std::string>>(passive_leader);
+		lua_createtable(L, strlist.size(), 0);
+		for(const std::string& str : strlist) {
+			lua_pushlstring(L, str.c_str(), str.size());
+			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+		}
+	}
 	return 1;
 }
 
 static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
 {
 	DEPRECATED_ASPECT_MESSAGE("passive_leader_shares_keep");
-	bool passive_leader_shares_keep = get_readonly_context(L).get_passive_leader_shares_keep();
-	lua_pushboolean(L, passive_leader_shares_keep);
+	boost::variant<bool, std::vector<std::string>> passive_leader_shares_keep = get_readonly_context(L).get_passive_leader_shares_keep();
+	if (passive_leader_shares_keep.which() == 0) {
+		lua_pushboolean(L, boost::get<bool>(passive_leader_shares_keep));
+	} else {
+		std::vector<std::string> strlist = boost::get<std::vector<std::string>>(passive_leader_shares_keep);
+		lua_createtable(L, strlist.size(), 0);
+		for(const std::string& str : strlist) {
+			lua_pushlstring(L, str.c_str(), str.size());
+			lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+		}
+	}
 	return 1;
 }
 
@@ -775,22 +801,8 @@ static int impl_ai_aspect_get(lua_State* L)
 		return 0;
 	}
 
-	typedef std::vector<std::string> string_list;
-	if(typesafe_aspect<bool>* aspect_as_bool = try_aspect_as<bool>(iter->second)) {
-		lua_pushboolean(L, aspect_as_bool->get());
-	} else if(typesafe_aspect<int>* aspect_as_int = try_aspect_as<int>(iter->second)) {
-		lua_pushinteger(L, aspect_as_int->get());
-	} else if(typesafe_aspect<double>* aspect_as_double = try_aspect_as<double>(iter->second)) {
-		lua_pushnumber(L, aspect_as_double->get());
-	} else if(typesafe_aspect<config>* aspect_as_config = try_aspect_as<config>(iter->second)) {
-		luaW_pushconfig(L, aspect_as_config->get());
-	} else if(typesafe_aspect<string_list>* aspect_as_string_list = try_aspect_as<string_list>(iter->second)) {
-		lua_push(L, aspect_as_string_list->get());
-	} else if(typesafe_aspect<terrain_filter>* aspect_as_terrain_filter = try_aspect_as<terrain_filter>(iter->second)) {
-		std::set<map_location> result;
-		aspect_as_terrain_filter->get().get_locations(result);
-		lua_push(L, result);
-	} else if(typesafe_aspect<attacks_vector>* aspect_as_attacks_vector = try_aspect_as<attacks_vector>(iter->second)) {
+	// A few aspects require special delicate handling...
+	if(typesafe_aspect<attacks_vector>* aspect_as_attacks_vector = try_aspect_as<attacks_vector>(iter->second)) {
 		using ai_default_rca::aspect_attacks_base;
 		aspect_attacks_base* real_aspect = dynamic_cast<aspect_attacks_base*>(aspect_as_attacks_vector);
 		while(real_aspect == nullptr) {
@@ -824,7 +836,6 @@ static int impl_ai_aspect_get(lua_State* L)
 			lua_rawseti(L, -2, i + 1);
 		}
 		lua_setfield(L, -2, "enemy");
-		return 1;
 	} else if(typesafe_aspect<unit_advancements_aspect>* aspect_as_unit_advancements_aspects = try_aspect_as<unit_advancements_aspect>(iter->second)) {
 		const unit_advancements_aspect& val = aspect_as_unit_advancements_aspects->get();
 		int my_side = get_engine(L).get_readonly_context().get_side();
@@ -839,7 +850,7 @@ static int impl_ai_aspect_get(lua_State* L)
 			lua_settable(L, -3);
 		}
 	} else {
-		lua_pushnil(L);
+		iter->second->get_lua(L);
 	}
 	return 1;
 }
@@ -1104,7 +1115,7 @@ lua_ai_context::~lua_ai_context()
 	lua_pop(L, 1);
 }
 
-void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object_ptr l_obj)
+void lua_ai_action_handler::handle(const config &cfg, const config &filter_own, bool read_only, lua_object_ptr l_obj)
 {
 	int initial_top = lua_gettop(L);//get the old stack size
 
@@ -1122,8 +1133,14 @@ void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object
 	luaW_pushconfig(L, cfg);
 	lua_getfield(L, iState, "data");
 
+	int num = 3;
+	if (!filter_own.empty()) {
+		luaW_pushconfig(L, filter_own);
+		num=4;
+	}
+
 	// Call the function
-	luaW_pcall(L, 3, l_obj ? 1 : 0, true);
+	luaW_pcall(L, num, l_obj ? 1 : 0, true);
 	if (l_obj) {
 		l_obj->store(L, -1);
 	}

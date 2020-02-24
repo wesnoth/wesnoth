@@ -12,7 +12,61 @@ local function revindex(p)
 end
 
 local methods = {}
-local locset_meta = { __index = methods }
+local locset_meta = {}
+
+function locset_meta:__call(x, y)
+	return self:get(x, y)
+end
+
+function locset_meta:__index(loc)
+	if type(loc) == 'string' then
+		return methods[loc]
+	elseif loc.x and loc.y then
+		return self:get(loc.x, lov.y)
+	else
+		return self:get(loc[1], loc[2])
+	end
+end
+
+function locset_meta:__newindex(loc, val)
+	local fcn = methods.insert
+	if val == nil then fcn = methods.remove end
+	if loc.x and loc.y then
+		fcn(self, loc.x, loc.y, val)
+	else
+		fcn(self, loc[1], loc[2], val)
+	end
+end
+
+function locset_meta:__bor(other)
+	local new = self:clone()
+	new:union(other)
+	return new
+end
+
+function locset_meta:__band(other)
+	local new = self:clone()
+	new:inter(other)
+	return new
+end
+
+function locset_meta:__bxor(other)
+	local new = self:clone()
+	new:symm(other)
+	return new
+end
+
+function locset_meta:__sub(other)
+	local new = self:clone()
+	new:diff(other)
+	return new
+end
+
+function locset_meta:__tostring()
+	local res = {}
+	self:iter(function(x, y, v) res[string.format('(%d,%d)', x, y)] = tostring(v) end)
+	return '{' .. stringx.join_map(res, '; ', ' = ') .. '}'
+end
 
 function methods:empty()
 	return (not next(self.values))
@@ -40,6 +94,14 @@ end
 
 function methods:remove(x, y)
 	self.values[index(x, y)] = nil
+end
+
+function methods:clone()
+	local new = location_set.create()
+	for p,v in pairs(self.values) do
+		new.values[p] = v
+	end
+	return new
 end
 
 function methods:union(s)
@@ -76,6 +138,24 @@ function methods:inter_merge(s, f)
 	self.values = nvalues
 end
 
+function methods:diff(s)
+	local values = self.values
+	for p,v in pairs(s.values) do
+		values[p] = nil
+	end
+end
+
+function methods:symm(s)
+	local values = self.values
+	for p,v in pairs(s.values) do
+		if values[p] then
+			values[p] = nil
+		else
+			values[p] = v
+		end
+	end
+end
+
 function methods:filter(f)
 	local nvalues = {}
 	for p,v in pairs(self.values) do
@@ -99,15 +179,15 @@ function methods:iter(f)
 end
 
 function methods:stable_iter(f)
-	local indices = {}
-	for p,v in pairs(self.values) do
-		table.insert(indices, p)
-	end
 	if f == nil then
 		local locs = self
 		return coroutine.wrap(function()
 			locs:stable_iter(coroutine.yield)
 		end)
+	end
+	local indices = {}
+	for p,v in pairs(self.values) do
+		table.insert(indices, p)
 	end
 	table.sort(indices)
 	for i,p in ipairs(indices) do

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
 "PO-Revision-Date: 2019-09-23 22:32+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -25,10 +25,12 @@ msgstr ""
 msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr "默认AI（RCA）"
 
-#. [ai]: id=experimental_ai
-#: data/ai/ais/ai_experimental.cfg:9
-msgid "Multiplayer_AI^Experimental AI"
-msgstr "试验性AI"
+#. [ai]: id=ai_default_rca_1_14
+#: data/ai/ais/ai_default_rca_1_14.cfg:9
+#, fuzzy
+#| msgid "Multiplayer_AI^Default AI (RCA)"
+msgid "Multiplayer_AI^1.14 Default AI"
+msgstr "默认AI（RCA）"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
@@ -39,6 +41,11 @@ msgstr "开发用AI：空闲AI"
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr "开发用AI：使用另一种征募规则的默认AI（RCA）"
+
+#. [ai]: id=experimental_ai
+#: data/ai/dev/ai_experimental.cfg:11
+msgid "Multiplayer_AI^Experimental AI"
+msgstr "试验性AI"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
@@ -81,10 +88,10 @@ msgstr "黎伐多"
 msgid "Urug-Telfar"
 msgstr "乌鲁戈-特尔法"
 
+#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:97
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:111
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:129
@@ -298,8 +305,8 @@ msgstr ""
 "羊、牧羊犬和森林生物（鹿、长牙兽、兔子）已经知道它们之间互不威胁并且会远离彼"
 "此，这正体现了一只训练有素的牧羊犬的非常优秀的自控能力。"
 
-#. [test]: id=animals
 #. [event]
+#. [test]: id=animals
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -310,10 +317,10 @@ msgstr "动物"
 msgid "Rutburt"
 msgstr "拉特巴特"
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -342,8 +349,8 @@ msgstr "蜘蛛"
 msgid "Yetis"
 msgstr "雪人"
 
-#. [side]
 #. [event]
+#. [side]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -356,10 +363,10 @@ msgstr "狼"
 msgid "Whelps"
 msgstr "幼兽"
 
-#. [set_menu_item]: id=m01_end_animals
 #. [event]
 #. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -507,12 +514,12 @@ msgstr "又大又坏的兽人"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "好了，伙计们。得制止这些兽人。"
 
-#. [message]: speaker=Big Bad Orc
 #. [message]: speaker=Another Bad Orc
 #. [message]: speaker=Vanak
+#. [message]: speaker=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:572
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:148
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:142
 msgid "They there!  We them get!"
 msgstr "它们那儿，我们它们捉！"
 
@@ -584,8 +591,8 @@ msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
 msgstr "我可能是倒下了，但我们将继续守卫通路直到最后一人！"
 
-#. [test]: id=dragon
 #. [event]
+#. [test]: id=dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -1601,7 +1608,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:159
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
 #: data/ai/micro_ais/scenarios/patrols.cfg:238
 #: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
@@ -1671,9 +1678,9 @@ msgstr "信使护送"
 msgid "Vanak"
 msgstr "凡纳克"
 
-#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1681,27 +1688,27 @@ msgid "Messenger"
 msgstr "信使"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:131
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
 msgid "Messenger Waypoint 1"
 msgstr "信使路点1"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:133
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
 msgid "Messenger Waypoint 2"
 msgstr "信使路点2"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:129
 msgid "Messenger Waypoint 3"
 msgstr "信使路点3"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:138
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:132
 msgid "AI moves Messenger here"
 msgstr "AI将把信使移动到此"
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:147
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
@@ -1709,7 +1716,7 @@ msgstr ""
 "弟兄们，我得到北边的路标去，把消息带给我们的领袖。让我们尽快前往那里吧。"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:160
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:154
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1741,32 +1748,32 @@ msgstr ""
 "</span>（https://wiki.wesnoth.org/Micro_AIs）以获得更多信息。"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:167
 msgid "Defeat the messenger"
 msgstr "击败信使"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:177
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:171
 msgid "Messenger gets to the signpost"
 msgstr "信使到达路标处"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:181
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:175
 msgid "Death of Vanak"
 msgstr "凡纳克死亡"
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:197
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:191
 msgid "I made it!  Now our people will be safe."
 msgstr "我做到了！现在我们的人民安全了。"
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:212
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:206
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "不！全完了。现在我们再也不可能阻止兽人了！"
 
-#. [test]: id=patrols
 #. [event]
+#. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -1960,8 +1967,8 @@ msgstr "呵，挺有趣的！现在我就呆在这儿，看那两个伙计走啊
 msgid "Let's go home, chaps."
 msgstr "我们回家，伙计们。"
 
-#. [test]: id=protect_unit
 #. [event]
+#. [test]: id=protect_unit
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2551,22 +2558,31 @@ msgstr "乌拉尔特"
 
 #. [message]: speaker=sergeant
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:125
-msgid "General Grospur, what do we do?  These undead will surely wipe us out."
+#, fuzzy
+#| msgid ""
+#| "General Grospur, what do we do?  These undead will surely wipe us out."
+msgid "General Grospur, what do we do? These undead will surely wipe us out."
 msgstr "格洛斯帕将军，我们该怎么办？这些亡灵肯定会把我们一网打尽的。"
 
 #. [message]: speaker=Grospur
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:129
+#, fuzzy
+#| msgid ""
+#| "Don't be such a chicken, Sergeant!  I have placed units with lots of "
+#| "experience around the perimeter. The undead will not dare to attack them. "
+#| "And those few that sneak through... we can easily dispose of them once "
+#| "they make it inside.\n"
+#| "\n"
+#| "<i>In other words, the Wesnoth AI does generally not attack units one XP "
+#| "from leveling if there is no chance of killing the unit with a single "
+#| "attack. However, some of the attacks by the undead are handled by the "
+#| "Simple Attack Micro AI in this scenario. General Grospur might be in for "
+#| "a surprise.</i>"
 msgid ""
-"Don't be such a chicken, Sergeant!  I have placed units with lots of "
+"Don’t be such a chicken, Sergeant! I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
 "And those few that sneak through... we can easily dispose of them once they "
-"make it inside.\n"
-"\n"
-"<i>In other words, the Wesnoth AI does generally not attack units one XP "
-"from leveling if there is no chance of killing the unit with a single "
-"attack. However, some of the attacks by the undead are handled by the Simple "
-"Attack Micro AI in this scenario. General Grospur might be in for a surprise."
-"</i>"
+"make it inside."
 msgstr ""
 "别胆小得像个鸡仔似的，士官！我在防线上布置了富有经验的单位。亡灵不敢攻击他"
 "们。而那少数溜进来得亡灵……一旦它们进来，我们可以很容易地消灭它们。\n"
@@ -2575,48 +2591,54 @@ msgstr ""
 "攻击他们。但是，在此场景中，亡灵的有些攻击是由简单攻击微AI来处理的。格洛斯帕"
 "将军怕是会大吃一惊。</b>"
 
-#. [objectives]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:135
-msgid "Watch the undead take care of business"
-msgstr "观看亡灵干活儿"
-
-#. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:137
-msgid "Don't even try. You can't reach the Lich."
-msgstr "别试了。你不可能摸到那巫妖的。"
-
-#. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:141
-msgid "Death of the last of Grospur's units"
-msgstr "格洛斯帕的最后一个单位死亡"
-
-#. [note]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:145
-msgid "When your leader dies, side leadership passes on to another unit"
-msgstr "当你的首领死亡时，阵营领导权会转移给另一个单位"
-
-#. [message]: speaker=$second_unit.id
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:172
+#. [message]: speaker=sergeant
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:133
 msgid ""
-"What the ... ?!?  They are not supposed to attack me. That just doesn't "
-"happen in Wesnoth!"
-msgstr "什么……？！？它们不该攻击我的。这在韦诺中不可能发生啊！"
+"General Grospur, you’re still thinking of Wesnoth 1.12. The default AI is "
+"smarter than that now.\n"
+"\n"
+"<i>If you’re porting an old scenario, you may find the Simple Attack Micro "
+"AI used in a way that’s unnecessary since 1.14. The 1.12 AI generally "
+"doesn’t attack units one XP from leveling if there is no chance of killing "
+"the unit with a single attack. One way of making 1.12 do those attacks was "
+"to use the Simple Attack Micro AI.</i>"
+msgstr ""
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:176
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:139
+#, fuzzy
+#| msgid ""
+#| "Hahahahaha!! I have given special instruction to my Soulless to attack "
+#| "all your almost-advanced units first. Also watch how those same Soulless "
+#| "will throw themselves mercilessly at your pitiful soldiers after that, "
+#| "saving my more valuable skeleton minions for later. I have taken the term "
+#| "'disposable units' to a whole new level. Watch in awe!!\n"
+#| "\n"
+#| "<i>Translation: The undead side includes two instances of the Simple "
+#| "Attack Micro AI.  The first makes the Soulless attack all units 1 XP from "
+#| "leveling up, such that they can be eliminated afterward.  The second "
+#| "executes all remaining attacks possible by Soulless (and Walking "
+#| "Corpses), without regard for their own safety.  Only after that does the "
+#| "default Wesnoth attack mechanism kick in to attack with the remaining "
+#| "units (skeletons).</i>"
 msgid ""
-"Hahahahaha!! I have given special instruction to my Soulless to attack all "
-"your almost-advanced units first. Also watch how those same Soulless will "
-"throw themselves mercilessly at your pitiful soldiers after that, saving my "
-"more valuable skeleton minions for later. I have taken the term 'disposable "
-"units' to a whole new level. Watch in awe!!\n"
+"Hahahahaha!! Indeed, my skeletons are smarter than General Grospur. Worse "
+"for you, I have given special instruction to my Soulless to attack all your "
+"almost-advanced units first. Also watch how those same Soulless will throw "
+"themselves mercilessly at your pitiful soldiers after that, saving my more "
+"valuable skeleton minions for later. I have taken the term ‘disposable "
+"units’ to a whole new level. Watch in awe!!\n"
 "\n"
 "<i>Translation: The undead side includes two instances of the Simple Attack "
-"Micro AI.  The first makes the Soulless attack all units 1 XP from leveling "
-"up, such that they can be eliminated afterward.  The second executes all "
+"Micro AI. The first makes the Soulless attack all units 1 XP from leveling "
+"up, such that they can be eliminated afterward. The second executes all "
 "remaining attacks possible by Soulless (and Walking Corpses), without regard "
-"for their own safety.  Only after that does the default Wesnoth attack "
-"mechanism kick in to attack with the remaining units (skeletons).</i>"
+"for their own safety. Only after that does the default Wesnoth attack "
+"mechanism kick in to attack with the remaining units (skeletons), and it "
+"moves the remaining units with high caution and low aggression.</i>\n"
+"\n"
+"<i>The difference to the 1.12 version of this demo is that the 1.12 "
+"skeletons still had high aggression.</i>"
 msgstr ""
 "哈哈哈哈哈！！我给我的无魂怪下达了特别指令，先攻击你所有的就快要升级的单位。"
 "再看看同样是那些无魂怪，在之后是如何奋不顾身地攻击你那些可怜的士兵的。这样就"
@@ -2628,14 +2650,40 @@ msgstr ""
 "尸）执行余下的所有可能发起的攻击，而完全不顾自身的安危。只有在那之后，默认韦"
 "诺攻击机制才会起效，使用剩下的单位（骷髅）进行攻击。</b>"
 
+#. [objectives]
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:147
+msgid "Watch the undead take care of business"
+msgstr "观看亡灵干活儿"
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:149
+#, fuzzy
+#| msgid "Don't even try. You can't reach the Lich."
+msgid "Don’t even try. You can’t reach the Lich."
+msgstr "别试了。你不可能摸到那巫妖的。"
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:153
+#, fuzzy
+#| msgid "Death of the last of Grospur's units"
+msgid "Death of the last of Grospur’s units"
+msgstr "格洛斯帕的最后一个单位死亡"
+
+#. [note]
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:157
+msgid "When your leader dies, side leadership passes on to another unit"
+msgstr "当你的首领死亡时，阵营领导权会转移给另一个单位"
+
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:195
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:188
 msgid "Rise, minions!"
 msgstr "起身吧，仆从们！"
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:241
-msgid "And that's how the undead AI executes total annihilation ..."
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:234
+#, fuzzy
+#| msgid "And that's how the undead AI executes total annihilation ..."
+msgid "And that’s how the undead AI executes total annihilation ..."
 msgstr "而这就是亡灵AI执行灭绝令的方式……"
 
 #. [side]
@@ -2978,6 +3026,11 @@ msgstr "Lua AI测试场景（旧语法）"
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr "奇略什"
+
+#~ msgid ""
+#~ "What the ... ?!?  They are not supposed to attack me. That just doesn't "
+#~ "happen in Wesnoth!"
+#~ msgstr "什么……？！？它们不该攻击我的。这在韦诺中不可能发生啊！"
 
 #~ msgid "Use the Patrols Micro AI instead of patrol.lua."
 #~ msgstr "使用巡逻微AI而不是patrol.lua。"

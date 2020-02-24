@@ -1,10 +1,9 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local H = wesnoth.require "helper"
 
 function wesnoth.micro_ais.stationed_guardian(cfg)
 	if (cfg.action ~= 'delete') then
 		if (not cfg.id) and (not wml.get_child(cfg, "filter")) then
-			H.wml_error("Stationed Guardian [micro_ai] tag requires either id= key or [filter] tag")
+			wml.error("Stationed Guardian [micro_ai] tag requires either id= key or [filter] tag")
 		end
 		AH.get_named_loc_xy('station', cfg, 'Stationed guardian [micro_ai] tag')
 	end
@@ -19,7 +18,7 @@ end
 
 function wesnoth.micro_ais.zone_guardian(cfg)
 	if (cfg.action ~= 'delete') and (not cfg.id) and (not wml.get_child(cfg, "filter")) then
-		H.wml_error("Zone Guardian [micro_ai] tag requires either id= key or [filter] tag")
+		wml.error("Zone Guardian [micro_ai] tag requires either id= key or [filter] tag")
 	end
 	local required_keys = { "[filter_location]" }
 	local optional_keys = { "id", "[filter]", "[filter_location_enemy]", "station_loc", "station_x", "station_y" }
@@ -33,7 +32,7 @@ end
 function wesnoth.micro_ais.return_guardian(cfg)
 	if (cfg.action ~= 'delete') then
 		if (not cfg.id) and (not wml.get_child(cfg, "filter")) then
-			H.wml_error("Return Guardian [micro_ai] tag requires either id= key or [filter] tag")
+			wml.error("Return Guardian [micro_ai] tag requires either id= key or [filter] tag")
 		end
 		AH.get_named_loc_xy('return', cfg, 'Return guardian [micro_ai] tag')
 	end
@@ -48,7 +47,7 @@ end
 
 function wesnoth.micro_ais.coward(cfg)
 	if (cfg.action ~= 'delete') and (not cfg.id) and (not wml.get_child(cfg, "filter")) then
-		H.wml_error("Coward [micro_ai] tag requires either id= key or [filter] tag")
+		wml.error("Coward [micro_ai] tag requires either id= key or [filter] tag")
 	end
 	local required_keys = { "distance" }
 	local optional_keys = { "attack_if_trapped", "id", "[filter]", "[filter_second]", "seek_loc", "seek_x", "seek_y", "avoid_loc", "avoid_x", "avoid_y" }

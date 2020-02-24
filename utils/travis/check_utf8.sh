@@ -3,7 +3,7 @@
 #
 # This script assumes that the current working directory is the root of the wesnoth repository.
 
-command -v isutf8 >/dev/null || { echo "Install 'isutf8' from moreutils to use this script."; exit 0; }
+command -v isutf8 >/dev/null || { echo "Install 'isutf8' from moreutils to use this script."; exit 1; }
 
 exit_code=0
 

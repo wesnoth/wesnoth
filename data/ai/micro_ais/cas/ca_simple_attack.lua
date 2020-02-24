@@ -35,8 +35,8 @@ function ca_simple_attack:evaluation(cfg)
         end
 
         if valid_target then
-            local attacker = wesnoth.get_unit(att.src.x, att.src.y)
-            local enemy = wesnoth.get_unit(att.target.x, att.target.y)
+            local attacker = wesnoth.units.get(att.src.x, att.src.y)
+            local enemy = wesnoth.units.get(att.target.x, att.target.y)
             local dst = { att.dst.x, att.dst.y }
 
             local rating = BC.attack_rating(attacker, enemy, dst)

@@ -186,6 +186,20 @@ static int impl_unit_type_pairs(lua_State* L) {
 	return 3;
 }
 
+/**
+ * Turns a lua proxy unit type to string. (__tostring metamethod)
+ */
+static int impl_unit_type_tostring(lua_State* L)
+{
+	const unit_type& ut = luaW_checkunittype(L, 1);
+	std::ostringstream str;
+
+	str << "unit type: <" << ut.id() << '>';
+
+	lua_push(L, str.str());
+	return 1;
+}
+
 namespace lua_unit_type {
 	std::string register_metatable(lua_State * L)
 	{
@@ -193,6 +207,8 @@ namespace lua_unit_type {
 
 		lua_pushcfunction(L, impl_unit_type_get);
 		lua_setfield(L, -2, "__index");
+		lua_pushcfunction(L, impl_unit_type_tostring);
+		lua_setfield(L, -2, "__tostring");
 		lua_pushcfunction(L, impl_unit_type_equal);
 		lua_setfield(L, -2, "__eq");
 		lua_pushstring(L, UnitType);

@@ -1,14 +1,13 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 
 wesnoth.wml_actions.random_placement = function(cfg)
 	local parsed = wml.shallow_parsed(cfg)
 	-- TODO: In most cases this tag is used to place units, so maybe make include_borders=no the default for [filter_location]?
 	local filter = wml.get_child(parsed, "filter_location") or {}
-	local command = wml.get_child(parsed, "command") or helper.wml_error("[random_placement] missing required [command] subtag")
+	local command = wml.get_child(parsed, "command") or wml.error("[random_placement] missing required [command] subtag")
 	local distance = cfg.min_distance or 0
-	local num_items = cfg.num_items or helper.wml_error("[random_placement] missing required 'num_items' attribute")
-	local variable = cfg.variable or helper.wml_error("[random_placement] missing required 'variable' attribute")
+	local num_items = cfg.num_items or wml.error("[random_placement] missing required 'num_items' attribute")
+	local variable = cfg.variable or wml.error("[random_placement] missing required 'variable' attribute")
 	local allow_less = cfg.allow_less == true
 	local variable_previous = utils.start_var_scope(variable)
 	local math_abs = math.abs
@@ -33,7 +32,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 				print("placed only " .. i .. " items")
 				return
 			else
-				helper.wml_error("[random_placement] failed to place items. only " .. i .. " items were placed")
+				wml.error("[random_placement] failed to place items. only " .. i .. " items were placed")
 			end
 		end
 		local index = wesnoth.random(size)

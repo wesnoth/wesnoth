@@ -645,6 +645,7 @@ static void check_fpu()
 			}
 		}
 
+#ifndef _M_AMD64
 		if(precision_mode != _PC_53) {
 			std::cerr << "Floating point precision mode is currently '"
 				<< ((precision_mode == _PC_53)
@@ -658,6 +659,8 @@ static void check_fpu()
 				std::cerr << "failed to set floating point precision type to 'double'\n";
 			}
 		}
+#endif
+
 	} else {
 		std::cerr << "_controlfp_s failed.\n";
 	}
@@ -741,11 +744,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-	res = image::update_from_preferences();
-	if(res == false) {
-		std::cerr << "could not initialize image preferences\n";
-		return 1;
-	}
 
 	check_fpu();
 	const cursor::manager cursor_manager;
@@ -832,24 +830,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 		plugins.play_slice();
 		plugins.play_slice();
 
-		if(cmdline_opts.unit_test) {
-			if(cmdline_opts.timeout) {
-				std::cerr << "The wesnoth built-in timeout feature has been removed.\n" << std::endl;
-				std::cerr << "Please use a platform-specific script which will kill the overtime process instead.\n"
-						  << std::endl;
-				std::cerr << "For examples in bash, or in windows cmd, see the forums, or the wesnoth repository."
-						  << std::endl;
-				std::cerr
-						<< "The bash script is called `run_wml_tests`, the windows script is part of the VC project.\n"
-						<< std::endl;
-			}
-
-			int worker_result = game->unit_test();
-			std::cerr << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
-					  << ((worker_result == 3) ? "(INVALID REPLAY)" : "")
-					  << ((worker_result == 4) ? "(ERRORED REPLAY)" : "") << ": " << *cmdline_opts.unit_test
-					  << std::endl;
-			return worker_result;
+		if(!cmdline_opts.unit_test.empty()) {
+			return static_cast<int>(game->unit_test());
 		}
 
 		if(game->play_test() == false) {
@@ -1060,6 +1042,11 @@ int main(int argc, char** argv)
 		   args[k] == "--render-image" ||
 		   args[k] == "--report" ||
 		   args[k] == "-R" ||
+		   args[k] == "-V" ||
+		   args[k] == "-D" ||
+		   args[k] == "-P" ||
+		   args[k] == "-p" ||
+		   args[k] == "--preprocess" ||
 		   args[k] == "--screenshot" ||
 		   args[k] == "--data-path" ||
 		   args[k] == "--diff" ||

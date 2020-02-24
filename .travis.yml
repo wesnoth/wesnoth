@@ -8,37 +8,56 @@ cache:
   ccache: true
   directories:
     - $HOME/build-cache
+    - $HOME/flatpak-cache
+    - $TRAVIS_BUILD_DIR/projectfiles/VC14/Debug
+    - $TRAVIS_BUILD_DIR/projectfiles/VC14/Release
 
 git:
   depth: 5
 
+env:
+  global:
+    secure: Fw9j5BpL8e5f2boEC2D8l0Cm+pCJx7lyvpZvockSM9cF2Cnt/QPbknJLXPryExLhweQO/lvi0MPuoMhRJv0QbChBjdXzJmR+uU1ejCHfpkTc6Cm/yo3tZMG3Zm7vHs00gla2ytK+XyFIVZLtFxyzy2fxjD64sFO3YrUp0KzSXp8=
+
 matrix:
   include:
-    - compiler: gcc
-      env: CXXSTD=14 NLS=true LTS=1604 BRANCH=master
+    - os: windows
+      env: TOOL=msbuild OPT=Debug BRANCH=master UPLOAD_ID=vs-debug
+
+    - os: windows
+      env: TOOL=msbuild OPT=Release BRANCH=master
+
+    - os: osx
+      compiler: clang
+      env: TOOL=xcodebuild OPT=Debug NLS=true BRANCH=master UPLOAD_ID=xcode-debug
+
+    - os: osx
+      compiler: clang
+      env: TOOL=xcodebuild OPT=Release NLS=true BRANCH=master
 
     - compiler: gcc
-      env: TOOL=scons CXXSTD=17 NLS=false LTS=1804 BRANCH=master VALIDATE=true
+      env: CXXSTD=14 NLS=only LTS=1604 BRANCH=master
+
+    - compiler: gcc
+      env: TOOL=scons CXXSTD=17 NLS=false LTS=1804 BRANCH=master VALIDATE=true UPLOAD_ID=ubuntu-1804
 
     - compiler: gcc
       env: TOOL=scons CXXSTD=14 NLS=false LTS=1604 BRANCH=master OPT=-O0
 
     - compiler: gcc
-      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=master
+      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=master UPLOAD_ID=ubuntu-1604
 
     - compiler: clang
       env: TOOL=scons CXXSTD=14 NLS=false LTS=1604 BRANCH=master OPT=-O0
 
     - compiler: clang
-      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=master
+      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1804 BRANCH=master
 
-    - os: osx
-      compiler: clang
-      env: TOOL=scons CXXSTD=14 NLS=false OPT=-O0
+    - env: CXXSTD=14 NLS=true LTS=mingw BRANCH=master STRICT=false UPLOAD_ID=mingw
+    
+    - env: CXXSTD=14 NLS=false LTS=steamrt BRANCH=master CC=gcc-5 CXX=g++-5
 
-    - os: osx
-      compiler: clang
-      env: TOOL=xcodebuild
+    - env: NLS=true LTS=flatpak BRANCH=master
 
 install:
     - . ./utils/travis/steps/install.sh

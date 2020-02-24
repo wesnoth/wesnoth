@@ -78,7 +78,8 @@ private:
 	static lua_ai_action_handler* create(lua_State *L, char const *code, lua_ai_context &context);
 public:
 	~lua_ai_action_handler();
-	void handle(const config &cfg, bool read_only, lua_object_ptr l_obj);
+	//void handle(const config &cfg, bool read_only, lua_object_ptr l_obj);
+	void handle(const config &cfg, const config &filter_own, bool read_only, lua_object_ptr l_obj);
 	friend class ::game_lua_kernel;
 };
 

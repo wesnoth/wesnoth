@@ -1,5 +1,4 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local H = wesnoth.require "helper"
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
 function wesnoth.micro_ais.big_animals(cfg)
@@ -92,12 +91,12 @@ local save_rabbit_spawn, save_rabbit_despawn
 local function register_rabbit_commands()
 	function wesnoth.custom_synced_commands.rabbit_despawn(cfg)
 		--TODO: maybe we only want to allow erasing of unit of certain types/sides/locations?
-		wesnoth.erase_unit(cfg.x, cfg.y)
+		wesnoth.units.erase(cfg.x, cfg.y)
 	end
 
 	function wesnoth.custom_synced_commands.rabbit_spawn(cfg)
 		--TODO: maybe we only want to allow creation of unit of certain types/sides/locations?
-		wesnoth.put_unit({ side = wesnoth.current.side, type = cfg.rabbit_type}, cfg.x, cfg.y)
+		wesnoth.units.to_map({ side = wesnoth.current.side, type = cfg.rabbit_type}, cfg.x, cfg.y)
 	end
 end
 
@@ -171,7 +170,7 @@ end
 function wesnoth.micro_ais.hunter(cfg)
 	if (cfg.action ~= 'delete') then
 	    if (not cfg.id) and (not wml.get_child(cfg, "filter")) then
-			H.wml_error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
+			wml.error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
 		end
 		AH.get_named_loc_xy('home', cfg, 'Hunter [micro_ai] tag')
 	end

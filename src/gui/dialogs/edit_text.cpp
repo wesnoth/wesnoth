@@ -16,7 +16,12 @@
 
 #include "gui/dialogs/edit_text.hpp"
 
+#include "gui/auxiliary/field.hpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
+
+#include <boost/algorithm/string/trim.hpp>
 
 namespace gui2
 {
@@ -41,14 +46,33 @@ namespace dialogs
 
 REGISTER_DIALOG(edit_text)
 
-//TODO: add  a way to disallow certain characters (like spaces or ")
 edit_text::edit_text(const std::string& title,
 					   const std::string& label,
-					   std::string& text)
+					   std::string& text,
+					   bool disallow_empty)
+	: disallow_empty_(disallow_empty)
 {
 	register_label("title", true, title, true);
 	register_label("label", true, label, true);
 	register_text("text", true, text, true);
 }
+
+void edit_text::pre_show(window& window)
+{
+	if(disallow_empty_) {
+		text_box& text = find_widget<text_box>(&window, "text", false);
+		connect_signal_notify_modified(text, std::bind(&edit_text::on_text_change, this));
+		on_text_change();
+	}
+}
+
+void edit_text::on_text_change()
+{
+	text_box& text = find_widget<text_box>(get_window(), "text", false);
+	button& ok_button = find_widget<button>(get_window(), "ok", false);
+
+	ok_button.set_active(!boost::trim_copy(text.get_value()).empty());
+}
+
 } // namespace dialogs
 } // namespace gui2

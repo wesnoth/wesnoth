@@ -133,7 +133,6 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	test(),
 	unit_test(),
 	headless_unit_test(false),
-	timeout(),
 	noreplaycheck(false),
 	mptest(false),
 	userconfig_path(false),
@@ -277,16 +276,15 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	po::options_description testing_opts("Testing options");
 	testing_opts.add_options()
 		("test,t", po::value<std::string>()->implicit_value(std::string()), "runs the game in a small test scenario. If specified, scenario <arg> will be used instead.")
-		("unit,u", po::value<std::string>()->implicit_value(std::string()), "runs a unit test scenario. Works like test, except that the exit code of the program reflects the victory / defeat conditions of the scenario.\n\t0 - PASS\n\t1 - FAIL\n\t2 - FAIL (TIMEOUT)\n\t3 - FAIL (INVALID REPLAY)\n\t4 - FAIL (ERRORED REPLAY)")
+		("unit,u", po::value<std::vector<std::string>>(), "runs a unit test scenario. The GUI is not shown and the exit code of the program reflects the victory / defeat conditions of the scenario.\n\t0 - PASS\n\t1 - FAIL\n\t3 - FAIL (INVALID REPLAY)\n\t4 - FAIL (ERRORED REPLAY)\n\t5 - FAIL (BROKE STRICT)\n\t6 - FAIL (WML EXCEPTION)\n\tMultiple tests can be run by giving this option multiple times, in this case the test run will stop immediately after any test which doesn't PASS and the return code will be the status of the test that caused the stop.")
 		("showgui", "don't run headlessly (for debugging a failing test)")
-		("timeout", po::value<unsigned int>(), "sets a timeout (milliseconds) for the unit test. (DEPRECATED)")
 		("log-strict", po::value<std::string>(), "sets the strict level of the logger. any messages sent to log domains of this level or more severe will cause the unit test to fail regardless of the victory result.")
 		("noreplaycheck", "don't try to validate replay of unit test.")
 		("mp-test", "load the test mp scenarios.")
 		;
 
 	po::options_description parsing_opts("WML parsing options");
-	testing_opts.add_options()
+	parsing_opts.add_options()
 		("use-schema,S", po::value<std::string>(), "specify a schema to validate WML against (defaults to the core schema)")
 		("validate,V", po::value<std::string>(), "validate a specified WML file against a schema")
 		("validate-addon", po::value<std::string>(), "validate the specified addon's WML against the schema")
@@ -497,13 +495,11 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		test = vm["test"].as<std::string>();
 	if (vm.count("unit"))
 	{
-		unit_test = vm["unit"].as<std::string>();
+		unit_test = vm["unit"].as<std::vector<std::string>>();
 		headless_unit_test = true;
 	}
 	if (vm.count("showgui"))
 		headless_unit_test = false;
-	if (vm.count("timeout"))
-		timeout = vm["timeout"].as<unsigned int>();
 	if (vm.count("noreplaycheck"))
 		noreplaycheck = true;
 	if (vm.count("turns"))

@@ -56,7 +56,7 @@ public:
 	/**
 	 * Create a new generator.
 	 *
-	 * @param has_minimum         Does one item need to be selected.
+	 * @param has_minimum         Does one item need to be selected?
 	 * @param has_maximum         Is one the maximum number of items that can
 	 *                            be selected?
 	 * @param placement           The placement of the grids, see tplacement
@@ -105,7 +105,9 @@ public:
 	/**
 	 * Shows or hides an item.
 	 *
-	 * The caller is responsible for reformatting the grid.
+	 * The caller is responsible for reformatting the grid. If a selected item
+	 * is hidden then it will be automatically deselected; if no items are
+	 * shown then no items will be selected, even if has_minimum was requested.
 	 *
 	 * @param index               The item to show or hide.
 	 * @param show                If true shows the item, else hides it.
@@ -372,8 +374,16 @@ protected:
 	virtual const grid& item_ordered(const unsigned index) const = 0;
 
 public:
+	/**
+	 * If a sort-order is being applied, maps from unsorted to sorted indicies.
+	 * This does not take account of whether each object is shown or not.
+	 */
 	virtual unsigned get_ordered_index(unsigned index) const = 0;
 
+	/**
+	 * If a sort-order is being applied, maps from sorted to unsorted indicies.
+	 * This does not take account of whether each object is shown or not.
+	 */
 	virtual unsigned get_item_at_ordered(unsigned index_ordered) const = 0;
 
 };

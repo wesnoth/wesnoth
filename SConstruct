@@ -134,7 +134,11 @@ env = Environment(tools=["tar", "gettext_tool", "install", "python_devel", "scan
 if env["lockfile"]:
     print("Creating lockfile")
     lockfile = os.path.abspath("scons.lock")
-    open(lockfile, "wx").write(str(os.getpid()))
+    if sys.version_info.major >= 3:
+        create = "x"
+    else:
+        create = "wx"
+    open(lockfile, create).write(str(os.getpid()))
     import atexit
     atexit.register(os.remove, lockfile)
 
@@ -324,8 +328,8 @@ env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 
 # Some tests require at least C++11
 if "gcc" in env["TOOLS"]:
-    env.AppendUnique(CCFLAGS = Split("-Wall -Wextra -Werror=non-virtual-dtor"))
-    env.AppendUnique(CXXFLAGS = "-std=c++" + env["cxx_std"])
+    env.AppendUnique(CCFLAGS = Split("-Wall -Wextra"))
+    env.AppendUnique(CXXFLAGS = Split("-Werror=non-virtual-dtor -std=c++" + env["cxx_std"]))
 
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
@@ -407,16 +411,18 @@ if env["prereqs"]:
             have_X = conf.CheckLib('X11')
 
         env["notifications"] = env["notifications"] and conf.CheckPKG("dbus-1")
-        if env["notifications"]:
-            client_env.Append(CPPDEFINES = ["HAVE_LIBDBUS"])
-
         client_env['fribidi'] = client_env['fribidi'] and (conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find FriBiDi, disabling FriBiDi support."))
-        if client_env['fribidi']:
-            client_env.Append(CPPDEFINES = ["HAVE_FRIBIDI"])
-
         env["history"] = env["history"] and (conf.CheckLib("history") or Warning("Can't find GNU history, disabling history support."))
-        if env["history"]:
-            client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
+
+    client_env = conf.Finish()
+
+# We set those outside of Configure() section because SCons doesn't merge CPPPATH var properly in conf.Finish()
+    if env["notifications"]:
+        client_env.Append(CPPDEFINES = ["HAVE_LIBDBUS"])
+    if client_env['fribidi']:
+        client_env.Append(CPPDEFINES = ["HAVE_FRIBIDI"])
+    if env["history"]:
+        client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 
     if env["forum_user_handler"]:
         found_connector = False
@@ -434,8 +440,6 @@ if env["prereqs"]:
         if not found_connector:
             Exit("Failed to find sql connector library but forum user handler support is requested.")
             have_server_prereqs = False
-
-    client_env = conf.Finish()
 
     test_env = client_env.Clone()
     conf = test_env.Configure(**configure_args)

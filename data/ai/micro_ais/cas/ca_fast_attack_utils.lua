@@ -134,7 +134,7 @@ function ca_fast_attack_utils.get_unit_copy(id, gamedata)
     -- already, otherwise store in there
 
     if (not gamedata.unit_copies[id]) then
-        local unit_proxy = wesnoth.get_units { id = id }[1]
+        local unit_proxy = wesnoth.units.find_on_map { id = id }[1]
         gamedata.unit_copies[id] = unit_proxy:clone()
     end
 
@@ -157,7 +157,7 @@ function ca_fast_attack_utils.get_unit_defense(unit_copy, x, y, defense_maps)
     if (not defense_maps[unit_copy.id][x]) then defense_maps[unit_copy.id][x] = {} end
 
     if (not defense_maps[unit_copy.id][x][y]) then
-        local defense = (100. - unit_copy:defense(wesnoth.get_terrain(x, y))) / 100.
+        local defense = unit_copy:defense_on(wesnoth.get_terrain(x, y)) / 100.
         defense_maps[unit_copy.id][x][y] = { defense = defense }
     end
 

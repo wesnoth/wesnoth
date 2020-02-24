@@ -26,11 +26,7 @@ function wesnoth.wml_actions.modify_side(cfg)
 			side.defeat_condition = cfg.defeat_condition
 		end
 		if cfg.recruit then
-			local recruits = {}
-			for recruit in utils.split(cfg.recruit) do
-				table.insert(recruits, recruit)
-			end
-			side.recruit = recruits
+			side.recruit = cfg.recruit:split()
 		end
 		if cfg.village_support then
 			side.village_support = cfg.village_support
@@ -49,7 +45,7 @@ function wesnoth.wml_actions.modify_side(cfg)
 			side.hidden = cfg.hidden
 		end
 		if cfg.color or cfg.flag then
-			wesnoth.set_side_id(side.side, cfg.flag, cfg.color)
+			side:set_id(cfg.flag, cfg.color)
 		end
 		if cfg.flag_icon then
 			side.flag_icon = cfg.flag_icon
@@ -91,21 +87,31 @@ function wesnoth.wml_actions.modify_side(cfg)
 			end
 		end
 
-		if cfg.switch_ai then
-			wesnoth.switch_ai(side.side, cfg.switch_ai)
-		end
 		local ai, replace_ai = {}, false
-		for next_ai in wml.child_range(cfg, "ai") do
-			table.insert(ai, T.ai(next_ai))
-			if next_ai.ai_algorithm then
-				replace_ai = true
+		for k, v in ipairs(cfg) do
+			local tag, content = v[1], v[2]
+			if tag == "ai" then
+				table.insert(ai, T.ai(content))
+				if content.ai_algorithm then
+					replace_ai = true
+				end
+			elseif tag == "set_variable" then
+				wesnoth.wml_actions.set_variable(v[2], side.variables)
+			elseif tag == "clear_variable" then
+				wesnoth.wml_actions.clear_variable(cfg, side.variables)
+			elseif tag == "variables" then
+				side.variables.__cfg = wml.merge(side.variables.__cfg, content, cfg.var_merge_mode or "replace")
 			end
+		end
+		
+		if cfg.switch_ai then
+			side:switch_ai(cfg.switch_ai)
 		end
 		if #ai > 0 then
 			if replace_ai then
-				wesnoth.switch_ai(side.side, ai)
+				side:switch_ai(ai)
 			else
-				wesnoth.append_ai(side.side, ai)
+				side:append_ai(ai)
 			end
 		end
 	end

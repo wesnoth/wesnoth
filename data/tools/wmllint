@@ -189,6 +189,7 @@
 import sys, os, re, argparse, string, copy, difflib, time, gzip, codecs
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
+from collections import defaultdict
 
 # Changes meant to be done on maps and .cfg lines.
 mapchanges = (
@@ -874,12 +875,12 @@ linechanges = (
         # renamed dunefolk units
         # images
         ("units/dunefolk/arif.png", "units/dunefolk/soldier.png"),
-        ("units/dunefolk/batal.png", "units/dunefolk/ranger.png"),
+        ("units/dunefolk/batal.png", "units/dunefolk/wayfarer.png"),
         ("units/dunefolk/faris.png", "units/dunefolk/sunderer.png"),
         ("units/dunefolk/ghazi.png", "units/dunefolk/swordsman.png"),
         ("units/dunefolk/hadaf.png", "units/dunefolk/marauder.png"),
         ("units/dunefolk/hakim.png", "units/dunefolk/herbalist.png"),
-        ("units/dunefolk/jawal.png", "units/dunefolk/windrider.png"),
+        ("units/dunefolk/jawal.png", "units/dunefolk/windbolt.png"),
         ("units/dunefolk/jundi.png", "units/dunefolk/rover.png"),
         ("units/dunefolk/khaiyal.png", "units/dunefolk/piercer.png"),
         ("units/dunefolk/khalid.png", "units/dunefolk/warmaster.png"),
@@ -893,27 +894,34 @@ linechanges = (
         ("units/dunefolk/qatif-al-nar.png", "units/dunefolk/scorcher.png"),
         ("units/dunefolk/rami.png", "units/dunefolk/rider.png"),
         ("units/dunefolk/rasikh.png", "units/dunefolk/spearmaster.png"),
-        ("units/dunefolk/saree.png", "units/dunefolk/swiftrider.png"),
+        ("units/dunefolk/saree.png", "units/dunefolk/horse-archer.png"),
         ("units/dunefolk/shuja.png", "units/dunefolk/blademaster.png"),
         ("units/dunefolk/tabib.png", "units/dunefolk/apothecary.png"),
         ("units/dunefolk/tineen.png", "units/dunefolk/firetrooper.png"),
         ("images/portraits/dunefolk/hakim.png", "images/portraits/dunefolk/herbalist.png"),
 
+        # second round of renaming
+        ("units/dunefolk/ranger.png", "units/dunefolk/wayfarer.png"),
+        ("units/dunefolk/windrider.png", "units/dunefolk/windbolt.png"),
+        ("units/dunefolk/swiftrider.png", "units/dunefolk/horse-archer.png"),
+        ("units/nagas/slasher.png", "units/nagas/dirkfang.png"),
+        ("units/nagas/bladewhirler.png", "units/nagas/ophidian.png"),
+
         # unit ids
         ("Arif", "Dune Soldier"),
         ("Ghazi", "Dune Swordsman"),
         ("Shuja", "Dune Blademaster"),
-        ("Khalid", "Dune Warmaster"),
+        ("Khalid", "Dune Paragon"),
         ("Mudafi", "Dune Spearguard"),
         ("Rasikh", "Dune Spearmaster"),
         ("Hakim", "Dune Herbalist"),
         ("Tabib", "Dune Apothecary"),
         ("Jundi", "Dune Rover"),
-        ("Monawish", "Dune Skirmisher"),
+        ("Monawish", "Dune Strider"),
         ("Mighwar", "Dune Harrier"),
         ("Muharib", "Dune Explorer"),
-        ("Batal", "Dune Ranger"),
-        ("Khaiyal", "Dune Piercer"),
+        ("Batal", "Dune Wayfarer"),
+        ("Khaiyal", "Dune Rider"),
         ("Faris", "Dune Sunderer"),
         ("Mufariq", "Dune Cataphract"),
         ("Qanas", "Dune Raider"),
@@ -923,8 +931,16 @@ linechanges = (
         ("Qatif_al_nar", "Dune Scorcher"),
         ("Tineen", "Dune Firetrooper"),
         ("Rami", "Dune Rider"),
-        ("Saree", "Dune Swiftrider"),
-        ("Jawal", "Dune Windrider"),
+        ("Saree", "Dune Horse Archer"),
+        ("Jawal", "Dune Windbolt"),
+
+        # second round of renaming
+        ("Dune Ranger", "Dune Wayfarer"),
+        ("Dune Swiftrider", "Dune Horse Archer"),
+        ("Dune Windrider", "Dune Windbolt"),
+        ("Dune Piercer", "Dune Rider"),
+        ("Naga Slasher", "Naga Dirkfang"),
+        ("Naga Bladewhirler", "Naga Ophidian"),
 
         # Changed in 1.15.0: separate portrait for leader
         ("portraits/orcs/leader.png", "portraits/orcs/ruler.png"),
@@ -934,7 +950,11 @@ linechanges = (
 
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
-    (tag, attributes) = tagstack[-1]
+    (tag, attributes, subtags) = tagstack[-1]
+    # append the closer to the subtags of the parent tag
+    # don't do it if we're closing a root tag
+    if len(tagstack) > 1:
+        tagstack[-2][2].append(closer)
     ancestors = [x[0] for x in tagstack]
     if verbose >= 3:
         print('"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes))
@@ -942,7 +962,10 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     # to deserialize an empty unit.  The final "and attributes" is a blatant
     # hack; some campaigns like to generate entire side declarations with
     # macros.
-    if "scenario" in ancestors and closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors and attributes:
+    if "scenario" in ancestors and closer == "side" and "type" not in attributes and \
+       ("no_leader" not in attributes or attributes["no_leader"] != "yes") and \
+       attributes.get("controller") != "null" and \
+       "multiplayer" not in ancestors and "leader" not in subtags and attributes:
         print('"%s", line %d: [side] without type attribute' % (filename, lineno))
     # This assumes that conversion will always happen in units/ files.
     if "units" not in filename and closer == "unit" and "race" in attributes:
@@ -1034,10 +1057,10 @@ def standard_unit_filter():
 # Sanity checking
 
 # Associations for the ability sanity checks.
+# Please note that a special note can be associated with multiple abilities
+# but any given ability can be associated with only one special note
+# Some notes are handled directly in the global_sanity_check() function
 notepairs = [
-    ("movement_type=mounted", "{NOTE_DEFENSE_CAP}"),
-    ("movement_type=undeadspirit", "{NOTE_SPIRIT}"),
-    ("type=arcane", "{NOTE_ARCANE}"),
     ("{ABILITY_HEALS}", "{NOTE_HEALS}"),
     ("{ABILITY_EXTRA_HEAL}", "{NOTE_EXTRA_HEAL}"),
     ("{ABILITY_UNPOISON}", "{NOTE_UNPOISON}"),
@@ -1140,7 +1163,6 @@ mainline = ("An_Orcish_Incursion",
             "tutorial",
             "Two_Brothers",
             "Under_the_Burning_Suns",
-            "Wings_of_Victory",
             )
 
 spellcheck_these = (\
@@ -1436,7 +1458,11 @@ def global_sanity_check(filename, lines):
     in_unit_type = None
     notecheck = True
     trait_note = dict(notepairs)
-    note_trait = {p[1]:p[0] for p in notepairs}
+    # it's possible that a note might be associated with two abilities
+    # use a multimap-like data structure for this reason
+    note_trait = defaultdict(list) # {p[1]:p[0] for p in notepairs}
+    for pair in notepairs:
+        note_trait[pair[1]].append(pair[0])
     unit_id = ""
     base_unit = ""
     for nav in WmllintIterator(lines, filename):
@@ -1455,23 +1481,58 @@ def global_sanity_check(filename, lines):
             has_special_notes = False
             in_unit_type = nav.lineno + 1
             hitpoints_specified = False
+            unit_usage = ""
+            temp_movetypes = []
+            temp_races = []
+            temp_advances = []
+            arcane_note_needed = False
+            spirit_note_needed = False
+            defense_cap_note_needed = False
             continue
         elif nav.element == "[/unit_type]":
             #print('"%s", %d: unit has traits %s and notes %s' \
             #      % (filename, in_unit_type, traits, notes))
+            if unit_id and unit_usage:
+                usage[unit_id] = unit_usage
+            if unit_id and temp_movetypes:
+                for movetype in temp_movetypes:
+                    # movetype, race and advance are 3-element tuples, expand them
+                    unit_movetypes.append((unit_id, *movetype))
+            if unit_id and temp_races:
+                for race in temp_races:
+                    unit_races.append((unit_id, *race))
+            if unit_id and temp_advances:
+                for advance in temp_advances:
+                    advances.append((unit_id, *advance)) 
             if unit_id and base_unit:
                 derived_units.append((filename, nav.lineno + 1, unit_id, base_unit))
             if unit_id and not base_unit:
                 missing_notes = []
+                if arcane_note_needed and "{NOTE_ARCANE}" not in notes:
+                    missing_notes.append("{NOTE_ARCANE}")
+                if spirit_note_needed and "{NOTE_SPIRIT}" not in notes:
+                    missing_notes.append("{NOTE_SPIRIT}")
+                if defense_cap_note_needed and "{NOTE_DEFENSE_CAP}" not in notes:
+                    missing_notes.append("{NOTE_DEFENSE_CAP}")
                 for trait in traits:
                     tn = trait_note[trait]
                     if tn not in notes and tn not in missing_notes:
                         missing_notes.append(tn)
                 missing_traits = []
+                if (not arcane_note_needed) and "{NOTE_ARCANE}" in notes:
+                    missing_traits.append("type=arcane")
+                if (not spirit_note_needed) and "{NOTE_SPIRIT}" in notes:
+                    missing_traits.append("movement_type=undeadspirit")
+                if (not defense_cap_note_needed) and "{NOTE_DEFENSE_CAP}" in notes:
+                    missing_traits.append("movement_type=mounted or [defense] tag")
                 for note in notes:
-                    nt = note_trait[note]
-                    if nt not in traits and nt not in missing_traits:
-                        missing_traits.append(nt)
+                    for nt in note_trait[note]: # defaultdict makes nt a list, not a string!
+                        if nt in traits:
+                            break
+                    else: # this is done only if there isn't at least one trait matching the note
+                        for nt in note_trait[note]:
+                            if nt not in missing_traits:
+                                missing_traits.append(nt)
                 # If the unit didn't specify hitpoints, there is some wacky
                 # stuff going on (possibly pseudo-[base_unit] behavior via
                 # macro generation) so disable some of the consistency checks.
@@ -1496,9 +1557,15 @@ def global_sanity_check(filename, lines):
             base_unit = ""
             has_special_notes = False
             unit_race = None
-        elif nav.element == "[special_note]":
-            has_special_notes = True
-        if '[unit_type]' in nav.ancestors() and "[filter_attack]" not in nav.ancestors():
+            unit_usage = ""
+            temp_movetypes = []
+            temp_races = []
+            temp_advances = []
+            arcane_note_needed = False
+            spirit_note_needed = False
+            defense_cap_note_needed = False
+        # the glob pattern matches any WML tag starting with filter, including [filter] itself
+        if '[unit_type]' in nav.ancestors() and not nav.glob_ancestors("[[]filter*[]]"):
             try:
                 (key, prefix, value, comment) = parse_attribute(nav.text)
                 if key == "id":
@@ -1518,6 +1585,10 @@ def global_sanity_check(filename, lines):
                     if '{' not in value:
                         assert(unit_id)
                         unit_movetypes.append((unit_id, filename, nav.lineno + 1, value))
+                    if value == "undeadspirit":
+                        spirit_note_needed = True
+                    elif value == "mounted":
+                        defense_cap_note_needed = True
                 elif key == "race":
                     if '{' not in value:
                         assert(unit_id or base_unit)
@@ -1528,6 +1599,10 @@ def global_sanity_check(filename, lines):
                     advancements = value
                     if advancements.strip() != "null":
                         advances.append((unit_id, filename, nav.lineno + 1, advancements))
+                elif key == "type" and value == "arcane" and "[attack]" in nav.ancestors():
+                    arcane_note_needed = True
+                elif "[defense]" in nav.ancestors() and re.match(r"\-\d+",value):
+                    defense_cap_note_needed = True
             except TypeError:
                 pass
             precomment = nav.text
@@ -1535,6 +1610,10 @@ def global_sanity_check(filename, lines):
                 precomment = nav.text[:nav.text.find("#")]
             if "{NOTE" in precomment:
                 has_special_notes = True
+            # these special cases are handled better outside of notepairs
+            for note in ("{NOTE_DEFENSE_CAP}","{NOTE_SPIRIT}","{NOTE_ARCANE}"):
+                if note in precomment:
+                    notes.append(note)
             for (p, q) in notepairs:
                 if p in precomment:
                     traits.append(p)
@@ -1731,6 +1810,7 @@ def global_sanity_check(filename, lines):
     in_facet = False
     in_sound_source = False
     in_remove_sound_source = False
+    in_load_resource = False
     in_message = False
     in_option = False
     #last index is true: we're currently directly in an [event]
@@ -1754,6 +1834,7 @@ def global_sanity_check(filename, lines):
     in_slider = False
     in_map_generator = False
     in_name_generator = False
+    in_candidate_action = False
     storeid = None
     storevar = None
     ignoreable = False
@@ -1839,6 +1920,10 @@ def global_sanity_check(filename, lines):
             in_remove_sound_source = True
         elif "[/remove_sound_source]" in lines[i]:
             in_remove_sound_source = False
+        elif "[load_resource]" in lines[i]:
+            in_load_resource = True
+        elif "[/load_resource]" in lines[i]:
+            in_load_resource = False
         elif "[message]" in lines[i]:
             in_message = True
         elif "[/message]" in lines[i]:
@@ -1932,6 +2017,10 @@ def global_sanity_check(filename, lines):
             in_map_generator = True
         elif "[/generator]" in lines[i]:
             in_map_generator = False
+        elif "[candidate_action]" in lines[i]:
+            in_candidate_action = True
+        elif "[/candidate_action]" in lines[i]:
+            in_candidate_action = False
         elif name_generator_re.search(lines[i]):
             in_name_generator = True
         elif in_name_generator and ">>" in lines[i]:
@@ -1998,12 +2087,12 @@ def global_sanity_check(filename, lines):
                 # this here rather than hack_syntax so the character can be
                 # recognized.
                 if macname == 'LOYAL_UNIT':
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) == 7:
                         lines[i] = lines[i].replace('{LOYAL_UNIT', '{NAMED_LOYAL_UNIT', 1)
                 # Auto-recognize the people in the {NAMED_*UNIT} macros.
                 if re.match(r'NAMED_[A-Z_]*UNIT$', macname):
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) >= 7 and \
                        re.match(r'([0-9]+|[^\s]*\$[^\s]*side[^\s]*|{[^\s]*SIDE[^\s]*})$', args[1]) and \
                        re.match(r'([0-9]+|[^\s]*\$[^\s]*x[^\s]*|{[^\s]*X[^\s]*})$', args[3]) and \
@@ -2011,20 +2100,20 @@ def global_sanity_check(filename, lines):
                        len(args[5]) > 0:
                         present.append(args[5])
                 elif macname == 'RECALL':
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) == 2 and brack == 0:
                         present.append(args[1])
                 elif macname == 'RECALL_XY':
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) == 4:
                         present.append(args[1])
                 elif macname == 'CLEAR_VARIABLE':
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     for arg in [x.lstrip() for x in args[1].split(',')]:
                         if arg in storedids:
                             del storedids[arg]
                 elif macname in whomacros:
-                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     present.append(args[whomacros[macname]])
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
         if m:
@@ -2119,12 +2208,13 @@ def global_sanity_check(filename, lines):
                     elif preamble_seen and subtag_depth > 0 and not ignore_id \
                          and not in_object and not in_cfg and not in_aspect \
                          and not in_facet and not in_sound_source \
-                         and not in_remove_sound_source and not in_stage \
+                         and not in_remove_sound_source and not in_load_resource \
+                         and not in_stage \
                          and not in_goal and not in_set_menu_item \
                          and not in_clear_menu_item and not directly_in_event[-1] \
                          and not in_time_area and not in_trait and not in_checkbox \
                          and not in_combo and not in_entry and not in_slider \
-                         and not in_map_generator \
+                         and not in_map_generator and not in_candidate_action \
                          and not (in_fire_event and not (in_primary_unit or in_secondary_unit)) \
                          and not in_remove_event and not (in_tunnel and not in_filter):
                         ids = value.split(",")
@@ -2152,7 +2242,7 @@ def global_sanity_check(filename, lines):
     for num, line in enumerate(lines, start=1):
         if "#textdomain" in line:
             textdomains.append(num)
-        elif "wmllint: no translatables":
+        elif "wmllint: no translatables" in line:
             no_text = True
     if not no_text:
         if not textdomains:
@@ -2316,11 +2406,17 @@ def hack_syntax(filename, lines):
                 print('"%s", line %d: %s -> %s -- DO NOT PREFIX PATHS WITH "userdata/"' \
                       % (filename, i+1, userdata.group(), userdata.group(1)))
         lines[i] = precomment + comment
+
     # Ensure that every attack has a translatable description.
+    in_filter_wml = False
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
 
             break
+        elif "[filter_wml]" in lines[i]:
+            in_filter_wml = True
+        elif "[/filter_wml]" in lines[i]:
+            in_filter_wml = False
         elif "[attack]" in lines[i]:
             j = i
             have_description = False
@@ -2342,7 +2438,7 @@ def hack_syntax(filename, lines):
                             description = '"' + description + '"\n'
                         # Skip the insertion if this is a dummy declaration
                         # or one modifying an attack inherited from a base unit.
-                        if "no-icon" not in comment:
+                        if "no-icon" not in comment and not in_filter_wml:
                             new_line = leader(syntactic) + "description=_"+description
                             if verbose:
                                 print('"%s", line %d: inserting %s' % (filename, i+1, repr(new_line)))
@@ -2758,7 +2854,7 @@ def translator(filename, mapxforms, textxform):
                     tag = instance.group(1)
                     closer = instance.group(0)[1] == '/'
                     if not closer:
-                        tagstack.append((tag, {}))
+                        tagstack.append((tag, {}, []))
                     else:
                         if len(tagstack) == 0:
                             print('"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag))

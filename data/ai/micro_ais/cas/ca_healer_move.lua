@@ -11,7 +11,7 @@ function ca_healer_move:evaluation(cfg, data)
     -- find an appropriate hex to back up other units
     local score = data.HS_healer_move_score or 105000
 
-    local all_healers = wesnoth.get_units {
+    local all_healers = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         ability = "healing",
         { "and", wml.get_child(cfg, "filter") }
@@ -19,7 +19,10 @@ function ca_healer_move:evaluation(cfg, data)
 
     local healers, healers_noMP = {}, {}
     for _,healer in ipairs(all_healers) do
-        if (healer.moves > 0) then
+        -- For the purpose of this evaluation, guardians count as units without moves, as do passive leaders
+        if (healer.moves > 0) and (not healer.status.guardian)
+            and ((not healer.canrecruit) or (not ai.aspects.passive_leader))
+        then
             table.insert(healers, healer)
         else
             table.insert(healers_noMP, healer)
@@ -27,7 +30,7 @@ function ca_healer_move:evaluation(cfg, data)
     end
     if (not healers[1]) then return 0 end
 
-    local all_healees = wesnoth.get_units {
+    local all_healees = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         { "and", wml.get_child(cfg, "filter_second") }
     }
@@ -101,7 +104,7 @@ function ca_healer_move:evaluation(cfg, data)
                 local is_village = wesnoth.get_terrain_info(terrain).village
                 if is_village then rating = rating + 2 end
 
-                local defense = 100 - healer:defense(terrain)
+                local defense = healer:defense_on(terrain)
                 rating = rating + defense / 10.
             end
 

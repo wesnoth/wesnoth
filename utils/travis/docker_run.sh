@@ -11,22 +11,6 @@ die() { error "$*"; exit 1; }
 export DISPLAY=:99.0
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
 
-# name the parameters
-NLS="$1"
-TOOL="$2"
-CC="$3"
-CXX="$4"
-CXXSTD="$5"
-OPT="$6"
-WML_TESTS="$7"
-WML_TEST_TIME="$8"
-PLAY_TEST="$9"
-MP_TEST="${10}"
-BOOST_TEST="${11}"
-LTO="${12}"
-SAN="${13}"
-VALIDATE="${14}"
-
 if [ "$OPT" == "-O0" ]; then
     STRICT="true"
     build_timeout=35
@@ -53,18 +37,67 @@ echo "MP_TEST: $MP_TEST"
 echo "BOOST_TEST: $BOOST_TEST"
 echo "LTO: $LTO"
 echo "SAN: $SAN"
+echo "VALIDATE: $VALIDATE"
+echo "LTS: $LTS"
+echo "TRAVIS_COMMIT: $TRAVIS_COMMIT"
+echo "BRANCH: $BRANCH"
+echo "UPLOAD_ID: $UPLOAD_ID"
+echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
+echo "TRAVIS_TAG: $TRAVIS_TAG"
 
 echo "STRICT: $STRICT"
 echo "build_timeout(mins): $build_timeout"
 
 $CXX --version
 
-if [ "$NLS" == "true" ]; then
+if [ "$NLS" == "only" ]; then
+    ./utils/travis/check_utf8.sh || exit 1
+    ./utils/travis/utf8_bom_dog.sh || exit 1
+
     cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false
     make VERBOSE=1 -j2 || exit 1
     make clean
 
     scons translations build=release --debug=time nls=true jobs=2
+elif [ "$LTS" == "flatpak" ]; then
+# docker's --volume means the directory is on a separate filesystem
+# flatpak-builder doesn't support this
+# therefore manually move stuff between where flatpak needs it and where travis' caching can see it
+
+    rm -R .flatpak-builder/*
+    cp -R flatpak-cache/. .flatpak-builder/
+    jq '.modules[2].sources[0]={"type":"dir","path":"/home/wesnoth-travis"} | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > utils/dockerbuilds/travis/org.wesnoth.Wesnoth.json
+    flatpak-builder --ccache --force-clean --disable-rofiles-fuse wesnoth-app utils/dockerbuilds/travis/org.wesnoth.Wesnoth.json
+    BUILD_RET=$?
+    rm -R flatpak-cache/*
+    cp -R .flatpak-builder/. flatpak-cache/
+    chmod -R 777 flatpak-cache/
+    exit $BUILD_RET
+elif [ "$LTS" == "mingw" ]; then
+    scons wesnoth wesnothd build=release \
+        cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" \
+        nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
+        arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32 || exit 1
+
+    if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+        ./utils/travis/sftp wesnoth.exe wesnothd.exe
+    fi
+
+    if [ "$TRAVIS_TAG" != "" ]; then
+        echo "Creating Windows installer for tag: $TRAVIS_TAG"
+        scons translations build=release --debug=time nls=true jobs=2 || exit 1
+        python3 ./utils/dockerbuilds/mingw/get_dlls.py || exit 1
+        scons windows-installer arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32 || exit 1
+        ./utils/travis/sftp "$(find . -type f -regex '.*win64.*')"
+        echo "Creating .tar.bz2 for tag: $TRAVIS_TAG"
+        git archive --format=tar --prefix="wesnoth-$TRAVIS_TAG/" $BRANCH > "wesnoth-$TRAVIS_TAG.tar" || exit 1
+        bzip2 wesnoth-$TRAVIS_TAG.tar || exit 1
+        ./utils/travis/sftp wesnoth-$TRAVIS_TAG.tar.bz2 || exit 1
+    fi
+elif [ "$LTS" == "steamrt" ]; then
+    scons ctool=$CC cxxtool=$CXX boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt \
+        cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
+        build=release
 else
     SECONDS=0
 
@@ -72,7 +105,7 @@ else
         echo "max_size = 200M" > $HOME/.ccache/ccache.conf
         echo "compiler_check = content" >> $HOME/.ccache/ccache.conf
 
-        cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false \
+        cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS="$NLS" \
               -DEXTRA_FLAGS_CONFIG="-pipe" -DOPT="$OPT" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO="$LTO" -DLTO_JOBS=2 -DENABLE_MYSQL=true -DSANITIZE="$SAN" \
               -DCXX_STD="$CXXSTD" -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache && \
               make VERBOSE=1 -j2
@@ -84,12 +117,16 @@ else
         scons wesnoth wesnothd campaignd boost_unit_tests build=release \
               ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
               extra_flags_config="-pipe" opt="$OPT" strict="$STRICT" forum_user_handler=true \
-              nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
+              nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
         BUILD_RET=$?
     fi
 
     if [ $BUILD_RET != 0 ]; then
         exit $BUILD_RET
+    fi
+
+    if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+        ./utils/travis/sftp wesnoth wesnothd
     fi
 
     if (( SECONDS > 60*build_timeout )); then

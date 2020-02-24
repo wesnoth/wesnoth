@@ -48,7 +48,6 @@ create table extra
 -- GAME_ID: a sequential id wesnoth generates, resets on restart
 -- INSTANCE_VERSION: the version of the server
 -- GAME_NAME: the game's displayed title in the lobby
--- CREATE_TIME: when the game is made available in the lobby
 -- START_TIME: when the players enter the game and begin playing
 -- END_TIME: when the game ends, for any particular reason
 -- MAP_NAME: the mp_scenario attribute value
@@ -61,17 +60,16 @@ create table game_info
     GAME_ID          INT UNSIGNED NOT NULL,
     INSTANCE_VERSION VARCHAR(255) NOT NULL,
     GAME_NAME        VARCHAR(255) NOT NULL,
-    CREATE_TIME      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    START_TIME       TIMESTAMP NULL DEFAULT NULL,
+    START_TIME       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     END_TIME         TIMESTAMP NULL DEFAULT NULL,
-    MAP_NAME         VARCHAR(255),
-    ERA_NAME         VARCHAR(255),
+    MAP_NAME         VARCHAR(255) NOT NULL,
+    ERA_NAME         VARCHAR(255) NOT NULL,
     REPLAY_NAME      VARCHAR(255),
     OOS              BIT(1) NOT NULL DEFAULT 0,
-    RELOAD           BIT(1),
-    OBSERVERS        BIT(1),
-    PASSWORD         BIT(1),
-    PUBLIC           BIT(1),
+    RELOAD           BIT(1) NOT NULL,
+    OBSERVERS        BIT(1) NOT NULL,
+    PASSWORD         BIT(1) NOT NULL,
+    PUBLIC           BIT(1) NOT NULL,
     PRIMARY KEY (INSTANCE_UUID, GAME_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

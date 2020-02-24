@@ -10,7 +10,7 @@ function helper.get_sides(cfg)
 		local i = s.i
 		while i < #wesnoth.sides do
 			i = i + 1
-			if wesnoth.match_side(i, cfg) then
+			if wesnoth.sides.matches(i, cfg) then
 				s.i = i
 				return wesnoth.sides[i], i
 			end
@@ -33,8 +33,8 @@ end
 -- Metatable that redirects access to wml.variables_proxy
 local proxy_var_mt = {
 	__metatable = "WML variables",
-	__index    = function(t, k) return wml.variables_proxy[k] end,
-	__newindex = function(t, k, v) wml.variables_proxy[k] = v end,
+	__index    = function(t, k) return wml.get_variable_proxy(k) end,
+	__newindex = function(t, k, v) wml.set_variable_proxy(k, v) end,
 }
 
 function helper.set_wml_var_metatable(t)
@@ -175,17 +175,6 @@ function helper.rand (possible_values, random_func)
 	return nil
 end
 
-function helper.deprecate(msg, f)
-	return function(...)
-		if msg then
-			wesnoth.log("warn", msg, wesnoth.game_config.debug)
-			-- trigger the message only once
-			msg = nil
-		end
-		return f(...)
-	end
-end
-
 function helper.round( number )
 	-- code converted from util.hpp, round_portable function
 	-- round half away from zero method
@@ -212,12 +201,6 @@ function helper.shuffle( t, random_func )
 	end
 end
 
-function helper.find_attack(unit, filter)
-	for i, atk in ipairs(unit.attacks) do
-		if atk:matches(filter) then return atk end
-	end
-end
-
 -- Compatibility and deprecations
 helper.distance_between = wesnoth.deprecate_api('helper.distance_between', 'wesnoth.map.distance_between', 1, nil, wesnoth.map.distance_between)
 helper.get_child = wesnoth.deprecate_api('helper.get_child', 'wml.get_child', 1, nil, wml.get_child)
@@ -232,6 +215,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	helper.wml_error = wesnoth.deprecate_api('helper.wml_error', 'wml.error', 1, nil, wml.error)
 	helper.move_unit_fake = wesnoth.deprecate_api('helper.move_unit_fake', 'wesnoth.interface.move_unit_fake', 1, nil, wesnoth.interface.move_unit_fake)
 	helper.modify_unit = wesnoth.deprecate_api('helper.modify_unit', 'wesnoth.units.modify', 1, nil, wesnoth.units.modify)
+	helper.find_attack = wesnoth.deprecate_api('helper.find_attack', 'wesnoth.units.find_attack', 1, nil, wesnoth.units.find_attack)
 end
 helper.literal = wesnoth.deprecate_api('helper.literal', 'wml.literal', 1, nil, wml.literal)
 helper.parsed = wesnoth.deprecate_api('helper.parsed', 'wml.parsed', 1, nil, wml.parsed)

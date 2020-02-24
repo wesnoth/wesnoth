@@ -56,7 +56,7 @@ class lua_candidate_action_wrapper_base : public candidate_action {
 
 public:
 	lua_candidate_action_wrapper_base( rca_context &context, const config &cfg)
-		: candidate_action(context, cfg),evaluation_action_handler_(),execution_action_handler_(),serialized_evaluation_state_(cfg.child_or_empty("args"))
+		: candidate_action(context, cfg),evaluation_action_handler_(),execution_action_handler_(),serialized_evaluation_state_(cfg.child_or_empty("args")),serialized_filterown_(cfg.child_or_empty("filter_own"))
 	{
 		// do nothing
 	}
@@ -68,7 +68,7 @@ public:
 		lua_int_obj l_obj(new lua_object<int>());
 
 		if (evaluation_action_handler_) {
-			evaluation_action_handler_->handle(serialized_evaluation_state_, true, l_obj);
+			evaluation_action_handler_->handle(serialized_evaluation_state_, serialized_filterown_, true, l_obj);
 		} else {
 			return BAD_SCORE;
 		}
@@ -82,13 +82,14 @@ public:
 	virtual void execute()	{
 		if (execution_action_handler_) {
 			lua_object_ptr nil;
-			execution_action_handler_->handle(serialized_evaluation_state_, false, nil);
+			execution_action_handler_->handle(serialized_evaluation_state_, serialized_filterown_, false, nil);
 		}
 	}
 
 	virtual config to_config() const {
 		config cfg = candidate_action::to_config();
 		cfg.add_child("args",serialized_evaluation_state_);
+		cfg.add_child("filter_own",serialized_filterown_);
 		return cfg;
 	}
 
@@ -96,6 +97,7 @@ protected:
 	std::shared_ptr<lua_ai_action_handler> evaluation_action_handler_;
 	std::shared_ptr<lua_ai_action_handler> execution_action_handler_;
 	config serialized_evaluation_state_;
+	config serialized_filterown_;
 };
 
 class lua_candidate_action_wrapper : public lua_candidate_action_wrapper_base {
@@ -161,14 +163,14 @@ private:
 	bool use_parms_;
 
 	void generate_code(std::string& eval, std::string& exec) {
-		std::string preamble = "local self, params, data = ...\n";
+		std::string preamble = "local self, params, data, filter_own = ...\n";
 		std::string load = "wesnoth.require(\"" + location_ + "\")";
 		if (use_parms_) {
 			eval = preamble + "return " + load + ":evaluation(ai, {" + eval_parms_ + "}, {data = data})";
 			exec = preamble + load + ":execution(ai, {" + exec_parms_ + "}, {data = data})";
 		} else {
-			eval = preamble + "return " + load + ".evaluation(self, params, data)";
-			exec = preamble + load + ".execution(self, params, data)";
+			eval = preamble + "return " + load + ".evaluation(self, params, data, filter_own)";
+			exec = preamble + load + ".execution(self, params, data, filter_own)";
 		}
 	}
 };
@@ -224,7 +226,8 @@ public:
 
 		if (action_handler_) {
 			lua_object_ptr nil;
-			action_handler_->handle(serialized_evaluation_state_, false, nil);
+			const config empty_cfg;
+			action_handler_->handle(serialized_evaluation_state_, empty_cfg, false, nil);
 		}
 
 		return gs_o.is_gamestate_changed();

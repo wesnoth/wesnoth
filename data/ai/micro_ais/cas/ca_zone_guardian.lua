@@ -42,11 +42,11 @@ function ca_zone_guardian:execution(cfg)
             local best_defense, attack_loc = - math.huge
             for xa,ya in H.adjacent_tiles(target.x, target.y) do
                 -- Only consider unoccupied hexes
-                local unit_in_way = wesnoth.get_unit(xa, ya)
+                local unit_in_way = wesnoth.units.get(xa, ya)
                 if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
                     or (unit_in_way == guardian)
                 then
-                    local defense = 100 - guardian:defense(wesnoth.get_terrain(xa, ya))
+                    local defense = guardian:defense_on(wesnoth.get_terrain(xa, ya))
                     local nh = AH.next_hop(guardian, xa, ya)
                     if nh then
                         if (nh[1] == xa) and (nh[2] == ya) and (defense > best_defense) then
@@ -67,7 +67,7 @@ function ca_zone_guardian:execution(cfg)
                 local min_dist, nh = math.huge
                 for _,hex in ipairs(reach) do
                     -- Only consider unoccupied hexes
-                    local unit_in_way = wesnoth.get_unit(hex[1], hex[2])
+                    local unit_in_way = wesnoth.units.get(hex[1], hex[2])
                     if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
                         or (unit_in_way == guardian)
                     then

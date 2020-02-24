@@ -34,7 +34,6 @@
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/manager.hpp"
-#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
@@ -111,6 +110,7 @@
 #include "language.hpp"
 #include "map/map.hpp"
 #include "replay.hpp"
+#include "save_index.hpp"
 #include "saved_game.hpp"
 #include "terrain/type_data.hpp"
 #include "tests/utils/fake_display.hpp"
@@ -154,13 +154,6 @@ std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog)
 window* unit_test_window(const modeless_dialog& dialog)
 {
 	return dialog.window_.get();
-}
-
-class mp_server_list;
-
-modal_dialog* unit_test_mp_server_list()
-{
-	return mp_connect::mp_server_list_for_unit_test();
 }
 
 } // namespace dialogs
@@ -421,7 +414,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	/* The modal_dialog classes. */
 	test<addon_connect>();
 	//test<addon_manager>();
-	test<advanced_graphics_options>();
 	//test<attack_predictions>();
 	test<campaign_difficulty>();
 	test<campaign_selection>();
@@ -472,7 +464,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<mp_join_game_password_prompt>();
 	test<mp_login>();
 	test<mp_method_selection>();
-	test<mp_server_list>();
 	//test<mp_staging>();
 	//test<outro>();
 	test<simple_item_selector>();
@@ -740,7 +731,9 @@ template<>
 struct dialog_tester<game_load>
 {
 	config cfg;
-	savegame::load_game_metadata data;
+	// It would be good to have a test directory instead of using the same directory as the player,
+	// however this code will support that - default_saves_dir() will respect --userdata-dir.
+	savegame::load_game_metadata data{savegame::save_index_class::default_saves_dir()};
 	dialog_tester()
 	{
 		/** @todo Would be nice to add real data to the config. */
@@ -1059,15 +1052,6 @@ struct dialog_tester<folder_create>
 	folder_create* create()
 	{
 		return new folder_create(folder_name);
-	}
-};
-
-template<>
-struct dialog_tester<mp_server_list>
-{
-	static modal_dialog* create()
-	{
-		return unit_test_mp_server_list();
 	}
 };
 

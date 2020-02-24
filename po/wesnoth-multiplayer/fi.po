@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
 "PO-Revision-Date: 2012-01-15 22:03+0200\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -363,8 +363,9 @@ msgstr "Etelä"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:155
 #, fuzzy
-msgid "Defeat enemy leader(s)"
+msgid "Defeat the enemy leader"
 msgstr "Päällikkösi kuolema."
 
 #. [note]
@@ -453,8 +454,6 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
 #: data/multiplayer/scenarios/4p_Clash.cfg:29
 #: data/multiplayer/scenarios/4p_Clash.cfg:51
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:30
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:43
 #: data/multiplayer/scenarios/4p_Underworld.cfg:31
@@ -487,8 +486,6 @@ msgstr "Itä"
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
 #: data/multiplayer/scenarios/4p_Clash.cfg:18
 #: data/multiplayer/scenarios/4p_Clash.cfg:40
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:17
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:56
 #: data/multiplayer/scenarios/4p_Underworld.cfg:20
@@ -1074,7 +1071,9 @@ msgid "teamname^Human"
 msgstr "Ihmiset"
 
 #. [then]
+#. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:262
 msgid "Death of your leader"
 msgstr "Joukkueesi johtajien kuolema."
 
@@ -1392,8 +1391,8 @@ msgstr "Vilhelm Viskitynnyri"
 #. [unit]: type=Woodsman
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:229
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:240
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:647
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:658
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:648
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:659
 msgid "Clockwork Boy"
 msgstr "Kellopelipoika"
 
@@ -1418,47 +1417,47 @@ msgid "Sorrek, Chosen of Death"
 msgstr "Sorrek, Valittu Kuolemaan"
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:507
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:578
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:615
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:732
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:856
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:508
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:579
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:616
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:685
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:733
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:857
 msgid "Big Baby Dro"
 msgstr "Iso Dro Vauva"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:519
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:520
 msgid "Gawffus the Dim"
 msgstr "Gawffus Älytön"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:567
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:568
 msgid "Rublok"
 msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:590
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:591
 msgid "Ulysses Mantyjuuri"
 msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:706
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:707
 msgid "Neki the Brute"
 msgstr "Neki Raaka"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:744
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:745
 msgid "Claiomh Dubh"
 msgstr "Claiomh Dubh"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:802
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:803
 msgid "Tyxrrn the Dauntless"
 msgstr "Tyxrrn Uupumaton"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:840
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:841
 msgid "Rukhos, Chosen of Death"
 msgstr "Rukhos, Valittu Kuolemaan"
 
@@ -1799,14 +1798,14 @@ msgid ""
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:161
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:159
 msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:164
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:162
 msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
@@ -1831,19 +1830,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3p — Alirokin suo"
 
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
-#. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1939,6 +1938,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:54
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:71
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:20
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:42
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:64
@@ -1952,6 +1952,7 @@ msgstr "Joukkue 1"
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:43
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:82
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:31
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:53
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:75
@@ -2041,6 +2042,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:56
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:20
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:58
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:29
@@ -2056,6 +2058,7 @@ msgstr "Lounas"
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:32
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:44
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:44
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:34
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:53
@@ -2070,8 +2073,8 @@ msgstr "Koillinen"
 msgid "4p — King of the Hill"
 msgstr "4p — Kukkulan kuningas"
 
-#. [multiplayer]: id=multiplayer_King_of_the_Hill
 #. [multiplayer]: id=multiplayer_Siege_Castles
+#. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
@@ -2096,6 +2099,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:32
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:43
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:46
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:42
@@ -2109,6 +2113,7 @@ msgstr "Kaakko"
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:21
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:54
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
@@ -2264,7 +2269,7 @@ msgstr ""
 "suositus muille pelaajille."
 
 #. [side]
-#: data/multiplayer/scenarios/5p_Auction-X.cfg:69
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:70
 msgid "teamname^Center"
 msgstr "Keskusta"
 
@@ -2281,25 +2286,77 @@ msgstr ""
 "vastustajistaan."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:37
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:55
 msgid "5p — The Wilderlands"
 msgstr "4p — Villimaat"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #. [multiplayer]: id=multiplayer_Crusaders_Field
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:56
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
 msgstr "Suositeltu asetus yksi kultapala / kylä."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:56
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
 "Valtava alue villiä, kesyttämätöntä autiomaata. Maastossa on metsää, luolia, "
 "jokia ja muinaisten linnoitusten raunioita."
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:93
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Team 3"
+msgstr "Joukkue 1"
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:104
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Team 4"
+msgstr "Joukkue 1"
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:125
+#, fuzzy
+#| msgid "teamname^Center"
+msgid "teamname^Monsters"
+msgstr "Keskusta"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:235
+#, fuzzy
+msgid "Defeat all enemy leaders"
+msgstr "Päällikkösi kuolema."
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:252
+#, fuzzy
+#| msgid "Defeat all waves"
+msgid "Defeat all monsters"
+msgstr "Kukista kaikki aallot"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:270
+#, fuzzy
+msgid "Defeat the enemy leaders"
+msgstr "Päällikkösi kuolema."
+
+#. [objective]: condition=lose
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:275
+#, fuzzy
+#| msgid "Death of your team leaders"
+msgid "Death of all your units"
+msgstr "Joukkueesi johtajien kuolema."
+
+#. [note]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:280
+msgid "You cannot recruit units."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
@@ -2670,6 +2727,10 @@ msgid "Testing new lua mapgen features"
 msgstr ""
 
 #, fuzzy
+#~ msgid "Defeat enemy leader(s)"
+#~ msgstr "Päällikkösi kuolema."
+
+#, fuzzy
 #~| msgid "Age of Heroes"
 #~ msgid "Age of Heroes + Khalifate"
 #~ msgstr "Sankareiden aika"
@@ -2748,9 +2809,6 @@ msgstr ""
 
 #~ msgid "Survive and defeat the waves of opposition."
 #~ msgstr "Selviydy ja kukista kaikki vastarinnan aallot."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Kukista kaikki aallot"
 
 #~ msgid "Lose all your team’s leaders"
 #~ msgstr "Menetät kaikki joukkueesi johtajat"
@@ -2904,10 +2962,6 @@ msgstr ""
 
 #~ msgid "3p - Triple Blitz"
 #~ msgstr "3p - Salamasota kolmelle"
-
-#, fuzzy
-#~ msgid "Defeat enemy leader"
-#~ msgstr "Päällikkösi kuolema."
 
 #~ msgid "Era of Turmoil"
 #~ msgstr "Sekasorron aikakausi"

@@ -1,5 +1,3 @@
-local helper = wesnoth.require "helper"
-local utils = wesnoth.require "wml-utils"
 local already_ended = false
 
 function wesnoth.wml_actions.endlevel(cfg)
@@ -28,7 +26,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 
 	local side_results = {}
 	for result in wml.child_range(parsed, "result") do
-		local side = result.side or helper.wml_error("[result] in [endlevel] missing required side= key")
+		local side = result.side or wml.error("[result] in [endlevel] missing required side= key")
 		side_results[side] = result
 	end
 	local there_is_a_human_victory = false
@@ -49,7 +47,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 		local victory_or_defeat = side_result.result or cfg.result or "victory"
 		local victory = victory_or_defeat == "victory"
 		if victory_or_defeat ~= "victory" and victory_or_defeat ~= "defeat" then
-			return helper.wml_error("invalid result= key in [endlevel] '" .. victory_or_defeat .."'")
+			return wml.error("invalid result= key in [endlevel] '" .. victory_or_defeat .."'")
 		end
 		if v.controller == "human" then
 			if victory then
@@ -86,10 +84,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 	local victory = there_is_a_local_human_victory or (not there_is_a_local_human_defeat and proceed_to_next_level)
 
 	if cfg.music then
-		local music = {}
-		for track in utils.split(cfg.music) do
-			table.insert(music, track)
-		end
+		local music = cfg.music:split()
 		if victory then
 			wesnoth.game_config.victory_music = music
 		else

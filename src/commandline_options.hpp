@@ -186,11 +186,9 @@ public:
 	/// Non-empty if --test was given on the command line. Goes directly into test mode, into a scenario, if specified.
 	boost::optional<std::string> test;
 	/// Non-empty if --unit was given on the command line. Goes directly into unit test mode, into a scenario, if specified.
-	boost::optional<std::string> unit_test;
+	std::vector<std::string> unit_test;
 	/// True if --unit is used and --showgui is not present.
 	bool headless_unit_test;
-	/// Non-empty if --timeout was given on the command line. Dependent on --unit.
-	boost::optional<unsigned int> timeout;
 	/// True if --noreplaycheck was given on the command line. Dependent on --unit.
 	bool noreplaycheck;
 	/// True if --mp-test was given on the command line.
