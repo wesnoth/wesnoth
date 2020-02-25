@@ -1305,7 +1305,7 @@ void server::cleanup_game(game* game_ptr)
 	metrics_.game_terminated(game_ptr->termination_reason());
 
 	if(user_handler_){
-		user_handler_->db_update_game_end(uuid_, game_ptr->id(), game_ptr->get_replay_filename());
+		user_handler_->db_update_game_end(uuid_, game_ptr->db_id(), game_ptr->get_replay_filename());
 	}
 
 	simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
@@ -1547,6 +1547,9 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		}
 
 		g.save_replay();
+		if(user_handler_){
+			user_handler_->db_update_game_end(uuid_, g.db_id(), g.get_replay_filename());
+		}
 
 		g.new_scenario(socket);
 		g.reset_last_synced_context_id();
@@ -1554,6 +1557,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// Record the full scenario in g.level()
 		g.level().clear();
 		scenario->copy_into(g.level().root());
+		g.next_db_id();
 
 		if(g.description() == nullptr) {
 			ERR_SERVER << client_address(socket) << "\tERROR: \"" << g.name() << "\" (" << g.id()
@@ -1621,7 +1625,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 
 		if(user_handler_) {
 			const simple_wml::node& m = *g.level().root().child("multiplayer");
-			user_handler_->db_insert_game_info(uuid_, g.id(), game_config::wesnoth_version.str(), g.name(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
+			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
@@ -1642,13 +1646,13 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 						source = "Default";
 					}
 				}
-				user_handler_->db_insert_game_player_info(uuid_, g.id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
+				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
 			}
 
 			const std::string mods = m["active_mods"].to_string();
 			if(mods != "") {
 				for(const std::string mod : utils::split(mods, ',')){
-					user_handler_->db_insert_modification_info(uuid_, g.id(), mod);
+					user_handler_->db_insert_modification_info(uuid_, g.db_id(), mod);
 				}
 			}
 		}
@@ -1770,7 +1774,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			if((*info)["condition"].to_string() == "out of sync") {
 				g.send_and_record_server_message(player.name() + " reports out of sync errors.");
 				if(user_handler_){
-					user_handler_->db_set_oos_flag(uuid_, g.id());
+					user_handler_->db_set_oos_flag(uuid_, g.db_id());
 				}
 			}
 		}
