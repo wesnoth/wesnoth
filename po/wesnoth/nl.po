@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-25 15:18-0300\n"
-"PO-Revision-Date: 2019-11-25 21:51+0100\n"
+"PO-Revision-Date: 2020-01-14 20:51+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -4173,10 +4173,8 @@ msgstr ""
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
-#, fuzzy
-#| msgid "female^healthy"
 msgid "aura of death ("
-msgstr "gezond"
+msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
@@ -5251,9 +5249,9 @@ msgstr ""
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:268
 #, fuzzy
-#| msgid "<i>― Great Mage Delfador, 516YW</i>"
+#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>― Meester Magiër Delfador, 516YW</i>"
+msgstr "<i>― Vank of Galun's Vlucht, 6YW</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5262,14 +5260,15 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"Als een eenheid gepositioneerd is naast genezers van twee bevriende zijden, "
+"zal de eenheid in de beurt van beide zijden genezen worden. Op deze manier "
+"kan een eenheid sneller genezen dan normaal gesproken."
 
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:273
-#, fuzzy
-#| msgid "<i>― Kai Laudiss, 623YW</i>"
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr "<i>― Kai Laudiss, 623YW</i>"
+msgstr "<i>― Vank of Galun's Vlucht, 6YW</i>"
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5329,8 +5328,6 @@ msgid "You do not have a leader to recruit with."
 msgstr "Je hebt geen leider om mee te rekruteren."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
 msgstr "Geen enkele van je leiders kan deze eenheid rekruteren."
 
@@ -6635,34 +6632,24 @@ msgid "Only available during a scenario."
 msgstr "Alleen beschikbaar gedurende een scenario."
 
 #: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "Tijd van de dag schema:"
+msgstr "Tijd van de Dag Schema"
 
 #: src/help/help_impl.cpp:384
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Gezagsgetrouwe eenheden: "
+msgstr "Gezagsgetrouwe Bonus:"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Neutrale eenheden: "
+msgstr "Neutrale Bonus:"
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Wetteloze eenheden: "
+msgstr "Wetteloze Bonus:"
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "Mysterieuze eenheden: "
+msgstr "Mysterieuze Bonus:"
 
 #: src/help/help_impl.cpp:388
 msgid "Schedule"
@@ -6907,73 +6894,56 @@ msgid "You have no units available to recruit."
 msgstr "Er zijn geen eenheden beschikbaar om te rekruteren."
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "Geen eenheid gerekruteerd"
+msgstr "Geen eenheid gerekruteerd."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "Interne fout. Graag rapporteren als een fout! Details:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "Je kunt geen $unit_type_name rekruteren op dit tijdstip"
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "Je hebt niet genoeg goud om die eenheid te rekruteren"
+msgstr ""
+"Op dit punt in je plan heb je niet genoeg goud om die eenheid te rekruteren"
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "Je hebt niet genoeg goud om die eenheid te rekruteren"
+msgstr "Je hebt niet genoeg goud om die eenheid te rekruteren."
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "Je bent van je troepen gescheiden en dus kun je hen niet oproepen"
+msgstr "Je bent van je troepen gescheiden en dus kun je hen niet oproepen."
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
-"Er zijn geen troepen beschikbaar om op te roepen\n"
+"Er zijn geen troepen beschikbaar om op te roepen.\n"
 "(Daarvoor moeten er overlevende troepen uit een vorig scenario zijn)"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "Je kunt op dit moment geen eenheden oproepen op de gemarkeerde locatie"
+msgstr ""
+"Je kunt op dit moment geen eenheden oproepen op de gemarkeerde locatie."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "Geen eenheid opgeroepen"
+msgstr "Geen eenheid opgeroepen."
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "Je moet tenminste 1 goudstuk hebben om een eenheid op te roepen"
+msgstr[0] "Je moet tenminste 1 goudstuk hebben om een eenheid op te roepen."
 msgstr[1] ""
-"Je moet tenminste $cost goudstukken hebben om deze eenheid op te roepen"
+"Je moet tenminste $cost goudstukken hebben om deze eenheid op te roepen."
 
 #: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
@@ -7073,14 +7043,12 @@ msgstr "Schakel een kant naar/van wachtstand."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1234
-#, fuzzy
-#| msgid "command_idle^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<zijde>[on/off]]"
 
 #: src/menu_events.cpp:1235
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Verander het thema in het spel."
 
 #: src/menu_events.cpp:1237
 msgid "<side> <nickname>"
@@ -7229,14 +7197,12 @@ msgstr "Toon een scenario variabele."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1284
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
 "Verander een eenheidsvariabele. (Alleen variabelen van het hoogste niveau "
-"worden ondersteund.)"
+"worden ondersteund, en advances=<number>.)"
 
 #: src/menu_events.cpp:1291
 msgid "Discover all units in help."
@@ -7248,7 +7214,7 @@ msgstr "'Onontdek' alle eenheden in de help."
 
 #: src/menu_events.cpp:1293
 msgid "<unit type id>"
-msgstr ""
+msgstr "<unit type id>"
 
 #: src/menu_events.cpp:1293
 msgid "Create a unit."
@@ -7264,17 +7230,15 @@ msgstr "Schakel sluier voor de huidige zijde aan/uit."
 
 #: src/menu_events.cpp:1296
 msgid "<amount>"
-msgstr ""
+msgstr "<amount>"
 
 #: src/menu_events.cpp:1296
 msgid "Give gold to the current player."
 msgstr "Geef goud aan de huidige speler."
 
 #: src/menu_events.cpp:1297
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<bijnaam>"
+msgstr "<event name>"
 
 #: src/menu_events.cpp:1297
 msgid "Fire a game event."
@@ -7946,13 +7910,6 @@ msgid "Units"
 msgstr "Eenheden"
 
 #: src/reports.cpp:1443
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. It is equal to "
-#| "the number of unit levels not supported by villages. The second is the "
-#| "total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7976,10 +7933,6 @@ msgid "Net Income"
 msgstr "Netto Inkomen"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid ""
-#| "The net amount of gold you gain or lose each turn, taking into account "
-#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8596,6 +8549,31 @@ msgstr "Whiteboard Opties"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>(vroege overwinningsbonus)</small>"
 
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Mysterieuze eenheden bereiken hun volledige sterkte enkel tijdens de "
+#~ "schemering.\n"
+#~ "\n"
+#~ "Dag: −25% Schade\n"
+#~ "Nacht: −25% Schade"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Er zijn geen specifieke opties beschikbaar voor het geselecteerde "
+#~ "tijdperk, spel of aanpassing."
+
+#~ msgid "Defaults"
+#~ msgstr "Standaard"
+
+#~ msgid "Connected Players"
+#~ msgstr "Verbonden Spelers"
+
 #~ msgid "(Note: You should use $replacement instead in new code)"
 #~ msgstr ""
 #~ "(Let op: Je zou $replacement moeten gebruiken in plaats van de nieuwe "
@@ -8630,6 +8608,41 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "statuspanel^terrain def."
 #~ msgstr "terrein verd."
+
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "registratie met wachtwoord *** en zonder e-mailadres"
+
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "registratie met wachtwoord *** en e-mailadres $email"
+
+#~ msgid "dropping your username"
+#~ msgstr "verwijdering van je bijnaam"
+
+#~ msgid "setting $var to $value"
+#~ msgstr "$var de waarde $value geven"
+
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<wachtwoord> <email (optioneel)>"
+
+#~ msgid "Register your nickname"
+#~ msgstr "Registreer je bijnaam"
+
+#~ msgid "Drop your nickname."
+#~ msgstr "Verwerp je bijnaam."
+
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "Vernieuw de details van je bijnaam. Voor mogelijke details, zie '/"
+#~ "details'."
+
+#~ msgid "<detail> <value>"
+#~ msgstr "<detail> <waarde>"
+
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr ""
+#~ "Vraag een lijst aan van details die je kunt instellen voor je "
+#~ "geregistreerde bijnaam."
 
 #~ msgid "No Saved Games"
 #~ msgstr "Geen opgeslagen spellen"
@@ -8706,14 +8719,14 @@ msgstr "Whiteboard Opties"
 #~ msgid "unit help^Name"
 #~ msgstr "Naam"
 
+#~ msgid "Type"
+#~ msgstr "Type"
+
 #~ msgid "Strikes"
 #~ msgstr "Kansen"
 
 #~ msgid "Range"
 #~ msgstr "Bereik"
-
-#~ msgid "Type"
-#~ msgstr "Type"
 
 #~ msgid "Special"
 #~ msgstr "Specialiteit"
@@ -8748,86 +8761,21 @@ msgstr "Whiteboard Opties"
 #~ msgid "Jamming Cost"
 #~ msgstr "Waarschuwingszicht Kosten"
 
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr ""
+#~ "Kan de ongeldige zijde '$side' niet door de computer laten besturen."
+
+#~ msgid "Side:"
+#~ msgstr "Kant:"
+
+#~ msgid " replay"
+#~ msgstr " herhaling"
+
 #~ msgid "aliases:"
 #~ msgstr "aliassen:"
 
 #~ msgid "Show fps."
 #~ msgstr "Toon beelden per seconde."
-
-#~ msgid "Side:"
-#~ msgstr "Kant:"
-
-#, fuzzy
-#~| msgid "income"
-#~ msgid "Income"
-#~ msgstr "inkomen"
-
-#~ msgid " replay"
-#~ msgstr " herhaling"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "Mysterieuze eenheden bereiken hun volledige sterkte enkel tijdens de "
-#~ "schemering.\n"
-#~ "\n"
-#~ "Dag: −25% Schade\n"
-#~ "Nacht: −25% Schade"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr ""
-#~ "Er zijn geen specifieke opties beschikbaar voor het geselecteerde "
-#~ "tijdperk, spel of aanpassing."
-
-#~ msgid "Defaults"
-#~ msgstr "Standaard"
-
-#~ msgid "Connected Players"
-#~ msgstr "Verbonden Spelers"
-
-#~ msgid "registering with password *** and no email address"
-#~ msgstr "registratie met wachtwoord *** en zonder e-mailadres"
-
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr "registratie met wachtwoord *** en e-mailadres $email"
-
-#~ msgid "dropping your username"
-#~ msgstr "verwijdering van je bijnaam"
-
-#~ msgid "setting $var to $value"
-#~ msgstr "$var de waarde $value geven"
-
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<wachtwoord> <email (optioneel)>"
-
-#~ msgid "Register your nickname"
-#~ msgstr "Registreer je bijnaam"
-
-#~ msgid "Drop your nickname."
-#~ msgstr "Verwerp je bijnaam."
-
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr ""
-#~ "Vernieuw de details van je bijnaam. Voor mogelijke details, zie '/"
-#~ "details'."
-
-#~ msgid "<detail> <value>"
-#~ msgstr "<detail> <waarde>"
-
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr ""
-#~ "Vraag een lijst aan van details die je kunt instellen voor je "
-#~ "geregistreerde bijnaam."
-
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr ""
-#~ "Kan de ongeldige zijde '$side' niet door de computer laten besturen."
 
 #~ msgid "Empty"
 #~ msgstr "Leeg"
