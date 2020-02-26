@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-26 00:01 UTC\n"
-"PO-Revision-Date: 2019-07-01 18:43+0200\n"
+"PO-Revision-Date: 2020-02-17 21:39+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: /home/koan/wesnoth\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:25
@@ -951,6 +951,8 @@ msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
 msgstr ""
+"Je kunt je beurt niet beëindigen tot je eenheden hebt gerekruteerd en een "
+"dorp hebt veroverd!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
@@ -1038,13 +1040,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the east; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1187,26 +1182,22 @@ msgstr "Elfensjamaan"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
-#| "friendly units around her. She also has a special attack which <i>slows</"
-#| "i> enemies, halving the damage they do for one turn."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
-"De Sjamaan is een relatief zwakke eenheid, maar ze heeft de vaardigheid om "
-"bevriende eenheden in de omgeving te <i>genezen</i>. Ze heeft ook een "
-"speciale aanval die vijanden <i>vertraagt</i>, waardoor de schade die ze aan "
-"richten halveert."
+"De Sjamaan heeft de mogelijkheid om bevriende eenheden om haar heen te "
+"<i>genezen</i>. Ook heeft ze een speciale aanval waarmee ze vijanden "
+"<i>vertraagt</i>, waardoor de schade die ze toekennen voor één beurt wordt "
+"gehalveerd. Daarentegen is ze wel wat zwakker dan strijders en "
+"boogschutters, dus pas op als je haar op de frontlinie plaatst."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "De <i>Genees</i> Vaardigheid"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
@@ -1223,25 +1214,11 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Abilities and Weapon Specials"
 msgid "Weapon Specials"
-msgstr "Vaardigheden en Wapenspecialiteiten"
+msgstr "Wapenspecialiteiten"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1253,22 +1230,22 @@ msgid ""
 "A full list of abilities and weapons specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
-"Wapenspecialiteiten zijn speciale aanpassingen die aanvallen krachtiger "
-"maken. Nogmaals, in dit geval, heeft de Sjamaan de Vertraagt specialiteit "
+"Wapenspecialiteiten zijn speciale aanpassingen die bepaalde aanvallen "
+"krachtiger maken. In dit geval, heeft de Sjamaan de Vertraagt specialiteit "
 "bij haar verstrikking aanval. Wanneer deze aanval op een vijand wordt "
 "gebruikt halveert het de schade die ze voor één beurt maken. Andere "
 "wapenspecialiteiten zijn Initiatief, waarmee de aanval altijd als eerste "
 "plaatsvindt, en Magisch, wat de aanval altijd een kans van 70% geeft om te "
 "raken.\n"
 "\n"
-"Een volledige lijst met vaardigheden en wapenspecialiteiten, samen met "
-"karaktereigenschappen, is te vinden in Help."
+"Een volledige lijst met wapenspecialiteiten, samen met "
+"karaktereigenschappen, is te vinden in Help (standaard sneltoets: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Multiple Healers"
-msgstr ""
+msgstr "Meerdere Genezers"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1296,7 +1273,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
 msgid "Healers and Villages"
-msgstr ""
+msgstr "Genezers en Dorpen"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:384
@@ -1361,28 +1338,22 @@ msgstr "Neem een dorp in"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:448
-#, fuzzy
-#| msgid "Capture a village"
 msgid "You still have to capture a village!"
-msgstr "Neem een dorp in"
+msgstr "Je moet nog een dorp innemen!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:479
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things if you make a "
-#| "mistake."
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"Vergeet niet dat de meeste zetten ongedaan gemaakt kunnen worden door op "
-"<b>u</b> te drukken wanneer je een fout maakt."
+"Je bent vergeten eenheden te rekruteren! Je kan op <b>u</b> drukken om je "
+"laatste zet ongedaan te maken."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "Je moet nog eenheden rekruteren!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:490
@@ -1434,14 +1405,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:568
-#, fuzzy
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"<big>Oeps!</big>\n"
-"Je bent naar het verkeerde vakje gegaan! Na dit bericht kun je op 'u' "
-"drukken om je zet ongedaan te maken en het opnieuw te proberen."
+"Je bent vergeten een dorp in te nemen! Je kan op <b>u</b> drukken om je zet "
+"ongedaan te maken."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
@@ -1606,7 +1575,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:711
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "De uitleg was niet bedoeld om zo moeilijk te zijn"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
@@ -1617,6 +1586,12 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"De ork op het eiland zou zich over de brug moeten verplaatsen, zodat hij "
+"door meerdere elfen tegelijkertijd aangevallen kon worden. Iets heeft ervoor "
+"gezorgd dat dit niet is gebeurd, waardoor de veldtocht moeilijker is "
+"geworden omdat hij nu een verdedigende positie heeft ingenomen.\n"
+"\n"
+"Graag deze fout melden."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:726
@@ -1687,41 +1662,26 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:778
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
 "move everyone closer for next turn."
 msgstr ""
-"Ik hoop dat mijn eenheden de tegenaanval overleven als ik de Orkgrommer niet "
-"doodt deze beurt. Ik kan maar beter meer dorpen innemen en andere eenheden "
-"dichterbij verplaatsen voor de volgende beurt."
+"Ik hoop dat ik de tegenaanval overleef als ik de Orkgrommer niet dood deze "
+"beurt. Ik kan maar beter meer dorpen innemen en andere eenheden dichterbij "
+"verplaatsen voor de volgende beurt."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:783
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Als een van je Sjamanen net achter je gewonde eenheden staat, zal ze zorgen "
-"dat ze allemaal 4 levenspunten (HP) genezen aan het begin van de volgende "
-"beurt."
+"Als een van je Sjamanen net achter je staat, zal ze zorgen dat je 4 "
+"levenspunten (HP) geneest aan het begin van de volgende beurt."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
@@ -1819,19 +1779,14 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:940
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it next turn! "
-#| "Move a unit into the village to stop the orcs capturing it. Whichever "
-#| "unit you choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"We moeten dat dorp innemen, anders doen zij het de volgende beurt! Verplaats "
-"een eenheid naar het dorp om de orks tegen te houden. De eenheid die je "
-"kiest zal ook profiteren van de genezing in het dorp."
+"We moeten dat dorp innemen, anders doen zij het snel! Verplaats een eenheid "
+"naar het dorp om de orks tegen te houden. De eenheid die je kiest zal ook "
+"profiteren van de genezing in het dorp."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:946
@@ -2067,16 +2022,12 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1293
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. Goodbye, $unit."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr ""
-"Gepromoveerde eenheden zijn sterk, maar niet onkwetsbaar! Vaarwel, $unit."
-"name|."
+"Gepromoveerde eenheden zijn sterk, maar niet onkwetsbaar! We gaan je missen, "
+"$unit.name|."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1307
@@ -2247,17 +2198,10 @@ msgstr "Dat... was dom. De volgende keer zou ik voorzichtiger moeten zijn."
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1463
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "Agh! Wie moet je nu naar de overwinning leiden?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try one of the rookie-level "
-#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#| "i> is the easiest and is the recommended first campaign. In <i>An Orcish "
-#| "Incursion</i> you have an Elvish army, similarly to this tutorial, but "
-#| "with seven scenarios for your units to gain experience and advance levels."
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
@@ -2266,9 +2210,7 @@ msgstr ""
 "Je hebt de orks verslagen! Nu wil je misschien een van de veldtochten "
 "geschikt voor beginners proberen, die bezitten ook strategietips. <i>Een "
 "Verhaal van Twee Broers</i> is het makkelijkst en wordt aanbevolen als "
-"eerste veldtocht. In <i>Een Orkinvasie</i> heb je een strijdkracht van "
-"Elfen, net als in deze uitleg, maar dan met zeven scenario's waarin je "
-"eenheden ervaring op kunnen doen en kunnen promoveren."
+"eerste veldtocht."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1483

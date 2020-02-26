@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-02-01 22:39-0300\n"
-"PO-Revision-Date: 2019-11-25 21:56+0100\n"
+"PO-Revision-Date: 2020-01-14 20:57+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -4111,14 +4111,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "Strengere controles voor niet-gesynchroniseerde fouten"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Herhaling Opslaan"
+msgstr "Herhaling Privé maken"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Of de herhaling publiekelijk beschikbaar zal zijn"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -5298,6 +5296,8 @@ msgstr "Eenheid Oproepen"
 #: data/gui/window/unit_recall.cfg:341
 msgid "Search for unit name, unit type name, unit level, or trait."
 msgstr ""
+"Zoek voor de naam van de eenheid, het type, het level of de "
+"karaktereigenschap."
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
@@ -5342,10 +5342,8 @@ msgid "Details:"
 msgstr "Details:"
 
 #: src/build_info.cpp:270
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "JPG schermafbeeldingen"
+msgstr "JPEG schermafbeeldingen"
 
 #: src/build_info.cpp:277
 msgid "feature^Lua console completion"
@@ -5842,16 +5840,12 @@ msgid "Defender resistance vs"
 msgstr "Verdediger weerstand tegen"
 
 #: src/gui/dialogs/attack_predictions.cpp:191
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "Aanvaller kwetsbaarheid tegen"
+msgstr "Verdediger kwetsbaarheid tegen"
 
 #: src/gui/dialogs/attack_predictions.cpp:195
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "Verdediger weerstand tegen"
+msgstr "Aanvaller weerstand tegen"
 
 #: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Attacker vulnerability vs"
@@ -6524,10 +6518,13 @@ msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"Deze eenheid kan niet opgeroepen worden omdat je niet voldoende goud bezit "
+"op dit moment in je plan."
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
+"Deze eenheid kan niet opgeroepen worden omdat je niet voldoende goud bezit."
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -7025,22 +7022,16 @@ msgid "Next Move"
 msgstr "Volgende Beweging"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Volledige Kaart"
+msgstr "Toon: Volledige Kaart"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Ieder Team"
+msgstr "Toon: Ieder Team"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Menselijk Team"
+msgstr "Toon: Menselijk Team"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"

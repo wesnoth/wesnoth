@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-02-01 22:39-0300\n"
-"PO-Revision-Date: 2019-11-25 21:51+0100\n"
+"PO-Revision-Date: 2020-01-14 20:51+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -5192,14 +5192,15 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"Als een eenheid gepositioneerd is naast genezers van twee bevriende zijden, "
+"zal de eenheid in de beurt van beide zijden genezen worden. Op deze manier "
+"kan een eenheid sneller genezen dan normaal gesproken."
 
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:267
-#, fuzzy
-#| msgid "<i>― Kai Laudiss, 623YW</i>"
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr "<i>― Kai Laudiss, 623YW</i>"
+msgstr "<i>― Vank of Galun's Vlucht, 6YW</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5250,8 +5251,6 @@ msgid "You do not have a leader to recruit with."
 msgstr "Je hebt geen leider om mee te rekruteren."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
 msgstr "Geen enkele van je leiders kan deze eenheid rekruteren."
 
@@ -6600,34 +6599,24 @@ msgid "Only available during a scenario."
 msgstr "Alleen beschikbaar gedurende een scenario."
 
 #: src/help/help_impl.cpp:358 src/help/help_impl.cpp:394
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "Tijd van de dag schema:"
+msgstr "Tijd van de Dag Schema"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Gezagsgetrouwe eenheden: "
+msgstr "Gezagsgetrouwe Bonus:"
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Neutrale eenheden: "
+msgstr "Neutrale Bonus:"
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Wetteloze eenheden: "
+msgstr "Wetteloze Bonus:"
 
 #: src/help/help_impl.cpp:388
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "Mysterieuze eenheden: "
+msgstr "Mysterieuze Bonus:"
 
 #: src/help/help_impl.cpp:389
 msgid "Schedule"
@@ -7047,73 +7036,56 @@ msgid "You have no units available to recruit."
 msgstr "Er zijn geen eenheden beschikbaar om te rekruteren."
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "Geen eenheid gerekruteerd"
+msgstr "Geen eenheid gerekruteerd."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "Interne fout. Graag rapporteren als een fout! Details:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "Je kunt geen $unit_type_name rekruteren op dit tijdstip"
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "Je hebt niet genoeg goud om die eenheid te rekruteren"
+msgstr ""
+"Op dit punt in je plan heb je niet genoeg goud om die eenheid te rekruteren"
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "Je hebt niet genoeg goud om die eenheid te rekruteren"
+msgstr "Je hebt niet genoeg goud om die eenheid te rekruteren."
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "Je bent van je troepen gescheiden en dus kun je hen niet oproepen"
+msgstr "Je bent van je troepen gescheiden en dus kun je hen niet oproepen."
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
-"Er zijn geen troepen beschikbaar om op te roepen\n"
+"Er zijn geen troepen beschikbaar om op te roepen.\n"
 "(Daarvoor moeten er overlevende troepen uit een vorig scenario zijn)"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "Je kunt op dit moment geen eenheden oproepen op de gemarkeerde locatie"
+msgstr ""
+"Je kunt op dit moment geen eenheden oproepen op de gemarkeerde locatie."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "Geen eenheid opgeroepen"
+msgstr "Geen eenheid opgeroepen."
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "Je moet tenminste 1 goudstuk hebben om een eenheid op te roepen"
+msgstr[0] "Je moet tenminste 1 goudstuk hebben om een eenheid op te roepen."
 msgstr[1] ""
-"Je moet tenminste $cost goudstukken hebben om deze eenheid op te roepen"
+"Je moet tenminste $cost goudstukken hebben om deze eenheid op te roepen."
 
 #: src/menu_events.cpp:572
 msgid "You cannot end your turn yet!"
@@ -7204,7 +7176,7 @@ msgstr "[<zijde>[on/off]]"
 
 #: src/menu_events.cpp:1227
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Verander het thema in het spel."
 
 #: src/menu_events.cpp:1229
 msgid "<side> <nickname>"
@@ -7353,14 +7325,12 @@ msgstr "Toon een scenario variabele."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1276
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
 "Verander een eenheidsvariabele. (Alleen variabelen van het hoogste niveau "
-"worden ondersteund.)"
+"worden ondersteund, en advances=<number>.)"
 
 #: src/menu_events.cpp:1283
 msgid "Discover all units in help."
@@ -7372,7 +7342,7 @@ msgstr "'Onontdek' alle eenheden in de help."
 
 #: src/menu_events.cpp:1285
 msgid "<unit type id>"
-msgstr ""
+msgstr "<unit type id>"
 
 #: src/menu_events.cpp:1285
 msgid "Create a unit."
@@ -7388,17 +7358,15 @@ msgstr "Schakel sluier voor de huidige zijde aan/uit."
 
 #: src/menu_events.cpp:1288
 msgid "<amount>"
-msgstr ""
+msgstr "<amount>"
 
 #: src/menu_events.cpp:1288
 msgid "Give gold to the current player."
 msgstr "Geef goud aan de huidige speler."
 
 #: src/menu_events.cpp:1289
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<bijnaam>"
+msgstr "<event name>"
 
 #: src/menu_events.cpp:1289
 msgid "Fire a game event."
