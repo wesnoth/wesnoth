@@ -56,6 +56,16 @@ public:
 		return id_;
 	}
 
+	int db_id() const
+	{
+		return db_id_;
+	}
+
+	void next_db_id()
+	{
+		db_id_ = db_id_num++;
+	}
+
 	const std::string& name() const
 	{
 		return name_;
@@ -458,8 +468,15 @@ private:
 
 	player_connections& player_connections_;
 
+  // used for unique identification of game instances within wesnothd
 	static int id_num;
 	int id_;
+
+	// used for unique identification of games played in the database
+	// necessary since for MP campaigns multiple scenarios can be played within the same game instance
+	// and we need a unique ID per scenario played, not per game instance
+	static int db_id_num;
+	int db_id_;
 
 	/** The name of the game. */
 	std::string name_;

@@ -84,6 +84,7 @@ void send_to_players(simple_wml::document& data, const Container& players, socke
 }
 
 int game::id_num = 1;
+int game::db_id_num = 1;
 
 void game::missing_user(socket_ptr /*socket*/, const std::string& func) const
 {
@@ -98,6 +99,7 @@ game::game(player_connections& player_connections,
 		const std::string& replay_save_path)
 	: player_connections_(player_connections)
 	, id_(id_num++)
+	, db_id_(db_id_num++)
 	, name_(name)
 	, password_()
 	, owner_(host)
@@ -1835,7 +1837,7 @@ static bool is_invalid_filename_char(char c)
 std::string game::get_replay_filename()
 {
 	std::stringstream name;
-	name << (*starting_pos(level_.root()))["name"] << " Turn " << current_turn() << " (" << id_ << ").bz2";
+	name << (*starting_pos(level_.root()))["name"] << " Turn " << current_turn() << " (" << db_id_ << ").bz2";
 	std::string filename(name.str());
 	std::replace(filename.begin(), filename.end(), ' ', '_');
 	filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
