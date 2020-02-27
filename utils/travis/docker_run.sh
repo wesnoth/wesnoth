@@ -11,7 +11,7 @@ die() { error "$*"; exit 1; }
 export DISPLAY=:99.0
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
 
-if [ "$OPT" == "-O0" ]; then
+if [ "$CFG" = "debug" ] || [ "$CFG" = "Debug" ]; then
     STRICT="true"
     build_timeout=35
 else
@@ -29,7 +29,7 @@ echo "TOOL: $TOOL"
 echo "CC: $CC"
 echo "CXX: $CXX"
 echo "CXXSTD: $CXXSTD"
-echo "OPT: $OPT"
+echo "CFG: $CFG"
 echo "WML_TESTS: $WML_TESTS"
 echo "WML_TEST_TIME: $WML_TEST_TIME"
 echo "PLAY_TEST: $PLAY_TEST"
@@ -38,7 +38,7 @@ echo "BOOST_TEST: $BOOST_TEST"
 echo "LTO: $LTO"
 echo "SAN: $SAN"
 echo "VALIDATE: $VALIDATE"
-echo "LTS: $LTS"
+echo "IMAGE: $IMAGE"
 echo "TRAVIS_COMMIT: $TRAVIS_COMMIT"
 echo "BRANCH: $BRANCH"
 echo "UPLOAD_ID: $UPLOAD_ID"
@@ -65,7 +65,7 @@ if [ "$NLS" == "only" ]; then
     scons translations build=release --debug=time nls=true jobs=2 || exit 1
 
     scons pot-update update-po4a manual
-elif [ "$LTS" == "flatpak" ]; then
+elif [ "$IMAGE" == "flatpak" ]; then
 # docker's --volume means the directory is on a separate filesystem
 # flatpak-builder doesn't support this
 # therefore manually move stuff between where flatpak needs it and where travis' caching can see it
@@ -79,9 +79,9 @@ elif [ "$LTS" == "flatpak" ]; then
     cp -R .flatpak-builder/. flatpak-cache/
     chmod -R 777 flatpak-cache/
     exit $BUILD_RET
-elif [ "$LTS" == "mingw" ]; then
-    scons wesnoth wesnothd build=release \
-        cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" \
+elif [ "$IMAGE" == "mingw" ]; then
+    scons wesnoth wesnothd build="$CFG" \
+        cxx_std=$CXXSTD strict="$STRICT" \
         nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
         arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32 || exit 1
 
@@ -100,19 +100,19 @@ elif [ "$LTS" == "mingw" ]; then
         bzip2 wesnoth-$TRAVIS_TAG.tar || exit 1
         ./utils/travis/sftp wesnoth-$TRAVIS_TAG.tar.bz2 || exit 1
     fi
-elif [ "$LTS" == "steamrt" ]; then
+elif [ "$IMAGE" == "steamrt" ]; then
     scons ctool=$CC cxxtool=$CXX boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt \
-        cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
-        build=release
+        cxx_std=$CXXSTD strict="$STRICT" nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
+        build="$CFG"
 else
     SECONDS=0
 
     if [ "$TOOL" == "cmake" ]; then
-        echo "max_size = 200M" > $HOME/.ccache/ccache.conf
-        echo "compiler_check = content" >> $HOME/.ccache/ccache.conf
+        export CCACHE_MAXSIZE=3000M
+        export CCACHE_COMPILERCHECK=content
 
-        cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS="$NLS" \
-              -DEXTRA_FLAGS_CONFIG="-pipe" -DOPT="$OPT" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO="$LTO" -DLTO_JOBS=2 -DENABLE_MYSQL=true -DSANITIZE="$SAN" \
+        cmake -DCMAKE_BUILD_TYPE="$CFG" -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS="$NLS" \
+              -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO="$LTO" -DLTO_JOBS=2 -DENABLE_MYSQL=true -DSANITIZE="$SAN" \
               -DCXX_STD="$CXXSTD" -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache && \
               make VERBOSE=1 -j2
         BUILD_RET=$?
@@ -120,11 +120,19 @@ else
         ccache -s
         ccache -z
     else
-        scons wesnoth wesnothd campaignd boost_unit_tests build=release \
+        scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
               ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
-              extra_flags_config="-pipe" opt="$OPT" strict="$STRICT" forum_user_handler=true \
+              extra_flags_config="-pipe" strict="$STRICT" forum_user_handler=true \
               nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
         BUILD_RET=$?
+
+# rename debug executables to what the tests expect
+        if [ "$CFG" == "debug" ]; then
+            mv wesnoth-debug wesnoth
+            mv wesnothd-debug wesnothd
+            mv campaignd-debug campaignd
+            mv boost_unit_tests-debug boost_unit_tests
+        fi
     fi
 
     if [ $BUILD_RET != 0 ]; then
@@ -142,7 +150,7 @@ else
 # needed since bash returns the exit code of the final command executed, so a failure needs to be returned if any unit tests fail
     EXIT_VAL=0
 
-    # print given message ($1) and execute given command; sets EXIT_VAL on failure
+# print given message ($1) and execute given command; sets EXIT_VAL on failure
     execute() {
         local message=$1; shift
         printf 'Executing %s\n' "$message"
