@@ -8,7 +8,7 @@ export MP_TEST=true
 export WML_TEST_TIME=15
 export BOOST_TEST=true
 
-if [ "$OPT" = "-O0" ]; then
+if [ "$CFG" = "debug" ] || [ "$CFG" = "Debug" ]; then
     export PLAY_TEST=false
     export MP_TEST=false
     export WML_TEST_TIME=20
@@ -16,6 +16,14 @@ fi
 
 if [ "$LTO" == "" ]; then
     export LTO=false
+fi
+
+if [ "$UPLOAD" == "true" ]; then
+    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+        export UPLOAD_ID="${TRAVIS_OS_NAME}-${IMAGE}-${TOOL}-${CFG}"
+    else
+        export UPLOAD_ID="${TRAVIS_OS_NAME}-${TOOL}-${CFG}"
+    fi
 fi
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
@@ -48,19 +56,19 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
         echo "Dependencies retrieved and installed!"
     fi
 
-    ./utils/travis/windows-file-hasher.sh "projectfiles/VC14/$OPT/filehashes.sqlite"
+    ./utils/travis/windows-file-hasher.sh "projectfiles/VC14/$CFG/filehashes.sqlite"
 else
     # if not doing translations, save a bit of time by not copying them into the docker image
     # otherwise, if this is the mingw job, the .git directory is needed for running the git archive command
     if [ "$NLS" == "false" ]; then
         echo "po/" >> .dockerignore
-    elif [ "$LTS" == "mingw" ]; then
+    elif [ "$IMAGE" == "mingw" ]; then
         rm .dockerignore
     fi
 
-    echo "FROM wesnoth/wesnoth:$LTS-$BRANCH" > utils/dockerbuilds/travis/Dockerfile-travis-"$LTS"-"$BRANCH"
-    echo "COPY ./ /home/wesnoth-travis/" >> utils/dockerbuilds/travis/Dockerfile-travis-"$LTS"-"$BRANCH"
-    echo "WORKDIR /home/wesnoth-travis" >> utils/dockerbuilds/travis/Dockerfile-travis-"$LTS"-"$BRANCH"
+    echo "FROM wesnoth/wesnoth:$IMAGE-$BRANCH" > utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
+    echo "COPY ./ /home/wesnoth-travis/" >> utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
+    echo "WORKDIR /home/wesnoth-travis" >> utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
 
-    docker build -t wesnoth-repo:"$LTS"-"$BRANCH" -f utils/dockerbuilds/travis/Dockerfile-travis-"$LTS"-"$BRANCH" .
+    docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH" .
 fi

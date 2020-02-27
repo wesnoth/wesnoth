@@ -22,42 +22,42 @@ env:
 matrix:
   include:
     - os: windows
-      env: TOOL=msbuild OPT=Debug BRANCH=master UPLOAD_ID=vs-debug
+      env: TOOL=msbuild NLS=false BRANCH=master CFG=Debug UPLOAD=true
 
     - os: windows
-      env: TOOL=msbuild OPT=Release BRANCH=master
+      env: TOOL=msbuild NLS=false BRANCH=master CFG=Release
 
     - os: osx
       compiler: clang
-      env: TOOL=xcodebuild OPT=Debug NLS=true BRANCH=master UPLOAD_ID=xcode-debug
+      env: TOOL=xcodebuild NLS=true BRANCH=master CFG=Debug UPLOAD=true
 
     - os: osx
       compiler: clang
-      env: TOOL=xcodebuild OPT=Release NLS=true BRANCH=master
+      env: TOOL=xcodebuild NLS=true CFG=Release BRANCH=master
 
     - compiler: gcc
-      env: CXXSTD=14 NLS=only LTS=1604 BRANCH=master
+      env: TOOL=scons CXXSTD=14 NLS=only IMAGE=1804 BRANCH=master CFG=release
 
-    - compiler: gcc
-      env: TOOL=scons CXXSTD=17 NLS=false LTS=1804 BRANCH=master VALIDATE=true UPLOAD_ID=ubuntu-1804
-
-    - compiler: gcc
-      env: TOOL=scons CXXSTD=14 NLS=false LTS=1604 BRANCH=master OPT=-O0
-
-    - compiler: gcc
-      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=master UPLOAD_ID=ubuntu-1604
-
-    - compiler: clang
-      env: TOOL=scons CXXSTD=14 NLS=false LTS=1604 BRANCH=master OPT=-O0
-
-    - compiler: clang
-      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1804 BRANCH=master
-
-    - env: CXXSTD=14 NLS=true LTS=mingw BRANCH=master STRICT=false UPLOAD_ID=mingw
+    - env: TOOL=scons CXXSTD=14 NLS=true IMAGE=mingw BRANCH=master CFG=release STRICT=false UPLOAD=true
     
-    - env: CXXSTD=14 NLS=false LTS=steamrt BRANCH=master CC=gcc-5 CXX=g++-5
+    - env: TOOL=scons CXXSTD=14 NLS=false IMAGE=steamrt BRANCH=master CFG=release CC=gcc-5 CXX=g++-5
 
-    - env: NLS=true LTS=flatpak BRANCH=master
+    - env: TOOL=scons NLS=true IMAGE=flatpak BRANCH=master
+
+    - compiler: gcc
+      env: TOOL=scons CXXSTD=17 NLS=false IMAGE=1804 BRANCH=master CFG=release VALIDATE=true
+
+    - compiler: gcc
+      env: TOOL=scons CXXSTD=14 NLS=false IMAGE=1804 BRANCH=master CFG=debug UPLOAD=true
+
+    - compiler: gcc
+      env: TOOL=cmake CXXSTD=14 NLS=false IMAGE=1804 BRANCH=master CFG=Release
+
+    - compiler: clang
+      env: TOOL=cmake CXXSTD=14 NLS=false IMAGE=1804 BRANCH=master CFG=Debug
+
+    - compiler: gcc
+      env: TOOL=scons CXXSTD=14 NLS=false IMAGE=1604 BRANCH=master CFG=debug UPLOAD=true
 
 install:
     - . ./utils/travis/steps/install.sh
