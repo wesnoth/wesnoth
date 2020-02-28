@@ -2629,6 +2629,7 @@ void display::draw_hex(const map_location& loc) {
 				image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
 
 				for(const overlay& ov : overlays) {
+					assert(viewing_team() < get_teams().size());
 					const std::string& current_team_name = get_teams()[viewing_team()].team_name();
 					const std::vector<std::string>& current_team_names = utils::split(current_team_name);
 					const std::vector<std::string>& team_names = utils::split(ov.team_name);
