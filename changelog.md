@@ -4,6 +4,9 @@
      Portuguese (Brazil).
 
 ## Version 1.14.11
+ ### Campaigns
+   * Under the Burning Suns:
+     * S2: dehydration now only affects player units
  ### Language and i18n
    * Updated translations: Czech, German.
  ### Packaging
