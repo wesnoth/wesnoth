@@ -25,6 +25,9 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         ./utils/travis/sftp wesnoth.exe wesnothd.exe
+        if [ "$CFG" == "Debug" ]; then
+            ./utils/travis/sftp wesnoth.pdb wesnothd.pdb
+        fi
     fi
 
     if [ "$BUILD_RET" != "0" ]; then
