@@ -20,7 +20,7 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
 
     exit $BUILD_RET
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
-    powershell "MSBuild.exe projectfiles/VC14/wesnoth.sln -p:PlatformToolset=v141 -p:Configuration=$CFG"
+    powershell "MSBuild.exe projectfiles/VC14/wesnoth.sln -p:Configuration=$CFG"
     BUILD_RET=$?
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
