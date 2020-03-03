@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-01-25 15:18-0300\n"
-"PO-Revision-Date: 2019-08-04 22:45+0200\n"
+"PO-Revision-Date: 2020-02-01 10:55+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -1289,7 +1289,7 @@ msgstr "Zurück"
 #. [protect]
 #: data/core/macros/ai_controller.cfg:315
 msgid "Focus on protecting..."
-msgstr "Beschützt..."
+msgstr "Beschützt…"
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:316
@@ -1303,7 +1303,7 @@ msgstr ""
 #. [option]
 #: data/core/macros/ai_controller.cfg:473
 msgid "Defend a location..."
-msgstr "Verteidigt einen Ort..."
+msgstr "Verteidigt einen Ort…"
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:489
@@ -1366,12 +1366,12 @@ msgstr ""
 #. [literal]
 #: data/core/macros/ai_controller.cfg:783
 msgid "Set objective..."
-msgstr "Ziel auswählen..."
+msgstr "Ziel auswählen…"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:874
 msgid "Set behavior..."
-msgstr "Verhalten beeinflussen..."
+msgstr "Verhalten beeinflussen…"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:979
@@ -1380,11 +1380,11 @@ msgstr "Beenden"
 
 #: data/core/macros/ai_controller.cfg:1116
 msgid "Set special orders..."
-msgstr "Spezielle Befehle erteilen..."
+msgstr "Spezielle Befehle erteilen…"
 
 #: data/core/macros/ai_controller.cfg:1117
 msgid "Move leader to..."
-msgstr "Sendet den Anführer nach..."
+msgstr "Sendet den Anführer nach…"
 
 #: data/core/macros/ai_controller.cfg:1118
 msgid "Right-click to select a location to move leader to"
@@ -5321,14 +5321,15 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"Wenn eine Einheit neben zwei Heilern von verschiedenen Verbündeten Parteien "
+"positioniert wird, so wird sie in den Zügen beider Parteien geheilt. Auf "
+"diese Weise kann eine Einheit doppelt so schnell genesen."
 
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:273
-#, fuzzy
-#| msgid "<i>― Kai Laudiss, 623YW</i>"
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr "<i>― Kai Laudiss, 623JW</i>"
+msgstr "<i>― Vank, Drake unter Galun’s Kommando, 6 JW</i>"
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5389,8 +5390,6 @@ msgstr ""
 "Euer Heerführer ist gefallen. Ihr könnt keine weiteren Einheiten ausbilden."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
 msgstr "Keiner Eurer Anführer kann diese Einheit ausbilden."
 
@@ -5454,7 +5453,7 @@ msgstr "(Drückt $hotkey, um fortzufahren)"
 
 #: src/addon/client.cpp:71
 msgid "Connecting to $server_address|..."
-msgstr "Verbinden mit $server_address|..."
+msgstr "Verbinden mit $server_address|…"
 
 #: src/addon/client.cpp:85
 msgid "Downloading list of add-ons..."
@@ -6728,34 +6727,24 @@ msgid "Only available during a scenario."
 msgstr "Nur in einem Szenario verfügbar."
 
 #: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
 msgstr "Tagesablauf:"
 
 #: src/help/help_impl.cpp:384
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Redliche Einheiten: "
+msgstr "Redliche Einheiten:"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Neutrale Einheiten: "
+msgstr "Neutrale Einheiten:"
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Lichtscheue Einheiten: "
+msgstr "Lichtscheue Einheiten:"
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "Zwielichtige Einheiten: "
+msgstr "Zwielichtige Einheiten:"
 
 #: src/help/help_impl.cpp:388
 msgid "Schedule"
@@ -6931,6 +6920,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<Befehl>]\n"
+"»all« = Überblick über alle Befehle, <Befehl> = Name eines Befehls (zeigt "
+"mehr Information an)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -6966,8 +6958,8 @@ msgstr "Aufruf:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Alias:"
+msgstr[1] "Aliase:"
 
 #: src/menu_events.cpp:177
 msgid "Save Map As"
@@ -6998,46 +6990,34 @@ msgid "You have no units available to recruit."
 msgstr "Es gibt keine Einheiten, die Ihr ausbilden könntet."
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "Keine Einheit ausgebildet"
+msgstr "Keine Einheit ausgebildet."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "Interner Fehler. Bitte meldet diesen Bug! Details:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "Die Einheit $unit_type könnt Ihr momentan nicht ausbilden."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "Ihr verfügt nicht über genug Gold, um diese Einheit auszubilden"
+msgstr "Ihr verfügt nicht über genug Gold, um diese Einheit auszubilden."
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "Ihr verfügt nicht über genug Gold, um diese Einheit auszubilden"
+msgstr "Ihr verfügt nicht über genug Gold, um diese Einheit auszubilden."
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
 msgstr ""
-"Ihr seid von Euren Soldaten getrennt und könnt sie daher nicht einberufen"
+"Ihr seid von Euren Soldaten getrennt und könnt sie daher nicht einberufen."
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7046,28 +7026,21 @@ msgstr ""
 "(Ihr benötigt überlebende Veteranen aus früheren Szenarien.)"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "Ihr könnt im Moment auf dem ausgewählten Feld nicht einberufen"
+msgstr "Ihr könnt im Moment auf dem ausgewählten Feld nicht einberufen."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "Keine Einheit einberufen"
+msgstr "Keine Einheit einberufen."
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] ""
-"Ihr benötigt mindestens ein Goldstück, um eine Einheit einberufen zu können"
+"Ihr benötigt mindestens ein Goldstück, um eine Einheit einberufen zu können."
 msgstr[1] ""
 "Ihr benötigt mindestens $cost Goldstücke, um eine Einheit einberufen zu "
-"können"
+"können."
 
 #: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
@@ -7165,14 +7138,12 @@ msgstr "Ruhezustand für Partei aktivieren/deaktivieren."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1234
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<Partei> [on/off]]"
 
 #: src/menu_events.cpp:1235
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Ändert das Grafik-Thema im Spiel."
 
 #: src/menu_events.cpp:1237
 msgid "<side> <nickname>"
@@ -7206,7 +7177,7 @@ msgstr "Ebenen des Geländes unter der Maus auf Fehler testen."
 
 #: src/menu_events.cpp:1244
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "FPS anzeigen (Frames pro Sekunde)."
 
 #: src/menu_events.cpp:1246
 msgid "Save game."
@@ -7276,7 +7247,7 @@ msgstr "Schaltet den Debugmodus aus."
 
 #: src/menu_events.cpp:1269 src/menu_events.cpp:1273
 msgid "<command>[;<command>...]"
-msgstr "<Befehl>[;<Befehl>...]"
+msgstr "<Befehl>[;<Befehl>…]"
 
 #: src/menu_events.cpp:1269
 msgid "Execute a Lua statement."
@@ -7325,14 +7296,12 @@ msgstr "Zeigt den Wert einer Spielvariable."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1284
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
 "Modifiziert eine Einheitenvariable. (Nur Schlüssel oberster Ebene werden "
-"unterstützt.)"
+"unterstützt, und advances=<Zahl>)"
 
 #: src/menu_events.cpp:1291
 msgid "Discover all units in help."
@@ -7344,7 +7313,7 @@ msgstr "Markiert alle Einheiten in der Hilfe als unbekannt."
 
 #: src/menu_events.cpp:1293
 msgid "<unit type id>"
-msgstr ""
+msgstr "<Einheitenkennung>"
 
 #: src/menu_events.cpp:1293
 msgid "Create a unit."
@@ -7361,17 +7330,15 @@ msgstr ""
 
 #: src/menu_events.cpp:1296
 msgid "<amount>"
-msgstr ""
+msgstr "<Betrag>"
 
 #: src/menu_events.cpp:1296
 msgid "Give gold to the current player."
 msgstr "Gibt dem aktuellen Spieler eine bestimmbare Anzahl Gold."
 
 #: src/menu_events.cpp:1297
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<Spieler>"
+msgstr "<Ereignis>"
 
 #: src/menu_events.cpp:1297
 msgid "Fire a game event."
@@ -7585,7 +7552,7 @@ msgstr "Keine Spiegelung (nur Verbündete)"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Ein neues Spiel wurde eröffnet: $name|, $scenario|"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7690,20 +7657,20 @@ msgstr ""
 "Möchtet Ihr den Spielstand speichern?"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Möchtet Ihr das Spiel wirklich aufgeben?"
+msgstr ""
+"\n"
+"Möchtet Ihr den Spielstand speichern?"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "Der Spielstand wurde gespeichert."
+msgstr ""
+"Dieses Spiel wurde beendet.\n"
+"Grund: "
 
 # Hinweis betr. Original- und Übersetzungs-String:
 # Die Kombi " \+n" bewirkt den Umbruch einer Textzeile, fügt aber KEINE Leerzeile ein!
@@ -8108,12 +8075,6 @@ msgid "Units"
 msgstr "Einheiten"
 
 #: src/reports.cpp:1443
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8121,33 +8082,29 @@ msgid ""
 "cost of upkeep, including that covered by villages — in other words, the "
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
-"Die Kosten die nach jeder Runde abgezogen werden, um Eure Armee zu "
-"verwalten. Die erste Zahl ist die Menge an Gold, die abgezogen wird. Die "
-"zweite Zahl sind die Gesamten Unterhaltskosten, auch die, welche durch "
-"Dörfer gedeckt sind - mit anderen Worten: die Menge an Gold, die abgezogen "
-"würde, wenn Sie alle Dörfer verlören."
+"Die Kosten, welche jede Runde anfallen um Eure Armee zu verwalten. Die erste "
+"Zahl ist die Menge an Gold, die tatsächlich fällig wird – die Einheiten, für "
+"deren Versorgungskosten nicht die Dörfer aufkommen. Die zweite Zahl sind die "
+"gesamten Unterhaltskosten, auch die, welche durch Dörfer gedeckt sind – mit "
+"anderen Worten: die Menge an Gold, die abgezogen würde, wenn Ihr alle Dörfer "
+"verlöret."
 
 #: src/reports.cpp:1443
 msgid "Upkeep"
 msgstr "Ausgaben"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "Einkommen"
+msgstr "Netto-Einkommen"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"Die Menge an Gold, die sie durch Dörfer unter Ihrer Kontrolle einnehmen, "
-"oder die Menge an Gold, die Sie jede Runde durch Unterhaltskosten verlieren."
+"Die Menge an Gold, welche Ihr pro Runde einnehmt bzw. verliert. Dies hängt "
+"von der Anzahl der Dörfern unter Euer Kontrolle und den Ausgaben zum Decken "
+"der Unterhaltskosten Eurer Einheiten ab."
 
 #: src/reports.cpp:1648
 msgid "Observers:"
@@ -10497,3 +10454,42 @@ msgstr "Planungsmodus Optionen"
 
 #~ msgid "Choose weapon:"
 #~ msgstr "Waffe auswählen:"
+
+#~ msgid ""
+#~ "Show all unit types in the help (requires restart). This does not alter "
+#~ "the list of encountered units"
+#~ msgstr ""
+#~ "Beschreibt alle Einheiten in der Hilfe (Neustart erforderlich). Die Liste "
+#~ "der Einheiten, denen man bereits begegnet ist, bleibt unverändert"
+
+#~ msgid ""
+#~ "Try to operate units with a small number of powerful attacks—such as Dark "
+#~ "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or "
+#~ "threes. This gives you another try whenever your first devastating attack "
+#~ "misses — as inevitably happens from time to time."
+#~ msgstr ""
+#~ "Versucht, Einheiten mit wenigen aber hochwirksamen Angriffstechniken (z. "
+#~ "B. dunkle Adepten, Reiter, Orkgrunzer oder Zwergendonnerer) immer in "
+#~ "Gruppen von zweien oder dreien einzusetzen. Dadurch erhaltet Ihr einen "
+#~ "zweiten Versuch, falls die erste verheerende Attacke misslingt – was "
+#~ "fraglos von Zeit zu Zeit vorkommt."
+
+#~ msgid ""
+#~ "Units with three or more attacks—especially magical attacks—are ideal for "
+#~ "finishing off enemies with only a few hitpoints remaining. Be sure to use "
+#~ "leadership—or a strong or dextrous unit—whenever the extra point or two "
+#~ "of damage makes a one-hit kill possible."
+#~ msgstr ""
+#~ "Einheiten, die Mehrfachangriffe führen – besonders mit magischen Attacken "
+#~ "– sind ideal, um solchen Feinden den Garaus zu machen, denen nur mehr "
+#~ "wenige Lebenspunkte verblieben sind. Seht zu, dass kräftige, treffsichere "
+#~ "Einheiten oder solche mit Führungsqualitäten dafür sorgen, dass ein "
+#~ "einziger Schlag ausreicht."
+
+#~ msgid ""
+#~ "[<side> [on/off]]\n"
+#~ "“on” = enable control by the AI, “off” = side is controlled by the player"
+#~ msgstr ""
+#~ "[<Partei> [on/off]]\n"
+#~ "»on« = KI spielt für den Spieler, »off« = Partei wird vom Spieler "
+#~ "gesteuert"
