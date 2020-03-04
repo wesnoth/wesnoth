@@ -1,9 +1,10 @@
 ## Version 1.15.2+dev
  ### AI
-   * Merge most of Experimental AI candidate actions (CAs) into default AI
-     * CAs merged: castle switch, retreat injured, spread poison, place healers, move to any enemy
+   * Merge Experimental AI candidate actions (CAs) into default AI
+     * CAs merged: retreat injured, spread poison, place healers, move to any enemy
      * CAs not merged: grab villages and village hunt, as the respective default AI CAs
-       are better as general purpose CAs. Also not merged was recruit rushers, which is too different
+       are better as general purpose CAs. Also not merged was castle switch, which can
+       cause undesired behavior in singleplayer scenarios, and recruit rushers, which is too different
        from default recruiting (would change balance too much) and because it can currently not deal
        with multiple leaders and all the recruitment aspects. An option to use this alternative
        recruiting will be provided in the future.
@@ -18,6 +19,7 @@
      * New optional parameter [filter]
      * Fix bug of units not participating if too far in front of the bottleneck
    * Healer Support Micro AI: take unit guardian status and passive_leader aspect into account
+   * Forest Animals Micro AI: rabbit holes on the map border are now automatically excluded
    * New ai_helper functionality: path finding, next_hop and get_attackable_enemies taking avoid into
      account; next_hop with pre-calculated path and fanning out; new options to get_cheapest_recruit_cost
    * Add [filter_own] optional tag to all default and Experimental AI candidate actions
