@@ -1,5 +1,5 @@
 # Building with Xcode
-This README describes the way, how wesnoth release packages are build for macOS.
+This README describes the way to create the wesnoth release packages for macOS.
 
 ### Requirements for building Wesnoth
  * Xcode 5.1.1 or higher...
@@ -45,28 +45,28 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Obtain sources from github using `git clone -b BRANCH --depth 10 https://github.com/wesnoth/wesnoth /PATH/TO/PROJECT` or use your favourite git program.
  * Checkout to the latest tag using `cd /PATH/TO/PROJECT ; git checkout TAG` or use your favourite git program.
  * Use `Finder` to navigate into `/PATH/TO/PROJECT/projectfiles/Xcode`.
- * Double click on `Fix_Xcode_Dependencies` script and wait until it will be done.
+ * Double click on the `Fix_Xcode_Dependencies` script and wait until it finishes.
  * Compile translations as it is described in **Translations** section.
  * Now you can open `The Battle for Wesnoth.xcodeproj` file in Xcode.
  * Update version numbers in Info.plist (if not already by the release manager).
  * Update the changelog in `SDLMain.nib` with `changelog.md`.
  * Create `dist` file using `touch /PATH/TO/PROJECT/data/dist`.
- * You must increment build number before each distribution package. If you don't know previous build number the best way is probably procceed with steps for one of packages using build number `1` and way with which message notarization step fails. The current build number is contained here.
+ * You must increment the build number before creating each distribution package. If you don't know the previous build number, the best way is to proceed with steps for one of the packages using build number 1 and wait until you get an error message that the notarization step failed. The current build number is contained there.
 
 ### Packaging - SteamStore
- * Find and edit `dist` file in path `/PATH/TO/PROJECT/data/dist`. For Mac AppStore it must contain `Steam`.
+ * Find and edit `dist` file in path `/PATH/TO/PROJECT/data/dist`. For Steam it must contain `Steam`.
  * Now you can hit `Product` > `Archive` from the menubar.
  * After archivation is done, you can select correct archive in Xcode Organizer, click on `Distribute App`, select `Developer ID` and select `Upload`.
- * Now you must wait. After sucessful notarization you should get notification via Xcode.
+ * Now you must wait. After successful notarization you should get notification via Xcode.
  * Now click on `Distribute App` again, select `Developer ID` and select export location.
  * Your final package will be saved in location you selected.
  * You can now continue to releasing using partner steam tools.
 
 ### Packaging - SourceForge
- * Find and edit `dist` file in path `/PATH/TO/PROJECT/data/dist`. For Mac AppStore it must contain `SourceForge`.
+ * Find and edit `dist` file in path `/PATH/TO/PROJECT/data/dist`. For SourceForge it must contain `SourceForge`.
  * Now you can hit `Product` > `Archive` from the menubar.
  * After archivation is done, you can select correct archive in Xcode Organizer, click on `Distribute App`, select `Developer ID` and select `Upload`.
- * Now you must wait. After sucessful notarization you should get notification via Xcode.
+ * Now you must wait. After successful notarization you should get notification via Xcode.
  * Now click on `Distribute App` again, select `Developer ID` and select export location.
  * Your final package will be saved in location you selected.
  * Now copy dmg template from `/PATH/TO/PROJECT/packaging/macOS/Wesnoth_dmg_packaging_template.dmg`
@@ -75,12 +75,12 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Unmount R/W image and convert it to final ro image using `hdiutil convert /PATH/TO/RW_IMAGE.dmg -format UDBZ -o /PATH/TO/NEW/IMAGE.dmg` command.
  * Rename disk image to match new release version. Example: `Wesnoth_1.15.2.dmg`
  * Sign newly created ro image using `codesign -s "Developer ID Application: Wesnoth, Inc (N5CYW96P9T)" /PATH/TO/NEW/IMAGE.dmg`. (You must have Wesnoth's signing certificate.)
- * Verify that you signed `.dmg` propertly using `spctl -a -t open --context context:primary-signature -v /PATH/TO/NEW/IMAGE.dmg`.
+ * Verify that you signed `.dmg` properly using `spctl -a -t open --context context:primary-signature -v /PATH/TO/NEW/IMAGE.dmg`.
  * Now you have to notarize the whole `.dmg` image. You must have app specific password for your AppleID prepared.
- * Execute the `xcrun altool --notarize-app -f /PATH/TO/NEW/IMAGE.dmg --primary-bundle-id org.wesnoth.Wesnoth -u YOUR_APPLE_ID_EMAIL -p YOUR_APPLE_ID_APP_SPECIFIC_PASSWORD --asc-provider N5CYW96P9T` and wait. After sucessful execution it should give you RequestUUID.
- * You can check notarization status using `xcrun altool --notarization-info REQUEST_UUID -u YOUR_APPLE_ID_EMAIL -p YOUR_APPLE_ID_APP_SPECIFIC_PASSWORD` command. Wait until it get `Package Approved` status message.
+ * Execute the `xcrun altool --notarize-app -f /PATH/TO/NEW/IMAGE.dmg --primary-bundle-id org.wesnoth.Wesnoth -u YOUR_APPLE_ID_EMAIL -p YOUR_APPLE_ID_APP_SPECIFIC_PASSWORD --asc-provider N5CYW96P9T` and wait. After successful execution it should give you RequestUUID.
+ * You can check notarization status using `xcrun altool --notarization-info REQUEST_UUID -u YOUR_APPLE_ID_EMAIL -p YOUR_APPLE_ID_APP_SPECIFIC_PASSWORD` command. Wait until it returns the `Package Approved` status message.
  * Create SHA-256 checksum using `shasum -a 256 /PATH/TO/NEW/IMAGE.dmg > Wesnoth_x.x.x.dmg.sha256` command.
- * Done! You can release it to the SourceForge now.
+ * Done! You can release it to SourceForge now.
 
 ### Packaging - Mac AppStore
  * First you have to enable app sandbox for `wesnothd`.
@@ -88,9 +88,9 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Select `wesnothd` target.
  * Select `Signing & Capabilities` from the top bar.
  * Click `+ Capability` while in the `All` tab.
- * Select `App Snadbox`.
- * And in newly created section check both `Incomming` and `Outgoing` connections.
+ * Select `App Sandbox`.
+ * And in newly created section check both `Incoming` and `Outgoing` connections.
  * Find and edit `dist` file in path `/PATH/TO/PROJECT/data/dist`. For Mac AppStore it must contain `macOS App Store`.
  * Now you can hit `Product` > `Archive` from the menubar.
  * After archivation is done, you can select correct archive in Xcode Organizer, click on `Distribute App`, select `App Store Connect` and proceed with all steps by clicking `Next`.
- * After sucessful uploading you must go to the https://appstoreconnect.apple.com/ and continue with releasing there.
+ * After successful uploading you must go to the https://appstoreconnect.apple.com/ and continue with releasing there.
