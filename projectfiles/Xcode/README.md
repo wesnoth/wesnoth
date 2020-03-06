@@ -38,7 +38,7 @@ To compile translations you need `gettext-tools` and `scons`. You can obtain the
 When compiling Wesnoth for an official release, the following steps should be taken. Packaging is separated to the 4 subchapters:
 1. In first chapter we will prepare package for all 3 distribution sources.
 2. In second chapter we will notarize Steam package and we will release it to the SteamStore.
-3. In third chapter we will notarize SourceForge package, we will create `.dmg` image and we will release it to the SourceForge.
+3. In third chapter we will notarize SourceForge package, we will create `.dmg` image and we will release it to SourceForge.
 4. In fourth chapter we will release package to the Mac AppStore.
 
 ### Packaging - Packages preparation
@@ -48,7 +48,7 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Double click on the `Fix_Xcode_Dependencies` script and wait until it finishes.
  * Compile translations as it is described in **Translations** section.
  * Now you can open `The Battle for Wesnoth.xcodeproj` file in Xcode.
- * Update version numbers in Info.plist (if not already by the release manager).
+ * Update version numbers in Info.plist (if not already done by the release manager).
  * Update the changelog in `SDLMain.nib` with `changelog.md`.
  * Create `dist` file using `touch /PATH/TO/PROJECT/data/dist`.
  * You must increment the build number before creating each distribution package. If you don't know the previous build number, the best way is to proceed with steps for one of the packages using build number 1 and wait until you get an error message that the notarization step failed. The current build number is contained there.
@@ -59,7 +59,7 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * After archivation is done, you can select correct archive in Xcode Organizer, click on `Distribute App`, select `Developer ID` and select `Upload`.
  * Now you must wait. After successful notarization you should get notification via Xcode.
  * Now click on `Distribute App` again, select `Developer ID` and select export location.
- * Your final package will be saved in location you selected.
+ * Your final package will be saved in the location you selected.
  * You can now continue to releasing using partner steam tools.
 
 ### Packaging - SourceForge
@@ -68,7 +68,7 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * After archivation is done, you can select correct archive in Xcode Organizer, click on `Distribute App`, select `Developer ID` and select `Upload`.
  * Now you must wait. After successful notarization you should get notification via Xcode.
  * Now click on `Distribute App` again, select `Developer ID` and select export location.
- * Your final package will be saved in location you selected.
+ * Your final package will be saved in the location you selected.
  * Now copy dmg template from `/PATH/TO/PROJECT/packaging/macOS/Wesnoth_dmg_packaging_template.dmg`
  * Convert this template to the R/W image using `hdiutil convert /PATH/TO/TEMPLATE.dmg -format UDRW -o /PATH/TO/NEW/RW_IMAGE.dmg` and mount it.
  * Copy new wesnoth package using `cp -R /PATH/TO/THE/EXPORTED/PACKAGE.app "/Volumes/The Battle for Wesnoth/The Battle for Wesnoth.app"`.
