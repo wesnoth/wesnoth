@@ -41,7 +41,7 @@
    * Legend of Wesmere:
      * S3: fix scenario-breaking bug introduced in 1.15.2
    * Liberty
-     * Revise gameplay in scenarios 1-5
+     * Revise gameplay in all scenarios and redraw all maps
      * Merge S6 and S7 into a new scenario
    * Sceptre of Fire:
      * General prose/dialogue revision
