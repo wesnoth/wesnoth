@@ -82,11 +82,12 @@
    * Dunefolk: rebalancing and renaming of various units
    * Dunefolk: some graphics additions and updates
    * Orcs: revise some unit descriptions
+   * Elves: revise all unit descriptions
    * Cost of Drake Warrior changed from 30 to 32
    * Cost of Drake Arbiter changed from 31 to 32
    * Cost of Drake Trasher changed from 31 to 32
    * Cost of Drake Flare changed from 35 to 33
-   * Cost of Sky Drake changed from	30 to 28
+   * Cost of Sky Drake changed from 30 to 28
    * Cost of Saurian Ambusher changed from 30 to 24
    * Cost of Saurian Oracle changed from 27 to 28
    * Cost of Saurian Soothsayer changed from 27 to 25
