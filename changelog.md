@@ -71,6 +71,7 @@
    * New elf castle variation: snow (Cva)
    * Fixes and touchups to mushroom terrains Tb and Tf
  ### Units
+   * Add a ranged attack and the cures ability to Elvish Lady
    * Add mushroom defense cap to mounted and some flying units
    * Decreased hitpoints of Dwarvish Lord from 79 to 74
    * Decreased hitpoints of Dwarvish Steelclad from 59 to 55
