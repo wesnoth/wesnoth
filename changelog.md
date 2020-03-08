@@ -1,6 +1,6 @@
 ## Version 1.14.11+dev
  ### Language and i18n
-   * Updated translations: Dutch, Esperanto, Finnish, French, Portuguese,
+   * Updated translations: Czech, Dutch, Esperanto, Finnish, French, Portuguese,
      Portuguese (Brazil).
 
 ## Version 1.14.11
