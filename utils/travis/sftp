@@ -47,7 +47,7 @@ with paramiko.Transport(("frs.sourceforge.net", 22)) as transport:
             pass
 
         for arg in sys.argv[1:]:
-            sftp.put(arg, dest+arg)
+            sftp.put(arg, dest+arg.split("/")[-1])
 
             sha256 = hashlib.sha256()
             with open(arg, "rb") as f:
