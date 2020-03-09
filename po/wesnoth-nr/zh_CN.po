@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
 "PO-Revision-Date: 2019-09-23 22:46+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -692,14 +692,14 @@ msgstr "克洛格"
 msgid "Hamel"
 msgstr "哈梅尔"
 
+#. [side]: type=Death Knight, id=Mal Barath
+#. [side]: type=Death Knight, id=Delzath
+#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Draug, id=Thorin
 #. [side]: type=Draug, id=Herlin
 #. [side]: type=Draug, id=Fervin
 #. [side]: type=Draug, id=Hellian
-#. [side]: type=Death Knight, id=Mal Barath
-#. [side]: type=Death Knight, id=Delzath
-#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Death Knight, id=Hettel
 #. [side]: type=Death Knight, id=Tervor
 #. [side]: type=Death Knight, id=Author
@@ -1067,9 +1067,9 @@ msgstr ""
 "矮人的营地。来吧，和我们的首领哈梅尔领主谈谈吧。"
 
 #. [message]: speaker=Tallin
-#. [message]: speaker=unit
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Ro'Arthian
+#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:901
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1323
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2306
@@ -1429,8 +1429,8 @@ msgstr ""
 msgid "Ahahahaha! Yes, smash the skeletons! Smash them!"
 msgstr "啊哈哈哈哈！是的，砸碎那些骷髅！砸碎它们！"
 
-#. [message]: role=Supporter
 #. [message]: speaker=Tallin
+#. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:176
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:184
 msgid "..."
@@ -1528,9 +1528,9 @@ msgid "When the party finally reached the mines, they were not disappointed."
 msgstr "当队伍终于进入矿脉之时，他们并没有失望。"
 
 #. [side]
+#. [side]: type=Elvish Avenger, id=Sisal
 #. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Hamel
-#. [side]: type=Elvish Avenger, id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:29
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:32
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:162
@@ -3317,8 +3317,8 @@ msgstr ""
 "你，你这该死的塔林！你悲惨的生命将充满不幸！你的人民将永远得不到自由！你所亲"
 "近和珍爱的都将远离你！我诅咒雷电劈在你的头顶！我诅咒——</b>"
 
-#. [message]: speaker=Tallin
 #. [message]: speaker=Sister Thera
+#. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2800
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:468
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:677
@@ -3334,8 +3334,8 @@ msgstr ""
 "<b>大地将裂开，然后吞噬你！你所有的牙齿都会掉光！你会变成一个虚弱的皮包骨头的"
 "老男人！你——</b>"
 
-#. [message]: speaker=second_unit
 #. [message]: speaker=Father Morvin
+#. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2820
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:483
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:692
@@ -3705,19 +3705,19 @@ msgstr ""
 msgid "Knalgans"
 msgstr "纳尔迦人"
 
-#. [side]
-#. [side]: type=Orcish Warlord, id=Drung
-#. [side]: type=Orcish Warlord, id=Poul
-#. [side]: type=Orcish Warlord, id=Ha'Tuil
-#. [side]: type=Orcish Warlord, id=Ar'Muff
-#. [side]: type=Orcish Warlord, id=Calter
-#. [side]: type=Orcish Warlord, id=Halter
-#. [side]: type=Orcish Warlord, id=Atul
 #. [side]: type=Troll Warrior, id=Gore
 #. [side]: type=Orcish Warlord, id=Carron
 #. [side]: type=Orcish Warlord, id=Rash
 #. [side]: type=Orcish Warlord, id=Al'Mar
 #. [side]: type=Orcish Warlord, id=Ha'Tang
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
+#. [side]
+#. [side]: type=Orcish Warlord, id=Ar'Muff
+#. [side]: type=Orcish Warlord, id=Calter
+#. [side]: type=Orcish Warlord, id=Halter
+#. [side]: type=Orcish Warlord, id=Drung
+#. [side]: type=Orcish Warlord, id=Poul
+#. [side]: type=Orcish Warlord, id=Atul
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:57
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:87
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:110
@@ -3879,8 +3879,8 @@ msgstr "还没完呢，我的朋友们。将军们，派出预备队！"
 msgid "Oh yeah!"
 msgstr "噢耶！"
 
-#. [message]: id=Poul
 #. [message]: speaker=Malifor
+#. [message]: id=Poul
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:382
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:294
 msgid "HAHAHA!"
@@ -4415,8 +4415,8 @@ msgstr "你们为什么要和那些法师来往？拯救他们的灵魂？"
 msgid "(<i>Giggle</i>) Something like that."
 msgstr "（<b>咯咯笑</b>）差不多吧。"
 
-#. [message]: speaker=Tallin
 #. [story]
+#. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:91
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:170
 msgid "(<i>Rolls eyes</i>)"
@@ -4511,8 +4511,8 @@ msgstr "斯托莱格"
 msgid "Liches"
 msgstr "巫妖"
 
-#. [modify_side]
 #. [side]: type=Ancient Lich, id=Ro'Arthian
+#. [modify_side]
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:222
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:255
@@ -4520,8 +4520,8 @@ msgstr "巫妖"
 msgid "Ro’Arthian"
 msgstr "若·艾瑟恩"
 
-#. [modify_side]
 #. [unit]: type=Lich, id=Ro'Sothian
+#. [modify_side]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:261
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:280
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:501
@@ -4966,10 +4966,10 @@ msgid ""
 "these wretched mages?!"
 msgstr "等一等，塔林。你是说要把我们的家园送给这些可恶的法师？！"
 
-#. [message]: id=Ro'Sothian
+#. [message]: speaker=Eryssa
 #. [message]: speaker=Ro'Sothian
 #. [message]: speaker=Ro'Arthian
-#. [message]: speaker=Eryssa
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:873
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1036
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:522
@@ -7467,8 +7467,8 @@ msgstr "闭嘴，你这个胆小鬼！"
 msgid "Help Tallin defeat the enemy leaders"
 msgstr "帮助塔林打败敌方首领"
 
-#. [unit]: id=Hidel, type=Elvish Marshal
 #. [unit]: type=Elvish Marshal, id=Hidel
+#. [unit]: id=Hidel, type=Elvish Marshal
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:751
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1054
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:251

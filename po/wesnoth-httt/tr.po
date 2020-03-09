@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-httt\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
 "PO-Revision-Date: 2020-01-19 16:42+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -201,15 +201,15 @@ msgid "Konrad"
 msgstr "Konrad"
 
 #. [side]: type=Commander, id=Konrad
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
+#. [side]: type=Grand Knight, id=Kaylan
 #. [side]: type=Fighter, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
+#. [side]: id=Relgorn, type=Dwarvish Lord
 #. [side]: id=Geldar, type=Dwarvish Lord
 #. [side]
-#. [side]: type=Grand Knight, id=Kaylan
-#. [side]: id=Relgorn, type=Dwarvish Lord
-#. [side]: type=Ancient Wose, id=Haralamdum
-#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:80
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:237
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:256
@@ -252,23 +252,23 @@ msgstr "Asiler"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
-#. [side]: type=Orcish Warlord, id=Kojun Herolm
-#. [side]: type=Orcish Warrior, id=Mokho Kimer
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
+#. [side]: type=Orcish Warrior, id=Gorlak
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: type=Orcish Warrior, id=Halgar Du'nar
-#. [side]: type=Orcish Warrior, id=Gorlak
+#. [side]: type=Orcish Warlord, id=Kior-Dal
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #. [side]: type=Orcish Warlord, id=Urug-Tan
 #. [side]: type=Orcish Sovereign, id=Shuuga-Mool
-#. [side]: type=Orcish Warlord, id=Gaga-Breuk
-#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #. [side]: type=Orcish Warrior, id=Managa'Gwin
-#. [side]: type=Orcish Warrior, id=Mokolo Qimur
-#. [side]: type=Orcish Warlord, id=Kior-Dal
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #. [side]: type=Goblin Rouser
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
@@ -279,8 +279,8 @@ msgstr "Urug-Telfar"
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:72
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:72
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:86
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:202
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:220
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:194
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:212
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:96
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:109
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:134
@@ -1522,12 +1522,6 @@ msgstr "Muf Malal'ı Yen"
 msgid "Muff Malal"
 msgstr "Muf Malal"
 
-#. [side]: type=Lich, id=Galga
-#. [side]: type=Lich, id=Na-alga
-#. [side]: type=Lich, id=Selda-Mana
-#. [side]: id=Haf-Mal, type=Lich
-#. [side]: id=Jarmal-Gorg, type=Lich
-#. [side]: type=Death Knight, id=Unan-Ka'tall
 #. [side]: type=Death Knight, id=Clarustus
 #. [side]: type=Death Knight, id=Merlunius
 #. [side]: type=Lich, id=Aimucasur
@@ -1535,6 +1529,12 @@ msgstr "Muf Malal"
 #. [side]: type=Death Knight, id=Dafeis
 #. [side]: type=Ancient Lich, id=Muff Argulak
 #. [side]: type=Dark Sorcerer, id=Muff Malal
+#. [side]: type=Death Knight, id=Unan-Ka'tall
+#. [side]: type=Lich, id=Galga
+#. [side]: type=Lich, id=Na-alga
+#. [side]: type=Lich, id=Selda-Mana
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:78
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:147
@@ -1877,11 +1877,11 @@ msgstr "Elensefar’a gider"
 msgid "Agadla"
 msgstr "Agadla"
 
-#. [side]: type=Orcish Warlord, id=Agadla
-#. [side]: type=Dark Sorcerer, id=Muff Jaanal
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #. [side]: id=Brugg, type=Troll Warrior
 #. [side]: id=Lionel, type=Death Knight
-#. [side]: type=Troll Warrior, id=Haaf-Garga
+#. [side]: type=Orcish Warlord, id=Agadla
+#. [side]: type=Dark Sorcerer, id=Muff Jaanal
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:115
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:88
@@ -2344,22 +2344,22 @@ msgstr ""
 "şansları pek yaver gitmedi."
 
 #. [side]: type=Orcish Warlord, id=Kojun Herolm
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:194
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:186
 msgid "Kojun Herolm"
 msgstr "Kojun Herolm"
 
 #. [side]: type=Orcish Warrior, id=Mokho Kimer
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:212
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:204
 msgid "Mokho Kimer"
 msgstr "Moko Kimer"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:239
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:231
 msgid "Here we come to the great cross-roads. We should go northeast."
 msgstr "İşte büyük yol ayrımına geliyoruz. Kuzeydoğuya gitmeliyiz."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:243
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:235
 msgid ""
 "Beware! These hills are not safe! The roads are important to Asheviere’s "
 "strategy, and she has hired orcs to guard them. We shall have to fight to "
@@ -2369,7 +2369,7 @@ msgstr ""
 "korumak için Ork kiraladı. Yolumuza devam etmek için onlarla savaşmalıyız."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:247
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:239
 msgid ""
 "Then fight we shall. Fortunately, now that we have liberated Elensefar, they "
 "are providing what gold they can spare to help us swell our ranks with new "
@@ -2379,28 +2379,28 @@ msgstr ""
 "almak için parayı onlar sağlıyor. Haydi, başlayalım."
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:469
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:461
 msgid "Niodien"
 msgstr "Niodyen"
 
 #. [message]: speaker=Niodien
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:473
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:465
 msgid "Stay on the path! The hills here are not safe!"
 msgstr "Patikayı takip edin. Tepeler güvenli değil."
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:490
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:482
 msgid "Loflar"
 msgstr "Loflar"
 
 #. [message]: speaker=Loflar
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:494
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:486
 msgid ""
 "Beware the hills! There are many orcs in hiding, preparing to ambush you!"
 msgstr "Tepelere dikkat! Bize pusu kurmak için gizlenmiş bir sürü Ork var!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:513
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:505
 msgid ""
 "NE — Dan’Tonk\n"
 "SE — Fort Tahn"
@@ -2409,12 +2409,12 @@ msgstr ""
 "GD - Tan Kalesi"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:519
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:511
 msgid "Dan’Tonk, we are so close to Weldyn."
 msgstr "Dan Tonk, demek ki Veldin’e çok yaklaştık."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:523
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:515
 msgid ""
 "We dare not confront Asheviere yet. We must retrieve the Sceptre of Fire and "
 "gather more allies in the north."
@@ -2423,7 +2423,7 @@ msgstr ""
 "daha fazla müttefik toplamalıyız."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:534
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:526
 msgid "Victory is ours, men. Let us proceed northeast!"
 msgstr "Zafer bizimdir adamlarım. Kuzey doğuya yönelin!"
 
@@ -2465,8 +2465,8 @@ msgstr "Elmar Geçidi"
 msgid "Elbridge"
 msgstr "Elbriç"
 
-#. [event]
 #. [side]: type=Princess, id=Li'sar
+#. [event]
 #. [unit]: id=Li'sar, type=Princess
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:87
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:68
@@ -2477,11 +2477,11 @@ msgid "Li’sar"
 msgstr "Lisar"
 
 #. [side]: type=Princess, id=Li'sar
+#. [side]: type=General, id=Honber
 #. [side]: type=General, id=Josephus
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=General, id=Malatus
 #. [side]: type=General, id=Robryn
-#. [side]: type=General, id=Honber
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm
@@ -3053,7 +3053,7 @@ msgid "Monsters"
 msgstr "Yaratıklar"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:198
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:194
 msgid ""
 "This is the Ford of Abez. When we ford this river, we will be leaving "
 "Wesnoth, and entering the lands of the North. The dwarves once ruled these "
@@ -3066,12 +3066,12 @@ msgstr ""
 "yer burası."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:202
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:198
 msgid "Really? So what happened, Delfador?"
 msgstr "Öyle mi? Nasıl oldu Delfador?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:206
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:202
 msgid ""
 "The forces of the king were encamped here, and the forces of the north were "
 "on the north side of the river. For three days and three nights the armies "
@@ -3083,28 +3083,28 @@ msgstr ""
 "bakıştılar. Dördüncü gün kuzey orduları nehri geçti ve bize saldırdı."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:210
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:206
 msgid "And then... we were defeated?"
 msgstr "Ya sonra... Yenildik mi?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:214
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:210
 msgid "We were winning the battle. We were repelling them..."
 msgstr "Savaşı kazanıyorduk. Onları tam püskürtüyorduk ki..."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:218
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:214
 msgid "And then the king’s son, in the heat of battle, turned upon the king!"
 msgstr "Sonra birden kralın öz oğlu savaşın tam ortasında krala saldırdı!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:222
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:218
 msgid "But you avenged the murder. You killed the prince. Right, Delfador?"
 msgstr ""
 "Fakat bu cinayetin intikamını aldın. Prensi öldürdün değil mi, Delfador?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:226
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:222
 msgid ""
 "When I saw the king betrayed and his banner fallen, I fled the battle. I "
 "know not now whether it was wisdom or cowardice, but I did flee, seeing no "
@@ -3115,7 +3115,7 @@ msgstr ""
 "kaçtım çünkü o gün hiç umudumuz kalmamıştı."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:230
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:226
 msgid ""
 "Oh, but the elves always told me that you killed the prince, Delfador, even "
 "though you never talked about it."
@@ -3124,17 +3124,17 @@ msgstr ""
 "hiç bir zaman bahsetmesen de."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:234
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:230
 msgid "That foolish boy killed himself."
 msgstr "O aptal çocuk kendi canına kıydı."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:238
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:234
 msgid "What do you mean?"
 msgstr "Nasıl yani?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:242
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:238
 msgid ""
 "I mustered men to fight against the traitor-king, and of course Asheviere "
 "too, for she was behind it all. We met them; not here, but on the road from "
@@ -3148,12 +3148,12 @@ msgstr ""
 "saldırdı. Canına kıymaktan başka seçeneğim yoktu."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:246
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:242
 msgid "So it is true, you did kill him?"
 msgstr "Demek doğru, onu sen öldürdün."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:250
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:246
 msgid ""
 "He did die in battle at my hand. It is sad that your brothers did not have "
 "the opportunity to experience such an honorable death, Konrad."
@@ -3162,7 +3162,7 @@ msgstr ""
 "fırsatlarının olmaması ne kadar hazin, Konrad."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:254
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:250
 msgid ""
 "With all respect, my lords, we must make haste. We have to ford the river "
 "immediately. And, look! It seems that the guard-towers on the river banks "
@@ -3172,7 +3172,7 @@ msgstr ""
 "geçmeliyiz. bakın! Nehrin kıyısındaki muhafız kulelerine birileri var!"
 
 #. [message]: speaker=Gaga-Breuk
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:258
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:254
 msgid ""
 "Look! Some of the southerners, men of Wesnoth, are trying to cross into our "
 "lands! We will slaughter them by the river’s edge!"
@@ -3181,12 +3181,12 @@ msgstr ""
 "Onları nehrin kıyısında boğazlıyıverelim. "
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:258
 msgid "Isn’t there somewhere else we can cross? Maybe upstream?"
 msgstr "Geçecek başka bir yer yok mu? Mesela akıntıya karşı bir yer?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:266
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:262
 msgid ""
 "Winter quickly bears down upon us. We have only a few days to make the "
 "crossing, and the nearest bridge is far upstream. To be trapped south of the "
@@ -3200,7 +3200,7 @@ msgstr ""
 "kalesi var ve içi asker dolu. Buradan geçmeliyiz ve derhal!"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:271
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:267
 msgid ""
 "There they are! So it is true, they foiled the undead. Now they are trying "
 "to leave Wesnoth. We can’t let them cross the river. After them, men!"
@@ -3210,7 +3210,7 @@ msgstr ""
 "Peşlerine düşün!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:282
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:278
 msgid ""
 "Not her again! We must hurry! Do not forget to bring the gryphon eggs. They "
 "must be allowed more time to hatch. Quickly!"
@@ -3219,58 +3219,58 @@ msgstr ""
 "Kuluçkadan çıkmalarına daha zaman var. Çabuk olun!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:288
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:284
 msgid "Not her again! Quickly! We must hurry!"
 msgstr "Yine mi şu kız. Çabuk olun. Acele etmeliyiz!"
 
 #. [message]: type=Royal Guard
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:323
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:319
 msgid "Stop! You shall not pass!"
 msgstr "Dur! Geçemezsin!"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:361
 msgid "Quick, reinforcements, protect the Princess!"
 msgstr "Çabuk takviyeler, Prensesi koruyun!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:384
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:380
 msgid "Quick, reinforcements!"
 msgstr "Çabuk, takviyeler!"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:404
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:400
 msgid "Protect the Princess!"
 msgstr "Prensesi koruyun'"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:425
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:421
 msgid "You drive me from the field, but you have not vanquished me, impostor!"
 msgstr "Beni savaş alanınddan sürdün ama beni yenemedin, sahtekar!"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:436
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:432
 msgid "Water Serpent"
 msgstr "Su Yılanı"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:439
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:435
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:706
 msgid "Cuttle Fish"
 msgstr "Ahtapot"
 
 #. [message]: type=Water Serpent
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:459
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:455
 msgid "Ruaarrrrrrrr!"
 msgstr "Bööööööö!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:463
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:459
 msgid "What is that?"
 msgstr "Bu da ne?"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:467
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:463
 msgid ""
 "Creatures of the deep are upon us! This may be very dangerous. Be quick! We "
 "must get to the other side with all haste!"
@@ -3279,12 +3279,12 @@ msgstr ""
 "diğer yakaya geçmeliyiz."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:482
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:478
 msgid "We made it across the river safely! Where to now?"
 msgstr "Nehri sağ salim geçtik. Şimdi nereye?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:487
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:483
 msgid ""
 "If we are to have any hope of penetrating into Knalga, we must continue "
 "north to seek help from the Dwarves of the Heart Mountains."
@@ -3293,7 +3293,7 @@ msgstr ""
 "kuzeye gitmemiz lazım."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:498
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:494
 msgid ""
 "I cannot believe it. They have made it away! We must make chase. After them, "
 "men! Let us cross the river too! We will meet again, foul impostor."
@@ -3302,12 +3302,12 @@ msgstr ""
 "nehri geçelim. Seninle tekrar görüşüceğiz sahtekar!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:503
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:499
 msgid "Do you think she’s really going to chase us, Delfador?"
 msgstr "Sence, gerçekten bizi takip eder mi, Delfador?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:508
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:504
 msgid ""
 "It surely looks like she will try. But many more creatures than we have "
 "fought lurk in this river; that will make it difficult for her. We must "
@@ -4989,7 +4989,7 @@ msgstr ""
 "var mı diye bakınırım."
 
 #. [message]: race=dwarf
-#. "sowl" is a rare word synonymous with "sully", meaning "contaminate". 
+#. "sowl" is a rare word synonymous with "sully", meaning "contaminate".
 #. "toiled" means "difficult, requires effort".
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:646
 msgid ""
@@ -6494,9 +6494,9 @@ msgid "Your encampment will be dismantled after the first turn."
 msgstr "İlk elin sonunda kampınız sökülecek."
 
 #. [side]: type=Commander, id=Konrad
+#. [side]: type=Elvish Marshal, id=El'rien
 #. [side]: type=Elvish Lord, id=Uradredia
 #. [side]: type=Elvish Lady, id=Parandra
-#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:61
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:223
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:30
@@ -7068,7 +7068,7 @@ msgstr ""
 "acele etmeliyiz. Çabuk, biz de kuşatılmayalım."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:353
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:352
 msgid ""
 "From far in the distance comes the sound of branches snapping, followed by a "
 "long, hollow boom. The world goes silent for a moment."
@@ -7077,7 +7077,7 @@ msgstr ""
 "patlama ve sonra etraf bir an için sessizleşir."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:358
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:357
 msgid ""
 "Can you feel it? It is as if the entire forest is stunned! Something has "
 "happened and, I fear, not for the good."
@@ -7086,7 +7086,7 @@ msgstr ""
 "korkarım ki iyi değil."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:371
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:370
 msgid ""
 "A hollow screech echoes throughout the caverns. The air suddenly seems "
 "fresher and lighter."
@@ -7095,17 +7095,17 @@ msgstr ""
 "berrak hale gelir."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:381
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:380
 msgid "Whatever that was, the world rejoices."
 msgstr "Bu her neyse, dünyayı sevindirdi."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:409
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:408
 msgid "Greetings, Sir Wose. We seek the exit to these caverns."
 msgstr "Saygılar, ağaç efendi. Bu mağaralardan bir çıkış arıyoruz."
 
 #. [message]: speaker=Haralamdum
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:413
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:412
 msgid ""
 "If ... hmm dum ... you could help rid us of these ... alam hurum ... "
 "infernal undead, I would be ... alam alam ... look to the north and east ... "
@@ -7117,18 +7117,18 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. Intentionally courtly and formal here as a counter-point to the rough going when talking to Haralamdum.
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:423
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:421
 msgid "Well met, stranger."
 msgstr "İyi ki karşılaştık, yabancı."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:427
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:425
 msgid "Well met, indeed. We seek the exit to these caverns."
 msgstr ""
 "İyi ki karşılaştık, gerçekten. Bu mağaralardan bir çıkış yolu arıyoruz."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:431
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:429
 msgid ""
 "Then you should look to the north and east. But, if you would, might we ask "
 "your assistance?"
@@ -7137,12 +7137,12 @@ msgstr ""
 "miyiz?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:435
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:433
 msgid "What aid might we offer?"
 msgstr "Hangi yardımı önerebiliriz?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:439
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:437
 msgid ""
 "If you would help rid these caverns of those infernal undead, the Ancient "
 "One would be most grateful."
@@ -7151,37 +7151,37 @@ msgstr ""
 "çok minnettar olur."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:443
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:441
 msgid "Ancient one?"
 msgstr "Antik bir?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:447
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:445
 msgid "Our elder. Called, by some, Haralamdum."
 msgstr "Bizim yaşlımız, bazıları Haralamdum der."
 
 #. [message]: speaker=Haralamdum
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:496
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:494
 msgid "Har hum har ... hmm ... well ... har alam dum ... good."
 msgstr "Har hum har ... hımm ... peki ... har alam dum ... iyi."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:501
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:499
 msgid "Those undead will bother you no more, Sir Wose."
 msgstr "Bu yarı ölüler sizi artık rahatsız etmeyecek, Bay Ağaç."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:510
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:508
 msgid "We still must find the exit from these caverns, Konrad."
 msgstr "Hala bu mağaralardan çıkışı bulmalıyız, Konrad."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:515
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:513
 msgid "Yes, Delfador. I'm afraid we must be going, Sir Wose."
 msgstr "Evet, Delfador. Korkarım gitmeliyiz, Bay Ağaç."
 
 #. [message]: speaker=Haralamdum
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:520
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:518
 msgid ""
 "Well, I say ... hmm dum har ... young Master Delfador? Harum-alam-alam. So "
 "it is! Hmm hmm alam ... how is your head?"
@@ -7190,13 +7190,13 @@ msgstr ""
 "İşte bu! Hımm hımm allaam ... başın nasıl?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:525
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:523
 msgid "My head?"
 msgstr "Başım mı?"
 
 #. [message]: speaker=Haralamdum
 #. "just the other day" probably means a few decades ago. To Haralamdum, Ur Thorodor is a very young Wose … a small, young twig on the end of a new branch of an ancient tree, who has not yet earned the honorific 'Ur'
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:533
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:531
 msgid ""
 "Just the other day ... hmm ... I was speaking with that twig ... alam ... "
 "alam dum ... Thorodor? Hmm ... yes ... hum ... he said you took a ... alam "
@@ -7209,28 +7209,28 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. Over 50 years ago, probably 52, to be more precise.
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:541
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:539
 msgid ""
 "That was many years ago, I'm afraid. Now, we really must be moving along ..."
 msgstr "O yıllar önceydi, korkarım. Şimdi, gerçekten gitmeliyiz ..."
 
 #. [message]: speaker=Haralamdum
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:546
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:544
 msgid "So hasty ... hmm ... there was something ..."
 msgstr "Çok aceleci ... hımm ... bir şey vardı ..."
 
 #. [message]: speaker=Haralamdum
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:551
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:549
 msgid "Har dum ... oh, yes, the book."
 msgstr "Har dum ... oh, evet, kitap."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:556
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:554
 msgid "Book?"
 msgstr "Kitap?"
 
 #. [message]: speaker=Haralamdum
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:561
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:559
 msgid ""
 "When you asked Thorodor for ... harum ... assistance? Hmm ... hmm ... He "
 "thought you meant the book ... har hmm ... but you had rushed off ... "
@@ -7241,12 +7241,12 @@ msgstr ""
 "dum ... ve sana sahip olduğunu söyleyemeden öldün."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:566
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:564
 msgid "I remember no book."
 msgstr "Kitap falan hatırlamıyorum."
 
 #. [message]: speaker=Haralamdum
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:571
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:569
 msgid ""
 "I am sure ... dum hum ... well, the head ... alam lum alam ... yes, it was "
 "somewhere around here ... hum dum da dum ... Thorodor thought it ... hmm ... "
@@ -7257,39 +7257,39 @@ msgstr ""
 "önemli ... lum harum dum ... belki de ev kütüğüme yakın?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:576
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:574
 msgid "I am sorry, I remember no book. Now, we really must be off."
 msgstr "Üzgünüm, kitap hatırlamıyorum. Şimdi, gerçekten gitmeliyiz."
 
 #. [message]: speaker=Haralamdum
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:581
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:579
 msgid "So hasty. Har alam dum."
 msgstr "Çok aceleci. Har alam dum."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:587
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:585
 msgid "The wose silently fade into the forest."
 msgstr "Ağaç sessizce ormanda kaybolur."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:614
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:612
 msgid "Should $unit.name| read the book?"
 msgstr "$unit.name| kitabı okusun mu?"
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:616
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:614
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:120
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:203
 msgid "Yes"
 msgstr "Evet"
 
 #. [object]: id=wose_lore
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:620
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:618
 msgid "Wose Lore"
 msgstr "Ağaç Bilim"
 
 #. [object]: id=wose_lore
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:623
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:621
 msgid ""
 "This massive book is filled with the Lore and Legends of the Wose. Any who "
 "read it learn deeply of the ways of the twig and leaf, the tree and the "
@@ -7299,7 +7299,7 @@ msgstr ""
 "herkes dal ve yaprak, ağaç ve orman bilgilerini derinden öğrenir."
 
 #. [object]: id=wose_lore
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:624
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:622
 msgid ""
 "The book is filled with meaningless tales of sticks and leaves, and childish "
 "stories about trees and forest creatures."
@@ -7308,7 +7308,7 @@ msgstr ""
 "hakkındaki çocukça hikayeler ile doludur."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:639
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:637
 msgid ""
 "Upon finishing the book, $unit.name| has a much greater understanding of the "
 "forest, its nature and ways, and all the creatures within it. Unfortunately, "
@@ -7319,7 +7319,7 @@ msgstr ""
 "dönüştü."
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:666
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:664
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:163
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:271
 msgid "No"
@@ -7995,29 +7995,29 @@ msgstr "Tüm düşman liderlerini öldür"
 msgid "Plainsmen"
 msgstr "Ovadakiler"
 
-#. [side]: type=Grand Knight, id=Sir Alric
 #. [then]
+#. [side]: type=Grand Knight, id=Sir Alric
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:121
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:206
 msgid "Sir Alric"
 msgstr "Komutan Alrik"
 
-#. [side]: type=Grand Knight, id=Sir Ruga
 #. [then]
+#. [side]: type=Grand Knight, id=Sir Ruga
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:149
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:197
 msgid "Sir Ruga"
 msgstr "Komutan Ruga"
 
-#. [side]: type=Grand Knight, id=Sir Daryn
 #. [then]
+#. [side]: type=Grand Knight, id=Sir Daryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:177
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:188
 msgid "Sir Daryn"
 msgstr "Komutan Darin"
 
-#. [side]: type=Grand Knight, id=Bayar
 #. [then]
+#. [side]: type=Grand Knight, id=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:205
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:542
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:179

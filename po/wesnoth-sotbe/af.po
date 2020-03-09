@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
 "PO-Revision-Date: 2005-12-05 10:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -124,11 +124,11 @@ msgid "Death of Kapou’e"
 msgstr "Dood van Kapou'e"
 
 #. [side]: id=Kapou'e, type=Orcish Leader
-#. [side]
 #. [side]: type=Orcish Slayer, id=Rugh
-#. [side]: id=Grüü, type=Great Troll
-#. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]
 #. [side]: type=General, id=Howgarth III
+#. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]: id=Grüü, type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:76
@@ -1640,19 +1640,19 @@ msgstr "Red die Toordokters"
 msgid "Ar-Dant"
 msgstr "Ar Dant"
 
-#. [side]: type=General, id=Telthys
 #. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=General, id=Fredor
-#. [side]: type=General, id=Georan
+#. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Arthain
 #. [side]: type=Lieutenant, id=Hanak
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=General, id=Earl Lanbec'h
-#. [side]
-#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=General, id=Telthys
+#. [side]: type=General, id=Fredor
+#. [side]: type=General, id=Georan
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:98
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2177,8 +2177,8 @@ msgstr ""
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
 msgstr "Uiteindelik! Hier is die Mourned Hills. Ek hoop alles is nou OK."
 
-#. [message]: speaker=Grüü
 #. [message]: role=cannonfodder
+#. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:289
 msgid "Why?"
@@ -2343,10 +2343,9 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:201
 #, fuzzy
 msgid ""
-"Leave your people here Kapou’e — they are safe for the moment — and go "
-"defend Prestim. In the meantime, now that the council is complete again, we "
-"will decide. We may have to form the Great Horde again, and give you the "
-"leadership of it."
+"Go defend Prestim, Kapou'e. In the meantime, now that the council is "
+"complete again, we will decide. We may have to form the Great Horde again, "
+"and give you the leadership of it."
 msgstr ""
 "Los solank jou mense hier Kapou'e - hulle is vir eers veilig - en gaan help "
 "verdedig Prestim. Intussen, noudat die Raad weer voltallig is, sal ons "
@@ -2624,8 +2623,8 @@ msgstr ""
 "Laat daar nie vertel word dat die Elwe is dapperder as ons nie, almal val "
 "aan! "
 
-#. [side]: type=General, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:688
@@ -4357,6 +4356,18 @@ msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr ""
 
 #, fuzzy
+#~ msgid ""
+#~ "Leave your people here Kapou’e — they are safe for the moment — and go "
+#~ "defend Prestim. In the meantime, now that the council is complete again, "
+#~ "we will decide. We may have to form the Great Horde again, and give you "
+#~ "the leadership of it."
+#~ msgstr ""
+#~ "Los solank jou mense hier Kapou'e - hulle is vir eers veilig - en gaan "
+#~ "help verdedig Prestim. Intussen, noudat die Raad weer voltallig is, sal "
+#~ "ons besluit of die tyd aangekom het om die Groot Horde weer te vorm en of "
+#~ "ons jou gaan leier maak daarvan."
+
+#, fuzzy
 #~ msgid "Defeat Ar-Dant"
 #~ msgstr "Verslaan Ar Dant"
 
@@ -4473,17 +4484,6 @@ msgstr ""
 
 #~ msgid "Argh! I'm done. My people is doomed!"
 #~ msgstr "Argh! Ek is verslaan. My mense is verdoem."
-
-#, fuzzy
-#~ msgid ""
-#~ "Go defend Prestim Kapou'e. In the meantime, now that the council is "
-#~ "complete again, we will decide. We may have to form the Great Horde "
-#~ "again, and give you the leadership on it."
-#~ msgstr ""
-#~ "Los solank jou mense hier Kapou'e - hulle is vir eers veilig - en gaan "
-#~ "help verdedig Prestim. Intussen, noudat die Raad weer voltallig is, sal "
-#~ "ons besluit of die tyd aangekom het om die Groot Horde weer te vorm en of "
-#~ "ons jou gaan leier maak daarvan."
 
 #, fuzzy
 #~ msgid "Ah...."
