@@ -96,7 +96,7 @@ elif [ "$IMAGE" == "mingw" ]; then
         scons windows-installer arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32 || exit 1
         ./utils/travis/sftp "$(find . -type f -regex '.*win64.*')"
         echo "Creating .tar.bz2 for tag: $TRAVIS_TAG"
-        git archive --format=tar --prefix="wesnoth-$TRAVIS_TAG/" $BRANCH > "wesnoth-$TRAVIS_TAG.tar" || exit 1
+        git archive --format=tar --prefix="wesnoth-$TRAVIS_TAG/" $TRAVIS_TAG > "wesnoth-$TRAVIS_TAG.tar" || exit 1
         bzip2 wesnoth-$TRAVIS_TAG.tar || exit 1
         ./utils/travis/sftp wesnoth-$TRAVIS_TAG.tar.bz2 || exit 1
     fi
