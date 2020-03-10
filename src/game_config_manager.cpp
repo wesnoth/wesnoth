@@ -471,6 +471,30 @@ void game_config_manager::load_addons_cfg()
 					cfg["addon_version"] = addon_version.str();
 				}
 			}
+			config advancefroms;
+			for(auto& units : umc_cfg.child_range("units")) {
+				for(auto& unit_type : units.child_range("unit_type")) {
+					for(const auto& advancefrom : units.child_range("advancefrom")) {
+
+						deprecated_message(
+							_("[advancefrom]"),
+							DEP_LEVEL::FOR_REMOVAL,
+							{1, 17, 0},
+							_("Use [modify_unit_type] instead")
+						);
+	
+						advancefroms.add_child("modify_unit_type", config {
+							"id", unit_type["id"],
+							"add_advancement", advancefrom["unit"],
+							"experience", advancefrom["experience"]
+						});
+					}
+					unit_type.remove_children("advancefrom", [](const config&){return true;});
+				}
+			}
+			for(auto& campaign : umc_cfg.child_range("campaign")) {
+				campaign.append_children(std::move(advancefroms));
+			}
 
 			game_config_.append(std::move(umc_cfg));
 		} catch(const config::error& err) {
