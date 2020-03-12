@@ -29,6 +29,7 @@
      passive_leader and passive_leader_shares_keep
    * Fix [leader_goal] for sides with multiple leaders
    * Change E_NOT_REACHED_DESTINATION from error to warning
+   * The advancement aspect can now also use amlas.
  ### Campaigns
    * An Orcish Incursion:
      * Moved to addons server
@@ -173,6 +174,7 @@
    * New stringx module exposes various split/join functions used by the engine, as well as trim
    * Wesnoth's format functions moved to stringx (format_conjunct_list, format_disjunct_list, vformat)
    * location_set module extended to support set operators (& | ~ -) as well as a few additional functions
+   * new function wesnoth.create_side
  ### WFL engine
    * New functions resistance_on(), vision_cost(), jamming_cost() that work in gameplay contexts (eg filters)
    * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying
@@ -184,6 +186,7 @@
    * Support [variables] in [modify_side], as in [modify_unit]
    * [filter_weapon] implemented in abilities used as weapons specials to be the same as true weapons specials (implement filter_weapon in [filter_student] instead of [filter_self])
    * All special weapons can be used in [abilities] now (this was not the case yet for [heal_on_hit], [plague] and [swarm])
+   * [time_area] can now be used without specifying a custom time schedule, this can in particular be used in the scenario editor if one just wants to mark an area to use in as [event]
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
