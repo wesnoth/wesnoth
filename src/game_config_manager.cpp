@@ -479,7 +479,7 @@ void game_config_manager::load_addons_cfg()
 						config modify_unit_type {
 							"id", unit_type["id"],
 							"add_advancement", advancefrom["unit"],
-							"experience", advancefrom["experience"]
+							"set_experience", advancefrom["experience"]
 						};
 						deprecated_message(
 							"[advancefrom]",
