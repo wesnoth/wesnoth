@@ -931,7 +931,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 
 	// Reset the scalar values first
 	trait_names_.clear();
-	trait_descriptions_.clear(),
+	trait_descriptions_.clear();
 	is_fearless_ = false;
 	is_healthy_ = false;
 	image_mods_.clear();

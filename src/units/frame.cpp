@@ -831,8 +831,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 	}
 
 	/** The engine provides a blend color for poisoned units */
-	result.blend_ratio = current_val.blend_ratio?current_val.blend_ratio:animation_val.blend_ratio;
-	if(primary && engine_val.blend_ratio) {
+	result.blend_ratio = current_val.blend_ratio != 0 ? current_val.blend_ratio:animation_val.blend_ratio;
+	if(primary && engine_val.blend_ratio != 0) {
 		result.blend_ratio = std::min(result.blend_ratio + engine_val.blend_ratio, 1.0);
 	}
 
@@ -850,8 +850,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 	}
 
 	/** The engine provides a submerge for units in water */
-	result.submerge = current_val.submerge ? current_val.submerge : animation_val.submerge;
-	if(primary && engine_val.submerge && !result.submerge) {
+	result.submerge = current_val.submerge != 0 ? current_val.submerge : animation_val.submerge;
+	if(primary && engine_val.submerge != 0 && result.submerge == 0) {
 		result.submerge = engine_val.submerge;
 	}
 
