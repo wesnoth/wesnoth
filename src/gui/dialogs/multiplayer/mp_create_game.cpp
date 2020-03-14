@@ -715,7 +715,7 @@ void mp_create_game::update_details(window& win)
 				current_scenario->set_metadata();
 			}
 
-			find_widget<minimap>(&win, "minimap", false).set_map_data(map_data);
+			find_widget<minimap>(&win, "minimap", false).set_map_data(current_scenario->data()["map_data"]);
 
 			players.set_label(std::to_string(current_scenario->num_players()));
 			map_size.set_label(current_scenario->map_size());
