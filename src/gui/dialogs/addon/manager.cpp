@@ -705,6 +705,13 @@ void addon_manager::update_all_addons(window& window)
 		if(tracking_info_[a.first].state == ADDON_INSTALLED_UPGRADABLE) {
 			addons_client::install_result result = client_.install_addon_with_checks(addons_, a.second);
 
+			if(result.wml_changed) {
+				// Updating an add-on may have resulted in its dependencies being updated
+				// as well, so we need to reread version info blocks afterwards to make sure
+				// we don't try to re-download newly updated add-ons.
+				refresh_addon_version_info_cache();
+			}
+
 			// Take note if any wml_changes occurred
 			need_wml_cache_refresh_ |= result.wml_changed;
 		}
