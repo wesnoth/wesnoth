@@ -641,19 +641,16 @@ void server::handle_request_campaign_list(const server::request& req)
 
 	for(config& j : campaign_list.child_range("campaign"))
 	{
-		j["passphrase"] = "";
-		j["passhash"] = "";
-		j["passsalt"] = "";
-		j["upload_ip"] = "";
-		j["email"] = "";
-		j["feedback_url"] = "";
+		// Remove attributes containing information that's considered sensitive
+		// or irrelevant to clients
+		j.remove_attributes("passphrase", "passhash", "passsalt", "upload_ip", "email");
 
-		// Build a feedback_url string attribute from the
-		// internal [feedback] data.
+		// Build a feedback_url string attribute from the internal [feedback]
+		// data or deliver an empty value, in case clients decide to assume its
+		// presence.
 		const config& url_params = j.child_or_empty("feedback");
-		if(!url_params.empty() && !feedback_url_format_.empty()) {
-			j["feedback_url"] = format_addon_feedback_url(feedback_url_format_, url_params);
-		}
+		j["feedback_url"] = !url_params.empty() && !feedback_url_format_.empty()
+							? format_addon_feedback_url(feedback_url_format_, url_params) : "";
 
 		// Clients don't need to see the original data, so discard it.
 		j.clear_children("feedback");
