@@ -5,19 +5,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2011-05-16 02:32+0100\n"
-"Last-Translator: Niklas Bolmdahl <wesnoth@niklas.bolmdahl.se>\n"
+"PO-Revision-Date: 2020-03-08 19:08+0100\n"
+"Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
-"Language: \n"
+"Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
-"X-Poedit-Basepath: /home/tigge/Source/Wesnoth/Source/Wesnoth-trunk\n"
-"X-Poedit-Language: Swedish\n"
-"X-Poedit-Country: SWEDEN\n"
-"X-Poedit-Bookmarks: -1,96,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -40,16 +36,6 @@ msgstr "helar +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -58,7 +44,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Hela +4:\n"
 "Låter truppen hela närliggande allierade trupper i början av vårt drag.\n"
 "\n"
 "Alla trupper som tas om hand av en sådan här helare återfår upp till 4 "
@@ -80,16 +65,6 @@ msgstr "helar +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -99,7 +74,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Hela +8:\n"
 "Truppen kombinerar örter och magi för att hela trupper snabbare än vad som "
 "normalt är möjligt på ett slagfält.\n"
 "\n"
@@ -111,27 +85,25 @@ msgstr ""
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "Kart- och scenarioredigerare"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:13 data/core/editor/help.cfg:272
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
-msgstr "Terrängavdrag"
+msgstr "Terrängredigerare"
 
 #. [section]: id=editor_mode_scenario
 #: data/core/editor/help.cfg:20
 #, fuzzy
-#| msgid "Terrain Modifiers"
+#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
-msgstr "Terrängavdrag"
+msgstr "Kart-/Scenarioredigerare"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
 msgid "Paint Tool"
-msgstr ""
+msgstr "Ritverktyg"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
@@ -176,7 +148,7 @@ msgstr ""
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
 msgid "Fill Tool"
-msgstr ""
+msgstr "Fyllverktyg"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:53
@@ -197,7 +169,7 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
 msgid "Select Tool"
-msgstr ""
+msgstr "Markeringsverktyg"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:68
@@ -279,8 +251,10 @@ msgstr ""
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
+#, fuzzy
+#| msgid "Starting Tool"
 msgid "Starting Locations Tool"
-msgstr ""
+msgstr "Startverktyg"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:108
@@ -318,7 +292,7 @@ msgstr ""
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:127
 msgid "Label Tool"
-msgstr ""
+msgstr "Etikettverktyg"
 
 #. [topic]: id=editor_tool_label
 #. [topic]: id=editor_tool_item
@@ -329,17 +303,17 @@ msgstr ""
 #: data/core/editor/help.cfg:154 data/core/editor/help.cfg:162
 #: data/core/editor/help.cfg:293
 msgid "TODO"
-msgstr ""
+msgstr "ATT GÖRA"
 
 #. [topic]: id=editor_tool_item
 #: data/core/editor/help.cfg:135
 msgid "Item Tool"
-msgstr ""
+msgstr "Föremålsverktyg"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:143
 msgid "Soundsource Tool"
-msgstr ""
+msgstr "Ljudkälleverktyg"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:144
@@ -348,21 +322,23 @@ msgid ""
 "\n"
 "This tool has not been implemented yet."
 msgstr ""
+"Placera ut ljudkällor på dina kartor! Detta verktyg har ännu inte "
+"implementerats."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:153
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "Byägarverktyg"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:161
 msgid "Unit Tool"
-msgstr ""
+msgstr "Truppverktyg"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:169
 msgid "Named Areas"
-msgstr ""
+msgstr "Namngivna områden"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:170
@@ -375,11 +351,19 @@ msgid ""
 "This is a very powerful mechanism since it allows generic scenario codings "
 "working with different maps providing the needed named locations."
 msgstr ""
+"Namngivna områden är grupper av spelrutor som kan refereras till med ett "
+"givet namn i script för ett scenario.\n"
+"\n"
+"Detta kan användas för att abstrahera mellan implementationen av en effekt "
+"och kartspecifika inställningar.\n"
+"Detta är en mycket kraftfull mekanism efter som det tillåter mer generella "
+"scenario skript som kan fungera med olika kartor så länge som dessa har de "
+"namngivna platserna som behövs."
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:180
 msgid "Playlist Manager"
-msgstr ""
+msgstr "Spellistehanterare"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:181
@@ -388,11 +372,15 @@ msgid ""
 "\n"
 "Have a look at the addon server for easy to use additional music tracks."
 msgstr ""
+"Sparar en lista av musikstycken som blir en slumpad spellista för "
+"scenariot.\n"
+"\n"
+"Det finns musik som du kan använda att hämta från extramaterialservern."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:190
 msgid "Map/Scenario Editor"
-msgstr ""
+msgstr "Kart-/Scenarioredigerare"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:192
@@ -439,6 +427,15 @@ msgstr ""
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:221
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
+#| "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
+#| "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
+#| "• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if "
+#| "it needs a topic on its own\n"
+#| "• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
 msgid ""
 "<header>text='Basic Concepts'</header>\n"
 "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
@@ -447,11 +444,17 @@ msgid ""
 "• The clipboard is described in the <ref>dst='editor_tool_paste' text='Paste "
 "Tool'</ref>"
 msgstr ""
+"\n"
+"• <ref>dst='editor_modes' text='Redigeringsläge'</ref>\n"
+"• <ref>dst='editor_toolkit' text='Verktygslåda'</ref>\n"
+"• <ref>dst='editor_palette' text=Palett'</ref>\n"
+"• <ref>dst='editor_brush' text='Penslar'</ref>\n"
+"• <ref>dst='editor_clipboard' text='Urklipp'</ref>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:231
 msgid "Editing Modes"
-msgstr ""
+msgstr "Redigeringslägen"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:232
@@ -480,10 +483,29 @@ msgstr ""
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:249
 msgid "Editor Tools"
-msgstr ""
+msgstr "Redigeringsverktyg"
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:250
+#, fuzzy
+#| msgid ""
+#| "The editor provides several tools for editing your maps and scenarios. At "
+#| "all times, one of the editor tools is active. The active tool's context "
+#| "determines the content of the editor palette and context menu.\n"
+#| "\n"
+#| "These following tools are provided:\n"
+#| "\n"
+#| "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
+#| "• <ref>dst='editor_tool_fill'  text='Fill Tool'</ref>\n"
+#| "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
+#| "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
+#| "• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
+#| "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
+#| "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
+#| "• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
+#| "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
+#| "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
+#| "\n"
 msgid ""
 "The editor provides several tools for editing your maps and scenarios. At "
 "all times, one of the editor tools is active. The active tool’s context "
@@ -505,6 +527,24 @@ msgid ""
 "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
 "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
 msgstr ""
+"The editor provides several tools for editing your maps and scenarios. At "
+"all times, one of the editor tools is active. The active tool's context "
+"determines the content of the editor palette and context menu.\n"
+"\n"
+"Följande verktyg finns:\n"
+"\n"
+"• <ref>dst='editor_tool_paint' text='Ritverktyg'</ref>\n"
+"• <ref>dst='editor_tool_fill'  text='Fyllverktyg'</ref>\n"
+"• <ref>dst='editor_tool_select' text='Markeringsverktyg'</ref>\n"
+"• <ref>dst='editor_tool_paste' text='Inklistringsverktyg'</ref>\n"
+"• <ref>dst='editor_tool_starting' text='Startverktyg'</ref>\n"
+"• <ref>dst='editor_tool_label' text='Etikettverktygl'</ref>\n"
+"• <ref>dst='editor_tool_item' text='Föremålsverktyg'</ref>\n"
+"• <ref>dst='editor_tool_soundsource' text='Ljudkälleverktyg'</ref>\n"
+"• <ref>dst='editor_tool_village' text='Byverktyg'</ref>\n"
+"• <ref>dst='editor_tool_unit' text='Truppverktyg'</ref>\n"
+"\n"
+" \n"
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:273
@@ -576,7 +616,7 @@ msgstr ""
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:318
 msgid "Wesnoth Map Format"
-msgstr ""
+msgstr "Kartformat för Wesnoth"
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:319
@@ -683,32 +723,26 @@ msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
-"En älv med källa i <ref>dst='heart_mountains' text='Kärnbergen'</ref>, som "
-"löper österut och förenar sig med floden Listra. "
+"En flod med källa i <ref>dst='heart_mountains' text='Kärnbergen'</ref>, som "
+"löper österut och förenar sig med floden Listra."
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
-#| msgid "Great Ocean"
 msgid "Great River"
-msgstr "Stora havet"
+msgstr "Stora floden"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
-#, fuzzy
-#| msgid ""
-#| "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
-#| "Wesnoth'</ref> lies. Its west coast is surrounded by the "
-#| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgid ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
 "text='ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
-"Kontinenten som <ref>dst='kingdom_wesnoth' text='Wesnoths kungadöme'</ref> "
-"ligger på. Den västra kusten omges av <ref>dst='great_ocean' text='stora "
-"havet'</ref>."
+"Den Stora floden utgör gränsen mellan <ref>dst='kingdom_wesnoth' "
+"text='Wesnoths kungadöme'</ref> och <ref>dst='northlands' "
+"text='Nordanländerna'</ref>. Den rinner ut i <ref>dst='great_ocean' "
+"text='Stora havet'</ref> vid <ref>dst='elensefar' text='Elensefar'</ref>."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:38
@@ -717,20 +751,15 @@ msgstr "Stora havet"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:39
-#, fuzzy
-#| msgid ""
-#| "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
-#| "and all rivers eventually flow to it. Far to the west in the the Great "
-#| "Ocean is a huge archipelago called <ref>dst='morogor' text='Morogor'</"
-#| "ref>."
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
 "and all rivers eventually flow to it. Far to the west in the Great Ocean is "
 "a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
-"Ligger väst om <ref>dst='great_continent' text='kontinenten'</ref>  och alla "
-"floder rinner så småningom ut i det här havet. Långt till väst över Stora "
-"havet finns en väldig övärld kallad <ref>dst='morogor' text='Morogor'</ref>."
+"Ligger väst om <ref>dst='great_continent' text='Stora kontinenten'</ref> och "
+"alla floder rinner så småningom ut i det här havet. Långt till väst över "
+"Stora havet finns en väldig övärld kallad <ref>dst='morogor' text='Morogor'</"
+"ref>."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:44
@@ -739,13 +768,6 @@ msgstr "Morogor"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:45
-#, fuzzy
-#| msgid ""
-#| "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
-#| "ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> "
-#| "and east of the <ref>dst=old_continent text='Old Continent'</ref>.\n"
-#| "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
-#| "The central island of the archipelago is also called ‘Morogor’."
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
 "Ocean'</ref> east of the <ref>dst='green_isle' text='Green Isle'</ref> and "
@@ -753,11 +775,11 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
-"En övärld belägen någonstans i <ref>dst='great_ocean' text='Stora havet'</"
-"ref>, väst om <ref>dst='green_isle' text='Gröna ön'</ref> och öst om den "
-"<ref>dst=old_continent text='gamla kontinenten'</ref>.\n"
-"Den befolkas främst av  <ref>dst='..race_drake' text='drakfolket'</ref>.\n"
-"Den centrala ön heter också ‘Morogor’."
+"En arkipelag belägen någonstans i <ref>dst='great_ocean' text='Stora havet'</"
+"ref>, öster om <ref>dst='green_isle' text='Gröna ön'</ref> och väster om den "
+"<ref>dst=great_continent text='Stora kontinenten'</ref>.\n"
+"Den befolkas främst av <ref>dst='..race_drake' text='drakfolket'</ref>.\n"
+"Den centrala ön i arkipelagen heter också ‘Morogor’."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:52
@@ -766,13 +788,9 @@ msgstr "Gröna ön"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:53
-#, fuzzy
-#| msgid ""
-#| "A bigger island lying in the <ref>dst='great_ocean' text='great ocean'</"
-#| "ref>."
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
-msgstr "En större ö i <ref>dst='great_ocean' text='stora havet'</ref>."
+msgstr "En större ö i <ref>dst='great_ocean' text='Stora havet'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -781,16 +799,12 @@ msgstr "Gamla kontinenten"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:59
-#, fuzzy
-#| msgid ""
-#| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
-#| "<ref>dst='Great Ocean' text='Great Ocean'</ref>."
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
 "Ligger väster om <ref>dst='morogor' text='Morogor'</ref> tvärs över "
-"<ref>dst='Great Ocean' text='Stora havet'</ref>."
+"<ref>dst='great_ocean' text='Stora havet'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:64
@@ -838,59 +852,54 @@ msgstr "Wesnoths kungadöme"
 #| "The Kingdom of Wesnoth is located in the north-central portion of the "
 #| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
 #| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "Great River to the north, the shore of the Great Ocean to the west, the "
+#| "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
+#| "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
 #| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast (lower right corner of the "
-#| "main map).\n"
+#| "ref>, and the Bitter Swamp to the southeast.\n"
 #| "\n"
 #| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
 #| "region. It is bounded to the south (off-map) by dense woods of which the "
 #| "Aethenwood may be considered a northernmost extension.\n"
 #| "\n"
-#| "    • Notable cities:\n"
-#| "          ◦ Weldyn: The capital of Wesnoth.\n"
-#| "          ◦ Aldril: City lying on the Bay of Pearls.\n"
-#| "          ◦ Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "          ◦ Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "          ◦ Dan’Tonk: Wesnoth’s largest city, located in the center of "
-#| "the country, just west and north of Weldyn.\n"
-#| "          ◦ Soradoc: The northernmost border outpost of Wesnoth, controls "
-#| "the confluence of the Weldyn River and the Great River.\n"
-#| "          ◦ Fort Tahn: The southernmost border outpost, controls the "
-#| "north/south road crossing the River Aethen.\n"
-#| "          ◦ Tath: Important fort city north of Dan’Tonk, exerts control "
-#| "over the wilderness country around the east of the Brown Hills and north "
-#| "to the Ford of Abez.\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Weldyn: The capital of Wesnoth.\n"
+#| "    • Aldril: City lying on the Bay of Pearls.\n"
+#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
+#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
+#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
+#| "country, just west and north of Weldyn.\n"
+#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
+#| "confluence of the Weldyn River and the Great River.\n"
+#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
+#| "south road crossing the River Aethen.\n"
+#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
+#| "the wilderness country around the east of the Brown Hills and north to "
+#| "the Ford of Abez.\n"
 #| "\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Gryphon Mountain: Home of the fabled Gryphons\n"
-#| "          ◦ Ford of Abez: Shallow part of the Great River, it is usually "
-#| "controlled by Wesnothian forces\n"
-#| "          ◦ Weldyn River: It branches from the Great River and goes "
-#| "south\n"
-#| "          ◦ Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and "
-#| "Fort Tahn, this plain is Wesnoth’s bread basket and home to most of its "
-#| "population\n"
-#| "          ◦ Dulatus Hills: These rolling hills bordering the Great "
-#| "Central Plain provide much of Wesnoth’s livestock and agriculture\n"
-#| "          ◦ Brown Hills: Wasteland surrounding Gryphon Mountain that is "
-#| "not well-populated and occasionally very dangerous.\n"
-#| "          ◦ Horse Plains: Region of rolling plains just south of the "
-#| "Great River, bounded by Glyn’s Forest to the west and the River Weldyn to "
-#| "the east; the southern reach merges into the Central Plain. Home of the "
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
+#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
+#| "controlled by Wesnothian forces.\n"
+#| "    • Weldyn River: It branches from the Great River and goes south.\n"
+#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
+#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
+#| "population.\n"
+#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
+#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
+#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
+#| "well-populated and occasionally very dangerous.\n"
+#| "    • Horse Plains: Region of rolling plains just south of the Great "
+#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
+#| "east; the southern reach merges into the Central Plain. Home of the "
 #| "powerful Clans; the best horses in Wesnoth are bred here.\n"
-#| "          ◦ Estmark Hills: Largish range rising south of the Great River "
-#| "and east of the Weldyn River. The northernmost portion, nearest the River "
+#| "    • Estmark Hills: Largish range rising south of the Great River and "
+#| "east of the Weldyn River. The northernmost portion, nearest the River "
 #| "Weldyn, has at various times been settled by Wesnothians, but the "
 #| "Kingdom’s control is tenuous at best and banditry is common.\n"
-#| "          ◦ Glyn’s Forest: Sometimes known as the Royal Forest, named for "
-#| "one of Haldric II’s sons\n"
-#| "          ◦ Gray Woods: Large forest in the heart of the wilds of "
-#| "Wesnoth, located between Carcyn and Aldril and generally considered to be "
-#| "haunted\n"
-#| "          ◦ Green Swamp: Large swamp in the heart of the wilds of "
-#| "Wesnoth, south of Aldril. It receives drainage from the Brown Hills and "
-#| "feeds into the Great River. (Not shown on the main map.)"
+#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
+#| "of Haldric II’s sons.\n"
+#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
+#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -954,47 +963,44 @@ msgstr ""
 "Wesnoths nybyggarområden. Dess södra gräns utgörs av Aethenskogen (utanför "
 "kartan).\n"
 "\n"
-"    • Nämnvärda städer:\n"
-"          ◦ Weldyn: Wesnoths huvudstad.\n"
-"          ◦ Aldril: Stad vid pärlbukten.\n"
-"          ◦ Svartvattnet: Stad söder om Pärlbukten.\n"
-"          ◦ Carcyn: Belägen mellan Grå skogen och Stora floden.\n"
-"          ◦ Dan’Tonk: Wesnoths största stad, centralt belägen, strax "
-"nordväst om Weldyn.\n"
-"          ◦ Soradoc: Den nordligaste gränsutposten till Wesnoth, korollerar "
+"<header>text='Nämnvärda städer:'</header>\n"
+"    • Weldyn: Wesnoths huvudstad.\n"
+"    • Aldril: Stad vid Pärlbukten.\n"
+"    • Svartvattnet: Stad söder om Pärlbukten.\n"
+"    • Carcyn: Belägen mellan Grå skogen och Stora floden.\n"
+"    • Dan’Tonk: Wesnoths största stad, centralt belägen, strax nordväst om "
+"Weldyn.\n"
+"    • Soradoc: Den nordligaste gränsutposten till Wesnoth, korollerar "
 "sammaflödet av floden Weldyn och Stora floden.\n"
-"          ◦ Tahn-fortet: Den sydligaste gränsutposten, kontrollerar den "
-"norrgående vägen över floden Aethen.\n"
-"          ◦ Tath: Viktig garnisons-stad norr om Dan’Tonk, kontrollerar "
-"vilmarkerna runt de östra delarna av Bruna kullarna och norr om Abez vad.\n"
+"    • Tahn-fortet: Den sydligaste gränsutposten, kontrollerar den norrgående "
+"vägen över floden Aethen.\n"
+"    • Tath: Viktig garnisonsstad norr om Dan’Tonk, kontrollerar vildmarkerna "
+"runt de östra delarna av Bruna kullarna och norr om Abez-vadet.\n"
 "\n"
-"    • Nämnvärd geografi:\n"
-"          ◦ Gripberget: Hem för de mytomspunna Griparna\n"
-"          ◦ Abez vad: Grund del av Stora floden, vanligtvis under wesnothsk "
-"kontroll\n"
-"          ◦ Floden Weldyn: En förgrening av Stora floden som löper söderut\n"
-"          ◦ Stora centralslätten: Område avgränsat av Weldyn, Dan’Tonk, Tahn-"
+"<header>text=' Nämnvärd geografi:'</header>\n"
+"    • Gripberget: Hem för de mytomspunna Griparna\n"
+"    • Abez-vadet: Grund del av Stora floden, vanligtvis kontrollerat av "
+"Wesnoths styrkor\n"
+"    • Floden Weldyn: En förgrening av Stora floden som löper söderut\n"
+"    • Stora centralslätten: Område avgränsat av Weldyn, Dan’Tonk och Tahn-"
 "fortet. Den här slätten är Wesnoths spannmålsmagasin och huserar större "
 "delen av landets invånare\n"
-"          ◦ Dulatus Kullar: Dessa rullstensåsar på gränsen till Stora "
+"    • Dulatus-kullarna: Dessa rullstensåsar på gränsen till Stora "
 "centralslätten är hem till stora delar av Wesnoths boskap och odlingar\n"
-"          ◦ Bruna kullarna: Ödemark kring Gripberget som är nästan helt "
-"obefolkat och stundom väldigt farlig.\n"
-"          ◦ Hästslätten: en region med svepande slätter strax söder om Stora "
+"    • Bruna kullarna: Ödemark kring Gripberget som är nästan helt obefolkat "
+"och stundom väldigt farlig.\n"
+"    • Hästslätten: en region med svepande slätter strax söder om Stora "
 "floden, med Glyns skog i väst och floden Weldyn i öst; i syd går den ihop "
 "med Stora centralslätten. Ett hem för de mäktiga klanerna; de bästa hästarna "
 "i Wesnoth avlas här.\n"
-"          ◦ Östmark: Halvstor kedja av kullar söder om Stora floden och öst "
-"om floden Weldyn. Den nordligaste delen, närmast Weldyn, har varit bebodd av "
-"Wesnother vid olika tidpunkter, men kungadömets kontroll är som bäst osäker "
-"och banditer är vanliga.\n"
-"          ◦ Glyns skog: Även känd som den kungliga skogen, döpt efter en av "
+"    • Östmarkskullarna: Halvstor kedja av kullar söder om Stora floden och "
+"öst om floden Weldyn. Den nordligaste delen, närmast Weldyn, har varit "
+"bebodd av Wesnoth-folk då och då, men kungadömets kontroll är som bäst "
+"osäker och banditer är vanliga.\n"
+"    • Glyns skog: Även känd som den Kungliga skogen, döpt efter en av "
 "Haldric II söner\n"
-"          ◦ Grå skogen: Stor skog mitt i Wesnoth vildmark, belägen mellan "
-"Carcyn och Aldril. Anses av många vara hemsökt\n"
-"          ◦ Gröna träsket: Stort träsk mitt i Wesnoth vildmark, syd om "
-"Aldril. Vatten från de bruna kullarna rinner av hit och löper vidare till "
-"Stora floden. (syns inte på huvudkartan.)"
+"    • Grå skogen: Stor skog mitt i Wesnoth vildmark, belägen mellan Carcyn "
+"och Aldril. Anses av många vara hemsökt"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:106
@@ -1003,23 +1009,6 @@ msgstr "Elensefar"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
-#, fuzzy
-#| msgid ""
-#| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
-#| "text='Wesnoth'</ref>, at times an independent country, and at times in a "
-#| "treaty federation with Wesnoth. Its borders are the Great River to the "
-#| "north, a loosely defined line with Wesnoth to the east, the Bay of Pearls "
-#| "to the south, and the <ref>dst='great_ocean' text='ocean'</ref> to the "
-#| "west. More information is found in the historical narrative of Wesnoth.\n"
-#| "\n"
-#| "    • Notable cities:\n"
-#| "          ◦ Elensefar: The capital, located on an island in the "
-#| "<ref>dst='great_river' text='Great River'</ref> delta\n"
-#| "          ◦ Carcyn: City on the Wesnoth–Elensefar border, disputed with "
-#| "Wesnoth\n"
-#| "    • Notable land features:\n"
-#| "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very "
-#| "wide at this point, and only ships can cross it."
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -1040,19 +1029,21 @@ msgid ""
 msgstr ""
 "Elensefar är stundom en provins till <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, stundom ett oberoende land, eller förenat i en union "
-"med Wesnoth. Dess gränser är stora floden till norr, en vagt definierad "
-"gräns till Wesnoth åt öster. Pärlbukten ligger på södra gränsen, och  "
-"<ref>dst='great_ocean' text='havet'</ref> till är dess västra gräns. "
-"Ytterligare information finns i Wesnoths historiska berättelser.\n"
+"med Wesnoth. Dess gränser är den <ref>dst='great_river' text='Stora Floden'</"
+"ref> i norr, en vagt definierad gräns till Wesnoth åt öster. Pärlbukten "
+"ligger på södra gränsen, och <ref>dst='great_ocean' text='havet'</ref> är "
+"dess västra gräns. Ytterligare information finns i Wesnoths historiska "
+"berättelser.\n"
 "\n"
-"    • Nämnvärda städer:\n"
-"          ◦ Elensefar: Huvudstaden, belägen på en ö i <ref>dst='great_river' "
-"text='stora flodens'</ref> delta\n"
-"          ◦ Carcyn: Stad på gränsen mellan Wesnoth och Elensefar, i dispyt "
-"med Wesnoth\n"
-"    • Nämnvärd geografi:\n"
-"          ◦ <ref>dst='great_river' text='Stora floden'</ref>: Den är väldigt "
-"vid här, och skepp är det enda fartyg som kan korsa den."
+"<header>text='Nämnvärda städer:'</header>\n"
+"    • Elensefar: Huvudstaden, belägen på en ö i <ref>dst='great_river' "
+"text='Stora Flodens'</ref> delta\n"
+"    • Carcyn: Stad på gränsen mellan Wesnoth och Elensefar, i dispyt med "
+"Wesnoth\n"
+"\n"
+"<header>text=' Nämnvärd geografi:'</header>\n"
+"    • <ref>dst='great_river' text='Stora floden'</ref>: Den är väldigt vid "
+"här, och skepp är de enda fartyg som kan korsa den."
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:119
@@ -1061,47 +1052,6 @@ msgstr "Nordländerna"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:120
-#, fuzzy
-#| msgid ""
-#| "There is no government of the Northlands. Various groups of orcs, "
-#| "dwarves, barbarian men and even elves populate the region. The northern "
-#| "and eastern borders are not defined, the southern border is the "
-#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
-#| "is the <ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
-#| "\n"
-#| "    • Notable cities:\n"
-#| "          ◦ Glamdrol: An Orcish tribal capital\n"
-#| "          ◦ Romyr: Another Orcish tribal capital\n"
-#| "          ◦ Wesmere: The location of the Ka’lian — the Elvish Council\n"
-#| "          ◦ Dwarven Doors: A mixed human/dwarven town in the region of "
-#| "Knalga in the southern Heart Mountains. A major trade center.\n"
-#| "          ◦ Dallben and Delwyn: Human villages originally built by "
-#| "settlers who crossed the Great River during Wesnoth’s Golden Age "
-#| "expansion. Now abandoned. The forested area northeast of Elensefar, where "
-#| "these villages were located, was named the Annuvin province by men but "
-#| "was known by the elves as Wesmere.\n"
-#| "\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Heart Mountains: A virtually impassable barrier between the "
-#| "river country and the Northern Plains.\n"
-#| "          ◦ Heartfangs: the particularly forbidding stretch of high peaks "
-#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
-#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
-#| "madmen, and mages live there.\n"
-#| "          ◦ Swamp of Dread: a very large bog located between the Heart "
-#| "Mountains and the Great River. A notoriously dangerous place.\n"
-#| "          ◦ Lake Vrug: A large mountain lake whose river carves the only "
-#| "pathway through the Northern Mountains\n"
-#| "          ◦ Arkan-thoria: The river than comes out of Lake Vrug. This is "
-#| "the elvish name; among humans it is called Longlier.\n"
-#| "          ◦ River Listra: The south-running tributary of the Great River "
-#| "into which the Arkan-thoria empties.\n"
-#| "          ◦ Lintanir Forest: The southernmost portion of the Great "
-#| "Northern Forest, a gigantic wood whose eastern and northern boundaries "
-#| "are known only the elves. Their capitol, Elensiria, has only seldom been "
-#| "visited by humans.\n"
-#| "          ◦ Great River: The origin of this river is somewhere in the "
-#| "east of the northern lands"
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -1143,44 +1093,44 @@ msgid ""
 "    • <ref>dst='great_river' text='Great River'</ref>: The origin of this "
 "river is somewhere in the east of the northern lands."
 msgstr ""
-"Det finns ingen övergripande styre över Nordländerna. Diverse grupper med "
+"Det finns ingen samlad regering över Nordländerna. Diverse grupper med "
 "orcher, dvärgar, barbarer och till och med alver bor i regionen. Vare sig "
 "den norra eller den östra gränsen är definierad, medan den södra utgörs av "
 "<ref>dst='great_river' text='Stora floden'</ref>, och till väst ligger "
-"<ref>dst='great_ocean' text='Stora havet'</ref>.\n"
+"<ref>dst='great_ocean' text='havet'</ref>.\n"
 "\n"
-"    • Nämnvärda städer:\n"
-"          ◦ Glamdrol: Huvudstaden för en orch-stam\n"
-"          ◦ Romyr: Huvudstaden för ytterligare en orch-stam\n"
-"          ◦ Wesmere: Platsen för Ka’lian — alvernas rådslag\n"
-"          ◦ Dvärgarnas Port: En stad med både människor och dvärgar i Knalga-"
+"<header>text='Nämnvärda städer:'</header>\n"
+"    • Glamdrol: Huvudstaden för en orch-stam\n"
+"    • Wesmere: Platsen för Ka’lian — alvernas rådslag\n"
+"    • Dvärgarnas Port: En stad med både människor och dvärgar i Knalga-"
 "region i södra Kärnbergen. Ett stort handelscentrum.\n"
-"          ◦ Dallben och Delwyn: Männskliga byar byggda av nybyggare som "
-"korsade Stora floden expansionen under Wesnoths gyllene ålder. Numera "
-"övergivna. De skogstäckta ytorna nordost om Elensefar, där dessa byar låg, "
-"döptes till Annuvin-provinsen av människorna. Alverna känner istället "
-"området under namnet Wesmere.\n"
+"    • Dallben och Delwyn: Människobyar byggda av nybyggare som korsade Stora "
+"floden expansionen under Wesnoths gyllene ålder. Numera övergivna. "
+"Skogsområdena nordost om <ref>dst='elensefar' text='Elensefar'</ref>, där "
+"dessa byar låg, döptes till Annuvin-provinsen av människorna. Alverna känner "
+"istället området under namnet Wesmere.\n"
 "\n"
-"    • Nämnvärd geografi:\n"
-"          ◦ Kärnbergen: En ogenomtränglig barriär mellan flodlandet och de "
-"norra vidderna.\n"
-"          ◦ Kärntopparna: en särskilt avskräckande kedja av bergstoppar "
-"sydväst om Vrugsjön och norr om Wesmeres skogar. Den farligaste och  mest "
-"ogästvänliga delen av Kärnbergen; eremiter, galningar samt magiker är de "
-"enda som bor här.\n"
-"          ◦ Fruktans träsk: ett stort kärr beläget mellan Kärnbergen och "
-"Stora floden. Ett särdeles farligt ställe.\n"
-"          ◦ Vrugsjön: En stor bergsjö vars flod skär den enda vägen genom de "
-"norra bergsmassiven\n"
-"          ◦ Arkan-thoria: Älven som flyter ur Vrugsjön. Det är det alvernas "
-"namn på den; bland människor kallas den Längdälven.\n"
-"          ◦ Listra: Floden som Arkan-thoria mynnar ut i, som i sin tur är en "
+"<header>text=' Nämnvärd geografi:'</header>\n"
+"    • <ref>dst='heart_mountains' text='Kärnbergen'</ref>: En ogenomtränglig "
+"barriär mellan flodlandet och de norra vidderna.\n"
+"    • Kärntopparna: en särskilt avskräckande kedja av bergstoppar sydväst om "
+"Vrugsjön och norr om Wesmeres skogar. Den farligaste och mest ogästvänliga "
+"delen av Kärnbergen; eremiter, galningar samt magiker är de enda som bor "
+"här.\n"
+"    • Fruktans träsk: ett stort kärr beläget mellan Kärnbergen och Stora "
+"floden. Ett särdeles farligt ställe.\n"
+"    • Vrugsjön: En stor bergsjö vars flod skär den enda vägen genom de norra "
+"bergsmassiven\n"
+"    • <ref>dst='arkan_thoria' text='Arkan-thoria'</ref>: Den flod som flyter "
+"ur Vrugsjön. Det är det alvernas namn på den; bland människor kallas den "
+"Längdälven.\n"
+"    • Listra: Floden som Arkan-thoria mynnar ut i, som i sin tur är en "
 "södergående biflod till Stora floden.\n"
-"          ◦ Lintanir: Den yttersta södra delen av Stora norra skogen, en "
-"gigantisk skog som bara alverna känner till de östra och norra gränserna av. "
-"Det är ytterst sällan människor besökt deras huvudstad, Elensiria.\n"
-"          ◦ Stora floden: Källan till den här floden står att finna "
-"någonstans i de östra utkanterna av nordländerna"
+"    • Lintanir: Den yttersta södra delen av Stora norra skogen, en gigantisk "
+"skog som bara alverna känner till de östra och norra gränserna av. Det är "
+"ytterst sällan människor besökt deras huvudstad, Elensiria.\n"
+"    • <ref>dst='great_river' text='Stora floden'</ref>: Källan till den här "
+"floden står att finna någonstans i de östra utkanterna av nordländerna"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -1189,19 +1139,6 @@ msgstr "Sydvästa alvländerna"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:142
-#, fuzzy
-#| msgid ""
-#| "The Wood Elves are separate from those of the north, and have only "
-#| "intermittent relations with them and most other countries. Its borders "
-#| "are the Green Swamp to the northeast, the desert (not shown) to the "
-#| "south, and the <ref>dst='great_ocean' text='Ocean'</ref> to the west.\n"
-#| "\n"
-#| "    • Notable cities\n"
-#| "          ◦ None known\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Aethen Forest: The largest southern forest, it extends far to "
-#| "the southwest—much farther than is charted—and is home to <ref>dst='.."
-#| "race_elf' text='elves'</ref>."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -1221,16 +1158,20 @@ msgid ""
 "abandoned by the elves long ago."
 msgstr ""
 "Skogsalverna är avskilda från de i norr och har bara sporadiska relationer "
-"med dem och de flesta andra länderna. Deras land gränsar till Gröna träsken "
-"i nordost, öknen (inte visat) i söder och <ref>dst='great_ocean' "
-"text='havet'</ref> i väst.\n"
+"med dem och de flesta andra länderna. Deras land gränsar till "
+"<ref>dst='great_ocean' text='havet'</ref> i väst, Svarta floden i söder och "
+"sydöst, Wesnoths marker i norr och provinsen Kerlath i öst.\n"
 "\n"
-"    • Nämnvärda städer\n"
-"          ◦ Inga kända\n"
-"    • Nämnvärd geografi:\n"
-"          ◦ Aethenskogen: De stora södra södra skogarna som sträcker sig mot "
-"sydväst, mycket längre än vad som är kartlagt, och är hem till <ref>dst='.."
-"race_elf' text='alverna'</ref>."
+"<header>text='Nämnvärda städer:'</header>\n"
+"    • Inga kända\n"
+"\n"
+"<header>text='Nämnvärd geografi:'</header>\n"
+"    • Aethenskogen: De stora södra skogarna som sträcker sig mot sydväst, "
+"mycket längre än vad som är kartlagt, och är hem till <ref>dst='..race_elf' "
+"text='alverna'</ref>. Även om alverna inte gör en sådan uppdelning kallar "
+"invånarna i Kerlath de södra delarna för Sydskogen.\n"
+"    • Svartskogen: En uråldrig skog som man vet mycket lite om. Den övergavs "
+"av alverna för mycket länge sedan."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:154
@@ -1255,40 +1196,6 @@ msgstr "Norden"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:161
-#, fuzzy
-#| msgid ""
-#| "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
-#| "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' "
-#| "text='Heart Mountains'</ref>, which the Orcs call the Haggid-Dargor and "
-#| "claim (without merit) as their own. To the east lie the Unaligned Tribes "
-#| "of the Wild Steppe, who fell out of the control of the Clannate, instead "
-#| "roaming with wild human barbarians and clashing with the High Elves of "
-#| "the North Plains (known as North Elves in human lands). The High Elves "
-#| "themselves reside further east, where it is rumored they rule a vast "
-#| "kingdom.\n"
-#| "\n"
-#| "    • Notable cities:\n"
-#| "          ◦ Barag Gor, a city home to the Orcish Council\n"
-#| "          ◦ Bitok\n"
-#| "          ◦ Borstep\n"
-#| "          ◦ Castelfrang\n"
-#| "          ◦ Farzi\n"
-#| "          ◦ Festog\n"
-#| "          ◦ Grisbi\n"
-#| "          ◦ Lmarig\n"
-#| "          ◦ Melmog\n"
-#| "          ◦ Prestim\n"
-#| "          ◦ Tirigaz\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Swamp of Desolation\n"
-#| "          ◦ Mountains of Dorth\n"
-#| "          ◦ Mountains of Haag\n"
-#| "          ◦ Green Forest\n"
-#| "          ◦ Silent Forest\n"
-#| "          ◦ Forest of Thelien\n"
-#| "          ◦ River Oumph\n"
-#| "          ◦ River Bork\n"
-#| "          ◦ Wild Steppe"
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -1325,39 +1232,38 @@ msgstr ""
 "Den kalla, karga och otillgängliga Norden är det ursprungliga hemlandet för "
 "Orchklanerna. Det ligger norr om <ref>dst='heart_mountains' "
 "text='Kärnbergen'</ref>, som orcherna kallar Haggid-Dargor och (utan grund) "
-"gör anspråk på som sina. I öst finns de oallierade stammarna från de vilda "
+"gör anspråk på som sina. I öst finns de Klanlösa stammarna från de vilda "
 "vidderna, som bröt loss från klanerna för att istället ströva fritt med de "
 "vilda barbar-människorna och slåss med högalverna från de norra vidderna "
 "(kända som nordalver bland människorna). Högalvernas hemvist står att finna "
 "länge österut, där rykten säger att de styr över ett stort rike.\n"
 "\n"
-"    • Nämnvärda städer:\n"
-"          ◦ Barag Gor, en stad som utgör hemmet för orchernas rådslag\n"
-"          ◦ Bitok\n"
-"          ◦ Borstep\n"
-"          ◦ Castelfrang\n"
-"          ◦ Farzi\n"
-"          ◦ Festog\n"
-"          ◦ Grisbi\n"
-"          ◦ Lmarig\n"
-"          ◦ Melmog\n"
-"          ◦ Prestim\n"
-"          ◦ Tirigaz\n"
-"    • Nämnvärd geografi:\n"
-"          ◦ Ödeträsket\n"
-"          ◦ Berget Dorth\n"
-"          ◦ Berget Haag\n"
-"          ◦ Gröna skogen\n"
-"          ◦ Silent Forest\n"
-"          ◦ Theliens skog\n"
-"          ◦ Floden Oumph\n"
-"          ◦ Floden Bork\n"
-"          ◦ Vilda vidderna"
+"<header>text='Nämnvärda städer:'</header>\n"
+"    • Barag Gor, orchernas tingsplats\n"
+"    • Bitok\n"
+"    • Borstep\n"
+"    • Farzi\n"
+"    • Lmarig\n"
+"    • Melmog\n"
+"    • Prestim\n"
+"    • Tirigaz\n"
+"    • Dorest, människornas nordligaste stad\n"
+"\n"
+"\n"
+"<header>text='Nämnvärd geografi:'</header>\n"
+"    • Svarta kärret\n"
+"    • Berget Dorth\n"
+"    • Berget Haag\n"
+"    • Gröna skogen\n"
+"    • Tysta skogen\n"
+"    • Theliens skog\n"
+"    • Floden Oumph\n"
+"    • Floden Bork\n"
+"    • Frusna vidderna\n"
+"    • Öde slätterna"
 
 #. [section]: id=schedule
 #: data/core/help.cfg:10
-#, fuzzy
-#| msgid "Time of Day"
 msgid "Time of Day Schedule"
 msgstr "Dygnets gång"
 
@@ -1404,7 +1310,7 @@ msgstr "Vapenspecialiteter"
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:62 data/core/help.cfg:127
 msgid "Eras"
-msgstr ""
+msgstr "Eror"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
@@ -1416,7 +1322,7 @@ msgstr "Terräng"
 #. [topic]: id=..addons
 #: data/core/help.cfg:78 data/core/help.cfg:528
 msgid "Add-ons"
-msgstr ""
+msgstr "Extramaterial"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -1426,16 +1332,6 @@ msgstr "Kommandon"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:96
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-#| "strategy game somewhat unusual among modern strategy games. While other "
-#| "games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
-#| "strives for simplicity of both rules and gameplay. This does not make the "
-#| "game simple, however — from these simple rules arise a wealth of "
-#| "strategy, making the game easy to learn but a challenge to master."
 msgid ""
 "\n"
 "\n"
@@ -1459,7 +1355,12 @@ msgstr ""
 "<italic>text='Kampen om Wesnoth'</italic> efter enkelhet i både regler och "
 "spelteknik. Tro nu inte att detta gör spelet i sig lätt - dessa enkla regler "
 "ger ett mycket rikt strategispel, som är lätt att lära sig men en rejäl "
-"utmaning att bemästra. "
+"utmaning att bemästra.\n"
+"\n"
+"De nedanstående sidorna berättar kortfattat allt du behöver veta för att "
+"spela Wesnoth. Efterhand som du stöter på nya aspekter av spelet kommer ny "
+"information läggas till i de olika kategorierna. För mer detaljerad "
+"information följ de länkar som ges."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:106
@@ -1488,6 +1389,24 @@ msgid ""
 "The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
 "and has been worked on by a multitude of volunteers ever since."
 msgstr ""
+"Spelet utspelar sig på ett spelfält som byggs upp av hexagonala rutor, där "
+"dina trupper slåss mot andra trupper - som kan styras av dator, en vän vid "
+"samma dator (hotseat-spel), andra spelare på samma nätverk eller någon "
+"annanstans i världen i gruppspelsläge.\n"
+"\n"
+"Var och en av dessa strider kallas för ett <italic>text='scenario'</italic> "
+"vilka i sin tur kan kedjas samman till en <italic>text='kampanj'</italic>. "
+"Utöver de kampanjer som följer med när du installerar spelet, stödjer "
+"Wesnoth innehåll som skapas av spelarna själva och extramaterialsservern har "
+"hundratals kartor, kampanjer, eror, fraktioner och resurser.\n"
+"\n"
+"Spelet använder sig också av ett markup-språk som kan läsas av människor - "
+"Wesnoth Markup Language (WML) som gör det enkelt för spelare att skapa eget "
+"innehåll. Därutöver finns det en funktionsrik Kart- och scenarioredigerare "
+"som låter dig skapa dina egna stridsfält.\n"
+"\n"
+"Projektet <italic>text=Kampen om Wesnoth'</italic> påbörjades 2003 och har "
+"utvecklats av mängder av frivilliga sedan dess."
 
 #. [topic]: id=..units
 #: data/core/help.cfg:119
@@ -1499,6 +1418,13 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"I detta avsnitt listas alla de trupper som du kommer att stöta på efterhand "
+"som du utforskar Wesnoths värld. Närhelst som du ser en ny trupp under en "
+"kampanj eller ett gruppspelsscenario, kommer denna att läggas till under den "
+"sektion som behandlar dess ras här. Du kan därefter läsa på om denna trupp "
+"när du vill. En trupps sida ger en generell beskrivning, truppens statistik, "
+"dess attack, försvar, motståndskraft och rörelseförmåga.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:128
@@ -1507,6 +1433,9 @@ msgid ""
 "sides in multiplayer games.\n"
 "\n"
 msgstr ""
+"En fraktion är en samling av trupper och ledare. Fraktioner tilldelas sidor "
+"i gruppspel.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:130
@@ -1516,15 +1445,13 @@ msgid ""
 "factions are available from add-ons.\n"
 "\n"
 msgstr ""
+"En era är en samling av fraktioner som är avsedda att spela mot varandra. "
+"Förutom de eror som kom med spelet, finns det många spelartillverkade "
+"fraktioner tillgängliga som extramaterial.\n"
+"\n"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:139
-#, fuzzy
-#| msgid ""
-#| "Certain units have abilities that either directly affect other units, or "
-#| "have an impact on how the unit interacts with other units. These "
-#| "abilities will be listed under this topic as you encounter them.\n"
-#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1536,7 +1463,8 @@ msgstr ""
 "Vissa trupper har förmågor som antingen direkt påverkar andra trupper, eller "
 "som påverkar hur truppen i fråga interagerar med andra trupper. Dessa "
 "förmågor kommer att beskrivas under denna rubrik efter hand som du stöter på "
-"dem.\n"
+"dem. Varje sida kommer tillhandahålla en beskrivning av vad förmåga gör samt "
+"en lista över de trupper (som du känner till) som har denna förmåga\n"
 "\n"
 
 #. [topic]: id=..weapon_specials
@@ -1549,6 +1477,13 @@ msgid ""
 "weapon special does and which (currently discovered) units have it.\n"
 "\n"
 msgstr ""
+"Några vapen har speciella förmågor som ökar deras effektivitet när du "
+"anfaller med dem. När du stöter på en ny vapenförmåga under en kampanj eller "
+"ett gruppspelsscenario kommer den läggas till denna lista, och du kan läsa "
+"dess sida när du vill. Varje sida kommer tillhandahålla en beskrivning av "
+"vad förmåga gör samt en lista över de trupper (som du känner till) som har "
+"denna förmåga\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:157
@@ -1603,27 +1538,52 @@ msgid ""
 "enemy may have higher incomes, higher-level units, more castle hexes, and so "
 "on."
 msgstr ""
+"Wesnoth består av en serier strider, som kallas <italic>text='scenarier'</"
+"italic> där dina trupper möter fiender från en eller flera motståndare. "
+"Flera scenarier som följer på varandra och berättar en historia utgör en "
+"<italic>text='kampanj'</italic>. I en kampanj behöver du ofta vara mer "
+"försiktig och se till att de trupper som du vill använda i senare scenarion "
+"överlever.\n"
+"\n"
+"Det interaktiva <italic>text='träningsspelet'</italic> presenterar grunderna "
+"i hur man spelar Wesnoth i form av ett scenario. Det mesta som gås igenom av "
+"träningsspelet förklaras mer djupgående på dessa sidor, och du kan alltid "
+"komma tillbaka hit för att kontrollera om du har glömt något.\n"
+"\n"
+"Efter att du lärt dig grunderna, försök med en nybörjarkampanj, som t ex "
+"<italic>text='Tronarvingen'</italic> eller <italic>text='Sydvakten'</"
+"italic>. Du hittar en fullständig lista över installerade kampanjer m h a "
+"<bold>text='Kampanjer'</bold> på huvudmenyn. Wesnoth kan vara ganska "
+"utmanande, så du bör nog starta på enklare nivåer innan du tar dig an de "
+"svårare.\n"
+"\n"
+"Kampanjer grupperas enligt <italic>text='nivå'</italic>och "
+"<italic>text='svårighetsgrad'</italic>. <italic>text='Tronarvingen'</"
+"italic>är t ex på nybörjarnivå, och kan spelas på tre svårighetsgrader: "
+"'Nybörjare', 'Normal' och 'Utmanande'. Kampanjens nivå anger hur mycket du "
+"behöver känna till om Wesnoths spelmekanik (som <ref>dst='movement' "
+"text='kontrollzoner'</ref> och <ref>dst='time_of_day' text='tid på dygnet'</"
+"ref>) för att kunna spela kampanjen. Svårighetsgraden anger hur utmanande "
+"scenarierna kommer att vara för en erfaren spelare; vid högre svårighetsgrad "
+"kommer det finnas fler och svårare hinder för att nå målen som kräver "
+"skickligare spel. T ex kan en högre svårighetsgrad innebära att fienden har "
+"bättre inkomst, bättre trupper eller fler platser i sin borg etc."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Fundamentals of Gameplay'</header>\n"
 "\n"
-msgstr "<header>text='Trupper av den här rasen'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Grundläggande speltaktik'</header>\n"
+"\n"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
-#, fuzzy
-#| msgid ""
-#| "While playing, keep in mind that if you mouse-over many items in the "
-#| "game, such as the information displayed in the status pane, a brief "
-#| "description will be shown explaining each item. This is especially useful "
-#| "when you encounter new <ref>dst='..abilities_section' text='abilities'</"
-#| "ref> for the first time."
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
@@ -1662,15 +1622,6 @@ msgstr ""
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:190
-#, fuzzy
-#| msgid ""
-#| "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
-#| "the beginning of each scenario. Usually you will achieve victory by "
-#| "killing all enemy leaders, and only be defeated by having your leader "
-#| "killed. But scenarios may have other victory objectives — getting your "
-#| "leader to a designated point, say, or rescuing someone, or solving a "
-#| "puzzle, or holding out against a siege until a certain number of turns "
-#| "have elapsed."
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. In most scenarios, you will achieve victory "
@@ -1680,8 +1631,8 @@ msgid ""
 "ally, solving a puzzle, or holding out against a siege until a certain "
 "number of turns have elapsed."
 msgstr ""
-"Titta noga i på <bold>text='målen'</bold> som syns i en dialogruta  i början "
-"av varje scenario. Vanligtvis så vinner man genom att döda alla fiendeledare "
+"Titta noga på <bold>text='målen'</bold> som syns i en dialogruta i början av "
+"varje scenario. Vanligtvis så vinner man genom att döda alla fiendeledare "
 "och blir bara besegrad när din ledare dör. Andra scenarion kan dock ha andra "
 "mål som måste uppfyllas för att vinna, till exempel att förflytta din ledare "
 "till en speciell punkt, rädda någon, lösa ett problem eller klara en "
@@ -1694,15 +1645,6 @@ msgstr "Rekrytera och återkalla"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1721,19 +1663,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1756,7 +1685,7 @@ msgstr ""
 "på någon ruta och välja <bold>text='Rekrytera'</bold>. Du får då upp "
 "rekryteringsmenyn där tillgängliga trupper visas tillsammans med vad det "
 "kostar att leja dem. Klicka på ett truppslag för att se dess statistik, och "
-"klicka sedan på rekryteringsnappen för att rekrytera den."
+"klicka sedan på  <bold>text='Rekrytera'</bold>för att rekrytera den."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
@@ -1810,16 +1739,6 @@ msgstr "Inkomst och underhåll"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Income is simple. You have a base income of 2 gold per turn. For every "
-#| "village you control, you gain one additional gold each turn. (In general "
-#| "this is configurable but in campaigns it is almost always one gold per "
-#| "village.) Thus, if you have ten villages, you would normally gain 12 gold "
-#| "each turn. Your upkeep costs are subtracted from this income, as detailed "
-#| "below."
 msgid ""
 "\n"
 "\n"
@@ -1831,11 +1750,9 @@ msgstr ""
 "\n"
 "\n"
 "Inkomst är enkelt. Du har två guldstycken per drag i grundinkomst. För varje "
-"by du kontrollerar får du ytterligare ett guldstycke per drag.  (Vanligtvis "
-"går detta att ändra, men i kampanjer är det låst och nästan alltid satt till "
-"ett guldstycke per by) Om du har tio byar, får du med andra ord vanligtvis "
-"tolv guldstycken. Din kostnad för underhåll dras från denna inkomst, så som "
-"beskrivs nedan."
+"by du kontrollerar får du ytterligare ett guldstycke per drag. Om du har tio "
+"byar, får du med andra ord vanligtvis tolv guldstycken. Din kostnad för "
+"underhåll dras från denna inkomst, så som beskrivs nedan."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
@@ -1899,6 +1816,14 @@ msgid ""
 "<italic>text='Status Table'</italic> dialog shows the values for the current "
 "scenario."
 msgstr ""
+"\n"
+"\n"
+"Vanligtvis går grundinkomsten, den mängd guld du får per by varje drag, och "
+"det antal truppnivåer som varje by kan underhålla att ställa in när du "
+"startar spelet. Men för kampanjer är detta nästa alltid låst till ovan givna "
+"värden. I dialogen <italic>text='Statustabell'</italic> på fliken "
+"<italic>text='Scenarioinställningar'</italic> kan du se vad som gäller för "
+"det scenario du spelar."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:228
@@ -1953,12 +1878,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:244
-#, fuzzy
-#| msgid ""
-#| "The hitpoints are also indicated by an energy bar next to each unit, "
-#| "which is green, yellow or red. A unit with at least 1 experience point "
-#| "has a blue experience bar, which turns white as the unit is about to "
-#| "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1968,14 +1887,12 @@ msgstr ""
 "Hälsopoängen visas också med en energimätare bredvid varje trupp; denna är "
 "grön, gul eller röd. En trupp med minst en erfarenhetspoäng har en blå "
 "erfarenhetsmätare. Denna blir vit när truppen är nära att "
-"<ref>dst='experience_and_advancement' text='befordras'</ref>."
+"<ref>dst='advancement' text='befordras'</ref>."
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:251
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advancement"
-msgstr "Kan befordras till: "
+msgstr "Befordran:"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
@@ -2106,17 +2023,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:266
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Another thing to keep in mind while moving is <italic>text='zones of "
-#| "control'</italic>. Each unit generates a zone of control in the hexes "
-#| "immediately surrounding it, and any enemy unit entering those hexes "
-#| "immediately ends its movement. Learning how to use zones of control to "
-#| "your advantage is an important part of Wesnoth, as only "
-#| "<ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore zones "
-#| "of control."
 msgid ""
 "\n"
 "\n"
@@ -2131,12 +2037,13 @@ msgstr ""
 "\n"
 "\n"
 "Under förflyttning är det viktigt att komma ihåg "
-"<italic>text='kontrollzonerna'</italic>. Varje trupp skapar en kontrollzon i "
-"de närmaste intilliggande rutorna. En fiendetrupp som flyttar in till en "
-"sådan kontrollerad ruta måste omedelbart stanna. En viktig del av Kampen om "
-"Wesnoth är att lära sig hur dessa kontrollzoner fungerar, eftersom bara "
-"<ref>dst='ability_skirmisher' text='stigfinnare'</ref> kan röra sig "
-"obehindrat över dessa."
+"<italic>text='kontrollzonerna'</italic>. Varje trupp - med undantag för nivå "
+"0-trupper - skapar en kontrollzon i de närmaste intilliggande rutorna. En "
+"fiendetrupp som flyttar in till en sådan kontrollerad ruta måste omedelbart "
+"stanna. En viktig del av Kampen om Wesnoth är att lära sig hur dessa "
+"kontrollzoner fungerar, eftersom bara "
+"<ref>dst='ability_skirmisherskirmisher' text='stigfinnare'</ref> kan röra "
+"sig obehindrat över dessa."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:268
@@ -2268,7 +2175,7 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:306
 msgid "Learning from Losses"
-msgstr ""
+msgstr "Lära sig av sina förluster"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:307
@@ -2360,11 +2267,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:323
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2372,7 +2274,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chans för träff'</header>"
+"<header>text='Osannolika anledningar'</header>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:325
@@ -2752,10 +2654,6 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:388
-#, fuzzy
-#| msgid ""
-#| " red if it can no longer move or attack, or the user ended the unit’s "
-#| "turn."
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
@@ -2769,8 +2667,6 @@ msgstr "blå om truppen är en allierad som du inte kontrollerar."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:390
-#, fuzzy
-#| msgid " Enemy units have no orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr "Fiendetrupper har ingen sfär ovanför sina energimätare."
 
@@ -2784,10 +2680,14 @@ msgstr "Dygnets gång"
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
-#| " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
-#| " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-#| " Liminal units get +25% damage during twilight.\n"
-#| " Neutral units are unaffected by the time of day."
+#| "\n"
+#| "• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
+#| "damage at night.\n"
+#| "• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
+#| "daytime.\n"
+#| "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
+#| "• <bold>text='Liminal'</bold> units get −25% damage during both night and "
+#| "daytime."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -2799,20 +2699,18 @@ msgid ""
 "• <bold>text='Liminal'</bold> units get +25% damage during twilight."
 msgstr ""
 "Tiden på dygnet påverkar skadorna som trupperna åsamkar enligt följande:\n"
-" Redbara trupper ger 25% mer skada dagtid, och 25% mindre under natten.\n"
-" Ljusskygga trupper ger 25% mer skada nattetid, och 25% mindre under dagen.\n"
-" Klärobskyra trupper ger 25% mer skada under morgon och kväll. Neutrala "
-"trupper är påverkas inte av tiden på dygnet."
+"\n"
+" • <bold>text='Redbara '</bold> trupper gör 25% mer skada dagtid, och 25% "
+"mindre under natten.\n"
+"• <bold>text='Ljusskygga '</bold> trupper gör 25% mer skada nattetid, och "
+"25% mindre under dagen.\n"
+" • <bold>text='Neutrala'</bold> trupper är påverkas inte av tiden på "
+"dygnet.\n"
+"• <bold>text='Perifera'</bold> trupper gör 25% mindre skada både på dagen "
+"och natten."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:403
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The current time of day can be observed under the minimap in the status "
-#| "pane. For the usual day/night cycle, morning and afternoon count as day, "
-#| "first and second watch count as night:\n"
 msgid ""
 "\n"
 "\n"
@@ -2823,9 +2721,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Nuvarande tid på dygnet visas under minikartan i statuspanelen. Under "
-"dygnscykeln räknas förmiddag och eftermiddag som dag, och första och andra "
-"vakten som natt:\n"
+"Nuvarande tid på dygnet visas under minikartan i statuspanelen. Under den "
+"vanliga dygnscykeln räknas förmiddag och eftermiddag som dag, och första och "
+"andra vakten som natt:\n"
+"\n"
 
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
@@ -2873,16 +2772,12 @@ msgstr "Andra vakten"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:414
-#, fuzzy
-#| msgid ""
-#| "Keep in mind that some scenarios take place underground, where it is "
-#| "perpetually night!"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr ""
 "Somliga scenarier äger rum i underjorden eller i grottor, där det råder evig "
-"natt!"
+"natt!\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:416
@@ -2890,6 +2785,8 @@ msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
+"Några underjordiska platser är upplysta. Dessa befinner sig alltid mellan "
+"dag och natt.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:418
@@ -2897,6 +2794,8 @@ msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
+"Några rollspelsscenarion utspelas inomhus - dessa områden är på samma sätt "
+"mellan dag och natt.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:420
@@ -2906,6 +2805,10 @@ msgid ""
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
 "around them."
 msgstr ""
+"Slutligen finns det trupper med förmågan "
+"<ref>dst='ability_illuminationilluminates' text='lysa upp'</ref> och "
+"terränger med särdrag som <ref>dst='terrain_lava' text='lava'</ref> som "
+"påverkar den bonus som tid på dygnet ger till trupper runt dem."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:427
@@ -2914,12 +2817,6 @@ msgstr "Läkande"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:428
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Resting'</italic>: A unit which neither moves, attacks, nor "
-#| "is attacked will heal 2 HP in its next turn."
 msgid ""
 "\n"
 "\n"
@@ -2928,7 +2825,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Vila'</italic>: En trupp som varken förflyttas, anfaller eller "
+"• <bold>text='Vila'</bold>: En trupp som varken förflyttas, anfaller eller "
 "blir anfallen återfår 2 HP nästa drag."
 
 #. [topic]: id=healing
@@ -2938,14 +2835,12 @@ msgid ""
 "heal your units. However, with the exception of resting, these do not stack; "
 "only one can occur per turn."
 msgstr ""
+"I strid kommer dina trupper obevekligen att skadas. Det finns flera sätta "
+"att hela dina trupper. Med undantag för att vila kan dessa olika sätt inte "
+"kombineras, endast en metod används varje drag."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:430
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
-#| "will heal 8HP."
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2953,16 +2848,12 @@ msgid ""
 "poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"<italic>text='Byar'</italic>: Trupper som som befinner sig i en by då deras "
-"drag startar återfår 8 HP."
+"• <bold>text='Byar'</bold>:Trupper som befinner sig i en by eller "
+"<ref>dst='terrain_oasis' text='oas'</ref> då ett drag börjar återfår 8 HP. "
+"Om truppen är förgiftad, botas den i stället från förgiftningen."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:431
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
-#| "(such as trolls) will automatically heal 8HP every turn."
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2970,19 +2861,12 @@ msgid ""
 "the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"<ref>dst='ability_regenerates' text='Regenerering'</ref>: Vissa trupper "
-"(såsom troll) återfår alltid 8 HP automatiskt i början av draget."
+"• <ref>dst='ability_regeneratesregenerates' text='Regenerering'</ref>: Vissa "
+"trupper (såsom troll) återfår alltid 8 HP automatiskt i början av draget. Om "
+"truppen är förgiftad, botas den i stället från förgiftningen."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:432
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<italic>text='Healing units'</italic>: Units with the "
-#| "<ref>dst='ability_heals +4' text='Heals'</ref> ability will heal each "
-#| "allied adjacent unit, usually <ref>dst='ability_heals +4' text='4HP'</"
-#| "ref> or <ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent "
-#| "Poison from causing that unit damage."
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2992,21 +2876,14 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"<italic>text='Helande trupper'</italic>: Trupper med förmågan att "
-"<ref>dst='ability_heals +4' text='hela'</ref> läker alla intillstående "
-"trupper med vanligtvis <ref>dst='ability_heals +4' text='4'</ref> eller "
-"<ref>dst='ability_heals +8' text='8'</ref> hälsopoäng per drag, eller "
-"hindrar en förgiftning från att göra skada."
+"• <bold>text='Helande trupper'</bold>: Trupper med förmågan att "
+"<ref>dst='ability_healingheals +4' text='hela'</ref> läker alla trupper som "
+"står bredvid med vanligtvis <ref>dst='ability_healingheals +4' text='4 HP'</"
+"ref> eller <ref>dst='ability_healingheals +8' text='8 HP'</ref> per drag, "
+"eller hindrar en förgiftning från att göra skada."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:433
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<italic>text='Curing units'</italic>: Units with the "
-#| "<ref>dst='ability_cures' text='cures'</ref> ability will cure Poison in "
-#| "all allied adjacent units (in preference to healing, if it has that "
-#| "ability as well)."
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -3015,10 +2892,10 @@ msgid ""
 "ability as well)."
 msgstr ""
 "\n"
-"<italic>text='Botande trupper'</italic>: Trupper med förmågan att "
-"<ref>dst='ability_cures' text='bota'</ref> återställer intillstående "
-"förgiftade trupper. Om den läkande truppen även kan hela, så botar den "
-"förgiftningen i första hand."
+"• <bold>text=''Botande trupper'</bold>: Trupper med förmågan att "
+"<ref>dst='ability_curingcures' text='bota'</ref> tar bort förgiftning från "
+"alla vänligt sinnade trupper som står bredvid den. Om den botande truppen "
+"även kan hela, så botar den förgiftningen i första hand."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:434
@@ -3028,6 +2905,10 @@ msgid ""
 "text='advances'</ref>, it will heal fully. This can happen as soon as your "
 "unit gains enough experience, whether it is your turn or not."
 msgstr ""
+"\n"
+"• <bold>text='Befordran'</bold>: När en trupp blir <ref>dst='advancement' "
+"text='befordrad'</ref> helas den fullständigt. Detta händer så fort som "
+"truppen får tillräckligt med erfarenhet oavsett om det är ditt drag eller ej."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:435
@@ -3052,6 +2933,9 @@ msgid ""
 "\n"
 "<bold>text='Advanced'</bold>"
 msgstr ""
+"\n"
+"\n"
+"<bold>text='Avancerat'</bold>"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:439
@@ -3064,6 +2948,14 @@ msgid ""
 "from one healer per turn, a unit surrounded by healers from several allied "
 "sides will be healed once on each of said allied sides’ turns."
 msgstr ""
+"\n"
+"\n"
+"Till skillnad från andra typer av helning så sker helande baserat på en "
+"helare inte på den skadade truppens drag, men på helarens drag. Detta "
+"betyder att en trupp som är omgiven av flera helare från samma sida endast "
+"kommer få helning från en helare per drag medan en trupp omgiven av helare "
+"från flera allierade sidor kommer bli helad en gång under varje allierad "
+"sidas drag."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:447
@@ -3092,13 +2984,6 @@ msgstr "Licens"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:462
-#, fuzzy
-#| msgid ""
-#| "Most units have two traits. However, undead units are assigned the single "
-#| "trait <italic>text='undead'</italic>, and woses do not receive any "
-#| "traits. Traits are modifications that change a unit’s attributes "
-#| "slightly. They are usually randomly assigned to a unit when it is "
-#| "recruited."
 msgid ""
 "\n"
 "\n"
@@ -3107,10 +2992,12 @@ msgid ""
 "and in some cases <italic>text='fearless'</italic>, and woses do not receive "
 "any traits. "
 msgstr ""
-"De flesta trupper har två karaktärsdrag. Undantaget är de vandöda, som bara "
-"får karaktärsdraget <italic>text='vandöd'</italic> samt enter, som inte får "
-"några alls. Karaktärsdrag inför små ändringar av truppernas egenskaper. "
-"Trupperna tilldelas vanligtvis karaktärsdrag slumpmässigt när de rekryteras."
+"\n"
+"\n"
+"De flesta trupper har två karaktärsdrag. Undantaget är vättar som endast får "
+"ett karaktärsdrag och de vandöda, som bara får karaktärsdraget "
+"<italic>text='vandöd'</italic> eller mer sällsynt <italic>text=\"orädd\"</"
+"italic> samt enterna, som inte får några alls. "
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:462
@@ -3120,17 +3007,12 @@ msgid ""
 "available to a unit are largely determined by its <italic>text='race'</"
 "italic>."
 msgstr ""
+"Karaktärsdrag är små justeringar av en trupps attribut. De slumpas vanligen "
+"ut när en trupp rekryteras. De karaktärsdrag som är tillgängliga för en "
+"trupp bestäms huvudsakligen av dess  <italic>text='ras'</italic>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:464
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The traits that are available to all non-undead units are "
-#| "<ref>dst='traits_intelligent' text='intelligent'</ref>, "
-#| "<ref>dst='traits_quick' text='quick'</ref>, <ref>dst='traits_resilient' "
-#| "text='resilient'</ref>, and <ref>dst='traits_strong' text='strong'</ref>."
 msgid ""
 "\n"
 "\n"
@@ -3148,14 +3030,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:466
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
-#| "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
-#| "<ref>dst='traits_undead' text='undead'</ref>.\n"
-#| "\n"
 msgid ""
 "\n"
 "\n"
@@ -3169,9 +3043,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Andra karaktärsdrag som trupper kan tilldelas är <ref>dst='traits_dextrous' "
-"text='träffsäker'</ref>, <ref>dst='traits_loyal' text='lojal'</ref> och "
-"<ref>dst='traits_undead' text='vandöd'</ref>.\n"
+"Alver kan också få karaktärsdraget <ref>dst='traits_dextrous' "
+"text='träffsäker'</ref> och dvärgar <ref>dst='traits_healthy' text='frisk'</"
+"ref>.  Troll och vissa människor kan få karaktärsdraget "
+"<ref>dst='traits_fearless' text='orädd'</ref>. Andra karaktärdrag som kan "
+"tilldelas omfattar <ref>dst='traits_loyal' text='lojal'</ref>, , "
+"<ref>dst='traits_feral' text='vild'</ref> och <ref>dst='traits_undead' "
+"text='vandöd'</ref>.\n"
 "\n"
 
 #. [topic]: id=..terrains_section
@@ -3182,30 +3060,23 @@ msgid ""
 "Terrains come in two types: <italic>text='basic'</italic> and "
 "<italic>text='mixed'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Det finns två typer av terräng: <italic>text='grundläggande'</italic> och "
+"<italic>text='blandad'</italic>."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:476
-#, fuzzy
-#| msgid ""
-#| "Game maps feature a variety of terrains that affect both unit movement "
-#| "and a unit’s defensive capability in combat.\n"
-#| "\n"
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
 "Spelkartor innehåller en mängd olika terränger som påverkar både hur långt "
 "en trupp kan förflytta sig och hur stor en trupps effektivitet vid försvar "
-"är.\n"
-"\n"
+"är."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:478
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3213,7 +3084,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chans för träff'</header>"
+"<header>text='Grundläggande terrängtyper'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:480
@@ -3225,6 +3096,12 @@ msgid ""
 "discovered can be found at the end of this page.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Grundläggande terrängtyper omfattar Slätt, Kullar, Berg, Sanddyner, Vatten "
+"och Träsk. Det finns många fler än dessa; en lista över de terrängtyper du "
+"hittills stött på visas i slutet av denna sida.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:484
@@ -3235,14 +3112,15 @@ msgid ""
 "terrain types, and these values are listed in the unit’s help page. Basic "
 "terrain types may have unique properties like illumination effects as well."
 msgstr ""
+"\n"
+"\n"
+"Varje trupp har ett försvars- och rörelsevärde för var och en av de "
+"grundläggande terrängtyperna, och dessa värden listas på varje trupps "
+"hjälpsida. Grundläggande terrängtyper kan därutöver ha unika egenskaper som "
+"effekten lysa upp."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:486
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3250,7 +3128,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chans för träff'</header>"
+"<header>text='Blandade terrängtyper'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:488
@@ -3265,6 +3143,16 @@ msgid ""
 "and <italic>text='cave hills'</italic>.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Blandade terrängtyper delar egenskaper med flera olika grundläggande "
+"terrängtyper. Trupper får vanligen det <italic>text='bästa försvaret'</"
+"italic> och <italic>text='sämsta rörelseförmågan'</italic> från de "
+"grundläggande terrängtyperna när de flyttar in i en blandad terräng. Så är "
+"det t ex med <italic>text='skogsklädda kullar'</italic>, "
+"<italic>text='sandiga kullar'</italic>, och <italic>text='grottkullar'</"
+"italic>.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:492
@@ -3280,6 +3168,17 @@ msgid ""
 "nonfliers (unsurprisingly).\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Ett viktigt undantag är broterränger som <italic>text='broar över grunt "
+"vatten'</italic>, <italic>text='vadställen'</italic>, and "
+"<italic>text='broar över klyftor'</italic>. Vadställen kan enkelt passeras "
+"av både sjöfolk och människor — alla trupper som rör sig över ett vadställe "
+"har det bästa försvaret och rörelseförmågan av slätt och grunt vatten, "
+"snarare än den sämsta rörelseförmågan av de två. På samma sätt kan även "
+"trupper som inte kan flyga gå över en bro över en klyfta - inte helt "
+"förvånande!\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:496
@@ -3291,6 +3190,12 @@ msgid ""
 "together with hill, swamp, and cave, respectively.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Byar på land ger vanligen också bästa försvar och rörelseförmåga. Dessa byar "
+"är blandade terrängtyper där byns terrängtyp kan kombineras med kullar, "
+"träsk och grottor.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:500
@@ -3302,6 +3207,12 @@ msgid ""
 "Instead, they count only as water tiles.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Slutligen så är vattenbyar generellt ogästvänliga mot landtrupper och ger "
+"inte dessa några av de fördelar för försvar och rörelseförmåga som byterräng "
+"normalt ger. I stället räknas de som vattenrutor.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:504
@@ -3312,6 +3223,11 @@ msgid ""
 "its hex and checking the terrain type icons displayed in the upper right "
 "(under the default theme)."
 msgstr ""
+"\n"
+"\n"
+"Du kan se vilka grundläggande terrängtyper som en blandad terräng består av "
+"genom att placera muspekaren över rutan och kontrollera vilka "
+"terrängtypsikoner som visas uppe till höger (med förvalt tema)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:506
@@ -3323,14 +3239,15 @@ msgid ""
 "either pressing the hotkey, or right clicking and selecting from the context "
 "menu."
 msgstr ""
+"\n"
+"\n"
+"Du kan se hur den blandade terrängen uppför sig genom att placera muspekaren "
+"över rutan och läsa dess <italic>text='terrängbeskrivning'</italic> antingen "
+"genom att trycka på snabbtangenten eller genom att högerklicka och välja "
+"från kontextmenyn."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:508
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3338,7 +3255,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chans för träff'</header>"
+"<header>text='Försvarstak'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:510
@@ -3349,6 +3266,12 @@ msgid ""
 "terrain type. These units suffer a penalty on mixed terrains with that type "
 "— their defense cannot exceed the cap."
 msgstr ""
+"\n"
+"\n"
+"Några trupper har ett <italic>text='försvarstak'</italic> för vissa typer av "
+"grundläggande terränger. Dessa trupper kan inte överstiga denna "
+"försvarsförmåga på blandade terränger där denna grundläggande terrängtyp "
+"ingår heller."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:512
@@ -3360,6 +3283,13 @@ msgid ""
 "on forested hills, he has a defense rating of 30% rather than 40%, because "
 "the mixed rating cannot exceed the cap."
 msgstr ""
+"\n"
+"\n"
+"Till exempel har en <ref>text=kavallerist' dst='unit_Cavalryman'</ref> en "
+"försvarsförmåga på 30% i skog, och ett försvarstak för skogar. Detta innebär "
+"att i skogsklädda kullar har han fortsatt en försvarsförmåga på 30% i "
+"stället för 40% eftersom den blandade terrängen inte kan ge honom högre "
+"försvarsförmåga än hans försvarstak."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:514
@@ -3369,14 +3299,13 @@ msgid ""
 "If a unit has a defense cap for some terrain, it is always the same as its "
 "defense rating on that terrain (it cannot be larger)."
 msgstr ""
+"\n"
+"\n"
+"Om en trupp har ett försvarstak för en terräng motsvarar detta alltid "
+"försvarsförmågan för denna terräng (det kan inte vara högre)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:516
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3385,7 +3314,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chans för träff'</header>"
+"<header>text='Grundläggande terrängtyper'</header>\n"
+"\n"
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:529
@@ -3399,15 +3329,10 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:539
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Använda extramaterial"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:540
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3415,7 +3340,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skada</header>"
+"<header>text='Kampanjer och scenarion'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:540
@@ -3423,6 +3348,8 @@ msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
+"Spelet stödjer olika typer av extramaterial, inte alla typer är användbara i "
+"alla spellägen."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:542
@@ -3434,16 +3361,23 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu at the title screen."
 msgstr ""
+"\n"
+"\n"
+"Enspelarkampanjer är samlingar av scenarion som tillsammans berättar en "
+"historia. Både ensamma scenarion - om de är avsedda att spelas som sådana - "
+"och vanliga kampanjer nås från <italic>text='Kampanjer'</italic>-menyn på "
+"huvudskärmen."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:544
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr "<header>text='Trupper med den här specialattacken'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Gruppspelskampanjer, -scenarion och -kartpaket'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:546
@@ -3457,11 +3391,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:548
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3469,7 +3398,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Turordning och antal attacker'</header>"
+"<header>text='Gruppspelseror och -fraktioner'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:550
@@ -3497,11 +3426,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:556
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3509,7 +3433,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Turordning och antal attacker'</header>"
+"<header>text='Varianter'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:558
@@ -3523,11 +3447,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:560
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3535,7 +3454,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chans för träff'</header>"
+"<header>text='Kärnor'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:562
@@ -3553,11 +3472,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:566
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3565,7 +3479,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chans för träff'</header>"
+"<header>text=Resurspaket för författare'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:568
@@ -3582,7 +3496,7 @@ msgstr ""
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:577
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Installera extramaterial"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:578
@@ -3631,8 +3545,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:607
-#, fuzzy
-#| msgid "General commands"
 msgid "General Commands"
 msgstr "Allmänna kommandon"
 
@@ -3787,8 +3699,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:651
-#, fuzzy
-#| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "Gruppspelskommandon"
 
@@ -4228,16 +4138,6 @@ msgstr "ledarskap"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:121
-#, fuzzy
-#| msgid ""
-#| "Leadership:\n"
-#| "This unit can lead our own units that are next to it, making them fight "
-#| "better.\n"
-#| "\n"
-#| "Adjacent own units of lower level will do more damage in battle. When a "
-#| "unit adjacent to, of a lower level than, and on the same side as a unit "
-#| "with Leadership engages in combat, its attacks do 25% more damage times "
-#| "the difference in their levels."
 msgid ""
 "This unit can lead your own units that are next to it, making them fight "
 "better.\n"
@@ -4247,7 +4147,6 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"Ledarskap:\n"
 "Den här truppen leder våra egna närliggande trupper i strid och får dem att "
 "kämpa bättre.\n"
 "\n"
@@ -4268,16 +4167,10 @@ msgstr "stigfinnare"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:140
-#, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Stigfinnare:\n"
 "Denna trupp finner vägar förbi fienden, och hindras därmed inte av fiendens "
 "kontrollzoner."
 
@@ -4289,18 +4182,10 @@ msgstr "lysa upp"
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:154
 msgid "female^illuminates"
-msgstr "lyser upp"
+msgstr "lysa upp"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:155
-#, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4308,7 +4193,6 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Lysa upp:\n"
 "Den här truppen lyser upp närområdet, så att redbara trupper slåss bättre "
 "och ljusskygga sämre.\n"
 "\n"
@@ -4327,16 +4211,10 @@ msgstr "teleportera"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:169
-#, fuzzy
-#| msgid ""
-#| "Teleport:\n"
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Teleportera:\n"
 "Den här truppen kan teleportera sig mellan två tomma kontrollerade byar. Den "
 "använder då ett av sina förflyttningspoäng."
 
@@ -4352,14 +4230,6 @@ msgstr "bakhåll"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:200
-#, fuzzy
-#| msgid ""
-#| "Ambush:\n"
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4367,7 +4237,6 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Bakhåll:\n"
 "Den här truppen kan gömma sig i skog, och blir inte upptäckt av sina "
 "fiender.\n"
 "\n"
@@ -4382,14 +4251,6 @@ msgstr "skuggsteg"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:219
-#, fuzzy
-#| msgid ""
-#| "Nightstalk:\n"
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4397,7 +4258,6 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Skuggsteg:\n"
 "Den här truppen blir osynlig nattetid.\n"
 "\n"
 "Fiendetrupper kan inte se eller attackera den här truppen nattetid, förutom "
@@ -4416,16 +4276,6 @@ msgstr "gömd"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:238
-#, fuzzy
-#| msgid ""
-#| "Concealment:\n"
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -4434,7 +4284,6 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"gömd:\n"
 "Denna trupp kan gömma sig i byar (dock ej i vatten), och blir inte upptäckt "
 "av sina fiender, förutom de som står alldeles bredvid.\n"
 "\n"
@@ -4455,14 +4304,6 @@ msgstr "dyka"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:257
-#, fuzzy
-#| msgid ""
-#| "Submerge:\n"
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4490,14 +4331,12 @@ msgstr "förtäring"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:276
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
-msgstr "Den här truppen får 1 hälsopoäng när den dödar en levande trupp."
+msgstr ""
+"Den här truppen får 1 hälsopoäng lagt till sitt maxvärde när den dödar en "
+"levande trupp, förutom när denna trupp är immun mot pest."
 
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:287
@@ -4506,17 +4345,10 @@ msgstr "bärsärk"
 
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:288
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Bärsärkagång:\n"
 "Vare sig det gäller anfall eller försvar fortsätter striden tills en av "
 "parterna ligger död på marken eller tills striden pågått i 30 utfall."
 
@@ -4527,18 +4359,11 @@ msgstr "rygghugg"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:299
-#, fuzzy
-#| msgid ""
-#| "Backstab:\n"
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
-"Rygghugg:\n"
 "När den används offensivt orsakar denna typ av attack dubbel skada. Detta "
 "gäller bara om en fiende till målet befinner sig på motsatt sida av målet, "
 "och den truppen inte är oskadliggjord (förstenad eller paralyserad på annat "
@@ -4552,36 +4377,22 @@ msgstr "pest"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:318
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
 "Undead or units in villages."
 msgstr ""
-"Pest:\n"
-"När en trupp dödas av pestsmitta ersätts truppen av en vandrande död som "
-"tillhör sidan som pestsmittade truppen. Detta fungerar inte mot vandöda "
-"eller trupper i byar."
+"När en trupp dödas av pestsmitta ersätts truppen av en trupp som tillhör "
+"sidan som pestsmittade truppen. Detta fungerar inte mot vandöda eller "
+"trupper i byar."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:329
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Pest:\n"
 "När en trupp dödas av pestsmitta ersätts truppen av en vandrande död som "
 "tillhör sidan som pestsmittade truppen. Detta fungerar inte mot vandöda "
 "eller trupper i byar."
@@ -4593,20 +4404,12 @@ msgstr "sakta ner"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:340
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Sakta ner:\n"
 "Denna attack saktar ner motståndartruppen tills den avslutar sitt drag. En "
 "nersaktad trupp vållar hälften av den nominella skadan och har en hälften så "
 "god förflyttning. När en nersaktad trupp valts har den en snigelikon i "
@@ -4619,16 +4422,10 @@ msgstr "förstenar"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:350
-#, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Förstena:\n"
 "Denna attack förstenar målet. Förstenade trupper kan varken anfalla eller "
 "förflytta sig."
 
@@ -4639,15 +4436,9 @@ msgstr "prickskytt"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:360
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
-"Prickskytt:\n"
 "Vid anfall har denna typ av attack alltid åtminstone 60% chans att träffa."
 
 #. [chance_to_hit]: id=magical
@@ -4657,16 +4448,10 @@ msgstr "magisk"
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:373
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"Magisk:\n"
 "Denna attack har alltid 70% chans att träffa oavsett måltavlans försvar."
 
 #. [swarm]: id=swarm
@@ -4676,24 +4461,16 @@ msgstr "svärma"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:385
-#, fuzzy
-#| msgid ""
-#| "Swarm:\n"
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"Svärma:\n"
 "För den här typen av attack minskar antalet attacker när truppen är skadad. "
 "Antalet attacker är proportionellt mot kvoten nuvarande hälsopoäng genom "
 "maximal hälsopoäng. En trupp som t ex har 3/4 av sin maximala hälsopoäng har "
-"3/4 av det maximala antalet atacker i strid."
+"3/4 av det maximala antalet attacker i strid."
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:394
@@ -4702,17 +4479,10 @@ msgstr "storma"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:395
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
-"Storma:\n"
 "När den används offensivt vållar denna typ av attack dubbel skada hos målet, "
 "men den anfallande truppen tar också dubbel skada från målets motattack."
 
@@ -4723,38 +4493,23 @@ msgstr "suga livskraft"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:408
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Suga livskraft:\n"
 "Denna typ av attack suger livskraften ur levande trupper, och helar sig "
 "själv med hälften av den skada den orsakar (avrundat nedåt)."
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:417
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
 msgstr "första slaget"
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:418
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Första slaget:\n"
-"Denna trupp slår alltid först, även om den försvarar sig."
+msgstr "Denna trupp slår alltid först, även om den försvarar sig."
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:427
@@ -4763,18 +4518,11 @@ msgstr "gift"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:428
-#, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
 "a unit."
 msgstr ""
-"Gift:\n"
 "Denna attack förgiftar målet. Förgiftade trupper förlorar 8 HP varje drag "
 "tills de botas eller har försvagats till 1 HP. Förgiftning kan inte ensamt "
 "döda en trupp."
@@ -4788,220 +4536,188 @@ msgstr "Max HP-bonus +3, Max XP +20%"
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
 msgid "Midday"
-msgstr ""
+msgstr "Middag"
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
 msgid "Midnight"
-msgstr ""
+msgstr "Midnatt"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:203
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "Andra vakten"
+msgstr "Andra vakten — Första timmen"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:215
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "Andra vakten"
+msgstr "Andra vakten — Andra timmen"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:227
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "Andra vakten"
+msgstr "Andra vakten — Tredje timmen"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:239
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "Andra vakten"
+msgstr "Andra vakten — Fjärde timmen"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:251
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "Andra vakten"
+msgstr "Andra vakten — Femte timmen"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:263
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "Andra vakten"
+msgstr "Andra vakten — Sjätte timmen"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:287
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "Morgon — första timmen"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:299
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "Morgon — andra timmen"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:311
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "Morgon — tredje timmen"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:320
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "Morgon — fjärde timmen"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "Eftermiddag — Första timmen"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "Eftermiddag — Andra timmen"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:356
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "Eftermiddag — Tredje timmen"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:365
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "Eftermiddag — Fjärde timmen"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:374
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "Eftermiddag — Femte timmen"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:385
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "Eftermiddag — Sjätte timmen"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:408
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "Första vakten — Första timmen"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:420
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "Första vakten — Andra timmen"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:432
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "Första vakten — Tredje timmen"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:444
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "Första vakten — Fjärde timmen"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:498
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Dawn"
-msgstr "Första vakten"
+msgstr "Första gryningsvakten"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:509
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dawn"
-msgstr "Andra vakten"
+msgstr "Andra gryningsvakten"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:520
-#, fuzzy
-#| msgid "Morning"
 msgid "First Morning"
-msgstr "Förmiddag"
+msgstr "Första morgonvakten"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:532
-#, fuzzy
-#| msgid "Morning"
 msgid "Second Morning"
-msgstr "Förmiddag"
+msgstr "Andra morgonvakten"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:544
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Midday"
-msgstr "Första vakten"
+msgstr "Första middagsvakten"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:556
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Midday"
-msgstr "Andra vakten"
+msgstr "Andra middagsvakten"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:568
-#, fuzzy
-#| msgid "Afternoon"
 msgid "First Afternoon"
-msgstr "Eftermiddag"
+msgstr "Första eftermiddagsvakten"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:580
-#, fuzzy
-#| msgid "Afternoon"
 msgid "Second Afternoon"
-msgstr "Eftermiddag"
+msgstr "Andra eftermiddagsvakten"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:592
-#, fuzzy
-#| msgid "firststrike"
 msgid "First Dusk"
-msgstr "första slaget"
+msgstr "Första skymningsvakten"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:603
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dusk"
-msgstr "Andra vakten"
+msgstr "Andra skymningsvakten"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:614
 msgid "The Short Dark"
-msgstr ""
+msgstr "Det korta mörkret"
 
 #. [time]: id=long_dark1
 #: data/core/macros/schedules.cfg:626
 msgid "The Long Dark (1)"
-msgstr ""
+msgstr "Det långa mörkret (1)"
 
 #. [time]: id=long_dark2
 #: data/core/macros/schedules.cfg:638
 msgid "The Long Dark (2)"
-msgstr ""
+msgstr "Det långa mörkret (2)"
 
 #. [time]: id=long_dark3
 #: data/core/macros/schedules.cfg:650
 msgid "The Long Dark (3)"
-msgstr ""
+msgstr "Det långa mörkret (3)"
 
 #. [time]: id=long_dark4
 #: data/core/macros/schedules.cfg:664
 msgid "The Long Dark (4)"
-msgstr ""
+msgstr "Det långa mörkret (4)"
 
 #: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:549
 #, fuzzy
@@ -5047,9 +4763,9 @@ msgstr " Denna trupp kan hela närliggande trupper."
 
 #: data/core/macros/special-notes.cfg:24
 #, fuzzy
-#| msgid " This unit is capable of basic healing."
+#| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
-msgstr " Denna trupp kan hela närliggande trupper."
+msgstr " Denna trupp kan hela närliggande trupper snabbt."
 
 #: data/core/macros/special-notes.cfg:27
 #, fuzzy
@@ -5266,8 +4982,8 @@ msgstr ""
 #: data/core/macros/special-notes.cfg:84
 #, fuzzy
 #| msgid ""
-#| " The unit has magical attacks, which always have a high chance of hitting "
-#| "an opponent."
+#| " This unit has magical attacks, which always have a high chance of "
+#| "hitting an opponent."
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -5334,10 +5050,16 @@ msgstr ""
 "by eller av en trupp som kan bota."
 
 #: data/core/macros/special-notes.cfg:102
+#, fuzzy
+#| msgid ""
+#| " This unit has a defense cap on certain terrain types — it cannot achieve "
+#| "a higher defense rating on mixed terrains with such terrain types."
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
+"Denna trupp har ett försvarstak på vissa typer av terräng, den kan inte få "
+"bättre försvar än detta på rutor med blandad terräng."
 
 #. [special_note]
 #: data/core/macros/special-notes.cfg:156
@@ -5539,10 +5261,6 @@ msgstr ""
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:134
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Strong'</italic> units do 1 more damage for every "
-#| "successful strike in melee combat, and have 1 more HP."
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 additional hitpoint."
@@ -5618,10 +5336,6 @@ msgstr ""
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:172
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
-#| "less HP than usual."
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "hitpoints than usual."
@@ -5698,31 +5412,27 @@ msgstr ""
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:208
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level "
-#| "more than usual."
 msgid ""
 "<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
 "gain 1 more per level."
 msgstr ""
 "<italic>text='Tåliga'</italic> trupper har 4 HP plus 1 HP per nivå mer än "
-"normalt."
+"andra."
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:227
 msgid "healthy"
-msgstr "livskraftig"
+msgstr "frisk"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:228
 msgid "female^healthy"
-msgstr "livskraftig"
+msgstr "frisk"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:229
 msgid "Always rest heals"
-msgstr "Helar alltid som utvilad"
+msgstr "Helar alltid som om de vilat"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:230
@@ -5733,13 +5443,14 @@ msgid ""
 "more per level. They will also heal 2 hitpoints each turn, regardless of "
 "whether they engaged in combat the turn before."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Friska'</italic> trupper har ett ytterligare hälsopoäng och "
+"får ytterligare ett per nivå. De helar också 2 hälsopoäng per drag oavsett "
+"om de vilar eller slåss."
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:230
-#, fuzzy
-#| msgid ""
-#| "Renowned for their vitality, some dwarves are sturdier than others and "
-#| "can rest even when travelling."
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when traveling."
@@ -5785,12 +5496,6 @@ msgstr "Får bara 50% terrängförsvar i byar på land."
 # 50% is the true value
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:288
-#, fuzzy
-#| msgid ""
-#| "Dwellings of sentient beings are not easily used for cover by feral "
-#| "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
-#| "units receive a maximum of 40% defense in any land-based village "
-#| "regardless of base terrain."
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -5813,10 +5518,6 @@ msgstr "svag"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:306
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
-#| "hitpoints and melee damage."
 msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
 "in hitpoints and melee damage."
@@ -5851,9 +5552,6 @@ msgstr ""
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:325
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
 msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
@@ -5906,10 +5604,6 @@ msgstr "åldrad"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:361
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
-#| "hitpoints and a −1 increment in movement and melee damage."
 msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
@@ -5981,75 +5675,6 @@ msgstr "Drakfolket"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
-#, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over its functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — <ref>dst='dominant' text='dominant'</ref> who rules the "
-#| "society with an iron fist. Every drake is expected to earn their place in "
-#| "the strict hierarchy, to obey their superiors and command their "
-#| "inferiors. Entry to the ruling elite is only possible through challenging "
-#| "and defeating a superior in single combat, which is the way the hierarchy "
-#| "within the elite itself is established. The use of deception of any kind "
-#| "towards any fellow drake is, without exception, seen as cowardly and "
-#| "unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain of "
-#| "moss and fungi they cultivate deep in their caverns. The only technology "
-#| "drakes value is armor- and weapon-smithing, and neither know or need "
-#| "other science and culture besides this. However the few implements they "
-#| "do fashion are almost unrivaled in quality, only matched by those "
-#| "produced in the finest Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
-#| "years. Death in battle is the most preferred way for a drake to leave "
-#| "this world. Unlike the elder members of other races, drakes naturally "
-#| "grow more aggressive and reckless towards the ends of their natural "
-#| "lives, perhaps to help ensure their place in the heroic legends of their "
-#| "kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6118,15 +5743,15 @@ msgid ""
 msgstr ""
 "Drakfolket är stora, bevingade, eldsprutande varelser som påminner om äkta "
 "drakar. En vuxen individ hos drakfolket blir i regel runt tre meter lång och "
-"väger utan problem mer än  den kombinerade vikten av en man och hans häst. "
+"väger utan problem mer än den sammanlagda vikten av en man och hans häst. "
 "Deras skin består av hårda fjäll som tål de flesta fysiska attacker förutom "
 "stick- och frostattacker väldigt bra. Majoriteten av drakfolket kan flyga "
 "och tillryggalägga långa avstånd på kort tid. Deras vikt stora vikt och "
 "storlek hindrar dem dock från att vara graciösa i luften. De använder därför "
 "gärna kullar, berg och träd som startplatser för uppnå bättre höjd och "
 "hastighet. Deras fiender ska vara glada att de är så klumpiga och långsamma "
-"i strid. Detta, tillsammans med deras storlek, gör de till ett lätt byte för "
-"de som har modet att attackera dem.\n"
+"i strid. Detta, tillsammans med deras storlek, gör dem till ett lätt byte "
+"för de som har modet att attackera dem.\n"
 "\n"
 "Drakfolket har en medfödd magi och en mystisk inre eld som utgör deras "
 "livsenergi. Detta är lätt att se när en av dem dör i strid; den inre elden "
@@ -6135,48 +5760,47 @@ msgstr ""
 "köldattacker. Trots deras magiska ursprung är drakfolket inte kapabla att "
 "hantera magin på ett kontrollerat sätt. Emedan deras inre magi låter dem "
 "spruta eld och ger de liv så kan de inte utöva någon medveten kontroll över "
-"hur magin ska fungera.\n"
+"denna magin.\n"
 "\n"
 "<header>text='Samhälle'</header>\n"
-"Drakfolket har en krigisk natur och deras samhälle beskrivs bäst som ett "
-"kultiverat militärsamhälle. Kärnan i en stam hos drakfolket är en grupp av "
+"Drakfolket är en krigisk ras och deras samhälle beskrivs bäst som ett "
+"kultiverat militärsamhälle. Kärnan i en drakfolksstam är en grupp av "
 "veterankrigare som leds av en respekterad — eller helt enkel fruktad — "
-"<ref>dst='dominant' text='alfahane'</ref> som styr samhället med en "
-"järnhand. Bland drakfolket förväntas alla göra sin plikt i den strikta "
-"hierarkin, lyda sina överordnade och styra sin underordnade. För att stiga "
-"till den regerande eliten måste man utmana och besegra en överordnad i "
-"enskild kamp, vilket också är hur hierarkien inom eliten fastställs. "
-"Distraktioner och bedrägerier ses, utan undantag, som något enbart en "
-"ynkrygg skulle ta till och är oacceptabelt.\n"
+"dominerande ledare som styr samhället med en järnhand. Bland drakfolket "
+"förväntas alla göra sin plikt i den strikta hierarkin, lyda sina överordnade "
+"och styra sin underordnade. För att stiga till den regerande eliten måste "
+"man utmana och besegra en överordnad i enskild kamp, vilket också är hur "
+"hierarkien inom eliten fastställs. Distraktioner och bedrägerier ses utan "
+"undantag som något enbart en ynkrygg skulle ta till och är oacceptabelt.\n"
 "\n"
-"Emedan deras krigiska  och territoriella natur driver dem till att försvara "
+"Emedan deras krigiska och revirhävdande natur driver dem till att försvara "
 "sina territorier utan nåd, invaderar eller inkräktar drakfolket sällan på de "
 "andra stora rasernas marker. De väljer istället att bebygga tidigare "
 "obefolkade områden för att etablera nya territorier. Deras huvudsakliga "
-"matkälla är jaktbyten från markerna runt om deras boningar, men deras "
-"nykläckta och de som är av lägre kast livnär sig även på mossa och svamp som "
-"odlas djupt inne i deras grottor. Den enda teknologin drakfolket bryr sig om "
-"är rustnings- och vapensmide. De varken har eller vill ha någon annan "
-"vetenskap eller kultur utöver det. De få verktyg de trots detta gör saknar "
-"nästan like i kvalitet och enbart de finaste verken från dvärgarnas smedjor "
-"kommer i närheten.\n"
+"matkälla är jaktbyten från markerna runt om deras boningar, men nykläckta "
+"drakfolksungar och drakfolk av lägre kast livnär sig även på vissa typer av "
+"mossa och svamp som odlas djupt inne i deras grottor. Den enda teknologin "
+"drakfolket bryr sig om är rustnings- och vapensmide. De varken har eller "
+"vill ha någon annan vetenskap eller kultur utöver det. De få verktyg de "
+"trots detta gör saknar nästan like i kvalitet och enbart de finaste arbeten "
+"från dvärgarnas smedjor kommer i närheten.\n"
 "\n"
 "Drakfolket lägger ägg och deras naturliga livslängd är mellan 20 och 30 år. "
 "De föredrar att dö i strid framför alla andra sätt att lämna denna världen. "
 "Tvärt emot de äldre hos andra raser blir drakfolket mer och mer aggressiva "
-"och hänsynslösa mot slutet av deras naturliga liv. Kanske är detta ett sätt "
+"och vårdslösa mot slutet av deras naturliga liv. Kanske är detta ett sätt "
 "att garantera deras plats i deras hjältesagor.\n"
 "\n"
 "<header>text='Geografi'</header>\n"
-"Drakfolket kom ursprungligen från en övärld kallad <ref>dst='morogor' "
-"text='Morogor'</ref> i <ref>dst='great_ocean' text='Stora havet'</ref>. En "
-"kombination av överbefolkning och att deras hemöar började sätta sig djupare "
-"i havet fick deras kolonier att sprida sig till den "
-"<ref>dst='great_continent' text='stora kontinenten'</ref>. De tenderar att "
-"etablera sina bon i bergen, nära vulkanerna, för att skydda sina ägg, "
+"Drakfolket kom ursprungligen från en vulkanisk arkipelago kallad "
+"<ref>dst='morogor' text='Morogor'</ref> i <ref>dst='great_ocean' text='Stora "
+"havet'</ref>. En kombination av överbefolkning och att deras hemöar började "
+"sjunka ner i havet fick deras kolonier att sprida sig till den "
+"<ref>dst='great_continent' text='Stora kontinenten'</ref>. De bosätter sig "
+"gärna i bergsgrottor i närheten av vulkaner, för att skydda sina ägg, "
 "nykläckta samt sina smedjor. Även om drakfolket föredrar varmare klimat, är "
 "deras inre eldar mer än kapabla att hålla dem vid god vigör även i kallare "
-"klimat, något som låtit dem expandera så långt som några av bergen, långt "
+"klimat, något om låtit dem expandera så långt som några av bergen, långt "
 "norrut på den Stora kontinenten."
 
 #. [race]: id=dwarf
@@ -6196,55 +5820,6 @@ msgstr "Dvärgar"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:90
-#, fuzzy
-#| msgid ""
-#| "The dwarves are a race famed for their miners, blacksmiths, merchants and "
-#| "warriors. Considered as the third oldest race on the great continent "
-#| "after the elves and trolls, their early history is shrouded in mystery. "
-#| "Legends tell of a time long forgotten when their people began emerging "
-#| "from their underground world through caves. Nothing is known about their "
-#| "life prior to their arrival, or their reasons for entering the surface "
-#| "world, but they have been an integral part of the history of the "
-#| "continent since. Soon after their emergence from the underground, the "
-#| "dwarves entered into conflict with the original inhabitants of the land, "
-#| "the elves. The original reason for their dispute has been lost to "
-#| "history, but the two races have since fought three long wars, interrupted "
-#| "by a few decades of peace. During these wars the dwarves could not "
-#| "dislodge the elves from the deep forests in the south, but managed to "
-#| "consolidate their position in hills and the mountains in the north of the "
-#| "continent, known now as the Northlands. Since then they have constructed "
-#| "fantastic fortifications and settlements deep within the mountains and "
-#| "crags of their territory.\n"
-#| "\n"
-#| "Possibly due to their isolation, the dwarves are generally distrustful or "
-#| "hostile towards most other races, particularly the elves. The single "
-#| "exception to this temperament is towards humans. This could be traced "
-#| "back to the era of Haldric I and the arrival of humans and orcs to the "
-#| "continent. At this point the dwarves began allowing some humans, mostly "
-#| "dissidents and outlaws from the Kingdom of Wesnoth, to settle in certain "
-#| "areas of the Northlands. Their motivation was unsurprising. The plight of "
-#| "these individuals reminded the dwarves of their early history of "
-#| "persecution, eliciting a sense of solidarity. The dwarves also had much "
-#| "to gain in forming a bond with these outcasts. They would settle in areas "
-#| "where dwarves disliked living themselves; plains, forests, and swamps, "
-#| "freeing them from defending these areas.\n"
-#| "\n"
-#| "Dwarves are of small stature by human measure, but they are by no means "
-#| "fragile. Their warriors, tough and powerful are both feared and respected "
-#| "throughout the continent for their prowess in battle. In addition, "
-#| "dwarves are known for their calculating intellects and superb "
-#| "craftsmanship. Dwarven smiths are renowned for their deadly weapons and "
-#| "heavy armor. These accouterments are unrivaled in quality, possibly only "
-#| "matched by those produced by drake armorers. Their intelligence and "
-#| "natural inquisitiveness has also made them the most technically advanced "
-#| "race on the continent. One of their most famous, and feared, discoveries "
-#| "was a mysterious powder that produces an immense explosion when exposed "
-#| "to fire or sparks. Certain dwarf warriors use this powder to hurl small "
-#| "objects at tremendous speeds. Given their technological inclinations, "
-#| "many dwarves tend to distrust magic users. However some practice a form "
-#| "of magic based on the engraving of runes. Called runesmiths, they use "
-#| "these carvings to enchant items in order to augment certain aspects of "
-#| "their natures."
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -6292,7 +5867,7 @@ msgid ""
 "Called runesmiths, they use these carvings to enchant items in order to "
 "augment certain aspects of their natures."
 msgstr ""
-"Dvärgarna är kända för deras gruvarbetare, handelsmän, smeder och krigare. "
+"Dvärgarna är kända för sina gruvarbetare, handelsmän, smeder och krigare. "
 "Även om de anses vara den tredje äldsta rasen på Stora kontinenten, efter "
 "alverna och trollen, är deras tidiga historia relativt okänd. Legenderna "
 "berättar om en sedan länge glömd tid när deras folk började komma ut från "
@@ -6300,14 +5875,14 @@ msgstr ""
 "om deras motiv för att komma upp till ytan, men de har varit en central del "
 "av kontinentens historia sedan dess. Strax efter det att de kom ut från "
 "underjorden hamnade dvärgarna i konflikt med de ursprungliga invånarna av "
-"landet, alverna. De ursprungliga anledningarna för konflikten har sedan "
+"landet - alverna. De ursprungliga anledningarna för konflikten har sedan "
 "länge glömts bort, men de två raserna har utkämpat tre långa krig sedan "
 "dess, med enbart några få årtionden av fred. Under dessa krig har dvärgarna "
-"inte kunnat köra ut alverna från de djupa skogarna i söder, men de har "
+"inte kunnat driva ut alverna från de djupa skogarna i söder, men de har "
 "lyckats befästa sin position i kullarna och bergen på de norra delarna av "
-"kontinenten, kända som Nordländerna. Sedan dess har de konstruerat "
-"fantastiska fästningsanläggningar och boplatser djup inne bland bergen och "
-"ravinerna i deras territorium.\n"
+"kontinenten, nu kända som Nordländerna. Sedan dess har de konstruerat "
+"fantastiska befästningar och boplatser djupt inne i bergen och ravinerna i "
+"deras territorium.\n"
 "\n"
 "Dvärgarna är generellt sett misstänksamma eller till och med fientliga "
 "gentemot de flesta andra raser, kanske p g a deras isolation. Detta gäller "
@@ -6318,26 +5893,26 @@ msgstr ""
 "var föga förvånande. Dessa individers svårigheter påminde dvärgarna om deras "
 "egna tidiga historia av förföljelse, något som väckte känslor av "
 "solidaritet. Dvärgarna hade även mycket att vinna på en allians med de "
-"utstötta. De bosatte sig främst i områden som dvärgarna ogillade, som "
-"slätter, skogar och träsk. Det här befriade dvärgarna från att försvara de "
-"områdena.\n"
+"utstötta. Dessa bosatte sig främst i områden som dvärgarna ogillade, som "
+"slätter, skogar och träsk; som då dvärgarna slapp försvara.\n"
 "\n"
-"Dvärgarna är små till växten i mänskliga mått mätt, men de är på intet sätt "
-"bräckliga. Deras krigare, härdiga och kraftfulla, är både respekterade och "
-"fruktade över kontinenten för deras skicklighet i strid. Utöver det är "
-"dvärgarna kända för deras beräknande intellekt och utomordentliga "
-"hantverksskicklighet. Dvärgarnas smeder är vida berömda för deras dödliga "
-"vapen och rustningar. Denna utrustning är utan like i kvalité, med det "
-"möjliga undantaget av drakfolkets vapensmeder. Deras intelligens och "
-"naturliga nyfikenhet har även gjort dem till den teknologiskt mest "
-"utvecklade rasen på kontinenten. En av deras mest berömda, och fruktade, "
-"upptäckter var det mystiska pulver som skapar en enorm explosion tillsammans "
-"med eld eller gnistor. En del dvärgkrigare använder det här pulvret för att "
-"skicka iväg små objekt i oerhörda hastigheter. Tack vare deras tekniska "
-"böjelser är många dvärgar misstänksamma mot användare av magi. Några "
-"tillämpar dock en form av magi baserad på graveringen av runor. Runsmeder, "
-"som de kallas, använder dessa gravyrer för att förtrolla föremål så att "
-"vissa av deras naturliga egenskaper förstärks."
+"Dvärgarna är små till växten i mänskliga mått mätt, men på intet sätt "
+"bräckliga. Deras härdiga och kraftfulla krigare är både respekterade och "
+"fruktade över hela kontinenten för sin skicklighet i strid. Utöver det är "
+"dvärgarna kända för sitt beräknande intellekt och sin utomordentliga "
+"hantverksskicklighet. Dvärgarnas smeder är vida berömda för de dödliga vapen "
+"och rustningar de tillverkar. Denna utrustning är utan like i kvalité, med "
+"det möjliga undantaget av det som drakfolkets vapensmeder tillverkar. Deras "
+"intelligens och naturliga nyfikenhet har även gjort dem till den "
+"teknologiskt mest utvecklade rasen på kontinenten. En av deras mest berömda, "
+"och fruktade, upptäckter var det mystiska pulver som skapar en enorm "
+"explosion när den utsätts för eld eller gnistor. En del dvärgkrigare "
+"använder det här pulvret för att skicka iväg små objekt i oerhörda "
+"hastigheter. Tack vare deras förkärlek för teknologi är många dvärgar "
+"misstänksamma mot användare av magi. Några tillämpar dock en form av magi "
+"baserad på inristninga av runor. Runsmeder, som de kallas, använder dessa "
+"ristningar för att förtrolla föremål så att vissa av deras naturliga "
+"egenskaper förstärks."
 
 #. [race]: id=elf
 #: data/core/units.cfg:107
@@ -6356,44 +5931,6 @@ msgstr "Alver"
 
 #. [race]: id=elf
 #: data/core/units.cfg:111
-#, fuzzy
-#| msgid ""
-#| "Compared to humans, elves are somewhat taller, more agile but less "
-#| "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
-#| "Few differences between humans and elves are more pronounced than the "
-#| "Elves’ unusually long life — most, unless claimed by illness, accident or "
-#| "war, live a full two and a half centuries. While some elves possessing a "
-#| "high magical aptitude have been known to live an additional full century, "
-#| "most elves begin to grow physically frail at some point between 250 and "
-#| "300 years of age and pass away rapidly (generally within a year or two) "
-#| "thereafter.\n"
-#| "\n"
-#| "Elves are naturally imbued with magic to a small degree. Though most are "
-#| "unable to channel it directly, its latent presence gives them their keen "
-#| "senses and long life. Many elves have magic-driven talents such as "
-#| "marksmanship or stealth, allowing them to achieve tasks that most normal "
-#| "beings would find astonishing. Those elves that learn to wield this power "
-#| "in more general ways can become truly formidable in its use. Many choose "
-#| "to use their gift to heal others.\n"
-#| "\n"
-#| "A few elves, venturing far down the paths of magic and mysticism, become "
-#| "sensitive to the presence of cold iron and can even be burned by it. "
-#| "Elvish legend hints that this was more common in the far past.\n"
-#| "\n"
-#| "Elves spend much of their time honing their talents and skills. Those not "
-#| "adept at the magical arts typically devote their time honing their "
-#| "physical skills. As a result, elves excel at archery, which is perhaps "
-#| "their most important method of warfare. Most elvish troops carry a bow "
-#| "and no other race can rival their archers in speed and accuracy. All "
-#| "elves also share an intense affection for unspoiled nature. They often "
-#| "feel uncomfortable in open unvegetated spaces. They live primarily in the "
-#| "forests of the Great Continent; the Aethenwood in the southwest, Wesmere "
-#| "in the northwest, and the great northern woods of which the Lintanir "
-#| "Forest is the southernmost edge.\n"
-#| "\n"
-#| "Elves are the eldest race of the continent, with the possible exception "
-#| "of trolls. Many of their settlements cannot be reliably dated, "
-#| "undoubtedly having existed for over a millennium."
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -6433,12 +5970,12 @@ msgid ""
 msgstr ""
 "Jämfört med människor är alver något längre och smidigare, men inte lika "
 "robusta. De har svagt spetsiga öron, blek hy och vanligtvis blont hår. Få "
-"skillnader mellan människor och alver är lika påtagliga som deras långa liv. "
-"De flesta alver, såvida de inte faller i krig eller drabbas av en sjukdom "
-"eller olycka, lever i hela två och ett halvt århundrade. Medan några få "
-"alver med starka magiska gåvor kan leva ytterligare ett århundrade,börjar de "
-"flesta alver bli skröpliga någonstans mellan 250 och 300 års ålder och gå "
-"bort strax därefter (vanligtvis inom ett år eller två).\n"
+"skillnader mellan människor och alver är lika påtagliga som alvernas långa "
+"liv. De flesta alver, såvida de inte faller i krig eller drabbas av en "
+"sjukdom eller olycka, lever i hela två och ett halvt århundrade. Medan några "
+"få alver med starka magiska gåvor kan leva ytterligare ett århundrade, "
+"börjar de flesta alver bli skröpliga någonstans mellan 250 och 300 års ålder "
+"och gå bort strax därefter (vanligtvis inom ett år eller två).\n"
 "\n"
 "Alver har en mindre mängd inneboende magi. Även om de flesta inte kan "
 "använda den direkt, ger dess närvaro dem skarpare sinnen och deras långa "
@@ -6448,7 +5985,7 @@ msgstr ""
 "påtagligt kan uppnå rent formidabla nivåer. Många väljer att använda sina "
 "förmågor till att hela andra.\n"
 "\n"
-"Några får alver, som kommit långt på magins och mystikens vägar, blir "
+"Några få alver, som kommit långt på magins och mystikens vägar, blir "
 "känsliga för närvaron av kallt järn och kan till och med bli brända av det. "
 "Alvernas legender antyder att detta var något som var vanligare förr.\n"
 "\n"
@@ -6459,7 +5996,7 @@ msgstr ""
 "bär med sig en båge och inga andra raser kan mäta sig med deras bågskyttar i "
 "hastighet och träffsäkerhet. Alla alver har även en stark kärlek till den "
 "orörda naturen. De känner sig ofta obekväma i öppna obeväxta miljöer. De bor "
-"mestadels i skogarna på Stora kontinenten; Aethenskogen i sydväst, Wesmere i "
+"mestadels i skogarna på Stora kontinenten; Aethenwood i sydväst, Wesmere i "
 "nordväst and de stora nordliga skogarna av vilka Lintanirskogen utgör den "
 "södra utkanten.\n"
 "\n"
@@ -6494,6 +6031,14 @@ msgid ""
 "well, with certain falconers training their birds to distinguish between "
 "friend and foe, making them a useful asset to aid in an army’s charge."
 msgstr ""
+"Falkarna är rovfåglar som utmärks av extrem snabbhet och smidighet. De är "
+"lättare och med mindre kraftfulla klor än andra rovfåglar och använder sig "
+"hellre av sin näbb för att döda sitt byte. Deras skarpa ögon och att det går "
+"att tämja dem gör att de är en talrik och välkänd varelse som används både "
+"av adelsmän för sport och av nomader och andra stammar för jakt. Falkar "
+"används ibland i strid då några falkenerare tränar dem att se skillnad på "
+"vän och fiende så att de kan komma till nytta för att understödja en armés "
+"anfall."
 
 #. [race]: id=goblin
 #: data/core/units.cfg:141
@@ -6512,26 +6057,6 @@ msgstr "Vättar"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:144
-#, fuzzy
-#| msgid ""
-#| "Goblins are, despite their appearance, born as siblings to the orcs and "
-#| "members of the same race. While other races usually bear children singly "
-#| "or in pairs, orcs will have large litters of children all at once, "
-#| "causing their populations to explode rather quickly. Within any litter, "
-#| "there will only be one or two true orcs, who will grow to the full size "
-#| "and strength of their race. A few more will be half-orcs, notably weaker "
-#| "than their big brothers, and relegated to supporting roles in combat, "
-#| "such as archery. The rest, often a full half of more of any litter, will "
-#| "be goblins. Goblins are puny and quite frail, rarely growing past the "
-#| "size and stature of a human child. Goblins are born into a lifetime of "
-#| "near-slavery to their larger kin, and used as sword-fodder in battle. "
-#| "They thrive in spite of their tragic fate; in part because they are so "
-#| "very numerous, and also because their brother orcs are well aware how "
-#| "dependent they are on the goblins.\n"
-#| "\n"
-#| "Goblins perform the bulk of manual labor needed by the orcs, with the "
-#| "sole exception of jobs that require the brute strength of true orcs. "
-#| "Those the orcs revel in as proof of their prowess."
 msgid ""
 "\n"
 "\n"
@@ -6546,22 +6071,18 @@ msgid ""
 "that require the brute strength of true orcs. Those the orcs revel in as "
 "proof of their prowess."
 msgstr ""
-"Vättarna är, trots sitt utseende, syskon till orcher och medlemmar av samma "
-"ras. Medan andra raser vanligtvis får ett eller två barn åt gången föder "
-"orcher hela kullar av barn, något som orsakar befolkningsexplosioner. I "
-"varje given kull är det bara en eller två orcher som kommer växa upp till "
-"full storlek och styrka. Ytterligare några kommer bli halv-orcher: märkbart "
-"svagare än sina bröder och begränsade till understödsroller i strid, så som "
-"bågskytte. Resten, oftast mer än hälften av kullen, blir vättar. Vättar är "
-"ynkliga och sköra, sällan större eller kraftigare än ett människobarn. De "
-"föds in i ett liv av liv som inte är nämnvärt bättre än slaveri under sina "
-"större släktingar och är de som offras först i en strid. De frodas trots "
-"sitt sorgliga öde, dels eftersom de är så mänga, dels eftersom deras "
-"orchbröder är väl medvetna om att der är beroende av vättarnas antal.\n"
 "\n"
-"Vättarna utför större delen av det fysiska arbetet som orcherna behöver få "
-"gjort, med undantag av de jobb som faktiskt kräver en orchs fulla styrka. De "
-"jobben ser orcherna istället som ett bevis på deras överlägsenhet."
+"\n"
+"Vättarna är små och ganska bräckliga och även som fullväxta sällan större än "
+"ett av människornas barn.\n"
+"\n"
+"De föds in i ett liv av liv som inte är nämnvärt bättre än slaveri under "
+"sina större släktingar och är de som offras först i en strid. De frodas "
+"trots sitt sorgliga öde, dels eftersom de är så många, dels eftersom deras "
+"orchbröder är väl medvetna om hur beroende är av vättarna. Vättarna utför "
+"större delen av det fysiska arbetet som orcherna behöver få gjort, med "
+"undantag av de jobb som faktiskt kräver en orchs fulla styrka. De jobben ser "
+"orcherna istället som ett bevis på deras överlägsenhet."
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:161
@@ -6608,47 +6129,6 @@ msgstr "Människor"
 
 #. [race]: id=human
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid ""
-#| "The race of men is an extremely diverse one. Although they originally "
-#| "came from the Old Continent, men have spread all over the world and split "
-#| "into many different cultures and races. Although they are not imbued with "
-#| "magic like other creatures, humans can learn to wield it and able to "
-#| "learn more types than most others. They have no extra special abilities "
-#| "or aptitudes except their versatility and drive. While often at odds with "
-#| "other races, they can occasionally form alliances with the less "
-#| "aggressive races such as elves and dwarves. The less scrupulous among "
-#| "them do not shrink back from hiring orcish mercenaries, either. They have "
-#| "no natural enemies, although the majority of men, like most people of all "
-#| "races, have an instinctive dislike of the undead. Men are shorter than "
-#| "the elves, but taller still than dwarves. Their skin color can vary, from "
-#| "almost white to dark brown.\n"
-#| "\n"
-#| "<header>text='Subjects of the Crown'</header>\n"
-#| "Many different groups of men exist, but the majority of them on the Great "
-#| "Continent live under the rule of the Crown of Wesnoth. The humans first "
-#| "appeared on the Great Continent from a land far across the ocean to the "
-#| "West, the Green Isle, and soon established their capital at the inland "
-#| "city of Weldyn. Over the following centuries they have built up a number "
-#| "cities across the continent. The soldiers from the Crown of Wesnoth "
-#| "protect the country, forming the most organized military force in the "
-#| "known world. Its warriors come from the main provinces, where all men are "
-#| "conscripted at an early age.\n"
-#| "\n"
-#| "<header>text='The Clansmen'</header>\n"
-#| "The eastern provinces of Wesnoth, known as the Clan Homelands, have a "
-#| "geography consisting of more open plains and rolling hills than the "
-#| "western, more civilized provinces. They are home to the Horse Clans, who "
-#| "are allied with the Crown of Wesnoth but operate independently and "
-#| "maintain their own identity. Some consider them to be a tributary state, "
-#| "which sends food and soldiers to Crown in exchange for protection. Others "
-#| "say they are on equal footing with the western half of Wesnoth. In any "
-#| "case, the eastern provinces do not have a conscript army the way Western "
-#| "Wesnoth does. Training for fighting is part of the way of life of the "
-#| "Clans; the parents teach the children to ride horses, fight and shoot a "
-#| "bow from an early age. In general, the Clan warriors are less organized "
-#| "than the civilized fighters, and the strengths and weaknesses of these "
-#| "groups complement each other."
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -6689,65 +6169,60 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
-"Den mänskliga rasen är extremt mångfaldig. De kom ursprungligen från den "
-"Gamla kontinenten, men människorna har spridit sig över hela världen och "
+"Den mänskliga rasen är extremt varierad. De kom ursprungligen från den Gamla "
+"kontinenten, men människorna har spridit sig över hela världen och "
 "splittrats upp i många olika kulturer och raser. Även om de saknar en "
 "inneboende magi till skillnad från många andra varelser, kan människorna "
 "lära sig hantera flera olika sorters magi än många andra raser. De saknar "
 "extra färdigheter utöver sin drivkraft och flexibilitet. Trots att de ofta "
 "har en kylig relation till andra raser, kan de ibland forma allianser med de "
-"mindre aggressiva av dem, så som alver och dvärgar. De mindre etiskt sinnade "
-"människorna kan även tänka sig att kontraktera legosoldater bland orcherna. "
-"De har inga naturliga fiender, även om de flesta människor, såsom alla andra "
-"raser, hyser en instinktiv avsky mot vandöda. Människorna är kortare än "
-"alverna, men längre än dvärgarna. Färgen på deras hy kan variera från nästan "
-"vit till mörkt brun.\n"
+"mindre aggressiva av dem, så som alver och dvärgar. Mindre nogräknade "
+"människor kan även tänka sig att hyra orchiska legosoldater. De har inga "
+"naturliga fiender, även om de flesta människor, såsom alla andra raser, "
+"hyser en instinktiv avsky mot vandöda. Människorna är kortare än alverna, "
+"men längre än dvärgarna. Färgen på deras hy kan variera från nästan vit till "
+"mörkt brun.\n"
 "\n"
 "<header>text='Kronans undersåtar'</header>\n"
 "Många olika människogrupper existerar, men majoriteten av dem som bor på "
-"Stora kontinenten är undersåtar i Wesnoths kungadöme. Människorna kom först "
-"till den Stora kontinenten från ett land långt till väster, på andra sidan "
-"havet, kallat Gröna ön. Det dröjde inte länge innan de etablerat sig på "
-"inlandet i sin huvudstad Weldyn. Under de följande århundradena har de byggt "
+"Stora kontinenten är undersåtar till Wesnoths kungadöme. Människorna kom "
+"först till den Stora kontinenten från ett land långt till väster, på andra "
+"sidan havet, kallat Gröna ön. Det dröjde inte länge innan de etablerat sin "
+"huvudstad i inlandsstaden Weldyn. Under århundradena som följde har de byggt "
 "en rad med städer över kontinenten. Soldaterna i Wesnoths kungadöme skyddar "
-"landet och utgör den mest organiserade militära makten i den lända världen. "
+"landet och utgör den mest organiserade militära makten i den kända världen. "
 "Dess krigare kommer från landets huvudprovinser, där alla gör värnplikt vid "
 "en tidig ålder.\n"
 "\n"
 "<header>text='Klanmedlemmarna'</header>\n"
-"Wesnoths östra provinser, kända som Klanernas hemland, Har en geografi som "
+"Wesnoths östra provinser, kända som Klanernas hemland har en geografi som "
 "består av mer öppna vidder och böljande kullar jämfört med de västra, mer "
-"civiliserade provinserna. De utgör hemmet för Hästklanerna, som är allierade "
-"med, men oberoende av, Wesnoths kungamakt. De vidhåller noggrant sin unika "
-"identitet. Vissa anser de vara en lydstat under Wesnoths kungadöme, som "
-"sänder mat och soldater till kronan i utbyte mot beskydd. Andra anser att de "
-"står på jämn fot med den västra halvan av Wesnoth. Oavsett vilket så har "
-"inte de östra provinserna en värnpliktsarmé i samma anda som västra Wesnoth. "
-"Bland Klanerna är krigsträning en del av livet. Föräldrarna lär sina barn "
-"att rida, slåss och skjuta med båge från en tidig ålder. Generellt sett är "
-"klanernas krigare mindre organiserade än de civiliserade krigarna, men deras "
-"styrkor och svagheter kompletterar varandra väl."
+"civiliserade provinserna. De utgör Hästklanernas hemtrakter. Dessa är "
+"allierade med, men oberoende av, Wesnoths kungamakt, och vidhåller noggrant "
+"sin egen identitet. Vissa anser att de är en lydstat under Wesnoths "
+"kungadöme, som sänder mat och soldater till kronan i utbyte mot beskydd. "
+"Andra anser att de står på jämn fot med den västra halvan av Wesnoth. "
+"Oavsett vilket så har inte de östra provinserna en värnpliktsarmé i samma "
+"anda som västra Wesnoth. Bland Klanerna är krigsträning en del av livet. "
+"Föräldrarna lär sina barn att rida, slåss och skjuta med båge från en tidig "
+"ålder. Generellt sett är klanernas krigare mindre organiserade än de "
+"civiliserade krigarna, men deras styrkor och svagheter kompletterar varandra "
+"väl."
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:200
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Dunefolk Human"
-msgstr "Människa"
+msgstr ""
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:201
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
-msgstr "Människa"
+msgstr ""
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:202
-#, fuzzy
-#| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
-msgstr "Vandöda"
+msgstr ""
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:203
@@ -6891,6 +6366,67 @@ msgid ""
 "eating carrion and even committing cannibalism, which are both regular "
 "occurrences."
 msgstr ""
+"Ödlefolket är ödlelika varelser. Mindre och slankare än de flesta människor "
+"blir de vanligen inte längre än ett tioårigt barn, men om man mäter från "
+"toppen av deras nos till änden av deras svans kan detta komma till samma "
+"längd som en vuxen man är lång. De föredrar att slåss som de jagar, och "
+"använda sin smidighet för att smita igenom fiendens linjer och ge sig på de "
+"svaga och skadade och samtidigt undvika att bli attackerade.\n"
+"\n"
+"<header>text='Samhälle'</header>\n"
+"Ödlefolket är mystiska varelser som man inte vet mycket om, de bor i områden "
+"som är ogästvänliga mot andra, t ex träsk. Med en stark ödestro, anser "
+"ödlefolket att allt som sker i deras liv kan förutspås m h a en komplicerad "
+"form av astrologi.\n"
+"\n"
+"Ödlefolkets kultur gör stor åtskillnad baserat på kön. Inom varje kön tävlar "
+"medlemmarna mot varandra, och genom skicklighet, envishet och rykte "
+"etableras en tydlig hackordning, med en ledare på toppen. Vid de tillfällen "
+"som de två könen interagerar sker inte någon strid om vem som bestämmer - "
+"utan det är situationen som sådan som avgör detta. Männens ledare är alfa "
+"inom klanens by eller läger, medan kvinnornas ledare bestämmer överallt "
+"annars. Detta avspeglas hela vägen ner genom hackordningen, så att varje man "
+"eller kvinna bestämmer över envar medlem av motsatta könet som ha en lägre "
+"position.\n"
+"\n"
+"Uppdelningen och den alternerande könsdominansen hos ödlefolket kommer ur "
+"deras tydligt definierade könsroller. Det är kvinnornas ansvar att jaga och "
+"hitta mat, skickligheter som tränar dem även för strid; de bakhålls- och "
+"flanktrupper och de stigfinnare som övriga raser så fruktar. Männen å andra "
+"sidan ansvarar för att vakta de ägg som kvinnorna lägger. Detta ger männen "
+"tid att studera och fördjupa sig i astrologi, magi och helande, men innebär "
+"också att de är stillastående mål för varje ödlefolkklans största fiende - "
+"en annan ödlefolksklan.\n"
+"\n"
+"Nya ödlefolksklaner bildas när de astrologiska tecknen visar att det är "
+"dags. I vad som kallas en 'kläckning' väljer varje kvinna som stjärnorna "
+"valt ut en grupp av individer av lägre rank och lämnar källklanen. Ofta "
+"väljer stjärnorna ut alla kvinnor med ett visst särdrag så att flera nya "
+"klaner kläcks på en gång. Urvalsprocessen är enkel: ingen grupp som ger sig "
+"av kan vara större än någon annan, alla de grupper som ger sig av kan inte "
+"sammanlagt vare större än de som stannar kvar, och en kvinna med högre rank "
+"får välja de hon vill ha med sig först.\n"
+"\n"
+"Eftersom ödlefolket får många barn och befolkningen växer fort sker "
+"uppdelningen i flera klaner ofta. Kannibalism är inte tabu och våld är en "
+"utmärkande faktor i dagligt ödlefolksliv. Detta begränsar utvecklingen av "
+"ödlefolkets kultur till korta spurter, då mycket av deras kunskap förmedlas "
+"muntligen och alla deras ägodelar måste kunna flyttas lätt.\n"
+"\n"
+"<header>text='Geografi'</header>\n"
+"Ödlefolket kan bo på många olika ställen, men vanligast är att de bor i "
+"träsk.\n"
+"\n"
+"<header>text='Biologi'</header>\n"
+"Ödlefolket lever extremt korta liv i jämförelse med andra raser i Wesnoth. "
+"De blir vuxna inom 3 år och dör vanligen mellan 10-15 år gamla. Den "
+"vanligaste dödorsaken är våld. Ödlefolkets kvinnor lägger ungefär 20 ägg vid "
+"ett tillfälle om året, vilket orsakar konstant överbefolkning och skulle "
+"vara en stor belastning på alla köttätares mattillgång. Jägare och asätare "
+"med extremt starka käkar och kraftfullt matsmältningssystem kan ödlefolket "
+"äta precis allt av sitt byte, inklusive tänder, horn och ben. Därutöver har "
+"de inte något emot att äta as eller ens kannibalism - bådadera är vanligt "
+"förekommande."
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:253
@@ -6928,10 +6464,8 @@ msgstr "Sjöfolket"
 
 #. [race]: id=merman
 #: data/core/units.cfg:266
-#, fuzzy
-#| msgid "race^Troll"
 msgid "race^Merfolk"
-msgstr "Troll"
+msgstr "Sjöfolk"
 
 #. [race]: id=merman
 #: data/core/units.cfg:268
@@ -7046,22 +6580,6 @@ msgstr "Resar"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:300
-#, fuzzy
-#| msgid ""
-#| "Ogres are a wild and uncivilized race who dwell mainly in the wilderness "
-#| "of the Great Continent. Physically, they resemble humans and orcs but are "
-#| "larger and stronger. Even their adolescents are more than a match for "
-#| "most men. Ogres are distrusted in many populated areas and usually either "
-#| "avoid them or are driven out by force. Instead, they lurk the mountainous "
-#| "areas on the edges of civilization, where hungry ogre bandits provide a "
-#| "constant threat to travelers and caravans. While ogres are not "
-#| "particularly intelligent or quick, their toughness and physical strength "
-#| "make them a valuable asset in the armies of other races. They are "
-#| "especially valued by more ruthless commanders who don't mind the ogres' "
-#| "brutality. Little is known about their biology or society, if they can "
-#| "truly be said to have one, but they are said to attack alongside wolves "
-#| "and other beasts. Whether this is a sign of cooperation, domestication, "
-#| "or simply mutual opportunism is not known."
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7110,66 +6628,6 @@ msgstr "Orcher"
 
 #. [race]: id=orc
 #: data/core/units.cfg:311
-#, fuzzy
-#| msgid ""
-#| "In appearance, orcs are half men and half beasts. They are taller, "
-#| "sturdier and stronger than humans. They are warlike, savage, and cruel by "
-#| "nature. Their blood is darker and thicker than that of normal humans and "
-#| "they have little care for personal hygiene or their personal appearance. "
-#| "Although Orcs are violent even among themselves creatures, they are pack-"
-#| "oriented; an orc never travels long or lives alone in groups smaller than "
-#| "half a dozen.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Almost every orc are a member of a tribe or a clan. Relations between "
-#| "neighboring tribes are usually violent, except in cases of a mutual enemy "
-#| "threatens their existence or prospects of great plunder override mutual "
-#| "animosity. Occasionally, a single strong chieftain may emerge to lead "
-#| "multiple tribes from time to time, usually through intimidation of "
-#| "followers. An orc tribe in times of peace tends to focus almost solely on "
-#| "strengthening itself in preparation for the next armed conflict. Orcs are "
-#| "known to possess a crude system of writing — usually in blood — although "
-#| "it’s most commonly used to trade insults or threats among tribal "
-#| "leaders.\n"
-#| "\n"
-#| "Orc societies are based on little else but strength; might makes right, "
-#| "and a leader leads and survives only as long as no one manages to wrest "
-#| "the title from him. A constant struggle for power simmers among potential "
-#| "tribal chiefs. An orcish leader rarely lives more than a handful of years "
-#| "to enjoy his absolute authority before being killed for his position — "
-#| "although history knows some notable exceptions. Orcs hold no particular "
-#| "honor code and while indisputable raw strength is usually the preferred "
-#| "method of displaying power, assassination, poisoning and backstabbing are "
-#| "completely viable means to further one’s own goals.\n"
-#| "\n"
-#| "Orcs mostly live in rural areas, often in foothills or mountainous "
-#| "regions, sometimes in caves. They grow no crops nor keep livestock, but "
-#| "are competent hunters as a result of their physical stature and "
-#| "brutality. Due to their large numbers they are capable of hunting an area "
-#| "virtually clean of anything larger than rodents in relatively short "
-#| "period of time. Due to this and their unstable leadership, orcish tribes "
-#| "tend to lead a semi-nomadic lifestyle, never settling in one region for "
-#| "too long. The larger tribes may establish themselves firmly in an area "
-#| "for years or even decades and build large encampments almost resembling "
-#| "cities, but even these are easily dismantled and abandoned if there is a "
-#| "need to relocate the horde.\n"
-#| "\n"
-#| "The oldest known orcs have been around 50 to 60 years of age, but very "
-#| "few individuals ever live to see over two or three decades before meeting "
-#| "their end either in war or by the hand of one of their kin. The oldest "
-#| "orcs are often shamans, which are perhaps the only ones most of their "
-#| "kind sees as being trustworthy and neutral. The origins of this custom "
-#| "are unknown, as the shamans do not directly contribute much to orcish "
-#| "societies but only act as advisors — not something orcs tend to otherwise "
-#| "tolerate. Shamans are in many ways the opposite of most other orcs: they "
-#| "are often physically withered and frail in comparison and lack skill in "
-#| "battle. Despite their reliance on raw strength, not nearly all orcs are "
-#| "destined to grow to possess any. Many orcs are born smaller and weaker "
-#| "than the rest, and already almost as newborns are put in their place by "
-#| "their stronger siblings. The stronger ones will routinely grab most of "
-#| "the food and thus grow stronger still, while their weaker siblings do "
-#| "not. Many of these individuals tend to specialize in other skills, like "
-#| "archery or assassination."
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7276,7 +6734,7 @@ msgstr ""
 "som regel ta mestadels av den tillgängliga maten och på så sätt växa sig än "
 "starkare, medan deras svagare syskon inte får chansen. Många av dessa "
 "svagare individer tenderar att specialisera sig på andra förmågor, som "
-"bågskytte eller lönnmord."
+"bågskytte eller lönnmord.\n"
 
 #. [race]: id=orc
 #: data/core/units.cfg:322
@@ -7286,6 +6744,10 @@ msgid ""
 "Orcs who were not the strongest of their litter tend to specialize in other "
 "skills, like archery or assassination."
 msgstr ""
+"\n"
+"\n"
+"De orcher som inte är de starkaste i sin kull brukar specialisera sig på "
+"andra färdigheter, som bågskytte eller lönnmord."
 
 #. [race]: id=troll
 #: data/core/units.cfg:331
@@ -7328,14 +6790,14 @@ msgstr "Troll"
 #| "Trolls are seen by many as being little more than yet another race of "
 #| "savage monsters. This common misconception is in part perpetuated by orcs "
 #| "to persuade trolls to join their armies. Because they are rather simple "
-#| "and do not understand the ways of other races or sometimes can even tell "
-#| "them apart, it is usually easy for an orcish band to convince a group of "
-#| "trolls that by joining them they get to exact revenge on those that have "
-#| "before hunted them. These new recruits are then directed to attack "
-#| "whoever the orcs themselves are currently in conflict with, whether "
-#| "previously a foe of the trolls or not, accumulating even more enemies for "
-#| "the misled trolls. The most common enemy of trolls are dwarves, and the "
-#| "animosity between these two races is ancient.\n"
+#| "and do not understand the ways of other races or sometimes cannot even "
+#| "tell them apart, it is usually easy for an orcish band to convince a "
+#| "group of trolls that by joining them they get to exact revenge on those "
+#| "that have before hunted them. These new recruits are then directed to "
+#| "attack whoever the orcs themselves are currently in conflict with, "
+#| "whether previously a foe of the trolls or not, accumulating even more "
+#| "enemies for the misled trolls. The most common enemy of trolls are "
+#| "dwarves, and the animosity between these two races is ancient.\n"
 #| "\n"
 #| "<header>text='Geography'</header>\n"
 #| "Trolls have inhabited the mountains of the Great Continent longer than "
@@ -7377,40 +6839,39 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
-"Trolls are ancient creatures, one of the oldest known races known to inhabit "
-"the Great Continent. They are large, slow, simple-minded, and live extremely "
-"long lives inside deep caves or atop high mountains. The most unique "
-"characteristic of trolls is an internal vitality that sustains and heals "
-"them from within. As a result they live very different lives from almost any "
-"known creature. Trolls have few real needs: they require little food or "
-"water, and thus they have little incentive to pursue much besides protection "
-"from those who are hostile towards them. This in turn means they rarely have "
-"to worry about anything and can spend much of their time sleeping or in "
-"contemplation. Trolls have a curious affinity with nature. They do not "
-"relate with living things like elves do, but instead with earth and stone. "
-"They are also somewhat curious of their surroundings and many younger whelps "
-"even enjoy traveling and seeing the world. As trolls grow older they tend to "
-"become increasingly passive, gradually losing interest in their environment "
-"and spending more of their time sleeping in a quiet, familiar corner of "
-"their home cave. This is until they finally pass away as their bodies "
-"themselves slowly turn into lifeless statues of stone.\n"
+"Troll är uråldriga varelser, en av de äldsta raserna som bott på den Stora "
+"kontinenten. De är stora, långsamma och enfaldiga och lever extremt långa "
+"live i djupa grottor eller på höga berg. Deras mest unika kännetecken är den "
+"livskraft som när och helar dem. Som ett resultat av detta lever de liv som "
+"är helt annorlunda än alla andra kända varelser. Troll har få behov, de "
+"behöver bara lite mat och vatten och saknar därmed motivation att sträva "
+"efter mycket annat än beskydd från de som är fientliga mot dem. Detta i sin "
+"tur betyder att de sällan behöver oroa sig för något och kan tillbringa sin "
+"tid sovande eller funderande. Troll har en märklig närhet till naturen. De "
+"knyter inte an till levande varelser som alverna, men i stället till själva "
+"jorden och stenen. Det är också ganska nyfikna på sin omgivning och många "
+"yngre valpar finner till och med nöje i att resa runt och upptäcka världen. "
+"Allteftersom troll blir äldre blir de också alltmer passiva och förlorar "
+"gradvis sitt intresse för sin omgivning och tillbringar alltmer tid sovande "
+"i ett välbekant hörn av sin hemgrotta. Så småningom förvandlas deras kroppar "
+"långsamt till livlösa stenstatyer och de dör.\n"
 "\n"
-"Trolls are seen by many as being little more than yet another race of savage "
-"monsters. This common misconception is in part perpetuated by orcs to "
-"persuade trolls to join their armies. Because they are rather simple and do "
-"not understand the ways of other races or sometimes can even tell them "
-"apart, it is usually easy for an orcish band to convince a group of trolls "
-"that by joining them they get to exact revenge on those that have before "
-"hunted them. These new recruits are then directed to attack whoever the orcs "
-"themselves are currently in conflict with, whether previously a foe of the "
-"trolls or not, accumulating even more enemies for the misled trolls. The "
-"most common enemy of trolls are dwarves, and the animosity between these two "
-"races is ancient.\n"
+"Av många anses troll vara bara ännu en ras av vilda monster. Detta vanliga "
+"missförstånd sprids delvis av orcherna för att det ska bli enklare för dem "
+"att rekrytera troll till sina arméer. Eftersom de är ganska okomplicerade "
+"och inte förstår hur andra raser tänker och känner, och ibland inte ens kan "
+"se skillnad på de andra raserna, är det ofta ganska lätt för ett orchgäng "
+"att övertyga en grupp troll att ansluta sig till dem för att hämnas på dem "
+"som jagat trollen tidigare. Dessa nya rekryter skickar de därefter mot de "
+"som orcherna själva krigar mot oavsett om denna fiende tidigare varit en "
+"fiende till trollen eller ej. Så förleds trollen till att skaffa sig än fler "
+"fiender. Trollens vanligaste fiende är dvärgarna, och fiendskapen mellan de "
+"två raserna går tillbaka till urminnes tider.\n"
 "\n"
-"<header>text='Geography'</header>\n"
-"Trolls have inhabited the mountains of the Great Continent longer than the "
-"dwarves who migrated there. Trolls are a common sight on the mountain ranges "
-"north and east of Wesnoth, and wherever Orcish hordes travel."
+"<header>text='Geografi'</header>\n"
+"Trollen har bott i den Stora kontinentens berg längre än de dvärgar som "
+"flyttade dit. Troll är en vanlig syn i bergskedjorna i norra och östra "
+"Wesnoth, och på alla platser där orchiska horder passerat."
 
 #. [race]: id=undead
 #: data/core/units.cfg:354
@@ -7776,9 +7237,9 @@ msgstr "Motståndskraft"
 
 #: src/help/help_topic_generators.cpp:681
 #, fuzzy
-#| msgid "Terrain Modifiers"
+#| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
-msgstr "Terrängavdrag"
+msgstr "Terrängredigerare"
 
 #: src/help/help_topic_generators.cpp:685
 msgid "Terrain"
@@ -7806,25 +7267,111 @@ msgstr ""
 msgid "Jamming Cost"
 msgstr ""
 
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
+#~ msgid "Editor Brush"
+#~ msgstr "Redigeringspensel"
+
+#~ msgid "Terrain Clipboard"
+#~ msgstr "Terrängurklipp"
+
+#~ msgid ""
+#~ "Paint terrain tiles on the map.\n"
+#~ "\n"
+#~ "The paint tool utilizes the brushes and the terrain palette."
+#~ msgstr ""
+#~ "Rita terrängrutor på kartan.\n"
+#~ "\n"
+#~ "Ritverktyget använder sig av paletterna för penslar och terräng."
+
+#~ msgid ""
+#~ "Fill continuous regions of terrain with a different one!\n"
+#~ "\n"
+#~ "The fill tool utilizes the terrain palette."
+#~ msgstr ""
+#~ "Fyll sammanhängande områden av en viss terrängtyp med en annan "
+#~ "terrängtyp!\n"
+#~ "\n"
+#~ "Fyllverktyget använder sig av terrängpaletten"
+
+#~ msgid ""
+#~ "Selects a set of hex fields. The best tool ever!\n"
+#~ "\n"
+#~ "This tool utilizes the brushes."
+#~ msgstr ""
+#~ "Väljer en grupp av rutor. Bästa verktyget någonsin!\n"
+#~ "\n"
+#~ "Detta verktyg använder penslarna."
+
+#~ msgid "Paste Tool"
+#~ msgstr "Inklistringsverktyg"
+
+#~ msgid "Paste the terrain in the clipboard"
+#~ msgstr "Klistra in terräng från urklipp"
+
+#~ msgid ""
+#~ "Defines the side leader starting position\n"
+#~ "\n"
+#~ "This tool sets the side leaders' default starting locations, and named "
+#~ "special locations."
+#~ msgstr ""
+#~ "Ange startposition för sidans ledare.\n"
+#~ "\n"
+#~ "Detta verktyg anger förvald startposition för sidans ledare och namngivna "
+#~ "speciella platser."
+
+#~ msgid ""
+#~ "Wesnoth's Map and Scenario Editor allows users to create and edit the "
+#~ "maps on which every Wesnoth scenario takes place. It also provides a "
+#~ "limited set of features for setting up a basic scenario.\n"
+#~ "\n"
+#~ "The editor can be launched from the <italic>text='Map Editor'</italic>"
+#~ msgstr ""
+#~ "Wesnoths kart- och scenarioredigerare låter användare skapa och redigera "
+#~ "de kartor som används i varje Wesnoth-scenario. Den tillhandahåller också "
+#~ "en begränsad uppsättning funktioner för att skapa ett enkelt scenario.\n"
+#~ "\n"
+#~ "Redigeraren kan startas från <italic>text='Kartredigeraren'</italic>"
+
 #~ msgid ""
 #~ " option at the title screen.\n"
 #~ "\n"
 #~ "<header>text='What you get'</header>"
 #~ msgstr ""
+#~ " option at the title screen.\n"
 #~ "\n"
-#~ "\n"
-#~ "<header>text='Chans för träff'</header>"
+#~ "<header>text='Vad du får'</header>"
 
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "• <ref>dst='editor_terrain' text='Terrain Editor'</ref>\n"
+#~ "An easy to use map editor, similar to simple paint applications.\n"
+#~ "\n"
+#~ "• Scenario Editor\n"
+#~ "\n"
+#~ "• <ref>dst='editor_playlist' text='Playlist Manager'</ref>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "• <ref>dst='editor_terrain' text='Terrängredigerare'</ref>\n"
+#~ "En enkel redigerare för kartor som påminner om enkla ritprogram.\n"
+#~ "\n"
+#~ "• Scenarioredigerare\n"
+#~ "\n"
+#~ "• <ref>dst='editor_playlist' text='Spellistehanterare'</ref>"
+
+#~ msgid ""
+#~ "\n"
+#~ "Predefine the scenario's music track playlist.\n"
+#~ "\n"
+#~ "• Time Schedule Editor\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Bestäm vilken musik som ska spelas i scenariot.\n"
+#~ "\n"
+#~ "• Redigerare för dygnsindelning\n"
+#~ "\n"
+
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -7832,13 +7379,65 @@ msgstr ""
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Chans för träff'</header>"
+#~ "<header>text='Rent kartläge'</header>"
 
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
+#~ msgid "The editor features two separate modes of operation:"
+#~ msgstr "Redigeraren är har två olika grundfunktioner:"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Allows only the composing of the terrain map itself and the definition of "
+#~ "leader starting positions."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Tillåter endast att man bygger upp kartan och anger var de olika sidornas "
+#~ "ledare ska finnas när spelet startar."
+
+#~ msgid ""
+#~ "\n"
+#~ "How the information is saved depends on the loaded file:\n"
+#~ "\n"
+#~ "<bold>text='Native'</bold>"
+#~ msgstr ""
+#~ "\n"
+#~ "Hur informationen sparas beror på inläst fil:\n"
+#~ "\n"
+#~ "<bold>text='Inbyggt'</bold>"
+
+#~ msgid ""
+#~ "\n"
+#~ "A new map or file containing only the arguments to the map_data "
+#~ "attribute.\n"
+#~ "\n"
+#~ "The produced map can be played in the “User Maps” game type at the create "
+#~ "multiplayer game dialog if saved to the default directory.\n"
+#~ "\n"
+#~ "<bold>text='Embedded'</bold>"
+#~ msgstr ""
+#~ "\n"
+#~ "En ny karta eller fil som endast innehåller map_data-attributets "
+#~ "argument.\n"
+#~ "\n"
+#~ "Den skapade kartan kan spelas i spelläge \"Användarkartor\" från "
+#~ "gruppspelsdialogen om den sparas i förvald mapp.\n"
+#~ "\n"
+#~ "<bold>text='Inbäddad'</bold>"
+
+#~ msgid ""
+#~ "\n"
+#~ "Scenario files containing a valid map_data attribute (not a file include) "
+#~ "will be opened in this submode. The editor replaces only the content of "
+#~ "map_data and leaves everything else in the scenario untouched. Maps "
+#~ "opened this way are marked [e] in the Maps menu."
+#~ msgstr ""
+#~ "\n"
+#~ "Scenariofiler som innehåller ett giltigt map_data-attribut (inte en fil-"
+#~ "inkludering) kommer att öppnas i detta läge. Redigeraren ersätter endast "
+#~ "innehållet från map_data och lämnar allt annat i scenariot oförändrat. "
+#~ "Kartor som öppnas på detta sätt markeras med [e] på kartmenyn."
+
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -7846,178 +7445,67 @@ msgstr ""
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Chans för träff'</header>"
+#~ "<header>text='Scenarioläge'</header>"
 
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<big>Cores</big>"
+#~ "The Scenario mode allows several extra tools to be used, such as the Unit "
+#~ "tool. At least one side must be defined in order to use these tools, "
+#~ "however.\n"
+#~ "\n"
+#~ "In this mode, terrain data is stored in the map_data attribute and saved "
+#~ "into a file with any applicable WML."
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Chans för träff'</header>"
+#~ "Scenarioläge tillåter flera extra verktyg, som t ex truppverktyget. "
+#~ "Åtminstone en sida måste ha definierats för att kunna använda dessa "
+#~ "verktyg.\n"
+#~ "\n"
+#~ "I detta läge lagras terrängdata i map_data-attributet och sparas i en fil "
+#~ "tillsammans med tillämplig WML."
 
-#, fuzzy
-#~| msgid "race^Orc"
-#~ msgid "race^Roc"
-#~ msgstr "Orch"
-
-#, fuzzy
-#~| msgid "race+female^Orc"
-#~ msgid "race+female^Roc"
-#~ msgstr "Orch"
-
-#, fuzzy
-#~| msgid "race^Orcs"
-#~ msgid "race^Rocs"
-#~ msgstr "Orcher"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Order and Number of Strikes'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Multiplayer Modifications</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Turordning och antal attacker'</header>"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Pure Map Mode</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Chans för träff'</header>"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Scenario Mode</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Chans för träff'</header>"
-
-#, fuzzy
-#~| msgid "Fundamentals of Gameplay"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Fundamentals of Gameplay</big>\n"
-#~ "\n"
-#~ msgstr "Grundläggande spelteknik"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Chance to Hit</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Chans för träff'</header>"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Basic Terrain Types</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Chans för träff'</header>"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Mixed Terrain Types</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Chans för träff'</header>"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Defense Caps</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Chans för träff'</header>"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Chance to Hit'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Basic Terrain Types</big>\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Chans för träff'</header>"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text=Damage</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Campaigns and Scenarios</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Skada</header>"
-
-#~ msgid "race^Mermen"
-#~ msgstr "Sjöfolket"
+#~ msgid "Scenario Format"
+#~ msgstr "Scenarioformat"
 
 #~ msgid "This race does not have a description yet."
 #~ msgstr "Den här rasen har ingen beskrivning än."
+
+#, fuzzy
+#~| msgid ""
+#~| "Berserk:\n"
+#~| "Whether used offensively or defensively, this attack presses the "
+#~| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~| "have occurred."
+#~ msgid ""
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the champions is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "Bärsärkagång:\n"
+#~ "Vare sig det gäller anfall eller försvar fortsätter striden tills en av "
+#~ "parterna ligger död på marken eller tills striden pågått i 30 utfall."
+
+#, fuzzy
+#~| msgid "firststrike"
+#~ msgid "true strike"
+#~ msgstr "första slaget"
+
+#, fuzzy
+#~| msgid ""
+#~| "Magical:\n"
+#~| "This attack always has a 70% chance to hit regardless of the defensive "
+#~| "ability of the unit being attacked."
+#~ msgid ""
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the champion being attacked."
+#~ msgstr ""
+#~ "Magisk:\n"
+#~ "Denna attack har alltid 70% chans att träffa oavsett måltavlans försvar."
+
+#~ msgid "race^Mermen"
+#~ msgstr "Sjöfolket"
 
 #~ msgid "ingame_help_item^Contributors"
 #~ msgstr "Medarbetare"
@@ -8126,6 +7614,9 @@ msgstr ""
 
 #~ msgid "Overview"
 #~ msgstr "Översikt"
+
+#~ msgid "Fundamentals of Gameplay"
+#~ msgstr "Grundläggande spelteknik"
 
 #~ msgid ""
 #~ "\n"
@@ -9187,38 +8678,6 @@ msgstr ""
 #~ "Vissa vapen har speciella egenskaper som ökar dess effektivitet när man "
 #~ "attackerar med dem.\n"
 #~ "\n"
-
-#, fuzzy
-#~| msgid ""
-#~| "Berserk:\n"
-#~| "Whether used offensively or defensively, this attack presses the "
-#~| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#~| "have occurred."
-#~ msgid ""
-#~ "Whether used offensively or defensively, this attack presses the "
-#~ "engagement until one of the champions is slain, or 30 rounds of attacks "
-#~ "have occurred."
-#~ msgstr ""
-#~ "Bärsärkagång:\n"
-#~ "Vare sig det gäller anfall eller försvar fortsätter striden tills en av "
-#~ "parterna ligger död på marken eller tills striden pågått i 30 utfall."
-
-#, fuzzy
-#~| msgid "firststrike"
-#~ msgid "true strike"
-#~ msgstr "första slaget"
-
-#, fuzzy
-#~| msgid ""
-#~| "Magical:\n"
-#~| "This attack always has a 70% chance to hit regardless of the defensive "
-#~| "ability of the unit being attacked."
-#~ msgid ""
-#~ "This attack always has a 70% chance to hit regardless of the defensive "
-#~ "ability of the champion being attacked."
-#~ msgstr ""
-#~ "Magisk:\n"
-#~ "Denna attack har alltid 70% chans att träffa oavsett måltavlans försvar."
 
 #, fuzzy
 #~ msgid "<header>text='Race specific topics'</header>"

@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2016-01-10 14:41+0100\n"
-"Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
+"PO-Revision-Date: 2020-03-10 12:52+0100\n"
+"Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: /home/niklas/Documents/wesnoth/source/wesnoth-1.9\n"
 
 #. [terrain_type]: id=fence
@@ -49,7 +49,7 @@ msgstr "Medeldjupt vatten"
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:46
 msgid "Tropical Deep Water"
-msgstr "Djupt, tropiskt vatten"
+msgstr "Djupt tropiskt vatten"
 
 #. [terrain_type]: id=gray_tropical_water
 #. [terrain_type]: id=medium_shallow_water
@@ -63,7 +63,7 @@ msgstr "Grunt vatten"
 #. [terrain_type]: id=gray_tropical_water
 #: data/core/terrain.cfg:57
 msgid "Gray Shallow Water"
-msgstr "Grått, grunt vatten"
+msgstr "Grått grunt vatten"
 
 #. [terrain_type]: id=medium_shallow_water
 #: data/core/terrain.cfg:68
@@ -109,17 +109,17 @@ msgstr "Kustrev"
 #. [terrain_type]: id=gray_reef
 #: data/core/terrain.cfg:102
 msgid "Gray Coastal Reef"
-msgstr "Kustrev (grått)"
+msgstr "Grått kustrev"
 
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:113
 msgid "Medium Coastal Reef"
-msgstr "Kustrev (mellan)"
+msgstr "Mellanstort kustrev"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:124
 msgid "Tropical Coastal Reef"
-msgstr "Kustrev (tropiskt)"
+msgstr "Tropiskt kustrev"
 
 #. [terrain_type]: id=swamp_water_reed
 #. [terrain_type]: id=quagmire
@@ -250,11 +250,6 @@ msgstr "Ökensand"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:301
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -304,6 +299,8 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
+"En välkommen syn för alla på resa, en oas helar trupper precis som byar, men "
+"ger inte någon inkomst eller försvarsfördelar."
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:335
@@ -370,7 +367,7 @@ msgstr "Lägereld"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:450
 msgid "Sconce"
-msgstr ""
+msgstr "Skans"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:460
@@ -405,7 +402,7 @@ msgstr "Skräp"
 #. [terrain_type]: id=detritus_bones
 #: data/core/terrain.cfg:527
 msgid "Remains"
-msgstr "Rester"
+msgstr "Kvarlevor"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
@@ -586,24 +583,18 @@ msgstr "Snöiga berg"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:825
-#, fuzzy
-#| msgid "Dry Mountains"
 msgid "Desert Mountains"
-msgstr "Torra berg"
+msgstr "Ökenberg"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:836
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Stone Floor"
-msgstr "Trägolv"
+msgstr "Stengolv"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:839
-#, fuzzy
-#| msgid "Basic Wooden Floor"
 msgid "Basic Stone Floor"
-msgstr "Enkelt trägolv"
+msgstr "Enkelt stengolv"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -611,26 +602,22 @@ msgstr "Enkelt trägolv"
 #: data/core/terrain.cfg:846 data/core/terrain.cfg:856
 #: data/core/terrain.cfg:866
 msgid "Rug"
-msgstr ""
+msgstr "Matta"
 
 #. [terrain_type]: id=rug_floor
 #: data/core/terrain.cfg:849
 msgid "Royal Rug"
-msgstr ""
+msgstr "Kunglig matta"
 
 #. [terrain_type]: id=rug2_floor
 #: data/core/terrain.cfg:859
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Rug"
-msgstr "Spara repris"
+msgstr "Vanlig matta"
 
 #. [terrain_type]: id=rug3_floor
 #: data/core/terrain.cfg:869
-#, fuzzy
-#| msgid "Cave"
 msgid "Cave Rug"
-msgstr "Grotta"
+msgstr "Grottmatta"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:876
@@ -644,10 +631,8 @@ msgstr "Enkelt trägolv"
 
 #. [terrain_type]: id=old_wood_floor
 #: data/core/terrain.cfg:886 data/core/terrain.cfg:889
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Old Wooden Floor"
-msgstr "Trägolv"
+msgstr "Gammalt trägolv"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:902
@@ -769,6 +754,17 @@ msgid ""
 "\n"
 "Occasionally caves are <italic>text='illuminated'</italic>."
 msgstr ""
+"<italic>text='Klippgrotta'</italic> vatten och vind har format marken genom "
+"att bära med sig eroderande partiklar som urholkar berget. Den liknar en "
+"knagglig underjordisk grotta underlättar försvar, men den är svår för de "
+"flesta trupper att ta sig fram i. Endast grottbosättare, som dvärgar och "
+"troll, känner sig helt hemma i sådan topografi.\n"
+"\n"
+"De flesta trupper har cirka 50% försvar i steniga grottor, men kavalleri har "
+"endast 40%. Dvärgar har tack vare sin ringa storlek 60% försvar i "
+"klippgrottor.\n"
+"\n"
+"Ibland är grottor<italic>text='upplysta'</italic>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -795,12 +791,12 @@ msgstr "Kanjon"
 #. [terrain_type]: id=chasm_earthy
 #: data/core/terrain.cfg:1100
 msgid "Earthy Chasm"
-msgstr "Jordtäckt Kanjon"
+msgstr "Ravin"
 
 #. [terrain_type]: id=abyss
 #: data/core/terrain.cfg:1111
 msgid "Ethereal Abyss"
-msgstr "Eterisk Avgrund"
+msgstr "Eterisk avgrund"
 
 #. [terrain_type]: id=lava_chasm
 #: data/core/terrain.cfg:1122
@@ -823,6 +819,13 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
+"De faror som följer med att försöka gå på <italic>text='lava'</italic> är "
+"inte svåra att förstå. Vad gäller rörelse, så motsvarar lava "
+"<ref>dst='terrain_unwalkable' text='ofarbar'</ref> terräng, och kan endast "
+"korsas av de trupper som kan flyga högt över den. Den smälta magman avger "
+"också ett tydligt sken, och lyser upp området ovanför sig. Detta innebär en "
+"attackbonus för redbara trupper och en tar bort den attackbonus som kaotiska "
+"trupper annars skulle ha."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:1148
@@ -836,15 +839,13 @@ msgstr "Vanliga obestigbara berg"
 
 #. [terrain_type]: id=cloud_dry
 #: data/core/terrain.cfg:1174
-#, fuzzy
-#| msgid "Desert Impassable Mountains"
 msgid "Dry Impassable Mountains"
-msgstr "Obestigbara ökenberg"
+msgstr "Torra obestigbara berg"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1185
 msgid "Snowy Impassable Mountains"
-msgstr "Snötäckta, obestigbara berg"
+msgstr "Snötäckta obestigbara berg"
 
 #. [terrain_type]: id=cloud_desert
 #: data/core/terrain.cfg:1195
@@ -868,15 +869,13 @@ msgstr "Naturlig grottvägg"
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1216 data/core/terrain.cfg:1217
 #: data/core/terrain.cfg:1275
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Mine Wall"
-msgstr "Gruvbana"
+msgstr "Gruvvägg"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1228
 msgid "Natural Earthy Cave Wall"
-msgstr "Naturlig grottvägg (jord)"
+msgstr "Naturlig jordgrottvägg"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -893,31 +892,23 @@ msgstr "Upplyst stenvägg"
 
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1276
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Straight Mine Wall"
-msgstr "Gruvbana"
+msgstr "Rak gruvvägg"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1286
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Interior Wall"
-msgstr "Gruvbana"
+msgstr "Innervägg"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1287
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Straight White Wall"
-msgstr "Upplyst stenvägg"
+msgstr "Rak vit vägg"
 
 #. [terrain_type]: id=wall_stone_clean
 #: data/core/terrain.cfg:1298
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Clean Stone Wall"
-msgstr "Stenvägg"
+msgstr "Ren stenvägg"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1308
@@ -929,9 +920,9 @@ msgstr "Grottvägg"
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1309
 #, fuzzy
-#| msgid "Stone Wall"
+#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Stenvägg"
+msgstr "Ren stenvägg"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -943,7 +934,7 @@ msgstr "Stenvägg"
 #: data/core/terrain.cfg:1352 data/core/terrain.cfg:1409
 #: data/core/terrain.cfg:1421 data/core/terrain.cfg:1434
 msgid "Gate"
-msgstr ""
+msgstr "Grind"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -951,7 +942,7 @@ msgstr ""
 #: data/core/terrain.cfg:1326 data/core/terrain.cfg:1339
 #: data/core/terrain.cfg:1353
 msgid "Rusty Gate"
-msgstr ""
+msgstr "Rostig grind"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
@@ -963,17 +954,15 @@ msgstr ""
 #: data/core/terrain.cfg:1393 data/core/terrain.cfg:1447
 #: data/core/terrain.cfg:1459 data/core/terrain.cfg:1472
 msgid "Door"
-msgstr ""
+msgstr "Dörr"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
 #. [terrain_type]: id=portal_door_wooden_n
 #: data/core/terrain.cfg:1367 data/core/terrain.cfg:1380
 #: data/core/terrain.cfg:1394
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Wooden Door"
-msgstr "Trägolv"
+msgstr "Trädörr"
 
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
@@ -981,17 +970,15 @@ msgstr "Trägolv"
 #: data/core/terrain.cfg:1410 data/core/terrain.cfg:1422
 #: data/core/terrain.cfg:1435
 msgid "Open Rusty Gate"
-msgstr ""
+msgstr "Öppen rostig grind"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
 #: data/core/terrain.cfg:1448 data/core/terrain.cfg:1460
 #: data/core/terrain.cfg:1473
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Open Wooden Door"
-msgstr "Trägolv"
+msgstr "Öppen trädörr"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1488
@@ -1001,7 +988,7 @@ msgstr "Oframkomlighetsmarkering"
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1501
 msgid "Unwalkable Overlay"
-msgstr "Oframkomlighetsmarkering"
+msgstr "Ofarbarhetsmarkering"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
@@ -1066,10 +1053,8 @@ msgstr "Ökenby"
 
 #. [terrain_type]: id=desert_village_ruin
 #: data/core/terrain.cfg:1543
-#, fuzzy
-#| msgid "Adobe Village"
 msgid "Ruined Adobe Village"
-msgstr "Ökenby"
+msgstr "Ökenruinby"
 
 #. [terrain_type]: id=desert_village_tent
 #: data/core/terrain.cfg:1556
@@ -1219,6 +1204,15 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"<italic>text='Sjunkna byar'</italic> är sjöfolkets och nagas hem. Varelser "
+"som bor i vatten trivs bra här, men de som bor på land finner det svårt att "
+"ta sig fram och försvara dessa byar. Men som för alla byar finns det som "
+"behövs för att alla varelser ska kunna ta hand om sina skador. En trupp som "
+"befinner sig i en by kan hela åtta HP per drag, eller botas från "
+"förgiftning.\n"
+"\n"
+"Sjöfolk och nagas har 60% försvar i sjunkna byar, medan landbaserade trupper "
+"vanligen har mycket lågt försvar."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1922
@@ -1238,10 +1232,8 @@ msgstr "Läger"
 
 #. [terrain_type]: id=encampment_ruin
 #: data/core/terrain.cfg:1951
-#, fuzzy
-#| msgid "Encampment"
 msgid "Ruined Encampment"
-msgstr "Läger"
+msgstr "Lägerruin"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1963
@@ -1301,10 +1293,8 @@ msgstr "Alvborg"
 
 #. [terrain_type]: id=elven_castle_ruin
 #: data/core/terrain.cfg:2034
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Elven Castle Ruin"
-msgstr "Alvborg"
+msgstr "Alvborgsruin"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2046
@@ -1375,24 +1365,18 @@ msgstr "Ökenslottsruin"
 
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2168
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment"
-msgstr "Högt lägerkärntorn"
+msgstr "Trolläger"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2180
-#, fuzzy
-#| msgid "Encampment"
 msgid "Aquatic Encampment"
-msgstr "Läger"
+msgstr "Havsläger"
 
 #. [terrain_type]: id=aquatic_castle
 #: data/core/terrain.cfg:2193
-#, fuzzy
-#| msgid "Human Castle"
 msgid "Aquatic Castle"
-msgstr "Människoborg"
+msgstr "Havsborg"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
@@ -1407,10 +1391,8 @@ msgstr "Lägerkärntorn"
 
 #. [terrain_type]: id=encampment_ruin_keep
 #: data/core/terrain.cfg:2221
-#, fuzzy
-#| msgid "Encampment Keep"
 msgid "Ruined Encampment Keep"
-msgstr "Lägerkärntorn"
+msgstr "Lägerkärntornsruin"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:2234
@@ -1473,17 +1455,15 @@ msgstr "Alvkärntorn"
 
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2325
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Keep Ruin"
-msgstr "Alvkärntorn"
+msgstr "Alvkärntornsruin"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2338
 #, fuzzy
-#| msgid "Elven Castle Keep"
+#| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
-msgstr "Alvkärntorn"
+msgstr "Alvkärntornsruin"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2351
@@ -1547,24 +1527,18 @@ msgstr "Ökenkärntornsruin"
 
 #. [terrain_type]: id=merman_campkeep
 #: data/core/terrain.cfg:2468
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Aquatic Encampment Keep"
-msgstr "Högt lägerkärntorn"
+msgstr "Havskärnborg"
 
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2481
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment Keep"
-msgstr "Högt lägerkärntorn"
+msgstr "Trollkärnborg"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2494
-#, fuzzy
-#| msgid "Aquatic Village"
 msgid "Aquatic Keep"
-msgstr "Vattenby"
+msgstr "Vattenkärnborg"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:2509
@@ -1574,7 +1548,7 @@ msgstr "Borgmarkering"
 #. [terrain_type]: id=keep_overlay
 #: data/core/terrain.cfg:2522
 msgid "Keep Overlay"
-msgstr "Kärntorns-markering"
+msgstr "Kärntornsmarkering"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -1634,6 +1608,17 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"För de som kan bygga sådana kan en  <italic>text='bro'</italic> befria dem "
+"från vattendragens nyckfullhet som låter vadställen komma och gå med "
+"vattenståndets höjd. Och då har vi inte ens nämnt hur skönt det är med torra "
+"fötter, något som verkligen spelar roll under årets kalla månader.\n"
+"\n"
+"För de som färdas över land eller hav erbjuder en bro det bästa av båda "
+"världarna — i spelet innebär detta att bron anses vara som slätt eller som "
+"det vattendrag som flyter under den, vilket som erbjuder den bästa rörelse- "
+"och försvarsbonus för den trupp som befinner sig i brorutan. Observera att "
+"en simmande trupp och en landtrupp kan inte båda befinna sig i en broruta "
+"samtidigt."
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1657,7 +1642,7 @@ msgstr "Enkel stenbro"
 #: data/core/terrain.cfg:2662 data/core/terrain.cfg:2674
 #: data/core/terrain.cfg:2688
 msgid "Cave Chasm Bridge"
-msgstr "Grottbro"
+msgstr "Grottkanjonbro"
 
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
@@ -1673,7 +1658,7 @@ msgstr "Hängbro"
 #: data/core/terrain.cfg:2747 data/core/terrain.cfg:2761
 #: data/core/terrain.cfg:2775
 msgid "Stone Chasm Bridge"
-msgstr "Grottbro"
+msgstr "Kanjonbro"
 
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
@@ -1691,7 +1676,7 @@ msgstr "Utanför kartan"
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2845
 msgid "Fake Map Border"
-msgstr ""
+msgstr "Falsk kartgräns"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -1703,10 +1688,8 @@ msgstr "Slöja"
 
 #. [terrain_type]: id=fake_shroud_overlay
 #: data/core/terrain.cfg:2867
-#, fuzzy
-#| msgid "Shroud"
 msgid "Fake Shroud"
-msgstr "Slöja"
+msgstr "Falsk slöja"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
@@ -1721,6 +1704,18 @@ msgstr "Svamp"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2897
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
+#| "giant mushrooms,\n"
+#| "which thrive in the damp darkness. Most units have trouble negotiating "
+#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
+#| "the larger stalks. Mounted units, however, become completely mired and "
+#| "lack proper freedom of movement in combat. Undead units have a natural "
+#| "affinity for decay and function quite well in mushroom forests.\n"
+#| "\n"
+#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
+#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1732,6 +1727,15 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"<italic>text='Svampdungar'</italic> är vidsträckta underjordiska skogar av "
+"jättesvampar,\n"
+"som frodas i fuktigt mörker. De flesta trupper har svårt att ta sig fram på "
+"den svampiga marken med mindre svampar, men de kan enkelt ta skydd bakom de "
+"större svampfötterna. Beridna trupper blir dock helt insnärjda i leran och "
+"kan inte röra sig väl i strid. Vandöda trupper känner sig hemma i ruttnande "
+"omgivningar och fungerar bra i svampskogar.\n"
+"\n"
+"De flesta trupper får 50-60% försvar i svampdungar, men kavalleri endast 20%."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2908
@@ -1753,6 +1757,22 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"Terrängen <italic>text='Grotta'</italic> representerar alla sorter av "
+"underjordiska håligheter som är stora nog för att en trupp ska kunna ta sig "
+"igenom.\n"
+"De flesta trupper är helt obekanta med denna typ av terräng, och rör sig "
+"därmed saktare och försvarar sig sämre. Dvärgar och troll, som bor i grottor "
+"har båda det ganska lätt att ta sig fram i denna sorts terräng, i synnerhet "
+"dvärgarna som på grund av sin ringa storlek kan ta sig förbi många hinder "
+"som stoppa de andra raserna. Ibland kan grottor vara  "
+"<italic>text='upplysta'</italic>.\n"
+"\n"
+"I sällsynta fall kan denna underjordiska värld lysas upp av ljus som lyser "
+"ner från ytan in i det dystra mörkret. Detta ger redbara trupper en "
+"attackbonus och tar bort den attackbonus som kaotiska trupper annars skulle "
+"ha. På alla andra sätt är sådan upplyst grotta likadan som vanlig grotta.\n"
+"\n"
+"De flesta trupper har 20-40% försvar i grottor, men dvärgar har 50%."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2921
@@ -1770,9 +1790,27 @@ msgid ""
 "\n"
 "Merfolk and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"<italic>text=Kustrev'</italic> är grunt vatten som bildats av sten, korall "
+"och kand.\n"
+"\n"
+"Det ger landtrupper stabilare fotfäste än om de vadar genom vatten och ger "
+"därutöver de flesta vattenboende raserna extremt högt försvar.\n"
+"\n"
+"Sjöfolk och Naga får båda 70% försvar på kustrev."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2952
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
+#| "with enough dips and rises in the ground to provide some cover. Hills are "
+#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
+#| "enough familiarity with the terrain that they can pass through it without "
+#| "being slowed down. Cavalry have enough trouble navigating the terrain "
+#| "that any defensive aid lent by cover is negated.\n"
+#| "\n"
+#| "Most units have about 50% defense in hills, whereas cavalry are limited "
+#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -1784,6 +1822,16 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"<italic>text='Kullar'</italic> representerar alla typer av något mer "
+"svårframkomlig terräng,\n"
+"med tillräckligt mycket upp och ner för kunna ge något skydd. Kullar är "
+"svåra för de flesta trupper att ta sig fram igenom. Dvärgar, troll och "
+"orcher är hemmastadda nog sådan terräng för att kunna ta sig fram utan att "
+"saktas ner. Kavalleri har så mycket besvär med att ta sig fram att vad än "
+"för skydd som terrängen ger inte gäller dem.\n"
+"\n"
+"De flesta trupper har cirka 50% försvar i kullar, medan kavalleri är "
+"begränsat till 40%. Dvärgar åtnjuter 60% försvar i kullar."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2966
@@ -1798,6 +1846,14 @@ msgid ""
 "Most units make do with 30% defense in swamps. Merfolk, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
+"<italic>text='Träsk'</italic> representerar alla sorters våtmarker.\n"
+"Träsk får nästan alla att röra sig långsammare och försvårar också försvar. "
+"Ett undantag är de raser som är exceptionellt skickliga på att ta sig fram i "
+"vatten. Dessa får både full rörelse- och försvarsbonus. De som bor i "
+"våtmarker är också bra på att använda sig av dem för att ta skydd.\n"
+"\n"
+"De flesta trupper får nöja sig med 30% försvar i träsk. Sjöfolk, naga och "
+"ödlefolk får alla 60%."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2979
@@ -1813,6 +1869,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and merfolk enjoy 60%."
 msgstr ""
+"<italic>text='Grunt vatten'</italic> representerar vattensamlingar vars djup "
+"når upp ungefär till midjan på en människa. Det är nog för att göra vem som "
+"helst långsam och helt öppen för attack. Dvärgar har vatten nästan upp till "
+"halsen och har det extra svårt här. Undantaget är de raser vars kroppar "
+"underlättar för dem att simma, och som får betydande försvarsbonus och full "
+"rörlighet.\n"
+"\n"
+"De flesta trupper har 20-30% försvar i grunt vatten, men nagas och sjöfolk "
+"har 60%."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2994
@@ -1826,6 +1891,14 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"<italic>text='Borgar'</italic> är alla typer av permanenta befästningar.\n"
+"Nästan alla typer av trupper erhåller en väsentlig försvarsbonus av att "
+"befinna sig i en borg, och de flesta typer av trupper har full rörelsefrihet "
+"i borgar. Att placera en trupp i en borg representerar dess försvarsförmåga. "
+"Utan en trupp i varje ruta runt muren kan en fiende enkelt smyga in i borgen "
+"utan problem, och få samma försvarsbonus som alla trupper inuti borgen.\n"
+"\n"
+"De flesta trupper har 60% försvarsbonus i en borg."
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3008
@@ -1840,6 +1913,16 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"<italic>text='Berg'</italic> är branta nog för att trupper ofta behöver "
+"klättra över hinder för att ta sig fram.\n"
+"Därför erbjuder de väsentlig försvarsbonus för de flesta trupper, men "
+"hindrar samtidigt dessas rörelseförmåga kraftigt. De flesta typer av "
+"kavalleri kan helt enkelt inte ge sig in i bergsterräng; men alvkavalleri är "
+"ett undantag liksom vättevargryttarna. Dvärgar och troll kommer från "
+"bergsområden och har inga som helst problem med att ta sig fram i sådan "
+"terräng.\n"
+"\n"
+"De flesta trupper får cirka 60% försvar i berg, men dvärgar får hela 70%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:3020
@@ -1851,11 +1934,19 @@ msgid ""
 "\n"
 "Merfolk and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"<italic>text='Djupt vatten'</italic> representerar alla typer av "
+"vattensamlingar där en människa inte bottnar.\n"
+"De flesta typer kan inte ta sig in i djupt vatten; denna terräng är enbart "
+"för de som antingen kan flyga över den eller som är extremt duktiga "
+"simmare.\n"
+"\n"
+"Sjöfolk och naga får båda 50% försvar i djupt vatten och med full "
+"rörelseförmåga."
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:3031 data/core/terrain.cfg:3032
 msgid "Flat"
-msgstr "Plan"
+msgstr "Plant"
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:3033
@@ -1869,6 +1960,13 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"<italic>text='Slätt'</italic> representerar öppna ytor oavsett om dessa är "
+"åkrar, betesmarker eller vildmark.\n"
+"Eftersom dessa ytor är öppna, så är de lätta att ta sig fram genom, men "
+"också svåra att försvara sig i. Typiskt sätt så slätter bäst för kavalleri "
+"eller mycket smidiga trupper som kan dra nytta av de öppna ytorna.\n"
+"\n"
+"De flesta trupper har 30-40% försvar på slätter."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:3046
@@ -1888,6 +1986,20 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"<italic>text='Skog'</italic> representerar alla typer av trädbeväxt mark med "
+"betydande undervegetation, nog för att vara svårframkomlig. Även om de "
+"saktar ner nästan alla, så erbjuder skogen bättre försvar för de flesta än "
+"öppen mark. Kavalleri har dock så svårt att ta sig fram att alla fördelar "
+"som kunde erhållits genom att smyga helt försvinner. Alver är ett undantag "
+"från den generella regeln om skog. Inte bara kan de ta sig fram med full "
+"fart genom skogar, men de får också en väsentlig försvarsbonus. Dvärgar är "
+"ännu ett undantag, deras ringa storlek gör det enkelt för dem att ta sig "
+"fram snabbt, men de känner sig så obekväma i skogen att de alls inte kan dra "
+"någon försvarsbonus från terrängen.\n"
+"\n"
+"De flesta trupper har 50% försvar i skog, men kavalleri endast 30%. Alver "
+"däremot har 60-70% försvar, till och med deras beridna trupper. Dvärgar får "
+"normalt sett endast 30% försvar i skog."
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:3056 data/core/terrain.cfg:3057
@@ -1905,6 +2017,13 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"<italic>text='Frusen'</italic> terräng representerar all platt mark som "
+"täcks av snö eller is.\n"
+"De flesta trupper rör sig långsammare på sådan mark, och har det svårare att "
+"försvara sig själva. Observera att simmande trupper, till och med de som kan "
+"andas under vatten, inte kan simma under is.\n"
+"\n"
+"De flesta trupper har 20-40% försvar på frusen terräng."
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:3072
@@ -1920,6 +2039,15 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"<italic>text='Byar'</italic> representerar alla grupper av byggnader oavsett "
+"om de byggts av människor eller andra.\n"
+"Nästan alla typer av trupper, inklusive kavalleri, tar sig lätt fram genom "
+"byar och kan lätt försvara sig när de är i en by. Byar tillhandahåller de "
+"resurser som trupper behöver för att rengöra och ta hand om sina skador, "
+"vilket gör att alla trupper som befinner sig i en by helar 8 HP varje drag, "
+"eller blir botad från förgiftning.\n"
+"\n"
+"De flesta trupper har 50-60% försvar i byar, men kavalleri endast 40%."
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:3082 data/core/terrain.cfg:3083
@@ -1935,6 +2063,11 @@ msgid ""
 "jagged peaks at such rarefied heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Hinder som inte ens den mest beslutsamme resenär kan ta sig förbi omfattar "
+"solida stenväggar och berg så höga och branta att de alltid omges av moln. "
+"Inte ens flygande varelser kan ta sig fram bland de spetsiga topparna på så "
+"höga höjder, och inte ens det mest argsinta troll kan slå sig igenom tjocka "
+"stenväggar."
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:3092 data/core/terrain.cfg:3093
@@ -1949,6 +2082,10 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
+"<italic>text=Ofarbar terräng</italic> omfattar alla klyftor och raviner som "
+"det inte går att ta sig över till fots. Klyftor utmärks av sina branta "
+"väggar som det skulle ta dagar att ta sig förbi. I spelet innebär detta att "
+"endast flygande trupper kan korsa sådan terräng."
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:3102 data/core/terrain.cfg:3103
@@ -1960,22 +2097,26 @@ msgstr "Räls"
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
+"<italic>text='Räls'</italic>används för att transportera malm, mest av "
+"dvärgar."
 
 #. [settings]
 #: data/gui/default.cfg:23
 msgid " (Press '$hotkey' for more information)"
-msgstr ""
+msgstr " (Tryck på '$hotkey' för mer information)"
 
 #: data/gui/macros/_initial.cfg:338
 msgid "Search"
-msgstr ""
+msgstr "Sök"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
+#, fuzzy
+#| msgid "Configure settings for the selected custom modifications."
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
-msgstr ""
+msgstr "Konfigurera inställningar för den valda anpassade varianten."
 
 #. [button]: id=reset_option_values
 #. [button]: id=orb_defaults
@@ -2039,13 +2180,11 @@ msgstr "Typ"
 #. [button]: id=install
 #: data/gui/widget/addon_list.cfg:366 data/gui/window/addon_manager.cfg:203
 msgid "Install add-on"
-msgstr ""
+msgstr "Installera extramaterial"
 
 #. [button]: id=single_update
 #. [button]: id=update
 #: data/gui/widget/addon_list.cfg:389 data/gui/window/addon_manager.cfg:225
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Update add-on"
 msgstr "Uppdatera extramaterial"
 
@@ -2055,17 +2194,15 @@ msgstr "Uppdatera extramaterial"
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:270
 #: src/gui/widgets/addon_list.cpp:254
 msgid "Publish add-on"
-msgstr ""
+msgstr "Publicera extramaterial"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
 #: src/gui/dialogs/addon/manager.cpp:802
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Uninstall add-on"
-msgstr "Uppdatera extramaterial"
+msgstr "Avinstallera extramaterial"
 
 #. [image]: id=pending_messages
 #: data/gui/widget/chatbox.cfg:40
@@ -2174,7 +2311,7 @@ msgstr "Avbryt"
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:84
 msgid "By:"
-msgstr ""
+msgstr "Av:"
 
 #. [label]: id=version_string
 #: data/gui/window/addon_manager.cfg:120
@@ -2190,10 +2327,8 @@ msgstr "Ingen beskrivning tillgänglig."
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:284
-#, fuzzy
-#| msgid "Delete ToD"
 msgid "Delete add-on"
-msgstr "Radera Att göra"
+msgstr "Ta bort extramaterial"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:318 data/gui/window/addon_manager.cfg:733
@@ -2202,10 +2337,8 @@ msgstr "Typ:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:344
-#, fuzzy
-#| msgid "date^First uploaded:"
 msgid "date^Uploaded:"
-msgstr "Först insänd:"
+msgstr "Insänt:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:377
@@ -2214,10 +2347,8 @@ msgstr "Status:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:407
-#, fuzzy
-#| msgid "date^Last updated:"
 msgid "date^Updated:"
-msgstr "Senast uppdaterad:"
+msgstr "Uppdaterat"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:437
@@ -2287,48 +2418,39 @@ msgstr "Gå till denna URL med en webbläsare"
 #: data/gui/window/addon_manager.cfg:694
 msgid "Filters on addon description, version, type or author."
 msgstr ""
+"Filtrerar på beskrivning, version, typ eller författare av extramaterial."
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:707
-#, fuzzy
-#| msgid "Status:"
 msgid "State:"
-msgstr "Status:"
+msgstr "Tillstånd:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:760
-#, fuzzy
-#| msgid "Leader"
 msgid "Order:"
-msgstr "Ledare"
+msgstr "Sortering:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:846 data/gui/window/addon_manager.cfg:1021
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons Manager"
-msgstr "Extramaterial"
+msgstr "Extramaterialshanterare"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:454
 #: src/gui/dialogs/addon/manager.cpp:641
-#, fuzzy
-#| msgid "Details:"
 msgid "Addon Details"
-msgstr "Detaljer:"
+msgstr "Detaljer om extramaterial"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:960 data/gui/window/addon_manager.cfg:1124
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Update All"
-msgstr "Uppdatera extramaterial"
+msgstr "Uppdatera allt"
 
 #. [button]: id=cancel
 #: data/gui/window/addon_manager.cfg:974 data/gui/window/addon_manager.cfg:1138
 msgid "Exit"
-msgstr ""
+msgstr "Stäng"
 
 #. [scroll_label]
 #: data/gui/window/addon_uninstall_list.cfg:70
@@ -2345,67 +2467,57 @@ msgstr "Ta bort"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:82
 msgid "Base damage"
-msgstr ""
+msgstr "Grundskada"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
-#, fuzzy
-#| msgid "Switch Time of Day"
 msgid "Time of day modifier"
-msgstr "Byt tid på dygnet"
+msgstr "Dygnsmodifierare"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
-#, fuzzy
-#| msgid "Leader"
 msgid "Leadership bonus"
-msgstr "Ledare"
+msgstr "Ledarskapsbonus"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:86
 msgid "Slowed penalty"
-msgstr ""
+msgstr "Avdrag för nedsaktning"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:90
 msgid "Total damage"
-msgstr ""
+msgstr "Sammanlagd skada"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:94
-#, fuzzy
-#| msgid "Change Hotkey"
 msgid "Chance to hit"
-msgstr "Ställ in snabbtangenter"
+msgstr "Chans att träffa"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:95
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Chans att gå skadeslös"
 
 #. [label]
 #: data/gui/window/attack_predictions.cfg:185
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "Förväntat stridsresultat (HP)"
 
 #. [label]: id=title
 #: data/gui/window/attack_predictions.cfg:249
 msgid "Damage Calculations"
-msgstr ""
+msgstr "Skadeberäkningar"
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:272
-#, fuzzy
-#| msgid "Attack"
 msgid "Attacker"
-msgstr "Anfall"
+msgstr "Anfallare"
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:282
-#, fuzzy
-#| msgid "Gender:"
 msgid "Defender"
-msgstr "Kön:"
+msgstr "Försvarare"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:173
@@ -2415,12 +2527,10 @@ msgstr "Starta en kampanj"
 #. [toggle_button]: id=sort_name
 #: data/gui/window/campaign_dialog.cfg:232
 msgid "Sort by full campaign name in alphabetical order"
-msgstr ""
+msgstr "Sortera efter fullständigt kampanjnamn i alfabetisk ordning"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:245
-#, fuzzy
-#| msgid "Date"
 msgid "Dates"
 msgstr "Datum"
 
@@ -2428,22 +2538,19 @@ msgstr "Datum"
 #: data/gui/window/campaign_dialog.cfg:246
 msgid "Sort in approximate chronological order of story events"
 msgstr ""
+"Sortera efter ungefärlig kronologisk ordning av händelser i berättelsen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:284
 #: src/gui/dialogs/multiplayer/lobby.cpp:460
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications"
-msgstr "Välj upplösning"
+msgstr "Varianter"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:426
-#, fuzzy
-#| msgid "Save Game"
 msgid "Save random seed"
-msgstr "Spara spelet"
+msgstr "Spara slumpfrö"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:428
@@ -2451,6 +2558,7 @@ msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
 msgstr ""
+"Gör så att slumptalsgeneratorn ger samma resultat när spelet läses in på nytt"
 
 #. [button]: id=ok
 #: data/gui/window/campaign_dialog.cfg:443
@@ -2469,8 +2577,6 @@ msgstr "Svårighetsgrad"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
 msgstr "Välj svårighetsgrad:"
 
@@ -2519,10 +2625,8 @@ msgstr "Kopiera"
 
 #. [button]: id=copy
 #: data/gui/window/chat_log.cfg:187 data/gui/window/lua_interpreter.cfg:106
-#, fuzzy
-#| msgid "Copy this URL to clipboard"
 msgid "Copy this log to clipboard"
-msgstr "Välj spel att öppna"
+msgstr "Kopiera denna logg till urklipp"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
@@ -2588,7 +2692,7 @@ msgstr "Bläddra på denna plats med en filhanterare"
 #. [label]
 #: data/gui/window/custom_tod.cfg:147
 msgid "Edit Time Schedule"
-msgstr ""
+msgstr "Redigera dygnsindelningen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2610,24 +2714,18 @@ msgstr "ID:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:285
-#, fuzzy
-#| msgid "Image"
 msgid "Image:"
-msgstr "Bild"
+msgstr "Bild:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:286
-#, fuzzy
-#| msgid "Mask"
 msgid "Mask:"
-msgstr "Mask"
+msgstr "Mask:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:287
-#, fuzzy
-#| msgid "Sound"
 msgid "Sound:"
-msgstr "Ljud"
+msgstr "Ljud:"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:316
@@ -2907,7 +3005,7 @@ msgstr "Inställningar"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:161
 msgid "Numerical seed:"
-msgstr ""
+msgstr "Numeriskt frö:"
 
 #. [button]: id=ok
 #: data/gui/window/editor_generate_map.cfg:202
@@ -2993,22 +3091,22 @@ msgstr "Vilken spelare skall börja här?"
 #. [label]
 #: data/gui/window/end_credits.cfg:117
 msgid "↑ ↓ to adjust speed"
-msgstr ""
+msgstr "↑ ↓ för att justera hastighet"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:103
 msgid "Places"
-msgstr ""
+msgstr "Platser"
 
 #. [button]: id=add_bookmark
 #: data/gui/window/file_dialog.cfg:299
 msgid "Bookmarks the current folder"
-msgstr ""
+msgstr "Bokmärk nuvarande mapp"
 
 #. [button]: id=remove_bookmark
 #: data/gui/window/file_dialog.cfg:312
 msgid "Removes the current bookmark"
-msgstr ""
+msgstr "Tar bort nuvarande bokmärke"
 
 #. [button]: id=delete
 #. [button]: id=delete_file
@@ -3026,10 +3124,8 @@ msgstr "Ny mapp"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:391
-#, fuzzy
-#| msgid "File: "
 msgid "File:"
-msgstr "Fil: "
+msgstr "Fil:"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:36
@@ -3103,6 +3199,12 @@ msgid ""
 "files generated by older versions; or you may purge its entire contents if "
 "you are experiencing issues when loading the game data."
 msgstr ""
+"Wesnoth underhåller en cache av förprocessad WML-data för kampanjer, "
+"gruppspelsscenarion och annat extramaterial för att snabba upp "
+"inläsningsprocessen. Denna cache kan utan problem tas bort för att frigöra "
+"hårddiskutrymme. På detta sätt tas inaktuella filer som skapats av äldre "
+"versioner bort. Du kan också rensa bort hela cachen om du upplever problem "
+"vid inläsning av speldata."
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:81
@@ -3112,22 +3214,22 @@ msgstr "Sökväg:"
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:194
 msgid "cache^Clean"
-msgstr "Rensa"
+msgstr "Städa"
 
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:195
 msgid "Clear stale and unused cache files"
-msgstr ""
+msgstr "Städa bort inaktuella och oanvända cache-filer"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:207
 msgid "cache^Purge"
-msgstr ""
+msgstr "Rensa"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:208
 msgid "Purge the entire contents of the cache"
-msgstr ""
+msgstr "Rensa bort all cache"
 
 #. [label]: id=lblTitle
 #: data/gui/window/game_delete.cfg:40
@@ -3148,20 +3250,18 @@ msgstr "Visa inte igen"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:92
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Gold Left:"
-msgstr "Rullningsfart:"
+msgstr "Guld kvar:"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:95
 msgid "Active Troops:"
-msgstr ""
+msgstr "Aktiva trupper:"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:98
 msgid "Reserve Troops:"
-msgstr ""
+msgstr "Reservtrupper:"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_load.cfg:171
@@ -3200,6 +3300,7 @@ msgstr "Spela repris"
 #: data/gui/window/game_load.cfg:539
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr ""
+"Spela upp den inbäddade reprisen från det sparade spelet om tillämpligt"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/window/game_load.cfg:558
@@ -3209,12 +3310,12 @@ msgstr "Ångra order"
 #. [toggle_button]: id=cancel_orders
 #: data/gui/window/game_load.cfg:559
 msgid "Cancel any pending unit movements in the saved game"
-msgstr ""
+msgstr "Avbryt alla väntande trupprörelser i det sparade spelet"
 
 #. [button]: id=browse_saves_folder
 #: data/gui/window/game_load.cfg:599
 msgid "Open saves folder"
-msgstr ""
+msgstr "Öppna mappen för sparade spel"
 
 #. [button]: id=ok
 #. [grid]
@@ -3235,10 +3336,8 @@ msgstr "Spara spelet"
 #: data/gui/window/game_save.cfg:120
 #: data/gui/window/screenshot_notification.cfg:203
 #: src/gui/dialogs/file_dialog.cpp:183
-#, fuzzy
-#| msgid "Save As"
 msgid "Save"
-msgstr "Spara som..."
+msgstr "Spara"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/window/game_save_oos.cfg:141
@@ -3258,7 +3357,7 @@ msgstr "Skriv över?"
 #. [label]: id=lblMessage
 #: data/gui/window/game_save_overwrite.cfg:60
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr "Det sparfilen finns redan. Vill du skriva över den?"
+msgstr "Den sparfilen finns redan. Vill du skriva över den?\v"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_0
@@ -3269,40 +3368,32 @@ msgstr "Ledare"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:49
-#, fuzzy
-#| msgid "Team 1"
 msgid "Team"
-msgstr "Lag 1"
+msgstr "Lag"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:427
-#, fuzzy
-#| msgid "Gold:"
 msgid "Gold"
-msgstr "Guld:"
+msgstr "Guld"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:76
 #: src/generators/default_map_generator.cpp:197
-#, fuzzy
-#| msgid "Villages:"
 msgid "Villages"
-msgstr "Byar:"
+msgstr "Byar"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:90
-#, fuzzy
-#| msgid "Unit List"
 msgid "Units"
-msgstr "Trupplista"
+msgstr "Trupper"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:104
 msgid "Upkeep"
-msgstr ""
+msgstr "Underhåll"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [image]: id=income_icon
@@ -3311,10 +3402,8 @@ msgstr ""
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
-#, fuzzy
-#| msgid "Income:"
 msgid "Income"
-msgstr "Inkomst:"
+msgstr "Inkomst"
 
 #. [label]: id=side_title
 #. [toggle_button]: id=sort_1
@@ -3324,26 +3413,20 @@ msgstr "Sida"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:311
-#, fuzzy
-#| msgid "Random starting time"
 msgid ""
 "Starting\n"
 "Gold"
-msgstr "Slumpmässig starttid"
+msgstr "Startguld"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:325
-#, fuzzy
-#| msgid "Income:"
 msgid ""
 "Base\n"
 "Income"
-msgstr "Inkomst:"
+msgstr "Basinkomst"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:340
-#, fuzzy
-#| msgid "Gold per village"
 msgid ""
 "Gold Per\n"
 "Village"
@@ -3351,8 +3434,6 @@ msgstr "Guld per by"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:355
-#, fuzzy
-#| msgid "Support per village:"
 msgid ""
 "Support Per\n"
 "Village"
@@ -3361,32 +3442,24 @@ msgstr "Underhåll per by:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:255
-#, fuzzy
-#| msgid "Current room"
 msgid "Current Status"
-msgstr "Nuvarande rum"
+msgstr "Nuvarande status"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:780
-#, fuzzy
-#| msgid "Cave Path"
 msgid "Game Stats"
-msgstr "Grottgång"
+msgstr "Spelstatistik"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:255
-#, fuzzy
-#| msgid "Edit Scenario Settings"
 msgid "Scenario Settings"
-msgstr "Ange scenarioinställningar"
+msgstr "Scenarioinställningar"
 
 #. [button]: id=ok
 #: data/gui/window/game_stats.cfg:832 data/gui/window/unit_list.cfg:436
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll To"
-msgstr "Rullningsfart:"
+msgstr "Rulla till"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:126
@@ -3426,7 +3499,7 @@ msgstr "Öppna loggfil"
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:162
 msgid "Opens the log file, which may contain useful debug information"
-msgstr ""
+msgstr "Öppnar loggfilen som kan innehåll användbar debug-information"
 
 #. [label]
 #: data/gui/window/game_version.cfg:195
@@ -3462,12 +3535,12 @@ msgstr "Sökvägar"
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:541
 msgid "Libraries"
-msgstr ""
+msgstr "Bibliotek"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:554
 msgid "Features"
-msgstr ""
+msgstr "Funktioner"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:629
@@ -3499,10 +3572,8 @@ msgstr "Lua-konsol"
 
 #. [label]
 #: data/gui/window/generator_settings.cfg:89
-#, fuzzy
-#| msgid "Random Generator Settings"
 msgid "Map Generator Settings"
-msgstr "Inställningar för slumpgenerator"
+msgstr "Inställningar för kartgenerator"
 
 #. [grid]
 #. [label]
@@ -3516,15 +3587,11 @@ msgstr "Spelare:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:111
-#, fuzzy
-#| msgid "Number of hills:"
 msgid "Number of Hills:"
 msgstr "Antal kullar:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:113
-#, fuzzy
-#| msgid "Max hill size:"
 msgid "Max Hill Size:"
 msgstr "Max kullstorlek:"
 
@@ -3535,8 +3602,6 @@ msgstr "Byar:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:117
-#, fuzzy
-#| msgid "Castle size:"
 msgid "Castle Size:"
 msgstr "Borgstorlek:"
 
@@ -3547,24 +3612,18 @@ msgstr "Landskapstyp:"
 
 #. [toggle_button]: id=connect_castles
 #: data/gui/window/generator_settings.cfg:135
-#, fuzzy
-#| msgid "Roads between castles"
 msgid "Roads Between Castles"
 msgstr "Vägar mellan borgar"
 
 #. [toggle_button]: id=show_labels
 #: data/gui/window/generator_settings.cfg:157
-#, fuzzy
-#| msgid "Show labels"
 msgid "Show Labels"
 msgstr "Visa etiketter"
 
 #. [label]
 #: data/gui/window/help_browser.cfg:116
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "Battle For Wesnoth Help"
-msgstr "Visa hjälp för Kampen om Wesnoth"
+msgstr "Hjälp för Kampen om Wesnoth"
 
 #. [label]
 #: data/gui/window/hotkey_bind.cfg:35
@@ -3588,10 +3647,8 @@ msgstr "Välj vilket språk du föredrar:"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:147
-#, fuzzy
-#| msgid "Waiting..."
 msgid "Loading..."
-msgstr "Väntar…"
+msgstr "Läser in..."
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:27
@@ -3613,7 +3670,7 @@ msgstr "Vänner"
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/window/lobby_main.cfg:350
 msgid "No ignored"
-msgstr "Ej ignorerade"
+msgstr "Inga blockerade"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/window/lobby_main.cfg:362
@@ -3627,10 +3684,8 @@ msgstr "Invertera filter"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:390 data/gui/window/lobby_main.cfg:535
-#, fuzzy
-#| msgid "Zoom Out"
 msgid "Log Out"
-msgstr "Zooma ut"
+msgstr "Logga ut"
 
 #. [label]
 #. [button]: id=ok
@@ -3667,32 +3722,28 @@ msgstr "Se på"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:459 data/gui/window/lobby_main.cfg:612
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
-msgstr "Spara repris"
+msgstr "Vanliga repriser"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:463 data/gui/window/lobby_main.cfg:616
-#, fuzzy
-#| msgid "Quick replay"
 msgid "Quick Replays"
-msgstr "Snabb repris"
+msgstr "Snabba repriser"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:464 data/gui/window/lobby_main.cfg:617
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Hoppa snabbt till aktivt drag när du observerar"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:468 data/gui/window/lobby_main.cfg:621
 msgid "Enter Blindfolded"
-msgstr ""
+msgstr "Gå in med täckta ögon"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:469 data/gui/window/lobby_main.cfg:622
 msgid "Do not show the map until given control of a side"
-msgstr ""
+msgstr "Visa inte kartan förrän du fått kontroll över en sida"
 
 #. [label]
 #: data/gui/window/lobby_main.cfg:523 data/gui/window/lobby_main.cfg:729
@@ -3708,17 +3759,15 @@ msgstr "Spelarinfo — "
 #. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:263
-#, fuzzy
-#| msgid "Add as Friend"
 msgid "Add Friend"
-msgstr "Lägg till som vän"
+msgstr "Lägg till vän"
 
 #. [button]: id=add_ignored
 #. [button]: id=add_to_ignores
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
-msgstr ""
+msgstr "Blockera"
 
 #. [button]: id=remove_from_list
 #: data/gui/window/lobby_player_info.cfg:118
@@ -3732,10 +3781,8 @@ msgstr "Skicka ett privat meddelande"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:153
-#, fuzzy
-#| msgid "Moderation"
 msgid "Moderator Controls"
-msgstr "Moderering"
+msgstr "Inställningar för moderator"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
@@ -3749,8 +3796,6 @@ msgstr "Tid bannlysning:"
 
 #. [button]: id=check_status
 #: data/gui/window/lobby_player_info.cfg:238
-#, fuzzy
-#| msgid "Check status"
 msgid "Check Status"
 msgstr "Kolla status"
 
@@ -3761,63 +3806,53 @@ msgstr "Sparka"
 
 #. [button]: id=kick_ban
 #: data/gui/window/lobby_player_info.cfg:262
-#, fuzzy
-#| msgid "Kick/ban"
 msgid "Kick + Ban"
-msgstr "Sparka/bannlys"
+msgstr "Sparka + banna"
 
 #. [button]: id=stopgame
 #: data/gui/window/lobby_player_info.cfg:274
-#, fuzzy
-#| msgid "Load Game"
 msgid "Stop Game"
-msgstr "Öppna spel"
+msgstr "Avsluta spelet"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
-#, fuzzy
-#| msgid "Options"
 msgid "Logging Options"
-msgstr "Inställningar"
+msgstr "Loggningsinställningar"
 
 #. [row]
 #: data/gui/window/logging.cfg:136
 msgid "Debug level logging: maximum information"
-msgstr ""
+msgstr "Debugloggning: så mycket information som möjligt"
 
 #. [row]
 #: data/gui/window/logging.cfg:137
 msgid "Info level logging: more information"
-msgstr ""
+msgstr "Informationsloggning: mer information"
 
 #. [row]
 #: data/gui/window/logging.cfg:138
 msgid "Warning level logging: less information"
-msgstr ""
+msgstr "Varningsloggning: mindre information"
 
 #. [row]
 #: data/gui/window/logging.cfg:139
 msgid "Error level logging: minimum information"
-msgstr ""
+msgstr "Felloggning: minimalt med information"
 
 #. [row]
 #: data/gui/window/logging.cfg:140
-#, fuzzy
-#| msgid "Visible in fog"
 msgid "Disable logging"
-msgstr "Synlig i stridsdimma"
+msgstr "Stäng av loggning"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
-#, fuzzy
-#| msgid "Lua Console"
 msgid "Clear Console"
-msgstr "Lua-konsol"
+msgstr "Rensa konsolen"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:118
 msgid "Clear the log area"
-msgstr ""
+msgstr "Rensa loggområdet"
 
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
@@ -3831,13 +3866,14 @@ msgid ""
 "multiplayer lobby; either by playing sound alerts or (if the game window is "
 "inactive or minimized) displaying desktop notifications."
 msgstr ""
+"Välj hur du vill bli aviserad om händelser i gruppspel eller i "
+"gruppspelslobbyn; antingen genom ljudavisering eller (om spelfönstret är "
+"inaktivt eller minimerat) genom skrivbordsaviseringar."
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:139
-#, fuzzy
-#| msgid "Event:"
 msgid "Event"
-msgstr "Händelse:"
+msgstr "Händelse"
 
 #. [widget]: id=label
 #. [label]
@@ -3848,17 +3884,13 @@ msgstr "Ljud"
 
 #. [label]: id=notification_label
 #: data/gui/window/mp_alerts_options.cfg:170
-#, fuzzy
-#| msgid "Desktop Notification:"
 msgid "Desktop Notification"
-msgstr "Skrivbordsaviseringar:"
+msgstr "Skrivbordsavisering"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Lobby"
 msgid "In Lobby"
-msgstr "Lobby"
+msgstr "I lobbyn"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
@@ -3882,15 +3914,13 @@ msgstr "När en spelare lämnar lobbyn eller spelet"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "When a public message is received"
 msgid "When a whisper is received"
-msgstr "Skicka ett privat meddelande"
+msgstr "När en viskning tas emot"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
 msgid "Whisper:"
-msgstr ""
+msgstr "Viska:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:194
@@ -3905,29 +3935,27 @@ msgstr "Skicka ett privat meddelande"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
 msgid "Public message:"
-msgstr "Meddelande_"
+msgstr "Offentligt meddelande:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
 msgid "When a public message is received"
-msgstr "Skicka ett privat meddelande"
+msgstr "När ett offentligt meddelande tas emort"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
 msgid "Server message:"
-msgstr "Skicka ett privat meddelande"
+msgstr "Servermeddelande:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
 msgid "When a server message is received"
-msgstr "Skicka ett privat meddelande"
+msgstr "När ett servermeddelande tas emot"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
-#, fuzzy
-#| msgid "Ready to start game:"
 msgid "Ready to start:"
-msgstr "Slumpmässig starttid"
+msgstr "Klar att börja"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
@@ -3956,17 +3984,13 @@ msgstr "När ett nytt drag har börjat"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created:"
-msgstr "Speldata:"
+msgstr "Spelet har skapats:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "När ett nytt drag har börjat"
+msgstr "När ett nytt spela har skapats"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
@@ -4012,178 +4036,152 @@ msgstr "Adress"
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
 msgid "Eras:"
-msgstr ""
+msgstr "Eror:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:155
 msgid "Random Faction Matchups:"
-msgstr ""
+msgstr "Välj slumpartad fraktion som motståndare:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
 msgid "Allow for mirror matchups when random factions are chosen."
-msgstr ""
+msgstr "Tillåt speglade hopparningar när slumpade fraktioner har valts."
 
 #. [label]: id=mods_header
 #: data/gui/window/mp_create_game.cfg:203
 msgid "Modifications:"
-msgstr "Välj upplösning"
+msgstr "Varianter:"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use Map Settings"
 msgstr "Använd kartinställningar"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:314
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use scenario specific settings"
-msgstr "Använd kartinställningar"
+msgstr "Använd scenarioinställningar"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
-#, fuzzy
-#| msgid "Number of turns"
 msgid "Number of Turns"
 msgstr "Antal drag"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
 msgid "The maximum number of turns the game can last"
-msgstr ""
+msgstr "Det största antalet drag som spelet kan vara"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:331
-#, fuzzy
-#| msgid "Unlimited"
 msgid "unlimited"
-msgstr "Obegränsat"
+msgstr "obegränsat"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
 msgid "The amount of income each village yields per turn"
-msgstr ""
+msgstr "Hur mycket inkomst varje by ger varje drag"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Gold"
 msgstr "Byguld"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
 msgid "The number of unit levels each village can support"
-msgstr ""
+msgstr "Antalet trupper som varje by kan underhålla"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Support"
-msgstr "Byguld"
+msgstr "Byunderhåll"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier"
 msgstr "Erfarenhetsmodifierare"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
 msgid "The amount of experience a unit needs to advance"
-msgstr ""
+msgstr "Hur mycket erfarenhet en trupp behöver för att kunna befordras"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:372
-#, fuzzy
-#| msgid "Fog of war"
 msgid "Fog of War"
 msgstr "Stridsdimma"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:373
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr ""
+msgstr "Fiendetrupper kan bara ses när de är inom synhåll för dina trupper"
 
 #. [toggle_button]: id=shroud
 #: data/gui/window/mp_create_game.cfg:389
 msgid "The map is unknown until your units explore it"
-msgstr ""
+msgstr "Kartan är okänd tills dina trupper utforskar den"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:405
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random Start Time"
 msgstr "Slumpmässig starttid"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:406
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Randomize the starting time of day"
-msgstr "Slumpmässig starttid"
+msgstr "Påbörja spelet vid slumpmässigt utvald tid på dygnet"
 
 #. [toggle_button]: id=time_limit
 #: data/gui/window/mp_create_game.cfg:434
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time Limit"
 msgstr "Tidsgräns"
 
 #. [toggle_button]: id=time_limit
 #: data/gui/window/mp_create_game.cfg:435
 msgid "Enable custom time limits"
-msgstr ""
+msgstr "Aktivera anpassade tidsbegränsningar"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:451
 msgid "Initial Limit"
-msgstr ""
+msgstr "Startgräns"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:451
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Längsta tillåtna tid för första draget (sekunder)"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:453
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Tid för generella uppgifter varje drag (sekunder)"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:453
-#, fuzzy
-#| msgid "Turns:"
 msgid "Turn Bonus"
-msgstr "Drag:"
+msgstr "Dragbonus"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:455
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Längsta tillåtna tid för alla drag (sekunder)"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:455
 msgid "Reservoir"
-msgstr ""
+msgstr "Reserv"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
-#, fuzzy
-#| msgid "Actions"
 msgid "Action Bonus"
-msgstr "Handlingar"
+msgstr "Handlingsbonus"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Tid för varje attack, rekrytering och erövring"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -4191,43 +4189,33 @@ msgstr ""
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/hotkey/hotkey_command.cpp:38
-#, fuzzy
-#| msgid "Generate"
 msgid "General"
-msgstr "Generera"
+msgstr "Allmänt"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:546
-#, fuzzy
-#| msgid "Options"
 msgid "Custom Options"
-msgstr "Inställningar"
+msgstr "Anpassade inställningar"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:559
-#, fuzzy
-#| msgid "Settings"
 msgid "Game Settings"
-msgstr "Inställningar"
+msgstr "Spelinställningar"
 
 #. [slider]: id=num_players
 #: data/gui/window/mp_create_game.cfg:702
 msgid "Any"
-msgstr ""
+msgstr "Vilken som"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:835
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Random map options: "
-msgstr "Slumpmässig starttid"
+msgstr "Alternativ för slumpkarta:"
 
 #. [button]: id=random_map_regenerate
 #: data/gui/window/mp_create_game.cfg:856
-#, fuzzy
-#| msgid "Generate"
 msgid "Regenerate"
-msgstr "Generera"
+msgstr "Generera om"
 
 #: data/gui/window/mp_create_game.cfg:929
 msgid "Assign sides to players at random"
@@ -4235,43 +4223,39 @@ msgstr "Dela in spelarna i olika lag slumpmässigt"
 
 #: data/gui/window/mp_create_game.cfg:929
 msgid "Shuffle Sides"
-msgstr ""
+msgstr "Kasta om sidor"
 
 #: data/gui/window/mp_create_game.cfg:933
 msgid "Allow users who are not playing to watch the game"
-msgstr ""
+msgstr "Tillåt att användare som inte spelar kan titta på spelet"
 
 #: data/gui/window/mp_create_game.cfg:933
-#, fuzzy
-#| msgid "Observe"
 msgid "Observers"
-msgstr "Se på"
+msgstr "Observatörer"
 
 #: data/gui/window/mp_create_game.cfg:937
 msgid "Allow only registered users to join the game"
-msgstr ""
+msgstr "Tillåt endast registrerade användare att ansluta sig till spelet"
 
 #: data/gui/window/mp_create_game.cfg:937
 msgid "Registered Users Only"
-msgstr ""
+msgstr "Endast registrerade användare"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Strict Synchronization"
-msgstr ""
+msgstr "Strikt synkronisering"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Stricter checks for out-of-sync errors"
-msgstr ""
+msgstr "Mer strikta kontroller av synkskjuvningsfel"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Spara repris"
+msgstr "Privata repriser"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Om reprisen ska vara allmänt tillgänglig"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -4297,17 +4281,13 @@ msgstr "Ange lösenordet som spelarna ska ange för att gå med i ditt spel."
 #: data/gui/window/mp_create_game/small_resolution.cfg:183
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
 #: src/gui/dialogs/multiplayer/lobby.cpp:484
-#, fuzzy
-#| msgid "Map size: "
 msgid "Map size:"
 msgstr "Kartstorlek:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:116
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader:"
-msgstr "Ledare"
+msgstr "Ledare:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:170
@@ -4321,7 +4301,7 @@ msgstr "Kön:"
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:470
 msgid "Random"
-msgstr ""
+msgstr "Slumpad"
 
 #. [row]
 #. [toggle_button]: id=male_toggle
@@ -4335,28 +4315,22 @@ msgstr "Man"
 #: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:239
 msgid "Female"
-msgstr "kvinna"
+msgstr "Kvinna"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:210
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruits:"
-msgstr "Rekrytera"
+msgstr "Rekryter:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:289
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Your Faction"
-msgstr "Välj upplösning"
+msgstr "Välj din fraktion"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:314
-#, fuzzy
-#| msgid "Set Starting Positions Tool"
 msgid "Starting position:"
-msgstr "Verktyget för att ange startpositioner"
+msgstr "Startpositioner"
 
 #. [widget]: id=name
 #. [label]
@@ -4372,46 +4346,43 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
+"En lokal serverinstans måste startas för att vara värd för ett nätverksspel. "
+"Servern kommer att köras som en bakgrundsprocess tills dess att alla spelare "
+"lämnat den. Vill du fortsätta?"
 
 #. [button]: id=select_leader
 #: data/gui/window/mp_join_game.cfg:71 data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr ""
+msgstr "Välj vem som ska leda denna fraktion"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:155 data/gui/window/mp_staging.cfg:157
 msgid "<b>Faction:</b>"
-msgstr ""
+msgstr "<b>Fraktion:</b>"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:187 data/gui/window/mp_staging.cfg:190
-#, fuzzy
-#| msgid "Gender:"
 msgid "<b>Gender:</b>"
-msgstr "Kön:"
+msgstr "<b>Kön/b>"
 
 #. [button]: id=cancel
 #: data/gui/window/mp_join_game.cfg:359
 msgid "Leave"
-msgstr ""
+msgstr "Lämna"
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game.cfg:422 data/gui/window/mp_staging.cfg:552
 #: data/gui/window/mp_staging.cfg:737
-#, fuzzy
-#| msgid "Lobby"
 msgid "Game Lobby"
-msgstr "Lobby"
+msgstr "Spellobby"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:486
-#, fuzzy
-#| msgid "Waiting for remote input"
 msgid "Waiting for players to join..."
-msgstr "Väntar på fjärrinmatning"
+msgstr "Väntar på att spelare ska ansluta..."
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game_password_prompt.cfg:42
@@ -4441,10 +4412,8 @@ msgstr "Inloggning:"
 #. [toggle_button]: id=remember_password
 #: data/gui/window/mp_login.cfg:199
 #: data/gui/window/preferences/05_multiplayer.cfg:68
-#, fuzzy
-#| msgid "Save password to preferences (clear text)"
 msgid "Save password locally (encrypted)"
-msgstr "Spara lösenord i inställningarna (klartext)"
+msgstr "Spara lösenord lokalt (krypterat)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4454,7 +4423,7 @@ msgstr "Spara lösenord i inställningarna (klartext)"
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/game_load.cpp:435
 msgid "Multiplayer"
-msgstr "Gruppspels"
+msgstr "Gruppspel"
 
 #. [label]
 #: data/gui/window/mp_method_selection.cfg:121
@@ -4462,11 +4431,13 @@ msgid ""
 "A registered account on the Wesnoth forums is required to join the official "
 "server."
 msgstr ""
+"Det krävs ett konto för Wesnoths forum för att kunna ansluta till den "
+"officiella servern."
 
 #. [button]: id=register
 #: data/gui/window/mp_method_selection.cfg:136
 msgid "Sign Up"
-msgstr ""
+msgstr "Skapa konto"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:226
@@ -4485,11 +4456,8 @@ msgstr "Anslut till en annan server"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:264
-#, fuzzy
-#| msgid "Host a game using dedicated server ‘wesnothd’"
 msgid "Host a game using a dedicated server"
-msgstr ""
-"Var värd för ett spel genom att använda den dedikerade servern 'wesnothd'"
+msgstr "Var värd för ett spel genom att använda en dedikerad server"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:283
@@ -4503,46 +4471,36 @@ msgstr "Lokalt spel"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the side's controller"
-msgstr "Ändra musikvolym"
+msgstr "Ändra sidans kontroller"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the AI side's behaviour"
-msgstr "Ändra musikvolym"
+msgstr "Ändra beteende för AI-sidor"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
 msgid "Which team this side belongs to"
-msgstr ""
+msgstr "Vilket lag denna sida tillhör"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-#, fuzzy
-#| msgid "Show team colors"
 msgid "This side’s color"
-msgstr "Visa lagfärger"
+msgstr "Denna sidas färg"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
 msgid "I’m Ready"
-msgstr ""
+msgstr "Jag är klar"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkeys"
 msgstr "Snabbtangenter"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:328
-#, fuzzy
-#| msgid "colors^Display"
 msgid "Display"
 msgstr "Skärm"
 
@@ -4589,7 +4547,7 @@ msgstr "Gör att trupper förflyttar sig och slåss snabbare"
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:79
 msgid "Acceleration factor:"
-msgstr ""
+msgstr "Accelerationsfaktor:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:84
@@ -4597,6 +4555,9 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
+"Den hastighet med vilken trupper rör sig och animationer spelas upp när "
+"‘Accelererad hastighet‘ har aktiverats eller när skifttangenten hålls ner i "
+"spelet."
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -4605,10 +4566,8 @@ msgstr "Avaktivera automatiska förflyttningar"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:101
-#, fuzzy
-#| msgid "Do not allow automatic movements at the begining of a turn"
 msgid "Do not allow automatic movements at the beginning of a turn"
-msgstr "Ring en klocka när ditt drag börjar"
+msgstr "Tillåt inte automatiska steg vid början av ett drag"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/window/preferences/01_general.cfg:114
@@ -4637,8 +4596,6 @@ msgstr "Göm allierades planer som standard"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:143
-#, fuzzy
-#| msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
 msgstr "Göm allierades planer i planeringsläge under gruppspel"
 
@@ -4659,12 +4616,10 @@ msgstr "Spara repriser vid scenarioslut"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/window/preferences/01_general.cfg:173
-#, fuzzy
-#| msgid ""
-#| "Deletes previous auto-saves on victory in all modes and defeat in "
-#| "multiplayer"
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
-msgstr "Radera autosparade spel vid seger eller gruppspelsnederlag"
+msgstr ""
+"Spara autosparade spel vid seger för alla typer av spel och vid nederlag i "
+"gruppspel"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:186
@@ -4673,20 +4628,14 @@ msgstr "Radera autosparningar vid scenarioslut"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:187
-#, fuzzy
-#| msgid ""
-#| "Deletes previous auto-saves on victory in all modes and defeat in "
-#| "multiplayer"
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
-msgstr "Radera autosparade spel vid seger eller gruppspelsnederlag"
+msgstr "Radera tidigare autosparade spel vid seger eller gruppspelsnederlag"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:197
-#, fuzzy
-#| msgid "Maximum auto-saves: "
 msgid "Maximum auto-saves:"
-msgstr "Maximalt antal sparade spel: "
+msgstr "Maximalt antal sparade spel:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:201
@@ -4705,10 +4654,8 @@ msgstr "Byt samplingsfrekvens"
 
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:25
-#, fuzzy
-#| msgid "Category:"
 msgid "Categories:"
-msgstr "Kategori:"
+msgstr "Kategorier:"
 
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:53
@@ -4718,7 +4665,7 @@ msgstr "Filter:"
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "Filtrerar på snabbtangentens beskrivning"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -4727,10 +4674,8 @@ msgstr "Handling"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/preferences/02_hotkeys.cfg:123
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkey"
-msgstr "Snabbtangenter"
+msgstr "Snabbtangent"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
@@ -4738,12 +4683,12 @@ msgstr "Snabbtangenter"
 #: data/gui/window/preferences/02_hotkeys.cfg:135
 #: src/gui/dialogs/preferences_dialog.cpp:816
 msgid "game_hotkeys^G"
-msgstr ""
+msgstr "G"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:136
 msgid "Available in game"
-msgstr ""
+msgstr "Kan användas under spel"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
@@ -4751,12 +4696,12 @@ msgstr ""
 #: data/gui/window/preferences/02_hotkeys.cfg:148
 #: src/gui/dialogs/preferences_dialog.cpp:817
 msgid "editor_hotkeys^E"
-msgstr ""
+msgstr "E"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:149
 msgid "Available in editor"
-msgstr ""
+msgstr "Kan användas i redigeraren"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
@@ -4764,14 +4709,12 @@ msgstr ""
 #: data/gui/window/preferences/02_hotkeys.cfg:161
 #: src/gui/dialogs/preferences_dialog.cpp:818
 msgid "titlescreen_hotkeys^T"
-msgstr ""
+msgstr "T"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:162
-#, fuzzy
-#| msgid "Quit to Titlescreen"
 msgid "Available at main menu"
-msgstr "Sluta till titelskärm"
+msgstr "Kan användas på huvudmenyn"
 
 #. [button]: id=btn_add_hotkey
 #: data/gui/window/preferences/02_hotkeys.cfg:274
@@ -4785,17 +4728,13 @@ msgstr "Ta bort snabbtangent"
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:20
-#, fuzzy
-#| msgid "Change Resolution"
 msgid "Resolution:"
-msgstr "Ändra upplösning"
+msgstr "Upplösning:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:32
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Change the game resolution"
-msgstr "Byt samplingsfrekvens"
+msgstr "Byt spelets upplösning"
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:48
@@ -4805,7 +4744,7 @@ msgstr "Helskärm"
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:49
 msgid "Toggle between fullscreen and window mode"
-msgstr ""
+msgstr "Växla mellan helskärms- och fönsterläge"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:68
@@ -4815,7 +4754,7 @@ msgstr "Visa svävande etiketter"
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:69
 msgid "Show damage and healing amounts above a unit"
-msgstr ""
+msgstr "Visa skada och helande över en trupp"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:82
@@ -4838,8 +4777,6 @@ msgstr "Visa rutnät"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:99
-#, fuzzy
-#| msgid "Overlay a grid onto the map"
 msgid "Overlay a grid over the map"
 msgstr "Lägg ett rutnät över kartan"
 
@@ -4855,17 +4792,13 @@ msgstr "Visa animerad terräng-grafik"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:128
-#, fuzzy
-#| msgid "Animate map"
 msgid "Animate water"
-msgstr "Animera karta"
+msgstr "Animera vatten"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:129
-#, fuzzy
-#| msgid "Display animated terrain graphics"
 msgid "Display animated water graphics (can be slow)"
-msgstr "Visa animerad terräng-grafik"
+msgstr "Visa animerad vattengrafik (kan vara långsamt)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:142
@@ -4874,8 +4807,6 @@ msgstr "Visa animationer när trupp står still"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:143
-#, fuzzy
-#| msgid "Continuously animate standing units in the battlefield"
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Animera oupphörligen stillastående trupper"
 
@@ -4902,14 +4833,20 @@ msgstr "Ange frekvensen för truppernas stillastående animeringar"
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:274
 msgid "Limit FPS"
-msgstr ""
+msgstr "Begränsa FPS"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
+#, fuzzy
+#| msgid ""
+#| "Disabling this increases CPU usage to 100% but may slightly improve "
+#| "performance at high resolutions"
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
 msgstr ""
+"Om du avaktiverar detta ökar CPU-användningen till 100%, men det kan något "
+"förbättra prestanda vid högre upplösningar"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:290
@@ -4918,10 +4855,8 @@ msgstr "Tema"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:291
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Change the in-game theme"
-msgstr "Byt samplingsfrekvens"
+msgstr "Byt tema i spelet"
 
 #. [label]
 #: data/gui/window/preferences/04_sound.cfg:38
@@ -4931,12 +4866,12 @@ msgstr "Volym:"
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/window/preferences/04_sound.cfg:82
 msgid "Pause music on focus loss"
-msgstr ""
+msgstr "Pausa musiken när applikationen inte är i förgrunden"
 
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/window/preferences/04_sound.cfg:83
 msgid "Pause the music when you switch to any other window"
-msgstr ""
+msgstr "Pausa musiken när du byter till ett annat fönster"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:104
@@ -4985,8 +4920,6 @@ msgstr "Ändra klockvolym"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:137
-#, fuzzy
-#| msgid "Turn menu and button sounds on/off"
 msgid "Turn menu and button sounds on/off"
 msgstr "Stäng av/sätt på meny- och knappljud"
 
@@ -4997,22 +4930,16 @@ msgstr "Användargränssnittsljud"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:138
-#, fuzzy
-#| msgid "Change the sound volume for button clicks, etc."
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Ändra ljudvolymen för knapptryck etc."
 
 #. [label]
 #: data/gui/window/preferences/05_multiplayer.cfg:20
-#, fuzzy
-#| msgid "Chat lines: "
 msgid "Chat lines:"
-msgstr "Chattrader: "
+msgstr "Chattrader:"
 
 #. [slider]: id=chat_lines
 #: data/gui/window/preferences/05_multiplayer.cfg:36
-#, fuzzy
-#| msgid "Set the amount of chat lines shown"
 msgid "Set the number of chat lines shown"
 msgstr "Ange antalet rader som skall visas i chatten"
 
@@ -5034,14 +4961,12 @@ msgstr "Avbocka för att radera det sparade lösenordet (vid avslut)."
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:84
 msgid "Accept whispers from friends only"
-msgstr ""
+msgstr "Ta endast emot viskningar från vänner"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:85
-#, fuzzy
-#| msgid "Add this username to your friends list"
 msgid "Only accept whisper messages from people on your friends list"
-msgstr "Lägg detta användarnamn till din lista över vänner"
+msgstr "Ta endast emot viskade meddelande från personer på din vänlista"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/window/preferences/05_multiplayer.cfg:101
@@ -5080,17 +5005,13 @@ msgstr "Varningar"
 
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:150
-#, fuzzy
-#| msgid "Configure the game’s settings"
 msgid "Configure multiplayer notification settings"
-msgstr "Ändra spelets inställninger"
+msgstr "Ställ in gruppspelsaviseringar"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:162
-#, fuzzy
-#| msgid "Server message:"
 msgid "Server Executable"
-msgstr "Skicka ett privat meddelande"
+msgstr "Serverapplikation"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:163
@@ -5104,6 +5025,8 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
+"Lägg till detta användarnamn till din vänlista (lägg om du vill till "
+"anteckningar som 'spelarnamnsanteckningar om vän'"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
@@ -5111,6 +5034,8 @@ msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
+"Lägg till detta användarnamn på din blockeringslista (lägg om du vill till "
+"anteckningar, som 'anledning varför spelarnamn blockerats')"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -5119,8 +5044,10 @@ msgstr "Ta bort detta användarnamn från din lista"
 
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
+#, fuzzy
+#| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
-msgstr ""
+msgstr "Du har inte blivit vän med eller blockerat några andra spelare."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5145,51 +5072,47 @@ msgstr "Bläddra i skärmdumpsmappen med en filhanterare"
 #. [label]
 #: data/gui/window/select_orb_colors.cfg:80
 msgid "Choose Orb/Minimap Colors"
-msgstr ""
+msgstr "Välj färger för glober/minikartor"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:84
 msgid "Show unmoved orb"
-msgstr "Visa fiendedrag"
+msgstr "Ej flyttad trupp"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:85
-#, fuzzy
-#| msgid "Show moved orb"
 msgid "Show partial moved orb"
-msgstr "Visa lagfärger"
+msgstr "Delvis flyttad trupp"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:86
 msgid "Show moved orb"
-msgstr "Visa lagfärger"
+msgstr "Flyttad trupp"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:87
 msgid "Show ally orb"
-msgstr "Visa alla lobbyanslutningar"
+msgstr "Allierad trupp"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:88
 msgid "Show enemy orb"
-msgstr "Visa fiendedrag"
+msgstr "Fiendetrupp"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Configure Options"
-msgstr "Konfiguration:"
+msgstr "Ställ in alternativ"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:62
 msgid "Configure settings for the selected custom modifications."
-msgstr ""
+msgstr "Konfigurera inställningar för den valda anpassade varianten."
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:141
 msgid "Overall"
-msgstr ""
+msgstr "Övergripande"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -5199,10 +5122,8 @@ msgstr "Statistik"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:549
-#, fuzzy
-#| msgid "Image"
 msgid "Damage"
-msgstr "Bild"
+msgstr "Skada"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:550
@@ -5243,27 +5164,23 @@ msgstr ""
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
 msgid "Skip"
-msgstr ""
+msgstr "Hoppa över"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:124
-#, fuzzy
-#| msgid "Create Game"
 msgid "Surrender Game"
-msgstr "Skapa spel"
+msgstr "Ge upp spel"
 
 #. [label]: id=lblMessage
 #: data/gui/window/surrender_quit.cfg:60
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender and quit the game?"
-msgstr "Vill du verkligen radera det här spelet?"
+msgstr "Vill du verkligen ge upp och avsluta detta spel?"
 
 #. [button]: id=quit_and_surrender
 #: data/gui/window/surrender_quit.cfg:85
 msgid "Surrender & Quit"
-msgstr ""
+msgstr "Ge upp & avsluta"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
@@ -5283,7 +5200,7 @@ msgstr "Avsluta spelet"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:33
@@ -5293,43 +5210,37 @@ msgstr "Bild"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:57
 msgid "Loc"
-msgstr ""
+msgstr "Plats"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:69
-#, fuzzy
-#| msgid "player"
 msgid "Layer"
-msgstr "spelare"
+msgstr "Lager"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:81
 msgid "Base.x"
-msgstr ""
+msgstr "Bas.x"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:93
 msgid "Base.y"
-msgstr ""
+msgstr "Bas.y"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
-#, fuzzy
-#| msgid "Centered"
 msgid "Center"
-msgstr "Centrerad"
+msgstr "Center"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
-#, fuzzy
-#| msgid "Draw Terrain Codes"
 msgid "Terrain Layers"
-msgstr "Rita terrängkoder"
+msgstr "Terränglager"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
 msgid "Flags"
-msgstr ""
+msgstr "Flaggor"
 
 #. [label]
 #: data/gui/window/theme_list.cfg:51
@@ -5428,20 +5339,18 @@ msgstr "Byt språk"
 
 #. [label]
 #: data/gui/window/unit_advance.cfg:99
-#, fuzzy
-#| msgid "Advanced"
 msgid "Advance Unit"
-msgstr "Avancerat"
+msgstr "Befordra trupp"
 
 #. [label]
 #: data/gui/window/unit_advance.cfg:144
 msgid "What should our victorious unit become?"
-msgstr ""
+msgstr "Vad ska vår vinnande trupp bli?"
 
 #. [button]: id=damage_calculation
 #: data/gui/window/unit_attack.cfg:192
 msgid "Damage Calculation"
-msgstr ""
+msgstr "Skadeberäkning"
 
 #. [button]: id=ok
 #: data/gui/window/unit_attack.cfg:220
@@ -5450,10 +5359,8 @@ msgstr "Anfall"
 
 #. [label]
 #: data/gui/window/unit_attack.cfg:305
-#, fuzzy
-#| msgid "Attack enemy"
 msgid "Attack Enemy"
-msgstr "Anfall fiende"
+msgstr "\vAnfall fiende"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5469,7 +5376,7 @@ msgstr "Ras"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:107
 msgid "Moves"
-msgstr ""
+msgstr "Steg"
 
 #. [label]
 #: data/gui/window/unit_list.cfg:121
@@ -5478,24 +5385,20 @@ msgstr "Status"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:135
-#, fuzzy
-#| msgid "HP: "
 msgid "HP"
-msgstr "HP: "
+msgstr "HP"
 
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
-msgstr ""
+msgstr "Nivå"
 
 #. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
-#, fuzzy
-#| msgid "XP: "
 msgid "XP"
-msgstr "EP: "
+msgstr "EP"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
@@ -5504,7 +5407,7 @@ msgstr "EP: "
 #: src/gui/widgets/unit_preview_pane.cpp:374
 #: src/gui/widgets/unit_preview_pane.cpp:524
 msgid "Traits"
-msgstr ""
+msgstr "Kännetecken"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5514,27 +5417,23 @@ msgstr "Trupplista"
 
 #. [label]: id=title
 #: data/gui/window/unit_recall.cfg:297
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Recall Unit"
-msgstr "Döp om truppen"
+msgstr "Återkalla trupp"
 
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
 msgid "Search for unit name, unit type name, unit level, or trait."
-msgstr ""
+msgstr "Sök trupp efter namn, trupptyp, truppnivå eller kännetecken"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Rename"
-msgstr "Döp om truppen"
+msgstr "Döp om"
 
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:413
 msgid "Dismiss"
-msgstr ""
+msgstr "Avskeda"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -5544,10 +5443,8 @@ msgstr "Återkalla"
 
 #. [label]
 #: data/gui/window/unit_recruit.cfg:155
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruit Unit"
-msgstr "Rekrytera"
+msgstr "Rekrytera trupp"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -5571,58 +5468,56 @@ msgid "Details:"
 msgstr "Detaljer:"
 
 #: src/build_info.cpp:271
-#, fuzzy
-#| msgid "feature^PNG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "PNG-skärmdumpar"
+msgstr "JPG-skärmdumpar"
 
 #: src/build_info.cpp:278
 msgid "feature^Lua console completion"
-msgstr ""
+msgstr "Komplettering i Lua-konsol"
 
 #: src/build_info.cpp:283
 msgid "feature^Legacy bidirectional rendering"
-msgstr ""
+msgstr "Äldre rendering av två riktningar"
 
 #: src/build_info.cpp:290
 msgid "feature^D-Bus notifications back end"
-msgstr ""
+msgstr "D-Bus-aviseringar backend"
 
 #: src/build_info.cpp:299
 msgid "feature^Win32 notifications back end"
-msgstr ""
+msgstr "Win32-aviseringar backend"
 
 #: src/build_info.cpp:305
 msgid "feature^Cocoa notifications back end"
-msgstr ""
+msgstr "Cocoa-aviseringar backend"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
-msgstr ""
+msgstr "Volymer"
 
 #: src/desktop/paths.cpp:200
 msgid "filesystem_path_game^Game executables"
-msgstr ""
+msgstr "Spelapplikationer"
 
 #: src/desktop/paths.cpp:204
 msgid "filesystem_path_game^Game data"
-msgstr ""
+msgstr "Speldata"
 
 #: src/desktop/paths.cpp:208
 msgid "filesystem_path_game^User data"
-msgstr ""
+msgstr "Användardata"
 
 #: src/desktop/paths.cpp:212
 msgid "filesystem_path_game^User preferences"
-msgstr ""
+msgstr "Användarinställningar"
 
 #: src/desktop/paths.cpp:225
 msgid "filesystem_path_system^Home"
-msgstr ""
+msgstr "Hem"
 
 #: src/desktop/paths.cpp:234
 msgid "filesystem_path_system^Root"
-msgstr ""
+msgstr "Rot"
 
 #: src/desktop/version.cpp:296
 msgid "operating_system^<unknown>"
@@ -5669,133 +5564,129 @@ msgid "The maximum text width is less than 1."
 msgstr "Maximal textbredd är mindre än 1."
 
 #: src/font/text.cpp:775
-#, fuzzy
-#| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
-msgstr "Texten innehåller ogiltiga taggar:"
+msgstr "Texten innehåller ogiltiga Pango-taggar: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:260
 msgid "conjunct pair^$first and $second"
-msgstr ""
+msgstr "$first och $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:263
 msgid "conjunct start^$first, $second"
-msgstr ""
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:267
 msgid "conjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix, $next\v"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:270
 msgid "conjunct end^$prefix, and $last"
-msgstr ""
+msgstr "$prefix och $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:278
 msgid "disjunct pair^$first or $second"
-msgstr ""
+msgstr "$first eller $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:281
 msgid "disjunct start^$first, $second"
-msgstr ""
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:285
 msgid "disjunct mid^$prefix, $next"
-msgstr ""
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:288
 msgid "disjunct end^$prefix, or $last"
-msgstr ""
+msgstr "$prefix eller $last"
 
 #: src/formula/string_utils.cpp:294 src/formula/string_utils.cpp:323
 msgid "timespan^expired"
-msgstr ""
+msgstr "utgången"
 
 #: src/formula/string_utils.cpp:300
 msgid "timespan^$num year"
-msgstr ""
+msgstr "$num år"
 
 #: src/formula/string_utils.cpp:300
 msgid "timespan^$num years"
-msgstr ""
+msgstr "$num år"
 
 #: src/formula/string_utils.cpp:301
 msgid "timespan^$num month"
-msgstr ""
+msgstr "$num månad"
 
 #: src/formula/string_utils.cpp:301
 msgid "timespan^$num months"
-msgstr ""
+msgstr "$num månader"
 
 #: src/formula/string_utils.cpp:302
 msgid "timespan^$num week"
-msgstr ""
+msgstr "$num vecka"
 
 #: src/formula/string_utils.cpp:302
 msgid "timespan^$num weeks"
-msgstr ""
+msgstr "$num veckor"
 
 #: src/formula/string_utils.cpp:303
 msgid "timespan^$num day"
-msgstr ""
+msgstr "$num dag"
 
 #: src/formula/string_utils.cpp:303
 msgid "timespan^$num days"
-msgstr ""
+msgstr "$num dagar"
 
 #: src/formula/string_utils.cpp:304
 msgid "timespan^$num hour"
-msgstr ""
+msgstr "$num timme"
 
 #: src/formula/string_utils.cpp:304
 msgid "timespan^$num hours"
-msgstr ""
+msgstr "$num timmar"
 
 #: src/formula/string_utils.cpp:305
 msgid "timespan^$num minute"
-msgstr ""
+msgstr "$num minut"
 
 #: src/formula/string_utils.cpp:305
 msgid "timespan^$num minutes"
-msgstr ""
+msgstr "$num minuter"
 
 #: src/formula/string_utils.cpp:306
 msgid "timespan^$num second"
-msgstr ""
+msgstr "$num sekund"
 
 #: src/formula/string_utils.cpp:306
 msgid "timespan^$num seconds"
-msgstr ""
+msgstr "$num sekunder"
 
 #: src/gui/core/canvas.cpp:610
 msgid "Line doesn't fit on canvas."
-msgstr "Linje ryms inte på canvas."
+msgstr "Linje ryms inte på tillgängligt utrymme."
 
 #: src/gui/core/canvas.cpp:697
 msgid "Rectangle doesn't fit on canvas."
-msgstr "Rektangel ryms inte på canvas."
+msgstr "Rektangel ryms inte på tillgängligt utrymme."
 
 #: src/gui/core/canvas.cpp:812
-#, fuzzy
-#| msgid "Rectangle doesn't fit on canvas."
 msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "Rektangel ryms inte på canvas."
+msgstr "Rundad rektangel ryms inte på tillgängligt utrymme."
 
 #: src/gui/core/canvas.cpp:921 src/gui/core/canvas.cpp:926
 #: src/gui/core/canvas.cpp:931 src/gui/core/canvas.cpp:937
 msgid "Circle doesn't fit on canvas."
-msgstr "Cirkel ryms inte på canvas."
+msgstr "Cirkel ryms inte på tillgängligt utrymme."
 
 #: src/gui/core/canvas.cpp:1037
 msgid "Image doesn't fit on canvas."
-msgstr "Bild ryms inte på canvas."
+msgstr "Bild ryms inte på tillgängligt utrymme."
 
 #: src/gui/core/canvas.cpp:1256
 msgid "Text has a font size of 0."
@@ -5803,15 +5694,15 @@ msgstr "Text har fontstorlek 0."
 
 #: src/gui/core/canvas.cpp:1331
 msgid "Text doesn't start on canvas."
-msgstr "Text startar ej på canvas."
+msgstr "Text startar ej på tillgängligt utrymme."
 
 #: src/gui/core/widget_definition.cpp:49
 msgid "No state or draw section defined."
-msgstr "Ingen tillstånd- eller ritsektion definierad."
+msgstr "Ingen tillstånds- eller ritsektion angiven."
 
 #: src/gui/core/widget_definition.cpp:176 src/gui/core/window_builder.cpp:176
 msgid "No resolution defined."
-msgstr "Ingen upplösning definierad."
+msgstr "Ingen upplösning angiven."
 
 #: src/gui/core/window_builder.cpp:58
 msgid "Linked '$id' group has multiple definitions."
@@ -5825,7 +5716,7 @@ msgstr "Länkad '$id' grupp har flera definitioner."
 #: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:304
 #: src/gui/widgets/unit_preview_pane.cpp:607
 msgid "No grid defined."
-msgstr "Inget rutnät definierat"
+msgstr "Inget rutnät angivet."
 
 #: src/gui/core/window_builder.cpp:436
 msgid "A row must have a column."
@@ -5848,10 +5739,8 @@ msgid "addons_view^Upgradable"
 msgstr "Uppgraderingsbart"
 
 #: src/gui/dialogs/addon/manager.cpp:187
-#, fuzzy
-#| msgid "addons_view^Installed"
 msgid "addons_view^Publishable"
-msgstr "Installerat"
+msgstr "Publiceringsbart"
 
 #: src/gui/dialogs/addon/manager.cpp:188
 msgid "addons_view^Not Installed"
@@ -5890,14 +5779,12 @@ msgid "addons_of_type^MP factions"
 msgstr "Gruppspelsfraktioner"
 
 #: src/gui/dialogs/addon/manager.cpp:200
-#, fuzzy
-#| msgid "addons_of_type^MP factions"
 msgid "addons_of_type^Modifications"
-msgstr "Gruppspelsfraktioner"
+msgstr "Varianter"
 
 #: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_of_type^Cores"
-msgstr ""
+msgstr "Kärna"
 
 #: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Resources"
@@ -5913,31 +5800,31 @@ msgstr "Okänt"
 
 #: src/gui/dialogs/addon/manager.cpp:209
 msgid "addons_order^Name ($order)"
-msgstr ""
+msgstr "Namn ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:212
 msgid "addons_order^Author ($order)"
-msgstr ""
+msgstr "Författare ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_order^Size ($order)"
-msgstr ""
+msgstr "Storlek ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:218
 msgid "addons_order^Downloads ($order)"
-msgstr ""
+msgstr "Nedhämtningar ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:221
 msgid "addons_order^Type ($order)"
-msgstr ""
+msgstr "Typ ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addons_order^Last updated ($datelike_order)"
-msgstr ""
+msgstr "Senast uppdaterat ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:227
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr ""
+msgstr "Först inskickat ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:256 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5957,73 +5844,65 @@ msgstr "Publicerat"
 
 #: src/gui/dialogs/addon/manager.cpp:266
 msgid "addon_state^Installed, not tracking local version"
-msgstr ""
+msgstr "Installerat, spårar inte lokal version"
 
 #: src/gui/dialogs/addon/manager.cpp:269
 msgid "addon_state^Published, not tracking local version"
-msgstr ""
+msgstr "Publicerat, spårar inte lokal version"
 
 #: src/gui/dialogs/addon/manager.cpp:273
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr ""
+msgstr "Installerat ($local_version|), kan uppgraderas"
 
 #: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr ""
+msgstr "Publicerat ($local_version| installerat), kan uppgraderas"
 
 #: src/gui/dialogs/addon/manager.cpp:280
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr ""
+msgstr "Installerat ($local_version|), föråldrat på servern"
 
 #: src/gui/dialogs/addon/manager.cpp:281
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr ""
+msgstr "Publicerat ($local_version| installerat), föråldrat på servern"
 
 #: src/gui/dialogs/addon/manager.cpp:287 src/gui/widgets/addon_list.cpp:114
-#, fuzzy
-#| msgid "addon_state^Installed"
 msgid "addon_state^Installed, not ready to publish"
-msgstr "Installerat"
+msgstr "Installerat, kan ej publiceras ännu"
 
 #: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:114
-#, fuzzy
-#| msgid "addon_state^Published"
 msgid "addon_state^Ready to publish"
-msgstr "Publicerat"
+msgstr "Kan publiceras"
 
 #: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
-msgstr ""
+msgstr "Installerat, trasigt"
 
 #: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
-msgstr ""
+msgstr "Publicerat, trasigt"
 
 #: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Okänt"
 
 #: src/gui/dialogs/addon/manager.cpp:358
-#, fuzzy
-#| msgid "sort^Ascending"
 msgid "ascending"
-msgstr "Stigande"
+msgstr "stigande"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:360
 msgid "oldest to newest"
-msgstr ""
+msgstr "äldsta till nyaste"
 
 #: src/gui/dialogs/addon/manager.cpp:363
-#, fuzzy
-#| msgid "sort^Descending"
 msgid "descending"
-msgstr "Fallande"
+msgstr "fallande"
 
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:365
 msgid "newest to oldest"
-msgstr ""
+msgstr "nyaste till äldsta"
 
 #: src/gui/dialogs/addon/manager.cpp:383 src/gui/dialogs/chat_log.cpp:416
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -6033,130 +5912,137 @@ msgstr ""
 #: src/gui/dialogs/screenshot_notification.cpp:102
 #: src/gui/dialogs/wml_error.cpp:229
 msgid "Clipboard support not found, contact your packager"
-msgstr ""
+msgstr "Stöd för urklipp saknas, kontakta din paketerare"
 
 #: src/gui/dialogs/addon/manager.cpp:451
 msgid "addons^Back to List"
-msgstr ""
+msgstr "Tillbaka till listan"
 
 #: src/gui/dialogs/addon/manager.cpp:463
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
+"Ett fel inträffade när listan över extramaterial skulle hämtas från servern"
 
 #: src/gui/dialogs/addon/manager.cpp:499
-#, fuzzy
-#| msgid "No description available."
 msgid "No Add-ons Available"
-msgstr "Ingen beskrivning tillgänglig."
+msgstr "Inget extramaterial tillgängligt"
 
 #: src/gui/dialogs/addon/manager.cpp:499
 msgid "There are no add-ons available for download from this server."
-msgstr ""
+msgstr "Det finns inte något extramaterial tillgängligt på denna server"
 
 #: src/gui/dialogs/addon/manager.cpp:674
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"Det följande extramaterialet verkar ha information om publicering och "
+"versionskontroll lagrat lokalt, och kommer inte att tas bort:"
 
 #: src/gui/dialogs/addon/manager.cpp:682
 msgid "The following add-on could not be deleted properly:"
-msgstr ""
+msgstr "Följande extramaterial kunde inte tas bort på rätt sätt:"
 
 #: src/gui/dialogs/addon/manager.cpp:728
 msgid "Warning"
-msgstr ""
+msgstr "Varning"
 
 #: src/gui/dialogs/addon/manager.cpp:729
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
+"Versionsnumret för detta extramaterial är högre eller lika högt på servern "
+"som den version du vill skicka in. Vill du verkligen fortsätta?"
 
 #: src/gui/dialogs/addon/manager.cpp:738
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
+"Ogiltig sökväg för ikon. Kontrollera att sökvägen pekar på en giltig bildfil."
 
 #: src/gui/dialogs/addon/manager.cpp:741 src/gui/dialogs/addon/manager.cpp:744
 #: src/gui/dialogs/addon/manager.cpp:783
 msgid "The server responded with an error:"
-msgstr ""
+msgstr "Servern svarade med en felkod:"
 
 #: src/gui/dialogs/addon/manager.cpp:742
 msgid "Terms"
-msgstr ""
+msgstr "Villkor"
 
 #: src/gui/dialogs/addon/manager.cpp:759 src/gui/dialogs/addon/manager.cpp:786
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:502
 msgid "Response"
-msgstr ""
+msgstr "Svar"
 
 #: src/gui/dialogs/addon/manager.cpp:771
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Om du tar bort '$addon|' så kommer detta innebära att dess ned- och "
+"uppladdningsstatistik på extramaterialsservern permanent försvinner. Vill du "
+"verkligen fortsätta?"
 
 #: src/gui/dialogs/addon/manager.cpp:803
-#, fuzzy
-#| msgid "Do you want to open this link?"
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "Vill du verkligen radera det här spelet?"
+msgstr "Vill du avinstallera '$addon|'?"
 
 #: src/gui/dialogs/attack_predictions.cpp:116
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "No usable weapon"
-msgstr "Välj upplösning"
+msgstr "Inget vapen som kan användas"
 
 #: src/gui/dialogs/attack_predictions.cpp:194
 msgid "Defender resistance vs"
-msgstr ""
+msgstr "Försvararens motståndskraft gentemot"
 
 #: src/gui/dialogs/attack_predictions.cpp:196
 msgid "Defender vulnerability vs"
-msgstr ""
+msgstr "Försvararens sårbarhet gentemot"
 
 #: src/gui/dialogs/attack_predictions.cpp:200
 msgid "Attacker resistance vs"
-msgstr ""
+msgstr "Attackerarens motståndskraft gentemot"
 
 #: src/gui/dialogs/attack_predictions.cpp:202
 msgid "Attacker vulnerability vs"
-msgstr ""
+msgstr "Attackerarnes sårbarhet gentemot"
 
 #: src/gui/dialogs/campaign_selection.cpp:324
 #: src/gui/dialogs/multiplayer/lobby.cpp:465
-#, fuzzy
-#| msgid "Modifications:"
 msgid "active_modifications^None"
-msgstr "Välj upplösning"
+msgstr "Inga"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
-msgstr ""
+msgstr "$requester kräver att följande varianter aktiveras:"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:70
 msgid "$requester requires the following modifications to be disabled:"
-msgstr ""
+msgstr "$requester kräver att följande varianter avaktiveras:"
 
 #: src/gui/dialogs/depcheck_select_new.cpp:69
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Det scenario som du har valt fungerar inte under din nuvarande inställning.\n"
+"Välj ett kompatibelt scenario."
 
 #: src/gui/dialogs/depcheck_select_new.cpp:74
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Den era som du har valt fungerar inte under din nuvarande inställning.\n"
+"Välj en kompatibel era."
 
 #: src/gui/dialogs/depcheck_select_new.cpp:80
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Den variant som du har valt fungerar inte under din nuvarande inställning.\n"
+"Välj en kompatibel variant."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
@@ -6175,58 +6061,56 @@ msgid "Island"
 msgstr "Ö"
 
 #: src/gui/dialogs/file_dialog.cpp:107
-#, fuzzy
-#| msgid "Flood Fill"
 msgid "Find File"
-msgstr "Fyll allt"
+msgstr "Lokalisera fil"
 
 #: src/gui/dialogs/file_dialog.cpp:183
 msgid "Open"
-msgstr ""
+msgstr "Öppna"
 
 #: src/gui/dialogs/file_dialog.cpp:304
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
-msgstr "Det sparfilen finns redan. Vill du skriva över den?"
+msgstr "Den sparfilen finns redan. Vill du skriva över den?"
 
 #: src/gui/dialogs/file_dialog.cpp:328
 msgid "The file or folder $path cannot be created."
-msgstr ""
+msgstr "Filen eller mappen $path kan inte skapas."
 
 #: src/gui/dialogs/file_dialog.cpp:334
 msgid "The file or folder $path does not exist."
-msgstr ""
+msgstr "Filen eller mappen $path finns inte."
 
 #: src/gui/dialogs/file_dialog.cpp:709
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
+"Kan inte skapa en ny mapp på $path|. Kontrollera så att du har behörighet "
+"att skriva på denna plats."
 
 #: src/gui/dialogs/file_dialog.cpp:727
 msgid "The following folder and its contents will be permanently deleted:"
-msgstr ""
+msgstr "Följande mapp och allt innehåll i densamma kommer tas bort permanent:"
 
 #: src/gui/dialogs/file_dialog.cpp:728
 msgid "The following file will be permanently deleted:"
-msgstr ""
+msgstr "Följande fil kommer att tas bort permanent:"
 
 #: src/gui/dialogs/file_dialog.cpp:729
-#, fuzzy
-#| msgid "Do you want to open this link?"
 msgid "Do you wish to continue?"
-msgstr "Vill du verkligen radera det här spelet?"
+msgstr "Vill du fortsätta?"
 
 #: src/gui/dialogs/file_dialog.cpp:741
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
 msgstr ""
+"Kan inte ta bort $path|. Kontrollera att du har behörighet att skriva på "
+"denna plats."
 
 #: src/gui/dialogs/folder_create.cpp:60
 msgid "New Bookmark"
-msgstr ""
+msgstr "Nytt bokmärke"
 
 #: src/gui/dialogs/game_cache_options.cpp:137
 msgid "dir_size^Unknown"
@@ -6245,23 +6129,23 @@ msgstr "Cache rensad"
 
 #: src/gui/dialogs/game_cache_options.cpp:163
 msgid "The game data cache has been cleaned."
-msgstr ""
+msgstr "Spelets datacache har städats."
 
 #: src/gui/dialogs/game_cache_options.cpp:165
 msgid "The game data cache could not be completely cleaned."
-msgstr ""
+msgstr "Spelets datacache kunde inte fullständigt städas."
 
 #: src/gui/dialogs/game_cache_options.cpp:181
 msgid "Cache Purged"
-msgstr ""
+msgstr "Cache rensad"
 
 #: src/gui/dialogs/game_cache_options.cpp:182
 msgid "The game data cache has been purged."
-msgstr ""
+msgstr "Spelets datacache har rensats."
 
 #: src/gui/dialogs/game_cache_options.cpp:184
 msgid "The game data cache could not be purged."
-msgstr ""
+msgstr "Spelets datacache kunde inte rensas."
 
 #: src/gui/dialogs/game_load.cpp:168
 msgid "game_version^Current Version"
@@ -6275,13 +6159,11 @@ msgstr "Version $version"
 
 #: src/gui/dialogs/game_load.cpp:310
 msgid "The selected file is corrupt: "
-msgstr ""
+msgstr "Den valda filen har ett ogiltigt format: "
 
 #: src/gui/dialogs/game_load.cpp:389
-#, fuzzy
-#| msgid "#(Invalid)"
 msgid "(Invalid)"
-msgstr "#(Ogiltig)"
+msgstr "(Ogiltig)"
 
 #: src/gui/dialogs/game_load.cpp:426
 msgid "Campaign: $campaign_name"
@@ -6293,7 +6175,7 @@ msgstr "Träningsspel"
 
 #: src/gui/dialogs/game_load.cpp:441
 msgid "Test scenario"
-msgstr ""
+msgstr "Testscenario"
 
 #: src/gui/dialogs/game_load.cpp:451
 msgid "Replay"
@@ -6316,22 +6198,16 @@ msgid "Version: "
 msgstr "Version:"
 
 #: src/gui/dialogs/game_load.cpp:467
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications: "
-msgstr "Välj upplösning"
+msgstr "Varianter: "
 
 #: src/gui/dialogs/game_stats.cpp:71
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^AI"
-msgstr "Ingen"
+msgstr "AI"
 
 #: src/gui/dialogs/game_stats.cpp:71
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Idle"
-msgstr "Ingen"
+msgstr "Oanvänd"
 
 #: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
@@ -6354,7 +6230,7 @@ msgstr "Version $version"
 
 #: src/gui/dialogs/game_version_dialog.cpp:137
 msgid "Running on $os"
-msgstr ""
+msgstr "Kör på $os"
 
 #: src/gui/dialogs/game_version_dialog.cpp:222
 msgid "version^N/A"
@@ -6370,127 +6246,101 @@ msgstr "Sida $side_number ($name)"
 
 #: src/gui/dialogs/loading_screen.cpp:43
 msgid "Building terrain rules"
-msgstr ""
+msgstr "Bygger terrängregler"
 
 #: src/gui/dialogs/loading_screen.cpp:44
 msgid "Reading files and creating cache"
-msgstr ""
+msgstr "Läser in filer och skapar cache"
 
 #: src/gui/dialogs/loading_screen.cpp:45 src/gui/dialogs/loading_screen.cpp:48
 msgid "Initializing display"
-msgstr ""
+msgstr "Initialiserar skärm"
 
 #: src/gui/dialogs/loading_screen.cpp:46
 msgid "Reinitialize fonts for the current language"
-msgstr ""
+msgstr "Läser om typsnitt för valt språk"
 
 #: src/gui/dialogs/loading_screen.cpp:47
 msgid "Initializing teams"
-msgstr ""
+msgstr "Initialiserar lag"
 
 #: src/gui/dialogs/loading_screen.cpp:49
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Loading game configuration"
-msgstr "Konfiguration:"
+msgstr "Läser in spelkonfiguration"
 
 #: src/gui/dialogs/loading_screen.cpp:50
-#, fuzzy
-#| msgid "Flowering Water Lilies"
 msgid "Loading data files"
-msgstr "Blommande näckrosor"
+msgstr "Läser in datafiler"
 
 #: src/gui/dialogs/loading_screen.cpp:51
 msgid "Loading level"
-msgstr ""
+msgstr "Läser in nivå"
 
 #: src/gui/dialogs/loading_screen.cpp:52
 msgid "Initializing scripting engine"
-msgstr ""
+msgstr "Initialiserar skriptmotorn"
 
 #: src/gui/dialogs/loading_screen.cpp:53
-#, fuzzy
-#| msgid "Enable planning mode on start"
 msgid "Initializing planning mode"
-msgstr "Använd planeringsläge från början"
+msgstr "Initialiserar planeringsläge"
 
 #: src/gui/dialogs/loading_screen.cpp:54
 msgid "Reading unit files"
-msgstr ""
+msgstr "Läser in truppfiler"
 
 #: src/gui/dialogs/loading_screen.cpp:55
 msgid "Loading units"
-msgstr ""
+msgstr "Laddar trupper"
 
 #: src/gui/dialogs/loading_screen.cpp:56
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Searching for installed add-ons"
-msgstr "Uppdatera extramaterial"
+msgstr "Söker efter installerat extramaterial"
 
 #: src/gui/dialogs/loading_screen.cpp:57
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Starting game"
-msgstr "Slumpmässig starttid"
+msgstr "Startar spelet"
 
 #: src/gui/dialogs/loading_screen.cpp:58
 msgid "Verifying cache"
-msgstr ""
+msgstr "Verifierar cache"
 
 #: src/gui/dialogs/loading_screen.cpp:59
-#, fuzzy
-#| msgid "Connect to Server"
 msgid "Connecting to server"
-msgstr "Anslut till server"
+msgstr "Ansluter till server"
 
 #: src/gui/dialogs/loading_screen.cpp:60
-#, fuzzy
-#| msgid "Options"
 msgid "Logging in"
-msgstr "Inställningar"
+msgstr "Loggar in"
 
 #: src/gui/dialogs/loading_screen.cpp:61
-#, fuzzy
-#| msgid "Waiting for remote input"
 msgid "Waiting for server"
-msgstr "Väntar på fjärrinmatning"
+msgstr "Väntar på servern"
 
 #: src/gui/dialogs/loading_screen.cpp:62
-#, fuzzy
-#| msgid "Connect to Server"
 msgid "Connecting to redirected server"
-msgstr "Anslut till server"
+msgstr "Ansluter till omdirigerad server"
 
 #: src/gui/dialogs/loading_screen.cpp:63
-#, fuzzy
-#| msgid "Waiting for remote input"
 msgid "Waiting for next scenario"
-msgstr "Väntar på fjärrinmatning"
+msgstr "Väntar på nästa scenario"
 
 #: src/gui/dialogs/loading_screen.cpp:64
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Getting game data"
-msgstr "Slumpmässig starttid"
+msgstr "Hämtar speldata"
 
 #: src/gui/dialogs/loading_screen.cpp:65
 msgid "Downloading lobby data"
-msgstr ""
+msgstr "Hämtar lobbydata"
 
 #: src/gui/dialogs/lua_interpreter.cpp:690
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
-msgstr ""
+msgstr "Lua-konsolen kan endast användas i debug-läge! (Kör ':debug' först)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:691
-#, fuzzy
-#| msgid "Lua Console"
 msgid "lua console"
 msgstr "Lua-konsol"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:103
-#, fuzzy
-#| msgid "Selected game"
 msgid "Selected Game"
 msgstr "Valt spel"
 
@@ -6499,26 +6349,20 @@ msgid "Lobby"
 msgstr "Lobby"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:106
-#, fuzzy
-#| msgid "Current room"
 msgid "Current Room"
 msgstr "Nuvarande rum"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:108
-#, fuzzy
-#| msgid "Other games"
 msgid "Other Games"
 msgstr "Andra spel"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:115
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to log out?"
-msgstr "Vill du verkligen sluta?"
+msgstr "Vill du verkligen logga ut?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:210
 msgid "Incompatible User-made Content."
-msgstr ""
+msgstr "Inkompatibelt användarinnehåll."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:211
 msgid ""
@@ -6526,10 +6370,13 @@ msgid ""
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
+"Det går inte att ansluta till spelet eftersom värden har föråldrat "
+"extramaterial som är inkompatibelt med din version. Kanske du bör föreslå "
+"att värden uppdaterar sitt extramaterial?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:226
 msgid "Missing User-made Content."
-msgstr ""
+msgstr "Användarinnehåll saknas."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:227
 msgid ""
@@ -6537,6 +6384,9 @@ msgid ""
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
+"Du kan endast ansluta till detta spel om du installerar eller uppdaterar "
+"extramaterial.\n"
+"Vill du försöka installera detta?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:400
 msgid "Games: showing $num_shown out of $num_total"
@@ -6544,53 +6394,43 @@ msgstr "Spel: visar $num_shown av totalt $num_total"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "$game_name (Era: $era_name)"
-msgstr ""
+msgstr "$game_name (Era: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:450
-#, fuzzy
-#| msgid "addon_state^Not installed"
 msgid "era_or_mod^not installed"
-msgstr "Ej installerat"
+msgstr "ej installerad"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:453
-#, fuzzy
-#| msgid "Era:"
 msgid "Era"
-msgstr "Era:"
+msgstr "Era"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:485
-#, fuzzy
-#| msgid "Reloaded game"
 msgid "Reloaded:"
-msgstr "Omstartat spel"
+msgstr "Omläst:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:486
-#, fuzzy
-#| msgid "Share Vision:"
 msgid "Shared vision:"
-msgstr "Dela synfält"
+msgstr "Delat synfält:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid "Shuffle sides:"
-msgstr ""
+msgstr "Kasta om sidor:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:488
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time limit:"
-msgstr "Tidsgräns"
+msgstr "Tidsgräns:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:489
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use map settings:"
-msgstr "Använd kartinställningar"
+msgstr "Använd kartinställningar:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:497
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
+"Extramaterial behöver installeras\n"
+"om du ska kunna ansluta till detta spel."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:522
 msgid "Observers allowed"
@@ -6601,26 +6441,28 @@ msgid "Observers not allowed"
 msgstr "Åskådare ej tillåtna"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:800
-#, fuzzy
-#| msgid "Lobby"
 msgid "lobby"
-msgstr "Lobby"
+msgstr "lobby"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:960
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
+"Något är fel med den databas som stödjer kontroll av extramaterialsversioner "
+"för gruppspelslobbyn. Vänligen rapportera detta på https://bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
+"Detta bygge av Wesnoth stödjer inte skrivbordsaviseringar, vänligen kontakta "
+"din paketansvarige"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:104
 msgid "Side $side"
-msgstr "Lag $side"
+msgstr "Sida $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:204
 #, fuzzy
@@ -6629,133 +6471,113 @@ msgid "Add Server"
 msgstr "Server:"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenarios"
-msgstr "Scenariostart"
+msgstr "Scenarion"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
-#, fuzzy
-#| msgid "Multiplayer Options"
 msgid "Multiplayer Campaigns"
-msgstr "Gruppspelsalternativ"
+msgstr "Gruppspelskampanjer"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
-#, fuzzy
-#| msgid "Start a new single player campaign"
 msgid "Singleplayer Campaigns"
-msgstr "Påbörja en ny kampanj för en spelare"
+msgstr "Enspelarkampanjer"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:106
-#, fuzzy
-#| msgid "Options"
 msgid "Custom Maps"
-msgstr "Inställningar"
+msgstr "Anpassade kartor"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:107
-#, fuzzy
-#| msgid "New Scenario"
 msgid "Custom Scenarios"
-msgstr "Nytt scenario"
+msgstr "Anpassade scenarion"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:108
-#, fuzzy
-#| msgid "Generate Random Map"
 msgid "Random Maps"
-msgstr "Generera slumpkarta"
+msgstr "Slumpkartor"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:182
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:183
 msgid "No games found."
-msgstr ""
+msgstr "Inga spel hittades"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:250
 msgid "No eras found."
-msgstr ""
+msgstr "Inga eror hittades."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:251
 msgid "No eras found"
-msgstr ""
+msgstr "Inga eror hittades"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
 msgid "Independent: Random factions assigned independently"
-msgstr ""
+msgstr "Fristående: Slumpade fraktioner tilldelas oberoende av varandra"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
 msgid "No Mirror: No two players will get the same faction"
-msgstr ""
+msgstr "Ingen spegling: Två olika spelare kommer inte få samma fraktion"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
+"Ingen allierad spegling: Två olika allierade spelare kommer inte få samma "
+"fraktion"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:536
 msgid "No eras available for this game."
-msgstr ""
+msgstr "Inga eror tillgängliga för detta spel."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:743
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "$min|-$max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:840
 msgid "The selected game has no sides!"
-msgstr ""
+msgstr "Det valda spelet har inte några sidor!"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:906
 msgid "Choose Starting Scenario"
-msgstr ""
+msgstr "Välj startscenario"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:906
 msgid "Select at which point to begin this campaign."
-msgstr ""
+msgstr "Välj vid vilken tidpunkt du vill starta denna kampanj."
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:210
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Computer Player"
-msgstr "Välj spelare"
+msgstr "Datorspelare"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:212
-#, fuzzy
-#| msgid "(empty list)"
 msgid "Empty slot"
-msgstr "(tom lista)"
+msgstr "Tom plats"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:214
 msgid "Reserved for $playername"
-msgstr ""
+msgstr "Reserverad för $playername"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:216
-#, fuzzy
-#| msgid "Vacant slots"
 msgid "Vacant slot"
-msgstr "Lediga platser"
+msgstr "Ledig plats"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
 msgid "empty"
-msgstr ""
+msgstr "tom"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:127
-#, fuzzy
-#| msgid "Quit game"
 msgid "this game"
-msgstr "Avsluta spelet"
+msgstr "detta spel"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:360
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:97
-#, fuzzy
-#| msgid "Team 1"
 msgid "Team:"
-msgstr "Lag 1"
+msgstr "Lag:"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:487
 msgid "Waiting for players to choose factions..."
-msgstr ""
+msgstr "Väntar på att spelare ska välja fraktion..."
 
 #: src/gui/dialogs/outro.cpp:42
 msgid "The End"
-msgstr ""
+msgstr "Slut"
 
 #: src/gui/dialogs/preferences_dialog.cpp:186
 msgid "friend"
@@ -6768,36 +6590,36 @@ msgstr "Ignorerad"
 #: src/gui/dialogs/preferences_dialog.cpp:245
 #: src/gui/dialogs/preferences_dialog.cpp:305
 msgid "No username specified"
-msgstr ""
+msgstr "Inget spelarnamn angivet"
 
 #: src/gui/dialogs/preferences_dialog.cpp:263
 msgid "Invalid username"
 msgstr "Ogiltigt användarnamn"
 
 #: src/gui/dialogs/preferences_dialog.cpp:310
-#, fuzzy
-#| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
-msgstr "Se och redigera dina listor över vänner och ignorerade"
+msgstr "FInns inte på vän- eller blockeringslista"
 
 #: src/gui/dialogs/preferences_dialog.cpp:852
 #: src/gui/dialogs/preferences_dialog.cpp:922
 msgid "No hotkey selected"
-msgstr ""
+msgstr "Ingen snabbtangent vald"
 
 #: src/gui/dialogs/preferences_dialog.cpp:883
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
+"“<b>$hotkey_sequence|</b>” används av “<b>$old_hotkey_action|</b>”.\n"
+"Vill du ändra till “<b>$new_hotkey_action|</b>”?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:889
 msgid "Reassign Hotkey"
-msgstr "Spara snabbtangenter"
+msgstr "Omfördela snabbtangent"
 
 #: src/gui/dialogs/preferences_dialog.cpp:906
 msgid "All hotkeys have been reset to their default values."
-msgstr ""
+msgstr "Alla snabbtangenter har återställts till sina förvalda värden."
 
 #: src/gui/dialogs/preferences_dialog.cpp:906
 msgid "Hotkeys Reset"
@@ -6805,7 +6627,7 @@ msgstr "Återställ snabbtangenter"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1040
 msgid "∞"
-msgstr ""
+msgstr "∞\v"
 
 #: src/gui/dialogs/screenshot_notification.cpp:130
 msgid ""
@@ -6813,19 +6635,18 @@ msgid ""
 "\n"
 "Try to save the screenshot as PNG instead."
 msgstr ""
+"Detta bildformat stödjs ej.\n"
+"\n"
+"Försök spara skärmdumpen som PNG i stället."
 
 #: src/gui/dialogs/statistics_dialog.cpp:82
-#, fuzzy
-#| msgid "Scenario start"
 msgid "All Scenarios"
-msgstr "Scenariostart"
+msgstr "Alla scenarier"
 
 #: src/gui/dialogs/statistics_dialog.cpp:181
 #: src/gui/dialogs/statistics_dialog.cpp:341
-#, fuzzy
-#| msgid "Turn"
 msgid "This Turn"
-msgstr "Drag"
+msgstr "Detta drag"
 
 #: src/gui/dialogs/statistics_dialog.cpp:217
 msgid "Actual hit rates, by chance to hit:"
@@ -6846,66 +6667,59 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/statistics_dialog.cpp:372
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruits"
-msgstr "Rekrytera"
+msgstr "Rekryterade trupper"
 
 #: src/gui/dialogs/statistics_dialog.cpp:373
-#, fuzzy
-#| msgid "Recall"
 msgid "Recalls"
-msgstr "Återkalla"
+msgstr "Återkallade trupper"
 
 #: src/gui/dialogs/statistics_dialog.cpp:374
-#, fuzzy
-#| msgid "Advanced"
 msgid "Advancements"
-msgstr "Avancerat"
+msgstr "Befordrade trupper"
 
 #: src/gui/dialogs/statistics_dialog.cpp:375
 msgid "Losses"
-msgstr ""
+msgstr "Förluster"
 
 #: src/gui/dialogs/statistics_dialog.cpp:376
-#, fuzzy
-#| msgid "Hills"
 msgid "Kills"
-msgstr "Kullar"
+msgstr "Dödade trupper"
 
 #: src/gui/dialogs/statistics_dialog.cpp:398
 #: src/gui/dialogs/statistics_dialog.cpp:405
 msgid "Inflicted"
-msgstr ""
+msgstr "som utdelats"
 
 #: src/gui/dialogs/statistics_dialog.cpp:411
 #: src/gui/dialogs/statistics_dialog.cpp:418
 msgid "Taken"
-msgstr ""
+msgstr "som tagit emot"
 
 #: src/gui/dialogs/statistics_dialog.cpp:459
 msgid "$count|× $name"
-msgstr ""
+msgstr "$count|× $name"
 
 #: src/gui/dialogs/title_screen.cpp:175 src/hotkey/hotkey_command.cpp:91
 msgid "Screenshot"
 msgstr "Skärmdump"
 
 #: src/gui/dialogs/title_screen.cpp:489
-#, fuzzy
-#| msgid "Choose Theme"
 msgid "Choose Test"
-msgstr "Välj tema"
+msgstr "Välj test"
 
 #: src/gui/dialogs/unit_recall.cpp:225
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"Denna trupp kan inte återkallas eftersom du inte kommer ha tillräckligt med "
+"guld vid denna tidpunkt i din planering."
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
+" Denna trupp kan inte återkallas för att du inte har tillräckligt med guld."
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -6913,87 +6727,69 @@ msgstr "Döp om truppen"
 
 #: src/gui/dialogs/unit_recall.cpp:352
 msgid "This unit is loyal and requires no upkeep."
-msgstr ""
+msgstr "Denna trupp är lojal och kräver inte något underhåll."
 
 #: src/gui/dialogs/unit_recall.cpp:353 src/gui/dialogs/unit_recall.cpp:358
 #: src/gui/dialogs/unit_recall.cpp:363
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss him?"
-msgstr "Vill du verkligen sluta?"
+msgstr "Vill du verkligen avskeda honom?"
 
 #: src/gui/dialogs/unit_recall.cpp:354 src/gui/dialogs/unit_recall.cpp:359
 #: src/gui/dialogs/unit_recall.cpp:364
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss her?"
-msgstr "Vill du verkligen sluta?"
+msgstr "Vill du verkligen avskeda henne"
 
 #: src/gui/dialogs/unit_recall.cpp:357
 msgid "This unit is an experienced one, having advanced levels."
-msgstr ""
+msgstr "Detta är en erfaren trupp som har befordrats."
 
 #: src/gui/dialogs/unit_recall.cpp:362
 msgid "This unit is close to advancing a level."
-msgstr ""
+msgstr "Denna trupp är nära befordran."
 
 #: src/gui/dialogs/unit_recall.cpp:368
 msgid "Dismiss Unit"
-msgstr ""
+msgstr "Avskeda trupp"
 
 #: src/gui/gui.cpp:84
 msgid "No default gui defined."
 msgstr "Inget standard-användargränssnitt definierat."
 
 #: src/gui/widgets/addon_list.cpp:118
-#, fuzzy
-#| msgid "addon_state^Installed"
 msgid "addon_state^Installed, upgradable"
-msgstr "Installerat"
+msgstr "Installerat, kan uppgraderas"
 
 #: src/gui/widgets/addon_list.cpp:118
-#, fuzzy
-#| msgid "addon_state^Published"
 msgid "addon_state^Published, upgradable"
-msgstr "Publicerat"
+msgstr "Publicerat, kan uppgraderas"
 
 #: src/gui/widgets/addon_list.cpp:122
-#, fuzzy
-#| msgid "addon_state^Installed"
 msgid "addon_state^Installed, outdated on server"
-msgstr "Installerat"
+msgstr "Installerat, föråldrat på servern"
 
 #: src/gui/widgets/addon_list.cpp:122
-#, fuzzy
-#| msgid "addon_state^Published, not installed"
 msgid "addon_state^Published, outdated on server"
-msgstr "Publicerat, ej installerat"
+msgstr "Publicerat, föråldrat på servern"
 
 #: src/gui/widgets/addon_list.cpp:285
 msgid "Delete add-on from server"
-msgstr ""
+msgstr "Ta bort extramaterial från servern"
 
 #: src/gui/widgets/chatbox.cpp:286
 msgid "whisper to $receiver"
 msgstr "viska till $receiver"
 
 #: src/gui/widgets/chatbox.cpp:386
-#, fuzzy
-#| msgid "Room $name joined"
 msgid "Room <i>“$name”</i> joined"
-msgstr "Gått in i rum $name"
+msgstr "Gick in i rum <i>“$name”</i>"
 
 #: src/gui/widgets/chatbox.cpp:392
-#, fuzzy
-#| msgid ""
-#| "Whisper session with $name started. If you do not want to receive "
-#| "messages from this user, type /ignore $name\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
-"Privat samtal med $name påbörjat. Om du inte vill ta emot meddelanden från "
-"den här användaren, skriv /ignore $name\n"
+"Privat samtal med <i>“$name”</i>påbörjat. Om du inte vill ta emot "
+"meddelanden från den här användaren, skriv <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:631
 msgid "$player has entered the room"
@@ -7009,7 +6805,7 @@ msgstr "Obligatoriska gränssnittskomponenten '$id' har inte definierats."
 
 #: src/gui/widgets/label.cpp:153
 msgid "Opening links is not supported, contact your packager"
-msgstr ""
+msgstr "Det går inte att följa länkar, kontakta din paketerare"
 
 #: src/gui/widgets/label.cpp:172
 msgid "Do you want to open this link?"
@@ -7017,7 +6813,7 @@ msgstr "Vill du verkligen radera det här spelet?"
 
 #: src/gui/widgets/label.cpp:203
 msgid "Copied link!"
-msgstr ""
+msgstr "Kopierade länk!"
 
 #: src/gui/widgets/listbox.cpp:916 src/gui/widgets/multi_page.cpp:282
 msgid ""
@@ -7040,48 +6836,42 @@ msgstr "Inget sida definierad."
 
 #: src/gui/widgets/multimenu_button.cpp:167
 msgid "multimenu^All Selected"
-msgstr ""
+msgstr "Allt valt"
 
 #: src/gui/widgets/multimenu_button.cpp:172
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "annan"
+msgstr[1] "andra"
 
 #: src/gui/widgets/multimenu_button.cpp:174
 #: src/gui/widgets/multimenu_button.cpp:231
 msgid "multimenu^None Selected"
-msgstr ""
+msgstr "Inget valt"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
-msgstr ""
+msgstr "Behöver åtminstone ett parallellt föremål."
 
 #: src/gui/widgets/size_lock.cpp:86
-#, fuzzy
-#| msgid "Invalid username"
 msgid "Invalid size."
-msgstr "Ogiltigt användarnamn"
+msgstr "Ogiltig storlek."
 
 #: src/gui/widgets/size_lock.cpp:162
-#, fuzzy
-#| msgid "No list defined."
 msgid "No widget defined."
-msgstr "Ingen lista definierad"
+msgstr "Ingen widget angiven."
 
 #: src/gui/widgets/slider.cpp:466
 msgid "The number of value_labels and values don't match."
 msgstr "Antalet value_labels och values matchar inte."
 
 #: src/gui/widgets/stacked_widget.cpp:278
-#, fuzzy
-#| msgid "No stack defined."
 msgid "No stack layers defined."
-msgstr "Ingen stack definierad"
+msgstr "Inget stacklager angivet."
 
 #: src/gui/widgets/styled_widget.cpp:667
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr ""
+msgstr "Hittade en widget med hjälptext men utan tips."
 
 #: src/gui/widgets/tree_view.cpp:377
 msgid "No nodes defined for a tree view."
@@ -7101,19 +6891,17 @@ msgstr "Okänt bygg-id för trädvy-noden."
 
 #: src/gui/widgets/unit_preview_pane.cpp:135
 msgid "Resistances: "
-msgstr ""
+msgstr "Motståndskrafter: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:137
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Att / Försv)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:151
 msgid "Movement Costs:"
-msgstr ""
+msgstr "Rörelsekostnader:"
 
 #: src/gui/widgets/unit_preview_pane.cpp:216
-#, fuzzy
-#| msgid "Attack"
 msgid "Attacks"
 msgstr "Anfall"
 
@@ -7122,7 +6910,7 @@ msgstr "Anfall"
 #: src/gui/widgets/unit_preview_pane.cpp:445
 #: src/gui/widgets/unit_preview_pane.cpp:477
 msgid "Lvl $lvl"
-msgstr ""
+msgstr "Nivå $lvl"
 
 #: src/gui/widgets/unit_preview_pane.cpp:331
 #: src/gui/widgets/unit_preview_pane.cpp:344
@@ -7140,10 +6928,8 @@ msgstr "EP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:351
 #: src/gui/widgets/unit_preview_pane.cpp:511
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier: "
-msgstr "Erfarenhetsmodifierare"
+msgstr "Erfarenhetsmodifierare: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:354
 #: src/gui/widgets/unit_preview_pane.cpp:514
@@ -7153,7 +6939,7 @@ msgstr "GS: "
 #: src/gui/widgets/unit_preview_pane.cpp:392
 #: src/gui/widgets/unit_preview_pane.cpp:542
 msgid "Abilities"
-msgstr ""
+msgstr "Förmågor"
 
 #: src/gui/widgets/window.cpp:938
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -7166,92 +6952,68 @@ msgstr ""
 "Misslyckades med att visa en dialogruta som inte fick plats på skärmen."
 
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved Games"
-msgstr "Spara spelet"
+msgstr "Sparade spel"
 
 #: src/hotkey/hotkey_command.cpp:40
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Map Commands"
-msgstr "Användarkommando"
+msgstr "Kartkommandon"
 
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Unit Commands"
-msgstr "Användarkommando"
+msgstr "Truppkommandon"
 
 #: src/hotkey/hotkey_command.cpp:42
-#, fuzzy
-#| msgid "Players: "
 msgid "Player Chat"
-msgstr "Spelare:"
+msgstr "Spelarchatt"
 
 #: src/hotkey/hotkey_command.cpp:43
-#, fuzzy
-#| msgid "Change Control"
 msgid "Replay Control"
-msgstr "Byt kontroll"
+msgstr "Omspelskontroll"
 
 #: src/hotkey/hotkey_command.cpp:44
-#, fuzzy
-#| msgid "whiteboard^Planning Mode"
 msgid "Planning Mode"
 msgstr "Planeringsläge"
 
 #: src/hotkey/hotkey_command.cpp:45
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenario Editor"
-msgstr "Scenariostart"
+msgstr "Scenarioredigerare"
 
 #: src/hotkey/hotkey_command.cpp:46
 msgid "Editor Palettes"
-msgstr ""
+msgstr "Redigeringspalett"
 
 #: src/hotkey/hotkey_command.cpp:47
-#, fuzzy
-#| msgid "Paint Tool"
 msgid "Editor Tools"
-msgstr "Ritverktyg"
+msgstr "Redigeringsverktyg"
 
 #: src/hotkey/hotkey_command.cpp:48
 msgid "Editor Clipboard"
-msgstr ""
+msgstr "Redigeringsurklipp"
 
 #: src/hotkey/hotkey_command.cpp:49
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Debug Commands"
-msgstr "Användarkommando"
+msgstr "Debug-kommandon"
 
 #: src/hotkey/hotkey_command.cpp:50
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Custom WML Commands"
-msgstr "Användarkommando"
+msgstr "Anpassade WML-kommandon"
 
 #: src/hotkey/hotkey_command.cpp:68
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll Up"
-msgstr "Rullningsfart:"
+msgstr "Rulla upp"
 
 #: src/hotkey/hotkey_command.cpp:69
 msgid "Scroll Down"
-msgstr ""
+msgstr "Rulla ner"
 
 #: src/hotkey/hotkey_command.cpp:70
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll Left"
-msgstr "Rullningsfart:"
+msgstr "Rulla vänster"
 
 #: src/hotkey/hotkey_command.cpp:71
 msgid "Scroll Right"
-msgstr ""
+msgstr "Rulla höger"
 
 #: src/hotkey/hotkey_command.cpp:73
 msgid "cancel"
@@ -7275,7 +7037,7 @@ msgstr "Välj/Flytta/Anfall"
 
 #: src/hotkey/hotkey_command.cpp:78
 msgid "Touch"
-msgstr ""
+msgstr "Vidrör"
 
 #: src/hotkey/hotkey_command.cpp:79
 msgid "Animate Map"
@@ -7406,10 +7168,8 @@ msgid "Continue Network Game"
 msgstr "Fortsätt nätverksspel"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Quit to Titlescreen"
 msgid "Quit to Main Menu"
-msgstr "Sluta till titelskärm"
+msgstr "Gå tillbaka till huvudmenyn"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Set Team Label"
@@ -7456,22 +7216,16 @@ msgid "Next Move"
 msgstr "Nästa förflyttning"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Hela kartan"
+msgstr "Vy: Hela kartan"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Alla lag"
+msgstr "Vy: Varje lag"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Människolag"
+msgstr "Vy: Människolag"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
@@ -7534,11 +7288,11 @@ msgstr "Byt karta"
 
 #: src/hotkey/hotkey_command.cpp:167
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Tilldela lokal tid"
 
 #: src/hotkey/hotkey_command.cpp:169
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Redigerare för dygnsindelning"
 
 #: src/hotkey/hotkey_command.cpp:170
 msgid "Partial Undo"
@@ -7582,21 +7336,19 @@ msgstr "Byt för- och bakgrundsterränger"
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Change Palette Group"
-msgstr ""
+msgstr "Byt palettgrupp"
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid "Scroll Palette Left"
-msgstr ""
+msgstr "Rulla paletten vänster"
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Scroll Palette Right"
-msgstr ""
+msgstr "Rulla paletten höger"
 
 #: src/hotkey/hotkey_command.cpp:186
-#, fuzzy
-#| msgid "Actions"
 msgid "Remove Location"
-msgstr "Handlingar"
+msgstr "Ta bort plats"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Add New Side"
@@ -7615,6 +7367,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Använd vänster/höger musknapp för att rita över-/underliggande terräng. Håll "
+"nere skifttangenten för att endast rita baslager. Ctrl-klicka för att hämta "
+"upp terrängen under pekaren."
 
 #: src/hotkey/hotkey_command.cpp:193
 msgid "Fill Tool"
@@ -7625,6 +7380,9 @@ msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
+"Vänster musknapp markerar eller avmarkerar med Ctrl, höger visar en "
+"kontextmeny. Håll nere skifttangenten för trollspå-markering av rutor med "
+"samma terräng."
 
 #: src/hotkey/hotkey_command.cpp:194
 msgid "Selection Tool"
@@ -7636,62 +7394,65 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Vänster musknapp visar spelarval, höger rensar. Siffertangenter rullar till "
+"startposition, alt+siffra sätter respektive startposition under pekaren, "
+"delete rensar."
 
 #: src/hotkey/hotkey_command.cpp:195
-#, fuzzy
-#| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
-msgstr "Verktyget för att ange startpositioner"
+msgstr "Startpositionsverktyg"
 
 #: src/hotkey/hotkey_command.cpp:196
-#, fuzzy
-#| msgid "Fill Tool"
 msgid "Label Tool"
-msgstr "Fyllnadsverktyg"
+msgstr "Etikettverktyg"
 
 #: src/hotkey/hotkey_command.cpp:196
 msgid "Left mouse button sets or drags a label, right clears."
-msgstr ""
+msgstr "Vänster musknapp placerar eller drar en etikett, höger rensar."
 
 #: src/hotkey/hotkey_command.cpp:197
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
+"Vänster musknapp placerar eller flyttar en trupp m h a dra-och-släpp, höger "
+"tar fram en kontextmeny. Sida måste ha angetts."
 
 #: src/hotkey/hotkey_command.cpp:197
-#, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
-msgstr "Ritverktyg"
+msgstr "Truppverktyg"
 
 #: src/hotkey/hotkey_command.cpp:198
-#, fuzzy
-#| msgid "Next Tool"
 msgid "Item Tool"
-msgstr "Nästa verktyg"
+msgstr "Föremålsverktyg"
 
 #: src/hotkey/hotkey_command.cpp:198
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
+"Vänster musknapp placerar ett föremål eller flyttar det m h a dra-och-släpp, "
+"höger rensar. Ännu inte implementerat."
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"Vänster musknapp placerar eller drar en ljudkälla, höger rensar. Inte "
+"implementerat ännu."
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid "Sound Source Tool"
-msgstr ""
+msgstr "Ljudkälleverktyg"
 
 #: src/hotkey/hotkey_command.cpp:200
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
+"Vänster musknapp anger nuvarande sida som ägare till byn, höger rensar. "
+"Kräver att en sida angetts."
 
 #: src/hotkey/hotkey_command.cpp:200
 msgid "Village Tool"
@@ -7703,7 +7464,7 @@ msgstr "Kan rekrytera"
 
 #: src/hotkey/hotkey_command.cpp:202
 msgid "Toggle the recruit attribute of a unit."
-msgstr ""
+msgstr "Växla rekryteringsattribut för en trupp."
 
 #: src/hotkey/hotkey_command.cpp:203
 msgid "Can be Renamed"
@@ -7711,15 +7472,15 @@ msgstr "Kan döpas om"
 
 #: src/hotkey/hotkey_command.cpp:203
 msgid "Toggle the unit being renameable."
-msgstr ""
+msgstr "Växla om en trupp ska kunna döpas om."
 
 #: src/hotkey/hotkey_command.cpp:204
 msgid "Assign Recruit List"
-msgstr ""
+msgstr "Tilldela rekrytlista"
 
 #: src/hotkey/hotkey_command.cpp:204
 msgid "Assign the selected unit set as recruit list to the unit."
-msgstr ""
+msgstr "Tilldela markerad trupplista som rekrytlista för truppen."
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid "Change Unit ID"
@@ -7731,19 +7492,19 @@ msgstr "Lojal"
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid "Toggle Minimap Unit Coding"
-msgstr ""
+msgstr "Växla truppkodning på minikartan"
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Toggle Minimap Terrain Coding"
-msgstr ""
+msgstr "Växla terrängkodning på minikartan"
 
 #: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle Minimap Unit Drawing"
-msgstr ""
+msgstr "Växla visning av trupper på minikartan"
 
 #: src/hotkey/hotkey_command.cpp:214
 msgid "Toggle Minimap Village Drawing"
-msgstr ""
+msgstr "Växla visning av byar på minikartan"
 
 #: src/hotkey/hotkey_command.cpp:215
 msgid "Toggle Minimap Terrain Drawing"
@@ -7759,23 +7520,23 @@ msgstr "Standardpensel"
 
 #: src/hotkey/hotkey_command.cpp:219
 msgid "Single Tile"
-msgstr ""
+msgstr "Enstaka ruta"
 
 #: src/hotkey/hotkey_command.cpp:220
 msgid "Radius One"
-msgstr ""
+msgstr "Radius 1"
 
 #: src/hotkey/hotkey_command.cpp:221
 msgid "Radius Two"
-msgstr ""
+msgstr "Radius 2"
 
 #: src/hotkey/hotkey_command.cpp:222
 msgid "Brush NW-SE"
-msgstr ""
+msgstr "Pensel NV-SÖ"
 
 #: src/hotkey/hotkey_command.cpp:223
 msgid "Brush SW-NE"
-msgstr ""
+msgstr "Pensle SV-NÖ"
 
 #: src/hotkey/hotkey_command.cpp:225
 msgid "Cut"
@@ -7789,6 +7550,7 @@ msgstr "Kopiera"
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
+"Vänster musknapp klistrar in från urklipp, höger tar fram en kontextmeny."
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Paste"
@@ -7895,10 +7657,8 @@ msgid "Draw Terrain Codes"
 msgstr "Rita terrängkoder"
 
 #: src/hotkey/hotkey_command.cpp:260
-#, fuzzy
-#| msgid "Number of turns"
 msgid "Draw Number of Bitmaps"
-msgstr "Antal drag"
+msgstr "Rita antal bitmappar"
 
 #: src/hotkey/hotkey_command.cpp:262
 msgid "Save Selection to Area"
@@ -8025,10 +7785,8 @@ msgid "Show Credits"
 msgstr "Visa listan över medverkande upphovsmän"
 
 #: src/hotkey/hotkey_command.cpp:296
-#, fuzzy
-#| msgid "Save Scenario As"
 msgid "Start Test Scenario"
-msgstr "Spara scenario som"
+msgstr "Starta testscenario"
 
 #: src/hotkey/hotkey_command.cpp:298
 msgid "Show Helptip"
@@ -8052,26 +7810,25 @@ msgid ""
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
+"Serverapplikationen <b>$filename</b> tillhandahåller "
+"gruppspelsfunktionalitet, och krävs om du vill vara värd för lokala "
+"nätverksspel. Normalt finns applikationen i samma mapp som spelapplikationen."
 
 #: src/preferences/display.cpp:168
 msgid "Find Server Application"
-msgstr ""
+msgstr "Lokalisera serverapplikation"
 
 #: src/preferences/display.cpp:170
 msgid "Select"
 msgstr "Välj"
 
 #: src/preferences/game.cpp:909
-#, fuzzy
-#| msgid "%H:%M"
 msgid "[%H:%M]"
-msgstr "%H:%M"
+msgstr "[%H:%M]\v"
 
 #: src/preferences/game.cpp:912
-#, fuzzy
-#| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
-msgstr "%I:%M %p"
+msgstr "[%I:%M %p]"
 
 #: src/preferences_display0.cpp:172
 #, fuzzy
@@ -8127,22 +7884,50 @@ msgstr ""
 "Nyckeln '$deprecated_key' har döpts om till '$key'. Stödet för "
 "'$deprecated_key' försvinner i och med version $removal_version."
 
+#~ msgid "Nearest Neighbor"
+#~ msgstr "Närmaste granne"
+
+#~ msgid "Nearest Neighbor scaling (fastest)"
+#~ msgstr "Skala enligt närmaste granne (snabbast)"
+
+#~ msgid "xBRZ + linear"
+#~ msgstr "xBRZ + linjär"
+
+#~ msgid "xBRZ followed by Bilinear interpolation"
+#~ msgstr "xBRZ följt av bilinjär interpolation"
+
+#~ msgid "xBRZ + NN"
+#~ msgstr "xBRZ + NN"
+
+#~ msgid "xBRZ followed by Nearest Neighbor (recommended)"
+#~ msgstr "xBRZ följt av närmaste granne (rekommenderas)"
+
+#~ msgid "Bilinear interpolation scaling"
+#~ msgstr "Bilinjär interpolationsskalning"
+
+#~ msgid "Linear"
+#~ msgstr "Linjär"
+
 #~ msgid "Advanced Graphics Options"
 #~ msgstr "Avancerade grafikinställningar"
 
 #~ msgid "Images will be scaled using the following algorithms:"
 #~ msgstr "Bilder kommer att skalas med följande algoritmer:"
 
+#~ msgid "All units, haloes, border hexes"
+#~ msgstr "Alla trupper, haloer, kanthexar"
+
+#~ msgid "Scaled to zoom"
+#~ msgstr "Skalad till zoom"
+
 #~ msgid "Everything else"
 #~ msgstr "Allting annat"
 
-#, fuzzy
-#~| msgid "Sort players:"
-#~ msgid "Sort by:"
-#~ msgstr "Sortera spelare:"
+#~ msgid "Scaled to hex"
+#~ msgstr "Skalad till hex"
 
-#~ msgid "Kick / ban reason:"
-#~ msgstr "Orsak för utslängning/bannlysning:"
+#~ msgid "Sort by:"
+#~ msgstr "Sortera efter:"
 
 #~ msgid "You will now connect to the multiplayer server."
 #~ msgstr "Du kommer nu anslutas till flerspelsservern."
@@ -8150,11 +7935,52 @@ msgstr ""
 #~ msgid "View List"
 #~ msgstr "Visa lista"
 
+#~ msgid "Font Scaling:"
+#~ msgstr "Typsnittsskalning:"
+
+#~ msgid "Set the scaling factor of fonts"
+#~ msgstr "Ange skalfaktor för typsnitt"
+
 #~ msgid "Start a tutorial to familiarize yourself with the game"
 #~ msgstr "Starta ett träningsspel för att bekanta dig med spelet"
 
+#~ msgid "Cores"
+#~ msgstr "Kärnor"
+
+#~ msgid "Select the game core data"
+#~ msgstr "Välj kärndata för spelet"
+
+#~ msgid "No matching widget found for scaling option"
+#~ msgstr "Kunde inte hitta någon motsvarande widget för skalalternativet"
+
 #~ msgid "No server has been defined."
 #~ msgstr "Ingen server har definierats."
+
+#~ msgid "Kick / ban reason:"
+#~ msgstr "Orsak för utslängning/bannlysning:"
+
+#, fuzzy
+#~| msgid "Speed: "
+#~ msgid "Speed:"
+#~ msgstr "Fart: "
+
+#~ msgid "Units move and fight speed"
+#~ msgstr "Förflyttnings- och stridshastighet"
+
+#, fuzzy
+#~| msgid "Scenario start"
+#~ msgid "Scenario"
+#~ msgstr "Scenariostart"
+
+#, fuzzy
+#~| msgid "Campaigns"
+#~ msgid "Campaign"
+#~ msgstr "Kampanjer"
+
+#, fuzzy
+#~| msgid "Map Information"
+#~ msgid "No era information found."
+#~ msgstr "Kartinformation"
 
 #, fuzzy
 #~| msgid "Wooden Floor"
@@ -8169,6 +7995,16 @@ msgstr ""
 
 #~ msgid "Alphabetically"
 #~ msgstr "Alfabetiskt"
+
+#, fuzzy
+#~| msgid "Unlimited"
+#~ msgid "FPS limiter"
+#~ msgstr "Obegränsat"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgid "Settings:"
+#~ msgstr "Inställningar"
 
 #~ msgid "Refresh"
 #~ msgstr "Uppdatera"
@@ -8198,37 +8034,9 @@ msgstr ""
 #~ "Kampen om Wesnoths forum kan hittas på http://www.wesnoth.org/forum/"
 
 #, fuzzy
-#~| msgid "Speed: "
-#~ msgid "Speed:"
-#~ msgstr "Fart: "
-
-#~ msgid "Units move and fight speed"
-#~ msgstr "Förflyttnings- och stridshastighet"
-
-#, fuzzy
-#~| msgid "Scenario start"
-#~ msgid "Scenario"
-#~ msgstr "Scenariostart"
-
-#, fuzzy
-#~| msgid "Campaigns"
-#~ msgid "Campaign"
-#~ msgstr "Kampanjer"
-
-#, fuzzy
 #~| msgid "url^None"
 #~ msgid "None"
 #~ msgstr "Ingen"
-
-#, fuzzy
-#~| msgid "Settings"
-#~ msgid "Settings:"
-#~ msgstr "Inställningar"
-
-#, fuzzy
-#~| msgid "Map Information"
-#~ msgid "No era information found."
-#~ msgstr "Kartinformation"
 
 #~ msgid "Password Reminder"
 #~ msgstr "Lösenordspåminnelse"
@@ -9108,8 +8916,3 @@ msgstr ""
 
 #~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
 #~ msgstr "Radera sparade spel vid singelspelsseger eller nederlag automatiskt"
-
-#, fuzzy
-#~| msgid "Unlimited"
-#~ msgid "FPS limiter"
-#~ msgstr "Obegränsat"
