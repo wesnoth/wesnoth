@@ -2,6 +2,9 @@
  ### Add-ons client
    * Ensure the client doesn't re-download dependencies that have just been updated during an Update All
      run by re-reading add-on versions after each update batch (issue #3273).
+ ### Campaigns
+   * Delfador's Memoirs:
+     * S12: Fix a few case where dialog and events sound odd or fire out of order (issue #4614)
 
 ## Version 1.15.3
  ### AI
