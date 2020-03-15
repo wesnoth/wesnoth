@@ -1,7 +1,7 @@
 ## Version 1.14.11+dev
  ### Language and i18n
    * Updated translations: Czech, Dutch, Esperanto, Finnish, French, Portuguese,
-     Portuguese (Brazil).
+     Portuguese (Brazil), Swedish.
    * Use <game dir>/translations instead of <process working dir>/translations to find core
      translation catalogues on Windows.
 
