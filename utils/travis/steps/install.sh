@@ -47,7 +47,7 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     7z x VC15.zip
     mv external-VC15 external
     cd $start
-    export PATH="/c/Python36:"$PATH":/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin/amd64:$start/../external/dll:/c/Python36/Scripts/"
+    export PATH="/c/Python36:"$PATH":$start/../external/dll:/c/Python36/Scripts/"
     yes | pip3 install paramiko
     if [ "$(which python3)" == "" ] || [ "$(which sqlite3)" == "" ] || [ ! -d "../external" ]; then
         echo "Failed to retrieve dependencies!"
