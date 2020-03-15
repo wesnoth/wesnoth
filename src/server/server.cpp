@@ -680,7 +680,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	}
 
 	// Check if the username is allowed.
-	for(const std::string d : disallowed_names_) {
+	for(const std::string& d : disallowed_names_) {
 		if(utils::wildcard_string_match(utf8::lowercase(username), utf8::lowercase(d))) {
 			async_send_error(socket, "The nickname '" + username + "' is reserved and cannot be used by players",
 				MP_NAME_RESERVED_ERROR);
@@ -1651,7 +1651,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 
 			const std::string mods = m["active_mods"].to_string();
 			if(mods != "") {
-				for(const std::string mod : utils::split(mods, ',')){
+				for(const std::string& mod : utils::split(mods, ',')){
 					user_handler_->db_insert_modification_info(uuid_, g.db_id(), mod);
 				}
 			}
