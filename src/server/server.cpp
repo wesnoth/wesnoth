@@ -1326,7 +1326,7 @@ void server::cleanup_game(game* game_ptr)
 		gamelist->remove_child("game", index);
 	} else {
 		// Can happen when the game ends before the scenario was transferred.
-		LOG_SERVER << "Could not find game (" << game_ptr->id() << ") to delete in games_and_users_list_.\n";
+		LOG_SERVER << "Could not find game (" << game_ptr->id() << ", " << game_ptr->db_id() << ") to delete in games_and_users_list_.\n";
 	}
 
 	delete game_ptr;
@@ -1441,7 +1441,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// g.level() should then receive the full data for the game.
 		if(!g.level_init()) {
 			LOG_SERVER << client_address(socket) << "\t" << player.name() << "\tcreated game:\t\"" << g.name() << "\" ("
-					   << g.id() << ").\n";
+					   << g.id() << ", " << g.db_id() << ").\n";
 			// Update our config object which describes the open games,
 			// and save a pointer to the description in the new game.
 			simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
@@ -1454,7 +1454,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 				m->copy_into(desc);
 			} else {
 				WRN_SERVER << client_address(socket) << "\t" << player.name() << "\tsent scenario data in game:\t\""
-						   << g.name() << "\" (" << g.id() << ") without a 'multiplayer' child.\n";
+						   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") without a 'multiplayer' child.\n";
 				// Set the description so it can be removed in delete_game().
 				g.set_description(&desc);
 				delete_game(g.id());
@@ -1469,7 +1469,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			desc.set_attr_dup("id", lexical_cast<std::string>(g.id()).c_str());
 		} else {
 			WRN_SERVER << client_address(socket) << "\t" << player.name() << "\tsent scenario data in game:\t\""
-					   << g.name() << "\" (" << g.id() << ") although it's already initialized.\n";
+					   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") although it's already initialized.\n";
 			return;
 		}
 
@@ -1542,7 +1542,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		if(!g.level_init()) {
 			WRN_SERVER << client_address(socket) << "\tWarning: " << player.name()
 					   << "\tsent [store_next_scenario] in game:\t\"" << g.name() << "\" (" << g.id()
-					   << ") while the scenario is not yet initialized.";
+					   << ", " << g.db_id() << ") while the scenario is not yet initialized.";
 			return;
 		}
 
@@ -1561,7 +1561,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 
 		if(g.description() == nullptr) {
 			ERR_SERVER << client_address(socket) << "\tERROR: \"" << g.name() << "\" (" << g.id()
-					   << ") is initialized but has no description_.\n";
+					   << ", " << g.db_id() << ") is initialized but has no description_.\n";
 			return;
 		}
 
@@ -1572,7 +1572,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			m->copy_into(desc);
 		} else {
 			WRN_SERVER << client_address(socket) << "\t" << player.name() << "\tsent scenario data in game:\t\""
-					   << g.name() << "\" (" << g.id() << ") without a 'multiplayer' child.\n";
+					   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") without a 'multiplayer' child.\n";
 
 			delete_game(g.id());
 
@@ -1816,7 +1816,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 	}
 
 	WRN_SERVER << client_address(socket) << "\tReceived unknown data from: " << player.name() << " (socket:" << socket
-			   << ") in game: \"" << g.name() << "\" (" << g.id() << ")\n"
+			   << ") in game: \"" << g.name() << "\" (" << g.id() << ", " << g.db_id() << ")\n"
 			   << data.output();
 }
 
@@ -2859,7 +2859,7 @@ void server::stopgame(const std::string& /*issuer_name*/,
 	if(player != player_connections_.get<name_t>().end()){
 		std::shared_ptr<game> g = player->get_game();
 		if(g){
-			*out << "Player '" << nick << "' is in game with id '" << g->id() << "' named '" << g->name() << "'.  Ending game for reason: '" << reason << "'...";
+			*out << "Player '" << nick << "' is in game with id '" << g->id() << ", " << g->db_id() << "' named '" << g->name() << "'.  Ending game for reason: '" << reason << "'...";
 			delete_game(g->id(), reason);
 		} else {
 			*out << "Player '" << nick << "' is not currently in a game.";
