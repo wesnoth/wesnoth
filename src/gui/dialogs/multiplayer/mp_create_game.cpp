@@ -709,14 +709,13 @@ void mp_create_game::update_details(window& win)
 			create_engine_.get_state().classification().campaign = "";
 
 			find_widget<stacked_widget>(&win, "minimap_stack", false).select_layer(0);
-			const std::string map_data = !current_scenario->data()["map_data"].empty()
-				? current_scenario->data()["map_data"]
-				: filesystem::read_map(current_scenario->data()["map_file"]);
-			if (current_scenario->data()["map_data"].empty()) {
-				current_scenario->data()["map_data"] = map_data;
+
+			if(current_scenario->data()["map_data"].empty()) {
+				saved_game::expand_map_file(current_scenario->data());
 				current_scenario->set_metadata();
 			}
-			find_widget<minimap>(&win, "minimap", false).set_map_data(map_data);
+
+			find_widget<minimap>(&win, "minimap", false).set_map_data(current_scenario->data()["map_data"]);
 
 			players.set_label(std::to_string(current_scenario->num_players()));
 			map_size.set_label(current_scenario->map_size());
