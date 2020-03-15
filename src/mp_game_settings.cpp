@@ -54,6 +54,7 @@ mp_game_settings::mp_game_settings() :
 	shroud_game(false),
 	allow_observers(true),
 	registered_users_only(false),
+	private_replay(false),
 	shuffle_sides(false),
 	saved_game(false),
 	random_faction_mode(RANDOM_FACTION_MODE::DEFAULT),
@@ -87,6 +88,7 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, shroud_game(cfg["mp_shroud"].to_bool())
 	, allow_observers(cfg["observer"].to_bool())
 	, registered_users_only(cfg["registered_users_only"].to_bool())
+	, private_replay(cfg["private_replay"].to_bool())
 	, shuffle_sides(cfg["shuffle_sides"].to_bool())
 	, saved_game(cfg["savegame"].to_bool())
 	, random_faction_mode(cfg["random_faction_mode"].to_enum<RANDOM_FACTION_MODE>(RANDOM_FACTION_MODE::DEFAULT))
