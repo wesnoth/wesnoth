@@ -73,6 +73,7 @@ static lg::log_domain log_aitesting("aitesting");
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
