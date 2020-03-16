@@ -606,10 +606,6 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 	list.clear();
 
 	for(const auto& game : create_engine_.get_levels_by_type_unfiltered(type)) {
-		if(!game->can_launch_game()) {
-			continue;
-		}
-
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -837,6 +833,16 @@ bool mp_create_game::dialog_exit_hook(window& /*window*/)
 {
 	if(!create_engine_.current_level_has_side_data()) {
 		gui2::show_transient_error_message(_("The selected game has no sides!"));
+		return false;
+	}
+
+	if(!create_engine_.current_level().can_launch_game()) {
+		std::stringstream msg;
+		// TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
+		msg << _("The selected game can not be created.");
+		msg << "\n\n";
+		msg << create_engine_.current_level().description();
+		gui2::show_transient_error_message(msg.str());
 		return false;
 	}
 
