@@ -11,6 +11,8 @@
 		46181DCF2119F73A00908BC2 /* apple_battery_info.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46181DCE2119F73A00908BC2 /* apple_battery_info.mm */; };
 		46181DD22119F74D00908BC2 /* battery_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46181DD12119F74C00908BC2 /* battery_info.cpp */; };
 		461CE967205C3A8700E6E98F /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
+		461DC52D241F836300B9DD10 /* lua_color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 461DC52B241F836200B9DD10 /* lua_color.cpp */; };
+		461DC52E241F875A00B9DD10 /* lua_color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 461DC52B241F836200B9DD10 /* lua_color.cpp */; };
 		463896712034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		463896722034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		46406DE9230DA7030069492E /* libogg.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0363228361B6007D2741 /* libogg.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -1399,6 +1401,8 @@
 		46181DCE2119F73A00908BC2 /* apple_battery_info.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_battery_info.mm; path = ../../src/desktop/apple_battery_info.mm; sourceTree = "<group>"; };
 		46181DD02119F74C00908BC2 /* battery_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = battery_info.hpp; sourceTree = "<group>"; };
 		46181DD12119F74C00908BC2 /* battery_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = battery_info.cpp; sourceTree = "<group>"; };
+		461DC52B241F836200B9DD10 /* lua_color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_color.cpp; sourceTree = "<group>"; };
+		461DC52C241F836200B9DD10 /* lua_color.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_color.hpp; sourceTree = "<group>"; };
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
@@ -4449,6 +4453,8 @@
 				91B621E41B76BB0100B00E0F /* game_lua_kernel.hpp */,
 				EC3863621EB6286E0048B0C8 /* lua_audio.cpp */,
 				EC3863631EB6286E0048B0C8 /* lua_audio.hpp */,
+				461DC52B241F836200B9DD10 /* lua_color.cpp */,
+				461DC52C241F836200B9DD10 /* lua_color.hpp */,
 				EC218E9E1A106648007C910C /* lua_common.cpp */,
 				91B621E51B76BB0700B00E0F /* lua_common.hpp */,
 				ECD5D7BE1A22DC8600114175 /* lua_cpp_function.cpp */,
@@ -5109,6 +5115,7 @@
 				ECA4A67C1A1EC319006BCCF2 /* lua_map_location_ops.cpp in Sources */,
 				46F92EA92174F6A400602C1C /* slider_base.cpp in Sources */,
 				F46C5DD413A5089100DD0816 /* lua_object.cpp in Sources */,
+				461DC52D241F836300B9DD10 /* lua_color.cpp in Sources */,
 				ECC2FFFA1A51A00900023AF4 /* lua_race.cpp in Sources */,
 				ECA4A67D1A1EC319006BCCF2 /* lua_rng.cpp in Sources */,
 				46F92E6F2174F6A400602C1C /* size_lock.cpp in Sources */,
@@ -5958,6 +5965,7 @@
 				91A215B71CAD92A100927AEA /* seed_rng.cpp in Sources */,
 				46F92EA62174F6A400602C1C /* multi_page.cpp in Sources */,
 				91A215B81CAD92AA00927AEA /* type_data.cpp in Sources */,
+				461DC52E241F875A00B9DD10 /* lua_color.cpp in Sources */,
 				91A215BB1CAD92D000927AEA /* tstring.cpp in Sources */,
 				91A215BF1CAD951A00927AEA /* lua_jailbreak_exception.cpp in Sources */,
 				46F92C1B2174F5D700602C1C /* help_text_area.cpp in Sources */,
