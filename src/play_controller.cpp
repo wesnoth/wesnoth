@@ -36,6 +36,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_handler.hpp"
 #include "map/label.hpp"
+#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -712,12 +713,18 @@ void play_controller::tab()
 
 team& play_controller::current_team()
 {
+	if(gamestate().board_.teams().size() == 0) {
+		throw game::game_error("The scenario has no sides defined");
+	}
 	assert(gamestate().board_.has_team(current_side()));
 	return gamestate().board_.get_team(current_side());
 }
 
 const team& play_controller::current_team() const
 {
+	if(gamestate().board_.teams().size() == 0) {
+		throw game::game_error("The scenario has no sides defined");
+	}
 	assert(gamestate().board_.has_team(current_side()));
 	return gamestate().board_.get_team(current_side());
 }
