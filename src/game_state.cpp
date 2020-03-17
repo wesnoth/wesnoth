@@ -42,6 +42,7 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 game_state::game_state(const config & level, play_controller & pc, const ter_data_cache & tdata) :
 	gamedata_(level),
