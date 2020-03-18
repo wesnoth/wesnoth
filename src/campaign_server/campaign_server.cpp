@@ -41,8 +41,6 @@
 #include <csignal>
 #include <ctime>
 
-#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/exception/get_error_info.hpp>
 #include <boost/random.hpp>
 #include <boost/generator_iterator.hpp>
 
