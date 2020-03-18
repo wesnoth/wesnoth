@@ -19,7 +19,7 @@ if [ "$LTO" == "" ]; then
 fi
 
 if [ "$UPLOAD" == "true" ]; then
-    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+    if [ "$TRAVIS_OS_NAME" != "osx" ]; then
         export UPLOAD_ID="${TRAVIS_OS_NAME}-${IMAGE}-${TOOL}-${CFG}"
     else
         export UPLOAD_ID="${TRAVIS_OS_NAME}-${TOOL}-${CFG}"
@@ -36,27 +36,25 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     export CCACHE_COMPILERCHECK=content
     travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
-    start=`pwd`
     choco install sqlite
     choco install python --version=3.6.8
+    if [ "$IMAGE" == "VC16" ]; then
+        choco install visualstudio2019community --package-parameters "--includeRecommended --includeOptional"
+        choco install visualstudio2019-workload-vctools
+    fi
     cd /c/Python36
     ln -s python.exe python3.exe
-    cd $start
-    cd ..
-    wget https://github.com/aquileia/external/archive/VC15.zip -O VC15.zip
-    7z x VC15.zip
-    mv external-VC15 external
-    cd $start
-    export PATH="/c/Python36:"$PATH":$start/../external/dll:/c/Python36/Scripts/"
+    export PATH="/c/Python36:"$PATH":/c/Python36/Scripts/"
     yes | pip3 install paramiko
-    if [ "$(which python3)" == "" ] || [ "$(which sqlite3)" == "" ] || [ ! -d "../external" ]; then
+    if [ "$(which python3)" == "" ] || [ "$(which sqlite3)" == "" ]; then
         echo "Failed to retrieve dependencies!"
         exit 1
     else
         echo "Dependencies retrieved and installed!"
     fi
 
-    ./utils/travis/windows-file-hasher.sh "projectfiles/VC14/$CFG/filehashes.sqlite"
+    cd $TRAVIS_BUILD_DIR
+    ./utils/travis/windows-file-hasher.sh "projectfiles/$IMAGE/$CFG/filehashes.sqlite"
 else
     # if not doing translations, save a bit of time by not copying them into the docker image
     # otherwise, if this is the mingw job, the .git directory is needed for running the git archive command
