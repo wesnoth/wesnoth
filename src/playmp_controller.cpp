@@ -17,6 +17,7 @@
 
 #include "actions/undo.hpp"
 #include "display_chat_manager.hpp"
+#include "floating_label.hpp"
 #include "game_end_exceptions.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gettext.hpp"

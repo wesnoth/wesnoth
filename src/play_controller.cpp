@@ -28,6 +28,7 @@
 #include "ai/testing.hpp"
 #include "preferences/credentials.hpp"
 #include "display_chat_manager.hpp"
+#include "floating_label.hpp"
 #include "formula/string_utils.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
@@ -145,7 +146,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, tooltips_manager_()
 	, whiteboard_manager_()
 	, plugins_context_()
-	, labels_manager_()
+	, labels_manager_(new font::floating_label_context())
 	, help_manager_(&game_config_)
 	, mouse_handler_(nullptr, *this)
 	, menu_handler_(nullptr, *this)
