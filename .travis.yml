@@ -11,6 +11,9 @@ cache:
     - $HOME/flatpak-cache
     - $TRAVIS_BUILD_DIR/projectfiles/VC14/Debug
     - $TRAVIS_BUILD_DIR/projectfiles/VC14/Release
+    - $TRAVIS_BUILD_DIR/projectfiles/VC16/Debug
+    - $TRAVIS_BUILD_DIR/projectfiles/VC16/Release
+    - $HOME/vcpkg
 
 git:
   depth: 5
@@ -22,10 +25,16 @@ env:
 matrix:
   include:
     - os: windows
-      env: TOOL=msbuild NLS=false BRANCH=master CFG=Debug UPLOAD=true
+      env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Debug UPLOAD=true
 
     - os: windows
-      env: TOOL=msbuild NLS=false BRANCH=master CFG=Release
+      env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Release
+
+#    - os: windows
+#      env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Debug UPLOAD=true
+
+    - os: windows
+      env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Release
 
     - os: osx
       compiler: clang
@@ -39,7 +48,7 @@ matrix:
       env: TOOL=scons CXXSTD=14 NLS=only IMAGE=1804 BRANCH=master CFG=release
 
     - env: TOOL=scons CXXSTD=14 NLS=true IMAGE=mingw BRANCH=master CFG=release STRICT=false UPLOAD=true
-    
+
     - env: TOOL=scons CXXSTD=14 NLS=false IMAGE=steamrt BRANCH=master CFG=release CC=gcc-5 CXX=g++-5
 
     - env: TOOL=scons NLS=true IMAGE=flatpak BRANCH=master

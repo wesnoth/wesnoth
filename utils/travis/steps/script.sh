@@ -22,8 +22,39 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
 
     exit $BUILD_RET
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
-    cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' x86 '&&' MSBuild.exe projectfiles/VC14/wesnoth.sln -p:Configuration=$CFG -p:Platform=Win32
-    BUILD_RET=$?
+    if [ "$IMAGE" == "VC16" ]; then
+        if [ ! -d "$HOME/vcpkg/installed" ]; then
+            cd "$HOME"
+            git clone --depth=1 https://github.com/microsoft/vcpkg.git vcpkg
+            cd vcpkg
+            cmd.exe //C bootstrap-vcpkg.bat
+            cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' amd64 '&&' vcpkg integrate install
+            echo "set(VCPKG_BUILD_TYPE release)" >> triplets/x64-windows.cmake
+            alias make="make -j4"
+            ./vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-mixer:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale:x64-windows boost-random:x64-windows boost-regex:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
+            rm -R downloads
+            rm -R buildtrees
+            echo "Built dependencies, exiting now to cache them. Please restart the job."
+            exit 1
+        else
+            cd "$HOME/vcpkg"
+            cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' amd64 '&&' vcpkg integrate install
+        fi
+
+        cd $TRAVIS_BUILD_DIR
+        cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' amd64 '&&' MSBuild.exe projectfiles/$IMAGE/wesnoth.sln -p:Configuration=$CFG -p:Platform=Win64
+        BUILD_RET=$?
+    else
+        cd ..
+        wget https://github.com/aquileia/external/archive/VC15.zip -O VC15.zip
+        7z x VC15.zip
+        mv external-VC15 external
+        cd $TRAVIS_BUILD_DIR
+        export PATH=$PATH":$TRAVIS_BUILD_DIR/../external/dll"
+
+        cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' x86 '&&' MSBuild.exe projectfiles/$IMAGE/wesnoth.sln -p:Configuration=$CFG -p:Platform=Win32
+        BUILD_RET=$?
+    fi
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         ./utils/travis/sftp wesnoth.exe wesnothd.exe
@@ -33,9 +64,9 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     fi
 
     if [ "$BUILD_RET" != "0" ]; then
-        sqlite3 "projectfiles/VC14/$CFG/filehashes.sqlite" "update FILES set MD5 = OLD_MD5, OLD_MD5 = '-' where OLD_MD5 != '-'"
+        sqlite3 "projectfiles/$IMAGE/$CFG/filehashes.sqlite" "update FILES set MD5 = OLD_MD5, OLD_MD5 = '-' where OLD_MD5 != '-'"
     else
-        sqlite3 "projectfiles/VC14/$CFG/filehashes.sqlite" "update FILES set OLD_MD5 = '-' where OLD_MD5 != '-'"
+        sqlite3 "projectfiles/$IMAGE/$CFG/filehashes.sqlite" "update FILES set OLD_MD5 = '-' where OLD_MD5 != '-'"
     fi
 
     if [ "$CFG" == "Release" ] && [ "$BUILD_RET" == "0" ]; then
