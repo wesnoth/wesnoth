@@ -41,8 +41,6 @@
 #include <csignal>
 #include <ctime>
 
-#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/exception/get_error_info.hpp>
 #include <boost/random.hpp>
 #include <boost/generator_iterator.hpp>
 
@@ -670,7 +668,7 @@ void server::handle_request_campaign_list(const server::request& req)
 
 void server::handle_request_campaign(const server::request& req)
 {
-	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip\n";
+	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr;
 
 	config& campaign = get_campaign(req.cfg["name"]);
 
