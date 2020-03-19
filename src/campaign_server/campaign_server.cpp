@@ -668,32 +668,29 @@ void server::handle_request_campaign_list(const server::request& req)
 
 void server::handle_request_campaign(const server::request& req)
 {
-	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip\n";
-
 	config& campaign = get_campaign(req.cfg["name"]);
 
 	if(!campaign || campaign["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
-	} else {
-		const int size = filesystem::file_size(campaign["filename"]);
+		return;
+	}
+	
+	const int size = filesystem::file_size(campaign["filename"]);
 
-		if(size < 0) {
-			std::cerr << " size: <unknown> KiB\n";
-			ERR_CS << "File size unknown, aborting send.\n";
-			send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
-			return;
-		}
-
-		std::cerr << " size: " << size/1024 << "KiB\n";
-		async_send_file(req.sock, campaign["filename"],
-				std::bind(&server::handle_new_client, this, _1), null_handler);
-		// Clients doing upgrades or some other specific thing shouldn't bump
-		// the downloads count. Default to true for compatibility with old
-		// clients that won't tell us what they are trying to do.
-		if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
-			const int downloads = campaign["downloads"].to_int() + 1;
-			campaign["downloads"] = downloads;
-		}
+	if(size < 0) {
+		send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
+		return;
+	}
+	
+	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << size/1024 << "KiB\n";
+	async_send_file(req.sock, campaign["filename"], std::bind(&server::handle_new_client, this, _1), null_handler);
+	
+	// Clients doing upgrades or some other specific thing shouldn't bump
+	// the downloads count. Default to true for compatibility with old
+	// clients that won't tell us what they are trying to do.
+	if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
+		const int downloads = campaign["downloads"].to_int() + 1;
+		campaign["downloads"] = downloads;
 	}
 }
 
