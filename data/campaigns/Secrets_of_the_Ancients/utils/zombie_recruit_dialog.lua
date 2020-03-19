@@ -45,10 +45,10 @@ local info_grid = T.grid {
     T.row { T.column { border = "bottom", border_size = 100, T.spacer { } } }
 }
 
-local zombie_recruit_dialog = { maximum_height=676, minimum_height=608, 
+local zombie_recruit_dialog = { maximum_height=676, minimum_height=608,
     T.tooltip { id = "tooltip_large" },
     T.helptip { id = "tooltip_large" },
-    T.grid { 
+    T.grid {
         T.row {
             T.column { border = "left,top", border_size = 5, horizontal_alignment = "left", T.label { definition = "title", label = _ "Choose a Corpse" } },
             T.column { T.spacer {} },
@@ -60,15 +60,15 @@ local zombie_recruit_dialog = { maximum_height=676, minimum_height=608,
                     T.list_definition { T.row { T.column { horizontal_grow=true, T.toggle_panel { return_value = -1, T.grid { unit_row } }
                     } } }
                 } } }
-            } } 
+            } }
         },
-        T.row { 
+        T.row {
             T.column { border = "left, top, bottom", border_size = 7, horizontal_alignment="left", T.button { id="help_button", definition="help" } },
             T.column { border = "left, top, bottom", border_size = 7, T.grid { T.row {
                 T.column { border_size=10, border="right", T.button { return_value = 1, label = _"Recruit" } },
                 T.column { T.button { id = "cancel", label = _"Cancel" } }
-            } } } 
-        } 
+            } } }
+        }
     }
 }
 
@@ -81,15 +81,15 @@ local function preshow()
         wesnoth.set_dialog_value( "<span color='#f5e6c1'>   6×2 " .. unit_type.attacks[1].description .. "</span>", "unit_attack")
         wesnoth.set_dialog_value( "<span color='#a69275'>     melee–" .. unit_type.attacks[1].type .. "</span>", "damage_type")
     end
-    
+
     local function general_help()
         W.open_help { topic="recruit_and_recall" }
     end
 
     local function unit_help()
-        W.open_help { topic="unit_" ..  listedZombies[wesnoth.get_dialog_value "unit_list"] }
+        W.open_help { topic="unit_" .. listedZombies[wesnoth.get_dialog_value "unit_list"] }
     end
-    
+
     wesnoth.set_dialog_callback( select, "unit_list" )
     wesnoth.set_dialog_callback( general_help, "help_button" )
     wesnoth.set_dialog_callback( unit_help, "unit_help_button" )

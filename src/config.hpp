@@ -693,6 +693,10 @@ public:
 	 * Merge config 'c' into this config, preserving this config's values.
 	 */
 	void inherit_from(const config& c);
+	/**
+	 * Merge the attributes of config 'c' into this config, preserving this config's values.
+	 */
+	void inherit_attributes(const config& c);
 
 	bool matches(const config &filter) const;
 

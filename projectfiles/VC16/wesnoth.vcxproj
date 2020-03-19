@@ -2634,6 +2634,9 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Scripting\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_color.cpp">
+      <ObjectFileName>$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_common.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Scripting\</ObjectFileName>
@@ -3981,6 +3984,7 @@
     <ClInclude Include="..\..\src\scripting\debug_lua.hpp" />
     <ClInclude Include="..\..\src\scripting\game_lua_kernel.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_audio.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_color.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_common.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_cpp_function.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_fileops.hpp" />

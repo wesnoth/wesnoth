@@ -28,6 +28,7 @@
 #include "scripting/debug_lua.hpp"
 #endif
 
+#include "scripting/lua_color.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_fileops.hpp"
@@ -569,6 +570,8 @@ lua_kernel_base::lua_kernel_base()
 
 	// Create formula bridge metatables
 	cmd_log_ << lua_formula_bridge::register_metatables(L);
+
+	cmd_log_ << lua_colors::register_metatables(L);
 
 	// Create the Lua interpreter table
 	cmd_log_ << "Sandboxing Lua interpreter...\nTo make variables visible outside the interpreter, assign to _G.variable.\n";

@@ -9,9 +9,11 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     BUILD_RET=$?
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-# workaround for a bug in hdiutil where it freezes if multiple srcfolder-s are specified
-        cp -R "build/$CFG/The Battle for Wesnoth.app" "../../packaging/macos/The Battle for Wesnoth.app"
-        hdiutil create -volname "Wesnoth_${CFG}" -fs 'HFS+' -srcfolder ../../packaging/macos -ov -format UDBZ "Wesnoth_${CFG}.dmg"
+        hdiutil convert ../../packaging/macOS/Wesnoth_dmg_packaging_template.dmg -format UDRW -o "Wesnoth_RW.dmg"
+        hdiutil attach "Wesnoth_RW.dmg"
+        cp -R "build/$CFG/The Battle for Wesnoth.app/." "/Volumes/The Battle for Wesnoth/The Battle for Wesnoth.app"
+        hdiutil detach "/Volumes/The Battle for Wesnoth"
+        hdiutil convert "Wesnoth_RW.dmg" -format UDBZ -o "Wesnoth_${CFG}.dmg"
         ./../../utils/travis/sftp "Wesnoth_${CFG}.dmg"
     fi
 
@@ -20,11 +22,14 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
 
     exit $BUILD_RET
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
-    powershell "MSBuild.exe projectfiles/VC14/wesnoth.sln -p:PlatformToolset=v141 -p:Configuration=$CFG"
+    cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' x86 '&&' MSBuild.exe projectfiles/VC14/wesnoth.sln -p:Configuration=$CFG -p:Platform=Win32
     BUILD_RET=$?
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         ./utils/travis/sftp wesnoth.exe wesnothd.exe
+        if [ "$CFG" == "Debug" ]; then
+            ./utils/travis/sftp wesnoth.pdb wesnothd.pdb
+        fi
     fi
 
     if [ "$BUILD_RET" != "0" ]; then

@@ -171,7 +171,7 @@ function wml_actions.allow_extra_recruit(cfg)
 	local recruits = cfg.extra_recruit or wml.error("[allow_extra_recruit] missing required extra_recruit= attribute")
 	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local v = unit.extra_recruit
-		for _,recruit in iapirs(recruits:split()) do
+		for _,recruit in ipairs(recruits:split()) do
 			table.insert(v, recruit)
 			wesnoth.add_known_unit(recruit)
 		end

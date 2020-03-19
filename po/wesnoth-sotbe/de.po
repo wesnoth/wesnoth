@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
-"PO-Revision-Date: 2019-08-05 02:34+0200\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
+"PO-Revision-Date: 2020-01-13 03:43+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -141,11 +141,11 @@ msgid "Death of Kapou’e"
 msgstr "Kapou’e fällt in der Schlacht"
 
 #. [side]: id=Kapou'e, type=Orcish Leader
-#. [side]
 #. [side]: type=Orcish Slayer, id=Rugh
-#. [side]: id=Grüü, type=Great Troll
-#. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]
 #. [side]: type=General, id=Howgarth III
+#. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]: id=Grüü, type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:76
@@ -1762,19 +1762,19 @@ msgstr "Erreicht die Oase im Südosten"
 msgid "Ar-Dant"
 msgstr "Ar-Dant"
 
-#. [side]: type=General, id=Telthys
 #. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=General, id=Fredor
-#. [side]: type=General, id=Georan
+#. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Arthain
 #. [side]: type=Lieutenant, id=Hanak
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=General, id=Earl Lanbec'h
-#. [side]
-#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=General, id=Telthys
+#. [side]: type=General, id=Fredor
+#. [side]: type=General, id=Georan
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:98
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2346,8 +2346,8 @@ msgstr ""
 "Wir haben endlich die Trauerhügel erreicht. Ich hoffe, dass alles glattgehen "
 "wird."
 
-#. [message]: speaker=Grüü
 #. [message]: role=cannonfodder
+#. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:289
 msgid "Why?"
@@ -2505,11 +2505,16 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:201
+#, fuzzy
+#| msgid ""
+#| "Leave your people here Kapou’e — they are safe for the moment — and go "
+#| "defend Prestim. In the meantime, now that the council is complete again, "
+#| "we will decide. We may have to form the Great Horde again, and give you "
+#| "the leadership of it."
 msgid ""
-"Leave your people here Kapou’e — they are safe for the moment — and go "
-"defend Prestim. In the meantime, now that the council is complete again, we "
-"will decide. We may have to form the Great Horde again, and give you the "
-"leadership of it."
+"Go defend Prestim, Kapou'e. In the meantime, now that the council is "
+"complete again, we will decide. We may have to form the Great Horde again, "
+"and give you the leadership of it."
 msgstr ""
 "Euer Stamm ist müde, Kapou’e. Für den Augenblick sind sie hier sicher und "
 "sollten sich ausruhen. Ihr und eure Grunzer aber müsst zur Verteidigung von "
@@ -2786,8 +2791,8 @@ msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr ""
 "Es kann nicht sein, dass Elfen tapferer sind als wir. Zum Angriff, Männer!"
 
-#. [side]: type=General, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:688
@@ -2841,16 +2846,12 @@ msgstr "Verteidigt Prestim für vier Tage"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:25
-#, fuzzy
-#| msgid ""
-#| "Enemies control any villages on the north side of the river when turns "
-#| "run out"
 msgid ""
 "You don't control all villages on the north side of the river when turns run "
 "out"
 msgstr ""
-"Feindlich kontrollierte Dörfer auf der Nordseite des Flusses beim "
-"Szenarienende."
+"Ihr kontrolliert nicht alle Dörfer auf der Nordseite des Flusses beim "
+"Szenarienende"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:232

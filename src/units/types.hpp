@@ -96,12 +96,6 @@ public:
 	{ const_cast<unit_type *>(this)->build(status, movement_types, races, traits); }
 
 
-	/**
-	 * Adds an additional advancement path to a unit type.
-	 * This is used to implement the [advancefrom] tag.
-	 */
-	void add_advancement(const unit_type &advance_to,int experience);
-
 	/** Get the advancement tree
 	 *  @return A set of ids of all unit_type objects that this unit_type can
 	 *  directly or indirectly advance to.
@@ -336,7 +330,6 @@ private:
 
 	std::vector<std::string> advances_to_;
 	int experience_needed_;
-	bool in_advancefrom_;
 
 
 	ALIGNMENT alignment_;
@@ -389,9 +382,6 @@ private:
 	void read_hide_help(const config &cfg);
 
 	void clear();
-
-	void add_advancefrom(const config& unit_cfg) const;
-	void add_advancement(unit_type& to_unit) const;
 
 	mutable unit_type_map types_;
 	movement_type_map movement_types_;

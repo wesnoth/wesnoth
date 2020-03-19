@@ -3,4 +3,4 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 COPY get_dlls.py /scripts/get_dlls.py
 
-ENTRYPOINT mkdir -p /build && cd /build && scons -j `nproc` arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32 -Y /wesnoth && cp /build/wesnoth.exe /output/ && cp /build/wesnothd.exe /output/ && cd /output && python3 /scripts/get_dlls.py
+ENTRYPOINT cd /output && scons -j `nproc` arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32 -Y /wesnoth && python3 /scripts/get_dlls.py && rm -rf packaging && ln -sf /wesnoth/doc /wesnoth/packaging /wesnoth/data /wesnoth/fonts /wesnoth/images /wesnoth/sounds /wesnoth/README.md /wesnoth/copyright /wesnoth/COPYING /wesnoth/changelog.md /wesnoth/cwesnoth.cmd . && scons -Y /wesnoth windows-installer

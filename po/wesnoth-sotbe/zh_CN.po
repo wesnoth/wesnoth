@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
 "PO-Revision-Date: 2019-09-23 22:45+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -135,11 +135,11 @@ msgid "Death of Kapou’e"
 msgstr "卡破尔死亡"
 
 #. [side]: id=Kapou'e, type=Orcish Leader
-#. [side]
 #. [side]: type=Orcish Slayer, id=Rugh
-#. [side]: id=Grüü, type=Great Troll
-#. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]
 #. [side]: type=General, id=Howgarth III
+#. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]: id=Grüü, type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:76
@@ -1610,19 +1610,19 @@ msgstr "到达东南方的绿洲"
 msgid "Ar-Dant"
 msgstr "亚单"
 
-#. [side]: type=General, id=Telthys
 #. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=General, id=Fredor
-#. [side]: type=General, id=Georan
+#. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Arthain
 #. [side]: type=Lieutenant, id=Hanak
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=General, id=Earl Lanbec'h
-#. [side]
-#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=General, id=Telthys
+#. [side]: type=General, id=Fredor
+#. [side]: type=General, id=Georan
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:98
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2147,8 +2147,8 @@ msgstr ""
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
 msgstr "终于！这里就是哀悼山峦。我希望能够一切顺利。"
 
-#. [message]: speaker=Grüü
 #. [message]: role=cannonfodder
+#. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:289
 msgid "Why?"
@@ -2294,11 +2294,16 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:201
+#, fuzzy
+#| msgid ""
+#| "Leave your people here Kapou’e — they are safe for the moment — and go "
+#| "defend Prestim. In the meantime, now that the council is complete again, "
+#| "we will decide. We may have to form the Great Horde again, and give you "
+#| "the leadership of it."
 msgid ""
-"Leave your people here Kapou’e — they are safe for the moment — and go "
-"defend Prestim. In the meantime, now that the council is complete again, we "
-"will decide. We may have to form the Great Horde again, and give you the "
-"leadership of it."
+"Go defend Prestim, Kapou'e. In the meantime, now that the council is "
+"complete again, we will decide. We may have to form the Great Horde again, "
+"and give you the leadership of it."
 msgstr ""
 "把你的人民留在这吧，卡破尔——他们暂时是安全的——你要去保卫普雷斯提姆。与此同"
 "时，既然评议会已经重聚，那我们会作出决定的。我们可能必须再次组成大部落，并授"
@@ -2555,8 +2560,8 @@ msgstr "这没有效果。所有部队出击，送这些混蛋回地狱去。"
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "我们岂能不如精灵勇猛，全体出击！"
 
-#. [side]: type=General, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:688

@@ -28,6 +28,7 @@
 #include "ai/testing.hpp"
 #include "preferences/credentials.hpp"
 #include "display_chat_manager.hpp"
+#include "floating_label.hpp"
 #include "formula/string_utils.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
@@ -36,6 +37,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_handler.hpp"
 #include "map/label.hpp"
+#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -72,6 +74,7 @@ static lg::log_domain log_aitesting("aitesting");
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -143,7 +146,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, tooltips_manager_()
 	, whiteboard_manager_()
 	, plugins_context_()
-	, labels_manager_()
+	, labels_manager_(new font::floating_label_context())
 	, help_manager_(&game_config_)
 	, mouse_handler_(nullptr, *this)
 	, menu_handler_(nullptr, *this)
@@ -712,12 +715,18 @@ void play_controller::tab()
 
 team& play_controller::current_team()
 {
+	if(gamestate().board_.teams().size() == 0) {
+		throw game::game_error("The scenario has no sides defined");
+	}
 	assert(gamestate().board_.has_team(current_side()));
 	return gamestate().board_.get_team(current_side());
 }
 
 const team& play_controller::current_team() const
 {
+	if(gamestate().board_.teams().size() == 0) {
+		throw game::game_error("The scenario has no sides defined");
+	}
 	assert(gamestate().board_.has_team(current_side()));
 	return gamestate().board_.get_team(current_side());
 }

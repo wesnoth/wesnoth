@@ -607,10 +607,6 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 	list.clear();
 
 	for(const auto& game : create_engine_.get_levels_by_type_unfiltered(type)) {
-		if(!game->can_launch_game()) {
-			continue;
-		}
-
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -709,14 +705,13 @@ void mp_create_game::update_details(window& win)
 			create_engine_.get_state().classification().campaign = "";
 
 			find_widget<stacked_widget>(&win, "minimap_stack", false).select_layer(0);
-			const std::string map_data = !current_scenario->data()["map_data"].empty()
-				? current_scenario->data()["map_data"]
-				: filesystem::read_map(current_scenario->data()["map_file"]);
-			if (current_scenario->data()["map_data"].empty()) {
-				current_scenario->data()["map_data"] = map_data;
+
+			if(current_scenario->data()["map_data"].empty()) {
+				saved_game::expand_map_file(current_scenario->data());
 				current_scenario->set_metadata();
 			}
-			find_widget<minimap>(&win, "minimap", false).set_map_data(map_data);
+
+			find_widget<minimap>(&win, "minimap", false).set_map_data(current_scenario->data()["map_data"]);
 
 			players.set_label(std::to_string(current_scenario->num_players()));
 			map_size.set_label(current_scenario->map_size());
@@ -838,6 +833,16 @@ bool mp_create_game::dialog_exit_hook(window& /*window*/)
 {
 	if(!create_engine_.current_level_has_side_data()) {
 		gui2::show_transient_error_message(_("The selected game has no sides!"));
+		return false;
+	}
+
+	if(!create_engine_.current_level().can_launch_game()) {
+		std::stringstream msg;
+		// TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
+		msg << _("The selected game can not be created.");
+		msg << "\n\n";
+		msg << create_engine_.current_level().description();
+		gui2::show_transient_error_message(msg.str());
 		return false;
 	}
 

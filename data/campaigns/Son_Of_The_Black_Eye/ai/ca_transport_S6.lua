@@ -120,7 +120,7 @@ function ca_transport:execution()
         return
     end
 
-    -- If we got here, no landing site was found.  Do a deep-water move instead
+    -- If we got here, no landing site was found. Do a deep-water move instead
     local deep_water_map = LS.of_pairs(
         wesnoth.get_locations {
             terrain = 'Wo',

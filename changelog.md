@@ -1,9 +1,20 @@
-## Version 1.15.2+dev
+## Version 1.15.3+dev
+ ### Add-ons client
+   * Ensure the client doesn't re-download dependencies that have just been updated during an Update All
+     run by re-reading add-on versions after each update batch (issue #3273).
+ ### Campaigns
+   * Delfador's Memoirs:
+     * S12: Fix a few case where dialog and events sound odd or fire out of order (issue #4614)
+ ### Language and i18n
+   * Updated translations: Portuguese (Brazil), Swedish
+
+## Version 1.15.3
  ### AI
-   * Merge most of Experimental AI candidate actions (CAs) into default AI
-     * CAs merged: castle switch, retreat injured, spread poison, place healers, move to any enemy
+   * Merge Experimental AI candidate actions (CAs) into default AI
+     * CAs merged: retreat injured, spread poison, place healers, move to any enemy
      * CAs not merged: grab villages and village hunt, as the respective default AI CAs
-       are better as general purpose CAs. Also not merged was recruit rushers, which is too different
+       are better as general purpose CAs. Also not merged was castle switch, which can
+       cause undesired behavior in singleplayer scenarios, and recruit rushers, which is too different
        from default recruiting (would change balance too much) and because it can currently not deal
        with multiple leaders and all the recruitment aspects. An option to use this alternative
        recruiting will be provided in the future.
@@ -18,6 +29,7 @@
      * New optional parameter [filter]
      * Fix bug of units not participating if too far in front of the bottleneck
    * Healer Support Micro AI: take unit guardian status and passive_leader aspect into account
+   * Forest Animals Micro AI: rabbit holes on the map border are now automatically excluded
    * New ai_helper functionality: path finding, next_hop and get_attackable_enemies taking avoid into
      account; next_hop with pre-calculated path and fanning out; new options to get_cheapest_recruit_cost
    * Add [filter_own] optional tag to all default and Experimental AI candidate actions
@@ -25,6 +37,7 @@
      passive_leader and passive_leader_shares_keep
    * Fix [leader_goal] for sides with multiple leaders
    * Change E_NOT_REACHED_DESTINATION from error to warning
+   * The advancement aspect can now also use amlas.
  ### Campaigns
    * An Orcish Incursion:
      * Moved to addons server
@@ -39,7 +52,7 @@
    * Legend of Wesmere:
      * S3: fix scenario-breaking bug introduced in 1.15.2
    * Liberty
-     * Revise gameplay in scenarios 1-5
+     * Revise gameplay in all scenarios and redraw all maps
      * Merge S6 and S7 into a new scenario
    * Sceptre of Fire:
      * General prose/dialogue revision
@@ -69,6 +82,7 @@
    * New elf castle variation: snow (Cva)
    * Fixes and touchups to mushroom terrains Tb and Tf
  ### Units
+   * Add a ranged attack and the cures ability to Elvish Lady
    * Add mushroom defense cap to mounted and some flying units
    * Decreased hitpoints of Dwarvish Lord from 79 to 74
    * Decreased hitpoints of Dwarvish Steelclad from 59 to 55
@@ -79,11 +93,12 @@
    * Dunefolk: rebalancing and renaming of various units
    * Dunefolk: some graphics additions and updates
    * Orcs: revise some unit descriptions
+   * Elves: revise all unit descriptions
    * Cost of Drake Warrior changed from 30 to 32
    * Cost of Drake Arbiter changed from 31 to 32
    * Cost of Drake Trasher changed from 31 to 32
    * Cost of Drake Flare changed from 35 to 33
-   * Cost of Sky Drake changed from	30 to 28
+   * Cost of Sky Drake changed from 30 to 28
    * Cost of Saurian Ambusher changed from 30 to 24
    * Cost of Saurian Oracle changed from 27 to 28
    * Cost of Saurian Soothsayer changed from 27 to 25
@@ -167,6 +182,7 @@
    * New stringx module exposes various split/join functions used by the engine, as well as trim
    * Wesnoth's format functions moved to stringx (format_conjunct_list, format_disjunct_list, vformat)
    * location_set module extended to support set operators (& | ~ -) as well as a few additional functions
+   * new function wesnoth.create_side
  ### WFL engine
    * New functions resistance_on(), vision_cost(), jamming_cost() that work in gameplay contexts (eg filters)
    * Unit object now has resistance, defense, movement_cost, vision_cost, jamming_cost, flying
@@ -178,6 +194,7 @@
    * Support [variables] in [modify_side], as in [modify_unit]
    * [filter_weapon] implemented in abilities used as weapons specials to be the same as true weapons specials (implement filter_weapon in [filter_student] instead of [filter_self])
    * All special weapons can be used in [abilities] now (this was not the case yet for [heal_on_hit], [plague] and [swarm])
+   * [time_area] can now be used without specifying a custom time schedule, this can in particular be used in the scenario editor if one just wants to mark an area to use in as [event]
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
@@ -476,6 +493,9 @@
 ## Version 1.14.11+dev
 
 ## Version 1.14.11
+ ### Campaigns
+   * Under the Burning Suns:
+     * S2: dehydration now only affects player units
  ### Language and i18n
    * Updated translations: Czech, German.
  ### Packaging

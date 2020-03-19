@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 18:18 UTC\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
 "PO-Revision-Date: 2020-01-16 11:31+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -140,11 +140,11 @@ msgid "Death of Kapou’e"
 msgstr "Muerte de Kapou'e"
 
 #. [side]: id=Kapou'e, type=Orcish Leader
-#. [side]
 #. [side]: type=Orcish Slayer, id=Rugh
-#. [side]: id=Grüü, type=Great Troll
-#. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]
 #. [side]: type=General, id=Howgarth III
+#. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]: id=Grüü, type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:76
@@ -1751,19 +1751,19 @@ msgstr "Alcance el oasis en el sureste"
 msgid "Ar-Dant"
 msgstr "Ar-Dant"
 
-#. [side]: type=General, id=Telthys
 #. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=General, id=Fredor
-#. [side]: type=General, id=Georan
+#. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Arthain
 #. [side]: type=Lieutenant, id=Hanak
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=General, id=Earl Lanbec'h
-#. [side]
-#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=General, id=Telthys
+#. [side]: type=General, id=Fredor
+#. [side]: type=General, id=Georan
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:98
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2337,8 +2337,8 @@ msgstr ""
 "¡Por fin, las colinas de los lamentos! Ahora sólo podemos confiar en que "
 "todo salga bien."
 
-#. [message]: speaker=Grüü
 #. [message]: role=cannonfodder
+#. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:289
 msgid "Why?"
@@ -2492,11 +2492,16 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:201
+#, fuzzy
+#| msgid ""
+#| "Leave your people here Kapou’e — they are safe for the moment — and go "
+#| "defend Prestim. In the meantime, now that the council is complete again, "
+#| "we will decide. We may have to form the Great Horde again, and give you "
+#| "the leadership of it."
 msgid ""
-"Leave your people here Kapou’e — they are safe for the moment — and go "
-"defend Prestim. In the meantime, now that the council is complete again, we "
-"will decide. We may have to form the Great Horde again, and give you the "
-"leadership of it."
+"Go defend Prestim, Kapou'e. In the meantime, now that the council is "
+"complete again, we will decide. We may have to form the Great Horde again, "
+"and give you the leadership of it."
 msgstr ""
 "Dejad a vuestra gente aquí, Kapou'e — estarán a salvo por el momento — y "
 "corred a defender Prestim. Mientras tanto, ahora que el consejo está "
@@ -2773,8 +2778,8 @@ msgstr ""
 "¡Nadie podrá decir que los elfos fueron más valientes que nosotros, todos al "
 "ataque!"
 
-#. [side]: type=General, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:688

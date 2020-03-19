@@ -471,6 +471,49 @@ void game_config_manager::load_addons_cfg()
 					cfg["addon_version"] = addon_version.str();
 				}
 			}
+			config advancefroms;
+			for(auto& units : umc_cfg.child_range("units")) {
+				for(auto& unit_type : units.child_range("unit_type")) {
+					for(const auto& advancefrom : units.child_range("advancefrom")) {
+
+						config modify_unit_type {
+							"id", unit_type["id"],
+							"add_advancement", advancefrom["unit"],
+							"set_experience", advancefrom["experience"]
+						};
+						deprecated_message(
+							"[advancefrom]",
+							DEP_LEVEL::FOR_REMOVAL,
+							{1, 17, 0},
+							_("Use [modify_unit_type]\n") + modify_unit_type.debug()  + "\n [/modify_unit_type] instead in [campaign]"
+						);
+	
+						advancefroms.add_child("modify_unit_type", modify_unit_type);
+					}
+					unit_type.remove_children("advancefrom", [](const config&){return true;});
+				}
+			}
+			//hardcoded list of 1.14 advancement macros, just used for the werro mesage below.
+			std::set<std::string> deprecated_defeines = {"ENABLE_PARAGON", "DISABLE_GRAND_MARSHAL", "ENABLE_ARMAGEDDON_DRAKE", "ENABLE_DWARVISH_ARCANISTER", "ENABLE_DWARVISH_RUNESMITH ", "ENABLE_WOLF_ADVANCEMENT", "ENABLE_NIGHTBLADE", "ENABLE_TROLL_SHAMAN", "ENABLE_ANCIENT_LICH", "ENABLE_DEATH_KNIGHT", "ENABLE_WOSE_SHAMAN"};
+			for(auto& campaign : umc_cfg.child_range("campaign")) {
+				campaign.append_children(std::move(advancefroms));
+				for(auto str : utils::split(campaign["extra_defines"])) {
+					if(deprecated_defeines.count(str) > 0) {
+						//TODO: we could try to implement a compatabiltiy path by
+						//      somehow getting the content of that macro from the
+						//      cache_ object, but considering that 1) the breakage
+						//      isn't that bad (just one disabled unit) and 2)
+						//      it before also didn't work in all cases (see #4402)
+						//      i don't think it is worth it.
+						deprecated_message(
+							"extra_defines=" + str,
+							DEP_LEVEL::REMOVED,
+							{1, 15, 4},
+							_("instead, use the macro with the same name in the [campaign] tag")
+						);
+					}
+				}
+			}
 
 			game_config_.append(std::move(umc_cfg));
 		} catch(const config::error& err) {

@@ -397,3 +397,17 @@ lua_check_impl::remove_constref<T> luaW_table_get_def(lua_State *L, int index, u
 	lua_pop(L, 1);
 	return res;
 }
+
+
+template<typename T>
+void luaW_table_set(lua_State *L, int index, utils::string_view k,  const T& value)
+{
+	if(!lua_istable(L, index)) {
+		luaL_argerror(L, index, "table expected");
+	}
+
+	index = lua_absindex(L, index);
+	lua_pushlstring(L, k.data(), k.size());
+	lua_push(L, value);
+	lua_settable(L, index);
+}

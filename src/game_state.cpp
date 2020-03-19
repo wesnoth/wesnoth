@@ -42,6 +42,7 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 game_state::game_state(const config & level, play_controller & pc, const ter_data_cache & tdata) :
 	gamedata_(level),
@@ -191,6 +192,11 @@ void game_state::init(const config& level, play_controller & pc)
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
 
 	board_.teams_.resize(level.child_count("side"));
+	if (player_number_ > static_cast<int>(board_.teams_.size())) {
+		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams_.size() << "\n";
+		player_number_ = 1;
+		// in case there are no teams, using player_number_ migh still cause problems later.
+	}
 
 	std::vector<team_builder_ptr> team_builders;
 

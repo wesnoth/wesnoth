@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 15:18-0300\n"
+"POT-Creation-Date: 2020-03-09 20:11-0300\n"
 "PO-Revision-Date: 2019-09-21 22:33+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
@@ -28,8 +28,8 @@ msgstr ""
 "X-Generator: Poedit 1.8.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:479
 msgid "Fence"
@@ -2164,10 +2164,10 @@ msgid ""
 "modification."
 msgstr "Настройте параметры для выбранных пользовательских изменений."
 
-#. [button]: id=orb_defaults
-#. [button]: id=revert_to_defaults
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=reset_option_values
+#. [button]: id=orb_defaults
+#. [button]: id=btn_reset_hotkeys
+#. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:296
@@ -2183,9 +2183,9 @@ msgid "Connected Players"
 msgstr "Выберите игрока"
 
 #. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_1
-#. [toggle_button]: id=sort_name
 #. [label]
+#. [toggle_button]: id=sort_name
+#. [toggle_button]: id=sort_1
 #. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:231
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_connect.cfg:159
@@ -2285,8 +2285,8 @@ msgstr "Закрыть"
 msgid "Profile"
 msgstr "Профиль"
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
 #: data/gui/window/mp_method_selection.cfg:254
 msgid "Connect to Server"
@@ -2302,8 +2302,8 @@ msgstr "Вы подключитесь к серверу для загрузки 
 msgid "Server:"
 msgstr "Сервер:"
 
-#. [button]: id=remove_addons
 #. [label]
+#. [button]: id=remove_addons
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
@@ -2639,8 +2639,8 @@ msgstr "Страница:"
 msgid "Last"
 msgstr "В конец"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Назад"
@@ -2650,8 +2650,8 @@ msgstr "Назад"
 msgid "Previous page"
 msgstr "Прошлая страница"
 
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Вперёд"
@@ -2703,31 +2703,31 @@ msgstr "Загрузить ядро"
 msgid "OK"
 msgstr "OK"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Копировать"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Скопировать этот путь в буфер"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "Перейти"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2804,8 +2804,8 @@ msgstr "Удалить время суток"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:775 src/gui/dialogs/file_dialog.cpp:303
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/addon/manager.cpp:775 src/gui/dialogs/file_dialog.cpp:305
+#: src/gui/dialogs/file_dialog.cpp:731
 msgid "Confirm"
 msgstr "Подтвердить"
 
@@ -3038,8 +3038,8 @@ msgid "Choose a map generator:"
 msgstr "Выберите генератор карты:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=random_map_settings
 #. [button]: id=settings
+#. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 #: src/gui/dialogs/multiplayer/lobby.cpp:481
@@ -3152,16 +3152,16 @@ msgstr "Закладка для текущей папки"
 msgid "Removes the current bookmark"
 msgstr "Удаление закладки текущей папки"
 
-#. [button]: id=delete_file
 #. [button]: id=delete
+#. [button]: id=delete_file
 #. [button]: id=server_delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:513
 #: data/gui/window/mp_connect.cfg:284
 msgid "Delete"
 msgstr "Удалить"
 
-#. [button]: id=new_dir
 #. [label]: id=title
+#. [button]: id=new_dir
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Новый каталог"
@@ -3222,8 +3222,8 @@ msgid "Execution trace"
 msgstr "Трейс выполнения"
 
 #. [button]: id=cancel
-#. [button]: id=quit_without_surrender
 #. [grid]
+#. [button]: id=quit_without_surrender
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:258
 msgid "Quit"
@@ -3285,8 +3285,8 @@ msgstr "Удалить сохранение"
 msgid "Do you really want to delete this game?"
 msgstr "Вы действительно хотите удалить сохранение?"
 
-#. [toggle_button]: id=do_not_show_again
 #. [toggle_button]: id=dont_ask_again
+#. [toggle_button]: id=do_not_show_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
@@ -3374,11 +3374,11 @@ msgid "Save Game"
 msgstr "Сохранить игру"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=save
 #. [button]: id=ok
+#. [button]: id=save
 #: data/gui/window/game_save.cfg:120
 #: data/gui/window/screenshot_notification.cfg:203
-#: src/gui/dialogs/file_dialog.cpp:181
+#: src/gui/dialogs/file_dialog.cpp:183
 msgid "Save"
 msgstr "Сохранить"
 
@@ -3439,17 +3439,17 @@ msgid "Upkeep"
 msgstr "Содержание"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
+#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
 msgid "Income"
 msgstr "Доход"
 
-#. [toggle_button]: id=sort_1
 #. [label]: id=side_title
+#. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "Сторона"
@@ -3616,8 +3616,8 @@ msgstr "Инспектор состояния игры"
 msgid "Copy this report to clipboard"
 msgstr "Скопировать этот отчет в буфер"
 
-#. [button]: id=lua
 #. [label]
+#. [button]: id=lua
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3713,8 +3713,8 @@ msgstr "Игры"
 msgid "Requires a password to join"
 msgstr "Присоединяться только с паролем"
 
-#. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
+#. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:338
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -3740,9 +3740,9 @@ msgstr "Инвертировать фильтр"
 msgid "Log Out"
 msgstr "Выйти"
 
-#. [button]: id=create
 #. [label]
 #. [button]: id=ok
+#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:407 data/gui/window/lobby_main.cfg:573
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:449
@@ -3754,9 +3754,9 @@ msgid "Create Game"
 msgstr "Создать игру"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_preferences
-#. [label]: id=title
 #. [grid]
+#. [label]: id=title
+#. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:561
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:118
@@ -3808,15 +3808,15 @@ msgstr "Лобби мультиплеера"
 msgid "Player Info — "
 msgstr "Информация об игроке — "
 
-#. [button]: id=add_to_friends
 #. [button]: id=add_friend
+#. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
 msgstr "Добавить в друзья"
 
-#. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
+#. [button]: id=add_to_ignores
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
@@ -4246,8 +4246,8 @@ msgid "Time for each attack, recruit, and capture"
 msgstr "Время за каждую атаку, вербовку и захват"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=label
 #. [widget]: id=tab_label
+#. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/hotkey/hotkey_command.cpp:38
@@ -4369,15 +4369,15 @@ msgstr "Пол:"
 msgid "Random"
 msgstr "Случайно"
 
-#. [toggle_button]: id=male_toggle
 #. [row]
+#. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:227
 msgid "Male"
 msgstr "Мужчина"
 
-#. [toggle_button]: id=female_toggle
 #. [row]
+#. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:239
 msgid "Female"
@@ -4481,9 +4481,9 @@ msgid "Save password locally (encrypted)"
 msgstr "Сохранять пароль в настройках (в зашифрованном виде)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=label
 #. [label]
 #. [grid]
+#. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/game_load.cpp:435
@@ -5454,21 +5454,21 @@ msgstr "Состояние"
 msgid "HP"
 msgstr "ЗД"
 
-#. [toggle_button]: id=sort_2
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr "Ур"
 
-#. [toggle_button]: id=sort_3
 #. [toggle_button]: id=sort_5
+#. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr "ОП"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_6
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:374
 #: src/gui/widgets/unit_preview_pane.cpp:524
@@ -5533,29 +5533,29 @@ msgstr "Ошибка"
 msgid "Details:"
 msgstr "Детали:"
 
-#: src/build_info.cpp:269
+#: src/build_info.cpp:271
 #, fuzzy
 #| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
 msgstr "Скриншоты в JPG"
 
-#: src/build_info.cpp:276
+#: src/build_info.cpp:278
 msgid "feature^Lua console completion"
 msgstr "Lua консоль завершена"
 
-#: src/build_info.cpp:281
+#: src/build_info.cpp:283
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Устаревший двунаправленный рендеринг"
 
-#: src/build_info.cpp:288
+#: src/build_info.cpp:290
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus уведомления сервера"
 
-#: src/build_info.cpp:297
+#: src/build_info.cpp:299
 msgid "feature^Win32 notifications back end"
 msgstr "Win32 уведомления сервера"
 
-#: src/build_info.cpp:303
+#: src/build_info.cpp:305
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa уведомления сервера"
 
@@ -6131,27 +6131,27 @@ msgstr "Внутренний"
 msgid "Island"
 msgstr "Остров"
 
-#: src/gui/dialogs/file_dialog.cpp:105
+#: src/gui/dialogs/file_dialog.cpp:107
 msgid "Find File"
 msgstr "Найти файл"
 
-#: src/gui/dialogs/file_dialog.cpp:181
+#: src/gui/dialogs/file_dialog.cpp:183
 msgid "Open"
 msgstr "Открыть"
 
-#: src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/file_dialog.cpp:304
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Файл уже существует. Вы хотите переписать его?"
 
-#: src/gui/dialogs/file_dialog.cpp:326
+#: src/gui/dialogs/file_dialog.cpp:328
 msgid "The file or folder $path cannot be created."
 msgstr "Невозможно создать файл или папку $path."
 
-#: src/gui/dialogs/file_dialog.cpp:332
+#: src/gui/dialogs/file_dialog.cpp:334
 msgid "The file or folder $path does not exist."
 msgstr "Файл или папка $path не существует."
 
-#: src/gui/dialogs/file_dialog.cpp:707
+#: src/gui/dialogs/file_dialog.cpp:709
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -6159,19 +6159,19 @@ msgstr ""
 "Не удалось создать новую папку в $path|. Убедитесь, что у вас есть "
 "соответствующие разрешения на запись в эту папку."
 
-#: src/gui/dialogs/file_dialog.cpp:725
+#: src/gui/dialogs/file_dialog.cpp:727
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "Следующая папка и ее содержимое будут безвозвратно удалены:"
 
-#: src/gui/dialogs/file_dialog.cpp:726
+#: src/gui/dialogs/file_dialog.cpp:728
 msgid "The following file will be permanently deleted:"
 msgstr "Следующий файл будет безвозвратно удален:"
 
-#: src/gui/dialogs/file_dialog.cpp:727
+#: src/gui/dialogs/file_dialog.cpp:729
 msgid "Do you wish to continue?"
 msgstr "Вы хотите продолжить?"
 
-#: src/gui/dialogs/file_dialog.cpp:739
+#: src/gui/dialogs/file_dialog.cpp:741
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."

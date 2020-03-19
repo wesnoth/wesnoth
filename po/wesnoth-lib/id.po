@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 15:18-0300\n"
+"POT-Creation-Date: 2020-03-09 20:11-0300\n"
 "PO-Revision-Date: 2012-12-29 23:17+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:479
 msgid "Fence"
@@ -1978,10 +1978,10 @@ msgid ""
 "modification."
 msgstr ""
 
-#. [button]: id=orb_defaults
-#. [button]: id=revert_to_defaults
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=reset_option_values
+#. [button]: id=orb_defaults
+#. [button]: id=btn_reset_hotkeys
+#. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:296
@@ -1999,9 +1999,9 @@ msgid "Connected Players"
 msgstr "Pilih Pemain"
 
 #. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_1
-#. [toggle_button]: id=sort_name
 #. [label]
+#. [toggle_button]: id=sort_name
+#. [toggle_button]: id=sort_1
 #. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:231
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_connect.cfg:159
@@ -2109,8 +2109,8 @@ msgstr "Tutup"
 msgid "Profile"
 msgstr ""
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:52
 #: data/gui/window/mp_method_selection.cfg:254
 msgid "Connect to Server"
@@ -2126,8 +2126,8 @@ msgstr "Anda akan sekarang disambungkan ke server untuk medownload add-on."
 msgid "Server:"
 msgstr "Server:"
 
-#. [button]: id=remove_addons
 #. [label]
+#. [button]: id=remove_addons
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
@@ -2500,8 +2500,8 @@ msgstr "Halaman:"
 msgid "Last"
 msgstr "Terakhir"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Sebelumnya"
@@ -2513,8 +2513,8 @@ msgstr "Sebelumnya"
 msgid "Previous page"
 msgstr "Sebelumnya"
 
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Terus"
@@ -2572,16 +2572,16 @@ msgstr "Load Permainan"
 msgid "OK"
 msgstr "OK"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr ""
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
@@ -2590,15 +2590,15 @@ msgstr ""
 msgid "Copy this path to clipboard"
 msgstr "Pilihlah simpanan game yang ingin dilanjutkan"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr ""
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2679,8 +2679,8 @@ msgstr "Hapus File"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:775 src/gui/dialogs/file_dialog.cpp:303
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/addon/manager.cpp:775 src/gui/dialogs/file_dialog.cpp:305
+#: src/gui/dialogs/file_dialog.cpp:731
 msgid "Confirm"
 msgstr ""
 
@@ -2947,8 +2947,8 @@ msgid "Choose a map generator:"
 msgstr "Generator Peta"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=random_map_settings
 #. [button]: id=settings
+#. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 #: src/gui/dialogs/multiplayer/lobby.cpp:481
@@ -3067,16 +3067,16 @@ msgstr ""
 msgid "Removes the current bookmark"
 msgstr ""
 
-#. [button]: id=delete_file
 #. [button]: id=delete
+#. [button]: id=delete_file
 #. [button]: id=server_delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:513
 #: data/gui/window/mp_connect.cfg:284
 msgid "Delete"
 msgstr "Hapus File"
 
-#. [button]: id=new_dir
 #. [label]: id=title
+#. [button]: id=new_dir
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Folder Baru"
@@ -3139,8 +3139,8 @@ msgid "Execution trace"
 msgstr "Melacak Pelaksanaan "
 
 #. [button]: id=cancel
-#. [button]: id=quit_without_surrender
 #. [grid]
+#. [button]: id=quit_without_surrender
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:258
 msgid "Quit"
@@ -3196,8 +3196,8 @@ msgstr "Hapus File"
 msgid "Do you really want to delete this game?"
 msgstr "Apakah anda benar-benar mau menghapus permainan ini?"
 
-#. [toggle_button]: id=do_not_show_again
 #. [toggle_button]: id=dont_ask_again
+#. [toggle_button]: id=do_not_show_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 #, fuzzy
@@ -3291,11 +3291,11 @@ msgid "Save Game"
 msgstr "Simpan Permainan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=save
 #. [button]: id=ok
+#. [button]: id=save
 #: data/gui/window/game_save.cfg:120
 #: data/gui/window/screenshot_notification.cfg:203
-#: src/gui/dialogs/file_dialog.cpp:181
+#: src/gui/dialogs/file_dialog.cpp:183
 #, fuzzy
 #| msgid "Save Map"
 msgid "Save"
@@ -3366,9 +3366,9 @@ msgid "Upkeep"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
+#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
@@ -3377,8 +3377,8 @@ msgstr ""
 msgid "Income"
 msgstr "Selamat Datang"
 
-#. [toggle_button]: id=sort_1
 #. [label]: id=side_title
+#. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "Pihak"
@@ -3561,8 +3561,8 @@ msgstr "Inspektur Gamestate "
 msgid "Copy this report to clipboard"
 msgstr "Pilihlah simpanan game yang ingin dilanjutkan"
 
-#. [button]: id=lua
 #. [label]
+#. [button]: id=lua
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3676,8 +3676,8 @@ msgstr "Permainan"
 msgid "Requires a password to join"
 msgstr "Masukkan kata sandi untuk masuk"
 
-#. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
+#. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:338
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -3705,9 +3705,9 @@ msgstr "Balikkan saringan"
 msgid "Log Out"
 msgstr "Mengecil"
 
-#. [button]: id=create
 #. [label]
 #. [button]: id=ok
+#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:407 data/gui/window/lobby_main.cfg:573
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:449
@@ -3719,9 +3719,9 @@ msgid "Create Game"
 msgstr "Buat Permainan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_preferences
-#. [label]: id=title
 #. [grid]
+#. [label]: id=title
+#. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:561
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:118
@@ -3777,8 +3777,8 @@ msgstr "Lobi Multi-pemain"
 msgid "Player Info — "
 msgstr "Info Pemain — "
 
-#. [button]: id=add_to_friends
 #. [button]: id=add_friend
+#. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 #, fuzzy
@@ -3786,8 +3786,8 @@ msgstr "Info Pemain — "
 msgid "Add Friend"
 msgstr "Tambahkan Sebagai Teman"
 
-#. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
+#. [button]: id=add_to_ignores
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
@@ -4267,8 +4267,8 @@ msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=label
 #. [widget]: id=tab_label
+#. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/hotkey/hotkey_command.cpp:38
@@ -4406,15 +4406,15 @@ msgstr "Jenis kelamin :"
 msgid "Random"
 msgstr ""
 
-#. [toggle_button]: id=male_toggle
 #. [row]
+#. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:227
 msgid "Male"
 msgstr "Pria"
 
-#. [toggle_button]: id=female_toggle
 #. [row]
+#. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:239
 msgid "Female"
@@ -4528,9 +4528,9 @@ msgid "Save password locally (encrypted)"
 msgstr "Simpan kata sandi ke pilihan (singkirkan teks)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=label
 #. [label]
 #. [grid]
+#. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/game_load.cpp:435
@@ -5577,21 +5577,21 @@ msgstr "Status"
 msgid "HP"
 msgstr ""
 
-#. [toggle_button]: id=sort_2
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr ""
 
-#. [toggle_button]: id=sort_3
 #. [toggle_button]: id=sort_5
+#. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_6
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:374
 #: src/gui/widgets/unit_preview_pane.cpp:524
@@ -5662,27 +5662,27 @@ msgstr "Error"
 msgid "Details:"
 msgstr ""
 
-#: src/build_info.cpp:269
+#: src/build_info.cpp:271
 msgid "feature^JPEG screenshots"
 msgstr ""
 
-#: src/build_info.cpp:276
+#: src/build_info.cpp:278
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:281
+#: src/build_info.cpp:283
 msgid "feature^Legacy bidirectional rendering"
 msgstr ""
 
-#: src/build_info.cpp:288
+#: src/build_info.cpp:290
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:297
+#: src/build_info.cpp:299
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:303
+#: src/build_info.cpp:305
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
@@ -6260,49 +6260,49 @@ msgstr "Pedalaman"
 msgid "Island"
 msgstr "Pulau"
 
-#: src/gui/dialogs/file_dialog.cpp:105
+#: src/gui/dialogs/file_dialog.cpp:107
 msgid "Find File"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:181
+#: src/gui/dialogs/file_dialog.cpp:183
 msgid "Open"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/file_dialog.cpp:304
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Data telah tersimpan. Apakah anda ingin melanjutkan penyimpanan ulang?"
 
-#: src/gui/dialogs/file_dialog.cpp:326
+#: src/gui/dialogs/file_dialog.cpp:328
 msgid "The file or folder $path cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:332
+#: src/gui/dialogs/file_dialog.cpp:334
 msgid "The file or folder $path does not exist."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:707
+#: src/gui/dialogs/file_dialog.cpp:709
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:725
+#: src/gui/dialogs/file_dialog.cpp:727
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:726
+#: src/gui/dialogs/file_dialog.cpp:728
 msgid "The following file will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:727
+#: src/gui/dialogs/file_dialog.cpp:729
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you wish to continue?"
 msgstr "Apakah anda benar-benar mau menghapus permainan ini?"
 
-#: src/gui/dialogs/file_dialog.cpp:739
+#: src/gui/dialogs/file_dialog.cpp:741
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
