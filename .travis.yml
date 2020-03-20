@@ -37,10 +37,12 @@ matrix:
       env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Release
 
     - os: osx
+      osx_image: xcode11.3
       compiler: clang
       env: TOOL=xcodebuild NLS=true BRANCH=master CFG=Debug UPLOAD=true
 
     - os: osx
+      osx_image: xcode11.3
       compiler: clang
       env: TOOL=xcodebuild NLS=true CFG=Release BRANCH=master
 
