@@ -39,7 +39,7 @@ matrix:
     - os: osx
       osx_image: xcode11.3
       compiler: clang
-      env: TOOL=xcodebuild NLS=true BRANCH=master CFG=Debug UPLOAD=true
+      env: TOOL=xcodebuild NLS=true BRANCH=master CFG=Debug
 
     - os: osx
       osx_image: xcode11.3
