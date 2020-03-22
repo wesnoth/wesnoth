@@ -17,9 +17,11 @@ local u_pos_filter = function(u_id)
               T.filter_adjacent {
                   is_enemy = "yes",
                   adjacent = dir,
+                  formula = "self.hitpoints > 0",
                   T.filter_adjacent {
                       is_enemy = "yes",
-                      adjacent = dir
+                      adjacent = dir,
+                      formula = "self.hitpoints > 0"
                   }
               }
             } then
@@ -85,10 +87,7 @@ local status_anim_update = function()
         end
 end
 
-on_event("moveto", function()
+on_event("moveto, die", 5, function()
         status_anim_update()
 end)
 
-on_event("die", function()
-        status_anim_update()
-end)
