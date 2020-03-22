@@ -1,5 +1,4 @@
 language: cpp
-sudo:     required
 
 services:
     - docker
@@ -22,7 +21,7 @@ env:
   global:
     secure: Fw9j5BpL8e5f2boEC2D8l0Cm+pCJx7lyvpZvockSM9cF2Cnt/QPbknJLXPryExLhweQO/lvi0MPuoMhRJv0QbChBjdXzJmR+uU1ejCHfpkTc6Cm/yo3tZMG3Zm7vHs00gla2ytK+XyFIVZLtFxyzy2fxjD64sFO3YrUp0KzSXp8=
 
-matrix:
+jobs:
   include:
     - os: windows
       env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Debug UPLOAD=true
@@ -30,8 +29,8 @@ matrix:
     - os: windows
       env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Release
 
-#    - os: windows
-#      env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Debug UPLOAD=true
+    - os: windows
+      env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Debug UPLOAD=true
 
     - os: windows
       env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Release
@@ -39,7 +38,7 @@ matrix:
     - os: osx
       osx_image: xcode11.3
       compiler: clang
-      env: TOOL=xcodebuild NLS=true BRANCH=master CFG=Debug
+      env: TOOL=xcodebuild NLS=true CFG=Debug BRANCH=master
 
     - os: osx
       osx_image: xcode11.3
