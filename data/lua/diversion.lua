@@ -87,7 +87,9 @@ local status_anim_update = function()
         end
 end
 
-on_event("moveto, die", 5, function()
+-- the "select" event is a suboptimal workaround for needing to trigger when player uses "undo"
+on_event("moveto, die, select", function()
         status_anim_update()
+        
 end)
 
