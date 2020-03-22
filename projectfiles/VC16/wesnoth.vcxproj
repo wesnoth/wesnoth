@@ -128,7 +128,7 @@
       <OpenMPSupport>false</OpenMPSupport>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4503;4351;4250;4244;4127;4512;4003;4068;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4503;4351;4250;4244;4127;4512;4003;4068;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
@@ -192,11 +192,6 @@
     <Manifest>
       <AdditionalManifestFiles>../../packaging/windows/wesnoth.exe.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
-    <PostBuildEvent>
-      <Message>WML unit tests for Wesnoth</Message>
-      <Command>
-      </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">
     <BuildLog>

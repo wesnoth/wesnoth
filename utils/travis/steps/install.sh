@@ -36,25 +36,28 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     export CCACHE_COMPILERCHECK=content
     travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
 elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
-    choco install sqlite
-    choco install python --version=3.6.8
     if [ "$IMAGE" == "VC16" ]; then
         choco install visualstudio2019community --package-parameters "--includeRecommended --includeOptional"
         choco install visualstudio2019-workload-vctools
     fi
-    cd /c/Python36
-    ln -s python.exe python3.exe
-    export PATH="/c/Python36:"$PATH":/c/Python36/Scripts/"
-    yes | pip3 install paramiko
-    if [ "$(which python3)" == "" ] || [ "$(which sqlite3)" == "" ]; then
-        echo "Failed to retrieve dependencies!"
-        exit 1
-    else
-        echo "Dependencies retrieved and installed!"
-    fi
 
-    cd $TRAVIS_BUILD_DIR
-    ./utils/travis/windows-file-hasher.sh "projectfiles/$IMAGE/$CFG/filehashes.sqlite"
+    if [[ "$IMAGE" == "VC14" || ( "$IMAGE" == "VC16" && -d "$HOME/vcpkg/installed" ) ]]; then
+        choco install sqlite
+        choco install python --version=3.6.8
+        cd /c/Python36
+        ln -s python.exe python3.exe
+        export PATH="/c/Python36:"$PATH":/c/Python36/Scripts/"
+        yes | pip3 install paramiko
+        if [ "$(which python3)" == "" ] || [ "$(which sqlite3)" == "" ]; then
+            echo "Failed to retrieve dependencies!"
+            exit 1
+        else
+            echo "Dependencies retrieved and installed!"
+        fi
+
+        cd $TRAVIS_BUILD_DIR
+        ./utils/travis/windows-file-hasher.sh "projectfiles/$IMAGE/$CFG/filehashes.sqlite"
+    fi
 else
     # if not doing translations, save a bit of time by not copying them into the docker image
     # otherwise, if this is the mingw job, the .git directory is needed for running the git archive command
