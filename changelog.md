@@ -5,6 +5,8 @@
  ### Campaigns
    * Delfador's Memoirs:
      * S12: Fix a few case where dialog and events sound odd or fire out of order (issue #4614)
+   * Under the Burning Suns:
+     * Embellished all remaining maps (S1, S2, S6b, S8, S11)
  ### Language and i18n
    * Updated translations: Portuguese (Brazil), Swedish
 
