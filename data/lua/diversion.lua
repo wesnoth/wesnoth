@@ -96,7 +96,7 @@ local status_anim_update = function(is_undo)
 	end
 end
 
-wesnoth.wml_actions.on_undo_diversion(cfg)
+function wesnoth.wml_actions.on_undo_diversion(cfg)
 	status_anim_update(true)
 end
 
