@@ -56,7 +56,7 @@ local status_anim_update = function(is_undo)
         for index, ec_unit in ipairs(div_candidates) do
                 local filter_result = u_pos_filter(ec_unit.id)
                 if filter_result then
-			changed_something = true
+		    changed_something = true
                     ec_unit.status.diversion = true
                     ec_unit:extract()
                     ec_unit:to_map()
@@ -77,7 +77,7 @@ local status_anim_update = function(is_undo)
         for index, ec_unit in ipairs(stop_candidates) do
                 local filter_result = u_pos_filter(ec_unit.id)
                 if not filter_result then
-			changed_something = true
+		    changed_something = true
                     ec_unit.status.diversion = false
                     ec_unit:extract()
                     ec_unit:to_map()
@@ -100,7 +100,6 @@ function wesnoth.wml_actions.on_undo_diversion(cfg)
 	status_anim_update(true)
 end
 
--- the "select" event is a suboptimal workaround for needing to trigger when player uses "undo"
 on_event("moveto, die", function()
         status_anim_update()
         
