@@ -9,11 +9,7 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     BUILD_RET=$?
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-        hdiutil convert ../../packaging/macOS/Wesnoth_dmg_packaging_template.dmg -format UDRW -o "Wesnoth_RW.dmg"
-        hdiutil attach "Wesnoth_RW.dmg"
-        cp -R "build/$CFG/The Battle for Wesnoth.app/." "/Volumes/The Battle for Wesnoth/The Battle for Wesnoth.app"
-        hdiutil detach "/Volumes/The Battle for Wesnoth"
-        hdiutil convert "Wesnoth_RW.dmg" -format UDBZ -o "Wesnoth_${CFG}.dmg"
+        hdiutil create -volname "Wesnoth_${CFG}" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
         ./../../utils/travis/sftp "Wesnoth_${CFG}.dmg"
     fi
 

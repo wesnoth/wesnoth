@@ -38,7 +38,7 @@ jobs:
     - os: osx
       osx_image: xcode11.3
       compiler: clang
-      env: TOOL=xcodebuild NLS=true CFG=Debug BRANCH=master
+      env: TOOL=xcodebuild NLS=true CFG=Debug BRANCH=master UPLOAD=true
 
     - os: osx
       osx_image: xcode11.3
