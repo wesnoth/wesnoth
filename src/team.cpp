@@ -75,6 +75,7 @@ const std::set<std::string> team::attributes {
 	"lost",
 	"recall_cost",
 	"recruit",
+	"previous_recruits",
 	"save_id",
 	"scroll_to_leader",
 	"share_vision",

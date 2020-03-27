@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
 "PO-Revision-Date: 2019-01-23 22:32+0100\n"
 "Last-Translator: Svistwarrior273 <romanbeno273@gmail.com>\n"
 "Language-Team: \n"
@@ -24,10 +24,12 @@ msgstr ""
 msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr "Základná UI (RCA)"
 
-#. [ai]: id=experimental_ai
-#: data/ai/ais/ai_experimental.cfg:9
-msgid "Multiplayer_AI^Experimental AI"
-msgstr "Experimentálna UI"
+#. [ai]: id=ai_default_rca_1_14
+#: data/ai/ais/ai_default_rca_1_14.cfg:9
+#, fuzzy
+#| msgid "Multiplayer_AI^Default AI (RCA)"
+msgid "Multiplayer_AI^1.14 Default AI"
+msgstr "Základná UI (RCA)"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
@@ -38,6 +40,11 @@ msgstr "Dev UI: Nečinná UI"
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr "Dev UI: Základná UI (RCA) s alternatívnym spôsobom verbovania"
+
+#. [ai]: id=experimental_ai
+#: data/ai/dev/ai_experimental.cfg:11
+msgid "Multiplayer_AI^Experimental AI"
+msgstr "Experimentálna UI"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
@@ -54,8 +61,8 @@ msgstr "Dev UI: Základná + Otravovanie jedom (Formula UI)"
 msgid "The Elves Besieged"
 msgstr "Elfovia v obkľúčení"
 
-#. [unit]: type=Spearman, id=Konrad
 #. [side]: type=Spearman, id=Konrad
+#. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -332,10 +339,10 @@ msgstr "Zvieratá"
 msgid "Rutburt"
 msgstr "Rutburt"
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -378,10 +385,10 @@ msgstr "Vlci"
 msgid "Whelps"
 msgstr "Mláďatá"
 
-#. [set_menu_item]: id=m01_end_animals
-#. [event]
-#. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m04_end_animals
+#. [event]
+#. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -536,12 +543,12 @@ msgstr "Veľký Zlý Ork"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "OK, chlapi. Týchto orkov musíme zastaviť."
 
-#. [message]: speaker=Big Bad Orc
 #. [message]: speaker=Another Bad Orc
 #. [message]: speaker=Vanak
+#. [message]: speaker=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:572
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:148
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:142
 msgid "They there!  We them get!"
 msgstr "Sú tam! Dostaneme ich!"
 
@@ -618,8 +625,8 @@ msgstr ""
 "Mohol som padnúť, ale v obrane priesmyku budeme pokračovať do posledného "
 "muža!"
 
-#. [test]: id=dragon
 #. [event]
+#. [test]: id=dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -801,8 +808,8 @@ msgstr "Seržant Aethubry"
 msgid "Place Side 1 Footpad"
 msgstr "Umiestni sem Poskoka strany 1"
 
-#. [set_menu_item]: id=m02_kill_unit
 #. [set_menu_item]: id=m05_kill_unit
+#. [set_menu_item]: id=m02_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
@@ -1706,7 +1713,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:159
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
 #: data/ai/micro_ais/scenarios/patrols.cfg:238
 #: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
@@ -1794,27 +1801,27 @@ msgid "Messenger"
 msgstr "Posol"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:131
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
 msgid "Messenger Waypoint 1"
 msgstr "Poslov smerový bod 1"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:133
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
 msgid "Messenger Waypoint 2"
 msgstr "Poslov smerový bod 2"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:129
 msgid "Messenger Waypoint 3"
 msgstr "Poslov smerový bod 3"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:138
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:132
 msgid "AI moves Messenger here"
 msgstr "UI pošle Posla sem"
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:147
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
@@ -1823,7 +1830,7 @@ msgstr ""
 "nášmu veliteľovi. Poďme na sever tak rýchlo, ako to len pôjde."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:160
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:154
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1860,32 +1867,32 @@ msgstr ""
 "https://wiki.wesnoth.org/Micro_AIs pre viac informácií."
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:167
 msgid "Defeat the messenger"
 msgstr "Poraz posla"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:177
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:171
 msgid "Messenger gets to the signpost"
 msgstr "Posol sa dostane k smerovke"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:181
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:175
 msgid "Death of Vanak"
 msgstr "Smrť Vanaka"
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:197
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:191
 msgid "I made it!  Now our people will be safe."
 msgstr "Dokázal som to! Teraz budú naši ľudia v bezpečí."
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:212
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:206
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "Nieee! Všetko je stratené. Nikdy sa nám už nepodarí zastaviť orkov!"
 
-#. [test]: id=patrols
 #. [event]
+#. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -2092,8 +2099,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr "Poďme domov, chlapi."
 
-#. [test]: id=protect_unit
 #. [event]
+#. [test]: id=protect_unit
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2327,8 +2334,8 @@ msgstr "Krehký Grnk"
 msgid "team_name^Grnk"
 msgstr "Grnk"
 
-#. [event]
 #. [test]: id=swarm
+#. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"
@@ -2726,22 +2733,31 @@ msgstr "Uralt"
 
 #. [message]: speaker=sergeant
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:125
-msgid "General Grospur, what do we do?  These undead will surely wipe us out."
+#, fuzzy
+#| msgid ""
+#| "General Grospur, what do we do?  These undead will surely wipe us out."
+msgid "General Grospur, what do we do? These undead will surely wipe us out."
 msgstr "Generál Grospur, čo urobíme? Títo nemŕtvi nás určite vyhladia."
 
 #. [message]: speaker=Grospur
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:129
+#, fuzzy
+#| msgid ""
+#| "Don't be such a chicken, Sergeant!  I have placed units with lots of "
+#| "experience around the perimeter. The undead will not dare to attack them. "
+#| "And those few that sneak through... we can easily dispose of them once "
+#| "they make it inside.\n"
+#| "\n"
+#| "<i>In other words, the Wesnoth AI does generally not attack units one XP "
+#| "from leveling if there is no chance of killing the unit with a single "
+#| "attack. However, some of the attacks by the undead are handled by the "
+#| "Simple Attack Micro AI in this scenario. General Grospur might be in for "
+#| "a surprise.</i>"
 msgid ""
-"Don't be such a chicken, Sergeant!  I have placed units with lots of "
+"Don’t be such a chicken, Sergeant! I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
 "And those few that sneak through... we can easily dispose of them once they "
-"make it inside.\n"
-"\n"
-"<i>In other words, the Wesnoth AI does generally not attack units one XP "
-"from leveling if there is no chance of killing the unit with a single "
-"attack. However, some of the attacks by the undead are handled by the Simple "
-"Attack Micro AI in this scenario. General Grospur might be in for a surprise."
-"</i>"
+"make it inside."
 msgstr ""
 "Nebuď ako kura, seržant! Po obvode som rozmiestnil jednotky s množstvom "
 "skúseností. Nemŕtvi sa neodvážia na ne zaútočiť. A tých pár, ktorí sa cez ne "
@@ -2752,36 +2768,21 @@ msgstr ""
 "niektoré z útokov nemŕtvych sú v tomto scenári v réžii jednoduchého útočného "
 "UI. Generál Grospur sa môže dočkať veľkého prekvapenia.</i>"
 
-#. [objectives]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:135
-msgid "Watch the undead take care of business"
-msgstr "Sleduj nemŕtvych, ako to vybavia"
-
-#. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:137
-msgid "Don't even try. You can't reach the Lich."
-msgstr "Ani to neskúšaj. Ku kostejovi sa nemôžeš dostať."
-
-#. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:141
-msgid "Death of the last of Grospur's units"
-msgstr "Smrť posledných Grospurových jednotiek"
-
-#. [note]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:145
-msgid "When your leader dies, side leadership passes on to another unit"
-msgstr "Keď tvoj veliteľ zomrie, vodcovstvo prejde na inú jednotku"
-
-#. [message]: speaker=$second_unit.id
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:172
+#. [message]: speaker=sergeant
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:133
 msgid ""
-"What the ... ?!?  They are not supposed to attack me. That just doesn't "
-"happen in Wesnoth!"
+"General Grospur, you’re still thinking of Wesnoth 1.12. The default AI is "
+"smarter than that now.\n"
+"\n"
+"<i>If you’re porting an old scenario, you may find the Simple Attack Micro "
+"AI used in a way that’s unnecessary since 1.14. The 1.12 AI generally "
+"doesn’t attack units one XP from leveling if there is no chance of killing "
+"the unit with a single attack. One way of making 1.12 do those attacks was "
+"to use the Simple Attack Micro AI.</i>"
 msgstr ""
-"Čo do ... ?!? Nemali na mňa zaútočiť. Toto sa jednoducho vo Wesnothe nestane!"
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:176
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:139
 #, fuzzy
 #| msgid ""
 #| "Hahahahaha !! I have given special instruction to my Soulless to attack "
@@ -2798,18 +2799,23 @@ msgstr ""
 #| "default Wesnoth attack mechanism kick in to attack with the remaining "
 #| "units (skeletons).</i>"
 msgid ""
-"Hahahahaha!! I have given special instruction to my Soulless to attack all "
-"your almost-advanced units first. Also watch how those same Soulless will "
-"throw themselves mercilessly at your pitiful soldiers after that, saving my "
-"more valuable skeleton minions for later. I have taken the term 'disposable "
-"units' to a whole new level. Watch in awe!!\n"
+"Hahahahaha!! Indeed, my skeletons are smarter than General Grospur. Worse "
+"for you, I have given special instruction to my Soulless to attack all your "
+"almost-advanced units first. Also watch how those same Soulless will throw "
+"themselves mercilessly at your pitiful soldiers after that, saving my more "
+"valuable skeleton minions for later. I have taken the term ‘disposable "
+"units’ to a whole new level. Watch in awe!!\n"
 "\n"
 "<i>Translation: The undead side includes two instances of the Simple Attack "
-"Micro AI.  The first makes the Soulless attack all units 1 XP from leveling "
-"up, such that they can be eliminated afterward.  The second executes all "
+"Micro AI. The first makes the Soulless attack all units 1 XP from leveling "
+"up, such that they can be eliminated afterward. The second executes all "
 "remaining attacks possible by Soulless (and Walking Corpses), without regard "
-"for their own safety.  Only after that does the default Wesnoth attack "
-"mechanism kick in to attack with the remaining units (skeletons).</i>"
+"for their own safety. Only after that does the default Wesnoth attack "
+"mechanism kick in to attack with the remaining units (skeletons), and it "
+"moves the remaining units with high caution and low aggression.</i>\n"
+"\n"
+"<i>The difference to the 1.12 version of this demo is that the 1.12 "
+"skeletons still had high aggression.</i>"
 msgstr ""
 "Hahahahaha !! Dal som špeciálnu inštrukciu mojim Bezduchým útočiť na všetky "
 "tvoje skoro povýšené jednotky ako na prvé. Tiež sa pozeraj, ako sa títo istí "
@@ -2825,14 +2831,40 @@ msgstr ""
 "mechanizmus, čiže vyrazí do útoku so zostávajúcimi jednotkami (kostlivcami)."
 "</i>"
 
+#. [objectives]
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:147
+msgid "Watch the undead take care of business"
+msgstr "Sleduj nemŕtvych, ako to vybavia"
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:149
+#, fuzzy
+#| msgid "Don't even try. You can't reach the Lich."
+msgid "Don’t even try. You can’t reach the Lich."
+msgstr "Ani to neskúšaj. Ku kostejovi sa nemôžeš dostať."
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:153
+#, fuzzy
+#| msgid "Death of the last of Grospur's units"
+msgid "Death of the last of Grospur’s units"
+msgstr "Smrť posledných Grospurových jednotiek"
+
+#. [note]
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:157
+msgid "When your leader dies, side leadership passes on to another unit"
+msgstr "Keď tvoj veliteľ zomrie, vodcovstvo prejde na inú jednotku"
+
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:195
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:188
 msgid "Rise, minions!"
 msgstr "Povstaňte, služobníci!"
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:241
-msgid "And that's how the undead AI executes total annihilation ..."
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:234
+#, fuzzy
+#| msgid "And that's how the undead AI executes total annihilation ..."
+msgid "And that’s how the undead AI executes total annihilation ..."
 msgstr "A tak nemŕtve UI totálne ľudí rozdrvilo ..."
 
 #. [side]
@@ -3194,6 +3226,13 @@ msgstr "Testovací scenár pre Lua UI (stará syntax)"
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr "Kireš"
+
+#~ msgid ""
+#~ "What the ... ?!?  They are not supposed to attack me. That just doesn't "
+#~ "happen in Wesnoth!"
+#~ msgstr ""
+#~ "Čo do ... ?!? Nemali na mňa zaútočiť. Toto sa jednoducho vo Wesnothe "
+#~ "nestane!"
 
 #~ msgid "Use the Patrols Micro AI instead of patrol.lua."
 #~ msgstr "Použitie Hliadkovú UI namiesto patrol.lua."

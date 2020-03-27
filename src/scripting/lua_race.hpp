@@ -30,3 +30,4 @@ namespace lua_race {
 // Create a lua reference to the race.
 void luaW_pushrace(lua_State *, const unit_race &);
 void luaW_pushracetable(lua_State *);
+const unit_race& luaW_checkrace(lua_State*, int);

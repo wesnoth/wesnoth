@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-10-09 18:07-0300\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
+"PO-Revision-Date: 2020-02-03 09:11-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil <gnome-l10n-br@listas.cipsga.org.br>\n"
 "Language: pt_BR\n"
@@ -438,8 +438,9 @@ msgstr "Sul"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
-msgid "Defeat enemy leader(s)"
-msgstr "Derrote os líderes inimigos"
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:155
+msgid "Defeat the enemy leader"
+msgstr "Derrote o líder inimigo"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
@@ -537,8 +538,6 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
 #: data/multiplayer/scenarios/4p_Clash.cfg:29
 #: data/multiplayer/scenarios/4p_Clash.cfg:51
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:30
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:43
 #: data/multiplayer/scenarios/4p_Underworld.cfg:31
@@ -571,8 +570,6 @@ msgstr "Leste"
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
 #: data/multiplayer/scenarios/4p_Clash.cfg:18
 #: data/multiplayer/scenarios/4p_Clash.cfg:40
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:17
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:56
 #: data/multiplayer/scenarios/4p_Underworld.cfg:20
@@ -1141,7 +1138,9 @@ msgid "teamname^Human"
 msgstr "Humano"
 
 #. [then]
+#. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:262
 msgid "Death of your leader"
 msgstr "Morte do seu líder"
 
@@ -1425,7 +1424,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
 msgid "2p — Hornshark Island"
-msgstr "2j - Ilha de Hornshark"
+msgstr "2j — Ilha de Hornshark"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:28
@@ -1437,100 +1436,100 @@ msgstr ""
 "quiserem sobreviver nestas ilhas estranahs. Criado por Doc Paterson."
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:89
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:160
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:197
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:266
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:315
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:439
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:91
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:162
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:199
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:268
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:317
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:441
 msgid "Big Baby Bo"
 msgstr "Grande bebé Bo"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:101
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:103
 msgid "Rawffus the Dim"
 msgstr "Rawffus o Teimoso"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:149
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:151
 msgid "Kolbur"
 msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:172
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:174
 msgid "Vilhelm Viskitynnyri"
 msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:229
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:240
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:647
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:658
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:231
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:242
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:661
 msgid "Clockwork Boy"
 msgstr "Menino Relógio"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:289
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:291
 msgid "Neki the Brutal"
 msgstr "Neki o Brutal"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:327
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:329
 msgid "Drowsk Calbeht"
 msgstr "Drowsk Calbeht"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:385
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:387
 msgid "Rzrrt the Dauntless"
 msgstr "Rzrrt o Audaz"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:423
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:425
 msgid "Sorrek, Chosen of Death"
 msgstr "Sorrek, o Escolhido da Morte"
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:507
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:578
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:615
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:732
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:856
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:510
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:581
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:618
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:687
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:735
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:859
 msgid "Big Baby Dro"
 msgstr "Grande Bebê Dro"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:519
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:522
 msgid "Gawffus the Dim"
 msgstr "Gawffus o Teimoso"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:567
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:570
 msgid "Rublok"
 msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:590
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:593
 msgid "Ulysses Mantyjuuri"
 msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:706
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:709
 msgid "Neki the Brute"
 msgstr "Neki o Bruto"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:744
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:747
 msgid "Claiomh Dubh"
 msgstr "Claiomh Dubh"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:802
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:805
 msgid "Tyxrrn the Dauntless"
 msgstr "Tyxrrn o Destemido"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:840
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:843
 msgid "Rukhos, Chosen of Death"
 msgstr "Rukhos, o Escolhido da Morte"
 
@@ -1578,7 +1577,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:7
 msgid "2p — Ruphus Isle"
-msgstr "2pj — Ilhota de Ruphus"
+msgstr "2j — Ilhota de Ruphus"
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:8
@@ -1898,7 +1897,7 @@ msgstr ""
 "batalhar neste local."
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:161
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:159
 msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
@@ -1907,7 +1906,7 @@ msgstr ""
 "mais próximo a noite e ao dia, respectivamente."
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:164
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:162
 msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
@@ -1934,19 +1933,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3j — Charco de Alirok"
 
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2044,6 +2043,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:54
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:71
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:20
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:42
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:64
@@ -2057,6 +2057,7 @@ msgstr "Time 1"
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:43
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:82
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:31
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:53
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:75
@@ -2143,6 +2144,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:56
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:20
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:58
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:29
@@ -2158,6 +2160,7 @@ msgstr "Sudoeste"
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:32
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:44
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:44
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:34
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:53
@@ -2194,6 +2197,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:32
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:43
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:46
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:42
@@ -2207,6 +2211,7 @@ msgstr "Sudeste"
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:21
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:54
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
@@ -2331,7 +2336,7 @@ msgstr ""
 "Como o mapa é pequeno, recomenda-se 75 de ouro para os outros jogadores."
 
 #. [side]
-#: data/multiplayer/scenarios/5p_Auction-X.cfg:69
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:70
 msgid "teamname^Center"
 msgstr "Centro"
 
@@ -2346,25 +2351,65 @@ msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "Nesse território misto, cinco exércitos lutam pela supremacia."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:37
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:55
 msgid "5p — The Wilderlands"
 msgstr "5j — As Terras Selvagens"
 
-#. [multiplayer]: id=multiplayer_The_Wilderlands
 #. [multiplayer]: id=multiplayer_Crusaders_Field
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
+#. [multiplayer]: id=multiplayer_The_Wilderlands
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:56
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
 msgstr " A configuração recomendada é 1 de ouro por aldeia."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:56
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
 "Uma vasta região selvagem e inóspita pontilhada por florestas, cavernas, "
 "rios e as ruínas de fortalezas ancestrais."
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:93
+msgid "teamname^Team 3"
+msgstr "Time 3"
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:104
+msgid "teamname^Team 4"
+msgstr "Time 4"
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:125
+msgid "teamname^Monsters"
+msgstr "Monstros"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:235
+msgid "Defeat all enemy leaders"
+msgstr "Derrote todos os líderes inimigos"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:252
+msgid "Defeat all monsters"
+msgstr "Derrote todos os monstros"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:270
+msgid "Defeat the enemy leaders"
+msgstr "Derrote os líderes inimigos"
+
+#. [objective]: condition=lose
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:275
+msgid "Death of all your units"
+msgstr "Morte de todas as suas unidades"
+
+#. [note]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:280
+msgid "You cannot recruit units."
+msgstr "Você não pode recrutar unidades."
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5

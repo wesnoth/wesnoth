@@ -421,8 +421,12 @@ void log_file_manager::enable_native_console_output()
 		LOG_LS << "Allocated own console.\n";
 		created_wincon_ = true;
 	} else {
-		ERR_LS << "Console attachment or allocation failed!\n";
-		return;
+		// Wine as of version 4.21 just goes ERROR_ACCESS_DENIED when trying
+		// to allocate a console for a GUI subsystem application. We can ignore
+		// this since the user purportedly knows what they're doing and if they
+		// get radio silence from Wesnoth and no log files they'll realize that
+		// something went wrong.
+		WRN_LS << "Cannot attach or allocate a console, continuing anyway (is this Wine?)\n";
 	}
 
 	DBG_LS << "stderr to console\n";

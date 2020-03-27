@@ -17,6 +17,9 @@
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 
 #include "filesystem.hpp"
+#include "formatter.hpp"
+#include "formula/string_utils.hpp"
+#include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
@@ -27,12 +30,8 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/integer_selector.hpp"
-#include "gui/widgets/menu_button.hpp"
-#include "preferences/game.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "formatter.hpp"
-#include "formula/string_utils.hpp"
-#include "game_config.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
@@ -42,8 +41,10 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "log.hpp"
-#include "savegame.hpp"
 #include "map_settings.hpp"
+#include "preferences/game.hpp"
+#include "save_index.hpp"
+#include "savegame.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -84,6 +85,7 @@ mp_create_game::mp_create_game(const config& cfg, saved_game& state, bool local_
 	, observers_(register_bool("observers", true, prefs::allow_observers, prefs::set_allow_observers))
 	, registered_users_(register_bool("registered_users", true, prefs::registered_users_only, prefs::set_registered_users_only))
 	, strict_sync_(register_bool("strict_sync", true))
+	, private_replay_(register_bool("private_replay", true))
 	, turns_(register_integer("turn_count", true, prefs::turns, prefs::set_turns))
 	, gold_(register_integer("village_gold", true, prefs::village_gold, prefs::set_village_gold))
 	, support_(register_integer("village_support", true, prefs::village_support, prefs::set_village_support))
@@ -319,6 +321,7 @@ void mp_create_game::pre_show(window& win)
 
 		observers_->widget_set_enabled(win, false, false);
 		strict_sync_->widget_set_enabled(win, false, false);
+		private_replay_->widget_set_enabled(win, false, false);
 	}
 
 	//
@@ -380,6 +383,7 @@ void mp_create_game::pre_show(window& win)
 		UPDATE_ATTRIBUTE(observers, to_bool);
 		UPDATE_ATTRIBUTE(registered_users, to_bool);
 		UPDATE_ATTRIBUTE(strict_sync, to_bool);
+		UPDATE_ATTRIBUTE(private_replay, to_bool);
 		UPDATE_ATTRIBUTE(shuffle_sides, to_bool);
 	}, true);
 
@@ -603,10 +607,6 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 	list.clear();
 
 	for(const auto& game : create_engine_.get_levels_by_type_unfiltered(type)) {
-		if(!game->can_launch_game()) {
-			continue;
-		}
-
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -705,10 +705,13 @@ void mp_create_game::update_details(window& win)
 			create_engine_.get_state().classification().campaign = "";
 
 			find_widget<stacked_widget>(&win, "minimap_stack", false).select_layer(0);
-			const std::string map_data = !current_scenario->data()["map_data"].empty()
-				? current_scenario->data()["map_data"]
-				: filesystem::read_map(current_scenario->data()["map_file"]);
-			find_widget<minimap>(&win, "minimap", false).set_map_data(map_data);
+
+			if(current_scenario->data()["map_data"].empty()) {
+				saved_game::expand_map_file(current_scenario->data());
+				current_scenario->set_metadata();
+			}
+
+			find_widget<minimap>(&win, "minimap", false).set_map_data(current_scenario->data()["map_data"]);
 
 			players.set_label(std::to_string(current_scenario->num_players()));
 			map_size.set_label(current_scenario->map_size());
@@ -789,7 +792,7 @@ void mp_create_game::update_map_settings()
 
 void mp_create_game::load_game_callback(window& window)
 {
-	savegame::loadgame load(cfg_, create_engine_.get_state());
+	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), cfg_, create_engine_.get_state());
 
 	if(!load.load_multiplayer_game()) {
 		return;
@@ -830,6 +833,16 @@ bool mp_create_game::dialog_exit_hook(window& /*window*/)
 {
 	if(!create_engine_.current_level_has_side_data()) {
 		gui2::show_transient_error_message(_("The selected game has no sides!"));
+		return false;
+	}
+
+	if(!create_engine_.current_level().can_launch_game()) {
+		std::stringstream msg;
+		// TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
+		msg << _("The selected game can not be created.");
+		msg << "\n\n";
+		msg << create_engine_.current_level().description();
+		gui2::show_transient_error_message(msg.str());
 		return false;
 	}
 
@@ -930,6 +943,7 @@ void mp_create_game::post_show(window& window)
 
 		config_engine_->set_allow_observers(observers_->get_widget_value(window));
 		config_engine_->set_registered_users_only(registered_users_->get_widget_value(window));
+		config_engine_->set_private_replay(private_replay_->get_widget_value(window));
 		config_engine_->set_oos_debug(strict_sync_->get_widget_value(window));
 		config_engine_->set_shuffle_sides(shuffle_sides_->get_widget_value(window));
 

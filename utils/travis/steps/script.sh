@@ -1,48 +1,107 @@
 #!/bin/bash
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    if [ "$TOOL" = "xcodebuild" ]; then
-        export PATH="/usr/local/opt/ccache/libexec:$PWD/utils/travis:$PATH"
-        export CC=ccache-clang
-        export CXX=ccache-clang++
+    scons translations build=release --debug=time nls=true jobs=2 || exit 1
 
-        cd ./projectfiles/Xcode
+    cd ./projectfiles/Xcode
 
-        export CCACHE_MAXSIZE=200M
-        export CCACHE_COMPILERCHECK=content
+    xcodebuild CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -configuration "$CFG"
+    BUILD_RET=$?
 
-        xcodebuild GCC_GENERATE_DEBUGGING_SYMBOLS=NO -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -configuration Debug
+    if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+        hdiutil convert ../../packaging/macOS/Wesnoth_dmg_packaging_template.dmg -format UDRW -o "Wesnoth_RW.dmg"
+        hdiutil attach "Wesnoth_RW.dmg"
+        cp -R "build/$CFG/The Battle for Wesnoth.app/." "/Volumes/The Battle for Wesnoth/The Battle for Wesnoth.app"
+        hdiutil detach "/Volumes/The Battle for Wesnoth"
+        hdiutil convert "Wesnoth_RW.dmg" -format UDBZ -o "Wesnoth_${CFG}.dmg"
+        ./../../utils/travis/sftp "Wesnoth_${CFG}.dmg"
+    fi
 
-        BUILD_RET=$?
+    ccache -s
+    ccache -z
 
-        ccache -s
-        ccache -z
-
-        exit $BUILD_RET
-    else
-        ./utils/travis/check_utf8.sh || exit 1
-        ./utils/travis/utf8_bom_dog.sh || exit 1
-
-        "$CXX" --version
-        if [ "$TOOL" = "scons" ]; then
-            ln -s $HOME/build-cache/ build
-            export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
-
-            scons wesnoth wesnothd campaignd boost_unit_tests build=release \
-                  ctool="$CC" cxxtool="$CXX" cxx_std="$CXXSTD" \
-                  extra_flags_config="-pipe" opt="$OPT" strict=true \
-                  nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time
+    exit $BUILD_RET
+elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
+    if [ "$IMAGE" == "VC16" ]; then
+        if [ ! -d "$HOME/vcpkg/installed" ]; then
+            cd "$HOME"
+            git clone --depth=1 https://github.com/microsoft/vcpkg.git vcpkg
+            cd vcpkg
+            cmd.exe //C bootstrap-vcpkg.bat
+            cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' amd64 '&&' vcpkg integrate install
+            alias make="make -j4"
+            ./vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-mixer:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale:x64-windows boost-random:x64-windows boost-regex:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows &
+            waitforpid=$!
+            while kill -0 $waitforpid
+            do
+                echo "vcpkg install in progress with pid $waitforpid ..."
+                sleep 60
+            done
+            rm -R downloads
+            rm -R buildtrees
+            echo "Built dependencies, exiting now to cache them. Please restart the job."
+            exit 1
         else
-            cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false \
-                  -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCXX_STD="$CXXSTD"\
-                  -DEXTRA_FLAGS_CONFIG="-pipe" -DOPT="$OPT" -DENABLE_STRICT_COMPILATION="$STRICT" && \
-                  make VERBOSE=1 -j2
+            cd "$HOME/vcpkg"
+            cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' amd64 '&&' vcpkg integrate install
+        fi
+
+        cd $TRAVIS_BUILD_DIR
+        cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' amd64 '&&' MSBuild.exe projectfiles/$IMAGE/wesnoth.sln -p:Configuration=$CFG -p:Platform=Win64
+        BUILD_RET=$?
+    else
+        cd ..
+        wget https://github.com/aquileia/external/archive/VC15.zip -O VC15.zip
+        7z x VC15.zip
+        mv external-VC15 external
+        cd $TRAVIS_BUILD_DIR
+        export PATH=$PATH":$TRAVIS_BUILD_DIR/../external/dll"
+
+        cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' x86 '&&' MSBuild.exe projectfiles/$IMAGE/wesnoth.sln -p:Configuration=$CFG -p:Platform=Win32
+        BUILD_RET=$?
+    fi
+
+    if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+        ./utils/travis/sftp wesnoth.exe wesnothd.exe
+        if [ "$CFG" == "Debug" ]; then
+            ./utils/travis/sftp wesnoth.pdb wesnothd.pdb
         fi
     fi
+
+    if [ "$BUILD_RET" != "0" ]; then
+        sqlite3 "projectfiles/$IMAGE/$CFG/filehashes.sqlite" "update FILES set MD5 = OLD_MD5, OLD_MD5 = '-' where OLD_MD5 != '-'"
+    else
+        sqlite3 "projectfiles/$IMAGE/$CFG/filehashes.sqlite" "update FILES set OLD_MD5 = '-' where OLD_MD5 != '-'"
+    fi
+
+    if [ "$CFG" == "Release" ] && [ "$BUILD_RET" == "0" ]; then
+        ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
+        BUILD_RET=$?
+    fi
+
+    exit $BUILD_RET
 else
-    docker run --cap-add=SYS_PTRACE \
-    					 --volume "$HOME"/build-cache:/home/wesnoth-travis/build \
+# additional permissions required due to flatpak's use of bubblewrap
+# enabling tty/using unbuffer causes po4a-translate to hang during the translation job
+    if [ "$NLS" != "only" ]; then
+        docker run --cap-add=ALL --privileged \
+               --env SFTP_PASSWORD --env IMAGE --env TRAVIS_COMMIT --env BRANCH --env UPLOAD_ID --env TRAVIS_PULL_REQUEST --env NLS --env CC --env CXX --env TOOL \
+               --env CXXSTD --env CFG --env WML_TESTS --env WML_TEST_TIME --env PLAY_TEST --env MP_TEST --env BOOST_TEST --env LTO --env SAN --env VALIDATE \
+               --env TRAVIS_TAG \
+               --volume "$HOME"/build-cache:/home/wesnoth-travis/build \
+               --volume "$HOME"/flatpak-cache:/home/wesnoth-travis/flatpak-cache \
                --volume "$HOME"/.ccache:/root/.ccache \
-               --tty wesnoth-repo:"$LTS"-"$BRANCH" \
-               unbuffer ./utils/travis/docker_run.sh "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN" "$VALIDATE"
+               --tty wesnoth-repo:"$IMAGE"-"$BRANCH" \
+               unbuffer ./utils/travis/docker_run.sh
+    else
+        docker run --cap-add=ALL --privileged \
+               --env SFTP_PASSWORD --env IMAGE --env TRAVIS_COMMIT --env BRANCH --env UPLOAD_ID --env TRAVIS_PULL_REQUEST --env NLS --env CC --env CXX --env TOOL \
+               --env CXXSTD --env CFG --env WML_TESTS --env WML_TEST_TIME --env PLAY_TEST --env MP_TEST --env BOOST_TEST --env LTO --env SAN --env VALIDATE \
+               --env TRAVIS_TAG \
+               --volume "$HOME"/build-cache:/home/wesnoth-travis/build \
+               --volume "$HOME"/flatpak-cache:/home/wesnoth-travis/flatpak-cache \
+               --volume "$HOME"/.ccache:/root/.ccache \
+               wesnoth-repo:"$IMAGE"-"$BRANCH" \
+               ./utils/travis/docker_run.sh
+    fi
 fi

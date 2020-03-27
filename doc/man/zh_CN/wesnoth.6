@@ -81,6 +81,11 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 \fB\-\-debug\-lua\fP
 启用一些Lua调试机制
 .TP 
+\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+diffs the two WML files; does not preprocess them first (to do that, run
+them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
+to the file indicated by \fI\-\-output\fP.
+.TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 直接启动游戏内置的地图编辑器。如果指定了\fIfile\fP，则和 \fB\-l\fP \fB\-\-load\fP.等价。
 .TP 
@@ -151,12 +156,20 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 \fB\-\-nosound\fP
 以无音乐和音效的方式运行游戏。
 .TP 
+\fB\-\-output\fP\fI\ file\fP
+output to the specified file. Applicable to diffing operations.
+.TP 
 \fB\-\-password\fP\fI\ password\fP
 在连接服务器时使用 \fIpassword\fP ，忽略其他首选项。不安全。
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
 （试验性）读取定义了韦诺插件的
 \fIscript\fP。与\fB\-\-script\fP类似，但Lua文件应返回一个函数，该函数将作为协程运行，并周期性地使用更新地参数唤起。
+.TP 
+\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+applies a DiffWML patch to a WML file; does not preprocess either of the
+files.  Outputs the patched WML to standard output or to the file indicated
+by \fI\-\-output\fP.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 预处理指定的文件/文件夹。针对每个文件，一个未处理的.cfg文件和一个处理过的.cfg文件会被写入指定的目标目录中。如果指定的是个文件夹，那么将根据已知的预处理器规则递归地预处理之。“data/core/macros”目录中的常用宏会在指定的资源之前被预处理。例如：
@@ -289,8 +302,7 @@ validates a file as a WML schema.
 和 \fBexperimental_ai\fP。
 .TP 
 \fB\-\-controller\fP\fI\ number\fP\fB:\fP\fIvalue\fP
-selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP and
-\fBnull\fP.
+选择该阵营的控制者。可选值有：\fBhuman\fP，\fBai\fP和\fBnull\fP。
 .TP 
 \fB\-\-era\fP\fI\ value\fP
 使用这个选项来选择一个时代以代替\fB默认\fP时代。所选时代由id确定。时代信息在\fBdata/multiplayer/eras.cfg\fP文件中描述。
@@ -323,9 +335,12 @@ selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP an
 .
 正常退出时的状态码为0。退出状态码1代表发生了（SDL、视频、字体等）初始化错误。退出状态码2代表命令行选项中有错误。
 .br
-运行单元测试（使用 \fB\ \-u\fP
-时），退出状态码是不同的。退出状态码0代表测试通过，而1代表测试失败。退出状态码3代表测试通过，但生成了无效的录像文件。退出状态码4代表测试通过，但录像中产生了错误。后两个状态码仅在不传入
-\fB\-\-noreplaycheck\fP 参数时才会返回。当与已废弃的 \fB\-\-timeout\fP 选项共同使用时，退出状态码2代表测试超时。
+When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
+status of 0 indicates that the test passed, and 1 indicates that the test
+failed. An exit status of 3 indicates that the test passed, but produced an
+invalid replay file. An exit status of 4 indicates that the test passed, but
+the replay produced errors. These latter two are only returned if
+\fB\-\-noreplaycheck\fP is not passed.
 .
 .SH 作者
 .

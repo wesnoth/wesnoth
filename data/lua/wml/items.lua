@@ -1,14 +1,13 @@
-local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
 
-local scenario_items = {}
+local scenario_items = (wesnoth.require "location_set").create()
 local next_item_name = 0
 local function add_overlay(x, y, cfg)
-	wesnoth.add_tile_overlay(x, y, cfg)
-	local items = scenario_items[x * 10000 + y]
+	wesnoth.interface.add_hex_overlay(x, y, cfg)
+	local items = scenario_items:get(x, y)
 	if not items then
 		items = {}
-		scenario_items[x * 10000 + y] = items
+		scenario_items:insert(x, y, items)
 	end
 	table.insert(items,
 		{
@@ -24,10 +23,10 @@ local function add_overlay(x, y, cfg)
 		})
 end
 
-local function remove_overlay(x, y, name)
-	local items = scenario_items[x * 10000 + y]
+function wesnoth.interface.remove_item(x, y, name)
+	local items = scenario_items:get(x, y)
 	if not items then return end
-	wesnoth.remove_tile_overlay(x, y, name)
+	wesnoth.interface.remove_hex_overlay(x, y, name)
 	if name then
 		for i = #items,1,-1 do
 			local item = items[i]
@@ -37,13 +36,13 @@ local function remove_overlay(x, y, name)
 		end
 	end
 	if not name or #items == 0 then
-		scenario_items[x * 10000 + y] = nil
+		scenario_items:remove(x, y)
 	end
 end
 
 function wesnoth.persistent_tags.item.write(add)
-	for i,v in pairs(scenario_items) do
-		for j,w in ipairs(v) do
+	for x,y,v in scenario_items:iter() do
+		for i,w in ipairs(v) do
 			add(w)
 		end
 	end
@@ -69,7 +68,7 @@ function wml_actions.item(cfg)
 		next_item_name = next_item_name + 1
 	end
 	if not cfg.image and not cfg.halo then
-		helper.wml_error "[item] missing required image= and halo= attributes."
+		wml.error "[item] missing required image= and halo= attributes."
 	end
 	for i, loc in ipairs(locs) do
 		add_overlay(loc[1], loc[2], cfg)
@@ -84,18 +83,18 @@ end
 function wml_actions.remove_item(cfg)
 	local locs = wesnoth.get_locations(cfg)
 	for i, loc in ipairs(locs) do
-		remove_overlay(loc[1], loc[2], cfg.image)
+		wesnoth.interface.remove_item(loc[1], loc[2], cfg.image)
 	end
 end
 
 function wml_actions.store_items(cfg)
 	local variable = cfg.variable or "items"
 	local item_name = cfg.item_name
-	variable = tostring(variable or helper.wml_error("invalid variable= in [store_items]"))
+	variable = tostring(variable or wml.error("invalid variable= in [store_items]"))
 	wml.variables[variable] = nil
 	local index = 0
 	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
-		local items = scenario_items[loc[1] * 10000 + loc[2]]
+		local items = scenario_items[loc]
 		if items then
 			for j, item in ipairs(items) do
 				-- note: item_name can not be part of standard location filter because
@@ -111,8 +110,6 @@ function wml_actions.store_items(cfg)
 	end
 end
 
-wesnoth.interface.remove_item = remove_overlay
-
 function wesnoth.interface.add_item_image(x, y, name)
 	add_overlay(x, y, { x = x, y = y, image = name })
 end
@@ -122,7 +119,7 @@ function wesnoth.interface.add_item_halo(x, y, name)
 end
 
 local methods = {
-	remove = wesnoth.deprecate_api('items.remove', 'wesnoth.interface.remove_item', 1, nil, remove_overlay),
+	remove = wesnoth.deprecate_api('items.remove', 'wesnoth.interface.remove_item', 1, nil, wesnoth.interface.remove_item),
 	place_image = wesnoth.deprecate_api('items.place_image', 'wesnoth.interface.add_item_image', 1, nil, wesnoth.interface.add_item_image),
 	place_halo = wesnoth.deprecate_api('items.place_halo', 'wesnoth.interface.add_item_halo', 1, nil, wesnoth.interface.add_item_halo)
 }

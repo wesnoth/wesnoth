@@ -50,6 +50,7 @@
 #include "preferences/general.hpp"              // for disable_preferences_save, etc
 #include "preferences/display.hpp"
 #include "savegame.hpp"                 // for clean_saves, etc
+#include "save_index.hpp"
 #include "scripting/application_lua_kernel.hpp"
 #include "sdl/surface.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
@@ -111,7 +112,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	hotkey_manager_(),
 	music_thinker_(),
 	music_muter_(),
-	test_scenario_("test"),
+	test_scenarios_{"test"},
 	screenshot_map_(),
 	screenshot_filename_(),
 	state_(),
@@ -185,14 +186,14 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	{
 		jump_to_editor_ = true;
 		if (!cmdline_opts_.editor->empty())
-			load_data_.reset(new savegame::load_game_metadata{ *cmdline_opts_.editor });
+			load_data_.reset(new savegame::load_game_metadata{ savegame::save_index_class::default_saves_dir(), *cmdline_opts_.editor });
 	}
 	if (cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if (cmdline_opts_.fullscreen)
 		video().set_fullscreen(true);
 	if (cmdline_opts_.load)
-		load_data_.reset(new savegame::load_game_metadata{ *cmdline_opts_.load });
+		load_data_.reset(new savegame::load_game_metadata{ savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load });
 	if (cmdline_opts_.max_fps) {
 		int fps = utils::clamp(*cmdline_opts_.max_fps, 1, 1000);
 		fps = 1000 / fps;
@@ -253,14 +254,11 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	if (cmdline_opts_.test)
 	{
 		if (!cmdline_opts_.test->empty())
-			test_scenario_ = *cmdline_opts_.test;
+			test_scenarios_ = {*cmdline_opts_.test};
 	}
-	if (cmdline_opts_.unit_test)
+	if (!cmdline_opts_.unit_test.empty())
 	{
-		if (!cmdline_opts_.unit_test->empty()) {
-			test_scenario_ = *cmdline_opts_.unit_test;
-		}
-
+		test_scenarios_ = cmdline_opts_.unit_test;
 	}
 	if (cmdline_opts_.windowed)
 		video().set_fullscreen(false);
@@ -453,6 +451,9 @@ void game_launcher::set_test(const std::string& id)
 
 bool game_launcher::play_test()
 {
+	// This first_time variable was added in 70f3c80a3e2 so that using the GUI
+	// menu to load a game works. That seems to have edge-cases, for example if
+	// you try to load a game a second time then Wesnoth exits.
 	static bool first_time = true;
 
 	if(!cmdline_opts_.test) {
@@ -463,8 +464,15 @@ bool game_launcher::play_test()
 
 	first_time = false;
 
-	set_test(test_scenario_);
-	state_.classification().campaign_define = "TEST";
+	if(test_scenarios_.size() == 0) {
+		// shouldn't happen, as test_scenarios_ is initialised to {"test"}
+		std::cerr << "Error in the test handling code" << std::endl;
+		return false;
+	}
+	if(test_scenarios_.size() > 1) {
+		std::cerr << "You can't run more than one unit test in interactive mode" << std::endl;
+	}
+	set_test(test_scenarios_.at(0));
 
 	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());
@@ -480,53 +488,89 @@ bool game_launcher::play_test()
 	return false;
 }
 
+/**
+ * Runs unit tests specified on the command line.
+ *
+ * If multiple unit tests were specified, then this will stop at the first test
+ * which returns a non-zero status.
+ */
 // Same as play_test except that we return the results of play_game.
-int game_launcher::unit_test()
+// \todo "same ... except" ... and many other changes, such as testing the replay
+game_launcher::unit_test_result game_launcher::unit_test()
 {
-	static bool first_time_unit = true;
-
-	if(!cmdline_opts_.unit_test) {
-		return 0;
+	// There's no copy of play_test's first_time variable. That seems to be for handling
+	// the player loading a game via the GUI, which makes no sense in a non-interactive test.
+	if(cmdline_opts_.unit_test.empty()) {
+		return unit_test_result::TEST_FAIL;
 	}
-	if(!first_time_unit)
-		return 0;
 
-	first_time_unit = false;
+	auto ret = unit_test_result::TEST_FAIL; // will only be returned if no test is run
+	for(const auto& scenario : test_scenarios_) {
+		set_test(scenario);
+		ret = single_unit_test();
+		const char* describe_result;
+		switch(ret) {
+			case unit_test_result::TEST_PASS:
+				describe_result = "PASS TEST";
+				break;
+			case unit_test_result::TEST_FAIL_LOADING_REPLAY:
+				describe_result = "FAIL TEST (INVALID REPLAY)";
+				break;
+			case unit_test_result::TEST_FAIL_PLAYING_REPLAY:
+				describe_result = "FAIL TEST (ERRORED REPLAY)";
+				break;
+			case unit_test_result::TEST_FAIL_BROKE_STRICT:
+				describe_result = "FAIL TEST (BROKE STRICT)";
+				break;
+			case unit_test_result::TEST_FAIL_WML_EXCEPTION:
+				describe_result = "FAIL TEST (WML EXCEPTION)";
+				break;
+			default:
+				describe_result = "FAIL TEST";
+				break;
+		}
+		std::cerr << describe_result << ": " << scenario << std::endl;
+		if (ret != unit_test_result::TEST_PASS) {
+			break;
+		}
+	}
+	return ret;
+}
 
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
-	state_.classification().campaign_define = "TEST";
-	state_.set_carryover_sides_start(
-		config {"next_scenario", test_scenario_}
-	);
-
-
+game_launcher::unit_test_result game_launcher::single_unit_test()
+{
 	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());
 
 	try {
 		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types(), true);
 		LEVEL_RESULT res = ccontroller.play_game();
-		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
-			return 1;
+		if (res != LEVEL_RESULT::VICTORY) {
+			return unit_test_result::TEST_FAIL;
+		}
+		if (lg::broke_strict()) {
+			// Test for LEVEL_RESULT::VICTORY before this, as the warning printed by
+			// a failing ASSERT will also set broke_strict()'s flag.
+			return unit_test_result::TEST_FAIL_BROKE_STRICT;
 		}
 	} catch(const wml_exception& e) {
 		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl;
-		return 1;
+		return unit_test_result::TEST_FAIL_WML_EXCEPTION;
 	}
 
 	savegame::clean_saves(state_.classification().label);
 
 	if (cmdline_opts_.noreplaycheck)
-		return 0; //we passed, huzzah!
+		return unit_test_result::TEST_PASS; //we passed, huzzah!
 
 	savegame::replay_savegame save(state_, compression::NONE);
 	save.save_game_automatic(false, "unit_test_replay"); //false means don't check for overwrite
 
-	load_data_.reset(new savegame::load_game_metadata{ "unit_test_replay" , "", true, true, false });
+	load_data_.reset(new savegame::load_game_metadata{ savegame::save_index_class::default_saves_dir(), "unit_test_replay" , "", true, true, false });
 
 	if (!load_game()) {
 		std::cerr << "Failed to load the replay!" << std::endl;
-		return 3; //failed to load replay
+		return unit_test_result::TEST_FAIL_LOADING_REPLAY; //failed to load replay
 	}
 
 	try {
@@ -534,14 +578,14 @@ int game_launcher::unit_test()
 		LEVEL_RESULT res = ccontroller.play_replay();
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			std::cerr << "Observed failure on replay" << std::endl;
-			return 4;
+			return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 		}
 	} catch(const wml_exception& e) {
 		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl;
-		return 4; //failed with an error during the replay
+		return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 	}
 
-	return 0; //we passed, huzzah!
+	return unit_test_result::TEST_PASS; //we passed, huzzah!
 }
 
 bool game_launcher::play_screenshot_mode()
@@ -601,7 +645,7 @@ bool game_launcher::load_game()
 
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
-	savegame::loadgame load(game_config_manager::get()->game_config(), state_);
+	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), game_config_manager::get()->game_config(), state_);
 	if (load_data_) {
 		std::unique_ptr<savegame::load_game_metadata> load_data = std::move(load_data_);
 		load.data() = std::move(*load_data);
@@ -677,6 +721,7 @@ void game_launcher::set_tutorial()
 	state_.clear();
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TUTORIAL;
 	state_.classification().campaign_define = "TUTORIAL";
+	state_.classification().campaign = "Tutorial";
 	state_.mp_settings().mp_era = "era_default";
 	state_.set_carryover_sides_start(
 		config {"next_scenario", "tutorial"}
@@ -817,7 +862,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 			// The prompt saves its input to preferences.
 			multiplayer_server_ = preferences::network_host();
 
-			if(multiplayer_server_ != preferences::server_list().front().address) {
+			if(multiplayer_server_ != preferences::builtin_servers_list().front().address) {
 				preferences::set_network_host(multiplayer_server_);
 			}
 		}

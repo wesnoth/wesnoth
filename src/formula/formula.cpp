@@ -487,7 +487,7 @@ public:
 			std::vector<std::string> split = utils::parenthetical_split(string_.as_string(), ',');
 			std::vector<variant> items;
 			items.reserve(split.size());
-			for(const std::string s : split) {
+			for(const std::string& s : split) {
 				items.emplace_back(s);
 			}
 

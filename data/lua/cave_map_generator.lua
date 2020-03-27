@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local MG = wesnoth.require "mapgen_helper"
 local LS = wesnoth.require "location_set"
 local random = wesnoth.random
@@ -153,7 +152,7 @@ function callbacks.generate_map(params)
 				if MG.is_valid_transform(t) then
 					table.insert(transforms, t)
 				else
-					helper.wml_error("Unknown transformation '" .. t .. "'")
+					wml.error("Unknown transformation '" .. t .. "'")
 				end
 			end
 			map[transforms[random(#transforms)]](map)

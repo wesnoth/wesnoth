@@ -41,8 +41,6 @@
 #include <csignal>
 #include <ctime>
 
-#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/exception/get_error_info.hpp>
 #include <boost/random.hpp>
 #include <boost/generator_iterator.hpp>
 
@@ -641,19 +639,16 @@ void server::handle_request_campaign_list(const server::request& req)
 
 	for(config& j : campaign_list.child_range("campaign"))
 	{
-		j["passphrase"] = "";
-		j["passhash"] = "";
-		j["passsalt"] = "";
-		j["upload_ip"] = "";
-		j["email"] = "";
-		j["feedback_url"] = "";
+		// Remove attributes containing information that's considered sensitive
+		// or irrelevant to clients
+		j.remove_attributes("passphrase", "passhash", "passsalt", "upload_ip", "email");
 
-		// Build a feedback_url string attribute from the
-		// internal [feedback] data.
+		// Build a feedback_url string attribute from the internal [feedback]
+		// data or deliver an empty value, in case clients decide to assume its
+		// presence.
 		const config& url_params = j.child_or_empty("feedback");
-		if(!url_params.empty() && !feedback_url_format_.empty()) {
-			j["feedback_url"] = format_addon_feedback_url(feedback_url_format_, url_params);
-		}
+		j["feedback_url"] = !url_params.empty() && !feedback_url_format_.empty()
+							? format_addon_feedback_url(feedback_url_format_, url_params) : "";
 
 		// Clients don't need to see the original data, so discard it.
 		j.clear_children("feedback");
@@ -673,32 +668,29 @@ void server::handle_request_campaign_list(const server::request& req)
 
 void server::handle_request_campaign(const server::request& req)
 {
-	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip\n";
-
 	config& campaign = get_campaign(req.cfg["name"]);
 
 	if(!campaign || campaign["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
-	} else {
-		const int size = filesystem::file_size(campaign["filename"]);
+		return;
+	}
+	
+	const int size = filesystem::file_size(campaign["filename"]);
 
-		if(size < 0) {
-			std::cerr << " size: <unknown> KiB\n";
-			ERR_CS << "File size unknown, aborting send.\n";
-			send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
-			return;
-		}
-
-		std::cerr << " size: " << size/1024 << "KiB\n";
-		async_send_file(req.sock, campaign["filename"],
-				std::bind(&server::handle_new_client, this, _1), null_handler);
-		// Clients doing upgrades or some other specific thing shouldn't bump
-		// the downloads count. Default to true for compatibility with old
-		// clients that won't tell us what they are trying to do.
-		if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
-			const int downloads = campaign["downloads"].to_int() + 1;
-			campaign["downloads"] = downloads;
-		}
+	if(size < 0) {
+		send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
+		return;
+	}
+	
+	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << size/1024 << "KiB\n";
+	async_send_file(req.sock, campaign["filename"], std::bind(&server::handle_new_client, this, _1), null_handler);
+	
+	// Clients doing upgrades or some other specific thing shouldn't bump
+	// the downloads count. Default to true for compatibility with old
+	// clients that won't tell us what they are trying to do.
+	if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
+		const int downloads = campaign["downloads"].to_int() + 1;
+		campaign["downloads"] = downloads;
 	}
 }
 

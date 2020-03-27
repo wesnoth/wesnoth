@@ -83,6 +83,11 @@ Deprecated, use \fB\-\-userdata\-path\fP.
 \fB\-\-debug\-lua\fP
 開啟一些 Lua 偵錯機制
 .TP 
+\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+diffs the two WML files; does not preprocess them first (to do that, run
+them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
+to the file indicated by \fI\-\-output\fP.
+.TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 啟動遊戲內建的地圖編輯器。如果指定 \fIfile\fP，則等同 \fB\-l\fP \fB\-\-load\fP。
 .TP 
@@ -154,12 +159,20 @@ Bug。部分確認為穩定的功能即使不開啟此功能也會啟用。
 \fB\-\-nosound\fP
 以無音樂和音效的方式啟動游戲。
 .TP 
+\fB\-\-output\fP\fI\ file\fP
+output to the specified file. Applicable to diffing operations.
+.TP 
 \fB\-\-password\fP\fI\ password\fP
 當連線伺服器時使用 \fIpassword\fP，忽略其他偏好設定。不安全。
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
 （實驗性）讀取一個定義韋諾插件的 \fIscript\fP。與 \fB\-\-script\fP 相似，但 Lua
 文件應該傳回一個函數，該函數將運行且週期性地喚醒並更新。
+.TP 
+\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+applies a DiffWML patch to a WML file; does not preprocess either of the
+files.  Outputs the patched WML to standard output or to the file indicated
+by \fI\-\-output\fP.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 預先處理指定的檔案/資料夾。每個檔案未處理及已處理的 .cfg
@@ -294,8 +307,7 @@ validates a file as a WML schema.
 "data/ai/dev"，或是模組裡的演算法。可選擇的值包含 \fBidle_ai\fP 及 \fBexperimental_ai\fP。
 .TP 
 \fB\-\-controller\fP\fI\ number\fP\fB:\fP\fIvalue\fP
-selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP and
-\fBnull\fP.
+選擇這個陣營的控制者。可選值有：\fBhuman\fP、\fBai\fP 和 \fBnull\fP。
 .TP 
 \fB\-\-era\fP\fI\ value\fP
 使用這個選項選擇一個模式來代替 \fBDefault\fP 模式。所選模式由 ID 決定。模式在 \fBdata/multiplayer/eras.cfg\fP
@@ -330,8 +342,12 @@ selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP an
 .
 正常退出時的狀態碼為0。狀態碼1代表發生了（SDL、視訊、字型等）初始化錯誤。狀態碼2代表指令行選項中有錯誤。
 .br
-當執行單位測試（使用 \fB\ \-u\fP），狀態碼會不同。狀態碼0表示通過測試，狀態碼1表示測試失敗。狀態碼3表示通過測試，但無法建立回放檔案。狀態碼4表示測試通過，但回放檔案錯誤。後兩個狀態碼只有在
-\fB\-\-noreplaycheck\fP 不通過的情況下返回。狀態碼2是測試時間逾時，當與 \fB\-\-timeout\fP 使用時才會出現。
+When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
+status of 0 indicates that the test passed, and 1 indicates that the test
+failed. An exit status of 3 indicates that the test passed, but produced an
+invalid replay file. An exit status of 4 indicates that the test passed, but
+the replay produced errors. These latter two are only returned if
+\fB\-\-noreplaycheck\fP is not passed.
 .
 .SH 作者
 .

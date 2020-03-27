@@ -864,7 +864,8 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 	sound_cache_iterator it;
 
 	sound_cache_chunk temp_chunk(file); // search the sound cache on this key
-	it_bgn = sound_cache.begin(), it_end = sound_cache.end();
+	it_bgn = sound_cache.begin();
+	it_end = sound_cache.end();
 	it = std::find(it_bgn, it_end, temp_chunk);
 
 	if(it != it_end) {

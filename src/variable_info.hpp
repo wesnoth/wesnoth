@@ -149,3 +149,10 @@ using variable_access_throw  = variable_info_mutable<variable_info_implementatio
  * the policy as const here. This allows the use of const_clone.
  */
 using variable_access_const  = variable_info<const variable_info_implementation::vi_policy_const>;
+
+class variable_set {
+public:
+	virtual ~variable_set() {}
+	virtual config::attribute_value get_variable_const(const std::string &id) const = 0;
+	virtual variable_access_const get_variable_access_read(const std::string& varname) const = 0;
+};

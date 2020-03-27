@@ -1,0 +1,287 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2018 wesnothd "Vesnot Savaşı çok oyunculu ağ sunucusu"
+.
+.SH İSİM
+.
+wesnothd \- \fBVesnot Savaşı\fP çok oyunculu ağ sunucusu
+.
+.SH KULLANIM
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIdosya\-yolu\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+[\|\fB\-t\fP \fIsayı\fP\|] [\|\fB\-T\fP \fIsayı\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH AÇIKLAMA
+.
+Vesnot Savaşı çok oyunculu oyunlarını yönetir. wesnoth istemcisinden veya
+soket üzerinden hangi komutların (/query ...) kabul edildiğini öğrenmek için
+http://www.wesnoth.org/wiki/ServerAdministration adresine bakınız.
+.
+.SH SEÇENEKLER
+.
+.TP 
+\fB\-c\ \fP\fIdosya\-yolu\fP\fB,\ \-\-config\fP\fI\ dosya\-yolu\fP
+wesnothd'ye yapılandırma dosyasını bulacağı yeri söyler. Sözdizimi için
+aşağıdaki \fBSUNUCU YAPILANDIRMASI\fP bölümüne bakınız. Artalan sürecine SIGHUP
+sinyali göndererek yapılandırmayı yeniden yükleyebilirsiniz.
+.TP 
+\fB\-d, \-\-daemon\fP
+ wesnothd'yi bir artalan süreci olarak çalıştırır.
+.TP 
+\fB\-h, \-\-help\fP
+komut satırı seçeneklerini basar ve çıkar.
+.TP 
+\fB\-\-log\-\fP\fIseviye\fP\fB=\fP\fIalan1\fP\fB,\fP\fIalan2\fP\fB,\fP\fI...\fP
+günlük kayıt alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını
+kapsamak üzere \fBall\fP belirtilebilir. Olası önem seviyeleri: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. \fBerror\fP seviyesi öntanımlıdır ve \fBserver\fP
+alanı için \fBinfo\fP seviyesi kullanılır.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+sunucunun belirtilen portu dinlemesini sağlar. Bir port belirtilmezse
+\fB15000\fP öntanımlıdır.
+.TP 
+\fB\-t\ \fP\fIsayı\fP\fB,\ \-\-threads\fP\fI\ sayı\fP
+ağa G/Ç için bekleyen iş evrelerinin azami sayısını belirler. (\fB5\fP
+öntanımlıdır. En çok \fB30\fP belirtilebilir.)
+.TP 
+\fB\-T\ \fP\fIsayı\fP\fB,\ \-\-max\-threads\fP\fI\ sayı\fP
+Oluşturulacak iş evrelerinin azami sayısını belirler. \fB0\fP bir sınır
+olmadığını belirtir ve öntanımlıdır.
+.TP 
+\fB\-V, \-\-version\fP
+sürüm numarasını gösterir ve çıkar.
+.TP 
+\fB\-v, \-\-verbose\fP
+hata ayıklama günlüğünü açar.
+.
+.SH "SUNUCU YAPILANDIRMASI"
+.
+.SS "Genel sözdizimi:"
+.
+.P
+[\fIetiket\fP]
+.IP
+\fIanahtar\fP="\fIdeğer\fP"
+.IP
+\fIanahtar\fP="\fIdeğer\fP,\fIdeğer\fP,..."
+.P
+[/\fIetiket\fP]
+.
+.SS "Genel anahtarlar:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Değer olarak \fBno\fP (öntanımlı) belirtilirse, kapatma ve yeniden başlatma
+istekleri, fifo'dan gelmedikçe dikkate alınmaz. Bir yönetici tarafından bir
+/query komutuyla uzaktan kapatmaya izin vermek için değer olarak \fByes\fP
+verin.
+.TP 
+\fBban_save_file\fP
+Sunucunun okuyup yazabildiği bir (gzip sıkıştırmalı) dosyanın göreli veya
+tam yolu. Sunucuya girişi yasaklanan oyuncular bu dosyaya kaydedilir ve
+sunucu başlatılırken okunur.
+.TP 
+\fBcompress_stored_rooms\fP
+rooms dosyasının sıkıştırılmış haliyle okunup yazılabillmesini
+belirler. Öntanımlı değer \fByes\fP'tir.
+.TP 
+\fBconnections_allowed\fP
+Aynı IP adresinden izin verilen bağlantı sayısı. \fB0\fP sonsuz anlamına
+gelir. (\fB5\fP öntanımlıdır)
+.TP 
+\fBdisallow_names\fP
+sunucu tarafından kabul edilmeyen isimler/rumuzlar. Dosya ismi kalıp
+karakterlerinden \fB*\fP ve \fB?\fP desteklenmektedir. Daha ayrıntılı bilgi için
+\fBglob\fP(7) sayfasına bakınız. Öntanımlı (bir şey belirtilmezse kullanılacak)
+değerler: \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+sunucu komutlarının yansılandığı fifo yolu (oyun içinde /query ... ile aynı)
+Yol belirtilmezse derleme sırasında belirtilen yol
+(\fB/var/run/wesnothd/socket\fP) öntanımlıdır.
+.TP 
+\fBmax_messages\fP
+ \fBmessages_time_period\fP süresince izin verilen ileti sayısı. \fB4\fP
+öntanımlıdır.
+.TP 
+\fBmessages_time_period\fP
+Saldırı olarak algılanmayacak ileti sayısının geçebileceği süre (saniye
+cinsinden). \fB10\fP saniye öntanımlıdır.
+.TP 
+\fBmotd\fP
+Günün sözü.
+.TP 
+\fBnew_room_policy\fP
+Sunucuda yeni odaları kimin oluşturacağını belirler. Kullanılabilir
+değerler, \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP ve \fBnobody\fP olup bu yetki
+sırasıyla herkese, kayıtlı kullanıcılara, yöneticilere verilir veya hiç oda
+oluşturulmaz. Ötanımlı değer: \fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+yönetici yetkilerini kazanmak için kullanılacak parola. (kullanım: \fB/query
+admin \fP\fIparola\fP).
+.TP 
+\fBreplay_save_path\fP
+Sunucunun oyun tekrarlarını sakladığı dizin. (dizini bir / ile sonlandırmayı
+unutmayın!) wesnothd'nin başlatıldığı dizin anlamına gelen `' öntanımlıdır.
+.TP 
+\fBrestart_command\fP
+\fBrestart\fP komutu üzerinden yeni bir sunucu süreci başlatmak için sunucunun
+kullanacağı komut. (Sadece fifo üzerinden
+kullanılabilir. \fBallow_remote_shutdown\fP ayarına bakınız.)
+.TP 
+\fBroom_save_file\fP
+Oda bilgisinin saklanacağı dosyanın yolu. Bu dosya sunucu başlatılırken
+okunur ve sonrasında yazılır. Boşsa veya hiç yoksa hiçbir oda yüklenmez ve
+saklanmaz.
+.TP 
+\fBsave_replays\fP
+Sunucunun oyun tekrarlarını özdevinimli olarak kaydedip kaydetmeyeceğini
+belirler. (Öntanımlı değeri: \fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı
+listesi. Dosya ismi kalıp karakterlerinden \fB*\fP ve
+\fB?\fPdesteklenmektedir. (kurulu wesnoth sürümü öntanımlıdır.)
+.br
+Örnek: \fBversions_accepted="*"\fP her sürüm dizgesi kabul edilir.
+.TP 
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
+.
+.SS "Genel etiketler:"
+.
+.P
+\fB[redirect]\fP Belli istemci sürümlerinin yönlendirileceği sunucuların
+belirtildiği etiket.
+.RS
+.TP 
+\fBhost\fP
+Yönlendirilecek sunucunun adresi.
+.TP 
+\fBport\fP
+Bağlanılacak port.
+.TP 
+\fBversion\fP
+Yönlendirilecek sürümlerin virgül ayraçlı listesi. Dosya kalıbı karakterleri
+bakımından \fBversions_accepted\fP ile aynı yöntem kullanılır.
+.RE
+.P
+\fB[ban_time]\fP Geçici sunucuya giriş yasağı süresi için uygun sözcüklerin
+tanımlandığı etiket.
+.RS
+.TP 
+\fBname\fP
+Yasaklama süresine atfedilen isim.
+.TP 
+\fBtime\fP
+Zaman uzunluğu tanımı. Biçemi: %d[%s[%d%s[...]]]
+Burada %s yerine \fBs\fP (saniye), \fBm\fP (dakika), \fBh\fP (saat), \fBD\fP (gün), \fBM\fP
+(ay), \fBY\fP (yıl); %d yerine de bir sayı belirtilebilir. Bir zaman birimi
+belirteci kullanılmamışsa dakika (m) öntanımlıdır. Örneğin time="1D12h30m"
+belirtilmişse 1 gün 12 saat 30 dakikalık yasak süresi konmuş olur.
+.RE
+.P
+\fB[proxy]\fP Sunucuya bir vekil sunucu gibi çalışacağını ve bağlanan
+istemcilerin isteklerini belirtilen sunucuya yönelteceğini söyleyen
+etiket. \fB[redirect]\fP için kullanılan değişkenler kullanılır.
+.RE
+.P
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the \fBforum_user_handler\fP to function can be found in
+table_definitions.sql in the Wesnoth source repository.
+.RS
+.TP 
+\fBdb_host\fP
+The hostname of the database server
+.TP 
+\fBdb_name\fP
+The name of the database
+.TP 
+\fBdb_user\fP
+The name of the user under which to log into the database
+.TP 
+\fBdb_password\fP
+This user's password
+.TP 
+\fBdb_users_table\fP
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+.TP 
+\fBdb_extra_table\fP
+The name of the table in which wesnothd will save its own data about users.
+.TP 
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
+.RE
+.
+.SH "ÇIKIŞ DURUMU"
+.
+Sunucu düzgün kapandığında çıkış durumu 0'dır. Çıkış durumu 2, komut satırı
+seçeneklerinde bir hata olduğunu gösterir.
+.
+.SH YAZAN
+.
+David White <davidnwhite@verizon.net> tarafından yazılmış, Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton.de@gmail.com> ve Thomas Baumhauer
+<thomas.baumhauer@gmail.com> tarafından düzenlenmiştir. Bu kılavuz
+sayfası ilk defa Cyril Bouthors <cyril@bouthors.org> tarafından
+yazılmış Nilgün Belma Bugüner <nilgun@belgeler.org> tarafından
+Türkçeye çevrilmiştir.
+.br
+oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
+.
+.SH "TELİF HAKKI"
+.
+Copyright © 2003\-2019 David White <davidnwhite@verizon.net>
+.br
+Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2. sürümünün (GPLv2)
+koşullarına bağlı kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların
+izin verdiği ölçüde hiçbir garantisi yoktur; hatta SATILABİLİRLİĞİ veya
+ŞAHSİ KULLANIMINIZA UYGUNLUĞU için bile garanti verilmez.
+.
+.SH "İLGİLİ BELGELER"
+.
+\fBwesnoth\fP(6)
+

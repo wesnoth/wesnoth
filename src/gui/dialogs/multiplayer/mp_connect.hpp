@@ -16,8 +16,16 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+namespace game_config
+{
+struct server_info;
+}
+
 namespace gui2
 {
+
+class listbox;
+
 namespace dialogs
 {
 
@@ -39,15 +47,72 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	/** The host name of the selected servef. */
+	// Signal handlers
+
+	void on_address_change();
+	void on_server_add();
+	void on_server_delete();
+	void on_server_select();
+
+	// Auxiliary functions
+
+	using server_info = game_config::server_info;
+	using server_list = std::vector<server_info>;
+
+	void insert_into_server_listbox(listbox& listbox, const server_info& srv, int pos = -1);
+
+	void select_first_match();
+
+	class selection
+	{
+	public:
+		selection(mp_connect* owner, int row = -1)
+			: owner_(owner)
+			, row_(row)
+		{
+		}
+
+		bool valid() const
+		{
+			return owner_ && row_ >= 0;
+		}
+
+		bool user_defined() const
+		{
+			// An invalid selection is the same as one from the read-only list of
+			// built-in servers for interaction purposes since it can't be written to.
+			return valid() && std::size_t(row_) >= owner_->builtin_servers_.size();
+		}
+
+		unsigned row() const;
+
+		std::size_t relative_index() const;
+
+		server_list& parent_list() const;
+
+		server_info& get();
+
+	private:
+		mp_connect* owner_;
+		int row_;
+
+		void must_be_valid() const
+		{
+			if(!valid()) {
+				throw std::out_of_range{"Invalid MP server selection"};
+			}
+		}
+	};
+
+	selection current_selection();
+
+	std::array<server_list*, 2> server_lists();
+
+	/** The host name of the selected server. */
 	field_text* host_name_;
 
-	/**
-	 * The unit test needs to be able to test the mp_connect dialog.
-	 *
-	 * @returns                   A newly allocated mp_server_list.
-	 */
-	static modal_dialog* mp_server_list_for_unit_test();
+	server_list builtin_servers_;
+	server_list user_servers_;
 };
 
 } // namespace dialogs

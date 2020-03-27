@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
 "PO-Revision-Date: 2012-12-01 17:03+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -129,7 +129,7 @@ msgstr "Kalahkan Alber"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:25
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:23
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:25
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:53
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:57
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:27
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:31
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:30
@@ -137,16 +137,16 @@ msgid "Death of Kapou’e"
 msgstr "Kematian Kapou'e"
 
 #. [side]: id=Kapou'e, type=Orcish Leader
+#. [side]: type=Orcish Slayer, id=Rugh
 #. [side]
+#. [side]: type=General, id=Howgarth III
 #. [side]: type=Orcish Leader, id=Kapou'e
 #. [side]: id=Grüü, type=Great Troll
-#. [side]: type=General, id=Howgarth III
-#. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:76
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:81
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:135
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:74
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:128
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:57
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:72
@@ -161,7 +161,7 @@ msgstr "Kematian Kapou'e"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:58
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:82
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:77
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:81
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:52
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:60
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:53
@@ -180,8 +180,8 @@ msgstr "Alber"
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
-#. [side]: type=Lieutenant, id=Alber
 #. [side]: type=General, id=Lanbec'h
+#. [side]: type=Lieutenant, id=Alber
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:94
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -706,7 +706,9 @@ msgid "Move Kapou’e to the end of the mountains"
 msgstr "Pindahkan Kapou'e ke ujung pegunungan"
 
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:33
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:425
 msgid "Defeat the enemy leader"
 msgstr "Kalahkan pemimpin musuh"
 
@@ -724,32 +726,25 @@ msgstr "Kalahkan pemimpin musuh"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:29
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:27
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:29
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:57
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:31
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:43
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:33
 msgid "Death of Grüü"
 msgstr "Kematian Grüü"
 
-#. [note]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:54
-msgid ""
-"In this scenario, you may ask Grüü to move to any hex by right-clicking on "
-"that hex."
-msgstr ""
-
 #. [side]: type=Dwarvish Lord, type=Dwarvish Steelclad, id=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:95
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:88
 msgid "Kwili"
 msgstr "Kwili"
 
 #. [side]: type=Dwarvish Lord, type=Dwarvish Steelclad, id=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:102
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:95
 msgid "Dwarves"
 msgstr "Bangsa Dwarf"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:156
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:149
 msgid ""
 "We have almost crossed the mountains. We’re close to the lands of the free "
 "tribes. So far so good."
@@ -758,18 +753,18 @@ msgstr ""
 "suku bebas. Sejauh ini cukup baik."
 
 #. [message]: speaker=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:160
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:153
 msgid "Halt! Who goes there?"
 msgstr "Hentikan! Siapa itu?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:165
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:158
 msgid "It is I, Kapou’e, son of the Black-Eye Karun. What do you want, dwarf?"
 msgstr ""
 "Ini aku, Kapou'e, putra Karun Si Mata-Hitam. Apa yang anda inginkan, dwarf?"
 
 #. [message]: speaker=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:171
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:164
 msgid ""
 "Oh, so it’s another group o’ stinkin’ orcs, eh. Begone, or we shall wash our "
 "axes in yer blood."
@@ -778,7 +773,7 @@ msgstr ""
 "kami dengan darah anda."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:176
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:169
 msgid ""
 "Look, you pint-sized idiot, we aren’t out to kill you so why don’t you just "
 "scamper away and hide in a cave or something. We’ll be through here in a few "
@@ -789,12 +784,12 @@ msgstr ""
 "Kami akan lewat sini dalam beberapa jam."
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:181
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:174
 msgid "(<i>Snicker</i>)"
 msgstr "(<i>Tertawa terkekeh-kekeh</i>)"
 
 #. [message]: speaker=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:186
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:179
 msgid ""
 "Your scorn and rudeness shall be your undoing. Dwarves, let no orc pass this "
 "way alive!"
@@ -803,12 +798,12 @@ msgstr ""
 "biarkan satupun orc melewati jalan ini hidup-hidup!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:191
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:184
 msgid "It looks like we might have to fight them after all."
 msgstr "Sepertinya kita mungkin harus melawan mereka akhirnya."
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:196
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:189
 msgid ""
 "Hey, Chief, I was thinking — dwarves are pretty slow; why don’t we just "
 "bypass them?"
@@ -817,14 +812,14 @@ msgstr ""
 "menghindari mereka?"
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:201
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:194
 msgid "I mean, we could defeat them easily but it would just slow us down."
 msgstr ""
 "Maksudku, kita bisa mengalahkan mereka dengan mudah tetapi itu hanya akan "
 "memperlambat  kita."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:206
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:199
 msgid ""
 "We could, but then again, if we crush them then we can loot their treasury "
 "and their dwellings. The gold will be useful."
@@ -833,7 +828,7 @@ msgstr ""
 "dapat merampas harta benda dan tempat tinggal  mereka. Emas itu akan berguna."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:211
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:204
 msgid ""
 "Whatever else happens, we have to pass through these mountains and I dislike "
 "leaving enemies in our rear. Stab, smite, and slay!"
@@ -842,7 +837,7 @@ msgstr ""
 "meninggalkan musuh di belakang kita. Tikam, pukul, dan bunuh!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:227
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:220
 msgid ""
 "I’ve never pushed so far. We are crossing the border of the Black-Eye lands."
 msgstr ""
@@ -850,37 +845,37 @@ msgstr ""
 "Hitam."
 
 #. [unit]: id=Blemaker, type=Troll Warrior
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:246
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:239
 msgid "Blemaker"
 msgstr "Blemaker"
 
 #. [unit]: id=Grüü, type=Troll Hero
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:255
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:248
 msgid "Grüü"
 msgstr "Grüü"
 
 #. [unit]: id=Toughkon, type=Troll Whelp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:277
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:270
 msgid "Toughkon"
 msgstr "Toughkon"
 
 #. [unit]: id=Pe, type=Troll Whelp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:286
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:279
 msgid "Pe"
 msgstr "Pe"
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:296
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:289
 msgid "Look! Dwarves are fighting orcs!"
 msgstr "Lihat! Para Dwarf sedang melawan para orc!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:300
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:293
 msgid "Father, we should help them. Orcs are our allies."
 msgstr "Ayah, kita harus membantu mereka. Para Orc adalah sekutu kita."
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:304
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:297
 msgid ""
 "I don’t know. Orcs have been our allies in the past, but they treat us as "
 "fools."
@@ -889,7 +884,7 @@ msgstr ""
 "mereka memperlakukan kita seperti orang bodoh."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:308
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:301
 msgid ""
 "But, Father, we don’t know what they are seeking there. Between us, we could "
 "squash these dwarves."
@@ -898,7 +893,7 @@ msgstr ""
 "bisa melumat para dwarf ini."
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:312
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:305
 msgid ""
 "Right, my son. We help our orcish friends. But you take care... I would be "
 "desperate if something happened to you."
@@ -907,22 +902,22 @@ msgstr ""
 "Saya akan putus asa jika sesuatu terjadi padamu."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:326
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:319
 msgid "Father! Oh no!"
 msgstr "Ayah! Oh tidak!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:330
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:323
 msgid "Filthy dwarves! Now I’ll kill you to the last!"
 msgstr "Para dwarf kotor! Sekarang aku akan membunuh kalian sampai habis!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:341
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:334
 msgid "Oh no, I’m defeated."
 msgstr "Oh tidak, aku dikalahkan."
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:350
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:343
 msgid ""
 "My son! I should have never brought him to this fight. Now we return to our "
 "caverns, and we never return."
@@ -931,7 +926,7 @@ msgstr ""
 "Sekarang kita kembali  ke gua-gua kita, dan kita tidak pernah kembali lagi."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:356
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:349
 msgid ""
 "The trolls are done. We will desperately need their help in the coming "
 "battles. Without them there is no hope."
@@ -940,12 +935,12 @@ msgstr ""
 "mendatang. Tanpa mereka tidak ada harapan."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:373
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:366
 msgid "Argh! I die!"
 msgstr "Argh! Aku mati!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:378
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:371
 msgid ""
 "You were warned, dwarf. Riders, spread out of the area and collect what you "
 "can from each of these houses. If anyone refuses to pay, tie them up and "
@@ -959,12 +954,12 @@ msgstr ""
 "membawa tentara ke Barag Gór. Menyusullah ketika kalian selesai."
 
 #. [message]: role=doggie
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:388
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:381
 msgid "Sounds like fun. All right boys, let’s go!"
 msgstr "Kedengarannya menyenangkan. Baiklah anak-anak, ayo kita laksanakan!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:413
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:406
 msgid ""
 "We’ve succeeded! We’ve passed through the Mountains of Haag! Look at these "
 "green hills! The land of the free tribes is near now. I can see the walls of "
@@ -975,7 +970,7 @@ msgstr ""
 "melihat tembok-tembok Barag Gór di kejauhan."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:433
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:426
 msgid ""
 "Blemaker, many thanks for your help in this fight. Would you like to join us "
 "in our journey with your son? You are a powerful warrior, and you would be "
@@ -986,12 +981,12 @@ msgstr ""
 "anda? Anda adalah seorang prajurit yang kuat, dan anda akan sangat membantu."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:438
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:431
 msgid "Father, I’d like to join them. Would you mind it?"
 msgstr "Ayah, aku ingin bergabung dengan mereka. Apakah anda keberatan?"
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:442
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:435
 msgid ""
 "My son, you’re old enough to discover the world. Me, I have to stay here. "
 "But take care, there are plenty of creatures that seek our end, like elves "
@@ -1002,12 +997,12 @@ msgstr ""
 "mematikan kita, seperti elf atau manusia. Mereka cerdik dan tanpa ampun."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:446
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:439
 msgid "Thanks, father. Don’t worry, I’ll take care of myself."
 msgstr "Terima kasih, ayah. Jangan khawatir, aku akan menjaga diri."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:452
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:445
 msgid ""
 "Grüü, many thanks for your help in this fight. I’m sorry for the loss of "
 "your father. Would you like to join us in our journey? Your help would be "
@@ -1018,7 +1013,7 @@ msgstr ""
 "dalam perjalanan kami? Bantuan anda akan sangat berguna  bagi saya."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:456
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:449
 msgid ""
 "My father would have come to help you. I would insult his memory not to help "
 "you. I come!"
@@ -1063,12 +1058,12 @@ msgstr ""
 msgid "Etheliel"
 msgstr "Etheliel"
 
-#. [side]: type=Elvish Shyde, id=Lucile
-#. [side]: type=Elvish Captain, id=Raceme
 #. [side]: type=Elvish Marshal, id=Etheliel
 #. [side]: type=Elvish Marshal, id=Hida'tul
 #. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
+#. [side]: type=Elvish Shyde, id=Lucile
+#. [side]: type=Elvish Captain, id=Raceme
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:68
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:100
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:115
@@ -1841,19 +1836,19 @@ msgstr "Mencapai Oasis"
 msgid "Ar-Dant"
 msgstr "Ar-Dant"
 
-#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
-#. [side]
+#. [side]: type=Elvish Champion, id=Thelarion
+#. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Arthain
 #. [side]: type=Lieutenant, id=Hanak
-#. [side]: type=Dwarvish Steelclad, id=Darstang
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]
+#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Bandit, id=Sagmar
-#. [side]: type=General, id=Telthys
-#. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=General, id=Fredor
-#. [side]: type=General, id=Georan
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
-#. [side]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Telthys
+#. [side]: type=General, id=Fredor
+#. [side]: type=General, id=Georan
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:98
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2103,11 +2098,6 @@ msgid ""
 msgstr ""
 "Yeah, aku bisa melihatnya. Yah, saya kira kita harus membersihkan rakyat "
 "jelata ini dari sini. Tikam, pukul, bunuh!"
-
-#. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:425
-msgid "Defeat Ar-Dant"
-msgstr "Kalahkan Ar-Dant"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:455
@@ -2448,8 +2438,8 @@ msgstr "Bertahan dari ancaman Shan Taum selama 20 giliran"
 msgid "Defeat Shan Taum"
 msgstr "Kalahkan Shan Taum"
 
-#. [side]: type=Orcish Warlord, id=Shan Taum
 #. [unit]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:60
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:122
@@ -2476,8 +2466,8 @@ msgstr ""
 "Akhirnya, disinilah Perbukitan Berkabung! Kita hanya bisa berharap untuk "
 "yang terbaik."
 
-#. [message]: speaker=Grüü
 #. [message]: role=cannonfodder
+#. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:289
 msgid "Why?"
@@ -2649,10 +2639,9 @@ msgstr ""
 #| "we will decide. We may have to form the Great Horde again, and give you "
 #| "the leadership on it."
 msgid ""
-"Leave your people here Kapou’e — they are safe for the moment — and go "
-"defend Prestim. In the meantime, now that the council is complete again, we "
-"will decide. We may have to form the Great Horde again, and give you the "
-"leadership of it."
+"Go defend Prestim, Kapou'e. In the meantime, now that the council is "
+"complete again, we will decide. We may have to form the Great Horde again, "
+"and give you the leadership of it."
 msgstr ""
 "Tinggalkan orang-orang anda disini Kapou'e — mereka aman untuk saat ini — "
 "dan pergilah mempertahankan Prestim. Sementara itu, sekarang dewan lengkap "
@@ -2696,8 +2685,8 @@ msgstr ""
 msgid "Whoever detonates the bridge will die."
 msgstr "Catatan: siapa pun yang meledakan jembatan akan mati."
 
-#. [unit]: type=Elvish Champion, id=Thelarion
 #. [side]: type=Elvish Champion, id=Thelarion
+#. [unit]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:62
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:185
@@ -2942,9 +2931,9 @@ msgstr ""
 "Jangan sampai dikatakan bahwa Para Elf lebih berani dari kita, semua orang "
 "serang!"
 
-#. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
 #. [side]: type=General, id=Earl Lanbec'h
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:688
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
@@ -2993,8 +2982,12 @@ msgstr "Mempertahankan Prestim dengan sukses selama empat hari"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:25
+#, fuzzy
+#| msgid ""
+#| "Enemies control any villages on the north side of the river when turns "
+#| "run out"
 msgid ""
-"Enemies control any villages on the north side of the river when turns run "
+"You don't control all villages on the north side of the river when turns run "
 "out"
 msgstr ""
 "Musuh-musuh menguasai desa mana saja di sebelah utara sungai ketika waktu "
@@ -3936,35 +3929,35 @@ msgid "Defeat all rebel leaders and..."
 msgstr "Kalahkan seluruh pemimpin pemberontak dan..."
 
 #. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:33
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:37
 #, fuzzy
 #| msgid "Move Kapou’e to the signpost at the southwest"
 msgid "Then move Kapou’e to the signpost in the southwest"
 msgstr "Pindahkan Kapou'e ke penunjuk jalan di bagian barat daya"
 
 #. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:42
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:46
 #, fuzzy
 #| msgid "Move Kapou’e to the signpost at the southwest"
 msgid "Move Kapou’e to the signpost in the southwest"
 msgstr "Pindahkan Kapou'e ke penunjuk jalan di bagian barat daya"
 
 #. [side]: type=Orcish Warlord, id=Braga
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:87
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:91
 msgid "Braga"
 msgstr "Braga"
 
+#. [side]: type=Orcish Warlord, id=Orga
+#. [side]: type=Orcish Warrior, id=Knorgh
+#. [side]: type=Orcish Warrior, id=Nofhug
 #. [side]: type=Orcish Warlord, id=Braga
 #. [side]: type=Orcish Warlord, id=Meato
 #. [side]: type=Orcish Warlord, id=Ragvan
 #. [side]: type=Orcish Warlord, id=Kergai
-#. [side]: type=Orcish Warlord, id=Orga
-#. [side]: type=Orcish Warrior, id=Knorgh
-#. [side]: type=Orcish Warrior, id=Nofhug
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:94
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:114
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:134
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:154
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:98
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:118
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:138
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:158
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:65
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:100
@@ -3972,22 +3965,22 @@ msgid "Rebels"
 msgstr "Para Pemberontak"
 
 #. [side]: type=Orcish Warlord, id=Meato
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:107
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:111
 msgid "Meato"
 msgstr "Meato"
 
 #. [side]: type=Orcish Warlord, id=Ragvan
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:127
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:131
 msgid "Ragvan"
 msgstr "Ragvan"
 
 #. [side]: type=Orcish Warlord, id=Kergai
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:147
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:151
 msgid "Kergai"
 msgstr "Kergai"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:166
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:170
 msgid ""
 "Infuriated by the murder of the shamans, the orcish horde massacred the "
 "humans and their allies. In their rage, they scoured the snow for hours "
@@ -4000,7 +3993,7 @@ msgstr ""
 "kemarahan akibat kematian para dukun' mulai sirna."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:172
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:176
 msgid ""
 "With the Council broken, there was now nothing left to hold the orcish "
 "forces together. And if the orcish forces began to fight amongst themselves "
@@ -4012,7 +4005,7 @@ msgstr ""
 "dengan mudah."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:178
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:182
 msgid ""
 "Kapou’e vowed that this would not happen. Events had the smell of a "
 "treacherous plot aimed at destroying the unity of the orcs. Furthermore, if "
@@ -4034,7 +4027,7 @@ msgstr ""
 "lagi — dengan cara lama."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:184
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:188
 #, fuzzy
 #| msgid ""
 #| "Furthermore, the troops who had been led by Kapou’e this far had grown to "
@@ -4071,7 +4064,7 @@ msgstr ""
 "tampaknya pasti datang."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:190
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:194
 msgid ""
 "Having thus made his plans, Kapou’e set out for Bitok to get to the root of "
 "this treachery."
@@ -4080,7 +4073,7 @@ msgstr ""
 "sumber pengkhianatan ini."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:215
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:219
 #, fuzzy
 #| msgid ""
 #| "If we are going to make it to Bitok, and then back to Dorset before "
@@ -4099,12 +4092,12 @@ msgstr ""
 "kekuasaan saya pada saat kita lewat sini."
 
 #. [message]: speaker=Braga
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:221
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:225
 msgid "Black-Eye! We won’t submit to an upstart like you!"
 msgstr "Mata-Hitam! Kami tidak akan tunduk kepada seorang pemula seperti anda!"
 
 #. [message]: speaker=Meato
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:227
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:231
 msgid ""
 "Turn around and go back to where you came from or you’ll find your head on a "
 "pike! Right?"
@@ -4114,15 +4107,15 @@ msgstr ""
 
 #. [message]: speaker=Ragvan
 #. [message]: speaker=Kergai
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:232
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:237
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:236
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:241
 msgid "Right!"
 msgstr "Benar!"
 
 #. [message]: speaker=Kapou'e
 #. "whupping" is not a typo for "whipping"; it is a Southern
 #. American dialect word meaning "a severe beating".
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:245
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:249
 msgid ""
 "It’s been a chilly winter. How about we warm ourselves up a bit by giving "
 "these traitors a good whupping, boys?"
@@ -4132,56 +4125,56 @@ msgstr ""
 "yang bagus, anak-anak?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:250
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:254
 msgid "Yeah!"
 msgstr "Yeah!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:327
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:331
 msgid "Little orcs fun to squash too! Chief doesn’t let me too often."
 msgstr ""
 "Para orc kecil menyenangkan untuk dilumat juga! Ketua tidak terlalu sering "
 "mengijinkanku."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:332
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:336
 msgid "You can have as many as you want now, Grüü."
 msgstr "Anda dapat memiliki sebanyak yang anda inginkan sekarang,  Grüü."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:352
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:356
 msgid "This rabble won’t be a problem anymore."
 msgstr "Pengacau ini tidak akan menjadi masalah lagi."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:361
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:365
 msgid "Got this tribe under control."
 msgstr "Mendapatkan suku ini di bawah kendali."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:370
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:374
 msgid "This is what you get for deserting the Son of the Black-Eye."
 msgstr ""
 "Ini adalah apa yang anda dapatkan untuk pembelotan terhadap Putra Si Mata-"
 "Hitam."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:379
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:383
 msgid "This trash’s gone."
 msgstr "Sampah ini sudah pergi."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:401
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:405
 msgid "Heehee, we wiped them out good."
 msgstr "Heehee, kita membersihkan mereka dengan baik."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:406
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:410
 msgid "Now let’s get going, we have an appointment with Shan Taum."
 msgstr "Sekarang mari kita pergi, kita punya janji dengan Shan Taum."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:539
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:543
 msgid ""
 "I can’t leave these renegades unguarded at our rear. I must take care of "
 "them before continuing."
@@ -4525,8 +4518,8 @@ msgstr "Kami telah tiba, tuanku."
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "Ahhh, sempurna, lebih banyak bala bantuan."
 
-#. [unit]: type=General, id=Howgarth III
 #. [side]: type=General, id=Howgarth III
+#. [unit]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:386
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:150
 msgid "Howgarth III"
@@ -5192,6 +5185,9 @@ msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr ""
 "Gerombolan Besar: untuk biaya pemeliharaan setiap unit mengalami penurunan "
 "sebesar satu."
+
+#~ msgid "Defeat Ar-Dant"
+#~ msgstr "Kalahkan Ar-Dant"
 
 #, fuzzy
 #~| msgid "Move Kapou’e to the end of the mountains"

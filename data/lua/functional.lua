@@ -47,7 +47,7 @@ function functional.choose(input, value)
     -- Returns element of a table with the largest @value (a function)
     -- Also returns the max value and the index
 
-    local max_value, best_input, best_key = -9e99
+    local max_value, best_input, best_key = -math.huge
     for k,v in ipairs(input) do
 		local v2 = value(v)
         if v2 > max_value then
@@ -63,7 +63,7 @@ function functional.choose_map(input, value)
     -- Returns element of a table with the largest @value (a function)
     -- Also returns the max value and the index
 
-    local max_value, best_input, best_key = -9e99
+    local max_value, best_input, best_key = -math.huge
     for k,v in pairs(input) do
 		local v2 = value(k, v)
         if v2 > max_value then
@@ -86,7 +86,34 @@ function functional.map(input, formula)
 	return mapped_table
 end
 
+local known_operators = {
+	['+'] = function(a, b) return a + b end,
+	['-'] = function(a, b) return a - b end,
+	['*'] = function(a, b) return a * b end,
+	['/'] = function(a, b) return a / b end,
+	['%'] = function(a, b) return a % b end,
+	['^'] = function(a, b) return a ^ b end,
+	['//'] = function(a, b) return a // b end,
+	['&'] = function(a, b) return a & b end,
+	['|'] = function(a, b) return a | b end,
+	['~'] = function(a, b) return a ~ b end,
+	['<<'] = function(a, b) return a << b end,
+	['>>'] = function(a, b) return a >> b end,
+	['..'] = function(a, b) return a .. b end,
+	['=='] = function(a, b) return a == b end,
+	['~='] = function(a, b) return a ~= b end,
+	['<'] = function(a, b) return a < b end,
+	['>'] = function(a, b) return a > b end,
+	['<='] = function(a, b) return a <= b end,
+	['>='] = function(a, b) return a >= b end,
+	['and'] = function(a, b) return a and b end,
+	['or'] = function(a, b) return a or b end,
+}
+
 function functional.reduce(input, operator, identity)
+	if type(operator) == 'string' then
+		operator = known_operators[operator]
+	end
 	local result = identity or 0
 	for _, v in ipairs(input) do
 		result = operator(result, v)
@@ -103,6 +130,20 @@ function functional.take_while(input, condition)
 		table.insert(truncated_table, v)
 	end
 	return truncated_table
+end
+
+-- Technically not a higher-order function, but whatever...
+function functional.zip(input)
+	local output = {}
+	local _, n = functional.choose(input, function(list) return #list end)
+	for i = 1, n do
+		local elem = {}
+		for j, list in ipairs(input) do
+			elem[j] = list[i]
+		end
+		table.insert(output, elem)
+	end
+	return output
 end
 
 return functional

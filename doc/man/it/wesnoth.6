@@ -101,6 +101,11 @@ informazioni sulla shell di comando).
 \fB\-\-debug\-lua\fP
 abilita alcuni meccanismi di debug Lua
 .TP 
+\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+diffs the two WML files; does not preprocess them first (to do that, run
+them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
+to the file indicated by \fI\-\-output\fP.
+.TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 avvia il gioco direttamente dall’editor per le partite. Se \fIfile\fP è
 specificato, equivale a \fB\-l\fP \fB\-\-load\fP.
@@ -197,6 +202,9 @@ insieme all’opzione \fB\-u\fP.
 \fB\-\-nosound\fP
 esegue il gioco senza suono e musica.
 .TP 
+\fB\-\-output\fP\fI\ file\fP
+output to the specified file. Applicable to diffing operations.
+.TP 
 \fB\-\-password\fP\fI\ password\fP
 utilizza \fIpassword\fP per la connessione ad un server, ignorando le altre
 scelte. Opzione non sicura.
@@ -206,6 +214,11 @@ scelte. Opzione non sicura.
 a \fB\-\-script\fP, ma il file Lua dovrebbe restituire un funzione che verrà
 eseguita come una coroutine e periodicamente risvegliata con gli
 aggiornamenti.
+.TP 
+\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+applies a DiffWML patch to a WML file; does not preprocess either of the
+files.  Outputs the patched WML to standard output or to the file indicated
+by \fI\-\-output\fP.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ file/cartella sorgente\fP\fB\ \fP\fIcartella destinazione\fP
 pre\-processa uno specifico file/cartella. Per ogni file, saranno scritti
@@ -382,8 +395,8 @@ algoritmo definito da una estensione. Valori possibili sono anche:
 \fBidle_ai\fP and \fBexperimental_ai\fP.
 .TP 
 \fB\-\-controller\fP\fI\ numero\fP\fB:\fP\fIvalore\fP
-selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP and
-\fBnull\fP.
+seleziona il tipo di controllo per questa squadra. Valori disponibili:
+\fBhuman\fP , \fBai\fP e \fBnull\fP.
 .TP 
 \fB\-\-era\fP\fI\ valore\fP
 usa questa opzione per giocare nell’era selezionata invece che in quella
@@ -429,15 +442,12 @@ Il normale stato di uscita è 0. Uno stato di uscita pari a 1 indica un
 errore di inizializzazione (SDL, video, fonts, ecc.). Uno stato di uscita
 pari a 2 indica un errore con le opzioni della linea di comando.
 .br
-Quando si eseguono test unità (con\fB\ \-u\fP), i valori di uscita sono
-diversi. Uno stato di uscita 0 indica che il test è positivo, 1 indica che
-il test è fallito. Una uscita con valore 3 indica che il test è riuscito, ma
-ha prodotto un file di replay non valido. Uno stato di uscita con valore 4
-indica che il test è riuscito, ma che il replay produce errori. Questi due
-ultimi stati vengono restituiti soltanto se il parametro \fB\-\-noreplaycheck\fP
-non viene utilizzato. Uno stato di uscita con valore 2 indica che il test ha
-esaurito il tempo massimo a disposizione, quando viene utilizzata l’opzione
-\fB\-\-timeout\fP (deprecata).
+When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
+status of 0 indicates that the test passed, and 1 indicates that the test
+failed. An exit status of 3 indicates that the test passed, but produced an
+invalid replay file. An exit status of 4 indicates that the test passed, but
+the replay produced errors. These latter two are only returned if
+\fB\-\-noreplaycheck\fP is not passed.
 .
 .SH AUTORE
 .

@@ -16,7 +16,6 @@
 #pragma once
 
 #include "controller_base.hpp"
-#include "floating_label.hpp"
 #include "game_end_exceptions.hpp"
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
@@ -42,6 +41,10 @@ struct unit_experience_accelerator;
 
 namespace actions {
 	class undo_list;
+}
+
+namespace font {
+	struct floating_label_context;
 }
 
 namespace game_events {
@@ -336,7 +339,7 @@ protected:
 	std::unique_ptr<plugins_context> plugins_context_;
 
 	//more managers
-	font::floating_label_context labels_manager_;
+	std::unique_ptr<font::floating_label_context> labels_manager_;
 	help::help_manager help_manager_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;

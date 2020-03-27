@@ -1,24 +1,26 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-08-27 19:41 UTC\n"
-"Last-Translator: Automatically generated\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
+"PO-Revision-Date: 2019-12-03 21:52+0200\n"
+"Last-Translator: Μιχαήλ Χατζηασεμίδης\n"
 "Language-Team: none\n"
+"Language: grc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: grc\n"
+"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2;\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr ""
 
-#. [ai]: id=experimental_ai
-#: data/ai/ais/ai_experimental.cfg:9
-msgid "Multiplayer_AI^Experimental AI"
+#. [ai]: id=ai_default_rca_1_14
+#: data/ai/ais/ai_default_rca_1_14.cfg:9
+msgid "Multiplayer_AI^1.14 Default AI"
 msgstr ""
 
 #. [ai]: id=idle_ai
@@ -29,6 +31,11 @@ msgstr ""
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
+msgstr ""
+
+#. [ai]: id=experimental_ai
+#: data/ai/dev/ai_experimental.cfg:11
+msgid "Multiplayer_AI^Experimental AI"
 msgstr ""
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
@@ -44,14 +51,14 @@ msgstr ""
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
-msgstr ""
+msgstr "Οἱ σάτυροι πεπολιορκημένοι"
 
-#. [unit]: type=Spearman, id=Konrad
 #. [side]: type=Spearman, id=Konrad
+#. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
-msgstr ""
+msgstr "Κορράδος"
 
 #. [side]: type=Spearman, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
@@ -60,17 +67,17 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:151
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:171
 msgid "Rebels"
-msgstr ""
+msgstr "Στασιασταί"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:49
 msgid "Delfador"
-msgstr ""
+msgstr "Δελφάδωρ"
 
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:85
 msgid "Urug-Telfar"
-msgstr ""
+msgstr "Οὐρουγ-Τέλφαρ"
 
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
@@ -81,22 +88,22 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:129
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:24
 msgid "Orcs"
-msgstr ""
+msgstr "Δαιμόνια"
 
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:104
 msgid "Knafa-Tan"
-msgstr ""
+msgstr "Κναφα-Τάν"
 
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:122
 msgid "Maga-Knafa"
-msgstr ""
+msgstr "Μαγα-Κνάφα"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:141
 msgid "Galdrad"
-msgstr ""
+msgstr "Γάλδραδος"
 
 #. [side]: type=Elvish Shyde, id=Chantal
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:158
@@ -108,7 +115,7 @@ msgstr ""
 msgid ""
 "Master Delfador! Look, there are orcs coming from all directions! What shall "
 "we do?"
-msgstr ""
+msgstr "Ὦ δέσποτα Δελφᾶδορ! Ἰδέ, δαιμόνια πανταχόθεν ἔρχεται! Τί πράξωμεν;"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:212
@@ -133,7 +140,7 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:225
 msgid "Move Konrad here"
-msgstr ""
+msgstr "Κορράδον θὲς ἐνταῦθα"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:241
@@ -249,44 +256,44 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
-msgstr ""
+msgstr "Ζῷα"
 
 #. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:41
 msgid "Rutburt"
-msgstr ""
+msgstr "Ῥούτβουρτος"
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
 #: data/ai/micro_ais/scenarios/goto.cfg:110
 #: data/ai/micro_ais/scenarios/wolves.cfg:27
 msgid "Humans"
-msgstr ""
+msgstr "Ἄνθρωποι"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:63
 msgid "Forest Creatures"
-msgstr ""
+msgstr "Ὕλης κνώδαλα"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:77
 msgid "Ghasts"
-msgstr ""
+msgstr "Ἔμφοβοι"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:91
 msgid "Spiders"
-msgstr ""
+msgstr "Άράχναι"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:105
 msgid "Yetis"
-msgstr ""
+msgstr "Ἰέτι"
 
 #. [side]
 #. [event]
@@ -295,17 +302,17 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
 #: data/ai/micro_ais/scenarios/wolves.cfg:5
 msgid "Wolves"
-msgstr ""
+msgstr "Λύκοι"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:133
 msgid "Whelps"
-msgstr ""
+msgstr "Σκύλακες"
 
-#. [set_menu_item]: id=m01_end_animals
-#. [event]
-#. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m04_end_animals
+#. [event]
+#. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -316,7 +323,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/swarm.cfg:66
 #: data/ai/micro_ais/scenarios/wolves.cfg:95
 msgid "End Scenario"
-msgstr ""
+msgstr "Διήγησιν λήγειν"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:224
@@ -328,7 +335,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/wolves.cfg:104
 #: data/ai/micro_ais/scenarios/wolves.cfg:273
 msgid "Well, that was that."
-msgstr ""
+msgstr "Τοῦτ' οὖν ἐστι."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:346
@@ -353,7 +360,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:147
 #: data/ai/micro_ais/scenarios/wolves.cfg:204
 msgid "Question for the Player"
-msgstr ""
+msgstr "Ἐρώτησις πρὸς τὸν παίκτην"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:370
@@ -402,7 +409,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/animals.cfg:408
 #: data/ai/micro_ais/scenarios/wolves.cfg:248
 msgid "Death of Rutburt"
-msgstr ""
+msgstr "Ῥουτβούρτου θάνατος"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/animals.cfg:412
@@ -428,19 +435,19 @@ msgstr ""
 #. [side]: type=Orcish Leader, id=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:38
 msgid "Big Bad Orc"
-msgstr ""
+msgstr "Μέγα φαῦλον δαιμόνιον"
 
 #. [message]: speaker=LuaAI
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:87
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr ""
 
-#. [message]: speaker=Big Bad Orc
 #. [message]: speaker=Another Bad Orc
 #. [message]: speaker=Vanak
+#. [message]: speaker=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:572
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:148
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:142
 msgid "They there!  We them get!"
 msgstr ""
 
@@ -485,17 +492,17 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:128
 msgid "Defeat all humans"
-msgstr ""
+msgstr "Κρατεῖν πάντων τῶν ἀνθρώπων"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:132
 msgid "Death of Big Bad Orc"
-msgstr ""
+msgstr "Μεγάλου φαύλου δαιμονίου θάνατος"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:136
 msgid "Only one orc remains"
-msgstr ""
+msgstr "Ἓν δαιμόνιον ἀπομένει μοῦνον"
 
 #. [message]: speaker=LuaAI
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:163
@@ -503,12 +510,12 @@ msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
 msgstr ""
 
-#. [test]: id=dragon
 #. [event]
+#. [test]: id=dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
-msgstr ""
+msgstr "Δράκων"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/dragon.cfg:21
@@ -611,7 +618,7 @@ msgstr ""
 #. [side]: id=Vaddan, type=Outlaw
 #: data/ai/micro_ais/scenarios/goto.cfg:27
 msgid "Vaddan"
-msgstr ""
+msgstr "Βάδδαν"
 
 #. [side]: type=Poacher, id=leader3
 #: data/ai/micro_ais/scenarios/goto.cfg:60
@@ -621,50 +628,50 @@ msgstr ""
 #. [side]: type=Saurian Flanker, id=leader4
 #: data/ai/micro_ais/scenarios/goto.cfg:76
 msgid "Saurians"
-msgstr ""
+msgstr "Σαυριανοί"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:125
 msgid "team_name^Animals"
-msgstr ""
+msgstr "team_name^Ζῷα"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:138
 msgid "team_name^Ghosts"
-msgstr ""
+msgstr "team_name^Φάσματα"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:185
 msgid "General Minry"
-msgstr ""
+msgstr "Στρατηγὸς Μίνρυος"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:186
 msgid "Lieutenant Gadoc"
-msgstr ""
+msgstr "Λοχαγὸς Γάδοκος"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:187
 msgid "Lieutenant Senvan"
-msgstr ""
+msgstr "Λοχαγὸς Σέμβαν"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:188
 msgid "Sergeant Aethubry"
-msgstr ""
+msgstr "Ταξεώτης Αἰθούβρυος"
 
 #. [set_menu_item]: id=m01_new_footpad
 #: data/ai/micro_ais/scenarios/goto.cfg:339
 msgid "Place Side 1 Footpad"
 msgstr ""
 
-#. [set_menu_item]: id=m02_kill_unit
 #. [set_menu_item]: id=m05_kill_unit
+#. [set_menu_item]: id=m02_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
 msgid "Kill Unit under Cursor"
-msgstr ""
+msgstr "Κτείνειν μονάδα ὑπὸ δρομέως"
 
 #. [set_menu_item]: id=m03_null_control
 #: data/ai/micro_ais/scenarios/goto.cfg:363
@@ -697,7 +704,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/goto.cfg:435
 msgid "Death of Vaddan"
-msgstr ""
+msgstr "Βάδδανος θάνατος"
 
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:450
@@ -737,7 +744,7 @@ msgstr ""
 #. [message]: speaker=messenger2
 #: data/ai/micro_ais/scenarios/goto.cfg:488
 msgid "O no, a ghost!"
-msgstr ""
+msgstr "Παπαῖ, φάσμα!"
 
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:492
@@ -770,7 +777,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:591
 msgid "I told you so!"
-msgstr ""
+msgstr "Εἶπόν σοι ὧδε!"
 
 #. [message]: speaker=leader5
 #: data/ai/micro_ais/scenarios/goto.cfg:601
@@ -804,7 +811,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:648
 msgid "Yes, sir."
-msgstr ""
+msgstr "Ναί."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:656
@@ -821,7 +828,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:683
 msgid "Lieutenant Senvan's men reporting for duty, sir."
-msgstr ""
+msgstr "Σέμβανος λοχαγοῦ ἄνδρες τὰ ἔργα αὐτῶν ἀγγέλλουσι, ὦ δέσποτα."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:687
@@ -867,54 +874,54 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
-msgstr ""
+msgstr "Φύλακες"
 
 #. [side]: id=Kraa, type=Gryphon
 #: data/ai/micro_ais/scenarios/guardians.cfg:31
 #: data/ai/micro_ais/scenarios/swarm.cfg:19
 msgid "Kraa"
-msgstr ""
+msgstr "Κράας"
 
 #. [side]: id=Kraa, type=Gryphon
 #: data/ai/micro_ais/scenarios/guardians.cfg:37
 #: data/ai/micro_ais/scenarios/swarm.cfg:27
 msgid "Gryphons"
-msgstr ""
+msgstr "Γρῦπες"
 
 #. [side]: type=Orcish Leader, id=Another Bad Orc
 #: data/ai/micro_ais/scenarios/guardians.cfg:49
 msgid "Another Bad Orc"
-msgstr ""
+msgstr "Ἄλλο φαῦλον δαιμόνιον"
 
 #. [unit]: type=Dwarvish Guardsman, id=guardian1
 #: data/ai/micro_ais/scenarios/guardians.cfg:96
 msgid "Guardian 1"
-msgstr ""
+msgstr "Φύλαξ 1"
 
 #. [unit]: type=Dwarvish Guardsman, id=guardian2
 #: data/ai/micro_ais/scenarios/guardians.cfg:107
 msgid "Guardian 2"
-msgstr ""
+msgstr "Φύλαξ 2"
 
 #. [unit]: type=Giant Rat, id=coward1
 #: data/ai/micro_ais/scenarios/guardians.cfg:120
 msgid "Coward 1"
-msgstr ""
+msgstr "Δειλὸς 1"
 
 #. [unit]: type=Giant Rat, id=coward2
 #: data/ai/micro_ais/scenarios/guardians.cfg:144
 msgid "Coward 2"
-msgstr ""
+msgstr "Δειλὸς 2"
 
 #. [unit]: type=Giant Rat, id=coward3
 #: data/ai/micro_ais/scenarios/guardians.cfg:170
 msgid "Coward 3"
-msgstr ""
+msgstr "Δειλὸς 3"
 
 #. [unit]: type=Giant Rat, id=coward4
 #: data/ai/micro_ais/scenarios/guardians.cfg:197
 msgid "Coward 4"
-msgstr ""
+msgstr "Δειλὸς 4"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:219
@@ -1074,7 +1081,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:523
 #: data/ai/micro_ais/scenarios/guardians.cfg:532
 msgid "Coward"
-msgstr ""
+msgstr "Δειλός"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:533
@@ -1155,7 +1162,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/guardians.cfg:598
 msgid "Death of Kraa"
-msgstr ""
+msgstr "Κράου θάνατος"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/guardians.cfg:602
@@ -1247,12 +1254,12 @@ msgstr ""
 #. [side]: id=Rebels1, type=Elvish Ranger
 #: data/ai/micro_ais/scenarios/healer_support.cfg:21
 msgid "Rebels 1"
-msgstr ""
+msgstr "Στασιασταὶ 1"
 
 #. [side]: id=Rebels2, type=Elvish Marksman
 #: data/ai/micro_ais/scenarios/healer_support.cfg:35
 msgid "Rebels 2"
-msgstr ""
+msgstr "Στασιασταὶ 2"
 
 #. [message]: speaker=Rebels1
 #: data/ai/micro_ais/scenarios/healer_support.cfg:81
@@ -1277,7 +1284,7 @@ msgstr ""
 #. [message]: speaker=$unit.id
 #: data/ai/micro_ais/scenarios/healer_support.cfg:100
 msgid "Argh!  They got us..."
-msgstr ""
+msgstr "Ἰώ!  Ἡμᾶς κέκτηνται..."
 
 #. [test]: id=lurkers
 #: data/ai/micro_ais/scenarios/lurkers.cfg:184
@@ -1287,12 +1294,12 @@ msgstr ""
 #. [side]: id=Pekzs, type=Saurian Soothsayer
 #: data/ai/micro_ais/scenarios/lurkers.cfg:198
 msgid "Pekzs"
-msgstr ""
+msgstr "Πέξ"
 
 #. [side]: id=Pekzs, type=Saurian Soothsayer
 #: data/ai/micro_ais/scenarios/lurkers.cfg:204
 msgid "team_name^Pekzs"
-msgstr ""
+msgstr "team_name^Πέξ"
 
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:220
@@ -1378,7 +1385,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:159
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
 #: data/ai/micro_ais/scenarios/patrols.cfg:238
 #: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
@@ -1416,7 +1423,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/lurkers.cfg:495
 msgid "Death of Pekzs"
-msgstr ""
+msgstr "Τῶν Πέξ θάνατος"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:499
@@ -1438,7 +1445,7 @@ msgstr ""
 #. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:18
 msgid "Vanak"
-msgstr ""
+msgstr "Βάνακας"
 
 #. [event]
 #. [side]
@@ -1447,37 +1454,37 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
 msgid "Messenger"
-msgstr ""
+msgstr "Πομπός"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:131
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
 msgid "Messenger Waypoint 1"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:133
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
 msgid "Messenger Waypoint 2"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:129
 msgid "Messenger Waypoint 3"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:138
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:132
 msgid "AI moves Messenger here"
 msgstr ""
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:147
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:160
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:154
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1498,32 +1505,32 @@ msgid ""
 msgstr ""
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:167
 msgid "Defeat the messenger"
-msgstr ""
+msgstr "Κρατεῖν τοῦ πομποῦ"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:177
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:171
 msgid "Messenger gets to the signpost"
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:181
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:175
 msgid "Death of Vanak"
-msgstr ""
+msgstr "Βανάκου θάνατος"
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:197
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:191
 msgid "I made it!  Now our people will be safe."
 msgstr ""
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:212
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:206
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr ""
 
-#. [test]: id=patrols
 #. [event]
+#. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -1532,7 +1539,7 @@ msgstr ""
 #. [side]: id=Gertburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/patrols.cfg:19
 msgid "Gertburt"
-msgstr ""
+msgstr "Γέτβουρτος"
 
 #. [side]: id=Gertburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/patrols.cfg:27
@@ -1542,17 +1549,17 @@ msgstr ""
 #. [side]
 #: data/ai/micro_ais/scenarios/patrols.cfg:41
 msgid "team_name^Konrad"
-msgstr ""
+msgstr "team_name^Κόρραδος"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/patrols.cfg:56
 msgid "team_name^Urudin"
-msgstr ""
+msgstr "team_name^Οὐρουδίν"
 
 #. [unit]: type=Orcish Slayer, id=Urudin
 #: data/ai/micro_ais/scenarios/patrols.cfg:114
 msgid "Urudin"
-msgstr ""
+msgstr "Οὐρουδίν"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:188
@@ -1670,7 +1677,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/patrols.cfg:264
 msgid "Death of Gertburt"
-msgstr ""
+msgstr "Γερτβούρτου θάνατος"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/patrols.cfg:281
@@ -1684,8 +1691,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr ""
 
-#. [test]: id=protect_unit
 #. [event]
+#. [test]: id=protect_unit
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -1695,13 +1702,13 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:18
 #: data/ai/micro_ais/scenarios/recruiting.cfg:17
 msgid "Langzhar"
-msgstr ""
+msgstr "Λάγγζαρ"
 
 #. [side]: id=Langzhar, type=Lieutenant
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:24
 #: data/ai/micro_ais/scenarios/recruiting.cfg:23
 msgid "team_name^Langzhar"
-msgstr ""
+msgstr "team_name^Λάγγζαρ"
 
 #. [side]: id=Koorzhar, type=Lieutenant
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:34
@@ -1718,7 +1725,7 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:119
 msgid "Move Rossauba here"
-msgstr ""
+msgstr "Ῥοσσαύβαν θὲς ἐνταῦθα"
 
 #. [message]: speaker=Koorzhar
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:129
@@ -1794,7 +1801,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:185
 msgid "Death of Rossauba"
-msgstr ""
+msgstr "Ῥοσσαύβου θάνατος"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:189
@@ -1809,7 +1816,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:197
 msgid "Defeat Rossauba"
-msgstr ""
+msgstr "Κρατεῖν Ῥοσσαύβου"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:205
@@ -1881,8 +1888,8 @@ msgstr ""
 msgid "team_name^Grnk"
 msgstr ""
 
-#. [event]
 #. [test]: id=swarm
+#. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"
@@ -2221,82 +2228,87 @@ msgstr ""
 
 #. [message]: speaker=sergeant
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:125
-msgid "General Grospur, what do we do?  These undead will surely wipe us out."
+msgid "General Grospur, what do we do? These undead will surely wipe us out."
 msgstr ""
 
 #. [message]: speaker=Grospur
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:129
 msgid ""
-"Don't be such a chicken, Sergeant!  I have placed units with lots of "
+"Don’t be such a chicken, Sergeant! I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
 "And those few that sneak through... we can easily dispose of them once they "
-"make it inside.\n"
+"make it inside."
+msgstr ""
+
+#. [message]: speaker=sergeant
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:133
+msgid ""
+"General Grospur, you’re still thinking of Wesnoth 1.12. The default AI is "
+"smarter than that now.\n"
 "\n"
-"<i>In other words, the Wesnoth AI does generally not attack units one XP "
-"from leveling if there is no chance of killing the unit with a single "
-"attack. However, some of the attacks by the undead are handled by the Simple "
-"Attack Micro AI in this scenario. General Grospur might be in for a surprise."
-"</i>"
+"<i>If you’re porting an old scenario, you may find the Simple Attack Micro "
+"AI used in a way that’s unnecessary since 1.14. The 1.12 AI generally "
+"doesn’t attack units one XP from leveling if there is no chance of killing "
+"the unit with a single attack. One way of making 1.12 do those attacks was "
+"to use the Simple Attack Micro AI.</i>"
+msgstr ""
+
+#. [message]: speaker=Uralt
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:139
+msgid ""
+"Hahahahaha!! Indeed, my skeletons are smarter than General Grospur. Worse "
+"for you, I have given special instruction to my Soulless to attack all your "
+"almost-advanced units first. Also watch how those same Soulless will throw "
+"themselves mercilessly at your pitiful soldiers after that, saving my more "
+"valuable skeleton minions for later. I have taken the term ‘disposable "
+"units’ to a whole new level. Watch in awe!!\n"
+"\n"
+"<i>Translation: The undead side includes two instances of the Simple Attack "
+"Micro AI. The first makes the Soulless attack all units 1 XP from leveling "
+"up, such that they can be eliminated afterward. The second executes all "
+"remaining attacks possible by Soulless (and Walking Corpses), without regard "
+"for their own safety. Only after that does the default Wesnoth attack "
+"mechanism kick in to attack with the remaining units (skeletons), and it "
+"moves the remaining units with high caution and low aggression.</i>\n"
+"\n"
+"<i>The difference to the 1.12 version of this demo is that the 1.12 "
+"skeletons still had high aggression.</i>"
 msgstr ""
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:135
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:147
 msgid "Watch the undead take care of business"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:137
-msgid "Don't even try. You can't reach the Lich."
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:149
+msgid "Don’t even try. You can’t reach the Lich."
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:141
-msgid "Death of the last of Grospur's units"
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:153
+msgid "Death of the last of Grospur’s units"
 msgstr ""
 
 #. [note]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:145
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:157
 msgid "When your leader dies, side leadership passes on to another unit"
 msgstr ""
 
-#. [message]: speaker=$second_unit.id
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:172
-msgid ""
-"What the ... ?!?  They are not supposed to attack me. That just doesn't "
-"happen in Wesnoth!"
-msgstr ""
-
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:176
-msgid ""
-"Hahahahaha!! I have given special instruction to my Soulless to attack all "
-"your almost-advanced units first. Also watch how those same Soulless will "
-"throw themselves mercilessly at your pitiful soldiers after that, saving my "
-"more valuable skeleton minions for later. I have taken the term 'disposable "
-"units' to a whole new level. Watch in awe!!\n"
-"\n"
-"<i>Translation: The undead side includes two instances of the Simple Attack "
-"Micro AI.  The first makes the Soulless attack all units 1 XP from leveling "
-"up, such that they can be eliminated afterward.  The second executes all "
-"remaining attacks possible by Soulless (and Walking Corpses), without regard "
-"for their own safety.  Only after that does the default Wesnoth attack "
-"mechanism kick in to attack with the remaining units (skeletons).</i>"
-msgstr ""
-
-#. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:195
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:188
 msgid "Rise, minions!"
 msgstr ""
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:241
-msgid "And that's how the undead AI executes total annihilation ..."
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:234
+msgid "And that’s how the undead AI executes total annihilation ..."
 msgstr ""
 
 #. [side]
 #: data/ai/micro_ais/scenarios/swarm.cfg:41
 msgid "Bats"
-msgstr ""
+msgstr "Νυκτερίδες"
 
 #. [set_menu_item]: id=m02_new_gryphon
 #: data/ai/micro_ais/scenarios/swarm.cfg:95
@@ -2340,7 +2352,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/swarm.cfg:156
 msgid "Defeat all bats"
-msgstr ""
+msgstr "Κρατεῖν πάντων τῶν νυκτερίδων"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/swarm.cfg:164
@@ -2355,7 +2367,7 @@ msgstr ""
 #. [side]
 #: data/ai/micro_ais/scenarios/wolves.cfg:56
 msgid "More Wolves"
-msgstr ""
+msgstr "Πλείους λύκοι"
 
 #. [set_menu_item]: id=m02_new_peasant
 #: data/ai/micro_ais/scenarios/wolves.cfg:124
@@ -2519,7 +2531,7 @@ msgstr ""
 #. [side]: id=chall-ai, type=White Mage
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:122
 msgid "North"
-msgstr ""
+msgstr "Βορέας"
 
 #. [side]: id=champ-ai, type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:129
@@ -2529,7 +2541,7 @@ msgstr ""
 #. [side]: id=champ-ai, type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:134
 msgid "South"
-msgstr ""
+msgstr "Νότος"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:173

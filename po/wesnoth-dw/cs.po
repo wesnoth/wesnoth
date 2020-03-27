@@ -1,7 +1,7 @@
 # translation of wesnoth-dm.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2010 - 2019 Wesnoth development team
+# Copyright (C) 2010 - 2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -10,23 +10,23 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2010 - 2011
 # Petr 'Septim' Šlejhar, 2010 - 2011
 # Honza <Honza-mistic@seznam.cz>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
-# Michal Žejdl <lachim@emer.cz>, 2019.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:40 UTC\n"
-"PO-Revision-Date: 2019-10-09 16:22+0200\n"
-"Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
+"PO-Revision-Date: 2020-01-22 21:33+0100\n"
+"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Gtranslator 3.30.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 # Název zvolen po delší úvaze a je schválně nedoslovný. Moře tu značí jak vlastní vodu, domov mořských lidí, tak i označení velkého množství.
 #. [campaign]: id=Dead_Water
@@ -90,18 +90,18 @@ msgid ""
 "your troops!\n"
 "\n"
 msgstr ""
-"Jsi Kai Krellis, syn a následník krále mořského lidu, zatím však spíše dítě. "
-"Nekromancer dělá z tvých poddaných nemrtvé otroky! Veď svůj lid, splňte "
-"poslání a přesvědčte mocnou mořskou pannu, aby vám pomohla zapudit vetřelce. "
-"Vody oceánu u pobřeží Severních zemí jsou nebezpečné, takže budeš potřebovat "
-"k přežití dostatek rafinovanosti a statečnosti. Především ale budeš "
-"potřebovat získat respekt u svých vojáků!\n"
+"Jsi Kai Krellis, syn a následník krále mořského lidu, zatím však spíše dítě. "
+"Nekromancer dělá z tvých poddaných nemrtvé otroky! Veď svůj lid, splňte "
+"poslání a přesvědčte mocnou mořskou pannu, aby vám pomohla zapudit vetřelce. "
+"Vody oceánu u pobřeží Severních zemí jsou nebezpečné, takže budeš potřebovat "
+"k přežití dostatek rafinovanosti a statečnosti. Především ale budeš "
+"potřebovat získat respekt u svých vojáků!\n"
 "\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:25
 msgid "(Intermediate level, 10 scenarios.)"
-msgstr "(Obtížnost: pokročilý hráč, 10 scénářů)"
+msgstr "(Úroveň pokročilý hráč, 10 scénářů.)"
 
 #. [about]
 #: data/campaigns/Dead_Water/_main.cfg:31
@@ -118,7 +118,7 @@ msgstr "Úpravy a čistění kódu pro oficiální vydání"
 msgid "Artwork"
 msgstr "Art"
 
-#. [lua]: wesnoth.theme_items.unit_status
+#. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Dead_Water/_main.cfg:88
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
@@ -133,24 +133,34 @@ msgstr "Invaze!"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:45
+#, fuzzy
+#| msgid ""
+#| "In the Far North, where the Mountains of Dorth approach the coast, lies a "
+#| "bay with a narrow mouth. In the calm waters of this bay lies the merfolk "
+#| "city of Jotha. The natural harbor and the prosperity of the dwellers "
+#| "within drew many envious eyes, but none could match the prowess of the "
+#| "merfolk in their aquatic domain. In most years, orcs from the port city "
+#| "of Tirigaz, further north, would raid against Jotha as predictably as the "
+#| "spring rains; always, they were driven back to dry land with heavy "
+#| "losses, the salt water of the bay stinging their wounds."
 msgid ""
-"In the Far North, where the Mountains of Dorth approach the coast, lies a "
-"bay with a narrow mouth. In the calm waters of this bay lies the merfolk "
-"city of Jotha. The natural harbor and the prosperity of the dwellers within "
-"drew many envious eyes, but none could match the prowess of the merfolk in "
-"their aquatic domain. In most years, orcs from the port city of Tirigaz, "
-"further north, would raid against Jotha as predictably as the spring rains; "
-"always, they were driven back to dry land with heavy losses, the salt water "
-"of the bay stinging their wounds."
+"In the Far North, where the foothills of the Heart Mountains approach the "
+"coast, lies a bay with a narrow mouth. In the calm waters of this bay lies "
+"the merfolk city of Jotha. The natural harbor and the prosperity of the "
+"dwellers within drew many envious eyes, but none could match the prowess of "
+"the merfolk in their aquatic domain. In most years, orcs from the port city "
+"of Tirigaz, further north, would raid against Jotha as predictably as the "
+"spring rains; always, they were driven back to dry land with heavy losses, "
+"the salt water of the bay stinging their wounds."
 msgstr ""
-"V Severních zemích, tam, kde pohoří Dorth přechází do pobřeží, leží zátoka "
-"spojená s mořem úzkým průlivem. V klidných vodách této zátoky leží město "
-"Jota, patřící mořskému lidu. Výhodnost tohoto přirozeného přístavu spojená s "
-"prosperitou jeho mořských obyvatel přitahovala mnoho závistivých očí. Ale "
-"nikdo nebyl schopen soupeřit se statečností mořského lidu v jeho vodní "
-"domovině. Po mnoho let, skřetí nájezdy z přístavu Tirigaz, ležícího severně "
-"odtud, přicházely tak pravidelně jako jarní deště. Skřeti byli vždy s "
-"těžkými ztrátami odraženi zpět na pevninu s ranami, v kterých je pálila "
+"V Severních zemích, tam, kde pohoří Dorth přechází do pobřeží, leží zátoka "
+"spojená s mořem úzkým průlivem. V klidných vodách této zátoky leží město "
+"Jota, patřící mořskému lidu. Výhodnost tohoto přirozeného přístavu spojená "
+"s prosperitou jeho mořských obyvatel přitahovala mnoho závistivých očí. Ale "
+"nikdo nebyl schopen soupeřit se statečností mořského lidu v jeho vodní "
+"domovině. Po mnoho let přicházely skřetí nájezdy z přístavu Tirigaz, "
+"ležícího severně odtud, tak pravidelně jako jarní deště. Skřeti byli vždy "
+"s těžkými ztrátami odraženi zpět na pevninu s ranami, v kterých je pálila "
 "slaná voda zálivu."
 
 #. [part]
@@ -213,7 +223,7 @@ msgstr ""
 "dlouho zapomenout. Byla však těžce zaplacena. Kai Laudiss padl otráven "
 "skřetí šipkou a většina jeho armády byla zničena.\n"
 "Když se přeživší vojáci vrátili do Joty, začal se Krellis, mladý syn Kai "
-"Laudisse, učit být novým Kai."
+"Laudisse, učit být novým kai."
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:65
@@ -227,8 +237,8 @@ msgid ""
 msgstr ""
 "Kai Krellis se cítil příliš mladý, aby nesl odpovědnost za království, proto "
 "se spoléhal na moudrost kněžky jménem Cyllana. Byla přítelkyní jeho otce a "
-"Kai Krellis ji znal již od dětství co mu paměť sahala. Cyllana truchlila pro "
-"předchozího Kaie, ale věřila, že jeho oběť by mohla umožnit Krellisovi "
+"Kai Krellis ji znal již od dětství, co mu paměť sahala. Cyllana truchlila "
+"pro předchozího kaie, ale věřila, že jeho oběť by mohla umožnit Krellisovi "
 "vládnout ve věku míru. Naneštěstí tomu tak nemělo být. Z hor se vyrojil nový "
 "nepřítel."
 
@@ -237,8 +247,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Nemrtvá vojska"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -303,9 +313,9 @@ msgid ""
 "our weapons. And they smelled like nothing in the sea, of dank earth and "
 "rottenness."
 msgstr ""
-"Nikdy předtím jsem je v životě neviděl. Vypadají jako lidé, ale nemají "
-"žádnou kůži. Naše oštěpy skrz ně procházely a oni se nám jen VYSMÍVALI. A "
-"smrděli jak nesmrdí nic v moři, po vlhké zemi a hnilobě."
+"Nikdy v životě jsem je neviděl. Vypadají jako lidé, ale nemají žádnou kůži. "
+"Naše oštěpy skrz ně procházely; <i>vysmívali</i> se naším zbraním. A smrděli "
+"jak nesmrdí nic v moři, po vlhké zemi a hnilobě."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:345
@@ -324,7 +334,7 @@ msgid ""
 "skills."
 msgstr ""
 "Kai prosím, veď nás proti nim ty sám, lid to povzbudí. A — pokud dovolíš — "
-"stejně jsi už dosáhl věku, kdy se Kai musí učit válečným dovednostem."
+"stejně jsi už dosáhl věku, kdy se kai musí učit válečným dovednostem."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:355
@@ -332,8 +342,8 @@ msgid ""
 "Gwabbo speaks wisely. You must fight; I will protect you as much as I can..."
 "but when war looms, a kai must lead. It is our way."
 msgstr ""
-"Gwabbo mluví moudře. Musíš bojovat. Budu tě chránit, jak jen budu moci... "
-"ale když válečné bubny zní, Kai se musí postavit do čela vojska. Je to tvůj "
+"Gwabbo mluví moudře. Musíš bojovat. Budu tě chránit, jak jen budu moci..., "
+"ale když válečné bubny zní, kai se musí postavit do čela vojska. Je to tvůj "
 "úděl."
 
 #. [message]: speaker=narrator
@@ -342,14 +352,13 @@ msgid ""
 "You have few trained fighters, so you can only recruit three of each level 1 "
 "unit. There is no limit on citizens."
 msgstr ""
-"Máš k dispozici jen málo trénovaných jednotek, takže nebudeš schopen "
-"naverbovat víc jak 3 zástupce daného druhu jednotek první úrovně. Počet "
-"verbovatelných obyvatel je bez limitu."
+"Máš málo vycvičených bojovníků, takže můžeš naverbovat jen tři od každé "
+"jednotky úrovně 1. U obyvatel není žádné omezení."
 
 #. [message]: speaker=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:389
 msgid "Rise, my slaves! We will create an army for Lord Ravanal."
-msgstr "Povstaňte, mí otroci! Vytvoříme armádu pro Lorda Ravanala."
+msgstr "Povstaňte, mí otroci! Vytvoříme armádu pro lorda Ravanala."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:398
@@ -357,13 +366,13 @@ msgid ""
 "He is raising our dead to fight against us! Even though they were your own "
 "citizens, Krellis, show no mercy. Destroy them if you can."
 msgstr ""
-"Probouzí naše mrtvé, aby bojovali proti nám! I když jsou to tví vlastní "
-"obyvatelé, Krellisi, neměj s nimi žádné slitování. Pokud můžeš, znič je!"
+"Probouzí naše mrtvé, aby bojovali proti nám! I když to byli tví spoluobčané, "
+"Krellisi, neměj s nimi žádné slitování. Pokud můžeš, znič je!"
 
 #. [message]: id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:419
 msgid "Foolish fish-men. You cannot kill <i>me</i> that easily."
-msgstr "Bláhový rybí muži. <i>MĚ</i> nemůžeš zabít takhle snadno."
+msgstr "Bláhový rybí muži. <i>Mě</i> nemůžeš zabít takhle snadno."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:424
@@ -382,7 +391,7 @@ msgstr "Vyvolává mrtvé z každé vesnice!"
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:594
 msgid "This will be a dark day, but we <i>will</i> prevail."
-msgstr "Bude to temný den, ale <i>MY</i> v něm obstojíme."
+msgstr "Bude to temný den, ale <i>my</i> v něm obstojíme."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:620
@@ -410,10 +419,10 @@ msgid ""
 "The news they brought him was not good."
 msgstr ""
 "Kai Krellis se obával, že by se mohli nemrtví vrátit. Proto se rozhodl "
-"dozvědět se o nich co možná nejvíce. Jediným klíčem byl nekromantem "
-"zmiňovaný <i>„Lord Ravanal“</i>. Kai poslal rychlé plavce na sever a na jih "
-"podle pobřeží, aby vyhledali něco o Ravanalovi. Novinky, které pak slyšel ho "
-"nepotěšily."
+"dozvědět se o nich co možná nejvíce. Jediným klíčem byl nekromantem "
+"zmiňovaný <i>„lord Ravanal“</i>. Kai poslal rychlé plavce na sever a na jih "
+"podle pobřeží, aby vyhledali něco o Ravanalovi. Novinky, které pak slyšel, "
+"ho nepotěšily."
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:41
@@ -426,9 +435,9 @@ msgid ""
 "slaves. Krellis’ scouts reported that more dark armies were heading north."
 msgstr ""
 "Mal-Ravanal, jak zněly zvěsti, byl velký lidský čaroděj, který se stal "
-"lichem. Zaútočil na okrajové části království Wesnothu a začal tam budovat "
-"hrůzostrašnou armádu nemrtvých lidí. Také vyslal nekromaty, aby zaútočili na "
-"skřety a dokonce na elfy a vyzískali tak nemrtvé vojáky různých ras. "
+"lichem. Zaútočil na okrajové části království Wesnothu a začal tam budovat "
+"hrůzostrašnou armádu nemrtvých lidí. Také vyslal nekromanty, aby zaútočili "
+"na skřety, a dokonce na elfy a vyzískali tak nemrtvé vojáky různých ras. "
 "Vypadalo to, že má zálusk také na mořské lidi. Krellisovi zvědové hlásili, "
 "že na sever míří další temné armády."
 
@@ -457,7 +466,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:85
 msgid "(different bonus for each)"
-msgstr "(rozdílný bonus při splnění)"
+msgstr "(za každého jiná odměna)"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:85
@@ -469,7 +478,7 @@ msgstr "Poraz všechny nepřátelské vůdce"
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:92
 msgid "Have a unit pick up the ring of power."
-msgstr "Tvá jednotka sebere Prsten síly."
+msgstr "Tvá jednotka sebere prsten síly."
 
 #. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Necromancer, id=Mel Daveth
@@ -531,8 +540,8 @@ msgid ""
 "leave her enclave."
 msgstr ""
 "Obávám se, že nemůžeme. Potřebujeme pomoc. Má bývalá učitelka Tyjegea "
-"vyučuje na ostrově na severu. Ona a její kněžky jsou mocné. S jejich pomocí "
-"bysme nejspíš mohli tyto nepřátele porazit. Musíme ji jen přesvědčit, aby "
+"vyučuje na ostrově na severu. Ona a její kněžky jsou mocné. S jejich pomocí "
+"bychom nejspíš mohli tyto nepřátele porazit. Musíme ji jen přesvědčit, aby "
 "opustila svou enklávu."
 
 #. [message]: speaker=Kai Krellis
@@ -559,7 +568,7 @@ msgstr ""
 msgid ""
 "You will just have to trust me on this. She will listen to you. I will say "
 "no more on the matter."
-msgstr "Musíš mi v tom prostě důvěrovat. Vyslechne tě. Nebudu to dál rozvádět."
+msgstr "Musíš mi v tom prostě důvěřovat. Vyslechne tě. Nebudu to dál rozvádět."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:332
@@ -635,7 +644,7 @@ msgid ""
 "You have proven your courage in battle, as tradition required of a kai; they "
 "will follow you now."
 msgstr ""
-"Osvědčil jsi odvahu v bitvě, tak jak velí tradice Kai. Budou tě teď "
+"Osvědčil jsi odvahu v bitvě, tak jak velí tradice kai. Budou tě teď "
 "následovat."
 
 #. [message]: speaker=Mal-Kevek
@@ -678,8 +687,8 @@ msgstr "Počkej! Myslíte, že když jeho pán padl, tak si chce najít nového?
 msgid "If it does not attack, do not kill it. Let us see if it follows us."
 msgstr "Pokud neútočí, nezabíjej ho. Zkusíme, jestli půjde s námi."
 
-#. [message]: speaker=unit
 #. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:507
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:633
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:745
@@ -706,7 +715,7 @@ msgid ""
 "But it isn’t attacking <i>me</i>. Do you think, with its master gone, it "
 "might desire a new one?"
 msgstr ""
-"Ale <i>on neútočí</i> na mě. Myslíte, že když jeho pán padl, tak si chce "
+"Ale on na <i>mě</i> neútočí. Myslíte, že když jeho pán padl, tak si chce "
 "najít nového?"
 
 #. [message]: speaker=Kai Krellis
@@ -814,7 +823,7 @@ msgstr "Podívejte! Tady v rohu je netopýr. Hýbe se, ale vypadá polomrtvý."
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:768
 msgid "No, that thing is all the way dead."
-msgstr "Ne, ta věc vypadá že umře každou chvíli."
+msgstr "Ne, ta věc vypadá, že každou chvíli umře."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:774
@@ -827,8 +836,8 @@ msgid ""
 "I believe it is undead and has no will of its own, but the Kai may have the "
 "will power to direct it."
 msgstr ""
-"Myslím že je nemrtvý a nemá svou vlastní vůli. Možná by ale Kai mohl mít "
-"dost silnou vůli aby ho vedl."
+"Myslím, že je nemrtvý a nemá svou vlastní vůli. Možná by ale Kai mohl mít "
+"dost silnou vůli, aby ho vedl."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:784
@@ -855,7 +864,7 @@ msgstr "Hýbá mi žlučí, že utíkáme ze svého domova, ale vrátíme se."
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:918
 msgid "Have a unit pick up the ring to end the scenario."
-msgstr "Tvá jednotka ať sebere Prsten síly než skončí scénář."
+msgstr "Aby skončil scénář, musí tvá jednotka sebrat prsten síly."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:933
@@ -879,7 +888,7 @@ msgstr "Vlčí pobřeží"
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:21
 msgid "Distrustful of the open ocean, Kai Krellis led his people up the coast."
-msgstr "Nedůvěříce otevřenému oceánu, vedl Kai Krellis svůj lid podél pobřeží."
+msgstr "Nedůvěřuje otevřenému oceánu, vedl Kai Krellis svůj lid podél pobřeží."
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:26
@@ -890,10 +899,10 @@ msgid ""
 "to bother the merfolk, but these goblins were bandits and outcasts even to "
 "their own kind."
 msgstr ""
-"Právě zrovna začali svou cestu, když narazili na bojechtivé vlky. Mnohé z "
-"vlků řídili goblini. Skřeti z Tirigasu, ztrestaní Kai Laudissovým "
-"vítězstvím, se mohli rozhodnout neobtěžovat mořské lidi, ale tito goblini "
-"byli bandité a vyvrhelové i u svého druhu."
+"Sotva začali svou cestu, když narazili na bojechtivé vlky. Mnohé z vlků "
+"řídili goblini. Skřeti z Tirigasu, ztrestaní Kai Laudissovým vítězstvím, se "
+"možná rozhodli mořské lidi neobtěžovat, ale tito goblini byli bandité "
+"a vyvrhelové i u svého druhu."
 
 #. [side]: id=Gashnok, type=Goblin Knight, type=Goblin Knight, type=Direwolf Rider, type=Direwolf Rider
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:81
@@ -917,16 +926,12 @@ msgstr "Vrunt"
 
 #. [message]: speaker=Gashnok
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:210
-#, fuzzy
-#| msgid ""
-#| "Smells like lots of death in the south. There must be a good feast near "
-#| "that merman town."
 msgid ""
 "Smells like lots of death in the south near that merman town. Hey, Vrunt, "
 "you think the wolves like eatin’ merfish?"
 msgstr ""
-"Z jihu je fakt dost cítit smrt. U toho rybočlověčího města musí být pořádná "
-"hodovačka."
+"Z jihu blízko města mořskejch lidí je fakt dost cítit smrt. Hej, Vrunte, "
+"myslíš, že vlci rádi žerou mořský ryby?"
 
 #. [message]: speaker=Vrunt
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:215
@@ -934,6 +939,8 @@ msgid ""
 "Talking or not, fish are fish. Wolves’ll probably love them. Besides, look "
 "there! Some fresh ones are coming our way!"
 msgstr ""
+"Ryba je ryba, ať už mluví nebo ne. Vlci je asi budou milovat. Navíc mrkni "
+"támhle! Nějaký čerstvý nám jdou zrovna do rány!"
 
 #. [message]: speaker=Gashnok
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:220
@@ -941,11 +948,12 @@ msgid ""
 "They look mighty good to me. Might even have a taste later, myself. Let’s "
 "get ’em, boys!"
 msgstr ""
+"Připadaj mi dost dobrý. Možná nakonec dostanu chuť i já. Pojďme na ně, hoši!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:225
 msgid "Beware, people!"
-msgstr "Pozor lidi!"
+msgstr "Lidi pozor!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:253
@@ -958,6 +966,7 @@ msgid ""
 "I wonder why such a strangely colored wolf emerged from the forest over "
 "there."
 msgstr ""
+"Rád bych věděl, proč se z támhletoho lesa vynořil tak divně zbarvený vlk."
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
@@ -974,7 +983,7 @@ msgstr "Vím, co to je. Je to trojzubec bouře. Zřejmě umožnuje sesílat bles
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:318
 msgid "The trident is 14×2, magical, ranged, with <i>fire</i> damage."
-msgstr "Trojzubec - útok na dálku 14x2, magický, <i>ohnivé</i> poškození."
+msgstr "Trojzubec – útok na dálku 14x2, magický, <i>ohnivé</i> poškození."
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:325
@@ -1071,7 +1080,7 @@ msgid ""
 "my wake, and without your protection they will surely kill me."
 msgstr ""
 "Jmenuji se Teeloa. Byl jsem otrok tamtěch ještěráků skoro dva roky. Viděl "
-"jsem vás připlouvat k pobřeží s vojáky, tak jsem utekl. Jdou po mě a jestli "
+"jsem vás připlouvat k pobřeží s vojáky, tak jsem utekl. Jdou po mně a jestli "
 "mě neochráníte, určitě mě zabijí."
 
 #. [message]: speaker=Kai Krellis
@@ -1113,7 +1122,7 @@ msgid ""
 "Those were the words of a man and a leader, Kai Krellis, and well spoken. "
 "The folk are truly yours now."
 msgstr ""
-"To byla slova pravého může a vůdce Kai Krellisi, velmi dobře řečeno. Lid ti "
+"To byla slova pravého muže a vůdce, Kai Krellisi, velmi dobře řečeno. Lid ti "
 "teď bude věřit."
 
 #. [message]: speaker=narrator
@@ -1123,8 +1132,8 @@ msgid ""
 "from fleeing their enemies, cheered his ultimatum and made ready to fight "
 "with a will."
 msgstr ""
-"Kai Krellis viděl, že je tomu tak. Mořstí uprchlíci, rozbolavělí studem, že "
-"museli utéct před nepřáteli, přivítali toto ultimátum a připravovali se "
+"Kai Krellis viděl, že je tomu tak. Mořstí uprchlíci, zraněni ve své pýše, že "
+"museli utéct před nepřáteli, přivítali toto ultimátum a připravovali se "
 "směle na boj."
 
 #. [message]: speaker=Gilak
@@ -1140,7 +1149,7 @@ msgid ""
 "Perhaps if I called out to the slaves, I could rouse them to help us fight "
 "against their captors."
 msgstr ""
-"Možná když vyzvu otroky, tak bych je mohl povzbudit k tomu, aby nám pomohli "
+"Třeba když vyzvu otroky, tak bych je mohl povzbudit k tomu, aby nám pomohli "
 "bojovat proti svým věznitelům."
 
 #. [message]: speaker=Gwabbo
@@ -1149,8 +1158,8 @@ msgid ""
 "I think that would work. If I may make a suggestion though, I think we "
 "should wait for a more strategic moment."
 msgstr ""
-"To by mohlo jít. Pokud bych ale mohl něco navrhnout, myslím, že bysme s tím "
-"měli počkat na strategičtější okamžik."
+"Myslím, že by to šlo. Ačkoli jestli můžu něco navrhnout, myslím, že bychom "
+"s tím měli počkat na strategičtější okamžik."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:416
@@ -1158,8 +1167,8 @@ msgid ""
 "Never hesitate to speak your counsel to me, Gwabbo. You have been my right "
 "arm on this journey; your courage and loyalty are well proven."
 msgstr ""
-"Nikdy se mi nezdráhej říct svou radu či soud, Gwabbo. Jsi během mé cesty mou "
-"pravou rukou a tvá kuráž a loajalita jsou dostatečně zřejmé."
+"Nikdy se nezdráhej říct mi svou radu či soud, Gwabbo. Na téhle cestě jsi byl "
+"mou pravou rukou; tvá kuráž a loajalita jsou dostatečně zřejmé."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:420
@@ -1167,7 +1176,7 @@ msgid ""
 "Those are the words of a true kai and your father’s son. I am proud of you, "
 "Krellis."
 msgstr ""
-"To byla slova pravého Kaie a syna svého otce. Jsem na tebe hrdá, Krellisi."
+"To byla slova pravého kaie a syna svého otce. Jsem na tebe hrdá, Krellisi."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:426
@@ -1175,8 +1184,8 @@ msgid ""
 "I believe that would work, but many of them will be killed if you do it now. "
 "It might be better to wait."
 msgstr ""
-"Věřím, že to bude fungovat, ale pokud to uděláš teď, tak mnoho z nich zemře. "
-"Možná bude lepší počkat."
+"Věřím, že by to šlo, ale pokud to uděláš teď, tak mnoho z nich zemře. Možná "
+"bude lepší počkat."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
@@ -1210,9 +1219,9 @@ msgid ""
 "whatever meager weapons they could find, or fists and rocks if no weapons "
 "were to hand. Screams and curses came from the saurian castles."
 msgstr ""
-"Z několika vesnic se rozezněl jásot a dřívější otroci je chvatně opouštěli. "
-"Když se jim podařilo najít nějaké zbraně, vzali si je, když ne, vyšli jen s "
-"holými pěstmi a kameny. Z ještěráckých tvrzí se ozýval křik a kletby."
+"Z několika vesnic se rozezněl jásot a dřívější otroci je chvatně opouštěli. "
+"Když se jim podařilo najít nějaké zbraně, vzali si je, když ne, vyšli jen "
+"s holými pěstmi a kameny. Z ještěráckých tvrzí se ozýval křik a kletby."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:540
@@ -1241,9 +1250,9 @@ msgid ""
 "I believe our bat is impressed! That must be a drake. I am told they are "
 "fearsome, but honorable, creatures. I think we can let him out of the cage."
 msgstr ""
-"Věřím, že náš netopýr je dojatý! To musí být drakonid. Slyšel jsem, že jsou "
-"to hrůzostrašná, ale čestná stvoření. Myslím, že bysme ho mohli pustit z "
-"klece."
+"Věřím, že náš netopýr je ohromen! To musí být drakonid. Slyšel jsem, že jsou "
+"to hrůzostrašná, ale čestná stvoření. Myslím, že bychom ho mohli pustit "
+"z klece."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:597
@@ -1294,8 +1303,8 @@ msgid ""
 "I was hunting north of here when the small ones captured me. I killed many, "
 "but I was humiliated in the end."
 msgstr ""
-"Lovil ssem sseverně odssud, když mě ti sskrčkové zasskočili. Mnoho ssem jich "
-"pobil, ale nakonec ssem byl pokořen."
+"Lovil jsem severně odsud, když mě ti skrčkové zaskočili. Mnoho jich padlo, "
+"ale nakonec jsem byl pokořen."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:653
@@ -1305,7 +1314,7 @@ msgstr "Budeš bojovat po našem boku Keshane?"
 #. [message]: speaker=Keshan
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:658
 msgid "You have released me, so I owe you a great debt. I will fight with you."
-msgstr "Ossvobodili sste mě a tak mám u váss velký dluh. Budu bojovat ss vámi."
+msgstr "Osvobodili jste mě, a tak mám u vás velký dluh. Budu bojovat s vámi."
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:663
@@ -1336,7 +1345,7 @@ msgid ""
 "them. They tried to take my bow too, but they had some trouble with that."
 msgstr ""
 "Jsem Siddry. Ti prokletí ještěráci mě čapli před týdnem. Chtěli, abych pro "
-"ně dělal dozorce otroků a když jsem nechtěl, strčili mě do klece s nima. "
+"ně dělal dozorce otroků, a když jsem nechtěl, strčili mě do klece s nima. "
 "Zkoušeli taky střílet z mého luku, ale šlo jim to dost obtížně."
 
 #. [message]: speaker=Kai Krellis
@@ -1361,7 +1370,7 @@ msgstr ""
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:734
 msgid ""
 "Well met, then, friend. I am Kai Krellis, leader of the people of Jotha."
-msgstr "Tedy dobré setkání, příteli. Jsem Kai Krellis, vůdce lidu Joty."
+msgstr "Tedy dobré shledání, příteli. Jsem Kai Krellis, vůdce lidu Joty."
 
 #. [message]
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:749
@@ -1395,8 +1404,8 @@ msgid ""
 "uneasy, so they took shelter in an abandoned orcish encampment as night fell."
 msgstr ""
 "Dále po pobřeží se nacházel přístav Tirigaz, kde Kai Laudis tak přesvědčivě "
-"porazil skřety. Bilheld leží přímo na západ odtud. Mořští lidé se zde "
-"necítili dobře a tak když padla tma, našli si úkryt ve zrušeném skřetím "
+"porazil skřety. Bilheld ležel přímo na západ odtud. Mořští lidé se zde "
+"necítili dobře, a tak když padla tma, našli si úkryt ve zrušeném skřetím "
 "táboře."
 
 #. [objective]: condition=win
@@ -1451,13 +1460,13 @@ msgid ""
 "What’s going on? What are you fish-men doing here? Are we constantly to be "
 "pestered by you creatures?"
 msgstr ""
-"Co se to děje? Co vy tu rybáci pohledáváte? Budete nás vy kreatury pořád "
-"štvát?"
+"Co se to děje? Co tu pohledáváte, vy rybáci? Budete nás vy kreatury pořád "
+"otravovat?"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:367
 msgid "He’s one to complain about <i>that</i>..."
-msgstr "On ti TO vysvětlí..."
+msgstr "On je ten, kdo si na <i>to</i> stěžuje..."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:372
@@ -1475,7 +1484,8 @@ msgid ""
 "Actually, we have some ghosts after us now, and we would like to shelter "
 "here for a while."
 msgstr ""
-"Momentálně po nás jdou nějací duchové a my bysme se tu rádi na chvíli ukryli."
+"Momentálně po nás jdou nějací duchové a my bychom se tu rádi na chvíli "
+"ukryli."
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:387
@@ -1492,7 +1502,7 @@ msgid ""
 "If you give us a few hours to regroup and prepare our soldiers, we will go "
 "without causing you trouble."
 msgstr ""
-"Když nám poskytnete pár hodin, abysme se přeskupili a připravili naše "
+"Když nám poskytnete pár hodin, abychom se přeskupili a připravili naše "
 "vojáky, odtáhneme a nebudeme na obtíž."
 
 #. [message]: speaker=Marg-Tonz
@@ -1511,13 +1521,14 @@ msgstr ""
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:402
 msgid "I wonder how he gets customers with manners like that."
-msgstr "Udivuje mě, jak s takovými mravy s nimi dokáže někdo obchodovat."
+msgstr "Udivuje mě, jak může mít s takovými způsoby nějaké zákazníky."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:407
 msgid ""
 "One hour will work for us. It will not take all of us to defeat the undead. "
-msgstr "Hodina nám bude stačit. Všichni z nás nebudou potřeba proti nemrtvým. "
+msgstr ""
+"Hodina nám bude stačit. Na poražení nemrtvých nebude potřeba nás všech. "
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:407
@@ -1576,7 +1587,7 @@ msgid ""
 "shall defeat him before we go."
 msgstr ""
 "Ten skřet se nepoučil, že vyhrožovat mořským lidem není dobrý nápad. Měli "
-"bysme mu dát za vyučenou než poplujem dál."
+"bychom mu dát za vyučenou než poplujeme dál."
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=second_unit
@@ -1647,12 +1658,12 @@ msgstr "Podívej miláčku na ty ňaminky!"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:174
 msgid "Or...is he <i>talking</i> to it?!"
-msgstr "Nebo... on S TÍM mluví?!"
+msgstr "Nebo... on s tím <i>mluví</i>?!"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:178
 msgid "It is worse than that. I think <i>we</i> are the treat!"
-msgstr "Horší než to. Myslím, že MY jsme ty ňaminky!"
+msgstr "Horší než to. Myslím, že <i>my</i> jsme ty ňaminky!"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:182
@@ -1662,7 +1673,7 @@ msgstr "Tak kdo si dá svačinku z „plodů moře“?"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:186
 msgid "Brace yourselves."
-msgstr "Sám se vychystej."
+msgstr "Sám se přichystej."
 
 # nevím, jestli je ta fráze správně přeložena
 #. [message]: speaker=Kai Krellis
@@ -1696,8 +1707,8 @@ msgid ""
 "friends. They could be your friends too. Spare me, and I’ll give you my "
 "favorite cuttle fish. His name is Inky."
 msgstr ""
-"Jsou to moji přátelé. Byl jsem tu tak sám... a vy jste zabili tolik mých "
-"přátel. Mohli být i vašimi přáteli. Ušetřte mě a poskytnu vám svou oblíbenou "
+"Jsou to moji přátelé. Byl jsem tu tak sám... a vy jste zabili tolik mých "
+"přátel. Mohli být i vašimi přáteli. Ušetřte mě a poskytnu vám svou oblíbenou "
 "sépii. Jmenuje se Inky."
 
 #. [message]: speaker=Kai Krellis
@@ -1803,8 +1814,8 @@ msgid ""
 "She kill drakes. If you are her friend, we will kill you. We do not want "
 "MORE merfolk blasting and stabbing."
 msgstr ""
-"Zabíjí drakonidy. Jestli jsste její přátelé, zabiju váss. Nesstojíme o žádné "
-"DALŠŠÍ sstřílející a píchající rybáky."
+"Zabíjí drakonidy. Jestli jste její přátelé, zabijeme vás. Nestojíme o žádné "
+"DALŠÍ střílející a píchající rybáky."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:148
@@ -1814,17 +1825,17 @@ msgstr "Poplujeme kolem ostrova, ať o nás budeš stát nebo nebudeš."
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:152
 msgid "This is OUR territory and you will not pass."
-msgstr "Tohle je NAŠŠE teritorium a vy tu proplouvat nebudete."
+msgstr "Tohle je NAŠE teritorium a vy tu proplouvat nebudete."
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:162
 msgid "You! Drake. Do we kill you too?"
-msgstr "Ty! Drakonide! Máme tě taky ssejmout?"
+msgstr "Ty! Drakonide! Máme tě taky sejmout?"
 
 #. [message]: speaker=Keshan
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:166
 msgid "These are my friends. I will fight with them."
-msgstr "Tohle ssou mí přátelé. Budu zza ně bojovat."
+msgstr "Tohle jsou mí přátelé. Budu za ně bojovat."
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:170
@@ -1851,7 +1862,7 @@ msgstr ""
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:37
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:35
 msgid "Tyegëa and Priestesses"
-msgstr "Tyjegea a Kněžky"
+msgstr "Tyjegea a kněžky"
 
 #. [side]: id=Tyegea, type=Mermaid Diviner
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:41
@@ -1862,7 +1873,7 @@ msgstr "Tyjegea"
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:67
 msgid "Choose a unit to take the holy water"
-msgstr "Vyber jednotku, která si vezme posvěcenou vodu"
+msgstr "Vyber jednotku, která si vezme svěcenou vodu"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:107
@@ -1918,8 +1929,8 @@ msgid ""
 "And what makes you think I want to leave my comfortable home and risk death "
 "by attacking armies of undead?"
 msgstr ""
-"A co tě vede k doměnce, že budu chtít opustit svůj pohodlný domov a riskovat "
-"smrt při útoku na nemrtvá vojska?"
+"A co tě vede k domněnce, že budu chtít opustit svůj pohodlný domov a "
+"riskovat smrt při útoku na nemrtvá vojska?"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:139
@@ -1938,7 +1949,7 @@ msgstr ""
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:147
 msgid "(Sigh.) I had hoped to avoid this, but it seems I cannot."
-msgstr "(Povzdech) Doufala jsem, že se tomu vyhnu, ale vypadá to, že ne."
+msgstr "(Povzdech.) Doufala jsem, že se tomu vyhnu, ale vypadá to, že ne."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:151
@@ -1947,9 +1958,9 @@ msgid ""
 "in the matter. Now Indress and Maudin are dead, and I am not. Tell the boy "
 "the truth."
 msgstr ""
-"Nikdy jsem nesouhlasila s tím, že je nutné s tím dělat tajnosti, ale "
-"respektovala jsem v té záležitosti Maudinovo přání. Nicméně Indress a Maudin "
-"už nežijí, zatímco já ano. Řekni chlapci pravdu."
+"Nikdy jsem nesouhlasila, že je nutné s tím dělat tajnosti, ale respektovala "
+"jsem v té záležitosti Maudinovo přání. Nicméně Indress a Maudin už nežijí, "
+"zatímco já ano. Řekni chlapci pravdu."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:155
@@ -1975,8 +1986,8 @@ msgid ""
 "grandmother Indress agreed to keep it secret and raise the infant as her own."
 msgstr ""
 "Když si tvůj dědeček vzal Indress, nevěděl, že mu již Tyjegea porodila syna. "
-"Když s ním pak přišla Tyjegea do Joty, tvá babička Indress souhlasila s tím, "
-"že to udrží v tajnosti a vychová dítě jako své vlastní."
+"Když s ním pak přišla Tyjegea do Joty, tvá babička Indress souhlasila s tím, "
+"že to udrží v tajnosti a vychová dítě jako své vlastní."
 
 # "Což ze mě ale nedělá špatnou matku." ???
 #. [message]: speaker=Tyegea
@@ -2002,8 +2013,8 @@ msgid ""
 "prove that my blood flows in your veins. Prove that your are, despite "
 "appearances, courageous, and worthy of my help."
 msgstr ""
-"Zbývá si ujasnit jedno. Shledávám jako znepokojující, že by Kai a můj "
-"potomek sem přišel žebrat o pomoc. Než budu souhlasit, že vás zachráním, "
+"Zbývá si ujasnit jedno. Shledávám jako znepokojující, že by Kai – a můj "
+"potomek – sem přišel žebrat o pomoc. Než budu souhlasit, že vás zachráním, "
 "musíš prokázat, že má krev proudí v tvých žilách. Dokaž že jsi, ač se to "
 "nezdá, kurážný a zasloužíš mou pomoc."
 
@@ -2070,8 +2081,8 @@ msgid ""
 "There is only one of them. If you cannot defeat even one lich, you must be "
 "expecting me to get rid of all of your undead myself!"
 msgstr ""
-"Je jenom jeden. Nedokážeš-li porazit jednoho liche, nemůžeš ode mě očekávat, "
-"že tě sama zbavím všech těch tvých nemrtvích!"
+"Je jenom jeden. Nedokážeš-li porazit jednoho licha, nemůžeš ode mě očekávat, "
+"že tě sama zbavím všech těch tvých nemrtvých!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:207
@@ -2085,7 +2096,7 @@ msgid ""
 "holy water for one of your soldiers."
 msgstr ""
 "Ale nepošlu tě pryč s úplně prázdnýma rukama. Mohu věnovat jednomu tvému "
-"vojákovi něco posvěcené vody."
+"vojákovi něco svěcené vody."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:222
@@ -2101,7 +2112,7 @@ msgstr ""
 #. [object]: id=holywater1
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:235
 msgid "Holy Water"
-msgstr "Posvěcená voda"
+msgstr "Svěcená voda"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:248
@@ -2109,7 +2120,7 @@ msgid ""
 "Now, go. Come back with the flaming sword, and my priestesses and I will "
 "help you take back Jotha."
 msgstr ""
-"Teď jdi. Vrať se s plameným mečem a já ti se svými kněžkami pomůžu znovu "
+"Teď jdi. Vrať se s plamenným mečem a já ti se svými kněžkami pomůžu znovu "
 "získat Jotu."
 
 #. [scenario]: id=09_The_Mage
@@ -2128,13 +2139,14 @@ msgid ""
 "sometimes angry at Tyegëa for sending him on this extra journey, and "
 "sometimes grateful that she was willing to help at all."
 msgstr ""
-"Skupina se vrátila zpět ke kontinentu a pokračovala na sever podél pobřeží. "
-"Kai Krellis měl mnoho námětů k přemýšlení. Především, díky tomu, co mu "
-"Tyjegea odhalila o jeho původu se mu v hlavě rojily otázky, na které neměl "
-"odpověd. Pak byl nervózní ohledně úkolu, který ho čekal. Věděl, že se na své "
-"lidi může spolehnout, ale obával se, že bude muset zaplatit mnoha mrtvými a "
-"raněnými pro splnění úkolu. Někdy ho přepadal vztek, že ho Tyjegea poslala "
-"na tuto zvláštní cestu a někdy jí byl vděčný, že mu vůbec chce pomoci."
+"Skupina se vrátila zpět ke kontinentu a pokračovala na sever podél pobřeží. "
+"Kai Krellis měl mnoho námětů k přemýšlení. Především, díky tomu, co mu "
+"Tyjegea odhalila o jeho původu, se mu v hlavě rojily otázky, na které neměl "
+"odpověď. Pak byl nervózní ohledně úkolu, který ho čekal. Věděl, že se na své "
+"lidi může spolehnout, ale obával se, že bude muset pro splnění úkolu "
+"zaplatit mnoha mrtvými a raněnými. Někdy ho přepadal vztek, že ho Tyjegea "
+"poslala na tuto zvláštní cestu a někdy jí byl vděčný, že mu vůbec chce "
+"pomoci."
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:26
@@ -2146,9 +2158,9 @@ msgid ""
 "decided to go ashore and try to find the mage immediately."
 msgstr ""
 "Za několik dní, právě když se pach bažiny stal zřetelným, našli malé ruiny "
-"hradu na místě, odpovídajícím Tyjegeninu popisu. Padala tma a mezi stromy "
-"nebylo skoro vidět, ale Krellis pospíchal, neboť cíl cesty byl nadosah. "
-"Rozhodl, aby pokračovali dál do nitra pevniny a pokusili se najít mága co "
+"hradu na místě, odpovídajícím Tyjegeinu popisu. Padala tma a mezi stromy "
+"nebylo skoro vidět, ale Krellis pospíchal, neboť cíl cesty byl na dosah. "
+"Rozhodl, aby pokračovali dál do nitra pevniny a pokusili se najít mága co "
 "nejdřív."
 
 #. [side]
@@ -2167,7 +2179,7 @@ msgid ""
 "I do not much care for the look of this area. The darkness seems to hang "
 "beneath the trees, unnaturally dense."
 msgstr ""
-"Nestarám se moc o to jak to tu vypadá. Ta tma visí mezi stromy nepřirozeně "
+"Nestarám se moc o to, jak to tu vypadá. Ta tma visí mezi stromy nepřirozeně "
 "hustě."
 
 #. [message]: speaker=Teeloa
@@ -2285,7 +2297,7 @@ msgstr ""
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:458
 msgid "We would be very grateful if you would guide us."
-msgstr "Byli bysme velmi potěšeni, kdybys byl náš průvodce."
+msgstr "Byli bychom velmi potěšeni, kdybys byl náš průvodce."
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:462
@@ -2298,20 +2310,20 @@ msgstr ""
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:486
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1096
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1097
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:135
 msgid "Cylanna! I need you!"
 msgstr "Cylanno! Potřebuji tě!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:490
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1100
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1101
 msgid "Tyegëa will never forgive me. We are lost."
 msgstr "Tyjegea mi to nikdy neodpustí. Jsme ztraceni."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:504
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1114
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1115
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:149
 msgid "We are lost without our king!"
 msgstr "Bez našeho krále jsme ztraceni!"
@@ -2366,38 +2378,39 @@ msgstr "Cylanna zemře"
 msgid "Death of Caladon"
 msgstr "Kaladon zemře"
 
+# spy_unit u mne byla Motea, takže vypouštím slyšel jsem
 #. [message]: speaker=$spy_unit.id
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:268
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:269
 msgid ""
 "(whisper) Kai, I heard Caladon muttering about the sword. I think he may try "
 "to take it for himself."
 msgstr ""
-"(šeptem) Kai, slyšel jsem, co si Kaladon mumlal o meči. Myslím, že se ho "
-"pokusí získat pro sebe."
+"(šeptem) Kai, Kaladon mumlal něco o meči. Myslím, že se ho pokusí získat pro "
+"sebe."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:272
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:273
 msgid ""
 "Thank you, $spy_unit.name|. I will keep that in mind, but it may be hard for "
 "us to stop him with that teleporting trick he has."
 msgstr ""
-"Děkuji ti. Budu na to myslet. Bude ale pro nás těžké ho zastavit, s těmi "
+"Děkuji ti. Budu na to myslet, ale může být pro nás těžké ho zastavit, s těmi "
 "jeho teleportačními triky."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:281
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:282
 msgid ""
 "Here we are. There’s a castle up ahead in the fog. That’s where Agnovon has "
 "the sword."
 msgstr "Jsme tu. Před námi v mlze je hrad. Tam má Agnovon meč."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:285
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:286
 msgid "The lich is Agnovon?"
 msgstr "Ten lich je Agnovon?"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:289
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:290
 msgid ""
 "Well, he calls himself Mal-Govon now, but yes. He called this land the "
 "KINGDOM of Agnovon. He was its first king. And its last, and every one in "
@@ -2414,7 +2427,7 @@ msgstr ""
 "přesto vybudím. KOUKEJTE!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:293
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:294
 msgid ""
 "Suddenly, Caladon’s strident voice shrieked out louder than seemed possible, "
 "as if there were dozens of men shouting at once."
@@ -2423,7 +2436,7 @@ msgstr ""
 "by zařvalo tucet mužů najednou."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:298
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:299
 msgid ""
 "AGNOVON, I’VE COME FOR YOUR SWORD! TODAY YOU WILL REMEMBER FEAR! Heh heh. "
 "Nice trick, huh?"
@@ -2432,35 +2445,35 @@ msgstr ""
 "He he. Pěkný trik, co?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:303
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:304
 msgid ""
 "A voice came back like wind moaning through dry leaves. Though it was only "
 "whispered, all heard it better than they wanted."
 msgstr ""
-"Odpověděl jim hlas znějící jako vítr co úpí v suchých listech stromů. Ačkoli "
-"to byl pouze šepot, všichni ho slyšeli zřetelněji než jim to bylo milé."
+"Odpověděl jim hlas znějící jako vítr, co úpí v suchých listech stromů. "
+"Ačkoli to byl pouze šepot, všichni ho slyšeli zřetelněji, než jim bylo milé."
 
 #. [message]: speaker=Mal-Govon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:308
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:309
 msgid ""
 "What I remember, you old fool, is you leaving behind the smoldering bodies "
 "of the orcs you had hired to steal my sword. Now, you bring mer to do your "
 "dirty work. When they lay expiring like gasping fish on the shore, will you "
 "not flee again? Do not speak to <i>me</i> of fear."
 msgstr ""
-"To co si pamatuji starý blázne, je to, jak jsi zdrhal, zatímco za tebou "
+"To, co si pamatuji, ty starý blázne, je to, jak jsi zdrhal, zatímco za tebou "
 "doutnala těla skřetů, které sis najal na krádež mého meče. Teď sis přivedl "
-"mořské lidi aby udělali tvou špinavou práci. Až se budou v posledních "
-"křečích plácat jako ryba na suchu, nezdrhneš snad zase? TY MNĚ o strachu "
-"nevykládej."
+"mořské lidi, aby udělali tvou špinavou práci. Až se budou v posledních "
+"křečích plácat jako ryba na suchu, nezdrhneš snad zase? Ty <i>mně</i> o "
+"strachu nevykládej."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:312
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:313
 msgid "We are here of our own accord, and we will take that sword."
 msgstr "Jsme tu z naší vlastní vůle. Získáme ten meč."
 
 #. [message]: speaker=Mal-Govon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:316
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:317
 msgid ""
 "The merman speaks. Tell it to go away, Caladon, if it doesn’t want to get "
 "hurt."
@@ -2469,12 +2482,12 @@ msgstr ""
 "úrazu."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:320
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:321
 msgid "That does it. Attack!"
 msgstr "To už udělal. Útok!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:329
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:330
 msgid ""
 "A word of warning, young Kai. I carry a staff of righteous FLAME. If you let "
 "me die, I will take YOU all with me!"
@@ -2483,27 +2496,27 @@ msgstr ""
 "vezmu vás VŠECHNY s sebou!"
 
 #. [unit]: type=Outlaw, id=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:351
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:352
 msgid "Howyrth"
 msgstr "Howyrth"
 
 #. [message]: speaker=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:365
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:366
 msgid ""
 "Hello there! Who are you? Were you the ones shouting about taking a sword?"
 msgstr "Hej vy tam! Kdo jste? Jsi ten, kdo tu hulákal o převzetí meče?"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:370
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:371
 msgid ""
 "I am Kai Krellis of Jotha. I am attempting to defeat Mal-Govon and take his "
 "sword. Will you to join us in battle against a common enemy?"
 msgstr ""
-"Jsem Kai Krellis z Joty. Pokouším se porazit Mal-Govona a získat jeho meč. "
-"Přidáte se k nám v bitvě proti tomuto společnému nepříteli?"
+"Jsem Kai Krellis z Joty. Pokouším se porazit Mal-Govona a získat jeho meč. "
+"Přidáte se k nám v bitvě proti tomuto společnému nepříteli?"
 
 #. [message]: speaker=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:375
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:376
 msgid ""
 "I don’t know if that creature really is our enemy. He has never bothered us, "
 "and I should stay at my post anyway. However, I’m sure many townsfolk would "
@@ -2516,16 +2529,16 @@ msgstr ""
 "chtěl najmout. V tom případě by nejspíš odstranění toho monstra přivítali."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:379
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:380
 msgid ""
 "You can now recruit human villagers, but you will not be able to recall them "
 "in future scenarios."
 msgstr ""
-"V této chvíli můžeš verbovat obyvatele lidských vesnic. Nebudeš je ale moci "
-"přivolat v budoucích scénářích."
+"V této chvíli můžeš verbovat obyvatele lidských vesnic. Nebudeš je ale moci "
+"přivolat v budoucích scénářích."
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:428
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:429
 msgid ""
 "Kai Krellis! What are you doing here? I thought you were traveling south "
 "when I met you."
@@ -2534,56 +2547,56 @@ msgstr ""
 "cestujete na jih."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:432
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:433
 msgid "Friend Siddry!"
 msgstr "Přítel Siddry!"
 
 #. [message]: speaker=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:436
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:437
 msgid "You know each other?!"
 msgstr "Vy se znáte?!"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:440
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:441
 msgid ""
 "Kai Krellis is the one who saved me from slavery, Howyrth. I told him I "
 "would repay him if I could, and here is my chance. My friends and I will "
 "join you in your fight, Kai Krellis. We are yours to command, and we refuse "
 "to be paid."
 msgstr ""
-"Howyrthe, Kai Krellis patří k těm, co mě vysvobodili z otroctví. Slíbil jsem "
-"mu, že se mu odvděčím, jestli budu moct. Teď mám šanci. Připojím se se svými "
-"přáteli k tobě a pomůžeme ti v tvém boji, Kai Krellisi. Nasloucháme tvým "
-"dalším rozkazům a nechceme za to žádný žold."
+"Howyrthe, Kai Krellis je ten, kdo mě vysvobodil z otroctví. Slíbil jsem, že "
+"se mu odvděčím, jestli budu moct. Teď mám šanci. Připojím se se svými "
+"přáteli k tobě a pomůžeme ti v tvém boji, Kai Krellisi. Nasloucháme tvým "
+"dalším rozkazům a nechceme za to žádný žold."
 
 #. [message]: speaker=Dorcyn
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:498
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:499
 msgid "I’ll join you right now! That monster is just unnatural."
 msgstr "Hned se k vám přidám! To monstrum je prostě nepřirozené."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:572
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:573
 msgid ""
 "The merfolk clapped their hands over their ears as a terrible wail echoed "
 "off the castle walls."
 msgstr ""
-"Mořští lidé si zacpávali rukama uši, když se hrozný skřek nesl ozvěnou "
+"Mořští lidé si rukama zacpávali uši, když se hrozný skřek nesl ozvěnou "
 "hradních zdí."
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:603
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:609
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:604
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:610
 msgid "Now we have the sword!"
 msgstr "Získali jsme meč!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:616
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:617
 msgid "Correction. Now I have the sword!"
 msgstr "Správně je třeba říct, že já jsem získal meč!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:674
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:675
 msgid ""
 "It’s MINE! The Flaming Sword of Agnovon IS ALL MINE! I can feel warmth "
 "SPREADING through me!"
@@ -2592,29 +2605,29 @@ msgstr ""
 "teplo!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:699
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:700
 msgid "What? We won that sword!"
-msgstr "Cože? My jsem ten meč vyhráli!"
+msgstr "Cože? My jsme ten meč vyhráli!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:704
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:705
 msgid ""
 "Well, it’s true that you helped, so I won’t kill you. But I don’t trust you, "
 "so leave my realm. Go on. I will grant you some time. The benevolence of "
 "Caladon will be LEGENDARY! Heh heh, HA!"
 msgstr ""
-"No je pravda, že jste mi pomohli a proto vás nezabiju. Ale nevěřím vám, "
+"No, je pravda, že jste mi pomohli, a proto vás nezabiju. Ale nevěřím vám, "
 "takže opustťe mou říši. Jděte. Poskytnu vám na to nějaký čas. Benevolence "
 "Kaladona SE STANE legendou! HA ha, HA !"
 
 #. [message]: speaker=$staff_tip_off
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:709
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:710
 msgid "Kai! He dropped his staff! We can attack him whenever we want now!"
 msgstr ""
 "Kai! Upustil svou hůl! Teď na něj můžeme zaútočit, kdykoli budeme chtít!"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:713
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:714
 msgid ""
 "We can pretend we are going to leave though. That would buy me some time to "
 "heal the wounded."
@@ -2623,7 +2636,7 @@ msgstr ""
 "na léčení zraněných."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:749
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:750
 msgid ""
 "You DARE attack ME! You will regret that. Witness the POWER of the Flaming "
 "Sword of Caladon! I call on the ELEMENT OF FIRE to DO MY BIDDING!"
@@ -2632,7 +2645,7 @@ msgstr ""
 "Kaladonova Plamenného meče! Vyvolám ELEMENT OHNĚ aby SPLNIL MOU ŽÁDOST!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:816
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:817
 msgid ""
 "You haven’t left yet? My patience is at an END! Witness the POWER of the "
 "Flaming Sword of Caladon! I call on the ELEMENT OF FIRE to DO MY BIDDING!"
@@ -2641,66 +2654,66 @@ msgstr ""
 "Plamenného meče! Vyvolám ELEMENT OHNĚ aby SPLNIL MOU ŽÁDOST!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:908
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:909
 msgid "Now we can finally grab that sword."
 msgstr "Teď můžeme konečně sebrat ten meč."
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:924
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:925
 msgid "I am not going with you. One of your people should take the sword."
 msgstr "Nepůjdu s vámi. Někdo z vašich lidí by měl vzít meč."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:942
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:943
 msgid "This is not food. And it is definitely not a toy. Leave it."
 msgstr "Tohle není jídlo. A také to rozhodně není hračka. Nechte to být."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:971
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:972
 msgid "This sword is 8×4, magical, with <i>fire</i> damage."
-msgstr "Tento meč má <i>ohnivý</i> magický útok 8x4"
+msgstr "Tento meč má <i>ohnivý</i> magický útok 8x4."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:978
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:979
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
 msgstr "Ponesu tento meč a budu ničit nemrtvé ohnivými útoky."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:987
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:988
 msgid "This sword is not right for me. Let someone else have it."
 msgstr "Tento meč není pro mě to pravé. Ať ho nese někdo jiný."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1022
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1023
 msgid "I’ll carry the sword."
 msgstr "Ponesu ten meč."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1031
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1032
 msgid "Let someone else have it."
 msgstr "Ať ho nese někdo jiný."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1069
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1070
 msgid ""
 "We thank all you humans for your help, and release you from any farther "
 "obligations. Where we are going, you cannot easily follow."
 msgstr ""
-"Děkujeme vám všem lidem za pomoc a propouštíme vás s tím, že nám již nejste "
-"ničím zavázáni. Tam kam jdeme, nás těžko můžete následovat."
+"Děkujeme vám všem lidem za pomoc a propouštíme vás s tím, že nám již nejste "
+"ničím zavázáni. Tam, kam jdeme, nás těžko můžete následovat."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1130
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1131
 msgid "CURSE you merfolk!"
 msgstr "PROKLÍNÁM vás mořští lidé!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1145
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1146
 msgid "Aghh! Die!"
 msgstr "Aghh! Umírám!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1150
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1151
 msgid "He has that staff of..."
 msgstr "Má tu hůl..."
 
@@ -2716,7 +2729,7 @@ msgid ""
 "straight for Tyegëa’s island to show her the flaming sword."
 msgstr ""
 "Kai Krellis a jeho lid si to již bez obav namířili přes otevřené moře přímou "
-"cestou k Tyjegeinu ostrovu, aby ji ukázali plamenný meč."
+"cestou k Tyjegeinu ostrovu, aby jí ukázali plamenný meč."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:100
@@ -2744,10 +2757,9 @@ msgid ""
 "travel with you to your home and help you rid it of restless spirits. My "
 "priestesses will come as well, and will be at your disposal."
 msgstr ""
-"Nevadí. Byl to blázen.\n"
-"Nyní, když jsi můj vnuku splnil, oč jsem žádala, půjdu s tebou do tvého "
-"domova a pomůžu ti zbavit se těch nemrtvých duší. Moje kněžky půjdou také a "
-"budou ti k dispozici."
+"Nevadí. Byl to blázen. Nyní, můj vnuku, když jsi splnil, oč jsem žádala, "
+"půjdu s tebou do tvého domova a pomůžu ti zbavit se těch nemrtvých duší. "
+"Moje kněžky půjdou také a budou ti k dispozici."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:135
@@ -2780,10 +2792,10 @@ msgid ""
 "whole contingent of them. Tyegëa was even more powerful, though as "
 "unpredictable as Cylanna had said."
 msgstr ""
-"Mise byla těžší než Kai Krellis na počátku předpokládal. Přesto byl konečně "
-"cíl v dohledu. Viděl, jak mohou kněžky kosit masy nemrtvých tak hladce jako "
-"když nůž projde máslem. A to jich teď měl celou jednotku. Tyjegea byla ještě "
-"mnohem silnější, a i v tom se splnila její nepředvídatelnost, na kterou "
+"Mise byla těžší, než Kai Krellis na počátku předpokládal. Přesto byl konečně "
+"cíl v dohledu. Viděl, jak mohou kněžky kosit masy nemrtvých tak hladce, jako "
+"když nůž projde máslem. A to jich teď měl celou skupinu. Tyjegea byla ještě "
+"mnohem silnější a i v tom se splnila její nepředvídatelnost, na kterou "
 "Cylanna už zpočátku upozorňovala."
 
 #. [part]
@@ -2796,9 +2808,9 @@ msgid ""
 "headed south along the coast to some outlying villages to gather news of the "
 "invaders."
 msgstr ""
-"Lid který utekl z Joty jako nebojeschopný se vrátil jako armáda vyztužená "
+"Lid, který utekl z Joty jako nebojeschopný, se vrátil jako armáda vyztužená "
 "zkušenými bojovníky a vedený králem válečníkem. Ač byli již unaveni "
-"cestováním, slabost z nich padala jak se blížili k domovu. Mořští lidé "
+"cestováním, jak se blížili k domovu, slabost z nich spadla. Mořští lidé "
 "dorazili během noci. Zjistili, že ústí zátoky je hlídáno, takže zamířili "
 "jižně podél pobřeží do tamních odlehlých vesniček získat nové zprávy o "
 "vetřelcích."
@@ -2818,8 +2830,8 @@ msgid ""
 "No, most of us escaped. I thought your settlements might be far enough away "
 "to escape harm, but you look as if you had seen battle."
 msgstr ""
-"Ne, většina z nás uprchla. Domníval jsem se, že vaše domovina je dost daleko "
-"aby unikla hrozbě. Přesto, vypadáte jako byste prošli bitvou."
+"Ne, většina z nás uprchla. Domníval jsem se, že vaše domovina je dost "
+"daleko, aby unikla hrozbě. Přesto vypadáte, jako byste prošli bitvou."
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:424
@@ -2828,9 +2840,9 @@ msgid ""
 "fouling the waters and making the bay more to their liking. We worry that "
 "they will soon be back to finish with us, and I fear we will not survive."
 msgstr ""
-"Jistě, ačkoli jsme nebyli pod nějakým velkým tlakem. Kreatury se víc "
-"zabývaly zaneřádováním vod a předěláváním zátoky podle svého gusta. Obáváme "
-"se, že se brzy vrátí, aby s námi skoncovaly. Bojím se, že to nepřežijeme."
+"Jistě, ačkoli jsme nebyli pod nějakým velkým tlakem. Ti tvorové se víc "
+"zabývali zaneřáďováním vod a předěláváním zátoky podle svého gusta. Obáváme "
+"se, že se brzy vrátí, aby s námi skoncovali. Bojím se, že to nepřežijeme."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:428
@@ -2838,8 +2850,8 @@ msgid ""
 "We come prepared for battle, and have brought help. We will reclaim our home "
 "and make yours safe as well. Mal-Ravanal will pay this day."
 msgstr ""
-"Přicházíme připraveni na boj a přinášíme pomoc. Znovu získáme svůj domov a "
-"zabezpečíme ho, stejně jako váš. V ten den bude Mal Ravanal těžce platit."
+"Přicházíme připraveni na boj a přinášíme pomoc. Znovu získáme svůj domov "
+"a zabezpečíme ho, stejně jako váš. V ten den bude Mal Ravanal těžce platit."
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:432
@@ -2849,15 +2861,15 @@ msgid ""
 "our base. The undead cut down many trees there to make bridges, and it is "
 "much easier to move through now."
 msgstr ""
-"Dobře. Připojíme se k tobě. Budeš koukat jak rychle tady Tabomo klátí "
-"kostlivce. Myslím, že bysme si měli udělat základnu v té ruině hradu na "
-"pevnině. Nemrtví tam pokáceli mnoho stromů a udělali mosty a tak je teď "
+"Dobře. Připojíme se k tobě. Budeš koukat, jak rychle tady Tabomo drtí "
+"kostlivce. Myslím, že bychom si měli udělat základnu v té ruině hradu na "
+"pevnině. Nemrtví tam pokáceli mnoho stromů a udělali mosty, a tak je teď "
 "mnohem jednodušší se tudy dostávat."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:468
 msgid "At dawn, the merfolk got a good look at their opponents."
-msgstr "Za svítání mořští lidé zaujali pozici proti svým nepřátelům."
+msgstr "Za svítání měli mořští lidé dobrý výhled na své nepřátele."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:474
@@ -2892,8 +2904,9 @@ msgid ""
 "I suppose this <i>does</i> look a little overwhelming. I may enjoy it "
 "though. It can be satisfying to rain holy fire down on misbehaving spirits."
 msgstr ""
-"Pravděpodobně to VYPADÁ jako trochu větší přesila. Nicméně bych si to mohla "
-"užít. S uspokojením spláchnu tyhle nevychované duchy deštěm svatého ohně."
+"Pravděpodobně to <i>vypadá</i> jako trochu větší přesila. Nicméně bych si to "
+"mohla užít. S uspokojením spláchnu tyhle nevychované duchy deštěm svatého "
+"ohně."
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:524
@@ -2908,7 +2921,7 @@ msgstr "Prohledávali jsme celé míle pobřeží a oni zatím tady!"
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:711
 msgid "I was wrong. You are no grandson of <i>mine</i>!"
-msgstr "Mýlila jsem se. Ty NEJSI můj vnuk!"
+msgstr "Mýlila jsem se. Ty nejsi <i>můj</i> vnuk!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:722
@@ -3007,7 +3020,7 @@ msgid ""
 msgstr ""
 "Po zničení Mal-Ravanalových stoupenců očekával Kai Krellis další útok. Ten "
 "ale nikdy nepřišel. Krellis poslal několik poslů jižně, aby zjistili, co se "
-"dá. Novinky, které přinesli byly více než dobré. Mal-Ravanal byl zničen! "
+"dá. Novinky, které přinesli, byly více než dobré. Mal-Ravanal byl zničen! "
 "Vojáci Wesnothu ho porazili asi v tu dobu, kdy mořští lidé porazili nemrtvé "
 "u Joty. Když se tak zlý čaroděj stal minulostí, mořští lidé se uklidnili a "
 "začali znovu svědomitě budovat. Jota byla brzy obnovena."
@@ -3137,14 +3150,14 @@ msgstr ""
 "a ocasy než na jiné zbraně."
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
+#: data/campaigns/Dead_Water/units/Brawler.cfg:96
+#: data/campaigns/Dead_Water/units/Brawler.cfg:143
 msgid "stunned"
 msgstr "v omráčení"
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
+#: data/campaigns/Dead_Water/units/Brawler.cfg:97
+#: data/campaigns/Dead_Water/units/Brawler.cfg:144
 msgid "female^stunned"
 msgstr "omráčená"
 
@@ -3311,7 +3324,8 @@ msgid ""
 "The ring of power increases the damage of all its owner’s attacks by one, "
 "and adds three hitpoints."
 msgstr ""
-"Prsten síly zvyšuje sílu všech nositelových útoků o jedna a přidává 3 životy."
+"Prsten síly zvyšuje o jedna poškození u všech útoků svého majitele a přidává "
+"tři body života."
 
 #. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:207
@@ -3359,8 +3373,8 @@ msgid ""
 "Killing these enemies was good, but there were many more on the way. I’m "
 "sure it is still unsafe here."
 msgstr ""
-"Pobití těchto nepřátel byl úspěch, ale mířilo jich k nám mnohem víc. Jsem si "
-"pořád jistá, že není bezpečné tu zůstat."
+"Pobití těchto nepřátel bylo dobré, ale mířilo jich k nám mnohem víc. Jsem si "
+"jistá, že pořád není bezpečné tu zůstat."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:357
@@ -3378,24 +3392,24 @@ msgstr ""
 "Ten lidský čaroděj nosil prsten! Možná magický. Někdo by si ho měl "
 "vyzkoušet, aby se vidělo, co dělá."
 
-#: data/campaigns/Dead_Water/utils/specials.cfg:4
+#. [special_note]
+#: data/campaigns/Dead_Water/utils/specials.cfg:5
 #, fuzzy
 #| msgid ""
 #| " This unit is able to stun its enemies, disrupting their zones of control."
 msgid ""
-"\n"
-"• This unit is able to stun its enemies, disrupting their zones of control."
+"This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
 " Tato jednotka je schopna omráčit své nepřátele a rušit tak jejich zóny "
 "kontroly."
 
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:10
+#: data/campaigns/Dead_Water/utils/specials.cfg:12
 msgid "stun"
 msgstr "omráčení"
 
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:11
+#: data/campaigns/Dead_Water/utils/specials.cfg:13
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."

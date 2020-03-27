@@ -553,38 +553,24 @@ namespace {
 	{
 		map_choice(const std::string& filename) : filename_(filename) {}
 		std::string filename_;
-		virtual config query_user(int /*side*/) const
+		virtual config query_user(int /*side*/) const override
 		{
-			//Do a regex check for the file format to prevent sending arbitrary files to other clients.
-			//Note: this allows only the new format.
-			static const std::string s_simple_terrain = R"""([A-Za-z\\|/]{1,4})""";
-			static const std::string s_terrain = s_simple_terrain + R"""((\^)""" + s_simple_terrain + ")?";
-			static const std::string s_sep = "(, |\\n)";
-			static const std::string s_prefix = R"""((\d+ )?)""";
-			static const std::string s_all = "(" + s_prefix + s_terrain + s_sep + ")+";
-			static const boost::regex r_all(s_all);
-
-			const std::string& mapfile = filesystem::get_wml_location(filename_);
-			std::string res = "";
-			if(filesystem::file_exists(mapfile)) {
-				res = filesystem::read_file(mapfile);
-			}
-			config retv;
-			if(boost::regex_match(res, r_all))
-			{
-				retv["map_data"] = res;
-			}
-			return retv;
+			std::string res = filesystem::read_map(filename_);
+			return config {"map_data", res};
 		}
-		virtual config random_choice(int /*side*/) const
+		virtual config random_choice(int /*side*/) const override
 		{
 			return config();
 		}
-		virtual std::string description() const
+		virtual std::string description() const override
 		{
 			return "Map Data";
 		}
-
+		virtual bool is_visible() const override
+		{
+			// Allow query_user() to be called during prestart events, as it doesn't show any UI.
+			return false;
+		}
 	};
 }
 

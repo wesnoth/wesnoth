@@ -28,7 +28,7 @@ function ca_herding_sheep_move:execution(cfg)
     -- Exclude those that are next to a dog
     reach_map:iter( function(x, y, v)
         for xa, ya in H.adjacent_tiles(x, y) do
-            local dog = wesnoth.get_unit(xa, ya)
+            local dog = wesnoth.units.get(xa, ya)
             if dog and dog:matches(dogs_filter) then
                 reach_map:remove(x, y)
             end

@@ -6,7 +6,6 @@ set(NORMAL_DOMAINS
 	wesnoth
 	wesnoth-ai
 	wesnoth-anl
-	wesnoth-aoi
 	wesnoth-did
 	wesnoth-dm
 	wesnoth-dw
@@ -30,7 +29,6 @@ set(NORMAL_DOMAINS
 	wesnoth-tutorial
 	wesnoth-units
 	wesnoth-utbs
-	wesnoth-wov
 )
 
 # All available domains.

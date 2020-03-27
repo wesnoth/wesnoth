@@ -14,7 +14,7 @@ local function hunter_attack_weakest_adj_enemy(ai, hunter)
 
     local min_hp, target = math.huge
     for xa,ya in H.adjacent_tiles(hunter.x, hunter.y) do
-        local enemy = wesnoth.get_unit(xa, ya)
+        local enemy = wesnoth.units.get(xa, ya)
         if AH.is_attackable_enemy(enemy) then
             if (enemy.hitpoints < min_hp) then
                 min_hp, target = enemy.hitpoints, enemy
@@ -82,7 +82,7 @@ function ca_hunter:execution(cfg)
             -- Huge rating bonus if this is next to an enemy
             local enemy_hp = 500
             for xa,ya in H.adjacent_tiles(x, y) do
-                local enemy = wesnoth.get_unit(xa, ya)
+                local enemy = wesnoth.units.get(xa, ya)
                 if AH.is_attackable_enemy(enemy) then
                     if (enemy.hitpoints < enemy_hp) then enemy_hp = enemy.hitpoints end
                 end
@@ -139,7 +139,7 @@ function ca_hunter:execution(cfg)
 
             -- If there's an enemy on the 'home' hex and we got right next to it, attack that enemy
             if (M.distance_between(home_loc[1], home_loc[2], hunter.x, hunter.y) == 1) then
-                local enemy = wesnoth.get_unit(home_loc[1], home_loc[2])
+                local enemy = wesnoth.units.get(home_loc[1], home_loc[2])
                 if AH.is_attackable_enemy(enemy) then
                     if cfg.show_messages then
                         wesnoth.wml_actions.message { speaker = hunter.id, message = 'Get out of my home!' }

@@ -12,7 +12,7 @@ local function get_dogs(cfg)
 end
 
 local function get_sheep_to_herd(cfg)
-    local all_sheep = wesnoth.get_units {
+    local all_sheep = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         { "and", wml.get_child(cfg, "filter_second") },
         { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") } } } } }

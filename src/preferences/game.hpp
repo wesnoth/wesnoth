@@ -74,7 +74,9 @@ class acquaintance;
 	bool is_campaign_completed(const std::string& campaign_id);
 	bool is_campaign_completed(const std::string& campaign_id, const std::string &difficulty_level);
 
-	const std::vector<game_config::server_info>& server_list();
+	const std::vector<game_config::server_info>& builtin_servers_list();
+	std::vector<game_config::server_info> user_servers_list();
+	void set_user_servers_list(const std::vector<game_config::server_info>& value);
 
 	std::string network_host();
 	void set_network_host(const std::string& host);

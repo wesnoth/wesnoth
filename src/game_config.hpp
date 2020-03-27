@@ -69,11 +69,12 @@ namespace game_config
 	extern std::string path;
 	extern std::string default_preferences_path;
 
-	struct server_info {
-		server_info() : name(""), address("") { }
+	struct server_info
+	{
 		std::string name;
 		std::string address; /**< may include ':' followed by port number */
 	};
+
 	extern std::vector<server_info> server_list;
 
 	extern std::string title_music,

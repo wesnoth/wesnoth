@@ -1,33 +1,35 @@
-#
+# Portuguese translations for Battle for Wesnoth package.
 # Copyright (C) 2013 Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2013.
-#
+# trewe <sjrs456@yahoo.fr>
+# Cristina Mendonça
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-ai)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2014-10-28 12:29-0000\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
+"PO-Revision-Date: 2019-01-22 12:28+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
-"Language: pt\n"
+"Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr "IA Padrão (RCA)"
 
-#
-#. [ai]: id=experimental_ai
-#: data/ai/ais/ai_experimental.cfg:9
-msgid "Multiplayer_AI^Experimental AI"
-msgstr "IA Experimental"
+#. [ai]: id=ai_default_rca_1_14
+#: data/ai/ais/ai_default_rca_1_14.cfg:9
+#, fuzzy
+#| msgid "Multiplayer_AI^Default AI (RCA)"
+msgid "Multiplayer_AI^1.14 Default AI"
+msgstr "IA Padrão (RCA)"
 
 #
 #. [ai]: id=idle_ai
@@ -38,10 +40,14 @@ msgstr "IA em desenvolvimento: ociosa"
 #
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
-#, fuzzy
-#| msgid "Multiplayer_AI^Dev AI: Default + Old Recruitment"
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "IA em desenvolvimento: Padrão + Recrutamento antigo"
+msgstr "IA em desenvolvimento: IA Padrão + Recrutamento alternante"
+
+#
+#. [ai]: id=experimental_ai
+#: data/ai/dev/ai_experimental.cfg:11
+msgid "Multiplayer_AI^Experimental AI"
+msgstr "IA Experimental"
 
 #
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
@@ -62,11 +68,11 @@ msgstr ""
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
-msgstr "Elfos Sitiados"
+msgstr "Elfos Cercados"
 
 #
-#. [unit]: type=Spearman, id=Konrad
 #. [side]: type=Spearman, id=Konrad
+#. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -145,10 +151,22 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:212
 msgid "There are too many to fight, far too many. We must escape!"
 msgstr ""
-"São demasiados orcs para podermos lutar. Demasiados orcs. Temos de fugir!"
+"Existem demasiados orcs para lutar, em número excessivo. Nós temos de fugir!"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:218
+#, fuzzy
+#| msgid ""
+#| "This is a reenactment of scenario The Elves Besieged of the mainline "
+#| "campaign Heir to the Throne, just that the AI is playing Konrad's side "
+#| "here. The goal is to move Konrad to the signpost in the northwest, while "
+#| "keeping both Konrad and Delfador alive. The same AI as in scenario "
+#| "Protect Unit is used.\n"
+#| "\n"
+#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+#| "and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "This is a reenactment of scenario The Elves Besieged of the mainline "
 "campaign Heir to the Throne, just that the AI is playing Konrad's side here. "
@@ -161,6 +179,17 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Esta é uma reencenação do cenário Elfos Cercados do enredo principal da "
+"campanha  do Herdeiro ao Trono, só que aqui a IA joga com a facção do "
+"Konrad. O objectivo é mover o Konrad até ao posto de sinalização a noroeste, "
+"mantendo tanto Konrad como Delfador vivos. Aqui utiliza-se a mesma IA do que "
+"a do cenário Proteger a Unidade.\n"
+"\n"
+"Nota: A IA Proteger a Unidade é codificada como Micro IA. Qualquer IA Micro "
+"pode ser facilmente adicionada e adaptada para a necessidade de um "
+"determinado cenário utilizando apenas WML e a etiqueta [micro_ai]. Veja a "
+"<span color='#00A000'> página wiki sobre Micro IA </span> no site http://"
+"wiki.wesnoth.org/Micro_AIs para mais informação."
 
 #
 #. [event]
@@ -172,7 +201,8 @@ msgstr "Mova Conrado para aqui"
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:241
 msgid "Very well, we have made it this far! But where do we go next?"
-msgstr "Certo, chegamos até aqui! Mas para onde vamos agora?"
+msgstr ""
+"Muito bem, nós conseguimos chegar até aqui! Mas para onde vamos a seguir?"
 
 #
 #. [message]: speaker=Delfador
@@ -181,49 +211,53 @@ msgid ""
 "In HttT, we would travel north now, and try to make it to the Isle of "
 "Alduin. But for this demo campaign, we'll call it good here."
 msgstr ""
+"Na campanha Herdeiro ao Trono, iríamos agora viajar para norte e tentaríamos "
+"chegar à Ilha de Alduin. Mas ficaremos por aqui nesta campanha de "
+"demostração."
 
 #
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:271
 msgid "I... I don’t think I can make it anymore."
-msgstr "Eu...eu não penso que consigo continuar mais..."
+msgstr "Eu... eu não penso que consigo continuar mais..."
 
 #
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:275
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr "Príncipe... não podes desistir! Nããooooo!"
+msgstr "Príncipe... tem de continuar a lutar! Nãooooo!"
 
 #
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:279
 msgid "It is over. I am doomed..."
-msgstr "Acabou, fui derrotado..."
+msgstr "Acabou, Eu estou condenado..."
 
 #
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:293
 msgid "I have... have failed in my duty to protect the prince! I am defeated."
-msgstr "Eu... eu falhei na minha tarefa de proteger o príncipe! Fui derrotado."
+msgstr ""
+"Eu... Eu falhei na minha tarefa para proteger o príncipe! Eu fui derrotado."
 
 #
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:297
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
-msgstr "Não morra, Delfador! Por favor, tens de continuar vivo!"
+msgstr "Não morras, Delfador! Por favor, tens de te manter vivo!"
 
 #
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:301
 msgid "Ugh!"
-msgstr "Ugh!"
+msgstr "Uf!"
 
 #
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:312
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
-msgstr "Ó não! Acabou-se o nosso tempo, chegaram com reforços..."
+msgstr "Oh, não! Nós não temos mais tempo, eles chegaram com reforços ..."
 
 #
 #: data/ai/micro_ais/scenarios/animals.cfg:4
@@ -250,6 +284,29 @@ msgid ""
 "Wolves Multipack AI (used in a different scenario), this Wolves AI combines "
 "all wolves of the side in the same pack."
 msgstr ""
+"<u>Geral</u>: Estas IAs são configuradas para simular (até certo ponto) a "
+"forma como estes animais se comportam na vida real. Isto inclui o facto de "
+"serem animais, isto é, não são super inteligentes. Por exemplo, os lobos "
+"geralmente caçam em matilha, mas são facilmente destraídos por presas que "
+"surjam ao seu alcance. Eles também são bons, mas não excelentes, a "
+"encurralar veados. Isto é, na sua maioria, intencional.\n"
+"\n"
+"<u>Ursos (substituídos por Gulas), Aranhas e Iétis</u> no geral vagueiam nas "
+"suas respectivas áreas do mapa. Mantém-se fora do caminho uns dos outros (e "
+"do caminho de cães), mas atacam-se uns aos outros se encurralados. Eles "
+"atacam outros animais que sejam mais fracos (veados, etc.) se estes "
+"estiverem ao seu alcance.\n"
+"\n"
+"<u>Lobos</u> caçam em matilha. Vão, activamente, atrás do veado mais próximo "
+"(desde que este se mantenha na floresta) e tentam encurralá-lo (sem que "
+"sejam sempre super bem-sucedidos), mas são facilmente distraídos por outras "
+"presas que apareçam no seu alcance. Os lobos tentam evitar entrar no alcance "
+"de ursos, aranhas, cães e iétis, excepto quando estão a iniciar um ataque. "
+"Se os deixar mover durante demasiado tempo, eles aprendem também que não é "
+"saudável atacar crias de javali. Quando não existem mais veados, os lobos "
+"vagueiam aleatoriamente. Note que, ao contrário da IA Multipacote de Lobos "
+"(usada noutro cenário) esta IA de lobos combina todos os lobos da mesma "
+"facção numa só alcateia."
 
 #
 #: data/ai/micro_ais/scenarios/animals.cfg:12
@@ -287,6 +344,42 @@ msgid ""
 "threat to each other and leave each other alone, demonstrating the enormous "
 "self control of a well trained sheep dog."
 msgstr ""
+"Cada <u>Veado (substituído por Morcegos Vampiros)</u> vaguea aleatoriamente "
+"por zonas de floresta, excepto quando inimigos surgem no seu (do veado) "
+"alcance. Nessa caso, o veado foge para o ponto mais distante que conseguir "
+"alcançar.\n"
+"\n"
+"<u>Javalis (substituídos por Ogres)</u> exibem o mesmo comportamento que os "
+"veados, excepto quando um inimigo está perto de uma das suas crias. Nessa "
+"altura, esse inimigo irá conhecer a ira total de um javali enraivecido.\n"
+"\n"
+"<u>Crias de Javali (substituídas por Ogres Jovens)</u> seguem cegamente o "
+"Javali adulto mais próximo, excepto quando não restar mais nenhum Javali, "
+"situação na qual eles agem da mesma forma que os veados.\n"
+"\n"
+"<u>Coelhos (substituídos por Ratos)</u> também vagueam aleatoriamente, mas "
+"para além disso desaparecem para as suas tocas (substituídas por fardos de "
+"palha; caso algum esteja ao seu alcance) quando existem inimigos por perto. "
+"Eles voltam a surgir das suas tocas no início do turno, caso a zona esteja "
+"segura.\n"
+"\n"
+"<u>Cães de guarda (substituídos por Salteadores)</u> tentam manter as suas "
+"ovelhas seguras. Isto consiste em mantê-las dentro da área demarcada pelo "
+"caminho que os cães tenham utilizado pelo prado, posicionando-se entre as "
+"ovelhas e os inimigos que se aproximem, e atacando os inimigos se estes se "
+"aproximarem demasiado. Pode ser necessário deixar correr este cenário "
+"durante algum tempo antes de começarem a aparecer interacções interessantes "
+"entre cães e lobos. Caso não seja necessário nenhum movimento de pastorícia "
+"ou protecção, os cães movem-se para uma localização aleatória no caminho.\n"
+"\n"
+"<u>Ovelhas (substituídas por Crias de Trogloditas)</u> vagueiam "
+"aleatoriamente, excepto se houver um cão perto delas. Nesse caso, elas fogem "
+"do cão. Os cães aproveitam-se disto, posicionando-se do lado exterior das "
+"ovelhas, se possível. As ovelhas também fogem de qualquer inimigo que se "
+"aproxime. As ovelhas, os cães e as criaturas da floresta (veados, javalis, "
+"coelhos) aprenderam que não constituem uma ameaça uns para os outros e "
+"portanto não interferem uns cons os outros, demonstrando assim o enorme auto-"
+"controlo de um cão de pastorícia bem treinado."
 
 #
 #. [test]: id=animals
@@ -303,10 +396,10 @@ msgid "Rutburt"
 msgstr "Rutburt"
 
 #
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -319,7 +412,7 @@ msgstr "Humanos"
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:63
 msgid "Forest Creatures"
-msgstr "Criaturas da floresta"
+msgstr "Criaturas da Floresta"
 
 #
 #. [side]
@@ -356,10 +449,10 @@ msgid "Whelps"
 msgstr "Crias"
 
 #
-#. [set_menu_item]: id=m01_end_animals
-#. [event]
-#. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m04_end_animals
+#. [event]
+#. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -394,6 +487,11 @@ msgid ""
 "Wesnoth mainline, such as bears, sheep and sheep dogs, or deer. In this test "
 "scenario, these units have been replaced by mainline units."
 msgstr ""
+"<span color='#A00000'>Importante:</span> As Micro IAs de animais neste "
+"cenário foram criadas para uma variedade de tipos de animais que não existe "
+"no enredo principal de Wesnoth, tais como ursos, ovelhas, cães de guarda ou "
+"veados. Neste cenário de teste, estas unidades foram substituídas por outras "
+"unidades do enredo principal."
 
 #
 #. [message]: speaker=narrator
@@ -403,6 +501,10 @@ msgid ""
 "for watching only. The animal AIs behave as follows:\n"
 "\n"
 msgstr ""
+"Este é um pequeno e divertido cenário com uma mão cheia de IAs de diferentes "
+"animais, maioritariamente apenas para se observar o seu comportamento. Estas "
+"IAs comportam-se da seguinte maneira:\n"
+"\n"
 
 #
 #. [message]: speaker=narrator
@@ -411,11 +513,22 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:147
 #: data/ai/micro_ais/scenarios/wolves.cfg:204
 msgid "Question for the Player"
-msgstr "Uma questão ao jogador"
+msgstr "Uma questão para o jogador"
 
 #
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:370
+#, fuzzy
+#| msgid ""
+#| "We need to hold that pass for as long as we can. Let's put our strongest "
+#| "fighters on the front line and bring injured units to the back for "
+#| "healing. If we're careful enough, we might even win this battle. I'll "
+#| "join you as soon as I'm done recruiting and do my share of the fighting.\n"
+#| "\n"
+#| "Note: The Bottleneck Defense AI is coded as a Micro AI. A Micro AI can be "
+#| "added and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "It is possible to include a human-controlled Side 1, so that the action "
 "stops once every turn for looking around (or to mess with things in debug "
@@ -432,6 +545,17 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Nós precisamos de guardar a passagem por tanto tempo quanto possível. Vamos "
+"pôr os nossos guerreiros mais fortes na frente e trazer as unidades feridas "
+"para trás para poderem ser curadas. Se formos cuidadosos o suficiente, "
+"talvez possamos até vencer esta batalha. Eu junto-me a vocês assim que "
+"terminar de recrutar e farei a minha parte na luta.\n"
+"\n"
+"Nota: A IA da Defesa ao Assalto do Desfiladeiro é codificada como uma Micro "
+"IA. Qualquer IA Micro pode ser facilmente adicionada e adaptada para a "
+"necessidade de um determinado cenário utilizando apenas WML e a etiqueta "
+"[micro_ai]. Veja a <span color='#00A000'>página wiki sobre Micro IA </span> "
+"no site https://wiki.wesnoth.org/Micro_AIs para mais informação."
 
 #
 #. [option]
@@ -450,7 +574,7 @@ msgstr "<span font='16'>Quero ter o controlo da equipa 1.</span>"
 #. [objectives]
 #: data/ai/micro_ais/scenarios/animals.cfg:402
 msgid "Watch the animals do their things"
-msgstr "Observa os animais fazerem as suas rotinas"
+msgstr "Observe os animais nas suas rotinas"
 
 #
 #. [objective]: condition=win
@@ -459,7 +583,7 @@ msgstr "Observa os animais fazerem as suas rotinas"
 #: data/ai/micro_ais/scenarios/swarm.cfg:160
 #: data/ai/micro_ais/scenarios/wolves.cfg:244
 msgid "Use right-click option"
-msgstr "Usa o botão direito do rato"
+msgstr "Use o botão direito do rato"
 
 #
 #. [objective]: condition=lose
@@ -475,7 +599,7 @@ msgstr "Morte de Rubhurt"
 #: data/ai/micro_ais/scenarios/swarm.cfg:168
 #: data/ai/micro_ais/scenarios/wolves.cfg:252
 msgid "Check out the right-click menu options for additional actions"
-msgstr ""
+msgstr "Veja as opções do menu do botão direito do rato para ações adicionais"
 
 #
 #. [message]: speaker=$second_unit.id
@@ -505,20 +629,31 @@ msgstr "Grandão Orc Malvado"
 #. [message]: speaker=LuaAI
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:87
 msgid "All right, chaps. Those orcs need to be stopped."
-msgstr ""
+msgstr "Muito bem, camaradas. Precisamos de parar aqueles orcs."
 
-#. [message]: speaker=Big Bad Orc
 #. [message]: speaker=Another Bad Orc
 #. [message]: speaker=Vanak
+#. [message]: speaker=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:572
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:148
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:142
 msgid "They there!  We them get!"
 msgstr "Ali estão eles! Apanhamos-os!"
 
 #
 #. [message]: speaker=LuaAI
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:99
+#, fuzzy
+#| msgid ""
+#| "We need to hold that pass for as long as we can. Let's put our strongest "
+#| "fighters on the front line and bring injured units to the back for "
+#| "healing. If we're careful enough, we might even win this battle. I'll "
+#| "join you as soon as I'm done recruiting and do my share of the fighting.\n"
+#| "\n"
+#| "Note: The Bottleneck Defense AI is coded as a Micro AI. A Micro AI can be "
+#| "added and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "We need to hold that pass for as long as we can. Let's put our strongest "
 "fighters on the front line and bring injured units to the back for healing. "
@@ -530,6 +665,17 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Nós precisamos de guardar a passagem por tanto tempo quanto possível. Vamos "
+"pôr os nossos guerreiros mais fortes na frente e trazer as unidades feridas "
+"para trás para poderem ser curadas. Se formos cuidadosos o suficiente, "
+"talvez possamos até vencer esta batalha. Eu junto-me a vocês assim que "
+"terminar de recrutar e farei a minha parte na luta.\n"
+"\n"
+"Nota: A IA da Defesa ao Assalto do Desfiladeiro é codificada como uma Micro "
+"IA. Qualquer IA Micro pode ser facilmente adicionada e adaptada para a "
+"necessidade de um determinado cenário utilizando apenas WML e a etiqueta "
+"[micro_ai]. Veja a <span color='#00A000'>página wiki sobre Micro IA </span> "
+"no site https://wiki.wesnoth.org/Micro_AIs para mais informação."
 
 #
 #. [message]: speaker=narrator
@@ -540,18 +686,22 @@ msgid ""
 "possible. Do you want to play the orc side or let the default (RCA) AI do "
 "that?"
 msgstr ""
+"Neste cenário, a IA que comanda os humanos a Este tem instruções para formar "
+"uma linha defensiva na passagem entre o desfiladeiro e guardá-la dos orcs "
+"por tano tempo quanto possível. Deseja jogar comandando os orcs ou deixar a "
+"IA pordefeito (RCA) comandá-los?"
 
 #
 #. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:112
 msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
-msgstr ""
+msgstr "<span font='16'>Desejo ver as duas IAs lutar.</span>"
 
 #
 #. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:115
 msgid "<span font='16'>I'll play the orcs.</span>"
-msgstr ""
+msgstr "<span font='16'>Comandarei os orcs.</span>"
 
 #
 #. [objectives]
@@ -581,10 +731,11 @@ msgstr "Apenas sobra um orc"
 msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
 msgstr ""
+"Eu posso ser derrotado, mas iremos defender a passagem até ao último homem!"
 
 #
-#. [test]: id=dragon
 #. [event]
+#. [test]: id=dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -617,10 +768,31 @@ msgstr "Rowck"
 #. [message]: speaker=Dreadful Bat
 #: data/ai/micro_ais/scenarios/dragon.cfg:85
 msgid "Be careful to stay out of the way of that dragon. He's a mean one."
-msgstr ""
+msgstr "Evite meter-se no caminho daquele dragão. Ele é um dragão terrível."
 
+#
 #. [message]: speaker=Rowck
 #: data/ai/micro_ais/scenarios/dragon.cfg:91
+#, fuzzy
+#| msgid ""
+#| "Hi there. I am Rowck and here is what I do:\n"
+#| "When hungry, I move around part of the map in a random wander until I get "
+#| "into range of an enemy. If enemies are within range, I attack and devour "
+#| "the weakest of them. After that, I retreat to my rest location, where I "
+#| "stay for a certain number of turns or until fully healed.\n"
+#| "A few details (features, not bugs, but can be changed if desired):\n"
+#| "- If my way home is blocked on the return, the normal RCA AI takes over "
+#| "my behavior.\n"
+#| "- I will, however, attack any enemy occupying my rest hex, if I can get "
+#| "there.\n"
+#| "- A kill only makes me go home when I am the attacker, not as defender.\n"
+#| "- Occasionally I will not move at all while wandering (a dragon has to "
+#| "rest sometimes!)\n"
+#| "\n"
+#| "Note: The Hunter AI is coded as a Micro AI. A Micro AI can be added and "
+#| "adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
 "When hungry, I move around part of the map in a random wander until I get "
@@ -641,12 +813,33 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Olá. Eu sou o Rowck e faço o seguinte:\n"
+"Quando tenho fome, movo-me por parte do mapa de forma aleatória até entrar "
+"no alcance de um inimigo. Se tiver inimigos no meu alcance, ataco e dovo o "
+"mais fraco deles. Depois, retiro-me para a minha localização de descanso, "
+"onde fico até um determinado número de turnos passar ou até ficar totalmente "
+"curado.\n"
+"Alguns detalhes (funcionalidades, não problemas, que podem ser alteradas se "
+"desejado):\n"
+"- Se, a caminho de casa, for bloqueado, a IA RCA normal toma controlo do meu "
+"comportamento.\n"
+"- Porém, eu ataco qualquer inimigo que esteja na minha casa, se eu conseguir "
+"lá chegar.\n"
+"- Uma morte só me faz voltar a casa se eu for o atacante, não o defensor.\n"
+"- Ocasionalmente não me mexo de todo quando vagueio (um dragão tem de "
+"descansar às vezes!)\n"
+"\n"
+"Nota: A IA de Caçador é codificada como uma Micro IA. Qualquer IA Micro pode "
+"ser facilmente adicionada e adaptada para a necessidade de um determinado "
+"cenário utilizando apenas WML e a etiqueta [micro_ai]. Veja a <span "
+"color='#00A000'>página wiki sobre Micro IA </span> no site http://wiki."
+"wesnoth.org/Micro_AIs para mais informação."
 
 #
 #. [objectives]
 #: data/ai/micro_ais/scenarios/dragon.cfg:104
 msgid "Move the bats around to explore how Rowck reacts"
-msgstr "Mova os morcegos para perceber em como Rowck reage"
+msgstr "Mova os morcegos para perceber como Rowck reage"
 
 #
 #. [objective]: condition=win
@@ -675,7 +868,7 @@ msgstr "Estou farto disto."
 #. [test]: id=fast
 #: data/ai/micro_ais/scenarios/fast.cfg:5
 msgid "Fast"
-msgstr ""
+msgstr "Rápida"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/fast.cfg:67
@@ -689,6 +882,14 @@ msgid ""
 "There is nothing to do here, just watch or use this scenario as a template "
 "or for your own tests."
 msgstr ""
+"Este cenário apresenta uma situação com tantas unidades no mapa que se pode "
+"notar alguma latência (de alguns segundos) antes de cada movimento da IA por "
+"defeito. Em contraste, a Micro IA Rápida tem uma latência muito menor. Para "
+"demonstrar a diferença, a equipa 1 é comandada pela Micro IA Rápida e a "
+"equipa 2 pela IA por defeito (RCA).\n"
+"\n"
+"Não há nada a fazer aqui, só observar ou usar este cenário como um modelo "
+"para fazer os seus próprios testes."
 
 #
 #. [test]: id=goto
@@ -696,7 +897,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
-msgstr "Objetivo"
+msgstr "Ir Até"
 
 #
 #. [side]: id=Vaddan, type=Outlaw
@@ -759,8 +960,8 @@ msgid "Place Side 1 Footpad"
 msgstr "Coloca um proscrito da equipa 1"
 
 #
-#. [set_menu_item]: id=m02_kill_unit
 #. [set_menu_item]: id=m05_kill_unit
+#. [set_menu_item]: id=m02_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
@@ -770,10 +971,22 @@ msgstr "Mata unidade debaixo do cursor"
 #. [set_menu_item]: id=m03_null_control
 #: data/ai/micro_ais/scenarios/goto.cfg:363
 msgid "Turn off human control of Side 1"
-msgstr ""
+msgstr "Desligar o controlo do jogador da Equipa 1"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/goto.cfg:419
+#, fuzzy
+#| msgid ""
+#| "This is a reenactment of scenario The Elves Besieged of the mainline "
+#| "campaign Heir to the Throne, just that the AI is playing Konrad's side "
+#| "here. The goal is to move Konrad to the signpost in the northwest, while "
+#| "keeping both Konrad and Delfador alive. The same AI as in scenario "
+#| "Protect Unit is used.\n"
+#| "\n"
+#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+#| "and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "This scenario demonstrates a variety of different uses of the Goto Micro AI. "
 "All AI sides are controlled by this MAI in one way or another (except for "
@@ -789,11 +1002,22 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Esta é uma reencenação do cenário Elfos Cercados do enredo principal da "
+"campanha  do Herdeiro ao Trono, só que aqui a IA joga com a facção do "
+"Konrad. O objectivo é mover o Konrad até ao posto de sinalização a noroeste, "
+"mantendo tanto Konrad como Delfador vivos. Aqui utiliza-se a mesma IA do que "
+"a do cenário Proteger a Unidade.\n"
+"\n"
+"Nota: A IA Proteger a Unidade é codificada como Micro IA. Qualquer IA Micro "
+"pode ser facilmente adicionada e adaptada para a necessidade de um "
+"determinado cenário utilizando apenas WML e a etiqueta [micro_ai]. Veja a "
+"<span color='#00A000'> página wiki sobre Micro IA </span> no site http://"
+"wiki.wesnoth.org/Micro_AIs para mais informação."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/goto.cfg:429
 msgid "Watch the AI units do their things"
-msgstr "Assiste à IA fazerem as suas tarefas"
+msgstr "Assiste às unidades de IA fazerem as suas tarefas"
 
 #
 #. [objective]: condition=lose
@@ -805,15 +1029,15 @@ msgstr "Morte de Vaddan"
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:450
 msgid "The bridge is out. What do we do now?"
-msgstr ""
+msgstr "A ponte está destruída. O que fazemos agora?"
 
 #
 #. [message]: speaker=messenger2
 #: data/ai/micro_ais/scenarios/goto.cfg:454
 msgid "Looks like we need to take the long way around to get to General Minry."
 msgstr ""
+"Parece que teremos de ir pelo caminho longo para chegar ao General Minry."
 
-#
 #. [message]: speaker=leader3
 #: data/ai/micro_ais/scenarios/goto.cfg:463
 msgid ""
@@ -834,20 +1058,23 @@ msgid ""
 "behavior is set up with a single [micro_ai] tag, one with "
 "'unique_goals=yes', the other without."
 msgstr ""
+"Nós os quatro morcegos variamos entre fugir para os cantos do mapa (cada um "
+"para um canto diferente), e juntarmo-nos em grupo de novo aqui. Estes dois "
+"comportamentos são definidos com uma só etiqueta [micro_ai], um definido com "
+"'unique_goals=yes', o outro sem essa definição."
 
 #
 #. [message]: speaker=ghost1
 #: data/ai/micro_ais/scenarios/goto.cfg:484
 msgid "Aaiiieeeeeee !!!"
-msgstr ""
+msgstr "Aiiiiiiiiiii !!!"
 
 #
 #. [message]: speaker=messenger2
 #: data/ai/micro_ais/scenarios/goto.cfg:488
 msgid "O no, a ghost!"
-msgstr "ó não, um fantasma!"
+msgstr "Ó não, um fantasma!"
 
-#
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:492
 msgid ""
@@ -866,6 +1093,8 @@ msgid ""
 "I'll take the route straight through the mountains. It's much shorter than "
 "following the trail all the way around in the south."
 msgstr ""
+"Eu irei pelo caminho que segue direito pelas montanhas. É muito mais curto "
+"do que seguir o caminho que vai lá pelo Sul."
 
 #
 #. [message]: speaker=messenger1
@@ -877,6 +1106,11 @@ msgid ""
 "Note: The messengers are controlled by Goto Micro AI definitions that differ "
 "by a single line, 'use_straight_line=yes/no'."
 msgstr ""
+"És louco. Pode ser mais curto para o corvo que voa, mas vai demorar uma "
+"eternidade passar por aquelas montanhas.\n"
+"\n"
+"Nota: Os mensageiros são controlados pela Micro IA Ir Até com definições que "
+"variam numa única linha, 'use_straight_line=yes/no'."
 
 #
 #. [message]: speaker=unit
@@ -884,7 +1118,6 @@ msgstr ""
 msgid "I told you so!"
 msgstr "Assim te tinha dito!"
 
-#
 #. [message]: speaker=leader5
 #: data/ai/micro_ais/scenarios/goto.cfg:601
 msgid ""
@@ -892,8 +1125,10 @@ msgid ""
 "I want each and every one of you to report to him before going east to fight "
 "those saurians."
 msgstr ""
+"Homens, vocês devem ir até o Forte do Rio e falar com o Sargento Aethubry "
+"para pegarem suas ordens. Eu quero que cada um de vocês se apressentem para "
+"o Sargento antes de irem para o leste enfrentar esses lagartos."
 
-#
 #. [message]: speaker=leader6
 #: data/ai/micro_ais/scenarios/goto.cfg:610
 msgid ""
@@ -909,18 +1144,19 @@ msgid ""
 "$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting "
 "for duty, sir."
 msgstr ""
+"$unit.language_name $unit.name do esquadrão do Tenente Gadoc pronto para o "
+"serviço, senhor."
 
-#
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:644
 msgid "Ready to fight those saurians, soldier?"
-msgstr ""
+msgstr "Pronto para enfrentar aqueles lagartos, soldado?"
 
 #
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:648
 msgid "Yes, sir."
-msgstr "Sim, senhor!"
+msgstr "Sim, senhor."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:656
@@ -928,33 +1164,36 @@ msgid ""
 "Very good, $unit.language_name. Now go help your comrade get rid of that "
 "saurian infestation in the swamps."
 msgstr ""
+"Muito bem, $unit.language_name. Agora vá ajudar seu camarada com aquela "
+"infestação de lagartos nos pântanos."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:664
 msgid "Maybe if I ignore them, they'll just go away?"
 msgstr "Talvez se simplesmente ignorar-os eles irão-se embora?"
 
-#
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:683
 msgid "Lieutenant Senvan's men reporting for duty, sir."
-msgstr ""
+msgstr "Soldado do tenente Senvan reportando para o serviço, senhor."
 
-#
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:687
 msgid ""
 "Ah, Lieutenant Senvan... Is every single one of you going to bother me "
 "individually as well?"
 msgstr ""
+"Ah, Tenente Senvan... Será que cada um de vocês virá inmdividualmente me "
+"atazanar?"
 
-#
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:691
 msgid ""
 "No, sir. Lieutenant Senvan ordered us to head into battle as soon as I have "
 "reported to you."
 msgstr ""
+"Não, senhor. Tenente Senvan deu ordem para irmos direto para a batalha após "
+"falarmos com você."
 
 #
 #. [message]: speaker=fort_commander
@@ -964,6 +1203,9 @@ msgid ""
 "off you go then.\n"
 "\n"
 msgstr ""
+"Ah, que alívio. Alguém sabe como usar a sua ... Quero dizer, muito bem, "
+"prosiga então.\n"
+"\n"
 
 #
 #. [message]: speaker=fort_commander
@@ -972,18 +1214,19 @@ msgid ""
 "I wouldn't say anything negative about one of my superior officers now, "
 "would I?"
 msgstr ""
+"Eu não diria algo negativo sobre um dos meus oficiais superiores, pois não?"
 
 #
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:735
 msgid "We've all made it to the corners, let's get back together again."
-msgstr ""
+msgstr "Chegámos a todos os cantos, vamos voltar a juntar-nos."
 
 #
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:776
 msgid "We're back together, let's head out to the corners again."
-msgstr ""
+msgstr "Estamos juntos de novo, vamos regressar aos cantos."
 
 #
 #. [test]: id=guardians
@@ -1055,41 +1298,35 @@ msgstr "Covarde 4"
 msgid "Move gryphons here to see different coward reactions"
 msgstr "Mova os grifos para aqui para ver as diferentes reações dos cobardes"
 
-#
 #. [unit]: type=Troll, id=return1
 #: data/ai/micro_ais/scenarios/guardians.cfg:228
 msgid "Return Guardian 1"
-msgstr ""
+msgstr "Voltar Guardião 1"
 
-#
 #. [unit]: type=Troll Whelp, id=return2
 #: data/ai/micro_ais/scenarios/guardians.cfg:249
 msgid "Return Guardian 2"
-msgstr ""
+msgstr "Voltar Guardião 2"
 
-#
 #. [unit]: type=Troll Whelp, id=home1
 #: data/ai/micro_ais/scenarios/guardians.cfg:271
 msgid "Home Guard 1"
-msgstr ""
+msgstr "Guarda da Casa 1"
 
-#
 #. [unit]: type=Troll, id=home 2
 #: data/ai/micro_ais/scenarios/guardians.cfg:283
 msgid "Home Guard 2"
-msgstr ""
+msgstr "Guarda da Casa 2"
 
-#
 #. [unit]: type=Skeleton Archer, id=stationed1
 #: data/ai/micro_ais/scenarios/guardians.cfg:296
 msgid "Stationed Guardian 1"
-msgstr ""
+msgstr "Guardião Posicionado 2"
 
-#
 #. [unit]: type=Skeleton, id=stationed2
 #: data/ai/micro_ais/scenarios/guardians.cfg:320
 msgid "Stationed Guardian 2"
-msgstr ""
+msgstr "Guardião Posicionado 2"
 
 #
 #. [unit]: type=Troll, id=zone1
@@ -1113,7 +1350,7 @@ msgstr "Guardião Marinho"
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:424
 msgid "Guarded Location"
-msgstr "localização guardada"
+msgstr "Localização guardada"
 
 #
 #. [event]
@@ -1133,7 +1370,7 @@ msgstr "Segundo entreposto"
 #: data/ai/micro_ais/scenarios/guardians.cfg:447
 #: data/ai/micro_ais/scenarios/guardians.cfg:456
 msgid "Standard WML Guardian"
-msgstr ""
+msgstr "Guardião WML por defeito"
 
 #
 #. [message]: speaker=narrator
@@ -1143,6 +1380,10 @@ msgid ""
 "guardians attack if there is an enemy within their movement range, otherwise "
 "they do nothing (except maybe retreating to a village for healing)."
 msgstr ""
+"Este é um guardião WML programado usando 'ai_special=guardian'. Ests "
+"guardiões atacam se houver algum inimigo dentro do alcance do seu movimento, "
+"ou então não fazem nada (excepto talvez fugir para uma aldeia para se "
+"curarem)."
 
 #
 #. [message]: speaker=narrator
@@ -1152,7 +1393,6 @@ msgstr ""
 msgid "Return Guardian"
 msgstr "Guardião Retornado"
 
-#
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:473
 msgid ""
@@ -1176,7 +1416,6 @@ msgstr ""
 msgid "Home Guard"
 msgstr "Guardião Hospedado"
 
-#
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:494
 msgid ""
@@ -1203,7 +1442,6 @@ msgstr ""
 msgid "Stationed Guardian"
 msgstr "Guardião Estacionado"
 
-#
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:511
 msgid ""
@@ -1231,7 +1469,6 @@ msgstr ""
 msgid "Coward"
 msgstr "Covarde"
 
-#
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:533
 msgid ""
@@ -1259,7 +1496,6 @@ msgstr ""
 msgid "Zone Guardian"
 msgstr "Guardião de Zona"
 
-#
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:553
 msgid ""
@@ -1282,6 +1518,17 @@ msgstr "Kraahhh!!!!"
 #
 #. [message]: speaker=Kraa
 #: data/ai/micro_ais/scenarios/guardians.cfg:578
+#, fuzzy
+#| msgid ""
+#| "We need to hold that pass for as long as we can. Let's put our strongest "
+#| "fighters on the front line and bring injured units to the back for "
+#| "healing. If we're careful enough, we might even win this battle. I'll "
+#| "join you as soon as I'm done recruiting and do my share of the fighting.\n"
+#| "\n"
+#| "Note: The Bottleneck Defense AI is coded as a Micro AI. A Micro AI can be "
+#| "added and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "Gryphons of the High Plains, look at all these enemies. They don't behave "
 "normally. Most of them don't move at all unless we get close. Let's check "
@@ -1295,12 +1542,23 @@ msgid ""
 "the [micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Nós precisamos de guardar a passagem por tanto tempo quanto possível. Vamos "
+"pôr os nossos guerreiros mais fortes na frente e trazer as unidades feridas "
+"para trás para poderem ser curadas. Se formos cuidadosos o suficiente, "
+"talvez possamos até vencer esta batalha. Eu junto-me a vocês assim que "
+"terminar de recrutar e farei a minha parte na luta.\n"
+"\n"
+"Nota: A IA da Defesa ao Assalto do Desfiladeiro é codificada como uma Micro "
+"IA. Qualquer IA Micro pode ser facilmente adicionada e adaptada para a "
+"necessidade de um determinado cenário utilizando apenas WML e a etiqueta "
+"[micro_ai]. Veja a <span color='#00A000'>página wiki sobre Micro IA </span> "
+"no site https://wiki.wesnoth.org/Micro_AIs para mais informação."
 
 #
 #. [objectives]
 #: data/ai/micro_ais/scenarios/guardians.cfg:588
 msgid "Move the Gryphons around to explore how the guardians react"
-msgstr "Mova os grifos para perceber em como os guardiões reagem."
+msgstr "Mova os grifos para perceber em como os guardiões reagem"
 
 #
 #. [objective]: condition=win
@@ -1327,6 +1585,8 @@ msgstr "Morte de Kraa"
 msgid ""
 "Check out the right-click menu options for information on each guardian type"
 msgstr ""
+"Veja as opções do menu do botão direito do rato para mais informação sobre "
+"cada tipo de guardião"
 
 #
 #. [message]: speaker=Kraa
@@ -1334,8 +1594,8 @@ msgstr ""
 msgid ""
 "Gryphons of the High Plains, it is time to return to said plains. Follow me."
 msgstr ""
+"Grifos nas Planícies Altas, é altura de voltar para as planícies. Siga-me."
 
-#
 #. [test]: id=hang_out
 #: data/ai/micro_ais/scenarios/hang_out.cfg:5
 msgid "Hang Out"
@@ -1358,8 +1618,20 @@ msgstr "Bom Bandido"
 msgid "Outlaw moves here"
 msgstr "O foragido move-se para aqui"
 
+#
 #. [message]: speaker=Good Bandit
 #: data/ai/micro_ais/scenarios/hang_out.cfg:120
+#, fuzzy
+#| msgid ""
+#| "We need to hold that pass for as long as we can. Let's put our strongest "
+#| "fighters on the front line and bring injured units to the back for "
+#| "healing. If we're careful enough, we might even win this battle. I'll "
+#| "join you as soon as I'm done recruiting and do my share of the fighting.\n"
+#| "\n"
+#| "Note: The Bottleneck Defense AI is coded as a Micro AI. A Micro AI can be "
+#| "added and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "That outlaw over there is going to run for the keep in the southeast.  He's "
 "only going to recruit for three rounds before he'll start moving and he and "
@@ -1374,13 +1646,25 @@ msgid ""
 "the <span color='#00A000'>Micro AI wiki page</span> at https://wiki.wesnoth."
 "org/Micro_AIs for more information."
 msgstr ""
+"Nós precisamos de guardar a passagem por tanto tempo quanto possível. Vamos "
+"pôr os nossos guerreiros mais fortes na frente e trazer as unidades feridas "
+"para trás para poderem ser curadas. Se formos cuidadosos o suficiente, "
+"talvez possamos até vencer esta batalha. Eu junto-me a vocês assim que "
+"terminar de recrutar e farei a minha parte na luta.\n"
+"\n"
+"Nota: A IA da Defesa ao Assalto do Desfiladeiro é codificada como uma Micro "
+"IA. Qualquer IA Micro pode ser facilmente adicionada e adaptada para a "
+"necessidade de um determinado cenário utilizando apenas WML e a etiqueta "
+"[micro_ai]. Veja a <span color='#00A000'>página wiki sobre Micro IA </span> "
+"no site https://wiki.wesnoth.org/Micro_AIs para mais informação."
 
-#
 #. [objectives]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:127
 msgid ""
 "Get into the outlaw's way before he can make it to the south-eastern keep"
 msgstr ""
+"Entre no caminho do fora-da-lei antes que ele chegue na Torre de menagem ao "
+"sudeste"
 
 #
 #. [objective]: condition=win
@@ -1394,17 +1678,18 @@ msgstr "Morte do Foragido maligno"
 msgid "Death of Good Bandit"
 msgstr "Morte do bom bandido"
 
-#
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/hang_out.cfg:137
 msgid "Bad Outlaw makes it to the signpost"
-msgstr ""
+msgstr "Fora-da-lei mal chegou no poste de sinalização"
 
 #
 #. [message]: speaker=Good Bandit
 #: data/ai/micro_ais/scenarios/hang_out.cfg:151
 msgid "We got him! Now whatever it is we are fighting for is safe."
 msgstr ""
+"Apanhá-mo-lo! Agora, o que quer que seja que estamos a lutar por está a "
+"salvo."
 
 #
 #. [message]: speaker=Bad Outlaw
@@ -1413,6 +1698,8 @@ msgid ""
 "I made it! Now we can keep fighting for whatever it is that we are fighting "
 "for."
 msgstr ""
+"Eu consegui! Agora podemos continuar a lutar pelo que quer que seja que "
+"estejamos a lutar por."
 
 #
 #. [test]: id=healer_support
@@ -1432,9 +1719,20 @@ msgstr "Rebeldes 1"
 msgid "Rebels 2"
 msgstr "Rebeldes 2"
 
-#
 #. [message]: speaker=Rebels1
 #: data/ai/micro_ais/scenarios/healer_support.cfg:81
+#, fuzzy
+#| msgid ""
+#| "This is a reenactment of scenario The Elves Besieged of the mainline "
+#| "campaign Heir to the Throne, just that the AI is playing Konrad's side "
+#| "here. The goal is to move Konrad to the signpost in the northwest, while "
+#| "keeping both Konrad and Delfador alive. The same AI as in scenario "
+#| "Protect Unit is used.\n"
+#| "\n"
+#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+#| "and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "In this scenario, we demonstrate the use of the Healer Support Micro AI. "
 "This AI configures the healers of a side to stay behind the battle lines and "
@@ -1452,12 +1750,23 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Esta é uma reencenação do cenário Elfos Cercados do enredo principal da "
+"campanha  do Herdeiro ao Trono, só que aqui a IA joga com a facção do "
+"Konrad. O objectivo é mover o Konrad até ao posto de sinalização a noroeste, "
+"mantendo tanto Konrad como Delfador vivos. Aqui utiliza-se a mesma IA do que "
+"a do cenário Proteger a Unidade.\n"
+"\n"
+"Nota: A IA Proteger a Unidade é codificada como Micro IA. Qualquer IA Micro "
+"pode ser facilmente adicionada e adaptada para a necessidade de um "
+"determinado cenário utilizando apenas WML e a etiqueta [micro_ai]. Veja a "
+"<span color='#00A000'> página wiki sobre Micro IA </span> no site http://"
+"wiki.wesnoth.org/Micro_AIs para mais informação."
 
 #
 #. [message]: speaker=$unit.id
 #: data/ai/micro_ais/scenarios/healer_support.cfg:100
 msgid "Argh!  They got us..."
-msgstr ""
+msgstr "Ahh! Apanharam-nos..."
 
 #
 #. [test]: id=lurkers
@@ -1475,69 +1784,58 @@ msgstr "Pekzs"
 #. [side]: id=Pekzs, type=Saurian Soothsayer
 #: data/ai/micro_ais/scenarios/lurkers.cfg:204
 msgid "team_name^Pekzs"
-msgstr ""
+msgstr "Pekzs"
 
-#
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:220
 msgid "Micro AI Lurkers (saurians, stationary)"
-msgstr ""
+msgstr "Micro AI Espreitadores (lagartos, estacionários)"
 
-#
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:236
 msgid "Micro AI Lurkers (saurians, wanderers)"
-msgstr ""
+msgstr "Micro AI Espreitadores (lagartos, andarilhos)"
 
-#
 #. [side]: type=Naga Warrior
 #: data/ai/micro_ais/scenarios/lurkers.cfg:252
 msgid "Micro AI Lurkers (nagas)"
-msgstr ""
+msgstr "Micro AI Espreitadores (nagas)"
 
-#
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:268
 msgid "WML Lurkers (saurians)"
-msgstr ""
+msgstr "WML Espreitadores (lagartos)"
 
-#
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:284
 msgid "Formula AI Lurkers (saurians)"
-msgstr ""
+msgstr "Formula AI Espreitadores (lagartos)"
 
-#
 #. [set_menu_item]: id=m01_menu_lurker2
 #: data/ai/micro_ais/scenarios/lurkers.cfg:387
 msgid "Place a Side 2 lurker"
-msgstr ""
+msgstr "Botar um espreitador do Lado 2"
 
-#
 #. [set_menu_item]: id=m01_menu_lurker3
 #: data/ai/micro_ais/scenarios/lurkers.cfg:399
 msgid "Place a Side 3 lurker"
-msgstr ""
+msgstr "Botar um espreitador do Lado 3"
 
-#
 #. [set_menu_item]: id=m01_menu_lurker4
 #: data/ai/micro_ais/scenarios/lurkers.cfg:411
 msgid "Place a Side 4 lurker"
-msgstr ""
+msgstr "Botar um espreitador do Lado 4"
 
-#
 #. [set_menu_item]: id=m01_menu_lurker5
 #: data/ai/micro_ais/scenarios/lurkers.cfg:423
 msgid "Place a Side 5 lurker"
-msgstr ""
+msgstr "Botar um espreitador do Lado 5"
 
-#
 #. [set_menu_item]: id=m01_menu_lurker6
 #: data/ai/micro_ais/scenarios/lurkers.cfg:435
 msgid "Place a Side 6 lurker"
-msgstr ""
+msgstr "Botar um espreitador do Lado 6"
 
-#
 #. [message]: speaker=Pekzs
 #: data/ai/micro_ais/scenarios/lurkers.cfg:452
 msgid ""
@@ -1551,7 +1849,6 @@ msgid ""
 "move instead - or it just sits and waits (lurks)."
 msgstr ""
 
-#
 #. [message]: speaker=Pekzs
 #: data/ai/micro_ais/scenarios/lurkers.cfg:460
 msgid ""
@@ -1574,14 +1871,26 @@ msgstr ""
 #
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:159
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
 #: data/ai/micro_ais/scenarios/patrols.cfg:238
 #: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
 msgstr "Notas"
 
+#
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:475
+#, fuzzy
+#| msgid ""
+#| "We need to hold that pass for as long as we can. Let's put our strongest "
+#| "fighters on the front line and bring injured units to the back for "
+#| "healing. If we're careful enough, we might even win this battle. I'll "
+#| "join you as soon as I'm done recruiting and do my share of the fighting.\n"
+#| "\n"
+#| "Note: The Bottleneck Defense AI is coded as a Micro AI. A Micro AI can be "
+#| "added and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "You can use the right-click context menu to add additional lurkers.\n"
 "\n"
@@ -1593,12 +1902,22 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Nós precisamos de guardar a passagem por tanto tempo quanto possível. Vamos "
+"pôr os nossos guerreiros mais fortes na frente e trazer as unidades feridas "
+"para trás para poderem ser curadas. Se formos cuidadosos o suficiente, "
+"talvez possamos até vencer esta batalha. Eu junto-me a vocês assim que "
+"terminar de recrutar e farei a minha parte na luta.\n"
+"\n"
+"Nota: A IA da Defesa ao Assalto do Desfiladeiro é codificada como uma Micro "
+"IA. Qualquer IA Micro pode ser facilmente adicionada e adaptada para a "
+"necessidade de um determinado cenário utilizando apenas WML e a etiqueta "
+"[micro_ai]. Veja a <span color='#00A000'>página wiki sobre Micro IA </span> "
+"no site https://wiki.wesnoth.org/Micro_AIs para mais informação."
 
-#
 #. [objectives]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:485
 msgid "Watch the lurkers move around and fight them if you want"
-msgstr ""
+msgstr "Observe os espreitadores movendo-se e enfrente-os se assim desejar"
 
 #
 #. [objective]: condition=win
@@ -1618,19 +1937,21 @@ msgstr "Mova Pekz para o posto de sinalização"
 msgid "Death of Pekzs"
 msgstr "Morte de Pekzs"
 
-#
 #. [note]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:499
 msgid "Right-click on unoccupied swamp hexes to add more lurkers"
 msgstr ""
+"Clique com o botão direito em pântanos desocupados para adicionar mais "
+"espreitadores"
 
-#
 #. [message]: speaker=Pekzs
 #: data/ai/micro_ais/scenarios/lurkers.cfg:546
 msgid ""
 "Zzanksss for helping me wizz zzossse lurkerss. Hope to sssee you again "
 "ssometime."
 msgstr ""
+"Ssobrigadsss por me ajudar a vencerss aquelesss esspreitadoresss. Essspero "
+"te ver de novo em brevessss."
 
 #
 #. [test]: id=messenger_escort
@@ -1655,38 +1976,51 @@ msgid "Messenger"
 msgstr "Mensageiro"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:131
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
 #, fuzzy
 #| msgid "Messenger Waypoint 2"
 msgid "Messenger Waypoint 1"
 msgstr "Ponto de patrulha do mensageiro 2"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:133
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
 msgid "Messenger Waypoint 2"
 msgstr "Ponto de patrulha do mensageiro 2"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:129
 msgid "Messenger Waypoint 3"
 msgstr "Ponto de patrulha do mensageiro 3"
 
 #
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:138
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:132
 msgid "AI moves Messenger here"
 msgstr "O computador irá mover os mensageiros para aqui"
 
-#
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:147
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
 msgstr ""
+"Homens, eu preciso chegar naquele poste de sinalização no norte para levar a "
+"mensagem ao nosso líder. Vamos para lá o mais rápido quanto possível."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:160
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:154
+#, fuzzy
+#| msgid ""
+#| "This is a reenactment of scenario The Elves Besieged of the mainline "
+#| "campaign Heir to the Throne, just that the AI is playing Konrad's side "
+#| "here. The goal is to move Konrad to the signpost in the northwest, while "
+#| "keeping both Konrad and Delfador alive. The same AI as in scenario "
+#| "Protect Unit is used.\n"
+#| "\n"
+#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+#| "and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1705,40 +2039,50 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Esta é uma reencenação do cenário Elfos Cercados do enredo principal da "
+"campanha  do Herdeiro ao Trono, só que aqui a IA joga com a facção do "
+"Konrad. O objectivo é mover o Konrad até ao posto de sinalização a noroeste, "
+"mantendo tanto Konrad como Delfador vivos. Aqui utiliza-se a mesma IA do que "
+"a do cenário Proteger a Unidade.\n"
+"\n"
+"Nota: A IA Proteger a Unidade é codificada como Micro IA. Qualquer IA Micro "
+"pode ser facilmente adicionada e adaptada para a necessidade de um "
+"determinado cenário utilizando apenas WML e a etiqueta [micro_ai]. Veja a "
+"<span color='#00A000'> página wiki sobre Micro IA </span> no site http://"
+"wiki.wesnoth.org/Micro_AIs para mais informação."
 
 #
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:167
 msgid "Defeat the messenger"
 msgstr "Derrota o mensageiro"
 
 #
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:177
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:171
 msgid "Messenger gets to the signpost"
 msgstr "O mensageiro chega ao posto de sinalização"
 
 #
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:181
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:175
 msgid "Death of Vanak"
 msgstr "Morte de Vanak"
 
 #
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:197
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:191
 msgid "I made it!  Now our people will be safe."
-msgstr ""
+msgstr "Eu consegui! Agora o nosso povo estará a salvo."
 
-#
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:212
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:206
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
-msgstr ""
+msgstr "Nãooo!  Tudo está perdido. Agora jamais derrotare-mos os orcs!"
 
 #
-#. [test]: id=patrols
 #. [event]
+#. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -1760,13 +2104,13 @@ msgstr "Bandidos"
 #. [side]
 #: data/ai/micro_ais/scenarios/patrols.cfg:41
 msgid "team_name^Konrad"
-msgstr ""
+msgstr "Konrad"
 
 #
 #. [side]
 #: data/ai/micro_ais/scenarios/patrols.cfg:56
 msgid "team_name^Urudin"
-msgstr ""
+msgstr "Urudin"
 
 #
 #. [unit]: type=Orcish Slayer, id=Urudin
@@ -1774,43 +2118,40 @@ msgstr ""
 msgid "Urudin"
 msgstr "Urudin"
 
-#
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:188
 msgid "Konrad Waypoint 1"
-msgstr ""
+msgstr "Ponto de Rota do Konrad 1"
 
-#
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:190
 msgid "Konrad Waypoint 2"
-msgstr ""
+msgstr "Ponto de Rota do Konrad 2"
 
-#
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:192
 msgid "Konrad Final Waypoint"
-msgstr ""
+msgstr "Ponto de Rota do Konrad Final"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:195
 msgid "Patrol Waypoint 1"
-msgstr "Ponto de patrulhamento 1"
+msgstr "Ponto de patrulha 1"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:197
 msgid "Patrol Waypoint 2"
-msgstr "Ponto de patrulhamento 2"
+msgstr "Ponto de patrulha 2"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:199
 msgid "Patrol Waypoint 3"
-msgstr "Ponto de patrulhamento 3"
+msgstr "Ponto de patrulha 3"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:201
 msgid "Patrol Waypoint 4"
-msgstr "Ponto de patrulhamento 4"
+msgstr "Ponto de patrulha 4"
 
 #
 #. [event]
@@ -1818,7 +2159,6 @@ msgstr "Ponto de patrulhamento 4"
 msgid "Urudin retreats here"
 msgstr "Urudrin retira-se para aqui"
 
-#
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/patrols.cfg:215
 msgid ""
@@ -1834,7 +2174,6 @@ msgid ""
 "All of this is implemented by use of the Patrol [micro_ai] tag."
 msgstr ""
 
-#
 #. [message]: speaker=guard1
 #: data/ai/micro_ais/scenarios/patrols.cfg:225
 msgid ""
@@ -1845,7 +2184,6 @@ msgid ""
 "separate test scenario specializing on those."
 msgstr ""
 
-#
 #. [message]: speaker=Urudin
 #: data/ai/micro_ais/scenarios/patrols.cfg:229
 msgid ""
@@ -1856,7 +2194,6 @@ msgid ""
 "This is an AI separate from the Patrols of Side 2."
 msgstr ""
 
-#
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/patrols.cfg:239
 msgid ""
@@ -1903,13 +2240,14 @@ msgstr "Mova Gertburt para o posto de sinalização"
 msgid "Death of Gertburt"
 msgstr "Morte de Gertburt"
 
-#
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/patrols.cfg:281
 msgid ""
 "Well, that was fun!  I'll just hang out here now and watch those two guys "
 "walk and walk and ..."
 msgstr ""
+"Bem, isso foi divertido!  Vou ficar por aqui e ver esses dois caras andando, "
+"andando, andando ..."
 
 #
 #. [message]: speaker=Gertburt
@@ -1918,8 +2256,8 @@ msgid "Let's go home, chaps."
 msgstr "Vamos para casa, camaradas."
 
 #
-#. [test]: id=protect_unit
 #. [event]
+#. [test]: id=protect_unit
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -1955,13 +2293,12 @@ msgstr "Koorzhar"
 #. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:119
 msgid "Move Rossauba here"
-msgstr "Mova Rossabauba para aqui"
+msgstr "Mova Rossauba para aqui"
 
-#
 #. [message]: speaker=Koorzhar
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:129
 msgid "There's that traitor wizard. Let's get him."
-msgstr ""
+msgstr "Lá está o mago traidor. Atrás dele."
 
 #
 #. [message]: speaker=Langzhar
@@ -1970,6 +2307,8 @@ msgid ""
 "Men, you know the deal. We must protect Rossauba under all circumstances. "
 "Even my survival is not as important."
 msgstr ""
+"Homens, sabem como isto funciona. Temos de proteger Roussaba a todo o custo. "
+"Até a minha sobrevivência é menos importante."
 
 #
 #. [message]: speaker=Rossauba
@@ -1977,7 +2316,6 @@ msgstr ""
 msgid "That's very kind of you, but ..."
 msgstr "É muito gentil da tua parte, mas..."
 
-#
 #. [message]: speaker=Langzhar
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:142
 msgid ""
@@ -1986,9 +2324,20 @@ msgid ""
 "the northwest if it is safe."
 msgstr ""
 
-#
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:150
+#, fuzzy
+#| msgid ""
+#| "This is a reenactment of scenario The Elves Besieged of the mainline "
+#| "campaign Heir to the Throne, just that the AI is playing Konrad's side "
+#| "here. The goal is to move Konrad to the signpost in the northwest, while "
+#| "keeping both Konrad and Delfador alive. The same AI as in scenario "
+#| "Protect Unit is used.\n"
+#| "\n"
+#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+#| "and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "In this scenario, the AI playing the humans in the east (Langzhar) is "
 "instructed to protect the wizard Rossauba, while moving him safely to the "
@@ -2001,12 +2350,23 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Esta é uma reencenação do cenário Elfos Cercados do enredo principal da "
+"campanha  do Herdeiro ao Trono, só que aqui a IA joga com a facção do "
+"Konrad. O objectivo é mover o Konrad até ao posto de sinalização a noroeste, "
+"mantendo tanto Konrad como Delfador vivos. Aqui utiliza-se a mesma IA do que "
+"a do cenário Proteger a Unidade.\n"
+"\n"
+"Nota: A IA Proteger a Unidade é codificada como Micro IA. Qualquer IA Micro "
+"pode ser facilmente adicionada e adaptada para a necessidade de um "
+"determinado cenário utilizando apenas WML e a etiqueta [micro_ai]. Veja a "
+"<span color='#00A000'> página wiki sobre Micro IA </span> no site http://"
+"wiki.wesnoth.org/Micro_AIs para mais informação."
 
 #
 #. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:155
 msgid "<span font='16'>I'll watch the two AIs fight it out</span>"
-msgstr ""
+msgstr "<span font='16'>Verei as duas IAs lutar</span>"
 
 #
 #. [option]
@@ -2015,6 +2375,8 @@ msgid ""
 "<span font='16'>I'll play Langzhar's side (to see how Koorzhar's units "
 "target Rossauba)</span>"
 msgstr ""
+"<span font='16'>Comandarei a equia do Langzhar (para ver como as unidades do "
+"Koorzhar vão atrás do Rossauba)</span>"
 
 #
 #. [option]
@@ -2023,6 +2385,8 @@ msgid ""
 "<span font='16'>I'll play Koorzhar's side (to see how Langzhar's units "
 "protect Rossauba)</span>"
 msgstr ""
+"<span font='16'>Comandarei a equipa do Koorzhar (para ver como as unidades "
+"Langzhar protegem o Rossauba)</span>"
 
 #
 #. [objectives]
@@ -2050,11 +2414,10 @@ msgstr "Morte de Rossauba"
 msgid "Death of Langzhar"
 msgstr "Morte de Langzhar"
 
-#
 #. [objectives]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:195
 msgid "Get rid of that traitor wizard Rossauba"
-msgstr ""
+msgstr "De um fim no mago traidor Rossauba"
 
 #
 #. [objective]: condition=win
@@ -2094,6 +2457,8 @@ msgid ""
 "This is a very simple scenario that can be used to test out different "
 "recruiting patterns."
 msgstr ""
+"Este é um cenário muito simples que pode ser utilizado para testar "
+"diferentes padrões de recrutamento."
 
 #
 #. [message]: speaker=Langzhar
@@ -2103,9 +2468,24 @@ msgid ""
 "expect. The recruitment lists cover level 0 to level 2 units, in order to "
 "make differences more obvious."
 msgstr ""
+"Observe o recrutamento de ambas as equipas para ver se é o que esperaria que "
+"acontecesse. As listas de recrutamento incluem unidades do nível 0 a 2, para "
+"permitir tornar as diferenças mais óbvias."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/recruiting.cfg:101
+#, fuzzy
+#| msgid ""
+#| "This is a reenactment of scenario The Elves Besieged of the mainline "
+#| "campaign Heir to the Throne, just that the AI is playing Konrad's side "
+#| "here. The goal is to move Konrad to the signpost in the northwest, while "
+#| "keeping both Konrad and Delfador alive. The same AI as in scenario "
+#| "Protect Unit is used.\n"
+#| "\n"
+#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+#| "and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
@@ -2121,12 +2501,23 @@ msgid ""
 "AI wiki page</span> at https://wiki.wesnoth.org/Micro_AIs for more "
 "information."
 msgstr ""
+"Esta é uma reencenação do cenário Elfos Cercados do enredo principal da "
+"campanha  do Herdeiro ao Trono, só que aqui a IA joga com a facção do "
+"Konrad. O objectivo é mover o Konrad até ao posto de sinalização a noroeste, "
+"mantendo tanto Konrad como Delfador vivos. Aqui utiliza-se a mesma IA do que "
+"a do cenário Proteger a Unidade.\n"
+"\n"
+"Nota: A IA Proteger a Unidade é codificada como Micro IA. Qualquer IA Micro "
+"pode ser facilmente adicionada e adaptada para a necessidade de um "
+"determinado cenário utilizando apenas WML e a etiqueta [micro_ai]. Veja a "
+"<span color='#00A000'> página wiki sobre Micro IA </span> no site http://"
+"wiki.wesnoth.org/Micro_AIs para mais informação."
 
 #
 #. [test]: id=micro_ai_test
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:5
 msgid "Micro AI Tests"
-msgstr "Testes das micro IA"
+msgstr "Testes da Micro IA"
 
 #
 #. [side]: id=Grnk, type=Goblin Spearman
@@ -2138,11 +2529,11 @@ msgstr "Grnk o fracote"
 #. [side]: id=Grnk, type=Goblin Spearman
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:27
 msgid "team_name^Grnk"
-msgstr ""
+msgstr "Grnk"
 
 #
-#. [event]
 #. [test]: id=swarm
+#. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"
@@ -2151,7 +2542,7 @@ msgstr "Enxame"
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:60
 msgid "Lurkers"
-msgstr ""
+msgstr "Espreitadores"
 
 #
 #. [event]
@@ -2170,7 +2561,6 @@ msgstr "Desfiladeiro"
 msgid "Healers"
 msgstr "Curandeiros"
 
-#
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:87
 msgid "Hang Out and Messenger"
@@ -2186,21 +2576,18 @@ msgstr "Ataque Simples"
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:93
 msgid "Fast AI"
-msgstr ""
+msgstr "IA Rápida"
 
-#
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:100
 msgid "Bottleneck Defense Micro AI demo"
-msgstr ""
+msgstr "Defesa de Estreito Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:111
 msgid "Bottleneck Defense Micro AI Demo"
-msgstr ""
+msgstr "Defesa de Estreito Micro AI Demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:112
 msgid ""
@@ -2209,16 +2596,18 @@ msgid ""
 "watch them fight it out against the standard RCA AI or take over the orc "
 "side."
 msgstr ""
+"Neste cenário de Defesa de Estreito Micro AI, um pequeno grupo de humanos "
+"foram incumbidos de defender uma passagem contra um grande número de orcs. "
+"Você pode observa-los lutar contra a RCA AI Padrão ou tomar controle dos "
+"orcs."
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m02_swamp_lurkers
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:130
 msgid "Swamp Lurker Micro AI demo"
-msgstr ""
+msgstr "Espreitadores do Pântano Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:131
 msgid ""
@@ -2228,15 +2617,13 @@ msgid ""
 "reach, the lurker does a random move instead."
 msgstr ""
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m03_guardians
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:138
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:149
 msgid "Guardian Micro AI demo"
-msgstr ""
+msgstr "Guardião Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:150
 msgid ""
@@ -2245,49 +2632,46 @@ msgid ""
 "(an \"inverse guardian\", in a way)."
 msgstr ""
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m04_patrol
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:157
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:168
 msgid "Patrol Micro AI demo"
-msgstr ""
+msgstr "Patrulha Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:169
 msgid "'Patrols' contains AI modifications for units following patrol routes."
 msgstr ""
+"'Patrulhas' contem modficação para a AI das unidades seguindo rotas de "
+"patrulha."
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m05_recruiting
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:176
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:187
 msgid "Recruiting Tests Micro AI demo"
-msgstr ""
+msgstr "Testes de Recrutamento Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:188
 msgid ""
 "A simple scenario set up for the sole purpose of testing different "
 "recruiting patterns."
 msgstr ""
+"Um simples cenário montado com o propósito de demonstrar diferentes padrões "
+"de recrutamento."
 
-#
 #. [set_menu_item]: id=m06_protect
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:195
 msgid "Protect Unit Micro AI demo"
-msgstr ""
+msgstr "Proteger Unidade Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:206
 msgid "Protect Unit Micro AI Demo"
-msgstr ""
+msgstr "Proteger Unidade Micro AI Demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:207
 msgid ""
@@ -2298,15 +2682,13 @@ msgid ""
 "either side to explore how the opposing AI behaves."
 msgstr ""
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m06a_protect
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:215
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:226
 msgid "HttT: The Elves Besieged Micro AI demo"
-msgstr ""
+msgstr "OHdT: Elfos Sitiados Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:227
 msgid ""
@@ -2315,15 +2697,13 @@ msgid ""
 "here. The same algorithm as for scenario \"Protect Unit\" is used."
 msgstr ""
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m07_messenger
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:234
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:245
 msgid "Messenger Escort Micro AI demo"
-msgstr ""
+msgstr "Escoltar o Mensageiro Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:246
 msgid ""
@@ -2332,15 +2712,13 @@ msgid ""
 "for the messenger if there are enemies in the way."
 msgstr ""
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m08_animals
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:253
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:264
 msgid "Animals Micro AI demo"
-msgstr ""
+msgstr "Animais Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:265
 msgid ""
@@ -2350,64 +2728,60 @@ msgid ""
 "avoiding each other."
 msgstr ""
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m09_wolves
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:272
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:283
 msgid "Wolves Micro AI demo"
-msgstr ""
+msgstr "Lobos Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:284
 msgid ""
 "Another demonstration of wolves wandering and attacking in packs, with a "
 "different behavior from that in 'Animals'."
 msgstr ""
+"Outra demonstração de lobos errantes atacando em bandos, com comportamento "
+"diferente do dos 'Animais'."
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m10_swarm
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:291
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:302
 msgid "Swarm Micro AI demo"
-msgstr ""
+msgstr "Enxame Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:303
 msgid "This scenario features bats moving around semi-randomly in a swarm."
 msgstr ""
+"Este cenário exibe morcegos voando por ai em um padrão semi-aleatório de "
+"enxame."
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m11_dragon
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:310
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:321
 msgid "Dragon Micro AI demo"
-msgstr ""
+msgstr "Dragão Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:322
 msgid ""
 "This scenario features a fire dragon displaying a hunt-and-rest behavior."
 msgstr ""
+"Este cenáro exibe um dragão de fogo com o comportamento de caçar-descansar."
 
-#
 #. [set_menu_item]: id=m12_healer_support
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:329
 msgid "Healer support Micro AI demo"
-msgstr ""
+msgstr "Curandeiros dando suporte Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:340
 msgid "Healer Support Micro AI demo"
-msgstr ""
+msgstr "Curandeiros dando Suporte Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:341
 msgid ""
@@ -2416,16 +2790,17 @@ msgid ""
 "threatened units rather than having them participate in combat under all "
 "circumstances."
 msgstr ""
+"Este cenário contem uma simples demonstração de como definir Curandeiros "
+"dando Suporte Micro AI, que usa os curandeiros de um lado para curar "
+"unidades feridas ao invés de participarem em combate."
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m13_goto
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:348
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:359
 msgid "Goto Micro AI demo"
-msgstr ""
+msgstr "Goto Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:360
 msgid ""
@@ -2435,19 +2810,20 @@ msgid ""
 "Filter, while the goto locations are given in a Standard Location Filter."
 msgstr ""
 
-#
 #. [set_menu_item]: id=m14_hangout
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:367
+#, fuzzy
+#| msgid "Fast Micro AI demo"
 msgid "Hang Out Micro AI demo"
-msgstr ""
+msgstr "Rápido Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:378
+#, fuzzy
+#| msgid "Messenger Escort Micro AI demo"
 msgid "Combined Hang Out and Messenger Escort Micro AI demo"
-msgstr ""
+msgstr "Escoltar o Mensageiro Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:379
 msgid ""
@@ -2458,15 +2834,13 @@ msgid ""
 "Messenger Escort Micro AI take over at that point."
 msgstr ""
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m15_simple_attack
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:386
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:397
 msgid "Simple Attack Micro AI demo"
-msgstr ""
+msgstr "Ataque Simples Micro AI demo"
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:398
 msgid ""
@@ -2474,16 +2848,16 @@ msgid ""
 "priority than the standard Wesnoth attacks and how the AI can be forced to "
 "do attacks that it would otherwise avoid."
 msgstr ""
+"Este cenário mostra como certos ataques podem ser executados com mais "
+"prioridade do que os ataques padrões de Wesnoth e como a AI pode ser forçada "
+"a usar ataques que, caso contrário, ela não usaria."
 
-#
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m16_fast
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:405
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:416
-#, fuzzy
-#| msgid "Micro AI Tests"
 msgid "Fast Micro AI demo"
-msgstr "Testes das micro IA"
+msgstr "Rápido Micro AI demo"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:417
@@ -2491,8 +2865,9 @@ msgid ""
 "A simple demonstration of the calculation time advantage of the Fast Micro "
 "AI over the default AI in scenarios with many units."
 msgstr ""
+"Uma simples demonstração da vantagem do tempo de cálculo da Fast Micro AI "
+"com relação a AI Padrão em cenários com muitas unidades."
 
-#
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:430
 msgid ""
@@ -2501,112 +2876,122 @@ msgid ""
 "Information about each demonstration can be accessed by right-clicking on "
 "the respective signpost."
 msgstr ""
+"Mova-me para qualquer poste de sinalização para ir para uma demonstração da "
+"Micro AI.\n"
+"\n"
+"Informação sobre cada demonstração pode sr acessada clicando com o botão "
+"direito nos respectivos postes."
 
-#
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:437
 msgid "Move Grnk to one of the signposts"
-msgstr ""
+msgstr "Mova Grnk  para um dos postes de sinalização"
 
-#
 #. [note]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:441
 msgid "Right-click on a signpost to get information about the scenario"
 msgstr ""
+"Clique com o botão direito em um dos postes de sinalização para obter mais "
+"informações sobre este cenário"
 
-#
 #. [side]: id=Grospur, type=General
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:18
 msgid "Grospur"
-msgstr ""
+msgstr "Grospur"
 
-#
 #. [side]: type=Ancient Lich, id=Uralt
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:33
 msgid "Uralt"
-msgstr ""
+msgstr "Uralt"
 
-#
 #. [message]: speaker=sergeant
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:125
-msgid "General Grospur, what do we do?  These undead will surely wipe us out."
+#, fuzzy
+#| msgid ""
+#| "General Grospur, what do we do?  These undead will surely wipe us out."
+msgid "General Grospur, what do we do? These undead will surely wipe us out."
 msgstr ""
+"General Grospur, o que devemos fazer?  Esses mortos-vivos vão nos matar."
 
-#
 #. [message]: speaker=Grospur
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:129
 msgid ""
-"Don't be such a chicken, Sergeant!  I have placed units with lots of "
+"Don’t be such a chicken, Sergeant! I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
 "And those few that sneak through... we can easily dispose of them once they "
-"make it inside.\n"
-"\n"
-"<i>In other words, the Wesnoth AI does generally not attack units one XP "
-"from leveling if there is no chance of killing the unit with a single "
-"attack. However, some of the attacks by the undead are handled by the Simple "
-"Attack Micro AI in this scenario. General Grospur might be in for a surprise."
-"</i>"
+"make it inside."
 msgstr ""
 
-#
-#. [objectives]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:135
-msgid "Watch the undead take care of business"
-msgstr ""
-
-#
-#. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:137
-msgid "Don't even try. You can't reach the Lich."
-msgstr ""
-
-#
-#. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:141
-msgid "Death of the last of Grospur's units"
-msgstr ""
-
-#
-#. [note]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:145
-msgid "When your leader dies, side leadership passes on to another unit"
-msgstr ""
-
-#
-#. [message]: speaker=$second_unit.id
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:172
+#. [message]: speaker=sergeant
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:133
 msgid ""
-"What the ... ?!?  They are not supposed to attack me. That just doesn't "
-"happen in Wesnoth!"
+"General Grospur, you’re still thinking of Wesnoth 1.12. The default AI is "
+"smarter than that now.\n"
+"\n"
+"<i>If you’re porting an old scenario, you may find the Simple Attack Micro "
+"AI used in a way that’s unnecessary since 1.14. The 1.12 AI generally "
+"doesn’t attack units one XP from leveling if there is no chance of killing "
+"the unit with a single attack. One way of making 1.12 do those attacks was "
+"to use the Simple Attack Micro AI.</i>"
 msgstr ""
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:176
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:139
 msgid ""
-"Hahahahaha!! I have given special instruction to my Soulless to attack all "
-"your almost-advanced units first. Also watch how those same Soulless will "
-"throw themselves mercilessly at your pitiful soldiers after that, saving my "
-"more valuable skeleton minions for later. I have taken the term 'disposable "
-"units' to a whole new level. Watch in awe!!\n"
+"Hahahahaha!! Indeed, my skeletons are smarter than General Grospur. Worse "
+"for you, I have given special instruction to my Soulless to attack all your "
+"almost-advanced units first. Also watch how those same Soulless will throw "
+"themselves mercilessly at your pitiful soldiers after that, saving my more "
+"valuable skeleton minions for later. I have taken the term ‘disposable "
+"units’ to a whole new level. Watch in awe!!\n"
 "\n"
 "<i>Translation: The undead side includes two instances of the Simple Attack "
-"Micro AI.  The first makes the Soulless attack all units 1 XP from leveling "
-"up, such that they can be eliminated afterward.  The second executes all "
+"Micro AI. The first makes the Soulless attack all units 1 XP from leveling "
+"up, such that they can be eliminated afterward. The second executes all "
 "remaining attacks possible by Soulless (and Walking Corpses), without regard "
-"for their own safety.  Only after that does the default Wesnoth attack "
-"mechanism kick in to attack with the remaining units (skeletons).</i>"
+"for their own safety. Only after that does the default Wesnoth attack "
+"mechanism kick in to attack with the remaining units (skeletons), and it "
+"moves the remaining units with high caution and low aggression.</i>\n"
+"\n"
+"<i>The difference to the 1.12 version of this demo is that the 1.12 "
+"skeletons still had high aggression.</i>"
 msgstr ""
 
+#. [objectives]
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:147
+msgid "Watch the undead take care of business"
+msgstr "Observe os Mortos-Vivos darem cabo da situação"
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:149
+#, fuzzy
+#| msgid "Don't even try. You can't reach the Lich."
+msgid "Don’t even try. You can’t reach the Lich."
+msgstr "Nem tente. Você não tem como alcançar o lich."
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:153
+#, fuzzy
+#| msgid "Death of the last of Grospur's units"
+msgid "Death of the last of Grospur’s units"
+msgstr "Morte da última unidade de Grospur"
+
+#. [note]
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:157
+msgid "When your leader dies, side leadership passes on to another unit"
+msgstr "Quando o seu líder morre, a liderança passa para outra unidade"
+
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:195
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:188
 msgid "Rise, minions!"
 msgstr "Levantam-se, meus servos!"
 
-#
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:241
-msgid "And that's how the undead AI executes total annihilation ..."
-msgstr ""
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:234
+#, fuzzy
+#| msgid "And that's how the undead AI executes total annihilation ..."
+msgid "And that’s how the undead AI executes total annihilation ..."
+msgstr "E foi assim que a AI dos Mortos-Vivos causou aniquilação total ..."
 
 #
 #. [side]
@@ -2650,11 +3035,10 @@ msgid ""
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 
-#
 #. [objectives]
 #: data/ai/micro_ais/scenarios/swarm.cfg:154
 msgid "Watch the bats move around and fight them if you want"
-msgstr ""
+msgstr "Observe os morcegos voarem por ai e enfrente-os se assim desejar"
 
 #
 #. [objective]: condition=win
@@ -2698,7 +3082,6 @@ msgstr "Coloca lobo equipa 2"
 msgid "Place Side 3 Wolf"
 msgstr "Coloca lobo equipa 3"
 
-#
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/wolves.cfg:195
 msgid ""
@@ -2727,6 +3110,17 @@ msgstr ""
 #
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/wolves.cfg:207
+#, fuzzy
+#| msgid ""
+#| "We need to hold that pass for as long as we can. Let's put our strongest "
+#| "fighters on the front line and bring injured units to the back for "
+#| "healing. If we're careful enough, we might even win this battle. I'll "
+#| "join you as soon as I'm done recruiting and do my share of the fighting.\n"
+#| "\n"
+#| "Note: The Bottleneck Defense AI is coded as a Micro AI. A Micro AI can be "
+#| "added and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "It is possible to include a human-controlled Side 1, so that the action "
 "stops once every turn for looking around (or for messing with things in "
@@ -2745,18 +3139,27 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Nós precisamos de guardar a passagem por tanto tempo quanto possível. Vamos "
+"pôr os nossos guerreiros mais fortes na frente e trazer as unidades feridas "
+"para trás para poderem ser curadas. Se formos cuidadosos o suficiente, "
+"talvez possamos até vencer esta batalha. Eu junto-me a vocês assim que "
+"terminar de recrutar e farei a minha parte na luta.\n"
+"\n"
+"Nota: A IA da Defesa ao Assalto do Desfiladeiro é codificada como uma Micro "
+"IA. Qualquer IA Micro pode ser facilmente adicionada e adaptada para a "
+"necessidade de um determinado cenário utilizando apenas WML e a etiqueta "
+"[micro_ai]. Veja a <span color='#00A000'>página wiki sobre Micro IA </span> "
+"no site https://wiki.wesnoth.org/Micro_AIs para mais informação."
 
-#
 #. [option]
 #: data/ai/micro_ais/scenarios/wolves.cfg:214
 msgid "<span font='16'>I'll just watch the two wolf sides.</span>"
-msgstr ""
+msgstr "<span font='16'>Observarei os lobos.</span>"
 
-#
 #. [objectives]
 #: data/ai/micro_ais/scenarios/wolves.cfg:238
 msgid "Watch the wolves move around and fight each other"
-msgstr ""
+msgstr "Observar os lobos moverem e brigarem entre si"
 
 #
 #. [objective]: condition=win
@@ -2764,17 +3167,15 @@ msgstr ""
 msgid "No wolves left on one side"
 msgstr "Sem lobos vivos em qualquer equipa"
 
-#
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0001-healing.cfg:17
 msgid "This situation should test the ability of AI to heal efficiently..."
-msgstr ""
+msgstr "Esta situação testará a habilidade da AI de curar eficientemente..."
 
-#
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
 msgid "This situation should test the ability of AI to spread poison around..."
-msgstr ""
+msgstr "Esta situação testará a habilidade da AI de espalhar veneno..."
 
 #. [label]
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:112
@@ -2784,27 +3185,23 @@ msgstr "Teste de alvo dos morto-vivos"
 #. [label]
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:119
 msgid "Target choose test"
-msgstr ""
+msgstr "Teste de escolha de alvo"
 
-#
 #. [label]
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:126
 msgid "Regeneration attack test"
-msgstr ""
+msgstr "Teste de ataque regeneração"
 
-#
 #. [label]
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:133
 msgid "Weapon test with low hp target"
-msgstr ""
+msgstr "Teste de arma contra oponente com hp baixo"
 
-#
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:17
 msgid "This situation should test the ability of AI to make an attack..."
-msgstr ""
+msgstr "Está situação deve testar a habilidade da AI em atacar..."
 
-#
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0004-filtered_combat.cfg:17
 msgid ""
@@ -2812,12 +3209,14 @@ msgid ""
 "filters while making attacks. Only dwarves should attack. Dark Adepts are "
 "not to be attacked."
 msgstr ""
+"Esta situação testará a habilidade da AI de obedecer filtros sobre as suas "
+"unidades e as unidades inimigas ao atacar. Apenas anões devem atacar. "
+"Adeptos não devem ser atacados."
 
-#
 #. [test]: id=ai_arena_small
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:6
 msgid "AI Arena - small"
-msgstr ""
+msgstr "AI Arena - pequena"
 
 #
 #. [test]: id=ai_arena_small
@@ -2843,23 +3242,21 @@ msgstr "Seleciona outra IA"
 msgid "Select another test"
 msgstr "Selecionar outro teste"
 
-#
 #. [side]: type=Nightgaunt
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:100
 msgid "AI Developer"
-msgstr ""
+msgstr "AI Desenvolvedor"
 
-#
 #. [side]: type=Nightgaunt
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:106
 msgid "team_name^AI Developer"
-msgstr ""
+msgstr "AI Desenvolvedor"
 
 #
 #. [side]: id=chall-ai, type=White Mage
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:117
 msgid "Challenger AI"
-msgstr "IA Desafiadora"
+msgstr "IA Desafiante"
 
 #
 #. [side]: id=chall-ai, type=White Mage
@@ -2879,68 +3276,65 @@ msgstr "IA Campeã"
 msgid "South"
 msgstr "Sul"
 
-#
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:173
 msgid "Which AI do you wish to use, O Mighty AI Developer?"
-msgstr ""
+msgstr "Qual AI você deseja usar, O Grande Desenvolvedor de AI?"
 
-#
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:175
 msgid "I am happy with the current AI of team 2, [$test_path_to_ai]"
-msgstr ""
+msgstr "Estou feliz com a AI do time 2, [$test_path_to_ai]"
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:178
 msgid "My AI is the RCA AI (the current default)."
-msgstr ""
+msgstr "Minha AI é a RCA AI (a padrão)"
 
-#
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:187
 msgid ""
 "I am the king of FORMULA AI, and I will use its vast powers for world "
 "domination."
 msgstr ""
+"Eu sou o mestre da FORMULA AI e utilizarei seus vastos poderes para dominar "
+"o mundo."
 
-#
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:196
 msgid "I want to test formulaAI-based poisoning improvements"
-msgstr ""
+msgstr "Eu quero testar a Formula AI com envenenamento melhorado"
 
-#
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:205
 msgid "I've come with my own AI, and I am ready to test its strength"
-msgstr ""
+msgstr "Eu trouxe a minha AI e estou pronto para testar a sua força"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:210
 msgid "And where is it located (path follows the usual WML convention)"
-msgstr ""
+msgstr "O onde está localizada (o caminho segue a mesma convenção do WML)"
 
 #
 #. [text_input]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:212
 msgid "AI Location:"
-msgstr "localização inválida"
+msgstr "Localização da IA:"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:313
 msgid "And so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
-msgstr ""
+msgstr "Assim, a AI do time 2 foi reimplantada do '$test_path_to_ai'"
 
 #. [test]: id=lua_ai
 #: data/ai/scenarios/scenario-lua_ai.cfg:4
 msgid "Lua AI Test scenario"
-msgstr ""
+msgstr "Cenário de teste IA (escrito em Lua)"
 
 #. [test]: id=lua_ai_old_syntax
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:5
 msgid "Lua AI Test scenario (old syntax)"
-msgstr ""
+msgstr "Cenáro de Teste da Lua AI (sintaxe antiga)"
 
 #
 #. [unit]: type=Skeletal Dragon, id=Kiressh
@@ -2948,90 +3342,12 @@ msgstr ""
 msgid "Kiressh"
 msgstr "Kiressh"
 
-#~ msgid "Messanger Waypoint 1"
-#~ msgstr "Ponto de patrulha do mensageiro 1"
+#~ msgid "Use the Patrols Micro AI instead of patrol.lua."
+#~ msgstr "Usar Micro IA de Patrulha em vez de patrol.lua."
 
-#
-#~ msgid "Multiplayer_AI^Strong AI (RCA)"
-#~ msgstr "IA Forte (RCA)"
-
-#
-#, fuzzy
-#~| msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-#~ msgid "Multiplayer_AI^Dev AI: Strategy formulation with RCA "
-#~ msgstr ""
-#~ "IA em desenvolvimento: Padrão + Envenenamento (escrito em linguagem "
-#~ "formula)"
-
-#
 #~ msgid ""
-#~ "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++ Akihara)"
+#~ "What the ... ?!?  They are not supposed to attack me. That just doesn't "
+#~ "happen in Wesnoth!"
 #~ msgstr ""
-#~ "IA em desenvolvimento: Padrão + recrutamento experimental (escrito em "
-#~ "linguagem C++, codificado de Akihara)"
-
-#
-#~ msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++)"
-#~ msgstr ""
-#~ "IA em desenvolvimento: Padrão + Experimental (escrito em linguagem C++)"
-
-#~ msgid "Patrol waypoint 1"
-#~ msgstr "Ponto de patrulha 1"
-
-#~ msgid "Patrol waypoint 2"
-#~ msgstr "Ponto de patrulha 2"
-
-#
-#~ msgid "first"
-#~ msgstr "primeiro"
-
-#
-#~ msgid "second"
-#~ msgstr "segundo"
-
-#
-#~ msgid "third"
-#~ msgstr "terceiro"
-
-#
-#~ msgid "Bilbo"
-#~ msgstr "Bilbo"
-
-#
-#~ msgid "Sirené"
-#~ msgstr "Sirené"
-
-#
-#~ msgid "Rark"
-#~ msgstr "Rark"
-
-#
-#~ msgid "AI under test"
-#~ msgstr "IA em teste"
-
-#
-#~ msgid "Idle AI"
-#~ msgstr "IA ociosa"
-
-#~ msgid "coward r=5"
-#~ msgstr "cobarde r=5"
-
-#~ msgid "return 20,2"
-#~ msgstr "retorno 20,2"
-
-#~ msgid "return 21,9"
-#~ msgstr "retorno 21,9"
-
-#~ msgid "home 19,2"
-#~ msgstr "fixo 19,2"
-
-#~ msgid "home 21,10"
-#~ msgstr "fixo 21,10"
-
-#
-#~ msgid "ai_special=guardian"
-#~ msgstr "ai_special=guardian"
-
-#
-#~ msgid "Zone Guard"
-#~ msgstr "Guardião Zonal"
+#~ "O que ... ?!?  Eles não deveriam me atacar. Esse não é o tipo de coisa "
+#~ "que acontece em Wesnoth!"

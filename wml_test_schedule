@@ -14,7 +14,7 @@
 # Security test
 #
 0 cve_2018_1999023
-1 cve_2018_1999023_2
+5 cve_2018_1999023_2
 #
 # Test Check Victory (If this isn't working other tests may have dubious value)
 #
@@ -54,17 +54,16 @@
 0 unit_spawns_at_nearest_vacant_hex
 0 units_offmap_goto_recall
 0 test_move
-1 test_move_fail_1
-1 test_move_fail_2
-1 test_move_fail_3
-1 test_move_fail_4
-1 test_move_fail_5
-1 test_move_fail_6
+5 test_move_fail_1
+5 test_move_fail_2
+5 test_move_fail_3
+5 test_move_fail_4
+5 test_move_fail_5
+5 test_move_fail_6
 0 test_move_unit
+0 test_move_unit_in_circle
 0 sighted_events
-1 sighted_events_fail
 0 sighted_on_opponents_turn
-1 sighted_on_opponents_turn_fail
 0 move_skip_no_sighted_no_share_view
 0 move_skip_ally_sighted_no_share_view
 0 move_skip_all_sighted_no_share_view
@@ -82,7 +81,7 @@
 0 event_handlers_in_events_1
 0 event_handlers_in_events_3
 0 event_handlers_in_events_2
-1 event_handlers_in_events_4
+0 event_handlers_in_events_4
 0 event_handlers_in_events_5
 0 event_handlers_in_events_6
 0 event_handlers_in_events_7
@@ -156,6 +155,7 @@
 0 test_berzerk_firststrike
 0 feeding
 0 swarm_disables_upgrades
+0 swarm_disables_upgrades_with_abilities
 #
 # Deterministic unit facing tests
 0 recruit_facing_enemy_one
@@ -176,9 +176,9 @@
 # Standard Unit Filter tests
 0 filter_this_unit_wml
 0 filter_this_unit_tl
-0 filter_this_unit_fai
-0 filter_fai_unit
-1 filter_fai_unit_error
+0 filter_this_unit_formula
+0 filter_formula_unit
+5 filter_formula_unit_error
 # Interrupt tag tests
 0 check_interrupts_break
 0 check_interrupts_return
@@ -225,9 +225,11 @@
 0 test_modify_ai_nested_facets
 0 test_modify_ai_composite_default_facets
 0 test_modify_ai_change_aspect
+# Changing the number of sides
+0 test_create_side
 # Event tests
 0 order_of_variable_events1
-1 order_of_variable_events2
+0 order_of_variable_events2
 0 event_name_variable_substitution
 # Game mechanics
 0 heal

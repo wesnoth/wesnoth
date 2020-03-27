@@ -57,6 +57,11 @@ std::vector<optional_feature> optional_features_table();
 std::string optional_features_report();
 
 /**
+ * Return the distribution channel identifier, or "Default" if missing.
+ */
+std::string dist_channel_id();
+
+/**
  * Retrieve the build-time version number of the given library.
  */
 const std::string& library_build_version(LIBRARY_ID lib);

@@ -34,10 +34,13 @@ public:
 	 *                            - Output: The new unit name the user entered
 	 *                              if the dialog returns @ref retval::OK,
 	 *                              undefined otherwise.
+	 * @param disallow_empty      Whether to prevent the user from entering a string that is
+	 *                            empty or consists only of whitespace.
 	 */
 	edit_text(const std::string& title,
 			   const std::string& label,
-			   std::string& text);
+			   std::string& text,
+			   bool disallow_empty = false);
 
 	/**
 	 * Executes the dialog.
@@ -54,6 +57,12 @@ public:
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
+
+	virtual void pre_show(window& window) override;
+
+	void on_text_change();
+
+	bool disallow_empty_;
 };
 } // namespace dialogs
 } // namespace gui2

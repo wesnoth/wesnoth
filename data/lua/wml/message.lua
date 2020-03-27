@@ -1,5 +1,4 @@
 
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local _ = wesnoth.textdomain "wesnoth"
 
@@ -32,7 +31,7 @@ local function get_image(cfg, speaker)
 	elseif cfg.image_pos == 'right' then
 		left_side = false
 	elseif cfg.image_pos ~= nil then
-		helper.wml_error('Invalid [message]image_pos - should be left or right')
+		wml.error('Invalid [message]image_pos - should be left or right')
 	end
 
 	return image, left_side
@@ -219,13 +218,13 @@ local function get_speaker(cfg)
 	if cfg.speaker == "narrator" then
 		speaker = "narrator"
 	elseif cfg.speaker == "unit" then
-		speaker = wesnoth.get_unit(context.x1 or 0, context.y1 or 0)
+		speaker = wesnoth.units.get(context.x1 or 0, context.y1 or 0)
 	elseif cfg.speaker == "second_unit" then
-		speaker = wesnoth.get_unit(context.x2 or 0, context.y2 or 0)
+		speaker = wesnoth.units.get(context.x2 or 0, context.y2 or 0)
 	elseif cfg.speaker ~= nil then
-		speaker = wesnoth.get_unit(cfg.speaker)
+		speaker = wesnoth.units.get(cfg.speaker)
 	else
-		speaker = wesnoth.get_units(cfg)[1]
+		speaker = wesnoth.units.find_on_map(cfg)[1]
 	end
 
 	return speaker
@@ -295,14 +294,14 @@ local function message_user_choice(cfg, speaker, options, text_input, sound)
 			wesnoth.add_sound_source(speech)
 		end
 
-		local option_chosen, ti_content = wesnoth.show_message_dialog(msg_cfg, options, text_input)
+		local option_chosen, ti_content = gui.show_narration(msg_cfg, options, text_input)
 
 		if voice then
 			wesnoth.remove_sound_source("wml_message_speaker")
 		end
 
 		if option_chosen == -2 then -- Pressed Escape (only if no input)
-			wesnoth.skip_messages()
+			wesnoth.interface.skip_messages()
 		end
 
 		local result_cfg = {}
@@ -372,7 +371,7 @@ function wesnoth.wml_actions.message(cfg)
 	-- Check if there is any input to be made, if not the message may be skipped
 	local has_input = text_input ~= nil or #options > 0
 
-	if not has_input and wesnoth.is_skipping_messages() then
+	if not has_input and wesnoth.interface.is_skipping_messages() then
 		-- No input to get and the user is not interested either
 		log("Skipping [message] because user not interested", "debug")
 		return
@@ -383,7 +382,7 @@ function wesnoth.wml_actions.message(cfg)
 		local show_for_side = false
 
 		-- Sanity checks on side number and controller
-		for side in utils.split(sides_for) do
+		for _,side in ipairs(tostring(sides_for):split()) do
 			side = tonumber(side)
 			if side > 0 and side <= #wesnoth.sides
 				and wesnoth.sides[side].controller == "human"
@@ -410,17 +409,17 @@ function wesnoth.wml_actions.message(cfg)
 		-- Nothing to do here
 	elseif speaker == "narrator" then
 		-- Narrator, so deselect units
-		wesnoth.deselect_hex()
+		wesnoth.interface.deselect_hex()
 		-- The speaker is expected to be either nil or a unit later
 		speaker = nil
 		wesnoth.fire("redraw")
 	else
 		-- Check ~= false, because the default if omitted should be true
 		if cfg.scroll ~= false then
-			wesnoth.scroll_to_tile(speaker.x, speaker.y, true, false, true)
+			wesnoth.interface.scroll_to_hex(speaker.x, speaker.y, true, false, true)
 		end
 
-		wesnoth.highlight_hex(speaker.x, speaker.y)
+		wesnoth.interface.highlight_hex(speaker.x, speaker.y)
 		wesnoth.fire("redraw")
 	end
 
@@ -448,7 +447,7 @@ function wesnoth.wml_actions.message(cfg)
 
 	-- Unhilight the speaker
 	if speaker and not cfg.highlight == false then
-		wesnoth.deselect_hex()
+		wesnoth.interface.deselect_hex()
 	end
 
 	if #options > 0 then

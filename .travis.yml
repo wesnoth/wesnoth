@@ -1,5 +1,4 @@
 language: cpp
-sudo:     required
 
 services:
     - docker
@@ -8,37 +7,67 @@ cache:
   ccache: true
   directories:
     - $HOME/build-cache
+    - $HOME/flatpak-cache
+    - $TRAVIS_BUILD_DIR/projectfiles/VC14/Debug
+    - $TRAVIS_BUILD_DIR/projectfiles/VC14/Release
+    - $TRAVIS_BUILD_DIR/projectfiles/VC16/Debug
+    - $TRAVIS_BUILD_DIR/projectfiles/VC16/Release
+    - $HOME/vcpkg
 
 git:
   depth: 5
 
-matrix:
+env:
+  global:
+    secure: Fw9j5BpL8e5f2boEC2D8l0Cm+pCJx7lyvpZvockSM9cF2Cnt/QPbknJLXPryExLhweQO/lvi0MPuoMhRJv0QbChBjdXzJmR+uU1ejCHfpkTc6Cm/yo3tZMG3Zm7vHs00gla2ytK+XyFIVZLtFxyzy2fxjD64sFO3YrUp0KzSXp8=
+
+jobs:
   include:
-    - compiler: gcc
-      env: CXXSTD=14 NLS=true LTS=1604 BRANCH=master
+    - os: windows
+      env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Debug UPLOAD=true
 
-    - compiler: gcc
-      env: TOOL=scons CXXSTD=17 NLS=false LTS=1804 BRANCH=master VALIDATE=true
+    - os: windows
+      env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Release
 
-    - compiler: gcc
-      env: TOOL=scons CXXSTD=14 NLS=false LTS=1604 BRANCH=master OPT=-O0
+    - os: windows
+      env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Debug UPLOAD=true
 
-    - compiler: gcc
-      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=master
-
-    - compiler: clang
-      env: TOOL=scons CXXSTD=14 NLS=false LTS=1604 BRANCH=master OPT=-O0
-
-    - compiler: clang
-      env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=master
+    - os: windows
+      env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Release
 
     - os: osx
+      osx_image: xcode11.3
       compiler: clang
-      env: TOOL=scons CXXSTD=14 NLS=false OPT=-O0
+      env: TOOL=xcodebuild NLS=true CFG=Debug BRANCH=master
 
     - os: osx
+      osx_image: xcode11.3
       compiler: clang
-      env: TOOL=xcodebuild
+      env: TOOL=xcodebuild NLS=true CFG=Release BRANCH=master
+
+    - compiler: gcc
+      env: TOOL=scons CXXSTD=14 NLS=only IMAGE=1804 BRANCH=master CFG=release
+
+    - env: TOOL=scons CXXSTD=14 NLS=true IMAGE=mingw BRANCH=master CFG=release STRICT=false UPLOAD=true
+
+    - env: TOOL=scons CXXSTD=14 NLS=false IMAGE=steamrt BRANCH=master CFG=release CC=gcc-5 CXX=g++-5
+
+    - env: TOOL=scons NLS=true IMAGE=flatpak BRANCH=master
+
+    - compiler: gcc
+      env: TOOL=scons CXXSTD=17 NLS=false IMAGE=1804 BRANCH=master CFG=release VALIDATE=true
+
+    - compiler: gcc
+      env: TOOL=scons CXXSTD=14 NLS=false IMAGE=1804 BRANCH=master CFG=debug UPLOAD=true
+
+    - compiler: gcc
+      env: TOOL=cmake CXXSTD=14 NLS=false IMAGE=1804 BRANCH=master CFG=Release
+
+    - compiler: clang
+      env: TOOL=cmake CXXSTD=14 NLS=false IMAGE=1804 BRANCH=master CFG=Debug
+
+    - compiler: gcc
+      env: TOOL=scons CXXSTD=14 NLS=false IMAGE=1604 BRANCH=master CFG=debug UPLOAD=true
 
 install:
     - . ./utils/travis/steps/install.sh

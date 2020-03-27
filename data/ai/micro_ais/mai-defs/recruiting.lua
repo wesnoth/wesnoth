@@ -1,11 +1,11 @@
 local function handle_default_recruitment(cfg)
 	-- Also need to delete/add the default recruitment CA
 	if cfg.action == 'add' then
-		wesnoth.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[recruitment]")
+		wesnoth.sides.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[recruitment]")
 	elseif cfg.action == 'delete' then
 		-- We need to add the recruitment CA back in
 		-- This works even if it was not removed, it simply overwrites the existing CA
-		wesnoth.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
+		wesnoth.sides.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
 			{
 				id="recruitment",
 				engine="cpp",

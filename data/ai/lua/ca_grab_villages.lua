@@ -2,18 +2,23 @@
 
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
+local LS = wesnoth.require "location_set"
 local M = wesnoth.map
 
 local GV_unit, GV_village
 
 local ca_grab_villages = {}
 
-function ca_grab_villages:evaluation(cfg, data)
+function ca_grab_villages:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'grab_villages'
     if AH.print_eval() then AH.print_ts('     - Evaluating grab_villages CA:') end
 
     -- Check if there are units with moves left
-    local units = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)
+    local units = AH.get_units_with_moves({
+        side = wesnoth.current.side,
+        canrecruit = 'no',
+        { "and", filter_own }
+    }, true)
     if (not units[1]) then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
         return 0
@@ -21,8 +26,15 @@ function ca_grab_villages:evaluation(cfg, data)
 
     local enemies = AH.get_attackable_enemies()
 
-    local villages = wesnoth.get_villages()
-    -- Just in case:
+    local avoid_map = LS.of_pairs(ai.aspects.avoid)
+
+    local all_villages, villages = wesnoth.get_villages(), {}
+    for _,village in ipairs(all_villages) do
+        if (not avoid_map:get(village[1], village[2])) then
+            table.insert(villages, village)
+        end
+    end
+
     if (not villages[1]) then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
         return 0
@@ -49,7 +61,7 @@ function ca_grab_villages:evaluation(cfg, data)
         -- First collect all information that only depends on the village
         local village_rating = 0  -- This is the unit independent rating
 
-        local unit_in_way = wesnoth.get_unit(v[1], v[2])
+        local unit_in_way = wesnoth.units.get(v[1], v[2])
 
         -- If an enemy can get within one move of the village, we want to hold it
         if enemy_attack_map:get(v[1], v[2]) then
@@ -61,7 +73,7 @@ function ca_grab_villages:evaluation(cfg, data)
         if (not owner) then
             village_rating = village_rating + 10000
         else
-            if wesnoth.is_enemy(owner, wesnoth.current.side) then village_rating = village_rating + 20000 end
+            if wesnoth.sides.is_enemy(owner, wesnoth.current.side) then village_rating = village_rating + 20000 end
         end
 
         local village_closest_enemy, enemy_distance_from_village = AH.get_closest_enemy(v)

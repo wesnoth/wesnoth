@@ -228,7 +228,7 @@ private:
 /**
 	an object to leave the synced context during draw or unsynced wml items when we don’t know whether we are in a synced context or not.
 	if we are in a synced context we leave the synced context, otherwise it has no effect.
-	we need this because we might call lua's wesnoth.theme_items during draw and we don’t want to have that an effect on the gamestate in this case.
+	we need this because we might call lua's wesnoth.interface.game_display during draw and we don’t want to have that an effect on the gamestate in this case.
 */
 class set_scontext_unsynced
 {

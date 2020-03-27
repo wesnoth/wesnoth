@@ -280,6 +280,7 @@ void saved_game::expand_scenario()
 			update_label();
 			set_defaults();
 		} else {
+			ERR_NG << "Couldn't find [" << classification().get_tagname() << "] with id=" << carryover_["next_scenario"] << std::endl;
 			this->starting_point_type_ = STARTING_POINT_INVALID;
 			this->starting_point_.clear();
 		}
@@ -431,6 +432,40 @@ void saved_game::expand_mp_options()
 	}
 }
 
+static void inherit_scenario(config& scenario, config& map_scenario)
+{
+	config sides;
+	sides.splice_children(map_scenario, "side");
+	scenario.append_children(map_scenario);
+	for(config& side_from : sides.child_range("side")) {
+		config& side_to = scenario.find_child("side", "side", side_from["side"]);
+		if(side_to) {
+			side_to.inherit_attributes(side_from);
+			side_to.append_children(side_from);
+		}
+		else {
+			scenario.add_child("side", side_from);
+		}
+	}
+}
+
+void saved_game::expand_map_file(config& scenario)
+{
+	if(scenario["map_data"].empty() && !scenario["map_file"].empty()) {
+		std::string map_data = filesystem::read_map(scenario["map_file"]);
+		if (map_data.find("map_data") != std::string::npos) {
+			//we have a scenario, gnerated by the editor
+			config map_data_cfg;
+			read(map_data_cfg, map_data);
+			inherit_scenario(scenario, map_data_cfg);
+		}
+		else {
+			//we have an plain map_data file
+			scenario["map_data"]= map_data;
+		}	
+	}
+}
+
 void saved_game::expand_random_scenario()
 {
 	expand_scenario();
@@ -452,10 +487,7 @@ void saved_game::expand_random_scenario()
 		}
 
 		// If no map_data is provided, try to load the specified file directly
-		if(starting_point_["map_data"].empty() && !starting_point_["map_file"].empty()) {
-			starting_point_["map_data"] = filesystem::read_map(starting_point_["map_file"]);
-		}
-
+		expand_map_file(starting_point_);
 		// If the map should be randomly generated
 		// We don’t want that we accidentally to this twice so we check for starting_point_["map_data"].empty()
 		if(starting_point_["map_data"].empty() && !starting_point_["map_generation"].empty()) {

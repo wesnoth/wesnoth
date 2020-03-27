@@ -59,6 +59,35 @@ public:
 
 
 template<>
+class config_value_translator<std::string> {
+public:
+
+	static std::string cfg_to_value(const config &cfg)
+	{
+		return cfg["value"].str();
+	}
+
+	static void cfg_to_value(const config &cfg, std::string &value)
+	{
+		value = cfg_to_value(cfg);
+	}
+
+	static void value_to_cfg(const std::string &value, config &cfg)
+	{
+		cfg["value"] = value;
+	}
+
+	static config value_to_cfg(const std::string &value)
+	{
+		config cfg;
+		value_to_cfg(value,cfg);
+		return cfg;
+	}
+
+};
+
+
+template<>
 class config_value_translator<bool> {
 public:
 
@@ -83,7 +112,48 @@ public:
 		value_to_cfg(value,cfg);
 		return cfg;
 	}
+};
 
+class leader_aspects_visitor : public boost::static_visitor<std::string> {
+public:
+	std::string operator()(const bool b) const {
+		if (b) {
+			return "yes";
+		} else {
+			return "no";
+		}
+	}
+	std::string operator()(const std::vector<std::string> s) const { return utils::join(s); }
+};
+
+template<>
+class config_value_translator< boost::variant<bool, std::vector<std::string>> > {
+public:
+
+	static boost::variant<bool, std::vector<std::string>> cfg_to_value(const config &cfg)
+	{
+		if (cfg["value"].to_bool(true) == cfg["value"].to_bool(false)) {
+			return cfg["value"].to_bool();
+		}
+		return utils::split(cfg["value"]);
+	}
+
+	static void cfg_to_value(const config &cfg, boost::variant<bool, std::vector<std::string>> &value)
+	{
+		value = cfg_to_value(cfg);
+	}
+
+	static void value_to_cfg(const boost::variant<bool, std::vector<std::string>> &value, config &cfg)
+	{
+		cfg["value"] = boost::apply_visitor(leader_aspects_visitor(), value);
+	}
+
+	static config value_to_cfg(const boost::variant<bool, std::vector<std::string>> &value)
+	{
+		config cfg;
+		value_to_cfg(value,cfg);
+		return cfg;
+	}
 };
 
 template<>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 22:41+0300\n"
+"POT-Creation-Date: 2020-03-09 20:11-0300\n"
 "PO-Revision-Date: 2013-09-09 11:47+0700\n"
 "Last-Translator: Yuristyawan Pambudi Wicaksana <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -149,9 +149,13 @@ msgstr "Tampilkan jenis semua unit dalam bantuan"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
+#, fuzzy
+#| msgid ""
+#| "Show all unit types in the help (requires restart). This does not alter "
+#| "the list of encountered units"
 msgid ""
-"Show all unit types in the help (requires restart). This does not alter the "
-"list of encountered units"
+"Show all unit types in the help (requires restart). If unset, only units "
+"that have been encountered will be shown."
 msgstr ""
 "Tampilkan jenis semua unit dalam bantuan (memerlukan restart).  Ini tidak "
 "mengubah daftar unit yang dihadapi"
@@ -179,50 +183,33 @@ msgstr ""
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:144
-msgid "Graphics scaling options"
-msgstr ""
-
-#. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:150
 msgid "Customize orb colors"
 msgstr ""
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:156
+#: data/advanced_preferences.cfg:150
 msgid "Logging"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:162
+#: data/advanced_preferences.cfg:156
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:163
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:170
-#, fuzzy
-#| msgid "Sound Effects"
-msgid "Show haloing effects"
-msgstr "Efek Suara"
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:171
-msgid "Show special unit graphical effects"
-msgstr ""
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:178
+#: data/advanced_preferences.cfg:164
 msgid "Show deprecation messages in-game"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:179
+#: data/advanced_preferences.cfg:165
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -230,12 +217,12 @@ msgid ""
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:186
+#: data/advanced_preferences.cfg:172
 msgid "Use experimental PRNG combat"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:187
+#: data/advanced_preferences.cfg:173
 msgid ""
 "Enables more determinstic chance-to-hit calculations. This is an "
 "experimental feature designed to bring the observed hit/miss rate more in "
@@ -245,120 +232,26 @@ msgid ""
 "option must also be enabled when creating a game for this to work."
 msgstr ""
 
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:197
-msgid "Joystick support"
-msgstr "Dukungan joystick"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:204
-msgid "Joystick: number of the scroll X-axis joystick"
-msgstr "Joystick: Jumlah Gulir Joystick sumbu-X "
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:214
-msgid "Joystick: number of the scroll X-axis"
-msgstr "Joystick: Jumlah Gulir sumbu-X"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:224
-msgid "Joystick: number of the scroll Y-axis joystick"
-msgstr "Joystick: Jumlah Gulir Joystick sumbu-Y "
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:234
-msgid "Joystick: number of the scroll Y-axis"
-msgstr "Joystick: Jumlah Gulir sumbu-Y"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:244
-msgid "Joystick: deadzone of the scrolling stick"
-msgstr "Joystick:  Zona mati dari Stick Bergulir"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:254
-msgid "Joystick: number of the cursor X-axis joystick"
-msgstr "Joystik: jumlah kursor joystik sumbu-X "
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:264
-msgid "Joystick: number of the cursor X-axis"
-msgstr "Joystick: Jumlah Kursor sumbu-X"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:274
-msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr "Joystick: Jumlah Kursor Joystick sumbu-Y "
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:284
-msgid "Joystick: number of the cursor Y-axis"
-msgstr "Joystick: Jumlah Kursor sumbu-Y"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:294
-msgid "Joystick: deadzone of the cursor stick"
-msgstr "Joystick: Zona mati dari Stick Kursor"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:304
-msgid "Joystick: number of the mouse X-axis joystick"
-msgstr "Joystick: Jumlah Mouse Joystick sumbu-X "
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:314
-msgid "Joystick: number of the mouse X-axis"
-msgstr "Joystick: Jumlah Mouse sumbu-X"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:324
-msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr "Joystick: Jumlah Mouse Joystick sumbu-Y "
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:334
-msgid "Joystick: number of the mouse Y-axis"
-msgstr "Joystick: Jumlah Mouse sumbu-Y"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:344
-msgid "Joystick: deadzone of the mouse stick"
-msgstr "Joystick: Zona mati dari Stick Mouse"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:354
-msgid "Joystick: number of the thrust axis joystick"
-msgstr "Joystick: Jumlah Sumbu Dorongan Joystick "
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:364
-msgid "Joystick: number of the thrust axis"
-msgstr "Joystick: Jumlah Sumbu Dorongan"
-
-#. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:374
-msgid "Joystick: deadzone of the thruster"
-msgstr "Joystick: Zona mati dari Pendorong"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1060
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1054
 msgid "poisoned"
 msgstr "keracunan"
 
 #. [objectives]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:260
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:236
 #: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
 msgstr "Emas terbawa:"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [note]
 #. [lua]: generate_objectives
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:272
-#: data/lua/wml/objectives.lua:39
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
+#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "Catatan:"
 
@@ -390,37 +283,37 @@ msgid "Artwork and Graphics"
 msgstr "Seni dan Grafik"
 
 #. [about]
-#: data/core/about.cfg:753
+#: data/core/about.cfg:773
 msgid "Music"
 msgstr "Musik"
 
 #. [about]
-#: data/core/about.cfg:790
+#: data/core/about.cfg:810
 msgid "Sound Effects"
 msgstr "Efek Suara"
 
 #. [about]
-#: data/core/about.cfg:814
+#: data/core/about.cfg:834
 msgid "Campaign Design"
 msgstr "Model Kampanye"
 
 #. [about]
-#: data/core/about.cfg:900
+#: data/core/about.cfg:920
 msgid "Multiplayer Maps and Balancing"
 msgstr "Peta-peta Multi-Pemain dan Keseimbangan"
 
 #. [about]
-#: data/core/about.cfg:945
+#: data/core/about.cfg:965
 msgid "Packagers"
 msgstr "Pengepak-pengepak"
 
 #. [about]
-#: data/core/about.cfg:1052
+#: data/core/about.cfg:1072
 msgid "Miscellaneous Contributors"
 msgstr "Penyumbang bermacam-macam"
 
 #. [about]
-#: data/core/about.cfg:1746
+#: data/core/about.cfg:1772
 msgid "Bots"
 msgstr "Robot"
 
@@ -431,100 +324,95 @@ msgstr "Bahasa Afrika"
 
 #. [about]
 #: data/core/about_i18n.cfg:24
+#, fuzzy
+#| msgid "Greek Translation"
+msgid "Ancient Greek Translation"
+msgstr "Bahasa Yunani"
+
+#. [about]
+#: data/core/about_i18n.cfg:32
 msgid "Arabic Translation"
 msgstr "Bahasa Arab"
 
 #. [about]
-#: data/core/about_i18n.cfg:31
-#, fuzzy
-#| msgid "Estonian Translation"
-msgid "Asturian Translation"
-msgstr "Bahasa Estonia"
-
-#. [about]
-#: data/core/about_i18n.cfg:37
+#: data/core/about_i18n.cfg:39
 msgid "Basque Translation"
 msgstr "Bahasa Basque"
 
 #. [about]
-#: data/core/about_i18n.cfg:50
+#: data/core/about_i18n.cfg:52
 msgid "Bulgarian Translation"
 msgstr "Bahasa Bulgaria"
 
 #. [about]
-#: data/core/about_i18n.cfg:73
+#: data/core/about_i18n.cfg:75
 msgid "Catalan Translation"
 msgstr "Bahasa Katalonia"
 
 #. [about]
-#: data/core/about_i18n.cfg:114
+#: data/core/about_i18n.cfg:116
 msgid "Chinese Translation"
 msgstr "Bahasa Cina"
 
 #. [about]
-#: data/core/about_i18n.cfg:202
+#: data/core/about_i18n.cfg:207
 msgid "Chinese (Taiwan) Translation"
 msgstr "Bahasa Cina (Taiwan)"
 
 #. [about]
-#: data/core/about_i18n.cfg:215
+#: data/core/about_i18n.cfg:220
 msgid "Croatian Translation"
 msgstr "Bahasa Kroasia"
 
 #. [about]
-#: data/core/about_i18n.cfg:225
+#: data/core/about_i18n.cfg:230
 msgid "Czech Translation"
 msgstr "Bahasa Cekoslovakia"
 
 #. [about]
-#: data/core/about_i18n.cfg:294
+#: data/core/about_i18n.cfg:299
 msgid "Danish Translation"
 msgstr "Bahasa Denmark"
 
 #. [about]
-#: data/core/about_i18n.cfg:325
+#: data/core/about_i18n.cfg:330
 msgid "Dutch Translation"
 msgstr "Bahasa Belanda"
 
 #. [about]
-#: data/core/about_i18n.cfg:393
+#: data/core/about_i18n.cfg:401
 msgid "English (GB) Translation"
 msgstr "Bahasa Inggris (Britania)"
 
 #. [about]
-#: data/core/about_i18n.cfg:418
+#: data/core/about_i18n.cfg:426
 msgid "English (Shaw) Translation"
 msgstr "Bahasa Inggris (Britania)"
 
 #. [about]
-#: data/core/about_i18n.cfg:436
+#: data/core/about_i18n.cfg:444
 msgid "Esperanto Translation"
 msgstr "Bahasa Esperanto"
 
 #. [about]
-#: data/core/about_i18n.cfg:455
+#: data/core/about_i18n.cfg:463
 msgid "Estonian Translation"
 msgstr "Bahasa Estonia"
 
 #. [about]
-#: data/core/about_i18n.cfg:465
+#: data/core/about_i18n.cfg:473
 msgid "Filipino Translation"
 msgstr "Bahasa Pilipina"
 
 #. [about]
-#: data/core/about_i18n.cfg:475
+#: data/core/about_i18n.cfg:483
 msgid "Finnish Translation"
 msgstr "Bahasa Finlandia"
 
 #. [about]
-#: data/core/about_i18n.cfg:524
+#: data/core/about_i18n.cfg:532
 msgid "French Translation"
 msgstr "Bahasa Perancis"
-
-#. [about]
-#: data/core/about_i18n.cfg:686
-msgid "Friulian Translation"
-msgstr "Bahasa Friulia"
 
 #. [about]
 #: data/core/about_i18n.cfg:693
@@ -577,123 +465,123 @@ msgid "Japanese Translation"
 msgstr "Bahasa Jepang"
 
 #. [about]
-#: data/core/about_i18n.cfg:1109
+#: data/core/about_i18n.cfg:1112
 msgid "Korean Translation"
 msgstr "Bahasa Korea"
 
 #. [about]
-#: data/core/about_i18n.cfg:1117
+#: data/core/about_i18n.cfg:1120
 msgid "Latin Translation"
 msgstr "Bahasa Latin"
 
 #. [about]
-#: data/core/about_i18n.cfg:1143
+#: data/core/about_i18n.cfg:1146
 msgid "Latvian Translation"
 msgstr "Bahasa Latvia"
 
 #. [about]
-#: data/core/about_i18n.cfg:1158
+#: data/core/about_i18n.cfg:1161
 msgid "Lithuanian Translation"
 msgstr "Bahasa Lithuania"
 
 #. [about]
-#: data/core/about_i18n.cfg:1183
+#: data/core/about_i18n.cfg:1186
 msgid "Macedonian Translation"
 msgstr "Bahasa Makedonia"
 
 #. [about]
-#: data/core/about_i18n.cfg:1190
+#: data/core/about_i18n.cfg:1193
 msgid "Marathi Translation"
 msgstr "Bahasa Maharastra"
 
 #. [about]
-#: data/core/about_i18n.cfg:1199
+#: data/core/about_i18n.cfg:1202
 msgid "Norwegian Translation"
 msgstr "Bahasa Norwegia"
 
 #. [about]
-#: data/core/about_i18n.cfg:1224
+#: data/core/about_i18n.cfg:1227
 msgid "Old English Translation"
 msgstr "Bahasa Inggris Tua"
 
 #. [about]
-#: data/core/about_i18n.cfg:1242
+#: data/core/about_i18n.cfg:1245
 msgid "Polish Translation"
 msgstr "Bahasa Polandia"
 
 #. [about]
-#: data/core/about_i18n.cfg:1290
+#: data/core/about_i18n.cfg:1293
 msgid "Portuguese Translation"
 msgstr "Bahasa Portugis"
 
 #. [about]
-#: data/core/about_i18n.cfg:1304
+#: data/core/about_i18n.cfg:1307
 msgid "Portuguese (Brazil) Translation"
 msgstr "Bahasa Portugis (Brasil)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1362
+#: data/core/about_i18n.cfg:1365
 msgid "Romanian Translation"
 msgstr "Bahasa Rumania"
 
 #. [about]
-#: data/core/about_i18n.cfg:1370
+#: data/core/about_i18n.cfg:1373
 msgid "Russian Translation"
 msgstr "Bahasa Rusia"
 
 #. [about]
-#: data/core/about_i18n.cfg:1462
+#: data/core/about_i18n.cfg:1465
 msgid "Scottish Gaelic Translation"
 msgstr "Bahasa Gael Skotlandia"
 
 #. [about]
-#: data/core/about_i18n.cfg:1471
+#: data/core/about_i18n.cfg:1474
 msgid "Serbian Translation"
 msgstr "Bahasa Serbia"
 
 #. [about]
-#: data/core/about_i18n.cfg:1490
+#: data/core/about_i18n.cfg:1493
 msgid "Slovak Translation"
 msgstr "Bahasa Slovakia"
 
 #. [about]
-#: data/core/about_i18n.cfg:1519
+#: data/core/about_i18n.cfg:1522
 msgid "Slovenian Translation"
 msgstr "Bahasa Slovenia"
 
 #. [about]
-#: data/core/about_i18n.cfg:1535
+#: data/core/about_i18n.cfg:1538
 msgid "Spanish Translation"
 msgstr "Bahasa Spanyol"
 
 #. [about]
-#: data/core/about_i18n.cfg:1617
+#: data/core/about_i18n.cfg:1620
 msgid "Swedish Translation"
 msgstr "Bahasa Swedia"
 
 #. [about]
-#: data/core/about_i18n.cfg:1658
+#: data/core/about_i18n.cfg:1661
 msgid "Turkish Translation"
 msgstr "Bahasa Turki"
 
 #. [about]
-#: data/core/about_i18n.cfg:1683
+#: data/core/about_i18n.cfg:1686
 msgid "Ukrainian Translation"
 msgstr "Bahasa Ukrania"
 
 #. [about]
-#: data/core/about_i18n.cfg:1699
+#: data/core/about_i18n.cfg:1702
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Bahasa Valensia (Katalonia selatan)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1712
+#: data/core/about_i18n.cfg:1715
 msgid "Vietnamese Translation"
 msgstr "Bahasa Vietnam"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1732
+#: data/core/about_i18n.cfg:1735
 msgid "RACV’s Translation"
 msgstr "Terjemahan RACV"
 
@@ -920,8 +808,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr ""
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Air Suci"
@@ -964,8 +852,8 @@ msgstr "Bahasa Yunani"
 msgid "Gray Potion"
 msgstr ""
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Racun"
@@ -1041,8 +929,8 @@ msgstr ""
 msgid "Stone Tablet"
 msgstr ""
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Trisula Badai"
@@ -1550,32 +1438,28 @@ msgstr ""
 "currently_doing_special_description"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:43
+#: data/core/macros/deprecated-utils.cfg:34
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has been renamed to: "
 msgstr "Tidak ada senjata yang bisa dipakai"
 
-#: data/core/macros/deprecated-utils.cfg:95
-msgid "<small>(early finish bonus)</small>"
-msgstr "<small>(bonus menyelesaikan lebih awal)</small>"
-
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:99 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "Bonus menyelesaikan lebih awal."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:103 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "Tidak ada bonus menyelesaikan lebih awal."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:107 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr "Tidak ada emas yang dibawa ke skenario berikutnya."
 
-#: data/core/macros/deprecated-utils.cfg:111
+#: data/core/macros/deprecated-utils.cfg:63
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1583,7 +1467,7 @@ msgstr ""
 "\n"
 "100% emas dimiliki ketika selesai dibawa ke skenario berikutnya."
 
-#: data/core/macros/deprecated-utils.cfg:116
+#: data/core/macros/deprecated-utils.cfg:68
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1591,7 +1475,7 @@ msgstr ""
 "\n"
 "40% emas dimiliki ketika selesai dibawa ke skenario berikutnya."
 
-#: data/core/macros/deprecated-utils.cfg:121
+#: data/core/macros/deprecated-utils.cfg:73
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -3436,7 +3320,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:176
+#: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:187
 msgid "Village"
 msgstr "Desa"
 
@@ -3470,14 +3354,14 @@ msgstr "Tak Terlalui"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:467
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
 msgid "Fog"
 msgstr "Kabut"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:470
-#: src/game_initialization/lobby_data.cpp:473
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
+#: src/game_initialization/lobby_data.cpp:445
 msgid "Shroud"
 msgstr "Selubung"
 
@@ -3866,49 +3750,38 @@ msgstr ""
 "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
 "Junicode-Regular.ttf"
 
-#. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:186
-msgid "(Note: You should use $replacement instead in new code)"
-msgstr ""
-
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:193 src/deprecation.cpp:68
-msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr ""
-
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:912
+#: data/lua/wml-tags.lua:899
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1060
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1054
 msgid "female^poisoned"
 msgstr "keracunan"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1067
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1061
 msgid "female^slowed"
 msgstr "diperlambatkan"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1067
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1061
 msgid "slowed"
 msgstr "diperlambatkan"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1073
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1067
 msgid "female^petrified"
 msgstr "membatu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1073
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1067
 msgid "petrified"
 msgstr "membatu"
 
@@ -3923,6 +3796,13 @@ msgid "unhealable"
 msgstr "tidak bisa menyembuhkan"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [lua]: wesnoth.wml_actions.message
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2864
+#: src/scripting/game_lua_kernel.cpp:2899
+msgid "input"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
@@ -3934,57 +3814,186 @@ msgid "Defeat:"
 msgstr "Kekalahan:"
 
 #. [lua]: generate_objectives
+#: data/lua/wml/objectives.lua:57
+#, fuzzy
+#| msgid "(this turn left)"
+msgid "(this turn left)"
+msgid_plural "($remaining_turns turns left)"
+msgstr[0] "(sisa giliran ini)"
+
+#. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
 #, fuzzy
 #| msgid "%d%% of gold carried over to the next scenario."
 msgid "$percent|% of gold carried over to the next scenario."
 msgstr "%d%% emas yang dibawa ke skenario berikutnya."
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:156
-#: src/game_initialization/mp_game_utils.cpp:76
-msgid "Defeat enemy leader(s)"
+#. [leadership]: id=magical_leadership
+#: data/scenario-test.cfg:339
+#, fuzzy
+#| msgid "female^leadership"
+msgid "magical leadership"
+msgstr "memimpin"
+
+#. [leadership]: id=magical_leadership
+#: data/scenario-test.cfg:340
+#, fuzzy
+#| msgid "female^leadership"
+msgid "female^magical leadership"
+msgstr "memimpin"
+
+#. [leadership]: id=magical_leadership
+#: data/scenario-test.cfg:341
+#, fuzzy
+#| msgid ""
+#| "Leadership:\n"
+#| "This unit can lead our own units that are next to it, making them fight "
+#| "better.\n"
+#| "\n"
+#| "Adjacent own units of lower level will do more damage in battle. When a "
+#| "unit adjacent to, of a lower level than, and on the same side as a unit "
+#| "with Leadership engages in combat, its attacks do 25% more damage times "
+#| "the difference in their levels."
+msgid ""
+"This unit can lead your own units that are next to it, making them fight "
+"better with magicals weapons.\n"
+"Adjacent own units of lower level will do more damage in battle. When a unit "
+"adjacent to, of a lower level than, and on the same side as a unit with "
+"Leadership engages in combat, its attacks do 25% more damage times the "
+"difference in their levels."
 msgstr ""
-"Kemenangan:\n"
-"Kalahkan pemimpin musuh"
+"Memimpin:\n"
+"Unit ini bisa memimpin unit kita yang ada di sampingnya, membuat mereka "
+"bertempur lebih baik.\n"
+"\n"
+"Unit sendiri dengan level lebih rendah yang bersebelahan akan melukai lebih "
+"banyak di pertempuran. Ketika sebuah unit di sebelah, dengan level lebih "
+"rendah, dan di sisi yang sama dengan unit memiliki Memimpin bertarung, "
+"serangannya melukai 25% lebih banyak dikalikan dengan perbedaan level mereka."
+
+#. [resistance]: id=melee_steadfast
+#: data/scenario-test.cfg:366
+msgid "steadfast"
+msgstr "kukuh"
+
+#. [resistance]: id=melee_steadfast
+#: data/scenario-test.cfg:367
+msgid "female^steadfast"
+msgstr "kukuh"
+
+#. [resistance]: id=melee_steadfast
+#: data/scenario-test.cfg:368
+#, fuzzy
+#| msgid ""
+#| "Steadfast:\n"
+#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
+#| "defending. Vulnerabilities are not affected."
+msgid ""
+"This unit’s resistances are added to 20%, up to a maximum of 50%, when "
+"defending to melle attacks. Vulnerabilities are not affected."
+msgstr ""
+"Kukuh:\n"
+"Daya tahan unit ini didua kali lipat, sampai maksimum 50%, ketika bertahan. "
+"Kelemahan tidak terpengaruh."
+
+#. [plague]: id=plague, type=Walking Corpse
+#: data/scenario-test.cfg:403
+msgid "plague"
+msgstr "mewabah"
+
+#. [plague]: id=plague, type=Walking Corpse
+#: data/scenario-test.cfg:404
+#, fuzzy
+#| msgid ""
+#| "Plague:\n"
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#| "doesn’t work on Undead or units in villages."
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Mewabah:\n"
+"Ketika sebuah unit dibunuh oleh serangan Mewabah, unit itu digantikan dengan "
+"seorang Mayat Berjalan pada sisi sama dengan unit memiliki serangan Mewabah. "
+"Ini tidak mengefek Tak-Mati atau unit di desa."
+
+#. [firststrike]: id=initiative
+#: data/scenario-test.cfg:465
+msgid "initiative"
+msgstr ""
+
+#. [firststrike]: id=initiative
+#: data/scenario-test.cfg:466
+#, fuzzy
+#| msgid ""
+#| " The length of this unit’s weapon allows it to strike first in melee, "
+#| "even in defense."
+msgid ""
+"All adjacent friendly units will strike first in melee combat, even when "
+"defending."
+msgstr ""
+"Panjang senjata unit ini membolehkannya menyerang pertama di pertarungan "
+"jarak dekat, bahkan ketika berlindung."
+
+#. [chance_to_hit]: id=marksman_leadership
+#: data/scenario-test.cfg:478
+msgid "cantor"
+msgstr ""
+
+#. [chance_to_hit]: id=marksman_leadership
+#: data/scenario-test.cfg:479
+#, fuzzy
+#| msgid "female^chaotic"
+msgid "female^cantor"
+msgstr "brutal"
+
+#. [chance_to_hit]: id=marksman_leadership
+#: data/scenario-test.cfg:480
+msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
+msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:886 data/scenario-test.cfg:914
-msgid "aura of seath ("
-msgstr ""
+#: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
+#, fuzzy
+#| msgid "female^healthy"
+msgid "aura of death ("
+msgstr "sehat"
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
-#: data/scenario-test.cfg:887 data/scenario-test.cfg:915
+#: data/scenario-test.cfg:1067 data/scenario-test.cfg:1095
 #, fuzzy
 #| msgid "female^healthy"
 msgid "female^aura of death ("
 msgstr "sehat"
 
-#: data/scenario-test.cfg:1073 src/game_initialization/depcheck.cpp:491
+#: data/scenario-test.cfg:1253 src/game_initialization/depcheck.cpp:489
 msgid "OK"
 msgstr "OK"
 
-#: data/scenario-test.cfg:1074
+#: data/scenario-test.cfg:1254
 msgid "Cancel"
 msgstr "Batalkan"
 
 #. [language]
-#: data/scenario-test.cfg:4155
+#: data/scenario-test.cfg:4340
 msgid "very long"
 msgstr "sangat lama"
 
 #. [language]
-#: data/scenario-test.cfg:4156
+#: data/scenario-test.cfg:4341
 msgid "electrical"
 msgstr "elektris"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:588
-msgid "Play"
-msgstr "Main"
+#: data/themes/_initial.cfg:428
+#, fuzzy
+#| msgid "replay"
+msgid "replay^Play"
+msgstr "permainan ulang"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
@@ -3992,9 +4001,11 @@ msgid "continuous replay"
 msgstr "main ulang terus-menerus"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:443 data/themes/_initial.cfg:602
-msgid "Stop"
-msgstr "Stop"
+#: data/themes/_initial.cfg:443
+#, fuzzy
+#| msgid "replay"
+msgid "replay^Stop"
+msgstr "permainan ulang"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:444
@@ -4002,9 +4013,11 @@ msgid "pause after current move"
 msgstr ""
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:459 data/themes/_initial.cfg:616
-msgid "Reset"
-msgstr "Pasang Lagi"
+#: data/themes/_initial.cfg:459
+#, fuzzy
+#| msgid "replay"
+msgid "replay^Reset"
+msgstr "permainan ulang"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
@@ -4072,93 +4085,40 @@ msgstr "Lompati animasi"
 msgid "Replay"
 msgstr "Main Ulang"
 
+#. [action]: id=button-playreplay, type=image
+#: data/themes/_initial.cfg:588
+msgid "Play"
+msgstr "Main"
+
+#. [action]: id=button-stopreplay, type=image
+#: data/themes/_initial.cfg:602
+msgid "Stop"
+msgstr "Stop"
+
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:603
 msgid "pause"
 msgstr ""
 
-#. [theme]: id=Classic
-#: data/themes/classic.cfg:11
-msgid "theme^Classic"
-msgstr ""
-
-#. [theme]: id=Classic
-#: data/themes/classic.cfg:13
-msgid "The classic, pre-1.12 theme"
-msgstr ""
+#. [action]: id=button-resetreplay, type=image
+#: data/themes/_initial.cfg:616
+msgid "Reset"
+msgstr "Pasang Lagi"
 
 #. [menu]: id=menu-main
-#: data/themes/classic.cfg:86 data/themes/cutscene.cfg:37
-#: data/themes/default.cfg:80
+#: data/themes/cutscene.cfg:37 data/themes/default.cfg:80
 msgid "Menu"
 msgstr "Menu"
 
-#. [menu]: id=actions-menu
-#: data/themes/classic.cfg:97 data/themes/default.cfg:98
-msgid "Actions"
-msgstr "Aksi"
-
 #. [action]: id=button-endturn
-#: data/themes/classic.cfg:120 data/themes/cutscene.cfg:53
-#: data/themes/default.cfg:131
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:133
 msgid "End Turn"
 msgstr "Akhir Giliran"
 
 #. [action]: id=button-endturn
-#: data/themes/classic.cfg:121 data/themes/cutscene.cfg:54
-#: data/themes/default.cfg:132
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:134
 msgid "End Scenario"
 msgstr "Akhir Skenario"
-
-#. [label]: id=label-hp
-#: data/themes/classic.cfg:202 data/themes/default.cfg:144
-msgid "HP"
-msgstr "Darah"
-
-#. [label]: id=label-xp
-#: data/themes/classic.cfg:211 data/themes/default.cfg:153
-msgid "XP"
-msgstr "AP"
-
-#. [label]: id=gold-icon
-#: data/themes/classic.cfg:221 data/themes/default.cfg:178
-msgid "gold"
-msgstr "emas"
-
-#. [label]: id=villages-icon
-#: data/themes/classic.cfg:230 data/themes/default.cfg:187
-msgid "villages"
-msgstr "desa"
-
-#. [label]: id=units-icon
-#: data/themes/classic.cfg:239 data/themes/default.cfg:196
-msgid "units"
-msgstr "unit-unit"
-
-#. [label]: id=upkeep-icon
-#: data/themes/classic.cfg:248 data/themes/default.cfg:205
-msgid "upkeep"
-msgstr "pengeluaran"
-
-#. [label]: id=income-icon
-#: data/themes/classic.cfg:257 data/themes/default.cfg:214
-msgid "income"
-msgstr "pendapatan"
-
-#. [unit_level]: id=unit-level
-#: data/themes/classic.cfg:429
-msgid "statuspanel^level"
-msgstr "level"
-
-#. [unit_moves]: id=unit-moves
-#: data/themes/classic.cfg:459
-msgid "statuspanel^moves"
-msgstr "pergerakan"
-
-#. [unit_defense]: id=unit-defense
-#: data/themes/classic.cfg:468
-msgid "statuspanel^terrain def."
-msgstr "lantai pertahanan"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:32
@@ -4179,18 +4139,33 @@ msgstr "AI Asli"
 msgid "Back to..."
 msgstr "Kembali ke giliran"
 
+#. [menu]: id=actions-menu
+#: data/themes/default.cfg:98
+msgid "Actions"
+msgstr "Aksi"
+
+#. [label]: id=label-hp
+#: data/themes/default.cfg:146
+msgid "HP"
+msgstr "Darah"
+
+#. [label]: id=label-xp
+#: data/themes/default.cfg:155
+msgid "XP"
+msgstr "AP"
+
 #. [label]: id=label-mp
-#: data/themes/default.cfg:161
+#: data/themes/default.cfg:163
 msgid "MP"
 msgstr "AG"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:169
+#: data/themes/default.cfg:171
 msgid "def"
 msgstr ""
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:406
+#: data/themes/default.cfg:408
 #, fuzzy
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
@@ -4261,7 +4236,8 @@ msgstr ""
 #: data/tips.cfg:133 data/tips.cfg:161 data/tips.cfg:165 data/tips.cfg:169
 #: data/tips.cfg:177 data/tips.cfg:185 data/tips.cfg:193 data/tips.cfg:197
 #: data/tips.cfg:206 data/tips.cfg:210 data/tips.cfg:214 data/tips.cfg:222
-#: data/tips.cfg:242 data/tips.cfg:250 data/tips.cfg:258 data/tips.cfg:267
+#: data/tips.cfg:242 data/tips.cfg:250 data/tips.cfg:258 data/tips.cfg:277
+#: data/tips.cfg:282
 msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgstr "<i>― Buku Penuntun Taktis Wesnoth</i>"
 
@@ -4899,9 +4875,15 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:221
+#, fuzzy
+#| msgid ""
+#| "Try to operate units with a small number of powerful attacks—such as Dark "
+#| "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or "
+#| "threes. This gives you another try whenever your first devastating attack "
+#| "misses — as inevitably happens from time to time."
 msgid ""
-"Try to operate units with a small number of powerful attacks—such as Dark "
-"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
+"Try to operate units with a small number of powerful attacks — such as Dark "
+"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
@@ -4913,11 +4895,17 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:225
+#, fuzzy
+#| msgid ""
+#| "Units with three or more attacks—especially magical attacks—are ideal for "
+#| "finishing off enemies with only a few hitpoints remaining. Be sure to use "
+#| "leadership—or a strong or dextrous unit—whenever the extra point or two "
+#| "of damage makes a one-hit kill possible."
 msgid ""
-"Units with three or more attacks—especially magical attacks—are ideal for "
-"finishing off enemies with only a few hitpoints remaining. Be sure to use "
-"leadership—or a strong or dextrous unit—whenever the extra point or two of "
-"damage makes a one-hit kill possible."
+"Units with three or more attacks — especially magical attacks — are ideal "
+"for finishing off enemies with only a few hitpoints remaining. Be sure to "
+"use leadership — or a strong or dextrous unit — whenever the extra point or "
+"two of damage makes a one-hit kill possible."
 msgstr ""
 "Unit-unit dengan tiga atau lebih serangan—terutama serangan sihir—baik untuk "
 "menghabisi musuh-musuh dengan hanya tersisa sedikit hitpoints. Pastikan "
@@ -5040,6 +5028,44 @@ msgstr "<i>― Riwayat Hidup Gweddry, 627TW</i>"
 #. [tip]
 #: data/tips.cfg:266
 msgid ""
+"Some types of terrain give unique bonuses, such as healing or illumination."
+msgstr ""
+
+#. [tip]
+#. Translate the word "Flight" as a collective noun for drakes
+#: data/tips.cfg:268
+#, fuzzy
+#| msgid "<i>― Great Mage Delfador, 516YW</i>"
+msgid "<i>― Galun, Flight Leader, 5YW</i>"
+msgstr "<i>― Penyihir Hebat Delfador, 516TW</i>"
+
+#. [tip]
+#: data/tips.cfg:271
+msgid ""
+"If a unit is positioned next to healers from two allied sides, the unit will "
+"be healed on both sides’ turns. This way, a unit can be healed faster than "
+"otherwise possible."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:272
+#, fuzzy
+#| msgid "<i>― Lord Hamel of Knalga</i>"
+msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
+msgstr "<i>― Tuan Hamel dari Knalga</i>"
+
+#. [tip]
+#. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
+#: data/tips.cfg:276
+msgid ""
+"Did you know that you can change the difficulty level during a campaign? "
+"Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
+"Game</i> screen when loading start-of-scenario save files."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:281
+msgid ""
 "<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
@@ -5052,13 +5078,13 @@ msgstr ""
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
-#: src/actions/advancement.cpp:234
+#: src/actions/advancement.cpp:256
 #, fuzzy
 #| msgid "No advancement"
 msgid "waiting for^an advancement choice"
 msgstr "Tidak ada kenaikan"
 
-#: src/actions/attack.cpp:600 src/actions/attack.cpp:1350
+#: src/actions/attack.cpp:594 src/actions/attack.cpp:1344
 msgid "An invalid attacker weapon got selected."
 msgstr "Suatu senjata penyerang cacat yang terpilih."
 
@@ -5094,7 +5120,7 @@ msgstr "Anda tidak memiliki pemimpin untuk merekrut."
 #: src/actions/create.cpp:478
 #, fuzzy
 #| msgid "None of your leaders is able to recall that unit."
-msgid "None of your leaders are able to recruit that unit."
+msgid "None of your leaders are able to recruit this unit."
 msgstr ""
 "Tidak satupun dari pemimpin-pemimpin anda mampu memanggil kembali unit itu."
 
@@ -5288,7 +5314,7 @@ msgstr[0] ""
 msgid "Broken Dependencies"
 msgstr "Menginstall kepercayaan-kepercayaan "
 
-#: src/addon/client.cpp:418
+#: src/addon/client.cpp:416
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5297,38 +5323,38 @@ msgid_plural ""
 "continue?"
 msgstr[0] ""
 
-#: src/addon/client.cpp:422
+#: src/addon/client.cpp:420
 #, fuzzy
 #| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
 msgstr "Instalasi gagal"
 
-#: src/addon/client.cpp:445
+#: src/addon/client.cpp:443
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:449
+#: src/addon/client.cpp:447
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:453
+#: src/addon/client.cpp:451
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:457
+#: src/addon/client.cpp:455
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
 msgstr "Apakah anda mau melanjutkan?"
 
-#: src/addon/client.cpp:459 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:227
+#: src/addon/client.cpp:457 src/addon/manager_ui.cpp:174
+#: src/game_initialization/multiplayer.cpp:231
 msgid "Confirm"
 msgstr "Tegaskan"
 
-#: src/addon/client.cpp:579
+#: src/addon/client.cpp:577
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
@@ -5392,7 +5418,7 @@ msgstr "tipe addon"
 msgid "addon_type^(unknown)"
 msgstr "(tidak diketahui)"
 
-#: src/addon/info.cpp:220
+#: src/addon/info.cpp:217
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -5515,7 +5541,7 @@ msgstr "Meminta informasi nama pengguna $nick"
 msgid "(A) — admin command"
 msgstr "(A) - perintah admin"
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1159
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1191
 msgid "(admin only)"
 msgstr "Hanya untuk tim"
 
@@ -5703,17 +5729,21 @@ msgstr ""
 msgid "$elem has been deprecated and removed."
 msgstr ""
 
+#: src/deprecation.cpp:68
+msgid "Invalid deprecation level $level (should be 1-4)"
+msgstr ""
+
 #: src/desktop/notifications.cpp:82
 #, fuzzy
 #| msgid "Chat message aging"
 msgid "Chat message"
 msgstr "Menyimpan lama pesan obrolan"
 
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:574
+#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:575
 msgid "The Battle for Wesnoth"
 msgstr "Peperangan untuk Wesnoth"
 
-#: src/font/text_formatting.cpp:47
+#: src/font/text_formatting.cpp:52
 msgid "Invalid Color"
 msgstr "Warna Tidak Berlaku"
 
@@ -5743,7 +5773,7 @@ msgstr "%d %b"
 msgid "%b %d %Y"
 msgstr "%d %b %y"
 
-#: src/game_config.cpp:522
+#: src/game_config.cpp:523
 #, fuzzy
 #| msgid "Invalid color range: "
 msgid "Invalid color in range: "
@@ -5840,7 +5870,7 @@ msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] ""
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:915
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:937
 msgid "Error: "
 msgstr "Error:"
 
@@ -5860,43 +5890,43 @@ msgstr "Info:"
 msgid "$login|’s game"
 msgstr "Permainan $login"
 
-#: src/game_initialization/connect_engine.cpp:86
+#: src/game_initialization/connect_engine.cpp:87
 msgid "Team"
 msgstr "Tim"
 
-#: src/game_initialization/connect_engine.cpp:990
+#: src/game_initialization/connect_engine.cpp:991
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Pemain lokal tanpa nama"
 
-#: src/game_initialization/connect_engine.cpp:995
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:996
+#: src/game_initialization/connect_engine.cpp:1294
 msgid "Computer Player"
 msgstr "Pemain Komputer"
 
-#: src/game_initialization/connect_engine.cpp:1037
+#: src/game_initialization/connect_engine.cpp:1038
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1289
+#: src/game_initialization/connect_engine.cpp:1290
 msgid "Network Player"
 msgstr "Pemain Jaringan"
 
-#: src/game_initialization/connect_engine.cpp:1292
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Local Player"
 msgstr "Pemain Lokal"
 
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:1295
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1297
+#: src/game_initialization/connect_engine.cpp:1298
 msgid "Reserved"
 msgstr "Disimpan"
 
 #: src/game_initialization/create_engine.cpp:73
-#: src/game_initialization/create_engine.cpp:666
+#: src/game_initialization/create_engine.cpp:662
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
@@ -5920,35 +5950,35 @@ msgstr "Tidak ada bantuan yang tersedia."
 msgid "Custom map."
 msgstr "Perintah"
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:489
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Failed to resolve dependencies"
 msgstr "Menginstall kepercayaan-kepercayaan "
 
-#: src/game_initialization/depcheck.cpp:516
+#: src/game_initialization/depcheck.cpp:514
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:570
-#: src/game_initialization/depcheck.cpp:693
+#: src/game_initialization/depcheck.cpp:568
+#: src/game_initialization/depcheck.cpp:691
 #, fuzzy
 #| msgid "No eras found."
 msgid "No compatible eras found."
 msgstr "Tidak ada era yang ditemukan."
 
-#: src/game_initialization/depcheck.cpp:585
+#: src/game_initialization/depcheck.cpp:583
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:638
-#: src/game_initialization/depcheck.cpp:730
+#: src/game_initialization/depcheck.cpp:636
+#: src/game_initialization/depcheck.cpp:728
 #, fuzzy
 #| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
 msgstr "Tidak ada sisi multi-pemain yang ditemukan"
 
-#: src/game_initialization/depcheck.cpp:667
+#: src/game_initialization/depcheck.cpp:665
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
@@ -5971,83 +6001,89 @@ msgstr "Tidak bisa menemukan tipe pemimpin untuk faction $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:246
+#: src/game_initialization/lobby_data.cpp:224
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $name"
 msgstr "uraian yang hilang $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:248
+#: src/game_initialization/lobby_data.cpp:226
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "uraian yang hilang $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:285
+#: src/game_initialization/lobby_data.cpp:258
 msgid "Unknown era"
 msgstr "Era tidak diketahui"
 
-#: src/game_initialization/lobby_data.cpp:353
-#: src/game_initialization/lobby_data.cpp:386
+#: src/game_initialization/lobby_data.cpp:325
+#: src/game_initialization/lobby_data.cpp:358
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "Sisi"
 
-#: src/game_initialization/lobby_data.cpp:372
+#: src/game_initialization/lobby_data.cpp:344
 msgid "Remote scenario"
 msgstr "Skenario jauh"
 
-#: src/game_initialization/lobby_data.cpp:394
-#: src/game_initialization/lobby_data.cpp:417
+#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:389
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:422
+#: src/game_initialization/lobby_data.cpp:394
 msgid "Unknown scenario"
 msgstr "Skenario tidak diketahui"
 
-#: src/game_initialization/lobby_data.cpp:432
+#: src/game_initialization/lobby_data.cpp:404
 msgid "Reloaded game"
 msgstr "Permainan reload"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:419
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Tempat Kosong:"
 
-#: src/game_initialization/lobby_data.cpp:449
+#: src/game_initialization/lobby_data.cpp:421
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:460
-#: src/game_initialization/lobby_data.cpp:462 src/savegame.cpp:619
+#: src/game_initialization/lobby_data.cpp:432
+#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:639
 msgid "Turn"
 msgstr "Giliran"
 
-#: src/game_initialization/lobby_data.cpp:475
+#: src/game_initialization/lobby_data.cpp:447
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "Versi:"
 
-#: src/game_initialization/lobby_data.cpp:484
+#: src/game_initialization/lobby_data.cpp:456
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Batas waktu"
 
-#: src/game_initialization/lobby_data.cpp:524
+#: src/game_initialization/lobby_data.cpp:496
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:538
+#: src/game_initialization/lobby_data.cpp:510
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
+
+#: src/game_initialization/mp_game_utils.cpp:76
+msgid "Defeat enemy leader(s)"
+msgstr ""
+"Kemenangan:\n"
+"Kalahkan pemimpin musuh"
 
 #: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
@@ -6057,11 +6093,11 @@ msgstr "Tidak bisa menemukan era $era"
 msgid "Connection timed out"
 msgstr "Koneksi timed out."
 
-#: src/game_initialization/multiplayer.cpp:71
+#: src/game_initialization/multiplayer.cpp:74
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:118
+#: src/game_initialization/multiplayer.cpp:121
 #, fuzzy
 #| msgid ""
 #| "The server requires version '$version1' while you are using version "
@@ -6073,11 +6109,11 @@ msgstr ""
 "Server ini memerlukan versi '$version1' sedangkan anda menggunakan versi "
 "'$version2'"
 
-#: src/game_initialization/multiplayer.cpp:128
+#: src/game_initialization/multiplayer.cpp:131
 msgid "Server-side redirect loop"
 msgstr "Putaran kembali dari server"
 
-#: src/game_initialization/multiplayer.cpp:200
+#: src/game_initialization/multiplayer.cpp:204
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6087,29 +6123,29 @@ msgstr ""
 "sampai anda mengaktifkan nama anda melalui email atau meminta seorang "
 "pengurus untuk melakukannya untuk anda."
 
-#: src/game_initialization/multiplayer.cpp:209
+#: src/game_initialization/multiplayer.cpp:213
 msgid "Do you want to continue?"
 msgstr "Apakah anda mau melanjutkan?"
 
-#: src/game_initialization/multiplayer.cpp:211
+#: src/game_initialization/multiplayer.cpp:215
 msgid "Warning"
 msgstr "Peringatan"
 
-#: src/game_initialization/multiplayer.cpp:254
-#: src/game_initialization/multiplayer.cpp:270
-#: src/game_initialization/multiplayer.cpp:273
+#: src/game_initialization/multiplayer.cpp:258
+#: src/game_initialization/multiplayer.cpp:274
+#: src/game_initialization/multiplayer.cpp:277
 msgid "Bad data received from server"
 msgstr "Penerimaan data dari server buruk"
 
-#: src/game_initialization/multiplayer.cpp:306
+#: src/game_initialization/multiplayer.cpp:310
 msgid "You must login first."
 msgstr "Anda harus pertama-tama login."
 
-#: src/game_initialization/multiplayer.cpp:308
+#: src/game_initialization/multiplayer.cpp:312
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Nama '$nick' sudah digunakan."
 
-#: src/game_initialization/multiplayer.cpp:310
+#: src/game_initialization/multiplayer.cpp:314
 #, fuzzy
 #| msgid ""
 #| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
@@ -6121,46 +6157,46 @@ msgstr ""
 "Nama '$nick' berisi karakter yang tidak berlaku. Hanya huruf, angka, garis "
 "bawah dan strip yang dibolehkan."
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:318
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Nama '$nick' terlalu panjang. Nama harus memiliki 20 karakter atau kurang."
 
-#: src/game_initialization/multiplayer.cpp:317
+#: src/game_initialization/multiplayer.cpp:321
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Nama '$nick' dipesan dan tidak bisa digunakan oleh para pemain."
 
-#: src/game_initialization/multiplayer.cpp:319
+#: src/game_initialization/multiplayer.cpp:323
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Nama '$nick' tidak terdaftar di server ini"
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:324
 msgid " This server disallows unregistered nicknames."
 msgstr "Server ini tidak membolehkan nama-nama tidak terdaftar."
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:327
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Nama '$nick' terdaftar di server ini"
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:329
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Nama '$nick' terdaftar di server ini"
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:333
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Nama '$nick' terdaftar di server ini"
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:335
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:339
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
@@ -6168,19 +6204,19 @@ msgid ""
 "for $duration|."
 msgstr "Nama '$nick' terdaftar di server ini"
 
-#: src/game_initialization/multiplayer.cpp:337
+#: src/game_initialization/multiplayer.cpp:341
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Nama '$nick' terdaftar di server ini"
 
-#: src/game_initialization/multiplayer.cpp:340
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:344
+#: src/game_initialization/multiplayer.cpp:346
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Nama '$nick' terdaftar di server ini"
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:347
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6188,69 +6224,69 @@ msgstr ""
 "PERINGATAN: Sudah ada seorang klien menggunakan nama ini, melog masuk akan "
 "menyebabkan klien tersebut terusir!"
 
-#: src/game_initialization/multiplayer.cpp:346
+#: src/game_initialization/multiplayer.cpp:350
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Error di prosedur login (server tidak memiliki biji untuk koneksi anda)."
 
-#: src/game_initialization/multiplayer.cpp:349
+#: src/game_initialization/multiplayer.cpp:353
 msgid "The password you provided was incorrect."
 msgstr "Kata sandi yang anda berikan salah."
 
-#: src/game_initialization/multiplayer.cpp:351
+#: src/game_initialization/multiplayer.cpp:355
 msgid "You have made too many login attempts."
 msgstr "Anda telah terlalu banyak mencoba login."
 
-#: src/game_initialization/playcampaign.cpp:62
+#: src/game_initialization/playcampaign.cpp:63
 msgid "Remaining gold: "
 msgstr "Emas tersisa:"
 
-#: src/game_initialization/playcampaign.cpp:66
+#: src/game_initialization/playcampaign.cpp:67
 msgid "Turns finished early: "
 msgstr "Giliran selesai awal:"
 
-#: src/game_initialization/playcampaign.cpp:67
+#: src/game_initialization/playcampaign.cpp:68
 #, fuzzy
 #| msgid "per turn"
 msgid " per turn"
 msgstr "per giliran"
 
-#: src/game_initialization/playcampaign.cpp:67
+#: src/game_initialization/playcampaign.cpp:68
 msgid "Early finish bonus: "
 msgstr "Bonus akhir awal:"
 
-#: src/game_initialization/playcampaign.cpp:68
+#: src/game_initialization/playcampaign.cpp:69
 #, fuzzy
 #| msgid "Turn bonus: "
 msgid "Total bonus: "
 msgstr "Bonus Giliran:"
 
-#: src/game_initialization/playcampaign.cpp:70
+#: src/game_initialization/playcampaign.cpp:71
 #, fuzzy
 #| msgid "Village gold: "
 msgid "Total gold: "
 msgstr "Emas Desa:"
 
-#: src/game_initialization/playcampaign.cpp:73
+#: src/game_initialization/playcampaign.cpp:74
 #, fuzzy
 #| msgid "Carry over percentage: "
 msgid "Carryover percentage: "
 msgstr "Persentase yang dibawa:"
 
-#: src/game_initialization/playcampaign.cpp:76
+#: src/game_initialization/playcampaign.cpp:77
 #, fuzzy
 #| msgid "Bonus Gold: "
 msgid "Bonus gold: "
 msgstr "Emas Bonus:"
 
-#: src/game_initialization/playcampaign.cpp:78
+#: src/game_initialization/playcampaign.cpp:79
 #, fuzzy
 #| msgid "Retained Gold: "
 msgid "Retained gold: "
 msgstr "Emas Disimpan:"
 
-#: src/game_initialization/playcampaign.cpp:91
+#: src/game_initialization/playcampaign.cpp:92
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -6261,7 +6297,7 @@ msgstr[0] ""
 "Anda akan memulai skenario berikutnya dengan $gold di atas emas permulaan "
 "minimum terpasang."
 
-#: src/game_initialization/playcampaign.cpp:99
+#: src/game_initialization/playcampaign.cpp:100
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -6270,7 +6306,7 @@ msgstr[0] ""
 "Anda akan memulai skenario berikutnya dengan emas permulaan minimum "
 "terpasang."
 
-#: src/game_initialization/playcampaign.cpp:107
+#: src/game_initialization/playcampaign.cpp:108
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6281,57 +6317,57 @@ msgstr[0] ""
 "Anda akan memulai skenario berikutnya dengan $gold atau emas permulaan "
 "minimum terpasang, yang manapun yang lebih tinggi."
 
-#: src/game_initialization/playcampaign.cpp:137
+#: src/game_initialization/playcampaign.cpp:138
 msgid "Scenario Report"
 msgstr "Laporan Skenario"
 
-#: src/game_initialization/playcampaign.cpp:139
+#: src/game_initialization/playcampaign.cpp:140
 msgid "Victory"
 msgstr "Menang"
 
-#: src/game_initialization/playcampaign.cpp:140
+#: src/game_initialization/playcampaign.cpp:141
 msgid "You have emerged victorious!"
 msgstr "Anda sudah menang!"
 
-#: src/game_initialization/playcampaign.cpp:142
+#: src/game_initialization/playcampaign.cpp:143
 msgid "Defeat"
 msgstr "Kekalahan"
 
-#: src/game_initialization/playcampaign.cpp:143
+#: src/game_initialization/playcampaign.cpp:144
 msgid "You have been defeated!"
 msgstr "Anda sudah kalah!"
 
-#: src/game_initialization/playcampaign.cpp:293 src/game_launcher.cpp:868
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:890
 msgid "The game could not be loaded: "
 msgstr "Permainan tidak bisa diload:"
 
-#: src/game_initialization/playcampaign.cpp:299 src/game_launcher.cpp:870
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:892
 msgid "Error while playing the game: "
 msgstr "Error ketika memainkan permainan:"
 
-#: src/game_initialization/playcampaign.cpp:302 src/game_launcher.cpp:907
+#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:929
 msgid "The game map could not be loaded: "
 msgstr "Peta permainan tidak bisa diload:"
 
-#: src/game_initialization/playcampaign.cpp:305 src/game_launcher.cpp:872
-#: src/game_launcher.cpp:1006
+#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:894
+#: src/game_launcher.cpp:1028
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:307
+#: src/game_initialization/playcampaign.cpp:311
 msgid "Error while reading the WML: "
 msgstr "Error ketika membaca WML:"
 
-#: src/game_initialization/playcampaign.cpp:344
+#: src/game_initialization/playcampaign.cpp:348
 #: src/playsingle_controller.cpp:312
 msgid "Game Over"
 msgstr "Permainan Selesai"
 
-#: src/game_initialization/playcampaign.cpp:345
+#: src/game_initialization/playcampaign.cpp:349
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Skenario ini sudah berakhir. Apakah anda ingin meneruskan kampanye?"
 
-#: src/game_initialization/playcampaign.cpp:413
+#: src/game_initialization/playcampaign.cpp:417
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Skenario tidak diketahui: '$scenario|'"
 
@@ -6341,29 +6377,29 @@ msgstr "Skenario tidak diketahui: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Tidak ada kampanye yang tersedia.\n"
 
-#: src/game_launcher.cpp:649 src/game_launcher.cpp:667
+#: src/game_launcher.cpp:670 src/game_launcher.cpp:688
 msgid "The file you have tried to load is corrupt"
 msgstr "File yang anda coba load rusak"
 
-#: src/game_launcher.cpp:652 src/game_launcher.cpp:670
-#: src/hotkey/hotkey_handler_sp.cpp:312 src/savegame.cpp:147
-#: src/savegame.cpp:292
+#: src/game_launcher.cpp:673 src/game_launcher.cpp:691
+#: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:154
+#: src/savegame.cpp:309
 msgid "The file you have tried to load is corrupt: '"
 msgstr "File yang anda coba load rusak: '"
 
-#: src/game_launcher.cpp:660
+#: src/game_launcher.cpp:681
 msgid "File I/O Error while reading the game"
 msgstr "Error file I/O ketika membaca permainan"
 
-#: src/game_launcher.cpp:662
+#: src/game_launcher.cpp:683
 msgid "File I/O Error while reading the game: '"
 msgstr "File I/O Error ketika membaca permainan: '"
 
-#: src/game_launcher.cpp:866
+#: src/game_launcher.cpp:888
 msgid "Error while starting server: "
 msgstr "Error ketika memulai server:"
 
-#: src/game_launcher.cpp:888
+#: src/game_launcher.cpp:910
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -6405,55 +6441,45 @@ msgstr[0] ""
 "Pengaya terpilih memiliki kepercayaan berikut. Apakah anda ingin "
 "menginstalnya?"
 
-#: src/gui/dialogs/game_load.hpp:40
-msgid "No Saved Games"
-msgstr "Tidak Ada Permainan Tersimpan"
-
-#: src/gui/dialogs/game_load.hpp:40
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
-msgid "There are no save files to load"
-msgstr "File yang anda coba load rusak"
-
 #: src/gui/dialogs/game_stats.hpp:43
 #, fuzzy
 #| msgid "No multiplayer sides found"
 msgid "No visible sides found."
 msgstr "Tidak ada sisi multi-pemain yang ditemukan"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:104
+#: src/gui/dialogs/multiplayer/player_info.cpp:110
 msgid "In game:"
 msgstr "Nama:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:106
+#: src/gui/dialogs/multiplayer/player_info.cpp:112
 msgid "(observing)"
 msgstr "(mengamati)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:108
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "(playing)"
 msgstr "(bermain)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:111
+#: src/gui/dialogs/multiplayer/player_info.cpp:117
 msgid "In lobby"
 msgstr "di lobi"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:140
+#: src/gui/dialogs/multiplayer/player_info.cpp:146
 msgid "On friends list"
 msgstr "Dimasukkan ke daftar teman:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:145
+#: src/gui/dialogs/multiplayer/player_info.cpp:151
 msgid "On ignores list"
 msgstr "Dimasukkan ke daftar abaian:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:150
+#: src/gui/dialogs/multiplayer/player_info.cpp:156
 msgid "Neither a friend nor ignored"
 msgstr "tidak menjadi teman juga tidak diabaikan"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:155
+#: src/gui/dialogs/multiplayer/player_info.cpp:161
 msgid "You"
 msgstr "Anda"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:158
+#: src/gui/dialogs/multiplayer/player_info.cpp:164
 msgid "Error"
 msgstr "Error"
 
@@ -6475,304 +6501,121 @@ msgstr "iya"
 msgid "Reference to unknown topic: "
 msgstr "Referensi ke topic yang tidak diketahui:"
 
-#: src/help/help_impl.cpp:349
+#: src/help/help_impl.cpp:356
 msgid "Only available during a scenario."
 msgstr ""
 
-#: src/help/help_impl.cpp:366
+#: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
+#, fuzzy
+#| msgid "Time of day: "
+msgid "Time of Day Schedule"
+msgstr "Waktu hari:"
+
+#: src/help/help_impl.cpp:384
+#, fuzzy
+#| msgid "Lawful units: "
+msgid "Lawful Bonus:"
+msgstr "Unit baik:"
+
+#: src/help/help_impl.cpp:385
+#, fuzzy
+#| msgid "Neutral units: "
+msgid "Neutral Bonus:"
+msgstr "Unit netral:"
+
+#: src/help/help_impl.cpp:386
+#, fuzzy
+#| msgid "Chaotic units: "
+msgid "Chaotic Bonus:"
+msgstr "Unit brutal:"
+
+#: src/help/help_impl.cpp:387
+#, fuzzy
+#| msgid "Liminal units: "
+msgid "Liminal Bonus:"
+msgstr "Unit-unit liminal:"
+
+#: src/help/help_impl.cpp:388
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:458
+#: src/help/help_impl.cpp:480
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Unit-unit memiliki serangan spesial ini'</header>"
 
-#: src/help/help_impl.cpp:522
+#: src/help/help_impl.cpp:544
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Unit-unit memiliki kemampuan ini'</header>"
 
-#: src/help/help_impl.cpp:552
+#: src/help/help_impl.cpp:574
 msgid "Era:"
 msgstr "Era:"
 
-#: src/help/help_impl.cpp:560
+#: src/help/help_impl.cpp:582
 msgid "Factions"
 msgstr "kelompok-kelompok"
 
-#: src/help/help_impl.cpp:609
+#: src/help/help_impl.cpp:630
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "Ras:"
 
-#: src/help/help_impl.cpp:618 src/help/help_impl.cpp:969
+#: src/help/help_impl.cpp:639 src/help/help_impl.cpp:990
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Golongan:"
 
-#: src/help/help_impl.cpp:625
+#: src/help/help_impl.cpp:646
 #, fuzzy
 #| msgid "Leaders:"
 msgid "Leaders"
 msgstr "Pemimpin:"
 
-#: src/help/help_impl.cpp:634
+#: src/help/help_impl.cpp:655
 msgid "Recruits"
 msgstr "Rekrutan"
 
-#: src/help/help_impl.cpp:695 src/units/types.cpp:479
+#: src/help/help_impl.cpp:716 src/units/types.cpp:485
 msgid "No description available."
 msgstr "Tidak ada deskripsi."
 
-#: src/help/help_impl.cpp:699 src/help/help_impl.cpp:701
+#: src/help/help_impl.cpp:720 src/help/help_impl.cpp:722
 #, fuzzy
 #| msgid "Ability: "
 msgid "Availability: "
 msgstr "Kemampuan:"
 
-#: src/help/help_impl.cpp:699
+#: src/help/help_impl.cpp:720
 msgid "Must-have"
 msgstr ""
 
-#: src/help/help_impl.cpp:701
+#: src/help/help_impl.cpp:722
 #, fuzzy
 #| msgid " No help available."
 msgid "Unavailable"
 msgstr "Tidak ada bantuan yang tersedia."
 
-#: src/help/help_impl.cpp:781 src/help/help_impl.cpp:957
-#: src/help/help_topic_generators.cpp:400
+#: src/help/help_impl.cpp:802 src/help/help_impl.cpp:978
 msgid "race^Miscellaneous"
 msgstr "Yang Lain"
 
-#: src/help/help_impl.cpp:969 src/reports.cpp:382
+#: src/help/help_impl.cpp:990 src/reports.cpp:369
 msgid "Alignment: "
 msgstr "Golongan:"
 
-#: src/help/help_impl.cpp:976
+#: src/help/help_impl.cpp:997
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unit-unit ras ini'</header>"
 
-#: src/help/help_impl.cpp:1287
+#: src/help/help_impl.cpp:1308
 msgid "corrupted original file"
 msgstr "file asli rusak"
-
-#: src/help/help_topic_generators.cpp:62
-msgid "Best of"
-msgstr ""
-
-#: src/help/help_topic_generators.cpp:62
-msgid "Worst of"
-msgstr ""
-
-#: src/help/help_topic_generators.cpp:158
-#, fuzzy
-#| msgid "Terrain: "
-msgid "Base Terrain: "
-msgstr "Daerah:"
-
-#: src/help/help_topic_generators.cpp:177
-#, fuzzy
-#| msgid "Movement Cost"
-msgid "Movement properties: "
-msgstr "Harga Pergerakan"
-
-#: src/help/help_topic_generators.cpp:181
-#, fuzzy
-#| msgid "Defense: "
-msgid "Defense properties: "
-msgstr "Pertahanan:"
-
-#: src/help/help_topic_generators.cpp:261
-#, fuzzy
-#| msgid "Level: "
-msgid "Level"
-msgstr "Tingkat:"
-
-#: src/help/help_topic_generators.cpp:322
-msgid "Advances from: "
-msgstr "Naik level dari:"
-
-#: src/help/help_topic_generators.cpp:324
-msgid "Advances to: "
-msgstr "Naik level ke:"
-
-#: src/help/help_topic_generators.cpp:353
-#, fuzzy
-#| msgid "Base attacks: "
-msgid "Base unit: "
-msgstr "Serangan pokok:"
-
-#: src/help/help_topic_generators.cpp:358
-#, fuzzy
-#| msgid "Lawful units: "
-msgid "Base units: "
-msgstr "Unit baik:"
-
-#: src/help/help_topic_generators.cpp:376
-#, fuzzy
-#| msgid "Factions:"
-msgid "Variations: "
-msgstr "Faction"
-
-#: src/help/help_topic_generators.cpp:402 src/reports.cpp:203
-msgid "Race: "
-msgstr "Ras:"
-
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
-msgid "Traits"
-msgstr "Sifat"
-
-#: src/help/help_topic_generators.cpp:472
-msgid "Abilities: "
-msgstr "Kemampuan:"
-
-#: src/help/help_topic_generators.cpp:490
-msgid "Ability Upgrades: "
-msgstr "Peningkatan Kemampuan:"
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
-msgid "HP:"
-msgstr "Darah:"
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
-msgid "Moves:"
-msgstr "Gerakan:"
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Version: "
-msgid "Vision:"
-msgstr "Versi:"
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Warning: "
-msgid "Jamming:"
-msgstr "Peringatan:"
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
-msgid "Cost:"
-msgstr "Harga:"
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
-#. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
-msgid "Alignment:"
-msgstr "Golongan:"
-
-#. TRANSLATORS: This string is used in the help page of a single unit.  It uses
-#. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
-#. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
-msgid "Required XP:"
-msgstr "AP Diperlukan:"
-
-#: src/help/help_topic_generators.cpp:552
-msgid "unit help^Attacks"
-msgstr "Serangan"
-
-#: src/help/help_topic_generators.cpp:559
-msgid "unit help^Name"
-msgstr "Nama"
-
-#: src/help/help_topic_generators.cpp:560
-msgid "Strikes"
-msgstr "Serangan"
-
-#: src/help/help_topic_generators.cpp:561
-msgid "Range"
-msgstr "Jarak"
-
-#: src/help/help_topic_generators.cpp:562
-msgid "Type"
-msgstr "Tipe"
-
-#: src/help/help_topic_generators.cpp:563
-#, fuzzy
-#| msgid "Special"
-msgid "Special"
-msgstr "Spesial"
-
-#: src/help/help_topic_generators.cpp:641
-msgid "Resistances"
-msgstr "Daya Tahan"
-
-#: src/help/help_topic_generators.cpp:645
-msgid "Attack Type"
-msgstr "Tipe Serangan"
-
-#: src/help/help_topic_generators.cpp:646
-msgid "Resistance"
-msgstr "Daya Tahan"
-
-#: src/help/help_topic_generators.cpp:675
-#, fuzzy
-#| msgid "Terrain Modifiers"
-msgid "Terrain Modifiers"
-msgstr "Pemodifikasi Daerah"
-
-#: src/help/help_topic_generators.cpp:679
-msgid "Terrain"
-msgstr "Daerah"
-
-#: src/help/help_topic_generators.cpp:680
-msgid "Defense"
-msgstr "Perlindungan"
-
-#: src/help/help_topic_generators.cpp:681
-#, fuzzy
-#| msgid "Movement Cost"
-msgid "Movement Cost"
-msgstr "Harga Pergerakan"
-
-#: src/help/help_topic_generators.cpp:685
-#, fuzzy
-#| msgid "Defense: "
-msgid "Defense Cap"
-msgstr "Pertahanan:"
-
-#: src/help/help_topic_generators.cpp:690
-#, fuzzy
-#| msgid "Version: "
-msgid "Vision Cost"
-msgstr "Versi:"
-
-#: src/help/help_topic_generators.cpp:694
-msgid "Jamming Cost"
-msgstr ""
 
 #: src/hotkey/command_executor.cpp:395
 #, fuzzy
@@ -6788,43 +6631,43 @@ msgstr ""
 msgid "Map-Screenshot"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:217
+#: src/hotkey/hotkey_handler.cpp:221
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hk to disable)"
 msgstr "(tekan $hotkey untuk pindah terus)"
 
-#: src/hotkey/hotkey_handler.cpp:217
+#: src/hotkey/hotkey_handler.cpp:221
 msgid "Accelerated speed enabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:221
+#: src/hotkey/hotkey_handler.cpp:225
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:414
+#: src/hotkey/hotkey_handler.cpp:421
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "Kembali ke giliran"
 
-#: src/hotkey/hotkey_handler.cpp:420
+#: src/hotkey/hotkey_handler.cpp:427
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Start"
 msgstr "Kembali ke giliran"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144
+#: src/hotkey/hotkey_handler_sp.cpp:145
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(tekan $hotkey untuk pindah terus)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1980
+#: src/hotkey/hotkey_handler_sp.cpp:145 src/menu_events.cpp:2052
 msgid "Planning mode activated!"
 msgstr "Mode perencanaan dinyalakan!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1983
+#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2055
 msgid "Planning mode deactivated!"
 msgstr "Mode perencanaan dimatikan!"
 
@@ -6832,27 +6675,27 @@ msgstr "Mode perencanaan dimatikan!"
 msgid "System default language"
 msgstr "Bahasa sistem yang asli"
 
-#: src/map/location.cpp:164
+#: src/map/location.cpp:165
 msgid "North"
 msgstr ""
 
-#: src/map/location.cpp:166
+#: src/map/location.cpp:167
 msgid "North East"
 msgstr ""
 
-#: src/map/location.cpp:168
+#: src/map/location.cpp:169
 msgid "North West"
 msgstr ""
 
-#: src/map/location.cpp:170
+#: src/map/location.cpp:171
 msgid "South"
 msgstr ""
 
-#: src/map/location.cpp:172
+#: src/map/location.cpp:173
 msgid "South East"
 msgstr ""
 
-#: src/map/location.cpp:174
+#: src/map/location.cpp:175
 msgid "South West"
 msgstr ""
 
@@ -6881,15 +6724,21 @@ msgstr ""
 "\"help all\" untuk memasukkan perintah-perintah yang tidak bisa dipakai pada "
 "saat ini."
 
-#: src/map_command_handler.hpp:218
-msgid "do not translate the 'all'^[all|<command>]"
-msgstr "[all|<command>]"
+#. TRANSLATORS: These are the arguments accepted by the "help" command,
+#. which are either "all" or the name of another command.
+#. As with the command's name, "all" is hardcoded, and shouldn't change in the translation.
+#: src/map_command_handler.hpp:221
+msgid ""
+"[all|<command>]\n"
+"“all” = overview of all commands, <command> = name of a specific command "
+"(provides more detail)"
+msgstr ""
 
-#: src/map_command_handler.hpp:263
+#: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
 msgstr "uraian yang hilang $arg_id"
 
-#: src/map_command_handler.hpp:311
+#: src/map_command_handler.hpp:314
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -6897,26 +6746,29 @@ msgstr ""
 "Perintah yang tersedia $flags_description:\n"
 "$list_of_commands"
 
-#: src/map_command_handler.hpp:311 src/map_command_handler.hpp:312
-#: src/map_command_handler.hpp:336
+#: src/map_command_handler.hpp:314 src/map_command_handler.hpp:315
+#: src/map_command_handler.hpp:345
 msgid "help"
 msgstr "Bantuan"
 
-#: src/map_command_handler.hpp:312
+#: src/map_command_handler.hpp:315
 msgid "Type $help_command <command> for more info."
 msgstr "Ketikkan $help_command <command> untuk info lebih lanjut."
 
-#: src/map_command_handler.hpp:323
+#: src/map_command_handler.hpp:326
 msgid " No help available."
 msgstr "Tidak ada bantuan yang tersedia."
 
-#: src/map_command_handler.hpp:329
+#: src/map_command_handler.hpp:332
 msgid "Usage:"
 msgstr "Pesan:"
 
-#: src/map_command_handler.hpp:334
-msgid "aliases:"
-msgstr "alias:"
+#. TRANSLATORS: alternative names for command-line commands, only shown if
+#. there is at least one of them.
+#: src/map_command_handler.hpp:343
+msgid "command^Alias:"
+msgid_plural "Aliases:"
+msgstr[0] ""
 
 #: src/menu_events.cpp:177
 #, fuzzy
@@ -6932,81 +6784,110 @@ msgstr "Peta tersimpan."
 msgid "Could not save the map: $msg"
 msgstr "Tidak bisa menyimpan peta: $msg"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:220
 msgid "Message:"
 msgstr "Pesan:"
 
-#: src/menu_events.cpp:223
+#: src/menu_events.cpp:222
 msgid "Send to observers only"
 msgstr "Hanya kirim ke peninjau"
 
-#: src/menu_events.cpp:224
+#: src/menu_events.cpp:223
 msgid "Send to allies only"
 msgstr "Hanya kirim ke sekutu"
 
-#: src/menu_events.cpp:273
+#: src/menu_events.cpp:274
 msgid "You have no units available to recruit."
 msgstr "Anda tidak memiliki unit apapun untuk direkrut."
 
-#: src/menu_events.cpp:283
+#: src/menu_events.cpp:284
 #, fuzzy
 #| msgid "No eras found."
-msgid "No unit recruited"
+msgid "No unit recruited."
 msgstr "Tidak ada era yang ditemukan."
 
+#: src/menu_events.cpp:309
+msgid "Internal error. Please report this as a bug! Details:\n"
+msgstr ""
+
 #: src/menu_events.cpp:315
-msgid "You do not have enough gold to recruit that unit"
+msgid "You cannot recruit a $unit_type_name at this time."
+msgstr ""
+
+#. TRANSLATORS: "plan" refers to Planning Mode
+#: src/menu_events.cpp:329
+#, fuzzy
+#| msgid "You do not have enough gold to recruit that unit"
+msgid ""
+"At this point in your plan, you will not have enough gold to recruit this "
+"unit."
 msgstr "Anda tidak memiliki cukup emas untuk merekrut unit itu."
 
-#: src/menu_events.cpp:351
-msgid "You are separated from your soldiers and may not recall them"
+#: src/menu_events.cpp:331
+#, fuzzy
+#| msgid "You do not have enough gold to recruit that unit"
+msgid "You do not have enough gold to recruit this unit."
+msgstr "Anda tidak memiliki cukup emas untuk merekrut unit itu."
+
+#: src/menu_events.cpp:374
+#, fuzzy
+#| msgid "You are separated from your soldiers and may not recall them"
+msgid "You are separated from your soldiers and may not recall them."
 msgstr ""
 "Anda terpisah dari prajurit anda dan tidak bisa memanggil mereka kembali."
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:395
+#, fuzzy
+#| msgid ""
+#| "There are no troops available to recall\n"
+#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
-"There are no troops available to recall\n"
-"(You must have veteran survivors from a previous scenario)"
+"There are no troops available to recall.\n"
+"(You must have veteran survivors from a previous scenario.)"
 msgstr ""
 "Tidak ada prajurit tersedia untuk dipanggil kembali\n"
 "(Anda harus memiliki kawakan yang masih hidup dari skenario sebelumnya)"
 
-#: src/menu_events.cpp:374
-msgid "You currently can't recall at the highlighted location"
+#: src/menu_events.cpp:399
+#, fuzzy
+#| msgid "You currently can't recall at the highlighted location"
+msgid "You currently can't recall at the highlighted location."
 msgstr "Anda saat ini tidak dapat memanggil kembali di lokasi yang disorot"
 
-#: src/menu_events.cpp:386
-msgid "No unit recalled"
-msgstr ""
+#: src/menu_events.cpp:411
+#, fuzzy
+#| msgid "No eras found."
+msgid "No unit recalled."
+msgstr "Tidak ada era yang ditemukan."
 
-#: src/menu_events.cpp:403
+#: src/menu_events.cpp:428
 #, fuzzy
 #| msgid "You must have at least 1 gold piece to recall a unit"
 #| msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgid "You must have at least 1 gold piece to recall a unit"
-msgid_plural "You must have at least $cost gold pieces to recall this unit"
+msgid "You must have at least 1 gold piece to recall a unit."
+msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] ""
 "Anda harus memiliki sedikit-dikitnya $cost uang emas untuk memanggil kembali "
 "unit"
 
-#: src/menu_events.cpp:549
+#: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
 msgstr "Anda belum bisa mengakhiri giliran anda!"
 
-#: src/menu_events.cpp:564
+#: src/menu_events.cpp:589
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Anda belum memulai giliran anda. Apakah anda benar-benar mau mengakhiri "
 "giliran anda?"
 
-#: src/menu_events.cpp:573
+#: src/menu_events.cpp:598
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Beberapa unit masih bisa bergerak. Apakah anda benar-benar mau mengakhiri "
 "giliran anda?"
 
-#: src/menu_events.cpp:582
+#: src/menu_events.cpp:607
 #, fuzzy
 #| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
@@ -7014,23 +6895,23 @@ msgstr ""
 "Beberapa unit masih bisa bergerak. Apakah anda benar-benar mau mengakhiri "
 "giliran anda?"
 
-#: src/menu_events.cpp:639
+#: src/menu_events.cpp:664
 msgid "Rename Unit"
 msgstr "Beri Nama Baru "
 
-#: src/menu_events.cpp:640
+#: src/menu_events.cpp:665
 #, fuzzy
 #| msgid "Name: "
 msgid "Name:"
 msgstr "Nama: "
 
-#: src/menu_events.cpp:815
+#: src/menu_events.cpp:840
 #, fuzzy
 #| msgid "Place Label"
 msgid "Clear Labels"
 msgstr "Taruh Label"
 
-#: src/menu_events.cpp:816
+#: src/menu_events.cpp:841
 #, fuzzy
 #| msgid "Are you sure you want to remove the following installed add-on?"
 #| msgid_plural ""
@@ -7038,116 +6919,138 @@ msgstr "Taruh Label"
 msgid "Are you sure you want to clear map labels?"
 msgstr "Apakah anda yakin anda mau menghapus add-on terinstal berikut?"
 
-#: src/menu_events.cpp:1011
+#: src/menu_events.cpp:1042
 msgid "Search"
 msgstr "Cari"
 
-#: src/menu_events.cpp:1150
+#: src/menu_events.cpp:1182
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr " (D) - debug saja, (N) - jaringan saja, (A) - admin saja"
 
-#: src/menu_events.cpp:1157
+#: src/menu_events.cpp:1189
 msgid "(debug command)"
 msgstr "Perintah mode debug"
 
-#: src/menu_events.cpp:1158
+#: src/menu_events.cpp:1190
 msgid "(network only)"
 msgstr "Pemain Jaringan"
 
-#: src/menu_events.cpp:1160
+#: src/menu_events.cpp:1192
 msgid "(not during other events)"
 msgstr ""
 
-#: src/menu_events.cpp:1189
+#: src/menu_events.cpp:1221
 msgid "Refresh gui."
 msgstr "Refresh gui."
 
-#: src/menu_events.cpp:1190
+#: src/menu_events.cpp:1222
 msgid "Switch a side to/from AI control."
 msgstr "Setel sisi dari/ke kontrol AI."
 
-#: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
-msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<side> [on/off]]"
+#. TRANSLATORS: These are the arguments accepted by the "droid" command,
+#. which must be a side-number and then optionally one of "on", "off" or "full".
+#. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
+#: src/menu_events.cpp:1226
+msgid ""
+"[<side> [on/off/full]]\n"
+"“on” = enable but retain vision, “full” = as if it’s controlled by another "
+"player"
+msgstr ""
 
-#: src/menu_events.cpp:1192
+#: src/menu_events.cpp:1227
+msgid "Change terrain type of current hex"
+msgstr ""
+
+#. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
+#: src/menu_events.cpp:1229
+msgid "<terrain type> [both|base|overlay]"
+msgstr ""
+
+#: src/menu_events.cpp:1230
 #, fuzzy
 #| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
 msgstr "Setel sisi dari/ke kontrol AI."
 
-#: src/menu_events.cpp:1193
-msgid "do not translate the on/off^[<side> [on/off]]"
+#. TRANSLATORS: These are the arguments accepted by the "idle" command,
+#. which must be a side-number and then optionally "on" or "off".
+#. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
+#: src/menu_events.cpp:1234
+#, fuzzy
+#| msgid "do not translate the on/off^[<side> [on/off]]"
+msgid "command_idle^[<side> [on/off]]"
 msgstr "[<side> [on/off]]"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1235
+msgid "Change the in-game theme."
+msgstr ""
+
+#: src/menu_events.cpp:1237
 msgid "<side> <nickname>"
 msgstr "<pihak> <nama>"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1237
 msgid "Assign control of a side to a different player or observer."
 msgstr "Memberikan kontrol sebuah sisi ke pemain lain atau peninjau."
 
-#: src/menu_events.cpp:1197
+#: src/menu_events.cpp:1238
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1239
 msgid "<side>"
 msgstr ""
 
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1240
 msgid "Clear chat history."
 msgstr "Menyingkirkan sejarah obrolan."
 
-#: src/menu_events.cpp:1200
+#: src/menu_events.cpp:1241
 msgid "Debug foreground terrain."
 msgstr "Debug daerah bagian depan."
 
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1243
 msgid "Debug layers from terrain under the mouse."
 msgstr "Debug lapisan-lapisan dari daerah di bawah mouse."
 
-#: src/menu_events.cpp:1203
-msgid "Show fps."
-msgstr "Tunjukkan permainan ulang"
+#: src/menu_events.cpp:1244
+msgid "Show fps (Frames Per Second)."
+msgstr ""
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1246
 msgid "Save game."
 msgstr "Simpan permainan."
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1248
 msgid "Quit game."
 msgstr "Keluar dari permainan."
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1251
 msgid "Save and quit."
 msgstr "Simpan dan keluar."
 
-#: src/menu_events.cpp:1212
+#: src/menu_events.cpp:1253
 msgid "Ignore replay errors."
 msgstr "Abaikan error-error permainan ulang."
 
-#: src/menu_events.cpp:1213
+#: src/menu_events.cpp:1254
 msgid "Disable autosaves."
 msgstr "Matikan simpanan otomatis."
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1256
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1256
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 "Lanjutkan ke skenario berikutnya, atau skenario diidentifikasi dengan 'id'"
 
-#: src/menu_events.cpp:1217
+#: src/menu_events.cpp:1258
 msgid "Choose next scenario"
 msgstr "Pilih skenario berikutnya"
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1261
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -7155,11 +7058,11 @@ msgstr ""
 "Merubah jumlah giliran (dan waktu hari),  atau naik satu jika tidak ada "
 "jumlah yang ditentukan."
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1261
 msgid "[turn]"
 msgstr "[giliran]"
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1264
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7167,225 +7070,244 @@ msgstr ""
 "Merubah batas giliran, atau menghidupkan batas giliran mati jika tidak ada "
 "jumlah yang ditentukan atau itu -1."
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1264
 msgid "[limit]"
 msgstr "[limit]"
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1266
 msgid "Turn debug mode on."
 msgstr "Menyalakan mode debug"
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1267
 msgid "Turn debug mode off."
 msgstr "Mematikan mode debug."
 
-#: src/menu_events.cpp:1228 src/menu_events.cpp:1232
+#: src/menu_events.cpp:1269 src/menu_events.cpp:1273
 msgid "<command>[;<command>...]"
 msgstr "<command>[;<command>...]"
 
-#: src/menu_events.cpp:1228
+#: src/menu_events.cpp:1269
 msgid "Execute a Lua statement."
 msgstr "Laksanakan  Lua Statemen."
 
-#: src/menu_events.cpp:1230
+#: src/menu_events.cpp:1271
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Memberikan perlakuan khusus lebih tinggi ke Catatan Lua ."
 
-#: src/menu_events.cpp:1231
+#: src/menu_events.cpp:1272
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 "Memasang perintah digunakan oleh hotkey perintah yang dipasang sendiri."
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1275
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 "Meminta sebuah dialog memungkinkan perubahan kontrol dari pihak-pihak MP."
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1276
 msgid "Launch the gamestate inspector"
 msgstr "Luncurkan pengawas gamestate "
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1278
 msgid "<name>[=<command>]"
 msgstr "<name>[=<command>]"
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1278
 msgid "Set or show alias to a command"
 msgstr "Memasang atau menunjukkan alias ke sebuah perintah."
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1280 src/menu_events.cpp:1285
 msgid "<var>=<value>"
 msgstr "<var>=<value>"
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1280
 msgid "Set a scenario variable."
 msgstr "Memasang dinamis skenario."
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1281
 msgid "<var>"
 msgstr "<var>"
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1281
 msgid "Show a scenario variable."
 msgstr "Tunjukkan dinamis skenario."
 
-#: src/menu_events.cpp:1242
-msgid "Modify a unit variable. (Only top level keys are supported.)"
+#. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
+#: src/menu_events.cpp:1284
+#, fuzzy
+#| msgid "Modify a unit variable. (Only top level keys are supported.)"
+msgid ""
+"Modify a unit variable. (Only top level keys are supported, and "
+"advances=<number>.)"
 msgstr ""
 "Merubah sebuah variable unit. (Hanya kunci level tertinggi yang didukung.)"
 
-#: src/menu_events.cpp:1248
+#: src/menu_events.cpp:1291
 msgid "Discover all units in help."
 msgstr "Menemukan semua unit dalam bantuan."
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1292
 msgid "'Undiscover' all units in help."
 msgstr "'Menghilangkan' semua unit dalam bantuan."
 
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1293
+msgid "<unit type id>"
+msgstr ""
+
+#: src/menu_events.cpp:1293
 msgid "Create a unit."
 msgstr "Ciptakan sebuah unit."
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1294
 msgid "Toggle fog for the current player."
 msgstr "Setel kabut untuk pemain ini."
 
-#: src/menu_events.cpp:1252
+#: src/menu_events.cpp:1295
 msgid "Toggle shroud for the current player."
 msgstr "Setel selubung untuk pemain ini."
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1296
+msgid "<amount>"
+msgstr ""
+
+#: src/menu_events.cpp:1296
 msgid "Give gold to the current player."
 msgstr "Berikan emas ke pemain ini."
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1297
+#, fuzzy
+#| msgid "<nickname>"
+msgid "<event name>"
+msgstr "<nama>"
+
+#: src/menu_events.cpp:1297
 msgid "Fire a game event."
 msgstr "Lakukan sebuah event permainan."
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1300
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Setel menaruh koordinat x,y di atas heks."
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1303
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Setel menaruh kode daerah di atas heks."
 
-#: src/menu_events.cpp:1263
+#: src/menu_events.cpp:1306
 #, fuzzy
 #| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Setel menaruh kode daerah di atas heks."
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1308
 msgid "Toggle planning mode."
 msgstr "Setel mode perencanaan."
 
-#: src/menu_events.cpp:1268
+#: src/menu_events.cpp:1311
 msgid "Access whiteboard options dialog."
 msgstr "Mengakses dialog pilihan papan tulis."
 
-#: src/menu_events.cpp:1388
+#: src/menu_events.cpp:1431
 #, fuzzy
 #| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Tidak bisa menemukan label atau unit dengan untaian '$search'."
 
-#: src/menu_events.cpp:1434
+#: src/menu_events.cpp:1477
 msgid "Can't droid invalid side: '$side'."
 msgstr "Tidak bisa mendroid sisi tidak berlaku: '$side'."
 
-#: src/menu_events.cpp:1437
+#: src/menu_events.cpp:1480
 msgid "Can't droid networked side: '$side'."
 msgstr "Tidak bisa mendroid sisi berjaring: '$side'."
 
-#: src/menu_events.cpp:1447
+#: src/menu_events.cpp:1490 src/menu_events.cpp:1522
 msgid "Side '$side' controller is now controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1449
+#: src/menu_events.cpp:1492
 msgid "Side '$side' is already droided."
 msgstr ""
 
-#: src/menu_events.cpp:1456
+#: src/menu_events.cpp:1499 src/menu_events.cpp:1517
 msgid "Side '$side' controller is now controlled by: human."
 msgstr ""
 
-#: src/menu_events.cpp:1458
+#: src/menu_events.cpp:1501
 msgid "Side '$side' is already not droided."
 msgstr ""
 
-#: src/menu_events.cpp:1465
+#: src/menu_events.cpp:1508
 msgid "Side '$side' controller is now fully controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1467
+#: src/menu_events.cpp:1510
 msgid "Side '$side' is already fully AI controlled."
 msgstr ""
 
-#: src/menu_events.cpp:1470
+#: src/menu_events.cpp:1525
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1493
+#: src/menu_events.cpp:1567
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
 msgstr "Tidak bisa mendroid sisi tidak berlaku: '$side'."
 
-#: src/menu_events.cpp:1498
+#: src/menu_events.cpp:1572
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
 msgstr "Tidak bisa mendroid sisi berjaring: '$side'."
 
-#: src/menu_events.cpp:1503
+#: src/menu_events.cpp:1577
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "Tidak bisa mendroid sisi tidak berlaku: '$side'."
 
-#: src/menu_events.cpp:1563
+#: src/menu_events.cpp:1637
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Tidak bisa mengganti kontrol sisi tidak berlaku: '$side'."
 
-#: src/menu_events.cpp:1573
+#: src/menu_events.cpp:1647
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Tidak bisa merubah kontrol sisi di luar kontrol : '$side'."
 
-#: src/menu_events.cpp:1590
+#: src/menu_events.cpp:1664
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Tidak bisa mengganti kontrol sisi tidak berlaku: '$side'."
 
-#: src/menu_events.cpp:1597
+#: src/menu_events.cpp:1671
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Tidak bisa merubah kontrol sisi di luar kontrol : '$side'."
 
-#: src/menu_events.cpp:1718
+#: src/menu_events.cpp:1792
 msgid "Choose Scenario (Debug!)"
 msgstr "Pili Skenario (Debug!)"
 
-#: src/menu_events.cpp:1754
+#: src/menu_events.cpp:1828
 msgid "Debug mode activated!"
 msgstr "Mode debug dinyalakan!"
 
-#: src/menu_events.cpp:1757
+#: src/menu_events.cpp:1831
 msgid "Debug mode not available in network games"
 msgstr "Mode debug tidak tersedia di permainan jaringan"
 
-#: src/menu_events.cpp:1764
+#: src/menu_events.cpp:1838
 msgid "Debug mode deactivated!"
 msgstr "Mode debug dimatikan!"
 
-#: src/menu_events.cpp:1784
+#: src/menu_events.cpp:1858
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1785
+#: src/menu_events.cpp:1859
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7394,15 +7316,15 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1790
+#: src/menu_events.cpp:1864
 msgid "Unsafe mode enabled!"
 msgstr "Mode tak aman digunakan!"
 
-#: src/menu_events.cpp:1839
+#: src/menu_events.cpp:1913
 msgid "Variable not found"
 msgstr "Variabel tidak ditemukan"
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1959
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7410,24 +7332,24 @@ msgstr ""
 "Penjajaran salah: '$alignment', harus menjadi salah satu dari baik, netral, "
 "brutal atau liminal."
 
-#: src/menu_events.cpp:1913
+#: src/menu_events.cpp:1985
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 "Apakah anda ingin menghapus semua unit anda yang diketahui dari bantuan?"
 
-#: src/menu_events.cpp:1927
+#: src/menu_events.cpp:1999
 msgid "Invalid unit type"
 msgstr "Nama tipe unit tidak berlaku"
 
-#: src/menu_events.cpp:1934
+#: src/menu_events.cpp:2006
 msgid "Invalid location"
 msgstr "lokasi Tidak Berlaku"
 
-#: src/menu_events.cpp:2007 src/menu_events.cpp:2033
+#: src/menu_events.cpp:2079 src/menu_events.cpp:2105
 msgid "prompt^Command:"
 msgstr "Perintah:"
 
-#: src/mouse_events.cpp:1195
+#: src/mouse_events.cpp:1190
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7435,21 +7357,21 @@ msgstr ""
 "Anda tidak bisa menggerakkan pemimpin anda jauh dari benteng dengan suatu "
 "rencana merekrut atau memanggil kembali tersisa."
 
-#: src/mouse_events.cpp:1290
+#: src/mouse_events.cpp:1285
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "Tidak ada senjata yang bisa dipakai"
 
-#: src/mp_game_settings.hpp:76
+#: src/mp_game_settings.hpp:77
 msgid "Independent"
 msgstr ""
 
-#: src/mp_game_settings.hpp:77
+#: src/mp_game_settings.hpp:78
 msgid "No Mirror"
 msgstr ""
 
-#: src/mp_game_settings.hpp:78
+#: src/mp_game_settings.hpp:79
 msgid "No Ally Mirror"
 msgstr ""
 
@@ -7490,6 +7412,19 @@ msgstr "$name telah memegang kendali"
 msgid "Turn changed"
 msgstr "serangan jarak jauh"
 
+#: src/panic.cpp:42
+#, fuzzy
+#| msgid "The Battle for Wesnoth"
+msgid "Battle for Wesnoth"
+msgstr "Peperangan untuk Wesnoth"
+
+#: src/panic.cpp:43
+msgid ""
+"This may indicate an issue with your game configuration. If the problem "
+"persists, contact the development team for technical support, including the "
+"full contents of this message (copy with CTRL+C)."
+msgstr ""
+
 #: src/pathfind/pathfind.cpp:747
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Daerah dengan harga pergerakan kurang dari satu ditemui."
@@ -7501,15 +7436,15 @@ msgstr "Daerah dengan harga pergerakan kurang dari satu ditemui."
 msgid "waiting for^a global variable"
 msgstr ""
 
-#: src/play_controller.cpp:247
+#: src/play_controller.cpp:248
 msgid "time left for current turn"
 msgstr "sisa waktu untuk giliran ini"
 
-#: src/play_controller.cpp:249
+#: src/play_controller.cpp:250
 msgid "current local time"
 msgstr "waktu setempat"
 
-#: src/play_controller.cpp:1019
+#: src/play_controller.cpp:1005
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7517,19 +7452,43 @@ msgstr ""
 "Permainan ini tak bisa diterima sync. Ini mungkin tidak masuk akal untuk "
 "melanjutkan. Apakah anda ingin menyimpan permainan anda?"
 
-#: src/play_controller.cpp:1020
+#: src/play_controller.cpp:1006
 msgid "Error details:"
 msgstr "Rincian Error:"
 
-#: src/play_controller.cpp:1308
+#: src/play_controller.cpp:1294
 msgid "No objectives available"
 msgstr "Tidak ada misi tersedia"
 
-#: src/playmp_controller.cpp:149
+#: src/playmp_controller.cpp:150
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Membatalkan gerakan yang belum dikirim ke server."
 
-#: src/playmp_controller.cpp:358
+#: src/playmp_controller.cpp:263 src/playsingle_controller.cpp:347
+msgid ""
+"A network disconnection has occurred, and the game cannot continue. Do you "
+"want to save the game?"
+msgstr ""
+"Pemutusan hubungan jaringan terjadi, dan permainan ini tidak bisa "
+"diteruskan. Apakah anda ingin menyimpan permainan ini?"
+
+#: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
+#, fuzzy
+#| msgid "Do you really want to delete this game?"
+msgid ""
+"\n"
+"Do you want to save the game?"
+msgstr "Apakah anda benar-benar mau menghapus permainan ini?"
+
+#: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
+#, fuzzy
+#| msgid "The game has been saved"
+msgid ""
+"This game has been ended.\n"
+"Reason: "
+msgstr "Permainan ini sudah disimpan"
+
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7546,7 +7505,7 @@ msgstr ""
 "\n"
 "Apakah anda ingin menyimpan log error tentang permainan anda?"
 
-#: src/playmp_controller.cpp:401
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7570,49 +7529,41 @@ msgstr ""
 msgid "The game is over."
 msgstr "Permainan selesai."
 
-#: src/playsingle_controller.cpp:347
-msgid ""
-"A network disconnection has occurred, and the game cannot continue. Do you "
-"want to save the game?"
-msgstr ""
-"Pemutusan hubungan jaringan terjadi, dan permainan ini tidak bisa "
-"diteruskan. Apakah anda ingin menyimpan permainan ini?"
-
-#: src/playsingle_controller.cpp:437
+#: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
 msgstr "Sekarang giliran $name|"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
 msgstr "Berikan emas ke pemain ini."
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
 msgstr "Berikan emas ke pemain ini."
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Gantikan oleh AI"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Gantikan oleh pemain lokal"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Batalkan permainan"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 #, fuzzy
 #| msgid "$player has left the game. What do you want to do?"
 msgid ""
@@ -7630,50 +7581,40 @@ msgstr "Keluar"
 msgid "Do you really want to quit?"
 msgstr "Apakah anda benar-benar mau memecat dia?"
 
-#: src/reports.cpp:162 src/savegame.cpp:400
+#: src/reports.cpp:164 src/savegame.cpp:418
 msgid "Name: "
 msgstr "Nama: "
 
-#: src/reports.cpp:183
+#: src/reports.cpp:185
 msgid "Type: "
 msgstr "Jenis:"
 
-#: src/reports.cpp:235
-msgid "Side:"
+#: src/reports.cpp:205
+msgid "Race: "
+msgstr "Ras:"
+
+#: src/reports.cpp:224
+msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr ""
 
-#: src/reports.cpp:257
-msgid "Level: "
-msgstr "Tingkat:"
-
-#: src/reports.cpp:262
-#, fuzzy
-#| msgid "Advancements"
-msgid "Advancements:"
-msgstr "Kenaikan Level"
-
-#: src/reports.cpp:275
-msgid "No advancement"
-msgstr "Tidak ada kenaikan"
-
-#: src/reports.cpp:315
+#: src/reports.cpp:302
 msgid "Trait: "
 msgstr "Sifat:"
 
-#: src/reports.cpp:338
+#: src/reports.cpp:325
 msgid "invisible: "
 msgstr "tak terlihat:"
 
-#: src/reports.cpp:339
+#: src/reports.cpp:326
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Unit ini tak terlihat. Ia tidak bisa dilihat atau diserang oleh unit musuh."
 
-#: src/reports.cpp:342
+#: src/reports.cpp:329
 msgid "slowed: "
 msgstr "diperlambat:"
 
-#: src/reports.cpp:343
+#: src/reports.cpp:330
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -7681,11 +7622,11 @@ msgstr ""
 "Unit ini sudah diperlambat. Ia akan hanya melukai setengah luka normal "
 "ketika menyerang dan harga pergerakan di dua kali lipat."
 
-#: src/reports.cpp:346
+#: src/reports.cpp:333
 msgid "poisoned: "
 msgstr "diracuni:"
 
-#: src/reports.cpp:347
+#: src/reports.cpp:334
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -7701,297 +7642,312 @@ msgstr ""
 "Unit tidak bisa dibunuh oleh racun semata-mata. Racun tersebut tidak akan "
 "menguranginya ke bawah 1 darah."
 
-#: src/reports.cpp:350
+#: src/reports.cpp:337
 msgid "petrified: "
 msgstr "membatu: "
 
-#: src/reports.cpp:351
+#: src/reports.cpp:338
 msgid "This unit has been petrified. It may not move or attack."
 msgstr ""
 "Unit ini sudah dirubah menjadi batu. Ia tidak bisa bergerak atau menyerang."
 
-#: src/reports.cpp:429
+#: src/reports.cpp:416
 msgid "Ability: "
 msgstr "Kemampuan:"
 
-#: src/reports.cpp:431 src/reports.cpp:957
+#: src/reports.cpp:418 src/reports.cpp:944
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:491
+#: src/reports.cpp:478
 msgid "Resistances: "
 msgstr "Daya Tahan:"
 
-#: src/reports.cpp:493
+#: src/reports.cpp:480
 msgid "(Att / Def)"
 msgstr "(Ser / Per)"
 
-#: src/reports.cpp:524
+#: src/reports.cpp:511
 msgid "Experience Modifier: "
 msgstr "Pemodifikasi Pengalaman:"
 
-#: src/reports.cpp:575
+#: src/reports.cpp:562
 msgid "Terrain: "
 msgstr "Daerah:"
 
-#: src/reports.cpp:592
+#: src/reports.cpp:579
 msgid "maximum^max."
 msgstr "maks."
 
-#: src/reports.cpp:592
+#: src/reports.cpp:579
 msgid "minimum^min."
 msgstr "min."
 
-#: src/reports.cpp:597
+#: src/reports.cpp:584
 msgid "Defense: "
 msgstr "Pertahanan:"
 
-#: src/reports.cpp:631 src/reports.cpp:632
+#: src/reports.cpp:618 src/reports.cpp:619
 #, fuzzy
 #| msgid "Version: "
 msgid "vision:"
 msgstr "Versi:"
 
-#: src/reports.cpp:636 src/reports.cpp:637
+#: src/reports.cpp:623 src/reports.cpp:624
 #, fuzzy
 #| msgid "Warning: "
 msgid "jamming:"
 msgstr "Peringatan:"
 
-#: src/reports.cpp:666
+#: src/reports.cpp:653
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "Harga Pergerakan"
 
-#: src/reports.cpp:791 src/reports.cpp:1046 src/reports.cpp:1058
+#: src/reports.cpp:778 src/reports.cpp:1033 src/reports.cpp:1045
 msgid "Weapon: "
 msgstr "Senjata:"
 
-#: src/reports.cpp:792 src/reports.cpp:1047
+#: src/reports.cpp:779 src/reports.cpp:1034
 msgid "Damage: "
 msgstr "Kerusakan:"
 
-#: src/reports.cpp:796
+#: src/reports.cpp:783
 msgid "Base damage: "
 msgstr "Kerusakan pokok:"
 
-#: src/reports.cpp:798 src/reports.cpp:832 src/reports.cpp:842
+#: src/reports.cpp:785 src/reports.cpp:819 src/reports.cpp:829
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "With specials: "
 msgstr "Kemampuan khusus senjata:"
 
-#: src/reports.cpp:801
+#: src/reports.cpp:788
 msgid "Time of day: "
 msgstr "Waktu hari:"
 
-#: src/reports.cpp:805
+#: src/reports.cpp:792
 msgid "Leadership: "
 msgstr "Kepemimpinan:"
 
-#: src/reports.cpp:809
+#: src/reports.cpp:796
 msgid "Slowed: "
 msgstr "Diperlambat:"
 
-#: src/reports.cpp:813
+#: src/reports.cpp:800
 msgid "Attacks: "
 msgstr "Serangan:"
 
-#: src/reports.cpp:817
+#: src/reports.cpp:804
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Bonus darah maks +"
 
-#: src/reports.cpp:818 src/reports.cpp:837
+#: src/reports.cpp:805 src/reports.cpp:824
 msgid "Swarm: "
 msgstr "Kawan:"
 
-#: src/reports.cpp:819 src/reports.cpp:830 src/reports.cpp:841
+#: src/reports.cpp:806 src/reports.cpp:817 src/reports.cpp:828
 msgid "Base attacks: "
 msgstr "Serangan pokok:"
 
-#: src/reports.cpp:825
+#: src/reports.cpp:812
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Spesial"
 
-#: src/reports.cpp:835
+#: src/reports.cpp:822
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:862
+#: src/reports.cpp:849
 msgid "Weapon range: "
 msgstr "Jarak senjata:"
 
-#: src/reports.cpp:863
+#: src/reports.cpp:850
 msgid "Damage type: "
 msgstr "Jenis kerusakan:"
 
-#: src/reports.cpp:864
+#: src/reports.cpp:851
 msgid "Damage versus: "
 msgstr "Kerusakan melawan:"
 
-#: src/reports.cpp:924
+#: src/reports.cpp:911
 msgid "Accuracy:"
 msgstr "Akurasi:"
 
-#: src/reports.cpp:929
+#: src/reports.cpp:916
 msgid "Parry:"
 msgstr "Menangkis:"
 
-#: src/reports.cpp:955
+#: src/reports.cpp:942
 msgid "Weapon special: "
 msgstr "Kemampuan khusus senjata:"
 
-#: src/reports.cpp:1030
+#: src/reports.cpp:1017
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1059
+#: src/reports.cpp:1046
 msgid "Total damage"
 msgstr "Luka total"
 
-#: src/reports.cpp:1123
+#: src/reports.cpp:1110
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Penyerang"
 
-#: src/reports.cpp:1216
+#. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
+#: src/reports.cpp:1118
+msgid "Remaining: $left/$max"
+msgstr ""
+
+#: src/reports.cpp:1122
+#, fuzzy
+#| msgid "This is not a multiplayer save"
+msgid "This unit can attack multiple times per turn."
+msgstr "Ini bukan sebuah simpanan multi pemain"
+
+#: src/reports.cpp:1213
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day schedule:"
 msgstr "Waktu hari:"
 
-#: src/reports.cpp:1265
+#: src/reports.cpp:1263
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "Waktu hari:"
 
-#: src/reports.cpp:1266 src/reports.cpp:1320
+#: src/reports.cpp:1264 src/reports.cpp:1318
 msgid "Lawful units: "
 msgstr "Unit baik:"
 
-#: src/reports.cpp:1268 src/reports.cpp:1322
+#: src/reports.cpp:1266 src/reports.cpp:1320
 msgid "Neutral units: "
 msgstr "Unit netral:"
 
-#: src/reports.cpp:1269 src/reports.cpp:1323
+#: src/reports.cpp:1267 src/reports.cpp:1321
 msgid "Chaotic units: "
 msgstr "Unit brutal:"
 
-#: src/reports.cpp:1271 src/reports.cpp:1325
+#: src/reports.cpp:1269 src/reports.cpp:1323
 msgid "Liminal units: "
 msgstr "Unit-unit liminal:"
 
-#: src/reports.cpp:1384
+#: src/reports.cpp:1382
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Giliran"
 
-#: src/reports.cpp:1386
+#: src/reports.cpp:1384
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1411
+#: src/reports.cpp:1409
 msgid "Gold"
 msgstr "Emas"
 
-#: src/reports.cpp:1411
+#: src/reports.cpp:1409
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1430
+#: src/reports.cpp:1428
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1430
+#: src/reports.cpp:1428
 msgid "Villages"
 msgstr "Desa"
 
-#: src/reports.cpp:1435
+#: src/reports.cpp:1433
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1435
+#: src/reports.cpp:1433
 msgid "Units"
 msgstr "Unit"
 
-#: src/reports.cpp:1445
+#: src/reports.cpp:1443
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
-"first number is the amount of gold that will be deducted. The second is the "
-"total cost of upkeep, including that covered by villages — in other words, "
-"the amount of gold that would be deducted if you lost all villages."
+"first number is the amount of gold that will be deducted. It is equal to the "
+"number of unit levels not supported by villages. The second is the total "
+"cost of upkeep, including that covered by villages — in other words, the "
+"amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1445
+#: src/reports.cpp:1443
 msgid "Upkeep"
 msgstr "Pengeluaran"
 
-#: src/reports.cpp:1482
-msgid "Income"
+#: src/reports.cpp:1480
+#, fuzzy
+#| msgid "Income"
+msgid "Net Income"
 msgstr "Pendapatan"
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1480
 msgid ""
-"The amount of gold you gain each turn from your controlled villages, or the "
-"amount of gold you will lose each turn for unit upkeep."
+"The net amount of gold you gain or lose each turn, taking into account "
+"income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1650
+#: src/reports.cpp:1648
 msgid "Observers:"
 msgstr "Peninjau:"
 
-#: src/reports.cpp:1692
+#: src/reports.cpp:1690
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1703
+#: src/reports.cpp:1701
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1731
+#: src/reports.cpp:1729
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1731
+#: src/reports.cpp:1729
 msgid "Turn Countdown"
 msgstr ""
 
-#: src/save_index.cpp:218
+#: src/save_index.cpp:240
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
-#: src/save_index.cpp:219
+#: src/save_index.cpp:241
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %d %b %H:%M %Y"
 
-#: src/save_index.cpp:240 src/save_index.cpp:247
-msgid " replay"
-msgstr " "
+#. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
+#: src/save_index.cpp:261 src/savegame.cpp:566
+msgid "replay"
+msgstr "permainan ulang"
 
-#: src/save_index.cpp:313 src/savegame.cpp:69 src/savegame.cpp:582
-#: src/savegame.cpp:584
+#: src/save_index.cpp:345 src/savegame.cpp:70 src/savegame.cpp:602
+#: src/savegame.cpp:604
 msgid "Auto-Save"
 msgstr "Simpanan-Otomatis"
 
-#: src/savegame.cpp:192 src/savegame.cpp:196
+#: src/savegame.cpp:204 src/savegame.cpp:208
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Peringatan: File yang anda coba load rusak. Namun file tersebut lagi "
 "diload.\n"
 
-#: src/savegame.cpp:243
+#: src/savegame.cpp:255
 #, fuzzy
 #| msgid "This save is from a version too old to be loaded."
 msgid ""
@@ -7999,7 +7955,7 @@ msgid ""
 "be loaded."
 msgstr "Simpanan ini dari versi yang terlalu lama untuk diload."
 
-#: src/savegame.cpp:251
+#: src/savegame.cpp:263
 #, fuzzy
 #| msgid ""
 #| "This save is from a different version of the game. Do you want to try to "
@@ -8011,35 +7967,35 @@ msgstr ""
 "Simpanan ini dari versi permainan ini yang lain. Apakah anda mau mencoba "
 "meloadnya?"
 
-#: src/savegame.cpp:254 src/savegame.cpp:298
+#: src/savegame.cpp:266 src/savegame.cpp:315
 msgid "Load Game"
 msgstr "Load Permainan"
 
-#: src/savegame.cpp:298
+#: src/savegame.cpp:315
 #, fuzzy
 #| msgid "Factions are only used in multiplayer"
 msgid "Replays are not supported in multiplayer mode."
 msgstr "golongan-golongan hanya digunakan dalam multiplayer"
 
-#: src/savegame.cpp:305
+#: src/savegame.cpp:322
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Ini bukan sebuah simpanan multi pemain"
 
-#: src/savegame.cpp:332
+#: src/savegame.cpp:350
 msgid "The game could not be saved: "
 msgstr "Permainan ini tidak bisa disimpan"
 
-#: src/savegame.cpp:400
+#: src/savegame.cpp:418
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Simpanan sudah ada. Apakah anda ingin menulis ulang?"
 
-#: src/savegame.cpp:401
+#: src/savegame.cpp:419
 msgid "Overwrite?"
 msgstr "Tulis ulang?"
 
-#: src/savegame.cpp:409
+#: src/savegame.cpp:427
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
@@ -8047,45 +8003,36 @@ msgid ""
 msgstr ""
 "Nama simpanan tidak boleh berakhir dengan '.gz'. Tolong pilih nama yang lain."
 
-#: src/savegame.cpp:457
+#: src/savegame.cpp:475
 msgid "Saved"
 msgstr "Tersimpan"
 
-#: src/savegame.cpp:457
+#: src/savegame.cpp:475
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "Permainan ini sudah disimpan"
 
-#: src/savegame.cpp:487 src/savegame.cpp:507
+#: src/savegame.cpp:505 src/savegame.cpp:525
 msgid "Could not write to file"
 msgstr "Tidak bisa menulis ke file"
 
-#: src/savegame.cpp:542
+#: src/savegame.cpp:560
 msgid "Save Replay"
 msgstr "Simpan Replay"
 
-#: src/savegame.cpp:547
-msgid "replay"
-msgstr "permainan ulang"
-
-#: src/savegame.cpp:565
+#: src/savegame.cpp:584
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Tidak bisa menyimpan permainan secara otomatis. Tolong simpan permainan ini "
 "sendiri."
 
-#: src/savegame.cpp:612
+#: src/savegame.cpp:632
 msgid "Save Game"
 msgstr "Simpan Permainan"
 
-#: src/savegame.cpp:626
+#: src/savegame.cpp:646
 msgid "Game state is corrupted"
-msgstr ""
-
-#: src/scripting/game_lua_kernel.cpp:2887
-#: src/scripting/game_lua_kernel.cpp:2922
-msgid "input"
 msgstr ""
 
 #: src/serialization/parser.cpp:157
@@ -8165,75 +8112,75 @@ msgstr ""
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "$error, nilai '$value', sebelumnya '$previous_value' di $pos"
 
-#: src/serialization/string_utils.cpp:543
+#: src/serialization/string_utils.cpp:544
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:544
+#: src/serialization/string_utils.cpp:545
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:545
+#: src/serialization/string_utils.cpp:546
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:546
+#: src/serialization/string_utils.cpp:547
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:547
+#: src/serialization/string_utils.cpp:548
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:548
+#: src/serialization/string_utils.cpp:549
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:549
+#: src/serialization/string_utils.cpp:550
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:550
+#: src/serialization/string_utils.cpp:551
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:562
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:563
+#: src/serialization/string_utils.cpp:564
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:565
+#: src/serialization/string_utils.cpp:566
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:566
+#: src/serialization/string_utils.cpp:567
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:567
+#: src/serialization/string_utils.cpp:568
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:568
+#: src/serialization/string_utils.cpp:569
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:569
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:571
+#: src/serialization/string_utils.cpp:572
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:585
+#: src/serialization/string_utils.cpp:586
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8269,7 +8216,7 @@ msgstr ""
 msgid "Debug Command Used"
 msgstr "Perintah mode debug"
 
-#: src/synced_commands.cpp:516
+#: src/synced_commands.cpp:536
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
@@ -8285,15 +8232,21 @@ msgstr[0] ""
 msgid "waiting for^input"
 msgstr ""
 
-#: src/terrain/terrain.cpp:181
+#. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
+#. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
+#: src/team.cpp:994
+msgid "“$color_id”"
+msgstr ""
+
+#: src/terrain/terrain.cpp:192
 msgid "Allied village"
 msgstr "Desa sekutu"
 
-#: src/terrain/terrain.cpp:186
+#: src/terrain/terrain.cpp:197
 msgid "Enemy village"
 msgstr "Desa musuh"
 
-#: src/terrain/terrain.cpp:191
+#: src/terrain/terrain.cpp:202
 msgid "Owned village"
 msgstr "Desa anda"
 
@@ -8316,14 +8269,14 @@ msgid "This Time of Day is only a Stub!"
 msgstr ""
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:378
+#: src/units/attack_type.cpp:439
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "per giliran"
 
-#: src/units/attack_type.cpp:387
+#: src/units/attack_type.cpp:448
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8332,7 +8285,7 @@ msgid_plural "$number damage"
 msgstr[0] "luka"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:396
+#: src/units/attack_type.cpp:457
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
@@ -8340,7 +8293,7 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "per giliran"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:405
+#: src/units/attack_type.cpp:466
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
@@ -8349,35 +8302,35 @@ msgid_plural "$number strikes"
 msgstr[0] "serangan"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:414
+#: src/units/attack_type.cpp:475
 #, fuzzy
 #| msgid "% parry"
 msgid "$number| accuracy"
 msgstr "% menangkis"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:421
+#: src/units/attack_type.cpp:482
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "per giliran"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:428
+#: src/units/attack_type.cpp:489
 #, fuzzy
 #| msgid "% parry"
 msgid "$number parry"
 msgstr "% menangkis"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:435
+#: src/units/attack_type.cpp:496
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "per giliran"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:442
+#: src/units/attack_type.cpp:503
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "$number movement point"
@@ -8385,83 +8338,97 @@ msgid_plural "$number movement points"
 msgstr[0] "Harga Pergerakan"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:451
+#: src/units/attack_type.cpp:512
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "per giliran"
 
-#: src/units/types.cpp:545 src/units/types.hpp:180
-msgid "chaotic"
+#: src/units/helper.cpp:52
+msgid "Level: "
+msgstr "Tingkat:"
+
+#: src/units/helper.cpp:55
+#, fuzzy
+#| msgid "Advancements"
+msgid "Advancements:"
+msgstr "Kenaikan Level"
+
+#: src/units/helper.cpp:68
+msgid "No advancement"
+msgstr "Tidak ada kenaikan"
+
+#: src/units/types.cpp:914
+msgid "female^lawful"
+msgstr "baik"
+
+#: src/units/types.cpp:915
+msgid "female^neutral"
+msgstr "netral"
+
+#: src/units/types.cpp:916
+msgid "female^chaotic"
 msgstr "brutal"
 
-#: src/units/types.cpp:545 src/units/types.hpp:178
+#: src/units/types.cpp:917
+msgid "female^liminal"
+msgstr "liminal wanita"
+
+#: src/units/types.hpp:182
 #, fuzzy
 #| msgid "female^lawful"
 msgid "lawful"
 msgstr "baik"
 
-#: src/units/types.cpp:545 src/units/types.hpp:181
-msgid "liminal"
-msgstr "liminal"
-
-#: src/units/types.cpp:545 src/units/types.hpp:179
+#: src/units/types.hpp:183
 msgid "neutral"
 msgstr "netral"
 
-#: src/units/types.cpp:546 src/units/types.cpp:912
-msgid "female^chaotic"
+#: src/units/types.hpp:184
+msgid "chaotic"
 msgstr "brutal"
 
-#: src/units/types.cpp:546 src/units/types.cpp:910
-msgid "female^lawful"
-msgstr "baik"
+#: src/units/types.hpp:185
+msgid "liminal"
+msgstr "liminal"
 
-#: src/units/types.cpp:546 src/units/types.cpp:911
-msgid "female^neutral"
-msgstr "netral"
-
-#: src/units/types.cpp:547 src/units/types.cpp:913
-msgid "female^liminal"
-msgstr "liminal wanita"
-
-#: src/units/unit.cpp:1854
+#: src/units/unit.cpp:1886
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1892
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "per giliran"
 
-#: src/units/unit.cpp:1870
+#: src/units/unit.cpp:1902
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "per giliran"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1908
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per giliran"
 
-#: src/units/unit.cpp:1880
+#: src/units/unit.cpp:1912
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per giliran"
 
-#: src/units/unit.cpp:1885
+#: src/units/unit.cpp:1917
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per giliran"
 
-#: src/units/unit.cpp:1889
+#: src/units/unit.cpp:1921
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8469,13 +8436,13 @@ msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "per giliran"
 
-#: src/units/unit.cpp:1896
+#: src/units/unit.cpp:1928
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per giliran"
 
-#: src/units/unit.cpp:2296
+#: src/units/unit.cpp:2349
 msgid "$effect_description per level"
 msgstr "$effect_description per level"
 
@@ -8524,6 +8491,273 @@ msgstr "Sembunyikan rencana untuk $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Pilihan Papan Tulis Putih"
+
+#, fuzzy
+#~| msgid "<i>― King Konrad, 536YW</i>"
+#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
+#~ msgstr "<i>― Raja Konrad, 536TW</i>"
+
+#, fuzzy
+#~| msgid "Sound Effects"
+#~ msgid "Show haloing effects"
+#~ msgstr "Efek Suara"
+
+#~ msgid "Joystick support"
+#~ msgstr "Dukungan joystick"
+
+#~ msgid "Joystick: number of the scroll X-axis joystick"
+#~ msgstr "Joystick: Jumlah Gulir Joystick sumbu-X "
+
+#~ msgid "Joystick: number of the scroll X-axis"
+#~ msgstr "Joystick: Jumlah Gulir sumbu-X"
+
+#~ msgid "Joystick: number of the scroll Y-axis joystick"
+#~ msgstr "Joystick: Jumlah Gulir Joystick sumbu-Y "
+
+#~ msgid "Joystick: number of the scroll Y-axis"
+#~ msgstr "Joystick: Jumlah Gulir sumbu-Y"
+
+#~ msgid "Joystick: deadzone of the scrolling stick"
+#~ msgstr "Joystick:  Zona mati dari Stick Bergulir"
+
+#~ msgid "Joystick: number of the cursor X-axis joystick"
+#~ msgstr "Joystik: jumlah kursor joystik sumbu-X "
+
+#~ msgid "Joystick: number of the cursor X-axis"
+#~ msgstr "Joystick: Jumlah Kursor sumbu-X"
+
+#~ msgid "Joystick: number of the cursor Y-axis joystick"
+#~ msgstr "Joystick: Jumlah Kursor Joystick sumbu-Y "
+
+#~ msgid "Joystick: number of the cursor Y-axis"
+#~ msgstr "Joystick: Jumlah Kursor sumbu-Y"
+
+#~ msgid "Joystick: deadzone of the cursor stick"
+#~ msgstr "Joystick: Zona mati dari Stick Kursor"
+
+#~ msgid "Joystick: number of the mouse X-axis joystick"
+#~ msgstr "Joystick: Jumlah Mouse Joystick sumbu-X "
+
+#~ msgid "Joystick: number of the mouse X-axis"
+#~ msgstr "Joystick: Jumlah Mouse sumbu-X"
+
+#~ msgid "Joystick: number of the mouse Y-axis joystick"
+#~ msgstr "Joystick: Jumlah Mouse Joystick sumbu-Y "
+
+#~ msgid "Joystick: number of the mouse Y-axis"
+#~ msgstr "Joystick: Jumlah Mouse sumbu-Y"
+
+#~ msgid "Joystick: deadzone of the mouse stick"
+#~ msgstr "Joystick: Zona mati dari Stick Mouse"
+
+#~ msgid "Joystick: number of the thrust axis joystick"
+#~ msgstr "Joystick: Jumlah Sumbu Dorongan Joystick "
+
+#~ msgid "Joystick: number of the thrust axis"
+#~ msgstr "Joystick: Jumlah Sumbu Dorongan"
+
+#~ msgid "Joystick: deadzone of the thruster"
+#~ msgstr "Joystick: Zona mati dari Pendorong"
+
+#, fuzzy
+#~| msgid "Estonian Translation"
+#~ msgid "Asturian Translation"
+#~ msgstr "Bahasa Estonia"
+
+#~ msgid "Friulian Translation"
+#~ msgstr "Bahasa Friulia"
+
+#~ msgid "<small>(early finish bonus)</small>"
+#~ msgstr "<small>(bonus menyelesaikan lebih awal)</small>"
+
+#~ msgid "gold"
+#~ msgstr "emas"
+
+#~ msgid "villages"
+#~ msgstr "desa"
+
+#~ msgid "units"
+#~ msgstr "unit-unit"
+
+#~ msgid "upkeep"
+#~ msgstr "pengeluaran"
+
+#~ msgid "income"
+#~ msgstr "pendapatan"
+
+#~ msgid "statuspanel^level"
+#~ msgstr "level"
+
+#~ msgid "statuspanel^moves"
+#~ msgstr "pergerakan"
+
+#~ msgid "statuspanel^terrain def."
+#~ msgstr "lantai pertahanan"
+
+#~ msgid "No Saved Games"
+#~ msgstr "Tidak Ada Permainan Tersimpan"
+
+#, fuzzy
+#~| msgid "The file you have tried to load is corrupt"
+#~ msgid "There are no save files to load"
+#~ msgstr "File yang anda coba load rusak"
+
+#, fuzzy
+#~| msgid "Terrain: "
+#~ msgid "Base Terrain: "
+#~ msgstr "Daerah:"
+
+#, fuzzy
+#~| msgid "Movement Cost"
+#~ msgid "Movement properties: "
+#~ msgstr "Harga Pergerakan"
+
+#, fuzzy
+#~| msgid "Defense: "
+#~ msgid "Defense properties: "
+#~ msgstr "Pertahanan:"
+
+#, fuzzy
+#~| msgid "Level: "
+#~ msgid "Level"
+#~ msgstr "Tingkat:"
+
+#~ msgid "Advances from: "
+#~ msgstr "Naik level dari:"
+
+#~ msgid "Advances to: "
+#~ msgstr "Naik level ke:"
+
+#, fuzzy
+#~| msgid "Base attacks: "
+#~ msgid "Base unit: "
+#~ msgstr "Serangan pokok:"
+
+#, fuzzy
+#~| msgid "Lawful units: "
+#~ msgid "Base units: "
+#~ msgstr "Unit baik:"
+
+#, fuzzy
+#~| msgid "Factions:"
+#~ msgid "Variations: "
+#~ msgstr "Faction"
+
+#~ msgid "Traits"
+#~ msgstr "Sifat"
+
+#~ msgid "Abilities: "
+#~ msgstr "Kemampuan:"
+
+#~ msgid "Ability Upgrades: "
+#~ msgstr "Peningkatan Kemampuan:"
+
+#, fuzzy
+#~| msgid "HP: "
+#~ msgid "HP:"
+#~ msgstr "Darah:"
+
+#, fuzzy
+#~| msgid "Moves: "
+#~ msgid "Moves:"
+#~ msgstr "Gerakan:"
+
+#, fuzzy
+#~| msgid "Version: "
+#~ msgid "Vision:"
+#~ msgstr "Versi:"
+
+#, fuzzy
+#~| msgid "Warning: "
+#~ msgid "Jamming:"
+#~ msgstr "Peringatan:"
+
+#, fuzzy
+#~| msgid "Cost: "
+#~ msgid "Cost:"
+#~ msgstr "Harga:"
+
+#, fuzzy
+#~| msgid "Alignment: "
+#~ msgid "Alignment:"
+#~ msgstr "Golongan:"
+
+#, fuzzy
+#~| msgid "Required XP: "
+#~ msgid "Required XP:"
+#~ msgstr "AP Diperlukan:"
+
+#~ msgid "unit help^Attacks"
+#~ msgstr "Serangan"
+
+#~ msgid "unit help^Name"
+#~ msgstr "Nama"
+
+#~ msgid "Strikes"
+#~ msgstr "Serangan"
+
+#~ msgid "Range"
+#~ msgstr "Jarak"
+
+#~ msgid "Type"
+#~ msgstr "Tipe"
+
+#, fuzzy
+#~| msgid "Special"
+#~ msgid "Special"
+#~ msgstr "Spesial"
+
+#~ msgid "Resistances"
+#~ msgstr "Daya Tahan"
+
+#~ msgid "Attack Type"
+#~ msgstr "Tipe Serangan"
+
+#~ msgid "Resistance"
+#~ msgstr "Daya Tahan"
+
+#, fuzzy
+#~| msgid "Terrain Modifiers"
+#~ msgid "Terrain Modifiers"
+#~ msgstr "Pemodifikasi Daerah"
+
+#~ msgid "Terrain"
+#~ msgstr "Daerah"
+
+#~ msgid "Defense"
+#~ msgstr "Perlindungan"
+
+#, fuzzy
+#~| msgid "Movement Cost"
+#~ msgid "Movement Cost"
+#~ msgstr "Harga Pergerakan"
+
+#, fuzzy
+#~| msgid "Defense: "
+#~ msgid "Defense Cap"
+#~ msgstr "Pertahanan:"
+
+#, fuzzy
+#~| msgid "Version: "
+#~ msgid "Vision Cost"
+#~ msgstr "Versi:"
+
+#~ msgid "do not translate the 'all'^[all|<command>]"
+#~ msgstr "[all|<command>]"
+
+#~ msgid "aliases:"
+#~ msgstr "alias:"
+
+#, fuzzy
+#~| msgid "do not translate the on/off^[<side> [on/off]]"
+#~ msgid "do not translate the on/off/full^[<side> [on/off/full]]"
+#~ msgstr "[<side> [on/off]]"
+
+#~ msgid "Show fps."
+#~ msgstr "Tunjukkan permainan ulang"
+
+#~ msgid " replay"
+#~ msgstr " "
 
 #, fuzzy
 #~| msgid "undead"
@@ -8610,12 +8844,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "\n"
 #~ "Siang: −25% Luka\n"
 #~ "Malam: −25% Luka"
-
-#, fuzzy
-#~| msgid "(this turn left)"
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(sisa giliran ini)"
 
 #~ msgid ""
 #~ "In many campaign scenarios, you may issue simple instructions for your "
@@ -9835,11 +10063,6 @@ msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "Tidak ada pemain di daftar teman atau abaian anda."
-
-#, fuzzy
-#~| msgid "The Battle for Wesnoth"
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Peperangan untuk Wesnoth"
 
 #~ msgid "Local time of day area lighting"
 #~ msgstr "Menerangi daerah siang hari waktu setempat"
@@ -13613,46 +13836,8 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "Unit ini akan mengobati diri sendiri 8 darah per giliran. Jika ia "
 #~ "diracun, ia akan menghilangkan racun ini dan bukan mengobati."
 
-#~ msgid "steadfast"
-#~ msgstr "kukuh"
-
-#~ msgid "female^steadfast"
-#~ msgstr "kukuh"
-
-#~ msgid ""
-#~ "Steadfast:\n"
-#~ "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#~ "defending. Vulnerabilities are not affected."
-#~ msgstr ""
-#~ "Kukuh:\n"
-#~ "Daya tahan unit ini didua kali lipat, sampai maksimum 50%, ketika "
-#~ "bertahan. Kelemahan tidak terpengaruh."
-
 #~ msgid "leadership"
 #~ msgstr "memimpin"
-
-#~ msgid "female^leadership"
-#~ msgstr "memimpin"
-
-#~ msgid ""
-#~ "Leadership:\n"
-#~ "This unit can lead our own units that are next to it, making them fight "
-#~ "better.\n"
-#~ "\n"
-#~ "Adjacent own units of lower level will do more damage in battle. When a "
-#~ "unit adjacent to, of a lower level than, and on the same side as a unit "
-#~ "with Leadership engages in combat, its attacks do 25% more damage times "
-#~ "the difference in their levels."
-#~ msgstr ""
-#~ "Memimpin:\n"
-#~ "Unit ini bisa memimpin unit kita yang ada di sampingnya, membuat mereka "
-#~ "bertempur lebih baik.\n"
-#~ "\n"
-#~ "Unit sendiri dengan level lebih rendah yang bersebelahan akan melukai "
-#~ "lebih banyak di pertempuran. Ketika sebuah unit di sebelah, dengan level "
-#~ "lebih rendah, dan di sisi yang sama dengan unit memiliki Memimpin "
-#~ "bertarung, serangannya melukai 25% lebih banyak dikalikan dengan "
-#~ "perbedaan level mereka."
 
 #~ msgid "skirmisher"
 #~ msgstr "menyelinap"
@@ -13825,9 +14010,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "ada musuh sasaran di balik sasaran, dan unit tersebut tidak cacat (diubah "
 #~ "menjadi batu atau dilumpuhkan)."
 
-#~ msgid "plague"
-#~ msgstr "mewabah"
-
 #~ msgid ""
 #~ "Plague:\n"
 #~ "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -13837,17 +14019,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "Mewabah:\n"
 #~ "Ketika sebuah unit dibunuh dengan serangan Mewabah, unit itu digantikan "
 #~ "dengan sebuah unit serupa dan di sisi yang sama dengan unit memiliki "
-#~ "serangan Mewabah. Ini tidak mengefek Tak-Mati atau unit di desa."
-
-#~ msgid ""
-#~ "Plague:\n"
-#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~ "Walking Corpse on the same side as the unit with the Plague attack. This "
-#~ "doesn’t work on Undead or units in villages."
-#~ msgstr ""
-#~ "Mewabah:\n"
-#~ "Ketika sebuah unit dibunuh oleh serangan Mewabah, unit itu digantikan "
-#~ "dengan seorang Mayat Berjalan pada sisi sama dengan unit memiliki "
 #~ "serangan Mewabah. Ini tidak mengefek Tak-Mati atau unit di desa."
 
 #~ msgid "slows"
@@ -14135,13 +14306,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgstr ""
 #~ "Ketika bertempur, unit ini bisa menghisap kehidupan dari korban untuk "
 #~ "memperpanjang hidupnya sendiri."
-
-#~ msgid ""
-#~ " The length of this unit’s weapon allows it to strike first in melee, "
-#~ "even in defense."
-#~ msgstr ""
-#~ "Panjang senjata unit ini membolehkannya menyerang pertama di pertarungan "
-#~ "jarak dekat, bahkan ketika berlindung."
 
 #~ msgid ""
 #~ " The victims of this unit’s poison will continually take damage until "

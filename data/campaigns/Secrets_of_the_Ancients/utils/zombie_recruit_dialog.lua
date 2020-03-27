@@ -6,8 +6,8 @@ local listedZombies = {}
 local recruitedType
 local recruitCost
 
-local zombies = V.zombies
-local sides = wesnoth.get_sides()
+local zombies = wml.array_access.get("zombies")
+local sides = wesnoth.sides.find()
 
 local unit_row = T.row {
     T.column { grow_factor=0, border="right", border_size=5, horizontal_alignment = "left", T.image { id = "unit_sprite" } },
@@ -45,10 +45,10 @@ local info_grid = T.grid {
     T.row { T.column { border = "bottom", border_size = 100, T.spacer { } } }
 }
 
-local zombie_recruit_dialog = { maximum_height=676, minimum_height=608, 
+local zombie_recruit_dialog = { maximum_height=676, minimum_height=608,
     T.tooltip { id = "tooltip_large" },
     T.helptip { id = "tooltip_large" },
-    T.grid { 
+    T.grid {
         T.row {
             T.column { border = "left,top", border_size = 5, horizontal_alignment = "left", T.label { definition = "title", label = _ "Choose a Corpse" } },
             T.column { T.spacer {} },
@@ -60,15 +60,15 @@ local zombie_recruit_dialog = { maximum_height=676, minimum_height=608,
                     T.list_definition { T.row { T.column { horizontal_grow=true, T.toggle_panel { return_value = -1, T.grid { unit_row } }
                     } } }
                 } } }
-            } } 
+            } }
         },
-        T.row { 
+        T.row {
             T.column { border = "left, top, bottom", border_size = 7, horizontal_alignment="left", T.button { id="help_button", definition="help" } },
             T.column { border = "left, top, bottom", border_size = 7, T.grid { T.row {
                 T.column { border_size=10, border="right", T.button { return_value = 1, label = _"Recruit" } },
                 T.column { T.button { id = "cancel", label = _"Cancel" } }
-            } } } 
-        } 
+            } } }
+        }
     }
 }
 
@@ -81,20 +81,20 @@ local function preshow()
         wesnoth.set_dialog_value( "<span color='#f5e6c1'>   6×2 " .. unit_type.attacks[1].description .. "</span>", "unit_attack")
         wesnoth.set_dialog_value( "<span color='#a69275'>     melee–" .. unit_type.attacks[1].type .. "</span>", "damage_type")
     end
-    
+
     local function general_help()
         W.open_help { topic="recruit_and_recall" }
     end
 
     local function unit_help()
-        W.open_help { topic="unit_" ..  listedZombies[wesnoth.get_dialog_value "unit_list"] }
+        W.open_help { topic="unit_" .. listedZombies[wesnoth.get_dialog_value "unit_list"] }
     end
-    
+
     wesnoth.set_dialog_callback( select, "unit_list" )
     wesnoth.set_dialog_callback( general_help, "help_button" )
     wesnoth.set_dialog_callback( unit_help, "unit_help_button" )
 
-    local zArrayIndex = 0  -- Index of the original, zero-indexed array from WML.
+    local zArrayIndex = 1  -- Start index of the WML array in lua.
     local zListIndex = 1  -- Index of the list of recrutable zombies in this dialog box.
     while zombies[zArrayIndex] do
         local z=zombies[zArrayIndex]
@@ -127,7 +127,7 @@ end
 
 -- Find out if there is at least one zombie in the list box.
 -- This will only be necessary if the WML changes, but it could, so we'll check.
-local zArrayIndex = 0  -- Index of the original, zero-indexed array from WML.
+local zArrayIndex = 1  -- Start index of the WML array in lua.
 local zExists = false
 while zombies[zArrayIndex] and zExists == false do
     local z=zombies[zArrayIndex]
@@ -137,16 +137,16 @@ while zombies[zArrayIndex] and zExists == false do
     zArrayIndex = zArrayIndex + 1
 end
 
-wesnoth.set_variable( "recruitedZombieType", "cancel" ) -- default value
+wml.variables["recruitedZombieType"] = "cancel" -- default value
 
 if zExists==false then
-    wesnoth.show_message_box("", _ "There are no corpses available.", "")
+    gui.show_prompt("", _ "There are no corpses available.", "")
 else
     local returned = wesnoth.show_dialog(zombie_recruit_dialog, preshow, postshow)
     if  returned ~= -2 and sides[1].gold  < recruitCost then
-        wesnoth.show_message_box("", _ "You do not have enough gold to recruit that unit", "")
+        gui.show_prompt("", _ "You do not have enough gold to recruit that unit", "")
     elseif returned ~= -2 and (sides[1].gold ) >= recruitCost then
-        wesnoth.set_variable( "recruitedZombieType", recruitedType )
-        wesnoth.set_variable( "recruitedZombieCost", recruitCost )
+        wml.variables["recruitedZombieType"] = recruitedType
+        wml.variables["recruitedZombieCost"] = recruitCost
     end
 end

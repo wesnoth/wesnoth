@@ -16,6 +16,7 @@
 
 #include "widgets/textbox.hpp"
 
+#include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "font/sdl_ttf.hpp"
 #include "log.hpp"
@@ -48,6 +49,10 @@ textbox::textbox(CVideo &video, int width, const std::string& text, bool editabl
 
 textbox::~textbox()
 {
+	// Restore the cursor on destruction if we (probably) set it to IBEAM
+	if(cursor::get() == cursor::IBEAM) {
+		cursor::set(cursor::NORMAL);
+	}
 }
 
 void textbox::update_location(const SDL_Rect& rect)
@@ -652,9 +657,22 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	}
 
 	const SDL_Rect& loc = inner_location();
+
+	const bool mouse_inside = sdl::point_in_rect(mousex, mousey, loc);
+
+	// Someone else may set the mouse cursor for us to something unusual (e.g.
+	// the WAIT cursor) so we ought to mess with that only if it's set to
+	// NORMAL or IBEAM.
+
+	if(mouse_inside && cursor::get() == cursor::NORMAL) {
+		cursor::set(cursor::IBEAM);
+	} else if(!mouse_inside && cursor::get() == cursor::IBEAM) {
+		cursor::set(cursor::NORMAL);
+	}
+
 	bool clicked_inside = !mouse_locked() && (event.type == SDL_MOUSEBUTTONDOWN
 					   && (mousebuttons & SDL_BUTTON(1))
-					   && sdl::point_in_rect(mousex, mousey, loc));
+					   && mouse_inside);
 	if(clicked_inside) {
 		set_focus(true);
 	}

@@ -1226,6 +1226,19 @@ void config::inherit_from(const config& c)
 	swap(scratch);
 }
 
+/**
+ * Merge the attributes of config 'c' into this config, preserving this config's values.
+ */
+void config::inherit_attributes(const config& cfg)
+{
+	check_valid(cfg);
+	for(const attribute& v : cfg.values_) {
+		attribute_value& v2 = values_[v.first];
+		if(v2.blank()) {
+			v2 = v.second;
+		}
+	}
+}
 bool config::matches(const config& filter) const
 {
 	check_valid(filter);

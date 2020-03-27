@@ -22,7 +22,6 @@
 #include "ai/game_info.hpp"
 
 #include "actions/move.hpp"
-#include "ai/lua/aspect_advancements.hpp"
 #include "units/ptr.hpp"
 
 namespace pathfind {
@@ -132,8 +131,7 @@ public:
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		int attacker_weapon,
-		double aggression,
-		const unit_advancements_aspect& advancements = unit_advancements_aspect());
+		double aggression);
 
 	enum result {
 		E_EMPTY_ATTACKER = 1001,
@@ -159,7 +157,6 @@ private:
 	const map_location& defender_loc_;
 	int attacker_weapon_;
 	double aggression_;
-	const unit_advancements_aspect& advancements_;
 };
 
 class move_result : public action_result {
@@ -177,7 +174,6 @@ public:
 		E_INCAPACITATED_UNIT = 2004,
 		E_AMBUSHED = 2005,
 		E_FAILED_TELEPORT = 2006,
-		E_NOT_REACHED_DESTINATION = 2007,
 		E_NO_ROUTE = 2008
 	};
 
@@ -336,8 +332,7 @@ static attack_result_ptr execute_attack_action( side_number side,
 	const map_location& attacker_loc,
 	const map_location& defender_loc,
 	int attacker_weapon,
-	double aggression,
-	const unit_advancements_aspect& advancements = unit_advancements_aspect());
+	double aggression);
 
 
 /**

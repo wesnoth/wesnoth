@@ -35,7 +35,7 @@ public:
 	void run(char const *prog, const std::string& name, int nArgs = 0);
 
 	/** Runs a plain script, but reports errors by throwing lua_error.*/
-	void throwing_run(char const * prog, const std::string& name, int nArgs);
+	void throwing_run(char const * prog, const std::string& name, int nArgs, bool in_interpreter = false);
 
 	/** Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.*/
 	void interactive_run(char const * prog);
@@ -56,6 +56,7 @@ public:
 
 	/** Access / manipulate logging of lua kernel activities */
 	const std::stringstream & get_log() { cmd_log_.log_ << std::flush; return cmd_log_.log_; }
+	void add_log(const char* str) { cmd_log_ << str; }
 	void clear_log() { cmd_log_.log_.str(""); cmd_log_.log_.clear(); }
 
 	using external_log_type = std::function<void(const std::string &)>;
@@ -113,10 +114,10 @@ protected:
 
 	// Print text to the command log for this lua kernel. Used as a replacement impl for lua print.
 	int intf_print(lua_State * L);
-
+public:
 	// Show the interactive lua console (for debugging purposes)
 	int intf_show_lua_console(lua_State * L);
-
+protected:
 	// Execute a protected call. Error handler is called in case of an error, using syntax for log_error and throw_exception above. Returns true if successful.
 	bool protected_call(int nArgs, int nRets, error_handler);
 	// Execute a protected call, taking a lua_State as argument. For functions pushed into the lua environment, this version should be used, or the function cannot be used by coroutines without segfaulting (since they have a different lua_State pointer). This version is called by the above version.

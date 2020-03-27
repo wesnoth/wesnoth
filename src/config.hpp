@@ -472,7 +472,9 @@ public:
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
+private:
 	void clear_children_impl(config_key_type key);
+public:
 	template<typename... T>
 	void clear_children(T... keys) {
 		for(auto key : {keys...}) {
@@ -691,6 +693,10 @@ public:
 	 * Merge config 'c' into this config, preserving this config's values.
 	 */
 	void inherit_from(const config& c);
+	/**
+	 * Merge the attributes of config 'c' into this config, preserving this config's values.
+	 */
+	void inherit_attributes(const config& c);
 
 	bool matches(const config &filter) const;
 
@@ -813,10 +819,3 @@ inline config::config(config_key_type first, T&&... args)
 	detail::config_construct_unpacker<config_key_type, T...> unpack;
 	unpack.visit(*this, first, std::forward<T>(args)...);
 }
-
-class variable_set
-{
-public:
-	virtual ~variable_set() {}
-	virtual config::attribute_value get_variable_const(const std::string &id) const = 0;
-};

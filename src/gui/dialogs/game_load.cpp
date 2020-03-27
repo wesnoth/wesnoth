@@ -18,12 +18,12 @@
 
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
+#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "gettext.hpp"
-#include "game_config.hpp"
-#include "preferences/game.hpp"
 #include "game_classification.hpp"
+#include "game_config.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/core/log.hpp"
 #include "gui/dialogs/game_delete.hpp"
@@ -32,18 +32,19 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "picture.hpp"
 #include "language.hpp"
+#include "picture.hpp"
+#include "preferences/game.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
+#include "utils/functional.hpp"
 
 #include <cctype>
-#include "utils/functional.hpp"
 
 static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
 #define ERR_GAMELOADDLG   LOG_STREAM(err,   log_gameloaddlg)
@@ -69,6 +70,9 @@ namespace dialogs
  * txtFilter & & text & m &
  *         The filter for the listbox items. $
  *
+ * dirList & & menu_button & m &
+ *         Allows changing directory to the directories for old versions of Wesnoth. $
+ *
  * savegame_list & & listbox & m &
  *         List of savegames. $
  *
@@ -90,6 +94,9 @@ namespace dialogs
  * -lblSummary & & label & m &
  *         Summary of the selected savegame. $
  *
+ * delete & & button & m &
+ *         Delete the selected savegame. $
+ *
  * @end{table}
  */
 
@@ -97,11 +104,12 @@ REGISTER_DIALOG(game_load)
 
 game_load::game_load(const config& cache_config, savegame::load_game_metadata& data)
 	: filename_(data.filename)
+	, save_index_manager_(data.manager)
 	, change_difficulty_(register_bool("change_difficulty", true, data.select_difficulty))
 	, show_replay_(register_bool("show_replay", true, data.show_replay))
 	, cancel_orders_(register_bool("cancel_orders", true, data.cancel_orders))
 	, summary_(data.summary)
-	, games_({savegame::get_saves_list()})
+	, games_()
 	, cache_config_(cache_config)
 	, last_words_()
 {
@@ -116,18 +124,68 @@ void game_load::pre_show(window& window)
 
 	text_box* filter = find_widget<text_box>(&window, "txtFilter", false, true);
 
-	filter->set_text_changed_callback(
-			std::bind(&game_load::filter_text_changed, this, _1, _2));
+	filter->set_text_changed_callback(std::bind(&game_load::filter_text_changed, this, _1, _2));
 
 	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
 
-	connect_signal_notify_modified(list,
-			std::bind(&game_load::display_savegame, this, std::ref(window)));
+	connect_signal_notify_modified(list, std::bind(&game_load::display_savegame, this, std::ref(window)));
 
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&list);
 
+	list.register_sorting_option(0, [this](const int i) { return games_[i].name(); });
+	list.register_sorting_option(1, [this](const int i) { return games_[i].modified(); });
+
+	populate_game_list(window);
+
+	connect_signal_mouse_left_click(find_widget<button>(&window, "delete", false),
+			std::bind(&game_load::delete_button_callback, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(find_widget<button>(&window, "browse_saves_folder", false),
+			std::bind(&game_load::browse_button_callback, this));
+
+	menu_button& dir_list = find_widget<menu_button>(&window, "dirList", false);
+
+	dir_list.set_use_markup(true);
+	set_save_dir_list(dir_list);
+
+	connect_signal_notify_modified(dir_list, std::bind(&game_load::handle_dir_select, this, std::ref(window)));
+
+	display_savegame(window);
+}
+
+void game_load::set_save_dir_list(menu_button& dir_list)
+{
+	const auto other_dirs = filesystem::find_other_version_saves_dirs();
+	if(other_dirs.empty()) {
+		dir_list.set_visible(widget::visibility::invisible);
+		return;
+	}
+
+	std::vector<config> options;
+
+	// The first option in the list is the current version's save dir
+	options.emplace_back("label",  _("game_version^Current Version"), "path", "");
+
+	for(const auto& known_dir : other_dirs) {
+		if(!known_dir.path.empty()) {
+			options.emplace_back(
+				"label", VGETTEXT("game_version^Wesnoth $version", utils::string_map{{"version", known_dir.version}}),
+				"path", known_dir.path
+			);
+		}
+	}
+
+	dir_list.set_values(options);
+}
+
+void game_load::populate_game_list(window& window)
+{
+	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
+
 	list.clear();
+
+	games_ = save_index_manager_->get_saves_list();
 
 	for(const auto& game : games_) {
 		std::map<std::string, string_map> data;
@@ -144,19 +202,7 @@ void game_load::pre_show(window& window)
 		list.add_row(data);
 	}
 
-	list.register_sorting_option(0, [this](const int i) { return games_[i].name(); });
-	list.register_sorting_option(1, [this](const int i) { return games_[i].modified(); });
-
-	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "delete", false),
-			std::bind(&game_load::delete_button_callback,
-					this, std::ref(window)));
-
-	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "browse_saves_folder", false),
-		std::bind(&desktop::open_object, filesystem::get_saves_dir()));
-
-	display_savegame(window);
+	find_widget<button>(&window, "delete", false).set_active(!save_index_manager_->read_only());
 }
 
 void game_load::display_savegame_internal(window& window)
@@ -432,6 +478,10 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		}
 	}
 }
+void game_load::browse_button_callback()
+{
+	desktop::open_object(save_index_manager_->dir());
+}
 
 void game_load::delete_button_callback(window& window)
 {
@@ -448,7 +498,7 @@ void game_load::delete_button_callback(window& window)
 		}
 
 		// Delete the file
-		savegame::delete_game(games_[index].name());
+		save_index_manager_->delete_game(games_[index].name());
 
 		// Remove it from the list of saves
 		games_.erase(games_.begin() + index);
@@ -482,6 +532,21 @@ void game_load::key_press_callback(window& window, const SDL_Keycode key)
 	if(key == SDLK_DELETE) {
 		delete_button_callback(window);
 	}
+}
+
+void game_load::handle_dir_select(window& window)
+{
+	menu_button& dir_list = find_widget<menu_button>(&window, "dirList", false);
+
+	const auto& path = dir_list.get_value_config()["path"].str();
+	if(path.empty()) {
+		save_index_manager_ = savegame::save_index_class::default_saves_dir();
+	} else {
+		save_index_manager_ = std::make_shared<savegame::save_index_class>(path);
+	}
+
+	populate_game_list(window);
+	display_savegame(window);
 }
 
 } // namespace dialogs

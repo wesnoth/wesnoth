@@ -40,4 +40,14 @@ int number_of_possible_advances(const unit &unit);
  */
 std::string resistance_color(const int resistance);
 
+/**
+ * @return the tooltip text showing a unit's level and what it can advance to.
+ */
+std::string unit_level_tooltip(const unit &u);
+
+/**
+ * @return the tooltip text showing a unit type's level and what it can
+ * advance to.
+ */
+std::string unit_level_tooltip(const unit_type &u);
 }

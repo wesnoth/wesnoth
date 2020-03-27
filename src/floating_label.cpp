@@ -46,7 +46,10 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 #else
 	: surf_(surf)
 	, buf_(nullptr)
+	, buf_pos_()
 #endif
+	, fadeout_(true)
+	, time_start_(0)
 	, text_(text)
 	, font_size_(SIZE_NORMAL)
 	, color_(NORMAL_COLOR)
@@ -60,7 +63,6 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, width_(-1)
 	, height_(-1)
 	, clip_rect_(CVideo::get_singleton().screen_area())
-	, alpha_change_(0)
 	, visible_(true)
 	, align_(CENTER_ALIGN)
 	, border_(0)
@@ -154,7 +156,7 @@ surface floating_label::create_surface()
 	return surf_;
 }
 
-void floating_label::draw(surface screen)
+void floating_label::draw(int time, surface screen)
 {
 	if(!visible_) {
 		buf_ = nullptr;
@@ -177,10 +179,40 @@ void floating_label::draw(surface screen)
 		}
 	}
 
-	SDL_Rect rect = sdl::create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
+	SDL_Point pos = get_loc(time);
+	buf_pos_ = sdl::create_rect(pos.x, pos.y, surf_->w, surf_->h);
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	sdl_copy_portion(screen,&rect,buf_,nullptr);
-	sdl_blit(surf_,nullptr,screen,&rect);
+	//important: make a copy of buf_pos_ because sdl_blit modifies dst_rect.
+	SDL_Rect rect = buf_pos_;
+	sdl_copy_portion(screen, &rect, buf_, nullptr);
+	sdl_blit(get_surface(time), nullptr, screen, &rect);
+}
+
+void floating_label::set_lifetime(int lifetime)
+{
+	lifetime_ = lifetime;
+	time_start_	= SDL_GetTicks();
+}
+
+
+SDL_Point floating_label::get_loc(int time)
+{
+	int time_alive = get_time_alive(time);
+	return {
+		static_cast<int>(time_alive * xmove_ + xpos(surf_->w)),
+		static_cast<int>(time_alive * ymove_ + ypos_)
+ 	};
+}
+
+surface floating_label::get_surface(int time)
+{
+	int time_alive = get_time_alive(time);
+	int alpha_add = -255 * time_alive / lifetime_;
+	if(fadeout_ && surf_ != nullptr) {
+			// fade out moving floating labels
+			return adjust_surface_alpha_add(surf_, alpha_add);
+	}
+	return surf_;
 }
 
 void floating_label::undraw(surface screen)
@@ -188,18 +220,10 @@ void floating_label::undraw(surface screen)
 	if(screen == nullptr || buf_ == nullptr) {
 		return;
 	}
-	SDL_Rect rect = sdl::create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
-	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	sdl_blit(buf_,nullptr,screen,&rect);
 
-	move(xmove_,ymove_);
-	if(lifetime_ > 0) {
-		--lifetime_;
-		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0) && surf_ != nullptr) {
-			// fade out moving floating labels
-			surf_ = adjust_surface_alpha_add(surf_,alpha_change_);
-		}
-	}
+	const clip_rect_setter clip_setter(screen, &clip_rect_);
+	SDL_Rect rect = buf_pos_;
+	sdl_blit(buf_, nullptr, screen, &rect);
 }
 
 int add_floating_label(const floating_label& flabel)
@@ -265,11 +289,13 @@ SDL_Rect get_floating_label_rect(int handle)
 
 floating_label_context::floating_label_context()
 {
+	//TODO: 'pause' floating labels in other contexrs
 	label_contexts.emplace();
 }
 
 floating_label_context::~floating_label_context()
 {
+	//TODO: 'pause' floating labels in other contexrs
 	const std::set<int>& context = label_contexts.top();
 
 	while(!context.empty()) {
@@ -286,6 +312,7 @@ void draw_floating_labels(surface screen)
 	if(label_contexts.empty()) {
 		return;
 	}
+	int time = SDL_GetTicks();
 
 	const std::set<int>& context = label_contexts.top();
 
@@ -293,7 +320,7 @@ void draw_floating_labels(surface screen)
 	// are displayed over earlier added labels.
 	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
 		if(context.count(i->first) > 0) {
-			i->second.draw(screen);
+			i->second.draw(time, screen);
 		}
 	}
 }
@@ -303,6 +330,7 @@ void undraw_floating_labels(surface screen)
 	if(label_contexts.empty()) {
 		return;
 	}
+	int time = SDL_GetTicks();
 
 	std::set<int>& context = label_contexts.top();
 
@@ -316,7 +344,7 @@ void undraw_floating_labels(surface screen)
 
 	//remove expired labels
 	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
-		if(context.count(j->first) > 0 && j->second.expired()) {
+		if(context.count(j->first) > 0 && j->second.expired(time)) {
 			context.erase(j->first);
 			labels.erase(j++);
 		} else {

@@ -14,6 +14,7 @@
 
 #include "hotkey/hotkey_handler_sp.hpp"
 
+#include "filesystem.hpp" // for get_saves_dir()
 #include "font/standard_colors.hpp"
 #include "formula/string_utils.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -308,7 +309,7 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 	{
 		config savegame;
 		std::string error_log;
-		savegame::read_save_file(filename, savegame, &error_log);
+		savegame::read_save_file(filesystem::get_saves_dir(), filename, savegame, &error_log);
 
 		if(!error_log.empty() || savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
 			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + error_log);

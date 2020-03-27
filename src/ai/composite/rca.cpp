@@ -39,6 +39,11 @@ candidate_action::candidate_action(rca_context &context, const config &cfg):
 	max_score_(cfg["max_score"].to_double(HIGH_SCORE)),
 	id_(cfg["id"]), name_(cfg["name"]), type_(cfg["type"]), to_be_removed_(false)
 {
+	if (const config &filter_own = cfg.child("filter_own")) {
+		vconfig vcfg(filter_own);
+		vcfg.make_safe();
+		filter_own_.reset(new unit_filter(vcfg));
+	}
 	init_rca_context_proxy(context);
 }
 
@@ -80,6 +85,20 @@ double candidate_action::get_max_score() const
 	return max_score_;
 }
 
+std::shared_ptr<unit_filter> candidate_action::get_filter_own() const
+{
+	return filter_own_;
+}
+
+bool candidate_action::is_allowed_unit(const unit& u) const
+{
+	if (filter_own_) {
+		return (*filter_own_)(u);
+	}
+	return true;
+}
+
+
 const std::string& candidate_action::get_type() const
 {
 	return type_;
@@ -94,6 +113,9 @@ config candidate_action::to_config() const
 	cfg["name"] = name_;
 	cfg["score"] = score_;
 	cfg["max_score"] = max_score_;
+	if (filter_own_ && !filter_own_->empty()) {
+		cfg.add_child("filter_own", filter_own_->to_config());
+	}
 	cfg["type"] = type_;
 	return cfg;
 }

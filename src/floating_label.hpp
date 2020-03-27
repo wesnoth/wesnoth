@@ -50,10 +50,7 @@ public:
 		ymove_ = ymove;
 	}
 	// set the number of frames to display the text for, or -1 to display until removed
-	void set_lifetime(int lifetime) {
-		lifetime_ = lifetime;
-		alpha_change_ = -255 / lifetime_;
-	}
+	void set_lifetime(int lifetime);
 	void set_color(const color_t& color) {color_ = color;}
 	void set_bg_color(const color_t& bg_color) {
 		bgcolor_ = bg_color;
@@ -69,12 +66,12 @@ public:
 	void use_markup(bool b) {use_markup_ = b;}
 
 	void move(double xmove, double ymove);
-	void draw(surface screen);
+	void draw(int time, surface screen);
 	void undraw(surface screen);
 
 	surface create_surface();
 
-	bool expired() const { return lifetime_ == 0; }
+	bool expired(int time) const { return get_time_alive(time) > lifetime_; }
 
 	void show(const bool value) { visible_ = value; }
 
@@ -82,8 +79,14 @@ public:
 
 private:
 
+	int get_time_alive(int current_time) const { return current_time - time_start_; }
 	int xpos(std::size_t width) const;
+	SDL_Point get_loc(int time);
+	surface get_surface(int time);
 	surface surf_, buf_;
+	SDL_Rect buf_pos_;
+	bool fadeout_;
+	int time_start_;
 	std::string text_;
 	int font_size_;
 	color_t color_, bgcolor_;
@@ -92,7 +95,6 @@ private:
 	int lifetime_;
 	int width_, height_;
 	SDL_Rect clip_rect_;
-	int alpha_change_;
 	bool visible_;
 	font::ALIGN align_;
 	int border_;

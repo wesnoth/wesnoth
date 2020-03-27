@@ -96,6 +96,11 @@ mode).
 \fB\-\-debug\-lua\fP
 enables some Lua debugging mechanisms
 .TP 
+\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+diffs the two WML files; does not preprocess them first (to do that, run
+them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
+to the file indicated by \fI\-\-output\fP.
+.TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
 to \fB\-l\fP \fB\-\-load\fP.
@@ -186,6 +191,9 @@ don't try to validate replay of unit test. Only relevant when used with
 \fB\-\-nosound\fP
 runs the game without sounds and music.
 .TP 
+\fB\-\-output\fP\fI\ file\fP
+output to the specified file. Applicable to diffing operations.
+.TP 
 \fB\-\-password\fP\fI\ password\fP
 uses \fIpassword\fP when connecting to a server, ignoring other
 preferences. Unsafe.
@@ -194,6 +202,11 @@ preferences. Unsafe.
 (experimental) load a \fIscript\fP which defines a Wesnoth plugin. Similar to
 \fB\-\-script\fP, but Lua file should return a function which will be run as a
 co\-routine and periodically woken up with updates.
+.TP 
+\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+applies a DiffWML patch to a WML file; does not preprocess either of the
+files.  Outputs the patched WML to standard output or to the file indicated
+by \fI\-\-output\fP.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 preprocesses a specified file/folder. For each file(s) a plain .cfg file and
@@ -318,7 +331,7 @@ uses \fIusername\fP when connecting to a server, ignoring other preferences.
 validates a file against the WML schema.
 .TP 
 \fB\-\-validate\-addon\fP\fI\ addon_id\fP
-validates the WML of the given addon as you play.
+validates the WML of the given add\-on as you play.
 .TP 
 \fB\-\-validate\-core\fP
 validates the core WML as you play.
@@ -405,8 +418,7 @@ status of 0 indicates that the test passed, and 1 indicates that the test
 failed. An exit status of 3 indicates that the test passed, but produced an
 invalid replay file. An exit status of 4 indicates that the test passed, but
 the replay produced errors. These latter two are only returned if
-\fB\-\-noreplaycheck\fP is not passed. An exit status of 2 indicates that the
-test timed out, when used with the deprecated \fB\-\-timeout\fP option.
+\fB\-\-noreplaycheck\fP is not passed.
 .
 .SH AUTHOR
 .

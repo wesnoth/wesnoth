@@ -25,7 +25,7 @@
 #include <boost/scope_exit.hpp>
 
 #include <mysql/mysql.h>
-#if defined(MYSQL_VERSION_ID) && MYSQL_VERSION_ID >= 80000
+#if !defined(MARIADB_VERSION_ID) && defined(MYSQL_VERSION_ID) && MYSQL_VERSION_ID >= 80000
 using my_bool = bool;
 #endif
 

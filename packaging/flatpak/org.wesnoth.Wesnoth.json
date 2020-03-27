@@ -19,6 +19,14 @@
         "/share/man",
         "*.la", "*.a"
     ],
+    "build-options": {
+        "cflags-override": true,
+        "cppflags-override": true,
+        "cxxflags-override": true,
+        "cflags": "",
+        "cppflags": "",
+        "cxxflags": ""
+    },
     "modules": [
         {
             "name": "boost",
@@ -32,7 +40,7 @@
             ],
             "build-commands": [
                 "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread",
-                "./b2 -j4 install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
+                "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
 ]
         },
 	{
@@ -42,8 +50,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://download.sourceforge.net/scons/scons-3.0.1.tar.gz",
-                    "sha256": "24475e38d39c19683bc88054524df018fe6949d70fbd4c69e298d39a0269f173"
+                    "url": "http://download.sourceforge.net/scons/scons-3.0.2.tar.gz",
+                    "sha256": "d0afcf8f4c2ea5fa7af3c9321c0cb3ea1c83d137196be10c4cb2c79cc5dade01"
                 }
             ],
             "build-commands": [
@@ -57,7 +65,7 @@
                 "/share/applications/wesnoth_editor.desktop"
             ],
             "build-commands": [
-                "python3 /app/bin/scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app ccache=true install wesnoth wesnothd"
+                "python3 /app/bin/scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app ccache=true --debug=time install wesnoth wesnothd"
 	    ],
             "sources": [
                 {

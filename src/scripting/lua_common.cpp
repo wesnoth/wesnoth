@@ -24,6 +24,7 @@
 #include "scripting/lua_common.hpp"
 
 #include "config.hpp"
+#include "scripting/push_check.hpp"
 #include "scripting/lua_unit.hpp"
 #include "tstring.hpp"                  // for t_string
 #include "variable.hpp" // for vconfig
@@ -72,6 +73,15 @@ static int impl_gettext(lua_State *L)
 	} else {
 		luaW_pushtstring(L, t_string(m, d));
 	}
+	return 1;
+}
+
+static int impl_gettext_tostr(lua_State* L)
+{
+	char* d = static_cast<char*>(lua_touserdata(L, 1));
+	using namespace std::literals;
+	std::string str = "textdomain: "s + d;
+	lua_push(L, str);
 	return 1;
 }
 
@@ -403,6 +413,7 @@ std::string register_gettext_metatable(lua_State *L)
 
 	static luaL_Reg const callbacks[] {
 		{ "__call", 	    &impl_gettext},
+		{ "__tostring",     &impl_gettext_tostr},
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
@@ -431,6 +442,13 @@ std::string register_tstring_metatable(lua_State *L)
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
+	
+	lua_createtable(L, 0, 1);
+	luaW_getglobal(L, "string", "format");
+	lua_setfield(L, -2, "format");
+	luaW_getglobal(L, "stringx", "vformat");
+	lua_setfield(L, -2, "vformat");
+	lua_setfield(L, -2, "__index");
 
 	lua_pushstring(L, "translatable string");
 	lua_setfield(L, -2, "__metatable");
@@ -770,7 +788,9 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 		int indextype = lua_type(L, -2);
 		if (indextype == LUA_TNUMBER) continue;
 		if (indextype != LUA_TSTRING) return_misformed();
-		config::attribute_value &v = cfg[lua_tostring(L, -2)];
+		const char* m = lua_tostring(L, -2);
+		if(!m || !config::valid_attribute(m)) return_misformed();
+		config::attribute_value &v = cfg[m];
 		if (lua_istable(L, -1)) {
 			int subindex = lua_absindex(L, -1);
 			std::ostringstream str;
@@ -945,10 +965,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 
 bool luaW_tableget(lua_State *L, int index, const char* key)
 {
-	if(index < 0) {
-		//with the next lua_pushstring negative indicies will no longer be correct.
-		--index;
-	}
+	index = lua_absindex(L, index);
 	lua_pushstring(L, key);
 	lua_gettable(L, index);
 	if(lua_isnoneornil(L, -1)) {

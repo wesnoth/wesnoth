@@ -20,14 +20,17 @@
 
 namespace savegame
 {
+class save_index_class;
+
 /** Filename and modification date for a file list */
 class save_info
 {
 private:
 	friend class create_save_info;
 
-	save_info(const std::string& name, const std::time_t& modified)
+	save_info(const std::string& name, const std::shared_ptr<save_index_class>& index, const std::time_t& modified)
 		: name_(name)
+		, save_index_(index)
 		, modified_(modified)
 	{
 	}
@@ -49,6 +52,7 @@ public:
 
 private:
 	std::string name_;
+	std::shared_ptr<save_index_class> save_index_;
 	std::time_t modified_;
 };
 
@@ -61,39 +65,59 @@ struct save_info_less_time
 	bool operator()(const save_info& a, const save_info& b) const;
 };
 
-std::vector<save_info> get_saves_list(const std::string* dir = nullptr, const std::string* filter = nullptr);
-
 /** Read the complete config information out of a savefile. */
-void read_save_file(const std::string& name, config& cfg, std::string* error_log);
-
-/** Remove autosaves that are no longer needed (according to the autosave policy in the preferences). */
-void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves);
-
-/** Delete a savegame. */
-void delete_game(const std::string& name);
+void read_save_file(const std::string& dir, const std::string& name, config& cfg, std::string* error_log);
 
 class create_save_info
 {
 public:
-	create_save_info(const std::string* d = nullptr);
+	explicit create_save_info(const std::shared_ptr<save_index_class>&);
 	save_info operator()(const std::string& filename) const;
-	const std::string dir;
+	std::shared_ptr<save_index_class> manager_;
 };
 
-class save_index_class
+class save_index_class : public std::enable_shared_from_this<save_index_class>
 {
 public:
-	save_index_class();
+	/**
+	 * Constructor for a read-only instance. To get a writable instance, call default_saves_dir().
+	 */
+	explicit save_index_class(const std::string& dir);
+	/** Syntatic sugar for choosing which constructor to use. */
+	enum class create_for_default_saves_dir { yes };
+	explicit save_index_class(create_for_default_saves_dir);
+
+	/** Returns an instance for managing saves in filesystem::get_saves_dir() */
+	static std::shared_ptr<save_index_class> default_saves_dir();
+
+	std::vector<save_info> get_saves_list(const std::string* filter=nullptr);
+
+	/** Delete a savegame, including deleting the underlying file. */
+	void delete_game(const std::string& name);
 
 	void rebuild(const std::string& name);
 	void rebuild(const std::string& name, const std::time_t& modified);
 
+	/** Delete a savegame from the index, without deleting the underlying file. */
 	void remove(const std::string& name);
 	void set_modified(const std::string& name, const std::time_t& modified);
 
 	config& get(const std::string& name);
+	const std::string& dir() const;
 
+	/** Delete autosaves that are no longer needed (according to the autosave policy in the preferences). */
+	void delete_old_auto_saves(const int autosavemax, const int infinite_auto_saves);
+
+	/** Sync to disk, no-op if read_only_ is set */
 	void write_save_index();
+
+	/**
+	 * If true, all of delete_game, delete_old_auto_saves and write_save_index will be no-ops.
+	 */
+	bool read_only()
+	{
+		return read_only_;
+	}
 
 private:
 	config& data(const std::string& name);
@@ -104,7 +128,11 @@ private:
 	bool loaded_;
 	config data_;
 	std::map<std::string, std::time_t> modified_;
+	const std::string dir_;
+	/**
+	 * The instance for default_saves_dir() writes a cache file. For other instances,
+	 * write_save_index() and delete() are no-ops.
+	 */
+	bool read_only_;
 };
-
-extern save_index_class save_index_manager;
 } // end of namespace savegame

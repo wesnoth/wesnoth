@@ -26,6 +26,7 @@
 #include <limits>
 #include <vector>
 #include <algorithm>
+#include <cassert>
 
 template<typename T>
 inline bool is_even(T num) { return num % 2 == 0; }
@@ -50,6 +51,25 @@ inline int bounded_add(int base, int increment, int max_sum, int min_sum = 0)
 	} else {
 		return std::max(base + increment, std::min(base, min_sum));
 	}
+}
+
+
+/** 
+ * @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
+ */
+template<typename T>
+inline T modulo(T num, int mod, T min = 0)
+{
+	assert(mod > 0);
+	T n = (num - min) % mod;
+	if (n < 0)
+		n += mod;
+	//n is now in [0, mod)
+	n = n + min;
+	return n;
+	// the following properties are easy to verify:
+	//  1) For all m: modulo(num, mod, min) == modulo(num + mod*m, mod, min)
+	//  2) For all 0 <= m < mod: modulo(min + m, mod, min) == min + m
 }
 
 /**

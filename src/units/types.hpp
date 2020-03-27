@@ -96,12 +96,6 @@ public:
 	{ const_cast<unit_type *>(this)->build(status, movement_types, races, traits); }
 
 
-	/**
-	 * Adds an additional advancement path to a unit type.
-	 * This is used to implement the [advancefrom] tag.
-	 */
-	void add_advancement(const unit_type &advance_to,int experience);
-
 	/** Get the advancement tree
 	 *  @return A set of ids of all unit_type objects that this unit_type can
 	 *  directly or indirectly advance to.
@@ -140,6 +134,8 @@ public:
 	const std::string log_id() const { return id_ + debug_id_; }
 	/// The id of the original type from which this (variation) descended.
 	const std::string& base_id() const { return base_id_; }
+	/// The id of this variation; empty if it's a gender variation or a base unit.
+	const std::string& variation_id() const { return variation_id_; }
 	// NOTE: this used to be a const object reference, but it messed up with the
 	// translation engine upon changing the language in the same session.
 	t_string unit_description() const;
@@ -158,7 +154,7 @@ public:
 	int max_attacks() const { return max_attacks_; }
 	int cost() const { return cost_; }
 	const std::string& default_variation() const { return default_variation_; }
-	const std::string& variation_name() const { return variation_name_; }
+	const t_string& variation_name() const { return variation_name_; }
 	const std::string& usage() const { return usage_; }
 	const std::string& image() const { return image_; }
 	const std::string& icon() const { return icon_; }
@@ -323,7 +319,8 @@ private:
 
 	variations_map variations_;
 	std::string default_variation_;
-	std::string variation_name_;
+	std::string variation_id_;
+	t_string variation_name_;
 
 	const unit_race* race_;	/// Never nullptr, but may point to the null race.
 
@@ -333,7 +330,6 @@ private:
 
 	std::vector<std::string> advances_to_;
 	int experience_needed_;
-	bool in_advancefrom_;
 
 
 	ALIGNMENT alignment_;
@@ -386,9 +382,6 @@ private:
 	void read_hide_help(const config &cfg);
 
 	void clear();
-
-	void add_advancefrom(const config& unit_cfg) const;
-	void add_advancement(unit_type& to_unit) const;
 
 	mutable unit_type_map types_;
 	movement_type_map movement_types_;

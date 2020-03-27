@@ -25,12 +25,14 @@
 #include "game_version.hpp"
 
 #include <algorithm>
+#include <fstream>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
 
+#include <boost/algorithm/string.hpp>
 #include <boost/version.hpp>
 
 #ifndef __APPLE__
@@ -266,7 +268,7 @@ version_table_manager::version_table_manager()
 	// Features table.
 	//
 
-	features.emplace_back(N_("feature^JPG screenshots"));
+	features.emplace_back(N_("feature^JPEG screenshots"));
 #ifdef SDL_IMAGE_VERSION_ATLEAST
 #if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
 	features.back().enabled = true;
@@ -344,6 +346,23 @@ const std::string& library_name(LIBRARY_ID lib)
 	}
 
 	return versions.names[lib];
+}
+
+std::string dist_channel_id()
+{
+	std::string info;
+	std::ifstream infofile(game_config::path + "/data/dist");
+	if(infofile.is_open()) {
+		std::getline(infofile, info);
+		infofile.close();
+		boost::trim(info);
+	}
+
+	if(info.empty()) {
+		return "Default";
+	}
+
+	return info;
 }
 
 namespace {
@@ -446,6 +465,7 @@ std::string full_build_report()
 
 	o << "The Battle for Wesnoth version " << game_config::revision << '\n'
 	  << "Running on " << desktop::os_version() << '\n'
+	  << "Distribution channel: " << dist_channel_id() << '\n'
 	  << '\n'
 	  << report_heading("Game paths")
 	  << '\n'

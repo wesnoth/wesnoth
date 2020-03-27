@@ -40,7 +40,7 @@ function ca_coward:execution(cfg)
 
     for i,hex in ipairs(reach) do
         -- Only consider unoccupied hexes
-        local unit_in_way = wesnoth.get_unit(hex[1], hex[2])
+        local unit_in_way = wesnoth.units.get(hex[1], hex[2])
         if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
             or (unit_in_way == coward)
         then
@@ -98,8 +98,8 @@ function ca_coward:execution(cfg)
     if cfg.attack_if_trapped then
         local max_rating, best_target = - math.huge
         for xa,ya in H.adjacent_tiles(coward.x, coward.y) do
-            local target = wesnoth.get_unit(xa, ya)
-            if target and wesnoth.is_enemy(coward.side, target.side) then
+            local target = wesnoth.units.get(xa, ya)
+            if target and wesnoth.sides.is_enemy(coward.side, target.side) then
                 local rating = - target.hitpoints
 
                 if (rating > max_rating) then

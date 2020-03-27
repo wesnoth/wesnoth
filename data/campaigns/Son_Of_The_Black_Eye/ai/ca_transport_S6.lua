@@ -13,7 +13,7 @@ local ca_transport = {}
 -- Also unload units onto best hexes adjacent to landing site
 
 function ca_transport:evaluation()
-    local units = wesnoth.get_units { side = wesnoth.current.side, formula = 'movement_left > 0' }
+    local units = wesnoth.units.find_on_map { side = wesnoth.current.side, formula = 'movement_left > 0' }
 
     for i,u in ipairs(units) do
         if u.variables.destination_x and u.variables.destination_y then
@@ -25,7 +25,7 @@ function ca_transport:evaluation()
 end
 
 function ca_transport:execution()
-    local units = wesnoth.get_units {}
+    local units = wesnoth.units.find_on_map {}
 
     -- Need all transport units plus maps of all units, all transport units and
     -- all other units (as those block hexes accessible to transport units)
@@ -120,7 +120,7 @@ function ca_transport:execution()
         return
     end
 
-    -- If we got here, no landing site was found.  Do a deep-water move instead
+    -- If we got here, no landing site was found. Do a deep-water move instead
     local deep_water_map = LS.of_pairs(
         wesnoth.get_locations {
             terrain = 'Wo',

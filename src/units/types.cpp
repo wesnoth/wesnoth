@@ -88,7 +88,6 @@ unit_type::unit_type(const unit_type& o)
 	, do_not_list_(o.do_not_list_)
 	, advances_to_(o.advances_to_)
 	, experience_needed_(o.experience_needed_)
-	, in_advancefrom_(o.in_advancefrom_)
 	, alignment_(o.alignment_)
 	, movement_type_(o.movement_type_)
 	, possible_traits_(o.possible_traits_)
@@ -139,7 +138,6 @@ unit_type::unit_type(const config& cfg, const std::string& parent_id)
 	, do_not_list_(cfg_["do_not_list"].to_bool(false))
 	, advances_to_()
 	, experience_needed_(0)
-	, in_advancefrom_(false)
 	, alignment_(unit_type::ALIGNMENT::NEUTRAL)
 	, movement_type_()
 	, possible_traits_()
@@ -351,6 +349,7 @@ void unit_type::build_help_index(
 		if(success) {
 			ut->second.debug_id_ = debug_id_ + " [" + var_id + "]";
 			ut->second.base_id_ = base_id_; // In case this is not id_.
+			ut->second.variation_id_ = var_id;
 			ut->second.build_help_index(mv_types, races, traits);
 		} else {
 			ERR_CF << "Skipping duplicate unit variation ID: " << var_id << "\n";
@@ -591,67 +590,6 @@ bool unit_type::hide_help() const
 	return hide_help_ || unit_types.hide_help(id_, race_->id());
 }
 
-void unit_type::add_advancement(const unit_type& to_unit, int xp)
-{
-	const std::string& to_id = to_unit.id_;
-
-	// Add extra advancement path to this unit type
-	LOG_CONFIG << "adding advancement from " << log_id() << " to " << to_unit.log_id() << "\n";
-	if(std::find(advances_to_.begin(), advances_to_.end(), to_id) == advances_to_.end()) {
-		advances_to_.push_back(to_id);
-	} else {
-		LOG_CONFIG << "advancement from " << log_id() << " to " << to_unit.log_id() << " already known, ignoring.\n";
-		return;
-	}
-
-	if(xp > 0) {
-		// xp is 0 in case experience= wasn't given.
-		if(!in_advancefrom_) {
-			// This function is called for and only for an [advancefrom] tag in a unit_type referencing this unit_type.
-			in_advancefrom_ = true;
-			experience_needed_ = xp;
-
-			DBG_UT << "Changing experience_needed from " << experience_needed_ << " to " << xp
-				   << " due to (first) [advancefrom] of " << to_unit.log_id() << "\n";
-		} else if(experience_needed_ > xp) {
-			experience_needed_ = xp;
-			DBG_UT << "Lowering experience_needed from " << experience_needed_ << " to " << xp
-				   << " due to (multiple, lower) [advancefrom] of " << to_unit.log_id() << "\n";
-		} else {
-			DBG_UT << "Ignoring experience_needed change from " << experience_needed_ << " to " << xp
-				   << " due to (multiple, higher) [advancefrom] of " << to_unit.log_id() << "\n";
-		}
-	}
-
-	// Add advancements to gendered subtypes, if supported by to_unit
-	for(int gender = 0; gender <= 1; ++gender) {
-		if(!gender_types_[gender]) {
-			continue;
-		}
-
-		if(!to_unit.gender_types_[gender]) {
-			WRN_CF << to_unit.log_id() << " does not support gender " << gender << std::endl;
-			continue;
-		}
-
-		LOG_CONFIG << "gendered advancement " << gender << ": ";
-		gender_types_[gender]->add_advancement(*(to_unit.gender_types_[gender]), xp);
-	}
-
-	if(cfg_.has_child("variation")) {
-		// Make sure the variations are created.
-		unit_types.build_unit_type(*this, VARIATIONS);
-
-		// Add advancements to variation subtypes.
-		// Since these are still a rare and special-purpose feature,
-		// we assume that the unit designer knows what they're doing,
-		// and don't block advancements that would remove a variation.
-		for(auto& v : variations_) {
-			LOG_CONFIG << "variation advancement: ";
-			v.second.add_advancement(to_unit, xp);
-		}
-	}
-}
 
 static void advancement_tree_internal(const std::string& id, std::set<std::string>& tree)
 {
@@ -1328,15 +1266,6 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 		gui2::dialogs::loading_screen::progress();
 	}
 
-	// Handle [advancefrom] (once) after building to (at least) the CREATED level.
-	// (Currently, this could be simply a test for build_status_ == NOT_BUILT,
-	// but to guard against future changes, use a more thorough test.)
-	if(build_status_ < unit_type::CREATED && unit_type::CREATED <= status) {
-		for(auto& type : types_) {
-			add_advancement(type.second);
-		}
-	}
-
 	build_status_ = status;
 }
 
@@ -1386,30 +1315,6 @@ bool unit_type_data::hide_help(const std::string& type, const std::string& race)
 	}
 
 	return res;
-}
-
-void unit_type_data::add_advancement(unit_type& to_unit) const
-{
-	const config& cfg = to_unit.get_cfg();
-
-	for(const config& af : cfg.child_range("advancefrom")) {
-		const std::string& from = af["unit"];
-		int xp = af["experience"];
-
-		unit_type_data::unit_type_map::iterator from_unit = types_.find(from);
-
-		if(from_unit == types_.end()) {
-			std::ostringstream msg;
-			msg << "unit type '" << from << "' not found when resolving [advancefrom] tag for '" << to_unit.log_id()
-				<< "'";
-			throw config::error(msg.str());
-		}
-
-		// Fix up advance_from references
-		from_unit->second.add_advancement(to_unit, xp);
-
-		DBG_UT << "Added advancement ([advancefrom]) from " << from << " to " << to_unit.log_id() << "\n";
-	}
 }
 
 const unit_race* unit_type_data::find_race(const std::string& key) const

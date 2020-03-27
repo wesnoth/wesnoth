@@ -88,7 +88,7 @@ protected:
 		register_command("muteall", &chat_command_handler::do_network_send,
 			_("Mute/Unmute all observers. (toggles)"), "");
 		register_command("ping", &chat_command_handler::do_network_send,
-			"");
+			_("Send some data to the server. Can be used to verify the network connection and notice disconnects."));
 		register_command("report", &chat_command_handler::do_network_send_req_arg,
 			_("Report abuse, rule violations, etc. to the server moderators. "
 				"Make sure to mention relevant nicknames, etc."), "");
@@ -97,7 +97,7 @@ protected:
 			_("Send an emotion or personal action in chat."), _("<message>"));
 		register_alias("emote", "me");
 		register_command("whisper", &chat_command_handler::do_whisper,
-			_("Sends a private message. "
+			_("Send a private message. "
 				"You cannot send private messages to players in a running game you observe or play in."),
 			_("<nickname> <message>"));
 		register_alias("whisper", "msg");

@@ -20,6 +20,7 @@
 
 #include "actions/vision.hpp"
 
+#include "ai/manager.hpp"  // for manager, holder
 #include "ai/lua/aspect_advancements.hpp"
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
@@ -110,9 +111,10 @@ namespace
 		const std::vector<std::string>& options = u->advances_to();
 		std::vector<config> mod_options = u->get_modification_advances();
 
+		assert(options.size() + mod_options.size() > 0);
 		if (choice >= options.size() + mod_options.size()) {
-			LOG_DP << "animate_unit_advancement suppressed: invalid option\n";
-			return false;
+			LOG_DP << "animate_unit_advancement: invalid option, using first option\n";
+			choice = 0;
 		}
 
 		// When the unit advances, it fades to white, and then switches
@@ -154,11 +156,32 @@ namespace
 		return true;
 	}
 
+	int get_advancement_index(const unit& u, const std::string& id)
+	{
+		const std::vector<std::string>& type_options = u.advances_to();
+		{
+			auto pick_iter = std::find(type_options.begin(), type_options.end(), id);
+			if(pick_iter != type_options.end()) {
+				return std::distance(type_options.begin(), pick_iter);
+			}
+		}
+		{
+			auto amla_options = u.get_modification_advances();
+			auto pick_iter = std::find_if(amla_options.begin(), amla_options.end(), [&](const config& adv){
+				return adv["id"].str() == id;
+			});
+			if(pick_iter != amla_options.end()) {
+				return type_options.size() + std::distance(amla_options.begin(), pick_iter);
+			}
+		}
+		return -1;
+	}
+
 	class unit_advancement_choice : public mp_sync::user_choice
 	{
 	public:
-		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, const ai::unit_advancements_aspect* ai_advancement, bool force_dialog)
-			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), ai_advancement_(ai_advancement), force_dialog_(force_dialog)
+		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, bool force_dialog)
+			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), force_dialog_(force_dialog)
 		{
 		}
 
@@ -186,26 +209,25 @@ namespace
 			{
 				res = randomness::generator->get_random_int(0, nb_options_-1);
 
+				const ai::unit_advancements_aspect& ai_advancement = ai::manager::get_singleton().get_advancement_aspect_for_side(side_num_);
 				//if ai_advancement_ is the default advancement the following code will
 				//have no effect because get_advancements returns an empty list.
-				if(ai_advancement_ != nullptr)
-				{
-					unit_map::iterator u = resources::gameboard->units().find(loc_);
-					if(!u) {
-						ERR_NG << "unit_advancement_choice: unit not found\n";
-						return config{};
-					}
-					const std::vector<std::string>& options = u->advances_to();
-					const std::vector<std::string>& allowed = ai_advancement_->get_advancements(u);
-
-					for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
-						if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
-							res = std::distance(options.begin(), a);
-							break;
-						}
-					}
+				unit_map::iterator u = resources::gameboard->units().find(loc_);
+				if(!u) {
+					ERR_NG << "unit_advancement_choice: unit not found\n";
+					return config{};
 				}
 
+				std::vector<std::string> allowed = ai_advancement.get_advancements(u);
+				for(const auto& adv_id : allowed) {
+					int res_new = get_advancement_index(*u, adv_id);
+					if(res_new != -1) {
+						// if the advancement ids were really unique we could also make this function return the
+						// advancements id instead of its index. But i dont think there are guaraenteed to be unique.
+						res = res_new;
+						break;
+					}
+				}
 			}
 			else
 			{
@@ -237,7 +259,6 @@ namespace
 		const map_location loc_;
 		int nb_options_;
 		int side_num_;
-		const ai::unit_advancements_aspect* ai_advancement_;
 		bool force_dialog_;
 	};
 }
@@ -272,7 +293,7 @@ void advance_unit_at(const advance_unit_params& params)
 		//we don't want to let side 1 decide it during start/prestart.
 		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
 		config selected = mp_sync::get_user_choice("choose",
-			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.ai_advancements_, params.force_dialog_), side_for);
+			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.force_dialog_), side_for);
 		//calls actions::advance_unit.
 		bool result = animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
 

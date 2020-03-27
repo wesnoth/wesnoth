@@ -435,6 +435,8 @@ text_box_definition::text_box_definition(const config& cfg)
  * @end{tag}{name="state_disabled"}
  * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_focused"}
+ * @begin{tag}{name="state_hovered"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_hovered"}
  * @end{tag}{name="resolution"}
  * @end{tag}{name="ext_box_definition"}
  * @end{parent}{name="gui/"}
@@ -448,6 +450,7 @@ text_box_definition::resolution::resolution(const config& cfg)
 	state.emplace_back(cfg.child("state_enabled"));
 	state.emplace_back(cfg.child("state_disabled"));
 	state.emplace_back(cfg.child("state_focused"));
+	state.emplace_back(cfg.child("state_hovered"));
 }
 
 // }---------- BUILDER -----------{

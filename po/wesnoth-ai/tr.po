@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ai\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
 "PO-Revision-Date: 2019-06-18 11:34+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -24,10 +24,12 @@ msgstr ""
 msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr "Öntanımlı YZ (RCA)"
 
-#. [ai]: id=experimental_ai
-#: data/ai/ais/ai_experimental.cfg:9
-msgid "Multiplayer_AI^Experimental AI"
-msgstr "Deneysel YZ"
+#. [ai]: id=ai_default_rca_1_14
+#: data/ai/ais/ai_default_rca_1_14.cfg:9
+#, fuzzy
+#| msgid "Multiplayer_AI^Default AI (RCA)"
+msgid "Multiplayer_AI^1.14 Default AI"
+msgstr "Öntanımlı YZ (RCA)"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
@@ -38,6 +40,11 @@ msgstr "Glş YZ: Boşta YZ"
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr "Glş YZ: Öntanımlı YZ(RCA) ile Farklı Askere Alma"
+
+#. [ai]: id=experimental_ai
+#: data/ai/dev/ai_experimental.cfg:11
+msgid "Multiplayer_AI^Experimental AI"
+msgstr "Deneysel YZ"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
@@ -54,8 +61,8 @@ msgstr "Glş YZ: Öntanımlı + Zehirleme (Formül YZ)"
 msgid "The Elves Besieged"
 msgstr "Elfler Kuşatma Altında"
 
-#. [unit]: type=Spearman, id=Konrad
 #. [side]: type=Spearman, id=Konrad
+#. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -334,10 +341,10 @@ msgstr "Hayvanlar"
 msgid "Rutburt"
 msgstr "Rutburt"
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -380,10 +387,10 @@ msgstr "Kurtlar"
 msgid "Whelps"
 msgstr "Trol Yavruları"
 
-#. [set_menu_item]: id=m01_end_animals
-#. [event]
-#. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m04_end_animals
+#. [event]
+#. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -538,12 +545,12 @@ msgstr "Büyük Kötü Ork"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "Pekala, arkadaşlar. Bu orkların durdurulması lazım."
 
-#. [message]: speaker=Big Bad Orc
 #. [message]: speaker=Another Bad Orc
 #. [message]: speaker=Vanak
+#. [message]: speaker=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:572
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:148
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:142
 msgid "They there!  We them get!"
 msgstr "Onlar orada! Biz onları alırız!"
 
@@ -622,8 +629,8 @@ msgid ""
 msgstr ""
 "Yenilmiş olabilirim, ancak son adama kadar geçidi savunmaya devam edeceğiz!"
 
-#. [test]: id=dragon
 #. [event]
+#. [test]: id=dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -807,8 +814,8 @@ msgstr "Çavuş Öteberi"
 msgid "Place Side 1 Footpad"
 msgstr "1. Tarafa Kapkaççı yerleştir"
 
-#. [set_menu_item]: id=m02_kill_unit
 #. [set_menu_item]: id=m05_kill_unit
+#. [set_menu_item]: id=m02_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
@@ -1714,7 +1721,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:159
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
 #: data/ai/micro_ais/scenarios/patrols.cfg:238
 #: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
@@ -1799,27 +1806,27 @@ msgid "Messenger"
 msgstr "Haberci"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:131
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
 msgid "Messenger Waypoint 1"
 msgstr "Haberci 1. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:133
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
 msgid "Messenger Waypoint 2"
 msgstr "Haberci 2. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:129
 msgid "Messenger Waypoint 3"
 msgstr "Haberci 3. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:138
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:132
 msgid "AI moves Messenger here"
 msgstr "YZ Haberciyi buraya götürürse"
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:147
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
@@ -1828,7 +1835,7 @@ msgstr ""
 "gerekiyor. Oraya mümkün olduğunca çabuk gidelim."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:160
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:154
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1867,32 +1874,32 @@ msgstr ""
 "Artificial Intelligence)"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:167
 msgid "Defeat the messenger"
 msgstr "Habercinin ölümü"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:177
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:171
 msgid "Messenger gets to the signpost"
 msgstr "Haberci yol işaretine varırsa"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:181
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:175
 msgid "Death of Vanak"
 msgstr "Vanak'ın ölümü"
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:197
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:191
 msgid "I made it!  Now our people will be safe."
 msgstr "Başardım! Artık halkımız güvende olacak."
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:212
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:206
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "Hayııır! Kaybettik! Orkları artık asla durduramayacağız!"
 
-#. [test]: id=patrols
 #. [event]
+#. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -2097,8 +2104,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr "Eve dönelim, arkadaşlar."
 
-#. [test]: id=protect_unit
 #. [event]
+#. [test]: id=protect_unit
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2332,8 +2339,8 @@ msgstr "Çelimsiz Girink"
 msgid "team_name^Grnk"
 msgstr "Girink"
 
-#. [event]
 #. [test]: id=swarm
+#. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"
@@ -2735,23 +2742,32 @@ msgstr "Uralt"
 
 #. [message]: speaker=sergeant
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:125
-msgid "General Grospur, what do we do?  These undead will surely wipe us out."
+#, fuzzy
+#| msgid ""
+#| "General Grospur, what do we do?  These undead will surely wipe us out."
+msgid "General Grospur, what do we do? These undead will surely wipe us out."
 msgstr ""
 "General Grospur, ne yapıyoruz? Bu yarı ölüler kesinlikle bizi yok edecek."
 
 #. [message]: speaker=Grospur
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:129
+#, fuzzy
+#| msgid ""
+#| "Don't be such a chicken, Sergeant!  I have placed units with lots of "
+#| "experience around the perimeter. The undead will not dare to attack them. "
+#| "And those few that sneak through... we can easily dispose of them once "
+#| "they make it inside.\n"
+#| "\n"
+#| "<i>In other words, the Wesnoth AI does generally not attack units one XP "
+#| "from leveling if there is no chance of killing the unit with a single "
+#| "attack. However, some of the attacks by the undead are handled by the "
+#| "Simple Attack Micro AI in this scenario. General Grospur might be in for "
+#| "a surprise.</i>"
 msgid ""
-"Don't be such a chicken, Sergeant!  I have placed units with lots of "
+"Don’t be such a chicken, Sergeant! I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
 "And those few that sneak through... we can easily dispose of them once they "
-"make it inside.\n"
-"\n"
-"<i>In other words, the Wesnoth AI does generally not attack units one XP "
-"from leveling if there is no chance of killing the unit with a single "
-"attack. However, some of the attacks by the undead are handled by the Simple "
-"Attack Micro AI in this scenario. General Grospur might be in for a surprise."
-"</i>"
+"make it inside."
 msgstr ""
 "Böyle korkak olma, çavuş! Görüş mesafesinde çok deneyimli birimler "
 "yerleştirdim. Yarı ölüler onlara saldırmaya cesaret edemez. Ve birkaçı içeri "
@@ -2763,48 +2779,54 @@ msgstr ""
 "Saldırı Mikro YZ'si tarafından gerçekleştirilir. General Grospur bir "
 "sürprizle karşı karşıya kalabilir.</i>"
 
-#. [objectives]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:135
-msgid "Watch the undead take care of business"
-msgstr "Yarı ölülerin işleriyle ilgilenmelerini izleyin"
-
-#. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:137
-msgid "Don't even try. You can't reach the Lich."
-msgstr "Deneme bile. Umacıya ulaşamazsın."
-
-#. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:141
-msgid "Death of the last of Grospur's units"
-msgstr "Grospur'un birimlerinin tamamının ölümü"
-
-#. [note]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:145
-msgid "When your leader dies, side leadership passes on to another unit"
-msgstr "Lideriniz öldüğünde, taraf liderliği başka bir birime geçer"
-
-#. [message]: speaker=$second_unit.id
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:172
+#. [message]: speaker=sergeant
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:133
 msgid ""
-"What the ... ?!?  They are not supposed to attack me. That just doesn't "
-"happen in Wesnoth!"
-msgstr "Ne ...?!? Bana saldırmamaları gerekiyor. Bu Vesnot'ta böyle olmaz!"
+"General Grospur, you’re still thinking of Wesnoth 1.12. The default AI is "
+"smarter than that now.\n"
+"\n"
+"<i>If you’re porting an old scenario, you may find the Simple Attack Micro "
+"AI used in a way that’s unnecessary since 1.14. The 1.12 AI generally "
+"doesn’t attack units one XP from leveling if there is no chance of killing "
+"the unit with a single attack. One way of making 1.12 do those attacks was "
+"to use the Simple Attack Micro AI.</i>"
+msgstr ""
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:176
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:139
+#, fuzzy
+#| msgid ""
+#| "Hahahahaha!! I have given special instruction to my Soulless to attack "
+#| "all your almost-advanced units first. Also watch how those same Soulless "
+#| "will throw themselves mercilessly at your pitiful soldiers after that, "
+#| "saving my more valuable skeleton minions for later. I have taken the term "
+#| "'disposable units' to a whole new level. Watch in awe!!\n"
+#| "\n"
+#| "<i>Translation: The undead side includes two instances of the Simple "
+#| "Attack Micro AI.  The first makes the Soulless attack all units 1 XP from "
+#| "leveling up, such that they can be eliminated afterward.  The second "
+#| "executes all remaining attacks possible by Soulless (and Walking "
+#| "Corpses), without regard for their own safety.  Only after that does the "
+#| "default Wesnoth attack mechanism kick in to attack with the remaining "
+#| "units (skeletons).</i>"
 msgid ""
-"Hahahahaha!! I have given special instruction to my Soulless to attack all "
-"your almost-advanced units first. Also watch how those same Soulless will "
-"throw themselves mercilessly at your pitiful soldiers after that, saving my "
-"more valuable skeleton minions for later. I have taken the term 'disposable "
-"units' to a whole new level. Watch in awe!!\n"
+"Hahahahaha!! Indeed, my skeletons are smarter than General Grospur. Worse "
+"for you, I have given special instruction to my Soulless to attack all your "
+"almost-advanced units first. Also watch how those same Soulless will throw "
+"themselves mercilessly at your pitiful soldiers after that, saving my more "
+"valuable skeleton minions for later. I have taken the term ‘disposable "
+"units’ to a whole new level. Watch in awe!!\n"
 "\n"
 "<i>Translation: The undead side includes two instances of the Simple Attack "
-"Micro AI.  The first makes the Soulless attack all units 1 XP from leveling "
-"up, such that they can be eliminated afterward.  The second executes all "
+"Micro AI. The first makes the Soulless attack all units 1 XP from leveling "
+"up, such that they can be eliminated afterward. The second executes all "
 "remaining attacks possible by Soulless (and Walking Corpses), without regard "
-"for their own safety.  Only after that does the default Wesnoth attack "
-"mechanism kick in to attack with the remaining units (skeletons).</i>"
+"for their own safety. Only after that does the default Wesnoth attack "
+"mechanism kick in to attack with the remaining units (skeletons), and it "
+"moves the remaining units with high caution and low aggression.</i>\n"
+"\n"
+"<i>The difference to the 1.12 version of this demo is that the 1.12 "
+"skeletons still had high aggression.</i>"
 msgstr ""
 "Hahahahaha!! Öncelikle terfi etmesi yakın birimlerinize saldırmaları için "
 "Ruhsuzlara özel talimat verdim. Ayrıca aynı Ruhsuzların kendilerini "
@@ -2819,14 +2841,40 @@ msgstr ""
 "yürütür. Ancak bundan sonra öntanımlı Vesnot saldırı mekanizması kalan "
 "birimlere (iskeletler) saldırmak için devreye giriyor.</i>"
 
+#. [objectives]
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:147
+msgid "Watch the undead take care of business"
+msgstr "Yarı ölülerin işleriyle ilgilenmelerini izleyin"
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:149
+#, fuzzy
+#| msgid "Don't even try. You can't reach the Lich."
+msgid "Don’t even try. You can’t reach the Lich."
+msgstr "Deneme bile. Umacıya ulaşamazsın."
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:153
+#, fuzzy
+#| msgid "Death of the last of Grospur's units"
+msgid "Death of the last of Grospur’s units"
+msgstr "Grospur'un birimlerinin tamamının ölümü"
+
+#. [note]
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:157
+msgid "When your leader dies, side leadership passes on to another unit"
+msgstr "Lideriniz öldüğünde, taraf liderliği başka bir birime geçer"
+
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:195
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:188
 msgid "Rise, minions!"
 msgstr "Kalkın, kölelerim!"
 
 #. [message]: speaker=Uralt
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:241
-msgid "And that's how the undead AI executes total annihilation ..."
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:234
+#, fuzzy
+#| msgid "And that's how the undead AI executes total annihilation ..."
+msgid "And that’s how the undead AI executes total annihilation ..."
 msgstr "Ve bu, yarı ölü YZ'in topyekün imhayı nası yaptığını gösteriyor..."
 
 #. [side]
@@ -3195,6 +3243,11 @@ msgstr "Lua YZ Deneme senaryosu (eski sözdizimi)"
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr "Kireş"
+
+#~ msgid ""
+#~ "What the ... ?!?  They are not supposed to attack me. That just doesn't "
+#~ "happen in Wesnoth!"
+#~ msgstr "Ne ...?!? Bana saldırmamaları gerekiyor. Bu Vesnot'ta böyle olmaz!"
 
 #~ msgid "Use the Patrols Micro AI instead of patrol.lua."
 #~ msgstr "patrol.lua yerine Devriyeler Mikro YZ kullan"

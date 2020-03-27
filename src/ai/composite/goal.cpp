@@ -330,7 +330,8 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> tar
 {
 	std::shared_ptr<lua_object<std::vector<target>>> l_obj = std::make_shared<lua_object<std::vector<target>>>();
 	config c(cfg_.child_or_empty("args"));
-	handler_->handle(c, true, l_obj);
+	const config empty_cfg;
+	handler_->handle(c, empty_cfg, true, l_obj);
 	try {
 		std::vector < target > targets = *(l_obj->get());
 

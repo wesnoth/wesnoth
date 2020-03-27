@@ -27,6 +27,7 @@
 #include "random_deterministic.hpp"
 #include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "synced_context.hpp"
 #include "teambuilder.hpp"
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
@@ -41,6 +42,7 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 game_state::game_state(const config & level, play_controller & pc, const ter_data_cache & tdata) :
 	gamedata_(level),
@@ -190,6 +192,11 @@ void game_state::init(const config& level, play_controller & pc)
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
 
 	board_.teams_.resize(level.child_count("side"));
+	if (player_number_ > static_cast<int>(board_.teams_.size())) {
+		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams_.size() << "\n";
+		player_number_ = 1;
+		// in case there are no teams, using player_number_ migh still cause problems later.
+	}
 
 	std::vector<team_builder_ptr> team_builders;
 
@@ -408,4 +415,48 @@ game_events::wmi_manager& game_state::get_wml_menu_items()
 const game_events::wmi_manager& game_state::get_wml_menu_items() const
 {
 	return this->events_manager_->wml_menu_items();
+}
+
+
+namespace
+{
+	//not really a 'choice' we just need to make sure to inform the server about this.
+class add_side_wml_choice : public synced_context::server_choice
+{
+public:
+	add_side_wml_choice()
+	{
+	}
+
+	/// We are in a game with no mp server and need to do this choice locally
+	virtual config local_choice() const
+	{
+		return config{};
+	}
+
+	/// tThe request which is sent to the mp server.
+	virtual config request() const
+	{
+		return config{};
+	}
+
+	virtual const char* name() const
+	{
+		return "add_side_wml";
+	}
+
+private:
+};
+} // end anon namespace
+
+
+void game_state::add_side_wml(config cfg)
+{
+	cfg["side"] = board_.teams_.size() + 1;
+	//if we want to also allow setting the controller we must update the server code.
+	cfg["controller"] = "null";
+	//TODO: is this it? are there caches which must be cleared?
+	board_.teams_.emplace_back();
+	board_.teams_.back().build(cfg, board_.map(), cfg["gold"].to_int());
+	config choice = synced_context::ask_server_choice(add_side_wml_choice());
 }

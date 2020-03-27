@@ -101,6 +101,11 @@ el modo de comandos).
 \fB\-\-debug\-lua\fP
 habilita algunos mecanismos de depuración de Lua
 .TP 
+\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+diffs the two WML files; does not preprocess them first (to do that, run
+them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
+to the file indicated by \fI\-\-output\fP.
+.TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 inicia directamente el editor de mapas del juego. Si \fIarchivo\fP es
 especificado, equivale a \fB\-l\fP \fB\-\-load\fP.
@@ -196,6 +201,9 @@ cuando se usa con \fB\-u\fP.
 \fB\-\-nosound\fP
 ejecuta el juego sin sonidos ni música.
 .TP 
+\fB\-\-output\fP\fI\ file\fP
+output to the specified file. Applicable to diffing operations.
+.TP 
 \fB\-\-password\fP\fI\ password\fP
 utiliza \fIpassword\fP cuando se conecta a un servidor, ignorando otras
 preferencias. Método inseguro.
@@ -205,6 +213,11 @@ preferencias. Método inseguro.
 Wesnoth. Similar a \fB\-\-script\fP, pero el fichero Lua debería devolver una
 función que se ejecutará como una corutina que se activará periódicamente
 con actualizaciones.
+.TP 
+\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+applies a DiffWML patch to a WML file; does not preprocess either of the
+files.  Outputs the patched WML to standard output or to the file indicated
+by \fI\-\-output\fP.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 preprocesa un archivo o carpeta especificados. Por cada archivo, se
@@ -430,14 +443,12 @@ El estado de salida normal es 0. Un estado de 1 indica un error de
 iniciación (SDL, vídeo, fuentes, etc.). Un estado de 2 indica un problema
 con las opciones de la línea de comandos.
 .br
-Al ejecutar testeos de unidades (con \fB\ \-u\fP), el estado de salida es
-diferente. Un estado de salida de 0 indica que se ha pasado el test y 1
-indica que el test ha fallado. Un estado de salida de 3 indica que se ha
-pasado el test pero ha producido un archivo de repetición no válido. Un
-estado de salida de 4 indica que se ha pasado el test pero la repetición
-genera errores. Estos dos últimos solo son devueltos si no se le pasa
-\fB\-\-noreplaycheck\fP. Un estado de salida de 2 indica que ha expirado el
-tiempo cuando se usa con la opción obsoleta \fB\-\-timeout\fP.
+When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
+status of 0 indicates that the test passed, and 1 indicates that the test
+failed. An exit status of 3 indicates that the test passed, but produced an
+invalid replay file. An exit status of 4 indicates that the test passed, but
+the replay produced errors. These latter two are only returned if
+\fB\-\-noreplaycheck\fP is not passed.
 .
 .SH AUTOR
 .

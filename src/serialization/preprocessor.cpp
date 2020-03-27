@@ -1239,7 +1239,7 @@ bool preprocessor_data::get_chunk()
 							if(!deprecation_detail.empty()){
 								deprecation_detail += '\n';
 							}
-							deprecation_detail = read_rest_of_line();
+							deprecation_detail += read_rest_of_line();
 							skip_eol();
 						}
 					}

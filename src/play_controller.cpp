@@ -28,6 +28,7 @@
 #include "ai/testing.hpp"
 #include "preferences/credentials.hpp"
 #include "display_chat_manager.hpp"
+#include "floating_label.hpp"
 #include "formula/string_utils.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
@@ -36,6 +37,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_handler.hpp"
 #include "map/label.hpp"
+#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -47,9 +49,10 @@
 #include "replay.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
-#include "savegame.hpp"
-#include "saved_game.hpp"
 #include "save_blocker.hpp"
+#include "save_index.hpp"
+#include "saved_game.hpp"
+#include "savegame.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "sound.hpp"
@@ -71,6 +74,7 @@ static lg::log_domain log_aitesting("aitesting");
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -142,7 +146,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, tooltips_manager_()
 	, whiteboard_manager_()
 	, plugins_context_()
-	, labels_manager_()
+	, labels_manager_(new font::floating_label_context())
 	, help_manager_(&game_config_)
 	, mouse_handler_(nullptr, *this)
 	, menu_handler_(nullptr, *this)
@@ -711,29 +715,20 @@ void play_controller::tab()
 
 team& play_controller::current_team()
 {
+	if(gamestate().board_.teams().size() == 0) {
+		throw game::game_error("The scenario has no sides defined");
+	}
 	assert(gamestate().board_.has_team(current_side()));
 	return gamestate().board_.get_team(current_side());
 }
 
 const team& play_controller::current_team() const
 {
+	if(gamestate().board_.teams().size() == 0) {
+		throw game::game_error("The scenario has no sides defined");
+	}
 	assert(gamestate().board_.has_team(current_side()));
 	return gamestate().board_.get_team(current_side());
-}
-
-/// @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
-static int modulo(int num, int mod, int min)
-{
-	assert(mod > 0);
-	int n = (num - min) % mod;
-	if (n < 0)
-		n += mod;
-	//n is now in [0, mod)
-	n = n + min;
-	return n;
-	// the following properties are easy to verify:
-	//  1) For all m: modulo(num, mod, min) == modulo(num + mod*m, mod, min)
-	//  2) For all 0 <= m < mod: modulo(min + m, mod, min) == min + m
 }
 
 bool play_controller::is_team_visible(int team_num, bool observer) const
@@ -909,7 +904,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(game_config_, saved_game_);
+	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), game_config_, saved_game_);
 	load.load_game_ingame();
 }
 

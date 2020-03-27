@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.12\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2018-08-04 15:38+0200\n"
+"PO-Revision-Date: 2020-01-21 16:14+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
 # type: TH
 #. type: TH
@@ -136,10 +136,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<--bunzip>I<\\ infile.bz2>"
+#, no-wrap
 msgid "B<--bunzip2>I<\\ infile.bz2>"
-msgstr "B<--bunzip>I<\\ fichier_d'entrée.bz2>"
+msgstr "B<--bunzip2>I<\\ fichier_d'entrée.bz2>"
 
 # type: Plain text
 #. type: Plain text
@@ -154,10 +153,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:55
-#, fuzzy, no-wrap
-#| msgid "B<--bzip>I<\\ infile>"
+#, no-wrap
 msgid "B<--bzip2>I<\\ infile>"
-msgstr "B<--bzip>I<\\ fichier_d'entrée>"
+msgstr "B<--bzip2>I<\\ fichier_d'entrée>"
 
 # type: Plain text
 #. type: Plain text
@@ -217,57 +215,56 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:73
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign>"
+#, no-wrap
 msgid "B<--campaign-skip-story>"
-msgstr "B<-c, --campaign>"
+msgstr "B<-c, --campaign-skip-story>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:78
+#, fuzzy
 msgid "Skip [story] screens and dialog through the end of the B<start> event."
 msgstr ""
+"Passe l'écran d'histoire et de dialogues jusqu'à la fin de l'événement "
+"B<start>"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:78
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--clock>"
-msgstr "B<--log-strict>"
+msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:81
 msgid "Adds the option to show a clock for testing the drawing timer."
 msgstr ""
+"Ajoute une option affichant une horloge pour tester les affichages dépendant "
+"du temps."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:81
-#, fuzzy, no-wrap
-#| msgid "B<--userconfig-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--userconfig-dir>I<\\ nom>"
+msgstr "B<--config-dir>I<\\ nom>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:85
 msgid "Deprecated, use B<--userdata-dir>."
-msgstr ""
+msgstr "Déprécié, utilisez B<--userdata-dir>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:85
-#, fuzzy, no-wrap
-#| msgid "B<--userconfig-path>"
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--userconfig-path>"
+msgstr "B<--config-path>"
 
 # type: TP
 #. type: Plain text
 #: doc/man/wesnoth.6:89
-#, fuzzy
-#| msgid "B<--userdata-path>"
 msgid "Deprecated, use B<--userdata-path>."
-msgstr "B<--userdata-path>"
+msgstr "Déprécié, utilisez B<--userdata-path>"
 
 # type: TP
 #. type: TP
@@ -327,15 +324,14 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:103
-#, fuzzy, no-wrap
-#| msgid "B<-d, --debug>"
+#, no-wrap
 msgid "B<--debug-lua>"
-msgstr "B<-d, --debug>"
+msgstr "B<--debug-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:106
 msgid "enables some Lua debugging mechanisms"
-msgstr ""
+msgstr "active certains mécanismes de débogage pour Lua."
 
 # type: TP
 #. type: TP
@@ -347,16 +343,12 @@ msgstr "B<-e[>I<file>B<],\\ --editor[>I<=fichier>B<]>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:113
-#, fuzzy
-#| msgid ""
-#| "start the in-game map editor directly. If I<file> is specified, "
-#| "equivalent to B<-l --load>"
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l> B<--load>."
 msgstr ""
 "Lance directement l'éditeur de carte.  Si I<fichier> est utilisé, équivaut à "
-"B<-l --load>"
+"B<-l> B<--load>."
 
 # type: TP
 #. type: TP
@@ -485,13 +477,6 @@ msgstr "B<--log->I<niveau>B<=>I<domaine1>B<,>I<domaine2>B<,>I<...>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:168
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to none unless combined with the B<-"
-#| "d> option."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -500,9 +485,9 @@ msgid ""
 msgstr ""
 "Définit le niveau d'alerte du journal. B<all> permet de suivre tous les "
 "niveaux de journalisation. Niveaux disponibles : B<error>,\\ B<warning>,\\ "
-"B<info>,\\ B<debug>. Le niveau par défaut B<warning> est utilisé par la "
-"plupart des journaux, mais B<deprecation> utilise « none » par défaut sauf "
-"si combiné à l'option B<-d>."
+"B<info>,\\ B<debug>, \\ B<none>. Le niveau par défaut B<warning> est utilisé "
+"par la plupart des journaux, mais B<deprecation> utilise « none » par défaut "
+"sauf si combiné à l'option B<-d>."
 
 # type: TP
 #. type: TP
@@ -562,16 +547,12 @@ msgstr "B<--max-fps>I<\\ ips>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:189
-#, fuzzy
-#| msgid ""
-#| "the number of frames per second the game can show, the value should be "
-#| "between I<1> and I<1000>, the default is the monitor's refresh rate."
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between B<1> and B<1000>, the default is the monitor's refresh rate."
 msgstr ""
 "Nombre d'images par seconde que le jeu peut afficher. La valeur doit être "
-"comprise entre I<1> et I<1000>, la valeur par défaut est celle du "
+"comprise entre B<1> et B<1000>, la valeur par défaut est celle du "
 "rafraîchissement de l'écran."
 
 # type: TP
@@ -605,10 +586,9 @@ msgstr "Charge les scénarios de test multijoueurs."
 
 #. type: TP
 #: doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--new-syntax>"
+#, no-wrap
 msgid "B<--new-widgets>"
-msgstr "B<--new-syntax>"
+msgstr "B<--new-widgets>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:201
@@ -621,10 +601,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:201
-#, fuzzy, no-wrap
-#| msgid "B<--no-delay>"
+#, no-wrap
 msgid "B<--nodelay>"
-msgstr "B<--no-delay>"
+msgstr "B<--nodelay>"
 
 # type: Plain text
 #. type: Plain text
@@ -740,10 +719,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:234
-#, fuzzy, no-wrap
-#| msgid "B<--gzip>I<\\ infile>"
+#, no-wrap
 msgid "B<--plugin>I<\\ script>"
-msgstr "B<--gzip>I<\\ fichier_d'entrée>"
+msgstr "B<--plugin>I<\\ script>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:241
@@ -761,16 +739,6 @@ msgstr "B<-p,\\ --preprocess>I<\\ fichier/dossier>B<\\ >I<répertoire cible>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:251
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
-#| "and a processed .cfg file will be written in specified target directory. "
-#| "If a folder is specified, it will be preprocessed recursively based on "
-#| "the known preprocessor rules. The common macros from the \"data/core/"
-#| "macros\" directory will be preprocessed before the specified resources.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
-#| "regarding the preprocessor visit: https://wiki.wesnoth.org/"
-#| "PreprocessorRef#Command-line_preprocessor"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -788,7 +756,7 @@ msgstr ""
 "dans « data/core/macros » seront prétraitées avant les ressources "
 "spécifiées. Exemple : B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> Pour "
 "plus de détails concernant le prétraitement visiter : https://wiki.wesnoth."
-"org/PreprocessorRef#Command-line_preprocessor"
+"org/PreprocessorRef#Command-line_preprocessor."
 
 #. type: TP
 #: doc/man/wesnoth.6:251
@@ -847,65 +815,60 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:276
-#, fuzzy, no-wrap
-#| msgid "B<--fps>"
+#, no-wrap
 msgid "B<--proxy>"
-msgstr "B<--fps>"
+msgstr "B<--proxy>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:279
 msgid "enables usage of proxy for network connections."
-msgstr ""
+msgstr "active l'utilisation d'un proxy pour les connexions au réseau."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:279
-#, fuzzy, no-wrap
-#| msgid "B<--core>I<\\ id_core>"
+#, no-wrap
 msgid "B<--proxy-address>I<\\ address>"
-msgstr "B<--core>I<\\ id_core>"
+msgstr "B<--proxy-address>I<\\ addresse>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:284
 msgid "specifies I<address> of the proxy."
-msgstr ""
+msgstr "indique l'I<addresse> du proxy."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:284
-#, fuzzy, no-wrap
-#| msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
+#, no-wrap
 msgid "B<--proxy-port>I<\\ port>"
-msgstr "B<-p,\\ >I<port>B<,\\ --port>I<\\ port>"
+msgstr "B<--proxy-port>I<\\ port>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:289
 msgid "specifies I<port> of the proxy."
-msgstr ""
+msgstr "indique le I<port> du proxy."
 
 #. type: TP
 #: doc/man/wesnoth.6:289
-#, fuzzy, no-wrap
-#| msgid "B<--username>I<\\ username>"
+#, no-wrap
 msgid "B<--proxy-user>I<\\ username>"
-msgstr "B<--username>I<\\ nom d'utilisateur>"
+msgstr "B<--proxy-user>I<\\ nom d'utilisateur>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:294
 msgid "specifies I<username> to log in to the proxy."
-msgstr ""
+msgstr "indique le I<nom d'utilisateur> du proxy."
 
 #. type: TP
 #: doc/man/wesnoth.6:294
-#, fuzzy, no-wrap
-#| msgid "B<--password>I<\\ password>"
+#, no-wrap
 msgid "B<--proxy-password>I<\\ password>"
-msgstr "B<--password>I<\\ mot de passe>"
+msgstr "B<--proxy-password>I<\\ mot de passe>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:299
 msgid "specifies I<password> to log in to the proxy."
-msgstr ""
+msgstr "indique le I<mot de passe> du proxy."
 
 # type: TP
 #. type: TP
@@ -917,10 +880,8 @@ msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution>\\ I<X>B<x>I<Y>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:304
-#, fuzzy
-#| msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgid "sets the screen resolution. Example: B<-r> B<800x600>."
-msgstr "Définit la résolution de l'écran. Exemple : B<-r 800x600>"
+msgstr "Définit la résolution de l'écran. Exemple : B<-r> B<800x600>."
 
 #. type: TP
 #: doc/man/wesnoth.6:304
@@ -966,23 +927,18 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:310
-#, fuzzy, no-wrap
-#| msgid "B<--rng-seed>I<\\ seed>"
+#, no-wrap
 msgid "B<--rng-seed>I<\\ number>"
-msgstr "B<--rng-seed>I<\\ seed>"
+msgstr "B<--rng-seed>I<\\ nombre>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:317
-#, fuzzy
-#| msgid ""
-#| "seeds the random number generator with number E<lt>argE<gt>. Example: B<--"
-#| "rng-seed 0>"
 msgid ""
 "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
 "B<0>."
 msgstr ""
-"Initialise le générateur de nombre aléatoire avec le nombre E<lt>argE<gt>. "
-"Exemple : B<--rng-seed 0>"
+"Initialise le générateur de nombre aléatoire avec le nombre I<nombre>. "
+"Exemple : B<--rng-seed> B<0>"
 
 #. type: TP
 #: doc/man/wesnoth.6:317
@@ -1001,10 +957,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:324
-#, fuzzy, no-wrap
-#| msgid "B<--bzip>I<\\ infile>"
+#, no-wrap
 msgid "B<--script>I<\\ file>"
-msgstr "B<--bzip>I<\\ fichier_d'entrée>"
+msgstr "B<--script>I<\\ fichier_d'entrée>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:329
@@ -1021,17 +976,13 @@ msgstr "B<-s[>I<hôte>B<],\\ --server[>I<=hôte>B<]>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:334
-#, fuzzy
-#| msgid ""
-#| "connects to the specified host if any, otherwise connect to the first "
-#| "server in preferences. Example: B<--server server.wesnoth.org>"
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgstr ""
-"Se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au "
-"premier serveur paramétré dans les préférences. Exemple : B<--server server."
-"wesnoth.org>"
+"se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au "
+"premier serveur paramétré dans les préférences. Exemple : B<--server> "
+"B<server.wesnoth.org>."
 
 # type: TP
 #. type: TP
@@ -1110,10 +1061,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:363
-#, fuzzy, no-wrap
-#| msgid "B<--userconfig-path>"
+#, no-wrap
 msgid "B<--unsafe-scripts>"
-msgstr "B<--userconfig-path>"
+msgstr "B<--unsafe-scripts>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:368
@@ -1355,10 +1305,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:437
-#, fuzzy, no-wrap
-#| msgid "B<--ai_config>I<\\ number>B<:>I<value>"
+#, no-wrap
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
-msgstr "B<--ai_config>I<\\ nombre>B<:>I<valeur>"
+msgstr "B<--ai-config>I<\\ nombre>B<:>I<valeur>"
 
 # type: Plain text
 #. type: Plain text
@@ -1398,16 +1347,12 @@ msgstr "B<--controller>I<\\ nombre>B<:>I<valeur>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:457
-#, fuzzy
-#| msgid ""
-#| "selects the controller for this side. Available values: B<human> and "
-#| "B<ai>."
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
 "B<null>."
 msgstr ""
-"Sélectionne le type de joueur de ce camp. Valeurs possibles : B<human> et "
-"B<ai>."
+"Sélectionne le type de joueur de ce camp. Valeurs possibles : B<human>, "
+"B<ai> et B<null>."
 
 # type: TP
 #. type: TP
@@ -1462,15 +1407,14 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:471
-#, fuzzy, no-wrap
-#| msgid "B<--era>I<\\ value>"
+#, no-wrap
 msgid "B<--label>I<\\ label>"
-msgstr "B<--era>I<\\ valeur>"
+msgstr "B<--label>I<\\ label>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:476
 msgid "sets the I<label> for AIs."
-msgstr ""
+msgstr "positionne le I<label> pour les IA."
 
 # type: TP
 #. type: TP
@@ -1684,10 +1628,8 @@ msgstr "VOIR AUSSI"
 #.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
-#, fuzzy
-#| msgid "B<wesnothd>(6)."
 msgid "B<wesnothd>(6)"
-msgstr "B<wesnothd>(6)."
+msgstr "B<wesnothd>(6)"
 
 # type: TH
 #. type: TH
@@ -2457,61 +2399,86 @@ msgstr ""
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
+# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:240
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which wesnothd will "
+#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
 msgstr ""
+"(pour user_handler=forum) Nom de la table dans laquelle wesnothd stockera "
+"ses données à propos des parties."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:240
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_info_table>"
 
+# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:243
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which wesnothd will "
+#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
 msgstr ""
+"(pour user_handler=forum) Nom de la table dans laquelle wesnothd stockera "
+"ses données à propos des parties."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:243
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_player_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_player_info_table>"
 
+# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:246
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which wesnothd will "
+#| "save its own data about the players in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
 msgstr ""
+"(pour user_handler=forum) Nom de la table dans laquelle wesnothd stockera "
+"ses données à propos des joueurs d'une partie."
 
 #. type: TP
 #: doc/man/wesnothd.6:246
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
-msgstr ""
+msgstr "B<db_game_modification_info_table>"
 
+# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:249
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which wesnothd will "
+#| "save its own data about the modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
 msgstr ""
+"(pour user_handler=forum) Nom de la table dans laquelle wesnothd stockera "
+"ses données à propos des modifications utilisées dans une parties."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:249
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_user_group_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_user_group_table>"
 
 # type: Plain text
 #. type: Plain text
@@ -2519,28 +2486,35 @@ msgstr "B<db_users_table>"
 #, fuzzy
 #| msgid ""
 #| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
+#| "saves its user group data. Most likely this will be E<lt>table-"
+#| "prefixE<gt>_user_group (e.g. phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
-"(pour user_handler=forum) Nom de la table des données utilisateurs de vos "
-"forums phpbb, probablement sous la forme E<lt>table-prefixE<gt>_users. "
-"Exemple : phpbb3_users."
+"(pour user_handler=forum) Nom de la table des données de groupe "
+"d'utilisateurs de vos forums phpbb, probablement sous la forme E<lt>table-"
+"prefixE<gt>_user_group. Exemple : phpbb3_user_group."
 
 #. type: TP
 #: doc/man/wesnothd.6:252
 #, no-wrap
 msgid "B<mp_mod_group>"
-msgstr ""
+msgstr "B<mp_mod_group>"
 
+# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:255
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The ID of the forum group to be considered as "
+#| "having moderation authority."
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
 msgstr ""
+"(pour user_handler=forum) L'identifiant du groupe du forum ayant les "
+"pouvoirs de modération."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:260
@@ -2571,10 +2545,8 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: doc/man/wesnothd.6:279
-#, fuzzy
-#| msgid "B<wesnoth>(6)."
 msgid "B<wesnoth>(6)"
-msgstr "B<wesnoth>(6)."
+msgstr "B<wesnoth>(6)"
 
 # type: TP
 #, no-wrap
@@ -2612,15 +2584,11 @@ msgstr "B<wesnoth>(6)."
 #~ msgid ""
 #~ "(for user_handler=forum) The name of the table in which wesnothd will "
 #~ "save its own data about users. You will have to create this table "
-#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
-#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ "manually."
 #~ msgstr ""
-#~ "(pour user_handler=forum) Nom de la table dans laquelle wesnothd "
-#~ "sauvegardera ses données utilisateurs. Vous devrez créer cette table "
-#~ "manuellement. Exemple : CREATE TABLE E<lt>table-nameE<gt>(username "
-#~ "VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
+#~ "(pour user_handler=forum) Nom de la table dans laquelle wesnothd stockera "
+#~ "ses données à propos des joueurs. Vous devrez créer cette table "
+#~ "manuellement."
 
 # type: TP
 #, no-wrap
@@ -2681,23 +2649,19 @@ msgstr "B<wesnoth>(6)."
 #~ msgid "The port on which your mail server is running. Default is 25."
 #~ msgstr "Port de votre serveur mail (par défaut : 25)."
 
-# Benoît : pas sûr d'avoir bien compris
 # type: Plain text
-#, fuzzy
-#~| msgid ""
-#~| "sets the severity level of the log domains.  B<all> can be used to match "
-#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#~| "for the B<server> domain."
 #~ msgid ""
-#~ "sets the severity level of the log domains.  B<all> can be used to match "
-#~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#~ "B<debug>.  By default the B<error> level is used."
+#~ "(for user_handler=forum) The name of the table in which wesnothd will "
+#~ "save its own data about users. You will have to create this table "
+#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 #~ msgstr ""
-#~ "Définit le niveau d'alerte du débogueur. B<all> permet de suivre tous les "
-#~ "niveaux de déboguage. Niveaux disponibles : B<error>,\\ B<warning>,\\ "
-#~ "B<info>,\\ B<debug>. Le niveau utilisé par défaut est B<error> et B<info> "
-#~ "est utilisé par le B<serveur>."
+#~ "(pour user_handler=forum) Nom de la table dans laquelle wesnothd "
+#~ "sauvegardera ses données utilisateurs. Vous devrez créer cette table "
+#~ "manuellement. Exemple : CREATE TABLE E<lt>table-nameE<gt>(username "
+#~ "VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
 
 # type: TP
 #~ msgid "B<--path>"

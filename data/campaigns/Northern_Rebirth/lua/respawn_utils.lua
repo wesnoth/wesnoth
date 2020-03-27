@@ -1,9 +1,8 @@
-local helper = wesnoth.require "helper"
 local T = wml.tag
 local vars = wml.variables
 
 function wesnoth.wml_actions.find_respawn_point(cfg)
-	local respawn_near = cfg.respawn_near or helper.wml_error "[find_respawn_point] missing required respawn_near= key"
+	local respawn_near = cfg.respawn_near or wml.error "[find_respawn_point] missing required respawn_near= key"
 	local variable = cfg.variable or "nearest_hex"
 	local respawn_point
 	local radius = 1

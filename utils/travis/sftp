@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+
+import paramiko
+import platform
+import os
+import datetime
+import time
+import sys
+import hashlib
+
+start = int(time.time())
+now = datetime.datetime.now()
+dest = "/home/frs/project/bfw-travis-upload/"
+
+with paramiko.Transport(("frs.sourceforge.net", 22)) as transport:
+    try:
+        transport.connect(None, "bfw-uploader", os.environ["SFTP_PASSWORD"])
+    except:
+        print("SFTP_PASSWORD not present, exiting...")
+        sys.exit(1)
+
+    with paramiko.SFTPClient.from_transport(transport) as sftp:
+# make remote directories if they don't already exist
+        dest = dest+os.environ["BRANCH"]+"/"
+        try:
+            sftp.mkdir(dest)
+        except:
+            pass
+
+        dest = dest+str(now.year)+"-"+str(now.month).zfill(2)+"-"+str(now.day).zfill(2)+"/"
+        try:
+            sftp.mkdir(dest)
+        except:
+            pass
+
+        dest = dest+os.environ["TRAVIS_COMMIT"]+"/"
+        try:
+            sftp.mkdir(dest)
+        except:
+            pass
+
+        dest = dest+os.environ["UPLOAD_ID"]+"/"
+        try:
+            sftp.mkdir(dest)
+        except:
+            pass
+
+        for arg in sys.argv[1:]:
+            sftp.put(arg, dest+arg.split("/")[-1])
+
+            sha256 = hashlib.sha256()
+            with open(arg, "rb") as f:
+                while True:
+                    data = f.read(100000)
+                    if not data:
+                        break
+                    sha256.update(data)
+            print("sha256 of "+arg+": "+sha256.hexdigest())
+
+print("SFTP duration: "+str(int(time.time())-start)+" seconds")

@@ -44,7 +44,7 @@ function ca_forest_animals_tusker_attack:execution(cfg)
 
     -- The tusker moves as close to enemy as possible
     -- Closeness to tusklets is secondary criterion
-    local adj_tusklets = wesnoth.get_units {
+    local adj_tusklets = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         type = cfg.tusklet_type,
         { "filter_adjacent", { id = target.id } }

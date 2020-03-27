@@ -9,7 +9,6 @@
 
 local pretty_print_limit = 20
 local max_depth = 7
-local table_clever = true
 
 -- imported global functions
 local sub = string.sub
@@ -39,15 +38,7 @@ function ilua.join(tbl,delim,limit,depth)
         end
     end
     push(jstack,tbl)
-    -- this is a hack to work out if a table is 'list-like' or 'map-like'
-    -- you can switch it off with ilua.table_options {clever = false}
-    local is_list
-    if table_clever then
-        local index1 = n > 0 and tbl[1]
-        local index2 = n > 1 and tbl[2]
-        is_list = index1 and index2
-    end
-    if is_list then
+    if n > 0 then
         for i,v in ipairs(tbl) do
             res = res..delim..ilua.val2str(v)
             k = k + 1
@@ -56,23 +47,30 @@ function ilua.join(tbl,delim,limit,depth)
                 break
             end
         end
-    else
-        for key,v in pairs(tbl) do
-            if type(key) == 'number' then
-                key = '['..tostring(key)..']'
-            else
-                key = tostring(key)
-            end
-            res = res..delim..key..'='..ilua.val2str(v)
-            k = k + 1
-            if k > limit then
-                res = res.." ... "
-                break
-            end
+    end
+    for key,v in pairs(tbl) do
+        if type(key) == 'number' then
+            if key <= n then goto continue end
+            key = '['..tostring(key)..']'
+        else
+            key = tostring(key)
         end
+        res = res..delim..key..'='..ilua.val2str(v)
+        k = k + 1
+        if k > limit then
+            res = res.." ... "
+            break
+        end
+        ::continue::
     end
     pop(jstack)
     return sub(res,2)
+end
+
+-- Need to save this locally because the debug module will be disabled right after this file is loaded
+-- The or clause is so that it doesn't totally break if someone decides to force-reload ilua during a session.
+local function rawgetmetatable(t)
+    return (debug.getmetatable or getmetatable)(t) or {}
 end
 
 function ilua.val2str(val)
@@ -80,10 +78,17 @@ function ilua.val2str(val)
     if tp == 'function' then
         return tostring(val)
     elseif tp == 'table' then
-        if val.__tostring  then
+        if rawgetmetatable(val).__tostring  then
             return tostring(val)
         else
             return '{'..ilua.join(val,',')..'}'
+        end
+    elseif tp == 'userdata' then
+        local mt = rawgetmetatable(val)
+        if mt.__len and mt.__pairs then
+            return '{'..ilua.join(val,',')..'}'
+        else
+            return tostring(val)
         end
     elseif tp == 'string' then
         return "'"..val.."'"

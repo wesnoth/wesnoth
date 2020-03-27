@@ -65,7 +65,7 @@ function ca_big_animals:execution(cfg)
         -- Proximity to an enemy unit is a plus
         local enemy_hp = 500
         for xa,ya in H.adjacent_tiles(x, y) do
-            local enemy = wesnoth.get_unit(xa, ya)
+            local enemy = wesnoth.units.get(xa, ya)
             if AH.is_attackable_enemy(enemy) then
                 if (enemy.hitpoints < enemy_hp) then enemy_hp = enemy.hitpoints end
             end
@@ -97,7 +97,7 @@ function ca_big_animals:execution(cfg)
     -- Finally, if the unit ended up next to enemies, attack the weakest of those
     local min_hp, target = math.huge
     for xa,ya in H.adjacent_tiles(unit.x, unit.y) do
-        local enemy = wesnoth.get_unit(xa, ya)
+        local enemy = wesnoth.units.get(xa, ya)
         if AH.is_attackable_enemy(enemy) then
             if (enemy.hitpoints < min_hp) then
                 min_hp, target = enemy.hitpoints, enemy

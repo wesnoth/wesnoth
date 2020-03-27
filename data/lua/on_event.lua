@@ -1,4 +1,3 @@
-local utils = wesnoth.require "wml-utils"
 -- registers an event handler. note that, like all lua variables this is not persitent in savefiles,
 -- so you have to call this function from a toplevel lua tag or from a preload event.
 -- It is also not possible to use this for first_time_only=yes events.
@@ -24,7 +23,7 @@ end
 
 local function on_event(eventname, arg1, arg2)
 	if string.match(eventname, ",") then
-		for elem in utils.split(eventname or "") do
+		for _,elem in ipairs((eventname or ""):split()) do
 			on_event(elem, arg1, arg2)
 		end
 		return

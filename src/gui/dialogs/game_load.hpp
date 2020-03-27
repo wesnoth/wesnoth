@@ -14,11 +14,12 @@
 
 #pragma once
 
+#include "gettext.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "savegame.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "save_index.hpp"
-#include "gettext.hpp"
+#include "savegame.hpp"
 
 #include <SDL2/SDL_keycode.h>
 
@@ -28,7 +29,6 @@ class text_box_base;
 
 namespace dialogs
 {
-
 class game_load : public modal_dialog
 {
 public:
@@ -36,11 +36,6 @@ public:
 
 	static bool execute(const config& cache_config, savegame::load_game_metadata& data)
 	{
-		if(savegame::get_saves_list().empty()) {
-			gui2::show_transient_message(_("No Saved Games"), _("There are no save files to load"));
-			return false;
-		}
-
 		return game_load(cache_config, data).show();
 	}
 
@@ -51,8 +46,15 @@ private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
+	void set_save_dir_list(menu_button& dir_list);
+
+	/** Update (both internally and visually) the list of games. */
+	void populate_game_list(window& window);
+
 	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void browse_button_callback();
 	void delete_button_callback(window& window);
+	void handle_dir_select(window& window);
 
 	void display_savegame_internal(window& window);
 	void display_savegame(window& window);
@@ -61,6 +63,7 @@ private:
 	void key_press_callback(window& window, const SDL_Keycode key);
 
 	std::string& filename_;
+	std::shared_ptr<savegame::save_index_class>& save_index_manager_;
 
 	field_bool* change_difficulty_;
 	field_bool* show_replay_;

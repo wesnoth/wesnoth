@@ -293,6 +293,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 
 		label_level_->set_label("<b>" + l_str + "</b>");
+		label_level_->set_tooltip(unit_helper::unit_level_tooltip(type));
 		label_level_->set_use_markup(true);
 	}
 
@@ -340,12 +341,12 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 		tree_details_->clear();
 		tree_details_->add_node("hp_xp_mp", {
 			{ "hp",{
-				{ "label", (formatter() << "<small>" << "<span color='#21e100'>" << "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | </small>").str() },
+				{ "label", (formatter() << "<small>" << font::span_color(unit::hp_color_max()) << "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
 				{ "tooltip", get_hp_tooltip(type.movement_type().get_resistances().damage_table(), [&type](const std::string& dt, bool is_attacker) { return type.resistance_against(dt, is_attacker); }) }
 			} },
 			{ "xp",{
-				{ "label", (formatter() << "<small>" << "<span color='#00a0e1'>" << "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | </small>").str() },
+				{ "label", (formatter() << "<small>" << font::span_color(unit::xp_color(100, type.can_advance(), true)) << "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
 				{ "tooltip", (formatter() << _("Experience Modifier: ") << unit_experience_accelerator::get_acceleration() << '%').str() }
 			} },
@@ -444,6 +445,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
 
 		label_level_->set_label("<b>" + l_str + "</b>");
+		label_level_->set_tooltip(unit_helper::unit_level_tooltip(u));
 		label_level_->set_use_markup(true);
 	}
 

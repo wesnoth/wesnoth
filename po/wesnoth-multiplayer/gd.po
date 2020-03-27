@@ -1,12 +1,13 @@
 # Translators:
-# GunChleoc, 2017
+# GunChleoc, 2018
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: GunChleoc, 2017\n"
+"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
+"PO-Revision-Date: 2020-01-13 11:49+0000\n"
+"Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -443,8 +444,9 @@ msgstr "Deas"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
-msgid "Defeat enemy leader(s)"
-msgstr "Thoir buaidh air ceannard(an) nàmhad"
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:155
+msgid "Defeat the enemy leader"
+msgstr "Thoir buaidh air a’ cheannard nàmhad"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
@@ -542,8 +544,6 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
 #: data/multiplayer/scenarios/4p_Clash.cfg:29
 #: data/multiplayer/scenarios/4p_Clash.cfg:51
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:30
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:43
 #: data/multiplayer/scenarios/4p_Underworld.cfg:31
@@ -576,8 +576,6 @@ msgstr "Ear"
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
 #: data/multiplayer/scenarios/4p_Clash.cfg:18
 #: data/multiplayer/scenarios/4p_Clash.cfg:40
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:17
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:56
 #: data/multiplayer/scenarios/4p_Underworld.cfg:20
@@ -764,22 +762,6 @@ msgstr "Blum Duk"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:147
-#, fuzzy
-#| msgid ""
-#| "Blum Duk was renowned among his goblin clan for having tamed one of the "
-#| "Dire Wolves of the mountains, and he had the courage to match. His "
-#| "leadership and skills alone were what kept the area’s goblins alive "
-#| "despite human and elvish menaces. Rumor had it that his wolf had slain "
-#| "fifty men and a hundred Elves.\n"
-#| "Thus, when he heard of the awful monster that was inhabiting the area, it "
-#| "was only natural that he ride out alone to face it. All the other goblins "
-#| "expected him to slay the creature easily and drag back its carcass to "
-#| "feast on.\n"
-#| "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
-#| "cowered in fright. He tried to wheel his wolf around to run away, but it "
-#| "wouldn’t move. As the creature stalked towards him, he screamed his last "
-#| "words: Good Gog, dog, are yer legs made of stone?!\n"
-#| "(inscribed by Elvish Pillager)"
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -804,16 +786,18 @@ msgstr ""
 "sgìre beò an aghaidh bagairt a’ chinne-daonna is nan sìthichean. Dh’innseadh "
 "na fathannan gun robh am madadh seo air leth-cheud duine is ceud shìthiche a "
 "mharbhadh.\n"
+"\n"
 "Mar sin, nuair a chuala e mu chreutair uabhasach a thuinicheadh san sgìre, "
 "cha robh e ach nàdarra gun rachadh e ’na aghaidh ’na aonar. Bha na bòcain "
 "eile uile an dùil gun cuireadh e às dhan chreutair ud gun strì is gun "
 "slaodadh e a chorp dhachaigh ach an dèanadh iad fèist dha.\n"
+"\n"
 "Bha clisgeadh mòr gu bhith air. Cho luath ’s a chunnaic e an rìgh-nathair, "
 "rinn Blum Duk curraidh leis an eagal. Dh’fheuch e ris a mhadadh a thionndadh "
 "ach an teicheadh iad, ach cha ghluaiseadh esan. Fhad ’s a bha an creutair a’ "
 "teannadh air, dh’èigh e na faclan deireannach aige: A mhadaidh mhaith, a "
 "bheil do chasan dèanta dhe chlach?!\n"
-"(sgrìobhte le creachadair-sìthe)"
+"(sgrìobhte le creachadair sìthiche)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
@@ -847,7 +831,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:162
 msgid "Turin's Monster of the Lake"
-msgstr ""
+msgstr "Uilebheist Locha Turin"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:165
@@ -872,7 +856,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:170
 msgid "The Spider"
-msgstr ""
+msgstr "An damhan-allaidh"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
@@ -920,23 +904,6 @@ msgstr "Bramwythl"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:196
-#, fuzzy
-#| msgid ""
-#| "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
-#| "other Woses. More than any other Wose, he enjoyed simply standing alone "
-#| "in the sun, arms upraised, admiring the beauty of the empty sky. Once, "
-#| "even, he confided in a fellow that his greatest wish was to be able to "
-#| "bask forever in the sun’s glory.\n"
-#| "However, not long after, the local wose community heard of the approach "
-#| "of a horrible monster, powerful enough to easily destroy the few woses "
-#| "that lived in the area. They quickly moved off (quickly for Woses, "
-#| "anyway), but Bramwythl was left behind — in their haste, no one had "
-#| "remembered to find him and tell him of the danger.\n"
-#| "He was taken quite unawares by the Basilisk, and turned to stone before "
-#| "he even recognized the beast. His petrified form still stands there "
-#| "today, warmed by the sun’s rays, under an open sky. His greatest wish has "
-#| "been granted.\n"
-#| "(inscribed by Elvish Pillager)"
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other woses. More than any other wose, he enjoyed simply standing alone in "
@@ -962,17 +929,19 @@ msgstr ""
 "èirigh, a’ coimhead air na speuran falamh. Dh’innis e dha dh’fhear uair gum "
 "b’ e am miann as motha leis gum b’ urrainn dha blianadh ann an glòir na "
 "ghrèine gu bràth tuilleadh.\n"
+"\n"
 "Co-dhiù no co-dheth, greis an dèidh seo, chuala coimhearsnachd ionadail nan "
 "gillean-dubha gun robh biast uabhasach ri thighinn a bhiodh cumhachdach gu "
 "leòr gus an àireamh bheag dhe ghillean-dubha bha a’ fuireach san sgìre a "
 "mhilleadh. Ghluais iad air falbh gu luath (cho luath ’s a ghluaiseadh gille-"
 "dubh sam bith co-dhiù), ach chaidh Bramwythl fhàgail – leis a’ chabhag a bh’ "
 "orra, dhìochuimhnich iad a lorg gus innse dha mun chunnart.\n"
+"\n"
 "Ghlac an rìgh-nathair e gun fhiosta is thionndaidh e gu cloiche e fiù ’s mus "
 "mhothaicheadh e gun robh am biast ann. Tha a chruth cloiche ’na sheasamh an-"
 "sin an-diugh fhathast, ’ga bhlàthachadh le dearrsadh na grèine fo na speuran "
 "fosgailte. Fhuair e a mhiann as motha.\n"
-"(sgrìobhte le creachadair-sìthe)"
+"(sgrìobhte le creachadair sìthiche)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:205
@@ -1140,7 +1109,9 @@ msgid "teamname^Human"
 msgstr "Cinne-daonna"
 
 #. [then]
+#. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:262
 msgid "Death of your leader"
 msgstr "Bàs do cheannard"
 
@@ -1443,100 +1414,100 @@ msgstr ""
 "Paterson."
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:89
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:160
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:197
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:266
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:315
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:439
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:91
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:162
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:199
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:268
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:317
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:441
 msgid "Big Baby Bo"
 msgstr "Leanabh Mòr Bo"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:101
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:103
 msgid "Rawffus the Dim"
 msgstr "Rafas Dùr"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:149
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:151
 msgid "Kolbur"
 msgstr "Colbar"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:172
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:174
 msgid "Vilhelm Viskitynnyri"
 msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:229
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:240
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:647
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:658
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:231
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:242
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:661
 msgid "Clockwork Boy"
 msgstr "Gille Uaireadair"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:289
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:291
 msgid "Neki the Brutal"
 msgstr "Nekaidh Brùideil"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:327
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:329
 msgid "Drowsk Calbeht"
 msgstr "Drabhsk Cailbeht"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:385
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:387
 msgid "Rzrrt the Dauntless"
 msgstr "Rzrrt Urranta"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:423
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:425
 msgid "Sorrek, Chosen of Death"
 msgstr "Sorrak, Roghnaichte a’ Bhàis"
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:507
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:578
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:615
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:732
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:856
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:510
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:581
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:618
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:687
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:735
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:859
 msgid "Big Baby Dro"
 msgstr "Leanabh Mòr Dro"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:519
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:522
 msgid "Gawffus the Dim"
 msgstr "Gafas an Dùr"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:567
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:570
 msgid "Rublok"
 msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:590
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:593
 msgid "Ulysses Mantyjuuri"
 msgstr "Ulysses Maintyjuuraidh"
 
 #. [unit]: type=Orcish Leader
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:706
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:709
 msgid "Neki the Brute"
 msgstr "Nekaidh Garg"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:744
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:747
 msgid "Claiomh Dubh"
 msgstr "Claidheamh Dubh"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:802
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:805
 msgid "Tyxrrn the Dauntless"
 msgstr "Tyxrrn Urranta"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:840
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:843
 msgid "Rukhos, Chosen of Death"
 msgstr "Rukhos, Roghnaichte a’ Bhàis"
 
@@ -1887,7 +1858,7 @@ msgid ""
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:161
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:159
 msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
@@ -1896,7 +1867,7 @@ msgstr ""
 "latha le aon cheum gu oidhche no latha."
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:164
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:162
 msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
@@ -1923,19 +1894,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3cl – Boglach Ailiorok"
 
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2026,6 +1997,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:54
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:71
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:20
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:42
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:64
@@ -2039,6 +2011,7 @@ msgstr "Sgioba 1"
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:43
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:82
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:31
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:53
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:75
@@ -2123,6 +2096,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:56
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:20
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:58
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:29
@@ -2138,6 +2112,7 @@ msgstr "Iar-dheas"
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:32
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:44
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:44
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:34
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:53
@@ -2175,6 +2150,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:32
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:43
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:46
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:42
@@ -2188,6 +2164,7 @@ msgstr "Iar-thuath"
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:21
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:54
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
@@ -2317,7 +2294,7 @@ msgstr ""
 "cluicheadairean eile."
 
 #. [side]
-#: data/multiplayer/scenarios/5p_Auction-X.cfg:69
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:70
 msgid "teamname^Center"
 msgstr "Meadhan"
 
@@ -2334,25 +2311,67 @@ msgstr ""
 "ùghdarrais."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:37
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:55
 msgid "5p — The Wilderlands"
 msgstr "5cl – Na tìrean fàs"
 
-#. [multiplayer]: id=multiplayer_The_Wilderlands
 #. [multiplayer]: id=multiplayer_Crusaders_Field
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
+#. [multiplayer]: id=multiplayer_The_Wilderlands
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:56
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
 msgstr " Mholamaid gun suidhich thu òr bhailtean air 1."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:56
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
 "’S e raon fàsach farsaing a th’ anns a’ chruth-tìre seo làn coilltean, "
 "uamhan, aibhnichean is tobhtaichean dhaingnean àrsaidh."
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:93
+msgid "teamname^Team 3"
+msgstr "Sgioba 3"
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:104
+msgid "teamname^Team 4"
+msgstr "Sgioba 4"
+
+#. [side]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:125
+msgid "teamname^Monsters"
+msgstr "Biastan"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:235
+#, fuzzy
+#| msgid "Defeat the enemy leaders"
+msgid "Defeat all enemy leaders"
+msgstr "Thoir buaidh air na ceannardan nàmhad"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:252
+msgid "Defeat all monsters"
+msgstr "Thoir buaidh air a h&#8209;uile biast nàmhad"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:270
+msgid "Defeat the enemy leaders"
+msgstr "Thoir buaidh air na ceannardan nàmhad"
+
+#. [objective]: condition=lose
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:275
+msgid "Death of all your units"
+msgstr "Bàs nan aonadan uile agad"
+
+#. [note]
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:280
+msgid "You cannot recruit units."
+msgstr "Chan urrainn dhut aonadan a thrusadh."
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
@@ -2711,3 +2730,8 @@ msgstr ""
 #: data/multiplayer/scenarios/test_lua_mapgen.cfg:17
 msgid "Testing new lua mapgen features"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Defeat all enemy leaders"
+#~ msgid "Defeat enemy leader(s)"
+#~ msgstr "Thoir buaidh air a h&#8209;uile ceannard nàmhad"

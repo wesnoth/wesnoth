@@ -250,6 +250,7 @@ server::server(int port,
 	, save_replays_(false)
 	, replay_save_path_()
 	, allow_remote_shutdown_(false)
+	, client_sources_()
 	, tor_ip_list_()
 	, failed_login_limit_()
 	, failed_login_ban_()
@@ -458,6 +459,10 @@ void server::load_config()
 	deny_unregistered_login_ = cfg_["deny_unregistered_login"].to_bool();
 
 	allow_remote_shutdown_ = cfg_["allow_remote_shutdown"].to_bool();
+
+	for(const std::string& source : utils::split(cfg_["client_sources"].str())) {
+		client_sources_.insert(source);
+	}
 
 	disallowed_names_.clear();
 	if(cfg_["disallow_names"].empty()) {
@@ -675,7 +680,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	}
 
 	// Check if the username is allowed.
-	for(const std::string d : disallowed_names_) {
+	for(const std::string& d : disallowed_names_) {
 		if(utils::wildcard_string_match(utf8::lowercase(username), utf8::lowercase(d))) {
 			async_send_error(socket, "The nickname '" + username + "' is reserved and cannot be used by players",
 				MP_NAME_RESERVED_ERROR);
@@ -1293,10 +1298,6 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 	}
 
 	create_game.copy_into(g.level().root());
-
-	if(user_handler_) {
-		user_handler_->db_insert_game_info(uuid_, g.id(), game_config::wesnoth_version.str(), g.name());
-	}
 }
 
 void server::cleanup_game(game* game_ptr)
@@ -1304,7 +1305,7 @@ void server::cleanup_game(game* game_ptr)
 	metrics_.game_terminated(game_ptr->termination_reason());
 
 	if(user_handler_){
-		user_handler_->db_update_game_end(uuid_, game_ptr->id(), game_ptr->get_replay_filename());
+		user_handler_->db_update_game_end(uuid_, game_ptr->db_id(), game_ptr->get_replay_filename());
 	}
 
 	simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
@@ -1325,7 +1326,7 @@ void server::cleanup_game(game* game_ptr)
 		gamelist->remove_child("game", index);
 	} else {
 		// Can happen when the game ends before the scenario was transferred.
-		LOG_SERVER << "Could not find game (" << game_ptr->id() << ") to delete in games_and_users_list_.\n";
+		LOG_SERVER << "Could not find game (" << game_ptr->id() << ", " << game_ptr->db_id() << ") to delete in games_and_users_list_.\n";
 	}
 
 	delete game_ptr;
@@ -1440,7 +1441,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// g.level() should then receive the full data for the game.
 		if(!g.level_init()) {
 			LOG_SERVER << client_address(socket) << "\t" << player.name() << "\tcreated game:\t\"" << g.name() << "\" ("
-					   << g.id() << ").\n";
+					   << g.id() << ", " << g.db_id() << ").\n";
 			// Update our config object which describes the open games,
 			// and save a pointer to the description in the new game.
 			simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
@@ -1453,7 +1454,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 				m->copy_into(desc);
 			} else {
 				WRN_SERVER << client_address(socket) << "\t" << player.name() << "\tsent scenario data in game:\t\""
-						   << g.name() << "\" (" << g.id() << ") without a 'multiplayer' child.\n";
+						   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") without a 'multiplayer' child.\n";
 				// Set the description so it can be removed in delete_game().
 				g.set_description(&desc);
 				delete_game(g.id());
@@ -1468,7 +1469,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			desc.set_attr_dup("id", lexical_cast<std::string>(g.id()).c_str());
 		} else {
 			WRN_SERVER << client_address(socket) << "\t" << player.name() << "\tsent scenario data in game:\t\""
-					   << g.name() << "\" (" << g.id() << ") although it's already initialized.\n";
+					   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") although it's already initialized.\n";
 			return;
 		}
 
@@ -1541,11 +1542,14 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		if(!g.level_init()) {
 			WRN_SERVER << client_address(socket) << "\tWarning: " << player.name()
 					   << "\tsent [store_next_scenario] in game:\t\"" << g.name() << "\" (" << g.id()
-					   << ") while the scenario is not yet initialized.";
+					   << ", " << g.db_id() << ") while the scenario is not yet initialized.";
 			return;
 		}
 
 		g.save_replay();
+		if(user_handler_){
+			user_handler_->db_update_game_end(uuid_, g.db_id(), g.get_replay_filename());
+		}
 
 		g.new_scenario(socket);
 		g.reset_last_synced_context_id();
@@ -1553,10 +1557,11 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// Record the full scenario in g.level()
 		g.level().clear();
 		scenario->copy_into(g.level().root());
+		g.next_db_id();
 
 		if(g.description() == nullptr) {
 			ERR_SERVER << client_address(socket) << "\tERROR: \"" << g.name() << "\" (" << g.id()
-					   << ") is initialized but has no description_.\n";
+					   << ", " << g.db_id() << ") is initialized but has no description_.\n";
 			return;
 		}
 
@@ -1567,7 +1572,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			m->copy_into(desc);
 		} else {
 			WRN_SERVER << client_address(socket) << "\t" << player.name() << "\tsent scenario data in game:\t\""
-					   << g.name() << "\" (" << g.id() << ") without a 'multiplayer' child.\n";
+					   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") without a 'multiplayer' child.\n";
 
 			delete_game(g.id());
 
@@ -1619,8 +1624,8 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		g.start_game(socket);
 
 		if(user_handler_) {
-			const simple_wml::node& multiplayer = *g.level().root().child("multiplayer");
-			user_handler_->db_update_game_start(uuid_, g.id(), multiplayer["mp_scenario"].to_string(), multiplayer["mp_era"].to_string(), g.is_reload(), multiplayer["observer"].to_bool(), multiplayer["observer"].to_bool(), g.has_password());
+			const simple_wml::node& m = *g.level().root().child("multiplayer");
+			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
@@ -1636,14 +1641,18 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 				} else {
 					version = player->info().version();
 					source = player->info().source();
+
+					if(client_sources_.count(source) == 0) {
+						source = "Default";
+					}
 				}
-				user_handler_->db_insert_game_player_info(uuid_, g.id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
+				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
 			}
 
-			const std::string mods = multiplayer["active_mods"].to_string();
+			const std::string mods = m["active_mods"].to_string();
 			if(mods != "") {
-				for(const std::string mod : utils::split(mods, ',')){
-					user_handler_->db_insert_modification_info(uuid_, g.id(), mod);
+				for(const std::string& mod : utils::split(mods, ',')){
+					user_handler_->db_insert_modification_info(uuid_, g.db_id(), mod);
 				}
 			}
 		}
@@ -1763,9 +1772,9 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		if((*info)["type"] == "termination") {
 			g.set_termination_reason((*info)["condition"].to_string());
 			if((*info)["condition"].to_string() == "out of sync") {
-				g.send_server_message_to_all(player.name() + " reports out of sync errors.");
+				g.send_and_record_server_message(player.name() + " reports out of sync errors.");
 				if(user_handler_){
-					user_handler_->db_set_oos_flag(uuid_, g.id());
+					user_handler_->db_set_oos_flag(uuid_, g.db_id());
 				}
 			}
 		}
@@ -1807,7 +1816,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 	}
 
 	WRN_SERVER << client_address(socket) << "\tReceived unknown data from: " << player.name() << " (socket:" << socket
-			   << ") in game: \"" << g.name() << "\" (" << g.id() << ")\n"
+			   << ") in game: \"" << g.name() << "\" (" << g.id() << ", " << g.db_id() << ")\n"
 			   << data.output();
 }
 
@@ -2850,7 +2859,7 @@ void server::stopgame(const std::string& /*issuer_name*/,
 	if(player != player_connections_.get<name_t>().end()){
 		std::shared_ptr<game> g = player->get_game();
 		if(g){
-			*out << "Player '" << nick << "' is in game with id '" << g->id() << "' named '" << g->name() << "'.  Ending game for reason: '" << reason << "'...";
+			*out << "Player '" << nick << "' is in game with id '" << g->id() << ", " << g->db_id() << "' named '" << g->name() << "'.  Ending game for reason: '" << reason << "'...";
 			delete_game(g->id(), reason);
 		} else {
 			*out << "Player '" << nick << "' is not currently in a game.";

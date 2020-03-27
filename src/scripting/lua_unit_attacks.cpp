@@ -17,6 +17,7 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_type.hpp"
+#include "scripting/push_check.hpp"
 #include "units/unit.hpp"
 #include "units/attack_type.hpp"
 #include "utils/const_clone.hpp"
@@ -314,6 +315,18 @@ static int impl_unit_attack_equal(lua_State* L)
 	return 1;
 }
 
+/**
+ * Turns a lua proxy attack to string. (__tostring metamethod)
+ */
+static int impl_unit_attack_tostring(lua_State* L)
+{
+	const_attack_ptr atk = luaW_checkweapon_ref(L, 1).cattack;
+	std::ostringstream str;
+	str << "weapon: <" << atk->id() << '>';
+	lua_push(L, str.str());
+	return 1;
+}
+
 static int impl_unit_attack_match(lua_State* L)
 {
 	const_attack_ptr atk = luaW_toweapon(L, 1);
@@ -367,6 +380,8 @@ namespace lua_units {
 		lua_setfield(L, -2, "__newindex");
 		lua_pushcfunction(L, impl_unit_attack_equal);
 		lua_setfield(L, -2, "__eq");
+		lua_pushcfunction(L, impl_unit_attack_tostring);
+		lua_setfield(L, -2, "__tostring");
 		lua_pushcfunction(L, impl_unit_attack_collect);
 		lua_setfield(L, -2, "__gc");
 		lua_pushstring(L, uattackKey);

@@ -16,38 +16,41 @@ function ca_forest_animals_new_rabbit:execution(cfg)
 
     -- Get the locations of all items on that map (which could be rabbit holes)
     wesnoth.wml_actions.store_items { variable = 'holes_wml' }
-    local all_items = wml.array_access.get('holes_wml')
+    local all_items = wml.array_variables['holes_wml']
     wesnoth.wml_actions.clear_variable { name = 'holes_wml' }
 
     -- Eliminate all holes that have an enemy within 'rabbit_enemy_distance' hexes
     -- We also add a random number to the ones we keep, for selection of the holes later
+    local width, height = wesnoth.get_map_size()
     local holes = {}
     for _,item in ipairs(all_items) do
-        local enemies = AH.get_attackable_enemies {
-            { "filter_location", { x = item.x, y = item.y, radius = rabbit_enemy_distance } }
-        }
+        if (item.x > 0) and (item.x <= width) and (item.y > 0) and (item.y <= height) then
+            local enemies = AH.get_attackable_enemies {
+                { "filter_location", { x = item.x, y = item.y, radius = rabbit_enemy_distance } }
+            }
 
-        if (not enemies[1]) then
-            -- If cfg.rabbit_hole_img is set, only items with that image or halo count as holes
-            if cfg.rabbit_hole_img then
-                if (item.image == cfg.rabbit_hole_img) or (item.halo == cfg.rabbit_hole_img) then
+            if (not enemies[1]) then
+                -- If cfg.rabbit_hole_img is set, only items with that image or halo count as holes
+                if cfg.rabbit_hole_img then
+                    if (item.image == cfg.rabbit_hole_img) or (item.halo == cfg.rabbit_hole_img) then
+                        item.random = math.random(100)
+                        table.insert(holes, item)
+                    end
+                else
                     item.random = math.random(100)
                     table.insert(holes, item)
                 end
-            else
-                item.random = math.random(100)
-                table.insert(holes, item)
             end
         end
     end
     table.sort(holes, function(a, b) return a.random > b.random end)
 
-    local rabbits = wesnoth.get_units { side = wesnoth.current.side, type = cfg.rabbit_type }
+    local rabbits = wesnoth.units.find_on_map { side = wesnoth.current.side, type = cfg.rabbit_type }
     number = number - #rabbits
     number = math.min(number, #holes)
 
     -- Now we simply take the first 'number' (randomized) holes
-    local tmp_unit = wesnoth.get_units { side = wesnoth.current.side }[1]
+    local tmp_unit = wesnoth.units.find_on_map { side = wesnoth.current.side }[1]
     for i = 1,number do
         local x, y = -1, -1
         if tmp_unit then

@@ -31,6 +31,7 @@
 #include <string>                       // for string
 
 class game_launcher;
+namespace ai { class unit_advancements_aspect; }  // lines 45-45
 namespace ai { class ai_composite; }  // lines 45-45
 namespace ai { class ai_context; }  // lines 42-42
 namespace ai { class component; }  // lines 43-43
@@ -417,6 +418,8 @@ public:
 	 * @return a reference to the AI-game info.
 	 */
 	game_info& get_ai_info();
+
+	const ai::unit_advancements_aspect& get_advancement_aspect_for_side(side_number side);
 
 
 	// =======================================================================

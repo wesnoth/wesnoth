@@ -926,10 +926,12 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	const unit_type& old_type = type();
 	// Adjust the new type for gender and variation.
 	const unit_type& new_type = u_type.get_gender_unit_type(gender_).get_variation(variation_);
+	// In cast u_type was already a variation, make sure our variation is set correctly.
+	variation_ = new_type.variation_id();
 
 	// Reset the scalar values first
 	trait_names_.clear();
-	trait_descriptions_.clear(),
+	trait_descriptions_.clear();
 	is_fearless_ = false;
 	is_healthy_ = false;
 	image_mods_.clear();
@@ -1129,7 +1131,12 @@ color_t unit::hp_color(int new_hitpoints) const
 	return hp_color_impl(new_hitpoints, hitpoints());
 }
 
-color_t unit::xp_color() const
+color_t unit::hp_color_max()
+{
+	return hp_color_impl(1, 1);
+}
+
+color_t unit::xp_color(int xp_to_advance, bool can_advance, bool has_amla)
 {
 	const color_t near_advance_color {255,255,255,255};
 	const color_t mid_advance_color  {150,255,255,255};
@@ -1140,16 +1147,12 @@ color_t unit::xp_color() const
 	const color_t far_amla_color     {139,0,237,255};
 	const color_t amla_color         {170,0,255,255};
 
-	const bool near_advance = static_cast<int>(experience_to_advance()) <= game_config::kill_experience;
-	const bool mid_advance  = static_cast<int>(experience_to_advance()) <= game_config::kill_experience*2;
-	const bool far_advance  = static_cast<int>(experience_to_advance()) <= game_config::kill_experience*3;
+	const bool near_advance = static_cast<int>(xp_to_advance) <= game_config::kill_experience;
+	const bool mid_advance  = static_cast<int>(xp_to_advance) <= game_config::kill_experience*2;
+	const bool far_advance  = static_cast<int>(xp_to_advance) <= game_config::kill_experience*3;
 
 	color_t color = normal_color;
-	bool major_amla = false;
-	for(const config& adv:get_modification_advances()){
-		major_amla |= adv["major_amla"].to_bool();
-	}
-	if(advances_to().size() ||major_amla){
+	if(can_advance){
 		if(near_advance){
 			color=near_advance_color;
 		} else if(mid_advance){
@@ -1157,7 +1160,7 @@ color_t unit::xp_color() const
 		} else if(far_advance){
 			color=far_advance_color;
 		}
-	} else if(get_modification_advances().size()){
+	} else if(has_amla){
 		if(near_advance){
 			color=near_amla_color;
 		} else if(mid_advance){
@@ -1170,6 +1173,17 @@ color_t unit::xp_color() const
 	}
 
 	return(color);
+}
+
+color_t unit::xp_color() const
+{
+	bool major_amla = false;
+	bool has_amla = false;
+	for(const config& adv:get_modification_advances()){
+		major_amla |= adv["major_amla"].to_bool();
+		has_amla = true;
+	}
+	return xp_color(experience_to_advance(), !advances_to().empty() || major_amla, has_amla);
 }
 
 void unit::set_recruits(const std::vector<std::string>& recruits)
@@ -1679,9 +1693,9 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 {
 	int res = movement_type_.resistance_against(damage_name);
 
-	unit_ability_list resistance_abilities = get_abilities("resistance",loc, weapon, opp_weapon);
+	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
 	for(unit_ability_list::iterator i = resistance_abilities.begin(); i != resistance_abilities.end();) {
-		if(!resistance_filter_matches(*i->first, attacker, damage_name, 100-res)) {
+		if(!resistance_filter_matches(*i->first, attacker, damage_name, 100-res) || (!ability_affects_weapon(*i->first, weapon, false) || !ability_affects_weapon(*i->first, opp_weapon, true))) {
 			i = resistance_abilities.erase(i);
 		} else {
 			++i;
@@ -2237,6 +2251,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		const unit_type*  base_type = unit_types.find(type().base_id());
 		assert(base_type != nullptr);
 		advance_to(*base_type);
+		if(effect["heal_full"].to_bool(false)) {
+			heal_fully();
+		}
 	} else if(effect["apply_to"] == "type") {
 		std::string prev_type = effect["prev_type"];
 		if(prev_type.empty()) {
@@ -2266,7 +2283,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	}
 
 	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
-	config last_effect;
+	config type_effect, variation_effect;
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
 		// Apply SUF.
@@ -2289,10 +2306,15 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				times --;
 
 				bool was_poisoned = get_state(STATE_POISONED);
-				if(apply_to == "variation" || apply_to == "type") {
-					// Apply unit type/variation changes last to avoid double applying effects on advance.
+				// Apply unit type/variation changes last to avoid double applying effects on advance.
+				if(apply_to == "type") {
 					set_poisoned = false;
-					last_effect = effect;
+					type_effect = effect;
+					continue;
+				}
+				if(apply_to == "variation") {
+					set_poisoned = false;
+					variation_effect = effect;
 					continue;
 				}
 
@@ -2332,15 +2354,27 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		}
 	}
 	// Apply variations -- only apply if we are adding this for the first time.
-	if(!last_effect.empty() && no_add == false) {
-		std::string description;
-		if(resources::lua_kernel) {
-			description = resources::lua_kernel->apply_effect(last_effect["apply_to"], *this, last_effect, true);
-		} else if(builtin_effects.count(last_effect["apply_to"])) {
-			apply_builtin_effect(last_effect["apply_to"], last_effect);
-			description = describe_builtin_effect(last_effect["apply_to"], last_effect);
+	if((!type_effect.empty() || !variation_effect.empty()) && no_add == false) {
+		if(!type_effect.empty()) {
+			std::string description;
+			if(resources::lua_kernel) {
+				description = resources::lua_kernel->apply_effect(type_effect["apply_to"], *this, type_effect, true);
+			} else if(builtin_effects.count(type_effect["apply_to"])) {
+				apply_builtin_effect(type_effect["apply_to"], type_effect);
+				description = describe_builtin_effect(type_effect["apply_to"], type_effect);
+			}
+			effects_description.push_back(description);
 		}
-		effects_description.push_back(description);
+		if(!variation_effect.empty()) {
+			std::string description;
+			if(resources::lua_kernel) {
+				description = resources::lua_kernel->apply_effect(variation_effect["apply_to"], *this, variation_effect, true);
+			} else if(builtin_effects.count(variation_effect["apply_to"])) {
+				apply_builtin_effect(variation_effect["apply_to"], variation_effect);
+				description = describe_builtin_effect(variation_effect["apply_to"], variation_effect);
+			}
+			effects_description.push_back(description);
+		}
 		if(set_poisoned)
 			// An effect explicitly set the poisoned state, and this
 			// should override the unit being immune to poison.
@@ -2635,16 +2669,10 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 		return;
 	}
 
-	// TODO: create abetter way to check whether it is actually an int.
-	int upkeep_int = upkeep.to_int(-99);
-	if(upkeep_int != -99) {
-		upkeep_ = upkeep_int;
-	} else if(upkeep == upkeep_loyal::type() || upkeep == "free") {
-		upkeep_ = upkeep_loyal();
-	} else if(upkeep == upkeep_full::type()) {
-		upkeep_ = upkeep_full();
-	} else {
-		WRN_UT << "Found invalid upkeep=\"" << upkeep <<  "\" in a unit" << std::endl;
+	try {
+		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor());
+	} catch(std::invalid_argument& e) {
+		WRN_UT << "Found invalid upkeep=\"" << e.what() <<  "\" in a unit" << std::endl;
 		upkeep_ = upkeep_full();
 	}
 }
