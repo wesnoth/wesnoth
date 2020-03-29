@@ -24,7 +24,7 @@ env:
 jobs:
   include:
     - os: windows
-      env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Debug UPLOAD=true
+      env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Debug
 
     - os: windows
       env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Release
