@@ -97,7 +97,7 @@ namespace {
 			// Regeneration?
 			for (const unit_ability & regen : patient.get_abilities("regenerate"))
 			{
-				curing = std::max(curing, poison_status((*regen.first)["poison"]));
+				curing = std::max(curing, poison_status((*regen.ability_cfg)["poison"]));
 				if ( curing == POISON_CURE )
 					// This is as good as it gets.
 					return POISON_CURE;
@@ -109,14 +109,14 @@ namespace {
 		// Assumed: curing is not POISON_CURE at the start of any iteration.
 		for (const unit_ability & heal : patient.get_abilities("heals"))
 		{
-			POISON_STATUS this_cure = poison_status((*heal.first)["poison"]);
+			POISON_STATUS this_cure = poison_status((*heal.ability_cfg)["poison"]);
 			if ( this_cure <= curing )
 				// We already recorded this level of curing.
 				continue;
 
 			// NOTE: At this point, this_cure will be *_SLOW or *_CURE.
 
-			unit_map::iterator cure_it = units.find(heal.second);
+			unit_map::iterator cure_it = units.find(heal.teacher_loc);
 			assert(cure_it != units.end());
 			const int cure_side = cure_it->side();
 
@@ -201,7 +201,7 @@ namespace {
 		// Remove all healers not on this side (since they do not heal now).
 		unit_ability_list::iterator heal_it = heal_list.begin();
 		while ( heal_it != heal_list.end() ) {
-			unit_map::iterator healer = units.find(heal_it->second);
+			unit_map::iterator healer = units.find(heal_it->teacher_loc);
 			assert(healer != units.end());
 
 			if ( healer->side() != side )
