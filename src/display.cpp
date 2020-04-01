@@ -2629,14 +2629,17 @@ void display::draw_hex(const map_location& loc) {
 				image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
 
 				for(const overlay& ov : overlays) {
-					assert(viewing_team() < get_teams().size());
-					const std::string& current_team_name = get_teams()[viewing_team()].team_name();
-					const std::vector<std::string>& current_team_names = utils::split(current_team_name);
-					const std::vector<std::string>& team_names = utils::split(ov.team_name);
-					if((ov.team_name.empty() ||
-						std::find_first_of(team_names.begin(), team_names.end(),
-							current_team_names.begin(), current_team_names.end()) != team_names.end())
-						&& !(fogged(loc) && !ov.visible_in_fog))
+					bool item_visible_for_team = true;
+					if(dont_show_all_ && !ov.team_name.empty()) {
+						//dont_show_all_ imples that viewing_team()is a valid index to get_teams()
+						const std::string& current_team_name = get_teams()[viewing_team()].team_name();
+						const std::vector<std::string>& current_team_names = utils::split(current_team_name);
+						const std::vector<std::string>& team_names = utils::split(ov.team_name);
+
+						item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
+							current_team_names.begin(), current_team_names.end()) != team_names.end();
+					}
+					if(item_visible_for_team && !(fogged(loc) && !ov.visible_in_fog))
 					{
 						const surface surf = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos ?
 							image::get_lighted_image(ov.image, lt, image::SCALED_TO_HEX) : image::get_image(ov.image, image::SCALED_TO_HEX);
