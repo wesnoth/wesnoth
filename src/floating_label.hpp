@@ -71,7 +71,7 @@ public:
 
 	surface create_surface();
 
-	bool expired(int time) const { return get_time_alive(time) > lifetime_; }
+	bool expired(int time) const { return lifetime_ >= 0 && get_time_alive(time) > lifetime_; }
 
 	void show(const bool value) { visible_ = value; }
 
