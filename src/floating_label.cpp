@@ -206,11 +206,11 @@ SDL_Point floating_label::get_loc(int time)
 
 surface floating_label::get_surface(int time)
 {
-	int time_alive = get_time_alive(time);
-	int alpha_add = -255 * time_alive / lifetime_;
-	if(fadeout_ && surf_ != nullptr) {
-			// fade out moving floating labels
-			return adjust_surface_alpha_add(surf_, alpha_add);
+	if(fadeout_ && lifetime_ >= 0 && surf_ != nullptr) {
+		// fade out moving floating labels
+		int time_alive = get_time_alive(time);
+		int alpha_add = -255 * time_alive / lifetime_;
+		return adjust_surface_alpha_add(surf_, alpha_add);
 	}
 	return surf_;
 }
