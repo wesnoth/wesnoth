@@ -25,7 +25,6 @@
 #include "game_classification.hpp"      // for game_classification, etc
 #include "game_config.hpp"              // for path, no_delay, revision, etc
 #include "game_config_manager.hpp"      // for game_config_manager
-#include "game_end_exceptions.hpp"      // for LEVEL_RESULT, etc
 #include "generators/map_generator.hpp" // for mapgen_exception
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/end_credits.hpp"
@@ -525,6 +524,12 @@ game_launcher::unit_test_result game_launcher::unit_test()
 			case unit_test_result::TEST_FAIL_WML_EXCEPTION:
 				describe_result = "FAIL TEST (WML EXCEPTION)";
 				break;
+			case unit_test_result::TEST_FAIL_BY_DEFEAT:
+				describe_result = "FAIL TEST (DEFEAT)";
+				break;
+			case unit_test_result::TEST_PASS_BY_VICTORY:
+				describe_result = "PASS TEST (VICTORY)";
+				break;
 			default:
 				describe_result = "FAIL TEST";
 				break;
@@ -542,15 +547,16 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());
 
+	LEVEL_RESULT game_res = LEVEL_RESULT::TEST_FAIL;
 	try {
 		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types(), true);
-		LEVEL_RESULT res = ccontroller.play_game();
-		if (res != LEVEL_RESULT::VICTORY) {
+		game_res = ccontroller.play_game();
+		// TODO: How to handle the case where a unit test scenario ends without an explicit {SUCCEED} or {FAIL}?
+		// ex: check_victory_never_ai_fail results in victory by killing one side's leaders
+		if(game_res == LEVEL_RESULT::TEST_FAIL) {
 			return unit_test_result::TEST_FAIL;
 		}
 		if (lg::broke_strict()) {
-			// Test for LEVEL_RESULT::VICTORY before this, as the warning printed by
-			// a failing ASSERT will also set broke_strict()'s flag.
 			return unit_test_result::TEST_FAIL_BROKE_STRICT;
 		}
 	} catch(const wml_exception& e) {
@@ -560,8 +566,9 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 
 	savegame::clean_saves(state_.classification().label);
 
-	if (cmdline_opts_.noreplaycheck)
-		return unit_test_result::TEST_PASS; //we passed, huzzah!
+	if (cmdline_opts_.noreplaycheck) {
+		return pass_victory_or_defeat(game_res);
+	}
 
 	savegame::replay_savegame save(state_, compression::NONE);
 	save.save_game_automatic(false, "unit_test_replay"); //false means don't check for overwrite
@@ -575,8 +582,8 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 
 	try {
 		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types(), true);
-		LEVEL_RESULT res = ccontroller.play_replay();
-		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
+		ccontroller.play_replay();
+		if (lg::broke_strict()) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 		}
@@ -585,7 +592,16 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 		return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 	}
 
-	return unit_test_result::TEST_PASS; //we passed, huzzah!
+	return pass_victory_or_defeat(game_res);
+}
+
+game_launcher::unit_test_result game_launcher::pass_victory_or_defeat(LEVEL_RESULT res) {
+	if(res == LEVEL_RESULT::DEFEAT) {
+		return unit_test_result::TEST_FAIL_BY_DEFEAT;
+	} else if(res == LEVEL_RESULT::VICTORY) {
+		return unit_test_result::TEST_PASS_BY_VICTORY;
+	}
+	return unit_test_result::TEST_PASS;
 }
 
 bool game_launcher::play_screenshot_mode()

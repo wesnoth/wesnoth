@@ -335,7 +335,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			sound::play_music_once(end_music);
 		}
 		persist_.end_transaction();
-		return is_victory ? LEVEL_RESULT::VICTORY : LEVEL_RESULT::DEFEAT;
+		LEVEL_RESULT res = LEVEL_RESULT::string_to_enum(end_level.test_result);
+		if(res == LEVEL_RESULT::TEST_NOT_SET) {
+			return is_victory ? LEVEL_RESULT::VICTORY : LEVEL_RESULT::DEFEAT;
+		} else {
+			return res;
+		}
 	} catch(const savegame::load_game_exception &) {
 		// Loading a new game is effectively a quit.
 		saved_game_.clear();
