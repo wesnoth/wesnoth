@@ -35,6 +35,10 @@ MAKE_ENUM(LEVEL_RESULT,
 	(DEFEAT,       "defeat")
 	(QUIT,         "quit")
 	(OBSERVER_END, "observer_end")
+	(TEST_NOT_SET, "result_not_set")
+	(TEST_PASS,    "pass")
+	(TEST_FAIL,    "fail")
+	(TEST_INVALID, "test_result_value_invalid")
 )
 
 /**
@@ -98,6 +102,7 @@ struct end_level_data
 	bool replay_save;                  /**< Should a replay save be made? */
 	bool proceed_to_next_level;        /**< whether to proceed to the next scenario, equals is_victory in sp. We need to save this in saves during linger mode. > */
 	bool is_victory;
+	std::string test_result;           /**< result to use if this is a unit test */
 	transient_end_level transient;
 	void write(config& cfg) const;
 

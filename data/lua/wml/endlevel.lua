@@ -100,5 +100,6 @@ function wesnoth.wml_actions.endlevel(cfg)
 		reveal_map = cfg.reveal_map,
 		proceed_to_next_level = proceed_to_next_level,
 		result = victory and "victory" or "defeat",
+		test_result = cfg.test_result,
 	}
 end

@@ -28,6 +28,7 @@ end_level_data::end_level_data()
 	, replay_save(true)
 	, proceed_to_next_level(false)
 	, is_victory(true)
+	, test_result(LEVEL_RESULT::enum_to_string(LEVEL_RESULT::TEST_NOT_SET))
 	, transient()
 {
 }
@@ -38,6 +39,7 @@ void end_level_data::write(config& cfg) const
 	cfg["replay_save"] = replay_save;
 	cfg["proceed_to_next_level"] = proceed_to_next_level;
 	cfg["is_victory"] = is_victory;
+	cfg["test_result"] = test_result;
 }
 
 void end_level_data::read(const config& cfg)
@@ -46,6 +48,7 @@ void end_level_data::read(const config& cfg)
 	replay_save = cfg["replay_save"].to_bool(true);
 	proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
 	is_victory = cfg["is_victory"].to_bool(true);
+	test_result = cfg["test_result"].str();
 }
 
 config end_level_data::to_config() const
