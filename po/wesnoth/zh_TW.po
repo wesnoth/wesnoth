@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2019-10-19 20:15+0800\n"
+"PO-Revision-Date: 2020-02-10 00:55+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -4144,10 +4144,8 @@ msgstr ""
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
-#, fuzzy
-#| msgid "female^healthy"
 msgid "aura of death ("
-msgstr "活力"
+msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
@@ -5089,7 +5087,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:262
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― 韋斯廷的格里克爵士，607YW</i>"
+msgstr "<i>― 韋斯汀的格里克爵士，607YW</i>"
 
 #. [tip]
 #: data/tips.cfg:266
@@ -5101,9 +5099,9 @@ msgstr ""
 #. Translate the word "Flight" as a collective noun for drakes
 #: data/tips.cfg:268
 #, fuzzy
-#| msgid "<i>― Great Mage Delfador, 516YW</i>"
+#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>― 迪法多 大法師，516YW</i>"
+msgstr "<i>― 凡克的蓋倫戰術指南，6YW</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5112,6 +5110,8 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"如果一個單位在兩個同盟治療師的侧邊，該單位將會在各自的回合中被治癒。這種方"
+"式，可以比其他方式更快治癒一個單位。"
 
 #. [tip]
 #: data/tips.cfg:272
@@ -5152,15 +5152,15 @@ msgstr "選擇了無效的進攻武器。"
 
 #: src/actions/create.cpp:338
 msgid "You do not have a leader to recall with."
-msgstr "您沒有首領，無法招回單位。"
+msgstr "您沒有指揮官來招回單位。"
 
 #: src/actions/create.cpp:342
 msgid "None of your leaders are able to recall that unit."
-msgstr "您的首領沒有能招回的單位。"
+msgstr "您的指揮官沒有能招回的單位。"
 
 #: src/actions/create.cpp:346
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr "您的首領必須在主堡裏才能招回單位。"
+msgstr "您的指揮官必須在主堡裏才能招回單位。"
 
 #: src/actions/create.cpp:350
 msgid "There are no vacant castle tiles in which to recall the unit."
@@ -5172,17 +5172,15 @@ msgstr "發生了無法辨識的錯誤。"
 
 #: src/actions/create.cpp:474
 msgid "You do not have a leader to recruit with."
-msgstr "您沒有首領，無法招募單位。"
+msgstr "您沒有指揮官來招募單位。"
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "您的首領沒有能招募的單位。"
+msgstr "您的指揮官沒有能招募的單位。"
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
-msgstr "您的首領必須在主堡裏才能招募單位。"
+msgstr "您的指揮官必須在主堡裏才能招募單位。"
 
 #: src/actions/create.cpp:486
 msgid "There are no vacant castle tiles in which to recruit the unit."
@@ -6337,9 +6335,6 @@ msgstr ""
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr "連結群組 '$id' 需要有 'fixed_width' 或 'fixed_height' 的鍵值。"
 
-# 目前這條有出單數和複數。
-# 舊的翻譯被放在複數，它比較簡略，但意思有到，也不錯。
-# 我的翻法放在單數那邊，主要是盡可能對應原句，但可能沒那必要。
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
@@ -6348,8 +6343,9 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"選中的模組有以下依賴模組，但它目前是舊版或尚未安裝。你希望安裝它並繼續嗎？"
-msgstr[1] "這些模組必須仰賴這個來源以下的附加模組，您要安裝嗎？"
+"選中的模組有以下依賴模組，但它目前是舊版或尚未安裝。您希望安裝它並繼續嗎？"
+msgstr[1] ""
+"選中的模組有以下依賴模組，但它目前是舊版或尚未安裝。您希望安裝它並繼續嗎？"
 
 #: src/gui/dialogs/game_stats.hpp:43
 msgid "No visible sides found."
@@ -6412,34 +6408,24 @@ msgid "Only available during a scenario."
 msgstr "僅在章節中可用。"
 
 #: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "時段排程："
+msgstr "時段排程"
 
 #: src/help/help_impl.cpp:384
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "守序單位："
+msgstr "守序加成："
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "中立單位："
+msgstr "中立加成："
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "渾沌單位："
+msgstr "渾沌加成："
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "閾界單位："
+msgstr "閾界加成："
 
 #: src/help/help_impl.cpp:388
 msgid "Schedule"
@@ -6681,72 +6667,53 @@ msgid "You have no units available to recruit."
 msgstr "您沒有可供招募的單位。"
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "沒有招募單位"
+msgstr "未招募單位。"
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "內部錯誤：請回報此錯誤！詳細說明：\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "您目前無法招募 $unit_type_name。"
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "您沒有足夠的金幣招募該單位"
+msgstr "依照您的計畫，目前您沒有足夠的金幣招募該單位。"
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "您沒有足夠的金幣招募該單位"
+msgstr "您沒有足夠的金幣招募該單位。"
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "您與您的單位已分離，因此不能招回他們"
+msgstr "您與您的單位已分離，因此不能招回他們。"
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
 "沒有可以招回的單位\n"
-"（只能招回上一章節存活下來的單位）"
+"（只能招回上一章節存活下來的單位。）"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "您不能在重點位置進行招回"
+msgstr "您不能在重點位置進行招回。"
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "未招回單位"
+msgstr "未招回單位。"
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "要招回一個單位，您至少需要有1個金幣"
-msgstr[1] "要招回一個單位，你至少需要有 $cost 個金幣"
+msgstr[0] "要招回一個單位，您至少需要有1個金幣。"
+msgstr[1] "要招回一個單位，你至少需要有 $cost 個金幣。"
 
 #: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
@@ -6847,7 +6814,7 @@ msgstr "[<陣營> [on/off]]"
 
 #: src/menu_events.cpp:1235
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "改變遊戲中的主題。"
 
 #: src/menu_events.cpp:1237
 msgid "<side> <nickname>"
@@ -6991,12 +6958,10 @@ msgstr "顯示遊戲變數。"
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1284
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
-msgstr "修改一個單位的數值。（只能更動最大數）"
+msgstr "修改一個單位的數值。（只支援最大數，進階=<數值>。）"
 
 #: src/menu_events.cpp:1291
 msgid "Discover all units in help."
@@ -7008,7 +6973,7 @@ msgstr "在說明中設定所有單位為未探索。"
 
 #: src/menu_events.cpp:1293
 msgid "<unit type id>"
-msgstr ""
+msgstr "<單位類型 ID>"
 
 #: src/menu_events.cpp:1293
 msgid "Create a unit."
@@ -7024,17 +6989,15 @@ msgstr "為目前玩家設定戰場黑幕。"
 
 #: src/menu_events.cpp:1296
 msgid "<amount>"
-msgstr ""
+msgstr "<數量>"
 
 #: src/menu_events.cpp:1296
 msgid "Give gold to the current player."
 msgstr "給玩家金幣。"
 
 #: src/menu_events.cpp:1297
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<暱稱>"
+msgstr "<事件名稱>"
 
 #: src/menu_events.cpp:1297
 msgid "Fire a game event."
@@ -7677,13 +7640,6 @@ msgid "Units"
 msgstr "部隊"
 
 #: src/reports.cpp:1443
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. It is equal to "
-#| "the number of unit levels not supported by villages. The second is the "
-#| "total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7704,10 +7660,6 @@ msgid "Net Income"
 msgstr "淨收入"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid ""
-#| "The net amount of gold you gain or lose each turn, taking into account "
-#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8235,11 +8187,6 @@ msgstr "對 $player 隱藏計劃"
 msgid "Whiteboard Options"
 msgstr "白板選項"
 
-#, fuzzy
-#~| msgid "<i>― Kai Laudiss, 623YW</i>"
-#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-#~ msgstr "<i>― 凱．勞迪斯，623YW</i>"
-
 #~ msgid "Graphics scaling options"
 #~ msgstr "圖像縮放選項"
 
@@ -8315,38 +8262,61 @@ msgstr "白板選項"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>（時效獎勵）</small>"
 
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "邊緣單位只有適合在清晨及傍晚戰鬥。\n"
+#~ "\n"
+#~ "白天：-25% 傷害值\n"
+#~ "晚上：−25% 傷害值"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr "這裡沒有自訂選項中可以選擇的時代、遊戲或模組。"
+
+#~ msgid "Defaults"
+#~ msgstr "預設"
+
+#~ msgid "Connected Players"
+#~ msgstr "已連線玩家"
+
 #~ msgid "(Note: You should use $replacement instead in new code)"
 #~ msgstr "（備註：你應該使用 $replacement 而不是新的程式碼）"
 
-#~ msgid "theme^Classic"
-#~ msgstr "傳統"
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "以密碼 *** 註冊，未輸入電子郵件"
 
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "經典佈景主題(1.12版前)"
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "以密碼 *** 和電子郵件 $email 註冊"
 
-#~ msgid "gold"
-#~ msgstr "金幣"
+#~ msgid "dropping your username"
+#~ msgstr "正在移除您的玩家名稱"
 
-#~ msgid "villages"
-#~ msgstr "村莊"
+#~ msgid "setting $var to $value"
+#~ msgstr "正在設定 $var 為 $value"
 
-#~ msgid "units"
-#~ msgstr "單位"
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<密碼> <Email (選擇性)>"
 
-#~ msgid "upkeep"
-#~ msgstr "支出"
+#~ msgid "Register your nickname"
+#~ msgstr "註冊您的帳號"
 
-#~ msgid "income"
-#~ msgstr "收入"
+#~ msgid "Drop your nickname."
+#~ msgstr "刪除您的帳號。"
 
-#~ msgid "statuspanel^level"
-#~ msgstr "等級"
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr "設定帳號資料。輸入 /details 可查看設定的内容。"
 
-#~ msgid "statuspanel^moves"
-#~ msgstr "移動點數"
+#~ msgid "<detail> <value>"
+#~ msgstr "<詳細資訊> <值>"
 
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "地形防禦加成。"
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr "取得您註冊帳號的詳細資訊。"
 
 #~ msgid "No Saved Games"
 #~ msgstr "沒有存檔"
@@ -8423,14 +8393,14 @@ msgstr "白板選項"
 #~ msgid "unit help^Name"
 #~ msgstr "名稱"
 
+#~ msgid "Type"
+#~ msgstr "類型"
+
 #~ msgid "Strikes"
 #~ msgstr "輸出"
 
 #~ msgid "Range"
 #~ msgstr "範圍"
-
-#~ msgid "Type"
-#~ msgstr "類型"
 
 #~ msgid "Special"
 #~ msgstr "特殊"
@@ -8465,86 +8435,53 @@ msgstr "白板選項"
 #~ msgid "Jamming Cost"
 #~ msgstr "干擾消耗"
 
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "無法託管本地 AI 陣營：'$side'。"
+
+#~ msgid "Side:"
+#~ msgstr "陣營："
+
+#~ msgid "theme^Classic"
+#~ msgstr "傳統"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "經典佈景主題(1.12版前)"
+
+#~ msgid "gold"
+#~ msgstr "金幣"
+
+#~ msgid "villages"
+#~ msgstr "村莊"
+
+#~ msgid "units"
+#~ msgstr "單位"
+
+#~ msgid "upkeep"
+#~ msgstr "支出"
+
+#~ msgid "income"
+#~ msgstr "收入"
+
+#~ msgid "statuspanel^level"
+#~ msgstr "等級"
+
+#~ msgid "statuspanel^moves"
+#~ msgstr "移動點數"
+
+#~ msgid "statuspanel^terrain def."
+#~ msgstr "地形防禦加成。"
+
+#~ msgid " replay"
+#~ msgstr " 遊戲錄影"
+
 #~ msgid "do not translate the 'all'^[all|<command>]"
 #~ msgstr "[all|<指令>]"
 
 #~ msgid "aliases:"
 #~ msgstr "別名："
 
-#, fuzzy
-#~| msgid "do not translate the 'all'^[all|<command>]"
-#~ msgid "do not translate the on/off^[<side> [on/off]]"
-#~ msgstr "[all|<指令>]"
-
 #~ msgid "Show fps."
 #~ msgstr "顯示fps。"
-
-#~ msgid "Side:"
-#~ msgstr "陣營："
-
-#, fuzzy
-#~| msgid "income"
-#~ msgid "Income"
-#~ msgstr "收入"
-
-#~ msgid " replay"
-#~ msgstr " 遊戲錄影"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "邊緣單位只有適合在清晨及傍晚戰鬥。\n"
-#~ "\n"
-#~ "白天：-25% 傷害值\n"
-#~ "晚上：−25% 傷害值"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr "這裡沒有自訂選項中可以選擇的時代、遊戲或模組。"
-
-#~ msgid "Defaults"
-#~ msgstr "預設"
-
-#~ msgid "Connected Players"
-#~ msgstr "已連線玩家"
-
-#~ msgid "registering with password *** and no email address"
-#~ msgstr "以密碼 *** 註冊，未輸入電子郵件"
-
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr "以密碼 *** 和電子郵件 $email 註冊"
-
-#~ msgid "dropping your username"
-#~ msgstr "正在移除您的玩家名稱"
-
-#~ msgid "setting $var to $value"
-#~ msgstr "正在設定 $var 為 $value"
-
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<密碼> <Email (選擇性)>"
-
-#~ msgid "Register your nickname"
-#~ msgstr "註冊您的帳號"
-
-#~ msgid "Drop your nickname."
-#~ msgstr "刪除您的帳號。"
-
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr "設定帳號資料。輸入 /details 可查看設定的内容。"
-
-#~ msgid "<detail> <value>"
-#~ msgstr "<詳細資訊> <值>"
-
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr "取得您註冊帳號的詳細資訊。"
-
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "無法託管本地 AI 陣營：'$side'。"
 
 #~ msgid "Empty"
 #~ msgstr "空位"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2019-10-19 20:21+0800\n"
+"PO-Revision-Date: 2020-02-10 01:04+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -734,19 +734,6 @@ msgstr "岩石洞穴"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:1033
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which shoulders defense, but is "
-#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
-#| "and trolls, are fully capable of navigating such topography.\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
-#| "in rockbound caves.\n"
-#| "\n"
-#| "Occasionally caves are <italic>text='illuminated'</italic>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -1731,24 +1718,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2908
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<italic>text='illuminated'</italic>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -4210,14 +4179,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "嚴格監測非同步錯誤"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "儲存錄影"
+msgstr "私人錄影"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "錄影是否將公開發佈"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -5366,7 +5333,7 @@ msgstr "徵召單位"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
 msgid "Search for unit name, unit type name, unit level, or trait."
-msgstr ""
+msgstr "搜尋單位名字、單位類型、單位等級或特質。"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -5411,14 +5378,12 @@ msgid "Details:"
 msgstr "詳細："
 
 #: src/build_info.cpp:271
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "JPG螢幕截圖"
+msgstr "JPEG 螢幕截圖"
 
 #: src/build_info.cpp:278
 msgid "feature^Lua console completion"
-msgstr "Lua控制台完善"
+msgstr "Lua 控制台完善"
 
 #: src/build_info.cpp:283
 msgid "feature^Legacy bidirectional rendering"
@@ -5426,15 +5391,15 @@ msgstr "Legacy bidirectional rendering"
 
 #: src/build_info.cpp:290
 msgid "feature^D-Bus notifications back end"
-msgstr "D-Bus後端通知"
+msgstr "D-Bus 後端通知"
 
 #: src/build_info.cpp:299
 msgid "feature^Win32 notifications back end"
-msgstr "Win32後端通知"
+msgstr "Win32 後端通知"
 
 #: src/build_info.cpp:305
 msgid "feature^Cocoa notifications back end"
-msgstr "Cocoa後端通知"
+msgstr "Cocoa 後端通知"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
@@ -5933,16 +5898,12 @@ msgid "Defender resistance vs"
 msgstr "防守方抗性"
 
 #: src/gui/dialogs/attack_predictions.cpp:196
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "攻擊方弱點"
+msgstr "防守方弱點"
 
 #: src/gui/dialogs/attack_predictions.cpp:200
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "防守方抗性"
+msgstr "攻擊方抗性"
 
 #: src/gui/dialogs/attack_predictions.cpp:202
 msgid "Attacker vulnerability vs"
@@ -6642,11 +6603,11 @@ msgstr "選擇測試"
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
-msgstr ""
+msgstr "依照您的計畫，您無法召回這個單位，因為您將沒有足夠的金幣。"
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "您無法召回這個單位，因為您沒有足夠的金幣。"
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -7141,22 +7102,16 @@ msgid "Next Move"
 msgstr "下一動"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "全地圖"
+msgstr "瀏覽：全地圖"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "每一組"
+msgstr "瀏覽：每一組"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "人類團隊"
+msgstr "瀏覽：玩家組"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
@@ -7846,9 +7801,6 @@ msgstr ""
 #~ msgid "Sort by:"
 #~ msgstr "排序："
 
-#~ msgid "Kick / ban reason:"
-#~ msgstr "踢出/封鎖理由："
-
 #~ msgid "You will now connect to the multiplayer server."
 #~ msgstr "現在您將連線到多人對戰伺服器。"
 
@@ -7873,11 +7825,14 @@ msgstr ""
 #~ msgid "No matching widget found for scaling option"
 #~ msgstr "未找到縮放選項的套件"
 
+#~ msgid "No server has been defined."
+#~ msgstr "沒有已設定的伺服器。"
+
 #~ msgid "&#9679;"
 #~ msgstr "&#9679;"
 
-#~ msgid "No server has been defined."
-#~ msgstr "沒有已設定的伺服器。"
+#~ msgid "Kick / ban reason:"
+#~ msgstr "踢出/封鎖理由："
 
 #~ msgid "feature^Experimental OpenMP support"
 #~ msgstr "實驗性 OpenMP 支援"
