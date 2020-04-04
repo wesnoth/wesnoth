@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-02-01 22:39-0300\n"
-"PO-Revision-Date: 2019-10-19 20:21+0800\n"
+"PO-Revision-Date: 2020-02-10 01:04+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -4039,14 +4039,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "嚴格監測非同步錯誤"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "儲存錄影"
+msgstr "私人錄影"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "錄影是否將公開發佈"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -5201,7 +5199,7 @@ msgstr "徵召單位"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:341
 msgid "Search for unit name, unit type name, unit level, or trait."
-msgstr ""
+msgstr "搜尋單位名字、單位類型、單位等級或特質。"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
@@ -5246,14 +5244,12 @@ msgid "Details:"
 msgstr "詳細："
 
 #: src/build_info.cpp:270
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "JPG螢幕截圖"
+msgstr "JPEG 螢幕截圖"
 
 #: src/build_info.cpp:277
 msgid "feature^Lua console completion"
-msgstr "Lua控制台完善"
+msgstr "Lua 控制台完善"
 
 #: src/build_info.cpp:282
 msgid "feature^Legacy bidirectional rendering"
@@ -5261,15 +5257,15 @@ msgstr "Legacy bidirectional rendering"
 
 #: src/build_info.cpp:289
 msgid "feature^D-Bus notifications back end"
-msgstr "D-Bus後端通知"
+msgstr "D-Bus 後端通知"
 
 #: src/build_info.cpp:298
 msgid "feature^Win32 notifications back end"
-msgstr "Win32後端通知"
+msgstr "Win32 後端通知"
 
 #: src/build_info.cpp:304
 msgid "feature^Cocoa notifications back end"
-msgstr "Cocoa後端通知"
+msgstr "Cocoa 後端通知"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
@@ -5736,16 +5732,12 @@ msgid "Defender resistance vs"
 msgstr "防守方抗性"
 
 #: src/gui/dialogs/attack_predictions.cpp:191
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "攻擊方弱點"
+msgstr "防守方弱點"
 
 #: src/gui/dialogs/attack_predictions.cpp:195
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "防守方抗性"
+msgstr "攻擊方抗性"
 
 #: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Attacker vulnerability vs"
@@ -6404,11 +6396,11 @@ msgstr "選擇測試"
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
-msgstr ""
+msgstr "依照您的計畫，您無法召回這個單位，因為您將沒有足夠的金幣。"
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "您無法召回這個單位，因為您沒有足夠的金幣。"
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -6903,22 +6895,16 @@ msgid "Next Move"
 msgstr "下一動"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "全地圖"
+msgstr "瀏覽：全地圖"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "每一組"
+msgstr "瀏覽：每一組"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "人類團隊"
+msgstr "瀏覽：玩家組"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-02-01 22:39-0300\n"
-"PO-Revision-Date: 2019-10-19 20:15+0800\n"
+"PO-Revision-Date: 2020-02-10 00:55+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -5039,7 +5039,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:262
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― 韋斯廷的格里克爵士，607YW</i>"
+msgstr "<i>― 韋斯汀的格里克爵士，607YW</i>"
 
 #. [tip]
 #: data/tips.cfg:265
@@ -5048,14 +5048,14 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"如果一個單位在兩個同盟治療師的侧邊，該單位將會在各自的回合中被治癒。這種方"
+"式，可以比其他方式更快治癒一個單位。"
 
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:267
-#, fuzzy
-#| msgid "<i>― Kai Laudiss, 623YW</i>"
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr "<i>― 凱．勞迪斯，623YW</i>"
+msgstr "<i>― 凡克的蓋倫戰術指南，6YW</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5080,15 +5080,15 @@ msgstr "選擇了無效的進攻武器。"
 
 #: src/actions/create.cpp:338
 msgid "You do not have a leader to recall with."
-msgstr "您沒有首領，無法招回單位。"
+msgstr "您沒有指揮官來招回單位。"
 
 #: src/actions/create.cpp:342
 msgid "None of your leaders are able to recall that unit."
-msgstr "您的首領沒有能招回的單位。"
+msgstr "您的指揮官沒有能招回的單位。"
 
 #: src/actions/create.cpp:346
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr "您的首領必須在主堡裏才能招回單位。"
+msgstr "您的指揮官必須在主堡裏才能招回單位。"
 
 #: src/actions/create.cpp:350
 msgid "There are no vacant castle tiles in which to recall the unit."
@@ -5100,17 +5100,15 @@ msgstr "發生了無法辨識的錯誤。"
 
 #: src/actions/create.cpp:474
 msgid "You do not have a leader to recruit with."
-msgstr "您沒有首領，無法招募單位。"
+msgstr "您沒有指揮官來招募單位。"
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "您的首領沒有能招募的單位。"
+msgstr "您的指揮官沒有能招募的單位。"
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
-msgstr "您的首領必須在主堡裏才能招募單位。"
+msgstr "您的指揮官必須在主堡裏才能招募單位。"
 
 #: src/actions/create.cpp:486
 msgid "There are no vacant castle tiles in which to recruit the unit."
@@ -6298,9 +6296,6 @@ msgstr ""
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr "連結群組 '$id' 需要有 'fixed_width' 或 'fixed_height' 的鍵值。"
 
-# 目前這條有出單數和複數。
-# 舊的翻譯被放在複數，它比較簡略，但意思有到，也不錯。
-# 我的翻法放在單數那邊，主要是盡可能對應原句，但可能沒那必要。
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
@@ -6309,8 +6304,9 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"選中的模組有以下依賴模組，但它目前是舊版或尚未安裝。你希望安裝它並繼續嗎？"
-msgstr[1] "這些模組必須仰賴這個來源以下的附加模組，您要安裝嗎？"
+"選中的模組有以下依賴模組，但它目前是舊版或尚未安裝。您希望安裝它並繼續嗎？"
+msgstr[1] ""
+"選中的模組有以下依賴模組，但它目前是舊版或尚未安裝。您希望安裝它並繼續嗎？"
 
 #: src/gui/dialogs/game_load.hpp:40
 msgid "No Saved Games"
@@ -6381,34 +6377,24 @@ msgid "Only available during a scenario."
 msgstr "僅在章節中可用。"
 
 #: src/help/help_impl.cpp:358 src/help/help_impl.cpp:394
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "時段排程："
+msgstr "時段排程"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "守序單位："
+msgstr "守序加成："
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "中立單位："
+msgstr "中立加成："
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "渾沌單位："
+msgstr "渾沌加成："
 
 #: src/help/help_impl.cpp:388
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "閾界單位："
+msgstr "閾界加成："
 
 #: src/help/help_impl.cpp:389
 msgid "Schedule"
@@ -6825,72 +6811,53 @@ msgid "You have no units available to recruit."
 msgstr "您沒有可供招募的單位。"
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "沒有招募單位"
+msgstr "未招募單位。"
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "內部錯誤：請回報此錯誤！詳細說明：\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "您目前無法招募 $unit_type_name。"
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "您沒有足夠的金幣招募該單位"
+msgstr "依照您的計畫，目前您沒有足夠的金幣招募該單位。"
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "您沒有足夠的金幣招募該單位"
+msgstr "您沒有足夠的金幣招募該單位。"
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "您與您的單位已分離，因此不能招回他們"
+msgstr "您與您的單位已分離，因此不能招回他們。"
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
 "沒有可以招回的單位\n"
-"（只能招回上一章節存活下來的單位）"
+"（只能招回上一章節存活下來的單位。）"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "您不能在重點位置進行招回"
+msgstr "您不能在重點位置進行招回。"
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "未招回單位"
+msgstr "未招回單位。"
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "要招回一個單位，您至少需要有1個金幣"
-msgstr[1] "要招回一個單位，你至少需要有 $cost 個金幣"
+msgstr[0] "要招回一個單位，您至少需要有1個金幣。"
+msgstr[1] "要招回一個單位，你至少需要有 $cost 個金幣。"
 
 #: src/menu_events.cpp:572
 msgid "You cannot end your turn yet!"
@@ -6977,7 +6944,7 @@ msgstr "[<陣營> [on/off]]"
 
 #: src/menu_events.cpp:1227
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "改變遊戲中的主題。"
 
 #: src/menu_events.cpp:1229
 msgid "<side> <nickname>"
@@ -7121,12 +7088,10 @@ msgstr "顯示遊戲變數。"
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1276
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
-msgstr "修改一個單位的數值。（只能更動最大數）"
+msgstr "修改一個單位的數值。（只支援最大數，進階=<數值>。）"
 
 #: src/menu_events.cpp:1283
 msgid "Discover all units in help."
@@ -7138,7 +7103,7 @@ msgstr "在說明中設定所有單位為未探索。"
 
 #: src/menu_events.cpp:1285
 msgid "<unit type id>"
-msgstr ""
+msgstr "<單位類型 ID>"
 
 #: src/menu_events.cpp:1285
 msgid "Create a unit."
@@ -7154,17 +7119,15 @@ msgstr "為目前玩家設定戰場黑幕。"
 
 #: src/menu_events.cpp:1288
 msgid "<amount>"
-msgstr ""
+msgstr "<數量>"
 
 #: src/menu_events.cpp:1288
 msgid "Give gold to the current player."
 msgstr "給玩家金幣。"
 
 #: src/menu_events.cpp:1289
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<暱稱>"
+msgstr "<事件名稱>"
 
 #: src/menu_events.cpp:1289
 msgid "Fire a game event."

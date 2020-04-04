@@ -3,8 +3,8 @@
    * Ensure the client doesn't re-download dependencies that have just been updated during an Update All
      run by re-reading add-on versions after each update batch (issue #3273).
  ### Language and i18n
-   * Updated translations: Czech, Dutch, Esperanto, Finnish, French, Portuguese,
-     Portuguese (Brazil), Swedish.
+   * Updated translations: Czech, Chinese (Traditional), Dutch, Esperanto,
+     Finnish, French, Portuguese, Portuguese (Brazil), Swedish.
    * Use <game dir>/translations instead of <process working dir>/translations to find core
      translation catalogues on Windows.
 
