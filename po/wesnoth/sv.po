@@ -5,16 +5,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-02-01 22:39-0300\n"
-"PO-Revision-Date: 2020-03-07 14:45+0100\n"
-"Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
+"PO-Revision-Date: 2020-03-21 13:58+0100\n"
+"Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
-"X-Poedit-Basepath: /home/niklas/Documents/wesnoth/source/wesnoth-1.9\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -141,16 +140,12 @@ msgstr "Visa alla trupptyper i hjälp"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
-#, fuzzy
-#| msgid ""
-#| "Show all unit types in the help (requires restart). If unset, only units "
-#| "that have been encountered will be shown."
 msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
-"Visa alla trupptyper i hjälp (kräver omstart). Om avaktiverad visas endast "
-"trupptyper som du har stött på."
+"Visa alla trupptyper i hjälp (kräver omstart). Detta påverkar inte listan "
+"över trupptyper som du har stött på."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:125
@@ -176,7 +171,7 @@ msgstr "Använd färgpekare"
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:144
 msgid "Graphics scaling options"
-msgstr ""
+msgstr "Alternativ för skalning av grafik"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:150
@@ -204,17 +199,13 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:170
-#, fuzzy
-#| msgid "Sound Effects"
 msgid "Show haloing effects"
-msgstr "Ljudeffekter"
+msgstr "Visa halo-effekter"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:171
-#, fuzzy
-#| msgid "Sound Effects"
 msgid "Show special unit graphical effects"
-msgstr "Ljudeffekter"
+msgstr "Visa grafiska specialeffekter för trupper"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:178
@@ -228,7 +219,7 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
-"Visa varningar om urfasad API i chatten i spelet. Dessa meddelanden kommer "
+"Visa varningar om utfasad API i chatten i spelet. Dessa meddelanden kommer "
 "fortfarande att visas i loggen även om detta är avaktiverat. Dessutom "
 "kontrollerar utfasningens logg-domän hur många meddelanden som skrivs ut."
 
@@ -264,120 +255,92 @@ msgstr "Joystickstöd"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:204
 msgid "Joystick: number of the scroll X-axis joystick"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: antal för rullhjulets X-axel-joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:214
 msgid "Joystick: number of the scroll X-axis"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: antal för rullhjulets X-axel"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:224
 msgid "Joystick: number of the scroll Y-axis joystick"
-msgstr "Joystick: antal för joystickens Y-axelsrullning"
+msgstr "Joystick: antal för rullhjulets Y-axel-joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:234
 msgid "Joystick: number of the scroll Y-axis"
-msgstr "Joystick: antal för joystickens Y-axelsrullning"
+msgstr "Joystick: antal för rullhjulets Y-axel"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:244
-#, fuzzy
-#| msgid "Joystick: number of the scroll X-axis joystick"
 msgid "Joystick: deadzone of the scrolling stick"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: dödzon för rullning"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:254
-#, fuzzy
-#| msgid "Joystick: number of the scroll X-axis joystick"
 msgid "Joystick: number of the cursor X-axis joystick"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: antal för pekarens X-axel-joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:264
-#, fuzzy
-#| msgid "Joystick: number of the scroll X-axis"
 msgid "Joystick: number of the cursor X-axis"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: antal för pekarens X-axel"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:274
-#, fuzzy
-#| msgid "Joystick: number of the scroll Y-axis joystick"
 msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr "Joystick: antal för joystickens Y-axelsrullning"
+msgstr "Joystick: antal för pekarens Y-axel-joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:284
-#, fuzzy
-#| msgid "Joystick: number of the scroll Y-axis"
 msgid "Joystick: number of the cursor Y-axis"
-msgstr "Joystick: antal för joystickens Y-axelsrullning"
+msgstr "Joystick: antal för pekarens Y-axel"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:294
-#, fuzzy
-#| msgid "Joystick: number of the scroll X-axis joystick"
 msgid "Joystick: deadzone of the cursor stick"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: dödzon för pekare"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:304
-#, fuzzy
-#| msgid "Joystick: number of the scroll X-axis joystick"
 msgid "Joystick: number of the mouse X-axis joystick"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: antal för musens X-axel-joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:314
-#, fuzzy
-#| msgid "Joystick: number of the scroll X-axis"
 msgid "Joystick: number of the mouse X-axis"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: antal för musens X-axel"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:324
-#, fuzzy
-#| msgid "Joystick: number of the scroll Y-axis joystick"
 msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr "Joystick: antal för joystickens Y-axelsrullning"
+msgstr "Joystick: antal för musens Y-axel-joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:334
-#, fuzzy
-#| msgid "Joystick: number of the scroll Y-axis"
 msgid "Joystick: number of the mouse Y-axis"
-msgstr "Joystick: antal för joystickens Y-axelsrullning"
+msgstr "Joystick: antal för musens Y-axel"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:344
-#, fuzzy
-#| msgid "Joystick: number of the scroll X-axis joystick"
 msgid "Joystick: deadzone of the mouse stick"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: dödzon för mus"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:354
-#, fuzzy
-#| msgid "Joystick: number of the scroll X-axis joystick"
 msgid "Joystick: number of the thrust axis joystick"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: antal för thruster-axel-joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:364
-#, fuzzy
-#| msgid "Joystick: number of the scroll X-axis"
 msgid "Joystick: number of the thrust axis"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: antal för thruster-axel"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:374
-#, fuzzy
-#| msgid "Joystick: number of the scroll X-axis"
 msgid "Joystick: deadzone of the thruster"
-msgstr "Joystick: antal för joystickens X-axelsrullning"
+msgstr "Joystick: dödzon för thruster"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -474,10 +437,8 @@ msgstr "Arabisk översättning"
 
 #. [about]
 #: data/core/about_i18n.cfg:31
-#, fuzzy
-#| msgid "Estonian Translation"
 msgid "Asturian Translation"
-msgstr "Estnisk översättning"
+msgstr "Asturiansk översättning"
 
 #. [about]
 #: data/core/about_i18n.cfg:37
@@ -4050,6 +4011,8 @@ msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
+"Det finns inte några tillgängliga alternativ för vald era, valt spel eller "
+"vald variant."
 
 #. [button]: id=reset_option_values
 #: data/gui/macros/custom_options_tree.cfg:249
@@ -4058,10 +4021,8 @@ msgstr "Förval"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:29
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Datorspelare"
+msgstr "Anslutna spelare"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -4117,7 +4078,7 @@ msgstr ""
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:187
 msgid "(Note: You should use $replacement instead in new code)"
-msgstr ""
+msgstr "(OBS: I ny kod bör du använda $replacement i stället)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
@@ -4190,20 +4151,15 @@ msgstr "Nederlag:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
-#| msgid_plural "($remaining_turns turns left)"
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
-msgstr[0] "(sista draget)"
-msgstr[1] "($remaining_turns drag kvar)"
+msgstr[0] "(this turn left)"
+msgstr[1] "(%d drag kvar)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
-#, fuzzy
-#| msgid "No gold carried over to the next scenario."
 msgid "%d%% of gold carried over to the next scenario."
-msgstr "Inget guld fördes över till nästa scenario."
+msgstr "%d%% guld fördes över till nästa scenario."
 
 #: data/scenario-test.cfg:1023 src/game_initialization/depcheck.cpp:491
 msgid "OK"
@@ -5063,12 +5019,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:221
-#, fuzzy
-#| msgid ""
-#| "Try to operate units with a small number of powerful attacks — such as "
-#| "Dark Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or "
-#| "threes. This gives you another try whenever your first devastating attack "
-#| "misses — as inevitably happens from time to time."
 msgid ""
 "Try to operate units with a small number of powerful attacks—such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
@@ -5082,12 +5032,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:225
-#, fuzzy
-#| msgid ""
-#| "Units with three or more attacks — especially magical attacks — are ideal "
-#| "for finishing off enemies with only a few hitpoints remaining. Be sure to "
-#| "use leadership — or a strong or dextrous unit — whenever the extra point "
-#| "or two of damage makes a one-hit kill possible."
 msgid ""
 "Units with three or more attacks—especially magical attacks—are ideal for "
 "finishing off enemies with only a few hitpoints remaining. Be sure to use "
@@ -5097,8 +5041,8 @@ msgstr ""
 "Trupper med tre eller fler attacker, speciellt magiska attacker, är perfekta "
 "för att leverera dödsstöten till fiendetrupper med enbart ett fåtal "
 "hälsopoäng kvar. Du bör också dra nytta av trupper med ledarskap, eller en "
-"stark eller träffsäker trupp, när den extra skadan utgör skillnaden mellan "
-"en eller två attacker."
+"stark eller träffsäker trupp, när den extra skadan gör det möjligt att döda "
+"truppen med ett enda slag."
 
 #. [tip]
 #: data/tips.cfg:229
@@ -5801,10 +5745,8 @@ msgid "<password> <email (optional)>"
 msgstr "<lösenord> <epost (valfritt)>"
 
 #: src/chat_command_handler.hpp:131
-#, fuzzy
-#| msgid "Drop your nickname."
 msgid "Register your nickname"
-msgstr "Slopa ditt användarnamn."
+msgstr "Registrera ditt användarnamn"
 
 #: src/chat_command_handler.hpp:133
 msgid "Drop your nickname."
@@ -6562,10 +6504,8 @@ msgid "No Saved Games"
 msgstr "Inga sparade spel"
 
 #: src/gui/dialogs/game_load.hpp:40
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "There are no save files to load"
-msgstr "Filen du försöker öppna är felaktig"
+msgstr "Det finns inte några sparade filer att läsa in"
 
 #: src/gui/dialogs/game_stats.hpp:43
 msgid "No visible sides found."
@@ -6737,10 +6677,8 @@ msgid "Defense properties: "
 msgstr "Försvarsegenskaper: "
 
 #: src/help/help_topic_generators.cpp:261
-#, fuzzy
-#| msgid "Level: "
 msgid "Level"
-msgstr "Nivå:"
+msgstr "Nivå"
 
 #: src/help/help_topic_generators.cpp:322
 msgid "Advances from: "
@@ -6783,64 +6721,50 @@ msgstr "Uppgradering av förmågor: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "HP: "
+msgstr "HP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Förflyttning: "
+msgstr "Steg:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
-msgstr "Version: "
+msgstr "Synfält:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
-msgstr "Varning:"
+msgstr "Blockering:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Kostnad: "
+msgstr "Kostnad:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Sinnelag: "
+msgstr "Sinnelag:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "EP för nästa nivå: "
+msgstr "EP för nästa nivå:"
 
 #: src/help/help_topic_generators.cpp:552
 msgid "unit help^Attacks"
@@ -6903,10 +6827,8 @@ msgid "Vision Cost"
 msgstr "Version: "
 
 #: src/help/help_topic_generators.cpp:678
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming Cost"
-msgstr "Varning:"
+msgstr "Blockeringskostnad"
 
 #: src/hotkey/command_executor.cpp:391
 msgid "Do you really want to surrender the game?"
@@ -7203,17 +7125,12 @@ msgstr "Byt en sida till/från AI-kontroll."
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1221
-#, fuzzy
-#| msgid ""
-#| "[<side> [on/off/full]]\n"
-#| "“on” = enable but retain vision, “full” = as if it’s controlled by "
-#| "another player"
 msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
 "[<side> [on/off/full]]\n"
-"“on” = på men behåll syn, “full” = som om kontrollerad av en annan spelare"
+"“on” = tillåt AI-kontroll, “off” = kontrollerad av spelaren"
 
 #: src/menu_events.cpp:1222
 msgid "Switch a side to/from idle state."
@@ -7783,7 +7700,7 @@ msgstr "Typ:"
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Sida:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -8578,12 +8495,12 @@ msgstr "$year eW"
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr "$year fF"
+msgstr "$year fS"
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr "$year eF"
+msgstr "$year eS"
 
 #: src/wesnothd_connection.cpp:402
 msgid "Disconnected from server."
