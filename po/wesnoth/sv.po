@@ -5,16 +5,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2020-03-07 14:45+0100\n"
-"Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
+"PO-Revision-Date: 2020-03-21 13:58+0100\n"
+"Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
-"X-Poedit-Basepath: /home/niklas/Documents/wesnoth/source/wesnoth-1.9\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -141,12 +140,16 @@ msgstr "Visa alla trupptyper i hjälp"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
+#, fuzzy
+#| msgid ""
+#| "Show all unit types in the help (requires restart). This does not alter "
+#| "the list of encountered units"
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
-"Visa alla trupptyper i hjälp (kräver omstart). Om avaktiverad visas endast "
-"trupptyper som du har stött på."
+"Visa alla trupptyper i hjälp (kräver omstart). Detta påverkar inte listan "
+"över trupptyper som du har stött på."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:125
@@ -205,7 +208,7 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
-"Visa varningar om urfasad API i chatten i spelet. Dessa meddelanden kommer "
+"Visa varningar om utfasad API i chatten i spelet. Dessa meddelanden kommer "
 "fortfarande att visas i loggen även om detta är avaktiverat. Dessutom "
 "kontrollerar utfasningens logg-domän hur många meddelanden som skrivs ut."
 
@@ -4023,10 +4026,13 @@ msgstr "Nederlag:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
+#, fuzzy
+#| msgid "(this turn left)"
+#| msgid_plural "(%d turns left)"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
-msgstr[0] "(sista draget)"
-msgstr[1] "($remaining_turns drag kvar)"
+msgstr[0] "(this turn left)"
+msgstr[1] "(%d drag kvar)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -5012,6 +5018,12 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:221
+#, fuzzy
+#| msgid ""
+#| "Try to operate units with a small number of powerful attacks—such as Dark "
+#| "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or "
+#| "threes. This gives you another try whenever your first devastating attack "
+#| "misses — as inevitably happens from time to time."
 msgid ""
 "Try to operate units with a small number of powerful attacks — such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
@@ -5025,6 +5037,12 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:225
+#, fuzzy
+#| msgid ""
+#| "Units with three or more attacks—especially magical attacks—are ideal for "
+#| "finishing off enemies with only a few hitpoints remaining. Be sure to use "
+#| "leadership—or a strong or dextrous unit—whenever the extra point or two "
+#| "of damage makes a one-hit kill possible."
 msgid ""
 "Units with three or more attacks — especially magical attacks — are ideal "
 "for finishing off enemies with only a few hitpoints remaining. Be sure to "
@@ -5034,8 +5052,8 @@ msgstr ""
 "Trupper med tre eller fler attacker, speciellt magiska attacker, är perfekta "
 "för att leverera dödsstöten till fiendetrupper med enbart ett fåtal "
 "hälsopoäng kvar. Du bör också dra nytta av trupper med ledarskap, eller en "
-"stark eller träffsäker trupp, när den extra skadan utgör skillnaden mellan "
-"en eller två attacker."
+"stark eller träffsäker trupp, när den extra skadan gör det möjligt att döda "
+"truppen med ett enda slag."
 
 #. [tip]
 #: data/tips.cfg:229
@@ -6925,13 +6943,17 @@ msgstr "Byt en sida till/från AI-kontroll."
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1226
+#, fuzzy
+#| msgid ""
+#| "[<side> [on/off]]\n"
+#| "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
 "[<side> [on/off/full]]\n"
-"“on” = på men behåll syn, “full” = som om kontrollerad av en annan spelare"
+"“on” = tillåt AI-kontroll, “off” = kontrollerad av spelaren"
 
 #: src/menu_events.cpp:1227
 msgid "Change terrain type of current hex"
@@ -8354,12 +8376,12 @@ msgstr "$year eW"
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr "$year fF"
+msgstr "$year fS"
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr "$year eF"
+msgstr "$year eS"
 
 #: src/wesnothd_connection.cpp:418
 msgid "Disconnected from server."
@@ -8385,33 +8407,74 @@ msgstr "Dölj planering genomför $player"
 msgid "Whiteboard Options"
 msgstr "Inställningar för whiteboard"
 
-#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-#~ msgstr "<i>― Vank av Galuns klan, 6 eW</i>"
+#~ msgid "Graphics scaling options"
+#~ msgstr "Alternativ för skalning av grafik"
 
-#, fuzzy
-#~| msgid "Sound Effects"
 #~ msgid "Show haloing effects"
-#~ msgstr "Ljudeffekter"
+#~ msgstr "Visa halo-effekter"
+
+#~ msgid "Show special unit graphical effects"
+#~ msgstr "Visa grafiska specialeffekter för trupper"
 
 #~ msgid "Joystick support"
 #~ msgstr "Joystickstöd"
 
 #~ msgid "Joystick: number of the scroll X-axis joystick"
-#~ msgstr "Joystick: antal för joystickens X-axelsrullning"
+#~ msgstr "Joystick: antal för rullhjulets X-axel-joystick"
 
 #~ msgid "Joystick: number of the scroll X-axis"
-#~ msgstr "Joystick: antal för joystickens X-axelsrullning"
+#~ msgstr "Joystick: antal för rullhjulets X-axel"
 
 #~ msgid "Joystick: number of the scroll Y-axis joystick"
-#~ msgstr "Joystick: antal för joystickens Y-axelsrullning"
+#~ msgstr "Joystick: antal för rullhjulets Y-axel-joystick"
 
 #~ msgid "Joystick: number of the scroll Y-axis"
-#~ msgstr "Joystick: antal för joystickens Y-axelsrullning"
+#~ msgstr "Joystick: antal för rullhjulets Y-axel"
 
-#, fuzzy
-#~| msgid "Estonian Translation"
+#~ msgid "Joystick: deadzone of the scrolling stick"
+#~ msgstr "Joystick: dödzon för rullning"
+
+#~ msgid "Joystick: number of the cursor X-axis joystick"
+#~ msgstr "Joystick: antal för pekarens X-axel-joystick"
+
+#~ msgid "Joystick: number of the cursor X-axis"
+#~ msgstr "Joystick: antal för pekarens X-axel"
+
+#~ msgid "Joystick: number of the cursor Y-axis joystick"
+#~ msgstr "Joystick: antal för pekarens Y-axel-joystick"
+
+#~ msgid "Joystick: number of the cursor Y-axis"
+#~ msgstr "Joystick: antal för pekarens Y-axel"
+
+#~ msgid "Joystick: deadzone of the cursor stick"
+#~ msgstr "Joystick: dödzon för pekare"
+
+#~ msgid "Joystick: number of the mouse X-axis joystick"
+#~ msgstr "Joystick: antal för musens X-axel-joystick"
+
+#~ msgid "Joystick: number of the mouse X-axis"
+#~ msgstr "Joystick: antal för musens X-axel"
+
+#~ msgid "Joystick: number of the mouse Y-axis joystick"
+#~ msgstr "Joystick: antal för musens Y-axel-joystick"
+
+#~ msgid "Joystick: number of the mouse Y-axis"
+#~ msgstr "Joystick: antal för musens Y-axel"
+
+#~ msgid "Joystick: deadzone of the mouse stick"
+#~ msgstr "Joystick: dödzon för mus"
+
+#~ msgid "Joystick: number of the thrust axis joystick"
+#~ msgstr "Joystick: antal för thruster-axel-joystick"
+
+#~ msgid "Joystick: number of the thrust axis"
+#~ msgstr "Joystick: antal för thruster-axel"
+
+#~ msgid "Joystick: deadzone of the thruster"
+#~ msgstr "Joystick: dödzon för thruster"
+
 #~ msgid "Asturian Translation"
-#~ msgstr "Estnisk översättning"
+#~ msgstr "Asturiansk översättning"
 
 #~ msgid "Friulian Translation"
 #~ msgstr "Friulisk översättning"
@@ -8419,43 +8482,79 @@ msgstr "Inställningar för whiteboard"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>(bonus för tidig seger)</small>"
 
-#~ msgid "theme^Classic"
-#~ msgstr "Klassisk"
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Perifera trupper når endast sin fulla styrka i skymningen.\n"
+#~ "\n"
+#~ "Dagtid: -25% skada\n"
+#~ "Nattetid: −25% skada"
 
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "Det klassiska temat från före 1.12"
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Det finns inte några tillgängliga alternativ för vald era, valt spel "
+#~ "eller vald variant."
 
-#~ msgid "gold"
-#~ msgstr "guld"
+#~ msgid "Defaults"
+#~ msgstr "Förval"
 
-#~ msgid "villages"
-#~ msgstr "byar"
+#~ msgid "Connected Players"
+#~ msgstr "Anslutna spelare"
 
-#~ msgid "units"
-#~ msgstr "trupper"
+#~ msgid "(Note: You should use $replacement instead in new code)"
+#~ msgstr "(OBS: I ny kod bör du använda $replacement i stället)"
 
-#~ msgid "upkeep"
-#~ msgstr "underhåll"
+#~ msgid "%d%% of gold carried over to the next scenario."
+#~ msgstr "%d%% guld fördes över till nästa scenario."
 
-#~ msgid "income"
-#~ msgstr "inkomst"
+#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
+#~ msgstr "<i>― Vank av Galuns klan, 6 eW</i>"
 
-#~ msgid "statuspanel^level"
-#~ msgstr "nivå"
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "registrerar med lösenord *** och ingen epostadress"
 
-#~ msgid "statuspanel^moves"
-#~ msgstr "förflyttas"
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "registrerar med lösenord *** och epostadress $email"
 
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "försvar"
+#~ msgid "dropping your username"
+#~ msgstr "säger upp användarnamn"
+
+#~ msgid "setting $var to $value"
+#~ msgstr "sätter $var till $value"
+
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<lösenord> <epost (valfritt)>"
+
+#~ msgid "Register your nickname"
+#~ msgstr "Registrera ditt användarnamn"
+
+#~ msgid "Drop your nickname."
+#~ msgstr "Slopa ditt användarnamn."
+
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "Uppdatera detaljer för ditt användarnamn. För möjliga detaljer se ’/"
+#~ "details’."
+
+#~ msgid "<detail> <value>"
+#~ msgstr "<detalj> <värde>"
+
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr ""
+#~ "Begär en lista med detaljer du kan ange för ditt registrerade "
+#~ "användarnamn."
 
 #~ msgid "No Saved Games"
 #~ msgstr "Inga sparade spel"
 
-#, fuzzy
-#~| msgid "The file you have tried to load is corrupt"
 #~ msgid "There are no save files to load"
-#~ msgstr "Filen du försöker öppna är felaktig"
+#~ msgstr "Det finns inte några sparade filer att läsa in"
 
 #~ msgid "Best of"
 #~ msgstr "Bästa av"
@@ -8472,10 +8571,8 @@ msgstr "Inställningar för whiteboard"
 #~ msgid "Defense properties: "
 #~ msgstr "Försvarsegenskaper: "
 
-#, fuzzy
-#~| msgid "Level: "
 #~ msgid "Level"
-#~ msgstr "Nivå:"
+#~ msgstr "Nivå"
 
 #~ msgid "Advances from: "
 #~ msgstr "Befordras från: "
@@ -8501,40 +8598,26 @@ msgstr "Inställningar för whiteboard"
 #~ msgid "Ability Upgrades: "
 #~ msgstr "Uppgradering av förmågor: "
 
-#, fuzzy
-#~| msgid "HP: "
 #~ msgid "HP:"
-#~ msgstr "HP: "
+#~ msgstr "HP:"
 
-#, fuzzy
-#~| msgid "Moves: "
 #~ msgid "Moves:"
-#~ msgstr "Förflyttning: "
+#~ msgstr "Steg:"
 
-#, fuzzy
-#~| msgid "Vision: "
 #~ msgid "Vision:"
-#~ msgstr "Version: "
+#~ msgstr "Synfält:"
 
-#, fuzzy
-#~| msgid "Jamming: "
 #~ msgid "Jamming:"
-#~ msgstr "Varning:"
+#~ msgstr "Blockering:"
 
-#, fuzzy
-#~| msgid "Cost: "
 #~ msgid "Cost:"
-#~ msgstr "Kostnad: "
+#~ msgstr "Kostnad:"
 
-#, fuzzy
-#~| msgid "Alignment: "
 #~ msgid "Alignment:"
-#~ msgstr "Sinnelag: "
+#~ msgstr "Sinnelag:"
 
-#, fuzzy
-#~| msgid "Required XP: "
 #~ msgid "Required XP:"
-#~ msgstr "EP för nästa nivå: "
+#~ msgstr "EP för nästa nivå:"
 
 #~ msgid "unit help^Attacks"
 #~ msgstr "Attacker"
@@ -8542,14 +8625,14 @@ msgstr "Inställningar för whiteboard"
 #~ msgid "unit help^Name"
 #~ msgstr "Namn"
 
+#~ msgid "Type"
+#~ msgstr "Typ"
+
 #~ msgid "Strikes"
 #~ msgstr "Slag"
 
 #~ msgid "Range"
 #~ msgstr "Räckvidd"
-
-#~ msgid "Type"
-#~ msgstr "Typ"
 
 #~ msgid "Special"
 #~ msgstr "Specialitet"
@@ -8580,6 +8663,45 @@ msgstr "Inställningar för whiteboard"
 
 #~ msgid "Vision Cost"
 #~ msgstr "Version: "
+
+#~ msgid "Jamming Cost"
+#~ msgstr "Blockeringskostnad"
+
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "AI:n kan inte ta över en lokal AI-sida: '$side'."
+
+#~ msgid "Side:"
+#~ msgstr "Sida:"
+
+#~ msgid "theme^Classic"
+#~ msgstr "Klassisk"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "Det klassiska temat från före 1.12"
+
+#~ msgid "gold"
+#~ msgstr "guld"
+
+#~ msgid "villages"
+#~ msgstr "byar"
+
+#~ msgid "units"
+#~ msgstr "trupper"
+
+#~ msgid "upkeep"
+#~ msgstr "underhåll"
+
+#~ msgid "income"
+#~ msgstr "inkomst"
+
+#~ msgid "statuspanel^level"
+#~ msgstr "nivå"
+
+#~ msgid "statuspanel^moves"
+#~ msgstr "förflyttas"
+
+#~ msgid "statuspanel^terrain def."
+#~ msgstr "försvar"
 
 #~ msgid "do not translate the 'all'^[all|<command>]"
 #~ msgstr "[all|<kommando>]"
@@ -8626,43 +8748,6 @@ msgstr "Inställningar för whiteboard"
 #~| msgid "The file you have tried to load is corrupt"
 #~ msgid "There are no corpses available."
 #~ msgstr "Filen du försöker öppna är felaktig"
-
-#~ msgid "registering with password *** and no email address"
-#~ msgstr "registrerar med lösenord *** och ingen epostadress"
-
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr "registrerar med lösenord *** och epostadress $email"
-
-#~ msgid "dropping your username"
-#~ msgstr "säger upp användarnamn"
-
-#~ msgid "setting $var to $value"
-#~ msgstr "sätter $var till $value"
-
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<lösenord> <epost (valfritt)>"
-
-#, fuzzy
-#~| msgid "Drop your nickname."
-#~ msgid "Register your nickname"
-#~ msgstr "Slopa ditt användarnamn."
-
-#~ msgid "Drop your nickname."
-#~ msgstr "Slopa ditt användarnamn."
-
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr ""
-#~ "Uppdatera detaljer för ditt användarnamn. För möjliga detaljer se ’/"
-#~ "details’."
-
-#~ msgid "<detail> <value>"
-#~ msgstr "<detalj> <värde>"
-
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr ""
-#~ "Begär en lista med detaljer du kan ange för ditt registrerade "
-#~ "användarnamn."
 
 #~ msgid "Ping timeout"
 #~ msgstr "Ping-timeout"
@@ -8713,17 +8798,6 @@ msgstr "Inställningar för whiteboard"
 #~ "500+ extramaterial.)"
 
 #~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "Perifera trupper når endast sin fulla styrka i skymningen.\n"
-#~ "\n"
-#~ "Dagtid: -25% skada\n"
-#~ "Nattetid: −25% skada"
-
-#~ msgid ""
 #~ "In many campaign scenarios, you may issue simple instructions for your "
 #~ "computer-controlled allies using the right-click context menu."
 #~ msgstr ""
@@ -8750,9 +8824,6 @@ msgstr "Inställningar för whiteboard"
 #~ msgid "none"
 #~ msgstr "inget"
 
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "AI:n kan inte ta över en lokal AI-sida: '$side'."
-
 #~ msgid "Advances to:"
 #~ msgstr "Kan befordras till: "
 
@@ -8766,14 +8837,6 @@ msgstr "Inställningar för whiteboard"
 #~ "<span color=\"$color\">$number_or_percent movement</span> points"
 #~ msgstr[0] "attack per drag"
 #~ msgstr[1] "attack per drag"
-
-#~ msgid "Defaults"
-#~ msgstr "Förval"
-
-#, fuzzy
-#~| msgid "Computer Player"
-#~ msgid "Connected Players"
-#~ msgstr "Datorspelare"
 
 #, fuzzy
 #~| msgid "Size: "
