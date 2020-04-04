@@ -223,6 +223,19 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	return res;
 }
 
+unit_ability_list unit::get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+{
+	unit_ability_list res = get_abilities(tag_name, loc);
+	for(unit_ability_list::iterator i = res.begin(); i != res.end();) {
+		if((!ability_affects_weapon(*i->first, weapon, false) || !ability_affects_weapon(*i->first, opp_weapon, true))) {
+			i = res.erase(i);
+		} else {
+			++i;
+		}
+	}
+	return res;
+}
+
 std::vector<std::string> unit::get_ability_list() const
 {
 	std::vector<std::string> res;

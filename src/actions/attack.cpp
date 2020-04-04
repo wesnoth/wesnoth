@@ -1563,14 +1563,7 @@ void attack_unit_and_advance(const map_location& attacker,
 
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-	unit_ability_list abil = u.get_abilities("leadership", loc);
-	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-		if((!u.ability_affects_weapon(*i->first, weapon, false) || !u.ability_affects_weapon(*i->first, opp_weapon, true))) {
-			i = abil.erase(i);
-		} else {
-			++i;
-		}
-	}
+	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
 	unit_abilities::effect leader_effect(abil, 0, false);
 	return leader_effect.get_composite_value();
 }

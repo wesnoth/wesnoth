@@ -1638,6 +1638,13 @@ public:
 	{
 		return get_abilities(tag_name, loc_);
 	}
+	
+	unit_ability_list get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+
+	unit_ability_list get_abilities_weapons(const std::string& tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
+	{
+		return get_abilities_weapons(tag_name, loc_, weapon, opp_weapon);
+	}
 
 	/**
 	 * Gets the names and descriptions of this unit's abilities. Location-independent variant
@@ -1686,8 +1693,6 @@ public:
 	 */
 	void remove_ability_by_id(const std::string& ability);
 
-	///filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials(deprecated in two last cases)
-	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 private:
 	/**
@@ -1715,6 +1720,9 @@ private:
 	 * @param loc The location on which to resolve the ability
 	 */
 	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
+	
+	///filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials(deprecated in two last cases)
+	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
 public:
 	/** Get the unit formula manager. */
