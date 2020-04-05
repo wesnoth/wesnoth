@@ -2,17 +2,19 @@
 
 VALVEFILE=com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.Dockerfile
 VALVETAR=com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.tar.gz
+VALVE_SNAPSHOT=0.20200318.2
+
 DOCKERBASEIMAGE=steamrt_scout_amd64
 DOCKERLOCALIMAGE=wesnoth/wesnoth:steamrt-master
 DOCKERLOCALFILE=./travis/Dockerfile-base-steamrt
 
-if [ ! -f $VALVEFILE ]; then
-    wget http://repo.steampowered.com/steamrt-images-scout/snapshots/0.20190608.0/$VALVEFILE
+if [ ! -f "$VALVEFILE" ]; then
+    wget http://repo.steampowered.com/steamrt-images-scout/snapshots/"$VALVE_SNAPSHOT"/"$VALVEFILE"
 fi
-if [ ! -f $VALVETAR ]; then
-    wget http://repo.steampowered.com/steamrt-images-scout/snapshots/0.20190608.0/$VALVETAR
+if [ ! -f "$VALVETAR" ]; then
+    wget http://repo.steampowered.com/steamrt-images-scout/snapshots/"$VALVE_SNAPSHOT"/"$VALVETAR"
 fi
 
-docker build -t $DOCKERBASEIMAGE -f $VALVEFILE .
+docker build -t "$DOCKERBASEIMAGE" -f "$VALVEFILE" .
 
-docker build -t $DOCKERLOCALIMAGE -f $DOCKERLOCALFILE .
+docker build -t "$DOCKERLOCALIMAGE" -f "$DOCKERLOCALFILE" .
