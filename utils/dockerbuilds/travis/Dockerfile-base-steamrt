@@ -4,7 +4,7 @@ ARG BOOST_VERSION=1.66.0
 ARG BOOST_VERSION_=1_66_0
 
 RUN apt-get update
-RUN apt-get install -y scons libicu-dev libreadline-dev expect-dev
+RUN apt-get install -y scons libsdl2-dev libsdl2 g++-5 libicu-dev libreadline-dev expect-dev
 
 RUN wget --max-redirect 3 https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_VERSION_}.tar.gz
 RUN mkdir -p /src/boost && tar zxf boost_${BOOST_VERSION_}.tar.gz -C /src/boost --strip-components=1
