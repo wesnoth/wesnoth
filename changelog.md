@@ -11,6 +11,9 @@
    * Updated translations: Portuguese (Brazil), Swedish
  ### Units
    * New Dunefolk skirmisher branch (Falconer)
+   * Dragonguard HP increased from 59 to 63
+   * Bone Shooter HP increased from 40 to 42
+   * Banebow HP increased from 50 to 52
 
 ## Version 1.15.3
  ### AI
