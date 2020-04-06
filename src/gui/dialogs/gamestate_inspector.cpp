@@ -319,22 +319,22 @@ public:
 	{
 	}
 
-	void handle_stuff_list_item_clicked(widget& node)
+	void handle_stuff_list_item_clicked(widget& tree)
 	{
-		tree_view_node& selected = dynamic_cast<tree_view_node&>(node);
-		callbacks[selected.describe_path()](selected);
+		tree_view_node* selected = dynamic_cast<tree_view&>(tree).selected_item();
+		callbacks[selected->describe_path()](*selected);
 
 		// We recursively fold, but non-recursively unfold.
 		// This is because only one node on a level should be open at any given time.
 		// Furthermore, there's no need to remember that a subnode was open once the parent is closed.
-		if(!selected.is_root_node()) {
-			for(auto& node : selected.parent_node().children()) {
-				if(node.get() != &selected) {
+		if(!selected->is_root_node()) {
+			for(auto& node : selected->parent_node().children()) {
+				if(node.get() != selected) {
 					node->fold(true);
 				}
 			}
 
-			selected.unfold();
+			selected->unfold();
 		}
 
 		view_.update(model_);
