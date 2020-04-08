@@ -22,6 +22,7 @@
 #include "picture.hpp"                    // for manager
 #include "saved_game.hpp"               // for saved_game
 #include "sound.hpp"                    // for music_thinker
+#include "game_end_exceptions.hpp"      // for LEVEL_RESULT, etc
 
 #include <string>                       // for string
 #include <vector>                       // for vector
@@ -69,6 +70,8 @@ public:
 		TEST_FAIL_PLAYING_REPLAY = 4,
 		TEST_FAIL_BROKE_STRICT = 5,
 		TEST_FAIL_WML_EXCEPTION = 6,
+		TEST_FAIL_BY_DEFEAT = 7,
+		TEST_PASS_BY_VICTORY = 8,
 	};
 
 	bool init_video();
@@ -119,6 +122,7 @@ private:
 	void mark_completed_campaigns(std::vector<config>& campaigns);
 
 	editor::EXIT_STATUS start_editor(const std::string& filename);
+	unit_test_result pass_victory_or_defeat(LEVEL_RESULT res);
 
 	/// Internal to the implementation of unit_test(). If a single instance of
 	/// Wesnoth is running multiple unit tests, this gets called once per test.

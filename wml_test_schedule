@@ -20,28 +20,28 @@
 #
 2 check_victory_basic_timeout
 1 check_victory_basic_macro_check
-0 check_victory_basic
+8 check_victory_basic
 1 check_victory_basic_fail
-0 check_victory_basic_two
-0 check_victory_basic_ai
+8 check_victory_basic_two
+8 check_victory_basic_ai
 1 check_victory_basic_ai_fail
-0 check_victory_basic_ai_two
+8 check_victory_basic_ai_two
 1 check_victory_one_no_units_fail_one
 1 check_victory_one_no_units_fail_two
-0 check_victory_one_no_units
+8 check_victory_one_no_units
 1 check_victory_two_no_units_fail_one
 1 check_victory_two_no_units_fail_two
-0 check_victory_two_no_units
-0 check_victory_always_one
-0 check_victory_always_two
+8 check_victory_two_no_units
+8 check_victory_always_one
+8 check_victory_always_two
 1 check_victory_always_no_units_fail
-0 check_victory_always_no_units
+8 check_victory_always_no_units
 1 check_victory_always_fail
 1 check_victory_never_fail_one
 1 check_victory_never_fail_two
 1 check_victory_never_fail_three
-0 check_victory_never_pass
-1 check_victory_never_ai_fail
+8 check_victory_never_pass
+7 check_victory_never_ai_fail
 #
 # WML API tests
 #
@@ -96,6 +96,13 @@
 0 test_role_2
 0 test_role_3
 0 test_role_lua
+0 events-test_nonfilterable
+0 events-test_filterable1
+0 events-test_filterable2
+0 events-test_filterable3
+0 events-test_victory
+0 events-test_defeat
+0 events-test_die
 #
 # LUA
 #
@@ -143,12 +150,12 @@
 #
 # Attack calculations & codepath tests
 #
-0 alice_kills_bob
-0 bob_kills_alice_on_retal
-0 alice_kills_bob_levelup
-0 bob_kills_alice
-0 alice_kills_bob_on_retal
-0 alice_kills_bob_on_retal_levelup
+8 alice_kills_bob
+8 bob_kills_alice_on_retal
+8 alice_kills_bob_levelup
+8 bob_kills_alice
+8 alice_kills_bob_on_retal
+8 alice_kills_bob_on_retal_levelup
 0 test_grunt_tod_damage
 0 test_time_area_damage
 0 test_time_area_prestart

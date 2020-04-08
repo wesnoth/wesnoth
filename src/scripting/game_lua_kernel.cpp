@@ -1546,6 +1546,7 @@ static int impl_end_level_data_get(lua_State* L)
 	return_bool_attrib("is_victory", data.is_victory);
 	return_bool_attrib("is_loss", !data.is_victory);
 	return_cstring_attrib("result", data.is_victory ? "victory" : "loss"); // to match wesnoth.end_level()
+	return_string_attrib("test_result", data.test_result);
 	return_cfg_attrib("__cfg", data.to_config_full());
 
 	return 0;
@@ -1574,6 +1575,7 @@ int game_lua_kernel::impl_end_level_data_set(lua_State* L)
 	modify_bool_attrib("carryover_report", data.transient.carryover_report = value);
 	modify_bool_attrib("prescenario_save", data.prescenario_save = value);
 	modify_bool_attrib("replay_save", data.replay_save = value);
+	modify_string_attrib("test_result", data.test_result = value);
 
 	return 0;
 }
@@ -1618,6 +1620,7 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 	data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
 	data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
 	data.is_victory = cfg["result"] == "victory";
+	data.test_result = cfg["test_result"].str(LEVEL_RESULT::enum_to_string(LEVEL_RESULT::TEST_NOT_SET));
 	play_controller_.set_end_level_data(data);
 	return 0;
 }
