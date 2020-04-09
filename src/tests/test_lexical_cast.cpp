@@ -22,7 +22,6 @@
 #include <boost/mpl/copy.hpp>
 #include <boost/mpl/back_inserter.hpp>
 #include <boost/mpl/contains.hpp>
-#include <boost/test/test_case_template.hpp>
 
 #include <iostream>
 
