@@ -571,6 +571,7 @@ static void check_fpu()
 			}
 		}
 
+#ifndef _M_AMD64
 		if(precision_mode != _PC_53) {
 			std::cerr << "Floating point precision mode is currently '"
 				<< ((precision_mode == _PC_53)
@@ -584,6 +585,8 @@ static void check_fpu()
 				std::cerr << "failed to set floating point precision type to 'double'\n";
 			}
 		}
+#endif
+
 	} else {
 		std::cerr << "_controlfp_s failed.\n";
 	}
