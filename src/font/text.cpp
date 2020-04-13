@@ -725,6 +725,10 @@ void pango_text::rerender(const bool force)
 		surface_ = SDL_CreateRGBSurfaceFrom(
 			&surface_buffer_[0], width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
 #endif
+		if(!surface_) {
+			ERR_GUI_L << "pango_text: SDL_CreateRGBSurfaceWithFormatFrom Failed, w="
+			          << width << ", h=" << height << ", reason: " << SDL_GetError() << "\n";
+		}
 	}
 }
 
