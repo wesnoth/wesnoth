@@ -8,6 +8,7 @@
   !define MULTIUSER_INSTALLMODE_DEFAULT_REGISTRY_VALUENAME ""
   !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_KEY "Software\Battle for Wesnoth\%version"
   !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_VALUENAME ""
+  !define MULTIUSER_USE_PROGRAMFILES64
   !define MULTIUSER_INSTALLMODE_INSTDIR "Battle for Wesnoth %version"
   !include "MultiUser.nsh"
   !include "MUI2.nsh"
