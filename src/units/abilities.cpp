@@ -1082,9 +1082,11 @@ namespace { // Helpers for attack_type::special_active()
 		}
 
 		// Passed.
-		return true;
+		if (!u2) {
+			return ufilt.matches(*u, loc);
+		}
+		return ufilt.matches(*u, loc, *u2);
 	}
-
 }//anonymous namespace
 
 
@@ -1094,100 +1096,7 @@ namespace { // Helpers for attack_type::special_active()
 //beneficiary unit does not have a corresponding weapon
 //(defense against ranged weapons abilities for a unit that only has melee attacks)
 
-/**
- * returns whether @a u matches @a cfg .child( @a filter_attacker ). But also check for [filter_weapon] subtags writ the current attack context.
- *
- * @param[in]  ability The tagname of the ability, needed because some tagnames need special handling
- * @param[in]  loc      The location where we assume the filtered unit to be at
- * @param[in]  u2    the 'other unit' in the filter
- * @param[in]  weapon used for [filter_weapon]
-*
- * @returns true if the unit passed the filter.
- */
-static bool ability_filter_fighter(const std::string& ability,
-				   const std::string & filter_attacker,
-				   const config& cfg, const map_location & loc,
-				   unit_const_ptr & u,
-				   unit_const_ptr & u2,
-				   const_attack_ptr weapon)
-{
-	
-	const config &filter = cfg.child(filter_attacker);
-	if(!filter) {
-		return true;
-	}
-	
-	if (!u) {
-		return false;
-	}
-	
-	if ( const config & filter_weapon = filter.child("filter_weapon") ) {
-		if ( !weapon || !weapon->matches_filter(filter_weapon) )
-			return false;
-	}
-	
-	if (!u2) {
-		return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*u, loc);
-	}
-	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*u, loc, *u2);
-}
 
-/**
-* checks whether a single ability passes attack related filters, in particular for example [filter_student][filter_weapon]
- *
- * @param[in]  un, up The units filtered(in that example un is 'self and up 'other' unit)
- * @param[in]  ability The tagname of the ability, needed because some tagnames need special handling
- * @param[in]  loc, opp_loc      The locations where we assume the filtered units un and up to be at(here loc is used)
- * @param[in]  weapon, opp_weapon used for [filter_weapon](weapon in that example)
-*
- * @returns true if the units passed all filters.
- */
-static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
-{
-    bool filter_opponent = ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, up, un, opp_weapon);
-    bool filter_student = ability_filter_fighter(ability, "filter_student", cfg, loc, un, up, weapon);
-    bool filter_attacker = (attacker && ability_filter_fighter(ability, "filter_attacker", cfg, loc, un, up, weapon)) || (!attacker && ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, up, un, opp_weapon));
-    bool filter_defender = (!attacker && ability_filter_fighter(ability, "filter_defender", cfg, loc,un, up, weapon)) || (attacker && ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, up, un, opp_weapon));
-    if(filter_student && filter_opponent && filter_attacker && filter_defender){
-	    return true;
-    }
-	return false;
-}
-
-/**
- * like to un->get_abilities() this returns the active abilities on this unit. That is. abilities of this unit and abilities of adjacent units that affect this unit. Unlike un->get_abilities() this  also checks for attack related filters.
- * @param[in]  un The current unit
- * @param[in]  ability The tagname of the ability, for filtered the abilities type
- * @param[in]  loc The location where we assume the un unit to be at
- * @param[in]  up The opponent
- * @param[in]  opp_loc The location where we assume the opponent to be at
- * @param[in]  attacker the condition for matches 'active_on=offense/defense' and @a special_affects_self/opponent
- * @param[in]  weapon, opp_weapon used for [filter_weapon] in @a ability_filter_fighter
- * @param[in]  affect_other if true we will only return abilities that affect the opponent otherwise we will return abilities that affect @a un
- *
- * @returns an unit_ability_list containing all abilities active in the current attack context.
- */
-static unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon, bool affect_other)
-{
-	unit_ability_list abil = (*un).get_abilities(ability, loc);
-	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
-		bool abil_affect = false;//used for determine if abilities with special_affects_self or opponent must be erased of list
-		if(affect_other){
-			abil_affect = !special_affects_opponent((*i->first), attacker);
-		} else {
-			abil_affect = !special_affects_self((*i->first), attacker);
-		}
-		bool fighter_filter = !ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon);
-		const std::string& active_on = (*i->first)["active_on"];
-		bool active_on_bool = !(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense"));
-		if(active_on_bool || fighter_filter || abil_affect) {
-			i = abil.erase(i);
-		} else {
-			++i;
-		}
-	}
-	return abil;
-}
 
 unit_ability_list attack_type::list_ability(const std::string& ability) const
 {
@@ -1214,13 +1123,29 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
+	unit_ability_list abil_other_list(loc);
 	if(self){
-		abil_list.append(list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, false));
+		abil_list.append((*self).get_abilities(ability, self_loc_));
+		for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
+			if(!special_active(*i->first, AFFECT_SELF, ability, true, "filter_student")) {
+				i = abil_list.erase(i);
+			} else {
+				++i;
+			}
+		}
 	}
 
-	if(other) {
-		abil_list.append(list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this(), true));
+	if(other){
+		abil_other_list.append((*other).get_abilities(ability, other_loc_));
+		for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
+			if(!other_attack_->special_active(*i->first, AFFECT_OTHER, ability, true, "filter_student")) {
+				i = abil_other_list.erase(i);
+			} else {
+				++i;
+			}
+		}
 	}
+	abil_list.append(abil_other_list);
 	return abil_list;
 }
 
@@ -1253,7 +1178,7 @@ bool attack_type::bool_ability(const std::string& ability) const
  *                              for elsewhere)
  */
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
-                                 bool include_backstab) const
+                                 bool include_backstab, const std::string& filter_self) const
 {
 	//log_scope("special_active");
 
