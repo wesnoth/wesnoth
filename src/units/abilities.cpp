@@ -1091,36 +1091,13 @@ namespace { // Helpers for attack_type::special_active()
 //beneficiary unit does not have a corresponding weapon
 //(defense against ranged weapons abilities for a unit that only has melee attacks)
 
-
-
 unit_ability_list attack_type::list_ability(const std::string& ability) const
 {
-	const unit_map& units = display::get_singleton()->get_units();
-
-	unit_const_ptr self = self_;
-	unit_const_ptr other = other_;
-
-	if(self == nullptr) {
-		unit_map::const_iterator it = units.find(self_loc_);
-		if(it.valid()) {
-			self = it.get_shared_ptr().get();
-		}
-	}
-	if(other == nullptr) {
-		unit_map::const_iterator it = units.find(other_loc_);
-		if(it.valid()) {
-			other = it.get_shared_ptr().get();
-		}
-	}
-
-	// Make sure they're facing each other.
-	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
-	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
 	unit_ability_list abil_other_list(loc);
-	if(self) {
-		abil_list.append((*self).get_abilities(ability, self_loc_));
+	if(self_) {
+		abil_list.append((*self_).get_abilities(ability, self_loc_));
 		for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
 			if(!special_active(*i->first, AFFECT_SELF, ability, true, "filter_student")) {
 				i = abil_list.erase(i);
@@ -1130,8 +1107,8 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 		}
 	}
 
-	if(other) {
-		abil_other_list.append((*other).get_abilities(ability, other_loc_));
+	if(other_) {
+		abil_other_list.append((*other_).get_abilities(ability, other_loc_));
 		for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
 			if(!other_attack_->special_active(*i->first, AFFECT_OTHER, ability, true, "filter_student")) {
 				i = abil_other_list.erase(i);
