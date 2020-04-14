@@ -1066,14 +1066,7 @@ namespace { // Helpers for attack_type::special_active()
 		unit_filter ufilt{vconfig(filter_child)};
 
 		// If the other unit doesn't exist, try matching without it
-		if (!u2) {
-			return ufilt.matches(*u, loc);
-		}
 
-		// Check for a unit match.
-		if (!ufilt.matches(*u, loc, *u2)) {
-			return false;
-		}
 
 		// Check for a weapon match.
 		if ( const config & filter_weapon = filter_child.child("filter_weapon") ) {
@@ -1082,6 +1075,7 @@ namespace { // Helpers for attack_type::special_active()
 		}
 
 		// Passed.
+		// If the other unit doesn't exist, try matching without it
 		if (!u2) {
 			return ufilt.matches(*u, loc);
 		}
