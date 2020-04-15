@@ -56,23 +56,23 @@ static lg::log_domain log_engine("engine");
 namespace events
 {
 mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
-	: mouse_handler_base()
-	, gui_(gui)
-	, pc_(pc)
-	, previous_hex_()
-	, previous_free_hex_()
-	, selected_hex_()
-	, next_unit_()
-	, current_route_()
-	, current_paths_()
-	, unselected_paths_(false)
-	, unselected_reach_(false)
-	, path_turns_(0)
-	, side_num_(1)
-	, over_route_(false)
-	, reachmap_invalid_(false)
-	, show_partial_move_(false)
-	, preventing_units_highlight_(false)
+    : mouse_handler_base()
+    , gui_(gui)
+    , pc_(pc)
+    , previous_hex_()
+    , previous_free_hex_()
+    , selected_hex_()
+    , next_unit_()
+    , current_route_()
+    , current_paths_()
+    , unselected_paths_(false)
+    , unselected_reach_(false)
+    , path_turns_(0)
+    , side_num_(1)
+    , over_route_(false)
+    , reachmap_invalid_(false)
+    , show_partial_move_(false)
+    , preventing_units_highlight_(false)
 {
 	singleton_ = this;
 }
@@ -128,7 +128,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		if(dragging_touch_) {
 			SDL_GetMouseState(&mx, &my);
 			const double drag_distance = std::pow(static_cast<double>(drag_from_x_- mx), 2)
-										 + std::pow(static_cast<double>(drag_from_y_- my), 2);
+			                             + std::pow(static_cast<double>(drag_from_y_- my), 2);
 			if(drag_distance > drag_threshold()*drag_threshold()) {
 				dragging_started_ = true;
 			}
@@ -235,14 +235,14 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		//of this state end it
 		if (cursor::get() != cursor::WAIT) {
 			if (selected_unit &&
-				selected_unit->side() == side_num_ &&
-				!selected_unit->incapacitated() && !browse)
+			    selected_unit->side() == side_num_ &&
+			    !selected_unit->incapacitated() && !browse)
 			{
 				if (attack_from.valid()) {
 					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
 				}
 				else if (!mouseover_unit &&
-						 current_paths_.destinations.contains(new_hex))
+				         current_paths_.destinations.contains(new_hex))
 				{
 					// Is this where left-drag cursor changes? Test.
 					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
@@ -254,7 +254,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 				// no selected unit or we can't move it
 
 				if ( selected_hex_.valid() && mouseover_unit
-					 && mouseover_unit->side() == side_num_ ) {
+				     && mouseover_unit->side() == side_num_ ) {
 					// empty hex field selected and unit on our site under the cursor
 					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
 				} else {
@@ -293,7 +293,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			pc_.get_whiteboard()->erase_temp_move();
 		}
 		else if (!current_paths_.destinations.empty() &&
-				 board.map().on_board(selected_hex_) && board.map().on_board(new_hex))
+		         board.map().on_board(selected_hex_) && board.map().on_board(new_hex))
 		{
 			if (selected_unit && !selected_unit->incapacitated()) {
 				// Show the route from selected unit to mouseover hex
@@ -333,7 +333,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	} //end planned unit map scope
 
 	if( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
-		 !gui().fogged(un->get_location()))
+	     !gui().fogged(un->get_location()))
 	{
 		if (un->side() == side_num_) {
 			//unit is on our team, show path if the unit has one
@@ -350,7 +350,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 			wb::future_map_if_active raii;
 			current_paths_ = pathfind::paths(*un, false, true,
-											 viewing_team(), path_turns_);
+			                                 viewing_team(), path_turns_);
 		} else {
 			//unit under cursor is not on our team
 			//Note: planned unit map must be activated after this is done,
@@ -359,7 +359,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 			wb::future_map_if_active raii;
 			current_paths_ = pathfind::paths(*un, false, true,
-											 viewing_team(), path_turns_);
+			                                 viewing_team(), path_turns_);
 		}
 
 		unselected_paths_ = true;
@@ -527,7 +527,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			gui().set_route(nullptr);
 			pc_.get_whiteboard()->erase_temp_move();
 		} else if(!current_paths_.destinations.empty() && board.map().on_board(selected_hex_)
-				  && board.map().on_board(new_hex)) {
+		          && board.map().on_board(new_hex)) {
 			if(selected_unit && !selected_unit->incapacitated()) {
 				// Show the route from selected unit to mouseover hex
 				current_route_ = get_route(&*selected_unit, dest, viewing_team());
@@ -779,7 +779,7 @@ pathfind::marked_route mouse_handler::get_route(const unit* un, map_location go_
 	pathfind::plain_route route;
 
 	route = pathfind::a_star_search(
-		un->get_location(), go_to, 10000.0, calc, board.map().w(), board.map().h(), &allowed_teleports);
+	    un->get_location(), go_to, 10000.0, calc, board.map().w(), board.map().h(), &allowed_teleports);
 
 	return mark_route(route);
 }
@@ -906,7 +906,7 @@ void mouse_handler::move_action(bool browse)
 					// block where we temporary move the unit
 					{
 						temporary_unit_mover temp_mover(
-								pc_.gamestate().board_.units_, src, attack_from, itor->move_left);
+						        pc_.gamestate().board_.units_, src, attack_from, itor->move_left);
 						choice = show_attack_dialog(attack_from, clicked_u->get_location());
 					}
 
@@ -944,28 +944,28 @@ void mouse_handler::move_action(bool browse)
 	}
 	// otherwise we're trying to move to a hex
 	else if(
-		// The old use case: move selected unit to mouse hex field.
-		(
-			(!browse || pc_.get_whiteboard()->is_active())
-			&& selected_hex_.valid()
-			&& selected_hex_ != hex
-			&& u != nullptr
-			&& (u->side() == side_num_ || pc_.get_whiteboard()->is_active())
-			&& !clicked_u
-			&& !current_route_.steps.empty()
-			&& current_route_.steps.front() == selected_hex_
-		)
-		|| // The new use case: move mouse unit to selected hex field.
-		(
-			(!browse || pc_.get_whiteboard()->is_active())
-			&& selected_hex_.valid()
-			&& selected_hex_ != hex
-			&& clicked_u
-			&& !current_route_.steps.empty()
-			&& current_route_.steps.back() == selected_hex_
-			&& !u
-			&& clicked_u->side() == side_num_
-		)
+	    // The old use case: move selected unit to mouse hex field.
+	    (
+	        (!browse || pc_.get_whiteboard()->is_active())
+	        && selected_hex_.valid()
+	        && selected_hex_ != hex
+	        && u != nullptr
+	        && (u->side() == side_num_ || pc_.get_whiteboard()->is_active())
+	        && !clicked_u
+	        && !current_route_.steps.empty()
+	        && current_route_.steps.front() == selected_hex_
+	    )
+	    || // The new use case: move mouse unit to selected hex field.
+	    (
+	        (!browse || pc_.get_whiteboard()->is_active())
+	        && selected_hex_.valid()
+	        && selected_hex_ != hex
+	        && clicked_u
+	        && !current_route_.steps.empty()
+	        && current_route_.steps.back() == selected_hex_
+	        && !u
+	        && clicked_u->side() == side_num_
+	    )
 	) {
 		// Ignore this command if commands are disabled.
 		if(commands_disabled) {
@@ -1084,12 +1084,12 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		clicked_location.destinations.insert(hex);
 
 		for(unit_map::iterator u = pc_.gamestate().board_.units_.begin(); u != pc_.gamestate().board_.units_.end();
-				++u) {
+		        ++u) {
 			bool invisible = u->invisible(u->get_location());
 
 			if(!gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible) {
 				const pathfind::paths& path =
-					pathfind::paths(*u, false, true, viewing_team(), path_turns_, false, false);
+				    pathfind::paths(*u, false, true, viewing_team(), path_turns_, false, false);
 
 				if(path.destinations.find(hex) != path.destinations.end()) {
 					reaching_unit_locations.destinations.insert(u->get_location());
@@ -1185,9 +1185,9 @@ std::size_t mouse_handler::move_unit_along_route(const std::vector<map_location>
 		unit_map::const_iterator const u = pc_.gamestate().board_.units().find(steps.front());
 
 		if(u && u->can_recruit() && u->side() == gui().viewing_side()
-				&& !pc_.get_whiteboard()->allow_leader_to_move(*u)) {
+		        && !pc_.get_whiteboard()->allow_leader_to_move(*u)) {
 			gui2::show_transient_message("",
-					_("You cannot move your leader away from the keep with some planned recruits or recalls left."));
+			        _("You cannot move your leader away from the keep with some planned recruits or recalls left."));
 			return 0;
 		}
 	}
@@ -1212,7 +1212,7 @@ std::size_t mouse_handler::move_unit_along_route(const std::vector<map_location>
 }
 
 void mouse_handler::save_whiteboard_attack(
-		const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice)
+        const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice)
 {
 	{
 		// @todo Fix flickering/reach highlight anomaly after the weapon choice dialog is closed
@@ -1241,7 +1241,7 @@ void mouse_handler::save_whiteboard_attack(
 }
 
 int mouse_handler::fill_weapon_choices(
-		std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender)
+        std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender)
 {
 	int best = 0;
 	for(unsigned int i = 0; i < attacker->attacks().size(); i++) {
@@ -1361,18 +1361,18 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 	const tod_manager& tod_man = pc_.get_tod_manager_const();
 
 	synced_context::run_and_throw("attack",
-		replay_helper::get_attack(
-			attacker_loc,
-			defender_loc,
-			att.attack_num,
-			def.attack_num,
-			attacker->type_id(),
-			defender->type_id(),
-			att.level,
-			def.level,
-			tod_man.turn(),
-			tod_man.get_time_of_day()
-		)
+	    replay_helper::get_attack(
+	        attacker_loc,
+	        defender_loc,
+	        att.attack_num,
+	        def.attack_num,
+	        attacker->type_id(),
+	        defender->type_id(),
+	        att.level,
+	        def.level,
+	        tod_man.turn(),
+	        tod_man.get_time_of_day()
+	    )
 	);
 }
 
@@ -1413,11 +1413,16 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 	const team& cur_team = current_team();
 	const team& u_team = pc_.gamestate().board_.teams_[u->side() - 1];
 
-	// Check each adjacent hex.
-	adjacent_loc_array_t adj;
-	get_adjacent_tiles(u->get_location(), adj.data());
+	// Find weapon with largest range.
+	int attack_range = 1;
+	for (const auto& attack : u->attacks()) {
+		attack_range = std::max(attack_range, attack.max_range());
+	}
 
-	for(const map_location& loc : adj) {
+	// Check each hex in range.
+	auto range = get_tiles_in_range(u->get_location(), attack_range);
+
+	for(const map_location& loc : range) {
 		// No attack option shown if no visible unit present.
 		// (Visible to current team, not necessarily the unit's team.)
 		if(!pc_.get_map_const().on_board(loc)) {
