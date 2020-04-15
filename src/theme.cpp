@@ -36,8 +36,6 @@ static lg::log_domain log_display("display");
 
 namespace
 {
-const int XDim = 1024;
-const int YDim = 768;
 
 const std::size_t DefaultFontSize = font::SIZE_NORMAL;
 const color_t DefaultFontRGB {200, 200, 200};
@@ -283,10 +281,12 @@ theme::object::object()
 	, last_screen_(sdl::empty_rect)
 	, xanchor_(object::FIXED)
 	, yanchor_(object::FIXED)
+	, spec_width_(0)
+	, spec_height_(0)
 {
 }
 
-theme::object::object(const config& cfg)
+theme::object::object(std::size_t sw, std::size_t sh, const config& cfg)
 	: location_modified_(false)
 	, id_(cfg["id"])
 	, loc_(read_sdl_rect(cfg))
@@ -294,6 +294,8 @@ theme::object::object(const config& cfg)
 	, last_screen_(sdl::empty_rect)
 	, xanchor_(read_anchor(cfg["xanchor"]))
 	, yanchor_(read_anchor(cfg["yanchor"]))
+	, spec_width_(sw)
+	, spec_height_(sh)
 {
 }
 
@@ -328,15 +330,15 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 			break;
 		case TOP_ANCHORED:
 			relative_loc_.x = loc_.x;
-			relative_loc_.w = screen.w - std::min<std::size_t>(XDim - loc_.w, screen.w);
+			relative_loc_.w = screen.w - std::min<std::size_t>(spec_width_ - loc_.w, screen.w);
 			break;
 		case BOTTOM_ANCHORED:
-			relative_loc_.x = screen.w - std::min<std::size_t>(XDim - loc_.x, screen.w);
+			relative_loc_.x = screen.w - std::min<std::size_t>(spec_width_ - loc_.x, screen.w);
 			relative_loc_.w = loc_.w;
 			break;
 		case PROPORTIONAL:
-			relative_loc_.x = (loc_.x * screen.w) / XDim;
-			relative_loc_.w = (loc_.w * screen.w) / XDim;
+			relative_loc_.x = (loc_.x * screen.w) / spec_width_;
+			relative_loc_.w = (loc_.w * screen.w) / spec_width_;
 			break;
 		default:
 			assert(false);
@@ -349,15 +351,15 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 			break;
 		case TOP_ANCHORED:
 			relative_loc_.y = loc_.y;
-			relative_loc_.h = screen.h - std::min<std::size_t>(YDim - loc_.h, screen.h);
+			relative_loc_.h = screen.h - std::min<std::size_t>(spec_height_ - loc_.h, screen.h);
 			break;
 		case BOTTOM_ANCHORED:
-			relative_loc_.y = screen.h - std::min<std::size_t>(YDim - loc_.y, screen.h);
+			relative_loc_.y = screen.h - std::min<std::size_t>(spec_width_ - loc_.y, screen.h);
 			relative_loc_.h = loc_.h;
 			break;
 		case PROPORTIONAL:
-			relative_loc_.y = (loc_.y * screen.h) / YDim;
-			relative_loc_.h = (loc_.h * screen.h) / YDim;
+			relative_loc_.y = (loc_.y * screen.h) / spec_height_;
+			relative_loc_.h = (loc_.h * screen.h) / spec_height_;
 			break;
 		default:
 			assert(false);
@@ -422,8 +424,8 @@ theme::label::label()
 {
 }
 
-theme::label::label(const config& cfg)
-	: object(cfg)
+theme::label::label(std::size_t sw, std::size_t sh, const config& cfg)
+        : object(sw, sh, cfg)
 	, text_(cfg["prefix"].str() + cfg["text"].str() + cfg["postfix"].str())
 	, icon_(cfg["icon"])
 	, font_(cfg["font_size"])
@@ -439,8 +441,8 @@ theme::label::label(const config& cfg)
 	}
 }
 
-theme::status_item::status_item(const config& cfg)
-	: object(cfg)
+theme::status_item::status_item(std::size_t sw, std::size_t sh, const config& cfg)
+        : object(sw, sh, cfg)
 	, prefix_(cfg["prefix"].str() + cfg["prefix_literal"].str())
 	, postfix_(cfg["postfix_literal"].str() + cfg["postfix"].str())
 	, label_()
@@ -452,7 +454,7 @@ theme::status_item::status_item(const config& cfg)
 		font_ = DefaultFontSize;
 
 	if(const config& label_child = cfg.child("label")) {
-		label_ = label(label_child);
+	        label_ = label(sw, sh, label_child);
 	}
 
 	if(cfg.has_attribute("font_rgb")) {
@@ -461,8 +463,8 @@ theme::status_item::status_item(const config& cfg)
 	}
 }
 
-theme::panel::panel(const config& cfg)
-	: object(cfg)
+theme::panel::panel(std::size_t sw, std::size_t sh, const config& cfg)
+        : object(sw, sh, cfg)
 	, image_(cfg["image"])
 {
 }
@@ -476,8 +478,8 @@ theme::slider::slider()
 	, black_line_(false)
 {
 }
-theme::slider::slider(const config& cfg)
-	: object(cfg)
+theme::slider::slider(std::size_t sw, std::size_t sh, const config& cfg)
+        : object(sw, sh, cfg)
 	, title_(cfg["title"].str() + cfg["title_literal"].str())
 	, tooltip_(cfg["tooltip"])
 	, image_(cfg["image"])
@@ -498,8 +500,8 @@ theme::menu::menu()
 {
 }
 
-theme::menu::menu(const config& cfg)
-	: object(cfg)
+theme::menu::menu(std::size_t sw, std::size_t sh, const config& cfg)
+        : object(sw, sh, cfg)
 	, button_(cfg["button"].to_bool(true))
 	, context_(cfg["is_context_menu"].to_bool(false))
 	, title_(cfg["title"].str() + cfg["title_literal"].str())
@@ -534,8 +536,8 @@ theme::action::action()
 {
 }
 
-theme::action::action(const config& cfg)
-	: object(cfg)
+theme::action::action(std::size_t sw, std::size_t sh, const config& cfg)
+        : object(sw, sh, cfg)
 	, context_(cfg["is_context_menu"].to_bool())
 	, auto_tooltip_(cfg["auto_tooltip"].to_bool(false))
 	, tooltip_name_prepend_(cfg["tooltip_name_prepend"].to_bool(false))
@@ -584,6 +586,8 @@ theme::theme(const config& cfg, const SDL_Rect& screen)
 	, palette_()
 	, border_()
 	, screen_dimensions_(screen)
+	, cur_spec_width_(0)
+	, cur_spec_height_(0)
 {
 	do_resolve_rects(expand_partialresolution(cfg), cfg_);
 	set_resolution(screen);
@@ -643,6 +647,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		}
 		return false;
 	}
+	cur_spec_width_ = (*current)["width"];
+	cur_spec_height_ = (*current)["height"];
 
 	std::map<std::string, std::string> title_stash_menus;
 	std::vector<theme::menu>::iterator m;
@@ -665,7 +671,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	actions_.clear();
 	sliders_.clear();
 
-	add_object(*current);
+	add_object(cur_spec_width_, cur_spec_height_, *current);
 
 	for(m = menus_.begin(); m != menus_.end(); ++m) {
 		if(title_stash_menus.find(m->get_id()) != title_stash_menus.end())
@@ -682,45 +688,45 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	return result;
 }
 
-void theme::add_object(const config& cfg)
+void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 {
 	if(const config& c = cfg.child("main_map")) {
-		main_map_ = object(c);
+	        main_map_ = object(sw, sh, c);
 	}
 
 	if(const config& c = cfg.child("mini_map")) {
-		mini_map_ = object(c);
+	        mini_map_ = object(sw, sh, c);
 	}
 
 	if(const config& c = cfg.child("palette")) {
-		palette_ = object(c);
+	        palette_ = object(sw, sh, c);
 	}
 
 	if(const config& status_cfg = cfg.child("status")) {
 		for(const config::any_child& i : status_cfg.all_children_range()) {
-			status_[i.key].reset(new status_item(i.cfg));
+		        status_[i.key].reset(new status_item(sw, sh, i.cfg));
 		}
 		if(const config& unit_image_cfg = status_cfg.child("unit_image")) {
-			unit_image_ = object(unit_image_cfg);
+		        unit_image_ = object(sw, sh, unit_image_cfg);
 		} else {
 			unit_image_ = object();
 		}
 	}
 
 	for(const config& p : cfg.child_range("panel")) {
-		panel new_panel(p);
+	        panel new_panel(sw, sh, p);
 		set_object_location(new_panel, p["rect"], p["ref"]);
 		panels_.push_back(new_panel);
 	}
 
 	for(const config& lb : cfg.child_range("label")) {
-		label new_label(lb);
+	        label new_label(sw, sh, lb);
 		set_object_location(new_label, lb["rect"], lb["ref"]);
 		labels_.push_back(new_label);
 	}
 
 	for(const config& m : cfg.child_range("menu")) {
-		menu new_menu(m);
+	        menu new_menu(sw, sh, m);
 		DBG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
 		if(new_menu.is_context())
 			context_ = new_menu;
@@ -733,7 +739,7 @@ void theme::add_object(const config& cfg)
 	}
 
 	for(const config& a : cfg.child_range("action")) {
-		action new_action(a);
+	        action new_action(sw, sh, a);
 		DBG_DP << "adding action: " << (new_action.is_context() ? "is context" : "not context") << "\n";
 		if(new_action.is_context())
 			action_context_ = new_action;
@@ -746,7 +752,7 @@ void theme::add_object(const config& cfg)
 	}
 
 	for(const config& s : cfg.child_range("slider")) {
-		slider new_slider(s);
+	        slider new_slider(sw, sh, s);
 		DBG_DP << "adding slider\n";
 		set_object_location(new_slider, s["rect"], s["ref"]);
 		sliders_.push_back(new_slider);
@@ -850,7 +856,7 @@ void theme::modify(const config& cfg)
 
 	// Add new theme objects.
 	for(const config& c : cfg.child_range("add")) {
-		add_object(c);
+	        add_object(cur_spec_width_, cur_spec_height_, c);
 	}
 
 	// Remove existent theme objects.

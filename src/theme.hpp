@@ -41,8 +41,8 @@ class theme
 	class object
 	{
 	public:
-		object();
-		object(const config& cfg);
+	        object();
+	        object(std::size_t sw, std::size_t sh, const config& cfg);
 		virtual ~object() { }
 
 		virtual SDL_Rect& location(const SDL_Rect& screen) const;
@@ -72,6 +72,7 @@ class theme
 		mutable SDL_Rect last_screen_;
 
 		ANCHORING xanchor_, yanchor_;
+	        std::size_t spec_width_, spec_height_;
 
 		static ANCHORING read_anchor(const std::string& str);
 	};
@@ -96,7 +97,7 @@ public:
 	{
 	public:
 		label();
-		explicit label(const config& cfg);
+		explicit label(std::size_t sw, std::size_t sh, const config& cfg);
 
 		using object::location;
 
@@ -120,7 +121,7 @@ public:
 	{
 	public:
 
-		explicit status_item(const config& cfg);
+		explicit status_item(std::size_t sw, std::size_t sh, const config& cfg);
 
 		using object::location;
 
@@ -145,7 +146,7 @@ public:
 	class panel : public object
 	{
 	public:
-		explicit panel(const config& cfg);
+		explicit panel(std::size_t sw, std::size_t sh, const config& cfg);
 
 		using object::location;
 
@@ -159,7 +160,7 @@ public:
 	{
 	public:
 		action();
-		explicit action(const config& cfg);
+		explicit action(std::size_t sw, std::size_t sh, const config& cfg);
 
 		using object::location;
 
@@ -188,7 +189,7 @@ public:
 	{
 	public:
 		slider();
-		explicit slider(const config& cfg);
+		explicit slider(std::size_t sw, std::size_t sh, const config& cfg);
 
 		using object::location;
 
@@ -212,7 +213,7 @@ public:
 	{
 	public:
 		menu();
-		explicit menu(const config& cfg);
+		explicit menu(std::size_t sw, std::size_t sh, const config& cfg);
 
 		using object::location;
 
@@ -283,7 +284,7 @@ public:
 
 private:
 	theme::object& find_element(const std::string& id);
-	void add_object(const config& cfg);
+	void add_object(std::size_t sw, std::size_t sh, const config& cfg);
 	void remove_object(const std::string& id);
 	void set_object_location(theme::object& element, std::string rect_str, std::string ref_id);
 
@@ -310,4 +311,5 @@ private:
 	border_t border_;
 
 	SDL_Rect screen_dimensions_;
+        std::size_t cur_spec_width_, cur_spec_height_;
 };
