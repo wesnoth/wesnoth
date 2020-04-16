@@ -82,8 +82,8 @@ static lg::log_domain log_unit("unit");
 
 namespace
 {
-	// "advance" only kept around for backwards compatibility; only "advancement" should be used
-	const std::array<std::string, 4> ModificationTypes {{ "advancement", "advance", "trait", "object" }};
+    // "advance" only kept around for backwards compatibility; only "advancement" should be used
+    const std::array<std::string, 4> ModificationTypes {{ "advancement", "advance", "trait", "object" }};
 
 	/**
 	 * Pointers to units which have data in their internal caches. The
@@ -296,79 +296,79 @@ struct ptr_vector_pushback
 
 // Copy constructor
 unit::unit(const unit& o)
-	: ref_count_(0)
-	, loc_(o.loc_)
-	, advances_to_(o.advances_to_)
-	, type_(o.type_)
-	, type_name_(o.type_name_)
-	, race_(o.race_)
-	, id_(o.id_)
-	, name_(o.name_)
-	, underlying_id_(o.underlying_id_)
-	, undead_variation_(o.undead_variation_)
-	, variation_(o.variation_)
-	, hit_points_(o.hit_points_)
-	, max_hit_points_(o.max_hit_points_)
-	, experience_(o.experience_)
-	, max_experience_(o.max_experience_)
-	, level_(o.level_)
-	, recall_cost_(o.recall_cost_)
-	, canrecruit_(o.canrecruit_)
-	, recruit_list_(o.recruit_list_)
-	, alignment_(o.alignment_)
-	, flag_rgb_(o.flag_rgb_)
-	, image_mods_(o.image_mods_)
-	, unrenamable_(o.unrenamable_)
-	, side_(o.side_)
-	, gender_(o.gender_)
-	, formula_man_(new unit_formula_manager(o.formula_manager()))
-	, movement_(o.movement_)
-	, max_movement_(o.max_movement_)
-	, vision_(o.vision_)
-	, jamming_(o.jamming_)
-	, movement_type_(o.movement_type_)
-	, hold_position_(o.hold_position_)
-	, end_turn_(o.end_turn_)
-	, resting_(o.resting_)
-	, attacks_left_(o.attacks_left_)
-	, max_attacks_(o.max_attacks_)
-	, states_(o.states_)
-	, known_boolean_states_(o.known_boolean_states_)
-	, variables_(o.variables_)
-	, events_(o.events_)
-	, filter_recall_(o.filter_recall_)
-	, emit_zoc_(o.emit_zoc_)
-	, overlays_(o.overlays_)
-	, role_(o.role_)
-	, attacks_(o.attacks_)
-	, facing_(o.facing_)
-	, trait_names_(o.trait_names_)
-	, trait_descriptions_(o.trait_descriptions_)
-	, unit_value_(o.unit_value_)
-	, goto_(o.goto_)
-	, interrupted_move_(o.interrupted_move_)
-	, is_fearless_(o.is_fearless_)
-	, is_healthy_(o.is_healthy_)
-	, modification_descriptions_(o.modification_descriptions_)
-	, anim_comp_(new unit_animation_component(*this, *o.anim_comp_))
-	, hidden_(o.hidden_)
-	, hp_bar_scaling_(o.hp_bar_scaling_)
-	, xp_bar_scaling_(o.xp_bar_scaling_)
-	, modifications_(o.modifications_)
-	, abilities_(o.abilities_)
-	, advancements_(o.advancements_)
-	, description_(o.description_)
-	, special_notes_(o.special_notes_)
-	, usage_(copy_or_null(o.usage_))
-	, halo_(copy_or_null(o.halo_))
-	, ellipse_(copy_or_null(o.ellipse_))
-	, random_traits_(o.random_traits_)
-	, generate_name_(o.generate_name_)
-	, upkeep_(o.upkeep_)
-	, profile_(o.profile_)
-	, small_profile_(o.small_profile_)
-	, changed_attributes_(o.changed_attributes_)
-	, invisibility_cache_()
+    : ref_count_(0)
+    , loc_(o.loc_)
+    , advances_to_(o.advances_to_)
+    , type_(o.type_)
+    , type_name_(o.type_name_)
+    , race_(o.race_)
+    , id_(o.id_)
+    , name_(o.name_)
+    , underlying_id_(o.underlying_id_)
+    , undead_variation_(o.undead_variation_)
+    , variation_(o.variation_)
+    , hit_points_(o.hit_points_)
+    , max_hit_points_(o.max_hit_points_)
+    , experience_(o.experience_)
+    , max_experience_(o.max_experience_)
+    , level_(o.level_)
+    , recall_cost_(o.recall_cost_)
+    , canrecruit_(o.canrecruit_)
+    , recruit_list_(o.recruit_list_)
+    , alignment_(o.alignment_)
+    , flag_rgb_(o.flag_rgb_)
+    , image_mods_(o.image_mods_)
+    , unrenamable_(o.unrenamable_)
+    , side_(o.side_)
+    , gender_(o.gender_)
+    , formula_man_(new unit_formula_manager(o.formula_manager()))
+    , movement_(o.movement_)
+    , max_movement_(o.max_movement_)
+    , vision_(o.vision_)
+    , jamming_(o.jamming_)
+    , movement_type_(o.movement_type_)
+    , hold_position_(o.hold_position_)
+    , end_turn_(o.end_turn_)
+    , resting_(o.resting_)
+    , attacks_left_(o.attacks_left_)
+    , max_attacks_(o.max_attacks_)
+    , states_(o.states_)
+    , known_boolean_states_(o.known_boolean_states_)
+    , variables_(o.variables_)
+    , events_(o.events_)
+    , filter_recall_(o.filter_recall_)
+    , emit_zoc_(o.emit_zoc_)
+    , overlays_(o.overlays_)
+    , role_(o.role_)
+    , attacks_(o.attacks_)
+    , facing_(o.facing_)
+    , trait_names_(o.trait_names_)
+    , trait_descriptions_(o.trait_descriptions_)
+    , unit_value_(o.unit_value_)
+    , goto_(o.goto_)
+    , interrupted_move_(o.interrupted_move_)
+    , is_fearless_(o.is_fearless_)
+    , is_healthy_(o.is_healthy_)
+    , modification_descriptions_(o.modification_descriptions_)
+    , anim_comp_(new unit_animation_component(*this, *o.anim_comp_))
+    , hidden_(o.hidden_)
+    , hp_bar_scaling_(o.hp_bar_scaling_)
+    , xp_bar_scaling_(o.xp_bar_scaling_)
+    , modifications_(o.modifications_)
+    , abilities_(o.abilities_)
+    , advancements_(o.advancements_)
+    , description_(o.description_)
+    , special_notes_(o.special_notes_)
+    , usage_(copy_or_null(o.usage_))
+    , halo_(copy_or_null(o.halo_))
+    , ellipse_(copy_or_null(o.ellipse_))
+    , random_traits_(o.random_traits_)
+    , generate_name_(o.generate_name_)
+    , upkeep_(o.upkeep_)
+    , profile_(o.profile_)
+    , small_profile_(o.small_profile_)
+    , changed_attributes_(o.changed_attributes_)
+    , invisibility_cache_()
 {
 	// Copy the attacks rather than just copying references
 	for(auto& a : attacks_) {
@@ -377,77 +377,77 @@ unit::unit(const unit& o)
 }
 
 unit::unit()
-	: ref_count_(0)
-	, loc_()
-	, advances_to_()
-	, type_(nullptr)
-	, type_name_()
-	, race_(&unit_race::null_race)
-	, id_()
-	, name_()
-	, underlying_id_(0)
-	, undead_variation_()
-	, variation_()
-	, hit_points_(1)
-	, max_hit_points_(1)
-	, experience_(0)
-	, max_experience_(1)
-	, level_(0)
-	, recall_cost_(-1)
-	, canrecruit_(false)
-	, recruit_list_()
-	, alignment_()
-	, flag_rgb_()
-	, image_mods_()
-	, unrenamable_(false)
-	, side_(0)
-	, gender_(unit_race::NUM_GENDERS)
-	, formula_man_(new unit_formula_manager())
-	, movement_(0)
-	, max_movement_(0)
-	, vision_(-1)
-	, jamming_(0)
-	, movement_type_()
-	, hold_position_(false)
-	, end_turn_(false)
-	, resting_(false)
-	, attacks_left_(0)
-	, max_attacks_(0)
-	, states_()
-	, known_boolean_states_()
-	, variables_()
-	, events_()
-	, filter_recall_()
-	, emit_zoc_(0)
-	, overlays_()
-	, role_()
-	, attacks_()
-	, facing_(map_location::NDIRECTIONS)
-	, trait_names_()
-	, trait_descriptions_()
-	, unit_value_()
-	, goto_()
-	, interrupted_move_()
-	, is_fearless_(false)
-	, is_healthy_(false)
-	, modification_descriptions_()
-	, anim_comp_(new unit_animation_component(*this))
-	, hidden_(false)
-	, hp_bar_scaling_(0)
-	, xp_bar_scaling_(0)
-	, modifications_()
-	, abilities_()
-	, advancements_()
-	, description_()
-	, special_notes_()
-	, usage_()
-	, halo_()
-	, ellipse_()
-	, random_traits_(true)
-	, generate_name_(true)
-	, upkeep_(upkeep_full())
-	, changed_attributes_(0)
-	, invisibility_cache_()
+    : ref_count_(0)
+    , loc_()
+    , advances_to_()
+    , type_(nullptr)
+    , type_name_()
+    , race_(&unit_race::null_race)
+    , id_()
+    , name_()
+    , underlying_id_(0)
+    , undead_variation_()
+    , variation_()
+    , hit_points_(1)
+    , max_hit_points_(1)
+    , experience_(0)
+    , max_experience_(1)
+    , level_(0)
+    , recall_cost_(-1)
+    , canrecruit_(false)
+    , recruit_list_()
+    , alignment_()
+    , flag_rgb_()
+    , image_mods_()
+    , unrenamable_(false)
+    , side_(0)
+    , gender_(unit_race::NUM_GENDERS)
+    , formula_man_(new unit_formula_manager())
+    , movement_(0)
+    , max_movement_(0)
+    , vision_(-1)
+    , jamming_(0)
+    , movement_type_()
+    , hold_position_(false)
+    , end_turn_(false)
+    , resting_(false)
+    , attacks_left_(0)
+    , max_attacks_(0)
+    , states_()
+    , known_boolean_states_()
+    , variables_()
+    , events_()
+    , filter_recall_()
+    , emit_zoc_(0)
+    , overlays_()
+    , role_()
+    , attacks_()
+    , facing_(map_location::NDIRECTIONS)
+    , trait_names_()
+    , trait_descriptions_()
+    , unit_value_()
+    , goto_()
+    , interrupted_move_()
+    , is_fearless_(false)
+    , is_healthy_(false)
+    , modification_descriptions_()
+    , anim_comp_(new unit_animation_component(*this))
+    , hidden_(false)
+    , hp_bar_scaling_(0)
+    , xp_bar_scaling_(0)
+    , modifications_()
+    , abilities_()
+    , advancements_()
+    , description_()
+    , special_notes_()
+    , usage_()
+    , halo_()
+    , ellipse_()
+    , random_traits_(true)
+    , generate_name_(true)
+    , upkeep_(upkeep_full())
+    , changed_attributes_(0)
+    , invisibility_cache_()
 {
 
 }
@@ -905,9 +905,9 @@ std::vector<std::string> unit::get_traits_list() const
 
 	for(const config& mod : modifications_.child_range("trait"))
 	{
-			// Make sure to return empty id trait strings as otherwise
-			// names will not match in length (Bug #21967)
-			res.push_back(mod["id"]);
+		    // Make sure to return empty id trait strings as otherwise
+		    // names will not match in length (Bug #21967)
+		    res.push_back(mod["id"]);
 	}
 	return res;
 }
@@ -1362,9 +1362,9 @@ bool unit::get_state(const std::string& state) const
 	// Backwards compatibility for not_living. Don't remove before 1.12
 	if(state == "not_living") {
 		return
-			get_state("undrainable")  &&
-			get_state("unpoisonable") &&
-			get_state("unplagueable");
+		    get_state("undrainable")  &&
+		    get_state("unpoisonable") &&
+		    get_state("unplagueable");
 	}
 
 	return states_.find(state) != states_.end();
@@ -1706,8 +1706,8 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 		unit_abilities::effect resist_effect(resistance_abilities, 100-res, false);
 
 		res = 100 - std::min<int>(
-			resist_effect.get_composite_value(),
-			resistance_abilities.highest("max_value").first
+		    resist_effect.get_composite_value(),
+		    resistance_abilities.highest("max_value").first
 		);
 	}
 
@@ -1889,8 +1889,8 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		const std::string& increase_total = effect["increase_total"];
 		if(!increase_total.empty()) {
 			return VGETTEXT(
-				"<span color=\"$color\">$number_or_percent</span> HP",
-				{{"number_or_percent", utils::print_modifier(increase_total)}, {"color", increase_total[0] == '-' ? "red" : "green"}});
+			    "<span color=\"$color\">$number_or_percent</span> HP",
+			    {{"number_or_percent", utils::print_modifier(increase_total)}, {"color", increase_total[0] == '-' ? "red" : "green"}});
 		}
 	} else {
 		const std::string& increase = effect["increase"];
@@ -1899,34 +1899,34 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		}
 		if(apply_to == "movement") {
 			return VNGETTEXT(
-				"<span color=\"$color\">$number_or_percent</span> move",
-				"<span color=\"$color\">$number_or_percent</span> moves",
-				std::stoi(increase),
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+			    "<span color=\"$color\">$number_or_percent</span> move",
+			    "<span color=\"$color\">$number_or_percent</span> moves",
+			    std::stoi(increase),
+			    {{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
 		} else if(apply_to == "vision") {
 			return VGETTEXT(
-				"<span color=\"$color\">$number_or_percent</span> vision",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+			    "<span color=\"$color\">$number_or_percent</span> vision",
+			    {{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
 		} else if(apply_to == "jamming") {
 			return VGETTEXT(
-				"<span color=\"$color\">$number_or_percent</span> jamming",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+			    "<span color=\"$color\">$number_or_percent</span> jamming",
+			    {{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
 		} else if(apply_to == "max_experience") {
 			// Unlike others, decreasing experience is a *GOOD* thing
 			return VGETTEXT(
-				"<span color=\"$color\">$number_or_percent</span> XP to advance",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
+			    "<span color=\"$color\">$number_or_percent</span> XP to advance",
+			    {{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
 		} else if(apply_to == "max_attacks") {
 			return VNGETTEXT(
-					"<span color=\"$color\">$number_or_percent</span> attack per turn",
-					"<span color=\"$color\">$number_or_percent</span> attacks per turn",
-					std::stoi(increase),
-					{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+			        "<span color=\"$color\">$number_or_percent</span> attack per turn",
+			        "<span color=\"$color\">$number_or_percent</span> attacks per turn",
+			        std::stoi(increase),
+			        {{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
 		} else if(apply_to == "recall_cost") {
 			// Unlike others, decreasing recall cost is a *GOOD* thing
 			return VGETTEXT(
-				"<span color=\"$color\">$number_or_percent</span> cost to recall",
-				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
+			    "<span color=\"$color\">$number_or_percent</span> cost to recall",
+			    {{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
 		}
 	}
 	return "";
@@ -1953,7 +1953,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(const config::attribute_value* v = effect.get("description")) {
 			description_ = *v;
 		}
-		
+
 		if(config::const_child_itors cfg_range = effect.child_range("special_note")) {
 			for(const config& c : cfg_range) {
 				if(!c["remove"].to_bool()) {
@@ -1972,8 +1972,8 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if(apply_to == "remove_attacks") {
 		set_attr_changed(UA_ATTACKS);
 		auto iter = std::remove_if(attacks_.begin(), attacks_.end(), [&effect](attack_ptr a) {
-			return a->matches_filter(effect);
-		});
+		    return a->matches_filter(effect);
+	    });
 
 		attacks_.erase(iter, attacks_.end());
 	} else if(apply_to == "attack") {
@@ -2576,8 +2576,8 @@ unit& unit::mark_clone(bool is_temporary)
 
 
 unit_movement_resetter::unit_movement_resetter(const unit &u, bool operate)
-	: u_(const_cast<unit&>(u))
-	, moves_(u.movement_left(true))
+    : u_(const_cast<unit&>(u))
+    , moves_(u.movement_left(true))
 {
 	if(operate) {
 		u_.set_movement(u_.total_movement());
@@ -2633,6 +2633,15 @@ void unit::remove_attacks_ai()
 	}
 
 	set_attacks(0);
+}
+
+int unit::max_attack_range() const
+{
+	int range = 1;
+	for (const auto& attack : attacks_) {
+		range = std::max(range, attack->max_range());
+	}
+	return range;
 }
 
 void unit::remove_movement_ai()

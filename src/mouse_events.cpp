@@ -664,6 +664,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 	}
 
 	bool wb_active = pc_.get_whiteboard()->is_active();
+	size_t source_attack_range = 1;
 
 	{
 		// Check the unit SOURCE of the attack
@@ -723,6 +724,14 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		if(!target_eligible) {
 			return map_location();
 		}
+
+		source_attack_range = source_unit->max_attack_range();
+	}
+
+	// TODO: finalize behavior for ranged attacks
+	// if selected hex is in attack range, attack from current hex
+	if (distance_between(selected_hex_, loc) <= source_attack_range) {
+		return selected_hex_;
 	}
 
 	const map_location::DIRECTION preferred = loc.get_relative_dir(previous_hex_);
@@ -862,7 +871,7 @@ void mouse_handler::move_action(bool browse)
 		attack_from = current_unit_attacks_from(hex);
 	} // end planned unit map scope
 
-	// see if we're trying to do a attack or move-and-attack
+	// see if we're trying to do an attack or move-and-attack
 	if((!browse || pc_.get_whiteboard()->is_active()) && attack_from.valid()) {
 		// Ignore this command if commands are disabled.
 		if(commands_disabled) {
@@ -1413,14 +1422,8 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 	const team& cur_team = current_team();
 	const team& u_team = pc_.gamestate().board_.teams_[u->side() - 1];
 
-	// Find weapon with largest range.
-	int attack_range = 1;
-	for (const auto& attack : u->attacks()) {
-		attack_range = std::max(attack_range, attack.max_range());
-	}
-
 	// Check each hex in range.
-	auto range = get_tiles_in_range(u->get_location(), attack_range);
+	auto range = get_tiles_in_range(u->get_location(), u->max_attack_range());
 
 	for(const map_location& loc : range) {
 		// No attack option shown if no visible unit present.
