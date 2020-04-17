@@ -20,6 +20,7 @@ struct chatroom_log
 {
 	std::string log;
 	bool whisper;
+	std::string received_motd = "";
 };
 
 extern std::map<std::string, chatroom_log> default_chat_log;

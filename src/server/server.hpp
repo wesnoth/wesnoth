@@ -237,6 +237,6 @@ private:
 
 void send_to_player(socket_ptr socket, simple_wml::document& doc);
 
-void send_server_message(socket_ptr socket, const std::string& message);
+void send_server_message(socket_ptr socket, const std::string& message, const std::string& type);
 
 }

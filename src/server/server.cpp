@@ -808,11 +808,11 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		// This string is parsed by the client!
 		send_server_message(socket,
 			"You are now recognized as an administrator. "
-			"If you no longer want to be automatically authenticated use '/query signout'.");
+			"If you no longer want to be automatically authenticated use '/query signout'.", "alert");
 	}
 
 	if(auth_ban.type) {
-		send_server_message(socket, "You are currently banned by the forum administration.");
+		send_server_message(socket, "You are currently banned by the forum administration.", "alert");
 	}
 
 	// Log the IP
@@ -996,13 +996,13 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 	send_to_player(socket, games_and_users_list_);
 
 	if(!motd_.empty()) {
-		send_server_message(socket, motd_);
+		send_server_message(socket, motd_, "motd");
 	}
 	if(version_info(player.version()) < secure_version ){
-		send_server_message(socket, "You are using version " + player.version() + " which has known security issues that can be used to compromise your computer. We strongly recommend updating to a Wesnoth version " + secure_version.str() + " or newer!");
+		send_server_message(socket, "You are using version " + player.version() + " which has known security issues that can be used to compromise your computer. We strongly recommend updating to a Wesnoth version " + secure_version.str() + " or newer!", "alert");
 	}
 	if(version_info(player.version()) < version_info(recommended_version_)) {
-		send_server_message(socket, "A newer Wesnoth version, " + recommended_version_ + ", is out!");
+		send_server_message(socket, "A newer Wesnoth version, " + recommended_version_ + ", is out!", "alert");
 	}
 
 	read_from_player(socket);
@@ -1090,13 +1090,13 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 
 	auto receiver_iter = player_connections_.get<name_t>().find(whisper["receiver"].to_string());
 	if(receiver_iter == player_connections_.get<name_t>().end()) {
-		send_server_message(socket, "Can't find '" + whisper["receiver"].to_string() + "'.");
+		send_server_message(socket, "Can't find '" + whisper["receiver"].to_string() + "'.", "error");
 		return;
 	}
 
 	auto g = player_connections_.find(socket)->get_game();
 	if(g && g->started() && g->is_player(receiver_iter->socket()) && g->is_member(socket)) {
-		send_server_message(socket, "You cannot send private messages to players in a running game you observe.");
+		send_server_message(socket, "You cannot send private messages to players in a running game you observe.", "error");
 		return;
 	}
 
@@ -1166,7 +1166,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		response << query_help_msg;
 	} else if(command == "admin" || command.compare(0, 6, "admin ") == 0) {
 		if(admin_passwd_.empty()) {
-			send_server_message(socket, "No password set.");
+			send_server_message(socket, "No password set.", "error");
 			return;
 		}
 
@@ -1194,14 +1194,14 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		response << "Error: unrecognized query: '" << command << "'\n" << query_help_msg;
 	}
 
-	send_server_message(socket, response.str());
+	send_server_message(socket, response.str(), "info");
 }
 
 void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 {
 	// Check if this server allows nick registration at all
 	if(!user_handler_) {
-		send_server_message(socket, "This server does not allow username registration.");
+		send_server_message(socket, "This server does not allow username registration.", "error");
 		return;
 	}
 
@@ -1209,12 +1209,12 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 	if(nickserv.child("info")) {
 		try {
 			std::string res = user_handler_->user_info((*nickserv.child("info"))["name"].to_string());
-			send_server_message(socket, res);
+			send_server_message(socket, res, "info");
 		} catch(const user_handler::error& e) {
 			send_server_message(socket,
 				"There was an error looking up the details of the user '"
 				+ (*nickserv.child("info"))["name"].to_string() + "'. "
-				+ " The error message was: " + e.message
+				+ " The error message was: " + e.message, "error"
 			);
 		}
 
@@ -1227,7 +1227,7 @@ void server::handle_message(socket_ptr socket, simple_wml::node& message)
 	auto user = player_connections_.find(socket);
 	if(user->info().is_message_flooding()) {
 		send_server_message(socket,
-			"Warning: you are sending too many messages too fast. Your message has not been relayed.");
+			"Warning: you are sending too many messages too fast. Your message has not been relayed.", "error");
 		return;
 	}
 
@@ -1258,7 +1258,7 @@ void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game
 
 		send_server_message(socket,
 			"This server is shutting down. You aren't allowed to make new games. Please "
-			"reconnect to the new server.");
+			"reconnect to the new server.", "error");
 
 		send_to_player(socket, games_and_users_list_);
 		return;
@@ -1350,21 +1350,21 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to join unknown game:\t" << game_id << ".\n";
 		async_send_doc(socket, leave_game_doc);
-		send_server_message(socket, "Attempt to join unknown game.");
+		send_server_message(socket, "Attempt to join unknown game.", "error");
 		async_send_doc(socket, games_and_users_list_);
 		return;
 	} else if(!g->level_init()) {
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to join uninitialized game:\t\"" << g->name() << "\" (" << game_id << ").\n";
 		async_send_doc(socket, leave_game_doc);
-		send_server_message(socket, "Attempt to join an uninitialized game.");
+		send_server_message(socket, "Attempt to join an uninitialized game.", "error");
 		async_send_doc(socket, games_and_users_list_);
 		return;
 	} else if(player_connections_.find(socket)->info().is_moderator()) {
 		// Admins are always allowed to join.
 	} else if(g->registered_users_only() && !player_connections_.find(socket)->info().registered()) {
 		async_send_doc(socket, leave_game_doc);
-		send_server_message(socket, "Only registered users are allowed to join this game.");
+		send_server_message(socket, "Only registered users are allowed to join this game.", "error");
 		async_send_doc(socket, games_and_users_list_);
 		return;
 	} else if(g->player_is_banned(socket, player_connections_.find(socket)->info().name())) {
@@ -1372,14 +1372,14 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 				   << "\tReject banned player: " << player_connections_.find(socket)->info().name()
 				   << "\tfrom game:\t\"" << g->name() << "\" (" << game_id << ").\n";
 		async_send_doc(socket, leave_game_doc);
-		send_server_message(socket, "You are banned from this game.");
+		send_server_message(socket, "You are banned from this game.", "error");
 		async_send_doc(socket, games_and_users_list_);
 		return;
 	} else if(!g->password_matches(password)) {
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to join game:\t\"" << g->name() << "\" (" << game_id << ") with bad password\n";
 		async_send_doc(socket, leave_game_doc);
-		send_server_message(socket, "Incorrect password.");
+		send_server_message(socket, "Incorrect password.", "error");
 		async_send_doc(socket, games_and_users_list_);
 		return;
 	}
@@ -1393,7 +1393,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 
 		send_server_message(socket,
 			"Attempt to observe a game that doesn't allow observers. (You probably joined the "
-			"game shortly after it filled up.)");
+			"game shortly after it filled up.)", "error");
 
 		async_send_doc(socket, games_and_users_list_);
 		return;
@@ -1461,7 +1461,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 
 				send_server_message(socket,
 					"The scenario data is missing the [multiplayer] tag which contains the "
-					"game settings. Game aborted.");
+					"game settings. Game aborted.", "error");
 				return;
 			}
 
@@ -1578,7 +1578,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 
 			send_server_message(socket,
 				"The scenario data is missing the [multiplayer] tag which contains the game "
-				"settings. Game aborted.");
+				"settings. Game aborted.", "error");
 			return;
 		}
 
@@ -1844,12 +1844,13 @@ void send_to_player(socket_ptr socket, simple_wml::document& doc)
 	}
 }
 
-void send_server_message(socket_ptr socket, const std::string& message)
+void send_server_message(socket_ptr socket, const std::string& message, const std::string& type)
 {
 	simple_wml::document server_message;
 	simple_wml::node& msg = server_message.root().add_child("message");
 	msg.set_attr("sender", "server");
 	msg.set_attr_dup("message", message.c_str());
+	msg.set_attr_dup("type", type.c_str());
 
 	send_to_player(socket, server_message);
 }
@@ -1921,7 +1922,7 @@ void server::send_server_message_to_lobby(const std::string& message, socket_ptr
 {
 	for(const auto& player : player_connections_.get<game_t>().equal_range(0)) {
 		if(player.socket() != exclude) {
-			send_server_message(player.socket(), message);
+			send_server_message(player.socket(), message, "alert");
 		}
 	}
 }
@@ -1930,7 +1931,7 @@ void server::send_server_message_to_all(const std::string& message, socket_ptr e
 {
 	for(const auto& player : player_connections_) {
 		if(player.socket() != exclude) {
-			send_server_message(player.socket(), message);
+			send_server_message(player.socket(), message, "alert");
 		}
 	}
 }
