@@ -754,6 +754,15 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 			room = "lobby";
 		}
 
+		if(log_ != nullptr && data["type"].str() == "motd") {
+			if(log_->at("lobby").received_motd == message) {
+				LOG_LB << "Ignoring repeated motd\n";
+				return;
+			} else {
+				log_->at("lobby").received_motd = message;
+			}
+		}
+
 		add_chat_room_message_received(room, sender, message);
 	}
 
