@@ -42,7 +42,7 @@ struct wml_loc {};
 struct map_location {
 	/** Valid directions which can be moved in our hexagonal world. */
 	enum DIRECTION { NORTH=0, NORTH_EAST=1, SOUTH_EAST=2, SOUTH=3,
-		             SOUTH_WEST=4, NORTH_WEST=5, NDIRECTIONS=6 };
+					 SOUTH_WEST=4, NORTH_WEST=5, NDIRECTIONS=6 };
 
 	static const std::vector<DIRECTION> & default_dirs();
 
@@ -105,7 +105,7 @@ struct map_location {
 	bool operator==(const map_location& a) const { return x == a.x && y == a.y; }
 	bool operator!=(const map_location& a) const { return !operator==(a); }
 
-	    /** three-way comparator */
+        /** three-way comparator */
 	int do_compare(const map_location& a) const {return x == a.x ? y - a.y : x - a.x; }
 
 	// Location arithmetic operations treating the locations as vectors in

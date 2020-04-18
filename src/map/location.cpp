@@ -51,8 +51,8 @@ std::ostream &operator<<(std::ostream &s, const std::vector<map_location>& v) {
  **/
 const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
 	static const std::vector<map_location::DIRECTION> dirs {map_location::NORTH,
-		        map_location::NORTH_EAST, map_location::SOUTH_EAST, map_location::SOUTH,
-		        map_location::SOUTH_WEST, map_location::NORTH_WEST};
+				map_location::NORTH_EAST, map_location::SOUTH_EAST, map_location::SOUTH,
+				map_location::SOUTH_WEST, map_location::NORTH_WEST};
 	return dirs;
 }
 
@@ -140,20 +140,20 @@ std::vector<map_location::DIRECTION> map_location::parse_directions(const std::s
 std::string map_location::write_direction(map_location::DIRECTION dir)
 {
 	switch(dir) {
-	    case NORTH:
-		    return std::string("n");
-	    case NORTH_EAST:
-		    return std::string("ne");
-	    case NORTH_WEST:
-		    return std::string("nw");
-	    case SOUTH:
-		    return std::string("s");
-	    case SOUTH_EAST:
-		    return std::string("se");
-	    case SOUTH_WEST:
-		    return std::string("sw");
-	    default:
-		    return std::string();
+		case NORTH:
+			return std::string("n");
+		case NORTH_EAST:
+			return std::string("ne");
+		case NORTH_WEST:
+			return std::string("nw");
+		case SOUTH:
+			return std::string("s");
+		case SOUTH_EAST:
+			return std::string("se");
+		case SOUTH_WEST:
+			return std::string("sw");
+		default:
+			return std::string();
 
 	}
 }
@@ -161,27 +161,27 @@ std::string map_location::write_direction(map_location::DIRECTION dir)
 std::string map_location::write_translated_direction(map_location::DIRECTION dir)
 {
 	switch(dir) {
-	    case NORTH:
-		    return _("North");
-	    case NORTH_EAST:
-		    return _("North East");
-	    case NORTH_WEST:
-		    return _("North West");
-	    case SOUTH:
-		    return _("South");
-	    case SOUTH_EAST:
-		    return _("South East");
-	    case SOUTH_WEST:
-		    return _("South West");
-	    default:
-		    return std::string();
+		case NORTH:
+			return _("North");
+		case NORTH_EAST:
+			return _("North East");
+		case NORTH_WEST:
+			return _("North West");
+		case SOUTH:
+			return _("South");
+		case SOUTH_EAST:
+			return _("South East");
+		case SOUTH_WEST:
+			return _("South West");
+		default:
+			return std::string();
 
 	}
 }
 
 map_location::map_location(const config& cfg, const variable_set *variables) :
-        x(-1000),
-        y(-1000)
+		x(-1000),
+		y(-1000)
 {
 	std::string xs = cfg["x"], ys = cfg["y"];
 	if (variables)
@@ -337,7 +337,7 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 		const auto yr = utils::parse_range(ylocs[i]);
 		// The ranges are 1-based, but the coordinates are 0-based. Thus the +1 s.
 		if(xr.first <= x+1 && x+1 <= xr.second
-		    && yr.first <= y+1 && y+1 <= yr.second) {
+			&& yr.first <= y+1 && y+1 <= yr.second) {
 			return true;
 		}
 	}
@@ -408,9 +408,9 @@ void write_location_range(const std::set<map_location>& locs, config& cfg)
 
 	std::stringstream x, y;
 	std::set<map_location>::const_iterator
-	        i = locs.begin(),
-	        first = i,
-	        last = i;
+			i = locs.begin(),
+			first = i,
+			last = i;
 
 	x << (i->wml_x());
 	y << (i->wml_y());
@@ -456,7 +456,7 @@ void write_locations(const std::vector<map_location>& locs, config& cfg)
 	std::stringstream x, y;
 
 	std::vector<map_location>::const_iterator i = locs.begin(),
-	        end = locs.end();
+			end = locs.end();
 
 	for(; i != end; ++i) {
 		x << (i->wml_x());
@@ -520,37 +520,37 @@ bool tiles_adjacent(const map_location& a, const map_location& b)
 	// and the x value of the hex with the greater y value is even.
 
 	switch (a.y - b.y) {
-	    case 1 :
-		    switch (a.x - b.x) {
-			    case 1:
-			    case -1:
-				    return (a.x & 1) == 0;
-			    case 0:
-				    return true;
-			    default:
-				    return false;
+		case 1 :
+			switch (a.x - b.x) {
+				case 1:
+				case -1:
+					return (a.x & 1) == 0;
+				case 0:
+					return true;
+				default:
+					return false;
 			}
-	    case -1 :
-		    switch (a.x - b.x) {
-			    case 1:
-			    case -1:
-				    return (b.x & 1) == 0;
-			    case 0:
-				    return true;
-			    default:
-				    return false;
+		case -1 :
+			switch (a.x - b.x) {
+				case 1:
+				case -1:
+					return (b.x & 1) == 0;
+				case 0:
+					return true;
+				default:
+					return false;
 			}
-	    case 0 :
-		    return ((a.x - b.x) == 1) || ((a.x - b.x) == - 1);
-	    default:
-		    return false;
+		case 0 :
+			return ((a.x - b.x) == 1) || ((a.x - b.x) == - 1);
+		default:
+			return false;
 	}
 
 	/*
 	const int xdiff = std::abs(a.x - b.x);
 	const int ydiff = std::abs(a.y - b.y);
 	return (ydiff == 1 && a.x == b.x) || (xdiff == 1 && a.y == b.y) ||
-		   (xdiff == 1 && ydiff == 1 && (a.y > b.y ? is_even(a.x) : is_even(b.x)));
+	       (xdiff == 1 && ydiff == 1 && (a.y > b.y ? is_even(a.x) : is_even(b.x)));
 	*/
 }
 
@@ -589,7 +589,7 @@ std::size_t distance_between(const map_location& a, const map_location& b)
 	const std::size_t hdistance = std::abs(a.x - b.x);
 
 	const std::size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
-	    || (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y)) ) ? 1 : 0;
+		|| (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y)) ) ? 1 : 0;
 
 /* Don't want to include util.hpp in this header
 	const std::size_t vpenalty = ( (is_even(a.x) && is_odd(b.x) && (a.y < b.y))

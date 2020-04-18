@@ -80,7 +80,7 @@ public:
 
 	/// Calculates the number of attacks this weapon has, considering specials.
 	void modified_attacks(bool is_backstab, unsigned & min_attacks,
-						  unsigned & max_attacks) const;
+	                      unsigned & max_attacks) const;
 	/// Returns the damage per attack of this weapon, considering specials.
 	int modified_damage(bool is_backstab) const;
 	/// Returns list for weapon like abilitiesfor each ability type.
