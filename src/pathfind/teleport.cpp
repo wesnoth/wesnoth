@@ -263,13 +263,11 @@ const teleport_map get_teleport_locations(const unit &u,
 {
 	std::vector<teleport_group> groups;
 
-	if (u.get_ability_bool("teleport")) {
-		for (const unit_ability & teleport : u.get_abilities("teleport")) {
-			const int tunnel_count = (teleport.first)->child_count("tunnel");
-			for(int i = 0; i < tunnel_count; ++i) {
-				config teleport_group_cfg = (teleport.first)->child("tunnel", i);
-				groups.emplace_back(vconfig(teleport_group_cfg, true), false);
-			}
+	for (const unit_ability & teleport : u.get_abilities("teleport")) {
+		const int tunnel_count = (teleport.first)->child_count("tunnel");
+		for(int i = 0; i < tunnel_count; ++i) {
+			config teleport_group_cfg = (teleport.first)->child("tunnel", i);
+			groups.emplace_back(vconfig(teleport_group_cfg, true), false);
 		}
 	}
 
