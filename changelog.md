@@ -16,6 +16,9 @@
    * Dragonguard HP increased from 59 to 63
    * Bone Shooter HP increased from 40 to 42
    * Banebow HP increased from 50 to 52
+ ### WML engine
+   * ability_special_id_active and ability_special_type_active added to [filter_weapon] filter for filter abilities used like       
+     weapon specials
 
 ## Version 1.15.3
  ### AI
