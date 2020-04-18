@@ -59,6 +59,8 @@ attack_type::attack_type(const config& cfg) :
 	num_attacks_(cfg["number"]),
 	attack_weight_(cfg["attack_weight"].to_double(1.0)),
 	defense_weight_(cfg["defense_weight"].to_double(1.0)),
+	hit_chance_penalty_(cfg["hit_chance_penalty"].to_int(0)),
+	damage_penalty_(cfg["damage_penalty"].to_int(0)),
 	accuracy_(cfg["accuracy"]),
 	movement_used_(cfg["movement_used"].to_int(100000)),
 	parry_(cfg["parry"]),
@@ -73,6 +75,26 @@ attack_type::attack_type(const config& cfg) :
 			icon_ = "attacks/" + id_ + ".png";
 		else
 			icon_ = "attacks/blank-attack.png";
+	}
+	
+	if (!cfg["hit_chance_penalty_formula"].blank()) {
+		try {
+			hit_chance_penalty_formula_ = wfl::const_formula_ptr(new wfl::formula(
+							cfg["hit_chance_penalty_formula"],
+							new wfl::gamestate_function_symbol_table()));
+		} catch (const wfl::formula_error& e) {
+			lg::wml_error() << "Formula error in weapon definition: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+		}
+	}
+	
+	if (!cfg["damage_penalty_formula"].blank()) {
+		try {
+			damage_penalty_formula_ = wfl::const_formula_ptr(new wfl::formula(
+							cfg["damage_penalty_formula"],
+							new wfl::gamestate_function_symbol_table()));
+		} catch (const wfl::formula_error& e) {
+			lg::wml_error() << "Formula error in weapon definition: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+		}
 	}
 }
 
@@ -90,6 +112,29 @@ std::string attack_type::accuracy_parry_description() const
 	}
 
 	return s.str();
+}
+
+int attack_type::hit_chance_penalty(int range) const
+{
+	if (hit_chance_penalty_formula_ != nullptr) {
+		config cfg;
+		cfg["range"] = range;
+		wfl::config_callable range_var(cfg);
+		int res = hit_chance_penalty_formula_->evaluate(range_var).as_int();
+		return res;
+	}
+	return (range-1)*hit_chance_penalty_;
+}
+
+int attack_type::damage_penalty(int range) const
+{
+	if (damage_penalty_formula_ != nullptr) {
+		config cfg;
+		cfg["range"] = range;
+		wfl::config_callable range_var(cfg);
+		return damage_penalty_formula_->evaluate(range_var).as_int();
+	}
+	return (range-1)*damage_penalty_;
 }
 
 /**

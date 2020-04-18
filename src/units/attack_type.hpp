@@ -26,6 +26,7 @@
 #include <boost/dynamic_bitset_fwd.hpp>
 
 #include "units/ptr.hpp" // for attack_ptr
+#include "formula/formula_fwd.hpp"
 
 class unit_ability_list;
 class unit_type;
@@ -65,7 +66,9 @@ public:
 	void set_attack_weight(double value) { attack_weight_ = value; set_changed(true); }
 	void set_defense_weight(double value) { defense_weight_ = value; set_changed(true); }
 	void set_specials(config value) { specials_ = value; set_changed(true); }
-
+	
+	int hit_chance_penalty(int range) const;
+	int damage_penalty(int range) const;
 
 	// In unit_abilities.cpp:
 
@@ -177,6 +180,11 @@ private:
 	int num_attacks_;
 	double attack_weight_;
 	double defense_weight_;
+	
+	wfl::const_formula_ptr hit_chance_penalty_formula_;
+	wfl::const_formula_ptr damage_penalty_formula_;
+	int hit_chance_penalty_;
+	int damage_penalty_;
 
 	int accuracy_;
 	int movement_used_;

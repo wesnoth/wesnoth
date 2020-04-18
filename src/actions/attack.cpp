@@ -171,8 +171,11 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	}
 
 	// Compute chance to hit.
-	signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
-		- (opp_weapon ? opp_weapon->parry() : 0);
+	int distance = distance_between(u_loc, opp_loc);
+	signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc))
+						+ weapon->accuracy()
+						- weapon->hit_chance_penalty(distance)
+						- (opp_weapon ? opp_weapon->parry() : 0);
 
 	cth = utils::clamp(cth, 0, 100);
 
@@ -188,7 +191,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	chance_to_hit = utils::clamp(cth, 0, 100);
 
 	// Compute base damage done with the weapon.
-	int base_damage = weapon->modified_damage(backstab_pos);
+	int base_damage = std::max(0, weapon->modified_damage(backstab_pos) - weapon->damage_penalty(distance));
 
 	// Get the damage multiplier applied to the base damage of the weapon.
 	int damage_multiplier = 100;
