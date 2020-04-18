@@ -2637,9 +2637,18 @@ void unit::remove_attacks_ai()
 
 int unit::max_attack_range() const
 {
-	int range = 1;
+	int range = std::numeric_limits<int>::min();
 	for (const auto& attack : attacks_) {
 		range = std::max(range, attack->max_range());
+	}
+	return range;
+}
+
+int unit::min_attack_range() const
+{
+	int range = std::numeric_limits<int>::max();
+	for (const auto& attack : attacks_) {
+		range = std::min(range, attack->min_range());
 	}
 	return range;
 }

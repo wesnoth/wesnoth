@@ -911,6 +911,12 @@ public:
 		return make_attack_itors(attacks_);
 	}
 
+	/** Whether the unit has at least one attack. */
+	bool has_attacks() const
+	{
+		return !attacks_.empty();
+	}
+
 	/**
 	 * Adds a new attack to the unit.
 	 * @param position An iterator pointing to the attack before which to insert the new one.
@@ -957,6 +963,9 @@ public:
 
 	/** The highest range this unit can attack over. */
 	int max_attack_range() const;
+
+	/** The lowest range this unit can attack over. */
+	int min_attack_range() const;
 
 	void set_max_attacks(int value)
 	{

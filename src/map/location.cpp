@@ -554,8 +554,11 @@ bool tiles_adjacent(const map_location& a, const map_location& b)
 	*/
 }
 
-std::vector<map_location> get_tiles_in_range(const map_location& a, const int n)
+std::vector<map_location> get_tiles_in_range(const map_location& a, int min, int max)
 {
+	assert(min > 0);
+	assert(max >= min);
+
 	// convert to cubical -> enumerate tiles -> convert back
 	// see https://www.redblobgames.com/grids/hexagons/ for detailed description
 
@@ -566,12 +569,13 @@ std::vector<map_location> get_tiles_in_range(const map_location& a, const int n)
 	int cz = a.y - (a.x - (a.x&1)) / 2;
 
 	// enumerate range
-	for (int dx = -n; dx <= n; ++dx) {
-		for (int dy = std::max(-n, -dx-n); dy <= std::min(n, -dx+n); ++dy) {
-			if (dx == 0 && dy == 0) {
+	for (int dx = -max; dx <= max; ++dx) {
+		for (int dy = std::max(-max, -dx-max); dy <= std::min(max, -dx+max); ++dy) {
+			int dz = -dx - dy;
+			if (std::abs(dx) + std::abs(dy) + std::abs(dz) < 2*min) {
 				continue;
 			}
-			int z = cz - dx - dy;
+			int z = cz + dz;
 			int x = a.x + dx;
 			// convert back to offset
 			tiles.emplace_back(x, z + (x - (x&1)) / 2);

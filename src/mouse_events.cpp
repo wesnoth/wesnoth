@@ -1414,7 +1414,7 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 {
 	// Cannot attack if no attacks are left.
-	if(u->attacks_left() == 0) {
+	if(u->attacks_left() == 0 || !u->has_attacks()) {
 		return;
 	}
 
@@ -1422,9 +1422,8 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 	const team& cur_team = current_team();
 	const team& u_team = pc_.gamestate().board_.teams_[u->side() - 1];
 
-	// Check each hex in range.
-	auto range = get_tiles_in_range(u->get_location(), u->max_attack_range());
-
+	// Check each tile in the unit's attack range
+	auto range = get_tiles_in_range(u->get_location(), u->min_attack_range(), u->max_attack_range());
 	for(const map_location& loc : range) {
 		// No attack option shown if no visible unit present.
 		// (Visible to current team, not necessarily the unit's team.)
