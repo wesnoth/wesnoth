@@ -1645,6 +1645,8 @@ public:
 	{
 		return get_abilities_weapons(tag_name, loc_, weapon, opp_weapon);
 	}
+	
+	const config &abilities() const { return abilities_; }
 
 	/**
 	 * Gets the names and descriptions of this unit's abilities. Location-independent variant
