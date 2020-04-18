@@ -189,7 +189,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if(ability_active(tag_name, i, loc)
 			&& ability_affects_self(tag_name, i, loc))
 			{
-			res.emplace_back(&i, loc);
+			res.emplace_back(&i, loc, loc);
 		}
 	}
 
@@ -214,7 +214,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 				&& it->ability_active(tag_name, j, adjacent[i])
 				&& ability_affects_adjacent(tag_name, j, i, loc, *it))
 				{
-				res.emplace_back(&j, adjacent[i]);
+				res.emplace_back(&i, loc, adjacent[i]);
 			}
 		}
 	}
@@ -518,10 +518,10 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 					return def;
 				}
 				wfl::map_formula_callable callable(std::make_shared<wfl::unit_callable>(*u_itor));
-				if (auto uptr = unit.find_unit_ptr(ability_info.student_loc)) {
+				if (auto uptr = units.find_unit_ptr(ability_info.student_loc)) {
 					callable.add("student", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
 				}
-				if (auto uptr = unit.find_unit_ptr(receiver_loc)) {
+				if (auto uptr = units.find_unit_ptr(receiver_loc)) {
 					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
 				}
 				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table), callable);
@@ -773,7 +773,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 
 	for(const config& i : other_attack_->specials_.child_range(special)) {
 		if(other_attack_->special_active(i, AFFECT_OTHER, special)) {
-			res.emplace_back(&i, other_loc_);
+			res.emplace_back(&i, other_loc_, other_loc_);
 		}
 	}
 	return res;

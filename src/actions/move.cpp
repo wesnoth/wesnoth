@@ -850,7 +850,7 @@ namespace { // Private helpers for move_unit()
 	{
 		for(const unit_ability &hide : ambusher.get_abilities("hides"))
 		{
-			const std::string & ambush_string = (*hide.first)["alert"].str();
+			const std::string & ambush_string = (*hide.ability_cfg)["alert"].str();
 			if (!ambush_string.empty()) {
 				return ambush_string;
 			}

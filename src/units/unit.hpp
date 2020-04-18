@@ -47,6 +47,13 @@ namespace unit_detail
 /// Data typedef for unit_ability_list.
 struct unit_ability
 {
+	unit_ability(const config* ability_cfg, map_location student_loc, map_location teacher_loc)
+		: student_loc(student_loc)
+		, teacher_loc(teacher_loc)
+		, ability_cfg(ability_cfg)
+	{
+
+	}
 	/// Used by the formula in the ability.
 	/// The REAL location of the student (not the 'we are assiming the student is at this position' location)
 	/// once unit_ability_list can contain abilities from different 'students', as it contains abilities from
