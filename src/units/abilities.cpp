@@ -1248,13 +1248,9 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool simp
 	return false;
 }
 
-bool attack_type::bool_ability(const std::string& ability) const
+bool attack_type::bool_ability(const std::string& ability, bool simple_check, bool special_id, bool special_tags) const
 {
-	bool abil_bool = get_special_bool(ability);
-	unit_ability_list abil = list_ability(ability);
-	if(!abil.empty()) {
-		abil_bool = true;
-	}
+	bool abil_bool = get_special_bool(ability, simple_check, special_id, special_tags) || get_special_ability_bool(ability, simple_check, special_id, special_tags);
 	return abil_bool;
 }
 //end of emulate weapon special functions.
