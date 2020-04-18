@@ -89,7 +89,7 @@ public:
 	unit_ability_list get_special_ability(const std::string& ability) const;
 	///return an boolean value for abilities like poison slow firstrike or petrifies
 	bool get_special_ability_bool(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
-	bool bool_ability(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
+	bool bool_ability(const std::string& ability, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
 
 	// In unit_types.cpp:
 
