@@ -672,14 +672,12 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		// Check that there's a selected unit
 		const unit_map::const_iterator source_unit = find_unit(selected_hex_);
 
-		bool source_eligible = source_unit.valid();
-		if(!source_eligible) {
+		if(!source_unit.valid()) {
 			return map_location();
 		}
 
 		// The selected unit must at least belong to the player currently controlling this client.
-		source_eligible &= source_unit->side() == gui_->viewing_side();
-		if(!source_eligible) {
+		if(source_unit->side() != gui_->viewing_side()) {
 			return map_location();
 		}
 
@@ -687,15 +685,13 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		// - If whiteboard is enabled, we allow planning attacks outside of player's turn
 		// - If whiteboard is disabled, it must be the turn of the player controlling this client
 		if(!wb_active) {
-			source_eligible &= gui_->viewing_side() == pc_.current_side();
-			if(!source_eligible) {
+			if(gui_->viewing_side() != pc_.current_side()) {
 				return map_location();
 			}
 		}
 
 		// Unit must have attacks left
-		source_eligible &= source_unit->attacks_left() != 0;
-		if(!source_eligible) {
+		if(source_unit->attacks_left() == 0 || !source_unit->has_attacks()) {
 			return map_location();
 		}
 
@@ -706,29 +702,25 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		// Check that there's a unit at the target location
 		const unit_map::const_iterator target_unit = find_unit(loc);
 
-		bool target_eligible = target_unit.valid();
-		if(!target_eligible) {
+		if(!target_unit.valid()) {
 			return map_location();
 		}
 
 		// The player controlling this client must be an enemy of the target unit's side
-		target_eligible &= viewer.is_enemy(target_unit->side());
-		if(!target_eligible) {
+		if(!viewer.is_enemy(target_unit->side())) {
 			return map_location();
 		}
 
 		// Sanity check: source and target of the attack shouldn't be on the same team
 		assert(source_unit->side() != target_unit->side());
 
-		target_eligible &= !target_unit->incapacitated();
-		if(!target_eligible) {
+		if(target_unit->incapacitated()) {
 			return map_location();
 		}
 
 		source_attack_range = source_unit->max_attack_range();
 	}
 
-	// TODO: finalize behavior for ranged attacks
 	// if selected hex is in attack range, attack from current hex
 	if(distance_between(selected_hex_, loc) <= source_attack_range) {
 		return selected_hex_;
