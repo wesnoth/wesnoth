@@ -53,6 +53,10 @@ public:
 	double attack_weight() const { return attack_weight_; }
 	double defense_weight() const { return defense_weight_; }
 	const config &specials() const { return specials_; }
+	int hit_chance_penalty() const { return hit_chance_penalty_; }
+	int damage_penalty() const { return damage_penalty_; }
+	const std::string& hit_chance_penalty_formula() const;
+	const std::string& damage_penalty_formula() const;
 
 	void set_name(const t_string& value) { description_  = value; set_changed(true); }
 	void set_id(const std::string& value) { id_ = value; set_changed(true); }
@@ -66,9 +70,19 @@ public:
 	void set_attack_weight(double value) { attack_weight_ = value; set_changed(true); }
 	void set_defense_weight(double value) { defense_weight_ = value; set_changed(true); }
 	void set_specials(config value) { specials_ = value; set_changed(true); }
+	void set_min_range(int value);
+	void set_max_range(int value);
+	void set_hit_chance_penalty(int value);
+	void set_damage_penalty(int value);
+	void set_hit_chance_penalty_formula(const std::string& value);
+	void set_damage_penalty_formula(const std::string& value);
 	
-	int hit_chance_penalty(int range) const;
-	int damage_penalty(int range) const;
+private:
+	static wfl::const_formula_ptr construct_formula(const std::string& formula);
+	
+public:
+	int calculate_hit_chance_penalty(int range) const;
+	int calculate_damage_penalty(int range) const;
 	
 	t_string hit_chance_penalty_description() const;
 	t_string damage_penalty_description() const;

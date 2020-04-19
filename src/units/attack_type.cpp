@@ -59,6 +59,8 @@ attack_type::attack_type(const config& cfg) :
 	num_attacks_(cfg["number"]),
 	attack_weight_(cfg["attack_weight"].to_double(1.0)),
 	defense_weight_(cfg["defense_weight"].to_double(1.0)),
+	hit_chance_penalty_formula_(construct_formula(cfg["hit_chance_penalty_formula"])),
+	damage_penalty_formula_(construct_formula(cfg["damage_penalty_formula"])),
 	hit_chance_penalty_(cfg["hit_chance_penalty"].to_int(0)),
 	damage_penalty_(cfg["damage_penalty"].to_int(0)),
 	accuracy_(cfg["accuracy"]),
@@ -75,26 +77,6 @@ attack_type::attack_type(const config& cfg) :
 			icon_ = "attacks/" + id_ + ".png";
 		else
 			icon_ = "attacks/blank-attack.png";
-	}
-	
-	if (!cfg["hit_chance_penalty_formula"].blank()) {
-		try {
-			hit_chance_penalty_formula_ = wfl::const_formula_ptr(new wfl::formula(
-							cfg["hit_chance_penalty_formula"],
-							new wfl::gamestate_function_symbol_table()));
-		} catch (const wfl::formula_error& e) {
-			lg::wml_error() << "Formula error in weapon definition: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
-		}
-	}
-	
-	if (!cfg["damage_penalty_formula"].blank()) {
-		try {
-			damage_penalty_formula_ = wfl::const_formula_ptr(new wfl::formula(
-							cfg["damage_penalty_formula"],
-							new wfl::gamestate_function_symbol_table()));
-		} catch (const wfl::formula_error& e) {
-			lg::wml_error() << "Formula error in weapon definition: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
-		}
 	}
 }
 
@@ -114,7 +96,76 @@ std::string attack_type::accuracy_parry_description() const
 	return s.str();
 }
 
-int attack_type::hit_chance_penalty(int range) const
+const std::string &attack_type::hit_chance_penalty_formula() const
+{ 
+	static std::string empty;
+	return hit_chance_penalty_formula_ == nullptr
+			? empty
+			: hit_chance_penalty_formula_->str();
+}
+
+const std::string &attack_type::damage_penalty_formula() const
+{
+	static std::string empty;
+	return damage_penalty_formula_ == nullptr
+			? empty
+			: damage_penalty_formula_->str();
+}
+
+void attack_type::set_min_range(int value) {
+	min_range_ = value;
+	max_range_ = std::max(min_range_, max_range_);
+	set_changed(true);
+}
+
+void attack_type::set_max_range(int value) {
+	max_range_ = value;
+	min_range_ = std::min(min_range_, max_range_);
+	set_changed(true);
+}
+
+void attack_type::set_hit_chance_penalty(int value)
+{
+	hit_chance_penalty_ = value;
+	hit_chance_penalty_formula_ = nullptr;
+	set_changed(true);
+}
+
+void attack_type::set_damage_penalty(int value)
+{
+	damage_penalty_ = value;
+	damage_penalty_formula_ = nullptr;
+	set_changed(true);
+}
+
+void attack_type::set_hit_chance_penalty_formula(const std::string &value)
+{
+	hit_chance_penalty_formula_ = construct_formula(value);
+	set_changed(true);
+}
+
+void attack_type::set_damage_penalty_formula(const std::string &value)
+{
+	damage_penalty_formula_ = construct_formula(value);
+	set_changed(true);
+}
+
+wfl::const_formula_ptr attack_type::construct_formula(const std::string &formula)
+{
+	if (formula.empty()) {
+		return nullptr;
+	}
+	
+	try {
+		return wfl::const_formula_ptr(new wfl::formula(formula, new wfl::gamestate_function_symbol_table()));
+	} catch (const wfl::formula_error& e) {
+		lg::wml_error() << "Formula error in weapon definition: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+	}
+	
+	return nullptr;
+}
+
+int attack_type::calculate_hit_chance_penalty(int range) const
 {
 	if (hit_chance_penalty_formula_ != nullptr) {
 		config cfg;
@@ -126,7 +177,7 @@ int attack_type::hit_chance_penalty(int range) const
 	return (range-1)*hit_chance_penalty_;
 }
 
-int attack_type::damage_penalty(int range) const
+int attack_type::calculate_damage_penalty(int range) const
 {
 	if (damage_penalty_formula_ != nullptr) {
 		config cfg;
@@ -175,6 +226,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::string& filter_accuracy = filter["accuracy"];
 	const std::string& filter_parry = filter["parry"];
 	const std::string& filter_movement = filter["movement_used"];
+	const std::string& filter_min_range = filter["min_range"];
+	const std::string& filter_max_range = filter["max_range"];
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
@@ -201,6 +254,12 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		return false;
 
 	if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges(filter_movement)))
+		return false;
+	
+	if (!filter_min_range.empty() && !in_ranges(attack.min_range(), utils::parse_ranges(filter_min_range)))
+		return false;
+	
+	if (!filter_max_range.empty() && !in_ranges(attack.max_range(), utils::parse_ranges(filter_max_range)))
 		return false;
 
 	if ( !filter_name.empty() && std::find(filter_name.begin(), filter_name.end(), attack.id()) == filter_name.end() )
@@ -361,6 +420,13 @@ bool attack_type::apply_modification(const config& cfg)
 	const std::string& set_parry = cfg["set_parry"];
 	const std::string& increase_movement = cfg["increase_movement_used"];
 	const std::string& set_movement = cfg["set_movement_used"];
+	const std::string& increase_max_range = cfg["increase_max_range"];
+	const std::string& set_min_range = cfg["set_min_range"];
+	const std::string& set_max_range = cfg["set_max_range"];
+	const std::string& set_damage_penalty = cfg["set_damage_penalty"];
+	const std::string& set_hit_chance_penalty = cfg["set_hit_chance_penalty"];
+	const std::string& set_damage_penalty_formula = cfg["set_damage_penalty_formula"];
+	const std::string& set_hit_chance_penalty_formula = cfg["set_hit_chance_penalty_formula"];
 	// NB: If you add something here that requires a description,
 	// it needs to be added to describe_modification as well.
 
@@ -469,6 +535,34 @@ bool attack_type::apply_modification(const config& cfg)
 	if(set_defense_weight.empty() == false) {
 		defense_weight_ = lexical_cast_default<double>(set_defense_weight,1.0);
 	}
+	
+	if(increase_max_range.empty() == false) {
+		max_range_ += utils::apply_modifier(max_range_, increase_max_range);
+	}
+	
+	if(set_min_range.empty() == false) {
+		this->set_min_range(std::stoi(set_min_range));
+	}
+	
+	if(set_max_range.empty() == false) {
+		this->set_max_range(std::stoi(set_max_range));
+	}
+	
+	if(set_damage_penalty.empty() == false) {
+		this->set_damage_penalty(std::stoi(set_damage_penalty));
+	}
+	
+	if(set_hit_chance_penalty.empty() == false) {
+		this->set_hit_chance_penalty(std::stoi(set_hit_chance_penalty));
+	}
+	
+	if(set_damage_penalty_formula.empty() == false) {
+		damage_penalty_formula_ = construct_formula(set_damage_penalty_formula);
+	}
+	
+	if(set_hit_chance_penalty_formula.empty() == false) {
+		damage_penalty_formula_ = construct_formula(set_hit_chance_penalty_formula);
+	}
 
 	return true;
 }
@@ -501,6 +595,11 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		const std::string& set_parry = cfg["set_parry"];
 		const std::string& increase_movement = cfg["increase_movement_used"];
 		const std::string& set_movement = cfg["set_movement_used"];
+		const std::string& increase_max_range = cfg["increase_max_range"];
+		const std::string& set_min_range = cfg["set_min_range"];
+		const std::string& set_max_range = cfg["set_max_range"];
+		const std::string& set_damage_penalty = cfg["set_damage_penalty"];
+		const std::string& set_hit_chance_penalty = cfg["set_hit_chance_penalty"];
 
 		std::vector<t_string> desc;
 
@@ -584,6 +683,45 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				"<span color=\"$color\">$number_or_percent</span> movement points",
 				std::stoi(increase_movement),
 				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "red" : "green"}}));
+		}
+		
+		if(!increase_max_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent</span> range",
+				{{"number_or_percent", utils::print_modifier(increase_max_range)}, {"color", increase_max_range[0] == '-' ? "red" : "green"}}));
+		}
+		
+		if(!set_min_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
+				"$number minimum range",
+				{{"number", set_min_range}}));
+		}
+		
+		if(!set_max_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
+				"$number maximum range",
+				{{"number", set_max_range}}));
+		}
+		
+		if(!set_damage_penalty.empty()) {
+			desc.emplace_back(VNGETTEXT(
+				// TRANSLATORS: Current value for WML code set_damage_penalty, documented in https://wiki.wesnoth.org/EffectWML
+				"$number hitpoint/hex",
+				"$number hitpoints/hex",
+				std::stoi(set_damage_penalty),
+				{{"number", set_damage_penalty}}));
+		}
+		
+		if(!set_hit_chance_penalty.empty()) {
+			desc.emplace_back(VNGETTEXT(
+				// TRANSLATORS: Current value for WML code set_hit_chance_penalty, documented in https://wiki.wesnoth.org/EffectWML
+				"$number|%/hex",
+				"$number|%/hex",
+				std::stoi(set_hit_chance_penalty),
+				{{"number", set_hit_chance_penalty}}));
 		}
 
 		*description = utils::format_conjunct_list("", desc);
