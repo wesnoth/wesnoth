@@ -47,6 +47,9 @@ surface::surface(int w, int h)
 		neutral_pixel_format.Bmask,
 		neutral_pixel_format.Amask);
 #endif
+	if(!surface_) {
+		std::cerr << "Failed ot create a surface of size, " << w << "x" << h << " Reason: " << SDL_GetError() << "\n";
+	}
 }
 
 bool surface::is_neutral() const
