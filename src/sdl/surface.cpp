@@ -16,6 +16,8 @@
 #include "sdl/rect.hpp"
 #include "video.hpp"
 
+#include <iostream>
+
 const SDL_PixelFormat surface::neutral_pixel_format = []() {
 #if SDL_VERSION_ATLEAST(2, 0, 6)
 	return *SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888)->format;
@@ -48,7 +50,8 @@ surface::surface(int w, int h)
 		neutral_pixel_format.Amask);
 #endif
 	if(!surface_) {
-		std::cerr << "Failed ot create a surface of size, " << w << "x" << h << " Reason: " << SDL_GetError() << "\n";
+		//TODO: maybe use one of our our custom logstreams instead, not sure which one would fit.
+		std::cerr << "Failed to create a surface of size " << w << "x" << h << " Reason: " << SDL_GetError() << "\n";
 	}
 }
 
