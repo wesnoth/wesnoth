@@ -558,6 +558,15 @@ std::string unit_topic_generator::operator()() const {
 		ss << "\n\n<header>text='" << escape(_("unit help^Attacks"))
 			<< "'</header>\n\n";
 		table_spec table;
+		
+		// There aren't real ranged units in mainline, so we show that info only when relevant
+		bool has_real_ranged = false;
+		for (const attack_type& attack : type_.attacks()) {
+			if (attack.max_range() > 0) {
+				has_real_ranged = true;
+				break;
+			}
+		}
 
 		std::vector<item> first_row;
 		// Dummy element, icons are below.
@@ -566,6 +575,10 @@ std::string unit_topic_generator::operator()() const {
 		push_header(first_row, _("Strikes"));
 		push_header(first_row, _("Range"));
 		push_header(first_row, _("Type"));
+		if (has_real_ranged) {
+			push_header(first_row, _("Damage"));
+			push_header(first_row, _("Hit chance"));
+		}
 		push_header(first_row, _("Special"));
 		table.push_back(first_row);
 		// Print information about every attack.
@@ -604,6 +617,18 @@ std::string unit_topic_generator::operator()() const {
 			// Damage type, with icon
 			const std::string type_icon = "icons/profiles/" + attack.type() + ".png";
 			push_tab_pair(row, lang_type, type_icon, padding);
+			
+			// Damage & hit chance modifiers from range
+			if (has_real_ranged) {
+				if (attack.max_range() == 1) {
+					// Not a ranged attack, leave empty
+					push_tab_pair(row, "");
+					push_tab_pair(row, "");
+				} else {
+					push_tab_pair(row, attack.damage_penalty_description());
+					push_tab_pair(row, attack.hit_chance_penalty_description());
+				}
+			}
 
 			// Show this attack's special, if it has any. Cross
 			// reference it to the section describing the special.
@@ -623,6 +648,7 @@ std::string unit_topic_generator::operator()() const {
 				row.emplace_back(attack_ss.str(), font::line_width(lang_special, normal_font_size));
 			}
 			table.push_back(row);
+			
 		}
 		ss << generate_table(table);
 	}

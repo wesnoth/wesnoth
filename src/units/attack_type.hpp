@@ -69,6 +69,9 @@ public:
 	
 	int hit_chance_penalty(int range) const;
 	int damage_penalty(int range) const;
+	
+	t_string hit_chance_penalty_description() const;
+	t_string damage_penalty_description() const;
 
 	// In unit_abilities.cpp:
 

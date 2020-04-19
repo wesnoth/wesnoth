@@ -137,6 +137,32 @@ int attack_type::damage_penalty(int range) const
 	return (range-1)*damage_penalty_;
 }
 
+t_string attack_type::hit_chance_penalty_description() const
+{
+	if (hit_chance_penalty_formula_ != nullptr) {
+		return _("custom");
+	}
+	if (hit_chance_penalty_ == 0) {
+		return "";
+	}
+	std::stringstream ss;
+	ss << utils::signed_percent(-hit_chance_penalty_) << "/" << _("hex");
+	return ss.str();
+}
+
+t_string attack_type::damage_penalty_description() const
+{
+	if (damage_penalty_formula_ != nullptr) {
+		return _("custom");
+	}
+	if (damage_penalty_ == 0) {
+		return "";
+	}
+	std::stringstream ss;
+	ss << -damage_penalty_ << "/" << _("hex");
+	return ss.str();
+}
+
 /**
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
