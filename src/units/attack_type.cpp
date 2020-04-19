@@ -575,6 +575,14 @@ void attack_type::write(config& cfg) const
 	cfg["range"] = range_;
 	cfg["min_range"] = min_range_;
 	cfg["max_range"] = max_range_;
+	cfg["damage_penalty"] = damage_penalty_;
+	cfg["hit_chance_penalty"] = hit_chance_penalty_;
+	cfg["damage_penalty_formula"] = damage_penalty_formula_ == nullptr
+									? ""
+									: damage_penalty_formula_->str();
+	cfg["hit_chance_penalty_formula"] = hit_chance_penalty_formula_ == nullptr
+										? ""
+										: hit_chance_penalty_formula_->str();
 	cfg["damage"] = damage_;
 	cfg["number"] = num_attacks_;
 	cfg["attack_weight"] = attack_weight_;
