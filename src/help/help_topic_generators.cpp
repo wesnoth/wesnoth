@@ -561,8 +561,8 @@ std::string unit_topic_generator::operator()() const {
 		
 		// There aren't real ranged units in mainline, so we show that info only when relevant
 		bool has_real_ranged = false;
-		for (const attack_type& attack : type_.attacks()) {
-			if (attack.max_range() > 0) {
+		for(const attack_type& attack : type_.attacks()) {
+			if(attack.max_range() > 0) {
 				has_real_ranged = true;
 				break;
 			}
@@ -575,7 +575,7 @@ std::string unit_topic_generator::operator()() const {
 		push_header(first_row, _("Strikes"));
 		push_header(first_row, _("Range"));
 		push_header(first_row, _("Type"));
-		if (has_real_ranged) {
+		if(has_real_ranged) {
 			push_header(first_row, _("Damage"));
 			push_header(first_row, _("Hit chance"));
 		}
@@ -619,8 +619,8 @@ std::string unit_topic_generator::operator()() const {
 			push_tab_pair(row, lang_type, type_icon, padding);
 			
 			// Damage & hit chance modifiers from range
-			if (has_real_ranged) {
-				if (attack.max_range() == 1) {
+			if(has_real_ranged) {
+				if(attack.max_range() == 1) {
 					// Not a ranged attack, leave empty
 					push_tab_pair(row, "");
 					push_tab_pair(row, "");
@@ -648,7 +648,6 @@ std::string unit_topic_generator::operator()() const {
 				row.emplace_back(attack_ss.str(), font::line_width(lang_special, normal_font_size));
 			}
 			table.push_back(row);
-			
 		}
 		ss << generate_table(table);
 	}

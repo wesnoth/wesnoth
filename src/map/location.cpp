@@ -569,10 +569,10 @@ std::vector<map_location> get_tiles_in_range(const map_location& a, int min, int
 	int cz = a.y - (a.x - (a.x&1)) / 2;
 
 	// enumerate range
-	for (int dx = -max; dx <= max; ++dx) {
-		for (int dy = std::max(-max, -dx-max); dy <= std::min(max, -dx+max); ++dy) {
+	for(int dx = -max; dx <= max; ++dx) {
+		for(int dy = std::max(-max, -dx-max); dy <= std::min(max, -dx+max); ++dy) {
 			int dz = -dx - dy;
-			if (std::abs(dx) + std::abs(dy) + std::abs(dz) < 2*min) {
+			if(std::abs(dx) + std::abs(dy) + std::abs(dz) < 2*min) {
 				continue;
 			}
 			int z = cz + dz;

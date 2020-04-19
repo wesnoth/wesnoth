@@ -730,7 +730,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 
 	// TODO: finalize behavior for ranged attacks
 	// if selected hex is in attack range, attack from current hex
-	if (distance_between(selected_hex_, loc) <= source_attack_range) {
+	if(distance_between(selected_hex_, loc) <= source_attack_range) {
 		return selected_hex_;
 	}
 

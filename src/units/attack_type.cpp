@@ -112,13 +112,15 @@ const std::string &attack_type::damage_penalty_formula() const
 			: damage_penalty_formula_->str();
 }
 
-void attack_type::set_min_range(int value) {
+void attack_type::set_min_range(int value)
+{
 	min_range_ = value;
 	max_range_ = std::max(min_range_, max_range_);
 	set_changed(true);
 }
 
-void attack_type::set_max_range(int value) {
+void attack_type::set_max_range(int value)
+{
 	max_range_ = value;
 	min_range_ = std::min(min_range_, max_range_);
 	set_changed(true);
@@ -152,7 +154,7 @@ void attack_type::set_damage_penalty_formula(const std::string &value)
 
 wfl::const_formula_ptr attack_type::construct_formula(const std::string &formula)
 {
-	if (formula.empty()) {
+	if(formula.empty()) {
 		return nullptr;
 	}
 	
@@ -167,19 +169,18 @@ wfl::const_formula_ptr attack_type::construct_formula(const std::string &formula
 
 int attack_type::calculate_hit_chance_penalty(int range) const
 {
-	if (hit_chance_penalty_formula_ != nullptr) {
+	if(hit_chance_penalty_formula_ != nullptr) {
 		config cfg;
 		cfg["range"] = range;
 		wfl::config_callable range_var(cfg);
-		int res = hit_chance_penalty_formula_->evaluate(range_var).as_int();
-		return res;
+		return hit_chance_penalty_formula_->evaluate(range_var).as_int();
 	}
 	return (range-1)*hit_chance_penalty_;
 }
 
 int attack_type::calculate_damage_penalty(int range) const
 {
-	if (damage_penalty_formula_ != nullptr) {
+	if(damage_penalty_formula_ != nullptr) {
 		config cfg;
 		cfg["range"] = range;
 		wfl::config_callable range_var(cfg);
@@ -190,7 +191,7 @@ int attack_type::calculate_damage_penalty(int range) const
 
 t_string attack_type::hit_chance_penalty_description() const
 {
-	if (hit_chance_penalty_formula_ != nullptr) {
+	if(hit_chance_penalty_formula_ != nullptr) {
 		return _("custom");
 	}
 	if (hit_chance_penalty_ == 0) {
@@ -203,7 +204,7 @@ t_string attack_type::hit_chance_penalty_description() const
 
 t_string attack_type::damage_penalty_description() const
 {
-	if (damage_penalty_formula_ != nullptr) {
+	if(damage_penalty_formula_ != nullptr) {
 		return _("custom");
 	}
 	if (damage_penalty_ == 0) {
