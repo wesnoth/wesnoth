@@ -425,7 +425,7 @@ theme::label::label()
 }
 
 theme::label::label(std::size_t sw, std::size_t sh, const config& cfg)
-        : object(sw, sh, cfg)
+	: object(sw, sh, cfg)
 	, text_(cfg["prefix"].str() + cfg["text"].str() + cfg["postfix"].str())
 	, icon_(cfg["icon"])
 	, font_(cfg["font_size"])
@@ -442,7 +442,7 @@ theme::label::label(std::size_t sw, std::size_t sh, const config& cfg)
 }
 
 theme::status_item::status_item(std::size_t sw, std::size_t sh, const config& cfg)
-        : object(sw, sh, cfg)
+	: object(sw, sh, cfg)
 	, prefix_(cfg["prefix"].str() + cfg["prefix_literal"].str())
 	, postfix_(cfg["postfix_literal"].str() + cfg["postfix"].str())
 	, label_()
@@ -454,7 +454,7 @@ theme::status_item::status_item(std::size_t sw, std::size_t sh, const config& cf
 		font_ = DefaultFontSize;
 
 	if(const config& label_child = cfg.child("label")) {
-	        label_ = label(sw, sh, label_child);
+		label_ = label(sw, sh, label_child);
 	}
 
 	if(cfg.has_attribute("font_rgb")) {
@@ -464,7 +464,7 @@ theme::status_item::status_item(std::size_t sw, std::size_t sh, const config& cf
 }
 
 theme::panel::panel(std::size_t sw, std::size_t sh, const config& cfg)
-        : object(sw, sh, cfg)
+	: object(sw, sh, cfg)
 	, image_(cfg["image"])
 {
 }
@@ -479,7 +479,7 @@ theme::slider::slider()
 {
 }
 theme::slider::slider(std::size_t sw, std::size_t sh, const config& cfg)
-        : object(sw, sh, cfg)
+	: object(sw, sh, cfg)
 	, title_(cfg["title"].str() + cfg["title_literal"].str())
 	, tooltip_(cfg["tooltip"])
 	, image_(cfg["image"])
@@ -501,7 +501,7 @@ theme::menu::menu()
 }
 
 theme::menu::menu(std::size_t sw, std::size_t sh, const config& cfg)
-        : object(sw, sh, cfg)
+	: object(sw, sh, cfg)
 	, button_(cfg["button"].to_bool(true))
 	, context_(cfg["is_context_menu"].to_bool(false))
 	, title_(cfg["title"].str() + cfg["title_literal"].str())
@@ -537,7 +537,7 @@ theme::action::action()
 }
 
 theme::action::action(std::size_t sw, std::size_t sh, const config& cfg)
-        : object(sw, sh, cfg)
+	: object(sw, sh, cfg)
 	, context_(cfg["is_context_menu"].to_bool())
 	, auto_tooltip_(cfg["auto_tooltip"].to_bool(false))
 	, tooltip_name_prepend_(cfg["tooltip_name_prepend"].to_bool(false))
@@ -691,42 +691,42 @@ bool theme::set_resolution(const SDL_Rect& screen)
 void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 {
 	if(const config& c = cfg.child("main_map")) {
-	        main_map_ = object(sw, sh, c);
+		main_map_ = object(sw, sh, c);
 	}
 
 	if(const config& c = cfg.child("mini_map")) {
-	        mini_map_ = object(sw, sh, c);
+		mini_map_ = object(sw, sh, c);
 	}
 
 	if(const config& c = cfg.child("palette")) {
-	        palette_ = object(sw, sh, c);
+		palette_ = object(sw, sh, c);
 	}
 
 	if(const config& status_cfg = cfg.child("status")) {
 		for(const config::any_child& i : status_cfg.all_children_range()) {
-		        status_[i.key].reset(new status_item(sw, sh, i.cfg));
+			status_[i.key].reset(new status_item(sw, sh, i.cfg));
 		}
 		if(const config& unit_image_cfg = status_cfg.child("unit_image")) {
-		        unit_image_ = object(sw, sh, unit_image_cfg);
+			unit_image_ = object(sw, sh, unit_image_cfg);
 		} else {
 			unit_image_ = object();
 		}
 	}
 
 	for(const config& p : cfg.child_range("panel")) {
-	        panel new_panel(sw, sh, p);
+		panel new_panel(sw, sh, p);
 		set_object_location(new_panel, p["rect"], p["ref"]);
 		panels_.push_back(new_panel);
 	}
 
 	for(const config& lb : cfg.child_range("label")) {
-	        label new_label(sw, sh, lb);
+		label new_label(sw, sh, lb);
 		set_object_location(new_label, lb["rect"], lb["ref"]);
 		labels_.push_back(new_label);
 	}
 
 	for(const config& m : cfg.child_range("menu")) {
-	        menu new_menu(sw, sh, m);
+		menu new_menu(sw, sh, m);
 		DBG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
 		if(new_menu.is_context())
 			context_ = new_menu;
@@ -739,7 +739,7 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 	}
 
 	for(const config& a : cfg.child_range("action")) {
-	        action new_action(sw, sh, a);
+		action new_action(sw, sh, a);
 		DBG_DP << "adding action: " << (new_action.is_context() ? "is context" : "not context") << "\n";
 		if(new_action.is_context())
 			action_context_ = new_action;
@@ -752,7 +752,7 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 	}
 
 	for(const config& s : cfg.child_range("slider")) {
-	        slider new_slider(sw, sh, s);
+		slider new_slider(sw, sh, s);
 		DBG_DP << "adding slider\n";
 		set_object_location(new_slider, s["rect"], s["ref"]);
 		sliders_.push_back(new_slider);
@@ -856,7 +856,7 @@ void theme::modify(const config& cfg)
 
 	// Add new theme objects.
 	for(const config& c : cfg.child_range("add")) {
-	        add_object(cur_spec_width_, cur_spec_height_, c);
+		add_object(cur_spec_width_, cur_spec_height_, c);
 	}
 
 	// Remove existent theme objects.
