@@ -1108,6 +1108,10 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 			}
 		}
 	}
+	
+	if(!other_attack_) {
+		return abil_list;
+	}
 
 	if(other_) {
 		abil_other_list.append((*other_).get_abilities(ability, other_loc_));
