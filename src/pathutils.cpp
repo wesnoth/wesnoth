@@ -60,6 +60,19 @@ void get_tiles_in_radius(const map_location& center, const int radius,
 	}
 }
 
+/**
+ * Function that will add to @a result all locations which are at least @a
+ * min_radius but at most @max_radius tiles from @a center (excluding @a center
+ * itself). @a result must be a std::vector of locations.
+ */
+void get_tiles_in_radius(const map_location &center, const int min_radius,
+						 const int max_radius, std::vector<map_location> &result)
+{
+	for(int n = min_radius; n <= max_radius; ++n) {
+		get_tile_ring(center, n, result);
+	}
+}
+
 
 /**
  * Function that will add to @a result all locations within @a radius tiles

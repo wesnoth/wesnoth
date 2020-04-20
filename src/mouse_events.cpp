@@ -30,6 +30,7 @@
 #include "log.hpp"                           // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                       // for gamemap
 #include "pathfind/teleport.hpp"             // for get_teleport_locations, etc
+#include "pathutils.hpp"
 #include "play_controller.hpp"               // for playing_side, set_button_state
 #include "replay_helper.hpp"
 #include "scripting/game_lua_kernel.hpp"
@@ -1415,7 +1416,8 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 	const team& u_team = pc_.gamestate().board_.teams_[u->side() - 1];
 
 	// Check each tile in the unit's attack range
-	auto range = get_tiles_in_range(u->get_location(), u->min_attack_range(), u->max_attack_range());
+	std::vector<map_location> range;
+	get_tiles_in_radius(u->get_location(), u->min_attack_range(), u->max_attack_range(), range);
 	for(const map_location& loc : range) {
 		// No attack option shown if no visible unit present.
 		// (Visible to current team, not necessarily the unit's team.)

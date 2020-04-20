@@ -179,11 +179,6 @@ bool tiles_adjacent(const map_location& a, const map_location& b);
 void get_adjacent_tiles(const map_location& a, map_location* res);
 
 /**
- * Collect all locations at least min and at most max distance from a.
- */
-std::vector<map_location> get_tiles_in_range(const map_location& a, int min, int max);
-
-/**
  * Function which gives the number of hexes between two tiles
  * (i.e. the minimum number of hexes that have to be traversed
  * to get from one hex to the other).
