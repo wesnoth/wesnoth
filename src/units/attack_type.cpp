@@ -114,14 +114,14 @@ const std::string &attack_type::damage_penalty_formula() const
 
 void attack_type::set_min_range(int value)
 {
-	min_range_ = value;
+	min_range_ = std::max(value, 1);
 	max_range_ = std::max(min_range_, max_range_);
 	set_changed(true);
 }
 
 void attack_type::set_max_range(int value)
 {
-	max_range_ = value;
+	max_range_ = std::max(value, 1);
 	min_range_ = std::min(min_range_, max_range_);
 	set_changed(true);
 }
