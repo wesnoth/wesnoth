@@ -97,9 +97,12 @@ state_definition::state_definition(const config& cfg)
  * text_font_family & font_family & "" &
  *     The font family, needed to determine the minimal size for the text. $
  *
- * text_font_size & unsigned & 0 &
+ * text_font_size & formula for unsigned & 0 &
  *     The font size, which needs to be used to determine the minimal size for
- *     the text. $
+ *     the text. Currently, the only variables supported in this formula are
+ *     those available from the global GUI2 settings object, namely screen_width,
+ *     screen_height, screen_pitch_microns, gamemap_width, gamemap_height, and
+ *     gamemap_x_offset. $
  *
  * text_font_style & font_style & "" &
  *     The font style, which needs to be used to determine the minimal size for

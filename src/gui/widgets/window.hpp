@@ -503,10 +503,10 @@ private:
 	const unsigned vertical_placement_;
 
 	/** The maximum width if automatic_placement_ is true. */
-	unsigned maximum_width_;
+	typed_formula<unsigned> maximum_width_;
 
 	/** The maximum height if automatic_placement_ is true. */
-	unsigned maximum_height_;
+	typed_formula<unsigned> maximum_height_;
 
 	/** The formula to calculate the x value of the dialog. */
 	typed_formula<unsigned> x_;

@@ -170,8 +170,8 @@ public:
 		unsigned vertical_placement;
 		unsigned horizontal_placement;
 
-		unsigned maximum_width;
-		unsigned maximum_height;
+		typed_formula<unsigned> maximum_width;
+		typed_formula<unsigned> maximum_height;
 
 		bool click_dismiss;
 
