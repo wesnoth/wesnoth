@@ -109,9 +109,6 @@ private:
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true) const;
-	bool special_ability_active(const config& special, AFFECTS whom, const std::string& tag_name,
-	                    bool include_backstab=true) const;
-
 	// Used via specials_context() to control which specials are
 	// considered active.
 	friend class specials_context_t;
