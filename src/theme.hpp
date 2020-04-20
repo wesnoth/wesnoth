@@ -41,8 +41,8 @@ class theme
 	class object
 	{
 	public:
-	        object();
-	        object(std::size_t sw, std::size_t sh, const config& cfg);
+		object();
+		object(std::size_t sw, std::size_t sh, const config& cfg);
 		virtual ~object() { }
 
 		virtual SDL_Rect& location(const SDL_Rect& screen) const;
@@ -72,7 +72,7 @@ class theme
 		mutable SDL_Rect last_screen_;
 
 		ANCHORING xanchor_, yanchor_;
-	        std::size_t spec_width_, spec_height_;
+		std::size_t spec_width_, spec_height_;
 
 		static ANCHORING read_anchor(const std::string& str);
 	};
@@ -311,5 +311,5 @@ private:
 	border_t border_;
 
 	SDL_Rect screen_dimensions_;
-        std::size_t cur_spec_width_, cur_spec_height_;
+	std::size_t cur_spec_width_, cur_spec_height_;
 };
