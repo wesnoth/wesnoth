@@ -16,6 +16,9 @@
 
 #include "display.hpp"
 
+#define MAGIC_DPI_MATCH_VIDEO 96
+#define MICRONS_PER_INCH 25400
+
 namespace gui2
 {
 bool new_widgets = false;
@@ -24,7 +27,7 @@ namespace settings
 {
 unsigned screen_width = 0;
 unsigned screen_height = 0;
-
+unsigned screen_pitch_microns = MICRONS_PER_INCH / MAGIC_DPI_MATCH_VIDEO;
 unsigned gamemap_x_offset = 0;
 
 unsigned gamemap_width = 0;
@@ -47,10 +50,16 @@ std::vector<game_tip> tips;
 
 void update_screen_size_variables()
 {
-	const SDL_Rect rect = CVideo::get_singleton().screen_area();
+	CVideo& vid = CVideo::get_singleton();
+	const SDL_Rect rect = vid.screen_area();
 
 	screen_width = rect.w;
 	screen_height = rect.h;
+
+	float scalew, scaleh;
+	std::tie(scalew, scaleh) = vid.get_dpi_scale_factor();
+	float avgscale = (scalew + scaleh)/2;
+	screen_pitch_microns = MICRONS_PER_INCH / (avgscale * MAGIC_DPI_MATCH_VIDEO);
 
 	gamemap_width = screen_width;
 	gamemap_height = screen_height;

@@ -118,7 +118,7 @@ text_box::text_box(const implementation::builder_styled_widget& builder)
 	const auto conf = cast_config_to<text_box_definition>();
 	assert(conf);
 
-	set_font_size(conf->text_font_size);
+	set_font_size(get_text_font_size());
 	set_font_style(conf->text_font_style);
 
 	update_offsets();
@@ -279,7 +279,7 @@ void text_box::update_offsets()
 	assert(conf);
 
 	// FIXME: This should use pango-cairo code path instead of sdl_ttf code path
-	text_height_ = font::get_max_height(conf->text_font_size);
+	text_height_ = font::get_max_height(get_text_font_size());
 
 	wfl::map_formula_callable variables;
 	variables.add("height", wfl::variant(get_height()));
