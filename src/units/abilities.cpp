@@ -1133,8 +1133,6 @@ namespace { // Helpers for attack_type::special_active()
 			}
 		return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*u, loc, *u2);
 	}
-}
-
 }//anonymous namespace
 
 
