@@ -95,6 +95,17 @@ public:
 	{
 		return !formula_.empty();
 	}
+	
+	/** Return the formula stored in the object, or the value there is no formula. */
+	std::string formula_or_value() const
+	{
+		if (has_formula())
+			return formula_;
+		return lexical_cast<std::string>(value_);
+	}
+	
+	/** Reinitialize the object with @a str and @a value. */
+	void set(const std::string& str, const T value = T());
 
 private:
 	/**
@@ -135,15 +146,7 @@ template<typename T>
 typed_formula<T>::typed_formula(const std::string& str, const T value)
 	: formula_(), value_(value)
 {
-	if(str.empty()) {
-		return;
-	}
-
-	if(str[0] == '(') {
-		formula_ = str;
-	} else {
-		convert(str);
-	}
+	set(str, value);
 }
 
 template<typename T>
@@ -158,6 +161,21 @@ operator()(const wfl::map_formula_callable& variables, wfl::function_symbol_tabl
 	const T& result = execute(v);
 
 	return result;
+}
+
+template<typename T>
+inline void typed_formula<T>::set(const std::string& str, const T value)
+{
+	value_ = value;
+	if (str.empty()) {
+		return;
+	}
+	
+	if(str[0] == '(') {
+		formula_ = str;
+	} else {
+		convert(str);
+	}
 }
 
 /**
