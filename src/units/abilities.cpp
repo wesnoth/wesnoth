@@ -1182,7 +1182,7 @@ static unit_ability_list list_leadership(const std::string& ability, unit_const_
 			abil_affect = !special_affects_self((*i->ability_cfg), attacker);
 		}
 		bool fighter_filter = !ability_apply_filter(un, up, ability, *i->ability_cfg, loc, opp_loc, attacker, weapon, opp_weapon);
-		const std::string& active_on = (*i->first)["active_on"];
+		const std::string& active_on = (*i->ability_cfg)["active_on"];
 		bool active_on_bool = !(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense"));
 		if(active_on_bool || fighter_filter || abil_affect) {
 			i = abil.erase(i);
