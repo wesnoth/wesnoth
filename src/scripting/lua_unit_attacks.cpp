@@ -266,10 +266,8 @@ static int impl_unit_attack_get(lua_State *L)
 	return_int_attrib("parry", attack.parry());
 	return_int_attrib("min_range", attack.min_range());
 	return_int_attrib("max_range", attack.max_range());
-	return_int_attrib("damage_penalty", attack.damage_penalty());
-	return_int_attrib("hit_chance_penalty", attack.hit_chance_penalty());
-	return_string_attrib("damage_penalty_formula", attack.damage_penalty_formula());
-	return_string_attrib("hit_chance_penalty_formula", attack.hit_chance_penalty_formula());
+	return_string_attrib("damage_penalty", attack.damage_penalty());
+	return_string_attrib("hit_chance_penalty", attack.hit_chance_penalty());
 	return_cfgref_attrib("specials", attack.specials());
 	return_cfgref_attrib("__cfg", attack.to_config());
 	if(luaW_getmetafield(L, 1, m)) {
@@ -304,10 +302,8 @@ static int impl_unit_attack_set(lua_State *L)
 	modify_int_attrib("parry", attack.set_parry(value));
 	modify_int_attrib("min_range", attack.set_min_range(value));
 	modify_int_attrib("max_range", attack.set_max_range(value));
-	modify_int_attrib("hit_chance_penalty", attack.set_hit_chance_penalty(value));
-	modify_int_attrib("damage_penalty", attack.set_damage_penalty(value));
-	modify_string_attrib("hit_chance_penalty_formula", attack.set_hit_chance_penalty_formula(value));
-	modify_string_attrib("damage_penalty_formula", attack.set_damage_penalty_formula(value));
+	modify_string_attrib("hit_chance_penalty", attack.set_hit_chance_penalty(value));
+	modify_string_attrib("damage_penalty", attack.set_damage_penalty(value));
 
 	if(strcmp(m, "specials") == 0) {
 		attack.set_specials(luaW_checkconfig(L, 3));

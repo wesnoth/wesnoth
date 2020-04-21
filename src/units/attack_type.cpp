@@ -59,10 +59,8 @@ attack_type::attack_type(const config& cfg) :
 	num_attacks_(cfg["number"]),
 	attack_weight_(cfg["attack_weight"].to_double(1.0)),
 	defense_weight_(cfg["defense_weight"].to_double(1.0)),
-	hit_chance_penalty_formula_(construct_formula(cfg["hit_chance_penalty_formula"])),
-	damage_penalty_formula_(construct_formula(cfg["damage_penalty_formula"])),
-	hit_chance_penalty_(cfg["hit_chance_penalty"].to_int(0)),
-	damage_penalty_(cfg["damage_penalty"].to_int(0)),
+	hit_chance_penalty_(cfg["hit_chance_penalty"]),
+	damage_penalty_(cfg["damage_penalty"]),
 	accuracy_(cfg["accuracy"]),
 	movement_used_(cfg["movement_used"].to_int(100000)),
 	parry_(cfg["parry"]),
@@ -96,22 +94,6 @@ std::string attack_type::accuracy_parry_description() const
 	return s.str();
 }
 
-const std::string &attack_type::hit_chance_penalty_formula() const
-{ 
-	static std::string empty;
-	return hit_chance_penalty_formula_ == nullptr
-			? empty
-			: hit_chance_penalty_formula_->str();
-}
-
-const std::string &attack_type::damage_penalty_formula() const
-{
-	static std::string empty;
-	return damage_penalty_formula_ == nullptr
-			? empty
-			: damage_penalty_formula_->str();
-}
-
 void attack_type::set_min_range(int value)
 {
 	min_range_ = std::max(value, 1);
@@ -126,92 +108,73 @@ void attack_type::set_max_range(int value)
 	set_changed(true);
 }
 
-void attack_type::set_hit_chance_penalty(int value)
+void attack_type::set_hit_chance_penalty(const std::string &value)
 {
-	hit_chance_penalty_ = value;
-	hit_chance_penalty_formula_ = nullptr;
+	hit_chance_penalty_.set(value, 0);
 	set_changed(true);
 }
 
-void attack_type::set_damage_penalty(int value)
+void attack_type::set_damage_penalty(const std::string &value)
 {
-	damage_penalty_ = value;
-	damage_penalty_formula_ = nullptr;
+	damage_penalty_.set(value, 0);
 	set_changed(true);
-}
-
-void attack_type::set_hit_chance_penalty_formula(const std::string &value)
-{
-	hit_chance_penalty_formula_ = construct_formula(value);
-	set_changed(true);
-}
-
-void attack_type::set_damage_penalty_formula(const std::string &value)
-{
-	damage_penalty_formula_ = construct_formula(value);
-	set_changed(true);
-}
-
-wfl::const_formula_ptr attack_type::construct_formula(const std::string &formula)
-{
-	if(formula.empty()) {
-		return nullptr;
-	}
-	
-	try {
-		return wfl::const_formula_ptr(new wfl::formula(formula, new wfl::gamestate_function_symbol_table()));
-	} catch (const wfl::formula_error& e) {
-		lg::wml_error() << "Formula error in weapon definition: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
-	}
-	
-	return nullptr;
 }
 
 int attack_type::calculate_hit_chance_penalty(int range) const
 {
-	if(hit_chance_penalty_formula_ != nullptr) {
-		config cfg;
-		cfg["range"] = range;
-		wfl::config_callable range_var(cfg);
-		return hit_chance_penalty_formula_->evaluate(range_var).as_int();
+	if(hit_chance_penalty_.has_formula()) {
+		try {
+			wfl::map_formula_callable vars;
+			vars.add("range", wfl::variant(range));
+			return hit_chance_penalty_(vars, new wfl::gamestate_function_symbol_table);
+		} catch (const wfl::formula_error& e) {
+			lg::wml_error() << "Formula error in hit chance calculation: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			return 0;
+		}
 	}
-	return (range-1)*hit_chance_penalty_;
+	return (range-1)*hit_chance_penalty_();
 }
 
 int attack_type::calculate_damage_penalty(int range) const
 {
-	if(damage_penalty_formula_ != nullptr) {
-		config cfg;
-		cfg["range"] = range;
-		wfl::config_callable range_var(cfg);
-		return damage_penalty_formula_->evaluate(range_var).as_int();
+	if(damage_penalty_.has_formula()) {
+		try {
+			wfl::map_formula_callable vars;
+			vars.add("range", wfl::variant(range));
+			return damage_penalty_(vars, new wfl::gamestate_function_symbol_table);
+		} catch (const wfl::formula_error& e) {
+			lg::wml_error() << "Formula error in damage calculation: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			return 0;
+		}
 	}
-	return (range-1)*damage_penalty_;
+	return (range-1)*damage_penalty_();
 }
 
 t_string attack_type::hit_chance_penalty_description() const
 {
-	if(hit_chance_penalty_formula_ != nullptr) {
+	if(hit_chance_penalty_.has_formula()) {
 		return _("custom");
 	}
-	if (hit_chance_penalty_ == 0) {
+	int value = hit_chance_penalty_();
+	if (value) {
 		return "";
 	}
 	std::stringstream ss;
-	ss << utils::signed_percent(-hit_chance_penalty_) << "/" << _("hex");
+	ss << utils::signed_percent(-value) << "/" << _("hex");
 	return ss.str();
 }
 
 t_string attack_type::damage_penalty_description() const
 {
-	if(damage_penalty_formula_ != nullptr) {
+	if(damage_penalty_.has_formula()) {
 		return _("custom");
 	}
-	if (damage_penalty_ == 0) {
+	int value = damage_penalty_();
+	if (value) {
 		return "";
 	}
 	std::stringstream ss;
-	ss << -damage_penalty_ << "/" << _("hex");
+	ss << -value << "/" << _("hex");
 	return ss.str();
 }
 
@@ -426,8 +389,6 @@ bool attack_type::apply_modification(const config& cfg)
 	const std::string& set_max_range = cfg["set_max_range"];
 	const std::string& set_damage_penalty = cfg["set_damage_penalty"];
 	const std::string& set_hit_chance_penalty = cfg["set_hit_chance_penalty"];
-	const std::string& set_damage_penalty_formula = cfg["set_damage_penalty_formula"];
-	const std::string& set_hit_chance_penalty_formula = cfg["set_hit_chance_penalty_formula"];
 	// NB: If you add something here that requires a description,
 	// it needs to be added to describe_modification as well.
 
@@ -550,19 +511,11 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 	
 	if(set_damage_penalty.empty() == false) {
-		this->set_damage_penalty(std::stoi(set_damage_penalty));
+		this->set_damage_penalty(set_damage_penalty);
 	}
 	
 	if(set_hit_chance_penalty.empty() == false) {
-		this->set_hit_chance_penalty(std::stoi(set_hit_chance_penalty));
-	}
-	
-	if(set_damage_penalty_formula.empty() == false) {
-		damage_penalty_formula_ = construct_formula(set_damage_penalty_formula);
-	}
-	
-	if(set_hit_chance_penalty_formula.empty() == false) {
-		damage_penalty_formula_ = construct_formula(set_hit_chance_penalty_formula);
+		this->set_hit_chance_penalty(set_hit_chance_penalty);
 	}
 
 	return true;
@@ -740,14 +693,8 @@ void attack_type::write(config& cfg) const
 	cfg["range"] = range_;
 	cfg["min_range"] = min_range_;
 	cfg["max_range"] = max_range_;
-	cfg["damage_penalty"] = damage_penalty_;
-	cfg["hit_chance_penalty"] = hit_chance_penalty_;
-	cfg["damage_penalty_formula"] = damage_penalty_formula_ == nullptr
-									? ""
-									: damage_penalty_formula_->str();
-	cfg["hit_chance_penalty_formula"] = hit_chance_penalty_formula_ == nullptr
-										? ""
-										: hit_chance_penalty_formula_->str();
+	cfg["damage_penalty"] = damage_penalty_.formula_or_value();
+	cfg["hit_chance_penalty"] = hit_chance_penalty_.formula_or_value();
 	cfg["damage"] = damage_;
 	cfg["number"] = num_attacks_;
 	cfg["attack_weight"] = attack_weight_;

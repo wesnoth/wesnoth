@@ -26,7 +26,7 @@
 #include <boost/dynamic_bitset_fwd.hpp>
 
 #include "units/ptr.hpp" // for attack_ptr
-#include "formula/formula_fwd.hpp"
+#include "formula/typed_formula.hpp"
 
 class unit_ability_list;
 class unit_type;
@@ -53,10 +53,8 @@ public:
 	double attack_weight() const { return attack_weight_; }
 	double defense_weight() const { return defense_weight_; }
 	const config &specials() const { return specials_; }
-	int hit_chance_penalty() const { return hit_chance_penalty_; }
-	int damage_penalty() const { return damage_penalty_; }
-	const std::string& hit_chance_penalty_formula() const;
-	const std::string& damage_penalty_formula() const;
+	std::string hit_chance_penalty() const { return hit_chance_penalty_.formula_or_value(); }
+	std::string damage_penalty() const { return damage_penalty_.formula_or_value(); }
 
 	void set_name(const t_string& value) { description_  = value; set_changed(true); }
 	void set_id(const std::string& value) { id_ = value; set_changed(true); }
@@ -72,10 +70,8 @@ public:
 	void set_specials(config value) { specials_ = value; set_changed(true); }
 	void set_min_range(int value);
 	void set_max_range(int value);
-	void set_hit_chance_penalty(int value);
-	void set_damage_penalty(int value);
-	void set_hit_chance_penalty_formula(const std::string& value);
-	void set_damage_penalty_formula(const std::string& value);
+	void set_hit_chance_penalty(const std::string& value);
+	void set_damage_penalty(const std::string& value);
 	
 private:
 	static wfl::const_formula_ptr construct_formula(const std::string& formula);
@@ -198,10 +194,8 @@ private:
 	double attack_weight_;
 	double defense_weight_;
 	
-	wfl::const_formula_ptr hit_chance_penalty_formula_;
-	wfl::const_formula_ptr damage_penalty_formula_;
-	int hit_chance_penalty_;
-	int damage_penalty_;
+	wfl::typed_formula<int> hit_chance_penalty_;
+	wfl::typed_formula<int> damage_penalty_;
 
 	int accuracy_;
 	int movement_used_;
