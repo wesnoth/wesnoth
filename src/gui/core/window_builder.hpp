@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "gui/auxiliary/typed_formula.hpp"
+#include "formula/typed_formula.hpp"
 #include "gui/core/linked_group_definition.hpp"
 #include "gui/widgets/grid.hpp"
 #include "color.hpp"
@@ -159,11 +159,11 @@ public:
 
 		bool automatic_placement;
 
-		typed_formula<unsigned> x;
-		typed_formula<unsigned> y;
-		typed_formula<unsigned> width;
-		typed_formula<unsigned> height;
-		typed_formula<bool> reevaluate_best_size;
+		wfl::typed_formula<unsigned> x;
+		wfl::typed_formula<unsigned> y;
+		wfl::typed_formula<unsigned> width;
+		wfl::typed_formula<unsigned> height;
+		wfl::typed_formula<bool> reevaluate_best_size;
 
 		wfl::function_symbol_table functions;
 

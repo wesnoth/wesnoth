@@ -26,7 +26,7 @@
 
 #include <cassert>
 
-namespace gui2
+namespace wfl
 {
 
 /**
@@ -157,8 +157,6 @@ operator()(const wfl::map_formula_callable& variables, wfl::function_symbol_tabl
 	wfl::variant v = wfl::formula(formula_, functions).evaluate(variables);
 	const T& result = execute(v);
 
-	LOG_GUI_D << "Formula: execute '" << formula_ << "' result '" << result << "'.\n";
-
 	return result;
 }
 
@@ -226,13 +224,13 @@ inline void typed_formula<t_string>::convert(const std::string& str)
 template<>
 inline PangoAlignment typed_formula<PangoAlignment>::execute(wfl::variant& v) const
 {
-	return decode_text_alignment(v.as_string());
+	return gui2::decode_text_alignment(v.as_string());
 }
 
 template<>
 inline void typed_formula<PangoAlignment>::convert(const std::string& str)
 {
-	value_ = decode_text_alignment(str);
+	value_ = gui2::decode_text_alignment(str);
 }
 
 
@@ -272,4 +270,4 @@ inline void typed_formula<T>::convert(const std::string& str)
 	value_ = lexical_cast_default<T>(str);
 }
 
-} // namespace gui2
+} // namespace wfl

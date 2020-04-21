@@ -13,7 +13,7 @@ See the COPYING file for more details.
 */
 
 #include "gui/core/canvas.hpp"
-#include "gui/auxiliary/typed_formula.hpp"
+#include "formula/typed_formula.hpp"
 
 namespace gui2 {
 
@@ -35,13 +35,13 @@ public:
 			  wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
+	wfl::typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
 			y1_,			/**< The start y coordinate of the line. */
 			x2_,			/**< The end x coordinate of the line. */
 			y2_;			/**< The end y coordinate of the line. */
 
 	/** The color of the line. */
-	typed_formula<color_t> color_;
+	wfl::typed_formula<color_t> color_;
 
 	/**
 	 * The thickness of the line.
@@ -71,7 +71,7 @@ public:
 			  wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
+	wfl::typed_formula<int> x_, /**< The x coordinate of the rectangle. */
 			y_,			   /**< The y coordinate of the rectangle. */
 			w_,			   /**< The width of the rectangle. */
 			h_;			   /**< The height of the rectangle. */
@@ -88,14 +88,14 @@ private:
 	 *
 	 * If the color is fully transparent the border isn't drawn.
 	 */
-	typed_formula<color_t> border_color_;
+	wfl::typed_formula<color_t> border_color_;
 
 	/**
 	* The border color of the rectangle.
 	*
 	* If the color is fully transparent the rectangle won't be filled.
 	*/
-	typed_formula<color_t> fill_color_;
+	wfl::typed_formula<color_t> fill_color_;
 };
 
 /** Definition of a rounded rectangle shape. */
@@ -116,11 +116,11 @@ public:
 			  wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
-			y_,			   /**< The y coordinate of the rectangle. */
-			w_,			   /**< The width of the rectangle. */
-			h_,			   /**< The height of the rectangle. */
-			r_;			   /**< The radius of the corners. */
+	wfl::typed_formula<int> x_, /**< The x coordinate of the rectangle. */
+				y_,			    /**< The y coordinate of the rectangle. */
+				w_,			    /**< The width of the rectangle. */
+				h_,			    /**< The height of the rectangle. */
+				r_;			    /**< The radius of the corners. */
 
 	/**
 	 * Border thickness.
@@ -134,14 +134,14 @@ private:
 	 *
 	 * If the color is fully transparent the border isn't drawn.
 	 */
-	typed_formula<color_t> border_color_;
+	wfl::typed_formula<color_t> border_color_;
 
 	/**
 	 * The border color of the rounded rectangle.
 	 *
 	 * If the color is fully transparent the rounded rectangle won't be filled.
 	 */
-	typed_formula<color_t> fill_color_;
+	wfl::typed_formula<color_t> fill_color_;
 };
 
 /** Definition of a circle shape. */
@@ -162,12 +162,12 @@ public:
 			  wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
-			y_,			   /**< The center y coordinate of the circle. */
-			radius_;	   /**< The radius of the circle. */
+	wfl::typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
+				y_,			         /**< The center y coordinate of the circle. */
+				radius_;	         /**< The radius of the circle. */
 
 	/** The border color of the circle. */
-	typed_formula<color_t> border_color_, fill_color_; /**< The fill color of the circle. */
+	wfl::typed_formula<color_t> border_color_, fill_color_; /**< The fill color of the circle. */
 
 	/** The border thickness of the circle. */
 	unsigned int border_thickness_;
@@ -191,10 +191,10 @@ public:
 			  wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
-			y_,			   /**< The y coordinate of the image. */
-			w_,			   /**< The width of the image. */
-			h_;			   /**< The height of the image. */
+	wfl::typed_formula<unsigned> x_, /**< The x coordinate of the image. */
+				y_,                  /**< The y coordinate of the image. */
+				w_,                  /**< The width of the image. */
+				h_;			         /**< The height of the image. */
 
 	/** Contains the size of the image. */
 	SDL_Rect src_clip_;
@@ -209,7 +209,7 @@ private:
 	 * formula the image will be loaded in the constructor. If it's a formula it
 	 * will be loaded every draw cycles. This allows 'changing' images.
 	 */
-	typed_formula<std::string> image_name_;
+	wfl::typed_formula<std::string> image_name_;
 
 	/**
 	 * Determines the way an image will be resized.
@@ -231,7 +231,7 @@ private:
 	resize_mode resize_mode_;
 
 	/** Mirror the image over the vertical axis. */
-	typed_formula<bool> vertical_mirror_;
+	wfl::typed_formula<bool> vertical_mirror_;
 
 	// TODO: use a typed_formula?
 	wfl::formula actions_formula_;
@@ -257,46 +257,46 @@ public:
 			  wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<unsigned> x_, /**< The x coordinate of the text. */
-			y_,			   /**< The y coordinate of the text. */
-			w_,			   /**< The width of the text. */
-			h_;			   /**< The height of the text. */
+	wfl::typed_formula<unsigned> x_, /**< The x coordinate of the text. */
+				y_,                  /**< The y coordinate of the text. */
+				w_,                  /**< The width of the text. */
+				h_;                  /**< The height of the text. */
 
 	/** The text font family. */
 	font::family_class font_family_;
 
 	/** The font size of the text. */
-	typed_formula<unsigned> font_size_;
+	wfl::typed_formula<unsigned> font_size_;
 
 	/** The style of the text. */
 	font::pango_text::FONT_STYLE font_style_;
 
 	/** The alignment of the text. */
-	typed_formula<PangoAlignment> text_alignment_;
+	wfl::typed_formula<PangoAlignment> text_alignment_;
 
 	/** The color of the text. */
-	typed_formula<color_t> color_;
+	wfl::typed_formula<color_t> color_;
 
 	/** The text to draw. */
-	typed_formula<t_string> text_;
+	wfl::typed_formula<t_string> text_;
 
 	/** The text markup switch of the text. */
-	typed_formula<bool> text_markup_;
+	wfl::typed_formula<bool> text_markup_;
 
 	/** The link aware switch of the text. */
-	typed_formula<bool> link_aware_;
+	wfl::typed_formula<bool> link_aware_;
 
 	/** The link color of the text. */
-	typed_formula<color_t> link_color_;
+	wfl::typed_formula<color_t> link_color_;
 
 	/** The maximum width for the text. */
-	typed_formula<int> maximum_width_;
+	wfl::typed_formula<int> maximum_width_;
 
 	/** The number of characters per line. */
 	unsigned characters_per_line_;
 
 	/** The maximum height for the text. */
-	typed_formula<int> maximum_height_;
+	wfl::typed_formula<int> maximum_height_;
 };
 
 }

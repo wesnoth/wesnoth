@@ -138,10 +138,10 @@ struct builder_drawing : public builder_styled_widget
 	widget* build() const;
 
 	/** The width of the widget. */
-	typed_formula<unsigned> width;
+	wfl::typed_formula<unsigned> width;
 
 	/** The height of the widget. */
-	typed_formula<unsigned> height;
+	wfl::typed_formula<unsigned> height;
 
 	/** Config containing what to draw on the widgets canvas. */
 	config draw;

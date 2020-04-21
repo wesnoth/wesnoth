@@ -16,7 +16,7 @@
 
 #include "gui/widgets/styled_widget.hpp"
 
-#include "gui/auxiliary/typed_formula.hpp"
+#include "formula/typed_formula.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 
@@ -73,8 +73,8 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 private:
-	typed_formula<unsigned> width_;
-	typed_formula<unsigned> height_;
+	wfl::typed_formula<unsigned> width_;
+	wfl::typed_formula<unsigned> height_;
 
 	bool fills_available_space();
 

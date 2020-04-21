@@ -306,8 +306,8 @@ struct text_box_definition : public styled_widget_definition
 	{
 		explicit resolution(const config& cfg);
 
-		typed_formula<unsigned> text_x_offset;
-		typed_formula<unsigned> text_y_offset;
+		wfl::typed_formula<unsigned> text_x_offset;
+		wfl::typed_formula<unsigned> text_y_offset;
 	};
 };
 

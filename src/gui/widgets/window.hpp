@@ -22,7 +22,7 @@
 
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "gui/auxiliary/typed_formula.hpp"
+#include "formula/typed_formula.hpp"
 #include "gui/core/event/handler.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/panel.hpp"
@@ -509,19 +509,19 @@ private:
 	unsigned maximum_height_;
 
 	/** The formula to calculate the x value of the dialog. */
-	typed_formula<unsigned> x_;
+	wfl::typed_formula<unsigned> x_;
 
 	/** The formula to calculate the y value of the dialog. */
-	typed_formula<unsigned> y_;
+	wfl::typed_formula<unsigned> y_;
 
 	/** The formula to calculate the width of the dialog. */
-	typed_formula<unsigned> w_;
+	wfl::typed_formula<unsigned> w_;
 
 	/** The formula to calculate the height of the dialog. */
-	typed_formula<unsigned> h_;
+	wfl::typed_formula<unsigned> h_;
 
 	/** The formula to determine whether the size is good. */
-	typed_formula<bool> reevaluate_best_size_;
+	wfl::typed_formula<bool> reevaluate_best_size_;
 
 	/** The formula definitions available for the calculation formulas. */
 	wfl::function_symbol_table functions_;

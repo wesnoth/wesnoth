@@ -29,7 +29,7 @@
 #include "utils/iterable_pair.hpp"
 #include "utils/make_enum.hpp"
 
-#include "gui/auxiliary/typed_formula.hpp"
+#include "formula/typed_formula.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 
 #include <boost/regex.hpp>
@@ -1030,7 +1030,7 @@ void patch_movetype(
 		return;
 	}
 
-	gui2::typed_formula<int> formula(formula_str);
+	wfl::typed_formula<int> formula(formula_str);
 	wfl::map_formula_callable original;
 
 	boost::sregex_iterator m(formula_str.begin(), formula_str.end(), fai_identifier);

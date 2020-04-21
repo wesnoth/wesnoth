@@ -16,7 +16,7 @@
 
 #include <gui/widgets/container_base.hpp>
 
-#include <gui/auxiliary/typed_formula.hpp>
+#include <formula/typed_formula.hpp>
 #include <gui/core/widget_definition.hpp>
 #include <gui/core/window_builder.hpp>
 #include <gui/widgets/generator.hpp>
@@ -60,8 +60,8 @@ protected:
 	point calculate_best_size() const override;
 
 private:
-	typed_formula<unsigned> width_;
-	typed_formula<unsigned> height_;
+	wfl::typed_formula<unsigned> width_;
+	wfl::typed_formula<unsigned> height_;
 
 	/**
 	 * Points to the actual widget.
@@ -116,8 +116,8 @@ struct builder_size_lock : public builder_styled_widget
 
 	widget* build() const;
 
-	typed_formula<unsigned> width_;
-	typed_formula<unsigned> height_;
+	wfl::typed_formula<unsigned> width_;
+	wfl::typed_formula<unsigned> height_;
 
 private:
 	builder_widget_const_ptr content_;

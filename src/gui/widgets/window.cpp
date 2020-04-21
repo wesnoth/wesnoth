@@ -28,7 +28,7 @@
 #include "formula/callable.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "gui/auxiliary/typed_formula.hpp"
+#include "formula/typed_formula.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/event/distributor.hpp"
 #include "gui/core/event/handler.hpp"
