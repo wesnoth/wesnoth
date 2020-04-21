@@ -697,7 +697,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.get_selected_tile = wesnoth.deprecate_api('wesnoth.get_selected_tile', 'wesnoth.interface.get_selected_hex', 1, nil, wesnoth.interface.get_selected_hex)
 	wesnoth.get_mouseover_tile = wesnoth.deprecate_api('wesnoth.get_mouseover_tile', 'wesnoth.interface.get_hovered_hex', 1, nil, wesnoth.interface.get_hovered_hex)
 	wesnoth.scroll_to_tile = wesnoth.deprecate_api('wesnoth.scroll_to_tile', 'wesnoth.interface.scroll_to_hex', 1, nil, wesnoth.interface.scroll_to_hex)
-	wesnoth.scroll = wesnoth.deprecate_api('wesnoth.scroll', 'wesnot.interface.scroll', 1, nil, wesnoth.interface.scroll)
+	wesnoth.scroll = wesnoth.deprecate_api('wesnoth.scroll', 'wesnoth.interface.scroll', 1, nil, wesnoth.interface.scroll)
 	wesnoth.lock_view = wesnoth.deprecate_api('wesnoth.lock_view', 'wesnoth.interface.lock', 1, nil, wesnoth.interface.lock)
 	wesnoth.view_locked = wesnoth.deprecate_api('wesnoth.view_locked', 'wesnoth.interface.is_locked', 1, nil, wesnoth.interface.is_locked)
 	wesnoth.is_skipping_messages = wesnoth.deprecate_api('wesnoth.is_skipping_messages', 'wesnoth.interface.is_skipping_messages', 1, nil, wesnoth.interface.is_skipping_messages)
