@@ -1149,7 +1149,7 @@ void get_villages_phase::dispatch_complex(
 	// - test whether the suggestion is possible
 	// - does it result in max_villages
 	//   - dispatch and ready
-	// - is it's result better as the last best
+	// - is its result better as the last best
 	//   - store
 	std::vector<std::pair<map_location, map_location>> best_result;
 
