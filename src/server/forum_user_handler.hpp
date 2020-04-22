@@ -70,6 +70,7 @@ class fuh : public user_handler {
 		bool use_phpbb_encryption() const { return true; }
 
 		std::string get_uuid();
+		std::string get_tournaments();
 		void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password);
 		void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location);
 		void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
@@ -91,6 +92,7 @@ class fuh : public user_handler {
 		std::time_t retrieve_ban_duration_internal(const std::string& col, unsigned int detail);
 
 		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_, db_game_info_table_, db_game_player_info_table_, db_game_modification_info_table_, db_user_group_table_;
+		std::string db_tournament_query_;
 		unsigned int mp_mod_group_;
 
 		MYSQL *conn;

@@ -539,6 +539,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"mp_change_control", // Basically useless without a game_board object, so disabling
 		"game_stats", // segfault with LTO
 		"gamestate_inspector", // segfault with LTO
+		"server_info",
 	};
 
 	std::vector<std::string> missing;

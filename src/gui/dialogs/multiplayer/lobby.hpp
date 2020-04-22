@@ -138,6 +138,8 @@ private:
 
 	void show_preferences_button_callback(window& window);
 
+	void show_server_info();
+
 	void refresh_lobby();
 
 	void game_filter_reload();
@@ -214,6 +216,9 @@ private:
 	int joined_game_id_;
 
 	friend struct lobby_delay_gamelist_update_guard;
+
+	std::string server_information_;
+	std::string announcements_;
 };
 
 } // namespace dialogs

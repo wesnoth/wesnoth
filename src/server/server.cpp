@@ -238,6 +238,8 @@ server::server(int port,
 	, disallowed_names_()
 	, admin_passwd_()
 	, motd_()
+	, announcements_()
+	, information_()
 	, default_max_messages_(0)
 	, default_time_period_(0)
 	, concurrent_connections_(0)
@@ -454,6 +456,8 @@ void server::load_config()
 
 	admin_passwd_ = cfg_["passwd"].str();
 	motd_ = cfg_["motd"].str();
+	information_ = cfg_["information"].str();
+	announcements_ = cfg_["announcements"].str();
 	lan_server_ = cfg_["lan_server"].to_time_t(0);
 
 	deny_unregistered_login_ = cfg_["deny_unregistered_login"].to_bool();
@@ -530,6 +534,7 @@ void server::load_config()
 	if(const config& user_handler = cfg_.child("user_handler")) {
 		user_handler_.reset(new fuh(user_handler));
 		uuid_ = user_handler_->get_uuid();
+		announcements_ += user_handler_->get_tournaments();
 	}
 #endif
 }
@@ -996,8 +1001,10 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 	send_to_player(socket, games_and_users_list_);
 
 	if(!motd_.empty()) {
-		send_server_message(socket, motd_, "motd");
+		send_server_message(socket, motd_+'\n'+announcements_, "motd");
 	}
+	send_server_message(socket, information_, "server_info");
+	send_server_message(socket, announcements_, "announcements");
 	if(version_info(player.version()) < secure_version ){
 		send_server_message(socket, "You are using version " + player.version() + " which has known security issues that can be used to compromise your computer. We strongly recommend updating to a Wesnoth version " + secure_version.str() + " or newer!", "alert");
 	}
