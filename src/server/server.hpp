@@ -140,6 +140,8 @@ private:
 	std::vector<std::string> disallowed_names_;
 	std::string admin_passwd_;
 	std::string motd_;
+	std::string announcements_;
+	std::string information_;
 	std::size_t default_max_messages_;
 	std::size_t default_time_period_;
 	std::size_t concurrent_connections_;
