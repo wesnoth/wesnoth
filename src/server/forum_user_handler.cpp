@@ -46,6 +46,7 @@ fuh::fuh(const config& c)
 	, db_game_player_info_table_(c["db_game_player_info_table"].str())
 	, db_game_modification_info_table_(c["db_game_modification_info_table"].str())
 	, db_user_group_table_(c["db_user_group_table"].str())
+	, db_tournament_query_(c["db_tournament_query"].str())
 	, mp_mod_group_(0)
 	, conn(mysql_init(nullptr))
 {
@@ -414,6 +415,17 @@ std::string fuh::get_uuid(){
 		return prepared_statement<std::string>("SELECT UUID()");
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not retrieve a UUID:" << e.message << std::endl;
+		return "";
+	}
+}
+
+// TODO - WIP
+// select substring(substring_index(topic_title, ']', 1), 2) as STATUS, concat('https://r.wesnoth.org/t', topic_id) as URL, substring_index(topic_title, ']', -1) as TITLE from tournaments where forum_id = 70  and (topic_title like '[Open]%' or topic_title like '[In Progress]%')
+std::string fuh::get_tournaments(){
+	try {
+		return "";
+	} catch (const sql_error& e) {
+		ERR_UH << "TBD:" << e.message << std::endl;
 		return "";
 	}
 }
