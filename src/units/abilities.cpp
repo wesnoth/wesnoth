@@ -1088,7 +1088,7 @@ namespace { // Helpers for attack_type::special_active()
 		// If the other unit doesn't exist, try matching without it
 		return true;
 	}
-	
+
 }//anonymous namespace
 
 
@@ -1148,13 +1148,19 @@ static bool ability_filter_fighter(const std::string& ability,
  */
 static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-    bool filter_opponent = ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, up, un, opp_weapon);
-    bool filter_student = ability_filter_fighter(ability, "filter_student", cfg, loc, un, up, weapon);
-    bool filter_attacker = (attacker && ability_filter_fighter(ability, "filter_attacker", cfg, loc, un, up, weapon)) || (!attacker && ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, up, un, opp_weapon));
-    bool filter_defender = (!attacker && ability_filter_fighter(ability, "filter_defender", cfg, loc,un, up, weapon)) || (attacker && ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, up, un, opp_weapon));
-    if(filter_student && filter_opponent && filter_attacker && filter_defender){
-	    return true;
-    }
+	unit_const_ptr & att = attacker ? un : up;
+	unit_const_ptr & def = attacker ? up : un;
+	const map_location & att_loc   = attacker ? loc : opp_loc;
+	const map_location & def_loc   = attacker ? opp_loc : loc;
+	const_attack_ptr att_weapon = attacker ? weapon : opp_weapon;
+	const_attack_ptr def_weapon = attacker ? opp_weapon : weapon;
+	bool filter_opponent = ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, up, un, opp_weapon);
+	bool filter_student = ability_filter_fighter(ability, "filter_student", cfg, loc, un, up, weapon);
+	bool filter_attacker = ability_filter_fighter(ability, "filter_attacker", cfg, att_loc, att, def, att_weapon);
+	bool filter_defender = ability_filter_fighter(ability, "filter_defender", cfg, def_loc, def, att, def_weapon);
+	if(filter_student && filter_opponent && filter_attacker && filter_defender){
+		return true;
+	}
 	return false;
 }
 
@@ -1173,7 +1179,28 @@ static bool ability_apply_filter(unit_const_ptr un, unit_const_ptr up, const std
  */
 static unit_ability_list list_leadership(const std::string& ability, unit_const_ptr un, unit_const_ptr up, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon, bool affect_other)
 {
-	unit_ability_list abil = (*un).get_abilities(ability, loc);
+	const unit_map& units = display::get_singleton()->get_units();
+
+	unit_const_ptr u = un;
+	unit_const_ptr u2 = up;
+
+	if(u == nullptr) {
+		unit_map::const_iterator it = units.find(loc);
+		if(it.valid()) {
+			u = it.get_shared_ptr().get();
+		}
+	}
+	if(u2 == nullptr) {
+		unit_map::const_iterator it = units.find(opp_loc);
+		if(it.valid()) {
+			u2 = it.get_shared_ptr().get();
+		}
+	}
+
+	// Make sure they're facing each other.
+	temporary_facing self_facing(u, loc.get_relative_dir(opp_loc));
+	temporary_facing other_facing(u2, opp_loc.get_relative_dir(loc));
+	unit_ability_list abil = (*u).get_abilities(ability, loc);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		bool abil_affect = false;//used for determine if abilities with special_affects_self or opponent must be erased of list
 		if(affect_other){
@@ -1181,7 +1208,7 @@ static unit_ability_list list_leadership(const std::string& ability, unit_const_
 		} else {
 			abil_affect = !special_affects_self((*i->ability_cfg), attacker);
 		}
-		bool fighter_filter = !ability_apply_filter(un, up, ability, *i->ability_cfg, loc, opp_loc, attacker, weapon, opp_weapon);
+		bool fighter_filter = !ability_apply_filter(u, u2, ability, *i->ability_cfg, loc, opp_loc, attacker, weapon, opp_weapon);
 		const std::string& active_on = (*i->ability_cfg)["active_on"];
 		bool active_on_bool = !(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense"));
 		if(active_on_bool || fighter_filter || abil_affect) {
@@ -1195,35 +1222,14 @@ static unit_ability_list list_leadership(const std::string& ability, unit_const_
 
 unit_ability_list attack_type::list_ability(const std::string& ability) const
 {
-	const unit_map& units = display::get_singleton()->get_units();
-
-	unit_const_ptr self = self_;
-	unit_const_ptr other = other_;
-
-	if(self == nullptr) {
-		unit_map::const_iterator it = units.find(self_loc_);
-		if(it.valid()) {
-			self = it.get_shared_ptr().get();
-		}
-	}
-	if(other == nullptr) {
-		unit_map::const_iterator it = units.find(other_loc_);
-		if(it.valid()) {
-			other = it.get_shared_ptr().get();
-		}
-	}
-
-	// Make sure they're facing each other.
-	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
-	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
 	if(self_) {
-		abil_list.append(list_leadership(ability, self, other, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, false));
+		abil_list.append(list_leadership(ability, self_, other_, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_, false));
 	}
 
 	if(other_) {
-		abil_list.append(list_leadership(ability, other, self, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this(), true));
+		abil_list.append(list_leadership(ability, other_, self_, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this(), true));
 	}
 	return abil_list;
 }
