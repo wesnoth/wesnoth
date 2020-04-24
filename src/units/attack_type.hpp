@@ -110,7 +110,7 @@ private:
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true, const std::string& filter_self ="filter_self") const;
 
-	bool special_active_impl(
+	static bool special_active_impl(
 		const_attack_ptr self_attack,
 		const_attack_ptr other_attack,
 		const config& special,
@@ -118,7 +118,7 @@ private:
 		const std::string& tag_name,
 		bool include_backstab=true,
 		const std::string& filter_self ="filter_self"
-	) const;
+	);
 
 	// Used via specials_context() to control which specials are
 	// considered active.
