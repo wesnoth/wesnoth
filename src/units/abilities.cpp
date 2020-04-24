@@ -1158,7 +1158,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
  *                              for elsewhere)
  */
 bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack_ptr other_attack, const config& special, AFFECTS whom, const std::string& tag_name,
-                                 bool include_backstab, const std::string& filter_self)
+                                 bool include_backstab, const std::string& filter_self) const
 {
 	assert(self_attack || other_attack);
 	bool is_attacker = self_attack ? self_attack->is_attacker_ : !other_attack->is_attacker_;
@@ -1197,8 +1197,8 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	unit_const_ptr other = self_attack ? self_attack->other_ : other_attack->self_;
 	map_location self_loc = self_attack ? self_attack->self_loc_ : other_attack->other_loc_;
 	map_location other_loc = self_attack ? self_attack->other_loc_ : other_attack->self_loc_;
-#if 0
-	//TODO: why is this needed?
+
+	//TODO: why is this needed? Don't inactive yet.
 	if(self == nullptr) {
 		unit_map::const_iterator it = units.find(self_loc_);
 		if(it.valid()) {
@@ -1211,7 +1211,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 			other = it.get_shared_ptr().get();
 		}
 	}
-#endif
+
 	// Make sure they're facing each other.
 	temporary_facing self_facing(self, self_loc.get_relative_dir(other_loc));
 	temporary_facing other_facing(other, other_loc.get_relative_dir(self_loc));
