@@ -1200,13 +1200,13 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 
 	//TODO: why is this needed? Don't inactive yet.
 	if(self == nullptr) {
-		unit_map::const_iterator it = units.find(self_loc_);
+		unit_map::const_iterator it = units.find(self_loc);
 		if(it.valid()) {
 			self = it.get_shared_ptr().get();
 		}
 	}
 	if(other == nullptr) {
-		unit_map::const_iterator it = units.find(other_loc_);
+		unit_map::const_iterator it = units.find(other_loc);
 		if(it.valid()) {
 			other = it.get_shared_ptr().get();
 		}
@@ -1244,13 +1244,13 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	const_attack_ptr def_weapon = is_attacker ? other_attack : self_attack;
 
 	// Filter the units involved.
-	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing_, filter_self))
+	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self))
 		return false;
-	if (!special_unit_matches(other, self, other_loc, other_attack, special, is_for_listing_, "filter_opponent"))
+	if (!special_unit_matches(other, self, other_loc, other_attack, special, is_for_listing, "filter_opponent"))
 		return false;
-	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing_, "filter_attacker"))
+	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker"))
 		return false;
-	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing_, "filter_defender"))
+	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender"))
 		return false;
 
 	adjacent_loc_array_t adjacent;
