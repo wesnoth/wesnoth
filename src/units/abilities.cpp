@@ -1158,7 +1158,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
  *                              for elsewhere)
  */
 bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack_ptr other_attack, const config& special, AFFECTS whom, const std::string& tag_name,
-                                 bool include_backstab, const std::string& filter_self) const
+                                 bool include_backstab, const std::string& filter_self)
 {
 	assert(self_attack || other_attack);
 	bool is_attacker = self_attack ? self_attack->is_attacker_ : !other_attack->is_attacker_;
