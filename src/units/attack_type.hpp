@@ -118,7 +118,7 @@ private:
 		const std::string& tag_name,
 		bool include_backstab=true,
 		const std::string& filter_self ="filter_self"
-	);
+	) const;
 
 	// Used via specials_context() to control which specials are
 	// considered active.
