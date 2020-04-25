@@ -1188,14 +1188,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool simp
             }
             abil_list.append(abil_list_id);
     }
-	
-	if(!other_attack_) {
-		if(!abil_list.empty()){
-			return true;
-		}
-		return false;
-	}
-	
+
 	if(other_){
             std::vector<special_match> special_tag_matches;
             std::vector<special_match> special_id_matches;
