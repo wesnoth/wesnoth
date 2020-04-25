@@ -98,6 +98,7 @@ public:
 	const_iterator end()   const  { return cfgs_.end();   }
 
 	// Vector access
+	size_t              size()  const  { return cfgs_.size(); }
 	bool                empty() const  { return cfgs_.empty(); }
 	unit_ability&       front()        { return cfgs_.front(); }
 	const unit_ability& front() const  { return cfgs_.front(); }

@@ -21,6 +21,7 @@
 #include "units/unit.hpp"
 #include "units/types.hpp"
 #include "units/attack_type.hpp"
+#include "units/abilities.hpp"
 #include "utils/const_clone.hpp"
 
 #include "lua/lauxlib.h"
@@ -338,6 +339,49 @@ static int impl_unit_attack_match(lua_State* L)
 	lua_pushboolean(L, atk->matches_filter(cfg));
 	return 1;
 }
+/**
+ *  Arg 1 (self): unit attack
+ *  Arg 2: table with optional paraemters.
+ *  Ret: Table containing the demanded value.:
+ */
+static int impl_unit_attack_active_specials(lua_State* L)
+{
+	const_attack_ptr atk = luaW_toweapon(L, 1);
+	std::string tagname = luaW_table_get_def<utils::string_view>(L, 2, "tag", "").to_string();
+	bool return_data = luaW_table_get_def<bool>(L, 2, "data", false);
+	bool return_value = luaW_table_get_def<bool>(L, 2, "base_value", false);
+
+	if(!atk) {
+		return luaL_argerror(L, 1, "invalid attack");
+	}
+
+	if(tagname.empty()) {
+		return luaL_argerror(L, 2, "invalid tagname");
+	}
+
+	unit_ability_list abils = atk->get_special_ability(tagname);
+	lua_createtable(L, 0, 0);
+	luaW_table_set(L, -1, "count", abils.size());
+	if(return_data) {
+		int i = 0;
+		for(unit_ability& ab : abils) {
+			++i;
+			lua_createtable(L, 0, 3);
+			luaW_table_set(L, -1, "cfg", *ab.ability_cfg);
+			luaW_table_set(L, -1, "teacher_loc", ab.teacher_loc);
+			luaW_table_set(L, -1, "student_loc", ab.student_loc);
+			lua_rawseti(L, -2, i);
+		}
+	}
+
+	if(return_value) {
+		int base_value = luaW_table_get_def<int>(L, 2, "base_value", 0);
+		unit_abilities::effect eff(abils, base_value, false);
+		luaW_table_set(L, -1, "value", eff.get_composite_value());
+	}
+	return 1;
+}
+
 
 static int impl_unit_attack_collect(lua_State* L)
 {
@@ -389,6 +433,8 @@ namespace lua_units {
 		lua_setfield(L, -2, "__metatable");
 		lua_pushcfunction(L, impl_unit_attack_match);
 		lua_setfield(L, -2, "matches");
+		lua_pushcfunction(L, impl_unit_attack_active_specials);
+		lua_setfield(L, -2, "active_specials");
 
 		// Add create_attack
 		luaW_getglobal(L, "wesnoth");
