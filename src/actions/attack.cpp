@@ -300,15 +300,19 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
 	}
 
-	slows = weapon->get_special_bool("slow");
-	drains = !opp_type->musthave_status("undrainable") && weapon->get_special_bool("drains");
-	petrifies = weapon->get_special_bool("petrifies");
-	poisons = !opp_type->musthave_status("unpoisonable") && weapon->get_special_bool("poison");
-	rounds = weapon->get_specials("berserk").highest("value", 1).first;
-	firststrike = weapon->get_special_bool("firststrike");
-	disable = weapon->get_special_bool("disable");
+	slows = weapon->bool_ability("slow");
+	drains = !opp_type->musthave_status("undrainable") && weapon->bool_ability("drains");
+	petrifies = weapon->bool_ability("petrifies");
+	poisons = !opp_type->musthave_status("unpoisonable") && weapon->bool_ability("poison");
+	rounds = weapon->get_special_ability("berserk").highest("value", 1).first;
+	firststrike = weapon->bool_ability("firststrike");
+	disable = weapon->bool_ability("disable");
 
 	unit_ability_list plague_specials = weapon->get_specials("plague");
+	unit_ability_list alt_plague_specials = weapon->get_special_ability("plague");
+	if(!alt_plague_specials.empty() && plague_specials.empty()){
+		plague_specials = alt_plague_specials;
+	}
 	plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
 		opp_type->undead_variation() != "null";
 
@@ -322,7 +326,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
 	cth = utils::clamp(cth, 0, 100);
 
-	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
+	unit_ability_list cth_specials = weapon->get_special_ability("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos);
 	cth = cth_effects.get_composite_value();
 
@@ -338,7 +342,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
 
 	if(drains) {
-		unit_ability_list drain_specials = weapon->get_specials("drains");
+		unit_ability_list drain_specials = weapon->get_special_ability("drains");
 
 		// Compute the drain percent (with 50% as the base for backward compatibility)
 		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
@@ -346,7 +350,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	}
 
 	// Add heal_on_hit (the drain constant)
-	unit_ability_list heal_on_hit_specials = weapon->get_specials("heal_on_hit");
+	unit_ability_list heal_on_hit_specials = weapon->get_special_ability("heal_on_hit");
 	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos);
 	drain_constant += heal_on_hit_effects.get_composite_value();
 
@@ -357,7 +361,6 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	swarm = swarm_min != swarm_max;
 	num_blows = calc_blows(hp);
 }
-
 
 // ==================================================================================
 // BATTLE CONTEXT
