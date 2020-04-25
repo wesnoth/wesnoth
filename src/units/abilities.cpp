@@ -1227,7 +1227,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool simp
                     for(const special_match& entry : special_tag_matches) {
                         abil_other_list.append((*other_).get_abilities(entry.tag_name, other_loc_));
                         for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
-                                if(!other_attack_->special_active(*i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
+                                if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
                                     i = abil_other_list.erase(i);
                                 } else {
                                     ++i;
@@ -1239,7 +1239,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool simp
                     for(const special_match& entry : special_id_matches) {
                         abil_other_list_id.append((*other_).get_abilities(entry.tag_name, other_loc_));
                         for(unit_ability_list::iterator i = abil_other_list_id.begin(); i != abil_other_list_id.end();) {
-                                if(!other_attack_->special_active(*i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
+                               if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
                                     i = abil_other_list_id.erase(i);
                                 } else {
                                     ++i;
