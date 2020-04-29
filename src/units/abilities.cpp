@@ -1128,119 +1128,122 @@ unit_ability_list attack_type::get_special_ability(const std::string& ability) c
 	return abil_list;
 }
 
-bool attack_type::get_special_ability_bool(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
+bool attack_type::get_special_ability_bool(const std::string& special, bool special_id, bool special_tags) const
 {
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
 	unit_ability_list abil_list_id(loc);
 	unit_ability_list abil_other_list(loc);
 	unit_ability_list abil_other_list_id(loc);
+	assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
 	if(self_){
-            std::vector<special_match> special_tag_matches;
-            std::vector<special_match> special_id_matches;
-            assert(display::get_singleton());
-            const unit_map& units = display::get_singleton()->get_units();
+	    std::vector<special_match> special_tag_matches;
+	    std::vector<special_match> special_id_matches;
 
-            adjacent_loc_array_t adjacent;
-            get_adjacent_tiles(self_loc_,adjacent.data());
-            for(unsigned i = 0; i < adjacent.size(); ++i) {
-                    const unit_map::const_iterator it = units.find(adjacent[i]);
-		    if (it == units.end() || it->incapacitated())
-                        continue;
+	    adjacent_loc_array_t adjacent;
+	    get_adjacent_tiles(self_loc_,adjacent.data());
+	    for(unsigned i = 0; i < adjacent.size(); ++i) {
+	        const unit_map::const_iterator it = units.find(adjacent[i]);
+	        if (it == units.end() || it->incapacitated())
+                continue;
+
+
 		    if(special_id && special_tags){
-			    if ( get_special_children(special_tag_matches, special_id_matches, it->abilities(), special, simple_check) ) {
+			    if ( get_special_children(special_tag_matches, special_id_matches, it->abilities(), special) ) {
 				    return true;
 			    }
 		    } else if(special_id && !special_tags){
-			    if ( get_special_children_id(special_id_matches, it->abilities(), special, simple_check) ) {
+			    if ( get_special_children_id(special_id_matches, it->abilities(), special) ) {
 				    return true;
 			    }
 		    } else if(!special_id && special_tags){
-			    if ( get_special_children_tags(special_tag_matches, it->abilities(), special, simple_check) ) {
+			    if ( get_special_children_tags(special_tag_matches, it->abilities(), special) ) {
 				    return true;
 			    }
 		    }
 	    }
+	    if(special_tags){
+	        for(const special_match& entry : special_tag_matches) {
+	            abil_list.append((*self_).get_abilities(entry.tag_name, self_loc_));
+                for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
+                    if(!special_active(*i->ability_cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
+                        i = abil_list.erase(i);
+                    } else {
+                        ++i;
+                    }
+                }
+            }
+        }
 
-            if(special_tags){
-                    for(const special_match& entry : special_tag_matches) {
-                        abil_list.append((*self_).get_abilities(entry.tag_name, self_loc_));
-                        for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-                                if(!special_active(*i->ability_cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
-                                    i = abil_list.erase(i);
-                                } else {
-                                    ++i;
-                                }
-                        }
+	    if(special_id){
+	        for(const special_match& entry : special_id_matches) {
+	            abil_list_id.append((*self_).get_abilities(entry.tag_name, self_loc_));
+                for(unit_ability_list::iterator i = abil_list_id.begin(); i != abil_list_id.end();) {
+                    if(!special_active(*i->ability_cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
+                        i = abil_list_id.erase(i);
+                    } else {
+                        ++i;
                     }
+                }
             }
-            if(special_id){
-                    for(const special_match& entry : special_id_matches) {
-                        abil_list_id.append((*self_).get_abilities(entry.tag_name, self_loc_));
-                        for(unit_ability_list::iterator i = abil_list_id.begin(); i != abil_list_id.end();) {
-                                if(!special_active(*i->ability_cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
-                                    i = abil_list_id.erase(i);
-                                } else {
-                                    ++i;
-                                }
-                        }
-                    }
-            }
-            abil_list.append(abil_list_id);
-    }
+        }
+        abil_list.append(abil_list_id);
+	}
 
 	if(other_){
-            std::vector<special_match> special_tag_matches;
-            std::vector<special_match> special_id_matches;
-            assert(display::get_singleton());
-            const unit_map& units = display::get_singleton()->get_units();
+	    std::vector<special_match> special_tag_matches;
+	    std::vector<special_match> special_id_matches;
 
-            adjacent_loc_array_t adjacent;
-            get_adjacent_tiles(other_loc_,adjacent.data());
-            for(unsigned i = 0; i < adjacent.size(); ++i) {
-                    const unit_map::const_iterator it = units.find(adjacent[i]);
-		    if (it == units.end() || it->incapacitated())
-                        continue;
+	    adjacent_loc_array_t adjacent;
+	    get_adjacent_tiles(other_loc_,adjacent.data());
+	    for(unsigned i = 0; i < adjacent.size(); ++i) {
+	        const unit_map::const_iterator it = units.find(adjacent[i]);
+	        if (it == units.end() || it->incapacitated())
+                continue;
+
+
 		    if(special_id && special_tags){
-			    if ( get_special_children(special_tag_matches, special_id_matches, it->abilities(), special, simple_check) ) {
+			    if ( get_special_children(special_tag_matches, special_id_matches, it->abilities(), special) ) {
 				    return true;
 			    }
 		    } else if(special_id && !special_tags){
-			    if ( get_special_children_id(special_id_matches, it->abilities(), special, simple_check) ) {
+			    if ( get_special_children_id(special_id_matches, it->abilities(), special) ) {
 				    return true;
 			    }
 		    } else if(!special_id && special_tags){
-			    if ( get_special_children_tags(special_tag_matches, it->abilities(), special, simple_check) ) {
+			    if ( get_special_children_tags(special_tag_matches, it->abilities(), special) ) {
 				    return true;
 			    }
 		    }
 	    }
 
-            if(special_tags){
-                    for(const special_match& entry : special_tag_matches) {
-                        abil_other_list.append((*other_).get_abilities(entry.tag_name, other_loc_));
-                        for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
-                                if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
-                                    i = abil_other_list.erase(i);
-                                } else {
-                                    ++i;
-                                }
-                        }
+	    if(special_tags){
+	        for(const special_match& entry : special_tag_matches) {
+	            abil_other_list.append((*other_).get_abilities(entry.tag_name, other_loc_));
+                for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
+                    if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
+                        i = abil_other_list.erase(i);
+                    } else {
+                        ++i;
                     }
+                }
             }
-            if(special_id){
-                    for(const special_match& entry : special_id_matches) {
-                        abil_other_list_id.append((*other_).get_abilities(entry.tag_name, other_loc_));
-                        for(unit_ability_list::iterator i = abil_other_list_id.begin(); i != abil_other_list_id.end();) {
-                               if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
-                                    i = abil_other_list_id.erase(i);
-                                } else {
-                                    ++i;
-                                }
-                        }
+        }
+
+	    if(special_id){
+	        for(const special_match& entry : special_id_matches) {
+	            abil_other_list_id.append((*other_).get_abilities(entry.tag_name, other_loc_));
+                for(unit_ability_list::iterator i = abil_other_list_id.begin(); i != abil_other_list_id.end();) {
+                    if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
+                        i = abil_other_list_id.erase(i);
+                    } else {
+                        ++i;
                     }
+                }
             }
-            abil_other_list.append(abil_other_list_id);
+        }
+        abil_other_list.append(abil_other_list_id);
     }
     abil_list.append(abil_other_list);
     if(!abil_list.empty()){
@@ -1251,7 +1254,7 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool simp
 
 bool attack_type::bool_ability(const std::string& ability, bool simple_check, bool special_id, bool special_tags) const
 {
-	bool abil_bool = get_special_bool(ability, simple_check, special_id, special_tags) || get_special_ability_bool(ability, simple_check, special_id, special_tags);
+	bool abil_bool = get_special_bool(ability, simple_check, special_id, special_tags) || get_special_ability_bool(ability, special_id, special_tags);
 	return abil_bool;
 }
 //end of emulate weapon special functions.
