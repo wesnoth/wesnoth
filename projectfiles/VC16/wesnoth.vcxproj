@@ -1709,6 +1709,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\server_info_dialog.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\help_browser.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Gui\Dialogs\</ObjectFileName>
