@@ -15,12 +15,11 @@
 #pragma once
 
 #include "server/user_handler.hpp"
+#include "dbconn.hpp"
 
 #include <vector>
 #include <memory>
 #include <ctime>
-
-#include <mysql/mysql.h>
 
 // The [user_handler] section in the server configuration
 // file could look like this:
@@ -41,7 +40,6 @@
 class fuh : public user_handler {
 	public:
 		fuh(const config& c);
-		~fuh();
 
 		bool login(const std::string& name, const std::string& password, const std::string& seed);
 
@@ -64,7 +62,6 @@ class fuh : public user_handler {
 
 		ban_info user_is_banned(const std::string& name, const std::string& addr);
 
-		// Throws user_handler::error
 		std::string user_info(const std::string& name);
 
 		bool use_phpbb_encryption() const { return true; }
@@ -78,40 +75,16 @@ class fuh : public user_handler {
 		void db_set_oos_flag(const std::string& uuid, int game_id);
 
 	private:
+		dbconn conn;
+		std::string db_users_table_;
+		std::string db_extra_table_;
+		int mp_mod_group_;
+
 		std::string get_hash(const std::string& user);
 		std::time_t get_lastlogin(const std::string& user);
 		std::time_t get_registrationdate(const std::string& user);
 		bool is_inactive(const std::string& user);
-
 		void set_lastlogin(const std::string& user, const std::time_t& lastlogin);
-
-		template<typename T>
-		ban_info retrieve_ban_info(BAN_TYPE, T detail);
-
-		std::time_t retrieve_ban_duration_internal(const std::string& col, const std::string& detail);
-		std::time_t retrieve_ban_duration_internal(const std::string& col, unsigned int detail);
-
-		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_, db_game_info_table_, db_game_player_info_table_, db_game_modification_info_table_, db_user_group_table_;
-		std::string db_tournament_query_;
-		unsigned int mp_mod_group_;
-
-		MYSQL *conn;
-
-		template<typename T, typename... Args>
-		inline T prepared_statement(const std::string& sql, Args&&...);
-		// Query a detail for a particular user from the database
-		template<typename T>
-		T get_detail_for_user(const std::string& name, const std::string& detail);
-		template<typename T>
-		T get_writable_detail_for_user(const std::string& name, const std::string& detail);
-
-		// Write something to the write table
-		template<typename T>
-		void write_detail(const std::string& name, const std::string& detail, T&& value);
-
-		// Same as user_exists() but checks if we have a row for this user in the extra table
-		bool extra_row_exists(const std::string& name);
-		
-		bool is_user_in_group(const std::string& name, unsigned int group_id);
+		bool is_user_in_group(const std::string& name, int group_id);
 };
 

@@ -21,7 +21,7 @@
 -- table which the forum inserts bans into, which wesnothd checks during login
 -- create table ban
 -- (
---     BAN_USERID  VARCHAR(100) NOT NULL,
+--     BAN_USERID  INT(10) UNSIGNED NOT NULL,
 --     BAN_END     INT(10) UNSIGNED NOT NULL DEFAULT 0,
 --     BAN_IP      VARCHAR(100) DEFAULT NULL,
 --     BAN_EMAIL   VARCHAR(100) DEFAULT NULL,

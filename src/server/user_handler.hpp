@@ -78,10 +78,10 @@ class user_handler {
 		/** Ban type values */
 		enum BAN_TYPE
 		{
-			BAN_NONE,		/**< Not a ban */
-			BAN_USER,		/**< User account/name ban */
-			BAN_IP,			/**< IP address ban */
-			BAN_EMAIL,		/**< Account email address ban */
+			BAN_NONE = 0,	/**< Not a ban */
+			BAN_IP = 1, 	/**< IP address ban */
+			BAN_USER = 2,	/**< User account/name ban */
+			BAN_EMAIL = 3,	/**< Account email address ban */
 		};
 
 		/** Ban status description */

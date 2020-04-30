@@ -342,6 +342,30 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\server\dbconn.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\resultsets\tournaments.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\resultsets\ban_check.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\server\player.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>

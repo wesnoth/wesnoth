@@ -25,10 +25,4 @@ RUN yes | pip3 install paramiko
 # programs
 RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang lld
 
-# mariadbpp
-RUN git clone --depth 1 https://github.com/viaduck/mariadbpp.git mariadbpp && \
-    cd mariadbpp && git submodule update --init && mkdir build && cd build && \
-    cmake .. && \
-    make install
-
 WORKDIR /home/wesnoth-travis
