@@ -1,6 +1,6 @@
 ﻿
 # set minimum version
-cmake_minimum_required(VERSION 2.8.5)
+cmake_minimum_required(VERSION 3.1)
 
 project(wesnoth)
 
@@ -62,6 +62,11 @@ option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 if(NOT CXX_STD)
 	set(CXX_STD "14")
 endif()
+set(CMAKE_CXX_STANDARD ${CXX_STD})
+# make sure to force using it
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# forbid defaulting to gnu++NN instead of c++NN
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 if(ENABLE_GAME OR ENABLE_TESTS)
 #	find_package(OpenGL REQUIRED)
@@ -209,7 +214,7 @@ if(NOT DEFINED CXX_FLAGS_USER)
 
 endif(NOT DEFINED CXX_FLAGS_USER)
 
-set(COMPILER_FLAGS "-std=c++${CXX_STD} -Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast -Wtrampolines")
+set(COMPILER_FLAGS "-Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast -Wtrampolines")
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture")

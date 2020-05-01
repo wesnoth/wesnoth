@@ -121,9 +121,9 @@ else
         ccache -z
     else
         scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
-              ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
-              extra_flags_config="-pipe" strict="$STRICT" forum_user_handler=true \
-              nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
+            ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
+            extra_flags_config="-pipe" strict="$STRICT" forum_user_handler=true \
+            nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
         BUILD_RET=$?
 
 # rename debug executables to what the tests expect
