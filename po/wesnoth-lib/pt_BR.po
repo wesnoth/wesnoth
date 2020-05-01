@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-02-01 22:39-0300\n"
+"POT-Creation-Date: 2020-05-02 01:56+0300\n"
 "PO-Revision-Date: 2020-02-03 08:57-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -3333,10 +3333,10 @@ msgstr "Procurar"
 # File: data/gui/default/window/game_load.cfg, line: 265
 # File: data/gui/default/window/mp_server_list.cfg, line: 107
 #. [toggle_button]: id=sort_0
+#. [label]: id=name
+#. [label]
 #. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
-#. [label]
-#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:243
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -3423,7 +3423,7 @@ msgstr "Publicar add-on"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:803
+#: src/gui/dialogs/addon/manager.cpp:810
 msgid "Uninstall add-on"
 msgstr "Desinstalar add-on"
 
@@ -3464,8 +3464,8 @@ msgstr "Esperando mensagens"
 # File: data/gui/default/window/message.cfg, line: 135
 # File: src/construct_dialog.cpp, line: 135
 # File: src/mapgen_dialog.cpp, line: 110
-#. [button]: id=close_window
 #. [button]: id=click_dismiss
+#. [button]: id=close_window
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
@@ -3825,7 +3825,7 @@ msgstr "Dependências:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:888
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:895
 msgid "addon_dependencies^None"
 msgstr "Nenhuma"
 
@@ -3844,7 +3844,7 @@ msgstr "Traduções:"
 # File: data/gui/default/window/addon_description.cfg, line: 320
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:902
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:909
 msgid "translations^None"
 msgstr "Nenhuma"
 
@@ -4311,8 +4311,8 @@ msgstr ""
 # File: data/gui/default/window/campaign_difficulty.cfg, line: 57
 # File: data/gui/default/window/campaign_difficulty.cfg, line: 57
 # File: data/gui/default/window/campaign_difficulty.cfg, line: 57
-#. [slider]: id=enemey_gold_factor
 #. [label]: id=title
+#. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
@@ -4361,8 +4361,8 @@ msgstr "Último"
 # File: data/gui/default/window/title_screen.cfg, line: 195
 # File: data/gui/default/window/chat_log.cfg, line: 79
 # File: data/gui/default/window/title_screen.cfg, line: 195
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Anterior"
@@ -4392,8 +4392,8 @@ msgstr "Página anterior"
 # File: data/gui/default/window/editor_settings.cfg, line: 79
 # File: data/gui/default/window/editor_settings.cfg, line: 80
 # File: data/gui/default/window/title_screen.cfg, line: 210
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Próximo"
@@ -4583,7 +4583,7 @@ msgstr "Deletar PdD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:776 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:783 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "Confirmar"
@@ -5011,8 +5011,8 @@ msgstr "Escolha um gerador de mapa:"
 # File: data/gui/default/window/editor_generate_map.cfg, line: 86
 # File: data/gui/default/window/editor_generate_map.cfg, line: 87
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=random_map_settings
 #. [button]: id=settings
+#. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
 #: src/gui/dialogs/multiplayer/lobby.cpp:481
@@ -5053,8 +5053,8 @@ msgstr "Novo Mapa"
 # File: src/mapgen_dialog.cpp, line: 121
 # File: data/gui/default/window/editor_new_map.cfg, line: 54
 # File: src/mapgen_dialog.cpp, line: 121
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
@@ -5067,8 +5067,8 @@ msgstr "Largura:"
 # File: src/mapgen_dialog.cpp, line: 122
 # File: data/gui/default/window/editor_new_map.cfg, line: 81
 # File: src/mapgen_dialog.cpp, line: 122
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -5416,8 +5416,8 @@ msgstr "Você realmente quer apagar este jogo?"
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 79
 # File: data/gui/default/window/game_delete.cfg, line: 80
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 79
-#. [toggle_button]: id=do_not_show_again
 #. [toggle_button]: id=dont_ask_again
+#. [toggle_button]: id=do_not_show_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
@@ -6050,7 +6050,7 @@ msgstr "Escolha seu idioma:"
 # File: src/gui/dialogs/mp_create_game.cpp, line: 100
 # File: src/gui/dialogs/mp_create_game.cpp, line: 100
 #. [label]: id=status
-#: data/gui/window/loadscreen.cfg:150
+#: data/gui/window/loadscreen.cfg:147
 msgid "Loading..."
 msgstr "Carregando..."
 
@@ -6076,8 +6076,8 @@ msgstr "É necessário senha para entrar"
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 # File: data/gui/default/window/lobby_main.cfg, line: 586
-#. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
+#. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:338
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
@@ -6126,9 +6126,9 @@ msgstr "Terminar Sessão"
 # File: data/gui/default/window/mp_create_game.cfg, line: 41
 # File: data/gui/default/window/lobby_main.cfg, line: 686
 # File: data/gui/default/window/mp_create_game.cfg, line: 41
-#. [button]: id=create
 #. [label]
 #. [button]: id=ok
+#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:407 data/gui/window/lobby_main.cfg:573
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:449
@@ -6153,9 +6153,9 @@ msgstr "Criar Jogo"
 # File: src/game_preferences_display.cpp, line: 63
 # File: src/hotkeys.cpp, line: 106
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_preferences
-#. [label]: id=title
 #. [grid]
+#. [label]: id=title
+#. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:561
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:118
@@ -6241,15 +6241,15 @@ msgstr "Informações do Jogador — "
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
-#. [button]: id=add_to_friends
 #. [button]: id=add_friend
+#. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
 msgstr "Adicionar como Amigo"
 
-#. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
+#. [button]: id=add_to_ignores
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
@@ -6585,9 +6585,9 @@ msgstr "Quando um novo for criado"
 # File: src/hotkey_preferences_display.cpp, line: 169
 # File: src/hotkey_preferences_display.cpp, line: 169
 # File: src/hotkey_preferences_display.cpp, line: 169
+#. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
-#. [button]: id=btn_reset_hotkeys
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:296
 #: data/gui/window/select_orb_colors.cfg:102
@@ -6861,8 +6861,8 @@ msgstr "Tempo para cada ataque, recrutamento e captura"
 # File: data/gui/default/window/editor_generate_map.cfg, line: 97
 # File: data/gui/default/window/editor_generate_map.cfg, line: 97
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=label
 #. [widget]: id=tab_label
+#. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: src/hotkey/hotkey_command.cpp:38
@@ -7049,8 +7049,8 @@ msgstr "Aleatório"
 # File: data/gui/default/window/unit_create.cfg, line: 77
 # File: data/gui/default/window/unit_create.cfg, line: 77
 # File: data/gui/default/window/unit_create.cfg, line: 77
-#. [toggle_button]: id=male_toggle
 #. [row]
+#. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:217
 msgid "Male"
@@ -7060,8 +7060,8 @@ msgstr "Masculino"
 # File: data/gui/default/window/unit_create.cfg, line: 87
 # File: data/gui/default/window/unit_create.cfg, line: 87
 # File: data/gui/default/window/unit_create.cfg, line: 87
-#. [toggle_button]: id=female_toggle
 #. [row]
+#. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
@@ -7101,8 +7101,8 @@ msgstr "Posição Inicial:"
 # File: data/gui/default/window/mp_method_selection.cfg, line: 166
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 40
 # File: data/gui/default/window/mp_method_selection.cfg, line: 166
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -7234,9 +7234,9 @@ msgstr "Salvar senha localmente (encriptado)"
 # File: data/gui/default/window/title_screen.cfg, line: 258
 # File: src/gui/dialogs/game_load.cpp, line: 296
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=label
-#. [label]
 #. [grid]
+#. [label]
+#. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
 #: src/gui/dialogs/game_load.cpp:389
@@ -8827,21 +8827,21 @@ msgstr "Estatística"
 msgid "HP"
 msgstr "HP"
 
-#. [toggle_button]: id=sort_2
 #. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
 msgstr "Lvl"
 
-#. [toggle_button]: id=sort_3
 #. [toggle_button]: id=sort_5
+#. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
 msgstr "XP"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_6
+#. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
 #: src/gui/widgets/unit_preview_pane.cpp:364
 #: src/gui/widgets/unit_preview_pane.cpp:513
@@ -9007,7 +9007,7 @@ msgstr "O tamanho máximo de largura de texto é menor que 1."
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
-#: src/font/text.cpp:761
+#: src/font/text.cpp:765
 msgid "The text contains invalid Pango markup: "
 msgstr "Este texto contém marcação Pango inválida: "
 
@@ -9612,11 +9612,11 @@ msgstr "O seguinte add-on não fo deletado corretamente:"
 # File: src/hotkey_preferences_display.cpp, line: 637
 # File: src/hotkey_preferences_display.cpp, line: 637
 # File: src/hotkey_preferences_display.cpp, line: 637
-#: src/gui/dialogs/addon/manager.cpp:729
+#: src/gui/dialogs/addon/manager.cpp:736
 msgid "Warning"
 msgstr "Aviso"
 
-#: src/gui/dialogs/addon/manager.cpp:730
+#: src/gui/dialogs/addon/manager.cpp:737
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -9624,27 +9624,27 @@ msgstr ""
 "A versão remota deste add-on é maior ou igual a versão que está sendo "
 "enviada. Você realmente deseja continuar?"
 
-#: src/gui/dialogs/addon/manager.cpp:739
+#: src/gui/dialogs/addon/manager.cpp:746
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Caminho do ícone inválido. Certifique-se que o caminho leva para uma imagem "
 "válida."
 
-#: src/gui/dialogs/addon/manager.cpp:742 src/gui/dialogs/addon/manager.cpp:745
-#: src/gui/dialogs/addon/manager.cpp:784
+#: src/gui/dialogs/addon/manager.cpp:749 src/gui/dialogs/addon/manager.cpp:752
+#: src/gui/dialogs/addon/manager.cpp:791
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu com um erro:"
 
-#: src/gui/dialogs/addon/manager.cpp:743
+#: src/gui/dialogs/addon/manager.cpp:750
 msgid "Terms"
 msgstr "Termos"
 
-#: src/gui/dialogs/addon/manager.cpp:760 src/gui/dialogs/addon/manager.cpp:787
+#: src/gui/dialogs/addon/manager.cpp:767 src/gui/dialogs/addon/manager.cpp:794
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:502
 msgid "Response"
 msgstr "Resposta"
 
-#: src/gui/dialogs/addon/manager.cpp:772
+#: src/gui/dialogs/addon/manager.cpp:779
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -9656,7 +9656,7 @@ msgstr ""
 # File: data/gui/default/window/game_delete.cfg, line: 60
 # File: data/gui/default/window/game_delete.cfg, line: 60
 # File: data/gui/default/window/game_delete.cfg, line: 60
-#: src/gui/dialogs/addon/manager.cpp:804
+#: src/gui/dialogs/addon/manager.cpp:811
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Você desinstalar '$addon|'?"
 
@@ -10451,19 +10451,26 @@ msgstr "Não Espelhar Aliados: Aliados não recebem facções idênticas"
 msgid "No eras available for this game."
 msgstr "Nenhuma era disponível para este jogo."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:742
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:738
 msgid "number of players^$min to $max"
 msgstr "$min a $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:839
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:835
 msgid "The selected game has no sides!"
 msgstr "O jogo selecionado não possui lados!"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:905
+#. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:842
+#, fuzzy
+#| msgid "The selected game has no sides!"
+msgid "The selected game can not be created."
+msgstr "O jogo selecionado não possui lados!"
+
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:911
 msgid "Choose Starting Scenario"
 msgstr "Escolha um Cenário Inicial"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:905
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:911
 msgid "Select at which point to begin this campaign."
 msgstr "Selecione onde deseja começar esta campanha."
 
