@@ -189,7 +189,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if(ability_active(tag_name, i, loc)
 			&& ability_affects_self(tag_name, i, loc))
 			{
-			res.emplace_back(&i, loc);
+			res.emplace_back(&i, loc, loc);
 		}
 	}
 
@@ -214,7 +214,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 				&& it->ability_active(tag_name, j, adjacent[i])
 				&& ability_affects_adjacent(tag_name, j, i, loc, *it))
 				{
-				res.emplace_back(&j, adjacent[i]);
+				res.emplace_back(&j, loc, adjacent[i]);
 			}
 		}
 	}
@@ -227,7 +227,7 @@ unit_ability_list unit::get_abilities_weapons(const std::string& tag_name, const
 {
 	unit_ability_list res = get_abilities(tag_name, loc);
 	for(unit_ability_list::iterator i = res.begin(); i != res.end();) {
-		if((!ability_affects_weapon(*i->first, weapon, false) || !ability_affects_weapon(*i->first, opp_weapon, true))) {
+		if((!ability_affects_weapon(*i->ability_cfg, weapon, false) || !ability_affects_weapon(*i->ability_cfg, opp_weapon, true))) {
 			i = res.erase(i);
 		} else {
 			++i;
@@ -504,7 +504,7 @@ get_ability_value_visitor<T, TFuncFormula> make_get_ability_value_visitor(T def,
 	return get_ability_value_visitor<T, TFuncFormula>(def, formula_handler);
 }
 template<typename T, typename TFuncFormula>
-T get_single_ability_value(const config::attribute_value& v, T def, const map_location& sender_loc, const map_location& receiver_loc, const TFuncFormula& formula_handler)
+T get_single_ability_value(const config::attribute_value& v, T def, const unit_ability& ability_info, const map_location& receiver_loc, const TFuncFormula& formula_handler)
 {
 	return v.apply_visitor(make_get_ability_value_visitor(def, [&](const std::string& s) {
 
@@ -512,15 +512,17 @@ T get_single_ability_value(const config::attribute_value& v, T def, const map_lo
 				assert(display::get_singleton());
 				const unit_map& units = display::get_singleton()->get_units();
 
-				auto u_itor = units.find(sender_loc);
+				auto u_itor = units.find(ability_info.teacher_loc);
 
 				if(u_itor == units.end()) {
 					return def;
 				}
 				wfl::map_formula_callable callable(std::make_shared<wfl::unit_callable>(*u_itor));
-				u_itor = units.find(receiver_loc);
-				if(u_itor != units.end()) {
-					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*u_itor)));
+				if (auto uptr = units.find_unit_ptr(ability_info.student_loc)) {
+					callable.add("student", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
+				}
+				if (auto uptr = units.find_unit_ptr(receiver_loc)) {
+					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
 				}
 				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table), callable);
 			} catch(const wfl::formula_error& e) {
@@ -546,21 +548,21 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 	int stack = 0;
 	for (const unit_ability& p : cfgs_)
 	{
-		int value = get_single_ability_value((*p.first)[key], def, p.second, loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		int value = get_single_ability_value((*p.ability_cfg)[key], def, p, loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 			return formula.evaluate(callable).as_int();
 		});
 
-		if ((*p.first)["cumulative"].to_bool()) {
+		if ((*p.ability_cfg)["cumulative"].to_bool()) {
 			stack += value;
 			if (value < 0) value = -value;
 			if (only_cumulative && !comp(value, abs_max)) {
 				abs_max = value;
-				best_loc = p.second;
+				best_loc = p.teacher_loc;
 			}
 		} else if (only_cumulative || comp(flat, value)) {
 			only_cumulative = false;
 			flat = value;
-			best_loc = p.second;
+			best_loc = p.teacher_loc;
 		}
 	}
 	return std::make_pair(flat + stack, best_loc);
@@ -761,7 +763,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 
 	for(const config& i : specials_.child_range(special)) {
 		if(special_active(i, AFFECT_SELF, special)) {
-			res.emplace_back(&i, loc);
+			res.emplace_back(&i, loc, loc);
 		}
 	}
 
@@ -771,7 +773,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 
 	for(const config& i : other_attack_->specials_.child_range(special)) {
 		if(other_attack_->special_active(i, AFFECT_OTHER, special)) {
-			res.emplace_back(&i, other_loc_);
+			res.emplace_back(&i, other_loc_, other_loc_);
 		}
 	}
 	return res;
@@ -1099,7 +1101,7 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	if(self_) {
 		abil_list.append((*self_).get_abilities(ability, self_loc_));
 		for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-			if(!special_active(*i->first, AFFECT_SELF, ability, true, "filter_student")) {
+			if(!special_active(*i->ability_cfg, AFFECT_SELF, ability, true, "filter_student")) {
 				i = abil_list.erase(i);
 			} else {
 				++i;
@@ -1110,7 +1112,7 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	if(other_) {
 		abil_other_list.append((*other_).get_abilities(ability, other_loc_));
 		for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
-			if(!other_attack_->special_active(*i->first, AFFECT_OTHER, ability, true, "filter_student")) {
+			if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, true, "filter_student")) {
 				i = abil_other_list.erase(i);
 			} else {
 				++i;
@@ -1259,6 +1261,12 @@ bool attack_type::bool_ability(const std::string& ability, bool simple_check, bo
 }
 //end of emulate weapon special functions.
 
+bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
+                                 bool include_backstab, const std::string& filter_self) const
+{
+	return special_active_impl(shared_from_this(), const_attack_ptr(), special, whom, tag_name, include_backstab, filter_self);
+}
+
 /**
  * Returns whether or not the given special is active for the specified unit,
  * based on the current context (see set_specials_context).
@@ -1269,9 +1277,12 @@ bool attack_type::bool_ability(const std::string& ability, bool simple_check, bo
  *                              (usually true since backstab is usually accounted
  *                              for elsewhere)
  */
-bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
-                                 bool include_backstab, const std::string& filter_self) const
+bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack_ptr other_attack, const config& special, AFFECTS whom, const std::string& tag_name,
+                                 bool include_backstab, const std::string& filter_self)
 {
+	assert(self_attack || other_attack);
+	bool is_attacker = self_attack ? self_attack->is_attacker_ : !other_attack->is_attacker_;
+	bool is_for_listing = self_attack ? self_attack->is_for_listing_ : other_attack->is_for_listing_;
 	//log_scope("special_active");
 
 	// Backstab check
@@ -1281,20 +1292,20 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
 
 	// Does this affect the specified unit?
 	if ( whom == AFFECT_SELF ) {
-		if ( !special_affects_self(special, is_attacker_) )
+		if ( !special_affects_self(special, is_attacker) )
 			return false;
 	}
 	if ( whom == AFFECT_OTHER ) {
-		if ( !special_affects_opponent(special, is_attacker_) )
+		if ( !special_affects_opponent(special, is_attacker) )
 			return false;
 	}
 
 	// Is this active on attack/defense?
 	const std::string & active_on = special["active_on"];
 	if ( !active_on.empty() ) {
-		if ( is_attacker_  &&  active_on != "offense" )
+		if ( is_attacker  &&  active_on != "offense" )
 			return false;
-		if ( !is_attacker_  &&  active_on != "defense" )
+		if ( !is_attacker  &&  active_on != "defense" )
 			return false;
 	}
 
@@ -1302,25 +1313,27 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 
-	unit_const_ptr self = self_;
-	unit_const_ptr other = other_;
-
+	unit_const_ptr self = self_attack ? self_attack->self_ : other_attack->other_;
+	unit_const_ptr other = self_attack ? self_attack->other_ : other_attack->self_;
+	map_location self_loc = self_attack ? self_attack->self_loc_ : other_attack->other_loc_;
+	map_location other_loc = self_attack ? self_attack->other_loc_ : other_attack->self_loc_;
+	//TODO: why is this needed?
 	if(self == nullptr) {
-		unit_map::const_iterator it = units.find(self_loc_);
+		unit_map::const_iterator it = units.find(self_loc);
 		if(it.valid()) {
 			self = it.get_shared_ptr().get();
 		}
 	}
 	if(other == nullptr) {
-		unit_map::const_iterator it = units.find(other_loc_);
+		unit_map::const_iterator it = units.find(other_loc);
 		if(it.valid()) {
 			other = it.get_shared_ptr().get();
 		}
 	}
 
 	// Make sure they're facing each other.
-	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
-	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
+	temporary_facing self_facing(self, self_loc.get_relative_dir(other_loc));
+	temporary_facing other_facing(other, other_loc.get_relative_dir(self_loc));
 
 	// Filter poison, plague, drain, first strike
 	if (tag_name == "drains" && other && other->get_state("undrainable")) {
@@ -1328,39 +1341,39 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
 	}
 	if (tag_name == "plague" && other &&
 		(other->get_state("unplagueable") ||
-		 resources::gameboard->map().is_village(other_loc_))) {
+		 resources::gameboard->map().is_village(other_loc))) {
 		return false;
 	}
 	if (tag_name == "poison" && other &&
 		(other->get_state("unpoisonable") || other->get_state(unit::STATE_POISONED))) {
 		return false;
 	}
-	if (tag_name == "firststrike" && !is_attacker_ && other_attack_ &&
-		other_attack_->get_special_bool("firststrike", false)) {
+	if (tag_name == "firststrike" && !is_attacker && other_attack &&
+		other_attack->get_special_bool("firststrike", false)) {
 		return false;
 	}
 
 
 	// Translate our context into terms of "attacker" and "defender".
-	unit_const_ptr & att = is_attacker_ ? self : other;
-	unit_const_ptr & def = is_attacker_ ? other : self;
-	const map_location & att_loc   = is_attacker_ ? self_loc_ : other_loc_;
-	const map_location & def_loc   = is_attacker_ ? other_loc_ : self_loc_;
-	const_attack_ptr att_weapon = is_attacker_ ? shared_from_this() : other_attack_;
-	const_attack_ptr def_weapon = is_attacker_ ? other_attack_ : shared_from_this();
+	unit_const_ptr & att = is_attacker ? self : other;
+	unit_const_ptr & def = is_attacker ? other : self;
+	const map_location & att_loc   = is_attacker ? self_loc : other_loc;
+	const map_location & def_loc   = is_attacker ? other_loc : self_loc;
+	const_attack_ptr att_weapon = is_attacker ? self_attack : other_attack;
+	const_attack_ptr def_weapon = is_attacker ? other_attack : self_attack;
 
 	// Filter the units involved.
-	if (!special_unit_matches(self, other, self_loc_, shared_from_this(), special, is_for_listing_, filter_self))
+	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self))
 		return false;
-	if (!special_unit_matches(other, self, other_loc_, other_attack_, special, is_for_listing_, "filter_opponent"))
+	if (!special_unit_matches(other, self, other_loc, other_attack, special, is_for_listing, "filter_opponent"))
 		return false;
-	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing_, "filter_attacker"))
+	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker"))
 		return false;
-	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing_, "filter_defender"))
+	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender"))
 		return false;
 
 	adjacent_loc_array_t adjacent;
-	get_adjacent_tiles(self_loc_, adjacent.data());
+	get_adjacent_tiles(self_loc, adjacent.data());
 
 	// Filter the adjacent units.
 	for (const config &i : special.child_range("filter_adjacent"))
@@ -1463,7 +1476,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	individual_effect set_effect_min;
 
 	for (const unit_ability & ability : list) {
-		const config& cfg = *ability.first;
+		const config& cfg = *ability.ability_cfg;
 		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
 		if (!cfg["backstab"].blank()) {
@@ -1476,7 +1489,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			continue;
 
 		if (const config::attribute_value *v = cfg.get("value")) {
-			int value = get_single_ability_value(*v, def, ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int value = get_single_ability_value(*v, def, ability, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
@@ -1484,51 +1497,51 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
 			assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
 			if(set_effect_min.type == NOT_USED) {
-				set_effect_min.set(SET, value_cum, ability.first, ability.second);
-				set_effect_max.set(SET, value_cum, ability.first, ability.second);
+				set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+				set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
 			}
 			else {
 				if(value_cum > set_effect_max.value) {
-					set_effect_max.set(SET, value_cum, ability.first, ability.second);
+					set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
 				}
 				if(value_cum < set_effect_min.value) {
-					set_effect_min.set(SET, value_cum, ability.first, ability.second);
+					set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
 				}
 			}
 		}
 
 		if (const config::attribute_value *v = cfg.get("add")) {
-			int add = get_single_ability_value(*v, def, ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int add = get_single_ability_value(*v, def, ability, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
-				values_add[effect_id].set(ADD, add, ability.first, ability.second);
+				values_add[effect_id].set(ADD, add, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("sub")) {
-			int sub = - get_single_ability_value(*v, def, ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int sub = - get_single_ability_value(*v, def, ability, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
 			std::map<std::string,individual_effect>::iterator sub_effect = values_add.find(effect_id);
 			if(sub_effect == values_add.end() || sub < sub_effect->second.value) {
-				values_add[effect_id].set(ADD, sub, ability.first, ability.second);
+				values_add[effect_id].set(ADD, sub, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
-			int multiply = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int multiply = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_decimal() / 1000.0 ;
 			}) * 100);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
-				values_mul[effect_id].set(MUL, multiply, ability.first, ability.second);
+				values_mul[effect_id].set(MUL, multiply, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
-			int divide = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int divide = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_decimal() / 1000.0 ;
 			}) * 100);
@@ -1539,7 +1552,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			else {
 				std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
 				if(div_effect == values_div.end() || divide > div_effect->second.value) {
-					values_div[effect_id].set(DIV, divide, ability.first, ability.second);
+					values_div[effect_id].set(DIV, divide, ability.ability_cfg, ability.teacher_loc);
 				}
 			}
 		}

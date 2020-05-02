@@ -384,6 +384,20 @@ public:
 		return const_cast<unit_map*>(this)->find(id);
 	}
 
+	template<typename T>
+	unit_ptr find_unit_ptr(const T& val)
+	{
+		auto res = find(val);
+		return res != end() ? res.get_shared_ptr() : unit_ptr();
+	}
+
+	template<typename T>
+	unit_const_ptr find_unit_ptr(const T& val) const
+	{
+		auto res = find(val);
+		return res != end() ? res.get_shared_ptr() : unit_ptr();
+	}
+
 	unit_iterator find_leader(int side);
 
 	const_unit_iterator find_leader(int side) const

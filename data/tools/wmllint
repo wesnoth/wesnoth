@@ -1763,6 +1763,29 @@ def global_sanity_check(filename, lines):
                         print('"%s", line %d: custom ellipse %s may need to be updated' % (filename, num, value))
                 except TypeError: # this is needed to handle tags, that parse_attribute cannot split
                     pass
+    # Handle [advancefrom] deprecation
+    # it should be replaced with [modify_unit_type]
+    # but, unlike the former tag, the new one goes in the _main.cfg, even as a macro call
+    # Because we can't be sure about what the UMC author wants to do, just warn
+    in_campaign = False
+    for num, line in enumerate(lines, start=1):
+        if "[campaign]" in line:
+            in_campaign = True
+            continue
+        if "[/campaign]" in line:
+            in_campaign = False
+            continue
+        if "[advancefrom]" in line:
+            print("{}, line {}: [advancefrom] needs to be manually updated to \
+[modify_unit_type] and moved into the _main.cfg file".format(filename, num))
+        if in_campaign:
+            try:
+                (key, prefix, value, comment) = parse_attribute(line)
+                if key == "extra_defines":
+                    print("{}, line {}: extra_defines are now macros and need \
+to be called on their own".format(filename, num))
+            except TypeError:
+                pass
     # Interpret various magic comments
     for line in lines:
         # Interpret magic comments for setting the usage pattern of units.

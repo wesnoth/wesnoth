@@ -44,8 +44,27 @@ namespace unit_detail
 	}
 }
 
-// Data typedef for unit_ability_list.
-using unit_ability = std::pair<const config*, map_location>;
+/// Data typedef for unit_ability_list.
+struct unit_ability
+{
+	unit_ability(const config* ability_cfg, map_location student_loc, map_location teacher_loc)
+		: student_loc(student_loc)
+		, teacher_loc(teacher_loc)
+		, ability_cfg(ability_cfg)
+	{
+
+	}
+	/// Used by the formula in the ability.
+	/// The REAL location of the student (not the 'we are assiming the student is at this position' location)
+	/// once unit_ability_list can contain abilities from different 'students', as it contains abilities from
+	/// a unit aswell from its opponents (abilities with apply_to= opponent)
+	map_location student_loc;
+	/// The location of the teacher, that is the unit who owns the ability tags
+	/// (differnt from student because of [afect_adjacent])
+	map_location teacher_loc;
+	/// The contents of the ability tag, never nullptr.
+	const config* ability_cfg;
+};
 
 class unit_ability_list
 {
