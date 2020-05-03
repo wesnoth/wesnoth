@@ -284,13 +284,13 @@ config readwrite_context_impl::to_readwrite_context_config() const
 config readonly_context_impl::to_readonly_context_config() const
 {
 	config cfg;
-	for(const engine_ptr e : engines_) {
+	for(const engine_ptr &e : engines_) {
 		cfg.add_child("engine",e->to_config());
 	}
-	for(const aspect_map::value_type a : aspects_) {
+	for(const aspect_map::value_type &a : aspects_) {
 		cfg.add_child("aspect",a.second->to_config());
 	}
-	for(const goal_ptr g : goals_) {
+	for(const goal_ptr &g : goals_) {
 		cfg.add_child("goal",g->to_config());
 	}
 	return cfg;

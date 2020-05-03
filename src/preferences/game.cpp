@@ -138,7 +138,7 @@ manager::~manager()
 {
 	config campaigns;
 	typedef const std::pair<std::string, std::set<std::string>> cc_elem;
-	for (cc_elem &elem : completed_campaigns) {
+	for (cc_elem elem : completed_campaigns) {
 		config cmp;
 		cmp["name"] = elem.first;
 		cmp["difficulty_levels"] = utils::join(elem.second);
@@ -159,7 +159,7 @@ manager::~manager()
 */
 	config history;
 	typedef std::pair<std::string, std::vector<std::string>> hack;
-	for (const hack& history_id : history_map) {
+	for (const hack history_id : history_map) {
 
 		config history_id_cfg; // [history_id]
 		for (const std::string& line : history_id.second) {
@@ -1016,7 +1016,7 @@ void encounter_start_units(const unit_map& units){
 
 static void encounter_recallable_units(const std::vector<team>& teams){
 	for (const team& t : teams) {
-		for (const unit_const_ptr & u : t.recall_list()) {
+		for (const unit_const_ptr u : t.recall_list()) {
 			encountered_units_set.insert(u->type_id());
 		}
 	}

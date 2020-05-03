@@ -575,7 +575,7 @@ std::pair<level::TYPE, int> create_engine::find_level_by_id(const std::string& i
 	for(const auto& type : type_map_) {
 		int i = 0;
 
-		for(const auto game : type.second.games) {
+		for(const auto& game : type.second.games) {
 			if(game->id() == id) {
 				return {type.first, i};
 			}
@@ -801,7 +801,7 @@ void create_engine::apply_level_filters()
 std::vector<create_engine::level_ptr> create_engine::get_levels_by_type_unfiltered(level::TYPE type) const
 {
 	std::vector<level_ptr> levels;
-	for(const level_ptr lvl : type_map_.at(type.v).games) {
+	for(const level_ptr& lvl : type_map_.at(type.v).games) {
 		levels.push_back(lvl);
 	}
 

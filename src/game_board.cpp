@@ -354,7 +354,7 @@ void game_board::write_config(config & cfg) const
 			}
 		}
 		//recall list
-		for(const unit_const_ptr & j : t->recall_list()) {
+		for(const unit_const_ptr j : t->recall_list()) {
 			config& u = side.add_child("unit");
 			j->write(u);
 		}
