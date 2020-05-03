@@ -196,6 +196,12 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		APPEND_STRING PROPERTY COMPILE_FLAGS
 			" -Wno-parentheses-equality"
 	)
+# silence a Clang specific warning when compiling the lua code
+	set_property(SOURCE
+		SOURCE ${lua_STAT_SRC}
+		APPEND_STRING PROPERTY COMPILE_FLAGS
+			" -Wno-string-plus-int"
+	)
 endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)

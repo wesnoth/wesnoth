@@ -109,8 +109,9 @@ env_lua = env.Clone(
 
 env_lua.AppendUnique(CCFLAGS = Split("-Wno-old-style-cast -Wno-useless-cast"))
 # Silence some Clang-specific warnings due to extra parentheses in if statements when comparing.
+# also silence a warning for the lua code
 if "clang" in env["CXX"]:
-    env_lua.AppendUnique(CCFLAGS = Split("-Wno-parentheses-equality"))
+    env_lua.AppendUnique(CCFLAGS = Split("-Wno-parentheses-equality -Wno-string-plus-int"))
 
 if env_lua["enable_lto"] == True:
     env_lua["AR"] = 'gcc-ar'
