@@ -134,7 +134,7 @@ namespace { // Helpers for get_recalls()
 
 		const unit_filter ufilt(vconfig(leader->recall_filter()));
 
-		for (const unit_const_ptr & recall_unit_ptr : leader_team.recall_list())
+		for (const unit_const_ptr recall_unit_ptr : leader_team.recall_list())
 		{
 			const unit & recall_unit = *recall_unit_ptr;
 			// Do not add a unit twice.

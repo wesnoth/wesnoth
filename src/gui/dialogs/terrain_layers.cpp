@@ -63,7 +63,7 @@ void terrain_layers::pre_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "layer_list", false);
 
 	int order = 1;
-	for(const terrain_builder::tile::log_details det : tile_logs_) {
+	for(const terrain_builder::tile::log_details& det : tile_logs_) {
 		const terrain_builder::tile::rule_image_rand& ri   = *det.first;
 		const terrain_builder::rule_image_variant& variant = *det.second;
 
