@@ -17,9 +17,9 @@
 #pragma once
 
 #include "map/location.hpp"
+#include "units/ptr.hpp"
 
 class unit_ability_list;
-
 namespace unit_abilities
 {
 bool filter_base_matches(const config& cfg, int def);
@@ -40,8 +40,7 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(const unit_ability_list& list, int def, bool backstab);
-
+		effect(const unit_ability_list& list, int def, bool backstab, const_attack_ptr attacker = const_attack_ptr());
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
 		typedef std::vector<individual_effect>::const_iterator const_iterator;

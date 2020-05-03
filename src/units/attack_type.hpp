@@ -29,7 +29,9 @@
 
 class unit_ability_list;
 class unit_type;
-
+namespace wfl {
+	class map_formula_callable;
+}
 //the 'attack type' is the type of attack, how many times it strikes,
 //and how much damage it does.
 class attack_type : public std::enable_shared_from_this<attack_type>
@@ -102,6 +104,7 @@ public:
 	void write(config& cfg) const;
 	inline config to_config() const { config c; write(c); return c; }
 
+	void add_formula_context(wfl::map_formula_callable&) const;
 private:
 	// In unit_abilities.cpp:
 
