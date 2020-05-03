@@ -87,6 +87,8 @@ struct addon_info
 		this->read(cfg);
 	}
 
+	addon_info(const addon_info&) = default;
+
 	addon_info& operator=(const addon_info& o) {
 		if(this != &o) {
 			this->id = o.id;
