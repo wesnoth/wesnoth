@@ -619,7 +619,9 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 		u->set_movement(0, true);
 		u->set_attacks(0);
 	}
-	u->heal_fully();
+	if(!is_recall) {
+		u->heal_fully();
+	}
 	u->set_hidden(true);
 
 	// Get the leader location before adding the unit to the board.
