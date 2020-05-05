@@ -150,6 +150,10 @@ namespace game_config
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
 
+	/**
+	 * Colors defined by WML [color_range] tags. In addition to team colors such as "red" and
+	 * "blue", this also contains the colors used on the minimap for "cave", "fungus" etc.
+	 */
 	extern std::map<std::string, color_range> team_rgb_range;
 	extern std::map<std::string, t_string> team_rgb_name;
 	extern std::map<std::string, std::vector<color_t>> team_rgb_colors;
