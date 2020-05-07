@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2019-08-28 19:00+1000\n"
+"PO-Revision-Date: 2020-05-04 16:56+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -140,16 +140,12 @@ msgstr "Show all unit types in help"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
-#, fuzzy
-#| msgid ""
-#| "Show all unit types in the help (requires restart). This does not alter "
-#| "the list of encountered units"
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
-"Show all unit types in the help (requires restart). This does not alter the "
-"list of encountered units"
+"Show all unit types in the help (requires restart). If not set, only units "
+"that have been encountered will be shown."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:125
@@ -325,10 +321,8 @@ msgstr "Afrikaans Translation"
 
 #. [about]
 #: data/core/about_i18n.cfg:24
-#, fuzzy
-#| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
-msgstr "Greek Translation"
+msgstr "Ancient Greek Translation"
 
 #. [about]
 #: data/core/about_i18n.cfg:32
@@ -4026,13 +4020,10 @@ msgstr "Defeat:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
-#| msgid_plural "(%d turns left)"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
 msgstr[0] "(this turn left)"
-msgstr[1] "(%d turns left)"
+msgstr[1] "($remaining_turns turns left)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -4041,15 +4032,13 @@ msgstr "$percent|% of gold carried over to the next scenario."
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:339
-#, fuzzy
-#| msgid "Leadership"
 msgid "magical leadership"
-msgstr "Leadership"
+msgstr "magical leadership"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:340
 msgid "female^magical leadership"
-msgstr ""
+msgstr "magical leadership"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:341
@@ -4061,18 +4050,22 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
+"This unit can lead your own units that are next to it, making them fight "
+"better with magical weapons.\n"
+"Adjacent own units of lower level will do more damage in battle. When a unit "
+"adjacent to, of a lower level than, and on the same side as a unit with "
+"Leadership engages in combat, its attacks do 25% more damage times the "
+"difference in their levels."
 
 #. [resistance]: id=melee_steadfast
 #: data/scenario-test.cfg:366
 msgid "steadfast"
-msgstr ""
+msgstr "steadfast"
 
 #. [resistance]: id=melee_steadfast
 #: data/scenario-test.cfg:367
-#, fuzzy
-#| msgid "female^slowed"
 msgid "female^steadfast"
-msgstr "slowed"
+msgstr "steadfast"
 
 #. [resistance]: id=melee_steadfast
 #: data/scenario-test.cfg:368
@@ -4080,11 +4073,14 @@ msgid ""
 "This unit’s resistances are added to 20%, up to a maximum of 50%, when "
 "defending to melle attacks. Vulnerabilities are not affected."
 msgstr ""
+"This unit’s resistances are increased by 20%, up to a maximum of 50% "
+"resistance, when defending against melee attacks. Vulnerabilities are not "
+"affected."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/scenario-test.cfg:403
 msgid "plague"
-msgstr ""
+msgstr "plague"
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/scenario-test.cfg:404
@@ -4093,13 +4089,14 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
 
 #. [firststrike]: id=initiative
 #: data/scenario-test.cfg:465
-#, fuzzy
-#| msgid " (inactive)"
 msgid "initiative"
-msgstr " (inactive)"
+msgstr "initiative"
 
 #. [firststrike]: id=initiative
 #: data/scenario-test.cfg:466
@@ -4107,31 +4104,30 @@ msgid ""
 "All adjacent friendly units will strike first in melee combat, even when "
 "defending."
 msgstr ""
+"All adjacent friendly units will strike first in melee combat, even when "
+"defending."
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:478
 msgid "cantor"
-msgstr ""
+msgstr "cantor"
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:479
-#, fuzzy
-#| msgid "female^chaotic"
 msgid "female^cantor"
-msgstr "chaotic"
+msgstr "cantor"
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:480
 msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
 msgstr ""
+"This unit grants marksman to all ranged attacks of all adjacent allies."
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
-#, fuzzy
-#| msgid "aura of seath ("
 msgid "aura of death ("
-msgstr "aura of seath ("
+msgstr "aura of death ("
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
@@ -4159,10 +4155,8 @@ msgstr "electrical"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:428
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Play"
-msgstr "replay"
+msgstr "Play"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
@@ -4171,10 +4165,8 @@ msgstr "continuous replay"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:443
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Stop"
-msgstr "replay"
+msgstr "Stop"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:444
@@ -4183,10 +4175,8 @@ msgstr "pause after current move"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:459
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Reset"
-msgstr "replay"
+msgstr "Reset"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
@@ -5012,41 +5002,29 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:221
-#, fuzzy
-#| msgid ""
-#| "Try to operate units with a small number of powerful attacks—such as Dark "
-#| "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or "
-#| "threes. This gives you another try whenever your first devastating attack "
-#| "misses — as inevitably happens from time to time."
 msgid ""
 "Try to operate units with a small number of powerful attacks — such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
-"Try to operate units with a small number of powerful attacks—such as Dark "
-"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
+"Try to operate units with a small number of powerful attacks — such as Dark "
+"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 
 #. [tip]
 #: data/tips.cfg:225
-#, fuzzy
-#| msgid ""
-#| "Units with three or more attacks—especially magical attacks—are ideal for "
-#| "finishing off enemies with only a few hitpoints remaining. Be sure to use "
-#| "leadership—or a strong or dextrous unit—whenever the extra point or two "
-#| "of damage makes a one-hit kill possible."
 msgid ""
 "Units with three or more attacks — especially magical attacks — are ideal "
 "for finishing off enemies with only a few hitpoints remaining. Be sure to "
 "use leadership — or a strong or dextrous unit — whenever the extra point or "
 "two of damage makes a one-hit kill possible."
 msgstr ""
-"Units with three or more attacks—especially magical attacks—are ideal for "
-"finishing off enemies with only a few hit-points remaining. Be sure to use "
-"leadership—or a strong or dexterous unit—whenever the extra point or two of "
-"damage makes a one-hit kill possible."
+"Units with three or more attacks — especially magical attacks — are ideal "
+"for finishing off enemies with only a few hit-points remaining. Be sure to "
+"use leadership — or a strong or dexterous unit — whenever the extra point or "
+"two of damage makes a one-hit kill possible."
 
 #. [tip]
 #: data/tips.cfg:229
@@ -5165,14 +5143,13 @@ msgstr "<i>― Sir Gerrick of Westin, 607YW</i>"
 msgid ""
 "Some types of terrain give unique bonuses, such as healing or illumination."
 msgstr ""
+"Some types of terrain give unique bonuses, such as healing or illumination."
 
 #. [tip]
 #. Translate the word "Flight" as a collective noun for drakes
 #: data/tips.cfg:268
-#, fuzzy
-#| msgid "<i>― Great Mage Delfador, 516YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>― Great Mage Delfador, 516YW</i>"
+msgstr "<i>― Galun, Flight Leader, 5YW</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5181,13 +5158,14 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"If a unit is positioned next to healers from two allied sides, the unit will "
+"be healed on both sides’ turns. This way, a unit can be healed faster than "
+"otherwise possible."
 
 #. [tip]
 #: data/tips.cfg:272
-#, fuzzy
-#| msgid "<i>― Lord Hamel of Knalga</i>"
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr "<i>― Lord Hamel of Knalga</i>"
+msgstr "<i>― Lord Tallin of Knalga, 538 YW</i>"
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5197,6 +5175,9 @@ msgid ""
 "Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
 "Game</i> screen when loading start-of-scenario save files."
 msgstr ""
+"Did you know that you can change the difficulty level during a campaign? "
+"Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
+"Game</i> screen when loading start-of-scenario save files."
 
 #. [tip]
 #: data/tips.cfg:281
@@ -5245,10 +5226,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "You do not have a leader to recruit with."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "None of your leaders are able to recruit that unit."
+msgstr "None of your leaders are able to recruit this unit."
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -6536,34 +6515,24 @@ msgid "Only available during a scenario."
 msgstr "Only available during a scenario."
 
 #: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "Time of day schedule:"
+msgstr "Time of Day Schedule"
 
 #: src/help/help_impl.cpp:384
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Lawful units: "
+msgstr "Lawful Bonus:"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Neutral units: "
+msgstr "Neutral Bonus:"
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Chaotic units: "
+msgstr "Chaotic Bonus:"
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "Liminal units: "
+msgstr "Liminal Bonus:"
 
 #: src/help/help_impl.cpp:388
 msgid "Schedule"
@@ -6738,6 +6707,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<command>]\n"
+"“all” = overview of all commands, <command> = name of a specific command "
+"(provides more detail)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -6773,8 +6745,8 @@ msgstr "Usage:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Alias:"
+msgstr[1] "Aliases:"
 
 #: src/menu_events.cpp:177
 msgid "Save Map As"
@@ -6805,72 +6777,55 @@ msgid "You have no units available to recruit."
 msgstr "You have no units available to recruit."
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "No unit recruited"
+msgstr "No unit recruited."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "Internal error. Please report this as a bug! Details:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "You cannot recruit a $unit_type_name at this time."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "You do not have enough gold to recruit that unit"
+msgstr ""
+"At this point in your plan, you will not have enough gold to recruit this "
+"unit."
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "You do not have enough gold to recruit that unit"
+msgstr "You do not have enough gold to recruit this unit."
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "You are separated from your soldiers and may not recall them"
+msgstr "You are separated from your soldiers and may not recall them."
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
-"There are no troops available to recall\n"
-"(You must have veteran survivors from a previous scenario)"
+"There are no troops available to recall.\n"
+"(You must have veteran survivors from a previous scenario.)"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "You currently can’t recall at the highlighted location"
+msgstr "You currently can't recall at the highlighted location."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "No unit recalled"
+msgstr "No unit recalled."
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "You must have at least 1 gold piece to recall a unit"
-msgstr[1] "You must have at least $cost gold pieces to recall this unit"
+msgstr[0] "You must have at least 1 gold piece to recall a unit."
+msgstr[1] "You must have at least $cost gold pieces to recall this unit."
 
 #: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
@@ -6943,15 +6898,18 @@ msgid ""
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
+"[<side> [on/off/full]]\n"
+"“on” = enable but retain vision, “full” = as if it’s controlled by another "
+"player"
 
 #: src/menu_events.cpp:1227
 msgid "Change terrain type of current hex"
-msgstr ""
+msgstr "Change terrain type of current hex"
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
 #: src/menu_events.cpp:1229
 msgid "<terrain type> [both|base|overlay]"
-msgstr ""
+msgstr "<terrain type> [both|base|overlay]"
 
 #: src/menu_events.cpp:1230
 msgid "Switch a side to/from idle state."
@@ -6961,14 +6919,12 @@ msgstr "Switch a side to/from idle state."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1234
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<side> [on/off]]"
 
 #: src/menu_events.cpp:1235
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Change the in-game theme."
 
 #: src/menu_events.cpp:1237
 msgid "<side> <nickname>"
@@ -7000,7 +6956,7 @@ msgstr "Debug layers from terrain under the mouse."
 
 #: src/menu_events.cpp:1244
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "Show FPS (Frames Per Second)."
 
 #: src/menu_events.cpp:1246
 msgid "Save game."
@@ -7116,12 +7072,12 @@ msgstr "Show a scenario variable."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1284
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
-msgstr "Modify a unit variable. (Only top level keys are supported.)"
+msgstr ""
+"Modify a unit variable. (Only top level keys are supported, and "
+"advances=<number>.)"
 
 #: src/menu_events.cpp:1291
 msgid "Discover all units in help."
@@ -7133,7 +7089,7 @@ msgstr "'Undiscover' all units in help."
 
 #: src/menu_events.cpp:1293
 msgid "<unit type id>"
-msgstr ""
+msgstr "<unit type id>"
 
 #: src/menu_events.cpp:1293
 msgid "Create a unit."
@@ -7149,17 +7105,15 @@ msgstr "Toggle shroud for the current player."
 
 #: src/menu_events.cpp:1296
 msgid "<amount>"
-msgstr ""
+msgstr "<amount>"
 
 #: src/menu_events.cpp:1296
 msgid "Give gold to the current player."
 msgstr "Give gold to the current player."
 
 #: src/menu_events.cpp:1297
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<nickname>"
+msgstr "<event name>"
 
 #: src/menu_events.cpp:1297
 msgid "Fire a game event."
@@ -7379,10 +7333,8 @@ msgid "Turn changed"
 msgstr "Turn changed"
 
 #: src/panic.cpp:42
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Battle for Wesnoth"
-msgstr "The Battle for Wesnoth"
+msgstr "Battle for Wesnoth"
 
 #: src/panic.cpp:43
 msgid ""
@@ -7390,6 +7342,9 @@ msgid ""
 "persists, contact the development team for technical support, including the "
 "full contents of this message (copy with CTRL+C)."
 msgstr ""
+"This may indicate an issue with your game configuration. If the problem "
+"persists, contact the development team for technical support, including the "
+"full contents of this message (copy with Ctrl+C)."
 
 #: src/pathfind/pathfind.cpp:747
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -7439,20 +7394,20 @@ msgstr ""
 "want to save the game?"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Do you really want to surrender the game?"
+msgstr ""
+"\n"
+"Do you want to save the game?"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "The game has been saved."
+msgstr ""
+"This game has been ended.\n"
+"Reason: "
 
 #: src/playmp_controller.cpp:368
 msgid ""
@@ -7556,7 +7511,7 @@ msgstr "Race: "
 
 #: src/reports.cpp:224
 msgid "Side: <b>$side_name</b> ($color_name)"
-msgstr ""
+msgstr "Side: <b>$side_name</b> ($color_name)"
 
 #: src/reports.cpp:302
 msgid "Trait: "
@@ -7751,13 +7706,11 @@ msgstr[1] "Attacks"
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
 #: src/reports.cpp:1118
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Remaining: $left/$max"
 
 #: src/reports.cpp:1122
-#, fuzzy
-#| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
-msgstr "This is not a multiplayer save."
+msgstr "This unit can attack multiple times per turn."
 
 #: src/reports.cpp:1213
 msgid "Time of day schedule:"
@@ -7822,12 +7775,6 @@ msgid "Units"
 msgstr "Units"
 
 #: src/reports.cpp:1443
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7836,31 +7783,26 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "The expenses incurred at the end of every turn to maintain your army. The "
-"first number is the amount of gold that will be deducted. The second is the "
-"total cost of upkeep, including that covered by villages — in other words, "
-"the amount of gold that would be deducted if you lost all villages."
+"first number is the amount of gold that will be deducted. It is equal to the "
+"number of unit levels not supported by villages. The second is the total "
+"cost of upkeep, including that covered by villages — in other words, the "
+"amount of gold that would be deducted if you lost all villages."
 
 #: src/reports.cpp:1443
 msgid "Upkeep"
 msgstr "Upkeep"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "Income"
+msgstr "Net Income"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"The amount of gold you gain each turn from your controlled villages, or the "
-"amount of gold you will lose each turn for unit upkeep."
+"The net amount of gold you gain or lose each turn, taking into account "
+"income from controlled villages and payment of upkeep."
 
 #: src/reports.cpp:1648
 msgid "Observers:"
@@ -8167,7 +8109,7 @@ msgstr "input"
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
 #: src/team.cpp:994
 msgid "“$color_id”"
-msgstr ""
+msgstr "“$color_id”"
 
 #: src/terrain/terrain.cpp:192
 msgid "Allied village"
