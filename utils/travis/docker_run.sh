@@ -58,8 +58,11 @@ if [ "$NLS" == "only" ]; then
     ./utils/travis/check_utf8.sh || exit 1
     ./utils/travis/utf8_bom_dog.sh || exit 1
 
-    cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false
-    make VERBOSE=1 -j2 || exit 1
+    cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE
+    make update-po4a-man || exit 1
+    make update-po4a-manual || exit 1
+    make pot-update || exit 1
+    make mo-update || exit 1
     make clean
 
     scons translations build=release --debug=time nls=true jobs=2 || exit 1
