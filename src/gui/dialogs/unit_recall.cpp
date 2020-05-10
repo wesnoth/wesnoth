@@ -362,6 +362,8 @@ void unit_recall::dismiss_unit(window& window)
 		message << _("This unit is close to advancing a level.") << " " << (u.gender() == unit_race::MALE
 		         ? _("Do you really want to dismiss him?")
 		         : _("Do you really want to dismiss her?"));
+	}else {
+		message << _("Are you sure you want to dismiss this unit?");
 	}
 
 	if(!message.str().empty()) {
