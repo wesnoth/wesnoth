@@ -55,7 +55,7 @@ jobs:
     - env: TOOL=scons NLS=true IMAGE=flatpak BRANCH=master
 
     - compiler: gcc
-      env: TOOL=scons CXXSTD=17 NLS=false IMAGE=2004 BRANCH=master CFG=release VALIDATE=true
+      env: TOOL=scons CXXSTD=17 NLS=false IMAGE=2004 BRANCH=master CFG=release VALIDATE=true LTO=true
 
     - compiler: gcc
       env: TOOL=scons CXXSTD=14 NLS=false IMAGE=2004 BRANCH=master CFG=debug UPLOAD=true
