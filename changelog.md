@@ -1,7 +1,39 @@
 ## Version 1.14.11+dev
+ ### Campaigns
+   * General:
+     * Fixed instances of multiple [avoid] tags being used (PR#4776).
+     * Used more appropriate castle/encampment terrains.
+   * Descent into Darkness:
+     * S7: Correctly call Taylor a general.
+     * S9: Spelling fix.
+     * S11: Reduced boss difficulty and fixed ghost units not being correctly recalled.
+   * Heir to the Throne:
+     * S23: Clarify Bayar's dialogue.
+   * Northern Rebirth:
+     * Fixed enemy naga's triggering an event they shouldn't be triggering (issue #4853).
+   * Son of the Black Eye:
+     * S15: Fix the scenario not ending despite objectives being met in some circumstances (issue #4841).
+   * Under the Burning Suns:
+     * Fixed Sun Shydes dehydrating themselves at night.
+     * Dehydration only affects the player's side.
  ### Add-ons client
    * Ensure the client doesn't re-download dependencies that have just been updated during an Update All
      run by re-reading add-on versions after each update batch (issue #3273).
+ ### Add-ons server
+   * Don't send restricted attributes at all, rather than sending them as an empty string (issue #4800).
+ ### User interface
+   * Fixed a crash on certain screen resolutions due to UI element padding not being able to fit.
+   * Fixed a crash when trying to preview an unplayable map (PR#4810; issues #3149, #4395, #4545).
+ ### Units
+   * Fixed the team color of the berserker idle animation.
+   * Fixed typo in Troll race description.
+   * Fixed the Red Mage using the Mage's idle animation.
+ ### Packaging
+   * Fixed an issue when building using scons and --config=force.
+   * Fixed creating the lockfile in scons when using python 3.
+   * Significantly improved the macOS packaging instructions (PR#4781).
+ ### Miscellaneous and bug fixes
+   * Fixed building with the 64-bit Visual Studio projectfiles.
  ### Language and i18n
    * Updated translations: British English, Czech, Chinese (Traditional), Dutch, Esperanto,
      Finnish, French, Italian, Portuguese, Portuguese (Brazil), Swedish.
@@ -9,9 +41,6 @@
      translation catalogues on Windows.
 
 ## Version 1.14.11
- ### Campaigns
-   * Under the Burning Suns:
-     * S2: dehydration now only affects player units
  ### Language and i18n
    * Updated translations: Czech, German.
  ### Packaging
