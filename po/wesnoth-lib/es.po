@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2020-01-15 09:54+0100\n"
+"PO-Revision-Date: 2020-05-12 09:57+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -750,19 +750,6 @@ msgstr "Cueva accidentada"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:1033
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which shoulders defense, but is "
-#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
-#| "and trolls, are fully capable of navigating such topography.\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
-#| "in rockbound caves.\n"
-#| "\n"
-#| "Occasionally caves are <italic>text='illuminated'</italic>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -1767,24 +1754,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2908
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<italic>text='illuminated'</italic>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -5572,8 +5541,6 @@ msgid "Details:"
 msgstr "Detalles:"
 
 #: src/build_info.cpp:271
-#, fuzzy
-#| msgid "feature^JPEG screenshots"
 msgid "feature^JPEG screenshots"
 msgstr "Capturas de pantalla JPEG"
 
@@ -7334,20 +7301,14 @@ msgid "Next Move"
 msgstr "Siguiente movimiento"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "View: Full Map"
 msgid "View: Full Map"
 msgstr "Vista: Todo el mapa"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "View: Each Team"
 msgid "View: Each Team"
 msgstr "Vista: Cada equipo"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "View: Human Team"
 msgid "View: Human Team"
 msgstr "Vista: Equipo humano"
 
@@ -8063,9 +8024,6 @@ msgstr ""
 #~ msgid "Sort by:"
 #~ msgstr "Ordenado por:"
 
-#~ msgid "Kick / ban reason:"
-#~ msgstr "Razón de expulsión/veto al acceso:"
-
 #~ msgid "You will now connect to the multiplayer server."
 #~ msgstr "Ahora se conectará al servidor multijugador."
 
@@ -8090,11 +8048,17 @@ msgstr ""
 #~ msgid "No matching widget found for scaling option"
 #~ msgstr "No se encontró una herramienta adecuada para la opción de extender"
 
-#~ msgid "&#9679;"
-#~ msgstr "&#9679;"
+#~ msgid "The selected game can not be created."
+#~ msgstr "No puede crearse la partida seleccionada."
 
 #~ msgid "No server has been defined."
 #~ msgstr "No se ha definido ningún servidor."
+
+#~ msgid "&#9679;"
+#~ msgstr "&#9679;"
+
+#~ msgid "Kick / ban reason:"
+#~ msgstr "Razón de expulsión/veto al acceso:"
 
 #~ msgid "feature^Experimental OpenMP support"
 #~ msgstr "Soporte OpenMP experimental"
