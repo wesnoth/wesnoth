@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-05-02 01:56+0300\n"
-"PO-Revision-Date: 2020-02-01 23:00+0100\n"
+"PO-Revision-Date: 2020-05-15 20:20+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -27,7 +27,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.4\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -6352,10 +6351,8 @@ msgstr "Vybraná hra nemá žádné strany!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:842
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected game can not be created."
-msgstr "Vybraná hra nemá žádné strany!"
+msgstr "Vybraná hra nemůže být vytvořena."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:911
 msgid "Choose Starting Scenario"
