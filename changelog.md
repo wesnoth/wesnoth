@@ -40,6 +40,9 @@
    * Fixed a crash when trying to preview an unplayable map (PR#4810; issues #3149, #4395, #4545).
  ### Miscellaneous and bug fixes
    * Fixed building with the 64-bit Visual Studio projectfiles.
+   * Added missing side controllers to two Micro AI scenarios (fixes #4890)
+   * Experimental AI retreat CA: bug fix for cure-only abilities
+   * Forest Animals Micro AI: excluded rabbit holes on map border
 
 ## Version 1.14.11
  ### Language and i18n
