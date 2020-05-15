@@ -6,7 +6,8 @@
 #
 # Translators:
 # tamanegi, 2019
-# RatArmy <broadbarredfirefish@gmail.com>, 2019
+# 堀 秀幸 <Hide.HORI@gmail.com>, 2020
+# RatArmy <broadbarredfirefish@gmail.com>, 2020
 #
 #, fuzzy
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
 "PO-Revision-Date: 2018-05-06 10:17+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -122,6 +123,8 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
+"チャットメッセージを消去するまでの時間（分）です。0で時間経過による消去を無効"
+"化します。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -4020,9 +4023,12 @@ msgstr "敗北条件："
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
+#, fuzzy
+#| msgid "(this turn left)"
+#| msgid_plural "(%d turns left)"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
-msgstr[0] ""
+msgstr[0] "（残り %d ターン）"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -4325,6 +4331,8 @@ msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
+"マップエディタの<i>領域</i>メニューを使うことで、領域を定義することができま"
+"す。領域はイベントやAIをコーディングする際に役に立ちます。"
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4337,6 +4345,8 @@ msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
+"エディタの<i>ファイル</i>メニューから<i>新しいシナリオ</i>を選択することで、"
+"高度な機能を利用することができます。"
 
 #. [tip]
 #: data/tips.cfg:12
@@ -4344,6 +4354,8 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
+"エディタでデフォルトフォルダに保存したシナリオは、マルチプレイヤーの「ゲーム"
+"を作成」画面の<i>カスタムシナリオ</i>から選択できます。 "
 
 #. [tip]
 #: data/tips.cfg:16
@@ -5224,10 +5236,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "雇用を行えるリーダーがいません。"
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "ユニットを雇用できるリーダーはあなたの陣営にいません。"
+msgstr ""
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -6494,34 +6504,24 @@ msgid "Only available during a scenario."
 msgstr "このシナリオのみで有効です。"
 
 #: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "時刻スケジュール"
+msgstr ""
 
 #: src/help/help_impl.cpp:384
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "秩序ユニット："
+msgstr ""
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "中立ユニット："
+msgstr ""
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "混沌ユニット："
+msgstr ""
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "薄明ユニット："
+msgstr ""
 
 #: src/help/help_impl.cpp:388
 msgid "Schedule"
@@ -6762,10 +6762,8 @@ msgid "You have no units available to recruit."
 msgstr "雇用できるユニットがいません。"
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "ユニットは雇用されませんでした"
+msgstr ""
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
@@ -6777,56 +6775,39 @@ msgstr ""
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "そのユニットを雇用するにはゴールドが足りません"
+msgstr ""
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "そのユニットを雇用するにはゴールドが足りません"
+msgstr ""
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "戦士達は遠くにいるため、召還することはできません。"
+msgstr ""
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
-"召還可能な部隊がありません\n"
-"（召喚できるのは以前のシナリオを生き延びたユニットだけです）"
+"召還可能な部隊がありません。\n"
+"（召喚できるのは以前のシナリオを生き延びたユニットだけです。）"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "現在ハイライトされている位置では召還できません。"
+msgstr ""
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "ユニットは召還されませんでした"
+msgstr ""
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "ユニットを召還するためには、少なくとも $cost ゴールド必要です。"
+msgstr[0] ""
 
 #: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
@@ -7072,13 +7053,10 @@ msgstr "シナリオ変数を表示します。"
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1284
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
-"ユニット変数を変更します（サポートされるのはトップレベルキーのみです）。"
 
 #: src/menu_events.cpp:1291
 msgid "Discover all units in help."
@@ -7113,10 +7091,8 @@ msgid "Give gold to the current player."
 msgstr "現在のプレイヤーにゴールドを与えます。"
 
 #: src/menu_events.cpp:1297
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<ニックネーム>"
+msgstr ""
 
 #: src/menu_events.cpp:1297
 msgid "Fire a game event."
@@ -7401,20 +7377,16 @@ msgstr ""
 "このゲームを保存しますか？"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "降参しますか？"
+msgstr ""
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "ゲームは保存されました。"
+msgstr ""
 
 #: src/playmp_controller.cpp:368
 msgid ""
@@ -7792,10 +7764,8 @@ msgid "Upkeep"
 msgstr "維持費"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid "income"
 msgid "Net Income"
-msgstr "収入"
+msgstr ""
 
 #: src/reports.cpp:1480
 msgid ""
@@ -8323,11 +8293,6 @@ msgstr "$player の計画を非表示"
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
 
-#, fuzzy
-#~| msgid "<i>― Kai Laudiss, 623YW</i>"
-#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-#~ msgstr "<i>― Kai Laudiss, Wesnoth 歴 623 年</i>"
-
 #~ msgid "Graphics scaling options"
 #~ msgstr "グラフィックの拡大・縮小オプション"
 
@@ -8403,38 +8368,64 @@ msgstr "行動予定オプション"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>（早期終了ボーナス）</small>"
 
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "薄明ユニットは周囲が薄明かりの時のみ本来の力を出せます。\n"
+#~ "\n"
+#~ "日中：−25% ダメージ\n"
+#~ "夜間：−25% ダメージ"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr "選択した時代・ゲーム・Mod にはオプション設定はありません。"
+
+#~ msgid "Defaults"
+#~ msgstr "デフォルト"
+
+#~ msgid "Connected Players"
+#~ msgstr "参加中のプレイヤー"
+
 #~ msgid "(Note: You should use $replacement instead in new code)"
 #~ msgstr "(Note: You should use $replacement instead in new code)"
 
-#~ msgid "theme^Classic"
-#~ msgstr "クラシック"
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "emailアドレスの指定無し、パスワード *** で登録中…"
 
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "クラシック、1.12より前のバージョンのテーマ"
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "Ｅメールアドレス $email 、パスワード *** で登録中…"
 
-#~ msgid "gold"
-#~ msgstr "ゴールド"
+#~ msgid "dropping your username"
+#~ msgstr "ゲーム内ユーザー名を破棄します"
 
-#~ msgid "villages"
-#~ msgstr "村の数"
+#~ msgid "setting $var to $value"
+#~ msgstr " $var を $value に設定します"
 
-#~ msgid "units"
-#~ msgstr "ユニット数"
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<パスワード> <Eメールアドレス>"
 
-#~ msgid "upkeep"
-#~ msgstr "維持費"
+#~ msgid "Register your nickname"
+#~ msgstr "ニックネームを登録します。"
 
-#~ msgid "income"
-#~ msgstr "収入"
+#~ msgid "Drop your nickname."
+#~ msgstr "ニックネームの登録を解除します。"
 
-#~ msgid "statuspanel^level"
-#~ msgstr "レベル"
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "ニックネームの詳細を更新します。更新可能な項目については「/details」を確認"
+#~ "してください。"
 
-#~ msgid "statuspanel^moves"
-#~ msgstr "移動"
+#~ msgid "<detail> <value>"
+#~ msgstr "<項目> <値>"
 
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "地形回避"
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr ""
+#~ "あなたの登録済みニックネームに対して、設定可能な項目のリストを要求します。"
 
 #~ msgid "No Saved Games"
 #~ msgstr "セーブデータが存在しません"
@@ -8511,14 +8502,14 @@ msgstr "行動予定オプション"
 #~ msgid "unit help^Name"
 #~ msgstr "名前"
 
+#~ msgid "Type"
+#~ msgstr "種類"
+
 #~ msgid "Strikes"
 #~ msgstr "回数"
 
 #~ msgid "Range"
 #~ msgstr "射程"
-
-#~ msgid "Type"
-#~ msgstr "種類"
 
 #~ msgid "Special"
 #~ msgstr "特殊"
@@ -8553,68 +8544,9 @@ msgstr "行動予定オプション"
 #~ msgid "Jamming Cost"
 #~ msgstr "ジャミングコスト"
 
-#~ msgid "Side:"
-#~ msgstr "陣営："
-
-#~ msgid " replay"
-#~ msgstr " リプレイ"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "薄明ユニットは周囲が薄明かりの時のみ本来の力を出せます。\n"
-#~ "\n"
-#~ "日中：−25% ダメージ\n"
-#~ "夜間：−25% ダメージ"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr "選択した時代・ゲーム・Mod にはオプション設定はありません。"
-
-#~ msgid "Defaults"
-#~ msgstr "デフォルト"
-
-#~ msgid "Connected Players"
-#~ msgstr "参加中のプレイヤー"
-
-#~ msgid "registering with password *** and no email address"
-#~ msgstr "emailアドレスの指定無し、パスワード *** で登録中…"
-
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr "Ｅメールアドレス $email 、パスワード *** で登録中…"
-
-#~ msgid "dropping your username"
-#~ msgstr "ゲーム内ユーザー名を破棄します"
-
-#~ msgid "setting $var to $value"
-#~ msgstr " $var を $value に設定します"
-
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<パスワード> <Eメールアドレス>"
-
-#~ msgid "Register your nickname"
-#~ msgstr "ニックネームを登録します。"
-
-#~ msgid "Drop your nickname."
-#~ msgstr "ニックネームの登録を解除します。"
-
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr ""
-#~ "ニックネームの詳細を更新します。更新可能な項目については「/details」を確認"
-#~ "してください。"
-
-#~ msgid "<detail> <value>"
-#~ msgstr "<項目> <値>"
-
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr ""
-#~ "あなたの登録済みニックネームに対して、設定可能な項目のリストを要求します。"
-
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr ""
 #~ "ローカルのAI陣営「$side」をコンピュータに操作させることはできません。"
+
+#~ msgid "Side:"
+#~ msgstr "陣営："

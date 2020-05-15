@@ -10,8 +10,8 @@
    * Under the Burning Suns:
      * Embellished all remaining maps (S1, S2, S6b, S8, S11)
  ### Language and i18n
-   * Updated translations: British English, Chinese (Traditional), Hungarian, Italian, Polish,
-     Portuguese (Brazil), Spanish, Swedish
+   * Updated translations: British English, Chinese (Traditional), Hungarian, Italian, Japanese,
+     Polish, Portuguese (Brazil), Spanish, Swedish
  ### Units
    * New Dunefolk skirmisher branch (Falconer)
    * Dragonguard HP increased from 59 to 63
