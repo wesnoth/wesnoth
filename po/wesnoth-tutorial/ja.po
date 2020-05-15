@@ -1,6 +1,8 @@
+#
 # Translators:
 # tamanegi, 2019
 # RatArmy <broadbarredfirefish@gmail.com>, 2019
+# 堀 秀幸 <Hide.HORI@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
@@ -8,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-05-01 22:57 UTC\n"
 "PO-Revision-Date: 2018-05-06 10:23+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
+"Last-Translator: 堀 秀幸 <Hide.HORI@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -315,7 +317,7 @@ msgstr "退却した方がいいかしら？"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1055
 msgid "Good idea!"
-msgstr "ナイスアイディア！"
+msgstr "ご明察！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:556
@@ -417,7 +419,7 @@ msgid ""
 "There are two villages within your reach. Visiting villages is a good idea, "
 "and ending your turn on one will heal you. To a village!"
 msgstr ""
-"おぬしの近くには2つの村がある。村を訪ねるのは良い考えじゃ。村でターンを終える"
+"おぬしの近くには2つの村がある。村を訪ねるのが良いじゃろう。村でターンを終える"
 "と、次のターンの開始時に回復する。村へ行くのじゃ！ "
 
 #. [label]
@@ -462,7 +464,7 @@ msgid ""
 "hitpoints."
 msgstr ""
 "村でターンを開始すると、少し回復できるぞ！村では毎ターンHPを8回復するが、ユ"
-"ニットのHPが満タンだと何も起きん。今回の場合、おぬしは "
+"ニットのHPが最大値だと何も起きん。今回の場合、おぬしは "
 "$student_hp_heal_amount 回復したのじゃ。"
 
 #. [message]: speaker=Delfador
@@ -487,9 +489,9 @@ msgid ""
 "this turn. Instead, you should return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
-"良いぞ！じゃが、このターンにはクィンティンには攻撃しない方が良いじゃろう。そ"
-"の代わり、おぬしは主塔に戻って2体のユニットを雇用するのじゃ。ゴールドはたっぷ"
-"り持っておるはずじゃ。"
+"素晴らしい考えじゃ！このターンはクィンティンへの攻撃を控えたほうが良いじゃろ"
+"う。それよりも、おぬしは主塔に戻って2体のユニットを雇用するのじゃ。ゴールドは"
+"たっぷり持っておるじゃろう。"
 
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
@@ -909,7 +911,7 @@ msgstr "Galdradの死"
 msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
-msgstr ""
+msgstr "ユニットを雇用し、村を確保するまでターンを終えることはできません！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
@@ -996,23 +998,18 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the east; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
 "the north; but we could stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
-"川に暗い部分があるのが分かりますか？あそこは深すぎてどちらの岸からも渡ること"
-"ができません。オークは東側にある水色の狭い帯状の浅瀬をゆっくりと渡ってくるで"
-"しょう。そこで私たちは岸で待ち、水の中から這い上がってくるオークを迎え撃つの"
-"です。そうすれば、オークは無防備となり、私たちは森に守られます。"
+"濃紺の水域が見えますか？ そこは深すぎて、どちらの陣営も渡ることができません。"
+"一方、明るい色に見えるところは水深が浅くなっています。オークは北側の狭い帯状"
+"になっている浅瀬を渡ってくる可能性が考えられるでしょう。しかし、渡河には時間"
+"が掛かるので、我等は水際で迎え撃つことができます。そうすれば、奴らの上陸を防"
+"ぎ、無防備な状態での戦闘を強いることが可能です。逆に我等は森の守護を得られま"
+"す。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:231
@@ -1140,25 +1137,21 @@ msgstr "エルフの女呪術師"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
-#| "friendly units around her. She also has a special attack which <i>slows</"
-#| "i> enemies, halving the damage they do for one turn."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
-"女呪術師は貧弱なユニットですが、隣にいる自軍・同盟軍のユニットを<i>回復</i>す"
-"る力を持ちます。また、<i>遅化</i>効果のある攻撃を持ちます。遅化は敵の攻撃力を"
-"1ターンの間半分にします。"
+"女呪術師は<i>回復</i>の能力を持ち、周囲の味方ユニットを回復させることができま"
+"す。また、<i>遅化</i>の特殊攻撃は、1ターンの間、敵の攻撃力を半分にする効果が"
+"あります。しかしながら、身体的には戦士や射手より弱いので、戦闘をさせる際は注"
+"意してください。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "<i>回復</i>能力"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
@@ -1172,28 +1165,22 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"毎ターンの開始時、女呪術師に隣接しているユニットはHPが4回復しますが、それは村"
+"によって回復するHPの半分にとどまります。女呪術師は回復によって経験値を得るこ"
+"とはなく、戦闘によってのみ経験値が得られます。しかし、女呪術師をレベルアップ"
+"させることには価値があります。レベルアップ先であるエルフのドルイド僧は村と同"
+"等の回復力を有します。\n"
+"\n"
+"回復の詳細はヘルプにある<i>ゲームの遊び方</i>を参照してください。（デフォルト"
+"のホットキーは<b>F1</b>です。）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Abilities and Weapon Specials"
 msgid "Weapon Specials"
-msgstr "能力と特殊武器"
+msgstr "特殊武器"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1206,17 +1193,18 @@ msgid ""
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "特殊武器はある攻撃をより強力にするものです。今回のケースでは、呪術師は巻きつ"
-"き攻撃に<i>遅化</i>効果を持っています。この攻撃を受けた敵は、1ターンの間攻撃"
-"力が半分になります。他の特殊武器の例を挙げると、先制は相手から攻撃をしかけら"
-"れたとしても先に攻撃を開始し、魔法は必ず70%の命中率となります。\n"
+"き攻撃に遅化の効果を持っています。この攻撃を受けた敵は、1ターンの間攻撃力が半"
+"分になります。他の特殊武器の例を挙げると、先制は相手から攻撃をしかけられたと"
+"しても先に攻撃を開始し、魔法は必ず70%の命中率となります。\n"
 "\n"
-"能力と特殊武器の一覧については、特性と同様にヘルプを参照してください。"
+"能力と特殊武器の一覧については、特性と同様にヘルプを参照してください。（デ"
+"フォルトのホットキーは<b>F1</b>です）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Multiple Healers"
-msgstr ""
+msgstr "複数のヒーラー"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1230,6 +1218,15 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"現在、あなたの陣営には2人のヒーラーがいます。しかしながら、個々のユニットは1"
+"人のヒーラーからしか回復を受けられません。したがって、たとえあるユニットが2人"
+"の呪術師に隣接していたとしても、1ターンに回復できるHPは4だけということになり"
+"ます。\n"
+"\n"
+"もし、どちらかの呪術師がレベルアップしてドルイド僧になっている場合は、隣接す"
+"るユニットのHPを1ターンに8回復させることができます。あるユニットが複数のヒー"
+"ラーに隣接している場合、最もレベルが高いヒーラーから回復を受けることになりま"
+"す。"
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1240,11 +1237,16 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"現在、あなたの陣営には2人のヒーラーがいます。呪術師の回復の力が4であるのに対"
+"し、ドルイド僧は隣接するユニットのHPを1ターンに8回復させることができます。し"
+"かしながら、個々のユニットが回復を受けられるのは1人のヒーラーからのみです。あ"
+"るユニットが複数のヒーラーに隣接している場合、最もレベルが高いヒーラーから回"
+"復を受けることになります。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
 msgid "Healers and Villages"
-msgstr ""
+msgstr "ヒーラーと村"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:384
@@ -1252,6 +1254,7 @@ msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
 msgstr ""
+"村にいるユニットは村から回復を受け、隣接するヒーラーからは回復を受けません。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
@@ -1261,6 +1264,10 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"ヒーラーが複数いると、お互いに回復させあわせたり、隔たりのある戦闘地域へ派遣"
+"したりすることができます。また、より戦術的な行動も可能になります。休息による"
+"2HPの回復とその他の手段による回復は合算されますので、傷ついたユニットを動かさ"
+"ずにヒーラーを動かした方が良い場合が多いでしょう。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:403
@@ -1285,8 +1292,8 @@ msgid ""
 "You certainly have a fondness for shamans, I see. They will provide a lot of "
 "healing, but not much offensive potential."
 msgstr ""
-"フフフ、呪術師がお好きなようですね！彼女たちは回復は得意ですが、残念ながら攻"
-"撃的な能力は持ちませんよ？"
+"随分と呪術師にご執心のようですね。彼女たちの回復の力は大きいでしょうが、攻撃"
+"的な資質は充分とは言えませんよ。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:442
@@ -1306,26 +1313,22 @@ msgstr "村を確保しましょう"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:448
-#, fuzzy
-#| msgid "Capture a village"
 msgid "You still have to capture a village!"
-msgstr "村を確保しましょう"
+msgstr "村を確保しなければなりません！"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:479
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things if you make a "
-#| "mistake."
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
-msgstr "<b>u</b>キーを押せば多くの動作をアンドゥできます。覚えておきましょう。"
+msgstr ""
+"ユニットを雇用するのを忘れています！ <b>u</b>キーを押すことで、直前の移動を取"
+"り消すことができます。"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "兵を雇用しなければなりません！"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:490
@@ -1380,6 +1383,8 @@ msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
+"村を確保するのを忘れています！ <b>u</b>キーを押すことで、直前の移動を取り消す"
+"ことができます。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
@@ -1441,8 +1446,9 @@ msgid ""
 "our forces. It might do to send a few units to defend the banks, and the "
 "village there."
 msgstr ""
-"しかし、川瀬を見てください。オークは我々の軍に忍び寄り、背後を取ろうとすると"
-"思います。少数のユニットを川岸と村に送った方が良いでしょう。"
+"しかし、川瀬を見てください。オークは我々の軍に忍び寄り、背後を取ろうとするか"
+"もしれません。川岸とそこにある村を防衛するために、少数のユニットを送っておい"
+"た方が良いでしょう。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:614
@@ -1511,8 +1517,8 @@ msgid ""
 "recruiting reinforcements."
 msgstr ""
 "良く学んでいるようですね、Konrad。リーダーを安全に保ち、主塔の近くに留まるの"
-"も良いアイディアです。戦局はすぐに変わっていきますから、いつでも増援を送れる"
-"ようにしておきたいですね。"
+"も良策です。戦局はすぐに変わっていきますから、いつでも増援を送れるようにして"
+"おきたいですね。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:641
@@ -1523,13 +1529,13 @@ msgid ""
 "recruiting reinforcements."
 msgstr ""
 "よく学んでいるようですね、Li’sar。リーダーを安全に保ち、主塔の近くに留まるの"
-"も良いアイディアです。戦局はすぐに変わっていきますから、いつでも増援を送れる"
-"ようにしておきたいですね。"
+"も良策です。戦局はすぐに変わっていきますから、いつでも増援を送れるようにして"
+"おきたいですね。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:711
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "チュートリアルはこの難易度を意図したものではありません"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
@@ -1540,6 +1546,12 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"島にいるオークは橋を渡ってくることになっており、複数のエルフが同時に攻撃を仕"
+"掛けることができるはずでした。何らかの原因で用意されたイベントが発生せず、"
+"オークが守備的な位置取りをしました。それにより、シナリオの難易度が上昇しま"
+"す。\n"
+"\n"
+"バグを報告してください。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:726
@@ -1607,46 +1619,33 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:778
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
 "move everyone closer for next turn."
 msgstr ""
-"この兵卒を倒しきることができなければ、ユニットたちが生き残ってくれることを祈"
-"ろう。もしみんなが前進することができれば、より多くの村を確保したいな。"
+"このターンでこいつを倒せなければ、反撃を凌げるかは運任せになりそうだ。可能な"
+"限り多くの村を確保するようユニットたちに命じるとともに、次のターンに備えて皆"
+"を接近させておかなければ。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:783
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"もし呪術師が負傷したユニットの隣にいれば、次のターンの開始時に4回復してくれま"
-"す。"
+"もし呪術師があなたの隣にいれば、次のターンの開始時にHPを4回復してくれます。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
 "closer for next turn."
 msgstr ""
-"この兵卒を倒しきることができなければ、ユニットたちが生き残ってくれることを祈"
-"ろう。もしみんなが前進することができれば、より多くの村を確保したいな。"
+"このターンでこいつを倒せなければ、ユニットたちが反撃を凌げるかは運任せになっ"
+"てしまう。出来る限り多くの村を確保しなければ。それから、次のターンに備えて、"
+"皆を接近させておかないと。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
@@ -1654,8 +1653,8 @@ msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "them each 4 hitpoints at the beginning of the next turn."
 msgstr ""
-"もし呪術師が負傷したユニットの隣にいれば、次のターンの開始時に4回復してくれま"
-"す。"
+"もし呪術師が負傷したユニットの隣にいれば、次のターンの開始時にHPを4回復してく"
+"れます。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:830
@@ -1702,8 +1701,9 @@ msgid ""
 "it if they try to sneak around via the ford! It will be hard to dislodge "
 "them if they do."
 msgstr ""
-"東の川岸にある村を確保しておくのを忘れないでください。オークは川の周りであっ"
-"ても村に忍び寄ってきます！一度侵入を許せば、追い払うのは難しいでしょう。"
+"向こうにある川岸の村のことも忘れないでください。オークがもし浅瀬を伝って裏へ"
+"回り込もうとすれば、村が占拠されるかもしれません！ そうなれば、排除するのは難"
+"しくなるでしょう。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:897
@@ -1726,18 +1726,14 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:940
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it next turn! "
-#| "Move a unit into the village to stop the orcs capturing it. Whichever "
-#| "unit you choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"オークより先に島にある村を占拠しましょう！ユニットを村に移動させてください。"
-"また、村ヘクスにいるユニットは傷を癒やすことができます。"
+"あの村を確保しないと、すぐに奴らが取りに来ます！ ユニットを村に移動させ、オー"
+"クに占拠されるのを阻止してください。村に置くユニットにはどれを選んでも、回復"
+"の恩恵を受けられることも申し添えておきます。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:946
@@ -1791,6 +1787,16 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"傷ついたユニットを村へ後退させることを忘れないでください。呪術師が回復できる"
+"HPは1ターンに4だけですが、村での回復はさらに早く1ターンに8回復します。\n"
+"\n"
+"一般的に、異なる回復方法を組み合わせることはできません。ユニットがターン開始"
+"時に複数のヒーラーに接している場合、あるいは、村にいる状態で隣にヒーラーがい"
+"る場合でも、回復を受けられるのは１度だけです。\n"
+"\n"
+"ただし、休息による回復はこの規定の例外です。ユニットが何もせずに1ターン過ごす"
+"とHPが2回復し、村やヒーラーから受けられる回復に加算されるので、合算するとHPの"
+"回復は最大で10となります。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
@@ -1889,8 +1895,8 @@ msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
 msgstr ""
-"あのユニットが私たちの村を占拠しました！奴を追い出すべきです。なぜなら、村に"
-"いれば毎ターン回復し、回避率も高くなるからです。"
+"あのユニットが私たちの村を占拠しました！奴を排除するべきです。村にいれば奴は"
+"毎ターン回復し、回避率も高くなりますよ。"
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -1967,15 +1973,12 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1293
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. Goodbye, $unit."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr ""
-"高レベルユニットは強力ですが、不死身ではありません。さらば、$unit.name|よ。"
+"高レベルユニットは強力ですが、不死身ではありません。$unit.name| よ、安らか"
+"に。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1307
@@ -2130,27 +2133,18 @@ msgstr "なんて...馬鹿だったのかしら。次はもっと上手くやら
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1463
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "うぐ！ あなたを勝利に導くはずだったのに。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try one of the rookie-level "
-#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#| "i> is the easiest and is the recommended first campaign. In <i>An Orcish "
-#| "Incursion</i> you have an Elvish army, similarly to this tutorial, but "
-#| "with seven scenarios for your units to gain experience and advance levels."
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
 "is the easiest and is the recommended first campaign."
 msgstr ""
-"オークを倒すことができましたね！次のステップとして、「入門レベル」のキャン"
-"ペーンをプレイすると良いでしょう。「入門レベル」のキャンペーンには戦略のヒン"
-"トが含まれています。<i>二人の兄弟の物語</i>は、最も簡単でおすすめです。<i>"
-"オークの襲撃</i>では、このチュートリアルと同様にエルフの軍隊を率いますが、シ"
-"ナリオは 7 つあるのでより軍隊を長く育成できます。"
+"オークを倒しました！ 次は戦略のヒントが含まれている「入門レベル」のキャンペー"
+"ンに挑戦してみるのも良いでしょう。<i>二人の兄弟の物語</i>が最も簡単なので、最"
+"初のキャンペーンとしてお薦めします。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1483
@@ -2236,29 +2230,3 @@ msgid ""
 msgstr ""
 "\n"
 "<big>スペースキーを押すか、画面をクリックして進みましょう…</big>"
-
-#~ msgid ""
-#~ "Certain unit types have special <i>abilities</i>. Unlike traits, which "
-#~ "usually provide small buffs or debuffs, abilities give units special "
-#~ "behaviors that normal units do not have. In this case, the Elvish Shaman "
-#~ "has the Heal ability, which allows her to heal allied adjacent units 4 "
-#~ "hitpoints at the start of each turn. Unit types with abilities, "
-#~ "especially ones like Heal, can be very useful, so be careful when sending "
-#~ "them into battle."
-#~ msgstr ""
-#~ "一部のユニットは特殊な<i>能力</i>を備えています。少しだけステータスを変化"
-#~ "させる特性とは違い、能力は通常のユニットには無い特殊な挙動を与えます。今回"
-#~ "のケースでは、エルフの女呪術師は<i>回復</i>能力を持っており、隣接する自"
-#~ "軍・同盟軍のユニットを毎ターンの開始時に4回復します。回復のような能力を持"
-#~ "つユニットは非常に有用で、戦場に送る時は注意するべきでしょう。"
-
-#~ msgid ""
-#~ "Remember to retreat your wounded units to villages. Healers can only heal "
-#~ "4 hitpoints at a time, while villages can heal 8 (the maximum healing for "
-#~ "any unit)."
-#~ msgstr ""
-#~ "傷ついたユニットは村に退却させましょう。ヒーラーは一度にHPを4しか回復する"
-#~ "ことができません。村にいれば8回復することができます。"
-
-#~ msgid "Agh! Now who will teach you how to defeat these orcs!"
-#~ msgstr "うぐ！あなたを一人前の指揮官にせねばならぬというのに..."

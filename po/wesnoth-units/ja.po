@@ -1,8 +1,9 @@
+#
 # Translators:
 # IWAI, Masaharu <iwaim.sub@gmail.com>, 2018
-# 堀 秀幸 <Hide.HORI@gmail.com>, 2019
 # RatArmy <broadbarredfirefish@gmail.com>, 2019
 # tamanegi, 2019
+# 堀 秀幸 <Hide.HORI@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
@@ -10,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-05-01 22:57 UTC\n"
 "PO-Revision-Date: 2018-05-06 10:22+0000\n"
-"Last-Translator: tamanegi, 2019\n"
+"Last-Translator: 堀 秀幸 <Hide.HORI@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -939,6 +940,8 @@ msgid ""
 "Compared to other drakes, Drake Arbiters have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"他のドレークと比較すると、ドレークの裁定者（Drake Arbiter）は「刺突」に対して"
+"高い耐性を持ちます。"
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -1272,14 +1275,6 @@ msgstr "飛行ドレーク"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:17
-#, fuzzy
-#| msgid ""
-#| "The lightweight ceramic armor that the Sky Drakes wear is a symbol of "
-#| "their rank, glazed silver to honor their connection to the air. As "
-#| "leaders of the hunt, they are often away from their homes for long "
-#| "periods of time. Each tries to bring as much game home as possible, "
-#| "competing to gain the respect of their tribe and, just possibly, time "
-#| "with one of the closely-guarded drake females."
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -1287,11 +1282,10 @@ msgid ""
 "tries to bring as much game home as possible, competing to gain the respect "
 "of their tribe."
 msgstr ""
-"飛行ドレーク（Sky Drake）が身に着ける軽量セラミックの鎧は彼らの階級の象徴で"
-"す。つや出しの銀色は彼らの空との繋がりを称えています。狩猟のリーダーとして彼"
-"らはしばしば故郷から長期間離れます。可能な限り多くの獲物をもたらす試みのそれ"
-"ぞれで、部族の評判を、あるいはただ用心深く守られたドレークの雌の一人との時間"
-"を得ようと競います。"
+"飛行ドレーク（Sky Drake）が身に着ける軽量セラミック製の鎧は、彼らの階級を示す"
+"象徴であり、その銀色の輝きは空との結びつきを讃えています。狩猟のリーダーとし"
+"て、彼らはしばしば長期間に渡って住み処を離れます。それぞれが可能な限り多くの"
+"獲物を持ち帰るよう励み、部族からの敬意を競います。"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -1345,6 +1339,8 @@ msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"他のドレークと比較すると、ドレークの長官（Drake Warden）は「刺突」に対して高"
+"い耐性を持ちます。"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -2216,6 +2212,8 @@ msgid ""
 "Compared to other elves, Elvish Avengers have superior movement and defense "
 "on sand, shallow water, and mountains."
 msgstr ""
+"他のエルフと比較すると、エルフの復讐者（Elvish Avenger）は砂地、浅瀬、山にお"
+"いても優れた移動力と回避率を有します。"
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:96
@@ -2611,6 +2609,8 @@ msgid ""
 "Compared to other elves, Elvish Rangers have superior movement and defense "
 "on sand, shallow water, and mountains."
 msgstr ""
+"他のエルフと比較すると、エルフのレンジャー（Elvish Ranger）は砂地、浅瀬、山に"
+"おいても優れた移動力と回避率を有します。"
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:93
@@ -3204,22 +3204,16 @@ msgstr "精鋭竜騎士"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Cavaliers are masters at the use of both sword and crossbow from "
-#| "horseback. Their combination of striking power and mobility is fearsome; "
-#| "and they have a reputation for dash and aggressiveness to match it. The "
-#| "daring deeds of Cavaliers are the subject of many a tale and song."
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome, and they have "
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
-"精鋭竜騎士（Cavalier）は馬上での剣とクロスボウの両方の使用法に熟練していま"
-"す。彼らの打撃力と機動力の組み合わせは恐ろしいものです。その突進には定評があ"
-"り、またそれに見合った積極性を持っています。精鋭竜騎士の勇敢な業績は数多くの"
-"歌や物語として語り継がれています。"
+"精鋭竜騎士（Cavalier）は剣とクロスボウの双方を馬上で巧みに操ります。打撃力と"
+"機動力を組み合わせた彼らの攻撃は凄まじく、その突撃には定評があり、噂にたがわ"
+"ぬ果敢さを有しています。彼らの勇敢な功績は、数多の物語や歌の主題となっていま"
+"す。"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -4627,6 +4621,17 @@ msgid ""
 "effective chase over land, and are at a great disadvantage in hand-to-hand "
 "combat."
 msgstr ""
+"マーマンの精鋭投網兵（Merman Entangler）\n"
+"\n"
+"マーフォークは漁に網と棍棒の両方を組み合わせて使用する傾向があります。網で魚"
+"を集め、棍棒で殺して仕上げます。これらの道具の両方が戦いに適用でき、これらを"
+"使うのに特化した補助者を慎重に戦闘に連れ出すのに十分な価値があると見られまし"
+"た。\n"
+"\n"
+"マーフォークはしばしば陸上の敵から離れていると気付きます。マーフォークは水の"
+"中では強すぎて、陸上で何らかの攻撃をするには弱すぎるのです。網はてこの鍵とな"
+"る一部です。網なしではマーフォークは陸を越えて有効な追跡ができず、これは近接"
+"戦闘では非常に不利な点となります。"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -4679,6 +4684,11 @@ msgid ""
 "of need, many merfolk of that occupation will volunteer to swell the ranks "
 "of their military."
 msgstr ""
+"マーマンの漁師（Merman Hunter）\n"
+"\n"
+"槍による漁業でマーフォークによって使用される技術は簡単に戦闘に応用することが"
+"できます。特に水中に住んでいるのではない者に対して。必要なときに、この職業の"
+"多くのマーフォークは彼らの軍隊の兵を増やすために志願するでしょう。"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
@@ -4718,6 +4728,12 @@ msgid ""
 "range, the impact of one is considerably greater. In the water, the mobility "
 "of the merfolk more than makes up for this when facing foes who cannot swim."
 msgstr ""
+"マーマンの投槍兵（Merman Javelineer）\n"
+"\n"
+"投槍術をマスターしたマーフォークは射手とほとんど同様に効果的になります。彼ら"
+"の武器の重さが射程距離を妨げますが、一撃当たりの衝撃はかなり大きくなります。"
+"水中では、泳げない敵に対面しているとき、マーフォークの機動性がこれを補ってあ"
+"まりあります。"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
@@ -4739,6 +4755,18 @@ msgid ""
 "shore. Clubs were used in combat with little or no adaptation from fishing, "
 "since they were already quite deadly."
 msgstr ""
+"マーマンの投網兵（Merman Netcaster）\n"
+"\n"
+"マーフォークによって営まれる漁業は、たいていは魚の群れを待ち伏せの網に追い込"
+"み、そこでオールのような棍棒を使うというものです。これらを兵士に対して即興的"
+"に使うのは、とても効果的であることが判っています。大部分の陸地の生物は水に腰"
+"の深さまで浸かるだけでも非常に不便なので、網に捕まるとほとんどどうしようもあ"
+"りません。\n"
+"\n"
+"この手法が有効だったので、空中に投げられるような、より小さくて重い網の発展に"
+"繋がりました。これらは漁には使えませんが、戦闘と岸の近くまで来たときの狩猟の"
+"両方で有用です。戦闘で使われる棍棒は漁用からほとんどあるいはまったく改良され"
+"ていません。それらは既にかなり致命的だったからです。"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
@@ -4810,6 +4838,14 @@ msgid ""
 "wreak damage. They are also useful in melee, even deep under the surface, "
 "which is something that certainly cannot be said of arrows."
 msgstr ""
+"マーマンの槍兵（Merman Spearman）\n"
+"\n"
+"弓術はマーフォークにはあまり好まれません。彼らにとっては投槍術が近い働きを果"
+"たすからです。水中では投げ槍を投げてもほとんど役に立ちませんが、水面では非常"
+"に役に立ちます。水面では、それらの重さにより、損害を与えるのに十分な勢いを"
+"保ったまま数フィートの水中まで突入することができます。彼らは深い水中において"
+"さえ、格闘でも役に立ちます。深い水中というのは確実に、矢のことなど言うことの"
+"できない場所です。"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
@@ -4844,6 +4880,10 @@ msgid ""
 "races, but doubly so considering the difficulties of fighting underwater, as "
 "any who try to match them in their homes can attest."
 msgstr ""
+"マーマンの熟練戦士（Mermen Warrior）は、マーフォークの軍の核です。他の種族の"
+"兵と比較してもなお印象的といえる技巧と奮闘をもって、そのトライデントを振りま"
+"わします。しかし、マーマンの故郷で戦おうとした誰もが証明できることではありま"
+"すが、水中で戦う困難を考慮すると、その印象は倍増するといえます。"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
