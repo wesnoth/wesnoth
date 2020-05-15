@@ -10,7 +10,7 @@
    * Under the Burning Suns:
      * Embellished all remaining maps (S1, S2, S6b, S8, S11)
  ### Language and i18n
-   * Updated translations: British English, Chinese (Traditional), Italian, Polish,
+   * Updated translations: British English, Chinese (Traditional), Hungarian, Italian, Polish,
      Portuguese (Brazil), Spanish, Swedish
  ### Units
    * New Dunefolk skirmisher branch (Falconer)
