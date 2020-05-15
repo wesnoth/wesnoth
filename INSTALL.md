@@ -74,7 +74,6 @@ also possible to run it directly from the source directory after building. This
 may be useful in situations where you don't have root access or need to
 rebuild Wesnoth frequently (i.e. for development and testing).
 
-For Windows users, a Visual C++ 2013 solution is included in _projectfiles/VC12_.
 For OS X users, an XCode project is included in _projectfiles/XCode_.
 
 
