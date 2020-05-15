@@ -14,15 +14,15 @@ msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-05-02 01:56+0300\n"
-"PO-Revision-Date: 2018-08-08 22:18+0100\n"
-"Last-Translator: Krutki Tamás <krtamas-wesnoth@0x64.org>\n"
+"PO-Revision-Date: 2020-05-09 23:50+0200\n"
+"Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -2540,10 +2540,8 @@ msgstr "Nehézség"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
-msgstr "Válassz nehézségi szintet:"
+msgstr "Válassz nehézséget:"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -3066,7 +3064,7 @@ msgstr "Fájl:"
 #. [label]
 #: data/gui/window/formula_debugger.cfg:36
 msgid "Formula debugger"
-msgstr "MI-minta hibajavító"
+msgstr "MI-minta hibakereső"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:59
@@ -5327,7 +5325,7 @@ msgstr "Ellenség megtámadása"
 #. [label]
 #: data/gui/window/unit_create.cfg:47 src/hotkey/hotkey_command.cpp:115
 msgid "Create Unit (Debug!)"
-msgstr "Egység létrehozása (hibajavítás!)"
+msgstr "Egység létrehozása (hibakeresés!)"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/unit_create.cfg:124
@@ -5388,10 +5386,8 @@ msgstr ""
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Rename"
-msgstr "Egység átnevezése"
+msgstr "Átnevezés"
 
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:405
@@ -5493,10 +5489,8 @@ msgid "The maximum text width is less than 1."
 msgstr "A legnagyobb szövegszélesség kisebb, mint 1."
 
 #: src/font/text.cpp:765
-#, fuzzy
-#| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
-msgstr "A szöveg érvénytelen elemet tartalmaz: "
+msgstr "A szöveg érvénytelen Pango jelölést tartalmaz: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5754,10 +5748,8 @@ msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Utoljára frissítve ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:228
-#, fuzzy
-#| msgid "addons_order^Last updated ($datelike_order)"
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "Utoljára frissítve ($datelike_order)"
+msgstr "Először feltöltve ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:257 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5820,10 +5812,8 @@ msgid "addon_state^Unknown"
 msgstr "Ismeretlen"
 
 #: src/gui/dialogs/addon/manager.cpp:359
-#, fuzzy
-#| msgid "sort^Ascending"
 msgid "ascending"
-msgstr "Növekvő sorrendben"
+msgstr "növekvő sorrend"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:361
@@ -5831,10 +5821,8 @@ msgid "oldest to newest"
 msgstr "növekvő"
 
 #: src/gui/dialogs/addon/manager.cpp:364
-#, fuzzy
-#| msgid "sort^Descending"
 msgid "descending"
-msgstr "Csökkenő sorrendben"
+msgstr "csökkenő sorrend"
 
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:366
@@ -6131,10 +6119,8 @@ msgid "Version: "
 msgstr "Verzió: "
 
 #: src/gui/dialogs/game_load.cpp:421
-#, fuzzy
-#| msgid "Choose Modifications"
 msgid "Modifications: "
-msgstr "Módosítók kiválasztása"
+msgstr "Módosítók: "
 
 #: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^AI"
@@ -6270,12 +6256,12 @@ msgstr "Játékcsarnok adatainak letöltése"
 #: src/gui/dialogs/lua_interpreter.cpp:690
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgstr ""
+"A lua konzol csak hibakereső üzemmódban használható! (Add ki a ':debug' "
+"parancsot először)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:691
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "lua console"
-msgstr "Szürke utcakő"
+msgstr "lua konzol"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:103
 msgid "Selected Game"
@@ -6378,10 +6364,8 @@ msgid "Observers not allowed"
 msgstr "Megfigyelés letiltva"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:800
-#, fuzzy
-#| msgid "Lobby"
 msgid "lobby"
-msgstr "Játékcsarnok"
+msgstr "játékcsarnok"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:960
 msgid ""
@@ -6505,10 +6489,8 @@ msgstr "üres"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:126
-#, fuzzy
-#| msgid "Quit Game"
 msgid "this game"
-msgstr "Kilépés a játékból"
+msgstr "ez a játék"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:360
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:96
@@ -7077,11 +7059,11 @@ msgstr "Beszélés"
 
 #: src/hotkey/hotkey_command.cpp:116
 msgid "Change Side (Debug!)"
-msgstr "Oldal átállítása (hibajavítás!)"
+msgstr "Oldal átállítása (hibakeresés!)"
 
 #: src/hotkey/hotkey_command.cpp:117
 msgid "Kill Unit (Debug!)"
-msgstr "Egység megölése (hibajavítás!)"
+msgstr "Egység megölése (hibakeresés!)"
 
 #: src/hotkey/hotkey_command.cpp:119
 msgid "Scenario Objectives"

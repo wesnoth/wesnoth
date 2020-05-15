@@ -1,20 +1,21 @@
 # translation of hu-sof_1.5befejezni.po to Hungarian
 # Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007, 2008, 2009, 2012.
 # Krutki Tamás <krtamas@0x64.org>, 2018.
+# Széll András <szell.andris@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-sof_1.5befejezni\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-05-01 22:57 UTC\n"
-"PO-Revision-Date: 2018-07-29 15:39+0100\n"
-"Last-Translator: Krutki Tamás <krtamas@0x64.org>\n"
+"PO-Revision-Date: 2020-05-10 12:35+0200\n"
+"Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -320,22 +321,16 @@ msgstr ""
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:253
-#, fuzzy
-#| msgid ""
-#| "When the elves came to Weldyn, about ten years ago, they spoke of a mage "
-#| "named Crelanu, and of his advice about the ruby. He said that the "
-#| "radiance of the stone could be contained, and that doing so would stop "
-#| "the stone’s effect."
 msgid ""
 "When the elves came to Tath, about five years ago, they spoke of a mage "
 "named Crelanu, and of his advice about the ruby. He said that the radiance "
 "of the stone could be contained, and that doing so would stop the stone’s "
 "effect."
 msgstr ""
-"Amikor a tündék úgy tíz évvel ezelőtt Weldynbe jöttek, beszéltek egy Crelanu "
-"nevű mágusról és az ő rubinnal kapcsolatos tanácsáról. Azt mondta, hogy a "
-"drágakő kisugárzását féken lehetne tartani, így pedig ki lehetne védeni "
-"annak hatásait."
+"Amikor a tündék úgy öt éve Tath-ba jöttek, beszéltek egy Crelanu nevű "
+"mágusról és az ő rubinnal kapcsolatos tanácsáról. Azt mondta, hogy a drágakő "
+"kisugárzását féken lehetne tartani, így pedig ki lehetne védeni annak "
+"hatásait."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:257
@@ -919,25 +914,19 @@ msgid ""
 "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
 "unfortunately, our dwarves who are still out there — wi’ become irrelevant."
 msgstr ""
-"Csak figyelj! A kapuk pillanatokon belül be fognak záródni. Akkor a kint "
-"lévő tündéknek – és sajnos azon törpjeinknek is, akik még kint vannak – "
-"búcsút mondhatunk."
+"Csak figyelj! A kapuk rögvest bezárú'nak. Akkor a kint lévő tündéknek – és "
+"sajnos azon törpjeinknek is, akik még kint vannak – búcsút mondhatunk."
 
+# törp szlenget kellene használni itt is, korábban is
 #. [message]: speaker=Baglur
 #. all the dwarves are inside, although there might still be some elves inside too
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:515
-#, fuzzy
-#| msgid ""
-#| "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
-#| "unfortunately, our dwarves who are still out there — wi’ become "
-#| "irrelevant."
 msgid ""
 "Just watch. The gates wi’ close very soon. Then the elves outside wi’ become "
 "irrelevant."
 msgstr ""
-"Csak figyelj! A kapuk pillanatokon belül be fognak záródni. Akkor a kint "
-"lévő tündéknek – és sajnos azon törpjeinknek is, akik még kint vannak – "
-"búcsút mondhatunk."
+"Csak figyelj! A kapuk rögvest bezárú'nak. Utána a künn maradt tündék nem "
+"számítanak."
 
 #. [message]: speaker=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:550
@@ -1268,12 +1257,6 @@ msgstr "Szörnyek"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:40
-#, fuzzy
-#| msgid ""
-#| "The journey to the far northern wastelands was long and perilous. For the "
-#| "tunnels were winding and treacherous, and the paths were not safe from "
-#| "orcs, or worse. Nevertheless, they did reach the northlands, and began to "
-#| "search for the runesmith named Thursagan — the sage of fire."
 msgid ""
 "The journey to the far northern wastelands was long and perilous. For the "
 "tunnels were winding and treacherous, and the paths were not safe from orcs, "
@@ -1282,8 +1265,8 @@ msgid ""
 msgstr ""
 "A messzi északon fekvő pusztasághoz vezető út hosszú és veszélyes volt. A "
 "járatok szövevényesek és csalókák voltak, az ösvényeken pedig gyakorta "
-"jártak orkok vagy még rosszabb lények. Mindenesetre azért elérték az északi "
-"földeket és nekiláttak, hogy megkeressék a Thursagannak nevezett "
+"jártak orkok vagy még rosszabb lények. Mindenesetre azért elérték "
+"Északföldét, és nekiláttak, hogy megkeressék a Thursagannak nevezett "
 "rúnakovácsot – a tűz ismerőjét."
 
 #. [objective]: condition=win
@@ -1365,15 +1348,11 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:222
-#, fuzzy
-#| msgid ""
-#| "Except for trolls and ogres, right? They live in the far northlands. "
-#| "They’re probably lurking around here somewhere."
 msgid ""
 "Except for trolls and ogres, right? They live in the far Northlands. They’re "
 "probably lurking around here somewhere."
 msgstr ""
-"Kivéve a trollokat és az ogrékat, igaz? Ők itt laknak a messzi északon. "
+"Kivéve a trollokat és az ogrékat, igaz? Ők itt laknak a messzi Északföldén. "
 "Valószínűleg itt ólálkodnak valahol."
 
 #. [message]: speaker=Baglur
@@ -1609,12 +1588,9 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:135
-#, fuzzy
-#| msgid "Yes, we did. And that is Krawg, who helped us in the northlands."
 msgid "Yes, we did. And that is Krawg, who helped us in the Northlands."
 msgstr ""
-"Igen, uram, megtaláltuk Thursagant, és elhoztuk magunkkal. A griffmadár "
-"pedig Krawg, aki segítséget nyújtott nekünk az északi földeken."
+"Igen, uram. Az pedig Krawg, aki segítséget nyújtott nekünk Északföldén."
 
 #. [message]: speaker=Krawg
 #. "Yeah! Me Krawg!"
@@ -2020,7 +1996,7 @@ msgstr ""
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:151
 msgid "Oh... right, right. Fine. Theganli?"
-msgstr "Ó... igaz, igaz. Jól van akkor. Theganli!"
+msgstr "Ó... igaz, igaz. Jól van akkor. Theganli?"
 
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:155
@@ -3145,34 +3121,24 @@ msgstr "Ki van ott?"
 #. [message]: speaker=Alanin
 #. dragoon = his unit type
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:565
-#, fuzzy
-#| msgid ""
-#| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
-#| "mission in the northlands, and now elvish horsemen are chasing me. I "
-#| "barely evaded them."
 msgid ""
 "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a mission "
 "in the Northlands, and now elvish horsemen are chasing me. I barely evaded "
 "them."
 msgstr ""
-"Egy dragonyos vagyok II. Haldric személyes testőrségéből. Északon voltam egy "
+"Egy dragonyos vagyok II. Haldric személyes testőrségéből. Északföldén voltam "
 "küldetésen, most pedig tünde portyázók vettek üldözőbe. Alig tudtam "
 "elmenekülni előlük."
 
 #. [message]: speaker=Alanin
 #. cavalier = his unit type
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:572
-#, fuzzy
-#| msgid ""
-#| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
-#| "mission in the northlands, and now elvish horsemen are chasing me. I "
-#| "barely evaded them."
 msgid ""
 "I’m a cavalier, with Haldric II’s personal bodyguard. I was sent on a "
 "mission in the Northlands, and now elvish horsemen are chasing me. I barely "
 "evaded them."
 msgstr ""
-"Egy dragonyos vagyok II. Haldric személyes testőrségéből. Északon voltam egy "
+"Egy dragonyos vagyok II. Haldric személyes testőrségéből. Északföldén voltam "
 "küldetésen, most pedig tünde portyázók vettek üldözőbe. Alig tudtam "
 "elmenekülni előlük."
 
@@ -3390,16 +3356,13 @@ msgstr "Az a csinos kis fém szikla az enyém! Tűnjetek onnan!"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:422
-#, fuzzy
-#| msgid ""
-#| "This forge will work perfectly. Give me a few days here, and I can "
-#| "reforge the Sceptre of Fire to fulfill its purpose."
 msgid ""
 "This forge will work perfectly. Give me a day or two here, and I can reforge "
 "the Sceptre of Fire to fulfill its purpose."
 msgstr ""
-"Ez a kovácsműhely tökéletesen megfelel. Adjatok pár napot, annyi idő alatt "
-"újra tudom kovácsolni a Jogart, hogy képes legyen betölteni feladatát."
+"Ez a kovácsműhely tökéletesen megfelel. Adjatok egy vagy két napot, annyi "
+"idő alatt újra tudom kovácsolni a Jogart, hogy képes legyen betölteni "
+"feladatát."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:450
@@ -3448,17 +3411,12 @@ msgstr "Orkok"
 #. [part]
 #. The text in 1.14.4 mentioned Knalga. Geographically, these caves are in Knalga, but the text was confusing if the reader thought of the Knalgan Alliance.
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:161
-#, fuzzy
-#| msgid ""
-#| "There was no exit from the caverns of Knalga. They had reached the realms "
-#| "of the orcs, with the elves hot on their trail. And there was no exit "
-#| "from those caves."
 msgid ""
 "There was no exit for the dwarves. They had reached the realms of the orcs, "
 "with the elves hot on their trail. There was truly no exit from these caves."
 msgstr ""
-"Nem volt kiút Knalga tárnáiból. Rugnurék elérték az orkok területeit, "
-"miközben a tündék szorosan a nyomukban voltak. És nem volt kiút azokból a "
+"Nem volt kiút a törpök számára. Elérték az orkok területeit, miközben a "
+"tündék szorosan a nyomukban voltak. És nem volt kiút ezekből a "
 "barlangokból..."
 
 #. [part]
@@ -3726,16 +3684,12 @@ msgstr "Állj! Mi dolgod van Weldynben, Wesnoth fővárosában?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:103
-#, fuzzy
-#| msgid ""
-#| "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
-#| "the northlands."
 msgid ""
 "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
 "the Northlands."
 msgstr ""
 "Félre az utamból! Alanin vagyok, Haldric udvari testőre, és híreket hozok "
-"északról."
+"Északföldéről."
 
 #. [message]: speaker=Gatekeeper
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:107
@@ -3765,16 +3719,12 @@ msgstr "Menj, Alanin, és add át üzeneted a királynak."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:126
-#, fuzzy
-#| msgid ""
-#| "My King, fifteen years ago you sent me on a mission into the northlands. "
-#| "I have returned. What do you wish to know of my mission?"
 msgid ""
 "My King, fifteen years ago you sent me on a mission into the Northlands. I "
 "have returned. What do you wish to know of my mission?"
 msgstr ""
-"Királyom, tizenöt évvel ezelőtt küldetésre indítottál az északi földekre. "
-"Most visszatértem. Mit kívánsz tudni küldetésemről?"
+"Királyom, tizenöt évvel ezelőtt küldetésre indítottál Északföldére. Most "
+"visszatértem. Mit kívánsz tudni küldetésemről?"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:130

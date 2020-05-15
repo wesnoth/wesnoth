@@ -8,19 +8,20 @@
 # Németh Tamás <ntomasz@mail.kabelnet.hu>, 2008.
 # Gabor Udvari <gabor.udvari@gmail.com>, 2008.
 # Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008-2010, 2012.
+# Krutki Tamás <krtamas@0x64.org>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-manual_1.5\n"
 "POT-Creation-Date: 2018-03-27 04:20+0300\n"
-"PO-Revision-Date: 2012-02-20 11:02+0100\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
-"Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
+"PO-Revision-Date: 2020-05-10 16:08+0200\n"
+"Last-Translator: Széll András <szell.andris@gmail.com>\n"
+"Language-Team: Hungarian <>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
 
 # type: Attribute 'lang' of: <book>
 #. type: Attribute 'lang' of: <book>
@@ -200,7 +201,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:64
 msgid "The Creatures"
-msgstr "A teremtmények "
+msgstr "A teremtmények"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -271,15 +272,11 @@ msgstr ""
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:90
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/main-menu-1.9.4.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/hu/main-menu-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject><phrase>
@@ -391,13 +388,6 @@ msgstr "Betöltés"
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:153
-#, fuzzy
-#| msgid ""
-#| "Click this button to load a previously saved game. You will be shown a "
-#| "dialogue listing saved games. Select the game and click Ok to load and "
-#| "continue, or Cancel to return to the Main Menu. If you select a replay "
-#| "game, you can check the Replay check box. The loaded game will make all "
-#| "the moves from the beginning while you watch."
 msgid ""
 "Click this button to load a previously saved game. You will be shown a "
 "dialogue listing saved games. Select the game and click Ok to load and "
@@ -494,11 +484,6 @@ msgstr "Készítők"
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:215
-#, fuzzy
-#| msgid ""
-#| "Click this button for a list of major Wesnoth contributors. You will "
-#| "often be able to reach them in real time at irc.freenode.org:6667 on "
-#| "#wesnoth."
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
 "be able to reach them in real time at irc.freenode.org:6667 on #wesnoth or "
@@ -507,7 +492,9 @@ msgid ""
 msgstr ""
 "Kattints erre a gombra, ha meg szeretnéd tekinteni a Wesnoth fejlesztéséhez "
 "leginkább hozzájáruló emberek listáját. Valós időben is gyakran elérheted "
-"őket az irc.freenode.org:6667 kiszolgáló #wesnoth szobájában."
+"őket az irc.freenode.org:6667 kiszolgáló #wesnoth szobájában vagy a <ulink "
+"url=\"https://discord.gg/battleforwesnoth\">https://discord.gg/"
+"battleforwesnoth</ulink> címen."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:223
@@ -518,7 +505,7 @@ msgstr "Kilépés"
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:227
 msgid "Click this button to close Wesnoth."
-msgstr "Kattints erre a gombra, ha ki szeretnél lépni a Wesnothból"
+msgstr "Kattints erre a gombra, ha ki szeretnél lépni a Wesnothból."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
@@ -580,6 +567,8 @@ msgid ""
 "Click this button to view game version and technical information. It may be "
 "useful when troubleshooting issues."
 msgstr ""
+"Kattints erre a gombra a játékverzió és technikai információk "
+"megtekintéséhez. Hasznos lehet problémák megoldása során."
 
 # type: Content of: <book><chapter><section><title>
 #. type: Content of: <book><chapter><section><title>
@@ -612,10 +601,8 @@ msgstr "Játssz egy egyszeri küldetést gép vagy emberi játékosok ellen."
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:292
-#, fuzzy
-#| msgid "Message another player (in multiplayer)"
 msgid "There are also campaigns that can be played in multiplayer."
-msgstr "Üzenet írása a játékostársaknak (többjátékos mód)"
+msgstr "Vannak többjátékos módban játszható hadjáratok is."
 
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><title>
@@ -682,18 +669,6 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:313
-#, fuzzy
-#| msgid ""
-#| "In general multiplayer games are played against other players via the "
-#| "Internet (you can also run them on your LAN if you have one). All these "
-#| "games are co-ordinated through the Wesnoth multiplayer server. "
-#| "Multiplayer games can take anywhere from 1 hour to 10 hours, depending on "
-#| "how many players there are (and the size of the map). The average time is "
-#| "between 3 to 7 hours. Games can be saved and loaded as many times as you "
-#| "like. So, it&#8217;s possible for some games to last 1 or 2 weeks, even "
-#| "though the play time is only a few hours. You cannot carry over units in "
-#| "multiplayer from one scenario to the next, so building up your army&#8217;"
-#| "s strength is possible only within the scenario."
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -713,10 +688,9 @@ msgstr ""
 "számától és a pálya méretétől függően. Az átlagos idő 3 és 7 óra között "
 "mozog. A játékokat el lehet menteni, majd később újra betölteni, amennyiszer "
 "csak a játékosok úgy akarják. Így tehát lehetséges, hogy néhány játék 1 vagy "
-"2 hétig eltart még akkor is, ha a tényleges játékidő csak néhány óra. "
-"Többjátékos játszmákban nem tudsz egységeket átvinni egyik küldetésből a "
-"másikba, tehát sereged erejének felépítése csak az adott küldetésen belül "
-"lehetséges."
+"2 hétig eltart még akkor is, ha a tényleges játékidő csak néhány óra. Ha "
+"csak egy küldetést játszol, az egységeidet nem tudod átvinni a következőre, "
+"tehát sereged erejének felépítése csak az adott küldetésen belül lehetséges."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -730,15 +704,11 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:326
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/multiplayer-1.9.4.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/hu/multiplayer-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -750,19 +720,11 @@ msgstr "Többjátékos párbeszédablak"
 #. type: Content of: <book><chapter><section><section><section><title>
 #: doc/manual/manual.en.xml:332
 msgid "Login"
-msgstr "Bejelentkezés "
+msgstr "Bejelentkezés"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:333
-#, fuzzy
-#| msgid ""
-#| "This will be your name on the multiplayer server. If you have an account "
-#| "on the <ulink url=\"http://www.wesnoth.org/forum\">Wesnoth forums</"
-#| "ulink>, you may use the same username and password for joining the "
-#| "official server. A password box will pop up if a password is required for "
-#| "the current username. You cannot use a registered name without the "
-#| "password."
 msgid ""
 "This will be your name on the multiplayer server. If you have an account on "
 "the <ulink url=\"https://forums.wesnoth.org/\">Wesnoth forums</ulink>, you "
@@ -771,7 +733,7 @@ msgid ""
 "You cannot use a registered name without the password."
 msgstr ""
 "Ez lesz a neved a többjátékos kiszolgálón. Ha regisztráltál a <ulink url="
-"\"http://www.wesnoth.org/forum\">Wesnoth fórumon</ulink>, az ott megadott "
+"\"https://forums.wesnoth.org/\">Wesnoth fórumon</ulink>, az ott megadott "
 "felhasználóneveddel is csatlakozhatsz a hivatalos kiszolgálóhoz a jelszavad "
 "megadása után. Egy jelszódoboz fog feltűnni, ha az adott felhasználónévhez "
 "szükség van jelszó megadására. Jelszó megadása nélkül nem lehet regisztrált "
@@ -822,18 +784,13 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:351
-#, fuzzy
-#| msgid ""
-#| "A complete list of official and user setup servers is listed at this "
-#| "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
-#| "\">Multiplayer servers</ulink>."
 msgid ""
 "A complete list of official and user setup servers is listed at this "
 "website: <ulink url=\"https://wiki.wesnoth.org/MultiplayerServers"
 "\">Multiplayer servers</ulink>."
 msgstr ""
 "A hivatalos és felhasználók által üzemeltetett kiszolgálók teljes listája a "
-"következő oldalon található meg: <ulink url=\"http://wesnoth.org/wiki/"
+"következő oldalon található meg: <ulink url=\"https://wiki.wesnoth.org/"
 "MultiplayerServers\">Többjátékos kiszolgálók</ulink>."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
@@ -935,15 +892,11 @@ msgstr "A játékképernyő"
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:391
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/game-screen-1.9.4.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/hu/game-screen-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><section><title>
@@ -971,15 +924,11 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:402
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/top_pane-1.9.4.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/hu/top_pane-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -1055,15 +1004,11 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:456
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/right_pane-1.9.4.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/hu/right_pane-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1088,15 +1033,12 @@ msgstr "A teljes térkép lekicsinyítve"
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:470
-#, fuzzy
-#| msgid ""
-#| "Defense and movement of the currently selected unit on the marked hex"
 msgid ""
 "Current hex position (x-coordinate, y-coordinate), defense and movement of "
 "the currently selected unit on the marked hex"
 msgstr ""
-"A kiválasztott egység adott mezőre vonatkozó védekezése (%) és "
-"lépéspontköltsége."
+"Az aktuális mező pozíció (x-koordináta, y-koordináta), az éppen kijelölt "
+"egység adott mezőre vonatkozó védekezése és lépéspontköltsége"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
@@ -2059,15 +2001,10 @@ msgstr ":"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1165
-#, fuzzy
-#| msgid ""
-#| "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</"
-#| "ulink>"
 msgid ""
 "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Command mode</ulink>"
 msgstr ""
-"<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Parancsok kiadása</"
-"ulink>"
+"<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Parancsok kiadása</ulink>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -2160,15 +2097,11 @@ msgstr "Toborzás és visszahívás"
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:1254
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/recruit-1.9.4.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/hu/recruit-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -2835,7 +2768,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1646
 msgid "Feral"
-msgstr ""
+msgstr "Kóbor"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1650
@@ -2843,6 +2776,8 @@ msgid ""
 "Units with the Feral trait only receive 50% defense in villages regardless "
 "of the base terrain the village is on (Bats, Falcons)."
 msgstr ""
+"A kóbor egységek védekezése falvakban csak 50%, függetlenül attól, hogy "
+"milyen terepen fekszik az adott falu (denevérek, sólymok)."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2880,7 +2815,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1675
 msgid "Aged"
-msgstr ""
+msgstr "Elaggott"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1679
@@ -2888,39 +2823,37 @@ msgid ""
 "The oldest units may have the Aged trait, receiving an 8 points HP decrease "
 "and having -1 movement and melee damage."
 msgstr ""
+"A legöregebb egységek rendelkezhetnek az elaggott jellemvonással, amely 8-"
+"cal csökkenti ÉP-jüket, lépési pontjaikat és közelharci sebzésüket pedig 1-1 "
+"ponttal."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1686
 msgid "Dim"
-msgstr ""
+msgstr "Buta"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1690
 msgid "Units with the Dim trait require 20% more experience to advance."
 msgstr ""
+"A buta egységeknek 20%-kal több tapasztalatra van szükségük a szintlépéshez."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1696
 msgid "Elemental"
-msgstr ""
+msgstr "Elemi"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1700
-#, fuzzy
-#| msgid ""
-#| "Mechanical units aren&#8217;t alive and thus are immune to poison, also "
-#| "drain and plague doesn&#8217;t work on them.  Mechanical units generally "
-#| "have <emphasis>Mechanical</emphasis> as their only trait."
 msgid ""
 "Elemental units aren&#8217;t alive and thus are immune to poison, and drain "
 "and plague don&#8217;t work on them.  Elemental units generally have "
 "<emphasis>Elemental</emphasis> as their only trait."
 msgstr ""
-"A mechanikus egységek nem élnek, ezért immunisak a méreggel szemben, "
-"valamint a megcsapolás és a dögvész sem fog rajtuk. A mechanikus egységek "
-"általában kizárólag a <emphasis>mechanikus</emphasis> jellemvonással "
-"rendelkeznek."
+"Az elemi egységek nem élnek, ezért immunisak a méreggel szemben, valamint a "
+"megcsapolás és a dögvész sem fog rajtuk. Az elemi egységek általában "
+"kizárólag az <emphasis>elemi</emphasis> jellemvonással rendelkeznek."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1708
@@ -2960,11 +2893,6 @@ msgstr "Mechanikus"
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1730
-#, fuzzy
-#| msgid ""
-#| "Mechanical units aren&#8217;t alive and thus are immune to poison, also "
-#| "drain and plague doesn&#8217;t work on them.  Mechanical units generally "
-#| "have <emphasis>Mechanical</emphasis> as their only trait."
 msgid ""
 "Mechanical units aren&#8217;t alive and thus are immune to poison, and drain "
 "and plague don&#8217;t work on them.  Mechanical units generally have "
@@ -2987,6 +2915,8 @@ msgid ""
 "Large, unwieldy units with the Slow trait have -1 movement and 5% more "
 "hitpoints."
 msgstr ""
+"A lassú jellemvonással rendelkező nagy, ormótlan egységek 1-gyel kevesebb "
+"lépésponttal és 5%-kal több életerővel bírnak."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -3014,7 +2944,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1762
 msgid "Weak"
-msgstr ""
+msgstr "Gyenge"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1766
@@ -3022,6 +2952,7 @@ msgid ""
 "Units may have the Weak trait, receiving a -1 increment in hitpoints and "
 "melee damage."
 msgstr ""
+"A gyenge egységek életereje és közelharci támadása is 1 ponttal kevesebb."
 
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><title>
@@ -3312,7 +3243,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1963
 msgid "Feeding"
-msgstr ""
+msgstr "Bekebelezés"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1967
@@ -3320,6 +3251,8 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
+"Ez az egység 1 életpontot kap a maximumához, ha megöl egy egységet, kivéve, "
+"ha az immunis a dögvészre."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -3788,7 +3721,7 @@ msgstr "Zöld gömböcske"
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:2304
 msgid "If you control the unit and it hasn&#8217;t moved this turn"
-msgstr "Az egység még nem lépett az adott körben."
+msgstr "Az egységed még nem lépett az adott körben"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -3817,7 +3750,7 @@ msgid ""
 "If you control the unit and it has moved this turn, but could still move "
 "further or attack"
 msgstr ""
-"Az egység már lépett, de még tehet további lépéseket, illetve támadhat."
+"Az egységed már lépett, de még tehet további lépéseket, illetve támadhat."
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -3845,7 +3778,7 @@ msgstr "Piros gömböcske"
 msgid ""
 "If you control the unit, but it can no longer move or attack, or the user "
 "ended the unit&#8217;s turn"
-msgstr "Az egység már nem léphet és nem támadhat, vagy befejezted a körét."
+msgstr "Az egységed már nem léphet és nem támadhat, vagy befejezted a körét."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -3889,10 +3822,8 @@ msgstr "Nincs gömböcske"
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:2368
-#, fuzzy
-#| msgid "Enemy units have no orb on the top of their energy bar"
 msgid "Enemy units have no orb on the top of their energy bar"
-msgstr "Az ellenséges egységek energiacsíkjának tetején nincs gömböcske."
+msgstr "Az ellenséges egységek energiacsíkjának tetején nincs gömböcske"
 
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><title>
@@ -3987,13 +3918,6 @@ msgstr ""
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:2406
-#, fuzzy
-#| msgid ""
-#| "Different types of attacks do different amounts of damage, and a certain "
-#| "number of strikes may be made with each weapon. For instance, an Elvish "
-#| "Fighter does 5 points of damage with its sword every time it hits, and "
-#| "can strike 4 blows with the sword in one exchange. This is written as 5–"
-#| "4, meaning 5 damage per hit, and 4 strikes."
 msgid ""
 "Different types of attacks do different amounts of damage, and a certain "
 "number of strikes may be made with each weapon. For instance, an Elvish "
@@ -4004,8 +3928,8 @@ msgstr ""
 "A különböző típusú támadások különböző mértékű sebzést okoznak, és minden "
 "fegyverrel adott számú csapást lehet mérni az ellenfélre. Például egy tünde "
 "harcos 5 pontot sebez minden egyes alkalommal, mikor eltalálja az "
-"ellenséget, és 4-szer sújthat le egy támadás során. Ezt 5-4 formában szokás "
-"leírni, ami annyit tesz: 5 sebzés ütésenként és 4 ütés."
+"ellenséget, és 4-szer sújthat le egy támadás során. Ezt 5&times;4 formában "
+"szokás leírni, ami annyit tesz: 5 sebzés ütésenként és 4 ütés."
 
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
@@ -4712,21 +4636,14 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2690
-#, fuzzy
-#| msgid ""
-#| "In particular, use your ranged weapons if the enemy has no ranged attack. "
-#| "The computer&#8217;s default choice only looks for the most damage you "
-#| "can deal, so using it will often result in your units taking more damage "
-#| "than necessary."
 msgid ""
 "In particular, use your ranged weapons if the enemy has no ranged attack. "
 "Using it will often reduce the damage which your units take until the enemy "
 "dies."
 msgstr ""
 "Például használd a távolsági fegyveredet, ha az ellenségnek egyáltalán nincs "
-"távolsági támadása. A számítógép alapértelmezésben a legnagyobb sebzést "
-"okozó fegyvert javasolja neked, ami sokszor oda vezethet, hogy az egységed a "
-"szükségesnél több sérülést szenved el."
+"távolsági támadása. Ha így teszel, az egységeid gyakran kevesebb sérülést "
+"fognak elszenvedni az ellenség haláláig."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2695
@@ -5043,13 +4960,13 @@ msgstr "A napszak igazán számít, mert:"
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2851
 msgid "lawful units do more damage at day and less damage at night"
-msgstr "az igazságos egységek többet sebeznek nappal és kevesebbet éjjel."
+msgstr "az igazságos egységek többet sebeznek nappal és kevesebbet éjjel"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2856
 msgid "chaotic units do more damage at night and less damage at day"
-msgstr "a törvénytelen egységek többet sebeznek éjjel és kevesebbet nappal."
+msgstr "a törvénytelen egységek többet sebeznek éjjel és kevesebbet nappal"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>

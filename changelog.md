@@ -23,7 +23,7 @@
      * Dehydration only affects the player's side.
  ### Language and i18n
    * Updated translations: British English, Czech, Chinese (Traditional), Dutch, Esperanto,
-     Finnish, French, Italian, Polish, Portuguese, Portuguese (Brazil), Spanish, Swedish.
+     Finnish, French, Hungarian, Italian, Polish, Portuguese, Portuguese (Brazil), Spanish, Swedish.
    * Use <game dir>/translations instead of <process working dir>/translations to find core
      translation catalogues on Windows.
  ### Packaging
