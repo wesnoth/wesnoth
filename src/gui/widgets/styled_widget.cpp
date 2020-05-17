@@ -29,7 +29,6 @@
 #include "hotkey/hotkey_item.hpp"
 #include "sdl/rect.hpp"
 #include "wml_exception.hpp"
-
 #include "utils/functional.hpp"
 
 #include <algorithm>
@@ -397,6 +396,16 @@ void styled_widget::update_canvas()
 	}
 }
 
+unsigned int styled_widget::get_text_font_size() const
+{
+	if (cached_text_font_size_ == 0) {
+		assert(config_);
+
+		cached_text_font_size_ = config_->text_font_size(get_screen_size_variables());
+	}
+	return cached_text_font_size_;
+}
+
 int styled_widget::get_text_maximum_width() const
 {
 	assert(config_);
@@ -452,7 +461,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		.set_link_aware(get_link_aware())
 		.set_link_color(get_link_color())
 		.set_family_class(config_->text_font_family)
-		.set_font_size(config_->text_font_size)
+		.set_font_size(get_text_font_size())
 		.set_font_style(config_->text_font_style)
 		.set_alignment(text_alignment_)
 		.set_maximum_width(maximum_width)

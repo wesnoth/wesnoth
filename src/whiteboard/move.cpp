@@ -523,7 +523,7 @@ config move::to_config() const
 		route_cfg.add_child("step", std::move(loc_cfg));
 	}
 	typedef std::pair<map_location,pathfind::marked_route::mark> pair_loc_mark;
-	for(const pair_loc_mark& item : route_->marks)
+	for(const pair_loc_mark item : route_->marks)
 	{
 		config mark_cfg;
 		mark_cfg["x"]=item.first.wml_x();

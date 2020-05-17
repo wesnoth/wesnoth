@@ -755,7 +755,7 @@ void team_mode_controller::show_recall(tree_view_node& node, int side)
 		return;
 	}
 
-	for(const unit_ptr u : dc().get_team(side).recall_list()) {
+	for(const unit_ptr& u : dc().get_team(side).recall_list()) {
 		auto progress = view().stuff_list_entry(&node, "unit");
 		add_unit_entry(progress, *u, dc());
 		c.set_node_callback(progress.add(), &team_mode_controller::show_recall_unit, side);

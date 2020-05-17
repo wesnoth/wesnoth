@@ -38,11 +38,12 @@ extern bool new_widgets;
 namespace settings
 {
 /**
- * The screen resolution should be available for all widgets since
- * their drawing method will depend on it.
+ * The screen resolution and pixel pitch should be available for all widgets since
+ * their drawing method might depend on it.
  */
 extern unsigned screen_width;
 extern unsigned screen_height;
+extern unsigned screen_pitch_microns; /* Pixel pitch in microns */
 
 /**
  * The offset between the left edge of the screen and the gamemap.

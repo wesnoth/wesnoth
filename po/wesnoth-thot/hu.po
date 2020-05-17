@@ -8,20 +8,21 @@
 # Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009.
 # Udvari Gabor <gabor.udvari@gmail.com>, 2008, 2009, 2011.
 # Krutki Tamás <krtamas@0x64.org>, 2018.
+# Széll András <szell.andris@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-thot_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 23:11 UTC\n"
-"PO-Revision-Date: 2018-07-29 15:26+0100\n"
-"Last-Translator: Krutki Tamás <krtamas@0x64.org>\n"
+"PO-Revision-Date: 2020-05-10 14:28+0200\n"
+"Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -1143,9 +1144,9 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:358
 #, fuzzy
-#| msgid "Defeat the Masked Dwarf"
+#| msgid "Defeat the orcish leaders"
 msgid "Find and defeat the orcish intruders"
-msgstr "Legyőzöd az álarcos törpöket"
+msgstr "Legyőzöd az ork vezéreket"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:424
@@ -1306,6 +1307,8 @@ msgid ""
 "To win, either move Aiglondor to the signpost and Angarthing next to him, or "
 "move Angarthing to the signpost and Aiglondur next to him."
 msgstr ""
+"A győzelemhez juss el az útjelzőig Aiglondorral vagy Angarthinggel, és állj "
+"mellé a másikkal."
 
 #. [unit]: type=Elvish Scout, id=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:189
@@ -1404,10 +1407,8 @@ msgstr "Nyugati-kapu"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:217
-#, fuzzy
-#| msgid "Defeat the Masked Dwarf"
 msgid "Defeat the orcish leaders"
-msgstr "Legyőzöd az álarcos törpöket"
+msgstr "Legyőzöd az ork vezéreket"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:233
@@ -1486,17 +1487,12 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:337
-#, fuzzy
-#| msgid ""
-#| "A runemaster? There had been none such since Thursagan’s day. And for one "
-#| "to lead a holding was unheard-of; they tended towards the solitary life."
 msgid ""
 "A runemaster? There have been none such since Thursagan’s day. And for one "
 "to lead a holding was unheard-of; they tended towards the solitary life."
 msgstr ""
-"Egy rúnamester? Már Thursagan napja óta nem létezett egy sem. És még nem "
-"hallottunk olyanról, akinek erődítménye lett volna; a magányos életet "
-"kedvelték."
+"Egy rúnamester? Thursagan óta nem járt erre egy sem. És még nem hallottunk "
+"olyanról, akinek erődítménye lett volna; a magányos életet kedvelték."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:342
@@ -1576,7 +1572,7 @@ msgstr ""
 #, fuzzy
 #| msgid ""
 #| "That’s for lords and loremasters to worry about, not the likes of me. I "
-#| "must see to my troop’s care. Food will be brought to you; rest well, we "
+#| "must see to my troop’s care. Food will be brought to you; rest well. We "
 #| "will speak again."
 msgid ""
 "As you say. These things are for lords and loremasters to worry about, not "
@@ -1843,44 +1839,31 @@ msgstr "Az alsó bugyrok"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:211
-#, fuzzy
-#| msgid "Defeat Karrag"
 msgid "Find and defeat Karrag"
-msgstr "Legyőzöd Karragot"
+msgstr "Megtalálod és legyőzöd Karragot"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:277
-#, fuzzy
-#| msgid "This place smells of death."
 msgid "This place reeks of death."
 msgstr "Ez a hely bűzlik a haláltól."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:282
-#, fuzzy
-#| msgid ""
-#| "It’s been... it’s been years since I’ve been down here. Only Karrag and "
-#| "his personal followers used this level. Why did I never wonder about that "
-#| "before?"
 msgid ""
 "It has been... so many years since I’ve been down here. Only Karrag and his "
 "personal followers used this level. I can't believe I never wondered about "
 "that before."
 msgstr ""
-"Már... már több éve annak, hogy idelent jártam. Csak Karrag és a bizalmasai "
-"használták ezt a szintet. Miért nem gondolkoztam el ezen korábban?"
+"Már... már oly sok éve annak, hogy idelent jártam. Csak Karrag és a "
+"bizalmasai használták ezt a szintet. Miért nem gondolkoztam el ezen korábban?"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:288
-#, fuzzy
-#| msgid ""
-#| "Karrag’s will, and his dark magic. I think he has been casting glamours "
-#| "on all of you ever since he passed over."
 msgid ""
 "It is Karrag's doing—his will, and his dark magic. I think he has been "
 "casting glamours on all of you ever since he passed over."
 msgstr ""
-"Karrag akarata és a sötét mágiája miatt. Úgy gondolom, bűbájt bocsátott "
+"Ez Karrag műve — akaratáé és sötét mágiájáé. Úgy gondolom, bűbájt bocsátott "
 "mindnyájatokra, mióta a túloldalra ért."
 
 # magyarban nem hangsúlyozzuk a van szót
@@ -1893,17 +1876,12 @@ msgstr "Hol a pokolban lehet Karrag? Csak néhány másodpercnyi előnye lehet."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:298
-#, fuzzy
-#| msgid ""
-#| "More likely he has cloaked himself, thinking to run ahead to gather his "
-#| "followers. He could be within a spear-cast of us now and we wouldn’t know "
-#| "it in this gloom."
 msgid ""
 "Most likely he has cloaked himself, thinking to run ahead to gather his "
 "followers. He could be within a spear-cast of us now and we wouldn’t know it "
 "in this gloom."
 msgstr ""
-"Valószínűbb, hogy álcázta magát, gondolván, hogy előrerohan összegyűjteni a "
+"Valószínű, hogy álcázta magát, gondolván, hogy előrerohan összegyűjteni a "
 "követőit. Akár egy dárdahajításnyira is lehet tőlünk, és mégsem fogjuk "
 "megtalálni ebben a homályban."
 
@@ -1998,15 +1976,11 @@ msgstr ""
 
 #. [message]: speaker=Dufon
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:636
-#, fuzzy
-#| msgid ""
-#| "You cannot pass, fools. The doors I guard are sealed by the power of the "
-#| "Hammer itself."
 msgid ""
 "You shall never pass through here! The doors I guard are sealed by the power "
 "of the Hammer itself."
 msgstr ""
-"Nem juthattok át, bolondok. Az ajtók, amiket őrzök, a Pöröly hatalmával "
+"Soha nem juthattok át, bolondok! Az ajtók, amiket őrzök, a Pöröly hatalmával "
 "vannak lepecsételve."
 
 #. [message]: speaker=second_unit
@@ -2065,10 +2039,8 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1036
-#, fuzzy
-#| msgid "The key has been uttered, these doors should open..."
 msgid "The keys have been found. The door should open..."
-msgstr "A kulcsot kimondtam, ezeknek az ajtóknak ki kell nyílnia..."
+msgstr "A kulcsokat megtaláltam. Az ajtónak ki kellene nyílnia..."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1088
@@ -2077,15 +2049,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1136
-#, fuzzy
-#| msgid ""
-#| "It seems that guard spoke truth. These doors cannot be forced open by any "
-#| "means we have!"
 msgid ""
 "It seems that the guard spoke the truth. These doors will not open to us!"
-msgstr ""
-"Úgy látszik, az őr igazat beszélt. Ezeket az ajtókat erővel nem tudjuk "
-"kinyitni."
+msgstr "Úgy látszik, az őr igazat beszélt. Ezek az ajtók nem nyílnak nekünk!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1141
@@ -2202,10 +2168,8 @@ msgstr ""
 
 #. [message]: speaker=Dufon
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1310
-#, fuzzy
-#| msgid "Our master’s ritual must not be interrupted. Stop them!"
 msgid "The master's ritual... must not be... interrupted..."
-msgstr "Mesterünk rituáléját nem zavarhatják meg. Állítsátok meg őket!"
+msgstr "Mesterünk rituáléját... nem... zavarhatják... meg..."
 
 #. [message]: speaker=Dranath
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1322
@@ -2498,15 +2462,6 @@ msgstr "Álarcos törp báró"
 
 #. [unit_type]: id=Dwarvish Masked Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
-#| "formidable fighting powers of his kind without accounting to his peers "
-#| "and the loremasters of Dwarven-kind for the dark and bloody uses to which "
-#| "he puts his weapons. Like his barefaced kin, the Dwarf Lord wields axe "
-#| "and hammer with masterful skill, and can hit a target with a thrown hand "
-#| "axe at several paces. Though slow on their feet, these dwarves are a "
-#| "testament to the prowess of their kind."
 msgid ""
 "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
 "formidable fighting powers of his kind without accounting to his peers and "
@@ -2787,12 +2742,11 @@ msgstr ""
 #~ msgid "Tan-Uthkar"
 #~ msgstr "Tan-Uthkar"
 
+#~ msgid "Villagers"
+#~ msgstr "Falusiak"
+
 #~ msgid "Ruined Castle"
 #~ msgstr "Romos kastély"
-
-# Udi: Csak a vezéreket kell legyőzni, nem minden egységet
-#~ msgid "Defeat all enemies"
-#~ msgstr "Legyőzöd az összes ellenséges vezért"
 
 #~ msgid ""
 #~ "Stay alert, everyone, and keep together. This is bandit country — more "
@@ -2842,11 +2796,11 @@ msgstr ""
 #~ msgstr "Ratheln elesik"
 
 #~ msgid ""
-#~ "That hut near the top of the pass... Something is glowing inside it. We "
-#~ "should investigate."
+#~ "There’s a scent of scorched gryphon meat in the air, emanating from that "
+#~ "hut yonder. We should investigate."
 #~ msgstr ""
-#~ "Az a kunyhó a hágó csúcsának közelében... valami világít benne. Meg kéne "
-#~ "néznünk."
+#~ "Égett griffhús szaga terjeng a levegőben, abból a kunyhóból jön, amott! "
+#~ "Utána kellene járnunk."
 
 #~ msgid ""
 #~ "Hail, I am Ratheln. If you’re traveling down the pass, please take me "
@@ -2974,37 +2928,25 @@ msgstr ""
 #~ msgid "The axe-bearers must not be let near our nestlings. Attack!"
 #~ msgstr "Ezek a bárdforgatók nem juthatnak fészkeink közelébe. Támadás!"
 
-#, fuzzy
-#~| msgid ""
-#~| "We’re grateful for your assistance. And I’d like to send a couple of our "
-#~| "senior apprentices with you to the east. It has come time for them to be "
-#~| "journeymen... and I sense something being born to the east that I do not "
-#~| "like the feel of."
 #~ msgid ""
-#~ "We’re grateful for your assistance. And I’d like to send a couple of our "
-#~ "senior apprentices with you to the east. It has come time for them to be "
-#~ "journeymen... and I sense something being born to the east that I do not "
-#~ "like the feel of."
+#~ "We’re grateful for your assistance. Moreover, I’d like to send a couple "
+#~ "of our senior apprentices with you to the east. It has come time for them "
+#~ "to be journeymen... and I sense something being born to the east that I "
+#~ "do not like the feel of."
 #~ msgstr ""
-#~ "Nagyon örülünk a segítségeteknek. Szeretném, ha pár tanult növendékünk "
-#~ "veletek tarthatna keletre. Itt az ideje, hogy utazzanak... és úgy érzem, "
-#~ "valami olyan van születőben keleten, ami nem tetszene nekem."
+#~ "Nagyon örülünk a segítségeteknek. Sőt mi több, szeretném, ha pár tanult "
+#~ "növendékünk veletek tarthatna keletre. Itt az ideje, hogy utazzanak... és "
+#~ "úgy érzem, valami olyan van születőben keleten, ami nem tetszene nekem."
 
-#, fuzzy
-#~| msgid ""
-#~| "We’re grateful for your assistance. And I’d like to send one of our "
-#~| "senior apprentices with you to the east. It has come time for him to be "
-#~| "a journeyman... and I sense something being born to the east that I do "
-#~| "not like the feel of."
 #~ msgid ""
-#~ "We’re grateful for your assistance. And I’d like to send one of our "
+#~ "We’re grateful for your assistance. Moreover, I’d like to send one of our "
 #~ "senior apprentices with you to the east. It has come time for him to be a "
 #~ "journeyman... and I sense something being born to the east that I do not "
 #~ "like the feel of."
 #~ msgstr ""
-#~ "Nagyon örülünk a segítségeteknek. Szeretném, ha egy tanult növendékünk "
-#~ "veletek tarthatna keletre. Itt az ideje, hogy utazzon... és úgy érzem, "
-#~ "valami olyan van születőben keleten, ami nem tetszene nekem."
+#~ "Nagyon örülünk a segítségeteknek. Sőt mi több, szeretném, ha egy tanult "
+#~ "növendékünk veletek tarthatna keletre. Itt az ideje, hogy utazzon... és "
+#~ "úgy érzem, valami olyan van születőben keleten, ami nem tetszene nekem."
 
 #~ msgid "Lorinne"
 #~ msgstr "Lorinne"
@@ -3172,16 +3114,12 @@ msgstr ""
 #~ "Korbácsok, bilincsek. Nem, Angarthing, nem kételkedem benned, még hogyha "
 #~ "érdemes is lennék rá, hogy egy tanmesterben kételkedjek."
 
-#, fuzzy
-#~| msgid ""
-#~| "They were seeking captives. To what purpose, I cannot say. But I doubt "
-#~| "it was any good one."
 #~ msgid ""
-#~ "They were seeking captives. To what purpose, I cannot say. But I doubt it "
+#~ "They were seeking captives. To what purpose, I cannot say, but I doubt it "
 #~ "was any good one."
 #~ msgstr ""
-#~ "Foglyokat kerestek. Hogy milyen indokból, nem tudom megmondani. De "
-#~ "kétlem, hogy erre bármi jó ok lenne."
+#~ "Foglyokat kerestek. Hogy milyen célból, nem tudom megmondani, de kétlem, "
+#~ "hogy erre bármi jó ok lenne."
 
 #~ msgid ""
 #~ "Aye. Toils over it in a workshop in the underlevels with his personal "
@@ -3223,6 +3161,43 @@ msgstr ""
 #~ "Igen! És a Pöröly őrzi a törpök lelkét, az igaz népét. Együtt vonulhatunk "
 #~ "a még hatalmasabb győzelmek felé! Ti, knalgaiak, csatlakozni fogtok "
 #~ "hozzám?"
+
+#~ msgid "Aaarrgh! My students... What will become of them?"
+#~ msgstr "Ohh! A tanítványaim... mi lesz most velük?"
+
+#~ msgid ""
+#~ "Without magic users from Master Perrin’s academy in your party, you can "
+#~ "no longer recruit new ones."
+#~ msgstr ""
+#~ "Perrin mester akadémiájának varázslat használói nélkül nem toborozhatsz "
+#~ "újabb mágusokat."
+
+#~ msgid "There an altar in this temple, and a staff lies upon it."
+#~ msgstr "Van egy oltár ebben a templomban, s rajta egy bot fekszik."
+
+#~ msgid "Staff of Righteous Flame"
+#~ msgstr "Az Igazság Tüzének Botja"
+
+#~ msgid ""
+#~ "This staff gives a dying mage a final strike that will destroy all nearby "
+#~ "enemies."
+#~ msgstr ""
+#~ "Ez a bot lehetővé teszi egy haldokló mágusnak, hogy egy utolsó csapással "
+#~ "elpusztítsa az összes közelében levő ellenfelét."
+
+#~ msgid "Only a mage may wield this Staff."
+#~ msgstr "Csak mágusok tudják használni ezt a botot."
+
+#~ msgid ""
+#~ "Aaarrgh! Though I die, the flame of righteousness shall send you down to "
+#~ "darkness!"
+#~ msgstr ""
+#~ "Aahh! Bár meghalok, az igazság tüzének lángja a mélységes sötétség "
+#~ "fenekére küld benneteket!"
+
+# Udi: Csak a vezéreket kell legyőzni, nem minden egységet
+#~ msgid "Defeat all enemies"
+#~ msgstr "Legyőzöd az összes ellenséges vezért"
 
 #~ msgid "Undead"
 #~ msgstr "Élőholtak"
@@ -3396,38 +3371,12 @@ msgstr ""
 #~ msgid "The door is about to give. Brace yourselves, everyone."
 #~ msgstr "Jól van, az ajtó mindjárt megadja magát. Mindenki feszüljön neki!"
 
-#~ msgid "Aaarrgh! My students... What will become of them?"
-#~ msgstr "Ohh! A tanítványaim... mi lesz most velük?"
-
 #~ msgid ""
-#~ "Without magic users from Master Perrin’s academy in your party, you can "
-#~ "no longer recruit new ones."
+#~ "That hut near the top of the pass... Something is glowing inside it. We "
+#~ "should investigate."
 #~ msgstr ""
-#~ "Perrin mester akadémiájának varázslat használói nélkül nem toborozhatsz "
-#~ "újabb mágusokat."
-
-#~ msgid "There an altar in this temple, and a staff lies upon it."
-#~ msgstr "Van egy oltár ebben a templomban, s rajta egy bot fekszik."
-
-#~ msgid "Staff of Righteous Flame"
-#~ msgstr "Az Igazság Tüzének Botja"
-
-#~ msgid ""
-#~ "This staff gives a dying mage a final strike that will destroy all nearby "
-#~ "enemies."
-#~ msgstr ""
-#~ "Ez a bot lehetővé teszi egy haldokló mágusnak, hogy egy utolsó csapással "
-#~ "elpusztítsa az összes közelében levő ellenfelét."
-
-#~ msgid "Only a mage may wield this Staff."
-#~ msgstr "Csak mágusok tudják használni ezt a botot."
-
-#~ msgid ""
-#~ "Aaarrgh! Though I die, the flame of righteousness shall send you down to "
-#~ "darkness!"
-#~ msgstr ""
-#~ "Aahh! Bár meghalok, az igazság tüzének lángja a mélységes sötétség "
-#~ "fenekére küld benneteket!"
+#~ "Az a kunyhó a hágó csúcsának közelében... valami világít benne. Meg kéne "
+#~ "néznünk."
 
 #~ msgid "morningstar"
 #~ msgstr "tüskés buzogány"

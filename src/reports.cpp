@@ -526,8 +526,7 @@ static config unit_advancement_options(const unit* u)
 {
 	if (!u) return config();
 	config res;
-	typedef std::pair<std::string, std::string> pair_string;
-	for (const pair_string &ps : u->advancement_icons()) {
+	for (const auto& ps : u->advancement_icons()) {
 		add_image(res, ps.first, ps.second);
 	}
 	return res;
@@ -873,8 +872,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 			}
 		}
 
-		typedef std::pair<int, std::set<std::string>> resist_units;
-		for (const resist_units &resist : resistances) {
+		for (const auto& resist : resistances) {
 			int damage_with_resistance = round_damage(specials_damage, damage_multiplier * resist.first, damage_divisor);
 			tooltip << "<b>" << damage_with_resistance << "</b>  "
 				<< "<span color='" << attack_info_percent_color(resist.first-100).to_hex_string() << "'>"

@@ -323,6 +323,15 @@ protected:
 	virtual void update_canvas();
 
 	/**
+	 * Resolves and returns the text_font_size
+	 *
+	 * To allow the text_font_size in the widget definition to be a formula,
+	 * call this function which will evaluate the formula (caching the result)
+	 * and return the value.
+	 */
+	unsigned int get_text_font_size() const;
+
+	/**
 	 * Returns the maximum width available for the text.
 	 *
 	 * This value makes sense after the widget has been given a size, since the
@@ -387,6 +396,16 @@ private:
 	 * Windows can use extra scrollbars use abbreviations as text etc.
 	 */
 	resolution_definition_ptr config_;
+
+	/**
+	 * Contains the evaluated text_font_size from the configuration.
+	 *
+	 * We want to allow formulas in the value of text_font_size, since the desired
+	 * font size can depend on parameters of the screen and window. But we don't
+	 * want to have to recompute the value of the formula all the time. This member
+	 * variable is the cache for the evaluated font size.
+	 */
+	mutable unsigned int cached_text_font_size_ = 0;
 
 	/**
 	 * Holds all canvas objects for a styled_widget.

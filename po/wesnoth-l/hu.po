@@ -14,15 +14,15 @@ msgstr ""
 "Project-Id-Version: hu-l_1.4_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 23:11 UTC\n"
-"PO-Revision-Date: 2018-07-17 14:53+0100\n"
-"Last-Translator: Krutki Tamás <krtamas@0x64.org>\n"
+"PO-Revision-Date: 2018-11-13 22:43+0100\n"
+"Last-Translator: Krutki Tamás <krtamas-wesnoth@0x64.org>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.2\n"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
@@ -80,9 +80,9 @@ msgstr ""
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:28
 #, fuzzy
-#| msgid "(Intermediate level, 8 scenarios.)"
+#| msgid "(Novice level, 8 scenarios.)"
 msgid "(Novice level, 7 scenarios.)"
-msgstr "(Közepes szint, 8 pálya)"
+msgstr "(Kezdő szint, 8 pálya)"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:31
@@ -557,12 +557,6 @@ msgstr "Wesnoth királya Garard. Nincs semmiféle királynőnk."
 
 #. [message]: speaker=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:152
-#, fuzzy
-#| msgid ""
-#| "Insolent peasants, you will kneel before your betters! Asheviere is the "
-#| "queen of Wesnoth. The King fell three weeks ago at Abez. I shall not "
-#| "bandy words with you. Your magistrate will be coming with us, and we do "
-#| "not care if it is dead or alive."
 msgid ""
 "Insolent peasants, you will kneel before your betters! Asheviere is the "
 "Queen of Wesnoth. The King fell three weeks ago at Abez. I shall not bandy "
@@ -655,10 +649,6 @@ msgstr "Ó, jaj! Kifutottunk az időből, az ellenség erősítést hozott..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:368
-#, fuzzy
-#| msgid ""
-#| "They would be remembered only traitors rightly put down by the Queen’s "
-#| "lances. And in the dark years to come, woe betide any who questioned it."
 msgid ""
 "They would be remembered only as traitors rightly put down by the Queen’s "
 "lances. And in the dark years to come, woe betide any who questioned it."
@@ -680,6 +670,10 @@ msgid ""
 "sent ahead for the magistrate, Relana, to meet them in a secluded strath in "
 "the swamps."
 msgstr ""
+"Attól tartva, hogy a királynő hadserege egy nagyobb csapatot küld az elesett "
+"járőr után, Baldras és emberei elmenekültek Dallbenből. Delwynbe indultak, "
+"és előre üzentek a helyi vezetőnek, Relanának, hogy találkozzon velük egy "
+"elszigetelt mocsári völgyben."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:22
@@ -687,6 +681,7 @@ msgid ""
 "As morning dawned over the day after next, they found Relana already waiting "
 "for them."
 msgstr ""
+"Két nappal később pirkadatkor Relana már várt rájuk, mikor megérkeztek."
 
 #. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:47
@@ -733,17 +728,12 @@ msgstr ""
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:182
-#, fuzzy
-#| msgid ""
-#| "It has been a long time, old friend. Your news worries us. Yet, there is "
-#| "no problem we have not worked out here at our secret meeting place."
 msgid ""
 "It has been a long time, old friend. Your news worries us. Yet, there is no "
 "problem we have not worked out together."
 msgstr ""
 "Rég nem láttalak öreg barátom. A híreid aggodalommal töltenek el. Azonban "
-"nem volt még olyan probléma, amit ne tudtunk volna megoldani titkos "
-"találkáink során."
+"nem volt még olyan probléma, amit ne tudtunk volna együtt megoldani."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:186
@@ -821,10 +811,6 @@ msgstr ""
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:217
-#, fuzzy
-#| msgid ""
-#| "I think they are, old friend. And that rank smell on the wind tells "
-#| "another tale; saurians approach. To arms!"
 msgid ""
 "I think they are, old friend. And that rank smell on the wind tells another "
 "tale: saurians approach. To arms!"
@@ -1764,13 +1750,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:35
-#, fuzzy
-#| msgid ""
-#| "This sentinel of the western plains stood watch as Wesnoth prospered for "
-#| "many centuries under the protection it provided. No war has overcome it, "
-#| "and its walls have never been overrun. The blood of invaders stains its "
-#| "parapets and the bones of the defeated crumble at the base of Halstead’s "
-#| "frozen waves of stone."
 msgid ""
 "This sentinel of the western plains stood watch as Wesnoth prospered for "
 "many centuries under its protection. No war has overcome it, and its walls "
@@ -2216,7 +2195,7 @@ msgstr ""
 #| msgid ""
 #| "The Elense riders routed the orcish army, small as it was, and sent them "
 #| "back across the Great River. They then scattered to the countryside and "
-#| "were not heard from again. Baldras thought this odd behavior when he "
+#| "were not heard from again. Baldras thought this behavior odd when he "
 #| "heard about it."
 msgid ""
 "The Elense riders routed the orcish army, small as it was, and sent them "
@@ -2369,14 +2348,6 @@ msgstr "Csavargó mágus"
 
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Some mages are thrown out of the mage’s guild for attempting to practice "
-#| "forbidden arts. Now completely outside the law, these rogue mages do "
-#| "whatever necessary to support their study of black magic. Although not as "
-#| "skilled as mages with more formal training, their magic can be quite "
-#| "lethal, while their banditry has resulted in moderate skill with the "
-#| "short sword."
 msgid ""
 "Some mages are thrown out of the mages’ guild for attempting to practice "
 "forbidden arts. Now completely outside the law, these rogue mages do "
@@ -2735,12 +2706,6 @@ msgstr ""
 #~ "sötétség és fény egyensúlyának misztikus titkát keressük. A két út között "
 #~ "táncolunk egyikhez sem ragaszkodva igazán."
 
-#, fuzzy
-#~| msgid ""
-#~| "Carcyn is always foggy as of late because these woods have recently "
-#~| "become home to a lich and two of its underling necromancers. Our "
-#~| "experiments may have actually aroused it from sleep... We’re not exactly "
-#~| "sure."
 #~ msgid ""
 #~ "Carcyn is always foggy as of late because these woods have recently "
 #~ "become home to a lich and two of its underling necromancers. Our "
@@ -2749,7 +2714,7 @@ msgstr ""
 #~ "Carcyn mostanában szüntelenül ködbe burkolózik, mert az erdő nemrégiben "
 #~ "egy delevénynek és két holtidéző talpnyalójának lett a tanyája. Lehet, "
 #~ "hogy a mi kísérleteink ébresztették fel a delevényt... nem tudjuk "
-#~ "pontosan."
+#~ "biztosan."
 
 #~ msgid ""
 #~ "So now you need to defend your rear as well as your front... I see your "
@@ -3020,19 +2985,14 @@ msgstr ""
 #~ msgid "How do you know?"
 #~ msgstr "Honnan tudod?"
 
-#, fuzzy
-#~| msgid ""
-#~| "When I was a boy, my father — your grandfather — brought your dad and me "
-#~| "to live in Aldril after orcs massacred many in our village. We grew up "
-#~| "around here, and we learned many things."
 #~ msgid ""
 #~ "When I was a boy, my father — your grandfather — brought your mother and "
 #~ "me to live in Aldril after orcs massacred many in our village. We grew up "
 #~ "around here, and we learned many things."
 #~ msgstr ""
-#~ "Még gyerek voltam, mikor apám – a te nagyapád – apáddal és velem Aldrilba "
-#~ "költözött, miután az orkok sokakat lemészároltak a falunkban. Errefelé "
-#~ "nőttünk fel, és sok mindent megtanultunk."
+#~ "Még gyerek voltam, mikor apám – a te nagyapád – anyáddal és velem "
+#~ "Aldrilba költözött, miután az orkok sokakat lemészároltak a falunkban. "
+#~ "Errefelé nőttünk fel, és sok mindent megtanultunk."
 
 #~ msgid ""
 #~ "Beneath the structure is a system of catacombs that connects all four "

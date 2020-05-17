@@ -505,7 +505,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 		// Set the faction, if commandline option is given.
 		if(cmdline_opts.multiplayer_side) {
-			for(const mp_option& option : *cmdline_opts.multiplayer_side) {
+			for(const mp_option option : *cmdline_opts.multiplayer_side) {
 
 				if(std::get<0>(option) == num) {
 					if(std::find_if(era_factions_.begin(), era_factions_.end(), [&option](const config* faction) { return (*faction)["id"] == std::get<1>(option); }) != era_factions_.end()) {
@@ -522,7 +522,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 		// Set the controller, if commandline option is given.
 		if(cmdline_opts.multiplayer_controller) {
-			for(const mp_option& option : *cmdline_opts.multiplayer_controller) {
+			for(const mp_option option : *cmdline_opts.multiplayer_controller) {
 
 				if(std::get<0>(option) == num) {
 					DBG_MP << "\tsetting side " << std::get<0>(option) <<
@@ -538,7 +538,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 		std::string ai_algorithm = game_config.child("ais")["default_ai_algorithm"].str();
 		side->set_ai_algorithm(ai_algorithm);
 		if(cmdline_opts.multiplayer_algorithm) {
-			for(const mp_option& option : *cmdline_opts.multiplayer_algorithm) {
+			for(const mp_option option : *cmdline_opts.multiplayer_algorithm) {
 
 				if(std::get<0>(option) == num) {
 					DBG_MP << "\tsetting side " << std::get<0>(option) <<
@@ -565,7 +565,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 	for(config &side : scenario().child_range("side")) {
 		if(cmdline_opts.multiplayer_ai_config) {
-			for(const mp_option& option : *cmdline_opts.multiplayer_ai_config) {
+			for(const mp_option option : *cmdline_opts.multiplayer_ai_config) {
 
 				if(std::get<0>(option) == side["side"].to_unsigned()) {
 					DBG_MP << "\tsetting side " << side["side"] <<

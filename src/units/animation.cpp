@@ -1197,7 +1197,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 
 	if(u_animation.primary_attack_filter_.size() > 0) {
 		outstream << "[filter_attack]\n";
-		for(const config cfg : u_animation.primary_attack_filter_) {
+		for(const config& cfg : u_animation.primary_attack_filter_) {
 			outstream << cfg.debug();
 		}
 
@@ -1206,7 +1206,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 
 	if(u_animation.secondary_attack_filter_.size() > 0) {
 		outstream << "[filter_second_attack]\n";
-		for(const config cfg : u_animation.secondary_attack_filter_) {
+		for(const config& cfg : u_animation.secondary_attack_filter_) {
 			outstream << cfg.debug();
 		}
 
@@ -1215,7 +1215,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 
 	for(std::size_t i = 0; i < u_animation.unit_anim_.get_frames_count(); i++) {
 		outstream << "\t[frame]\n";
-		for(const std::string frame_string : u_animation.unit_anim_.get_frame(i).debug_strings()) {
+		for(const std::string& frame_string : u_animation.unit_anim_.get_frame(i).debug_strings()) {
 			outstream << "\t\t" << frame_string <<"\n";
 		}
 		outstream << "\t[/frame]\n";
@@ -1230,7 +1230,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 			outstream << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';
 			outstream << "\t[" << p.first << "]\n";
 
-			for(const std::string frame_string : p.second.get_frame(i).debug_strings()) {
+			for(const std::string& frame_string : p.second.get_frame(i).debug_strings()) {
 				outstream << "\t\t" << frame_string << '\n';
 			}
 

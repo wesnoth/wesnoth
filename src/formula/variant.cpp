@@ -409,7 +409,7 @@ variant variant::operator/(const variant& v) const
 		int denominator = v.as_decimal();
 
 		if(denominator == 0) {
-			throw type_error("divide by zero error");
+			throw type_error("decimal divide by zero error");
 		}
 
 		long long long_int = as_decimal();
@@ -432,7 +432,7 @@ variant variant::operator/(const variant& v) const
 	const int denominator = v.as_int();
 
 	if(denominator == 0) {
-		throw type_error("divide by zero error");
+		throw type_error("int divide by zero error");
 	}
 
 	return variant(numerator / denominator);
