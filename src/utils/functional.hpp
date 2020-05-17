@@ -19,6 +19,10 @@
 
 #include "global.hpp"
 #include <functional>
+
+#if BOOST_VERSION >= 107300
+using namespace std::placeholders;
+#else
 #include <boost/bind.hpp>
 
 // We'd like to just say "using namespace std::placeholders", but unfortunately
@@ -30,6 +34,7 @@ namespace std { // Some compilers can't handle it being specialized in the globa
 	template<int N>
 	struct is_placeholder<boost::arg<N>> : public integral_constant<int, N> {};
 }
+#endif
 
 namespace detail {
 	template<typename Ret, typename... T>
