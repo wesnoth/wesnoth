@@ -33,9 +33,9 @@ wesnothd \- Harc \fBWesnoth\fPért többjátékos hálózati démon
 .
 .SH LEÍRÁS
 .
-Manages Battle for Wesnoth multiplayer games. See
-https://www.wesnoth.org/wiki/ServerAdministration on what commands the
-server accepts via the wesnoth client (/query ...) or the fifo.
+A Harc Wesnothért többjátékos mérkőzéseit kezeli. A klienstől (/query ...)
+vagy a fifoból érkező elfogadott parancsokról itt tájékozódhatsz:
+https://www.wesnoth.org/wiki/ServerAdministration .
 .
 .SH BEÁLLÍTÁSOK
 .
@@ -116,9 +116,10 @@ részletekért. Alapértelmezett értékek (ha más nincsen megadva): \fB*admin*
 *admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/wesnothd/socket\fP).
+A fifo elérési útvonala, amibe szerver parancsokat írathatsz ki (ugyanaz
+mint /query ... a wesnothban). Ha nincs meghatározva, alapértelmezettként a
+fordításnál meghatározott értékkel egyezik meg
+(\fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 A megadott időtartam (\fBmessages_time_period\fP) alatt küldhető üzenetek
@@ -309,11 +310,13 @@ Magyarra fordították: Gilluin <gilluin@citromail.hu>, Széll Tamás
 <krisztian.kad@gmail.com> és Udvari Gábor
 <gabor.udvari@gmail.com>.
 .br
-Visit the official homepage: https://www.wesnoth.org/
+Látogasd meg a hivatalos honlapot: https://www.wesnoth.org/ illetve a magyar
+közösségi portált: http://wesnoth.fsf.hu/
 .
 .SH "SZERZŐI JOGOK"
 .
-Copyright \(co 2003\-2018 David White <davidnwhite@verizon.net>
+A szerzői jogok \(co 2003\-2018 David White\-ot
+<davidnwhite@verizon.net> illetik meg
 .br
 Ez egy szabad szoftver; terjeszthető illetve módosítható a GNU Általános
 Közreadási Feltételek dokumentumában \- 2. vagy későbbi verzió \- leírtak
