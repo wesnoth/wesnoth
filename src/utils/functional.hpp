@@ -18,6 +18,10 @@
 #pragma once
 
 #include <functional>
+
+#if BOOST_VERSION >= 107300
+using namespace std::placeholders;
+#else
 #include <boost/bind.hpp>
 
 // We'd like to just say "using namespace std::placeholders", but unfortunately
@@ -25,7 +29,11 @@
 // Instead, we specialize std::is_placeholder for the Boost placeholders,
 // so that Boost placeholders can be passed to std::bind.
 
-namespace std { // Some compilers can't handle it being specialized in the global scope
-	template<int N>
-	struct is_placeholder<boost::arg<N>> : public integral_constant<int, N> {};
-}
+namespace std
+{ // Some compilers can't handle it being specialized in the global scope
+template<int N>
+struct is_placeholder<boost::arg<N>> : public integral_constant<int, N>
+{
+};
+} // namespace std
+#endif
