@@ -8,7 +8,7 @@
    * Don't send restricted attributes at all, rather than sending them as an empty string (issue #4800).
  ### Campaigns
    * General:
-     * Fixed instances of multiple [avoid] tags being used (PR#4776).
+     * Fixed instances of multiple [avoid] tags being used (PR #4776).
      * Used more appropriate castle/encampment terrains.
    * Descent into Darkness:
      * S7: Correctly call Taylor a general.
@@ -32,14 +32,14 @@
  ### Packaging
    * Fixed an issue when building using scons and --config=force.
    * Fixed creating the lockfile in scons when using python 3.
-   * Significantly improved the macOS packaging instructions (PR#4781).
+   * Significantly improved the macOS packaging instructions (PR #4781).
  ### Units
    * Fixed the team color of the berserker idle animation.
    * Fixed typo in Troll race description.
    * Fixed the Red Mage using the Mage's idle animation.
  ### User interface
    * Fixed a crash on certain screen resolutions due to UI element padding not being able to fit.
-   * Fixed a crash when trying to preview an unplayable map (PR#4810; issues #3149, #4395, #4545).
+   * Fixed a crash when trying to preview an unplayable map (PR #4810; issues #3149, #4395, #4545).
  ### Miscellaneous and bug fixes
    * Fixed building with the 64-bit Visual Studio projectfiles.
    * Added missing side controllers to two Micro AI scenarios (fixes #4890)
