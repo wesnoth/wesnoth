@@ -500,12 +500,55 @@
    * Game bans are now also enforced by username. (PR#4139)
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
-## Version 1.14.11+dev
+## Version 1.14.12+dev
+
+## Version 1.14.12
+ ### Add-ons client
+   * Ensure the client doesn't re-download dependencies that have just been updated during an Update All
+     run by re-reading add-on versions after each update batch (issue #3273).
+ ### Add-ons server
+   * Don't send restricted attributes at all, rather than sending them as an empty string (issue #4800).
+ ### Campaigns
+   * General:
+     * Fixed instances of multiple [avoid] tags being used (PR #4776).
+     * Used more appropriate castle/encampment terrains.
+   * Descent into Darkness:
+     * S7: Correctly call Taylor a general.
+     * S9: Spelling fix.
+     * S11: Reduced boss difficulty and fixed ghost units not being correctly recalled.
+   * Heir to the Throne:
+     * S23: Clarify Bayar's dialogue.
+   * Northern Rebirth:
+     * Fixed enemy naga's triggering an event they shouldn't be triggering (issue #4853).
+   * Son of the Black Eye:
+     * S15: Fix the scenario not ending despite objectives being met in some circumstances (issue #4841).
+   * Under the Burning Suns:
+     * Fixed Sun Shydes dehydrating themselves at night.
+     * Dehydration only affects the player's side.
+ ### Language and i18n
+   * Updated translations: British English, Czech, Chinese (Traditional), Dutch, Esperanto,
+     Finnish, French, Hungarian, Italian, Japanese, Polish, Portuguese, Portuguese (Brazil),
+     Spanish, Swedish.
+   * Use <game dir>/translations instead of <process working dir>/translations to find core
+     translation catalogues on Windows.
+ ### Packaging
+   * Fixed an issue when building using scons and --config=force.
+   * Fixed creating the lockfile in scons when using python 3.
+   * Significantly improved the macOS packaging instructions (PR #4781).
+ ### Units
+   * Fixed the team color of the berserker idle animation.
+   * Fixed typo in Troll race description.
+   * Fixed the Red Mage using the Mage's idle animation.
+ ### User interface
+   * Fixed a crash on certain screen resolutions due to UI element padding not being able to fit.
+   * Fixed a crash when trying to preview an unplayable map (PR #4810; issues #3149, #4395, #4545).
+ ### Miscellaneous and bug fixes
+   * Fixed building with the 64-bit Visual Studio projectfiles.
+   * Added missing side controllers to two Micro AI scenarios (fixes #4890)
+   * Experimental AI retreat CA: bug fix for cure-only abilities
+   * Forest Animals Micro AI: excluded rabbit holes on map border
 
 ## Version 1.14.11
- ### Campaigns
-   * Under the Burning Suns:
-     * S2: dehydration now only affects player units
  ### Language and i18n
    * Updated translations: Czech, German.
  ### Packaging
