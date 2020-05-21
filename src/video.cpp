@@ -390,10 +390,13 @@ std::pair<float, float> CVideo::get_dpi_scale_factor() const
 	}
 
 	float hdpi, vdpi;
-	SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi);
+	int returncode;
+	returncode = SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi);
 
-	result.first = hdpi / MAGIC_DPI_SCALE_NUMBER;
-	result.second = vdpi / MAGIC_DPI_SCALE_NUMBER;
+	if (returncode == 0) {
+		result.first = hdpi / MAGIC_DPI_SCALE_NUMBER;
+		result.second = vdpi / MAGIC_DPI_SCALE_NUMBER;
+	}
 
 	return result;
 }
