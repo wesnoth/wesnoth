@@ -59,6 +59,11 @@ void update_screen_size_variables()
 	float scalew, scaleh;
 	std::tie(scalew, scaleh) = vid.get_dpi_scale_factor();
 	float avgscale = (scalew + scaleh)/2;
+	// Note that if DPI can't be determined, SDL returns zero. Fallback to default scale.
+	if (avgscale == 0.0) {
+		avgscale = 1.0;
+	}
+
 	screen_pitch_microns = MICRONS_PER_INCH / (avgscale * MAGIC_DPI_MATCH_VIDEO);
 
 	gamemap_width = screen_width;
