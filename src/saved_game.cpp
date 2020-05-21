@@ -398,6 +398,7 @@ void saved_game::expand_mp_events()
 			}
 		}
 		this->starting_point_["has_mod_events"] = true;
+		this->starting_point_["loaded_resources"] = utils::join(loaded_resources);
 	}
 }
 

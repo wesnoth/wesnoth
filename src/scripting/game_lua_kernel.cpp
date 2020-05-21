@@ -1314,6 +1314,25 @@ int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 	return 2;
 }
 
+
+/**
+ * Gets a table for an resource tag.
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing id of the desired resource
+ * - Ret 1: config for the era
+ */
+static int intf_get_resource(lua_State *L)
+{
+	std::string m = luaL_checkstring(L, 1);
+	if(const config& res = game_config_manager::get()->game_config().find_child("resource","id",m)) {
+		luaW_pushconfig(L, res);
+		return 1;
+	}
+	else {
+		return luaL_argerror(L, 1, ("Cannot find ressource with id '" + m + "'").c_str());
+	}
+}
+
 /**
  * Gets a table for an era tag.
  * - Arg 1: userdata (ignored).
@@ -1346,6 +1365,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	return_string_attrib("scenario_id", gamedata().get_id());
 	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
 	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
+	return_vector_string_attrib("active_resources", utils::split(play_controller_.get_loaded_resources()) );
 
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();
@@ -4179,6 +4199,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "create_animator",          &dispatch<&game_lua_kernel::intf_create_animator>          },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "get_era",                  &intf_get_era                  },
+		{ "get_resource",             &intf_get_resource             },
 		{ "get_traits",               &intf_get_traits               },
 		{ "get_viewing_side",         &intf_get_viewing_side         },
 		{ "invoke_synced_command",    &intf_invoke_synced_command    },

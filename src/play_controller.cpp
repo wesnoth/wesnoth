@@ -97,7 +97,9 @@ static void copy_persistent(const config& src, config& dst)
 			"remove_from_carryover_on_defeat",
 			"disallow_recall",
 			"experience_modifier",
-			"require_scenario"};
+			"require_scenario",
+			"loaded_resources"
+	};
 
 	static const std::set<std::string> tags {
 			"terrain_graphics",

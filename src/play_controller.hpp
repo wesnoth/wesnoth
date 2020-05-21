@@ -241,6 +241,11 @@ public:
 		return level_["disallow_recall"].to_bool();
 	}
 
+	std::string get_loaded_resources() const
+	{
+		return level_["loaded_resources"].str();
+	}
+
 	std::string theme() const
 	{
 		return gamestate_->get_game_data()->get_theme();
