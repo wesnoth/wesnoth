@@ -22,6 +22,7 @@
 
 #include "lexical_cast.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "utils/const_clone.hpp"
 #include "utils/functional.hpp"
 
@@ -424,4 +425,11 @@ std::ostream& operator<<(std::ostream& os, const config_attribute_value& v)
 	// Simple implementation, but defined out-of-line because of the templating
 	// involved.
 	return os << v.value_;
+}
+
+namespace utils
+{
+	std::vector<std::string> split(const config_attribute_value& val) {
+		return utils::split(val.str());
+	}
 }

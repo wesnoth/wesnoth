@@ -394,7 +394,7 @@ void wml_tag::add_switch(const config& switch_cfg)
 	bool allow_missing = false;
 	for(const auto& case_cfg : switch_cfg.child_range("case")) {
 		if(case_cfg.has_attribute("value")) {
-			const std::vector<std::string> values = utils::split(case_cfg["value"], ',', utils::STRIP_SPACES);
+			const std::vector<std::string> values = utils::split(case_cfg["value"].str(), ',', utils::STRIP_SPACES);
 			config filter;
 			for(const auto& value : values) {
 				// An [or] filter only works if there's something in the main filter.

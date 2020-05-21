@@ -59,6 +59,17 @@ bool notspace(const char c)
 	return !portable_isspace(c);
 }
 
+void trim(string_view& s)
+{
+	s.remove_prefix(std::min(s.find_first_not_of(" \t\r\n"), s.size()));
+	if(s.empty()) {
+		return;
+	}
+	//find_last_not_of never returns npos because !s.empty()
+	size_t first_to_trim = s.find_last_not_of(" \t\r\n") + 1;
+	s = s.substr(0, first_to_trim);
+}
+
 /**
  * Splits a (comma-)separated string into a vector of pieces.
  * @param[in]  val    A (comma-)separated string.
@@ -67,27 +78,22 @@ bool notspace(const char c)
  *                    This is a bit field with two settings (both on by default):
  *                    REMOVE_EMPTY causes empty pieces to be skipped/removed.
  *                    STRIP_SPACES causes the leading and trailing spaces of each piece to be ignored/stripped.
- *
- *                    Basic method taken from http://stackoverflow.com/a/236803
  */
-std::vector<std::string> split(const std::string& val, const char c, const int flags)
+std::vector<std::string> split(string_view s, const char sep, const int flags)
 {
 	std::vector<std::string> res;
+	split_foreach(s, sep, flags, [&](string_view item) {
+		res.emplace_back(item);
+	});
+	return res;
+}
 
-	std::stringstream ss;
-	ss.str(val);
-
-	std::string item;
-	while(std::getline(ss, item, c)) {
-		if(flags & STRIP_SPACES) {
-			boost::trim(item);
-		}
-
-		if(!(flags & REMOVE_EMPTY) || !item.empty()) {
-			res.push_back(std::move(item));
-		}
-	}
-
+std::set<std::string> split_set(string_view s, char sep, const int flags)
+{
+	std::set<std::string> res;
+	split_foreach(s, sep, flags, [&](string_view item) {
+		res.emplace(item);
+	});
 	return res;
 }
 

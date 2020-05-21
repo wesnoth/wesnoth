@@ -42,8 +42,44 @@ enum {
 	STRIP_SPACES = 0x02  /** STRIP_SPACES: strips leading and trailing blank spaces. */
 };
 
+void trim(string_view& s);
+
+template<typename F>
+void split_foreach_impl(string_view s, char sep, const F& f)
+{
+	if(s.empty()) {
+		return;
+	}
+	while(true)
+	{
+		int partend = s.find(sep);
+		if(partend == int(string_view::npos)) {
+			break;
+		}
+		f(s.substr(0, partend));
+		s.remove_prefix(partend + 1);
+	}
+	f(s);
+}
+
+template<typename F>
+void split_foreach(string_view s, char sep, const int flags, const F& f)
+{
+	split_foreach_impl(s, sep, [&](string_view item) {
+		if(flags & STRIP_SPACES) {
+			trim(item);
+		}
+		if(!(flags & REMOVE_EMPTY) || !item.empty()) {
+			f(item);
+		}
+	});
+}
+
+
+
 /** Splits a (comma-)separated string into a vector of pieces. */
-std::vector<std::string> split(const std::string& val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
+std::vector<std::string> split(string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
+std::set<std::string> split_set(string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
  * This function is identical to split(), except it does not split when it otherwise would if the

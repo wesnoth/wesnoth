@@ -240,3 +240,9 @@ private:
 	static const std::string s_yes, s_no;
 	static const std::string s_true, s_false;
 };
+
+namespace utils
+{
+	std::vector<std::string> split(const config_attribute_value& val);
+}
+

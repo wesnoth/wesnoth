@@ -183,7 +183,7 @@ std::vector<std::string> manager::get_required(const elem& e) const
 	config data = depinfo_.find_child(e.type, "id", e.id);
 
 	if(data.has_attribute("force_modification")) {
-		result = utils::split(data["force_modification"], ',');
+		result = utils::split(data["force_modification"].str(), ',');
 	}
 
 	return result;
