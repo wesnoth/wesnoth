@@ -330,10 +330,10 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 			break;
 		case TOP_ANCHORED:
 			relative_loc_.x = loc_.x;
-			relative_loc_.w = screen.w - std::min<std::size_t>(spec_width_ - loc_.w, screen.w);
+			relative_loc_.w = loc_.w + screen.w - std::min<std::size_t>(spec_width_, loc_.w + screen.w);
 			break;
 		case BOTTOM_ANCHORED:
-			relative_loc_.x = screen.w - std::min<std::size_t>(spec_width_ - loc_.x, screen.w);
+			relative_loc_.x = loc_.x + screen.w - std::min<std::size_t>(spec_width_, loc_.x + screen.w);
 			relative_loc_.w = loc_.w;
 			break;
 		case PROPORTIONAL:
@@ -351,10 +351,10 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 			break;
 		case TOP_ANCHORED:
 			relative_loc_.y = loc_.y;
-			relative_loc_.h = screen.h - std::min<std::size_t>(spec_height_ - loc_.h, screen.h);
+			relative_loc_.h = loc_.h + screen.h - std::min<std::size_t>(spec_height_, loc_.h + screen.h);
 			break;
 		case BOTTOM_ANCHORED:
-			relative_loc_.y = screen.h - std::min<std::size_t>(spec_width_ - loc_.y, screen.h);
+			relative_loc_.y = loc_.y + screen.h - std::min<std::size_t>(spec_height_, loc_.y + screen.h);
 			relative_loc_.h = loc_.h;
 			break;
 		case PROPORTIONAL:
@@ -365,9 +365,16 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 			assert(false);
 	}
 
-	relative_loc_.x = std::min<int>(relative_loc_.x, screen.w);
+	relative_loc_.w = std::min<int>(relative_loc_.w, screen.w);
+	if(relative_loc_.x > screen.w) {
+		relative_loc_.x = std::min<int>(relative_loc_.x, screen.w - relative_loc_.w);
+	}
 	relative_loc_.w = std::min<int>(relative_loc_.w, screen.w - relative_loc_.x);
-	relative_loc_.y = std::min<int>(relative_loc_.y, screen.h);
+
+	relative_loc_.h = std::min<int>(relative_loc_.h, screen.h);
+	if(relative_loc_.y > screen.h) {
+		relative_loc_.y = std::min<int>(relative_loc_.y, screen.h - relative_loc_.h);
+	}
 	relative_loc_.h = std::min<int>(relative_loc_.h, screen.h - relative_loc_.y);
 
 	return relative_loc_;
