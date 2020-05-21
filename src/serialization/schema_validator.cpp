@@ -504,7 +504,7 @@ void schema_self_validator::validate_key(const config& cfg, const std::string& n
 			referenced_types_.emplace_back(cfg["link"], file, start_line, tag_name);
 		} else if(tag_name == "link" && name == "name") {
 			referenced_tag_paths_.emplace_back(cfg["name"], file, start_line, tag_name);
-			std::string link_name = utils::split(cfg["name"], '/').back();
+			std::string link_name = utils::split(cfg["name"].str(), '/').back();
 			links_.emplace(current_path() + "/" + link_name, cfg["name"]);
 		} else if(tag_name == "tag" && name == "super") {
 			for(auto super : utils::split(cfg["super"])) {

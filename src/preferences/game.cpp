@@ -110,8 +110,7 @@ manager::manager() :
 		}
 	}
 
-	const std::vector<std::string> v (utils::split(preferences::get("encountered_units")));
-	encountered_units_set.insert(v.begin(), v.end());
+	encountered_units_set = utils::split_set(preferences::get("encountered_units"));
 
 	const t_translation::ter_list terrain (t_translation::read_list(preferences::get("encountered_terrain_list")));
 	encountered_terrains_set.insert(terrain.begin(), terrain.end());
@@ -145,8 +144,8 @@ manager::~manager()
 		campaigns.add_child("campaign", cmp);
 	}
 	preferences::set_child("completed_campaigns", campaigns);
-	std::vector<std::string> v (encountered_units_set.begin(), encountered_units_set.end());
-	preferences::set("encountered_units", utils::join(v));
+
+	preferences::set("encountered_units", utils::join(encountered_units_set));
 	t_translation::ter_list terrain (encountered_terrains_set.begin(), encountered_terrains_set.end());
 	preferences::set("encountered_terrain_list", t_translation::write_list(terrain));
 

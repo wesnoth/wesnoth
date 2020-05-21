@@ -675,7 +675,7 @@ void formula_ai::on_create(){
 		const t_string &inputs = func["inputs"];
 		const t_string &formula_str = func["formula"];
 
-		std::vector<std::string> args = utils::split(inputs);
+		std::vector<std::string> args = utils::split(inputs.str());
 		try {
 			add_formula_function(name,
 					     create_optional_formula(formula_str),
