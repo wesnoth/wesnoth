@@ -45,6 +45,8 @@ public:
 		return *singleton_;
 	}
 
+	static std::string video_settings_report();
+
 	/***** ***** ***** ***** Unit test-related functions ***** ***** ****** *****/
 
 	void make_fake();
