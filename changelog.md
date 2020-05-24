@@ -1,4 +1,6 @@
 ## Version 1.14.12+dev
+ ### Language and i18n
+   * Updated translations: Portuguese (Brazil)
 
 ## Version 1.14.12
  ### Add-ons client
