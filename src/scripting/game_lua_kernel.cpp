@@ -4824,6 +4824,18 @@ bool game_lua_kernel::run_filter(char const *name, const map_location& l)
 	lua_pushinteger(mState, l.wml_y());
 	return run_filter(name, 2);
 }
+
+/**
+* Runs a script from a location filter.
+* The script is an already compiled function given by its name.
+*/
+bool game_lua_kernel::run_filter(char const *name, const team& t)
+{
+	//TODO: instead of passing the lua team object we coudl also jsut pass its 
+	//      number. then we wouldn't need this const cast.
+	luaW_pushteam(mState, const_cast<team&>(t));
+	return run_filter(name, 1);
+}
 /**
 * Runs a script from a unit filter.
 * The script is an already compiled function given by its name.
