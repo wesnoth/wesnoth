@@ -571,9 +571,9 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	}
 
 	savegame::replay_savegame save(state_, compression::NONE);
-	save.save_game_automatic(false, "unit_test_replay"); //false means don't check for overwrite
+	save.save_game_automatic(false, "unit_test_replay");
 
-	load_data_.reset(new savegame::load_game_metadata{ savegame::save_index_class::default_saves_dir(), "unit_test_replay" , "", true, true, false });
+	load_data_.reset(new savegame::load_game_metadata{ savegame::save_index_class::default_saves_dir(), save.filename() , "", true, true, false });
 
 	if (!load_game()) {
 		std::cerr << "Failed to load the replay!" << std::endl;
