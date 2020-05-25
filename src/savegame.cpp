@@ -47,6 +47,7 @@
 #include "video.hpp"
 
 #include <algorithm>
+#include <iomanip>
 
 static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
@@ -450,6 +451,11 @@ bool savegame::save_game(const std::string& filename)
 
 		if (filename_.empty())
 			filename_ = filename;
+
+		time_t t = std::time(nullptr);
+		tm tm = *std::localtime(&t);
+		auto time = std::put_time(&tm, "%Y%m%d-%H%M%S");
+		filename_ = (formatter() << filename_ << '_' << time).str();
 
 		before_save();
 
