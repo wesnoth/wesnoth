@@ -745,7 +745,12 @@ private:
 		unit_map& units_;
 		std::size_t id_; /**< unit.underlying_id() */
 		std::string weap_id_;
-		int orig_attacks_;
+		int strikes_count_;
+		int strikes_done_;
+		int attacks_left()
+		{
+			return strikes_count_ - strikes_done_;
+		}
 		int n_attacks_; /**< Number of attacks left. */
 		int cth_;
 		int damage_;
@@ -773,7 +778,6 @@ private:
 	const battle_context_unit_stats* a_stats_;
 	const battle_context_unit_stats* d_stats_;
 
-	int abs_n_attack_, abs_n_defend_;
 	// update_att_fog_ is not used, other than making some code simpler.
 	bool update_att_fog_, update_def_fog_, update_minimap_;
 
@@ -796,8 +800,8 @@ attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& unit
 	, units_(units)
 	, id_()
 	, weap_id_()
-	, orig_attacks_(0)
-	, n_attacks_(0)
+	, strikes_count_(0)
+	, strikes_done_(0)
 	, cth_(0)
 	, damage_(0)
 	, xp_(0)
@@ -847,8 +851,6 @@ attack::attack(const map_location& attacker,
 	: bc_(nullptr)
 	, a_stats_(nullptr)
 	, d_stats_(nullptr)
-	, abs_n_attack_(0)
-	, abs_n_defend_(0)
 	, update_att_fog_(false)
 	, update_def_fog_(false)
 	, update_minimap_(false)
@@ -985,7 +987,6 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	const battle_context_unit_stats*& attacker_stats = attacker_turn ? a_stats_ : d_stats_;
 	const battle_context_unit_stats*& defender_stats = attacker_turn ? d_stats_ : a_stats_;
 
-	int& abs_n = attacker_turn ? abs_n_attack_ : abs_n_defend_;
 	bool& update_fog = attacker_turn ? update_def_fog_ : update_att_fog_;
 
 	int ran_num;
@@ -995,7 +996,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 		std::vector<bool>& prng_seq = attacker_turn ? prng_attacker_ : prng_defender_;
 
 		if(prng_seq.empty()) {
-			const int ntotal = attacker.cth_*attacker.n_attacks_;
+			const int ntotal = attacker.cth_ * attacker.attacks_left();
 			int num_hits = ntotal/100;
 			const int additional_hit_chance = ntotal%100;
 			if(additional_hit_chance > 0 && randomness::generator->get_random_int(0, 99) < additional_hit_chance) {
@@ -1003,7 +1004,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 			}
 
 			std::vector<int> indexes;
-			for(int i = 0; i != attacker.n_attacks_; ++i) {
+			for(int i = 0; i != attacker.attacks_left(); ++i) {
 				prng_seq.push_back(false);
 				indexes.push_back(i);
 			}
@@ -1097,7 +1098,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 			attacker.loc_, defender.loc_,
 			damage,
 			*attacker_stats->weapon, defender_stats->weapon,
-			abs_n, float_text.str(), drains_damage, "",
+			attacker.strikes_done_, float_text.str(), drains_damage, "",
 			&extra_hit_sounds
 		);
 	}
@@ -1206,8 +1207,6 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 		if(attacker_stats->petrifies) {
 			defender_unit.set_state(unit::STATE_PETRIFIED, true);
 			update_fog = true;
-			attacker.n_attacks_ = 0;
-			defender.n_attacks_ = -1; // Petrified.
 			resources::game_events->pump().fire("petrified", defender.loc_, attacker.loc_);
 			refresh_bc();
 		}
@@ -1219,7 +1218,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 		return false;
 	}
 
-	--attacker.n_attacks_;
+	++attacker.strikes_done_;
 	return true;
 }
 
@@ -1401,10 +1400,10 @@ void attack::perform()
 	statistics::attack_context attack_stats(
 			a_.get_unit(), d_.get_unit(), a_stats_->chance_to_hit, d_stats_->chance_to_hit);
 
-	a_.orig_attacks_ = a_stats_->num_blows;
-	d_.orig_attacks_ = d_stats_->num_blows;
-	a_.n_attacks_ = a_.orig_attacks_;
-	d_.n_attacks_ = d_.orig_attacks_;
+	a_.strikes_count_ = a_stats_->num_blows;
+	d_.strikes_count_ = d_stats_->num_blows;
+	a_.strikes_done_ = 0;
+	d_.strikes_done_ = 0;
 	a_.xp_ = game_config::combat_xp(d_.get_unit().level());
 	d_.xp_ = game_config::combat_xp(a_.get_unit().level());
 
@@ -1423,9 +1422,8 @@ void attack::perform()
 
 	for(;;) {
 		DBG_NG << "start of attack loop...\n";
-		++abs_n_attack_;
 
-		if(a_.n_attacks_ > 0 && !defender_strikes_first) {
+		if(a_.attacks_left() > 0 && !defender_strikes_first) {
 			if(!perform_hit(true, attack_stats)) {
 				DBG_NG << "broke from attack loop on attacker turn\n";
 				break;
@@ -1434,25 +1432,25 @@ void attack::perform()
 
 		// If the defender got to strike first, they use it up here.
 		defender_strikes_first = false;
-		++abs_n_defend_;
 
-		if(d_.n_attacks_ > 0) {
+		if(d_.attacks_left() > 0) {
 			if(!perform_hit(false, attack_stats)) {
 				DBG_NG << "broke from attack loop on defender turn\n";
 				break;
 			}
 		}
 
-		// Continue the fight to death; if one of the units got petrified,
-		// either n_attacks or n_defends is -1
-		if(rounds > 0 && d_.n_attacks_ == 0 && a_.n_attacks_ == 0) {
-			a_.n_attacks_ = a_.orig_attacks_;
-			d_.n_attacks_ = d_.orig_attacks_;
-			--rounds;
-			defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
+
+		if(rounds > 0 && d_.attacks_left() == 0 && a_.attacks_left() == 0) {
+			if(a_.valid() && d_.valid() && !a_.get_unit().get_state(unit::STATE_PETRIFIED) && !d_.get_unit().get_state(unit::STATE_PETRIFIED)) {
+				a_.strikes_done_ = 0;
+				d_.strikes_done_ = 0;
+				--rounds;
+				defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
+			}
 		}
 
-		if(a_.n_attacks_ <= 0 && d_.n_attacks_ <= 0) {
+		if(a_.attacks_left() <= 0 && d_.attacks_left() <= 0) {
 			fire_event("attack_end");
 			refresh_bc();
 			break;
