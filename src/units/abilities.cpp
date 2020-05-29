@@ -1235,9 +1235,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	if (tag_name == "drains" && other && other->get_state("undrainable")) {
 		return false;
 	}
-	if (tag_name == "plague" && other &&
-		(other->get_state("unplagueable") ||
-		 resources::gameboard->map().is_village(other_loc))) {
+	if (tag_name == "plague" && other && other->get_state("unplagueable")) {
 		return false;
 	}
 	if (tag_name == "poison" && other &&
