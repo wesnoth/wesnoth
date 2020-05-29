@@ -742,6 +742,8 @@ private:
 		int damage_;
 		int xp_;
 
+		const battle_context_unit_stats* stats_;
+
 		unit_info(const map_location& loc, int weapon, unit_map& units);
 		unit& get_unit();
 		bool valid();
@@ -759,9 +761,6 @@ private:
 			unit_info&, unit_info&, const battle_context_unit_stats*&, const battle_context_unit_stats*&, bool);
 
 	std::unique_ptr<battle_context> bc_;
-
-	const battle_context_unit_stats* a_stats_;
-	const battle_context_unit_stats* d_stats_;
 
 	int abs_n_attack_, abs_n_defend_;
 	// update_att_fog_ is not used, other than making some code simpler.
@@ -791,6 +790,7 @@ attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& unit
 	, cth_(0)
 	, damage_(0)
 	, xp_(0)
+	, stats_(nullptr)
 {
 	unit_map::iterator i = units_.find(loc_);
 	if(!i.valid()) {
@@ -826,8 +826,6 @@ attack::attack(const map_location& attacker,
 		int defend_with,
 		bool update_display)
 	: bc_(nullptr)
-	, a_stats_(nullptr)
-	, d_stats_(nullptr)
 	, abs_n_attack_(0)
 	, abs_n_defend_(0)
 	, update_att_fog_(false)
@@ -860,22 +858,22 @@ void attack::fire_event(const std::string& n)
 	// Need these to ensure weapon filters work correctly
 	boost::optional<attack_type::specials_context_t> a_ctx, d_ctx;
 
-	if(a_stats_->weapon != nullptr && a_.valid()) {
-		if(d_stats_->weapon != nullptr && d_.valid()) {
-			a_ctx.emplace(a_stats_->weapon->specials_context(nullptr, nullptr, a_.loc_, d_.loc_, true, d_stats_->weapon));
+	if(a_.stats_->weapon != nullptr && a_.valid()) {
+		if(d_.stats_->weapon != nullptr && d_.valid()) {
+			a_ctx.emplace(a_.stats_->weapon->specials_context(nullptr, nullptr, a_.loc_, d_.loc_, true, d_.stats_->weapon));
 		} else {
-			a_ctx.emplace(a_stats_->weapon->specials_context(nullptr, a_.loc_, true));
+			a_ctx.emplace(a_.stats_->weapon->specials_context(nullptr, a_.loc_, true));
 		}
-		a_stats_->weapon->write(a_weapon_cfg);
+		a_.stats_->weapon->write(a_weapon_cfg);
 	}
 
-	if(d_stats_->weapon != nullptr && d_.valid()) {
-		if(a_stats_->weapon != nullptr && a_.valid()) {
-			d_ctx.emplace(d_stats_->weapon->specials_context(nullptr, nullptr, d_.loc_, a_.loc_, false, a_stats_->weapon));
+	if(d_.stats_->weapon != nullptr && d_.valid()) {
+		if(a_.stats_->weapon != nullptr && a_.valid()) {
+			d_ctx.emplace(d_.stats_->weapon->specials_context(nullptr, nullptr, d_.loc_, a_.loc_, false, a_.stats_->weapon));
 		} else {
-			d_ctx.emplace(d_stats_->weapon->specials_context(nullptr, d_.loc_, false));
+			d_ctx.emplace(d_.stats_->weapon->specials_context(nullptr, d_.loc_, false));
 		}
-		d_stats_->weapon->write(d_weapon_cfg);
+		d_.stats_->weapon->write(d_weapon_cfg);
 	}
 
 	if(a_weapon_cfg["name"].empty()) {
@@ -936,10 +934,10 @@ void attack::refresh_bc()
 
 	if(!a_.valid() || !d_.valid()) {
 		// Fix pointer to weapons.
-		const_cast<battle_context_unit_stats*>(a_stats_)->weapon
+		const_cast<battle_context_unit_stats*>(a_.stats_)->weapon
 				= a_.valid() && a_.weapon_ >= 0 ? a_.get_unit().attacks()[a_.weapon_].shared_from_this() : nullptr;
 
-		const_cast<battle_context_unit_stats*>(d_stats_)->weapon
+		const_cast<battle_context_unit_stats*>(d_.stats_)->weapon
 				= d_.valid() && d_.weapon_ >= 0 ? d_.get_unit().attacks()[d_.weapon_].shared_from_this() : nullptr;
 
 		return;
@@ -947,13 +945,13 @@ void attack::refresh_bc()
 
 	bc_.reset(new battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_));
 
-	a_stats_ = &bc_->get_attacker_stats();
-	d_stats_ = &bc_->get_defender_stats();
+	a_.stats_ = &bc_->get_attacker_stats();
+	d_.stats_ = &bc_->get_defender_stats();
 
-	a_.cth_ = a_stats_->chance_to_hit;
-	d_.cth_ = d_stats_->chance_to_hit;
-	a_.damage_ = a_stats_->damage;
-	d_.damage_ = d_stats_->damage;
+	a_.cth_ = a_.stats_->chance_to_hit;
+	d_.cth_ = d_.stats_->chance_to_hit;
+	a_.damage_ = a_.stats_->damage;
+	d_.damage_ = d_.stats_->damage;
 }
 
 bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
@@ -961,10 +959,10 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	unit_info& attacker = attacker_turn ? a_ : d_;
 	unit_info& defender = attacker_turn ? d_ : a_;
 
-	// NOTE: we need to use a reference-to-pointer here so a_stats_ and d_stats_ can be
+	// NOTE: we need to use a reference-to-pointer here so a_.stats_ and d_.stats_ can be
 	// modified without. Using a pointer directly would render them invalid when that happened.
-	const battle_context_unit_stats*& attacker_stats = attacker_turn ? a_stats_ : d_stats_;
-	const battle_context_unit_stats*& defender_stats = attacker_turn ? d_stats_ : a_stats_;
+	const battle_context_unit_stats*& attacker_stats = attacker_turn ? a_.stats_ : d_.stats_;
+	const battle_context_unit_stats*& defender_stats = attacker_turn ? d_.stats_ : a_.stats_;
 
 	int& abs_n = attacker_turn ? abs_n_attack_ : abs_n_defend_;
 	bool& update_fog = attacker_turn ? update_def_fog_ : update_att_fog_;
@@ -1354,20 +1352,20 @@ void attack::perform()
 
 	bc_.reset(new battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_));
 
-	a_stats_ = &bc_->get_attacker_stats();
-	d_stats_ = &bc_->get_defender_stats();
+	a_.stats_ = &bc_->get_attacker_stats();
+	d_.stats_ = &bc_->get_defender_stats();
 
-	if(a_stats_->disable) {
+	if(a_.stats_->disable) {
 		LOG_NG << "attack::perform(): tried to attack with a disabled attack.\n";
 		return;
 	}
 
-	if(a_stats_->weapon) {
-		a_.weap_id_ = a_stats_->weapon->id();
+	if(a_.stats_->weapon) {
+		a_.weap_id_ = a_.stats_->weapon->id();
 	}
 
-	if(d_stats_->weapon) {
-		d_.weap_id_ = d_stats_->weapon->id();
+	if(d_.stats_->weapon) {
+		d_.weap_id_ = d_.stats_->weapon->id();
 	}
 
 	try {
@@ -1380,27 +1378,27 @@ void attack::perform()
 
 	DBG_NG << "getting attack statistics\n";
 	statistics::attack_context attack_stats(
-			a_.get_unit(), d_.get_unit(), a_stats_->chance_to_hit, d_stats_->chance_to_hit);
+			a_.get_unit(), d_.get_unit(), a_.stats_->chance_to_hit, d_.stats_->chance_to_hit);
 
-	a_.orig_attacks_ = a_stats_->num_blows;
-	d_.orig_attacks_ = d_stats_->num_blows;
+	a_.orig_attacks_ = a_.stats_->num_blows;
+	d_.orig_attacks_ = d_.stats_->num_blows;
 	a_.n_attacks_ = a_.orig_attacks_;
 	d_.n_attacks_ = d_.orig_attacks_;
 	a_.xp_ = game_config::combat_xp(d_.get_unit().level());
 	d_.xp_ = game_config::combat_xp(a_.get_unit().level());
 
-	bool defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
-	unsigned int rounds = std::max<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
+	bool defender_strikes_first = (d_.stats_->firststrike && !a_.stats_->firststrike);
+	unsigned int rounds = std::max<unsigned int>(a_.stats_->rounds, d_.stats_->rounds) - 1;
 	const int defender_side = d_.get_unit().side();
 
-	LOG_NG << "Fight: (" << a_.loc_ << ") vs (" << d_.loc_ << ") ATT: " << a_stats_->weapon->name() << " "
-		   << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit
-		   << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-"
-		   << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)"
+	LOG_NG << "Fight: (" << a_.loc_ << ") vs (" << d_.loc_ << ") ATT: " << a_.stats_->weapon->name() << " "
+		   << a_.stats_->damage << "-" << a_.stats_->num_blows << "(" << a_.stats_->chance_to_hit
+		   << "%) vs DEF: " << (d_.stats_->weapon ? d_.stats_->weapon->name() : "none") << " " << d_.stats_->damage << "-"
+		   << d_.stats_->num_blows << "(" << d_.stats_->chance_to_hit << "%)"
 		   << (defender_strikes_first ? " defender first-strike" : "") << "\n";
 
 	// Play the pre-fight animation
-	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_stats_->weapon, d_stats_->weapon, d_.loc_, &d_.get_unit());
+	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_.stats_->weapon, d_.stats_->weapon, d_.loc_, &d_.get_unit());
 
 	for(;;) {
 		DBG_NG << "start of attack loop...\n";
@@ -1430,7 +1428,7 @@ void attack::perform()
 			a_.n_attacks_ = a_.orig_attacks_;
 			d_.n_attacks_ = d_.orig_attacks_;
 			--rounds;
-			defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
+			defender_strikes_first = (d_.stats_->firststrike && !a_.stats_->firststrike);
 		}
 
 		if(a_.n_attacks_ <= 0 && d_.n_attacks_ <= 0) {
@@ -1464,7 +1462,7 @@ void attack::perform()
 		u.set_experience(u.experience() + d_.xp_);
 	}
 
-	unit_display::unit_sheath_weapon(a_.loc_, a_.valid() ? &a_.get_unit() : nullptr, a_stats_->weapon, d_stats_->weapon,
+	unit_display::unit_sheath_weapon(a_.loc_, a_.valid() ? &a_.get_unit() : nullptr, a_.stats_->weapon, d_.stats_->weapon,
 			d_.loc_, d_.valid() ? &d_.get_unit() : nullptr);
 
 	if(update_display_) {
