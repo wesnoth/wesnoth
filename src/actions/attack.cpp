@@ -1093,7 +1093,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 			*resources::gameboard,
 			attacker.loc_, defender.loc_,
 			damage,
-			*attacker_stats->weapon, defender_stats->weapon,
+			attacker_stats->weapon, defender_stats->weapon,
 			attacker.strikes_done_, float_text.str(), drains_damage, "",
 			&extra_hit_sounds
 		);
