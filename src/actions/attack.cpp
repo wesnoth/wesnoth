@@ -751,7 +751,6 @@ private:
 			assert(stats_);
 			return stats_->num_blows - strikes_done_;
 		}
-		int n_attacks_; /**< Number of attacks left. */
 		int cth_;
 		int damage_;
 		int xp_;
