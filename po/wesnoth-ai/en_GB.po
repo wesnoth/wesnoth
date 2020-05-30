@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 23:11 UTC\n"
-"PO-Revision-Date: 2019-03-12 10:59+1100\n"
+"PO-Revision-Date: 2020-05-04 01:42+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: \n"
 "Language: en_GB\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -26,10 +26,8 @@ msgstr "Default AI (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
-#, fuzzy
-#| msgid "Multiplayer_AI^Default AI (RCA)"
 msgid "Multiplayer_AI^1.14 Default AI"
-msgstr "Default AI (RCA)"
+msgstr "1.14 Default AI"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
@@ -2715,42 +2713,21 @@ msgstr "Uralt"
 
 #. [message]: speaker=sergeant
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:125
-#, fuzzy
-#| msgid ""
-#| "General Grospur, what do we do?  These undead will surely wipe us out."
 msgid "General Grospur, what do we do? These undead will surely wipe us out."
-msgstr "General Grospur, what do we do?  These undead will surely wipe us out."
+msgstr "General Grospur, what do we do? These undead will surely wipe us out."
 
 #. [message]: speaker=Grospur
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:129
-#, fuzzy
-#| msgid ""
-#| "Don't be such a chicken, Sergeant!  I have placed units with lots of "
-#| "experience around the perimeter. The undead will not dare to attack them. "
-#| "And those few that sneak through... we can easily dispose of them once "
-#| "they make it inside.\n"
-#| "\n"
-#| "<i>In other words, the Wesnoth AI does generally not attack units one XP "
-#| "from leveling if there is no chance of killing the unit with a single "
-#| "attack. However, some of the attacks by the undead are handled by the "
-#| "Simple Attack Micro AI in this scenario. General Grospur might be in for "
-#| "a surprise.</i>"
 msgid ""
 "Don’t be such a chicken, Sergeant! I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
 "And those few that sneak through... we can easily dispose of them once they "
 "make it inside."
 msgstr ""
-"Don't be such a chicken, Sergeant!  I have placed units with lots of "
+"Don’t be such a chicken, Sergeant! I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
 "And those few that sneak through... we can easily dispose of them once they "
-"make it inside.\n"
-"\n"
-"<i>In other words, the Wesnoth AI does generally not attack units one XP "
-"from advancing a level if there is no chance of killing the unit with a "
-"single attack. However, some of the attacks by the undead are handled by the "
-"Simple Attack Micro AI in this scenario. General Grospur might be in for a "
-"surprise.</i>"
+"make it inside."
 
 #. [message]: speaker=sergeant
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:133
@@ -2764,24 +2741,17 @@ msgid ""
 "the unit with a single attack. One way of making 1.12 do those attacks was "
 "to use the Simple Attack Micro AI.</i>"
 msgstr ""
+"General Grospur, you’re still thinking of Wesnoth 1.12. The default AI is "
+"smarter than that now.\n"
+"\n"
+"<i>If you’re porting an old scenario, you may find the Simple Attack Micro "
+"AI used in a way that’s unnecessary since 1.14. The 1.12 AI generally "
+"doesn’t attack units one XP from advancing if there is no chance of killing "
+"the unit with a single attack. One way of making 1.12 do those attacks was "
+"to use the Simple Attack Micro AI.</i>"
 
 #. [message]: speaker=Uralt
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:139
-#, fuzzy
-#| msgid ""
-#| "Hahahahaha!! I have given special instruction to my Soulless to attack "
-#| "all your almost-advanced units first. Also watch how those same Soulless "
-#| "will throw themselves mercilessly at your pitiful soldiers after that, "
-#| "saving my more valuable skeleton minions for later. I have taken the term "
-#| "'disposable units' to a whole new level. Watch in awe!!\n"
-#| "\n"
-#| "<i>Translation: The undead side includes two instances of the Simple "
-#| "Attack Micro AI.  The first makes the Soulless attack all units 1 XP from "
-#| "leveling up, such that they can be eliminated afterward.  The second "
-#| "executes all remaining attacks possible by Soulless (and Walking "
-#| "Corpses), without regard for their own safety.  Only after that does the "
-#| "default Wesnoth attack mechanism kick in to attack with the remaining "
-#| "units (skeletons).</i>"
 msgid ""
 "Hahahahaha!! Indeed, my skeletons are smarter than General Grospur. Worse "
 "for you, I have given special instruction to my Soulless to attack all your "
@@ -2801,18 +2771,23 @@ msgid ""
 "<i>The difference to the 1.12 version of this demo is that the 1.12 "
 "skeletons still had high aggression.</i>"
 msgstr ""
-"Ha ha ha ha ha! I have given special instruction to my Soulless to attack "
-"all your almost-advanced units first. Also watch how those same Soulless "
-"will throw themselves mercilessly at your pitiful soldiers after that, "
-"saving my more valuable skeleton minions for later. I have taken the term "
-"'disposable units' to a whole new level. Watch in awe!\n"
+"Ha ha ha ha ha! Indeed, my skeletons are smarter than General Grospur. Worse "
+"for you, I have given special instruction to my Soulless to attack all your "
+"almost-advanced units first. Also watch how those same Soulless will throw "
+"themselves mercilessly at your pitiful soldiers after that, saving my more "
+"valuable skeleton minions for later. I have taken the term ‘disposable "
+"units’ to a whole new level. Watch in awe!\n"
 "\n"
 "<i>Translation: The undead side includes two instances of the Simple Attack "
-"Micro AI.  The first makes the Soulless attack all units 1 XP from advancing "
-"a level, such that they can be eliminated afterwards.  The second executes "
-"all remaining attacks possible by Soulless (and Walking Corpses), without "
-"regard for their own safety.  Only after that does the default Wesnoth "
-"attack mechanism kick in to attack with the remaining units (skeletons).</i>"
+"Micro AI. The first makes the Soulless attack all units 1 XP from advancing, "
+"such that they can be eliminated afterwards. The second executes all "
+"remaining attacks possible by Soulless (and Walking Corpses), without regard "
+"for their own safety. Only after that does the default Wesnoth attack "
+"mechanism kick in to attack with the remaining units (skeletons), and it "
+"moves the remaining units with high caution and low aggression.</i>\n"
+"\n"
+"<i>The difference to the 1.12 version of this demo is that the 1.12 "
+"skeletons still had high aggression.</i>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:147
@@ -2821,17 +2796,13 @@ msgstr "Watch the undead take care of business"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:149
-#, fuzzy
-#| msgid "Don't even try. You can't reach the Lich."
 msgid "Don’t even try. You can’t reach the Lich."
-msgstr "Don't even try. You can't reach the Lich."
+msgstr "Don’t even try. You can’t reach the Lich."
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:153
-#, fuzzy
-#| msgid "Death of the last of Grospur's units"
 msgid "Death of the last of Grospur’s units"
-msgstr "Death of the last of Grospur's units"
+msgstr "Death of the last of Grospur’s units"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:157
@@ -2845,10 +2816,8 @@ msgstr "Rise, minions!"
 
 #. [message]: speaker=Uralt
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:234
-#, fuzzy
-#| msgid "And that's how the undead AI executes total annihilation ..."
 msgid "And that’s how the undead AI executes total annihilation ..."
-msgstr "And that's how the undead AI executes total annihilation ..."
+msgstr "And that’s how the undead AI executes total annihilation..."
 
 #. [side]
 #: data/ai/micro_ais/scenarios/swarm.cfg:41

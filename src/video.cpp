@@ -132,6 +132,31 @@ CVideo::~CVideo()
 	LOG_DP << "called SDL_Quit()\n";
 }
 
+std::string CVideo::video_settings_report()
+{
+	if (singleton_ == nullptr) return "No video initialized.\n";
+	if (singleton_->non_interactive())
+		return "Initialized but non-interactive.\n";
+	sdl::window* win = singleton_->get_window();
+	if (!win) return "Interactive but no SDL window.\n";
+	std::ostringstream o;
+	o << "Current pixel resolution: "
+	  << singleton_->get_width() << "x" << singleton_->get_height()
+	  << '\n'
+	  << "Refresh rate: " << singleton_->current_refresh_rate()
+	  << '\n';
+	float hdpi, vdpi;
+	int returncode = SDL_GetDisplayDPI(win->get_display_index(),
+					   nullptr, &hdpi, &vdpi);
+	if (returncode != 0) {
+		o << "SDL not supplying dots per inch.\n";
+	} else {
+		o << "SDL reports: " << hdpi << "x" << vdpi
+		  << " dots per inch.\n";
+	}
+	return o.str();
+}
+
 bool CVideo::non_interactive() const
 {
 	return fake_interactive ? false : (window == nullptr);
@@ -390,10 +415,12 @@ std::pair<float, float> CVideo::get_dpi_scale_factor() const
 	}
 
 	float hdpi, vdpi;
-	SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi);
+	int returncode = SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi);
 
-	result.first = hdpi / MAGIC_DPI_SCALE_NUMBER;
-	result.second = vdpi / MAGIC_DPI_SCALE_NUMBER;
+	if (returncode == 0) {
+		result.first = hdpi / MAGIC_DPI_SCALE_NUMBER;
+		result.second = vdpi / MAGIC_DPI_SCALE_NUMBER;
+	}
 
 	return result;
 }

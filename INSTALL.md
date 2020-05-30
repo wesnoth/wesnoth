@@ -74,9 +74,11 @@ also possible to run it directly from the source directory after building. This
 may be useful in situations where you don't have root access or need to
 rebuild Wesnoth frequently (i.e. for development and testing).
 
-For Windows users, a Visual C++ 2013 solution is included in _projectfiles/VC12_.
-For OS X users, an XCode project is included in _projectfiles/XCode_.
+### macOS/OS X
+See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/Xcode/README.md) for instructions on using Xcode.
 
+### Windows
+See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/VC14/README.md) for instructions on using Visual Studio 2015/2017, or [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/VC16/README.md) for (much simpler) instructions on using Visual Studio 2019.
 
 ## SCons Build
 
@@ -173,6 +175,10 @@ false value.
 | `strict=<boolean>`                                                     | `ENABLE_STRICT_COMPILATION=<boolean>`                              | Whether to treat compiler warnings as errors or not. Primarily intended for developers.                                                                                                                                                                                                            |
 | `prefsdir=<directory name>`                                            | `PREFERENCES_DIR=<directory name>`                                 | Hardcoded user preferences and user data directory. The default is to leave this unspecified so that Wesnoth will use separate XDG paths such as .config/wesnoth and .local/share/wesnoth/<version>  for its user preferences and data, respectively.                                              |
 | `cxxtool=<program>`                                                    | `CMAKE_CXX_COMPILER=<program>`                                     | Specifies which C++ compiler to use. By default, the system's default C++ compiler will be automatically selected during configuration.                                                                                                                                                            |
-| `ccache=<boolean>`                                                     |                                                                    | Whether to run the compiler through ccache first. Useful if the compiler executable is not a symbolic link to ccache. Requires ccache to be installed first.  If using CMake, use CMAKE_CXX_COMPILER instead.                                                                                      |
-| `extra_flags_<buildtype> =<flags>` `extra_flags_config=<flags>`        | `CXX_FLAGS_USER=<flags>`                                           | Additional compiler flags to use when compiling a specific build type (SCons-only). To apply the same flags to all builds, use extra_flags_config (SCons) or CXX_FLAGS_USER (CMake) without a build type suffix.  Alternatively, you may specify your flags in the CXXFLAGS environment variable.  |
+| `ccache=<boolean>`                                                     |                                                                    | Whether to run the compiler through ccache first. Useful if the compiler executable is not a symbolic link to ccache. Requires ccache to be installed first.  If using CMake, use CMAKE_C_COMPILER and CMAKE_CXX_COMPILER instead.                                                                                      |
+| `extra_flags_<buildtype>=<flags>` `extra_flags_config=<flags>`         | `CXX_FLAGS_USER=<flags>`                                           | Additional compiler flags to use when compiling a specific build type (SCons-only). To apply the same flags to all builds, use extra_flags_config (SCons) or CXX_FLAGS_USER (CMake) without a build type suffix.  Alternatively, you may specify your flags in the CXXFLAGS environment variable.  |
 | `fifodir=<full path>` `server_uid=<UID>` `server_gid=<GID>`            | `FIFO_DIR=<full path>` `SERVER_UID=<UID>` `SERVER_GID=<GID>`       | Directory and owner id for the wesnothd control FIFO file. This is relevant only if you wish to be able to communicate with a local wesnothd instance through a named pipe. You must run wesnothd with the same UID specified at build time for this to work.                                      |
+| `enable_lto=<boolean>`                                                 | `ENABLE_LTO=<boolean>`                                             | Controls using Link Time Optimization. Enabling will result in a smaller, faster executable at the cost of increased time to compile and link. For cmake, use LTO_JOBS=N tells how many threads to use during linking.|
+| `--debug=time`                                                         | `VERBOSE=1` (make option)                                          | Enables some additional output while building.|
+| `strict=true`                                                          | `ENABLE_STRICT_COMPILATION=true`                                   | Forces all warnings to be errors (-Werror).|
+| `jobs=N`                                                               | `-jN` (make option)                                                | Enables compiling with multiple threads, where N is the number of threads to use.|

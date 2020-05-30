@@ -901,19 +901,15 @@ void window::layout()
 
 	get_screen_size_variables(variables_);
 
-	int maximum_width = 0;
-	int maximum_height = 0;
+	unsigned int maximum_width = maximum_width_(variables_, &functions_);
+	unsigned int maximum_height = maximum_height_(variables_, &functions_);
 
 	if(automatic_placement_) {
-		if(maximum_width_ > 0) {
-			maximum_width = std::min(maximum_width_, settings::screen_width);
-		} else {
+		if(maximum_width == 0 || maximum_width > settings::screen_width) {
 			maximum_width = settings::screen_width;
 		}
 
-		if(maximum_height_ > 0) {
-			maximum_height = std::min(maximum_height_, settings::screen_height);
-		} else {
+		if(maximum_height == 0 || maximum_height > settings::screen_height) {
 			maximum_height = settings::screen_height;
 		}
 	} else {
@@ -1005,7 +1001,8 @@ void window::layout()
 
 	/***** Get the best location for the window *****/
 	size = get_best_size();
-	assert(size.x <= maximum_width && size.y <= maximum_height);
+	assert(size.x > 0 && static_cast<unsigned>(size.x) <= maximum_width
+	       && size.y > 0 && static_cast<unsigned>(size.y) <= maximum_height);
 
 	point origin(0, 0);
 

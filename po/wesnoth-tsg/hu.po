@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: hu-tsg_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 23:11 UTC\n"
-"PO-Revision-Date: 2018-09-14 22:26+0200\n"
+"PO-Revision-Date: 2020-05-14 18:22+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
@@ -44,7 +44,7 @@ msgstr ""
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
 #, fuzzy
-#| msgid "(Novice level, 9 scenarios.)"
+#| msgid "(Rookie level, 9 scenarios.)"
 msgid "(Novice level, 8 scenarios.)"
 msgstr "(Újonc szint, 9 pálya)"
 
@@ -5383,27 +5383,310 @@ msgstr ""
 "elolvadt, és az utak újra járhatóvá váltak, egy hírnök érkezett Haldric "
 "királytól."
 
-#, fuzzy
-#~| msgid ""
-#~| "A young Knight, Deoran, is dispatched to take command of the South "
-#~| "Guard.\n"
-#~| "\n"
-#~| "Note: This campaign is designed as an introduction to Wesnoth. The "
-#~| "‘Civilian’ difficulty level is aimed at first-time players.\n"
-#~| "\n"
 #~ msgid ""
 #~ "This campaign is designed as an introduction to Wesnoth. The ‘Civilian’ "
 #~ "difficulty level is aimed at first-time players."
 #~ msgstr ""
-#~ "Egy fiatal lovagot, Deorant kinevezik a Déli Őrhely parancsnokául.\n"
-#~ "\n"
-#~ "Megjegyzés: ez a küldetés bevezetést nyújt a Wesnothba. A „Civil” "
-#~ "nehézségi szint megfelelő lehet a játékkal még csak most ismerkedőknek "
-#~ "is.\n"
-#~ "\n"
+#~ "Ez a küldetés bevezetést nyújt a Wesnothba. A „Civil” nehézségi szint "
+#~ "megfelelő lehet a játékkal még csak most ismerkedőknek is."
+
+#~ msgid "Tidings, Good and Ill"
+#~ msgstr "Hírek, jók és rosszak egyaránt"
+
+#~ msgid "Enemies"
+#~ msgstr "Ellenségek"
+
+#~ msgid "Ssesseth"
+#~ msgstr "Ssesseth"
+
+#~ msgid "Zasz"
+#~ msgstr "Zasz"
+
+#~ msgid "Zerix"
+#~ msgstr "Zerix"
+
+#~ msgid "Scorpion"
+#~ msgstr "Skorpió"
+
+#~ msgid "Issorai"
+#~ msgstr "Issorai"
+
+#~ msgid "Zarr"
+#~ msgstr "Zarr"
+
+#~ msgid "Abdur"
+#~ msgstr "Abdur"
+
+#~ msgid "Queen Xeila"
+#~ msgstr "Xeila királynő"
+
+#~ msgid "Ssanur"
+#~ msgstr "Ssanur"
+
+#~ msgid "Lesssh"
+#~ msgstr "Lesssh"
+
+#~ msgid "Kallen"
+#~ msgstr "Kallen"
+
+#~ msgid "Eliomir"
+#~ msgstr "Eliomir"
+
+#, fuzzy
+#~| msgid ""
+#~| "Sir Gerrick, you must make it back to Kerlath Province and warn your "
+#~| "people of the danger from the south. We will lead you through the forest "
+#~| "and clear any foes from your path. You may choose some of your veterans "
+#~| "to go with you as well, and any ones you leave behind will still have "
+#~| "time to join Ethiliel and Deoran."
+#~ msgid ""
+#~ "Sir Gerrick, you must return to Westin and warn your people of the danger "
+#~ "from the south. We will lead you through the forest and clear the foes "
+#~ "from your path. You may choose some of your veterans to accompany your "
+#~ "journey. Any troops you leave behind will still have time to join "
+#~ "Ethiliel and Deoran."
+#~ msgstr ""
+#~ "Sir Gerrick, vissza kell menned Kerlath tartományba, hogy figyelmeztesd "
+#~ "az embereket a délről közelgő veszélyre. Keresztülvezetünk az erdőn és "
+#~ "megtisztítjuk utadat az ellenségtől. Választhatsz néhány veterán harcost "
+#~ "is, akik veled tartanak, és ha bárkit hátrahagynál, annak még mindig lesz "
+#~ "ideje utolérni Ethilielt és Deorant."
+
+#, fuzzy
+#~| msgid ""
+#~| "With the bandits and undead vanquished behind us, what foes can there be "
+#~| "ahead? Let us hope this is a speedy journey, for the specter of winter "
+#~| "looms."
+#~ msgid ""
+#~ "With many of the bandits and undead vanquished already, few foes should "
+#~ "remain before us. Let us hope this is a speedy journey, for the specter "
+#~ "of winter looms closer."
+#~ msgstr ""
+#~ "A legyőzött banditákkal és élőholtakkal a hátunk mögött, milyen ellenség "
+#~ "várhat még ránk? Reméljük, hogy ez egy gyors út lesz, mert már érezni a "
+#~ "tél első fuvallatait."
+
+#~ msgid "Move Sir Gerrick to the north end of the woods"
+#~ msgstr "Sir Gerrickkel az erdő északi végébe érsz"
+
+#, fuzzy
+#~| msgid "Defeat the Queen Xeila"
+#~ msgid "Defeat Queen Xeila"
+#~ msgstr "Legyőzöd Xeilát, a naga királynőt"
+
+#~ msgid "Recalled units will be unavailable to Deoran."
+#~ msgstr "A visszahívott egységek elérhetetlenek lesznek Deoran számára."
+
+#, fuzzy
+#~| msgid ""
+#~| "Hss... Here are the humans who have made a pact with the cursed mermen! "
+#~| "Hss..."
+#~ msgid ""
+#~ "Hss... Here come the humans who have made a pact with the cursed mermen!"
+#~ msgstr ""
+#~ "Hss... Itt vannak azok az emberek, akik lepaktáltak az átkozott "
+#~ "sellőkkel! Hss..."
+
+#, fuzzy
+#~| msgid "We have stumbled into a den of nagas!"
+#~ msgid "We have stumbled upon a den of naga!"
+#~ msgstr "Belebotlottunk a nagák odúiba!"
+
+#, fuzzy
+#~| msgid "Hss... We will kill them all, my brood. Hss..."
+#~ msgid "Hss... Elves too! We will kill them all, my brood. Hss..."
+#~ msgstr "Hss... Halált érdemel mind, ivadékaim. Hss..."
+
+#, fuzzy
+#~| msgid ""
+#~| "She won’t listen. If we leave these nagas here, they will ambush Deoran "
+#~| "and Ethiliel! We must destroy them!"
+#~ msgid ""
+#~ "If we leave these naga here, they will ambush Deoran and Ethiliel! We "
+#~ "must destroy them!"
+#~ msgstr ""
+#~ "Nem hallgat ránk. Ha itt hagyjuk ezeket a nagákat, lesben állnak majd "
+#~ "Deoranra és Ethilielre várva! Meg kell semmisítenünk őket!"
+
+#~ msgid "Hss... elves! Are they friends or enemies? Hss..."
+#~ msgstr "Hss... tündék! Barátok vagy ellenségek? Hss..."
+
+#~ msgid "We are weary travelers, seeking our homes. If you but let us pass..."
+#~ msgstr "Kimerült utazók vagyunk, hazafelé tartunk. Ha átengednél..."
+
+#, fuzzy
+#~| msgid ""
+#~| "Hss... And humans! Humans drained our swamps and made them fields for "
+#~| "farms, and now they have found my winter nest. The Land-Walkers must "
+#~| "die! Hss..."
+#~ msgid ""
+#~ "Hss... And humans! Humans drained our swamps and destroyed our homes! Now "
+#~ "they have found my winter nest and seek to destroy me. The Land-Walkers "
+#~ "must die! Hss..."
+#~ msgstr ""
+#~ "Hss... És emberek! Az emberek kiszárították a mocsarainkat, és szántót "
+#~ "csináltak a farmjaikhoz, sőt megtalálták a téli fészkünket is. Az "
+#~ "átkelőknek meg kell halniuk! Hss..."
+
+#, fuzzy
+#~| msgid ""
+#~| "She won’t listen. If we leave these nagas here, they will ambush Deoran "
+#~| "and Ethiliel! We must destroy them!"
+#~ msgid ""
+#~ "She refuses to listen! If we leave these naga here, they will ambush "
+#~ "Deoran and Ethiliel! We must destroy them!"
+#~ msgstr ""
+#~ "Nem hallgat ránk. Ha itt hagyjuk ezeket a nagákat, lesben állnak majd "
+#~ "Deoranra és Ethilielre várva! Meg kell semmisítenünk őket!"
+
+#, fuzzy
+#~| msgid ""
+#~| "There are a group of naga occupying this area... they don’t look very "
+#~| "friendly."
+#~ msgid ""
+#~ "There are a group of naga occupying this area. They don’t look very "
+#~ "friendly."
+#~ msgstr ""
+#~ "Egy csapat naga tanyázik ezen a területen... nem tűnnek túl barátságosnak."
+
+#, fuzzy
+#~| msgid ""
+#~| "If they are hostile to us, they could endanger Deoran and Ethiliel as "
+#~| "well. Perhaps their leader can be reasoned with."
+#~ msgid ""
+#~ "If they are hostile to us, they could endanger Deoran and Ethiliel as "
+#~ "well, but perhaps we can reason with their leader."
+#~ msgstr ""
+#~ "Ha ellenségesen viselkednek velünk, veszélyt jelenthetnek Deoranra és "
+#~ "Ethilielre is. Talán meg lehet győzni a vezetőjüket."
+
+#, fuzzy
+#~| msgid "Hss... Who will watch over my brood now? Hss..."
+#~ msgid "Who will watch over my brood now? Hss..."
+#~ msgstr "Sssz... Ki vigyáz majd most az ivadékaimra? Sssz..."
+
+#, fuzzy
+#~| msgid "Ho! Me see elves. Elves tasty? Me take elves to eat."
+#~ msgid "Oh! Me see elves. Elves tasty food?"
+#~ msgstr "Hóó! Tündéket látni. Tündék finom? Menni enni tündehúst."
+
+#, fuzzy
+#~| msgid ""
+#~| "Travelers in this desolate land! I seek that dark Sage who is rumored to "
+#~| "dwell in these lands. Surely you have come from him?"
+#~ msgid ""
+#~ "Hail, travelers! I seek the dark sage who is rumored to dwell in these "
+#~ "lands. Surely you have come from him?"
+#~ msgstr ""
+#~ "Utazók ezen a sivár földön! Azt a sötét bölcset keresem, aki a szóbeszéd "
+#~ "szerint ezen a vidéken lakozik. Bizonyára tőle jöttetek!"
+
+#, fuzzy
+#~| msgid ""
+#~| "Indeed! I just left my comrades, who were preparing to kill the vile "
+#~| "Necromancer."
+#~ msgid ""
+#~ "Indeed! I just left my comrades, who were preparing to kill the vile "
+#~ "necromancer."
+#~ msgstr ""
+#~ "Valóban! Épphogy csak elhagytuk a bajtársainkat, akik az aljas "
+#~ "szellemidéző elleni harcra készültek fel."
+
+#, fuzzy
+#~| msgid "Unworthy fools! I’ll kill you for this sacrilege!"
+#~ msgid ""
+#~ "Unworthy fools! How dare you attack the hallowed one?! You must be slain "
+#~ "for this sacrilege!"
+#~ msgstr "Gyarló bolondok! Megöllek benneteket ezért a szentségtörésért!"
+
+#~ msgid ""
+#~ "These naga are still in control of the road. We must clear the way for "
+#~ "Deoran and Ethiliel!"
+#~ msgstr ""
+#~ "Ezek a nagák még mindig ellenőrzésük alatt tartják a kulcsfontosságú "
+#~ "helyeket. Tisztára kell sepernünk az utat Deorannak és Ethilielnek!"
+
+#, fuzzy
+#~| msgid ""
+#~| "I will hasten back to Kerlath Province now and seek the advice of the "
+#~| "Council of Westin..."
+#~ msgid ""
+#~ "I must hasten back to Kerlath Province and seek the advice of the Council "
+#~ "of Westin. I pray that Deoran and Ethiliel find the strength to defeat "
+#~ "the undead on their own."
+#~ msgstr ""
+#~ "Most sietek vissza Kerlath tartományba, és kikérem Westin Tanácsának "
+#~ "bölcs véleményét..."
+
+#, fuzzy
+#~| msgid ""
+#~| "We too will return to our councils. We have much to tell them... Much "
+#~| "indeed."
+#~ msgid ""
+#~ "We will return to our council as well. There is much we have to tell "
+#~ "them... much indeed."
+#~ msgstr ""
+#~ "Mi is visszamegyünk a tanácsunkhoz. Sokat kell nekik elmesélnünk... "
+#~ "Nagyon is sokat."
 
 #~ msgid "Maybe whoever summoned these undead knows where he is?"
 #~ msgstr "Talán aki megidézte az élőholtakat, tudhatja merre van?"
+
+#~ msgid ""
+#~ "Thugs are the mainstay of the bandit armies. They do not have a "
+#~ "<i>ranged</i> attack, and are vulnerable to your archers. Deoran’s lance "
+#~ "will also strike fear into their hearts! Like all of the bandit units, "
+#~ "they are much more dangerous at night."
+#~ msgstr ""
+#~ "A gyilkosok a banditák seregének fő alkotói. Csak közelharcban állják a "
+#~ "sarat, az íjászaid ellen védtelenek. Deoran kopjája szintén félelemmel "
+#~ "tölti el szíveiket! Mint minden bandita harcos, éjszaka ők is sokkal "
+#~ "veszélyesebbek."
+
+#~ msgid ""
+#~ "Thieves are more subtle than thugs. They try to surround your units and "
+#~ "stab them in the back. Make sure that thieves never have an opportunity "
+#~ "to attack when they have an ally directly behind the unit they are "
+#~ "attacking — they’ll do double damage! Like thugs, thieves are vulnerable "
+#~ "to the ranged attacks of your archers."
+#~ msgstr ""
+#~ "A tolvajok sokkal ravaszabbak, mint a gyilkosok. Megpróbálják megkerülni "
+#~ "és hátba támadni az egységeidet. Soha ne hagyd, hogy úgy támadjanak, hogy "
+#~ "a támadott egységed mögött közvetlenül egy szövetségesük álljon — kétszer "
+#~ "annyit fognak sebezni! Akárcsak a gyilkosok, a tolvajok is könnyen "
+#~ "sebezhetőek az íjászaid távolsági támadásával."
+
+#~ msgid ""
+#~ "Footpads are the scouts of the bandit armies. They are quick, and have "
+#~ "both a <i>melee</i> attack and a <i>ranged</i> attack. Neither of their "
+#~ "attacks is very strong, however, and your spearmen will make quick work "
+#~ "of them during the day."
+#~ msgstr ""
+#~ "Az útonállók a banditahordák felderítői. Gyorsak és mind <i>közelharcban</"
+#~ "i>, mind <i>távolsági harcban</i> megállják a helyüket. Azonban egyik "
+#~ "támadásuk sem túl erős, lándzsásaid nappal könnyűszerrel elbánnak velük."
+
+#~ msgid ""
+#~ "Skeletons are the bones of fallen warriors raised by some dark magic. "
+#~ "They are almost immune to piercing weapons like arrows and spears. Bladed "
+#~ "attacks like swords will injure them, and Minister Hylas’s <i>arcane</i> "
+#~ "attack is deadly against them. Like the rest of the bandits, they are "
+#~ "more dangerous at night!"
+#~ msgstr ""
+#~ "A csontvázak elesett harcosok csontjaiból kelnek életre sötét mágia "
+#~ "hatására. Majdnem teljesen ellenállnak a szúrófegyvereknek, úgy mint a "
+#~ "nyilak és a lándzsák. Vágófegyverekkel, például karddal támadva "
+#~ "sebezhetőek, halálos számukra továbbá Hylas atya <i>földöntúli</i> "
+#~ "támadása. Ahogy minden bandita, ők is sokkal veszélyesebbek éjszaka!"
+
+#~ msgid ""
+#~ "Walking corpses are the bodies of slain warriors, filled with some black "
+#~ "magic. They are slow and weak — any of your units is more than a match "
+#~ "for them. They are only dangerous in packs..."
+#~ msgstr ""
+#~ "Az eleven testek megölt harcosok testei, egy kis fekete mágiával "
+#~ "megfűszerezve. Lassúak és gyengék, bármelyik egységed többet ér náluk. "
+#~ "Csak csoportosan veszélyesek..."
 
 #~ msgid ""
 #~ "Deoran found himself put to the test early in his command. Loris, the "
@@ -5542,6 +5825,15 @@ msgstr ""
 #~ "a banditákat a városunkból!"
 
 #~ msgid ""
+#~ "It grieves me to learn of his death, foolish though he may have been! At "
+#~ "least we managed to defeat some of these bandits here and now. What else "
+#~ "happened?"
+#~ msgstr ""
+#~ "Szomorúan hallom, hogy meghalt, bármilyen ostoba módon viselkedett! De "
+#~ "most legalább sikerült párat legyőznünk ezek közül a banditák közül. Mi "
+#~ "történt még?"
+
+#~ msgid ""
 #~ "Not only will Minister Hylas’s <i>arcane</i> attack melt undead bones, "
 #~ "but he can also heal wounded units near him."
 #~ msgstr ""
@@ -5551,6 +5843,12 @@ msgstr ""
 
 #~ msgid "How can a bandit have summoned undead?"
 #~ msgstr "Hogy tudták a banditák megidézni a halottakat?"
+
+#~ msgid "Westin is safe again."
+#~ msgstr "Westin újra biztonságban."
+
+#~ msgid "Westin will soon be safe again."
+#~ msgstr "Westin rövidesen újra biztonságban lesz."
 
 #~ msgid ""
 #~ "Deoran sent a rider to request mounted reinforcements and set out at once "
@@ -5692,13 +5990,9 @@ msgstr ""
 #~ "I fear no forests. Let us find this river and whatever enemies lie beyond."
 #~ msgstr "Nem félek az erdőktől. Nézzük meg azt a folyót, bármi is vár ránk."
 
-#, fuzzy
-#~| msgid ""
-#~| "Surely the undead infestation cannot be dispatched so easily. We have "
-#~| "merely destroyed servants of a far darker master."
 #~ msgid ""
 #~ "Surely the undead infestation cannot be dispatched so easily. We have "
-#~ "merely destroyed a servant of a far darker master."
+#~ "merely destroyed servants of a far darker master."
 #~ msgstr ""
 #~ "Az élőholt megszállásnak minden bizonnyal nem lehet ilyen könnyen véget "
 #~ "vetni. Csupán egy sokkal sötétebb mester tanítványait pusztítottuk el."
@@ -5858,114 +6152,6 @@ msgstr ""
 #~ "Jó utat, Deoran! Ott leszek, hogy üdvözöljelek, mikor visszatérsz Kerlath "
 #~ "tartományba."
 
-#~ msgid "Tidings, Good and Ill"
-#~ msgstr "Hírek, jók és rosszak egyaránt"
-
-#~ msgid "Enemies"
-#~ msgstr "Ellenségek"
-
-#~ msgid "Ssesseth"
-#~ msgstr "Ssesseth"
-
-#~ msgid "Zasz"
-#~ msgstr "Zasz"
-
-#~ msgid "Zerix"
-#~ msgstr "Zerix"
-
-#~ msgid "Scorpion"
-#~ msgstr "Skorpió"
-
-#~ msgid "Issorai"
-#~ msgstr "Issorai"
-
-#~ msgid "Zarr"
-#~ msgstr "Zarr"
-
-#~ msgid "Abdur"
-#~ msgstr "Abdur"
-
-#~ msgid "Queen Xeila"
-#~ msgstr "Xeila királynő"
-
-#~ msgid "Ssanur"
-#~ msgstr "Ssanur"
-
-#~ msgid "Lesssh"
-#~ msgstr "Lesssh"
-
-#~ msgid "Kallen"
-#~ msgstr "Kallen"
-
-#~ msgid "Eliomir"
-#~ msgstr "Eliomir"
-
-#, fuzzy
-#~| msgid ""
-#~| "Sir Gerrick, you must make it back to Kerlath Province and warn your "
-#~| "people of the danger from the south. We will lead you through the forest "
-#~| "and clear any foes from your path. You may choose some of your veterans "
-#~| "to go with you as well, and any ones you leave behind will still have "
-#~| "time to join Ethiliel and Deoran."
-#~ msgid ""
-#~ "Sir Gerrick, you must make it back to Kerlath Province and warn your "
-#~ "people of the danger from the south. We will lead you through the forest "
-#~ "and clear any foes from your path. You may choose some of your veterans "
-#~ "to go with you as well, and any ones you leave behind will still have "
-#~ "time to join Ethiliel and Deoran."
-#~ msgstr ""
-#~ "Sir Gerrick, vissza kell menned Kerlath tartományba, hogy figyelmeztesd "
-#~ "az embereket a délről közelgő veszélyre. Keresztülvezetünk az erdőn és "
-#~ "megtisztítjuk utadat az ellenségtől. Választhatsz néhány veterán harcost "
-#~ "is, akik veled tartanak, és ha bárkit hátrahagynál, annak még mindig lesz "
-#~ "ideje utolérni Ethilielt és Deorant."
-
-#, fuzzy
-#~| msgid ""
-#~| "With the bandits and undead vanquished behind us, what foes can there be "
-#~| "ahead? Let us hope this is a speedy journey, for the specter of winter "
-#~| "looms."
-#~ msgid ""
-#~ "With the bandits and undead vanquished behind us, what foes can there be "
-#~ "ahead? Let us hope this is a speedy journey, for the specter of winter "
-#~ "looms."
-#~ msgstr ""
-#~ "A legyőzött banditákkal és élőholtakkal a hátunk mögött, milyen ellenség "
-#~ "várhat még ránk? Reméljük, hogy ez egy gyors út lesz, mert már érezni a "
-#~ "tél első fuvallatait."
-
-#~ msgid "Move Sir Gerrick to the north end of the woods"
-#~ msgstr "Sir Gerrickkel az erdő északi végébe érsz"
-
-#, fuzzy
-#~| msgid "Defeat the Queen Xeila"
-#~ msgid "Defeat the Queen Xeila"
-#~ msgstr "Legyőzöd Xeilát, a naga királynőt"
-
-#~ msgid "Recalled units will be unavailable to Deoran."
-#~ msgstr "A visszahívott egységek elérhetetlenek lesznek Deoran számára."
-
-#, fuzzy
-#~| msgid ""
-#~| "Hss... Here are the humans who have made a pact with the cursed mermen! "
-#~| "Hss..."
-#~ msgid ""
-#~ "Hss... Here are the humans who have made a pact with the cursed mermen! "
-#~ "Hss..."
-#~ msgstr ""
-#~ "Hss... Itt vannak azok az emberek, akik lepaktáltak az átkozott "
-#~ "sellőkkel! Hss..."
-
-#, fuzzy
-#~| msgid "We have stumbled into a den of nagas!"
-#~ msgid "We have stumbled into a den of nagas!"
-#~ msgstr "Belebotlottunk a nagák odúiba!"
-
-#, fuzzy
-#~| msgid "Hss... We will kill them all, my brood. Hss..."
-#~ msgid "Hss... We will kill them all, my brood. Hss..."
-#~ msgstr "Hss... Halált érdemel mind, ivadékaim. Hss..."
-
 #~ msgid ""
 #~ "We must clear this road for Deoran and Ethiliel! We must destroy the naga "
 #~ "lair!"
@@ -5973,134 +6159,12 @@ msgstr ""
 #~ "Meg kell tisztítanunk ezt az utat Deoran és Ethiliel számára! El kell "
 #~ "pusztítanunk a naga barlangot!"
 
-#~ msgid "Hss... elves! Are they friends or enemies? Hss..."
-#~ msgstr "Hss... tündék! Barátok vagy ellenségek? Hss..."
-
-#~ msgid "We are weary travelers, seeking our homes. If you but let us pass..."
-#~ msgstr "Kimerült utazók vagyunk, hazafelé tartunk. Ha átengednél..."
-
-#, fuzzy
-#~| msgid ""
-#~| "Hss... And humans! Humans drained our swamps and made them fields for "
-#~| "farms, and now they have found my winter nest. The Land-Walkers must "
-#~| "die! Hss..."
-#~ msgid ""
-#~ "Hss... And humans! Humans drained our swamps and made them fields for "
-#~ "farms, and now they have found my winter nest. The Land-Walkers must die! "
-#~ "Hss..."
-#~ msgstr ""
-#~ "Hss... És emberek! Az emberek kiszárították a mocsarainkat, és szántót "
-#~ "csináltak a farmjaikhoz, sőt megtalálták a téli fészkünket is. Az "
-#~ "átkelőknek meg kell halniuk! Hss..."
-
-#, fuzzy
-#~| msgid ""
-#~| "She won’t listen. If we leave these nagas here, they will ambush Deoran "
-#~| "and Ethiliel! We must destroy them!"
-#~ msgid ""
-#~ "She won’t listen. If we leave these nagas here, they will ambush Deoran "
-#~ "and Ethiliel! We must destroy them!"
-#~ msgstr ""
-#~ "Nem hallgat ránk. Ha itt hagyjuk ezeket a nagákat, lesben állnak majd "
-#~ "Deoranra és Ethilielre várva! Meg kell semmisítenünk őket!"
-
-#, fuzzy
-#~| msgid ""
-#~| "There are a group of naga occupying this area... they don’t look very "
-#~| "friendly."
-#~ msgid ""
-#~ "There are a group of naga occupying this area... they don’t look very "
-#~ "friendly."
-#~ msgstr ""
-#~ "Egy csapat naga tanyázik ezen a területen... nem tűnnek túl barátságosnak."
-
-#, fuzzy
-#~| msgid ""
-#~| "If they are hostile to us, they could endanger Deoran and Ethiliel as "
-#~| "well. Perhaps their leader can be reasoned with."
-#~ msgid ""
-#~ "If they are hostile to us, they could endanger Deoran and Ethiliel as "
-#~ "well. Perhaps their leader can be reasoned with."
-#~ msgstr ""
-#~ "Ha ellenségesen viselkednek velünk, veszélyt jelenthetnek Deoranra és "
-#~ "Ethilielre is. Talán meg lehet győzni a vezetőjüket."
-
-#, fuzzy
-#~| msgid "Hss... Who will watch over my brood now? Hss..."
-#~ msgid "Hss... Who will watch over my brood now? Hss..."
-#~ msgstr "Sssz... Ki vigyáz majd most az ivadékaimra? Sssz..."
-
-#, fuzzy
-#~| msgid "Ho! Me see elves. Elves tasty? Me take elves to eat."
-#~ msgid "Ho! Me see elves. Elves tasty? Me take elves to eat."
-#~ msgstr "Hóó! Tündéket látni. Tündék finom? Menni enni tündehúst."
-
 #~ msgid "Bad food! It hurt me. Arrrrggghhhh!!"
 #~ msgstr "Rossz étel! Megsebez. Arrrrgggghhhh!!"
 
-#, fuzzy
-#~| msgid ""
-#~| "Travelers in this desolate land! I seek that dark Sage who is rumored to "
-#~| "dwell in these lands. Surely you have come from him?"
-#~ msgid ""
-#~ "Travelers in this desolate land! I seek that dark Sage who is rumored to "
-#~ "dwell in these lands. Surely you have come from him?"
-#~ msgstr ""
-#~ "Utazók ezen a sivár földön! Azt a sötét bölcset keresem, aki a szóbeszéd "
-#~ "szerint ezen a vidéken lakozik. Bizonyára tőle jöttetek!"
-
-#, fuzzy
-#~| msgid ""
-#~| "Indeed! I just left my comrades, who were preparing to kill the vile "
-#~| "Necromancer."
-#~ msgid ""
-#~ "Indeed! I just left my comrades, who were preparing to kill the vile "
-#~ "Necromancer."
-#~ msgstr ""
-#~ "Valóban! Épphogy csak elhagytuk a bajtársainkat, akik az aljas "
-#~ "szellemidéző elleni harcra készültek fel."
-
-#, fuzzy
-#~| msgid "Unworthy fools! I’ll kill you for this sacrilege!"
-#~ msgid "Unworthy fools! I’ll kill you for this sacrilege!"
-#~ msgstr "Gyarló bolondok! Megöllek benneteket ezért a szentségtörésért!"
-
-#~ msgid ""
-#~ "These naga are still in control of the road. We must clear the way for "
-#~ "Deoran and Ethiliel!"
-#~ msgstr ""
-#~ "Ezek a nagák még mindig ellenőrzésük alatt tartják a kulcsfontosságú "
-#~ "helyeket. Tisztára kell sepernünk az utat Deorannak és Ethilielnek!"
-
-#, fuzzy
-#~| msgid ""
-#~| "I will hasten back to Kerlath Province now and seek the advice of the "
-#~| "Council of Westin..."
-#~ msgid ""
-#~ "I will hasten back to Kerlath Province now and seek the advice of the "
-#~ "Council of Westin..."
-#~ msgstr ""
-#~ "Most sietek vissza Kerlath tartományba, és kikérem Westin Tanácsának "
-#~ "bölcs véleményét..."
-
-#, fuzzy
-#~| msgid ""
-#~| "We too will return to our councils. We have much to tell them... Much "
-#~| "indeed."
-#~ msgid ""
-#~ "We too will return to our councils. We have much to tell them... Much "
-#~ "indeed."
-#~ msgstr ""
-#~ "Mi is visszamegyünk a tanácsunkhoz. Sokat kell nekik elmesélnünk... "
-#~ "Nagyon is sokat."
-
-#, fuzzy
-#~| msgid ""
-#~| "While the council debated the best course of action, Deoran and Ethiliel "
-#~| "prepared to enter the caves under the fortress..."
 #~ msgid ""
 #~ "While the council debated the best course of action, Deoran and Ethiliel "
-#~ "prepared to enter the caves under Mebrin’s fortress..."
+#~ "prepared to enter the caves under the fortress..."
 #~ msgstr ""
 #~ "Amíg a tanács vitázott a teendőkön, Deoran és Ethiliel felkészült, hogy "
 #~ "leereszkedjenek az erőd alatti barlangokba..."
@@ -6451,9 +6515,6 @@ msgstr ""
 #~ "Összegyűjtöttük minden erőnket! Ne legyen hiábavaló Sir Gerrick áldozata! "
 #~ "Wesnothért!"
 
-#~ msgid "Now I will never see Westin free again..."
-#~ msgstr "Most már sose látom Westint újra szabadnak..."
-
 #~ msgid ""
 #~ "Commander! I took your message to the council, and your deeds have "
 #~ "pleased them. Are the undead finally gone from our lands?"
@@ -6481,11 +6542,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Rendben. Se a banditák, se az élőholtak nem fognak fenyegetni egy ideig. "
 #~ "Mi ápoljuk a saját sebesültjeinket és ti is a tieiteket."
-
-#, fuzzy
-#~| msgid "You must pay for killing Mebrin!"
-#~ msgid "You must pay for killing Mebrin!"
-#~ msgstr "Megfizettek Mebrin haláláért!"
 
 #~ msgid ""
 #~ "Stop, Ithelden! I have traveled with these humans, and they are not the "
@@ -6524,6 +6580,9 @@ msgstr ""
 
 #~ msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 #~ msgstr "Eljuttatod Ethilielt a Nagy Fához, és beszélsz Itheldennel"
+
+#~ msgid "female^Disciple of Mebrin"
+#~ msgstr "Mebrin tanítványa"
 
 #~ msgid ""
 #~ "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to "
@@ -6574,14 +6633,8 @@ msgstr ""
 #~ "helyőrségeken szolgálnak parancsnokként, hogy biztosítsák a békét Wesnoth "
 #~ "területén."
 
-#~ msgid ""
-#~ "Walking corpses are the bodies of slain warriors, filled with some black "
-#~ "magic. They are slow and weak — any of your units is more than a match "
-#~ "for them. They are only dangerous in packs..."
-#~ msgstr ""
-#~ "Az eleven testek megölt harcosok testei, egy kis fekete mágiával "
-#~ "megfűszerezve. Lassúak és gyengék, bármelyik egységed többet ér náluk. "
-#~ "Csak csoportosan veszélyesek..."
+#~ msgid "Now I will never see Westin free again..."
+#~ msgstr "Most már sose látom Westint újra szabadnak..."
 
 #~ msgid ""
 #~ "Then, in the spring of the ninth year, the reports from the South Guard, "
@@ -6740,24 +6793,6 @@ msgstr ""
 #~ "nagy tanácsülés kezdetén fennhangon felolvasták. Utolsó, elkeseredett "
 #~ "harcát dalba foglalták, amit emberöltők múlva sem felejtettek el."
 
-#~ msgid ""
-#~ "It grieves me to learn of his death, foolish though he may have been! At "
-#~ "least we managed to defeat some of these bandits here and now. What else "
-#~ "happened?"
-#~ msgstr ""
-#~ "Szomorúan hallom, hogy meghalt, bármilyen ostoba módon viselkedett! De "
-#~ "most legalább sikerült párat legyőznünk ezek közül a banditák közül. Mi "
-#~ "történt még?"
-
-#~ msgid "Westin is safe again."
-#~ msgstr "Westin újra biztonságban."
-
-#~ msgid "Westin will soon be safe again."
-#~ msgstr "Westin rövidesen újra biztonságban lesz."
-
-#~ msgid "female^Disciple of Mebrin"
-#~ msgstr "Mebrin tanítványa"
-
 #~ msgid "lance"
 #~ msgstr "kopja"
 
@@ -6784,61 +6819,3 @@ msgstr ""
 
 #~ msgid "No gold carried over to the next scenario."
 #~ msgstr "A következő küldetésbe nem viszed tovább az aranyad."
-
-#, fuzzy
-#~| msgid ""
-#~| "She won’t listen. If we leave these nagas here, they will ambush Deoran "
-#~| "and Ethiliel! We must destroy them!"
-#~ msgid ""
-#~ "If we leave these naga here, they will ambush Deoran and Ethiliel! We "
-#~ "must destroy them!"
-#~ msgstr ""
-#~ "Nem hallgat ránk. Ha itt hagyjuk ezeket a nagákat, lesben állnak majd "
-#~ "Deoranra és Ethilielre várva! Meg kell semmisítenünk őket!"
-
-#~ msgid ""
-#~ "Thugs are the mainstay of the bandit armies. They do not have a "
-#~ "<i>ranged</i> attack, and are vulnerable to your archers. Deoran’s lance "
-#~ "will also strike fear into their hearts! Like all of the bandit units, "
-#~ "they are much more dangerous at night."
-#~ msgstr ""
-#~ "A gyilkosok a banditák seregének fő alkotói. Csak közelharcban állják a "
-#~ "sarat, az íjászaid ellen védtelenek. Deoran kopjája szintén félelemmel "
-#~ "tölti el szíveiket! Mint minden bandita harcos, éjszaka ők is sokkal "
-#~ "veszélyesebbek."
-
-#~ msgid ""
-#~ "Thieves are more subtle than thugs. They try to surround your units and "
-#~ "stab them in the back. Make sure that thieves never have an opportunity "
-#~ "to attack when they have an ally directly behind the unit they are "
-#~ "attacking — they’ll do double damage! Like thugs, thieves are vulnerable "
-#~ "to the ranged attacks of your archers."
-#~ msgstr ""
-#~ "A tolvajok sokkal ravaszabbak, mint a gyilkosok. Megpróbálják megkerülni "
-#~ "és hátba támadni az egységeidet. Soha ne hagyd, hogy úgy támadjanak, hogy "
-#~ "a támadott egységed mögött közvetlenül egy szövetségesük álljon — kétszer "
-#~ "annyit fognak sebezni! Akárcsak a gyilkosok, a tolvajok is könnyen "
-#~ "sebezhetőek az íjászaid távolsági támadásával."
-
-#~ msgid ""
-#~ "Footpads are the scouts of the bandit armies. They are quick, and have "
-#~ "both a <i>melee</i> attack and a <i>ranged</i> attack. Neither of their "
-#~ "attacks is very strong, however, and your spearmen will make quick work "
-#~ "of them during the day."
-#~ msgstr ""
-#~ "Az útonállók a banditahordák felderítői. Gyorsak és mind <i>közelharcban</"
-#~ "i>, mind <i>távolsági harcban</i> megállják a helyüket. Azonban egyik "
-#~ "támadásuk sem túl erős, lándzsásaid nappal könnyűszerrel elbánnak velük."
-
-#~ msgid ""
-#~ "Skeletons are the bones of fallen warriors raised by some dark magic. "
-#~ "They are almost immune to piercing weapons like arrows and spears. Bladed "
-#~ "attacks like swords will injure them, and Minister Hylas’s <i>arcane</i> "
-#~ "attack is deadly against them. Like the rest of the bandits, they are "
-#~ "more dangerous at night!"
-#~ msgstr ""
-#~ "A csontvázak elesett harcosok csontjaiból kelnek életre sötét mágia "
-#~ "hatására. Majdnem teljesen ellenállnak a szúrófegyvereknek, úgy mint a "
-#~ "nyilak és a lándzsák. Vágófegyverekkel, például karddal támadva "
-#~ "sebezhetőek, halálos számukra továbbá Hylas atya <i>földöntúli</i> "
-#~ "támadása. Ahogy minden bandita, ők is sokkal veszélyesebbek éjszaka!"

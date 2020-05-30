@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 23:11 UTC\n"
-"PO-Revision-Date: 2020-02-01 22:12+0100\n"
+"PO-Revision-Date: 2020-05-15 20:20+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -1105,6 +1105,8 @@ msgid ""
 "Compared to other drakes, Drake Arbiters have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"Oproti ostatním drakonidům mají drakonidé soudci vyšší odolnost vůči útokům "
+"„bodnutím“."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -1502,6 +1504,8 @@ msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"Oproti ostatním drakonidům mají drakonidští strážci vyšší odolnost vůči "
+"útokům „bodnutím“."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -2630,6 +2634,23 @@ msgstr "Elfí hrdina"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:18
+#, fuzzy
+#| msgid ""
+#| "Accomplished Elvish warriors are sometimes called ‘Sárcan’, roughly "
+#| "meaning ‘one who has sacrificed in defense’ or ‘one transfigured by "
+#| "experience’. Often translated to ‘Elvish Heroes’ in the human tongue, "
+#| "this name does indicate some level of esteem and prestige, but is not "
+#| "used to glorify the position that these elves hold. Elvish Heroes are "
+#| "those who have survived numerous wars and have outlived many of their "
+#| "friends who fell in prior battles. They have seen all manner of atrocity "
+#| "committed by all races, be it orcs and humans ravaging the natural beauty "
+#| "of the forests, or even their own kind, other elves who are not above "
+#| "slaughtering innocent people out of pride and vengeance. Many years of "
+#| "fighting naturally make these swordsmen highly skilled in melee combat, "
+#| "but the hardships and destruction wrought by war take a great toll on "
+#| "both mind and body. While the Elves realize the necessity of military "
+#| "strength and honor the ‘Sárcanet’ as heroes for their service, such a "
+#| "status is not one often sought after by the majority of Elvenkind."
 msgid ""
 "Accomplished Elvish warriors are sometimes called ‘Sárcan’, roughly meaning "
 "‘one who has sacrificed in defense’ or ‘one transfigured by experience’. "
@@ -2646,6 +2667,20 @@ msgid ""
 "service, such a status is not one often sought after by the majority of "
 "Elvenkind."
 msgstr ""
+"Vynikající elfí válečníci jsou někdy nazýváni „Sárcan“, což přibližně "
+"znamená „ten, kdo se obětoval na obranu“ nebo „proměněný zkušeností“. Toto "
+"jméno, do lidské řeči často překládáno jako „elfí hrdinové“, naznačuje "
+"určitou úroveň vážnosti a významnosti, ale nepoužívá se k oslavě postavení, "
+"které tito elfové zastávají. Elfí hrdinové jsou ti, kteří přestáli mnohé "
+"války a přežili mnoho svých přátel, již padli v předchozích bitvách. "
+"Spatřili všechny způsoby krutosti páchané každou rasou, ať to byli skřeti "
+"a lidé pustošící přirozenou krásu lesů nebo dokonce jejich vlastní druh, "
+"jiní elfové, kteří se nepovznesli nad vraždění nevinných lidí z pýchy a pro "
+"pomstu. Mnoho let bojů z těchto šermířů přirozeně učinilo velké odborníky na "
+"boj zblízka, ale útrapy a ničení působené válkou si vybírají velkou daň na "
+"duši i na těle. Přestože si elfové uvědomují nezbytnost vojenských sil a ctí "
+"„Sárcanet“ za jejich službu jako hrdiny, není toto postavení většinou elfího "
+"národa často vyhledáváno."
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
@@ -2818,6 +2853,18 @@ msgstr "Elfí hraničář"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:19
+#, fuzzy
+#| msgid ""
+#| "The silent watchers of the forests, rangers are masters of stealth and "
+#| "reconnaissance. Many are explorers and loners, preferring to travel alone "
+#| "along the paths between the towering trees and among the unspoiled "
+#| "natural beauty of their homes, of which they are fiercely protective. "
+#| "While they possess considerable skill in both blade and bow, rangers are "
+#| "a little less adept at fighting other warriors on even terms, preferring "
+#| "instead to ambush their enemies from the shadows in the woods. A surprise "
+#| "attack from rangers can cripple even a force many times their size, and "
+#| "attacking armies often choose to withdraw rather than risk a game of "
+#| "guerrilla warfare with rangers in the forests."
 msgid ""
 "The silent watchers of the forests, Elvish rangers are masters of stealth "
 "and reconnaissance. Many are explorers and loners, preferring to wander "
@@ -2829,6 +2876,15 @@ msgid ""
 "their size and will often compel attacking armies to withdraw rather than "
 "risk a game of prolonged guerrilla warfare in the forests."
 msgstr ""
+"Jako tišší strážcí lesů jsou hraničáři odborníky na výzvědy a kradmý pohyb. "
+"Mnozí jsou průzkumníky a samotáři, raději cestují sami po stezkách mezi "
+"vysoko se tyčícími stromy, obklopeni nedotčenou přírodní krásou jejich "
+"domovů, kterou urputně chrání. Ačkoli zachází dost obratně jak s čepelí, tak "
+"s lukem, nejsou tak zdatní v boji s jinými válečníky za stejných podmínek. "
+"Místo toho dávají přednost přepadání svých nepřátel ze zálohy ve stínech "
+"lesa. Překvapivý útok hraničářů může ochromit i sílu, která je mnohokrát "
+"převyšuje počtem a útočící vojska často raději zvolí ústup, než aby "
+"riskovala hru na partyzánskou válku s hraničáři v lesích."
 
 #. [special_note]
 #: data/core/units/elves/Ranger.cfg:21
@@ -3601,6 +3657,8 @@ msgid ""
 "Compared to other loyalists, Halberdiers have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"Oproti ostatním věrným mají halapartníci vyšší odolnost vůči útokům "
+"„bodnutím“."
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
@@ -3798,6 +3856,7 @@ msgid ""
 "Compared to other loyalists, Pikemen have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"Oproti ostatním věrným mají pikenýři vyšší odolnost vůči útokům „bodnutím“."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:35
@@ -3835,11 +3894,13 @@ msgid ""
 "Compared to other loyalists, Royal Guards have a higher resistance to "
 "‘blade’ and ‘impact’ attacks."
 msgstr ""
+"Oproti ostatním věrným má královská stráž vyšší odolnost vůči útokům "
+"„čepelí“ a „úderem“."
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:25
 msgid "Compared to other loyalists, Royal Guards have more movepoints."
-msgstr ""
+msgstr "Oproti ostatním věrným má královská stráž více kroků."
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -3935,6 +3996,8 @@ msgid ""
 "Compared to other loyalists, Swordsmen have a higher resistance to ‘blade’ "
 "and ‘impact’ attacks."
 msgstr ""
+"Oproti ostatním věrným mají bojovníci s mečem vyšší odolnost vůči útokům "
+"„čepelí“ a „úderem“."
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
@@ -4031,6 +4094,7 @@ msgid ""
 "Compared to other mages, Arch Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Oproti ostatním mágům mají arcimágové vyšší odolnost vůči útokům „ohněm“."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:48
@@ -4102,6 +4166,7 @@ msgid ""
 "Compared to other mages, Great Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Oproti ostatním mágům mají velcí mágové vyšší odolnost vůči útokům „ohněm“."
 
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:91
@@ -4147,6 +4212,7 @@ msgid ""
 "Compared to other mages, Red Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Oproti ostatním mágům mají červení mágové vyšší odolnost vůči útokům „ohněm“."
 
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:99
@@ -4244,6 +4310,8 @@ msgid ""
 "Compared to other mages, White Mages have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"Oproti ostatním mágům mají bílí mágové vyšší odolnost vůči „nezemským“ "
+"útokům."
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:108
@@ -4278,6 +4346,8 @@ msgid ""
 "Compared to other mages, Mages of Light have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"Oproti ostatním mágům mají mágové světla vyšší odolnost vůči „nezemským“ "
+"útokům."
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:106
@@ -5467,7 +5537,7 @@ msgstr "Nagini bojovnice"
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
-msgstr "Nága Bojovník"
+msgstr "Nága bojovník"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:18
@@ -5562,16 +5632,16 @@ msgstr "válečná čepel"
 #. [female]
 #: data/core/units/nagas/Ophidian.cfg:88
 #, fuzzy
-#| msgid "Naga Myrmidon"
+#| msgid "Nagini Myrmidon"
 msgid "Nagini Ophidian"
-msgstr "Myrmidoňan"
+msgstr "Myrmidoňanka"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:4
 #, fuzzy
 #| msgid "Naga Fighter"
 msgid "Naga Ringcaster"
-msgstr "Nága Bojovník"
+msgstr "Nága bojovník"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:17
@@ -5589,19 +5659,20 @@ msgstr ""
 msgid "chakram"
 msgstr ""
 
+# nagini - ženský rod
 #. [female]
 #: data/core/units/nagas/Ringcaster.cfg:93
 #, fuzzy
-#| msgid "Naga Fighter"
+#| msgid "Nagini Fighter"
 msgid "Nagini Ringcaster"
-msgstr "Nága Bojovník"
+msgstr "Nagini bojovnice"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:4
 #, fuzzy
-#| msgid "Naga Fighter"
+#| msgid "Naga Warrior"
 msgid "Naga Sicarius"
-msgstr "Nága Bojovník"
+msgstr "Nága válečník"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
@@ -5674,7 +5745,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Naga Fighter"
 msgid "Naga Zephyr"
-msgstr "Nága Bojovník"
+msgstr "Nága bojovník"
 
 #. [unit_type]: id=Naga Zephyr, race=naga
 #: data/core/units/nagas/Zephyr.cfg:18
@@ -5718,12 +5789,13 @@ msgid ""
 "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgstr ""
 
+# nagini - ženský rod
 #. [female]
 #: data/core/units/nagas/Zephyr.cfg:110
 #, fuzzy
-#| msgid "Naga Fighter"
+#| msgid "Nagini Fighter"
 msgid "Nagini Zephyr"
-msgstr "Nága Bojovník"
+msgstr "Nagini bojovnice"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
@@ -7037,136 +7109,6 @@ msgid ""
 "hinder their enemies."
 msgstr ""
 
-#~ msgid ""
-#~ "The magic of the wood-elves is poorly suited for combat, but effective "
-#~ "nonetheless. The forests in which they thrive can become quickened by a "
-#~ "word of command, and will lash out at those who threaten their peace.\n"
-#~ "\n"
-#~ "The chief ability of Druids lies in healing, and it is for this skill "
-#~ "that they are revered by their people."
-#~ msgstr ""
-#~ "Magie lesních elfů není příliš vhodná pro boj, přesto je účinná. Lesy, ve "
-#~ "kterých žijí, mohou být oživeny pouhým slovem a budou pak rozdávat rány "
-#~ "těm, kteří ohrožují jejích mír.\n"
-#~ "\n"
-#~ "Hlavní schopnost elfích druidek spočívá v léčení a právě pro tuto "
-#~ "schopnost si je jejich lid cení."
-
-#~ msgid ""
-#~ "The magic of the elves is wholly unlike that of humanity, so much so that "
-#~ "humans are almost universally incapable of understanding it, let alone "
-#~ "using it. Likewise, those who are masters of it are equally enigmatic; "
-#~ "though it can be said that they are revered by their people, very little "
-#~ "can be said about their actual function or purpose within that society."
-#~ msgstr ""
-#~ "Magie elfů je natolik odlišná od lidské, že ji lidé téměř bez výjimky "
-#~ "nedokáží pochopit, natož pak používat. Ti kteří ji ovládají mistrně jsou "
-#~ "stejně záhadní; I když je o nich možno říci, že k nim jejich lid s "
-#~ "obdivem vzhlíží, o jejich skutečné roli nebo účelu ve společnosti nelze "
-#~ "říci mnoho."
-
-#~ msgid ""
-#~ "The leaders of elvenkind command an instinctive loyalty from their people "
-#~ "that rulers of other races can only envy, and earn it with great "
-#~ "mindfulness and wisdom. Quiet and contemplative in times of peace, a High "
-#~ "Lord in the full of his wrath is an awesome sight indeed."
-#~ msgstr ""
-#~ "Vůdcové elfů se u své rasy těší instinktivní odevzdanosti, kterou jim "
-#~ "ostatní vůdci mohou pouze závidět. Získávají ji velkou moudrostí "
-#~ "a uvědomělostí. Jakkoliv klidný a rozjímavý v dobách klidu, rozhněvaný "
-#~ "nejvyšší lord je vskutku strašlivý a hrůzu nahánějící pohled."
-
-#~ msgid ""
-#~ "Elves choose their leaders for their wisdom and sensitivity to the "
-#~ "balance of universal forces; foresight is what has protected them in "
-#~ "times of uncertainty. Their just reign is rewarded by the unflagging "
-#~ "fealty of their people, which is the greatest gift for which any ruler "
-#~ "could ask."
-#~ msgstr ""
-#~ "Elfové volí své vůdce pro jejich schopnosti a moudrost; jejich "
-#~ "prozíravost je to, co je chrání v nejistých dobách. Jejich spravedlivá "
-#~ "vláda je odměněna bezmeznou věrností svých lidí, což je největší dar, "
-#~ "jaký si jen vůdce může přát."
-
-#~ msgid ""
-#~ "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
-#~ "Despite the peaceful nature of their people, their experience makes them "
-#~ "quite deadly in combat. Only the most dedicated exceed these elves’ skill "
-#~ "as mounted archers — in fact, most would be hard pressed to equal it "
-#~ "standing on solid ground.\n"
-#~ "\n"
-#~ "The speed of these soldiers allows the elves to strike when and where "
-#~ "they choose when fighting on their home ground, a fact that has saved "
-#~ "many of their number from death."
-#~ msgstr ""
-#~ "Členové elfích eskort jsou trénováni jako královští kurýři elfího "
-#~ "království. Navzdory mírumilovné nátuře těchto lidí je jejich zkušenosti "
-#~ "dělají v boji smrtícími. Jen ti nejlepší z nejlepších překonávají tyto "
-#~ "elfy v jejich dovednosti jízdních lučištníků – ve skutečnosti by se jim "
-#~ "většina stěží dokázala vyrovnat i na pevné zemi.\n"
-#~ "\n"
-#~ "Rychlost těchto vojáků umožňuje elfům při boji ve známém terénu zaútočit "
-#~ "kdykoli a kdekoli si vyberou, tak již zachránili spoustu svých "
-#~ "spolubojovníků od jisté smrti."
-
-#~ msgid ""
-#~ "Being partly faerie in nature, elves have an inherent capability for "
-#~ "magic. This is realized in their affinity with the natural world, which "
-#~ "they can call upon as an ally in combat. Enemies wandering in their "
-#~ "forests may soon find themselves entangled by roots and hindered by the "
-#~ "very ground they stand on.\n"
-#~ "\n"
-#~ "The healing abilities of the elves are also remarkable, and of capital "
-#~ "use in battle."
-#~ msgstr ""
-#~ "Majíc kouzla ve své přirozenosti, elfové mají vrozené schopnosti pro "
-#~ "magii. To je realizováno díky jejich spříznění s přírodou, kterou mohou v "
-#~ "případě potřeby zavolat v boji na pomoc. Nepřátelé, nacházející se v "
-#~ "jejich lesích, se brzy octnou zamotáni do stejných kořenů, na kterých se "
-#~ "před chvílí procházeli a jsou pak mnohem menší hrozbou. \n"
-#~ "\n"
-#~ "Léčitelské schopnosti elfů jsou také nevšední a v boji naleznou skvělé "
-#~ "uplatnění."
-
-#~ msgid ""
-#~ "Devotion to the path of faerie may eventually transform an elf maiden "
-#~ "into a creature of both worlds. Guided by a power which is little "
-#~ "understood, these beautiful stewards of the elven forests epitomize the "
-#~ "grace and mystery of their people."
-#~ msgstr ""
-#~ "Oddanost vílím zvyklostem nakonec transformuje elfí dívku na stvoření z "
-#~ "obou světů. Vedeny přirozeností, kterou lze těžko pochopit, tyto "
-#~ "překrásné správkyně elfích lesů představují ctnost a tajemství svých lidí."
-
-#~ msgid ""
-#~ "The world of faerie is far more potent than the corporeal world. Simply "
-#~ "bringing some of this world into our own can have violent results. This "
-#~ "is well-understood by the elves, although rarely used with malicious "
-#~ "intent; doing so is no easy task, and is a very ill-regarded use of their "
-#~ "strength.\n"
-#~ "\n"
-#~ "Those able to do so are roughly titled as ‘sorceresses’ by other races; "
-#~ "and certainly are capable of acting the part."
-#~ msgstr ""
-#~ "Čarovná říše je mnohem mocnější než hmotný svět. Jednoduché přenesení "
-#~ "části toho světa do našeho může mít divoké, až ničivé následky. Elfové to "
-#~ "dobře vědí, přesto zřídkakdy využívají sil onoho světa se zlými úmysly; "
-#~ "učinit něco takového není jednoduché a je považováno za zneužití jejich "
-#~ "schopností.\n"
-#~ "\n"
-#~ "Ty které jsou schopny ovládat síly z čarovné říše jsou ostatními rasami "
-#~ "nepřesně nazývány „vědmami“ a jsou určitě schopny tak vystupovat."
-
-#~ msgid ""
-#~ "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
-#~ "mundane natures. They are possessed of wondrous, and sometimes terrifying "
-#~ "powers. Legends concerning these have given other races a healthy fear of "
-#~ "the elves."
-#~ msgstr ""
-#~ "Vzácně vídané moudré sylfy plně ovládají obě části své přirozenosti, vílí "
-#~ "i pozemskou. Jejich moc je podivuhodná a někdy i děsivá. Mýty o nich jsou "
-#~ "příčinou zdravého strachu z elfů mezi ostatními rasami."
-
 #, fuzzy
 #~| msgid ""
 #~| "Some men excel at medicine the way others do at strength of arms, and "
@@ -7637,6 +7579,150 @@ msgstr ""
 #~ "se rozšířili zvěsti o jejich elfském původu. Podráždění těmito mýty, "
 #~ "Jawalové často demonstrují svoje umění v předních liniích - jednou velmi "
 #~ "rychle mezi bojovými liniemi a zasypávají nepřátele deštěm šípů."
+
+#~ msgid ""
+#~ "Compared to other elves, Elvish Avengers have superior movement and "
+#~ "defense on sand, shallow water, and mountains."
+#~ msgstr ""
+#~ "Oproti ostatním elfům mají elfí mstitelé lepší obranu a pohyb na písku, "
+#~ "v mělké vodě a horách."
+
+#~ msgid ""
+#~ "The magic of the wood-elves is poorly suited for combat, but effective "
+#~ "nonetheless. The forests in which they thrive can become quickened by a "
+#~ "word of command, and will lash out at those who threaten their peace.\n"
+#~ "\n"
+#~ "The chief ability of Druids lies in healing, and it is for this skill "
+#~ "that they are revered by their people."
+#~ msgstr ""
+#~ "Magie lesních elfů není příliš vhodná pro boj, přesto je účinná. Lesy, ve "
+#~ "kterých žijí, mohou být oživeny pouhým slovem a budou pak rozdávat rány "
+#~ "těm, kteří ohrožují jejích mír.\n"
+#~ "\n"
+#~ "Hlavní schopnost elfích druidek spočívá v léčení a právě pro tuto "
+#~ "schopnost si je jejich lid cení."
+
+#~ msgid ""
+#~ "The magic of the elves is wholly unlike that of humanity, so much so that "
+#~ "humans are almost universally incapable of understanding it, let alone "
+#~ "using it. Likewise, those who are masters of it are equally enigmatic; "
+#~ "though it can be said that they are revered by their people, very little "
+#~ "can be said about their actual function or purpose within that society."
+#~ msgstr ""
+#~ "Magie elfů je natolik odlišná od lidské, že ji lidé téměř bez výjimky "
+#~ "nedokáží pochopit, natož pak používat. Ti kteří ji ovládají mistrně jsou "
+#~ "stejně záhadní; I když je o nich možno říci, že k nim jejich lid s "
+#~ "obdivem vzhlíží, o jejich skutečné roli nebo účelu ve společnosti nelze "
+#~ "říci mnoho."
+
+#~ msgid ""
+#~ "The leaders of elvenkind command an instinctive loyalty from their people "
+#~ "that rulers of other races can only envy, and earn it with great "
+#~ "mindfulness and wisdom. Quiet and contemplative in times of peace, a High "
+#~ "Lord in the full of his wrath is an awesome sight indeed."
+#~ msgstr ""
+#~ "Vůdcové elfů se u své rasy těší instinktivní odevzdanosti, kterou jim "
+#~ "ostatní vůdci mohou pouze závidět. Získávají ji velkou moudrostí "
+#~ "a uvědomělostí. Jakkoliv klidný a rozjímavý v dobách klidu, rozhněvaný "
+#~ "nejvyšší lord je vskutku strašlivý a hrůzu nahánějící pohled."
+
+#~ msgid ""
+#~ "Elves choose their leaders for their wisdom and sensitivity to the "
+#~ "balance of universal forces; foresight is what has protected them in "
+#~ "times of uncertainty. Their just reign is rewarded by the unflagging "
+#~ "fealty of their people, which is the greatest gift for which any ruler "
+#~ "could ask."
+#~ msgstr ""
+#~ "Elfové volí své vůdce pro jejich schopnosti a moudrost; jejich "
+#~ "prozíravost je to, co je chrání v nejistých dobách. Jejich spravedlivá "
+#~ "vláda je odměněna bezmeznou věrností svých lidí, což je největší dar, "
+#~ "jaký si jen vůdce může přát."
+
+#~ msgid ""
+#~ "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
+#~ "Despite the peaceful nature of their people, their experience makes them "
+#~ "quite deadly in combat. Only the most dedicated exceed these elves’ skill "
+#~ "as mounted archers — in fact, most would be hard pressed to equal it "
+#~ "standing on solid ground.\n"
+#~ "\n"
+#~ "The speed of these soldiers allows the elves to strike when and where "
+#~ "they choose when fighting on their home ground, a fact that has saved "
+#~ "many of their number from death."
+#~ msgstr ""
+#~ "Členové elfích eskort jsou trénováni jako královští kurýři elfího "
+#~ "království. Navzdory mírumilovné nátuře těchto lidí je jejich zkušenosti "
+#~ "dělají v boji smrtícími. Jen ti nejlepší z nejlepších překonávají tyto "
+#~ "elfy v jejich dovednosti jízdních lučištníků – ve skutečnosti by se jim "
+#~ "většina stěží dokázala vyrovnat i na pevné zemi.\n"
+#~ "\n"
+#~ "Rychlost těchto vojáků umožňuje elfům při boji ve známém terénu zaútočit "
+#~ "kdykoli a kdekoli si vyberou, tak již zachránili spoustu svých "
+#~ "spolubojovníků od jisté smrti."
+
+#~ msgid ""
+#~ "Compared to other elves, Elvish Rangers have superior movement and "
+#~ "defense on sand, shallow water, and mountains."
+#~ msgstr ""
+#~ "Oproti ostatním elfům mají elfí hraničáři lepší obranu a pohyb na písku, "
+#~ "v mělké vodě a horách."
+
+#~ msgid ""
+#~ "Being partly faerie in nature, elves have an inherent capability for "
+#~ "magic. This is realized in their affinity with the natural world, which "
+#~ "they can call upon as an ally in combat. Enemies wandering in their "
+#~ "forests may soon find themselves entangled by roots and hindered by the "
+#~ "very ground they stand on.\n"
+#~ "\n"
+#~ "The healing abilities of the elves are also remarkable, and of capital "
+#~ "use in battle."
+#~ msgstr ""
+#~ "Majíc kouzla ve své přirozenosti, elfové mají vrozené schopnosti pro "
+#~ "magii. To je realizováno díky jejich spříznění s přírodou, kterou mohou v "
+#~ "případě potřeby zavolat v boji na pomoc. Nepřátelé, nacházející se v "
+#~ "jejich lesích, se brzy octnou zamotáni do stejných kořenů, na kterých se "
+#~ "před chvílí procházeli a jsou pak mnohem menší hrozbou. \n"
+#~ "\n"
+#~ "Léčitelské schopnosti elfů jsou také nevšední a v boji naleznou skvělé "
+#~ "uplatnění."
+
+#~ msgid ""
+#~ "Devotion to the path of faerie may eventually transform an elf maiden "
+#~ "into a creature of both worlds. Guided by a power which is little "
+#~ "understood, these beautiful stewards of the elven forests epitomize the "
+#~ "grace and mystery of their people."
+#~ msgstr ""
+#~ "Oddanost vílím zvyklostem nakonec transformuje elfí dívku na stvoření z "
+#~ "obou světů. Vedeny přirozeností, kterou lze těžko pochopit, tyto "
+#~ "překrásné správkyně elfích lesů představují ctnost a tajemství svých lidí."
+
+#~ msgid ""
+#~ "The world of faerie is far more potent than the corporeal world. Simply "
+#~ "bringing some of this world into our own can have violent results. This "
+#~ "is well-understood by the elves, although rarely used with malicious "
+#~ "intent; doing so is no easy task, and is a very ill-regarded use of their "
+#~ "strength.\n"
+#~ "\n"
+#~ "Those able to do so are roughly titled as ‘sorceresses’ by other races; "
+#~ "and certainly are capable of acting the part."
+#~ msgstr ""
+#~ "Čarovná říše je mnohem mocnější než hmotný svět. Jednoduché přenesení "
+#~ "části toho světa do našeho může mít divoké, až ničivé následky. Elfové to "
+#~ "dobře vědí, přesto zřídkakdy využívají sil onoho světa se zlými úmysly; "
+#~ "učinit něco takového není jednoduché a je považováno za zneužití jejich "
+#~ "schopností.\n"
+#~ "\n"
+#~ "Ty které jsou schopny ovládat síly z čarovné říše jsou ostatními rasami "
+#~ "nepřesně nazývány „vědmami“ a jsou určitě schopny tak vystupovat."
+
+#~ msgid ""
+#~ "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
+#~ "mundane natures. They are possessed of wondrous, and sometimes terrifying "
+#~ "powers. Legends concerning these have given other races a healthy fear of "
+#~ "the elves."
+#~ msgstr ""
+#~ "Vzácně vídané moudré sylfy plně ovládají obě části své přirozenosti, vílí "
+#~ "i pozemskou. Jejich moc je podivuhodná a někdy i děsivá. Mýty o nich jsou "
+#~ "příčinou zdravého strachu z elfů mezi ostatními rasami."
 
 #~ msgid ""
 #~ "Any orc who can keep a large tribe from feuding and in-fighting is often "

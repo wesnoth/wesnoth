@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2019-08-28 11:33+1000\n"
+"PO-Revision-Date: 2020-05-04 18:27+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -102,10 +102,8 @@ msgstr "Terrain Editor"
 
 #. [section]: id=editor_mode_scenario
 #: data/core/editor/help.cfg:20
-#, fuzzy
-#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
-msgstr "Map/Scenario Editor"
+msgstr "Scenario Editor"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -131,26 +129,41 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Paint terrain tiles on the map.\n"
+"\n"
+"The paint tool uses the brush sizes and the terrain palette.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: If a base terrain is selected, change the base without "
+"changing the overlay. If an overlay is selected, change the overlay without "
+"changing the base.\n"
+"• Control+mouse click: Select the terrain under the mouse cursor, as if it "
+"had been selected on the terrain palette (picks up both base and overlay).\n"
+"\n"
+"<bold>text='Brush Sizes'</bold>\n"
+"\n"
+"The selected brush changes the size of the tool:"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Paint single hexes."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Paint seven hexes at a time."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Paint nineteen hexes at a time."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Paint three hexes in a line."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
@@ -172,6 +185,17 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"Fill continuous regions of terrain with a different one.\n"
+"\n"
+"The fill tool uses the terrain palette.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: If a base terrain is selected, change the base without "
+"changing the overlay. If an overlay is selected, change the overlay without "
+"changing the base.\n"
+"• Control+mouse click: Select the terrain under the mouse cursor, as if it "
+"had been selected on the terrain palette (picks up both base and overlay)."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
@@ -194,31 +218,43 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Selects a set of hex fields, for use with with the cut, copy and fill-"
+"selection buttons below the menu bar.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Shift+mouse click: ‘Magic Wand’ mode, select the hex under the mouse "
+"cursor, and adjoining hexes of the same terrain type.\n"
+"• Control+mouse click: Unselect hexes.\n"
+"\n"
+"<bold>text='Brush Sizes'</bold>\n"
+"\n"
+"The selected brush changes the size of the tool:"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Select single hexes."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Select seven hexes at a time."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Select nineteen hexes at a time."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Select three hexes in a line."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "Clipboard and Paste Tool"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -235,33 +271,42 @@ msgid ""
 "\n"
 "The paste tool also has some clipboard-manipulation functions:"
 msgstr ""
+"Rotate, flip and paste the terrain in the clipboard\n"
+"\n"
+"Hexes can be cut or copied to the clipboard using the "
+"<ref>dst='editor_tool_select' text='Select Tool'</ref>.\n"
+"\n"
+"The paste tool shows an outline of the clipboard, which can be pasted with a "
+"mouse-click. Only the outline is shown, but mistakes can be corrected with "
+"the undo function, which is bound to both Control+Z and to the same key as "
+"the in-game undo function.\n"
+"\n"
+"The paste tool also has some clipboard-manipulation functions:"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Rotate clockwise by 60°."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Rotate anti-clockwise by 60°."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Flip horizontally"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Flip vertically"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
-#, fuzzy
-#| msgid "Starting Positions Howto"
 msgid "Starting Locations Tool"
-msgstr "Starting Positions How-To"
+msgstr "Starting Locations Tool"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:108
@@ -295,6 +340,34 @@ msgid ""
 "location for placing with a subsequent mouse click, as if it was selected in "
 "the editor palette."
 msgstr ""
+"Defines the side leader starting position\n"
+"\n"
+"This tool sets the side leaders’ default starting locations, and named "
+"special locations. Both types of location are enabled in both <ref>dst='.."
+"editor_mode_terrain' text='Terrain Editor'</ref> and Scenario Editor modes. "
+"The location names are shown as a list in the editor palette, clicking on "
+"the map will place that name on a hex, each location can only be placed on a "
+"single hex, and the editor will only allow one location per hex.\n"
+"\n"
+"To add named special locations, click “Add” at the bottom of the editor "
+"palette, and enter the name. These names must start with a letter and may "
+"contain numbers and underscores.\n"
+"\n"
+"More than nine teams can be added to a map, by clicking “Add” and entering a "
+"number, for example “10”. The UI will automatically show this as “Player "
+"10”.\n"
+"\n"
+"Named locations can be accessed from WML using the Standard Location "
+"Filter’s <italic>text='location_id='</italic>. Player starts can also be "
+"accessed from WML using <italic>text='location_id=1'</italic>, "
+"<italic>text='location_id=2'</italic>, etc — use only the number, without "
+"adding “Player ” in front of the number.\n"
+"\n"
+"<bold>text='Keyboard Modifiers'</bold>\n"
+"\n"
+"• Control+mouse click on a hex that already has a location: select that "
+"location for placing with a subsequent mouse click, as if it was selected in "
+"the editor palette."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:127
@@ -430,18 +503,47 @@ msgid ""
 "have their own terrains will need that add-on to tell the editor about their "
 "terrains."
 msgstr ""
+"Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
+"on which every Wesnoth scenario takes place. It also provides a limited set "
+"of features for setting up a basic scenario.\n"
+"\n"
+"The editor can be launched from the <italic>text='Map Editor'</italic> "
+"option at the title screen.\n"
+"\n"
+"<header>text='What you get'</header>\n"
+"\n"
+"• <ref>dst='..editor_mode_terrain' text='Terrain Editor'</ref>\n"
+"An easy to use map editor, similar to simple paint applications.\n"
+"\n"
+"• Scenario Editor\n"
+"\n"
+"• <ref>dst='editor_playlist' text='Playlist Manager'</ref>\n"
+"Predefine the scenario’s music track playlist.\n"
+"\n"
+"• Time Schedule Editor\n"
+"\n"
+"<header>text='What you do *not* get'</header>\n"
+"\n"
+"• What-you-see-is-what-you-get\n"
+"The editor is not a WYSIWYG application.\n"
+"\n"
+"Because which exact graphic tile represents a terrain in the map depends on "
+"all terrain rules loaded (which is different between the editor and each "
+"other use case) the map won’t look exactly the same.\n"
+"\n"
+"• Event handlers and scripting\n"
+"The editor is not a tool to help you scripting the scenario’s event "
+"handlers.\n"
+"\n"
+"• Infinite Backwards Compatibility\n"
+"The editor can load most maps from older versions of Wesnoth, but not all. "
+"Maps from 1.3.2 and later will normally be supported, unless they use "
+"terrains which are no longer in mainline Wesnoth. Maps from add-ons which "
+"have their own terrains will need that add-on to tell the editor about their "
+"terrains."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:221
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
-#| "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
-#| "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-#| "• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if "
-#| "it needs a topic on its own\n"
-#| "• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
 msgid ""
 "<header>text='Basic Concepts'</header>\n"
 "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
@@ -450,13 +552,12 @@ msgid ""
 "• The clipboard is described in the <ref>dst='editor_tool_paste' text='Paste "
 "Tool'</ref>"
 msgstr ""
-"\n"
+"<header>text='Basic Concepts'</header>\n"
 "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
 "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
 "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-"• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if it "
-"needs a topic on its own\n"
-"• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
+"• The clipboard is described in the <ref>dst='editor_tool_paste' text='Paste "
+"Tool'</ref>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:231
@@ -486,6 +587,25 @@ msgid ""
 "In this mode, terrain data is stored in the map_data attribute and saved "
 "into a file with any applicable WML."
 msgstr ""
+"The editor features two modes of operation:\n"
+"\n"
+"<header>text='Terrain-only Mode'</header>\n"
+"\n"
+"Allows only the composing of the terrain map itself and the definition of "
+"leader starting positions.\n"
+"\n"
+"When saved using “Save Map As” and saving to the default directory, the "
+"produced map can be found in the “User Maps” game type of the create "
+"multiplayer game dialogue.\n"
+"\n"
+"<header>text='Scenario Mode'</header>\n"
+"\n"
+"The Scenario mode allows several extra tools to be used, such as the Unit "
+"tool. At least one side must be defined in order to use these tools, "
+"however.\n"
+"\n"
+"In this mode, terrain data is stored in the map_data attribute and saved "
+"into a file with any applicable WML."
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:249
@@ -494,25 +614,6 @@ msgstr "Editor Tools"
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:250
-#, fuzzy
-#| msgid ""
-#| "The editor provides several tools for editing your maps and scenarios. At "
-#| "all times, one of the editor tools is active. The active tool's context "
-#| "determines the content of the editor palette and context menu.\n"
-#| "\n"
-#| "These following tools are provided:\n"
-#| "\n"
-#| "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_fill' text='Fill Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
-#| "\n"
 msgid ""
 "The editor provides several tools for editing your maps and scenarios. At "
 "all times, one of the editor tools is active. The active tool’s context "
@@ -535,22 +636,24 @@ msgid ""
 "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
 msgstr ""
 "The editor provides several tools for editing your maps and scenarios. At "
-"all times, one of the editor tools is active. The active tool's context "
+"all times, one of the editor tools is active. The active tool’s context "
 "determines the content of the editor palette and context menu.\n"
 "\n"
-"These following tools are provided:\n"
+"These tools are available in both terrain-only mode and scenario mode:\n"
 "\n"
 "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
 "• <ref>dst='editor_tool_fill' text='Fill Tool'</ref>\n"
 "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
 "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-"• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
+"• <ref>dst='editor_tool_starting' text='Starting Locations Tool'</ref>\n"
+"\n"
+"These tools are only available in scenario mode:\n"
+"\n"
 "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
 "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-"• <ref>dst='editor_tool_soundsource' text='Sound Source Tool'</ref>\n"
+"• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
 "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-"• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
-"\n"
+"• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:273
@@ -565,6 +668,15 @@ msgid ""
 "To get started, refer to the <ref>dst='editor_tool_paint' text='Paint Tool'</"
 "ref>’s page."
 msgstr ""
+"The terrain editor’s functionality is similar to a simple paint "
+"application.\n"
+"\n"
+"The right-hand side bar contains, from top to bottom, the mini-map, "
+"<ref>dst='editor_toolkit' text='Toolkit'</ref>, tool options, and "
+"<ref>dst='editor_palette' text='Palette'</ref>.\n"
+"\n"
+"To get started, refer to the <ref>dst='editor_tool_paint' text='Paint Tool'</"
+"ref>’s page."
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:284
@@ -605,21 +717,32 @@ msgid ""
 "this is the leftmost of the four buttons at the top of the palette, and the "
 "graphic changes depending on what is selected. Examples:"
 msgstr ""
+"The editor palette contains the applicable items you may use with the "
+"currently selected tool. For example, the Paint tool will display a full "
+"list of all available terrains, and the unit tool will provide a list of "
+"available units. When using the Starting Locations Tool, the palette changes "
+"to a list of “Player 1”, “Player 2”, etc.\n"
+"\n"
+"<bold>text='Filter'</bold>\n"
+"\n"
+"There is a filter function to show only a subset of the available items — "
+"this is the leftmost of the four buttons at the top of the palette, and the "
+"graphic changes depending on what is selected. Examples:"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:306
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Show all kinds of terrain"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:307
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Show only water terrains"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:308
 msgid "Show only villages"
-msgstr ""
+msgstr "Show only villages"
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:318
@@ -629,7 +752,7 @@ msgstr "Wesnoth Map Format"
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:319
 msgid "Wesnoth stores its maps in human readable plain text files."
-msgstr ""
+msgstr "Wesnoth stores its maps in human-readable plain-text files."
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:321
@@ -661,6 +784,32 @@ msgid ""
 "The <italic>text='map_file'</italic> method is preferred over using a "
 "preprocessor include."
 msgstr ""
+"<header>text='Native'</header>\n"
+"\n"
+"A map file consists of rows with comma separated terrain code strings. The "
+"only non-terrain information provided by the map syntax are the locations "
+"created by the <ref>dst='editor_tool_starting' text='Starting Locations "
+"Tool'</ref>. The files can be edited with a general purpose text editor like "
+"notepad.\n"
+"\n"
+"These files can be used directly for multiplayer games, the number of "
+"players is automatically determined by the number of starting positions. "
+"When saved in the default directory, the map can be found in the “Custom "
+"Maps” game type of the multiplayer “Create Game” dialogue; you may need to "
+"refresh the cache (press F5 on the title screen) before a newly-created map "
+"appears.\n"
+"\n"
+"These files can be used in a scenario’s .cfg file, with the scenario’s WML "
+"providing additional information such as teams, custom events, and complex "
+"side setups. The .cfg file loads the map file with either of:\n"
+"\n"
+"• map_file=maps/01_First_Map.map <italic>text='— supported since Wesnoth "
+"1.14'</italic>\n"
+"• map_data=\"{maps/01_First_Map.map}\" <italic>text='— a WML preprocessor "
+"include'</italic>\n"
+"\n"
+"The <italic>text='map_file'</italic> method is preferred over using a "
+"preprocessor include."
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:334
@@ -681,6 +830,21 @@ msgid ""
 "this is rarely-used code. Maps opened this way are marked (E) in the Window "
 "menu."
 msgstr ""
+"<header>text='Embedded'</header>\n"
+"\n"
+"The map data can stored as part of a scenario’s .cfg file, directly in the "
+"<italic>text='map_data'</italic> attribute. In other words, in the place "
+"that the preprocessor would include it when using the preprocessor-include "
+"method.\n"
+"\n"
+"<bold>text='Using Embedded Format in Terrain Mode'</bold>\n"
+"\n"
+"If you are editing the map and not using the Scenario Mode support, then "
+"it’s trivial to move the data to a native map file before opening it in the "
+"editor. This conversion is recommended — the editor supports editing the "
+"content of map_data while leaving everything else in the file untouched, but "
+"this is rarely-used code. Maps opened this way are marked (E) in the Window "
+"menu."
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:342
@@ -689,6 +853,9 @@ msgid ""
 "\n"
 "TODO: add documentation about the scenario mode."
 msgstr ""
+"<bold>text='Using Embedded Format in Scenario Mode'</bold>\n"
+"\n"
+"TODO: add documentation about the scenario mode."
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
@@ -741,12 +908,6 @@ msgstr "Great River"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
-#, fuzzy
-#| msgid ""
-#| "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
-#| "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
-#| "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgid ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
@@ -756,7 +917,7 @@ msgstr ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
-"text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
+"text='ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:38
@@ -864,59 +1025,6 @@ msgstr "Kingdom of Wesnoth"
 # gray vs grey
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
-#, fuzzy
-#| msgid ""
-#| "The Kingdom of Wesnoth is located in the north-central portion of the "
-#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-#| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "Great River to the north, the shore of the Great Ocean to the west, the "
-#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast (lower right corner of the "
-#| "main map).\n"
-#| "\n"
-#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
-#| "region. It is bounded to the south (off-map) by dense woods of which the "
-#| "Aethenwood may be considered a northernmost extension.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Weldyn: The capital of Wesnoth.\n"
-#| "    • Aldril: City lying on the Bay of Pearls.\n"
-#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
-#| "country, just west and north of Weldyn.\n"
-#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-#| "confluence of the Weldyn River and the Great River.\n"
-#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
-#| "south road crossing the River Aethen.\n"
-#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
-#| "the wilderness country around the east of the Brown Hills and north to "
-#| "the Ford of Abez.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
-#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
-#| "controlled by Wesnothian forces.\n"
-#| "    • Weldyn River: It branches from the Great River and goes south.\n"
-#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
-#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
-#| "population.\n"
-#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
-#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
-#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
-#| "well-populated and occasionally very dangerous.\n"
-#| "    • Horse Plains: Region of rolling plains just south of the Great "
-#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
-#| "east; the southern reach merges into the Central Plain. Home of the "
-#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
-#| "    • Estmark Hills: Largish range rising south of the Great River and "
-#| "east of the Weldyn River. The northernmost portion, nearest the River "
-#| "Weldyn, has at various times been settled by Wesnothians, but the "
-#| "Kingdom’s control is tenuous at best and banditry is common.\n"
-#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
-#| "of Haldric II’s sons.\n"
-#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
-#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -971,10 +1079,11 @@ msgid ""
 msgstr ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-"mainline campaigns revolve around it. It is bounded on the map by the Great "
-"River to the north, the shore of the Great Ocean to the west, the Aethenwood "
-"to the <ref>dst='southwest_elven_lands' text='south-west'</ref>, and the "
-"Bitter Swamp to the south-east (lower-right corner of the main map).\n"
+"mainline campaigns revolve around it. It is bounded on the map by the "
+"<ref>dst='great_river' text='Great River'</ref> to the north, the shore of "
+"the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Aethenwood to "
+"the <ref>dst='southwest_elven_lands' text='south-west'</ref>, and the Bitter "
+"Swamp to the south-east.\n"
 "\n"
 "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier region. "
 "It is bounded to the south (off-map) by dense woods of which the Aethenwood "
@@ -1016,7 +1125,7 @@ msgstr ""
 "tenuous at best and banditry is common.\n"
 "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one of "
 "Haldric II’s sons.\n"
-"    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, located "
+"    • Grey Woods: Large forest in the heart of the wilds of Wesnoth, located "
 "between Carcyn and Aldril and generally considered to be haunted."
 
 #. [topic]: id=elensefar
@@ -1027,24 +1136,6 @@ msgstr "Elensefar"
 # is vs can be
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
-#, fuzzy
-#| msgid ""
-#| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
-#| "text='Wesnoth'</ref>, at times an independent country, and at times in a "
-#| "treaty federation with Wesnoth. Its borders are the Great River to the "
-#| "north, a loosely defined line with Wesnoth to the east, the Bay of Pearls "
-#| "to the south, and the <ref>dst='great_ocean' text='ocean'</ref> to the "
-#| "west. More information is found in the historical narrative of Wesnoth.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Elensefar: The capital, located on an island in the "
-#| "<ref>dst='great_river' text='Great River'</ref> delta.\n"
-#| "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with "
-#| "Wesnoth.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
-#| "this point, and only ships can cross it."
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -1065,14 +1156,15 @@ msgid ""
 msgstr ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
-"treaty federation with Wesnoth. Its borders are the Great River to the "
-"north, a loosely defined line with Wesnoth to the east, the Bay of Pearls to "
-"the south, and the <ref>dst='great_ocean' text='ocean'</ref> to the west. "
-"More information is found in the historical narrative of Wesnoth.\n"
+"treaty federation with Wesnoth. Its borders are the <ref>dst='great_river' "
+"text='Great River'</ref> to the north, a loosely defined line with Wesnoth "
+"to the east, the Bay of Pearls to the south, and the <ref>dst='great_ocean' "
+"text='ocean'</ref> to the west. More information is found in the historical "
+"narrative of Wesnoth.\n"
 "\n"
 "<header>text='Notable cities:'</header>\n"
-"    • Elensefar: The capital, located on an island in the "
-"<ref>dst='great_river' text='Great River'</ref> delta.\n"
+"    • Elensefar: The capital, located on an island in the Great River "
+"delta.\n"
 "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth.\n"
 "\n"
 "<header>text='Notable land features:'</header>\n"
@@ -1088,46 +1180,6 @@ msgstr "Northlands"
 # , capitol?
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:120
-#, fuzzy
-#| msgid ""
-#| "There is no government of the Northlands. Various groups of orcs, "
-#| "dwarves, barbarian men and even elves populate the region. The northern "
-#| "and eastern borders are not defined, the southern border is the "
-#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
-#| "is the <ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Glamdrol: An Orcish tribal capital.\n"
-#| "    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
-#| "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga "
-#| "in the southern Heart Mountains. A major trade center.\n"
-#| "    • Dallben and Delwyn: Human villages originally built by settlers who "
-#| "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
-#| "abandoned. The forested area northeast of Elensefar, where these villages "
-#| "were located, was named the Annuvin province by men but was known by the "
-#| "elves as Wesmere.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Heart Mountains: A virtually impassable barrier between the river "
-#| "country and the Northern Plains.\n"
-#| "    • Heartfangs: the particularly forbidding stretch of high peaks "
-#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
-#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
-#| "madmen, and mages live there.\n"
-#| "    • Swamp of Dread: a very large bog located between the Heart "
-#| "Mountains and the Great River. A notoriously dangerous place.\n"
-#| "    • Lake Vrug: A large mountain lake whose river carves the only "
-#| "pathway through the Northern Mountains.\n"
-#| "    • Arkan-thoria: The river that comes out of Lake Vrug. This is the "
-#| "elvish name; among humans it is called Longlier.\n"
-#| "    • River Listra: The south-running tributary of the Great River into "
-#| "which the Arkan-thoria empties.\n"
-#| "    • Lintanir Forest: The southernmost portion of the Great Northern "
-#| "Forest, a gigantic wood whose eastern and northern boundaries are known "
-#| "only to the elves. Their capital, Elensiria, has only seldom been visited "
-#| "by humans.\n"
-#| "    • Great River: The origin of this river is somewhere in the east of "
-#| "the northern lands."
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -1173,40 +1225,41 @@ msgstr ""
 "barbarian men and even elves populate the region. The northern and eastern "
 "borders are not defined, the southern border is the <ref>dst='great_river' "
 "text='Great River'</ref>, and the western border is the "
-"<ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
+"<ref>dst='great_ocean' text='ocean'</ref>.\n"
 "\n"
 "<header>text='Notable cities:'</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
 "    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
 "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga in "
-"the southern Heart Mountains. A major trade centre.\n"
+"the southern Heart Mountains. A major trade center.\n"
 "    • Dallben and Delwyn: Human villages originally built by settlers who "
 "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
-"abandoned. The forested area north-east of Elensefar, where these villages "
-"were located, was named the Annuvin province by men but was known by the "
-"elves as Wesmere.\n"
+"abandoned. The forested area north-east of <ref>dst='elensefar' "
+"text='Elensefar'</ref>, where these villages were located, was named the "
+"Annuvin province by men but was known by the elves as Wesmere.\n"
 "\n"
 "<header>text='Notable land features:'</header>\n"
-"    • Heart Mountains: A virtually impassable barrier between the river "
-"country and the Northern Plains.\n"
-"    • Heartfangs: the particularly forbidding stretch of high peaks south-"
-"west of Lake Vrug and north of the Forest of Wesmere. The most inhospitable "
-"and dangerous portion of the Heart Mountains; only hermits, madmen, and "
-"mages live there.\n"
+"    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A virtually "
+"impassable barrier between the river country and the Northern Plains.\n"
+"    • Heartfangs: the particularly forbidding stretch of high peaks "
+"southwest of Lake Vrug and north of the Forest of Wesmere. The most "
+"inhospitable and dangerous portion of the Heart Mountains; only hermits, "
+"madmen, and mages live there.\n"
 "    • Swamp of Dread: a very large bog located between the Heart Mountains "
 "and the Great River. A notoriously dangerous place.\n"
 "    • Lake Vrug: A large mountain lake whose river carves the only pathway "
 "through the Northern Mountains.\n"
-"    • Arkan-thoria: The river that comes out of Lake Vrug. This is the "
-"elvish name; among humans it is called Longlier.\n"
+"    • <ref>dst='arkan_thoria' text='Arkan-thoria'</ref>: The river that "
+"comes out of Lake Vrug. This is the elvish name; among humans it is called "
+"Longlier.\n"
 "    • River Listra: The south-running tributary of the Great River into "
 "which the Arkan-thoria empties.\n"
 "    • Lintanir Forest: The southernmost portion of the Great Northern "
 "Forest, a gigantic wood whose eastern and northern boundaries are known only "
 "to the elves. Their capital, Elensiria, has only seldom been visited by "
 "humans.\n"
-"    • Great River: The origin of this river is somewhere in the east of the "
-"northern lands."
+"    • <ref>dst='great_river' text='Great River'</ref>: The origin of this "
+"river is somewhere in the east of the northern lands."
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -1215,24 +1268,6 @@ msgstr "South-West Elven Lands"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:142
-#, fuzzy
-#| msgid ""
-#| "The Wood Elves are separate from those of the north, and have only "
-#| "intermittent relations with them and most other countries. Its borders "
-#| "are the <ref>dst='great_ocean' text='Ocean'</ref> to the west, the Black "
-#| "River to the south and southeast, the lands of Wesnoth to the north and "
-#| "the Kerlath province to the east.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • None known.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Aethenwood: The largest southern forest, it extends far to the "
-#| "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
-#| "the elves make no such distinction, the southern part of the forest has "
-#| "been named Southwood by denizens of Kerlath.\n"
-#| "    • Black Forest: An ancient forest of which very little is known, "
-#| "abandoned by the elves long ago."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -1253,7 +1288,7 @@ msgid ""
 msgstr ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
-"the <ref>dst='great_ocean' text='Ocean'</ref> to the west, the Black River "
+"the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black River "
 "to the south and south-east, the lands of Wesnoth to the north and the "
 "Kerlath province to the east.\n"
 "\n"
@@ -1426,21 +1461,6 @@ msgstr "Commands"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:96
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-#| "strategy game somewhat unusual among modern strategy games. While other "
-#| "games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
-#| "strives for simplicity of both rules and gameplay. This does not make the "
-#| "game simple, however — from these simple rules arise a wealth of "
-#| "strategy, making the game easy to learn but a challenge to master.\n"
-#| "\n"
-#| "The following pages outline all you need to know to play Wesnoth. As you "
-#| "play, new information is added to the various categories as you come "
-#| "across new aspects of the game. For more detailed information on special "
-#| "situations and exceptions, follow the included links."
 msgid ""
 "\n"
 "\n"
@@ -1461,8 +1481,8 @@ msgstr ""
 "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy strategy "
 "game somewhat unusual among modern strategy games. While other games strive "
 "for complexity, <italic>text='Battle for Wesnoth'</italic> strives for "
-"simplicity of both rules and gameplay. This does not make the game simple, "
-"however — from these simple rules arise a wealth of strategy, making the "
+"simplicity of both rules and game-play. This does not make the game simple, "
+"however — from these simple rules arises a wealth of strategy, making the "
 "game easy to learn but a challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
@@ -1842,16 +1862,6 @@ msgstr "Income and Upkeep"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Income is simple. You have a base income of 2 gold per turn. For every "
-#| "village you control, you gain one additional gold each turn. (In general "
-#| "this is configurable but in campaigns it is almost always one gold per "
-#| "village.) Thus, if you have ten villages, you would normally gain 12 gold "
-#| "each turn. Your upkeep costs are subtracted from this income, as detailed "
-#| "below."
 msgid ""
 "\n"
 "\n"
@@ -1863,11 +1873,9 @@ msgstr ""
 "\n"
 "\n"
 "Income is simple. You have a base income of 2 gold per turn. For every "
-"village you control, you gain one additional gold each turn. (In general "
-"this is configurable but in campaigns it is almost always one gold per "
-"village.) Thus, if you have ten villages, you would normally gain 12 gold "
-"each turn. Your upkeep costs are subtracted from this income, as detailed "
-"below."
+"village you control, you gain one additional gold each turn. Thus, if you "
+"have ten villages, you would normally gain 12 gold each turn. Your upkeep "
+"costs are subtracted from this income, as detailed below."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
@@ -1930,6 +1938,14 @@ msgid ""
 "<italic>text='Status Table'</italic> dialog shows the values for the current "
 "scenario."
 msgstr ""
+"\n"
+"\n"
+"In general, the base income, the amount of gold you get per village per "
+"turn, and the number of unit levels each village can support are "
+"configurable, but in campaigns they are almost always the values described "
+"above. The <italic>text='Scenario Settings'</italic> tab of the "
+"<italic>text='Status Table'</italic> dialogue shows the values for the "
+"current scenario."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:228
@@ -2226,6 +2242,13 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
+"\n"
+"\n"
+"One of the challenges of the game is to work out how to protect your heroes. "
+"Small risks quickly build up: if you have five important units, and they "
+"each have just a 1% chance of death each turn, you can "
+"<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
+"you’ll rarely make it through a scenario without having it happen."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:288
@@ -2238,6 +2261,13 @@ msgid ""
 "the game, but we recommend against reloading merely to try the same strategy "
 "again while hoping for better luck."
 msgstr ""
+"Random numbers are part of Wesnoth, attacks can fail and units can die due "
+"to bad luck. This is an expected part of the game, and one of the aims of "
+"the game is that a sufficiently skilled player should be able to complete "
+"all of the mainline campaigns, on hard difficulty, without needing to save-"
+"load. Going back to a previous turn to try a different strategy is a part of "
+"learning the game, but we recommend against reloading merely to try the same "
+"strategy again while hoping for better luck."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:290
@@ -2248,6 +2278,11 @@ msgid ""
 "1.15.x series before 1.16.0 please assume that the forum threads are more "
 "authoritative than the text on this page."
 msgstr ""
+"\n"
+"\n"
+"The following points are under discussion on the forums. At least for the "
+"1.15.x series before 1.16.0 please assume that the forum threads are more "
+"authoritative than the text on this page."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
@@ -2263,6 +2298,16 @@ msgid ""
 "• There are more experience points available than on easy, and the player "
 "will be able to train enough troops to cope with losing some L2 or L3 units."
 msgstr ""
+"\n"
+"\n"
+"In the mainline campaigns, on hard:\n"
+"• A sufficiently skilled player will have a good chance to win each scenario "
+"on the first time that they see that scenario, without foreknowledge of what "
+"will happen.\n"
+"• This assumes that the player picks up all of the clues given in the "
+"dialogue.\n"
+"• There are more experience points available than on easy, and the player "
+"will be able to train enough troops to cope with losing some L2 or L3 units."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:297
@@ -2272,6 +2317,10 @@ msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
+"\n"
+"\n"
+"That said, it’s a game; the best way to play it is whichever way gives you "
+"the most enjoyment."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:306
@@ -2286,6 +2335,10 @@ msgid ""
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
 msgstr ""
+"<italic>text='Why did I lose that scenario?'</italic>\n"
+"\n"
+"One of the most difficult parts of Wesnoth is understanding why a scenario "
+"was lost."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:309
@@ -2297,6 +2350,12 @@ msgid ""
 "from your mistakes: watch the replay, try to understand what you did wrong, "
 "then <ref>dst='saveload' text='restart the scenario'</ref> and try again."
 msgstr ""
+"\n"
+"\n"
+"When you first start playing, you will probably lose some scenarios. That is "
+"normal, and is part of learning the game. When that happens, try to learn "
+"from your mistakes: watch the replay, try to understand what you did wrong, "
+"then <ref>dst='saveload' text='restart the scenario'</ref> to try again."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:311
@@ -2305,6 +2364,9 @@ msgid ""
 "\n"
 "Some common reasons for losing a scenario are:"
 msgstr ""
+"\n"
+"\n"
+"Some common reasons for losing a scenario are:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:313
@@ -2314,6 +2376,10 @@ msgid ""
 "• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
 "level'</ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
+"\n"
+"\n"
+"• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
+"level'</ref>. Try restarting the scenario at a lower difficulty."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:315
@@ -2324,6 +2390,11 @@ msgid ""
 "fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
 "taking advantage of terrain features or units’ special abilities, and so on."
 msgstr ""
+"\n"
+"\n"
+"• Playing a poor strategy: for example, recruiting the wrong types of units, "
+"fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
+"taking advantage of terrain features or units’ special abilities, and so on."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:317
@@ -2335,6 +2406,12 @@ msgid ""
 "it. If you have a loyal mage on your side, take the time to listen to its "
 "advice; it may save your life."
 msgstr ""
+"\n"
+"\n"
+"• Missing clues. Often there will be hints in the campaign’s story and "
+"dialogue about what to expect from a difficult scenario and how to prepare "
+"for it. If you have a loyal mage on your side, take the time to listen to "
+"its advice; it may save your life."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:319
@@ -2352,6 +2429,18 @@ msgid ""
 "change to an easier difficulty. (However, remember that <italic>text='some'</"
 "italic> losses are expected, particularly at higher difficulties.)"
 msgstr ""
+"\n"
+"\n"
+"• Barely scraping a victory in a previous scenario. At all difficulties "
+"except “Beginner” (TODO: and “Easy”?), campaigns assume that you will have "
+"some <italic>text='carry-over gold'</italic> and some advanced units on your "
+"<italic>text='recall list.'</italic> (These concepts are explained in the "
+"tutorial.) If you win a scenario but lose most of your advanced units and "
+"much of your gold, the following scenario may be very difficult to beat, "
+"even for a more experienced player. If you find yourself in this situation, "
+"you may try to go back a scenario or two and win them more convincingly, or "
+"change to an easier difficulty. (However, remember that <italic>text='some'</"
+"italic> losses are expected, particularly at higher difficulties.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:321
@@ -2365,14 +2454,17 @@ msgid ""
 "carryover for the next scenario. (This would be an example of “barely "
 "scraping a victory”.)"
 msgstr ""
+"\n"
+"\n"
+"• Poor gold management. At higher difficulties, managing gold — capturing "
+"villages to increase the income, and using low-level units and fresh "
+"recruits to reduce the spending — becomes important. If you use many high-"
+"level units, you might win a scenario easily but not have enough gold carry "
+"over for the next scenario. (This would be an example of “barely scraping a "
+"victory”.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:323
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Cores'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2380,7 +2472,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Cores'</header>"
+"<header>text='Unlikely reasons'</header>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:325
@@ -2390,6 +2482,10 @@ msgid ""
 "In addition to the common reasons, listed above, there are a few other "
 "reasons which are unlikely, though not impossible. They are:"
 msgstr ""
+"\n"
+"\n"
+"In addition to the common reasons, listed above, there are a few other "
+"reasons which are unlikely, though not impossible. They are:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:327
@@ -2400,6 +2496,11 @@ msgid ""
 "anticipate, and ended up with a set of high-level units not suitable for the "
 "next scenario."
 msgstr ""
+"\n"
+"\n"
+"• You may have played a strategy that the campaign developer did not "
+"anticipate, and ended with a set of high-level units not suitable for the "
+"next scenario."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:329
@@ -2413,6 +2514,14 @@ msgid ""
 "the highest difficulties. Requiring above-average luck, however, would "
 "qualify as a bug.)"
 msgstr ""
+"\n"
+"\n"
+"• You may have found a scenario that can only be won on the second or third "
+"time through, whether by requiring above-average luck or by expecting the "
+"players to have foreknowledge — to know what surprises are coming up before "
+"they happen. (It is under discussion whether foreknowledge is expected at "
+"the highest difficulties. Requiring above-average luck, however, would "
+"qualify as a bug.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:331
@@ -2432,6 +2541,19 @@ msgid ""
 "luck. It is only exceedingly bad luck, over multiple turns, that we mean "
 "here."
 msgstr ""
+"\n"
+"\n"
+"• Unusually-bad luck. Whether an attack hits or misses is random, so it "
+"could happen that the enemy was very lucky and had many hits, while you were "
+"very unlucky and had many misses. However, this is a very rare occurrence, "
+"virtually unheard of in all but the shortest, smallest scenarios. In fact, "
+"losses are more commonly caused by playing a <italic>text='bad'</italic> "
+"strategy despite having <italic>text='above-average'</italic> luck, than by "
+"playing a <italic>text='good'</italic> strategy but having "
+"<italic>text='below-average'</italic> luck. Moreover, merely having “below-"
+"average” luck does not excuse a loss; having below-average luck is perfectly "
+"normal, and scenarios are designed to be won even with below-average luck. "
+"It is only exceedingly bad luck, over multiple turns, that we mean here."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:333
@@ -2444,6 +2566,13 @@ msgid ""
 "indicative of a bug in the campaign. However, if you still think you found a "
 "bug, then by all means, report it!"
 msgstr ""
+"\n"
+"\n"
+"Be wary of attributing a loss to any of these reasons. If you are not a "
+"veteran player, it is far more likely that your loss was caused by one of "
+"the <italic>text='common'</italic> errors, listed above, and is not "
+"indicative of a bug in the campaign. However, if you still think you found a "
+"bug, then by all means, report it!"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:335
@@ -2456,6 +2585,13 @@ msgid ""
 "strategic mistakes, or small bits of luck at critical points in the "
 "engagement."
 msgstr ""
+"\n"
+"\n"
+"The “Damage Calculations” dialog shows some statistics that can help "
+"determine whether a match was very lucky or very unlucky. However, reading "
+"the statistics is no substitute to watching the replay and looking for "
+"strategic mistakes, or small bits of luck at critical points in the "
+"engagement."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:337
@@ -2466,6 +2602,11 @@ msgid ""
 "get review/corrections (like https://forums.wesnoth.org/viewtopic.php?"
 "f=3&t=39944 but specifically for new players)?\n"
 msgstr ""
+"\n"
+"\n"
+"TODO: link to a forum thread where new players can post their replays and "
+"get review/corrections (like https://forums.wesnoth.org/viewtopic.php?"
+"f=3&t=39944 but specifically for new players)?\n"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:347
@@ -4789,433 +4930,235 @@ msgid "The Long Dark (4)"
 msgstr "The Long Dark (4)"
 
 #: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:549
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
 msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Special Notes:"
+msgstr "Special Notes:"
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-"\n"
-"• Spirits have very unusual resistances to damage, and move quite slowly "
-"over open water."
+"Spirits have very unusual resistances to damage, and move quite slowly over "
+"open water."
 
 #: data/core/macros/special-notes.cfg:18
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit’s arcane attack deals tremendous damage to magical creatures, "
-#| "and even some to mundane creatures."
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-"\n"
-"• This unit’s arcane attack deals tremendous damage to magical creatures, "
-"and even some to mundane creatures."
+"This unit’s arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
 
 #: data/core/macros/special-notes.cfg:21
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
-msgstr ""
-"\n"
-"• This unit is capable of basic healing."
+msgstr "This unit is capable of basic healing."
 
 #: data/core/macros/special-notes.cfg:24
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
-msgstr ""
-"\n"
-"• This unit is capable of rapid healing."
+msgstr "This unit is capable of rapid healing."
 
 #: data/core/macros/special-notes.cfg:27
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-"\n"
-"• This unit is capable of healing those around it, and curing them of poison."
+"This unit is capable of healing those around it, and curing them of poison."
 
 #: data/core/macros/special-notes.cfg:30
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit is capable of neutralizing the effects of poison in units "
-#| "around it."
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-"\n"
-"• This unit is capable of neutralizing the effects of poison in units around "
+"This unit is capable of neutralizing the effects of poison in units around "
 "it."
 
 #: data/core/macros/special-notes.cfg:33
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
-"\n"
-"• This unit regenerates, which allows it to heal as though always stationed "
-"in a village."
+"This unit regenerates, which allows it to heal as though always stationed in "
+"a village."
 
 #: data/core/macros/special-notes.cfg:36
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
-"\n"
-"• The steadiness of this unit reduces damage from some attacks, but only "
-"while defending."
+"The steadiness of this unit reduces damage from some attacks, but only while "
+"defending."
 
 #: data/core/macros/special-notes.cfg:39
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• The leadership of this unit enables adjacent units of the same side to "
-#| "deal more damage in combat, though this only applies to units of lower "
-#| "level."
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-"\n"
-"• The leadership of this unit enables adjacent units of the same side to "
-"deal more damage in combat, though this only applies to units of lower level."
+"The leadership of this unit enables adjacent units of the same side to deal "
+"more damage in combat, though this only applies to units of lower level."
 
 #: data/core/macros/special-notes.cfg:42
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-"\n"
-"• This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
+"This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 
 #: data/core/macros/special-notes.cfg:45
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr ""
-"\n"
-"• Illumination increases the lighting level in adjacent areas."
+msgstr "Illumination increases the lighting level in adjacent areas."
 
 #: data/core/macros/special-notes.cfg:48
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit can use one move to teleport between any two empty villages "
-#| "controlled by its side."
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"\n"
-"• This unit can use one move to teleport between any two empty villages "
+"This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 
 #: data/core/macros/special-notes.cfg:51
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-"\n"
-"• In woodlands, this unit’s ambush skill renders it invisible to enemies "
+"In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 
 #: data/core/macros/special-notes.cfg:54
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
-msgstr ""
-"\n"
-"• This unit is able to hide at night, leaving no trace of its presence."
+msgstr "This unit is able to hide at night, leaving no trace of its presence."
 
 #: data/core/macros/special-notes.cfg:57
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-"\n"
-"• This unit can hide in villages (with the exception of water villages), and "
+"This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 
 #: data/core/macros/special-notes.cfg:60
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-"\n"
-"• This unit can move unseen in deep water, requiring no air from the surface."
+"This unit can move unseen in deep water, requiring no air from the surface."
 
 #: data/core/macros/special-notes.cfg:63
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"\n"
-"• This unit gains 1 hit-point added to its maximum whenever it kills a "
-"living unit."
+"This unit gains 1 hit-point added to its maximum whenever it kills a living "
+"unit."
 
 #: data/core/macros/special-notes.cfg:66
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-"\n"
-"• Whenever its berserk attack is used, this unit continues to push the "
-"attack until either it or its enemy lies dead."
+"Whenever its berserk attack is used, this unit continues to push the attack "
+"until either it or its enemy lies dead."
 
 #: data/core/macros/special-notes.cfg:69
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-"\n"
-"• If there is an enemy of the target on the opposite side of the target "
-"while attacking it, this unit may backstab, inflicting double damage by "
-"creeping around behind that enemy."
+"If there is an enemy of the target on the opposite side of the target while "
+"attacking it, this unit may backstab, inflicting double damage by creeping "
+"around behind that enemy."
 
 #: data/core/macros/special-notes.cfg:72
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• Foes who lose their life to the plague will rise again in unlife, "
-#| "unless they are standing on a village."
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-"\n"
-"• Foes who lose their life to the plague will rise again in unlife, unless "
+"Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 
 #: data/core/macros/special-notes.cfg:75
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-"\n"
-"• This unit is able to slow its enemies, halving their movement speed and "
+"This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 
 #: data/core/macros/special-notes.cfg:78
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
-"\n"
-"• The ability to turn the living to stone makes this unit extremely "
-"dangerous."
+"The ability to turn the living to stone makes this unit extremely dangerous."
 
 #: data/core/macros/special-notes.cfg:81
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr ""
-"\n"
-"• This unit’s marksmanship gives it a high chance of hitting targeted "
-"enemies, but only on the attack."
+"This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
+"but only on the attack."
 
 #: data/core/macros/special-notes.cfg:84
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit has magical attacks, which always have a high chance of "
-#| "hitting an opponent."
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-"\n"
-"• This unit has magical attacks, which always have a high chance of hitting "
-"an opponent."
+"This unit has magical attacks, which always have a high chance of hitting an "
+"opponent."
 
 #: data/core/macros/special-notes.cfg:87
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-"\n"
-"• The swarming attacks of this unit become less deadly whenever its members "
+"The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 
 #: data/core/macros/special-notes.cfg:90
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"\n"
-"• Using a charging attack doubles both damage dealt and received; this does "
+"Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 
 #: data/core/macros/special-notes.cfg:93
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• During battle, this unit can drain life from victims to renew its own "
-#| "health."
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
-"\n"
-"• During battle, this unit can drain life from victims to renew its own "
-"health."
+"During battle, this unit can drain life from victims to renew its own health."
 
 #: data/core/macros/special-notes.cfg:96
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr ""
-"\n"
-"• The length of this unit’s weapon allows it to strike first in melee, even "
-"in defence."
+"The length of this unit’s weapon allows it to strike first in melee, even in "
+"defence."
 
 #: data/core/macros/special-notes.cfg:99
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-"\n"
-"• The victims of this unit’s poison will continually take damage until they "
+"The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 
 #: data/core/macros/special-notes.cfg:102
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit has a defense cap on certain terrain types — it cannot "
-#| "achieve a higher defense rating on mixed terrains with such terrain types."
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
-"\n"
-"• This unit has a defence cap on certain terrain types — it cannot achieve a "
+"This unit has a defence cap on certain terrain types — it cannot achieve a "
 "higher defence rating on mixed terrains with such terrain types."
 
 #. [special_note]
 #: data/core/macros/special-notes.cfg:156
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
 msgstr ""
-"\n"
-"• This unit regenerates, which allows it to heal as though always stationed "
-"in a village."
+"This unit heals itself each turn, though not as much as if stationed in a "
+"village."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6979,43 +6922,6 @@ msgstr "Trolls"
 
 #. [race]: id=troll
 #: data/core/units.cfg:334
-#, fuzzy
-#| msgid ""
-#| "Trolls are ancient creatures, one of the oldest known races known to "
-#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
-#| "live extremely long lives inside deep caves or atop high mountains. The "
-#| "most unique characteristic of trolls is an internal vitality that "
-#| "sustains and heals them from within. As a result they live very different "
-#| "lives from almost any known creature. Trolls have few real needs: they "
-#| "require little food or water, and thus they have little incentive to "
-#| "pursue much besides protection from those who are hostile towards them. "
-#| "This in turn means they rarely have to worry about anything and can spend "
-#| "much of their time sleeping or in contemplation. Trolls have a curious "
-#| "affinity with nature. They do not relate with living things like elves "
-#| "do, but instead with earth and stone. They are also somewhat curious of "
-#| "their surroundings and many younger whelps even enjoy traveling and "
-#| "seeing the world. As trolls grow older they tend to become increasingly "
-#| "passive, gradually losing interest in their environment and spending more "
-#| "of their time sleeping in a quiet, familiar corner of their home cave. "
-#| "This is until they finally pass away as their bodies themselves slowly "
-#| "turn into lifeless statues of stone.\n"
-#| "\n"
-#| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by orcs "
-#| "to persuade trolls to join their armies. Because they are rather simple "
-#| "and do not understand the ways of other races or sometimes cannot even "
-#| "tell them apart, it is usually easy for an orcish band to convince a "
-#| "group of trolls that by joining them they get to exact revenge on those "
-#| "that have before hunted them. These new recruits are then directed to "
-#| "attack whoever the orcs themselves are currently in conflict with, "
-#| "whether previously a foe of the trolls or not, accumulating even more "
-#| "enemies for the misled trolls. The most common enemy of trolls are "
-#| "dwarves, and the animosity between these two races is ancient.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Trolls have inhabited the mountains of the Great Continent longer than "
-#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
-#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -7053,34 +6959,34 @@ msgid ""
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
-"the Great Continent. They are large, slow, simple-minded, and live extremely "
-"long lives inside deep caves or atop high mountains. The most unique "
-"characteristic of trolls is an internal vitality that sustains and heals "
-"them from within. As a result they live very different lives from almost any "
-"known creature. Trolls have few real needs: they require little food or "
-"water, and thus they have little incentive to pursue much besides protection "
-"from those who are hostile towards them. This in turn means they rarely have "
-"to worry about anything and can spend much of their time sleeping or in "
-"contemplation. Trolls have a curious affinity with nature. They do not "
-"relate with living things like elves do, but instead with earth and stone. "
-"They are also somewhat curious of their surroundings and many younger whelps "
-"even enjoy travelling and seeing the world. As trolls grow older they tend "
-"to become increasingly passive, gradually losing interest in their "
-"environment and spending more of their time sleeping in a quiet, familiar "
-"corner of their home cave. This is until they finally pass away as their "
-"bodies themselves slowly turn into lifeless statues of stone.\n"
+"the Great Continent. They are large, slow, simple, and live extremely long "
+"lives inside deep caves or atop high mountains. The unique characteristic of "
+"trolls is an internal vitality that sustains and heals them from within. As "
+"a result they live very different lives from almost any known creature. "
+"Trolls have few real needs: they require little food or water, and thus they "
+"have little incentive to pursue much besides protection from those who are "
+"hostile towards them. This in turn means they rarely have to worry about "
+"anything and can spend much of their time sleeping or in contemplation. "
+"Trolls have a curious affinity with nature. They do not relate to living "
+"things as elves do, but instead with earth and stone. They are also somewhat "
+"curious of their surroundings and many younger whelps even enjoy travelling "
+"and seeing the world. As trolls grow older they tend to become increasingly "
+"passive, gradually losing interest in their environment and spending more of "
+"their time sleeping in a quiet, familiar corner of their home cave. This is "
+"until they finally pass away as their bodies themselves slowly turn into "
+"lifeless statues of stone.\n"
 "\n"
 "Trolls are seen by many as being little more than yet another race of savage "
-"monsters. This common misconception is in part perpetuated by orcs to "
-"persuade trolls to join their armies. Because they are rather simple and do "
-"not understand the ways of other races or sometimes cannot even tell them "
-"apart, it is usually easy for an orcish band to convince a group of trolls "
-"that by joining them they get to exact revenge on those that have before "
-"hunted them. These new recruits are then directed to attack whoever the orcs "
-"themselves are currently in conflict with, whether previously a foe of the "
-"trolls or not, accumulating even more enemies for the misled trolls. The "
-"most common enemy of trolls are dwarves, and the animosity between these two "
-"races is ancient.\n"
+"monsters. This common misconception is in part perpetuated by orcish "
+"successes in persuading trolls to join their armies. Because they are rather "
+"simple and do not understand the ways of other races or sometimes cannot "
+"even tell them apart, it is usually easy for an orcish band to convince a "
+"group of trolls that by joining them they get to exact revenge on those that "
+"have before hunted them. These new recruits are then directed to attack "
+"whoever the orcs themselves are currently in conflict with, whether "
+"previously a foe of the trolls or not, accumulating even more enemies for "
+"the misled trolls. The most common enemy of trolls are dwarves, and the "
+"animosity between these two races is ancient.\n"
 "\n"
 "<header>text='Geography'</header>\n"
 "Trolls have inhabited the mountains of the Great Continent longer than the "
@@ -7293,60 +7199,48 @@ msgid "The Battle for Wesnoth Help"
 msgstr "The Battle for Wesnoth Help"
 
 #: src/help/help.cpp:237 src/help/help.cpp:241
-#, fuzzy
-#| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
-msgstr "Parse error when parsing help text: "
+msgstr "Parse error when parsing help text:"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
-msgstr ""
+msgstr "Best of"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
-msgstr ""
+msgstr "Worst of"
 
 #: src/help/help_topic_generators.cpp:157
-#, fuzzy
-#| msgid "Terrain"
 msgid "Base Terrain: "
-msgstr "Terrain"
+msgstr "Base Terrain: "
 
 #: src/help/help_topic_generators.cpp:177
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "Movement properties: "
-msgstr "Movement Cost"
+msgstr "Movement properties: "
 
 #: src/help/help_topic_generators.cpp:181
 msgid "Defense properties: "
-msgstr ""
+msgstr "Defence properties: "
 
 #: src/help/help_topic_generators.cpp:261
-#, fuzzy
-#| msgid "level"
 msgid "Level"
-msgstr "level"
+msgstr "Level"
 
 #: src/help/help_topic_generators.cpp:322
 msgid "Advances from: "
 msgstr "Advances from: "
 
 #: src/help/help_topic_generators.cpp:324
-#, fuzzy
-#| msgid "Advances from: "
 msgid "Advances to: "
-msgstr "Advances from: "
+msgstr "Advances to: "
 
 #: src/help/help_topic_generators.cpp:353
 msgid "Base unit: "
 msgstr "Base unit: "
 
 #: src/help/help_topic_generators.cpp:358
-#, fuzzy
-#| msgid "Base unit: "
 msgid "Base units: "
-msgstr "Base unit: "
+msgstr "Base units: "
 
 #: src/help/help_topic_generators.cpp:376
 msgid "Variations: "
@@ -7372,64 +7266,50 @@ msgstr "Ability Upgrades: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "HP: "
+msgstr "HP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Moves: "
+msgstr "Moves:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
-msgstr "Vision: "
+msgstr "Vision:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
-msgstr "Jamming: "
+msgstr "Jamming:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Cost: "
+msgstr "Cost:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Alignment: "
+msgstr "Alignment:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "Required XP: "
+msgstr "Required XP:"
 
 #: src/help/help_topic_generators.cpp:558
 msgid "unit help^Attacks"
@@ -7468,10 +7348,8 @@ msgid "Resistance"
 msgstr "Resistance"
 
 #: src/help/help_topic_generators.cpp:681
-#, fuzzy
-#| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
-msgstr "Terrain Editor"
+msgstr "Terrain Modifiers"
 
 #: src/help/help_topic_generators.cpp:685
 msgid "Terrain"
@@ -7486,10 +7364,8 @@ msgid "Movement Cost"
 msgstr "Movement Cost"
 
 #: src/help/help_topic_generators.cpp:691
-#, fuzzy
-#| msgid "Defense"
 msgid "Defense Cap"
-msgstr "Defence"
+msgstr "Defence Cap"
 
 #: src/help/help_topic_generators.cpp:696
 msgid "Vision Cost"

@@ -135,7 +135,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	}
 
 	// Get damage modifiers.
-	unit_ability_list dmg_specials = weapon->get_specials("damage");
+	unit_ability_list dmg_specials = weapon->get_special_ability("damage");
 	unit_abilities::effect dmg_effect(dmg_specials, weapon->damage(), attacker.stats_.backstab_pos);
 
 	// Get the SET damage modifier, if any.

@@ -213,6 +213,7 @@ public:
 		const game_events::queued_event&);
 	bool run_filter(char const *name, const unit& u);
 	bool run_filter(char const *name, const map_location& l);
+	bool run_filter(char const *name, const team& t);
 	bool run_filter(char const *name, int nArgs);
 	bool run_wml_conditional(const std::string&, const vconfig&);
 

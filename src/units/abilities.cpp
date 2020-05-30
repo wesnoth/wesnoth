@@ -470,6 +470,16 @@ bool unit::has_ability_type(const std::string& ability) const
 	return !abilities_.child_range(ability).empty();
 }
 
+void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
+{
+	if(unit_const_ptr & att = is_attacker_ ? self_ : other_) {
+		callable.add("attacker", wfl::variant(std::make_shared<wfl::unit_callable>(*att)));
+	}
+	if(unit_const_ptr & def = is_attacker_ ? self_ : other_) {
+		callable.add("defender", wfl::variant(std::make_shared<wfl::unit_callable>(*def)));
+	}
+}
+
 namespace {
 
 
@@ -498,13 +508,16 @@ private:
 	const T def_;
 	const TFuncFormula& formula_handler_;
 };
+
+
 template<typename T, typename TFuncFormula>
 get_ability_value_visitor<T, TFuncFormula> make_get_ability_value_visitor(T def, const TFuncFormula& formula_handler)
 {
 	return get_ability_value_visitor<T, TFuncFormula>(def, formula_handler);
 }
+
 template<typename T, typename TFuncFormula>
-T get_single_ability_value(const config::attribute_value& v, T def, const unit_ability& ability_info, const map_location& receiver_loc, const TFuncFormula& formula_handler)
+T get_single_ability_value(const config::attribute_value& v, T def, const unit_ability& ability_info, const map_location& receiver_loc, const_attack_ptr att, const TFuncFormula& formula_handler)
 {
 	return v.apply_visitor(make_get_ability_value_visitor(def, [&](const std::string& s) {
 
@@ -518,6 +531,9 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 					return def;
 				}
 				wfl::map_formula_callable callable(std::make_shared<wfl::unit_callable>(*u_itor));
+				if(att) {
+					att->add_formula_context(callable);
+				}
 				if (auto uptr = units.find_unit_ptr(ability_info.student_loc)) {
 					callable.add("student", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
 				}
@@ -548,7 +564,7 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 	int stack = 0;
 	for (const unit_ability& p : cfgs_)
 	{
-		int value = get_single_ability_value((*p.ability_cfg)[key], def, p, loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		int value = get_single_ability_value((*p.ability_cfg)[key], def, p, loc(), const_attack_ptr(), [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 			return formula.evaluate(callable).as_int();
 		});
 
@@ -952,7 +968,7 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
 {
 	// Apply [attacks].
 	unit_abilities::effect attacks_effect(get_special_ability("attacks"),
-	                                      num_attacks(), is_backstab);
+	                                      num_attacks(), is_backstab, shared_from_this());
 	int attacks_value = attacks_effect.get_composite_value();
 
 	if ( attacks_value < 0 ) {
@@ -976,7 +992,7 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
  */
 int attack_type::modified_damage(bool is_backstab) const
 {
-	unit_abilities::effect dmg_effect(get_special_ability("damage"), damage(), is_backstab);
+	unit_abilities::effect dmg_effect(get_special_ability("damage"), damage(), is_backstab, shared_from_this());
 	int damage_value = dmg_effect.get_composite_value();
 	return damage_value;
 }
@@ -1470,7 +1486,7 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-effect::effect(const unit_ability_list& list, int def, bool backstab) :
+effect::effect(const unit_ability_list& list, int def, bool backstab, const_attack_ptr att) :
 	effect_list_(),
 	composite_value_(0)
 {
@@ -1497,7 +1513,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			continue;
 
 		if (const config::attribute_value *v = cfg.get("value")) {
-			int value = get_single_ability_value(*v, def, ability, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int value = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
@@ -1519,7 +1535,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		}
 
 		if (const config::attribute_value *v = cfg.get("add")) {
-			int add = get_single_ability_value(*v, def, ability, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int add = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
@@ -1529,7 +1545,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("sub")) {
-			int sub = - get_single_ability_value(*v, def, ability, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int sub = - get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
@@ -1539,7 +1555,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
-			int multiply = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int multiply = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_decimal() / 1000.0 ;
 			}) * 100);
@@ -1549,7 +1565,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
-			int divide = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int divide = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_decimal() / 1000.0 ;
 			}) * 100);

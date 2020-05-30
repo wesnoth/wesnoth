@@ -50,7 +50,7 @@ carryover::carryover(const team& t, const int gold, const bool add)
 		, save_id_(t.save_id())
 		, variables_(t.variables())
 {
-	for(const unit_const_ptr & u : t.recall_list()) {
+	for(const unit_const_ptr u : t.recall_list()) {
 		recall_list_.emplace_back();
 		u->write(recall_list_.back());
 	}

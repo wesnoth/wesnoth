@@ -18,6 +18,7 @@
 #include "font/font_options.hpp"
 #include "font/text.hpp"
 #include "gui/core/linked_group_definition.hpp"
+#include "gui/auxiliary/typed_formula.hpp"
 
 #include <vector>
 
@@ -59,7 +60,7 @@ struct resolution_definition
 
 	unsigned text_extra_width;
 	unsigned text_extra_height;
-	unsigned text_font_size;
+	typed_formula<unsigned> text_font_size;
 
 	font::family_class text_font_family;
 	font::pango_text::FONT_STYLE text_font_style;

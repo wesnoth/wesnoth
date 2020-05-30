@@ -23,6 +23,7 @@
 #include "variable.hpp"
 #include "team.hpp"
 #include "serialization/string_utils.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"
@@ -30,6 +31,7 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "variable.hpp"
+#include "filter_context.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
@@ -138,7 +140,7 @@ bool side_filter::match_internal(const team &t) const
 			}
 		}
 		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)) {
-			for(const unit_const_ptr & u : t.recall_list()) {
+			for(const unit_const_ptr u : t.recall_list()) {
 				scoped_recall_unit this_unit("this_unit", t.save_id_or_number(), t.recall_list().find_index(u->id()));
 				if(ufilter_->matches(*u)) {
 					found = true;
@@ -242,6 +244,16 @@ bool side_filter::match_internal(const team &t) const
 			return false;
 		}
 	}
+
+	if (cfg_.has_attribute("lua_function")) {
+		std::string lua_function = cfg_["lua_function"].str();
+		if (!lua_function.empty() && fc_->get_lua_kernel()) {
+			if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), t)) {
+				return false;
+			}
+		}
+	}
+	
 
 	return true;
 }

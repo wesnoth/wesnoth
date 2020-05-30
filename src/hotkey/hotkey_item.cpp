@@ -452,7 +452,7 @@ std::string get_names(const std::string& id)
 {
 	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;
-	for (const hotkey::hotkey_ptr item : hotkeys_) {
+	for (const hotkey::hotkey_ptr& item : hotkeys_) {
 		if (item->get_command() == id && !item->null() && !item->is_disabled()) {
 			names.push_back(item->get_name());
 		}

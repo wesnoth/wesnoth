@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2019-08-28 11:26+1000\n"
+"PO-Revision-Date: 2020-05-04 18:52+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
@@ -329,10 +329,8 @@ msgstr "Stones"
 
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:386
-#, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "Snow"
+msgstr "Snow Bits"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:395
@@ -684,10 +682,8 @@ msgstr "Mushroom Grove"
 
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:954
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Lit Mushroom Grove"
+msgstr "Non-mixed Mushroom Grove"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -703,6 +699,13 @@ msgid ""
 "fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
 "or without '^Tf' on top."
 msgstr ""
+"The overlays '^Uf' and '^Ufi' are deprecated because, although the graphics "
+"show an overlay with another terrain underneath, the movement and defence "
+"stats are purely fungus terrain, ignoring the underlying terrain. The "
+"recommended replacements are '^Tf' and '^Tfi' which look the same but have "
+"the stats implied by the graphics. For hexes where the stats of purely "
+"fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
+"or without '^Tf' on top."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -716,13 +719,16 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"Dwarven tales describe different types of mushrooms — with some types the "
+"difficulty of walking on the spongy floor has no relation to the ground "
+"underneath, even when the ground underneath is still visible. This terrain’s "
+"defence and movement costs are purely based on the unit’s stats for "
+"<italic>text='Fungus'</italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:973
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Lit Mushroom Grove"
+msgstr "Lit Non-mixed Mushroom Grove"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:1005
@@ -732,7 +738,7 @@ msgstr "Lit Mushroom Grove"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1017 data/core/terrain.cfg:1018
 msgid "Mycelium"
-msgstr ""
+msgstr "Mycelium"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:1027 data/core/terrain.cfg:1028
@@ -741,20 +747,6 @@ msgstr "Rockbound Cave"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:1033
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which shoulders defense, but is "
-#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
-#| "and trolls, are fully capable of navigating such topography.\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
-#| "in rockbound caves.\n"
-#| "\n"
-#| "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-#| "text='illuminated'</ref>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -776,10 +768,9 @@ msgstr ""
 "\n"
 "Most units have about 50% defence in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defence in "
-"rock-bound caves.\n"
+"rockbound caves.\n"
 "\n"
-"Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-"text='illuminated'</ref>."
+"Occasionally caves are <italic>text='illuminated'</italic>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -927,17 +918,13 @@ msgstr "Clean Stone Wall"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1308
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Catacombs Wall"
-msgstr "Cave Wall"
+msgstr "Catacombs Wall"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1309
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Clean Stone Wall"
+msgstr "Catacombs Stone Wall"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1313,17 +1300,13 @@ msgstr "Elven Castle Ruin"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2046
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Winter Elven Castle"
-msgstr "Elven Castle"
+msgstr "Winter Elven Castle"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2058
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
-msgstr "Dwarven Castle"
+msgstr "Dwarven Underground Castle"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2070
@@ -1332,17 +1315,13 @@ msgstr "Dwarven Castle"
 
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2082
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
-msgstr "Dwarven Castle"
+msgstr "Dwarven Castle Ruins"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2094
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
-msgstr "Dwarven Castle"
+msgstr "Winter Dwarven Castle"
 
 #. [terrain_type]: id=ruin
 #. [terrain_type]: id=sunkenruin
@@ -1475,17 +1454,13 @@ msgstr "Elven Keep Ruin"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2338
-#, fuzzy
-#| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
-msgstr "Elven Keep Ruin"
+msgstr "Winter Elven Keep"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2351
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
-msgstr "Dwarven Castle Keep"
+msgstr "Dwarven Underground Keep"
 
 #. [terrain_type]: id=dwarven_keep2
 #: data/core/terrain.cfg:2364
@@ -1494,17 +1469,13 @@ msgstr "Dwarven Castle Keep"
 
 #. [terrain_type]: id=dwarven_keep_ruin
 #: data/core/terrain.cfg:2377
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Ruin Keep"
-msgstr "Dwarven Castle Keep"
+msgstr "Dwarven Ruin Keep"
 
 #. [terrain_type]: id=dwarven_keep_winter
 #: data/core/terrain.cfg:2390
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Winter Dwarven Keep"
-msgstr "Dwarven Castle Keep"
+msgstr "Winter Dwarven Keep"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1742,24 +1713,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2908
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1784,8 +1737,8 @@ msgstr ""
 "down and hindered in defence. Dwarves and trolls, who make their homes in "
 "caves, both have a relatively easy time navigating this terrain, especially "
 "dwarves, who by dint of their small size can navigate many obstacles that "
-"other races cannot. Occasionally caves are "
-"<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
+"other races cannot. Occasionally caves are <italic>text='illuminated'</"
+"italic>.\n"
 "\n"
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2570,7 +2523,7 @@ msgstr ""
 #: data/gui/window/campaign_dialog.cfg:443
 #: data/gui/window/campaign_difficulty.cfg:221
 msgid "game^Play"
-msgstr ""
+msgstr "Play"
 
 #. [slider]: id=enemey_gold_factor
 #. [label]: id=title
@@ -3282,7 +3235,7 @@ msgstr "Load Game"
 #. [menu_button]: id=dirList
 #: data/gui/window/game_load.cfg:311
 msgid "Show saves from a different version of Wesnoth"
-msgstr ""
+msgstr "Show saves from a different version of Wesnoth"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/window/game_load.cfg:496
@@ -3822,10 +3775,8 @@ msgstr "Kick + Ban"
 
 #. [button]: id=stopgame
 #: data/gui/window/lobby_player_info.cfg:274
-#, fuzzy
-#| msgid "Load Game"
 msgid "Stop Game"
-msgstr "Load Game"
+msgstr "Stop Game"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
@@ -4022,17 +3973,13 @@ msgstr "Change Control"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Log on to the official Wesnoth multiplayer server"
+msgstr "Choose or enter the address of a multiplayer server."
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
-#, fuzzy
-#| msgid "Address"
 msgid "Address:"
-msgstr "Address"
+msgstr "Address:"
 
 #. [label]: id=address
 #: data/gui/window/mp_connect.cfg:176
@@ -4041,10 +3988,8 @@ msgstr "Address"
 
 #. [button]: id=server_add
 #: data/gui/window/mp_connect.cfg:270
-#, fuzzy
-#| msgid "Address"
 msgid "Add"
-msgstr "Address"
+msgstr "Add"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
@@ -4263,14 +4208,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "Stricter checks for out-of-sync errors"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Save Replay"
+msgstr "Private Replay"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Whether the replay will be publicly available"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -5054,10 +4997,8 @@ msgstr "Remove this username from your list"
 
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
-#, fuzzy
-#| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
-msgstr "You have not befriended or ignored any other players."
+msgstr "You have not befriended or blocked any other players."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5163,14 +5104,6 @@ msgstr "Hits"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:571
-#, fuzzy
-#| msgid ""
-#| "stats dialog^Estimate of how much randomness of battles favored or "
-#| "disfavored this side.\n"
-#| "Values between 0 and 50 suggest the number of hits was less than "
-#| "expected.\n"
-#| "Values between 50 and 100 suggest the number of hits was more than "
-#| "expected."
 msgid ""
 "stats dialog^The <i>a priori</i> probability of inflicting/taking at most "
 "this many hits, in percent.\n"
@@ -5183,9 +5116,16 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
-"Estimate of how much randomness of battles favoured or penalised this side.\n"
+"The <i>a priori</i> probability of inflicting/taking at most this many hits, "
+"in per cent.\n"
+"\n"
+"Intuitively, this is a measure of how randomness affected this side.\n"
 "Values between 0 and 50 suggest the number of hits was less than expected.\n"
-"Values between 50 and 100 suggest the number of hits was more than expected."
+"Values between 50 and 100 suggest the number of hits was more than "
+"expected.\n"
+"\n"
+"Green values indicate this side fared better than expected.\n"
+"Red values indicate this side fared worse than expected."
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -5449,7 +5389,7 @@ msgstr "Recall Unit"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
 msgid "Search for unit name, unit type name, unit level, or trait."
-msgstr ""
+msgstr "Search for unit name, unit type name, unit level, or trait."
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -5494,10 +5434,8 @@ msgid "Details:"
 msgstr "Details:"
 
 #: src/build_info.cpp:271
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "JPG screenshots"
+msgstr "JPEG screenshots"
 
 #: src/build_info.cpp:278
 msgid "feature^Lua console completion"
@@ -5554,24 +5492,28 @@ msgstr "<unknown>"
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:640
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
-msgstr ""
+msgstr "--userdata-dir=<relative path that doesn't start with a full-stop>"
 
 #: src/filesystem.cpp:643
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
+"Use an absolute path, or a relative path that starts with a full-stop and a "
+"backslash"
 
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:708 src/filesystem.cpp:729
 msgid "--userdata-dir=<relative path>"
-msgstr ""
+msgstr "--userdata-dir=<relative path>"
 
 #: src/filesystem.cpp:711 src/filesystem.cpp:732
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
 msgstr ""
+"Use absolute paths. Relative paths are deprecated because they are "
+"interpreted relative to $HOME"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -6021,16 +5963,12 @@ msgid "Defender resistance vs"
 msgstr "Defender resistance vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:196
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "Attacker vulnerability vs"
+msgstr "Defender vulnerability vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:200
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "Defender resistance vs"
+msgstr "Attacker resistance vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:202
 msgid "Attacker vulnerability vs"
@@ -6178,13 +6116,11 @@ msgstr "The game data cache could not be purged."
 
 #: src/gui/dialogs/game_load.cpp:168
 msgid "game_version^Current Version"
-msgstr ""
+msgstr "Current Version"
 
 #: src/gui/dialogs/game_load.cpp:173
-#, fuzzy
-#| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
-msgstr "Version $version"
+msgstr "Wesnoth $version"
 
 #: src/gui/dialogs/game_load.cpp:310
 msgid "The selected file is corrupt: "
@@ -6494,10 +6430,8 @@ msgid "Side $side"
 msgstr "Side $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:204
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Server:"
+msgstr "Add Server"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
 msgid "Scenarios"
@@ -6745,10 +6679,12 @@ msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"This unit cannot be recalled because you will not have enough gold at this "
+"point in your plan."
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "This unit cannot be recalled because you do not have enough gold."
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -7245,22 +7181,16 @@ msgid "Next Move"
 msgstr "Next Move"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Full Map"
+msgstr "View: Full Map"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Each Team"
+msgstr "View: Each Team"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Human Team"
+msgstr "View: Human Team"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
