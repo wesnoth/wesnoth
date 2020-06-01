@@ -1160,7 +1160,7 @@ bool attack_type::bool_ability(const std::string& ability) const
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
                                  bool include_backstab, const std::string& filter_self) const
 {
-	return special_active_impl(shared_from_this(), const_attack_ptr(), special, whom, tag_name, include_backstab, filter_self);
+	return special_active_impl(shared_from_this(), other_attack_, special, whom, tag_name, include_backstab, filter_self);
 }
 
 /**
