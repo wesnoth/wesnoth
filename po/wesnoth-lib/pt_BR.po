@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-05-02 01:56+0300\n"
-"PO-Revision-Date: 2020-02-03 08:57-0300\n"
+"PO-Revision-Date: 2020-05-17 17:21-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #
 # File: data/core/terrain.cfg, line: 418
@@ -6419,7 +6419,7 @@ msgid ""
 "multiplayer lobby; either by playing sound alerts or (if the game window is "
 "inactive or minimized) displaying desktop notifications."
 msgstr ""
-"Escolha como você deseja ser notificado de eventos multyplayer quando "
+"Escolha como você deseja ser notificado de eventos multiplayer quando "
 "estiver no saguão ou dentro de uma partidapor meio de alertas sonoros ou,no "
 "caso do jogo estar minimizado, com notificações no desktop."
 
@@ -9555,7 +9555,7 @@ msgstr "subindo"
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:361
 msgid "oldest to newest"
-msgstr "mais recente para mais antigo"
+msgstr "mais antigo para o mais novo"
 
 #: src/gui/dialogs/addon/manager.cpp:364
 msgid "descending"
@@ -9564,7 +9564,7 @@ msgstr "descendo"
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:366
 msgid "newest to oldest"
-msgstr "Do mais recente para o mais antigo"
+msgstr "mais recente para o mais antigo"
 
 #: src/gui/dialogs/addon/manager.cpp:384 src/gui/dialogs/chat_log.cpp:416
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -10461,10 +10461,8 @@ msgstr "O jogo selecionado não possui lados!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:842
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected game can not be created."
-msgstr "O jogo selecionado não possui lados!"
+msgstr "O jogo selecionado não pode ser criado."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:911
 msgid "Choose Starting Scenario"
