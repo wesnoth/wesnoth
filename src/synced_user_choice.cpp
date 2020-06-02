@@ -264,7 +264,7 @@ void user_choice_manager::search_in_replay()
 		assert(action); //action cannot be null because resources::recorder->at_end() returned false.
 		if( !action->has_child(tagname_) || !(*action)["dependent"].to_bool())
 		{
-			replay::process_error("[" + tagname_ + "] expected but none found\n. found instead:\n" + action->debug());
+			replay::process_error("[" + tagname_ + "] expected but none found\n. found instead:\n" + action->as_text());
 			//We save this action for later
 			resources::recorder->revert_action();
 			// execute this local choice locally

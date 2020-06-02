@@ -485,7 +485,7 @@ void game_config_manager::load_addons_cfg()
 							"[advancefrom]",
 							DEP_LEVEL::FOR_REMOVAL,
 							{1, 17, 0},
-							_("Use [modify_unit_type]\n") + modify_unit_type.debug()  + "\n [/modify_unit_type] instead in [campaign]"
+							_("Use [modify_unit_type]\n") + modify_unit_type.as_text()  + "\n [/modify_unit_type] instead in [campaign]"
 						);
 	
 						advancefroms.add_child("modify_unit_type", modify_unit_type);

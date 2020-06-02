@@ -827,7 +827,7 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 
 		section_cfg["generator"] = "era:" + era["id"].str();
 
-		DBG_HP << section_cfg.debug() << "\n";
+		DBG_HP << section_cfg.as_text() << "\n";
 
 		parse_config_internal(help_cfg, &section_cfg, era_section, level+1);
 		sec.add_section(era_section);

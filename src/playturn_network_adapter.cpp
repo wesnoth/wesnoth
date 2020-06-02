@@ -51,7 +51,7 @@ void playturn_network_adapter::read_from_network()
 
 	if(!back.attribute_range().empty() )
 	{
-		ERR_NW << "found unexpected attribute:" <<back.debug() << std::endl;
+		ERR_NW << "found unexpected attribute:" << back.as_text() << std::endl;
 		this->data_.pop_back();
 		//ignore those here
 	}

@@ -40,7 +40,7 @@ lua_map_generator::lua_map_generator(const config & cfg, const config* vars)
 			}
 			std::string msg = "Error when constructing a lua map generator -- missing a required attribute '";
 			msg += req + "'\n";
-			msg += "Config was '" + cfg.debug() + "'";
+			msg += "Config was '" + cfg.as_text() + "'";
 			throw mapgen_exception(msg);
 		}
 	}

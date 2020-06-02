@@ -462,7 +462,7 @@ void add_color_info(const config& v, bool build_defaults)
 				temp.push_back(color_t::from_hex_string(s));
 			} catch(const std::invalid_argument&) {
 				std::stringstream ss;
-				ss << "can't parse color string:\n" << teamC.debug() << "\n";
+				ss << "can't parse color string:\n" << teamC.as_text() << "\n";
 				throw config::error(ss.str());
 			}
 		}

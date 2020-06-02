@@ -193,7 +193,7 @@ protected:
 		if (u["type"].empty()) {
 			WRN_NG_TC << "warning: when building level, skipping a unit (id=[" << u["id"] << "]) from " << origin
 			<< " with no type information,\n"
-			<< "for side:\n" << side_cfg_.debug() << std::endl;
+			<< "for side:\n" << side_cfg_.as_text() << std::endl;
 
 			return ;
 		}

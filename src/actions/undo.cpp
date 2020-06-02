@@ -300,11 +300,11 @@ void undo_list::read(const config & cfg)
 			}
 		} catch (const bad_lexical_cast &) {
 			ERR_NG << "Error when parsing undo list from config: bad lexical cast." << std::endl;
-			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "config was: " << child.as_text() << std::endl;
 			ERR_NG << "Skipping this undo action..." << std::endl;
 		} catch (const config::error& e) {
 			ERR_NG << "Error when parsing undo list from config: " << e.what() << std::endl;
-			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "config was: " << child.as_text() << std::endl;
 			ERR_NG << "Skipping this undo action..." << std::endl;
 		}
 	}
@@ -315,11 +315,11 @@ void undo_list::read(const config & cfg)
 			redos_.emplace_back(new config(child));
 		} catch (const bad_lexical_cast &) {
 			ERR_NG << "Error when parsing redo list from config: bad lexical cast." << std::endl;
-			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "config was: " << child.as_text() << std::endl;
 			ERR_NG << "Skipping this redo action..." << std::endl;
 		} catch (const config::error& e) {
 			ERR_NG << "Error when parsing redo list from config: " << e.what() << std::endl;
-			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "config was: " << child.as_text() << std::endl;
 			ERR_NG << "Skipping this redo action..." << std::endl;
 		}
 	}

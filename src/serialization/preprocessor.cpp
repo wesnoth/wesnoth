@@ -1779,6 +1779,7 @@ void preprocess_resource(const std::string& res_name,
 		read(cfg, streamContent);
 
 		const std::string preproc_res_name = parent_directory + "/" + filesystem::base_name(res_name);
+		const std::string preproc_res_name_xml = parent_directory + "/" + filesystem::base_name(res_name, true)+".xml";
 
 		// Write the processed cfg file
 		if(write_cfg) {
@@ -1788,6 +1789,8 @@ void preprocess_resource(const std::string& res_name,
 			filesystem::scoped_ostream outStream(filesystem::ostream_file(preproc_res_name));
 
 			write(*outStream, cfg);
+
+			filesystem::write_file(preproc_res_name_xml, cfg.as_xml());
 		}
 
 		// Write the plain cfg file

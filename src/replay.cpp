@@ -246,7 +246,7 @@ void replay::add_synced_command(const std::string& name, const config& command)
 	config& cmd = add_command();
 	cmd.add_child(name,command);
 	cmd["from_side"] = resources::controller->current_side();
-	LOG_REPLAY << "add_synced_command: \n" << cmd.debug() << "\n";
+	LOG_REPLAY << "add_synced_command: \n" << cmd.as_text() << "\n";
 }
 
 
@@ -461,7 +461,7 @@ static bool fix_rename_command(const config& c, config& async_child)
 		try {
 			read_locations(child,steps);
 		} catch(const bad_lexical_cast &) {
-			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
+			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.as_text() << std::endl;
 		}
 
 		if (steps.empty()) {
@@ -724,7 +724,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		{
 			//this shouldn't happen anymore because replaycontroller now moves over the [start] with get_next_action
 			//also we removed the the "add empty replay entry at scenario reload" behavior.
-			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay" << std::endl;
+			ERR_REPLAY << "found "<<  cfg->as_text() <<" in replay" << std::endl;
 			//do nothing
 		}
 		else if (const config &speak = cfg->child("speak"))

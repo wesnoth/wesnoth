@@ -1287,13 +1287,66 @@ bool config::matches(const config& filter) const
 	return result;
 }
 
-std::string config::debug() const
+std::string config::as_xml() const
+{
+	check_valid();
+
+	std::ostringstream outstream;
+	outstream << "<root>\n";
+	as_xml(outstream, *this);
+	outstream << "</root>\n";
+	return outstream.str();
+}
+
+std::string config::as_text() const
 {
 	check_valid();
 
 	std::ostringstream outstream;
 	outstream << *this;
 	return outstream.str();
+}
+
+std::ostream& config::as_xml(std::ostream& outstream, const config& cfg) const
+{
+	static int x = 0;
+	x++;
+
+	for(const config::attribute& val : cfg.attribute_range()) {
+		if(val.second.blank()) {
+			continue;
+		}
+
+		for(int j = 0; j < x - 1; j++) {
+			outstream << '\t';
+		}
+
+		// sanitize the required XML entities
+		std::string text = val.second.str();
+		for(std::string::size_type pos = 0; (pos = text.find('&', pos)) != std::string::npos; ++pos)
+			text.replace(pos, 1, "&amp;");
+		for(std::string::size_type pos = 0; (pos = text.find('<', pos)) != std::string::npos; ++pos)
+			text.replace(pos, 1, "&lt;");
+		outstream << "<" << val.first << ">" << text << "</" << val.first << ">" << '\n';
+	}
+
+	for(const config::any_child& child : cfg.all_children_range()) {
+		for(int j = 0; j < x - 1; ++j) {
+			outstream << '\t';
+		}
+
+		outstream << "<" << child.key << ">\n";
+		as_xml(outstream, child.cfg);
+
+		for(int j = 0; j < x - 1; ++j) {
+			outstream << '\t';
+		}
+
+		outstream << "</" << child.key << ">\n";
+	}
+
+	x--;
+	return outstream;
 }
 
 std::ostream& operator<<(std::ostream& outstream, const config& cfg)

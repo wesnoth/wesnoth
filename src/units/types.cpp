@@ -1164,7 +1164,7 @@ void unit_type_data::set_config(config& cfg)
 
 		// Every type is required to have an id.
 		if(id.empty()) {
-			ERR_CF << "[unit_type] with empty id=, ignoring:\n" << ut.debug();
+			ERR_CF << "[unit_type] with empty id=, ignoring:\n" << ut.as_text();
 			continue;
 		}
 

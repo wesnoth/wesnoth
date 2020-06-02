@@ -257,7 +257,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			soundsources_manager_->add(spec);
 		} catch (const bad_lexical_cast &) {
 			ERR_NG << "Error when parsing sound_source config: bad lexical cast." << std::endl;
-			ERR_NG << "sound_source config was: " << s.debug() << std::endl;
+			ERR_NG << "sound_source config was: " << s.as_text() << std::endl;
 			ERR_NG << "Skipping this sound source..." << std::endl;
 		}
 	}

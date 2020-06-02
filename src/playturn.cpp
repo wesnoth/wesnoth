@@ -180,7 +180,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const std::string player = change["player"];
 		const std::size_t index = side - 1;
 		if(index >= resources::gameboard->teams().size()) {
-			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
+			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.as_text() << std::endl;
 			return PROCESS_CONTINUE;
 		}
 
@@ -378,7 +378,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else
 	{
-		ERR_NW << "found unknown command:\n" << cfg.debug() << std::endl;
+		ERR_NW << "found unknown command:\n" << cfg.as_text() << std::endl;
 	}
 
 	return PROCESS_CONTINUE;

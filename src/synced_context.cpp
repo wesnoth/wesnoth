@@ -353,7 +353,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			}
 			if (!action->has_child(sch.name()))
 			{
-				replay::process_error("[" + std::string(sch.name()) + "] expected but none found, found instead:\n " + action->debug() + "\n");
+				replay::process_error("[" + std::string(sch.name()) + "] expected but none found, found instead:\n " + action->as_text() + "\n");
 
 				resources::recorder->revert_action();
 				return sch.local_choice();
@@ -465,7 +465,7 @@ void set_scontext_synced::do_final_checkup(bool dont_throw)
 	}
 	if(!msg.str().empty())
 	{
-		msg << co.debug() << std::endl;
+		msg << co.as_text() << std::endl;
 		if(dont_throw)
 		{
 			ERR_REPLAY << msg.str() << std::flush;

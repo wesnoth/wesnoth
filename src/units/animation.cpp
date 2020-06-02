@@ -1180,7 +1180,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 	if(u_animation.unit_filter_.size() > 0) {
 		outstream << "[filter]\n";
 		for(const config& cfg : u_animation.unit_filter_) {
-			outstream << cfg.debug();
+			outstream << cfg.as_text();
 		}
 
 		outstream << "[/filter]\n";
@@ -1189,7 +1189,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 	if(u_animation.secondary_unit_filter_.size() > 0) {
 		outstream << "[filter_second]\n";
 		for(const config& cfg : u_animation.secondary_unit_filter_) {
-			outstream << cfg.debug();
+			outstream << cfg.as_text();
 		}
 
 		outstream << "[/filter_second]\n";
@@ -1198,7 +1198,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 	if(u_animation.primary_attack_filter_.size() > 0) {
 		outstream << "[filter_attack]\n";
 		for(const config& cfg : u_animation.primary_attack_filter_) {
-			outstream << cfg.debug();
+			outstream << cfg.as_text();
 		}
 
 		outstream << "[/filter_attack]\n";
@@ -1207,7 +1207,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 	if(u_animation.secondary_attack_filter_.size() > 0) {
 		outstream << "[filter_second_attack]\n";
 		for(const config& cfg : u_animation.secondary_attack_filter_) {
-			outstream << cfg.debug();
+			outstream << cfg.as_text();
 		}
 
 		outstream << "[/filter_second_attack]\n";

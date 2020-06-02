@@ -545,7 +545,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 			}
 		}
 	}
-	LOG_WML << "A [recall] tag with the following content failed:\n" << cfg.get_config().debug();
+	LOG_WML << "A [recall] tag with the following content failed:\n" << cfg.get_config().as_text();
 }
 
 namespace {
@@ -650,7 +650,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 	const t_string& name = cfg["name"];
 	variable_access_create dest = resources::gamedata->get_variable_access_write(name);
 	if(name.empty()) {
-		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
+		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().as_text();
 		return;
 	}
 
@@ -667,7 +667,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 		}
 		catch(const invalid_variablename_exception&)
 		{
-			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().debug() << std::endl;
+			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().as_text() << std::endl;
 		}
 	} else {
 		typedef std::pair<std::string, vconfig> vchild;
@@ -691,7 +691,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 
 				char* separator = separator_string.empty() ? nullptr : &separator_string[0];
 				if(separator_string.size() > 1){
-					ERR_NG << "[set_variables] [split] separator only supports 1 character, multiple passed: " << split_element["separator"] << " with " << cfg.get_config().debug() << std::endl;
+					ERR_NG << "[set_variables] [split] separator only supports 1 character, multiple passed: " << split_element["separator"] << " with " << cfg.get_config().as_text() << std::endl;
 				}
 
 				std::vector<std::string> split_vector;
@@ -746,7 +746,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Cannot do [set_variables] with invalid destination variable: " << name << " with " << cfg.get_config().debug() << std::endl;
+		ERR_NG << "Cannot do [set_variables] with invalid destination variable: " << name << " with " << cfg.get_config().as_text() << std::endl;
 	}
 }
 
@@ -781,7 +781,7 @@ WML_HANDLER_FUNCTION(store_relative_direction,, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Cannot do [store_relative_direction] with invalid destination variable: " << variable << " with " << cfg.get_config().debug() << std::endl;
+		ERR_NG << "Cannot do [store_relative_direction] with invalid destination variable: " << variable << " with " << cfg.get_config().as_text() << std::endl;
 	}
 }
 
@@ -818,7 +818,7 @@ WML_HANDLER_FUNCTION(store_rotate_map_location,, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Cannot do [store_rotate_map_location] with invalid destination variable: " << variable << " with " << cfg.get_config().debug() << std::endl;
+		ERR_NG << "Cannot do [store_rotate_map_location] with invalid destination variable: " << variable << " with " << cfg.get_config().as_text() << std::endl;
 	}
 }
 
@@ -844,7 +844,7 @@ WML_HANDLER_FUNCTION(store_time_of_day,, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Found invalid variablename " << variable << " in [store_time_of_day] with " << cfg.get_config().debug() << "\n";
+		ERR_NG << "Found invalid variablename " << variable << " in [store_time_of_day] with " << cfg.get_config().as_text() << "\n";
 	}
 }
 
@@ -861,7 +861,7 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 		cfg.get_children("target").empty() ||
 		cfg.get_children("filter").empty()) {
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
-			 << cfg.get_config().debug();
+			 << cfg.get_config().as_text();
 	} else {
 		pathfind::teleport_group tunnel(delay ? cfg : vconfig(cfg.get_parsed_config()), false);
 		resources::tunnels->add(tunnel);
@@ -894,7 +894,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		}
 		catch(const invalid_variablename_exception&)
 		{
-			ERR_NG << "Cannot do [unit] with invalid to_variable:  " << to_variable << " with " << cfg.get_config().debug() << std::endl;
+			ERR_NG << "Cannot do [unit] with invalid to_variable:  " << to_variable << " with " << cfg.get_config().as_text() << std::endl;
 		}
 		return;
 
@@ -905,7 +905,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 
 	if ((side<1)||(side > static_cast<int>(resources::gameboard->teams().size()))) {
 		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::gameboard->teams().size()<<")"<<std::endl;
-		DBG_NG << parsed_cfg.debug();
+		DBG_NG << parsed_cfg.as_text();
 		return;
 	}
 	team &tm = resources::gameboard->get_team(side);

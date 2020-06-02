@@ -499,7 +499,10 @@ public:
 	void clear_attributes();
 	bool empty() const;
 
-	std::string debug() const;
+	// minorly modified XML re-implementation of the as_text() and operator<< methods
+	std::string as_xml() const;
+	std::ostream& as_xml(std::ostream& outstream, const config& cfg) const;
+	std::string as_text() const;
 	std::string hash() const;
 
 	struct error : public game::error, public boost::exception {
