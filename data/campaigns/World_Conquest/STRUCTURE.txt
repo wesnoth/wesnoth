@@ -1,0 +1,48 @@
+A description of this addon's code:
+
+This addon makes a lot use of lua wherever possible, even [side] definitions
+were moved to lua by using scenario_generation=lua, that is why the [multiplayer]
+tags are nearly empty. One of the main advantage of this is that this addon
+doesn't increase the wesnoth parsing time, also i just found lua easier to
+read and much easier to debug since it gives better error messages, and doesn’t
+require reloading the cache after changes were made.
+
+The directory is organized as follows:
+
+./lua/map :
+the files in ./lua/map contain the code that generate the content of the
+[multiplayer] tag, in particular [side] definitions, [event]s, map_data and
+[load_resource]. The biggest part of the scenario is the map generation,
+World conquest map generation works as follows: First we run the wesnoth 
+default map generator (here: the files in lua/map/generator), then we run
+a custom lua scrips to fix it up (lua/map/postgeneration). For each
+scenario there ia a fixed set of generator+postgenerator pairs defined in
+lua/map/scenarios for each scenario.
+
+./lua/shared_utils :
+libraries and helper functions that are used by both the map editor and
+during the actual game.
+
+./lua/optional_mechanics :
+A few lua mechanics that works independent on the rest of the world conquest
+II code.
+
+./lua/era :
+the code for the World Conquest era, this is in particular the recruitment in pair
+function. And delivering wc data that depends on the current era (for
+example which heroes should be available for which faction)
+
+./lua/game_mechanics :
+The lua code that implements the custom game mechanics of World Conquest, that is:
+The dropping system, the invest system, the training system, World Conquest
+specific abilities, the bonus points system
+
+./lua/campaign :
+The code specific to the wc2 campaign: the difficulties, victory conditions,
+enemy spawns etc.
+
+./utils/gameplay :
+The training and artifact definitions
+
+./utils/era :
+The factions of the World Conquest era.
