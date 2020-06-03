@@ -1,0 +1,488 @@
+# Modification from World Conquest 1.10.10 (created by TL, maintained by Natasiel).
+
+# Code, idea and design: tekelili
+Minor code contributors: ezysquire (forcefield), tsr (preset advancement)
+
+# Playtesting: Bear, Honor, jb, paso, tekelili
+
+# Text: TL, Natasiel, Rigor, tekelili
+
+# Images: All custom images based in other authors files, but it is hard find out their names, sorry :(
+Several images created by doofus-01
+All editing work to adapt custom images and create new from mainline (poorly executed): tekelili
+
+# PBL file
+title="World Conquest II"
+type="campaign_mp"
+icon= "misc/blank-hex.png~BG(140,85,75)~O(1%)~BLIT(units/elves-wood/sorceress.png~RC(magenta>green)~CROP(14,1,58,71))~BLIT(units/undead-necromancers/dark-sorcerer+female.png~RC(magenta>blue)~CROP(0,0,60,67),12,5)"
+author="tekelili, TL"
+description="Highly randomized and replayable, combat focused campaign for 1-3 players. Players and enemies can improve their armies with magic items, heroes and trainings. Includes an era with 10 factions.
+Campaign complete (Beta version).
+Scenarios can be found in Multiplayer >> Random Maps. More detailed info at website.
+(Expert level, 5 scenarios.)"
+[feedback]
+    topic_id=39651
+[/feedback]
+passphrase=#####
+version=#####
+email=#####
+
+
+# Changelog:
+
+0.8.2:
+- misc bugfixes, mostly related to the new lua map generator
+- Disable dune piercer and The empire faction, since units were 
+  removed from mainline
+
+0.8:
+- A lot of code refactors.
+- port the whole postgenerator mapgen code to a scenario_generation=lua .
+  - huge performance boost in the mapgen code.
+  - the mapgenerators can now be used in the editor.
+  - the start-of-scenario savefiles no don't determine anymore which
+    typegenerator is chosen.
+- remove a lot of other code to lua. The only [event] remaining is from 
+  the custom_terrain_mod.
+- Pickuppable items no always show on top of decorative items.
+- Add a libary wc2_convert which is a schema bases wml <-> lua converter.
+- fix wc2_optional_attack effect in case that no attack machted the filter.
+- Adapt to mainline dunefolk name changes.
+
+0.7.10.3
+- Fix village colors.
+- Fix error in mapgen code.
+
+0.7.10
+- Improve mapgeneration speed.
+- Fix error when using alienera.
+
+0.7.9.1
+- Fix enemy training.
+
+0.7.9
+- The pickup promt can now be disabled in the wocopedia->settings page.
+- Fix unit not advancing after picking up an item that decrease max xp.
+- Improved gold carryover code to be compatiable with more mod addons.
+- Fixed unit images in messages not scaled in plot sequences.
+- Clear shroud after finding a hero in a bonus point.
+
+0.7.8.2
+- Improve compatabiltiy with other add-ons and code cleanups.
+
+0.7.8
+- Added confirmation promt when picking up items.
+- Fix ai side color when player changes colors.
+- Fix item drop message.
+- Fix bug in preset advancement
+
+0.7.7
+- Fixed invest itemlist not increasing.
+
+0.7.6
+- Fixed rare lua error when picking up training from bonus point if the
+  player cannot pick up more training.
+
+0.7.5
+- Fixed Gold pick in invest giving no gold.
+
+0.7.4
+- Fixed 'Terror disguise' and 'Herald armor' not settings alignment.
+
+0.7.3
+- Fixed wrong experience of recruited units and of units with epic trait.
+
+0.7.2
+- Fixed show item info.
+- Added 'settings' section to wocopedia
+
+0.7.1
+- Fixed shuffle starting locations 
+
+0.7
+- Alienera modification is no longer needed to play with other eras than wc2.
+- Most code moved to lua
+- New WoCopedia ui
+- New Invest ui
+- Observer can no no longer see the enemies side
+- unit can no longer pickup items that won't give them anything
+- fixed wesnoth 1.14 depercation wanrings
+- fixed wrong xp for units with epic trait
+- Improved advancement pick code so that it no longer needs to intercept recruit etc events.
+- reduced savefile size
+- use new scaling algorithm for missing portaits
+- compatabiltiy issue: when loading  saves from older wc2 versions the invest artifact list will be regenerated.
+
+0.6.13
+- Fixed crash when loading games caused by 'adamant armour '
+- Fixed Winter's bloom not giving cold resistance
+
+0.6.12
+- added lua implementation of the default mapgens
+- fixed skeleton archer image not showing
+- Alien eras can now be enaled without changing core files.
+- Simpler implementation custom recall cost
+- Simpler implementation of additional advancement
+- Fixed upkeep of units with items
+- Fixed 'Adamot aromor' effect
+
+0.6.11
+- synced=no for menu items
+- unitmarker and pya are now optional
+- misc refactors
+
+0.6.10
+- bugfix
+
+0.6.9
+- Adapt to wesnoth 1.14
+- Correct recruits show in faction select dialog
+
+0.6.8
+- Redefined Trust pairs (intended as little nerf)
+- Added Chocobone to enemy recalls
+- Removed Young Ogre from pickable from lists without orcs
+- Removed as pickables leaders mages not available as random for Militia and Gang
+- Tweaked Dark, Melee, Ranger and Experience trainings
+- Now enemy undead units get benefict from item Melange (they consumed it while alive)
+- Tweaked how scale enemy recalls at scenarios 4,5 with enemy_power (now is more difficult for players at easier levels)
+- Scaled enemy commander xp bonus with unit level
+- Redefined roads and rivers near castles in Maritime generator
+- Fixed calling Alien Eras modification with wrong id
+- Fixed not fog update for hero found
+- Added explanation of carryover to WoCopedia. Improved bonus points names generation
+- Fixed custom feeding description not matching mainline one. Fixed drains special could be displayed twice on a unit.
+- "Terrific disguise" becomes "Terror disguise", "Winged Staff" becomes "Winged scepter"
+- Fixed version warnings not aimed to host.
+
+0.6.7
+- Removed Mages as random leaders for Militia
+- Small buffs to enemy at scenario4: 1 commander upgraded to level2 and +1 supply village
+- Small buffs to enemy at last scenario: 2 commander upgraded to level3 and +2 supply villages
+- Supply village for enemy gives leader trait "expert" (it doesnt give +70 gold, just normal income and upkeep)
+- Small nerf to enemy recalls at 1p-2p modes to absorb buffs on comanders aimed for 3p
+- Added xp scenario based bonus to hero found
+- Scaled early finish gold bonus (before percentage) with number of players
+- Removed resistence bonus from item Ring of Power and added disengage weapon special
+- Removed secondary effect for flying units from item Winged Staff
+- Tweaked all trainings
+- Scaled army discipline bonus chance with scenario
+- Thug hero gets "resilent" as extra trait instead "fearless" and Young Ogre "epic" instead "expert"
+- Scaled enemy items at last map with difficulty
+- Simplified/tweaked several junky map generation rutines
+- Tweaked faction images
+- Fixed bug: heals +8 training not working over heals +4 units
+- Fixed some translation notes shown and lacking commander overlay for observers
+- Disabled ruiened wood birdge destruction for lacking good image and transition
+- Shorted scenario name to ease savefiles management
+
+0.6.6
+- Redefined the Guild: Now can spam Dark Adept and Ghoul becomes paired with Elvish Shaman
+- Added as leaders: Troll Hero and Lieutenant for The Hand, Troll Hero for The Gang and The Horde
+- Tweaked Ranger, Movement and Experience Trainings
+- Added Troll Hero and Great Troll to enemy orc recalls. Added Troll Hero to comanders
+- Changed The Horde faction image
+- Fixed bug: full movement on recruit was giving 1 MP less when assigned on recruit before +22% moves
+
+0.6.5.1
+- Added as leaders: Orcish Ruler for The Gang and The Horde, Elvish Lord for The Guild
+- Rescaled bonus gold and enemies trained with difficulty level
+- Fixed bug: possible OOS in carryover using non-integer values inside [gold]
+- Fixed bug: possible castle expanding recruit in map3 Savannah
+- Fixed bug: 2 filters chosing some wrong bonus-point-images on a few maps
+- Fixed bug: yard generated at 0,0 sometimes at map2 Paradise
+
+0.6.5
+(Not compatible with previous versions)
+- Developed new alternative map4 (Wild)
+- Swaped Arif and khaiyal as desesters for Guild and Hand. Swaped Hakim and Jundi as desesters for Gang and Militia. Added Dwarvish Scout to Knalgans pickables heroes
+- Tewaked trainings beneficts. Changes training order to extend +10% health profit to all redudancy consolation +1HP bonus
+- Enemy pets get trait "expert". Some tweaks/fixes to enemy recall lists
+- Legendary Goblin Pillager gets leadership (to be consistent with Rouser path)
+- Harcoded suffle players starting position, to fix [generator] pattern
+- Fixed bug: impassible terrain could become invest item impossible to pick
+- Fixed bug: enemy castle expansion on map1 called after map repaint could expand recruit. Several minor changes to some generations
+- Fixed glitch: optional charge duplicating attacks after unit AMLA
+- Fixed typo: gold amount not displayed in expensive recall warning message
+- Changed item "Winter Bloom" resistance bonus to "up to 20" (it was "+50"), removed movement and defense bonus.
+- The Key now gives teleport animation
+- Improved decorative destruction (fences, rotten bridges)
+- Several code fixes to alievate save files size (still a lot to do in BfW 1.14)
+- Used image for invest training from mainline and removed custom one, as is the same from BfW 1.12.4
+- Disabled [allow_undo] in 2p/3p modes due to OOS in bfW 1.12
+- fixed [insert_tag] creating empty [if] to avoid bug in BfW 1.13
+
+0.6.4.4
+- Fixed bug in generating starting positions for alien eras in 2p-1p modes due to key terrain_liked=
+
+0.6.4.3
+- Developed new alternative final map (Feudal)
+- Increased forest amount on map3 Delta wich becomed too low after generation redesign
+
+0.6.4.2
+- "legendary" is renamed as "epic". Walking Corpse and Goblin Spearman heroes get new "legendary" trait  (enables special advances to Chocobone and Goblin Pillager)
+- Enemy leaders get trait "heroic"
+- Fixed glitch: unit taking only 1 item when 2 items placed on same map spot
+- Fixed typo in BfW version warning
+- WC II version becomes a variable to be consistent with code stored in savegame
+
+0.6.4.1
+- Fixed bug:Northerens bonus heroes was added twice and loyalist none to point list (responsable of 2 goblins heroes on bonus list)
+- Redefined data structure relationship between campaign and era (ease adapt other eras)
+- Removed unneccesary hack for recall store due to behavior changed in BfW 1.12
+- Rewritten/redefined junky generator-postgeneration for map3 Delta
+- Tweaked map3 Wetland postgeneration with extra obstacles in zones lacking them
+- Eliminated all players amount reference in postgenerations and made them consistent with any map size. Eliminated chance of generation expanding recruit for all maps.
+- Fixed bug: enemy with feeding item not getting scenario-based hp buff (made it also scale with enemy power)
+- Improved chances of melee recalls for enemy Elf
+- Added version warning urging to upgrade to 1.12.2 or later
+
+0.6.4
+- Redefined The Scourge: Ghost paired with Skirmisher and Guilder-Bat (trades better scouting for less use of specialists)
+- Redefined  The Guild: Can spam Elf Fighter and Ghoul. Reduced random leaders to shamans, mages, dark adepts, and necrophages
+- Removed White Mage as random leader for The Gang (intended as neutral/flavor change; too many chances of white mages and few of orc leaders among other factions)
+- Army discipline bonus nerfed to 3%
+- small tweak to Ranger Tactics training
+- Fixed bug: recruit list not consistent for different eras after scenario transition
+- Small tweaks to generators Wicked adn Provinces
+- Fixed custom forest terrain code (small "bugs" with no gameplay effect)
+- Improved themed enemy: added outlaw to maps Wetland and Wicked
+- Added saurians and outlaws to enemy commander types
+- Each enemy faction will not get commanders of repeated faction along campaign
+- Added 2 new alternative supply village images, added 3 bonus point images
+- Improved pickup bonus point image syncro. Revised and added bonus names.
+- Fixed Classic WC junky code of store empty points as (1,1). Rewroten some code for ease reading
+- Added debug config option to end scenario
+
+0.6.3.3
+- Developed new alternative map4 (Wicked)
+- Enemy xp bonus (to commanders and units with item) now scales with enemy_power
+- Fixed wrong number of iterations (swaped numbers) in scenario4 for 1p and 2p modes.
+
+0.6.3.2
+- Fixed bug introduced in 0.6.3.1 giving error to players joining a new game (wrong key use inside [scenario] was cause)
+- Added old tropical forests to custom terrain (to enhance some maps decoration)
+- Changed bonus labels font to Lucida Sans Unicode for ease reading (I couldnt read well "l","i","n","r" with default font. I accept better ideas...)
+- Some postgeneration code optimized (roads iteration)
+
+0.6.3.1
+- Developed new alternative map3 (Wetland)
+
+0.6.3
+- Developed new alternative map3 (Coral)
+- Small adjust to experiency penalty scaling with difficulty
+- Forbidden enemy castle expansion on water and villages
+- Simplified plot at fork 3 and now correctly shows all enemy leaders in scenario 4 (plot text is provisional anyway)
+- Redefined some postgeneration rutines as events
+- Reduced resources consumed loading scenario events from variables
+- [modification] loads now events in every scenario, removed reload them
+
+0.6.2.2
+- Fixed bug in Training buff "full movement on turn recruited or recalled".
+
+0.6.2.1
+- The Horde can now spam Skirmisher and Naga
+
+0.6.2
+- Buffed The Gang (now can spam Grunt, Assasin, Elvish Archer and Wose)
+- Small Buff to The Hand (now can spam Young Ogre and Heavy Infantryman)
+- Small Buff to Dark Training
+- Developed new alternative map2 (Clayey)
+- Chose Difficulty menu is fired now at start (instead at first recruit). This set experency penalty correctly for all units.
+- Changed Young Ogre for Khalifate hero as Deserter for 6 factions
+
+0.6.1.7
+- Enemy nerfed at last map (-2 level3 recalls)
+- Decoration fix to map6 Industrial (roads)
+- Fixed training names in WoCopedia showed all as Melee
+
+0.6.1.6
+- Developed new alternative final map (Industrial)
+- Fixed support for change side color not working well for less than 3 players
+- Map4 Podzol tweaked with some extra rough terrain
+
+0.6.1.5
+- Fixed bug making players leaders not affected by experience penalty (introduced in 0.6.1)
+
+0.6.1.4
+- Nerfed enemy at last map (-2 commanders)
+
+0.6.1.3
+- Nerfed enemy at last map (-1 training and -2 level3 recalls)
+
+0.6.1.2
+- Nerfed enemy at last map (-1 magic item and -1 training)
+- Fixed wrong "Dwarvish Ulfserker" as enemy recall instead "Dwarvish Berserker"
+- Code reorganization for enemy configuration.
+- Redefined as events some macros to alleviate disguised code bloat
+
+0.6.1.1
+- Fixed typo making scenario 4 one enemy side become broken in some difficulties for 2 players
+- Enemy recalls at map 3 now scales with enemy power
+- The Cult can now spam Vampire Bat and Cavalryman
+- Duplicated orcs random leaders and removed Elder Wose for The Gang
+
+0.6.1
+- Redefined The Guild: Ghoul is now paired with Elvish Fighter and Skeleton with Wose.
+- Duplicated Dark Sorcerer and Necrophage as random leaders for Guild and Cult. Removed Elder Wose for Guild.
+- Disabled The Empire as random faction (added config option to enable it)
+- Experiency penalty now scales with difficulty
+- Improved movement training lvl2. Move on recruit buff now allows also attack.
+
+0.6.0.2
+- Changed Classic WC heores recall limit (was 6 maximun) to player castle size.
+- Ruffian hero gets legendary (was expert). Naffat hero gets resilient and Rami hero gets strong.
+- Fixed defense boost working bad for negative values due to different WML behavior in BfW 1.12
+- Fixed typo making castles 1 hex smaller in map3 Sulfurous
+- Small improves to melee and movement traings advanced levels
+
+0.6.0.1
+- Developed new alternative final map (Maritime)
+
+0.6
+- Buffed The Gang (now can spam Shaman and Orcish Archer)
+- Buffed trait "legendary"
+- Redefined WC II era events to make it copatible with other scenarios (integrated info recruit option)
+- Minor tweaks to map generation, menu appearence, and code organization
+- Fixed creation of useless variables in 2p and 1p modes
+
+0.5.9.3.2
+- Improved Dark Training
+- Increased minimun keep separation in map2 Provinces and map4 Mines
+
+0.5.9.3.1
+- Some map generation/decoration tweaks. Improved decorative destruction
+- Small improve to melee training
+
+0.5.9.3
+- More changes to Empire. Test in progress
+
+0.5.9.2
+- Buffed Cult (really hoping this is last one): Hakim paired with Walking corpose
+- Fixed alias for custom villages using add on terrain modification to new 1.11 code (they were giving only flat defense)
+
+0.5.9.1
+- Developed new alternative map3 (Sulfurous)
+- Converted to road swamp castle conected to keep in map3 Jungle
+
+0.5.9
+- Buffed The Cult (yea... again), now can spam more units
+- Some modifications/fixes in enemy comanders extra recruits lists
+
+0.5.8.7.2
+- Removed Footpad from Empire recruit, now can spam Jundi
+
+0.5.8.7.1
+- Guardsman changed for dwarvish fighter in empire recruit
+
+0.5.8.7
+- redefined The Empire recruit. (First try to create faction was a mess)
+
+0.5.8.6
+- fixed rerandomize recruit after map1 due to new [event] inside [era] behavior in BfW 1.11
+
+0.5.8.5
+- empire buffed with 2 new pairs
+- Hakim heroe gets expert trait, jundi heroe gets strong trait
+
+0.5.8.4
+- Replaced commander overlay for BfW 1.10 one
+- Buffed Empire
+
+0.5.8.3
+- Developed new alternative map2 (Paradise)
+
+0.5.8.2
+- Scaled unit images for missing portraits
+
+0.5.8.1
+- Hakim hero gets "strong" trait
+- Replaced thief for thug in Empire deserters
+- Tweaked themed enemies adjacent villages
+- Some tweaks to map3 Delta and map4 Podzol generation
+
+0.5.8
+- Added new faction with Khalifate units: The Empire
+- Added Khalifate heroes to bonus points
+- Fixed thread name in objectives
+
+0.5.7.3
+- Developed new alternative map4 (Podzol)
+- Small fix to halo behavior
+- Small fixes to map decoration
+
+0.5.7.2
+- Fixed buggy behavior in train benefict "optional charge"
+- Fixed wrong commanders and pickable heroes lists for The Guild
+
+0.5.7.1
+- Redefined custom terrain config option as modification
+- Added allow_undo to all menu items but preset advacement
+- Fixed Classic WC bug: adamant armor not working as intended on some units after level
+- Small improve to Movement training maximun level
+- Reduced Discipline bonus for advanced trainers to 4%
+- Some code simplification and/or clarification
+
+0.5.7
+- Redefined The Cult recruit to give a great buff to faction
+- Change in The Guild recruit intended as very small buff (also for flavor reasons).
+
+0.5.6.0.1
+- Fixed bug in recall (making players need exced in 11 gold unit recall cost)
+
+0.5.6
+- Developed new alternative map2 (Glaciers)
+- Developed new alternative map2 (Provinces)
+- Developed new alternative map4 (Mines)
+- Fixed minor bug in Classic WC jungle generator (mushroom max temperature)
+- Enemy allies recruits are now randomized instead pick first value of list
+- Forced lock scenario settings (but sides color for map1)
+
+0.5.5.6.1
+- Fixed bug in random hero list creation for other eras (possible empty value)
+
+0.5.5.6
+- Added config option to allow other eras (create random heroes lists)
+
+0.5.5.5
+- Redifined The Cult pairs (intended as a very small buff)
+- Fixed bug causing not giving trainings in bonus points (introduced in 0.5.4)
+- Fixed undesired scroll to random unit in invest training
+- Fixed typo in trait "trained" description for ranger terrains specials
+- Added custom bonus images
+- Undead bosses get name
+- Removed clear map lables (generator bug solved in 1.11.1)
+
+0.5.5
+- Added a new alternative map3: Delta
+- Fixed minor bug replacing a custom image in bonus
+- More acurated use of new 1.12 terrain forest. Minor decoration tweaks.
+- Redefined The Militia to slighty buff it. Target is (taking fighter/scout pair apart), give the best possible pairs. New image.
+- Removed Young Ogre from Heroes and Deserters of The Hand and added to its commanders.
+- Fixed low unintended finish gold bonus for 2p and 1p. (carry_over formula was not working well for less players)
+- Harcoded "village map amount" for finish gold bonus calculation. Fixes map generation as undesired source of stupid umbalance in players gold.
+- Split WoCopedia and recruit info (new images)
+
+0.5.4.1
+- Fixed traings not giving correctly specials
+- Fixed typo in random leaders info
+
+0.5.4 (developed for BfW v1.11 series)
+- Changed add on name to World Conquest II
+- Chanaged abilities descriptions to 1.12 format
+- Changed image file name to 1.12 path for thunderer,scout,skeleton,horseman,cavalryman(croped)
+- Added support for change side colors
+- Improved decoration using new 1.12 terrains
+- Removed unit name mark for special_overlay in recall list (1.12 includes overlays)
+- Redefined era code to make more easy additions and maintenance
+- Disabled era outside WC II and seted era as only one allowed for campaign (prevents crash)
+- Improved decorative destruction with custom terrain (snowed forests)
+- Improved Recruit info option (added units images)
+- Added deserters to WoCopedia factions. Improved WoCopedia design and readbility.
+- Developed a new help option to see again items info (rightclick on image)
+- Redefined The Hand pairs and random leaders to buff faction
+- Integrated translated version as config option
+- Increased trun limit in 2p and 1p versions. +25 gold each map for 1p.
+- Reduced enemy lvl2 recalls in map4 for lower difficulties.
+
+(deleted changelog only valid for previous BfW versions)
