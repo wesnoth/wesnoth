@@ -238,6 +238,9 @@ game_stringfixes = {
 
 # added in 1.13.14+dev
 ("the one thing she not will be anticipating.", "the one thing she will not be anticipating."),
+
+# added in 1.14.13+dev
+("answer to the call of duty.", "answer the call of duty."),
 ),
 
 "wesnoth-multiplayer" : (
