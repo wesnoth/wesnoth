@@ -18,6 +18,9 @@
    * Dragonguard HP increased from 59 to 63
    * Bone Shooter HP increased from 40 to 42
    * Banebow HP increased from 50 to 52
+ ### Terrain
+   * New ancient/weathered stone floor tile (code Ias)
+   * New ancient stone stone walls variation (code Xoa)
  ### Miscellaneous and bug fixes
    * Added missing side controllers to two Micro AI scenarios (fixes #4890)
 
