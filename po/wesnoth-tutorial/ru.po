@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-05-01 22:57 UTC\n"
-"PO-Revision-Date: 2019-11-02 15:54+0600\n"
+"PO-Revision-Date: 2020-06-06 13:18+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [lua]: wml_actions.select_character
@@ -678,8 +678,8 @@ msgstr "Описание бойца"
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
-"Чтобы просмотреть информацию об бойце, щёлкните на нём правой кнопкой  мыши "
-"и выберите <b>Описание бойца</b>."
+"Чтобы просмотреть информацию об бойце, щёлкните на нём правой кнопкой мыши и "
+"выберите <b>Описание бойца</b>."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:962
@@ -939,6 +939,7 @@ msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
 msgstr ""
+"Вы не можете завершить свой ход, пока не наймёте войска и не займёте деревню!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
@@ -1026,13 +1027,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the east; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1041,7 +1035,7 @@ msgid ""
 msgstr ""
 "Видишь эту тёмно-синюю воду? Она слишком глубока — ни мы, ни орки не сможем "
 "перейти в этих местах. Они будут медленно продвигаться по узкой полосе "
-"мелководья на востоке (там светло-синяя вода); но если мы займём побережье и "
+"мелководья на севере (там светло-синяя вода); но если мы займём побережье и "
 "заставим их биться в воде, они будут уязвимы, мы же — под защитой леса."
 
 #. [event]
@@ -1104,8 +1098,8 @@ msgid ""
 "Some of your units have also managed to level up. They’re even more "
 "formidable, so you should recall them as well."
 msgstr ""
-"Некоторые из ваших бойцов повысили свой уровень. Теперь они стали сильнее. "
-"Призовите их в первую очередь."
+"Некоторые из твоих бойцов повысили свой уровень. Теперь они стали сильнее. "
+"Призови их в первую очередь."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:285
@@ -1115,8 +1109,8 @@ msgid ""
 "<i>recalled</i> them to battle this scenario. More experienced units would "
 "have been of help against these orcs."
 msgstr ""
-"К сожалению, никто из ваших бойцов не выжил, поэтому вам придётся нанять "
-"новых. Если бы у вас остались ветераны, вы могли бы <i>призвать/i> их в этом "
+"К сожалению, никто из твоих бойцов не выжил, поэтому тебе придётся нанять "
+"новых. Если бы у тебя остались ветераны, ты мог бы <i>призвать/i> их в этом "
 "сценарии. Они бы оказались большим подспорьем в сражении с орками."
 
 #. [message]: speaker=narrator
@@ -1151,8 +1145,8 @@ msgid ""
 "them. Personally, I would recommend a balanced force of two archers, two "
 "fighters, and a shaman."
 msgstr ""
-"В этом сценарии вам доступны новые бойцы: эльфийские лучники и ведуньи. "
-"Подробнее о них расскажу, когда вы их наймёте. Я бы рекомендовал "
+"В этом сценарии тебе доступны новые бойцы: эльфийские лучники и ведуньи. "
+"Подробнее о них расскажу, когда ты их наймёшь. Я бы рекомендовал "
 "сбалансированную комбинацию из двух лучников, двух воинов и одной ведуньи."
 
 #. [event]
@@ -1170,25 +1164,21 @@ msgstr "Ведунья"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
-#| "friendly units around her. She also has a special attack which <i>slows</"
-#| "i> enemies, halving the damage they do for one turn."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
-"Ведуньи довольно слабы, зато умеют <i>лечить</i> бойцов вокруг себя. Также у "
-"них есть особая атака, которая <i>замедляет</i> противника и уменьшает "
-"наносимый ими урон на один ход."
+"Ведуньи умеют <i>лечить</i> дружественных бойцов вокруг себя. Также у них "
+"есть особая атака, которая <i>замедляет</i> противника и уменьшает в два "
+"раза наносимый им урон на один ход. Однако, ведуньи физически слабее воинов "
+"и стрелков, так что будьте осторожны, когда ведёте их на битву."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "Способность <i>Лечение</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
@@ -1202,28 +1192,21 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"В начале каждого хода дружественные бойцы, стоящие рядом с ведуньей, "
+"излечатся на 4 единицы здоровья — это вдвое меньше, чем лечение в деревне. "
+"Ведунья получает опыт только за битвы, а не за лечение, но её продвижение "
+"стоит того — её второй уровень, Друидка лечит также хорошо, как и деревня.\n"
+"\n"
+"Подробное объяснение лечения можно найти в справке в разделе <i>Игра</i> "
+"(для вызова справки нажмите <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Abilities and Weapon Specials"
 msgid "Weapon Specials"
-msgstr "Способности и особенности оружия"
+msgstr "Особенности оружия"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1240,16 +1223,16 @@ msgstr ""
 "замедлить. В таком случае, весь следующий ход он будет наносить только "
 "половину урона. Ещё одна особенность, Бьёт первым, позволяет упреждать "
 "удары, вне зависимости от того, кто является атакующим. А с особенностью "
-"Магия, атака всегда имеет 70%-ый шанс попасть в цель.\n"
+"Магия атака всегда имеет 70%-ый шанс попасть в цель.\n"
 "\n"
 "Полный список способностей и особенностей оружия, а также особенности "
-"бойцов, можно найти в меню Помощь."
+"бойцов, можно найти в меню Помощь (клавиша <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Multiple Healers"
-msgstr ""
+msgstr "Несколько лекарей"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1263,6 +1246,13 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"У вас теперь есть два лекаря. Однако каждый боец может быть вылечен только "
+"одним лекарем. Боец вылечится только на 4 единицы здоровья, если он стоит "
+"рядом с двумя ведуньями.\n"
+"\n"
+"Если одна из ведуний продвинется до друидки, то она сможет лечить соседних "
+"бойцов на 8 единиц здоровья за ход. Боец, находящийся рядом с несколькими "
+"лекарями, будет вылечен самым умелым из них."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1273,11 +1263,15 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"У вас теперь есть два лекаря. Ваша друидка может вылечить соседних бойцов на "
+"8 единиц здоровья за ход, тогда как ведунья — только на 4. Каждый боец может "
+"быть вылечен только одним лекарем — боец, стоящий рядом с несколькими "
+"лекарями, будет вылечен самым умелым из них."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
 msgid "Healers and Villages"
-msgstr ""
+msgstr "Лекари и деревни"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:384
@@ -1285,6 +1279,8 @@ msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
 msgstr ""
+"Боец, находящийся в деревне, получает лечение от деревни, а не от соседних "
+"лекарей."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
@@ -1294,6 +1290,11 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"Если у тебя есть более одного лекаря, они могут лечить друг друга или же "
+"поддерживать бойцов на разных фронтах. Также это открывает дополнительные "
+"тактические возможности. Например, лучше подойти лекарем к раненому бойцу, а "
+"не наоборот, чтобы тот мог восстановить во время отдыха дополнительные 2 "
+"единицы здоровья."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:403
@@ -1308,9 +1309,9 @@ msgid ""
 "melee attacks with strong ranged attacks, and vice versa. This allows your "
 "units to take less damage overall when your enemy counterattacks."
 msgstr ""
-"В отличие от воинов предпочитающих ближний бой, стрелки более сильны в "
-"обращении с оружием дальнего боя. Разумнее всего атаковать вражеских бойцов, "
-"сражающихся в ближнем бою, дальнобойным оружием, и наоборот. Это позволит "
+"В отличие от воинов, предпочитающих ближний бой, стрелки более сильны в "
+"обращении с оружием дальнего боя. Разумнее всего атаковать дальнобойным "
+"оружием вражеских бойцов, сильных в ближнем бою, и наоборот. Это позволит "
 "уменьшить урон, получаемый при контратаках противника."
 
 #. [message]: speaker=Galdrad
@@ -1340,28 +1341,21 @@ msgstr "Захватите деревню"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:448
-#, fuzzy
-#| msgid "Capture a village"
 msgid "You still have to capture a village!"
-msgstr "Захватите деревню"
+msgstr "Вы всё ещё должны захватить деревню!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:479
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things if you make a "
-#| "mistake."
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"Большинство действий можно отменить, нажав на клавишу <b>u</b> — это очень "
-"полезно для исправления ошибок."
+"Вы забыли нанять войска! Вы можете отменить последний ход, нажав <b>u</b>."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "Вам всё ещё нужно нанять войска!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:490
@@ -1406,7 +1400,7 @@ msgid ""
 "a side may be hidden; however, it is still useful to check this table when a "
 "scenario begins. You can access it in the <b>Menu</b> menu."
 msgstr ""
-"В панеле состояния подробно описывается текущее состояние сторон и начальные "
+"В панели состояния подробно описывается текущее состояние сторон и начальные "
 "условия. Туман и пелена будут влиять на то, что вы можете увидеть в этой "
 "таблице, и иногда одна из сторон может быть скрыта; однако все же полезно "
 "проверять эту таблицу, когда начинается сценарий. Вы можете получить доступ "
@@ -1414,16 +1408,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:568
-#, fuzzy
-#| msgid ""
-#| "You moved to the wrong place! After this message, you can press <b>u</b> "
-#| "to undo, then try again."
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"Вы пошли не туда! После этого сообщения нажмите <b>u</b>, чтобы отменить "
-"ход, а затем попробуйте снова."
+"Вы забыли захватить деревню! Вы можете отменить последний ход, нажав <b>u</"
+"b>."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
@@ -1473,9 +1463,9 @@ msgid ""
 msgstr ""
 "Можно, но в воде эльфы (да и орки) уязвимее: скорость передвижения падает, а "
 "также снижается процент<i>защиты</i>. Враг получит 80%-ый шанс попасть по "
-"вам. Так как показатель защиты эльфов возрастает в лесу, советую держаться "
-"его границ и атаковать орков оттуда: их шанс попадания по вашим воинам "
-"снизится до 40%, а по лучникам и ведуньям - до 30%."
+"твоим бойцам. Так как показатель защиты эльфов возрастает в лесу, советую "
+"держаться его границ и атаковать орков оттуда: их шанс попадания по твоим "
+"воинам снизится до 40%, а по лучникам и ведуньям - до 30%."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:609
@@ -1484,9 +1474,9 @@ msgid ""
 "our forces. It might do to send a few units to defend the banks, and the "
 "village there."
 msgstr ""
-"Однако, не оставляйте брод без присмотра. Орки могут попробовать обойти нас "
-"с фланга. Не помешает отправить нескольких бойцов защищать брод и деревни, "
-"что находятся поблизости от него."
+"Но не оставляй брод без присмотра. Орки могут попробовать обойти нас с "
+"фланга. Не помешает отправить нескольких бойцов защищать брод и деревни, что "
+"находятся поблизости от него."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:614
@@ -1515,8 +1505,8 @@ msgstr ""
 "боя, поэтому стрелки смогут напасть на него почти ничем не рискуя. К "
 "сожалению, твои бойцы не смогут добраться до него на этом ходу, но не давай "
 "им прохлаждаться. Отведи их на позиции, чтобы они смогли пойти в атаку на "
-"следующем ходу. На этом берегу реки есть ещё несолько деревень. Отправь туда "
-"войска, чтобы получить доход и подлечить бойцов."
+"следующем ходу. На этом берегу реки есть ещё несколько деревень. Отправь "
+"туда войска, чтобы получить доход и подлечить бойцов."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:622
@@ -1576,7 +1566,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:711
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "Это обучение не предполагалось настолько сложным"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
@@ -1587,6 +1577,12 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"Предполагалось, что орк на острове должен был пройти по мосту, чтобы его "
+"могли атаковать несколько эльфов сразу. Что-то пошло не так в коде "
+"обработчика события, орк остался в защитной позиции, сделав этот сценарий "
+"сложнее.\n"
+"\n"
+"Пожалуйста, сообщите об этой ошибке разработчикам игры."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:726
@@ -1628,9 +1624,9 @@ msgid ""
 "without wading slowly through the water, you’ll have to kill the Grunt."
 msgstr ""
 "Нет. Как только ты приблизишься к противнику, ты попадёшь в его <i>зону "
-"контроля</i> и не сможешь больше двигаться на этом ходу.Если не хочешь, "
-"чтобы твои солдаты, переправляясь на остров, не бултыхались в воде — "
-"придётся его убить."
+"контроля</i> и не сможешь больше двигаться на этом ходу. Если не хочешь, "
+"чтобы твои солдаты, переправляясь на остров, бултыхались в воде — придётся "
+"его убить."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:755
@@ -1655,46 +1651,33 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:778
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
 "move everyone closer for next turn."
 msgstr ""
-"Если я убью пехотинца на этом ходу, надеюсь, мои бойцы переживут контратаку. "
-"Займу-ка я побольше деревень и подтяну своих солдат поближе."
+"Если мои бойцы не убьют пехотинца на этом ходу, надеюсь, я смогу пережить "
+"контратаку. Мне следует приказать бойцам занять побольше деревень, если "
+"возможно, и подтянуть их поближе для следующего хода."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:783
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Если твоя ведунья встанет рядом с ранеными бойцами, то в начале хода она "
-"вылечит по 4 очка здоровья каждому."
+"Если твоя ведунья встанет рядом с тобой, то в начале хода она вылечит тебя "
+"на 4 очка здоровья."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
 "closer for next turn."
 msgstr ""
-"Если я убью пехотинца на этом ходу, надеюсь, мои бойцы переживут контратаку. "
-"Займу-ка я побольше деревень и подтяну своих солдат поближе."
+"Если я не убью пехотинца на этом ходу, надеюсь, мои бойцы переживут "
+"контратаку. Займу-ка я побольше деревень и подтяну своих солдат поближе."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
@@ -1777,19 +1760,13 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:940
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it next turn! "
-#| "Move a unit into the village to stop the orcs capturing it. Whichever "
-#| "unit you choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"Нужно занять эту деревню, или на следующем ходу они её захватят! Чтобы "
-"опередить орков, отведи туда своего бойца. Он, кстати, сможет заодно "
-"подлечиться."
+"Нужно занять эту деревню, иначе они скоро её захватят! Чтобы опередить "
+"орков, отведи туда своего бойца. Он, кстати, сможет заодно подлечиться."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:946
@@ -1818,7 +1795,7 @@ msgid ""
 "You can hover over the sky image below the minimap on the right to see the "
 "current time of day and who has the advantage."
 msgstr ""
-"Во время прохождения сценария, каждый ход будет происходить смена времени "
+"Во время прохождения сценария каждый ход будет происходить смена времени "
 "суток. Существует четыре типа существ: порядочные, нейтральные, хаотичные и "
 "теневые. Каждый тип получает различные бонусы или дебафы, в зависимости от "
 "времени суток. При наведении мыши на изображение ландшафта под мини-картой "
@@ -1841,11 +1818,22 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"Не забывайте отводить раненых бойцов в деревни. Ведуньи могут восстановить "
+"только 4 единицы здоровья за ход, тогда как в деревне бойцы лечатся быстрее "
+"— 8 единиц здоровья за ход.\n"
+"Лечение от различных лекарей обычно не суммируется. Даже если боец стоит "
+"рядом с несколькими лекарями в начале хода, либо же находится в деревне "
+"рядом с лекарем, вылечен он будет только один раз.\n"
+"\n"
+"Восстановление здоровья во время отдыха является исключением из правила. "
+"Если боец в течении хода ничего не делал, он восстановит 2 единицы здоровья "
+"в дополнение к любому лечению, так что он может восстановить до 10 единиц "
+"здоровья за ход."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
 msgid "Tracking Unused Units"
-msgstr "Поиск бойцов не совершивших ход"
+msgstr "Поиск бойцов, не совершивших ход"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1001
@@ -1880,7 +1868,7 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1021
 msgid "Hurry up and defeat the orcs before they become entrenched!"
-msgstr "Поспеши, нужно победить орков, прежде чем они укрепяться!"
+msgstr "Поспеши, нужно победить орков, прежде чем они укрепятся!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1049
@@ -1903,8 +1891,8 @@ msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"Нанимай бойцов, необходимых в данной ситуации. Лучники обычно хороши против "
-"пехотинцев, волчьих всадников, и лидера орков."
+"Нанимайте бойцов, необходимых в данной ситуации. Лучники обычно хороши "
+"против пехотинцев, волчьих всадников, и лидера орков."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1101
@@ -1949,7 +1937,7 @@ msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
 msgstr ""
-"Очень рисковано отправлять меня в атаку! Я могу замедлить врага дальней "
+"Очень рискованно отправлять меня в атаку! Я могу замедлить врага дальней "
 "атакой, но, надеюсь, у вас есть план на случай, если я промахнусь!"
 
 #. [event]
@@ -1975,9 +1963,8 @@ msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
 msgstr ""
-"В кампании у вас может быть десять или даже двадцать сценариев, чтобы "
-"построить свою армию, но это обучение завершится после того, как вы победите "
-"Трага."
+"В кампании может быть десять или даже двадцать сценариев, чтобы построить "
+"свою армию, но это обучение завершится после того, как вы победите Трага."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1235
@@ -2014,14 +2001,12 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1293
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. Goodbye, $unit."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
-msgstr "Бойцы второго уровня сильны, но не бессмертны! Прощай, $unit.name|."
+msgstr ""
+"Бойцы второго уровня сильны, но не бессмертны! Нам будет не хватать тебя, "
+"$unit.name|."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1307
@@ -2078,8 +2063,8 @@ msgid ""
 "hit units."
 msgstr ""
 "Повышение уровня полностью меня исцелило! Теперь у меня есть оружие с "
-"особенность <i>меткость</i> — мои шансы попасть из лука в противника всегда "
-"равны 60%. Я делаю 4 выстрела по 9 единиц урона каждый. Я помогу вам "
+"особенностью <i>меткость</i> — мои шансы попасть из лука в противника всегда "
+"не меньше 60%. Я делаю 4 выстрела по 9 единиц урона каждый. Я помогу вам "
 "справиться с хорошо защищёнными врагами."
 
 #. [message]: speaker=unit
@@ -2104,7 +2089,7 @@ msgid ""
 msgstr ""
 "Повышение уровня полностью меня исцелило! Я хорошо владею как мечом, так и "
 "луком, к тому же у меня есть способность <i>засада</i>. Я могу укрыться в "
-"лесу так, что враг увидит меня только если встанет подойдёт совсем близко."
+"лесу так, что враг увидит меня только если подойдёт совсем близко."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1378
@@ -2153,8 +2138,8 @@ msgid ""
 msgstr ""
 "Повышение уровня полностью меня исцелило! Теперь я очень хорошо владею мечом "
 "и наношу 4 удара по 9 единиц урона каждый. У меня нет способности лидерство, "
-"как у капитана, зато мои превосходные боевые навыки позволят мне наносить "
-"больше урона, чтобы победить орков!"
+"как у капитана, зато мои превосходные боевые навыки позволяют мне наносить "
+"больше урона!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1419
@@ -2188,28 +2173,18 @@ msgstr "Это... было глупо. Мне надо быть осторожн
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1463
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "Ааа! Кто теперь будет вести вас к победе?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
-#, fuzzy
-#| msgid ""
-#| "You have beaten the orcs! You may want to try one of the rookie-level "
-#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#| "i> is the easiest and is the recommended first campaign. In <i>An Orcish "
-#| "Incursion</i> you have an Elvish army, similarly to this tutorial, but "
-#| "with seven scenarios for your units to gain experience and advance levels."
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
 "is the easiest and is the recommended first campaign."
 msgstr ""
 "Вы разбили орков! Теперь, вы можете попробовать одну из кампаний начального "
-"уровня, которые включают подсказки по стратегии. \"Сказание о Двух Братьях\" "
-"- самая простая и рекомендуемая кампания для первого прохождения. В кампании "
-"<i>Набег орков</i> у вас есть эльфийская армия, аналогичная той, что была "
-"вам только что доступна, но с семью сценариями, в котором ваша армия может "
-"получать больше опыта и повышений."
+"уровня, которые включают подсказки по стратегии. <i>\"Сказание о Двух Братьях"
+"\"</i> — самая простая и рекомендуемая кампания для первого прохождения. "
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1483
@@ -2259,7 +2234,7 @@ msgstr ""
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:4
 msgid "Warrior"
-msgstr "Повышение"
+msgstr "Ученик"
 
 #. [unit_type]: id=Warrior, race=human
 #. [unit_type]: id=Warrioress, race=human

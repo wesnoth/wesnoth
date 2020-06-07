@@ -1,6 +1,6 @@
 ## Version 1.14.12+dev
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), French, Portuguese (Brazil)
+   * Updated translations: Chinese (Traditional), French, Portuguese (Brazil), Russian
 
 ## Version 1.14.12
  ### Add-ons client

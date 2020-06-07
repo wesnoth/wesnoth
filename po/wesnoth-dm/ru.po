@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-05-01 22:56 UTC\n"
-"PO-Revision-Date: 2016-05-03 15:14+0400\n"
-"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
+"PO-Revision-Date: 2020-06-06 23:03+0300\n"
+"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:22
@@ -32,12 +32,12 @@ msgstr "Ученик"
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:31
 msgid "Normal"
-msgstr "(Нормальный)"
+msgstr "Нормальный"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:32
 msgid "Challenging"
-msgstr "(Сложный)"
+msgstr "Сложный"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:32
@@ -47,7 +47,7 @@ msgstr "Маг"
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:33
 msgid "Difficult"
-msgstr "(Очень сложный)"
+msgstr "Очень сложный"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:33
@@ -72,7 +72,7 @@ msgstr ""
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:37
 msgid "(Intermediate level, 19 scenarios.)"
-msgstr "(Средний уровень, 19 сценариев)"
+msgstr "(Средний уровень сложности, 19 сценариев)"
 
 #. [about]
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:40
@@ -87,12 +87,12 @@ msgstr "Соавторы"
 #. [about]
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:63
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Поддержка кампании"
 
 #. [about]
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:70
 msgid "WML Programming and Assistance"
-msgstr "Программирование WML и поддержка"
+msgstr "WML программирование и поддержка"
 
 #. [about]
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:85
@@ -118,10 +118,8 @@ msgstr "Вступление"
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:25
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:24
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:208
-#, fuzzy
-#| msgid "Mage"
 msgid "Mages"
-msgstr "Маг"
+msgstr "Маги"
 
 #. [side]: type=Mage of Light, id=Marshal
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:29
@@ -229,39 +227,29 @@ msgid ""
 "Great”</i> before your days are through. I give you the second syllable of "
 "power, the second part of your name: FA"
 msgstr ""
-"Ты не будешь худшим среди этих воинов. Нет; тебя будут звать <i>«Великим»</"
-"i> до того, как твои дни закончатся. Я даю тебе вторую часть могущества, "
+"Ты не будешь худшим среди этих воинов. Нет; тебя назовут <i>«Великим»</i> "
+"еще до того, как твои дни закончатся. Я даю тебе вторую часть могущества, "
 "второй слог твоего имени: ФА"
 
 #. [message]: speaker=Third Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:130
-#, fuzzy
-#| msgid ""
-#| "Yes. Peace is broken, but hope is not extinguished. There is always hope. "
-#| "And you will be the father of it. I call the power of the Bright Gods "
-#| "into the second part of your name. FA"
 msgid ""
 "Yes. Peace is broken, but hope is not extinguished. There is always hope. "
 "And you will be the father of it. I give you the final syllable of power, "
 "the last part of your name: DOR"
 msgstr ""
-"Да. Мир разрушен, но надежда не погасла. Всегда есть надежда. И ты дашь ей "
-"увидеть свет. Я призываю силу Светлых Богов во второй слог твоего имени. ФА"
+"Да. Мирной жизни больше нет, но надежда не погасла. Всегда есть надежда. И "
+"ты дашь ей увидеть свет. Я дарю тебе последний слог твоего имени, последнюю "
+"часть могущества: ДОР"
 
 #. [message]: speaker=Fourth Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:139
-#, fuzzy
-#| msgid ""
-#| "After the battle, peace. After the darkness, dawn. From death springs new "
-#| "life. I give you the last part of your name, the final syllable of power. "
-#| "DOR"
 msgid ""
 "After the battle, peace. After the darkness, dawn. From death springs new "
 "life. I call the power of the Bright Gods into your name: DELFADOR"
 msgstr ""
 "После битвы — мир. После темноты — рассвет. Из смерти зарождается новая "
-"жизнь. Я даю тебе последний слог твоего имени, последнюю часть могущества. "
-"ДОР"
+"жизнь. Я призываю силу Светлых Богов в твоё имя: ДЕЛФАДОР"
 
 #. [message]: speaker=Marshal
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:148
@@ -308,13 +296,12 @@ msgstr "Теперь иди вперед!"
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:189
 msgid "Your name journey begins. Methor will lead you from this place."
 msgstr ""
-"Твое путешествие за Именем начинается. Метор будет выведет тебя из этого "
-"места."
+"Твое путешествие за Именем начинается. Метор выведет тебя из этого места."
 
 #. [message]: speaker=Methor
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:206
 msgid "But I will not see you to its end, for that is yours alone."
-msgstr "Но я не увижу тебя в конце, ты должен завершить его один."
+msgstr "Но я не буду сопровождать тебя до конца, ты должен завершить это один."
 
 #. [message]: speaker=Methor
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:217
@@ -367,7 +354,7 @@ msgstr "Грогор-Тук"
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:149
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:176
 msgid "Pillagers"
-msgstr ""
+msgstr "Налётчики"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:59
@@ -396,8 +383,8 @@ msgstr ""
 "после ухода из Алдуина, Метор решил осесть в тихой долине на границе Низких "
 "Гор, на юго-востоке от столицы в Велдине. Он открыл собственную небольшую "
 "школу и, вместе с помогавшим ему Делфадором, начал тренировать горстку "
-"молодых учеников, которые могли через некоторое время стать достойными "
-"Академии на Алдуине."
+"молодых учеников, которые могли бы через некоторое время стать достойными "
+"обучения в Академии на Алдуине."
 
 #. [message]: speaker=Methor
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:73
@@ -420,7 +407,7 @@ msgid ""
 "my slaves..."
 msgstr ""
 "Слушайте, людишки! Теперь эта долина принадлежит мне. Мне нужны все ваши "
-"дома и имущество! Отдавайте их мне без лишних разговоров, и я позволю вам "
+"дома и имущество! Отдайте мне все без лишних разговоров, и я позволю вам "
 "жить в качестве моих рабов..."
 
 #. [message]: speaker=Methor
@@ -439,7 +426,7 @@ msgid ""
 "their villages, and spare no-one!"
 msgstr ""
 "Тут ты ошибаешься, ничтожный колдунишка. Война приближается, люди... Война! "
-"Взять их деревни, никого не щадить!"
+"Захватить их деревни, никого не щадить!"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:90
@@ -473,8 +460,6 @@ msgstr "Смерть Делфадора"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:116
-#, fuzzy
-#| msgid "Grooar! Burn! Burn! Ahahaha..."
 msgid "Grooar! Pillage! Pillage! Ahahaha..."
 msgstr "Рррооарр! Гори! Гори! Ахахаха..."
 
@@ -501,7 +486,7 @@ msgid ""
 "you."
 msgstr ""
 "Отличная работа, Делфадор! Я вижу, что хорошо тебя обучил, и ты готов идти "
-"искать свою судьбу. Дни моих путешествий прошли, но для тебя теперь самое "
+"искать свою судьбу. Дни моих путешествий окончены, но для тебя теперь самое "
 "время отправиться на северо-запад, в Велдин, и разыскать моего друга "
 "Леоллина. Он поможет тебе."
 
@@ -550,10 +535,8 @@ msgstr "Форт Мириен"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:81
-#, fuzzy
-#| msgid "Defeat Hagha-Tan"
 msgid "Defeat Urthaka-Tan"
-msgstr "Убить Хага-Тана"
+msgstr "Победите Уртака-Тана"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:106
@@ -595,7 +578,7 @@ msgstr ""
 msgid ""
 "I cannot turn back now... If I fight these orcs, will your villagers help me?"
 msgstr ""
-"Мне уже нет возврата... Если я вступлю в битву с этими орками, вы мне "
+"Мне уже нет дороги назад... Если я вступлю в битву с этими орками, вы мне "
 "поможете?"
 
 #. [message]: speaker=Derrin
@@ -626,8 +609,8 @@ msgid ""
 "Your magic was more help than we looked for, and we are in your debt."
 msgstr ""
 "Спасибо тебе, Делфадор, за то, что помог избавить нашу землю от этих мерзких "
-"орков. Твоя магия помгла намного лучше, чем мы могли рассчитывать. Мы у тебя "
-"в долгу."
+"орков. Твоя магия помогла нам намного больше, чем мы ожидали. Мы у тебя в "
+"долгу."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:203
@@ -646,7 +629,7 @@ msgid ""
 "so far south."
 msgstr ""
 "Пожалуй, будет лучше, если кое-кто из наших ребят проводит тебя до Велдина. "
-"В этих местах опасно путешествовать в одиночку, и мы сможем узнать, что "
+"В этих местах опасно путешествовать в одиночку, а мы сможем узнать, что "
 "завело орков так далеко на юг."
 
 #. [side]: type=Arch Mage, id=Leollyn
@@ -695,7 +678,7 @@ msgstr "Хага-Тан"
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:120
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:91
 msgid "Loyalists"
-msgstr ""
+msgstr "Верноподданные"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:121
@@ -725,7 +708,7 @@ msgstr ""
 #. [message]: speaker=Hagha-Tan
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:165
 msgid "Ah, another human is approaching... yes... more meat for my war-band..."
-msgstr "Ммм, ещё один человек идёт... ага... побольше мяса для моих воинов..."
+msgstr "Ммм, ещё один человек идёт... ага... больше мяса для моих воинов..."
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:169
@@ -744,7 +727,7 @@ msgid ""
 "getting here!"
 msgstr ""
 "Рад встрече, Леоллин! Мы с друзьями проучим этого варвара. Мы уже привыкли к "
-"битвам — я не ожидал, что добраться сюда так сложно!"
+"битвам — я не ожидал, что добраться сюда будет так сложно!"
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:177
@@ -779,24 +762,22 @@ msgstr "Ты храбрый боец, мой юный друг."
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:233
-#, fuzzy
-#| msgid "I’ve told you, all of you have to be extra careful!"
 msgid "All of you have to be extra careful!"
 msgstr "Я говорил вам, будьте предельно осторожны!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:237
-#, fuzzy
-#| msgid "Kill them all! For our murdered friends."
 msgid "Kill them all! For our murdered friend."
-msgstr "Убить их всех! За наших павших друзей!"
+msgstr "Убить их всех! За нашего павшего друга!"
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:248
 msgid ""
 "Well now, you arrived just in the nick of time. A fellow mage, too, I see. "
 "Now what did you say your name was?"
-msgstr "Спасибо, вы еле успели. Вы тоже маг, как я вижу. Так как Вас зовут?"
+msgstr ""
+"Спасибо, вы еле успели. Ты тоже маг, как я вижу. Теперь, как ты сказал тебя "
+"зовут?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:258
@@ -876,7 +857,7 @@ msgstr ""
 "Делфадор и Леоллин больше не встретили препятствий по дороге в Велдин. Когда "
 "они вошли в город, Делфадор был поражен его размером, грандиозными стенами и "
 "впечатляющей цитаделью. После ночного отдыха Леоллин пригласил его на прием "
-"к Королю. Казалось, Гарард был озабочен вестями с границ Веснота."
+"к королю. Казалось, Гарард был озабочен вестями с границ Веснота."
 
 #. [message]: speaker=Garard
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:93
@@ -898,7 +879,7 @@ msgstr ""
 "Плохие, мой лорд. Орки собираются в огромные армии на северном берегу реки, "
 "около Переправы Абез. Мы отрезаны от гномов Кналга — ходят слухи, что орки "
 "собираются разделаться сначала с ними, а потом с Веснотом. Порядочные люди "
-"бегут с наших северных провинций, и там воцаряется анархия. На нас не раз "
+"бегут из наших северных провинций, и там воцаряется анархия. На нас не раз "
 "нападали убийцы и бандиты, а также злые существа, которые скитаются под "
 "покровом ночи в обличии людей."
 
@@ -909,7 +890,7 @@ msgid ""
 "the royal forest. Were it not for this young fellow here..."
 msgstr ""
 "Новости ещё хуже — орки уже здесь, сир. На меня напали в королевском лесу. "
-"Если бы не этот молодчик..."
+"Если бы не этот молодой человек..."
 
 #. [message]: speaker=Garard
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:105
@@ -935,9 +916,9 @@ msgid ""
 "something they know of and fear, but they would not tell me what it is."
 msgstr ""
 "Эльфы не будут воевать; они ненавидят орков, но плохо отзываются о людях, "
-"они считают нас жадными и глупыми. Я никогда не видел их так враждебно "
+"они считают нас жадными и глупыми. Я никогда не видел их настолько враждебно "
 "настроенными. Есть ещё что-то, о чем они знают и чего они боятся, но они не "
-"рассказали мне, что это."
+"рассказали мне об этом."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:113
@@ -947,7 +928,7 @@ msgid ""
 msgstr ""
 "Ваше величество... можно ли мне присоединиться к вашему войску? Честно "
 "говоря, я прибыл в Велдин как раз для того, чтобы устроиться к вам на "
-"службу. И, если вам нужны лучники, разве маг не поможет вам?"
+"службу. И если вам нужны лучники, разве маг не поможет вам?"
 
 #. [message]: speaker=Garard
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:117
@@ -957,8 +938,8 @@ msgid ""
 "task for warriors, not magic-makers. You shall stay here with Leollyn and be "
 "Leollyn’s right hand as he is mine."
 msgstr ""
-"А, юный Делфадор... твоя речь мне нравится, да и Леоллин рассказал мне о "
-"твоей храбрости. Я бы с благодарностью принял твое предложение, но это "
+"А, юный Делфадор... мне нравится то, что ты говоришь, да и Леоллин рассказал "
+"мне о твоей храбрости. Я бы с благодарностью принял твое предложение, но это "
 "задание для воинов, а не магов. Ты должен остаться здесь с Леоллином и быть "
 "его правой рукой так же, как он — моя."
 
@@ -1044,7 +1025,7 @@ msgstr "Гаррат"
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:47
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:65
 msgid "Bandits"
-msgstr ""
+msgstr "Разбойники"
 
 #. [side]: type=Bandit, id=Harold
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:59
@@ -1183,7 +1164,7 @@ msgstr "Ночь в Болоте"
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:118
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:54
 msgid "Undead"
-msgstr ""
+msgstr "Нежить"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:85
@@ -1201,15 +1182,13 @@ msgstr "Выживите до рассвета."
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:106
-#, fuzzy
-#| msgid "Destroy the intruder, my minions!"
 msgid "Destroy the stones"
-msgstr "Уничтожьте лазутчика, мои верные слуги!"
+msgstr "Уничтожьте стоячие камни"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:124
 msgid "Mages and Paladins are capable of destroying the stones"
-msgstr ""
+msgstr "Маги и Паладины способны уничтожить стоячие камни"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:138
@@ -1246,8 +1225,8 @@ msgid ""
 "Hmmm... if I could get nearer to the stones, I could perhaps break their "
 "power..."
 msgstr ""
-"Хммм... если бы я мог подобраться поближе к камням, то, возможно, я смог "
-"бысломить их силу..."
+"Хммм... если бы я мог подобраться поближе к камням, то, возможно, я смог бы "
+"сломить их силу..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:173
@@ -1256,10 +1235,8 @@ msgstr "Это расколет твои кости, мерзкое чудови
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:186
-#, fuzzy
-#| msgid "At least, morning is here... And the skeletons are disappearing!"
 msgid "At last, morning is here... And the skeletons are disappearing!"
-msgstr "Наконец-то наступило утро... И скелеты исчезают!"
+msgstr "Наконец-то наступило утро... И... скелеты исчезают!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:197
@@ -1285,7 +1262,7 @@ msgstr "Ур-Фородор"
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:52
 msgid "Wose"
-msgstr ""
+msgstr "Древни"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:79
@@ -1334,7 +1311,7 @@ msgstr ""
 "Люди, нас не волнуют ваши короли. Прошли столетия с тех пор, когда вы были "
 "здесь в последний раз, и только теперь наши корни разрушают последние ваши "
 "проклятые каменные кладки. Больше я не буду говорить с вами. Оставьте нас в "
-"покое, или ощутите наш гнев!"
+"покое, или почувствуете на себе наш гнев!"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:100
@@ -1342,8 +1319,8 @@ msgid ""
 "This Ur-Thorodor should not speak of King Garard that way! <i>“Suffer our "
 "wrath”</i> indeed... I’ll show him wrath!"
 msgstr ""
-"Этому Ур-Фородору не следует так говорить о Короле Гарарде! <i>«Ощутите наш "
-"гнев»</i> — действительно... Я покажу ему гнев!"
+"Этому Ур-Фородору не следует так говорить о Короле Гарарде! <i>«Почувствуете "
+"наш гнев»</i> — действительно... Я покажу ему гнев!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:104
@@ -1454,7 +1431,7 @@ msgid ""
 "timeless dreams of earth and trees, something else stirred on the island — "
 "for a few orcish scouts had indeed crossed the Ford of Abez..."
 msgstr ""
-"Пока армия покидала остров, древни растворялись в деревьях. Делфадор начал "
+"Пока армия покидала остров, древни растворялись в лесу. Делфадор начал "
 "медитацию, которая должна была связать его с миром духов.\n"
 "\n"
 "Но как только Делфадор погрузился в медитацию, а древни — в свои "
@@ -1469,12 +1446,12 @@ msgstr "Оммм..."
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:270
 msgid "Gurbash"
-msgstr ""
+msgstr "Гурбаш"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:278
 msgid "Pruark"
-msgstr ""
+msgstr "Прюарк"
 
 #. [message]: speaker=Pruark
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:289
@@ -1499,12 +1476,12 @@ msgstr "Дома Мёртвых"
 #. [side]: type=Death Knight, id=Arakar
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:33
 msgid "Arakar"
-msgstr ""
+msgstr "Аракар"
 
 #. [side]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:70
 msgid "Undead Followers"
-msgstr ""
+msgstr "Неживые Последователи"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:76
@@ -1516,11 +1493,11 @@ msgid ""
 "abuse one of the hated human mages, was to strike Delfador with his "
 "gauntleted fist."
 msgstr ""
-"Это был один из моментов, который изменил судьбу мира. У оркского воителя "
-"было много возможностей. Он мог просто отрубить Делфадору голову. Если бы "
-"это произошло, орки могли бы заполонить весь Веснот и править им веками. Но "
-"он захотел воспользоваться редкой возможностью унизить одного из ненавистных "
-"людских магов — ударить Делфадора кулаком."
+"Это мгновение было одним из тех, что навсегда изменили судьбу мира. У "
+"оркского воителя было много возможностей. Он мог просто отрубить Делфадору "
+"голову. Если бы это произошло, орки могли бы заполонить весь Веснот и "
+"править им веками. Но он захотел воспользоваться редкой возможностью унизить "
+"одного из ненавистных людских магов — ударить Делфадора кулаком."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:79
@@ -1534,25 +1511,25 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:93
-#, fuzzy
-#| msgid "Land of the Dead"
 msgid "Explore the Land of the Dead"
-msgstr "Страна Мёртвых"
+msgstr "Исследуйте Страну Мёртвых"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:100
 msgid "Have Delfador claim the magical artifact, then move him to the signpost"
 msgstr ""
+"Делфадор должен заполучить магический артефакт, затем доведите его к "
+"указателю"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:108
 msgid "Move Delfador to the signpost"
-msgstr "Довести Делфадора к указательному столбу"
+msgstr "Доведите Делфадора к указательному столбу"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:128
 msgid "Delfador must visit a village himself to find if help is there"
-msgstr ""
+msgstr "Делфадор должен лично посетить деревню, чтобы выяснить, что в ней"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:153
@@ -1587,11 +1564,6 @@ msgstr "Расскажи ещё, дух! Расскажи мне о себе. И
 
 #. [message]: speaker=Rorthin
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:251
-#, fuzzy
-#| msgid ""
-#| "My name is Rorthin. I died long ago, in a great battle... I have almost "
-#| "forgotten... Iliah-Malal is a living man, like you, who walks among the "
-#| "dead. He promises life to all those who follow him."
 msgid ""
 "My name is Rorthin. I died long ago, in a great battle... I have almost "
 "forgotten... Iliah-Malal is a living man, like you, who walks among the "
@@ -1599,38 +1571,29 @@ msgid ""
 "of things."
 msgstr ""
 "Меня зовут Рортин. Я умер давно, в великом сражении... Я почти забыл... Илиа-"
-"Малал — живой человек, который, как и ты, ходит среди мёртвых. Он обещает "
-"жизнь всем, кто последует за ним."
+"Малал — живой человек, он, как и ты, ходит среди мёртвых. Он обещает жизнь "
+"всем, кто последует за ним. Против самой природы."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:255
-#, fuzzy
-#| msgid "I would very much like to meet Iliah-Malal. Where can I find him?"
 msgid ""
 "I agree. I would very much like to meet Iliah-Malal. Where can I find him?"
-msgstr "Я хотел бы встретиться с Илиа-Малалом. Где его можно найти?"
+msgstr "Согласен. Я хотел бы встретиться с Илиа-Малалом. Где его можно найти?"
 
 #. [message]: speaker=Rorthin
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:259
-#, fuzzy
-#| msgid ""
-#| "Follow the dry river, then the road to the signpost in the north. I will "
-#| "guide you. Enter the houses of the dead as you pass, for others here may "
-#| "help you."
 msgid ""
 "Follow the dry river, then the road to the signpost in the north. I will "
 "help you. Enter the houses of the dead as you pass, for others here may help "
 "you."
 msgstr ""
-"Идите по сухой реке, потом по дорогу к указателю на севере. Я проведу Вас. "
+"Идите по сухой реке, потом по дороге к указателю на севере. Я проведу Вас. "
 "Заходите в дома мёртвых по пути, так как другие могут помочь Вам."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:263
-#, fuzzy
-#| msgid "Speak again, spirit! Tell me of yourself. Who is this Iliah-Malal?"
 msgid "Speak again, spirit! What else do you know of this place?"
-msgstr "Расскажи ещё, дух! Расскажи мне о себе. И кто этот Илиа-Малал?"
+msgstr "Расскажи ещё, дух! Что ещё ты знаешь об этом месте?"
 
 #. [message]: speaker=Rorthin
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:267
@@ -1638,6 +1601,8 @@ msgid ""
 "I have heard there is a powerful magical artifact somewhere around here. Any "
 "more, I cannot tell you."
 msgstr ""
+"Я слыхивал о могущественном волшебном артефакте где-то поблизости. Но больше "
+"мне не сказать ничего."
 
 #. [scenario]: id=09_Houses_of_the_Dead
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:302
@@ -1652,9 +1617,10 @@ msgid ""
 "plague came... my family were starving, and we were forced to eat the flesh "
 "of those who had died."
 msgstr ""
-"Не бойся меня, Делфадор. Я умер, как ты видишь. Я был рабом жестокого лорда. "
-"Он собирал большие налоги, чтобы вести много войн ... потом пришла чума... "
-"моя семья голодала, и мы были вынуждены есть мясо тех, кто умер."
+"Не бойся меня, Делфадор. Я умер, как ты видишь. Я был рабом жестокого "
+"правителя. Он собирал большие налоги, чтобы вести много войн ... потом "
+"пришла чума... моя семья голодала, и мы были вынуждены есть мясо тех, кто "
+"умер."
 
 #. [scenario]: id=09_Houses_of_the_Dead
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:312
@@ -1804,22 +1770,16 @@ msgstr "Тогда ты умрешь навсегда!"
 
 #. [message]: speaker=Rattles
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:455
-#, fuzzy
-#| msgid "Do you serve Iliah-Malal, living man?"
 msgid "Do you serve Iliah-Malal?"
-msgstr "Ты служишь Илиа-Малалу, живой человек?"
+msgstr "Ты служишь Илиа-Малалу?"
 
 #. [message]: speaker=Rattles
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:461
-#, fuzzy
-#| msgid "Then you will not mind if we kill you! Hahahahah!"
 msgid "Then you will not mind if we destroy you! Hahahahah!"
 msgstr "Тогда ты не обидишься, если мы убьем тебя! Хахахаха!"
 
 #. [message]: speaker=Rattles
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:470
-#, fuzzy
-#| msgid "Then you will die forever!"
 msgid "Then you will perish forever!"
 msgstr "Тогда ты умрешь навсегда!"
 
@@ -1831,14 +1791,12 @@ msgstr "Кости"
 #. [message]: speaker=Bones
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:495
 msgid "Iliah-Malal commands your death!"
-msgstr "Я, Илиа-Малал, повелеваю тебе умереть!"
+msgstr "Илиа-Малал повелевает тебе умереть!"
 
 #. [message]: speaker=Bones
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:501
-#, fuzzy
-#| msgid "Iliah-Malal commands your death!"
 msgid "Iliah-Malal commands your destruction!"
-msgstr "Я, Илиа-Малал, повелеваю тебе умереть!"
+msgstr "Илиа-Малал повелевает искоренить тебя!"
 
 #. [message]: speaker=narrator
 #. The Tomb Guardian's dialogue should sound especially archaic
@@ -1902,7 +1860,7 @@ msgid ""
 msgstr ""
 "Предсказано в Древней Эре, за века до твоего прихода. Ан-Усрухар Великий, от "
 "которого осталась лишь тень — я, увидел в Зеркале Проходящего Времени, что "
-"живой человек придет сюда, чтобы пройти испытание. И ИСПЫТАНИЕ — Я!"
+"живой человек придет сюда, чтобы пройти испытание. И ИСПЫТАНИЕ — ЭТО Я!"
 
 #. [message]: speaker=Delfador
 #. "coil" is an archaism. In the English of around 1600, it was
@@ -1913,7 +1871,7 @@ msgid ""
 "I have felt the coils of prophecy on me before. I am beginning to dislike "
 "them."
 msgstr ""
-"Я ощущал тени пророчества на себе и раньше. Они начинают мне не нравиться."
+"Я ощущал тени пророчества на себе и раньше. Они перестают мне нравиться."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:566
@@ -1959,7 +1917,7 @@ msgid ""
 "true matter of the world is deeper. Delfador, I ask you a third time, and on "
 "your answer hangs your life: ARE YOU A SERVANT OF THE LIGHT?"
 msgstr ""
-"Люди исчезают, а земли иссушиваются в безжалостном течение времени; "
+"Люди исчезают, а земли иссушиваются в безжалостном течении времени; "
 "настоящий смысл мира гораздо глубже. Делфадор, я спрашиваю тебя в третий и "
 "последний раз, и от твоего ответа зависит твоя жизнь: ТЫ СЛУГА СВЕТА?"
 
@@ -2002,7 +1960,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:100
 msgid "That’s impossible! You must be insane!"
-msgstr "Это невозможно! Ты, должно быть, рехнулся!"
+msgstr "Это невозможно! Ты, должно быть, обезумел!"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:105
@@ -2028,22 +1986,22 @@ msgid ""
 "not to fight for me!"
 msgstr ""
 "Теперь, мои живые последователи, я созываю вас! Увидьте же, что смерть — "
-"ничто, и не бойтесь биться за меня!"
+"ничто, и не бойтесь сражаться за меня!"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:176
 msgid "Vobryn"
-msgstr ""
+msgstr "Вобрин"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:183
 msgid "Tur"
-msgstr ""
+msgstr "Тур"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:190
 msgid "Meorraent"
-msgstr ""
+msgstr "Меоррэнт"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:195
@@ -2053,7 +2011,8 @@ msgid ""
 "brought an end to death, but to life itself!"
 msgstr ""
 "Это — великое зло. Мёртвые не найдут мира, пройдя через твои врата, Илиа-"
-"Малал, ты не можешь дать им жизнь снова. Ты нашёл конец не смерти, а жизни!"
+"Малал, ты не можешь дать им жизнь снова. Ты нашёл конец не для смерти, а для "
+"жизни!"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:200
@@ -2061,7 +2020,7 @@ msgid ""
 "You will see things differently at the point of a sword, my friend. Minions! "
 "Kill the unbeliever... he will join us then."
 msgstr ""
-"Ты увидишь вещи с другой стороны на кончике меча, мой друг. Слуги! Убейте "
+"Ты увидишь вещи по-другому на острие меча, мой друг. Слуги! Убейте "
 "неверующего... тогда он присоединится к нам."
 
 #. [message]: speaker=narrator
@@ -2104,7 +2063,7 @@ msgstr "Тиш Голуб"
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:34
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:51
 msgid "Elves"
-msgstr ""
+msgstr "Эльфы"
 
 #. [side]: type=Elvish Druid
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:63
@@ -2156,8 +2115,8 @@ msgid ""
 "It’s a long story... but I wonder whether I might first ask for your "
 "hospitality? I’m lost, and freezing to death here!"
 msgstr ""
-"Это длинная история... но не мог бы я сначала просить вас о гостеприимстве? "
-"Я потерялся и замерзаю здесь до смерти!"
+"Это длинная история... но не мог бы я сначала попросить вас о "
+"гостеприимстве? Я потерялся и замерзаю здесь до смерти!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:176
@@ -2203,7 +2162,7 @@ msgid ""
 "school against the orcs, and then to find out the source of the undead "
 "activity... and I have failed at both."
 msgstr ""
-"О... ну... это очень мило, но я не чувствую тяжести судьбы. Вообще-то, я "
+"О... хорошо... это очень мило, но я не чувствую тяжести судьбы. Вообще-то, я "
 "всего лишь неумеха! Сначала я пытался защитить школу моего учителя Метора от "
 "орков, а затем узнать, откуда берутся мертвецы... Но у меня ничего не вышло."
 
@@ -2246,7 +2205,7 @@ msgid ""
 "wasteland inhabited only by barbarians and orcs. To the south again, the "
 "Great River, and your home. Of your friends, I know nothing."
 msgstr ""
-"Вы среди Северных Эльфов, в лесу Линтанир. Наше искусство удерживает зимние "
+"Вы среди Северных Эльфов, в лесу Линтанир. Наша магия удерживает зимние "
 "холода за его границей. К югу и западу отсюда лежит пустошь, населённая "
 "только варварами и орками. Ещё южнее находится Великая Река и твой дом. О "
 "твоих друзьях мне ничего не известно."
@@ -2283,10 +2242,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:280
-#, fuzzy
-#| msgid "Defeat enemy leader"
 msgid "Defeat the enemy leader"
-msgstr "Убить лидера противника"
+msgstr "Победите лидера противника"
 
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:288
@@ -2390,12 +2347,13 @@ msgstr ""
 msgid ""
 "There should be no orcs this far south. But I do not like the feel of this "
 "mist."
-msgstr "Так южно не должно быть орков. Но мне не нравится этот туман."
+msgstr ""
+"Так далеко на юг орки обычно не забираются. Но мне не нравится этот туман."
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:263
 msgid "Stay close. I don’t like the feel of it either."
-msgstr "Оставайся рядом. У меня неприятное чувство."
+msgstr "Оставайся рядом. У меня нехорошее предчувствие."
 
 #. [unit]: id=Axhamr, type=Draug
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:270
@@ -2501,7 +2459,7 @@ msgid ""
 "jealous of their privileges and hold aloof from us."
 msgstr ""
 "Да, недалеко от юго-восточной стены нашего форта, за Переправой. Но они "
-"ревностно охраняют свои привелегии и держатся в стороне от нас."
+"ревностно охраняют свои привилегии и держатся в стороне от нас."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:491
@@ -2509,7 +2467,7 @@ msgid ""
 "That shall soon end. Send to them in my name and the Arch-Mage Leollyn’s; "
 "nay, tell them that in this matter I speak with the King’s voice!"
 msgstr ""
-"Это должно скоро закончиться. Пошлите к ним от моего имени и имени Архимага "
+"Это должно прекратиться. Пошлите к ним от моего имени и имени Архимага "
 "Леоллина; нет, скажите им, что сейчас я говорю от имени Короля!"
 
 #. [message]: role=Commander
@@ -2519,14 +2477,8 @@ msgstr "Я прислушиваюсь к мнению Короля. Управл
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:506
-#, fuzzy
-#| msgid ""
-#| "To wake up the mages, move a unit that is currently out of sight of their "
-#| "tower to within visual range of it."
 msgid "To wake up the mages, move a unit near their tower."
-msgstr ""
-"Чтобы разбудить магов, переместите бойца, который сейчас за пределами обзора "
-"их башни, в поле ее зрения."
+msgstr "Чтобы разбудить магов, переместите бойца к их башне."
 
 #. [message]: role=Teacher
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:622
@@ -2545,7 +2497,7 @@ msgid ""
 "other than the Chief Mage of the High Council, Master Leollyn!"
 msgstr ""
 "Я сказал командиру гарнизона, что мы не слушаемся ничьих приказов, кроме "
-"Главного Мага Высокого Совета, Мастера Леоллина!"
+"приказов Главного Мага Высокого Совета, Мастера Леоллина!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:634
@@ -2559,7 +2511,8 @@ msgstr ""
 #. [message]: role=Teacher
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:638
 msgid "I recognize it. Very well; we shall join battle."
-msgstr "Я понимаю. Замечательно; в таком случае, мы присоединимся к битве."
+msgstr ""
+"Я узнаю этот знак. Замечательно; в таком случае, мы присоединимся к битве."
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:658
@@ -2693,7 +2646,7 @@ msgstr "Да здравствует Король! Подождите, вы не�
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:965
 msgid "—The enemy? Yes, we’re on your side."
-msgstr "—Враги? Да, мы на вашей стороне."
+msgstr "—Враги? Да нет, мы на вашей стороне."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:969
@@ -2796,8 +2749,8 @@ msgid ""
 msgstr ""
 "У нас гораздо меньше времени, чем я думал. Илиа-Малал начал наступление. Я "
 "должен закрыть портал, пока еще не слишком поздно, но у меня нет "
-"предположений, как. А ещё нам надо разобраться с теми, кто уже сбежал сюда "
-"из Страны Мёртвых."
+"предположений, как это сделать. А ещё нам надо разобраться с теми, кто уже "
+"сбежал сюда из Страны Мёртвых."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:1264
@@ -2867,8 +2820,8 @@ msgid ""
 "My King does not command him... but if Elves and Humans do not stand "
 "together in this, I fear we will fall separately."
 msgstr ""
-"Мой Король не управляет им... Но если сейчас эльфы и люди не объединятся, я "
-"боюсь, что поодиночке мы падем."
+"Он не подчиняется моему Королю... Но если сейчас эльфы и люди не "
+"объединятся, я боюсь, что поодиночке мы падем."
 
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:1289
@@ -2887,8 +2840,8 @@ msgid ""
 "They have unleashed a second wave. Soldiers, stand firm and send these "
 "abominations back to the darkness!"
 msgstr ""
-"Они освободили вторую волну. Солдаты, укрепитесь, и верните эту мерзость в "
-"небытие!"
+"Они начали вторую волну наступления. Солдаты, сражайтесь стойко, и верните "
+"эту мерзость в небытие!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:1320
@@ -2909,7 +2862,7 @@ msgid ""
 "throughout Wesnoth. After centuries of squabbling, a warlord emerged to "
 "unite the Orcs. This was ill tidings for men and Elves alike."
 msgstr ""
-"Пока Делфадор все еще был в Академии, в Весноте происходили важные события. "
+"Пока Делфадор был еще в Академии, в Весноте происходили важные события. "
 "После веков постоянных споров и мелких стычек, появился военачальник, "
 "способный объединить орков. Это были дурные вести для людей, да и для эльфов "
 "тоже."
@@ -2919,13 +2872,6 @@ msgstr ""
 #. knights. It means he wandered around looking for monsters to
 #. slay and wrongs to right.
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:24
-#, fuzzy
-#| msgid ""
-#| "There was an elf named Kalenz who had already in Delfador’s time been a "
-#| "legend among his people for centuries; his is the tale called <i>the "
-#| "Legend of Wesmere</i>. Prolonged in life by a necromantic potion, he put "
-#| "aside the High Lordship of the Elves after the death of his beloved wife "
-#| "Cleodil, and wandered the Great Continent in errantry."
 msgid ""
 "There was an elf named Kalenz who had already in Delfador’s time been a "
 "legend among his people for centuries; his tale, <i>The Legend of Wesmere</"
@@ -2934,11 +2880,11 @@ msgid ""
 "beloved wife, and wandered the Great Continent in errantry."
 msgstr ""
 "Однако были великие и среди эльфов. Один из них — Каленз, который был "
-"легендой в своём народе на протяжении веков иже во времена Делфадора, о его "
+"легендой своего народа на протяжении веков уже во времена Делфадора, о его "
 "возвышении повествует рассказ <i>«Легенда Весмира»</i>. Продлив себе жизнь "
 "зельем некроманта, он отдалился от Высшего Лордства Эльфов после смерти "
-"своей любимой жены Клеодил, и путешествовал по всему Большому Континенту, "
-"ища приключения."
+"своей любимой жены Клеодил, и путешествовал по всему Большому Континенту в "
+"поисках приключений."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:27
@@ -2994,8 +2940,8 @@ msgid ""
 "Kill these filthy elves! All warlords will then accept our leader, Zorlan, "
 "as king and he will reward you all!"
 msgstr ""
-"Убейте этих никчёмных эльфов! Тогда все военачальники признают нашего "
-"лидера, Зорлана, королём, и он воздаст всем нам!"
+"Убейте этих грязных эльфов! Тогда все военачальники признают нашего лидера, "
+"Зорлана, королём, и он наградит всех нас!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:216
@@ -3007,14 +2953,18 @@ msgstr "Вот то, к чему мы готовились! Прогоним ж�
 msgid ""
 "The orcs are retreating! And... what is this? A shyde flying towards us as "
 "if hell were on her heels..."
-msgstr "Орки отступают! А... что это? Шида мчится сюда сломя голову..."
+msgstr ""
+"Орки отступают! А... что это? Лесная фея мчится сюда, как будто за ней "
+"гонятся демоны..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:234
 msgid ""
 "The orcs are retreating! And... what is this? A druid running to meet us as "
 "though hell were on her heels..."
-msgstr "Орки отступают! А... что это? Друид бежит сюда, сломя голову..."
+msgstr ""
+"Орки отступают! А... что это? Друидка мчится сюда, как будто за ней гонятся "
+"демоны..."
 
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:253
@@ -3055,7 +3005,7 @@ msgid ""
 "from the Land of the Dead. An army of undead is being raised as we speak."
 msgstr ""
 "У меня еще больше плохих новостей. Зло было выпущено на волю: был открыт "
-"портал в Страну Мертвых. Армия мертвецов восстает, пока мы тут разговариваем."
+"портал в Страну Мертвых. Армия мертвецов растет, пока мы тут разговариваем."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:273
@@ -3068,8 +3018,8 @@ msgid ""
 "Yes. And I have prepared holy water for our warriors. They should be able to "
 "hold against the undead in our forests, at least for now."
 msgstr ""
-"Да. Я приготовила святую воду для наших воинов. Она должна помочь им "
-"сражаться с мертвецами в наших лесах хотя бы сейчас."
+"Да. Я приготовила святую воду для наших воинов. Пока это поможет им "
+"сдерживать наступление мертвецов на наши леса."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:281
@@ -3150,7 +3100,7 @@ msgid ""
 msgstr ""
 "Каленз со своим отрядом быстро добрался на юг, а затем на запад вдоль "
 "северного берега Великой Реки. Они успешно миновали встречи с орками, но "
-"вскоре они узнали, что их ожидают более жестокие враги."
+"вскоре узнали, что их ожидают более жестокие враги."
 
 #. [side]: type=Death Knight, id=Rudimil
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:44
@@ -3261,7 +3211,7 @@ msgstr "Еще подкрепление!"
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:265
 msgid "Foul creatures, it is time for your final rest!"
-msgstr "Глупые создания, для вас настало время уйти на покой навсегда!"
+msgstr "Мерзкие твари, для вас настало время уйти на покой навсегда!"
 
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:269
@@ -3275,9 +3225,9 @@ msgid ""
 "well, granddaughter; he is indeed the one to whom the Book of Crelanu should "
 "pass."
 msgstr ""
-"Вижу. Он как пылающий факел для моего внутреннего ока. Я думаю, внучка, что "
-"ты сделала правильный выбор; он действительно тот, кому должна перейти Книга "
-"Крелану."
+"Вижу. Он - как пылающий факел для моего внутреннего взора. Я думаю, внучка, "
+"что ты сделала правильный выбор; он действительно тот, кому должна перейти "
+"Книга Крелану."
 
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:277
@@ -3335,8 +3285,8 @@ msgid ""
 "It is my honor to meet you. And it relieves my mind to know Chantal is safe "
 "and with her kin again."
 msgstr ""
-"Встретить вас — большая честь для меня. И мне спокойнее, когда я знаю, что "
-"Шанталь в безопасности, со своими родственниками."
+"Встретить вас — большая честь для меня. И я был рад узнать, что Шанталь в "
+"безопасности, снова со своими родственниками."
 
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:373
@@ -3353,8 +3303,8 @@ msgid ""
 "Yes. We will follow you to the Ford of Abez, Delfador. Let us hope we are "
 "not too late to prevent an orcish victory there."
 msgstr ""
-"Мы проводим тебя до Переправы Абез, Делфадор. Будем надеяться, что мы не "
-"слишком задержались, чтобы остановить орков."
+"Мы проводим тебя до Переправы Абез, Делфадор. Будем надеяться, что мы придем "
+"не слишком поздно и сможем предотвратить победу орков."
 
 #. [scenario]: id=15_Save_the_King
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:4
@@ -3411,8 +3361,8 @@ msgid ""
 "It appears we have arrived just in time! The King stands at bay, surrounded "
 "by the enemy."
 msgstr ""
-"Кажется, мы прибыли как раз вовремя! Король находится в заливе, он окружен "
-"врагами."
+"Кажется, мы прибыли как раз вовремя! Армия Короля стоит в заливе, и она "
+"окружена врагами."
 
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:256
@@ -3434,7 +3384,8 @@ msgstr "Эльфы! Я слышал, вы искали меня! Но вы не 
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:264
 msgid "We must destroy this warlord now, before his power grows any greater!"
 msgstr ""
-"Мы должны уничтожить его сейчас, пока его силы не увеличились ещё больше!"
+"Мы должны уничтожить этого лидера орков сейчас, пока его силы не увеличились "
+"ещё больше!"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:268
@@ -3468,7 +3419,7 @@ msgstr "Вы всегда будете желанным гостем во дво
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:292
 msgid ""
 "We look forward to fighting beside you to defeat those threats that remain."
-msgstr "Мы хотим биться вместе с вами, чтобы уничтожить оставшуюся угрозу."
+msgstr "Мы хотим сражаться вместе с вами, чтобы уничтожить оставшуюся угрозу."
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:296
@@ -3479,7 +3430,7 @@ msgid ""
 "skills may be insufficient for that task."
 msgstr ""
 "Ваше Величество, у нас есть более неотложные дела. Леоллин дал мне задание "
-"разузнать, почему мертвецы так беспокойны. Подлый некромант открыл портал в "
+"разузнать, почему мертвецы так беспокойны. Ужасный некромант открыл портал в "
 "Страну Мёртвых. Он должен быть закрыт любой ценой, и я боюсь, что моего "
 "мастерства для этого может быть недостаточно."
 
@@ -3492,9 +3443,9 @@ msgid ""
 "his life to gather."
 msgstr ""
 "Делфадор, наше оружие не наносит мертвецам особого урона, но, возможно, мы "
-"можем предложить тебе другую помощь. Несколько веков назад могущественный "
-"маг Крелану доверил нам книгу, содержащую в себе всё могущественное знание, "
-"все опасные секреты, которые Крелану узнал за всю свою жизнь."
+"можем предложить тебе другую помощь. Несколько веков назад великий маг "
+"Крелану доверил нам книгу, содержащую в себе всё могущественное знание, все "
+"опасные секреты, которые Крелану узнал за всю свою жизнь."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:304
@@ -3526,7 +3477,7 @@ msgid ""
 msgstr ""
 "Мы с Шанталь уверены в тебе. Но предупреждаю: эта книга проклята. Крелану "
 "предупредил нас, что его искусство принесет нам много горя. И это правда, "
-"хотя на этот раз у нас нет другого выбора. Победы могут дорого стоить."
+"хотя на этот раз у нас нет другого выбора. Победы могут стоить дорого."
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:316
@@ -3542,8 +3493,9 @@ msgid ""
 "book’s help, it will be an honor to fight by your side, no matter what the "
 "outcome."
 msgstr ""
-"Ты должен принять решение. Если мы будем биться с мертвецами без помощи "
-"Книги, то будет честью биться на вашей стороне — не важно, каков будет исход."
+"Ты должен принять решение. Если мы будем сражаться с мертвецами без помощи "
+"Книги, то для нас будет честью быть на твоей стороне — и не важно, каков "
+"будет исход."
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:324
@@ -3606,7 +3558,7 @@ msgstr "За Короля!"
 #. [message]: speaker=Zorlan
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:457
 msgid "Argh! It can't be, beaten by these swine!"
-msgstr ""
+msgstr "Аргг! Невозможно, побеждён этими свиньями!"
 
 #. [scenario]: id=16_Dark_Sky_Over_Weldyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:3
@@ -3704,8 +3656,8 @@ msgid ""
 msgstr ""
 "Спокойно, Лионель. Эльфы храбро сражались и заработали наше уважение. Но "
 "этот совет созван здесь для того, чтобы обсудить тревожный вопрос. Молодой "
-"Делфадор здесь для того, чтобы рассказать об угрозе мертвецов. Он смог "
-"победить их на Переправе Парфина, но их прибывает ещё больше."
+"Делфадор здесь для того, чтобы рассказать об угрозе, исходящей от мертвецов. "
+"Он смог победить их на Переправе Парфина, но их прибывает ещё больше."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:51
@@ -3732,8 +3684,8 @@ msgstr ""
 "скором времени, то относительно небольшие отряды врага, которыми он сейчас "
 "управляет, превратятся в непрекращающийся поток вновь прибывающих сюда "
 "мертвецов. А наша армия, вооруженная и подготовленная против орков, не может "
-"совладать с теми войсками, которые он выставил против нас уже сейчас. Маги "
-"вместе с тяжёлой пехотой борются с ними наиболее эффективно."
+"совладать с теми войсками, которые он выставил против нас уже сейчас. Только "
+"маги вместе с тяжёлой пехотой сражаются с ними наиболее эффективно."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:59
@@ -3741,8 +3693,8 @@ msgid ""
 "I think our young and inexperienced friend overestimates the powers of the "
 "enemy. I’m sure they’ll be no match for Wesnothian troops."
 msgstr ""
-"Я думаю, что наш юный неопытный друг преувеличивает силу врага. Я думаю, "
-"войскам Веснота нечего там делать."
+"Я думаю, что наш юный неопытный друг преувеличивает силу врага. Я уверен, "
+"что они не представляют угрозы для армий Веснота."
 
 #. [part]
 #. [side]: type=Lich, id=Sagus
@@ -3836,8 +3788,8 @@ msgid ""
 "This is a disaster. I should have led the army myself and died with them. "
 "And I should have listened to you, Delfador."
 msgstr ""
-"Это чудовищно. Я должен был вести свою армию сам и погибнуть вместе с ней. И "
-"я должен был послушаться тебя, Делфадор."
+"Это чудовищный провал. Я должен был вести свою армию сам и погибнуть вместе "
+"с ней. И я должен был послушаться тебя, Делфадор."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:108
@@ -3946,7 +3898,7 @@ msgstr "Адрин"
 #. [side]
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:72
 msgid "Dwarves"
-msgstr ""
+msgstr "Гномы"
 
 #. [side]: type=Necromancer, id=Gruv-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:78
@@ -4036,9 +3988,9 @@ msgid ""
 "nearly under the eaves of Lintanir Forest. I must close it, or else we are "
 "all doomed."
 msgstr ""
-"Я Делфадор. Друзья, великое зло было освобождено. Рядом с северными отрогами "
-"этих холмов, почти под крышей Линтанирского Леса, открыт портал в Страну "
-"Мёртвых. Я должен закрыть его, иначе нас всех ждет страшная смерть."
+"Я Делфадор. Друзья, великое зло было выпущено на свободу. Рядом с северными "
+"отрогами этих холмов, почти под крышей Линтанирского Леса, открыт портал в "
+"Страну Мёртвых. Я должен закрыть его, иначе нас всех ждет страшная смерть."
 
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:210
@@ -4061,7 +4013,7 @@ msgid ""
 "Father, did ye not see these thunderbolts! This was awesome. Even our "
 "thundersticks do not strike so powerfully!"
 msgstr ""
-"Отец, ты видел эти молнии! Это было потрясающе. Даже наши громовые трубки не "
+"Отец, ты видел эти молнии! Это было потрясающе. Даже наши громовые посохи не "
 "бьют так сильно!"
 
 #. [message]: speaker=Delfador
@@ -4123,30 +4075,24 @@ msgstr "Преполюр"
 
 #. [side]: type=Necromancer, id=Unuvim-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:113
-#, fuzzy
-#| msgid "Gruv-Malal"
 msgid "Unuvim-Malal"
-msgstr "Грув-Малал"
+msgstr "Унювим-Малал"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:191
-#, fuzzy
-#| msgid "Move Delfador to the signpost in the northeast"
 msgid ""
 "Move Delfador to close the Portal and then return everyone to the tunnel"
-msgstr "Переместить Делфадора к указателю на северо-востоке"
+msgstr ""
+"Переместите Делфадора к порталу, чтобы закрыть его, затем все должны бежать "
+"в туннель"
 
 #. [message]: speaker=Prepolur
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:233
-#, fuzzy
-#| msgid ""
-#| "Living men and dwarves are nearing. Rise, Portal Guard and slay those "
-#| "intruders!"
 msgid ""
 "Living men and dwarves are nearing. Rise, Portal Guard and slay the "
 "intruders!"
 msgstr ""
-"Живые люди и гномы приближаются. Восстаньте, Стражи Портала, и убейте их!"
+"Приближаются гномы и живые людишки. Восстаньте, Стражи Портала, и убейте их!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:237
@@ -4154,7 +4100,7 @@ msgid ""
 "The portal must be closed at any cost. You must allow me to get close to it, "
 "so I can seal it."
 msgstr ""
-"Этот портал должен быть закрыт любой ценой. Ты должен дать мне подобраться к "
+"Этот портал должен быть закрыт любой ценой. Вы должны дать мне подобраться к "
 "нему поближе, чтобы я смог запечатать его."
 
 #. [message]: speaker=Ulrek
@@ -4187,7 +4133,7 @@ msgid ""
 msgstr ""
 "Делфадор, ты подтвердил свое мастерство. У меня есть для тебя предложение. "
 "Присоединяйся ко мне и ты будешь моей правой рукой. Наша объединённая сила "
-"будет несравненной и непреодолимой."
+"будет непревзойденной и неотразимой."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:296
@@ -4220,16 +4166,14 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:312
-#, fuzzy
-#| msgid ""
-#| "(<i>To the dwarves</i>). Quickly, back in the tunnel! I will stay last to "
-#| "seal the entrance."
 msgid ""
 "(<i>To the dwarves</i>). Now that the portal is closed, his power will start "
 "to weaken, but that doesn't help us now. Quickly, back in the tunnel! I will "
 "stay last to seal the entrance."
 msgstr ""
-"(<i>К гномам</i>) Быстрее, назад в туннель! Я останусь, чтобы закрыть вход."
+"(<i>К гномам</i>) Теперь, когда портал закрыт, его мощь начнёт угасать, но "
+"сейчас нам это не поможет. Быстрее, назад в туннель! Я останусь, чтобы "
+"закрыть вход."
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:328
@@ -4249,7 +4193,7 @@ msgstr "Мы внутри. Теперь: Земля, закрой этот вх�
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:439
 msgid "Out of my way, foul creatures!"
-msgstr "Вон с моей дороги, мерзкие создания!"
+msgstr "Вон с моей дороги, мерзкие твари!"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:463
@@ -4304,18 +4248,12 @@ msgstr "Убить их всех!"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:505
-#, fuzzy
-#| msgid ""
-#| "Fool! You could not kill me in the land of the dead, nor can you in the "
-#| "land of the living! I transcend both death and life, and I will return to "
-#| "destroy you!"
 msgid ""
 "Fool! You could not kill me in the land of the dead, nor can you in the land "
 "of the living! I transcend both death and life, and I will destroy you!"
 msgstr ""
-"Глупец! Ты не смог убить меня в Стране Мёртвых, и ты не сможешь сделать это "
-"в Стране Живых! Я перешёл границу жизни и смерти, и я вернусь, чтобы "
-"уничтожить тебя!"
+"Глупец! Ты не смог убить меня в Стране Мёртвых — не сможешь и в Стране "
+"Живых! Я перешёл границу жизни и смерти, и я уничтожу тебя!"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:509
@@ -4323,6 +4261,8 @@ msgid ""
 "We cannot defeat him now. We must carry out our mission first, so we will be "
 "able to defeat him later."
 msgstr ""
+"Нам его ещё не под силу одолеть. Мы должны сперва покончить с нашим делом, "
+"затем уже займемся лично им."
 
 #. [scenario]: id=19_Showdown_in_the_Northern_Swamp
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:4
@@ -4342,7 +4282,7 @@ msgstr ""
 "восстановить силы и опробовать новое заклинание. Отряд Делфадора поспешил на "
 "запад по секретным путям гномов, ночью незамеченным переправился через "
 "Листру, и нашел некроманта там, на грани завершения формирования новой армии "
-"посреди болотного зловония."
+"посреди зловония болот."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:23
@@ -4369,16 +4309,12 @@ msgstr "Алдерот"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:185
-#, fuzzy
-#| msgid ""
-#| "The killing blow against Iliah-Malal can only be struck by one of your "
-#| "Undead veterans"
 msgid ""
 "The killing blow against Iliah-Malal can only be struck by one of your "
 "Undead veterans or by Delfador"
 msgstr ""
 "Смертельный удар Илиа-Малалу может нанести лишь один из ваших мертвецов-"
-"ветеранов."
+"ветеранов или Делфадор."
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:195
@@ -4440,18 +4376,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:270
-#, fuzzy
-#| msgid ""
-#| "In this scenario only, you may recall your veterans from the Land of the "
-#| "Dead. The killing blow against Iliah-Malal can only be struck by one of "
-#| "them."
 msgid ""
 "In this scenario only, you may recall your veterans from the Land of the "
 "Dead. The killing blow against Iliah-Malal can only be struck by one of them "
 "or by Delfador."
 msgstr ""
 "Только в этом сценарии вы можете призывать ветеранов из Страны Мёртвых. "
-"Только один из них может нанести Илиа-Малалу смертельный удар."
+"Только один из них или Делфадор может нанести Илиа-Малалу смертельный удар."
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:288
@@ -4471,16 +4402,12 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:301
-#, fuzzy
-#| msgid ""
-#| "I have prepared some holy water. Sprinkle it on your impact weapon and "
-#| "smash those foul creatures into dust!"
 msgid ""
 "I have prepared some holy water. Sprinkle it on your weapons and smash those "
 "foul creatures into dust!"
 msgstr ""
-"Я раздобыл немного святой воды. Окропи ей своё оружие ближнего боя и сокруши "
-"им врагов!"
+"Я раздобыл немного святой воды. Окропи ей своё оружие и сокруши им нечистых "
+"врагов!"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:306
@@ -4537,30 +4464,23 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:368
-#, fuzzy
-#| msgid ""
-#| "Remember one of our undead must strike the final blow, for Iliah-Malal’s "
-#| "un-life can only be ended by the touch of un-life."
 msgid ""
 "Remember that one of our undead or I must strike the final blow, for Iliah-"
 "Malal’s un-life can only be ended by the touch of un-life or by the power of "
 "the Book of Crelanu."
 msgstr ""
-"Не забудь, что один из мертвецов должен нанести смертельный удар, так как "
-"нежизнь Илиа-Малала может быть прервана только прикосновением нежити."
+"Не забудь, что один из мертвецов или я должен нанести смертельный удар, так "
+"как не-жизнь Илиа-Малала может быть прервана только прикосновением нежити "
+"или мощью Книги Крелану."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:374
-#, fuzzy
-#| msgid ""
-#| "Remember one of our undead must strike the final blow, for Iliah-Malal’s "
-#| "un-life can only be ended by the touch of un-life."
 msgid ""
 "Remember that I must strike the final blow, for Iliah-Malal’s un-life can "
 "only be ended by the power of the Book of Crelanu."
 msgstr ""
-"Не забудь, что один из мертвецов должен нанести смертельный удар, так как "
-"нежизнь Илиа-Малала может быть прервана только прикосновением нежити."
+"Не забудь, что именно я должен нанести смертельный удар, так как не-жизнь "
+"Илиа-Малала может быть прервана лишь мощью Книги Крелану."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:395
@@ -4586,7 +4506,7 @@ msgid ""
 "Book of Crelanu, and found there your final doom at the hands of the dead "
 "themselves."
 msgstr ""
-"Не на этот раз. Ибо я долго смотрел на тёмное сердце некромантии в Книге "
+"Не в этот раз. Ибо я долго смотрел на тёмное сердце некромантии в Книге "
 "Крелану, и понял, что твоя судьба в руках у самих мертвецов."
 
 #. [message]: speaker=Delfador
@@ -4595,7 +4515,7 @@ msgid ""
 "Not this time. For I have gazed upon the dark heart of necromancy in the "
 "Book of Crelanu, AND I REMAIN OF THE LIGHT!"
 msgstr ""
-"Не на этот раз. Ибо я долго смотрел на тёмное сердце некромантии в Книге "
+"Не в этот раз. Ибо я долго смотрел на тёмное сердце некромантии в Книге "
 "Крелану, И Я ОСТАЮСЬ В СВЕТЕ!"
 
 #. [message]: speaker=Delfador
@@ -4614,7 +4534,7 @@ msgstr "Ты заслужил имя, данное тебе проклятым..
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:488
 msgid "Indeed. This will be quite a tale to tell."
-msgstr ""
+msgstr "И правда. Будет что рассказать."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:514
@@ -4623,7 +4543,7 @@ msgid ""
 "living on this day, return now to your peace and rest."
 msgstr ""
 "Благодарю тебя. Ты сражался за меня в Стране Мертвых и встал на сторону "
-"живых сегодня, теперь ты можешь возвращаться в свой мир и отдохнуть."
+"живых сегодня, теперь ты можешь вернуться к мирной жизни и отдохнуть."
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:526
@@ -4662,7 +4582,7 @@ msgstr ""
 "За победой Альянса и мирным договором пришел период спокойствия, который "
 "продлился целое поколение. Новый Король стал доверять Делфадору еще на битве "
 "у Переправы Абез, и то, что Делфадор стал самым близким советником Гарарда "
-"Второго, ни для кого не было неожиданностью."
+"Второго, ни для кого не стало неожиданностью."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:26
@@ -4761,8 +4681,8 @@ msgid ""
 "in Wesnoth!"
 msgstr ""
 "Делфадор! Я рад увидеть тебя. У нас нет претензий к Королю, но я считаю, что "
-"ему следовало бы быть более осторожным, если он не хочет остаться "
-"единственным правителем в Весноте!"
+"ему следовало бы быть более осторожным, поскольку, кажется, он не "
+"единственный, кто правит в Весноте!"
 
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:233
@@ -4794,9 +4714,9 @@ msgid ""
 "ceased all such talk when I did not respond, and I thought it merely the "
 "momentary whim of a proud and willful woman."
 msgstr ""
-"Не думаю. Но... Ашевир, королева Гарарда и мать Элдреда, намекала мне, что я "
-"должен научить её магии. Она прекратила, когда я не стал отвечать на её "
-"просьбы, и я подумал, что это была всего лишь минутная прихоть гордой и "
+"Не думаю. Но... Ашевир, королева, жена Гарарда и мать Элдреда, намекала мне, "
+"что я должен научить её магии. Она прекратила, когда я не стал отвечать на "
+"её просьбы, и я подумал, что это была всего лишь минутная прихоть гордой и "
 "упрямой женщины."
 
 #. [message]: id=Chantal
@@ -4821,7 +4741,7 @@ msgstr ""
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:52
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:36
 msgid "Rebels"
-msgstr ""
+msgstr "Мятежники"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:263
@@ -4850,8 +4770,8 @@ msgstr ""
 "сильной охраной уехала навестить своё семейное поместье и больных родителей. "
 "Лионель, самый доверенный генерал Короля, был отправлен по просьбе Ашевир в "
 "Кналга с поручением раздобыть Скипетр Огня. Эта миссия будет стоить ему "
-"жизни, и ни Лионель, ни Делфадор не знали, что она была скомпрометирована с "
-"самого начала."
+"жизни, и ни Лионель, ни Делфадор не знали, что она была ловушкой с самого "
+"начала."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:28
@@ -4868,22 +4788,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:32
-#, fuzzy
-#| msgid ""
-#| "Delfador was granted an audience with the King and expressed his concerns "
-#| "about the Book, but the King put off a decision until Asheviere returned "
-#| "to Weldyn, and ordered Delfador to take no further action. And for once, "
-#| "Delfador knew he could not obey the King’s order."
 msgid ""
 "Delfador was granted an audience with the King and expressed his concerns "
 "about the missing Book, but the King put off a decision until Asheviere "
 "returned to Weldyn, and ordered Delfador to take no further action. And for "
 "once, Delfador knew he could not obey the King’s order."
 msgstr ""
-"Делфадор добился аудиенции Короля и выразил свои опасения на счёт Книги, но "
-"Король отложил принятие решения до того, как Ашевир вернётся в Велдин, и "
-"приказал Делфадору ничего не предпринимать в дальнейшем. Однако на этот раз "
-"Делфадор знал, что он должен нарушить королевский приказ."
+"Делфадор добился аудиенции Короля и выразил свои опасения насчёт пропавшей "
+"Книги, но Король отложил принятие решения до того, как Ашевир вернётся в "
+"Велдин, и приказал Делфадору пока что ничего не предпринимать. Однако на сей "
+"раз Делфадор знал: он должен нарушить королевский приказ."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:36
@@ -4899,33 +4813,27 @@ msgstr ""
 #. [side]: type=General, id=Rhuwin
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:85
 msgid "Rhuwin"
-msgstr ""
+msgstr "Рувин"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:118
 msgid "Kill all enemy units"
-msgstr ""
+msgstr "Убейте всех врагов"
 
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:122
-#, fuzzy
-#| msgid "Enemy unit reaches the signpost"
 msgid "Enemy unit reaches a signpost"
 msgstr "Вражеский боец достигает указателя"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:146
-#, fuzzy
-#| msgid "Enemy unit reaches the signpost"
 msgid "Enemy rider units will go for a signpost"
-msgstr "Вражеский боец достигает указателя"
+msgstr "Вражеские наездники попытаются достичь указателя"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:155
-#, fuzzy
-#| msgid "Enemy unit reaches the signpost"
 msgid "All enemy units will go for a signpost"
-msgstr "Вражеский боец достигает указателя"
+msgstr "Все враги попытаются достичь указателя"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:173
@@ -4944,7 +4852,7 @@ msgid ""
 "be able to link this to you or the elves."
 msgstr ""
 "Проклятие книги уже висит на тебе тяжёлым грузом, друг. Но мы не можем "
-"остановиться на середине пути. Мы раздобыли оркское оружие, как ты просил. "
+"остановиться на середине пути. Мы раздобыли орочье оружие, как ты и просил. "
 "Никто не сможет найти связь между этим и тобой или эльфами."
 
 #. [message]: id=Kalenz
@@ -4964,14 +4872,12 @@ msgstr ""
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:341
 msgid "The guards are slain. Now we must look for the book."
-msgstr "Стражи убиты. Теперь мы должны найти книгу."
+msgstr "Стражники убиты. Теперь мы должны найти книгу."
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:346
-#, fuzzy
-#| msgid "New Objective: Find the secret door. Explore the manor."
 msgid "Find the secret door to enter the manor"
-msgstr "Новая цель: Найти потайную дверь. Исследовать поместье."
+msgstr "Найдите потайную дверь, чтобы войти в поместье"
 
 #. [message]: id=$unit.id
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:372
@@ -4981,7 +4887,7 @@ msgstr "Хм, выглядит как потайной ход. Посмотри�
 #. [message]: speaker=Rhuwin
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:401
 msgid "Everyone, quickly, go alert the queen!"
-msgstr ""
+msgstr "Караул, быстрее, сообщите королеве!"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:512
@@ -4999,13 +4905,13 @@ msgid ""
 "Delfador and the elves went through the secret door and ended in the "
 "dungeon, a veritable maze of narrow corridors."
 msgstr ""
-"Делфадор и эльфы прошли через потайной ход и остановились в темнице, которая "
-"оказалась настоящим лабиринтом узких коридоров."
+"Делфадор и эльфы прошли через потайной ход и пришли в темнице, которая "
+"оказалась настоящим лабиринтом из узких коридоров."
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:89
 msgid "Find the Book"
-msgstr ""
+msgstr "Найдите Книгу"
 
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:123
@@ -5088,7 +4994,7 @@ msgid ""
 "I see that the Book has mastered you, and destroyed you. Farewell, Sagus. "
 "You were a good man, once."
 msgstr ""
-"Я вижу, что Книга завладела твоим разумом и разрушила тебя. Прощай, Сагус. "
+"Я вижу, что Книга завладела твоим разумом и уничтожила тебя. Прощай, Сагус. "
 "Когда-то ты был хорошим человеком."
 
 #. [message]: speaker=Kalenz
@@ -5139,31 +5045,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:16
-#, fuzzy
-#| msgid ""
-#| "Delfador’s last great quest, after that battle, is described in the tale "
-#| "called <i>Heir to the Throne</i>. In it is told how he ended the "
-#| "usurpation of Asheviere and restored the rightful heir to the throne of "
-#| "Wesnoth."
 msgid ""
 "Delfador’s last great quest, after that battle, was ending the usurpation of "
 "Asheviere and restoring the rightful <i>Heir to the Throne</i>."
 msgstr ""
-"Последнее знаменитое приключение Делфадора после этой битвы описано в "
-"рассказе <i>«Наследник трона»</i>. В нём рассказано, как он завершил "
-"узурпацию Ашевир и вернул на трон законного правителя Веснота."
+"Последнее знаменитое приключение Делфадора, последовавшее после этой битвы, "
+"описано в кампании <i>«Наследник престола»</i>. В ней рассказано, как он "
+"покончил с узурпацией Ашевир и вернул на трон законного правителя Веснота."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:19
-#, fuzzy
-#| msgid ""
-#| "After restoring the rightful heir to the throne of Wesnoth, Delfador "
-#| "lived the rest of his life as an advisor to the new rulers. He devoted "
-#| "much of his attention to restoring the Great Academy in Alduin to its "
-#| "former glory. But his efforts there were to bear little fruit in his "
-#| "lifetime; for through many years of war and strife, very few mages were "
-#| "left, and none of them came near in power and skill to Delfador, greatest "
-#| "mage ever to grace the courts of Wesnoth."
 msgid ""
 "Afterwards, Delfador lived the rest of his life as an advisor to the new "
 "rulers. He devoted much of his attention to restoring the Great Academy in "
@@ -5175,9 +5066,9 @@ msgstr ""
 "После возвращения на трон законного правителя Веснота Делфадор прожил "
 "остаток своей жизни в качестве советника новых правителей. Много внимания он "
 "уделил на то, чтобы восстановить былую славу Великой Академии на Алдуине. Но "
-"все его усилия не увенчались особым успехом: слишком мало магов осталось "
-"после долгих лет войны и борьбы, и ни один из них не мог сравниться в "
-"могуществе и опыте с Делфадором, величайшим магом из всех, что служили при "
+"усилия Делфадора не принесли плодов при его жизни: слишком мало магов "
+"осталось после долгих лет войны и борьбы, и ни один из них не мог сравниться "
+"в могуществе и опыте с Делфадором, величайшим магом из всех, что служили при "
 "дворе Веснота."
 
 #. [unit_type]: id=Journeyman Mage
@@ -5297,12 +5188,12 @@ msgstr "Илиа-Малал"
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:13
 msgid "No! There is still more that I must do!"
-msgstr ""
+msgstr "Нет! Я столько ещё должен сделать!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:27
 msgid "No! Without Lionel’s help, I am as good as defeated!"
-msgstr "Нет! Без помощи Лионеля я уже, считайте, проиграл!"
+msgstr "Нет! Без помощи Лионеля я неизбежно потерплю поражение!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:56
@@ -5316,14 +5207,10 @@ msgstr "Нет! Теперь всё потеряно..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:83
-#, fuzzy
-#| msgid ""
-#| "With their leader slain we cannot count on dwarvish help to reach Iliah-"
-#| "Malal’s portal! All is lost!"
 msgid "With Ulrek slain we cannot count on dwarvish help! All is lost!"
 msgstr ""
-"Теперь, когда вождь гномов убит, мы не можем рассчитывать на их помощь, "
-"чтобы добраться до портала Илиа-Малала! Все пропало!"
+"Теперь, когда вождь гномов убит, мы не можем рассчитывать на помощь гномов! "
+"Все пропало!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/utils/generators.cfg:46
@@ -5353,8 +5240,8 @@ msgid ""
 "A wizard’s staff of power. This allows the bearer to summon powerful "
 "lightning bolts which strike their enemies, even at close range."
 msgstr ""
-"Магический посох силы. Это позволяет владельцу вызывать мощные молнии, "
-"которые ударяют его врагов, даже вблизи."
+"Магический посох силы. Он позволяет владельцу вызывать мощные молнии, "
+"которые ударяют в его врагов, даже в близком бою."
 
 #. [object]: id=staff_lightning
 #: data/campaigns/Delfadors_Memoirs/utils/items.cfg:46
