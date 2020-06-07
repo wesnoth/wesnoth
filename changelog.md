@@ -49,6 +49,7 @@
    * Fix [leader_goal] for sides with multiple leaders
    * Change E_NOT_REACHED_DESTINATION from error to warning
    * The advancement aspect can now also use amlas.
+   * Added missing side controllers to two Micro AI scenarios (fixes #4890)
  ### Campaigns
    * An Orcish Incursion:
      * Moved to addons server
