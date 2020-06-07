@@ -18,6 +18,8 @@
    * Dragonguard HP increased from 59 to 63
    * Bone Shooter HP increased from 40 to 42
    * Banebow HP increased from 50 to 52
+ ### Miscellaneous and bug fixes
+   * Added missing side controllers to two Micro AI scenarios (fixes #4890)
 
 ## Version 1.15.3
  ### AI
@@ -49,7 +51,6 @@
    * Fix [leader_goal] for sides with multiple leaders
    * Change E_NOT_REACHED_DESTINATION from error to warning
    * The advancement aspect can now also use amlas.
-   * Added missing side controllers to two Micro AI scenarios (fixes #4890)
  ### Campaigns
    * An Orcish Incursion:
      * Moved to addons server
