@@ -52,12 +52,6 @@ public:
 		return *this;
 	}
 
-	surface& operator=(SDL_Surface* surf)
-	{
-		assign_surface_internal(surf);
-		return *this;
-	}
-
 	surface& operator=(surface&& s) NOEXCEPT
 	{
 		free_surface();
