@@ -1172,7 +1172,6 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 			}
 		}
 		
-
 		adjacent_loc_array_t adjacent;
 		get_adjacent_tiles(self_loc_,adjacent.data());
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -1196,36 +1195,35 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 				}
 			}
 		}
-	    if(special_tags){
-	        for(const special_match& entry : special_tag_matches) {
-                if(entry.tag_name !="heals" && entry.tag_name !="regenerate" && entry.tag_name !="skirmisher" && entry.tag_name !="teleport" && entry.tag_name !="hides"){
-                    abil_list.append((*self_).get_abilities(entry.tag_name, self_loc_));
-                    for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-                        if(!special_active(*i->ability_cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
-                            i = abil_list.erase(i);
-                        } else {
-                            ++i;
-                        }
-                    }
-                }
-            }
-        }
-
-	    if(special_id){
-	        for(const special_match& entry : special_id_matches) {
-                if(entry.tag_name !="heals" && entry.tag_name !="skirmisher" && entry.tag_name !="teleport" && entry.tag_name !="hides"){
-                    abil_list_id.append((*self_).get_abilities(entry.tag_name, self_loc_));
-                    for(unit_ability_list::iterator i = abil_list_id.begin(); i != abil_list_id.end();) {
-                        if(!special_active(*i->ability_cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
-                            i = abil_list_id.erase(i);
-                        } else {
-                            ++i;
-                        }
-                    }
-                }
-            }
-        }
-        abil_list.append(abil_list_id);
+		if(special_tags){
+			for(const special_match& entry : special_tag_matches) {
+				if(entry.tag_name !="heals" && entry.tag_name !="regenerate" && entry.tag_name !="skirmisher" && entry.tag_name !="teleport" && entry.tag_name !="hides"){
+					abil_list.append((*self_).get_abilities(entry.tag_name, self_loc_));
+					for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
+						if(!special_active(*i->ability_cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
+							i = abil_list.erase(i);
+						} else {
+							++i;
+						}
+					}
+				}
+			}
+		}
+		if(special_id){
+			for(const special_match& entry : special_id_matches) {
+				if(entry.tag_name !="heals" && entry.tag_name !="regenerate" && entry.tag_name !="skirmisher" && entry.tag_name !="teleport" && entry.tag_name !="hides"){
+					abil_list_id.append((*self_).get_abilities(entry.tag_name, self_loc_));
+					for(unit_ability_list::iterator i = abil_list_id.begin(); i != abil_list_id.end();) {
+						if(!special_active(*i->ability_cfg, AFFECT_SELF, entry.tag_name, true, "filter_student")) {
+							i = abil_list_id.erase(i);
+						} else {
+							++i;
+						}
+					}
+				}
+			}
+		}
+		abil_list.append(abil_list_id);
 	}
 
 	if(other_){
@@ -1269,40 +1267,40 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 			}
 		}
 
-	    if(special_tags){
-	        for(const special_match& entry : special_tag_matches) {
-                if(entry.tag_name !="heals" && entry.tag_name !="regenerate" && entry.tag_name !="skirmisher" && entry.tag_name !="teleport" && entry.tag_name !="hides"){
-                    abil_other_list.append((*other_).get_abilities(entry.tag_name, other_loc_));
-                    for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
-                         if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
-                            i = abil_other_list.erase(i);
-                        } else {
-                            ++i;
-                        }
-                    }
-                }
-            }
-        }
+		if(special_tags){
+			for(const special_match& entry : special_tag_matches) {
+				if(entry.tag_name !="heals" && entry.tag_name !="regenerate" && entry.tag_name !="skirmisher" && entry.tag_name !="teleport" && entry.tag_name !="hides"){
+					abil_other_list.append((*other_).get_abilities(entry.tag_name, other_loc_));
+					for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
+						if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
+							i = abil_other_list.erase(i);
+						} else {
+							++i;
+						}
+					}
+				}
+			}
+		}
 
-	    if(special_id){
-	        for(const special_match& entry : special_id_matches) {
-                if(entry.tag_name !="heals" && entry.tag_name !="regenerate" && entry.tag_name !="skirmisher" && entry.tag_name !="teleport" && entry.tag_name !="hides"){
-                    abil_other_list_id.append((*other_).get_abilities(entry.tag_name, other_loc_));
-                    for(unit_ability_list::iterator i = abil_other_list_id.begin(); i != abil_other_list_id.end();) {
-                         if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
-                            i = abil_other_list_id.erase(i);
-                        } else {
-                            ++i;
-                        }
-                    }
-                }
-            }
-        }
-        abil_other_list.append(abil_other_list_id);
-    }
-    abil_list.append(abil_other_list);
-    if(!abil_list.empty()){
-            return true;
+		if(special_id){
+			for(const special_match& entry : special_id_matches) {
+				if(entry.tag_name !="heals" && entry.tag_name !="regenerate" && entry.tag_name !="skirmisher" && entry.tag_name !="teleport" && entry.tag_name !="hides"){
+					abil_other_list_id.append((*other_).get_abilities(entry.tag_name, other_loc_));
+					for(unit_ability_list::iterator i = abil_other_list_id.begin(); i != abil_other_list_id.end();) {
+						if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, entry.tag_name, true, "filter_student")) {
+							i = abil_other_list_id.erase(i);
+						} else {
+							++i;
+						}
+					}
+				}
+			}
+		}
+		abil_other_list.append(abil_other_list_id);
+	}
+	abil_list.append(abil_other_list);
+	if(!abil_list.empty()){
+		return true;
 	}
 	return false;
 }
