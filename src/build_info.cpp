@@ -22,6 +22,7 @@
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "serialization/unicode.hpp"
+#include "video.hpp"
 
 #include <algorithm>
 #include <fstream>
@@ -481,7 +482,11 @@ std::string full_build_report()
 	  << '\n'
 	  << report_heading("Features")
 	  << '\n'
-	  << game_config::optional_features_report();
+	  << game_config::optional_features_report()
+	  << '\n'
+	  << report_heading("Current video settings")
+	  << '\n'
+	  << CVideo::video_settings_report();
 
 	return o.str();
 }
