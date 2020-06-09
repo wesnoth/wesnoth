@@ -9,17 +9,23 @@
      * Revised dialogue and added miscellaneous new events to all scenarios
    * Under the Burning Suns:
      * Embellished all remaining maps (S1, S2, S6b, S8, S11)
+     * Finished Tauroch Rider line sprites, added riderless Tauroch standalone unit
  ### Language and i18n
-   * Updated translations: British English, Chinese (Traditional), Czech, Esperanto, Hungarian,
-     Italian, Japanese, Polish, Portuguese (Brazil), Spanish, Swedish
+   * Updated translations: British English, Chinese (Traditional), Czech, Esperanto, French,
+     Hungarian, Italian, Japanese, Polish, Portuguese (Brazil), Russian, Spanish, Swedish
  ### Units
    * New Dunefolk skirmisher branch (Falconer)
    * Dragonguard HP increased from 59 to 63
    * Bone Shooter HP increased from 40 to 42
    * Banebow HP increased from 50 to 52
  ### WML engine
-   * ability_special_id_active and ability_special_type_active added to [filter_weapon] filter for filter abilities used
+   * ability_special_id_active and ability_special_type_active added to [filter_weapon] and animation [filter_attack] filter for filter abilities used
      like weapon specials
+ ### Terrain
+   * New ancient/weathered stone floor tile (code Ias)
+   * New ancient stone stone walls variation (code Xoa)
+ ### Miscellaneous and bug fixes
+   * Added missing side controllers to two Micro AI scenarios (fixes #4890)
 
 ## Version 1.15.3
  ### AI

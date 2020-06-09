@@ -452,11 +452,6 @@ bool savegame::save_game(const std::string& filename)
 		if (filename_.empty())
 			filename_ = filename;
 
-		time_t t = std::time(nullptr);
-		tm tm = *std::localtime(&t);
-		auto time = std::put_time(&tm, "%Y%m%d-%H%M%S");
-		filename_ = (formatter() << filename_ << '_' << time).str();
-
 		before_save();
 
 		write_game_to_disk(filename_);
@@ -568,8 +563,12 @@ replay_savegame::replay_savegame(saved_game &gamestate, const compression::forma
 
 std::string replay_savegame::create_initial_filename(unsigned int) const
 {
+	time_t t = std::time(nullptr);
+	tm tm = *std::localtime(&t);
+	auto time = std::put_time(&tm, "%Y%m%d-%H%M%S");
+
 	// TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-	return formatter() << gamestate().classification().label << " " << _("replay");
+	return formatter() << gamestate().classification().label << " " << _("replay") << " " << time;
 }
 
 void replay_savegame::write_game(config_writer &out) {
