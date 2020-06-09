@@ -1176,26 +1176,26 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 		adjacent_loc_array_t adjacent;
 		get_adjacent_tiles(self_loc_,adjacent.data());
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
-	        const unit_map::const_iterator it = units.find(adjacent[i]);
-	        if (it == units.end() || it->incapacitated())
-			continue;
-	        if ( &*it == self_ )
-			continue;
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == self_ )
+				continue;
 
-		    if(special_id && special_tags){
-			    if ( get_special_children(special_tag_matches, special_id_matches, it->abilities(), special) ) {
-				    return true;
-			    }
-		    } else if(special_id && !special_tags){
-			    if ( get_special_children_id(special_id_matches, it->abilities(), special) ) {
-				    return true;
-			    }
-		    } else if(!special_id && special_tags){
-			    if ( get_special_children_tags(special_tag_matches, it->abilities(), special) ) {
-				    return true;
-			    }
-		    }
-	    }
+			if(special_id && special_tags){
+				if ( get_special_children(special_tag_matches, special_id_matches, it->abilities(), special) ) {
+					return true;
+				}
+			} else if(special_id && !special_tags){
+				if ( get_special_children_id(special_id_matches, it->abilities(), special) ) {
+					return true;
+				}
+			} else if(!special_id && special_tags){
+				if ( get_special_children_tags(special_tag_matches, it->abilities(), special) ) {
+					return true;
+				}
+			}
+		}
 	    if(special_tags){
 	        for(const special_match& entry : special_tag_matches) {
                 if(entry.tag_name !="heals" && entry.tag_name !="regenerate" && entry.tag_name !="skirmisher" && entry.tag_name !="teleport" && entry.tag_name !="hides"){
@@ -1245,30 +1245,29 @@ bool attack_type::get_special_ability_bool(const std::string& special, bool spec
 			}
 		}
 		
-
 		adjacent_loc_array_t adjacent;
 		get_adjacent_tiles(other_loc_,adjacent.data());
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
-	        const unit_map::const_iterator it = units.find(adjacent[i]);
-	        if (it == units.end() || it->incapacitated())
-			continue;
-	        if ( &*it == other_ )
-			continue;
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == other_ )
+				continue;
 
-		    if(special_id && special_tags){
-			    if ( get_special_children(special_tag_matches, special_id_matches, it->abilities(), special) ) {
-				    return true;
-			    }
-		    } else if(special_id && !special_tags){
-			    if ( get_special_children_id(special_id_matches, it->abilities(), special) ) {
-				    return true;
-			    }
-		    } else if(!special_id && special_tags){
-			    if ( get_special_children_tags(special_tag_matches, it->abilities(), special) ) {
-				    return true;
-			    }
-		    }
-	    }
+			if(special_id && special_tags){
+				if ( get_special_children(special_tag_matches, special_id_matches, it->abilities(), special) ) {
+					return true;
+				}
+			} else if(special_id && !special_tags){
+				if ( get_special_children_id(special_id_matches, it->abilities(), special) ) {
+					return true;
+				}
+			} else if(!special_id && special_tags){
+				if ( get_special_children_tags(special_tag_matches, it->abilities(), special) ) {
+					return true;
+				}
+			}
+		}
 
 	    if(special_tags){
 	        for(const special_match& entry : special_tag_matches) {
