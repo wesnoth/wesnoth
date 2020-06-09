@@ -19,8 +19,8 @@
    * Bone Shooter HP increased from 40 to 42
    * Banebow HP increased from 50 to 52
  ### WML engine
-   * ability_special_id_active and ability_special_type_active added to [filter_weapon] and animation [filter_attack] filter for filter abilities used
-     like weapon specials
+   * ability_special_id_active and ability_special_type_active added to [filter_weapon] and animation [filter_attack] filter
+     for filter abilities used like weapon specials
  ### Terrain
    * New ancient/weathered stone floor tile (code Ias)
    * New ancient stone stone walls variation (code Xoa)
