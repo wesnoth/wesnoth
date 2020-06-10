@@ -113,6 +113,9 @@ std::vector<std::string> available_addons();
 /** Retrieves the names of all installed add-ons. */
 std::vector<std::string> installed_addons();
 
+/** Retrieves the ids and versions of all installed add-ons. */
+std::vector<std::pair<std::string, std::string>> installed_addons_and_versions();
+
 /** Check whether the specified add-on is currently installed. */
 bool is_addon_installed(const std::string& addon_name);
 
