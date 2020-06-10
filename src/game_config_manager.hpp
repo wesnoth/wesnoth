@@ -48,6 +48,8 @@ public:
 	void load_game_config_for_game(const game_classification& classification);
 	void load_game_config_for_create(bool is_mp, bool is_test = false);
 
+	std::string get_addon_version(const std::string& addon_id);
+
 	static game_config_manager * get();
 
 private:

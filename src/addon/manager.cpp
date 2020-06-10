@@ -31,6 +31,7 @@
 #include "game_version.hpp"
 #include "serialization/string_utils.hpp"
 #include "addon/client.hpp"
+#include "game_config_manager.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -158,6 +159,17 @@ std::vector<std::string> installed_addons()
 	}
 
 	return res;
+}
+
+std::vector<std::pair<std::string, std::string>> installed_addons_and_versions()
+{
+	std::vector<std::pair<std::string, std::string>> addons;
+
+	for(const std::string& addon_id : installed_addons()) {
+		addons.push_back(std::pair<std::string, std::string>(addon_id, game_config_manager::get()->get_addon_version(addon_id)));
+	}
+
+	return addons;
 }
 
 bool is_addon_installed(const std::string& addon_name)
