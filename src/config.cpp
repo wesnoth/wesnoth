@@ -558,7 +558,7 @@ config& config::add_child_at_total(config_key_type key, const config &val, size_
 	assert(pos <= ordered_children.size());
 	if(pos == ordered_children.size()) {
 		//optimisation
-		config::add_child(key, val);
+		return config::add_child(key, val);
 	}
 
 	auto end = ordered_children.end();
