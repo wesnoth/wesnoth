@@ -87,6 +87,8 @@ bool wmi_manager::fire_item(
 	}
 
 	// Prepare for can show().
+	config::attribute_value x1 = gamedata.get_variable("x1");
+	config::attribute_value y1 = gamedata.get_variable("y1");
 	gamedata.get_variable("x1") = hex.wml_x();
 	gamedata.get_variable("y1") = hex.wml_y();
 	scoped_xy_unit highlighted_unit("unit", hex, units);
@@ -95,6 +97,8 @@ bool wmi_manager::fire_item(
 	if(wmi->can_show(hex, gamedata, fc)) {
 		wmi->fire_event(hex, gamedata);
 	}
+	gamedata.get_variable("x1") = x1;
+	gamedata.get_variable("y1") = y1;
 	return true;
 }
 
@@ -117,6 +121,10 @@ void wmi_manager::get_items(const map_location& hex,
 	}
 
 	// Prepare for can show().
+
+
+	config::attribute_value x1 = gamedata.get_variable("x1");
+	config::attribute_value y1 = gamedata.get_variable("y1");
 	gamedata.get_variable("x1") = hex.wml_x();
 	gamedata.get_variable("y1") = hex.wml_y();
 	scoped_xy_unit highlighted_unit("unit", hex, units);
@@ -133,6 +141,8 @@ void wmi_manager::get_items(const map_location& hex,
 			descriptions.emplace_back("id", item->menu_text());
 		}
 	}
+	gamedata.get_variable("x1") = x1;
+	gamedata.get_variable("y1") = y1;
 }
 
 wmi_manager::item_ptr wmi_manager::get_item(const std::string& id) const
