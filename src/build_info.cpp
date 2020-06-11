@@ -23,6 +23,7 @@
 #include "gettext.hpp"
 #include "serialization/unicode.hpp"
 #include "video.hpp"
+#include "addon/manager.hpp"
 
 #include <algorithm>
 #include <fstream>
@@ -486,7 +487,14 @@ std::string full_build_report()
 	  << '\n'
 	  << report_heading("Current video settings")
 	  << '\n'
-	  << CVideo::video_settings_report();
+	  << CVideo::video_settings_report()
+	  << '\n'
+	  << report_heading("Installed Add-ons")
+	  << '\n';
+	for(const auto& addon_info : installed_addons_and_versions())
+	{
+		o << addon_info.first << " : " << addon_info.second << '\n';
+	}
 
 	return o.str();
 }
