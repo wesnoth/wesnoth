@@ -490,11 +490,19 @@ std::string full_build_report()
 	  << '\n'
 	  << CVideo::video_settings_report()
 	  << '\n'
-	  << report_heading("Installed Add-ons")
+	  << report_heading("Installed add-ons")
 	  << '\n';
-	for(const auto& addon_info : installed_addons_and_versions())
+	const auto installed_addons = installed_addons_and_versions();
+	if(installed_addons.size() == 0)
 	{
-		o << addon_info.first << " : " << addon_info.second << '\n';
+		o << "No add-ons installed." << '\n';
+	}
+	else
+	{
+		for(const auto& addon_info : installed_addons)
+		{
+			o << addon_info.first << " : " << addon_info.second << '\n';
+		}
 	}
 	return o.str();
 }
