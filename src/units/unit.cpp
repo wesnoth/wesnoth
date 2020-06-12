@@ -705,7 +705,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	set_recruits(utils::split(cfg["extra_recruit"]));
 
-	game_config::add_color_info(cfg);
 	warn_unknown_attribute(cfg.attribute_range());
 
 #if 0
