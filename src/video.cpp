@@ -406,23 +406,25 @@ bool CVideo::window_has_flags(uint32_t flags) const
 	return (window->get_flags() & flags) != 0;
 }
 
+std::pair<float, float> CVideo::get_dpi() const
+{
+	float hdpi, vdpi;
+	if(window && SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi) == 0) {
+		return { hdpi, vdpi };
+	}
+	// SDL doesn't know the screen dpi, there's a configuration issue, or we
+	// don't have a window yet.
+	return { 0.0f, 0.0f };
+}
+
 std::pair<float, float> CVideo::get_dpi_scale_factor() const
 {
-	std::pair<float, float> result{1.0f, 1.0f};
-
-	if(!window) {
-		return result;
+	auto dpi = get_dpi();
+	if(dpi.first != 0.0f && dpi.second != 0.0f) {
+		return { dpi.first / MAGIC_DPI_SCALE_NUMBER, dpi.second / MAGIC_DPI_SCALE_NUMBER };
 	}
-
-	float hdpi, vdpi;
-	int returncode = SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi);
-
-	if (returncode == 0) {
-		result.first = hdpi / MAGIC_DPI_SCALE_NUMBER;
-		result.second = vdpi / MAGIC_DPI_SCALE_NUMBER;
-	}
-
-	return result;
+	// Assume a scale factor of 1.0 if the screen dpi is currently unknown.
+	return { 1.0f, 1.0f };
 }
 
 std::vector<point> CVideo::get_available_resolutions(const bool include_current)
