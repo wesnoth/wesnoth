@@ -79,6 +79,11 @@ public:
 	/** Returns a pointer to the underlying SDL window. */
 	sdl::window* get_window();
 
+	bool has_window()
+	{
+		return get_window() != nullptr;
+	}
+
 private:
 	enum MODE_EVENT { TO_RES, TO_FULLSCREEN, TO_WINDOWED, TO_MAXIMIZED_WINDOW };
 
@@ -126,6 +131,9 @@ public:
 
 	/** Returns the window renderer height in pixels or in screen coordinates. */
 	int get_height(bool as_pixels = true) const;
+
+	/** The current game screen dpi. */
+	std::pair<float, float> get_dpi() const;
 
 	/** The current scale factor on High-DPI screens. */
 	std::pair<float, float> get_dpi_scale_factor() const;
