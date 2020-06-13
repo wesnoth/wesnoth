@@ -28,6 +28,7 @@
 
 #include <algorithm>
 #include <fstream>
+#include <iomanip>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -369,142 +370,220 @@ std::string dist_channel_id()
 
 namespace {
 
-bool strlen_comparator(const std::string& a, const std::string& b)
+/**
+ * Formats items into a tidy 2-column list with a fixed-length first column.
+ */
+class list_formatter
 {
-	return a.length() < b.length();
+public:
+	using list_entry = std::pair<std::string, std::string>;
+	using contents_list = std::vector<list_entry>;
+
+	list_formatter(const std::string& heading, const contents_list& contents = {}, const std::string& empty_placeholder = "")
+		: heading_(heading)
+		, placeholder_(empty_placeholder)
+		, contents_(contents)
+	{
+	}
+
+	void insert(const std::string& label, const std::string& value)
+	{
+		contents_.emplace_back(label, value);
+	}
+
+	void set_placeholder(const std::string& placeholder)
+	{
+		placeholder_ = placeholder;
+	}
+
+	void stream_put(std::ostream& os) const;
+
+private:
+	static const char heading_delimiter;
+	static const std::string label_delimiter;
+
+	std::string heading_;
+	std::string placeholder_;
+
+	contents_list contents_;
+};
+
+const char list_formatter::heading_delimiter = '=';
+const std::string list_formatter::label_delimiter = ": ";
+
+void list_formatter::stream_put(std::ostream& os) const
+{
+	if(!heading_.empty()) {
+		os << heading_ << '\n' << std::string(utf8::size(heading_), heading_delimiter) << "\n\n";
+	}
+
+	if(contents_.empty() && !placeholder_.empty()) {
+		os << placeholder_ << '\n';
+	} else if(!contents_.empty()) {
+		auto label_length_comparator = [](const list_entry& a, const list_entry& b)
+		{
+			return utf8::size(a.first) < utf8::size(b.first);
+		};
+
+		const auto longest_entry_label = std::max_element(contents_.begin(), contents_.end(), label_length_comparator);
+		const std::size_t min_length = longest_entry_label != contents_.end()
+				? utf8::size(label_delimiter) + utf8::size(longest_entry_label->first)
+				: 0;
+
+		// Save stream attributes for resetting them later after completing the loop
+		const std::size_t prev_width = os.width();
+		const std::ostream::fmtflags prev_flags = os.flags();
+
+		os << std::left;
+
+		for(const auto& entry : contents_) {
+			os << std::setw(min_length) << entry.first + label_delimiter << entry.second << '\n';
+		}
+
+		os.width(prev_width);
+		os.flags(prev_flags);
+	}
+
+	os << '\n';
 }
 
-std::size_t max_strlen(const std::vector<std::string>& strs)
+std::ostream& operator<<(std::ostream& os, const list_formatter& fmt)
 {
-	const std::vector<std::string>::const_iterator it =
-			std::max_element(strs.begin(), strs.end(), strlen_comparator);
-
-	return it != strs.end() ? it->length() : 0;
+	fmt.stream_put(os);
+	return os;
 }
 
-std::string report_heading(const std::string& heading_text)
+list_formatter library_versions_report_internal(const std::string& heading = "")
 {
-	return heading_text + '\n' + std::string(utf8::size(heading_text), '=') + '\n';
+	list_formatter fmt{heading};
+
+	for(unsigned n = 0; n < LIB_COUNT; ++n)
+	{
+		if(versions.names[n].empty()) {
+			continue;
+		}
+
+		std::string text = versions.compiled[n];
+		if(!versions.linked[n].empty()) {
+			text += " (runtime " + versions.linked[n] + ")";
+		}
+
+		fmt.insert(versions.names[n], text);
+	}
+
+	return fmt;
+}
+
+list_formatter optional_features_report_internal(const std::string& heading = "")
+{
+	list_formatter fmt{heading};
+
+	// Yes, it's for stdout/stderr but we still want the localized version so
+	// that the context prefixes are stripped.
+	const std::vector<optional_feature>& features = optional_features_table();
+
+	for(const auto& feature : features) {
+		fmt.insert(feature.name, feature.enabled ? "yes" : "no");
+	}
+
+	return fmt;
+}
+
+template<typename T>
+inline std::string geometry_to_string(T horizontal, T vertical)
+{
+	return std::to_string(horizontal) + 'x' + std::to_string(vertical);
+}
+
+list_formatter video_settings_report_internal(const std::string& heading = "")
+{
+	list_formatter fmt{heading};
+
+	if(!CVideo::setup_completed()) {
+		fmt.set_placeholder("Graphics not initialized.");
+		return fmt;
+	}
+
+	CVideo& video = CVideo::get_singleton();
+
+	std::string placeholder;
+
+	if(video.non_interactive()) {
+		placeholder = "Running in non-interactive mode.";
+	} else if(!video.has_window()) {
+		placeholder = "Running without a game window.";
+	}
+
+	if(!placeholder.empty()) {
+		fmt.set_placeholder(placeholder);
+		return fmt;
+	}
+
+	const auto& dpi = video.get_dpi();
+	const auto& scale = video.get_dpi_scale_factor();
+	std::string dpi_report, scale_report;
+
+	if(dpi.first == 0.0f || dpi.second == 0.0f) {
+		scale_report = dpi_report = "<unknown>";
+	} else {
+		dpi_report = geometry_to_string(dpi.first, dpi.second);
+		scale_report = geometry_to_string(scale.first, scale.second);
+	}
+
+	fmt.insert("Window size", geometry_to_string(video.get_width(), video.get_height()));
+	fmt.insert("Screen refresh rate", std::to_string(video.current_refresh_rate()));
+	fmt.insert("Screen dots per inch", dpi_report);
+	fmt.insert("Screen dpi scale factor", scale_report);
+
+	return fmt;
 }
 
 } // end anonymous namespace 2
 
 std::string library_versions_report()
 {
-	std::ostringstream o;
-
-	const std::size_t col2_start = max_strlen(versions.names) + 2;
-	const std::size_t col3_start = max_strlen(versions.compiled) + 1;
-
-	for(unsigned n = 0; n < LIB_COUNT; ++n)
-	{
-		const std::string& name = versions.names[n];
-		const std::string& compiled = versions.compiled[n];
-		const std::string& linked = versions.linked[n];
-
-		if(name.empty()) {
-			continue;
-		}
-
-		o << name << ": ";
-
-		const std::size_t pos2 = name.length() + 2;
-		if(pos2 < col2_start) {
-			o << std::string(col2_start - pos2, ' ');
-		}
-
-		o << compiled;
-
-		if(!linked.empty()) {
-			const std::size_t pos3 = compiled.length() + 1;
-			if(pos3 < col3_start) {
-				o << std::string(col3_start - pos3, ' ');
-			}
-			o << " (runtime " << linked << ")";
-		}
-
-		o << '\n';
-	}
-
-	return o.str();
+	return formatter{} << library_versions_report_internal();
 }
 
 std::string optional_features_report()
 {
-	// Yes, it's for stdout/stderr but we still want the localized version so
-	// that the context prefixes are stripped.
-	const std::vector<optional_feature>& features = optional_features_table();
-
-	std::size_t col2_start = 0;
-
-	for(std::size_t k = 0; k < features.size(); ++k)
-	{
-		col2_start = std::max(col2_start, features[k].name.length() + 2);
-	}
-
-	std::ostringstream o;
-
-	for(std::size_t k = 0; k < features.size(); ++k)
-	{
-		const optional_feature& f = features[k];
-
-		o << f.name << ": ";
-
-		const std::size_t pos2 = f.name.length() + 2;
-		if(pos2 < col2_start) {
-			o << std::string(col2_start - pos2, ' ');
-		}
-
-		o << (f.enabled ? "yes" : "no") << '\n';
-	}
-
-	return o.str();
+	return formatter{} << optional_features_report_internal();
 }
 
 std::string full_build_report()
 {
+	list_formatter::contents_list paths{
+		{"Data dir",        game_config::path},
+		{"User config dir", filesystem::get_user_config_dir()},
+		{"User data dir",   filesystem::get_user_data_dir()},
+		{"Saves dir",       filesystem::get_saves_dir()},
+		{"Add-ons dir",     filesystem::get_addons_dir()},
+		{"Cache dir",       filesystem::get_cache_dir()},
+	};
+
+	// Obfuscate usernames in paths
+	for(auto& entry : paths) {
+		entry.second = filesystem::sanitize_path(entry.second);
+	}
+
+	list_formatter::contents_list addons;
+
+	for(const auto& addon_info : installed_addons_and_versions()) {
+		addons.emplace_back(addon_info.first, addon_info.second);
+	}
+
 	std::ostringstream o;
 
 	o << "The Battle for Wesnoth version " << game_config::revision << '\n'
 	  << "Running on " << desktop::os_version() << '\n'
 	  << "Distribution channel: " << dist_channel_id() << '\n'
 	  << '\n'
-	  << report_heading("Game paths")
-	  << '\n'
-	  << "Data dir:        " << filesystem::sanitize_path(game_config::path) << '\n'
-	  << "User config dir: " << filesystem::sanitize_path(filesystem::get_user_config_dir()) << '\n'
-	  << "User data dir:   " << filesystem::sanitize_path(filesystem::get_user_data_dir()) << '\n'
-	  << "Saves dir:       " << filesystem::sanitize_path(filesystem::get_saves_dir()) << '\n'
-	  << "Add-ons dir:     " << filesystem::sanitize_path(filesystem::get_addons_dir()) << '\n'
-	  << "Cache dir:       " << filesystem::sanitize_path(filesystem::get_cache_dir()) << '\n'
-	  << '\n'
-	  << report_heading("Libraries")
-	  << '\n'
-	  << game_config::library_versions_report()
-	  << '\n'
-	  << report_heading("Features")
-	  << '\n'
-	  << game_config::optional_features_report()
-	  << '\n'
-	  << report_heading("Current video settings")
-	  << '\n'
-	  << CVideo::video_settings_report()
-	  << '\n'
-	  << report_heading("Installed add-ons")
-	  << '\n';
-	const auto installed_addons = installed_addons_and_versions();
-	if(installed_addons.size() == 0)
-	{
-		o << "No add-ons installed.\n";
-	}
-	else
-	{
-		for(const auto& addon_info : installed_addons)
-		{
-			o << addon_info.first << " : " << addon_info.second << '\n';
-		}
-	}
-	o << '\n';
+	  << list_formatter{"Game paths", paths}
+	  << library_versions_report_internal("Libraries")
+	  << optional_features_report_internal("Features")
+	  << video_settings_report_internal("Current video settings")
+	  << list_formatter("Installed add-ons", addons, "No add-ons installed.");
+
 	return o.str();
 }
 
