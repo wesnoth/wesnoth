@@ -24,6 +24,7 @@ class version_info;
 #include <string>
 #include <vector>
 #include <utility>
+#include <map>
 
 /**
  * Exception thrown when the WML parser fails to read a .pbl file.
@@ -115,7 +116,7 @@ std::vector<std::string> available_addons();
 std::vector<std::string> installed_addons();
 
 /** Retrieves the ids and versions of all installed add-ons. */
-std::vector<std::pair<std::string, std::string>> installed_addons_and_versions();
+std::map<std::string, std::string> installed_addons_and_versions();
 
 /** Check whether the specified add-on is currently installed. */
 bool is_addon_installed(const std::string& addon_name);

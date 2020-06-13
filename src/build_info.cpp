@@ -494,7 +494,7 @@ std::string full_build_report()
 	const auto installed_addons = installed_addons_and_versions();
 	if(installed_addons.size() == 0)
 	{
-		o << "No add-ons installed." << '\n';
+		o << "No add-ons installed.\n";
 	}
 	else
 	{
