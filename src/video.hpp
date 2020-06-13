@@ -40,6 +40,11 @@ public:
 
 	~CVideo();
 
+	static bool setup_completed()
+	{
+		return singleton_ != nullptr;
+	}
+
 	static CVideo& get_singleton()
 	{
 		return *singleton_;
