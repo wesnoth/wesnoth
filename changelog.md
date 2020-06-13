@@ -1,4 +1,4 @@
-## Version 1.14.12+dev
+## Version 1.14.13
  ### Campaigns
    * The South Guard:
      * S6b: Fixed enemy units triggering their own ambush events.
