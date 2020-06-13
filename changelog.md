@@ -506,7 +506,24 @@
    * Game bans are now also enforced by username. (PR#4139)
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
-## Version 1.14.12+dev
+## Version 1.14.13+dev
+ ### Language and i18n
+   * Updated translations:
+ ### Miscellaneous and bug fixes
+
+## Version 1.14.13
+ ### Campaigns
+   * The South Guard:
+     * S6b: Fixed enemy units triggering their own ambush events.
+ ### Language and i18n
+   * Updated translations: Chinese (Traditional), French, Portuguese (Brazil), Russian
+ ### WML engine
+   * Fixed OOS issues caused by select events triggered during events (issue #4946).
+ ### Miscellaneous and bug fixes
+   * Fixed a major memory leak in the display code affecting all graphics operations, dating back to
+     version 1.13.13.
+   * Include graphics settings and the list of installed add-ons in the Game Version dialog's clipboard
+     report and the command line --report output.
 
 ## Version 1.14.12
  ### Add-ons client
