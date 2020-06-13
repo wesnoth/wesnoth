@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.12\n"
-"POT-Creation-Date: 2019-09-16 11:33+0300\n"
+"POT-Creation-Date: 2020-06-12 21:49-0400\n"
 "PO-Revision-Date: 2020-01-21 16:14+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
@@ -1441,7 +1441,7 @@ msgstr ""
 "Définit le nombre de tours du scénario. Par défaut, il n'y a pas de limite."
 
 #. type: SH
-#: doc/man/wesnoth.6:489 doc/man/wesnothd.6:279
+#: doc/man/wesnoth.6:489 doc/man/wesnothd.6:281
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "STATUT DE SORTIE"
@@ -1458,15 +1458,24 @@ msgstr ""
 "les options de ligne de commande."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:506
+#: doc/man/wesnoth.6:504
+#, fuzzy
+#| msgid ""
+#| "When running unit tests (withB<\\ -u>), the exit status is different. An "
+#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
+#| "test failed. An exit status of 3 indicates that the test passed, but "
+#| "produced an invalid replay file. An exit status of 4 indicates that the "
+#| "test passed, but the replay produced errors. These latter two are only "
+#| "returned if B<--noreplaycheck> is not passed. An exit status of 2 "
+#| "indicates that the test timed out, when used with the deprecated B<--"
+#| "timeout> option."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
 "test failed. An exit status of 3 indicates that the test passed, but "
 "produced an invalid replay file. An exit status of 4 indicates that the test "
 "passed, but the replay produced errors. These latter two are only returned "
-"if B<--noreplaycheck> is not passed. An exit status of 2 indicates that the "
-"test timed out, when used with the deprecated B<--timeout> option."
+"if B<--noreplaycheck> is not passed."
 msgstr ""
 "Lors de l'exécution des tests unitaires (avec B<\\ -u>), le statut de sortie "
 "est différent. Un statut de 0 indique que le test est passé, de 1 indique "
@@ -1479,20 +1488,20 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:507 doc/man/wesnothd.6:283
+#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:285
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTEUR"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:510
+#: doc/man/wesnoth.6:508
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Écrit par David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:512
+#: doc/man/wesnoth.6:510
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1502,7 +1511,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:514
+#: doc/man/wesnoth.6:512
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -1512,28 +1521,28 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:516 doc/man/wesnothd.6:290
+#: doc/man/wesnoth.6:514 doc/man/wesnothd.6:292
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr ""
 "Rendez-vous sur la page d'accueil officielle : https://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:517 doc/man/wesnothd.6:291
+#: doc/man/wesnoth.6:515 doc/man/wesnothd.6:293
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:520 doc/man/wesnothd.6:294
+#: doc/man/wesnoth.6:518 doc/man/wesnothd.6:296
 msgid "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:297
+#: doc/man/wesnoth.6:521 doc/man/wesnothd.6:299
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1546,7 +1555,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:524 doc/man/wesnothd.6:298
+#: doc/man/wesnoth.6:522 doc/man/wesnothd.6:300
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VOIR AUSSI"
@@ -2233,7 +2242,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:221
+#: doc/man/wesnothd.6:223
 #, fuzzy
 #| msgid ""
 #| "B<[user_handler]> Configures the user handler. Available keys vary "
@@ -2245,7 +2254,7 @@ msgid ""
 "on which user handler is set with the B<user_handler> key. If no "
 "B<[user_handler]> section is present in the configuration the server will "
 "run without any nick registration service. All additional tables that are "
-"needed for the forum_user_handler to function can be found in "
+"needed for the B<forum_user_handler> to function can be found in "
 "table_definitions.sql in the Wesnoth source repository."
 msgstr ""
 "B<[user_handler]> Configure l'identifiant utilisateur. Les options "
@@ -2255,40 +2264,40 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:222
+#: doc/man/wesnothd.6:224
 #, no-wrap
 msgid "B<db_host>"
 msgstr "B<db_host>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:225
+#: doc/man/wesnothd.6:227
 msgid "(for user_handler=forum) The hostname of the database server"
 msgstr "(pour user_handler=forum) Nom d'hôte du serveur de base de données"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:225
+#: doc/man/wesnothd.6:227
 #, no-wrap
 msgid "B<db_name>"
 msgstr "B<db_name>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:228
+#: doc/man/wesnothd.6:230
 msgid "(for user_handler=forum) The name of the database"
 msgstr "(pour user_handler=forum) Nom de la base de donnée"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:228
+#: doc/man/wesnothd.6:230
 #, no-wrap
 msgid "B<db_user>"
 msgstr "B<db_user>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:231
+#: doc/man/wesnothd.6:233
 msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
@@ -2298,27 +2307,27 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:231
+#: doc/man/wesnothd.6:233
 #, no-wrap
 msgid "B<db_password>"
 msgstr "B<db_password>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:234
+#: doc/man/wesnothd.6:236
 msgid "(for user_handler=forum) This user's password"
 msgstr "(pour user_handler=forum) Mot de passe de l'utilisateur"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:234
+#: doc/man/wesnothd.6:236
 #, no-wrap
 msgid "B<db_users_table>"
 msgstr "B<db_users_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:237
+#: doc/man/wesnothd.6:239
 msgid ""
 "(for user_handler=forum) The name of the table in which your phpbb forums "
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
@@ -2330,14 +2339,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:237
+#: doc/man/wesnothd.6:239
 #, no-wrap
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:240
+#: doc/man/wesnothd.6:242
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually."
@@ -2347,14 +2356,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:240
+#: doc/man/wesnothd.6:242
 #, no-wrap
 msgid "B<db_game_info_table>"
 msgstr "B<db_game_info_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:243
+#: doc/man/wesnothd.6:245
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about games."
@@ -2364,14 +2373,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:243
+#: doc/man/wesnothd.6:245
 #, no-wrap
 msgid "B<db_game_player_info_table>"
 msgstr "B<db_game_player_info_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:246
+#: doc/man/wesnothd.6:248
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about the players in a game."
@@ -2380,14 +2389,14 @@ msgstr ""
 "ses données à propos des joueurs d'une partie."
 
 #. type: TP
-#: doc/man/wesnothd.6:246
+#: doc/man/wesnothd.6:248
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
 msgstr "B<db_game_modification_info_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:249
+#: doc/man/wesnothd.6:251
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about the modifications used in a game."
@@ -2397,14 +2406,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:249
+#: doc/man/wesnothd.6:251
 #, no-wrap
 msgid "B<db_user_group_table>"
 msgstr "B<db_user_group_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:252
+#: doc/man/wesnothd.6:254
 msgid ""
 "(for user_handler=forum) The name of the table in which your phpbb forums "
 "saves its user group data. Most likely this will be E<lt>table-"
@@ -2415,14 +2424,14 @@ msgstr ""
 "prefixE<gt>_user_group. Exemple : phpbb3_user_group."
 
 #. type: TP
-#: doc/man/wesnothd.6:252
+#: doc/man/wesnothd.6:254
 #, no-wrap
 msgid "B<mp_mod_group>"
 msgstr "B<mp_mod_group>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:255
+#: doc/man/wesnothd.6:257
 msgid ""
 "(for user_handler=forum) The ID of the forum group to be considered as "
 "having moderation authority."
@@ -2432,14 +2441,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:255
+#: doc/man/wesnothd.6:257
 #, no-wrap
 msgid "B<user_expiration>"
 msgstr "B<user_expiration>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:258
+#: doc/man/wesnothd.6:260
 msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
@@ -2449,7 +2458,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:262
+#: doc/man/wesnothd.6:264
 msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
@@ -2459,71 +2468,71 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:263
+#: doc/man/wesnothd.6:265
 #, no-wrap
 msgid "B<server>"
 msgstr "B<server>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:266
+#: doc/man/wesnothd.6:268
 msgid "The hostname of the mail server"
 msgstr "Nom d'hôte du serveur mail"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:266
+#: doc/man/wesnothd.6:268
 #, no-wrap
 msgid "B<username>"
 msgstr "B<username>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:269
+#: doc/man/wesnothd.6:271
 msgid "The user name under which to log into the mail server."
 msgstr "Nom d'utilisateur utilisé pour vous connecter au serveur mail."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:269
+#: doc/man/wesnothd.6:271
 #, no-wrap
 msgid "B<password>"
 msgstr "B<password>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:272
+#: doc/man/wesnothd.6:274
 msgid "This user's password."
 msgstr "Mot de passe de cet utilisateur"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:272
+#: doc/man/wesnothd.6:274
 #, no-wrap
 msgid "B<from_address>"
 msgstr "B<from_address>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:275
+#: doc/man/wesnothd.6:277
 msgid "The reply-to address of you mail."
 msgstr "Adresse de réponse de votre mail."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:275
+#: doc/man/wesnothd.6:277
 #, no-wrap
 msgid "B<mail_port>"
 msgstr "B<mail_port>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:278
+#: doc/man/wesnothd.6:280
 msgid "The port on which your mail server is running. Default is 25."
 msgstr "Port de votre serveur mail (par défaut : 25)."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:282
+#: doc/man/wesnothd.6:284
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2534,7 +2543,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:288
+#: doc/man/wesnothd.6:290
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -2550,7 +2559,7 @@ msgstr ""
 
 # type: TH
 #. type: Plain text
-#: doc/man/wesnothd.6:300
+#: doc/man/wesnothd.6:302
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 

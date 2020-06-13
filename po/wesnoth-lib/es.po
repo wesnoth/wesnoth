@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-05-02 01:56+0300\n"
+"POT-Creation-Date: 2020-06-12 21:49-0400\n"
 "PO-Revision-Date: 2020-05-12 09:57+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:464
 msgid "Fence"
@@ -1985,10 +1985,10 @@ msgid "Search"
 msgstr "Buscar"
 
 #. [toggle_button]: id=sort_0
-#. [label]: id=name
 #. [label]
-#. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
+#. [label]: id=name
+#. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:243
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2057,8 +2057,8 @@ msgstr "Desinstalar el complemento"
 msgid "Messages waiting"
 msgstr "Mensajes en espera"
 
-#. [button]: id=click_dismiss
 #. [button]: id=close_window
+#. [button]: id=click_dismiss
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
@@ -2087,8 +2087,8 @@ msgstr "Cerrar"
 msgid "Profile"
 msgstr "Perfil"
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:41
 #: data/gui/window/mp_method_selection.cfg:254
 #: data/gui/window/mp_server_list.cfg:49
@@ -2105,16 +2105,16 @@ msgstr "Ahora se conectará a un servidor para descargar complementos."
 msgid "Server:"
 msgstr "Servidor:"
 
-#. [button]: id=remove_addons
 #. [label]
+#. [button]: id=remove_addons
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
 msgstr "Eliminar complementos"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_help
 #. [button]: id=help
+#. [button]: id=show_help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:174
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Help"
@@ -2514,8 +2514,8 @@ msgstr ""
 "Hace que el generador de números aleatorios muestre los mismos resultados "
 "incluso después de recargar una partida"
 
-#. [label]: id=title
 #. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
@@ -2579,31 +2579,31 @@ msgstr "Copiar este registro al porta-papeles"
 msgid "Load Core"
 msgstr "Cargar módulo"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Copiar"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Copiar esta dirección de los archivos al porta-papeles"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "Explorar"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2938,15 +2938,15 @@ msgstr "Generar"
 msgid "New Map"
 msgstr "Nuevo mapa"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Ancho:"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3028,14 +3028,14 @@ msgstr "Marca como favorita la carpeta actual"
 msgid "Removes the current bookmark"
 msgstr "Elimina la marca actual"
 
-#. [button]: id=delete_file
 #. [button]: id=delete
+#. [button]: id=delete_file
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:482
 msgid "Delete"
 msgstr "Eliminar"
 
-#. [button]: id=new_dir
 #. [label]: id=title
+#. [button]: id=new_dir
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Nueva carpeta"
@@ -3096,8 +3096,8 @@ msgid "Execution trace"
 msgstr "Traza de ejecución"
 
 #. [button]: id=cancel
-#. [button]: id=quit_without_surrender
 #. [grid]
+#. [button]: id=quit_without_surrender
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:261
 msgid "Quit"
@@ -3294,17 +3294,17 @@ msgid "Upkeep"
 msgstr "Coste de mantenimiento"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
+#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
 msgid "Income"
 msgstr "Ingresos"
 
-#. [toggle_button]: id=sort_1
 #. [label]: id=side_title
+#. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "Bando"
@@ -3473,8 +3473,8 @@ msgstr "Inspector de estado de juego"
 msgid "Copy this report to clipboard"
 msgstr "Copiar este informe al porta-papeles"
 
-#. [button]: id=lua
 #. [label]
+#. [button]: id=lua
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3547,8 +3547,8 @@ msgstr "Presione el atajo de teclado deseado (Esc cancela)"
 msgid "Show or Hide Labels"
 msgstr "Mostrar u ocultar etiquetas"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:258
 msgid "Language"
@@ -3908,8 +3908,8 @@ msgstr "Partida creada:"
 msgid "When a new game has been created"
 msgstr "Cuando se ha creado una nueva partida"
 
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
+#. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:296
@@ -4247,8 +4247,8 @@ msgstr "Seleccione su facción"
 msgid "Starting position:"
 msgstr "Posición inicial:"
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4331,8 +4331,8 @@ msgid "Save password locally (encrypted)"
 msgstr "Guardar contraseña localmente (cifrada)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [label]
+#. [grid]
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
@@ -5405,27 +5405,27 @@ msgstr "Error"
 msgid "Details:"
 msgstr "Detalles:"
 
-#: src/build_info.cpp:270
+#: src/build_info.cpp:272
 msgid "feature^JPEG screenshots"
 msgstr "Capturas de pantalla JPEG"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:279
 msgid "feature^Lua console completion"
 msgstr "Finalización de consola Lua"
 
-#: src/build_info.cpp:282
+#: src/build_info.cpp:284
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Renderizado bidireccional tradicional"
 
-#: src/build_info.cpp:289
+#: src/build_info.cpp:291
 msgid "feature^D-Bus notifications back end"
 msgstr "Sistema de notificaciones D-Bus"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:300
 msgid "feature^Win32 notifications back end"
 msgstr "Sistema a notificaciones Win32"
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:306
 msgid "feature^Cocoa notifications back end"
 msgstr "Sistema a notificaciones Cocoa"
 

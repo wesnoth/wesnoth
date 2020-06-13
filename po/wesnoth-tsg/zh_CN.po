@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-05-01 22:57 UTC\n"
+"POT-Creation-Date: 2020-06-13 01:49 UTC\n"
 "PO-Revision-Date: 2019-02-18 19:25+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -152,11 +152,11 @@ msgstr "南疆卫队"
 msgid "Urza Mathin"
 msgstr "乌扎·马辛"
 
-#. [side]: type=Bandit, id=Urza Mathin
-#. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -186,7 +186,7 @@ msgstr "击败乌扎·马辛"
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:260
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:299
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:360
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:575
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:585
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:427
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:32
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:517
@@ -201,7 +201,7 @@ msgstr "德欧兰死亡"
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:303
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:364
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:254
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:579
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:589
 msgid "Death of Sir Gerrick"
 msgstr "格里克爵士死亡"
 
@@ -743,7 +743,7 @@ msgstr "击败土匪首领，乌扎·纳尔马什"
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:268
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:307
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:368
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:583
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:593
 msgid "Death of Minister Hylas"
 msgstr "海拉斯辅佐官死亡"
 
@@ -1076,7 +1076,7 @@ msgstr "乌扎·法斯提克"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:154
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:101
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:87
 msgid "Elves"
 msgstr "精灵"
 
@@ -1238,10 +1238,10 @@ msgstr "林德里翁"
 msgid "Mithalwe"
 msgstr "米撒尔韦"
 
-#. [event]
 #. [unit]: type=Elvish Marshal, id=Ithelden
+#. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:384
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1217
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1212
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:433
 msgid "Ithelden"
 msgstr "伊希尔登"
@@ -1475,17 +1475,17 @@ msgstr "泪滴山谷"
 msgid "Mal A’kai"
 msgstr "玛尔·阿凯"
 
-#. [side]
-#. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Soulless, id=Groth
-#. [side]: type=Lich, id=Mal Tera
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #. [side]: type=Soulless, id=Gruth
 #. [side]: type=Lich, id=Mal M'Brin
+#. [side]
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:97
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:143
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:72
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:63
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:163
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:193
@@ -1699,9 +1699,9 @@ msgstr "也许吧，但至少你不会再给我们制造麻烦了！"
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "梅布林！您在吗？我们来求助于您！"
 
-#. [message]: speaker=Kramak
 #. [message]: speaker=Ethiliel
 #. [message]: speaker=narrator
+#. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:642
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:653
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:395
@@ -1806,10 +1806,10 @@ msgstr "来吧，我的保镖们！我们必须加紧脚步，跟上足迹并找
 msgid "Choice in the Fog"
 msgstr "雾中抉择"
 
-#. [unit]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Urza Afalas
+#. [unit]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:55
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:473
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:483
 msgid "Urza Afalas"
 msgstr "乌扎·阿法拉斯"
 
@@ -1971,7 +1971,7 @@ msgstr "击败乌扎·阿法拉斯"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:388
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:587
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:597
 msgid "Death of Urza Afalas"
 msgstr "乌扎·阿法拉斯死亡"
 
@@ -2787,13 +2787,19 @@ msgstr "我们也会回到我们的评议会去。我们有很多事要告诉他
 msgid "The Long March"
 msgstr "长途行军"
 
+#. [side]
+#. Another elvish side.
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:123
+msgid "Ambushers"
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:500
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:510
 msgid "Deoran and Urza Afalas retreated quickly from Mebrin's fortress..."
 msgstr "德欧兰和乌扎·阿法拉斯迅速从梅布林的要塞撤退了……"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:538
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:548
 msgid ""
 "Forest, forest, forest! As far as the eye can see, it is all forest! I am "
 "getting sick of endlessly trudging through these woods. Are you sure you are "
@@ -2803,7 +2809,7 @@ msgstr ""
 "确定你带我们走的是正确的方向吗？"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:542
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:552
 msgid ""
 "Trust me. I have often traveled these woods with my comrades and I know a "
 "secret path through it. I am taking you there so we can avoid the elves on "
@@ -2813,7 +2819,7 @@ msgstr ""
 "我会带你们走那条路，这样我们就可以在回去的路上避开精灵。"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:546
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:556
 msgid ""
 "Would that I had listened to Ethiliel... we would be battling the undead by "
 "now, instead of crawling around in these woods like rats!"
@@ -2822,7 +2828,7 @@ msgstr ""
 "像老鼠一样在这丛林里爬来爬去！"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:550
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:560
 msgid ""
 "What’s done is done. We must worry about the task at hand. Winter is almost "
 "upon us and it will be much more difficult to forage for food then."
@@ -2831,7 +2837,7 @@ msgstr ""
 "找食物会困难得多。"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:554
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:564
 msgid ""
 "That is not our only problem. I sense that many undead creatures are "
 "approaching us rapidly. It seems as if they are chasing us, though I know "
@@ -2841,7 +2847,7 @@ msgstr ""
 "们，尽管我不知道为什么。"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:558
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:568
 msgid ""
 "It must be because we destroyed that phantom lich. The corrupted sage is "
 "sending them to hunt us in retaliation. Let’s get out of here quickly so we "
@@ -2851,7 +2857,7 @@ msgstr ""
 "快点离开这里，这样就不用和他们战斗了。"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:565
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:575
 msgid ""
 "Also, remember that these woods are crawling with elves. Stay on the path "
 "and perhaps we can avoid at least most of them. If we do get seen, well, "
@@ -2861,44 +2867,44 @@ msgstr ""
 "其中的大多数。如果我们真被他们看到了，那好吧，希望他们不会攻击我们。"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:571
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:581
 msgid "Move Deoran through the woods and over the river"
 msgstr "让德欧兰穿过树林，渡过河流"
 
 #. [note]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:599
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:609
 msgid ""
 "At the start of each turn, Urza Afalas will reveal as much of the secret "
 "path as is within his vision range."
 msgstr "在每回合开始时，乌扎·阿法拉斯都会地尽可能揭露他视野范围内的秘密小径。"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:799
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:809
 msgid "Just a little further!"
 msgstr "再往前走一点点就好！"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:817
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:827
 msgid "We’re almost there!"
 msgstr "我们快到了！"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:835
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:845
 msgid "Come on! Hurry!"
 msgstr "跟我来！快！"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:853
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:863
 msgid "Keep moving!"
 msgstr "继续前进！"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:872
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:882
 msgid "You can see the banks of the river from here!"
 msgstr "在这里你可以看到河岸！"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:926
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:980
 msgid ""
 "Humans! You are the curs who kidnapped the Sage Mebrin! Tell us where you "
 "have hidden him and perhaps we will grant you a quick death!"
@@ -2907,7 +2913,7 @@ msgstr ""
 "个痛快！"
 
 #. [message]: id=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:930
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:984
 msgid ""
 "We have already told you of his whereabouts! Your wise sage now practices "
 "necromancy and commands an army of undead. He means to march on our land and "
@@ -2917,7 +2923,7 @@ msgstr ""
 "军。他想要在我们的土地上行军，并杀死所有活物，不论是人类还是精灵！"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:939
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:993
 msgid ""
 "How dare you speak of Mebrin with such lies?! Though he has knowledge of the "
 "undead, he is no human, so easily corrupted by the temptation of such power. "
@@ -2927,31 +2933,31 @@ msgstr ""
 "才很容易被这种力量的诱惑所腐蚀。你以为你能用这样一个虚构的故事来愚弄我们吗？"
 
 #. [message]: id=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:943
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:997
 msgid ""
 "We are not lying! If you travel south and enter the undead lair, you see "
 "that we speak the truth!"
 msgstr "我们没撒谎！如果你往南走，进入亡灵巢穴，你就会发现我们说的是实话！"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:952
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1006
 msgid ""
 "Enough! I should have known that the stupidity of humans knows no bounds. We "
 "have nothing more to say here."
 msgstr "够了！我早该知道人类的愚蠢是没有边界的。我们没什么好说的了。"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:986
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1042
 msgid "Humans, bandits and abductors! Prepare to be slain!"
 msgstr "人类，土匪和绑架者！准备好受死吧！"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:990
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1046
 msgid "We don’t want to fight you! We wish only to return to our homes!"
 msgstr "我们不想和你们打！我们只想回家！"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:999
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1055
 msgid ""
 "And so does our Sage Mebrin, yet you have not returned him to us! Even if "
 "you did, we would still dispatch of you for your heinous transgressions, you "
@@ -2961,44 +2967,44 @@ msgstr ""
 "会因为你们那令人发指的犯罪行为而消灭你们，背信弃义之徒！"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1003
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1059
 msgid ""
 "There is no reasoning with the elves. We will either have to fight or run."
 msgstr "和精灵们讲不清道理。我们要么战斗，要么逃跑。"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1037
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1082
 msgid "Get them!"
 msgstr "干掉他们！"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1179
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1174
 msgid ""
 "I pay for my crimes, but without me, you will never make it back to "
 "Kerlath..."
 msgstr "我为我的罪行付出了代价，但没有我，你永远无法回到克拉斯……"
 
 #. [message]: speaker=Ithelden
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1228
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1223
 msgid ""
 "So, these pitiful humans are still alive? Good. I will have the pleasure of "
 "crushing them myself."
 msgstr "那么说，这些可怜的人类还活着？很好。我将有机会亲自粉碎他们。"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1232
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1227
 msgid "We took too long to escape these forests..."
 msgstr "我们花了太长时间来逃离这森林……"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1252
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1247
 msgid ""
 "At last, we have escaped that awful forest! It seems that you actually kept "
 "your word about something, Afalas."
 msgstr "我们总算是逃离了那片可怕的森林！看来你也是能信守诺言的，阿法拉斯。"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1256
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1251
 msgid ""
 "Good knight, I am not evil as you think I am. I really do mean to aid in "
 "your battle against the undead. I am sorry for my deception before, but that "
@@ -3008,7 +3014,7 @@ msgstr ""
 "的欺骗行为感到抱歉，但那真的只是因为我以为你会杀了我！"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1260
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1255
 msgid ""
 "Your past crimes are not easy to overlook, but we will see how you aid us in "
 "the coming battle. As Sir Deoran said, you have kept your word about leading "
@@ -3019,7 +3025,7 @@ msgstr ""
 "开端。"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1264
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1259
 msgid "Thank you. I will help you as much as I can when we return to Westin."
 msgstr "谢谢。当我们回到韦斯廷时，我会尽我所能帮助你们。"
 
@@ -4627,8 +4633,8 @@ msgstr ""
 "小心点，德欧兰。你让我的族人流更多的血，就会有更多人被激怒。肯定会有更多人来"
 "攻击的。"
 
-#. [scenario]: id=09b_Bandit_Epilogue
 #. [scenario]: id=10a_Elf_Epilogue
+#. [scenario]: id=09b_Bandit_Epilogue
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:5
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:5
 msgid "Epilogue"

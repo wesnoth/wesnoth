@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-05-17 09:36 UTC\n"
+"POT-Creation-Date: 2020-06-13 01:49 UTC\n"
 "PO-Revision-Date: 2019-08-13 13:02-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: \n"
@@ -59,8 +59,8 @@ msgstr "Usa a Patrulha Micro AI ao invés do patrol.lua."
 msgid "The Elves Besieged"
 msgstr "Elfos sitiados"
 
-#. [unit]: type=Spearman, id=Konrad
 #. [side]: type=Spearman, id=Konrad
+#. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -85,10 +85,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
-#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:99
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:114
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:133
@@ -326,8 +326,8 @@ msgstr ""
 "com a presença dos outros, demonstrando o enorme auto-controle de um cão "
 "pastor bem treinado."
 
-#. [event]
 #. [test]: id=animals
+#. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -338,10 +338,10 @@ msgstr "Animais"
 msgid "Rutburt"
 msgstr "Rutburt"
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -370,8 +370,8 @@ msgstr "Aranhas"
 msgid "Yetis"
 msgstr "Pé-Grandes"
 
-#. [event]
 #. [side]
+#. [event]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -384,10 +384,10 @@ msgstr "Lobos"
 msgid "Whelps"
 msgstr "Filhotes"
 
-#. [set_menu_item]: id=m01_end_animals
-#. [event]
-#. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m04_end_animals
+#. [event]
+#. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -544,9 +544,9 @@ msgstr "Orc Mau"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "Seguinte, camaradas. Daqui esses orcs não passam."
 
-#. [message]: speaker=Big Bad Orc
-#. [message]: speaker=Vanak
 #. [message]: speaker=Another Bad Orc
+#. [message]: speaker=Vanak
+#. [message]: speaker=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:573
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:140
@@ -754,8 +754,8 @@ msgstr ""
 "Não há o que fazer aqui. Assista o cenário ou use-o como base para os seus "
 "próprios testes."
 
-#. [event]
 #. [test]: id=goto
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
@@ -811,8 +811,8 @@ msgstr "Sargento Aethubry"
 msgid "Place Side 1 Footpad"
 msgstr "Botar Trombadinha do Lado 1"
 
-#. [set_menu_item]: id=m02_kill_unit
 #. [set_menu_item]: id=m05_kill_unit
+#. [set_menu_item]: id=m02_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
@@ -1073,8 +1073,8 @@ msgstr "Todos nós chegamos nos cantos, vamos voltar e nos juntar de novo."
 msgid "We're back together, let's head out to the corners again."
 msgstr "Nós estamos juntos de novo, vamos para os cantos de novo."
 
-#. [event]
 #. [test]: id=guardians
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -2275,8 +2275,8 @@ msgstr "Aguentei o quanto pude."
 msgid "I made it"
 msgstr "Consegui"
 
-#. [event]
 #. [test]: id=recruiting
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
@@ -2348,8 +2348,8 @@ msgstr "Grnk o frágil"
 msgid "team_name^Grnk"
 msgstr "Grnk"
 
-#. [event]
 #. [test]: id=swarm
+#. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"

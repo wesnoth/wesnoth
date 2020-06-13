@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-lib)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-05-02 01:56+0300\n"
+"POT-Creation-Date: 2020-06-12 21:49-0400\n"
 "PO-Revision-Date: 2018-04-24 11:58+0100\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 
 #
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:464
 msgid "Fence"
@@ -2252,10 +2252,10 @@ msgstr "Procurar"
 
 #
 #. [toggle_button]: id=sort_0
-#. [label]: id=name
 #. [label]
-#. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
+#. [label]: id=name
+#. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:243
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2327,8 +2327,8 @@ msgid "Messages waiting"
 msgstr "Mensagens introdutórias"
 
 #
-#. [button]: id=click_dismiss
 #. [button]: id=close_window
+#. [button]: id=click_dismiss
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
@@ -2358,8 +2358,8 @@ msgid "Profile"
 msgstr "Descrição"
 
 #
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:41
 #: data/gui/window/mp_method_selection.cfg:254
 #: data/gui/window/mp_server_list.cfg:49
@@ -2379,8 +2379,8 @@ msgid "Server:"
 msgstr "Servidor:"
 
 #
-#. [button]: id=remove_addons
 #. [label]
+#. [button]: id=remove_addons
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
@@ -2388,8 +2388,8 @@ msgstr "Eliminar Extras"
 
 #
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_help
 #. [button]: id=help
+#. [button]: id=show_help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:174
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Help"
@@ -2814,8 +2814,8 @@ msgstr ""
 "até mesmo após carregar um jogo salvo"
 
 #
-#. [label]: id=title
 #. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
@@ -2893,8 +2893,8 @@ msgid "Load Core"
 msgstr "Continuar uma Partida"
 
 #
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
@@ -2902,8 +2902,8 @@ msgid "filesystem^Copy"
 msgstr "Copiar"
 
 #
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
@@ -2911,16 +2911,16 @@ msgid "Copy this path to clipboard"
 msgstr "Copia este caminho para a área de transferência"
 
 #
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "Navegar"
 
 #
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -3287,16 +3287,16 @@ msgid "New Map"
 msgstr "Novo Mapa"
 
 #
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Largura:"
 
 #
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3392,15 +3392,15 @@ msgid "Removes the current bookmark"
 msgstr "Remove o favorito atual"
 
 #
-#. [button]: id=delete_file
 #. [button]: id=delete
+#. [button]: id=delete_file
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:482
 msgid "Delete"
 msgstr "Eliminar"
 
 #
-#. [button]: id=new_dir
 #. [label]: id=title
+#. [button]: id=new_dir
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Nova Pasta"
@@ -3473,8 +3473,8 @@ msgstr "Rota da execução"
 
 #
 #. [button]: id=cancel
-#. [button]: id=quit_without_surrender
 #. [grid]
+#. [button]: id=quit_without_surrender
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:261
 msgid "Quit"
@@ -3691,9 +3691,9 @@ msgid "Upkeep"
 msgstr "Manutenção"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
+#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
@@ -3701,8 +3701,8 @@ msgid "Income"
 msgstr "Rendimento"
 
 #
-#. [toggle_button]: id=sort_1
 #. [label]: id=side_title
+#. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "Equipa"
@@ -3883,8 +3883,8 @@ msgstr "Inspeccionar estado do jogo"
 msgid "Copy this report to clipboard"
 msgstr "Copiar esta mensagem para a área de transferência"
 
-#. [button]: id=lua
 #. [label]
+#. [button]: id=lua
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3967,8 +3967,8 @@ msgid "Show or Hide Labels"
 msgstr "Mostrar ou esconder etiquetas flutuantes"
 
 #
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:258
 msgid "Language"
@@ -4373,8 +4373,8 @@ msgid "When a new game has been created"
 msgstr "A partida foi guardada."
 
 #
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
+#. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:296
@@ -4735,8 +4735,8 @@ msgid "Starting position:"
 msgstr "Posição Inicial:"
 
 #
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4828,8 +4828,8 @@ msgstr "Guardar a senha localmente (encriptado)"
 
 #
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [label]
+#. [grid]
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
@@ -6041,29 +6041,29 @@ msgstr "Erro"
 msgid "Details:"
 msgstr "Detalhes:"
 
-#: src/build_info.cpp:270
+#: src/build_info.cpp:272
 #, fuzzy
 #| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
 msgstr "Capturas de tela JPG"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:279
 msgid "feature^Lua console completion"
 msgstr "Console Lua Concluído"
 
-#: src/build_info.cpp:282
+#: src/build_info.cpp:284
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Renderização bidirecional legado"
 
-#: src/build_info.cpp:289
+#: src/build_info.cpp:291
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus notificações de back end"
 
-#: src/build_info.cpp:298
+#: src/build_info.cpp:300
 msgid "feature^Win32 notifications back end"
 msgstr "Win32 notificações de back end"
 
-#: src/build_info.cpp:304
+#: src/build_info.cpp:306
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa notificações de back end"
 
