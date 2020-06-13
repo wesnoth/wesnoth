@@ -550,25 +550,6 @@ void game_config_manager::load_addons_cfg()
 	}
 }
 
-std::string game_config_manager::get_addon_version(const std::string& addon_id)
-{
-	const std::string info_cfg = filesystem::get_addons_dir() + "/" + addon_id + "/_info.cfg";
-	if(have_addon_pbl_info(addon_id)) {
-		// Publishing info needs to be read from disk.
-		try {
-			return get_addon_pbl_info(addon_id)["version"].str();
-		} catch(const invalid_pbl_exception& e) {
-			return "Invalid pbl file, version unknown";
-		}
-	} else if(filesystem::file_exists(info_cfg)) {
-		// Addon server-generated info can be fetched from cache.
-		config temp;
-		cache_.get_config(info_cfg, temp);
-		return temp.child("info")["version"].str();
-	}
-	return "Unknown";
-}
-
 void game_config_manager::set_multiplayer_hashes()
 {
 	config& hashes = game_config_.add_child("multiplayer_hashes");

@@ -161,14 +161,25 @@ std::vector<std::string> installed_addons()
 	return res;
 }
 
-std::vector<std::pair<std::string, std::string>> installed_addons_and_versions()
+std::map<std::string, std::string> installed_addons_and_versions()
 {
-	std::vector<std::pair<std::string, std::string>> addons;
+	std::map<std::string, std::string> addons;
 
 	for(const std::string& addon_id : installed_addons()) {
-		addons.push_back(std::pair<std::string, std::string>(addon_id, game_config_manager::get()->get_addon_version(addon_id)));
+		if(have_addon_pbl_info(addon_id)) {
+			try {
+				addons[addon_id] = get_addon_pbl_info(addon_id)["version"].str();
+			} catch(const invalid_pbl_exception& e) {
+				addons[addon_id] = "Invalid pbl file, version unknown";
+			}
+		} else if(filesystem::file_exists(get_info_file_path(addon_id))) {
+			config temp;
+			get_addon_install_info(addon_id, temp);
+			addons[addon_id] = temp.child("info")["version"].str();
+		} else {
+			addons[addon_id] = "Unknown";
+		}
 	}
-
 	return addons;
 }
 
