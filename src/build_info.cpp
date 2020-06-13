@@ -504,6 +504,7 @@ std::string full_build_report()
 			o << addon_info.first << " : " << addon_info.second << '\n';
 		}
 	}
+	o << '\n';
 	return o.str();
 }
 
