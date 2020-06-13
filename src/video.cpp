@@ -32,14 +32,14 @@ static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
 
-#define MAGIC_DPI_SCALE_NUMBER 96
-
 CVideo* CVideo::singleton_ = nullptr;
 
 namespace
 {
 surface frameBuffer = nullptr;
 bool fake_interactive = false;
+
+const unsigned MAGIC_DPI_SCALE_NUMBER = 96;
 }
 
 namespace video2
