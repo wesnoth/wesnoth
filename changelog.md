@@ -1,6 +1,16 @@
 ## Version 1.14.12+dev
+ ### Campaigns
+   * The South Guard:
+     * S6b: Fixed enemy units triggering their own ambush events.
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Portuguese (Brazil), Russian
+ ### WML engine
+   * Fixed OOS issues caused by select events triggered during events (issue #4946).
+ ### Miscellaneous and bug fixes
+   * Fixed a major memory leak in the display code affecting all graphics operations, dating back to
+     version 1.13.13.
+   * Include graphics settings and the list of installed add-ons in the Game Version dialog's clipboard
+     report and the command line --report output.
 
 ## Version 1.14.12
  ### Add-ons client
