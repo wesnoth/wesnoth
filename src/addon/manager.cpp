@@ -175,7 +175,7 @@ std::map<std::string, std::string> installed_addons_and_versions()
 		} else if(filesystem::file_exists(get_info_file_path(addon_id))) {
 			config temp;
 			get_addon_install_info(addon_id, temp);
-			addons[addon_id] = temp.child("info")["version"].str();
+			addons[addon_id] = !temp.empty() ? temp.child("info")["version"].str() : "Unknown";
 		} else {
 			addons[addon_id] = "Unknown";
 		}
