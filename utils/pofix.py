@@ -265,14 +265,14 @@ website_stringfixes = {
 # any time soon.
 
 # Source
-("wesnoth-1.14.11/wesnoth-1.14.11.tar.bz2", "wesnoth-1.14.12/wesnoth-1.14.12.tar.bz2"),
-("458.9", "459.8"),
+("wesnoth-1.14.12/wesnoth-1.14.12.tar.bz2", "wesnoth-1.14.13/wesnoth-1.14.13.tar.bz2"),
+("459.8", "461.9"),
 # Windows
-("wesnoth-1.14.11/wesnoth-1.14.11-win32.exe", "wesnoth-1.14.12/wesnoth-1.14.12-win32.exe"),
-("414.0", "413.6"),
+("wesnoth-1.14.12/wesnoth-1.14.12-win32.exe", "wesnoth-1.14.13/wesnoth-1.14.13-win32.exe"),
+("413.6" ,"415.2"),
 # macOS
-("wesnoth-1.14.11/Wesnoth_1.14.11.dmg", "wesnoth-1.14.12/Wesnoth_1.14.12.dmg"),
-("468.0", "449.7"),
+("wesnoth-1.14.12/Wesnoth_1.14.12.dmg", "wesnoth-1.14.13/Wesnoth_1.14.13.dmg"),
+("449.7", "453.8"),
 
 ("&#169; 2003&#8211;2019", "&#169; 2003&#8211;2020"),
 ("&#169; 2017&#8211;2019", "&#169; 2017&#8211;2020"),
