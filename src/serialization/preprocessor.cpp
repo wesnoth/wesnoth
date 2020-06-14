@@ -1503,7 +1503,7 @@ bool preprocessor_data::get_chunk()
 				std::size_t optional_arg_num = 0;
 
 				std::unique_ptr<std::map<std::string, std::string>> defines{new std::map<std::string, std::string>};
-				const std::string& dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
+
 
 				if(val.is_deprecated()) {
 					deprecated_message(symbol, *val.deprecation_level, val.deprecation_version, val.deprecation_message);
@@ -1559,7 +1559,7 @@ bool preprocessor_data::get_chunk()
 							temp_defines->insert(defines->begin(), defines->end());
 
 							buf->add_preprocessor<preprocessor_data>(
-								std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, std::move(temp_defines), false);
+								std::move(buffer), val.location, "", val.linenum, "", val.textdomain, std::move(temp_defines), false);
 
 							std::ostringstream res;
 							res << in.rdbuf();
@@ -1590,7 +1590,7 @@ bool preprocessor_data::get_chunk()
 					DBG_PREPROC << "substituting macro " << symbol << '\n';
 
 					parent_.add_preprocessor<preprocessor_data>(
-						std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, std::move(defines), true);
+						std::move(buffer), val.location, "", val.linenum, "", val.textdomain, std::move(defines), true);
 				} else {
 					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
 
@@ -1604,7 +1604,7 @@ bool preprocessor_data::get_chunk()
 					{
 						std::istream in(buf.get());
 						buf->add_preprocessor<preprocessor_data>(
-							std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, std::move(defines), true);
+							std::move(buffer), val.location, "", val.linenum, "", val.textdomain, std::move(defines), true);
 
 						res << in.rdbuf();
 					}
