@@ -228,8 +228,21 @@ const std::string& terrain_palette::get_id(const t_translation::terrain_code& te
 std::string terrain_palette::get_help_string()
 {
 	std::ostringstream msg;
-	msg << _("FG: ") << map().get_terrain_editor_string(selected_fg_item())	<< " | "
-		<< _("BG: ") << map().get_terrain_editor_string(selected_bg_item());
+	msg << _("Left-click: ") << map().get_terrain_editor_string(selected_fg_item())	<< " | "
+		<< _("Right-click: ") << map().get_terrain_editor_string(selected_bg_item()) << "\n";
+	if(selected_fg_item().base == t_translation::NO_LAYER) {
+		// TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
+		// because the logic of whether to show the "overlay only" or "base only" version depends on the
+		// terrain currently selected for the left button.
+		msg << _("Shift + left-click: paint overlay layer only") << " | ";
+	} else {
+		msg << _("Shift + left-click: paint base layer only") << " | ";
+	}
+#ifdef __APPLE__
+	msg << _("Cmd + click: copy terrain") << std::endl;
+#else
+	msg << _("Ctrl + click: copy terrain") << std::endl;
+#endif
 	return msg.str();
 }
 
