@@ -80,13 +80,12 @@ static int intf_load_wml(lua_State* L)
 		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path)));
 		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 	}
-	std::string wml_file = filesystem::get_wml_location(file);
 	filesystem::scoped_istream stream;
 	config result;
 	if(preprocess) {
-		stream = preprocess_file(wml_file, &defines_map);
+		stream = preprocess_file_safe(wml_path(file), &defines_map);
 	} else {
-		stream.reset(new std::ifstream(wml_file));
+		stream.reset(new std::ifstream(wml_path(file).get_abolute_path()));
 	}
 	read(result, *stream, validator.get());
 	luaW_pushconfig(L, result);

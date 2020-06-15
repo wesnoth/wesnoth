@@ -567,7 +567,7 @@ class preprocessor_file : public preprocessor
 {
 public:
 	/** Constructor. It relies on preprocessor_data so it's implemented after that class is declared. */
-	preprocessor_file(preprocessor_streambuf& t, const std::string& name, std::size_t symbol_index = -1);
+	preprocessor_file(preprocessor_streambuf& t, const wml_path& name);
 
 	virtual void init() override;
 
@@ -578,11 +578,12 @@ public:
 	virtual bool get_chunk() override
 	{
 		while(pos_ != end_) {
-			const std::string& name = *(pos_++);
-			unsigned sz = name.size();
+			const wml_path& name = *(pos_++);
+			const std::string safe_path = name.safe_path();
+			unsigned sz = safe_path.size();
 
 			// Use reverse iterator to optimize testing
-			if(sz < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc.")) {
+			if(sz < 5 || !std::equal(safe_path.rbegin(), safe_path.rbegin() + 4, "gfc.")) {
 				continue;
 			}
 
@@ -594,10 +595,10 @@ public:
 	}
 
 private:
-	std::vector<std::string> files_;
-	std::vector<std::string>::const_iterator pos_, end_;
+	std::vector<wml_path> files_;
+	std::vector<wml_path>::const_iterator pos_, end_;
 
-	const std::string& name_;
+	const wml_path& name_;
 
 	bool is_directory_;
 };
@@ -654,7 +655,7 @@ class preprocessor_data : public preprocessor
 	/** Input stream. */
 	buffered_istream in_;
 
-	std::string directory_;
+	wml_path file_name_;
 
 	/** Buffer for delayed input processing. */
 	std::vector<std::string> strings_;
@@ -699,9 +700,8 @@ public:
 	preprocessor_data(preprocessor_streambuf&,
 			filesystem::scoped_istream,
 			const std::string& history,
-			const std::string& name,
 			int line,
-			const std::string& dir,
+			const wml_path& file_name,
 			const std::string& domain,
 			std::unique_ptr<std::map<std::string, std::string>> defines,
 			bool is_define = false);
@@ -740,32 +740,30 @@ bool operator!=(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs)
 }
 
 /** preprocessor_file constructor. */
-preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::string& name, std::size_t symbol_index)
+preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const wml_path& name)
 	: preprocessor(t)
 	, files_()
 	, pos_()
 	, end_()
 	, name_(name)
-	, is_directory_(filesystem::is_directory(name))
+	, is_directory_(filesystem::is_directory(name.get_abolute_path()))
 {
 	if(is_directory_) {
-		filesystem::get_files_in_dir(name, &files_, nullptr,
-			filesystem::ENTIRE_FILE_PATH,
-			filesystem::SKIP_MEDIA_DIR,
-			filesystem::DO_REORDER
-		);
+		name.get_files_in_dir(&files_, nullptr);
 
-		for(const std::string& fname : files_) {
-			std::size_t cpos = fname.rfind(" ");
+		for(const wml_path& fname : files_) {
+			std::size_t space_pos = fname.safe_path().rfind(' ');
 
-			if(cpos != std::string::npos && cpos >= symbol_index) {
-				std::stringstream ss;
-				ss << "Found filename containing whitespace: '" << filesystem::base_name(fname)
-				<< "' in included directory '" << name << "'.\nThe included symbol probably looks similar to '"
-				<< filesystem::directory_name(fname.substr(symbol_index)) << "'";
+			if(space_pos != std::string::npos) {
+				int schraeger_pos = fname.safe_path().rfind('/');
+				if(schraeger_pos < static_cast<int>(space_pos)) {
+					std::stringstream ss;
+					ss << "Found filename containing whitespace: '" << filesystem::base_name(fname.safe_path())
+						<< "' in included directory '" << fname.safe_path() << "'.\n";
 
-				// TODO: find a real linenumber
-				parent_.error(ss.str(), -1);
+					// TODO: find a real linenumber
+					parent_.error(ss.str(), -1);
+				}
 			}
 		}
 	} else {
@@ -782,14 +780,14 @@ void preprocessor_file::init()
 		return;
 	}
 
-	filesystem::scoped_istream file_stream = filesystem::istream_file(name_);
+	filesystem::scoped_istream file_stream = filesystem::istream_file(name_.get_abolute_path());
 
 	if(!file_stream->good()) {
-		ERR_PREPROC << "Could not open file " << name_ << std::endl;
+		ERR_PREPROC << "Could not open file '" << name_.safe_path() << "'"<< std::endl;
 	} else {
 		parent_.add_preprocessor<preprocessor_data>(std::move(file_stream), "",
-			filesystem::get_short_wml_path(name_), 1,
-			filesystem::directory_name(name_), parent_.textdomain_, nullptr
+			1,
+			name_, parent_.textdomain_, nullptr
 		);
 	}
 }
@@ -797,16 +795,15 @@ void preprocessor_file::init()
 preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 		filesystem::scoped_istream i,
 		const std::string& history,
-		const std::string& name,
 		int linenum,
-		const std::string& directory,
+		const wml_path& file_name,
 		const std::string& domain,
 		std::unique_ptr<std::map<std::string, std::string>> defines,
 		bool is_define)
 	: preprocessor(t)
 	, in_scope_(std::move(i))
 	, in_(*in_scope_)
-	, directory_(directory)
+	, file_name_(file_name)
 	, strings_()
 	, local_defines_(std::move(defines))
 	, tokens_()
@@ -816,13 +813,13 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 	, is_define_(is_define)
 {
 	std::ostringstream s;
-	s << history;
-
-	if(!name.empty()) {
-		if(!history.empty()) {
-			s << ' ';
-		}
-
+	if(!history.empty()) {
+		//We are a macro and the location of chunk is contained in history.
+		s << history;
+	}
+	else {
+		//We are a file.
+		const std::string& name = file_name.safe_path();
 		s << get_file_code(name);
 	}
 
@@ -1301,14 +1298,14 @@ bool preprocessor_data::get_chunk()
 		} else if(command == "ifhave") {
 			skip_spaces();
 			const std::string& symbol = read_word();
-			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
+			bool found = file_name_.get_relative_path(symbol).exists();
 			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found")
 						<< '\n';
 			conditional_skip(!found);
 		} else if(command == "ifnhave") {
 			skip_spaces();
 			const std::string& symbol = read_word();
-			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
+			bool found = file_name_.get_relative_path(symbol).exists();
 			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found")
 						<< '\n';
 			conditional_skip(found);
@@ -1559,7 +1556,7 @@ bool preprocessor_data::get_chunk()
 							temp_defines->insert(defines->begin(), defines->end());
 
 							buf->add_preprocessor<preprocessor_data>(
-								std::move(buffer), val.location, "", val.linenum, "", val.textdomain, std::move(temp_defines), false);
+								std::move(buffer), val.location, val.linenum, wml_path(), val.textdomain, std::move(temp_defines), false);
 
 							std::ostringstream res;
 							res << in.rdbuf();
@@ -1590,7 +1587,7 @@ bool preprocessor_data::get_chunk()
 					DBG_PREPROC << "substituting macro " << symbol << '\n';
 
 					parent_.add_preprocessor<preprocessor_data>(
-						std::move(buffer), val.location, "", val.linenum, "", val.textdomain, std::move(defines), true);
+						std::move(buffer), val.location, val.linenum, wml_path(), val.textdomain, std::move(defines), true);
 				} else {
 					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
 
@@ -1604,7 +1601,7 @@ bool preprocessor_data::get_chunk()
 					{
 						std::istream in(buf.get());
 						buf->add_preprocessor<preprocessor_data>(
-							std::move(buffer), val.location, "", val.linenum, "", val.textdomain, std::move(defines), true);
+							std::move(buffer), val.location, val.linenum, wml_path(), val.textdomain, std::move(defines), true);
 
 						res << in.rdbuf();
 					}
@@ -1615,19 +1612,19 @@ bool preprocessor_data::get_chunk()
 				LOG_PREPROC << "Macro definition not found for " << symbol << " , attempting to open as file.\n";
 				pop_token();
 
-				std::string nfname = filesystem::get_wml_location(symbol, directory_);
-				if(!nfname.empty()) {
+				wml_path nfname = file_name_.get_relative_path(symbol);
+				if(nfname.exists()) {
 					if(!slowpath_)
 						// nfname.size() - symbol.size() gives you an index into nfname
 						// This does not necessarily match the symbol though, as it can start with ~ or ./
-						parent_.add_preprocessor<preprocessor_file>(nfname, nfname.size() - symbol.size());
+						parent_.add_preprocessor<preprocessor_file>(nfname);
 					else {
 						std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
 						std::ostringstream res;
 						{
 							std::istream in(buf.get());
-							buf->add_preprocessor<preprocessor_file>(nfname, nfname.size() - symbol.size());
+							buf->add_preprocessor<preprocessor_file>(nfname);
 
 							res << in.rdbuf();
 						}
@@ -1667,7 +1664,7 @@ bool preprocessor_data::get_chunk()
 
 struct preprocessor_scope_helper : std::basic_istream<char>
 {
-	preprocessor_scope_helper(const std::string& fname, preproc_map* defines)
+	preprocessor_scope_helper(const wml_path& fname, preproc_map* defines)
 		: std::basic_istream<char>(nullptr)
 		, buf_(nullptr)
 		, local_defines_(nullptr)
@@ -1714,12 +1711,21 @@ struct preprocessor_scope_helper : std::basic_istream<char>
 // FREE-STANDING FUNCTIONS
 // ==================================================================================
 
-filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map* defines)
+filesystem::scoped_istream preprocess_file_safe(const wml_path& fname, preproc_map* defines)
 {
-	log_scope("preprocessing file " + fname + " ...");
+	log_scope("preprocessing file " + fname.safe_path() + " ...");
 
 	// NOTE: the preprocessor_scope_helper does *not* take ownership of defines.
 	return filesystem::scoped_istream(new preprocessor_scope_helper(fname, defines));
+}
+filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map* defines)
+{
+	return preprocess_file_safe(wml_path::from_absolute(fname), defines);
+}
+
+filesystem::scoped_istream preprocess_file_absolute(const std::string& fname, preproc_map* defines)
+{
+	return preprocess_file_safe(wml_path::from_absolute(fname), defines);
 }
 
 void preprocess_resource(const std::string& res_name,

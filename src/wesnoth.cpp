@@ -346,7 +346,8 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 	}
 	std::cout << "Validating " << file << " against schema " << validator.name_ << std::endl;
 	lg::set_strict_severity(0);
-	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
+	//TODO: maybe also allow 'safe' paths here ?
+	filesystem::scoped_istream stream = preprocess_file_absolute(file, &defines_map);
 	config result;
 	read(result, *stream, &validator);
 	if(lg::broke_strict()) {

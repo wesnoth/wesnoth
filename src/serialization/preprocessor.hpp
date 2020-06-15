@@ -18,6 +18,7 @@
 #pragma once
 
 #include "filesystem.hpp"
+#include "wml_path.hpp"
 #include <iosfwd>
 #include <map>
 #include <vector>
@@ -139,6 +140,8 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  * @returns                       The resulting preprocessed file data.
  */
 filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map* defines = nullptr);
+filesystem::scoped_istream preprocess_file_absolute(const std::string& fname, preproc_map* defines = nullptr);
+filesystem::scoped_istream preprocess_file_safe(const wml_path& fname, preproc_map* defines = nullptr);
 
 void preprocess_resource(const std::string& res_name,
 		preproc_map* defines_map,

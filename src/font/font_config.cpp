@@ -131,13 +131,13 @@ bool load_font_config()
 	//config when changing languages
 	config cfg;
 	try {
-		const std::string& cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
-		if(cfg_path.empty()) {
+		wml_path cfg_path = wml_path("hardwired/fonts.cfg");
+		if(!cfg_path.exists()) {
 			ERR_FT << "could not resolve path to fonts.cfg, file not found\n";
 			return false;
 		}
 
-		filesystem::scoped_istream stream = preprocess_file(cfg_path);
+		filesystem::scoped_istream stream = preprocess_file_safe(cfg_path);
 		read(cfg, *stream);
 	} catch(const config::error &e) {
 		ERR_FT << "could not read fonts.cfg:\n"

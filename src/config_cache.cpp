@@ -143,7 +143,8 @@ void config_cache::add_defines_map_diff(preproc_map& defines_map)
 void config_cache::read_configs(const std::string& file_path, config& cfg, preproc_map& defines_map, abstract_validator* validator)
 {
 	//read the file and then write to the cache
-	filesystem::scoped_istream stream = preprocess_file(file_path, &defines_map);
+	//TODO: should this be a "safe_path" ?
+	filesystem::scoped_istream stream = preprocess_file_absolute(file_path, &defines_map);
 	read(cfg, *stream, validator);
 }
 

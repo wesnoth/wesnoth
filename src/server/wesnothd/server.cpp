@@ -423,7 +423,7 @@ config server::read_config() const
 	}
 
 	try {
-		filesystem::scoped_istream stream = preprocess_file(config_file_);
+		filesystem::scoped_istream stream = preprocess_file_absolute(config_file_);
 		read(configuration, *stream);
 		LOG_SERVER << "Server configuration from file: '" << config_file_ << "' read.\n";
 	} catch(const config::error& e) {

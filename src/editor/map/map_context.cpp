@@ -318,7 +318,8 @@ void map_context::load_scenario(const game_config_view& game_config)
 	config scenario;
 
 	try {
-		read(scenario, *(preprocess_file(filename_)));
+		//todo: maybe make filename_ a wml_path ?
+		read(scenario, *(preprocess_file_absolute(filename_)));
 	} catch(const config::error& e) {
 		LOG_ED << "Caught a config error while parsing file: '" << filename_ << "'\n" << e.message << std::endl;
 		throw;

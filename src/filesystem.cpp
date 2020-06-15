@@ -463,7 +463,7 @@ void get_files_in_dir(const std::string& dir,
 	if(files != nullptr && reorder == DO_REORDER) {
 		// move finalcfg_filename, if present, to the end of the vector
 		for(unsigned int i = 0; i < files->size(); i++) {
-			if(ends_with((*files)[i], "/" + finalcfg_filename)) {
+			if(ends_with((*files)[i], "/" + finalcfg_filename) || (*files)[i] == finalcfg_filename) {
 				files->push_back((*files)[i]);
 				files->erase(files->begin() + i);
 				break;
@@ -473,7 +473,7 @@ void get_files_in_dir(const std::string& dir,
 		// move initialcfg_filename, if present, to the beginning of the vector
 		int foundit = -1;
 		for(unsigned int i = 0; i < files->size(); i++)
-			if(ends_with((*files)[i], "/" + initialcfg_filename)) {
+			if(ends_with((*files)[i], "/" + initialcfg_filename) || (*files)[i] == initialcfg_filename) {
 				foundit = i;
 				break;
 			}
@@ -1474,6 +1474,7 @@ std::string get_binary_dir_location(const std::string& type, const std::string& 
 std::string get_wml_location(const std::string& filename, const std::string& current_dir)
 {
 	if(!is_legal_file(filename)) {
+		std::cout << "filename:" << filename << "current_dir:" << current_dir << "\n";
 		return std::string();
 	}
 
@@ -1498,6 +1499,7 @@ std::string get_wml_location(const std::string& filename, const std::string& cur
 	}
 
 	if(result.empty() || !file_exists(result)) {
+		std::cout << "not found filename:" << filename << "current_dir:" << current_dir << "\n";
 		DBG_FS << "  not found\n";
 		result.clear();
 	} else {
