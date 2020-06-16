@@ -33,6 +33,20 @@ enum channel_group {
 	SOUND_FX
 };
 
+std::string current_driver();
+std::vector<std::string> enumerate_drivers();
+
+struct driver_status
+{
+	bool initialized;
+	int frequency;
+	uint16_t format;
+	int channels;
+	int chunk_size;
+
+	static driver_status query();
+};
+
 bool init_sound();
 void close_sound();
 void reset_sound();

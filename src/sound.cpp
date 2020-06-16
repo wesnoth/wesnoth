@@ -408,6 +408,37 @@ static void channel_finished_hook(int channel)
 	channel_ids[channel] = -1;
 }
 
+std::string current_driver()
+{
+	const char* const drvname = SDL_GetCurrentAudioDriver();
+	return drvname ? drvname : "<not initialized>";
+}
+
+std::vector<std::string> enumerate_drivers()
+{
+	std::vector<std::string> res;
+	int num_drivers = SDL_GetNumVideoDrivers();
+
+	for(int n = 0; n < num_drivers; ++n) {
+		const char* drvname = SDL_GetAudioDriver(n);
+		res.emplace_back(drvname ? drvname : "<invalid driver>");
+	}
+
+	return res;
+}
+
+driver_status driver_status::query()
+{
+	driver_status res{mix_ok, 0, 0, 0, 0};
+
+	if(mix_ok) {
+		Mix_QuerySpec(&res.frequency, &res.format, &res.channels);
+		res.chunk_size = preferences::sound_buffer_size();
+	}
+
+	return res;
+}
+
 bool init_sound()
 {
 	LOG_AUDIO << "Initializing audio...\n";

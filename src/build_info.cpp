@@ -23,6 +23,7 @@
 #include "gettext.hpp"
 #include "serialization/unicode.hpp"
 #include "game_version.hpp"
+#include "sound.hpp"
 #include "video.hpp"
 #include "addon/manager.hpp"
 
@@ -495,6 +496,25 @@ inline std::string geometry_to_string(T horizontal, T vertical)
 	return std::to_string(horizontal) + 'x' + std::to_string(vertical);
 }
 
+std::string format_sdl_driver_list(std::vector<std::string> drivers, const std::string& current_driver)
+{
+	bool found_current_driver = false;
+
+	for(auto& drvname : drivers) {
+		if(current_driver == drvname) {
+			found_current_driver = true;
+			drvname = "[" + current_driver + "]";
+		}
+	}
+
+	if(drivers.empty() || !found_current_driver) {
+		// This shouldn't happen but SDL is weird at times so whatevs
+		drivers.emplace_back("[" + current_driver + "]");
+	}
+
+	return utils::join(drivers, " ");
+}
+
 list_formatter video_settings_report_internal(const std::string& heading = "")
 {
 	list_formatter fmt{heading};
@@ -521,19 +541,6 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 
 	const auto& current_driver = CVideo::current_driver();
 	auto drivers = CVideo::enumerate_drivers();
-	bool found_current_driver = false;
-
-	for(auto& drvname : drivers) {
-		if(current_driver == drvname) {
-			found_current_driver = true;
-			drvname = "[" + current_driver + "]";
-		}
-	}
-
-	if(drivers.empty() || !found_current_driver) {
-		// This shouldn't happen but SDL is weird at times so whatevs
-		drivers.emplace_back("[" + current_driver + "]");
-	}
 
 	const auto& dpi = video.get_dpi();
 	const auto& scale = video.get_dpi_scale_factor();
@@ -546,11 +553,56 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 		scale_report = geometry_to_string(scale.first, scale.second);
 	}
 
-	fmt.insert("SDL video drivers", utils::join(drivers, " "));
+	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
 	fmt.insert("Window size", geometry_to_string(video.get_width(), video.get_height()));
 	fmt.insert("Screen refresh rate", std::to_string(video.current_refresh_rate()));
 	fmt.insert("Screen dots per inch", dpi_report);
 	fmt.insert("Screen dpi scale factor", scale_report);
+
+	return fmt;
+}
+
+list_formatter sound_settings_report_internal(const std::string& heading = "")
+{
+	list_formatter fmt{heading};
+
+	const auto& driver_status = sound::driver_status::query();
+
+	if(!driver_status.initialized) {
+		fmt.set_placeholder("Audio not initialized.");
+		return fmt;
+	}
+
+	const auto& current_driver = sound::current_driver();
+	auto drivers = sound::enumerate_drivers();
+
+	static std::map<uint16_t, std::string> audio_format_names = {
+		// 8 bits
+		{ AUDIO_U8,     "unsigned 8 bit" },
+		{ AUDIO_S8,     "signed 8 bit" },
+		// 16 bits
+		{ AUDIO_U16LSB, "unsigned 16 bit little-endian" },
+		{ AUDIO_U16MSB, "unsigned 16 bit big-endian" },
+		{ AUDIO_S16LSB, "signed 16 bit little-endian" },
+		{ AUDIO_S16MSB, "signed 16 bit big-endian" },
+		// 32 bits
+		{ AUDIO_S32LSB, "signed 32 bit little-endian" },
+		{ AUDIO_S32MSB, "signed 32 bit big-endian" },
+		{ AUDIO_F32LSB, "signed 32 bit floating point little-endian" },
+		{ AUDIO_F32MSB, "signed 32 bit floating point big-endian" },
+	};
+
+	auto fmt_names_it = audio_format_names.find(driver_status.format);
+	// If we don't recognize the format id just print the raw number
+	const std::string fmt_name = fmt_names_it != audio_format_names.end()
+			? fmt_names_it->second
+			: formatter() << "0x" << std::setfill('0') << std::setw(2*sizeof(driver_status.format)) << std::hex << std::uppercase << driver_status.format;
+
+	fmt.insert("SDL audio drivers", format_sdl_driver_list(drivers, current_driver));
+	fmt.insert("Number of channels", std::to_string(driver_status.channels));
+	fmt.insert("Output rate", std::to_string(driver_status.frequency) + " Hz");
+	fmt.insert("Sample format", fmt_name);
+	fmt.insert("Sample size", std::to_string(driver_status.chunk_size) + " bytes");
 
 	return fmt;
 }
@@ -599,6 +651,7 @@ std::string full_build_report()
 	  << library_versions_report_internal("Libraries")
 	  << optional_features_report_internal("Features")
 	  << video_settings_report_internal("Current video settings")
+	  << sound_settings_report_internal("Current audio settings")
 	  << list_formatter("Installed add-ons", addons, "No add-ons installed.");
 
 	return o.str();
