@@ -519,6 +519,22 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 		return fmt;
 	}
 
+	const auto& current_driver = CVideo::current_driver();
+	auto drivers = CVideo::enumerate_drivers();
+	bool found_current_driver = false;
+
+	for(auto& drvname : drivers) {
+		if(current_driver == drvname) {
+			found_current_driver = true;
+			drvname = "[" + current_driver + "]";
+		}
+	}
+
+	if(drivers.empty() || !found_current_driver) {
+		// This shouldn't happen but SDL is weird at times so whatevs
+		drivers.emplace_back("[" + current_driver + "]");
+	}
+
 	const auto& dpi = video.get_dpi();
 	const auto& scale = video.get_dpi_scale_factor();
 	std::string dpi_report, scale_report;
@@ -530,6 +546,7 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 		scale_report = geometry_to_string(scale.first, scale.second);
 	}
 
+	fmt.insert("SDL video drivers", utils::join(drivers, " "));
 	fmt.insert("Window size", geometry_to_string(video.get_width(), video.get_height()));
 	fmt.insert("Screen refresh rate", std::to_string(video.current_refresh_rate()));
 	fmt.insert("Screen dots per inch", dpi_report);

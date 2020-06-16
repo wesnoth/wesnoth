@@ -82,6 +82,10 @@ public:
 		return get_window() != nullptr;
 	}
 
+	static std::string current_driver();
+
+	static std::vector<std::string> enumerate_drivers();
+
 private:
 	enum MODE_EVENT { TO_RES, TO_FULLSCREEN, TO_WINDOWED, TO_MAXIMIZED_WINDOW };
 

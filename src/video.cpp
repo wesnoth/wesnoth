@@ -372,6 +372,25 @@ sdl::window* CVideo::get_window()
 	return window.get();
 }
 
+std::string CVideo::current_driver()
+{
+	const char* const drvname = SDL_GetCurrentVideoDriver();
+	return drvname ? drvname : "<not initialized>";
+}
+
+std::vector<std::string> CVideo::enumerate_drivers()
+{
+	std::vector<std::string> res;
+	int num_drivers = SDL_GetNumVideoDrivers();
+
+	for(int n = 0; n < num_drivers; ++n) {
+		const char* drvname = SDL_GetVideoDriver(n);
+		res.emplace_back(drvname ? drvname : "<invalid driver>");
+	}
+
+	return res;
+}
+
 bool CVideo::window_has_flags(uint32_t flags) const
 {
 	if(!window) {
