@@ -503,7 +503,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 		return handle_validate_command(*cmdline_opts.validate_schema, validator, {});
 	}
-	
+
 	if(cmdline_opts.do_diff) {
 		config left, right;
 		std::ifstream in_left(cmdline_opts.diff_left);
@@ -519,7 +519,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		if(os != &std::cout) delete os;
 		return 0;
 	}
-	
+
 	if(cmdline_opts.do_patch) {
 		config base, diff;
 		std::ifstream in_base(cmdline_opts.diff_left);
@@ -1035,28 +1035,28 @@ int main(int argc, char** argv)
 	//       the startup banner is printed. We need to get a console up and
 	//       running before then if requested, so just perform a trivial search
 	//       here and let program_options ignore the switch later.
-	for(std::size_t k = 0; k < args.size(); ++k) {
-		if(args[k] == "--wconsole" ||
-		   args[k] == "--help" ||
-		   args[k] == "--logdomains" ||
-		   args[k] == "--render-image" ||
-		   args[k] == "--report" ||
-		   args[k] == "-R" ||
-		   args[k] == "-V" ||
-		   args[k] == "-D" ||
-		   args[k] == "-P" ||
-		   args[k] == "-p" ||
-		   args[k] == "--preprocess" ||
-		   args[k] == "--screenshot" ||
-		   args[k] == "--data-path" ||
-		   args[k] == "--diff" ||
-		   args[k] == "--patch" ||
-		   args[k] == "--userdata-path" ||
-		   args[k] == "--userconfig-path" ||
-		   args[k].compare(0, 11, "--validate=") == 0  ||
-		   args[k].compare(0, 17, "--validate-schema") == 0  ||
-		   args[k] == "--version"
-		) {
+	for(const auto& arg : args) {
+		// Switches that don't take arguments
+		static const std::set<std::string> wincon_switches = {
+			"--wconsole", "-h", "--help", "-v", "--version", "-R", "--report", "--logdomains",
+			"--data-path", "--userdata-path", "--userconfig-path",
+		};
+
+		// Switches that take arguments, the switch may have the argument past
+		// the first = character, or in a subsequent argv entry which we don't
+		// care about -- we just want to see if the switch is there.
+		static const std::set<std::string> wincon_arg_switches = {
+			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
+			 "--screenshot", "-V", "--validate", "--validate-addon", "--validate-schema",
+		};
+
+		auto switch_matches_arg = [&arg](const std::string& sw) {
+			const auto pos = arg.find('=');
+			return pos == std::string::npos ? arg == sw : arg.substr(0, pos) == sw;
+		};
+
+		if(wincon_switches.find(arg) != wincon_switches.end() ||
+			std::find_if(wincon_arg_switches.begin(), wincon_arg_switches.end(), switch_matches_arg) != wincon_arg_switches.end()) {
 			lg::enable_native_console_output();
 			break;
 		}
