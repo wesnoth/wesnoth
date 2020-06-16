@@ -21,6 +21,8 @@
  ### Terrain
    * New ancient/weathered stone floor tile (code Ias)
    * New ancient stone stone walls variation (code Xoa)
+ ### Lua API
+   * New wesnoth.get_max_liminal_bonus function
  ### Miscellaneous and bug fixes
    * Added missing side controllers to two Micro AI scenarios (fixes #4890)
 

@@ -1188,6 +1188,18 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 }
 
 /**
+ * Gets the max liminal bonus
+ * - Ret 1: integer.
+ */
+int game_lua_kernel::intf_get_max_liminal_bonus(lua_State *L)
+{
+	int bonus = tod_man().get_max_liminal_bonus();
+	lua_pushinteger(L, bonus);
+
+	return 1;
+}
+
+/**
  * Gets the side of a village owner.
  * - Arg 1: map location.
  * - Ret 1: integer.
@@ -4231,6 +4243,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_terrain",               &dispatch<&game_lua_kernel::intf_get_terrain                >        },
 		{ "get_terrain_info",          &dispatch<&game_lua_kernel::intf_get_terrain_info           >        },
 		{ "get_time_of_day",           &dispatch<&game_lua_kernel::intf_get_time_of_day            >        },
+		{ "get_max_liminal_bonus",     &dispatch<&game_lua_kernel::intf_get_max_liminal_bonus      >        },
 		{ "get_variable",              &dispatch<&game_lua_kernel::intf_get_variable               >        },
 		{ "get_villages",              &dispatch<&game_lua_kernel::intf_get_villages               >        },
 		{ "get_village_owner",         &dispatch<&game_lua_kernel::intf_get_village_owner          >        },
