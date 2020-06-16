@@ -1,6 +1,5 @@
 /*
-   Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+   Copyright (C) 2020 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,30 +11,13 @@
    See the COPYING file for more details.
 */
 
-/**
- * @file
- * File-IO
- */
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "wml_path.hpp"
 #include "filesystem.hpp"
 
 #include "config.hpp"
-#include "deprecation.hpp"
-#include "game_config.hpp"
-#include "game_version.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
-#include "serialization/unicode.hpp"
-#include "serialization/unicode_cast.hpp"
-
-#include <boost/algorithm/string.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
-#include <boost/iostreams/device/file_descriptor.hpp>
-#include <boost/iostreams/stream.hpp>
-#include <boost/system/windows_error.hpp>
 
 
 namespace {
@@ -67,6 +49,7 @@ wml_path wml_path::from_absolute(const std::string& path)
 	std::string dir = filesystem::directory_name(path);
 	std::string base = "./" +  filesystem::base_name(path);
 
+	std::cerr << "wml_path::from_absolute: " << path << " to " << dir << " and " << base << "\n";
 	return wml_path(utils::string_view(dir), utils::string_view(base));
 }
 
@@ -104,7 +87,9 @@ void wml_path::get_files_in_dir(std::vector<wml_path>* files, std::vector<wml_pa
 	filesystem::get_files_in_dir(get_abolute_path(), files ? &file_names : nullptr , dirs ? &dir_names : nullptr, FILE_NAME_ONLY, NO_FILTER, DO_REORDER);
 	std::cerr << "get_files_in_dir:\n";
 	for(const auto& str: file_names) {
-		std::cerr << "    " << str << "\n";
+		if(str == "_main.cfg") {
+			std::cerr << "    " << str << " " << get_abolute_path() << "\n";
+		}
 		files->push_back(append(str));
 	}
 	for(const auto& str: dir_names) {

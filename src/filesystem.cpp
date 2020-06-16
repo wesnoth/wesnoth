@@ -445,7 +445,14 @@ void get_files_in_dir(const std::string& dir,
 			} else if(reorder == DO_REORDER && main_st.type() == bfs::regular_file) {
 				LOG_FS << "_main.cfg found : "
 					   << (mode == ENTIRE_FILE_PATH ? inner_main.string() : inner_main.filename().string()) << '\n';
-				push_if_exists(files, inner_main, mode == ENTIRE_FILE_PATH);
+
+	if(files != nullptr) {
+		if(mode == ENTIRE_FILE_PATH) {
+			files->push_back(inner_main.generic_string());
+		} else {
+			files->push_back((di->path().filename()  / maincfg_filename).generic_string());
+		}
+	}
 			} else {
 				push_if_exists(dirs, di->path(), mode == ENTIRE_FILE_PATH);
 			}
@@ -1474,7 +1481,6 @@ std::string get_binary_dir_location(const std::string& type, const std::string& 
 std::string get_wml_location(const std::string& filename, const std::string& current_dir)
 {
 	if(!is_legal_file(filename)) {
-		std::cout << "filename:" << filename << "current_dir:" << current_dir << "\n";
 		return std::string();
 	}
 
@@ -1499,7 +1505,7 @@ std::string get_wml_location(const std::string& filename, const std::string& cur
 	}
 
 	if(result.empty() || !file_exists(result)) {
-		std::cout << "not found filename:" << filename << "current_dir:" << current_dir << "\n";
+		//std::cout << "not found filename:" << filename << "current_dir:" << current_dir << "\n";
 		DBG_FS << "  not found\n";
 		result.clear();
 	} else {
