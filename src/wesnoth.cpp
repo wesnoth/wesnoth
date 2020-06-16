@@ -1031,10 +1031,15 @@ int main(int argc, char** argv)
 	std::vector<std::string> args =
 		parse_commandline_arguments(unicode_cast<std::string>(std::wstring(GetCommandLineW())));
 
-	// HACK: we don't parse command line arguments using program_options until
-	//       the startup banner is printed. We need to get a console up and
-	//       running before then if requested, so just perform a trivial search
-	//       here and let program_options ignore the switch later.
+	// Some switches force a Windows console to be attached to the process even
+	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
+	// turn it into a CLI application. Also, --wconsole in particular attaches
+	// a console to a regular GUI game session.
+	//
+	// It's up to commandline_options later to handle these switches (other
+	// --wconsole) later and emit any applicable console output, but right here
+	// we need a rudimentary check for the switches in question to set up the
+	// console before proceeding any further.
 	for(const auto& arg : args) {
 		// Switches that don't take arguments
 		static const std::set<std::string> wincon_switches = {
