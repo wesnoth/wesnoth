@@ -116,22 +116,22 @@ unit_type::unit_type(const config& cfg, const std::string& parent_id)
 	, cost_(0)
 	, usage_()
 	, undead_variation_()
-	, image_(cfg_["image"].str())
+	, image_()
 	, icon_()
 	, small_profile_()
 	, profile_()
-	, flag_rgb_(cfg_["flag_rgb"].str())
+	, flag_rgb_()
 	, num_traits_(0)
 	, gender_types_()
 	, variations_()
-	, default_variation_(cfg_["variation"])
+	, default_variation_()
 	, variation_name_(cfg_["variation_name"].t_str())
 	, race_(&unit_race::null_race)
 	, abilities_()
 	, adv_abilities_()
 	, zoc_(false)
 	, hide_help_(false)
-	, do_not_list_(cfg_["do_not_list"].to_bool(false))
+	, do_not_list_()
 	, advances_to_()
 	, experience_needed_(0)
 	, alignment_(unit_type::ALIGNMENT::NEUTRAL)
@@ -232,11 +232,14 @@ void unit_type::build_help_index(
 	max_attacks_ = cfg_["attacks"].to_int(1);
 	usage_ = cfg_["usage"].str();
 	undead_variation_ = cfg_["undead_variation"].str();
+	default_variation_ = cfg_["variation"].str();
 	image_ = cfg_["image"].str();
 	icon_ = cfg_["image_icon"].str();
 	small_profile_ = cfg_["small_profile"].str();
 	profile_ = cfg_["profile"].str();
-	
+	flag_rgb_ = cfg_["flag_rgb"].str();
+	do_not_list_ = cfg_["do_not_list"].to_bool(false);
+
 	for(const config& sn : cfg_.child_range("special_note")) {
 		special_notes_.push_back(sn["note"]);
 	}
