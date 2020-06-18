@@ -80,8 +80,8 @@ config initial_level_config(saved_game& state)
 
 	config level = state.to_config();
 	add_multiplayer_classification(level.child_or_add("multiplayer"), state);
-	level.child("multiplayer")["mp_scenario_addon_id"] = level.child("scenario")["addon_id"].str("N/A");
-	level.child("multiplayer")["mp_scenario_addon_version"] = state.to_config().child("scenario")["addon_version"].str("N/A");
+	level.child("multiplayer")["mp_scenario_addon_id"] = level.child("scenario")["addon_id"].str();
+	level.child("multiplayer")["mp_scenario_addon_version"] = state.to_config().child("scenario")["addon_version"].str();
 
 	// [multiplayer] mp_era= should be persistent over saves.
 	std::string era = params.mp_era;
@@ -111,8 +111,8 @@ config initial_level_config(saved_game& state)
 	} else {
 		level.add_child("era", era_cfg);
 
-		level.child("multiplayer")["mp_era_addon_id"] = era_cfg["addon_id"].str("N/A");
-		level.child("multiplayer")["mp_era_addon_version"] = era_cfg["addon_version"].str("N/A");
+		level.child("multiplayer")["mp_era_addon_id"] = era_cfg["addon_id"].str();
+		level.child("multiplayer")["mp_era_addon_version"] = era_cfg["addon_version"].str();
 
 		// Initialize the list of sides available for the current era.
 		// We also need this so not to get a segfault in mp_staging for ai configuration.
@@ -127,8 +127,8 @@ config initial_level_config(saved_game& state)
 
 	for(unsigned i = 0; i < mods.size(); ++i) {
 		if(const config& mod_cfg = game_config.find_child("modification", "id", mods[i])) {
-			mod_versions.push_back(mod_cfg["addon_version"].str("N/A"));
-			mod_addon_ids.push_back(mod_cfg["addon_id"].str("N/A"));
+			mod_versions.push_back(mod_cfg["addon_version"].str());
+			mod_addon_ids.push_back(mod_cfg["addon_id"].str());
 			level.add_child("modification", mod_cfg);
 		}
 	}
