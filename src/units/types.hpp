@@ -264,9 +264,6 @@ public:
 	bool do_not_list() const { return do_not_list_; }
 
 	const config &get_cfg() const { return cfg_; }
-	/// Returns a trimmed config suitable for use with units.
-	const config & get_cfg_for_units() const
-	{ return built_unit_cfg_ ? unit_cfg_ : build_unit_cfg(); }
 
 	/// Gets resistance while considering custom WML abilities.
 	/// Attention: Filters in resistance-abilities will be ignored.
@@ -275,8 +272,6 @@ public:
 	void apply_scenario_fix(const config& cfg);
 	void remove_scenario_fixes();
 private:
-	/// Generates (and returns) a trimmed config suitable for use with units.
-	const config & build_unit_cfg() const;
 
 	/// Identical to unit::resistance_filter_matches.
 	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
@@ -285,8 +280,6 @@ private:
 	void operator=(const unit_type& o);
 
 	const config &cfg_;
-	mutable config unit_cfg_;  /// Generated as needed via get_cfg_for_units().
-	mutable bool built_unit_cfg_;
 	mutable attack_list attacks_cache_;
 
 	std::string id_;

@@ -940,8 +940,6 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	// Clear modification-related caches
 	modification_descriptions_.clear();
 
-	// build unit type ready to create units. Not sure if needed.
-	new_type.get_cfg_for_units();
 
 	if(!new_type.usage().empty()) {
 		 set_usage(new_type.usage());

@@ -52,8 +52,6 @@ static lg::log_domain log_unit("unit");
 
 unit_type::unit_type(const unit_type& o)
 	: cfg_(o.cfg_)
-	, unit_cfg_()
-	, built_unit_cfg_(false) // Not copied; will be re-created if needed.
 	, id_(o.id_)
 	, debug_id_(o.debug_id_)
 	, base_id_(o.base_id_)
@@ -101,8 +99,6 @@ unit_type::unit_type(const unit_type& o)
 
 unit_type::unit_type(const config& cfg, const std::string& parent_id)
 	: cfg_(cfg)
-	, unit_cfg_()
-	, built_unit_cfg_(false)
 	, id_(cfg_.has_attribute("id") ? cfg_["id"].str() : parent_id)
 	, debug_id_()
 	, base_id_(!parent_id.empty() ? parent_id : id_)
@@ -732,53 +728,6 @@ bool unit_type::show_variations_in_help() const
 	}
 
 	return false;
-}
-
-/**
- * Generates (and returns) a trimmed config suitable for use with units.
- */
-const config& unit_type::build_unit_cfg() const
-{
-	// We start with all attributes.
-	assert(unit_cfg_.empty());
-	unit_cfg_.append_attributes(cfg_);
-
-	// Remove "pure" unit_type attributes (attributes that do not get directly
-	// copied to units; some do get copied, but under different keys).
-	static std::array<std::string, 25> unit_type_attrs {{
-		"attacks",
-		"base_ids",
-		"die_sound",
-		"experience",
-		"flies",
-		"healed_sound",
-		"hide_help",
-		"hitpoints",
-		"id",
-		"ignore_race_traits",
-		"inherit",
-		"movement",
-		"movement_type",
-		"name",
-		"num_traits",
-		"variation_id",
-		"variation_name",
-		"recall_cost",
-		"cost",
-		"level",
-		"gender",
-		"flag_rgb",
-		"alignment",
-		"advances_to",
-		"do_not_list"
-	}};
-
-	for(const std::string& attr : unit_type_attrs) {
-		unit_cfg_.remove_attribute(attr);
-	}
-
-	built_unit_cfg_ = true;
-	return unit_cfg_;
 }
 
 int unit_type::resistance_against(const std::string& damage_name, bool attacker) const
