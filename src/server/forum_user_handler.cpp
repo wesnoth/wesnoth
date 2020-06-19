@@ -443,10 +443,10 @@ std::string fuh::get_uuid(){
 	}
 }
 
-void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password){
+void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password, const std::string& map_source, const std::string& map_version, const std::string& era_source, const std::string& era_version){
 	try {
-		prepared_statement<void>("insert into `" + db_game_info_table_ + "`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME, MAP_NAME, ERA_NAME, RELOAD, OBSERVERS, PUBLIC, PASSWORD) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-		uuid, game_id, version, name, map_name, era_name, reload, observers, is_public, has_password);
+		prepared_statement<void>("insert into `" + db_game_info_table_ + "`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME, MAP_NAME, ERA_NAME, RELOAD, OBSERVERS, PUBLIC, PASSWORD, MAP_SOURCE_ADDON, MAP_VERSION, ERA_SOURCE_ADDON, ERA_VERSION) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+		uuid, game_id, version, name, map_name, era_name, reload, observers, is_public, has_password, map_source, map_version, era_source, era_version);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not insert into table `" + db_game_info_table_ + "`:" << e.message << std::endl;
 	}
@@ -470,10 +470,10 @@ void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const
 	}
 }
 
-void fuh::db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name){
+void fuh::db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name, const std::string& modification_source, const std::string& modification_version){
 	try {
-		prepared_statement<void>("insert into `" + db_game_modification_info_table_ + "`(INSTANCE_UUID, GAME_ID, MODIFICATION_NAME) values(?, ?, ?)",
-		uuid, game_id, modification_name);
+		prepared_statement<void>("insert into `" + db_game_modification_info_table_ + "`(INSTANCE_UUID, GAME_ID, MODIFICATION_NAME, SOURCE_ADDON, VERSION) values(?, ?, ?, ?, ?)",
+		uuid, game_id, modification_name, modification_source, modification_version);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not insert the game's modification information on table `" + db_game_modification_info_table_ + "`:" << e.message << std::endl;
 	}
