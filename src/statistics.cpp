@@ -644,7 +644,7 @@ void attack_context::defend_result(hit_result res, int cth, int damage, int drai
 void recruit_unit(const unit& u)
 {
 	stats& s = get_stats(get_team_save_id(u));
-	s.recruits[u.type().base_id()]++;
+	s.recruits[u.type().parent_id()]++;
 	s.recruit_cost += u.cost();
 }
 
@@ -665,7 +665,7 @@ void un_recall_unit(const unit& u)
 void un_recruit_unit(const unit& u)
 {
 	stats& s = get_stats(get_team_save_id(u));
-	s.recruits[u.type().base_id()]--;
+	s.recruits[u.type().parent_id()]--;
 	s.recruit_cost -= u.cost();
 }
 

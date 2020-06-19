@@ -348,7 +348,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const std::vector<std::string>& types, const unit_filter_args& args)
 			{
 				// If this unit is a variation itself then search in the base unit's variations.
-				const unit_type* const type = args.u.variation().empty() ? &args.u.type() : unit_types.find(args.u.type().base_id());
+				const unit_type* const type = args.u.variation().empty() ? &args.u.type() : unit_types.find(args.u.type().parent_id());
 				assert(type);
 
 				for(const std::string& variation_id : types) {

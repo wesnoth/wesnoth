@@ -60,7 +60,7 @@ void recruit_action::write(config & cfg) const
 
 	recruit_from.write(cfg.add_child("leader"));
 	config & child = cfg.child("unit");
-	child["type"] = u_type.base_id();
+	child["type"] = u_type.parent_id();
 }
 
 /**

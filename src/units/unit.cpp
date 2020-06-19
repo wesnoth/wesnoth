@@ -1519,8 +1519,8 @@ void unit::write(config& cfg, bool write_all) const
 
 	cfg["type"] = type_id();
 
-	if(type_id() != type().base_id()) {
-		cfg["parent_type"] = type().base_id();
+	if(type_id() != type().parent_id()) {
+		cfg["parent_type"] = type().parent_id();
 	}
 
 	// Support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
@@ -2258,7 +2258,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(effect["apply_to"] == "variation") {
 		variation_ = effect["name"].str();
-		const unit_type*  base_type = unit_types.find(type().base_id());
+		const unit_type*  base_type = unit_types.find(type().parent_id());
 		assert(base_type != nullptr);
 		advance_to(*base_type);
 		if(effect["heal_full"].to_bool(false)) {
@@ -2267,7 +2267,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if(effect["apply_to"] == "type") {
 		std::string prev_type = effect["prev_type"];
 		if(prev_type.empty()) {
-			prev_type = type().base_id();
+			prev_type = type().parent_id();
 		}
 		const std::string& new_type_id = effect["name"];
 		const unit_type* new_type = unit_types.find(new_type_id);
