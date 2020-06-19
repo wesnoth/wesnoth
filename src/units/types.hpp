@@ -128,7 +128,7 @@ public:
 	/// A variant on id() that is more descriptive, for use with message logging.
 	const std::string log_id() const { return id_ + debug_id_; }
 	/// The id of the original type from which this (variation) descended.
-	const std::string& base_id() const { return base_id_; }
+	const std::string& parent_id() const { return parent_id_; }
 	/// The id of this variation; empty if it's a gender variation or a base unit.
 	const std::string& variation_id() const { return variation_id_; }
 	// NOTE: this used to be a const object reference, but it messed up with the
@@ -270,11 +270,16 @@ private:
 	void operator=(const unit_type& o);
 
 	const config &cfg_;
+	friend class unit_type_data;
+	mutable config built_cfg_;
+	mutable bool has_cfg_build_;
 	mutable attack_list attacks_cache_;
 
 	std::string id_;
 	std::string debug_id_;  /// A suffix for id_, used when logging messages.
-	std::string base_id_;   /// The id of the top ancestor of this unit_type.
+	std::string parent_id_;   /// The id of the top ancestor of this unit_type.
+	/// from [base_unit]
+	std::string base_ids_;	
 	t_string type_name_;
 	t_string description_;
 	std::vector<t_string> special_notes_;

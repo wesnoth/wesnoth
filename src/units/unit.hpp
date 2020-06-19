@@ -352,7 +352,7 @@ public:
 	 * The id of this unit's type.
 	 *
 	 * If you are dealing with creating units (e.g. recruitment), this is not what you want, as a
-	 * variation can change this; use type().base_id() instead.
+	 * variation can change this; use type().parent_id() instead.
 	 */
 	const std::string& type_id() const;
 

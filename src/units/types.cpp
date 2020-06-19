@@ -54,7 +54,7 @@ unit_type::unit_type(const unit_type& o)
 	: cfg_(o.cfg_)
 	, id_(o.id_)
 	, debug_id_(o.debug_id_)
-	, base_id_(o.base_id_)
+	, parent_id_(o.parent_id_)
 	, type_name_(o.type_name_)
 	, description_(o.description_)
 	, hitpoints_(o.hitpoints_)
@@ -99,9 +99,11 @@ unit_type::unit_type(const unit_type& o)
 
 unit_type::unit_type(const config& cfg, const std::string& parent_id)
 	: cfg_(cfg)
+	, built_cfg_()
+	, has_cfg_build_()
 	, id_(cfg_.has_attribute("id") ? cfg_["id"].str() : parent_id)
 	, debug_id_()
-	, base_id_(!parent_id.empty() ? parent_id : id_)
+	, parent_id_(!parent_id.empty() ? parent_id : id_)
 	, type_name_(cfg_["name"].t_str())
 	, description_()
 	, hitpoints_(0)
@@ -142,7 +144,7 @@ unit_type::unit_type(const config& cfg, const std::string& parent_id)
 	, build_status_(NOT_BUILT)
 {
 	check_id(id_);
-	check_id(base_id_);
+	check_id(parent_id_);
 }
 
 unit_type::~unit_type()
@@ -347,7 +349,7 @@ void unit_type::build_help_index(
 
 		if(success) {
 			ut->second.debug_id_ = debug_id_ + " [" + var_id + "]";
-			ut->second.base_id_ = base_id_; // In case this is not id_.
+			ut->second.parent_id_ = parent_id_; // In case this is not id_.
 			ut->second.variation_id_ = var_id;
 			ut->second.build_help_index(mv_types, races, traits);
 		} else {
