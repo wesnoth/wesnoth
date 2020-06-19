@@ -1752,7 +1752,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			// 1.14.9 and earlier also use whether observers are allowed to determine if the replay should be public
 			// 1.14.10+ have a separate attribute for that
 			bool is_public = m["private_replay"].to_string() == "" ? m["observer"].to_bool() : !m["private_replay"].to_bool();
-			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), is_public, g.has_password());
+			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), is_public, g.has_password(), m["mp_scenario_addon_id"].to_string(), m["mp_scenario_addon_version"].to_string(), m["mp_era_addon_id"].to_string(), m["mp_era_addon_version"].to_string());
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
@@ -1776,10 +1776,12 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
 			}
 
-			const std::string mods = m["active_mods"].to_string();
-			if(mods != "") {
-				for(const std::string mod : utils::split(mods, ',')){
-					user_handler_->db_insert_modification_info(uuid_, g.db_id(), mod);
+			const std::vector<std::string> mods = utils::split(m["active_mods"].to_string());
+			const std::vector<std::string> mod_sources = utils::split(m["active_mod_versions"].to_string());
+			const std::vector<std::string> mod_versions = utils::split(m["active_mod_addon_ids"].to_string());
+			if(mods.size() != 0) {
+				for(unsigned int i = 0; i < mods.size(); i++){
+					user_handler_->db_insert_modification_info(uuid_, g.db_id(), mods[i], mod_sources[i], mod_versions[i]);
 				}
 			}
 		}

@@ -51,7 +51,11 @@ create table extra
 -- START_TIME: when the players enter the game and begin playing
 -- END_TIME: when the game ends, for any particular reason
 -- MAP_NAME: the mp_scenario attribute value
+-- MAP_SOURCE_ADDON: the add-on the map comes from
+-- MAP_VERSION: the version of the add-on the map comes from
 -- ERA_NAME: the mp_era attribute value
+-- ERA_SOURCE_ADDON: the add-on the era comes from
+-- ERA_VERSION: the version of the add-on the era comes from
 -- REPLAY_NAME: the file name of the replay create when the game is ended
 -- OOS: Y/N flag of whether the game encountered an OOS error
 create table game_info
@@ -63,7 +67,11 @@ create table game_info
     START_TIME       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     END_TIME         TIMESTAMP NULL DEFAULT NULL,
     MAP_NAME         VARCHAR(255) NOT NULL,
+    MAP_SOURCE_ADDON VARCHAR(255) NOT NULL DEFAULT '',
+    MAP_VERSION      VARCHAR(255) NOT NULL DEFAULT '',
     ERA_NAME         VARCHAR(255) NOT NULL,
+    ERA_SOURCE_ADDON VARCHAR(255) NOT NULL DEFAULT '',
+    ERA_VERSION      VARCHAR(255) NOT NULL DEFAULT '',
     REPLAY_NAME      VARCHAR(255),
     OOS              BIT(1) NOT NULL DEFAULT 0,
     RELOAD           BIT(1) NOT NULL,
@@ -102,5 +110,7 @@ create table game_modification_info
     INSTANCE_UUID     CHAR(36) NOT NULL,
     GAME_ID           INT UNSIGNED NOT NULL,
     MODIFICATION_NAME VARCHAR(255) NOT NULL,
+    SOURCE_ADDON      VARCHAR(255) NOT NULL DEFAULT '',
+    VERSION           VARCHAR(255) NOT NULL DEFAULT '',
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, MODIFICATION_NAME)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
