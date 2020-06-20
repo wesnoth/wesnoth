@@ -62,6 +62,7 @@
 #include "terrain/type_data.hpp"
 #include "tooltips.hpp"
 #include "units/unit.hpp"
+#include "units/types.hpp"
 #include "units/id.hpp"
 #include "whiteboard/manager.hpp"
 

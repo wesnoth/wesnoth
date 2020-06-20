@@ -22,8 +22,12 @@ struct map_location;
 class  team;
 class  unit;
 class  config;
-#include "units/types.hpp"
 
+#include "units/ptr.hpp"
+#include "units/race.hpp"
+#include "units/attack_type.hpp"
+
+#include <map/location.hpp>
 #include <string>
 #include <vector>
 

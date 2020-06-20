@@ -19,6 +19,7 @@
 
 #include "units/unit.hpp"
 #include "units/helper.hpp"
+#include "units/types.hpp"
 
 namespace unit_helper {
 

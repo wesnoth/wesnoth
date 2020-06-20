@@ -23,6 +23,7 @@
 #include "play_controller.hpp"
 #include "random.hpp"
 #include "units/unit.hpp"
+#include "units/alignment.hpp"
 #include "units/abilities.hpp"
 #include "resources.hpp"
 
@@ -552,8 +553,8 @@ int tod_manager::calculate_best_liminal_bonus(const std::vector<time_of_day>& sc
 	int fearless_lawful = 0;
 	std::set<int> bonuses;
 	for (const auto& tod : schedule) {
-		fearless_chaotic += generic_combat_modifier(tod.lawful_bonus, unit_type::ALIGNMENT::CHAOTIC, true, 0);
-		fearless_lawful += generic_combat_modifier(tod.lawful_bonus, unit_type::ALIGNMENT::LAWFUL, true, 0);
+		fearless_chaotic += generic_combat_modifier(tod.lawful_bonus, UNIT_ALIGNMENT::CHAOTIC, true, 0);
+		fearless_lawful += generic_combat_modifier(tod.lawful_bonus, UNIT_ALIGNMENT::LAWFUL, true, 0);
 		bonuses.insert(std::abs(tod.lawful_bonus));
 	}
 	int target = std::max(fearless_chaotic, fearless_lawful);
@@ -562,7 +563,7 @@ int tod_manager::calculate_best_liminal_bonus(const std::vector<time_of_day>& sc
 	for (int bonus : bonuses) {
 		int liminal_effect = 0;
 		for (const auto& tod : schedule) {
-			liminal_effect += generic_combat_modifier(tod.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false, bonus);
+			liminal_effect += generic_combat_modifier(tod.lawful_bonus, UNIT_ALIGNMENT::LIMINAL, false, bonus);
 		}
 		if (std::abs(target - liminal_effect) < delta) {
 			result = bonus;

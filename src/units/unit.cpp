@@ -47,6 +47,7 @@
 #include "units/filter.hpp"
 #include "units/formula_manager.hpp" // for unit_formula_manager
 #include "units/id.hpp"
+#include "units/types.hpp"
 #include "units/map.hpp"	   // for unit_map, etc
 #include "variable.hpp"		   // for vconfig, etc
 #include "game_version.hpp"
@@ -1836,6 +1837,18 @@ void unit::set_advancements(std::vector<config> advancements)
 		this->advancements_.push_back(new config());
 		this->advancements_.back().swap(advancement);
 	}
+}
+
+const std::string& unit::type_id() const
+{
+	return type_->id();
+}
+
+void unit::set_big_profile(const std::string& value)
+{
+	set_attr_changed(UA_PROFILE);
+	profile_ = value;
+	adjust_profile(profile_);
 }
 
 std::size_t unit::modification_count(const std::string& mod_type, const std::string& id) const

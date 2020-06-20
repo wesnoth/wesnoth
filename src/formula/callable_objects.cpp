@@ -22,6 +22,7 @@
 #include "units/attack_type.hpp"
 #include "units/formula_manager.hpp"
 #include "units/unit.hpp"
+#include "units/types.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_scripting_formula("scripting/formula");

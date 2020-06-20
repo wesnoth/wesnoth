@@ -20,6 +20,7 @@
 #include "map/map.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
+#include "units/type_error.hpp"
 #include "units/map.hpp"
 #include "resources.hpp"
 #include "gettext.hpp"
@@ -286,7 +287,7 @@ protected:
 			try {
 				uc.add_unit(*u);
 			}
-			catch (const unit_type::error& e) {
+			catch (const unit_type_error& e) {
 				ERR_NG_TC << e.what() << "\n";
 			}
 		}

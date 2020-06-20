@@ -53,6 +53,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
+#include "units/types.hpp"
 #include "whiteboard/manager.hpp"
 
 namespace ai {

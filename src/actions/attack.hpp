@@ -23,13 +23,14 @@
 
 #include "ai/lua/aspect_advancements.hpp"
 #include "attack_prediction.hpp"
-#include "units/types.hpp"
+#include "units/alignment.hpp"
 
 #include <vector>
 
 struct map_location;
 class team;
 struct time_of_day;
+class unit_type;
 class unit;
 class unit_map;
 class gamemap;
@@ -286,7 +287,7 @@ int under_leadership(const unit &u, const map_location& loc, const_attack_ptr we
 int combat_modifier(const unit_map& units,
 		const gamemap& map,
 		const map_location& loc,
-		unit_type::ALIGNMENT alignment,
+		UNIT_ALIGNMENT alignment,
 		bool is_fearless);
 
 /**
@@ -294,14 +295,14 @@ int combat_modifier(const unit_map& units,
  * due to the current time of day.
  */
 int combat_modifier(const time_of_day& effective_tod,
-		unit_type::ALIGNMENT alignment,
+		UNIT_ALIGNMENT alignment,
 		bool is_fearless);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by
  * due to a given lawful_bonus.
  */
-int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment, bool is_fearless, int max_liminal_bonus);
+int generic_combat_modifier(int lawful_bonus, UNIT_ALIGNMENT alignment, bool is_fearless, int max_liminal_bonus);
 /**
  * Function to check if an attack will satisfy the requirements for backstab.
  * Input:

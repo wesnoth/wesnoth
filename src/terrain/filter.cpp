@@ -27,6 +27,7 @@
 #include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/filter.hpp"
+#include "units/alignment.hpp"
 #include "variable.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
@@ -275,15 +276,15 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		if(!tod_type.empty()) {
 			const std::vector<std::string>& vals = utils::split(tod_type);
 			if(tod.lawful_bonus<0) {
-				if(std::find(vals.begin(),vals.end(),unit_type::ALIGNMENT::enum_to_string(unit_type::ALIGNMENT::CHAOTIC)) == vals.end()) {
+				if(std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::CHAOTIC)) == vals.end()) {
 					return false;
 				}
 			} else if(tod.lawful_bonus>0) {
-				if(std::find(vals.begin(),vals.end(),unit_type::ALIGNMENT::enum_to_string(unit_type::ALIGNMENT::LAWFUL)) == vals.end()) {
+				if(std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::LAWFUL)) == vals.end()) {
 					return false;
 				}
-			} else if(std::find(vals.begin(),vals.end(),unit_type::ALIGNMENT::enum_to_string(unit_type::ALIGNMENT::NEUTRAL)) == vals.end() &&
-				std::find(vals.begin(),vals.end(),unit_type::ALIGNMENT::enum_to_string(unit_type::ALIGNMENT::LIMINAL)) == vals.end()) {
+			} else if(std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::NEUTRAL)) == vals.end() &&
+				std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::LIMINAL)) == vals.end()) {
 				return false;
 			}
 		}

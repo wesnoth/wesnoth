@@ -38,6 +38,7 @@
 #include "color.hpp"
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
+#include "units/types.hpp"
 #include "pathfind/pathfind.hpp"
 
 static lg::log_domain log_formula_ai("ai/engine/fai");

@@ -80,6 +80,7 @@
 #include "terrain/builder.hpp"
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
+#include "units/types.hpp"
 #include "whiteboard/manager.hpp"
 #include "sound.hpp"
 

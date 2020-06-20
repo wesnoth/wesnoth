@@ -14,9 +14,13 @@
 
 #pragma once
 
+#include "movetype.hpp"
+
 #include "units/id.hpp"
 #include "units/ptr.hpp"
-#include "units/types.hpp"
+#include "units/attack_type.hpp"
+#include "units/race.hpp"
+#include "units/alignment.hpp"
 
 #include <bitset>
 #include <boost/dynamic_bitset_fwd.hpp>
@@ -350,10 +354,7 @@ public:
 	 * If you are dealing with creating units (e.g. recruitment), this is not what you want, as a
 	 * variation can change this; use type().base_id() instead.
 	 */
-	const std::string& type_id() const
-	{
-		return type_->id();
-	}
+	const std::string& type_id() const;
 
 	/** Gets the translatable name of this unit's type. */
 	const t_string& type_name() const
@@ -465,13 +466,13 @@ public:
 	 *
 	 * This affects the time of day during which this unit's attacks do the most damage.
 	 */
-	unit_type::ALIGNMENT alignment() const
+	UNIT_ALIGNMENT alignment() const
 	{
 		return alignment_;
 	}
 
 	/** Sets the alignment of this unit. */
-	void set_alignment(unit_type::ALIGNMENT alignment)
+	void set_alignment(UNIT_ALIGNMENT alignment)
 	{
 		set_attr_changed(UA_ALIGNMENT);
 		alignment_ = alignment;
@@ -599,12 +600,8 @@ public:
 	 */
 	std::string big_profile() const;
 
-	void set_big_profile(const std::string& value)
-	{
-		set_attr_changed(UA_PROFILE);
-		profile_ = value;
-		adjust_profile(profile_);
-	}
+	void set_big_profile(const std::string& value);
+
 	/** Whether this unit can recruit other units - ie, are they a leader unit. */
 	bool can_recruit() const
 	{
@@ -1822,7 +1819,7 @@ private:
 	int recall_cost_;
 	bool canrecruit_;
 	std::vector<std::string> recruit_list_;
-	unit_type::ALIGNMENT alignment_;
+	UNIT_ALIGNMENT alignment_;
 
 	std::string flag_rgb_;
 	std::string image_mods_;

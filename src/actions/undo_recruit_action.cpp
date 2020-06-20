@@ -21,6 +21,7 @@
 #include "replay.hpp"
 #include "units/map.hpp"
 #include "units/unit.hpp"
+#include "units/types.hpp"
 #include "statistics.hpp"
 #include "log.hpp"
 #include "game_display.hpp"

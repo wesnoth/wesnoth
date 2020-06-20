@@ -59,6 +59,7 @@
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
 #include "units/filter.hpp"
+#include "units/types.hpp"
 #include "wml_exception.hpp"
 #include "whiteboard/manager.hpp"
 #include "deprecation.hpp"

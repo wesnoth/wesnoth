@@ -19,6 +19,7 @@
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
 #include "units/unit.hpp"
+#include "units/types.hpp"
 #include "units/attack_type.hpp"
 #include "utils/const_clone.hpp"
 

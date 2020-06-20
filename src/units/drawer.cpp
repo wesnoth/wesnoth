@@ -29,6 +29,7 @@
 #include "units/animation.hpp"
 #include "units/animation_component.hpp"
 #include "units/frame.hpp"
+#include "units/types.hpp"
 
 // Map of different energy bar surfaces and their dimensions.
 static std::map<surface, SDL_Rect> energy_bar_rects;

@@ -24,6 +24,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "team.hpp" // Needed to get team save_id
 #include "units/unit.hpp"
+#include "units/types.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

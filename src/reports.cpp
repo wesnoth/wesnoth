@@ -34,6 +34,7 @@
 #include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/helper.hpp"
+#include "units/types.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <cassert>

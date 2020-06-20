@@ -20,8 +20,10 @@
 #include "movetype.hpp"
 #include "units/race.hpp"
 #include "units/attack_type.hpp"
-#include "game_errors.hpp"
+#include "units/alignment.hpp"
+#include "units/type_error.hpp"
 
+#include <memory>
 #include <array>
 #include <map>
 #include <set>
@@ -42,14 +44,7 @@ typedef std::map<std::string, movetype> movement_type_map;
 class unit_type
 {
 public:
-	class error : public game::game_error
-	{
-	public:
-		error(const std::string& msg)
-			: game::game_error(msg)
-		{
-		}
-	};
+	using error = unit_type_error;
 	/**
 	 * Creates a unit type for the given config, but delays its build
 	 * till later.
@@ -172,12 +167,7 @@ public:
 
 	int experience_needed(bool with_acceleration=true) const;
 
-	MAKE_ENUM (ALIGNMENT,
-		(LAWFUL, N_("lawful"))
-		(NEUTRAL, N_("neutral"))
-		(CHAOTIC, N_("chaotic"))
-		(LIMINAL, N_("liminal"))
-	)
+	using ALIGNMENT = UNIT_ALIGNMENT;
 
 	ALIGNMENT alignment() const { return alignment_; }
 	static std::string alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE);

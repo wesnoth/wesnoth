@@ -16,7 +16,10 @@
 #include "undo_action.hpp"
 #include "shroud_clearing_action.hpp"
 #include "units/ptr.hpp"
-#include "units/types.hpp"
+
+#include "map/location.hpp"
+
+class unit_type;
 
 namespace actions
 {

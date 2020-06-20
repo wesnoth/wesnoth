@@ -24,6 +24,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "units/unit.hpp"
+#include "units/types.hpp"
 #include "help/help.hpp"
 
 #include "utils/functional.hpp"
