@@ -43,6 +43,10 @@ typedef std::map<std::string, movetype> movement_type_map;
  */
 class unit_type
 {
+private:
+	struct defaut_ctor_t {};
+	unit_type(defaut_ctor_t, const config& cfg, const std::string & parent_id);
+
 public:
 	using error = unit_type_error;
 	/**
@@ -52,7 +56,15 @@ public:
 	 *       storage, that is, a child of unit_type_data::unit_cfg.
 	 */
 	explicit unit_type(const config &cfg, const std::string & parent_id="");
+	/**
+	 * Creates a unit type for the given config, but delays its build
+	 * till later.
+	 * @note @a cfg is copied
+	 */
+	explicit unit_type(config && cfg, const std::string & parent_id="");
+	unit_type();
 	unit_type(const unit_type& o);
+	unit_type(unit_type&& o) = default;
 
 	~unit_type();
 
@@ -104,7 +116,7 @@ public:
 
 	/// Returns two iterators pointing to a range of AMLA configs.
 	config::const_child_itors modification_advancements() const
-	{ return cfg_.child_range("advancement"); }
+	{ return get_cfg().child_range("advancement"); }
 
 	/**
 	 * Returns a gendered variant of this unit_type.
@@ -155,9 +167,9 @@ public:
 	const std::string& icon() const { return icon_; }
 	const std::string &small_profile() const { return small_profile_; }
 	const std::string &big_profile() const { return profile_; }
-	std::string halo() const { return cfg_["halo"]; }
-	std::string ellipse() const { return cfg_["ellipse"]; }
-	bool generate_name() const { return cfg_["generate_name"].to_bool(true); }
+	std::string halo() const { return get_cfg()["halo"]; }
+	std::string ellipse() const { return get_cfg()["ellipse"]; }
+	bool generate_name() const { return get_cfg()["generate_name"].to_bool(true); }
 	const std::vector<unit_animation>& animations() const;
 
 	const std::string& flag_rgb() const;
@@ -211,13 +223,13 @@ public:
 	{ return possible_traits_.child_range("trait"); }
 
 	const config& abilities_cfg() const
-	{ return cfg_.child_or_empty("abilities"); }
+	{ return get_cfg().child_or_empty("abilities"); }
 
 	config::const_child_itors advancements() const
-	{ return cfg_.child_range("advancement"); }
+	{ return get_cfg().child_range("advancement"); }
 
 	config::const_child_itors events() const
-	{ return cfg_.child_range("event"); }
+	{ return get_cfg().child_range("event"); }
 
 	bool has_random_traits() const;
 
@@ -246,14 +258,21 @@ public:
 	bool show_variations_in_help() const;
 
 	/// Returns the ID of this type's race without the need to build the type.
-	std::string race_id() const { return cfg_["race"]; } //race_->id(); }
+	std::string race_id() const { return get_cfg()["race"]; } //race_->id(); }
 	/// Never returns nullptr, but may point to the null race.
 	/// Requires building to the HELP_INDEXED status to get the correct race.
 	const unit_race* race() const { return race_; }
 	bool hide_help() const;
 	bool do_not_list() const { return do_not_list_; }
 
-	const config &get_cfg() const { return cfg_; }
+	const config &get_cfg() const
+	{
+		if(built_cfg_) {
+			return *built_cfg_;
+		}
+		assert(cfg_);
+		return *cfg_;
+	}
 
 	/// Gets resistance while considering custom WML abilities.
 	/// Attention: Filters in resistance-abilities will be ignored.
@@ -267,11 +286,21 @@ private:
 	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
 
 private:
+	config& writable_cfg() {
+		if(!built_cfg_) {
+			built_cfg_ = std::make_unique<config>(*cfg_);
+		}
+		return *built_cfg_;
+	}
+	void fill_variations();
+	void fill_variations_and_gender();
+	std::unique_ptr<unit_type> create_sub_type(const config& var_cfg, bool default_inherit);
+
 	void operator=(const unit_type& o);
 
-	const config &cfg_;
+	const config* cfg_;
 	friend class unit_type_data;
-	mutable config built_cfg_;
+	mutable std::unique_ptr<config> built_cfg_;
 	mutable bool has_cfg_build_;
 	mutable attack_list attacks_cache_;
 
@@ -279,7 +308,7 @@ private:
 	std::string debug_id_;  /// A suffix for id_, used when logging messages.
 	std::string parent_id_;   /// The id of the top ancestor of this unit_type.
 	/// from [base_unit]
-	std::string base_ids_;	
+	std::string base_unit_id_;	
 	t_string type_name_;
 	t_string description_;
 	std::vector<t_string> special_notes_;
@@ -347,7 +376,7 @@ public:
 	const unit_type_map &types() const { return types_; }
 	const race_map &races() const { return races_; }
 	const config::const_child_itors traits() const { return unit_cfg_->child_range("trait"); }
-	void set_config(config &cfg);
+	void set_config(const config &cfg);
 
 	/// Finds a unit_type by its id() and makes sure it is built to the specified level.
 	const unit_type *find(const std::string &key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
@@ -370,6 +399,8 @@ private:
 	void read_hide_help(const config &cfg);
 
 	void clear();
+
+	void apply_base_unit(unit_type& type, std::vector<std::string>& base_tree);
 
 	mutable unit_type_map types_;
 	movement_type_map movement_types_;
