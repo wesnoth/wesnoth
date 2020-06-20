@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2019-09-23 22:31+0800\n"
+"PO-Revision-Date: 2020-06-15 16:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -1219,7 +1219,7 @@ msgstr "注重防守。"
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:179
 msgid "Focus on defeating..."
-msgstr "注重击败……"
+msgstr "专注于击败……"
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:180
@@ -1262,7 +1262,7 @@ msgstr "后退"
 #. [protect]
 #: data/core/macros/ai_controller.cfg:315
 msgid "Focus on protecting..."
-msgstr "注重保护……"
+msgstr "专注于保护……"
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:316
@@ -4631,7 +4631,7 @@ msgstr "防"
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:408
 msgid "statuspanel^lvl"
-msgstr "Lv"
+msgstr "等级"
 
 #. [tip]
 #: data/tips.cfg:4
@@ -5399,8 +5399,8 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
-"有些高等级单位拥有无可企及的能力，例如<b>领导</b>，<i>疗毒</I>，或者<i>夜遁</"
-"I>。在战役早期就获得这些单位，可以给战局带来极大变化。"
+"有些高等级单位拥有无可企及的能力，例如<b>领导</b>，<i>疗毒</i>，或者<i>夜遁</"
+"i>。在战役早期就获得这些单位，可以给战局带来极大变化。"
 
 #. [tip]
 #: data/tips.cfg:262
@@ -5417,9 +5417,9 @@ msgstr ""
 #. Translate the word "Flight" as a collective noun for drakes
 #: data/tips.cfg:268
 #, fuzzy
-#| msgid "<i>― Great Mage Delfador, 516YW</i>"
+#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<b>——大法师德法多，韦元516年</b>"
+msgstr "<b>——戈伦群落中的凡克，韦元6年</b>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5428,6 +5428,8 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"如果一个单位位于两个友方阵营旁边，则在这两个阵营的回合中，该单位都会得到治"
+"疗。这样一来，相比其他方法来说，单位就能更快得到治疗。"
 
 #. [tip]
 #: data/tips.cfg:272
@@ -5472,11 +5474,11 @@ msgstr "你没有首领，不能进行召回。"
 
 #: src/actions/create.cpp:342
 msgid "None of your leaders are able to recall that unit."
-msgstr "你的首领都不能召回该单位。"
+msgstr "你的首领都不能召回那个单位。"
 
 #: src/actions/create.cpp:346
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr "你必须让一位能够召回该单位的首领站在城堡主楼上。"
+msgstr "你必须让一位能够召回那个单位的首领站在城堡主楼上。"
 
 #: src/actions/create.cpp:350
 msgid "There are no vacant castle tiles in which to recall the unit."
@@ -5491,10 +5493,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "你没有首领，不能进行征募。"
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "你的首领都不能征募该单位。"
+msgstr "你的首领都不能征募此单位。"
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -6744,34 +6744,24 @@ msgid "Only available during a scenario."
 msgstr "仅在场景中可用。"
 
 #: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "时段日程："
+msgstr "时段日程"
 
 #: src/help/help_impl.cpp:384
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "守序单位："
+msgstr "守序加成："
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "中立单位："
+msgstr "中立加成："
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "混沌单位："
+msgstr "混沌加成："
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "边缘单位："
+msgstr "边缘加成："
 
 #: src/help/help_impl.cpp:388
 msgid "Schedule"
@@ -7013,72 +7003,53 @@ msgid "You have no units available to recruit."
 msgstr "你没有可供征募的单位。"
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "未征募任何单位"
+msgstr "未征募任何单位。"
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "内部错误。请将此情况作为bug上报！详细信息：\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "现在你不能征募$unit_type_name|。"
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "你没有足够的金币，不能征募该单位"
+msgstr "你没有足够的金币，不能征募此单位"
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "你没有足够的金币，不能征募该单位"
+msgstr "你没有足够的金币，不能征募此单位。"
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "你与你的士兵分开了，因此不能召回他们"
+msgstr "你与你的士兵分开了，因此不能召回他们。"
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
-"没有可供召回的部队\n"
+"没有可供召回的部队。\n"
 "（你在上一幕场景中必须有生还的老兵）"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "你目前不能在高亮位置进行召回"
+msgstr "你目前不能在高亮位置进行召回。"
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "未召回任何单位"
+msgstr "未召回任何单位。"
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "要召回此单位，你至少需要拥有1枚金币"
-msgstr[1] "要召回此单位，你至少需要拥有$cost|枚金币"
+msgstr[0] "要召回一个单位，你必须至少拥有1枚金币。"
+msgstr[1] "要召回此单位，你必须至少拥有$cost|枚金币。"
 
 #: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
@@ -7174,14 +7145,12 @@ msgstr "对某一阵营开启/关闭空闲状态。"
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1234
-#, fuzzy
-#| msgid "command_idle^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<阵营> [on/off]]"
 
 #: src/menu_events.cpp:1235
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "改变游戏中的界面主题。"
 
 #: src/menu_events.cpp:1237
 msgid "<side> <nickname>"
@@ -7325,12 +7294,10 @@ msgstr "显示一幕场景变量。"
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1284
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
-msgstr "修改一个单位变量。（只支持顶层的键值。）"
+msgstr "修改一个单位变量。（只支持顶层的键值，而前进步数=<数字>。）"
 
 #: src/menu_events.cpp:1291
 msgid "Discover all units in help."
@@ -7342,7 +7309,7 @@ msgstr "从帮助中清除所有已发现的单位。"
 
 #: src/menu_events.cpp:1293
 msgid "<unit type id>"
-msgstr ""
+msgstr "<单位类型ID>"
 
 #: src/menu_events.cpp:1293
 msgid "Create a unit."
@@ -7358,17 +7325,15 @@ msgstr "为当前玩家开/关战场黑幕。"
 
 #: src/menu_events.cpp:1296
 msgid "<amount>"
-msgstr ""
+msgstr "<数量>"
 
 #: src/menu_events.cpp:1296
 msgid "Give gold to the current player."
 msgstr "给当前玩家金币。"
 
 #: src/menu_events.cpp:1297
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<昵称>"
+msgstr "<事件名称>"
 
 #: src/menu_events.cpp:1297
 msgid "Fire a game event."
@@ -8017,13 +7982,6 @@ msgid "Units"
 msgstr "单位"
 
 #: src/reports.cpp:1443
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. It is equal to "
-#| "the number of unit levels not supported by villages. The second is the "
-#| "total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8044,10 +8002,6 @@ msgid "Net Income"
 msgstr "净收入"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid ""
-#| "The net amount of gold you gain or lose each turn, taking into account "
-#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8574,11 +8528,6 @@ msgstr "隐藏$player的计划"
 msgid "Whiteboard Options"
 msgstr "白板选项"
 
-#, fuzzy
-#~| msgid "<i>― Kai Laudiss, 623YW</i>"
-#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-#~ msgstr "<b>——劳迪斯凯王，韦元623年</b>"
-
 #~ msgid "Graphics scaling options"
 #~ msgstr "图像缩放选项"
 
@@ -8654,38 +8603,62 @@ msgstr "白板选项"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>（提前过关奖励）</small>"
 
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "边缘单位只有在晨昏时段才能发挥出最大潜能。\n"
+#~ "\n"
+#~ "昼间：−25%伤害\n"
+#~ "夜间：−25%伤害"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr "没有可用于选定的时代、游戏或模组的自定义选项。"
+
+#~ msgid "Defaults"
+#~ msgstr "默认"
+
+#~ msgid "Connected Players"
+#~ msgstr "已连线玩家"
+
 #~ msgid "(Note: You should use $replacement instead in new code)"
 #~ msgstr "（注：在新代码中，你应当使用$replacement|作为替代）"
 
-#~ msgid "theme^Classic"
-#~ msgstr "经典"
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "以密码***注册，未使用电子邮件地址"
 
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "经典的，1.12以前的版本所使用的主题"
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "以密码***和电子邮件地址$email|注册"
 
-#~ msgid "gold"
-#~ msgstr "金币"
+#~ msgid "dropping your username"
+#~ msgstr "正在废弃你的用户名"
 
-#~ msgid "villages"
-#~ msgstr "村庄"
+#~ msgid "setting $var to $value"
+#~ msgstr "正在设置$var|为$value"
 
-#~ msgid "units"
-#~ msgstr "单位"
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<密码> <电子邮件（可选）>"
 
-#~ msgid "upkeep"
-#~ msgstr "维护费用"
+#~ msgid "Register your nickname"
+#~ msgstr "注册你的昵称"
 
-#~ msgid "income"
-#~ msgstr "收入"
+#~ msgid "Drop your nickname."
+#~ msgstr "废弃你的昵称。"
 
-#~ msgid "statuspanel^level"
-#~ msgstr "等級"
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr "更新你的昵称的详细信息。可以录入的详细信息种类请参见‘/details’。"
 
-#~ msgid "statuspanel^moves"
-#~ msgstr "手"
+#~ msgid "<detail> <value>"
+#~ msgstr "<详细信息类型> <值>"
 
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "地形防御"
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr ""
+#~ "你可以为你注册好的昵称录入详细信息，此命令请求这些可用的详细信息类型列表。"
 
 #~ msgid "No Saved Games"
 #~ msgstr "没有游戏存档"
@@ -8762,14 +8735,14 @@ msgstr "白板选项"
 #~ msgid "unit help^Name"
 #~ msgstr "名称"
 
+#~ msgid "Type"
+#~ msgstr "类型"
+
 #~ msgid "Strikes"
 #~ msgstr "打击效果"
 
 #~ msgid "Range"
 #~ msgstr "射程"
-
-#~ msgid "Type"
-#~ msgstr "类型"
 
 #~ msgid "Special"
 #~ msgstr "特攻"
@@ -8804,70 +8777,8 @@ msgstr "白板选项"
 #~ msgid "Jamming Cost"
 #~ msgstr "干扰消耗"
 
-#~ msgid "Side:"
-#~ msgstr "阵营："
-
-#, fuzzy
-#~| msgid "income"
-#~ msgid "Income"
-#~ msgstr "收入"
-
-#~ msgid " replay"
-#~ msgstr " 游戏录像"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "边缘单位只有在晨昏时段才能发挥出最大潜能。\n"
-#~ "\n"
-#~ "昼间：−25%伤害\n"
-#~ "夜间：−25%伤害"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr "没有可用于选定的时代、游戏或模组的自定义选项。"
-
-#~ msgid "Defaults"
-#~ msgstr "默认"
-
-#~ msgid "Connected Players"
-#~ msgstr "已连线玩家"
-
-#~ msgid "registering with password *** and no email address"
-#~ msgstr "以密码***注册，未使用电子邮件地址"
-
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr "以密码***和电子邮件地址$email|注册"
-
-#~ msgid "dropping your username"
-#~ msgstr "正在废弃你的用户名"
-
-#~ msgid "setting $var to $value"
-#~ msgstr "正在设置$var|为$value"
-
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<密码> <电子邮件（可选）>"
-
-#~ msgid "Register your nickname"
-#~ msgstr "注册你的昵称"
-
-#~ msgid "Drop your nickname."
-#~ msgstr "废弃你的昵称。"
-
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr "更新你的昵称的详细信息。可以录入的详细信息种类请参见‘/details’。"
-
-#~ msgid "<detail> <value>"
-#~ msgstr "<详细信息类型> <值>"
-
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr ""
-#~ "你可以为你注册好的昵称录入详细信息，此命令请求这些可用的详细信息类型列表。"
-
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr "无法托管本地AI阵营：“$side|”。"
+
+#~ msgid "Side:"
+#~ msgstr "阵营："

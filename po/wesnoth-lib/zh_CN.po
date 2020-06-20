@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2019-07-27 16:38+0800\n"
+"PO-Revision-Date: 2020-06-15 16:26+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
@@ -737,7 +737,6 @@ msgstr "岩石洞穴"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:1033
-#, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -755,8 +754,8 @@ msgstr ""
 "如散乱的地下洞窟，有助于防御，但大多数单位都难以在其中行动。只有洞穴的住民，"
 "例如矮人和巨魔，才能在此种地势上不受阻碍地行动。\n"
 "\n"
-"大多数单位在岩石洞穴中有50%的防御率，而骑兵被限制在40%。由于矮人身材矮小，因"
-"此他们在岩石洞穴中享有60%的防御率。\n"
+"大多数单位在岩石洞穴中有大约50%的防御率，而骑兵被限制在40%。由于矮人身材矮"
+"小，因此他们在岩石洞穴中享有60%的防御率。\n"
 "\n"
 "有时洞穴会被<ref>dst='terrain_illuminated_cave' text='照亮'</ref>。"
 
@@ -1722,7 +1721,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2908
-#, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1747,8 +1745,9 @@ msgstr ""
 "身材，可以穿过许多其他种族无法穿越的障碍。有时洞穴会被"
 "<ref>dst='terrain_illuminated_cave' text='照亮'</ref>。\n"
 "\n"
-" 一小部分的地下世界会被从地表射下来的光线照亮。这为守序单位提供攻击加成，并且"
-"移除混沌单位的攻击加成。在其它所有方面，此地形的效果都与普通洞穴地形相同。\n"
+" 一小部分的地下世界会被从地表射入黑暗的光线照亮。这为守序单位提供攻击加成，并"
+"且移除混沌单位的攻击加成。在其它所有方面，此地形的效果都与普通洞穴地形相"
+"同。\n"
 "\n"
 "大多数单位在洞穴中可获得20%到40%的防御率，而矮人则拥有50%。"
 
@@ -3734,7 +3733,7 @@ msgstr "管理员控制"
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
 msgid "Reason:"
-msgstr ""
+msgstr "原因："
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:198
@@ -3758,9 +3757,8 @@ msgstr "剔出+封禁"
 
 #. [button]: id=stopgame
 #: data/gui/window/lobby_player_info.cfg:274
-#, fuzzy
 msgid "Stop Game"
-msgstr "载入游戏"
+msgstr "停止游戏"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
@@ -3931,15 +3929,13 @@ msgstr "当新的回合开始时"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
 msgid "Game created:"
-msgstr "游戏数据："
+msgstr "游戏已创建："
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
 msgid "When a new game has been created"
-msgstr "当新的回合开始时"
+msgstr "当创建了新的游戏时"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
@@ -4199,14 +4195,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "对失步错误进行更严格的检测"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "保存录像"
+msgstr "私有回放"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "回放是否公开"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -5357,7 +5351,7 @@ msgstr "召回单位"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
 msgid "Search for unit name, unit type name, unit level, or trait."
-msgstr ""
+msgstr "搜索单位名称、单位类型名称、单位级别或特质。"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -5402,10 +5396,8 @@ msgid "Details:"
 msgstr "详细："
 
 #: src/build_info.cpp:271
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
-msgstr "PNG截屏"
+msgstr "JPEG截屏"
 
 #: src/build_info.cpp:278
 msgid "feature^Lua console completion"
@@ -5922,23 +5914,19 @@ msgstr "没有可用的武器"
 
 #: src/gui/dialogs/attack_predictions.cpp:194
 msgid "Defender resistance vs"
-msgstr "防守方抗性"
+msgstr "防守方抗性 vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:196
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "进攻方弱点"
+msgstr "防守方弱点 vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:200
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "防守方抗性"
+msgstr "进攻方抗性 vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:202
 msgid "Attacker vulnerability vs"
-msgstr "进攻方弱点"
+msgstr "进攻方弱点 vs"
 
 #: src/gui/dialogs/campaign_selection.cpp:324
 #: src/gui/dialogs/multiplayer/lobby.cpp:465
@@ -6635,11 +6623,11 @@ msgstr "选择测试"
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
-msgstr ""
+msgstr "不能召回此单位，因为到此时您的计划中的金币将不足。"
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "不能召回此单位，因为你的金币不足。"
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -7136,22 +7124,16 @@ msgid "Next Move"
 msgstr "下一手"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "全地图"
+msgstr "视图：全地图"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "每一团队"
+msgstr "视图：每一团队"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "人类团队"
+msgstr "视图：人类团队"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
@@ -7864,8 +7846,8 @@ msgstr ""
 #~ msgid "No matching widget found for scaling option"
 #~ msgstr "未找到缩放选项对应的界面构件"
 
-#~ msgid "&#9679;"
-#~ msgstr "&#9679;"
+#~ msgid "The selected game can not be created."
+#~ msgstr "无法创建选定的游戏。"
 
 #~ msgid "No server has been defined."
 #~ msgstr "没有已定义的服务器。"

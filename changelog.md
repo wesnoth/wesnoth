@@ -11,8 +11,9 @@
      * Embellished all remaining maps (S1, S2, S6b, S8, S11)
      * Finished Tauroch Rider line sprites, added riderless Tauroch standalone unit
  ### Language and i18n
-   * Updated translations: British English, Chinese (Traditional), Czech, Esperanto, French,
-     Hungarian, Italian, Japanese, Polish, Portuguese (Brazil), Russian, Spanish, Swedish
+   * Updated translations: British English, Chinese (Simplified), Chinese (Traditional),
+     Czech, Esperanto, French, Hungarian, Italian, Japanese, Polish, Portuguese (Brazil),
+     Russian, Spanish, Swedish
  ### Units
    * New Dunefolk skirmisher branch (Falconer)
    * Dragonguard HP increased from 59 to 63
