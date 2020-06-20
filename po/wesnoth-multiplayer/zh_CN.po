@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-06-13 01:49 UTC\n"
-"PO-Revision-Date: 2019-07-27 16:43+0800\n"
+"PO-Revision-Date: 2020-06-15 16:28+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -412,8 +412,6 @@ msgstr "南军"
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:155
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat the enemy leader"
 msgstr "击败敌方首领"
 
@@ -2217,55 +2215,43 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:87
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Team 3"
-msgstr "团队1"
+msgstr "团队3"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:98
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Team 4"
-msgstr "团队1"
+msgstr "团队4"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:119
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Monsters"
-msgstr "中军"
+msgstr "怪物"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:229
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat all enemy leaders"
-msgstr "击败敌方首领"
+msgstr "击败所有敌方首领"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:246
 msgid "Defeat all monsters"
-msgstr ""
+msgstr "击败所有怪物"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:264
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat the enemy leaders"
 msgstr "击败敌方首领"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:269
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of all your units"
-msgstr "你队首领全部死亡"
+msgstr "你的单位全部死亡"
 
 #. [note]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:274
 msgid "You cannot recruit units."
-msgstr ""
+msgstr "你不能征募单位。"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-06-13 01:49 UTC\n"
-"PO-Revision-Date: 2019-09-23 22:33+0800\n"
+"PO-Revision-Date: 2020-06-15 16:14+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #. [scenario]: id=11_Descent_into_Darkness
@@ -70,6 +70,8 @@ msgid ""
 "sacrificing his own soul in the process.\n"
 "\n"
 msgstr ""
+"北部边境城镇帕辛每年都会遭到邻近的兽人部落的袭击。马林·凯沙，一个被放逐的法"
+"师，试图保卫自己的家园，并不择手段报复兽人，哪怕这意味着献祭自己的灵魂。\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
@@ -78,15 +80,13 @@ msgstr "（中等级别，12幕场景。）"
 
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:28
-#, fuzzy
 msgid "Original Campaign Design"
-msgstr "战役设计"
+msgstr "原战役设计"
 
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:34
-#, fuzzy
 msgid "Latest Campaign Revision"
-msgstr "战役设计"
+msgstr "最新战役修订"
 
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:40
@@ -96,7 +96,7 @@ msgstr "美工和图像设计"
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:55
 msgid "Dialogue Comments and Revisions"
-msgstr ""
+msgstr "对话注释和修订"
 
 #. [scenario]: id=01_Saving_Parthyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:5
@@ -132,6 +132,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:37
+#, fuzzy
 msgid ""
 "When Malin was ten, a passing mage sensed strong magical abilities in the "
 "boy and suggested he be sent to the Isle of Alduin for training in the "
@@ -139,9 +140,13 @@ msgid ""
 "magic from basic control over the elements, to the mystic arts and scrying, "
 "to alchemy and simple medicine."
 msgstr ""
+"当马林十岁的时候，一个过世的法师感觉到这个男孩有很强的魔法能力，并建议把他送"
+"到阿尔杜因岛接受魔法艺术的训练。马林在那里学习了八年，学习了各种魔法，从对元"
+"素的基本控制，到神秘的艺术和切工，到炼金术和简单的医学。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:41
+#, fuzzy
 msgid ""
 "Although his life on Alduin was luxurious and peaceful, Malin found the "
 "teachings of the scholarly mages to be too philosophical for his tastes. His "
@@ -151,9 +156,14 @@ msgid ""
 "of failed experiments, one of which took the life of a fellow student. For "
 "his transgressions, he was expelled."
 msgstr ""
+"虽然他在阿尔杜因的生活是豪华与和平的，马林发现学术法师的教导太哲学，他的口"
+"味。他的思想又回到了帕廷，在那里蛮力，而不是理论推理，是驱赶兽人所必需的。随"
+"着时间的推移，马林开始自己研究新的魔法，但他缺乏经验导致了一系列失败的实验，"
+"其中之一夺走了一位同学的生命。因为他的违法行为，他被开除。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:45
+#, fuzzy
 msgid ""
 "When Malin returned to Parthyn, orcs had already begun to attack the city. "
 "Although he tried his best to fight them off, the raids were far more "
@@ -161,6 +171,9 @@ msgid ""
 "night, a particularly powerful strike stormed the city and Malin could only "
 "watch as his father was cut down by one of the savage orcish warriors."
 msgstr ""
+"当马林回到帕廷时，兽人已经开始攻击这座城市。尽管他尽了最大努力来打掉他们，但"
+"突袭却更加无情，镇卫兵比他记忆中的要弱得多。一天晚上，一场特别猛烈的罢工袭击"
+"了这座城市，马林只能眼睁睁地看着他的父亲被一个野蛮的勇士砍倒。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:49
@@ -283,8 +296,9 @@ msgstr "击杀兽人首领"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:189
+#, fuzzy
 msgid "Orcs reach the outskirts of Parthyn"
-msgstr ""
+msgstr "兽人到达帕廷郊区"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:193
@@ -323,30 +337,38 @@ msgstr "德罗甘死亡"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:218
+#, fuzzy
 msgid ""
 "Was it really a good idea to send out a raiding party so soon after the orcs "
 "just attacked us? Even Father is no longer here..."
 msgstr ""
+"在兽人刚刚袭击我们之后，这么快就派人来突袭我们党真的好主意吗？连父亲都不在这"
+"里了..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:223
+#, fuzzy
 msgid "Nor is Darken Volk. We are truly defenseless."
-msgstr ""
+msgstr "\"黑暗沃尔克\"也不是。我们真是毫无防备。"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:228
+#, fuzzy
 msgid ""
 "Not like we needed him. I cannot believe that you would even consider "
 "trusting a necromancer!"
-msgstr ""
+msgstr "不像我们需要他我不敢相信你甚至会考虑信任一个巫师！"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:233
+#, fuzzy
 msgid ""
 "Quit bickering, you two. With the bulk of their forces massacred in that "
 "assault, the orcish encampments will be greatly weakened. The raiding party "
 "should be able to clear them out and leave us a relatively quiet summer."
 msgstr ""
+"别吵架了，你们两个由于他们的部队大部分在这次袭击中遭到屠杀，奥塞什营地将大大"
+"削弱。突袭方应该能够清除他们，给我们留下一个相对安静的夏天。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:238
@@ -356,15 +378,17 @@ msgstr "宁静到此为止了，德罗甘。兽人正大量聚集在河的北面
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:243
+#, fuzzy
 msgid "What? Curses! How can there still be so many of them?"
-msgstr ""
+msgstr "什么？诅咒！他们怎么会有那么多呢？"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:248
+#, fuzzy
 msgid ""
 "You sent most of our soldiers away to attack the orcs, and we haven’t even "
 "begun to rebuild the city walls..."
-msgstr ""
+msgstr "你派了我们大部分的士兵去攻击兽人，我们甚至还没有开始重建城墙..."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:253
@@ -401,15 +425,19 @@ msgstr ""
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:277
+#, fuzzy
 msgid ""
 "You say it will ensure our survival, but at what price? Defiling the bodies "
 "of our dead? Your soul, sold to black magic?"
 msgstr ""
+"你说这将确保我们的生存，但代价是什么？去掉我们死者的尸体？你的灵魂 卖给黑魔"
+"法？"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:282
+#, fuzzy
 msgid "What? I am hardly evil, Drogan!"
-msgstr ""
+msgstr "什么？我简直就是邪恶，德龙！"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:287
@@ -460,22 +488,25 @@ msgstr "谁会留下来保卫帕辛呢？"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:372
+#, fuzzy
 msgid "I’m... dying..."
-msgstr ""
+msgstr "我...死。。。"
 
 #. [message]: speaker=Soldier
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:403
+#, fuzzy
 msgid ""
 "We’ve returned from ransacking the orcish camps, Drogan. It seems like we’re "
 "just in time!"
-msgstr ""
+msgstr "我们从洗劫的奥塞什营地回来，德罗根。看起来我们正好是时间！"
 
 #. [message]: speaker=Kreg'a'shar Trr
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:407
+#, fuzzy
 msgid ""
 "More humans! We will need the Chief if we are to fight them now. Grunts, "
 "retreat!"
-msgstr ""
+msgstr "更多的人！如果我们现在要和他们战斗，我们就需要酋长。咕咕声，撤退！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:427
@@ -517,15 +548,17 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:469
+#, fuzzy
 msgid ""
 "I only did it to protect those whom I care about. Is this really what I "
 "deserve for saving your hides?"
-msgstr ""
+msgstr "我这么做只是为了保护那些我关心的人这真的是我应该保存你的隐藏吗？"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:474
+#, fuzzy
 msgid "Yes, yes it is. Nobody will support you on your path to depravity."
-msgstr ""
+msgstr "是的，是的。没有人会支持你走向堕落。"
 
 #. [message]: race=human
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:484
@@ -537,99 +570,122 @@ msgstr "我们都很乐意看到你滚蛋，死灵法师。曾和你并肩作战
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:489
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:550
+#, fuzzy
 msgid "Dela? Sister?"
-msgstr ""
+msgstr "德拉？妹妹？"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:494
+#, fuzzy
 msgid ""
 "It sickens me to be of the same blood as a necromancer. Father would turn in "
 "his grave if he could see what you’ve become. Just leave."
 msgstr ""
+"我生病的血和巫师一样。如果父亲能看见你变成什么样，他会交出他的坟墓。离开吧"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:499
+#, fuzzy
 msgid "Begone, Malin. I’ve no wish to see your face around here ever again."
-msgstr ""
+msgstr "贝戈内，马林我再也不想在这里看到你的脸了。"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:505
+#, fuzzy
 msgid ""
 "That was bravely done, lad, holding the orcs off by yourself. But I fear the "
 "raiding party brings grave news from the north. More warlords have begun to "
 "amass armies in the hills, no more than a few days north of the Great River. "
 "I do not know if we possess the strength to fight them off."
 msgstr ""
+"这是勇敢地做的，小伙子，自己拿着兽人。但我担心突袭方会从北方带来重大消息。更"
+"多的军阀开始在山上集结军队，在大河以北只有几天。我不知道我们是否拥有战胜他们"
+"的力量。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:510
+#, fuzzy
 msgid ""
 "Then we must seek help. It has not been long since Darken Volk’s departure. "
 "Perhaps I can find him and ask him to aid us."
 msgstr ""
+"那我们必须寻求帮助。达因·沃尔克离开已经很久了。也许我能找到他，请他帮助我们。"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:515
+#, fuzzy
 msgid "I will pretend I did not hear that."
-msgstr ""
+msgstr "我会假装我没有听到"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:520
+#, fuzzy
 msgid ""
 "Then what would you have us do, Drogan? Let the orcs overrun Parthyn? "
 "Abandon our families to those savages?"
-msgstr ""
+msgstr "那你要我们怎么做，德罗根？让兽人超越帕申？把我们的家庭丢给那些野蛮人？"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:525
+#, fuzzy
 msgid ""
 "If it comes to it, yes. Abandon the town and rebuild later, as we have "
 "always done."
-msgstr ""
+msgstr "如果它涉及到它，是的。放弃城镇，以后重建，正如我们一贯所做的那样。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:530
+#, fuzzy
 msgid ""
 "Or we can drive off the orcs altogether and make sure they never attack us "
 "again. Surely I cannot be the only one who sees that what Drogan says is "
 "madness!"
 msgstr ""
+"或者我们可以完全赶走兽人，确保他们不再攻击我们。当然，我不能是唯一一个看到德"
+"罗根所说的疯狂的人！"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:535
+#, fuzzy
 msgid ""
 "Should you embark on a quest to seek out depravity, none of us will support "
 "you."
-msgstr ""
+msgstr "如果你开始寻求堕落，我们没有人会支持你。"
 
 #. [message]: race=human
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:545
+#, fuzzy
 msgid "Better to die than to ally ourselves with a necromancer."
-msgstr ""
+msgstr "与其把自己和巫师一起盟友，不如死。"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:555
+#, fuzzy
 msgid "I hope that you will stay with us, Malin. Be reasonable."
-msgstr ""
+msgstr "我希望你能和我们在一起，马林讲道理。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:560
+#, fuzzy
 msgid ""
 "Be reasonable? I am the only one who sees reason here. If no one will help "
 "me, I will go by myself."
-msgstr ""
+msgstr "合理吗？我是唯一一个在这里看到理智的人。如果没有人帮我，我就一个人去。"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:565
+#, fuzzy
 msgid ""
 "Malin, seeking out the help of a necromancer is just... just foolhardy! We "
 "need you here to help protect the town!"
 msgstr ""
+"马林，寻求巫师的帮助只是...只是鲁莽！我们需要你在这里帮助保护这个镇子！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:570
+#, fuzzy
 msgid "You will eventually see that I am right, Dela. I am resolved."
-msgstr ""
+msgstr "你最终会明白我是对的，黛拉我已经解决了。"
 
 #. [scenario]: id=02_Peaceful_Valley
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:5
@@ -725,11 +781,14 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:128
+#, fuzzy
 msgid ""
 "Yes! These vile creatures have ruined our lives in more ways than I can "
 "name. It is time someone did the same to them. They deserve to suffer for "
 "what they have done to us."
 msgstr ""
+"是的！这些卑鄙的生物以我所能列举的更多的方式毁了我们的生活。是时候有人对他们"
+"做同样的事了。他们理应因对我们的所作所为而受苦。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:133
@@ -742,22 +801,27 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:138
+#, fuzzy
 msgid ""
 "They should be grateful. Imagine. No need to rebuild our homes year after "
 "year. No more needless deaths, no more senseless bloodshed, no more fear..."
 msgstr ""
+"他们应该心存感激。想象。不需要年复一年地重建家园。不再有不必要的死亡，没有更"
+"多的无谓的流血，没有更多的恐惧..."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:143
+#, fuzzy
 msgid ""
 "But first, training. The orcs are powerful in the hills, strong enough that "
 "even I dare not confront them directly."
-msgstr ""
+msgstr "但首先，培训。兽人在山里很强大，足够强大，连我都不敢直接面对它们。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:148
+#, fuzzy
 msgid "Then what shall we do?"
-msgstr ""
+msgstr "可恶！那我们该怎么办？"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:153
@@ -823,15 +887,18 @@ msgstr "苏醒吧，从死亡与腐烂的国度之中苏醒吧！"
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:347
 #, fuzzy
 msgid "What are these things?"
-msgstr "那些是什么东西？"
+msgstr "啊，那些是什么东西！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:352
+#, fuzzy
 msgid ""
 "They are ghouls: noxious beings fashioned from living flesh into carcasses "
 "of disease and poison. Those that outlive their masters gravitate towards "
 "the natural decay present in swamps and bogs."
 msgstr ""
+"他们是鬼怪：从活肉变成疾病和毒药尸体的有害生物。那些活得比主人长的人倾向于沼"
+"泽和沼泽中的自然衰变。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:357
@@ -858,8 +925,9 @@ msgstr "我想是的……"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:379
+#, fuzzy
 msgid "The goblin knight is dead, master."
-msgstr ""
+msgstr "妖精骑士死了，主人"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:415
@@ -871,12 +939,15 @@ msgstr "洗劫地精的村庄还是挺顺利的，但行尸和蝙蝠抵挡不住
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:420
+#, fuzzy
 msgid ""
 "Have some patience. We have only just begun your training. These corpses and "
 "souls will supply you sufficient resources for practice. When you have "
 "mastered the basics, we will then assault the orcs and you will see your "
 "forces grow quickly."
 msgstr ""
+"有耐心。我们才刚刚开始你的训练。这些尸体和灵魂将为你提供足够的训练资源。当你"
+"掌握了基础知识，我们将攻击兽人，你会看到你的部队迅速增长。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:425
@@ -904,6 +975,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:29
+#, fuzzy
 msgid ""
 "The colored patchwork of fall eventually fades to wintry snowfall drifting "
 "over barren lands. The nights grow longer as the sun disappears behind a "
@@ -912,77 +984,95 @@ msgid ""
 "fortune, they stumble across a mostly abandoned cave just as the winter sets "
 "in."
 msgstr ""
+"秋天的彩色拼凑最终消失为寒冬的降雪飘过贫瘠的土地。当太阳消失在看似永久的薄雾"
+"中时，夜晚会变长。在元素的追赶下，两个巫师撤退到山上寻找避难所。一时好运气，"
+"他们偶然发现了一个几乎被遗弃的洞穴，就像冬天来临。"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:99
+#, fuzzy
 msgid "Explore"
-msgstr ""
+msgstr "探索"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:133
+#, fuzzy
 msgid "Defeat both young ogres"
-msgstr ""
+msgstr "击败两个年轻的妖怪"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:256
+#, fuzzy
 msgid ""
 "I sense many lifeforms in this cavern, but none are very powerful. Most "
 "likely they are merely nothing more than beasts. Still, we may be able to "
 "use them to continue your training."
 msgstr ""
+"我感觉到这个洞穴里有许多生命体，但没有一个是非常强大的。最有可能的，他们只是"
+"野兽。尽管如此，我们还是能够使用它们来继续您的培训。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:261
+#, fuzzy
 msgid "Better than nothing. Which way do these creatures lie?"
-msgstr ""
+msgstr "总比没有好这些生物在哪条路上撒谎？"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:266
+#, fuzzy
 msgid "East."
-msgstr ""
+msgstr "东南方向的生锈的门"
 
 #. [message]: speaker=YOgre1
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:283
+#, fuzzy
 msgid "Me kill you!"
-msgstr ""
+msgstr "我杀了你！"
 
 #. [message]: speaker=YOgre2
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:306
+#, fuzzy
 msgid "No, me kill you!"
-msgstr ""
+msgstr "不，我杀了你！"
 
 #. [message]: speaker=YOgre1
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:329
+#, fuzzy
 msgid "No, me kill— I see human!"
-msgstr ""
+msgstr "不，我杀人，我看见人类了！"
 
 #. [message]: speaker=YOgre2
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:334
+#, fuzzy
 msgid "Human! We smash human!"
-msgstr ""
+msgstr "人类！我们粉碎人类！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:339
+#, fuzzy
 msgid "Simple-minded, obtuse creatures."
-msgstr ""
+msgstr "头脑简单，迟钝的生物。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:344
+#, fuzzy
 msgid ""
 "This should be an easy task for you. Once you have slain them both, we shall "
 "turn them into skeletons."
-msgstr ""
+msgstr "这应该是一个容易的任务。一旦你们杀了他们两个，我们就把他们变成骷髅。"
 
 #. [message]: speaker=YOgre1
 #. this line is just a death scream
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:358
+#, fuzzy
 msgid "Arrghhaaugghhh..."
-msgstr ""
+msgstr "阿尔格豪格赫"
 
 #. [message]: speaker=YOgre2
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:374
+#, fuzzy
 msgid "Me... die..."
-msgstr ""
+msgstr "我。。。死。。。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:415
@@ -992,41 +1082,51 @@ msgstr "兽人被击溃了，不是战死，便是逃跑。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:420
+#, fuzzy
 msgid ""
 "Good... I have already showed you how to raise a skeleton before, but "
 "perhaps it would be best if we... went over it once again. Other than for "
 "ghouls, flesh and blood are useless for undead creatures. First, let out the "
 "blood and innards and dispose of them."
 msgstr ""
+"好。。。我已经告诉你如何提高骨架之前，但也许这将是最好的，如果我们...再次去了"
+"它。除了鬼怪，血肉对不死生物是无用的。首先，让血液和内脏，并处置他们。"
 
 #. [message]: speaker=Malin Keshar
 #. In the sense of "Understood, I will do that", not "very good".
 #. That's the case for both usages of this string.
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:426
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:614
+#, fuzzy
 msgid "Very well."
-msgstr ""
+msgstr "好的。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:444
+#, fuzzy
 msgid "What a mess."
-msgstr ""
+msgstr "太乱了"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:449
+#, fuzzy
 msgid ""
 "The ghouls will take care of it once we have the resources to keep them "
 "here. Next, strip away the flesh. A little remaining is fine; too much will "
 "hamper your skeletons’ movement."
 msgstr ""
+"一旦我们有资源把他们留在这里，鬼怪们就会照顾好它。接下来，剥去肉。剩下的一点"
+"是好的;太多会妨碍你的骷髅运动。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:474
+#, fuzzy
 msgid "And then?"
-msgstr ""
+msgstr "夏目漱石"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:479
+#, fuzzy
 msgid ""
 "Bind the strings of energy to the bone. Skeletons are no more than puppets. "
 "Novices will directly control their movement with strands of dark magic, but "
@@ -1035,111 +1135,136 @@ msgid ""
 "twine from your hand. If your will is strong enough, the skeleton will be "
 "able to move on its own."
 msgstr ""
+"将能量的字符串绑定到骨骼上。骷髅只不过是木偶。新手会直接控制他们的运动与黑魔"
+"法链，但你不应该有这种粗糙的方法。相反，将你的意愿传授给骨骼，把线铺在骨头"
+"上，然后松开你的手上的细绳。如果你的意志足够坚强，骷髅将能够独立移动。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:484
 #, fuzzy
 msgid "I will try."
-msgstr "我……我试试。"
+msgstr "我会试试看，长官。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:513
+#, fuzzy
 msgid "Do it again."
-msgstr ""
+msgstr "噢！好痛。我们不要再这么做了，好吗？"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:556
+#, fuzzy
 msgid "Good, good. Now head north. I sense another young ogre there."
-msgstr ""
+msgstr "很好，很好现在向北走我感觉到那里还有一只年轻的怪物。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:573
+#, fuzzy
 msgid "I can turn this one into a skeleton as well."
-msgstr ""
+msgstr "我也可以把这个变成骷髅。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:608
+#, fuzzy
 msgid ""
 "The ogre seems to have looted a bow. Use it to create a Skeleton Archer."
-msgstr ""
+msgstr "妖怪似乎抢了弓。使用它创建骷髅弓箭手。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:644
+#, fuzzy
 msgid ""
 "It seems that raising skeletons is already a trivial matter for you now. You "
 "are indeed... talented."
-msgstr ""
+msgstr "现在看来，提高骨架已经对你来说是件小事了。你确实...天才。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:649
+#, fuzzy
 msgid "Perhaps, but I will need more than a few skeletons to fight the orcs."
-msgstr ""
+msgstr "也许吧，但我需要的不仅仅是几个骷髅来对抗兽人。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:654
+#, fuzzy
 msgid ""
 "They will come in time, when you learn to control more of them at once. For "
 "now, continue exploring these caves. We may yet find something else of use."
 msgstr ""
+"当你学会同时控制更多的它们时，它们就会及时到来。现在，继续探索这些洞穴。我们"
+"可能还能找到其他用途的东西。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:692
+#, fuzzy
 msgid "This cave is infested with giant scorpions!"
-msgstr ""
+msgstr "这个山洞里到处是巨大的蝎子！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:697
+#, fuzzy
 msgid ""
 "Annoying pests, no more than that. Killing them, however, may provide some "
 "useful experience to your skeletons."
 msgstr ""
+"讨厌的害虫，没有比这更多。然而，杀死它们可能会为你骨骼提供一些有用的经验。"
 
 #. [message]: speaker=Naga1
 #. Hsss is just a hissing sound that nagas make. The extra s's in spy and must are also intended to be the same sound.
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:719
+#, fuzzy
 msgid "Hssss, I ssspy human vermin... I mussst kill."
-msgstr ""
+msgstr "赫斯，我窥探人类害虫...我杀的"
 
 #. [message]: speaker=Naga2
 #. The extra s's in slay are also intended to mimic a hissing sound.
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:725
+#, fuzzy
 msgid "We will ssslay him..."
-msgstr ""
+msgstr "我们会把他打的..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:730
+#, fuzzy
 msgid "I do not think I will be the one dying here."
-msgstr ""
+msgstr "我不认为我会是死在这里的人。"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:737
+#, fuzzy
 msgid "Defeat both nagas"
-msgstr ""
+msgstr "击败两个纳加斯"
 
 #. [message]: speaker=Naga1
 #. this line is also just a death scream
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:757
+#, fuzzy
 msgid "Hsssss..."
-msgstr ""
+msgstr "嘶嘶嘶嘶嘶"
 
 #. [message]: speaker=Naga2
 #. again, drawn out s's are just to mimic hissing
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:774
+#, fuzzy
 msgid "Evil... dark... magicssssss..."
-msgstr ""
+msgstr "邪恶。。。黑暗。。。魔术师..."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:814
+#, fuzzy
 msgid ""
 "Since you have mastered reanimating skeletons, I will now teach you to "
 "control spirits. The souls of the recently deceased do not stray far from "
 "their bodies. You should be able to sense them still."
 msgstr ""
+"既然你已经掌握了恢复的骨架，我现在将教你控制精神。最近去世的灵魂离他们的身体"
+"并不遥远。你应该能够感觉到他们仍然。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:844
+#, fuzzy
 msgid "I feel them."
-msgstr ""
+msgstr "我感觉到他们了"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:849
@@ -1161,43 +1286,52 @@ msgstr "我……我试试。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:882
+#, fuzzy
 msgid "I... think I did it—"
-msgstr ""
+msgstr "Ⅰ。。。认为我做到了。"
 
 #. [message]: speaker=S3_Rebel_Soul
 #. more s's indicating hissing
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:909
+#, fuzzy
 msgid ""
 "Freedom! Your sssorceries sssshall not sshackle me any longer, Malin the "
 "Damned!"
 msgstr ""
+"自由！你的sssssssssssssssssssssssss不会再把我吊起来了，马林，被诅咒了！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:914
+#, fuzzy
 msgid ""
 "You blithering fool! How did you let your will be overcome by a half-"
 "sentient creature that can hardly come up with a single coherent sentence?! "
 "Let your will slip further and you shall join other young necromancers who "
 "have died at the hands of their own servants."
 msgstr ""
+"你这个傻子！你是如何让你的将克服一个半感性的生物，很难想出一个连贯的句子？！"
+"让你的意志滑得更远，你将加入其他年轻的巫师谁死在自己的仆人手中。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:919
+#, fuzzy
 msgid ""
 "My will is strong, but he still does not return to me. What should I do?"
-msgstr ""
+msgstr "我的意志很坚强，但他仍然不回我。我该怎么办？"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:924
+#, fuzzy
 msgid ""
 "Subdue the rebel! When you have sapped it of its energies, exert your power "
 "over it and do not lose focus."
-msgstr ""
+msgstr "制服叛军！当你消耗它的能量时，运用你的力量，不要失去焦点。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:936
+#, fuzzy
 msgid "Seize control back while it is weakened!"
-msgstr ""
+msgstr "夺回控制权，而它被削弱！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:966
@@ -1209,27 +1343,32 @@ msgstr "我想我现在已经控制住剩下的灵魂了。他们差点要了我
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:997
+#, fuzzy
 msgid "No mishaps this time, but you will need to practice more."
-msgstr ""
+msgstr "这次没有意外，但你需要多练习。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1037
+#, fuzzy
 msgid ""
 "Rail tracks and mines... dwarves used to live here, but there do not seem to "
 "be any guards. I wonder where they went?"
 msgstr ""
+"铁轨和地雷...矮人过去住在这里，但似乎没有任何守卫。我想知道他们去哪儿了？"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1052
+#, fuzzy
 msgid "Trolls! I suppose I should have expected this."
-msgstr ""
+msgstr "巨 魔！我想我应该预料到这一点。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1057
+#, fuzzy
 msgid ""
 "Threats to your skeletons, but no more than fodder for your ghosts. "
 "Eliminate them all."
-msgstr ""
+msgstr "威胁你的骷髅，但只不过是你鬼魂的饲料。全部消除。"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1074
@@ -1239,35 +1378,42 @@ msgstr "击败愚蠢的英雄"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1109
+#, fuzzy
 msgid "The trolls are defeated."
-msgstr ""
+msgstr "巨魔被打败了。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1126
+#, fuzzy
 msgid ""
 "<i>If I act quickly, I can enslave another ghost to help me fight off the "
 "rest of these trolls.</i>"
 msgstr ""
+"<i>如果我行动迅速，我可以奴役另一个鬼魂，帮助我打掉这些巨魔的其余部分。</i>"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1156
+#, fuzzy
 msgid "<i>The boy learns quickly. He should be of great use after all.</i>"
-msgstr ""
+msgstr "<i>这个男孩学得很快。他毕竟应该有很大的用点。</i>"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1167
+#, fuzzy
 msgid ""
 "You have done well enough so far, but I still have much more to teach you. "
 "Come, we have work to do."
-msgstr ""
+msgstr "到目前为止，你做得足够好，但我还有很多要教你。来吧，我们有工作要做。"
 
 #. [scenario]: id=04_Beginning_of_the_Revenge
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:5
+#, fuzzy
 msgid "Outset of Vengeance"
-msgstr ""
+msgstr "复仇的开始"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:20
+#, fuzzy
 msgid ""
 "Weeks pass in the cold, bare caverns. There is little light and little food, "
 "but Malin’s burning desire for vengeance sustains him through his training. "
@@ -1277,6 +1423,10 @@ msgid ""
 "he listens and it speaks back — he senses its will and lets it guide him — "
 "he embraces the dark magic as an extension of himself."
 msgstr ""
+"几个星期过去了，在寒冷，光秃秃的洞穴。没有什么光，几乎没有食物，但马林对复仇"
+"的强烈渴望支撑着他的训练。随着黑魔法的握力越来越强，他对亡灵的控制也越来越"
+"强。他发现，这是一种不同于他在学院所教的大师。魔法像以前一样传到他身上;他倾"
+"听，它回话——他感知它的意愿，让它指引他——他拥抱黑暗魔法作为自我的延伸。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:24
@@ -1315,30 +1465,38 @@ msgstr "击杀所有兽人首领"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:193
+#, fuzzy
 msgid ""
 "Across this pass lies the eastern edge of the Heart Mountains proper. For "
 "their distinctive shape, the orcs call these the ‘Whitefang’ Mountains, "
 "which is also the namesake of the dominant clan in this region. They are the "
 "very same who killed your father."
 msgstr ""
+"穿过这一关，位于心山的东缘。由于它们独特的形状，兽人称这些为\"白方\"山脉，这"
+"也是该地区统治部落的同名。他们就是杀死你父亲的一样"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:198
+#, fuzzy
 msgid "The Whitefang orcs... so that is their name."
-msgstr ""
+msgstr "白方兽人...所以这就是他们的名字。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:203
+#, fuzzy
 msgid ""
 "To reach them, we must first destroy the orcs who block our way out of this "
 "mountain pass. Then, we can move on to our main target."
 msgstr ""
+"要到达他们，我们必须首先摧毁那些阻挡我们离开山口的兽人。然后，我们可以继续我"
+"们的主要目标。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:208
+#, fuzzy
 msgid ""
 "I have anticipated this day for a long time. At last, we shall have revenge."
-msgstr ""
+msgstr "我早就预料到这一天了。最后，我们将复仇。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:226
@@ -1347,20 +1505,23 @@ msgstr "感受我的愤怒吧，邪恶之物！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:242
+#, fuzzy
 msgid "These orcs aren’t so strong after all!"
-msgstr ""
+msgstr "这些兽人毕竟不是那么强壮！"
 
 #. [message]: speaker=K'rrlar Oban
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:259
+#, fuzzy
 msgid ""
 "Wait, human! I may be of use to you! What is it that you desire? Slaves? "
 "Gold? Land?"
-msgstr ""
+msgstr "等等，人类！我可能对你好！你想要什么？奴隶？黄金？土地？"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:263
+#, fuzzy
 msgid "What I desire is your death."
-msgstr ""
+msgstr "我渴望的是你的死亡"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:289
@@ -1392,8 +1553,9 @@ msgstr "脆弱的冰层在重装武士的脚下塌陷了，他淹死在山脉中
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:428
+#, fuzzy
 msgid "It’s time to hunt down the Whitefangs."
-msgstr ""
+msgstr "是时候追捕白方了。"
 
 #. [scenario]: id=05_Orc_War
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:5
@@ -1402,6 +1564,7 @@ msgstr "大战兽人"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:19
+#, fuzzy
 msgid ""
 "The cycle of the seasons churns and summer and fall roll around once more. "
 "Malin’s thoughts turn back to Parthyn frequently, where a year prior, he had "
@@ -1410,15 +1573,22 @@ msgid ""
 "but the still burning image of his father being cut down amidst the ruins of "
 "his home is imprinted at the forefront of his mind."
 msgstr ""
+"季节的循环搅动，夏天和秋天再次滚动。马林的思绪经常回到帕廷，一年前，他仍然和"
+"亲朋好友在一个质朴的小镇，他仍然认为是他的家。他认为，自那以后，他成了一个被"
+"遗弃的流浪者，但他父亲在家乡的废墟中被砍倒的仍然燃烧的画面却印在他脑海的最前"
+"沿。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:23
+#, fuzzy
 msgid ""
 "Companionship and peace... perhaps they are but a farce and certainly an "
 "impossibility with the threat of the orcish clans still looming. Perhaps "
 "there is no point in reminiscing on his once peaceful, pastoral life. He has "
 "never been one for regrets."
 msgstr ""
+"友谊与和平...也许他们只是一场闹剧，当然不可能与奥西氏氏族的威胁仍然隐约可见。"
+"也许回忆他曾经平静、田园生活是没有意义的。他从来就不是一个后悔的人。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:27
@@ -1530,20 +1700,25 @@ msgstr "那么，你的第二次死期到了！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:264
+#, fuzzy
 msgid "How puny and weak you look in death, orc."
-msgstr ""
+msgstr "你看起来多么渺小和虚弱，在死亡中，或"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:291
+#, fuzzy
 msgid ""
 "Death is only the beginning for you. After this battle, you can be sure that "
 "I will make you into my thrall. And now for the last one—"
 msgstr ""
+"死亡只是你的开始。在这场战斗之后，你可以肯定，我会让你进入我的斗争。现在，最"
+"后一个*"
 
 #. [message]: speaker=$remaining_orc_leader.id
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:344
+#, fuzzy
 msgid "Retreat!"
-msgstr ""
+msgstr "怎么回事？我们的退路被切断了！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:369
@@ -1553,6 +1728,7 @@ msgstr "最后一名酋长……他在逃跑！懦夫！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:374
+#, fuzzy
 msgid ""
 "Orcs are no more than beasts. They bellow out against a weaker foe as if "
 "that makes them mighty, but will always flee in the face of an overwhelming "
@@ -1560,14 +1736,20 @@ msgid ""
 "the other orcish clans as well. You must hunt this chieftain down before he "
 "can alert the others, else we may soon have dozens more on our tail."
 msgstr ""
+"兽人只不过是野兽。他们大声疾呼对抗一个较弱的敌人，仿佛这使他们强大，但总是逃"
+"离面对压倒性的力量。然而，白方仍然数量众多，并且与其他的氏族也有一些联系。你"
+"必须追捕这个酋长之前，他可以提醒其他人，否则，我们可能很快有几十在我们的尾巴"
+"上。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:379
+#, fuzzy
 msgid "By ‘you’, you mean... on my own?"
-msgstr ""
+msgstr "你的意思是...靠我自己？"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:384
+#, fuzzy
 msgid ""
 "Your apprenticeship is nearly over; you are more than capable of handling a "
 "single, half-dead orc on your own. After, I do have a small favor I will ask "
@@ -1575,6 +1757,9 @@ msgid ""
 "other things that I must attend to in preparation. In a few weeks, meet with "
 "me to the west, near the town of Tath. For now, hunt down the last chieftain."
 msgstr ""
+"你的学徒生涯快结束了;你完全有能力自己处理一个单一的，半死的orc。之后，我有一"
+"个小恩惠，我会问你。它将构成你...培训。我还有一些其他的事情，我必须注意准备。"
+"几周后，在塔斯镇附近和我一起去。现在，追捕最后一位酋长。"
 
 #. [scenario]: id=06_Return_to_Parthyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:5
@@ -1583,6 +1768,7 @@ msgstr "返回帕辛"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:20
+#, fuzzy
 msgid ""
 "Two days’ travel south of the previous battle, Malin picks up the trail of "
 "the regrouped orcish warriors. He follows them down the western bank of the "
@@ -1591,9 +1777,13 @@ msgid ""
 "after a bit of thought, he realizes where the orcs are headed. It is, after "
 "all, the season when they usually raid human towns."
 msgstr ""
+"在前一场战斗的两天中，马林拾起重新集结的战兵的踪迹。他跟随他们沿着利斯特拉河"
+"的西岸，经过白方山脉。他想知道为什么他们继续冲向大河，而不是要求增援，但经过"
+"一番思考，他意识到兽人将走向何方。毕竟，这是他们通常袭击人类城镇的季节。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:24
+#, fuzzy
 msgid ""
 "<i>‘This chieftain has no intention of warning the rest of his clan about "
 "me. I suppose he must think that I intend to attack the rest of the "
@@ -1602,15 +1792,22 @@ msgid ""
 "creature. Exactly what one would expect from an orc.’</i> Malin thinks "
 "carefully and quickly realizes what he should do."
 msgstr ""
+"<i>\"这个酋长无意警告他的家族其他成员关于我。我想，他必须认为，我打算攻击其余"
+"的白方，而不是追求他这么远;与他的弟兄们对我占领，他将能够突袭更多的人类城镇不"
+"受干扰。自私的生物。究竟什么人会期望从一个orc。</i>马林仔细思考，很快意识到他"
+"应该做什么。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:28
+#, fuzzy
 msgid ""
 "He tramps through the woods tirelessly, forsaking several days’ sleep as he "
 "and his servants draw closer to the Great River, hoping to cut off the orcs "
 "before they reach Parthyn. Soon, Malin recognizes some familiar "
 "surroundings..."
 msgstr ""
+"他不知疲倦地在树林里漫步，在他和他的仆人接近大河时，他为了在到达帕廷之前切断"
+"兽人，而为了推迟几天的睡眠。很快，马林认出了一些熟悉的环境..."
 
 #. [side]: type=Lieutenant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:92
@@ -1636,46 +1833,58 @@ msgstr "击杀除了德罗甘以外的任何帕辛居民"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:231
+#, fuzzy
 msgid ""
 "I bring word from the north, Drogan! Orcs march on Parthyn, no more than a "
 "few hours’ journey away. They mean to raid the village tonight!"
 msgstr ""
+"我从北方带来消息，德罗根！兽人行进帕申，不超过几个小时的旅程。他们今晚想突袭"
+"这个村子！"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:242
+#, fuzzy
 msgid ""
 "I hoped that I would never see you again, Malin. I see that you are not "
 "taking your banishment seriously, so I will make myself clear to you: no "
 "matter for what reason you have returned, you are not welcome here. Take one "
 "step closer to Parthyn and I will order the guards to attack you."
 msgstr ""
+"我希望我再也见不到你了，马林我看到你并没有认真对待你的流放，所以我要向你们表"
+"明：不管你回来的原因是什么，你在这里不受欢迎。靠近帕辛一步，我会命令警卫攻击"
+"你。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:247
+#, fuzzy
 msgid "Banishment or not, I am here to help defend the town against the orcs!"
-msgstr ""
+msgstr "无论放逐与否，我在这里帮助保卫城镇反对兽人！"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:252
+#, fuzzy
 msgid "Orcs or not, you must leave!"
-msgstr ""
+msgstr "兽人与否，你必须离开！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:257
+#, fuzzy
 msgid "Dela, help me! You, at least, must see reason!"
-msgstr ""
+msgstr "德拉，帮帮我！你，至少，必须看到原因！"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:262
+#, fuzzy
 msgid ""
 "You chose the path of darkness on your own. We will not be dragged into it "
 "with you."
-msgstr ""
+msgstr "你自己选择了黑暗之路。我们不会被拖进它与您。"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:267
+#, fuzzy
 msgid "If you continue to be stubborn, we will attack you. It is your choice."
-msgstr ""
+msgstr "如果你继续固执，我们会攻击你。这是你的选择。"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:272
@@ -1696,40 +1905,51 @@ msgstr "没想到我还能再见到你，马林。不过你身边站着的邪恶
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:283
+#, fuzzy
 msgid ""
 "It is of little concern to you. It is merely the byproduct of the new "
 "magical arts that I have learned."
-msgstr ""
+msgstr "你对此没什么问题。这只是我所学的新魔法艺术的副产品。"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:288
+#, fuzzy
 msgid ""
 "It does not take a trained mage to realize that by ‘magical arts’, you refer "
 "to necromancy! That creature reeks of death!"
 msgstr ""
+"它不需要受过训练的魔师意识到，通过'魔法艺术'，你指的是坏死！那个生物充满了死"
+"亡！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:293
+#, fuzzy
 msgid ""
 "And why should you care about such things? Orcs march on Parthyn! We must "
 "defend the town!"
-msgstr ""
+msgstr "你为什么要关心这些事情？兽人向帕申进军！我们必须保卫这个镇子！"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:298
+#, fuzzy
 msgid ""
 "Better to face the orcish menace alone than to embrace dark magic! I warned "
 "you about this before, yet you failed to heed my advice. Your father would "
 "turn in his grave if he could see what you’ve become."
 msgstr ""
+"最好独自面对奥奇的威胁，而不是拥抱黑暗魔法！我以前警告过你这件事，但你却听不"
+"及我的建议。如果你父亲能看见你变成什么样，他会交出他的坟墓。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:303
+#, fuzzy
 msgid ""
 "How dare you bring my father into this, Drogan! I have fought with every "
 "fiber of my being against these foul orcs, and I have done it to protect my "
 "country and kinsmen. Is this how you repay me? With scorn and disdain?"
 msgstr ""
+"你怎么敢把我父亲带进来，德罗根！我与这些犯规的兽人进行了斗争，我这样做是为了"
+"保护我的祖国和亲人。你是怎样报答我的吗？轻蔑和轻蔑？"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:308
@@ -1748,11 +1968,14 @@ msgstr "你闭嘴。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:320
+#, fuzzy
 msgid ""
 "Drogan! With my newfound powers, I have already eliminated several orcish "
 "chieftains! If you will allow me to help, I will crush the one who comes "
 "here as well!"
 msgstr ""
+"德罗根！有了我新发现的力量，我已经消灭了几个的酋长！如果你允许我帮忙，我也会"
+"压碎来的人！"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:325
@@ -1769,15 +1992,17 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:330
+#, fuzzy
 msgid "Dela, you do not believe that, do you?"
-msgstr ""
+msgstr "德拉，你不相信，是吗？"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:335
+#, fuzzy
 msgid ""
 "Stop looking to your sister, Malin. The fact that even she rebuffs you so "
 "should tell you how much of a traitor you are."
-msgstr ""
+msgstr "别再找妹了，马林事实上，即使她拒绝了你，应该告诉你，你是多么一个叛徒。"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:340
@@ -1797,106 +2022,139 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:350
+#, fuzzy
 msgid ""
 "<i>If I want the people of Parthyn to accept me back, I must be cautious. I "
 "must not kill any of them besides Drogan or they will surely oust me for "
 "good.</i>"
 msgstr ""
+"<i>如果我想让帕廷人民接受我回来，我必须小心。除了德罗根，我一定不能杀他们，否"
+"则他们一定会把我赶下台。</i>"
 
 #. [message]
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:424
+#, fuzzy
 msgid ""
 "Grunts! Prepare the camp! We attack the city tonight— wait. You! "
 "Necromancer, you followed us all the way here?!"
 msgstr ""
+"呼噜 声！准备营地！我们今晚要攻打这座城市，等等。你！尼罗曼瑟，你一路跟着我"
+"们？！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:432
+#, fuzzy
 msgid ""
 "Did you really think you could outrun the dead, who need neither rest nor "
 "sleep? Prepare to meet your makers, orc. Drogan, I will show you what my new "
 "powers are capable of. You will see how foolish you are to oppose me."
 msgstr ""
+"你真的认为你能跑掉死人，他们既不休息也不睡觉？准备与你的制造商见面，德罗根，"
+"我向你们展示我的新能力能做什么。你会看到你反对我是多么愚蠢。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:438
+#, fuzzy
 msgid ""
 "Did you really think you could outrun the dead, who need no rest nor sleep? "
 "Prepare to meet your makers, orc."
 msgstr ""
+"你真的认为你能跑掉死人，谁不需要休息，也不需要睡觉？准备与你的制造商见面，"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:460
+#, fuzzy
 msgid ""
 "So, Malin, you have even begun to corrupt our people with your sorcerous "
 "ways. Even I did not expect you to stoop low enough to kidnap the villagers "
 "and make them into your pawns!"
 msgstr ""
+"所以，马林，你甚至开始用你的巫术方式腐蚀我们的人民。连我都没想到你弯腰低到绑"
+"架村民，让他们成为你的棋子！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:465
+#, fuzzy
 msgid ""
 "I joined Malin of my own free will! You fools simply do not understand the "
 "power that necromancy holds."
 msgstr ""
+"我加入了马林我自己的自由意志！你们这些傻瓜根本不了解坏死所蕴藏着的力量。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:466
+#, fuzzy
 msgid ""
 "female^I joined Malin of my own free will! You fools simply do not "
 "understand the power that necromancy holds."
 msgstr ""
+"我加入了马林我自己的自由意志！你们这些傻瓜根本不了解坏死所蕴藏着的力量。"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:471
+#, fuzzy
 msgid ""
 "I understand it well enough to know that it makes all who embrace it evil."
-msgstr ""
+msgstr "我很清楚，它让所有拥抱它的人都变得邪恶。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:476
+#, fuzzy
 msgid ""
 "There is no point in arguing with one so obstinate. We can only show Drogan "
 "the error of his ways through force."
 msgstr ""
+"与一个如此固执的人争论是没有意义的。我们只能通过武力向德罗根展示他的方式的错"
+"误。"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:482
+#, fuzzy
 msgid ""
 "Malin! First you abandon us to the orcs on your mad quest for necromancy, "
 "then you heartlessly murder Drogan, and now... now you even kidnap the "
 "villagers and corrupt them with your sorcery! How low have you fallen?"
 msgstr ""
+"马林！首先，你抛弃我们到兽人，你疯狂地追求坏死，然后你无情地谋杀德罗根，现"
+"在...现在你甚至绑架村民和腐败他们与你的巫术！你跌得有多低？"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:487
+#, fuzzy
 msgid ""
 "I joined Malin of my own free will! The orcs would have overrun you if not "
 "for Malin’s powers!"
-msgstr ""
+msgstr "我加入了马林我自己的自由意志！如果不是马林的力量，兽人会超越你！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:488
+#, fuzzy
 msgid ""
 "female^I joined Malin of my own free will! The orcs would have overrun you "
 "if not for Malin’s powers!"
-msgstr ""
+msgstr "我加入了马林我自己的自由意志！如果不是马林的力量，兽人会超越你！"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:493
+#, fuzzy
 msgid ""
 "You necromancers defile the bodies of the dead and slaughter the innocent "
 "for your sick perversions. Do you not see the depravity that you have "
 "become, Malin?"
 msgstr ""
+"你们的巫师玷污了死者的尸体，为你们生病的倒戈屠杀了无辜的人。你看不到你变得堕"
+"落吗，马林？"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:503
+#, fuzzy
 msgid ""
 "No quip about how we do not understand you? No comment about your moral "
 "superiority? Nothing to say at all? I can only hope you are so quiet when I "
 "kill you."
 msgstr ""
+"没有打趣我们怎么不理解你？对你的道德优越性没有评论？没什么可说的？我只能希望"
+"你这么安静，当我杀了你。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:538
@@ -1906,40 +2164,51 @@ msgstr "睁眼看看，德罗甘！我杀死了最后一名兽人酋长。你现
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:543
+#, fuzzy
 msgid ""
 "At least you have not completely lost your humanity by allying yourself with "
 "the orcs. But you cannot return to Parthyn, Malin. No necromancer will ever "
 "be welcome here."
 msgstr ""
+"至少你并没有完全失去你的人性，把自己与兽人结合在一起。但你不能回到帕廷，马林"
+"这里永远欢迎任何巫师。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:548
+#, fuzzy
 msgid ""
 "What?! You ungrateful cur! You would sack the city and let all of our people "
 "die, and for what? Only to spurn something you do not understand? You are a "
 "fool. Parthyn will only be under greater danger with you leading it. If the "
 "town is to survive, <i>you</i> are the one who must leave!"
 msgstr ""
+"什么？！你忘恩负义的诅咒！你会解雇城市，让我们所有的人死，为了什么？只是为了"
+"抛弃你不明白的东西？你真是个傻瓜帕辛只会在你们的带领下面临更大的危险。如果这"
+"个镇子要生存下去，<i>你</i>就是那个必须离开的人！"
 
 #. [message]: speaker=Dela
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:553
+#, fuzzy
 msgid ""
 "Have you lost your mind, Malin? There’s no way we’re going to banish Drogan!"
-msgstr ""
+msgstr "你疯了吗，马林？我们不可能放逐德龙！"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:558
+#, fuzzy
 msgid ""
 "Malin, in truth, I do not want to fight you as one of my former friends. "
 "Leave Parthyn. I will not ask you again."
 msgstr ""
+"马林，事实上，我不想把你当作我以前的朋友之一来打。离开帕辛我不会再问你了"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:563
+#, fuzzy
 msgid ""
 "Your choice, not mine. If you refuse to leave by your own volition, then it "
 "will have to be by force. Attack him!"
-msgstr ""
+msgstr "你的选择，不是我的如果你拒绝自愿离开，那它将不得不以武力。攻击他！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:571
@@ -1973,36 +2242,43 @@ msgstr "看到你的反叛给你带来什么了吗，德罗甘？"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:670
+#, fuzzy
 msgid ""
 "Drogan, no! Malin, you monster, how could you just murder Drogan in cold "
 "blood?"
-msgstr ""
+msgstr "德罗根，不！马林，你这个怪物，你怎么能冷血地谋杀德龙？"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:675
+#, fuzzy
 msgid "He chose this fate for himself! I merely retaliated in turn!"
-msgstr ""
+msgstr "他为自己选择了这个命运！我只是反过来报复！"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:680
+#, fuzzy
 msgid ""
 "How could you possibly think Drogan was the traitor when you are the one "
 "attacking Parthyn?"
-msgstr ""
+msgstr "你怎么会认为德龙是叛徒，当你是攻击帕申？"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:685
+#, fuzzy
 msgid ""
 "What? I have not harmed even a single villager or guardsman besides Drogan! "
 "I am only trying to help, but none of you will listen to reason!"
 msgstr ""
+"什么？除了德罗根，我甚至没有伤害过一个村民或警卫！我只是想帮忙，但你们谁也不"
+"会听道理！"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:690
+#, fuzzy
 msgid ""
 "There is no reason to be had with someone who embraces evil so shamelessly! "
 "You will pay for Drogan’s death!"
-msgstr ""
+msgstr "没有理由与如此无耻地拥抱邪恶的人在一起！你会为德罗根的死付出代价的！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:698
@@ -2032,62 +2308,81 @@ msgstr "逃往西北"
 #. [message]: speaker=DroganGhoul
 #. This is just some guttural sound that a ghoul might make since it can't actually talk
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:786
+#, fuzzy
 msgid "Grahhhuralug..."
-msgstr ""
+msgstr "格拉胡拉格鲁格"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:791
+#, fuzzy
 msgid "As ugly in death as he was in life. This is proof that Drogan was evil!"
-msgstr ""
+msgstr "像他生命一样丑陋。这是德罗根邪恶的证明！"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:796
+#, fuzzy
 msgid ""
 "What have you done?! Killing Drogan was not enough — you had to defile his "
 "body as well? How could you turn him into such a... a twisted, abominable "
 "thing? I cannot believe how depraved you have become!"
 msgstr ""
+"你都干了些什么？！杀死德罗根是不够的——你也得玷污他的身体？你怎么能把他变成这"
+"样...一个扭曲，可恶的事情？我不敢相信你变得多么堕落！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:801
+#, fuzzy
 msgid ""
 "What you see on the outside reflects the inside. It is an ugly truth, but it "
 "is not my fault if you cannot accept it!"
 msgstr ""
+"你在外面看到的东西反映了内部。这是一个丑陋的事实，但如果你不能接受，这不是我"
+"的错！"
 
 #. [message]: speaker=OWarlord
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:825
+#, fuzzy
 msgid ""
 "Look what we have here! A human city on the verge of collapse and a "
 "necromancer with only a few paltry minions at his command. The wolves will "
 "feed well tonight!"
 msgstr ""
+"看看我们这儿有什么！一座濒临崩溃的人类城市，一个只有几个微不足道的奴家在他的"
+"指挥下。狼今晚会吃得很好！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:829
+#, fuzzy
 msgid ""
 "More orcs, and powerful ones at that! Alas, it will be impossible for me to "
 "outrun their riders..."
-msgstr ""
+msgstr "更多的兽人，和强大的！唉，我不可能超过他们的车手..."
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:841
+#, fuzzy
 msgid ""
 "Flee while you still can, Malin the Damned! When I have defeated these orcs "
 "and secured Parthyn against further raids, you can be sure that I will hunt "
 "you down. You are my brother no longer."
 msgstr ""
+"逃离，而你仍然可以，马林的的！当我打败了这些兽人，并保护了Parthyn免受进一步的"
+"突袭，你可以肯定，我会追捕你。你不再是我哥哥了"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:847
+#, fuzzy
 msgid ""
 "Flee while you still can, Malin the Damned! When I have secured Parthyn "
 "against further raids, you can be sure that I will hunt you down. You are my "
 "brother no longer."
 msgstr ""
+"逃离，而你仍然可以，马林的的！当我已经确保帕辛反对进一步的突袭，你可以肯定，"
+"我会追捕你。你不再是我哥哥了"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:855
+#, fuzzy
 msgid ""
 "O gods, how did it come to this? My own sister determined to personally see "
 "to my demise. Banished from Parthyn, my country, my home... spurned by my "
@@ -2097,6 +2392,10 @@ msgid ""
 "supposed to be a simple curse! How was I supposed to know it would kill him? "
 "Blasted Academy."
 msgstr ""
+"上帝啊，怎么会这样？我自己的妹妹决心亲自去见我的死。从帕廷，我的祖国，我的"
+"家...被我的人民唾弃，我为此放弃了一切...自从我与那个胖子、爱的托夫林发生争执"
+"并试图诅咒他以来，一切都没有变好。我只是在测试我的新咒语！这只是一个简单的诅"
+"咒！我怎么知道会杀了他？爆炸学院。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:860
@@ -2115,6 +2414,7 @@ msgstr "小小请求"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:84
+#, fuzzy
 msgid ""
 "Fleeing from the city of his birth, Malin escapes into the forested hills "
 "north of the Great River. Some distance west, he finally stops after several "
@@ -2122,9 +2422,13 @@ msgid ""
 "few hours from his mind, but the darkness only makes the images all the more "
 "vivid. He is tired, <i>so</i> tired, but sleep does not come."
 msgstr ""
+"马林逃离他出生的城市，逃到大河以北的森林丘陵。离西边一段距离，他终于在休息了"
+"几天后停了下来。他闭上眼睛，试图从头脑中清除最后几个小时，但黑暗只会使图像更"
+"加生动。他累了，<i>太</i>累了，但睡不着。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:88
+#, fuzzy
 msgid ""
 "<i>“No regrets. No regrets...”</i> He repeats it under his breath like a "
 "chant, murmuring over and over in his half-conscious state. After a while, a "
@@ -2132,9 +2436,13 @@ msgid ""
 "feels foreign and alien. <i>‘There could have been another way. You might "
 "have been wrong.’</i>"
 msgstr ""
+"<i>\"没有遗憾。没有遗憾......\"</i>他像吟唱一样在呼吸下重复，在半意识的状态中"
+"一遍又一遍地喃喃自语。过了一会儿，第二个声音加入，声音听起来很像他自己的，但"
+"不知何故感觉陌生和陌生。<i>\"本来可以有另一种方式。你可能错了。</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:92
+#, fuzzy
 msgid ""
 "<i>“No, no. Even if there were another way, they would have spurned me all "
 "the same. They are wrong... blind. I have no regrets about what I did. No "
@@ -2145,14 +2453,22 @@ msgid ""
 "first a choir, then a duet, both male, then just one, a single voice alone "
 "in the darkness."
 msgstr ""
+"<i>\"不，不。即使有别的办法，他们也会抛弃我。他们错了...盲。我对我的所作所为"
+"没有遗憾。没有遗憾...\"</i>他平息了声音。睡眠来了，长长的无梦的黑暗短暂地被噩"
+"梦般的形式打断——扭曲、怪诞的东西，在令人毛骨悚然的熟悉声音中低语。<i>\"你被诅"
+"咒了，马林的诅咒！诅咒！诅咒。诅咒...'</i>他们一遍又一遍地回响，先是合唱团，"
+"然后是二重奏，既有男性，然后是一个，在黑暗中，一个声音。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:96
+#, fuzzy
 msgid ""
 "Malin wakes up to a plume of smoke rising in the east. He gives it only a "
 "brief thought before heading farther west toward Tath. Soon, he reunites "
 "with his teacher."
 msgstr ""
+"马林醒来时，东方冒出一股浓烟。在向西向塔斯走去之前，他只做了一个简短的思考。"
+"不久，他和老师团聚了。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:100
@@ -2257,7 +2573,7 @@ msgstr "移动马林和达肯·沃克，进入法师领主的庄园"
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:399
 #, fuzzy
 msgid "Defeat General Taylor"
-msgstr "泰勒"
+msgstr "OR：击败泰勒将军"
 
 #. [note]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:418
@@ -2266,8 +2582,9 @@ msgstr "此场景完全发生在夜间。"
 
 #. [note]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:421
+#, fuzzy
 msgid "Enemy units have reduced vision (radius 3)."
-msgstr ""
+msgstr "敌方单位视野下降（半径3）"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:457
@@ -2285,12 +2602,16 @@ msgstr ""
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:478
+#, fuzzy
 msgid ""
 "This spell will not hide us completely. If we stray too close to the guards, "
 "they will still be able to see us. Once we are spotted, we shall have to "
 "make a run for it. The faster we enter the manor, the more time we shall "
 "have to search for the book before the guards can pursue us."
 msgstr ""
+"这个咒语不会完全隐藏我们。如果我们离警卫太近，他们仍然能够看见我们。一旦我们"
+"被发现，我们将不得不为它跑一跑。我们进入庄园的速度越快，在警卫追赶我们之前，"
+"我们寻找书的时间就越多。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:483
@@ -2300,13 +2621,15 @@ msgstr "注意：一旦进入庄园，则只有你在此时征募的单位才可
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:499
+#, fuzzy
 msgid "This blasted fog is so thick! I can’t see a thing!"
-msgstr ""
+msgstr "这大雾太浓了！我什么也看不见！"
 
 #. [message]: speaker=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:504
+#, fuzzy
 msgid "Stay alert, soldier. Report anything unusual immediately."
-msgstr ""
+msgstr "保持警惕，士兵立即报告任何异常情况。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:525
@@ -2328,8 +2651,9 @@ msgstr "哦啊啊啊啊啊！烧起来了……烧嗷嗷嗷起来了……"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:591
+#, fuzzy
 msgid "What was that?!"
-msgstr ""
+msgstr "什么声音？！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:596
@@ -2344,8 +2668,9 @@ msgstr ""
 
 #. [message]: speaker=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:608
+#, fuzzy
 msgid "The undead are too strong! Retreat and regroup!"
-msgstr ""
+msgstr "亡灵太强壮了！撤退和重新组合！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:646
@@ -2354,11 +2679,14 @@ msgstr "这里是入口！快！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:692
+#, fuzzy
 msgid ""
 "We have no hope of entering the manor now that dawn has broken and the "
 "entire city guard is alerted to our presence. Your incompetence is truly "
 "appalling."
 msgstr ""
+"黎明已经破晓，整个城市的卫兵都警觉到我们的存在，我们没有希望进入庄园。你的无"
+"能真是骇人听闻。"
 
 #. [scenario]: id=08_A_Small_Favor2
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:5
@@ -2367,8 +2695,9 @@ msgstr "小小请求 — 第二部分"
 
 #. [time]: id=indoors
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:13
+#, fuzzy
 msgid "Indoors"
-msgstr ""
+msgstr "室内"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:121
@@ -2403,86 +2732,109 @@ msgstr "那门不可能把士兵们挡住几个小时。我们最好抓紧时间
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:431
+#, fuzzy
 msgid "Undead have entered the manor! Defend yourselves!"
-msgstr ""
+msgstr "亡灵已经进入庄园了！保卫自己！"
 
 #. [message]
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:631
+#, fuzzy
 msgid "Hunt down the undead! Destroy them all!"
-msgstr ""
+msgstr "追捕亡灵！把他们都消灭了！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:635
+#, fuzzy
 msgid ""
 "The city guard has entered the manor. We will have to hold them off while we "
 "search."
-msgstr ""
+msgstr "城警已经进入庄园。在我们搜索时，我们将不得不阻止他们。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:649
+#, fuzzy
 msgid "More guards are coming. We must hasten our search!"
-msgstr ""
+msgstr "更多的卫兵来了我们必须加快搜索！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:663
+#, fuzzy
 msgid "It does not look like we have much time left!"
-msgstr ""
+msgstr "看起来我们剩下的时间不多了！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:677
+#, fuzzy
 msgid "The only thing we have to fear is fear itself."
-msgstr ""
+msgstr "我们唯一需要害怕的就是恐惧本身。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:691
+#, fuzzy
 msgid "<i>... nameless, unreasoning, unjustified terror...</i>"
-msgstr ""
+msgstr "<i>...无名无姓，无理，无理恐怖...</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:704
+#, fuzzy
 msgid "<i>There is nothing good or bad, but thinking makes it so.</i>"
-msgstr ""
+msgstr "<i>没有什么好或坏，但思想使它。</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:717
+#, fuzzy
 msgid ""
 "<i>Mirrors of shallow blue, they stare,\n"
 "Piercing, unblinking, a pitiless reflection,\n"
 "Shattering our brittle, fancied reality.</i>"
 msgstr ""
+"<i>浅蓝色的镜子，他们凝视着，\n"
+"穿孔，不眨眼，无情的倒影，\n"
+"粉碎我们脆弱、幻想的现实。</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:732
+#, fuzzy
 msgid ""
 "<i>Emerald, verdant green gives way,\n"
 "Touched by shadow, the dark dye of black,\n"
 "A fetid stain of pestilence.</i>"
 msgstr ""
+"<i>绿宝石，翠绿让位，\n"
+"被阴影所触动，黑色的暗染，\n"
+"瘟疫的污渍。</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:747
+#, fuzzy
 msgid ""
 "<i>Crimson pool, the essence of life,\n"
 "Flesh and blood flow away to rot,\n"
 "Leaving only bones to remain.</i>"
 msgstr ""
+"<i>深红色的游泳池，生命的本质，\n"
+"血和血流腐烂，\n"
+"只留下骨头</i>"
 
 #. [message]: speaker=Lord Karres
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:768
+#, fuzzy
 msgid "Darken Volk! I should have known it was you! What are you doing here?"
-msgstr ""
+msgstr "变暗沃尔克！我应该知道是你！你在这里干什么？"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:772
+#, fuzzy
 msgid "Taking back what is rightfully mine."
-msgstr ""
+msgstr "夺回我的东西"
 
 #. [message]: speaker=Lord Karres
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:776
+#, fuzzy
 msgid ""
 "As impudent as ever. What lies in that book is not meant for human eyes — "
 "yours or mine."
-msgstr ""
+msgstr "和以往一样厚颜无耻。那本书里的东西不是为人的眼睛而写——你的还是我的。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:780
@@ -2492,36 +2844,42 @@ msgstr "我还没想死啊……"
 
 #. [message]: speaker=Lord Karres
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:784
+#, fuzzy
 msgid ""
 "Of course you are not. I assume your arrogance has only grown over the years."
-msgstr ""
+msgstr "你当然不是。我猜你的傲慢只是这些年来才增长的。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:788
+#, fuzzy
 msgid ""
 "If you wish to continue lecturing me, by all means, do so. It will only make "
 "you easier to kill."
-msgstr ""
+msgstr "如果你想继续讲课我，无论如何，这样做。它只会让你更容易杀死。"
 
 #. [message]: speaker=Lord Karres
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:792
+#, fuzzy
 msgid "I regret that it has come to this."
-msgstr ""
+msgstr "我很遗憾，它来到这一点。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:804
+#, fuzzy
 msgid "Someone was... messing... with some potions here."
-msgstr ""
+msgstr "有人...搞乱。。。这儿有些药水"
 
 #. [message]: speaker=Lord Karres
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:816
+#, fuzzy
 msgid "How... dare you..."
-msgstr ""
+msgstr "你这吞粪小废物竟敢说我是叛徒！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:820
+#, fuzzy
 msgid "Cease your prattle, you decrepit old man."
-msgstr ""
+msgstr "停止你那皮条，你这个破旧的老人。"
 
 #. [message]: speaker=Darken Volk
 #. a vault is a big underground room, sort of like a gigantic basement
@@ -2552,22 +2910,25 @@ msgstr "我想我已经找到了通往大礼堂的通道。快点跟我来！"
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:922
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:951
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1151
+#, fuzzy
 msgid "Surround those necromancers! They cannot escape now!"
-msgstr ""
+msgstr "包围那些巫师！他们现在逃不掉！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:926
+#, fuzzy
 msgid ""
 "Fool boy! You took too long to defeat Karres! Now we are at the mercy of the "
 "city guards!"
-msgstr ""
+msgstr "傻瓜男孩！你花了太长时间才打败卡雷斯！现在我们被城市守卫摆布了！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:955
+#, fuzzy
 msgid ""
 "Fool boy! You took too long to find the path to the vault! Now we are at the "
 "mercy of the city guards!"
-msgstr ""
+msgstr "傻瓜男孩！你花了太长时间才找到通往金库的路！现在我们被城市守卫摆布了！"
 
 #. [scenario]: id=09_A_Small_Favor3
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:5
@@ -2589,7 +2950,7 @@ msgstr "拿到书并逃脱"
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:365
 #, fuzzy
 msgid "Mage"
-msgstr "黑暗法师"
+msgstr "法师"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:473
@@ -2599,38 +2960,47 @@ msgstr "我感到书就在非常近的地方，就在西北面的某处。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:789
+#, fuzzy
 msgid "The guards continue to pursue us."
-msgstr ""
+msgstr "卫兵继续追赶我们。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:803
+#, fuzzy
 msgid "The guards are catching up to us!"
-msgstr ""
+msgstr "卫兵们正在追赶我们！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:817
+#, fuzzy
 msgid ""
 "<i>Beware that, when fighting monsters, you yourself do not become a "
 "monster...</i>"
-msgstr ""
+msgstr "<i>小心，当与怪物战斗时，你自己不会变成怪物...</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:830
+#, fuzzy
 msgid ""
 "<i>Death is the twilight that follows the light of day.\n"
 "Life fades with the setting sun into darkness.\n"
 "Existence churns and the soul is reborn into endless night.</i>"
 msgstr ""
+"<i>死亡是白天的暮色。\n"
+"生活随着夕阳的照射而消失。\n"
+"存在搅动，灵魂重生成无尽的夜晚。</i>"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:845
+#, fuzzy
 msgid "There are quite a few failed potions around here."
-msgstr ""
+msgstr "这儿有很多失败的药水。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:857
+#, fuzzy
 msgid "This coffin is empty."
-msgstr ""
+msgstr "这个棺材是空的。"
 
 #. [message]
 #. Spoken by a servant of Malin Keshar (dead or alive one).
@@ -2653,10 +3023,11 @@ msgstr "很好！用你的命保护好它，我就来取。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:935
+#, fuzzy
 msgid ""
 "Such an old, worn book. It does not seem like much, but at least we’ve got "
 "it now."
-msgstr ""
+msgstr "这么一本破旧的书。看起来不太像，但至少我们现在已经得到了它。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:940
@@ -2685,7 +3056,7 @@ msgstr "通过东北面地窖中的隧道逃跑"
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1114
 #, fuzzy
 msgid "Let’s get out of here."
-msgstr "咳！我们离开这里吧。"
+msgstr "我们离开这里。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1043
@@ -2708,8 +3079,9 @@ msgstr "通过东北面地窖中的隧道逃跑"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1067
+#, fuzzy
 msgid "Darken Volk reaches the tunnel before Malin does"
-msgstr ""
+msgstr "在马林到达隧道之前，黑暗沃尔克到达"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1091
@@ -2744,6 +3116,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:23
+#, fuzzy
 msgid ""
 "Silence permeates the darkness, broken only by the irregular dripping of "
 "water from the musty cave walls. Malin looks toward Darken Volk "
@@ -2752,6 +3125,9 @@ msgid ""
 "gratitude — only a sense of unease that has as much to do with the book as "
 "it does with Darken Volk."
 msgstr ""
+"寂静弥漫在黑暗中，只有从霉质的洞穴墙壁上不规则地滴水打破。马林偶尔朝\"黑暗"
+"\"沃尔克望去，期待老巫师们有所作为，但却遇到了冰冷的冷静。没有确认...没有感激"
+"之情——只有一种不安感，它与这本书和《黑暗Volk》一样。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:27
@@ -2844,45 +3220,55 @@ msgstr "等等！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:308
+#, fuzzy
 msgid ""
 "You used me! You knew the people of Parthyn would cast me out — you knew I "
 "had nobody else to turn to! You knew I would do whatever you said..."
 msgstr ""
+"你利用了我！你知道帕廷的人会把我赶出去——你知道我没有人可以求助！你知道我会做"
+"任何你说的..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:315
+#, fuzzy
 msgid "... have I really just been a pawn all this time?"
-msgstr ""
+msgstr "...我真的一直只是当家过一把吗？"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:320
+#, fuzzy
 msgid "Why don’t you say anything?! Don’t you care at all?!"
-msgstr ""
+msgstr "你为什么不说什么？！你根本不在乎吗？！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:327
+#, fuzzy
 msgid ""
 "... you can’t abandon me too, not the way they did... Father, Drogan, Dela..."
-msgstr ""
+msgstr "...你不能抛弃我，而不是他们的方式...父亲，德罗根，德拉..."
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:335
+#, fuzzy
 msgid ""
 "He will not help you, but perhaps the book might. You were the one who "
 "helped him retrieve it; it is rightfully yours!"
-msgstr ""
+msgstr "他不会帮你，但也许这本书可能。是你帮他找回的;这是理所当然的！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:340
+#, fuzzy
 msgid "Yes, perhaps, I suppose that is right..."
-msgstr ""
+msgstr "是的，也许，我想那是对的..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:345
+#, fuzzy
 msgid ""
 "Darken Volk! That book is as much mine as it is yours! Give it back, or I "
 "will have to take it by force!"
 msgstr ""
+"变暗沃尔克！那本书和你的一样属于我！把它还回去，否则我将不得不用武力拿走它！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:360
@@ -2922,23 +3308,29 @@ msgstr ""
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:457
+#, fuzzy
 msgid ""
 "The only thing I have done is given you the power to achieve your own goals. "
 "The rest, you have done yourself."
 msgstr ""
+"我所做的唯一一件事就是赋予你实现自己目标的能力。其余的，你已经做了自己。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:462
+#, fuzzy
 msgid "That’s not true! You can’t abandon me like this!"
-msgstr ""
+msgstr "那不是真的！你不能这样抛弃我！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:467
+#, fuzzy
 msgid ""
 "Enough prattle from you, boy. Fighting the orcs is your ambition, not mine. "
 "You cannot expect me to help you in an endeavor that does not concern me at "
 "all."
 msgstr ""
+"够了，孩子与兽人战斗是你的野心，不是我的。你不能指望我帮助你，在一个与我无关"
+"的努力。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:472
@@ -2983,6 +3375,7 @@ msgstr "卡达艾乌斯爵士"
 
 #. [message]: speaker=Sir Cadaeus
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:558
+#, fuzzy
 msgid ""
 "Your travels in this region have not gone unnoticed, necromancers! The "
 "disaster you wreaked upon the good city of Tath and the noble Lord Karres "
@@ -2990,6 +3383,9 @@ msgid ""
 "may remain of them. Yes, on this day, you shall have to answer for your "
 "innumerable crimes."
 msgstr ""
+"你在这个地区的旅行并没有被忽视，巫师！你对塔斯和高贵的卡雷斯勋爵造成的灾难只"
+"能用你们的鲜血和灵魂来回报——不管他们留下什么。是的，在这一天，你必须为你无数"
+"的罪行负责。"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:563
@@ -3012,36 +3408,42 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:620
+#, fuzzy
 msgid "... I suppose you did vow to kill me..."
-msgstr ""
+msgstr "...我想你确实发誓要杀我..."
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:625
+#, fuzzy
 msgid ""
 "Did you not think I would keep my word? Attack him, men! Do not let the "
 "traitor escape!"
-msgstr ""
+msgstr "你不认为我会信守诺言吗？攻击他，老人！不要让叛徒逃跑！"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:639
+#, fuzzy
 msgid ""
 "Vile fiend... I regret that I was... not strong enough... to destroy you..."
-msgstr ""
+msgstr "邪恶恶魔...我很遗憾我...不够强大...摧毁你..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:644
+#, fuzzy
 msgid "You brought this on yourself..."
-msgstr ""
+msgstr "你亲自带来了这个..."
 
 #. [message]: speaker=Sir Cadaeus
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:673
+#, fuzzy
 msgid "For the Light I fall..."
-msgstr ""
+msgstr "为了我坠落的光..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:708
+#, fuzzy
 msgid "See? This is what happens when you abandon me!"
-msgstr ""
+msgstr "看到？这就是当你抛弃我时发生的事情！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:713
@@ -3052,8 +3454,9 @@ msgstr "用我临终的这口气诅咒你，被诅咒的马林！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:728
+#, fuzzy
 msgid "I have already been cursed many times over. One more time is nothing..."
-msgstr ""
+msgstr "我已经被诅咒过很多次了。再说一次什么都不是..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:733
@@ -3078,12 +3481,13 @@ msgstr "将一个单位移动到书所在的地方以捡起它。蝙蝠和鬼魂
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:809
 #, fuzzy
 msgid "I have the book."
-msgstr "我拿到书了！"
+msgstr "我拿到这本书。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:815
+#, fuzzy
 msgid "My minions have captured the book."
-msgstr ""
+msgstr "我的小人已经抓住了这本书。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:837
@@ -3094,13 +3498,15 @@ msgstr "对不起，主人，那对我而言太重了。"
 #. [message]: speaker=unit
 #. this is just a squeaking sound a bat might make
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:856
+#, fuzzy
 msgid "Neep! Neep!"
-msgstr ""
+msgstr "呢！呢！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:861
+#, fuzzy
 msgid "It’s impossible for a bat to carry a book that heavy."
-msgstr ""
+msgstr "蝙蝠不可能背着一本如此沉重的书。"
 
 #. [unit]: type=Paladin, id=Telemon
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:875
@@ -3121,47 +3527,58 @@ msgstr "他们的增援到了！我花了太多时间来拿书，现在我赢不
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:916
+#, fuzzy
 msgid ""
 "The terrain is hazardous in these mountains. Neither the paladins nor Dela "
 "will be able to pursue me."
-msgstr ""
+msgstr "这些山的地形很危险。牧师和德拉都不能追我。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:921
+#, fuzzy
 msgid ""
 "... then again, is there a point? Even should I escape, then what? All that "
 "I have fought for, everyone who I have tried to protect, everything is gone "
 "to me."
 msgstr ""
+"...话又说回来，有道理吗？即使我应该逃跑，那又怎样？我为之奋斗的一切，所有我试"
+"图保护的人，一切都属于我。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:926
+#, fuzzy
 msgid ""
 "Life, death... unlife — at this point, I could accept any of them and "
 "nothing would change."
-msgstr ""
+msgstr "生命 死亡...在这一点上，我可以接受其中任何一个，没有什么会改变。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:931
+#, fuzzy
 msgid "... but, I suppose giving up now would be a waste..."
-msgstr ""
+msgstr "...但是，我想现在放弃会是一种浪费..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:946
+#, fuzzy
 msgid "So, they are all dead. The paladin, Darken Volk, Dela..."
-msgstr ""
+msgstr "所以，他们都死了。帕拉丁，黑暗沃尔克，德拉..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:951
+#, fuzzy
 msgid ""
 "All that I have fought for, everyone who I have tried to protect, everything "
 "is gone. Everyone is dead. Is this truly all that I am left with?"
 msgstr ""
+"我为之奋斗的一切，所有我试图保护的人，一切都消失了。每个人都死了这真的是剩下"
+"的一切吗？"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:956
+#, fuzzy
 msgid "... nothing at all..."
-msgstr ""
+msgstr "...什么都没有..."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:29
@@ -3186,6 +3603,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:37
+#, fuzzy
 msgid ""
 "Malin closes the book. After all this time and all that he has struggled "
 "for, could he just surrender to despair and perish? Could he... would he "
@@ -3193,6 +3611,9 @@ msgid ""
 "in the back of his mind. Life has offered him nothing; could death be any "
 "worse? Death... and not rebirth, but undeath."
 msgstr ""
+"马林合上书。经过所有这些时间，他一直为之奋斗，他能屈服于绝望和灭亡吗？他能..."
+"他会放弃吗？尽管如此，那些可怕的想法，仍然留在他的脑海。生活没有给他任何东西;"
+"死亡会更糟吗？死亡。。。而不是重生，而是没有死亡。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:41
@@ -3225,17 +3646,22 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:49
+#, fuzzy
 msgid ""
 "<i>There is nothing else left for me to do anyway,</i> Malin thinks, and "
 "raises his undead to assault the camp. Within mere minutes, nearly his "
 "entire army is destroyed and he is badly injured by a poisoned dagger. Malin "
 "retreats and finds refuge in a small cave."
 msgstr ""
+"<i>反正我什么也做</i>不了马林想，并提出了他的亡灵攻击营地。在短短几分钟内，他"
+"的整个军队几乎被摧毁，他被一把毒刀严重打伤。马林撤退，在一个小山洞里找到避难"
+"所。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:245
+#, fuzzy
 msgid "Cursed beasts!"
-msgstr ""
+msgstr "被诅咒的野兽！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:257
@@ -3250,15 +3676,19 @@ msgstr "主人，您的伤很严重！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:367
+#, fuzzy
 msgid "So it seems..."
-msgstr ""
+msgstr "看起来..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:372
+#, fuzzy
 msgid ""
 "Perhaps it would be a suitable end. The orcs were the ones who provoked this "
 "journey of mine. Would it not be fitting for them to end my quest as well?"
 msgstr ""
+"也许这将是一个合适的结局。兽人是挑起我的旅程的人。他们结束我的追求是否也不合"
+"适？"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:377
@@ -3268,17 +3698,22 @@ msgstr "这有另一条路可走，主人。还记得那本书么……"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:382
+#, fuzzy
 msgid ""
 "Yes... yes. The book. That half-rotten, tattered tome which I gave my blood "
 "and soul for. I forsook my people, my family, my home... to follow that "
 "damned necromancer! And in the end, he betrayed me too, just like Drogan, "
 "just like Dela..."
 msgstr ""
+"是的。。。是的。书那半烂的，破烂的托米，我给了我我的血液和灵魂。我把我的人，"
+"我的家人，我的家...跟着那个该死的巫师！最后，他也背叛了我，就像德洛根一样，就"
+"像德拉一样..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:387
+#, fuzzy
 msgid "Everyone has betrayed me. I am alone. All that is left..."
-msgstr ""
+msgstr "每个人都背叛了我我独自一人。剩下的一切..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:416
@@ -3293,8 +3728,9 @@ msgstr "遵命，主人。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:457
+#, fuzzy
 msgid "... I suppose I have never been one for regrets..."
-msgstr ""
+msgstr "...我想我从来没有后悔过..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:477
@@ -3307,8 +3743,9 @@ msgstr "我准备好了。开始吧。"
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:535
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:798
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1010
+#, fuzzy
 msgid "Limbo"
-msgstr ""
+msgstr "虚空幻境"
 
 #. [unit]: id=MKFlesh, type=Necrophage
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:568
@@ -3318,63 +3755,78 @@ msgstr "马林·凯沙死亡"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:616
+#, fuzzy
 msgid "I feel... different. Where am I?"
-msgstr ""
+msgstr "我觉得...不同。我在哪里？"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:621
+#, fuzzy
 msgid "Why is my body still intact? Am I still alive? Or..."
-msgstr ""
+msgstr "为什么我的身体仍然完好无损？我还活着吗？或。。。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:626
+#, fuzzy
 msgid "... something isn’t quite right."
-msgstr ""
+msgstr "...事情不太对。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:653
+#, fuzzy
 msgid ""
 "I see, accepting death was not enough. To become a lich, I must master it."
-msgstr ""
+msgstr "我明白，接受死亡是不够的。要成为一个巫妖，我必须掌握它。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:658
+#, fuzzy
 msgid ""
 "First comes the flesh, the physical form of life. Blood is the crux of life "
 "for mortal creatures, but if I wish to ascend beyond that..."
 msgstr ""
+"首先是肉体，生命的物理形式。血液是凡人生物生命的症结所在，但如果我想超越这一"
+"点..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:719
+#, fuzzy
 msgid ""
 "Stepping on runes provides Malin with a temporary buff. He loses any "
 "additional abilities he obtains if he steps off of the corresponding "
 "runestone."
 msgstr ""
+"踩在跑步上为马林提供了一个临时的爱好者。如果他离开相应的流石，他会失去他获得"
+"的任何额外能力。"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:727
+#, fuzzy
 msgid "Complete the ritual"
-msgstr ""
+msgstr "完成仪式"
 
 #. [note]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:734
+#, fuzzy
 msgid ""
 "While Malin is standing on a runestone, he receives additional abilities"
-msgstr ""
+msgstr "当马林站在一块墓碑上时，他接受了额外的能力"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:769
+#, fuzzy
 msgid "The flesh dies, and then..."
-msgstr ""
+msgstr "肉死了 然后..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:834
+#, fuzzy
 msgid "Drain the blood, strip away the meat, and all that is left is the bone."
-msgstr ""
+msgstr "排干血液，剥去肉，剩下的就是骨头。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:861
+#, fuzzy
 msgid ""
 "I remember a time when I thought skeletons were repulsive, sickening things. "
 "I suppose it is only natural for the living to fear the most prominent "
@@ -3383,11 +3835,16 @@ msgid ""
 "and friends, yes, but they were nothing but simpletons. Would that they had "
 "tried to understand me instead of shunning me outright."
 msgstr ""
+"我记得有一次，我以为骷髅是令人厌恶的，令人作呕的东西。我想，活着的人害怕最杰"
+"出的死亡人物是很自然的。即使我成长于这种天真的想法...我想我不可能指望德洛根和"
+"德拉这么容易效仿。我的家人和朋友，是的，但他们只不过是个傻瓜。他们会试图理解"
+"我，而不是直接回避我。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:866
+#, fuzzy
 msgid "I do not really regret following my own path that much."
-msgstr ""
+msgstr "我并不后悔走自己的路那么多。"
 
 #. [unit]: id=MKBone, type=Revenant
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:939
@@ -3397,18 +3854,23 @@ msgstr "马林·凯沙死亡"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:981
+#, fuzzy
 msgid "The physical form collapses altogether. What remains?"
-msgstr ""
+msgstr "物理形式完全崩溃。还能做什么？"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1069
+#, fuzzy
 msgid ""
 "The soul. Dela always said I was a creature without a soul. I suppose she "
 "was jesting at the time, but perhaps not after I killed Drogan."
 msgstr ""
+"灵魂德拉总是说我是一个没有灵魂的生物。我想她当时在嘲笑，但也许不是在我杀了德"
+"罗根之后。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1074
+#, fuzzy
 msgid ""
 "Bah! Two can play that game. I have only ever fought to protect my people "
 "and my family, but the only thing I received in return was scorn and exile. "
@@ -3416,18 +3878,23 @@ msgid ""
 "to orcs than follow my ‘sorcerous ways’. Drogan, Dela... all of them! They "
 "are the ones without souls, not me!"
 msgstr ""
+"呸！两个可以玩这个游戏。我只曾经为保护我的人民和我的家人而奋斗过，但我得到的"
+"唯一回报是蔑视和流放。我自己的妹妹不会听我的。我的人宁愿养活自己的兽人，而不"
+"是遵循我的'巫术方式'。德罗根 德拉...所有的人！他们是没有灵魂的人，不是我！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1079
+#, fuzzy
 msgid ""
 "I should not really care anymore. According to them, I have forsaken my soul "
 "already. So what does it matter?"
-msgstr ""
+msgstr "我不再在乎了根据他们的说法，我已经抛弃了我的灵魂。那又有什么关系呢？"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1084
+#, fuzzy
 msgid "I should not regret anything. I’m not really one for regrets..."
-msgstr ""
+msgstr "我不应该后悔任何事情。我不是一个后悔的人..."
 
 #. [unit]: id=MKSpirit, type=Spectre
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1151
@@ -3437,71 +3904,83 @@ msgstr "马林·凯沙死亡"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1208
+#, fuzzy
 msgid ""
 "These thralls contain only a meager amount of energy, but enough to sustain "
 "me."
-msgstr ""
+msgstr "这些毛套只含有少量的能量，但足以维持我。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1224
+#, fuzzy
 msgid ""
 "The flesh appears, distorted and warped, but somehow strangely familiar."
-msgstr ""
+msgstr "肉出现，扭曲和扭曲，但不知何故奇怪的熟悉。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1238
+#, fuzzy
 msgid "I feel an aching in my bones, as if my joints are about to fall apart."
-msgstr ""
+msgstr "我感到骨头疼痛，好像我的关节即将破裂。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1252
+#, fuzzy
 msgid ""
 "Cold... it’s so very cold. Not a biting chill, but a numbness, an emptiness, "
 "as if there is nothing left inside of me..."
 msgstr ""
+"冷。。。太冷了不是刺骨的寒意，而是麻木，空虚，仿佛我内心什么都没有留下..."
 
 #. [leadership]: id=conscience
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1287
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1288
+#, fuzzy
 msgid "conscience"
-msgstr ""
+msgstr "良心"
 
 #. [leadership]: id=conscience
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1289
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1290
+#, fuzzy
 msgid "This unit has its damage increased by 50%"
-msgstr ""
+msgstr "此装置的损坏增加了 50%"
 
 #. [resistance]: id=carapace
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1341
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1342
+#, fuzzy
 msgid "carapace"
-msgstr ""
+msgstr "甲壳"
 
 #. [resistance]: id=carapace
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1343
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1344
+#, fuzzy
 msgid "This unit gains 40% to all resistances."
-msgstr ""
+msgstr "此单位获得 40% 的所有阻力。"
 
 #. [regenerate]: id=lifeblood
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1391
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1392
+#, fuzzy
 msgid "lifeblood"
-msgstr ""
+msgstr "命脉"
 
 #. [regenerate]: id=lifeblood
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1393
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1394
+#, fuzzy
 msgid ""
 "This unit will heal 40 HP every turn. If it is poisoned, it will remove the "
 "poison instead of healing."
-msgstr ""
+msgstr "此装置将治愈 40 HP 每回合。如果它被毒害，它会去除毒药，而不是愈合。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1521
+#, fuzzy
 msgid "These runes seem to be useful."
-msgstr ""
+msgstr "这些运行似乎是有用的。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1577
@@ -3558,10 +4037,11 @@ msgstr "我需要温暖……生命……我感到这里就有！ "
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1780
+#, fuzzy
 msgid ""
 "I sense some primitive life in that direction. Perhaps I can sustain myself "
 "upon them."
-msgstr ""
+msgstr "我感觉到一些原始的生活在这个方向。也许我可以支撑自己。"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1937
@@ -3579,17 +4059,22 @@ msgstr "玛尔·凯沙毁灭"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1969
+#, fuzzy
 msgid ""
 "<s><i>Welcome to Zephryn’s laboratory. Please be mindful of ongoing "
 "experiments during your visit.</i></s>\n"
 "<big><i><b>This territory is the domain of the mighty Xanthric. All "
 "unwelcome intruders shall die.</b></i></big>"
 msgstr ""
+"<s><i>欢迎来到泽弗林的实验室请在访问期间注意正在进行的实验。</i></s>\n"
+"<big><i><b>这片土地是强大的桑斯里克的领地。所有不受欢迎的入侵者都要死。</b></"
+"i></big>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1984
+#, fuzzy
 msgid "That mage’s name is suspiciously... familiar."
-msgstr ""
+msgstr "那个师子的名字很可疑...熟悉。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2006
@@ -3599,20 +4084,23 @@ msgstr "那些是什么东西？"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2027
+#, fuzzy
 msgid "Blasted rats!"
-msgstr ""
+msgstr "爆炸的老鼠！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2048
+#, fuzzy
 msgid ""
 "Dela used to be afraid of spiders. Imagine if I showed her something like "
 "this..."
-msgstr ""
+msgstr "德拉过去害怕蜘蛛。想象一下，如果我给她看这样的东西..."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2079
+#, fuzzy
 msgid "What an unusual bat."
-msgstr ""
+msgstr "多么不寻常的蝙蝠"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2102
@@ -3626,117 +4114,146 @@ msgstr "对！我可以从这些微不足道的生物身上吸取能量。"
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2182
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2213
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2244
+#, fuzzy
 msgid "You found some gold!"
-msgstr ""
+msgstr "你找到一些金子了！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2287
+#, fuzzy
 msgid "You picked up a brazier!"
-msgstr ""
+msgstr "你捡到了一个巴西人！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2320
+#, fuzzy
 msgid "You picked up an empty flask."
-msgstr ""
+msgstr "你拿起一个空烧瓶"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2340
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2505
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2635
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2688
+#, fuzzy
 msgid "You should do something else first."
-msgstr ""
+msgstr "你应该先做点别的事情。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2373
+#, fuzzy
 msgid "You melted the ice."
-msgstr ""
+msgstr "你融化了冰"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2397
+#, fuzzy
 msgid "You filled the flask."
-msgstr ""
+msgstr "你装满了烧瓶"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2429
+#, fuzzy
 msgid "You picked up the flask of water."
-msgstr ""
+msgstr "你捡起水瓶。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2464
+#, fuzzy
 msgid "You created a new potion!"
-msgstr ""
+msgstr "你创造了一个新的药水！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2470
+#, fuzzy
 msgid ""
 "Mal Keshar drinks the potion and feels energy flow through his skeletal "
 "form. The power of death surges in his vacant body, threatening to overflow, "
 "to burst free, but at the last moment, he reins it in. The stream of magic "
 "trickles down to drops, diminished, tempered, but manageable."
 msgstr ""
+"马尔·凯沙尔喝药水，感觉能量通过他的骨骼形式流动。死亡的力量在他空虚的躯体中涌"
+"出，威胁着溢出，爆发出来，但在最后一刻，他却把它托了过来。魔法流滴到下降，减"
+"少，缓和，但可管理。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2535
+#, fuzzy
 msgid ""
 "<i>Dark water beneath crystal ice,\n"
 "Unmasked by a lick of flame,\n"
 "Transmuted by the altar of darkness\n"
 "Into pitch black shadow.</i>"
 msgstr ""
+"<i>水晶冰下的暗水\n"
+"被一舔火焰蒙住，\n"
+"被黑暗的祭坛所转变\n"
+"进入俯仰黑影。</i>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2550
+#, fuzzy
 msgid "Someone left their experiment unfinished here."
-msgstr ""
+msgstr "有人把他们的实验留在这里了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2581
+#, fuzzy
 msgid "You picked up a key!"
-msgstr ""
+msgstr "你拿了一把钥匙！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2610
+#, fuzzy
 msgid "You found a skeleton."
-msgstr ""
+msgstr "你找到骷髅了"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2616
+#, fuzzy
 msgid ""
 "There are some robe scraps stuck to this skeleton. This must have once been "
 "a mage."
-msgstr ""
+msgstr "有一些长袍碎片粘在这个骨架上。这一定是个师。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2664
+#, fuzzy
 msgid "You picked up a brazier."
-msgstr ""
+msgstr "你捡到了一个巴西人"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2721
+#, fuzzy
 msgid "You opened the coffin."
-msgstr ""
+msgstr "你打开了棺材"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2741
+#, fuzzy
 msgid "You placed the skeleton in the coffin."
-msgstr ""
+msgstr "你把骷髅放在棺材里"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2761
+#, fuzzy
 msgid "You cremated the bones!"
-msgstr ""
+msgstr "你火化了骨头！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2767
+#, fuzzy
 msgid ""
 "Ash swirls upward, charred remnants of the once living. Charcoal from bone, "
 "embers from flesh, he consumes the pallid cinders, siphoning away the energy "
 "with a draining touch."
 msgstr ""
+"灰烬向上盘旋，烧焦的残余曾经活着。木炭从骨头，余烬从肉，他消耗苍白的烧渣，吸"
+"走能量与排水触摸。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2820
+#, fuzzy
 msgid ""
 "<i>Bones, scattered carelessly onto the floor,\n"
 "Remains laid without rest,\n"
@@ -3745,60 +4262,81 @@ msgid ""
 "Then, the key is found and the lid opened,\n"
 "And the tongue of fire begets ashen repose.</i>"
 msgstr ""
+"<i>骨头，不小心散落在地板上，\n"
+"没有休息的遗物，\n"
+"住在他们的棺材外面，锁起来，\n"
+"在永恒的觉醒中。\n"
+"然后，找到钥匙，盖子打开，\n"
+"火的舌头让阿申休息。</i>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2871
+#, fuzzy
 msgid ""
 "I sense the lair of something powerful nearby. Capturing that castle may be "
 "a worthwhile endeavor, but I shall have to approach carefully."
 msgstr ""
+"我感觉到附近有强大的东西的巢穴。占领那座城堡可能是一项值得的努力，但我必须小"
+"心对待。"
 
 #. [unit]: id=Xanthric, type=Fire Dragon
 #. [unit]: id=Xanthric, type=Skeletal Dragon
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2965
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3585
+#, fuzzy
 msgid "Xanthric"
-msgstr ""
+msgstr "桑思里奇"
 
 #. [message]: speaker=Xanthric
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2997
+#, fuzzy
 msgid ""
 "<i><big>What manner of vile creature intrudes upon my domain?!</big></i>"
-msgstr ""
+msgstr "<i><big>什么卑鄙的生物侵入我的领域？！</big></i>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3002
+#, fuzzy
 msgid "<i>I suppose there is some irony in this.</i>"
-msgstr ""
+msgstr "<i>我想这有一些讽刺意味。</i>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3007
+#, fuzzy
 msgid ""
 "I was not aware that dragons still existed. This was most unexpected. "
 "Nevertheless, this shall be a worthwhile test of my new powers."
 msgstr ""
+"我不知道龙仍然存在。这是最出乎意料的。然而，这将是对我新权力的一次值得考验。"
 
 #. [message]: speaker=Xanthric
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3012
+#, fuzzy
 msgid ""
 "<i><big>A derelict corpse like you has no business challenging a dragon! "
 "Even my lowly elementals will be more than a match for you. Rise, my thralls!"
 "</big></i>"
 msgstr ""
+"<i><big>像你这样的废弃尸体没有生意挑战龙！甚至我的低级元素也会比得上你。站起"
+"来，我的宝贝！</big></i>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3037
+#, fuzzy
 msgid ""
 "Fire magic. Annoying, but you are not the only one who can summon minions to "
 "your aid."
-msgstr ""
+msgstr "火魔法令人讨厌，但你并不是唯一能召唤小人来协助的人。"
 
 #. [message]: speaker=Xanthric
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3149
+#, fuzzy
 msgid ""
 "<i><big>A few decrepit souls will do you no good, necromancer. Your bones "
 "shall soon join my garden of carcasses!</big></i>"
 msgstr ""
+"<i><big>一些破旧的灵魂对你毫无关系，巫师。你的骨头很快就会加入我的尸骨花园！"
+"</big></i>"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3170
@@ -3808,32 +4346,40 @@ msgstr "击败另一名愚蠢的英雄"
 
 #. [note]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3181
+#, fuzzy
 msgid "At most one rune may be activated each turn"
-msgstr ""
+msgstr "每圈最多可激活一个 rune"
 
 #. [message]: speaker=Xanthric
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3204
+#, fuzzy
 msgid ""
 "<i><big>How dare you?! That stone is <b>my</b> throne! I am the king of this "
 "domain!</big></i>"
 msgstr ""
+"<i><big>你怎么敢？！那块石头<b>是我的</b>宝座！我是这个领域的国王！</big></i>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3209
+#, fuzzy
 msgid ""
 "Peasant, warrior, king or emperor, all living things are the subjects of "
 "death. Eternity will claim your soul as its own if I do not."
 msgstr ""
+"农民、战士、国王或皇帝，所有生物都是死亡的主体。如果我不这样做，永恒将声称你"
+"的灵魂是它自己的。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3456
+#, fuzzy
 msgid "There are many corpses around here. I can use them to my advantage."
-msgstr ""
+msgstr "这附近有很多尸体。我可以利用它们来发挥我的优势。"
 
 #. [message]: speaker=Xanthric
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3484
+#, fuzzy
 msgid "How could this happen..."
-msgstr ""
+msgstr "怎么会这样..."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3489
@@ -3843,19 +4389,24 @@ msgstr "你甚至比我所想的还要愚蠢得多。"
 
 #. [message]: speaker=Xanthric
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3504
+#, fuzzy
 msgid "<i>I feel... so... cold...</i>"
-msgstr ""
+msgstr "<i>我觉得...所以。。。冷。。。</i>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3514
+#, fuzzy
 msgid ""
 "So, the beast dies. I will have to make a few modifications to this lair "
 "later. First, I shall have to test the extent to which I can push these new "
 "powers."
 msgstr ""
+"所以，野兽死了。我以后必须对这个巢穴做一些修改。首先，我必须测试我在多大程度"
+"上可以推动这些新权力。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3635
+#, fuzzy
 msgid ""
 "Excellent! My will is even strong enough to conquer a dragon. None can stand "
 "against me any longer! To those who cursed me prior: I spit at thee! For I "
@@ -3863,11 +4414,15 @@ msgid ""
 "draw breath! I laugh, for now, you are all naught but remains and dust, and "
 "I live on, alone..."
 msgstr ""
+"非常好！我的意志甚至足以征服一条龙。再也没有人可以反对我了！对那些以前诅咒我"
+"的人：我随你而去！因为我是马尔·凯沙尔的诅咒，被所有的人抛弃，被所有活着和吸气"
+"的人抛弃！我笑，现在，你们都是一无所有，但仍然和灰尘，我生活，独自生活..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3653
+#, fuzzy
 msgid "So this is how it ends..."
-msgstr ""
+msgstr "这就是结局..."
 
 #. [scenario]: id=12_Endless_Night
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:5
@@ -3889,19 +4444,24 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:29
+#, fuzzy
 msgid ""
 "The lich sometimes wonders if his endeavors are naught but a fruitless "
 "crusade, but then again, so what? Life, unlife, death... nothing has ever "
 "given his existence meaning. And yet, he still persists on? For what?"
 msgstr ""
+"巫妖有时想知道，如果他的努力是徒劳的，但徒劳的十字军，但话又说回来，那么呢？"
+"生命，无生命，死亡...从来没有给他的存在意义。然而，他仍然坚持吗？为什么？"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:33
+#, fuzzy
 msgid "<i>Reason and purpose...</i>"
-msgstr ""
+msgstr "<i>原因和目的...</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:37
+#, fuzzy
 msgid ""
 "He needs none. Philosophy only begets misery. Violence and savagery have "
 "been the essence of his existence, the forces that once controlled his life, "
@@ -3909,6 +4469,9 @@ msgid ""
 "deliberation, for what use is there to dwell on any alternative? He has "
 "never been one for regrets."
 msgstr ""
+"他不需要哲学只会带来痛苦。暴力和野蛮一直是他存在的本质，曾经控制他生命的力"
+"量，那些未死的力量。最好是简单地杀人，不经考虑，有什么用，有什么用，想解决任"
+"何选择？他从来就不是一个后悔的人。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:47
@@ -3942,6 +4505,7 @@ msgstr ""
 #. More text from the epilogue of Secrets of the Ancients
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:57
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:72
+#, fuzzy
 msgid ""
 "<i>“As for me, I will make my journal conspicuous on this battlefield. I "
 "suspect that most will fear it enough to try to destroy it, but I have "
@@ -3950,6 +4514,10 @@ msgid ""
 "minded. Tath, in particular, is home to many mages. It only takes one who is "
 "willing to learn...”</i>"
 msgstr ""
+"<i>\"至于我，我会让我的日记在这个战场上引人注目。我怀疑大多数人会害怕它，试图"
+"摧毁它，但我在我的日记里放了几个病房来保护它。这样，它应该存活足够长的时间，"
+"使其进入一个更开放的人手中。特别是塔思，是许多法师的家。只需要一个愿意学习的"
+"人...\"</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:76
@@ -3964,6 +4532,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:80
+#, fuzzy
 msgid ""
 "Still, despite his misgivings about being manipulated, he feels that he can "
 "learn something from the book. Orcs had only ever been half of the story — "
@@ -3973,16 +4542,24 @@ msgid ""
 "necromancy as merely another magical art, could it eventually be accepted in "
 "society?"
 msgstr ""
+"尽管如此，尽管他对纵的疑虑，他觉得自己可以从书中学到一些东西。兽人只是故事的"
+"一半——另一个是他自己的人不能接受他使用黑暗魔法。但是，如果他允许一个愚蠢的英"
+"雄拿这本书的副本，其他人最终会跟随他的脚步吗？如果足够多的人开始把坏死仅仅看"
+"作是另一种神奇的艺术，它最终能被社会接受吗？"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:89
+#, fuzzy
 msgid ""
 "The book still sits on a dusty shelf in Mal Keshar’s keep, untended and "
 "untouched, but constantly plaguing the forefront of the lich’s mind."
 msgstr ""
+"这本书仍然放在马尔·凯沙尔的保留，不注意和不变，但不断困扰着利希的头脑最前沿的"
+"尘土飞扬的书架上。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:93
+#, fuzzy
 msgid ""
 "If he allowed a foolish hero to take a copy of the book, would others "
 "eventually follow in his footsteps? Would the author’s plan actually work, "
@@ -3992,6 +4569,10 @@ msgid ""
 "any conclusions, but a slightly embellished copy of the tome sits there in "
 "his lair, waiting to be taken."
 msgstr ""
+"如果他允许一个愚蠢的英雄拿这本书的拷贝，其他人最终会追随他的脚步吗？作者的计"
+"划真的有效吗？还是人们继续将邪恶仅仅视为一种腐败的权力？一个声音告诉他，被社"
+"会接受不应该引起他任何关注。另一位说，不会伤害他尝试。他没有得出任何结论，但"
+"一个稍微修饰的托姆副本坐在他的巢穴里，等待被带走。"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:99
@@ -4043,8 +4624,9 @@ msgstr "当死灵法师在城堡里时，右击以将他转化为巫妖。"
 
 #. [set_menu_item]: id=lichify
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:245
+#, fuzzy
 msgid "Transform into a lich"
-msgstr ""
+msgstr "转化为一个巫妖"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:275
@@ -4100,11 +4682,14 @@ msgstr "强盗"
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:518
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:972
+#, fuzzy
 msgid ""
 "We have finally found you, lich! Long have we heard of your abominable "
 "deeds, ensnaring the living with your dark sorceries and molding them into "
 "your slaves. Your wretched unlife ends here!"
 msgstr ""
+"我们终于找到你了，嘿！很久之后，我们听说过你可恶的行为，用你们黑暗之躯把活着"
+"的人包围在一起，把他们塑造成你的奴隶。你可怜的不生活就在这里结束！"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:523
@@ -4118,10 +4703,11 @@ msgstr "精灵"
 #. written with a dwarvish accent - regular english would be "it's been along time since I've smashed some undead. You've got plenty of bones for my hammer to break"
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:580
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:986
+#, fuzzy
 msgid ""
 "Been a long time since I’ve smashed me some undead. Ye gots ye plenty o’ "
 "bones for me hammer ta break."
-msgstr ""
+msgstr "很久以来，我一直把我打掉一些不死。叶有你很多骨头给我锤打断。"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:585
@@ -4133,19 +4719,24 @@ msgstr "矮人"
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:648
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:999
+#, fuzzy
 msgid ""
 "I’ve finally found your lair, lich! You have attacked my tribe and wreaked "
 "havoc on our homes for many years. You slew my father and turned his body "
 "into one of your nasty creations. With your death, your annoying minions "
 "will pester us no longer!"
 msgstr ""
+"我终于找到了你的巢穴，巫妖！多年来，你攻击我的部落，破坏我们的家园。你杀死了"
+"我的父亲，把他的尸体变成了你讨厌的造物之一。随着你的死亡，你烦人的奴子将不再"
+"缠着我们！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:657
+#, fuzzy
 msgid ""
 "I almost feel as if the universe is mocking me by sending me this many "
 "imbeciles..."
-msgstr ""
+msgstr "我几乎觉得宇宙在嘲笑我，送我这么多傻子..."
 
 #. [unit]: type=Royal Guard, id=Foolish Hero
 #. [unit]: type=Highwayman, id=Foolish Hero
@@ -4193,10 +4784,11 @@ msgstr "这会不断继续吗？"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:931
+#, fuzzy
 msgid ""
 "At this point, I would be more surprised if these foolish heroes stopped "
 "showing up."
-msgstr ""
+msgstr "在这一点上，我会更惊讶，如果这些愚蠢的英雄停止出现。"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:945
@@ -4209,10 +4801,12 @@ msgstr "你的死期到了，邪恶的巫妖！我将会亲手击败你。"
 #. [message]: speaker=Mal Keshar
 #. cityfolk - just a person from the city, e.g. Weldyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:951
+#, fuzzy
 msgid ""
 "Narrow-minded and obtuse, as one would expect of cityfolk. Go back to your "
 "manors and taverns before I decide to kill you."
 msgstr ""
+"狭隘和迟钝，人们期望城里人。在我决定杀了你之前，回到你的庄园和小酒馆去。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:964
@@ -4222,20 +4816,25 @@ msgstr "这些连真正的士兵都不是。我将把你像垃圾一样扫掉。
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:977
+#, fuzzy
 msgid ""
 "Life or death, it is all the same. There are always those who try to kill "
 "me. Ever do they fail."
-msgstr ""
+msgstr "生或死，都是一样的。总是有人想杀我他们曾经失败过。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:991
+#, fuzzy
 msgid ""
 "And it has been some time since I’ve had a supply of dwarven corpses to work "
 "with. I suppose I can put your hammers to good use in the mines."
 msgstr ""
+"已经有一段时间了，因为我有一批矮人的尸体要处理。我想我可以把你的锤子好好地用"
+"在矿井里。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1004
+#, fuzzy
 msgid ""
 "The Whitefang Orcs! It is you who despoiled my motherland and razed my home. "
 "It is you who forced me to resort to necromancy to protect myself. It is you "
@@ -4243,6 +4842,9 @@ msgid ""
 "vengeance? Hah! The irony of this would be hysterical if I could still feel "
 "such an emotion."
 msgstr ""
+"白方兽人！是你们掠夺了我的祖国，夷平了我的家。是你强迫我诉诸邪恶来保护我自"
+"己。是你结束了我的凡人生活，迫使我成为一个巫妖。你渴望复仇？哈！讽刺的是，如"
+"果我还能感受到这种情绪，那将是歇斯底里的。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1016
@@ -4263,8 +4865,9 @@ msgstr "是一本邪恶的魔典！"
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1080
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1108
+#, fuzzy
 msgid "It might be linked to the lich’s power! Try burning it."
-msgstr ""
+msgstr "它可能与巫妖的力量有关！试着烧掉它。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1085
@@ -4300,10 +4903,13 @@ msgstr "但看起来它能伤到那巫妖。带走它，我们该撤了，让法
 #. [message]: role=speakinghero
 #. "faerie fire" as in the elvish sylph's attack
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1137
+#, fuzzy
 msgid ""
 "It must be connected to the lich’s power. Perhaps if we burn it with faerie "
 "fire, the lich will be destroyed. Let us take it and retreat."
 msgstr ""
+"它必须与巫妖的力量相连。也许如果我们用精灵的火来烧掉它，酒会被摧毁的。让我们"
+"把它和撤退。"
 
 #. [message]: speaker=unit
 #. regular english: That's an evil grimoire!
@@ -4315,14 +4921,16 @@ msgstr "是一本邪恶的魔典！"
 #. [message]: role=speakinghero
 #. regular english: Try destroying the darned thing.
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1152
+#, fuzzy
 msgid "Try destroyin’ the blasted thing."
-msgstr ""
+msgstr "试着摧毁爆炸的东西。"
 
 #. [message]: speaker=unit
 #. regular english: My axe can't cut the paper. It's protected by magic!
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1163
+#, fuzzy
 msgid "Me axe kinna cut tha paper. It be protected by magic!"
-msgstr ""
+msgstr "我斧头金娜切纸。它被魔法保护！"
 
 #. [message]: role=speakinghero
 #. regular english: Yes, but the lich still seems to be hurt. Let's take it and retreat. Maybe the forge can destroy it.
@@ -4360,10 +4968,13 @@ msgstr "保护我，我的仆从们！把书抢回来！啊啊啊啊！"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1204
+#, fuzzy
 msgid ""
 "The book must be connected to the lich’s power! Take it and retreat. Once we "
 "smash that book, the lich should be destroyed."
 msgstr ""
+"这本书必须与巫妖的力量联系起来！把它和撤退。一旦我们粉碎了那本书，这些书就应"
+"该被销毁。"
 
 #. [story]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1210
@@ -4409,16 +5020,20 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1224
+#, fuzzy
 msgid ""
 "Rumors circulate about a spirit of good fortune that protects these guards. "
 "It is said that that when attacked by orcs at night, the darkness itself "
 "descends to repel the assailants."
 msgstr ""
+"谣言流传着保护这些卫兵的好运精神。据说，当在夜间遭到兽人攻击时，黑暗本身会降"
+"临，以击退袭击者。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1299
+#, fuzzy
 msgid "Slain by those who were once my countrymen..."
-msgstr ""
+msgstr "被那些曾经是我的同胞的人杀死..."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1309
@@ -4434,11 +5049,14 @@ msgstr "您觉得在堕入黑暗之道之前，他是谁？"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1319
+#, fuzzy
 msgid ""
 "It matters not. He embraced death over life, and thus relinquished his right "
 "to our mercy. Let us return home; the town will need us to help defend "
 "against the orcish raids."
 msgstr ""
+"重要的不是。他拥抱死亡，而不是生命，从而放弃了我们怜悯的权利。让我们回家吧;镇"
+"子需要我们来防御奥塞奇突袭"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1324
@@ -4449,8 +5067,9 @@ msgstr "是的，长官。"
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1332
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1370
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1408
+#, fuzzy
 msgid "Darkness descends... and I..."
-msgstr ""
+msgstr "黑暗降临...而我..."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1342
@@ -4464,21 +5083,26 @@ msgstr "您觉得在成为巫妖之前，他是谁？"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1352
+#, fuzzy
 msgid ""
 "Likely one of those arrogant mages who think themselves superior to everyone "
 "else. He probably learned necromancy just to subjugate people like us."
 msgstr ""
+"可能是那些自以为优于其他人的傲慢的法师之一。他可能学了坏死只是为了征服像我们"
+"这样的人。"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1357
+#, fuzzy
 msgid "So he was an evil tyrant. How dreadful."
-msgstr ""
+msgstr "所以他是个邪恶的暴君多么可怕。"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1362
+#, fuzzy
 msgid ""
 "Probably. Anyway, there is no use in dwelling upon one so wicked. Let us go."
-msgstr ""
+msgstr "可能。无论如何，在如此邪恶的人身上居住是没有用的。我们走吧"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1380
@@ -4495,49 +5119,60 @@ msgstr "我想知道，在堕入黑暗之道落得今天的下场之前，在他
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1390
+#, fuzzy
 msgid ""
 "A selfish human, only greedy for power while utterly indifferent to anything "
 "but himself. A necromancer’s only purpose is to work for their own gain, "
 "nothing else."
 msgstr ""
+"一个自私的人，只贪图权力，却完全漠然地对除了他自己以外的任何事物无动于衷。巫"
+"师的唯一目的就是为自己谋取利益，别无他法。"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1395
+#, fuzzy
 msgid "Pure evil, that is what they are."
-msgstr ""
+msgstr "纯粹的邪恶，这就是他们。"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1400
+#, fuzzy
 msgid ""
 "Indeed. We need not afford this one any compassion. Let us leave this "
 "miserable place."
-msgstr ""
+msgstr "事实上。我们不需要给这个任何同情。让我们离开这个悲惨的地方。"
 
 #. [message]: role=speakinghero
 #. regular english - the lich is nothing but a pile of bones now
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1419
+#, fuzzy
 msgid "Tha lich be nae but a pile o’ bones now."
-msgstr ""
+msgstr "塔利希是天真的，但一堆骨头现在。"
 
 #. [message]: role=second
 #. regular english - I wonder what kind of human he was in life
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1425
+#, fuzzy
 msgid "I wonder what kind o’ human he did be in life."
-msgstr ""
+msgstr "我想知道他一生中是什么样的人。"
 
 #. [message]: role=speakinghero
 #. regular english - I guess he was some crazy mage who wanted to make other humans his slaves. Why else do you think he would turn to dark magic?
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1431
+#, fuzzy
 msgid ""
 "Me guess be that he be some loonie mage who wanted ta make other humans inta "
 "’is slaves. Why else d’ye think tha lad woul’ turn ta dark magic?"
 msgstr ""
+"我猜他是一些鲁尼的元年使者，想要让其他人成为奴隶。为什么德耶认为这个小伙子会"
+"变成黑暗魔法？"
 
 #. [message]: role=second
 #. regular english - I don't know. You think the lich's castle can be useful
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1437
+#, fuzzy
 msgid "I dinna know. Ye think tha lich’s castle ken be useful?"
-msgstr ""
+msgstr "我知道叶认为萨利希的城堡是有用的吗？"
 
 #. [message]: role=speakinghero
 #. regular english - Yes. Let's get to work.
@@ -4548,13 +5183,15 @@ msgstr "咳！我们离开这里吧。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1451
+#, fuzzy
 msgid "Felled by an orc... so it ends... like this..."
-msgstr ""
+msgstr "被一个猩猩...所以它结束了...喜欢这个。。。"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1461
+#, fuzzy
 msgid "The lich is dead! I have finally avenged my father."
-msgstr ""
+msgstr "巫妖死了！我终于为我父亲报仇了。"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1466
@@ -4563,32 +5200,39 @@ msgstr "老大，您觉得他以前是谁？"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1471
+#, fuzzy
 msgid ""
 "Just some angst-ridden mage who turned to dark magic when he swore some "
 "stupid quest for revenge upon us. Amusing that he was more bothersome in "
 "death than in life. Annoying that it took so long to kill him."
 msgstr ""
+"只是一些焦虑不安的法师，当他发誓要报复我们时，他转向了黑暗魔法。很有趣的是，"
+"他在死亡中比在生活中更烦人。讨厌花了这么长时间才杀了他"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1495
+#, fuzzy
 msgid "Boss, look! The lich dropped a shiny book!"
-msgstr ""
+msgstr "老大，看！巫妖掉了一本闪亮的书！"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1500
+#, fuzzy
 msgid "Well, what is it?"
-msgstr ""
+msgstr "好吧，你们都怎么看？"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1505
+#, fuzzy
 msgid ""
 "I don’t know, but it looks like someone wrote something inside! It says:"
-msgstr ""
+msgstr "我不知道，但好像有人在里面写了东西！它说："
 
 #. [message]: speaker=narrator
 #. hahaha is Zephrin laughing
 #. this line sounds very "modern-day" but that's intentional because it's an easter egg, not meant to be taken strictly at face value
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1513
+#, fuzzy
 msgid ""
 "<i>That stupid memory came back to bother me again today. It was that time "
 "at the Academy when Zephrin and I were arguing about orcs. I still remember "
@@ -4599,19 +5243,30 @@ msgid ""
 "I can still hear his infernal cackling ringing in my head. Sure thing, "
 "Zephrin, right... like my whole life was some sort of work of fiction!</i>"
 msgstr ""
+"<i>那个愚蠢的记忆今天又回来了，再次困扰着我。那是在学院的时候，泽夫林和我在争"
+"论兽人。我仍然记得他声音嘶哑地告诉我，'有趣的故事，马林，但你真的应该把免责声"
+"明。你知道，要确保每个人都明白，在制作这个故事时，没有一个兽人受到伤害，哈"
+"哈。\n"
+"\n"
+"我仍然能听到他那地狱般的咯咯声在我的脑海里响起。当然，泽夫林，对...就像我一生"
+"是某种小说！</i>"
 
 #. [message]: role=speakinghero
 #. Bah is an exclamation of disgust or irritation
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1521
+#, fuzzy
 msgid ""
 "Bah! Do these people believe that we are fools? They must think we are all "
 "actors in a poorly written drama! I’ve had enough of this. I’m going home."
 msgstr ""
+"呸！这些人相信我们是傻瓜吗？他们一定认为我们都是写得不好的戏剧的演员！我受够"
+"了我要回家了。"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1527
+#, fuzzy
 msgid "Anyway, round up the wolves. I’m going home."
-msgstr ""
+msgstr "不管怎样，把狼围起来。我要回家了。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1547
@@ -4649,6 +5304,7 @@ msgstr "死灵法师学徒"
 
 #. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:16
+#, fuzzy
 msgid ""
 "Under Darken Volk’s tutelage, Malin has become adept at wielding necromancy "
 "both as a tool to raise an army of undead, and as a means to increase his "
@@ -4656,6 +5312,9 @@ msgid ""
 "little time for him to improve his swordsmanship, but he still holds on to "
 "his short sword as his melee weapon of choice."
 msgstr ""
+"在达因·沃尔克的监护下，马林已经善于利用坏死，既作为培养不死军队的工具，又作为"
+"增加自己个人权力的手段。马林专注于提高他的魔法能力，几乎没有时间让他提高他的"
+"剑术，但他仍然坚持他的短剑作为他的近战武器的选择。"
 
 #. [unit_type]: id=Dark Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:4
@@ -4681,6 +5340,7 @@ msgstr "边疆女爵"
 
 #. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
+#, fuzzy
 msgid ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "
 "their homes in times of need. Men are most often trained in the use of sword "
@@ -4690,6 +5350,11 @@ msgid ""
 "powerful skirmishers and are highly adept at reconnaissance, allowing them "
 "to often outmaneuver and entrap orcish raiders."
 msgstr ""
+"在韦斯多的边境，所有体格健壮的男女都必须能够在需要的时候保卫自己的家园。男子"
+"最常接受使用剑或弓的训练，并被用作士兵，他们顶住了狂人攻击的冲击，将袭击者挡"
+"在海湾。相反，妇女学会使用工作人员和吊带，作为侦察员和伏击者，她们最为有效。"
+"最熟练的是强大的小气鬼，并且非常善于侦察，允许他们经常超越和诱捕或诱捕的突袭"
+"者。"
 
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:28
 msgid "Dela Keshar"

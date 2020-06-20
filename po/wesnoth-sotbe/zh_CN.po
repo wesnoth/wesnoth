@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-06-13 01:49 UTC\n"
-"PO-Revision-Date: 2019-09-23 22:45+0800\n"
+"PO-Revision-Date: 2020-06-15 16:31+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -349,8 +349,8 @@ msgid ""
 "them look like tough old soldiers. It would be foolish to confront them with "
 "the forces we have on hand."
 msgstr ""
-"头儿，说实在话，那只军队确实很庞大！不止如此，而且相当一部分好像是老兵。咱们"
-"现在的力量去对抗他们似乎没有什么指望啊……"
+"呃，头儿，不是我不敬，那军队太庞大了！不止如此，他们看起来差不多都是难搞的老"
+"兵。靠咱们现在的军力去对抗他们似乎没什么指望啊。"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:228
@@ -456,7 +456,7 @@ msgstr "移动卡破尔至东北方路标处"
 #. [side]: type=General, id=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:87
 msgid "Lanbec’h"
-msgstr "兰贝契 "
+msgstr "兰贝契"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:101
@@ -1086,7 +1086,7 @@ msgstr "杀！了！他！"
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:380
 msgid "Hahaha! If you can!"
-msgstr "哈哈哈！如果你有种！"
+msgstr "哈哈哈！来试试啊！"
 
 #. [message]: speaker=Ammon
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:410
@@ -1096,7 +1096,7 @@ msgstr "可恶，他跑了！"
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:415
 msgid "So, what news do you bring, $scout.name?"
-msgstr "那么，得到什么消息吗 $scout.name? "
+msgstr "那么，你有什么新消息吗，$scout.name？"
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:420
@@ -1998,7 +1998,7 @@ msgstr "你可以直接杀了我，我不会告诉你任何事。"
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:250
 msgid "Very well then..."
-msgstr "好，那么……"
+msgstr "好吧……"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:255
@@ -2113,7 +2113,7 @@ msgstr "林铎拉斯"
 #. [message]: speaker=Linduilas
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:400
 msgid "As you command, my lady."
-msgstr "是，夫人！"
+msgstr "谨遵命令，女士。"
 
 #. [scenario]: id=09_Shan_Taum_the_Smug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:4
@@ -2615,14 +2615,10 @@ msgstr "成功防守普莱斯亭四天"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:25
-#, fuzzy
-#| msgid ""
-#| "Enemies control any villages on the north side of the river when turns "
-#| "run out"
 msgid ""
 "You don't control all villages on the north side of the river when turns run "
 "out"
-msgstr "在回合结束前，敌人控制了任何河北面的村庄"
+msgstr "在回合耗尽时，你没能控制住河北岸的所有村庄"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:232
@@ -4429,6 +4425,3 @@ msgstr "弗拉塔"
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:104
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr "大部落：每个单位的维护费用均减一。"
-
-#~ msgid "Defeat Ar-Dant"
-#~ msgstr "打败亚单"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "POT-Creation-Date: 2020-06-12 21:49-0400\n"
-"PO-Revision-Date: 2019-07-27 16:42+0800\n"
+"PO-Revision-Date: 2020-06-15 16:27+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -51,7 +51,7 @@ msgstr "名称"
 #. type: Plain text
 #: doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
-msgstr "wesnoth - 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游戏"
+msgstr "wesnoth - 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游戏"
 
 #. type: SH
 #: doc/man/wesnoth.6:21 doc/man/wesnothd.6:24
@@ -1254,16 +1254,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:504
-#, fuzzy
-#| msgid ""
-#| "When running unit tests (withB<\\ -u>), the exit status is different. An "
-#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
-#| "test failed. An exit status of 3 indicates that the test passed, but "
-#| "produced an invalid replay file. An exit status of 4 indicates that the "
-#| "test passed, but the replay produced errors. These latter two are only "
-#| "returned if B<--noreplaycheck> is not passed. An exit status of 2 "
-#| "indicates that the test timed out, when used with the deprecated B<--"
-#| "timeout> option."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1275,8 +1265,7 @@ msgstr ""
 "运行单元测试（使用 B<\\ -u> 时），退出状态码是不同的。退出状态码0代表测试通"
 "过，而1代表测试失败。退出状态码3代表测试通过，但生成了无效的录像文件。退出状"
 "态码4代表测试通过，但录像中产生了错误。后两个状态码仅在不传入 B<--"
-"noreplaycheck> 参数时才会返回。当与已废弃的 B<--timeout> 选项共同使用时，退出"
-"状态码2代表测试超时。"
+"noreplaycheck> 参数时才会返回。"
 
 #. type: SH
 #: doc/man/wesnoth.6:505 doc/man/wesnothd.6:285
@@ -1912,7 +1901,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:223
-#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -1923,7 +1911,8 @@ msgid ""
 msgstr ""
 "B<[user_handler]> 配置用户数据处理器。可设置的主键取决于通过B<user_handler>设"
 "置的用户数据处理器是哪一个。如果配置文件中没有B<[user_handler]>小节，则服务器"
-"在运行中将不提供任何昵称注册服务。"
+"在运行中将不提供任何昵称注册服务。B<forum_user_handler>正常运作所需的额外数据"
+"表可以在韦诺源代码库的table_definitions.sql中找到。"
 
 #. type: TP
 #: doc/man/wesnothd.6:224
@@ -1934,7 +1923,7 @@ msgstr "B<db_host>"
 #. type: Plain text
 #: doc/man/wesnothd.6:227
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr "（如果user_handler=forum）数据库服务器的主机名"
+msgstr "（当user_handler=forum时）数据库服务器的主机名"
 
 #. type: TP
 #: doc/man/wesnothd.6:227
@@ -1945,7 +1934,7 @@ msgstr "B<db_name>"
 #. type: Plain text
 #: doc/man/wesnothd.6:230
 msgid "(for user_handler=forum) The name of the database"
-msgstr "（如果user_handler=forum）数据库名"
+msgstr "（当user_handler=forum时）数据库名"
 
 #. type: TP
 #: doc/man/wesnothd.6:230
@@ -1958,7 +1947,7 @@ msgstr "B<db_user>"
 msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
-msgstr "（如果user_handler=forum）数据库登录用户名"
+msgstr "（当user_handler=forum时）数据库登录用户名"
 
 #. type: TP
 #: doc/man/wesnothd.6:233
@@ -1969,7 +1958,7 @@ msgstr "B<db_password>"
 #. type: Plain text
 #: doc/man/wesnothd.6:236
 msgid "(for user_handler=forum) This user's password"
-msgstr "（如果user_handler=forum）这个用户的密码"
+msgstr "（当user_handler=forum时）这个用户的密码"
 
 #. type: TP
 #: doc/man/wesnothd.6:236
@@ -1984,7 +1973,7 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
-"（如果user_handler=forum）phpbb 论坛中存放用户数据的表名。很可能是E<lt>table-"
+"（当user_handler=forum时）phpbb论坛中存放用户数据的表名。很可能是E<lt>table-"
 "prefixE<gt>_users（例如phpbb3_users）。"
 
 #. type: TP
@@ -1995,86 +1984,86 @@ msgstr "B<db_extra_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:242
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually."
 msgstr ""
-"（如果user_handler=forum）phpbb 论坛中存放用户数据的表名。很可能是E<lt>table-"
-"prefixE<gt>_users（例如phpbb3_users）。"
+"（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与用户相关的"
+"数据。你必须手动创建此表。"
 
 #. type: TP
 #: doc/man/wesnothd.6:242
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_game_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about games."
-msgstr "（如果user_handler=forum）数据库登录用户名"
+msgstr ""
+"（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与游戏相关的"
+"数据。"
 
 #. type: TP
 #: doc/man/wesnothd.6:245
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_game_player_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_player_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:248
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about the players in a game."
-msgstr "（如果user_handler=forum）数据库登录用户名"
+msgstr ""
+"（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与单场游戏中"
+"玩家相关的数据。"
 
 #. type: TP
 #: doc/man/wesnothd.6:248
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
-msgstr ""
+msgstr "B<db_game_modification_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about the modifications used in a game."
-msgstr "（如果user_handler=forum）数据库登录用户名"
+msgstr ""
+"（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与单场游戏中"
+"使用的模组相关的数据。"
 
 #. type: TP
 #: doc/man/wesnothd.6:251
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_user_group_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:254
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which your phpbb forums "
 "saves its user group data. Most likely this will be E<lt>table-"
 "prefixE<gt>_user_group (e.g. phpbb3_user_group)."
 msgstr ""
-"（如果user_handler=forum）phpbb 论坛中存放用户数据的表名。很可能是E<lt>table-"
-"prefixE<gt>_users（例如phpbb3_users）。"
+"（当user_handler=forum时）phpbb论坛中存放用户组数据的表名。很可能是"
+"E<lt>table-prefixE<gt>_users_group（例如phpbb3_users_group）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:254
 #, no-wrap
 msgid "B<mp_mod_group>"
-msgstr ""
+msgstr "B<mp_mod_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The ID of the forum group to be considered as "
 "having moderation authority."
-msgstr "（如果user_handler=forum）数据库登录用户名"
+msgstr "（当user_handler=forum时）论坛用户组ID，该组将视为拥有管理员权限。"
 
 #. type: TP
 #: doc/man/wesnothd.6:257

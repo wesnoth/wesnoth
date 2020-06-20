@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-06-12 21:49-0400\n"
-"PO-Revision-Date: 2019-09-23 22:31+0800\n"
+"PO-Revision-Date: 2020-06-15 16:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -1328,7 +1328,7 @@ msgstr "注重防守。"
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:175
 msgid "Focus on defeating..."
-msgstr "注重击败……"
+msgstr "专注于击败……"
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:176
@@ -1371,7 +1371,7 @@ msgstr "后退"
 #. [protect]
 #: data/core/macros/ai_controller.cfg:311
 msgid "Focus on protecting..."
-msgstr "注重保护……"
+msgstr "专注于保护……"
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:312
@@ -4630,7 +4630,7 @@ msgstr "防"
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:406
 msgid "statuspanel^lvl"
-msgstr "Lv"
+msgstr "等级"
 
 #. [tip]
 #: data/tips.cfg:4
@@ -5385,8 +5385,8 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
-"有些高等级单位拥有无可企及的能力，例如<b>领导</b>，<i>疗毒</I>，或者<i>夜遁</"
-"I>。在战役早期就获得这些单位，可以给战局带来极大变化。"
+"有些高等级单位拥有无可企及的能力，例如<b>领导</b>，<i>疗毒</i>，或者<i>夜遁</"
+"i>。在战役早期就获得这些单位，可以给战局带来极大变化。"
 
 #. [tip]
 #: data/tips.cfg:262
@@ -5400,14 +5400,14 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"如果一个单位位于两个友方阵营旁边，则在这两个阵营的回合中，该单位都会得到治"
+"疗。这样一来，相比其他方法来说，单位就能更快得到治疗。"
 
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:267
-#, fuzzy
-#| msgid "<i>― Kai Laudiss, 623YW</i>"
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr "<b>——劳迪斯凯王，韦元623年</b>"
+msgstr "<b>——戈伦群落中的凡克，韦元6年</b>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5436,11 +5436,11 @@ msgstr "你没有首领，不能进行召回。"
 
 #: src/actions/create.cpp:342
 msgid "None of your leaders are able to recall that unit."
-msgstr "你的首领都不能召回该单位。"
+msgstr "你的首领都不能召回那个单位。"
 
 #: src/actions/create.cpp:346
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr "你必须让一位能够召回该单位的首领站在城堡主楼上。"
+msgstr "你必须让一位能够召回那个单位的首领站在城堡主楼上。"
 
 #: src/actions/create.cpp:350
 msgid "There are no vacant castle tiles in which to recall the unit."
@@ -5455,10 +5455,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "你没有首领，不能进行征募。"
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "你的首领都不能征募该单位。"
+msgstr "你的首领都不能征募此单位。"
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -6750,34 +6748,24 @@ msgid "Only available during a scenario."
 msgstr "仅在场景中可用。"
 
 #: src/help/help_impl.cpp:358 src/help/help_impl.cpp:394
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "时段日程："
+msgstr "时段日程"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "守序单位："
+msgstr "守序加成："
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "中立单位："
+msgstr "中立加成："
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "混沌单位："
+msgstr "混沌加成："
 
 #: src/help/help_impl.cpp:388
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "边缘单位："
+msgstr "边缘加成："
 
 #: src/help/help_impl.cpp:389
 msgid "Schedule"
@@ -7194,72 +7182,53 @@ msgid "You have no units available to recruit."
 msgstr "你没有可供征募的单位。"
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "未征募任何单位"
+msgstr "未征募任何单位。"
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "内部错误。请将此情况作为bug上报！详细信息：\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "现在你不能征募$unit_type_name|。"
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "你没有足够的金币，不能征募该单位"
+msgstr "你没有足够的金币，不能征募此单位"
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "你没有足够的金币，不能征募该单位"
+msgstr "你没有足够的金币，不能征募此单位。"
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "你与你的士兵分开了，因此不能召回他们"
+msgstr "你与你的士兵分开了，因此不能召回他们。"
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
-"没有可供召回的部队\n"
+"没有可供召回的部队。\n"
 "（你在上一幕场景中必须有生还的老兵）"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "你目前不能在高亮位置进行召回"
+msgstr "你目前不能在高亮位置进行召回。"
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "未召回任何单位"
+msgstr "未召回任何单位。"
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "要召回此单位，你至少需要拥有1枚金币"
-msgstr[1] "要召回此单位，你至少需要拥有$cost|枚金币"
+msgstr[0] "要召回一个单位，你必须至少拥有1枚金币。"
+msgstr[1] "要召回此单位，你必须至少拥有$cost|枚金币。"
 
 #: src/menu_events.cpp:572
 msgid "You cannot end your turn yet!"
@@ -7346,7 +7315,7 @@ msgstr "[<阵营> [on/off]]"
 
 #: src/menu_events.cpp:1227
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "改变游戏中的界面主题。"
 
 #: src/menu_events.cpp:1229
 msgid "<side> <nickname>"
@@ -7490,12 +7459,10 @@ msgstr "显示一幕场景变量。"
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1276
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
-msgstr "修改一个单位变量。（只支持顶层的键值。）"
+msgstr "修改一个单位变量。（只支持顶层的键值，而前进步数=<数字>。）"
 
 #: src/menu_events.cpp:1283
 msgid "Discover all units in help."
@@ -7507,7 +7474,7 @@ msgstr "从帮助中清除所有已发现的单位。"
 
 #: src/menu_events.cpp:1285
 msgid "<unit type id>"
-msgstr ""
+msgstr "<单位类型ID>"
 
 #: src/menu_events.cpp:1285
 msgid "Create a unit."
@@ -7523,17 +7490,15 @@ msgstr "为当前玩家开/关战场黑幕。"
 
 #: src/menu_events.cpp:1288
 msgid "<amount>"
-msgstr ""
+msgstr "<数量>"
 
 #: src/menu_events.cpp:1288
 msgid "Give gold to the current player."
 msgstr "给当前玩家金币。"
 
 #: src/menu_events.cpp:1289
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<昵称>"
+msgstr "<事件名称>"
 
 #: src/menu_events.cpp:1289
 msgid "Fire a game event."
@@ -8673,36 +8638,3 @@ msgstr "隐藏$player的计划"
 #: src/whiteboard/manager.cpp:1143
 msgid "Whiteboard Options"
 msgstr "白板选项"
-
-#~ msgid "theme^Classic"
-#~ msgstr "经典"
-
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "经典的，1.12以前的版本所使用的主题"
-
-#~ msgid "gold"
-#~ msgstr "金币"
-
-#~ msgid "villages"
-#~ msgstr "村庄"
-
-#~ msgid "units"
-#~ msgstr "单位"
-
-#~ msgid "upkeep"
-#~ msgstr "维护费用"
-
-#~ msgid "income"
-#~ msgstr "收入"
-
-#~ msgid "statuspanel^level"
-#~ msgstr "等級"
-
-#~ msgid "statuspanel^moves"
-#~ msgstr "手"
-
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "地形防御"
-
-#~ msgid " replay"
-#~ msgstr " 游戏录像"
