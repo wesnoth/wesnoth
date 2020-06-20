@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-06-13 01:49 UTC\n"
-"PO-Revision-Date: 2008-03-01 17:34+0200\n"
+"PO-Revision-Date: 2020-06-16 17:34+0200\n"
 "Last-Translator: Luther Thompson <luther@librem.one>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -293,7 +293,7 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:534
 msgid "Hey! This quintain fights back!"
-msgstr "Hej! La timigilo responde atakas!"
+msgstr "Hej! La celtabulo responde atakas!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:539
@@ -615,7 +615,7 @@ msgid ""
 "help."
 msgstr ""
 "Vi ne farus ion ajn stultan, kiel sturmi tiun celtabulon per vi mem denove, "
-"ĉu vere? Unue uzu la batalantojn, kiun vi varbis; ili multe helpos."
+"ĉu vere? Unue uzu la batalistojn, kiun vi varbis; ili multe helpos."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:898
@@ -1132,7 +1132,7 @@ msgstr ""
 "Vi ankaŭ havas du novajn specojn de unuoj por varbi dum ĉi tiu scenaro: "
 "Elfaj Pafarkistoj kaj Elfaj Ŝamaninoj. Mi diros vin pli pri ili kiam vi "
 "varbos ilin. Mi mem rekomendus egalita militistaron de du pafarkistoj, du "
-"batalantoj, kaj ŝamanino."
+"batalistoj, kaj ŝamanino."
 
 #. [event]
 #. [on_undo]
@@ -1294,7 +1294,7 @@ msgid ""
 "melee attacks with strong ranged attacks, and vice versa. This allows your "
 "units to take less damage overall when your enemy counterattacks."
 msgstr ""
-"Malsame de la Elfa Batalanto, kiu havas fortajn kontaktajn atakojn, la Elfa "
+"Malsame de la Elfa Batalisto, kiu havas fortajn kontaktajn atakojn, la Elfa "
 "Pafarkisto havas fortajn distancajn atakojn. Estas utile ataki malamikajn "
 "unuojn kun fortaj kontaktaj atakoj per fortaj distancaj atakoj, kaj inverse. "
 "Tio lasas viajn unuojn prenadi malpli damaĝon kiam via malamiko "
@@ -1785,6 +1785,11 @@ msgid ""
 "You can hover over the sky image below the minimap on the right to see the "
 "current time of day and who has the advantage."
 msgstr ""
+"Dum scenaro, la tempo de tago procedos dum vicoj pasas. Estas 4 <i>aranĝoj</"
+"i> tiuj unuo povas esti: Leĝema, Neŭtrala, Kaosema, aŭ Limema. Ĉiu aranĝo "
+"ricevas malsaman bonigon aŭ malbonigon laŭ la tempo de tago. Vi povas ŝvebi "
+"super la ĉiela bildo sub la mapeto en la dekstro por vidi la nuna tempo de "
+"tago kaj kiu havas la avantaĝo."
 
 #. [then]
 #. [else]
@@ -1803,11 +1808,23 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"Memoru remarŝigi viajn vunditajn unuojn al vilaĝoj. Shamaninoj povas "
+"resanigi nur 4 batpoentojn ĉiu vico, sed vilaĝoj povas resanigi ilin pli "
+"rapide je 8 ĉiu vico.\n"
+"\n"
+"Pluraj fontoj de resanigo kutime ne estas kombinita. Se unuo komencus sian "
+"vicon apud pluraj resanigantoj, aŭ sur vilaĝo kaj apud resaniganto, ĝi "
+"ankoraŭ resanigitus nur unue.\n"
+"\n"
+"Ripoz-resaniĝo estas escepto de tiu regulo — se unuo farus nenio dum vico, "
+"ĝi resaniĝus 2 batpoentojn krome de ajn resanigo tiun ĝi eble ricevus el "
+"vilaĝoj aŭ resanigantoj, kiuj kombinus por tuto de pleje 10 batpoentoj ĉiu "
+"vico."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
 msgid "Tracking Unused Units"
-msgstr ""
+msgstr "Spuri Neuzitajn Unuojn"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1001
@@ -1827,7 +1844,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1010
 msgid "Victory Conditions"
-msgstr ""
+msgstr "Venkaj Kondiĉoj"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1012
@@ -1836,11 +1853,13 @@ msgid ""
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Menu</b> menu."
 msgstr ""
+"En ĉi tiu scenaro, vi nur devas venki la orkan gvidanton por venki. Venkaj "
+"kondiĉoj por scenaro donitas sub <b>Scenaraj Celoj</b> en la <b>Menuo</b>."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1021
 msgid "Hurry up and defeat the orcs before they become entrenched!"
-msgstr ""
+msgstr "Rapidiĝu kaj venku la orkojn antaŭ ili entranĉeiĝos!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1049
@@ -1855,7 +1874,7 @@ msgstr "Mi havas sufiĉan oron por varbi pli unuojn!"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1060
 msgid "Recruit the Right Units"
-msgstr ""
+msgstr "Varbu la Ĝustajn Unuojn"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1062
@@ -1928,7 +1947,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1207
 msgid "You have almost finished the tutorial"
-msgstr ""
+msgstr "Vi preskaŭ finis la lernilon."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1209
@@ -1936,6 +1955,8 @@ msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
 msgstr ""
+"En kampanjo, vi eble havos 10 aŭ eĉ 20 scenarojn por konstrui vian "
+"militistaron, sed ĉi tiu lernilo finiĝos post vi venkos Tragon."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1235
@@ -2009,6 +2030,11 @@ msgid ""
 "always has a 70% chance to hit, but it is not as powerful as the similar "
 "attack wielded by the Elvish Sorceress."
 msgstr ""
+"Plialtiĝi je nivelo estas tute resaniginta min! Mi povas resanigi unuojn de "
+"8 batpoentoj ĉiu vico, anstataŭ nur 4, kaj ankaŭ eble sanigus ilin de veneno "
+"se ili ne povus atingi vilaĝon! Mi ankaŭ gajnis novan <i>magian</i> atakon, "
+"signife ke ĝi ĉiam havas 70% ŝancon por bati, sed ĝi ne estas tiel forta "
+"kiel la simila atako uzita de la Elfa Sorĉistino."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -2019,6 +2045,10 @@ msgid ""
 "damage each for 4 strikes. It also has the <i>magical</i> weapon special, "
 "meaning it always has a 70% chance to hit."
 msgstr ""
+"Plialtiĝi je nivelo estas tute resaniginta min! Mi ne plue povas resanigi "
+"apudajn unuojn, sed kompensante, mi havas novan, potencan atakon de fea "
+"fajro, kiu faras 4 frapojn po 7 damaĝon. Ĝi ankaŭ havas la <i>magian</i> "
+"armilan specialon, signife ke ĝi ĉiam havas 70% ŝancon por bati."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1363
@@ -2127,17 +2157,17 @@ msgstr "Vi tro longe prokrastis! Nun, ni neniam liberiĝos de ĉi tiuj orkoj!"
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1444
 msgid "That... was foolish. Next time I should be more careful."
-msgstr ""
+msgstr "Tio... estis malsaĝa. Venontfoje, mi pli zorgu."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1445
 msgid "female^That... was foolish. Next time I should be more careful."
-msgstr ""
+msgstr "Tio... estis malsaĝa. Venontfoje, mi pli zorgu."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1463
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "Aĉ! Kiu nun gvidos vin al venko?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
@@ -2146,6 +2176,9 @@ msgid ""
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
 "is the easiest and is the recommended first campaign."
 msgstr ""
+"Vi venkis la orkojn! Vi eble volas provi unu de la komencanta-nivela "
+"kampanjoj venonte, kiuj enhavas strategiajn aludojn. <i>Rakonto pri Du "
+"Fratoj</i> estas la plej facila kaj estas la rekomendita unua kampanjo."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1483
@@ -2153,11 +2186,13 @@ msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."
 msgstr ""
+"Vi povus ankaŭ rigardi la en-luda helpa foliumilo se vi iam bezonus "
+"refreŝigi vian memoron pri ludada mekaniko."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
-msgstr "Batalanto"
+msgstr "Batalisto"
 
 #. [unit_type]: id=Fighteress, race=human
 #. [unit_type]: id=Fighter, race=human
@@ -2168,7 +2203,7 @@ msgid ""
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
-"Junaj kaj aŭdacaj, Batalantoj estas lertaj kun glavoj kaj estas vundebla de "
+"Junaj kaj aŭdacaj, Batalistoj estas lertaj kun glavoj kaj estas vundebla de "
 "atakoj el malamikoj. Tamen, ili havas eblecon iĝi militistegojn iutage."
 
 #. [unit_type]: id=Fighteress, race=human
@@ -2179,10 +2214,14 @@ msgstr "Batalantino"
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
-msgstr "Birdtimigilo"
+msgstr "Celtabulo"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:16
+#, fuzzy
+#| msgid ""
+#| "Celtabuloj are used to practice swordplay and jousting on. It would be "
+#| "extremely unusual to be attacked by one."
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
@@ -2203,6 +2242,8 @@ msgid ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
 msgstr ""
+"Per pli sperto, Batalistoj akrigis sian lerton kun la glavo kaj iĝis "
+"potencojn Militistojn."
 
 #. [unit_type]: id=Warrioress, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
@@ -2212,7 +2253,7 @@ msgstr "Militisto"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:63
 msgid "Undo"
-msgstr ""
+msgstr "Malfari"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:65
