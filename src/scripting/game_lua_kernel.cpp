@@ -1385,7 +1385,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	return_string_attrib("campaign_type", classification.campaign_type.to_string());
 	if(classification.campaign_type==game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		return_cfgref_attrib("mp_settings", mp_settings.to_config());
-		return_cfgref_attrib("era", game_config_manager::get()->game_config().find_child("era","id",mp_settings.mp_era));
+		return_cfgref_attrib("era", game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 
 		//This code for SigurdFD, not the cleanest implementation but seems to work just fine.

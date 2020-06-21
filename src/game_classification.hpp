@@ -49,6 +49,9 @@ public:
 	std::string era_define;                          /**< If there is a define the era uses to customize data */
 	std::vector<std::string> mod_defines;            /**< If there are defines the modifications use to customize data */
 
+	std::vector<std::string> active_mods;
+	std::string era_id;
+
 	std::string campaign;                            /**< The id of the campaign being played */
 	std::string campaign_name;                       /**< The name of the campaign being played. */
 
