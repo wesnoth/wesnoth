@@ -369,13 +369,13 @@ void saved_game::expand_mp_events()
 		std::vector<modevents_entry> mods;
 		std::set<std::string> loaded_resources;
 
-		std::transform(mp_settings_.active_mods.begin(), mp_settings_.active_mods.end(), std::back_inserter(mods),
+		std::transform(classification_.active_mods.begin(), classification_.active_mods.end(), std::back_inserter(mods),
 			[](const std::string& id) { return modevents_entry("modification", id); }
 		);
 
 		// We don't want the error message below if there is no era (= if this is a sp game).
-		if(!mp_settings_.mp_era .empty()) {
-			mods.emplace_back("era", mp_settings_.mp_era);
+		if(!classification_.era_id .empty()) {
+			mods.emplace_back("era", classification_.era_id);
 		}
 
 		if(!classification_.campaign.empty()) {
@@ -407,11 +407,11 @@ void saved_game::expand_mp_options()
 	if(starting_point_type_ == STARTING_POINT_SCENARIO && !has_carryover_expanded_) {
 		std::vector<modevents_entry> mods;
 
-		std::transform(mp_settings_.active_mods.begin(), mp_settings_.active_mods.end(), std::back_inserter(mods),
+		std::transform(classification_.active_mods.begin(), classification_.active_mods.end(), std::back_inserter(mods),
 			[](const std::string& id) { return modevents_entry("modification", id); }
 		);
 
-		mods.emplace_back("era", mp_settings_.mp_era);
+		mods.emplace_back("era", classification_.era_id);
 		mods.emplace_back("multiplayer", get_scenario_id());
 		mods.emplace_back("campaign", classification().campaign);
 

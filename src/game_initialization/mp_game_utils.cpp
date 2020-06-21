@@ -45,6 +45,9 @@ static void add_multiplayer_classification(config& multiplayer, saved_game& stat
 	multiplayer["difficulty_define"] = state.classification().difficulty;
 	multiplayer["mp_campaign"] = state.classification().campaign;
 	multiplayer["mp_campaign_name"] = state.classification().campaign_name;
+	multiplayer["mp_era"] = state.classification().era_id;
+	multiplayer["active_mods"] = utils::join(state.classification().active_mods, ",");
+	
 }
 
 config initial_level_config(saved_game& state)
@@ -84,7 +87,7 @@ config initial_level_config(saved_game& state)
 	level.child("multiplayer")["mp_scenario_addon_version"] = state.to_config().child("scenario")["addon_version"].str();
 
 	// [multiplayer] mp_era= should be persistent over saves.
-	std::string era = params.mp_era;
+	std::string era = state.classification().era_id;
 
 	/**
 	 * [era] and [modification]s are toplevel tags here.
@@ -121,7 +124,7 @@ config initial_level_config(saved_game& state)
 	}
 
 	// Add modifications, needed for ai algorithms which are applied in mp_staging.
-	const std::vector<std::string>& mods = params.active_mods;
+	const std::vector<std::string>& mods = state.classification().active_mods;
 	std::vector<std::string> mod_versions;
 	std::vector<std::string> mod_addon_ids;
 

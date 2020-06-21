@@ -38,6 +38,8 @@ game_classification::game_classification(const config& cfg)
 	, scenario_define(cfg["scenario_define"])
 	, era_define(cfg["era_define"])
 	, mod_defines(utils::split(cfg["mod_defines"]))
+	, active_mods(utils::split(cfg["active_mods"]))
+	, era_id(cfg["era_id"])
 	, campaign(cfg["campaign"])
 	, campaign_name(cfg["campaign_name"])
 	, abbrev(cfg["abbrev"])
@@ -61,6 +63,8 @@ config game_classification::to_config() const
 	cfg["scenario_define"] = scenario_define;
 	cfg["era_define"] = era_define;
 	cfg["mod_defines"] = utils::join(mod_defines);
+	cfg["active_mods"] = utils::join(active_mods);
+	cfg["era_id"] = era_id;
 	cfg["campaign"] = campaign;
 	cfg["campaign_name"] = campaign_name;
 	cfg["abbrev"] = abbrev;

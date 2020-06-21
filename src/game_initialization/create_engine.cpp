@@ -282,11 +282,11 @@ create_engine::create_engine(saved_game& state)
 
 	for(const std::string& str : preferences::modifications(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 		if(game_config_.find_child("modification", "id", str)) {
-			state_.mp_settings().active_mods.push_back(str);
+			state_.classification().active_mods.push_back(str);
 		}
 	}
 
-	dependency_manager_->try_modifications(state_.mp_settings().active_mods, true);
+	dependency_manager_->try_modifications(state_.classification().active_mods, true);
 
 	reset_level_filters();
 }
@@ -371,8 +371,9 @@ void create_engine::prepare_for_new_level()
 
 void create_engine::prepare_for_era_and_mods()
 {
-	state_.classification().era_define = game_config_.find_child("era", "id", get_parameters().mp_era)["define"].str();
-	for(const std::string& mod_id : get_parameters().active_mods) {
+	get_parameters();
+	state_.classification().era_define = game_config_.find_child("era", "id", state_.classification().era_id)["define"].str();
+	for(const std::string& mod_id : state_.classification().active_mods) {
 		state_.classification().mod_defines.push_back(game_config_.find_child("modification", "id", mod_id)["define"].str());
 	}
 }
@@ -550,7 +551,7 @@ bool create_engine::toggle_mod(int index, bool force)
 	bool is_active = dependency_manager_->is_modification_active(index);
 	dependency_manager_->try_modification_by_index(index, !is_active, force);
 
-	state_.mp_settings().active_mods = dependency_manager_->get_modifications();
+	state_.classification().active_mods = dependency_manager_->get_modifications();
 
 	return !is_active;
 }
@@ -602,12 +603,12 @@ int create_engine::find_extra_by_id(const MP_EXTRA extra_type, const std::string
 
 void create_engine::init_active_mods()
 {
-	state_.mp_settings().active_mods = dependency_manager_->get_modifications();
+	state_.classification().active_mods = dependency_manager_->get_modifications();
 }
 
 std::vector<std::string>& create_engine::active_mods()
 {
-	return state_.mp_settings().active_mods;
+	return state_.classification().active_mods;
 }
 
 std::vector<create_engine::extras_metadata_ptr> create_engine::active_mods_data()
@@ -633,7 +634,7 @@ const mp_game_settings& create_engine::get_parameters()
 	DBG_MP << "getting parameter values" << std::endl;
 
 	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
-	state_.mp_settings().mp_era = eras_[era_index]->id;
+	state_.classification().era_id = eras_[era_index]->id;
 	state_.mp_settings().mp_era_name = eras_[era_index]->name;
 
 	return state_.mp_settings();

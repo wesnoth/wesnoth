@@ -705,7 +705,7 @@ void start_local_game_commandline(const config& game_config, saved_game& state, 
 	mp_game_settings& parameters = state.mp_settings();
 
 	// Hardcoded default values
-	parameters.mp_era = "era_default";
+	state.classification().era_id = "era_default";
 	parameters.name = "multiplayer_The_Freelands";
 
 	// Default values for which at getter function exists
@@ -729,13 +729,13 @@ void start_local_game_commandline(const config& game_config, saved_game& state, 
 
 	// [era] define.
 	if(cmdline_opts.multiplayer_era) {
-		parameters.mp_era = *cmdline_opts.multiplayer_era;
+		state.classification().era_id = *cmdline_opts.multiplayer_era;
 	}
 
-	if(const config& cfg_era = game_config.find_child("era", "id", parameters.mp_era)) {
+	if(const config& cfg_era = game_config.find_child("era", "id", state.classification().era_id)) {
 		state.classification().era_define = cfg_era["define"].str();
 	} else {
-		std::cerr << "Could not find era '" << parameters.mp_era << "'\n";
+		std::cerr << "Could not find era '" << state.classification().era_id << "'\n";
 		return;
 	}
 

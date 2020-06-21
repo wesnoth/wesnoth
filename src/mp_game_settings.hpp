@@ -35,12 +35,10 @@ struct mp_game_settings
 	std::string name;
 	std::string password;
 	std::string hash;
-	std::string mp_era;
 	std::string mp_era_name;
 	std::string mp_scenario;
 	std::string mp_scenario_name;
 	std::string mp_campaign;
-	std::vector<std::string> active_mods;
 	std::map<std::string, std::string> side_users;
 
 	int num_turns;
