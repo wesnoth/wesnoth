@@ -24,8 +24,22 @@
    * New ancient stone stone walls variation (code Xoa)
  ### Lua API
    * New wesnoth.get_max_liminal_bonus function
+   * New wesnoth.colors table to get information about colors.
+   * Support lua_function in side filters.
+   * add wesnoth.get_resource() function.
+ ### WML engine
+   * [advancefrom] is now deprecated, use [modify_unit_type] instead.
+   * scenarios generated via the map editor can now be used via map_file
+     in [scenario].
+   * the student,attacker and defender variables can now be used in
+     formulas in abilities.
+   * Units no longer get healed on recalling. (they still get healed
+     at the end of the scenario). 
  ### Miscellaneous and bug fixes
    * Added missing side controllers to two Micro AI scenarios (fixes #4890)
+   * Fix broken callbacks for treeviews in wesnoth.show_dialog
+   * Fix floatign labels duraions being measures in 'frames',
+     it is now measured in milliseconds.
 
 ## Version 1.15.3
  ### AI
