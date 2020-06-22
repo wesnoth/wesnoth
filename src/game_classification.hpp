@@ -17,6 +17,7 @@
 #include "utils/make_enum.hpp"
 
 #include <vector>
+#include <set>
 
 class config;
 
@@ -33,6 +34,7 @@ public:
 	config to_config() const;
 	std::string get_tagname() const;
 	bool is_normal_mp_game() const;
+	std::set<std::string> active_addons(const std::string& scenario_id) const;
 
 	std::string label;                               /**< Name of the game (e.g. name of save file). */
 	std::string version;                             /**< Version game was created with. */

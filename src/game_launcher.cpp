@@ -474,7 +474,7 @@ bool game_launcher::play_test()
 	set_test(test_scenarios_.at(0));
 
 	game_config_manager::get()->
-		load_game_config_for_game(state_.classification());
+		load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
 	try {
 		campaign_controller ccontroller(state_, game_config_manager::get()->terrain_types());
@@ -545,7 +545,7 @@ game_launcher::unit_test_result game_launcher::unit_test()
 game_launcher::unit_test_result game_launcher::single_unit_test()
 {
 	game_config_manager::get()->
-		load_game_config_for_game(state_.classification());
+		load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
 	LEVEL_RESULT game_res = LEVEL_RESULT::TEST_FAIL;
 	try {
@@ -629,7 +629,7 @@ bool game_launcher::play_render_image_mode()
 
 	try {
 		game_config_manager::get()->
-			load_game_config_for_game(state_.classification());
+			load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 	} catch(const config::error& e) {
 		std::cerr << "Error loading game config: " << e.what() << std::endl;
 		return false;
@@ -674,7 +674,7 @@ bool game_launcher::load_game()
 
 		try {
 			game_config_manager::get()->
-				load_game_config_for_game(state_.classification());
+				load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 		} catch(const config::error&) {
 			return false;
 		}
@@ -970,7 +970,7 @@ bool game_launcher::play_multiplayer_commandline()
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 	game_config_manager::get()->
-		load_game_config_for_game(state_.classification());
+		load_game_config_for_create(true);
 
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
@@ -1014,7 +1014,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		if(reload == RELOAD_DATA) {
 			try {
 				game_config_manager::get()->
-					load_game_config_for_game(state_.classification());
+					load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 			} catch(const config::error&) {
 				return;
 			}

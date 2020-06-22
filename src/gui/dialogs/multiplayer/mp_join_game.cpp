@@ -134,7 +134,7 @@ bool mp_join_game::fetch_game_config()
 		state_.classification() = game_classification(level_);
 
 		// Make sure that we have the same config as host, if possible.
-		game_config_manager::get()->load_game_config_for_game(state_.classification());
+		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 	}
 
 	game_config::add_color_info(get_scenario());

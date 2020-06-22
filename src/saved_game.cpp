@@ -269,7 +269,7 @@ void saved_game::set_defaults()
 void saved_game::expand_scenario()
 {
 	if(this->starting_point_type_ == STARTING_POINT_NONE && !has_carryover_expanded_) {
-		game_config_manager::get()->load_game_config_for_game(this->classification());
+		game_config_manager::get()->load_game_config_for_game(this->classification(), this->get_scenario_id());
 
 		const game_config_view& game_config = game_config_manager::get()->game_config();
 		const config& scenario =

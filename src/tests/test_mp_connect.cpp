@@ -60,7 +60,7 @@ struct mp_connect_fixture {
 		state.reset(new saved_game());
 		state->classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 		state->classification().era_id = "era_default";
-		config_manager->load_game_config_for_game(state->classification());
+		config_manager->load_game_config_for_game(state->classification(), state->get_scenario_id());
 
 		state->mp_settings().name = "multiplayer_The_Freelands";
 		state->mp_settings().use_map_settings = true;

@@ -640,7 +640,7 @@ void start_client(const game_config_view& game_config,	saved_game& state, const 
 		if(re_enter) {
 			game_config_manager* gcm = game_config_manager::get();
 			gcm->reload_changed_game_config();
-			gcm->load_game_config_for_game(state.classification()); // NOTE: Using reload_changed_game_config only doesn't seem to work here
+			gcm->load_game_config_for_create(true); // NOTE: Using reload_changed_game_config only doesn't seem to work here
 
 			game_config_ptr = &gcm->game_config();
 
@@ -751,10 +751,11 @@ void start_local_game_commandline(const game_config_view& game_config, saved_gam
 		return;
 	}
 
-	game_config_manager::get()->load_game_config_for_game(state.classification());
 	state.set_carryover_sides_start(
 		config {"next_scenario", parameters.name}
 	);
+
+	game_config_manager::get()->load_game_config_for_game(state.classification(), state.get_scenario_id());
 
 	state.expand_random_scenario();
 	state.expand_mp_events();

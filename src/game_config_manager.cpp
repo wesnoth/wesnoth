@@ -53,6 +53,8 @@ game_config_manager::game_config_manager(
 	jump_to_editor_(jump_to_editor),
 	game_config_(),
 	game_config_view_(),
+	addon_cfgs_(),
+	active_addons_(),
 	old_defines_map_(),
 	paths_manager_(),
 	cache_(game_config::config_cache::instance())
@@ -60,7 +62,6 @@ game_config_manager::game_config_manager(
 	assert(!singleton);
 	singleton = this;
 
-	game_config_view_.data().push_back(game_config_);
 	if(cmdline_opts_.nocache) {
 		cache_.set_use_cache(false);
 	}
@@ -91,6 +92,8 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
 
 	game_config::reset_color_info();
+
+
 	load_game_config_with_loadscreen(force_reload);
 
 	game_config::load_config(game_config().child("game_config"));
@@ -125,30 +128,57 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 } // end anonymous namespace
 
 void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
-	game_classification const* classification)
+	game_classification const*,
+	boost::optional<std::set<std::string>> active_addons)
 {
+	if (!lg::info().dont_log(log_config)) {
+		auto& out = lg::info()(log_config);
+		out << "load_game_config: defines:";
+		for(const auto& pair : cache_.get_preproc_map()) {
+			out << pair.first << ",";
+		}
+		out << "\n add_ons:";
+		if(active_addons) {
+			for(const auto& str : *active_addons) {
+				out << str << ",";
+			}
+		}
+		else {
+			out << "\n Everything:";
+		}
+		out << "\n";
+	} 
+	
+
 	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",
 		game_config::debug || game_config::mp_debug);
 
+	bool reload_everything = true;
 	// Game_config already holds requested config in memory.
 	if (!game_config_.empty()) {
 		if ((force_reload == NO_FORCE_RELOAD) && old_defines_map_ == cache_.get_preproc_map()) {
-			return;
+			reload_everything = false;
 		}
 		if ((force_reload == NO_INCLUDE_RELOAD) && map_includes(old_defines_map_, cache_.get_preproc_map())) {
+			reload_everything = false;
+		}
+		if(!reload_everything && active_addons == active_addons_) {
+			LOG_CONFIG << "load_game_config aborting\n";
 			return;
 		}
 	}
+	active_addons_ = active_addons;
 
-	gui2::dialogs::loading_screen::display([this, force_reload, classification]() {
-		load_game_config(force_reload, classification);
+	LOG_CONFIG << "load_game_config: everything:" << reload_everything << "\n";
+
+	gui2::dialogs::loading_screen::display([this, reload_everything]() {
+		load_game_config(reload_everything);
 	});
 }
 
-void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
-	game_classification const* classification)
+void game_config_manager::load_game_config(bool reload_everything)
 {
-		// Make sure that 'debug mode' symbol is set
+	// Make sure that 'debug mode' symbol is set
 	// if command line parameter is selected
 	// also if we're in multiplayer and actual debug mode is disabled.
 
@@ -162,133 +192,147 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// Load the selected core.
 		// Handle terrains so that they are last loaded from the core.
 		// Load every compatible addon.
-		gui2::dialogs::loading_screen::progress(loading_stage::verify_cache);
-		filesystem::data_tree_checksum();
-		gui2::dialogs::loading_screen::progress(loading_stage::create_cache);
+		if(reload_everything) {
+			gui2::dialogs::loading_screen::progress(loading_stage::verify_cache);
+			filesystem::data_tree_checksum();
+			gui2::dialogs::loading_screen::progress(loading_stage::create_cache);
 
-		// Start transaction so macros are shared.
-		game_config::config_cache_transaction main_transaction;
+			// Start transaction so macros are shared.
+			game_config::config_cache_transaction main_transaction;
 
-		config cores_cfg;
-		// Load mainline cores definition file.
-		cache_.get_config(game_config::path + "/data/cores.cfg", cores_cfg);
+			config cores_cfg;
+			// Load mainline cores definition file.
+			cache_.get_config(game_config::path + "/data/cores.cfg", cores_cfg);
 
-		// Append the $user_campaign_dir/*/cores.cfg files to the cores.
-		std::vector<std::string> user_dirs;
-		{
-			const std::string user_campaign_dir = filesystem::get_addons_dir();
-			std::vector<std::string> user_files;
-			filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
-					filesystem::ENTIRE_FILE_PATH);
-		}
-		for (const std::string& umc : user_dirs) {
-			const std::string cores_file = umc + "/cores.cfg";
-			if (filesystem::file_exists(cores_file)) {
-				config cores;
-				cache_.get_config(cores_file, cores);
-				cores_cfg.append(cores);
+			// Append the $user_campaign_dir/*/cores.cfg files to the cores.
+			std::vector<std::string> user_dirs;
+			{
+				const std::string user_campaign_dir = filesystem::get_addons_dir();
+				std::vector<std::string> user_files;
+				filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
+						filesystem::ENTIRE_FILE_PATH);
 			}
-		}
+			for (const std::string& umc : user_dirs) {
+				const std::string cores_file = umc + "/cores.cfg";
+				if (filesystem::file_exists(cores_file)) {
+					config cores;
+					cache_.get_config(cores_file, cores);
+					cores_cfg.append(cores);
+				}
+			}
 
-		// Validate every core
-		config valid_cores;
-		bool current_core_valid = false;
-		std::string wml_tree_root;
-		for (const config& core : cores_cfg.child_range("core")) {
+			// Validate every core
+			config valid_cores;
+			bool current_core_valid = false;
+			std::string wml_tree_root;
+			for (const config& core : cores_cfg.child_range("core")) {
 
-			const std::string& id = core["id"];
-			if (id.empty()) {
+				const std::string& id = core["id"];
+				if (id.empty()) {
+					events::call_in_main_thread([&]() {
+						gui2::dialogs::wml_error::display(
+							_("Error validating data core."),
+							_("Found a core without id attribute.")
+							+ '\n' +  _("Skipping the core."));
+					});
+					continue;
+				}
+				if (*&valid_cores.find_child("core", "id", id)) {
+					events::call_in_main_thread([&]() {
+						gui2::dialogs::wml_error::display(
+							_("Error validating data core."),
+								_("Core ID: ") + id
+							+ '\n' + _("The ID is already in use.")
+							+ '\n' + _("Skipping the core."));
+					});
+					continue;
+				}
+
+				const std::string& path = core["path"];
+				if (!filesystem::file_exists(filesystem::get_wml_location(path))) {
+					events::call_in_main_thread([&]() {
+						gui2::dialogs::wml_error::display(
+							_("Error validating data core."),
+							_("Core ID: ") + id
+							+ '\n' + _("Core Path: ") + path
+							+ '\n' + _("File not found.")
+							+ '\n' + _("Skipping the core."));
+					});
+					continue;
+				}
+
+				if (id == "default" && !current_core_valid) {
+					wml_tree_root = path;
+				}
+				if (id == preferences::core_id()) {
+					current_core_valid = true;
+					wml_tree_root = path;
+				}
+
+				valid_cores.add_child("core", core);  // append(core);
+			}
+
+			if (!current_core_valid) {
 				events::call_in_main_thread([&]() {
 					gui2::dialogs::wml_error::display(
-						_("Error validating data core."),
-						_("Found a core without id attribute.")
-						+ '\n' +  _("Skipping the core."));
+						_("Error loading core data."),
+						_("Core ID: ") + preferences::core_id()
+						+ '\n' + _("Error loading the core with named id.")
+						+ '\n' + _("Falling back to the default core."));
 				});
-				continue;
+				preferences::set_core_id("default");
 			}
-			if (*&valid_cores.find_child("core", "id", id)) {
+
+			// check if we have a valid default core which should always be the case.
+			if (wml_tree_root.empty()) {
 				events::call_in_main_thread([&]() {
 					gui2::dialogs::wml_error::display(
-						_("Error validating data core."),
-						_("Core ID: ") + id
-						+ '\n' + _("The ID is already in use.")
-						+ '\n' + _("Skipping the core."));
+						_("Error loading core data."),
+						_("Can't locate the default core.")
+						+ '\n' + _("The game will now exit."));
 				});
-				continue;
+				throw;
 			}
 
-			const std::string& path = core["path"];
-			if (!filesystem::file_exists(filesystem::get_wml_location(path))) {
-				events::call_in_main_thread([&]() {
-					gui2::dialogs::wml_error::display(
-						_("Error validating data core."),
-						_("Core ID: ") + id
-						+ '\n' + _("Core Path: ") + path
-						+ '\n' + _("File not found.")
-						+ '\n' + _("Skipping the core."));
-				});
-				continue;
+			// Load the selected core
+			std::unique_ptr<schema_validation::schema_validator> validator;
+			if(cmdline_opts_.validate_core) {
+				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg")));
+				validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 			}
+			cache_.get_config(filesystem::get_wml_location(wml_tree_root), game_config_, validator.get());
+			game_config_.append(valid_cores);
 
-			if (id == "default" && !current_core_valid) {
-				wml_tree_root = path;
+			main_transaction.lock();
+
+
+			if (!game_config::no_addons && !cmdline_opts_.noaddons) {
+				load_addons_cfg();
 			}
-			if (id == preferences::core_id()) {
-				current_core_valid = true;
-				wml_tree_root = path;
-			}
-
-			valid_cores.add_child("core", core);  // append(core);
 		}
-
-		if (!current_core_valid) {
-			events::call_in_main_thread([&]() {
-				gui2::dialogs::wml_error::display(
-					_("Error loading core data."),
-					_("Core ID: ") + preferences::core_id()
-					+ '\n' + _("Error loading the core with named id.")
-					+ '\n' + _("Falling back to the default core."));
-			});
-			preferences::set_core_id("default");
+		if(active_addons_) {
+			set_enabled_addon(*active_addons_);
 		}
-
-		// check if we have a valid default core which should always be the case.
-		if (wml_tree_root.empty()) {
-			events::call_in_main_thread([&]() {
-				gui2::dialogs::wml_error::display(
-					_("Error loading core data."),
-					_("Can't locate the default core.")
-					+ '\n' + _("The game will now exit."));
-			});
-			throw;
+		else {
+			set_enabled_addon_all();
 		}
-
-		// Load the selected core
-		std::unique_ptr<schema_validation::schema_validator> validator;
-		if(cmdline_opts_.validate_core) {
-			validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg")));
-			validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
-		}
-		cache_.get_config(filesystem::get_wml_location(wml_tree_root), game_config_, validator.get());
-		game_config_.append(valid_cores);
-
-		main_transaction.lock();
-
-		if (!game_config::no_addons && !cmdline_opts_.noaddons)
-			load_addons_cfg();
-
 
 		// Extract the Lua scripts at toplevel.
 		game_lua_kernel::extract_preload_scripts(game_config());
 
-		set_multiplayer_hashes();
-		set_unit_data();
-		game_config::add_color_info(game_config_);
 
+		set_unit_data();
 		terrain_builder::set_terrain_rules_cfg(game_config());
 		tdata_ = std::make_shared<terrain_type_data>(game_config());
 		::init_strings(game_config());
 		theme::set_known_themes(&game_config());
+
+		set_multiplayer_hashes();
+
+
+		//FIXME: use game_config() instead to icnlude addons
+		game_config::add_color_info(game_config_);
+
 	} catch(const game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n" << e.message << '\n';
 
@@ -300,7 +344,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 					_("Error loading custom game configuration files. The game will try without loading add-ons."),
 					e.message);
 			});
-			load_game_config(force_reload, classification);
+			load_game_config(reload_everything);
 		} else if (preferences::core_id() != "default") {
 			events::call_in_main_thread([&]() {
 				gui2::dialogs::wml_error::display(
@@ -309,7 +353,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 			});
 			preferences::set_core_id("default");
 			game_config::no_addons = false;
-			load_game_config(force_reload, classification);
+			load_game_config(reload_everything);
 		} else {
 			events::call_in_main_thread([&]() {
 				gui2::dialogs::wml_error::display(
@@ -494,8 +538,18 @@ void game_config_manager::load_addons_cfg()
 					}
 				}
 			}
-
-			game_config_.append(std::move(umc_cfg));
+			static const std::set<std::string> entry_tags {
+				"era",
+				"modification",
+				"resource",
+				"multiplayer",
+				"scenario",
+				"campaign"
+			};
+			for (const std::string& tagname : entry_tags) {
+				game_config_.append_children_by_move(umc_cfg, tagname);
+			}
+			addon_cfgs_[addon_id] = std::move(umc_cfg);
 		} catch(const config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << main_cfg << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
@@ -566,7 +620,8 @@ void game_config_manager::load_game_config_for_editor()
 }
 
 void game_config_manager::load_game_config_for_game(
-	const game_classification& classification)
+	const game_classification& classification
+	, const std::string& scenario_id)
 {
 	game_config::scoped_preproc_define difficulty(classification.difficulty,
 		!classification.difficulty.empty());
@@ -598,7 +653,7 @@ void game_config_manager::load_game_config_for_game(
 	}
 
 	try {
-		load_game_config_with_loadscreen(NO_FORCE_RELOAD, &classification);
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD, &classification, classification.active_addons(scenario_id));
 	} catch(const game::error&) {
 		cache_.clear_defines();
 
@@ -642,5 +697,27 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 		load_game_config_with_loadscreen(NO_FORCE_RELOAD);
 
 		throw;
+	}
+}
+void game_config_manager::set_enabled_addon(std::set<std::string> addon_ids)
+{
+	auto& vec = game_config_view_.data();
+	vec.clear();
+	vec.push_back(game_config_);
+	for(const std::string& id : addon_ids) {
+		auto it = addon_cfgs_.find(id);
+		if(it != addon_cfgs_.end()) {
+			vec.push_back(it->second);
+		}
+	}
+}
+void game_config_manager::set_enabled_addon_all()
+{
+	
+	auto& vec = game_config_view_.data();
+	vec.clear();
+	vec.push_back(game_config_);
+	for(const auto& pair  : addon_cfgs_) {
+		vec.push_back(pair.second);
 	}
 }
