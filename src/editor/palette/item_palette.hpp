@@ -20,6 +20,7 @@
 
 #include "editor/palette/editor_palettes.hpp"
 #include "overlay.hpp"
+class game_config_view;
 
 namespace editor {
 
@@ -32,10 +33,10 @@ class item_palette : public editor_palette<overlay> {
 public:
 
 	item_palette(editor_display &gui,
-	             const config& cfg,
+	             const game_config_view& cfg,
 	             editor_toolkit &toolkit);
 
-	virtual void setup(const config& cfg);
+	virtual void setup(const game_config_view& cfg);
 
 	virtual std::string get_help_string();
 

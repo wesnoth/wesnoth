@@ -17,6 +17,7 @@
 #include "tests/utils/game_config_manager_tests.hpp"
 
 #include "config.hpp"
+#include "game_config_view.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "font/font_config.hpp"
@@ -41,6 +42,7 @@ namespace test_utils {
 
 	class game_config_manager {
 		config cfg_;
+		game_config_view game_config_view_;
 		filesystem::binary_paths_manager paths_manager_;
 		const hotkey::manager hotkey_manager_;
 		font::manager font_manager_;
@@ -55,6 +57,7 @@ namespace test_utils {
 		public:
 		game_config_manager()
 			: cfg_()
+			, game_config_view_(game_config_view::wrap(cfg_))
 			, paths_manager_()
 			, hotkey_manager_()
 			, font_manager_()
@@ -75,25 +78,21 @@ namespace test_utils {
 			load_language_list();
 			game_config::config_cache::instance().add_define("TEST");
 			game_config::config_cache::instance().get_config(game_config::path + "/data/test/", cfg_);
-			::init_textdomains(cfg_);
+			::init_textdomains(game_config_view_);
 			const std::vector<language_def>& languages = get_languages();
 			std::vector<language_def>::const_iterator English = std::find_if(languages.begin(),
 					languages.end(),
 					match_english); // Using German because the most active translation
 			::set_language(*English);
 
-			cfg_.merge_children("units");
-
-			if (config &units = cfg_.child("units")) {
-				unit_types.set_config(units);
-			}
+			unit_types.set_config(game_config_view_.merged_children_view("units"));
 
 			game_config::load_config(cfg_.child("game_config"));
 			hotkey::deactivate_all_scopes();
 			hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
-			hotkey::load_hotkeys(cfg_);
-			paths_manager_.set_paths(cfg_);
+			hotkey::load_hotkeys(game_config_view_);
+			paths_manager_.set_paths(game_config_view_);
 			font::load_font_config();
 
 		}

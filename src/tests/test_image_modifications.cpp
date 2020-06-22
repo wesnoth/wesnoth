@@ -18,6 +18,7 @@
 #include <sstream>
 
 #include "game_config.hpp"
+#include "game_config_view.hpp"
 #include "config_cache.hpp"
 #include "config.hpp"
 #include "color_range.hpp"
@@ -86,11 +87,12 @@ private:
 	void set_up_image_paths()
 	{
 		config cfg;
-
+		game_config_view v = game_config_view::wrap(cfg);
 		cfg.add_child("binary_path",
 			      create_path_config("data/core"));
 
-		paths_manager_.set_paths(cfg);
+
+		paths_manager_.set_paths(v);
 	}
 
 	static config create_color_range(const std::string& id,

@@ -205,10 +205,10 @@ class editor_controller : public controller_base,
 		void init_gui();
 
 		/** init the available time-of-day settings */
-		void init_tods(const config& game_config);
+		void init_tods(const game_config_view& game_config);
 
 		/** init background music for the editor */
-		void init_music(const config& game_config);
+		void init_music(const game_config_view& game_config);
 
 		/** Load editor-specific tooltips */
 		void load_tooltips();

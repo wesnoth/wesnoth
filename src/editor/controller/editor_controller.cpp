@@ -50,7 +50,7 @@
 #include "sound.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
-
+#include "game_config_manager.hpp"
 #include "quit_confirmation.hpp"
 
 #include "utils/functional.hpp"
@@ -109,7 +109,7 @@ void editor_controller::init_gui()
 //	without deleting it.
 }
 
-void editor_controller::init_tods(const config& game_config)
+void editor_controller::init_tods(const game_config_view& game_config)
 {
 	for (const config &schedule : game_config.child_range("editor_times")) {
 
@@ -142,11 +142,12 @@ void editor_controller::init_tods(const config& game_config)
 	}
 }
 
-void editor_controller::init_music(const config& game_config)
+void editor_controller::init_music(const game_config_view& game_config)
 {
 	const std::string tag_name = "editor_music";
-	if (!game_config.has_child(tag_name))
+	if (game_config.child_range(tag_name).size() == 0) {
 		ERR_ED << "No editor music defined" << std::endl;
+	}
 	else {
 		for (const config& editor_music : game_config.child_range(tag_name)) {
 			for (const config& music : editor_music.child_range("music")) {

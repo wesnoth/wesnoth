@@ -32,9 +32,9 @@ namespace dialogs
 class game_load : public modal_dialog
 {
 public:
-	game_load(const config& cache_config, savegame::load_game_metadata& data);
+	game_load(const game_config_view& cache_config, savegame::load_game_metadata& data);
 
-	static bool execute(const config& cache_config, savegame::load_game_metadata& data)
+	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data)
 	{
 		return game_load(cache_config, data).show();
 	}
@@ -72,7 +72,7 @@ private:
 	config& summary_;
 
 	std::vector<savegame::save_info> games_;
-	const config& cache_config_;
+	const game_config_view& cache_config_;
 
 	std::vector<std::string> last_words_;
 };

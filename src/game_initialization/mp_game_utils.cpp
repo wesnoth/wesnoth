@@ -98,7 +98,7 @@ config initial_level_config(saved_game& state)
 	 * -- vultraz, 2017-11-24
 	 */
 
-	const config& game_config = game_config_manager::get()->game_config();
+	const game_config_view& game_config = game_config_manager::get()->game_config();
 	const config& era_cfg = game_config.find_child("era", "id", era);
 
 	if(!era_cfg) {

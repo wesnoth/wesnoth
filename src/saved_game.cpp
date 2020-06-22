@@ -264,7 +264,7 @@ void saved_game::expand_scenario()
 	if(this->starting_point_type_ == STARTING_POINT_NONE && !has_carryover_expanded_) {
 		game_config_manager::get()->load_game_config_for_game(this->classification());
 
-		const config& game_config = game_config_manager::get()->game_config();
+		const game_config_view& game_config = game_config_manager::get()->game_config();
 		const config& scenario =
 			game_config.find_child(classification().get_tagname(), "id", carryover_["next_scenario"]);
 

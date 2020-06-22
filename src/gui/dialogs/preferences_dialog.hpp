@@ -25,6 +25,7 @@
 
 #include <boost/dynamic_bitset.hpp>
 
+class game_config_view;
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
 
@@ -71,10 +72,10 @@ namespace dialogs
 class preferences_dialog : public modal_dialog
 {
 public:
-	preferences_dialog(const config& game_cfg, const preferences::PREFERENCE_VIEW& initial_view);
+	preferences_dialog(const game_config_view& game_cfg, const preferences::PREFERENCE_VIEW& initial_view);
 
 	/** The display function -- see @ref modal_dialog for more information. */
-	static void display(const config& game_cfg, const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT)
+	static void display(const game_config_view& game_cfg, const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT)
 	{
 		preferences_dialog(game_cfg, initial_view).show();
 	}

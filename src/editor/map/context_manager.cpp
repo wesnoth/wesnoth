@@ -41,6 +41,7 @@
 
 #include "gui/dialogs/editor/edit_scenario.hpp"
 #include "gui/dialogs/editor/edit_side.hpp"
+#include "game_config_view.hpp"
 
 #include "terrain/translation.hpp"
 
@@ -63,7 +64,7 @@ static const std::string get_menu_marker(const bool changed)
 	return ss.str();
 }
 
-context_manager::context_manager(editor_display& gui, const config& game_config)
+context_manager::context_manager(editor_display& gui, const game_config_view& game_config)
 	: locs_(nullptr)
 	, gui_(gui)
 	, game_config_(game_config)
@@ -672,7 +673,7 @@ void context_manager::save_scenario_as_dialog()
 	save_scenario_as(dlg.path());
 }
 
-void context_manager::init_map_generators(const config& game_config)
+void context_manager::init_map_generators(const game_config_view& game_config)
 {
 	for(const config& i : game_config.child_range("multiplayer")) {
 		if(i["map_generation"].empty() && i["scenario_generation"].empty()) {

@@ -19,6 +19,8 @@
 
 #include <iterator>
 
+class game_config_view;
+
 //this module controls internationalization.
 
 class config;
@@ -94,10 +96,10 @@ bool current_language_rtl();
 const language_def& get_locale();
 
 /** Initializes the list of textdomains from a configuration object */
-void init_textdomains(const config& cfg);
+void init_textdomains(const game_config_view& cfg);
 
 /** Initializes certain English strings */
-bool init_strings(const config& cfg);
+bool init_strings(const game_config_view& cfg);
 
 bool load_language_list();
 

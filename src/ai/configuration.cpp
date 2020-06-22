@@ -24,7 +24,7 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-
+#include "game_config_view.hpp"
 #include <vector>
 #include <deque>
 #include <set>
@@ -37,7 +37,7 @@ static lg::log_domain log_ai_configuration("ai/config");
 #define WRN_AI_CONFIGURATION LOG_STREAM(warn, log_ai_configuration)
 #define ERR_AI_CONFIGURATION LOG_STREAM(err, log_ai_configuration)
 
-void configuration::init(const config &game_config)
+void configuration::init(const game_config_view &game_config)
 {
 	ai_configurations_.clear();
 	era_ai_configurations_.clear();

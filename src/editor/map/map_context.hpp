@@ -26,6 +26,7 @@
 #include "display_context.hpp"
 
 #include <vector>
+class game_config_view;
 
 namespace editor {
 
@@ -75,7 +76,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const config& game_config, const std::string& filename);
+	map_context(const game_config_view& game_config, const std::string& filename);
 
 	/**
 	 * Map context destructor
@@ -335,7 +336,7 @@ public:
 	bool save_scenario();
 
 
-	void load_scenario(const config& game_config);
+	void load_scenario(const game_config_view& game_config);
 
 	config to_config();
 

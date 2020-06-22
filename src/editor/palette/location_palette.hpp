@@ -22,7 +22,7 @@
 
 class location_palette_item;
 class location_palette_button;
-
+class game_config_view;
 namespace editor {
 
 class editor_toolkit;
@@ -31,7 +31,7 @@ class location_palette : public common_palette {
 
 public:
 
-	location_palette(editor_display &gui, const config& /*cfg*/,
+	location_palette(editor_display &gui, const game_config_view& /*cfg*/,
 	                 editor_toolkit &toolkit);
 
 

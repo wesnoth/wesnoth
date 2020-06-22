@@ -21,6 +21,7 @@
 #include <string>
 #include <boost/algorithm/string.hpp>
 
+class game_config_view;
 class config;
 namespace hotkey {
 
@@ -389,7 +390,7 @@ const hotkey_ptr get_hotkey(const SDL_Event &event);
  * @param set_as_default Indicates whether the config struct should be treated as the
  * default game settings.
  */
-void load_hotkeys(const config& cfg, bool set_as_default = false);
+void load_hotkeys(const game_config_view& cfg, bool set_as_default = false);
 
 /**
  * Reset all hotkeys to the defaults.

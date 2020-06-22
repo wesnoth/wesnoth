@@ -190,7 +190,7 @@ unit_type::ability_metadata::ability_metadata(const config& cfg)
  * Load data into an empty unit_type (build to FULL).
  */
 void unit_type::build_full(
-		const movement_type_map& mv_types, const race_map& races, const config::const_child_itors& traits)
+		const movement_type_map& mv_types, const race_map& races, const config_array_view& traits)
 {
 	// Don't build twice.
 	if(FULL <= build_status_) {
@@ -233,7 +233,7 @@ void unit_type::build_full(
  * Partially load data into an empty unit_type (build to HELP_INDEXED).
  */
 void unit_type::build_help_index(
-		const movement_type_map& mv_types, const race_map& races, const config::const_child_itors& traits)
+		const movement_type_map& mv_types, const race_map& races, const config_array_view& traits)
 {
 	// Don't build twice.
 	if(HELP_INDEXED <= build_status_) {
@@ -418,7 +418,7 @@ void unit_type::build_created()
 void unit_type::build(BUILD_STATUS status,
 		const movement_type_map& movement_types,
 		const race_map& races,
-		const config::const_child_itors& traits)
+		const config_array_view& traits)
 {
 	DBG_UT << "Building unit type " << log_id() << ", level " << status << '\n';
 
@@ -839,7 +839,7 @@ unit_type_data::unit_type_data()
 	, hide_help_all_(false)
 	, hide_help_type_()
 	, hide_help_race_()
-	, unit_cfg_(nullptr)
+	, units_cfg_()
 	, build_status_(unit_type::NOT_BUILT)
 {
 }
@@ -1013,12 +1013,12 @@ void unit_type::fill_variations_and_gender()
  * This includes some processing of the config, such as expanding base units.
  * A pointer to the config is stored, so the config must be persistent.
  */
-void unit_type_data::set_config(const config& cfg)
+void unit_type_data::set_config(const game_config_view& cfg)
 {
-	DBG_UT << "unit_type_data::set_config, name: " << cfg["name"] << "\n";
+	LOG_UT << "unit_type_data::set_config, nunits: " << cfg.child_range("unit_type").size() << "\n";
 
 	clear();
-	unit_cfg_ = &cfg;
+	units_cfg_ = cfg;
 
 	for(const config& mt : cfg.child_range("movetype")) {
 		movement_types_.emplace(mt["name"].str(), movetype(mt));
@@ -1143,6 +1143,12 @@ void unit_type_data::set_config(const config& cfg)
 		hide_help_all_ = hide_help["all"].to_bool();
 		read_hide_help(hide_help);
 	}
+	DBG_UT << "Finished creatign unti types\n";
+}
+
+void unit_type_data::build_unit_type(const unit_type & ut, unit_type::BUILD_STATUS status) const
+{
+	ut.build(status, movement_types_, races_, units_cfg().child_range("trait"));
 }
 
 /**
@@ -1196,8 +1202,6 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 	if(status <= build_status_) {
 		return;
 	}
-
-	assert(unit_cfg_ != nullptr);
 
 	for(const auto& type : types_) {
 		build_unit_type(type.second, status);

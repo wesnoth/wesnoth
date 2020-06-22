@@ -20,7 +20,7 @@
 #include "gui/core/window_builder.hpp"
 
 class config;
-
+class game_config_view;
 namespace gui2
 {
 namespace implementation
@@ -75,7 +75,7 @@ public:
 		return map_data_;
 	}
 
-	void set_config(const ::config* terrain)
+	void set_config(const ::game_config_view* terrain)
 	{
 		terrain_ = terrain;
 	}
@@ -89,7 +89,7 @@ private:
 	 *
 	 * This config must be set before the object can be drawn.
 	 */
-	const ::config* terrain_;
+	const ::game_config_view* terrain_;
 
 	/**
 	 * Gets the image for the minimap.

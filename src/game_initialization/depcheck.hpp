@@ -20,6 +20,8 @@
 #include "gettext.hpp"
 #include "utils/make_enum.hpp"
 
+class game_config_view;
+
 namespace ng
 {
 
@@ -52,7 +54,7 @@ MAKE_ENUM(component_availability,
 class manager
 {
 public:
-	manager(const config& gamecfg, bool mp);
+	manager(const game_config_view& gamecfg, bool mp);
 
 	/**
 	 * Tries to set the selected era

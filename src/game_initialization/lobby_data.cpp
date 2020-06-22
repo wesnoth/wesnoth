@@ -32,6 +32,7 @@
 #include "wml_exception.hpp"
 #include "game_version.hpp"
 #include "mp_game_settings.hpp"
+#include "game_config_view.hpp"
 
 #include <iterator>
 
@@ -209,7 +210,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	, required_addons()
 	, addons_outcome(SATISFIED)
 {
-	const config& game_config = game_config_manager::get()->game_config();
+	const game_config_view& game_config = game_config_manager::get()->game_config();
 
 	// Parse the list of addons required to join this game.
 	for(const config& addon : game.child_range("addon")) {

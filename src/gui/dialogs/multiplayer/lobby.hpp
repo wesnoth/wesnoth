@@ -23,6 +23,8 @@
 #include "quit_confirmation.hpp"
 
 class wesnothd_connection;
+class game_config_view;
+
 namespace gui2
 {
 
@@ -62,7 +64,7 @@ struct player_list
 class mp_lobby : public modal_dialog, public quit_confirmation, private plugin_executor
 {
 public:
-	mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_connection &connection);
+	mp_lobby(const game_config_view& game_config, mp::lobby_info& info, wesnothd_connection &connection);
 
 	~mp_lobby();
 
@@ -168,7 +170,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	const config& game_config_;
+	const game_config_view& game_config_;
 
 	listbox* gamelistbox_;
 

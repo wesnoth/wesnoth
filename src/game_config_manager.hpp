@@ -18,6 +18,7 @@
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "terrain/type_data.hpp"
+#include "game_config_view.hpp"
 
 class config;
 class game_classification;
@@ -37,7 +38,7 @@ public:
 		NO_INCLUDE_RELOAD,
 	};
 
-	const config& game_config() const { return game_config_; }
+	const game_config_view& game_config() const { return game_config_view_; }
 	const preproc_map& old_defines_map() const { return old_defines_map_; }
 	const ter_data_cache & terrain_types() const { return tdata_; }
 
@@ -69,6 +70,7 @@ private:
 	const bool jump_to_editor_;
 
 	config game_config_;
+	game_config_view game_config_view_;
 
 	preproc_map old_defines_map_;
 

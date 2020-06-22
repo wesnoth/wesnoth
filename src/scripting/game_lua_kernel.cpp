@@ -172,7 +172,7 @@ struct map_locker
 };
 
 
-void game_lua_kernel::extract_preload_scripts(const config& game_config)
+void game_lua_kernel::extract_preload_scripts(const game_config_view& game_config)
 {
 	game_lua_kernel::preload_scripts.clear();
 	for (const config& cfg : game_config.child_range("lua")) {
@@ -1389,13 +1389,11 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 
 		//This code for SigurdFD, not the cleanest implementation but seems to work just fine.
-		config::const_child_itors its = game_config_manager::get()->game_config().child_range("era");
-		std::string eras_list(its.front()["id"]);
-		its.pop_front();
-		for(const auto& cfg : its) {
-			eras_list = eras_list + "," + cfg["id"];
+		std::vector<std::string> eras_list;
+		for (const config& era : game_config_manager::get()->game_config().child_range("era") ) {
+			eras_list.push_back(era["id"].str());
 		}
-		return_string_attrib("eras", eras_list);
+		return_string_attrib("eras", utils::join(eras_list));
 	}
 	return lua_kernel_base::impl_game_config_get(L);
 }
@@ -1425,7 +1423,7 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_string_attrib("next_scenario", gamedata().set_next_scenario(value));
 	modify_string_attrib("theme",
 		gamedata().set_theme(value);
-		const config& game_config = game_config_manager::get()->game_config();
+		const game_config_view& game_config = game_config_manager::get()->game_config();
 		game_display_->set_theme(play_controller_.get_theme(game_config, value));
 	);
 	modify_vector_string_attrib("defeat_music", gamedata().set_defeat_music(std::move(value)));

@@ -393,14 +393,14 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 /** Helper struct to manage the MP workflow arguments. */
 struct mp_workflow_helper
 {
-	mp_workflow_helper(const config& gc, saved_game& state, wesnothd_connection* connection, mp::lobby_info* li)
+	mp_workflow_helper(const game_config_view& gc, saved_game& state, wesnothd_connection* connection, mp::lobby_info* li)
 		: game_config(gc)
 		, state(state)
 		, connection(connection)
 		, lobby_info(li)
 	{}
 
-	const config& game_config;
+	const game_config_view& game_config;
 
 	saved_game& state;
 
@@ -604,9 +604,9 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 /** Pubic entry points for the MP workflow */
 namespace mp
 {
-void start_client(const config& game_config,	saved_game& state, const std::string& host)
+void start_client(const game_config_view& game_config,	saved_game& state, const std::string& host)
 {
-	const config* game_config_ptr = &game_config;
+	const game_config_view* game_config_ptr = &game_config;
 
 	// This function does not refer to an addon database, it calls filesystem functions.
 	// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
@@ -676,7 +676,7 @@ bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool obser
 	return dlg.show();
 }
 
-void start_local_game(const config& game_config, saved_game& state)
+void start_local_game(const game_config_view& game_config, saved_game& state)
 {
 	DBG_MP << "starting local game" << std::endl;
 
@@ -689,7 +689,7 @@ void start_local_game(const config& game_config, saved_game& state)
 	enter_create_mode(workflow_helper);
 }
 
-void start_local_game_commandline(const config& game_config, saved_game& state, const commandline_options& cmdline_opts)
+void start_local_game_commandline(const game_config_view& game_config, saved_game& state, const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting local MP game from commandline" << std::endl;
 

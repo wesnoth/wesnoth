@@ -19,12 +19,14 @@ class terrain_type;
 class unit;
 class unit_type;
 class CVideo;
+class game_config_view;
+
 #include <string>
 
 namespace help {
 
 struct help_manager {
-	help_manager(const config *game_config);
+	help_manager(const game_config_view *game_config);
 	~help_manager();
 };
 

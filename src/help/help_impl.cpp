@@ -63,7 +63,7 @@ static lg::log_domain log_help("help");
 
 namespace help {
 
-const config *game_cfg = nullptr;
+const game_config_view *game_cfg = nullptr;
 // The default toplevel.
 help::section default_toplevel;
 // All sections and topics not referenced from the default toplevel.
@@ -73,7 +73,6 @@ int last_num_encountered_units = -1;
 int last_num_encountered_terrains = -1;
 boost::tribool last_debug_state = boost::indeterminate;
 
-config dummy_cfg;
 std::vector<std::string> empty_string_vector;
 const int max_section_level = 15;
 const int title_size = font::SIZE_LARGE;
@@ -293,7 +292,7 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 	if (generator == "races") {
 		generate_races_sections(help_cfg, sec, level);
 	} else if (generator == "terrains") {
-		generate_terrain_sections(help_cfg, sec, level);
+		generate_terrain_sections(sec, level);
 	} else if (generator == "eras") {
 		DBG_HP << "Generating eras...\n";
 		generate_era_sections(help_cfg, sec, level);
@@ -834,7 +833,7 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 	}
 }
 
-void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*level*/)
+void generate_terrain_sections(section& sec, int /*level*/)
 {
 	ter_data_cache tdata = load_terrain_types_data();
 
@@ -1350,10 +1349,7 @@ void generate_contents()
 	default_toplevel.clear();
 	hidden_sections.clear();
 	if (game_cfg != nullptr) {
-		const config *help_config = &game_cfg->child("help");
-		if (!*help_config) {
-			help_config = &dummy_cfg;
-		}
+		const config *help_config = &game_cfg->child_or_empty("help");
 		try {
 			default_toplevel = parse_config(help_config);
 			// Create a config object that contains everything that is

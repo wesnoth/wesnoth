@@ -58,6 +58,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "lexical_cast.hpp"
+#include "game_config_view.hpp"
 
 #if BOOST_VERSION >= 106700
 #include <boost/integer/common_factor_rt.hpp>
@@ -114,7 +115,7 @@ using namespace preferences;
 
 REGISTER_DIALOG(preferences_dialog)
 
-preferences_dialog::preferences_dialog(const config& game_cfg, const PREFERENCE_VIEW& initial_view)
+preferences_dialog::preferences_dialog(const game_config_view& game_cfg, const PREFERENCE_VIEW& initial_view)
 	: resolutions_() // should be populated by set_resolution_list before use
 	, adv_preferences_cfg_()
 	, last_selected_item_(0)

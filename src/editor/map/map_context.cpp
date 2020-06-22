@@ -29,6 +29,7 @@
 #include "team.hpp"
 #include "terrain/type_data.hpp"
 #include "units/unit.hpp"
+#include "game_config_view.hpp"
 
 #include <boost/regex.hpp>
 
@@ -85,7 +86,7 @@ map_context::map_context(const editor_map& map, bool pure_map, const config& sch
 {
 }
 
-map_context::map_context(const config& game_config, const std::string& filename)
+map_context::map_context(const game_config_view& game_config, const std::string& filename)
 	: filename_(filename)
 	, map_data_key_()
 	, embedded_(false)
@@ -312,7 +313,7 @@ void map_context::replace_local_schedule(const std::vector<time_of_day>& schedul
 	}
 }
 
-void map_context::load_scenario(const config& game_config)
+void map_context::load_scenario(const game_config_view& game_config)
 {
 	config scenario;
 

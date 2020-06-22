@@ -31,7 +31,7 @@
 #include "serialization/string_utils.hpp"
 
 class config;
-
+class game_config_view;
 struct SDL_RWops;
 
 namespace filesystem {
@@ -384,10 +384,10 @@ char path_separator();
 struct binary_paths_manager
 {
 	binary_paths_manager();
-	binary_paths_manager(const config& cfg);
+	binary_paths_manager(const game_config_view& cfg);
 	~binary_paths_manager();
 
-	void set_paths(const config& cfg);
+	void set_paths(const game_config_view& cfg);
 
 private:
 	binary_paths_manager(const binary_paths_manager& o);

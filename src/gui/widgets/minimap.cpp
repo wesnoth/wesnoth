@@ -127,7 +127,7 @@ static const size_t cache_max_size = 100;
  * normally doesn't happen a lot so the clearing of the cache is rather
  * unusual.
  */
-static const ::config* terrain = nullptr;
+static const ::game_config_view* terrain = nullptr;
 
 /** The cache. */
 typedef std::map<key_type, value_type> tcache;

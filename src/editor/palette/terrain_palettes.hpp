@@ -33,12 +33,12 @@ class terrain_palette : public editor_palette<t_translation::terrain_code> {
 
 public:
 
-	terrain_palette(editor_display &gui, const config& cfg,
+	terrain_palette(editor_display &gui, const game_config_view& cfg,
 	                editor_toolkit &toolkit);
 
 	const gamemap& map() const { return gui_.get_map(); }
 
-	virtual void setup(const config& cfg);
+	virtual void setup(const game_config_view& cfg);
 
 	void select_bg_item(const t_translation::terrain_code& terrain);
 	void select_fg_item(const t_translation::terrain_code& terrain);

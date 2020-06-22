@@ -33,6 +33,7 @@
 #include "sound.hpp"
 #include "utils/general.hpp"
 #include "video.hpp" // non_interactive()
+#include "game_config_view.hpp"
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #ifndef _WIN32
@@ -864,7 +865,7 @@ void _set_color_cursors(bool value)
 
 void load_hotkeys()
 {
-	hotkey::load_hotkeys(prefs, false);
+	hotkey::load_hotkeys(game_config_view::wrap(prefs), false);
 }
 
 void save_hotkeys()

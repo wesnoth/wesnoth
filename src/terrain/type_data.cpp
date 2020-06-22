@@ -15,6 +15,7 @@
 #include "terrain/type_data.hpp"
 
 #include "serialization/string_utils.hpp"
+#include "game_config_view.hpp"
 
 #include <map>
 
@@ -23,7 +24,7 @@
 #define LOG_G LOG_STREAM(info, lg::general())
 #define DBG_G LOG_STREAM(debug, lg::general())
 
-terrain_type_data::terrain_type_data(const config & game_config)
+terrain_type_data::terrain_type_data(const game_config_view & game_config)
 	: terrainList_()
 	, tcodeToTerrain_()
 	, initialized_(false)

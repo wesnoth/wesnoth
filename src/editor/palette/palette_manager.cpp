@@ -22,7 +22,7 @@
 
 namespace editor {
 
-palette_manager::palette_manager(editor_display& gui, const config& cfg
+palette_manager::palette_manager(editor_display& gui, const game_config_view& cfg
                                , editor_toolkit& toolkit)
 		: gui::widget(gui.video()),
 		  gui_(gui),

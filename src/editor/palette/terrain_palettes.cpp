@@ -22,6 +22,7 @@
 
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
+#include "game_config_view.hpp"
 
 namespace {
 	static t_translation::terrain_code fg_terrain;
@@ -67,7 +68,7 @@ void terrain_palette::select_fg_item(const t_translation::terrain_code& terrain)
 }
 
 
-void terrain_palette::setup(const config& cfg)
+void terrain_palette::setup(const game_config_view& cfg)
 {
 	// Get the available terrains temporary in items
 	t_translation::ter_list items = map().get_terrain_list();
@@ -212,7 +213,7 @@ void terrain_palette::draw_item(const t_translation::terrain_code& terrain,
 	}
 }
 
-terrain_palette::terrain_palette(editor_display &gui, const config& cfg, editor_toolkit &toolkit)
+terrain_palette::terrain_palette(editor_display &gui, const game_config_view& cfg, editor_toolkit &toolkit)
 //TODO avoid magic numbers
 	:	editor_palette<t_translation::terrain_code>(gui, cfg, 36, 4, toolkit)
 {

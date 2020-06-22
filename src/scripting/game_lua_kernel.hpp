@@ -22,6 +22,7 @@
 #include <string>                       // for string
 
 class config;
+class game_config_view;
 class unit;
 class vconfig;
 namespace ai { class engine_lua; }
@@ -61,7 +62,7 @@ class game_lua_kernel : public lua_kernel_base
 
 	const game_events::queued_event & get_event_info();
 
-	static void extract_preload_scripts(const config& game_config);
+	static void extract_preload_scripts(const game_config_view& game_config);
 	static std::vector<config> preload_scripts;
 	static config preload_config;
 

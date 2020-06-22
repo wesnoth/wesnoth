@@ -21,6 +21,8 @@
 
 class config;
 class wesnothd_connection;
+class game_config_view;
+
 namespace mp {
 
 // max. length of a player name
@@ -34,7 +36,7 @@ const std::size_t max_login_size = 20;
  *
  * @param game_config The global, top-level WML configuration for the game
  */
-void start_local_game(const config& game_config,
+void start_local_game(const game_config_view& game_config,
 	saved_game& state);
 
 /** Starts a multiplayer game in single-user mode.
@@ -42,7 +44,7 @@ void start_local_game(const config& game_config,
  * Same parameters as start_local_game plus:
  * cmdline_opts The commandline options
  */
-void start_local_game_commandline(const config& game_config,
+void start_local_game_commandline(const game_config_view& game_config,
 	saved_game& state, const commandline_options& cmdline_opts);
 
 /** Starts a multiplayer game in client mode.
@@ -50,7 +52,7 @@ void start_local_game_commandline(const config& game_config,
  * @param game_config The global, top-level WML configuration for the game
  * @param host        The host to connect to.
  */
-void start_client(const config& game_config,
+void start_client(const game_config_view& game_config,
 	saved_game& state, const std::string& host);
 
 /**

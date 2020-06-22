@@ -20,7 +20,7 @@
 #include "hotkey/hotkey_command.hpp"
 
 class config;
-
+class game_config_view;
 namespace editor {
 
 
@@ -28,7 +28,7 @@ class editor_toolkit {
 
 public:
 	editor_toolkit(editor_display& gui, const CKey& key,
-			const config& game_config, context_manager& c_manager);
+			const game_config_view& game_config, context_manager& c_manager);
 
 	~editor_toolkit();
 
@@ -38,10 +38,10 @@ public:
 
 private:
 	/** init the sidebar objects */
-	void init_sidebar(const config& game_config);
+	void init_sidebar(const game_config_view& game_config);
 
 	/** init the brushes */
-	void init_brushes(const config& game_config);
+	void init_brushes(const game_config_view& game_config);
 
 	/** init the mouse actions (tools) */
 	void init_mouse_actions(context_manager& c_manager);

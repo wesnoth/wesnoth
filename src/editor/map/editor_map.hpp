@@ -73,23 +73,23 @@ public:
 	/**
 	 * Empty map constructor
 	 */
-	explicit editor_map(const config& terrain_cfg);
+	explicit editor_map(const game_config_view& terrain_cfg);
 
 	/**
 	 * Create an editor map from a map data string
 	 */
-	editor_map(const config& terrain_cfg, const std::string& data);
+	editor_map(const game_config_view& terrain_cfg, const std::string& data);
 
 	/**
 	 * Wrapper around editor_map(cfg, data) that catches possible exceptions
 	 * and wraps them in a editor_map_load_exception
 	 */
-	static editor_map from_string(const config& terrain_cfg, const std::string& data);
+	static editor_map from_string(const game_config_view& terrain_cfg, const std::string& data);
 
 	/**
 	 * Create an editor map with the given dimensions and filler terrain
 	 */
-	editor_map(const config& terrain_cfg, std::size_t width, std::size_t height, const t_translation::terrain_code & filler);
+	editor_map(const game_config_view& terrain_cfg, std::size_t width, std::size_t height, const t_translation::terrain_code & filler);
 
 	/**
 	 * Create an editor_map by upgrading an existing gamemap. The map data is

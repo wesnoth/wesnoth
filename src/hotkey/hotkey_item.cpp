@@ -23,7 +23,7 @@
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string.hpp>
 #include "utils/functional.hpp"
-
+#include "game_config_view.hpp"
 #include <SDL2/SDL.h>
 #include <key.hpp>
 #include <serialization/unicode.hpp>
@@ -38,7 +38,7 @@ static lg::log_domain log_config("config");
 namespace hotkey {
 
 hotkey_list hotkeys_;
-config default_hotkey_cfg_;
+game_config_view default_hotkey_cfg_;
 
 namespace {
 	const int TOUCH_MOUSE_INDEX = 255;
@@ -401,7 +401,7 @@ const hotkey_ptr get_hotkey(const SDL_Event &event)
 	return hotkey_ptr(new hotkey_void());
 }
 
-void load_hotkeys(const config& cfg, bool set_as_default)
+void load_hotkeys(const game_config_view& cfg, bool set_as_default)
 {
 	for (const config &hk : cfg.child_range("hotkey")) {
 
@@ -424,7 +424,7 @@ void reset_default_hotkeys()
 {
 	hotkeys_.clear();
 
-	if (!default_hotkey_cfg_.empty()) {
+	if (!default_hotkey_cfg_.child_range("hotkey").empty()) {
 		load_hotkeys(default_hotkey_cfg_, true);
 	} else {
 		ERR_G<< "no default hotkeys set yet; all hotkeys are now unassigned!" << std::endl;
