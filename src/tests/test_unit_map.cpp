@@ -16,12 +16,13 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "log.hpp"
 #include "config.hpp"
-#include "units/unit.hpp"
+#include "log.hpp"
 #include "tests/utils/game_config_manager_tests.hpp"
-#include "units/map.hpp"
 #include "units/id.hpp"
+#include "units/map.hpp"
+#include "units/types.hpp"
+#include "units/unit.hpp"
 
 #include "utils/functional.hpp"
 
