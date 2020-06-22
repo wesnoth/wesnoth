@@ -274,34 +274,12 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 
 		main_transaction.lock();
 
-		// Put the gfx rules aside so that we can prepend the add-on
-		// rules to them.
-		config core_terrain_rules;
-		core_terrain_rules.splice_children(game_config_, "terrain_graphics");
-
 		if (!game_config::no_addons && !cmdline_opts_.noaddons)
 			load_addons_cfg();
 
-		// If multiplayer campaign is being loaded, [scenario] tags should
-		// become [multiplayer] tags and campaign's id should be added to them
-		// to allow to recognize which scenarios belongs to a loaded campaign.
-		if (classification != nullptr) {
-			if (const config& campaign = game_config().find_child("campaign", "id", classification->campaign))
-			{
-				const bool require_campaign = campaign["require_campaign"].to_bool(true);
-				for (config& scenario : game_config_.child_range("scenario"))
-				{
-					scenario["require_scenario"] = require_campaign;
-				}
-			}
-		}
 
 		// Extract the Lua scripts at toplevel.
 		game_lua_kernel::extract_preload_scripts(game_config());
-		game_config_.clear_children("lua");
-
-		// Put the gfx rules back to game config.
-		game_config_.splice_children(core_terrain_rules, "terrain_graphics");
 
 		set_multiplayer_hashes();
 		set_unit_data();

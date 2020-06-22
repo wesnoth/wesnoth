@@ -217,12 +217,19 @@ void saved_game::set_defaults()
 {
 	const bool is_loaded_game = this->starting_point_type_ != STARTING_POINT_SCENARIO;
 	const bool is_multiplayer_tag = classification().get_tagname() == "multiplayer";
-
+	const game_config_view& game_config = game_config_manager::get()->game_config();
 	static const std::vector<std::string> team_defaults {
 		"carryover_percentage",
 		"carryover_add",
 	};
 
+
+	if (const config& campaign = game_config.find_child("campaign", "id", classification_.campaign))
+	{
+		bool require_campaign = campaign["require_campaign"].to_bool(true);
+		starting_point_["require_scenario"] = require_campaign;
+	}
+	
 	for(config& side : starting_point_.child_range("side")) {
 		// Set save_id default value directly after loading to its default to prevent different default behaviour in
 		// mp_connect code and sp code.
