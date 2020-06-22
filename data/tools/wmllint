@@ -1782,9 +1782,9 @@ def global_sanity_check(filename, lines):
                 subtag_depth += 1
             if "[/" in lines[i]:
                 subtag_depth -= 1
-        if "[event]" in lines[i]:
+        if "[event]" in lines[i] or "[+event]" in lines[i]:
             directly_in_event.append(True)
-        elif re.search(r"\[[a-z]", lines[i]):
+        elif re.search(r"\[\+?[a-z]", lines[i]):
             directly_in_event.append(False)
         elif "[/" in lines[i]:
             if len(directly_in_event) > 0:
