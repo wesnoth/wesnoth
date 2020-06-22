@@ -26,6 +26,7 @@ class game_state;
 class gamemap;
 class game_data;
 class game_board;
+class game_config_view;
 class play_controller;
 class team;
 class unit_map;
@@ -146,7 +147,7 @@ private:
 	game_display* gui_;
 	play_controller& pc_;
 
-	const config& game_config_;
+	const game_config_view& game_config_;
 
 	gui::floating_textbox textbox_info_;
 	std::string last_search_;

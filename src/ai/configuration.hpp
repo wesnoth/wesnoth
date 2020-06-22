@@ -21,6 +21,7 @@
 
 #include "config.hpp"
 #include "ai/game_info.hpp"
+#include "game_config_view.hpp"
 
 namespace ai {
 
@@ -64,7 +65,7 @@ public:
 	 * Init the parameters of ai configuration parser
 	 * @param game_config game config
 	 */
-	static void init(const config &game_config);
+	static void init(const game_config_view &game_config);
 	static void add_era_ai_from_config(const config &game_config);
 	static void add_mod_ai_from_config(config::const_child_itors configs);
 

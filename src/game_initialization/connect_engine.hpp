@@ -22,6 +22,7 @@
 
 namespace randomness { class mt_rng; }
 struct mp_campaign_info;
+class game_config_view;
 
 namespace ng {
 
@@ -63,7 +64,7 @@ public:
 
 	bool can_start_game() const;
 	void start_game();
-	void start_game_commandline(const commandline_options& cmdline_opts, const config& game_config);
+	void start_game_commandline(const commandline_options& cmdline_opts, const game_config_view& game_config);
 
 	void leave_game();
 

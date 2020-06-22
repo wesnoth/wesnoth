@@ -26,6 +26,8 @@
 #include <memory>
 #include <SDL2/SDL_rect.h>
 
+class game_config_view;
+
 struct _rect { std::size_t x1,y1,x2,y2; };
 
 struct theme_info
@@ -275,7 +277,7 @@ public:
 	const SDL_Rect& palette_location(const SDL_Rect& screen) const
 		{ return palette_.location(screen); }
 
-    static void set_known_themes(const config* cfg);
+    static void set_known_themes(const game_config_view* cfg);
     static std::vector<theme_info> get_known_themes();
 
 	const border_t& border() const { return border_; }

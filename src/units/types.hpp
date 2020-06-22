@@ -22,7 +22,7 @@
 #include "units/attack_type.hpp"
 #include "units/alignment.hpp"
 #include "units/type_error.hpp"
-
+#include "game_config_view.hpp"
 #include <memory>
 #include <array>
 #include <map>
@@ -32,7 +32,7 @@
 
 class unit_ability_list;
 class unit_animation;
-
+class game_config_view;
 
 typedef std::map<std::string, movetype> movement_type_map;
 
@@ -84,10 +84,10 @@ public:
 private: // These will be called by build().
 	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,
-		const race_map &races, const config::const_child_itors &traits);
+		const race_map &races, const config_array_view &traits);
 	/// Partially load data into an empty unit_type (build to HELP_INDEXED).
 	void build_help_index(const movement_type_map &movement_types,
-		const race_map &races, const config::const_child_itors &traits);
+		const race_map &races, const config_array_view &traits);
 	/// Load the most needed data into an empty unit_type (build to CREATE).
 	void build_created();
 
@@ -95,11 +95,11 @@ private: // These will be called by build().
 public:
 	/// Performs a build of this to the indicated stage.
 	void build(BUILD_STATUS status, const movement_type_map &movement_types,
-	           const race_map &races, const config::const_child_itors &traits);
+	           const race_map &races, const config_array_view &traits);
 	/// Performs a build of this to the indicated stage.
 	/// (This does not logically change the unit type, so allow const access.)
 	void build(BUILD_STATUS status, const movement_type_map &movement_types,
-	           const race_map &races, const config::const_child_itors &traits) const
+	           const race_map &races, const config_array_view &traits) const
 	{ const_cast<unit_type *>(this)->build(status, movement_types, races, traits); }
 
 
@@ -375,8 +375,8 @@ public:
 
 	const unit_type_map &types() const { return types_; }
 	const race_map &races() const { return races_; }
-	const config::const_child_itors traits() const { return unit_cfg_->child_range("trait"); }
-	void set_config(const config &cfg);
+	config_array_view traits() const { return units_cfg().child_range("trait"); }
+	void set_config(const game_config_view &cfg);
 
 	/// Finds a unit_type by its id() and makes sure it is built to the specified level.
 	const unit_type *find(const std::string &key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
@@ -386,8 +386,7 @@ public:
 	/// Makes sure the all unit_types are built to the specified level.
 	void build_all(unit_type::BUILD_STATUS status);
 	/// Makes sure the provided unit_type is built to the specified level.
-	void build_unit_type(const unit_type & ut, unit_type::BUILD_STATUS status) const
-	{ ut.build(status, movement_types_, races_, unit_cfg_->child_range("trait")); }
+	void build_unit_type(const unit_type & ut, unit_type::BUILD_STATUS status) const;
 
 	/** Checks if the [hide_help] tag contains these IDs. */
 	bool hide_help(const std::string &type_id, const std::string &race_id) const;
@@ -412,7 +411,8 @@ private:
 	std::vector< std::set<std::string>> hide_help_type_;
 	std::vector< std::set<std::string>> hide_help_race_;
 
-	const config *unit_cfg_;
+	const game_config_view& units_cfg() const { return units_cfg_; }
+	game_config_view units_cfg_;
 	unit_type::BUILD_STATUS build_status_;
 };
 

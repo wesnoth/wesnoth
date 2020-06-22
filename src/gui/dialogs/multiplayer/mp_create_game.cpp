@@ -45,6 +45,7 @@
 #include "preferences/game.hpp"
 #include "save_index.hpp"
 #include "savegame.hpp"
+#include "game_config_view.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -67,7 +68,7 @@ namespace prefs = preferences;
 
 REGISTER_DIALOG(mp_create_game)
 
-mp_create_game::mp_create_game(const config& cfg, saved_game& state, bool local_mode, mp::user_info* host_info)
+mp_create_game::mp_create_game(const game_config_view& cfg, saved_game& state, bool local_mode, mp::user_info* host_info)
 	: cfg_(cfg)
 	, create_engine_(state)
 	, config_engine_()
@@ -410,7 +411,7 @@ void mp_create_game::pre_show(window& win)
 		on_mod_toggle(win, cfg["index"].to_int(), nullptr);
 	}, true);
 
-	plugins_context_->set_accessor("game_config",  [this](const config&) {return cfg_; });
+	//plugins_context_->set_accessor("game_config",  [this](const config&) {return cfg_; });
 	plugins_context_->set_accessor("get_selected", [this](const config&) {
 		const ng::level& current_level = create_engine_.current_level();
 		return config {

@@ -158,7 +158,7 @@ protected:
 
 };
 namespace editor {
-location_palette::location_palette(editor_display &gui, const config& /*cfg*/,
+location_palette::location_palette(editor_display &gui, const game_config_view& /*cfg*/,
                                    editor_toolkit &toolkit)
 		: common_palette(gui.video())
 		, item_size_(20)

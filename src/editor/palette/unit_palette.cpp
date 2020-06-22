@@ -31,7 +31,7 @@ std::string unit_palette::get_help_string() {
 	return selected_fg_item().type_name();
 }
 
-void unit_palette::setup(const config& /*cfg*/)
+void unit_palette::setup(const game_config_view& /*cfg*/)
 {
 	for(const unit_type_data::unit_type_map::value_type &i : unit_types.types()) {
 		if(i.second.do_not_list())
@@ -94,7 +94,7 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 	tooltip_text << u.type_name();
 }
 
-unit_palette::unit_palette(editor_display &gui, const config& cfg,
+unit_palette::unit_palette(editor_display &gui, const game_config_view& cfg,
                            editor_toolkit &toolkit)
 //TODO avoid magic numbers
 	: editor_palette<const unit_type&>(gui, cfg, 36, 4, toolkit)

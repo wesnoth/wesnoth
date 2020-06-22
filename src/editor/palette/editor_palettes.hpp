@@ -27,7 +27,7 @@ class editor_palette : public tristate_palette {
 
 public:
 
-	editor_palette(editor_display &gui, const config& /*cfg*/
+	editor_palette(editor_display &gui, const game_config_view& /*cfg*/
 	             , std::size_t item_size, std::size_t item_width, editor_toolkit &toolkit)
 		: tristate_palette(gui.video())
 		, groups_()
@@ -110,7 +110,7 @@ private:
 	virtual const std::string& get_id(const Item& item) = 0;
 
 	/** Setup the internal data structure. */
-	virtual void setup(const config& cfg) = 0;
+	virtual void setup(const game_config_view& cfg) = 0;
 
 	virtual const std::string& active_group_id() {return active_group_;}
 

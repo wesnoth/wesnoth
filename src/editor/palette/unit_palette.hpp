@@ -33,10 +33,10 @@ class unit_palette : public editor_palette<const unit_type&> {
 public:
 
 	unit_palette(editor_display &gui,
-	             const config& cfg,
+	             const game_config_view& cfg,
 	             editor_toolkit &toolkit);
 
-	virtual void setup(const config& cfg);
+	virtual void setup(const game_config_view& cfg);
 
 	virtual std::string get_help_string();
 

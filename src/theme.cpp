@@ -25,7 +25,7 @@
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
-
+#include "game_config_view.hpp"
 #include <sstream>
 #include <utility>
 
@@ -938,7 +938,7 @@ const theme::status_item* theme::get_status_item(const std::string& key) const
 typedef std::map<std::string, config> known_themes_map;
 known_themes_map theme::known_themes;
 
-void theme::set_known_themes(const config* cfg)
+void theme::set_known_themes(const game_config_view* cfg)
 {
 	known_themes.clear();
 	if(!cfg)

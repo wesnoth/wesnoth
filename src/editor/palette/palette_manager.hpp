@@ -35,7 +35,7 @@ class palette_manager : public gui::widget {
 
 public:
 
-	palette_manager(editor_display &gui, const config& cfg
+	palette_manager(editor_display &gui, const game_config_view& cfg
 	              , editor_toolkit &toolkit);
 
 	void set_group(std::size_t index);

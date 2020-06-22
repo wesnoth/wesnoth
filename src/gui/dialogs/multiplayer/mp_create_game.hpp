@@ -24,6 +24,7 @@
 #include "mp_game_settings.hpp"
 
 class config;
+class game_config_view;
 
 namespace mp
 {
@@ -44,7 +45,7 @@ class mp_create_game : public modal_dialog, private plugin_executor
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 
 public:
-	mp_create_game(const config& cfg, saved_game& state, bool local_mode, mp::user_info* host_info = nullptr);
+	mp_create_game(const game_config_view& cfg, saved_game& state, bool local_mode, mp::user_info* host_info = nullptr);
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
@@ -56,7 +57,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	const config& cfg_;
+	const game_config_view& cfg_;
 
 	ng::create_engine create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;

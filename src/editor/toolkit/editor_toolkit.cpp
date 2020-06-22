@@ -22,10 +22,12 @@
 #include "editor/action/mouse/mouse_action_item.hpp"
 #include "editor/action/mouse/mouse_action_select.hpp"
 
+#include "game_config_view.hpp"
+
 namespace editor {
 
 editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
-		const config& game_config, context_manager& c_manager)
+		const game_config_view& game_config, context_manager& c_manager)
 	: gui_(gui)
 	, key_(key)
 	, palette_manager_()
@@ -41,7 +43,7 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 
 editor_toolkit::~editor_toolkit() = default;
 
-void editor_toolkit::init_brushes(const config& game_config)
+void editor_toolkit::init_brushes(const game_config_view& game_config)
 {
 	for (const config &i : game_config.child_range("brush")) {
 		brushes_.emplace_back(i);
@@ -54,7 +56,7 @@ void editor_toolkit::init_brushes(const config& game_config)
 	brush_ = &brushes_[0];
 }
 
-void editor_toolkit::init_sidebar(const config& game_config)
+void editor_toolkit::init_sidebar(const game_config_view& game_config)
 {
 	palette_manager_.reset(new palette_manager(gui_, game_config, *this));
 }

@@ -39,20 +39,20 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 	return editor_map_load_exception(filename, msg);
 }
 
-editor_map::editor_map(const config& terrain_cfg)
+editor_map::editor_map(const game_config_view& terrain_cfg)
 	: gamemap(std::make_shared<terrain_type_data>(terrain_cfg), "")
 	, selection_()
 {
 }
 
-editor_map::editor_map(const config& terrain_cfg, const std::string& data)
+editor_map::editor_map(const game_config_view& terrain_cfg, const std::string& data)
 	: gamemap(std::make_shared<terrain_type_data>(terrain_cfg), data)
 	, selection_()
 {
 	sanity_check();
 }
 
-editor_map editor_map::from_string(const config& terrain_cfg, const std::string& data)
+editor_map editor_map::from_string(const game_config_view&  terrain_cfg, const std::string& data)
 {
 	try {
 		return editor_map(terrain_cfg, data);
@@ -65,7 +65,7 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 	}
 }
 
-editor_map::editor_map(const config& terrain_cfg, std::size_t width, std::size_t height, const t_translation::terrain_code & filler)
+editor_map::editor_map(const game_config_view& terrain_cfg, std::size_t width, std::size_t height, const t_translation::terrain_code & filler)
 	: gamemap(std::make_shared<terrain_type_data>(terrain_cfg), t_translation::write_game_map(t_translation::ter_map(width + 2, height + 2, filler)))
 	, selection_()
 {

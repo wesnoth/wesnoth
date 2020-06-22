@@ -24,6 +24,7 @@
 #include "gui/dialogs/depcheck_confirm_change.hpp"
 #include "gui/dialogs/depcheck_select_new.hpp"
 #include "gui/dialogs/message.hpp"
+#include "game_config_view.hpp"
 
 static lg::log_domain log_mp_create_depcheck("mp/create/depcheck");
 #define DBG_MP LOG_STREAM(debug, log_mp_create_depcheck)
@@ -55,7 +56,7 @@ namespace ng
 {
 namespace depcheck
 {
-manager::manager(const config& gamecfg, bool mp)
+manager::manager(const game_config_view& gamecfg, bool mp)
 	: depinfo_()
 	, era_()
 	, scenario_()

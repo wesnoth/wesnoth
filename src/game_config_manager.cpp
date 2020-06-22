@@ -52,6 +52,7 @@ game_config_manager::game_config_manager(
 	cmdline_opts_(cmdline_opts),
 	jump_to_editor_(jump_to_editor),
 	game_config_(),
+	game_config_view_(),
 	old_defines_map_(),
 	paths_manager_(),
 	cache_(game_config::config_cache::instance())
@@ -59,6 +60,7 @@ game_config_manager::game_config_manager(
 	assert(!singleton);
 	singleton = this;
 
+	game_config_view_.data().push_back(game_config_);
 	if(cmdline_opts_.nocache) {
 		cache_.set_use_cache(false);
 	}
@@ -91,7 +93,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::reset_color_info();
 	load_game_config_with_loadscreen(force_reload);
 
-	game_config::load_config(game_config_.child("game_config"));
+	game_config::load_config(game_config().child("game_config"));
 
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
@@ -295,7 +297,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		}
 
 		// Extract the Lua scripts at toplevel.
-		game_lua_kernel::extract_preload_scripts(game_config_);
+		game_lua_kernel::extract_preload_scripts(game_config());
 		game_config_.clear_children("lua");
 
 		// Put the gfx rules back to game config.
@@ -306,7 +308,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		game_config::add_color_info(game_config_);
 
 		terrain_builder::set_terrain_rules_cfg(game_config());
-		tdata_ = std::make_shared<terrain_type_data>(game_config_);
+		tdata_ = std::make_shared<terrain_type_data>(game_config());
 		::init_strings(game_config());
 		theme::set_known_themes(&game_config());
 	} catch(const game::error& e) {
@@ -553,18 +555,15 @@ void game_config_manager::load_addons_cfg()
 void game_config_manager::set_multiplayer_hashes()
 {
 	config& hashes = game_config_.add_child("multiplayer_hashes");
-	for (const config &ch : game_config_.child_range("multiplayer")) {
+	for (const config &ch : game_config().child_range("multiplayer")) {
 		hashes[ch["id"].str()] = ch.hash();
 	}
 }
 
 void game_config_manager::set_unit_data()
 {
-	game_config_.merge_children("units");
 	gui2::dialogs::loading_screen::progress(loading_stage::load_unit_types);
-	if(config &units = game_config_.child("units")) {
-		unit_types.set_config(units);
-	}
+	unit_types.set_config(game_config().merged_children_view("units"));
 }
 
 void game_config_manager::reload_changed_game_config()

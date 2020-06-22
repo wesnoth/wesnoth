@@ -20,6 +20,7 @@
 #include "preferences/editor.hpp"
 
 class map_generator;
+class game_config_view;
 
 namespace editor
 {
@@ -29,7 +30,7 @@ class context_manager : public filter_context
 public:
 	using context_ptr = std::unique_ptr<map_context>;
 
-	context_manager(editor_display& gui, const config& game_config);
+	context_manager(editor_display& gui, const game_config_view& game_config);
 	~context_manager();
 
 	bool is_active_transitions_hotkey(const std::string& item);
@@ -195,7 +196,7 @@ public:
 	class location_palette* locs_;
 private:
 	/** init available random map generators */
-	void init_map_generators(const config& game_config);
+	void init_map_generators(const game_config_view& game_config);
 
 	/**
 	 * Shows an are-you-sure dialog if the map was modified.
@@ -312,7 +313,7 @@ public:
 private:
 	editor_display& gui_;
 
-	const config& game_config_;
+	const game_config_view& game_config_;
 
 	/** Default directory for map load/save as dialogs */
 	std::string default_dir_;

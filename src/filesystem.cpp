@@ -35,6 +35,7 @@
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <boost/system/windows_error.hpp>
+#include "game_config_view.hpp"
 
 #ifdef _WIN32
 #include "log_windows.hpp"
@@ -1287,7 +1288,7 @@ binary_paths_manager::binary_paths_manager()
 {
 }
 
-binary_paths_manager::binary_paths_manager(const config& cfg)
+binary_paths_manager::binary_paths_manager(const game_config_view& cfg)
 	: paths_()
 {
 	set_paths(cfg);
@@ -1298,7 +1299,7 @@ binary_paths_manager::~binary_paths_manager()
 	cleanup();
 }
 
-void binary_paths_manager::set_paths(const config& cfg)
+void binary_paths_manager::set_paths(const game_config_view& cfg)
 {
 	cleanup();
 	init_binary_paths();

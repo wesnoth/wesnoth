@@ -41,6 +41,7 @@
 #include "quit_confirmation.hpp"
 #include "video.hpp"
 
+class game_config_view;
 class display;
 class plugins_context;
 
@@ -67,7 +68,7 @@ public:
 
 	virtual void play_slice(bool is_delay_enabled = true);
 
-	static const config& get_theme(const config& game_config, std::string theme_name);
+	static const config& get_theme(const game_config_view& game_config, std::string theme_name);
 
 	void apply_keyboard_scroll(int x, int y);
 
@@ -180,7 +181,7 @@ protected:
 
 	void long_touch_callback(int x, int y);
 
-	const config& game_config_;
+	const game_config_view& game_config_;
 
 	CKey key_;
 

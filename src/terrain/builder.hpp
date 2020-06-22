@@ -25,6 +25,8 @@
 #include "terrain/translation.hpp"
 
 class config;
+class game_config_view;
+
 class gamemap;
 namespace image
 {
@@ -92,7 +94,7 @@ public:
 	 * @param cfg			The main game configuration object, where the
 	 *						[terrain_graphics] rule reside.
 	 */
-	static void set_terrain_rules_cfg(const config& cfg);
+	static void set_terrain_rules_cfg(const game_config_view& cfg);
 
 	const gamemap& map() const
 	{
@@ -755,8 +757,9 @@ private:
 	 * @param local     Mark the rules as local only.
 	 */
 	void parse_config(const config& cfg, bool local = true);
+	void parse_config(const game_config_view& cfg, bool local = true);
 
-	void parse_global_config(const config& cfg)
+	void parse_global_config(const game_config_view& cfg)
 	{
 		parse_config(cfg, false);
 	}
@@ -858,5 +861,5 @@ private:
 	static building_ruleset building_rules_;
 
 	/** Config used to parse global terrain rules */
-	static const config* rules_cfg_;
+	static const game_config_view* rules_cfg_;
 };

@@ -87,11 +87,10 @@ void show_unit_description(const unit_type &t)
 		help::show_unit_help(t.id(), t.show_variations_in_help(), hide_help);
 }
 
-extern config dummy_cfg;
-
-help_manager::help_manager(const config *cfg) //, gamemap *_map)
+help_manager::help_manager(const game_config_view *cfg) //, gamemap *_map)
 {
-	game_cfg = cfg == nullptr ? &dummy_cfg : cfg;
+	static game_config_view dummy_view;
+	game_cfg = cfg == nullptr ? &dummy_view : cfg;
 //	map = _map;
 }
 

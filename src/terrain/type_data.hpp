@@ -18,6 +18,8 @@
 
 #include <map>
 
+class game_config_view;
+
 /**
  * Contains the database of all known terrain types, both those defined
  * explicitly by WML [terrain_type]s and those made by combining pairs of
@@ -40,10 +42,10 @@ private:
 	using tcodeToTerrain_t = std::map<t_translation::terrain_code, terrain_type>;
 	mutable tcodeToTerrain_t tcodeToTerrain_;
 	mutable bool initialized_;
-	const config & game_config_;
+	const game_config_view & game_config_;
 
 public:
-	terrain_type_data(const config & game_config);
+	terrain_type_data(const game_config_view & game_config);
 
 	/**
 	 * On the first call to this function, parse all of the [terrain_type]s

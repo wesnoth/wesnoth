@@ -19,6 +19,7 @@
 #include "preferences/general.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "game_config_manager.hpp"
 
 #include <stdexcept>
 #include <clocale>
@@ -352,7 +353,7 @@ const language_def& get_locale()
 	return known_languages[0];
 }
 
-void init_textdomains(const config& cfg)
+void init_textdomains(const game_config_view& cfg)
 {
 	for (const config &t : cfg.child_range("textdomain"))
 	{
@@ -375,7 +376,7 @@ void init_textdomains(const config& cfg)
 	}
 }
 
-bool init_strings(const config& cfg)
+bool init_strings(const game_config_view& cfg)
 {
 	languages_.clear();
 	for (const config &l : cfg.child_range("language")) {

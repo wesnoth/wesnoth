@@ -115,7 +115,7 @@ bool mp_lobby::logout_prompt()
 	return show_prompt(_("Do you really want to log out?"));
 }
 
-mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_connection &connection)
+mp_lobby::mp_lobby(const game_config_view& game_config, mp::lobby_info& info, wesnothd_connection &connection)
 	: quit_confirmation(&mp_lobby::logout_prompt)
 	, game_config_(game_config)
 	, gamelistbox_(nullptr)
@@ -832,7 +832,7 @@ void mp_lobby::pre_show(window& window)
 	}, true);
 
 	plugins_context_->set_accessor("game_list",   [this](const config&) { return lobby_info_.gamelist(); });
-	plugins_context_->set_accessor("game_config", [this](const config&) { return game_config_; });
+	//plugins_context_->set_accessor("game_config", [this](const config&) { return game_config_; });
 }
 
 void mp_lobby::post_show(window& /*window*/)

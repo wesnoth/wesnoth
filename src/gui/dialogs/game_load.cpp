@@ -43,6 +43,7 @@
 #include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
 #include "utils/functional.hpp"
+#include "game_config_view.hpp"
 
 #include <cctype>
 
@@ -102,7 +103,7 @@ namespace dialogs
 
 REGISTER_DIALOG(game_load)
 
-game_load::game_load(const config& cache_config, savegame::load_game_metadata& data)
+game_load::game_load(const game_config_view& cache_config, savegame::load_game_metadata& data)
 	: filename_(data.filename)
 	, save_index_manager_(data.manager)
 	, change_difficulty_(register_bool("change_difficulty", true, data.select_difficulty))

@@ -17,6 +17,7 @@
 #include "tests/utils/fake_display.hpp"
 
 #include "game_board.hpp"
+#include "game_config_view.hpp"
 #include "game_display.hpp"
 #include "terrain/type_data.hpp"
 #include "reports.hpp"
@@ -32,6 +33,7 @@ namespace test_utils {
 
 		CVideo video_;
 		config dummy_cfg_;
+		game_config_view dummy_cfg_view_;
 		config dummy_cfg2_;
 		game_board dummy_board_;
 		reports dummy_reports;
@@ -62,8 +64,9 @@ namespace test_utils {
 	fake_display_manager::fake_display_manager() :
 		video_(CVideo::FAKE_TEST),
 		dummy_cfg_(),
+		dummy_cfg_view_(game_config_view::wrap(dummy_cfg_)),
 		dummy_cfg2_(),
-		dummy_board_(std::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_),
+		dummy_board_(std::make_shared<terrain_type_data>(dummy_cfg_view_), dummy_cfg2_),
 		main_event_context_(),
 		disp_(dummy_board_, std::shared_ptr<wb::manager> (), dummy_reports, dummy_cfg_, dummy_cfg_)
 	{

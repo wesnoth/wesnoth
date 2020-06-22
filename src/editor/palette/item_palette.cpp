@@ -20,6 +20,7 @@
 
 #include "editor/palette/item_palette.hpp"
 #include "gettext.hpp"
+#include "game_config_view.hpp"
 
 #include <string>
 
@@ -30,7 +31,7 @@ std::string item_palette::get_help_string()
 	return selected_fg_item().name;
 }
 
-void item_palette::setup(const config& cfg)
+void item_palette::setup(const game_config_view& cfg)
 {
 	for(const config& group : cfg.child_range("item_group")) {
 		groups_.emplace_back(group);
@@ -81,7 +82,7 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 	tooltip_text << item.name;
 }
 
-item_palette::item_palette(editor_display &gui, const config& cfg,
+item_palette::item_palette(editor_display &gui, const game_config_view& cfg,
                            editor_toolkit &toolkit)
 //TODO avoid magic numbers
 	:	editor_palette<overlay>(gui, cfg, 36, 4, toolkit)

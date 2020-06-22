@@ -20,6 +20,7 @@
 #include <string>
 
 class config;
+class game_config_view;
 
 namespace about
 {
@@ -62,6 +63,6 @@ std::vector<std::string> get_background_images(const std::string& campaign);
 /**
  * Regenerates the credits config
  */
-void set_about(const config& cfg);
+void set_about(const game_config_view& cfg);
 
 }

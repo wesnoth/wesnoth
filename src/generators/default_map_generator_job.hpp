@@ -17,6 +17,7 @@
 #pragma once
 
 class config;
+class game_config_view;
 
 #include "default_map_generator.hpp"
 #include "map/location.hpp"
@@ -62,6 +63,6 @@ private:
 	map_location random_point_at_side(std::size_t width, std::size_t height);
 
 	std::mt19937 rng_;
-	const config& game_config_;
+	const game_config_view& game_config_;
 
 };

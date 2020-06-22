@@ -17,6 +17,7 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
+#include "game_config_view.hpp"
 
 #include <map>
 
@@ -103,7 +104,7 @@ std::vector<std::string> get_background_images(const std::string& campaign)
 	return images_general;
 }
 
-void set_about(const config& cfg)
+void set_about(const game_config_view& cfg)
 {
 	parsed_credits_data.clear();
 

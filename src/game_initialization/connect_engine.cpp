@@ -491,7 +491,7 @@ void connect_engine::start_game()
 	send_to_server(config("start_game"));
 }
 
-void connect_engine::start_game_commandline(const commandline_options& cmdline_opts, const config& game_config)
+void connect_engine::start_game_commandline(const commandline_options& cmdline_opts, const game_config_view& game_config)
 {
 	DBG_MP << "starting a new game in commandline mode" << std::endl;
 

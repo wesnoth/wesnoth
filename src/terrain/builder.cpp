@@ -25,6 +25,7 @@
 #include "map/map.hpp"
 #include "preferences/game.hpp"
 #include "serialization/string_utils.hpp"
+#include "game_config_view.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -85,7 +86,7 @@ static map_location legacy_difference(const map_location& me, const map_location
  */
 
 terrain_builder::building_ruleset terrain_builder::building_rules_;
-const config* terrain_builder::rules_cfg_ = nullptr;
+const game_config_view* terrain_builder::rules_cfg_ = nullptr;
 
 terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy, bool is_water)
 	: layer(layer)
@@ -287,7 +288,7 @@ void terrain_builder::flush_local_rules()
 	}
 }
 
-void terrain_builder::set_terrain_rules_cfg(const config& cfg)
+void terrain_builder::set_terrain_rules_cfg(const game_config_view& cfg)
 {
 	rules_cfg_ = &cfg;
 	// use the swap trick to clear the rules cache and get a fresh one.
@@ -882,6 +883,11 @@ void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& 
 
 void terrain_builder::parse_config(const config& cfg, bool local)
 {
+	return parse_config(game_config_view::wrap(cfg), local);
+}
+
+void terrain_builder::parse_config(const game_config_view& cfg, bool local)
+{
 	log_scope("terrain_builder::parse_config");
 	int n = 0;
 
@@ -1012,7 +1018,7 @@ void terrain_builder::add_off_map_rule(const std::string& image)
 	item["set_flag"] = "base";
 
 	// Parse the object
-	parse_global_config(cfg);
+	parse_global_config(game_config_view::wrap(cfg));
 }
 
 bool terrain_builder::rule_matches(const terrain_builder::building_rule& rule,

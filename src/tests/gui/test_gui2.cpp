@@ -22,6 +22,7 @@
 #include "formula/debugger.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
+#include "game_config_view.hpp"
 #include "game_display.hpp"
 #include "game_events/manager.hpp"
 #include "game_initialization/create_engine.hpp"
@@ -163,6 +164,7 @@ namespace {
 
 	/** The main config, which contains the entire WML tree. */
 	config main_config;
+	game_config_view game_config_view_ = game_config_view::wrap(main_config);
 
 	/**
 	 * Helper class to generate a dialog.
@@ -404,7 +406,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	cache.add_define("MULTIPLAYER");
 	cache.get_config(game_config::path +"/data", main_config);
 
-	const filesystem::binary_paths_manager bin_paths_manager(main_config);
+	const filesystem::binary_paths_manager bin_paths_manager(game_config_view_);
 
 	load_language_list();
 	game_config::load_config(main_config.child("game_config"));
@@ -731,6 +733,7 @@ template<>
 struct dialog_tester<game_load>
 {
 	config cfg;
+	game_config_view view;
 	// It would be good to have a test directory instead of using the same directory as the player,
 	// however this code will support that - default_saves_dir() will respect --userdata-dir.
 	savegame::load_game_metadata data{savegame::save_index_class::default_saves_dir()};
@@ -740,7 +743,8 @@ struct dialog_tester<game_load>
 	}
 	game_load* create()
 	{
-		return new game_load(cfg, data);
+		view = game_config_view::wrap(cfg);
+		return new game_load(view, data);
 	}
 
 };
@@ -823,15 +827,17 @@ template<>
 struct dialog_tester<mp_lobby>
 {
 	config game_config;
+	game_config_view gc_view;
 	wesnothd_connection connection;
 	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
 	dialog_tester() : connection("", ""), li(installed_addons)
 	{
+		gc_view = game_config_view::wrap(game_config);
 	}
 	mp_lobby* create()
 	{
-		return new mp_lobby(game_config, li, connection);
+		return new mp_lobby(gc_view, li, connection);
 	}
 };
 
@@ -900,7 +906,7 @@ struct dialog_tester<mp_create_game>
 	}
 	mp_create_game* create()
 	{
-		return new mp_create_game(main_config, state, true, nullptr);
+		return new mp_create_game(game_config_view_, state, true, nullptr);
 	}
 };
 

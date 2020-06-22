@@ -28,6 +28,7 @@
 
 class saved_game;
 class gamemap;
+class game_config_view;
 
 namespace ng {
 
@@ -463,7 +464,7 @@ private:
 	std::string selected_campaign_difficulty_;
 
 	/** Reference to the main game config. */
-	const config& game_config_;
+	const game_config_view& game_config_;
 };
 
 } // end namespace ng

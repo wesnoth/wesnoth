@@ -45,6 +45,7 @@
 #include <boost/logic/tribool.hpp>
 #include <boost/optional.hpp>
 
+class game_config_view;
 class config;
 class unit_type;
 class terrain_type_data;
@@ -216,7 +217,7 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
 std::string generate_topic_text(const std::string &generator, const config *help_cfg,
 const section &sec, const std::vector<topic>& generated_topics);
-std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
+std::string generate_contents_links(const std::string& section_name, const config *help_cfg);
 std::string generate_contents_links(const section &sec, const std::vector<topic>& topics);
 
 /// return a hyperlink with the unit's name and pointing to the unit page
@@ -227,7 +228,7 @@ std::vector<std::string> make_unit_links_list(
 		const std::vector<std::string>& type_id_list, bool ordered = false);
 
 void generate_races_sections(const config *help_cfg, section &sec, int level);
-void generate_terrain_sections(const config* help_cfg, section &sec, int level);
+void generate_terrain_sections(section &sec, int level);
 std::vector<topic> generate_unit_topics(const bool, const std::string& race);
 void generate_unit_sections(const config *help_cfg, section &sec, int level, const bool, const std::string& race);
 enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
@@ -297,7 +298,7 @@ std::string get_first_word(const std::string &s);
 /// Load the appropriate terrain types data to use
 ter_data_cache load_terrain_types_data();
 
-extern const config *game_cfg;
+extern const game_config_view *game_cfg;
 // The default toplevel.
 extern help::section default_toplevel;
 // All sections and topics not referenced from the default toplevel.
