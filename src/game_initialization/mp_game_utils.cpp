@@ -109,8 +109,6 @@ config initial_level_config(saved_game& state)
 		// FIXME: @todo We should tell user about missing era but still load game...
 		WRN_CF << "Missing era in MP load game " << era << std::endl;
 
-		// Otherwise we get an error when when we try to add ai algorithms in mp_staging.
-		level.add_child("era");
 	} else {
 		level.add_child("era", era_cfg);
 

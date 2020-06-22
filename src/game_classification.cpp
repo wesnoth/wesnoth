@@ -18,6 +18,9 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "game_version.hpp"
+#include "game_config_manager.hpp"
+
+#include <list>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -95,3 +98,65 @@ bool game_classification::is_normal_mp_game() const
 {
 	return this->campaign_type == CAMPAIGN_TYPE::MULTIPLAYER && this->campaign.empty();
 }
+
+namespace {
+
+// helper objects for saved_game::expand_mp_events()
+struct modevents_entry
+{
+	modevents_entry(const std::string& _type, const std::string& _id)
+		: type(_type)
+		, id(_id)
+	{
+	}
+
+	std::string type;
+	std::string id;
+};
+}
+
+std::set<std::string> game_classification::active_addons(const std::string& scenario_id) const
+{
+	//FIXME: this doesn include modsthe current scenario.
+	std::list<modevents_entry> mods;
+	std::set<std::string> loaded_resources;
+	std::set<std::string> res;
+
+	std::transform(active_mods.begin(), active_mods.end(), std::back_inserter(mods),
+		[](const std::string& id) { return modevents_entry("modification", id); }
+	);
+
+	// We don't want the error message below if there is no era (= if this is a sp game).
+	if(!era_id.empty()) {
+		mods.emplace_back(get_tagname(), scenario_id);
+	}
+
+	if(!era_id.empty()) {
+		mods.emplace_back("era", era_id);
+	}
+
+	if(!campaign.empty()) {
+		mods.emplace_back("campaign", campaign);
+	}
+	while(!mods.empty()) {
+
+		const modevents_entry& current = mods.front();
+		if(current.type == "resource") {
+			if(loaded_resources.insert(current.id).second) {
+				mods.pop_front();
+				continue;
+			}
+		}
+		if(const config& cfg = game_config_manager::get()->game_config().find_child(current.type, "id", current.id)) {
+			if(!cfg["addon_id"].empty()) {
+				res.insert(cfg["addon_id"]);
+			}
+			for (const config& load_res : cfg.child_range("load_resource")) {
+				mods.emplace_back("resource", load_res["id"].str());
+			}
+		}
+		mods.pop_front( );
+	}
+	return res;
+}
+

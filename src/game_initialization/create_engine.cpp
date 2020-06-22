@@ -467,7 +467,7 @@ void create_engine::prepare_for_saved_game()
 {
 	DBG_MP << "preparing mp_game_settings for saved game\n";
 
-	game_config_manager::get()->load_game_config_for_game(state_.classification());
+	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
 	// The save might be a start-of-scenario save so make sure we have the scenario data loaded.
 	state_.expand_scenario();

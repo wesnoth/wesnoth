@@ -79,7 +79,9 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	config::child_itors sides = current_config()->child_range("side");
 
 	// AI algorithms.
-	ai::configuration::add_era_ai_from_config(level_.child("era"));
+	if(const config& era = level_.child("era")) {
+		ai::configuration::add_era_ai_from_config(era);
+	}
 	ai::configuration::add_mod_ai_from_config(level_.child_range("modification"));
 
 	// Set the team name lists and modify the original level sides if necessary.
