@@ -143,12 +143,17 @@ mp_game_settings::addon_version_info::addon_version_info(const config & cfg)
 	: version()
 	, min_version()
 	, name(cfg["name"])
+	, required(cfg["required"].to_bool(false))
+	, content()
 {
 	if (!cfg["version"].empty()) {
 		version = cfg["version"].str();
 	}
 	if (!cfg["min_version"].empty()) {
 		min_version = cfg["min_version"].str();
+	}
+	for(const auto& child : cfg.child_range("content")) {
+		content.emplace_back(addon_content{ child["id"].str(), child["type"].str() });
 	}
 }
 
@@ -161,6 +166,12 @@ void mp_game_settings::addon_version_info::write(config & cfg) const {
 	}
 
 	cfg["name"]	= name;
+	cfg["require"] = required;
+	for(const auto& item : content) {
+		config& c = cfg.add_child("content");
+		c["id"] = item.id;
+		c["type"] = item.type;
+	}
 }
 
 void mp_game_settings::update_addon_requirements(const config & cfg) {
@@ -171,27 +182,36 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 
 	mp_game_settings::addon_version_info new_data(cfg);
 
+	std::map<std::string, addon_version_info>::iterator it = addons.find(cfg["id"].str());
 	// Check if this add-on already has an entry as a dependency for this scenario. If so, try to reconcile their version info,
 	// by taking the larger of the min versions. The version should be the same for all WML from the same add-on...
-	std::map<std::string, addon_version_info>::iterator it = addons.find(cfg["id"].str());
 	if (it != addons.end()) {
-		addon_version_info & addon = it->second;
+		addon_version_info& addon = it->second;
 
-		if (new_data.version) {
-			if (!addon.version || (*addon.version != *new_data.version)) {
-				WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["id"].str() << "' addon.\n";
-			}
+		// an add-on can contain multiple types of content
+		// for example, an era and a scenario
+		for(const auto& item : new_data.content) {
+			addon.content.emplace_back(addon_content{ item.id, item.type });
 		}
-		if (addon.version && !new_data.version) {
-			WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["id"].str() << "' addon.\n";
+
+		if(addon.version != new_data.version) {
+			ERR_NG << "Addon version data mismatch! Not all local WML has same version of the addon: '" << cfg["id"].str() << "'.\n";
 		}
-		if (new_data.min_version) {
-			if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
-				addon.min_version = *new_data.min_version;
+
+		if(new_data.required) {
+			addon.required = true;
+
+			if (new_data.min_version) {
+				if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
+					addon.min_version = *new_data.min_version;
+				}
 			}
 		}
 	} else {
-		// Didn't find this addon-id in the map, so make a new entry.
+		// Didn't find this addon-id in the map, so make a new entry without setting the min_version.
+		if(!new_data.required) {
+			new_data.min_version = boost::none;
+		}
 		addons.emplace(cfg["id"].str(), new_data);
 	}
 }

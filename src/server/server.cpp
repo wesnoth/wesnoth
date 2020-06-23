@@ -1632,7 +1632,30 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 
 		if(user_handler_) {
 			const simple_wml::node& m = *g.level().root().child("multiplayer");
-			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
+
+			// [addon] info handling
+			std::string scenario_addon_id = "";
+			std::string scenario_addon_version = "";
+			std::string era_addon_id = "";
+			std::string era_addon_version = "";
+			for(const auto& addon : m.children("addon")) {
+				for(const auto& content : addon->children("content")) {
+					const simple_wml::string_span& type = content->attr("type");
+					if(type == "scenario") {
+						scenario_addon_id = addon->attr("id").to_string();
+						scenario_addon_version = addon->attr("version").to_string();
+					} else if(type == "era") {
+						era_addon_id = addon->attr("id").to_string();
+						era_addon_version = addon->attr("version").to_string();
+					} else if(type == "modification") {
+						user_handler_->db_insert_modification_info(uuid_, g.db_id(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
+					} else {
+						WRN_SERVER << "[multiplayer][addon][content] sent with unknown type.\n" << simple_wml::node_to_string(*addon) << '\n';
+					}
+				}
+			}
+
+			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password(), scenario_addon_id, scenario_addon_version, era_addon_id, era_addon_version);
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
@@ -1654,13 +1677,6 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 					}
 				}
 				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
-			}
-
-			const std::string mods = m["active_mods"].to_string();
-			if(mods != "") {
-				for(const std::string& mod : utils::split(mods, ',')){
-					user_handler_->db_insert_modification_info(uuid_, g.db_id(), mod);
-				}
 			}
 		}
 

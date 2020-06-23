@@ -136,9 +136,9 @@ class user_handler {
 
 		virtual std::string get_uuid() =0;
 		virtual std::string get_tournaments() =0;
-		virtual void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password) =0;
+		virtual void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password, const std::string& map_source, const std::string& map_version, const std::string& era_source, const std::string& era_version) =0;
 		virtual void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location) =0;
 		virtual void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user) =0;
-		virtual void db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name) =0;
+		virtual void db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name, const std::string& modification_source, const std::string& modification_version) =0;
 		virtual void db_set_oos_flag(const std::string& uuid, int game_id) =0;
 };

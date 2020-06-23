@@ -83,8 +83,6 @@ config initial_level_config(saved_game& state)
 
 	config level = state.to_config();
 	add_multiplayer_classification(level.child_or_add("multiplayer"), state);
-	level.child("multiplayer")["mp_scenario_addon_id"] = level.child("scenario")["addon_id"].str();
-	level.child("multiplayer")["mp_scenario_addon_version"] = state.to_config().child("scenario")["addon_version"].str();
 
 	// [multiplayer] mp_era= should be persistent over saves.
 	std::string era = state.classification().era_id;
@@ -112,9 +110,6 @@ config initial_level_config(saved_game& state)
 	} else {
 		level.add_child("era", era_cfg);
 
-		level.child("multiplayer")["mp_era_addon_id"] = era_cfg["addon_id"].str();
-		level.child("multiplayer")["mp_era_addon_version"] = era_cfg["addon_version"].str();
-
 		// Initialize the list of sides available for the current era.
 		// We also need this so not to get a segfault in mp_staging for ai configuration.
 		const config& custom_side = game_config.find_child("multiplayer_side", "id", "Custom");
@@ -123,19 +118,12 @@ config initial_level_config(saved_game& state)
 
 	// Add modifications, needed for ai algorithms which are applied in mp_staging.
 	const std::vector<std::string>& mods = state.classification().active_mods;
-	std::vector<std::string> mod_versions;
-	std::vector<std::string> mod_addon_ids;
 
 	for(unsigned i = 0; i < mods.size(); ++i) {
 		if(const config& mod_cfg = game_config.find_child("modification", "id", mods[i])) {
-			mod_versions.push_back(mod_cfg["addon_version"].str());
-			mod_addon_ids.push_back(mod_cfg["addon_id"].str());
 			level.add_child("modification", mod_cfg);
 		}
 	}
-
-	level.child("multiplayer")["active_mod_versions"] = utils::join(mod_versions);
-	level.child("multiplayer")["active_mod_addon_ids"] = utils::join(mod_addon_ids);
 
 	// This will force connecting clients to be using the same version number as us.
 	level["version"] = game_config::wesnoth_version.str();

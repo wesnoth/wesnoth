@@ -296,12 +296,7 @@ void saved_game::expand_scenario()
 
 void saved_game::check_require_scenario()
 {
-	if(!starting_point_["require_scenario"].to_bool(false)) {
-		return;
-	}
-
 	if(starting_point_["addon_id"].empty()) {
-		//ERR_NG << "cannot handle require_scenario=yes because we don't know from which addon that scenario came from\n";
 		return;
 	}
 
@@ -311,6 +306,10 @@ void saved_game::check_require_scenario()
 	required_scenario["name"] = starting_point_["addon_title"];
 	required_scenario["version"] = starting_point_["addon_version"];
 	required_scenario["min_version"] = starting_point_["addon_min_version"];
+	required_scenario["required"] = starting_point_["require_scenario"].to_bool(false);
+	config& content = required_scenario.add_child("content");
+	content["id"] = starting_point_["id"];
+	content["type"] = "scenario";
 
 	mp_settings_.update_addon_requirements(required_scenario);
 }
@@ -324,13 +323,17 @@ void saved_game::load_mod(const std::string& type, const std::string& id, size_t
 		// By default, eras have "require_era = true", and mods have "require_modification = false".
 		bool require_default = (type == "era");
 
-		if(!cfg["addon_id"].empty() && cfg[require_attr].to_bool(require_default)) {
+		if(!cfg["addon_id"].empty()) {
 			config required_mod;
 
 			required_mod["id"] = cfg["addon_id"];
 			required_mod["name"] = cfg["addon_title"];
 			required_mod["version"] = cfg["addon_version"];
 			required_mod["min_version"] = cfg["addon_min_version"];
+			required_mod["required"] = cfg[require_attr].to_bool(require_default);
+			config& content = required_mod.add_child("content");
+			content["id"] = id;
+			content["type"] = type;
 
 			mp_settings_.update_addon_requirements(required_mod);
 		}
