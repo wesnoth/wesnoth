@@ -215,7 +215,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	// Parse the list of addons required to join this game.
 	for(const config& addon : game.child_range("addon")) {
 		if(addon.has_attribute("id")) {
-			if(std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end()) {
+			if(std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end() && addon["require"].to_bool(false)) {
 				required_addon r;
 				r.addon_id = addon["id"].str();
 				r.outcome = NEED_DOWNLOAD;
@@ -467,6 +467,10 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 	}
 
 	if(const config& game_req = game.find_child("addon", "id", local_item["addon_id"])) {
+		if(!game_req["require"].to_bool(false)) {
+			return SATISFIED;
+		}
+
 		required_addon r {local_item["addon_id"].str(), SATISFIED, ""};
 
 		// Local version

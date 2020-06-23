@@ -81,12 +81,19 @@ struct mp_game_settings
 
 	config options;
 
+	struct addon_content
+	{
+		std::string id;
+		std::string type;
+	};
+
 	struct addon_version_info
 	{
 		boost::optional<version_info> version;
 		boost::optional<version_info> min_version;
-
 		std::string name;
+		bool required;
+		std::vector<addon_content> content;
 
 		explicit addon_version_info(const config &);
 		void write(config &) const;
