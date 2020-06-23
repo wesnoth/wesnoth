@@ -217,10 +217,10 @@ if(ENABLE_POT_UPDATE_TARGET)
 			)
 
 		endforeach(DOMAIN ${DOMAINS})
-		add_custom_target(po-update-${LINGUA}
-			COMMENT "po-update ${LINGUA}: Done."
-			DEPENDS ${po-update-LINGUA-SRC}
-		)
+# newer cmake minimum versions forbid the "@" symbol in certain targets
+# this causes problems for translation targets such as "sr@latin"
+		string(REPLACE "@" "_" target_name ${LINGUA})
+		add_custom_target(po-update-${target_name} COMMENT "po-update ${LINGUA} as ${target_name}: Done." DEPENDS ${po-update-LINGUA-SRC})
 		set(po-update-LINGUA-SRC "")
 	endforeach(LINGUA ${LINGUAS})
 
@@ -274,10 +274,10 @@ if(ENABLE_NLS)
 		endforeach(DOMAIN ${DOMAINS})
 
 		if(ENABLE_POT_UPDATE_TARGET)
-			add_custom_target(mo-update-${LINGUA}
-				COMMENT "mo-update ${LINGUA}: Done."
-				DEPENDS ${mo-update-LINGUA-SRC}
-			)
+# newer cmake minimum versions forbid the "@" symbol in certain targets
+# this causes problems for translation targets such as "sr@latin"
+			string(REPLACE "@" "_" target_name ${LINGUA})
+			add_custom_target(mo-update-${target_name} COMMENT "mo-update ${LINGUA} as ${target_name}: Done." DEPENDS ${mo-update-LINGUA-SRC})
 			set(mo-update-LINGUA-SRC "")
 		endif(ENABLE_POT_UPDATE_TARGET)
 
