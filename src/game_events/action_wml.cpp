@@ -378,6 +378,7 @@ WML_HANDLER_FUNCTION(modify_turns,, cfg)
 /// that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 {
+	set_scontext_unsynced leave_synced_context;
 	events::command_disabler command_disabler;
 	fake_unit_ptr dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
@@ -400,6 +401,7 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 
 WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 {
+	set_scontext_unsynced leave_synced_context;
 	events::command_disabler command_disabler;
 	LOG_NG << "Processing [move_units_fake]\n";
 
