@@ -471,15 +471,23 @@ std::string unit_topic_generator::operator()() const {
 	if(!type_.abilities_metadata().empty()) {
 		ss << _("Abilities: ");
 
+		bool start = true;
+
 		for(auto iter = type_.abilities_metadata().begin(); iter != type_.abilities_metadata().end(); ++iter) {
 			const std::string ref_id = ability_prefix + iter->id + iter->name.base_str();
 
+			if(iter->name.empty()) {
+				continue;
+			}
+
+			if(!start) {
+				ss << ", ";
+			} else {
+				start = false;
+			}
+
 			std::string lang_ability = translation::gettext(iter->name.c_str());
 			ss << make_link(lang_ability, ref_id);
-
-			if(std::next(iter) != type_.abilities_metadata().end()) {
-				ss << ", ";
-			}
 		}
 
 		ss << "\n\n";
@@ -489,15 +497,23 @@ std::string unit_topic_generator::operator()() const {
 	if(!type_.adv_abilities_metadata().empty()) {
 		ss << _("Ability Upgrades: ");
 
+		bool start = true;
+
 		for(auto iter = type_.adv_abilities_metadata().begin(); iter != type_.adv_abilities_metadata().end(); ++iter) {
 			const std::string ref_id = ability_prefix + iter->id + iter->name.base_str();
 
+			if(iter->name.empty()) {
+				continue;
+			}
+
+			if(!start) {
+				ss << ", ";
+			} else {
+				start = false;
+			}
+
 			std::string lang_ability = translation::gettext(iter->name.c_str());
 			ss << make_link(lang_ability, ref_id);
-
-			if(std::next(iter) != type_.adv_abilities_metadata().end()) {
-				ss << ", ";
-			}
 		}
 
 		ss << "\n\n";
