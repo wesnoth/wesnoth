@@ -526,6 +526,9 @@
 ## Version 1.14.13+dev
  ### Language and i18n
    * Updated translations:
+ ### User interface
+   * Do not list nameless abilities in the Abilities and Ability Upgrades lists in unit
+     descriptions in Help (issue #3060).
  ### Miscellaneous and bug fixes
 
 ## Version 1.14.13
