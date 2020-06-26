@@ -22,6 +22,7 @@
  ### Terrain
    * New ancient/weathered stone floor tile (code Ias)
    * New ancient stone stone walls variation (code Xoa)
+   * New earthy rockbound cave variation (code Uhe)
  ### Lua API
    * New wesnoth.get_max_liminal_bonus function
    * New wesnoth.colors table to get information about colors.
