@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2020-06-12 21:49-0400\n"
-"PO-Revision-Date: 2019-09-17 11:36+1000\n"
+"PO-Revision-Date: 2020-06-24 07:56+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -1320,16 +1320,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:504
-#, fuzzy
-#| msgid ""
-#| "When running unit tests (withB<\\ -u>), the exit status is different. An "
-#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
-#| "test failed. An exit status of 3 indicates that the test passed, but "
-#| "produced an invalid replay file. An exit status of 4 indicates that the "
-#| "test passed, but the replay produced errors. These latter two are only "
-#| "returned if B<--noreplaycheck> is not passed. An exit status of 2 "
-#| "indicates that the test timed out, when used with the deprecated B<--"
-#| "timeout> option."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1343,8 +1333,7 @@ msgstr ""
 "test failed. An exit status of 3 indicates that the test passed, but "
 "produced an invalid replay file. An exit status of 4 indicates that the test "
 "passed, but the replay produced errors. These latter two are only returned "
-"if B<--noreplaycheck> is not passed. An exit status of 2 indicates that the "
-"test timed out, when used with the deprecated B<--timeout> option."
+"if B<--noreplaycheck> is not passed."
 
 #. type: SH
 #: doc/man/wesnoth.6:505 doc/man/wesnothd.6:285
@@ -2008,14 +1997,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:223
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the forum_user_handler to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2028,7 +2009,7 @@ msgstr ""
 "on which user handler is set with the B<user_handler> key. If no "
 "B<[user_handler]> section is present in the configuration the server will "
 "run without any nick registration service. All additional tables that are "
-"needed for the forum_user_handler to function can be found in "
+"needed for the B<forum_user_handler> to function can be found in "
 "table_definitions.sql in the Wesnoth source repository."
 
 #. type: TP

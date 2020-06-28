@@ -1,7 +1,7 @@
 ## Version 1.14.13+dev
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), Esperanto, Italian, Portuguese (Brazil),
-     Russian
+   * Updated translations: British English, Chinese (Simplified), Esperanto, Italian,
+     Portuguese (Brazil), Russian
  ### User interface
    * Do not list nameless abilities in the Abilities and Ability Upgrades lists in unit
      descriptions in Help (issue #3060).
