@@ -840,6 +840,16 @@ static void convert_old_saves_1_13_1(config& cfg)
 		}
 	}
 }
+//changes done during 1.15.3+dev
+static void convert_old_saves_1_15_3(config& cfg)
+{
+	if(cfg["era_id"].empty()) {
+		cfg["era_id"] = cfg.child_or_empty("multiplayer")["mp_era"];
+	}
+	if(cfg["active_mods"].empty()) {
+		cfg["active_mods"] = cfg.child_or_empty("multiplayer")["active_mods"];
+	}
+}
 
 void convert_old_saves(config& cfg)
 {
@@ -857,6 +867,10 @@ void convert_old_saves(config& cfg)
 	if(loaded_version <= version_info("1.13.1"))
 	{
 		convert_old_saves_1_13_1(cfg);
+	}
+	if(loaded_version < version_info("1.15.4"))
+	{
+		convert_old_saves_1_15_3(cfg);
 	}
 	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
 }
