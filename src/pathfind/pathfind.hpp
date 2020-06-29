@@ -278,9 +278,9 @@ struct full_cost_map
 
 	void add_unit(const unit& u, bool use_max_moves=true);
 	void add_unit(const map_location& origin, const unit_type* const unit_type, int side);
-	int get_cost_at(int x, int y) const;
-	std::pair<int, int> get_pair_at(int x, int y) const;
-	double get_average_cost_at(int x, int y) const;
+	int get_cost_at(map_location loc) const;
+	std::pair<int, int> get_pair_at(map_location loc) const;
+	double get_average_cost_at(map_location loc) const;
 	virtual ~full_cost_map()
 	{
 	}

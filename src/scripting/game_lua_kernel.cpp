@@ -2064,9 +2064,9 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 			for (const map_location& loc : location_set)
 			{
 				std::stringstream s;
-				s << cost_map.get_pair_at(loc.x, loc.y).first;
+				s << cost_map.get_pair_at(loc).first;
 				s << " / ";
-				s << cost_map.get_pair_at(loc.x, loc.y).second;
+				s << cost_map.get_pair_at(loc).second;
 				game_display_->labels().set_label(loc, s.str());
 			}
 		}
@@ -2085,10 +2085,10 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 		lua_pushinteger(L, loc.wml_y());
 		lua_rawseti(L, -2, 2);
 
-		lua_pushinteger(L, cost_map.get_pair_at(loc.x, loc.y).first);
+		lua_pushinteger(L, cost_map.get_pair_at(loc).first);
 		lua_rawseti(L, -2, 3);
 
-		lua_pushinteger(L, cost_map.get_pair_at(loc.x, loc.y).second);
+		lua_pushinteger(L, cost_map.get_pair_at(loc).second);
 		lua_rawseti(L, -2, 4);
 
 		lua_rawseti(L, -2, counter);

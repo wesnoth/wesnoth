@@ -959,16 +959,16 @@ void full_cost_map::add_unit(const map_location& origin, const unit_type* const 
  * @return the entry of the cost_map at (x, y)
  *         or (-1, 0) if value is not set or (x, y) is invalid.
  */
-std::pair<int, int> full_cost_map::get_pair_at(int x, int y) const
+std::pair<int, int> full_cost_map::get_pair_at(map_location loc) const
 {
 	const gamemap& map = resources::gameboard->map();
 	assert(cost_map.size() == static_cast<unsigned>(map.w() * map.h()));
 
-	if (x < 0 || x >= map.w() || y < 0 || y >= map.h()) {
+	if (!map.on_board(loc)) {
 		return std::make_pair(-1, 0);  // invalid
 	}
 
-	return cost_map[x + (y * map.w())];
+	return cost_map[loc.x + (loc.y * map.w())];
 }
 
 /**
@@ -977,9 +977,9 @@ std::pair<int, int> full_cost_map::get_pair_at(int x, int y) const
  * @return the value of the cost_map at (x, y)
  *         or -1 if value is not set or (x, y) is invalid.
  */
-int full_cost_map::get_cost_at(int x, int y) const
+int full_cost_map::get_cost_at(map_location loc) const
 {
-	return get_pair_at(x, y).first;
+	return get_pair_at(loc).first;
 }
 
 /**
@@ -988,12 +988,13 @@ int full_cost_map::get_cost_at(int x, int y) const
  * @return The average cost of all added units for this hex
  *         or -1 if no unit can reach the hex.
  */
-double full_cost_map::get_average_cost_at(int x, int y) const
+double full_cost_map::get_average_cost_at(map_location loc) const
 {
-	if (get_pair_at(x, y).second == 0) {
+	auto p = get_pair_at(loc);
+	if (p.second == 0) {
 		return -1;
 	} else {
-		return static_cast<double>(get_pair_at(x, y).first) / get_pair_at(x, y).second;
+		return static_cast<double>(p.first) /p.second;
 	}
 }
 }//namespace pathfind

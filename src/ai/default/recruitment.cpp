@@ -642,30 +642,30 @@ void recruitment::compare_cost_maps_and_update_important_hexes(
 	border_cost_map important_hexes_candidates;
 	double smallest_border_movecost = 999999;
 	double biggest_border_movecost = 0;
-	for(int x = 0; x < map.w(); ++x) {
-		for (int y = 0; y < map.h(); ++y) {
-			double my_cost_average = my_cost_map.get_average_cost_at(x, y);
-			double enemy_cost_average = enemy_cost_map.get_average_cost_at(x, y);
-			if (my_cost_average == -1 || enemy_cost_average == -1) {
-				continue;
-			}
-			// We multiply the threshold MAP_BORDER_THICKNESS by the average_local_cost
-			// to favor high cost hexes (a bit).
-			if (std::abs(my_cost_average - MAP_OFFENSIVE_SHIFT - enemy_cost_average) <
-					MAP_BORDER_THICKNESS * average_local_cost_[map_location(x, y)]) {
-				double border_movecost = (my_cost_average + enemy_cost_average) / 2;
 
-				important_hexes_candidates[map_location(x, y)] = border_movecost;
-
-				if (border_movecost < smallest_border_movecost) {
-					smallest_border_movecost = border_movecost;
-				}
-				if (border_movecost > biggest_border_movecost) {
-					biggest_border_movecost = border_movecost;
-				}
+	map.for_each_walkable_loc([&](map_location loc) {
+		double my_cost_average = my_cost_map.get_average_cost_at(loc);
+		double enemy_cost_average = enemy_cost_map.get_average_cost_at(loc);
+		if (my_cost_average == -1 || enemy_cost_average == -1) {
+			return;
+		}
+		// We multiply the threshold MAP_BORDER_THICKNESS by the average_local_cost
+		// to favor high cost hexes (a bit).
+		if (std::abs(my_cost_average - MAP_OFFENSIVE_SHIFT - enemy_cost_average) <
+				MAP_BORDER_THICKNESS * average_local_cost_[loc]) {
+			double border_movecost = (my_cost_average + enemy_cost_average) / 2;
+			important_hexes_candidates[loc] = border_movecost;
+		
+			if (border_movecost < smallest_border_movecost) {
+				smallest_border_movecost = border_movecost;
 			}
-		}  // for
-	}  // for
+			if (border_movecost > biggest_border_movecost) {
+				biggest_border_movecost = border_movecost;
+			}
+		}
+
+	});
+
 	double threshold = (biggest_border_movecost - smallest_border_movecost) *
 			MAP_BORDER_WIDTH + smallest_border_movecost;
 	for (const border_cost_map::value_type& candidate : important_hexes_candidates) {
@@ -870,7 +870,7 @@ void recruitment::update_important_hexes() {
 		get_tiles_in_radius(village, MAP_VILLAGE_SURROUNDING, surrounding);
 		for (const map_location& hex : surrounding) {
 			// only add hex if one of our units can reach the hex
-			if (map.on_board(hex) && my_cost_map.get_cost_at(hex.x, hex.y) != -1) {
+			if (map.on_board(hex) && my_cost_map.get_cost_at(hex) != -1) {
 				important_hexes_.insert(hex);
 			}
 		}
