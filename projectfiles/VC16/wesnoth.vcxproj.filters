@@ -1565,6 +1565,10 @@
     <ClCompile Include="..\..\src\scripting\lua_terrainmap.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_color.cpp" />
+    <ClCompile Include="..\..\src\scripting\lua_wml.cpp" />
+    <ClCompile Include="..\..\src\scripting\lua_stringx.cpp" />
+    <ClCompile Include="..\..\src\game_config_view.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3043,6 +3047,10 @@
     <ClInclude Include="..\..\src\scripting\lua_terrainmap.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_color.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_wml.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_stringx.hpp" />
+    <ClInclude Include="..\..\src\game_config_view.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
