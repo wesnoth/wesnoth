@@ -889,8 +889,10 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, allow_changes_(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
 	, waiting_to_choose_faction_(allow_changes_)
 	, color_options_(game_config::default_colors)
-	, color_id_(color_options_[color_])
+	//TODO: what should we do if color_ is out of range?
+	, color_id_(color_options_.at(color_))
 {
+
 	// Save default attributes that could be overwirtten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
 	cfg_.add_child("default_faction", config {
