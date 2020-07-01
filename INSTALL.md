@@ -78,7 +78,7 @@ rebuild Wesnoth frequently (i.e. for development and testing).
 See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/Xcode/README.md) for instructions on using Xcode.
 
 ### Windows
-See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/VC14/README.md) for instructions on using Visual Studio 2015/2017, or [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/VC16/README.md) for (much simpler) instructions on using Visual Studio 2019.
+See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/VC16/README.md) for instructions on using Visual Studio 2019.
 
 ## SCons Build
 

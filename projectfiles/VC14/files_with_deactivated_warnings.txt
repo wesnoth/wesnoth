@@ -1,9 +1,0 @@
-Files in src/ which have one or more warnings file-specifically deactivated for the Debug configuration.
-These warnings are thrown due to included header files (mostly boost ones),
-since they apparently don't compile using warnlevel 4.
-
-game
-network_asio
-serialization/binary_or_text
-serialization/parser
-server/simple_wml
