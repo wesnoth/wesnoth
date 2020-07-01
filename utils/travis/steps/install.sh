@@ -41,7 +41,7 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
         choco install visualstudio2019-workload-vctools
     fi
 
-    if [[ "$IMAGE" == "VC14" || ( "$IMAGE" == "VC16" && -d "$HOME/vcpkg/installed" ) ]]; then
+    if [[ "$IMAGE" == "VC16" && -d "$HOME/vcpkg/installed" ]]; then
         choco install sqlite
         choco install python --version=3.6.8
         cd /c/Python36

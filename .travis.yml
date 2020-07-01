@@ -8,8 +8,6 @@ cache:
   directories:
     - $HOME/build-cache
     - $HOME/flatpak-cache
-    - $TRAVIS_BUILD_DIR/projectfiles/VC14/Debug
-    - $TRAVIS_BUILD_DIR/projectfiles/VC14/Release
     - $TRAVIS_BUILD_DIR/projectfiles/VC16/Debug
     - $TRAVIS_BUILD_DIR/projectfiles/VC16/Release
     - $HOME/vcpkg
@@ -23,12 +21,6 @@ env:
 
 jobs:
   include:
-    - os: windows
-      env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Debug
-
-    - os: windows
-      env: TOOL=msbuild NLS=false IMAGE=VC14 BRANCH=master CFG=Release
-
     - os: windows
       env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Debug UPLOAD=true
 
