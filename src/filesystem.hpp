@@ -370,53 +370,9 @@ bool is_path_sep(char c);
 char path_separator();
 
 /**
- *  The paths manager is responsible for recording the various paths
- *  that binary files may be located at.
- *  It should be passed a config object which holds binary path information.
- *  This is in the format
- *@verbatim
- *    [binary_path]
- *      path=<path>
- *    [/binary_path]
- *  Binaries will be searched for in [wesnoth-path]/data/<path>/images/
- *@endverbatim
+ * Checks whether the path does not contain invalid chacters.
  */
-struct binary_paths_manager
-{
-	binary_paths_manager();
-	binary_paths_manager(const game_config_view& cfg);
-	~binary_paths_manager();
-
-	void set_paths(const game_config_view& cfg);
-
-private:
-	binary_paths_manager(const binary_paths_manager& o);
-	binary_paths_manager& operator=(const binary_paths_manager& o);
-
-	void cleanup();
-
-	std::vector<std::string> paths_;
-};
-
-void clear_binary_paths_cache();
-
-/**
- * Returns a vector with all possible paths to a given type of binary,
- * e.g. 'images', 'sounds', etc,
- */
-const std::vector<std::string>& get_binary_paths(const std::string& type);
-
-/**
- * Returns a complete path to the actual file of a given @a type
- * or an empty string if the file isn't present.
- */
-std::string get_binary_file_location(const std::string& type, const std::string& filename);
-
-/**
- * Returns a complete path to the actual directory of a given @a type
- * or an empty string if the directory isn't present.
- */
-std::string get_binary_dir_location(const std::string &type, const std::string &filename);
+bool is_legal_file(const std::string& filename_str);
 
 /**
  * Returns a complete path to the actual WML file or directory
@@ -429,15 +385,6 @@ std::string get_wml_location(const std::string &filename,
  * Returns a short path to @a filename, skipping the (user) data directory.
  */
 std::string get_short_wml_path(const std::string &filename);
-
-/**
- * Returns an image path to @a filename for binary path-independent use in saved games.
- *
- * Example:
- *   units/konrad-fighter.png ->
- *   data/campaigns/Heir_To_The_Throne/images/units/konrad-fighter.png
- */
-std::string get_independent_image_path(const std::string &filename);
 
 /**
  * Returns the appropriate invocation for a Wesnoth-related binary, assuming

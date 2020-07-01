@@ -19,6 +19,7 @@
 
 #include "units/race.hpp"
 
+#include "binary_path.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -156,7 +157,7 @@ std::string unit_race::get_icon_path_stem() const
 	std::string path = "icons/unit-groups/race_" + id_;
 
 	// FIXME: hardcoded '30' is bad...
-	if(!filesystem::file_exists(filesystem::get_binary_file_location("images", path + "_30.png"))) {
+	if(!filesystem::get_binary_file_location("images", path + "_30.png").exists()) {
 		path = "icons/unit-groups/race_custom";
 	}
 

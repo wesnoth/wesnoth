@@ -15,6 +15,7 @@
 
 #include "save_index.hpp"
 
+#include "binary_path.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "format_time_summary.hpp"

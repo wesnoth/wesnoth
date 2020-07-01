@@ -12,6 +12,7 @@
    See the COPYING file for more details.
 */
 
+#include "binary_path.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "language.hpp"

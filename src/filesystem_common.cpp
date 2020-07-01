@@ -16,6 +16,7 @@
 #include "filesystem.hpp"
 #include "wesconfig.h"
 
+#include "binary_path.hpp"
 #include "config.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
@@ -142,7 +143,7 @@ std::string read_map(const std::string& name)
 	if(map_location.empty()) {
 		// If this is an add-on or campaign that's set the [binary_path] for its image directory,
 		// automatically check for a sibling maps directory.
-		map_location = get_binary_file_location("maps", name);
+		map_location = get_binary_file_location("maps", name).get_abolute_path();
 	}
 	if(!map_location.empty()) {
 		res = read_file(map_location);

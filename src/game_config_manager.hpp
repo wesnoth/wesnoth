@@ -18,11 +18,14 @@
 
 #include "commandline_options.hpp"
 #include "config_cache.hpp"
-#include "filesystem.hpp"
 #include "terrain/type_data.hpp"
 #include "config.hpp"
 #include "game_config_view.hpp"
 
+#include <memory>
+namespace filesystem {
+	class binary_paths_manager;
+}
 class game_classification;
 class game_config_manager
 {
@@ -81,7 +84,7 @@ private:
 	
 	preproc_map old_defines_map_;
 
-	filesystem::binary_paths_manager paths_manager_;
+	std::unique_ptr<filesystem::binary_paths_manager> paths_manager_;
 
 	game_config::config_cache& cache_;
 

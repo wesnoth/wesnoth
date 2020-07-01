@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/game_load.hpp"
 
+#include "binary_path.hpp"
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
 #include "font/pango/escape.hpp"

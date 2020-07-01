@@ -21,6 +21,7 @@
 #include "log.hpp"
 #include "tstring.hpp"
 
+#include "binary_path.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 
@@ -242,10 +243,10 @@ manager::manager()
 #endif
 
 #ifdef CAIRO_HAS_WIN32_FONT
-	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
+	for(const wml_path& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
-		if(filesystem::is_directory(path)) {
-			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
+		if(filesystem::is_directory(path.get_abolute_path())) {
+			filesystem::get_files_in_dir(path.get_abolute_path(), &files, nullptr, filesystem::ENTIRE_FILE_PATH);
 		}
 		for(const std::string& file : files) {
 			if(is_valid_font_file(file))
@@ -265,10 +266,11 @@ manager::~manager()
 #endif
 
 #ifdef CAIRO_HAS_WIN32_FONT
-	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
+	for(const wml_path& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
-		if(filesystem::is_directory(path))
-			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
+		if(filesystem::is_directory(path.get_abolute_path())) {
+			filesystem::get_files_in_dir(path.get_abolute_path(), &files, nullptr, filesystem::ENTIRE_FILE_PATH);
+		}
 		for(const std::string& file : files) {
 			if(is_valid_font_file(file))
 			{

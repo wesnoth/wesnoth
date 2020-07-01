@@ -16,6 +16,7 @@
 #include "about.hpp"
 #include "addon/manager.hpp"
 #include "ai/configuration.hpp"
+#include "binary_path.hpp"
 #include "cursor.hpp"
 #include "events.hpp"
 #include "formatter.hpp"
@@ -56,7 +57,7 @@ game_config_manager::game_config_manager(
 	addon_cfgs_(),
 	active_addons_(),
 	old_defines_map_(),
-	paths_manager_(),
+	paths_manager_(new filesystem::binary_paths_manager()),
 	cache_(game_config::config_cache::instance())
 {
 	assert(!singleton);
@@ -366,7 +367,7 @@ void game_config_manager::load_game_config(bool reload_everything)
 	old_defines_map_ = cache_.get_preproc_map();
 
 	// Set new binary paths.
-	paths_manager_.set_paths(game_config());
+	paths_manager_->set_paths(game_config());
 }
 
 void game_config_manager::load_addons_cfg()

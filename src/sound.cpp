@@ -13,6 +13,7 @@
 */
 
 #include "sound.hpp"
+#include "binary_path.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
@@ -925,7 +926,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		}
 
 		temp_chunk.group = group;
-		const std::string& filename = filesystem::get_binary_file_location("sounds", file);
+		const std::string filename = filesystem::get_binary_file_location("sounds", file).get_abolute_path();
 		const std::string localized = filesystem::get_localized_path(filename);
 
 		if(!filename.empty()) {

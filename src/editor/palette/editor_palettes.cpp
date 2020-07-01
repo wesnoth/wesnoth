@@ -16,6 +16,7 @@
 
 #include "editor/palette/editor_palettes.hpp"
 
+#include "binary_path.hpp"
 #include "gettext.hpp"
 #include "font/text_formatting.hpp"
 #include "tooltips.hpp"

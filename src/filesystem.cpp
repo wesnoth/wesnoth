@@ -20,6 +20,7 @@
 
 #include "filesystem.hpp"
 
+#include "binary_path.hpp"
 #include "config.hpp"
 #include "deprecation.hpp"
 #include "game_config.hpp"
@@ -1262,86 +1263,8 @@ std::string normalize_path(const std::string& fpath, bool normalize_separators, 
 	}
 }
 
-/**
- *  The paths manager is responsible for recording the various paths
- *  that binary files may be located at.
- *  It should be passed a config object which holds binary path information.
- *  This is in the format
- *@verbatim
- *    [binary_path]
- *      path=<path>
- *    [/binary_path]
- *  Binaries will be searched for in [wesnoth-path]/data/<path>/images/
- *@endverbatim
- */
-namespace
-{
-std::set<std::string> binary_paths;
 
-typedef std::map<std::string, std::vector<std::string>> paths_map;
-paths_map binary_paths_cache;
-
-} // namespace
-
-static void init_binary_paths()
-{
-	if(binary_paths.empty()) {
-		binary_paths.insert("");
-	}
-}
-
-binary_paths_manager::binary_paths_manager()
-	: paths_()
-{
-}
-
-binary_paths_manager::binary_paths_manager(const game_config_view& cfg)
-	: paths_()
-{
-	set_paths(cfg);
-}
-
-binary_paths_manager::~binary_paths_manager()
-{
-	cleanup();
-}
-
-void binary_paths_manager::set_paths(const game_config_view& cfg)
-{
-	cleanup();
-	init_binary_paths();
-
-	for(const config& bp : cfg.child_range("binary_path")) {
-		std::string path = bp["path"].str();
-		if(path.find("..") != std::string::npos) {
-			ERR_FS << "Invalid binary path '" << path << "'\n";
-			continue;
-		}
-
-		if(!path.empty() && path.back() != '/')
-			path += "/";
-		if(binary_paths.count(path) == 0) {
-			binary_paths.insert(path);
-			paths_.push_back(path);
-		}
-	}
-}
-
-void binary_paths_manager::cleanup()
-{
-	binary_paths_cache.clear();
-
-	for(const std::string& p : paths_) {
-		binary_paths.erase(p);
-	}
-}
-
-void clear_binary_paths_cache()
-{
-	binary_paths_cache.clear();
-}
-
-static bool is_legal_file(const std::string& filename_str)
+bool is_legal_file(const std::string& filename_str)
 {
 	DBG_FS << "Looking for '" << filename_str << "'.\n";
 
@@ -1375,107 +1298,6 @@ static bool is_legal_file(const std::string& filename_str)
 	}
 
 	return true;
-}
-
-/**
- * Returns a vector with all possible paths to a given type of binary,
- * e.g. 'images', 'sounds', etc,
- */
-const std::vector<std::string>& get_binary_paths(const std::string& type)
-{
-	const paths_map::const_iterator itor = binary_paths_cache.find(type);
-	if(itor != binary_paths_cache.end()) {
-		return itor->second;
-	}
-
-	if(type.find("..") != std::string::npos) {
-		// Not an assertion, as language.cpp is passing user data as type.
-		ERR_FS << "Invalid WML type '" << type << "' for binary paths\n";
-		static std::vector<std::string> dummy;
-		return dummy;
-	}
-
-	std::vector<std::string>& res = binary_paths_cache[type];
-
-	init_binary_paths();
-
-	for(const std::string& path : binary_paths) {
-		res.push_back(get_user_data_dir() + "/" + path + type + "/");
-
-		if(!game_config::path.empty()) {
-			res.push_back(game_config::path + "/" + path + type + "/");
-		}
-	}
-
-	// not found in "/type" directory, try main directory
-	res.push_back(get_user_data_dir() + "/");
-
-	if(!game_config::path.empty()) {
-		res.push_back(game_config::path + "/");
-	}
-
-	return res;
-}
-
-std::string get_binary_file_location(const std::string& type, const std::string& filename)
-{
-	// We define ".." as "remove everything before" this is needed because
-	// on the one hand allowing ".." would be a security risk but
-	// especially for terrains the c++ engine puts a hardcoded "terrain/" before filename
-	// and there would be no way to "escape" from "terrain/" otherwise. This is not the
-	// best solution but we cannot remove it without another solution (subtypes maybe?).
-
-	{
-		std::string::size_type pos = filename.rfind("../");
-		if(pos != std::string::npos) {
-			return get_binary_file_location(type, filename.substr(pos + 3));
-		}
-	}
-
-	if(!is_legal_file(filename)) {
-		return std::string();
-	}
-
-	std::string result;
-	for(const std::string& bp : get_binary_paths(type)) {
-		bfs::path bpath(bp);
-		bpath /= filename;
-
-		DBG_FS << "  checking '" << bp << "'\n";
-
-		if(file_exists(bpath)) {
-			DBG_FS << "  found at '" << bpath.string() << "'\n";
-			if(result.empty()) {
-				result = bpath.string();
-			} else {
-				WRN_FS << "Conflicting files in binary_path: '" << sanitize_path(result)
-					   << "' and '" << sanitize_path(bpath.string()) << "'\n";
-			}
-		}
-	}
-
-	DBG_FS << "  not found\n";
-	return result;
-}
-
-std::string get_binary_dir_location(const std::string& type, const std::string& filename)
-{
-	if(!is_legal_file(filename)) {
-		return std::string();
-	}
-
-	for(const std::string& bp : get_binary_paths(type)) {
-		bfs::path bpath(bp);
-		bpath /= filename;
-		DBG_FS << "  checking '" << bp << "'\n";
-		if(is_directory_internal(bpath)) {
-			DBG_FS << "  found at '" << bpath.string() << "'\n";
-			return bpath.string();
-		}
-	}
-
-	DBG_FS << "  not found\n";
-	return std::string();
 }
 
 std::string get_wml_location(const std::string& filename, const std::string& current_dir)
@@ -1551,26 +1373,6 @@ std::string get_short_wml_path(const std::string& filename)
 	return filename;
 }
 
-std::string get_independent_image_path(const std::string& filename)
-{
-	bfs::path full_path(get_binary_file_location("images", filename));
-
-	if(full_path.empty()) {
-		return full_path.generic_string();
-	}
-
-	bfs::path partial = subtract_path(full_path, get_user_data_path());
-	if(!partial.empty()) {
-		return partial.generic_string();
-	}
-
-	partial = subtract_path(full_path, game_config::path);
-	if(!partial.empty()) {
-		return partial.generic_string();
-	}
-
-	return full_path.generic_string();
-}
 
 std::string get_program_invocation(const std::string& program_name)
 {

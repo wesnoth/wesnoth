@@ -19,6 +19,7 @@
 
 #include "picture.hpp"
 
+#include "binary_path.hpp"
 #include "config.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
@@ -461,7 +462,7 @@ static surface load_image_file(const image::locator& loc)
 {
 	surface res;
 
-	std::string location = filesystem::get_binary_file_location("images", loc.get_filename());
+	std::string location = filesystem::get_binary_file_location("images", loc.get_filename()).get_abolute_path();
 
 	{
 		if(!location.empty()) {
@@ -1081,10 +1082,10 @@ static void precache_file_existence_internal(const std::string& dir, const std::
 
 void precache_file_existence(const std::string& subdir)
 {
-	const std::vector<std::string>& paths = filesystem::get_binary_paths("images");
+	const std::vector<wml_path>& paths = filesystem::get_binary_paths("images");
 
 	for(const auto& p : paths) {
-		precache_file_existence_internal(p, subdir);
+		precache_file_existence_internal(p.get_abolute_path(), subdir);
 	}
 }
 

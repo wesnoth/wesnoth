@@ -15,6 +15,7 @@
 
 #include "sound_music_track.hpp"
 
+#include "binary_path.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
@@ -74,7 +75,7 @@ void music_track::resolve()
 		return;
 	}
 
-	file_path_ = filesystem::get_binary_file_location("music", id_);
+	file_path_ = filesystem::get_binary_file_location("music", id_).get_abolute_path();
 
 	if (file_path_.empty()) {
 		LOG_AUDIO << "could not find track '" << id_ << "' for track identification\n";
