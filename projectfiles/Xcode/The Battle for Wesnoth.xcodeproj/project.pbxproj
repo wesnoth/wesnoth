@@ -98,6 +98,10 @@
 		46685CAB219D640E0009CFFE /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46685C76219D51880009CFFE /* string_utils.cpp */; };
 		46685CAC219D64120009CFFE /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46685C87219D518A0009CFFE /* unicode.cpp */; };
 		46685CAD219D643C0009CFFE /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46685C7B219D51890009CFFE /* tokenizer.cpp */; };
+		4685124A24AE1535005B6EB1 /* game_config_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685124824AE1535005B6EB1 /* game_config_view.cpp */; };
+		4685124B24AE1592005B6EB1 /* game_config_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685124824AE1535005B6EB1 /* game_config_view.cpp */; };
+		4685124C24AE1A0B005B6EB1 /* game_config_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685124824AE1535005B6EB1 /* game_config_view.cpp */; };
+		4685124D24AE1A15005B6EB1 /* game_config_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685124824AE1535005B6EB1 /* game_config_view.cpp */; };
 		4685E3712417F9C000CB1ED8 /* data in Resources */ = {isa = PBXBuildFile; fileRef = 4685E3702417F9BF00CB1ED8 /* data */; };
 		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		469BDB55205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
@@ -1446,6 +1450,8 @@
 		46685C88219D518A0009CFFE /* schema_validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = schema_validator.cpp; sourceTree = "<group>"; };
 		467D9DF0205EC3D200FA2FC4 /* userevent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userevent.hpp; sourceTree = "<group>"; };
 		467D9DF5205EC3DA00FA2FC4 /* surface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = surface.hpp; sourceTree = "<group>"; };
+		4685124824AE1535005B6EB1 /* game_config_view.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_config_view.cpp; sourceTree = "<group>"; };
+		4685124924AE1535005B6EB1 /* game_config_view.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_config_view.hpp; sourceTree = "<group>"; };
 		4685E3702417F9BF00CB1ED8 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = "<group>"; };
 		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
@@ -2969,6 +2975,8 @@
 				91B621861B76707600B00E0F /* game_classification.hpp */,
 				62CC8E4A1771E7E000C16B75 /* game_config_manager.cpp */,
 				62CC8E4B1771E7E100C16B75 /* game_config_manager.hpp */,
+				4685124824AE1535005B6EB1 /* game_config_view.cpp */,
+				4685124924AE1535005B6EB1 /* game_config_view.hpp */,
 				B5599A800EC62181008DD061 /* game_config.cpp */,
 				B5599A7F0EC62181008DD061 /* game_config.hpp */,
 				EC387E68195AFB1F00FC0342 /* game_data.cpp */,
@@ -5158,6 +5166,7 @@
 				469BDB55205C357500DBF748 /* base64.cpp in Sources */,
 				46F92EE12174FD9900602C1C /* menu.cpp in Sources */,
 				B5599B250EC62181008DD061 /* minimap.cpp in Sources */,
+				4685124A24AE1535005B6EB1 /* game_config_view.cpp in Sources */,
 				46EEFB762087434300E1E75A /* chat_log.cpp in Sources */,
 				62114CC61750B99800CA42C7 /* mouse_action_item.cpp in Sources */,
 				6295C3B9150FC95C0077D8C5 /* mouse_action_map_label.cpp in Sources */,
@@ -5437,6 +5446,7 @@
 			files = (
 				46F57084205FCE34007031BF /* base64.cpp in Sources */,
 				91C548F11D88705C00FE6A7B /* color_range.cpp in Sources */,
+				4685124C24AE1A0B005B6EB1 /* game_config_view.cpp in Sources */,
 				91C548DE1D886E0A00FE6A7B /* config.cpp in Sources */,
 				91C548EC1D886FA800FE6A7B /* filesystem.cpp in Sources */,
 				46685CAD219D643C0009CFFE /* tokenizer.cpp in Sources */,
@@ -5725,6 +5735,7 @@
 				91E356E11CACC92000774252 /* map_context.cpp in Sources */,
 				46685C8A219D518B0009CFFE /* preprocessor.cpp in Sources */,
 				91E356E21CACC92000774252 /* map_fragment.cpp in Sources */,
+				4685124D24AE1A15005B6EB1 /* game_config_view.cpp in Sources */,
 				46F92D982174F6A300602C1C /* handler.cpp in Sources */,
 				46F92D7A2174F6A300602C1C /* linked_group_definition.cpp in Sources */,
 				91E356E31CACC93000774252 /* editor_palettes.cpp in Sources */,
@@ -6043,6 +6054,7 @@
 				B5BB6B7D0F893E7500444FBF /* game.cpp in Sources */,
 				EC4DF45619FEA7A8000EC086 /* gettext.cpp in Sources */,
 				B5BB6C800F89435300444FBF /* log.cpp in Sources */,
+				4685124B24AE1592005B6EB1 /* game_config_view.cpp in Sources */,
 				46685CA0219D52560009CFFE /* binary_or_text.cpp in Sources */,
 				46685CA4219D53E90009CFFE /* tokenizer.cpp in Sources */,
 				461CE967205C3A8700E6E98F /* base64.cpp in Sources */,
