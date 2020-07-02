@@ -176,8 +176,54 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 			}
 		}
 	}
+	
+	std::vector<map_location> surrounding;
+	get_tiles_in_radius(loc, 10, surrounding);
+	for(unsigned i = 0; i < surrounding.size(); ++i) {
+		const unit_map::const_iterator it = units.find(surrounding[i]);
+		if (it == units.end() || it->incapacitated())
+			continue;
+		if ( &*it == this )
+			continue;
+		for(const config& j : it->abilities_.child_range(tag_name)) {
+			if(get_abilities_bool_radius(tag_name, j, loc)){
+			 return true;
+			}
+		}
+	}
 
+	return false;
+}
 
+bool unit::get_abilities_bool_radius(const std::string& tag_name, const config& cfg,const map_location& loc) const
+{
+
+	assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
+	std::vector<map_location> surrounding;
+	int radius = 0;
+
+	if (const config & filter = cfg.child("affect_distant")){
+		radius = filter["radius"].to_int(0);
+	}
+	if (radius>=1 && radius <= 10){
+            get_tiles_in_radius(loc, radius, surrounding);
+		for(unsigned i = 0; i < surrounding.size(); ++i) {
+			const unit_map::const_iterator it = units.find(surrounding[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == this )
+				continue;
+			for(const config& j : it->abilities_.child_range(tag_name)) {
+				if(affects_side(j, side(), it->side())
+				   && it->ability_active(tag_name, j, surrounding[i])
+				   && ability_affects_distant(tag_name, j, loc, *it))
+				{
+					return true;
+				}
+			}
+		}
+	}
 	return false;
 }
 
@@ -218,8 +264,52 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 			}
 		}
 	}
+	
+	std::vector<map_location> surrounding;
+	get_tiles_in_radius(loc, 10, surrounding);
+	for(unsigned i = 0; i < surrounding.size(); ++i) {
+		const unit_map::const_iterator it = units.find(surrounding[i]);
+		if (it == units.end() || it->incapacitated())
+			continue;
+		if ( &*it == this )
+			continue;
+		for(const config& j : it->abilities_.child_range(tag_name)) {
+			res.append(get_abilities_radius(tag_name, j, loc));
+		}
+	}
 
+	return res;
+}
 
+unit_ability_list unit::get_abilities_radius(const std::string& tag_name, const config& cfg,const map_location& loc) const
+{
+	unit_ability_list res(loc_);
+
+    assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
+	std::vector<map_location> surrounding;
+	int radius= 0;
+	if (const config & filter = cfg.child("affect_distant")){
+       radius = filter["radius"].to_int(0);
+	}
+	if (radius>=1 && radius <= 10){
+            get_tiles_in_radius(loc, radius, surrounding);
+		for(unsigned i = 0; i < surrounding.size(); ++i) {
+			const unit_map::const_iterator it = units.find(surrounding[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == this )
+				continue;
+			for(const config& j : it->abilities_.child_range(tag_name)) {
+				if(affects_side(j, side(), it->side())
+				   && it->ability_active(tag_name, j, surrounding[i])
+				   && ability_affects_distant(tag_name, j, loc, *it))
+				{
+					res.emplace_back(&j, loc, surrounding[i]);
+				}
+			}
+		}
+	}
 	return res;
 }
 
@@ -435,6 +525,21 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 				continue;
 			}
 		}
+		const config &filter = i.child("filter");
+		if (!filter || //filter tag given
+			unit_filter(vconfig(filter)).set_use_flat_tod(illuminates).matches(*this, loc, from) ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool unit::ability_affects_distant(const std::string& ability, const config& cfg, const map_location& loc,const unit& from) const
+{
+	bool illuminates = ability == "illuminates";
+
+	for (const config &i : cfg.child_range("affect_distant"))
+	{
 		const config &filter = i.child("filter");
 		if (!filter || //filter tag given
 			unit_filter(vconfig(filter)).set_use_flat_tod(illuminates).matches(*this, loc, from) ) {
