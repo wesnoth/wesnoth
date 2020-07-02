@@ -74,6 +74,7 @@
     </ClCompile>
     <ClCompile Include="..\..\src\filesystem.cpp" />
     <ClCompile Include="..\..\src\gettext.cpp" />
+    <ClCompile Include="..\..\src\game_config_view.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp">
@@ -164,5 +165,6 @@
     <ClInclude Include="..\..\src\serialization\base64.hpp">
       <Filter>Serialization</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\game_config_view.hpp" />
   </ItemGroup>
 </Project>

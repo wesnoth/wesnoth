@@ -258,6 +258,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Formula\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\game_config.cpp" />
+    <ClCompile Include="..\..\src\game_config_view.cpp" />
     <ClCompile Include="..\..\src\gettext.cpp" />
     <ClCompile Include="..\..\src\log.cpp" />
     <ClCompile Include="..\..\src\log_windows.cpp" />
@@ -288,6 +289,7 @@
     <ClInclude Include="..\..\src\font\constants.hpp" />
     <ClInclude Include="..\..\src\formula\string_utils.hpp" />
     <ClInclude Include="..\..\src\game_config.hpp" />
+    <ClInclude Include="..\..\src\game_config_view.hpp" />
     <ClInclude Include="..\..\src\gettext.hpp" />
     <ClInclude Include="..\..\src\global.hpp" />
     <ClInclude Include="..\..\src\lexical_cast.hpp" />
