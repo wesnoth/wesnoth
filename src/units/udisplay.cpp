@@ -646,7 +646,7 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(&defender, defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	for(unit_ability& ability : attacker.get_abilities_weapons("leadership", att->get_location(), attack.shared_from_this(), secondary_attack)) {
+	for(const unit_ability& ability : attacker.get_abilities_weapons("leadership", attack.shared_from_this(), secondary_attack)) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
@@ -663,7 +663,7 @@ void unit_attack(display * disp, game_board & board,
 			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
 
-	for(unit_ability& ability : defender.get_abilities_weapons("resistance", def->get_location(), secondary_attack, attack.shared_from_this())) {
+	for(const unit_ability& ability : defender.get_abilities_weapons("resistance", secondary_attack, attack.shared_from_this())) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
