@@ -501,7 +501,7 @@ void game_config_manager::load_addons_cfg()
 					for(const auto& advancefrom : units.child_range("advancefrom")) {
 
 						config modify_unit_type {
-							"id", unit_type["id"],
+							"type", unit_type["id"],
 							"add_advancement", advancefrom["unit"],
 							"set_experience", advancefrom["experience"]
 						};
