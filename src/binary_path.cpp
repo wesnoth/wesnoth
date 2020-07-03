@@ -144,8 +144,8 @@ const std::vector<wml_path>& get_binary_paths(const std::string& type)
 	for(const wml_path& path : binary_paths) {
 		res.push_back(path.append(type + "/"));
 	}
-	// not found in "/type" directory, try main directory, todo: why?
-	//res.push_back(wml_path::from_absolutegame_config::path + "/./"));
+	// some codes explicity specify the part in the form data/core/images ... etc.
+	res.push_back(wml_path::from_absolutegame_config::path + "/./"));
 
 	return res;
 }
