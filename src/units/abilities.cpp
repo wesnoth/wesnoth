@@ -274,42 +274,12 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if ( &*it == this )
 			continue;
 		for(const config& j : it->abilities_.child_range(tag_name)) {
-			res.append(get_abilities_radius(tag_name, j, loc));
-		}
-	}
-
-	return res;
-}
-
-unit_ability_list unit::get_abilities_radius(const std::string& tag_name, const config& cfg,const map_location& loc) const
-{
-	unit_ability_list res(loc_);
-
-    assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
-	std::vector<map_location> surrounding;
-	int radius= 0;
-	if (const config & filter = cfg.child("affect_distant")){
-       radius = filter["radius"].to_int(0);
-	}
-	if (radius>=1 && radius <= 10){
-            get_tiles_in_radius(loc, radius, surrounding);
-		for(unsigned i = 0; i < surrounding.size(); ++i) {
-			const unit_map::const_iterator it = units.find(surrounding[i]);
-			if (it == units.end() || it->incapacitated())
-				continue;
-			if ( &*it == this )
-				continue;
-			for(const config& j : it->abilities_.child_range(tag_name)) {
-				if(affects_side(j, side(), it->side())
-				   && it->ability_active(tag_name, j, surrounding[i])
-				   && ability_affects_distant(tag_name, j, loc, *it))
-				{
-					res.emplace_back(&j, loc, surrounding[i]);
-				}
+			if(get_abilities_bool_radius(tag_name, j, loc)){
+				res.emplace_back(&j, loc, surrounding[i]);
 			}
 		}
 	}
+
 	return res;
 }
 
