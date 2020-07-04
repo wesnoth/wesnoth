@@ -617,7 +617,7 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 	}
 
 	battle_context bc(units, args()[1]->evaluate(variables, add_debug_info(fdb, 1, "calculate_outcome:attacker_attack_location")).convert_to<location_callable>()->loc(),
-		defender_location, weapon, -1, 1.0, nullptr, &*units.find(attacker_location));
+		defender_location, weapon, -1, 1.0, nullptr, units.find(attacker_location).get_shared_ptr());
 	std::vector<double> hp_dist = bc.get_attacker_combatant().hp_dist;
 	std::vector<double>::iterator it = hp_dist.begin();
 	int i = 0;

@@ -377,7 +377,7 @@ unit::unit(const unit& o)
 	}
 }
 
-unit::unit()
+unit::unit(unit_ctor_t)
 	: ref_count_(0)
 	, loc_()
 	, advances_to_()

@@ -145,7 +145,7 @@ public:
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef typename iter_types::value_type value_type;
-		typedef boost::intrusive_ptr<value_type> pointer;
+		typedef std::shared_ptr<value_type> pointer;
 		typedef value_type& reference;
 		typedef typename iter_types::container_type container_type;
 		typedef typename iter_types::iterator_type iterator_type;

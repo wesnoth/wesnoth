@@ -16,7 +16,7 @@
 
 #include "actions/attack.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
-#include "units/map.hpp"
+#include "units/ptr.hpp"
 
 class battle_context;
 
@@ -36,7 +36,7 @@ using hp_probability_vector = std::vector<hp_probability_t>;
 class attack_predictions : public modal_dialog
 {
 public:
-	attack_predictions(battle_context& bc, const unit& attacker, const unit& defender);
+	attack_predictions(battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender);
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(attack_predictions)
 
@@ -49,7 +49,7 @@ private:
 
 	struct combatant_data
 	{
-		combatant_data(const unit& unit, const combatant& combatant, const battle_context_unit_stats& stats)
+		combatant_data(unit_const_ptr unit, const combatant& combatant, const battle_context_unit_stats& stats)
 			: stats_(stats)
 			, combatant_(combatant)
 			, unit_(unit)
@@ -57,7 +57,8 @@ private:
 
 		const battle_context_unit_stats& stats_;
 		const combatant& combatant_;
-		const unit& unit_;
+		/// never null
+		unit_const_ptr unit_;
 	};
 
 	void set_data(window& window, const combatant_data& attacker, const combatant_data& defender);

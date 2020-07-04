@@ -145,7 +145,13 @@ private:
 	// Copy constructor
 	unit(const unit& u);
 
-	unit();
+
+	struct unit_ctor_t {};
+public:
+	//private default ctor, butusing constructor to allow calling make_shared<unit> in create().
+	unit(unit_ctor_t);
+	unit() = delete;
+private:
 	enum UNIT_ATTRIBUTE
 	{
 		UA_MAX_HP,
@@ -184,7 +190,7 @@ public:
 	/** Initializes a unit from a config */
 	static unit_ptr create(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr)
 	{
-		unit_ptr res(new unit());
+		unit_ptr res = std::make_shared<unit>(unit_ctor_t());
 		res->init(cfg, use_traits, vcfg);
 		return res;
 	}
@@ -196,8 +202,9 @@ public:
 	 */
 	static unit_ptr create(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS, const std::string& variation = "")
 	{
-		unit_ptr res(new unit());
+		unit_ptr res = std::make_shared<unit>(unit_ctor_t());
 		res->init(t, side, real_unit, gender, variation);
+
 		return res;
 	}
 

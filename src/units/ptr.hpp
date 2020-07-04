@@ -26,8 +26,8 @@ class unit;
 void intrusive_ptr_add_ref(const unit *);
 void intrusive_ptr_release(const unit *);
 
-typedef boost::intrusive_ptr<unit> unit_ptr;
-typedef boost::intrusive_ptr<const unit> unit_const_ptr;
+typedef std::shared_ptr<unit> unit_ptr;
+typedef std::shared_ptr<const unit> unit_const_ptr;
 
 // And attacks too!
 

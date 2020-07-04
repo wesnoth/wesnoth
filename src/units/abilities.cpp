@@ -1217,13 +1217,13 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	if(self == nullptr) {
 		unit_map::const_iterator it = units.find(self_loc);
 		if(it.valid()) {
-			self = it.get_shared_ptr().get();
+			self = it.get_shared_ptr();
 		}
 	}
 	if(other == nullptr) {
 		unit_map::const_iterator it = units.find(other_loc);
 		if(it.valid()) {
-			other = it.get_shared_ptr().get();
+			other = it.get_shared_ptr();
 		}
 	}
 

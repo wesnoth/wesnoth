@@ -2660,7 +2660,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
 	}
 
 	battle_context context(units(), att->get_location(),
-		def->get_location(), att_w, def_w, 0.0, nullptr, att.get(), def.get());
+		def->get_location(), att_w, def_w, 0.0, nullptr, att, def);
 
 	luaW_pushsimdata(L, context.get_attacker_combatant());
 	luaW_pushsimdata(L, context.get_defender_combatant());
@@ -3960,7 +3960,7 @@ int game_lua_kernel::intf_teleport(lua_State *L)
 	units().move(src_loc, vacant_dst);
 	unit::clear_status_caches();
 
-	u = &*units().find(vacant_dst);
+	u = units().find(vacant_dst).get_shared_ptr();
 	u->anim_comp().set_standing();
 
 	if ( clear_shroud ) {
