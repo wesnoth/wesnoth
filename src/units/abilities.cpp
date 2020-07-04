@@ -509,7 +509,7 @@ bool unit::get_abilities_bool_radius(const std::string& tag_name, const config& 
 			for(const config& j : it->abilities_.child_range(tag_name)) {
 				if(affects_side(j, side(), it->side())
 				   && it->ability_active(tag_name, j, surrounding[i])
-				   && ability_affects_distant(tag_name, j, loc, *it))
+				   && ability_affects_distant(tag_name, j, loc, *this, *it))
 				{
 					return true;
 				}
