@@ -164,7 +164,7 @@ void addon_list::set_addons(const addons_list& addons)
 			item["label"] = addon.display_icon();
 			data.emplace("icon", item);
 
-			item["label"] = addon.display_title();
+			item["label"] = addon.display_title_full_shift();
 			data.emplace("name", item);
 		} else {
 			item["label"] = addon.display_icon() + "~SCALE(72,72)~BLIT(icons/icon-addon-publish.png,8,8)";
@@ -172,7 +172,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			const std::string publish_name = formatter()
 				<< font::span_color(font::GOOD_COLOR)
-				<< addon.display_title()
+				<< addon.display_title_full_shift()
 				<< "</span>";
 
 			item["label"] = publish_name;
@@ -347,7 +347,7 @@ void addon_list::select_addon(const std::string& id)
 		grid* row = list.get_row_grid(i);
 
 		const label& name_label = find_widget<label>(row, "name", false);
-		if(name_label.get_label().base_str() == info.display_title()) {
+		if(name_label.get_label().base_str() == info.display_title_full_shift()) {
 			list.select_row(i);
 		}
 	}
@@ -369,7 +369,7 @@ void addon_list::finalize_setup()
 {
 	listbox& list = get_listbox();
 
-	list.register_translatable_sorting_option(0, [this](const int i) { return addon_vector_[i]->title; });
+	list.register_translatable_sorting_option(0, [this](const int i) { return addon_vector_[i]->display_title_full(); });
 	list.register_sorting_option(1, [this](const int i) { return addon_vector_[i]->author; });
 	list.register_sorting_option(2, [this](const int i) { return addon_vector_[i]->size; });
 	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
@@ -402,7 +402,7 @@ void addon_list::select_first_addon()
 	const addon_info* first_addon = addon_vector_[0];
 
 	for(const addon_info* a : addon_vector_) {
-		if(a->display_title().compare(first_addon->display_title()) < 0) {
+		if(translation::icompare(a->display_title_full(), first_addon->display_title_full()) < 0) {
 			first_addon = a;
 		}
 	}

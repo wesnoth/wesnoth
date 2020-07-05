@@ -117,6 +117,15 @@ namespace {
 						break;
 					}
 				}
+				for(const config& child : cfg.child_range("translation")) {
+					for(const auto& attribute : child.attribute_range()) {
+						std::string val = attribute.second.str();
+						if(translation::ci_search(val, filter)) {
+							found = true;
+							break;
+						}
+					}
+				}
 				if(!found) {
 					return false;
 				}
@@ -159,7 +168,7 @@ namespace {
 				str += ", ";
 			}
 
-			str += addon_list::colorize_addon_state_string(dep.display_title(), depstate.state);
+			str += addon_list::colorize_addon_state_string(dep.display_title_translated_or_original(), depstate.state);
 		}
 
 		return str;
@@ -672,14 +681,14 @@ void addon_manager::uninstall_addon(const addon_info& addon, window& window)
 	if(have_addon_pbl_info(addon.id) || have_addon_in_vcs_tree(addon.id)) {
 		show_error_message(
 			_("The following add-on appears to have publishing or version control information stored locally, and will not be removed:") + " " +
-				addon.display_title());
+				addon.display_title_full());
 		return;
 	}
 
 	bool success = remove_local_addon(addon.id);
 
 	if(!success) {
-		gui2::show_error_message(_("The following add-on could not be deleted properly:") + " " + addon.display_title());
+		gui2::show_error_message(_("The following add-on could not be deleted properly:") + " " + addon.display_title_full());
 	} else {
 		need_wml_cache_refresh_ = true;
 
@@ -805,7 +814,7 @@ void addon_manager::execute_default_action(const addon_info& addon, window& wind
 			break;
 		case ADDON_INSTALLED:
 			if(!tracking_info_[addon.id].can_publish) {
-				utils::string_map symbols{ { "addon", addon.display_title() } };
+				utils::string_map symbols{ { "addon", addon.display_title_full() } };
 				int res = gui2::show_message(_("Uninstall add-on"),
 					VGETTEXT("Do you want to uninstall '$addon|'?", symbols),
 					gui2::dialogs::message::ok_cancel_buttons);
@@ -874,8 +883,8 @@ void addon_manager::on_addon_select(window& window)
 
 	find_widget<drawing>(parent, "image", false).set_label(info->display_icon());
 
-	find_widget<styled_widget>(parent, "title", false).set_label(info->display_title());
-	find_widget<styled_widget>(parent, "description", false).set_label(info->description);
+	find_widget<styled_widget>(parent, "title", false).set_label(info->display_title_translated_or_original());
+	find_widget<styled_widget>(parent, "description", false).set_label(info->description_translated());
 	find_widget<styled_widget>(parent, "version", false).set_label(info->version.str());
 	find_widget<styled_widget>(parent, "author", false).set_label(info->author);
 	find_widget<styled_widget>(parent, "type", false).set_label(info->display_type());

@@ -623,7 +623,7 @@ void server::handle_request_campaign_list(const server::request& req)
 
 			for(const config& j : i.child_range("translation"))
 			{
-				if(j["language"] == lang) {
+				if(j["language"] == lang && j["supported"].to_bool(true)) {
 					found = true;
 					break;
 				}
@@ -881,6 +881,11 @@ void server::handle_upload(const server::request& req)
 			(*campaign).add_child("feedback", url_params);
 		}
 
+		(*campaign).clear_children("translation");
+		for(const config& locale_params : upload.child_range("translation")) {
+			(*campaign).add_child("translation", locale_params);
+		}
+
 		const std::string& filename = (*campaign)["filename"].str();
 		data["title"] = (*campaign)["title"];
 		data["name"] = "";
@@ -893,8 +898,11 @@ void server::handle_upload(const server::request& req)
 		data["icon"] = (*campaign)["icon"];
 		data["type"] = (*campaign)["type"];
 		data["tags"] = (*campaign)["tags"];
-		(*campaign).clear_children("translation");
 		find_translations(data, *campaign);
+
+		for(const config& locale_params : (*campaign).child_range("translation")) {
+			data.add_child("translation", locale_params);//Do we need it?
+		}
 
 		add_license(data);
 
