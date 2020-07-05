@@ -901,7 +901,7 @@ void server::handle_upload(const server::request& req)
 		find_translations(data, *campaign);
 
 		for(const config& locale_params : (*campaign).child_range("translation")) {
-			data.add_child("translation", locale_params);//Do we need it?
+			data.add_child("translation", locale_params);
 		}
 
 		add_license(data);
