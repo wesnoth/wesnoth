@@ -199,11 +199,9 @@ void unit_create::update_displayed_type() const
 	const unit_type* ut = &units_[selected_row]->get_gender_unit_type(gender_);
 
 	if(!variation_.empty()) {
-		const auto& variations = units_[selected_row]->variation_types();
-		auto vi = variations.find(variation_);
-		if(vi != variations.end()) {
-			ut = &vi->second.get_gender_unit_type(gender_);
-		}
+		// This effectively translates to `ut = ut` if somehow variation_ does
+		// not refer to a variation that the unit type supports.
+		ut = &ut->get_variation(variation_);
 	}
 
 	find_widget<unit_preview_pane>(w, "unit_details", false).set_displayed_type(*ut);
