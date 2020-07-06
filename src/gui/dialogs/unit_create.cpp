@@ -226,7 +226,7 @@ void unit_create::list_item_clicked(window& window)
 
 	menu_button& var_box = find_widget<menu_button>(&window, "variation_box", false);
 	std::vector<config> var_box_values;
-	var_box_values.emplace_back("label", _("unit_variation^Default"), "variation_id", "");
+	var_box_values.emplace_back("label", _("unit_variation^Default Variation"), "variation_id", "");
 
 	const auto& ut = *units_[selected_row];
 	const auto& uvars = ut.variation_types();
