@@ -24,6 +24,7 @@
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/grid.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
@@ -37,6 +38,7 @@
 #include <boost/dynamic_bitset.hpp>
 
 static std::string last_chosen_type_id = "";
+static std::string last_variation = "";
 static unit_race::GENDER last_gender = unit_race::MALE;
 
 namespace gui2
@@ -77,6 +79,7 @@ REGISTER_DIALOG(unit_create)
 unit_create::unit_create()
 	: gender_(last_gender)
 	, choice_(last_chosen_type_id)
+	, variation_(last_variation)
 	, last_words_()
 {
 	set_restore(true);
@@ -96,6 +99,10 @@ void unit_create::pre_show(window& window)
 
 	gender_toggle.set_callback_on_value_change(
 		std::bind(&unit_create::gender_toggle_callback, this));
+
+	menu_button& var_box = find_widget<menu_button>(&window, "variation_box", false);
+
+	connect_signal_notify_modified(var_box, std::bind(&unit_create::variation_menu_callback, this));
 
 	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
 
@@ -175,6 +182,7 @@ void unit_create::post_show(window& window)
 
 	last_chosen_type_id = choice_ = units_[selected_row]->id();
 	last_gender = gender_;
+	last_variation = variation_;
 }
 
 void unit_create::update_displayed_type() const
@@ -188,8 +196,17 @@ void unit_create::update_displayed_type() const
 		return;
 	}
 
-	find_widget<unit_preview_pane>(w, "unit_details", false)
-		.set_displayed_type(units_[selected_row]->get_gender_unit_type(gender_));
+	const unit_type* ut = &units_[selected_row]->get_gender_unit_type(gender_);
+
+	if(!variation_.empty()) {
+		const auto& variations = units_[selected_row]->variation_types();
+		auto vi = variations.find(variation_);
+		if(vi != variations.end()) {
+			ut = &vi->second.get_gender_unit_type(gender_);
+		}
+	}
+
+	find_widget<unit_preview_pane>(w, "unit_details", false).set_displayed_type(*ut);
 }
 
 void unit_create::list_item_clicked(window& window)
@@ -206,6 +223,45 @@ void unit_create::list_item_clicked(window& window)
 	gender_toggle.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
 		return units_[selected_row]->has_gender_variation(gender);
 	});
+
+	menu_button& var_box = find_widget<menu_button>(&window, "variation_box", false);
+	std::vector<config> var_box_values;
+	var_box_values.emplace_back("label", _("unit_variation^Default"), "variation_id", "");
+
+	const auto& ut = *units_[selected_row];
+	const auto& uvars = ut.variation_types();
+
+	var_box.set_active(!uvars.empty());
+
+	unsigned n = 0, selection = 0;
+
+	for(const auto& pair : uvars) {
+		++n;
+
+		const std::string& uv_id = pair.first;
+		const unit_type& uv = pair.second;
+
+		std::string uv_label;
+		if(!uv.type_name().empty() && uv.type_name() != ut.type_name()) {
+			uv_label = uv.type_name() + " (" + uv_id + ")";
+		} else {
+			uv_label = uv_id;
+		}
+
+		var_box_values.emplace_back("label", uv_label, "variation_id", uv_id);
+
+		if(uv_id == variation_) {
+			selection = n;
+		}
+	}
+
+	// If we didn't find the variation selection again then the new selected
+	// unit type doesn't have that variation id.
+	if(!selection) {
+		variation_.clear();
+	}
+
+	var_box.set_values(var_box_values, selection);
 }
 
 void unit_create::filter_text_changed(text_box_base* textbox, const std::string& text)
@@ -262,5 +318,15 @@ void unit_create::gender_toggle_callback()
 
 	update_displayed_type();
 }
+
+void unit_create::variation_menu_callback()
+{
+	window& window = *this->get_window();
+	menu_button& var_box = find_widget<menu_button>(&window, "variation_box", false);
+	variation_ = var_box.get_value_config()["variation_id"].str();
+
+	update_displayed_type();
+}
+
 } // namespace dialogs
 } // namespace gui2

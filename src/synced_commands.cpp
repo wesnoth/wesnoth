@@ -536,6 +536,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	debug_notification(N_("A unit was created using debug mode during $player’s turn"));
 	map_location loc(child);
 	resources::whiteboard->on_kill_unit();
+	const std::string& variation = child["variation"].str();
 	const unit_race::GENDER gender = string_gender(child["gender"], unit_race::NUM_GENDERS);
 	const unit_type *u_type = unit_types.find(child["type"]);
 	if (!u_type) {
@@ -547,7 +548,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 			? resources::controller->current_side() : 1;
 
 	// Create the unit.
-	unit_ptr created = unit::create(*u_type, side_num, true, gender);
+	unit_ptr created = unit::create(*u_type, side_num, true, gender, variation);
 	created->new_turn();
 
 	unit_map::unit_iterator unit_it;

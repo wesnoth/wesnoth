@@ -725,11 +725,11 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-void unit::init(const unit_type& u_type, int side, bool real_unit, unit_race::GENDER gender)
+void unit::init(const unit_type& u_type, int side, bool real_unit, unit_race::GENDER gender, const std::string& variation)
 {
 	type_ = &u_type;
 	race_ = &unit_race::null_race;
-	variation_ = type_->default_variation();
+	variation_ = variation.empty() ? type_->default_variation() : variation;
 	side_ = side;
 	gender_ = gender != unit_race::NUM_GENDERS ? gender : generate_gender(u_type, real_unit);
 	facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
