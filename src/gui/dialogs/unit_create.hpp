@@ -27,6 +27,7 @@ class unit_type;
 namespace gui2
 {
 
+class menu_button;
 class text_box_base;
 
 namespace dialogs
@@ -55,12 +56,20 @@ public:
 		return gender_;
 	}
 
+	/** Variation choice from the user. */
+	std::string variation() const
+	{
+		return variation_;
+	}
+
 private:
 	std::vector<const unit_type*> units_;
 
 	unit_race::GENDER gender_;
 
 	std::string choice_;
+
+	std::string variation_;
 
 	std::vector<std::string> last_words_;
 
@@ -77,6 +86,7 @@ private:
 	void list_item_clicked(window& window);
 	void filter_text_changed(text_box_base* textbox, const std::string& text);
 	void gender_toggle_callback();
+	void variation_menu_callback();
 
 	void update_displayed_type() const;
 

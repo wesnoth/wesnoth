@@ -308,7 +308,7 @@ private:
 	std::string debug_id_;  /// A suffix for id_, used when logging messages.
 	std::string parent_id_;   /// The id of the top ancestor of this unit_type.
 	/// from [base_unit]
-	std::string base_unit_id_;	
+	std::string base_unit_id_;
 	t_string type_name_;
 	t_string description_;
 	std::vector<t_string> special_notes_;

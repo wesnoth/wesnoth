@@ -140,7 +140,7 @@ public:
 private:
 	void init(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr);
 
-	void init(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS);
+	void init(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS, const std::string& variation = "");
 
 	// Copy constructor
 	unit(const unit& u);
@@ -194,10 +194,10 @@ public:
 	 *
 	 * Only real_unit-s should have random traits, name and gender (to prevent OOS caused by RNG calls)
 	 */
-	static unit_ptr create(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS)
+	static unit_ptr create(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS, const std::string& variation = "")
 	{
 		unit_ptr res(new unit());
-		res->init(t, side, real_unit, gender);
+		res->init(t, side, real_unit, gender, variation);
 		return res;
 	}
 

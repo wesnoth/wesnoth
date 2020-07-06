@@ -689,7 +689,7 @@ unit_map::iterator menu_handler::current_unit()
 namespace
 {
 /// Allows a function to return both a type and a gender.
-typedef std::pair<const unit_type*, unit_race::GENDER> type_and_gender;
+typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender_variation;
 
 /**
  * Allows the user to select a type of unit, using GUI2.
@@ -698,7 +698,7 @@ typedef std::pair<const unit_type*, unit_race::GENDER> type_and_gender;
  * @returns the selected type and gender. If this is canceled, the
  *          returned type is nullptr.
  */
-type_and_gender choose_unit()
+type_gender_variation choose_unit()
 {
 	//
 	// The unit creation dialog makes sure unit types
@@ -708,14 +708,14 @@ type_and_gender choose_unit()
 	create_dlg.show();
 
 	if(create_dlg.no_choice()) {
-		return type_and_gender(nullptr, unit_race::NUM_GENDERS);
+		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
 	}
 
 	const std::string& ut_id = create_dlg.choice();
 	const unit_type* utp = unit_types.find(ut_id);
 	if(!utp) {
 		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'." << std::endl;
-		return type_and_gender(static_cast<const unit_type*>(nullptr), unit_race::NUM_GENDERS);
+		return type_gender_variation(static_cast<const unit_type*>(nullptr), unit_race::NUM_GENDERS, "");
 	}
 	const unit_type& ut = *utp;
 
@@ -727,7 +727,7 @@ type_and_gender choose_unit()
 		gender = ut.genders().front();
 	}
 
-	return type_and_gender(utp, gender);
+	return type_gender_variation(utp, gender, create_dlg.variation());
 }
 
 /**
@@ -739,7 +739,8 @@ void create_and_place(game_display&,
 		unit_map&,
 		const map_location& loc,
 		const unit_type& u_type,
-		unit_race::GENDER gender = unit_race::NUM_GENDERS)
+		unit_race::GENDER gender = unit_race::NUM_GENDERS,
+		const std::string& variation = "")
 {
 	synced_context::run_and_throw("debug_create_unit",
 		config {
@@ -747,6 +748,7 @@ void create_and_place(game_display&,
 			"y", loc.wml_y(),
 			"type", u_type.id(),
 			"gender", gender_string(gender),
+			"variation", variation,
 		}
 	);
 }
@@ -764,10 +766,10 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	assert(gui_ != nullptr);
 
 	// Let the user select the kind of unit to create.
-	type_and_gender selection = choose_unit();
-	if(selection.first != nullptr) {
+	type_gender_variation selection = choose_unit();
+	if(std::get<0>(selection) != nullptr) {
 		// Make it so.
-		create_and_place(*gui_, map(), units(), destination, *selection.first, selection.second);
+		create_and_place(*gui_, map(), units(), destination, *std::get<0>(selection), std::get<1>(selection), std::get<2>(selection));
 	}
 }
 
