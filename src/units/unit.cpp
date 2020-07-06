@@ -1963,7 +1963,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(const config::attribute_value* v = effect.get("description")) {
 			description_ = *v;
 		}
-		
+
 		if(config::const_child_itors cfg_range = effect.child_range("special_note")) {
 			for(const config& c : cfg_range) {
 				if(!c["remove"].to_bool()) {

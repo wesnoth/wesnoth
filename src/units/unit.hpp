@@ -116,7 +116,7 @@ public:
 	{
 		std::copy( other.begin(), other.end(), std::back_inserter(cfgs_ ));
 	}
-	
+
 private:
 	// Data
 	std::vector<unit_ability> cfgs_;
@@ -448,7 +448,7 @@ public:
 	{
 		description_ = new_desc;
 	}
-	
+
 	/** The unit's special notes. */
 	const std::vector<t_string>& unit_special_notes() const
 	{
@@ -1167,7 +1167,7 @@ public:
 	};
 
 	using upkeep_t = boost::variant<upkeep_full, upkeep_loyal, int>;
-	
+
 	/** Visitor helper class to parse the upkeep value from a config. */
 	class upkeep_parser_visitor : public boost::static_visitor<upkeep_t>
 	{
@@ -1180,19 +1180,19 @@ public:
 			if(n < 0) throw std::invalid_argument(std::to_string(n));
 			return n;
 		}
-		
+
 		template<typename B>
 		std::enable_if_t<std::is_convertible<B, bool>::value && !std::is_arithmetic<B>::value, upkeep_t>
 		operator()(B b) const
 		{
 			throw std::invalid_argument(b.str());
 		}
-		
+
 		upkeep_t operator()(boost::blank) const
 		{
 			return upkeep_full();
 		}
-		
+
 		upkeep_t operator()(const std::string& s) const
 		{
 			if(s == "loyal" || s == "free")
@@ -1654,7 +1654,7 @@ public:
 	{
 		return get_abilities(tag_name, loc_);
 	}
-	
+
 	unit_ability_list get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
 
 	unit_ability_list get_abilities_weapons(const std::string& tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
@@ -1736,7 +1736,7 @@ private:
 	 * @param loc The location on which to resolve the ability
 	 */
 	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
-	
+
 	///filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials(deprecated in two last cases)
 	bool ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const;
 
