@@ -31,29 +31,25 @@ struct addon_info_translation
 {
 	static addon_info_translation invalid;
 
-	std::string language;
 	bool supported;
 	std::string title;
 	std::string description;
 
 	addon_info_translation()
-		: language()
-		, supported(true)
+		: supported(true)
 		, title()
 		, description()
 	{}
 
-	addon_info_translation(std::string lang, bool sup, std::string titl, std::string desc)
-		: language(lang)
-		, supported(sup)
+	addon_info_translation(bool sup, std::string titl, std::string desc)
+		: supported(sup)
 		, title(titl)
 		, description(desc)
 	{
 	}
 
 	explicit addon_info_translation(const config& cfg)
-		: language()
-		, supported(true)
+		: supported(true)
 		, title()
 		, description()
 	{
@@ -65,7 +61,6 @@ struct addon_info_translation
 	addon_info_translation& operator=(const addon_info_translation& o)
 	{
 		if(this != &o) {
-			this->language = o.language;
 			this->supported = o.supported;
 			this->title = o.title;
 			this->description = o.description;
@@ -79,7 +74,7 @@ struct addon_info_translation
 
 	bool valid()
 	{
-		return title != "invalid_addon!";
+		return !title.empty();
 	}
 };
 
@@ -118,7 +113,7 @@ struct addon_info
 	// not previously published.
 	bool local_only;
 
-	std::vector<addon_info_translation> info_translations;
+	std::map<std::string, addon_info_translation> info_translations;
 
 	addon_info()
 		: id(), title(), description(), icon()
@@ -207,8 +202,6 @@ struct addon_info
 	std::string display_title_translated_or_original() const;
 
 	std::string display_title_full() const;
-
-	std::string display_title_full_shift() const;
 
 	std::string description_translated() const;
 
