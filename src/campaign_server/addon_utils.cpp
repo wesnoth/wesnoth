@@ -92,18 +92,14 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 	return std::string();
 }
 
-void support_translation(config& addon, std::string locale_id)
+void support_translation(config& addon, const std::string locale_id)
 {
-	if(!locale_id.empty()) {
-		config& locale = addon.find_child("translation", "language", locale_id);
-		if(locale) {
-			locale["supported"] = true;
-		}
-		else {
-			addon.add_child("translation")["language"] = locale_id; //Doing this to circumvent a weird validation bug
-			addon.find_child("translation", "language", locale_id)["supported"] = true;
-		}
+	config* locale = &addon.find_child("translation", "language", locale_id);
+	if(!*locale) {
+		locale = &addon.add_child("translation");
+		(*locale)["language"] = locale_id;
 	}
+	(*locale)["supported"] = true;
 }
 
 void find_translations(const config& base_dir, config& addon)
@@ -121,12 +117,6 @@ void find_translations(const config& base_dir, config& addon)
 			support_translation(addon, base_dir["name"]);
 		} else {
 			find_translations(dir, addon);
-		}
-	}
-
-	for(config& locale : addon.child_range("translation")) {
-		if(!locale["supported"].to_bool(false)) {
-			locale["supported"] = false;
 		}
 	}
 }

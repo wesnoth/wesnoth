@@ -60,7 +60,6 @@ namespace {
 
 void addon_info_translation::read(const config& cfg)
 {
-	this->language = cfg["language"].str();
 	this->supported = cfg["supported"].to_bool(true);
 	this->title = cfg["title"].str();
 	this->description = cfg["description"].str();
@@ -68,7 +67,6 @@ void addon_info_translation::read(const config& cfg)
 
 void addon_info_translation::write(config& cfg) const
 {
-	cfg["language"] = this->language;
 	cfg["supported"] = this->supported;
 	cfg["title"] = this->title;
 	cfg["description"] = this->description;
@@ -91,8 +89,8 @@ void addon_info::read(const config& cfg)
 
 	for(const config& locale : locales_as_configs) {
 		if(locale["supported"].to_bool(true))
-			this->locales.push_back(locale["language"].str());
-		this->info_translations.push_back(addon_info_translation(locale));
+			this->locales.emplace_back(locale["language"].str());
+		this->info_translations.emplace(locale["language"].str(), addon_info_translation(locale));
 	}
 
 	this->core = cfg["core"].str();
@@ -119,8 +117,10 @@ void addon_info::write(config& cfg) const
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
 
-	for(const addon_info_translation& locale : this->info_translations) {
-		locale.write(cfg.add_child("translation"));
+	for(const std::pair<std::string, addon_info_translation> &element : this->info_translations) {
+		config* locale = &cfg.add_child("translation");
+		(*locale)["language"] = element.first;
+		element.second.write(*locale);
 	}
 
 	cfg["core"] = this->core;
@@ -151,17 +151,23 @@ std::string addon_info::display_title() const
 	}
 }
 
-addon_info_translation addon_info_translation::invalid = {"en_US", false, "invalid_addon!", ""};
+addon_info_translation addon_info_translation::invalid = {false, "", ""};
 
 addon_info_translation addon_info::translated_info() const
 {
 	std::string locale = get_language().localename;
 
 	if(locale != "en_US") {
-		for(const addon_info_translation& info : this->info_translations) {
-			if(info.language == locale || info.language == locale.substr(0, 2)) {
-				return info;
-			}
+		std::map<std::string, addon_info_translation>::const_iterator info;
+
+		info = info_translations.find(locale);
+		if(info != info_translations.end()) {
+			return info->second;
+		}
+
+		info = info_translations.find(locale.substr(0, 2));
+		if(info != info_translations.end()) {
+			return info->second;
 		}
 	}
 
@@ -189,7 +195,7 @@ std::string addon_info::description_translated() const
 {
 	addon_info_translation info = this->translated_info();
 
-	if(info.valid()) {
+	if(info.valid() && !info.description.empty()) {
 		return info.description;
 	}
 
@@ -202,15 +208,6 @@ std::string addon_info::display_title_full() const
 	if(local_title.empty())
 		return display_title();
 	return local_title + " (" + display_title() + ")";
-}
-
-std::string addon_info::display_title_full_shift() const
-{
-	std::string local_title = display_title_translated();
-	if(local_title.empty())
-		return display_title();
-	return local_title + "\n"
-		+ "<small>(" + display_title() + ")</small>";
 }
 
 std::string addon_info::display_icon() const

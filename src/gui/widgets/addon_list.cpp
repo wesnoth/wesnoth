@@ -144,6 +144,16 @@ void addon_list::addon_action_wrapper(addon_op_func_t& func, const addon_info& a
 	}
 }
 
+const std::string addon_list::display_title_full_shift(const addon_info& addon) const
+{
+	const std::string& local_title = addon.display_title_translated();
+	const std::string& display_title = addon.display_title();
+	if(local_title.empty())
+		return display_title;
+	return local_title + "\n"
+		+ "<small>(" + display_title + ")</small>";
+}
+
 void addon_list::set_addons(const addons_list& addons)
 {
 	listbox& list = get_listbox();
@@ -164,7 +174,7 @@ void addon_list::set_addons(const addons_list& addons)
 			item["label"] = addon.display_icon();
 			data.emplace("icon", item);
 
-			item["label"] = addon.display_title_full_shift();
+			item["label"] = display_title_full_shift(addon);
 			data.emplace("name", item);
 		} else {
 			item["label"] = addon.display_icon() + "~SCALE(72,72)~BLIT(icons/icon-addon-publish.png,8,8)";
@@ -172,7 +182,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			const std::string publish_name = formatter()
 				<< font::span_color(font::GOOD_COLOR)
-				<< addon.display_title_full_shift()
+				<< display_title_full_shift(addon)
 				<< "</span>";
 
 			item["label"] = publish_name;
@@ -347,7 +357,7 @@ void addon_list::select_addon(const std::string& id)
 		grid* row = list.get_row_grid(i);
 
 		const label& name_label = find_widget<label>(row, "name", false);
-		if(name_label.get_label().base_str() == info.display_title_full_shift()) {
+		if(name_label.get_label().base_str() == display_title_full_shift(info)) {
 			list.select_row(i);
 		}
 	}
