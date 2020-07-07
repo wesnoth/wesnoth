@@ -240,7 +240,9 @@ void unit_create::list_item_clicked(window& window)
 		const unit_type& uv = pair.second;
 
 		std::string uv_label;
-		if(!uv.type_name().empty() && uv.type_name() != ut.type_name()) {
+		if(!uv.variation_name().empty()) {
+			uv_label = uv.variation_name() + " (" + uv_id + ")";
+		} else if(!uv.type_name().empty() && uv.type_name() != ut.type_name()) {
 			uv_label = uv.type_name() + " (" + uv_id + ")";
 		} else {
 			uv_label = uv_id;
