@@ -92,7 +92,7 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 	return std::string();
 }
 
-void support_translation(config& addon, const std::string locale_id)
+void support_translation(config& addon, const std::string& locale_id)
 {
 	config* locale = &addon.find_child("translation", "language", locale_id);
 	if(!*locale) {

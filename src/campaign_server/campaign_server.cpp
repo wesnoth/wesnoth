@@ -884,15 +884,15 @@ void server::handle_upload(const server::request& req)
 		(*campaign).clear_children("translation");
 		for(const config& locale_params : upload.child_range("translation")) {
 			if(!locale_params["language"].empty()) {
-				config* locale = &(*campaign).add_child("translation");
-				(*locale)["language"] = locale_params["language"].str();
-				(*locale)["supported"] = false;
+				config& locale = (*campaign).add_child("translation");
+				locale["language"] = locale_params["language"].str();
+				locale["supported"] = false;
 
 				if(!locale_params["title"].empty()) {
-					(*locale)["title"] = locale_params["title"].str();
+					locale["title"] = locale_params["title"].str();
 				}
 				if(!locale_params["description"].empty()) {
-					(*locale)["description"] = locale_params["description"].str();
+					locale["description"] = locale_params["description"].str();
 				}
 			}
 		}

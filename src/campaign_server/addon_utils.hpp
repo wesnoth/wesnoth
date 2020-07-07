@@ -49,7 +49,7 @@ inline bool is_text_markup_char(char c)
  */
 std::string format_addon_feedback_url(const std::string& format, const config& params);
 
-void support_translation(config& addon, std::string locale_id);
+void support_translation(config& addon, const std::string& locale_id);
 
 /**
  * Scans an add-on archive directory for translations.
