@@ -1722,7 +1722,7 @@ private:
 	/**
 	 * used for abilities who affect unit distant to teacher (radius 10 maximum)
 	 */
-	bool get_abilities_bool_radius(const std::string& tag_name, const config& cfg, const map_location& loc) const;
+	bool get_abilities_bool_radius(const std::string& tag_name, const config& cfg, const map_location& loc, int max_radius = 0) const;
 
 	/**
 	 * Check if an ability affects adjacent units.
