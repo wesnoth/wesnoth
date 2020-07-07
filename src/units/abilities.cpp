@@ -176,7 +176,8 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 			}
 		}
 	}
-	
+
+
 	for(const unit& u : units) {
 		for(const config& j : u.abilities_.child_range(tag_name)) {
 			if(const config &adistant = j.child("affect_distant")){
