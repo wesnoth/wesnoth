@@ -177,8 +177,12 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		}
 	}
 	
+	int max_radius = 0;
+	const gamemap * game_map = & resources::gameboard->map();
+	max_radius =(game_map->total_width() *game_map->total_width())+ (game_map->total_height() * game_map->total_height());
+	max_radius =  sqrt(max_radius);
 	std::vector<map_location> surrounding;
-	get_tiles_in_radius(loc, 6, surrounding);
+	get_tiles_in_radius(loc, max_radius, surrounding);
 	for(unsigned i = 0; i < surrounding.size(); ++i) {
 		const unit_map::const_iterator it = units.find(surrounding[i]);
 		if (it == units.end() || it->incapacitated())
@@ -186,12 +190,13 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		if ( &*it == this )
 			continue;
 		for(const config& j : it->abilities_.child_range(tag_name)) {
-			if(get_abilities_bool_radius(tag_name, j, loc)){
-			 return true;
+			if(const config &adistant = j.child("affect_distant")){
+				if(get_abilities_bool_radius(tag_name, j, loc, max_radius)){
+					return true;
+				}
 			}
 		}
 	}
-
 	return false;
 }
 
@@ -232,9 +237,12 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 			}
 		}
 	}
-	
+	int max_radius = 0;
+	const gamemap * game_map = & resources::gameboard->map();
+	max_radius =(game_map->total_width() *game_map->total_width())+ (game_map->total_height() * game_map->total_height());
+	max_radius =  sqrt(max_radius);
 	std::vector<map_location> surrounding;
-	get_tiles_in_radius(loc, 6, surrounding);
+	get_tiles_in_radius(loc, max_radius, surrounding);
 	for(unsigned i = 0; i < surrounding.size(); ++i) {
 		const unit_map::const_iterator it = units.find(surrounding[i]);
 		if (it == units.end() || it->incapacitated())
@@ -242,12 +250,13 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if ( &*it == this )
 			continue;
 		for(const config& j : it->abilities_.child_range(tag_name)) {
-			if(get_abilities_bool_radius(tag_name, j, loc)){
-				res.emplace_back(&j, loc, surrounding[i]);
+			if(const config &adistant = j.child("affect_distant")){
+				if(get_abilities_bool_radius(tag_name, j, loc, max_radius)){
+					res.emplace_back(&j, loc, surrounding[i]);
+				}
 			}
 		}
 	}
-
 	return res;
 }
 
@@ -487,7 +496,7 @@ static bool ability_affects_distant(const std::string& ability, const config& cf
 	return false;
 }
 
-bool unit::get_abilities_bool_radius(const std::string& tag_name, const config& cfg,const map_location& loc) const
+bool unit::get_abilities_bool_radius(const std::string& tag_name, const config& cfg, const map_location& loc, int max_radius) const
 {
 
 	assert(display::get_singleton());
@@ -498,7 +507,10 @@ bool unit::get_abilities_bool_radius(const std::string& tag_name, const config& 
 	if (const config & filter = cfg.child("affect_distant")){
 		radius = filter["radius"].to_int(0);
 	}
-	if (radius>=1 && radius <= 6){
+	if(radius > max_radius){
+		radius = max_radius;
+	}
+	if (radius>=1){
             get_tiles_in_radius(loc, radius, surrounding);
 		for(unsigned i = 0; i < surrounding.size(); ++i) {
 			const unit_map::const_iterator it = units.find(surrounding[i]);
