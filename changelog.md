@@ -28,6 +28,8 @@
    * New wesnoth.colors table to get information about colors.
    * Support lua_function in side filters.
    * add wesnoth.get_resource() function.
+ ### User interface
+   * Improve appearance of the Logging Options dialog and add a search box.
  ### WML engine
    * [advancefrom] is now deprecated, use [modify_unit_type] instead.
    * scenarios generated via the map editor can now be used via map_file
