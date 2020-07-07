@@ -15,10 +15,12 @@
 
 #include "gui/dialogs/log_settings.hpp"
 
+#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -32,6 +34,7 @@ namespace dialogs
 REGISTER_DIALOG(log_settings)
 
 log_settings::log_settings()
+	: last_words_()
 {
 	//list of names must match those in logging.cfg
 	widget_id_.push_back("none");
@@ -85,6 +88,49 @@ void log_settings::pre_show(window& window)
 			}
 		}
 	}
+
+	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
+	filter->set_text_changed_callback(std::bind(&log_settings::filter_text_changed, this, _1, _2));
+
+	window.keyboard_capture(filter);
+	window.add_to_keyboard_chain(&logger_box);
+}
+
+void log_settings::filter_text_changed(text_box_base* textbox, const std::string& text)
+{
+	window& window = *textbox->get_window();
+	listbox& list = find_widget<listbox>(&window, "logger_listbox", false);
+
+	const std::vector<std::string> words = utils::split(text, ' ');
+
+	if(words == last_words_) {
+		return;
+	}
+
+	last_words_ = words;
+
+	boost::dynamic_bitset<> show_items;
+	show_items.resize(list.get_item_count(), true);
+
+	if(!text.empty()) {
+		for(unsigned int i = 0; i < list.get_item_count(); i++) {
+			assert(i < domain_list_.size());
+
+			bool found = false;
+
+			for(const auto& word : words)
+			{
+				found = translation::ci_search(domain_list_[i], word);
+				if(!found) {
+					break;
+				}
+			}
+
+			show_items[i] = found;
+		}
+	}
+
+	list.set_row_shown(show_items);
 }
 
 void log_settings::post_show(window& /*window*/)

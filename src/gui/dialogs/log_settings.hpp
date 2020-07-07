@@ -19,6 +19,8 @@
 
 namespace gui2
 {
+class text_box_base;
+
 namespace dialogs
 {
 
@@ -49,6 +51,10 @@ private:
 
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
+
+	void filter_text_changed(text_box_base* textbox, const std::string& text);
+
+	std::vector<std::string> last_words_;
 
 };
 
