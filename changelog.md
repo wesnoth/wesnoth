@@ -4,45 +4,45 @@
      run by re-reading add-on versions after each update batch (issue #3273).
  ### Campaigns
    * Delfador's Memoirs:
-     * S12: Fix a few case where dialog and events sound odd or fire out of order (issue #4614)
+     * S12: Fix a few case where dialog and events sound odd or fire out of order (issue #4614).
    * Liberty:
-     * Revised dialogue and added miscellaneous new events to all scenarios
+     * Revised dialogue and added miscellaneous new events to all scenarios.
    * Under the Burning Suns:
-     * Embellished all remaining maps (S1, S2, S6b, S8, S11)
-     * Finished Tauroch Rider line sprites, added riderless Tauroch standalone unit
+     * Embellished all remaining maps (S1, S2, S6b, S8, S11).
+     * Finished Tauroch Rider line sprites, added riderless Tauroch standalone unit.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Chinese (Traditional),
      Czech, Esperanto, French, Hungarian, Italian, Japanese, Polish, Portuguese (Brazil),
-     Russian, Spanish, Swedish
- ### Units
-   * New Dunefolk skirmisher branch (Falconer)
-   * Dragonguard HP increased from 59 to 63
-   * Bone Shooter HP increased from 40 to 42
-   * Banebow HP increased from 50 to 52
- ### Terrain
-   * New ancient/weathered stone floor tile (code Ias)
-   * New ancient stone stone walls variation (code Xoa)
-   * New earthy rockbound cave variation (code Uhe)
+     Russian, Spanish, Swedish.
  ### Lua API
-   * New wesnoth.get_max_liminal_bonus function
+   * New wesnoth.get_max_liminal_bonus function.
    * New wesnoth.colors table to get information about colors.
    * Support lua_function in side filters.
    * add wesnoth.get_resource() function.
+ ### Terrain
+   * New ancient/weathered stone floor tile (code Ias).
+   * New ancient stone stone walls variation (code Xoa).
+   * New earthy rockbound cave variation (code Uhe).
+ ### Units
+   * New Dunefolk skirmisher branch (Falconer).
+   * Dragonguard HP increased from 59 to 63.
+   * Bone Shooter HP increased from 40 to 42.
+   * Banebow HP increased from 50 to 52.
  ### User interface
    * Improve appearance of the Logging Options dialog and add a search box.
  ### WML engine
    * [advancefrom] is now deprecated, use [modify_unit_type] instead.
    * scenarios generated via the map editor can now be used via map_file
      in [scenario].
-   * the student,attacker and defender variables can now be used in
+   * The student, attacker and defender variables can now be used in
      formulas in abilities.
-   * Units no longer get healed on recalling. (they still get healed
-     at the end of the scenario). 
+   * Units no longer get healed when recalled (they still get healed
+     at the end of the scenario).
  ### Miscellaneous and bug fixes
-   * Added missing side controllers to two Micro AI scenarios (fixes #4890)
+   * Added missing side controllers to two Micro AI scenarios (fixes #4890).
    * Fix broken callbacks for treeviews in wesnoth.show_dialog
-   * Fix floatign labels duraions being measures in 'frames',
-     it is now measured in milliseconds.
+   * Fix floating label duration being measured in 'frames', it is now
+     measured in milliseconds.
 
 ## Version 1.15.3
  ### AI
