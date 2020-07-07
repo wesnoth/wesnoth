@@ -117,7 +117,7 @@ void addon_info::write(config& cfg) const
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
 
-	for(const std::pair<std::string, addon_info_translation> &element : this->info_translations) {
+	for(std::pair<std::string, addon_info_translation> element : this->info_translations) {
 		config* locale = &cfg.add_child("translation");
 		(*locale)["language"] = element.first;
 		element.second.write(*locale);
