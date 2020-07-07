@@ -53,7 +53,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include <boost/dynamic_bitset.hpp>
 
-static lg::log_domain log_aitesting("aitesting");
+static lg::log_domain log_aitesting("ai/testing");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
 //If necessary, this define can be replaced with `#define LOG_AIT std::cout` to restore previous behavior
 
