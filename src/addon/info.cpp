@@ -117,10 +117,10 @@ void addon_info::write(config& cfg) const
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
 
-	for(std::pair<std::string, addon_info_translation> element : this->info_translations) {
-		config* locale = &cfg.add_child("translation");
-		(*locale)["language"] = element.first;
-		element.second.write(*locale);
+	for(const auto& element : this->info_translations) {
+		config& locale = cfg.add_child("translation");
+		locale["language"] = element.first;
+		element.second.write(locale);
 	}
 
 	cfg["core"] = this->core;
@@ -158,9 +158,7 @@ addon_info_translation addon_info::translated_info() const
 	std::string locale = get_language().localename;
 
 	if(locale != "en_US") {
-		std::map<std::string, addon_info_translation>::const_iterator info;
-
-		info = info_translations.find(locale);
+		auto info = info_translations.find(locale);
 		if(info != info_translations.end()) {
 			return info->second;
 		}
