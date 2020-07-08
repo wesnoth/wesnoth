@@ -1531,7 +1531,9 @@ function ai_helper.next_hop(unit, x, y, cfg)
         local unit_map = LS.create()
         for _,u in ipairs(units) do unit_map:insert(u.x, u.y, u.id) end
 
-        local max_rating = inverse_reach_map:get(next_hop[1], next_hop[2]) -- do not move farther away
+        -- Do not move farther away, but if next_hop is out of reach from next_hop_ideal,
+        -- anything in reach is better -> set to -infinity in that case.
+        local max_rating = inverse_reach_map:get(next_hop[1], next_hop[2]) or - math.huge
         for _,loc in ipairs(reach) do
             if (not unit_map:get(loc[1], loc[2]))
                 and ((not cfg) or (not cfg.avoid_map) or (not cfg.avoid_map:get(loc[1], loc[2])))
