@@ -28,6 +28,10 @@
 
 #include "exceptions.hpp"
 
+#if !defined(MARIADB_VERSION_ID) && defined(MYSQL_VERSION_ID) && MYSQL_VERSION_ID >= 80000
+using my_bool = bool;
+#endif
+
 struct sql_error : public game::error
 {
 	sql_error(const std::string& message, const std::string& sql)
