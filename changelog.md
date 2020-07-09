@@ -44,6 +44,7 @@
    * Fix broken callbacks for treeviews in wesnoth.show_dialog
    * Fix floating label duration being measured in 'frames', it is now
      measured in milliseconds.
+   * Added unit type variation selection to the debug mode Create Unit dialog (PR #4986).
 
 ## Version 1.15.3
  ### AI
