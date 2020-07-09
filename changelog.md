@@ -2,6 +2,7 @@
  ### Add-ons client
    * Ensure the client doesn't re-download dependencies that have just been updated during an Update All
      run by re-reading add-on versions after each update batch (issue #3273).
+   * Added new syntax and UI support for providing localized add-on titles and descriptions (PR #4984).
  ### Campaigns
    * Delfador's Memoirs:
      * S12: Fix a few case where dialog and events sound odd or fire out of order (issue #4614).
