@@ -80,8 +80,6 @@ config initial_level_config(saved_game& state)
 
 	config level = state.to_config();
 	add_multiplayer_classification(level.child_or_add("multiplayer"), state);
-	level.child("multiplayer")["mp_scenario_addon_id"] = level.child("scenario")["addon_id"].str();
-	level.child("multiplayer")["mp_scenario_addon_version"] = state.to_config().child("scenario")["addon_version"].str();
 
 	// [multiplayer] mp_era= should be persistent over saves.
 	std::string era = params.mp_era;
@@ -97,6 +95,17 @@ config initial_level_config(saved_game& state)
 
 	const config& game_config = game_config_manager::get()->game_config();
 	const config& era_cfg = game_config.find_child("era", "id", era);
+
+	if(const config& temp_cfg = game_config.find_child("scenario", "id", level.child("multiplayer")["mp_scenario"])) {
+		level.child("multiplayer")["mp_scenario_addon_id"] = temp_cfg["addon_id"].str();
+		level.child("multiplayer")["mp_scenario_addon_version"] = temp_cfg["addon_version"].str();
+	} else if(const config& temp_cfg = game_config.find_child("multiplayer", "id", level.child("multiplayer")["mp_scenario"])) {
+		level.child("multiplayer")["mp_scenario_addon_id"] = temp_cfg["addon_id"].str();
+		level.child("multiplayer")["mp_scenario_addon_version"] = temp_cfg["addon_version"].str();
+	} else {
+		level.child("multiplayer")["mp_scenario_addon_id"] = "";
+		level.child("multiplayer")["mp_scenario_addon_version"] = "";
+	}
 
 	if(!era_cfg) {
 		if(!params.saved_game) {
