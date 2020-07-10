@@ -928,6 +928,14 @@ linechanges = (
 
         )
 
+# helper function to reduce code duplication and allow easy checking
+# of amendment tags ([+tag] syntax)
+
+def has_opening_tag(line, tag):
+    """Check whether a line contains an opening tag or the corresponding
+amendment tag, internally using string concatenation. Returns a boolean."""
+    return (("[" + tag + "]") in line) or (("[+" + tag + "]") in line)
+
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
     (tag, attributes) = tagstack[-1]
@@ -1584,6 +1592,8 @@ def global_sanity_check(filename, lines):
         elif "[/generator]" in line:
             in_generator = False
             continue
+        # do not use has_opening_tag() here, otherwise a [+side] tag
+        # will make the sidecount variable incorrect
         elif "[side]" in line:
             in_side = True
             sidecount += 1
@@ -1595,10 +1605,10 @@ def global_sanity_check(filename, lines):
             recruit = {}
             recruitment_pattern = {}
             continue
-        elif in_side and "[ai]" in line:
+        elif in_side and has_opening_tag(line, "ai"):
             in_ai = True
             continue
-        elif in_side and "[unit]" in line:
+        elif in_side and has_opening_tag(line, "unit"):
             in_subunit = True
             continue
         elif in_side and "[/ai]" in line:
@@ -1621,7 +1631,7 @@ def global_sanity_check(filename, lines):
                               % (filename, num))
                 else:
                     recruitment_pattern[ifdef_stack[-1]] = (num, [x.strip() for x in value.split(",")])
-            elif key == "side" and not in_ai:
+            elif key == "side" and in_side and not in_ai:
                 try:
                     if not in_generator and sidecount != int(value):
                         print('"%s", line %d: side number %s is out of sequence (%d expected)' \
@@ -1642,19 +1652,19 @@ def global_sanity_check(filename, lines):
     in_side = False
     in_unit_type = False
     for num, line in enumerate(lines, start=1):
-        if "[effect]" in line:
+        if has_opening_tag(line, "effect"):
             in_effect = True
         elif "[/effect]" in line:
             in_effect = False
-        elif "[unit]" in line:
+        elif has_opening_tag(line, "unit"):
             in_unit = True
         elif "[/unit]" in line:
             in_unit = False
-        elif "[side]" in line:
+        elif has_opening_tag(line, "side"):
             in_side = True
         elif "[/side]" in line:
             in_side = False
-        elif "[unit_type]" in line:
+        elif has_opening_tag(line, "unit_type"):
             in_unit_type = True
         elif "[/unit_type]" in line:
             in_unit_type = False
@@ -1783,7 +1793,7 @@ def global_sanity_check(filename, lines):
                 subtag_depth += 1
             if "[/" in lines[i]:
                 subtag_depth -= 1
-        if "[event]" in lines[i] or "[+event]" in lines[i]:
+        if has_opening_tag(lines[i], "event"):
             directly_in_event.append(True)
         elif re.search(r"\[\+?[a-z]", lines[i]):
             directly_in_event.append(False)
@@ -1791,114 +1801,121 @@ def global_sanity_check(filename, lines):
             if len(directly_in_event) > 0:
                 directly_in_event.pop()
         # Ordinary subtag flags begin here
-        if "[trait]" in lines[i]:
+        if has_opening_tag(lines[i], "trait"):
             in_trait = True
         elif "[/trait]" in lines[i]:
             in_trait = False
-        elif "[object]" in lines[i]:
+        elif has_opening_tag(lines[i], "object"):
             in_object = True
         elif "[/object]" in lines[i]:
             in_object = False
-        elif "[stage]" in lines[i]:
+        elif has_opening_tag(lines[i], "stage"):
             in_stage = True
         elif "[/stage]" in lines[i]:
             in_stage = False
-        elif "[cfg]" in lines[i]:
+        elif has_opening_tag(lines[i], "cfg"):
             in_cfg = True
         elif "[/cfg]" in lines[i]:
             in_cfg = False
-        elif "[goal]" in lines[i]:
+        elif has_opening_tag(lines[i], "goal"):
             in_goal = True
         elif "[/goal]" in lines[i]:
             in_goal = False
-        elif "[set_menu_item]" in lines[i]:
+        elif has_opening_tag(lines[i], "set_menu_item"):
             in_set_menu_item = True
         elif "[/set_menu_item]" in lines[i]:
             in_set_menu_item = False
-        elif "[clear_menu_item]" in lines[i]:
+        elif has_opening_tag(lines[i], "clear_menu_item"):
             in_clear_menu_item = True
         elif "[/clear_menu_item]" in lines[i]:
             in_clear_menu_item = False
-        elif "[aspect]" in lines[i]:
+        elif has_opening_tag(lines[i], "aspect"):
             in_aspect = True
         elif "[/aspect]" in lines[i]:
             in_aspect = False
-        elif "[facet]" in lines[i]:
+        elif has_opening_tag(lines[i], "facet"):
             in_facet = True
         elif "[/facet]" in lines[i]:
             in_facet = False
-        elif "[sound_source]" in lines[i]:
+        elif has_opening_tag(lines[i], "sound_source"):
             in_sound_source = True
         elif "[/sound_source]" in lines[i]:
             in_sound_source = False
-        elif "[remove_sound_source]" in lines[i]:
+        elif has_opening_tag(lines[i], "remove_sound_source"):
             in_remove_sound_source = True
         elif "[/remove_sound_source]" in lines[i]:
             in_remove_sound_source = False
-        elif "[load_resource]" in lines[i]:
+        elif has_opening_tag(lines[i], "load_resource"):
             in_load_resource = True
         elif "[/load_resource]" in lines[i]:
             in_load_resource = False
-        elif "[message]" in lines[i]:
+        elif has_opening_tag(lines[i], "message"):
             in_message = True
         elif "[/message]" in lines[i]:
             in_message = False
+        elif has_opening_tag(lines[i], "option"):
+            in_option = True
         elif "[/option]" in lines[i]:
             in_option = False
-        elif "[option]" in lines[i]:
-            in_option = True
-        elif "[time_area]" in lines[i]:
+        elif has_opening_tag(lines[i], "time_area"):
             in_time_area = True
         elif "[/time_area]" in lines[i]:
             in_time_area = False
-        elif "[label]" in lines[i] or "[chamber]" in lines[i] or "[time]" in lines[i]:
+        elif has_opening_tag(lines[i], "label") or \
+             has_opening_tag(lines[i], "chamber") or \
+             has_opening_tag(lines[i], "time"):
             ignore_id = True
         elif "[/label]" in lines[i] or "[/chamber]" in lines[i] or "[/time]" in lines[i]:
             ignore_id = False
-        elif "[kill]" in lines[i] or "[effect]" in lines[i] or "[move_unit_fake]" in lines[i] or "[scroll_to_unit]" in lines[i]:
+        elif has_opening_tag(lines[i], "kill") or \
+             has_opening_tag(lines[i], "effect") or \
+             has_opening_tag(lines[i], "move_unit_fake") or \
+             has_opening_tag(lines[i], "scroll_to_unit"):
             ignoreable = True
         elif "[/kill]" in lines[i] or "[/effect]" in lines[i] or "[/move_unit_fake]" in lines[i] or "[/scroll_to_unit]" in lines[i]:
             ignoreable = False
-        elif "[side]" in lines[i] or "[unit]" in lines[i] or "[recall]" in lines[i]:
+        elif has_opening_tag(lines[i], "side") or \
+             has_opening_tag(lines[i], "unit") or \
+             has_opening_tag(lines[i], "recall"):
             in_person = True
             continue
         elif "[/side]" in lines[i] or "[/unit]" in lines[i] or "[/recall]" in lines[i]:
             in_person = False
-        elif "[store_unit]" in lines[i]:
+        elif has_opening_tag(lines[i], "store_unit"):
             in_store = True
         elif "[/store_unit]" in lines[i]:
             if storeid and storevar:
                 storedids.update({storevar: storeid})
             in_store = False
             storeid = storevar = None
-        elif "[unstore_unit]" in lines[i]:
+        elif has_opening_tag(lines[i], "unstore_unit"):
             in_unstore = True
         elif "[/unstore_unit]" in lines[i]:
             in_unstore = False
-        elif "[not]" in lines[i]:
+        elif has_opening_tag(lines[i], "not"):
             in_not = True
         elif "[/not]" in lines[i]:
             in_not = False
-        elif "[clear_variable]" in lines[i]:
+        elif has_opening_tag(lines[i], "clear_variable"):
             in_clear = True
         elif "[/clear_variable]" in lines[i]:
             in_clear = False
         # starting from 1.13.6, [fire_event] supports id= fields
         # ignore them, but don't ignore [primary_unit] and [secondary_unit]
-        elif "[fire_event]" in lines[i]:
+        elif has_opening_tag(lines[i], "fire_event"):
             in_fire_event = True
         elif "[/fire_event]" in lines[i]:
             in_fire_event = False
-        elif "[primary_unit]" in lines[i]:
+        elif has_opening_tag(lines[i], "primary_unit"):
             in_primary_unit = True
         elif "[/primary_unit]" in lines[i]:
             in_primary_unit = False
-        elif "[secondary_unit]" in lines[i]:
+        elif has_opening_tag(lines[i], "secondary_unit"):
             in_secondary_unit = True
         elif "[/secondary_unit]" in lines[i]:
             in_secondary_unit = False
         # version 1.13.0 added [remove_event], which accepts a id= field
-        elif "[remove_event]" in lines[i]:
+        elif has_opening_tag(lines[i], "remove_event"):
             in_remove_event = True
         elif "[/remove_event]" in lines[i]:
             in_remove_event = False
@@ -1907,32 +1924,32 @@ def global_sanity_check(filename, lines):
         elif "[/remove_time_area]" in lines[i]:
             in_remove_time_area = False
         # [tunnel] supports a [filter] sub-tag, so handle it
-        elif "[tunnel]" in lines[i]:
+        elif has_opening_tag(lines[i], "tunnel"):
             in_tunnel = True
         elif "[/tunnel]" in lines[i]:
             in_tunnel = False
-        elif "[filter]" in lines[i]:
+        elif has_opening_tag(lines[i], "filter"):
             in_filter = True
         elif "[/filter]" in lines[i]:
             in_filter = False
         # sub-tags of [options] tag
-        elif "[checkbox]" in lines[i]:
+        elif has_opening_tag(lines[i], "checkbox"):
             in_checkbox = True
         elif "[/checkbox]" in lines[i]:
             in_checkbox = False
-        elif "[combo]" in lines[i]:
+        elif has_opening_tag(lines[i], "combo"):
             in_combo = True
         elif "[/combo]" in lines[i]:
             in_combo = False
-        elif "[entry]" in lines[i]:
+        elif has_opening_tag(lines[i], "entry"):
             in_entry = True
         elif "[/entry]" in lines[i]:
             in_entry = False
-        elif "[slider]" in lines[i]:
+        elif has_opening_tag(lines[i], "slider"):
             in_slider = True
         elif "[/slider]" in lines[i]:
             in_slider = False
-        elif "[generator]" in lines[i]:
+        elif has_opening_tag(lines[i], "generator"):
             in_map_generator = True
         elif "[/generator]" in lines[i]:
             in_map_generator = False
@@ -2439,7 +2456,7 @@ def hack_syntax(filename, lines):
         # Ugh...relies on code having been wmlindented
         lines[i] = re.sub(r"^\[terrain\]", "[terrain_type]", lines[i])
         lines[i] = re.sub(r"^\[/terrain\]", "[/terrain_type]", lines[i])
-        if "[standing_anim]" in lines[i]:
+        if has_opening_tag(lines[i], "standing_anim"):
             in_standing_anim = True
         if "[/standing_anim]" in lines[i]:
             in_standing_anim = False
@@ -2452,7 +2469,7 @@ def hack_syntax(filename, lines):
             break
         if lines[i].lstrip().startswith("#"):
             pass
-        if "[set_variable]" in lines[i]:
+        if has_opening_tag(lines[i], "set_variable"):
             in_set_variable = True
         if "[/set_variable]" in lines[i]:
             in_set_variable = False
@@ -2489,11 +2506,11 @@ def hack_syntax(filename, lines):
         elif "@add-ons/" in lines[i]:
             lines[i] = lines[i].replace("{@add-ons/", "{~add-ons/")
         # Occasionally authors try to use '~' with [textdomain] or [binary_path].
-        if "[binary_path]" in lines[i]:
+        if has_opening_tag(lines[i], "binary_path"):
             in_binary_path = True
         if "[/binary_path]" in lines[i]:
             in_binary_path = False
-        if "[textdomain]" in lines[i]:
+        if has_opening_tag(lines[i], "textdomain"):
             in_textdomain = True
         if "[/textdomain]" in lines[i]:
             in_textdomain = False
@@ -2523,7 +2540,7 @@ def hack_syntax(filename, lines):
                 break
             precomment = lines[i].split("#")[0]
             if outside_of_theme_wml:
-                if "[theme]" in precomment:
+                if has_opening_tag(precomment, "theme"):
                     outside_of_theme_wml = False
             else:
                 if "[/theme]" in precomment:
