@@ -389,20 +389,6 @@ private:
 	mutable std::vector<uint8_t> surface_buffer_;
 
 	/**
-	 * Creates a new buffer.
-	 *
-	 * If needed frees the other surface and then creates a new buffer and
-	 * initializes the entire buffer with values 0.
-	 *
-	 * NOTE even though we're clearly modifying function we don't change the
-	 * state of the object. The const is needed so other functions can also be
-	 * marked const (those also don't change the state of the object.
-	 *
-	 * @param size                The required size of the buffer.
-	 */
-	void create_surface_buffer(const std::size_t size) const;
-
-	/**
 	 * Sets the markup'ed text.
 	 *
 	 * It tries to set the text as markup. If the markup is invalid it will try
