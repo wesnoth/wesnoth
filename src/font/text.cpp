@@ -683,6 +683,17 @@ void pango_text::rerender(const bool force)
 		cairo_format_t format = CAIRO_FORMAT_ARGB32;
 		const unsigned stride = cairo_format_stride_for_width(format, width);
 
+		// TODO: a sane value should be chosen for this arbitrary limit. The limit currently merely prevents arithmetic
+		// overflow when calculating (stride * height), and still allows this function to allocate a 2 gigabyte surface.
+		//
+		// Making the limit match the amount that can be handled by a single call to render() would allow this function to be
+		// simplified, removing the next try...catch block and its line-by-line workaround. The credits are likely to be the
+		// only text which exceeds render()'s limit of approx 2**15 pixels in height, so reimplementing end_credits.cpp should
+		// be enough to support this refactor.
+		if(static_cast<unsigned int>(height) > std::numeric_limits<int>::max() / stride) {
+			throw std::length_error("Text is too long to render");
+		}
+
 		this->create_surface_buffer(stride * height);
 
 		if (surface_buffer_.empty()) {
