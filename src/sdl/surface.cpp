@@ -47,6 +47,10 @@ surface::surface(int w, int h)
 		neutral_pixel_format.Bmask,
 		neutral_pixel_format.Amask);
 #endif
+
+	if(!surface_) {
+		throw std::length_error("Failed to create an SDL surface, probably out of memory");
+	}
 }
 
 bool surface::is_neutral() const
