@@ -19,6 +19,7 @@
 #include "font/pango/escape.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "language.hpp"
 #include "picture.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -58,6 +59,20 @@ namespace {
 	}
 }
 
+void addon_info_translation::read(const config& cfg)
+{
+	this->supported = cfg["supported"].to_bool(true);
+	this->title = cfg["title"].str();
+	this->description = cfg["description"].str();
+}
+
+void addon_info_translation::write(config& cfg) const
+{
+	cfg["supported"] = this->supported;
+	cfg["title"] = this->title;
+	cfg["description"] = this->description;
+}
+
 void addon_info::read(const config& cfg)
 {
 	this->id = cfg["name"].str();
@@ -74,7 +89,9 @@ void addon_info::read(const config& cfg)
 	const config::const_child_itors& locales_as_configs = cfg.child_range("translation");
 
 	for(const config& locale : locales_as_configs) {
-		this->locales.push_back(locale["language"].str());
+		if(locale["supported"].to_bool(true))
+			this->locales.emplace_back(locale["language"].str());
+		this->info_translations.emplace(locale["language"].str(), addon_info_translation(locale));
 	}
 
 	this->core = cfg["core"].str();
@@ -101,8 +118,10 @@ void addon_info::write(config& cfg) const
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
 
-	for (const std::string& locale_id : this->locales) {
-		cfg.add_child("translation")["language"] = locale_id;
+	for(const auto& element : this->info_translations) {
+		config& locale = cfg.add_child("translation");
+		locale["language"] = element.first;
+		element.second.write(locale);
 	}
 
 	cfg["core"] = this->core;
@@ -131,6 +150,63 @@ std::string addon_info::display_title() const
 	} else {
 		return font::escape_text(this->title);
 	}
+}
+
+addon_info_translation addon_info_translation::invalid = {false, "", ""};
+
+addon_info_translation addon_info::translated_info() const
+{
+	std::string locale = get_language().localename;
+
+	if(locale != "en_US") {
+		auto info = info_translations.find(locale);
+		if(info != info_translations.end()) {
+			return info->second;
+		}
+
+		info = info_translations.find(locale.substr(0, 2));
+		if(info != info_translations.end()) {
+			return info->second;
+		}
+	}
+
+	return addon_info_translation::invalid;
+}
+
+std::string addon_info::display_title_translated() const
+{
+	addon_info_translation info = this->translated_info();
+
+	if(info.valid()) {
+		return info.title;
+	}
+
+	return "";
+}
+
+std::string addon_info::display_title_translated_or_original() const
+{
+	std::string title = display_title_translated();
+	return title.empty() ? display_title() : title;
+}
+
+std::string addon_info::description_translated() const
+{
+	addon_info_translation info = this->translated_info();
+
+	if(info.valid() && !info.description.empty()) {
+		return info.description;
+	}
+
+	return this->description;
+}
+
+std::string addon_info::display_title_full() const
+{
+	std::string local_title = display_title_translated();
+	if(local_title.empty())
+		return display_title();
+	return local_title + " (" + display_title() + ")";
 }
 
 std::string addon_info::display_icon() const
