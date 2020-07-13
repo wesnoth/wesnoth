@@ -92,19 +92,29 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 	return std::string();
 }
 
+void support_translation(config& addon, const std::string& locale_id)
+{
+	config* locale = &addon.find_child("translation", "language", locale_id);
+	if(!*locale) {
+		locale = &addon.add_child("translation");
+		(*locale)["language"] = locale_id;
+	}
+	(*locale)["supported"] = true;
+}
+
 void find_translations(const config& base_dir, config& addon)
 {
 	for(const config& file : base_dir.child_range("file")) {
 		const std::string& fn = file["name"].str();
 		if(filesystem::ends_with(fn, ".po")) {
-			addon.add_child("translation")["language"] = filesystem::base_name(fn, true);
+			support_translation(addon, filesystem::base_name(fn, true));
 		}
 	}
 
 	for(const config &dir : base_dir.child_range("dir"))
 	{
 		if(dir["name"] == "LC_MESSAGES") {
-			addon.add_child("translation")["language"] = base_dir["name"];
+			support_translation(addon, base_dir["name"]);
 		} else {
 			find_translations(dir, addon);
 		}

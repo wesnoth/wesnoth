@@ -22,9 +22,62 @@
 #include <set>
 #include <map>
 
+struct addon_info_translation;
 struct addon_info;
 class config;
 typedef std::map<std::string, addon_info> addons_list;
+
+struct addon_info_translation
+{
+	static addon_info_translation invalid;
+
+	bool supported;
+	std::string title;
+	std::string description;
+
+	addon_info_translation()
+		: supported(true)
+		, title()
+		, description()
+	{
+	}
+
+	addon_info_translation(bool sup, std::string titl, std::string desc)
+		: supported(sup)
+		, title(titl)
+		, description(desc)
+	{
+	}
+
+	explicit addon_info_translation(const config& cfg)
+		: supported(true)
+		, title()
+		, description()
+	{
+		this->read(cfg);
+	}
+
+	addon_info_translation(const addon_info_translation&) = default;
+
+	addon_info_translation& operator=(const addon_info_translation& o)
+	{
+		if(this != &o) {
+			this->supported = o.supported;
+			this->title = o.title;
+			this->description = o.description;
+		}
+		return *this;
+	}
+
+	void read(const config& cfg);
+
+	void write(config& cfg) const;
+
+	bool valid()
+	{
+		return !title.empty();
+	}
+};
 
 struct addon_info
 {
@@ -66,6 +119,8 @@ struct addon_info
 	// not previously published.
 	bool local_only;
 
+	std::map<std::string, addon_info_translation> info_translations;
+
 	addon_info()
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
@@ -77,6 +132,7 @@ struct addon_info
 		, created()
 		, order()
 		, local_only(false)
+		, info_translations()
 	{}
 
 	explicit addon_info(const config& cfg)
@@ -90,6 +146,7 @@ struct addon_info
 		, created()
 		, order()
 		, local_only(false)
+		, info_translations()
 	{
 		this->read(cfg);
 	}
@@ -115,6 +172,7 @@ struct addon_info
 			this->created = o.created;
 			this->order = o.order;
 			this->local_only = o.local_only;
+			this->info_translations = o.info_translations;
 		}
 		return *this;
 	}
@@ -143,6 +201,16 @@ struct addon_info
 	 *       add-ons in its reply anymore? Titles seem to be required at upload time.
 	 */
 	std::string display_title() const;
+
+	addon_info_translation translated_info() const;
+
+	std::string display_title_translated() const;
+
+	std::string display_title_translated_or_original() const;
+
+	std::string display_title_full() const;
+
+	std::string description_translated() const;
 
 	/** Get an icon path fixed for display (e.g. when TC is missing, or the image doesn't exist). */
 	std::string display_icon() const;

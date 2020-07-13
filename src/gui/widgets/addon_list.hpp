@@ -45,6 +45,8 @@ public:
 	/** Special retval for the toggle panels in the addons list */
 	static const int DEFAULT_ACTION_RETVAL = 200;
 
+	const std::string display_title_full_shift(const addon_info& addon) const;
+
 	/** Sets the add-ons to show. */
 	void set_addons(const addons_list& addons);
 
