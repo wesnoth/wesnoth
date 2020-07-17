@@ -61,7 +61,7 @@ namespace t_translation {
 	 */
 	static terrain_code get_mask_(const terrain_code& terrain);
 
-	static ter_layer string_to_layer_(const char* begin, const char* end);
+	static ter_layer string_to_layer_(utils::string_view str);
 
 	/**
 	 * Converts a string to a layer.
@@ -73,7 +73,7 @@ namespace t_translation {
 	 */
 	static ter_layer string_to_layer_(const std::string& str)
 	{
-		return string_to_layer_(str.c_str(), str.c_str() + str.size());
+		return string_to_layer_(utils::string_view(str));
 	}
 
 	/**
@@ -703,24 +703,23 @@ static terrain_code get_mask_(const terrain_code& terrain)
 	}
 }
 
-static ter_layer string_to_layer_(const char* begin, const char* end)
+static ter_layer string_to_layer_(utils::string_view str)
 {
-	std::size_t size = end - begin;
-	if (begin == end) {
+	if(str.empty()) {
 		return NO_LAYER;
 	}
-	ter_layer result = 0;
 
 	// Validate the string
-	VALIDATE(size <= 4, _("A terrain with a string with more "
-		"than 4 characters has been found, the affected terrain is :") + std::string(begin, end));
+	VALIDATE(str.size() <= 4, _("A terrain with a string with more "
+		"than 4 characters has been found, the affected terrain is:") + std::string(str));
 
+	ter_layer result = 0;
 	// The conversion to int puts the first char
 	// in the highest part of the number.
 	// This will make the wildcard matching
 	// later on a bit easier.
 	for(std::size_t i = 0; i < 4; ++i) {
-		const unsigned char c = (i < size) ? begin[i] : 0;
+		const unsigned char c = (i < str.size()) ? str[i] : 0;
 
 		// Clearing the lower area is a nop on i == 0
 		// so no need for if statement
@@ -740,29 +739,27 @@ static terrain_code string_to_number_(utils::string_view str, const ter_layer fi
 
 static terrain_code string_to_number_(utils::string_view str, std::string& start_position, const ter_layer filler)
 {
-	const char* c_str = &str[0];
 	terrain_code result;
 
 	// Strip the spaces around us
-	const std::string& whitespace = " \t";
-	std::size_t begin = str.find_first_not_of(whitespace);
-	std::size_t end = str.find_last_not_of(whitespace) + 1;
-	if(begin == std::string::npos) {
+	// unlike the old implementation this also trims newlines.
+	utils::trim(str);
+	if(str.empty()) {
 		return result;
 	}
 
 	// Split if we have 1 space inside
-	std::size_t offset = str.find(' ', begin);
-	if(offset < end) {
-		start_position = std::string(str.substr(begin, offset - begin));
-		begin = offset + 1;
+	std::size_t offset = str.find(' ', 0);
+	if(offset != std::string::npos) {
+		start_position = std::string(str.substr(0, offset));
+		str.remove_prefix(offset + 1);
 	}
 
 	offset = str.find('^', 0);
 	if(offset !=  std::string::npos) {
-		result = terrain_code { string_to_layer_(c_str + begin, c_str + offset), string_to_layer_(c_str + offset + 1, c_str + end) };
+		result = terrain_code { string_to_layer_(str.substr(0, offset)), string_to_layer_(str.substr(offset + 1)) };
 	} else {
-		result = terrain_code { string_to_layer_(c_str + begin, c_str + end), filler };
+		result = terrain_code { string_to_layer_(str), filler };
 
 		// Ugly hack
 		if(filler == WILDCARD && (result.base == NOT.base ||
