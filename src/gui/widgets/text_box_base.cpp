@@ -311,7 +311,7 @@ void text_box_base::cursor_timer_callback()
 			cursor_alpha_ = 255;
 			return;
 		default:
-			if(get_window() != open_window_stack.back()) {
+			if(!open_window_stack.empty() && get_window() != open_window_stack.back()) {
 				cursor_alpha_ = 0;
 			} else {
 				cursor_alpha_ = (~cursor_alpha_) & 0xFF;
