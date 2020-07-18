@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "terrain/translation.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/iterable_pair.hpp" //equal_range returns a std:pair instead of sometihng iterable for some reason.
 #include "wml_exception.hpp"
 
 
@@ -88,7 +89,7 @@ namespace t_translation {
 	 * @return                  The terrain code found in the string if no
 	 *                          valid terrain is found VOID will be returned.
 	 */
-	static terrain_code string_to_number_(utils::string_view str, std::string& start_position, const ter_layer filler);
+	static terrain_code string_to_number_(utils::string_view str, std::vector<std::string>& start_positions, const ter_layer filler);
 	static terrain_code string_to_number_(utils::string_view str, const ter_layer filler = NO_LAYER);
 
 	/**
@@ -102,7 +103,7 @@ namespace t_translation {
 	 *                              position given it's padded to 4 chars else
 	 *                              padded to 7 chars.
 	 */
-	static std::string number_to_string_(terrain_code terrain, const std::string& start_position = "");
+	static std::string number_to_string_(terrain_code terrain, const std::vector<std::string>& start_position = std::vector<std::string>());
 
 	/**
 	 * Converts a terrain string to a number for the builder.
@@ -314,12 +315,12 @@ ter_map read_game_map(utils::string_view str, starting_positions& starting_posit
 		utils::string_view terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
-		std::string starting_position;
+		std::vector<std::string> sp;
 		// The gamemap never has a wildcard
-		const terrain_code tile = string_to_number_(terrain, starting_position, NO_LAYER);
+		const terrain_code tile = string_to_number_(terrain, sp, NO_LAYER);
 
 		// Add to the resulting starting position
-		if(!starting_position.empty()) {
+		for(const auto& starting_position : sp) {
 			if (starting_positions.left.find(starting_position) != starting_positions.left.end()) {
 				WRN_G << "Starting position " << starting_position << " is redefined." << std::endl;
 			}
@@ -397,16 +398,16 @@ std::string write_game_map(const ter_map& map, const starting_positions& startin
 			// it needs to be added to the terrain.
 			// After it's found it can't be found again,
 			// so the location is removed from the map.
-			auto itor = starting_positions.right.find(coordinate(x - border_offset.x, y - border_offset.y));
-			std::string starting_position;
-			if (itor != starting_positions.right.end()) {
-				starting_position = itor->second;
+			std::vector<std::string> sp;
+
+			for(const auto& pair : starting_positions.right.equal_range(coordinate(x - border_offset.x, y - border_offset.y))) {
+				sp.push_back(pair.second);
 			}
 			// Add the separator
 			if(x != 0) {
 				str << ", ";
 			}
-			str << number_to_string_(map[x][y], starting_position);
+			str << number_to_string_(map[x][y], sp);
 		}
 
 		if (y < map.h -1)
@@ -733,11 +734,11 @@ static ter_layer string_to_layer_(utils::string_view str)
 }
 
 static terrain_code string_to_number_(utils::string_view str, const ter_layer filler) {
-	std::string dummy;
+	std::vector<std::string> dummy;
 	return string_to_number_(str, dummy, filler);
 }
 
-static terrain_code string_to_number_(utils::string_view str, std::string& start_position, const ter_layer filler)
+static terrain_code string_to_number_(utils::string_view str, std::vector<std::string>& start_positions, const ter_layer filler)
 {
 	terrain_code result;
 
@@ -748,11 +749,12 @@ static terrain_code string_to_number_(utils::string_view str, std::string& start
 		return result;
 	}
 
-	// Split if we have 1 space inside
+	// Split if we have spaces inside
 	std::size_t offset = str.find(' ', 0);
-	if(offset != std::string::npos) {
-		start_position = std::string(str.substr(0, offset));
+	while(offset != std::string::npos) {
+		start_positions.push_back(std::string(str.substr(0, offset)));
 		str.remove_prefix(offset + 1);
+		offset = str.find(' ', 0);
 	}
 
 	offset = str.find('^', 0);
@@ -772,13 +774,13 @@ static terrain_code string_to_number_(utils::string_view str, std::string& start
 	return result;
 }
 
-static std::string number_to_string_(terrain_code terrain, const std::string& start_position)
+static std::string number_to_string_(terrain_code terrain, const std::vector<std::string>& start_positions)
 {
 	std::string result = "";
 
 	// Insert the start position
-	if(!start_position.empty()) {
-		result = start_position + " ";
+	for (const std::string& str : start_positions) {
+		result = str + " " + result;
 	}
 
 	/*
