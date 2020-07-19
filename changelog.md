@@ -9,6 +9,7 @@
    * Liberty:
      * Revised dialogue and added miscellaneous new events to all scenarios.
    * Under the Burning Suns:
+     * Rebalanced all Quenoth units and all scenarios
      * Embellished all remaining maps (S1, S2, S6b, S8, S11).
      * Finished Tauroch Rider line sprites, added riderless Tauroch standalone unit.
  ### Language and i18n
