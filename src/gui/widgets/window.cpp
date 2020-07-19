@@ -1001,8 +1001,12 @@ void window::layout()
 
 	/***** Get the best location for the window *****/
 	size = get_best_size();
-	assert(size.x > 0 && static_cast<unsigned>(size.x) <= maximum_width
-	       && size.y > 0 && static_cast<unsigned>(size.y) <= maximum_height);
+	/* Although 0-size windows might not seem valid/useful, there are
+	   a handful of windows that request 0 size just to get a position
+	   chosen via the code below, so at least for now allow them:
+	*/
+	assert(size.x >= 0 && static_cast<unsigned>(size.x) <= maximum_width
+	       && size.y >= 0 && static_cast<unsigned>(size.y) <= maximum_height);
 
 	point origin(0, 0);
 
