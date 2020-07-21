@@ -1309,7 +1309,8 @@ void unit_animator::add_animation(const unit* animated_unit
 	display* disp = display::get_singleton();
 
 	anim_elem tmp;
-	tmp.my_unit = unit_const_ptr(animated_unit);
+	//gfgtodo
+	//tmp.my_unit = unit_const_ptr(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;
@@ -1332,7 +1333,8 @@ void unit_animator::add_animation(const unit* animated_unit
 	if(!animated_unit) return;
 
 	anim_elem tmp;
-	tmp.my_unit = unit_const_ptr(animated_unit);
+	//gfgtodo
+	//tmp.my_unit = unit_const_ptr(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;
@@ -1345,7 +1347,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	animated_units_.push_back(std::move(tmp));
 }
 
-void unit_animator::replace_anim_if_invalid(const unit* animated_unit
+void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 	, const std::string& event
 	, const map_location &src
 	, const map_location & dst
@@ -1367,7 +1369,7 @@ void unit_animator::replace_anim_if_invalid(const unit* animated_unit
 			*disp, src, dst, animated_unit, event, value, hit_type, attack, second_attack, value2) > unit_animation::MATCH_FAIL)
 	{
 		anim_elem tmp;
-		tmp.my_unit = unit_const_ptr(animated_unit);
+		tmp.my_unit = animated_unit;
 		tmp.text = text;
 		tmp.text_color = text_color;
 		tmp.src = src;

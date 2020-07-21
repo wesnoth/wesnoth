@@ -388,14 +388,14 @@ public:
 	unit_ptr find_unit_ptr(const T& val)
 	{
 		auto res = find(val);
-		return res != end() ? res.get_shared_ptr() : unit_ptr();
+		return res != end() ? unit_ptr(res.get_shared_ptr()) : unit_ptr();
 	}
 
 	template<typename T>
 	unit_const_ptr find_unit_ptr(const T& val) const
 	{
 		auto res = find(val);
-		return res != end() ? res.get_shared_ptr() : unit_ptr();
+		return res != end() ? unit_const_ptr(res.get_shared_ptr()) : unit_const_ptr();
 	}
 
 	unit_iterator find_leader(int side);

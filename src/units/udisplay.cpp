@@ -145,7 +145,7 @@ int move_unit_between(const map_location& a,
 	temp_unit->set_location(a);
 	disp.invalidate(a);
 	temp_unit->set_facing(a.get_relative_dir(b));
-	animator.replace_anim_if_invalid(temp_unit.get(),"movement",a,b,step_num,
+	animator.replace_anim_if_invalid(temp_unit,"movement",a,b,step_num,
 			false,"",{0,0,0},unit_animation::hit_type::INVALID,nullptr,nullptr,step_left);
 	animator.start_animations();
 	animator.pause_animation();

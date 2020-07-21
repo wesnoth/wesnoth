@@ -222,7 +222,7 @@ public:
 		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0);
 
-	void replace_anim_if_invalid(const unit* animated_unit
+	void replace_anim_if_invalid(unit_const_ptr animated_unit
 		, const std::string& event
 		, const map_location& src = map_location::null_location()
 		, const map_location& dst = map_location::null_location()
@@ -257,7 +257,7 @@ private:
 	struct anim_elem
 	{
 		anim_elem()
-			: my_unit(0)
+			: my_unit()
 			, animation(0)
 			, text()
 			, text_color()

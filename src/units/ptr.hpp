@@ -26,8 +26,59 @@ class unit;
 void intrusive_ptr_add_ref(const unit *);
 void intrusive_ptr_release(const unit *);
 
-typedef std::shared_ptr<unit> unit_ptr;
-typedef std::shared_ptr<const unit> unit_const_ptr;
+class unit_ptr : public std::shared_ptr<unit> 
+{
+public:
+   unit_ptr() = default;
+   template<typename T>
+   unit_ptr(T&& v) : std::shared_ptr<unit>(v) {}
+   template<typename T>
+   unit_ptr(unit*) = delete;
+   unit_ptr(const unit*) = delete;
+   unit_ptr& operator=(const unit_ptr& v)
+   {
+      std::shared_ptr<unit>::operator=(static_cast<const std::shared_ptr<unit>&>(v));
+      return *this;
+   }
+   unit_ptr& operator=(const std::shared_ptr<unit>& v)
+   {
+      std::shared_ptr<unit>::operator=(static_cast<const std::shared_ptr<unit>&>(v));
+      return *this;
+   }
+};
+
+class unit_const_ptr : public std::shared_ptr<const unit> 
+{
+public:
+   unit_const_ptr() = default;
+   template<typename T>
+   unit_const_ptr(T&& v) : std::shared_ptr<const unit>(v) {}
+   unit_const_ptr(unit*) = delete;
+   unit_const_ptr(const unit*) = delete;
+   unit_const_ptr& operator=(const unit_const_ptr& v)
+   {
+      std::shared_ptr<const unit>::operator=(static_cast<const std::shared_ptr<const unit>&>(v));
+      return *this;
+   }
+   unit_const_ptr& operator=(const unit_ptr& v)
+   {
+      std::shared_ptr<const unit>::operator=(static_cast<const std::shared_ptr<unit>&>(v));
+      return *this;
+   }
+   unit_const_ptr& operator=(const std::shared_ptr<const unit>& v)
+   {
+      std::shared_ptr<const unit>::operator=(static_cast<const std::shared_ptr<const unit>&>(v));
+      return *this;
+   }
+   unit_const_ptr& operator=(const std::shared_ptr<unit>& v)
+   {
+      std::shared_ptr<const unit>::operator=(static_cast<const std::shared_ptr<unit>&>(v));
+      return *this;
+   }
+};
+
+//typedef std::shared_ptr<unit> unit_ptr;
+//typedef std::shared_ptr<const unit> unit_const_ptr;
 
 // And attacks too!
 
