@@ -445,6 +445,7 @@ static void inherit_scenario(config& scenario, config& map_scenario)
 	config sides;
 	sides.splice_children(map_scenario, "side");
 	scenario.append_children(map_scenario);
+	scenario.inherit_attributes(map_scenario);
 	for(config& side_from : sides.child_range("side")) {
 		config& side_to = scenario.find_child("side", "side", side_from["side"]);
 		if(side_to) {
