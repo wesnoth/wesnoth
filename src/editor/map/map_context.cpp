@@ -589,6 +589,14 @@ bool map_context::save_scenario()
 
 	try {
 		std::stringstream wml_stream;
+		wml_stream
+			<< "# This file was generated using the scenario editor.\n"
+			<< "#\n"
+			<< "# If you edit this file by hand, then you shouldn't use the\n"
+			<< "# scenario editor on it afterwards. The editor completely\n"
+			<< "# rewrites the file when it saves it, which will lose any WML\n"
+			<< "# that the editor doesn't support.\n"
+			<< "\n";
 		{
 			config_writer out(wml_stream, false);
 			out.write(to_config());
