@@ -363,7 +363,7 @@ int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 	}
 
 	if(map_.is_village(terrain)) {
-		int owner = resources::gameboard->village_owner(loc) + 1;
+		int owner = resources::gameboard->village_owner(loc);
 
 		if(owner == u.side()) {
 			rating += friendly_village_value;

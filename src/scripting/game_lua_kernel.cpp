@@ -1210,7 +1210,7 @@ int game_lua_kernel::intf_get_village_owner(lua_State *L)
 	if (!board().map().is_village(loc))
 		return 0;
 
-	int side = board().village_owner(loc) + 1;
+	int side = board().village_owner(loc);
 	if (!side) return 0;
 	lua_pushinteger(L, side);
 	return 1;
@@ -1228,7 +1228,7 @@ int game_lua_kernel::intf_set_village_owner(lua_State *L)
 		return 0;
 	}
 
-	const int old_side_num = board().village_owner(loc) + 1;
+	const int old_side_num = board().village_owner(loc);
 	const int new_side_num = lua_isnoneornil(L, 2) ? 0 : luaL_checkinteger(L, 2);
 
 	team* old_side = nullptr;
