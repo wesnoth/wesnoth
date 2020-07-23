@@ -317,7 +317,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		side_filter ssf(filter_owner, fc_);
 		const std::vector<int>& sides = ssf.get_teams();
 		bool found = false;
-		if(sides.empty() && fc_->get_disp_context().village_owner(loc) == -1)
+		if(sides.empty() && fc_->get_disp_context().village_owner(loc) == 0)
 			found = true;
 		for(const int side : sides) {
 			if(fc_->get_disp_context().get_team(side).owns_village(loc)) {
@@ -329,8 +329,8 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			return false;
 	}
 	else if(!owner_side.empty()) {
-		const int side_index = owner_side.to_int(0) - 1;
-		if(fc_->get_disp_context().village_owner(loc) != side_index) {
+		const int side_num = owner_side.to_int(0);
+		if(fc_->get_disp_context().village_owner(loc) != side_num) {
 			return false;
 		}
 	}

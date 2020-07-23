@@ -1474,7 +1474,7 @@ double recruitment::get_estimated_village_gain() const {
 	const gamemap& map = resources::gameboard->map();
 	int neutral_villages = 0;
 	for (const map_location& village : map.villages()) {
-		if (resources::gameboard->village_owner(village) == -1) {
+		if (resources::gameboard->village_owner(village) == 0) {
 			++neutral_villages;
 		}
 	}
@@ -1740,7 +1740,7 @@ void recruitment::update_scouts_wanted() {
 	// We recruit the initial allocation of scouts
 	// based on how many neutral villages there are.
 	for (const map_location& village : resources::gameboard->map().villages()) {
-		if (resources::gameboard->village_owner(village) == -1) {
+		if (resources::gameboard->village_owner(village) == 0) {
 			++neutral_villages;
 		}
 	}

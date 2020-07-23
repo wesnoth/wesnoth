@@ -533,7 +533,7 @@ int config_callable::do_compare(const formula_callable* callable) const
 	return cfg_.hash().compare(cfg_callable->get_config().hash());
 }
 
-terrain_callable::terrain_callable(const display_context& dc, const map_location& loc) : loc_(loc), t_(dc.map().get_terrain_info(loc)), owner_(dc.village_owner(loc))
+terrain_callable::terrain_callable(const display_context& dc, const map_location& loc) : loc_(loc), t_(dc.map().get_terrain_info(loc)), owner_(dc.village_owner(loc) - 1)
 {
 	type_ = TERRAIN_C;
 }

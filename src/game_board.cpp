@@ -265,7 +265,7 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 	std::map<map_location, int> villages;
 	for(const auto& village : map_->villages()) {
 		const int owner = village_owner(village);
-		if(owner != -1) {
+		if(owner != 0) {
 			villages[village] = owner;
 		}
 	}
@@ -284,7 +284,7 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 	/* Disown villages that are no longer villages. */
 	for(const auto& village : villages) {
 		if(!newmap.is_village(village.first)) {
-			teams_[village.second].lose_village(village.first);
+			get_team(village.second).lose_village(village.first);
 		}
 	}
 
@@ -322,8 +322,8 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 
 	if (map_->tdata()->is_village(old_t) && !map_->tdata()->is_village(new_t)) {
 		int owner = village_owner(loc);
-		if (owner != -1)
-			teams_[owner].lose_village(loc);
+		if (owner != 0)
+			get_team(owner).lose_village(loc);
 	}
 
 	map_->set_terrain(loc, new_t);

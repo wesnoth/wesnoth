@@ -234,7 +234,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 			if (terrain_info.is_village() && preferences_minimap_draw_villages) {
 
-				int side = (resources::gameboard ? resources::gameboard->village_owner(loc) : -1); //check needed for mp create dialog
+				int side_num = (resources::gameboard ? resources::gameboard->village_owner(loc) : 0); //check needed for mp create dialog
 
 				// TODO: Add a key to [game_config][colors] for this
 				auto iter = game_config::team_rgb_range.find("white");
@@ -244,15 +244,15 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 				}
 
 				if (!fogged) {
-					if (side > -1) {
+					if (side_num > 0) {
 
 						if (preferences_minimap_unit_coding || !vw ) {
-							col = team::get_minimap_color(side + 1);
+							col = team::get_minimap_color(side_num);
 						} else {
 
 							if (vw->owns_village(loc))
 								col = game_config::color_info(preferences::unmoved_color()).rep();
-							else if (vw->is_enemy(side + 1))
+							else if (vw->is_enemy(side_num))
 								col = game_config::color_info(preferences::enemy_color()).rep();
 							else
 								col = game_config::color_info(preferences::allied_color()).rep();

@@ -108,9 +108,9 @@ int display_context::village_owner(const map_location& loc) const
 	const std::vector<team> & t = teams();
 	for(std::size_t i = 0; i != t.size(); ++i) {
 		if(t[i].owns_village(loc))
-			return i;
+			return i + 1;
 	}
-	return -1;
+	return 0;
 }
 
 /**

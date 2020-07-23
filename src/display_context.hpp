@@ -68,8 +68,8 @@ public:
 	// From class team
 
 	/**
-	 * Given the location of a village, will return the 0-based index
-	 * of the team that currently owns it, and -1 if it is unowned.
+	 * Given the location of a village, will return the 1-based number
+	 * of the team that currently owns it, and 0 if it is unowned.
 	 */
 	int village_owner(const map_location & loc) const;
 
