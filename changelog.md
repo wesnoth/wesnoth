@@ -8,6 +8,7 @@
  ### Miscellaneous and bug fixes
    * Made wmllint recognize [remove_time_area] in order to avoid spurious warnings about
      unit ids.
+   * Files created by the scenario editor include a boilerplate warning about hand-editing them.
 
 ## Version 1.14.13
  ### Campaigns
