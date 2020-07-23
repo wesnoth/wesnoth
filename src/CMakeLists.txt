@@ -12,7 +12,7 @@ if(ENABLE_MYSQL)
 	string(REGEX REPLACE "-I" "" MYSQL_CFLAGS "${MYSQL_CFLAGS}")
 	string(REGEX REPLACE "-DNDEBUG" "" MYSQL_CFLAGS "${MYSQL_CFLAGS}")
 	execute_process(COMMAND mysql_config --libs OUTPUT_VARIABLE MYSQL_LIBS OUTPUT_STRIP_TRAILING_WHITESPACE)
-	find_package(mariadbclientpp)
+	add_subdirectory("modules/mariadbpp/")
 endif(ENABLE_MYSQL)
 
 ## some includes ##
@@ -344,7 +344,7 @@ if(ENABLE_SERVER)
 	if(ENABLE_MYSQL)
 		target_include_directories(wesnothd SYSTEM PRIVATE ${MYSQL_CFLAGS})
 		target_compile_definitions(wesnothd PRIVATE HAVE_MYSQLPP)
-		target_link_libraries(wesnothd mariadbclientpp::mariadbclientpp)
+		target_link_libraries(wesnothd mariadbclientpp)
 	endif(ENABLE_MYSQL)
 
 	target_link_libraries(wesnothd
@@ -368,7 +368,7 @@ if(ENABLE_CAMPAIGN_SERVER)
 	if(ENABLE_MYSQL)
 		target_include_directories(campaignd SYSTEM PRIVATE ${MYSQL_CFLAGS})
 		target_compile_definitions(campaignd PRIVATE HAVE_MYSQLPP)
-		target_link_libraries(wesnothd mariadbclientpp::mariadbclientpp)
+		target_link_libraries(wesnothd mariadbclientpp)
 	endif(ENABLE_MYSQL)
 
 	target_link_libraries(campaignd
