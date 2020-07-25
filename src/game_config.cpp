@@ -530,6 +530,16 @@ const color_range& color_info(const std::string& name)
 		return i->second;
 	}
 
+	// If the name string has commas, it's an inline-defined color range. Otherwise
+	// it's the name of a color range that doesn't exist (e.g. looking at saves from
+	// an add-on that's not loaded yet).
+
+	if(name.find(',') == std::string::npos) {
+		throw config::error(_("Color range not defined: ") + name);
+	}
+
+	LOG_NG << "attempting to parse \"" << name << "\" as an inline color range definition\n";
+
 	std::vector<color_t> temp;
 	for(const auto& s : utils::split(name)) {
 		try {
@@ -549,6 +559,17 @@ const std::vector<color_t>& tc_info(const std::string& name)
 	if(i != team_rgb_colors.end()) {
 		return i->second;
 	}
+
+	// If the name string is only commas and hexadecimal digits, it's an
+	// inline-defined palette. Otherwise it's the name of a palette that
+	// doesn't exist (e.g. looking at saves from an add-on that's not
+	// loaded yet).
+
+	if(name.find_first_not_of("0123456789AaBbCcDdEeFf,") != std::string::npos) {
+		throw config::error(_("Color palette not defined: ") + name);
+	}
+
+	LOG_NG << "attempting to parse \"" << name << "\" as an inline color palette definition\n";
 
 	std::vector<color_t> temp;
 	for(const auto& s : utils::split(name)) {
