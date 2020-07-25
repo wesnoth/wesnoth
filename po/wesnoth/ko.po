@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-12 21:49-0400\n"
+"POT-Creation-Date: 2020-07-25 21:55+0300\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -429,7 +429,7 @@ msgid "Miscellaneous Contributors"
 msgstr "기타 기여한 사람들"
 
 #. [about]
-#: data/core/about.cfg:1740
+#: data/core/about.cfg:1743
 msgid "Bots"
 msgstr "IRC 봇"
 
@@ -923,8 +923,8 @@ msgstr "곡물 다발"
 msgid "Runic Hammer"
 msgstr "신비한 망치"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "성수"
@@ -967,8 +967,8 @@ msgstr "녹색 물약"
 msgid "Gray Potion"
 msgstr "회색 물약"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "독"
@@ -1038,8 +1038,8 @@ msgstr "지팡이"
 msgid "Stone Tablet"
 msgstr "석판"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "폭풍의 삼지창"
@@ -5492,65 +5492,65 @@ msgstr "확인"
 msgid "Add-ons Manager"
 msgstr "부가 기능 관리자"
 
-#: src/addon/info.cpp:157
+#: src/addon/info.cpp:233
 msgid "addon_type^Campaign"
 msgstr "캠페인"
 
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:235
 msgid "addon_type^Scenario"
 msgstr "시나리오"
 
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:237
 #, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
 msgstr "멀티플레이용 캠페인"
 
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:239
 msgid "addon_type^MP era"
 msgstr "멀티플레이용 시대"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:241
 msgid "addon_type^MP faction"
 msgstr "멀티플레이용 당파"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:243
 msgid "addon_type^MP map-pack"
 msgstr "멀티플레이용 지도 합본"
 
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:245
 msgid "addon_type^MP scenario"
 msgstr "멀티플레이용 시나리오"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:247
 msgid "addon_type^MP campaign"
 msgstr "멀티플레이용 캠페인"
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:249
 #, fuzzy
 #| msgid "addon_type^MP faction"
 msgid "addon_type^Modification"
 msgstr "모드"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:251
 #, fuzzy
 #| msgid "addon_type^Other"
 msgid "addon_type^Core"
 msgstr "코어"
 
-#: src/addon/info.cpp:177
+#: src/addon/info.cpp:253
 msgid "addon_type^Resources"
 msgstr "자원"
 
-#: src/addon/info.cpp:179
+#: src/addon/info.cpp:255
 msgid "addon_type^Other"
 msgstr "기타"
 
-#: src/addon/info.cpp:181
+#: src/addon/info.cpp:257
 msgid "addon_type^(unknown)"
 msgstr "(알수없음)"
 
-#: src/addon/info.cpp:221
+#: src/addon/info.cpp:297
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -6070,38 +6070,38 @@ msgstr "정보: "
 msgid "$login|’s game"
 msgstr "$login|의 방"
 
-#: src/game_initialization/connect_engine.cpp:104
+#: src/game_initialization/connect_engine.cpp:86
 msgid "Team"
 msgstr "군단"
 
-#: src/game_initialization/connect_engine.cpp:1008
+#: src/game_initialization/connect_engine.cpp:990
 #, fuzzy
 #| msgid "Computer player"
 msgid "Anonymous player"
 msgstr "익명 플레이어"
 
-#: src/game_initialization/connect_engine.cpp:1013
-#: src/game_initialization/connect_engine.cpp:1316
+#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Computer Player"
 msgstr "컴퓨터 상대"
 
-#: src/game_initialization/connect_engine.cpp:1055
+#: src/game_initialization/connect_engine.cpp:1037
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1312
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Network Player"
 msgstr "네트워크 상대"
 
-#: src/game_initialization/connect_engine.cpp:1315
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Local Player"
 msgstr "로컬 플레이어"
 
-#: src/game_initialization/connect_engine.cpp:1317
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Nobody"
 msgstr "아무도 없음"
 
-#: src/game_initialization/connect_engine.cpp:1320
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
 msgstr "예약됨"
 
@@ -6264,11 +6264,11 @@ msgstr ""
 msgid "Defeat enemy leader(s)"
 msgstr "적 지휘관(들)을 격파하라"
 
-#: src/game_initialization/mp_game_utils.cpp:101
+#: src/game_initialization/mp_game_utils.cpp:112
 msgid "Cannot find era $era"
 msgstr "$era 시대를 찾을 수 없습니다"
 
-#: src/game_initialization/mp_game_utils.cpp:142
+#: src/game_initialization/mp_game_utils.cpp:163
 msgid "Connection timed out"
 msgstr "접속 시간 초과"
 
@@ -6861,14 +6861,14 @@ msgstr "특성"
 msgid "Abilities: "
 msgstr "능력"
 
-#: src/help/help_topic_generators.cpp:490
+#: src/help/help_topic_generators.cpp:498
 msgid "Ability Upgrades: "
 msgstr "능력 업그레이드:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:528
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -6877,7 +6877,7 @@ msgstr "체력: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:516
+#: src/help/help_topic_generators.cpp:532
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -6886,7 +6886,7 @@ msgstr "이동력: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:521
+#: src/help/help_topic_generators.cpp:537
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision:"
@@ -6895,7 +6895,7 @@ msgstr "시야:"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:543
 #, fuzzy
 #| msgid "Programming"
 msgid "Jamming:"
@@ -6904,7 +6904,7 @@ msgstr "방해"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:548
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -6913,7 +6913,7 @@ msgstr "소집비용:"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:552
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -6922,87 +6922,87 @@ msgstr "선호시간대: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:559
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "필요 경험치:"
 
-#: src/help/help_topic_generators.cpp:552
+#: src/help/help_topic_generators.cpp:568
 msgid "unit help^Attacks"
 msgstr "공격"
 
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:575
 msgid "unit help^Name"
 msgstr "이름"
 
-#: src/help/help_topic_generators.cpp:560
+#: src/help/help_topic_generators.cpp:576
 msgid "Type"
 msgstr "유형"
 
-#: src/help/help_topic_generators.cpp:561
+#: src/help/help_topic_generators.cpp:577
 msgid "Strikes"
 msgstr "공격력"
 
-#: src/help/help_topic_generators.cpp:562
+#: src/help/help_topic_generators.cpp:578
 msgid "Range"
 msgstr "공격범위"
 
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:579
 #, fuzzy
 #| msgid "Special"
 msgid "Special"
 msgstr "특수능력"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:641
 msgid "Resistances"
 msgstr "저항력"
 
-#: src/help/help_topic_generators.cpp:629
+#: src/help/help_topic_generators.cpp:645
 msgid "Attack Type"
 msgstr "공격 유형"
 
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:646
 msgid "Resistance"
 msgstr "저항도"
 
-#: src/help/help_topic_generators.cpp:659
+#: src/help/help_topic_generators.cpp:675
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "지형 수정"
 
-#: src/help/help_topic_generators.cpp:663
+#: src/help/help_topic_generators.cpp:679
 #, fuzzy
 #| msgid "Terrains"
 msgid "Terrain"
 msgstr "지형"
 
-#: src/help/help_topic_generators.cpp:664
+#: src/help/help_topic_generators.cpp:680
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense"
 msgstr "회피도: "
 
-#: src/help/help_topic_generators.cpp:665
+#: src/help/help_topic_generators.cpp:681
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Cost"
 msgstr "소모 이동력"
 
-#: src/help/help_topic_generators.cpp:669
+#: src/help/help_topic_generators.cpp:685
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense Cap"
 msgstr "회피 확률"
 
-#: src/help/help_topic_generators.cpp:674
+#: src/help/help_topic_generators.cpp:690
 #, fuzzy
 #| msgid "Vision Test"
 msgid "Vision Cost"
 msgstr "시야 비용"
 
-#: src/help/help_topic_generators.cpp:678
+#: src/help/help_topic_generators.cpp:694
 msgid "Jamming Cost"
 msgstr "방해 비용"
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tsg.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-13 01:49 UTC\n"
+"POT-Creation-Date: 2020-07-25 18:55 UTC\n"
 "PO-Revision-Date: 2019-02-02 04:06+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
@@ -157,11 +157,11 @@ msgstr "Южная Стража"
 msgid "Urza Mathin"
 msgstr "Урза Матин"
 
-#. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Outlaw, id=Urza Nalmath
-#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -1320,8 +1320,8 @@ msgstr "Линдерион"
 msgid "Mithalwe"
 msgstr "Митальвэ"
 
-#. [unit]: type=Elvish Marshal, id=Ithelden
 #. [event]
+#. [unit]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:384
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1212
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:433
@@ -1578,13 +1578,13 @@ msgstr "Долина Слёз"
 msgid "Mal A’kai"
 msgstr "Мал А’кай"
 
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #. [side]: type=Soulless, id=Gruth
 #. [side]: type=Lich, id=Mal M'Brin
 #. [side]
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
-#. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
-#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:97
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:143
@@ -1812,9 +1812,9 @@ msgstr "Может быть, но по крайней мере, ты нас не
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Мебрин! Ты здесь? Мы пришли просить тебя о помощи!"
 
+#. [message]: speaker=Kramak
 #. [message]: speaker=Ethiliel
 #. [message]: speaker=narrator
-#. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:642
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:653
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:395
@@ -4972,8 +4972,8 @@ msgstr ""
 "Будьте осторожны, Деоран. Чем больше вы прольёте крови, тем больше разозлите "
 "моих сородичей. Ещё больше придут сражаться против нас."
 
-#. [scenario]: id=10a_Elf_Epilogue
 #. [scenario]: id=09b_Bandit_Epilogue
+#. [scenario]: id=10a_Elf_Epilogue
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:5
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:5
 msgid "Epilogue"

@@ -218,12 +218,13 @@ richieste dei client connessi al server specificato. Accetta le stesse
 parole chiave di \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service. All additional tables that are
-needed for the \fBforum_user_handler\fP to function can be found in
-table_definitions.sql in the Wesnoth source repository.
+\fB[user_handler]\fP Configura lo user handler. Sono disponibili diverse parole
+chiavi a seconda dello user handler selezionato con la chiave
+\fBuser_handler\fP. Se non è presente una sezione \fB[user_handler]\fP nella
+configurazione il server verrà lanciato senza un servizio di registrazione
+del nick. Tutte le tabelle aggiuntive necessarie per il funzionamento di
+\fBforum_user_handler\fP possono essere reperite in table_definitions.sql nel
+repository del codice sorgente di Wesnoth.
 .RS
 .TP 
 \fBdb_host\fP

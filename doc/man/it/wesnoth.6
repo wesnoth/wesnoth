@@ -414,12 +414,13 @@ Il normale stato di uscita è 0. Uno stato di uscita pari a 1 indica un
 errore di inizializzazione (SDL, video, fonts, ecc.). Uno stato di uscita
 pari a 2 indica un errore con le opzioni della linea di comando.
 .br
-When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
-status of 0 indicates that the test passed, and 1 indicates that the test
-failed. An exit status of 3 indicates that the test passed, but produced an
-invalid replay file. An exit status of 4 indicates that the test passed, but
-the replay produced errors. These latter two are only returned if
-\fB\-\-noreplaycheck\fP is not passed.
+Quando si eseguono test unità (con\fB\ \-u\fP), i valori di uscita sono
+diversi. Uno stato di uscita 0 indica che il test è positivo, 1 indica che
+il test è fallito. Una uscita con valore 3 indica che il test è riuscito, ma
+ha prodotto un file di replay non valido. Uno stato di uscita con valore 4
+indica che il test è riuscito, ma che il replay produce errori. Questi due
+ultimi stati vengono restituiti soltanto se il parametro \fB\-\-noreplaycheck\fP
+non viene utilizzato.
 .
 .SH AUTORE
 .

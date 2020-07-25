@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-12 21:49-0400\n"
+"POT-Creation-Date: 2020-07-25 21:55+0300\n"
 "PO-Revision-Date: 2020-03-21 13:58+0100\n"
 "Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -421,7 +421,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Diverse medarbetare"
 
 #. [about]
-#: data/core/about.cfg:1740
+#: data/core/about.cfg:1743
 msgid "Bots"
 msgstr "Bots"
 
@@ -901,8 +901,8 @@ msgstr "Sädeskärve"
 msgid "Runic Hammer"
 msgstr "Runhammare"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Vigvatten"
@@ -943,8 +943,8 @@ msgstr "Grön trolldryck"
 msgid "Gray Potion"
 msgstr "Grå trolldryck"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Gift"
@@ -1014,8 +1014,8 @@ msgstr "Stav"
 msgid "Stone Tablet"
 msgstr "Stentavla"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Stormtreudd"
@@ -5432,59 +5432,59 @@ msgstr "Bekräfta"
 msgid "Add-ons Manager"
 msgstr "Extramaterialshanterare"
 
-#: src/addon/info.cpp:157
+#: src/addon/info.cpp:233
 msgid "addon_type^Campaign"
 msgstr "Kampanj"
 
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:235
 msgid "addon_type^Scenario"
 msgstr "Scenario"
 
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:237
 msgid "addon_type^SP/MP Campaign"
 msgstr "Gruppspelskampanj"
 
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:239
 msgid "addon_type^MP era"
 msgstr "Gruppspelsera"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:241
 msgid "addon_type^MP faction"
 msgstr "Gruppspelsfraktion"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:243
 msgid "addon_type^MP map-pack"
 msgstr "Gruppspelskartsamling"
 
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:245
 msgid "addon_type^MP scenario"
 msgstr "Gruppspelsscenario"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:247
 msgid "addon_type^MP campaign"
 msgstr "Gruppspelskampanj"
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:249
 msgid "addon_type^Modification"
 msgstr "Justering"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:251
 msgid "addon_type^Core"
 msgstr "Kärna"
 
-#: src/addon/info.cpp:177
+#: src/addon/info.cpp:253
 msgid "addon_type^Resources"
 msgstr "Resurser"
 
-#: src/addon/info.cpp:179
+#: src/addon/info.cpp:255
 msgid "addon_type^Other"
 msgstr "Övrigt"
 
-#: src/addon/info.cpp:181
+#: src/addon/info.cpp:257
 msgid "addon_type^(unknown)"
 msgstr "(okänd)"
 
-#: src/addon/info.cpp:221
+#: src/addon/info.cpp:297
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -6003,36 +6003,36 @@ msgstr "Info:"
 msgid "$login|’s game"
 msgstr "$login|s spel"
 
-#: src/game_initialization/connect_engine.cpp:104
+#: src/game_initialization/connect_engine.cpp:86
 msgid "Team"
 msgstr "Lag"
 
-#: src/game_initialization/connect_engine.cpp:1008
+#: src/game_initialization/connect_engine.cpp:990
 msgid "Anonymous player"
 msgstr "Anonym spelare"
 
-#: src/game_initialization/connect_engine.cpp:1013
-#: src/game_initialization/connect_engine.cpp:1316
+#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Computer Player"
 msgstr "Datorspelare"
 
-#: src/game_initialization/connect_engine.cpp:1055
+#: src/game_initialization/connect_engine.cpp:1037
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1312
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Network Player"
 msgstr "Nätverksspelare"
 
-#: src/game_initialization/connect_engine.cpp:1315
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Local Player"
 msgstr "Lokal spelare"
 
-#: src/game_initialization/connect_engine.cpp:1317
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Nobody"
 msgstr "Ingen"
 
-#: src/game_initialization/connect_engine.cpp:1320
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
 msgstr "Reserverad"
 
@@ -6177,11 +6177,11 @@ msgstr ""
 msgid "Defeat enemy leader(s)"
 msgstr "Besegra fiendens ledare"
 
-#: src/game_initialization/mp_game_utils.cpp:101
+#: src/game_initialization/mp_game_utils.cpp:112
 msgid "Cannot find era $era"
 msgstr "Kan ej finna $era|-eran"
 
-#: src/game_initialization/mp_game_utils.cpp:142
+#: src/game_initialization/mp_game_utils.cpp:163
 msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
@@ -6713,120 +6713,120 @@ msgstr "Karaktärsdrag"
 msgid "Abilities: "
 msgstr "Förmågor: "
 
-#: src/help/help_topic_generators.cpp:490
+#: src/help/help_topic_generators.cpp:498
 msgid "Ability Upgrades: "
 msgstr "Uppgradering av förmågor: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:528
 msgid "HP:"
 msgstr "HP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:516
+#: src/help/help_topic_generators.cpp:532
 msgid "Moves:"
 msgstr "Steg:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:521
+#: src/help/help_topic_generators.cpp:537
 msgid "Vision:"
 msgstr "Synfält:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:543
 msgid "Jamming:"
 msgstr "Blockering:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:548
 msgid "Cost:"
 msgstr "Kostnad:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:552
 msgid "Alignment:"
 msgstr "Sinnelag:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:559
 msgid "Required XP:"
 msgstr "EP för nästa nivå:"
 
-#: src/help/help_topic_generators.cpp:552
+#: src/help/help_topic_generators.cpp:568
 msgid "unit help^Attacks"
 msgstr "Attacker"
 
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:575
 msgid "unit help^Name"
 msgstr "Namn"
 
-#: src/help/help_topic_generators.cpp:560
+#: src/help/help_topic_generators.cpp:576
 msgid "Type"
 msgstr "Typ"
 
-#: src/help/help_topic_generators.cpp:561
+#: src/help/help_topic_generators.cpp:577
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help/help_topic_generators.cpp:562
+#: src/help/help_topic_generators.cpp:578
 msgid "Range"
 msgstr "Räckvidd"
 
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:579
 msgid "Special"
 msgstr "Specialitet"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:641
 msgid "Resistances"
 msgstr "Motståndskraft mot olika attacker"
 
-#: src/help/help_topic_generators.cpp:629
+#: src/help/help_topic_generators.cpp:645
 msgid "Attack Type"
 msgstr "Attacktyp"
 
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:646
 msgid "Resistance"
 msgstr "Motståndskraft"
 
-#: src/help/help_topic_generators.cpp:659
+#: src/help/help_topic_generators.cpp:675
 msgid "Terrain Modifiers"
 msgstr "Terrängavdrag"
 
-#: src/help/help_topic_generators.cpp:663
+#: src/help/help_topic_generators.cpp:679
 msgid "Terrain"
 msgstr "Terräng"
 
-#: src/help/help_topic_generators.cpp:664
+#: src/help/help_topic_generators.cpp:680
 msgid "Defense"
 msgstr "Försvar"
 
-#: src/help/help_topic_generators.cpp:665
+#: src/help/help_topic_generators.cpp:681
 msgid "Movement Cost"
 msgstr "Förflyttningskostnad"
 
-#: src/help/help_topic_generators.cpp:669
+#: src/help/help_topic_generators.cpp:685
 msgid "Defense Cap"
 msgstr "Försvarstak:"
 
-#: src/help/help_topic_generators.cpp:674
+#: src/help/help_topic_generators.cpp:690
 msgid "Vision Cost"
 msgstr "Version: "
 
-#: src/help/help_topic_generators.cpp:678
+#: src/help/help_topic_generators.cpp:694
 msgid "Jamming Cost"
 msgstr "Blockeringskostnad"
 

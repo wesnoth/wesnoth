@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-12 21:49-0400\n"
+"POT-Creation-Date: 2020-07-25 21:55+0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -424,7 +424,7 @@ msgid "Miscellaneous Contributors"
 msgstr "𐑥𐑦𐑕𐑩𐑤𐑱𐑯𐑰𐑩𐑕 𐑒𐑩𐑯𐑑𐑮𐑦𐑚𐑘𐑩𐑑𐑻𐑟"
 
 #. [about]
-#: data/core/about.cfg:1740
+#: data/core/about.cfg:1743
 msgid "Bots"
 msgstr "𐑚𐑭𐑑𐑕"
 
@@ -927,8 +927,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr ""
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "𐑣𐑴𐑤𐑰 𐑢𐑷𐑑𐑼"
@@ -970,8 +970,8 @@ msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑒𐑳𐑤𐑼"
 msgid "Gray Potion"
 msgstr ""
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "𐑐𐑶𐑟𐑩𐑯"
@@ -1046,8 +1046,8 @@ msgstr ""
 msgid "Stone Tablet"
 msgstr ""
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "𐑕𐑑𐑹𐑥 𐑑𐑮𐑲𐑛𐑩𐑯𐑑"
@@ -5172,65 +5172,65 @@ msgstr "𐑒𐑪𐑯𐑓𐑻𐑥"
 msgid "Add-ons Manager"
 msgstr "𐑨𐑛-𐑪𐑯 𐑦𐑯𐑕𐑑𐑷𐑤𐑛"
 
-#: src/addon/info.cpp:157
+#: src/addon/info.cpp:233
 msgid "addon_type^Campaign"
 msgstr "𐑒𐑨𐑥𐑐𐑱𐑯"
 
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:235
 msgid "addon_type^Scenario"
 msgstr "𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:237
 #, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
 msgstr "MP 𐑒𐑨𐑥𐑐𐑱𐑯"
 
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:239
 msgid "addon_type^MP era"
 msgstr "MP 𐑽𐑩"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:241
 msgid "addon_type^MP faction"
 msgstr "MP 𐑓𐑨𐑒𐑖𐑩𐑯"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:243
 msgid "addon_type^MP map-pack"
 msgstr "MP 𐑥𐑨𐑐-𐑐𐑨𐑒"
 
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:245
 msgid "addon_type^MP scenario"
 msgstr "MP 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:247
 msgid "addon_type^MP campaign"
 msgstr "MP 𐑒𐑨𐑥𐑐𐑱𐑯"
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:249
 #, fuzzy
 #| msgid "addon_type^MP faction"
 msgid "addon_type^Modification"
 msgstr "MP 𐑓𐑨𐑒𐑖𐑩𐑯"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:251
 #, fuzzy
 #| msgid "addon_type^Resources"
 msgid "addon_type^Core"
 msgstr "𐑮𐑦𐑟𐑹𐑕𐑩𐑟"
 
-#: src/addon/info.cpp:177
+#: src/addon/info.cpp:253
 msgid "addon_type^Resources"
 msgstr "𐑮𐑦𐑟𐑹𐑕𐑩𐑟"
 
-#: src/addon/info.cpp:179
+#: src/addon/info.cpp:255
 msgid "addon_type^Other"
 msgstr "𐑳𐑞𐑼"
 
-#: src/addon/info.cpp:181
+#: src/addon/info.cpp:257
 msgid "addon_type^(unknown)"
 msgstr "(𐑳𐑯𐑯𐑴𐑯)"
 
-#: src/addon/info.cpp:221
+#: src/addon/info.cpp:297
 msgid "unit_byte^B"
 msgstr ""
 
@@ -5778,38 +5778,38 @@ msgstr "𐑦𐑯𐑓𐑴: "
 msgid "$login|’s game"
 msgstr "$login|’s 𐑜𐑱𐑥"
 
-#: src/game_initialization/connect_engine.cpp:104
+#: src/game_initialization/connect_engine.cpp:86
 msgid "Team"
 msgstr "𐑑𐑰𐑥"
 
-#: src/game_initialization/connect_engine.cpp:1008
+#: src/game_initialization/connect_engine.cpp:990
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "𐑩𐑯𐑪𐑯𐑦𐑥𐑩𐑕 𐑤𐑴𐑒𐑩𐑤 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:1013
-#: src/game_initialization/connect_engine.cpp:1316
+#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Computer Player"
 msgstr "𐑒𐑩𐑥𐑐𐑿𐑑𐑼 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:1055
+#: src/game_initialization/connect_engine.cpp:1037
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1312
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Network Player"
 msgstr "𐑯𐑧𐑑𐑢𐑻𐑒 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:1315
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Local Player"
 msgstr "𐑤𐑴𐑒𐑩𐑤 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:1317
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1320
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
 msgstr "𐑮𐑦𐑟𐑻𐑝𐑛"
 
@@ -5970,11 +5970,11 @@ msgstr ""
 msgid "Defeat enemy leader(s)"
 msgstr "𐑛𐑦𐑓𐑰𐑑 𐑧𐑯𐑩𐑥𐑦 𐑤𐑰𐑛𐑻(𐑕)"
 
-#: src/game_initialization/mp_game_utils.cpp:101
+#: src/game_initialization/mp_game_utils.cpp:112
 msgid "Cannot find era $era"
 msgstr "𐑒𐑨𐑯𐑪𐑑 𐑓𐑲𐑯𐑛 𐑽𐑩 $era"
 
-#: src/game_initialization/mp_game_utils.cpp:142
+#: src/game_initialization/mp_game_utils.cpp:163
 msgid "Connection timed out"
 msgstr "𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑑𐑲𐑥𐑛 𐑬𐑑"
 
@@ -6585,14 +6585,14 @@ msgstr "𐑑𐑮𐑱𐑑𐑕"
 msgid "Abilities: "
 msgstr "𐑩𐑚𐑦𐑤𐑦𐑑𐑦𐑟: "
 
-#: src/help/help_topic_generators.cpp:490
+#: src/help/help_topic_generators.cpp:498
 msgid "Ability Upgrades: "
 msgstr "𐑩𐑚𐑦𐑤𐑦𐑑𐑦 𐑩𐑐𐑜𐑮𐑱𐑛𐑟: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:528
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -6601,7 +6601,7 @@ msgstr "HP: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:516
+#: src/help/help_topic_generators.cpp:532
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -6610,7 +6610,7 @@ msgstr "𐑥𐑵𐑝𐑟: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:521
+#: src/help/help_topic_generators.cpp:537
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision:"
@@ -6619,7 +6619,7 @@ msgstr "𐑝𐑻𐑠𐑩𐑯: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:543
 #, fuzzy
 #| msgid "Warning: "
 msgid "Jamming:"
@@ -6628,7 +6628,7 @@ msgstr "𐑢𐑹𐑯𐑦𐑙: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:548
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -6637,7 +6637,7 @@ msgstr "𐑒𐑪𐑕𐑑: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:552
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -6646,82 +6646,82 @@ msgstr "𐑩𐑤𐑲𐑯𐑥𐑩𐑯𐑑: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:559
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "𐑮𐑦𐑒𐑢𐑲𐑼𐑛 XP: "
 
-#: src/help/help_topic_generators.cpp:552
+#: src/help/help_topic_generators.cpp:568
 msgid "unit help^Attacks"
 msgstr "𐑩𐑑𐑨𐑒𐑕"
 
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:575
 msgid "unit help^Name"
 msgstr "𐑯𐑱𐑥"
 
-#: src/help/help_topic_generators.cpp:560
+#: src/help/help_topic_generators.cpp:576
 msgid "Type"
 msgstr "𐑑𐑲𐑐"
 
-#: src/help/help_topic_generators.cpp:561
+#: src/help/help_topic_generators.cpp:577
 msgid "Strikes"
 msgstr "𐑕𐑑𐑮𐑲𐑒𐑕"
 
-#: src/help/help_topic_generators.cpp:562
+#: src/help/help_topic_generators.cpp:578
 msgid "Range"
 msgstr "𐑮𐑱𐑯𐑡"
 
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:579
 #, fuzzy
 #| msgid "Special"
 msgid "Special"
 msgstr "𐑕𐑐𐑧𐑖𐑩𐑤"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:641
 msgid "Resistances"
 msgstr "𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕𐑩𐑟"
 
-#: src/help/help_topic_generators.cpp:629
+#: src/help/help_topic_generators.cpp:645
 msgid "Attack Type"
 msgstr "𐑩𐑑𐑨𐑒 𐑑𐑲𐑐"
 
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:646
 msgid "Resistance"
 msgstr "𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕"
 
-#: src/help/help_topic_generators.cpp:659
+#: src/help/help_topic_generators.cpp:675
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "𐑑𐑻𐑱𐑯 𐑥𐑪𐑛𐑦𐑓𐑲𐑼𐑟"
 
-#: src/help/help_topic_generators.cpp:663
+#: src/help/help_topic_generators.cpp:679
 msgid "Terrain"
 msgstr "𐑑𐑻𐑱𐑯"
 
-#: src/help/help_topic_generators.cpp:664
+#: src/help/help_topic_generators.cpp:680
 msgid "Defense"
 msgstr "𐑛𐑦𐑓𐑧𐑯𐑕"
 
-#: src/help/help_topic_generators.cpp:665
+#: src/help/help_topic_generators.cpp:681
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Cost"
 msgstr "𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑒𐑪𐑕𐑑"
 
-#: src/help/help_topic_generators.cpp:669
+#: src/help/help_topic_generators.cpp:685
 #, fuzzy
 msgid "Defense Cap"
 msgstr "𐑛𐑦𐑓𐑧𐑯𐑕"
 
-#: src/help/help_topic_generators.cpp:674
+#: src/help/help_topic_generators.cpp:690
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision Cost"
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
-#: src/help/help_topic_generators.cpp:678
+#: src/help/help_topic_generators.cpp:694
 msgid "Jamming Cost"
 msgstr ""
 

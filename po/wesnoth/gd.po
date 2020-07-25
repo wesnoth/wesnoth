@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-12 21:49-0400\n"
+"POT-Creation-Date: 2020-07-25 21:55+0300\n"
 "PO-Revision-Date: 2020-01-13 11:39+0000\n"
 "Last-Translator: GunChleoc, 2019\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -429,7 +429,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Luchd-taice measgaichte"
 
 #. [about]
-#: data/core/about.cfg:1740
+#: data/core/about.cfg:1743
 msgid "Bots"
 msgstr "Botaichean"
 
@@ -909,8 +909,8 @@ msgstr "Sguab arbhair"
 msgid "Runic Hammer"
 msgstr "Òrd rùn-sgrìobhte"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Uisge-coisrigte"
@@ -951,8 +951,8 @@ msgstr "Deoch uaine"
 msgid "Gray Potion"
 msgstr "Deoch ghlas"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Puinsean"
@@ -1022,8 +1022,8 @@ msgstr "Bata"
 msgid "Stone Tablet"
 msgstr "Leac le sgrìobhadh air"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Muirgheadh stoirme"
@@ -5658,59 +5658,59 @@ msgstr "Dearbhaich"
 msgid "Add-ons Manager"
 msgstr "Manaidsear nan tuilleadan"
 
-#: src/addon/info.cpp:157
+#: src/addon/info.cpp:233
 msgid "addon_type^Campaign"
 msgstr "Iomairt"
 
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:235
 msgid "addon_type^Scenario"
 msgstr "Cnàmh-sgeul"
 
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:237
 msgid "addon_type^SP/MP Campaign"
 msgstr "Iomairt AonChl/IomChl"
 
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:239
 msgid "addon_type^MP era"
 msgstr "Linn IomChl"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:241
 msgid "addon_type^MP faction"
 msgstr "Buidheann IomChl"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:243
 msgid "addon_type^MP map-pack"
 msgstr "Pacaid-mapa IomChl"
 
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:245
 msgid "addon_type^MP scenario"
 msgstr "Cnàmh-sgeul IomChl"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:247
 msgid "addon_type^MP campaign"
 msgstr "Iomairt IomChl"
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:249
 msgid "addon_type^Modification"
 msgstr "Tuilleadain"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:251
 msgid "addon_type^Core"
 msgstr "Eitean"
 
-#: src/addon/info.cpp:177
+#: src/addon/info.cpp:253
 msgid "addon_type^Resources"
 msgstr "Goireasan"
 
-#: src/addon/info.cpp:179
+#: src/addon/info.cpp:255
 msgid "addon_type^Other"
 msgstr "Eile"
 
-#: src/addon/info.cpp:181
+#: src/addon/info.cpp:257
 msgid "addon_type^(unknown)"
 msgstr "(gun seòrsa)"
 
-#: src/addon/info.cpp:221
+#: src/addon/info.cpp:297
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -6267,36 +6267,36 @@ msgstr "Fios: "
 msgid "$login|’s game"
 msgstr "Geama aig $login"
 
-#: src/game_initialization/connect_engine.cpp:104
+#: src/game_initialization/connect_engine.cpp:86
 msgid "Team"
 msgstr "Sgioba"
 
-#: src/game_initialization/connect_engine.cpp:1008
+#: src/game_initialization/connect_engine.cpp:990
 msgid "Anonymous player"
 msgstr "Cluicheadair gun ainm"
 
-#: src/game_initialization/connect_engine.cpp:1013
-#: src/game_initialization/connect_engine.cpp:1316
+#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Computer Player"
 msgstr "Coimpiutair"
 
-#: src/game_initialization/connect_engine.cpp:1055
+#: src/game_initialization/connect_engine.cpp:1037
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1312
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Network Player"
 msgstr "Lìonraidh"
 
-#: src/game_initialization/connect_engine.cpp:1315
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Local Player"
 msgstr "Ionadail"
 
-#: src/game_initialization/connect_engine.cpp:1317
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Nobody"
 msgstr "Gun_ainm"
 
-#: src/game_initialization/connect_engine.cpp:1320
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
 msgstr "Glèidhte"
 
@@ -6446,11 +6446,11 @@ msgstr ""
 msgid "Defeat enemy leader(s)"
 msgstr "Thoir buaidh air ceannard(an) nàmhad"
 
-#: src/game_initialization/mp_game_utils.cpp:101
+#: src/game_initialization/mp_game_utils.cpp:112
 msgid "Cannot find era $era"
 msgstr "Cha deach linn $era a lorg"
 
-#: src/game_initialization/mp_game_utils.cpp:142
+#: src/game_initialization/mp_game_utils.cpp:163
 msgid "Connection timed out"
 msgstr "Dh’fhalbh an ùine air a’ cheangal"
 
@@ -7026,120 +7026,120 @@ msgstr "Feartan"
 msgid "Abilities: "
 msgstr "Comasan: "
 
-#: src/help/help_topic_generators.cpp:490
+#: src/help/help_topic_generators.cpp:498
 msgid "Ability Upgrades: "
 msgstr "Àrdachadh chomasan: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:528
 msgid "HP:"
 msgstr "PB:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:516
+#: src/help/help_topic_generators.cpp:532
 msgid "Moves:"
 msgstr "Gluasadan:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:521
+#: src/help/help_topic_generators.cpp:537
 msgid "Vision:"
 msgstr "Lèirsinn:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:543
 msgid "Jamming:"
 msgstr "Casg:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:548
 msgid "Cost:"
 msgstr "Cosgais:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:552
 msgid "Alignment:"
 msgstr "Co-thaobhadh:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:559
 msgid "Required XP:"
 msgstr "Feum air PE:"
 
-#: src/help/help_topic_generators.cpp:552
+#: src/help/help_topic_generators.cpp:568
 msgid "unit help^Attacks"
 msgstr "Ionnsaighean"
 
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:575
 msgid "unit help^Name"
 msgstr "Ainm"
 
-#: src/help/help_topic_generators.cpp:560
+#: src/help/help_topic_generators.cpp:576
 msgid "Type"
 msgstr "Seòrsa"
 
-#: src/help/help_topic_generators.cpp:561
+#: src/help/help_topic_generators.cpp:577
 msgid "Strikes"
 msgstr "Buillean"
 
-#: src/help/help_topic_generators.cpp:562
+#: src/help/help_topic_generators.cpp:578
 msgid "Range"
 msgstr "Astar"
 
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:579
 msgid "Special"
 msgstr "Sònraichte"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:641
 msgid "Resistances"
 msgstr "Comasan-seasaimh"
 
-#: src/help/help_topic_generators.cpp:629
+#: src/help/help_topic_generators.cpp:645
 msgid "Attack Type"
 msgstr "Seòrsa na h-ionnsaighe"
 
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:646
 msgid "Resistance"
 msgstr "Comas-seasaimh"
 
-#: src/help/help_topic_generators.cpp:659
+#: src/help/help_topic_generators.cpp:675
 msgid "Terrain Modifiers"
 msgstr "Atharraichearan crutha-thìre"
 
-#: src/help/help_topic_generators.cpp:663
+#: src/help/help_topic_generators.cpp:679
 msgid "Terrain"
 msgstr "Cruth-tìre"
 
-#: src/help/help_topic_generators.cpp:664
+#: src/help/help_topic_generators.cpp:680
 msgid "Defense"
 msgstr "Dìon"
 
-#: src/help/help_topic_generators.cpp:665
+#: src/help/help_topic_generators.cpp:681
 msgid "Movement Cost"
 msgstr "Cosgais ghluasaid"
 
-#: src/help/help_topic_generators.cpp:669
+#: src/help/help_topic_generators.cpp:685
 msgid "Defense Cap"
 msgstr "An dìon as motha"
 
-#: src/help/help_topic_generators.cpp:674
+#: src/help/help_topic_generators.cpp:690
 msgid "Vision Cost"
 msgstr "Cosgais lèirsinne"
 
-#: src/help/help_topic_generators.cpp:678
+#: src/help/help_topic_generators.cpp:694
 msgid "Jamming Cost"
 msgstr "Cosgais caisg"
 

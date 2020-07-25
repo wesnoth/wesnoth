@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-12 21:49-0400\n"
+"POT-Creation-Date: 2020-07-25 21:55+0300\n"
 "PO-Revision-Date: 2008-06-03 05:13+0100\n"
 "Last-Translator: Dimitar Ilccov <mythological@t-home.mk>\n"
 "Language-Team: mk\n"
@@ -405,7 +405,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Разни сорабонтници"
 
 #. [about]
-#: data/core/about.cfg:1740
+#: data/core/about.cfg:1743
 msgid "Bots"
 msgstr "Ботови"
 
@@ -900,8 +900,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr ""
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Светена вода"
@@ -944,8 +944,8 @@ msgstr "Превод на грчки"
 msgid "Gray Potion"
 msgstr ""
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Отров"
@@ -1019,8 +1019,8 @@ msgstr ""
 msgid "Stone Tablet"
 msgstr ""
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr ""
@@ -4446,65 +4446,65 @@ msgstr ""
 msgid "Add-ons Manager"
 msgstr ""
 
-#: src/addon/info.cpp:157
+#: src/addon/info.cpp:233
 msgid "addon_type^Campaign"
 msgstr ""
 
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:235
 msgid "addon_type^Scenario"
 msgstr ""
 
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:237
 #, fuzzy
 #| msgid "addon_type^MP faction"
 msgid "addon_type^SP/MP Campaign"
 msgstr "Излези од играта"
 
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:239
 msgid "addon_type^MP era"
 msgstr "Зачувај ја играта"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:241
 msgid "addon_type^MP faction"
 msgstr "Излези од играта"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:243
 msgid "addon_type^MP map-pack"
 msgstr ""
 
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:245
 msgid "addon_type^MP scenario"
 msgstr "Грешка"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:247
 msgid "addon_type^MP campaign"
 msgstr ""
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:249
 #, fuzzy
 #| msgid "addon_type^MP faction"
 msgid "addon_type^Modification"
 msgstr "Излези од играта"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:251
 #, fuzzy
 #| msgid "addon_type^MP era"
 msgid "addon_type^Core"
 msgstr "Зачувај ја играта"
 
-#: src/addon/info.cpp:177
+#: src/addon/info.cpp:253
 msgid "addon_type^Resources"
 msgstr ""
 
-#: src/addon/info.cpp:179
+#: src/addon/info.cpp:255
 msgid "addon_type^Other"
 msgstr ""
 
-#: src/addon/info.cpp:181
+#: src/addon/info.cpp:257
 msgid "addon_type^(unknown)"
 msgstr ""
 
-#: src/addon/info.cpp:221
+#: src/addon/info.cpp:297
 msgid "unit_byte^B"
 msgstr ""
 
@@ -4989,36 +4989,36 @@ msgstr ""
 msgid "$login|’s game"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:104
+#: src/game_initialization/connect_engine.cpp:86
 msgid "Team"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1008
+#: src/game_initialization/connect_engine.cpp:990
 msgid "Anonymous player"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1013
-#: src/game_initialization/connect_engine.cpp:1316
+#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Computer Player"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1055
+#: src/game_initialization/connect_engine.cpp:1037
 msgid "$playername $side"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1312
+#: src/game_initialization/connect_engine.cpp:1288
 msgid "Network Player"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1315
+#: src/game_initialization/connect_engine.cpp:1291
 msgid "Local Player"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1317
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1320
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
 msgstr ""
 
@@ -5157,11 +5157,11 @@ msgstr ""
 msgid "Defeat enemy leader(s)"
 msgstr ""
 
-#: src/game_initialization/mp_game_utils.cpp:101
+#: src/game_initialization/mp_game_utils.cpp:112
 msgid "Cannot find era $era"
 msgstr ""
 
-#: src/game_initialization/mp_game_utils.cpp:142
+#: src/game_initialization/mp_game_utils.cpp:163
 msgid "Connection timed out"
 msgstr ""
 
@@ -5670,35 +5670,35 @@ msgstr ""
 msgid "Abilities: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:490
+#: src/help/help_topic_generators.cpp:498
 msgid "Ability Upgrades: "
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:528
 msgid "HP:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:516
+#: src/help/help_topic_generators.cpp:532
 msgid "Moves:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:521
+#: src/help/help_topic_generators.cpp:537
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:543
 #, fuzzy
 #| msgid "Programming"
 msgid "Jamming:"
@@ -5707,93 +5707,93 @@ msgstr "Програмирање"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:548
 msgid "Cost:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:552
 msgid "Alignment:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:559
 msgid "Required XP:"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:552
+#: src/help/help_topic_generators.cpp:568
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:575
 msgid "unit help^Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:560
+#: src/help/help_topic_generators.cpp:576
 msgid "Type"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:561
+#: src/help/help_topic_generators.cpp:577
 msgid "Strikes"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:562
+#: src/help/help_topic_generators.cpp:578
 #, fuzzy
 #| msgid "Orange"
 msgid "Range"
 msgstr "Портокалово"
 
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:579
 msgid "Special"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:641
 msgid "Resistances"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:629
+#: src/help/help_topic_generators.cpp:645
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack Type"
 msgstr "Напаѓач"
 
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:646
 msgid "Resistance"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:659
+#: src/help/help_topic_generators.cpp:675
 msgid "Terrain Modifiers"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:663
+#: src/help/help_topic_generators.cpp:679
 msgid "Terrain"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:664
+#: src/help/help_topic_generators.cpp:680
 #, fuzzy
 #| msgid "Defender"
 msgid "Defense"
 msgstr "Бранител"
 
-#: src/help/help_topic_generators.cpp:665
+#: src/help/help_topic_generators.cpp:681
 msgid "Movement Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:669
+#: src/help/help_topic_generators.cpp:685
 #, fuzzy
 #| msgid "Defender"
 msgid "Defense Cap"
 msgstr "Бранител"
 
-#: src/help/help_topic_generators.cpp:674
+#: src/help/help_topic_generators.cpp:690
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:678
+#: src/help/help_topic_generators.cpp:694
 msgid "Jamming Cost"
 msgstr ""
 

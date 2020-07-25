@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-13 01:49 UTC\n"
+"POT-Creation-Date: 2020-07-25 18:55 UTC\n"
 "PO-Revision-Date: 2019-09-23 22:44+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -65,8 +65,8 @@ msgstr "普通"
 msgid "Challenging"
 msgstr "挑战"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [advancement]: id=warrior_1
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:44
 msgid "Warrior"
@@ -169,10 +169,10 @@ msgstr "奎诺精灵"
 msgid "Monsters"
 msgstr "怪物"
 
+#. [side]
 #. [side]: id=Panok, type=Direwolf Rider, type=Goblin Knight
 #. [side]: id=Turg, type=Orcish Warrior, type=Orcish Warlord
 #. [side]: id=Ug'lok, type=Orcish Warrior, type=Orcish Warlord
-#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:93
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:55
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:101
@@ -1089,8 +1089,8 @@ msgstr ""
 msgid "Do you remember anything about these sands?"
 msgstr "还记得这片沙漠吗？"
 
-#. [unit]: type=Defeated Corrupted Quenoth Elf, id=Garak_defeated
 #. [message]: speaker=narrator
+#. [unit]: type=Defeated Corrupted Quenoth Elf, id=Garak_defeated
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:285
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1856
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2044
@@ -2141,8 +2141,9 @@ msgstr ""
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
 msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the champions is slain, or 30 rounds of attacks have occurred."
+"If used offensively or defensively against champions Grak or Zur, this "
+"attack presses the engagement until one of the combatants is slain, or 30 "
+"rounds of attacks have occurred."
 msgstr ""
 
 #. [chance_to_hit]: id=magical
@@ -3228,9 +3229,9 @@ msgstr ""
 "见。我不知道我在这里干什么。某种神秘的东西让我不自觉地来到这里，我有种不祥的"
 "预感。"
 
-#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #. [unit]: type=Dark Assassin1, id=Cloaked Figure
 #. [unit]: type=Dark Assassin3, id=Cloaked Figure
+#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:933
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2405
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2407
@@ -4499,10 +4500,10 @@ msgstr "你的人一到达指定位置，我就会启动机关。"
 msgid "Troll Brute"
 msgstr "狂暴巨魔"
 
-#. [event]
 #. [unit]: type=Troll
 #. [unit]: type=Troll Rocklobber
 #. [unit]: type=Troll Whelp
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:492
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:495
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:499
@@ -5043,9 +5044,9 @@ msgid "Enemies"
 msgstr "敌人"
 
 #. [side]: id=King Thurongar, type=Dwarvish Lord
+#. [side]: id=Great Leader Darmog, type=Great Troll
 #. [side]: id=Melusand, type=Mermaid Diviner
 #. [side]
-#. [side]: id=Great Leader Darmog, type=Great Troll
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:73
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:52
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:53
@@ -6407,8 +6408,8 @@ msgstr "好吧，越快离开这里我越高兴。"
 msgid "Wait, did you feel that?"
 msgstr "等下，你们感觉到什么了吗？"
 
-#. [message]: role=mystic_speaker
 #. [message]: speaker=Nym
+#. [message]: role=mystic_speaker
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:540
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1788
 msgid "What?"
@@ -7931,10 +7932,10 @@ msgstr ""
 "陵。山谷的中央是平的，四周是沙丘。山谷中央似乎有定居点。在更远的北边，我看见"
 "天际似乎有闪光，但我不知道那是什么。"
 
+#. [event]
 #. [unit]: type=Divine Avatar, id=Eloh
 #. [side]
 #. [unit]: type=Divine Incarnation, id=Eloh
-#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3098
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1727
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1276
@@ -13550,9 +13551,9 @@ msgstr ""
 msgid "Central Body"
 msgstr "中枢躯体"
 
+#. [unit_type]: id=Crawling Horror, race=monster
 #. [unit_type]: id=Pulsing Spire, race=monster
 #. [unit_type]: id=Central Body Base, race=monster
-#. [unit_type]: id=Crawling Horror, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Minion.cfg:26
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Spire.cfg:33
@@ -13762,9 +13763,9 @@ msgstr "小型黏土怪"
 msgid "Naga Guardian"
 msgstr "娜迦守卫"
 
-#. [unit_type]: id=Naga Warden, race=naga
 #. [unit_type]: id=Naga Guardian, race=naga
 #. [unit_type]: id=Naga Sentinel, race=naga
+#. [unit_type]: id=Naga Warden, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardian.cfg:21
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Sentinel.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Warden.cfg:21
@@ -14066,8 +14067,8 @@ msgid ""
 "are futile, a prospect that is only ruinous in the inhospitable desert."
 msgstr ""
 
-#. [effect]: type=impact
 #. [attack]: type=impact
+#. [effect]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:41
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:97
 msgid "bolas"
@@ -14416,11 +14417,11 @@ msgstr ""
 "就像船帆被风吹张起一样，一个灵魂被邪恶的魔法所困，这种监狱能够带来一个永不消"
 "逝的仆从，主人可以把他部署在任意地方。"
 
-#. [unit_type]: id=EWraith
-#. [unit_type]: id=ESpectre
 #. [unit_type]: id=EGhost
-#. [unit_type]: id=EShadow
 #. [unit_type]: id=ENightgaunt
+#. [unit_type]: id=EShadow
+#. [unit_type]: id=ESpectre
+#. [unit_type]: id=EWraith
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Ghost.cfg:18
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Nightgaunt.cfg:20
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Shadow.cfg:23
@@ -14721,8 +14722,12 @@ msgid ""
 msgstr " 此单位可以让敌人眩目，降低他们的命中和防御，直到他们的回合结束。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:161
+#, fuzzy
+#| msgid ""
+#| "This unit is capable of distracting opponents, allowing allied units to "
+#| "trespass their Zones of Control and move unhindered around them."
 msgid ""
-"This unit is capable of distracting opponents, allowing allied units to "
+" This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
 "此单位可以使对手分神，让友方单位可以随意穿过对手的控制区域，在他们身边毫无障"

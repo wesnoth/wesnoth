@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ai\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-13 01:49 UTC\n"
+"POT-Creation-Date: 2020-07-25 18:55 UTC\n"
 "PO-Revision-Date: 2019-06-18 11:34+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -58,8 +58,8 @@ msgstr "patrol.lua yerine Devriyeler Mikro YZ kullan"
 msgid "The Elves Besieged"
 msgstr "Elfler Kuşatma Altında"
 
-#. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
+#. [side]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -84,10 +84,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
+#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:99
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:114
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:133
@@ -326,8 +326,8 @@ msgstr ""
 "domuz yavruları, tavşanlar)  iyi eğitilmiş bir çoban köpeğinin muazzam "
 "özdenetimini kanıtlarcasına. birbirlerini yalnız bırakırlar."
 
-#. [test]: id=animals
 #. [event]
+#. [test]: id=animals
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -338,10 +338,10 @@ msgstr "Hayvanlar"
 msgid "Rutburt"
 msgstr "Rutburt"
 
+#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
-#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -370,8 +370,8 @@ msgstr "Örümcekler"
 msgid "Yetis"
 msgstr "Yetiler"
 
-#. [side]
 #. [event]
+#. [side]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -384,10 +384,10 @@ msgstr "Kurtlar"
 msgid "Whelps"
 msgstr "Trol Yavruları"
 
-#. [set_menu_item]: id=m01_end_swarm
-#. [set_menu_item]: id=m04_end_animals
-#. [event]
 #. [set_menu_item]: id=m01_end_animals
+#. [event]
+#. [set_menu_item]: id=m04_end_animals
+#. [set_menu_item]: id=m01_end_swarm
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -542,9 +542,9 @@ msgstr "Büyük Kötü Ork"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "Pekala, arkadaşlar. Bu orkların durdurulması lazım."
 
-#. [message]: speaker=Another Bad Orc
-#. [message]: speaker=Vanak
 #. [message]: speaker=Big Bad Orc
+#. [message]: speaker=Vanak
+#. [message]: speaker=Another Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:573
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:140
@@ -754,8 +754,8 @@ msgstr ""
 "Burada yapılacak hiçbir şey yok, sadece bu senaryoyu izleyin veya kendi "
 "denemeleriniz için bir şablon olarak kullanın."
 
-#. [test]: id=goto
 #. [event]
+#. [test]: id=goto
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
@@ -811,8 +811,8 @@ msgstr "Çavuş Öteberi"
 msgid "Place Side 1 Footpad"
 msgstr "1. Tarafa Kapkaççı yerleştir"
 
-#. [set_menu_item]: id=m05_kill_unit
 #. [set_menu_item]: id=m02_kill_unit
+#. [set_menu_item]: id=m05_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
@@ -1071,8 +1071,8 @@ msgstr "Köşelerde herşeyi yaptık, tekrar bir araya gelelim."
 msgid "We're back together, let's head out to the corners again."
 msgstr "Tekrar bir araya geldik, yine köşelere gidelim."
 
-#. [test]: id=guardians
 #. [event]
+#. [test]: id=guardians
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -2264,8 +2264,8 @@ msgstr "Elimden geldiğince uzun süre dayandım."
 msgid "I made it"
 msgstr "Başardım"
 
-#. [test]: id=recruiting
 #. [event]
+#. [test]: id=recruiting
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
@@ -2336,8 +2336,8 @@ msgstr "Çelimsiz Girink"
 msgid "team_name^Grnk"
 msgstr "Girink"
 
-#. [test]: id=swarm
 #. [event]
+#. [test]: id=swarm
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"

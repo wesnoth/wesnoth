@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-12 21:49-0400\n"
+"POT-Creation-Date: 2020-07-25 21:55+0300\n"
 "PO-Revision-Date: 2019-01-29 15:03+0200\n"
 "Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
 "Language-Team: \n"
@@ -21,8 +21,8 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=fence
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:464
 msgid "Fence"
@@ -1966,10 +1966,10 @@ msgid "Search"
 msgstr "Пошук"
 
 #. [toggle_button]: id=sort_0
-#. [label]
-#. [toggle_button]: id=sort_name
 #. [label]: id=name
+#. [label]
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:243
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2021,7 +2021,7 @@ msgstr "Оновити аддони"
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:270
-#: src/gui/widgets/addon_list.cpp:254
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "Опублікувати аддон"
 
@@ -2029,7 +2029,7 @@ msgstr "Опублікувати аддон"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:810
+#: src/gui/dialogs/addon/manager.cpp:819
 msgid "Uninstall add-on"
 msgstr "Деінсталювати аддони"
 
@@ -2038,8 +2038,8 @@ msgstr "Деінсталювати аддони"
 msgid "Messages waiting"
 msgstr "Очікуючі повідомлення"
 
-#. [button]: id=close_window
 #. [button]: id=click_dismiss
+#. [button]: id=close_window
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
@@ -2068,8 +2068,8 @@ msgstr "Закрити"
 msgid "Profile"
 msgstr "Профіль"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:41
 #: data/gui/window/mp_method_selection.cfg:254
 #: data/gui/window/mp_server_list.cfg:49
@@ -2086,16 +2086,16 @@ msgstr "Зараз підключимося до сервера і завант�
 msgid "Server:"
 msgstr "Сервер:"
 
-#. [label]
 #. [button]: id=remove_addons
+#. [label]
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
 msgstr "Видалити аддони"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=help
 #. [button]: id=show_help
+#. [button]: id=help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:174
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Help"
@@ -2208,7 +2208,7 @@ msgstr "Залежності:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:895
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:904
 msgid "addon_dependencies^None"
 msgstr "Немає"
 
@@ -2219,7 +2219,7 @@ msgstr "Переклади:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:909
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:918
 msgid "translations^None"
 msgstr "Немає"
 
@@ -2275,8 +2275,8 @@ msgstr "Менеджер аддонів"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:455
-#: src/gui/dialogs/addon/manager.cpp:642
+#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:464
+#: src/gui/dialogs/addon/manager.cpp:651
 msgid "Addon Details"
 msgstr "Деталі аддону"
 
@@ -2495,8 +2495,8 @@ msgstr ""
 "Генератор випадкових чисел буде видавати той же результат, навіть після "
 "перезавантаження гри"
 
-#. [slider]: id=enemey_gold_factor
 #. [label]: id=title
+#. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
@@ -2560,31 +2560,31 @@ msgstr "Копіювати цей лог до буфера обміну"
 msgid "Load Core"
 msgstr "Завантажити компоненти"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Копіювати"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Копіювати цей шлях до буфера обміну"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "Оглянути"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2660,7 +2660,7 @@ msgstr "Видалити ЧД"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:783 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:792 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "Підтвердити"
@@ -2918,15 +2918,15 @@ msgstr "Створити"
 msgid "New Map"
 msgstr "Нова карта"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Ширина:"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3008,14 +3008,14 @@ msgstr "Додати в закладки поточну теку"
 msgid "Removes the current bookmark"
 msgstr "Видалити поточну закладку"
 
-#. [button]: id=delete
 #. [button]: id=delete_file
+#. [button]: id=delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:482
 msgid "Delete"
 msgstr "Видалити"
 
-#. [label]: id=title
 #. [button]: id=new_dir
+#. [label]: id=title
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Нова Тека"
@@ -3076,8 +3076,8 @@ msgid "Execution trace"
 msgstr "Трейс виконання"
 
 #. [button]: id=cancel
-#. [grid]
 #. [button]: id=quit_without_surrender
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:261
 msgid "Quit"
@@ -3272,17 +3272,17 @@ msgid "Upkeep"
 msgstr "Утримання"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
-#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
 msgid "Income"
 msgstr "Прибуток"
 
-#. [label]: id=side_title
 #. [toggle_button]: id=sort_1
+#. [label]: id=side_title
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "Сторона"
@@ -3449,8 +3449,8 @@ msgstr "Інспектор стану гри"
 msgid "Copy this report to clipboard"
 msgstr "Копіювати цей звіт до буфера обміну"
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3521,8 +3521,8 @@ msgstr "Натисніть бажану гарячу клавішу (Esc ска�
 msgid "Show or Hide Labels"
 msgstr "Показувати або сховати мітки"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:258
 msgid "Language"
@@ -3886,8 +3886,8 @@ msgstr "Дані гри:"
 msgid "When a new game has been created"
 msgstr "Коли почався новий хід"
 
-#. [button]: id=orb_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:296
@@ -4223,8 +4223,8 @@ msgstr "Виберіть собі фракцію"
 msgid "Starting position:"
 msgstr "Початкова позиція:"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4307,8 +4307,8 @@ msgid "Save password locally (encrypted)"
 msgstr "Зберігати пароль локально (зашифровано)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
 #. [grid]
+#. [label]
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
@@ -5579,7 +5579,7 @@ msgstr "Розширення не визначене."
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Пов'язана група '$id' визначена більше одного разу."
 
-#: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:429
+#: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:439
 #: src/gui/widgets/chatbox.cpp:804 src/gui/widgets/listbox.cpp:806
 #: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
@@ -5597,185 +5597,185 @@ msgstr "У рядка має бути стовпець."
 msgid "Number of columns differ."
 msgstr "Кількість стовпців відрізняється."
 
-#: src/gui/dialogs/addon/manager.cpp:185
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_view^All Add-ons"
 msgstr "Всі аддони"
 
-#: src/gui/dialogs/addon/manager.cpp:186
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_view^Installed"
 msgstr "Встановлений"
 
-#: src/gui/dialogs/addon/manager.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:196
 msgid "addons_view^Upgradable"
 msgstr "Оновлюваний"
 
-#: src/gui/dialogs/addon/manager.cpp:188
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_view^Publishable"
 msgstr "Можна опублікувати"
 
-#: src/gui/dialogs/addon/manager.cpp:189
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_view^Not Installed"
 msgstr "Не встановлений"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Campaigns"
 msgstr "Кампанії"
 
-#: src/gui/dialogs/addon/manager.cpp:194
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^Scenarios"
 msgstr "Сценарії"
 
-#: src/gui/dialogs/addon/manager.cpp:195
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "Кампанії для МП/CП"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^MP campaigns"
 msgstr "Кампанії МП"
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:206
 msgid "addons_of_type^MP scenarios"
 msgstr "Сценарії МП"
 
-#: src/gui/dialogs/addon/manager.cpp:198
+#: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_of_type^MP map-packs"
 msgstr "Пакети карт МП"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:208
 msgid "addons_of_type^MP eras"
 msgstr "Ери МП"
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:209
 msgid "addons_of_type^MP factions"
 msgstr "Фракції МП"
 
-#: src/gui/dialogs/addon/manager.cpp:201
+#: src/gui/dialogs/addon/manager.cpp:210
 msgid "addons_of_type^Modifications"
 msgstr "Модифікації"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:211
 msgid "addons_of_type^Cores"
 msgstr "Компоненти"
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:212
 msgid "addons_of_type^Resources"
 msgstr "Ресурси"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:214
 msgid "addons_of_type^Other"
 msgstr "Інше"
 
-#: src/gui/dialogs/addon/manager.cpp:206
+#: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_of_type^Unknown"
 msgstr "Невідомо"
 
-#: src/gui/dialogs/addon/manager.cpp:210
+#: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Name ($order)"
 msgstr "Автор ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:213
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Author ($order)"
 msgstr "Автор ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:216
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_order^Size ($order)"
 msgstr "Розмір ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:219
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^Downloads ($order)"
 msgstr "Завантажень ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:222
+#: src/gui/dialogs/addon/manager.cpp:231
 msgid "addons_order^Type ($order)"
 msgstr "Тип ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:234
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Востаннє оновлено ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:237
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "Вперше вивантажено ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:257 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Не встановлений"
 
-#: src/gui/dialogs/addon/manager.cpp:258 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Опублікований, не встановлений"
 
-#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:271 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Встановлений"
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:272 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Опублкований"
 
-#: src/gui/dialogs/addon/manager.cpp:267
+#: src/gui/dialogs/addon/manager.cpp:276
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Встановлений, не відслідкована локальна версія"
 
-#: src/gui/dialogs/addon/manager.cpp:270
+#: src/gui/dialogs/addon/manager.cpp:279
 msgid "addon_state^Published, not tracking local version"
 msgstr "Опублікований, не відслідкована локальна версія"
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:283
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Встановлений ($local_version|), оновлюваний"
 
-#: src/gui/dialogs/addon/manager.cpp:275
+#: src/gui/dialogs/addon/manager.cpp:284
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Опублікований ($local_version| встановлений), оновлюваний"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:290
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Встановлений ($local_version|), застарілий на сервері"
 
-#: src/gui/dialogs/addon/manager.cpp:282
+#: src/gui/dialogs/addon/manager.cpp:291
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Опублікований ($local_version| встановлений), застарілий на сервері"
 
-#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Встановлений, до опублікування не готовий"
 
-#: src/gui/dialogs/addon/manager.cpp:289 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Готовий до опублікування"
 
-#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Встановлений, зламаний"
 
-#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:303 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Опублікований, зламаний"
 
-#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:306 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Невідомо"
 
-#: src/gui/dialogs/addon/manager.cpp:359
+#: src/gui/dialogs/addon/manager.cpp:368
 msgid "ascending"
 msgstr "зростаючий"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:361
+#: src/gui/dialogs/addon/manager.cpp:370
 msgid "oldest to newest"
 msgstr "від старішого до новішого"
 
-#: src/gui/dialogs/addon/manager.cpp:364
+#: src/gui/dialogs/addon/manager.cpp:373
 msgid "descending"
 msgstr "спадний"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:366
+#: src/gui/dialogs/addon/manager.cpp:375
 msgid "newest to oldest"
 msgstr "від новішого до старішого"
 
-#: src/gui/dialogs/addon/manager.cpp:384 src/gui/dialogs/chat_log.cpp:416
+#: src/gui/dialogs/addon/manager.cpp:393 src/gui/dialogs/chat_log.cpp:416
 #: src/gui/dialogs/game_cache_options.cpp:105
 #: src/gui/dialogs/game_version_dialog.cpp:182
 #: src/gui/dialogs/gamestate_inspector.cpp:428
@@ -5785,23 +5785,23 @@ msgstr "від новішого до старішого"
 msgid "Clipboard support not found, contact your packager"
 msgstr "Підтримка буферу обміну не знайдена, зв'яжіться з менеджером пакету"
 
-#: src/gui/dialogs/addon/manager.cpp:452
+#: src/gui/dialogs/addon/manager.cpp:461
 msgid "addons^Back to List"
 msgstr "Назад до списку"
 
-#: src/gui/dialogs/addon/manager.cpp:464
+#: src/gui/dialogs/addon/manager.cpp:473
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Під час завантаження списку аддонів з серверу сталася помилка."
 
-#: src/gui/dialogs/addon/manager.cpp:500
+#: src/gui/dialogs/addon/manager.cpp:509
 msgid "No Add-ons Available"
 msgstr "Нема доступних аддонів"
 
-#: src/gui/dialogs/addon/manager.cpp:500
+#: src/gui/dialogs/addon/manager.cpp:509
 msgid "There are no add-ons available for download from this server."
 msgstr "На цьому сервері немає доступних для завантаження аддонів."
 
-#: src/gui/dialogs/addon/manager.cpp:675
+#: src/gui/dialogs/addon/manager.cpp:684
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5809,15 +5809,15 @@ msgstr ""
 "Наступні аддони, схоже, містять інформацію для публікації або про версію, "
 "яких немає на сервері, і тому не видалені:"
 
-#: src/gui/dialogs/addon/manager.cpp:683
+#: src/gui/dialogs/addon/manager.cpp:692
 msgid "The following add-on could not be deleted properly:"
 msgstr "Наступний аддон не був видалений належним чином:"
 
-#: src/gui/dialogs/addon/manager.cpp:736
+#: src/gui/dialogs/addon/manager.cpp:745
 msgid "Warning"
 msgstr "Попередження"
 
-#: src/gui/dialogs/addon/manager.cpp:737
+#: src/gui/dialogs/addon/manager.cpp:746
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -5825,26 +5825,26 @@ msgstr ""
 "Версія на сервері аддонів вища або рівна версії, яка буде завантажена. Ви "
 "справді бажаєте продовжити?"
 
-#: src/gui/dialogs/addon/manager.cpp:746
+#: src/gui/dialogs/addon/manager.cpp:755
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Невірний шлях до іконки. Переконайтеся, що шлях вказує на існуюче зображення."
 
-#: src/gui/dialogs/addon/manager.cpp:749 src/gui/dialogs/addon/manager.cpp:752
-#: src/gui/dialogs/addon/manager.cpp:791
+#: src/gui/dialogs/addon/manager.cpp:758 src/gui/dialogs/addon/manager.cpp:761
+#: src/gui/dialogs/addon/manager.cpp:800
 msgid "The server responded with an error:"
 msgstr "Сервер відповів з помилкою:"
 
-#: src/gui/dialogs/addon/manager.cpp:750
+#: src/gui/dialogs/addon/manager.cpp:759
 msgid "Terms"
 msgstr "Умови"
 
-#: src/gui/dialogs/addon/manager.cpp:767 src/gui/dialogs/addon/manager.cpp:794
+#: src/gui/dialogs/addon/manager.cpp:776 src/gui/dialogs/addon/manager.cpp:803
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:502
 msgid "Response"
 msgstr "Відповідальність"
 
-#: src/gui/dialogs/addon/manager.cpp:779
+#: src/gui/dialogs/addon/manager.cpp:788
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5852,7 +5852,7 @@ msgstr ""
 "Видалення '$addon|' зітре навіки лічильник завантажень і вивантажень на "
 "цьому сервері аддонів. Ви справді бажаєте продовжити?"
 
-#: src/gui/dialogs/addon/manager.cpp:811
+#: src/gui/dialogs/addon/manager.cpp:820
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Ви дійсно хочете видалити '$addon|'?"
 
@@ -6611,7 +6611,7 @@ msgstr "Встановлений, застарілий на сервері"
 msgid "addon_state^Published, outdated on server"
 msgstr "Опублікований, застарілий на сервері"
 
-#: src/gui/widgets/addon_list.cpp:285
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "Видалити аддон з серверу"
 

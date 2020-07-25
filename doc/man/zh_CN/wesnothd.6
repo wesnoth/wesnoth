@@ -172,54 +172,42 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 这个标签用于告诉服务器扮演代理服务器角色，把连接在本服务器上的用户的请求转发到指定的服务器。与\fB[redirect]\fP接受一样的主键。
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service. All additional tables that are
-needed for the \fBforum_user_handler\fP to function can be found in
-table_definitions.sql in the Wesnoth source repository.
+\fB[user_handler]\fP
+配置用户数据处理器。可设置的主键取决于通过\fBuser_handler\fP设置的用户数据处理器是哪一个。如果配置文件中没有\fB[user_handler]\fP小节，则服务器在运行中将不提供任何昵称注册服务。\fBforum_user_handler\fP正常运作所需的额外数据表可以在韦诺源代码库的table_definitions.sql中找到。
 .RS
 .TP 
 \fBdb_host\fP
-（如果user_handler=forum）数据库服务器的主机名
+（当user_handler=forum时）数据库服务器的主机名
 .TP 
 \fBdb_name\fP
-（如果user_handler=forum）数据库名
+（当user_handler=forum时）数据库名
 .TP 
 \fBdb_user\fP
-（如果user_handler=forum）数据库登录用户名
+（当user_handler=forum时）数据库登录用户名
 .TP 
 \fBdb_password\fP
-（如果user_handler=forum）这个用户的密码
+（当user_handler=forum时）这个用户的密码
 .TP 
 \fBdb_users_table\fP
-（如果user_handler=forum）phpbb
-论坛中存放用户数据的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
+（当user_handler=forum时）phpbb论坛中存放用户数据的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
 .TP 
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually.
+（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与用户相关的数据。你必须手动创建此表。
 .TP 
 \fBdb_game_info_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about games.
+（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与游戏相关的数据。
 .TP 
 \fBdb_game_player_info_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about the players in a game.
+（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与单场游戏中玩家相关的数据。
 .TP 
 \fBdb_game_modification_info_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about the modifications used in a game.
+（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与单场游戏中使用的模组相关的数据。
 .TP 
 \fBdb_user_group_table\fP
-(for user_handler=forum) The name of the table in which your phpbb forums
-saves its user group data. Most likely this will be
-<table\-prefix>_user_group (e.g. phpbb3_user_group).
+（当user_handler=forum时）phpbb论坛中存放用户组数据的表名。很可能是<table\-prefix>_users_group（例如phpbb3_users_group）。
 .TP 
 \fBmp_mod_group\fP
-(for user_handler=forum) The ID of the forum group to be considered as
-having moderation authority.
+（当user_handler=forum时）论坛用户组ID，该组将视为拥有管理员权限。
 .TP 
 \fBuser_expiration\fP
 （如果user_handler=sample）注册昵称的失效时间（天数）。

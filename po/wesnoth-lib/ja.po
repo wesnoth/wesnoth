@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-12 21:49-0400\n"
+"POT-Creation-Date: 2020-07-25 21:55+0300\n"
 "PO-Revision-Date: 2018-05-06 10:15+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=fence
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:464
 msgid "Fence"
@@ -1893,10 +1893,10 @@ msgid "Search"
 msgstr "検索"
 
 #. [toggle_button]: id=sort_0
-#. [label]
-#. [toggle_button]: id=sort_name
 #. [label]: id=name
+#. [label]
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:243
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -1948,7 +1948,7 @@ msgstr "アドオンのアップデート"
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:270
-#: src/gui/widgets/addon_list.cpp:254
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "アドオンの公開"
 
@@ -1956,7 +1956,7 @@ msgstr "アドオンの公開"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:810
+#: src/gui/dialogs/addon/manager.cpp:819
 msgid "Uninstall add-on"
 msgstr "アドオンのアンインストール"
 
@@ -1965,8 +1965,8 @@ msgstr "アドオンのアンインストール"
 msgid "Messages waiting"
 msgstr "メッセージ待機中"
 
-#. [button]: id=close_window
 #. [button]: id=click_dismiss
+#. [button]: id=close_window
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
@@ -1995,8 +1995,8 @@ msgstr "閉じる"
 msgid "Profile"
 msgstr "プロフィール"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:41
 #: data/gui/window/mp_method_selection.cfg:254
 #: data/gui/window/mp_server_list.cfg:49
@@ -2013,16 +2013,16 @@ msgstr "アドオンをダウンロードするためにサーバーに接続し
 msgid "Server:"
 msgstr "サーバー："
 
-#. [label]
 #. [button]: id=remove_addons
+#. [label]
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
 msgstr "アドオンの削除"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=help
 #. [button]: id=show_help
+#. [button]: id=help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:174
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Help"
@@ -2135,7 +2135,7 @@ msgstr "必要なもの："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:895
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:904
 msgid "addon_dependencies^None"
 msgstr "なし"
 
@@ -2146,7 +2146,7 @@ msgstr "翻訳："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:909
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:918
 msgid "translations^None"
 msgstr "なし"
 
@@ -2202,8 +2202,8 @@ msgstr "アドオンマネージャー"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:455
-#: src/gui/dialogs/addon/manager.cpp:642
+#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:464
+#: src/gui/dialogs/addon/manager.cpp:651
 msgid "Addon Details"
 msgstr "アドオンの詳細"
 
@@ -2420,8 +2420,8 @@ msgid ""
 "reloading a game"
 msgstr "ゲームを再開した場合でも、乱数生成器が同じ値を出すようになります。"
 
-#. [slider]: id=enemey_gold_factor
 #. [label]: id=title
+#. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
@@ -2485,31 +2485,31 @@ msgstr "ログをクリップボードにコピーします"
 msgid "Load Core"
 msgstr "コアの読み込み"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "コピー"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "パスをクリップボードにコピーします"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "ブラウズ"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2585,7 +2585,7 @@ msgstr "時刻の削除"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:783 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:792 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "確認"
@@ -2843,15 +2843,15 @@ msgstr "生成"
 msgid "New Map"
 msgstr "新規マップ"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "幅："
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -2933,14 +2933,14 @@ msgstr "現在のフォルダをブックマークに追加します"
 msgid "Removes the current bookmark"
 msgstr "選択中のブックマークを削除します"
 
-#. [button]: id=delete
 #. [button]: id=delete_file
+#. [button]: id=delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:482
 msgid "Delete"
 msgstr "削除"
 
-#. [label]: id=title
 #. [button]: id=new_dir
+#. [label]: id=title
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "新しいフォルダ"
@@ -3001,8 +3001,8 @@ msgid "Execution trace"
 msgstr "実行トレース"
 
 #. [button]: id=cancel
-#. [grid]
 #. [button]: id=quit_without_surrender
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:261
 msgid "Quit"
@@ -3197,17 +3197,17 @@ msgid "Upkeep"
 msgstr "維持費"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
-#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
 msgid "Income"
 msgstr "収入"
 
-#. [label]: id=side_title
 #. [toggle_button]: id=sort_1
+#. [label]: id=side_title
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "陣営"
@@ -3372,8 +3372,8 @@ msgstr "ゲーム状態インスペクタ"
 msgid "Copy this report to clipboard"
 msgstr "このリポートをクリップボードにコピーします"
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3444,8 +3444,8 @@ msgstr "希望のホットキーを押して下さい （Escでキャンセル�
 msgid "Show or Hide Labels"
 msgstr "ラベルの表示・非表示"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:258
 msgid "Language"
@@ -3803,8 +3803,8 @@ msgstr ""
 msgid "When a new game has been created"
 msgstr ""
 
-#. [button]: id=orb_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:296
@@ -4137,8 +4137,8 @@ msgstr "党派を選択してください"
 msgid "Starting position:"
 msgstr "開始地点："
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4221,8 +4221,8 @@ msgid "Save password locally (encrypted)"
 msgstr "パスワードを暗号化して保存する"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
 #. [grid]
+#. [label]
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
@@ -5487,7 +5487,7 @@ msgstr "解像度（resolution）が1つも定義されていません。"
 msgid "Linked '$id' group has multiple definitions."
 msgstr "「 $id 」に結び付けられたグループに重複する定義があります。"
 
-#: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:429
+#: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:439
 #: src/gui/widgets/chatbox.cpp:804 src/gui/widgets/listbox.cpp:806
 #: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
@@ -5505,186 +5505,186 @@ msgstr "一つの行（row）には一つの列（column）がなければなり
 msgid "Number of columns differ."
 msgstr "列（column）の数が違います。"
 
-#: src/gui/dialogs/addon/manager.cpp:185
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_view^All Add-ons"
 msgstr "全てのアドオン"
 
-#: src/gui/dialogs/addon/manager.cpp:186
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_view^Installed"
 msgstr "インストール済み"
 
-#: src/gui/dialogs/addon/manager.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:196
 msgid "addons_view^Upgradable"
 msgstr "アップデート有り"
 
-#: src/gui/dialogs/addon/manager.cpp:188
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_view^Publishable"
 msgstr "公開済み"
 
-#: src/gui/dialogs/addon/manager.cpp:189
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_view^Not Installed"
 msgstr "未インストール"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Campaigns"
 msgstr "キャンペーン"
 
-#: src/gui/dialogs/addon/manager.cpp:194
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^Scenarios"
 msgstr "シナリオ"
 
-#: src/gui/dialogs/addon/manager.cpp:195
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "SP/MP キャンペーン"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^MP campaigns"
 msgstr "MP キャンペーン"
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:206
 msgid "addons_of_type^MP scenarios"
 msgstr "MP シナリオ"
 
-#: src/gui/dialogs/addon/manager.cpp:198
+#: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_of_type^MP map-packs"
 msgstr "MP マップパック"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:208
 msgid "addons_of_type^MP eras"
 msgstr "MP 時代"
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:209
 msgid "addons_of_type^MP factions"
 msgstr "MP 党派"
 
-#: src/gui/dialogs/addon/manager.cpp:201
+#: src/gui/dialogs/addon/manager.cpp:210
 msgid "addons_of_type^Modifications"
 msgstr "Mod"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:211
 msgid "addons_of_type^Cores"
 msgstr "コア"
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:212
 msgid "addons_of_type^Resources"
 msgstr "素材集"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:214
 msgid "addons_of_type^Other"
 msgstr "その他"
 
-#: src/gui/dialogs/addon/manager.cpp:206
+#: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_of_type^Unknown"
 msgstr "不明"
 
-#: src/gui/dialogs/addon/manager.cpp:210
+#: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Name ($order)"
 msgstr "名前（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:213
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Author ($order)"
 msgstr "作者（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:216
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_order^Size ($order)"
 msgstr "サイズ（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:219
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^Downloads ($order)"
 msgstr "ダウンロード数（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:222
+#: src/gui/dialogs/addon/manager.cpp:231
 msgid "addons_order^Type ($order)"
 msgstr "タイプ（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:234
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "最終更新（$datelike_order）"
 
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:237
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "初アップロード（$datelike_order）"
 
-#: src/gui/dialogs/addon/manager.cpp:257 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "未インストール"
 
-#: src/gui/dialogs/addon/manager.cpp:258 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "公開済み、未インストール"
 
-#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:271 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "インストール済み"
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:272 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "公開済み"
 
-#: src/gui/dialogs/addon/manager.cpp:267
+#: src/gui/dialogs/addon/manager.cpp:276
 msgid "addon_state^Installed, not tracking local version"
 msgstr "インストール済み、トラッキングされていないローカルバージョン"
 
-#: src/gui/dialogs/addon/manager.cpp:270
+#: src/gui/dialogs/addon/manager.cpp:279
 msgid "addon_state^Published, not tracking local version"
 msgstr "公開済み、トラッキングされていないローカルバージョン"
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:283
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "インストール済み（ $local_version| ）、アップデート有り"
 
-#: src/gui/dialogs/addon/manager.cpp:275
+#: src/gui/dialogs/addon/manager.cpp:284
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "公開済み（ $local_version| インストール済み）、アップデート有り"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:290
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "インストール済み（ $local_version| ）、サーバー上に旧バージョン有り"
 
-#: src/gui/dialogs/addon/manager.cpp:282
+#: src/gui/dialogs/addon/manager.cpp:291
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 "公開済み（$local_version| インストール済み）、サーバー上に旧バージョン有り"
 
-#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "インストール済み、公開準備未了"
 
-#: src/gui/dialogs/addon/manager.cpp:289 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "公開準備完了"
 
-#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "インストール済み、破損"
 
-#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:303 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "公開済み、破損"
 
-#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:306 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "不明"
 
-#: src/gui/dialogs/addon/manager.cpp:359
+#: src/gui/dialogs/addon/manager.cpp:368
 msgid "ascending"
 msgstr "昇順"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:361
+#: src/gui/dialogs/addon/manager.cpp:370
 msgid "oldest to newest"
 msgstr "古い順"
 
-#: src/gui/dialogs/addon/manager.cpp:364
+#: src/gui/dialogs/addon/manager.cpp:373
 msgid "descending"
 msgstr "降順"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:366
+#: src/gui/dialogs/addon/manager.cpp:375
 msgid "newest to oldest"
 msgstr "新しい順"
 
-#: src/gui/dialogs/addon/manager.cpp:384 src/gui/dialogs/chat_log.cpp:416
+#: src/gui/dialogs/addon/manager.cpp:393 src/gui/dialogs/chat_log.cpp:416
 #: src/gui/dialogs/game_cache_options.cpp:105
 #: src/gui/dialogs/game_version_dialog.cpp:182
 #: src/gui/dialogs/gamestate_inspector.cpp:428
@@ -5696,24 +5696,24 @@ msgstr ""
 "クリップボードサポートが無効となっています。パッケージャーに連絡してくださ"
 "い。"
 
-#: src/gui/dialogs/addon/manager.cpp:452
+#: src/gui/dialogs/addon/manager.cpp:461
 msgid "addons^Back to List"
 msgstr "リストに"
 
-#: src/gui/dialogs/addon/manager.cpp:464
+#: src/gui/dialogs/addon/manager.cpp:473
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "サーバーからアドオン一覧をダウンロードしている間にエラーが発生しました。"
 
-#: src/gui/dialogs/addon/manager.cpp:500
+#: src/gui/dialogs/addon/manager.cpp:509
 msgid "No Add-ons Available"
 msgstr "アドオンはありません"
 
-#: src/gui/dialogs/addon/manager.cpp:500
+#: src/gui/dialogs/addon/manager.cpp:509
 msgid "There are no add-ons available for download from this server."
 msgstr "このサーバーからダウンロード可能なアドオンはありません。"
 
-#: src/gui/dialogs/addon/manager.cpp:675
+#: src/gui/dialogs/addon/manager.cpp:684
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5721,15 +5721,15 @@ msgstr ""
 "以下のアドオンは、アドオンの公開情報やバージョン情報をローカルに保存していま"
 "す。これらのアドオンはアンインストールされません。"
 
-#: src/gui/dialogs/addon/manager.cpp:683
+#: src/gui/dialogs/addon/manager.cpp:692
 msgid "The following add-on could not be deleted properly:"
 msgstr "以下のアドオンを正常に削除できませんでした。"
 
-#: src/gui/dialogs/addon/manager.cpp:736
+#: src/gui/dialogs/addon/manager.cpp:745
 msgid "Warning"
 msgstr "警告"
 
-#: src/gui/dialogs/addon/manager.cpp:737
+#: src/gui/dialogs/addon/manager.cpp:746
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -5737,26 +5737,26 @@ msgstr ""
 "アップロードされるアドオンのバージョンは、リモートにあるアドオンのバージョン"
 "以下の値となっています。 それでも続けますか？"
 
-#: src/gui/dialogs/addon/manager.cpp:746
+#: src/gui/dialogs/addon/manager.cpp:755
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "アイコンのパスが無効です。 有効な画像が存在するパスを指定してください。"
 
-#: src/gui/dialogs/addon/manager.cpp:749 src/gui/dialogs/addon/manager.cpp:752
-#: src/gui/dialogs/addon/manager.cpp:791
+#: src/gui/dialogs/addon/manager.cpp:758 src/gui/dialogs/addon/manager.cpp:761
+#: src/gui/dialogs/addon/manager.cpp:800
 msgid "The server responded with an error:"
 msgstr "サーバーが返したエラー："
 
-#: src/gui/dialogs/addon/manager.cpp:750
+#: src/gui/dialogs/addon/manager.cpp:759
 msgid "Terms"
 msgstr "条項"
 
-#: src/gui/dialogs/addon/manager.cpp:767 src/gui/dialogs/addon/manager.cpp:794
+#: src/gui/dialogs/addon/manager.cpp:776 src/gui/dialogs/addon/manager.cpp:803
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:502
 msgid "Response"
 msgstr "応答"
 
-#: src/gui/dialogs/addon/manager.cpp:779
+#: src/gui/dialogs/addon/manager.cpp:788
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5764,7 +5764,7 @@ msgstr ""
 "「$addon|」 を削除するとアドオンサーバー上のダウンロード・アップロード回数も"
 "完全に消去されます。 続行しますか？"
 
-#: src/gui/dialogs/addon/manager.cpp:811
+#: src/gui/dialogs/addon/manager.cpp:820
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "「$addon|」をアンインストールしますか？"
 
@@ -6521,7 +6521,7 @@ msgstr "インストール済み、サーバー上に旧バージョン有り"
 msgid "addon_state^Published, outdated on server"
 msgstr "公開済み、サーバー上に旧バージョン有り"
 
-#: src/gui/widgets/addon_list.cpp:285
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "サーバーからアドオンを削除します"
 

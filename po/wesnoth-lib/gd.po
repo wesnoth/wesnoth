@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-06-12 21:49-0400\n"
+"POT-Creation-Date: 2020-07-25 21:55+0300\n"
 "PO-Revision-Date: 2020-01-13 11:44+0000\n"
 "Last-Translator: GunChleoc, 2019\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -24,8 +24,8 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
 
-#. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=fence
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:464
 msgid "Fence"
@@ -1963,10 +1963,10 @@ msgid "Search"
 msgstr "Lorg"
 
 #. [toggle_button]: id=sort_0
-#. [label]
-#. [toggle_button]: id=sort_name
 #. [label]: id=name
+#. [label]
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:243
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2018,7 +2018,7 @@ msgstr "Ùraich an tuilleadan"
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:270
-#: src/gui/widgets/addon_list.cpp:254
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "Foillsich an tuilleadan"
 
@@ -2026,7 +2026,7 @@ msgstr "Foillsich an tuilleadan"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:810
+#: src/gui/dialogs/addon/manager.cpp:819
 msgid "Uninstall add-on"
 msgstr "Dì-stàlaich an tuilleadan"
 
@@ -2035,8 +2035,8 @@ msgstr "Dì-stàlaich an tuilleadan"
 msgid "Messages waiting"
 msgstr "Teachdaireachdan a’ feitheamh"
 
-#. [button]: id=close_window
 #. [button]: id=click_dismiss
+#. [button]: id=close_window
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
@@ -2065,8 +2065,8 @@ msgstr "Dùin"
 msgid "Profile"
 msgstr "Pròifil"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:41
 #: data/gui/window/mp_method_selection.cfg:254
 #: data/gui/window/mp_server_list.cfg:49
@@ -2084,16 +2084,16 @@ msgstr ""
 msgid "Server:"
 msgstr "Frithealaiche:"
 
-#. [label]
 #. [button]: id=remove_addons
+#. [label]
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
 msgstr "Thoir tuilleadain air falbh"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=help
 #. [button]: id=show_help
+#. [button]: id=help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:174
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Help"
@@ -2206,7 +2206,7 @@ msgstr "Eisimeileachdan:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:895
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:904
 msgid "addon_dependencies^None"
 msgstr "Gun eisimeileachd"
 
@@ -2217,7 +2217,7 @@ msgstr "Eadar-theangachaidhean:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:909
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:918
 msgid "translations^None"
 msgstr "Gin"
 
@@ -2274,8 +2274,8 @@ msgstr "Manaidsear nan tuilleadan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:455
-#: src/gui/dialogs/addon/manager.cpp:642
+#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:464
+#: src/gui/dialogs/addon/manager.cpp:651
 msgid "Addon Details"
 msgstr "Fiosrachadh an tuilleadain"
 
@@ -2494,8 +2494,8 @@ msgstr ""
 "Bheir gineadair nan àireamhan tuaireamach an aon toradh dhut gach turas fiù "
 "’s nuair a bhios tu air geama ath-luchdadh"
 
-#. [slider]: id=enemey_gold_factor
 #. [label]: id=title
+#. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
@@ -2559,31 +2559,31 @@ msgstr "Cuir lethbhreac dhen loga seo dhan stòr-bhòrd"
 msgid "Load Core"
 msgstr "Luchdaich eitean"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Dèan lethbhreac"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Cuir lethbhreac dhen t-slighe seo dhan stòr-bhòrd"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "Rùraich"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2659,7 +2659,7 @@ msgstr "Sguab às àm an latha"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:783 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:792 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "Dearbhaich"
@@ -2917,15 +2917,15 @@ msgstr "Gin"
 msgid "New Map"
 msgstr "Mapa ùr"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Leud:"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3007,14 +3007,14 @@ msgstr "Cuiridh seo am pasgan làithreach ris na comharran-leabhair"
 msgid "Removes the current bookmark"
 msgstr "Bheir seo an comharra-leabhair làithreach air falbh"
 
-#. [button]: id=delete
 #. [button]: id=delete_file
+#. [button]: id=delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:482
 msgid "Delete"
 msgstr "Sguab às"
 
-#. [label]: id=title
 #. [button]: id=new_dir
+#. [label]: id=title
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Pasgan ùr"
@@ -3075,8 +3075,8 @@ msgid "Execution trace"
 msgstr "Lorgadh a’ ghnìomhaidh"
 
 #. [button]: id=cancel
-#. [grid]
 #. [button]: id=quit_without_surrender
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:261
 msgid "Quit"
@@ -3277,17 +3277,17 @@ msgid "Upkeep"
 msgstr "Beathachadh"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
-#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
 msgid "Income"
 msgstr "Teachd a-steach"
 
-#. [label]: id=side_title
 #. [toggle_button]: id=sort_1
+#. [label]: id=side_title
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "Taobh"
@@ -3455,8 +3455,8 @@ msgstr "Sgrùdair staid a’ gheama"
 msgid "Copy this report to clipboard"
 msgstr "Cuir lethbhreac dhen aithisg seo dhan stòr-bhòrd"
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3527,8 +3527,8 @@ msgstr "Brùth air a’ ghar-iuchair a thogras tu (sguiridh Esc dheth)"
 msgid "Show or Hide Labels"
 msgstr "Seall no falaich na leubailean"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:258
 msgid "Language"
@@ -3887,8 +3887,8 @@ msgstr "Chaidh an geama a chruthachadh:"
 msgid "When a new game has been created"
 msgstr "Nuair a bhios geama ùr air a chruthachadh"
 
-#. [button]: id=orb_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:296
@@ -4225,8 +4225,8 @@ msgstr "Tagh am buidheann agad"
 msgid "Starting position:"
 msgstr "Ionad tòiseachaidh:"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4309,8 +4309,8 @@ msgid "Save password locally (encrypted)"
 msgstr "Sàbhail am facal-faire gu h-ionadail (crioptaichte)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
 #. [grid]
+#. [label]
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
@@ -5596,7 +5596,7 @@ msgstr "Cha deach dùmhlachd-bhreacaidh a mhìneachadh."
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Tha iomadh mìneachadh aig a’ bhuidheann ceangailte “$id|.”"
 
-#: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:429
+#: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:439
 #: src/gui/widgets/chatbox.cpp:804 src/gui/widgets/listbox.cpp:806
 #: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
@@ -5614,185 +5614,185 @@ msgstr "Feumaidh colbh a bhith aig ràgh."
 msgid "Number of columns differ."
 msgstr "Cha àireamhan eadar-dhealaichte dhe cholbhan ann."
 
-#: src/gui/dialogs/addon/manager.cpp:185
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_view^All Add-ons"
 msgstr "Na h-uile"
 
-#: src/gui/dialogs/addon/manager.cpp:186
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_view^Installed"
 msgstr "Air a stàladh"
 
-#: src/gui/dialogs/addon/manager.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:196
 msgid "addons_view^Upgradable"
 msgstr "Gabhaidh e ùrachadh"
 
-#: src/gui/dialogs/addon/manager.cpp:188
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_view^Publishable"
 msgstr "Gabhaidh fhoillseachadh"
 
-#: src/gui/dialogs/addon/manager.cpp:189
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_view^Not Installed"
 msgstr "Gun stàladh"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Campaigns"
 msgstr "Iomairt"
 
-#: src/gui/dialogs/addon/manager.cpp:194
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^Scenarios"
 msgstr "Cnàmh-sgeul"
 
-#: src/gui/dialogs/addon/manager.cpp:195
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "Iomairt aon no ioma-chluicheadair"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^MP campaigns"
 msgstr "Iomairt ioma-chluicheadair"
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:206
 msgid "addons_of_type^MP scenarios"
 msgstr "Cnàmh-sgeul ioma-chluicheadair"
 
-#: src/gui/dialogs/addon/manager.cpp:198
+#: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_of_type^MP map-packs"
 msgstr "Pacaid-mapa ioma-chluicheadair"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:208
 msgid "addons_of_type^MP eras"
 msgstr "Linn ioma-chluicheadair"
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:209
 msgid "addons_of_type^MP factions"
 msgstr "Buidheann ioma-chluicheadair"
 
-#: src/gui/dialogs/addon/manager.cpp:201
+#: src/gui/dialogs/addon/manager.cpp:210
 msgid "addons_of_type^Modifications"
 msgstr "Tuilleadan"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:211
 msgid "addons_of_type^Cores"
 msgstr "Eitean"
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:212
 msgid "addons_of_type^Resources"
 msgstr "Goireas"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:214
 msgid "addons_of_type^Other"
 msgstr "Seòrsa eile"
 
-#: src/gui/dialogs/addon/manager.cpp:206
+#: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_of_type^Unknown"
 msgstr "Gun seòrsa"
 
-#: src/gui/dialogs/addon/manager.cpp:210
+#: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Name ($order)"
 msgstr "Ainm ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:213
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Author ($order)"
 msgstr "Ùghdar ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:216
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_order^Size ($order)"
 msgstr "Meud ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:219
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^Downloads ($order)"
 msgstr "Luchdaidhean a-nuas ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:222
+#: src/gui/dialogs/addon/manager.cpp:231
 msgid "addons_order^Type ($order)"
 msgstr "Seòrsa ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:234
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "An t-atharrachadh mu dheireadh ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:237
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "A’ chiad luchdadh suas ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:257 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Gun stàladh"
 
-#: src/gui/dialogs/addon/manager.cpp:258 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Foillsichte, gun stàladh"
 
-#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:271 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Air a stàladh"
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:272 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Foillsichte"
 
-#: src/gui/dialogs/addon/manager.cpp:267
+#: src/gui/dialogs/addon/manager.cpp:276
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Air a stàladh, gun tracadh an tionndaidh ionadail"
 
-#: src/gui/dialogs/addon/manager.cpp:270
+#: src/gui/dialogs/addon/manager.cpp:279
 msgid "addon_state^Published, not tracking local version"
 msgstr "Foillsichte, gun tracadh an tionndaidh ionadail"
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:283
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "($local_version|) air a stàladh, gabhaidh e ùrachadh"
 
-#: src/gui/dialogs/addon/manager.cpp:275
+#: src/gui/dialogs/addon/manager.cpp:284
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "($local_version| air a stàladh), gabhaidh e ùrachadh"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:290
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "($local_version|) air a stàladh, ro shean air an fhrithealaiche"
 
-#: src/gui/dialogs/addon/manager.cpp:282
+#: src/gui/dialogs/addon/manager.cpp:291
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "($local_version| air a stàladh), ro shean air an fhrithealaiche"
 
-#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Air a stàladh, chan eil e deiseil ri fhoillseachadh"
 
-#: src/gui/dialogs/addon/manager.cpp:289 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Deiseil ri fhoillseachadh"
 
-#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Air a stàladh, briste"
 
-#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:303 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Foillsichte, briste"
 
-#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:306 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Chan eil fhios"
 
-#: src/gui/dialogs/addon/manager.cpp:359
+#: src/gui/dialogs/addon/manager.cpp:368
 msgid "ascending"
 msgstr "a’ dìreadh"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:361
+#: src/gui/dialogs/addon/manager.cpp:370
 msgid "oldest to newest"
 msgstr "sean gu ùr"
 
-#: src/gui/dialogs/addon/manager.cpp:364
+#: src/gui/dialogs/addon/manager.cpp:373
 msgid "descending"
 msgstr "a’ teàrnadh"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:366
+#: src/gui/dialogs/addon/manager.cpp:375
 msgid "newest to oldest"
 msgstr "ùr gu sean"
 
-#: src/gui/dialogs/addon/manager.cpp:384 src/gui/dialogs/chat_log.cpp:416
+#: src/gui/dialogs/addon/manager.cpp:393 src/gui/dialogs/chat_log.cpp:416
 #: src/gui/dialogs/game_cache_options.cpp:105
 #: src/gui/dialogs/game_version_dialog.cpp:182
 #: src/gui/dialogs/gamestate_inspector.cpp:428
@@ -5803,24 +5803,24 @@ msgid "Clipboard support not found, contact your packager"
 msgstr ""
 "Cha do lorg sinn taic ris an stòr-bhòrd, cuir fios gun neach-pacaididh agad"
 
-#: src/gui/dialogs/addon/manager.cpp:452
+#: src/gui/dialogs/addon/manager.cpp:461
 msgid "addons^Back to List"
 msgstr "Air ais dhan liosta"
 
-#: src/gui/dialogs/addon/manager.cpp:464
+#: src/gui/dialogs/addon/manager.cpp:473
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "Thachair mearachd rè luchdadh a-nuas liosta nan tuilleadan an fhrithealaiche."
 
-#: src/gui/dialogs/addon/manager.cpp:500
+#: src/gui/dialogs/addon/manager.cpp:509
 msgid "No Add-ons Available"
 msgstr "Chan eil tuilleadan ri fhaighinn"
 
-#: src/gui/dialogs/addon/manager.cpp:500
+#: src/gui/dialogs/addon/manager.cpp:509
 msgid "There are no add-ons available for download from this server."
 msgstr "Chan eil tuilleadan ri luchdadh a-nuas air an fhrithealaiche seo."
 
-#: src/gui/dialogs/addon/manager.cpp:675
+#: src/gui/dialogs/addon/manager.cpp:684
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5828,15 +5828,15 @@ msgstr ""
 "A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mun "
 "tuilleadan seo air stòradh gu h-ionadail is cha dèid a thoirt air falbh:"
 
-#: src/gui/dialogs/addon/manager.cpp:683
+#: src/gui/dialogs/addon/manager.cpp:692
 msgid "The following add-on could not be deleted properly:"
 msgstr "Cha b’ urrainn dhuinn an tuilleadan seo a sguabadh às mar bu chòir:"
 
-#: src/gui/dialogs/addon/manager.cpp:736
+#: src/gui/dialogs/addon/manager.cpp:745
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: src/gui/dialogs/addon/manager.cpp:737
+#: src/gui/dialogs/addon/manager.cpp:746
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -5845,27 +5845,27 @@ msgstr ""
 "tionndadh a tha thu airson luchdadh suas. A bheil thu cinnteach gu bheil thu "
 "airson leantainn air adhart?"
 
-#: src/gui/dialogs/addon/manager.cpp:746
+#: src/gui/dialogs/addon/manager.cpp:755
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Chan eil slighe na h-ìomhaigheige dligheach. Dèan cinnteach gun tomh an t-"
 "slighe ri dealbh dligheach."
 
-#: src/gui/dialogs/addon/manager.cpp:749 src/gui/dialogs/addon/manager.cpp:752
-#: src/gui/dialogs/addon/manager.cpp:791
+#: src/gui/dialogs/addon/manager.cpp:758 src/gui/dialogs/addon/manager.cpp:761
+#: src/gui/dialogs/addon/manager.cpp:800
 msgid "The server responded with an error:"
 msgstr "Dh’fhreagair am frithealaiche le mearachd:"
 
-#: src/gui/dialogs/addon/manager.cpp:750
+#: src/gui/dialogs/addon/manager.cpp:759
 msgid "Terms"
 msgstr "Teirmichean"
 
-#: src/gui/dialogs/addon/manager.cpp:767 src/gui/dialogs/addon/manager.cpp:794
+#: src/gui/dialogs/addon/manager.cpp:776 src/gui/dialogs/addon/manager.cpp:803
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:502
 msgid "Response"
 msgstr "Freagairt"
 
-#: src/gui/dialogs/addon/manager.cpp:779
+#: src/gui/dialogs/addon/manager.cpp:788
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5874,7 +5874,7 @@ msgstr ""
 "luchdaidhean suas is a-nuas air frithealaiche nan tuilleadan. A bheil thu "
 "cinnteach gu bheil thu airson leantainn air adhart?"
 
-#: src/gui/dialogs/addon/manager.cpp:811
+#: src/gui/dialogs/addon/manager.cpp:820
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "A bheil thu airson “$addon|” a dhì-stàladh?"
 
@@ -6640,7 +6640,7 @@ msgstr "Air a stàladh, ro shean air an fhrithealaiche"
 msgid "addon_state^Published, outdated on server"
 msgstr "Foillsichte, ro shean air an fhrithealaiche"
 
-#: src/gui/widgets/addon_list.cpp:285
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "Sguab às an tuilleadan air an fhrithealaiche"
 
