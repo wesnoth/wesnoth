@@ -6,6 +6,10 @@
    * Do not list nameless abilities in the Abilities and Ability Upgrades lists in unit
      descriptions in Help (issue #3060).
    * Fixed disabled buttons using the pressed highlight color.
+ ### WML engine
+   * Do not attempt to use names of [color_range]s as inline color range definitions if
+     they don't have commas, or names of [color_palette]s as inline palette definitions
+     if they have characters that aren't commas or hexadecimal digits.
  ### Miscellaneous and bug fixes
    * Made wmllint recognize [remove_time_area] in order to avoid spurious warnings about
      unit ids.
