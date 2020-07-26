@@ -33,8 +33,9 @@ using my_bool = bool;
 
 struct sql_error : public game::error
 {
-	sql_error(const std::string& message, const std::string& sql)
-		: game::error("Error evaluating SQL statement: '" + sql + "': " + message) {}
+	bool no_data = false;
+	sql_error(const std::string& message, const std::string& sql, bool no_data = false)
+		: game::error("Error evaluating SQL statement: '" + sql + "': " + message), no_data(no_data) {}
 	sql_error(const std::string& message) : game::error(message) {}
 };
 
@@ -116,7 +117,7 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 
 	int res = mysql_stmt_fetch(stmt);
 	if(res == MYSQL_NO_DATA)
-		throw sql_error("no data returned", sql);
+		throw sql_error("no data returned", sql, true);
 	if(is_null)
 		throw sql_error("null value returned", sql);
 	if(res != MYSQL_DATA_TRUNCATED)
@@ -130,7 +131,7 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 		delete[] buf;
 	}
 	if(res == MYSQL_NO_DATA)
-		throw sql_error("no data returned", sql);
+		throw sql_error("no data returned", sql, true);
 	if(res != 0)
 		throw sql_error("mysql_stmt_fetch_column failed", sql);
 	return result;
@@ -151,7 +152,7 @@ template<typename T> T fetch_result_long_internal_(MYSQL_STMT* stmt, const std::
 
 	int res = mysql_stmt_fetch(stmt);
 	if(res == MYSQL_NO_DATA)
-		throw sql_error("no data returned", sql);
+		throw sql_error("no data returned", sql, true);
 	if(is_null)
 		throw sql_error("null value returned", sql);
 	if(res != 0)
@@ -190,6 +191,21 @@ template<> bool fetch_result<bool>(MYSQL_STMT* stmt, const std::string& sql)
 	if(res != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
 	return true;
+}
+
+template<typename C> C fetch_result(MYSQL_STMT* stmt, const std::string& sql)
+{
+	C result;
+
+	try {
+		while(true)
+			result.push_back(fetch_result<typename C::value_type>(stmt, sql));
+	} catch(const sql_error& e) {
+		if(!e.no_data)
+			throw;
+	}
+
+	return result;
 }
 
 template<> void fetch_result<void>(MYSQL_STMT*, const std::string&)
