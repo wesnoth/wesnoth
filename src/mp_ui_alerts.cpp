@@ -28,6 +28,7 @@
 
 #include <string>
 #include <vector>
+#include <regex>
 
 namespace mp_ui_alerts {
 
@@ -64,7 +65,9 @@ void game_created(const std::string & scenario, const std::string & name)
 	}
 
 	if (notif_pref(id)) {
-		const std::string message = VGETTEXT("A game ($name|, $scenario|) has been created", {{"name", name}, {"scenario", scenario}});
+		std::regex e ("<[^>]*>");
+		const std::string placeholder = std::regex_replace(scenario,e,"");	//removing Markup-Tags for better notifications
+		const std::string message = VGETTEXT("A game ($name|, $scenario|) has been created", {{"name", name}, {"scenario", placeholder}});
 		desktop::notifications::send(_("Wesnoth"), message, desktop::notifications::OTHER);
 	}
 }
