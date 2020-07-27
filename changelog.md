@@ -5,6 +5,7 @@
  ### User interface
    * Do not list nameless abilities in the Abilities and Ability Upgrades lists in unit
      descriptions in Help (issue #3060).
+   * Fixed disabled buttons using the pressed highlight color.
  ### Miscellaneous and bug fixes
    * Made wmllint recognize [remove_time_area] in order to avoid spurious warnings about
      unit ids.
