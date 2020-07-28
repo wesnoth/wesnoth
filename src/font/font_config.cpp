@@ -40,7 +40,6 @@
 
 #ifdef CAIRO_HAS_WIN32_FONT
 #include <windows.h>
-#undef CAIRO_HAS_FT_FONT
 #endif
 
 #ifdef CAIRO_HAS_FT_FONT
@@ -198,9 +197,7 @@ manager::manager()
 	{
 		LOG_FT << "Local font configuration loaded\n";
 	}
-#endif
-
-#ifdef CAIRO_HAS_WIN32_FONT
+#elif defined(CAIRO_HAS_WIN32_FONT)
 	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path)) {

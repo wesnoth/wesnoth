@@ -997,6 +997,10 @@ int main(int argc, char** argv)
 	bool log_redirect = true, native_console_implied = false;
 	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
 	std::optional<bool> native_console_force;
+
+	_putenv("PANGOCAIRO_BACKEND=fontconfig");
+	_putenv("FONTCONFIG_PATH=fonts");
+
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
 	// turn it into a CLI application. Also, --wconsole in particular attaches
