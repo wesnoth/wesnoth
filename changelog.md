@@ -46,6 +46,7 @@
    * Fix floating label duration being measured in 'frames', it is now
      measured in milliseconds.
    * Added unit type variation selection to the debug mode Create Unit dialog (PR #4986).
+   * Removed the Python2 versions of tools.
 
 ## Version 1.15.3
  ### AI
