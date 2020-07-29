@@ -40,7 +40,7 @@ config_array_view game_config_view::child_range(config_key_type key) const
 				res.push_back(child);
 			}
 		}
-		for (const config& child : cfgs_.front().child_range(key)) {
+		for (const config& child : cfgs_.front().get().child_range(key)) {
 			res.push_back(child);
 		}
 	}
