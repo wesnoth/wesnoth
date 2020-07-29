@@ -15,6 +15,8 @@
 #include "config.hpp"
 #include "log.hpp"
 
+#include <boost/range/iterator_range.hpp>
+
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
@@ -24,8 +26,21 @@ static lg::log_domain log_config("config");
 config_array_view game_config_view::child_range(config_key_type key) const
 {
 	config_array_view res;
-	for(const config& cfg : cfgs_) {
-		for (const config& child : cfg.child_range(key)) {
+	if(cfgs_.size() <= 1 || key != "terrain_graphics") {
+		for(const config& cfg : cfgs_) {
+			for (const config& child : cfg.child_range(key)) {
+				res.push_back(child);
+			}
+		}
+	}
+	else {
+		//use mainline [terrain_graphics] last. cfgs_.front() is the main game configs while the later ones are add-ons.
+		for(const config& cfg : boost::make_iterator_range(cfgs_.begin() + 1, cfgs_.end())) {
+			for (const config& child : cfg.child_range(key)) {
+				res.push_back(child);
+			}
+		}
+		for (const config& child : cfgs_.front().get().child_range(key)) {
 			res.push_back(child);
 		}
 	}
