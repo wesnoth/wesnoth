@@ -4,12 +4,6 @@ also belong here. Other utils are in utils/.
 
 == Scripts ==
 
-=== rmtrans ===
-
-Remove nearly transparent pixels from images using GIMP. It currently affects
-only one image at a time. Batch processing is available within GIMP, but it
-would be useful to expand this to skip files where the pixels did not change.
-
 === `tmx_trackplacer` ===
 
 Converter for journey track files, the .cfg files which control the icon
