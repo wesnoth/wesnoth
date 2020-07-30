@@ -725,7 +725,6 @@ private:
 	};
 
 	bool perform_hit(bool, statistics::attack_context&);
-	void fire_event(const std::string& n);
 	void refresh_bc();
 
 	/** Structure holding unit info used in the attack action. */
@@ -750,6 +749,13 @@ private:
 
 		std::string dump();
 	};
+
+	/// returns true if the wml aborted the attack
+	bool fire_event(const std::string& n, unit_info& primary, unit_info& secondary);
+	/// returns true if the wml aborted the attack
+	bool fire_event(const std::string& n);
+	/// calls fire_event and aborts the attack if needed.
+	void fire_mid_attack_event(const std::string& n);
 
 	/**
 	 * Used in perform_hit to confirm a replay is in sync.
@@ -846,48 +852,47 @@ attack::attack(const map_location& attacker,
 	}
 }
 
-void attack::fire_event(const std::string& n)
+bool attack::fire_event(const std::string& n)
+{
+	fire_event(n, a_, d_);
+}
+
+bool attack::fire_event(const std::string& n, unit_info& primary, unit_info& secondary)
 {
 	LOG_NG << "attack: firing '" << n << "' event\n";
 
+	bool primary_is_attacker = &primary == &a_;
+	bool secondary_is_attacker = &secondary == &a_;
+
 	// prepare the event data for weapon filtering
 	config ev_data;
-	config& a_weapon_cfg = ev_data.add_child("first");
-	config& d_weapon_cfg = ev_data.add_child("second");
 
 	// Need these to ensure weapon filters work correctly
-	boost::optional<attack_type::specials_context_t> a_ctx, d_ctx;
+	boost::optional<attack_type::specials_context_t> first_ctx;
+	boost::optional<attack_type::specials_context_t> second_ctx;
 
-	if(a_.stats_->weapon != nullptr && a_.valid()) {
-		if(d_.stats_->weapon != nullptr && d_.valid()) {
-			a_ctx.emplace(a_.stats_->weapon->specials_context(nullptr, nullptr, a_.loc_, d_.loc_, true, d_.stats_->weapon));
-		} else {
-			a_ctx.emplace(a_.stats_->weapon->specials_context(nullptr, a_.loc_, true));
+	auto set_context = [&](config& weapon_cfg, boost::optional<attack_type::specials_context_t>& ctx, unit_info& u1, unit_info& u2, bool is_attacker) {
+		if(u1.stats_->weapon != nullptr && u1.valid()) {
+			if(u2.stats_->weapon != nullptr && u2.valid()) {
+				ctx.emplace(u1.stats_->weapon->specials_context(nullptr, nullptr, u1.loc_, u2.loc_, is_attacker, u2.stats_->weapon));
+			} else {
+				ctx.emplace(u1.stats_->weapon->specials_context(nullptr, u1.loc_, is_attacker));
+			}
+			u1.stats_->weapon->write(weapon_cfg);
 		}
-		a_.stats_->weapon->write(a_weapon_cfg);
-	}
 
-	if(d_.stats_->weapon != nullptr && d_.valid()) {
-		if(a_.stats_->weapon != nullptr && a_.valid()) {
-			d_ctx.emplace(d_.stats_->weapon->specials_context(nullptr, nullptr, d_.loc_, a_.loc_, false, a_.stats_->weapon));
-		} else {
-			d_ctx.emplace(d_.stats_->weapon->specials_context(nullptr, d_.loc_, false));
+		if(weapon_cfg["name"].empty()) {
+			weapon_cfg["name"] = "none";
 		}
-		d_.stats_->weapon->write(d_weapon_cfg);
-	}
+	};
 
-	if(a_weapon_cfg["name"].empty()) {
-		a_weapon_cfg["name"] = "none";
-	}
-
-	if(d_weapon_cfg["name"].empty()) {
-		d_weapon_cfg["name"] = "none";
-	}
+	set_context(ev_data.add_child("first"), first_ctx, primary, secondary, primary_is_attacker);
+	set_context(ev_data.add_child("second"), second_ctx, secondary, primary, secondary_is_attacker);
 
 	if(n == "attack_end") {
 		// We want to fire attack_end event in any case! Even if one of units was removed by WML.
-		resources::game_events->pump().fire(n, a_.loc_, d_.loc_, ev_data);
-		return;
+		resources::game_events->pump().fire(n, primary.loc_, secondary.loc_, ev_data);
+		return false;
 	}
 
 	// damage_inflicted is set in these two events.
@@ -896,16 +901,22 @@ void attack::fire_event(const std::string& n)
 		ev_data["damage_inflicted"] = resources::gamedata->get_variable("damage_inflicted");
 	}
 
-	const int defender_side = d_.get_unit().side();
-
 	bool wml_aborted;
 	std::tie(std::ignore, wml_aborted) = resources::game_events->pump().fire(n,
-		game_events::entity_location(a_.loc_, a_.id_),
-		game_events::entity_location(d_.loc_, d_.id_), ev_data);
+		game_events::entity_location(primary.loc_, primary.id_),
+		game_events::entity_location(secondary.loc_, secondary.id_), ev_data);
 
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist.
 	refresh_bc();
+	return wml_aborted;
+}
+
+
+void attack::fire_mid_attack_event(const std::string& n)
+{
+	const int defender_side = d_.get_unit().side();
+	bool wml_aborted = fire_event(n);
 
 	if(wml_aborted || !a_.valid() || !d_.valid()
 		|| !resources::gameboard->get_team(a_.get_unit().side()).is_enemy(d_.get_unit().side())
@@ -1127,16 +1138,14 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 
 	if(hits) {
 		try {
-			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
+			fire_mid_attack_event(attacker_turn ? "attacker_hits" : "defender_hits");
 		} catch(const attack_end_exception&) {
-			refresh_bc();
 			return false;
 		}
 	} else {
 		try {
-			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
+			fire_mid_attack_event(attacker_turn ? "attacker_misses" : "defender_misses");
 		} catch(const attack_end_exception&) {
-			refresh_bc();
 			return false;
 		}
 	}
@@ -1219,26 +1228,8 @@ void attack::unit_killed(unit_info& attacker,
 	std::string undead_variation = defender.get_unit().undead_variation();
 
 	fire_event("attack_end");
-	refresh_bc();
 
-	// Get weapon info for last_breath and die events.
-	config dat;
-	config a_weapon_cfg = attacker_stats->weapon && attacker.valid() ? attacker_stats->weapon->to_config() : config();
-	config d_weapon_cfg = defender_stats->weapon && defender.valid() ? defender_stats->weapon->to_config() : config();
-
-	if(a_weapon_cfg["name"].empty()) {
-		a_weapon_cfg["name"] = "none";
-	}
-
-	if(d_weapon_cfg["name"].empty()) {
-		d_weapon_cfg["name"] = "none";
-	}
-
-	dat.add_child("first", d_weapon_cfg);
-	dat.add_child("second", a_weapon_cfg);
-
-	resources::game_events->pump().fire("last_breath", death_loc, attacker_loc, dat);
-	refresh_bc();
+	fire_event("last_breath", defender, attacker);
 
 	// WML has invalidated the dying unit, abort.
 	if(!defender.valid() || defender.get_unit().hitpoints() > 0) {
@@ -1263,8 +1254,8 @@ void attack::unit_killed(unit_info& attacker,
 		);
 	}
 
-	resources::game_events->pump().fire("die", death_loc, attacker_loc, dat);
-	refresh_bc();
+
+	fire_event("die", defender, attacker);
 
 	if(!defender.valid() || defender.get_unit().hitpoints() > 0) {
 		// WML has invalidated the dying unit, abort
@@ -1369,7 +1360,7 @@ void attack::perform()
 	}
 
 	try {
-		fire_event("attack");
+		fire_mid_attack_event("attack");
 	} catch(const attack_end_exception&) {
 		return;
 	}
@@ -1433,7 +1424,6 @@ void attack::perform()
 
 		if(a_.n_attacks_ <= 0 && d_.n_attacks_ <= 0) {
 			fire_event("attack_end");
-			refresh_bc();
 			break;
 		}
 	}
