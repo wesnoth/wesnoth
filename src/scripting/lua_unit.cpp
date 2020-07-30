@@ -343,6 +343,18 @@ static int impl_unit_get(lua_State *L)
 		return 1;
 	}
 
+	if(strcmp(m, "active_attack") == 0) {
+		attack_ptr att = lu->get()->get_active_attack();
+		if(att) {
+			luaW_pushweapon(L, att);
+			return 1;
+		}
+		else {
+			std::cerr << "no active attack!\n";
+			return 0;
+		}
+	}
+
 	if(strcmp(m, "upkeep") == 0) {
 		unit::upkeep_t upkeep = u.upkeep_raw();
 

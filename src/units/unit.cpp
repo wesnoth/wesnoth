@@ -2636,6 +2636,17 @@ bool unit::remove_attack(attack_ptr atk)
 	return true;
 }
 
+attack_ptr unit::get_active_attack()
+{
+	auto iter = std::find_if(attacks_.begin(), attacks_.end(), [&](attack_ptr ap) { return ap->is_active(); });
+	if(iter != attacks_.end()) {
+		return *iter;
+	}
+	else {
+		return attack_ptr();
+	}
+}
+
 void unit::remove_attacks_ai()
 {
 	if(attacks_left_ == max_attacks_) {

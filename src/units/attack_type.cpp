@@ -259,6 +259,10 @@ bool attack_type::matches_filter(const config& filter) const
 	return matches;
 }
 
+bool attack_type::is_active() const
+{
+	return self_ || other_ || self_loc_ != map_location::null_location() || other_loc_ != map_location::null_location();
+}
 /**
  * Modifies *this using the specifications in @a cfg, but only if *this matches
  * @a cfg viewed as a filter.

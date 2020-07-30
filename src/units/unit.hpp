@@ -928,6 +928,8 @@ public:
 		return make_attack_itors(attacks_);
 	}
 
+	attack_ptr get_active_attack();
+
 	/**
 	 * Adds a new attack to the unit.
 	 * @param position An iterator pointing to the attack before which to insert the new one.

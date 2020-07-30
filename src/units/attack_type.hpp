@@ -105,6 +105,9 @@ public:
 	inline config to_config() const { config c; write(c); return c; }
 
 	void add_formula_context(wfl::map_formula_callable&) const;
+
+
+	bool is_active() const;
 private:
 	// In unit_abilities.cpp:
 
