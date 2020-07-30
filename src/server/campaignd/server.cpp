@@ -106,7 +106,7 @@ server::server(const std::string& cfg_file)
 	, cfg_file_(cfg_file)
 	, read_only_(false)
 	, compress_level_(0)
-	, update_pack_lifespan_(0i64)
+	, update_pack_lifespan_(0)
 	, hooks_()
 	, handlers_()
 	, feedback_url_format_()
@@ -124,7 +124,7 @@ server::server(const std::string& cfg_file)
 	int res = sigaction( SIGPIPE, &sa, nullptr);
 	assert( res == 0 );
 #endif
-	invalid_ = config().child("", 0);
+	config inv = config();
 
 	load_config();
 
@@ -945,10 +945,9 @@ void server::handle_upload(const server::request& req)
 
 		add_license(data);
 		
-		//#FIXME!!! : change the new version to what we have on the client side
 		const std::string& new_version = (*campaign)["version"].str();
 		//#TODO: probably make hash from new_version + required_wesnoth_version ?
-		const std::string& file_hash = utils::md5(new_version).base64_digest();
+		const std::string& file_hash = utils::md5(new_version).hex_digest();
 
 		//sorted version map
 		std::map<version_info, config&> version_map = std::map<version_info, config&>();
@@ -958,8 +957,7 @@ void server::handle_upload(const server::request& req)
 		}
 
 		//#TODO: add gfgtdf's stuff about required_wesnoth_version here
-		config version_cfg = config();
-		version_cfg["version"] = new_version;
+		config version_cfg = config("version", new_version);
 		version_cfg["filename"] = "/full_pack_" + file_hash + ".gz";
 
 		version_map.emplace(version_info(new_version), version_cfg);
@@ -969,11 +967,21 @@ void server::handle_upload(const server::request& req)
 			}
 		);
 		(*campaign).add_child("version", version_cfg);
+
+		//Let's write the full_pack file
+		{
+			filesystem::atomic_commit campaign_file(filename + version_cfg["filename"].str());
+			config_writer writer(*campaign_file.ostream(), true, compress_level_);
+			writer.write(data);
+			campaign_file.commit();
+		}
+
+		(*campaign)["size"] = filesystem::file_size(filename + version_cfg["filename"].str()) + filesystem::file_size(filename + "/addon.cfg");
 		
 		//Remove the update packs with expired lifespan
-		for(config& pack : (*campaign).child_range("update_pack")) {
+		for(const config& pack : (*campaign).child_range("update_pack")) {
 			if(pack["expire"].to_time_t() > upload_ts) {
-				std::string& pack_filename = pack["filename"].str();
+				const std::string& pack_filename = pack["filename"].str();
 				filesystem::delete_file(filename + pack_filename);
 				(*campaign).remove_children("update_pack", [&pack_filename](const config& child) 
 					{
@@ -986,51 +994,51 @@ void server::handle_upload(const server::request& req)
 		//Now let's fill in the gaps with missing incremental packs 
 		//(which should mainly include the u-pack from the previous version to the present,
 		//and from the present to the future version if either of them exists)
-		auto& iter = version_map.begin();
+		auto iter = version_map.begin();
 
-		do {
-			config& prev_version = iter->second;
+		while(std::distance(iter, version_map.end()) > 1) {
+			const config& prev_version = iter->second;
 			iter++;
-			config& next_version = iter->second;
+			const config& next_version = iter->second;
 			const std::string& prev_version_name = prev_version["version"].str();
 			const std::string& next_version_name = next_version["version"].str();
 
 			bool found = false;
 
-			for(config& pack : (*campaign).child_range("update_pack")) {
+			for(const config& pack : (*campaign).child_range("update_pack")) {
 				if(pack["from"].str() == prev_version_name && pack["to"].str() == next_version_name) {
 					found = true;
 					break;
 				}
 			}
 
-			//If we found it (meaning it hasn't expired yet) leave it for now,
-			//else we'll bake a new pack
+			// If we found it (meaning it hasn't expired yet) leave it for now,
+			// else we'll bake a new pack
 			if(!found) {
-				config pack_info = config();
 				if(filesystem::file_size(filename + prev_version["filename"].str()) <= 0
 						|| filesystem::file_size(filename + next_version["filename"].str()) <= 0) {
 					ERR_CS << "Unable to create an update pack for the addon " << (*campaign)["filename"].str()
-						   << " when updating from version " << prev_version_name << " to " << next_version_name << "!\n";
+							<< " when updating from version " << prev_version_name << " to " << next_version_name
+							<< "!\n";
 					continue;
 				}
-				pack_info["from"] = prev_version_name;
-				pack_info["to"] = next_version_name;
+				config pack_info = config("from", prev_version_name, "to", next_version_name);
 				pack_info["expire"] = upload_ts + update_pack_lifespan_;
-				pack_info["filename"] = "/full_pack_" + utils::md5(prev_version_name + next_version_name).base64_digest() + ".gz";
+				pack_info["filename"]
+						= "/update_pack_" + utils::md5(prev_version_name + next_version_name).hex_digest() + ".gz";
 				(*campaign).add_child("update_pack", pack_info);
 
-				//Gather the full packs and create an update
-				config pack = config();
-				config from = config();
-				config to = config();
+				// Gather the full packs and create an update
+				config pack;
+				config from;
+				config to;
 				filesystem::scoped_istream in = filesystem::istream_file(filename + prev_version["filename"].str());
 				read_gz(from, *in);
-				filesystem::scoped_istream in = filesystem::istream_file(filename + next_version["filename"].str());
+				in = filesystem::istream_file(filename + next_version["filename"].str());
 				read_gz(to, *in);
 				make_updatepack(pack, from, to);
 
-				//Now write the update_pack archive in cached form
+				// Now write the update_pack archive in cached form
 				{
 					filesystem::atomic_commit pack_file(filename + pack_info["filename"].str());
 					config_writer writer(*pack_file.ostream(), true, compress_level_);
@@ -1038,19 +1046,9 @@ void server::handle_upload(const server::request& req)
 					pack_file.commit();
 				}
 			}
-		} while(iter != version_map.end());
-		
-
-		//Finally write the full_pack file
-		{
-			filesystem::atomic_commit campaign_file(filename + version_cfg["filename"].str());
-			config_writer writer(*campaign_file.ostream(), true, compress_level_);
-			writer.write(data);
-			campaign_file.commit();
 		}
 
-		(*campaign)["size"] = filesystem::file_size(filename + version_cfg["filename"].str()) + filesystem::file_size(filename + "/addon.cfg");
-
+		//Mark the addon's info to be updated
 		dirty_addons_.emplace((*campaign)["name"]);
 		write_config();
 
