@@ -98,6 +98,12 @@
 		46685CAB219D640E0009CFFE /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46685C76219D51880009CFFE /* string_utils.cpp */; };
 		46685CAC219D64120009CFFE /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46685C87219D518A0009CFFE /* unicode.cpp */; };
 		46685CAD219D643C0009CFFE /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46685C7B219D51890009CFFE /* tokenizer.cpp */; };
+		4674EE9C24CD1E64007C18CE /* libfribidi.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4674EE9B24CD1E64007C18CE /* libfribidi.0.dylib */; };
+		4674EE9D24CD1E64007C18CE /* libfribidi.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4674EE9B24CD1E64007C18CE /* libfribidi.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4674EE9E24CD1EC1007C18CE /* libfribidi.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4674EE9B24CD1E64007C18CE /* libfribidi.0.dylib */; };
+		4674EEA024CD207F007C18CE /* libgio-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4674EE9F24CD207F007C18CE /* libgio-2.0.0.dylib */; };
+		4674EEA124CD207F007C18CE /* libgio-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4674EE9F24CD207F007C18CE /* libgio-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4674EEA224CD208D007C18CE /* libgio-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4674EE9F24CD207F007C18CE /* libgio-2.0.0.dylib */; };
 		4685124A24AE1535005B6EB1 /* game_config_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685124824AE1535005B6EB1 /* game_config_view.cpp */; };
 		4685124B24AE1592005B6EB1 /* game_config_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685124824AE1535005B6EB1 /* game_config_view.cpp */; };
 		4685124C24AE1A0B005B6EB1 /* game_config_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685124824AE1535005B6EB1 /* game_config_view.cpp */; };
@@ -576,8 +582,6 @@
 		9107AE461DB335D5001927B0 /* paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE113A41DAECF3D00EBD7C4 /* paths.cpp */; };
 		9107AE571DB5BD49001927B0 /* lutf8lib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9107AE561DB5BD49001927B0 /* lutf8lib.cpp */; };
 		911F2DAD1BA086A400E3102E /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 911F2DAB1BA086A400E3102E /* window.cpp */; };
-		911F47171CADC83800F47035 /* libboost_unit_test_framework-mt-x64.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt-x64.dylib */; };
-		911F47181CADCF3F00F47035 /* libboost_program_options-mt-x64.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5213AD4E35003C701D /* libboost_program_options-mt-x64.dylib */; };
 		913D26771D3C9697002FF3AB /* name_generator_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 913D26751D3C9697002FF3AB /* name_generator_factory.cpp */; };
 		914F2F861D35253900A42440 /* location_palette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 914F2F841D35253900A42440 /* location_palette.cpp */; };
 		915C68EA1DF1DCB000594B07 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 915C68E81DF1DCB000594B07 /* color.cpp */; };
@@ -751,7 +755,7 @@
 		91B622061B76C0A600B00E0F /* libboost_regex-mt-x64.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5313AD4E35003C701D /* libboost_regex-mt-x64.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B622071B76C0A600B00E0F /* libboost_system-mt-x64.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_system-mt-x64.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		91B6220C1B76C0A600B00E0F /* libffi.6.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242418EF07B4001FA499 /* libffi.6.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		91B6220C1B76C0A600B00E0F /* libffi.7.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242418EF07B4001FA499 /* libffi.7.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B6220D1B76C0A600B00E0F /* libfontconfig.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B6220E1B76C0A600B00E0F /* libfreetype.6.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B5599FC90EC8FBCB008DD061 /* libfreetype.6.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B6220F1B76C0A600B00E0F /* libglib-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242618EF07B4001FA499 /* libglib-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -1207,7 +1211,7 @@
 		EC59F2621A4529D2001910CB /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59F2601A4529D2001910CB /* manager.cpp */; };
 		EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */; };
 		EC5C243C18EF07B4001FA499 /* libexpat.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242318EF07B4001FA499 /* libexpat.1.dylib */; };
-		EC5C243D18EF07B4001FA499 /* libffi.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242418EF07B4001FA499 /* libffi.6.dylib */; };
+		EC5C243D18EF07B4001FA499 /* libffi.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242418EF07B4001FA499 /* libffi.7.dylib */; };
 		EC5C243E18EF07B4001FA499 /* libfontconfig.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */; };
 		EC5C243F18EF07B4001FA499 /* libglib-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242618EF07B4001FA499 /* libglib-2.0.0.dylib */; };
 		EC5C244018EF07B4001FA499 /* libgmodule-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */; };
@@ -1337,18 +1341,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		911F47161CADC81000F47035 /* Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = TestFrameworks;
-			dstSubfolderSpec = 16;
-			files = (
-				911F47171CADC83800F47035 /* libboost_unit_test_framework-mt-x64.dylib in Copy Frameworks */,
-				911F47181CADCF3F00F47035 /* libboost_program_options-mt-x64.dylib in Copy Frameworks */,
-			);
-			name = "Copy Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B5599E8F0EC64D18008DD061 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1363,7 +1355,7 @@
 				91B622061B76C0A600B00E0F /* libboost_regex-mt-x64.dylib in Copy Frameworks */,
 				91B622071B76C0A600B00E0F /* libboost_system-mt-x64.dylib in Copy Frameworks */,
 				91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */,
-				91B6220C1B76C0A600B00E0F /* libffi.6.dylib in Copy Frameworks */,
+				91B6220C1B76C0A600B00E0F /* libffi.7.dylib in Copy Frameworks */,
 				91B6220D1B76C0A600B00E0F /* libfontconfig.1.dylib in Copy Frameworks */,
 				91B6220E1B76C0A600B00E0F /* libfreetype.6.dylib in Copy Frameworks */,
 				91B6220F1B76C0A600B00E0F /* libglib-2.0.0.dylib in Copy Frameworks */,
@@ -1376,6 +1368,7 @@
 				91B622141B76C0A600B00E0F /* libharfbuzz.0.dylib in Copy Frameworks */,
 				46406DEC230DA7180069492E /* libSDL2_net-2.0.0.dylib in Copy Frameworks */,
 				915C68F51DF1F90F00594B07 /* libintl.8.dylib in Copy Frameworks */,
+				4674EEA124CD207F007C18CE /* libgio-2.0.0.dylib in Copy Frameworks */,
 				46406DF0230DA7190069492E /* libvorbisfile.dylib in Copy Frameworks */,
 				46406DE9230DA7030069492E /* libogg.0.dylib in Copy Frameworks */,
 				91B622171B76C0A600B00E0F /* libpango-1.0.0.dylib in Copy Frameworks */,
@@ -1388,6 +1381,7 @@
 				46406DEE230DA7180069492E /* libSDL2-2.0.0.dylib in Copy Frameworks */,
 				46406DED230DA7180069492E /* libSDL2_ttf-2.0.0.dylib in Copy Frameworks */,
 				91B6221B1B76C0A600B00E0F /* libpng16.16.dylib in Copy Frameworks */,
+				4674EE9D24CD1E64007C18CE /* libfribidi.0.dylib in Copy Frameworks */,
 				91A41F901CA22A98008B10D5 /* libreadline.8.0.dylib in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -1456,6 +1450,8 @@
 		46685C86219D518A0009CFFE /* ucs4_convert_impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ucs4_convert_impl.hpp; sourceTree = "<group>"; };
 		46685C87219D518A0009CFFE /* unicode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unicode.cpp; sourceTree = "<group>"; };
 		46685C88219D518A0009CFFE /* schema_validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = schema_validator.cpp; sourceTree = "<group>"; };
+		4674EE9B24CD1E64007C18CE /* libfribidi.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfribidi.0.dylib; path = lib/libfribidi.0.dylib; sourceTree = "<group>"; };
+		4674EE9F24CD207F007C18CE /* libgio-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgio-2.0.0.dylib"; path = "lib/libgio-2.0.0.dylib"; sourceTree = "<group>"; };
 		467D9DF0205EC3D200FA2FC4 /* userevent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userevent.hpp; sourceTree = "<group>"; };
 		467D9DF5205EC3DA00FA2FC4 /* surface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = surface.hpp; sourceTree = "<group>"; };
 		4685124824AE1535005B6EB1 /* game_config_view.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_config_view.cpp; sourceTree = "<group>"; };
@@ -2565,7 +2561,7 @@
 		EC59F2601A4529D2001910CB /* manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = manager.cpp; path = plugins/manager.cpp; sourceTree = "<group>"; };
 		EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = /usr/lib/libbz2.1.0.dylib; sourceTree = "<absolute>"; };
 		EC5C242318EF07B4001FA499 /* libexpat.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.dylib; path = /usr/lib/libexpat.1.dylib; sourceTree = "<absolute>"; };
-		EC5C242418EF07B4001FA499 /* libffi.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libffi.6.dylib; path = lib/libffi.6.dylib; sourceTree = "<group>"; };
+		EC5C242418EF07B4001FA499 /* libffi.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libffi.7.dylib; path = lib/libffi.7.dylib; sourceTree = "<group>"; };
 		EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfontconfig.1.dylib; path = lib/libfontconfig.1.dylib; sourceTree = "<group>"; };
 		EC5C242618EF07B4001FA499 /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
 		EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgmodule-2.0.0.dylib"; path = "lib/libgmodule-2.0.0.dylib"; sourceTree = "<group>"; };
@@ -2756,7 +2752,7 @@
 				B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */,
 				EC5C243C18EF07B4001FA499 /* libexpat.1.dylib in Frameworks */,
 				464C036F228361B7007D2741 /* libSDL2-2.0.0.dylib in Frameworks */,
-				EC5C243D18EF07B4001FA499 /* libffi.6.dylib in Frameworks */,
+				EC5C243D18EF07B4001FA499 /* libffi.7.dylib in Frameworks */,
 				EC5C243E18EF07B4001FA499 /* libfontconfig.1.dylib in Frameworks */,
 				B5599FCB0EC8FBCB008DD061 /* libfreetype.6.dylib in Frameworks */,
 				EC5C243F18EF07B4001FA499 /* libglib-2.0.0.dylib in Frameworks */,
@@ -2766,6 +2762,7 @@
 				EC5C244218EF07B4001FA499 /* libgraphite2.3.dylib in Frameworks */,
 				46F92F232174FF6700602C1C /* libboost_thread-mt-x64.dylib in Frameworks */,
 				EC5C244318EF07B4001FA499 /* libgthread-2.0.0.dylib in Frameworks */,
+				4674EE9C24CD1E64007C18CE /* libfribidi.0.dylib in Frameworks */,
 				EC5C244418EF07B4001FA499 /* libharfbuzz.0.dylib in Frameworks */,
 				464C036C228361B7007D2741 /* libvorbis.0.dylib in Frameworks */,
 				EC5C244518EF07B4001FA499 /* libiconv.2.dylib in Frameworks */,
@@ -2778,6 +2775,7 @@
 				EC1D88DB18EF413100E66AC1 /* libpixman-1.0.dylib in Frameworks */,
 				EC5C244A18EF07B4001FA499 /* libpng16.16.dylib in Frameworks */,
 				EC5C245318EF07B4001FA499 /* libz.1.dylib in Frameworks */,
+				4674EEA024CD207F007C18CE /* libgio-2.0.0.dylib in Frameworks */,
 				915C68F41DF1F78600594B07 /* libintl.8.dylib in Frameworks */,
 				464C036E228361B7007D2741 /* libSDL2_ttf-2.0.0.dylib in Frameworks */,
 			);
@@ -2816,6 +2814,7 @@
 				B597C51E0FACD56600CE81F5 /* libpixman-1.0.dylib in Frameworks */,
 				91E355631CACA1CE00774252 /* libboost_unit_test_framework-mt-x64.dylib in Frameworks */,
 				91A215281CAD699200927AEA /* libfontconfig.1.dylib in Frameworks */,
+				4674EEA224CD208D007C18CE /* libgio-2.0.0.dylib in Frameworks */,
 				91A215DB1CAD970800927AEA /* libboost_program_options-mt-x64.dylib in Frameworks */,
 				91A215DC1CAD970800927AEA /* libboost_regex-mt-x64.dylib in Frameworks */,
 				91A215DD1CAD971800927AEA /* libboost_locale-mt-x64.dylib in Frameworks */,
@@ -2833,6 +2832,7 @@
 				916718EB1CADA88800B055A9 /* libgobject-2.0.0.dylib in Frameworks */,
 				46BAF787206672300004711F /* libboost_timer-mt-x64.dylib in Frameworks */,
 				916719071CADAC0D00B055A9 /* libboost_random-mt-x64.dylib in Frameworks */,
+				4674EE9E24CD1EC1007C18CE /* libfribidi.0.dylib in Frameworks */,
 				91C554691D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3214,9 +3214,11 @@
 				EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */,
 				B513B2270ED36BFB0006E551 /* libcairo.2.dylib */,
 				EC5C242318EF07B4001FA499 /* libexpat.1.dylib */,
-				EC5C242418EF07B4001FA499 /* libffi.6.dylib */,
+				EC5C242418EF07B4001FA499 /* libffi.7.dylib */,
 				EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */,
 				B5599FC90EC8FBCB008DD061 /* libfreetype.6.dylib */,
+				4674EE9B24CD1E64007C18CE /* libfribidi.0.dylib */,
+				4674EE9F24CD207F007C18CE /* libgio-2.0.0.dylib */,
 				EC5C242618EF07B4001FA499 /* libglib-2.0.0.dylib */,
 				EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */,
 				EC5C242818EF07B4001FA499 /* libgobject-2.0.0.dylib */,
@@ -4789,7 +4791,6 @@
 			buildPhases = (
 				B597C4950FACD3CD00CE81F5 /* Sources */,
 				B597C4960FACD3CD00CE81F5 /* Frameworks */,
-				911F47161CADC81000F47035 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -6446,6 +6447,7 @@
 					"$(PROJECT_DIR)/Headers/cairo",
 					"$(PROJECT_DIR)/Headers/glib-2.0",
 					"$(PROJECT_DIR)/Headers/SDL2",
+					"$(PROJECT_DIR)/Headers/harfbuzz",
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
@@ -6490,6 +6492,7 @@
 					"$(PROJECT_DIR)/Headers/cairo",
 					"$(PROJECT_DIR)/Headers/glib-2.0",
 					"$(PROJECT_DIR)/Headers/SDL2",
+					"$(PROJECT_DIR)/Headers/harfbuzz",
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
