@@ -19,8 +19,8 @@
 #include "server/common/simple_wml.hpp"
 
 #include "utils/functional.hpp"
-#include <boost/unordered_map.hpp>
-#include <boost/unordered_set.hpp>
+#include <unordered_map>
+#include <unordered_set>
 #include <boost/asio/steady_timer.hpp>
 
 #include <chrono>
@@ -40,7 +40,7 @@ public:
 	server& operator=(const config& server) = delete;
 
 private:
-	static config invalid;
+	config invalid_;
 	/**
 	 * Client request information object.
 	 *
@@ -81,9 +81,9 @@ private:
 	typedef std::map<std::string, request_handler> request_handlers_table;
 
 	/**The hash map of addons metadata*/
-	boost::unordered_map<std::string, config> addons;
+	std::unordered_map<std::string, config> addons_;
 	/**The set of unique addon names with pending metadata updates*/
-	boost::unordered_set<std::string> dirty_addons;
+	std::unordered_set<std::string> dirty_addons_;
 
 	/**Server config*/
 	config cfg_;
@@ -91,6 +91,7 @@ private:
 
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
+	time_t update_pack_lifespan_;
 
 	/** Default upload size limit in bytes. */
 	static const std::size_t default_document_size_limit = 100 * 1024 * 1024;

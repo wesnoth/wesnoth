@@ -20,6 +20,7 @@
 #include "game_config.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "hash.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -150,6 +151,65 @@ void add_license(config& cfg)
 	config& copying = dir.add_child("file");
 	copying["name"] = "COPYING.txt";
 	copying["contents"] = contents;
+}
+
+static const std::string file_hash(const config& file)
+{
+	std::string hash = file["hash"].str();
+	if(hash.empty()) {
+		hash = utils::md5(file["contents"].str()).base64_digest();
+	}
+	return hash;
+}
+
+static bool comp_file_hash(const config& file_a, const config& file_b)
+{
+	return file_hash(file_a) == file_hash(file_b);
+}
+
+//! Surround with [dir][/dir]
+static void write_difference(config& pack, const config& from, const config& to, bool with_content)
+{
+	pack["name"] = to["name"];
+
+	for(const config& f : to.child_range("file")) {
+		bool found = false;
+		for(const config& d : from.child_range("file")) {
+			found |= comp_file_hash(f, d);
+			if(found)
+				break;
+		}
+		if(!found) {
+			config& file = pack.add_child("file");
+			file["name"] = f["name"];
+			if(with_content) {
+				file["contents"] = f["contents"];
+				file["hash"] = file_hash(f);
+			}
+		}
+	}
+
+	for(const config& d : to.child_range("dir")) {
+		const config& origin_dir = from.find_child("dir", "name", d["name"]);
+		if(origin_dir) {
+			config& dir = pack.add_child("dir");
+			write_difference(dir, origin_dir, d, with_content);
+		}
+	}
+}
+
+/**
+ * &from, &to are top-dirs of their structures; addlist/removelist are equal to [dir]
+ * #TODO: make a clientside function to allow incremental uploadpacks using hash request from server
+ * Does it worth it to archive and write the pack on the fly using config_writer?
+ * #TODO: clientside verification?
+ */
+void make_updatepack(config& pack, const config& from, const config& to)
+{
+	config& removelist = pack.add_child("removelist");
+	write_difference(removelist, to, from, false);
+	config& addlist = pack.add_child("addlist");
+	write_difference(addlist, from, to, true);
 }
 
 } // end namespace campaignd
