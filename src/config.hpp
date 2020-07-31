@@ -116,6 +116,9 @@ public:
 	explicit operator bool() const
 	{ return this != &invalid; }
 
+	static config& get_invalid()
+	{ return invalid; }
+
 	typedef std::vector<std::unique_ptr<config>> child_list;
 	typedef std::map<std::string, child_list, std::less<>> child_map;
 

@@ -40,7 +40,6 @@ public:
 	server& operator=(const config& server) = delete;
 
 private:
-	config invalid_;
 	/**
 	 * Client request information object.
 	 *
