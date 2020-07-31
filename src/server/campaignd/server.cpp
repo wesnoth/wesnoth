@@ -137,7 +137,7 @@ server::server(const std::string& cfg_file)
 				continue;
 			}
 
-			LOG_CS << "Campaign '" << campaign["title"] << "' uses unhashed passphrase. Fixing.\n";
+			LOG_CS << "Addon '" << campaign["title"] << "' uses unhashed passphrase. Fixing.\n";
 			set_passphrase(campaign, campaign["passphrase"]);
 			campaign["passphrase"] = "";
 			dirty_addons.emplace(addon.first);
@@ -320,14 +320,14 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			const std::string& addon_id = ctl[1];
 
 			LOG_CS << "deleting add-on '" << addon_id << "' requested from control FIFO\n";
-			delete_campaign(addon_id);
+			delete_addon(addon_id);
 		}
 	} else if(ctl == "hide" || ctl == "unhide") {
 		if(ctl.args_count() != 1) {
 			ERR_CS << "Incorrect number of arguments for '" << ctl.cmd() << "'\n";
 		} else {
 			const std::string& addon_id = ctl[1];
-			config& campaign = get_campaign(addon_id);
+			config& campaign = get_addon(addon_id);
 
 			if(!campaign) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd() << "\n";
@@ -344,7 +344,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 		} else {
 			const std::string& addon_id = ctl[1];
 			const std::string& newpass = ctl[2];
-			config& campaign = get_campaign(addon_id);
+			config& campaign = get_addon(addon_id);
 
 			if(!campaign) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase\n";
@@ -366,7 +366,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			const std::string& key = ctl[2];
 			const std::string& value = ctl[3];
 
-			config& campaign = get_campaign(addon_id);
+			config& campaign = get_addon(addon_id);
 
 			if(!campaign) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set attribute\n";
@@ -457,7 +457,7 @@ void server::write_config()
 	out.commit();
 
 	for(const std::string& name : dirty_addons) {
-		const config& addon = get_campaign(name);
+		const config& addon = get_addon(name);
 		if(addon && !addon["filename"].empty()) {
 			filesystem::atomic_commit addon_out(filesystem::normalize_path(addon["filename"].str() + "/addon.cfg"));
 			write(*addon_out.ostream(), addon);
@@ -547,9 +547,21 @@ void server::send_error(const std::string& msg, const std::string& extra_data, s
 	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
-void server::delete_campaign(const std::string& id)
+config server::invalid = config();
+
+config& server::get_addon(const std::string& id)
 {
-	config& cfg = get_campaign(id);
+	auto addon = addons.find(id);
+	if(addon != addons.end()) {
+		return addons.at(id);
+	} else {
+		return invalid;
+	}
+}
+
+void server::delete_addon(const std::string& id)
+{
+	config& cfg = get_addon(id);
 
 	if(!cfg) {
 		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'\n";
@@ -563,7 +575,7 @@ void server::delete_campaign(const std::string& id)
 	}
 
 	if(!filesystem::delete_directory(fn)) {
-		ERR_CS << "Could not delete the directory for campaign '" << id
+		ERR_CS << "Could not delete the directory for addon '" << id
 		       << "' (" << fn << "): " << strerror(errno) << '\n';
 	}
 
@@ -573,18 +585,6 @@ void server::delete_campaign(const std::string& id)
 	fire("hook_post_erase", id);
 
 	LOG_CS << "Deleted add-on '" << id << "'\n";
-}
-
-config server::invalid = config();
-
-config& server::get_campaign(const std::string& id)
-{
-	auto addon = addons.find(id);
-	if(addon != addons.end()) {
-		return addons.at(id);
-	} else {
-		return invalid;
-	}
 }
 
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
@@ -603,12 +603,12 @@ void server::register_handlers()
 
 void server::handle_request_campaign_list(const server::request& req)
 {
-	LOG_CS << "sending campaign list to " << req.addr << " using gzip\n";
+	LOG_CS << "sending addons list to " << req.addr << " using gzip\n";
 
 	std::time_t epoch = std::time(nullptr);
-	config campaign_list;
+	config addons_list;
 
-	campaign_list["timestamp"] = epoch;
+	addons_list["timestamp"] = epoch;
 	if(req.cfg["times_relative_to"] != "now") {
 		epoch = 0;
 	}
@@ -667,10 +667,10 @@ void server::handle_request_campaign_list(const server::request& req)
 			}
 		}
 
-		campaign_list.add_child("campaign", i);
+		addons_list.add_child("campaign", i);
 	}
 
-	for(config& j : campaign_list.child_range("campaign"))
+	for(config& j : addons_list.child_range("campaign"))
 	{
 		// Remove attributes containing information that's considered sensitive
 		// or irrelevant to clients
@@ -688,7 +688,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	}
 
 	config response;
-	response.add_child("campaigns", std::move(campaign_list));
+	response.add_child("campaigns", std::move(addons_list));
 
 	std::ostringstream ostr;
 	write(ostr, response);
@@ -701,7 +701,7 @@ void server::handle_request_campaign_list(const server::request& req)
 
 void server::handle_request_campaign(const server::request& req)
 {
-	config& campaign = get_campaign(req.cfg["name"]);
+	config& campaign = get_addon(req.cfg["name"]);
 
 	if(!campaign || campaign["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
@@ -883,7 +883,7 @@ void server::handle_upload(const server::request& req)
 
 		if(campaign == nullptr) {
 			addons.emplace(upload["name"].str(), config("original_timestamp", upload_ts));
-			campaign = &get_campaign(upload["name"].str());
+			campaign = &get_addon(upload["name"].str());
 		}
 
 		(*campaign)["title"] = upload["title"];
@@ -972,7 +972,7 @@ void server::handle_delete(const server::request& req)
 
 	LOG_CS << "deleting campaign '" << id << "' requested from " << req.addr << "\n";
 
-	config& campaign = get_campaign(id);
+	config& campaign = get_addon(id);
 
 	if(!campaign) {
 		send_error("The add-on does not exist.", req.sock);
@@ -997,7 +997,7 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
-	delete_campaign(id);
+	delete_addon(id);
 
 	send_message("Add-on deleted.", req.sock);
 }
@@ -1012,7 +1012,7 @@ void server::handle_change_passphrase(const server::request& req)
 		return;
 	}
 
-	config& campaign = get_campaign(cpass["name"]);
+	config& campaign = get_addon(cpass["name"]);
 
 	if(!campaign) {
 		send_error("No add-on with that name exists.", req.sock);
