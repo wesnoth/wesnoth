@@ -100,6 +100,8 @@ namespace campaignd {
 
 server::server(const std::string& cfg_file)
 	: server_base(default_campaignd_port, true)
+	, addons()
+	, dirty_addons()
 	, cfg_()
 	, cfg_file_(cfg_file)
 	, read_only_(false)
@@ -128,7 +130,8 @@ server::server(const std::string& cfg_file)
 
 	// Ensure all campaigns to use secure hash passphrase storage
 	if(!read_only_) {
-		for(config& campaign : campaigns().child_range("campaign")) {
+		for(auto& addon : addons) {
+			config& campaign = addon.second;
 			// Campaign already has a hashed password
 			if(campaign["passphrase"].empty()) {
 				continue;
@@ -137,6 +140,7 @@ server::server(const std::string& cfg_file)
 			LOG_CS << "Campaign '" << campaign["title"] << "' uses unhashed passphrase. Fixing.\n";
 			set_passphrase(campaign, campaign["passphrase"]);
 			campaign["passphrase"] = "";
+			dirty_addons.emplace(addon.first);
 		}
 		write_config();
 	}
@@ -203,10 +207,6 @@ void server::load_config()
 	}
 #endif
 
-	// Ensure the campaigns list WML exists even if empty, other functions
-	// depend on its existence.
-	cfg_.child_or_add("campaigns");
-
 	// Certain config values are saved to WML again so that a given server
 	// instance's parameters remain constant even if the code defaults change
 	// at some later point.
@@ -220,6 +220,24 @@ void server::load_config()
 	// Since an addon is sent in a single WML document this essentially limits
 	// the maximum size of an addon that can be uploaded.
 	simple_wml::document::document_size_limit = cfg_["document_size_limit"].to_int(default_document_size_limit);
+
+	//Loading addons
+	addons.clear();
+	std::vector<std::string> legacy_addons, dirs;
+	filesystem::get_files_in_dir("data", &legacy_addons, &dirs);
+	config meta;
+	for(const std::string& addon_dir : dirs) {
+		in = filesystem::istream_file(filesystem::normalize_path("data/" + addon_dir + "/addon.cfg"));
+		read(meta, *in);
+		if(meta) {
+			addons.emplace(meta["name"].str(), meta);
+		} else {
+			WRN_CS << "Failed to load addon from dir '" << addon_dir << "'\n";
+		}
+	}
+	LOG_CS << "Loaded addons metadata. " << addons.size() << " addons found.\n";
+
+	//#TODO convert all legacy addons to the new format on load
 }
 
 void server::handle_new_client(socket_ptr socket)
@@ -315,6 +333,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd() << "\n";
 			} else {
 				campaign["hidden"] = ctl.cmd() == "hide";
+				dirty_addons.emplace(addon_id);
 				write_config();
 				LOG_CS << "Add-on '" << addon_id << "' is now " << (ctl.cmd() == "hide" ? "hidden" : "unhidden") << '\n';
 			}
@@ -334,6 +353,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				ERR_CS << "Add-on passphrases may not be empty!\n";
 			} else {
 				set_passphrase(campaign, newpass);
+				dirty_addons.emplace(addon_id);
 				write_config();
 				LOG_CS << "New passphrase set for '" << addon_id << "'\n";
 			}
@@ -364,6 +384,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				ERR_CS << "Attribute '" << value << "' is not a recognized add-on attribute\n";
 			} else {
 				campaign[key] = value;
+				dirty_addons.emplace(addon_id);
 				write_config();
 				LOG_CS << "Set attribute on add-on '" << addon_id << "':\n"
 				       << key << "=\"" << value << "\"\n";
@@ -434,6 +455,17 @@ void server::write_config()
 	filesystem::atomic_commit out(cfg_file_);
 	write(*out.ostream(), cfg_);
 	out.commit();
+
+	for(const std::string& name : dirty_addons) {
+		const config& addon = get_campaign(name);
+		if(addon && !addon["filename"].empty()) {
+			filesystem::atomic_commit addon_out(filesystem::normalize_path(addon["filename"].str() + "/addon.cfg"));
+			write(*addon_out.ostream(), addon);
+			addon_out.commit();
+		}
+	}
+
+	dirty_addons.clear();
 	DBG_CS << "... done\n";
 }
 
@@ -517,43 +549,42 @@ void server::send_error(const std::string& msg, const std::string& extra_data, s
 
 void server::delete_campaign(const std::string& id)
 {
-	config::child_itors itors = campaigns().child_range("campaign");
+	config& cfg = get_campaign(id);
 
-	std::size_t pos = 0;
-	bool found = false;
-	std::string fn;
-
-	for(config& cfg : itors) {
-		if(cfg["name"] == id) {
-			fn = cfg["filename"].str();
-			found = true;
-			break;
-		}
-
-		++pos;
-	}
-
-	if(!found) {
+	if(!cfg) {
 		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'\n";
 		return;
 	}
+
+	std::string fn = cfg["filename"].str();
 
 	if(fn.empty()) {
 		ERR_CS << "Add-on '" << id << "' does not have an associated filename, cannot delete\n";
 	}
 
-	filesystem::write_file(fn, {});
-	if(std::remove(fn.c_str()) != 0) {
-		ERR_CS << "Could not delete archive for campaign '" << id
+	if(!filesystem::delete_directory(fn)) {
+		ERR_CS << "Could not delete the directory for campaign '" << id
 		       << "' (" << fn << "): " << strerror(errno) << '\n';
 	}
 
-	campaigns().remove_child("campaign", pos);
+	addons.erase(id);
 	write_config();
 
 	fire("hook_post_erase", id);
 
 	LOG_CS << "Deleted add-on '" << id << "'\n";
+}
+
+config server::invalid = config();
+
+config& server::get_campaign(const std::string& id)
+{
+	auto addon = addons.find(id);
+	if(addon != addons.end()) {
+		return addons.at(id);
+	} else {
+		return invalid;
+	}
 }
 
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
@@ -599,11 +630,13 @@ void server::handle_request_campaign_list(const server::request& req)
 	const std::string& name = req.cfg["name"];
 	const std::string& lang = req.cfg["language"];
 
-	for(const config& i : campaigns().child_range("campaign"))
+	for(const auto& addon : addons)
 	{
-		if(!name.empty() && name != i["name"]) {
+		if(!name.empty() && name != addon.first) {
 			continue;
 		}
+
+		config i = addon.second;
 
 		if(i["hidden"].to_bool()) {
 			continue;
@@ -675,7 +708,9 @@ void server::handle_request_campaign(const server::request& req)
 		return;
 	}
 
-	const int size = filesystem::file_size(campaign["filename"]);
+	std::string full_pack = campaign["filename"].str() + "/full_pack.gz";
+	
+	const int size = filesystem::file_size(full_pack);
 
 	if(size < 0) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
@@ -683,7 +718,8 @@ void server::handle_request_campaign(const server::request& req)
 	}
 
 	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << size/1024 << "KiB\n";
-	async_send_file(req.sock, campaign["filename"], std::bind(&server::handle_new_client, this, _1), null_handler);
+
+	async_send_file(req.sock, full_pack, std::bind(&server::handle_new_client, this, _1), null_handler);
 
 	// Clients doing upgrades or some other specific thing shouldn't bump
 	// the downloads count. Default to true for compatibility with old
@@ -691,6 +727,7 @@ void server::handle_request_campaign(const server::request& req)
 	if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
 		const int downloads = campaign["downloads"].to_int() + 1;
 		campaign["downloads"] = downloads;
+		dirty_addons.emplace(req.cfg["name"]);
 	}
 }
 
@@ -736,10 +773,9 @@ void server::handle_upload(const server::request& req)
 		const std::string& lc_name = utf8::lowercase(name);
 		passed_name_utf8_check = true;
 
-		for(config& c : campaigns().child_range("campaign"))
-		{
-			if(utf8::lowercase(c["name"]) == lc_name) {
-				campaign = &c;
+		for(auto& c : addons) {
+			if(utf8::lowercase(c.first) == lc_name) {
+				campaign = &c.second;
 				break;
 			}
 		}
@@ -846,8 +882,8 @@ void server::handle_upload(const server::request& req)
 		std::string message = "Add-on accepted.";
 
 		if(campaign == nullptr) {
-			campaign = &campaigns().add_child("campaign");
-			(*campaign)["original_timestamp"] = upload_ts;
+			addons.emplace(upload["name"].str(), config("original_timestamp", upload_ts));
+			campaign = &get_campaign(upload["name"].str());
 		}
 
 		(*campaign)["title"] = upload["title"];
@@ -898,30 +934,23 @@ void server::handle_upload(const server::request& req)
 		}
 
 		const std::string& filename = (*campaign)["filename"].str();
-		data["title"] = (*campaign)["title"];
 		data["name"] = "";
-		data["campaign_name"] = (*campaign)["name"];
-		data["author"] = (*campaign)["author"];
-		data["description"] = (*campaign)["description"];
-		data["version"] = (*campaign)["version"];
-		data["timestamp"] = (*campaign)["timestamp"];
-		data["original_timestamp"] = (*campaign)["original_timestamp"];
-		data["icon"] = (*campaign)["icon"];
-		data["type"] = (*campaign)["type"];
-		data["tags"] = (*campaign)["tags"];
 		find_translations(data, *campaign);
 
 		add_license(data);
 
 		{
-			filesystem::atomic_commit campaign_file(filename);
+			//#MULTIFILES!!!
+			//#TODO all that update pack stuff
+			filesystem::atomic_commit campaign_file(filename + "/full_pack.gz");
 			config_writer writer(*campaign_file.ostream(), true, compress_level_);
 			writer.write(data);
 			campaign_file.commit();
 		}
 
-		(*campaign)["size"] = filesystem::file_size(filename);
+		(*campaign)["size"] = filesystem::file_size(filename + "/full_pack.gz") + filesystem::file_size(filename + "/addon.cfg");
 
+		dirty_addons.emplace((*campaign)["name"]);
 		write_config();
 
 		send_message(message, req.sock);
@@ -996,6 +1025,7 @@ void server::handle_change_passphrase(const server::request& req)
 		send_error("No new passphrase was supplied.", req.sock);
 	} else {
 		set_passphrase(campaign, cpass["new_passphrase"]);
+		dirty_addons.emplace(campaign["name"]);
 		write_config();
 		send_message("Passphrase changed.", req.sock);
 	}

@@ -20,6 +20,7 @@
 
 #include "utils/functional.hpp"
 #include <boost/unordered_map.hpp>
+#include <boost/unordered_set.hpp>
 #include <boost/asio/steady_timer.hpp>
 
 #include <chrono>
@@ -39,6 +40,7 @@ public:
 	server& operator=(const config& server) = delete;
 
 private:
+	static config invalid;
 	/**
 	 * Client request information object.
 	 *
@@ -78,6 +80,12 @@ private:
 	typedef std::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;
 
+	/**The hash map of addons metadata*/
+	boost::unordered_map<std::string, config> addons;
+	/**The set of unique addon names with pending metadata updates*/
+	boost::unordered_set<std::string> dirty_addons;
+
+	/**Server config*/
 	config cfg_;
 	const std::string cfg_file_;
 
@@ -134,14 +142,8 @@ private:
 	 */
 	void fire(const std::string& hook, const std::string& addon);
 
-	/** Retrieves the contents of the [campaigns] WML node. */
-	const config& campaigns() const { return cfg_.child("campaigns"); }
-
-	/** Retrieves the contents of the [campaigns] WML node. */
-	config& campaigns() { return cfg_.child("campaigns"); }
-
-	/** Retrieves a campaign by id if found, or a null config otherwise. */
-	config& get_campaign(const std::string& id) { return campaigns().find_child("campaign", "name", id); }
+	/** Retrieves an addon by id if found, or a null config otherwise. */
+	config& get_campaign(const std::string& id);
 
 	void delete_campaign(const std::string& id);
 
