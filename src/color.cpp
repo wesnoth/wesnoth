@@ -60,8 +60,8 @@ color_t color_t::from_rgb_string(const std::string& c)
 
 color_t color_t::from_hex_string(const std::string& c)
 {
-	if(c.length() != 6) {
-		throw std::invalid_argument("Color hex string should be exactly 6 digits");
+	if(c.length() != 6 || c.find_first_not_of("0123456789AaBbCcDdEeFf") != std::string::npos) {
+		throw std::invalid_argument("Color string must be exactly 6 hexadecimal digits");
 	}
 
 	unsigned long temp_c = std::strtol(c.c_str(), nullptr, 16);
