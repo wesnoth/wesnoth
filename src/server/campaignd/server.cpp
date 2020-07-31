@@ -237,9 +237,58 @@ void server::load_config()
 			WRN_CS << "Failed to load addon from dir '" << addon_dir << "'\n";
 		}
 	}
-	LOG_CS << "Loaded addons metadata. " << addons_.size() << " addons found.\n";
 
-	//#TODO convert all legacy addons to the new format on load
+	// Convert all legacy addons to the new format on load
+	if(cfg_.has_child("campaigns")) {
+		WRN_CS << "Old format addons have been detected in the config! They will be converted to the new file format! ";
+		config& campaigns = cfg_.child("campaigns");
+		WRN_CS << campaigns.child_count("campaign") << " entries to be processed.\n";
+		for(config& campaign : campaigns.child_range("campaign")) {
+			const std::string& addon_id = campaign["name"].str();
+			const std::string& addon_file = campaign["filename"].str();
+			if(get_addon(addon_id)) {
+				ERR_CS << "The addon '" << addon_id
+					   << "' already exists in the new form! The old version will be ignored and its file deleted!\n";
+				filesystem::delete_file(filesystem::normalize_path(addon_file));
+				continue;
+			}
+			if(std::find(legacy_addons.begin(), legacy_addons.end(), addon_id) == legacy_addons.end()) {
+				ERR_CS << "No file has been found for the legacy addon '" << addon_id
+					   << "'. Please, check the file structure!\n";
+				continue;
+			}
+
+			config data;
+			in = filesystem::istream_file(filesystem::normalize_path(addon_file));
+			read_gz(data, *in);
+			if(!data) {
+				ERR_CS << "Couldn't read the content file for the legacy addon '" << addon_id << "'!\n";
+				continue;
+			}
+
+			const std::string file_hash = utils::md5(campaign["version"].str()).hex_digest();
+			config version_cfg = config("version", campaign["version"].str());
+			version_cfg["filename"] = "/full_pack_" + file_hash + ".gz";
+			campaign.add_child("version", version_cfg);
+
+			data.remove_attributes("title", "campaign_name", "author", "description", "version", "timestamp", "original_timestamp", "icon", "type", "tags");
+			filesystem::delete_file(filesystem::normalize_path(addon_file));
+			{
+				filesystem::atomic_commit campaign_file(addon_file + version_cfg["filename"].str());
+				config_writer writer(*campaign_file.ostream(), true, compress_level_);
+				writer.write(data);
+				campaign_file.commit();
+			}
+
+			addons_.emplace(addon_id, campaign);
+			dirty_addons_.emplace(addon_id);
+		}
+		cfg_.clear_children("campaigns");
+		LOG_CS << "Legacy addons processing finished.\n";
+		write_config();
+	}
+
+	LOG_CS << "Loaded addons metadata. " << addons_.size() << " addons found.\n";
 }
 
 void server::handle_new_client(socket_ptr socket)
