@@ -124,8 +124,6 @@ server::server(const std::string& cfg_file)
 	int res = sigaction( SIGPIPE, &sa, nullptr);
 	assert( res == 0 );
 #endif
-	config inv = config();
-
 	load_config();
 
 	LOG_CS << "Port: " << port_ << "\n";
@@ -557,7 +555,7 @@ config& server::get_addon(const std::string& id)
 	if(addon != addons_.end()) {
 		return addons_.at(id);
 	} else {
-		return invalid_;
+		return config::get_invalid();
 	}
 }
 
@@ -980,7 +978,7 @@ void server::handle_upload(const server::request& req)
 		
 		//Remove the update packs with expired lifespan
 		for(const config& pack : (*campaign).child_range("update_pack")) {
-			if(pack["expire"].to_time_t() > upload_ts) {
+			if(upload_ts > pack["expire"].to_time_t() || pack["from"].str() == new_version || pack["to"].str() == new_version) {
 				const std::string& pack_filename = pack["filename"].str();
 				filesystem::delete_file(filename + pack_filename);
 				(*campaign).remove_children("update_pack", [&pack_filename](const config& child) 
@@ -1048,7 +1046,7 @@ void server::handle_upload(const server::request& req)
 			}
 		}
 
-		//Mark the addon's info to be updated
+		// Mark the addon's info to be updated
 		dirty_addons_.emplace((*campaign)["name"]);
 		write_config();
 
