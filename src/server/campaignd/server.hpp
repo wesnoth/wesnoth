@@ -143,9 +143,9 @@ private:
 	void fire(const std::string& hook, const std::string& addon);
 
 	/** Retrieves an addon by id if found, or a null config otherwise. */
-	config& get_campaign(const std::string& id);
+	config& get_addon(const std::string& id);
 
-	void delete_campaign(const std::string& id);
+	void delete_addon(const std::string& id);
 
 	/** Retrieves the contents of the [server_info] WML node. */
 	const config& server_info() const { return cfg_.child("server_info"); }
@@ -172,7 +172,7 @@ private:
 	 */
 	void register_handlers();
 
-	void handle_request_campaign_list(const request&);
+	void handle_request_campaign_list(const request&);//#TODO: rename with 'addon' later?
 	void handle_request_campaign(const request&);
 	void handle_request_terms(const request&);
 	void handle_upload(const request&);
