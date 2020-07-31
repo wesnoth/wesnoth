@@ -38,17 +38,7 @@
 
 #include <cairo-features.h>
 
-#ifdef CAIRO_HAS_WIN32_FONT
-#include <windows.h>
-#endif
-
-#ifdef CAIRO_HAS_FT_FONT
 #include <fontconfig/fontconfig.h>
-#endif
-
-#if !defined(CAIRO_HAS_FT_FONT) && !defined(CAIRO_HAS_WIN32_FONT)
-#error unable to find font loading tools.
-#endif
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
@@ -82,21 +72,6 @@ bool check_font_file(std::string name) {
 
 namespace
 {
-#ifdef CAIRO_HAS_WIN32_FONT
-bool is_valid_font_file(const std::string& file)
-{
-	using namespace std::literals::string_literals;
-	static const std::array font_exts { ".ttf"s, ".ttc"s, ".otf"s };
-
-	for(const std::string& ext : font_exts) {
-		if(filesystem::ends_with(file, ext)) {
-			return true;
-		}
-	}
-
-	return false;
-}
-#endif
 
 // Current font family for sanserif and monospace fonts in the game
 
@@ -176,7 +151,6 @@ const t_string& get_font_families(family_class fclass)
 
 manager::manager()
 {
-#ifdef CAIRO_HAS_FT_FONT
 	std::string font_path = game_config::path + "/fonts";
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
 		reinterpret_cast<const FcChar8 *>(font_path.c_str())))
@@ -197,44 +171,11 @@ manager::manager()
 	{
 		LOG_FT << "Local font configuration loaded\n";
 	}
-#elif defined(CAIRO_HAS_WIN32_FONT)
-	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
-		std::vector<std::string> files;
-		if(filesystem::is_directory(path)) {
-			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::name_mode::ENTIRE_FILE_PATH);
-		}
-		for(const std::string& file : files) {
-			if(is_valid_font_file(file))
-			{
-				const std::wstring wfile = unicode_cast<std::wstring>(file);
-				AddFontResourceExW(wfile.c_str(), FR_PRIVATE, nullptr);
-			}
-		}
-	}
-#endif
 }
 
 manager::~manager()
 {
-#ifdef CAIRO_HAS_FT_FONT
 	FcConfigAppFontClear(FcConfigGetCurrent());
-#endif
-
-#ifdef CAIRO_HAS_WIN32_FONT
-	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
-		std::vector<std::string> files;
-		if(filesystem::is_directory(path))
-			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::name_mode::ENTIRE_FILE_PATH);
-		for(const std::string& file : files) {
-			if(is_valid_font_file(file))
-			{
-				const std::wstring wfile = unicode_cast<std::wstring>(file);
-				RemoveFontResourceExW(wfile.c_str(), FR_PRIVATE, nullptr);
-			}
-		}
-	}
-#endif
 }
-
 
 } // end namespace font
