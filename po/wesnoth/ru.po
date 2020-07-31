@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2019-09-17 12:14+0300\n"
-"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
+"PO-Revision-Date: 2020-07-26 23:19+0300\n"
+"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -4054,11 +4054,12 @@ msgstr "Поражение:"
 #: data/lua/wml/objectives.lua:57
 #, fuzzy
 #| msgid "(this turn left)"
+#| msgid_plural "(%d turns left)"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
-msgstr[0] "(последний ход)"
-msgstr[1] "(последний ход)"
-msgstr[2] "(последний ход)"
+msgstr[0] "(остался %d ход)"
+msgstr[1] "(осталось %d хода)"
+msgstr[2] "(осталось %d ходов)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -5196,7 +5197,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:262
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>— Сир Гаррик из Вестина, 607 ГВ</i>"
+msgstr "<i>— Сир Гаррик из Вестина, 607 ЭВ</i>"
 
 #. [tip]
 #: data/tips.cfg:266
@@ -5208,9 +5209,9 @@ msgstr ""
 #. Translate the word "Flight" as a collective noun for drakes
 #: data/tips.cfg:268
 #, fuzzy
-#| msgid "<i>― Great Mage Delfador, 516YW</i>"
+#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>— Великий Маг Делфадор, 516 ГВ</i>"
+msgstr "<i>— Ванк из Полёта Галуна, 6 ЭВ</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5219,6 +5220,9 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"Если бойца расположить рядом с лекарями двух союзных сторон, его излечат во "
+"время ходов обоих этих сторон. Таким образом, бойца можно излечить быстрее, "
+"чем это обыкновенно возможно."
 
 #. [tip]
 #: data/tips.cfg:272
@@ -5283,10 +5287,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "У Вас нет лидера, который мог бы вербовать."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "Ни один из Ваших лидеров не может призвать этого бойца."
+msgstr "Ни один из Ваших лидеров не может завербовать этого бойца."
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -6600,34 +6602,24 @@ msgid "Only available during a scenario."
 msgstr "Доступно только в сценарии."
 
 #: src/help/help_impl.cpp:357 src/help/help_impl.cpp:393
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "Время суток: "
+msgstr "Распорядок времени суток"
 
 #: src/help/help_impl.cpp:384
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Порядочные бойцы: "
+msgstr "Преимущество Порядочных:"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Нейтральные бойцы: "
+msgstr "Преимущество Нейтральных:"
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Хаотичные бойцы: "
+msgstr "Преимущество Хаотичных:"
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "Теневые бойцы: "
+msgstr "Преимущество Теневых:"
 
 #: src/help/help_impl.cpp:388
 msgid "Schedule"
@@ -6802,6 +6794,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<команда>]\n"
+"“all” = просмотр всех команд, <команда> = название выбранной команды (чтобы "
+"узнать подробности)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -6837,9 +6832,9 @@ msgstr "Формат:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Наложение:"
+msgstr[1] "Наложения:"
+msgstr[2] "Наложений:"
 
 #: src/menu_events.cpp:177
 msgid "Save Map As"
@@ -6870,73 +6865,57 @@ msgid "You have no units available to recruit."
 msgstr "Нет бойцов для вербовки."
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited"
 msgid "No unit recruited."
-msgstr "Ни один боец не призван"
+msgstr "Ни один боец не завербован."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
 msgstr ""
+"Внутренняя ошибка. Пожалуйста, сообщите об этой проблеме! Подробности:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "Сейчас вы не можете завербовать $unit_type_name."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "У Вас недостаточно золота для вербовки данного бойца"
+msgstr ""
+"В этом месте Вашего плана, Вам не хватит золота, чтобы завербовать этого "
+"бойца."
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "У Вас недостаточно золота для вербовки данного бойца"
+msgstr "У Вас недостаточно золота, чтобы завербовать данного бойца."
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "Вы отделены от ваших солдат и не можете призывать их"
+msgstr "Вы отделены от ваших солдат и не можете их призвать."
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
-"Нет войск для призыва\n"
-"(У Вас должны быть уцелевшие с прошлого сценария бойцы)"
+"Нет войск для призыва.\n"
+"(У Вас должны быть уцелевшие бойцы с прошлого сценария.)"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "Вы сейчас не можете призывать на этом поле"
+msgstr "Вы сейчас не можете призывать на обозначенном поле."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "Ни один боец не призван"
+msgstr "Ни один боец не призван."
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "У Вас должна быть хотя бы 1 золотая монета для призыва бойца"
-msgstr[1] "У Вас должны быть хотя бы $cost золотые монеты для призыва бойца"
-msgstr[2] "У Вас должно быть хотя бы $cost золотых монет для призыва бойца"
+msgstr[0] "У Вас должна быть хотя бы $cost золотая монета для призыва бойца."
+msgstr[1] "У Вас должны быть хотя бы $cost золотые монеты для призыва бойца."
+msgstr[2] "У Вас должно быть хотя бы $cost золотых монет для призыва бойца."
 
 #: src/menu_events.cpp:574
 msgid "You cannot end your turn yet!"
@@ -7002,17 +6981,23 @@ msgstr "Обновить экран."
 
 #: src/menu_events.cpp:1222
 msgid "Switch a side to/from AI control."
-msgstr "Отдать контроль над стороной AI или человеку."
+msgstr "Отдать управление над стороной ИИ или человеку."
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1226
+#, fuzzy
+#| msgid ""
+#| "[<side> [on/off]]\n"
+#| "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
+"[<сторона> [on/off]]\n"
+"“on” = передать управление ИИ, “off” = сторона управляется игроком"
 
 #: src/menu_events.cpp:1227
 msgid "Change terrain type of current hex"
@@ -7031,14 +7016,12 @@ msgstr "Заморозить/разморозить сторону."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1234
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
-msgstr "[<сторона> [on/off]]"
+msgstr "command_idle^[<сторона> [on/off]]"
 
 #: src/menu_events.cpp:1235
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Поменять тему игры."
 
 #: src/menu_events.cpp:1237
 msgid "<side> <nickname>"
@@ -7070,7 +7053,7 @@ msgstr "Отладка слоёв местности под курсором."
 
 #: src/menu_events.cpp:1244
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "Показать FPS (кадров в секунду)."
 
 #: src/menu_events.cpp:1246
 msgid "Save game."
@@ -7185,13 +7168,12 @@ msgstr "Посмотреть переменную в сценарии."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1284
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
-"Поменять переменную бойца. (Поддерживаются только ключи верхнего уровня.)"
+"Поменять переменную бойца. (Поддерживаются только ключи верхнего уровня и "
+"advances=<число>.)"
 
 #: src/menu_events.cpp:1291
 msgid "Discover all units in help."
@@ -7203,7 +7185,7 @@ msgstr "Скрыть всех бойцов в справке."
 
 #: src/menu_events.cpp:1293
 msgid "<unit type id>"
-msgstr ""
+msgstr "<идентификатор типа бойца>"
 
 #: src/menu_events.cpp:1293
 msgid "Create a unit."
@@ -7219,17 +7201,15 @@ msgstr "Переключить пелену для текущей стороны
 
 #: src/menu_events.cpp:1296
 msgid "<amount>"
-msgstr ""
+msgstr "<количество>"
 
 #: src/menu_events.cpp:1296
 msgid "Give gold to the current player."
 msgstr "Дать золота текущему игроку."
 
 #: src/menu_events.cpp:1297
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<ник>"
+msgstr "<название события>"
 
 #: src/menu_events.cpp:1297
 msgid "Fire a game event."
@@ -7422,7 +7402,7 @@ msgstr "Нет дружественного зеркала"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Была создана игра ($name|, $scenario|)"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7512,20 +7492,20 @@ msgstr ""
 "Подключение прервано, игра не может быть продолжена. Хотите сохранить игру?"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Вы действительно хотите признать поражение? "
+msgstr ""
+"\n"
+"Вы желаете сохранить игру?"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "Игра успешно сохранена."
+msgstr ""
+"Эта игра завершилась\n"
+"по причине: "
 
 #: src/playmp_controller.cpp:368
 msgid ""
@@ -7895,12 +7875,6 @@ msgid "Units"
 msgstr "Бойцы"
 
 #: src/reports.cpp:1443
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7908,33 +7882,28 @@ msgid ""
 "cost of upkeep, including that covered by villages — in other words, the "
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
-"Расходы, понесенные в конце каждого хода для поддержания вашей армии. Первое "
-"число - это количество золота, которое будет вычтено. Второе - это общая "
-"стоимость содержания, в том числе покрытая деревнями - другими словами, "
-"количество золота, которое будет вычтено, если вы потеряете все деревни."
+"Расходы, понесённые в конце каждого хода, чтобы поддерживать вашу армию. "
+"Первое число — это количество золота, которое будет вычтено. Оно равняется "
+"сумме уровней бойцов, не поддерживаемых деревнями. Второе — общая стоимость "
+"содержания, в том числе покрытая деревнями — иными словами, количество "
+"золота, которое будет вычтено, если вы потеряете все деревни."
 
 #: src/reports.cpp:1443
 msgid "Upkeep"
 msgstr "Содержание"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "Доход"
+msgstr "Прибыль"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"Количество золота, которое вы получаете каждый ход за контролируемые вами "
-"деревени, или количество золота, которое вы теряете каждый ход на содержание "
-"армии."
+"Итоговое количество золота, которое вы получаете или теряете за каждых ход, "
+"принимая в расчёт доход от деревень под вашей властью и выплаты на "
+"содержание армии."
 
 #: src/reports.cpp:1648
 msgid "Observers:"
@@ -8471,11 +8440,6 @@ msgstr "Скрыть план $player"
 msgid "Whiteboard Options"
 msgstr "Настройки планировщика"
 
-#, fuzzy
-#~| msgid "<i>― Kai Laudiss, 623YW</i>"
-#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-#~ msgstr "<i>— Каи Лаудисс, 623 ЭВ</i>"
-
 #~ msgid "Graphics scaling options"
 #~ msgstr "Параметры масштабирования графики"
 
@@ -8551,40 +8515,66 @@ msgstr "Настройки планировщика"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>(бонус за быстрое прохождение)</small>"
 
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Теневые бойцы набирают полную силу только в сумерках.\n"
+#~ "\n"
+#~ "День: -25% ущерба\n"
+#~ "Ночь: −25% ущерба"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Для выбранной эпохи, игры или модификации пользовательские параметры "
+#~ "недоступны."
+
+#~ msgid "Defaults"
+#~ msgstr "По умолчанию"
+
+#~ msgid "Connected Players"
+#~ msgstr "Подключенные игроки"
+
 #~ msgid "(Note: You should use $replacement instead in new code)"
 #~ msgstr ""
 #~ "(Примечание: Вы должны использовать $replacement вместо этого в новом "
 #~ "коде)"
 
-#~ msgid "theme^Classic"
-#~ msgstr "Классическая тема"
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "регистрация с паролем *** и без е-мэйла"
 
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "Классическая тема до версии 1,12"
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "регистрация с паролем *** на е-мэйл $email"
 
-#~ msgid "gold"
-#~ msgstr "золото"
+#~ msgid "dropping your username"
+#~ msgstr "удаляю Ваш ник"
 
-#~ msgid "villages"
-#~ msgstr "деревни"
+#~ msgid "setting $var to $value"
+#~ msgstr "выставляю для $var значение $value"
 
-#~ msgid "units"
-#~ msgstr "бойцы"
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<пароль> <email (необязательно)>"
 
-#~ msgid "upkeep"
-#~ msgstr "содержание"
+#~ msgid "Register your nickname"
+#~ msgstr "Зарегистрировать свой ник."
 
-#~ msgid "income"
-#~ msgstr "доход"
+#~ msgid "Drop your nickname."
+#~ msgstr "Удалить свой ник."
 
-#~ msgid "statuspanel^level"
-#~ msgstr "уровень"
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "Обновить профиль своего ника. Подробности смотрите через '/details'."
 
-#~ msgid "statuspanel^moves"
-#~ msgstr "ходы"
+#~ msgid "<detail> <value>"
+#~ msgstr "<параметр> <значение>"
 
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "защита на местности"
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr "Запросить, какие данные можно менять для своего ника."
 
 #~ msgid "No Saved Games"
 #~ msgstr "Нет сохранённых игр"
@@ -8661,14 +8651,14 @@ msgstr "Настройки планировщика"
 #~ msgid "unit help^Name"
 #~ msgstr "Имя"
 
+#~ msgid "Type"
+#~ msgstr "Тип"
+
 #~ msgid "Strikes"
 #~ msgstr "Удары"
 
 #~ msgid "Range"
 #~ msgstr "Дальность"
-
-#~ msgid "Type"
-#~ msgstr "Тип"
 
 #~ msgid "Special"
 #~ msgstr "Особенность"
@@ -8703,84 +8693,53 @@ msgstr "Настройки планировщика"
 #~ msgid "Jamming Cost"
 #~ msgstr "Цена помех обзора"
 
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "Нельзя переключить на бота локальную сторону: '$side'."
+
+#~ msgid "Side:"
+#~ msgstr "Сторона:"
+
+#~ msgid "theme^Classic"
+#~ msgstr "Классическая тема"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "Классическая тема до версии 1,12"
+
+#~ msgid "gold"
+#~ msgstr "золото"
+
+#~ msgid "villages"
+#~ msgstr "деревни"
+
+#~ msgid "units"
+#~ msgstr "бойцы"
+
+#~ msgid "upkeep"
+#~ msgstr "содержание"
+
+#~ msgid "income"
+#~ msgstr "доход"
+
+#~ msgid "statuspanel^level"
+#~ msgstr "уровень"
+
+#~ msgid "statuspanel^moves"
+#~ msgstr "ходы"
+
+#~ msgid "statuspanel^terrain def."
+#~ msgstr "защита на местности"
+
+#~ msgid " replay"
+#~ msgstr " повтор"
+
 #~ msgid "do not translate the 'all'^[all|<command>]"
 #~ msgstr "[all|<команда>]"
 
 #~ msgid "aliases:"
 #~ msgstr "алиасы:"
 
-#, fuzzy
-#~| msgid "do not translate the on/off^[<side> [on/off]]"
-#~ msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-#~ msgstr "[<сторона> [on/off]]"
-
 #~ msgid "Show fps."
 #~ msgstr "Показать fps."
-
-#~ msgid "Side:"
-#~ msgstr "Сторона:"
-
-#~ msgid " replay"
-#~ msgstr " повтор"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "Теневые бойцы набирают полную силу только в сумерках.\n"
-#~ "\n"
-#~ "День: -25% ущерба\n"
-#~ "Ночь: −25% ущерба"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr ""
-#~ "Для выбранной эпохи, игры или модификации пользовательские параметры "
-#~ "недоступны."
-
-#~ msgid "Defaults"
-#~ msgstr "По умолчанию"
-
-#~ msgid "Connected Players"
-#~ msgstr "Подключенные игроки"
-
-#~ msgid "registering with password *** and no email address"
-#~ msgstr "регистрация с паролем *** и без е-мэйла"
-
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr "регистрация с паролем *** на е-мэйл $email"
-
-#~ msgid "dropping your username"
-#~ msgstr "удаляю Ваш ник"
-
-#~ msgid "setting $var to $value"
-#~ msgstr "выставляю для $var значение $value"
-
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<пароль> <email (необязательно)>"
-
-#~ msgid "Register your nickname"
-#~ msgstr "Зарегистрировать свой ник."
-
-#~ msgid "Drop your nickname."
-#~ msgstr "Удалить свой ник."
-
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr ""
-#~ "Обновить профиль своего ника. Подробности смотрите через '/details'."
-
-#~ msgid "<detail> <value>"
-#~ msgstr "<параметр> <значение>"
-
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr "Запросить, какие данные можно менять для своего ника."
-
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "Нельзя переключить на бота локальную сторону: '$side'."
 
 #~ msgid "Empty"
 #~ msgstr "Пусто"

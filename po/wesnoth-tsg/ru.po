@@ -6,8 +6,8 @@ msgstr ""
 "Project-Id-Version: wesnoth-tsg.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 23:11 UTC\n"
-"PO-Revision-Date: 2019-02-02 04:06+0400\n"
-"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
+"PO-Revision-Date: 2020-07-26 23:18+0300\n"
+"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 2.4\n"
 "X-Poedit-Bookmarks: -1,139,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -38,6 +38,12 @@ msgid ""
 "remaining men of the derelict South Guard to defend his country.\n"
 "\n"
 msgstr ""
+"Юный рыцарь Деоран послан в провинцию Керлат на юге Веснота, чтобы выяснить "
+"причину, по которой были разорены приграничные города. Деорану, который и "
+"без того попал в злополучное столкновение с хищными преступниками, придётся "
+"собрать то, что осталось от разбежавшейся Южной Стражи, и защитить свою "
+"страну.\n"
+"\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -49,7 +55,7 @@ msgstr "(Для начинающих, 9 сценариев.)"
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:25
 msgid "Beginner"
-msgstr "(Новичок)"
+msgstr "Новичок"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:25
@@ -59,7 +65,7 @@ msgstr "Гражданский"
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:26
 msgid "Easy"
-msgstr "(Легкий)"
+msgstr "Легкий"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:26
@@ -69,7 +75,7 @@ msgstr "Новобранец"
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:27
 msgid "Normal"
-msgstr "(Нормальный)"
+msgstr "Нормальный"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:27
@@ -101,7 +107,7 @@ msgstr "Графика"
 #. [scenario]: id=01_Born_to_the_Banner
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:5
 msgid "Born to the Banner"
-msgstr "Прирождённый лидер"
+msgstr "Урождённый знаменосец"
 
 #. [side]: type=Horseman Commander, id=Deoran
 #. [side]: id=Deoran
@@ -438,17 +444,13 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:462
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:552
-#, fuzzy
-#| msgid ""
-#| "You may now recruit Merman Hunters. Mermen are aquatic creatures and "
-#| "fight best in rivers and swamps. They are much less effective on dry land."
 msgid ""
 "You may now recruit Merman Hunters. Merfolk are aquatic creatures and fight "
 "best in rivers and swamps. They are much less effective on dry land."
 msgstr ""
 "Теперь Вы можете нанимать водяных-охотников. Это водные создания, которые "
-"сражаются лучше всего в реках и болотах. Они намного менее эффективны на "
-"сухой земле."
+"сражаются лучше всего в реках и болотах. Они намного менее полезны на сухой "
+"земле."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:486
@@ -1814,53 +1816,41 @@ msgstr "Мебрин! Где ты?!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:657
-#, fuzzy
-#| msgid ""
-#| "His home is empty... There are footprints leading away to the south..."
 msgid ""
 "His home is empty... There are several sets of footprints leading away to "
 "the south..."
-msgstr "Его дом пуст... Следы ведут прочь на юг..."
+msgstr "Его дом пуст... Множество следов ведёт прочь на юг..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:662
 msgid "Perhaps he was taken by the undead?"
-msgstr ""
+msgstr "Быть может, его утащила нежить?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:667
-#, fuzzy
-#| msgid ""
-#| "There is no blood here, so he must have been taken by surprise. But I "
-#| "suspect the undead would have slain him and made him one of them."
 msgid ""
 "I am not sure. There is no blood here and very little sign of struggle. If "
 "it had been the undead, I suspect they would have slain him and made him one "
 "of them."
 msgstr ""
-"Крови здесь нет, так что кто-то его настиг врасплох. Но я полагаю, мертвецы "
-"убили бы его и сделали бы одним из своих."
+"Не знаю. Крови здесь нет, а признаков борьбы немного. Я полагаю, мертвецы бы "
+"убили его и превратили в себе подобного."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:672
-#, fuzzy
-#| msgid "Maybe the bandits who have been summoning the undead took him?"
 msgid "Then maybe the bandits who have been summoning the undead took him?"
 msgstr "Может быть, его захватили бандиты, те, что призвали мертвецов?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:677
-#, fuzzy
-#| msgid ""
-#| "We cannot be sure. I still find it strange that there is no sign of a "
-#| "battle here. Ethiliel, what do you think?"
 msgid ""
 "We cannot be sure. I should think that he would have put up a fight, but if "
 "he were ambushed or taken by surprise, he may not have had the chance. "
 "Ethiliel, what do you think?"
 msgstr ""
-"Мы не можем быть уверены. Мне всё ещё кажется странным, что здесь нет "
-"признаков борьбы. Что Вы думаете, Этилиель?"
+"Мы не можем быть уверены. Я склонен считать, что он дал бы им отпор, но если "
+"его настигли врасплох или заманили в засаду, он не смог бы ничего сделать. "
+"Что Вы думаете, Этилиель?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:682
@@ -1889,11 +1879,6 @@ msgstr ""
 
 #. [message]: speaker=Necro
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:737
-#, fuzzy
-#| msgid ""
-#| "So the elves finally come to defend their valley. Pity, they showed up a "
-#| "little late. We will stop them here and prevent them from reclaiming the "
-#| "knowledge that was once theirs!"
 msgid ""
 "So the elves finally come to defend their valley. Pity, they showed up too "
 "late. We will stop them here and prevent them from reclaiming the knowledge "
@@ -1949,7 +1934,7 @@ msgstr "?"
 #. only a single one
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:194
 msgid "Monster"
-msgstr ""
+msgstr "Чудовище"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:235
@@ -2149,8 +2134,6 @@ msgstr "Это были просто слуги более сильного хо
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:525
-#, fuzzy
-#| msgid "One less evil in this forest."
 msgid "One fewer evil in this forest."
 msgstr "Одним злом в лесу меньше."
 
@@ -2429,6 +2412,8 @@ msgid ""
 "Urza Afalas’s troops are exhausted from battle and cannot attack this turn, "
 "but are still able to withdraw and reposition themselves."
 msgstr ""
+"Войска Урзы Афаласа измотаны сражением, они не смогут атаковать в течение "
+"этого хода, но все ещё способны отступить и перегруппироваться."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:922
@@ -3090,7 +3075,7 @@ msgid ""
 "You? Destroy me? Your flesh will provide a fine feast for my ghouls, and "
 "once they are through with you, you will serve me forever in undeath!"
 msgstr ""
-"Ты? Меня уничтожишь? Твоя плоть станет отменным угощением для моих упырей, и "
+"Ты? Уничтожишь меня? Твоя плоть станет отменным угощением для моих упырей, и "
 "когда они насытятся тобой, ты будешь служить мне вечно в не-жизни!"
 
 #. [message]: role=smartcombatant
@@ -3821,16 +3806,12 @@ msgstr ""
 # “and” is a typo, it should be “are”
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:250
-#, fuzzy
-#| msgid ""
-#| "These forts and ill-equipped for holding back so many undead. I am "
-#| "certain we will be slaughtered if we try to fight them here!"
 msgid ""
 "These forts are ill-equipped for holding back so many undead. I am certain "
 "we will be slaughtered if we try to fight them here!"
 msgstr ""
-"Эти укрепления неспособны сдержать атаку такого множества мертвецов. Я "
-"уверен, нас всех перебьют, если мы попробуем защищаться здесь!"
+"Эти укрепления неспособны сдержать атаку орды мертвецов. Я уверен, нас всех "
+"перебьют, если мы попробуем принять здесь бой!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:254
@@ -3895,13 +3876,6 @@ msgstr "Сильные слова, которых я от вас не ожида
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:282
-#, fuzzy
-#| msgid ""
-#| "All things end one way or another. Alas, I would have liked to see my "
-#| "home in Westin one more time, but I am too tired. Tired of running, and "
-#| "tired of fleeing from these undead, who corrupted and consumed my "
-#| "brothers. You may think us criminals and outlaws, but we are still human "
-#| "and we still know loyalty and gratitude, sir knights."
 msgid ""
 "All things end one way or another. Alas, I would have liked to see my home "
 "in Westin one more time, but I am too tired. Tired of running, and tired of "
@@ -3909,11 +3883,11 @@ msgid ""
 "think us criminals and outlaws, but we are still human and we still know "
 "loyalty and gratitude."
 msgstr ""
-"Всё рано или поздно кончается. Увы, я хотел бы взглянуть ещё раз на мой дом "
+"Всё рано или поздно кончается. Увы, хотел бы я взглянуть ещё раз на мой дом "
 "в Вестине, но я слишком устал. Устал убегать, устал прятаться от этих "
-"мертвецов, извративших и поглотивших моих братьев. Вы можете видеть в нас "
-"воров и бандитов, но мы всё же люди, и мы всё ещё знаем о верности и "
-"благодарности, сэры рыцари."
+"мертвецов, что извратили и поглотили моих братьев. Может, вы и видите в нас "
+"воров и бандитов, но мы всё же люди, и нам всё ещё не чужда верность и "
+"благодарность."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:286
@@ -3992,6 +3966,8 @@ msgid ""
 "Alas, for each casualty we suffer, the ranks of the undead grow. We must "
 "hold fast and survive as long as we can!"
 msgstr ""
+"Увы, с каждым потерянным нами бойцом мертвецкие армии растут всё быстрее. "
+"Мужайтесь! Мы должны подержаться так долго, как это возможно!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:480
@@ -4520,16 +4496,12 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:598
-#, fuzzy
-#| msgid ""
-#| "Every unit you lose will give the undead some gold. Protect your troops "
-#| "and sustain as few losses as possible!"
 msgid ""
 "Every unit you lose will give the undead gold. Protect your troops and "
 "sustain as few losses as possible!"
 msgstr ""
 "Каждый потерянный вами боец даст мертвецам больше золота. Защищайте своих "
-"солдат, и постарайтесь свести потери к минимуму!"
+"солдат, и постарайтесь потерять как можно меньше воинов!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:611
@@ -4696,7 +4668,7 @@ msgstr "Эпилог"
 #. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:4
 msgid "Eyestalk"
-msgstr "Глазоцвет"
+msgstr "Древоглаз"
 
 #. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:25
@@ -4706,11 +4678,10 @@ msgid ""
 "them to replenish their own. While almost defenseless against melee attacks, "
 "its deadly gaze from afar is not to be underestimated."
 msgstr ""
-"Эти существа по понятным причинам называются «Глазоцветами». Они похожи на "
-"растения и могут впиваться взглядом в ничего не подозревающих жертв, "
-"высасывая их жизненную энергию и пополняя тем самым свои силы. В ближнем бою "
-"они практически беззащитны, но их убийственный взгляд на расстоянии не стоит "
-"недооценивать."
+"Названные ‘Древоглазами’ по очевидным причинам, эти растениевидные существа "
+"одним своим взглядом высасывают жизненные силы из неподозревающей жертвы, "
+"чтобы восполнить свои собственные. Хотя Древоглазы почти что беззащитны в "
+"ближнем бою, их смертоносный взгляд не стоит недооценивать."
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:35
@@ -4983,15 +4954,6 @@ msgstr ""
 #. [part]
 #. Intro to scenario 1
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:24
-#, fuzzy
-#| msgid ""
-#| "Haldric summoned a young, but promising cavalry officer named Deoran for "
-#| "the task. Though undistinguished, Deoran’s family had a decorated history "
-#| "in the army of Wesnoth: his grandfather, Haldiel, had fought alongside "
-#| "Konrad I in the war to reclaim the throne, and his father, Leonard, had "
-#| "served as an officer for thirty years. Thus, with full trust in the young "
-#| "officer, King Haldric knighted Deoran and tasked him with riding to "
-#| "Westin to demand accounting from Sir Loris."
 msgid ""
 "Haldric summoned a young, but promising cavalry officer named Deoran for the "
 "task. Though undistinguished, Deoran’s family had a decorated history in the "
@@ -5001,12 +4963,12 @@ msgid ""
 "King Haldric knighted Deoran and tasked him with riding to Westin to demand "
 "accounting from Sir Loris."
 msgstr ""
-"Хальдрик вызвал на задание молодого, но подающего виды конного офицера по "
-"имени Деоран. Хотя сам он ещё никак не отличился, у его семьи была "
-"доблестная история в армии Веснота: его дед Галдиель сражался заодно с "
-"Конрадом I в войне за престол, а отец Леонард прослужил офицером целых "
-"тридцать лет. Полностью уверенный в юном офицере король Хальдрик посвятил "
-"Деорана в рыцари и поручил ему задание отправиться в Вестин и потребовать "
+"Хальдрик вызвал на задание молодого, но подающего большие надежды конного "
+"офицера по имени Деоран. Хотя сам он ещё никак не отличился, его семья "
+"славилась доблестной историей в армии Веснота: его дед Галдиель сражался "
+"заодно с Конрадом I в войне за престол, а отец Леонард прослужил офицером "
+"целых тридцать лет. Полностью уверенный в юном офицере король Хальдрик "
+"посвятил Деорана в рыцари и приказал ему отправиться в Вестин и потребовать "
 "отчёта у сэра Лориса."
 
 #. [part]
@@ -5248,23 +5210,16 @@ msgstr ""
 #. [part]
 #. Epilogue A
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:143
-#, fuzzy
-#| msgid ""
-#| "<i>“These are our terms: no human will be permitted in the forests or "
-#| "hills of the Aetherwood, and likewise, we elves will not traverse the "
-#| "plains and farmlands belonging to you humans. No more will the elves send "
-#| "ambassadors or councilors to Westin, and no more will men wander the "
-#| "green woods.”</i>"
 msgid ""
 "<i>“These are our terms: no human will be permitted in the forests or hills "
 "of the Aethenwood, and likewise, we elves will not traverse the plains and "
 "farmlands belonging to you humans. No more will the elves send ambassadors "
 "or councilors to Westin, and no more will men wander the green woods.”</i>"
 msgstr ""
-"<i>«Вот наши условия: ни один человек не будет ходить по лесам и холмам "
+"<i>«Вот наши условия: ни один человек не подступит к лесам и холмам "
 "Этенвуда, а в свою очередь мы, эльфы, не будем ходить по вашим полям и "
-"фермам. Эльфы не станут больше посылать послов или советников в Вестин, люди "
-"же не будут больше бродить по зелёным лесам.»</i>"
+"лугам. Эльфы не станут больше посылать послов или советников в Вестин, и "
+"пусть люди больше не бродят по зелёным лесам.»</i>"
 
 #. [part]
 #. Epilogue A
@@ -5283,14 +5238,6 @@ msgstr ""
 #. [part]
 #. Epilogue A
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:153
-#, fuzzy
-#| msgid ""
-#| "Thus, an uneasy peace was established between man and elf. For many "
-#| "weeks, the South Guard patrolled the borders of the elven woods and "
-#| "watched over the growing farms and villages. The threat from the elves "
-#| "was enough to keep the villagers from entering the now forbidding "
-#| "Aetherwood, and despite the palpable tension at the forest border, the "
-#| "truce was maintained without incident."
 msgid ""
 "Thus, an uneasy peace was established between man and elf. For many weeks, "
 "the South Guard patrolled the borders of the elven woods and watched over "
@@ -5299,11 +5246,12 @@ msgid ""
 "palpable tension at the forest border, the truce was maintained without "
 "incident."
 msgstr ""
-"Так был достигнут нелёгкий мир между людьми и эльфами. Многие недели после "
-"этого Южная Стража охраняла границы с эльфийскими рощами и стерегла фермы и "
+"Вот так люди и эльфы достигли нелёгкий мир между собой. Многие недели после "
+"этого Южная Стража охраняла границы с эльфийскими рощами и стерегла угодья и "
 "деревни. Угрозы со стороны эльфов было достаточно, чтобы предостеречь "
-"жителей деревень от походов в запретный Этенвуд, и несмотря на ощутимое "
-"напряжение на границе леса, этот договор соблюдался без происшествий."
+"жителей деревень от походов в теперь уже запретный Этенвуд, и несмотря на "
+"ощутимое напряжение на границе леса, этот договор соблюдался без "
+"происшествий."
 
 #. [part]
 #. Is part of both Epilogues
@@ -5416,44 +5364,267 @@ msgstr ""
 #. [part]
 #. Epilogue B
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:200
-#, fuzzy
-#| msgid ""
-#| "Deoran spent his days visiting the wounded and directing the men as they "
-#| "rebuilt the shattered walls and ramparts of the city. Slowly, a sense of "
-#| "normalcy began to return to Kerlath Province as Westin was restored and "
-#| "the South Guard began to patrol the villages once again."
 msgid ""
 "Deoran spent his days visiting the wounded and directing the men as they "
 "rebuilt the shattered walls and ramparts of the city. Slowly, a sense of "
 "normalcy began to return to Kerlath Province as Westin was restored and the "
 "South Guard began to patrol the villages once again."
 msgstr ""
-"Деоран многие дни посещал раненых и руководил работами по починке "
-"разрушенных стен и укреплению города. Постепенно, когда Вестин был отстроен, "
-"а Южная стража вернулась к патрулированию деревень, в провинцию Керлат "
-"вернулось ощущение нормальной жизни. "
+"Деоран многие дни посещал раненых и руководил выжившими в то время, как они "
+"чинили разбитые стены и башни города. Постепенно, когда Вестин был отстроен, "
+"а Южная стража вернулась к дозору над деревнями, в провинцию Керлат "
+"вернулось ощущение прежней жизни."
 
-#, fuzzy
-#~| msgid ""
-#~| "A young Knight, Deoran, is dispatched to take command of the South "
-#~| "Guard.\n"
-#~| "\n"
-#~| "Note: This campaign is designed as an introduction to Wesnoth. The "
-#~| "‘Civilian’ difficulty level is aimed at first-time players.\n"
-#~| "\n"
 #~ msgid ""
 #~ "This campaign is designed as an introduction to Wesnoth. The ‘Civilian’ "
 #~ "difficulty level is aimed at first-time players."
 #~ msgstr ""
-#~ "Молодому рыцарю Деорану велено принять руководство Южной стражей...\n"
-#~ "\n"
-#~ "Примечание: эта кампания служит введением в мир Веснота. Уровень "
-#~ "сложности «Гражданский» предназначен для тех, кто никогда раньше не "
-#~ "играл.\n"
-#~ "\n"
+#~ "Эта кампания служит введением в мир Веснота. Уровень сложности "
+#~ "«Гражданский» предназначен для тех, кто никогда раньше не играл."
+
+#~ msgid "Tidings, Good and Ill"
+#~ msgstr "Новости плохие и хорошие"
+
+#~ msgid "Enemies"
+#~ msgstr "Враги"
+
+#~ msgid "Ssesseth"
+#~ msgstr "Ссессеет"
+
+#~ msgid "Zasz"
+#~ msgstr "Засз"
+
+#~ msgid "Zerix"
+#~ msgstr "Херикс"
+
+#~ msgid "Scorpion"
+#~ msgstr "Скорпион"
+
+#~ msgid "Issorai"
+#~ msgstr "Иссорай"
+
+#~ msgid "Zarr"
+#~ msgstr "Зарр"
+
+#~ msgid "Abdur"
+#~ msgstr "Абдур"
+
+#~ msgid "Queen Xeila"
+#~ msgstr "Королева Ксейла"
+
+#~ msgid "Ssanur"
+#~ msgstr "Ссанур"
+
+#~ msgid "Lesssh"
+#~ msgstr "Лешшшш"
+
+#~ msgid "Kallen"
+#~ msgstr "Каллен"
+
+#~ msgid "Eliomir"
+#~ msgstr "Элиомир"
+
+#~ msgid ""
+#~ "Sir Gerrick, you must return to Westin and warn your people of the danger "
+#~ "from the south. We will lead you through the forest and clear the foes "
+#~ "from your path. You may choose some of your veterans to accompany your "
+#~ "journey. Any troops you leave behind will still have time to join "
+#~ "Ethiliel and Deoran."
+#~ msgstr ""
+#~ "Сэр Геррик, вернитесь в Вестин и предупредите свой народ об опасности с "
+#~ "юга. Мы проведём Вас через лес и расчистим перед Вами путь. Можете также "
+#~ "взять с собой некоторых наших опытных воинов. Те же, кого вы оставите, "
+#~ "ещё успеют догнать Этилиель и Деорана."
+
+#~ msgid ""
+#~ "With many of the bandits and undead vanquished already, few foes should "
+#~ "remain before us. Let us hope this is a speedy journey, for the specter "
+#~ "of winter looms closer."
+#~ msgstr ""
+#~ "Да кого нам опасаться, теперь-то, когда бандиты и мертвецы разбиты? Будем "
+#~ "надеяться на быстрое путешествие, а то на горизонте уже маячит тень зимы."
+
+#~ msgid "Move Sir Gerrick to the north end of the woods"
+#~ msgstr "Проведите сэра Геррика к северной границе леса"
+
+#~ msgid "Defeat Queen Xeila"
+#~ msgstr "Победите королеву Ксейлу"
+
+#~ msgid "Recalled units will be unavailable to Deoran."
+#~ msgstr "Призванные воины будут недоступны для Деорана."
+
+#~ msgid ""
+#~ "Hss... Here come the humans who have made a pact with the cursed mermen!"
+#~ msgstr ""
+#~ "Хсс... Это пришли люди, которые заключили договор с проклятыми водяными!"
+
+#~ msgid "We have stumbled upon a den of naga!"
+#~ msgstr "Мы наткнулись на логово нагов!"
+
+#~ msgid "Hss... Elves too! We will kill them all, my brood. Hss..."
+#~ msgstr "Хсс... И эльфы! Мы убьём их всех, моё племя. Хссс..."
+
+#~ msgid ""
+#~ "If we leave these naga here, they will ambush Deoran and Ethiliel! We "
+#~ "must destroy them!"
+#~ msgstr ""
+#~ "Если мы оставил здесь этих нагов, они подстерегут Деорана и Этилиель. "
+#~ "Нужно уничтожить их!"
+
+#~ msgid "Hss... elves! Are they friends or enemies? Hss..."
+#~ msgstr "Хсс... Эльфы! Они друзья, или враги? Хссс..."
+
+#~ msgid "We are weary travelers, seeking our homes. If you but let us pass..."
+#~ msgstr ""
+#~ "Мы усталые путешественники, ищем путь домой. Если вы дадите нам пройти..."
+
+#~ msgid ""
+#~ "Hss... And humans! Humans drained our swamps and destroyed our homes! Now "
+#~ "they have found my winter nest and seek to destroy me. The Land-Walkers "
+#~ "must die! Hss..."
+#~ msgstr ""
+#~ "Хсс... И люди! Люди осушили наши болота и разрушили наши дома! Теперь они "
+#~ "нашли моё зимовье и хотят уничтожить меня. Землеходы должны умереть! "
+#~ "Хсс..."
+
+#~ msgid ""
+#~ "She refuses to listen! If we leave these naga here, they will ambush "
+#~ "Deoran and Ethiliel! We must destroy them!"
+#~ msgstr ""
+#~ "Она не хочет слушать! Если мы оставим здесь этих нагов, они подстерегут "
+#~ "Деорана и Этилиель! Нужно уничтожить их!"
+
+#~ msgid ""
+#~ "There are a group of naga occupying this area. They don’t look very "
+#~ "friendly."
+#~ msgstr ""
+#~ "В этой области есть группа нагов. Они выглядят не очень-то дружественно."
+
+#~ msgid ""
+#~ "If they are hostile to us, they could endanger Deoran and Ethiliel as "
+#~ "well, but perhaps we can reason with their leader."
+#~ msgstr ""
+#~ "Если они враждебны нам, они могут быть также опасны для Деорана и "
+#~ "Этилиель, но возможно, с их лидером можно будет договориться."
+
+#~ msgid "Who will watch over my brood now? Hss..."
+#~ msgstr "Кто будет смотреть теперь за моими детками? Хсс..."
+
+#~ msgid "Oh! Me see elves. Elves tasty food?"
+#~ msgstr "О! Моя видеть эльфы. Эльфы вкусная еда?"
+
+#~ msgid "Bad food! It hurt me. Me no like. Me pain..."
+#~ msgstr "Плохая еда! Она моя ранить. Моя не любить. Моя больно..."
+
+#~ msgid ""
+#~ "Hail, travelers! I seek the dark sage who is rumored to dwell in these "
+#~ "lands. Surely you have come from him?"
+#~ msgstr ""
+#~ "Приветствую вас, путники! Я ищу того тёмного мудреца, который, как "
+#~ "говорят, живёт в этих землях. Вы, конечно же, идёте от него?"
+
+#~ msgid ""
+#~ "Indeed! I just left my comrades, who were preparing to kill the vile "
+#~ "necromancer."
+#~ msgstr ""
+#~ "Точно! Я только что расстался со своими товарищами, которые собрались "
+#~ "убить этого мерзкого чернокнижника."
+
+#~ msgid ""
+#~ "Unworthy fools! How dare you attack the hallowed one?! You must be slain "
+#~ "for this sacrilege!"
+#~ msgstr ""
+#~ "Недостойные глупцы! Как вы посмели напасть на святого?! За такое "
+#~ "кощунство я вас убью!"
+
+#~ msgid ""
+#~ "These naga are still in control of the road. We must clear the way for "
+#~ "Deoran and Ethiliel!"
+#~ msgstr ""
+#~ "Эти наги всё ещё держат дорогу. Мы должны очистить путь для Деорана и "
+#~ "Этилиель!"
+
+#~ msgid ""
+#~ "I must hasten back to Kerlath Province and seek the advice of the Council "
+#~ "of Westin. I pray that Deoran and Ethiliel find the strength to defeat "
+#~ "the undead on their own."
+#~ msgstr ""
+#~ "Я поспешу обратно в провинцию Керлат и переговорю с Советом Вестина. Я "
+#~ "молюсь, что Деоран и Этилиель найдут силы победить мертвецов самим."
+
+#~ msgid ""
+#~ "We will return to our council as well. There is much we have to tell "
+#~ "them... much indeed."
+#~ msgstr ""
+#~ "Мы также вернёмся к нашему совету. Надо многое им рассказать... очень "
+#~ "многое."
+
+#~ msgid "Ambushers"
+#~ msgstr "Налётчики"
 
 #~ msgid "Maybe whoever summoned these undead knows where he is?"
 #~ msgstr "Может быть, тот, кто вызывал этих мертвецов, знает, где он?"
+
+#~ msgid ""
+#~ "Thugs are the mainstay of the bandit armies. They do not have a "
+#~ "<i>ranged</i> attack, and are vulnerable to your archers. Deoran’s lance "
+#~ "will also strike fear into their hearts! Like all of the bandit units, "
+#~ "they are much more dangerous at night."
+#~ msgstr ""
+#~ "Громилы — это основа бандитских армий. У них нет оружия <i>дальнего</i> "
+#~ "боя, и они уязвимы к стрелам ваших лучников. Копьё Деорана также наводит "
+#~ "страх на них! Как и все бандиты, он особенно опасны ночью."
+
+#~ msgid ""
+#~ "Thieves are more subtle than thugs. They try to surround your units and "
+#~ "stab them in the back. Make sure that thieves never have an opportunity "
+#~ "to attack when they have an ally directly behind the unit they are "
+#~ "attacking — they’ll do double damage! Like thugs, thieves are vulnerable "
+#~ "to the ranged attacks of your archers."
+#~ msgstr ""
+#~ "Воры более ловки, чем громилы. Они стараются окружить ваших бойцов и "
+#~ "ударить им в спину. Никогда не давайте вору атаковать, когда у него есть "
+#~ "союзник за спиной у атакуемого бойца — тогда они будут причинять двойной "
+#~ "урон! Как и громилы, они уязвимы к дальним атакам ваших лучников."
+
+#~ msgid ""
+#~ "Footpads are the scouts of the bandit armies. They are quick, and have "
+#~ "both a <i>melee</i> attack and a <i>ranged</i> attack. Neither of their "
+#~ "attacks is very strong, however, and your spearmen will make quick work "
+#~ "of them during the day."
+#~ msgstr ""
+#~ "Бродяги — это разведчики бандитских армий. Они быстры, и у них есть как "
+#~ "<i>ближняя</i>, так и <i>дальняя</i> атаки. Обе, впрочем, не слишком "
+#~ "сильны, так что днём ваши копьеносцы быстро с ними разделаются."
+
+#~ msgid ""
+#~ "Skeletons are the bones of fallen warriors raised by some dark magic. "
+#~ "They are almost immune to piercing weapons like arrows and spears. Bladed "
+#~ "attacks like swords will injure them, and Minister Hylas’s <i>arcane</i> "
+#~ "attack is deadly against them. Like the rest of the bandits, they are "
+#~ "more dangerous at night!"
+#~ msgstr ""
+#~ "Скелеты — это кости падших воинов, поднятые некой тёмной магией. Они "
+#~ "почти неуязвимы к колющему оружию, такому, как стрелы и копья. Но режущие "
+#~ "атаки, например, мечом, ранят их, а <i>мистическая</i> атака служителя "
+#~ "Хиласа смертельно опасна для них. Как и остальные бандиты, они более "
+#~ "опасны ночью!"
+
+#~ msgid ""
+#~ "Walking corpses are the bodies of slain warriors, filled with some black "
+#~ "magic. They are slow and weak — any of your units is more than a match "
+#~ "for them. They are only dangerous in packs..."
+#~ msgstr ""
+#~ "Ходячие трупы — это тела убитых воинов, наполненные некой черной магией. "
+#~ "Они медлительны и слабы, и не идут ни в какое сравнение ни с кем из ваших "
+#~ "воинов. Опасны они лишь в группе..."
+
+#~ msgid ""
+#~ "Losing units is part of the battle. Learn to accept losses, sometimes "
+#~ "they may even help you to protect your more important units."
+#~ msgstr ""
+#~ "Потеря бойцов — неотъемлемая часть сражения. Учитесь принимать потери, "
+#~ "иногда благодаря ним вы сможете даже защитить более важных бойцов."
 
 #~ msgid ""
 #~ "Deoran found himself put to the test early in his command. Loris, the "
@@ -5586,6 +5757,20 @@ msgstr ""
 #~ "It grieves me to learn of his death, foolish though he may have been! "
 #~ "Now, though, there are more pressing matters. Rise, men of Wesnoth! We "
 #~ "must drive these bandits from our city!"
+#~ msgstr ""
+#~ "Печальные слышать, хоть он и был весьма неумен! Впрочем, у нас есть более "
+#~ "важные дела. К бою, люди Веснота! Прогоним же этих бандитов из нашего "
+#~ "города!"
+
+#, fuzzy
+#~| msgid ""
+#~| "It grieves me to learn of his death, foolish though he may have been! "
+#~| "Now, though, there are more pressing matters. Rise, men of Wesnoth! We "
+#~| "must drive these bandits from our city!"
+#~ msgid ""
+#~ "It grieves me to learn of his death, foolish though he may have been! At "
+#~ "least we managed to defeat some of these bandits here and now. What else "
+#~ "happened?"
 #~ msgstr ""
 #~ "Печальные слышать, хоть он и был весьма неумен! Впрочем, у нас есть более "
 #~ "важные дела. К бою, люди Веснота! Прогоним же этих бандитов из нашего "
@@ -5745,20 +5930,11 @@ msgstr ""
 
 #, fuzzy
 #~| msgid ""
-#~| "No... I fear there is still much evil present. These were merely "
-#~| "servants of a far more powerful force."
-#~ msgid "No... I fear there is still much evil present."
-#~ msgstr ""
-#~ "Нет... Боюсь, здесь ещё много зла. Они лишь служили чему-то намного более "
-#~ "могущественному."
-
-#, fuzzy
-#~| msgid ""
 #~| "Surely the undead infestation cannot be dispatched so easily. We have "
 #~| "merely destroyed a servant of a far darker master."
 #~ msgid ""
 #~ "Surely the undead infestation cannot be dispatched so easily. We have "
-#~ "merely destroyed a servant of a far darker master."
+#~ "merely destroyed servants of a far darker master."
 #~ msgstr ""
 #~ "Конечно же с нашествием мертвецов нельзя разделаться так легко. Мы просто "
 #~ "уничтожили слугу гораздо более тёмного хозяина."
@@ -5901,242 +6077,14 @@ msgstr ""
 #~ "Kerlath Province."
 #~ msgstr "До свидания, Деоран! Увидимся, когда ты вернёшься в Керлат."
 
-#~ msgid "Tidings, Good and Ill"
-#~ msgstr "Новости плохие и хорошие"
-
-#~ msgid "Enemies"
-#~ msgstr "Враги"
-
-#~ msgid "Ssesseth"
-#~ msgstr "Ссессеет"
-
-#~ msgid "Zasz"
-#~ msgstr "Засз"
-
-#~ msgid "Zerix"
-#~ msgstr "Херикс"
-
-#~ msgid "Scorpion"
-#~ msgstr "Скорпион"
-
-#~ msgid "Issorai"
-#~ msgstr "Иссорай"
-
-#~ msgid "Zarr"
-#~ msgstr "Зарр"
-
-#~ msgid "Abdur"
-#~ msgstr "Абдур"
-
-#~ msgid "Queen Xeila"
-#~ msgstr "Королева Ксейла"
-
-#~ msgid "Ssanur"
-#~ msgstr "Ссанур"
-
-#~ msgid "Lesssh"
-#~ msgstr "Лешшшш"
-
-#~ msgid "Kallen"
-#~ msgstr "Каллен"
-
-#~ msgid "Eliomir"
-#~ msgstr "Элиомир"
-
-#, fuzzy
-#~| msgid ""
-#~| "Sir Gerrick, you must return to Westin and warn your people of the "
-#~| "danger from the south. We will lead you through the forest and clear the "
-#~| "foes from your path. You may choose some of your veterans to accompany "
-#~| "your journey. Any troops you leave behind will still have time to join "
-#~| "Ethiliel and Deoran."
-#~ msgid ""
-#~ "Sir Gerrick, you must make it back to Kerlath Province and warn your "
-#~ "people of the danger from the south. We will lead you through the forest "
-#~ "and clear any foes from your path. You may choose some of your veterans "
-#~ "to go with you as well, and any ones you leave behind will still have "
-#~ "time to join Ethiliel and Deoran."
-#~ msgstr ""
-#~ "Сэр Геррик, вернитесь в Вестин и предупредите свой народ об опасности с "
-#~ "юга. Мы проведём Вас через лес и расчистим перед Вами путь. Можете также "
-#~ "взять с собой некоторых наших опытных воинов. Те же, кого вы оставите, "
-#~ "ещё успеют догнать Этилиель и Деорана."
-
-#, fuzzy
-#~| msgid ""
-#~| "With many of the bandits and undead vanquished already, few foes should "
-#~| "remain before us. Let us hope this is a speedy journey, for the specter "
-#~| "of winter looms closer."
-#~ msgid ""
-#~ "With the bandits and undead vanquished behind us, what foes can there be "
-#~ "ahead? Let us hope this is a speedy journey, for the specter of winter "
-#~ "looms."
-#~ msgstr ""
-#~ "Да кого нам опасаться, теперь-то, когда бандиты и мертвецы разбиты? Будем "
-#~ "надеяться на быстрое путешествие, а то на горизонте уже маячит тень зимы."
-
-#~ msgid "Move Sir Gerrick to the north end of the woods"
-#~ msgstr "Проведите сэра Геррика к северной границе леса"
-
-#, fuzzy
-#~| msgid "Defeat Queen Xeila"
-#~ msgid "Defeat the Queen Xeila"
-#~ msgstr "Победите королеву Ксейлу"
-
-#~ msgid "Recalled units will be unavailable to Deoran."
-#~ msgstr "Призванные воины будут недоступны для Деорана."
-
-#, fuzzy
-#~| msgid ""
-#~| "Hss... Here come the humans who have made a pact with the cursed mermen!"
-#~ msgid ""
-#~ "Hss... Here are the humans who have made a pact with the cursed mermen! "
-#~ "Hss..."
-#~ msgstr ""
-#~ "Хсс... Это пришли люди, которые заключили договор с проклятыми водяными!"
-
-#, fuzzy
-#~| msgid "We have stumbled upon a den of naga!"
-#~ msgid "We have stumbled into a den of nagas!"
-#~ msgstr "Мы наткнулись на логово нагов!"
-
-#, fuzzy
-#~| msgid "Hss... Elves too! We will kill them all, my brood. Hss..."
-#~ msgid "Hss... We will kill them all, my brood. Hss..."
-#~ msgstr "Хсс... И эльфы! Мы убьём их всех, моё племя. Хссс..."
-
 #~ msgid ""
 #~ "We must clear this road for Deoran and Ethiliel! We must destroy the naga "
 #~ "lair!"
 #~ msgstr ""
 #~ "Нужно очистить дорогу для Деорана и Этилиель. Разрушим гнездо нагов!"
 
-#~ msgid "Hss... elves! Are they friends or enemies? Hss..."
-#~ msgstr "Хсс... Эльфы! Они друзья, или враги? Хссс..."
-
-#~ msgid "We are weary travelers, seeking our homes. If you but let us pass..."
-#~ msgstr ""
-#~ "Мы усталые путешественники, ищем путь домой. Если вы дадите нам пройти..."
-
-#, fuzzy
-#~| msgid ""
-#~| "Hss... And humans! Humans drained our swamps and destroyed our homes! "
-#~| "Now they have found my winter nest and seek to destroy me. The Land-"
-#~| "Walkers must die! Hss..."
-#~ msgid ""
-#~ "Hss... And humans! Humans drained our swamps and made them fields for "
-#~ "farms, and now they have found my winter nest. The Land-Walkers must die! "
-#~ "Hss..."
-#~ msgstr ""
-#~ "Хсс... И люди! Люди осушили наши болота и разрушили наши дома! Теперь они "
-#~ "нашли моё зимовье и хотят уничтожить меня. Землеходы должны умереть! "
-#~ "Хсс..."
-
-#, fuzzy
-#~| msgid ""
-#~| "She refuses to listen! If we leave these naga here, they will ambush "
-#~| "Deoran and Ethiliel! We must destroy them!"
-#~ msgid ""
-#~ "She won’t listen. If we leave these nagas here, they will ambush Deoran "
-#~ "and Ethiliel! We must destroy them!"
-#~ msgstr ""
-#~ "Она не хочет слушать! Если мы оставим здесь этих нагов, они подстерегут "
-#~ "Деорана и Этилиель! Нужно уничтожить их!"
-
-#, fuzzy
-#~| msgid ""
-#~| "There are a group of naga occupying this area. They don’t look very "
-#~| "friendly."
-#~ msgid ""
-#~ "There are a group of naga occupying this area... they don’t look very "
-#~ "friendly."
-#~ msgstr ""
-#~ "В этой области есть группа нагов. Они выглядят не очень-то дружественно."
-
-#, fuzzy
-#~| msgid ""
-#~| "If they are hostile to us, they could endanger Deoran and Ethiliel as "
-#~| "well, but perhaps we can reason with their leader."
-#~ msgid ""
-#~ "If they are hostile to us, they could endanger Deoran and Ethiliel as "
-#~ "well. Perhaps their leader can be reasoned with."
-#~ msgstr ""
-#~ "Если они враждебны нам, они могут быть также опасны для Деорана и "
-#~ "Этилиель, но возможно, с их лидером можно будет договориться."
-
-#, fuzzy
-#~| msgid "Who will watch over my brood now? Hss..."
-#~ msgid "Hss... Who will watch over my brood now? Hss..."
-#~ msgstr "Кто будет смотреть теперь за моими детками? Хсс..."
-
-#, fuzzy
-#~| msgid "Oh! Me see elves. Elves tasty food?"
-#~ msgid "Ho! Me see elves. Elves tasty? Me take elves to eat."
-#~ msgstr "О! Моя видеть эльфы. Эльфы вкусная еда?"
-
 #~ msgid "Bad food! It hurt me. Arrrrggghhhh!!"
 #~ msgstr "Плохая еда! Она моя поранить. Аргггххх!!!"
-
-#, fuzzy
-#~| msgid ""
-#~| "Hail, travelers! I seek the dark sage who is rumored to dwell in these "
-#~| "lands. Surely you have come from him?"
-#~ msgid ""
-#~ "Travelers in this desolate land! I seek that dark Sage who is rumored to "
-#~ "dwell in these lands. Surely you have come from him?"
-#~ msgstr ""
-#~ "Приветствую вас, путники! Я ищу того тёмного мудреца, который, как "
-#~ "говорят, живёт в этих землях. Вы, конечно же, идёте от него?"
-
-#, fuzzy
-#~| msgid ""
-#~| "Indeed! I just left my comrades, who were preparing to kill the vile "
-#~| "necromancer."
-#~ msgid ""
-#~ "Indeed! I just left my comrades, who were preparing to kill the vile "
-#~ "Necromancer."
-#~ msgstr ""
-#~ "Точно! Я только что расстался со своими товарищами, которые собрались "
-#~ "убить этого мерзкого чернокнижника."
-
-#, fuzzy
-#~| msgid ""
-#~| "Unworthy fools! How dare you attack the hallowed one?! You must be slain "
-#~| "for this sacrilege!"
-#~ msgid "Unworthy fools! I’ll kill you for this sacrilege!"
-#~ msgstr ""
-#~ "Недостойные глупцы! Как вы посмели напасть на святого?! За такое "
-#~ "кощунство я вас убью!"
-
-#~ msgid ""
-#~ "These naga are still in control of the road. We must clear the way for "
-#~ "Deoran and Ethiliel!"
-#~ msgstr ""
-#~ "Эти наги всё ещё держат дорогу. Мы должны очистить путь для Деорана и "
-#~ "Этилиель!"
-
-#, fuzzy
-#~| msgid ""
-#~| "I must hasten back to Kerlath Province and seek the advice of the "
-#~| "Council of Westin. I pray that Deoran and Ethiliel find the strength to "
-#~| "defeat the undead on their own."
-#~ msgid ""
-#~ "I will hasten back to Kerlath Province now and seek the advice of the "
-#~ "Council of Westin..."
-#~ msgstr ""
-#~ "Я поспешу обратно в провинцию Керлат и переговорю с Советом Вестина. Я "
-#~ "молюсь, что Деоран и Этилиель найдут силы победить мертвецов самим."
-
-#, fuzzy
-#~| msgid ""
-#~| "We will return to our council as well. There is much we have to tell "
-#~| "them... much indeed."
-#~ msgid ""
-#~ "We too will return to our councils. We have much to tell them... Much "
-#~ "indeed."
-#~ msgstr ""
-#~ "Мы также вернёмся к нашему совету. Надо многое им рассказать... очень "
-#~ "многое."
 
 #, fuzzy
 #~| msgid ""
@@ -6144,7 +6092,7 @@ msgstr ""
 #~| "prepared to enter the caves under Mebrin’s fortress..."
 #~ msgid ""
 #~ "While the council debated the best course of action, Deoran and Ethiliel "
-#~ "prepared to enter the caves under Mebrin’s fortress..."
+#~ "prepared to enter the caves under the fortress..."
 #~ msgstr ""
 #~ "Пока Совет обсуждал наилучший вариант действий, Деоран и Этилиель "
 #~ "готовились войти в пещеры под крепостью Мебрина..."
@@ -6488,17 +6436,6 @@ msgstr ""
 #~ "И я созвал Великий Совет Вестина! Они будут биться с нами во всю свою "
 #~ "мощь!"
 
-#, fuzzy
-#~| msgid ""
-#~| "We heard your call for help and came as quickly as we could. These "
-#~| "undead shall be sent back to the dark abyss that spawned them!"
-#~ msgid ""
-#~ "We have heard your summons, and we shall send these dark foes back to the "
-#~ "abyss that spawned them!"
-#~ msgstr ""
-#~ "Мы услышали твои призывы и пришли как можно быстрее. Эти мертвецы будут "
-#~ "отправлены обратно в ту бездну, что их исторгла!"
-
 #~ msgid ""
 #~ "Council of Westin, we are cheered by your presence. Your aid will be most "
 #~ "welcome."
@@ -6512,9 +6449,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Мы подняли все силы, которые смогли. Давайте сделаем, чтобы жертва Сэра "
 #~ "Геррика была не напрасной. За Веснот!"
-
-#~ msgid "Now I will never see Westin free again..."
-#~ msgstr "Я никогда больше не увижу Вестин свободным..."
 
 #~ msgid ""
 #~ "Commander! I took your message to the council, and your deeds have "
@@ -6543,11 +6477,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Действительно. Ни бандиты, ни мертвецы больше не будут нас тревожить "
 #~ "какое-то время. Мы будем залечивать свои раны, а вы свои."
-
-#, fuzzy
-#~| msgid "You will pay for Mebrin’s death!"
-#~ msgid "You must pay for killing Mebrin!"
-#~ msgstr "Ты заплатишь за убийство Мебрина!"
 
 #~ msgid ""
 #~ "Stop, Ithelden! I have traveled with these humans, and they are not the "
@@ -6585,6 +6514,11 @@ msgstr ""
 
 #~ msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 #~ msgstr "Отправьте Этилиель к Великому Дереву переговорить с Ителденом"
+
+#, fuzzy
+#~| msgid "Disciple of Mebrin"
+#~ msgid "female^Disciple of Mebrin"
+#~ msgstr "Ученик Мебрина"
 
 #~ msgid ""
 #~ "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to "
@@ -6629,59 +6563,8 @@ msgstr ""
 #~ "также прекрасные военачальники. Они командуют армиями, которые охраняют "
 #~ "спокойствие веснотских провинций."
 
-#~ msgid ""
-#~ "Thugs are the mainstay of the bandit armies. They do not have a "
-#~ "<i>ranged</i> attack, and are vulnerable to your archers. Deoran’s lance "
-#~ "will also strike fear into their hearts! Like all of the bandit units, "
-#~ "they are much more dangerous at night."
-#~ msgstr ""
-#~ "Громилы — это основа бандитских армий. У них нет оружия <i>дальнего</i> "
-#~ "боя, и они уязвимы к стрелам ваших лучников. Копьё Деорана также наводит "
-#~ "страх на них! Как и все бандиты, он особенно опасны ночью."
-
-#~ msgid ""
-#~ "Thieves are more subtle than thugs. They try to surround your units and "
-#~ "stab them in the back. Make sure that thieves never have an opportunity "
-#~ "to attack when they have an ally directly behind the unit they are "
-#~ "attacking — they’ll do double damage! Like thugs, thieves are vulnerable "
-#~ "to the ranged attacks of your archers."
-#~ msgstr ""
-#~ "Воры более ловки, чем громилы. Они стараются окружить ваших бойцов и "
-#~ "ударить им в спину. Никогда не давайте вору атаковать, когда у него есть "
-#~ "союзник за спиной у атакуемого бойца — тогда они будут причинять двойной "
-#~ "урон! Как и громилы, они уязвимы к дальним атакам ваших лучников."
-
-#~ msgid ""
-#~ "Footpads are the scouts of the bandit armies. They are quick, and have "
-#~ "both a <i>melee</i> attack and a <i>ranged</i> attack. Neither of their "
-#~ "attacks is very strong, however, and your spearmen will make quick work "
-#~ "of them during the day."
-#~ msgstr ""
-#~ "Бродяги — это разведчики бандитских армий. Они быстры, и у них есть как "
-#~ "<i>ближняя</i>, так и <i>дальняя</i> атаки. Обе, впрочем, не слишком "
-#~ "сильны, так что днём ваши копьеносцы быстро с ними разделаются."
-
-#~ msgid ""
-#~ "Skeletons are the bones of fallen warriors raised by some dark magic. "
-#~ "They are almost immune to piercing weapons like arrows and spears. Bladed "
-#~ "attacks like swords will injure them, and Minister Hylas’s <i>arcane</i> "
-#~ "attack is deadly against them. Like the rest of the bandits, they are "
-#~ "more dangerous at night!"
-#~ msgstr ""
-#~ "Скелеты — это кости падших воинов, поднятые некой тёмной магией. Они "
-#~ "почти неуязвимы к колющему оружию, такому, как стрелы и копья. Но режущие "
-#~ "атаки, например, мечом, ранят их, а <i>мистическая</i> атака служителя "
-#~ "Хиласа смертельно опасна для них. Как и остальные бандиты, они более "
-#~ "опасны ночью!"
-
-#~ msgid ""
-#~ "Walking corpses are the bodies of slain warriors, filled with some black "
-#~ "magic. They are slow and weak — any of your units is more than a match "
-#~ "for them. They are only dangerous in packs..."
-#~ msgstr ""
-#~ "Ходячие трупы — это тела убитых воинов, наполненные некой черной магией. "
-#~ "Они медлительны и слабы, и не идут ни в какое сравнение ни с кем из ваших "
-#~ "воинов. Опасны они лишь в группе..."
+#~ msgid "Now I will never see Westin free again..."
+#~ msgstr "Я никогда больше не увижу Вестин свободным..."
 
 #~ msgid ""
 #~ "Then, in the spring of the ninth year, the reports from the South Guard, "
@@ -6836,42 +6719,6 @@ msgstr ""
 #~ "вслух перед каждым большим советом. Память о том, как отчаянно он защищал "
 #~ "границу, прославлялась в песнях, и не была забыта даже спустя много "
 #~ "поколений."
-
-#~ msgid ""
-#~ "If we leave these naga here, they will ambush Deoran and Ethiliel! We "
-#~ "must destroy them!"
-#~ msgstr ""
-#~ "Если мы оставил здесь этих нагов, они подстерегут Деорана и Этилиель. "
-#~ "Нужно уничтожить их!"
-
-#~ msgid "Bad food! It hurt me. Me no like. Me pain..."
-#~ msgstr "Плохая еда! Она моя ранить. Моя не любить. Моя больно..."
-
-#~ msgid ""
-#~ "Losing units is part of the battle. Learn to accept losses, sometimes "
-#~ "they may even help you to protect your more important units."
-#~ msgstr ""
-#~ "Потеря бойцов — неотъемлемая часть сражения. Учитесь принимать потери, "
-#~ "иногда благодаря ним вы сможете даже защитить более важных бойцов."
-
-#, fuzzy
-#~| msgid ""
-#~| "It grieves me to learn of his death, foolish though he may have been! "
-#~| "Now, though, there are more pressing matters. Rise, men of Wesnoth! We "
-#~| "must drive these bandits from our city!"
-#~ msgid ""
-#~ "It grieves me to learn of his death, foolish though he may have been! At "
-#~ "least we managed to defeat some of these bandits here and now. What else "
-#~ "happened?"
-#~ msgstr ""
-#~ "Печальные слышать, хоть он и был весьма неумен! Впрочем, у нас есть более "
-#~ "важные дела. К бою, люди Веснота! Прогоним же этих бандитов из нашего "
-#~ "города!"
-
-#, fuzzy
-#~| msgid "Disciple of Mebrin"
-#~ msgid "female^Disciple of Mebrin"
-#~ msgstr "Ученик Мебрина"
 
 #~ msgid "lance"
 #~ msgstr "пика"
