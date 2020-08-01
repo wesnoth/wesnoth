@@ -20,7 +20,7 @@ def GetSources(src_location):
                 sources.append(line.strip())
     elif module_dir.rexists():
         for cpp in module_dir.glob("*.cpp", strings=True):
-            sources.append(module_dir.abspath+"/"+cpp)
+            sources.append("modules/"+src_location+"/src/"+cpp)
     else:
         print("Unable to find source files for: "+src_location)
     return sources
