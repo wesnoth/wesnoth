@@ -107,6 +107,7 @@ BOOST_AUTO_TEST_CASE(test_formula_function_substring)
 				.evaluate().as_string()
 			, "hello");
 
+	lg::set_log_domain_severity("all", lg::warn());
 }
 
 BOOST_AUTO_TEST_CASE(test_formula_function_length)
