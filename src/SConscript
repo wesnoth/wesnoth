@@ -11,16 +11,16 @@ Import("*")
 #
 def GetSources(src_location):
     sources = []
-    source_list = File("#/source_lists/" + src_location)
-    module_dir = Dir("#/src/modules/"+src_location+"/src/")
+    source_list = File("#/source_lists/" + src_location).rfile()
+    module_dir = Dir("#/src/modules/"+src_location+"/src/").rdir()
 
-    if source_list.exists():
-        with open(source_list.rfile().abspath) as file:
+    if source_list.rexists():
+        with open(source_list.abspath) as file:
             for line in file.readlines():
                 sources.append(line.strip())
-    elif module_dir.exists():
+    elif module_dir.rexists():
         for cpp in module_dir.glob("*.cpp", strings=True):
-            sources.append("modules/"+src_location+"/src/"+cpp)
+            sources.append(module_dir.abspath+"/"+cpp)
     else:
         print("Unable to find source files for: "+src_location)
     return sources

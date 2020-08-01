@@ -429,7 +429,7 @@ if env["prereqs"]:
         for sql_config in ["mariadb_config", "mysql_config"]:
             try:
                 mysql_config = check_output([sql_config, "--libs", "--cflags"]).decode("utf-8").replace("\n", " ").replace("-DNDEBUG", "")
-                mysql_flags = env.ParseFlags(mysql_config+"-Imodules/mariadbpp/include/")
+                mysql_flags = env.ParseFlags(mysql_config+"-I"+Dir("#/src/modules/mariadbpp/include/").rdir().abspath)
                 env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
                 env.MergeFlags(mysql_flags)
                 found_connector = True
