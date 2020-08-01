@@ -180,38 +180,44 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 		return;
 	}
 
-	mp_game_settings::addon_version_info new_data(cfg);
+	mp_game_settings::addon_version_info new_addon_data(cfg);
 
 	std::map<std::string, addon_version_info>::iterator it = addons.find(cfg["id"].str());
 	// Check if this add-on already has an entry as a dependency for this scenario. If so, try to reconcile their version info,
 	// by taking the larger of the min versions. The version should be the same for all WML from the same add-on...
 	if (it != addons.end()) {
-		addon_version_info& addon = it->second;
+		addon_version_info& existing_addon_data = it->second;
 
 		// an add-on can contain multiple types of content
 		// for example, an era and a scenario
-		for(const auto& item : new_data.content) {
-			addon.content.emplace_back(addon_content{ item.id, item.type });
+		for(const auto& item : new_addon_data.content) {
+			existing_addon_data.content.emplace_back(addon_content{ item.id, item.type });
 		}
 
-		if(addon.version != new_data.version) {
+		if(existing_addon_data.version != new_addon_data.version) {
 			ERR_NG << "Addon version data mismatch! Not all local WML has same version of the addon: '" << cfg["id"].str() << "'.\n";
 		}
 
-		if(new_data.required) {
-			addon.required = true;
-
-			if (new_data.min_version) {
-				if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
-					addon.min_version = *new_data.min_version;
+		if(new_addon_data.required) {
+			if (new_addon_data.min_version) {
+				if (existing_addon_data.min_version) {
+					if(*new_addon_data.min_version > *existing_addon_data.min_version) {
+						existing_addon_data.min_version = *new_addon_data.min_version;
+					}
+				} else if(!existing_addon_data.min_version && !existing_addon_data.required) {
+					existing_addon_data.min_version = *new_addon_data.min_version;
 				}
+			} else {
+				existing_addon_data.min_version = boost::none;
 			}
+
+			existing_addon_data.required = true;
 		}
 	} else {
 		// Didn't find this addon-id in the map, so make a new entry without setting the min_version.
-		if(!new_data.required) {
-			new_data.min_version = boost::none;
+		if(!new_addon_data.required) {
+			new_addon_data.min_version = boost::none;
 		}
-		addons.emplace(cfg["id"].str(), new_data);
+		addons.emplace(cfg["id"].str(), new_addon_data);
 	}
 }
