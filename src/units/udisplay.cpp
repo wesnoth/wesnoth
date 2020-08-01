@@ -617,7 +617,13 @@ void unit_attack(display * disp, game_board & board,
 	assert(def.valid());
 	unit &defender = *def;
 	int def_hitpoints = defender.hitpoints();
+	const_attack_ptr weapon = attack.shared_from_this();
+	auto ctx = weapon->specials_context(&attacker, &defender, a, b, true, secondary_attack);
+	boost::optional<decltype(ctx)> opp_ctx;
 
+	if(secondary_attack) {
+		opp_ctx.emplace(secondary_attack->specials_context(&defender, &attacker, b, a, false, weapon));
+	}
 	att->set_facing(a.get_relative_dir(b));
 	def->set_facing(b.get_relative_dir(a));
 	defender.set_facing(b.get_relative_dir(a));
@@ -646,7 +652,7 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(&defender, defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	for(const unit_ability& ability : attacker.get_abilities_weapons("leadership", attack.shared_from_this(), secondary_attack)) {
+	for(const unit_ability& ability : attacker.get_abilities_weapons("leadership", a, attack.shared_from_this(), secondary_attack)) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
@@ -663,7 +669,7 @@ void unit_attack(display * disp, game_board & board,
 			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
 
-	for(const unit_ability& ability : defender.get_abilities_weapons("resistance", secondary_attack, attack.shared_from_this())) {
+	for(const unit_ability& ability : defender.get_abilities_weapons("resistance", b, secondary_attack, attack.shared_from_this())) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
