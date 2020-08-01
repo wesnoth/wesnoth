@@ -276,4 +276,6 @@ BOOST_AUTO_TEST_CASE(test_gui2_iterator)
 
 	test_control();
 	test_grid();
+
+	lg::set_log_domain_severity("all", lg::warn());
 }

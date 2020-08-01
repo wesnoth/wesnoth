@@ -99,25 +99,8 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	BOOST_CHECK_MESSAGE(uresult1.first->underlying_id() != orc1_side0_real->underlying_id(), "Found Orc1");
 
 	BOOST_CHECK_MESSAGE(!unit_map.end().valid(), "Hmm, unit_map.end() is valid for dereference...");
-	//To check that the collisions will cut off change the cutoff in unit_map.cpp from 1e6 to less than the guard value below
-	// unit_map.add(map_location(1,3), orc2_side0_fake);
-	// unit_map.add(map_location(1,3), orc2_side0_fake);
 
-	// unsigned long long guard =0;
-	// for(; guard< 2e2;++guard) {
-	// 	unit_map.add(map_location(2,guard), orc1_side0_real);
-	// };
-
-	// std::cerr<<"BREAK\n;";
-	// unit_map.add(map_location(1,3), orc2_side0_fake);
-	// unit_map.add(map_location(1,4), orc2_side0_fake);
-	// try {
-	// 	unit_map.add(map_location(1,5), orc2_side0_fake);
-	// }catch (std::runtime_error e ){
-	// 	BOOST_CHECK_MESSAGE(std::string(e.what()) == std::string("One million collisions in unit_map")
-	// 						, "One million uid collision exception");
-	// }
-
+	lg::set_log_domain_severity("all", lg::warn());
 }
 
 BOOST_AUTO_TEST_CASE( track_real_unit_by_underlying_id ) {
