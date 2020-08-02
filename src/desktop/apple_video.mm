@@ -12,6 +12,8 @@
  See the COPYING file for more details.
  */
 
+#ifdef __APPLE__
+#include <TargetConditionals.h>
 #ifdef TARGET_OS_OSX
 
 #include "apple_video.hpp"
@@ -36,3 +38,4 @@ namespace apple {
 } // end namespace desktop
 
 #endif //end TARGET_OS_OSX
+#endif //end __APPLE__
