@@ -182,11 +182,21 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 
 	mp_game_settings::addon_version_info new_data(cfg);
 
+	
+	if(!new_data.required) {
+		new_data.min_version = boost::none;
+	}
+	else if(new_data.required && !new_data.min_version) {
+		new_data.min_version = new_data.version;
+	}
+	assert(new_data.required ==  !!new_data.min_version);
+	
 	std::map<std::string, addon_version_info>::iterator it = addons.find(cfg["id"].str());
 	// Check if this add-on already has an entry as a dependency for this scenario. If so, try to reconcile their version info,
 	// by taking the larger of the min versions. The version should be the same for all WML from the same add-on...
 	if (it != addons.end()) {
 		addon_version_info& addon = it->second;
+		assert(addon.required ==  !!addon.min_version);
 
 		// an add-on can contain multiple types of content
 		// for example, an era and a scenario
@@ -200,18 +210,13 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 
 		if(new_data.required) {
 			addon.required = true;
-
-			if (new_data.min_version) {
-				if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
-					addon.min_version = *new_data.min_version;
-				}
+			if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
+				addon.min_version = new_data.min_version;
 			}
 		}
+		assert(addon.required ==  !!addon.min_version);
 	} else {
-		// Didn't find this addon-id in the map, so make a new entry without setting the min_version.
-		if(!new_data.required) {
-			new_data.min_version = boost::none;
-		}
+		// Didn't find this addon-id in the map, so make a new entry.
 		addons.emplace(cfg["id"].str(), new_data);
 	}
 }
