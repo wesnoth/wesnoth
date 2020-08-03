@@ -27,9 +27,18 @@
    * New earthy rockbound cave variation (code Uhe).
  ### Units
    * New Dunefolk skirmisher branch (Falconer).
+   * Burner line and Armageddon Drake cold resistance changed from -50% to -40%.
    * Dragonguard HP increased from 59 to 63.
+   * Steelclad HP changed from 55 to 57.
+   * Poacher HP changed from 32 to 33. 
+   * Heavy Infantryman cold resistance changed from -10% to 0.
+   * Troll Rocklobber HP changed from 49 to 51.
+   * Merman Hunter HP changed from 30 to 33.
+   * Wose cold resistance changed from 10% to 0.
+   * Shaman ranged damage changed from 3 to 4.
    * Bone Shooter HP increased from 40 to 42.
    * Banebow HP increased from 50 to 52.
+   * Ghost cost changed from 20 to 19.
  ### User interface
    * Improve appearance of the Logging Options dialog and add a search box.
  ### WML engine
