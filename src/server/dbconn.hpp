@@ -18,11 +18,11 @@
 #include "resultsets/ban_check.hpp"
 
 #include <mysql/mysql.h>
-#include <mariadb++/account.hpp>
-#include <mariadb++/connection.hpp>
-#include <mariadb++/statement.hpp>
-#include <mariadb++/result_set.hpp>
-#include <mariadb++/exceptions.hpp>
+#include "mariadb++/account.hpp"
+#include "mariadb++/connection.hpp"
+#include "mariadb++/statement.hpp"
+#include "mariadb++/result_set.hpp"
+#include "mariadb++/exceptions.hpp"
 
 #include <vector>
 #include <unordered_map>

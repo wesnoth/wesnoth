@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include <mariadb++/result_set.hpp>
+#include "mariadb++/result_set.hpp"
 
 #include "rs_base.hpp"
 

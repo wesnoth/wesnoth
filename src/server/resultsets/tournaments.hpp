@@ -13,10 +13,11 @@
 
 #pragma once
 
-#include <mariadb++/result_set.hpp>
-#include <vector>
+#include "mariadb++/result_set.hpp"
 
 #include "rs_base.hpp"
+
+#include <vector>
 
 class tournaments : public rs_base
 {
