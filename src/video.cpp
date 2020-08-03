@@ -27,6 +27,7 @@
 
 #ifdef TARGET_OS_OSX
 #include "desktop/apple_video.hpp"
+#include "game_version.hpp"
 #endif
 
 #include <cassert>
@@ -416,8 +417,11 @@ std::pair<float, float> CVideo::get_dpi() const
 		// For more info see issue: https://github.com/wesnoth/wesnoth/issues/5019
 		SDL_version sdl_version;
 		SDL_GetVersion(&sdl_version);
-
-		if (sdl_version.major >= 2 && sdl_version.minor >= 0 && sdl_version.patch >= 12) {
+		
+		const version_info sdl_version_info(sdl_version.major, sdl_version.minor, sdl_version.patch);
+		const version_info version_to_compare(2, 0, 12);
+		
+		if (sdl_version_info >= version_to_compare) {
 			float scale_factor = desktop::apple::get_scale_factor(window->get_display_index());
 			hdpi /= scale_factor;
 			vdpi /= scale_factor;
