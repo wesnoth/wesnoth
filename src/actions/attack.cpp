@@ -319,7 +319,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	if(plagues) {
 		plague_type = (*plague_specials.front().ability_cfg)["type"].str();
 		if(plague_type.empty()) {
-			plague_type = u_type->base_id();
+			plague_type = u_type->parent_id();
 		}
 	}
 
