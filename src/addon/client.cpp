@@ -230,6 +230,7 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 
 	request_body["name"] = id;
 	request_body["increase_downloads"] = increase_downloads;
+	request_body["from_version"] = get_addon_version_info(id);
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = font::escape_text(title);

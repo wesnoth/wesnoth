@@ -760,18 +760,95 @@ void server::handle_request_campaign(const server::request& req)
 		return;
 	}
 
-	std::string full_pack = campaign["filename"].str() + "/full_pack.gz";
-	
-	const int size = filesystem::file_size(full_pack);
+	// The desired version is selected on the client side considering
+	// the min_wesnoth_version in [version] children of the addon info (#TODO: gfgtdf's part)
+	std::string to = req.cfg["version"].str();
+	const std::string& from = req.cfg["from_version"].str();
+	std::string full_pack = campaign["filename"].str();
 
-	if(size < 0) {
-		send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
-		return;
+	auto version_map = get_version_map(campaign);
+
+	if(version_map.empty()) {
+		// Old format ?
+		ERR_CS << "The (" + to + ") version of the addon '" << req.cfg["name"].str()
+			   << "' is stored in the old format (bug?)! Trying to send a legacy full-pack.";
+		to = campaign["version"].str();
+	} else {
+		auto version = version_map.find(version_info(to));
+		if(version != version_map.end()) {
+			full_pack += version->second["filename"].str();
+		} else {
+			WRN_CS << "The selected version (" << to << ") for the addon '" << req.cfg["name"].str()
+				   << "' has not been found or it is unspecified! Sending the latest version instead!\n";
+			to = version_map.rbegin()->first;
+			full_pack += version_map.rbegin()->second["filename"].str();
+		}
+
+		// Negotiate an update pack if possible
+		if(!from.empty() && version_map.count(version_info(from)) != 0) {
+			config pack_data;
+			// Make a line of consequential updates beginning from the old version to the new one.
+			// Every pair of increasing versions on the server side should contain an update_pack
+			// transition guaranteed during the upload.
+
+			auto iter = version_map.begin();
+			int size = 0;
+
+			while(std::distance(iter, version_map.end()) > 1) {
+				const config& prev_version = iter->second;
+				iter++;
+				const config& next_version = iter->second;
+
+				for(const config& pack : campaign.child_range("update_pack")) {
+					if(pack["from"].str() == prev_version["version"].str()
+							&& pack["to"].str() == next_version["version"].str()) {
+						config update_pack;
+						filesystem::scoped_istream in = filesystem::istream_file(campaign["filename"].str() + pack["filename"].str());
+						read_gz(update_pack, *in);
+						if(update_pack) {
+							pack_data.append(update_pack);
+							size += filesystem::file_size(campaign["filename"].str() + pack["filename"].str());
+						} else {
+							WRN_CS << "Unable to create an update pack sequence from version (" << from << ") to ("
+								   << to << ") for the addon '" << req.cfg["name"].str() << "'. A full pack will be sent instead!\n";
+							pack_data = config::get_invalid();
+							break;
+						}
+					}
+				}
+			}
+
+			if(pack_data && !pack_data.empty()) {
+				std::ostringstream ostr;
+				write(ostr, pack_data);
+				std::string wml = ostr.str();
+
+				simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+				doc.compress();
+
+				LOG_CS << "sending an update pack (" << from << "->" << to << ") for addon '" << req.cfg["name"] << "' to " << req.addr << " size: " << size / 1024 << "KiB\n";
+
+				async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
+
+				// The pack was successfully formed, no full file needed
+				full_pack = "";
+			}
+		}
 	}
 
-	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << size/1024 << "KiB\n";
+	if(!full_pack.empty()) {
+		// Send a full pack download if the previous version is not specified or is not present on the server, or if
+		// we're dealing with the old format (???)
+		const int size = filesystem::file_size(full_pack);
 
-	async_send_file(req.sock, full_pack, std::bind(&server::handle_new_client, this, _1), null_handler);
+		if(size < 0) {
+			send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
+			return;
+		}
+
+		LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << size / 1024 << "KiB\n";
+		async_send_file(req.sock, full_pack, std::bind(&server::handle_new_client, this, _1), null_handler);
+	}
 
 	// Clients doing upgrades or some other specific thing shouldn't bump
 	// the downloads count. Default to true for compatibility with old
@@ -997,16 +1074,13 @@ void server::handle_upload(const server::request& req)
 		const std::string& file_hash = utils::md5(new_version).hex_digest();
 
 		//sorted version map
-		std::map<version_info, config&> version_map = std::map<version_info, config&>();
-		
-		for(config& version : (*campaign).child_range("version")) {
-			version_map.emplace(version_info(version["version"]), version);
-		}
+		auto version_map = get_version_map(*campaign);
 
 		//#TODO: add gfgtdf's stuff about required_wesnoth_version here
 		config version_cfg = config("version", new_version);
 		version_cfg["filename"] = "/full_pack_" + file_hash + ".gz";
 
+		version_map.erase(version_info(new_version));
 		version_map.emplace(version_info(new_version), version_cfg);
 		(*campaign).remove_children("version", [&new_version](const config& old_cfg) 
 			{

@@ -212,4 +212,15 @@ void make_updatepack(config& pack, const config& from, const config& to)
 	write_difference(addlist, from, to, true);
 }
 
+std::map<version_info, config&> get_version_map(config& addon)
+{
+	auto version_map = std::map<version_info, config&>();
+
+	for(config& version : addon.child_range("version")) {
+		version_map.emplace(version_info(version["version"]), version);
+	}
+
+	return version_map;
+}
+
 } // end namespace campaignd
