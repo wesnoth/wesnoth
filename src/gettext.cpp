@@ -134,6 +134,7 @@ namespace
 					filesystem::scoped_istream po_file = filesystem::istream_file(path);
 					po_file->exceptions(std::ios::badbit);
 					const po_catalog& cat = po_catalog::from_istream(*po_file);
+					extra_messages_.emplace(get_base().domain(domain), cat);
 				} catch(const spirit_po::catalog_exception& e) {
 					throw_po_error(lang_name_long, domain, e.what());
 				} catch(const std::ios::failure&) {
