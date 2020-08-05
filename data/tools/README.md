@@ -70,62 +70,93 @@ terrain type to mainline.
 A script that generates general information about mainline campaigns and
 outputs wiki-ready output
 
-== Python API ==
+Python API
+----------
 
-=== wmltools.py ===
+The `3` in `wmltools3` and `wmliterator3` names refers to them being the
+Python3 versions of the tool.
+
+Both `wmlparser` and `wmlparser3` are Python3, with wmlparser3 being a rewrite
+with a different design of the implementation. Both versions are kept as they
+have different APIs.
+
+Historical note - the redesign of wmlparser was originally called wmlparser2;
+both were originally written in Python2. For readability this document ignores
+that detail and refers to the rewrite as wmlparser3.
+
+### wmltools3.py
 
 The main facility in this module is a cross-referencer class.
 It also contains utility methods for working with the data tree.
 See the header comment of wmltools.py for details
 
-=== wmliterator.py ===
+### wmliterator3.py
 
 A WML codewalker class.  Not a full parser, but that's useful because
 it doesn't get confused by unbalanced macros; instead it lets you
 walk through lines in a text file parsing out tags and elements
 
-=== wmlparser.py ===
+### wmlparser3.py
+
+This provides an interface for parsing WML files. The implementation uses the
+game engine's `--preprocess` option to handle preprocessing of the input, so
+it requires the C++ engine to be available if the WML needs preprocessing.
+
+The API currently is very sparsely documented, but several of the tools can be
+used for reference.
+
+### wmlparser.py
 
 This python module contains code originally developed for CampGen - it contains
-a general WML Parser written in Python, just like the Perl one. So if you want
-to develop tools in Python instead of Perl and need a WML parser, it may save
-some time.
+a general WML Parser written in Python. So if you want to develop tools in
+Python instead of Perl and need a WML parser, it may save some time.
 
-The API currently is very sparsely documented, but I plan to extend this. In
-general, wmlparser.py contains the WML Parser, which is used like:
+The API currently is very sparsely documented. In general, wmlparser.py
+is used like this:
 
-parser = wmlparser.Parser(datapath)
+    parser = wmlparser.Parser(datapath)
 
 Then:
 
-parser.parse_file(filename)
+    parser.parse_file(filename)
+
 or
-parser.parse_stream(file)
+
+    parser.parse_stream(file)
+
 or
-parser.parse_text(string)
+
+    parser.parse_text(string)
 
 to set what to parse, and finally:
 
-wmldata = parser.parse()
+    wmldata = parser.parse()
 
 to read everything into a Python representation of the parsed data.
 
-=== wmldata.py ===
+### wmldata.py
 
-This file has several utility methods defined to access and manipulate
-WML data.  Most of them will not be generally useful. An example:
+This module has several utility methods defined to access and manipulate
+WML data, and is part of the API for wmlparser.py (not wmlparser3.py).
 
-for unit in  wmldata.get_all("unit"):
-    print unit.get_text_val("id")
+    for unit in  wmldata.get_all("unit"):
+        print unit.get_text_val("id")
 
-== Standalone use ==
+Standalone use
+--------------
 
-=== wmlparser ===
+### wmlparser
 
 If called standalone, wmlparser.py will parse whatever you give it and
 dump back to stdout. For example:
 
-python wmlparser.py -e {game.cfg} > game.dump
+    python wmlparser.py -e {game.cfg} > game.dump
 
 Should produce a nice several 100000 lines file of the complete configuration
 with all included files and macros expanded to a single file.
+
+### wmlparser3
+
+If called standalone, wmlparser3.py will parse whatever you give it and
+dump back to stdout. Running it with the argument `--help` lists the supported
+arguments.
