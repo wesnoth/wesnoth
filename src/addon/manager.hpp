@@ -126,6 +126,9 @@ void archive_addon(const std::string& addon_name, class config& cfg);
 /** Unarchives an add-on from campaignd's retrieved config object. */
 void unarchive_addon(const class config& cfg);
 
+/** Removes the listed files from the addon. */
+void purge_addon(const config& removelist);
+
 /** Refreshes the per-session cache of add-on's version information structs. */
 void refresh_addon_version_info_cache();
 

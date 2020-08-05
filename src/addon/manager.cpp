@@ -299,6 +299,33 @@ void unarchive_addon(const config& cfg)
 	unarchive_dir(parentd, cfg);
 }
 
+static void purge_dir(const std::string& path, const config& removelist)
+{
+	std::string dir;
+	if(removelist["name"].empty())
+		dir = path;
+	else
+		dir = path + '/' + removelist["name"].str();
+
+	for(const config& d : removelist.child_range("dir")) {
+		purge_dir(dir, d);
+	}
+
+	for(const config& f : removelist.child_range("file")) {
+		filesystem::delete_file(path + '/' + f["name"].str());
+	}
+
+	if(filesystem::dir_size(dir) < 1) {
+		filesystem::delete_directory(dir);
+	}
+}
+
+void purge_addon(const config& removelist)
+{
+	const std::string parentd = filesystem::get_addons_dir();
+	purge_dir(parentd, removelist);
+}
+
 namespace {
 	std::map< std::string, version_info > version_info_cache;
 } // end unnamed namespace 5
