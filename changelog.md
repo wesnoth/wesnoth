@@ -15,7 +15,7 @@
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Chinese (Traditional),
      Czech, Esperanto, French, Hungarian, Italian, Japanese, Polish, Portuguese (Brazil),
-     Russian, Spanish, Swedish.
+     Russian, Spanish, Swedish, Turkish.
  ### Lua API
    * New wesnoth.get_max_liminal_bonus function.
    * New wesnoth.colors table to get information about colors.

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2020-01-14 10:37+0300\n"
+"PO-Revision-Date: 2020-08-05 03:27+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -5173,9 +5173,9 @@ msgstr ""
 #. Translate the word "Flight" as a collective noun for drakes
 #: data/tips.cfg:268
 #, fuzzy
-#| msgid "<i>― Kai Laudiss, 623YW</i>"
+#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>― Kral Laudiss, VY 623</i>"
+msgstr "<i>― Galun'un Sürüsünden Vank, VY 6</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5250,8 +5250,6 @@ msgid "You do not have a leader to recruit with."
 msgstr "Asker alabilecek bir liderin yok."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit this unit."
 msgid "None of your leaders are able to recruit this unit."
 msgstr "Liderinin hiçbiri bu birimi askere alamaz."
 
@@ -6798,8 +6796,6 @@ msgid "You have no units available to recruit."
 msgstr "Askere alabilecek birimin yok."
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No unit recruited."
 msgid "No unit recruited."
 msgstr "Askere alınmış birim yok."
 
@@ -6823,22 +6819,14 @@ msgstr ""
 "olmayacak."
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit this unit."
 msgid "You do not have enough gold to recruit this unit."
 msgstr "Bu birimi askere almak için yeterli altınınız yok."
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them."
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "Askerlerinizden ayrı durumdasınız ve onları çağırmanız mümkün değil."
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall.\n"
-#| "(You must have veteran survivors from a previous scenario.)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -6847,21 +6835,14 @@ msgstr ""
 "(Önceki senaryoda sağ kalmış kıdemlilerin olması lazım.)"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location."
 msgid "You currently can't recall at the highlighted location."
 msgstr "Belirtilen bölgede birim çağıramazsın."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No unit recalled."
 msgid "No unit recalled."
 msgstr "Çağrılmış birim yok."
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit."
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "Bir birimi tekrar çağırmak için en az 1 altınınız olmalı."
@@ -7117,10 +7098,6 @@ msgstr "Bir senaryo değişkenini gösterir."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1284
-#, fuzzy
-#| msgid ""
-#| "Modify a unit variable. (Only top level keys are supported, and "
-#| "advances=<number>.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
@@ -7824,13 +7801,6 @@ msgid "Units"
 msgstr "Birimler"
 
 #: src/reports.cpp:1443
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. It is equal to "
-#| "the number of unit levels not supported by villages. The second is the "
-#| "total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7852,10 +7822,6 @@ msgid "Net Income"
 msgstr "Net Gelir"
 
 #: src/reports.cpp:1480
-#, fuzzy
-#| msgid ""
-#| "The net amount of gold you gain or lose each turn, taking into account "
-#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8389,11 +8355,6 @@ msgstr "Planları $player için gizle"
 msgid "Whiteboard Options"
 msgstr "Beyaztahta Ayarları"
 
-#, fuzzy
-#~| msgid "<i>― Kai Laudiss, 623YW</i>"
-#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-#~ msgstr "<i>― Kral Laudiss, VY 623</i>"
-
 #~ msgid "Graphics scaling options"
 #~ msgstr "Grafik ölçeklendirme seçenekleri"
 
@@ -8469,38 +8430,63 @@ msgstr "Beyaztahta Ayarları"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>(erken bitirme ödülü)</small>"
 
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "İntikalî birimler yalnızca alacakaranlıkta tam güçlerine kavuşurlar.\n"
+#~ "\n"
+#~ "Gündüz: -%25 Hasar\n"
+#~ "Gece: -%25 Hasar"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr "Seçili çağ, oyun veya değişiklik için özel ayarlar yoktur."
+
+#~ msgid "Defaults"
+#~ msgstr "Fabrika ayarları"
+
+#~ msgid "Connected Players"
+#~ msgstr "Bağlı Oyuncular"
+
 #~ msgid "(Note: You should use $replacement instead in new code)"
 #~ msgstr "(Not: Yeni kodda $replacement kullanmanız önerilir)"
 
-#~ msgid "theme^Classic"
-#~ msgstr "Klasik"
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "*** parolasıyla e-posta adressiz kayıt ediliyor"
 
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "Klasik, 1.12 öncesi tema"
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "*** parolasıyla ve $email e-posta adresi ile kayıt ediliyor"
 
-#~ msgid "gold"
-#~ msgstr "altın"
+#~ msgid "dropping your username"
+#~ msgstr "kullanıcı isminiz düşürülüyor"
 
-#~ msgid "villages"
-#~ msgstr "köyler"
+#~ msgid "setting $var to $value"
+#~ msgstr "$var için $value değeri atanıyor"
 
-#~ msgid "units"
-#~ msgstr "birimler"
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<parola> <e-posta (isteğe bağlı)>"
 
-#~ msgid "upkeep"
-#~ msgstr "gider"
+#~ msgid "Register your nickname"
+#~ msgstr "Kullanıcı adınızı kaydedin"
 
-#~ msgid "income"
-#~ msgstr "gelir"
+#~ msgid "Drop your nickname."
+#~ msgstr "Kullanıcı adınızı silin."
 
-#~ msgid "statuspanel^level"
-#~ msgstr "seviye"
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "Kullanıcı adınızla ilgili ayrıntıları günceller. Ayrıntılar için '/"
+#~ "details' komutuna bakınız."
 
-#~ msgid "statuspanel^moves"
-#~ msgstr "hareketler"
+#~ msgid "<detail> <value>"
+#~ msgstr "<ayrıntı> <değer>"
 
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "arazi sav."
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr "Kayıtlı isminiz için atayabileceğiniz ayrıntıların listesini iste."
 
 #~ msgid "No Saved Games"
 #~ msgstr "Kayıtlı Oyun Yok"
@@ -8577,14 +8563,14 @@ msgstr "Beyaztahta Ayarları"
 #~ msgid "unit help^Name"
 #~ msgstr "İsim"
 
+#~ msgid "Type"
+#~ msgstr "Tür"
+
 #~ msgid "Strikes"
 #~ msgstr "Vuruşlar"
 
 #~ msgid "Range"
 #~ msgstr "Menzil"
-
-#~ msgid "Type"
-#~ msgstr "Tür"
 
 #~ msgid "Special"
 #~ msgstr "Özel"
@@ -8619,88 +8605,53 @@ msgstr "Beyaztahta Ayarları"
 #~ msgid "Jamming Cost"
 #~ msgstr "Sıkıştırma Bedeli"
 
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "yerel bir yz tarafı droidlenemez: '$side'."
+
+#~ msgid "Side:"
+#~ msgstr "Taraf:"
+
+#~ msgid "theme^Classic"
+#~ msgstr "Klasik"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "Klasik, 1.12 öncesi tema"
+
+#~ msgid "gold"
+#~ msgstr "altın"
+
+#~ msgid "villages"
+#~ msgstr "köyler"
+
+#~ msgid "units"
+#~ msgstr "birimler"
+
+#~ msgid "upkeep"
+#~ msgstr "gider"
+
+#~ msgid "income"
+#~ msgstr "gelir"
+
+#~ msgid "statuspanel^level"
+#~ msgstr "seviye"
+
+#~ msgid "statuspanel^moves"
+#~ msgstr "hareketler"
+
+#~ msgid "statuspanel^terrain def."
+#~ msgstr "arazi sav."
+
+#~ msgid " replay"
+#~ msgstr " tekrar"
+
 #~ msgid "do not translate the 'all'^[all|<command>]"
 #~ msgstr "[all|<komut>]"
 
 #~ msgid "aliases:"
 #~ msgstr "diğer adlar:"
 
-#, fuzzy
-#~| msgid "do not translate the 'all'^[all|<command>]"
-#~ msgid "do not translate the on/off^[<side> [on/off]]"
-#~ msgstr "[all|<komut>]"
-
 #~ msgid "Show fps."
 #~ msgstr "FPS göster."
-
-#~ msgid "Side:"
-#~ msgstr "Taraf:"
-
-#, fuzzy
-#~| msgid "income"
-#~ msgid "Income"
-#~ msgstr "gelir"
-
-#~ msgid " replay"
-#~ msgstr " tekrar"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "İntikalî birimler yalnızca alacakaranlıkta tam güçlerine kavuşurlar.\n"
-#~ "\n"
-#~ "Gündüz: -%25 Hasar\n"
-#~ "Gece: -%25 Hasar"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr "Seçili çağ, oyun veya değişiklik için özel ayarlar yoktur."
-
-#~ msgid "Defaults"
-#~ msgstr "Fabrika ayarları"
-
-#~ msgid "Connected Players"
-#~ msgstr "Bağlı Oyuncular"
-
-#~ msgid "registering with password *** and no email address"
-#~ msgstr "*** parolasıyla e-posta adressiz kayıt ediliyor"
-
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr "*** parolasıyla ve $email e-posta adresi ile kayıt ediliyor"
-
-#~ msgid "dropping your username"
-#~ msgstr "kullanıcı isminiz düşürülüyor"
-
-#~ msgid "setting $var to $value"
-#~ msgstr "$var için $value değeri atanıyor"
-
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<parola> <e-posta (isteğe bağlı)>"
-
-#~ msgid "Register your nickname"
-#~ msgstr "Kullanıcı adınızı kaydedin"
-
-#~ msgid "Drop your nickname."
-#~ msgstr "Kullanıcı adınızı silin."
-
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr ""
-#~ "Kullanıcı adınızla ilgili ayrıntıları günceller. Ayrıntılar için '/"
-#~ "details' komutuna bakınız."
-
-#~ msgid "<detail> <value>"
-#~ msgstr "<ayrıntı> <değer>"
-
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr "Kayıtlı isminiz için atayabileceğiniz ayrıntıların listesini iste."
-
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "yerel bir yz tarafı droidlenemez: '$side'."
 
 #~ msgid "Empty"
 #~ msgstr "Boş"
