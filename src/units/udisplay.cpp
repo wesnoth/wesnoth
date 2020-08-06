@@ -573,7 +573,7 @@ void unit_sheath_weapon(const map_location& primary_loc, unit_ptr primary_unit,
 
 
 void unit_die(const map_location& loc, unit& loser,
-		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& winner_loc,unit* winner)
+		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& winner_loc, unit_ptr winner)
 {
 	display* disp = display::get_singleton();
 	if(do_not_show_anims(disp) || disp->fogged(loc) || !preferences::show_combat()) {
@@ -584,13 +584,13 @@ void unit_die(const map_location& loc, unit& loser,
 	animator.add_animation(loser.shared_from_this(),"death",loc,winner_loc,0,false,"",{0,0,0},unit_animation::hit_type::KILL,attack,secondary_attack,0);
 	// but show the bars of the winner (avoid blinking and show its xp gain)
 	if(winner) {
-		animator.add_animation(winner->shared_from_this(),"victory",winner_loc,loc,0,true,"",{0,0,0},
+		animator.add_animation(winner,"victory",winner_loc,loc,0,true,"",{0,0,0},
 			unit_animation::hit_type::KILL,secondary_attack,attack,0);
 	}
 	animator.start_animations();
 	animator.wait_for_end();
 
-	reset_helpers(winner, &loser);
+	reset_helpers(&*winner, &loser);
 
 	if(events::mouse_handler* mousehandler = events::mouse_handler::get_singleton()) {
 		mousehandler->invalidate_reachmap();

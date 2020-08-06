@@ -102,7 +102,7 @@ void unit_sheath_weapon( const map_location& loc, unit_ptr u=unit_ptr(), const_a
  void unit_die( const map_location& loc, unit& u,
 	const_attack_ptr attack=nullptr, const_attack_ptr secondary_attack=nullptr,
 	const map_location& winner_loc=map_location::null_location(),
-	unit* winner=nullptr);
+	unit_ptr winner = unit_ptr());
 
 
 /**

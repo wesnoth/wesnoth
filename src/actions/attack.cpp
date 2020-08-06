@@ -1280,7 +1280,7 @@ void attack::unit_killed(unit_info& attacker,
 			attacker_stats->weapon,
 			defender_stats->weapon,
 			attacker.loc_,
-			&attacker.get_unit()
+			attacker.get_unit_ptr()
 		);
 	}
 

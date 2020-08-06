@@ -210,7 +210,7 @@ public:
 
 	unit_ptr clone() const
 	{
-		return unit_ptr(new unit(*this));
+		return unit_ptr(std::shared_ptr<unit>(new unit(*this)));
 	}
 
 	//unit_ptr shared_from_this()
