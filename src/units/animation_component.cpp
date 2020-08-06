@@ -32,7 +32,7 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
 	for(const unit_animation& anim : animations_) {
-		int matching = anim.matches(disp,loc,second_loc,&u_,event,value,hit,attack,second_attack,swing_num);
+		int matching = anim.matches(disp,loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
 			options.push_back(&anim);
 		} else if(matching > max_val) {

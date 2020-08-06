@@ -126,7 +126,7 @@ private:
 /**
  * This class represents a *single* unit of a specific type.
  */
-class unit
+class unit : public std::enable_shared_from_this<unit>
 {
 public:
 	/**
@@ -213,10 +213,10 @@ public:
 		return unit_ptr(new unit(*this));
 	}
 
-	unit_ptr shared_from_this()
-	{
-		return unit_ptr(this);
-	}
+	//unit_ptr shared_from_this()
+	//{
+	//	return unit_ptr(this);
+	//}
 
 	virtual ~unit();
 
@@ -1779,21 +1779,11 @@ public:
 	 */
 	unit& mark_clone(bool is_temporary);
 
-	/** @} */
-
-	long ref_count() const
-	{
-		return ref_count_;
-	}
-
-	friend void intrusive_ptr_add_ref(const unit*);
-	friend void intrusive_ptr_release(const unit*);
 
 	void set_appearance_changed(bool value) { appearance_changed_ = value; }
 	bool appearance_changed() const { return appearance_changed_; }
 
 protected:
-	mutable long ref_count_; // used by intrusive_ptr
 
 private:
 	map_location loc_;

@@ -209,37 +209,6 @@ namespace
 } // end anon namespace
 
 /**
- * Intrusive Pointer interface
- *
- **/
-
-void intrusive_ptr_add_ref(const unit* u)
-{
-	assert(u->ref_count_ >= 0);
-	// the next code line is to notice possible wrongly initialized units.
-	// The 100000 is picked rather randomly. If you are in the situation
-	// that you can actually have more then 100000 intrusive_ptr to one unit
-	// or if you are sure that the refcounting system works
-	// then feel free to remove the next line
-	assert(u->ref_count_ < 100000);
-	if(u->ref_count_ == 0) {
-		LOG_UT << "Freshly constructed" << std::endl;
-	}
-	++(u->ref_count_);
-}
-
-void intrusive_ptr_release(const unit* u)
-{
-	assert(u->ref_count_ >= 1);
-	assert(u->ref_count_ < 100000); //See comment in intrusive_ptr_add_ref
-	if(--(u->ref_count_) == 0)
-	{
-		DBG_UT << "Deleting a unit: id = " << u->id() << ", uid = " << u->underlying_id() << std::endl;
-		delete u;
-	}
-}
-
-/**
  * Converts a string ID to a unit_type.
  * Throws a game_error exception if the string does not correspond to a type.
  */
@@ -297,7 +266,7 @@ struct ptr_vector_pushback
 
 // Copy constructor
 unit::unit(const unit& o)
-	: ref_count_(0)
+	: std::enable_shared_from_this<unit>()
 	, loc_(o.loc_)
 	, advances_to_(o.advances_to_)
 	, type_(o.type_)
@@ -378,7 +347,7 @@ unit::unit(const unit& o)
 }
 
 unit::unit(unit_ctor_t)
-	: ref_count_(0)
+	: std::enable_shared_from_this<unit>()
 	, loc_()
 	, advances_to_()
 	, type_(nullptr)

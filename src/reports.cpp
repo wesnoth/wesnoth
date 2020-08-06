@@ -748,8 +748,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	};
 
 	{
-		//gfgtodo
-		//auto ctx = at.specials_context(unit_const_ptr(&u), hex, u.side() == rc.screen().playing_side());
+		auto ctx = at.specials_context(u.shared_from_this(), hex, u.side() == rc.screen().playing_side());
 		int base_damage = at.damage();
 		int specials_damage = at.modified_damage(false);
 		int damage_multiplier = 100;
@@ -930,9 +929,8 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	{
 		//If we have a second unit, do the 2-unit specials_context
 		bool attacking = (u.side() == rc.screen().playing_side());
-		//gfgtodo
-		//auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
-		//				at.specials_context(unit_const_ptr(&u), unit_const_ptr(sec_u), hex, sec_u->get_location(), attacking, sec_u_weapon);
+		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
+						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, sec_u_weapon);
 
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);

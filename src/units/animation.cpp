@@ -375,7 +375,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 }
 
 int unit_animation::matches(const display& disp, const map_location& loc, const map_location& second_loc,
-		const unit* my_unit, const std::string& event, const int value, hit_type hit, const_attack_ptr attack,
+		unit_const_ptr my_unit, const std::string& event, const int value, hit_type hit, const_attack_ptr attack,
 		const_attack_ptr second_attack, int value2) const
 {
 	int result = base_score_;
@@ -1291,7 +1291,7 @@ void unit_animation::particle::start_animation(int start_time)
 	last_frame_begin_time_ = get_begin_time() -1;
 }
 
-void unit_animator::add_animation(const unit* animated_unit
+void unit_animator::add_animation(unit_const_ptr animated_unit
 		, const std::string& event
 		, const map_location &src
 		, const map_location &dst
@@ -1309,8 +1309,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	display* disp = display::get_singleton();
 
 	anim_elem tmp;
-	//gfgtodo
-	//tmp.my_unit = unit_const_ptr(animated_unit);
+	tmp.my_unit = std::move(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;
@@ -1323,7 +1322,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	animated_units_.push_back(std::move(tmp));
 }
 
-void unit_animator::add_animation(const unit* animated_unit
+void unit_animator::add_animation(unit_const_ptr animated_unit
 	, const unit_animation* anim
 	, const map_location &src
 	, bool with_bars
@@ -1333,8 +1332,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	if(!animated_unit) return;
 
 	anim_elem tmp;
-	//gfgtodo
-	//tmp.my_unit = unit_const_ptr(animated_unit);
+	tmp.my_unit = std::move(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;

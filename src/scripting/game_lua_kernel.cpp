@@ -435,7 +435,8 @@ static int impl_add_animation(lua_State* L)
 		return luaW_type_error(L, 5, "table of options");
 	}
 
-	anim.add_animation(&u, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2);
+	//gfgtodo
+	anim.add_animation(u.shared_from_this(), which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2);
 	return 0;
 }
 

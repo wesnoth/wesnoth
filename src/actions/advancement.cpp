@@ -124,7 +124,7 @@ namespace
 		if (animate && !CVideo::get_singleton().update_locked()) {
 			unit_animator animator;
 			bool with_bars = true;
-			animator.add_animation(&*u, "levelout", u->get_location(), map_location(), 0, with_bars);
+			animator.add_animation(u.get_shared_ptr(), "levelout", u->get_location(), map_location(), 0, with_bars);
 			animator.start_animations();
 			animator.wait_for_end();
 		}
@@ -144,7 +144,7 @@ namespace
 
 		if (animate && u != resources::gameboard->units().end() && !CVideo::get_singleton().update_locked()) {
 			unit_animator animator;
-			animator.add_animation(&*u, "levelin", u->get_location(), map_location(), 0, true);
+			animator.add_animation(u.get_shared_ptr(), "levelin", u->get_location(), map_location(), 0, true);
 			animator.start_animations();
 			animator.wait_for_end();
 			animator.set_all_standing();

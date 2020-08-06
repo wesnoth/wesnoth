@@ -751,6 +751,7 @@ private:
 
 		unit_info(const map_location& loc, int weapon, unit_map& units);
 		unit& get_unit();
+		unit_ptr get_unit_ptr();
 		bool valid();
 
 		std::string dump();
@@ -812,6 +813,15 @@ unit& attack::unit_info::get_unit()
 	unit_map::iterator i = units_.find(loc_);
 	assert(i.valid() && i->underlying_id() == id_);
 	return *i;
+}
+
+unit_ptr attack::unit_info::get_unit_ptr()
+{
+	unit_map::iterator i = units_.find(loc_);
+	if(i.valid() && i->underlying_id() == id_) {
+		return i.get_shared_ptr();
+	}
+	return unit_ptr();
 }
 
 bool attack::unit_info::valid()
@@ -1407,7 +1417,7 @@ void attack::perform()
 		   << (defender_strikes_first ? " defender first-strike" : "") << "\n";
 
 	// Play the pre-fight animation
-	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_stats_->weapon, d_stats_->weapon, d_.loc_, &d_.get_unit());
+	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_stats_->weapon, d_stats_->weapon, d_.loc_, d_.get_unit_ptr());
 
 	for(;;) {
 		DBG_NG << "start of attack loop...\n";
@@ -1471,8 +1481,8 @@ void attack::perform()
 		u.set_experience(u.experience() + d_.xp_);
 	}
 
-	unit_display::unit_sheath_weapon(a_.loc_, a_.valid() ? &a_.get_unit() : nullptr, a_stats_->weapon, d_stats_->weapon,
-			d_.loc_, d_.valid() ? &d_.get_unit() : nullptr);
+	unit_display::unit_sheath_weapon(a_.loc_, a_.get_unit_ptr(), a_stats_->weapon, d_stats_->weapon,
+			d_.loc_, d_.get_unit_ptr());
 
 	if(update_display_) {
 		game_display::get_singleton()->invalidate_unit();
