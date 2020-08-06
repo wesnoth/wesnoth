@@ -25,7 +25,7 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
         cmd.exe //C bootstrap-vcpkg.bat
         cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' amd64 '&&' vcpkg integrate install
         alias make="make -j4"
-        ./vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-mixer:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale:x64-windows boost-random:x64-windows boost-regex:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows &
+        ./vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale:x64-windows boost-random:x64-windows boost-regex:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows &
         waitforpid=$!
         while kill -0 $waitforpid
         do

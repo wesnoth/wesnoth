@@ -181,7 +181,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng16.lib;ogg.lib;vorbis.lib;vorbisfile.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng16.lib;ogg.lib;vorbis.lib;vorbisfile.lib;$(IntDir)liblua.lib;Shlwapi.lib;jpeg.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
