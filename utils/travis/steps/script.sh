@@ -42,6 +42,7 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     fi
 
     cd $TRAVIS_BUILD_DIR
+    SECONDS=0
     cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' amd64 '&&' MSBuild.exe projectfiles/$IMAGE/wesnoth.sln -p:Configuration=$CFG -p:Platform=Win64
     BUILD_RET=$?
 
@@ -59,6 +60,10 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
     fi
 
     if [ "$CFG" == "Release" ] && [ "$BUILD_RET" == "0" ]; then
+        if (( SECONDS > 60*30 )); then
+            echo "Not enough time to run unit tests, exiting..."
+            exit 1
+        fi
         ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
         BUILD_RET=$?
     fi
