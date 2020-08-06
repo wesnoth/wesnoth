@@ -72,15 +72,15 @@ static lg::log_domain log_config("config");
 // BATTLE CONTEXT UNIT STATS
 // ==================================================================================
 
-battle_context_unit_stats::battle_context_unit_stats(unit_const_ptr up,
+battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		const map_location& u_loc,
 		int u_attack_num,
 		bool attacking,
-		unit_const_ptr oppp,
+		nonempty_unit_const_ptr oppp,
 		const map_location& opp_loc,
 		const_attack_ptr opp_weapon,
 		const unit_map& units)
-	: weapon((assert(up), assert(oppp), nullptr))
+	: weapon(nullptr)
 	, attack_num(u_attack_num)
 	, is_attacker(attacking)
 	, is_poisoned(up->get_state(unit::STATE_POISONED))
@@ -367,10 +367,10 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 // ==================================================================================
 
 battle_context::battle_context(
-		unit_const_ptr attacker,
+		nonempty_unit_const_ptr attacker,
 		const map_location& a_loc,
 		int a_wep_index,
-		unit_const_ptr defender,
+		nonempty_unit_const_ptr defender,
 		const map_location& d_loc,
 		int d_wep_index,
 		const unit_map& units)
@@ -423,21 +423,23 @@ battle_context::battle_context(const unit_map& units,
 	if(!defender) {
 		defender = units.find(defender_loc).get_shared_ptr();
 	}
+	nonempty_unit_const_ptr n_attacker { attacker };
+	nonempty_unit_const_ptr n_defender { defender };
 
 	const double harm_weight = 1.0 - aggression;
 
 	if(attacker_weapon == -1) {
 		*this = choose_attacker_weapon(
-			attacker, defender, units, attacker_loc, defender_loc, harm_weight, prev_def
+			n_attacker, n_defender, units, attacker_loc, defender_loc, harm_weight, prev_def
 		);
 	}
 	else if(defender_weapon == -1) {
 		*this = choose_defender_weapon(
-			attacker, defender, attacker_weapon, units, attacker_loc, defender_loc, prev_def
+			n_attacker, n_defender, attacker_weapon, units, attacker_loc, defender_loc, prev_def
 		);
 	}
 	else {
-		*this = battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, defender_weapon, units);
+		*this = battle_context(n_attacker, attacker_loc, attacker_weapon, n_defender, defender_loc, defender_weapon, units);
 	}
 
 	assert(attacker_stats_);
@@ -536,8 +538,8 @@ bool battle_context::better_combat(const combatant& us_a,
 	return them_a.average_hp() < them_b.average_hp();
 }
 
-battle_context battle_context::choose_attacker_weapon(unit_const_ptr attacker,
-		unit_const_ptr defender,
+battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
+		nonempty_unit_const_ptr defender,
 		const unit_map& units,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
@@ -590,8 +592,8 @@ battle_context battle_context::choose_attacker_weapon(unit_const_ptr attacker,
 }
 
 /** @todo FIXME: Hand previous defender unit in here. */
-battle_context battle_context::choose_defender_weapon(unit_const_ptr attacker,
-		unit_const_ptr defender,
+battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr attacker,
+		nonempty_unit_const_ptr defender,
 		unsigned attacker_weapon,
 		const unit_map& units,
 		const map_location& attacker_loc,

@@ -83,11 +83,11 @@ struct battle_context_unit_stats
 
 	std::string plague_type; /**< The plague type used by the attack, if any. */
 
-	battle_context_unit_stats(unit_const_ptr u,
+	battle_context_unit_stats(nonempty_unit_const_ptr u,
 			const map_location& u_loc,
 			int u_attack_num,
 			bool attacking,
-			unit_const_ptr opp,
+			nonempty_unit_const_ptr opp,
 			const map_location& opp_loc,
 			const_attack_ptr opp_weapon,
 			const unit_map& units);
@@ -226,24 +226,24 @@ public:
 	void simulate(const combatant* prev_def);
 private:
 	battle_context(
-			unit_const_ptr attacker,
+			nonempty_unit_const_ptr attacker,
 			const map_location& attacker_loc,
 			int attacker_weapon,
-			unit_const_ptr defender,
+			nonempty_unit_const_ptr defender,
 			const map_location& defender_loc,
 			int defender_weapon,
 			const unit_map& units);
 
-	static battle_context choose_attacker_weapon(unit_const_ptr attacker,
-			unit_const_ptr defender,
+	static battle_context choose_attacker_weapon(nonempty_unit_const_ptr attacker,
+			nonempty_unit_const_ptr defender,
 			const unit_map& units,
 			const map_location& attacker_loc,
 			const map_location& defender_loc,
 			double harm_weight,
 			const combatant* prev_def);
 
-	static battle_context choose_defender_weapon(unit_const_ptr attacker,
-			unit_const_ptr defender,
+	static battle_context choose_defender_weapon(nonempty_unit_const_ptr attacker,
+			nonempty_unit_const_ptr defender,
 			unsigned attacker_weapon,
 			const unit_map& units,
 			const map_location& attacker_loc,
