@@ -66,6 +66,7 @@
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
 			<Add library="libpng" />
+			<Add library="libjepg" />
 			<Add library="libboost_iostreams" />
 			<Add library="libboost_bzip2" />
 			<Add library="libboost_filesystem" />
@@ -251,6 +252,8 @@
 		<Unit filename="../../src/cursor.hpp" />
 		<Unit filename="../../src/deprecation.cpp" />
 		<Unit filename="../../src/deprecation.hpp" />
+		<Unit filename="../../src/desktop/apple_video.hpp" />
+		<Unit filename="../../src/desktop/apple_video.mm" />
 		<Unit filename="../../src/desktop/battery_info.cpp" />
 		<Unit filename="../../src/desktop/battery_info.hpp" />
 		<Unit filename="../../src/desktop/clipboard.cpp" />
