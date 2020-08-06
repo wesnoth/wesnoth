@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2020-06-12 21:49-0400\n"
-"PO-Revision-Date: 2020-01-23 14:10+0300\n"
+"PO-Revision-Date: 2020-08-05 03:42+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -1443,16 +1443,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:504
-#, fuzzy
-#| msgid ""
-#| "When running unit tests (withB<\\ -u>), the exit status is different. An "
-#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
-#| "test failed. An exit status of 3 indicates that the test passed, but "
-#| "produced an invalid replay file. An exit status of 4 indicates that the "
-#| "test passed, but the replay produced errors. These latter two are only "
-#| "returned if B<--noreplaycheck> is not passed. An exit status of 2 "
-#| "indicates that the test timed out, when used with the deprecated B<--"
-#| "timeout> option."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1466,9 +1456,7 @@ msgstr ""
 "3 çıkış durumu, sınamanın geçtiğini ancak geçersiz bir yeniden oynatma "
 "dosyası üretildiğini gösterir. 4 çıkış durumu, sınamanın geçtiğini ancak "
 "yeniden oynatma dosyasının hatalar ürettiğini gösterir. Bu son ikisi, "
-"yalnızca B<--noreplaycheck> kullanılmazsa döndürülür. 2 çıkış durumu, B<--"
-"timeout> seçeneğiyle kullanıldığında sınamanın zaman aşımına uğradığını "
-"gösterir."
+"yalnızca B<--noreplaycheck> kullanılmazsa döndürülür."
 
 # type: SH
 #. type: SH
@@ -2222,14 +2210,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:223
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the forum_user_handler to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2240,10 +2220,10 @@ msgid ""
 msgstr ""
 "B<[user_handler]> Kullanıcı işlemcisini yapılandırır.  Kullanılabilecek "
 "anahtarlar B<user_handler> anahtarı ile hangi kullanıcı işlemcisinin "
-"tanımlandığına bağlıdır. Yapılandırmada bir [user_handler bölümü yoksa "
+"tanımlandığına bağlıdır. B<[user_handler]> bölümü yapılandırmada yoksa "
 "sunucu herhangi bir kullanıcı kayıt hizmeti olmadan çalışacaktır. "
-"forum_user_handler'ın çalışması için gereken tüm ek tablolar Wesnoth kaynak "
-"deposundaki table_definitions.sql dosyasında bulunabilir."
+"B<forum_user_handler>'ın çalışması için gereken tüm ek tablolar Wesnoth "
+"kaynak deposundaki table_definitions.sql dosyasında bulunabilir."
 
 # type: TP
 #. type: TP
