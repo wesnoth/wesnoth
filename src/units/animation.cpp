@@ -1314,7 +1314,7 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	tmp.text_color = text_color;
 	tmp.src = src;
 	tmp.with_bars= with_bars;
-	tmp.animation = animated_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2);
+	tmp.animation = tmp.my_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2);
 
 	if(!tmp.animation) return;
 
