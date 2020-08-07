@@ -341,7 +341,8 @@ static int impl_animator_collect(lua_State* L) {
 static int impl_add_animation(lua_State* L)
 {
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
-	unit& u = luaW_checkunit(L, 2);
+	unit_ptr up = luaW_checkunit_ptr(L, 2, false);
+	unit& u = *up;
 	std::string which = luaL_checkstring(L, 3);
 
 	using hit_type = unit_animation::hit_type;
@@ -435,8 +436,7 @@ static int impl_add_animation(lua_State* L)
 		return luaW_type_error(L, 5, "table of options");
 	}
 
-	//gfgtodo
-	anim.add_animation(u.shared_from_this(), which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2);
+	anim.add_animation(up, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2);
 	return 0;
 }
 

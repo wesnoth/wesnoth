@@ -532,7 +532,6 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 	attacker.set_facing(loc.get_relative_dir(defender_loc));
 	defender->set_facing(defender_loc.get_relative_dir(loc));
 	animator.add_animation(attacker.shared_from_this(),"draw_weapon",loc,defender_loc,0,true,"",{0,0,0},unit_animation::hit_type::HIT,attack,secondary_attack,0);
-	//ggfgtodo
 	if(defender) {
 		animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,true,"",{0,0,0},unit_animation::hit_type::MISS,secondary_attack,attack,0);
 	}
