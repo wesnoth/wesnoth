@@ -126,7 +126,7 @@ private:
 /**
  * This class represents a *single* unit of a specific type.
  */
-class unit
+class unit : public std::enable_shared_from_this<unit>
 {
 public:
 	/**
@@ -145,7 +145,13 @@ private:
 	// Copy constructor
 	unit(const unit& u);
 
-	unit();
+
+	struct unit_ctor_t {};
+public:
+	//private default ctor, butusing constructor to allow calling make_shared<unit> in create().
+	unit(unit_ctor_t);
+	unit() = delete;
+private:
 	enum UNIT_ATTRIBUTE
 	{
 		UA_MAX_HP,
@@ -184,7 +190,7 @@ public:
 	/** Initializes a unit from a config */
 	static unit_ptr create(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr)
 	{
-		unit_ptr res(new unit());
+		unit_ptr res = std::make_shared<unit>(unit_ctor_t());
 		res->init(cfg, use_traits, vcfg);
 		return res;
 	}
@@ -196,20 +202,21 @@ public:
 	 */
 	static unit_ptr create(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS, const std::string& variation = "")
 	{
-		unit_ptr res(new unit());
+		unit_ptr res = std::make_shared<unit>(unit_ctor_t());
 		res->init(t, side, real_unit, gender, variation);
+
 		return res;
 	}
 
 	unit_ptr clone() const
 	{
-		return unit_ptr(new unit(*this));
+		return unit_ptr(std::shared_ptr<unit>(new unit(*this)));
 	}
 
-	unit_ptr shared_from_this()
-	{
-		return unit_ptr(this);
-	}
+	//unit_ptr shared_from_this()
+	//{
+	//	return unit_ptr(this);
+	//}
 
 	virtual ~unit();
 
@@ -1772,21 +1779,11 @@ public:
 	 */
 	unit& mark_clone(bool is_temporary);
 
-	/** @} */
-
-	long ref_count() const
-	{
-		return ref_count_;
-	}
-
-	friend void intrusive_ptr_add_ref(const unit*);
-	friend void intrusive_ptr_release(const unit*);
 
 	void set_appearance_changed(bool value) { appearance_changed_ = value; }
 	bool appearance_changed() const { return appearance_changed_; }
 
 protected:
-	mutable long ref_count_; // used by intrusive_ptr
 
 private:
 	map_location loc_;

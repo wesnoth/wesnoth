@@ -903,7 +903,7 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon, u
 	: parent(weapon.shared_from_this())
 {
 	weapon.self_ = self;
-	weapon.other_ = nullptr;
+	weapon.other_ = unit_ptr();
 	weapon.self_loc_ = loc;
 	weapon.other_loc_ = map_location::null_location();
 	weapon.is_attacker_ = attacking;
@@ -922,8 +922,8 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon, c
 	: parent(weapon.shared_from_this())
 {
 	UNUSED(self_type);
-	weapon.self_ = nullptr;
-	weapon.other_ = nullptr;
+	weapon.self_ = unit_ptr();
+	weapon.other_ = unit_ptr();
 	weapon.self_loc_ = loc;
 	weapon.other_loc_ = map_location::null_location();
 	weapon.is_attacker_ = attacking;
@@ -941,8 +941,8 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon, b
 attack_type::specials_context_t::~specials_context_t()
 {
 	if(was_moved) return;
-	parent->self_ = nullptr;
-	parent->other_ = nullptr;
+	parent->self_ = unit_ptr();
+	parent->other_ = unit_ptr();
 	parent->self_loc_ = map_location::null_location();
 	parent->other_loc_ = map_location::null_location();
 	parent->is_attacker_ = false;
@@ -1217,13 +1217,13 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	if(self == nullptr) {
 		unit_map::const_iterator it = units.find(self_loc);
 		if(it.valid()) {
-			self = it.get_shared_ptr().get();
+			self = it.get_shared_ptr();
 		}
 	}
 	if(other == nullptr) {
 		unit_map::const_iterator it = units.find(other_loc);
 		if(it.valid()) {
-			other = it.get_shared_ptr().get();
+			other = it.get_shared_ptr();
 		}
 	}
 

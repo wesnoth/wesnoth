@@ -141,6 +141,13 @@ static const unit *get_selected_unit(reports::context & rc)
 		rc.screen().show_everything());
 }
 
+static unit_const_ptr get_selected_unit_ptr(reports::context & rc)
+{
+	return rc.dc().get_visible_unit_shared_ptr(rc.screen().selected_hex(),
+		rc.teams()[rc.screen().viewing_team()],
+		rc.screen().show_everything());
+}
+
 static config gray_inactive(reports::context & rc, const std::string &str, const std::string& tooltip = "")
 {
 	if ( rc.screen().viewing_side() == rc.screen().playing_side() )
@@ -741,7 +748,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	};
 
 	{
-		auto ctx = at.specials_context(unit_const_ptr(&u), hex, u.side() == rc.screen().playing_side());
+		auto ctx = at.specials_context(u.shared_from_this(), hex, u.side() == rc.screen().playing_side());
 		int base_damage = at.damage();
 		int specials_damage = at.modified_damage(false);
 		int damage_multiplier = 100;
@@ -923,7 +930,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		//If we have a second unit, do the 2-unit specials_context
 		bool attacking = (u.side() == rc.screen().playing_side());
 		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
-						at.specials_context(unit_const_ptr(&u), unit_const_ptr(sec_u), hex, sec_u->get_location(), attacking, sec_u_weapon);
+						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, sec_u_weapon);
 
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
@@ -978,12 +985,12 @@ static std::string format_hp(unsigned hp)
 	return res.str();
 }
 
-static config unit_weapons(reports::context & rc, const unit *attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
+static config unit_weapons(reports::context & rc, unit_const_ptr attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
 {
 	if (!attacker || !defender) return config();
 
-	const unit* u = show_attacker ? attacker : defender;
-	const unit* sec_u = !show_attacker ? attacker : defender;
+	const unit* u = show_attacker ? attacker.get() : defender;
+	const unit* sec_u = !show_attacker ? attacker.get() : defender;
 	const map_location unit_loc = show_attacker ? attacker_pos : defender->get_location();
 
 	std::ostringstream str, tooltip;
@@ -1140,11 +1147,11 @@ REPORT_GENERATOR(unit_weapons, rc)
 }
 REPORT_GENERATOR(highlighted_unit_weapons, rc)
 {
-	const unit *u = get_selected_unit(rc);
+	unit_const_ptr u = get_selected_unit_ptr(rc);
 	const unit *sec_u = get_visible_unit(rc);
 
 	if (!u) return report_unit_weapons(rc);
-	if (!sec_u || u == sec_u) return unit_weapons(rc, sec_u, rc.screen().mouseover_hex());
+	if (!sec_u || u.get() == sec_u) return unit_weapons(rc, sec_u, rc.screen().mouseover_hex());
 
 	map_location highlighted_hex = rc.screen().displayed_unit_hex();
 	map_location attack_loc;
@@ -1154,15 +1161,16 @@ REPORT_GENERATOR(highlighted_unit_weapons, rc)
 	if (!attack_loc.valid())
 		return unit_weapons(rc, sec_u, rc.screen().mouseover_hex());
 
+	//TODO: shouldn't this pass sec_u as secodn parameter ?
 	return unit_weapons(rc, u, attack_loc, sec_u, false);
 }
 REPORT_GENERATOR(selected_unit_weapons, rc)
 {
-	const unit *u = get_selected_unit(rc);
+	unit_const_ptr u = get_selected_unit_ptr(rc);
 	const unit *sec_u = get_visible_unit(rc);
 
 	if (!u) return config();
-	if (!sec_u || u == sec_u) return unit_weapons(rc, u, u->get_location());
+	if (!sec_u || u.get() == sec_u) return unit_weapons(rc, u.get(), u->get_location());
 
 	map_location highlighted_hex = rc.screen().displayed_unit_hex();
 	map_location attack_loc;
@@ -1170,7 +1178,7 @@ REPORT_GENERATOR(selected_unit_weapons, rc)
 		attack_loc = rc.mhb()->current_unit_attacks_from(highlighted_hex);
 
 	if (!attack_loc.valid())
-		return unit_weapons(rc, u, u->get_location());
+		return unit_weapons(rc, u.get(), u->get_location());
 
 	return unit_weapons(rc, u, attack_loc, sec_u, true);
 }

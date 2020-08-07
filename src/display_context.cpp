@@ -61,6 +61,16 @@ const unit * display_context::get_visible_unit(const map_location & loc, const t
 	return &*u;
 }
 
+unit_const_ptr display_context::get_visible_unit_shared_ptr(const map_location & loc, const team &current_team, bool see_all) const
+{
+	if (!map().on_board(loc)) return nullptr;
+	const unit_map::const_iterator u = units().find(loc);
+	if (!u.valid() || !u->is_visible_to_team(current_team, see_all)) {
+		return unit_const_ptr();
+	}
+	return u.get_shared_ptr();
+}
+
 /**
  * Will return true iff the unit @a u has any possible moves
  * it can do (including attacking etc).

@@ -72,19 +72,19 @@ static lg::log_domain log_config("config");
 // BATTLE CONTEXT UNIT STATS
 // ==================================================================================
 
-battle_context_unit_stats::battle_context_unit_stats(const unit& u,
+battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		const map_location& u_loc,
 		int u_attack_num,
 		bool attacking,
-		const unit& opp,
+		nonempty_unit_const_ptr oppp,
 		const map_location& opp_loc,
 		const_attack_ptr opp_weapon,
 		const unit_map& units)
 	: weapon(nullptr)
 	, attack_num(u_attack_num)
 	, is_attacker(attacking)
-	, is_poisoned(u.get_state(unit::STATE_POISONED))
-	, is_slowed(u.get_state(unit::STATE_SLOWED))
+	, is_poisoned(up->get_state(unit::STATE_POISONED))
+	, is_slowed(up->get_state(unit::STATE_SLOWED))
 	, slows(false)
 	, drains(false)
 	, petrifies(false)
@@ -94,12 +94,12 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	, swarm(false)
 	, firststrike(false)
 	, disable(false)
-	, experience(u.experience())
-	, max_experience(u.max_experience())
-	, level(u.level())
+	, experience(up->experience())
+	, max_experience(up->max_experience())
+	, level(up->level())
 	, rounds(1)
 	, hp(0)
-	, max_hp(u.max_hitpoints())
+	, max_hp(up->max_hitpoints())
 	, chance_to_hit(0)
 	, damage(0)
 	, slow_damage(0)
@@ -110,6 +110,8 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	, swarm_max(0)
 	, plague_type()
 {
+	const unit& u = *up;
+	const unit& opp = *oppp;
 	// Get the current state of the unit.
 	if(attack_num >= 0) {
 		weapon = u.attacks()[attack_num].shared_from_this();
@@ -132,11 +134,11 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	}
 
 	// Get the weapon characteristics as appropriate.
-	auto ctx = weapon->specials_context(&u, &opp, u_loc, opp_loc, attacking, opp_weapon);
+	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
 	boost::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon));
+		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
 	}
 
 	slows = weapon->bool_ability("slow");
@@ -365,10 +367,10 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 // ==================================================================================
 
 battle_context::battle_context(
-		const unit& attacker,
+		nonempty_unit_const_ptr attacker,
 		const map_location& a_loc,
 		int a_wep_index,
-		const unit& defender,
+		nonempty_unit_const_ptr defender,
 		const map_location& d_loc,
 		int d_wep_index,
 		const unit_map& units)
@@ -380,8 +382,8 @@ battle_context::battle_context(
 	size_t a_wep_uindex = static_cast<size_t>(a_wep_index);
 	size_t d_wep_uindex = static_cast<size_t>(d_wep_index);
 
-	const_attack_ptr a_wep(a_wep_uindex < attacker.attacks().size() ? attacker.attacks()[a_wep_index].shared_from_this() : nullptr);
-	const_attack_ptr d_wep(d_wep_uindex < defender.attacks().size() ? defender.attacks()[d_wep_index].shared_from_this() : nullptr);
+	const_attack_ptr a_wep(a_wep_uindex < attacker->attacks().size() ? attacker->attacks()[a_wep_index].shared_from_this() : nullptr);
+	const_attack_ptr d_wep(d_wep_uindex < defender->attacks().size() ? defender->attacks()[d_wep_index].shared_from_this() : nullptr);
 
 	attacker_stats_.reset(new battle_context_unit_stats(attacker, a_loc, a_wep_index, true , defender, d_loc, d_wep, units));
 	defender_stats_.reset(new battle_context_unit_stats(defender, d_loc, d_wep_index, false, attacker, a_loc, a_wep, units));
@@ -407,30 +409,37 @@ battle_context::battle_context(const unit_map& units,
 		int defender_weapon,
 		double aggression,
 		const combatant* prev_def,
-		const unit* attacker_ptr,
-		const unit* defender_ptr)
+		unit_const_ptr attacker,
+		unit_const_ptr defender)
 	: attacker_stats_(nullptr)
 	, defender_stats_(nullptr)
 	, attacker_combatant_(nullptr)
 	, defender_combatant_(nullptr)
 {
 	//TODO: maybe check before dereferencing units.find(attacker_loc),units.find(defender_loc) ?
-	const unit& attacker = attacker_ptr ? *attacker_ptr : *units.find(attacker_loc);
-	const unit& defender = defender_ptr ? *defender_ptr : *units.find(defender_loc);
+	if(!attacker) {
+		attacker = units.find(attacker_loc).get_shared_ptr();
+	}
+	if(!defender) {
+		defender = units.find(defender_loc).get_shared_ptr();
+	}
+	nonempty_unit_const_ptr n_attacker { attacker };
+	nonempty_unit_const_ptr n_defender { defender };
+
 	const double harm_weight = 1.0 - aggression;
 
 	if(attacker_weapon == -1) {
 		*this = choose_attacker_weapon(
-			attacker, defender, units, attacker_loc, defender_loc, harm_weight, prev_def
+			n_attacker, n_defender, units, attacker_loc, defender_loc, harm_weight, prev_def
 		);
 	}
 	else if(defender_weapon == -1) {
 		*this = choose_defender_weapon(
-			attacker, defender, attacker_weapon, units, attacker_loc, defender_loc, prev_def
+			n_attacker, n_defender, attacker_weapon, units, attacker_loc, defender_loc, prev_def
 		);
 	}
 	else {
-		*this = battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, defender_weapon, units);
+		*this = battle_context(n_attacker, attacker_loc, attacker_weapon, n_defender, defender_loc, defender_weapon, units);
 	}
 
 	assert(attacker_stats_);
@@ -529,8 +538,8 @@ bool battle_context::better_combat(const combatant& us_a,
 	return them_a.average_hp() < them_b.average_hp();
 }
 
-battle_context battle_context::choose_attacker_weapon(const unit& attacker,
-		const unit& defender,
+battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
+		nonempty_unit_const_ptr defender,
 		const unit_map& units,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
@@ -541,8 +550,8 @@ battle_context battle_context::choose_attacker_weapon(const unit& attacker,
 	std::vector<battle_context> choices;
 
 	// What options does attacker have?
-	for(size_t i = 0; i < attacker.attacks().size(); ++i) {
-		const attack_type& att = attacker.attacks()[i];
+	for(size_t i = 0; i < attacker->attacks().size(); ++i) {
+		const attack_type& att = attacker->attacks()[i];
 
 		if(att.attack_weight() <= 0) {
 			continue;
@@ -583,8 +592,8 @@ battle_context battle_context::choose_attacker_weapon(const unit& attacker,
 }
 
 /** @todo FIXME: Hand previous defender unit in here. */
-battle_context battle_context::choose_defender_weapon(const unit& attacker,
-		const unit& defender,
+battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr attacker,
+		nonempty_unit_const_ptr defender,
 		unsigned attacker_weapon,
 		const unit_map& units,
 		const map_location& attacker_loc,
@@ -592,15 +601,15 @@ battle_context battle_context::choose_defender_weapon(const unit& attacker,
 		const combatant* prev_def)
 {
 	log_scope2(log_attack, "choose_defender_weapon");
-	VALIDATE(attacker_weapon < attacker.attacks().size(), _("An invalid attacker weapon got selected."));
+	VALIDATE(attacker_weapon < attacker->attacks().size(), _("An invalid attacker weapon got selected."));
 
-	const attack_type& att = attacker.attacks()[attacker_weapon];
+	const attack_type& att = attacker->attacks()[attacker_weapon];
 	auto no_weapon = [&]() { return battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, -1, units); };
 	std::vector<battle_context> choices;
 
 	// What options does defender have?
-	for(size_t i = 0; i < defender.attacks().size(); ++i) {
-		const attack_type& def = defender.attacks()[i];
+	for(size_t i = 0; i < defender->attacks().size(); ++i) {
+		const attack_type& def = defender->attacks()[i];
 		if(def.range() != att.range() || def.defense_weight() <= 0) {
 			//no need to calculate the battle_context here.
 			continue;
@@ -636,7 +645,7 @@ battle_context battle_context::choose_defender_weapon(const unit& attacker,
 		double max_weight = 0.0;
 
 		for(const auto& choice : choices) {
-			const attack_type& def = defender.attacks()[choice.defender_stats_->attack_num];
+			const attack_type& def = defender->attacks()[choice.defender_stats_->attack_num];
 
 			if(def.defense_weight() >= max_weight) {
 				const battle_context_unit_stats& def_stats = *choice.defender_stats_;
@@ -655,7 +664,7 @@ battle_context battle_context::choose_defender_weapon(const unit& attacker,
 	battle_context* best_choice = nullptr;
 	// Multiple options: simulate them, save best.
 	for(auto& choice : choices) {
-		const attack_type& def = defender.attacks()[choice.defender_stats_->attack_num];
+		const attack_type& def = defender->attacks()[choice.defender_stats_->attack_num];
 
 		choice.simulate(prev_def);
 
@@ -744,6 +753,7 @@ private:
 
 		unit_info(const map_location& loc, int weapon, unit_map& units);
 		unit& get_unit();
+		unit_ptr get_unit_ptr();
 		bool valid();
 
 		std::string dump();
@@ -805,6 +815,15 @@ unit& attack::unit_info::get_unit()
 	unit_map::iterator i = units_.find(loc_);
 	assert(i.valid() && i->underlying_id() == id_);
 	return *i;
+}
+
+unit_ptr attack::unit_info::get_unit_ptr()
+{
+	unit_map::iterator i = units_.find(loc_);
+	if(i.valid() && i->underlying_id() == id_) {
+		return i.get_shared_ptr();
+	}
+	return unit_ptr();
 }
 
 bool attack::unit_info::valid()
@@ -1261,7 +1280,7 @@ void attack::unit_killed(unit_info& attacker,
 			attacker_stats->weapon,
 			defender_stats->weapon,
 			attacker.loc_,
-			&attacker.get_unit()
+			attacker.get_unit_ptr()
 		);
 	}
 
@@ -1400,7 +1419,7 @@ void attack::perform()
 		   << (defender_strikes_first ? " defender first-strike" : "") << "\n";
 
 	// Play the pre-fight animation
-	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_stats_->weapon, d_stats_->weapon, d_.loc_, &d_.get_unit());
+	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_stats_->weapon, d_stats_->weapon, d_.loc_, d_.get_unit_ptr());
 
 	for(;;) {
 		DBG_NG << "start of attack loop...\n";
@@ -1464,8 +1483,8 @@ void attack::perform()
 		u.set_experience(u.experience() + d_.xp_);
 	}
 
-	unit_display::unit_sheath_weapon(a_.loc_, a_.valid() ? &a_.get_unit() : nullptr, a_stats_->weapon, d_stats_->weapon,
-			d_.loc_, d_.valid() ? &d_.get_unit() : nullptr);
+	unit_display::unit_sheath_weapon(a_.loc_, a_.get_unit_ptr(), a_stats_->weapon, d_stats_->weapon,
+			d_.loc_, d_.get_unit_ptr());
 
 	if(update_display_) {
 		game_display::get_singleton()->invalidate_unit();

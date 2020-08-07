@@ -43,7 +43,7 @@ public:
 	static void fill_initial_animations(std::vector<unit_animation>& animations, const config& cfg);
 	static void add_anims(std::vector<unit_animation>& animations, const config& cfg);
 
-	int matches(const display& disp, const map_location& loc, const map_location& second_loc, const unit* my_unit, const std::string& event = "", const int value = 0, hit_type hit = hit_type::INVALID, const_attack_ptr attack = nullptr, const_attack_ptr second_attack = nullptr, int value2 = 0) const;
+	int matches(const display& disp, const map_location& loc, const map_location& second_loc, unit_const_ptr my_unit, const std::string& event = "", const int value = 0, hit_type hit = hit_type::INVALID, const_attack_ptr attack = nullptr, const_attack_ptr second_attack = nullptr, int value2 = 0) const;
 
 	const unit_frame& get_last_frame() const
 	{
@@ -201,14 +201,14 @@ public:
 		start_time_(INT_MIN)
 	{}
 
-	void add_animation(const unit* animated_unit
+	void add_animation(unit_const_ptr animated_unit
 		, const unit_animation* animation
 		, const map_location& src = map_location::null_location()
 		, bool with_bars = false
 		, const std::string& text = ""
 		, const color_t text_color = {0,0,0});
 
-	void add_animation(const unit* animated_unit
+	void add_animation(unit_const_ptr animated_unit
 		, const std::string& event
 		, const map_location& src = map_location::null_location()
 		, const map_location& dst = map_location::null_location()
@@ -222,7 +222,7 @@ public:
 		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0);
 
-	void replace_anim_if_invalid(const unit* animated_unit
+	void replace_anim_if_invalid(unit_const_ptr animated_unit
 		, const std::string& event
 		, const map_location& src = map_location::null_location()
 		, const map_location& dst = map_location::null_location()
@@ -257,7 +257,7 @@ private:
 	struct anim_elem
 	{
 		anim_elem()
-			: my_unit(0)
+			: my_unit()
 			, animation(0)
 			, text()
 			, text_color()

@@ -23,6 +23,7 @@
 
 #include <string>
 #include <vector>
+#include "units/ptr.hpp"
 
 class team;
 class gamemap;
@@ -60,6 +61,7 @@ public:
 	// Needed for reports
 
 	const unit * get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false) const;
+	unit_const_ptr get_visible_unit_shared_ptr(const map_location &loc, const team &current_team, bool see_all = false) const;
 
 	// From actions:: namespace
 

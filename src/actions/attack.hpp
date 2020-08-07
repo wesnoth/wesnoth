@@ -24,6 +24,7 @@
 #include "ai/lua/aspect_advancements.hpp"
 #include "attack_prediction.hpp"
 #include "units/alignment.hpp"
+#include "units/ptr.hpp"
 
 #include <vector>
 
@@ -82,11 +83,11 @@ struct battle_context_unit_stats
 
 	std::string plague_type; /**< The plague type used by the attack, if any. */
 
-	battle_context_unit_stats(const unit& u,
+	battle_context_unit_stats(nonempty_unit_const_ptr u,
 			const map_location& u_loc,
 			int u_attack_num,
 			bool attacking,
-			const unit& opp,
+			nonempty_unit_const_ptr opp,
 			const map_location& opp_loc,
 			const_attack_ptr opp_weapon,
 			const unit_map& units);
@@ -185,8 +186,8 @@ public:
 			int defender_weapon = -1,
 			double aggression = 0.0,
 			const combatant* prev_def = nullptr,
-			const unit* attacker_ptr = nullptr,
-			const unit* defender_ptr = nullptr);
+			unit_const_ptr attacker_ptr = unit_const_ptr(),
+			unit_const_ptr defender_ptr = unit_const_ptr());
 
 	/** Used by the AI which caches battle_context_unit_stats */
 	battle_context(const battle_context_unit_stats& att, const battle_context_unit_stats& def);
@@ -225,24 +226,24 @@ public:
 	void simulate(const combatant* prev_def);
 private:
 	battle_context(
-			const unit& attacker,
+			nonempty_unit_const_ptr attacker,
 			const map_location& attacker_loc,
 			int attacker_weapon,
-			const unit& defender,
+			nonempty_unit_const_ptr defender,
 			const map_location& defender_loc,
 			int defender_weapon,
 			const unit_map& units);
 
-	static battle_context choose_attacker_weapon(const unit& attacker,
-			const unit& defender,
+	static battle_context choose_attacker_weapon(nonempty_unit_const_ptr attacker,
+			nonempty_unit_const_ptr defender,
 			const unit_map& units,
 			const map_location& attacker_loc,
 			const map_location& defender_loc,
 			double harm_weight,
 			const combatant* prev_def);
 
-	static battle_context choose_defender_weapon(const unit& attacker,
-			const unit& defender,
+	static battle_context choose_defender_weapon(nonempty_unit_const_ptr attacker,
+			nonempty_unit_const_ptr defender,
 			unsigned attacker_weapon,
 			const unit_map& units,
 			const map_location& attacker_loc,
