@@ -16,6 +16,7 @@
 #include "global.hpp"
 
 #include <memory>
+#include <stdexcept>
 
 namespace utils {
 

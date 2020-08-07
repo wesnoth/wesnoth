@@ -310,7 +310,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\mt_rng.cpp" />
     <ClCompile Include="..\..\src\seed_rng.cpp" />
-    <ClCompile Include="..\..\src\server\ban.cpp">
+    <ClCompile Include="..\..\src\server\wesnothd\ban.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -318,7 +318,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\forum_user_handler.cpp">
+    <ClCompile Include="..\..\src\server\common\forum_user_handler.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -326,7 +326,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\game.cpp">
+    <ClCompile Include="..\..\src\server\wesnothd\game.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -334,7 +334,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\metrics.cpp">
+    <ClCompile Include="..\..\src\server\wesnothd\metrics.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -342,7 +342,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\dbconn.cpp">
+    <ClCompile Include="..\..\src\server\common\dbconn.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -350,7 +350,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\resultsets\tournaments.cpp">
+    <ClCompile Include="..\..\src\server\common\resultsets\tournaments.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -358,7 +358,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\resultsets\ban_check.cpp">
+    <ClCompile Include="..\..\src\server\common\resultsets\ban_check.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -366,7 +366,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\player.cpp">
+    <ClCompile Include="..\..\src\server\wesnothd\player.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -374,7 +374,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\player_connection.cpp">
+    <ClCompile Include="..\..\src\server\wesnothd\player_connection.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -382,7 +382,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\player_network.cpp">
+    <ClCompile Include="..\..\src\server\wesnothd\player_network.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -390,7 +390,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\server.cpp">
+    <ClCompile Include="..\..\src\server\wesnothd\server.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -398,7 +398,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\server_base.cpp">
+    <ClCompile Include="..\..\src\server\common\server_base.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
@@ -406,7 +406,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\simple_wml.cpp">
+    <ClCompile Include="..\..\src\server\common\simple_wml.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <DisableSpecificWarnings>4706;4458;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -415,7 +415,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\user_handler.cpp">
+    <ClCompile Include="..\..\src\server\common\user_handler.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Server\</ObjectFileName>
@@ -427,17 +427,17 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\mt_rng.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
-    <ClInclude Include="..\..\src\server\ban.hpp" />
-    <ClInclude Include="..\..\src\server\forum_user_handler.hpp" />
-    <ClInclude Include="..\..\src\server\game.hpp" />
-    <ClInclude Include="..\..\src\server\metrics.hpp" />
-    <ClInclude Include="..\..\src\server\player.hpp" />
-    <ClInclude Include="..\..\src\server\player_connection.hpp" />
-    <ClInclude Include="..\..\src\server\player_network.hpp" />
-    <ClInclude Include="..\..\src\server\server.hpp" />
-    <ClInclude Include="..\..\src\server\server_base.hpp" />
-    <ClInclude Include="..\..\src\server\simple_wml.hpp" />
-    <ClInclude Include="..\..\src\server\user_handler.hpp" />
+    <ClInclude Include="..\..\src\server\common\forum_user_handler.hpp" />
+    <ClInclude Include="..\..\src\server\common\server_base.hpp" />
+    <ClInclude Include="..\..\src\server\common\simple_wml.hpp" />
+    <ClInclude Include="..\..\src\server\common\user_handler.hpp" />
+    <ClInclude Include="..\..\src\server\wesnothd\ban.hpp" />
+    <ClInclude Include="..\..\src\server\wesnothd\game.hpp" />
+    <ClInclude Include="..\..\src\server\wesnothd\metrics.hpp" />
+    <ClInclude Include="..\..\src\server\wesnothd\player.hpp" />
+    <ClInclude Include="..\..\src\server\wesnothd\player_connection.hpp" />
+    <ClInclude Include="..\..\src\server\wesnothd\player_network.hpp" />
+    <ClInclude Include="..\..\src\server\wesnothd\server.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="wesnothlib.vcxproj">
