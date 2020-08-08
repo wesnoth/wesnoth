@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-01-25 15:18-0300\n"
+"POT-Creation-Date: 2020-08-08 05:30-0400\n"
 "PO-Revision-Date: 2011-11-14 21:31+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -264,22 +264,22 @@ msgstr "비용:"
 msgid "Recruit: "
 msgstr "고용리스트:"
 
-#: src/editor/controller/editor_controller.cpp:178
+#: src/editor/controller/editor_controller.cpp:179
 msgid "Fatal error"
 msgstr "치명적인 에러"
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:209
 msgid "Do you really want to quit?"
 msgstr "정말로 종료하시겠습니까?"
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 "정말로 종료하시겠습니까? 마지막 저장 이후에 행한 맵 변경사항을 잃게 됩니다."
 
-#: src/editor/controller/editor_controller.cpp:212
+#: src/editor/controller/editor_controller.cpp:213
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -287,129 +287,129 @@ msgstr ""
 "정말로 종료하시겠습니까? 다음의 맵이 수정되어 있으며 종료하면 변경한 부분은 "
 "사라집니다:"
 
-#: src/editor/controller/editor_controller.cpp:221
+#: src/editor/controller/editor_controller.cpp:222
 msgid "No editor time-of-day found."
 msgstr "에디터의 시각설정을 찾을 수 없습니다."
 
-#: src/editor/controller/editor_controller.cpp:1147
+#: src/editor/controller/editor_controller.cpp:1148
 msgid "Change Unit ID"
 msgstr "유닛 ID변경"
 
-#: src/editor/controller/editor_controller.cpp:1148
+#: src/editor/controller/editor_controller.cpp:1149
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1164
+#: src/editor/controller/editor_controller.cpp:1165
 msgid "Rename Unit"
 msgstr "유닛 이름 변경"
 
-#: src/editor/controller/editor_controller.cpp:1165
+#: src/editor/controller/editor_controller.cpp:1166
 msgid "Name:"
 msgstr "이름:"
 
-#: src/editor/map/context_manager.cpp:202
+#: src/editor/map/context_manager.cpp:203
 msgid "Load Map"
 msgstr "맵 불러오기"
 
-#: src/editor/map/context_manager.cpp:270 src/editor/map/map_context.cpp:838
+#: src/editor/map/context_manager.cpp:271 src/editor/map/map_context.cpp:847
 msgid "New Map"
 msgstr "새로운 맵"
 
-#: src/editor/map/context_manager.cpp:283 src/editor/map/map_context.cpp:838
+#: src/editor/map/context_manager.cpp:284 src/editor/map/map_context.cpp:847
 msgid "New Scenario"
 msgstr "새로운 시나리오"
 
-#: src/editor/map/context_manager.cpp:339
+#: src/editor/map/context_manager.cpp:340
 msgid "No Recent Files"
 msgstr "최근 파일 없음"
 
-#: src/editor/map/context_manager.cpp:377
+#: src/editor/map/context_manager.cpp:378
 msgid "Unnamed Area"
 msgstr "이름없는 영역"
 
-#: src/editor/map/context_manager.cpp:408
+#: src/editor/map/context_manager.cpp:409
 msgid "New Side"
 msgstr "새로운 진영"
 
-#: src/editor/map/context_manager.cpp:464
+#: src/editor/map/context_manager.cpp:465
 msgid "Apply Mask"
 msgstr "마스크 적용"
 
-#: src/editor/map/context_manager.cpp:473
+#: src/editor/map/context_manager.cpp:474
 msgid "Error loading mask"
 msgstr "마스크 로딩에러"
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:494
 msgid "Identifier:"
 msgstr "ID:"
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:494
 msgid "Rename Area"
 msgstr "영역 이름 변경"
 
-#: src/editor/map/context_manager.cpp:507
+#: src/editor/map/context_manager.cpp:508
 #, fuzzy
 #| msgid "Choose a Map to Open"
 msgid "Choose Target Map"
 msgstr "불러올 맵을 선택하십시오"
 
-#: src/editor/map/context_manager.cpp:516
-#: src/editor/map/context_manager.cpp:925
+#: src/editor/map/context_manager.cpp:517
+#: src/editor/map/context_manager.cpp:926
 msgid "Error loading map"
 msgstr "맵 로딩 에러"
 
-#: src/editor/map/context_manager.cpp:642
+#: src/editor/map/context_manager.cpp:643
 msgid "Save Map As"
 msgstr "다른 이름으로 맵 저장"
 
-#: src/editor/map/context_manager.cpp:663
+#: src/editor/map/context_manager.cpp:664
 msgid "Save Scenario As"
 msgstr "다름 이름으로 시나리오 저장"
 
-#: src/editor/map/context_manager.cpp:695
+#: src/editor/map/context_manager.cpp:696
 msgid "No random map generators found."
 msgstr "랜덤 맵 생성기가 빌견되지 않습니다"
 
-#: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:714
 msgid "Map creation failed."
 msgstr "맵 생성 실패"
 
-#: src/editor/map/context_manager.cpp:728
+#: src/editor/map/context_manager.cpp:729
 msgid "Unsaved Changes"
 msgstr "변경점들이 저장되지 않았음"
 
-#: src/editor/map/context_manager.cpp:729
+#: src/editor/map/context_manager.cpp:730
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "마지막 저장 이후에 행한 맵 변경사항을 모두 취소하겠습니까?."
 
-#: src/editor/map/context_manager.cpp:785
+#: src/editor/map/context_manager.cpp:786
 msgid "This scenario is already open."
 msgstr "해당 시나리오는 이미 열려 있습니다."
 
-#: src/editor/map/context_manager.cpp:808
-#: src/editor/map/context_manager.cpp:871
+#: src/editor/map/context_manager.cpp:809
+#: src/editor/map/context_manager.cpp:872
 msgid "This map is already open."
 msgstr "해당 맵은 이미 열려 있습니다."
 
-#: src/editor/map/context_manager.cpp:832
+#: src/editor/map/context_manager.cpp:833
 msgid "Scenario saved."
 msgstr "시나리오가 저장되었습니다."
 
-#: src/editor/map/context_manager.cpp:847
+#: src/editor/map/context_manager.cpp:848
 msgid "Map saved."
 msgstr "맵이 저장되었습니다."
 
-#: src/editor/map/context_manager.cpp:904
+#: src/editor/map/context_manager.cpp:905
 msgid "Loaded embedded map data"
 msgstr "로드된 내장 맵 데이터"
 
-#: src/editor/map/context_manager.cpp:905
-#: src/editor/map/context_manager.cpp:918
+#: src/editor/map/context_manager.cpp:906
+#: src/editor/map/context_manager.cpp:919
 msgid "Map loaded from scenario"
 msgstr "시나리오에서 로드된 맵"
 
-#: src/editor/map/context_manager.cpp:915
+#: src/editor/map/context_manager.cpp:916
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -426,30 +426,30 @@ msgstr "$side_num 번 플레이어"
 msgid "The size of the target map is different from the current map"
 msgstr "선택한 맵의 사이즈가 현재 맵의 사이즈와 다릅니다."
 
-#: src/editor/map/map_context.cpp:145
+#: src/editor/map/map_context.cpp:146
 msgid "File not found"
 msgstr "파일이 발견되지 않습니다"
 
-#: src/editor/map/map_context.cpp:152
+#: src/editor/map/map_context.cpp:153
 msgid "Empty file"
 msgstr "빈 파일"
 
-#: src/editor/map/map_context.cpp:208
+#: src/editor/map/map_context.cpp:209
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 "맵 파일이 시나리오처럼 보이지만map_data 값이 기존 파일을 지목하지 않습니다"
 
-#: src/editor/map/map_context.cpp:604
+#: src/editor/map/map_context.cpp:613
 msgid "Could not save the scenario: $msg"
 msgstr "시나리오를 저장 할 수 없습니다: $msg"
 
-#: src/editor/map/map_context.cpp:639
+#: src/editor/map/map_context.cpp:648
 msgid "Could not save into scenario"
 msgstr "시나리오 안에 저장 할 수 없습니다"
 
-#: src/editor/map/map_context.cpp:649
+#: src/editor/map/map_context.cpp:658
 msgid "Could not save the map: $msg"
 msgstr "맵을 저장 할 수 없습니다: $msg"
 
@@ -489,11 +489,11 @@ msgstr "불명확한 장소 ID"
 msgid "Delete"
 msgstr "삭제"
 
-#: src/editor/palette/terrain_palettes.cpp:230
+#: src/editor/palette/terrain_palettes.cpp:231
 msgid "FG: "
 msgstr "FG: "
 
-#: src/editor/palette/terrain_palettes.cpp:231
+#: src/editor/palette/terrain_palettes.cpp:232
 msgid "BG: "
 msgstr "BG: "
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-03-09 20:11-0300\n"
+"POT-Creation-Date: 2020-08-08 05:29-0400\n"
 "PO-Revision-Date: 2014-11-02 14:47+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -100,7 +100,7 @@ msgstr ""
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:272
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:274
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
@@ -312,7 +312,7 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:128 data/core/editor/help.cfg:136
 #: data/core/editor/help.cfg:154 data/core/editor/help.cfg:162
-#: data/core/editor/help.cfg:293
+#: data/core/editor/help.cfg:295
 msgid "TODO"
 msgstr ""
 
@@ -352,22 +352,26 @@ msgstr ""
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:170
 msgid ""
-"Named Areas are sets of gamefields which can be addressed during scenario "
-"scripting by a given name.\n"
+"This tool can create [time_area]s, unlike the name suggestes these do not "
+"need to have a specific timezone assigned to them.\n"
+"    [time_area]s are sets of tiles which can be addressed during scenario "
+"scripting by a thieir id. [time_area]s can optitionaly have a custom\n"
+"    time zome assigned to them. The simplest way to adress a [time_aera] via "
+"scenario scripting is the `aera=` attribute in standard location filters.\n"
 "\n"
-"It can be used to abstract between the implementation of an effect and the "
-"map specific setting.\n"
+"This tool can be used to abstract between the implementation of an effect "
+"and the map specific setting.\n"
 "This is a very powerful mechanism since it allows generic scenario codings "
 "working with different maps providing the needed named locations."
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:180
+#: data/core/editor/help.cfg:182
 msgid "Playlist Manager"
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:181
+#: data/core/editor/help.cfg:183
 msgid ""
 "Saves a list of music tracks defining a random playlist to the scenario.\n"
 "\n"
@@ -375,12 +379,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:190
+#: data/core/editor/help.cfg:192
 msgid "Map/Scenario Editor"
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:192
+#: data/core/editor/help.cfg:194
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -423,7 +427,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:221
+#: data/core/editor/help.cfg:223
 msgid ""
 "<header>text='Basic Concepts'</header>\n"
 "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
@@ -434,12 +438,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:231
+#: data/core/editor/help.cfg:233
 msgid "Editing Modes"
 msgstr ""
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:232
+#: data/core/editor/help.cfg:234
 msgid ""
 "The editor features two modes of operation:\n"
 "\n"
@@ -463,12 +467,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:249
+#: data/core/editor/help.cfg:251
 msgid "Editor Tools"
 msgstr ""
 
 #. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:250
+#: data/core/editor/help.cfg:252
 msgid ""
 "The editor provides several tools for editing your maps and scenarios. At "
 "all times, one of the editor tools is active. The active tool’s context "
@@ -492,7 +496,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:273
+#: data/core/editor/help.cfg:275
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -506,29 +510,29 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:284
+#: data/core/editor/help.cfg:286
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:285
+#: data/core/editor/help.cfg:287
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
 msgstr ""
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:292
+#: data/core/editor/help.cfg:294
 msgid "Time Schedule Editor"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:300
+#: data/core/editor/help.cfg:302
 msgid "Editor Palette"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:301
+#: data/core/editor/help.cfg:303
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -544,32 +548,32 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:306
+#: data/core/editor/help.cfg:308
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:307
+#: data/core/editor/help.cfg:309
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:308
+#: data/core/editor/help.cfg:310
 msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:318
+#: data/core/editor/help.cfg:320
 msgid "Wesnoth Map Format"
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:319
+#: data/core/editor/help.cfg:321
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:321
+#: data/core/editor/help.cfg:323
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -600,7 +604,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:334
+#: data/core/editor/help.cfg:336
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -620,7 +624,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:342
+#: data/core/editor/help.cfg:344
 msgid ""
 "<bold>text='Using Embedded Format in Scenario Mode'</bold>\n"
 "\n"
@@ -647,8 +651,39 @@ msgstr "Enciklopédia"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-msgid "<ref>dst='..geography' text='Geography'</ref>"
+#, fuzzy
+#| msgid "<ref>dst='..geography' text='Geography'</ref>"
+msgid ""
+"<ref>dst='..calendar' text='Calendar'</ref>\n"
+"<ref>dst='..geography' text='Geography'</ref>"
 msgstr "<ref>dst='..geography' text='Földrajz'</ref>"
+
+#. [section]: id=calendar
+#. [topic]: id=..calendar
+#: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:12
+msgid "Calendar"
+msgstr ""
+
+#. [topic]: id=..calendar
+#: data/core/encyclopedia/calendar.cfg:13
+msgid ""
+"Each year in the Wesnoth calendar is composed of 12 months. These are, in "
+"order:\n"
+"\n"
+"Whitefire\n"
+"Bleeding Moon\n"
+"Scatterseed\n"
+"Deeproot\n"
+"Scryer’s Bloom\n"
+"Thorntress\n"
+"Summit Star\n"
+"Kindlefire\n"
+"Stillseed\n"
+"Reaper’s Moon\n"
+"Verglas Bloom\n"
+"Blackfire\n"
+"\n"
+msgstr ""
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -4238,18 +4273,52 @@ msgstr ""
 "Ennek az egységnek védekezéskor kétszeresek az ellenállásai, de mindig "
 "legfeljebb 50%. A sebezhetősége nem változik."
 
-#. [leadership]: id=leadership
+#. [chance_to_hit]: id=diversion
+#: data/core/macros/abilities.cfg:118
+#, fuzzy
+#| msgid "Vision: "
+msgid "diversion"
+msgstr "Látótáv: "
+
+#. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:119
+#, fuzzy
+#| msgid "female^leadership"
+msgid "female^diversion"
+msgstr "hadvezetés"
+
+#. [chance_to_hit]: id=diversion
+#: data/core/macros/abilities.cfg:120
+#, fuzzy
+#| msgid ""
+#| " If there is an enemy of the target on the opposite side of the target "
+#| "while attacking it, this unit may backstab, inflicting double damage by "
+#| "creeping around behind that enemy."
+msgid ""
+"If there is an enemy of the target on the opposite side of the target, this "
+"unit diverts the target’s attention and reduces its chance to hit by 20%."
+msgstr ""
+" Ha ez az egység támad, és a célpontnak a támadóval ellentétes oldalán is "
+"van egy, a célpont számára ellenséges egység, a támadó hátbatámadással "
+"támad. Ez kétszeres sebzést jelent."
+
+#. [chance_to_hit]: id=diversion
+#: data/core/macros/abilities.cfg:121
+msgid "This is inactive for now."
+msgstr ""
+
+#. [leadership]: id=leadership
+#: data/core/macros/abilities.cfg:172
 msgid "leadership"
 msgstr "hadvezetés"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:120
+#: data/core/macros/abilities.cfg:173
 msgid "female^leadership"
 msgstr "hadvezetés"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:121
+#: data/core/macros/abilities.cfg:174
 #, fuzzy
 #| msgid ""
 #| "This unit can lead our own units that are next to it, making them fight "
@@ -4277,17 +4346,17 @@ msgstr ""
 "alacsonyabbak a hadvezetőnél."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:138
+#: data/core/macros/abilities.cfg:191
 msgid "skirmisher"
 msgstr "portyázó"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:139
+#: data/core/macros/abilities.cfg:192
 msgid "female^skirmisher"
 msgstr "portyázó"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:140
+#: data/core/macros/abilities.cfg:193
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -4296,17 +4365,17 @@ msgstr ""
 "ellenség ellenőrzött területeiről tudomást sem vesz."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:153
+#: data/core/macros/abilities.cfg:206
 msgid "illuminates"
 msgstr "megvilágítás"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:154
+#: data/core/macros/abilities.cfg:207
 msgid "female^illuminates"
 msgstr "megvilágítás"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:155
+#: data/core/macros/abilities.cfg:208
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4321,17 +4390,17 @@ msgstr ""
 "viszonyok között küzdenek."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:167
+#: data/core/macros/abilities.cfg:220
 msgid "teleport"
 msgstr "teleportáció"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:168
+#: data/core/macros/abilities.cfg:221
 msgid "female^teleport"
 msgstr "teleportáció"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:169
+#: data/core/macros/abilities.cfg:222
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -4340,17 +4409,17 @@ msgstr ""
 "egyetlen lépéspont felhasználásával térugrásos helyváltoztatásra."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:198
+#: data/core/macros/abilities.cfg:251
 msgid "ambush"
 msgstr "rajtaütés"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:199
+#: data/core/macros/abilities.cfg:252
 msgid "female^ambush"
 msgstr "rajtaütés"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:200
+#: data/core/macros/abilities.cfg:253
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4366,12 +4435,12 @@ msgstr ""
 "pontját."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:217 data/core/macros/abilities.cfg:218
+#: data/core/macros/abilities.cfg:270 data/core/macros/abilities.cfg:271
 msgid "nightstalk"
 msgstr "éjszakai lopakodás"
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:219
+#: data/core/macros/abilities.cfg:272
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4386,17 +4455,17 @@ msgstr ""
 "rejtőzködő egység hollétére, azonnal elveszíti a maradék lépési pontját."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:236
+#: data/core/macros/abilities.cfg:289
 msgid "concealment"
 msgstr "rejtőzködés"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:237
+#: data/core/macros/abilities.cfg:290
 msgid "female^concealment"
 msgstr "rejtőzködés"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:238
+#: data/core/macros/abilities.cfg:291
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in villages (with the exception of water villages), "
@@ -4424,17 +4493,17 @@ msgstr ""
 "pontját."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:255
+#: data/core/macros/abilities.cfg:308
 msgid "submerge"
 msgstr "alámerülés"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:256
+#: data/core/macros/abilities.cfg:309
 msgid "female^submerge"
 msgstr "alámerülés"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:257
+#: data/core/macros/abilities.cfg:310
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4451,17 +4520,17 @@ msgstr ""
 "pontját."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:274
+#: data/core/macros/abilities.cfg:328
 msgid "feeding"
 msgstr "bekebelezés"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:275
+#: data/core/macros/abilities.cfg:329
 msgid "female^feeding"
 msgstr "bekebelezés"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:276
+#: data/core/macros/abilities.cfg:330
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -4470,12 +4539,12 @@ msgstr ""
 "ha az immúnis a dögvészre."
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:287
+#: data/core/macros/abilities.cfg:341
 msgid "berserk"
 msgstr "dühöngés"
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:288
+#: data/core/macros/abilities.cfg:342
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -4485,12 +4554,12 @@ msgstr ""
 "ütésváltásig."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:298
+#: data/core/macros/abilities.cfg:352
 msgid "backstab"
 msgstr "hátbatámadás"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:299
+#: data/core/macros/abilities.cfg:353
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4502,12 +4571,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:317 data/core/macros/abilities.cfg:328
+#: data/core/macros/abilities.cfg:371 data/core/macros/abilities.cfg:382
 msgid "plague"
 msgstr "dögvész"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:318
+#: data/core/macros/abilities.cfg:372
 #, fuzzy
 #| msgid ""
 #| "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -4523,7 +4592,7 @@ msgstr ""
 "élőholtakra és a falvakban tartózkodókra."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:329
+#: data/core/macros/abilities.cfg:383
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4534,12 +4603,12 @@ msgstr ""
 "élőholtakra és a falvakban tartózkodókra."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:339
+#: data/core/macros/abilities.cfg:393
 msgid "slows"
 msgstr "lassítás"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:340
+#: data/core/macros/abilities.cfg:394
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4552,12 +4621,12 @@ msgstr ""
 "egységet, a jobb oldali panelen megjelenik egy csiga."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:349
+#: data/core/macros/abilities.cfg:403
 msgid "petrifies"
 msgstr "kővé változtatás"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:350
+#: data/core/macros/abilities.cfg:404
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -4566,23 +4635,23 @@ msgstr ""
 "mozoghatnak és nem harcolhatnak."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:359
+#: data/core/macros/abilities.cfg:413
 msgid "marksman"
 msgstr "mesterlövész"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:360
+#: data/core/macros/abilities.cfg:414
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr "Támadó hadműveleteknél legalább 60%-os eséllyel szerez találatot."
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:372
+#: data/core/macros/abilities.cfg:426
 msgid "magical"
 msgstr "mágikus"
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:373
+#: data/core/macros/abilities.cfg:427
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -4591,12 +4660,12 @@ msgstr ""
 "megtámadott egységnek milyen a védekezése."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:384
+#: data/core/macros/abilities.cfg:438
 msgid "swarm"
 msgstr "rajzás"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:385
+#: data/core/macros/abilities.cfg:439
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -4609,12 +4678,12 @@ msgstr ""
 "a maximális ütések 3/4-ét méri ellenfelére."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:394
+#: data/core/macros/abilities.cfg:448
 msgid "charge"
 msgstr "roham"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:395
+#: data/core/macros/abilities.cfg:449
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -4623,12 +4692,12 @@ msgstr ""
 "elszenvedett sebzése is a kétszeresére nő."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:407
+#: data/core/macros/abilities.cfg:461
 msgid "drains"
 msgstr "megcsapolás"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:408
+#: data/core/macros/abilities.cfg:462
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4637,12 +4706,12 @@ msgstr ""
 "(lefelé kerekítve) saját magát gyógyítja."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:417
+#: data/core/macros/abilities.cfg:471
 msgid "first strike"
 msgstr "első ütés"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:418
+#: data/core/macros/abilities.cfg:472
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
@@ -4650,12 +4719,12 @@ msgstr ""
 "támadták meg."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:427
+#: data/core/macros/abilities.cfg:481
 msgid "poison"
 msgstr "mérgezés"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:428
+#: data/core/macros/abilities.cfg:482
 #, fuzzy
 #| msgid ""
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -4862,7 +4931,7 @@ msgstr "Hosszú sötétség (3)"
 msgid "The Long Dark (4)"
 msgstr "Hosszú sötétség (4)"
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:549
+#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:565
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5219,6 +5288,22 @@ msgid ""
 msgstr ""
 " Ez az egység regenerálódik, így minden körben gyógyul, mintha csak faluban "
 "lenne."
+
+#. [special_note]
+#: data/core/macros/special-notes.cfg:300
+#, fuzzy
+#| msgid ""
+#| " If there is an enemy of the target on the opposite side of the target "
+#| "while attacking it, this unit may backstab, inflicting double damage by "
+#| "creeping around behind that enemy."
+msgid ""
+"If there is an enemy of the target on the opposite side of the target while "
+"attacking it, this unit diverts the target's attention and reduces its "
+"chance to hit."
+msgstr ""
+" Ha ez az egység támad, és a célpontnak a támadóval ellentétes oldalán is "
+"van egy, a célpont számára ellenséges egység, a támadó hátbatámadással "
+"támad. Ez kétszeres sebzést jelent."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6230,137 +6315,88 @@ msgstr "Tündék"
 
 #. [race]: id=elf
 #: data/core/units.cfg:111
-#, fuzzy
-#| msgid ""
-#| "Compared to humans, elves are somewhat taller, more agile but less "
-#| "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
-#| "Few differences between humans and elves are more pronounced than the "
-#| "Elves’ unusually long life — most, unless claimed by illness, accident or "
-#| "war, live a full two and a half centuries. While some elves possessing a "
-#| "high magical aptitude have been known to live an additional full century, "
-#| "most elves begin to grow physically frail at some point between 250 and "
-#| "300 years of age and pass away rapidly (generally within a year or two) "
-#| "thereafter.\n"
-#| "\n"
-#| "Elves are naturally imbued with magic to a small degree. Though most are "
-#| "unable to channel it directly, its latent presence gives them their keen "
-#| "senses and long life. Many elves have magic-driven talents such as "
-#| "marksmanship or stealth, allowing them to achieve tasks that most normal "
-#| "beings would find astonishing. Those elves that learn to wield this power "
-#| "in more general ways can become truly formidable in its use. Many choose "
-#| "to use their gift to heal others.\n"
-#| "\n"
-#| "A few elves, venturing far down the paths of magic and mysticism, become "
-#| "sensitive to the presence of cold iron and can even be burned by it. "
-#| "Elvish legend hints that this was more common in the far past.\n"
-#| "\n"
-#| "Elves spend much of their time honing their talents and skills. Those not "
-#| "adept at the magical arts typically devote their time honing their "
-#| "physical skills. As a result, elves excel at archery, which is perhaps "
-#| "their most important method of warfare. Most elvish troops carry a bow "
-#| "and no other race can rival their archers in speed and accuracy. All "
-#| "elves also share an intense affection for unspoiled nature. They often "
-#| "feel uncomfortable in open unvegetated spaces. They live primarily in the "
-#| "forests of the Great Continent; the Aethenwood in the southwest, Wesmere "
-#| "in the northwest, and the great northern woods of which the Lintanir "
-#| "Forest is the southernmost edge.\n"
-#| "\n"
-#| "Elves are the eldest race of the continent, with the possible exception "
-#| "of trolls. Many of their settlements cannot be reliably dated, "
-#| "undoubtedly having existed for over a millennium."
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
 "differences between humans and elves are more pronounced than the Elves’ "
 "unusually long life — most, unless claimed by illness, accident or war, live "
-"a full two and a half centuries. While some elves possessing a high magical "
-"aptitude have been known to live an additional full century, most elves "
-"begin to grow physically frail at some point between 250 and 300 years of "
-"age and pass away rapidly (generally within a year or two) thereafter.\n"
+"at least a full two centuries. While some elves possessing a high magical "
+"aptitude have been known to live longer, most elves begin to grow physically "
+"frail at some point between 250 and 300 years of age and pass away rapidly "
+"thereafter.\n"
 "\n"
-"Elves are naturally imbued with magic to a small degree. Though most are "
-"unable to channel it directly, its latent presence gives them their keen "
-"senses and long life. Many elves have magic-driven talents such as "
-"marksmanship or stealth, allowing them to achieve tasks that most normal "
-"beings would find astonishing. Those elves that learn to wield this power in "
-"more general ways can become truly formidable in its use. Many choose to use "
-"their gift to heal others.\n"
-"\n"
-"A few elves, venturing far down the paths of magic and mysticism, become "
-"sensitive to the presence of cold iron and can even be burned by it. Elvish "
-"legend hints that this was more common in the far past.\n"
-"\n"
-"Elves spend much of their time honing their talents and skills. Those not "
-"adept at the magical arts typically devote their time honing their physical "
-"skills. As a result, elves excel at archery, which is perhaps their most "
-"important method of warfare. Most elvish troops carry a bow and no other "
-"race can rival their archers in speed and accuracy. All elves also share an "
-"intense affection for unspoiled nature. They often feel uncomfortable in "
-"open, unvegetated spaces. They live primarily in the forests of the Great "
-"Continent; the Aethenwood in the southwest, Wesmere in the northwest, and "
-"the great northern woods of which the Lintanir Forest is the southernmost "
-"edge.\n"
+"Most elves share an intense affection for unspoiled nature and find "
+"themselves uncomfortable in open, unvegetated places. They live primarily in "
+"the forests of the Great Continent, the Aethenwood in the southwest, Wesmere "
+"in the northwest, and the great northern woods of which the Lintanir Forest "
+"is the southernmost edge.\n"
 "\n"
 "Elves are the eldest race of the continent, with the possible exception of "
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
-"having existed for over a millennium."
+"having existed for several millennia.\n"
+"\n"
+"<header>text='Magic'</header>\n"
+"While elves are fundamentally different creatures than the fabled fair folk, "
+"their magic has some connection to the faerie and is the source of their "
+"unusually keen senses as well as their long lives. Elven magic is split "
+"between two different paths, one focused on manipulation of the mundane or "
+"natural world, and one focused on divination into the arcane plane. More "
+"common is the the way of corporeal alteration, which has more tangible "
+"effects than its antithesis in the arcane. Though elven nature magic is ill-"
+"suited toward combat, its potent ability to harness earthly energies to "
+"nurture and protect is the primary reason for the effectiveness of elven "
+"healing as well as the beauty and vitality of their forests.\n"
+"\n"
+"Those who follow the mystic path are also well-regarded by other elves, but "
+"their motives and abilities are often unclear to those outside of their "
+"order. Some who venture far down the path of mysticism take on more faerie-"
+"like traits, gaining extraordinary insight and longevity, but also becoming "
+"sensitive to and even burned by the presence of cold iron.\n"
+"\n"
+"<header>text='Culture'</header>\n"
+"Elves spend much of their time honing their talents and skills. Those not "
+"adept at the magical arts typically devote their time honing their physical "
+"skills, often for sporting purposes. As a result, elves excel at archery, a "
+"craft that is readily and effectively applied to warfare. Elves are also "
+"renowned musicians, particularly skilled at wind and plucked string "
+"instruments in small ensembles. The Aeolian harps of the Aethenwood, for "
+"example, are crafted from the fine wood of Elven yew trees and are legendary "
+"for their soft, gentle tone.\n"
+"\n"
+"<header>text='Society'</header>\n"
+"Elvish society is roughly divided into three factions: a pseudo-military "
+"faction responsible for defending their forests, peaceful civilians who are "
+"usually craftsmen and artists, and healers and mystics who maintain the "
+"elves’ connection to the faerie. Responsible for governing these different "
+"aspects is the nobility, who are treated as servants to the broader social "
+"order, rather than as strict rulers of their people. The process for "
+"selecting these nobles differs between the various elven conclaves, with the "
+"governing council of Wesmere — the Ka’lian — being elected and the nobility "
+"in Lintanir usually being inherited.\n"
+"\n"
+"In times of strife, the hierarchy of command becomes more adaptable, with "
+"the ordinary aristocracy deferring to more war-minded marshals. By "
+"tradition, in both Wesmere and Lintanir, an enchantress from the order of "
+"elven mystics is also called upon to facilitate the transition of power."
 msgstr ""
-"Az emberekkel összehasonlítva a tündék valamivel magasabbak, fürgébbek, de "
-"kevésbé szívósak. A fülük kissé hegyes, a bőrük fehér, a hajuk általában "
-"szőke. A legfeltűnőbb különbség emberek és tündék között, hogy a tündék két "
-"és fél évszázadig is elélnek – kivéve betegség, baleset vagy háború esetén. "
-"Bár egyes kimagasló varázslói képességekkel megáldott tündékről úgy tudjuk, "
-"hogy akár egy teljes évszázaddal túlélhetik fajtársaikat, a legtöbb tündét "
-"250-300 éves kora körül lassan elkezdi elhagyni a testi ereje, és hamarosan "
-"(általában egy-két éven belül) elhagyják az árnyékvilágot.\n"
-"\n"
-"Egy kisfokú veleszületett mágiával minden tünde rendelkezik. Bár legtöbben "
-"nem képesek szabályozott csatornákba terelni, a mágia lappangó jelenlétének "
-"köszönhetik az éles érzékeiket és a hosszú életüket. Sokuknak ad a mágia "
-"különleges képességeket, mint a mesterlövészet vagy a lopakodás, ezekkel "
-"olyan feladatokat láthatnak el, amelyek a legtöbbeket ámulatba ejtik. Azok a "
-"tündék, akik sokkal általánosabb formákban tanulják meg alkalmazni az erőt, "
-"egész félelmetessé válhatnak a használata során. Sokan úgy döntenek, hogy az "
-"adományt mások gyógyítására fordítják.\n"
-"\n"
-"Egyes tündék, akik túl mélyre merészkednek a mágia és a varázslás bugyraiba, "
-"érzékennyé válnak a hideg vas jelenlétére, és akár meg is égethetik magukat "
-"vele. A tünde mondák szerint ez azonban inkább csak a régmúlt időkben volt "
-"jellemző.\n"
-"\n"
-"A tündék idejük legnagyobb részét képességeik tökéletesítésével töltik. Akik "
-"kevésbé értenek a mágiához, azok rendszerint fizikai ügyességük "
-"fejlesztésének szentelik idejüket. Ennek eredményeként a tündék kimagaslóan "
-"jó íjászok, harcművészetüknek talán ez a legfontosabb eleme. A legtöbb "
-"harcoló tündének van íja, íjászaik gyorsaságával és pontosságával semmilyen "
-"más faj nem kelhet versenyre. A tündékről elmondható még az is, hogy "
-"rendkívüli módon vonzódnak az érintetlen természethez. Nem is érzik magukat "
-"igazán jól a kietlen tájakon, emiatt otthonaikat is inkább a Nagy-Kontinens "
-"erdeiben építették fel; délnyugaton fekszik az Aethen-erdőség, északnyugaton "
-"Wesmere, de meg kell említeni a Nagy-Északi-erdőséget is, amelynek "
-"legdélebbi határa a Lintanir-erdő.\n"
-"\n"
-"A tündék a legősibb faj a kontinensen, talán csak a trollok ősibbek. Sok "
-"településükről nem lehet tudni, hogy mikor alapították, de kétségtelenül már "
-"több mint ezer éve állnak."
 
 #. [race]: id=falcon
-#: data/core/units.cfg:128
+#: data/core/units.cfg:137
 msgid "race^Falcon"
 msgstr "Sólyom"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:129
+#: data/core/units.cfg:138
 msgid "race+female^Falcon"
 msgstr "Sólyom tojó"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:130
+#: data/core/units.cfg:139
 msgid "race^Falcons"
 msgstr "Sólymok"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:131
+#: data/core/units.cfg:140
 msgid ""
 "Falcons are birds of prey, noted for their exceptional speed and agility. "
 "Lighter and with less powerful talons than other raptors, falcons instead "
@@ -6373,22 +6409,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=goblin
-#: data/core/units.cfg:141
+#: data/core/units.cfg:150
 msgid "race^Goblin"
 msgstr "Kobold"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:142
+#: data/core/units.cfg:151
 msgid "race+female^Goblin"
 msgstr "Kobold"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:143
+#: data/core/units.cfg:152
 msgid "race^Goblins"
 msgstr "Koboldok"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:144
+#: data/core/units.cfg:153
 #, fuzzy
 #| msgid ""
 #| "Goblins are, despite their appearance, born as siblings to the orcs and "
@@ -6444,22 +6480,22 @@ msgstr ""
 "szívesen végzik el felsőbbrendűségük bizonyítására."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:161
+#: data/core/units.cfg:170
 msgid "race^Gryphon"
 msgstr "Griffmadár"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:162
+#: data/core/units.cfg:171
 msgid "race+female^Gryphon"
 msgstr "Griffmadár"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:163
+#: data/core/units.cfg:172
 msgid "race^Gryphons"
 msgstr "Griffmadarak"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:164
+#: data/core/units.cfg:173
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -6472,22 +6508,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=human
-#: data/core/units.cfg:182
+#: data/core/units.cfg:191
 msgid "race^Human"
 msgstr "Ember"
 
 #. [race]: id=human
-#: data/core/units.cfg:183
+#: data/core/units.cfg:192
 msgid "race+female^Human"
 msgstr "Ember"
 
 #. [race]: id=human
-#: data/core/units.cfg:184
+#: data/core/units.cfg:193
 msgid "race^Humans"
 msgstr "Emberek"
 
 #. [race]: id=human
-#: data/core/units.cfg:185
+#: data/core/units.cfg:194
 #, fuzzy
 #| msgid ""
 #| "The race of men is an extremely diverse one. Although they originally "
@@ -6608,28 +6644,28 @@ msgstr ""
 "gyengeségei és erősségei jól kiegyensúlyozzák egymást."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:200
+#: data/core/units.cfg:209
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
 msgstr "Ember"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:201
+#: data/core/units.cfg:210
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
 msgstr "Ember"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:202
+#: data/core/units.cfg:211
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
 msgstr "Élőholtak"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:203
+#: data/core/units.cfg:212
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -6687,22 +6723,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=lizard
-#: data/core/units.cfg:224
+#: data/core/units.cfg:233
 msgid "race^Saurian"
 msgstr "Gyík"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:225
+#: data/core/units.cfg:234
 msgid "race+female^Saurian"
 msgstr "Gyík"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:226
+#: data/core/units.cfg:235
 msgid "race^Saurians"
 msgstr "Gyíkok"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:227
+#: data/core/units.cfg:236
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -6772,17 +6808,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:253
+#: data/core/units.cfg:262
 msgid "race^Mechanical"
 msgstr "Mechanikus"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:254
+#: data/core/units.cfg:263
 msgid "race+plural^Mechanical"
 msgstr "Mechanikus"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:255
+#: data/core/units.cfg:264
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -6795,24 +6831,24 @@ msgstr ""
 "nem is gondolkodik, de néhányuk varázslat hatására képes ilyesmire."
 
 #. [race]: id=merman
-#: data/core/units.cfg:264
+#: data/core/units.cfg:273
 msgid "race^Merman"
 msgstr "Sellő"
 
 #. [race]: id=merman
-#: data/core/units.cfg:265
+#: data/core/units.cfg:274
 msgid "race^Mermaid"
 msgstr "Sellő"
 
 #. [race]: id=merman
-#: data/core/units.cfg:266
+#: data/core/units.cfg:275
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
 msgstr "Troll"
 
 #. [race]: id=merman
-#: data/core/units.cfg:268
+#: data/core/units.cfg:277
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -6835,22 +6871,22 @@ msgstr ""
 "ha kemény, erdős terepen kell átkelniük."
 
 #. [race]: id=monster
-#: data/core/units.cfg:276
+#: data/core/units.cfg:285
 msgid "race^Monster"
 msgstr "Szörny"
 
 #. [race]: id=monster
-#: data/core/units.cfg:277
+#: data/core/units.cfg:286
 msgid "race+female^Monster"
 msgstr "Szörny"
 
 #. [race]: id=monster
-#: data/core/units.cfg:278
+#: data/core/units.cfg:287
 msgid "race^Monsters"
 msgstr "Szörnyek"
 
 #. [race]: id=monster
-#: data/core/units.cfg:279
+#: data/core/units.cfg:288
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -6861,22 +6897,22 @@ msgstr ""
 "kísértenek. Sokszor a helyiek történeteiben és rémálmaiban is megjelennek."
 
 #. [race]: id=naga
-#: data/core/units.cfg:286
+#: data/core/units.cfg:295
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:287
+#: data/core/units.cfg:296
 msgid "race^Nagini"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:288
+#: data/core/units.cfg:297
 msgid "race^Nagas"
 msgstr "Nagák"
 
 #. [race]: id=naga
-#: data/core/units.cfg:289
+#: data/core/units.cfg:298
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6907,22 +6943,22 @@ msgstr ""
 "legalább annyira kedvelik a mocsarakat és a folyókat, mint a nyílt vizet."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:297
+#: data/core/units.cfg:306
 msgid "race^Ogre"
 msgstr "Ogre"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:298
+#: data/core/units.cfg:307
 msgid "race+female^Ogre"
 msgstr "Ogre"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:299
+#: data/core/units.cfg:308
 msgid "race^Ogres"
 msgstr "Ogrék"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:300
+#: data/core/units.cfg:309
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6955,22 +6991,22 @@ msgstr ""
 "kölcsönös kiaknázása-e."
 
 #. [race]: id=orc
-#: data/core/units.cfg:308
+#: data/core/units.cfg:317
 msgid "race^Orc"
 msgstr "Ork"
 
 #. [race]: id=orc
-#: data/core/units.cfg:309
+#: data/core/units.cfg:318
 msgid "race+female^Orc"
 msgstr "Ork"
 
 #. [race]: id=orc
-#: data/core/units.cfg:310
+#: data/core/units.cfg:319
 msgid "race^Orcs"
 msgstr "Orkok"
 
 #. [race]: id=orc
-#: data/core/units.cfg:311
+#: data/core/units.cfg:320
 #, fuzzy
 #| msgid ""
 #| "In appearance, orcs are half men and half beasts. They are taller, "
@@ -7139,7 +7175,7 @@ msgstr ""
 "az íjászat és az orgyilkosság."
 
 #. [race]: id=orc
-#: data/core/units.cfg:322
+#: data/core/units.cfg:331
 msgid ""
 "\n"
 "\n"
@@ -7148,22 +7184,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:331
+#: data/core/units.cfg:340
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:332
+#: data/core/units.cfg:341
 msgid "race+female^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:333
+#: data/core/units.cfg:342
 msgid "race^Trolls"
 msgstr "Trollok"
 
 #. [race]: id=troll
-#: data/core/units.cfg:334
+#: data/core/units.cfg:343
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -7275,22 +7311,22 @@ msgstr ""
 "keletre fekvő hegyláncokon, meg persze ahol ork hordák járnak."
 
 #. [race]: id=undead
-#: data/core/units.cfg:354
+#: data/core/units.cfg:363
 msgid "race^Undead"
 msgstr "Élőholt"
 
 #. [race]: id=undead
-#: data/core/units.cfg:355
+#: data/core/units.cfg:364
 msgid "race+female^Undead"
 msgstr "Élőholt"
 
 #. [race]: id=undead
-#: data/core/units.cfg:356
+#: data/core/units.cfg:365
 msgid "race+plural^Undead"
 msgstr "Élőholtak"
 
 #. [race]: id=undead
-#: data/core/units.cfg:357
+#: data/core/units.cfg:366
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -7319,15 +7355,23 @@ msgstr "Élőholtak"
 #| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
-"such. Almost any dead creature can, by a sufficiently skilled necromancer, "
-"be reanimated and rise again in undeath. Undead are for the most part "
-"unnatural but mindless constructs, obeying whoever created them without "
-"question nor thought. A greater mystery of necromancy is in how constructs "
-"are sustained without continuous effort from the necromancer. An undead "
-"creature does not require the constant attention of the necromancer to "
-"command and sustain, but can work autonomously according to the commands of "
-"its master. Only rarely, perhaps once every few months, does the necromancer "
-"need to maintain his creation.\n"
+"such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
+"reanimated into constructs of varying character — resurrection of the "
+"physical form often results in a minion that obeys its master without "
+"question, while manifestation of a soul usually produces a servant with at "
+"least a modicum of thought. A great mystery of necromancy is how these "
+"constructs are sustained and controlled without continuous effort from the "
+"necromancer. Most dark magi do not provide constant attention or maintenance "
+"to their creations, instead allowing them a small degree of independence to "
+"function autonomously in line with the provided commands. However, when left "
+"unchecked, some undead gain enough sovereignty to break free from and even "
+"turn on their masters. Accordingly, while even lesser undead require "
+"periodic maintenance, this is especially true for more powerful undead, "
+"particularly greater spirits or death knights, who possess a high degree of "
+"inherent will. In these cases, necromancy becomes a battle of resolve "
+"between mage and minion. The necromancer must maintain a delicate balance "
+"between control over their servants and alloting them free will — the source "
+"of their individual powers.\n"
 "\n"
 "Necromancy is almost solely limited to humans. Even the legends of magically "
 "apt races like elves and merfolk tell of very few of their kind who have "
@@ -7370,22 +7414,22 @@ msgstr ""
 "voltak ismeretlenek."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:370
+#: data/core/units.cfg:379
 msgid "race^Wolf"
 msgstr "Farkas"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:371
+#: data/core/units.cfg:380
 msgid "race+female^Wolf"
 msgstr "Farkas"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:372
+#: data/core/units.cfg:381
 msgid "race^Wolves"
 msgstr "Farkasok"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:373
+#: data/core/units.cfg:382
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -7397,17 +7441,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:382
+#: data/core/units.cfg:391
 msgid "race^Wose"
 msgstr "Fapásztor"
 
 #. [race]: id=wose
-#: data/core/units.cfg:383
+#: data/core/units.cfg:392
 msgid "race^Woses"
 msgstr "Fapásztorok"
 
 #. [race]: id=wose
-#: data/core/units.cfg:384
+#: data/core/units.cfg:393
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -7452,15 +7496,15 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 max ÉP"
 
-#: src/help/help.cpp:180
+#: src/help/help.cpp:179
 msgid "Close"
 msgstr "Bezárás"
 
-#: src/help/help.cpp:183
+#: src/help/help.cpp:182
 msgid "The Battle for Wesnoth Help"
 msgstr "Harc Wesnothért Súgó"
 
-#: src/help/help.cpp:237 src/help/help.cpp:241
+#: src/help/help.cpp:236 src/help/help.cpp:240
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
@@ -7528,14 +7572,14 @@ msgstr "Faj: "
 msgid "Abilities: "
 msgstr "Képességek: "
 
-#: src/help/help_topic_generators.cpp:490
+#: src/help/help_topic_generators.cpp:498
 msgid "Ability Upgrades: "
 msgstr "Képességek továbbfejlesztése: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:528
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -7544,7 +7588,7 @@ msgstr "ÉP: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:516
+#: src/help/help_topic_generators.cpp:532
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -7553,7 +7597,7 @@ msgstr "Lépés: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:521
+#: src/help/help_topic_generators.cpp:537
 #, fuzzy
 #| msgid "Vision: "
 msgid "Vision:"
@@ -7562,7 +7606,7 @@ msgstr "Látótáv: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:543
 #, fuzzy
 #| msgid "Jamming: "
 msgid "Jamming:"
@@ -7571,7 +7615,7 @@ msgstr "Zavarás: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:548
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -7580,7 +7624,7 @@ msgstr "Ár: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:552
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -7589,79 +7633,197 @@ msgstr "Beállítottság: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:559
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "TP követelmény: "
 
-#: src/help/help_topic_generators.cpp:558
+#: src/help/help_topic_generators.cpp:574
 msgid "unit help^Attacks"
 msgstr "Támadások"
 
-#: src/help/help_topic_generators.cpp:565
+#: src/help/help_topic_generators.cpp:581
 msgid "unit help^Name"
 msgstr "Név"
 
-#: src/help/help_topic_generators.cpp:566
+#: src/help/help_topic_generators.cpp:582
 msgid "Strikes"
 msgstr "Ütések"
 
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:583
 msgid "Range"
 msgstr "Hatótávolság"
 
-#: src/help/help_topic_generators.cpp:568
+#: src/help/help_topic_generators.cpp:584
 msgid "Type"
 msgstr "Típus"
 
-#: src/help/help_topic_generators.cpp:569
+#: src/help/help_topic_generators.cpp:585
 msgid "Special"
 msgstr "Különlegesség"
 
-#: src/help/help_topic_generators.cpp:647
+#: src/help/help_topic_generators.cpp:663
 msgid "Resistances"
 msgstr "Ellenállások"
 
-#: src/help/help_topic_generators.cpp:651
+#: src/help/help_topic_generators.cpp:667
 msgid "Attack Type"
 msgstr "Támadástípus"
 
-#: src/help/help_topic_generators.cpp:652
+#: src/help/help_topic_generators.cpp:668
 msgid "Resistance"
 msgstr "Ellenállás"
 
-#: src/help/help_topic_generators.cpp:681
+#: src/help/help_topic_generators.cpp:697
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Terepfüggő jellemzők"
 
-#: src/help/help_topic_generators.cpp:685
+#: src/help/help_topic_generators.cpp:701
 msgid "Terrain"
 msgstr "Terep"
 
-#: src/help/help_topic_generators.cpp:686
+#: src/help/help_topic_generators.cpp:702
 msgid "Defense"
 msgstr "Védekezés"
 
-#: src/help/help_topic_generators.cpp:687
+#: src/help/help_topic_generators.cpp:703
 msgid "Movement Cost"
 msgstr "Lépéspontköltség"
 
-#: src/help/help_topic_generators.cpp:691
+#: src/help/help_topic_generators.cpp:707
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Védekezés"
 
-#: src/help/help_topic_generators.cpp:696
+#: src/help/help_topic_generators.cpp:712
 msgid "Vision Cost"
 msgstr "Látáspontköltség"
 
-#: src/help/help_topic_generators.cpp:700
+#: src/help/help_topic_generators.cpp:716
 msgid "Jamming Cost"
 msgstr "Zavaráspontköltség"
+
+#, fuzzy
+#~| msgid ""
+#~| "Compared to humans, elves are somewhat taller, more agile but less "
+#~| "sturdy. They have slightly pointy ears, pale skin and usually blond "
+#~| "hair. Few differences between humans and elves are more pronounced than "
+#~| "the Elves’ unusually long life — most, unless claimed by illness, "
+#~| "accident or war, live a full two and a half centuries. While some elves "
+#~| "possessing a high magical aptitude have been known to live an additional "
+#~| "full century, most elves begin to grow physically frail at some point "
+#~| "between 250 and 300 years of age and pass away rapidly (generally within "
+#~| "a year or two) thereafter.\n"
+#~| "\n"
+#~| "Elves are naturally imbued with magic to a small degree. Though most are "
+#~| "unable to channel it directly, its latent presence gives them their keen "
+#~| "senses and long life. Many elves have magic-driven talents such as "
+#~| "marksmanship or stealth, allowing them to achieve tasks that most normal "
+#~| "beings would find astonishing. Those elves that learn to wield this "
+#~| "power in more general ways can become truly formidable in its use. Many "
+#~| "choose to use their gift to heal others.\n"
+#~| "\n"
+#~| "A few elves, venturing far down the paths of magic and mysticism, become "
+#~| "sensitive to the presence of cold iron and can even be burned by it. "
+#~| "Elvish legend hints that this was more common in the far past.\n"
+#~| "\n"
+#~| "Elves spend much of their time honing their talents and skills. Those "
+#~| "not adept at the magical arts typically devote their time honing their "
+#~| "physical skills. As a result, elves excel at archery, which is perhaps "
+#~| "their most important method of warfare. Most elvish troops carry a bow "
+#~| "and no other race can rival their archers in speed and accuracy. All "
+#~| "elves also share an intense affection for unspoiled nature. They often "
+#~| "feel uncomfortable in open unvegetated spaces. They live primarily in "
+#~| "the forests of the Great Continent; the Aethenwood in the southwest, "
+#~| "Wesmere in the northwest, and the great northern woods of which the "
+#~| "Lintanir Forest is the southernmost edge.\n"
+#~| "\n"
+#~| "Elves are the eldest race of the continent, with the possible exception "
+#~| "of trolls. Many of their settlements cannot be reliably dated, "
+#~| "undoubtedly having existed for over a millennium."
+#~ msgid ""
+#~ "Compared to humans, elves are somewhat taller, more agile but less "
+#~ "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
+#~ "Few differences between humans and elves are more pronounced than the "
+#~ "Elves’ unusually long life — most, unless claimed by illness, accident or "
+#~ "war, live a full two and a half centuries. While some elves possessing a "
+#~ "high magical aptitude have been known to live an additional full century, "
+#~ "most elves begin to grow physically frail at some point between 250 and "
+#~ "300 years of age and pass away rapidly (generally within a year or two) "
+#~ "thereafter.\n"
+#~ "\n"
+#~ "Elves are naturally imbued with magic to a small degree. Though most are "
+#~ "unable to channel it directly, its latent presence gives them their keen "
+#~ "senses and long life. Many elves have magic-driven talents such as "
+#~ "marksmanship or stealth, allowing them to achieve tasks that most normal "
+#~ "beings would find astonishing. Those elves that learn to wield this power "
+#~ "in more general ways can become truly formidable in its use. Many choose "
+#~ "to use their gift to heal others.\n"
+#~ "\n"
+#~ "A few elves, venturing far down the paths of magic and mysticism, become "
+#~ "sensitive to the presence of cold iron and can even be burned by it. "
+#~ "Elvish legend hints that this was more common in the far past.\n"
+#~ "\n"
+#~ "Elves spend much of their time honing their talents and skills. Those not "
+#~ "adept at the magical arts typically devote their time honing their "
+#~ "physical skills. As a result, elves excel at archery, which is perhaps "
+#~ "their most important method of warfare. Most elvish troops carry a bow "
+#~ "and no other race can rival their archers in speed and accuracy. All "
+#~ "elves also share an intense affection for unspoiled nature. They often "
+#~ "feel uncomfortable in open, unvegetated spaces. They live primarily in "
+#~ "the forests of the Great Continent; the Aethenwood in the southwest, "
+#~ "Wesmere in the northwest, and the great northern woods of which the "
+#~ "Lintanir Forest is the southernmost edge.\n"
+#~ "\n"
+#~ "Elves are the eldest race of the continent, with the possible exception "
+#~ "of trolls. Many of their settlements cannot be reliably dated, "
+#~ "undoubtedly having existed for over a millennium."
+#~ msgstr ""
+#~ "Az emberekkel összehasonlítva a tündék valamivel magasabbak, fürgébbek, "
+#~ "de kevésbé szívósak. A fülük kissé hegyes, a bőrük fehér, a hajuk "
+#~ "általában szőke. A legfeltűnőbb különbség emberek és tündék között, hogy "
+#~ "a tündék két és fél évszázadig is elélnek – kivéve betegség, baleset vagy "
+#~ "háború esetén. Bár egyes kimagasló varázslói képességekkel megáldott "
+#~ "tündékről úgy tudjuk, hogy akár egy teljes évszázaddal túlélhetik "
+#~ "fajtársaikat, a legtöbb tündét 250-300 éves kora körül lassan elkezdi "
+#~ "elhagyni a testi ereje, és hamarosan (általában egy-két éven belül) "
+#~ "elhagyják az árnyékvilágot.\n"
+#~ "\n"
+#~ "Egy kisfokú veleszületett mágiával minden tünde rendelkezik. Bár "
+#~ "legtöbben nem képesek szabályozott csatornákba terelni, a mágia lappangó "
+#~ "jelenlétének köszönhetik az éles érzékeiket és a hosszú életüket. "
+#~ "Sokuknak ad a mágia különleges képességeket, mint a mesterlövészet vagy a "
+#~ "lopakodás, ezekkel olyan feladatokat láthatnak el, amelyek a legtöbbeket "
+#~ "ámulatba ejtik. Azok a tündék, akik sokkal általánosabb formákban "
+#~ "tanulják meg alkalmazni az erőt, egész félelmetessé válhatnak a "
+#~ "használata során. Sokan úgy döntenek, hogy az adományt mások gyógyítására "
+#~ "fordítják.\n"
+#~ "\n"
+#~ "Egyes tündék, akik túl mélyre merészkednek a mágia és a varázslás "
+#~ "bugyraiba, érzékennyé válnak a hideg vas jelenlétére, és akár meg is "
+#~ "égethetik magukat vele. A tünde mondák szerint ez azonban inkább csak a "
+#~ "régmúlt időkben volt jellemző.\n"
+#~ "\n"
+#~ "A tündék idejük legnagyobb részét képességeik tökéletesítésével töltik. "
+#~ "Akik kevésbé értenek a mágiához, azok rendszerint fizikai ügyességük "
+#~ "fejlesztésének szentelik idejüket. Ennek eredményeként a tündék "
+#~ "kimagaslóan jó íjászok, harcművészetüknek talán ez a legfontosabb eleme. "
+#~ "A legtöbb harcoló tündének van íja, íjászaik gyorsaságával és "
+#~ "pontosságával semmilyen más faj nem kelhet versenyre. A tündékről "
+#~ "elmondható még az is, hogy rendkívüli módon vonzódnak az érintetlen "
+#~ "természethez. Nem is érzik magukat igazán jól a kietlen tájakon, emiatt "
+#~ "otthonaikat is inkább a Nagy-Kontinens erdeiben építették fel; "
+#~ "délnyugaton fekszik az Aethen-erdőség, északnyugaton Wesmere, de meg kell "
+#~ "említeni a Nagy-Északi-erdőséget is, amelynek legdélebbi határa a "
+#~ "Lintanir-erdő.\n"
+#~ "\n"
+#~ "A tündék a legősibb faj a kontinensen, talán csak a trollok ősibbek. Sok "
+#~ "településükről nem lehet tudni, hogy mikor alapították, de kétségtelenül "
+#~ "már több mint ezer éve állnak."
 
 #, fuzzy
 #~| msgid ""
