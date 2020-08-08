@@ -624,11 +624,6 @@ if(ENABLE_SERVER AND FIFO_DIR)
 	endif()
 endif()
 
-# Index for checking states of localized images at runtime.
-if(ENABLE_GAME)
-	install(FILES l10n-track DESTINATION ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME})
-endif(ENABLE_GAME)
-
 #
 # uninstall
 #

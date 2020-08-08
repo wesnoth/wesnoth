@@ -84,7 +84,6 @@
 		464C03752283695A007D2741 /* libSDL2_ttf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */; };
 		464C03762283695D007D2741 /* libSDL2_mixer-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */; };
 		464C037722836961007D2741 /* libSDL2_image-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0362228361B5007D2741 /* libSDL2_image-2.0.0.dylib */; };
-		465410A02078BC77002BCD13 /* l10n-track in Resources */ = {isa = PBXBuildFile; fileRef = 4654109E2078BC02002BCD13 /* l10n-track */; };
 		4664B9441F462ED9009E4881 /* irdya_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */; };
 		46685C89219D518B0009CFFE /* preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46685C6E219D51870009CFFE /* preprocessor.cpp */; };
 		46685C8A219D518B0009CFFE /* preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46685C6E219D51870009CFFE /* preprocessor.cpp */; };
@@ -1463,7 +1462,6 @@
 		464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_mixer-2.0.0.dylib"; path = "lib/libSDL2_mixer-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0369228361B7007D2741 /* libvorbisfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisfile.dylib; path = lib/libvorbisfile.dylib; sourceTree = "<group>"; };
-		4654109E2078BC02002BCD13 /* l10n-track */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "l10n-track"; path = "../../l10n-track"; sourceTree = "<group>"; };
 		46685C6B219D51870009CFFE /* utf8_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utf8_exception.hpp; sourceTree = "<group>"; };
 		46685C6C219D51870009CFFE /* ucs4_iterator_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ucs4_iterator_base.hpp; sourceTree = "<group>"; };
 		46685C6D219D51870009CFFE /* validator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = validator.hpp; sourceTree = "<group>"; };
@@ -3199,7 +3197,6 @@
 				B5A9BE290ECE927C002BE442 /* icon.icns */,
 				B5A9B0780ECA4074002BE442 /* images */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				4654109E2078BC02002BCD13 /* l10n-track */,
 				B5BB6EFD0F93B83500444FBF /* SDLMain.nib */,
 				B5A9B2140ECA4074002BE442 /* sounds */,
 				46F302ED220327FE0028938F /* Wesnoth.entitlements */,
@@ -4889,7 +4886,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				465410A02078BC77002BCD13 /* l10n-track in Resources */,
 				46F302EE220327FE0028938F /* container-migration.plist in Resources */,
 				B5A9B2290ECA4074002BE442 /* fonts in Resources */,
 				B5A9BE2A0ECE927C002BE442 /* icon.icns in Resources */,
