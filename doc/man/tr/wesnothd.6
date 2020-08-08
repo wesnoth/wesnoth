@@ -212,12 +212,13 @@ istemcilerin isteklerini belirtilen sunucuya yönelteceğini söyleyen
 etiket. \fB[redirect]\fP için kullanılan değişkenler kullanılır.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service. All additional tables that are
-needed for the \fBforum_user_handler\fP to function can be found in
-table_definitions.sql in the Wesnoth source repository.
+\fB[user_handler]\fP Kullanıcı işlemcisini yapılandırır.  Kullanılabilecek
+anahtarlar \fBuser_handler\fP anahtarı ile hangi kullanıcı işlemcisinin
+tanımlandığına bağlıdır. \fB[user_handler]\fP bölümü yapılandırmada yoksa
+sunucu herhangi bir kullanıcı kayıt hizmeti olmadan
+çalışacaktır. \fBforum_user_handler\fP'ın çalışması için gereken tüm ek
+tablolar Wesnoth kaynak deposundaki table_definitions.sql dosyasında
+bulunabilir.
 .RS
 .TP 
 \fBdb_host\fP

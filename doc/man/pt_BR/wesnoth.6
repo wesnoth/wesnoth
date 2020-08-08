@@ -391,12 +391,12 @@ O status de saída normal é 0.  Um status de saída 1 indica que um (SDL,
 vídeo, fontes, etc) erro de inicialização. Um status de saída 2 indica um
 erro com as opções de linha de comando.
 .br
-When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
-status of 0 indicates that the test passed, and 1 indicates that the test
-failed. An exit status of 3 indicates that the test passed, but produced an
-invalid replay file. An exit status of 4 indicates that the test passed, but
-the replay produced errors. These latter two are only returned if
-\fB\-\-noreplaycheck\fP is not passed.
+Quando rodando testes de unidades (with\fB\ \-u\fP), o status da saída é
+diferente. Um status de saída de 0 indica que o teste passou, e 1 que o
+teste falhou. Um status de saída de 3 indica que o teste passou, mas
+produziu um arquivo de replay inválido. Um status de saída de 4 indica que o
+teste passou, mas o replay produziu erros. Estes dois últimos só voltam se
+\fB\-\-noreplaycheck\fP não passar.
 .
 .SH AUTOR
 .

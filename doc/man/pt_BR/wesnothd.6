@@ -209,12 +209,13 @@ as requisições dos clientes conectados para  o servidor especificado.
 Aceita as mesmas chaves que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service. All additional tables that are
-needed for the \fBforum_user_handler\fP to function can be found in
-table_definitions.sql in the Wesnoth source repository.
+\fB[user_handler]\fP Configura o apelido do usuário. As chaves disponíveis
+variam dependendo qual o apelido de usuário foi definido com a
+\fBuser_handler\fP chave. Se não houver uma entrada \fB[user_handler]\fP presente
+na configuração, o servidor rodará sem nenhum serviço de registro de
+apelidos. Todas as tabelas adicionais que são necessárias para que o
+\fBforum_user_handler\fP funcione podem ser encontradas na
+table_definitions.sql no repositório de código do Wesnoth.
 .RS
 .TP 
 \fBdb_host\fP
