@@ -295,6 +295,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(*u_type, map_location::null_location(), attacking);
 	boost::optional<decltype(ctx)> opp_ctx;
+
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
 	}
