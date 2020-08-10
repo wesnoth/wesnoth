@@ -83,7 +83,7 @@ bool one_item::deselect_item(const unsigned index)
 void one_item::delete_item(const unsigned index)
 {
 	// this needs the same logic for ensuring that at least one item is selected
-	set_item_shown(index, false);
+	one_item::set_item_shown(index, false);
 }
 
 void no_item::set_item_shown(const unsigned index, const bool show)
