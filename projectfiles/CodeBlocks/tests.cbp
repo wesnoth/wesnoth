@@ -67,7 +67,7 @@
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
 			<Add library="libpng" />
-			<Add library="libjepg" />
+			<Add library="libjpeg" />
 			<Add library="libboost_iostreams" />
 			<Add library="libboost_bzip2" />
 			<Add library="libboost_filesystem" />
@@ -676,6 +676,8 @@
 		<Unit filename="../../src/gui/dialogs/screenshot_notification.hpp" />
 		<Unit filename="../../src/gui/dialogs/select_orb_colors.cpp" />
 		<Unit filename="../../src/gui/dialogs/select_orb_colors.hpp" />
+		<Unit filename="../../src/gui/dialogs/server_info_dialog.cpp" />
+		<Unit filename="../../src/gui/dialogs/server_info_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/simple_item_selector.cpp" />
 		<Unit filename="../../src/gui/dialogs/simple_item_selector.hpp" />
 		<Unit filename="../../src/gui/dialogs/sp_options_configure.cpp" />
