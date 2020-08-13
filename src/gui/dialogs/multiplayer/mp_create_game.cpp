@@ -840,7 +840,7 @@ bool mp_create_game::dialog_exit_hook(window& /*window*/)
 	if(!create_engine_.current_level().can_launch_game()) {
 		std::stringstream msg;
 		// TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-		msg << _("The selected game can not be created.");
+		msg << _("The selected game cannot be created.");
 		msg << "\n\n";
 		msg << create_engine_.current_level().description();
 		gui2::show_transient_error_message(msg.str());
