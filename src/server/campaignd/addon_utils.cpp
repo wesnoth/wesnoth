@@ -191,9 +191,12 @@ static void write_difference(config& pack, const config& from, const config& to,
 
 	for(const config& d : to.child_range("dir")) {
 		const config& origin_dir = from.find_child("dir", "name", d["name"]);
+		config& dir = pack.add_child("dir");
 		if(origin_dir) {
-			config& dir = pack.add_child("dir");
 			write_difference(dir, origin_dir, d, with_content);
+		} else {
+			const config dummy_dir = config("name", d["name"]);
+			write_difference(dir, dummy_dir, d, with_content);
 		}
 	}
 }

@@ -793,8 +793,9 @@ void server::handle_request_campaign(const server::request& req)
 
 			auto iter = version_map.begin();
 			int size = 0;
+			bool failed = false;
 
-			while(std::distance(iter, version_map.end()) > 1) {
+			while(!failed && std::distance(iter, version_map.end()) > 1) {
 				const config& prev_version = iter->second;
 				iter++;
 				const config& next_version = iter->second;
@@ -811,14 +812,14 @@ void server::handle_request_campaign(const server::request& req)
 						} else {
 							WRN_CS << "Unable to create an update pack sequence from version (" << from << ") to ("
 								   << to << ") for the addon '" << req.cfg["name"].str() << "'. A full pack will be sent instead!\n";
-							pack_data = config::get_invalid();
+							failed = true;
 							break;
 						}
 					}
 				}
 			}
 
-			if(pack_data && !pack_data.empty()) {
+			if(!failed && pack_data && !pack_data.empty()) {
 				std::ostringstream ostr;
 				write(ostr, pack_data);
 				std::string wml = ostr.str();
