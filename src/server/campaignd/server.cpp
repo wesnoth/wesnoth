@@ -819,7 +819,7 @@ void server::handle_request_campaign(const server::request& req)
 				}
 			}
 
-			if(!failed && pack_data && !pack_data.empty()) {
+			if(!failed && !pack_data.empty()) {
 				std::ostringstream ostr;
 				write(ostr, pack_data);
 				std::string wml = ostr.str();
