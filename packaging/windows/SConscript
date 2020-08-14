@@ -13,6 +13,8 @@ for bin in binaries:
         res = []
     env[bin + "_res"] = res
 
+Depends(env["wesnoth_res"], File("wesnoth.exe.manifest"))
+
 def WindowsInstaller(env, files):
     files = [Entry(file) for file in Flatten(files)]
     env["NSIS_INSTALL_FILES"] = ""
