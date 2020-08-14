@@ -56,6 +56,7 @@
      measured in milliseconds.
    * Added unit type variation selection to the debug mode Create Unit dialog (PR #4986).
    * Removed the Python2 versions of tools.
+   * {HEAL_UNIT} does no longer set the variable heal_amount. If needed, [heal_unit] can be used instead.
 
 ## Version 1.15.3
  ### AI
