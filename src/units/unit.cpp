@@ -1254,6 +1254,7 @@ void unit::new_turn()
 	end_turn_ = hold_position_;
 	movement_ = total_movement();
 	attacks_left_ = max_attacks_;
+	set_state(STATE_SLOWED,false);
 	set_state(STATE_UNCOVERED, false);
 }
 
@@ -1261,7 +1262,6 @@ void unit::end_turn()
 {
 	expire_modifications("turn end");
 
-	set_state(STATE_SLOWED,false);
 	if((movement_ != total_movement()) && !(get_state(STATE_NOT_MOVED))) {
 		resting_ = false;
 	}
