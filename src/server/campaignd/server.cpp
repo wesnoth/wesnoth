@@ -234,7 +234,7 @@ void server::load_config()
 		if(meta) {
 			addons_.emplace(meta["name"].str(), meta);
 		} else {
-			WRN_CS << "Failed to load addon from dir '" << addon_dir << "'\n";
+			throw filesystem::io_exception("Failed to load addon from dir '" + addon_dir + "'\n");
 		}
 	}
 
@@ -247,23 +247,19 @@ void server::load_config()
 			const std::string& addon_id = campaign["name"].str();
 			const std::string& addon_file = campaign["filename"].str();
 			if(get_addon(addon_id)) {
-				ERR_CS << "The addon '" << addon_id
-					   << "' already exists in the new form! The old version will be ignored and its file deleted!\n";
-				filesystem::delete_file(filesystem::normalize_path(addon_file));
-				continue;
+				throw filesystem::io_exception("The addon '" + addon_id
+					   + "' already exists in the new form! Possible code or filesystem interference!\n");
 			}
 			if(std::find(legacy_addons.begin(), legacy_addons.end(), addon_id) == legacy_addons.end()) {
-				ERR_CS << "No file has been found for the legacy addon '" << addon_id
-					   << "'. Please, check the file structure!\n";
-				continue;
+				throw filesystem::io_exception("No file has been found for the legacy addon '" + addon_id
+					   + "'. Please, check the file structure!\n");
 			}
 
 			config data;
 			in = filesystem::istream_file(filesystem::normalize_path(addon_file));
 			read_gz(data, *in);
 			if(!data) {
-				ERR_CS << "Couldn't read the content file for the legacy addon '" << addon_id << "'!\n";
-				continue;
+				throw filesystem::io_exception("Couldn't read the content file for the legacy addon '" + addon_id + "'!\n");
 			}
 
 			const std::string file_hash = utils::md5(campaign["version"].str()).hex_digest();
@@ -602,7 +598,7 @@ config& server::get_addon(const std::string& id)
 {
 	auto addon = addons_.find(id);
 	if(addon != addons_.end()) {
-		return addons_.at(id);
+		return addon->second;
 	} else {
 		return config::get_invalid();
 	}
@@ -769,10 +765,8 @@ void server::handle_request_campaign(const server::request& req)
 	auto version_map = get_version_map(campaign);
 
 	if(version_map.empty()) {
-		// Old format ?
-		ERR_CS << "The (" + to + ") version of the addon '" << req.cfg["name"].str()
-			   << "' is stored in the old format (bug?)! Trying to send a legacy full-pack.";
-		to = campaign["version"].str();
+		send_error("No versions of the addon '" + req.cfg["name"].str() + "' have been found by the server!", req.sock);
+		return;
 	} else {
 		auto version = version_map.find(version_info(to));
 		if(version != version_map.end()) {
@@ -787,7 +781,7 @@ void server::handle_request_campaign(const server::request& req)
 		// Negotiate an update pack if possible
 		if(!from.empty() && version_map.count(version_info(from)) != 0) {
 			config pack_data;
-			// Make a line of consequential updates beginning from the old version to the new one.
+			// Make a line of consecutive updates beginning from the old version to the new one.
 			// Every pair of increasing versions on the server side should contain an update_pack
 			// transition guaranteed during the upload.
 
@@ -810,7 +804,7 @@ void server::handle_request_campaign(const server::request& req)
 							pack_data.append(update_pack);
 							size += filesystem::file_size(campaign["filename"].str() + pack["filename"].str());
 						} else {
-							WRN_CS << "Unable to create an update pack sequence from version (" << from << ") to ("
+							WRN_CS << "Unable to find an update pack sequence from version (" << from << ") to ("
 								   << to << ") for the addon '" << req.cfg["name"].str() << "'. A full pack will be sent instead!\n";
 							failed = true;
 							break;
@@ -1098,7 +1092,7 @@ void server::handle_upload(const server::request& req)
 			campaign_file.commit();
 		}
 
-		(*campaign)["size"] = filesystem::file_size(filename + version_cfg["filename"].str()) + filesystem::file_size(filename + "/addon.cfg");
+		(*campaign)["size"] = filesystem::file_size(filename + version_cfg["filename"].str());
 		
 		//Remove the update packs with expired lifespan
 		for(const config& pack : (*campaign).child_range("update_pack")) {
