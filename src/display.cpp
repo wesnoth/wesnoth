@@ -287,8 +287,13 @@ display::~display()
 	resources::fake_units = nullptr;
 }
 
-void display::set_theme(config theme_cfg) {
+void display::set_theme(config theme_cfg)
+{
+	auto reset_event = theme_.theme_reset_event();
 	theme_ = theme(theme_cfg, screen_.screen_area());
+	theme_.theme_reset_event() = reset_event;
+	theme_.theme_reset_event().notify_observers();
+
 	builder_->set_draw_border(theme_.border().show_border);
 	menu_buttons_.clear();
 	action_buttons_.clear();
