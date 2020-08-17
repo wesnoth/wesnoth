@@ -8,6 +8,12 @@
      * S12: Fix a few case where dialog and events sound odd or fire out of order (issue #4614).
    * Liberty:
      * Revised dialogue and added miscellaneous new events to all scenarios.
+   * Northern Rebirth
+     * S5a: Fixed a bug where enemies could trigger a hidden door.
+   * Sceptre of Fire:
+     * Fixed a bug where the new rune shop was not working as intended; added an event to tell players of the existance of the runeshop (S3).
+     * Tweaks to dialogue and victory conditions (S2p5, S3, S4, S5, epilogue).
+     * S8: Fixed a case where the dragon would suicide into pursuers offscreen.
    * Under the Burning Suns:
      * Rebalanced all Quenoth units and all scenarios
      * Embellished all remaining maps (S1, S2, S6b, S8, S11).
@@ -57,6 +63,7 @@
    * Added unit type variation selection to the debug mode Create Unit dialog (PR #4986).
    * Removed the Python2 versions of tools.
    * {HEAL_UNIT} does no longer set the variable heal_amount. If needed, [heal_unit] can be used instead.
+   * Added new modify_unit tags to schema validation.
 
 ## Version 1.15.3
  ### AI
