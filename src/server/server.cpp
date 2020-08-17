@@ -1777,8 +1777,8 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			}
 
 			const std::vector<std::string> mods = utils::split(m["active_mods"].to_string());
-			const std::vector<std::string> mod_sources = utils::split(m["active_mod_versions"].to_string());
-			const std::vector<std::string> mod_versions = utils::split(m["active_mod_addon_ids"].to_string());
+			const std::vector<std::string> mod_sources = utils::split(m["active_mod_addon_ids"].to_string());
+			const std::vector<std::string> mod_versions = utils::split(m["active_mod_versions"].to_string());
 			const bool mod_info_present = mods.size() == mod_sources.size() && mod_sources.size() == mod_versions.size();
 			if(!mod_info_present && (!mod_sources.empty() || !mod_versions.empty())) {
 				WRN_SERVER << "mod info mismatch for game " << g.id() << ", " << g.db_id() << " - mods: '" << m["active_mods"].to_string() << "', mod_versions: '" << m["active_mod_versions"].to_string() << "', mod_sources: '" << m["active_mod_addon_ids"].to_string() << "'";
