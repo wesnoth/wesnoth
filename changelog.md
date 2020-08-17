@@ -541,8 +541,17 @@
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
 ## Version 1.14.13+dev
+ ### Add-ons client
+   * Add-on titles and descriptions translated to the current language are used when available.
+     The original English title is displayed in the UI and considered for search purposes in addition
+     to translations.
+ ### Add-ons server
+   * Made it possible to provide translations for add-on titles and descriptions at upload
+     time in the .pbl (PR #4993). Only clients running 1.14.14/1.15.4 or later can read the
+     translated values.
  ### Language and i18n
-   * Updated translations:
+   * Updated translations: British English, Chinese (Simplified), Esperanto, Italian,
+     Portuguese (Brazil), Russian, Spanish, Turkish
  ### User interface
    * Do not list nameless abilities in the Abilities and Ability Upgrades lists in unit
      descriptions in Help (issue #3060).
@@ -550,6 +559,7 @@
  ### Miscellaneous and bug fixes
    * Made wmllint recognize [remove_time_area] in order to avoid spurious warnings about
      unit ids.
+   * Files created by the scenario editor include a boilerplate warning about hand-editing them.
 
 ## Version 1.14.13
  ### Campaigns
