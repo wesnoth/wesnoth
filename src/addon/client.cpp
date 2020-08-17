@@ -287,31 +287,26 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 		add_maindir.add_child("file", file);
 
 		// A consistency check
-		config::all_children_itors itors = archive_cfg.all_children_range();
-		auto iter = itors.begin();
-		while(iter != itors.end()) {
-			if(iter->key == "removelist" || iter->key == "addlist") {
-				if(!check_names_legal(iter->cfg)) {
+		for(const config::any_child entry : archive_cfg.all_children_range()) {
+			if(entry.key == "removelist" || entry.key == "addlist") {
+				if(!check_names_legal(entry.cfg)) {
 					gui2::show_error_message(VGETTEXT("The add-on <i>$addon_title</i> has an invalid file or directory "
 									"name and cannot be installed.", i18n_symbols));
 					return false;
 				}
-				if(!check_case_insensitive_duplicates(iter->cfg)) {
+				if(!check_case_insensitive_duplicates(entry.cfg)) {
 					gui2::show_error_message(VGETTEXT("The add-on <i>$addon_title</i> has file or directory names "
 									"with case conflicts. This may cause problems.", i18n_symbols));
 				}
 			}
-			iter++;
 		}
 
-		iter = itors.begin();
-		while(iter != itors.end()) {
-			if(iter->key == "removelist") {
-				purge_addon(iter->cfg);
-			} else if(iter->key == "addlist") {
-				unarchive_addon(iter->cfg);
+		for(const config::any_child entry : archive_cfg.all_children_range()) {
+			if(entry.key == "removelist") {
+				purge_addon(entry.cfg);
+			} else if(entry.key == "addlist") {
+				unarchive_addon(entry.cfg);
 			}
-			iter++;
 		}
 
 		LOG_ADDONS << "Update completed.\n";
