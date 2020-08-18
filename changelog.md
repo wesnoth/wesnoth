@@ -33,10 +33,11 @@
    * New earthy rockbound cave variation (code Uhe).
  ### Units
    * New Dunefolk skirmisher branch (Falconer).
+   * Dune Spearmaster shield damage changed from 14 to 13.
    * Burner line and Armageddon Drake cold resistance changed from -50% to -40%.
    * Dragonguard HP increased from 59 to 63.
    * Steelclad HP changed from 55 to 57.
-   * Poacher HP changed from 32 to 33. 
+   * Poacher HP changed from 32 to 33.
    * Heavy Infantryman cold resistance changed from -10% to 0.
    * Troll Rocklobber HP changed from 49 to 51.
    * Merman Hunter HP changed from 30 to 33.
