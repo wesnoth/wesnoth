@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-08 05:20-0400\n"
-"PO-Revision-Date: 2020-05-15 20:20+0200\n"
-"Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
+"PO-Revision-Date: 2020-06-21 08:19+0200\n"
+"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -2073,7 +2073,7 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:307
 msgid "Learning from Losses"
-msgstr ""
+msgstr "Poučení z proher"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:308
@@ -2083,6 +2083,10 @@ msgid ""
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
 msgstr ""
+"<italic>text='Proč jsem prohrál(a) ten scénář?'</italic>\n"
+"\n"
+"Jedna z nejobtížnějších částí Wesnothu je porozumění tomu, proč byl scénář "
+"prohrán."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:310
@@ -2094,6 +2098,13 @@ msgid ""
 "from your mistakes: watch the replay, try to understand what you did wrong, "
 "then <ref>dst='saveload' text='restart the scenario'</ref> and try again."
 msgstr ""
+"\n"
+"\n"
+"Když začneš poprvé hrát, tak pravděpodobně některé scénáře prohraješ. To je "
+"obvyklé a je to součást toho, jak se učíš hrát. Když se to stane, pokus se "
+"poučit ze svých chyb: sleduj záznam, snaž se pochopit, co jsi udělal(a) "
+"špatně, pak <ref>dst='saveload' text='znovu začni scénář'</ref> a opět to "
+"zkus."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:312
@@ -2102,6 +2113,9 @@ msgid ""
 "\n"
 "Some common reasons for losing a scenario are:"
 msgstr ""
+"\n"
+"\n"
+"Některé běžné důvody, které vedou k prohře ve scénáři, jsou:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:314
@@ -2111,6 +2125,10 @@ msgid ""
 "• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
 "level'</ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
+"\n"
+"\n"
+"• Hraní tažení na příliš vysokou <ref>dst='..gameplay' text='obtížnost'</"
+"ref>. Zkus scénář znovu na lehčí obtížnost."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:316
@@ -2121,6 +2139,11 @@ msgid ""
 "fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
 "taking advantage of terrain features or units’ special abilities, and so on."
 msgstr ""
+"\n"
+"\n"
+"• Špatná strategie: například nabírání nesprávných typů jednotek, bojování "
+"v nesprávnou <ref>dst='time_of_day' text='denní dobu'</ref>, nevyužívání "
+"výhod krajinných prvků nebo zvláštních schopností jednotek, a tak dále."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:318
@@ -2132,6 +2155,12 @@ msgid ""
 "it. If you have a loyal mage on your side, take the time to listen to its "
 "advice; it may save your life."
 msgstr ""
+"\n"
+"\n"
+"• Přehlédnutí nápověd. V příběhu tažení a v rozhovorech bude často "
+"naznačeno, co čekat od obtížného scénáře a jak se na něj připravit. Jestliže "
+"máš na své straně věrného mága, udělej si čas, abys vyslechnul(a) jeho "
+"doporučení; může to záchránit tvůj život."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:320
@@ -2149,6 +2178,18 @@ msgid ""
 "change to an easier difficulty. (However, remember that <italic>text='some'</"
 "italic> losses are expected, particularly at higher difficulties.)"
 msgstr ""
+"\n"
+"\n"
+"• Vyhrání předchozího scénáře jen o fous. Na všech obtížnostech kromě těch "
+"nejlehčích se v tažení předpokládá, že máš nějaké <italic>text='přenesené "
+"zlato'</italic> a na svém <italic>text='povolávacím seznamu'</italic> nějaké "
+"pokročilé jednotky. (Tyto pojmy jsou vysvětleny ve výcviku.) Pokud vyhraješ "
+"scénář, ale ztratíš většinu svých pokročilých jednotek a hodně svého zlata, "
+"může být zdolání následujícího scénáře velmi obtížné i pro zkušenějšího "
+"hráče. Jestliže se nacházíš v takové situaci, můžeš se zkusit vrátit o jeden "
+"či dva scénáře zpět a vyhrát je přesvědčivěji nebo přejít na lehčí "
+"obtížnost. (Nicméně pamatuj, že <italic>text='některé'</italic> ztráty jsou "
+"očekávané, obzvláště pak na vyšších obtížnostech.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:322
@@ -2162,6 +2203,14 @@ msgid ""
 "carryover for the next scenario. (This would be an example of “barely "
 "scraping a victory”.)"
 msgstr ""
+"\n"
+"\n"
+"• Špatné hospodaření se zlatem. Na vyšších obtížnostech se stane důležité "
+"hospodaření se zlatem – zabírání vesnic pro zvýšení příjmu a používání "
+"jednotek nízké úrovně a nováčků pro snížení výdajů. Když použiješ mnoho "
+"jednotek vyšší úrovně, můžeš snadno vyhrát scénář, ale nebudeš mít dost "
+"přeneseného zlata pro ten další. (To by mohl být příklad „vyhrání jen "
+"o fous“.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:324
@@ -2182,6 +2231,10 @@ msgid ""
 "In addition to the common reasons, listed above, there are a few other "
 "reasons which are unlikely, though not impossible. They are:"
 msgstr ""
+"\n"
+"\n"
+"Vedle běžných důvodů zmíněných výše je několik dalších, které jsou "
+"nepravděpodobné, třebaže ne nemožné. Jsou to:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:328
@@ -2192,6 +2245,11 @@ msgid ""
 "anticipate, and ended up with a set of high-level units not suitable for the "
 "next scenario."
 msgstr ""
+"\n"
+"\n"
+"• Možná jsi hrál(a) strategii, kterou vývojář tažení neočekával, "
+"a skončil(a) se skupinou jednotek vysoké úrovně, jež jsou pro další scénář "
+"nevhodné."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:330
@@ -2205,6 +2263,13 @@ msgid ""
 "the highest difficulties. Requiring above-average luck, however, would "
 "qualify as a bug.)"
 msgstr ""
+"\n"
+"\n"
+"• Možná jsi objevil(a) scénář, který lze vyhrát pouze napodruhé, nebo "
+"napotřetí, ať už tím, že vyžaduje nadprůměrné štěstí, nebo tím, že u hráčů "
+"předpokládá povědomí o tom, jaká překvapení se chystají, ještě než nastanou. "
+"(Je na diskusi, zda je na vyšších obtížnostech očekávána předchozí znalost. "
+"Avšak požadování nadprůměrného štěstí by se posuzovalo jako chyba.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:332
@@ -2224,6 +2289,20 @@ msgid ""
 "luck. It is only exceedingly bad luck, over multiple turns, that we mean "
 "here."
 msgstr ""
+"\n"
+"\n"
+"• Neobvyklá smůla. Jestliže jsou zásahy i minutí při útoku náhodné, tak se "
+"mohlo přihodit, že nepřítel měl hodně štěstí a s ním mnoho zásahů, zatímco "
+"ty jsi měl(a) velkou smůlu, a tak i mnoho minutí. Nicméně to je velmi vzácný "
+"případ, téměř naprosto neznámý ve všech scénářích, až na ty nejkratší "
+"a nejmenší. Ve skutečnosti jsou prohry častěji způsobeny hraním "
+"<italic>text='špatné'</italic> strategie navzdory "
+"<italic>text='nadprůměrnému'</italic> štěstí, než hraním "
+"<italic>text='dobré'</italic> strategie s <italic>text='podprůměrným'</"
+"italic> štěstím. Navíc mít jenom „podprůměrné“ štěstí neospravedlňuje "
+"porážku; mít podprůměrné štěstí je naprosto obvyklé a scénáře jsou navrženy "
+"tak, aby šly vyhrát i s podprůměrným štěstím. To, co tu máme na mysli, je "
+"pouze mimořádná smůla po mnoho kol."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:334
@@ -2236,6 +2315,13 @@ msgid ""
 "indicative of a bug in the campaign. However, if you still think you found a "
 "bug, then by all means, report it!"
 msgstr ""
+"\n"
+"\n"
+"Varuj se toho, abys přisuzoval(a) prohry kterémukoliv z těchto důvodů. Pokud "
+"nejsi ostřílený hráč, je daleko pravděpodobnější, že tvá porážka byla "
+"způsobena jednou z <italic>text='obvyklých'</italic> chyb uvedených výše "
+"a nesvědčí o chybě v tažení. Avšak pokud si stejně myslíš, že jsi objevil(a) "
+"chybu, tak ji každopádně nahlaš!"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:336
@@ -2248,6 +2334,12 @@ msgid ""
 "strategic mistakes, or small bits of luck at critical points in the "
 "engagement."
 msgstr ""
+"\n"
+"\n"
+"Dialogové okno „Výpočet poškození“ ukazuje některé statistiky, které mohou "
+"pomoci určit, zda zápas skončil hodně šťastně nebo hodně smolně. Nicméně "
+"čtení statistik nemůže nahradit sledování záznamů a hledání strategických "
+"omylů nebo špetky štěstí v rozhodujících okamžicích ozbrojených střetů."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:345
@@ -3645,7 +3737,7 @@ msgstr ""
 "pozorovatele (jméno hráče nebo pozorovatele jako username). Která strana "
 "patří kterému hráči lze snadno zjistit v dialogu <bold>text='Nastavení "
 "scénáře'</bold> – dostanete se tam tlačítkem <bold>text='Více'</bold> "
-"v <bold>text='Přehledové tabulce'</bold> (při výchozím nastavení alt+s). "
+"ve <bold>text='Stavové tabulce'</bold> (při výchozím nastavení alt+s). "
 "Hostitel může změnit vlastníka jakékoliv strany.\n"
 "\n"
 
