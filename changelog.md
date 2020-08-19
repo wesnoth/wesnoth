@@ -45,7 +45,7 @@
    * Wose cold resistance changed from 10% to 0.
    * Shaman ranged damage changed from 3 to 4.
    * Bone Shooter HP increased from 40 to 42.
-   * Banebow HP increased from 50 to 52.
+   * Banebow HP increased from 50 to 55.
    * Ghost cost changed from 20 to 19.
  ### User interface
    * Improve appearance of the Logging Options dialog and add a search box.
