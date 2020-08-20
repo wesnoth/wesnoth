@@ -563,6 +563,7 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 		strings9 tmp { {
 			"",
 			(base2 ?
+				// TRANSLATORS: Translate the K in KiB only
 				_("prefix_kibi^K") :
 				_("prefix_kilo^k")
 			),
@@ -586,6 +587,7 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 	si_string_impl_stream_write(ss, input);
 	ss << ' '
 	   << *prefix
+	   // TRANSLATORS: Translate the i in (for example) KiB only
 	   << (base2 && (!(*prefix).empty()) ? _("infix_binary^i") : "")
 	   << unit;
 	return ss.str();
