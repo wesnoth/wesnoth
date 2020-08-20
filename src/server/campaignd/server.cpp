@@ -761,6 +761,7 @@ void server::handle_request_campaign(const server::request& req)
 	std::string to = req.cfg["version"].str();
 	const std::string& from = req.cfg["from_version"].str();
 	std::string full_pack = campaign["filename"].str();
+	int full_pack_size;
 
 	auto version_map = get_version_map(campaign);
 
@@ -777,6 +778,8 @@ void server::handle_request_campaign(const server::request& req)
 			to = version_map.rbegin()->first;
 			full_pack += version_map.rbegin()->second["filename"].str();
 		}
+
+		full_pack_size = filesystem::file_size(full_pack);
 
 		// Negotiate an update pack if possible
 		if(!from.empty() && version_map.count(version_info(from)) != 0) {
@@ -809,6 +812,12 @@ void server::handle_request_campaign(const server::request& req)
 							failed = true;
 							break;
 						}
+
+						// No point to send the update pack sequence if it gets larger than the full pack
+						if(size > full_pack_size && full_pack_size > 0) {
+							failed = true;
+							break;
+						}
 					}
 				}
 			}
@@ -834,14 +843,13 @@ void server::handle_request_campaign(const server::request& req)
 	if(!full_pack.empty()) {
 		// Send a full pack download if the previous version is not specified or is not present on the server, or if
 		// we're dealing with the old format (???)
-		const int size = filesystem::file_size(full_pack);
 
-		if(size < 0) {
+		if(full_pack_size < 0) {
 			send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
 			return;
 		}
 
-		LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << size / 1024 << "KiB\n";
+		LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << full_pack_size / 1024 << "KiB\n";
 		async_send_file(req.sock, full_pack, std::bind(&server::handle_new_client, this, _1), null_handler);
 	}
 
