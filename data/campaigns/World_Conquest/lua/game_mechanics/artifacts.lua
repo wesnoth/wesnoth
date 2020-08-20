@@ -51,11 +51,15 @@ end
 -- place an artifact with id @a index on the map at position @a x, y.
 -- can be used from the bug console as `lua wc2_artifacts.place_item(30,20,1)`
 function artifacts.place_item(x, y, index)
-	wc2_dropping.add_item(x, y, {
-		wc2_atrifact_id = index,
+	wesnoth.wml_actions.item {
+		x = x,
+		y = y,
 		image = artifacts.get_artifact(index).icon,
 		z_order = 20,
-	})
+		wml.tag.variables {
+			wc2_atrifact_id = index,
+		},
+	}
 end
 
 -- give te item with id @a index to unit @a unit, set @a visualize=true, to show the item pickup animation.
@@ -117,8 +121,8 @@ function artifacts.give_item(unit, index, visualize)
 end
 
 -- unit picking up artifacts
-on_event("wc2_drop_pickup", function(ec)
-	local item = wc2_dropping.current_item
+on_event("moveto_item", function(ec)
+	local item = wml.variables["item.variables"]
 	local unit = wesnoth.get_unit(ec.x1, ec.y1)
 	if not item.wc2_atrifact_id then 
 		return
@@ -154,7 +158,7 @@ on_event("wc2_drop_pickup", function(ec)
 	end
 	
 
-	wc2_dropping.item_taken = true
+	wml.variables["item.taken"] = true
 	artifacts.give_item(unit, index, true)
 	wesnoth.allow_undo(false)
 end)
@@ -195,12 +199,15 @@ end)
 -- returns true if there is an item in the map at the given position,
 -- used to determine whether to show the artifact info menu at that position. 
 function artifacts.is_item_at(x,y)
-	for i,item in ipairs(wc2_dropping.get_entries_at_readonly(x,y)) do
-		if item.wc2_atrifact_id then
-			return true
+	local found = false
+	wesnoth.wml_actions.store_items { x = x, y = y, variable = "wc2_temp_items"}
+	for i = 1, wml.variables["wc2_temp_items.length"] do
+		if wml.variables["wc2_temp_items[" .. (i - 1).. "].variables.wc2_atrifact_id"] then
+			found = true
 		end
 	end
-	return false
+	wml.variables.wc2_temp_items = nil
+	return found
 end
 
 -- shows an information [message] about the item laying at position 
@@ -208,9 +215,12 @@ end
 function wesnoth.wml_actions.wc2_show_item_info(cfg)
 	local x = cfg.x
 	local y = cfg.y
-	for i,item in ipairs(wc2_dropping.get_entries_at_readonly(x,y)) do
-		if item.wc2_atrifact_id then
-			local artifact_info = artifacts.get_artifact(item.wc2_atrifact_id)
+
+	wesnoth.wml_actions.store_items { x = x, y = y, variable = "wc2_temp_items"}
+	for i = 1, wml.variables["wc2_temp_items.length"] do
+		local artifact_id = wml.variables["wc2_temp_items[" .. (i - 1).. "].variables.wc2_atrifact_id"]
+		if artifact_id then
+			local artifact_info = artifacts.get_artifact(artifact_id)
 			wesnoth.wml_actions.message {
 				scroll = false,
 				image = artifact_info.icon,
@@ -219,6 +229,7 @@ function wesnoth.wml_actions.wc2_show_item_info(cfg)
 			}
 		end
 	end
+	wml.variables.wc2_temp_items = nil
 end
 
 wc2_utils.menu_item {

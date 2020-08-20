@@ -42,16 +42,19 @@ function bonus.place_item(x, y, image)
 	else
 		image = image or "scenery/lighthouse.png"
 	end
-
-	wc2_dropping.add_item(x, y, {
-		wc2_is_bonus = true,
+	wesnoth.wml_actions.item {
+		x = x,
+		y = y,
 		image = image,
 		z_order = 10,
-	})
+		wml.tag.variables {
+			wc2_is_bonus = true,
+		},
+	}
 end
 
 function bonus.remove_current_item(ec)
-	wc2_dropping.remove_current_item()
+	wml.variables["item.taken"] = true
 	--TODO: i don't think its worth to keep this code, to alos allow bonus points to use terrains instead of overlays.
     wesnoth.wml_actions.terrain {
         x = ec.x1,
@@ -81,8 +84,8 @@ end
 
 
 -- event fired by dropping.lua
-on_event("wc2_drop_pickup", function(ec)
-	local item = wc2_dropping.current_item
+on_event("moveto_item", function(ec)
+	local item = wml.variables["item.variables"]
 	local side_num = wesnoth.current.side
 
 	if not item.wc2_is_bonus then
@@ -122,7 +125,6 @@ on_event("wc2_drop_pickup", function(ec)
 		bonus.found_hero(ec, bonus_subtype)
 	end
 	bonus.post_pickup(side_num, ec.x1, ec.y1)
-	assert(wc2_dropping.item_taken, "item still there")
 end)
 
 function bonus.get_random_item()

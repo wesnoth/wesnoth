@@ -1,5 +1,8 @@
 local wml_actions = wesnoth.wml_actions
 
+local on_event = wesnoth.require("on_event")
+
+
 local scenario_items = (wesnoth.require "location_set").create()
 local next_item_name = 0
 local function add_overlay(x, y, cfg)
@@ -9,6 +12,7 @@ local function add_overlay(x, y, cfg)
 		items = {}
 		scenario_items:insert(x, y, items)
 	end
+	local variables = wml.get_child(cfg, "variables") or {}
 	table.insert(items,
 		{
 			x = x, y = y,
@@ -20,6 +24,7 @@ local function add_overlay(x, y, cfg)
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
+			wml.tag.variables variables
 		})
 end
 
@@ -109,6 +114,30 @@ function wml_actions.store_items(cfg)
 		end
 	end
 end
+
+
+
+on_event("moveto", function(event_context)
+	local x = event_context.x1
+	local y = event_context.y1
+	local items = scenario_items:get(x, y)
+	if not items then
+		return
+	end
+
+	for i = #items,1,-1 do
+		local item = items[i]
+		wml.variables.item = item
+		wesnoth.fire_event("moveto_item", x, y)
+		if wml.variables["item.taken"] and (item == items[i])then
+			table.remove(items, i)
+			wesnoth.interface.remove_hex_overlay(x, y, item.name)
+			wesnoth.allow_undo(false)
+		end
+		wml.variables.item = nil
+	end
+
+end)
 
 function wesnoth.interface.add_item_image(x, y, name)
 	add_overlay(x, y, { x = x, y = y, image = name })
