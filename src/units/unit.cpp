@@ -2415,16 +2415,11 @@ void unit::apply_modifications()
 	log_scope("apply mods");
 
 	variables_.clear_children("mods");
-
-	for(const auto& mod : ModificationTypes) {
-		if(mod == "advance" && modifications_.has_child(mod)) {
-			deprecated_message("[advance]", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use [advancement] instead.");
-		}
-
-		for(const config& m : modifications_.child_range(mod)) {
-			lg::scope_logger inner_scope_logging_object__(lg::general(), "add mod");
-			add_modification(mod, m, true);
-		}
+	if(modifications_.has_child("advance")) {
+		deprecated_message("[advance]", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use [advancement] instead.");
+	}
+	for (const config::any_child &mod : modifications_.all_children_range()) {
+		add_modification(mod.key, mod.cfg, true);
 	}
 }
 
