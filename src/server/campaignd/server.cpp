@@ -252,7 +252,7 @@ void server::load_config()
 			}
 			if(std::find(legacy_addons.begin(), legacy_addons.end(), addon_id) == legacy_addons.end()) {
 				throw filesystem::io_exception("No file has been found for the legacy addon '" + addon_id
-					   + "'. Please, check the file structure!\n");
+					   + "'. Check the file structure!\n");
 			}
 
 			config data;
@@ -766,7 +766,7 @@ void server::handle_request_campaign(const server::request& req)
 	auto version_map = get_version_map(campaign);
 
 	if(version_map.empty()) {
-		send_error("No versions of the addon '" + req.cfg["name"].str() + "' have been found by the server!", req.sock);
+		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
 		return;
 	} else {
 		auto version = version_map.find(version_info(to));
