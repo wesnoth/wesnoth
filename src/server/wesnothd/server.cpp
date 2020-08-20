@@ -239,6 +239,7 @@ server::server(int port,
 	, admin_passwd_()
 	, motd_()
 	, announcements_()
+	, tournaments_()
 	, information_()
 	, default_max_messages_(0)
 	, default_time_period_(0)
@@ -263,6 +264,7 @@ server::server(int port,
 	, games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC)
 	, metrics_()
 	, dump_stats_timer_(io_service_)
+	, tournaments_timer_(io_service_)
 	, cmd_handlers_()
 	, timer_(io_service_)
 	, lan_server_timer_(io_service_)
@@ -274,6 +276,7 @@ server::server(int port,
 	start_server();
 
 	start_dump_stats();
+	start_tournaments_timer();
 }
 
 #ifndef _WIN32
@@ -534,7 +537,7 @@ void server::load_config()
 	if(const config& user_handler = cfg_.child("user_handler")) {
 		user_handler_.reset(new fuh(user_handler));
 		uuid_ = user_handler_->get_uuid();
-		announcements_ += user_handler_->get_tournaments();
+		tournaments_ = user_handler_->get_tournaments();
 	}
 #endif
 }
@@ -575,13 +578,31 @@ void server::start_dump_stats()
 void server::dump_stats(const boost::system::error_code& ec)
 {
 	if(ec) {
-		ERR_SERVER << "Error waiting for timer: " << ec.message() << "\n";
+		ERR_SERVER << "Error waiting for dump stats timer: " << ec.message() << "\n";
 		return;
 	}
 	LOG_SERVER << "Statistics:"
 			   << "\tnumber_of_games = " << games().size() << "\tnumber_of_users = " << player_connections_.size()
 			   << "\n";
 	start_dump_stats();
+}
+
+void server::start_tournaments_timer()
+{
+	tournaments_timer_.expires_from_now(std::chrono::minutes(60));
+	tournaments_timer_.async_wait([this](const boost::system::error_code& ec) { refresh_tournaments(ec); });
+}
+
+void server::refresh_tournaments(const boost::system::error_code& ec)
+{
+	if(ec) {
+		ERR_SERVER << "Error waiting for tournament refresh timer: " << ec.message() << "\n";
+		return;
+	}
+	if(user_handler_) {
+		tournaments_ = user_handler_->get_tournaments();
+		start_tournaments_timer();
+	}
 }
 
 void server::handle_new_client(socket_ptr socket)
@@ -1001,10 +1022,10 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 	send_to_player(socket, games_and_users_list_);
 
 	if(!motd_.empty()) {
-		send_server_message(socket, motd_+'\n'+announcements_, "motd");
+		send_server_message(socket, motd_+'\n'+announcements_+tournaments_, "motd");
 	}
 	send_server_message(socket, information_, "server_info");
-	send_server_message(socket, announcements_, "announcements");
+	send_server_message(socket, announcements_+tournaments_, "announcements");
 	if(version_info(player.version()) < secure_version ){
 		send_server_message(socket, "You are using version " + player.version() + " which has known security issues that can be used to compromise your computer. We strongly recommend updating to a Wesnoth version " + secure_version.str() + " or newer!", "alert");
 	}

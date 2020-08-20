@@ -141,6 +141,7 @@ private:
 	std::string admin_passwd_;
 	std::string motd_;
 	std::string announcements_;
+	std::string tournaments_;
 	std::string information_;
 	std::size_t default_max_messages_;
 	std::size_t default_time_period_;
@@ -176,6 +177,10 @@ private:
 	boost::asio::steady_timer dump_stats_timer_;
 	void start_dump_stats();
 	void dump_stats(const boost::system::error_code& ec);
+
+	boost::asio::steady_timer tournaments_timer_;
+	void start_tournaments_timer();
+	void refresh_tournaments(const boost::system::error_code& ec);
 
 	/** Process commands from admins and users. */
 	std::string process_command(std::string cmd, std::string issuer_name);
