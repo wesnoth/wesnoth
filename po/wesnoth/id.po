@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 05:29-0400\n"
+"POT-Creation-Date: 2020-08-22 00:14-0400\n"
 "PO-Revision-Date: 2013-09-09 11:47+0700\n"
 "Last-Translator: Yuristyawan Pambudi Wicaksana <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -235,7 +235,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
 msgid "poisoned"
 msgstr "keracunan"
@@ -254,6 +254,339 @@ msgstr "Emas terbawa:"
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "Catatan:"
+
+#. [advancement]: id=amla_default
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+#, fuzzy
+#| msgid "Max HP bonus +3, Max XP +20%"
+msgid "Max HP bonus +6%"
+msgstr "Bonus darah maks +3, AP maks +20%"
+
+#. [lua]: wc_ii_generate_scenario
+#. [lua]: wct_store_possible_encampment_ford
+#: data/campaigns/World_Conquest/lua/map/main.lua:138
+#: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:144
+msgid "Start"
+msgstr ""
+
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:140
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenario"
+msgstr "Akhir Skenario"
+
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:142
+msgid "Final Battle"
+msgstr ""
+
+#. [lua]: wct_map_2a_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2A_Springs.lua:182
+msgid "water^Springs"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_decoration_2c
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2C_Glaciers.lua:206
+msgid "Glaciers"
+msgstr ""
+
+#. [lua]: wct_map_2d_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2D_Provinces.lua:164
+#, fuzzy
+#| msgid "Preferences"
+msgid "Provinces"
+msgstr "Pilihan"
+
+#. [lua]: wct_map_2f_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2F_Clayey.lua:126
+#, fuzzy
+#| msgid "Players"
+msgid "Clayey"
+msgstr "Pemain-Pemain"
+
+#. [lua]: wct_map_3c_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:395
+msgid "river^Delta"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_repaint_3d
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3D_Sulfurous.lua:61
+msgid "Sulfurous"
+msgstr ""
+
+#. [lua]: wct_map_3e_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3E_Coral.lua:78
+msgid "made of^Coral"
+msgstr ""
+
+#. [lua]: wct_map_4a_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4A_Thermal.lua:199
+#, fuzzy
+#| msgid "Normal"
+msgid "Thermal"
+msgstr "Normal"
+
+#. [lua]: world_conquest_tek_map_repaint_4b
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4B_Volcanic.lua:414
+msgid "Volcanic"
+msgstr ""
+
+#. [lua]: wct_map_4d_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4D_Podzol.lua:134
+msgid "Podzol"
+msgstr ""
+
+#. [lua]: wct_map_4e_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4E_Wicked.lua:643
+msgid "Wicked"
+msgstr ""
+
+#. [lua]: wild_store_roads_in_cave_zone
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4F_Wild.lua:266
+msgid "Wild"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_repaint_6d
+#: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:472
+msgid "Feudal"
+msgstr ""
+
+#. [lua]: add_enemy_side
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
+msgid "Enemies"
+msgstr "Musuh-Musuh"
+
+#. [lua]: add_player_side
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
+msgid "Allies"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:305
+msgid "$range|: $special|"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:519
+msgid "+$boost| moves"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:533
+msgid "$range|: +$boost| damage"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:549
+msgid "$range|: +1 damage per level"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:565
+msgid "+$hitpoints| hitpoints"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:580
+msgid "+$hitpoints| hitpoints per level"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:596
+#, fuzzy
+#| msgid "XP to advance"
+msgid "$value| XP to advance"
+msgstr "AP untuk naik level"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:620
+msgid "Village/Castle: +5 defense"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:652
+msgid ""
+"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:681
+msgid "$terrain|: +10 defense and full movement"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:692
+#, fuzzy
+#| msgid "Be more defensive"
+msgid "+moves defense"
+msgstr "Lebih defensiflah"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:702
+msgid "melee: optional charge"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:727
+msgid "$range|: arcane and +25% damage"
+msgstr ""
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
+msgid " and "
+msgstr " dan"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
+#: data/english.cfg:31
+msgid "arcane"
+msgstr "misterius"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
+#: data/english.cfg:26
+msgid "blade"
+msgstr "senjata tajam"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
+#: src/units/alignment.hpp:10
+msgid "chaotic"
+msgstr "brutal"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
+#: data/english.cfg:30
+msgid "cold"
+msgstr "dingin"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
+#, fuzzy
+#| msgid "Damage"
+msgid "damage"
+msgstr "Luka"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
+#: data/english.cfg:3
+msgid "Easy"
+msgstr "Mudah"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
+msgid "XP to advance"
+msgstr "AP untuk naik level"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
+#: data/english.cfg:29
+msgid "fire"
+msgstr "api"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
+msgid "gold"
+msgstr "emas"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
+#: data/english.cfg:5
+msgid "Hard"
+msgstr "Susah"
+
+#. [label]: id=label-hp
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
+#: data/themes/default.cfg:146
+msgid "HP"
+msgstr "Darah"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
+#: data/english.cfg:28
+msgid "impact"
+msgstr "peremuk"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
+#: src/units/alignment.hpp:8
+#, fuzzy
+#| msgid "female^lawful"
+msgid "lawful"
+msgstr "baik"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:189
+#: data/english.cfg:22
+msgid "melee"
+msgstr "serangan jarak dekat"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:192
+#, fuzzy
+#| msgid "moves"
+msgid "moves"
+msgstr "gerakan"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:195
+#: data/english.cfg:6
+msgid "Nightmare"
+msgstr "Sangat Sulit"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:198
+#: data/english.cfg:27
+msgid "pierce"
+msgstr "tusukan"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:201
+msgid "gender^Random"
+msgstr "Acak"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:204
+#: data/english.cfg:23
+msgid "ranged"
+msgstr "serangan jarak jauh"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:207
+#, fuzzy
+#| msgid " resistance vs "
+msgid " resistance vs "
+msgstr "daya tahan melawan"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:210
+#, fuzzy
+#| msgid "Strikes"
+msgid "strike"
+msgstr "Serangan"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:4
+msgid "World Conquest 1p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:7
+msgid "World Conquest 2p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:10
+msgid "World Conquest 3p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:13
+msgid ""
+"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
+msgid ""
+"A randomly generated cooperative campaign for 2 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
+msgid ""
+"A randomly generated cooperative campaign for 3 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/core/about.cfg:4
@@ -3174,7 +3507,7 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:649
+#: data/core/macros/utils.cfg:652
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -3392,24 +3725,9 @@ msgid "The standard Wesnoth core."
 msgstr "Bantuan Peperangan untuk Wesnoth"
 
 #. [language]
-#: data/english.cfg:3
-msgid "Easy"
-msgstr "Mudah"
-
-#. [language]
 #: data/english.cfg:4
 msgid "Medium"
 msgstr "Sedang"
-
-#. [language]
-#: data/english.cfg:5
-msgid "Hard"
-msgstr "Susah"
-
-#. [language]
-#: data/english.cfg:6
-msgid "Nightmare"
-msgstr "Sangat Sulit"
 
 #. [language]
 #: data/english.cfg:8
@@ -3461,46 +3779,6 @@ msgstr ""
 "\n"
 "Siang: +25% Luka\n"
 "Malam: −25% Luka"
-
-#. [language]
-#: data/english.cfg:22
-msgid "melee"
-msgstr "serangan jarak dekat"
-
-#. [language]
-#: data/english.cfg:23
-msgid "ranged"
-msgstr "serangan jarak jauh"
-
-#. [language]
-#: data/english.cfg:26
-msgid "blade"
-msgstr "senjata tajam"
-
-#. [language]
-#: data/english.cfg:27
-msgid "pierce"
-msgstr "tusukan"
-
-#. [language]
-#: data/english.cfg:28
-msgid "impact"
-msgstr "peremuk"
-
-#. [language]
-#: data/english.cfg:29
-msgid "fire"
-msgstr "api"
-
-#. [language]
-#: data/english.cfg:30
-msgid "cold"
-msgstr "dingin"
-
-#. [language]
-#: data/english.cfg:31
-msgid "arcane"
-msgstr "misterius"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -4155,11 +4433,6 @@ msgstr "Kembali ke giliran"
 #: data/themes/default.cfg:98
 msgid "Actions"
 msgstr "Aksi"
-
-#. [label]: id=label-hp
-#: data/themes/default.cfg:146
-msgid "HP"
-msgstr "Darah"
 
 #. [label]: id=label-xp
 #: data/themes/default.cfg:155
@@ -8174,43 +8447,45 @@ msgstr "z"
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:569
+#. TRANSLATORS: Translate the K in KiB only
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:573
+#: src/serialization/string_utils.cpp:574
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:578
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:592
+#. TRANSLATORS: Translate the i in (for example) KiB only
+#: src/serialization/string_utils.cpp:594
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8298,19 +8573,9 @@ msgstr "Jam"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/alignment.hpp:8
-#, fuzzy
-#| msgid "female^lawful"
-msgid "lawful"
-msgstr "baik"
-
 #: src/units/alignment.hpp:9
 msgid "neutral"
 msgstr "netral"
-
-#: src/units/alignment.hpp:10
-msgid "chaotic"
-msgstr "brutal"
 
 #: src/units/alignment.hpp:11
 msgid "liminal"
@@ -8592,9 +8857,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>(bonus menyelesaikan lebih awal)</small>"
 
-#~ msgid "gold"
-#~ msgstr "emas"
-
 #~ msgid "villages"
 #~ msgstr "desa"
 
@@ -8714,9 +8976,6 @@ msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid "unit help^Name"
 #~ msgstr "Nama"
-
-#~ msgid "Strikes"
-#~ msgstr "Serangan"
 
 #~ msgid "Range"
 #~ msgstr "Jarak"
@@ -8959,9 +9218,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "wfl"
 #~ msgstr "baik"
 
-#~ msgid " and "
-#~ msgstr " dan"
-
 #, fuzzy
 #~| msgid "% accuracy"
 #~ msgid "$percent|% accuracy"
@@ -8999,9 +9255,6 @@ msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid "Leadership"
 #~ msgstr "Kepemimpinan"
-
-#~ msgid " resistance vs "
-#~ msgstr "daya tahan melawan"
 
 #~ msgid " vulnerability vs "
 #~ msgstr "kelemahan melawan"
@@ -9342,9 +9595,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "+"
 #~ msgstr "+"
 
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
 #~ msgid "Game Lobby: "
 #~ msgstr "Lobi Permainan:"
 
@@ -9495,9 +9745,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "Join Game"
 #~ msgstr "Bergabung Permainan "
 
-#~ msgid "Preferences"
-#~ msgstr "Pilihan"
-
 #~ msgid "Apply filter"
 #~ msgstr "Filter:"
 
@@ -9623,14 +9870,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "Campaign"
 #~ msgstr "Model Kampanye"
 
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Scenario"
-#~ msgstr "Akhir Skenario"
-
-#~ msgid "Damage"
-#~ msgstr "Luka"
-
 #~ msgid "Overall"
 #~ msgstr "Keseluruhan"
 
@@ -9685,15 +9924,6 @@ msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid "% parry"
 #~ msgstr "% menangkis"
-
-#, fuzzy
-#~| msgid "moves"
-#~ msgid "move"
-#~ msgid_plural "moves"
-#~ msgstr[0] "gerakan"
-
-#~ msgid "XP to advance"
-#~ msgstr "AP untuk naik level"
 
 #, fuzzy
 #~| msgid "per turn"
@@ -10169,9 +10399,6 @@ msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid "Create Unit (Debug!)"
 #~ msgstr "Ciptakan Unit (Debug!)"
-
-#~ msgid "gender^Random"
-#~ msgstr "Acak"
 
 #~ msgid ""
 #~ "The replay is corrupt/out of sync. It might not make much sense to "
@@ -10742,12 +10969,6 @@ msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid "Test campaign - first scenario (grass)"
 #~ msgstr "Menguji kampanye - skenario pertama (rumput)"
-
-#~ msgid "Players"
-#~ msgstr "Pemain-Pemain"
-
-#~ msgid "Enemies"
-#~ msgstr "Musuh-Musuh"
 
 #~ msgid "Passed test color"
 #~ msgstr "Lulus tes warna"
@@ -14136,9 +14357,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "Serangan ini meracuni sasaran yang hidup. Unit yang diracuni kehilangan 8 "
 #~ "darah setiap giliran sampai ia disembuhkan atau hanya memiliki 1 darah. "
 #~ "Racun tidak bisa, dengan sendiri, membunuh sebuah unit."
-
-#~ msgid "Max HP bonus +3, Max XP +20%"
-#~ msgstr "Bonus darah maks +3, AP maks +20%"
 
 #~ msgid "Deep Underground"
 #~ msgstr "Dalam Bawah Tanah"

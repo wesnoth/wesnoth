@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 05:29-0400\n"
+"POT-Creation-Date: 2020-08-22 00:14-0400\n"
 "PO-Revision-Date: 2020-02-03 08:47-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -325,7 +325,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
 msgid "poisoned"
 msgstr "envenenado"
@@ -352,6 +352,514 @@ msgstr "Ouro Transferido:"
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "Notas:"
+
+#
+# File: src/reports.cpp, line: 705
+# File: src/reports.cpp, line: 705
+# File: src/reports.cpp, line: 705
+#. [advancement]: id=amla_default
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+#, fuzzy
+#| msgid "Max swarm bonus: "
+msgid "Max HP bonus +6%"
+msgstr "Bônus máximo de enxame: "
+
+#. [lua]: wc_ii_generate_scenario
+#. [lua]: wct_store_possible_encampment_ford
+#: data/campaigns/World_Conquest/lua/map/main.lua:138
+#: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:144
+msgid "Start"
+msgstr ""
+
+#
+# File: src/statistics_dialog.cpp, line: 225
+# File: src/statistics_dialog.cpp, line: 303
+# File: src/statistics_dialog.cpp, line: 225
+# File: src/statistics_dialog.cpp, line: 303
+# File: src/statistics_dialog.cpp, line: 225
+# File: src/statistics_dialog.cpp, line: 303
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:140
+#, fuzzy
+msgid "Scenario"
+msgstr "Terminar o Cenário"
+
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:142
+msgid "Final Battle"
+msgstr ""
+
+#. [lua]: wct_map_2a_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2A_Springs.lua:182
+msgid "water^Springs"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_decoration_2c
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2C_Glaciers.lua:206
+msgid "Glaciers"
+msgstr ""
+
+#
+# File: src/multiplayer_lobby.cpp, line: 785
+# File: src/multiplayer_lobby.cpp, line: 785
+# File: src/multiplayer_lobby.cpp, line: 785
+#. [lua]: wct_map_2d_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2D_Provinces.lua:164
+#, fuzzy
+#| msgid "Preferences"
+msgid "Provinces"
+msgstr "Preferências"
+
+#. [lua]: wct_map_2f_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2F_Clayey.lua:126
+msgid "Clayey"
+msgstr ""
+
+#. [lua]: wct_map_3c_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:395
+msgid "river^Delta"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_repaint_3d
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3D_Sulfurous.lua:61
+msgid "Sulfurous"
+msgstr ""
+
+#. [lua]: wct_map_3e_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3E_Coral.lua:78
+msgid "made of^Coral"
+msgstr ""
+
+#
+# File: src/multiplayer_connect.cpp, line: 101
+# File: src/multiplayer_connect.cpp, line: 450
+# File: src/multiplayer_connect.cpp, line: 598
+# File: src/multiplayer_connect.cpp, line: 101
+# File: src/multiplayer_connect.cpp, line: 450
+# File: src/multiplayer_connect.cpp, line: 598
+# File: src/multiplayer_connect.cpp, line: 101
+# File: src/multiplayer_connect.cpp, line: 450
+# File: src/multiplayer_connect.cpp, line: 598
+#. [lua]: wct_map_4a_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4A_Thermal.lua:199
+#, fuzzy
+#| msgid "Normal"
+msgid "Thermal"
+msgstr "Normal"
+
+#. [lua]: world_conquest_tek_map_repaint_4b
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4B_Volcanic.lua:414
+msgid "Volcanic"
+msgstr ""
+
+#. [lua]: wct_map_4d_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4D_Podzol.lua:134
+msgid "Podzol"
+msgstr ""
+
+#. [lua]: wct_map_4e_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4E_Wicked.lua:643
+msgid "Wicked"
+msgstr ""
+
+#. [lua]: wild_store_roads_in_cave_zone
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4F_Wild.lua:266
+msgid "Wild"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_repaint_6d
+#: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:472
+msgid "Feudal"
+msgstr ""
+
+#
+# File: src/terrain.cpp, line: 168
+# File: src/terrain.cpp, line: 168
+# File: src/terrain.cpp, line: 168
+#. [lua]: add_enemy_side
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
+#, fuzzy
+#| msgid "Enemy village"
+msgid "Enemies"
+msgstr "Aldeia Inimiga"
+
+#. [lua]: add_player_side
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
+msgid "Allies"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:305
+msgid "$range|: $special|"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:519
+msgid "+$boost| moves"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:533
+msgid "$range|: +$boost| damage"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:549
+msgid "$range|: +1 damage per level"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:565
+msgid "+$hitpoints| hitpoints"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:580
+msgid "+$hitpoints| hitpoints per level"
+msgstr ""
+
+#
+# File: src/unit.cpp, line: 2470
+# File: src/unit.cpp, line: 2622
+# File: src/unit.cpp, line: 2470
+# File: src/unit.cpp, line: 2622
+# File: src/unit.cpp, line: 2470
+# File: src/unit.cpp, line: 2622
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:596
+#, fuzzy
+#| msgid "XP to advance"
+msgid "$value| XP to advance"
+msgstr "XP para avançar"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:620
+msgid "Village/Castle: +5 defense"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:652
+msgid ""
+"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:681
+msgid "$terrain|: +10 defense and full movement"
+msgstr ""
+
+#
+# File: data/core/macros/ai_controller.cfg, line: 59
+# File: data/core/macros/ai_controller.cfg, line: 59
+# File: data/core/macros/ai_controller.cfg, line: 59
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:692
+#, fuzzy
+#| msgid "Be more defensive"
+msgid "+moves defense"
+msgstr "Seja mais defensivo"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:702
+msgid "melee: optional charge"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:727
+msgid "$range|: arcane and +25% damage"
+msgstr ""
+
+#
+# File: src/unit.cpp, line: 2368
+# File: src/unit.cpp, line: 2598
+# File: src/unit.cpp, line: 2679
+# File: src/unit.cpp, line: 2368
+# File: src/unit.cpp, line: 2598
+# File: src/unit.cpp, line: 2679
+# File: src/unit.cpp, line: 2368
+# File: src/unit.cpp, line: 2598
+# File: src/unit.cpp, line: 2679
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
+msgid " and "
+msgstr " e "
+
+#
+# File: data/english.cfg, line: 52
+# File: data/english.cfg, line: 52
+# File: data/english.cfg, line: 52
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
+#: data/english.cfg:31
+msgid "arcane"
+msgstr "arcano"
+
+#
+# File: data/english.cfg, line: 47
+# File: data/english.cfg, line: 47
+# File: data/english.cfg, line: 47
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
+#: data/english.cfg:26
+msgid "blade"
+msgstr "cortante"
+
+#
+# File: src/unit_types.cpp, line: 818
+# File: src/unit_types.cpp, line: 818
+# File: src/unit_types.cpp, line: 818
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
+#: src/units/alignment.hpp:10
+msgid "chaotic"
+msgstr "caótico"
+
+#
+# File: data/english.cfg, line: 51
+# File: data/english.cfg, line: 51
+# File: data/english.cfg, line: 51
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
+#: data/english.cfg:30
+msgid "cold"
+msgstr "frio"
+
+#
+# File: src/statistics_dialog.cpp, line: 283
+# File: src/statistics_dialog.cpp, line: 283
+# File: src/statistics_dialog.cpp, line: 283
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
+#, fuzzy
+#| msgid "Damage"
+msgid "damage"
+msgstr "Dano"
+
+#
+# File: data/english.cfg, line: 3
+# File: data/english.cfg, line: 3
+# File: data/english.cfg, line: 3
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
+#: data/english.cfg:3
+msgid "Easy"
+msgstr "Fácil"
+
+#
+# File: src/unit.cpp, line: 2470
+# File: src/unit.cpp, line: 2622
+# File: src/unit.cpp, line: 2470
+# File: src/unit.cpp, line: 2622
+# File: src/unit.cpp, line: 2470
+# File: src/unit.cpp, line: 2622
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
+msgid "XP to advance"
+msgstr "XP para avançar"
+
+#
+# File: data/english.cfg, line: 50
+# File: data/english.cfg, line: 50
+# File: data/english.cfg, line: 50
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
+#: data/english.cfg:29
+msgid "fire"
+msgstr "fogo"
+
+#
+# File: data/themes/default.cfg, line: 224
+# File: data/themes/dfool.cfg, line: 258
+# File: data/themes/experimental.cfg, line: 197
+# File: data/themes/widescreen.cfg, line: 276
+# File: data/themes/default.cfg, line: 217
+# File: data/themes/dfool.cfg, line: 258
+# File: data/themes/experimental.cfg, line: 197
+# File: data/themes/widescreen.cfg, line: 276
+# File: data/themes/default.cfg, line: 217
+# File: data/themes/dfool.cfg, line: 258
+# File: data/themes/experimental.cfg, line: 197
+# File: data/themes/widescreen.cfg, line: 276
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
+msgid "gold"
+msgstr "ouro"
+
+#
+# File: data/english.cfg, line: 5
+# File: data/english.cfg, line: 5
+# File: data/english.cfg, line: 5
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
+#: data/english.cfg:5
+msgid "Hard"
+msgstr "Difícil"
+
+#
+# File: data/themes/default.cfg, line: 205
+# File: data/themes/dfool.cfg, line: 229
+# File: data/themes/experimental.cfg, line: 179
+# File: data/themes/widescreen.cfg, line: 237
+# File: data/themes/widescreen.cfg, line: 257
+# File: src/dialogs.cpp, line: 325
+# File: src/unit.cpp, line: 2409
+# File: src/unit.cpp, line: 2609
+# File: data/themes/default.cfg, line: 198
+# File: data/themes/dfool.cfg, line: 229
+# File: data/themes/experimental.cfg, line: 179
+# File: data/themes/widescreen.cfg, line: 237
+# File: data/themes/widescreen.cfg, line: 257
+# File: src/dialogs.cpp, line: 325
+# File: src/unit.cpp, line: 2409
+# File: src/unit.cpp, line: 2609
+# File: data/themes/default.cfg, line: 198
+# File: data/themes/dfool.cfg, line: 229
+# File: data/themes/experimental.cfg, line: 179
+# File: data/themes/widescreen.cfg, line: 237
+# File: data/themes/widescreen.cfg, line: 257
+# File: src/dialogs.cpp, line: 325
+# File: src/unit.cpp, line: 2409
+# File: src/unit.cpp, line: 2609
+#. [label]: id=label-hp
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
+#: data/themes/default.cfg:146
+msgid "HP"
+msgstr "HP"
+
+#
+# File: data/english.cfg, line: 49
+# File: data/english.cfg, line: 49
+# File: data/english.cfg, line: 49
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
+#: data/english.cfg:28
+msgid "impact"
+msgstr "impacto"
+
+#
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
+#: src/units/alignment.hpp:8
+msgid "lawful"
+msgstr "ordeiro"
+
+#
+# File: data/english.cfg, line: 43
+# File: data/english.cfg, line: 43
+# File: data/english.cfg, line: 43
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:189
+#: data/english.cfg:22
+msgid "melee"
+msgstr "corpo a corpo"
+
+#
+# File: src/unit.cpp, line: 2440
+# File: src/unit.cpp, line: 2440
+# File: src/unit.cpp, line: 2440
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:192
+#, fuzzy
+msgid "moves"
+msgstr "Movimento"
+
+#
+# File: data/english.cfg, line: 6
+# File: data/english.cfg, line: 6
+# File: data/english.cfg, line: 6
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:195
+#: data/english.cfg:6
+msgid "Nightmare"
+msgstr "Pesadelo"
+
+#
+# File: data/english.cfg, line: 48
+# File: data/english.cfg, line: 48
+# File: data/english.cfg, line: 48
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:198
+#: data/english.cfg:27
+msgid "pierce"
+msgstr "perfurante"
+
+#
+# File: src/leader_list.cpp, line: 141
+# File: src/menu_events.cpp, line: 988
+# File: src/multiplayer_connect.cpp, line: 225
+# File: src/multiplayer_connect.cpp, line: 269
+# File: src/leader_list.cpp, line: 141
+# File: src/menu_events.cpp, line: 988
+# File: src/multiplayer_connect.cpp, line: 225
+# File: src/multiplayer_connect.cpp, line: 269
+# File: src/leader_list.cpp, line: 141
+# File: src/menu_events.cpp, line: 988
+# File: src/multiplayer_connect.cpp, line: 225
+# File: src/multiplayer_connect.cpp, line: 269
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:201
+msgid "gender^Random"
+msgstr "Aleatório"
+
+#
+# File: data/english.cfg, line: 44
+# File: data/english.cfg, line: 44
+# File: data/english.cfg, line: 44
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:204
+#: data/english.cfg:23
+msgid "ranged"
+msgstr "longa distância"
+
+#
+# File: src/attack_prediction_display.cpp, line: 237
+# File: src/attack_prediction_display.cpp, line: 237
+# File: src/attack_prediction_display.cpp, line: 237
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:207
+#, fuzzy
+#| msgid " resistance vs "
+msgid " resistance vs "
+msgstr "resistência contra "
+
+#
+# File: src/unit_types.cpp, line: 250
+# File: src/unit_types.cpp, line: 327
+# File: src/unit_types.cpp, line: 250
+# File: src/unit_types.cpp, line: 327
+# File: src/unit_types.cpp, line: 250
+# File: src/unit_types.cpp, line: 327
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:210
+#, fuzzy
+#| msgid "Strikes"
+msgid "strike"
+msgstr "Golpes"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:4
+msgid "World Conquest 1p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:7
+msgid "World Conquest 2p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:10
+msgid "World Conquest 3p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:13
+msgid ""
+"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
+msgid ""
+"A randomly generated cooperative campaign for 2 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
+msgid ""
+"A randomly generated cooperative campaign for 3 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
 
 #
 # File: data/core/about.cfg, line: 7
@@ -4270,7 +4778,7 @@ msgstr "O Peso da Vingança"
 # File: data/core/macros/utils.cfg, line: 784
 # File: data/core/macros/utils.cfg, line: 784
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:649
+#: data/core/macros/utils.cfg:652
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Você recuperou $amount_gold peças de ouro."
 
@@ -4586,15 +5094,6 @@ msgid "The standard Wesnoth core."
 msgstr "O core padrão do Wesnoth."
 
 #
-# File: data/english.cfg, line: 3
-# File: data/english.cfg, line: 3
-# File: data/english.cfg, line: 3
-#. [language]
-#: data/english.cfg:3
-msgid "Easy"
-msgstr "Fácil"
-
-#
 # File: data/english.cfg, line: 4
 # File: data/english.cfg, line: 4
 # File: data/english.cfg, line: 4
@@ -4602,24 +5101,6 @@ msgstr "Fácil"
 #: data/english.cfg:4
 msgid "Medium"
 msgstr "Médio"
-
-#
-# File: data/english.cfg, line: 5
-# File: data/english.cfg, line: 5
-# File: data/english.cfg, line: 5
-#. [language]
-#: data/english.cfg:5
-msgid "Hard"
-msgstr "Difícil"
-
-#
-# File: data/english.cfg, line: 6
-# File: data/english.cfg, line: 6
-# File: data/english.cfg, line: 6
-#. [language]
-#: data/english.cfg:6
-msgid "Nightmare"
-msgstr "Pesadelo"
 
 #
 # File: data/english.cfg, line: 8
@@ -4682,78 +5163,6 @@ msgstr ""
 "Unidades Liminares lutam melhor nos períodos de transição.\n"
 "\n"
 "Crepúsculo: +25% do dano"
-
-#
-# File: data/english.cfg, line: 43
-# File: data/english.cfg, line: 43
-# File: data/english.cfg, line: 43
-#. [language]
-#: data/english.cfg:22
-msgid "melee"
-msgstr "corpo a corpo"
-
-#
-# File: data/english.cfg, line: 44
-# File: data/english.cfg, line: 44
-# File: data/english.cfg, line: 44
-#. [language]
-#: data/english.cfg:23
-msgid "ranged"
-msgstr "longa distância"
-
-#
-# File: data/english.cfg, line: 47
-# File: data/english.cfg, line: 47
-# File: data/english.cfg, line: 47
-#. [language]
-#: data/english.cfg:26
-msgid "blade"
-msgstr "cortante"
-
-#
-# File: data/english.cfg, line: 48
-# File: data/english.cfg, line: 48
-# File: data/english.cfg, line: 48
-#. [language]
-#: data/english.cfg:27
-msgid "pierce"
-msgstr "perfurante"
-
-#
-# File: data/english.cfg, line: 49
-# File: data/english.cfg, line: 49
-# File: data/english.cfg, line: 49
-#. [language]
-#: data/english.cfg:28
-msgid "impact"
-msgstr "impacto"
-
-#
-# File: data/english.cfg, line: 50
-# File: data/english.cfg, line: 50
-# File: data/english.cfg, line: 50
-#. [language]
-#: data/english.cfg:29
-msgid "fire"
-msgstr "fogo"
-
-#
-# File: data/english.cfg, line: 51
-# File: data/english.cfg, line: 51
-# File: data/english.cfg, line: 51
-#. [language]
-#: data/english.cfg:30
-msgid "cold"
-msgstr "frio"
-
-#
-# File: data/english.cfg, line: 52
-# File: data/english.cfg, line: 52
-# File: data/english.cfg, line: 52
-#. [language]
-#: data/english.cfg:31
-msgid "arcane"
-msgstr "arcano"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -5725,36 +6134,6 @@ msgstr "Voltar para..."
 #: data/themes/default.cfg:98
 msgid "Actions"
 msgstr "Ações"
-
-#
-# File: data/themes/default.cfg, line: 205
-# File: data/themes/dfool.cfg, line: 229
-# File: data/themes/experimental.cfg, line: 179
-# File: data/themes/widescreen.cfg, line: 237
-# File: data/themes/widescreen.cfg, line: 257
-# File: src/dialogs.cpp, line: 325
-# File: src/unit.cpp, line: 2409
-# File: src/unit.cpp, line: 2609
-# File: data/themes/default.cfg, line: 198
-# File: data/themes/dfool.cfg, line: 229
-# File: data/themes/experimental.cfg, line: 179
-# File: data/themes/widescreen.cfg, line: 237
-# File: data/themes/widescreen.cfg, line: 257
-# File: src/dialogs.cpp, line: 325
-# File: src/unit.cpp, line: 2409
-# File: src/unit.cpp, line: 2609
-# File: data/themes/default.cfg, line: 198
-# File: data/themes/dfool.cfg, line: 229
-# File: data/themes/experimental.cfg, line: 179
-# File: data/themes/widescreen.cfg, line: 237
-# File: data/themes/widescreen.cfg, line: 257
-# File: src/dialogs.cpp, line: 325
-# File: src/unit.cpp, line: 2409
-# File: src/unit.cpp, line: 2609
-#. [label]: id=label-hp
-#: data/themes/default.cfg:146
-msgid "HP"
-msgstr "HP"
 
 #
 # File: data/themes/default.cfg, line: 214
@@ -12635,7 +13014,8 @@ msgstr "y"
 # File: src/serialization/string_utils.cpp, line: 503
 # File: src/serialization/string_utils.cpp, line: 539
 # File: src/serialization/string_utils.cpp, line: 539
-#: src/serialization/string_utils.cpp:569
+#. TRANSLATORS: Translate the K in KiB only
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_kibi^K"
 msgstr "K"
 
@@ -12643,7 +13023,7 @@ msgstr "K"
 # File: src/serialization/string_utils.cpp, line: 504
 # File: src/serialization/string_utils.cpp, line: 540
 # File: src/serialization/string_utils.cpp, line: 540
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_kilo^k"
 msgstr "k"
 
@@ -12651,7 +13031,7 @@ msgstr "k"
 # File: src/serialization/string_utils.cpp, line: 506
 # File: src/serialization/string_utils.cpp, line: 542
 # File: src/serialization/string_utils.cpp, line: 542
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_mega^M"
 msgstr "M"
 
@@ -12659,7 +13039,7 @@ msgstr "M"
 # File: src/serialization/string_utils.cpp, line: 507
 # File: src/serialization/string_utils.cpp, line: 543
 # File: src/serialization/string_utils.cpp, line: 543
-#: src/serialization/string_utils.cpp:573
+#: src/serialization/string_utils.cpp:574
 msgid "prefix_giga^G"
 msgstr "G"
 
@@ -12667,7 +13047,7 @@ msgstr "G"
 # File: src/serialization/string_utils.cpp, line: 508
 # File: src/serialization/string_utils.cpp, line: 544
 # File: src/serialization/string_utils.cpp, line: 544
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_tera^T"
 msgstr "T"
 
@@ -12675,7 +13055,7 @@ msgstr "T"
 # File: src/serialization/string_utils.cpp, line: 509
 # File: src/serialization/string_utils.cpp, line: 545
 # File: src/serialization/string_utils.cpp, line: 545
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_peta^P"
 msgstr "P"
 
@@ -12683,7 +13063,7 @@ msgstr "P"
 # File: src/serialization/string_utils.cpp, line: 510
 # File: src/serialization/string_utils.cpp, line: 546
 # File: src/serialization/string_utils.cpp, line: 546
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_exa^E"
 msgstr "E"
 
@@ -12691,7 +13071,7 @@ msgstr "E"
 # File: src/serialization/string_utils.cpp, line: 511
 # File: src/serialization/string_utils.cpp, line: 547
 # File: src/serialization/string_utils.cpp, line: 547
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:578
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
@@ -12699,7 +13079,7 @@ msgstr "Z"
 # File: src/serialization/string_utils.cpp, line: 512
 # File: src/serialization/string_utils.cpp, line: 548
 # File: src/serialization/string_utils.cpp, line: 548
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
@@ -12707,7 +13087,8 @@ msgstr "Y"
 # File: src/serialization/string_utils.cpp, line: 526
 # File: src/serialization/string_utils.cpp, line: 562
 # File: src/serialization/string_utils.cpp, line: 562
-#: src/serialization/string_utils.cpp:592
+#. TRANSLATORS: Translate the i in (for example) KiB only
+#: src/serialization/string_utils.cpp:594
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -12826,28 +13207,12 @@ msgid "This Time of Day is only a Stub!"
 msgstr "Este Período do Dia é só um Exemplo!"
 
 #
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-#: src/units/alignment.hpp:8
-msgid "lawful"
-msgstr "ordeiro"
-
-#
 # File: src/unit_types.cpp, line: 818
 # File: src/unit_types.cpp, line: 818
 # File: src/unit_types.cpp, line: 818
 #: src/units/alignment.hpp:9
 msgid "neutral"
 msgstr "neutro"
-
-#
-# File: src/unit_types.cpp, line: 818
-# File: src/unit_types.cpp, line: 818
-# File: src/unit_types.cpp, line: 818
-#: src/units/alignment.hpp:10
-msgid "chaotic"
-msgstr "caótico"
 
 #
 # File: src/unit_types.cpp, line: 818
@@ -13626,16 +13991,6 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "Tipo"
 
 #
-# File: src/unit_types.cpp, line: 250
-# File: src/unit_types.cpp, line: 327
-# File: src/unit_types.cpp, line: 250
-# File: src/unit_types.cpp, line: 327
-# File: src/unit_types.cpp, line: 250
-# File: src/unit_types.cpp, line: 327
-#~ msgid "Strikes"
-#~ msgstr "Golpes"
-
-#
 # File: data/core/team-colors.cfg, line: 62
 # File: data/core/team-colors.cfg, line: 107
 # File: data/core/team-colors.cfg, line: 62
@@ -13732,22 +14087,6 @@ msgstr "Opções do Quadro-Branco"
 
 #~ msgid "The classic, pre-1.12 theme"
 #~ msgstr "O tema clássico pre-1.12"
-
-#
-# File: data/themes/default.cfg, line: 224
-# File: data/themes/dfool.cfg, line: 258
-# File: data/themes/experimental.cfg, line: 197
-# File: data/themes/widescreen.cfg, line: 276
-# File: data/themes/default.cfg, line: 217
-# File: data/themes/dfool.cfg, line: 258
-# File: data/themes/experimental.cfg, line: 197
-# File: data/themes/widescreen.cfg, line: 276
-# File: data/themes/default.cfg, line: 217
-# File: data/themes/dfool.cfg, line: 258
-# File: data/themes/experimental.cfg, line: 197
-# File: data/themes/widescreen.cfg, line: 276
-#~ msgid "gold"
-#~ msgstr "ouro"
 
 #
 # File: data/themes/default.cfg, line: 233
@@ -14139,19 +14478,6 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "ordeiro"
 
 #
-# File: src/unit.cpp, line: 2368
-# File: src/unit.cpp, line: 2598
-# File: src/unit.cpp, line: 2679
-# File: src/unit.cpp, line: 2368
-# File: src/unit.cpp, line: 2598
-# File: src/unit.cpp, line: 2679
-# File: src/unit.cpp, line: 2368
-# File: src/unit.cpp, line: 2598
-# File: src/unit.cpp, line: 2679
-#~ msgid " and "
-#~ msgstr " e "
-
-#
 # File: src/unit_types.cpp, line: 262
 # File: src/unit_types.cpp, line: 262
 # File: src/unit_types.cpp, line: 262
@@ -14218,13 +14544,6 @@ msgstr "Opções do Quadro-Branco"
 # File: src/attack_prediction_display.cpp, line: 214
 #~ msgid "Time of day"
 #~ msgstr "Período do dia"
-
-#
-# File: src/attack_prediction_display.cpp, line: 237
-# File: src/attack_prediction_display.cpp, line: 237
-# File: src/attack_prediction_display.cpp, line: 237
-#~ msgid " resistance vs "
-#~ msgstr "resistência contra "
 
 #
 # File: src/attack_prediction_display.cpp, line: 238
@@ -14956,19 +15275,6 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "+"
 
 #
-# File: src/multiplayer_connect.cpp, line: 101
-# File: src/multiplayer_connect.cpp, line: 450
-# File: src/multiplayer_connect.cpp, line: 598
-# File: src/multiplayer_connect.cpp, line: 101
-# File: src/multiplayer_connect.cpp, line: 450
-# File: src/multiplayer_connect.cpp, line: 598
-# File: src/multiplayer_connect.cpp, line: 101
-# File: src/multiplayer_connect.cpp, line: 450
-# File: src/multiplayer_connect.cpp, line: 598
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
-#
 # File: src/multiplayer_connect.cpp, line: 1044
 # File: src/multiplayer_connect.cpp, line: 1044
 # File: src/multiplayer_connect.cpp, line: 1044
@@ -15304,13 +15610,6 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "Entrar no jogo"
 
 #
-# File: src/multiplayer_lobby.cpp, line: 785
-# File: src/multiplayer_lobby.cpp, line: 785
-# File: src/multiplayer_lobby.cpp, line: 785
-#~ msgid "Preferences"
-#~ msgstr "Preferências"
-
-#
 # File: src/multiplayer_lobby.cpp, line: 787
 # File: src/multiplayer_lobby.cpp, line: 787
 # File: src/multiplayer_lobby.cpp, line: 787
@@ -15583,24 +15882,6 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "Designer de Campanha"
 
 #
-# File: src/statistics_dialog.cpp, line: 225
-# File: src/statistics_dialog.cpp, line: 303
-# File: src/statistics_dialog.cpp, line: 225
-# File: src/statistics_dialog.cpp, line: 303
-# File: src/statistics_dialog.cpp, line: 225
-# File: src/statistics_dialog.cpp, line: 303
-#, fuzzy
-#~ msgid "Scenario"
-#~ msgstr "Terminar o Cenário"
-
-#
-# File: src/statistics_dialog.cpp, line: 283
-# File: src/statistics_dialog.cpp, line: 283
-# File: src/statistics_dialog.cpp, line: 283
-#~ msgid "Damage"
-#~ msgstr "Dano"
-
-#
 # File: src/statistics_dialog.cpp, line: 284
 # File: src/statistics_dialog.cpp, line: 284
 # File: src/statistics_dialog.cpp, line: 284
@@ -15709,26 +15990,6 @@ msgstr "Opções do Quadro-Branco"
 # File: src/unit_types.cpp, line: 273
 #~ msgid "% parry"
 #~ msgstr "% defesa"
-
-#
-# File: src/unit.cpp, line: 2440
-# File: src/unit.cpp, line: 2440
-# File: src/unit.cpp, line: 2440
-#, fuzzy
-#~ msgid "move"
-#~ msgid_plural "moves"
-#~ msgstr[0] "Movimento"
-#~ msgstr[1] "Movimento"
-
-#
-# File: src/unit.cpp, line: 2470
-# File: src/unit.cpp, line: 2622
-# File: src/unit.cpp, line: 2470
-# File: src/unit.cpp, line: 2622
-# File: src/unit.cpp, line: 2470
-# File: src/unit.cpp, line: 2622
-#~ msgid "XP to advance"
-#~ msgstr "XP para avançar"
 
 #
 # File: src/playsingle_controller.cpp, line: 274
@@ -16768,22 +17029,6 @@ msgstr "Opções do Quadro-Branco"
 # File: src/menu_events.cpp, line: 985
 #~ msgid "Create Unit (Debug!)"
 #~ msgstr "Criar Unidade (Debug!)"
-
-#
-# File: src/leader_list.cpp, line: 141
-# File: src/menu_events.cpp, line: 988
-# File: src/multiplayer_connect.cpp, line: 225
-# File: src/multiplayer_connect.cpp, line: 269
-# File: src/leader_list.cpp, line: 141
-# File: src/menu_events.cpp, line: 988
-# File: src/multiplayer_connect.cpp, line: 225
-# File: src/multiplayer_connect.cpp, line: 269
-# File: src/leader_list.cpp, line: 141
-# File: src/menu_events.cpp, line: 988
-# File: src/multiplayer_connect.cpp, line: 225
-# File: src/multiplayer_connect.cpp, line: 269
-#~ msgid "gender^Random"
-#~ msgstr "Aleatório"
 
 #
 # File: src/replay_controller.cpp, line: 333

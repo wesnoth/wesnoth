@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 05:29-0400\n"
+"POT-Creation-Date: 2020-08-22 00:14-0400\n"
 "PO-Revision-Date: 2014-06-05 22:13+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -229,7 +229,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
 msgid "poisoned"
 msgstr "bị nhiễm độc"
@@ -248,6 +248,338 @@ msgstr "Lượng vàng mang theo:"
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "Lưu ý:"
+
+#. [advancement]: id=amla_default
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+#, fuzzy
+#| msgid "Max swarm bonus: "
+msgid "Max HP bonus +6%"
+msgstr "Thưởng liên hoàn tối đa: "
+
+#. [lua]: wc_ii_generate_scenario
+#. [lua]: wct_store_possible_encampment_ford
+#: data/campaigns/World_Conquest/lua/map/main.lua:138
+#: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:144
+msgid "Start"
+msgstr ""
+
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:140
+msgid "Scenario"
+msgstr "Màn chơi"
+
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:142
+msgid "Final Battle"
+msgstr ""
+
+#. [lua]: wct_map_2a_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2A_Springs.lua:182
+msgid "water^Springs"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_decoration_2c
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2C_Glaciers.lua:206
+msgid "Glaciers"
+msgstr ""
+
+#. [lua]: wct_map_2d_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2D_Provinces.lua:164
+#, fuzzy
+#| msgid "Preferences"
+msgid "Provinces"
+msgstr "Tùy thích"
+
+#. [lua]: wct_map_2f_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2F_Clayey.lua:126
+msgid "Clayey"
+msgstr ""
+
+#. [lua]: wct_map_3c_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:395
+msgid "river^Delta"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_repaint_3d
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3D_Sulfurous.lua:61
+msgid "Sulfurous"
+msgstr ""
+
+#. [lua]: wct_map_3e_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3E_Coral.lua:78
+msgid "made of^Coral"
+msgstr ""
+
+#. [lua]: wct_map_4a_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4A_Thermal.lua:199
+#, fuzzy
+#| msgid "Normal"
+msgid "Thermal"
+msgstr "Bình thường"
+
+#. [lua]: world_conquest_tek_map_repaint_4b
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4B_Volcanic.lua:414
+msgid "Volcanic"
+msgstr ""
+
+#. [lua]: wct_map_4d_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4D_Podzol.lua:134
+msgid "Podzol"
+msgstr ""
+
+#. [lua]: wct_map_4e_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4E_Wicked.lua:643
+msgid "Wicked"
+msgstr ""
+
+#. [lua]: wild_store_roads_in_cave_zone
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4F_Wild.lua:266
+msgid "Wild"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_repaint_6d
+#: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:472
+msgid "Feudal"
+msgstr ""
+
+#. [lua]: add_enemy_side
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
+#, fuzzy
+#| msgid "Enemy village"
+msgid "Enemies"
+msgstr "Làng của kẻ thù"
+
+#. [lua]: add_player_side
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
+msgid "Allies"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:305
+msgid "$range|: $special|"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:519
+msgid "+$boost| moves"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:533
+msgid "$range|: +$boost| damage"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:549
+msgid "$range|: +1 damage per level"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:565
+msgid "+$hitpoints| hitpoints"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:580
+msgid "+$hitpoints| hitpoints per level"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:596
+#, fuzzy
+#| msgid "XP to advance"
+msgid "$value| XP to advance"
+msgstr "KN để nâng cấp"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:620
+msgid "Village/Castle: +5 defense"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:652
+msgid ""
+"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:681
+msgid "$terrain|: +10 defense and full movement"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:692
+#, fuzzy
+#| msgid "Be more defensive"
+msgid "+moves defense"
+msgstr "Giữ thế phòng thủ"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:702
+msgid "melee: optional charge"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:727
+msgid "$range|: arcane and +25% damage"
+msgstr ""
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
+msgid " and "
+msgstr " và "
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
+#: data/english.cfg:31
+msgid "arcane"
+msgstr "bí kíp"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
+#: data/english.cfg:26
+msgid "blade"
+msgstr "chém"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
+#: src/units/alignment.hpp:10
+msgid "chaotic"
+msgstr "hỗn độn"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
+#: data/english.cfg:30
+msgid "cold"
+msgstr "lạnh"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
+#, fuzzy
+#| msgid "Damage"
+msgid "damage"
+msgstr "Lượng thiệt hại"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
+#: data/english.cfg:3
+msgid "Easy"
+msgstr "Dễ"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
+msgid "XP to advance"
+msgstr "KN để nâng cấp"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
+#: data/english.cfg:29
+msgid "fire"
+msgstr "lửa"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
+msgid "gold"
+msgstr "vàng"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
+#: data/english.cfg:5
+msgid "Hard"
+msgstr "Khó"
+
+#. [label]: id=label-hp
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
+#: data/themes/default.cfg:146
+msgid "HP"
+msgstr "Máu"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
+#: data/english.cfg:28
+msgid "impact"
+msgstr "va đập"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
+#: src/units/alignment.hpp:8
+#, fuzzy
+#| msgid "female^lawful"
+msgid "lawful"
+msgstr "chính thống"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:189
+#: data/english.cfg:22
+msgid "melee"
+msgstr "cận chiến"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:192
+#, fuzzy
+#| msgid "moves"
+msgid "moves"
+msgstr "di chuyển"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:195
+#: data/english.cfg:6
+msgid "Nightmare"
+msgstr "Ác mộng"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:198
+#: data/english.cfg:27
+msgid "pierce"
+msgstr "đâm"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:201
+msgid "gender^Random"
+msgstr "Ngẫu nhiên"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:204
+#: data/english.cfg:23
+msgid "ranged"
+msgstr "từ xa"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:207
+#, fuzzy
+#| msgid " resistance vs "
+msgid " resistance vs "
+msgstr " kháng cự lại "
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:210
+#, fuzzy
+#| msgid "strike"
+#| msgid_plural "strikes"
+msgid "strike"
+msgstr "số đòn đánh"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:4
+msgid "World Conquest 1p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:7
+msgid "World Conquest 2p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:10
+msgid "World Conquest 3p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:13
+msgid ""
+"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
+msgid ""
+"A randomly generated cooperative campaign for 2 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
+msgid ""
+"A randomly generated cooperative campaign for 3 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/core/about.cfg:4
@@ -3127,7 +3459,7 @@ msgid "Weight of Revenge"
 msgstr "Cam sáng"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:649
+#: data/core/macros/utils.cfg:652
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Bạn nhận được $amount_gold lượng vàng."
 
@@ -3332,24 +3664,9 @@ msgid "The standard Wesnoth core."
 msgstr ""
 
 #. [language]
-#: data/english.cfg:3
-msgid "Easy"
-msgstr "Dễ"
-
-#. [language]
 #: data/english.cfg:4
 msgid "Medium"
 msgstr "Trung bình"
-
-#. [language]
-#: data/english.cfg:5
-msgid "Hard"
-msgstr "Khó"
-
-#. [language]
-#: data/english.cfg:6
-msgid "Nightmare"
-msgstr "Ác mộng"
 
 #. [language]
 #: data/english.cfg:8
@@ -3405,46 +3722,6 @@ msgstr ""
 "\n"
 "Ngày: Lượng thiệt hại +25%\n"
 "Đêm: Lượng thiệt hại −25%"
-
-#. [language]
-#: data/english.cfg:22
-msgid "melee"
-msgstr "cận chiến"
-
-#. [language]
-#: data/english.cfg:23
-msgid "ranged"
-msgstr "từ xa"
-
-#. [language]
-#: data/english.cfg:26
-msgid "blade"
-msgstr "chém"
-
-#. [language]
-#: data/english.cfg:27
-msgid "pierce"
-msgstr "đâm"
-
-#. [language]
-#: data/english.cfg:28
-msgid "impact"
-msgstr "va đập"
-
-#. [language]
-#: data/english.cfg:29
-msgid "fire"
-msgstr "lửa"
-
-#. [language]
-#: data/english.cfg:30
-msgid "cold"
-msgstr "lạnh"
-
-#. [language]
-#: data/english.cfg:31
-msgid "arcane"
-msgstr "bí kíp"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -4051,11 +4328,6 @@ msgstr "Trở lại..."
 #: data/themes/default.cfg:98
 msgid "Actions"
 msgstr "Hành động"
-
-#. [label]: id=label-hp
-#: data/themes/default.cfg:146
-msgid "HP"
-msgstr "Máu"
 
 #. [label]: id=label-xp
 #: data/themes/default.cfg:155
@@ -7952,43 +8224,45 @@ msgstr "z"
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:569
+#. TRANSLATORS: Translate the K in KiB only
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:573
+#: src/serialization/string_utils.cpp:574
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:578
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:592
+#. TRANSLATORS: Translate the i in (for example) KiB only
+#: src/serialization/string_utils.cpp:594
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8074,19 +8348,9 @@ msgstr "Thời điểm trong ngày thử nghiệm"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/alignment.hpp:8
-#, fuzzy
-#| msgid "female^lawful"
-msgid "lawful"
-msgstr "chính thống"
-
 #: src/units/alignment.hpp:9
 msgid "neutral"
 msgstr "trung lập"
-
-#: src/units/alignment.hpp:10
-msgid "chaotic"
-msgstr "hỗn độn"
 
 #: src/units/alignment.hpp:11
 msgid "liminal"
@@ -8368,9 +8632,6 @@ msgstr "Tùy chọn bảng trắng"
 #~ msgid "<small>(early finish bonus)</small>"
 #~ msgstr "<small>(thưởng kết thúc sớm)</small>"
 
-#~ msgid "gold"
-#~ msgstr "vàng"
-
 #~ msgid "villages"
 #~ msgstr "làng"
 
@@ -8482,12 +8743,6 @@ msgstr "Tùy chọn bảng trắng"
 #~| msgid "Alignment: "
 #~ msgid "Alignment:"
 #~ msgstr "Phân loại: "
-
-#, fuzzy
-#~| msgid "strike"
-#~| msgid_plural "strikes"
-#~ msgid "Strikes"
-#~ msgstr "số đòn đánh"
 
 #, fuzzy
 #~| msgid "Orange"
@@ -8753,9 +9008,6 @@ msgstr "Tùy chọn bảng trắng"
 #~ msgid "wfl"
 #~ msgstr "chính thống"
 
-#~ msgid " and "
-#~ msgstr " và "
-
 #, fuzzy
 #~| msgid "% accuracy"
 #~ msgid "$percent|% accuracy"
@@ -8791,9 +9043,6 @@ msgstr "Tùy chọn bảng trắng"
 
 #~ msgid "Time of day"
 #~ msgstr "Thời điểm trong ngày"
-
-#~ msgid " resistance vs "
-#~ msgstr " kháng cự lại "
 
 #~ msgid " vulnerability vs "
 #~ msgstr " nhược điểm với "
@@ -9118,9 +9367,6 @@ msgstr "Tùy chọn bảng trắng"
 #~ msgid "+"
 #~ msgstr "+"
 
-#~ msgid "Normal"
-#~ msgstr "Bình thường"
-
 #~ msgid "Game Lobby: "
 #~ msgstr "Phòng gặp gỡ trò chơi: "
 
@@ -9245,9 +9491,6 @@ msgstr "Tùy chọn bảng trắng"
 
 #~ msgid "Join Game"
 #~ msgstr "Tham gia trò chơi"
-
-#~ msgid "Preferences"
-#~ msgstr "Tùy thích"
 
 #~ msgid "Apply filter"
 #~ msgstr "Áp dụng bộ lọc"
@@ -9375,12 +9618,6 @@ msgstr "Tùy chọn bảng trắng"
 
 #~ msgid "Campaign"
 #~ msgstr "Chiến dịch"
-
-#~ msgid "Scenario"
-#~ msgstr "Màn chơi"
-
-#~ msgid "Damage"
-#~ msgstr "Lượng thiệt hại"
 
 #~ msgid "Overall"
 #~ msgstr "Toàn bộ"
@@ -9525,15 +9762,6 @@ msgstr "Tùy chọn bảng trắng"
 
 #~ msgid "% parry"
 #~ msgstr "% tránh né"
-
-#, fuzzy
-#~| msgid "moves"
-#~ msgid "move"
-#~ msgid_plural "moves"
-#~ msgstr[0] "di chuyển"
-
-#~ msgid "XP to advance"
-#~ msgstr "KN để nâng cấp"
 
 #, fuzzy
 #~| msgid "per turn"
@@ -10023,9 +10251,6 @@ msgstr "Tùy chọn bảng trắng"
 
 #~ msgid "Create Unit (Debug!)"
 #~ msgstr "Tạo đơn vị (Gỡ lỗi!)"
-
-#~ msgid "gender^Random"
-#~ msgstr "Ngẫu nhiên"
 
 #~ msgid ""
 #~ "The replay is corrupt/out of sync. It might not make much sense to "

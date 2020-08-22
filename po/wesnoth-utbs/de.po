@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 09:29 UTC\n"
+"POT-Creation-Date: 2020-08-22 04:14 UTC\n"
 "PO-Revision-Date: 2020-02-01 12:46+0100\n"
 "Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -16740,7 +16740,7 @@ msgstr ""
 "Schrecken und Zerstörung zu verbreiten."
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:66
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94
 #, fuzzy
 #| msgid " This unit is capable of basic healing and slowing dehydration."
 msgid "This unit is capable of basic healing and slowing dehydration."
@@ -16749,7 +16749,7 @@ msgstr ""
 "verlangsamen."
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, slowing dehydration, "
@@ -16762,24 +16762,24 @@ msgstr ""
 "Dehydration zu verlangsamen sowie Vergiftungen zu heilen."
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:78
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:106
 #, fuzzy
 #| msgid "SPECIAL_NOTE^ This unit is able to move through solid stone walls."
 msgid "SPECIAL_NOTE^This unit is able to move through solid stone walls."
 msgstr " Diese Einheit ist fähig, sich durch massiven Fels zu bewegen."
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:115
 msgid "teaching"
 msgstr "Lehren"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:88
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:116
 msgid "female^teaching"
 msgstr "Lehren"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:89
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:117
 msgid ""
 "At the start of every turn, this unit redistributes its experience points to "
 "all the units of the same side adjacent to it. If no suitable unit is "
@@ -16790,12 +16790,12 @@ msgstr ""
 "steht verliert sie ihre Erfahrungspunkte ohne sie zu verteilen."
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:98
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:126
 msgid "shock"
 msgstr "Blitzangriff"
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:99
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:127
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
@@ -16805,17 +16805,17 @@ msgstr ""
 "normal. Ein einziger Gegenschlag verbleibt dem Opfer aber mindestens."
 
 #. [dummy]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:130
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:158
 msgid "formation"
 msgstr "Formation"
 
 #. [dummy]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:131
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:159
 msgid "female^formation"
 msgstr "Formation"
 
 #. [dummy]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:132
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:160
 msgid ""
 "This unit gains a +10% bonus to defense when another unit with the same "
 "ability is adjacent to it. However, this cannot raise the unit’s defense "
@@ -16826,17 +16826,17 @@ msgstr ""
 "Verteidigung aber nicht über 70% steigern."
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:151
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:179
 msgid "disengage"
 msgstr "Rückzug"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:152
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:180
 msgid "female^disengage"
 msgstr "Rückzug"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:153
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:181
 msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
@@ -16845,12 +16845,12 @@ msgstr ""
 "nach dem Kampf flüchten."
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:160
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:188
 msgid "daze"
 msgstr "Benebeln"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:161
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:189
 msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn. Other specials that affect chance to "
@@ -16868,17 +16868,17 @@ msgstr ""
 "Trefferwahrscheinlichkeit besser als 60% ist."
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:171
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:199
 msgid "distract"
 msgstr "Ablenken"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:172
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:200
 msgid "female^distract"
 msgstr "Ablenken"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:173
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:201
 msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
@@ -16887,23 +16887,23 @@ msgstr ""
 "durchdringen, ohne dies selbst zu können (gilt nicht für sich selbst)."
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:184
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:212
 msgid "support"
 msgstr "Finanzen"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:185
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:213
 msgid "female^support"
 msgstr "Finanzen"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:186
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:214
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr ""
 " Die Unterhaltskosten für benachbarte Einheiten sind um 1 Gold niedriger."
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:192
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:220
 #, fuzzy
 #| msgid ""
 #| " This unit’s melee attack can overwhelm the defenses of enemies, "
@@ -16916,7 +16916,7 @@ msgstr ""
 "sich mit voller Kampfkraft zu wehren."
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:198
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:226
 #, fuzzy
 #| msgid ""
 #| " Groups of units of this type are able to shield each other in combat."
@@ -16925,14 +16925,14 @@ msgstr ""
 " Gruppierungen dieser Einheiten können sich im Kampf gegenseitig schützen."
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:204
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:232
 #, fuzzy
 #| msgid " This unit can move either before or after attacking."
 msgid "This unit can move either before or after attacking."
 msgstr " Diese Einheit kann sich entweder vor oder nach dem Angreifen bewegen."
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:210
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:238
 #, fuzzy
 #| msgid ""
 #| " This unit can daze its enemies, reducing their accuracy and defense "
@@ -16945,7 +16945,7 @@ msgstr ""
 "Präzision und Verteidigung bis sie eine Runde beenden."
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:216
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:244
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
@@ -16955,12 +16955,12 @@ msgstr ""
 "können."
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:269
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:297
 msgid "dazed"
 msgstr "benebelt"
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:270
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:298
 msgid "female^dazed"
 msgstr "benebelt"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 05:29-0400\n"
+"POT-Creation-Date: 2020-08-22 00:14-0400\n"
 "PO-Revision-Date: 2020-02-10 00:55+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -226,7 +226,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
 msgid "poisoned"
 msgstr "中毒"
@@ -245,6 +245,335 @@ msgstr "帶走金幣："
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "備註："
+
+#. [advancement]: id=amla_default
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+#, fuzzy
+#| msgid "Max HP bonus +3, Max XP +20%"
+msgid "Max HP bonus +6%"
+msgstr "最大生命值奬勵+3,最大經驗值+20%"
+
+#. [lua]: wc_ii_generate_scenario
+#. [lua]: wct_store_possible_encampment_ford
+#: data/campaigns/World_Conquest/lua/map/main.lua:138
+#: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:144
+msgid "Start"
+msgstr ""
+
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:140
+msgid "Scenario"
+msgstr "章節"
+
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:142
+msgid "Final Battle"
+msgstr ""
+
+#. [lua]: wct_map_2a_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2A_Springs.lua:182
+msgid "water^Springs"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_decoration_2c
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2C_Glaciers.lua:206
+msgid "Glaciers"
+msgstr ""
+
+#. [lua]: wct_map_2d_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2D_Provinces.lua:164
+#, fuzzy
+#| msgid "Preferences"
+msgid "Provinces"
+msgstr "偏好設定"
+
+#. [lua]: wct_map_2f_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2F_Clayey.lua:126
+#, fuzzy
+#| msgid "Players"
+msgid "Clayey"
+msgstr "玩家： "
+
+#. [lua]: wct_map_3c_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:395
+msgid "river^Delta"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_repaint_3d
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3D_Sulfurous.lua:61
+msgid "Sulfurous"
+msgstr ""
+
+#. [lua]: wct_map_3e_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3E_Coral.lua:78
+msgid "made of^Coral"
+msgstr ""
+
+#. [lua]: wct_map_4a_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4A_Thermal.lua:199
+#, fuzzy
+#| msgid "Normal"
+msgid "Thermal"
+msgstr "普通"
+
+#. [lua]: world_conquest_tek_map_repaint_4b
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4B_Volcanic.lua:414
+msgid "Volcanic"
+msgstr ""
+
+#. [lua]: wct_map_4d_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4D_Podzol.lua:134
+msgid "Podzol"
+msgstr ""
+
+#. [lua]: wct_map_4e_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4E_Wicked.lua:643
+msgid "Wicked"
+msgstr ""
+
+#. [lua]: wild_store_roads_in_cave_zone
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4F_Wild.lua:266
+msgid "Wild"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_repaint_6d
+#: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:472
+msgid "Feudal"
+msgstr ""
+
+#. [lua]: add_enemy_side
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
+msgid "Enemies"
+msgstr "敵人(敵方)"
+
+#. [lua]: add_player_side
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
+msgid "Allies"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:305
+msgid "$range|: $special|"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:519
+msgid "+$boost| moves"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:533
+msgid "$range|: +$boost| damage"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:549
+msgid "$range|: +1 damage per level"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:565
+msgid "+$hitpoints| hitpoints"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:580
+msgid "+$hitpoints| hitpoints per level"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:596
+#, fuzzy
+#| msgid "XP to advance"
+msgid "$value| XP to advance"
+msgstr "升級所需經驗值"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:620
+msgid "Village/Castle: +5 defense"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:652
+msgid ""
+"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:681
+msgid "$terrain|: +10 defense and full movement"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:692
+#, fuzzy
+#| msgid "Be more defensive"
+msgid "+moves defense"
+msgstr "更注重防守"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:702
+msgid "melee: optional charge"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:727
+msgid "$range|: arcane and +25% damage"
+msgstr ""
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
+msgid " and "
+msgstr "以及"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
+#: data/english.cfg:31
+msgid "arcane"
+msgstr "秘法"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
+#: data/english.cfg:26
+msgid "blade"
+msgstr "劍刃"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
+#: src/units/alignment.hpp:10
+msgid "chaotic"
+msgstr "混沌"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
+#: data/english.cfg:30
+msgid "cold"
+msgstr "寒冷"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
+#, fuzzy
+#| msgid "Damage"
+msgid "damage"
+msgstr "傷害"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
+#: data/english.cfg:3
+msgid "Easy"
+msgstr "簡單"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
+msgid "XP to advance"
+msgstr "升級所需經驗值"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
+#: data/english.cfg:29
+msgid "fire"
+msgstr "火焰"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
+msgid "gold"
+msgstr "金幣"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
+#: data/english.cfg:5
+msgid "Hard"
+msgstr "困難"
+
+#. [label]: id=label-hp
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
+#: data/themes/default.cfg:146
+msgid "HP"
+msgstr "生命值"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
+#: data/english.cfg:28
+msgid "impact"
+msgstr "衝擊"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
+#: src/units/alignment.hpp:8
+msgid "lawful"
+msgstr "守序"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:189
+#: data/english.cfg:22
+msgid "melee"
+msgstr "近戰"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:192
+#, fuzzy
+#| msgid "moves"
+msgid "moves"
+msgstr "移動點數"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:195
+#: data/english.cfg:6
+msgid "Nightmare"
+msgstr "惡夢"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:198
+#: data/english.cfg:27
+msgid "pierce"
+msgstr "穿刺"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:201
+msgid "gender^Random"
+msgstr "隨機"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:204
+#: data/english.cfg:23
+msgid "ranged"
+msgstr "遠攻"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:207
+#, fuzzy
+#| msgid " resistance vs "
+msgid " resistance vs "
+msgstr "抗性"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:210
+#, fuzzy
+#| msgid "Strikes"
+msgid "strike"
+msgstr "輸出"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:4
+msgid "World Conquest 1p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:7
+msgid "World Conquest 2p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:10
+msgid "World Conquest 3p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:13
+msgid ""
+"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
+msgid ""
+"A randomly generated cooperative campaign for 2 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
+msgid ""
+"A randomly generated cooperative campaign for 3 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/core/about.cfg:4
@@ -3303,7 +3632,7 @@ msgid "Weight of Revenge"
 msgstr "復仇之重"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:649
+#: data/core/macros/utils.cfg:652
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "你獲得了 $amount_gold 枚金幣。"
 
@@ -3506,24 +3835,9 @@ msgid "The standard Wesnoth core."
 msgstr "標準韋諾核心。"
 
 #. [language]
-#: data/english.cfg:3
-msgid "Easy"
-msgstr "簡單"
-
-#. [language]
 #: data/english.cfg:4
 msgid "Medium"
 msgstr "普通"
-
-#. [language]
-#: data/english.cfg:5
-msgid "Hard"
-msgstr "困難"
-
-#. [language]
-#: data/english.cfg:6
-msgid "Nightmare"
-msgstr "惡夢"
 
 #. [language]
 #: data/english.cfg:8
@@ -3570,46 +3884,6 @@ msgstr ""
 "\n"
 "白天：+25% 傷害值\n"
 "晚上：−25% 傷害值"
-
-#. [language]
-#: data/english.cfg:22
-msgid "melee"
-msgstr "近戰"
-
-#. [language]
-#: data/english.cfg:23
-msgid "ranged"
-msgstr "遠攻"
-
-#. [language]
-#: data/english.cfg:26
-msgid "blade"
-msgstr "劍刃"
-
-#. [language]
-#: data/english.cfg:27
-msgid "pierce"
-msgstr "穿刺"
-
-#. [language]
-#: data/english.cfg:28
-msgid "impact"
-msgstr "衝擊"
-
-#. [language]
-#: data/english.cfg:29
-msgid "fire"
-msgstr "火焰"
-
-#. [language]
-#: data/english.cfg:30
-msgid "cold"
-msgstr "寒冷"
-
-#. [language]
-#: data/english.cfg:31
-msgid "arcane"
-msgstr "秘法"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -4328,11 +4602,6 @@ msgstr "回到..."
 #: data/themes/default.cfg:98
 msgid "Actions"
 msgstr "動作"
-
-#. [label]: id=label-hp
-#: data/themes/default.cfg:146
-msgid "HP"
-msgstr "生命值"
 
 #. [label]: id=label-xp
 #: data/themes/default.cfg:155
@@ -7907,43 +8176,45 @@ msgstr "z"
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:569
+#. TRANSLATORS: Translate the K in KiB only
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:573
+#: src/serialization/string_utils.cpp:574
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:578
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:592
+#. TRANSLATORS: Translate the i in (for example) KiB only
+#: src/serialization/string_utils.cpp:594
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8025,17 +8296,9 @@ msgstr "佔位時段"
 msgid "This Time of Day is only a Stub!"
 msgstr "此時段僅是佔位時段！"
 
-#: src/units/alignment.hpp:8
-msgid "lawful"
-msgstr "守序"
-
 #: src/units/alignment.hpp:9
 msgid "neutral"
 msgstr "中立"
-
-#: src/units/alignment.hpp:10
-msgid "chaotic"
-msgstr "混沌"
 
 #: src/units/alignment.hpp:11
 msgid "liminal"
@@ -8418,9 +8681,6 @@ msgstr "白板選項"
 #~ msgid "Type"
 #~ msgstr "類型"
 
-#~ msgid "Strikes"
-#~ msgstr "輸出"
-
 #~ msgid "Range"
 #~ msgstr "範圍"
 
@@ -8468,9 +8728,6 @@ msgstr "白板選項"
 
 #~ msgid "The classic, pre-1.12 theme"
 #~ msgstr "經典佈景主題(1.12版前)"
-
-#~ msgid "gold"
-#~ msgstr "金幣"
 
 #~ msgid "villages"
 #~ msgstr "村莊"
@@ -8635,9 +8892,6 @@ msgstr "白板選項"
 #~ msgid "wfl"
 #~ msgstr "守序"
 
-#~ msgid " and "
-#~ msgstr "以及"
-
 #, fuzzy
 #~| msgid "% accuracy"
 #~ msgid "$percent|% accuracy"
@@ -8674,9 +8928,6 @@ msgstr "白板選項"
 
 #~ msgid "Leadership"
 #~ msgstr "領導"
-
-#~ msgid " resistance vs "
-#~ msgstr "抗性"
 
 #~ msgid " vulnerability vs "
 #~ msgstr "弱點"
@@ -8995,9 +9246,6 @@ msgstr "白板選項"
 #~ msgid "+"
 #~ msgstr "+"
 
-#~ msgid "Normal"
-#~ msgstr "普通"
-
 #~ msgid "Game Lobby: "
 #~ msgstr "遊戲大廳："
 
@@ -9128,9 +9376,6 @@ msgstr "白板選項"
 #~ msgid "Join Game"
 #~ msgstr "加入遊戲"
 
-#~ msgid "Preferences"
-#~ msgstr "偏好設定"
-
 #~ msgid "Apply filter"
 #~ msgstr "套用過濾： "
 
@@ -9245,12 +9490,6 @@ msgstr "白板選項"
 
 #~ msgid "Campaign"
 #~ msgstr "戰役"
-
-#~ msgid "Scenario"
-#~ msgstr "章節"
-
-#~ msgid "Damage"
-#~ msgstr "傷害"
 
 #~ msgid "Overall"
 #~ msgstr "累計"
@@ -9395,16 +9634,6 @@ msgstr "白板選項"
 
 #~ msgid "% parry"
 #~ msgstr "% 迴避"
-
-#, fuzzy
-#~| msgid "moves"
-#~ msgid "move"
-#~ msgid_plural "moves"
-#~ msgstr[0] "移動點數"
-#~ msgstr[1] "移動點數"
-
-#~ msgid "XP to advance"
-#~ msgstr "升級所需經驗值"
 
 #, fuzzy
 #~| msgid "per turn"
@@ -9920,9 +10149,6 @@ msgstr "白板選項"
 
 #~ msgid "Create Unit (Debug!)"
 #~ msgstr "創造單位（測試!）"
-
-#~ msgid "gender^Random"
-#~ msgstr "隨機"
 
 #~ msgid ""
 #~ "The replay is corrupt/out of sync. It might not make much sense to "
@@ -10680,14 +10906,6 @@ msgstr "白板選項"
 #~| msgid "Hard"
 #~ msgid "(Hard)"
 #~ msgstr "困難"
-
-#~| msgid "Players: "
-#~ msgid "Players"
-#~ msgstr "玩家： "
-
-#~| msgid "Enemy village"
-#~ msgid "Enemies"
-#~ msgstr "敵人(敵方)"
 
 #~| msgid "Difficulty: "
 #~ msgid "Difficulty: Easy"
@@ -12882,9 +13100,6 @@ msgstr "白板選項"
 
 #~ msgid "focusing on protecting $this_ally_description|."
 #~ msgstr "重點防禦 $this_ally_description|。"
-
-#~ msgid "Max HP bonus +3, Max XP +20%"
-#~ msgstr "最大生命值奬勵+3,最大經驗值+20%"
 
 #~ msgid "Deep Underground"
 #~ msgstr "深層地下"

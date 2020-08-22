@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 05:29-0400\n"
+"POT-Creation-Date: 2020-08-22 00:14-0400\n"
 "PO-Revision-Date: 2020-02-01 10:55+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -243,7 +243,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
 msgid "poisoned"
 msgstr "vergiftet"
@@ -262,6 +262,339 @@ msgstr "Mitgebrachtes Gold:"
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "Hinweis:"
+
+# zookeeper:
+# "Max swarm bonus" is for "reverse swarm" (more attacks as HP decreases) and seems to be the max number of additional strikes the unit can receive when it's at minimal HP, on top of the base amount.
+# Looks like it only shows up if the unit has less than max health.
+# Terrible wording choice, IMO they should be something as simple as "Max strikes" and "Min strikes" instead.
+# I'll see If I can get someone to improve those for 1.13.
+#. [advancement]: id=amla_default
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+#, fuzzy
+#| msgid "Max swarm bonus: "
+msgid "Max HP bonus +6%"
+msgstr "Max. Bonus Schwarmangriff: "
+
+#. [lua]: wc_ii_generate_scenario
+#. [lua]: wct_store_possible_encampment_ford
+#: data/campaigns/World_Conquest/lua/map/main.lua:138
+#: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:144
+msgid "Start"
+msgstr ""
+
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:140
+msgid "Scenario"
+msgstr "Szenario"
+
+#. [lua]: wc_ii_generate_scenario
+#: data/campaigns/World_Conquest/lua/map/main.lua:142
+msgid "Final Battle"
+msgstr ""
+
+#. [lua]: wct_map_2a_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2A_Springs.lua:182
+msgid "water^Springs"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_decoration_2c
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2C_Glaciers.lua:206
+msgid "Glaciers"
+msgstr ""
+
+#. [lua]: wct_map_2d_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2D_Provinces.lua:164
+#, fuzzy
+#| msgid "Preferences"
+msgid "Provinces"
+msgstr "Einstellungen"
+
+#. [lua]: wct_map_2f_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/2F_Clayey.lua:126
+msgid "Clayey"
+msgstr ""
+
+#. [lua]: wct_map_3c_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:395
+msgid "river^Delta"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_repaint_3d
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3D_Sulfurous.lua:61
+msgid "Sulfurous"
+msgstr ""
+
+#. [lua]: wct_map_3e_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3E_Coral.lua:78
+msgid "made of^Coral"
+msgstr ""
+
+#. [lua]: wct_map_4a_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4A_Thermal.lua:199
+#, fuzzy
+#| msgid "Normal"
+msgid "Thermal"
+msgstr "Normal"
+
+#. [lua]: world_conquest_tek_map_repaint_4b
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4B_Volcanic.lua:414
+msgid "Volcanic"
+msgstr ""
+
+#. [lua]: wct_map_4d_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4D_Podzol.lua:134
+msgid "Podzol"
+msgstr ""
+
+#. [lua]: wct_map_4e_post_bunus_decoration
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4E_Wicked.lua:643
+msgid "Wicked"
+msgstr ""
+
+#. [lua]: wild_store_roads_in_cave_zone
+#: data/campaigns/World_Conquest/lua/map/postgeneration/4F_Wild.lua:266
+msgid "Wild"
+msgstr ""
+
+#. [lua]: world_conquest_tek_map_repaint_6d
+#: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:472
+msgid "Feudal"
+msgstr ""
+
+#. [lua]: add_enemy_side
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
+#, fuzzy
+#| msgid "Enemy village"
+msgid "Enemies"
+msgstr "Gegnerisches Dorf"
+
+#. [lua]: add_player_side
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
+msgid "Allies"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:305
+msgid "$range|: $special|"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:519
+msgid "+$boost| moves"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:533
+msgid "$range|: +$boost| damage"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:549
+msgid "$range|: +1 damage per level"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:565
+msgid "+$hitpoints| hitpoints"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:580
+msgid "+$hitpoints| hitpoints per level"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:596
+#, fuzzy
+#| msgid "XP to advance"
+msgid "$value| XP to advance"
+msgstr "EP pro Stufenaufstieg"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:620
+msgid "Village/Castle: +5 defense"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:652
+msgid ""
+"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:681
+msgid "$terrain|: +10 defense and full movement"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:692
+#, fuzzy
+#| msgid "Be more defensive"
+msgid "+moves defense"
+msgstr "Seid defensiver"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:702
+msgid "melee: optional charge"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:727
+msgid "$range|: arcane and +25% damage"
+msgstr ""
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:147
+msgid " and "
+msgstr " und "
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:150
+#: data/english.cfg:31
+msgid "arcane"
+msgstr "Arkan"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
+#: data/english.cfg:26
+msgid "blade"
+msgstr "Klinge"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
+#: src/units/alignment.hpp:10
+msgid "chaotic"
+msgstr "lichtscheu"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
+#: data/english.cfg:30
+msgid "cold"
+msgstr "Kälte"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
+#, fuzzy
+#| msgid "Damage"
+msgid "damage"
+msgstr "Schaden"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
+#: data/english.cfg:3
+msgid "Easy"
+msgstr "Einfach"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:168
+msgid "XP to advance"
+msgstr "EP pro Stufenaufstieg"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:171
+#: data/english.cfg:29
+msgid "fire"
+msgstr "Feuer"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
+msgid "gold"
+msgstr "Gold"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:177
+#: data/english.cfg:5
+msgid "Hard"
+msgstr "Schwierig"
+
+#. [label]: id=label-hp
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:180
+#: data/themes/default.cfg:146
+msgid "HP"
+msgstr "LP"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:183
+#: data/english.cfg:28
+msgid "impact"
+msgstr "Wucht"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
+#: src/units/alignment.hpp:8
+msgid "lawful"
+msgstr "redlich"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:189
+#: data/english.cfg:22
+msgid "melee"
+msgstr "Nahkampf"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:192
+#, fuzzy
+msgid "moves"
+msgstr "BP"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:195
+#: data/english.cfg:6
+msgid "Nightmare"
+msgstr "Alptraum"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:198
+#: data/english.cfg:27
+msgid "pierce"
+msgstr "Stich"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:201
+msgid "gender^Random"
+msgstr "Zufall"
+
+#. [language]
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:204
+#: data/english.cfg:23
+msgid "ranged"
+msgstr "Fernkampf"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:207
+#, fuzzy
+#| msgid " resistance vs "
+msgid " resistance vs "
+msgstr " resistent gegen "
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:210
+#, fuzzy
+#| msgid "Strikes"
+msgid "strike"
+msgstr "Attacken"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:4
+msgid "World Conquest 1p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:7
+msgid "World Conquest 2p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:10
+msgid "World Conquest 3p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:13
+msgid ""
+"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
+msgid ""
+"A randomly generated cooperative campaign for 2 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
+msgid ""
+"A randomly generated cooperative campaign for 3 players. It has 6 level of "
+"difficulties.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/core/about.cfg:4
@@ -3367,7 +3700,7 @@ msgid "Weight of Revenge"
 msgstr "Weight of Revenge"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:649
+#: data/core/macros/utils.cfg:652
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Ihr erhaltet $amount_gold Goldstücke."
 
@@ -3570,24 +3903,9 @@ msgid "The standard Wesnoth core."
 msgstr "Der Standard Wesnoth-Kern"
 
 #. [language]
-#: data/english.cfg:3
-msgid "Easy"
-msgstr "Einfach"
-
-#. [language]
 #: data/english.cfg:4
 msgid "Medium"
 msgstr "Mittel"
-
-#. [language]
-#: data/english.cfg:5
-msgid "Hard"
-msgstr "Schwierig"
-
-#. [language]
-#: data/english.cfg:6
-msgid "Nightmare"
-msgstr "Alptraum"
 
 # Hinweis betr. Original- und Übersetzungs-String:
 # Die Kombi " \+n" bewirkt den Umbruch einer Textzeile, fügt aber KEINE Leerzeile ein!
@@ -3655,46 +3973,6 @@ msgstr ""
 "\n"
 "Tag: +25% Schaden\n"
 "Nacht: −25% Schaden"
-
-#. [language]
-#: data/english.cfg:22
-msgid "melee"
-msgstr "Nahkampf"
-
-#. [language]
-#: data/english.cfg:23
-msgid "ranged"
-msgstr "Fernkampf"
-
-#. [language]
-#: data/english.cfg:26
-msgid "blade"
-msgstr "Klinge"
-
-#. [language]
-#: data/english.cfg:27
-msgid "pierce"
-msgstr "Stich"
-
-#. [language]
-#: data/english.cfg:28
-msgid "impact"
-msgstr "Wucht"
-
-#. [language]
-#: data/english.cfg:29
-msgid "fire"
-msgstr "Feuer"
-
-#. [language]
-#: data/english.cfg:30
-msgid "cold"
-msgstr "Kälte"
-
-#. [language]
-#: data/english.cfg:31
-msgid "arcane"
-msgstr "Arkan"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -4364,11 +4642,6 @@ msgstr "Zurück zu Runde…"
 #: data/themes/default.cfg:98
 msgid "Actions"
 msgstr "Aktionen"
-
-#. [label]: id=label-hp
-#: data/themes/default.cfg:146
-msgid "HP"
-msgstr "LP"
 
 #. [label]: id=label-xp
 #: data/themes/default.cfg:155
@@ -8355,43 +8628,45 @@ msgstr "z"
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:569
+#. TRANSLATORS: Translate the K in KiB only
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:573
+#: src/serialization/string_utils.cpp:574
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:578
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:592
+#. TRANSLATORS: Translate the i in (for example) KiB only
+#: src/serialization/string_utils.cpp:594
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8480,17 +8755,9 @@ msgstr "Modell Tageszeit"
 msgid "This Time of Day is only a Stub!"
 msgstr "Diese Tageszeit ist nur ein Platzhalter!"
 
-#: src/units/alignment.hpp:8
-msgid "lawful"
-msgstr "redlich"
-
 #: src/units/alignment.hpp:9
 msgid "neutral"
 msgstr "neutral"
-
-#: src/units/alignment.hpp:10
-msgid "chaotic"
-msgstr "lichtscheu"
 
 #: src/units/alignment.hpp:11
 msgid "liminal"
@@ -8755,9 +9022,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgid "The classic, pre-1.12 theme"
 #~ msgstr "Traditionelle Benutzeroberfläche vor BfW 1.12"
 
-#~ msgid "gold"
-#~ msgstr "Gold"
-
 #~ msgid "villages"
 #~ msgstr "Dörfer"
 
@@ -8856,9 +9120,6 @@ msgstr "Planungsmodus Optionen"
 
 #~ msgid "unit help^Name"
 #~ msgstr "Name"
-
-#~ msgid "Strikes"
-#~ msgstr "Attacken"
 
 #~ msgid "Range"
 #~ msgstr "Reichweite"
@@ -9150,9 +9411,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgid "wfl"
 #~ msgstr "redlich"
 
-#~ msgid " and "
-#~ msgstr " und "
-
 #, fuzzy
 #~ msgid "$percent|% accuracy"
 #~ msgstr "% Treffsicherheit"
@@ -9184,9 +9442,6 @@ msgstr "Planungsmodus Optionen"
 
 #~ msgid "Time of day"
 #~ msgstr "Tageszeit"
-
-#~ msgid " resistance vs "
-#~ msgstr " resistent gegen "
 
 #~ msgid " vulnerability vs "
 #~ msgstr " verwundbar durch "
@@ -9520,9 +9775,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgid "+"
 #~ msgstr "+"
 
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
 #~ msgid "Game Lobby: "
 #~ msgstr "Mehrspielerbereich: "
 
@@ -9650,9 +9902,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgid "Join Game"
 #~ msgstr "Spiel beitreten"
 
-#~ msgid "Preferences"
-#~ msgstr "Einstellungen"
-
 #~ msgid "Apply filter"
 #~ msgstr "Filter anwenden"
 
@@ -9769,12 +10018,6 @@ msgstr "Planungsmodus Optionen"
 
 #~ msgid "Campaign"
 #~ msgstr "Kampagne"
-
-#~ msgid "Scenario"
-#~ msgstr "Szenario"
-
-#~ msgid "Damage"
-#~ msgstr "Schaden"
 
 #~ msgid "Overall"
 #~ msgstr "Gesamt"
@@ -9925,15 +10168,6 @@ msgstr "Planungsmodus Optionen"
 
 #~ msgid "% parry"
 #~ msgstr "% Parade"
-
-#, fuzzy
-#~ msgid "move"
-#~ msgid_plural "moves"
-#~ msgstr[0] "BP"
-#~ msgstr[1] "BP"
-
-#~ msgid "XP to advance"
-#~ msgstr "EP pro Stufenaufstieg"
 
 #, fuzzy
 #~ msgid "attacks per turn"
@@ -10426,9 +10660,6 @@ msgstr "Planungsmodus Optionen"
 
 #~ msgid "Create Unit (Debug!)"
 #~ msgstr "Einheit erstellen (Debug!)"
-
-#~ msgid "gender^Random"
-#~ msgstr "Zufall"
 
 #~ msgid ""
 #~ "The replay is corrupt/out of sync. It might not make much sense to "
