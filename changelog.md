@@ -1,4 +1,4 @@
-## Version 1.15.3+dev
+## Version 1.15.4
  ### Add-ons client
    * Ensure the client doesn't re-download dependencies that have just been updated during an Update All
      run by re-reading add-on versions after each update batch (issue #3273).
