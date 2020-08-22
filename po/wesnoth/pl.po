@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-22 00:16-0400\n"
-"PO-Revision-Date: 2020-04-13 10:04+0200\n"
+"PO-Revision-Date: 2020-08-21 12:43+0200\n"
 "Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. [multiplayer_side]: id=Custom
@@ -117,10 +117,6 @@ msgstr "Aktualność wiadomości czatu"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -216,7 +212,7 @@ msgstr "Pokazuj efekty graficzne specjalnych jednostek"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:178
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "Pokazuj wiadomości o przestarzeniu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:179
@@ -225,11 +221,15 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Pokazuj strzeżenia o przestarzałym interfejsie API w czacie gry. Te "
+"wiadomości będą nadal wyświetlane w logu, nawet gdy ta opcja jest wyłączona. "
+"Dodatkowo, ilość wypisywanych wiadomości jest kontrolowana przez domenę logu "
+"przestarzenia."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:186
 msgid "Use experimental PRNG combat"
-msgstr ""
+msgstr "Użyj eksperymentalnego PRNG"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
@@ -241,6 +241,12 @@ msgid ""
 "Note: this option only affects singleplayer, and the ‘Save random seed’ "
 "option must also be enabled when creating a game for this to work."
 msgstr ""
+"Umożliwia bardziej przewidywalne szacowanie szansy na trafienie. To "
+"eksperymentalna opcja zaprojektowana, aby zbliżyć obserwowany stosunek "
+"trafienie/nietrafienie do wyświetlonych wartości procentowych.\n"
+"\n"
+"Uwaga: ta opcja działa tylko w grze jednoosobowej, a opcja 'Zapisuj losowe "
+"ziarno' musi być włączona przy tworzeniu gry, aby ta opcja działała."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:197
@@ -377,8 +383,6 @@ msgstr "Zarządcy internacjonalizacji"
 
 #. [about]
 #: data/core/about.cfg:323
-#, fuzzy
-#| msgid "Traits"
 msgid "Trailers"
 msgstr "Cechy"
 
@@ -711,7 +715,7 @@ msgstr "Ołtarz"
 #. [item]: id=ankh-necklace
 #: data/core/editor/items.cfg:24
 msgid "Ankh Necklace"
-msgstr "?Ankh Naszyjnik"
+msgstr "Naszyjnik Ankh"
 
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:30
@@ -876,17 +880,17 @@ msgstr "Znak Celu"
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:252
 msgid "Large Pile of Gold Coins"
-msgstr "Duży Stos Monet"
+msgstr "Duży Stos Złotych Monet"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:258
 msgid "Pile of Gold Coins"
-msgstr "Stos Monet"
+msgstr "Stos Złotych Monet"
 
 #. [item]: id=gold-coins-small
 #: data/core/editor/items.cfg:264
 msgid "Small Pile of Gold Coins"
-msgstr "Mały Stos Monet"
+msgstr "Mały Stos Złotych Monet"
 
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:270
@@ -1634,7 +1638,7 @@ msgstr "Zostaw"
 #: data/core/macros/items.cfg:276
 msgid "$unit.name has no need for this Holy Water! Let another take it."
 msgstr ""
-"$unit.name nie potrzebuje tej wody święconej! Niech ktoś inny ją weźmie."
+"$unit.name nie potrzebuje tej wody święconej! Niech ktoś inny ją weźmie."
 
 #. [object]
 #: data/core/macros/items.cfg:281
@@ -1721,8 +1725,6 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr "Ten trójząb pozwala mermenom rzucać piorunami w swoich wrogów."
@@ -3385,7 +3387,7 @@ msgstr "Ścieżka w czuleści"
 #. [music]
 #: data/core/macros/sound-utils.cfg:313
 msgid "The King is Dead"
-msgstr "Umarł król"
+msgstr "Umarł król"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:319
@@ -3504,7 +3506,7 @@ msgstr "Seledyn"
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "Złoty"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:116
@@ -3617,10 +3619,8 @@ msgstr "Wesnoth (domyślna)"
 
 #. [core]: id=default
 #: data/cores.cfg:8
-#, fuzzy
-#| msgid "The Battle for Wesnoth Help"
 msgid "The standard Wesnoth core."
-msgstr "System pomocy Bitwy o Wesnoth"
+msgstr "Standardowe jądro Wesnoth."
 
 #. [language]
 #: data/english.cfg:3
@@ -3739,6 +3739,10 @@ msgid ""
 "\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tbridge_type=Most|Skrzyżowanie\n"
+"\t\tmain={bridge_type} $base{!}\n"
+"\t"
 
 #. [naming]
 #. Generator for road labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3749,6 +3753,10 @@ msgid ""
 "\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\troad_type=Gościniec|Przejście|Ścieżka|Trakt|Droga|Szlak\n"
+"\t\tmain={road_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for river labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3759,6 +3767,10 @@ msgid ""
 "\t\tmain=$base {river_type}|{river_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\triver_type=Rzeka|Rzeka|Rzeka|Potok|Potok|Strumień|Kanał\n"
+"\t\tmain={river_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for forest labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3769,6 +3781,10 @@ msgid ""
 "\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tforest_type=Las|Las|Gaj\n"
+"\t\tmain={forest_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for lake labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3779,6 +3795,10 @@ msgid ""
 "\t\tmain=$base {lake_type}|{lake_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tlake_type=Jezioro|Jezioro|Jezioro|Staw|Morze\n"
+"\t\tmain=${lake_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3801,6 +3821,11 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=Bagna|Mokradła|Moczary\n"
+"\t\tmain=$base{!} {suffix}\n"
+"\n"
+"\t"
 
 #. [village_naming]
 #. Generator for generic village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3811,6 +3836,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ów|ów|owo|gród|owice\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for lakeside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3822,6 +3851,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$lake{!}\n"
+"\t\tsuffix=Przystań|Port\n"
+"\t\tmain={suffix} {prefix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for riverside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3834,6 +3868,12 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}\n"
+"\t\triver=$river{!}|rzeką\n"
+"\t\tsuffix=ów|owo|owice| nad {river}\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for bridge village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3845,6 +3885,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
+"\t\tsuffix=owy Most|owy Most|ów|owice\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for grassland village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3855,6 +3900,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ów|owo|owe Pole\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for forest village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3866,6 +3915,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$forest{!}\n"
+"\t\tsuffix=ów|owo|owice|owy Las\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for hill village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3876,6 +3930,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ów|owice|owo|gród|owe Wzgórze\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for mountain village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3887,6 +3945,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$mountain{!}\n"
+"\t\tsuffix=owy Wierch|owa Góra|owice|ów\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3897,6 +3960,11 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$mountain{!}\n"
+"\t\tsuffix=ów|owa|owy Szczyt|owy Wierch|owy Wierch|owa Góra|owa Góra\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for roadside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3908,6 +3976,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$road{!}|$road{!}|$base{!}\n"
+"\t\tsuffix=owy Zajazd|owy Gościniec|owice|owice|ów|ów\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for swamp village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3919,6 +3992,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$swamp{!}\n"
+"\t\tsuffix=ów|owo|owice\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [server]
 #: data/game_config.cfg:4
@@ -4257,16 +4335,12 @@ msgstr "poziom"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
-"Użyj menu <i>Obszary</i> żeby zdefiniować obszary do eventów lub "
-"programowania ai."
+"Użyj menu <i>Obszary</i> żeby zdefiniować regiony do zaprogramowania zdarzeń "
+"lub AI."
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4275,29 +4349,21 @@ msgstr "<i>― Podręcznik Twórców Wesnoth</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Stwórz mapę przez opcję <i>Nowy Scenariusz</i> w menu <i>Plik</i> w edytorze "
-"map żeby móc używać więcej opcji"
+"W edytorze map, wybierz opcję <i>Nowy Scenariusz</i> w menu <i>Plik</i>, "
+"żeby móc używać więcej opcji"
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"Scenariusze stworzone w edytorze map w ich domyślnym folderze mogą być "
-"wybrane wmenu zakładania gry wieloosobowej w sekcji <i>Scenariusze "
+"Scenariusze stworzone w edytorze map, zapisane w ich domyślnym folderze, "
+"mogą być wybrane w menu zakładania gry wieloosobowej w sekcji <i>Scenariusze "
 "Użytkownika</i>"
 
 #. [tip]
@@ -4775,7 +4841,7 @@ msgid ""
 "villages unoccupied, but keep in mind that an enemy unit becomes much harder "
 "to dislodge from a village! Plan your movements accordingly."
 msgstr ""
-"Każdy gracz wie, że kontrolowanie wiosek jest często kluczowe do osiągnięcia "
+"Każdy gracz wie, że kontrolowanie wiosek jest często kluczowe do osiągnięcia "
 "zwycięstwa w scenariuszu. Możesz użyć tej wiedzy i spróbować zwabić "
 "przeciwników w pułapkę zostawiając nie bronione wsie, ale pamiętaj, że "
 "wrogie jednostki może być trudno z niej usunąć! Planuj swoje ruchy z myślą o "
@@ -5089,7 +5155,7 @@ msgstr "<i>― Królowa Asheviere, 503 r. e.W.</i>"
 #. [tip]
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
-msgstr ""
+msgstr "Używanie jednostek na niższym poziomie może być bardzo opłacalne."
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5098,13 +5164,14 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"Niektóre jednostki na wyższym poziomie mają potężne zdolności, na przykład "
+"<i>dowodzenie</i>, <i>uzdrawia</i>, lub <i>skradanie się</i>. Wczesne "
+"uzyskanie tych jednostek może być dużą pomocą w kampanii."
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Dzienniki Gweddry’ego, 627 r. e.W.</i>"
+msgstr "<i>― Sir Gerrick z Westin, 607 r. e. W.</i>"
 
 #. [tip]
 #: data/tips.cfg:265
@@ -5113,14 +5180,15 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"Jeśli jednostka stoi obok lekarzy z dwóch sprzymierzonych stron, będzie ona "
+"leczona na początku tury obu stron. Tak jednostki można leczyć szybciej niż "
+"byłoby to możliwe w inny sposób."
 
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:267
-#, fuzzy
-#| msgid "<i>― Kai Laudiss, 623YW</i>"
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr "<i>― Kai Laudiss, 623 r. e.W.</i>"
+msgstr "<i>― Vank z Lotu Galuna, 6 r. e. W.</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5137,10 +5205,8 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "No advancement"
 msgid "waiting for^an advancement choice"
-msgstr "Brak awansów"
+msgstr "czekam na"
 
 #: src/actions/attack.cpp:602 src/actions/attack.cpp:1349
 msgid "An invalid attacker weapon got selected."
@@ -5173,8 +5239,6 @@ msgid "You do not have a leader to recruit with."
 msgstr "Nie masz dowódcy, który mógłby rekrutować."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
 msgstr "Żaden z twoich dowódców nie może rekrutować tej jednostki."
 
@@ -5320,8 +5384,8 @@ msgid ""
 "conflicts. This may cause problems."
 msgstr ""
 "Dodatek <i>$addon_title</i> zawiera pliki lub katalogi o powtarzających się "
-"nazwach, ponieważ gra nie rozróżnia wielkości liter. Może to "
-"spowodować problemy."
+"nazwach, ponieważ gra nie rozróżnia wielkości liter. Może to spowodować "
+"problemy."
 
 #: src/addon/client.cpp:321
 msgid "The server responded with an error:"
@@ -5920,7 +5984,7 @@ msgid ""
 "loading add-ons."
 msgstr ""
 "Błąd podczas ładowania niestandardowych plików konfiguracyjnych gry. Gra "
-"spróbuje się uruchomić bez ładowania dodatków."
+"spróbuje się uruchomić bez ładowania dodatków."
 
 #: src/game_config_manager.cpp:320
 msgid ""
@@ -6001,7 +6065,7 @@ msgstr "Gracz lokalny"
 
 #: src/game_initialization/connect_engine.cpp:1293
 msgid "Nobody"
-msgstr ""
+msgstr "Nikt"
 
 #: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
@@ -6085,10 +6149,8 @@ msgstr "Nieznana era"
 
 #: src/game_initialization/lobby_data.cpp:354
 #: src/game_initialization/lobby_data.cpp:387
-#, fuzzy
-#| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
-msgstr "Strona"
+msgstr "S"
 
 #: src/game_initialization/lobby_data.cpp:373
 msgid "Remote scenario"
@@ -6097,7 +6159,7 @@ msgstr "Zdalny scenariusz"
 #: src/game_initialization/lobby_data.cpp:395
 #: src/game_initialization/lobby_data.cpp:418
 msgid "campaign_abbreviation^C"
-msgstr ""
+msgstr "K"
 
 #: src/game_initialization/lobby_data.cpp:423
 msgid "Unknown scenario"
@@ -6116,7 +6178,7 @@ msgstr[2] "Wolnych miejsc:"
 
 #: src/game_initialization/lobby_data.cpp:450
 msgid "mp_game_available_slots^Full"
-msgstr ""
+msgstr "Pełna"
 
 #: src/game_initialization/lobby_data.cpp:461
 #: src/game_initialization/lobby_data.cpp:463 src/savegame.cpp:618
@@ -6124,16 +6186,12 @@ msgid "Turn"
 msgstr "Tura"
 
 #: src/game_initialization/lobby_data.cpp:476
-#, fuzzy
-#| msgid "vision: "
 msgid "vision^none"
-msgstr "zasięg wzroku:"
+msgstr "wizja:"
 
 #: src/game_initialization/lobby_data.cpp:485
-#, fuzzy
-#| msgid "Time limit"
 msgid "time limit^none"
-msgstr "Limit czasu"
+msgstr "limit czasu"
 
 #: src/game_initialization/lobby_data.cpp:525
 msgid ""
@@ -6232,41 +6290,36 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Ten serwer nie dopuszcza niezarejestrowanych pseudonimów."
 
 #: src/game_initialization/multiplayer.cpp:336
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "Pseudonim „$nick” jest zarejestrowany na tym serwerze."
+msgstr ""
+"Pseudonim „$nick” jest zablokowany na forach tego serwera na czas $duration|."
 
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr "Pseudonim „$nick” jest zarejestrowany na tym serwerze."
+msgstr "Pseudonim „$nick” jest zablokowany na forach tego serwera"
 
 #: src/game_initialization/multiplayer.cpp:342
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Pseudonim „$nick” jest zarejestrowany na tym serwerze."
+msgstr ""
+"Twój adres IP jest zablokowany na forach tego serwera na czas $duration|."
 
 #: src/game_initialization/multiplayer.cpp:344
 msgid "Your IP address is banned on this server’s forums."
-msgstr ""
+msgstr "Twój adres IP jest zablokowany na forach tego serwera."
 
 #: src/game_initialization/multiplayer.cpp:348
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
-msgstr "Pseudonim „$nick” jest zarejestrowany na tym serwerze."
+msgstr ""
+"Adres e-mail dla pseudonimu „$nick” jest zablokowany na forach tego serwera "
+"na czas $duration|."
 
 #: src/game_initialization/multiplayer.cpp:350
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr "Pseudonim „$nick” jest zarejestrowany na tym serwerze."
+msgstr ""
+"Adres e-mail dla pseudonimu „$nick” jest zablokowany na forach tego serwera."
 
 #: src/game_initialization/multiplayer.cpp:353
 #: src/game_initialization/multiplayer.cpp:355
@@ -6462,10 +6515,8 @@ msgid "Error while starting server: "
 msgstr "Błąd w czasie startowania serwera: "
 
 #: src/game_launcher.cpp:931
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Connection failed: "
-msgstr "Minął czas oczekiwania na połączenie"
+msgstr "Połączenie nie powiodło się: "
 
 #: src/generators/default_map_generator_job.cpp:711
 msgid "Random maps with an odd width aren't supported."
@@ -6571,34 +6622,24 @@ msgid "Only available during a scenario."
 msgstr "Dostępne tylko podczas scenariusza."
 
 #: src/help/help_impl.cpp:358 src/help/help_impl.cpp:394
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of Day Schedule"
-msgstr "Pora dnia: "
+msgstr "Pory dnia:"
 
 #: src/help/help_impl.cpp:385
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Jednostki praworządne: "
+msgstr "Jednostki praworządne:"
 
 #: src/help/help_impl.cpp:386
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Jednostki neutralne: "
+msgstr "Jednostki neutralne:"
 
 #: src/help/help_impl.cpp:387
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Jednostki chaotyczne: "
+msgstr "Jednostki chaotyczne:"
 
 #: src/help/help_impl.cpp:388
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "Jednostki półmroczne: "
+msgstr "Jednostki półmroczne:"
 
 #: src/help/help_impl.cpp:389
 msgid "Schedule"
@@ -6734,17 +6775,13 @@ msgstr "Polepszenia zdolności: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:528
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "PŻ: "
+msgstr "PŻ:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
 msgstr "Ruchy:"
 
@@ -6752,26 +6789,20 @@ msgstr "Ruchy:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:537
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
-msgstr "Zasięg wzroku: "
+msgstr "Wizja:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
-msgstr "Zasłanianie: "
+msgstr "Zasłanianie:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:548
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
 msgstr "Koszt:"
 
@@ -6779,8 +6810,6 @@ msgstr "Koszt:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:552
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
 msgstr "Charakter:"
 
@@ -6789,9 +6818,9 @@ msgstr "Charakter:"
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:559
 #, fuzzy
-#| msgid "Required XP: "
+#| msgid "Required XP:"
 msgid "Required XP:"
-msgstr "Wymagane PD: "
+msgstr "Wymagane PD:"
 
 #: src/help/help_topic_generators.cpp:568
 msgid "unit help^Attacks"
@@ -6962,6 +6991,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<komenda>]\n"
+"“all” = podgląd wszystkich komend, <komenda> = nazwa konkretnej komenty "
+"(podaje więcej szczegółów)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -6997,9 +7029,9 @@ msgstr "Składnia:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Alias:"
+msgstr[1] "Aliasy:"
+msgstr[2] "Aliasów:"
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -7030,45 +7062,35 @@ msgid "You have no units available to recruit."
 msgstr "Nie ma dostępnych jednostek do rekrutacji."
 
 #: src/menu_events.cpp:284
-#, fuzzy
-#| msgid "No units found."
 msgid "No unit recruited."
-msgstr "Nie znaleziono żadnych jednostek."
+msgstr "Nie zrekrutowano żadnych jednostek."
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "Wewnętrzny błąd. Proszę zgłosić to jako bug! Szczegóły:\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "Nie możesz zrekrutować jednostki typu $unit_type_name w tym momencie."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "Nie masz dość złota, by rekrutować tę jednostkę"
+msgstr ""
+"W tym momencie w planie nie będziesz mieć dość złota, by rekrutować tę "
+"jednostkę"
 
 #: src/menu_events.cpp:331
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "Nie masz dość złota, by rekrutować tę jednostkę"
+msgstr "Nie masz dość złota, by rekrutować tę jednostkę."
 
 #: src/menu_events.cpp:374
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "Zostałeś oddzielony od swoich żołnierzy i nie możesz ich przywoływać"
+msgstr "Zostałeś oddzielony od swoich żołnierzy i nie możesz ich przywoływać."
 
 #: src/menu_events.cpp:395
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7077,26 +7099,21 @@ msgstr ""
 "(Musisz mieć weteranów, którzy przetrwali wcześniejszy scenariusz)"
 
 #: src/menu_events.cpp:399
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
 msgstr "Obecnie nie możesz przywoływać w zaznaczonej lokalizacji."
 
 #: src/menu_events.cpp:411
-#, fuzzy
-#| msgid "No units found."
 msgid "No unit recalled."
-msgstr "Nie znaleziono żadnych jednostek."
+msgstr "Nie przywołano żadnych jednostek."
 
 #: src/menu_events.cpp:428
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "Musisz mieć co najmniej 1 sztukę złota, by przywołać jednostkę"
-msgstr[1] "Musisz mieć co najmniej 1 sztukę złota, by przywołać jednostkę"
-msgstr[2] "Musisz mieć co najmniej $cost sztuk złota, by przywołać jednostkę"
+msgstr[1] ""
+"Musisz mieć co najmniej $cost sztuki złota, by przywołać tę jednostkę."
+msgstr[2] ""
+"Musisz mieć co najmniej $cost sztuk złota, by przywołać tę jednostkę."
 
 #: src/menu_events.cpp:572
 msgid "You cannot end your turn yet!"
@@ -7171,6 +7188,8 @@ msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
+"[<strona> [on/off]]\n"
+"“on” = włącz kontrolę przez AI, “off” = strona jest kontrolowana przez gracza"
 
 #: src/menu_events.cpp:1222
 msgid "Switch a side to/from idle state."
@@ -7180,14 +7199,12 @@ msgstr "Przełącz stronę spod kontroli/pod kontrolę SI."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1226
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
-msgstr "do not translate the on/off"
+msgstr "[<strona> [on/off]]"
 
 #: src/menu_events.cpp:1227
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Zmień motyw gry"
 
 #: src/menu_events.cpp:1229
 msgid "<side> <nickname>"
@@ -7219,7 +7236,7 @@ msgstr "Debuguj warstwy terenu pod wskaźnikiem myszy."
 
 #: src/menu_events.cpp:1236
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "Pokazuj fps (klatki na sekundę)"
 
 #: src/menu_events.cpp:1238
 msgid "Save game."
@@ -7337,8 +7354,6 @@ msgstr "Pokaż określoną zmienną scenariusza."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1276
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
@@ -7356,7 +7371,7 @@ msgstr "Z powrotem ukryj w pomocy poznane jednostki."
 
 #: src/menu_events.cpp:1285
 msgid "<unit type id>"
-msgstr ""
+msgstr "<id typu jednostki>"
 
 #: src/menu_events.cpp:1285
 msgid "Create a unit."
@@ -7372,17 +7387,15 @@ msgstr "Przełącz całun dla bieżącego gracza."
 
 #: src/menu_events.cpp:1288
 msgid "<amount>"
-msgstr ""
+msgstr "<ilość>"
 
 #: src/menu_events.cpp:1288
 msgid "Give gold to the current player."
 msgstr "Daj złoto aktualnemu graczowi."
 
 #: src/menu_events.cpp:1289
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<pseudonim>"
+msgstr "<nazwa zdarzenia>"
 
 #: src/menu_events.cpp:1289
 msgid "Fire a game event."
@@ -7422,15 +7435,15 @@ msgstr "Nie można zautomatyzować strony sieciowej: „$side”."
 
 #: src/menu_events.cpp:1477
 msgid "Side '$side' is already droided."
-msgstr ""
+msgstr "Strona '$side' jest już pod kontrolą AI."
 
 #: src/menu_events.cpp:1487
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr ""
+msgstr "Strona '$side' jest teraz kontrolowana przez: AI."
 
 #: src/menu_events.cpp:1489
 msgid "Side '$side' controller is now controlled by: human."
-msgstr ""
+msgstr "Strona '$side' jest teraz kontrolowana przez: człowieka."
 
 #: src/menu_events.cpp:1497
 msgid "Can't droid a local ai side: '$side'."
@@ -7447,7 +7460,7 @@ msgstr "Nie można ustawić strony bezczynnej zamiast strony sieciowej: „$side
 #: src/menu_events.cpp:1523
 msgid "Can't idle local ai side: '$side'."
 msgstr ""
-"Nie można ustawić strony bezczynnej zamiast lokalnego AI strony: „$side”."
+"Nie można ustawić strony bezczynnej zamiast lokalnego AI strony: „$side”."
 
 #: src/menu_events.cpp:1583
 msgid "Can't change control of invalid side: '$side'."
@@ -7494,7 +7507,7 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 "Wykonanie kodu Lua w tym trybie spowoduje, że złośliwe dodatki lub inne "
-"zainstalowane programy będą mogły zagrozić bezpieczeństwu twojego "
+"zainstalowane programy będą mogły zagrozić bezpieczeństwu twojego "
 "komputera.\n"
 "\n"
 "Nie pozwól na to jeśli naprawdę nie wiesz na co się decydujesz."
@@ -7558,7 +7571,7 @@ msgstr "Różne frakcje sojuszników"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Gra ($name|, $scenario|) została utworzona"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7567,7 +7580,7 @@ msgstr "Wesnoth"
 
 #: src/mp_ui_alerts.cpp:82
 msgid "A player has joined"
-msgstr "Gracz dołączył do gry"
+msgstr "Gracz dołączył do gry"
 
 #: src/mp_ui_alerts.cpp:96
 msgid "A player has left"
@@ -7579,7 +7592,7 @@ msgstr "Gotowy do gry!"
 
 #: src/mp_ui_alerts.cpp:176
 msgid "Game has begun!"
-msgstr "Gra się rozpoczęła!"
+msgstr "Gra się rozpoczęła!"
 
 #: src/mp_ui_alerts.cpp:186
 msgid "$name has taken control"
@@ -7598,7 +7611,7 @@ msgstr "Napotkano teren o koszcie ruchu mniejszym niż 1."
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "czekam na"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7637,20 +7650,20 @@ msgstr ""
 "grę?"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Czy na pewno poddać tę grę?"
+msgstr ""
+"\n"
+"Czy chcesz zapisać grę?"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "Gra została zapisana."
+msgstr ""
+"Gra zakończona.\n"
+"Powód: "
 
 #: src/playmp_controller.cpp:368
 msgid ""
@@ -7726,12 +7739,12 @@ msgid "Save and abort game"
 msgstr "Zapisz i opuść grę"
 
 #: src/playturn.cpp:298
-#, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr "Gracz $player opuścił grę. Co chcesz zrobić?"
+msgstr ""
+"Gracz $player, który kontrolował stronę $side_drop opuścił grę. Co chcesz "
+"zrobić?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7751,17 +7764,15 @@ msgstr "Typ: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Strona:"
 
 #: src/reports.cpp:257
 msgid "Level: "
 msgstr "Poziom: "
 
 #: src/reports.cpp:262
-#, fuzzy
-#| msgid "Advancements"
 msgid "Advancements:"
-msgstr "Awansów"
+msgstr "Awansów:"
 
 #: src/reports.cpp:275
 msgid "No advancement"
@@ -7858,16 +7869,12 @@ msgid "Defense: "
 msgstr "Obrona: "
 
 #: src/reports.cpp:620 src/reports.cpp:621
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "zasięg wzroku:"
+msgstr "wizja:"
 
 #: src/reports.cpp:625 src/reports.cpp:626
-#, fuzzy
-#| msgid "Programming"
 msgid "jamming:"
-msgstr "Programowanie"
+msgstr "zasłanianie:"
 
 #: src/reports.cpp:655
 msgid "Movement Costs:"
@@ -7951,7 +7958,7 @@ msgstr "Broń specjalna: "
 
 #: src/reports.cpp:953
 msgid "weapon^None"
-msgstr ""
+msgstr "Brak"
 
 #: src/reports.cpp:982
 msgid "Total damage"
@@ -7965,16 +7972,12 @@ msgstr[1] "Ataki"
 msgstr[2] "Ataków"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Pora dnia: "
+msgstr "Pory dnia:"
 
 #: src/reports.cpp:1177
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Pora dnia: "
+msgstr "Pora dnia:"
 
 #: src/reports.cpp:1178 src/reports.cpp:1220
 msgid "Lawful units: "
@@ -8028,12 +8031,6 @@ msgid "Units"
 msgstr "Jednostki"
 
 #: src/reports.cpp:1345
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8042,31 +8039,26 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "Wydatki ponoszone pod koniec każdej tury na utrzymanie armii. Pierwsza "
-"liczba oznacza ilość złota, która zostanie potrącona. Druga to całkowity "
-"koszt utrzymania, w tym część pokryta przez wioski - innymi słowy, ilość "
-"złota, która zostałaby potrącona, gdyby wszystkie wioski zostały utracone."
+"liczba oznacza ilość złota, która zostanie potrącona. Jest równa ilości "
+"poziomów jednostek niewspieranych przez wioski. Druga to całkowity koszt "
+"utrzymania, w tym część pokryta przez wioski - innymi słowy, ilość złota, "
+"która zostałaby potrącona, gdyby wszystkie wioski zostały utracone."
 
 #: src/reports.cpp:1345
 msgid "Upkeep"
 msgstr "Utrzymanie"
 
 #: src/reports.cpp:1382
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "Dochód"
+msgstr "Dochód netto"
 
 #: src/reports.cpp:1382
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"Ilość złota otrzymywana każdej tury z kontrolowanych wiosek lub ilość złota "
-"tracona z powodu kosztu utrzymania jednostek."
+"Ilość złota, którą zyskujesz lub tracisz każdej tury, po wzięciu pod uwagę "
+"dochodu z kontrolowanych wiosek i opłaty za utrzymanie jednostek."
 
 #: src/reports.cpp:1550
 msgid "Observers:"
@@ -8078,7 +8070,7 @@ msgstr "Zegar"
 
 #: src/reports.cpp:1603
 msgid "Battery"
-msgstr ""
+msgstr "Bateria"
 
 #: src/reports.cpp:1631
 msgid "Countdown until your turn automatically ends."
@@ -8365,20 +8357,18 @@ msgstr ""
 "$player"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side(s) $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] "oczekiwanie na $desc ze stron(y) $sides"
-msgstr[1] "oczekiwanie na $desc ze stron(y) $sides"
-msgstr[2] "oczekiwanie na $desc ze stron(y) $sides"
+msgstr[0] "oczekiwanie na $desc ze strony $sides"
+msgstr[1] "oczekiwanie na $desc ze stron $sides"
+msgstr[2] "oczekiwanie na $desc ze stron $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "czekam na"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8469,14 +8459,11 @@ msgstr[2] "$number punktów ruchu"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> ruch"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> ruchy"
-msgstr[2] "<span color=\"$color\">$number_or_percent</span> ruchów"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> punkt ruchu"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> punkty ruchu"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> punktów ruchu"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
@@ -8574,10 +8561,8 @@ msgid "$year AF"
 msgstr "$year Po Upadku"
 
 #: src/wesnothd_connection.cpp:402
-#, fuzzy
-#| msgid "Connect to Server"
 msgid "Disconnected from server."
-msgstr "Połącz z serwerem"
+msgstr "Rozłączono z serwerem"
 
 #: src/whiteboard/manager.cpp:1123
 msgid "SHOW ALL allies’ plans"
@@ -8682,13 +8667,13 @@ msgstr "Opcje planowania"
 #~ "\n"
 #~ msgstr ""
 #~ "Na Wesnoth to wiele niesamowitych historii czekających na odkrycie. "
-#~ "Walcz, by odzyskać tron Wesnoth, którego jesteś dziedzicem... Wejdź w "
+#~ "Walcz, by odzyskać tron Wesnoth, którego jesteś dziedzicem... Wejdź w "
 #~ "rolę młodego oficera wysłanego strzec granicznego posterunku, gdzie czeka "
 #~ "go niemiła niespodzianka... Poprowadź brutalną wyprawę ku zjednoczeniu "
 #~ "plemion orków... Zniszcz hordę nieumarłych wojowników przyzwanych przez "
 #~ "zepsutego nekromantę, który na dodatek wziął twojego brata za "
 #~ "zakładnika... Przeprowadź grupę elfów ocalonych z kataklizmu przez "
-#~ "epickie poszukiwania ich nowego domu... Zemścij się na orkach używając "
+#~ "epickie poszukiwania ich nowego domu... Zemścij się na orkach używając "
 #~ "ohydnej sztuki nekromacji...\n"
 #~ "\n"
 #~ "Co najmniej dwieście typów jednostek, szesnaście ras, siedem głównych "
@@ -8764,7 +8749,7 @@ msgstr "Opcje planowania"
 #~ msgstr ""
 #~ "Nie udało się zapisać zrzutu ekranu.\n"
 #~ "\n"
-#~ "Upewnij się, że jest wystarczająca ilość miejsca na dysku, na którym "
+#~ "Upewnij się, że jest wystarczająca ilość miejsca na dysku, na którym "
 #~ "Wesnoth zapisuje pliki zasobów gracza i że uprawienia są odpowiednio "
 #~ "ustawione."
 

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-08 05:20-0400\n"
-"PO-Revision-Date: 2018-04-16 23:48+0200\n"
+"PO-Revision-Date: 2020-08-21 13:18+0200\n"
 "Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
 "Language: pl_PL\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. [terrain_type]: id=fence
@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Gdy rzeka jest w jakimś miejscu bardzo płytka, to jej przekroczenie nie "
 "nastręcza jednostkom lądowym żadnych trudności. Co więcej, stworzenia "
-"najlepiej przystosowane do pływania również są w takich miejscach w pełni "
+"najlepiej przystosowane do pływania również są w takich miejscach w pełni "
 "mobilne. Jeśli chodzi o zasady gry, to bród rzeczny traktowany jest jako "
 "trawiasta równina lub płytka woda, w zależności od tego, która z tych opcji "
 "daje jednostce najlepsze premie do obrony i ruchu."
@@ -251,19 +251,14 @@ msgstr "Piaski pustyni"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
-"<italic>text='Pustynie'</italic> mają inną budowę niż małe łachy piasku czy "
-"plaże, ale na potrzeby gry zachowują się identycznie. Patrz "
-"<ref>dst='terrain_sand' text='piasek'</ref>."
+"<italic>text='Pustynie'</italic> mają inną budowę niż małe łachy piasku czy "
+"plaże, ale na potrzeby gry zachowują się identycznie. Patrz <ref>dst='.."
+"terrain_sand' text='piasek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -288,9 +283,9 @@ msgid ""
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
 "Niestabilność <italic>text='piasku'</italic> powoduje, że większość "
-"jednostek ma problemy z poruszaniem się po nim, co czynie je podatnymi na "
+"jednostek ma problemy z poruszaniem się po nim, co czynie je podatnymi na "
 "atak. W przeciwieństwie do nich, wężowate ciała jaszczurzych ras pozwalają "
-"dużo łatwiej się po nim przemieszczać.\n"
+"dużo łatwiej się po nim przemieszczać.\n"
 "\n"
 "Większość jednostek ma na piasku obronę w zakresie od 20% do 40%."
 
@@ -305,7 +300,7 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
-"Każdy podróżnik cieszy się na widok oazy. Pozawala ona jednostkom leczyć się "
+"Każdy podróżnik cieszy się na widok oazy. Pozawala ona jednostkom leczyć się "
 "tak, jakby stacjonowały w wiosce, ale nie zapewnia dochodu ani premii "
 "obronnej."
 
@@ -687,7 +682,7 @@ msgstr "Oświetlony grzybowy gaj"
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:961 data/core/terrain.cfg:962
 msgid "Rockbound Cave"
-msgstr "Kamienista jaskinia"
+msgstr "Skalna jaskinia"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
@@ -704,6 +699,18 @@ msgid ""
 "\n"
 "Occasionally caves are <italic>text='illuminated'</italic>."
 msgstr ""
+"Teren <italic>text='skalnej jaskini'</italic> jest utworzony przez działanie "
+"wody i wiatru, przenoszących erodujące cząsteczki, które rzeźbią skały. "
+"Przypomina wyboistą podziemną pieczarę, która ułatwia bronienie się, ale "
+"jest trudna do przemierzenia przez większość jednostek. Tylko mieszkańcy "
+"jaskiń, tacy jak krasnoludy i trolle są w pełni zdolni do nawigacji w tym "
+"terenie.\n"
+"\n"
+"Większość jednostek ma około 50% obrony terenowej w skalnych jaskiniach, "
+"podczas gdy obrona kawalerii jest ograniczona do 40%. Krasnoludy, dzięki "
+"swojemu małemu rozmiarowi, cieszą się obroną 60% w skalnych jaskiniach.\n"
+"\n"
+"Zdarza się, że jaskinie są <italic>text='oświetlone'</italic>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -761,10 +768,10 @@ msgstr ""
 "Zagrożenia wynikające z prób chodzenia po <italic>text='lawie'</italic> są "
 "dość oczywiste. Jeśli chodzi o możliwości ruchu, lawa traktowana jest jak "
 "<ref>dst='terrain_unwalkable' text='teren nie do przebycia'</ref> i może "
-"zostać przekroczona tylko przez jednostki mogące wznieść się ponad nią na "
+"zostać przekroczona tylko przez jednostki mogące wznieść się ponad nią na "
 "bezpieczną wysokość. Stopiona skała świeci się, oświetlając przestrzeń nad "
-"nią, co zapewnia praworządnym jednostkom premię do ataku, a chaotycznym taką "
-"premię odbiera."
+"nią, co zapewnia praworządnym jednostkom premię do ataku, a chaotycznym taką "
+"premię odbiera."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:1082
@@ -1129,8 +1136,15 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"Mermeni i nagi zamieszkują <italic>text='zatopione wioski'</italic>. "
-"Stworzenia mieszkające w wodzie czują się tu jak w domu, ale "
+"Mermeni i nagi zamieszkują <italic>text='zatopione wioski'</italic>. "
+"Stworzenia mieszkające w wodzie czują się tu jak w domu, ale mieszkańcy "
+"lądów mają trudności w poruszaniu się i bronieniu w tych wioskach. Jednak, "
+"jak w każdej wiosce, udogodnienia są dostępne dla wszystkich stworzeń, co "
+"pozwala jednostkom leczyć rany. Każda jednostka przebywająca w wiosce "
+"odzyskuje osiem punktów życia każdej tury lub jest uzdrowiona z trucizny.\n"
+"\n"
+"Mermeni i nagi mają 60% obrony terenowej w zatopionych wioskach, podczas gdy "
+"jednostki lądowe zwykle mają tam niską obronę terenową."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1845
@@ -1515,7 +1529,7 @@ msgstr "Poza mapą"
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2668
 msgid "Fake Map Border"
-msgstr "Nieprawdziwa krawędź mapy"
+msgstr "Nieprawdziwa krawędź mapy"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -1608,10 +1622,10 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 "<italic>text='Wzgórza'</italic> reprezentują mocno nierówny teren,\n"
-"którego obniżenia i wzniesienia dają pewne możliwości ukrycia się. "
-"Większość żołnierzy ma trudności w poruszaniu się po nich. Krasnoludy, "
-"trolle i orkowie znają ten teren wystarczająco dobrze, by przekraczać go bez "
-"spowolnienia. Kawaleria ma trudności w poruszaniu się po wzgórzach, tak że "
+"którego obniżenia i wzniesienia dają pewne możliwości ukrycia się. Większość "
+"żołnierzy ma trudności w poruszaniu się po nich. Krasnoludy, trolle i "
+"orkowie znają ten teren wystarczająco dobrze, by przekraczać go bez "
+"spowolnienia. Kawaleria ma trudności w poruszaniu się po wzgórzach, tak że "
 "nie pomaga jej on w obronie.\n"
 "\n"
 "Większość jednostek ma na wzgórzach 50% obrony, choć kawaleria jest "
@@ -1619,17 +1633,6 @@ msgstr ""
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2791
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
-#| "Swamps slow down nearly everyone, and inhibit their ability to defend "
-#| "themselves. An exception to this is any race bodily skilled in navigating "
-#| "water; these receive both full movement and a defensive bonus. Those that "
-#| "make their living in the wetlands are also adept at using this terrain "
-#| "for cover.\n"
-#| "\n"
-#| "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
-#| "all generally enjoy 60%."
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1641,29 +1644,17 @@ msgid ""
 "Most units make do with 30% defense in swamps. Merfolk, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
-"<italic>text='Bagna'</italic> reprezentują dowolne mokradła.\n"
+"<italic>text='Bagna'</italic> reprezentują dowolny podmokły teren.\n"
 "Bagna spowalniają prawie każdego i utrudniają bronienie się. Wyjątek stanowi "
-"tu każda rasa, której ciała dostosowane są do poruszania w wodzie - "
-"poruszają się w nich bez przeszkód i otrzymują premię do obrony. Ci, którzy "
-"żyją w mokradłach, potrafią też dobrze kryć się w tym terenie.\n"
+"tu każda rasa, której ciała dostosowane są do poruszania w wodzie - takie "
+"jednostki poruszają się w nich bez przeszkód i otrzymują premię do obrony. "
+"Ci, którzy żyją w mokradłach, potrafią też dobrze kryć się w tym terenie.\n"
 "\n"
 "Większość jednostek ma w bagnach 30% obrony. Mermeni, nagi i jaszczury "
-"zasadniczo cieszą się 60% obrony."
+"zasadniczo cieszą się 60% obrony."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2804
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Shallow water'</italic> represents any body of water deep "
-#| "enough to come up to roughly a man’s waist. This is enough to slow down "
-#| "nearly anyone and leave them wide open to attack. Dwarves, given that the "
-#| "water reaches up almost to their heads, have an extremely hard time of "
-#| "this. The exception is any race whose bodies naturally lend themselves to "
-#| "swimming, for which they receive a considerable defensive bonus and full "
-#| "movement.\n"
-#| "\n"
-#| "Most units make do with 20 to 30% defense in shallow water, whereas both "
-#| "naga and mermen enjoy 60%."
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1679,12 +1670,12 @@ msgstr ""
 "<italic>text='Płytka woda'</italic> reprezentuje zbiorniki wodne na tyle "
 "głębokie, by sięgnąć człowiekowi do pasa. Wystarczy to, by spowolnić prawie "
 "każdego i wystawić go na ataki. Krasnoludy, zaważywszy na to, że woda sięga "
-"im prawie do samej głowy, mają tu szczególnie ciężką przeprawę. Wyjątek "
+"im prawie do samej głowy, mają tu szczególnie ciężką przeprawę. Wyjątek "
 "stanowią rasy, których ciała są w naturalny sposób przystosowane do "
 "pływania, dzięki czemu otrzymują pokaźną premię do obrony i pełne możliwości "
 "ruchu.\n"
 "\n"
-"Większość jednostek ma w płytkiej wodzie obronę na poziomie od 20% do 30%, "
+"Większość jednostek ma w płytkiej wodzie obronę na poziomie od 20% do 30%, "
 "podczas gdy nagi i mermeni cieszą się 60% obrony."
 
 #. [terrain_type]: id=castle
@@ -1701,10 +1692,10 @@ msgid ""
 msgstr ""
 "<italic>text='Zamki'</italic> to dowolne trwałe fortyfikacje.\n"
 "Prawie wszystkie jednostki stacjonujące w zamkach otrzymują pokaźną premię "
-"do obrony, a większość jednostek może się w nich poruszać bez przeszkód. "
+"do obrony, a większość jednostek może się w nich poruszać bez przeszkód. "
 "Wypełnienie zamku jednostkami przesądza o jego potencjale obronnym. Jeśli "
 "każde pole nie jest zajęte przez jednostkę, wróg może po prostu wśliznąć się "
-"do zamku i otrzymać taką samą premię do obrony jak wszyscy inni w jego "
+"do zamku i otrzymać taką samą premię do obrony jak wszyscy inni w jego "
 "wnętrzu.\n"
 "\n"
 "Większość jednostek ma w zamku 60% obrony."
@@ -1734,15 +1725,6 @@ msgstr ""
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2845
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deep water'</italic> represents any body of water deep "
-#| "enough to cover a man’s head.\n"
-#| "Most units cannot enter deep water: it is the domain of units which can "
-#| "either fly, or are exceptionally strong swimmers.\n"
-#| "\n"
-#| "Mermen and naga both receive 50% defense in deep water, with full "
-#| "movement."
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -1805,13 +1787,13 @@ msgstr ""
 "<italic>text='Lasy'</italic> reprezentują zadrzewione tereny z mocno "
 "rozrośniętym runem, które utrudnia przejście. Choć spowalniają praktycznie "
 "wszystkich, to lasy oferują większości jednostek lepszą obronę niż otwarty "
-"teren. Jednak kawaleria ma takie trudności w przemieszczaniu się po nich, że "
+"teren. Jednak kawaleria ma takie trudności w przemieszczaniu się po nich, że "
 "niweluje to całkowicie zysk związany z możliwością ukrycia się. Elfy "
 "stanowią wyjątek od tych ogólnych zasad rządzących lasami. Nie tylko "
-"przemieszają się po nich bez przeszkód, to jeszcze otrzymują pokaźną premię "
-"do obrony. Krasnoludy stanowią kolejny wyjątek: choć są w stanie "
-"kroczyć lasami bez utraty szybkości, to jest to dla nich teren tak obcy, że "
-"nie otrzymują w nim premii do obrony.\n"
+"przemieszają się po nich bez przeszkód, to jeszcze otrzymują pokaźną premię "
+"do obrony. Krasnoludy stanowią kolejny wyjątek: choć są w stanie kroczyć "
+"lasami bez utraty szybkości, to jest to dla nich teren tak obcy, że nie "
+"otrzymują w nim premii do obrony.\n"
 "\n"
 "Większość jednostek ma w lasach 50% obrony, ale kawaleria jest ograniczona "
 "do 30%. Z drugiej strony elfy otrzymują w lasach obronę z zakresu od 60% do "
@@ -1836,11 +1818,11 @@ msgid ""
 msgstr ""
 "<italic>text='Zamarznięty'</italic> teraz reprezentuje dowolną płaską "
 "przestrzeń pokrytą przez śnieg lub lód.\n"
-"Większość jednostek zostaje spowolniona w tym terenie i ma problemy z "
-"obroną. Warto zauważyć, z jednostki pływające, włączając w to umiejące "
-"oddychać pod wodą, nie mogą pływać pod lodem.\n"
+"Większość jednostek zostaje spowolniona w tym terenie i ma problemy z "
+"obroną. Warto zauważyć, z jednostki pływające, włączając w to umiejące "
+"oddychać pod wodą, nie mogą pływać pod lodem.\n"
 "\n"
-"Większość jednostek ma na zamarzniętym terenie obronę w zakresie od 20% do "
+"Większość jednostek ma na zamarzniętym terenie obronę w zakresie od 20% do "
 "40%."
 
 #. [terrain_type]: id=village
@@ -1857,7 +1839,7 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
-"<italic>text='Wioski'</italic> reprezentują dowolną grupę budynków, ludzkich "
+"<italic>text='Wioski'</italic> reprezentują dowolną grupę budynków, ludzkich "
 "lub innych ras.\n"
 "Prawie wszystkie jednostki, nawet kawaleria, dobrze poruszają się w "
 "wioskach, a większość jednostek stacjonując w wiosce otrzymuje premię do "
@@ -1883,7 +1865,7 @@ msgid ""
 "smash through thick walls of stone."
 msgstr ""
 "Istnieją przeszkody nie do przebycia nawet dla najbardziej zdeterminowanych "
-"podróżników, a zaliczają się do nich kamienne ściany oraz góry tak wysokie i "
+"podróżników, a zaliczają się do nich kamienne ściany oraz góry tak wysokie i "
 "strome, że przez cały czas spowijają je chmury. Nawet latające stworzenia "
 "nie mogą przemieszczać się między poszarpanymi szczytami wznoszącymi się w "
 "rozrzedzonym powietrzu, tak jak nawet najgwałtowniejszy troll nie przebije "
@@ -1905,7 +1887,7 @@ msgstr ""
 "<italic>text='Nieprzebyty teren'</italic> określa dowolną przepaść lub "
 "wąwóz, które, jak nazwa wskazuje, nie mogą zostać przekroczone piechotą. "
 "Przepaść charakteryzują strome ściany, których pokonanie zajęłoby dni. Jeśli "
-"chodzi o rozgrywkę, to tylko latające jednostki mogą przemieszczać się w tym "
+"chodzi o rozgrywkę, to tylko latające jednostki mogą przemieszczać się w tym "
 "terenie."
 
 #. [terrain_type]: id=rails
@@ -2448,10 +2430,8 @@ msgstr "Modyfikacje"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:426
-#, fuzzy
-#| msgid "Save Game"
 msgid "Save random seed"
-msgstr "Zapisz grę"
+msgstr "Zapisz losowe ziarno"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:428
@@ -2471,10 +2451,8 @@ msgstr "Trudność"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
-msgstr "Wybierz poziom trudności:"
+msgstr "Wybierz trudność:"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -3055,7 +3033,7 @@ msgstr "Wyjdź"
 #. [label]: id=title
 #: data/gui/window/game_cache_options.cfg:36
 msgid "WML Cache"
-msgstr "Pamięć podręczna WML"
+msgstr "Pamięć podręczna WML"
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:53
@@ -3070,8 +3048,8 @@ msgstr ""
 "wieloosobowych i wielu innych dodatków w pamięci podręcznej, aby "
 "przyspieszyć proces ładowania gry. Te pliki mogą zostać bezpiecznie usunięte "
 "celem odzyskania miejsca. Jeśli występują problemy z ładowaniem gry można "
-"usunąć wszystkie pliki lub tylko te niepotrzebne, zapisane przez "
-"poprzednią wersję gry."
+"usunąć wszystkie pliki lub tylko te niepotrzebne, zapisane przez poprzednią "
+"wersję gry."
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:81
@@ -3151,7 +3129,7 @@ msgstr "Zmień poziom trudności"
 #. [toggle_button]: id=change_difficulty
 #: data/gui/window/game_load.cfg:466
 msgid "Change campaign difficulty before loading"
-msgstr "Zmień trudność kampanii przez załadowaniem"
+msgstr "Zmień trudność kampanii przez załadowaniem"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/window/game_load.cfg:507
@@ -3341,7 +3319,7 @@ msgstr "Dodatki:"
 #. [grid]
 #: data/gui/window/game_version.cfg:136
 msgid "Cache:"
-msgstr "Pamięć podręczna:"
+msgstr "Pamięć podręczna:"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:161
@@ -3601,7 +3579,7 @@ msgstr "Wejdź z zasłoniętą mapą"
 #. [option]
 #: data/gui/window/lobby_main.cfg:469 data/gui/window/lobby_main.cfg:622
 msgid "Do not show the map until given control of a side"
-msgstr "Nie pokazuj mapy dopóki nie otrzymasz kontroli nad jakąś stroną"
+msgstr "Nie pokazuj mapy dopóki nie otrzymasz kontroli nad jakąś stroną"
 
 #. [label]
 #: data/gui/window/lobby_main.cfg:523 data/gui/window/lobby_main.cfg:729
@@ -3669,10 +3647,8 @@ msgstr "Wyrzuć i zbanuj"
 
 #. [button]: id=stopgame
 #: data/gui/window/lobby_player_info.cfg:274
-#, fuzzy
-#| msgid "Load Game"
 msgid "Stop Game"
-msgstr "Wczytaj grę"
+msgstr "Zatrzymaj grę"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
@@ -3701,10 +3677,8 @@ msgstr ""
 
 #. [row]
 #: data/gui/window/logging.cfg:140
-#, fuzzy
-#| msgid "Visible in fog"
 msgid "Disable logging"
-msgstr "Widoczne we mgle"
+msgstr "Wyłącz zapisywanie danych w logach"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -3714,7 +3688,7 @@ msgstr "Wyczyść konsolę"
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:118
 msgid "Clear the log area"
-msgstr "Wyczyść listę komunikatów"
+msgstr "Wyczyść listę komunikatów"
 
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
@@ -3822,12 +3796,12 @@ msgstr "Gotowa do rozpoczęcia:"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
 msgid "When the game you are hosting is ready to start"
-msgstr "Gdy założona przez ciebie gra może się zacząć"
+msgstr "Gdy założona przez ciebie gra może się zacząć"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:198
 msgid "Game has begun:"
-msgstr "Gra się zaczęła:"
+msgstr "Gra się zaczęła:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:198
@@ -3842,21 +3816,17 @@ msgstr "Zmiana tury:"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
 msgid "When a new turn has begun"
-msgstr "Gdy zaczęła się nowa kolejka"
+msgstr "Gdy zaczęła się nowa kolejka"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created:"
-msgstr "Dane gry:"
+msgstr "Gra utworzona:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "Gdy zaczęła się nowa kolejka"
+msgstr "Gdy nowa gra została utworzona"
 
 #. [button]: id=orb_defaults
 #. [button]: id=btn_reset_hotkeys
@@ -3870,7 +3840,7 @@ msgstr "Domyślne"
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
 msgid "Reset all options to their default values"
-msgstr "Przywróć domyślne wartości wszystkich opcji"
+msgstr "Przywróć domyślne wartości wszystkich opcji"
 
 #. [label]: id=nick_title
 #: data/gui/window/mp_change_control.cfg:75
@@ -3965,7 +3935,7 @@ msgstr "Modyfikator doświadczenia"
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
 msgid "The amount of experience a unit needs to advance"
-msgstr "Ilość doświadczenia potrzebna jednostce do awansu"
+msgstr "Ilość doświadczenia potrzebna jednostce do awansu"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:372
@@ -3976,7 +3946,7 @@ msgstr "Mgła wojny"
 #: data/gui/window/mp_create_game.cfg:373
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
-"Wrogie jednostki są niewidoczne jeśli nie są w zasięgu twoich jednostek"
+"Wrogie jednostki są niewidoczne jeśli nie są w zasięgu twoich jednostek"
 
 #. [toggle_button]: id=shroud
 #: data/gui/window/mp_create_game.cfg:389
@@ -4110,10 +4080,8 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "Surowsze sprawdzanie błędów synchronizacji"
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Zapisz powtórkę"
+msgstr "Prywatna powtórka"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
@@ -4215,7 +4183,7 @@ msgstr ""
 #. [button]: id=select_leader
 #: data/gui/window/mp_join_game.cfg:71 data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr "Wybierz frakcję i przywódcę tej strony"
+msgstr "Wybierz frakcję i przywódcę tej strony"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:155 data/gui/window/mp_staging.cfg:157
@@ -4359,10 +4327,8 @@ msgstr "Drużyna, do której należy ta strona"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-#, fuzzy
-#| msgid "The team color"
 msgid "This side’s color"
-msgstr "Kolory drużyny"
+msgstr "Kolor tej strony"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
@@ -4387,7 +4353,7 @@ msgstr "Zaawansowane"
 #. [button]: id=about
 #: data/gui/window/preferences.cfg:418 data/gui/window/title_screen.cfg:463
 msgid "Display the game version and build information"
-msgstr "Wyświetl wersję gry i informacje o tym jak została zbudowana"
+msgstr "Wyświetl wersję gry i informacje o tym jak została zbudowana"
 
 #. [label]
 #: data/gui/window/preferences/01_general.cfg:20
@@ -4524,7 +4490,7 @@ msgstr "Pamięć podręczna"
 #. [button]: id=cachemg
 #: data/gui/window/preferences/01_general.cfg:218
 msgid "Manage the game WML cache"
-msgstr "Zarządzaj pamięcią podręczną WML"
+msgstr "Zarządzaj pamięcią podręczną WML"
 
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:25
@@ -4587,10 +4553,8 @@ msgstr "T"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:162
-#, fuzzy
-#| msgid "Available in game"
 msgid "Available at main menu"
-msgstr "Dostępne w grze"
+msgstr "Dostępne w menu głównym"
 
 #. [button]: id=btn_add_hotkey
 #: data/gui/window/preferences/02_hotkeys.cfg:274
@@ -4673,7 +4637,7 @@ msgstr "Animowana woda"
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:129
 msgid "Display animated water graphics (can be slow)"
-msgstr "Wyświetlaj animowaną wodę (może być wolne)"
+msgstr "Wyświetlaj animowaną wodę (może być wolne)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:142
@@ -4978,7 +4942,7 @@ msgstr "Pokazuj kulę po niedokończonym ruchu"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:86
 msgid "Show moved orb"
-msgstr "Pokaż kulę zakończonego ruchu"
+msgstr "Pokaż kulę zakończonego ruchu"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:87
@@ -5030,7 +4994,7 @@ msgstr "Poddaj grę"
 #. [label]: id=lblMessage
 #: data/gui/window/surrender_quit.cfg:60
 msgid "Do you really want to surrender and quit the game?"
-msgstr "Czy na pewno chcesz poddać i opuścić grę?"
+msgstr "Czy na pewno chcesz poddać i opuścić grę?"
 
 #. [button]: id=quit_and_surrender
 #: data/gui/window/surrender_quit.cfg:85
@@ -5302,10 +5266,8 @@ msgstr ""
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Rename"
-msgstr "Przemianuj jednostkę"
+msgstr "Przemianuj"
 
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:405
@@ -5345,8 +5307,6 @@ msgid "Details:"
 msgstr "Szczegóły:"
 
 #: src/build_info.cpp:272
-#, fuzzy
-#| msgid "feature^JPG screenshots"
 msgid "feature^JPEG screenshots"
 msgstr "Zrzuty ekranów w plikach JPG"
 
@@ -5407,10 +5367,8 @@ msgid "The maximum text width is less than 1."
 msgstr "Maksymalna szerokość tekstu jest mniejsza niż 1."
 
 #: src/font/text.cpp:765
-#, fuzzy
-#| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
-msgstr "Tekst zawiera nieprawidłowe tagi: "
+msgstr "Tekst zawiera nieprawidłowy kod Pango: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5458,59 +5416,59 @@ msgstr ""
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num year"
-msgstr ""
+msgstr "$num rok"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num years"
-msgstr ""
+msgstr "$num lata"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num month"
-msgstr ""
+msgstr "$num miesiąc"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num months"
-msgstr ""
+msgstr "$num miesiące"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num week"
-msgstr ""
+msgstr "$num tydzień"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num weeks"
-msgstr ""
+msgstr "$num tygodnie"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num day"
-msgstr ""
+msgstr "$num dzień"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num days"
-msgstr ""
+msgstr "$num dni"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hour"
-msgstr ""
+msgstr "$num godzina"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hours"
-msgstr ""
+msgstr "$num godziny"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minute"
-msgstr ""
+msgstr "$num minuta"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minutes"
-msgstr ""
+msgstr "$num minuty"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num second"
-msgstr ""
+msgstr "$num sekunda"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num seconds"
-msgstr ""
+msgstr "$num sekundy"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -5522,7 +5480,7 @@ msgstr "Prostokąt nie mieści się na kanwie."
 
 #: src/gui/core/canvas.cpp:814
 msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "Zaokrąglony prostokąt nie mieści się na kanwie."
+msgstr "Zaokrąglony prostokąt nie mieści się na kanwie."
 
 #: src/gui/core/canvas.cpp:923 src/gui/core/canvas.cpp:928
 #: src/gui/core/canvas.cpp:933 src/gui/core/canvas.cpp:939
@@ -5664,16 +5622,12 @@ msgid "addons_order^Type ($order)"
 msgstr "Typ ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:234
-#, fuzzy
-#| msgid "addons_order^Last updated ($order)"
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Ostatnia aktualizacja ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:237
-#, fuzzy
-#| msgid "addons_order^First uploaded ($order)"
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "Data publikacji ($order)"
+msgstr "Pierwsza publikacja ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5736,24 +5690,22 @@ msgid "addon_state^Unknown"
 msgstr "Nieznany"
 
 #: src/gui/dialogs/addon/manager.cpp:368
-#, fuzzy
-#| msgid "Binding"
 msgid "ascending"
-msgstr "Przypisanie"
+msgstr "rosnąco"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:370
 msgid "oldest to newest"
-msgstr ""
+msgstr "od najstarszych do najnowszych"
 
 #: src/gui/dialogs/addon/manager.cpp:373
 msgid "descending"
-msgstr ""
+msgstr "malejąco"
 
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:375
 msgid "newest to oldest"
-msgstr ""
+msgstr "od najnowszych do najstarszych"
 
 #: src/gui/dialogs/addon/manager.cpp:393 src/gui/dialogs/chat_log.cpp:416
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -5849,19 +5801,15 @@ msgstr "Brak broni możliwej do użycia"
 
 #: src/gui/dialogs/attack_predictions.cpp:189
 msgid "Defender resistance vs"
-msgstr "Odporność broniącego się na"
+msgstr "Odporność broniącego się na"
 
 #: src/gui/dialogs/attack_predictions.cpp:191
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "Wrażliwość atakującego na"
+msgstr "Wrażliwość obrońcy na"
 
 #: src/gui/dialogs/attack_predictions.cpp:195
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "Odporność broniącego się na"
+msgstr "Odporność atakującego na"
 
 #: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Attacker vulnerability vs"
@@ -5869,10 +5817,8 @@ msgstr "Wrażliwość atakującego na"
 
 #: src/gui/dialogs/campaign_selection.cpp:323
 #: src/gui/dialogs/multiplayer/lobby.cpp:465
-#, fuzzy
-#| msgid "Modifications"
 msgid "active_modifications^None"
-msgstr "Modyfikacje"
+msgstr "Brak"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
@@ -5903,7 +5849,7 @@ msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
-"Wybrana modyfikacja nie jest kompatybilna z twoją konfiguracją.\n"
+"Wybrana modyfikacja nie jest kompatybilna z twoją konfiguracją.\n"
 "Proszę wybrać inną."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:71
@@ -5924,7 +5870,7 @@ msgstr "Wyspa"
 
 #: src/gui/dialogs/file_dialog.cpp:105
 msgid "Find File"
-msgstr "Znajdź plik"
+msgstr "Znajdź plik"
 
 #: src/gui/dialogs/file_dialog.cpp:181
 msgid "Open"
@@ -5987,7 +5933,7 @@ msgstr "B"
 
 #: src/gui/dialogs/game_cache_options.cpp:162
 msgid "Cache Cleaned"
-msgstr "Pamięć podręczna sprzątnięta"
+msgstr "Pamięć podręczna sprzątnięta"
 
 #: src/gui/dialogs/game_cache_options.cpp:163
 msgid "The game data cache has been cleaned."
@@ -5995,11 +5941,11 @@ msgstr "Pamięć podręczna danych gry została uprzątnięta."
 
 #: src/gui/dialogs/game_cache_options.cpp:165
 msgid "The game data cache could not be completely cleaned."
-msgstr "Pamięć podręczna danych gry nie mogła zostać całkowicie uprzątnięta."
+msgstr "Pamięć podręczna danych gry nie mogła zostać całkowicie uprzątnięta."
 
 #: src/gui/dialogs/game_cache_options.cpp:181
 msgid "Cache Purged"
-msgstr "Pamięć podręczna skasowana"
+msgstr "Pamięć podręczna skasowana"
 
 #: src/gui/dialogs/game_cache_options.cpp:182
 msgid "The game data cache has been purged."
@@ -6010,10 +5956,8 @@ msgid "The game data cache could not be purged."
 msgstr "Pliki pamięci podręcznej gry nie mogły zostać usunięte."
 
 #: src/gui/dialogs/game_load.cpp:264
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "Wybrana gra nie ma dostępnych stron!"
+msgstr "Wybrany plik jest nieprawidłowy: "
 
 #: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
@@ -6048,10 +5992,8 @@ msgid "Version: "
 msgstr "Wersja: "
 
 #: src/gui/dialogs/game_load.cpp:421
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications: "
-msgstr "Modyfikacje:"
+msgstr "Modyfikacje: "
 
 #: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^AI"
@@ -6086,7 +6028,7 @@ msgstr "Działa na $os"
 
 #: src/gui/dialogs/game_version_dialog.cpp:222
 msgid "version^N/A"
-msgstr "Nie dotyczy"
+msgstr "Niedostępny"
 
 #: src/gui/dialogs/label_settings.cpp:54
 msgid "Team Labels"
@@ -6187,12 +6129,12 @@ msgstr "Pobieranie danych poczekalni"
 #: src/gui/dialogs/lua_interpreter.cpp:690
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgstr ""
+"Konsola lua może być używana tylko w trybie debugowania! (Uruchom najpierw "
+"komendę ':debug')"
 
 #: src/gui/dialogs/lua_interpreter.cpp:691
-#, fuzzy
-#| msgid "Lua Console"
 msgid "lua console"
-msgstr "Konsola Lua"
+msgstr "konsola lua"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:103
 msgid "Selected Game"
@@ -6212,7 +6154,7 @@ msgstr "Inne gry"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:115
 msgid "Do you really want to log out?"
-msgstr "Czy na pewno chcesz się wylogować?"
+msgstr "Czy na pewno chcesz się wylogować?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:210
 msgid "Incompatible User-made Content."
@@ -6224,7 +6166,7 @@ msgid ""
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
-"Nie można dołączyć do tej gry ponieważ osoba, która ją założyła, ma "
+"Nie można dołączyć do tej gry ponieważ osoba, która ją założyła, ma "
 "przestarzałe wersje dodatków, które nie są kompatybilne z twoimi. Możesz "
 "chcieć jej zasugerować, żeby je zaktualizowała."
 
@@ -6248,19 +6190,15 @@ msgstr "Gry: wyświetlane $num_shown z $num_total"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "$game_name (Era: $era_name)"
-msgstr ""
+msgstr "$game_name (Era: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:450
-#, fuzzy
-#| msgid "addon_state^Not installed"
 msgid "era_or_mod^not installed"
-msgstr "Nie zainstalowany"
+msgstr "nie zainstalowany"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:453
-#, fuzzy
-#| msgid "Era:"
 msgid "Era"
-msgstr "Era:"
+msgstr "Era"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "Reloaded:"
@@ -6283,16 +6221,12 @@ msgid "Use map settings:"
 msgstr "Użyj ustawień mapy:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:497
-#, fuzzy
-#| msgid ""
-#| "One or more items need to be installed\n"
-#| "in order to join this game."
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 "Jeden lub więcej elementów musi zostać\n"
-"zainstalowanych, żeby dołączyć do tej gry."
+"zainstalowanych, żeby dołączyć do tej gry."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:522
 msgid "Observers allowed"
@@ -6303,21 +6237,15 @@ msgid "Observers not allowed"
 msgstr "Obserwatorzy niedopuszczani"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:800
-#, fuzzy
-#| msgid "Lobby"
 msgid "lobby"
-msgstr "Poczekalnia"
+msgstr "poczekalnia"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:960
-#, fuzzy
-#| msgid ""
-#| "Something is wrong with the addon version check database supporting the "
-#| "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
-"Coś jest nie w porządku z bazą wersji dodatków używaną przez poczekalnię "
+"Coś jest nie w porządku z bazą wersji dodatków używaną przez poczekalnię "
 "gier wieloosobowych. Proszę zgłosić to na https://bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
@@ -6326,7 +6254,7 @@ msgid ""
 "contact your package manager"
 msgstr ""
 "Ta wersja Wesnoth nie wspiera powiadomień systemowych, skontaktuj się z "
-"osobą, która przygotowała grę dla twojego systemu"
+"osobą, która przygotowała grę dla twojego systemu"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:104
 msgid "Side $side"
@@ -6371,7 +6299,7 @@ msgstr "Nie znaleziono er"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
 msgid "Independent: Random factions assigned independently"
-msgstr "Niezależne: frakcje są losowane niezależnie"
+msgstr "Niezależne: frakcje są losowane niezależnie"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
 msgid "No Mirror: No two players will get the same faction"
@@ -6386,11 +6314,11 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:535
 msgid "No eras available for this game."
-msgstr ""
+msgstr "Brak dostępnych er dla tej gry."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:738
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "od $min do $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:835
 msgid "The selected game has no sides!"
@@ -6398,10 +6326,8 @@ msgstr "Wybrana gra nie ma dostępnych stron!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:842
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected game can not be created."
-msgstr "Wybrana gra nie ma dostępnych stron!"
+msgstr "Wybrana gra nie może zostać utworzona."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:911
 msgid "Choose Starting Scenario"
@@ -6433,10 +6359,8 @@ msgstr "puste"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:126
-#, fuzzy
-#| msgid "Quit game"
 msgid "this game"
-msgstr "Opuść grę"
+msgstr "ta gra"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:360
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:96
@@ -6475,7 +6399,7 @@ msgstr "Nie jest na listach przyjaciół lub ignorowanych"
 #: src/gui/dialogs/preferences_dialog.cpp:853
 #: src/gui/dialogs/preferences_dialog.cpp:923
 msgid "No hotkey selected"
-msgstr ""
+msgstr "Nie wybrano skrótu klawiszowego"
 
 #: src/gui/dialogs/preferences_dialog.cpp:884
 msgid ""
@@ -6483,7 +6407,7 @@ msgid ""
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 "„<b>$hotkey_sequence|</b>” jest używana przez „<b>$old_hotkey_action|</b>”.\n"
-"Czy chcesz teraz przypisać ją do „<b>$new_hotkey_action|</b>”?"
+"Czy chcesz teraz przypisać ją do „<b>$new_hotkey_action|</b>”?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:890
 msgid "Reassign Hotkey"
@@ -6491,7 +6415,7 @@ msgstr "Przypisz inny klawisz skrótu"
 
 #: src/gui/dialogs/preferences_dialog.cpp:907
 msgid "All hotkeys have been reset to their default values."
-msgstr "Przywrócono domyślną konfigurację klawiszy skrótu."
+msgstr "Przywrócono domyślną konfigurację klawiszy skrótu."
 
 #: src/gui/dialogs/preferences_dialog.cpp:907
 msgid "Hotkeys Reset"
@@ -6507,12 +6431,13 @@ msgid ""
 "\n"
 "Try to save the screenshot as PNG instead."
 msgstr ""
+"Niewspierany format obrazu.\n"
+"\n"
+"Spróbuj zapisać zrzut ekranu w formacie PNG."
 
 #: src/gui/dialogs/statistics_dialog.cpp:64
-#, fuzzy
-#| msgid "Scenarios"
 msgid "All Scenarios"
-msgstr "Scenariusze"
+msgstr "Wszystkie scenariusze"
 
 #: src/gui/dialogs/statistics_dialog.cpp:151
 msgid "This Turn"
@@ -6548,7 +6473,7 @@ msgstr "Otrzymane"
 
 #: src/gui/dialogs/statistics_dialog.cpp:259
 msgid "$count|× $name"
-msgstr ""
+msgstr "$count|× $name"
 
 #: src/gui/dialogs/title_screen.cpp:174 src/hotkey/hotkey_command.cpp:91
 msgid "Screenshot"
@@ -6563,10 +6488,14 @@ msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"Ta jednostka nie może zostać przywołana, bo nie będziesz mieć wystarczającej "
+"ilości złota na tym etapie twojego planu."
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
+"Ta jednostka nie może zostać przywołana, bo nie masz wystarczającej ilości "
+"złota."
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -6631,17 +6560,13 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "Dołączono do pokoju <i>\"$name\"</i>"
 
 #: src/gui/widgets/chatbox.cpp:392
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
 "Nawiązano sesję wiadomości szeptanych z użytkownikiem <i>„$name”</i>. Jeśli "
 "nie chcesz otrzymywać wiadomości od tego użytkownika, wpis polecenie <i>/"
-"ignore $name</i>\n"
+"ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:631
 msgid "$player has entered the room"
@@ -6658,12 +6583,12 @@ msgstr "Wymagany widget '$id' nie został zdefiniowany."
 #: src/gui/widgets/label.cpp:153
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
-"Otwieranie odnośników nie jest wspierane, skontaktuj się z osobą, która "
-"przygotowała grę dla twojego systemu"
+"Otwieranie odnośników nie jest wspierane, skontaktuj się z osobą, która "
+"przygotowała grę dla twojego systemu"
 
 #: src/gui/widgets/label.cpp:172
 msgid "Do you want to open this link?"
-msgstr "Czy chcesz otworzyć ten odnośnik?"
+msgstr "Czy chcesz otworzyć ten odnośnik?"
 
 #: src/gui/widgets/label.cpp:203
 msgid "Copied link!"
@@ -6706,7 +6631,7 @@ msgstr "Nie wybrano"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
-msgstr ""
+msgstr "Potrzeba co najmniej 1 równoległego obiektu."
 
 #: src/gui/widgets/size_lock.cpp:86
 msgid "Invalid size."
@@ -6721,10 +6646,8 @@ msgid "The number of value_labels and values don't match."
 msgstr "Liczby elementów value_label i value się nie zgadzają."
 
 #: src/gui/widgets/stacked_widget.cpp:278
-#, fuzzy
-#| msgid "No stack defined."
 msgid "No stack layers defined."
-msgstr "Nie zdefiniowano stosu."
+msgstr "Nie zdefiniowano warstw stosu."
 
 #: src/gui/widgets/styled_widget.cpp:667
 msgid "Found a widget with a helptip and without a tooltip."
@@ -6894,7 +6817,7 @@ msgstr "Wybierz/Rusz/Atakuj"
 
 #: src/hotkey/hotkey_command.cpp:78
 msgid "Touch"
-msgstr ""
+msgstr "Dotyk"
 
 #: src/hotkey/hotkey_command.cpp:79
 msgid "Animate Map"
@@ -7025,10 +6948,8 @@ msgid "Continue Network Game"
 msgstr "Wznów grę sieciową"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Quit to Titlescreen"
 msgid "Quit to Main Menu"
-msgstr "Wróć do ekranu tytułowego"
+msgstr "Wróć do menu głównego"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Set Team Label"
@@ -7075,22 +6996,16 @@ msgid "Next Move"
 msgstr "Następny ruch"
 
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Cała mapa"
+msgstr "Widok: Cała mapa"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Kolejne drużyny"
+msgstr "Widok: Poszczególne drużyny"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Drużyna ludzi"
+msgstr "Widok: Drużyna ludzi"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"
@@ -7145,7 +7060,7 @@ msgstr "Zamknij mapę"
 
 #: src/hotkey/hotkey_command.cpp:164
 msgid "Switch Time of Day"
-msgstr "Zmień porę dnia"
+msgstr "Zmień porę dnia"
 
 #: src/hotkey/hotkey_command.cpp:166
 msgid "Switch Map"
@@ -7192,10 +7107,8 @@ msgid "Map Information"
 msgstr "Informacje o mapie"
 
 #: src/hotkey/hotkey_command.cpp:181
-#, fuzzy
-#| msgid "Selected game"
 msgid "Clear Selected Item Set"
-msgstr "Wybrana gra"
+msgstr "Wyczyść zaznaczony zbiór obiektóe"
 
 #: src/hotkey/hotkey_command.cpp:182
 msgid "Swap Foreground/Background Palette Item"
@@ -7203,7 +7116,7 @@ msgstr "Zamień paletę na pierwszym i drugim planie"
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Change Palette Group"
-msgstr "Zmień zestaw palet"
+msgstr "Zmień zestaw palet"
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid "Scroll Palette Left"
@@ -7343,7 +7256,7 @@ msgstr "Przełącz możliwość zmiany nazwy tej jednostki."
 
 #: src/hotkey/hotkey_command.cpp:204
 msgid "Assign Recruit List"
-msgstr "Przypisz listę rekrutów"
+msgstr "Przypisz listę rekrutów"
 
 #: src/hotkey/hotkey_command.cpp:204
 msgid "Assign the selected unit set as recruit list to the unit."
@@ -7528,10 +7441,8 @@ msgid "Draw Number of Bitmaps"
 msgstr "Rysuj liczbę bitmap"
 
 #: src/hotkey/hotkey_command.cpp:262
-#, fuzzy
-#| msgid "Rotate Selection"
 msgid "Save Selection to Area"
-msgstr "Obróć zaznaczenie"
+msgstr "Zapisz wybór do obszaru"
 
 #: src/hotkey/hotkey_command.cpp:263
 msgid "Rename Selected Area"
@@ -7655,7 +7566,7 @@ msgstr "Pokaż podpowiedź pomocy"
 
 #: src/hotkey/hotkey_command.cpp:299
 msgid "Show Lua Console"
-msgstr "Pokaż konsolę Lua"
+msgstr "Pokaż konsolę Lua"
 
 #: src/hotkey/hotkey_command.cpp:302
 msgid "Unrecognized Command"
