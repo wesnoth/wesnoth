@@ -1,4 +1,6 @@
 ## Version 1.15.4+dev
+ ### Language and i18n
+   * Updated translations: Polish
 
 ## Version 1.15.4
  ### Add-ons client
