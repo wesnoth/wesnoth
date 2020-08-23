@@ -3280,8 +3280,9 @@
 				460D897724DC77EB000B1ABC /* common */,
 				B5BB6B560F893DE000444FBF /* wesnothd */,
 			);
-			path = server;
-			sourceTree = "<group>";
+			name = server;
+			path = ../../src/server;
+			sourceTree = SOURCE_ROOT;
 		};
 		460D897724DC77EB000B1ABC /* common */ = {
 			isa = PBXGroup;
@@ -4685,8 +4686,7 @@
 				460D898124DC7830000B1ABC /* server.cpp */,
 				460D897E24DC7830000B1ABC /* server.hpp */,
 			);
-			name = wesnothd;
-			path = server;
+			path = wesnothd;
 			sourceTree = "<group>";
 		};
 		EC54017A1EBE0C2B00AE66EE /* preferences */ = {
