@@ -1,6 +1,10 @@
 ## Version 1.15.4+dev
  ### Language and i18n
    * Updated translations: Polish, Russian
+ ### Miscellaneous and bug fixes
+   * Minimum required version of OS X is now OS X 10.11 .
+ ### Packaging
+   * macOS package distributed through SourceForge is now a UDIF lzfse-compressed image. The image size may be slightly larger but opening and copying from this image is much faster.
 
 ## Version 1.15.4
  ### Add-ons client

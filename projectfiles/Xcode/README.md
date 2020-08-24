@@ -2,8 +2,8 @@
 This README describes the way to create the wesnoth release packages for macOS.
 
 ### Requirements for building Wesnoth
- * Xcode 5.1.1 or higher...
- * Mac OS X 10.8.5 or higher...
+ * Xcode 8.2.1 or higher...
+ * Mac OS X 10.11.6 or higher...
  * `git`
  * `scons` and `gettext` (if you want to compile translations)
 
@@ -26,7 +26,7 @@ Builds the lua library for Wesnoth.
 
 ## Configurations
 * **Release**:
-Builds for maximum (runtime) speed and compatibility; it builds for 64-bit, with the latest SDK, but targets 10.8. You do not however need 10.8 SDK to build it. This is what's used for official releases.
+Builds for maximum (runtime) speed and compatibility; it builds for 64-bit, with the latest SDK, but targets 10.11. You do not however need 10.11 SDK to build it. This is what's used for official releases.
 
 * **Debug**:
 Builds for maximum compiling speed, and uses the current OS as the SDK. If you just want to compile for testing things yourself, this is the way to go.
@@ -72,7 +72,7 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Now copy dmg template from `/PATH/TO/PROJECT/packaging/macOS/Wesnoth_dmg_packaging_template.dmg`
  * Convert this template to the R/W image using `hdiutil convert /PATH/TO/TEMPLATE.dmg -format UDRW -o /PATH/TO/NEW/RW_IMAGE.dmg` and mount it.
  * Copy new wesnoth package using `cp -R /PATH/TO/THE/EXPORTED/PACKAGE.app "/Volumes/The Battle for Wesnoth/The Battle for Wesnoth.app"`.
- * Unmount R/W image and convert it to final ro image using `hdiutil convert /PATH/TO/RW_IMAGE.dmg -format UDBZ -o /PATH/TO/NEW/IMAGE.dmg` command.
+ * Unmount R/W image and convert it to final ro image using `hdiutil convert /PATH/TO/RW_IMAGE.dmg -format ULFO -o /PATH/TO/NEW/IMAGE.dmg` command.
  * Rename disk image to match new release version. Example: `Wesnoth_1.15.2.dmg`
  * Sign newly created ro image using `codesign -s "Developer ID Application: Wesnoth, Inc (N5CYW96P9T)" /PATH/TO/NEW/IMAGE.dmg`. (You must have Wesnoth's signing certificate.)
  * Verify that you signed `.dmg` properly using `spctl -a -t open --context context:primary-signature -v /PATH/TO/NEW/IMAGE.dmg`.

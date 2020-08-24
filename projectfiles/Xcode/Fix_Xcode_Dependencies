@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Fix_Xcode_Dependencies
-# Martin Hrubý (hrubymar10), 2016 - 2018
+# Martin Hrubý (hrubymar10), 2016 - 2020
 # Victor Sergienko (singalen), 2018
 #
 
@@ -9,33 +9,33 @@ starttimestamp=$(date +%s)
 
 ###Functions
 time_interval_to_string() {
-        local START=$1
-        local END=$2
+  local START=$1
+  local END=$2
 
-        declare -i timestamp
-        declare -i days
-        declare -i hours
-        declare -i minutes
-        declare -i seconds
-        timestamp=$END-$START
+  declare -i timestamp
+  declare -i days
+  declare -i hours
+  declare -i minutes
+  declare -i seconds
+  timestamp=$END-$START
 
-        days=$timestamp/60/60/24
-        hours=$((($timestamp-($days*60*60*24))/60/60))
-        minutes=$((($timestamp-($days*60*60*24)-($hours*60*60))/60))
-        seconds=$((($timestamp-($days*60*60*24)-($hours*60*60)-($minutes*60))))
-        if [ $days -eq 0 ]; then
-        if [ $hours -eq 0 ]; then
-                if [ $minutes -eq 0 ]; then
-                echo "==> Operation took $seconds seconds ..."
-                else
-                echo "==> Operation took $minutes minutes and $seconds seconds ..."
-                fi
-        else
-                echo "==> Operation took $hours hours $minutes minutes and $seconds seconds ..."
-        fi
-        else
-        echo "==> Operation took $days days $hours hours $minutes minutes and $seconds seconds ..."
-        fi
+  days=$timestamp/60/60/24
+  hours=$((($timestamp-($days*60*60*24))/60/60))
+  minutes=$((($timestamp-($days*60*60*24)-($hours*60*60))/60))
+  seconds=$((($timestamp-($days*60*60*24)-($hours*60*60)-($minutes*60))))
+  if [ $days -eq 0 ]; then
+    if [ $hours -eq 0 ]; then
+      if [ $minutes -eq 0 ]; then
+        echo "==> Operation took $seconds seconds ..."
+      else
+        echo "==> Operation took $minutes minutes and $seconds seconds ..."
+      fi
+    else
+      echo "==> Operation took $hours hours $minutes minutes and $seconds seconds ..."
+    fi
+  else
+    echo "==> Operation took $days days $hours hours $minutes minutes and $seconds seconds ..."
+  fi
 }
 ###/Functions
 
@@ -43,44 +43,39 @@ starttimestamp=`date +%s`
 
 MY_PATH=$(cd `dirname $0` && pwd)
 if [ -z "$MY_PATH" ] ; then
-        # error; for some reason, the path is not accessible
-        # to the script (e.g. permissions re-evaled after suid)
-        echo 'Error: Script path is for some reason not accessible' >&2
-        exit 1  # fail
+  # error; for some reason, the path is not accessible
+  # to the script (e.g. permissions re-evaled after suid)
+  echo 'Error: Script path is for some reason not accessible' >&2
+  exit 1  # fail
 fi
-cd "$MY_PATH"
+cd "${MY_PATH}"
 
 if ! [ -d "The Battle for Wesnoth.xcodeproj" ]; then
-        echo "Error: I am in bad directory! I must be in wesnoth/projectfiles/Xcode !" >&2
-        exit 1
+  echo 'Error: I am in bad directory! I must be in wesnoth/projectfiles/Xcode !' >&2
+  exit 1
 fi
 
 if ! [ -x "$(command -v git)" ]; then
-        echo 'Error: Git is not installed. Use for example Homebrew to install git. https://brew.sh/' >&2
-        exit 1
+  echo 'Error: Git is not installed. Use for example Homebrew to install git. https://brew.sh/' >&2
+  exit 1
 fi
 
-if ! [ -d temp ]; then
-        mkdir temp
+if ! [ -d "temp" ]; then
+  mkdir "temp"
 fi
-cd temp
-if ! [ -d MacCompileStuff-1.14 ]; then
-        git clone -b 1.14 https://github.com/hrubymar10/MacCompileStuff MacCompileStuff-1.14
+cd "temp"
+if ! [ -d "MacCompileStuff-master" ]; then
+  git clone -b "master" --depth 1 "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-master"
 fi
-cd MacCompileStuff-1.14
-git pull
-cd ..
-cd ..
+cd "MacCompileStuff-master"
+git pull --depth 1
+cd "${MY_PATH}"
 
-if ! [ -L "Headers" ]; then
-        rm -rf Headers
-        ln -s temp/MacCompileStuff-1.14/Headers
-fi
+rm -rf "Headers"
+ln -s "temp/MacCompileStuff-master/Headers"
 
-if ! [ -L "lib" ]; then
-        rm -rf lib
-        ln -s temp/MacCompileStuff-1.14/lib
-fi
+rm -rf "lib"
+ln -s "temp/MacCompileStuff-master/lib"
 
 echo "==> DONE ..."
 echo
