@@ -303,14 +303,12 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("x", u.get_location().wml_x());
 	return_int_attrib("y", u.get_location().wml_y());
 	if(strcmp(m, "loc") == 0) {
-		lua_pushinteger(L, u.get_location().wml_x());
-		lua_pushinteger(L, u.get_location().wml_y());
-		return 2;
+		luaW_pushlocation(L, u.get_location());
+		return 1;
 	}
 	if(strcmp(m, "goto") == 0) {
-		lua_pushinteger(L, u.get_goto().wml_x());
-		lua_pushinteger(L, u.get_goto().wml_y());
-		return 2;
+		luaW_pushlocation(L, u.get_goto());
+		return 1;
 	}
 	return_int_attrib("side", u.side());
 	return_string_attrib("id", u.id());
