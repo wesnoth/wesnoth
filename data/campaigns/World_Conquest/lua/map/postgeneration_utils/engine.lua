@@ -87,7 +87,7 @@ function set_terrain_simul(cfg)
 			exact = r.exact ~= false,
 			per_thousand = 1000,
 			nlocs = r.nlocs,
-			known = r.known or f.filter_extra
+			known = r.known or r.filter_extra
 		}
 		if r.percentage then
 			r_new.per_thousand = r.percentage * 10
