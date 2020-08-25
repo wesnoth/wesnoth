@@ -1,5 +1,5 @@
 local on_event = wesnoth.require("on_event")
-local _ = wesnoth.textdomain 'wesnoth-World_Conquest'
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 local wc2_invest = {}
 

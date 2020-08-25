@@ -1,4 +1,4 @@
-local _ = wesnoth.textdomain 'wesnoth-World_Conquest'
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 local dialog_wml = wc2_invest_dialog
 
