@@ -1,6 +1,6 @@
 --creates the objectives of the wc2 scenarios.
 
-local _ = wesnoth.textdomain 'wesnoth-World_Conquest'
+local _ = wesnoth.textdomain 'wesnoth-wc'
 local strings = {
 	wct_victory_condition = _"Defeat all enemy leaders and commanders",
 	turns = _"Turns run out",

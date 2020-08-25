@@ -5,7 +5,7 @@
 ---- scenario                                         ----
 ----------------------------------------------------------
 
-local _ = wesnoth.textdomain "wesnoth-World_Conquest"
+local _ = wesnoth.textdomain "wesnoth-wc"
 
 
 -- speechs need be rewritten

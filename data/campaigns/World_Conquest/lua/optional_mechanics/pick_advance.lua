@@ -2,7 +2,7 @@
 -- Works independed from the reset of the wc2 code (but needs wc2_utils.lua)
 local on_event = wesnoth.require("on_event")
 local wc2_utils = wesnoth.require("./../game_mechanics/utils.lua")
-local _ = wesnoth.textdomain 'wesnoth-World_Conquest'
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 local pick_advance = {}
 

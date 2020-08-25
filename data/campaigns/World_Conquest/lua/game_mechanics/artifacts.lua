@@ -1,7 +1,7 @@
 local on_event = wesnoth.require("on_event")
 local helper = wesnoth.require("helper")
 
-local _ = wesnoth.textdomain 'wesnoth-World_Conquest'
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 local artifacts = {}
 artifacts.list = {}

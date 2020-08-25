@@ -1,6 +1,6 @@
 local helper = wesnoth.require("helper")
 local T = wml.tag
-local _ = wesnoth.textdomain 'wesnoth-World_Conquest'
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 local wc2_heroes = {}
 -- an array of wml tables, usually containing type,
