@@ -62,7 +62,7 @@ private:
 						  "2E419B,FFFFFF,0F0F0F,0000FF",
 						  "Blue"));
 
-		game_config::add_color_info(cfg);
+		game_config::add_color_info(game_config_view::wrap(cfg));
 	}
 
 	/** Sets up team color mapping

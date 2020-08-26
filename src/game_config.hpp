@@ -19,6 +19,7 @@ class color_range;
 
 #include "color.hpp"
 #include "tstring.hpp"
+#include "game_config_view.hpp"
 
 #include <vector>
 #include <map>
@@ -185,7 +186,7 @@ namespace game_config
 
 	void load_config(const config &cfg);
 
-	void add_color_info(const config& v);
+	void add_color_info(const game_config_view& v);
 	void reset_color_info();
 	const std::vector<color_t>& tc_info(const std::string& name);
 	const color_range& color_info(const std::string& name);

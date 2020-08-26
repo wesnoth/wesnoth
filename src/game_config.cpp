@@ -268,8 +268,8 @@ std::string
 
 } // sounds
 
-static void add_color_info(const config& v, bool build_defaults);
-void add_color_info(const config& v)
+static void add_color_info(const game_config_view& v, bool build_defaults);
+void add_color_info(const game_config_view& v)
 {
 	add_color_info(v, false);
 }
@@ -367,7 +367,7 @@ void load_config(const config &v)
 	shroud_prefix = v["shroud_prefix"].str();
 	fog_prefix    = v["fog_prefix"].str();
 
-	add_color_info(v, true);
+	add_color_info(game_config_view::wrap(v), true);
 
 	if(const config::attribute_value* a = v.get("flag_rgb")) {
 		flag_rgb = a->str();
@@ -442,7 +442,7 @@ void load_config(const config &v)
 	}
 }
 
-void add_color_info(const config& v, bool build_defaults)
+void add_color_info(const game_config_view& v, bool build_defaults)
 {
 	if(build_defaults) {
 		default_colors.clear();

@@ -214,7 +214,7 @@ void unit_type::build_full(
 
 	zoc_ = get_cfg()["zoc"].to_bool(level_ > 0);
 
-	game_config::add_color_info(get_cfg());
+	game_config::add_color_info(game_config_view::wrap(get_cfg()));
 
 	hp_bar_scaling_ = get_cfg()["hp_bar_scaling"].to_double(game_config::hp_bar_scaling);
 	xp_bar_scaling_ = get_cfg()["xp_bar_scaling"].to_double(game_config::xp_bar_scaling);

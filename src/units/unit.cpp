@@ -2129,7 +2129,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			image_mods_ += mod;
 		}
 
-		game_config::add_color_info(effect);
+		game_config::add_color_info(game_config_view::wrap(effect));
 		LOG_UT << "applying image_mod" << std::endl;
 	} else if(apply_to == "new_animation") {
 		anim_comp_->apply_new_animation_effect(effect);
