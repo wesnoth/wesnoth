@@ -6,15 +6,15 @@ local STR_BONUS_BONES_NAMES = { _"Point", _"Rest", _"Lair", _"Exile", _"Bane", _
 
 local STR_BONUS_BONES_SWAMP_NAMES = { _"Point", _"Rest", _"Lair", _"Exile", _"Bane", _"Death", _"Passage", _"Curse", _"Quagmire" }
 
-local STR_BONUS_DEAD_OAK_NAMES = { _"Rest", _"Point", _"Lair", _"Exile", _"Bane", _"Death", _"Curse", _"Wasteland", _"Desolation", _"Despair", _"Desert", _"Route", _"Passage", _"Cementery" }
+local STR_BONUS_DEAD_OAK_NAMES = { _"Rest", _"Point", _"Lair", _"Exile", _"Bane", _"Death", _"Curse", _"Wasteland", _"Desolation", _"Despair", _"Desert", _"Route", _"Passage", _"Cemetery" }
 
 local STR_BONUS_VILLAGE_RUINED_NAMES = { _"Rest", _"Ruin", _"Lair", _"Exile", _"Bane", _"Curse", _"Destruction", _"Desolation", _"Vestige", _"Disaster" }
 
-local STR_BONUS_BURIAL_NAMES = { _"Point", _"Rest", _"Lair", _"Passage", _"Bane", _"Massacre", _"Curse", _"Disaster", _"Cementery" }
+local STR_BONUS_BURIAL_NAMES = { _"Point", _"Rest", _"Lair", _"Passage", _"Bane", _"Massacre", _"Curse", _"Disaster", _"Cemetery" }
 
 local STR_BONUS_BURIAL_SAND_NAMES = { _"Point", _"Rest", _"Lair", _"Exile", _"Passage", _"Bane", _"Massacre", _"Curse", _"Disaster" }
 
-local STR_BONUS_BURIAL_CAVE_NAMES = { _"Rest", _"Lair", _"Passage", _"Bane", _"Grotto", _"Curse", _"Cave", _"Cementery", _"Graveyard" }
+local STR_BONUS_BURIAL_CAVE_NAMES = { _"Rest", _"Lair", _"Passage", _"Bane", _"Grotto", _"Curse", _"Cave", _"Cemetery", _"Graveyard" }
 
 local STR_BONUS_DETRITUS_NAMES = { _"Point", _"Rest", _"Ruin", _"Lair", _"Exile", _"Passage", _"Bane", _"Massacre", _"Curse", _"Quagmire", _"Bog", _"Hideout", _"Desolation" }
 
@@ -60,7 +60,7 @@ local STR_BONUS_LILIES_NAMES = { _"Point", _"Passage", _"Lair", _"Rest", _"Water
 
 local STR_BONUS_LILIES_SWAMP_NAMES = { _"Point", _"Passage", _"Rest", _"Lair", _"Exile", _"Domain", _"Curse", _"Secret", _"Hideout", _"Bane", _"Marsh" }
 
-local STR_BONUS_ROCK_SAND_NAMES = { _"Rest", _"Point", _"Passage", _"Ruin", _"Lair", _"Exile", _"Delirium", _"Graveyard", _"Cementery", _"Ossuary", _"Domain", _"Route", _"Vestige" }
+local STR_BONUS_ROCK_SAND_NAMES = { _"Rest", _"Point", _"Passage", _"Ruin", _"Lair", _"Exile", _"Delirium", _"Graveyard", _"Cemetery", _"Ossuary", _"Domain", _"Route", _"Vestige" }
 
 local STR_BONUS_ROCK_NAMES = { _"Rest", _"Point", _"Passage", _"Ruin", _"Lair", _"Exile", _"Domain", _"Route", _"Vestige" }
 

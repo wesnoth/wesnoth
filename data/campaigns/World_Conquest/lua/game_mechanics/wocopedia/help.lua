@@ -36,36 +36,36 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 		local str_cat_mechnics = _ "Game Mechanics"
 		local str_des_mechnics = cfg.mechanics_text or
 			_ "<b>Gold</b>:\n" ..
-			_ "Carryover is 15%, comunitary and avoid negative amounts. Early finish bonus is superior to village control, but it is not directly related to their amount.\n\n" ..
+			_ "Carryover rate is 15% and split evenly among players. Negative amounts will not carry over. Early finish bonus is superior to village control, but it is not directly related to the carryover amount.\n\n" ..
 			_ "<b>Autorecall</b>:\n" ..
-			_ "Units with trait HEROIC are recalled at start of each scenario with no cost (up to castle size).\n\n" ..
+			_ "Units with trait HEROIC are recalled at the start of each scenario with no cost (up to castle size).\n\n" ..
 			_ "<b>Recall Cost</b>:\n" ..
 			_ "Units costing less than 17 gold are cheaper to recall.\n\n" ..
-			_ "<b>Trainings</b>:\n" ..
-			_ "Every time you recruit a new unit, your trainings levels will be applied. Every chance will do different dice rolls, if a unit gains training beneficts, you can see them in a trait \"trained\".\n\n" ..
+			_ "<b>Training</b>:\n" ..
+			_ "Every time you recruit a new unit, your training levels will be applied. If a unit gains training benefits, you can see them with the trait \"trained\". Each unit’s chance of gaining training benefits is independent of another’s.\n\n" ..
 			_ "<b>Upkeep</b>:\n" ..
 			_ "Units with trait HEROIC or holding any magic ITEM have FREE upkeep.\n\n" ..
 			_ "<b>Bonus Points</b>:\n" ..
-			_ "In every scenario the game generates as many bonus points on the map as there are players in the game, the bonus points can be picked up by player units and either contain artifacts, loyal units or training.\n\n" ..
+			_ "In every scenario the game generates as many bonus points on the map as there are players in the game, the bonus points can be picked up by player units and either contain artifacts, loyal units, or training.\n\n" ..
 			_ "<b>Army discipline</b>:\n" ..
-			_ "At scenarios 1 to 3, for each training level player already own, trainers found have 2% to 4% chance to become advanced trainers (provide 2 levels). Becomes irrelevant from scenario 4 because all trainers always will be advanced.\n\n" ..
+			_ "At scenarios 1 to 3, for each training level players already own, trainers found have 2% to 4% chance to become advanced trainers (provide 2 levels). Becomes irrelevant from scenario 4 onwards because all trainers will always be advanced.\n\n" ..
 			""
 		local str_cat_feedback = _ "Feedback"
 		local str_des_feedback =
 			_ "<b>Feedback</b>:\n" ..
-			_ "For feedback plase either post in the Word conquest II thread in the official wesnoth forum https://r.wesnoth.org/t39651 or file an issue at github https://github.com/gfgtdf/World_Conquest_II/issues .\n\n" ..
+			_ "For feedback please either post in the World Conquest II thread in the official Wesnoth forum https://r.wesnoth.org/t39651 or file an issue at GitHub https://github.com/gfgtdf/World_Conquest_II/issues .\n\n" ..
 			""
 		local str_cat_abilities = _ "Abilities"
 		local str_des_abilities =
 			_ "Ability <b>Autorecall</b>:\n" ..
-			_ "Units with trait HEROIC are recalled at start of each scenario with no cost (up to castle size).\n\n" ..
+			_ "Units with trait HEROIC are recalled at the start of each scenario with no cost (up to castle size).\n\n" ..
 			""
 		local str_cat_training = _ "Training"
-		local str_des_training = _ "<b>Training</b>\nTraining improves newly recruited units, it has no effect on already recruited units. The follwing list shows all available trainings, the training you currently have is marked in green."
+		local str_des_training = _ "<b>Training</b>\nTraining improves newly recruited units, it has no effect on already recruited units. The following list shows all available training, the training you currently have is marked in green."
 		local str_cat_items = _ "Artifacts"
-		local str_des_items = _ "<b>Items</b>\nItems can be given to units to make them stronger. You can get artifcats in three ways: 1) By choosing an item as your starting bonus, 2) By finding it on a map in a bonus point, 3) By dropping from enemies in later scenarios. Note however that not all units can pickup all items."
+		local str_des_items = _ "<b>Items</b>\nItems can be given to units to make them stronger. You can get artifacts in three ways: 1) By choosing an item as your starting bonus; 2) By finding it on a map in a bonus point; 3) By dropping from enemies in later scenarios. Note, however, that not all units can pick up all items."
 		local str_cat_era = _ "Factions"
-		local str_des_era = _ "<b>Factions</b>\n The Word Conquest 2 era consists of faction that are build of pairs of mainline faction of which at one has a healer available (Drakes, Rebels and Loyalists), and one does not (Orcs, Dwarves and Undead) the recruilist is also organized in pairs so that you sometimes have to recruit a different units before you can recruit the units that you want. The available heroes, desertes and random leaders also depend on your factions, the items you can get do not depend on the faction you choose."
+		local str_des_era = _ "<b>Factions</b>\n The World Conquest II era consists of factions that are built from pairs of mainline factions. One faction will have a healer available (Drakes, Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The recruit list is also organized in pairs so that sometimes you will have to recruit a different unit before you can recruit the units that you want. The available heroes, deserters, and random leaders also depend on your factions; the items you can get do not depend on the faction you choose."
 		local str_cat_settings = _ "Settings"
 
 		---- add general topic ----

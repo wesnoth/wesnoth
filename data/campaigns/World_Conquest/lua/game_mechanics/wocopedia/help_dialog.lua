@@ -699,7 +699,7 @@ return {
 						T.column {
 							horizontal_alignment = "right",
 							T.button {
-								label = "Ok",
+								label = "OK",
 								id = "ok",
 							}
 						}
