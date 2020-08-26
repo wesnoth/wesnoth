@@ -38,7 +38,7 @@ function wesnoth.wml_actions.wc2_pya_pick(cfg)
 	end
 	local picked = u.variables.wc2_pya_pick
 	local options = u.advances_to
-	local str_advancer_option = _ "Currently I'm set to advance towards: $name \n\nWhat are your new orders?"
+	local str_advancer_option = _ "Currently I’m set to advance towards: $name \n\nWhat are your new orders?"
 	local current_name = picked and wesnoth.unit_types[picked].name or _"Random"
 	local message_wml = {
 		x=cfg.x,

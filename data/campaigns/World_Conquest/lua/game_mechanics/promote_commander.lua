@@ -3,7 +3,7 @@ local on_event = wesnoth.require("on_event")
 
 local strings = {
 	defeat = _ "No! This is the end!",
-	promotion = _ "Don't lose heart comrades, we can still win this battle."
+	promotion = _ "Don’t lose heart comrades, we can still win this battle."
 }
 
 -- when a leader dies, take a commonder and make him the leader.

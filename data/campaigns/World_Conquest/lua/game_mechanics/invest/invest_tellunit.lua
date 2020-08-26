@@ -45,7 +45,7 @@ invest_tellunit.dialog_wml = {
 		T.row {
 			T.column {
 				T.button {
-					label = _"Ok",
+					label = _"OK",
 					id = "ok",
 				},
 			},

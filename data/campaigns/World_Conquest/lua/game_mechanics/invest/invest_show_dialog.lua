@@ -60,7 +60,7 @@ function wc2_show_invest_dialog_impl(args)
 			wesnoth.set_dialog_value(_ "Heroes", "left_tree", cati_current, "category_name")
 			local i = 1
 			if available_commanders then
-				local desc = _ "Commanders will take your leaders place when the leader dies, possible commanders:"
+				local desc = _ "Commanders will take your leader’s place when the leader dies, possible commanders:"
 				for j,v in ipairs(available_commanders) do
 					desc = desc .. "\n" .. wesnoth.unit_types[v].name
 				end

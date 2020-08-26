@@ -2,11 +2,11 @@ local _ = wesnoth.textdomain 'wesnoth-wc'
 
 type_infos = {
 	["default"] = {
-		founddialogue = _"You guys look like you could use some help. Mind if I join in? It's been a while since I had a good fight!",
+		founddialogue = _"You look like you could use some help. Mind if I join in? It’s been a while since I had a good fight!",
 		reply = _ "Excellent. We could always use more help.",
 	},
 	["Orcish Grunt"] = { 
-		founddialogue=_"'bout time. Been forever since I had a good fight, eh?",
+		founddialogue=_"’bout time. Been forever since I had a good fight, eh?",
 		image="units/orcs/grunt.png",
 		name="Orcish Grunt",
 	},
@@ -21,7 +21,7 @@ type_infos = {
 		name="Orcish Archer",
 	},
 	["Orcish Assassin"] = { 
-		founddialogue=_"Heya, boss. Looks like you've got some guys need killing.",
+		founddialogue=_"Hey boss. Looks like you’ve got some prey that need killing.",
 		image="units/orcs/assassin.png",
 		name="Orcish Assassin",
 	},
@@ -31,11 +31,11 @@ type_infos = {
 		name="Wolf Rider",
 		alt_reply = { { 
 			race="wose",
-			reply=_"Ok. But take care where your dog does its stuff.",
+			reply=_"Very well. But take care where your dog does its stuff.",
 		} }
 	},
 	["Orcish Leader"] = { 
-		founddialogue=_"Heh, looks like you whelps might be getting in over your heads. Good thing I'm here now to win this fight for ya, huh?",
+		founddialogue=_"Heh, looks like you whelps might be getting in over your heads. Good thing I’m here now to win this fight for ya, huh?",
 		image="units/orcs/leader.png",
 		name="Orcish Leader",
 	},
@@ -58,7 +58,7 @@ type_infos = {
 		name="Elvish Fighter",
 	},
 	["Elvish Archer"] = { 
-		founddialogue=_"You guys look like you could use some help. Mind if I join in? It's been a while since I had a good fight!",
+		founddialogue=_"You look like you could use some help. Mind if I join in? It’s been a while since I had a good fight!",
 		image="units/elves-wood/archer.png",
 		name="Elvish Archer",
 	},
@@ -68,7 +68,7 @@ type_infos = {
 		name="Elvish Shaman",
 		alt_reply = { { 
 			race="elf,wose",
-			reply=_"Yea, flower power!",
+			reply=_"Yeah, flower power!",
 		} }
 	},
 	["Elvish Scout"] = { 
@@ -100,7 +100,7 @@ type_infos = {
 		} }
 	},
 	["Cavalryman"] = { 
-		founddialogue=_"You're not from around here, but I seem to find myself between employers at the moment and I'm not picky. I'll fight for you, if you'll have me.",
+		founddialogue=_"You’re not from around here, but I seem to find myself between employers at the moment and I’m not picky. I’ll fight for you, if you’ll have me.",
 		image="units/human-loyalists/cavalryman/cavalryman.png~CROP(14,14,72,72)",
 		name="Cavalryman",
 		alt_reply = { { 
@@ -123,12 +123,12 @@ type_infos = {
 		name="Spearman",
 	},
 	["Fencer"] = { 
-		founddialogue=_"Looks like you're a bit down on your luck, my friends. But now that I am here, there's nothing to worry about!",
+		founddialogue=_"Looks like you’re a bit down on your luck, my friends. But now that I am here, there’s nothing to worry about!",
 		image="units/human-loyalists/fencer.png",
 		name="Fencer",
 	},
 	["Heavy Infantryman"] = { 
-		founddialogue=_"Finally reinforcements are here! I've been pinned down for days. Help me fight my way out of here and I'll gladly follow you!",
+		founddialogue=_"Finally reinforcements are here! I’ve been pinned down for days. Help me fight my way out of here and I’ll gladly follow you!",
 		image="units/human-loyalists/heavyinfantry.png",
 		name="Heavy Infantryman",
 	},
@@ -138,7 +138,7 @@ type_infos = {
 		name="Bowman",
 	},
 	["Sergeant"] = { 
-		founddialogue=_"You're not from around here, but I seem to find myself between employers at the moment and I'm not picky. I'll fight for you, if you'll have me.",
+		founddialogue=_"You’re not from around here, but I seem to find myself between employers at the moment and I’m not picky. I’ll fight for you, if you’ll have me.",
 		image="units/human-loyalists/sergeant.png",
 		name="Sergeant",
 	},
@@ -157,12 +157,12 @@ type_infos = {
 		} }
 	},
 	["Dwarvish Fighter"] = { 
-		founddialogue=_"Having trouble, eh? Never worry, lads, we'll sort 'em out soon enough!",
+		founddialogue=_"Having trouble, eh? Never worry, lads, we’ll sort ’em out soon enough!",
 		image="units/dwarves/fighter.png",
 		name="Dwarvish Fighter",
 	},
 	["Thief"] = { 
-		founddialogue=_"You've got me, guv, it's a fair cop! Just lemme work for you instead. You won't regret it, guv, I promise!",
+		founddialogue=_"You’ve got me, guv, it’s a fair cop! Just lemme work for you instead. You won’t regret it, guv, I promise!",
 		image="units/human-outlaws/thief.png",
 		name="Thief",
 	},
@@ -172,7 +172,7 @@ type_infos = {
 		name="Dwarvish Thunderer",
 	},
 	["Poacher"] = { 
-		founddialogue=_"What, you want my help? A guy like me? Huh, that's rich. Oh well... let's give it a shot, eh?",
+		founddialogue=_"What, you want my help? A guy like me? Huh, that’s rich. Oh well... let’s give it a shot, eh?",
 		image="units/human-outlaws/poacher.png",
 		name="Poacher",
 	},
@@ -182,7 +182,7 @@ type_infos = {
 		name="Dwarvish Guardsman",
 	},
 	["Footpad"] = { 
-		founddialogue=_"Hey, hey, easy there! I done nothin' to hurt you. We're all friends here, right? Looks like you might be in a tight spot, but don't worry. No one's better at getting out of tight spots than me, boss!",
+		founddialogue=_"Hey, hey, easy there! I done nothin’ to hurt you. We’re all friends here, right? Looks like you might be in a tight spot, but don’t worry. No one’s better at getting out of tight spots than me, boss!",
 		image="units/human-outlaws/footpad.png",
 		name="Footpad",
 	},
@@ -199,7 +199,7 @@ type_infos = {
 		} }
 	},
 	["Gryphon Rider"] = { 
-		founddialogue=_"Need a hand? Me an' me bird can get just about anywheres you need.",
+		founddialogue=_"Need a hand? Me an’ me bird can get just about anywheres you need.",
 		image="units/dwarves/gryphon-rider.png",
 		name="Gryphon Rider",
 		alt_reply = { { 
@@ -211,7 +211,7 @@ type_infos = {
 		} }
 	},
 	["Dwarvish Scout"] = { 
-		founddialogue=_"Having trouble, eh? Never worry, lads, we'll sort 'em out soon enough!",
+		founddialogue=_"Having trouble, eh? Never worry, lads, we’ll sort ’em out soon enough!",
 		image="units/dwarves/scout.png",
 		name="Dwarvish Scout",
 	},
@@ -231,7 +231,7 @@ type_infos = {
 		name="Drake Burner",
 		alt_reply = { { 
 			race="drake",
-			reply=_"Perfect. We can always use more fire power.",
+			reply=_"Perfect. We can always use more firepower.",
 		} }
 	},
 	["Saurian Augur"] = { 
@@ -244,7 +244,7 @@ type_infos = {
 		} }
 	},
 	["Drake Glider"] = { 
-		founddialogue=_"You may be out to take over the land and the seas, but you'll never get anywhere without control of the skies. Fortunately I'm here to help you!",
+		founddialogue=_"You may be out to take over the land and the seas, but you’ll never get anywhere without control of the skies. Fortunately I’m here to help you!",
 		image="units/drakes/glider.png",
 		name="Drake Glider",
 		alt_reply = { { 
@@ -258,7 +258,7 @@ type_infos = {
 		name="Saurian Skirmisher",
 	},
 	["Skeleton"] = { 
-		founddialogue=_"Don't hit me! I'm just your average regular friendly talking skeleton, see? Looks like you fellows could use some help!",
+		founddialogue=_"Don’t hit me! I’m just your average regular friendly talking skeleton, see? Looks like you fellows could use some help!",
 		image="units/undead-skeletal/skeleton/skeleton.png",
 		name="Skeleton",
 	},
@@ -268,7 +268,7 @@ type_infos = {
 		name="Skeleton Archer",
 	},
 	["Ghoul"] = { 
-		founddialogue=_"I say, old sport! It looks like you've got a spot of bother. Well, chin up, I say! I'm sure we'll make a simply smashing team-up. We can sort this lot out and be done by tea, what?",
+		founddialogue=_"I say, old sport! It looks like you’ve got a spot of bother. Well, chin up, I say! I’m sure we’ll make a simply smashing team-up. We can sort this lot out and be done by tea, what?",
 		image="units/undead/ghoul.png",
 		name="Ghoul",
 		reply=_"Have at thee, unholy abomin... wait, huh?",
@@ -307,7 +307,7 @@ type_infos = {
 		} }
 	},
 	["Thug"] = { 
-		founddialogue=_"What, you want my help? A guy like me? Huh, that's rich. Oh well... let's give it a shot, eh?",
+		founddialogue=_"What, you want my help? A guy like me? Huh, that’s rich. Oh well... let’s give it a shot, eh?",
 		image="units/human-outlaws/thug.png",
 		name="Thug",
 	},
@@ -328,7 +328,7 @@ type_infos = {
 		founddialogue=_"...",
 		image="units/undead/zombie.png",
 		name="Walking Corpse",
-		reply=_"Odd, it doesn't seem to attack. I wonder if we can use it?",
+		reply=_"Odd, it doesn’t seem to attack. I wonder if we can use it?",
 		alt_reply = { { 
 			race="undead,bats",
 			reply=_"Excellent. We could always use more help.",
@@ -373,7 +373,7 @@ type_infos = {
 		name="Dune Rover",
 	},
 	["Dune Piercer"] = { 
-		founddialogue=_"Heh, looks like you whelps might be getting in over your heads. Good thing I'm here now to win this fight for ya, huh?",
+		founddialogue=_"Heh, looks like you whelps might be getting in over your heads. Good thing I’m here now to win this fight for ya, huh?",
 		image="units/dunefolk/piercer.png",
 		name="Dune Piercer",
 	},

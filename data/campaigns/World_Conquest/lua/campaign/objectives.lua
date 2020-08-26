@@ -7,7 +7,7 @@ local strings = {
 	wct_defeat_condition = _ "Lose your leader and all your commanders",
 	difficulty = "Difficulty: ",
 	version = "Version",
-	help_available = _ "An in-game help is available: rightclick on any empty hex.",
+	help_available = _ "An in-game help is available: right-click on any empty hex.",
 }
 
 function wesnoth.wml_actions.wc2_objectives(cfg)
