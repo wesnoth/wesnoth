@@ -74,7 +74,7 @@ end)
 
 -- our victory condition
 on_event("enemies defeated", function(cx)
-	if wml.variables.wc2_scenario > 5 then
+	if wml.variables.wc2_scenario > 4 then
 		return
 	end
 	wesnoth.play_sound("ambient/ship.ogg")
