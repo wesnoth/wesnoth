@@ -43,11 +43,13 @@ function bonus.place_item(x, y, image)
 		image = image or "scenery/lighthouse.png"
 	end
 
-	wc2_dropping.add_item(x, y, {
-		wc2_is_bonus = true,
+	wesnoth.wml_actions.item {
+		x = x,
+		y = y,
 		image = image,
 		z_order = 10,
-	})
+		wml.tag.variables { wc2_is_bonus = true },
+	}
 end
 
 function bonus.remove_current_item(ec)
@@ -85,7 +87,7 @@ on_event("wc2_drop_pickup", function(ec)
 	local item = wc2_dropping.current_item
 	local side_num = wesnoth.current.side
 
-	if not item.wc2_is_bonus then
+	if not item.variables.wc2_is_bonus then
 		return
 	end
 

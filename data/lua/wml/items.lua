@@ -2,7 +2,14 @@ local wml_actions = wesnoth.wml_actions
 
 local scenario_items = (wesnoth.require "location_set").create()
 local next_item_name = 0
+
 local function add_overlay(x, y, cfg)
+
+	if not cfg.name then
+		cfg.name = "item_" .. tostring(next_item_name)
+		next_item_name = next_item_name + 1
+	end
+
 	wesnoth.interface.add_hex_overlay(x, y, cfg)
 	local items = scenario_items:get(x, y)
 	if not items then
@@ -20,6 +27,7 @@ local function add_overlay(x, y, cfg)
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
+			wml.tag.variables(wml.get_child(cfg, "variables") or {}),
 		})
 end
 
@@ -40,6 +48,28 @@ function wesnoth.interface.remove_item(x, y, name)
 	end
 end
 
+function wesnoth.interface.get_items(x, y)
+	local res = {}
+	local items = scenario_items:get(x, y) or {}
+	for i = 1,#items do
+		local cfg = items[i]
+		-- make a copy, since modifying these values (except variabels) wouldn't work anyways.
+		table.insert( res, {
+			x = cfg.x, y = cfg.y,
+			image = cfg.image,
+			halo = cfg.halo,
+			team_name = cfg.team_name,
+			filter_team = cfg.filter_team,
+			visible_in_fog = cfg.visible_in_fog,
+			redraw = cfg.redraw,
+			name = cfg.name,
+			z_order = cfg.z_order,
+			variables = wml.get_child(cfg, "variables"),
+		})
+	end
+	return res
+end
+
 function wesnoth.persistent_tags.item.write(add)
 	for x,y,v in scenario_items:iter() do
 		for i,w in ipairs(v) do
@@ -53,6 +83,7 @@ function wesnoth.persistent_tags.next_item_name.write(add)
 end
 
 function wesnoth.persistent_tags.item.read(cfg)
+	if not cfg.name then cfg.name = "" end
 	add_overlay(cfg.x, cfg.y, cfg)
 end
 
@@ -60,13 +91,11 @@ function wesnoth.persistent_tags.next_item_name.read(cfg)
 	next_item_name = cfg.next_item_name or next_item_name
 end
 
+
+-- returns the 'name' of an item, this can be used as an id to remove the iten later.
 function wml_actions.item(cfg)
 	local locs = wesnoth.get_locations(cfg)
 	cfg = wml.parsed(cfg)
-	if not cfg.name then
-		cfg.name = "item_" .. tostring(next_item_name)
-		next_item_name = next_item_name + 1
-	end
 	if not cfg.image and not cfg.halo then
 		wml.error "[item] missing required image= and halo= attributes."
 	end

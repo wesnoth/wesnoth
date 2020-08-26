@@ -51,11 +51,13 @@ end
 -- place an artifact with id @a index on the map at position @a x, y.
 -- can be used from the bug console as `lua wc2_artifacts.place_item(30,20,1)`
 function artifacts.place_item(x, y, index)
-	wc2_dropping.add_item(x, y, {
-		wc2_atrifact_id = index,
+	wesnoth.wml_actions.item {
+		x = x,
+		y = y,
 		image = artifacts.get_artifact(index).icon,
 		z_order = 20,
-	})
+		wml.tag.variables { wc2_atrifact_id = index },
+	}
 end
 
 -- give te item with id @a index to unit @a unit, set @a visualize=true, to show the item pickup animation.
@@ -120,7 +122,7 @@ end
 on_event("wc2_drop_pickup", function(ec)
 	local item = wc2_dropping.current_item
 	local unit = wesnoth.get_unit(ec.x1, ec.y1)
-	if not item.wc2_atrifact_id then 
+	if not item.variables.wc2_atrifact_id then
 		return
 	end
 
@@ -135,7 +137,7 @@ on_event("wc2_drop_pickup", function(ec)
 	end
 	
 
-	local index = item.wc2_atrifact_id
+	local index = item.variables.wc2_atrifact_id
 	local filter = artifacts.get_artifact(index).filter
 	if filter and not unit:matches(filter) then
 		if is_human then
@@ -195,8 +197,8 @@ end)
 -- returns true if there is an item in the map at the given position,
 -- used to determine whether to show the artifact info menu at that position. 
 function artifacts.is_item_at(x,y)
-	for i,item in ipairs(wc2_dropping.get_entries_at_readonly(x,y)) do
-		if item.wc2_atrifact_id then
+	for i,item in ipairs(wesnoth.interface.get_items(x,y)) do
+		if item.variables.wc2_atrifact_id then
 			return true
 		end
 	end
@@ -208,9 +210,9 @@ end
 function wesnoth.wml_actions.wc2_show_item_info(cfg)
 	local x = cfg.x
 	local y = cfg.y
-	for i,item in ipairs(wc2_dropping.get_entries_at_readonly(x,y)) do
-		if item.wc2_atrifact_id then
-			local artifact_info = artifacts.get_artifact(item.wc2_atrifact_id)
+	for i,item in ipairs(wesnoth.interface.get_items(x,y)) do
+		if item.variables.wc2_atrifact_id then
+			local artifact_info = artifacts.get_artifact(item.variables.wc2_atrifact_id)
 			wesnoth.wml_actions.message {
 				scroll = false,
 				image = artifact_info.icon,
