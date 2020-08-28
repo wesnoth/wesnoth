@@ -37,6 +37,10 @@ time_interval_to_string() {
     echo "==> Operation took $days days $hours hours $minutes minutes and $seconds seconds ..."
   fi
 }
+
+get_mcs() {
+  git clone -b "master" --depth 1 "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-master"
+}
 ###/Functions
 
 starttimestamp=`date +%s`
@@ -65,10 +69,17 @@ if ! [ -d "temp" ]; then
 fi
 cd "temp"
 if ! [ -d "MacCompileStuff-master" ]; then
-  git clone -b "master" --depth 1 "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-master"
+  get_mcs
+else
+  cd "MacCompileStuff-master"
+  git pull --depth 5
+  if ! [ $? -eq 0 ]; then
+    echo 'Error: MacCompileStuff is too far from the local commit. Clonning again...' >&2
+    cd ".."
+    rm -rf "MacCompileStuff-master"
+    get_mcs
+  fi
 fi
-cd "MacCompileStuff-master"
-git pull --depth 1
 cd "${MY_PATH}"
 
 rm -rf "Headers"
