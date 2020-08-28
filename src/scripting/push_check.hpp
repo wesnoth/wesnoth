@@ -14,6 +14,8 @@
 #pragma once
 
 #include "scripting/lua_common.hpp"
+#include "scripting/lua_widget.hpp"
+
 #include "serialization/string_view.hpp"
 
 #include <type_traits>
@@ -28,6 +30,8 @@
 #include <cassert>
 
 class enum_tag;
+
+struct lua_index_raw { int index; };
 
 namespace lua_check_impl
 {
@@ -71,6 +75,21 @@ namespace lua_check_impl
 
 	template<typename T>
 	using remove_constref = std::remove_const_t<std::remove_reference_t<std::remove_const_t<T>>>;
+
+
+	template<typename T>
+	std::enable_if_t<std::is_same<T, lua_index_raw>::value, lua_index_raw>
+	lua_check(lua_State *L, int n)
+	{
+		UNUSED(L);
+		return lua_index_raw{ n };
+	}
+	template<typename T>
+	std::enable_if_t<std::is_same<T, lua_index_raw>::value, lua_index_raw>
+	lua_to_or_default(lua_State *L, int n, const T& /*def*/)
+	{
+		return lua_index_raw{ n };
+	}
 
 	//std::string
 	template<typename T>
@@ -190,6 +209,15 @@ namespace lua_check_impl
 		luaW_pushtstring(L, val);
 	}
 
+	//widget
+	//widget not suppored becasue lua_checek returns by value
+	template<typename T>
+	std::enable_if_t<std::is_same<T, gui2::widget>::value, void>
+	lua_push(lua_State *L, gui2::widget& val)
+	{
+		luaW_pushwidget(L, val);
+	}
+
 	//bool
 	template<typename T>
 	std::enable_if_t<std::is_same<T, bool>::value, bool>
@@ -290,7 +318,7 @@ namespace lua_check_impl
 
 	//std::vector and similar but not std::string
 	template<typename T>
-	std::enable_if_t<is_container<T>::value && !std::is_same<T, std::string>::value, T>
+	std::enable_if_t<is_container<T>::value && !std::is_same<T, std::string>::value && !std::is_same<T, utils::string_view>::value, T>
 	lua_check(lua_State * L, int n)
 	{
 		if (lua_istable(L, n))
