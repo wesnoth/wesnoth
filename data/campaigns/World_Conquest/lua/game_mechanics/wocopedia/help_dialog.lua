@@ -31,6 +31,7 @@ local function GUI_FORCE_WIDGET_MINIMUM_SIZE(w,h, content)
 	}
 end
 
+--unused
 local GUI_HORIZONTAL_SPACER_LINE = T.row {
 	grow_factor = 0,
 	T.column {
@@ -93,13 +94,13 @@ return {
 							horizontal_grow = true,
 							vertical_grow = true,
 							T.tree_view {
-								id = "left_tree",
+								id = "treeview_topics",
 								definition = "default",
 								horizontal_scrollbar_mode = "never",
 								vertical_scrollbar_mode = "never",
 								indentation_step_size = 35,
 								T.node {
-									id = "training_category",
+									id = "subcategory",
 									T.node_definition {
 										T.row {
 											T.column {
@@ -112,7 +113,7 @@ return {
 															T.column {
 																horizontal_alignment = "left",
 																T.label {
-																	id = "training_name",
+																	id = "label_topic",
 																},
 															},
 														},
@@ -144,7 +145,7 @@ return {
 															T.column {
 																horizontal_alignment = "left",
 																T.label {
-																	id = "training_name",
+																	id = "label_topic",
 																},
 															},
 														},
@@ -162,6 +163,7 @@ return {
 								definition = "default",
 								horizontal_scrollbar_mode = "never",
 								T.page_definition {
+									id="training",
 									T.row {
 										T.column {
 											horizontal_grow = true,
@@ -173,7 +175,7 @@ return {
 															horizontal_grow = true,
 															vertical_grow = true,
 															T.tree_view {
-																id = "tree_details",
+																id = "treeview_details",
 																definition = "default",
 																horizontal_scrollbar_mode = "never",
 																vertical_scrollbar_mode = "never",
@@ -254,20 +256,20 @@ return {
 									}
 								},
 								T.page_definition {
-									id="simpletext",
+									id="simple",
 									T.row {
 										T.column {
 											horizontal_grow = true,
 											vertical_grow = true,
 											T.scroll_label {
-												id = "label",
+												id = "label_content",
 												label = "Text",
 											} 
 										}
 									}
 								},
 								T.page_definition {
-									id="artifact_list",
+									id="artifacts",
 									vertical_grow = true,
 									T.row {
 										T.column {
@@ -296,7 +298,7 @@ return {
 														horizontal_grow = true,
 														T.tree_view {
 															vertical_grow = true,
-															id = "artifact_list_tv",
+															id = "treeview_artifacts",
 															definition = "default",
 															horizontal_scrollbar_mode = "never",
 															vertical_scrollbar_mode = "always",
@@ -320,7 +322,7 @@ return {
 																					},
 																					T.column {
 																						T.label {
-																							id="label",
+																							id="label_name",
 																							linked_group = "artifact_name",
 																						}
 																					},
@@ -348,7 +350,7 @@ return {
 									}
 								},
 								T.page_definition {
-									id="faction_info",
+									id="faction",
 									vertical_grow = true,
 									T.row {
 										T.column {
@@ -386,7 +388,7 @@ return {
 													T.column {
 														horizontal_grow = true,
 														T.tree_view {
-															id = "recruit_pairs",
+															id = "treeview_recruits",
 															definition = "default",
 															horizontal_scrollbar_mode = "never",
 															vertical_scrollbar_mode = "always",
@@ -452,7 +454,7 @@ return {
 														horizontal_grow=true,
 														T.scroll_label {
 															vertical_scrollbar_mode = "never",
-															id = "deserters",
+															id = "label_deserters",
 															use_markup = true,
 														}
 													}
@@ -471,7 +473,7 @@ return {
 														horizontal_grow=true,
 														T.scroll_label {
 															vertical_scrollbar_mode = "never",
-															id = "commanders",
+															id = "label_commanders",
 															use_markup = true,
 														}
 													}
@@ -490,7 +492,7 @@ return {
 														horizontal_grow=true,
 														T.scroll_label {
 															vertical_scrollbar_mode = "never",
-															id = "heroes",
+															id = "label_heroes",
 															use_markup = true,
 														}
 													}
@@ -500,7 +502,7 @@ return {
 														T.label {
 															vertical_scrollbar_mode = "never",
 															label = "<b>Random Leaders:</b>",
-															id = "tit_random_leaders",
+															id = "title_random_leaders",
 															use_markup = true,
 														}
 													}
@@ -510,7 +512,7 @@ return {
 														horizontal_grow=true,
 														T.scroll_label {
 															vertical_scrollbar_mode = "never",
-															id = "random_leaders",
+															id = "label_random_leaders",
 															use_markup = true,
 														}
 													}
@@ -650,31 +652,6 @@ return {
 															},
 														}
 													}
-												},
-												GUI_HORIZONTAL_SPACER_LINE,
-												T.row {
-													grow_factor = 0,
-													T.column {
-														grow_factor = 0,
-														vertical_grow = false,
-														horizontal_alignment = "left",
-														T.label {
-															id = "title_2",
-															label = "<b>Active mods</b>\n ",
-															use_markup=true,
-														},
-													},
-												},
-												T.row {
-													grow_factor = 1,
-													T.column {
-														grow_factor = 0,
-														horizontal_grow=true,
-														vertical_alignment="top",
-														T.scroll_label {
-															id = "label_activemods",
-														},
-													},
 												},
 											}
 										}
