@@ -1,3 +1,6 @@
+local H = wesnoth.require "helper"
+local T = wml.tag
+local W = H.set_wml_action_metatable {}
 local _ = wesnoth.textdomain 'wesnoth-sota'
 
 -- After preshow, this variable will hold the unit_types being shown in the listbox.
@@ -73,31 +76,29 @@ local zombie_recruit_dialog = { maximum_height=676, minimum_height=608,
 }
 
 local function preshow()
+    local dialog = gui.widget.find()
+
     local function select()
-        local unit_type = wesnoth.unit_types[ listedZombies[wesnoth.get_dialog_value "unit_list"] ]
-        wesnoth.set_dialog_value(unit_type.image .. "~RC(magenta>red)~XBRZ(2)", "large_unit_sprite")
-        wesnoth.set_dialog_value( "<span size='large'>" .. unit_type.name .. "</span>", "large_unit_type")
-        wesnoth.set_dialog_value( "<span color='#20dc00'><b>".. _"HP: ".. "</b>" .. unit_type.max_hitpoints .. "</span> | <span color='#00a0e1'><b>".. _"XP: ".. "</b>" .. unit_type.max_experience .. "</span> | <b>".. _"MP: ".. "</b>" .. unit_type.max_moves, "unit_points")
-        wesnoth.set_dialog_value( "<span color='#f5e6c1'>   6×2 " .. unit_type.attacks[1].description .. "</span>", "unit_attack")
-        wesnoth.set_dialog_value( "<span color='#a69275'>     melee–" .. unit_type.attacks[1].type .. "</span>", "damage_type")
+        -- TODO: why not use unit_preview_pane widget ?
+        local unit_type = wesnoth.unit_types[ listedZombies[dialog.unit_list.value] ]
+        dialog.large_unit_sprite.label = unit_type.image .. "~RC(magenta>red)~XBRZ(2)"
+        dialog.large_unit_type.label = "<span size='large'>" .. unit_type.name .. "</span>"
+        dialog.unit_points.label     = "<span color='#20dc00'><b>".. _"HP: ".. "</b>" .. unit_type.max_hitpoints .. "</span> | <span color='#00a0e1'><b>".. _"XP: ".. "</b>" .. unit_type.max_experience .. "</span> | <b>".. _"MP: ".. "</b>" .. unit_type.max_moves
+        dialog.unit_attack.label     = "<span color='#f5e6c1'>   6×2 " .. unit_type.attacks[1].description .. "</span>"
+        dialog.damage_type.label     = "<span color='#a69275'>     melee–" .. unit_type.attacks[1].type .. "</span>"
     end
 
-    local function general_help()
+    dialog.unit_list.callback = select
+
+    function dialog.help_button.callback()
         W.open_help { topic="recruit_and_recall" }
     end
 
-    local function unit_help()
-        W.open_help { topic="unit_" .. listedZombies[wesnoth.get_dialog_value "unit_list"] }
+    function dialog.unit_help_button.callback()
+        W.open_help { topic="unit_" .. listedZombies[dialog.unit_list.value] }
     end
-
-    wesnoth.set_dialog_callback( select, "unit_list" )
-    wesnoth.set_dialog_callback( general_help, "help_button" )
-    wesnoth.set_dialog_callback( unit_help, "unit_help_button" )
-
-    local zArrayIndex = 1  -- Start index of the WML array in lua.
-    local zListIndex = 1  -- Index of the list of recrutable zombies in this dialog box.
-    while zombies[zArrayIndex] do
-        local z=zombies[zArrayIndex]
+    
+    for i,z in ipairs(zombies) do
         if z.allow_recruit then
             local unit_type = wesnoth.unit_types[z.type]
             local afford_color_span_start = ""
@@ -106,15 +107,16 @@ local function preshow()
                 afford_color_span_start = "<span color='red'>"
                 afford_color_span_end = "</span>"
             end
-            wesnoth.set_dialog_value(afford_color_span_start .. unit_type.name .. " " .. z.sota_variation .. afford_color_span_end, "unit_list", zListIndex, "unit_type")
-            wesnoth.set_dialog_value(unit_type.image .. "~RC(magenta>red)", "unit_list", zListIndex, "unit_sprite")
-            wesnoth.set_dialog_value(afford_color_span_start .. unit_type.cost .. afford_color_span_end, "unit_list", zListIndex, "unit_cost")
-            listedZombies[ zListIndex ] = z.type
-            zListIndex = zListIndex + 1
+
+            local list_item = dialog.unit_list:add_item()
+            list_item.unit_type.label   = afford_color_span_start .. unit_type.name .. " " .. z.sota_variation .. afford_color_span_end
+            list_item.unit_sprite.label = unit_type.image .. "~RC(magenta>red)"
+            list_item.unit_cost.label   = afford_color_span_start .. unit_type.cost .. afford_color_span_end
+
+            listedZombies[ dialog.unit_list.size ] = z.type
         end
-        zArrayIndex = zArrayIndex + 1
     end
-    wesnoth.set_dialog_value(1, "unit_list")
+    dialog.unit_list.selectzed_index = 1
     select()
 end
 
@@ -142,6 +144,7 @@ wml.variables["recruitedZombieType"] = "cancel" -- default value
 if zExists==false then
     gui.show_prompt("", _ "There are no corpses available.", "")
 else
+    --TODO: this seems not to be synced.
     local returned = wesnoth.show_dialog(zombie_recruit_dialog, preshow, postshow)
     if  returned ~= -2 and sides[1].gold  < recruitCost then
         gui.show_prompt("", _ "You do not have enough gold to recruit that unit", "")
