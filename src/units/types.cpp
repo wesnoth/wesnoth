@@ -257,7 +257,6 @@ void unit_type::build_help_index(
 	usage_ = cfg["usage"].str();
 	undead_variation_ = cfg["undead_variation"].str();
 	default_variation_ = cfg["variation"].str();
-	image_ = cfg["image"].str();
 	icon_ = cfg["image_icon"].str();
 	small_profile_ = cfg["small_profile"].str();
 	profile_ = cfg["profile"].str();
@@ -409,6 +408,8 @@ void unit_type::build_created()
 	experience_needed_ = cfg["experience"].to_int(500);
 	cost_ = cfg["cost"].to_int(1);
 
+	//needed by the editor.
+	image_ = cfg["image"].str();
 	build_status_ = CREATED;
 }
 
