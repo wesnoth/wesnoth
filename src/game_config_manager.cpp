@@ -330,7 +330,6 @@ void game_config_manager::load_game_config(bool reload_everything)
 		set_multiplayer_hashes();
 
 
-		//FIXME: use game_config() instead to icnlude addons
 		game_config::add_color_info(game_config());
 
 	} catch(const game::error& e) {
