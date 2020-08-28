@@ -1,0 +1,238 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+
+"""A command similar to git-subtree, for exporting the history of a campaign.
+
+The history includes the translations, which are copied in to the appropriate
+subdirectory of the new tree.
+
+The result is a set of Git commits containing only one campaign. The script
+doesn't create branches itself, but provides the tip-of-branch commits from
+which Git can find all of the history - the instructions printed at the end
+of the conversion process give the few (probably only 2) places to create
+branches from.
+
+Currently hardcoded for the export of An Orcish Incursion, but added to the
+utils/ dir to support its use on other campaigns.
+"""
+
+# Hardcode which campaign to export, no need to handle command-line options in
+# such a rarely-run script.
+CAMPAIGN_NAME = 'An_Orcish_Incursion'
+CAMPAIGN_TEXTDOMAIN = 'wesnoth-aoi'
+CAMPAIGN_PATHS = ['data/campaigns/' + CAMPAIGN_NAME, 'po/' + CAMPAIGN_TEXTDOMAIN]
+BRANCHES = ['origin/1.14', 'origin/master']
+
+import argparse, os, subprocess, sys
+
+class TreeEntry:
+    """Wrapper for parsing the output of `git ls-tree -z` and for creating the input to `git mktree -z`.
+
+    Implementing this directly is admittedly a case of "not invented here", but seems reasonable for the
+    small subset of Git functionality that this script needs."""
+
+    def __init__(self, mode_sha, filename):
+        if not isinstance(mode_sha, bytes):
+            raise TypeError("The mode and SHA are expected to be handled as byte sequences")
+        if not isinstance(filename, bytes):
+            # This doesn't auto-convert as the caller might have other broken logic around
+            # get_filename, which is more likely to look out-of-place when the set_filename
+            # calls have the necessary b'example' syntax.
+            raise TypeError("Filenames need to be handled as utf-8 byte sequences")
+        self._mode_sha = mode_sha
+        self._filename = filename
+
+    def get_filename(self):
+        return self._filename
+
+    def set_filename(self, filename):
+        if not isinstance(filename, bytes):
+            # This doesn't auto-convert as the caller might have other broken logic around
+            # get_filename, which is more likely to look out-of-place when the set_filename
+            # calls have the necessary b'example' syntax.
+            raise TypeError("Filenames need to be handled as utf-8 byte sequences")
+        self._filename = filename
+
+    def to_mktree(self):
+        """Representation for passing to `git mktree -z`"""
+        return self._mode_sha + b'\t' + self._filename
+
+def read_tree(treeish):
+    """Wrapper for git ls-tree that returns an array of TreeEntry.
+
+    This does not catch CalledProcessError, it leaves that to the caller because
+    the appropriate actions depend on what the caller wanted."""
+    tree = subprocess.run(
+        ['git', 'ls-tree', '-z', treeish],
+        check=True, capture_output=True).stdout
+    result = []
+    for line in tree.split(b'\0'):
+        if len(line) == 0:
+            continue
+        mode_sha, filename = line.split(b'\t', 1)
+        result.append(TreeEntry(mode_sha, filename))
+    return result
+
+def create_tree(treeline_array):
+    """Wrapper for git mktree that takes an array of TreeEntries. Returns the corresponding SHA1 tree-ish."""
+    if len(treeline_array) == 0:
+        raise ValueError("Trying to create an empty directory")
+    ls_tree = b'\0'.join([t.to_mktree() for t in treeline_array]) + b'\0'
+    try:
+        sha = subprocess.run(
+            ['git', 'mktree', '-z'], input=ls_tree,
+            check=True, capture_output=True).stdout.rstrip()
+    except subprocess.CalledProcessError:
+        raise 
+    return sha
+
+def format_subdir_tree_entry(sha, filename):
+    """Returns the TreeEntry for `git mktree -z` to add a subdirectory named `filename`, with contents `sha`."""
+    return TreeEntry(b'040000 tree ' + sha, bytes(filename, encoding='utf-8'))
+
+def has_file(tree, filename):
+    """Given the output of read_tree(), see if there is already an entry for `filename`"""
+    for t in tree:
+        if not isinstance(t, TreeEntry):
+            raise TypeError("Expected an array of TreeEntries")
+        if filename == t.get_filename():
+            return True
+    return False
+
+def rename_if_exists(tree, old_filename, new_filename):
+    """Given the output of read_tree(), see if there is already an entry for `old_filename`, and
+    rename it. Returns a copy of the first argument, as modified by the filter.
+
+    Both filenames should be given as bytes, not strings.
+    """
+    if has_file(tree, new_filename):
+        raise NotImplementedError('Renaming would overwrite an existing file')
+    for t in tree:
+        if not isinstance(t, TreeEntry):
+            raise TypeError("Expected an array of TreeEntries")
+        if old_filename == t.get_filename():
+            t.set_filename(new_filename)
+    return tree
+
+# A mapping which maps from the existing branch's SHA1 ids to the corresponding
+# commit on the rewritten branch.
+old_to_new_objects = {}
+
+def create_root_tree(from_commitish):
+    """Given a commit-ish of the main project, create the corresponding commit for the exported campaign's project.
+
+    Returns the SHA1 for the newly-created commit."""
+    try:
+        campaign_tree = read_tree(from_commitish + ':data/campaigns/' + CAMPAIGN_NAME + '/')
+    except subprocess.CalledProcessError:
+        # This must have been a commit that deleted all of the campaign files
+        campaign_tree = []
+
+    # If the source tree had data/campaigns/CAMPAIGN_NAME/translations, rename it to disambiguate from
+    # po/CAMPAIGN_TEXTDOMAIN's translations.
+    campaign_tree = rename_if_exists(campaign_tree, b'translations', b'umc_translations_dir')
+
+    # Copy the .po and .pot files from po/CAMPAIGN_TEXTDOMAIN/ to translations/CAMPAIGN_TEXTDOMAIN/
+    try:
+        original_po_id = subprocess.run(
+            ['git', 'rev-parse', from_commitish+ ':po/' + CAMPAIGN_TEXTDOMAIN],
+            check=True, capture_output=True).stdout.rstrip()
+        original_po_tree = read_tree(original_po_id)
+        new_po_tree = []
+
+        # Filter to remove recognised files of the pot-update architecture
+        for t in original_po_tree:
+            if t.get_filename() not in (b'FINDCFG', b'LINGUAS', b'Makevars'):
+                new_po_tree.append(t)
+
+        if len(new_po_tree) != 0:
+            new_po_id = create_tree(new_po_tree)
+            new_translations_tree = [format_subdir_tree_entry(new_po_id, CAMPAIGN_TEXTDOMAIN)]
+            new_translations_id = create_tree(new_translations_tree)
+            campaign_tree.append(format_subdir_tree_entry(new_translations_id, 'translations'))
+    except subprocess.CalledProcessError:
+        # Some versions didn't have the translations, or had them in a different location
+        pass
+
+    # Abort if there was a license file in the campaign tree itself. Handling
+    # this hasn't been implemented because it hasn't been needed.
+    for name in (b'COPYING', b'COPYING.txt', b'LICENSE', b'LICENSE.txt'):
+        if has_file(campaign_tree, name):
+            raise NotImplementedError("There's already a license file in this tree - needs a sanity check on the contents")
+    # Add a copy of the GPL. The magic number here is the SHA1 to copy it from the original project.
+    campaign_tree.append(TreeEntry(b'100644 blob 3912109b5cd65a68039d473c11c9f7ac2303e06d', b'COPYING.txt'))
+
+    return create_tree(campaign_tree)
+
+def create_new_commit(from_commitish):
+    """Given a commit-ish from the original project, create the corresponding commit for the
+    exported campaign.
+
+    Precondition: this function must have already created the parent commit(s) in the exported
+    campaign, which it will have stored in the old_to_new_objects map."""
+    tree = create_root_tree(from_commitish)
+    parents = subprocess.run(
+        ['git', 'rev-parse', from_commitish + '^@'],
+        check=True, capture_output=True).stdout
+    parent_args = []
+    for p in parents.split():
+        # find the nearest parent that will have a corresponding commit in the rewritten commits
+        p = subprocess.run(
+            ['git', 'rev-list', '--max-count=1', p, '--'] + CAMPAIGN_PATHS,
+            encoding='utf-8', check=True, capture_output=True).stdout.rstrip()
+        if p:
+            parent_args.append('-p')
+            parent_args.append(old_to_new_objects[p])
+
+    # Setting the author-name, etc, needs to be done with environment variables. Method copied from git-subtree.
+    env = os.environ.copy()
+    details = subprocess.run(
+        ['git', 'log', '-1', '--no-show-signature', '--pretty=format:%an%n%ae%n%aD%n%cn%n%ce%n%cD%n', from_commitish],
+        encoding='utf-8', check=True, capture_output=True).stdout.rstrip().split('\n')
+    env['GIT_AUTHOR_NAME'] = details[0]
+    env['GIT_AUTHOR_EMAIL'] = details[1]
+    env['GIT_AUTHOR_DATE'] = details[2]
+    env['GIT_COMMITTER_NAME'] = details[3]
+    env['GIT_COMMITTER_EMAIL'] = details[4]
+    env['GIT_COMMITTER_DATE'] = details[5]
+    # No need to utf-8 decode and re-encode the commit message, it's going to be used as-is in the commit-tree command.
+    message = subprocess.run(
+        ['git', 'log', '-1', '--no-show-signature', '--pretty=format:%B', from_commitish],
+        check=True, capture_output=True).stdout
+
+    new_commit = subprocess.run(
+        ['git', 'commit-tree', tree, '-F', '-', '-m', '(cherry-picked from mainline {sha})'.format(sha=from_commitish)] + parent_args,
+        input=message, env=env, check=True, capture_output=True).stdout.rstrip()
+    old_to_new_objects[from_commitish] = new_commit
+    return new_commit
+
+if __name__ == '__main__':
+    # Support the standard '--help'
+    ap = argparse.ArgumentParser(usage=__doc__)
+    options = ap.parse_args()
+
+    # Ignore any uses of git-replace, so that the generated history is based on the full history
+    os.environ['GIT_NO_REPLACE_OBJECTS'] = "1"
+    original_commits = subprocess.run(
+        ['git', 'rev-list', '--topo-order', '--reverse'] + BRANCHES + ['--'] + CAMPAIGN_PATHS,
+        encoding='utf-8', check=True, capture_output=True).stdout.split()
+    count = 0
+    for o in original_commits:
+        new_commit = create_new_commit(o)
+        count += 1
+        print("Created rewritten commit", count, "/", len(original_commits), new_commit)
+
+    print()
+    print("To access the rewritten history, create new branches pointing these SHA1s:")
+    for b in BRANCHES:
+        # find the nearest parent that will have a corresponding commit in the rewritten commits
+        p = subprocess.run(
+            ['git', 'rev-list', '--max-count=1', b, '--'] + CAMPAIGN_PATHS,
+            encoding='utf-8', check=True, capture_output=True).stdout.rstrip()
+        if p:
+            if p in old_to_new_objects:
+                print(b, "=>", str(old_to_new_objects[p], encoding='utf-8'))
+            else:
+                print("Warning: could not find a mapping from branch", b, "to the new history")
+        else:
+            print("Warning: could not find history for this campaign in branch", b)
