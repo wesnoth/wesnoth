@@ -117,14 +117,15 @@ using tsetters = std::map<std::string, std::vector<std::function<bool(lua_State*
 static tsetters setters;
 
 #define WIDGET_GETTER4(name, value_type, widgt_type, id) \
-value_type BOOST_PP_CAT(getter_, id)(lua_State* L, widgt_type& w); \
+/* use a class memeber for L to supress unused praemter wanring */ \
+struct BOOST_PP_CAT(getter_, id) { value_type do_it(widgt_type& w); lua_State* L; }; \
 struct BOOST_PP_CAT(getter_adder_, id) { \
-	BOOST_PP_CAT(getter_adder_, id) ()\
+	BOOST_PP_CAT(getter_adder_, id) () \
 	{ \
 		utils::split_foreach(name, ',', 0, [](utils::string_view name_part){\
 			getters[std::string(name_part)].push_back([](lua_State* L, gui2::widget& w) { \
 				if(widgt_type* pw = dynamic_cast<widgt_type*>(&w)) { \
-					lua_push(L, BOOST_PP_CAT(getter_, id) (L, *pw)); \
+					lua_push(L, BOOST_PP_CAT(getter_, id){L}.do_it(*pw)); \
 					return true; \
 				} \
 				return false; \
@@ -133,18 +134,18 @@ struct BOOST_PP_CAT(getter_adder_, id) { \
 	} \
 }; \
 static BOOST_PP_CAT(getter_adder_, id) BOOST_PP_CAT(getter_adder_instance_, id) ; \
-value_type BOOST_PP_CAT(getter_, id) (lua_State* L, widgt_type& w)
+value_type BOOST_PP_CAT(getter_, id)::do_it(widgt_type& w)
 
 
 #define WIDGET_SETTER4(name, value_type, widgt_type, id) \
-static void BOOST_PP_CAT(setter_, id)(lua_State* L, widgt_type& w, const value_type& value); \
+struct BOOST_PP_CAT(setter_, id) { void do_it(widgt_type& w, const value_type& value); lua_State* L; }; \
 struct BOOST_PP_CAT(setter_adder_, id) { \
 	BOOST_PP_CAT(setter_adder_, id) ()\
 	{ \
 		utils::split_foreach(name, ',', 0, [](utils::string_view name_part){\
 			setters[std::string(name_part)].push_back([](lua_State* L, int idx, gui2::widget& w) { \
 				if(widgt_type* pw = dynamic_cast<widgt_type*>(&w)) { \
-					BOOST_PP_CAT(setter_, id) (L, *pw, lua_check<value_type>(L, idx)); \
+					BOOST_PP_CAT(setter_, id){L}.do_it(*pw, lua_check<value_type>(L, idx)); \
 					return true; \
 				} \
 				return false; \
@@ -153,7 +154,7 @@ struct BOOST_PP_CAT(setter_adder_, id) { \
 	} \
 }; \
 static BOOST_PP_CAT(setter_adder_, id) BOOST_PP_CAT(setter_adder_instance_, id); \
-static void BOOST_PP_CAT(setter_, id) (lua_State* L, widgt_type& w, const value_type& value)
+void BOOST_PP_CAT(setter_, id)::do_it(widgt_type& w, const value_type& value)
 
 
 /**
