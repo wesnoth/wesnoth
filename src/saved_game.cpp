@@ -654,6 +654,8 @@ std::string saved_game::get_scenario_id()
 		scenario_id = starting_point_["id"].str();
 	} else if(!has_carryover_expanded_) {
 		scenario_id = carryover_["next_scenario"].str();
+	} else if(!replay_start_.empty()) {
+		scenario_id = replay_start_["id"].str();
 	} else {
 		assert(!"cannot figure out scenario_id");
 		throw "assertion ignored";
