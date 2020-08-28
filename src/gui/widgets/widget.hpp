@@ -17,6 +17,8 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "sdl/point.hpp"
 #include "gui/widgets/event_executor.hpp"
+#include "scripting/lua_ptr.hpp"
+
 #include "color.hpp"
 
 #include <string>
@@ -44,7 +46,7 @@ class walker_base;
  * info needed for a real widget and some pure abstract functions which need to
  * be implemented by classes deriving from this class.
  */
-class widget : public event_executor, public event::dispatcher
+class widget : public event_executor, public event::dispatcher, public enable_lua_ptr<widget>
 {
 	friend class debug_layout_graph;
 	friend class window; // needed for modifying the layout_size.

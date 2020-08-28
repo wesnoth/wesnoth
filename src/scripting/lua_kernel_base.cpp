@@ -38,6 +38,8 @@
 #include "scripting/lua_stringx.hpp"
 #include "scripting/lua_map_location_ops.hpp"
 #include "scripting/lua_rng.hpp"
+#include "scripting/lua_widget.hpp"
+#include "scripting/lua_widget_methods.hpp" //intf_show_dialog
 #include "scripting/push_check.hpp"
 
 #include "game_version.hpp"                  // for do_version_check, etc
@@ -448,21 +450,21 @@ lua_kernel_base::lua_kernel_base()
 		{ "read_file",                &lua_fileops::intf_read_file          },
 		{ "canonical_path",           &lua_fileops::intf_canonical_path     },
 		{ "textdomain",               &lua_common::intf_textdomain   		},
-		{ "get_dialog_value",         &lua_gui2::intf_get_dialog_value		},
-		{ "set_dialog_tooltip",       &lua_gui2::intf_set_dialog_tooltip	},
-		{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
-		{ "set_dialog_visible",       &lua_gui2::intf_set_dialog_visible    },
-		{ "add_dialog_tree_node",     &lua_gui2::intf_add_dialog_tree_node	},
-		{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},
-		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
-		{ "set_dialog_focus",         &lua_gui2::intf_set_dialog_focus      },
-		{ "set_dialog_markup",        &lua_gui2::intf_set_dialog_markup		},
-		{ "set_dialog_value",         &lua_gui2::intf_set_dialog_value		},
-		{ "remove_dialog_item",       &lua_gui2::intf_remove_dialog_item    },
+		//{ "get_dialog_value",         &lua_gui2::intf_get_dialog_value		},
+		//{ "set_dialog_tooltip",       &lua_gui2::intf_set_dialog_tooltip	},
+		//{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
+		//{ "set_dialog_visible",       &lua_gui2::intf_set_dialog_visible    },
+		//{ "add_dialog_tree_node",     &lua_gui2::intf_add_dialog_tree_node	},
+		//{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},
+		//{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
+		//{ "set_dialog_focus",         &lua_gui2::intf_set_dialog_focus      },
+		//{ "set_dialog_markup",        &lua_gui2::intf_set_dialog_markup		},
+		//{ "set_dialog_value",         &lua_gui2::intf_set_dialog_value		},
+		//{ "remove_dialog_item",       &lua_gui2::intf_remove_dialog_item    },
 		{ "dofile",                   &dispatch<&lua_kernel_base::intf_dofile>           },
 		{ "require",                  &dispatch<&lua_kernel_base::intf_require>          },
 		{ "kernel_type",              &dispatch<&lua_kernel_base::intf_kernel_type>          },
-		{ "show_dialog",              &lua_gui2::show_dialog   },
+		{ "show_dialog",              &intf_show_dialog   },
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
@@ -486,6 +488,8 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << lua_common::register_gettext_metatable(L);
 	// Create the tstring metatable.
 	cmd_log_ << lua_common::register_tstring_metatable(L);
+
+	lua_widget::register_metatable(L);
 
 	// Override the print function
 	cmd_log_ << "Redirecting print function...\n";
