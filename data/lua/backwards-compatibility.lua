@@ -11,13 +11,15 @@ function wesnoth.fire(name, cfg)
 	wesnoth.wml_actions[name](wml.tovconfig(cfg or {}))
 end
 
+local open_dialogs = {}
+
 local function reorder_dialog_args(t, n)
 	local res = {}
 	for i = 1, n do
 		table.insert( res, t[1])
 		table.remove( t, 1 )
 	end
-	local w = gui.widget.find(unpack(t))
+	local w = open_dialogs[1]:find(unpack(t))
 	return w, res
 end
 
@@ -76,9 +78,19 @@ function wesnoth.remove_dialog_item(...)
 	w:remove_items_at(unpack(args))
 end
 
---function wesnoth.show_dialog(...)
---	print("widget", widget)
---	widget.show_dialog(...)
---end
-
-std_print("compat done")
+local old_show_dialog = wesnoth.show_dialog
+function wesnoth.show_dialog(dialog_wml, preshow, postshow)
+	
+	local res = old_show_dialog(
+		dialog_wml,
+		function(dialog)
+			table.insert(open_dialogs, 1, dialog)
+			if preshow then
+				preshow(dialog)
+			end
+		end,
+		postshow
+	)
+	table.remove( open_dialogs, 1 )
+	return res
+end
