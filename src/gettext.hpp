@@ -37,6 +37,7 @@
 #include <string>
 #include <vector>
 #include <ctime>
+#include <boost/locale.hpp>
 
 #ifndef GETTEXT_DOMAIN
 # define GETTEXT_DOMAIN PACKAGE
@@ -85,6 +86,14 @@ namespace translation
 	std::string strftime(const std::string& format, const std::tm* time);
 
 	bool ci_search(const std::string& s1, const std::string& s2);
+
+	/**
+	 * A facet that holds general information about the effective locale.
+	 * This describes the actual translation target language,
+	 * unlike language_def.localename in language.hpp, where the "System
+	 * default language" is represented by an empty string.
+	 */
+	const boost::locale::info& get_effective_locale_info();
 }
 
 //#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)
