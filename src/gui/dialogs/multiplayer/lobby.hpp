@@ -217,8 +217,8 @@ private:
 
 	friend struct lobby_delay_gamelist_update_guard;
 
-	std::string server_information_;
-	std::string announcements_;
+	static std::string server_information_;
+	static std::string announcements_;
 };
 
 } // namespace dialogs
