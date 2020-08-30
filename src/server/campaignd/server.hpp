@@ -174,6 +174,7 @@ private:
 
 	void handle_request_campaign_list(const request&);//#TODO: rename with 'addon' later?
 	void handle_request_campaign(const request&);
+	void handle_request_campaign_hash(const request&);
 	void handle_request_terms(const request&);
 	void handle_upload(const request&);
 	void handle_delete(const request&);
