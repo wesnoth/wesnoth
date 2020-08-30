@@ -280,6 +280,7 @@ const topic *find_topic(const section &sec, const std::string &id);
 /// and its subsections. Return the found section or nullptr if none could
 /// be found.
 const section *find_section(const section &sec, const std::string &id);
+section *find_section(section &sec, const std::string &id);
 
 /// Parse a text string. Return a vector with the different parts of the
 /// text. Each markup item is a separate part while the text between

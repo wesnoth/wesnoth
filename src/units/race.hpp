@@ -62,6 +62,8 @@ public:
 	 */
 	std::string get_icon_path_stem() const;
 
+	const std::string& help_taxonomy() const { return help_taxonomy_; }
+
 	/// Dummy race used when a race is not yet known.
 	static const unit_race null_race;
 
@@ -83,6 +85,7 @@ private:
 	config::const_child_itors topics_;
 	bool global_traits_;
 	std::string undead_variation_;
+	std::string help_taxonomy_;
 };
 
 unit_race::GENDER string_gender(const std::string& str,unit_race::GENDER def=unit_race::MALE);
