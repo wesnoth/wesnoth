@@ -1548,14 +1548,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:534
-#, fuzzy
-#| msgid ""
-#| "When running unit tests (withB<\\ -u>), the exit status is different. An "
-#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
-#| "test failed. An exit status of 3 indicates that the test passed, but "
-#| "produced an invalid replay file. An exit status of 4 indicates that the "
-#| "test passed, but the replay produced errors. These latter two are only "
-#| "returned if B<--noreplaycheck> is not passed."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -2312,14 +2304,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:223
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the B<forum_user_handler> to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2578,6 +2562,7 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
@@ -2619,6 +2604,7 @@ msgstr "B<wesnoth>(6)"
 #~ "oluşturmanız gerekecek."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
@@ -2640,10 +2626,12 @@ msgstr "B<wesnoth>(6)"
 #~ "kullanılmaktadır."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
@@ -2652,10 +2640,12 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Posta sunucusuna girişte kullanılacak kullanıcı adı."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
@@ -2664,6 +2654,7 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Epostanızın yanıtlama adresi."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 
