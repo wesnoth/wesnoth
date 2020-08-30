@@ -55,57 +55,6 @@
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-static const char dlgclbkKey[] = "dialog callback";
-
-namespace {
-	struct scoped_dialog
-	{
-		lua_State* L;
-		scoped_dialog* prev;
-		static scoped_dialog* current;
-		std::unique_ptr<gui2::window> window;
-		typedef std::map<gui2::widget*, int> callback_map;
-		callback_map callbacks;
-
-		scoped_dialog(lua_State* l, gui2::window* w);
-		~scoped_dialog();
-	private:
-		scoped_dialog(const scoped_dialog&) = delete;
-	};
-
-	scoped_dialog* scoped_dialog::current = nullptr;
-
-	scoped_dialog::scoped_dialog(lua_State* l, gui2::window* w)
-		: L(l), prev(current), window(w), callbacks()
-	{
-		lua_pushstring(L, dlgclbkKey);
-		lua_createtable(L, 1, 0);
-		lua_pushvalue(L, -2);
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		lua_rawseti(L, -2, 1);
-		lua_rawset(L, LUA_REGISTRYINDEX);
-		current = this;
-	}
-
-	scoped_dialog::~scoped_dialog()
-	{
-		current = prev;
-		lua_pushstring(L, dlgclbkKey);
-		//stack: dlgclbkKey
-		lua_pushvalue(L, -1);
-		//stack: dlgclbkKey, dlgclbkKey
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		//stack: dlgclbkKey, registery[dlgclbkKey]
-		lua_rawgeti(L, -1, 1);
-		//stack: dlgclbkKey, registery[dlgclbkKey], registery[dlgclbkKey][1]
-		lua_remove(L, -2);
-		//stack: dlgclbkKey, registery[dlgclbkKey][1]
-		lua_rawset(L, LUA_REGISTRYINDEX);
-		//registery[dlgclbkKey] = registery[dlgclbkKey][1] //restorign the old value of registery[dlgclbkKey]
-	}
-}//unnamed namespace for scoped_dialog
-
-
 /**
  * Displays a window.
  * - Arg 1: WML table describing the window.
@@ -116,41 +65,32 @@ namespace {
 int intf_show_dialog(lua_State* L)
 {
 	config def_cfg = luaW_checkconfig(L, 1);
-
 	gui2::builder_window::window_resolution def(def_cfg);
-	scoped_dialog w(L, gui2::build(&def));
+
+	std::unique_ptr<gui2::window> wp;
+	wp.reset(gui2::build(&def));
 
 	if(!lua_isnoneornil(L, 2)) {
 		lua_pushvalue(L, 2);
-		lua_call(L, 0, 0);
+		luaW_pushwidget(L, *wp);
+		lua_call(L, 1, 0);
 	}
 
-	int v = scoped_dialog::current->window->show(true, 0);
+	int v = wp->show(true, 0);
 
 	if (!lua_isnoneornil(L, 3)) {
 		lua_pushvalue(L, 3);
-		lua_call(L, 0, 0);
+		luaW_pushwidget(L, *wp);
+		lua_call(L, 1, 0);
 	}
-
+	luaW_clearwindowtable(L, wp.get());
 	lua_pushinteger(L, v);
 	return 1;
 }
 
 static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool readonly)
 {
-	if(!w && !scoped_dialog::current) {
-		luaL_error(L, "no visible dialog");
-		error_oob_call_dtors:
-		luaL_argerror(L, i, "out of bounds");
-		error_not_str_call_dtors:
-		luaW_type_error(L, i, "string");
-		error_no_wgt_call_dtors:
-		luaL_argerror(L, i, "widget not found");
-		return nullptr;
-	}
-	if(!w) {
-		w = scoped_dialog::current->window.get();
-	}
+	assert(w);
 
 	for(; !lua_isnoneornil(L, i); ++i)
 	{
@@ -158,12 +98,12 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 		{
 			int v = lua_tointeger(L, i);
 			if(v < 1) {
-				goto error_oob_call_dtors;
+				throw std::invalid_argument("negavtive index");
 			}
 			int n = list->get_item_count();
 			if(v > n) {
 				if(readonly) {
-					goto error_oob_call_dtors;
+					throw std::invalid_argument("index out of range");
 				}
 				utils::string_map dummy;
 				for(; n < v; ++n) {
@@ -174,12 +114,12 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 		} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
 			int v = lua_tointeger(L, i);
 			if(v < 1) {
-				goto error_oob_call_dtors;
+				throw std::invalid_argument("negavtive index");
 			}
 			int n = multi_page->get_page_count();
 			if(v > n) {
 				if(readonly) {
-					goto error_oob_call_dtors;
+					throw std::invalid_argument("index out of range");
 				}
 				utils::string_map dummy;
 				for(; n < v; ++n) {
@@ -192,11 +132,11 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 			if(lua_isnumber(L, i)) {
 				int v = lua_tointeger(L, i);
 				if(v < 1) {
-					goto error_oob_call_dtors;
+					throw std::invalid_argument("negavtive index");
 				}
 				int n = tvn.count_children();
 				if(v > n) {
-					goto error_oob_call_dtors;
+					throw std::invalid_argument("index out of range");
 				}
 				w = &tvn.get_child_at(v - 1);
 
@@ -208,11 +148,11 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 			if(lua_isnumber(L, i)) {
 				int v = lua_tointeger(L, i);
 				if(v < 1) {
-					goto error_oob_call_dtors;
+					throw std::invalid_argument("negavtive index");
 				}
 				int n = tree_view_node->count_children();
 				if(v > n) {
-					goto error_oob_call_dtors;
+					throw std::invalid_argument("index out of range");
 				}
 				w = &tree_view_node->get_child_at(v - 1);
 
@@ -224,11 +164,11 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 			if(lua_isnumber(L, i)) {
 				int v = lua_tointeger(L, i);
 				if(v < 1) {
-					goto error_oob_call_dtors;
+					throw std::invalid_argument("negavtive index");
 				}
 				int n = stacked_widget->get_layer_count();
 				if(v > n) {
-					goto error_oob_call_dtors;
+					throw std::invalid_argument("index out of range");
 				}
 				w = stacked_widget->get_layer_grid(v - 1);
 			} else {
@@ -238,12 +178,12 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 		} else {
 			char const *m = lua_tostring(L, i);
 			if(!m) {
-				goto error_not_str_call_dtors;
+				throw std::invalid_argument("expected a string");
 			}
 			w = w->find(m, false);
 		}
 		if(!w) {
-			goto error_no_wgt_call_dtors;
+			throw std::invalid_argument("widget not found");
 		}
 	}
 
@@ -252,13 +192,8 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 
 static int intf_find_widget(lua_State* L)
 {
-	int start = 1;
-	gui2::widget* w = nullptr;
-	if(luaW_iswidget(L, 1)) {
-		start = 2;
-		w = &luaW_checkwidget(L, 1);
-	}
-	auto pw = find_widget_impl(L, w, start, false);
+	gui2::widget* w = &luaW_checkwidget(L, 1);
+	auto pw = find_widget_impl(L, w, 2, false);
 	if(pw) {
 		luaW_pushwidget(L, *pw);
 		return 1;
@@ -314,36 +249,20 @@ static int intf_remove_dialog_item(lua_State* L)
 }
 
 namespace { // helpers of intf_set_dialog_callback()
-	void dialog_callback(gui2::widget& w)
+	void dialog_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string& id)
 	{
-		int cb;
-		{
-			scoped_dialog::callback_map &m = scoped_dialog::current->callbacks;
-			scoped_dialog::callback_map::const_iterator i = m.find(&w);
-			if(i == m.end()) {
-				return;
-			}
-			cb = i->second;
+		gui2::widget* w = wp.get_ptr();
+		if(!w) {
+			ERR_LUA << "widget was deleted\n";
+			return;
 		}
-		lua_State *L = scoped_dialog::current->L;
-		lua_pushstring(L, dlgclbkKey);
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		lua_rawgeti(L, -1, cb);
-		lua_remove(L, -2);
-		lua_call(L, 0, 0);
+		gui2::window* wd = w->get_window();
+		if(!wd) {
+			ERR_LUA << "canot find window in eidgte callback\n";
+			return;
+		}
+		luaW_callwidgetcallback(L, w, wd, id);
 	}
-
-	/** Helper struct for intf_set_dialog_callback. */
-	struct dialog_callback_wrapper
-	{
-		void forward(gui2::widget* widget, bool& handled, bool& halt)
-		{
-			assert(widget);
-			dialog_callback(*widget);
-			handled = true;
-			halt = true;
-		}
-	};
 }//unnamed namespace for helpers of intf_set_dialog_callback()
 
 /**
@@ -353,46 +272,36 @@ namespace { // helpers of intf_set_dialog_callback()
  */
 static int intf_set_dialog_callback(lua_State* L)
 {
-	gui2::widget* w = &luaW_checkwidget(L, 1);
-
-	scoped_dialog::callback_map &m = scoped_dialog::current->callbacks;
-	scoped_dialog::callback_map::iterator i = m.find(w);
-	if(i != m.end()) {
-		lua_pushstring(L, dlgclbkKey);
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		lua_pushnil(L);
-		lua_rawseti(L, -2, i->second);
-		lua_pop(L, 1);
-		m.erase(i);
+	lua_ptr<gui2::widget>& wp = luaW_checkwidget_ptr(L, 1);
+	gui2::widget* w = wp.get_ptr();
+	assert(w);
+	gui2::window* wd = w->get_window();
+	if(!wd) {
+		throw std::invalid_argument("the widget has no window assigned");
 	}
 
-	if(lua_isnil(L, 1)) {
+	lua_pushvalue(L, 2);
+	bool already_exists = luaW_setwidgetcallback(L, w, wd, "callback");
+	if(already_exists) {
 		return 0;
 	}
 
+	// TODO: i am not sure whether it is 100% safe to bind the lua_state here,
+	//       (meaning whether it can happen that the lus state is destroyed)
+	//       when a widgets callback is called.
 	if(gui2::clickable_item* c = dynamic_cast<gui2::clickable_item*>(w)) {
-		static dialog_callback_wrapper wrapper;
-		c->connect_click_handler(std::bind(&dialog_callback_wrapper::forward, wrapper, w, _3, _4));
-	} else if(gui2::selectable_item* si = dynamic_cast<gui2::selectable_item*>(w)) {
-		connect_signal_notify_modified(dynamic_cast<gui2::widget&>(*si), std::bind(dialog_callback, _1));
-	} else if(gui2::integer_selector* is = dynamic_cast<gui2::integer_selector*>(w)) {
-		connect_signal_notify_modified(dynamic_cast<gui2::widget&>(*is), std::bind(dialog_callback, _1));
-	} else if(gui2::listbox* l = dynamic_cast<gui2::listbox*>(w)) {
-		static dialog_callback_wrapper wrapper;
-		connect_signal_notify_modified(*l, std::bind(&dialog_callback_wrapper::forward, wrapper, w, _3, _4));
-	} else if(gui2::tree_view* tv = dynamic_cast<gui2::tree_view*>(w)) {
-		connect_signal_notify_modified(*tv, std::bind(dialog_callback, _1));
+		c->connect_click_handler(std::bind(&dialog_callback, L, wp, "callback"));
+	} else if( dynamic_cast<gui2::selectable_item*>(w)) {
+		connect_signal_notify_modified(*w, std::bind(&dialog_callback, L, wp, "callback"));
+	} else if(dynamic_cast<gui2::integer_selector*>(w)) {
+		connect_signal_notify_modified(*w, std::bind(&dialog_callback, L, wp, "callback"));
+	} else if(dynamic_cast<gui2::listbox*>(w)) {
+		connect_signal_notify_modified(*w, std::bind(&dialog_callback, L, wp, "callback"));
+	} else if(dynamic_cast<gui2::tree_view*>(w)) {
+		connect_signal_notify_modified(*w, std::bind(&dialog_callback, L, wp, "callback"));
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
-	}
-
-	lua_pushstring(L, dlgclbkKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	int n = lua_rawlen(L, -1) + 1;
-	m[w] = n;
-	lua_pushvalue(L, 2);
-	lua_rawseti(L, -2, n);
-	lua_pop(L, 1);
+	};
 
 	return 0;
 }
@@ -431,7 +340,9 @@ static int intf_set_dialog_canvas(lua_State* L)
 static int intf_set_dialog_focus(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);
-	scoped_dialog::current->window->keyboard_capture(w);
+	if(gui2::window* wd = w->get_window()) {
+		wd->keyboard_capture(w);
+	}
 	return 0;
 }
 
