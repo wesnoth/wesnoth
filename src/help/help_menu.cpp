@@ -36,7 +36,7 @@ help_menu::help_menu(CVideo &video, const section& toplevel, int max_height) :
 	expanded_(),
 	restorer_(),
 	chosen_topic_(nullptr),
-	selected_item_(&toplevel, "")
+	selected_item_(&toplevel, "", 0)
 {
 	silent_ = true; //silence the default menu sounds
 	update_visible_items(toplevel_);
@@ -73,17 +73,16 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 	for (const auto &s : sec.sections) {
 		if (is_visible_id(s.id)) {
 			const std::string vis_string = get_string_to_show(s, level + 1);
-			visible_items_.emplace_back(&s, vis_string);
+			visible_items_.emplace_back(&s, vis_string, level + 1);
 			if (expanded(s)) {
 				update_visible_items(s, level + 1);
 			}
 		}
 	}
-	topic_list::const_iterator topic_it;
-	for (topic_it = sec.topics.begin(); topic_it != sec.topics.end(); ++topic_it) {
-		if (is_visible_id(topic_it->id)) {
-			const std::string vis_string = get_string_to_show(*topic_it, level + 1);
-			visible_items_.emplace_back(&(*topic_it), vis_string);
+	for (const auto &t : sec.topics) {
+		if (is_visible_id(t.id)) {
+			const std::string vis_string = get_string_to_show(t, level + 1);
+			visible_items_.emplace_back(&t, vis_string, level + 1);
 		}
 	}
 }
@@ -165,12 +164,16 @@ int help_menu::process()
 		selected_item_ = visible_items_[res];
 		const section* sec = selected_item_.sec;
 		if (sec != nullptr) {
-			// Check how we click on the section
+			// Behavior of the UI, for section headings:
+			// * user single-clicks on the text part: show the ".." topic in the right-hand pane
+			// * user single-clicks on the icon (or to the left of it): expand or collapse the tree view
+			// * user double-clicks anywhere: expand or collapse the tree view
+			// * note: the first click of the double-click has the single-click effect too
 			int x = mousex - menu::location().x;
 
 			const std::string icon_img = expanded(*sec) ? open_section_img : closed_section_img;
-			// we remove the right thickness (ne present between icon and text)
-			int text_start = style_->item_size(indent_list(icon_img, sec->level)).w - style_->get_thickness();
+			// the "thickness" is the width of the left border
+			int text_start = style_->item_size(indent_list(icon_img, selected_item_.level)).w - style_->get_thickness();
 
 			// NOTE: if you want to forbid click to the left of the icon
 			// also check x >= text_start-image_width(icon_img)
@@ -212,11 +215,11 @@ void help_menu::display_visible_items()
 	set_items(menu_items, false, true);
 }
 
-help_menu::visible_item::visible_item(const section *_sec, const std::string &vis_string) :
-	t(nullptr), sec(_sec), visible_string(vis_string) {}
+help_menu::visible_item::visible_item(const section *_sec, const std::string &vis_string, int lev) :
+	t(nullptr), sec(_sec), visible_string(vis_string), level(lev) {}
 
-help_menu::visible_item::visible_item(const topic *_t, const std::string &vis_string) :
-	t(_t), sec(nullptr), visible_string(vis_string) {}
+help_menu::visible_item::visible_item(const topic *_t, const std::string &vis_string, int lev) :
+	t(_t), sec(nullptr), visible_string(vis_string), level(lev) {}
 
 bool help_menu::visible_item::operator==(const section &_sec) const
 {
