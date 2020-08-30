@@ -19,10 +19,11 @@
 #include "font/pango/escape.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
-#include "language.hpp"
 #include "picture.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+
+#include <boost/locale.hpp>
 
 static lg::log_domain log_addons_client("addons-client");
 #define ERR_AC LOG_STREAM(err ,  log_addons_client)
@@ -156,18 +157,29 @@ addon_info_translation addon_info_translation::invalid = {false, "", ""};
 
 addon_info_translation addon_info::translated_info() const
 {
-	std::string locale = get_language().localename;
+	const boost::locale::info& locale_info = translation::get_effective_locale_info();
 
-	if(locale != "en_US") {
-		auto info = info_translations.find(locale);
-		if(info != info_translations.end()) {
-			return info->second;
-		}
+	std::string lang_name_short = locale_info.language();
+	std::string lang_name_long = lang_name_short;
+	if(!locale_info.country().empty()) {
+		lang_name_long += '_';
+		lang_name_long += locale_info.country();
+	}
+	if(!locale_info.variant().empty()) {
+		lang_name_long += '@';
+		lang_name_long += locale_info.variant();
+		lang_name_short += '@';
+		lang_name_short += locale_info.variant();
+	}
 
-		info = info_translations.find(locale.substr(0, 2));
-		if(info != info_translations.end()) {
-			return info->second;
-		}
+	auto info = info_translations.find(lang_name_long);
+	if(info != info_translations.end()) {
+		return info->second;
+	}
+
+	info = info_translations.find(lang_name_short);
+	if(info != info_translations.end()) {
+		return info->second;
 	}
 
 	return addon_info_translation::invalid;
