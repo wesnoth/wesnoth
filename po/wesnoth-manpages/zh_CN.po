@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "POT-Creation-Date: 2020-08-08 05:30-0400\n"
-"PO-Revision-Date: 2020-06-15 16:27+0800\n"
+"PO-Revision-Date: 2020-08-10 20:13+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -1354,14 +1354,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:534
-#, fuzzy
-#| msgid ""
-#| "When running unit tests (withB<\\ -u>), the exit status is different. An "
-#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
-#| "test failed. An exit status of 3 indicates that the test passed, but "
-#| "produced an invalid replay file. An exit status of 4 indicates that the "
-#| "test passed, but the replay produced errors. These latter two are only "
-#| "returned if B<--noreplaycheck> is not passed."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -2002,14 +1994,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:223
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the B<forum_user_handler> to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2236,6 +2220,7 @@ msgstr ""
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
+#, no-wrap
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
@@ -2268,6 +2253,7 @@ msgstr "B<wesnoth>(6)"
 #~ "（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与用户相关"
 #~ "的数据。你必须手动创建此表。"
 
+#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
@@ -2283,24 +2269,29 @@ msgstr "B<wesnoth>(6)"
 #~ "B<[mail]> 设置一个SMTP服务器，通过它用户信息处理器可以发送邮件。目前只在样"
 #~ "例处理器中使用。"
 
+#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
+#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
 #~ msgid "The user name under which to log into the mail server."
 #~ msgstr "登录到邮件服务器的用户名。"
 
+#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
+#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
 #~ msgid "The reply-to address of you mail."
 #~ msgstr "您的邮箱的“回复到”邮件地址。"
 
+#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 
