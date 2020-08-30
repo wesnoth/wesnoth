@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-22 00:14-0400\n"
-"PO-Revision-Date: 2020-05-04 18:27+1000\n"
+"PO-Revision-Date: 2020-08-13 12:03+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -41,7 +41,6 @@ msgstr "heals +4"
 msgid "female^heals +4"
 msgstr "heals +4"
 
-# TODO: eliminate the use of "our" in the original
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 msgid ""
@@ -690,15 +689,6 @@ msgstr "Named Areas"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid ""
-#| "Named Areas are sets of gamefields which can be addressed during scenario "
-#| "scripting by a given name.\n"
-#| "\n"
-#| "It can be used to abstract between the implementation of an effect and "
-#| "the map specific setting.\n"
-#| "This is a very powerful mechanism since it allows generic scenario "
-#| "codings working with different maps providing the needed named locations."
 msgid ""
 "This tool can create [time_area]s, unlike the name suggestes these do not "
 "need to have a specific timezone assigned to them.\n"
@@ -712,12 +702,17 @@ msgid ""
 "This is a very powerful mechanism since it allows generic scenario codings "
 "working with different maps providing the needed named locations."
 msgstr ""
-"Named Areas are sets of game fields which can be addressed during scenario "
-"scripting by a given name.\n"
+"This tool can create [time_area]s, unlike the name suggests these do not "
+"need to have a specific time zone assigned to them.\n"
+"    [time_area]s are sets of tiles which can be addressed during scenario "
+"scripting by their id. [time_area]s can optionally have a custom\n"
+"    time zone assigned to them. The simplest way to address a [time_area] "
+"via scenario scripting is the `area=` attribute in standard location "
+"filters.\n"
 "\n"
-"It can be used to abstract between the implementation of an effect and the "
-"map specific setting.\n"
-"This is a very powerful mechanism since it allows generic scenario codings "
+"This tool can be used to abstract between the implementation of an effect "
+"and the map specific setting.\n"
+"This is a very powerful mechanism since it allows generic scenario code "
 "working with different maps providing the needed named locations."
 
 #. [topic]: id=editor_playlist
@@ -1157,18 +1152,18 @@ msgstr "Encyclopædia"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='Geography'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='Calendar'</ref>\n"
+"<ref>dst='..geography' text='Geography'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:12
 msgid "Calendar"
-msgstr ""
+msgstr "Calendar"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:13
@@ -1190,6 +1185,22 @@ msgid ""
 "Blackfire\n"
 "\n"
 msgstr ""
+"Each year in the Wesnoth calendar is composed of 12 months. These are, in "
+"order:\n"
+"\n"
+"Whitefire\n"
+"Bleeding Moon\n"
+"Scatterseed\n"
+"Deeproot\n"
+"Scryer’s Bloom\n"
+"Thorntress\n"
+"Summit Star\n"
+"Kindlefire\n"
+"Stillseed\n"
+"Reaper’s Moon\n"
+"Verglas Bloom\n"
+"Blackfire\n"
+"\n"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -4635,37 +4646,27 @@ msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:118
-#, fuzzy
-#| msgid "Vision:"
 msgid "diversion"
-msgstr "Vision:"
+msgstr "diversion"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:119
-#, fuzzy
-#| msgid "female^leadership"
 msgid "female^diversion"
-msgstr "leadership"
+msgstr "diversion"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:120
-#, fuzzy
-#| msgid ""
-#| "If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
 msgstr ""
-"If there is an enemy of the target on the opposite side of the target while "
-"attacking it, this unit may backstab, inflicting double damage by creeping "
-"around behind that enemy."
+"If there is an enemy of the target on the opposite side of the target, this "
+"unit diverts the target’s attention and reduces its chance to hit by 20%."
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:121
 msgid "This is inactive for now."
-msgstr ""
+msgstr "This is inactive for now."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:173
@@ -5396,19 +5397,14 @@ msgstr ""
 
 #. [special_note]
 #: data/core/macros/special-notes.cfg:300
-#, fuzzy
-#| msgid ""
-#| "If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target's attention and reduces its "
 "chance to hit."
 msgstr ""
 "If there is an enemy of the target on the opposite side of the target while "
-"attacking it, this unit may backstab, inflicting double damage by creeping "
-"around behind that enemy."
+"attacking it, this unit diverts the target's attention and reduces its "
+"chance to hit."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6325,6 +6321,68 @@ msgid ""
 "tradition, in both Wesmere and Lintanir, an enchantress from the order of "
 "elven mystics is also called upon to facilitate the transition of power."
 msgstr ""
+"Compared to humans, elves are somewhat taller, more agile but less sturdy. "
+"They have slightly pointy ears, pale skin and usually blond hair. Few "
+"differences between humans and elves are more pronounced than the Elves’ "
+"unusually long life — most, unless claimed by illness, accident or war, live "
+"at least a full two centuries. While some elves possessing a high magical "
+"aptitude have been known to live longer, most elves begin to grow physically "
+"frail at some point between 250 and 300 years of age and pass away rapidly "
+"thereafter.\n"
+"\n"
+"Most elves share an intense affection for unspoiled nature and find "
+"themselves uncomfortable in open, non-vegetated places. They live primarily "
+"in the forests of the Great Continent, the Aethenwood in the south-west, "
+"Wesmere in the northwest, and the great northern woods of which the Lintanir "
+"Forest is the southernmost edge.\n"
+"\n"
+"Elves are the eldest race of the continent, with the possible exception of "
+"trolls. Many of their settlements cannot be reliably dated, undoubtedly "
+"having existed for several millennia.\n"
+"\n"
+"<header>text='Magic'</header>\n"
+"While elves are fundamentally different creatures than the fabled fair folk, "
+"their magic has some connection to the faerie and is the source of their "
+"unusually keen senses as well as their long lives. Elven magic is split "
+"between two different paths, one focused on manipulation of the mundane or "
+"natural world, and one focused on divination into the arcane plane. More "
+"common is the the way of corporeal alteration, which has more tangible "
+"effects than its antithesis in the arcane. Though elven nature magic is ill-"
+"suited towards combat, its potent ability to harness earthly energies to "
+"nurture and protect is the primary reason for the effectiveness of elven "
+"healing as well as the beauty and vitality of their forests.\n"
+"\n"
+"Those who follow the mystic path are also well-regarded by other elves, but "
+"their motives and abilities are often unclear to those outside of their "
+"order. Some who venture far down the path of mysticism take on more faerie-"
+"like traits, gaining extraordinary insight and longevity, but also becoming "
+"sensitive to and even burned by the presence of cold iron.\n"
+"\n"
+"<header>text='Culture'</header>\n"
+"Elves spend much of their time honing their talents and skills. Those not "
+"adept at the magical arts typically devote their time honing their physical "
+"skills, often for sporting purposes. As a result, elves excel at archery, a "
+"craft that is readily and effectively applied to warfare. Elves are also "
+"renowned musicians, particularly skilled at wind and plucked string "
+"instruments in small ensembles. The Aeolian harps of the Aethenwood, for "
+"example, are crafted from the fine wood of Elven yew trees and are legendary "
+"for their soft, gentle tone.\n"
+"\n"
+"<header>text='Society'</header>\n"
+"Elvish society is roughly divided into three factions: a pseudo-military "
+"faction responsible for defending their forests, peaceful civilians who are "
+"usually craftsmen and artists, and healers and mystics who maintain the "
+"elves’ connection to the faerie. Responsible for governing these different "
+"aspects is the nobility, who are treated as servants to the broader social "
+"order, rather than as strict rulers of their people. The process for "
+"selecting these nobles differs between the various elven conclaves, with the "
+"governing council of Wesmere — the Ka’lian — being elected and the nobility "
+"in Lintanir usually being inherited.\n"
+"\n"
+"In times of strife, the hierarchy of command becomes more adaptable, with "
+"the ordinary aristocracy deferring to more war-minded marshals. By "
+"tradition, in both Wesmere and Lintanir, an enchantress from the order of "
+"elven mystics is also called upon to facilitate the transition of power."
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
@@ -6457,7 +6515,6 @@ msgstr "Human"
 msgid "race^Humans"
 msgstr "Humans"
 
-# of
 #. [race]: id=human
 #: data/core/units.cfg:194
 msgid ""
@@ -7230,36 +7287,8 @@ msgstr "Undead"
 msgid "race+plural^Undead"
 msgstr "Undead"
 
-# nor<or
-# it's<its
 #. [race]: id=undead
 #: data/core/units.cfg:366
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of its master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and merfolk tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -7295,15 +7324,23 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 "Undead are not really a single race of creatures, although often treated as "
-"such. Almost any dead creature can, by a sufficiently skilled necromancer, "
-"be reanimated and rise again in undeath. Undead are for the most part "
-"unnatural but mindless constructs, obeying whoever created them without "
-"question nor thought. A greater mystery of necromancy is in how constructs "
-"are sustained without continuous effort from the necromancer. An undead "
-"creature does not require the constant attention of the necromancer to "
-"command and sustain, but can work autonomously according to the commands of "
-"its master. Only rarely, perhaps once every few months, does the necromancer "
-"need to maintain his creation.\n"
+"such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
+"reanimated into constructs of varying character — resurrection of the "
+"physical form often results in a minion that obeys its master without "
+"question, while manifestation of a soul usually produces a servant with at "
+"least a modicum of thought. A great mystery of necromancy is how these "
+"constructs are sustained and controlled without continuous effort from the "
+"necromancer. Most dark magi do not provide constant attention or maintenance "
+"to their creations, instead allowing them a small degree of independence to "
+"function autonomously in line with the provided commands. However, when left "
+"unchecked, some undead gain enough sovereignty to break free from and even "
+"turn on their masters. Accordingly, while even lesser undead require "
+"periodic maintenance, this is especially true for more powerful undead, "
+"particularly greater spirits or death knights, who possess a high degree of "
+"inherent will. In these cases, necromancy becomes a battle of resolve "
+"between mage and minion. The necromancer must maintain a delicate balance "
+"between control over their servants and allotting them free will — the "
+"source of their individual powers.\n"
 "\n"
 "Necromancy is almost solely limited to humans. Even the legends of magically "
 "apt races like elves and merfolk tell of very few of their kind who have "

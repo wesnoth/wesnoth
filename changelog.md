@@ -1,6 +1,6 @@
 ## Version 1.15.4+dev
  ### Language and i18n
-   * Updated translations: Polish, Russian
+   * Updated translations: British English, Polish, Russian
  ### Miscellaneous and bug fixes
    * Minimum required version of OS X is now OS X 10.11 .
  ### Packaging
