@@ -648,6 +648,7 @@ void server::register_handlers()
 {
 	REGISTER_CAMPAIGND_HANDLER(request_campaign_list);
 	REGISTER_CAMPAIGND_HANDLER(request_campaign);
+	REGISTER_CAMPAIGND_HANDLER(request_campaign_hash);
 	REGISTER_CAMPAIGND_HANDLER(request_terms);
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
@@ -868,6 +869,50 @@ void server::handle_request_campaign(const server::request& req)
 		const int downloads = campaign["downloads"].to_int() + 1;
 		campaign["downloads"] = downloads;
 		dirty_addons_.emplace(req.cfg["name"]);
+	}
+}
+
+void server::handle_request_campaign_hash(const server::request& req)
+{
+	config& campaign = get_addon(req.cfg["name"]);
+
+	if(!campaign || campaign["hidden"].to_bool()) {
+		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
+		return;
+	}
+
+	std::string to = req.cfg["version"].str();
+	if(to.empty()) {
+		send_error("No version of the add-on '" + req.cfg["name"].str() + "' was specified for a hash list request.", req.sock);
+		return;
+	}
+
+	std::string filename = campaign["filename"].str();
+
+	auto version_map = get_version_map(campaign);
+
+	if(version_map.empty()) {
+		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
+		return;
+	} else {
+		auto version = version_map.find(version_info(to));
+		if(version != version_map.end()) {
+			filename += version->second["filename"].str();
+		} else {
+			send_error("The selected version (" + to + ") of the add-on '" + req.cfg["name"].str() + "' has not been found by the server.", req.sock);
+			return;
+		}
+
+		filename += ".hash";
+		int file_size = filesystem::file_size(filename);
+
+		if(file_size < 0) {
+			send_error("No pregenerated hash file for the add-on '" + req.cfg["name"].str() + "' has been found by the server.", req.sock);
+			return;
+		}
+
+		LOG_CS << "sending the hash list of the campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << file_size / 1024 << "KiB\n";
+		async_send_file(req.sock, filename, std::bind(&server::handle_new_client, this, _1), null_handler);
 	}
 }
 
