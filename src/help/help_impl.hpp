@@ -144,8 +144,7 @@ struct section {
 		title(""),
 		id(""),
 		topics(),
-		sections(),
-		level()
+		sections()
 	{
 	}
 
@@ -161,7 +160,6 @@ struct section {
 	std::string title, id;
 	topic_list topics;
 	section_list sections;
-	int level;
 };
 
 

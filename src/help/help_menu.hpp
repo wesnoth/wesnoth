@@ -47,13 +47,14 @@ public:
 private:
 	/// Information about an item that is visible in the menu.
 	struct visible_item {
-		visible_item(const section *_sec, const std::string &visible_string);
-		visible_item(const topic *_t, const std::string &visible_string);
+		visible_item(const section *_sec, const std::string &visible_string, int level);
+		visible_item(const topic *_t, const std::string &visible_string, int level);
 		// Invariant, one if these should be nullptr. The constructors
 		// enforce it.
 		const topic *t;
 		const section *sec;
 		std::string visible_string;
+		int level;
 		bool operator==(const visible_item &vis_item) const;
 		bool operator==(const section &sec) const;
 		bool operator==(const topic &t) const;

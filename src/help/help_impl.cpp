@@ -151,7 +151,6 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 	}
 	else if (section_cfg != nullptr) {
 		const std::vector<std::string> sections = utils::quoted_split((*section_cfg)["sections"]);
-		sec.level = level;
 		std::string id = level == 0 ? "toplevel" : (*section_cfg)["id"].str();
 		if (level != 0) {
 			if (!is_valid_id(id)) {
@@ -885,7 +884,7 @@ void generate_terrain_sections(section& sec, int /*level*/)
 	}
 }
 
-void generate_unit_sections(const config* /*help_cfg*/, section& sec, int level, const bool /*sort_generated*/, const std::string& race)
+void generate_unit_sections(const config* /*help_cfg*/, section& sec, int /*level*/, const bool /*sort_generated*/, const std::string& race)
 {
 	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types()) {
 		const unit_type &type = i.second;
@@ -913,7 +912,6 @@ void generate_unit_sections(const config* /*help_cfg*/, section& sec, int level,
 
 		base_unit.id = ref_id;
 		base_unit.title = type_name;
-		base_unit.level = level +1;
 
 		sec.add_section(base_unit);
 	}
