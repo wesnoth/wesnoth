@@ -275,6 +275,14 @@ void server::load_config()
 				writer.write(data);
 				campaign_file.commit();
 			}
+			{
+				filesystem::atomic_commit campaign_hash_file(addon_file + version_cfg["filename"].str() + ".hash");
+				config_writer writer(*campaign_hash_file.ostream(), true, compress_level_);
+				config data_hash = config("name", "");
+				write_hashlist(data_hash, data);
+				writer.write(data_hash);
+				campaign_hash_file.commit();
+			}
 
 			addons_.emplace(addon_id, campaign);
 			dirty_addons_.emplace(addon_id);
@@ -1073,7 +1081,6 @@ void server::handle_upload(const server::request& req)
 		add_license(data);
 		
 		const std::string& new_version = (*campaign)["version"].str();
-		//#TODO: probably make hash from new_version + required_wesnoth_version ?
 		const std::string& file_hash = utils::md5(new_version).hex_digest();
 
 		//sorted version map
@@ -1098,6 +1105,15 @@ void server::handle_upload(const server::request& req)
 			config_writer writer(*campaign_file.ostream(), true, compress_level_);
 			writer.write(data);
 			campaign_file.commit();
+		}
+		// Let's write its hashes
+		{
+			filesystem::atomic_commit campaign_hash_file(filename + version_cfg["filename"].str() + ".hash");
+			config_writer writer(*campaign_hash_file.ostream(), true, compress_level_);
+			config data_hash = config("name", "");
+			write_hashlist(data_hash, data);
+			writer.write(data_hash);
+			campaign_hash_file.commit();
 		}
 
 		(*campaign)["size"] = filesystem::file_size(filename + version_cfg["filename"].str());

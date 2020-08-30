@@ -20,7 +20,7 @@
 #include "game_config.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include "hash.hpp"
+#include "addon/validation.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -151,20 +151,6 @@ void add_license(config& cfg)
 	config& copying = dir.add_child("file");
 	copying["name"] = "COPYING.txt";
 	copying["contents"] = contents;
-}
-
-static const std::string file_hash(const config& file)
-{
-	std::string hash = file["hash"].str();
-	if(hash.empty()) {
-		hash = utils::md5(file["contents"].str()).base64_digest();
-	}
-	return hash;
-}
-
-static bool comp_file_hash(const config& file_a, const config& file_b)
-{
-	return file_hash(file_a) == file_hash(file_b);
 }
 
 //! Surround with [dir][/dir]
