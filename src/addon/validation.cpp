@@ -16,6 +16,7 @@
 #include "addon/validation.hpp"
 #include "config.hpp"
 #include "serialization/unicode_cast.hpp"
+#include "hash.hpp"
 
 #include <algorithm>
 #include <array>
@@ -304,4 +305,67 @@ std::string unencode_binary(const std::string& str)
 
 	res.resize(n);
 	return res;
+}
+
+static const std::string file_hash_raw(const config& file)
+{
+	return utils::md5(file["contents"].str()).base64_digest();
+}
+
+const std::string file_hash(const config& file)
+{
+	std::string hash = file["hash"].str();
+	if(hash.empty()) {
+		hash = file_hash_raw(file);
+	}
+	return hash;
+}
+
+bool comp_file_hash(const config& file_a, const config& file_b)
+{
+	return file_hash(file_a) == file_hash(file_b);
+}
+
+void write_hashlist(config& hashlist, const config& data)
+{
+	hashlist["name"] = data["name"];
+
+	for(const config& f : data.child_range("file")) {
+		config& file = hashlist.add_child("file");
+		file["name"] = f["name"];
+		file["hash"] = file_hash_raw(f);
+	}
+
+	for(const config& d : data.child_range("dir")) {
+		config& dir = hashlist.add_child("dir");
+		write_hashlist(dir, d);
+	}
+}
+
+bool contains_hashlist(const config& from, const config& to)
+{
+	for(const config& f : to.child_range("file")) {
+		bool found = false;
+		for(const config& d : from.child_range("file")) {
+			found |= comp_file_hash(f, d);
+			if(found)
+				break;
+		}
+		if(!found) {
+			return false;
+		}
+	}
+
+	for(const config& d : to.child_range("dir")) {
+		const config& origin_dir = from.find_child("dir", "name", d["name"]);
+		if(origin_dir) {
+			return contains_hashlist(origin_dir, d);
+		} else {
+			// The case of empty new subdirectories
+			const config dummy_dir = config("name", d["name"]);
+			return contains_hashlist(dummy_dir, d);
+		}
+	}
+
+	return true;
 }
