@@ -403,6 +403,17 @@ static int intf_add_dialog_item(lua_State* L)
 	return 0;
 }
 
+///Closes a window
+static int intf_dialog_close(lua_State* L)
+{
+	gui2::widget* w = &luaW_checkwidget(L, 1);
+	if(gui2::window* wd = dynamic_cast<gui2::window*>(w)) {
+		wd->close();
+		return 0;
+	} else {
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+	}
+}
 namespace lua_widget {
 int luaW_open(lua_State* L)
 {
@@ -419,6 +430,7 @@ int luaW_open(lua_State* L)
 		{ "set_callback",       &intf_set_dialog_callback },
 		{ "remove_items_at",     &intf_remove_dialog_item },
 		{ "find",               &intf_find_widget },
+		{ "close",              &intf_dialog_close },
 		{ nullptr, nullptr },
 	};
 	lua_newtable(L);
