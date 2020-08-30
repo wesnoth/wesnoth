@@ -103,7 +103,7 @@ namespace lua_check_impl
 	std::enable_if_t<std::is_same<T, utils::string_view>::value, void>
 	lua_push(lua_State *L, const T& val)
 	{
-		lua_pushlstring(L, val.data()(), val.size());
+		lua_pushlstring(L, val.data(), val.size());
 	}
 
 	//config
@@ -321,7 +321,7 @@ namespace lua_check_impl
 	//also accepts things like std::vector<int>() | std::adaptors::transformed(..)
 	template<typename T>
 	std::enable_if_t<
-		is_container<T>::value && !std::is_same<T, std::string>::value && !is_map<T>::value
+		is_container<T>::value && !std::is_same<T, std::string>::value && !std::is_same<T, utils::string_view>::value && !is_map<T>::value
 		, void
 	>
 	lua_push(lua_State * L, const T& list )
