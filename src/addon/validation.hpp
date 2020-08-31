@@ -101,3 +101,4 @@ const std::string file_hash(const config& file);
 bool comp_file_hash(const config& file_a, const config& file_b);
 void write_hashlist(config& hashlist, const config& data);
 bool contains_hashlist(const config& from, const config& to);
+void make_updatepack(config& pack, const config& from, const config& to);

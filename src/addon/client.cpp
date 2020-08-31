@@ -105,7 +105,7 @@ bool addons_client::request_distribution_terms(std::string& terms)
 	return !this->update_last_error(response_buf);
 }
 
-bool addons_client::upload_addon(const std::string& id, std::string& response_message, config& cfg)
+bool addons_client::upload_addon(const std::string& id, std::string& response_message, config& cfg, bool local_only)
 {
 	LOG_ADDONS << "preparing to upload " << id << '\n';
 
@@ -170,6 +170,43 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		this->last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
 		return false;
 	}
+
+	if(!local_only) {
+		// Try to make an upload pack if it's avaible on the server
+		config hashlist, hash_request;
+		config& request_body = hash_request.add_child("request_campaign_hash");
+		// We're requesting the latest version of an addon, so we may not specify it
+		// #TODO: Make a selection of the base version for the update ?
+		request_body["name"] = cfg["name"];
+		this->send_request(hash_request, hashlist);
+		this->wait_for_transfer_done(VGETTEXT("Requesting the older version composition for the add-on <i>$addon_title</i>...", i18n_symbols));
+
+		// A silent error check
+		if(!hashlist.child("error")) {
+			if(!contains_hashlist(addon_data, hashlist) || !contains_hashlist(hashlist, addon_data)) {
+				LOG_ADDONS << "making an update pack for the add-on " << id << '\n';
+				config updatepack;
+				// The client shouldn't send the pack if the server is old due to the previous check,
+				// so the server should handle the new format in the `upload` request
+				make_updatepack(updatepack, hashlist, addon_data);
+
+				config request_buf, response_buf;
+				request_buf.add_child("upload", cfg).append(std::move(updatepack));
+				this->send_request(request_buf, response_buf);
+				this->wait_for_transfer_done(VGETTEXT("Sending an update pack for the add-on <i>$addon_title</i>...", i18n_symbols
+				), transfer_mode::upload);
+
+				if(const config& message_cfg = response_buf.child("message")) {
+					response_message = message_cfg["message"].str();
+					LOG_ADDONS << "server response: " << response_message << '\n';
+				}
+
+				if(!this->update_last_error(response_buf))
+					return true;
+			}
+		}
+	}
+	// If there is an error including an unrecognised request for old servers or no hash data for new uploads we'll just send a full pack
 
 	config request_buf, response_buf;
 	request_buf.add_child("upload", cfg).add_child("data", std::move(addon_data));

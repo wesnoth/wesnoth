@@ -756,7 +756,7 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 		gui2::show_error_message(
 			_("The server responded with an error:") + "\n" + client_.get_last_server_error());
 	} else if(gui2::show_message(_("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons, true) == gui2::retval::OK) {
-		if(!client_.upload_addon(addon_id, server_msg, cfg)) {
+		if(!client_.upload_addon(addon_id, server_msg, cfg, tracking_info_[addon_id].state == ADDON_INSTALLED_LOCAL_ONLY)) {
 			const std::string& msg = _("The server responded with an error:") +
 			                         "\n\n" + client_.get_last_server_error();
 			const std::string& extra_data = client_.get_last_server_error_data();
