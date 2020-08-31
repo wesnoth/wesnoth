@@ -1,7 +1,21 @@
 ## Version 1.15.4+dev
+ ### Campaigns
+   * Delfador's Memoirs:
+   * Liberty:
+   * Northern Rebirth
+   * Sceptre of Fire:
+   * The South Guard:
+   * Under the Burning Suns:
+   * World Conquest:
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Polish,
      Portuguese (Brazil), Russian, Spanish, Turkish
+ ### Lua API
+ ### Terrain
+ ### Units
+ ### User interface
+   * Help browser: fix inconsistent behavior for single-clicks opening and closing sections (PR #5110)
+ ### WML engine
  ### Miscellaneous and bug fixes
    * Minimum required version of OS X is now OS X 10.11 .
  ### Packaging
