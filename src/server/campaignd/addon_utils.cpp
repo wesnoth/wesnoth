@@ -153,54 +153,6 @@ void add_license(config& cfg)
 	copying["contents"] = contents;
 }
 
-//! Surround with [dir][/dir]
-static void write_difference(config& pack, const config& from, const config& to, bool with_content)
-{
-	pack["name"] = to["name"];
-
-	for(const config& f : to.child_range("file")) {
-		bool found = false;
-		for(const config& d : from.child_range("file")) {
-			found |= comp_file_hash(f, d);
-			if(found)
-				break;
-		}
-		if(!found) {
-			config& file = pack.add_child("file");
-			file["name"] = f["name"];
-			if(with_content) {
-				file["contents"] = f["contents"];
-				file["hash"] = file_hash(f);
-			}
-		}
-	}
-
-	for(const config& d : to.child_range("dir")) {
-		const config& origin_dir = from.find_child("dir", "name", d["name"]);
-		config& dir = pack.add_child("dir");
-		if(origin_dir) {
-			write_difference(dir, origin_dir, d, with_content);
-		} else {
-			const config dummy_dir = config("name", d["name"]);
-			write_difference(dir, dummy_dir, d, with_content);
-		}
-	}
-}
-
-/**
- * &from, &to are top-dirs of their structures; addlist/removelist are equal to [dir]
- * #TODO: make a clientside function to allow incremental uploadpacks using hash request from server
- * Does it worth it to archive and write the pack on the fly using config_writer?
- * #TODO: clientside verification?
- */
-void make_updatepack(config& pack, const config& from, const config& to)
-{
-	config& removelist = pack.add_child("removelist");
-	write_difference(removelist, to, from, false);
-	config& addlist = pack.add_child("addlist");
-	write_difference(addlist, from, to, true);
-}
-
 std::map<version_info, config&> get_version_map(config& addon)
 {
 	auto version_map = std::map<version_info, config&>();

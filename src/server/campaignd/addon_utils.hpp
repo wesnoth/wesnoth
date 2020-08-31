@@ -81,8 +81,6 @@ void find_translations(const config& base_dir, config& addon);
  */
 void add_license(config& cfg);
 
-void make_updatepack(config& pack, const config& from, const config& to);
-
 std::map<version_info, config&> get_version_map(config& addon);
 
 }

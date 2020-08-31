@@ -881,12 +881,6 @@ void server::handle_request_campaign_hash(const server::request& req)
 		return;
 	}
 
-	std::string to = req.cfg["version"].str();
-	if(to.empty()) {
-		send_error("No version of the add-on '" + req.cfg["name"].str() + "' was specified for a hash list request.", req.sock);
-		return;
-	}
-
 	std::string filename = campaign["filename"].str();
 
 	auto version_map = get_version_map(campaign);
@@ -895,11 +889,12 @@ void server::handle_request_campaign_hash(const server::request& req)
 		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
 		return;
 	} else {
-		auto version = version_map.find(version_info(to));
+		auto version = version_map.find(version_info(campaign["version"].str()));
 		if(version != version_map.end()) {
 			filename += version->second["filename"].str();
 		} else {
-			send_error("The selected version (" + to + ") of the add-on '" + req.cfg["name"].str() + "' has not been found by the server.", req.sock);
+			// Selecting the latest version if unspecified
+			filename += version_map.rbegin()->second["filename"].str();
 			return;
 		}
 
