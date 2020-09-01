@@ -417,10 +417,6 @@ int impl_widget_get(lua_State* L)
 		
 	}
 	utils::string_view str = lua_check<utils::string_view>(L, 2);
-	if(auto pwidget = find_child_by_name(w, std::string(str))) {
-		luaW_pushwidget(L, *pwidget);
-		return 1;
-	}
 
 	tgetters::iterator it = getters.find(std::string(str));
 	if(it != getters.end()) {
@@ -431,6 +427,10 @@ int impl_widget_get(lua_State* L)
 		}
 	}
 	if(luaW_getglobal(L, "gui", "widget", std::string(str).c_str())) {
+		return 1;
+	}
+	if(auto pwidget = find_child_by_name(w, std::string(str))) {
+		luaW_pushwidget(L, *pwidget);
 		return 1;
 	}
 	ERR_LUA << "invalid propertly of '" <<  typeid(w).name()<< "' widget :" << str << "\n";
