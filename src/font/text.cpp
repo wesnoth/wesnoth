@@ -681,14 +681,30 @@ void pango_text::rerender(const bool force)
 		if(maximum_height_ > 0) { height = std::min(height, maximum_height_); }
 
 		cairo_format_t format = CAIRO_FORMAT_ARGB32;
-		const unsigned stride = cairo_format_stride_for_width(format, width);
+		const int stride = cairo_format_stride_for_width(format, width);
 
-		this->create_surface_buffer(stride * height);
-
-		if (surface_buffer_.empty()) {
+		// The width and stride can be zero if the text is empty or the stride can be negative to indicate an error from
+		// Cairo. Width isn't tested here because it's implied by stride.
+		if(stride <= 0 || height <= 0) {
 			surface_ = surface(0, 0);
+			surface_buffer_.clear();
 			return;
 		}
+
+		// TODO: a sane value should be chosen for this arbitrary limit. The limit currently merely prevents arithmetic
+		// overflow when calculating (stride * height), and still allows this function to allocate a 2 gigabyte surface.
+		//
+		// Making the limit match the amount that can be handled by a single call to render() would allow this function
+		// to be simplified, removing the next try...catch block and its line-by-line workaround. The credits are likely
+		// to be the only text which exceeds render()'s limit of approx 2**15 pixels in height, so reimplementing
+		// end_credits.cpp should be enough to support this refactor.
+		if(height > std::numeric_limits<int>::max() / stride) {
+			throw std::length_error("Text is too long to render");
+		}
+
+		// Resize buffer appropriately and set all pixel values to 0.
+		surface_ = nullptr; // Don't leave a dangling pointer to the old buffer
+		surface_buffer_.assign(height * stride, 0);
 
 		try {
 			// Try rendering the whole text in one go
@@ -724,11 +740,10 @@ void pango_text::rerender(const bool force)
 		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
 		// decoded again.
-		uint32_t * pixels = reinterpret_cast<uint32_t *>(&surface_buffer_[0]);
-
 		for(int y = 0; y < height; ++y) {
+			uint32_t* pixels = reinterpret_cast<uint32_t*>(&surface_buffer_[y * stride]);
 			for(int x = 0; x < width; ++x) {
-				from_cairo_format(pixels[y * width + x]);
+				from_cairo_format(pixels[x]);
 			}
 		}
 
@@ -740,15 +755,6 @@ void pango_text::rerender(const bool force)
 			&surface_buffer_[0], width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
 #endif
 	}
-}
-
-void pango_text::create_surface_buffer(const std::size_t size) const
-{
-	// Clear surface.
-	surface_ = nullptr;
-
-	// Resize buffer appropriately and clear all existing data (essentially sets all pixel values to 0).
-	surface_buffer_.assign(size, 0);
 }
 
 bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
