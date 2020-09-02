@@ -566,7 +566,7 @@ void unit_sheath_weapon(const map_location& primary_loc, unit_ptr primary_unit,
 	if(secondary_unit) {
 		secondary_unit->anim_comp().set_standing();
 	}
-	reset_helpers(&*primary_unit,&*secondary_unit);
+	reset_helpers(primary_unit.get(),secondary_unit.get());
 
 }
 
@@ -589,7 +589,7 @@ void unit_die(const map_location& loc, unit& loser,
 	animator.start_animations();
 	animator.wait_for_end();
 
-	reset_helpers(&*winner, &loser);
+	reset_helpers(winner.get(), &loser);
 
 	if(events::mouse_handler* mousehandler = events::mouse_handler::get_singleton()) {
 		mousehandler->invalidate_reachmap();
