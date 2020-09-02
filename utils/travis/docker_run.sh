@@ -143,7 +143,9 @@ else
     fi
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-        ./utils/travis/sftp wesnoth wesnothd
+        bzip2 -9 -k wesnoth
+        bzip2 -9 -k wesnothd
+        ./utils/travis/sftp wesnoth.bz2 wesnothd.bz2
     fi
 
     if (( SECONDS > 60*build_timeout )); then
