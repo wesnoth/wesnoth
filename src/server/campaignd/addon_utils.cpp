@@ -164,4 +164,38 @@ std::map<version_info, config&> get_version_map(config& addon)
 	return version_map;
 }
 
+bool data_apply_removelist(config& data, const config& removelist)
+{
+	for(const config& f : removelist.child_range("file")) {
+		data.remove_children("file", [&f](const config& d) { return f["name"] == d["name"]; });
+	}
+
+	for(const config& dir : removelist.child_range("dir")) {
+		config& data_dir = data.find_child("dir", "name", dir["name"]);
+		if(data_dir && !data_apply_removelist(data_dir, dir)) {
+			// Delete empty directories
+			data.remove_children("dir", [&dir](const config& d) { return dir["name"] == d["name"]; });
+		}
+	}
+
+	return data.has_child("file");
+}
+
+void data_apply_addlist(config& data, const config& addlist)
+{
+	for(const config& f : addlist.child_range("file")) {
+		// Just add it since we have already checked the data for duplicates
+		data.add_child("file", f);
+	}
+
+	for(const config& dir : addlist.child_range("dir")) {
+		config* data_dir = &data.find_child("dir", "name", dir["name"]);
+		if(!*data_dir) {
+			data_dir = &data.add_child("dir");
+			(*data_dir)["name"] = dir["name"];
+		}
+		data_apply_addlist(*data_dir, dir);
+	}
+}
+
 } // end namespace campaignd

@@ -178,6 +178,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		// We're requesting the latest version of an addon, so we may not specify it
 		// #TODO: Make a selection of the base version for the update ?
 		request_body["name"] = cfg["name"];
+		// request_body["from"] = ???
 		this->send_request(hash_request, hashlist);
 		this->wait_for_transfer_done(VGETTEXT("Requesting the older version composition for the add-on <i>$addon_title</i>...", i18n_symbols));
 
@@ -192,6 +193,8 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 
 				config request_buf, response_buf;
 				request_buf.add_child("upload", cfg).append(std::move(updatepack));
+				// #TODO: Make a selection of the base version for the update ? ,
+				// For now, if it's unspecified we'll use the latest avaible before the upload version
 				this->send_request(request_buf, response_buf);
 				this->wait_for_transfer_done(VGETTEXT("Sending an update pack for the add-on <i>$addon_title</i>...", i18n_symbols
 				), transfer_mode::upload);

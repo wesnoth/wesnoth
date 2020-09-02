@@ -323,7 +323,7 @@ const std::string file_hash(const config& file)
 
 bool comp_file_hash(const config& file_a, const config& file_b)
 {
-	return file_hash(file_a) == file_hash(file_b);
+	return file_a["name"] == file_b["name"] && file_hash(file_a) == file_hash(file_b);
 }
 
 void write_hashlist(config& hashlist, const config& data)
