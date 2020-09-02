@@ -53,11 +53,13 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
         fi
     fi
 
+    echo "Starting sqlite updates..."
     if [ "$BUILD_RET" != "0" ]; then
         sqlite3 "projectfiles/$IMAGE/$CFG/filehashes.sqlite" "update FILES set MD5 = OLD_MD5, OLD_MD5 = '-' where OLD_MD5 != '-'"
     else
         sqlite3 "projectfiles/$IMAGE/$CFG/filehashes.sqlite" "update FILES set OLD_MD5 = '-' where OLD_MD5 != '-'"
     fi
+    echo "Finished sqlite updates!"
 
     if [ "$CFG" == "Release" ] && [ "$BUILD_RET" == "0" ]; then
         if (( SECONDS > 60*30 )); then
