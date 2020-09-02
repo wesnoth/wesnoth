@@ -893,9 +893,8 @@ void server::handle_request_campaign_hash(const server::request& req)
 		if(version != version_map.end()) {
 			filename += version->second["filename"].str();
 		} else {
-			// Selecting the latest version if unspecified
-			filename += version_map.rbegin()->second["filename"].str();
-			return;
+			// Selecting the latest version before the selected version or the overall latest version if unspecified
+			filename += version_map.upper_bound(version_info(campaign["version"].str()))->second["filename"].str();
 		}
 
 		filename += ".hash";
@@ -940,9 +939,21 @@ void server::handle_request_terms(const server::request& req)
 void server::handle_upload(const server::request& req)
 {
 	const config& upload = req.cfg;
+	bool is_upload_pack = false;
 
 	LOG_CS << "uploading campaign '" << upload["name"] << "' from " << req.addr << ".\n";
+	for(const config::any_child entry : upload.all_children_range()) {
+		if(entry.key == "removelist" || entry.key == "addlist") {
+			is_upload_pack = true;
+			break;
+		}
+	}
 	config data = upload.child("data");
+	config removelist, addlist;
+	if(is_upload_pack) {
+		removelist = upload.child("removelist");
+		addlist = upload.child("addlist");
+	}
 
 	const std::string& name = upload["name"];
 	config *campaign = nullptr;
@@ -978,7 +989,10 @@ void server::handle_upload(const server::request& req)
 	if(read_only_) {
 		LOG_CS << "Upload aborted - uploads not permitted in read-only mode.\n";
 		send_error("Add-on rejected: The server is currently in read-only mode.", req.sock);
-	} else if(!data) {
+	} else if(!is_upload_pack && !data) {
+		LOG_CS << "Upload aborted - no add-on data.\n";
+		send_error("Add-on rejected: No add-on data was supplied.", req.sock);
+	} else if(is_upload_pack && !removelist && !addlist) {
 		LOG_CS << "Upload aborted - no add-on data.\n";
 		send_error("Add-on rejected: No add-on data was supplied.", req.sock);
 	} else if(!addon_name_legal(upload["name"])) {
@@ -1008,7 +1022,7 @@ void server::handle_upload(const server::request& req)
 	} else if(upload["email"].empty()) {
 		LOG_CS << "Upload aborted - no add-on email specified.\n";
 		send_error("Add-on rejected: You did not specify your email address in the pbl file!", req.sock);
-	} else if(!check_names_legal(data, &badnames)) {
+	} else if(!is_upload_pack && !check_names_legal(data, &badnames)) {
 		const std::string& filelist = utils::join(badnames, "\n");
 		LOG_CS << "Upload aborted - invalid file names in add-on data (" << badnames.size() << " entries).\n";
 		send_error(
@@ -1017,13 +1031,28 @@ void server::handle_upload(const server::request& req)
 			"File or directory names may not contain whitespace, control characters or any of the following characters: '\"\" * / : < > ? \\ | ~'. "
 			"It also may not contain '..' end with '.' or be longer than 255 characters.",
 			filelist, req.sock);
-	} else if(!check_case_insensitive_duplicates(data, &badnames)) {
+	} else if(is_upload_pack && !(check_names_legal(removelist, &badnames) && check_names_legal(addlist, &badnames))) {
+		const std::string& filelist = utils::join(badnames, "\n");
+		LOG_CS << "Upload aborted - invalid file names in add-on data (" << badnames.size() << " entries).\n";
+		send_error("Add-on rejected: The add-on contains files or directories with illegal names. "
+				   // Note: the double double quote will be flattened to a single double quote.
+				   "File or directory names may not contain whitespace, control characters or any of the following "
+				   "characters: '\"\" * / : < > ? \\ | ~'. "
+				   "It also may not contain '..' end with '.' or be longer than 255 characters.",
+				filelist, req.sock);
+	} else if(!is_upload_pack && !check_case_insensitive_duplicates(data, &badnames)) {
 		const std::string& filelist = utils::join(badnames, "\n");
 		LOG_CS << "Upload aborted - case conflict in add-on data (" << badnames.size() << " entries).\n";
 		send_error(
 			"Add-on rejected: The add-on contains files or directories with case conflicts. "
 			"File or directory names may not be differently-cased versions of the same string.",
 			filelist, req.sock);
+	} else if(is_upload_pack && !(check_case_insensitive_duplicates(removelist, &badnames) && check_case_insensitive_duplicates(addlist, &badnames))) {
+		const std::string& filelist = utils::join(badnames, "\n");
+		LOG_CS << "Upload aborted - case conflict in add-on data (" << badnames.size() << " entries).\n";
+		send_error("Add-on rejected: The add-on contains files or directories with case conflicts. "
+				   "File or directory names may not be differently-cased versions of the same string.",
+				filelist, req.sock);
 	} else if(upload["passphrase"].empty()) {
 		LOG_CS << "Upload aborted - missing passphrase.\n";
 		send_error("No passphrase was specified.", req.sock);
@@ -1058,6 +1087,11 @@ void server::handle_upload(const server::request& req)
 		}
 
 		const bool existing_upload = campaign != nullptr;
+
+		if(is_upload_pack && !existing_upload) {
+			send_error("Add-on upload pack denied. An update pack cannot be sent for a non-existent addon.", req.sock);
+			return;
+		}
 
 		std::string message = "Add-on accepted.";
 
@@ -1115,16 +1149,77 @@ void server::handle_upload(const server::request& req)
 		}
 
 		const std::string& filename = (*campaign)["filename"].str();
+		const std::string& new_version = (*campaign)["version"].str();
+
+		// sorted version map
+		auto version_map = get_version_map(*campaign);
+
+		// Start handling the upload pack if we got one
+		if(is_upload_pack) {
+			// Insert the full pack in the fp list and create the full pack:
+			// data = resulting full pack, then handle it the default way.
+			// If we're uploading an interim pack, the server will have to create an additional update pack,
+			// but the first upload pack halves the load anyway in comparison with a plain interim update.
+
+			if(version_map.empty()) {
+				send_error("Add-on upload pack denied. No versions of the add-on are available on the server.", req.sock);
+				return;
+			}
+
+			std::string old_version = (*campaign)["from"].str();
+			auto version = version_map.find(version_info(old_version));
+			if(version == version_map.end()){
+				// Selecting the latest version before the selected version or the overall latest version if unspecified
+				old_version = version_map.upper_bound(version_info(old_version))->first;
+			}
+
+			// Remove the update pack landing on the new version if it's present
+			for(const config& pack : (*campaign).child_range("update_pack")) {
+					if(pack["to"].str() == new_version) {
+						const std::string& pack_filename = pack["filename"].str();
+						filesystem::delete_file(filename + pack_filename);
+						(*campaign).remove_children("update_pack", [&pack_filename](const config& child) 
+						{
+							return child["filename"].str() == pack_filename; 
+						}
+					);
+				}
+			}
+
+			config pack_info = config("from", old_version, "to", new_version);
+			pack_info["expire"] = upload_ts + update_pack_lifespan_;
+			pack_info["filename"] = "/update_pack_" + utils::md5(old_version + new_version).hex_digest() + ".gz";
+			(*campaign).add_child("update_pack", pack_info);
+
+			// Write the pack itself
+			{
+				filesystem::atomic_commit pack_file(filename + pack_info["filename"].str());
+				config_writer writer(*pack_file.ostream(), true, compress_level_);
+				writer.write(removelist);
+				writer.write(addlist);
+				pack_file.commit();
+			}
+
+			// Apply it to the addon data to generate the next full pack
+			filesystem::scoped_istream in = filesystem::istream_file(filename + version_map.find(version_info(old_version))->second["filename"].str());
+			data.clear();
+			read_gz(data, *in);
+
+			if(removelist) {
+				data_apply_removelist(data, removelist);
+			}
+			if(addlist) {
+				data_apply_addlist(data, addlist);
+			}
+
+			message = "Add-on upload pack accepted.";
+		}
 		data["name"] = "";
 		find_translations(data, *campaign);
 
 		add_license(data);
-		
-		const std::string& new_version = (*campaign)["version"].str();
-		const std::string& file_hash = utils::md5(new_version).hex_digest();
 
-		//sorted version map
-		auto version_map = get_version_map(*campaign);
+		const std::string& file_hash = utils::md5(new_version).hex_digest();
 
 		//#TODO: add gfgtdf's stuff about required_wesnoth_version here
 		config version_cfg = config("version", new_version);
@@ -1160,7 +1255,7 @@ void server::handle_upload(const server::request& req)
 		
 		//Remove the update packs with expired lifespan
 		for(const config& pack : (*campaign).child_range("update_pack")) {
-			if(upload_ts > pack["expire"].to_time_t() || pack["from"].str() == new_version || pack["to"].str() == new_version) {
+			if(upload_ts > pack["expire"].to_time_t() || pack["from"].str() == new_version || (!is_upload_pack && pack["to"].str() == new_version)) {
 				const std::string& pack_filename = pack["filename"].str();
 				filesystem::delete_file(filename + pack_filename);
 				(*campaign).remove_children("update_pack", [&pack_filename](const config& child) 
