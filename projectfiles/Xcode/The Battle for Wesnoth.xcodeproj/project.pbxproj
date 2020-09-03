@@ -4829,7 +4829,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SOURCE_ROOT/../..\"\n./utils/autorevision.sh -t h > src/revision.h\n";
+			shellScript = "cd \"${SOURCE_ROOT}/../..\"\n\n./utils/autorevision.sh -t h > src/revision.h 2>/dev/null || echo \"warning: Project is probably not under source control. Revision number may be incorrect.\"\n";
 		};
 		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
 			isa = PBXShellScriptBuildPhase;
