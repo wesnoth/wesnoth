@@ -403,6 +403,71 @@ WIDGET_GETTER("type", std::string, gui2::widget)
 	}
 }
 
+///////////////////////////////////////////////////////
+////////////////////// CALLBACLS //////////////////////
+///////////////////////////////////////////////////////
+namespace {
+
+void dialog_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string& id)
+{
+	gui2::widget* w = wp.get_ptr();
+	if(!w) {
+		ERR_LUA << "widget was deleted\n";
+		return;
+	}
+	gui2::window* wd = w->get_window();
+	if(!wd) {
+		ERR_LUA << "canot find window in eidgte callback\n";
+		return;
+	}
+	luaW_callwidgetcallback(L, w, wd, id);
+}
+
+WIDGET_SETTER("on_modified", lua_index_raw, gui2::widget)
+{
+	gui2::window* wd = w.get_window();
+	if(!wd) {
+		throw std::invalid_argument("the widget has no window assigned");
+	}
+	lua_pushvalue(L, value.index);
+	if (!luaW_setwidgetcallback(L, &w, wd, "on_modified")) {
+		connect_signal_notify_modified(w, std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "callback"));
+	}
+}
+
+WIDGET_SETTER("on_left_click", lua_index_raw, gui2::widget)
+{
+	gui2::window* wd = w.get_window();
+	if(!wd) {
+		throw std::invalid_argument("the widget has no window assigned");
+	}
+	lua_pushvalue(L, value.index);
+	if (!luaW_setwidgetcallback(L, &w, wd, "on_left_click")) {
+		connect_signal_notify_modified(w, std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "callback"));
+	}
+}
+
+WIDGET_SETTER("on_button_click", lua_index_raw, gui2::widget)
+{
+	gui2::window* wd = w.get_window();
+	gui2::clickable_item* cl = dynamic_cast<gui2::clickable_item*>(&w);
+
+	if(!wd) {
+		throw std::invalid_argument("the widget has no window assigned");
+	}
+	if(!cl) {
+		throw std::invalid_argument("unsupported widget");
+	}
+	lua_pushvalue(L, value.index);
+	if (!luaW_setwidgetcallback(L, &w, wd, "on_button_click")) {
+		cl->connect_click_handler(std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "on_button_click"));
+	}
+}
+
+}
+
+
+
 namespace lua_widget {
 
 int impl_widget_get(lua_State* L)
