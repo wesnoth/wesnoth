@@ -8,9 +8,9 @@
      time in the .pbl (PR #4993). Only clients running 1.14.14/1.15.4 or later can read the
      translated values.
  ### Language and i18n
-   * Updated translations: British English, Chinese (Simplified), Chinese (Traditional),
-     Czech, Esperanto, French, Italian, Polish, Portuguese (Brazil), Russian, Spanish,
-     Turkish
+   * Updated translations: British English, Catalan, Chinese (Simplified),
+     Chinese (Traditional), Czech, Esperanto, French, Italian, Polish,
+     Portuguese (Brazil), Russian, Spanish, Turkish
  ### User interface
    * Do not list nameless abilities in the Abilities and Ability Upgrades lists in unit
      descriptions in Help (issue #3060).
