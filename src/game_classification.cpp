@@ -142,7 +142,7 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 
 		const modevents_entry& current = mods.front();
 		if(current.type == "resource") {
-			if(loaded_resources.insert(current.id).second) {
+			if(!loaded_resources.insert(current.id).second) {
 				mods.pop_front();
 				continue;
 			}
