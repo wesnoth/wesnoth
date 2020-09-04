@@ -20,6 +20,7 @@
 
 #include "play_controller.hpp"
 
+#include "actions/advancement.hpp"
 #include "actions/create.hpp"
 #include "actions/heal.hpp"
 #include "actions/undo.hpp"
@@ -528,6 +529,16 @@ void play_controller::do_init_side()
 
 	// Make sure vision is accurate.
 	actions::clear_shroud(current_side(), true);
+	{
+		const auto& active_mods = get_saved_game().classification().active_mods;
+		bool delay_advancements = std::find(active_mods.begin(), active_mods.end(), "delay_advancements") != active_mods.end();
+
+		for(unit &u : resources::gameboard->units()) {
+			if(u.side() == current_side()) {
+				advance_unit_at(u.get_location());
+			}
+		}
+	}
 	init_side_end();
 	check_victory();
 	sync.do_final_checkup();
