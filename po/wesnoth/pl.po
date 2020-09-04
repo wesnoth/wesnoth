@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-22 00:16-0400\n"
-"PO-Revision-Date: 2020-08-21 12:43+0200\n"
-"Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
+"PO-Revision-Date: 2020-08-31 09:42+0200\n"
+"Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -5491,7 +5491,7 @@ msgstr "Modyfikacja"
 
 #: src/addon/info.cpp:251
 msgid "addon_type^Core"
-msgstr "Podstawowy"
+msgstr "Jądro"
 
 #: src/addon/info.cpp:253
 msgid "addon_type^Resources"
@@ -6094,7 +6094,7 @@ msgstr "Błąd naprawiania zależności"
 
 #: src/game_initialization/depcheck.cpp:516
 msgid "Scenario can't be activated. Some dependencies are missing: "
-msgstr "Scenariusz nie może zostać załadowany. Brak niektórych zależności."
+msgstr "Scenariusz nie może zostać załadowany. Brak zależności:"
 
 #: src/game_initialization/depcheck.cpp:570
 #: src/game_initialization/depcheck.cpp:693
@@ -6103,7 +6103,7 @@ msgstr "Nie znaleziono żadnych kompatybilnych er."
 
 #: src/game_initialization/depcheck.cpp:585
 msgid "Era can't be activated. Some dependencies are missing: "
-msgstr "Era nie może być załadowana. Brak niektórych zależności."
+msgstr "Era nie może być załadowana. Brak zależności:"
 
 #: src/game_initialization/depcheck.cpp:638
 #: src/game_initialization/depcheck.cpp:730
@@ -6187,7 +6187,7 @@ msgstr "Tura"
 
 #: src/game_initialization/lobby_data.cpp:476
 msgid "vision^none"
-msgstr "wizja:"
+msgstr "wizja"
 
 #: src/game_initialization/lobby_data.cpp:485
 msgid "time limit^none"
@@ -6740,7 +6740,7 @@ msgstr "Awansuje z:"
 
 #: src/help/help_topic_generators.cpp:324
 msgid "Advances to: "
-msgstr "Awansuje na:"
+msgstr "Awansuje na: "
 
 #: src/help/help_topic_generators.cpp:353
 msgid "Base unit: "
@@ -6765,7 +6765,7 @@ msgstr "Cechy"
 
 #: src/help/help_topic_generators.cpp:472
 msgid "Abilities: "
-msgstr "Zdolności:"
+msgstr "Zdolności: "
 
 #: src/help/help_topic_generators.cpp:498
 msgid "Ability Upgrades: "
@@ -6880,7 +6880,7 @@ msgstr "Limit obrony"
 
 #: src/help/help_topic_generators.cpp:690
 msgid "Vision Cost"
-msgstr "Koszt patrzenia:"
+msgstr "Koszt wizji"
 
 #: src/help/help_topic_generators.cpp:694
 msgid "Jamming Cost"
@@ -6924,11 +6924,11 @@ msgstr "(naciśnij $hotkey, by wyłączyć)"
 
 #: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:2000
 msgid "Planning mode activated!"
-msgstr "Tryb planowania włączony"
+msgstr "Tryb planowania włączony!"
 
 #: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:2003
 msgid "Planning mode deactivated!"
-msgstr "Tryb planowania wyłączony"
+msgstr "Tryb planowania wyłączony!"
 
 #: src/language.cpp:103
 msgid "System default language"
@@ -7080,7 +7080,7 @@ msgid ""
 "unit."
 msgstr ""
 "W tym momencie w planie nie będziesz mieć dość złota, by rekrutować tę "
-"jednostkę"
+"jednostkę."
 
 #: src/menu_events.cpp:331
 msgid "You do not have enough gold to recruit this unit."
@@ -7109,7 +7109,7 @@ msgstr "Nie przywołano żadnych jednostek."
 #: src/menu_events.cpp:428
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "Musisz mieć co najmniej 1 sztukę złota, by przywołać jednostkę"
+msgstr[0] "Musisz mieć co najmniej 1 sztukę złota, by przywołać jednostkę."
 msgstr[1] ""
 "Musisz mieć co najmniej $cost sztuki złota, by przywołać tę jednostkę."
 msgstr[2] ""
@@ -7204,7 +7204,7 @@ msgstr "[<strona> [on/off]]"
 
 #: src/menu_events.cpp:1227
 msgid "Change the in-game theme."
-msgstr "Zmień motyw gry"
+msgstr "Zmień motyw gry."
 
 #: src/menu_events.cpp:1229
 msgid "<side> <nickname>"
@@ -7543,7 +7543,7 @@ msgstr "Nieprawidłowa lokalizacja"
 
 #: src/menu_events.cpp:2027 src/menu_events.cpp:2053
 msgid "prompt^Command:"
-msgstr "Polecenie:"
+msgstr "Komenda:"
 
 #: src/mouse_events.cpp:1196
 msgid ""
@@ -7555,7 +7555,7 @@ msgstr ""
 
 #: src/mouse_events.cpp:1291
 msgid "This unit has no usable weapons."
-msgstr "Brak odpowiednich bronic"
+msgstr "Brak odpowiednich broni."
 
 #: src/mp_game_settings.hpp:71
 msgid "Independent"
@@ -7894,7 +7894,7 @@ msgstr "Obrażenia bazowe: "
 
 #: src/reports.cpp:760 src/reports.cpp:794 src/reports.cpp:804
 msgid "With specials: "
-msgstr "Łącznie ze specjalnymi:"
+msgstr "Ze specjalnymi:"
 
 #: src/reports.cpp:763
 msgid "Time of day: "
@@ -8225,7 +8225,7 @@ msgstr ""
 
 #: src/serialization/parser.cpp:261
 msgid "closed at $pos"
-msgstr "Zamknięty w $pos"
+msgstr "zamknięty w $pos"
 
 #: src/serialization/parser.cpp:297 src/serialization/parser.cpp:313
 msgid "Empty variable name"
