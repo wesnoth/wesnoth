@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-08 05:20-0400\n"
-"PO-Revision-Date: 2019-10-06 17:57+0200\n"
+"PO-Revision-Date: 2020-08-28 16:28+0200\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -2219,7 +2219,7 @@ msgstr ""
 #. [topic]: id=saveload
 #: data/core/help.cfg:290
 msgid "Save-loading"
-msgstr ""
+msgstr "Sauvegarder-recharger"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
@@ -2278,11 +2278,15 @@ msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
+"\n"
+"\n"
+"Cela dit, Wesnoth reste un jeu ; la meilleure façon d'y jouer est celle qui "
+"vous procure le plus d'amusement."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:307
 msgid "Learning from Losses"
-msgstr ""
+msgstr "Apprendre de ses échecs"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:308
@@ -2292,6 +2296,10 @@ msgid ""
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
 msgstr ""
+"<italic>text='Pourquoi ai-je perdu ce scénario ?'</italic>\n"
+"\n"
+"Une des difficultés de Wesnoth est la compréhension de la raison de la "
+"défaite."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:310
@@ -2303,6 +2311,13 @@ msgid ""
 "from your mistakes: watch the replay, try to understand what you did wrong, "
 "then <ref>dst='saveload' text='restart the scenario'</ref> and try again."
 msgstr ""
+"\n"
+"\n"
+"Lorsque vous débuter le jeu, vous allez perdre quelques scénarios. C'est "
+"normal et cela fait partie de l'apprentissage. Lorsque cela arrive, essayer "
+"d'apprendre de vos erreurs : regarder le film du jeu, essayer de comprendre "
+"ce que vous avez mal fait, <ref>dst='saveload' text='recommencer le "
+"scénario'</ref> et essayer à nouveau."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:312
@@ -2311,6 +2326,9 @@ msgid ""
 "\n"
 "Some common reasons for losing a scenario are:"
 msgstr ""
+"\n"
+"\n"
+"Les raisons classiques des défaites sont :"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:314
@@ -2320,6 +2338,10 @@ msgid ""
 "• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
 "level'</ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
+"\n"
+"\n"
+"• Jouer une campagne dans une <ref>dst='..gameplay' text='difficulté'</ref> "
+"trop élevée. Essayer de recommencer un niveau en dessous."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:316
@@ -2330,6 +2352,11 @@ msgid ""
 "fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
 "taking advantage of terrain features or units’ special abilities, and so on."
 msgstr ""
+"\n"
+"\n"
+"• Jouer une mauvaise stratégie : par exemple, recruter le mauvais type "
+"d'unité, combattre au mauvais <ref>dst='time_of_day' text='moment de la "
+"journée'</ref>, ne pas utiliser les avantages du terrain ou des unités, etc."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:318
@@ -2341,6 +2368,12 @@ msgid ""
 "it. If you have a loyal mage on your side, take the time to listen to its "
 "advice; it may save your life."
 msgstr ""
+"\n"
+"\n"
+"• Rater les indices. Souvent des indices sont présents dans l'histoire des "
+"campagnes et les dialogues, concernant ce qui arrivera par la suite et "
+"comment s'y préparer. Si vous avez un mage loyal à vos côtés, prenez le "
+"temps d'écouter son avis, cela pourrait vous sauvez la vie."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:320
@@ -2371,14 +2404,17 @@ msgid ""
 "carryover for the next scenario. (This would be an example of “barely "
 "scraping a victory”.)"
 msgstr ""
+"\n"
+"\n"
+"• Mauvaise gestion de l'or. Dans les niveaux de difficultés élevés, la "
+"gestion de l'or — capturer des villages pour accroitre votre revenu et "
+"utiliser des unités de faibles niveaux ou de nouvelles recrues pour limiter "
+"la dépense — devient importante. Si vous utiliser beaucoup d'unités de haut "
+"niveau, vous gagnerez facilement mais vous n'aurez pas assez d'or pour le "
+"prochain scénario."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:324
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Cores'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2386,7 +2422,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Noyaux'</header>"
+"<header>text='Raisons improbables'</header>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:326
@@ -2396,6 +2432,10 @@ msgid ""
 "In addition to the common reasons, listed above, there are a few other "
 "reasons which are unlikely, though not impossible. They are:"
 msgstr ""
+"\n"
+"\n"
+"En plus des raisons classiques, citées précédemment, il y en a quelques une "
+"assez improbables, mais pas impossible :"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:328
@@ -2406,6 +2446,11 @@ msgid ""
 "anticipate, and ended up with a set of high-level units not suitable for the "
 "next scenario."
 msgstr ""
+"\n"
+"\n"
+"• Vous avez joué une stratégie que le créateur de la campagne n'a pas "
+"anticipé, et ainsi terminé avec un ensemble d'unités de haut niveau qui ne "
+"correspond pas à la difficulté du scénario suivant."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:330
@@ -2419,6 +2464,14 @@ msgid ""
 "the highest difficulties. Requiring above-average luck, however, would "
 "qualify as a bug.)"
 msgstr ""
+"\n"
+"\n"
+"• Vous avez trouvé un scénario qui ne peut être gagné qu'au deuxième ou "
+"troisième essai, car nécessitant une chance supérieur à la moyenne ou "
+"attendant du joueur une connaissance anticipée — savoir ce qui va arriver "
+"avant que cela n'arrive. (La discussion est toujours ouverte pour savoir si "
+"la connaissance anticipée est souhaitable à haut niveau. Avoir besoin d'une "
+"chance supérieur à la moyenne doit cependant être considéré comme un bogue.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:332
@@ -2438,6 +2491,20 @@ msgid ""
 "luck. It is only exceedingly bad luck, over multiple turns, that we mean "
 "here."
 msgstr ""
+"\n"
+"\n"
+"• Mauvaise chance inhabituelle. Qu'une attaque touche ou pas est aléatoire, "
+"il arrive ainsi qu'un ennemi soit très chanceux et ait beaucoup de touches, "
+"tandis que vous êtes malchanceux et avez beaucoup de ratés. Cependant c'est "
+"un cas très rare, quasiment inobservé, si ce n'est sur de très petits "
+"scénarios. En réalité, les ratés sont communément causés par une "
+"<italic>text='mauvaise'</italic> stratégie avec une chance <italic>text='au-"
+"dessus'</italic> de la moyenne, plutôt qu'en ayant une <italic>text='bonne'</"
+"italic> stratégie avec une chance <italic>text='en-dessous'</italic> de la "
+"moyenne. De plus avoir une chance en-dessous de la moyenne n'est pas une "
+"excuse pour perdre, c'est parfaitement normal, et les scénarios sont conçus "
+"pour être gagnés dans ce cas. C'est seulement l'excès de malchance sur "
+"plusieurs tours qui doit être considéré ici."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:334
@@ -2450,6 +2517,13 @@ msgid ""
 "indicative of a bug in the campaign. However, if you still think you found a "
 "bug, then by all means, report it!"
 msgstr ""
+"\n"
+"\n"
+"Faites attention à ne pas attribuer votre défaite à l'une de ces raisons. Si "
+"vous n'êtes pas un joueur confirmé, votre défaite s'explique sans doute par "
+"une des erreurs <italic>text='communes'</italic>, citées plus haut et cela "
+"ne relève pas d'un bogue dans une campagne. Cependant, si vous pensez avoir "
+"trouvé un bogue, n'hésitez pas à en faire un rapport !"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:336
@@ -6839,43 +6913,6 @@ msgstr "Trolls"
 
 #. [race]: id=troll
 #: data/core/units.cfg:357
-#, fuzzy
-#| msgid ""
-#| "Trolls are ancient creatures, one of the oldest known races known to "
-#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
-#| "live extremely long lives inside deep caves or atop high mountains. The "
-#| "most unique characteristic of trolls is an internal vitality that "
-#| "sustains and heals them from within. As a result they live very different "
-#| "lives from almost any known creature. Trolls have few real needs: they "
-#| "require little food or water, and thus they have little incentive to "
-#| "pursue much besides protection from those who are hostile towards them. "
-#| "This in turn means they rarely have to worry about anything and can spend "
-#| "much of their time sleeping or in contemplation. Trolls have a curious "
-#| "affinity with nature. They do not relate with living things like elves "
-#| "do, but instead with earth and stone. They are also somewhat curious of "
-#| "their surroundings and many younger whelps even enjoy traveling and "
-#| "seeing the world. As trolls grow older they tend to become increasingly "
-#| "passive, gradually losing interest in their environment and spending more "
-#| "of their time sleeping in a quiet, familiar corner of their home cave. "
-#| "This is until they finally pass away as their bodies themselves slowly "
-#| "turn into lifeless statues of stone.\n"
-#| "\n"
-#| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by orcs "
-#| "to persuade trolls to join their armies. Because they are rather simple "
-#| "and do not understand the ways of other races or sometimes cannot even "
-#| "tell them apart, it is usually easy for an orcish band to convince a "
-#| "group of trolls that by joining them they get to exact revenge on those "
-#| "that have before hunted them. These new recruits are then directed to "
-#| "attack whoever the orcs themselves are currently in conflict with, "
-#| "whether previously a foe of the trolls or not, accumulating even more "
-#| "enemies for the misled trolls. The most common enemy of trolls are "
-#| "dwarves, and the animosity between these two races is ancient.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Trolls have inhabited the mountains of the Great Continent longer than "
-#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
-#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Units-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 09:20 UTC\n"
-"PO-Revision-Date: 2019-10-06 18:07+0200\n"
+"POT-Creation-Date: 2020-06-13 01:49 UTC\n"
+"PO-Revision-Date: 2020-06-23 14:59+0200\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -949,6 +949,8 @@ msgid ""
 "Compared to other drakes, Drake Arbiters have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"Comparativement aux autres dracans, les Autorités dracanes possèdent une "
+"meilleure résistance aux attaques perçantes."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -1296,14 +1298,6 @@ msgstr "Dracan tornade"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:17
-#, fuzzy
-#| msgid ""
-#| "The lightweight ceramic armor that the Sky Drakes wear is a symbol of "
-#| "their rank, glazed silver to honor their connection to the air. As "
-#| "leaders of the hunt, they are often away from their homes for long "
-#| "periods of time. Each tries to bring as much game home as possible, "
-#| "competing to gain the respect of their tribe and, just possibly, time "
-#| "with one of the closely-guarded drake females."
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -1315,8 +1309,7 @@ msgstr ""
 "de leur rang. Elle est d'argent glacé pour honorer leur relation à l'air. "
 "Meneurs de la chasse, ils sont souvent loin de leurs maisons pendant de "
 "longues périodes. Chacun essaie de ramener le plus de gibier possible, "
-"rivalisant pour gagner le respect de leur tribu et, peut-être, du temps avec "
-"une des femelles dracan bien gardées."
+"rivalisant pour gagner le respect de leur tribu."
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -1372,6 +1365,8 @@ msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"Comparativement aux autres dracans, les gardiens dracans possèdent une "
+"meilleure résistance aux attaques perçantes."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -2221,6 +2216,14 @@ msgid ""
 "Elvish archers are still effective combatants, especially when fighting from "
 "the safety of their forests."
 msgstr ""
+"En tant que chasseurs cueilleurs, la plupart des elfes apprennent à devenir "
+"de bons archers dès leur plus jeune âges. En plus d'être une compétence "
+"pratique, le tir à l'arc est un passe-temps commun et beaucoup de "
+"compétitions sportives se tiennent pour le plaisir des spectateurs et des "
+"participants. Cette compétence se révèle utile en temps de guerre, où de "
+"nombreux elfes manient l'arc comme leur arme de prédilection. Bien que moins "
+"robuste que leur équivalent humain ou orc, les archers elfes sont des "
+"combattants efficaces spécialement à l'abri de leur forêt."
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:80
@@ -2256,6 +2259,27 @@ msgid ""
 "very little room for counterattack and customarily results in crushing "
 "defeat."
 msgstr ""
+"Le curieux nom des vengeurs elfes vient d'une tactique souvent employée par "
+"les maîtres rôdeurs. L'ennemi est guidé via une fausse brèche dans la "
+"défense et lorsque les troupes vulnérables à l'arrière de la ligne de front "
+"suivent, ces archers se dévoilent et attaquent, coupant les lignes de "
+"soutien et encerclant l'ennemi d'un seul coup. Ce fût, un temps, interprété "
+"comme une forme de vengeance, pour leurs camarades tombés au combat. Bien "
+"qu'inexact, ce n'est pas tout à fait faux.\n"
+"\n"
+"Encore plus que les autres elfes, les vengeurs sont une part du royaume des "
+"forêts, passant la plupart de leur vie parmi les créatures arboricoles et "
+"apprenant les secrets cachés des bois. En tant que gardiens de la nature, "
+"ces elfes ont la propension à explorer la nature sauvage bien au-delà des "
+"limites des forêts et sont capables de traverser des terrains difficiles "
+"comme les montagnes et les déserts. Mêmes dans de tels endroits inamicaux, "
+"les vengeurs sont déjà de puissants combattants ; dans leur environnement "
+"forestier habituel, ils sont pratiquement insaisissables, capables "
+"d'assassiner les ennemis à partir des ombres sans espoir de représailles. "
+"C'est cette capacité qui instille le plus la peur dans les armées des "
+"envahisseurs, celle de combattre une force qui ne peut être traquée ou "
+"aperçue, qui ne permet pas de contre-attaque et conduit à une défaite "
+"cinglante."
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:23
@@ -2263,6 +2287,8 @@ msgid ""
 "Compared to other elves, Elvish Avengers have superior movement and defense "
 "on sand, shallow water, and mountains."
 msgstr ""
+"Comparativement aux autres elfes, les vengeurs elfes possèdent plus de point "
+"de mouvement et de défense dans le sable, l'eau peu profonde et la montagne."
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:96
@@ -2276,6 +2302,7 @@ msgstr "Capitaine elfe"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:25
+#, fuzzy
 msgid ""
 "Elvish captains usually lead patrols and command garrisons that stand guard "
 "over the vast forests in elvish territory. Unlike leaders from other races, "
@@ -2286,6 +2313,15 @@ msgid ""
 "often observed to lead through camaraderie and amicability, but still "
 "command great respect from their kin."
 msgstr ""
+"Les capitaines elfes conduisent habituellement les patrouilles et commandent "
+"les garnisons qui gardent les vastes forêts du territoire elfe. A la "
+"différence des commandants des autres races, ils sont principalement "
+"efficaces à diriger de petites escarmouches plutôt que de grandes batailles, "
+"et sont spécialisés dans les manœuvres défensives. Typiquement, les "
+"capitaines dirigent de petites équipes qui restent ensemble pendant de "
+"longues périodes, leur permettant de tisser des liens d'amitiés et de "
+"mentorats avec leurs troupes. Ils dirigent généralement avec amitié et "
+"camaraderie, mais conservent tout de même le respect des leurs."
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
@@ -2814,6 +2850,17 @@ msgid ""
 "to goblins, recognize that picking a fight with the rider is also picking a "
 "fight with jaws that strike faster than a sword, and almost as hard."
 msgstr ""
+"L'expérience sur le champ de bataille ne renforce pas seulement la prouesse "
+"au combat du cavalier et de sa monture, mais resserre le lien qui les unit. "
+"Tandis qu'un humain pourra mener différents coursiers à la bataille, un "
+"'chevalier gobelin' se rapportera à l'union du gobelin et de son loup comme "
+"une seule unité, farouchement loyal l'un envers autre.\n"
+"\n"
+"Parmi les orcs, les cavaliers sont traités comme une classe supérieure aux "
+"autres gobelins, même lorsqu'ils sont séparés de leur monture. Les grognards "
+"orc, bien que se sentant supérieurs aux gobelins, reconnaissent qu'affronter "
+"un cavalier revient également à affronter une mâchoire qui frappe aussi vite "
+"qu'une épée, et presque aussi durement."
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
@@ -3135,22 +3182,16 @@ msgstr "Cuirassier"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Cavaliers are masters at the use of both sword and crossbow from "
-#| "horseback. Their combination of striking power and mobility is fearsome; "
-#| "and they have a reputation for dash and aggressiveness to match it. The "
-#| "daring deeds of Cavaliers are the subject of many a tale and song."
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome, and they have "
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
-"Précurseurs d'un triomphe sur le champ de bataille, les cuirassiers savent "
-"parfaitement utiliser l'épée et l'arbalète à cheval. Leur mobilité les rend "
-"redoutables, et leur puissance et leur courage font l'objet d'une multitude "
-"de légendes et de chants."
+"Les cuirassiers savent parfaitement utiliser l'épée et l'arbalète à cheval. "
+"La combinaison de la puissance de frappe et de la mobilité est redoutable, "
+"ils ont une réputation de férocité et d'agressivité à tenir. Leur actes "
+"audacieux font l'objet d'une multitude de légendes et de chants."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -3367,6 +3408,8 @@ msgid ""
 "Compared to other loyalists, Halberdiers have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"Comparativement aux autres loyalistes, les hallebardiers possèdent une "
+"meilleure résistance aux attaques perçantes."
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
@@ -3573,6 +3616,8 @@ msgid ""
 "Compared to other loyalists, Pikemen have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"Comparativement aux autres loyalistes, les piquiers possèdent une meilleure "
+"résistance aux attaques perçantes."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:32
@@ -3611,11 +3656,15 @@ msgid ""
 "Compared to other loyalists, Royal Guards have a higher resistance to "
 "‘blade’ and ‘impact’ attacks."
 msgstr ""
+"Comparativement aux autres loyalistes, les gardes royaux possèdent une "
+"meilleure résistance aux attaques tranchantes et contondantes."
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:20
 msgid "Compared to other loyalists, Royal Guards have more movepoints."
 msgstr ""
+"Comparativement aux autres loyalistes, les gardes royaux possèdent plus de "
+"points de mouvements."
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -3715,6 +3764,8 @@ msgid ""
 "Compared to other loyalists, Swordsmen have a higher resistance to ‘blade’ "
 "and ‘impact’ attacks."
 msgstr ""
+"Comparativement aux autres loyalistes, les spadassins possèdent une "
+"meilleure résistance aux attaques tranchantes et contondantes."
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
@@ -3813,6 +3864,8 @@ msgid ""
 "Compared to other mages, Arch Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Comparativement aux autres mages, les archimages possèdent une meilleure "
+"résistance aux attaques de feu."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:45
@@ -3884,6 +3937,8 @@ msgid ""
 "Compared to other mages, Great Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Comparativement aux autres mages, les grands mages possèdent une meilleure "
+"résistance aux attaques de feu."
 
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:88
@@ -3930,6 +3985,8 @@ msgid ""
 "Compared to other mages, Red Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Comparativement aux autres mages, les mages rouges possèdent une meilleure "
+"résistance aux attaques de feu."
 
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:96
@@ -4028,6 +4085,8 @@ msgid ""
 "Compared to other mages, White Mages have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"Comparativement aux autres mages, les mages blancs possèdent une meilleure "
+"résistance aux attaques de type arcane."
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:103
@@ -4063,6 +4122,8 @@ msgid ""
 "Compared to other mages, Mages of Light have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"Comparativement aux autres mages, les mages de Lumière possèdent une "
+"meilleure résistance aux attaques de type arcane."
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:100

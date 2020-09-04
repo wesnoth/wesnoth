@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.12\n"
 "POT-Creation-Date: 2020-06-12 21:49-0400\n"
-"PO-Revision-Date: 2020-01-21 16:14+0100\n"
+"PO-Revision-Date: 2020-06-23 13:02+0200\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3.1\n"
 
 # type: TH
 #. type: TH
@@ -221,10 +221,9 @@ msgstr "B<-c, --campaign-skip-story>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:78
-#, fuzzy
 msgid "Skip [story] screens and dialog through the end of the B<start> event."
 msgstr ""
-"Passe l'écran d'histoire et de dialogues jusqu'à la fin de l'événement "
+"Passe l'écran d'[histoire] et de dialogues jusqu'à la fin de l'événement "
 "B<start>"
 
 # type: TP
@@ -597,6 +596,10 @@ msgid ""
 "experimental, don't fill bug reports since most are known. Parts of the "
 "library are deemed stable and will work without this switch."
 msgstr ""
+"une nouvelle boîte à outils d'objets graphiques est en cours de "
+"développement, cette option l'active. Etant très expérimentale, ne saisissez "
+"pas de rapport de bogue, car ils sont généralement connus. Certaines parties "
+"de la bibliothèque sont réputées stables et fonctionneront sans ce paramètre."
 
 # type: TP
 #. type: TP
@@ -730,6 +733,10 @@ msgid ""
 "B<--script>, but Lua file should return a function which will be run as a "
 "coroutine and periodically woken up with updates."
 msgstr ""
+"(expérimental) charge un I<script> qui défini un plugin Wesnoth. Similaire à "
+"B<--script>, mais le fichier Lua devrait retourner une fonction qui sera "
+"exécutée comme une coroutine et réveillée périodiquement avec des mises à "
+"jour."
 
 #. type: TP
 #: doc/man/wesnoth.6:241
@@ -891,22 +898,15 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<sortie>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:307
-#, fuzzy
-#| msgid ""
-#| "takes a valid wesnoth 'image path string' with image path functions, and "
-#| "outputs to a .png file. Outputs to a windows .bmp file if the filename "
-#| "ends with .bmp or if libpng is not available. Image path functions are "
-#| "documented at https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
 "outputs to a .png file. Image path functions are documented at https://wiki."
 "wesnoth.org/ImagePathFunctionWML."
 msgstr ""
-"Prend une « chaîne de caractères de chemin Wesnoth » valide, avec une "
-"fonction de chemin d'image, puis produit un fichier .png. Produit un "
-"fichier .bmp Windows si le nom du fichier se termine par .bmp ou si la "
-"bibliothèque libpng n'est pas disponible. Les fonctions de chemin d'image "
-"sont documentées à l'adresse : https://wiki.wesnoth.org/ImagePathFunctionWML."
+"prend une « chaîne de caractères de chemin Wesnoth » valide, avec une "
+"fonction de chemin d'image, puis produit un fichier .png. Les fonctions de "
+"chemin d'image sont documentées à l'adresse : https://wiki.wesnoth.org/"
+"ImagePathFunctionWML."
 
 # type: TP
 #. type: TP
@@ -965,6 +965,7 @@ msgstr "B<--script>I<\\ fichier_d'entrée>"
 #: doc/man/wesnoth.6:329
 msgid "(experimental)  I<file> containing a Lua script to control the client."
 msgstr ""
+"(expérimental)  I<file> contenant un script Lua qui contrôle le client."
 
 # type: TP
 #. type: TP
@@ -1072,6 +1073,10 @@ msgid ""
 "arbitrary packages. Do not do this with untrusted scripts! This action gives "
 "lua the same permissions as the wesnoth executable."
 msgstr ""
+"rend le package B<package> disponible aux scripts Lua, ainsi ils peuvent "
+"charger n'importe quel package. Ne faites cela qu'avec des scripts de "
+"confiance ! Cette action donne aux scripts Lua les mêmes permissions que "
+"l'exécutable de Wesnoth."
 
 # type: TP
 #. type: TP
@@ -1459,16 +1464,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:504
-#, fuzzy
-#| msgid ""
-#| "When running unit tests (withB<\\ -u>), the exit status is different. An "
-#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
-#| "test failed. An exit status of 3 indicates that the test passed, but "
-#| "produced an invalid replay file. An exit status of 4 indicates that the "
-#| "test passed, but the replay produced errors. These latter two are only "
-#| "returned if B<--noreplaycheck> is not passed. An exit status of 2 "
-#| "indicates that the test timed out, when used with the deprecated B<--"
-#| "timeout> option."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1482,9 +1477,7 @@ msgstr ""
 "que le test a échoué. Un statut de 3 indique que le test est passé, mais que "
 "le fichier de rejeu est invalide. Un statut de 4 indique que le test est "
 "passé, mais que le rejeu à produit des erreurs. Ces deux derniers statuts "
-"sont retournés si B<--noreplaycheck> n'est pas spécifié. Un statut de 2 "
-"indique que le test a atteint la limite de temps, lors de l'utilisation de "
-"l'option dépréciée B<--timeout>."
+"sont retournés si B<--noreplaycheck> n'est pas spécifié."
 
 # type: SH
 #. type: SH
@@ -2243,12 +2236,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:223
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2260,7 +2247,10 @@ msgstr ""
 "B<[user_handler]> Configure l'identifiant utilisateur. Les options "
 "disponibles dépendent de la configuration de la clé B<user_handler>. S'il "
 "n'y a aucune section B< [user_handler]> dans la configuration, le serveur "
-"fonctionnera sans aucun service d'enregistrement d'alias."
+"fonctionnera sans aucun service d'enregistrement d'alias. Toutes les tables "
+"complémentaires qui sont nécessaire pour que le B<forum_user_handler> "
+"fonctionne, se trouvent dans le fichier table_definition.sql du dépôt des "
+"sources de Wesnoth."
 
 # type: TP
 #. type: TP

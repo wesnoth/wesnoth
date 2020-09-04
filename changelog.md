@@ -9,7 +9,8 @@
      translated values.
  ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Chinese (Traditional),
-     Czech, Esperanto, Italian, Polish, Portuguese (Brazil), Russian, Spanish, Turkish
+     Czech, Esperanto, French, Italian, Polish, Portuguese (Brazil), Russian, Spanish,
+     Turkish
  ### User interface
    * Do not list nameless abilities in the Abilities and Ability Upgrades lists in unit
      descriptions in Help (issue #3060).
