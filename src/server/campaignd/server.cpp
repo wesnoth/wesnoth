@@ -939,21 +939,22 @@ void server::handle_request_terms(const server::request& req)
 void server::handle_upload(const server::request& req)
 {
 	const config& upload = req.cfg;
-	bool is_upload_pack = false;
 
 	LOG_CS << "uploading campaign '" << upload["name"] << "' from " << req.addr << ".\n";
-	for(const config::any_child entry : upload.all_children_range()) {
-		if(entry.key == "removelist" || entry.key == "addlist") {
-			is_upload_pack = true;
-			break;
-		}
-	}
-	config data = upload.child("data");
+
+	config data;
 	config removelist, addlist;
-	if(is_upload_pack) {
+	if(upload.has_child("data")) {
+		data = upload.child("data");
+	}
+	if(upload.has_child("removelist")) {
 		removelist = upload.child("removelist");
+	}
+	if(upload.has_child("addlist")) {
 		addlist = upload.child("addlist");
 	}
+
+	bool is_upload_pack = !removelist.empty() || !addlist.empty();
 
 	const std::string& name = upload["name"];
 	config *campaign = nullptr;
@@ -989,10 +990,10 @@ void server::handle_upload(const server::request& req)
 	if(read_only_) {
 		LOG_CS << "Upload aborted - uploads not permitted in read-only mode.\n";
 		send_error("Add-on rejected: The server is currently in read-only mode.", req.sock);
-	} else if(!is_upload_pack && !data) {
+	} else if(!is_upload_pack && data.empty()) {
 		LOG_CS << "Upload aborted - no add-on data.\n";
 		send_error("Add-on rejected: No add-on data was supplied.", req.sock);
-	} else if(is_upload_pack && !removelist && !addlist) {
+	} else if(is_upload_pack && removelist.empty() && addlist.empty()) {
 		LOG_CS << "Upload aborted - no add-on data.\n";
 		send_error("Add-on rejected: No add-on data was supplied.", req.sock);
 	} else if(!addon_name_legal(upload["name"])) {
@@ -1195,8 +1196,12 @@ void server::handle_upload(const server::request& req)
 			{
 				filesystem::atomic_commit pack_file(filename + pack_info["filename"].str());
 				config_writer writer(*pack_file.ostream(), true, compress_level_);
+				writer.open_child("removelist");
 				writer.write(removelist);
+				writer.close_child("removelist");
+				writer.open_child("addlist");
 				writer.write(addlist);
+				writer.close_child("addlist");
 				pack_file.commit();
 			}
 
@@ -1205,10 +1210,10 @@ void server::handle_upload(const server::request& req)
 			data.clear();
 			read_gz(data, *in);
 
-			if(removelist) {
+			if(!removelist.empty()) {
 				data_apply_removelist(data, removelist);
 			}
-			if(addlist) {
+			if(!addlist.empty()) {
 				data_apply_addlist(data, addlist);
 			}
 
