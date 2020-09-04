@@ -8,7 +8,7 @@
    * Under the Burning Suns:
    * World Conquest:
  ### Language and i18n
-   * Updated translations: British English, Chinese (Simplified), Polish,
+   * Updated translations: British English, Chinese (Simplified), Esperanto, Polish,
      Portuguese (Brazil), Russian, Spanish, Turkish
  ### Lua API
  ### Terrain

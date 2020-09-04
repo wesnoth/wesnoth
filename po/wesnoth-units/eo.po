@@ -2,7 +2,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Aleksej Korgenkov <grimpanto@mail.ru>, 2008.
 #
 msgid ""
 msgstr ""
@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-22 04:15 UTC\n"
 "PO-Revision-Date: 2008-03-01 20:10+0200\n"
-"Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
+"Last-Translator: Luther Thompson <luther@librem.one>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -821,6 +821,7 @@ msgstr ""
 "rakontoj de nanoj, kiuj ŝutas strangan nigran polvon en la buŝon de siaj "
 "armiloj, de kiu iuj diras, ke tiu estas manĝaĵo por fueli la beston "
 "enmalliberita.\n"
+"\n"
 "Kvankam unu pafo el tiuj ´tondrobastonoj´ povas daŭri kelkajn minutojn por "
 "prepari, la postaĵojn konsideras la nanoj, kiel bone atendinda."
 
@@ -828,16 +829,15 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Masked Ulfserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Ulfserker.cfg:18
 #: data/core/units/dwarves/Ulfserker.cfg:18
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these; in battle, they will work themselves into a blind rage "
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
-"Nanoj estas praa raso de potencaj batalantoj. Furiozuloj en batalo la plej "
-"furiozaj: sendepende de vundoj atakas malamikon senrompe, ĝis unu el ili "
-"falos morta."
+"Nanoj estas praa raso de potencaj batalantoj. Ulfserkoj estas la plej "
+"ferocaj el tiuj; en batalo, ili laboras sin en blindan rabion, kie ili "
+"sentas nek timo nek doloro, kaj atenti neniun vundon, kiu ili ricevas."
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
@@ -1885,9 +1885,9 @@ msgstr ""
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:13
 #, fuzzy
-#| msgid "Dune Burner"
+#| msgid "Merman Hunter"
 msgid "female^Dune Sky Hunter"
-msgstr "Duna Bruligisto"
+msgstr "Mara ĉasisto"
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:37
@@ -2139,9 +2139,8 @@ msgstr "Rajdanto sur grifo"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
-#, fuzzy
 msgid "Dwarvish Arcanister"
-msgstr "Nano batalanto"
+msgstr "Nana Arkanisto"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:24
@@ -2164,9 +2163,8 @@ msgstr "Nano Drakgardisto"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
-#, fuzzy
 msgid "Dwarvish Explorer"
-msgstr "Nano furiozulo"
+msgstr "Nana Esploristo"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:18
@@ -2209,9 +2207,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
-#, fuzzy
 msgid "Dwarvish Pathfinder"
-msgstr "Nano tondoroestro"
+msgstr "Nana Voytrovisto"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:22
@@ -2225,9 +2222,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:4
-#, fuzzy
 msgid "Dwarvish Runesmith"
-msgstr "Nana run-mastro"
+msgstr "Nana Runforĝisto"
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:23
@@ -2240,9 +2236,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
-#, fuzzy
 msgid "Dwarvish Scout"
-msgstr "Elfo skolto"
+msgstr "Nana Skolto"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:22
@@ -2305,7 +2300,7 @@ msgstr "Nana tondra gardisto"
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr "Nano furiozulo"
+msgstr "Nana Ulfserko"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
@@ -2507,7 +2502,7 @@ msgstr ""
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
-msgstr "Elfo magnato"
+msgstr "Elfa Alta Lordo"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:18
@@ -2533,7 +2528,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:4
 msgid "female^Elvish Lady"
-msgstr "Elfo nobelino"
+msgstr "Elfa Lordino"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:20
@@ -2632,7 +2627,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr "Elfo rapidrajdanto"
+msgstr "Elfa Elrajdisto"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:19
@@ -2861,15 +2856,10 @@ msgstr ""
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
-msgstr "Luprajdanto"
+msgstr "Direluprajdanto"
 
-#
-#
-#
-#
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:19
-#, fuzzy
 msgid ""
 "‘Dire wolves’ differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -2882,41 +2872,33 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts’ paws into a most "
 "deadly stroke."
 msgstr ""
-"Lup-rajdanto distingiĝas de ordinara arbara lupo per grando kaj koloro. "
-"Kutime estas kiel ĉevaloj altaj, kaj al tio respondan voremon. Nur frenezulo "
-"volus konatiĝi kun ili pli proksime. Gobloj kapablis, multon oferante, "
-"malsovaĝigi kaj seligi ilin, se eblas tiel diri.\n"
+"‘Direaj lupoj’ distingiĝas de la komuna speco per nur grando kaj koloro. Ili "
+"kutime staras pli alte ol ĉevalo ĉe la ŝultro, kaj havas egalan apetiton. "
+"Nur frenezulo volante trovus ilin; sed kolboldoj kontraŭ kostego de si "
+"klopode malsovaĝigas kaj rajdas ilin.\n"
 "\n"
-"Ĉe ordinara lupo ungegoj oni ne konsideras kiel danĝeran korpoparton, sed ĉe "
-"tiuj grandaj monstroj estas pli dikaj kaj pli longaj ol najloj. Rajdantoj "
-"ofte ŝmiras ilin per veneno, kaj tiel plialtigas ŝancon, ke vundo de ungego "
-"estos mortiga.\n"
-"\n"
-"Rimarko: Viktimo, post trafo de veneniga ungego, iom post iom perdados "
-"sanon, ĝis ne resaniĝos en vilaĝo, aŭ helpe de kuracisto."
+"La ungegoj de lupo ne kutime konsideritas kiel la pli danĝeraj partoj, sed "
+"sur tiom granda besto, ili estas pli maldika kaj longa ol feraj najloj. "
+"Iliaj rajdantoj ŝmiras venenon sur la frontan aron, kiel tiun uzas la orkaj "
+"mortigistoj, igante bato el la piedoj de tiuj bestoj plej mortigema frapo."
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr "Goblino surpikisto"
+msgstr "Kolbolda Palisumisto"
 
-#
-#
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:19
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy’s battle "
 "line. Those who manage to survive their first few battles equip themselves "
 "with a long spear to compensate for their short reach, and better armor to "
 "guard their diminutive frames."
 msgstr ""
-"Orkoj uzas goblinojn kiel viktimojn en unuaj linioj. Tiuj, kiuj sukcesis "
-"travivi, klopodas akiri armilojn. Malaltecon povas kompensi longa lanco, kaj "
-"ĉe delikata korpo helpos pli bona kiraso.\n"
-"\n"
-"Rimarko: Longeco de pikarmilo kaŭzas, ke ĉiam donas unuan baton, ankaŭ dum "
-"defendo."
+"Kolboldojn orkoj uzas kiel bataletantoj por disrompi la batalajn liniojn de "
+"la malamiko. Tiuj, kiuj sukcese travivas iliajn unuajn iom da bataloj, "
+"ekipas sin per longa lanco por kompensi kontraŭ sia mallonga atingo, kaj pli "
+"bona defendaĵo por gardi siajn etajn framojn."
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
@@ -2941,26 +2923,20 @@ msgstr ""
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
-msgstr "Goblino rabisto"
+msgstr "Kolbolda Militakiristo"
 
-#
-#
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:18
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally for defense or reprisal."
 msgstr ""
-"Iuj gobloj dekutimigis siajn lupojn timi fajron. Ĉe invadoj havas tiaj "
-"gobloj nur helpan tason - per troĉo ekbruligas domojn kaj pajlostakoj de "
-"malamikojn, kaj disĵetante retojn faras kaoson inter tiuj, kiuj klopodas "
-"organizi defendon.\n"
-"\n"
-"Rimarko: La reto malrapidigas kontraŭulon kaj malaltigas nombron de liaj "
-"batoj je unu."
+"Iuj kolboldoj trejnas siajn lupojn venki ilian timon de fajro. Dum invadoj, "
+"tiuj kolboldoj rolas apoganto; ili torĉos la hejmojn kaj rikoltaĵojn de siaj "
+"malamikoj kaj ankaŭ portos retoj por fari ĥaoson kontraŭ tiuj, kiuj penas "
+"realtiĝi por defendo aŭ venĝo."
 
 #. [attack]: type=impact
 #: data/core/units/goblins/Pillager.cfg:51
@@ -3004,13 +2980,10 @@ msgstr ""
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:4
 msgid "Wolf Rider"
-msgstr "Luprajdanto"
+msgstr "Luprajdisto"
 
-#
-#
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:30
-#, fuzzy
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are much "
@@ -3023,14 +2996,16 @@ msgid ""
 "horses, these mounts have a rather easy time traversing the mountains, "
 "though water and woods will still slow them down."
 msgstr ""
-"Neniu scias, kiel precize ekestis kutimo malsovaĝigi kaj seli lupojn. Gobloj "
-"estas malpli altaj kaj malplifortaj ol plimulto el orkoj. Se iu el ili "
-"sukcesas batali en selo, havas pli altan sekurecon, kaj se eblas tiel diri, "
-"ankaŭ amuzon.\n"
+"Neniu scias, kiel precize ekestis kutimo malsovaĝigi kaj rajdi lupojn, sed "
+"ĝiaj aventaĝoj por kolboldo estas kompreneblaj. Kolboldoj estas tre pli "
+"malgrandaj kaj malfortaj ol sia orka gento kaj ofte estas senditaj al la "
+"plej danĝeraj kaj nevolitaj partoj de batalo. Tiuj, kiuj sukcese "
+"malsovaĝigas sellupon, havas tre pli sekuran rolon en batalo.\n"
 "\n"
-"Lubpoj probable ne kapablus porti pezan homon en kiraso, sed goblo kun leda "
-"kiraso estas sufiĉe malpeza. Diference de ĉevaloj la lupoj facile moviĝas en "
-"montoj, malgraŭ tio, ke akvo kaj arbaro malrapidigas ilin."
+"Kvankam iometaj lupoj povus eĉ stari kun la pezo de vera orko sur la dorso, "
+"kolboldo estas vere en la povo rapide porti de multaj lupoj. Malsame de "
+"ĉevaloj, tiuj sellupoj povas sufiĉe facile transiri la montojn, sed akvo kaj "
+"arbaroj akoraŭ malrapidigos ilin."
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
@@ -3050,19 +3025,18 @@ msgstr ""
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
-msgstr "Grifo majstro"
+msgstr "Grifa Majstro"
 
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:18
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty birds of prey may strike from anywhere."
 msgstr ""
-"Grif-estroj havas multajn spertojn kun flugado sur grifoj, kiuj kvazaŭ "
-"fariĝis parto de ilia korpo. Tiu ĉi stranga rilato plenigas terrampulojn per "
-"timo, ĉar ĉi duopo kapablas ataki de ieajn."
+"Grifaj Majstroj havas multajn spertojn kun flugado sur grifoj, kiuj kvazaŭ "
+"fariĝis parto de ilia korpo. Tiu speciala rilato tremigas la korojn de la "
+"terlimitaj, ĉar tiuj fortegaj rabobirdoj eble frapas el ie ajn."
 
 #. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
@@ -3115,7 +3089,6 @@ msgstr "Kavaliro"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
 "combat, they have seen the often-fatal results of a failed charge, and have "
@@ -3125,21 +3098,20 @@ msgid ""
 "however, and growing experience with these weapons makes them deadlier at "
 "the tilt."
 msgstr ""
-"La plej lertaj kaj la plej disciplinitaj rajdistoj avancas al kavaliroj. Tio "
-"estas veteranoj, ofte vidis danĝerajn sekvojn de invadoj, kaj ellernis "
-"batali ĝustamezure. Kavaliroj estas ekipitaj ankaŭ per glavoj, kaj trejnas "
-"batalstilon, kiu postulas pli da pacienco, sed estas pli sekura ol fento. "
-"Iliaj lacoj estas ĉiam pretaj, kaj akiritaj spertoj iliajn kapablojn "
-"plialtigas."
+"Ĉevaluloj kun lerto kaj disciplino progresitas al kavaliroj. Veteranoj de "
+"batalo, ili vidintas la ofte mortajn rezultojn de malsukcesa sturmo, kaj "
+"lernis prudente uzi ĝin. Do kavaliroj portas glavojn inter siaj armaĵoj, kaj "
+"praktikas taktikojn, kiuj estas malpli hazardaj ol sturmo, malgraŭ ke ili "
+"bezonas tre pli paciencon. Tamen, iliaj lancoj ankoraŭ estas preta, kaj "
+"kreskanta sperto kun tiuj armiloj igas ilin pli morta en la defio."
 
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
-msgstr "Lancistoj"
+msgstr "Lancisto"
 
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:19
-#, fuzzy
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
 "in minimal armor, they free themselves to ride swiftly, faster than any of "
@@ -3148,12 +3120,12 @@ msgid ""
 "down infantrymen who have made the mistake of breaking formation, and in "
 "piercing defensive lines. However, they have limited use in defense."
 msgstr ""
-"Lancistoj estas la plej kuraĝaj kaj timindaj rajdantoj el Vesnot. Ili estas "
-"nur ne multe kirasitaj, pro tio ili rajdas pli rapide ol aliaj. Ilia kuraĝa "
-"taktiko uzas  dutranĉan glavon, kio alportas aŭ rapidan gloron, aŭ fruan "
-"morton. Lancistoj lerte persekutas infanterianojn, kiuj erare foriris de "
-"batalfalango, kaj ankaŭ ili facile trairas defendliniojn. Iliaj "
-"defendkapabloj estas malpli grandaj."
+"Lancistoj estas el la plej kuraĝaj kaj timindaj rajdantoj el tuto de Vesnot. "
+"Vestita per malpleja kiraso, ili liberiĝas rajdi rapide, pli rapida ol iu "
+"ajn el siaj fratoj. La aŭdacaj taktikoj, kiu ili uzas, estas kiel duobleĝa "
+"glavo, ĉar ili ofte gajnas aŭ gloro aŭ rapida morto. Lancisto bonege, kaj "
+"ĉesas tiujn infanterianojn, kiuj erare rompis formacion, kaj traboras "
+"defendecajn liniojn. Tamen, ili havas limitan utilon por defendo."
 
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
@@ -3184,11 +3156,10 @@ msgstr ""
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
-msgstr "Rajdisto"
+msgstr "Ĉevalulo"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:18
-#, fuzzy
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
 "trained from childhood to ride and to follow a strict code of honor. A "
@@ -3198,11 +3169,13 @@ msgid ""
 "must take care against both spearmen and archers for whom their large size "
 "provide inviting targets."
 msgstr ""
-"Rajdistoj ofte devenas el randaj areoj de Vesnot. De infanaĝo ili trejnas "
-"rajdi ĉevalojn kaj lernas plenumi kodon de honoro. Atako de rajdantoj estas "
-"forta, se iom facilanima taktiko, kiu sian efikecon jam multfoje montris en "
-"batalo. Rajdistoj estas bonegaj kontraŭ infanterio kiu ne tenas formacion, "
-"sed devas atenti lancistojn kaj pafarkistojn, por kiuj estas facilaj celoj."
+"Ofte venanta el la pli sovaĝaj regionoj de Vesnoto, Ĉevaluloj estas "
+"trejnitaj ekde infaneco por rajdi kaj sekvi severan etiketon. Sturmo de "
+"ĉevalulo estas potenca sed hazarda taktiko, la valoro de kiu estas pruvita "
+"multfoje sur la batalejo. Ĉevaluloj estas bonega kontraŭ plimulta "
+"infanterio, precipe tiuj, kiuj falis el la linio, sed devas zorgi kontraŭ "
+"kaj lancistoj kaj pafarkistoj por kiuj, iliaj grandeco provizas invitantajn "
+"celojn."
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
@@ -3211,7 +3184,6 @@ msgstr "Pafarkisto"
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
-#, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -3219,29 +3191,29 @@ msgid ""
 "woodsmen, military bowmen are trained to competence with both a bow and a "
 "short sword, and are very common on the battlefield."
 msgstr ""
-"Uzo de pafarkoj ne nur por ĉasado estas konata de pratempo, kaj tial ankaŭ "
-"pafarkistoj fariĝis grava konsistaĵo de armeoj. Ofte ili havas modestan "
-"devenon; terkulturistoj aŭ ĉarpentistoj, estas lertaj en batalo kun pafarko "
-"kaj mallonga glavo, kaj ofte troviĝas sur batalkampo."
+"Uzo de pafarkoj ne nur por ĉasado estas konata ekde sia komenco, kaj "
+"pafarkistoj estis nemalhaveblaj en milito ekde pratempo. Kutime el humilaj "
+"originoj, venintaj el kamparanoj aŭ arbaruloj, militaj pafarkistoj estas "
+"trejnitaj al kompetento kun pafarko kaj mallonga glavo, kaj estas tre "
+"komunaj sur la batalejo."
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
-msgstr "Kavaliro"
+msgstr "Kavaliero"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:20
-#, fuzzy
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome, and they have "
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
-"Elitaj rajdistoj, majstroj de glavo, de arbalesto kaj ĉevala selo estas "
-"signo de venko sur batalkampo. Ilia longdistanca pafkapablo ebligas senpune "
-"ataki multajn kontraŭulojn, kaj ilia atako ofte deklinis rezulton dum la "
-"plej grandaj historiaj bataloj."
+"Kavalieroj estas majstroj pri la uzo de kaj glavo kaj arbalesto el "
+"ĉevaldorso. Ilia kombino de frapa potenco kaj moviĝeblo estas timinda, kaj "
+"ili havas reputacion de aktiveco kaj agreseco, kiuj egalas ĝin. La aŭdacaj "
+"agoj de Kavalieroj estas la temo de multaj rakontoj kaj kantoj."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -3264,11 +3236,10 @@ msgstr "arbalesto"
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
 msgid "Cavalryman"
-msgstr "Kavaleriano"
+msgstr "Rajdosoldato"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:19
-#, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -3279,11 +3250,10 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scouting work."
 msgstr ""
-"Kavalerianoj distingiĝas de ordinaraj rajdistoj per taktiko kaj ekipo. "
-"Kavaleriano havas kirason, glavon kaj ŝildon, ne lancon. Ilia taktiko ne "
-"enhavas atakadon, sed kuŝas en manovrado, hakado kaj evitado.Kavalerianoj "
-"utilas dum konkerado aŭ protektado de malfermita areo, por protekto de "
-"aliancanoj kaj esplorado."
+"Rajosoldatoj distingiĝas de ĉevaluloj per taktikoj kaj ekipo. Rajdosoldato "
+"surportas pli pezan kirason kaj portas glavon kaj ŝildon, ne lancon. Iliaj "
+"taktikoj ne enhavas sturmi; anstataŭ tio, ili manovras por tranĉvundi per "
+"glavo, uzante kaj ĉevalon kaj rajdanton kiel efika ilo de kontakta batalo."
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
@@ -3292,7 +3262,6 @@ msgstr "Dragono"
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:19
-#, fuzzy
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
 "of the crossbow, and matched with much more powerful steeds. Well-armored, "
@@ -3300,23 +3269,19 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
-"La plej talentaj rajdantoj el kavalerio en armeo de Vesnot estas trejnitaj "
-"en uzado de arbalesto kaj ekipitaj per fortaj ĉevaloj. Tiuj ĉi soldatoj, "
-"perfekte armaĵitaj kaj lertaj kun glavo, povas kuraĝe ataki, kaj defendi "
-"konkeritan teron. Ilia granda avantaĝo estas moviĝemo kaj rezisto."
+"La pli talentaj rajdosoldatoj el la militistaroj de Vesnot estas trejnitaj "
+"en uzado de arbalesto kaj ekipitaj per tre pri fortaj ĉevaloj. Tiuj ĉi "
+"soldatoj, bone kirasigitaj kaj lertaj kun la uzo de la glavoj, povas peli "
+"antaŭen kaj teni la teron, kiu ili prenas. Ilia movebleco kaj restaremo "
+"donas al si valorego sur la batalejo."
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
 msgstr "Duelisto"
 
-#
-#
-#
-#
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:17
-#, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth’s nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -3330,27 +3295,22 @@ msgid ""
 "live long enough to be veterans typically do so by making such concessions "
 "to utility and survival."
 msgstr ""
-"Nobelaro en Vesnot kutimas aliĝi siajn filojn en armeon, kie ili lernas "
-"rajdi kaj skermi. Junaj aristokratoj, kiuj havas malfeliĉan kutimon solvi "
-"ĉiun ofendon per duelo, nomiĝas duelistoj.\n"
+"Estas unika kutimo de la nobelaro de Vesnoto ke ili tipe aligi siajn filojn "
+"en unu el du ordenojn de blazonportantoj, trejnite ilin por la arto de aŭ "
+"ĉevallerto aŭ skermo. Duelistoj nomiĝas tiel pro bedaŭrinde komuna praktiko "
+"de junaj aristokratoj, por kiuj, la doloro de insulto aŭ efektiva aŭ imagita "
+"povas inciti malprudentan demonstracion de ilia natura rajto.\n"
 "\n"
-"Spertaj skermistoj, naskiĝintaj kiel nobeloj, aŭ kiuj fariĝis nobeloj, "
-"kunportas malgrandajn arbalestojn, facile kaŝeblaj sub mantelo. Arbalestoj "
-"malrapide ŝarĝiĝas, kaj konsideras ilin kiel malhonestaj armiloj, sed tiuj, "
-"kiuj vivis jam sufiĉe longe, por nomi ilin veteranoj, ne hezitas uzi ĝin, "
-"prefere se necesas travivi.\n"
-"Rimarko: Energieco ebligas al skermistoj paŝi ĉe kontraŭlo sendepende de lia "
-"kontrola areo."
+"Sperta skermisto portas kun si malgranda arbalesto, kiu estas facile kaŝebla "
+"sub mantelo. Malrapide ŝarĝita kaj foje pensita esti malhonorebla uzi, ĝi "
+"fakte estas tre utila, kaj tiuj el iliaj rangoj, kiuj vivas sufiĉe longe por "
+"esti veteranoj, tipe faras tion per fari tiujn cedojn por utilo kaj postvivo."
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
 msgstr "Skermisto"
 
-#
-#
-#
-#
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:17
 #, fuzzy
@@ -3944,9 +3904,8 @@ msgstr "Arkimagiino"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
-#, fuzzy
 msgid "Elder Mage"
-msgstr "Arĝenta mago"
+msgstr "Pliaĝula Magiisto"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:23
@@ -3958,9 +3917,8 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:36
-#, fuzzy
 msgid "lightning"
-msgstr "Fulma bato"
+msgstr "fulmo"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:4
@@ -6834,6 +6792,102 @@ msgid ""
 "hinder their enemies."
 msgstr ""
 
+#~ msgid "fire arrow"
+#~ msgstr "fajra sago"
+
+#~ msgid "Dune Ranger"
+#~ msgstr "Dungardisto"
+
+#~ msgid ""
+#~ "The magic of the wood-elves is poorly suited for combat, but effective "
+#~ "nonetheless. The forests in which they thrive can become quickened by a "
+#~ "word of command, and will lash out at those who threaten their peace.\n"
+#~ "\n"
+#~ "The chief ability of Druids lies in healing, and it is for this skill "
+#~ "that they are revered by their people."
+#~ msgstr ""
+#~ "La magio de la arbarelfoj ne tro taŭgas por batalo, sed tamen efikas. La "
+#~ "arbaroj, en kiuj ili vivas, povas envivitiĝi de vorto de komando, kaj "
+#~ "ekfrapos tiujn, kiuj minacos ilian trankvilon.\n"
+#~ "\n"
+#~ "La ĉefa povo de Druidinoj kuŝas en sanigo, kaj, pro ĉi tiu lerto, ilin "
+#~ "moŝtigas iliaj homoj."
+
+#~ msgid ""
+#~ "The leaders of elvenkind command an instinctive loyalty from their people "
+#~ "that rulers of other races can only envy, and earn it with great "
+#~ "mindfulness and wisdom. Quiet and contemplative in times of peace, a High "
+#~ "Lord in the full of his wrath is an awesome sight indeed."
+#~ msgstr ""
+#~ "La elfaj gvidantoj komandas instinktan lojalecon el siaj homoj, kiun "
+#~ "regantoj de aliaj rasoj povas nur envii, kaj gajnas ĝin per mensemego kaj "
+#~ "saĝeco. Softa kaj kontemplema en pacaj tempoj, Alta Lordo en sia plena "
+#~ "kolero ja estas mirinda vido."
+
+#~ msgid ""
+#~ "Elves choose their leaders for their wisdom and sensitivity to the "
+#~ "balance of universal forces; foresight is what has protected them in "
+#~ "times of uncertainty. Their just reign is rewarded by the unflagging "
+#~ "fealty of their people, which is the greatest gift for which any ruler "
+#~ "could ask."
+#~ msgstr ""
+#~ "Elfoj elektas siajn gvidantojn laŭ iliaj saĝeco kaj sentemo pri la "
+#~ "ekvilibro de universalaj fortecoj; antaŭvido estas tio, kio protektis "
+#~ "ilin dum tempoj de necerto. Ilia justa rego estas rekompencata per la "
+#~ "neripozanta fideleco de iliaj homoj, kio estas la plej ega donaco, kion "
+#~ "ajn reganto povus peti."
+
+#~ msgid ""
+#~ "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
+#~ "Despite the peaceful nature of their people, their experience makes them "
+#~ "quite deadly in combat. Only the most dedicated exceed these elves’ skill "
+#~ "as mounted archers — in fact, most would be hard pressed to equal it "
+#~ "standing on solid ground.\n"
+#~ "\n"
+#~ "The speed of these soldiers allows the elves to strike when and where "
+#~ "they choose when fighting on their home ground, a fact that has saved "
+#~ "many of their number from death."
+#~ msgstr ""
+#~ "Elfaj Elrajdistoj estas trejnitaj kiel la reĝaj kurieroj de la elfaj "
+#~ "regnoj. Malgraŭ la pacemeco de iliaj homoj, ilia sperto vere mortigemigas "
+#~ "ilin en batalo. Nur la plej dediĉitaj superas la lerto de ĉi tiuj elfoj "
+#~ "kiel rajdantaj pafarkistoj — fakte por plimultaj, estus malfacile egaliĝi "
+#~ "al ĝin starante sur solida tero.\n"
+#~ "\n"
+#~ "La rapideco de ĉi tiuj militistoj ebligas la elfoj frapi kiam kaj kie ili "
+#~ "elektas kiam batalanaj sur sia hejmtero, fakto, tiu savis multe da ili el "
+#~ "morto."
+
+#~ msgid ""
+#~ "Being partly faerie in nature, elves have an inherent capability for "
+#~ "magic. This is realized in their affinity with the natural world, which "
+#~ "they can call upon as an ally in combat. Enemies wandering in their "
+#~ "forests may soon find themselves entangled by roots and hindered by the "
+#~ "very ground they stand on.\n"
+#~ "\n"
+#~ "The healing abilities of the elves are also remarkable, and of capital "
+#~ "use in battle."
+#~ msgstr ""
+#~ "Estantaj parte feaj nature, elfoj havas imanentan povon de magia. Ĉi tio "
+#~ "efektiviĝas en ilia samsenteco kun la natura mondo, kiun ili povas alvoki "
+#~ "kiel aliancano en batalo. Malamikoj vagantaj en iliaj arbaroj eble baldaŭ "
+#~ "troviĝas implikitaj per radikaloj kaj malhelpitaj de ja la tero, sur kiu "
+#~ "ili stari.\n"
+#~ "\n"
+#~ "Ankaŭ la sanigantaj povoj de la elfoj estas rimarkindaj kaj ĉefe utilaj "
+#~ "en batalo."
+
+#~ msgid ""
+#~ "Devotion to the path of faerie may eventually transform an elf maiden "
+#~ "into a creature of both worlds. Guided by a power which is little "
+#~ "understood, these beautiful stewards of the elven forests epitomize the "
+#~ "grace and mystery of their people."
+#~ msgstr ""
+#~ "Kulto al la fea vojo eble posttempe transformos elfa fraŭlino al kreaĵo "
+#~ "de ambaŭ mondoj. Gviditaj de potenco, kiu estas ete komprenita, ĉi tiuj "
+#~ "belaj servistoj de la elfaj arbaroj estas la kulmino de la graco kaj "
+#~ "mistero de iliaj homoj."
+
 #
 #
 #, fuzzy
@@ -6870,125 +6924,6 @@ msgstr ""
 #~ "\n"
 #~ "Rimarko: Viktimo trafita de veneniga tranĉilo perdas sanon, ĝis ne estas "
 #~ "resanigita de kuracisto, aŭ en vilaĝo."
-
-#~ msgid "fire arrow"
-#~ msgstr "fajra sago"
-
-#~ msgid "Dune Ranger"
-#~ msgstr "Dungardisto"
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "The magic of the wood-elves is poorly suited for combat, but effective "
-#~ "nonetheless. The forests in which they thrive can become quickened by a "
-#~ "word of command, and will lash out at those who threaten their peace.\n"
-#~ "\n"
-#~ "The chief ability of Druids lies in healing, and it is for this skill "
-#~ "that they are revered by their people."
-#~ msgstr ""
-#~ "Magio de arbaraj elfoj ne tro taŭgas por batalo, sed tamen eblas uzi ĝin. "
-#~ "La arbaro, en kiu ili vivas, povas post ordono vivĝi kaj frapi tiun, kiu "
-#~ "rompis ĝian trankvilon.\n"
-#~ "\n"
-#~ "Ilia ĉefa lerto estas kuracado, kaj dank´al ĉi tiu kapablo estas druidoj "
-#~ "inter elfoj tre estimataj.\n"
-#~ "\n"
-#~ "Rimarko: Atako de druido malrapidigos kontraŭulon kaj malaltigos nombron "
-#~ "de iliaj atakoj. Druidoj kapablas resanigi milit-unuojn ĉirkaŭajn, kaj "
-#~ "kuraci venenon."
-
-#, fuzzy
-#~ msgid ""
-#~ "The leaders of elvenkind command an instinctive loyalty from their people "
-#~ "that rulers of other races can only envy, and earn it with great "
-#~ "mindfulness and wisdom. Quiet and contemplative in times of peace, a High "
-#~ "Lord in the full of his wrath is an awesome sight indeed."
-#~ msgstr ""
-#~ "Elfaj gvidantoj aĝante ne malfortiĝas. Male, kreskas al sia plena "
-#~ "potencialo. Dukoj estas dum paca tempo silentaj kaj meditemaj, sed kiam "
-#~ "li koleriĝas, rigardo al li timigas."
-
-#, fuzzy
-#~ msgid ""
-#~ "Elves choose their leaders for their wisdom and sensitivity to the "
-#~ "balance of universal forces; foresight is what has protected them in "
-#~ "times of uncertainty. Their just reign is rewarded by the unflagging "
-#~ "fealty of their people, which is the greatest gift for which any ruler "
-#~ "could ask."
-#~ msgstr ""
-#~ "Elfoj elektas siajn komandantojn laŭ potenco kaj saĝeco; tiu ĉi antaŭvido "
-#~ "ŝirmas ilin dum  mizeraj tempoj. Ilia justa registaro estas rekompencata "
-#~ "per fideleco kaj sindoneco de homoj, kio estas la plej granda beno por "
-#~ "ĉiu reganto."
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
-#~ "Despite the peaceful nature of their people, their experience makes them "
-#~ "quite deadly in combat. Only the most dedicated exceed these elves’ skill "
-#~ "as mounted archers — in fact, most would be hard pressed to equal it "
-#~ "standing on solid ground.\n"
-#~ "\n"
-#~ "The speed of these soldiers allows the elves to strike when and where "
-#~ "they choose when fighting on their home ground, a fact that has saved "
-#~ "many of their number from death."
-#~ msgstr ""
-#~ "Rapidaj elf-rajdistoj estas trejnitaj kiel reĝaj poŝtistoj inter elfaj "
-#~ "reĝlandoj. Malgraŭ pacema naturo de ĉi tiu nacio, spertoj faras el ili "
-#~ "danĝerajn batalantojn. Neniu homo ankoraŭ ne atingis tian kapablon pafi "
-#~ "el ĉevala dorso - pli precize, estus malfacile konkuri eĉ el tero.\n"
-#~ "\n"
-#~ "Rapideco de elf-batalantoj ebligas ataki en tempo kaj spaco, kiun ili mem "
-#~ "elektos, kio estas avantaĝo kiu al multaj helpis savi vivon."
-
-#
-#
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "Being partly faerie in nature, elves have an inherent capability for "
-#~ "magic. This is realized in their affinity with the natural world, which "
-#~ "they can call upon as an ally in combat. Enemies wandering in their "
-#~ "forests may soon find themselves entangled by roots and hindered by the "
-#~ "very ground they stand on.\n"
-#~ "\n"
-#~ "The healing abilities of the elves are also remarkable, and of capital "
-#~ "use in battle."
-#~ msgstr ""
-#~ "Elfoj posedas naturan kapablon por magio. Estas kunligitaj kun naturo, "
-#~ "kaj povas ĝin alvoki dum batalo por helpi. Malamikoj, kiuj enpaŝos ilian "
-#~ "arbaron, povas subite ekscii, ke estas enplektitaj en radikojn, sur kiuj "
-#~ "staris, kaj vidas ke iliaj ebloj limiĝis.\n"
-#~ "\n"
-#~ "Gravas iliaj kurackapabloj, kiujn eblas dum batalo utiligi.\n"
-#~ "\n"
-#~ "Rimarko: Malrapidiga atako de ŝamano bremsas malamikon kaj limigas "
-#~ "nombron de liaj batoj je unu. Ŝamanoj kapablas kuraci iomete, sed efikon "
-#~ "de veneno kapablas nur malrapidigi, ne forigi."
-
-#
-#
-#, fuzzy
-#~ msgid ""
-#~ "Devotion to the path of faerie may eventually transform an elf maiden "
-#~ "into a creature of both worlds. Guided by a power which is little "
-#~ "understood, these beautiful stewards of the elven forests epitomize the "
-#~ "grace and mystery of their people."
-#~ msgstr ""
-#~ "Koncentriĝo al sia magia flanko kaŭzos, ke juna elfino iom pos tiom "
-#~ "ŝanĝiĝos al kreaĵo el ambaŭ mondoj. Tiu ĉi mistera kaj belega kreaĵo "
-#~ "estas simbolo de beleco kaj mistereco en elfa nacio.\n"
-#~ "\n"
-#~ "Rimarko: Plektiga atako de feino kapablas malrapidigi malamikon kaj "
-#~ "malaltigas nombron de liaj  atakoj je unu. Feinoj kapablas kuraci "
-#~ "ĉirkaŭajn milit-unuojn kaj resanigi venenigon."
 
 #
 #
