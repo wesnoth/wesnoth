@@ -8,8 +8,8 @@
    * Under the Burning Suns:
    * World Conquest:
  ### Language and i18n
-   * Updated translations: British English, Chinese (Simplified), Esperanto, French,
-     Polish, Portuguese (Brazil), Russian, Spanish, Turkish
+   * Updated translations: British English, Catalan, Chinese (Simplified), Esperanto,
+     French, Polish, Portuguese (Brazil), Russian, Spanish, Turkish
  ### Lua API
  ### Terrain
  ### Units
