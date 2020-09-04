@@ -153,6 +153,12 @@
 		46BED4D3205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
+		46E2D98F25022BF5003D99F3 /* lua_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98B25022BF5003D99F3 /* lua_widget.cpp */; };
+		46E2D99025022BF5003D99F3 /* lua_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98B25022BF5003D99F3 /* lua_widget.cpp */; };
+		46E2D99125022BF6003D99F3 /* lua_widget_attributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */; };
+		46E2D99225022BF6003D99F3 /* lua_widget_attributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */; };
+		46E2D99325022BF6003D99F3 /* lua_widget_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98E25022BF5003D99F3 /* lua_widget_methods.cpp */; };
+		46E2D99425022BF6003D99F3 /* lua_widget_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98E25022BF5003D99F3 /* lua_widget_methods.cpp */; };
 		46EEFB762087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46EEFB772087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46F302EE220327FE0028938F /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46F302EC220327FD0028938F /* container-migration.plist */; };
@@ -1519,6 +1525,13 @@
 		46BED4D1205060EA00842FA5 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
+		46E2D98925022BF4003D99F3 /* lua_widget_methods.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_widget_methods.hpp; sourceTree = "<group>"; };
+		46E2D98A25022BF4003D99F3 /* lua_widget_attributes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_widget_attributes.hpp; sourceTree = "<group>"; };
+		46E2D98B25022BF5003D99F3 /* lua_widget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_widget.cpp; sourceTree = "<group>"; };
+		46E2D98C25022BF5003D99F3 /* lua_widget.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_widget.hpp; sourceTree = "<group>"; };
+		46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_widget_attributes.cpp; sourceTree = "<group>"; };
+		46E2D98E25022BF5003D99F3 /* lua_widget_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_widget_methods.cpp; sourceTree = "<group>"; };
+		46E2D99525022D46003D99F3 /* lua_ptr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_ptr.hpp; sourceTree = "<group>"; };
 		46EEFB742087434200E1E75A /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
 		46EEFB752087434200E1E75A /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
 		46F302EC220327FD0028938F /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "container-migration.plist"; path = "Resources/container-migration.plist"; sourceTree = "<group>"; };
@@ -4549,6 +4562,7 @@
 				9190B73A1CA0554900B0EF66 /* lua_pathfind_cost_calculator.hpp */,
 				ECFB61831DA0A0C50055D3F8 /* lua_preferences.cpp */,
 				ECFB61841DA0A0C50055D3F8 /* lua_preferences.hpp */,
+				46E2D99525022D46003D99F3 /* lua_ptr.hpp */,
 				ECC2FFF91A51A00900023AF4 /* lua_race.cpp */,
 				91B621EB1B76BB1D00B00E0F /* lua_race.hpp */,
 				ECA4A67A1A1EC319006BCCF2 /* lua_rng.cpp */,
@@ -4566,6 +4580,12 @@
 				91B621EE1B76BB2C00B00E0F /* lua_unit_type.hpp */,
 				9193FC801D5C2CF7004F6C07 /* lua_unit.cpp */,
 				9193FC811D5C2CF8004F6C07 /* lua_unit.hpp */,
+				46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */,
+				46E2D98A25022BF4003D99F3 /* lua_widget_attributes.hpp */,
+				46E2D98E25022BF5003D99F3 /* lua_widget_methods.cpp */,
+				46E2D98925022BF4003D99F3 /* lua_widget_methods.hpp */,
+				46E2D98B25022BF5003D99F3 /* lua_widget.cpp */,
+				46E2D98C25022BF5003D99F3 /* lua_widget.hpp */,
 				ECF0F80223A09932004A2011 /* lua_wml.cpp */,
 				EC59F2601A4529D2001910CB /* manager.cpp */,
 				91B621E31B76BAF600B00E0F /* manager.hpp */,
@@ -4968,6 +4988,7 @@
 				B52EE91612135AC300CFBDAB /* attack.cpp in Sources */,
 				620A386E15E9364E00A4F513 /* attack.cpp in Sources */,
 				46F92DB52174F6A300602C1C /* message.cpp in Sources */,
+				46E2D99125022BF6003D99F3 /* lua_widget_attributes.cpp in Sources */,
 				62D24F2D1519982500350848 /* brush.cpp in Sources */,
 				B552D92D108694BB002D8F86 /* ca_move_to_targets.cpp in Sources */,
 				46F92DED2174F6A400602C1C /* uninstall_list.cpp in Sources */,
@@ -5152,6 +5173,7 @@
 				B5599B360EC62181008DD061 /* picture.cpp in Sources */,
 				F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */,
 				EC0341E11ECF46FE000F2E2B /* config_attribute_value.cpp in Sources */,
+				46E2D98F25022BF5003D99F3 /* lua_widget.cpp in Sources */,
 				62114CC91750B9AF00CA42C7 /* item_palette.cpp in Sources */,
 				B5599B340EC62181008DD061 /* key.cpp in Sources */,
 				46F92E9D2174F6A400602C1C /* menu_button.cpp in Sources */,
@@ -5265,6 +5287,7 @@
 				B52EE8D8121359A600CFBDAB /* persist_var.cpp in Sources */,
 				B5599B170EC62181008DD061 /* play_controller.cpp in Sources */,
 				46F92E8F2174F6A400602C1C /* toggle_panel.cpp in Sources */,
+				46E2D99325022BF6003D99F3 /* lua_widget_methods.cpp in Sources */,
 				EC2F601B1A048E220018C9D6 /* playcampaign.cpp in Sources */,
 				B5599B150EC62181008DD061 /* playmp_controller.cpp in Sources */,
 				46F92DDD2174F6A300602C1C /* edit_label.cpp in Sources */,
@@ -5648,6 +5671,7 @@
 				91E3567E1CACC71A00774252 /* replay_recorder_base.cpp in Sources */,
 				91E3567F1CACC71A00774252 /* resources.cpp in Sources */,
 				91E356801CACC71A00774252 /* save_blocker.cpp in Sources */,
+				46E2D99025022BF5003D99F3 /* lua_widget.cpp in Sources */,
 				91E356811CACC71A00774252 /* save_index.cpp in Sources */,
 				91E356821CACC71A00774252 /* saved_game.cpp in Sources */,
 				46BDBBEB217C6F6200D2820C /* lua_terrainfilter.cpp in Sources */,
@@ -5802,6 +5826,7 @@
 				46F92D7A2174F6A300602C1C /* linked_group_definition.cpp in Sources */,
 				91E356E31CACC93000774252 /* editor_palettes.cpp in Sources */,
 				46F92DF62174F6A400602C1C /* game_stats.cpp in Sources */,
+				46E2D99225022BF6003D99F3 /* lua_widget_attributes.cpp in Sources */,
 				46F92E7E2174F6A400602C1C /* label.cpp in Sources */,
 				91E356E41CACC93000774252 /* item_palette.cpp in Sources */,
 				46F92E942174F6A400602C1C /* chatbox.cpp in Sources */,
@@ -5981,6 +6006,7 @@
 				46F92E682174F6A400602C1C /* text_box_base.cpp in Sources */,
 				46F92D822174F6A300602C1C /* window_builder.cpp in Sources */,
 				91A2157D1CAD761100927AEA /* hotkey_handler_mp.cpp in Sources */,
+				46E2D99425022BF6003D99F3 /* lua_widget_methods.cpp in Sources */,
 				91A2157E1CAD761100927AEA /* hotkey_handler_sp.cpp in Sources */,
 				46F92EA82174F6A400602C1C /* settings.cpp in Sources */,
 				91A215801CAD797900927AEA /* controller.cpp in Sources */,
