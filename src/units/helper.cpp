@@ -20,6 +20,9 @@
 #include "units/unit.hpp"
 #include "units/helper.hpp"
 #include "units/types.hpp"
+#include "resources.hpp"
+#include "play_controller.hpp"
+#include "saved_game.hpp"
 
 namespace unit_helper {
 
@@ -30,7 +33,17 @@ int number_of_possible_advances(const unit &u)
 
 bool will_certainly_advance(const unit_map::iterator &u)
 {
-	return u.valid() && u->advances() && number_of_possible_advances(*u) > 0;
+	if(!u.valid()) {
+		return false;
+	}
+	if(resources::controller) {
+		const auto& active_mods = resources::controller->get_saved_game().classification().active_mods;
+		bool delay_advancements = std::find(active_mods.begin(), active_mods.end(), "delay_advancements") != active_mods.end();
+		if(delay_advancements && resources::controller->current_side() != u->side()) {
+			return false;
+		}
+	}
+	return u->advances() && number_of_possible_advances(*u) > 0;
 }
 
 std::string resistance_color(const int resistance)
