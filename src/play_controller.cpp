@@ -534,7 +534,7 @@ void play_controller::do_init_side()
 		bool delay_advancements = std::find(active_mods.begin(), active_mods.end(), "delay_advancements") != active_mods.end();
 
 		for(unit &u : resources::gameboard->units()) {
-			if(u.side() == current_side()) {
+			if(delay_advancements && u.side() == current_side()) {
 				advance_unit_at(u.get_location());
 			}
 		}
