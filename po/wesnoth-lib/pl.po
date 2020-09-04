@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-22 00:14-0400\n"
-"PO-Revision-Date: 2020-08-21 13:18+0200\n"
-"Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
+"PO-Revision-Date: 2020-08-31 09:44+0200\n"
+"Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
@@ -106,7 +106,7 @@ msgstr ""
 #: data/core/terrain.cfg:123 data/core/terrain.cfg:2970
 #: data/core/terrain.cfg:2971
 msgid "Coastal Reef"
-msgstr "Rafa"
+msgstr "Rafa przybrzeżna"
 
 #. [terrain_type]: id=gray_reef
 #: data/core/terrain.cfg:102
@@ -116,7 +116,7 @@ msgstr "Szara rafa przybrzeżna"
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:113
 msgid "Medium Coastal Reef"
-msgstr "Rafa Przybrzeżna"
+msgstr "Średnia rafa przybrzeżna"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:124
@@ -217,8 +217,8 @@ msgid ""
 "as flat terrain."
 msgstr ""
 "<italic>text='Drogi'</italic> to wydeptane ścieżki, uformowane przez "
-"przemieszczających się nimi podróżników. Na potrzeby zasad gry traktowane są "
-"jak płaski teren."
+"przemieszczających się nimi podróżników. Na potrzeby gry traktowane są jak "
+"płaski teren."
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:251
@@ -301,7 +301,7 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
-"Każdy podróżnik cieszy się na widok oazy. Pozawala ona jednostkom leczyć się "
+"Każdy podróżnik cieszy się na widok oazy. Pozwala ona jednostkom leczyć się "
 "tak, jakby stacjonowały w wiosce, ale nie zapewnia dochodu ani premii "
 "obronnej."
 
@@ -1638,6 +1638,17 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Dla tych, którzy potrafią zbudować <italic>text='most'</italic>, zdolność "
+"jego postawienia uwalnia od niestałej natury arterii wodnych, których brody "
+"pojawiają się i znikają wraz ze wzrostem i spadkiem poziomu wody. Nie mówiąc "
+"już o luksusie suchych stóp, którego brak jest nie do śmiechu w czasie "
+"zimnych miesięcy.\n"
+"\n"
+"Dla poruszających się lądem lub wodą, most jest najlepszą częścią obu "
+"światów — na potrzeby gry jest traktowany albo jak trawa, albo jak woda pod "
+"nim, którakolwiek z opcji daje najlepszą możliwość poruszania się i obronę "
+"terenową dla jednostki stojącej na heksie mostu. Zwróć uwagę, że jednostka "
+"pływająca i jednostka lądowa nie mogą jednocześnie zajmować heksa mostu."
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1723,6 +1734,18 @@ msgstr "Grzybnia"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2934
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
+#| "giant mushrooms,\n"
+#| "which thrive in the damp darkness. Most units have trouble negotiating "
+#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
+#| "the larger stalks. Mounted units, however, become completely mired and "
+#| "lack proper freedom of movement in combat. Undead units have a natural "
+#| "affinity for decay and function quite well in mushroom forests.\n"
+#| "\n"
+#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
+#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1734,6 +1757,17 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"<italic>text='Grzybowe gaje'</italic> to rozległe podziemne lasy "
+"gigantycznych grzybów,\n"
+"które rosną w mokrej ciemności. Większość jednostek ma problem z chodzeniem "
+"po gąbczastej podłodze z mniejszych grzybów, ale za to mają dużo miejsc do "
+"ukrywania się za większymi trzonami. Jednak konne jednostki tu grzęzną i "
+"tracą właściwą wolność poruszania się w walce. Jednostki nieumarłych "
+"odczuwają naturalne przyciąganie do rozkładu i funkcjonują całkiem dobrze w "
+"lasach grzybów.\n"
+"\n"
+"Większość jednostek uzyskuje 50% lub 60% obrony terenowej w grzybowych "
+"gajach, podczas gdy kawaleria tylko 20%."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2945
@@ -1755,6 +1789,22 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"Teren <italic>text='jaskini'</italic> reprezentuje każdą podziemną grotę, w "
+"której jest wystarczająco dużo miejsca aby jednostka mogła nią przejść.\n"
+"Większość jednostek jest całkowicie nieobeznanych z tym terenem i dlatego są "
+"tu zarówno wolniejsze, jak również ich obrona jest utrudniona. Krasnoludy i "
+"trolle, których domem są jaskinie, radzą sobie względnie łatwo w tym "
+"terenie, szczególnie krasnoludy, które dzięki swemu małemu wzrostowi mogą "
+"pokonywać przeszkody, których inne rasy nie potrafią. Zdarza się, że "
+"jaskinie są <italic>text='oświetlone'</italic>.\n"
+"\n"
+"Rzadkie skrawki podziemnego świata są oświetlone przez światło z powierzchni "
+"spadające w mroczną ciemność. Daje to premię do ataku dla praworządnych "
+"jednostek i zabiera premię do ataku chaotycznym jednostkom. Pod każdym innym "
+"względem ten teren jest funkcjonalnie identyczny z terenem jaskini.\n"
+"\n"
+"Większość jednostek otrzymuje od 20% do 40% obrony terenowej w jaskini, "
+"podczas gdy krasnoludy 50%."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2958
@@ -1772,6 +1822,14 @@ msgid ""
 "\n"
 "Merfolk and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"<italic>text='Rafy przybrzeżne'</italic> to płycizny utworzone przez "
+"kamienie, korale i piasek.\n"
+"To daje większości jednostek lądowych stabilniejsze oparcie dla stóp i "
+"lepsze pozycje do obrony niż normalnie dawałoby brodzenie w płytkiej wodzie "
+"oraz zapewnia większości wodnych jednostek wyjątkowo wysoką obronę "
+"terenową.\n"
+"\n"
+"Zarówno mermeni i nagi otrzymują 70% obrony terenowej w rafach przybrzeżnych."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2989
@@ -3301,7 +3359,7 @@ msgstr "Odwołaj rozkazy ruchu wydane w zapisanej grze"
 #. [button]: id=browse_saves_folder
 #: data/gui/window/game_load.cfg:599
 msgid "Open saves folder"
-msgstr ""
+msgstr "Otwórz folder zapisanych gier"
 
 #. [button]: id=ok
 #. [grid]
@@ -3819,19 +3877,19 @@ msgstr "Zatrzymaj grę"
 
 #: data/gui/window/logging.cfg:20
 msgid "Debug level logging: maximum information"
-msgstr ""
+msgstr "Poziom logowania debug: maksimum informacji"
 
 #: data/gui/window/logging.cfg:22
 msgid "Info level logging: more information"
-msgstr ""
+msgstr "Poziom logowania info: więcej informacji"
 
 #: data/gui/window/logging.cfg:24
 msgid "Warning level logging: less information"
-msgstr ""
+msgstr "Poziom logowania warning: mniej informacji"
 
 #: data/gui/window/logging.cfg:26
 msgid "Error level logging: minimum information"
-msgstr ""
+msgstr "Poziom logowania error: minimum informacji"
 
 #: data/gui/window/logging.cfg:28
 msgid "Disable logging"
@@ -4301,7 +4359,7 @@ msgstr "Prywatna powtórka"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Czy powtórka będzie dostępna publicznie"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -4476,11 +4534,13 @@ msgid ""
 "A registered account on the Wesnoth forums is required to join the official "
 "server."
 msgstr ""
+"Konto zarejestrowane na forach Wesnoth jest potrzebne, aby dołączyć do "
+"oficjalnego serwera."
 
 #. [button]: id=register
 #: data/gui/window/mp_method_selection.cfg:136
 msgid "Sign Up"
-msgstr ""
+msgstr "Zarejestruj się"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:226
@@ -4592,7 +4652,7 @@ msgstr "Spraw, by jednostki poruszały się i walczyły szybciej"
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:79
 msgid "Acceleration factor:"
-msgstr ""
+msgstr "Współczynnik przyspieszenia:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:84
@@ -4600,6 +4660,8 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
+"Szybkość z jaką jednostki poruszają się i animacje są wyświetlane, gdy "
+"„Przyspieszone ruchy\" są włączone lub gdy klawisz Shift jest wciśnięty"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -4709,7 +4771,7 @@ msgstr "Filtruj:"
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "Filtrowanie opisu skrótu klawiszowego."
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -4876,14 +4938,20 @@ msgstr "Częstotliwość animacji bezczynności jednostek"
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:274
 msgid "Limit FPS"
-msgstr ""
+msgstr "Limit klatek na sekundę"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
+#, fuzzy
+#| msgid ""
+#| "Disabling this increases CPU usage to 100% but may slightly improve "
+#| "performance at high resolutions"
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
 msgstr ""
+"Wyłączenie tej opcji zwiększa użycie procesora do 100%, ale może minimalnie "
+"poprawić działanie w wysokich rozdzielczościach"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:290
@@ -5278,12 +5346,12 @@ msgstr "Warstwa"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:81
 msgid "Base.x"
-msgstr ""
+msgstr "Baza.x"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:93
 msgid "Base.y"
-msgstr ""
+msgstr "Baza.y"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
@@ -5482,7 +5550,7 @@ msgstr "Przyzwij jednostkę"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
 msgid "Search for unit name, unit type name, unit level, or trait."
-msgstr ""
+msgstr "Wyszukaj imię jednostki, typ jednostki, poziom jednostki albo ceche."
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -5668,7 +5736,7 @@ msgstr "$prefix lub $last"
 
 #: src/formula/string_utils.cpp:294 src/formula/string_utils.cpp:323
 msgid "timespan^expired"
-msgstr ""
+msgstr "przedawniony"
 
 #: src/formula/string_utils.cpp:300
 msgid "timespan^$num year"
@@ -8006,8 +8074,14 @@ msgstr ""
 #~ msgid "All units, haloes, border hexes"
 #~ msgstr "Wszystkie jednostki, efekty halo i pola na granicy mapy"
 
+#~ msgid "Scaled to zoom"
+#~ msgstr "Skalowanie do powiększenia"
+
 #~ msgid "Everything else"
 #~ msgstr "Wszystko inne"
+
+#~ msgid "Scaled to hex"
+#~ msgstr "Skalowanie do heksów"
 
 #~ msgid "Sort by:"
 #~ msgstr "Sortowanie:"

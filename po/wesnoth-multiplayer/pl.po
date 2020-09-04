@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-22 04:14 UTC\n"
-"PO-Revision-Date: 2018-04-16 22:14+0200\n"
+"PO-Revision-Date: 2020-08-31 10:14+0200\n"
 "Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
 "Language: pl_PL\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -184,7 +184,7 @@ msgstr ""
 "W ich szeregach walczą jednostki praworządne i półmroczne, uzdrowiciele, "
 "uderzający z wielką precyzją wojownicy i budzący lęk konni łucznicy. Choć "
 "jednostki ludów pustyni są zazwyczaj droższe niż wchodzące w skład frakcji "
-"Lojalistów, to nadrabiają to swoją mobilnością — zwłaszcza na wzgórzach."
+"Lojalistów, to nadrabiają to swoją mobilnością — zwłaszcza na wzgórzach."
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -231,6 +231,11 @@ msgid ""
 "Loyalist faction is a very versatile melee-oriented faction with important "
 "ranged support from bowmen and mages."
 msgstr ""
+"<bold>Tekst='Lojaliści'</bold> są frakcją <ref>text='ludzi' dst='.. "
+"race_human'</ref>, którzy są lojalni wobec tronu Wesnoth. Ludzie są "
+"wszechstronną rasą, która specjalizuje się w wielu różnych dziedzinach. "
+"Podobnie, frakcja Lojalistów jest bardzo wszechstronną frakcją walczącą "
+"wręcz, z ważnym wsparciem w walce na dystans ze strony łuczników i magów."
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
@@ -251,6 +256,14 @@ msgid ""
 "Northerners play best by taking advantage of having many low-cost and high "
 "HP soldiers."
 msgstr ""
+"<bold>text='Ludy północy'</bold> to frakcja <ref>text='orków' dst='.."
+"race_orc'</ref> i ich sojuszników, którzy mieszkają na północy Wielkiego "
+"Kontynentu, skąd bierze się ich nazwa. Ludy północy składają się z rasy "
+"orków wojowników, zniewolonych <ref>text='goblinów' dst='..race_goblin'</"
+"ref>, <ref>text='trolli' dst='..race_troll'</ref>, którzy są oszukiwani do "
+"walki przez orków, oraz wężowatych<ref>text='nag' dst='..race_naga'</ref>. "
+"Ludy północy grają najlepiej, korzystając z wielu tanich żołnierzy z dużą "
+"ilością punktów życia."
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
@@ -406,8 +419,6 @@ msgstr "Południe"
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:155
-#, fuzzy
-#| msgid "Defeat enemy leader"
 msgid "Defeat the enemy leader"
 msgstr "Pokonaj wrogiego przywódcę"
 
@@ -762,22 +773,6 @@ msgstr "Blum Duk"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:147
-#, fuzzy
-#| msgid ""
-#| "Blum Duk was renowned among his goblin clan for having tamed one of the "
-#| "Dire Wolves of the mountains, and he had the courage to match. His "
-#| "leadership and skills alone were what kept the area’s goblins alive "
-#| "despite human and elvish menaces. Rumor had it that his wolf had slain "
-#| "fifty men and a hundred Elves.\n"
-#| "Thus, when he heard of the awful monster that was inhabiting the area, it "
-#| "was only natural that he ride out alone to face it. All the other goblins "
-#| "expected him to slay the creature easily and drag back its carcass to "
-#| "feast on.\n"
-#| "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
-#| "cowered in fright. He tried to wheel his wolf around to run away, but it "
-#| "wouldn’t move. As the creature stalked towards him, he screamed his last "
-#| "words: Good Gog, dog, are yer legs made of stone?!\n"
-#| "(inscribed by Elvish Pillager)"
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -801,16 +796,18 @@ msgstr ""
 "niezwykłe zdolności sprawiały, że gobliny wciąż żyły na tych terenach mimo "
 "zagrożeń ze strony ludzi i elfów. Plotka głosiła, że jego wilk zabił "
 "pięćdziesięciu ludzi i sto elfów. \n"
+"\n"
 "I tak, gdy usłyszał o okropnym potworze, który pojawił się w okolicy, "
 "oczywistym było, że wyruszy samotnie, by się z nim zmierzyć. Wszystkie "
 "pozostałe gobliny spodziewały się, że z łatwością pokona kreaturę i "
 "przyciągnie z powrotem jej ciało do pożarcia.\n"
+"\n"
 "Jednak spotkała go niemiła niespodzianka. Blam Duka ogarnęło przerażenie, "
 "gdy tylko zobaczył Bazyliszka. Starał się zmusić swojego wilka do zawrócenia "
 "i ucieczki, ale nie chciał się on poruszyć. Gdy stworzenie pełzło w jego "
 "kierunku, wykrzyczał swoje ostatnie słowa: Dobry Gogu, piesku, czy twoje "
 "nogi są z kamienia?!?\n"
-"(zapisane przez Elfickiego Grabieżcę)"
+"(wpisane przez Elvish Pillager)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
@@ -867,7 +864,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:170
 msgid "The Spider"
-msgstr ""
+msgstr "Pająk"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
@@ -913,23 +910,6 @@ msgstr "Bramwythl"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:196
-#, fuzzy
-#| msgid ""
-#| "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
-#| "other Woses. More than any other Wose, he enjoyed simply standing alone "
-#| "in the sun, arms upraised, admiring the beauty of the empty sky. Once, "
-#| "even, he confided in a fellow that his greatest wish was to be able to "
-#| "bask forever in the sun’s glory.\n"
-#| "However, not long after, the local wose community heard of the approach "
-#| "of a horrible monster, powerful enough to easily destroy the few woses "
-#| "that lived in the area. They quickly moved off (quickly for Woses, "
-#| "anyway), but Bramwythl was left behind — in their haste, no one had "
-#| "remembered to find him and tell him of the danger.\n"
-#| "He was taken quite unawares by the Basilisk, and turned to stone before "
-#| "he even recognized the beast. His petrified form still stands there "
-#| "today, warmed by the sun’s rays, under an open sky. His greatest wish has "
-#| "been granted.\n"
-#| "(inscribed by Elvish Pillager)"
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other woses. More than any other wose, he enjoyed simply standing alone in "
@@ -951,19 +931,19 @@ msgid ""
 msgstr ""
 "Drzewca Bramwythla nawet inne drzewce uważały za jegomościa powolnego i "
 "małomównego. Bardziej niż inne drzewce lubił po prostu stać samotnie w "
-"słońcu, ze wzniesionymi ramionami, podziwiając piękno pustego nieba. Raz "
-"zwierzył się nawet przyjacielowi, że jego największym marzeniem byłaby "
+"słońcu, ze wzniesionymi ramionami, podziwiając piękno bezchmurnego nieba. "
+"Raz zwierzył się nawet przyjacielowi, że jego największym marzeniem byłaby "
 "wieczna kąpiel w słonecznych promieniach.\n"
 "Jednak niedługo potem do miejscowych drzewców dotarła wiadomość o "
 "zbliżającym się okropnym potworze, tak potężnym, że z łatwością mógł "
 "pozbawić życia garstkę drzewców żyjących w okolicy. Wyniosły się szybko "
 "(przynajmniej jak na drzewce), ale Bramwythl został - w całym pośpiechu nikt "
 "nie pamiętał o tym, by go znaleźć i powiadomić o niebezpieczeństwie.\n"
-"Napotkawszy nagle Bazyliszka został zmieniony w kamień zanim jeszcze zdążył "
-"go rozpoznać. Jego skamieniała postać po dziś dzień stoi tu pod otwartym "
-"niebem, ogrzewana złotymi promieniami słońca. Jego życzenie zostało "
-"spełnione.\n"
-"(zapisane przez Elfickiego Grabieżcę)"
+"Gdy niczego się nie spodziewając spotkał Bazyliszka, został zmieniony w "
+"kamień zanim mógł rozpoznać bestię. Jego skamieniała postać po dziś dzień "
+"stoi tu pod otwartym niebem, ogrzewana złotymi promieniami słońca. Jego "
+"życzenie zostało spełnione.\n"
+"(wpisane przez Elvish Pillager)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:205
@@ -1071,10 +1051,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:7
-#, fuzzy
-#| msgid "4p — Clash"
 msgid "2p — Clearing Gushes"
-msgstr "4g — Starcie"
+msgstr "2p — Czyszczące strumienie"
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:8
@@ -1761,10 +1739,8 @@ msgstr "2g — Garnizon tysiąca żądeł"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
-#, fuzzy
-#| msgid "A strange place. Designed by Doc Paterson"
 msgid "A strange place. Designed by Doc Paterson."
-msgstr "Dziwne miejsce. Projekt: Doc Paterson"
+msgstr "Dziwne miejsce. Projekt: Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:93
@@ -2073,12 +2049,6 @@ msgstr "4g — Krzyż Isar"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
-#| "rotation of units and planning of moves is important. Teams set for "
-#| "players 1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting "
-#| "gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -2086,9 +2056,9 @@ msgid ""
 "gold, 20 villages."
 msgstr ""
 "Bardzo mała mapa do gry 2 na 2. Walka w zwarciu wymaga odpowiedniej rotacji "
-"jednostek i planowania ruchów. Drużyny ustawione dla graczy 1+4 kontra 2+3 "
-"(północny wschód kontra południowy zachód). Założenia projektowe to 75 "
-"początkowych sztuk złota. 20 wiosek."
+"jednostek i planowania ruchów. Drużyny ustawione dla graczy 1 i 4 kontra 2 i "
+"3 (północny wschód kontra południowy zachód). Zaprojektowana na 75 "
+"początkowych sztuk złota, 20 wiosek."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -2175,17 +2145,13 @@ msgstr "4g — Rzeka Loris"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-#, fuzzy
-#| msgid ""
-#| "2 vs. 2 map centered around a river with keeps in opposite corners. "
-#| "Designed for players 1+4 vs. 2+3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
 "for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgstr ""
 "Mapa do gry 2 na 2, zbudowana wokół rzeki z dwoma twierdzami w "
-"przeciwległych narożnikach. Zaprojektowana do gry 1+4 kontra 2+3. Jest na "
-"niej 28 wiosek."
+"przeciwległych narożnikach. Zaprojektowana do gry 1 i 4 kontra 2 i 3. Jest "
+"na niej 28 wiosek."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -2209,18 +2175,14 @@ msgstr " Zalecane ustawienie to 2 sztuki złota na wioskę. 28 wiosek."
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
-#| "east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
 "east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
 "FFA."
 msgstr ""
 "Mapa do gry 2 na 2, o pięciu możliwych kierunkach prowadzenia natarcia. "
-"Przystosowana do gry wschód kontra zachód (1+4 kontra 2+3), ale sprawdza się "
-"też dobrze z innymi układami oraz w grze swobodnej."
+"Przystosowana do gry wschód kontra zachód (1 i 4 kontra 2 i 3), ale sprawdza "
+"się też dobrze z innymi układami oraz w grze swobodnej."
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
@@ -2334,57 +2296,43 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:95
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Team 3"
-msgstr "Drużyna 1"
+msgstr "Drużyna 3"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:106
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Team 4"
-msgstr "Drużyna 1"
+msgstr "Drużyna 4"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:128
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Monsters"
-msgstr "Centrum"
+msgstr "Potwory"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:246
-#, fuzzy
-#| msgid "Defeat enemy leader"
 msgid "Defeat all enemy leaders"
-msgstr "Pokonaj wrogiego przywódcę"
+msgstr "Pokonaj wszystkich wrogich przywódców"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:265
-#, fuzzy
-#| msgid "Defeat all waves"
 msgid "Defeat all monsters"
-msgstr "Pokonaj wszystkie fale wrogów"
+msgstr "Pokonaj wszystkie potwory"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:283
-#, fuzzy
-#| msgid "Defeat enemy leader"
 msgid "Defeat the enemy leaders"
-msgstr "Pokonaj wrogiego przywódcę"
+msgstr "Pokonaj wrogich przywódców"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:288
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of all your units"
-msgstr "Śmierć przywódców waszych drużyn"
+msgstr "Śmierć wszystkich twoich jednostek"
 
 #. [note]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:293
 msgid "You cannot recruit units."
-msgstr ""
+msgstr "Nie możesz rekrutować jednostek."
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
@@ -2500,7 +2448,7 @@ msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible!"
 msgstr ""
-"Gratulacje przetrwania na mapie, którą tylu ludzi uważa za niemożliwą do "
+"Gratulacje przetrwania na mapie, którą tylu ludzi uważa za niemożliwą do "
 "ukończenia!"
 
 #. [message]: speaker=narrator
