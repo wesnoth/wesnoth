@@ -88,6 +88,7 @@ namespace lua_check_impl
 	std::enable_if_t<std::is_same<T, lua_index_raw>::value, lua_index_raw>
 	lua_to_or_default(lua_State *L, int n, const T& /*def*/)
 	{
+		UNUSED(L);
 		return lua_index_raw{ n };
 	}
 
