@@ -2766,6 +2766,27 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Scripting\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_widget.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_widget_attributes.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_widget_methods.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\mapgen_lua_kernel.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Scripting\</ObjectFileName>
@@ -4008,6 +4029,9 @@
     <ClInclude Include="..\..\src\scripting\lua_unit.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_unit_attacks.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_unit_type.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_widget.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_widget_attributes.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_widget_methods.hpp" />
     <ClInclude Include="..\..\src\scripting\mapgen_lua_kernel.hpp" />
     <ClInclude Include="..\..\src\scripting\plugins\context.hpp" />
     <ClInclude Include="..\..\src\scripting\plugins\manager.hpp" />
