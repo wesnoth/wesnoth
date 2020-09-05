@@ -1150,6 +1150,7 @@ color_t unit::xp_color() const
 		major_amla |= adv["major_amla"].to_bool();
 		has_amla = true;
 	}
+	//TODO: calculating has_amla and major_amla can be a quite slow operation, we should cache these two values somehow.
 	return xp_color(experience_to_advance(), !advances_to().empty() || major_amla, has_amla);
 }
 
