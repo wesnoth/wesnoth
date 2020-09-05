@@ -1745,6 +1745,11 @@ std::vector<config> unit::get_modification_advances() const
 		if(adv["strict_amla"].to_bool() && !advances_to_.empty()) {
 			continue;
 		}
+		if(const config& filter = adv.child("filter")) {
+			if(!unit_filter(vconfig(filter)).matches(*this, loc_)) {
+				continue;
+			}
+		}
 
 		if(modification_count("advancement", adv["id"]) >= static_cast<unsigned>(adv["max_times"].to_int(1))) {
 			continue;
