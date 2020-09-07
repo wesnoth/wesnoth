@@ -9,7 +9,7 @@
    * World Conquest:
  ### Language and i18n
    * Updated translations: British English, Catalan, Chinese (Simplified), Esperanto,
-     French, Polish, Portuguese (Brazil), Russian, Spanish, Turkish
+     French, Hungarian, Polish, Portuguese (Brazil), Russian, Spanish, Turkish
  ### Lua API
  ### Terrain
  ### Units
