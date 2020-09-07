@@ -1,6 +1,6 @@
 # #-#-#-#-#  wesnoth.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Russian translations for Battle for Wesnoth package.
-# Copyright (C) 2007 Wesnoth development team
+# Copyright (C) 2007-2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators:
@@ -8,39 +8,36 @@
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth.po\n"
+"Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-08 09:20 UTC\n"
-"PO-Revision-Date: 2012-04-07 04:15+0400\n"
-"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-09-06 17:40+0300\n"
+"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.0.94.1, po-mode 2.2+0.4\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
 msgid "4p — A New Land"
-msgstr "4и - Новая земля"
+msgstr "4и — Новая земля"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. The recommended starting gold is 100."
 msgstr ""
-"Сценарий на выживание для 4 игроков позволяет строить здания и видоизменять "
-"местность. Рекомендуемое стартовое золото - 100."
+"Этот сценарий на выживание для 4 игроков позволяет Вам строить здания и "
+"видоизменять местность. Рекомендуемое начальное золото — 100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:26
@@ -50,20 +47,18 @@ msgid ""
 "armies that had crushed their homeland, the leaders of the resistance hoped "
 "only for enough time to rebuild their forces."
 msgstr ""
-"После долгой войны немногие оставшиеся в живых потомки рода человеческого "
-"нашли убежище в укромной горной долине. Лидеры сопротивления знали, что им "
-"не скрыться от могущественных армий, сокрушишвших их страну. Но они "
-"надеялись, что им все же хватит времени восстановить силы."
+"После долгой войны немногие оставшиеся в живых остатки рода человеческого "
+"нашли убежище в укромной горной долине. Пусть даже они знали, что им не "
+"скрыться от могущественных армий, сокрушишвших их страну, вожди "
+"сопротивления надеялись, что им все же хватит времени восстановить силы."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:46
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:62
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:78
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:94
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Settlers"
-msgstr "Центр"
+msgstr "Поселенцы"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
@@ -71,44 +66,38 @@ msgstr "Центр"
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:145
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:176
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:207
-#, fuzzy
-#| msgid "teamname^East"
 msgid "teamname^Enemies"
-msgstr "Восток"
+msgstr "Враги"
 
 #. [side]: type=Death Knight
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:123
 msgid "Mal Sevu"
-msgstr ""
+msgstr "Мал Севу"
 
 #. [side]: type=Orcish Sovereign
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:154
 msgid "Gol Goroth"
-msgstr ""
+msgstr "Гол Горот"
 
 #. [side]: type=Orcish Sovereign
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:185
 msgid "Greg"
-msgstr ""
+msgstr "Грег"
 
 #. [side]: type=Death Knight
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:216
 msgid "Mal Shiki"
-msgstr ""
+msgstr "Мал Шики"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:242
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Prisoners"
-msgstr "Центр"
+msgstr "Узники"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:266
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Monsters"
-msgstr "Центр"
+msgstr "Чудовища"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:462
@@ -375,10 +364,8 @@ msgstr "Новая земля — Помощь"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:95
-#, fuzzy
-#| msgid "Select a topic."
 msgid "Select a topic:"
-msgstr "Выберите тему."
+msgstr "Выберите тему:"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:98
@@ -551,50 +538,49 @@ msgstr ""
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:5
 msgid "In this scenario you build up an economy"
-msgstr ""
+msgstr "В этом сценарии вы выстраиваете народное хозяйство"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:9
 msgid "Move any unit next to captives and they will join your side"
 msgstr ""
+"Поставьте любого бойца рядом с пленными, и они присоединятся к Вашей стороне"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:13
 msgid "Right-click on a leader to read about the game mechanics"
 msgstr ""
+"Нажмите правой кнопкой мыши на лидера, чтобы прочитать о механиках игры"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:17
 msgid "Rules:"
-msgstr ""
+msgstr "Правила:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:21
 msgid "Goal:"
-msgstr ""
+msgstr "Задача:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:25
 msgid "Hint:"
-msgstr ""
+msgstr "Подсказка:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:29
 msgid "Hints:"
-msgstr ""
+msgstr "Подсказки:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:33
-#, fuzzy
 msgid "Defeat all enemy leaders"
-msgstr "Гибель лидеров команды."
+msgstr "Победите всех вражеских лидеров"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:37
-#, fuzzy
-#| msgid "You must survive until turn 25."
 msgid "You must survive until turn 25"
-msgstr "Оставайтесь в живых в течение 25-ти ходов."
+msgstr "Оставайтесь в живых в течение 25-ти ходов"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:45
