@@ -1,19 +1,20 @@
 # (C) Fedor Khod'kov <fkhokdov@gmail.com> 2009-2014
+# (C) Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: wescamp-i 18n\n"
+"Project-Id-Version: wesnoth-sof\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-08 09:30 UTC\n"
-"PO-Revision-Date: 2019-02-02 06:46+0400\n"
-"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2020-09-06 17:21+0300\n"
+"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -98,8 +99,6 @@ msgstr ""
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:34
-#, fuzzy
-#| msgid "(Expert level, 9 scenarios.)"
 msgid "(Hard level, 9 scenarios.)"
 msgstr "(Для опытных игроков, 9 сценариев.)"
 
@@ -336,19 +335,13 @@ msgstr ""
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:348
-#, fuzzy
-#| msgid ""
-#| "When the elves came to Weldyn, about ten years ago, they spoke of a mage "
-#| "named Crelanu, and of his advice about the ruby. He said that the "
-#| "radiance of the stone could be contained, and that doing so would stop "
-#| "the stone’s effect."
 msgid ""
 "When the elves came to Tath, about five years ago, they spoke of a mage "
 "named Crelanu, and of his advice about the ruby. He said that the radiance "
 "of the stone could be contained, and that doing so would stop the stone’s "
 "effect."
 msgstr ""
-"Когда эльфы приезжали в Велдин, около десяти лет назад, они говорили о маге "
+"Когда эльфы приезжали в Таф, около десяти лет назад, они говорили о маге "
 "Крелану и его совете. Он говорил, что излучение камня можно сдержать, и что "
 "так можно остановить его действие."
 
@@ -964,17 +957,12 @@ msgstr ""
 #. [message]: speaker=Baglur
 #. all the dwarves are inside, although there might still be some elves inside too
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:570
-#, fuzzy
-#| msgid ""
-#| "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
-#| "unfortunately, our dwarves who are still out there — wi’ become "
-#| "irrelevant."
 msgid ""
 "Just watch. The gates wi’ close very soon. Then the elves outside wi’ become "
 "irrelevant."
 msgstr ""
-"Подождём. Ворота щас закроются. Тогда об оставшихся снаружи эльфах и, увы, о "
-"тех гномах, что не успели вернуться, можно бу’ет забыть."
+"Подождём. Ворота щас закроются. Тогда об оставшихся снаружи эльфах можно "
+"бу’ет забыть."
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:605
@@ -1318,8 +1306,6 @@ msgstr "Эльфы могут попытаться заполучить наше
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:156
-#, fuzzy
-#| msgid "Good one, let them try to take it! Ha!"
 msgid "Good one, let them try to take it! Ha!"
 msgstr "Ну-ну, пусть только попробуют! Ха!"
 
@@ -1338,8 +1324,6 @@ msgstr ""
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:169
-#, fuzzy
-#| msgid "Speak properly to your elders, boy! Why are you late?"
 msgid "Speak properly to your elders, boy! Why are you late?"
 msgstr "Как ты говоришь со старшими, мальчишка?! Ты почему опоздал?"
 
@@ -2577,7 +2561,7 @@ msgstr ""
 #. [scenario]: id=5_Hills_of_the_Shorbear_Clan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:3
 msgid "Hills of the Shorbear Clan"
-msgstr "Холмы клана Шорбир"
+msgstr "Холмы Медвежьей заставы"
 
 #. [side]: type=Dwarvish Lord, id=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:36
@@ -2604,25 +2588,27 @@ msgid ""
 "select clientele, and were compensated quite handsomely. They were not "
 "exactly meek or humble..."
 msgstr ""
-"Все гномы известны своей любовью к золоту и каменным сердцем. И шорбирцы не "
-"были исключением. Они были мастерами среди мастеров — они создавали "
-"инструменты. Лучшие инструменты в их землях. А ещё они очень хорошо умели "
-"торговаться."
+"Все гномы известны своей любовью к золоту и каменным сердцем. И члены "
+"Медвежьей заставы не были исключением. Они были мастерами среди мастеров — "
+"они создавали инструменты. Лучшие инструменты в их землях. А ещё они очень "
+"хорошо умели торговаться."
 
 #. [label]
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:157
 msgid "Shorbear caves"
-msgstr "Пещеры Шорбера"
+msgstr "Пещеры Медвежьей заставы"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:167
 msgid "Defeat Glonoin, the Shorbear clan leader"
-msgstr "Убейте Глонойна, вождя клана Шорбир"
+msgstr "Убейте Глонойна, вождя Медвежьей заставы"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:176
 msgid "Have all heroes, and no enemies, in the Shorbear caves"
-msgstr "Расположите всех героев в пещерах Шорбир, и чтобы в них не было врагов"
+msgstr ""
+"Расположите всех героев в пещерах Медвежьей заставы, и чтобы в них не было "
+"врагов"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:199
@@ -2634,7 +2620,7 @@ msgstr "Смерть Дурсторна"
 #, fuzzy
 #| msgid "Hills of the Shorbear Clan"
 msgid "Here we are! The hills of the Shorbear clan!"
-msgstr "Холмы клана Шорбир"
+msgstr "Холмы Медвежьей заставы"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:282
@@ -2646,8 +2632,8 @@ msgid ""
 "We’re here to bargain with the Shorbears for their tools, who should take "
 "lead?"
 msgstr ""
-"Если я правильно понял, мы здесь чтобы заключить сделку с шорбирцами и "
-"занять у них инструменты для огранки рубина."
+"Если я правильно понял, мы здесь чтобы заключить сделку с гномами Медвежьей "
+"заставы и занять у них инструменты для огранки рубина."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:286
@@ -2862,7 +2848,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:449
 msgid "You may now recruit Gryphon Riders."
-msgstr ""
+msgstr "Теперь Вы можете вербовать Наездников грифона."
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:482
@@ -3014,7 +3000,7 @@ msgid ""
 "Well, back to the battle — we need everyone to get into the Shorbear caves. "
 "And then stop any enemies from coming in here."
 msgstr ""
-"Ну что ж, а теперь снова в битву, в шорбирскую пещеру должны войти все наши! "
+"Ну что ж, а теперь снова в битву, в Медвежью заставу должны войти все наши! "
 "И не пускайте в неё врагов."
 
 #. [message]: speaker=Durstorn
@@ -4808,15 +4794,16 @@ msgstr "Краа..."
 #~ "Well... maybe... the Shorbear clan? They have good tools... yes, yes, "
 #~ "they do..."
 #~ msgstr ""
-#~ "Ну да... может быть... клан Шорбир? У них хорошие инструменты... да, да у "
-#~ "них есть..."
+#~ "Ну да... может быть... Медвежья застава? У них хорошие инструменты... да, "
+#~ "да у них есть..."
 
 #~ msgid "Yes sir... (<i>Sigh</i>)"
 #~ msgstr "Как скажете... (<i>Вздыхает</i>)"
 
 #~ msgid ""
 #~ "Here we are; the hills of the Shorbear clan. What are we here for, anyway?"
-#~ msgstr "И вот мы здесь, на холмах клана Шорбир. Зачем мы здесь, кстати?"
+#~ msgstr ""
+#~ "И вот мы здесь, на холмах Медвежьей заставы. Зачем мы здесь, кстати?"
 
 #~ msgid "Exactly."
 #~ msgstr "Именно."
@@ -4993,6 +4980,9 @@ msgstr "Краа..."
 #~ "помните, что течение лавы быстро, непредсказуемо и опасно. Единственное "
 #~ "спокойное место — рядом со знаком."
 
+#~ msgid "Survive as long as possible"
+#~ msgstr "Продержитесь так долго, насколько это возможно"
+
 #~ msgid ""
 #~ "Wait, what’s going on? The volcano is going to erupt! Everyone, try to "
 #~ "get out of these caves!"
@@ -5050,12 +5040,12 @@ msgstr "Краа..."
 #~ msgid "Kreeeeya! Darat! Nomiduun. Bah."
 #~ msgstr "Крааа! Праадаа! Всоо. Оокаа."
 
-#~ msgid "Kawn"
-#~ msgstr "Кавн"
-
 #~ msgid "Kill all of the elves before one of them escapes from the caves"
 #~ msgstr ""
 #~ "Убейте всех эльфов прежде, чем хоть один из них сможет сбежать из пещер"
+
+#~ msgid "Kawn"
+#~ msgstr "Кавн"
 
 #~ msgid "sword"
 #~ msgstr "меч"
