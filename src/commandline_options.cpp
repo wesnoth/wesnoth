@@ -287,7 +287,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	parsing_opts.add_options()
 		("use-schema,S", po::value<std::string>(), "specify a schema to validate WML against (defaults to the core schema)")
 		("validate,V", po::value<std::string>(), "validate a specified WML file against a schema")
-		("validate-addon", po::value<std::string>(), "validate the specified addon's WML against the schema")
+		("validate-addon", po::value<std::string>(), "validate the specified addon's WML against the schema. Requires the user to play the campaign (in the GUI) to trigger the validation.")
 		("validate-core", "validate the core WML against the schema")
 		("validate-schema", po::value<std::string>(), "validate a specified WML schema")
 		("diff,D", po::value<two_strings>()->multitoken(), "diff two preprocessed WML documents")
@@ -516,6 +516,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		userdata_path = true;
 	if (vm.count("validcache"))
 		validcache = true;
+	// If you add a new validate-* option, remember the any_validation_option() function
 	if (vm.count("validate"))
 		validate_wml = vm["validate"].as<std::string>();
 	if (vm.count("validate-core"))
@@ -524,6 +525,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		validate_addon = vm["validate-addon"].as<std::string>();
 	if (vm.count("validate-schema"))
 		validate_schema = vm["validate-schema"].as<std::string>();
+	// If you add a new validate-* option, remember the any_validation_option() function
 	if (vm.count("use-schema"))
 		validate_with = vm["use-schema"].as<std::string>();;
 	if (vm.count("version"))
@@ -649,4 +651,9 @@ config commandline_options::to_config() const {
 		ret["password"] = *password;
 	}
 	return ret;
+}
+
+bool commandline_options::any_validation_option() const
+{
+	return validate_addon || validate_core || validate_schema || validate_with || validate_wml;
 }
