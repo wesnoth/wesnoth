@@ -62,7 +62,9 @@ game_config_manager::game_config_manager(
 	assert(!singleton);
 	singleton = this;
 
-	if(cmdline_opts_.nocache) {
+	// All of the validation options imply --nocache, as the validation happens during cache
+	// rebuilding. If the cache isn't rebuilt, validation is silently skipped.
+	if(cmdline_opts_.nocache || cmdline_opts_.any_validation_option()) {
 		cache_.set_use_cache(false);
 	}
 	if(cmdline_opts_.validcache) {
@@ -563,6 +565,18 @@ void game_config_manager::load_addons_cfg()
 			ERR_CONFIG << "error reading usermade add-on '" << main_cfg << "'" << std::endl;
 			error_addons.push_back(main_cfg);
 		}
+	}
+
+	if(cmdline_opts_.validate_addon) {
+		if(!addon_cfgs_.count(*cmdline_opts_.validate_addon)) {
+			ERR_CONFIG << "Didn’t find an add-on for --validate-addon - check whether the id has a typo" << std::endl;
+			const std::string log_msg = formatter()
+				<< "Didn't find an add-on for --validate-addon - check whether the id has a typo";
+			error_log.push_back(log_msg);
+			throw game::error("Did not find an add-on for --validate-addon");
+		}
+
+		WRN_CONFIG << "Note: for --validate-addon to find errors, you have to play (in the GUI) a game that uses the add-on.";
 	}
 
 	if(!error_addons.empty()) {
