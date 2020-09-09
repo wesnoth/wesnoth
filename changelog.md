@@ -3,6 +3,7 @@
    * Delfador's Memoirs:
    * Liberty:
    * Northern Rebirth
+     * Removed the campaign's evil branch. Not a player-visible change, as there was no way to access this branch.
    * Sceptre of Fire:
    * The South Guard:
    * Under the Burning Suns:
