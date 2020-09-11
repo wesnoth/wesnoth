@@ -110,7 +110,10 @@ custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time)
 	, color_field_g_(register_integer("tod_green", true))
 	, color_field_b_(register_integer("tod_blue",  true))
 {
-	assert(!times_.empty());
+	if(times_.empty())
+	{
+		times_.push_back(time_of_day());
+	}
 }
 
 void custom_tod::pre_show(window& window)
