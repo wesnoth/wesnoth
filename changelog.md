@@ -19,6 +19,7 @@
  ### WML engine
  ### Miscellaneous and bug fixes
    * Minimum required version of OS X is now OS X 10.11 .
+   * The "loyal" trait is now displayed in the help browser, even though no normal unit has it.
  ### Packaging
    * macOS package distributed through SourceForge is now a UDIF lzfse-compressed image. The image size may be slightly larger but opening and copying from this image is much faster.
 
