@@ -109,7 +109,10 @@ config tod_manager::to_config() const
 	config cfg;
 	cfg["turn_at"] = turn_;
 	cfg["turns"] = num_turns_;
-	cfg["current_time"] = currentTime_;
+	//this 'if' is for the editor.
+	if(times_.size() != 0) {
+		cfg["current_time"] = currentTime_;
+	}
 	cfg["random_start_time"] = random_tod_;
 	cfg["it_is_a_new_turn"] = !has_turn_event_fired_;
 	if (has_cfg_liminal_bonus_)

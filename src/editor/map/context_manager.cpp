@@ -241,7 +241,7 @@ void context_manager::edit_scenario_dialog()
 	std::string description = context.get_description();
 
 	int turns  = context.get_time_manager()->number_of_turns();
-	int xp_mod = context.get_xp_mod();
+	int xp_mod = context.get_xp_mod() ? *context.get_xp_mod() : 70;
 
 	bool victory = context.victory_defeated();
 	bool random  = context.random_start_time();

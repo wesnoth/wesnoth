@@ -25,6 +25,8 @@
 #include "overlay.hpp"
 #include "display_context.hpp"
 
+#include <boost/optional.hpp>
+
 #include <vector>
 class game_config_view;
 
@@ -312,10 +314,10 @@ public:
 
 	const t_string get_default_context_name() const;
 
-	int get_xp_mod() const { return xp_mod_; }
+	boost::optional<int> get_xp_mod() const { return xp_mod_; }
 
 	bool random_start_time() const { return random_time_; }
-	bool victory_defeated() const { return victory_defeated_; }
+	bool victory_defeated() const { return !victory_defeated_ || *victory_defeated_; }
 
 	bool is_embedded() const { return embedded_; }
 
@@ -494,8 +496,9 @@ private:
 
 	std::string scenario_id_, scenario_name_, scenario_description_;
 
-	int xp_mod_;
-	bool victory_defeated_, random_time_;
+	boost::optional<int> xp_mod_;
+	boost::optional<bool> victory_defeated_;
+	bool random_time_;
 
 	int active_area_;
 

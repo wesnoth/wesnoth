@@ -72,7 +72,7 @@ map_context::map_context(const editor_map& map, bool pure_map, const config& sch
 	, scenario_id_()
 	, scenario_name_()
 	, scenario_description_()
-	, xp_mod_(70)
+	, xp_mod_()
 	, victory_defeated_(true)
 	, random_time_(false)
 	, active_area_(-1)
@@ -104,7 +104,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	, scenario_id_()
 	, scenario_name_()
 	, scenario_description_()
-	, xp_mod_(70)
+	, xp_mod_()
 	, victory_defeated_(true)
 	, random_time_(false)
 	, active_area_(-1)
@@ -328,8 +328,9 @@ void map_context::load_scenario(const game_config_view& game_config)
 	scenario_name_ = scenario["name"].str();
 	scenario_description_ = scenario["description"].str();
 
-	xp_mod_ = scenario["experience_modifier"].to_int();
-
+	if(const config::attribute_value* experience_modifier = scenario.get("experience_modifier")) {
+		xp_mod_ = experience_modifier->to_int();
+	}
 	victory_defeated_ = scenario["victory_when_enemies_defeated"].to_bool(true);
 	random_time_ = scenario["random_start_time"].to_bool(false);
 
@@ -476,8 +477,12 @@ config map_context::to_config()
 	scenario["name"] = t_string(scenario_name_);
 	scenario["description"] = scenario_description_;
 
-	scenario["experience_modifier"] = xp_mod_;
-	scenario["victory_when_enemies_defeated"] = victory_defeated_;
+	if(xp_mod_) {
+		scenario["experience_modifier"] = *xp_mod_;
+	}
+	if(victory_defeated_) {
+		scenario["victory_when_enemies_defeated"] = *victory_defeated_;
+	}
 	scenario["random_start_time"] = random_time_;
 
 	scenario.append(tod_manager_->to_config());
