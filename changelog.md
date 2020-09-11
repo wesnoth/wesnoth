@@ -11,6 +11,10 @@
    * Updated translations: British English, Catalan, Chinese (Simplified),
      Chinese (Traditional), Czech, Esperanto, French, Hungarian, Italian, Polish,
      Portuguese (Brazil), Russian, Spanish, Turkish
+ ### Multiplayer
+   * 5p - The Wilderlands:
+     * Player 5’s units are sorted when cycling through them with the »n« key.
+     * Map tweaks (changes to some castles & villages, the northern river and embellishments)
  ### User interface
    * Do not list nameless abilities in the Abilities and Ability Upgrades lists in unit
      descriptions in Help (issue #3060).
