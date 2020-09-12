@@ -259,16 +259,29 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 
+	std::vector<t_string> unknown_units;
 	for(const auto& recruit : recruits) {
 		const unit_type* type = unit_types.find(recruit);
 		if(!type) {
 			ERR_NG << "could not find unit '" << recruit << "'" << std::endl;
-			return;
+			unknown_units.emplace_back(recruit);
+			continue;
 		}
 
 		map_location ignored;
 		map_location recruit_hex = last_hex;
 		sample_units[type] = (can_recruit(type->id(), side_num, recruit_hex, ignored));
+	}
+	if(!unknown_units.empty()) {
+		auto unknown_ids = utils::format_conjunct_list("", unknown_units);
+		// TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
+		// any units that the player can recruit then their standard recruitment dialog will be shown after this
+		// error message, otherwise they'll get the "You have no units available to recruit." error after this one.
+		const auto message = VNGETTEXT("Error: there’s an unknown unit type on your recruit list: $unknown_ids",
+			"Error: there are several unknown unit types on your recruit list: $unknown_ids",
+			unknown_units.size(),
+			utils::string_map { { "unknown_ids", unknown_ids }});
+		gui2::show_transient_message("", message);
 	}
 
 	if(sample_units.empty()) {
