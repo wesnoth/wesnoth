@@ -1,4 +1,4 @@
-## Version 1.14.13+dev
+## Version 1.14.14
  ### Add-ons client
    * Add-on titles and descriptions translated to the current language are used when available.
      The original English title is displayed in the UI and considered for search purposes in addition
