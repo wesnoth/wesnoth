@@ -54,7 +54,8 @@ unit_race::unit_race() :
 		traits_(empty_traits().child_range("trait")),
 		topics_(empty_topics().child_range("topic")),
 		global_traits_(true),
-		undead_variation_()
+		undead_variation_(),
+		help_taxonomy_()
 {
 	for(auto& generator : name_generator_) {
 		generator.reset(new name_generator());
@@ -71,7 +72,8 @@ unit_race::unit_race(const config& cfg) :
 		traits_(cfg.child_range("trait")),
 		topics_(cfg.child_range("topic")),
 		global_traits_(!cfg["ignore_global_traits"].to_bool()),
-		undead_variation_(cfg["undead_variation"])
+		undead_variation_(cfg["undead_variation"]),
+		help_taxonomy_(cfg["help_taxonomy"])
 
 {
 	if (id_.empty()) {
