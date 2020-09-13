@@ -16,10 +16,12 @@
  ### Units
  ### User interface
    * Help browser: fix inconsistent behavior for single-clicks opening and closing sections (PR #5110)
+   * Added [race]help_taxonomy=, creating links between the per-race topic pages.
  ### WML engine
  ### Miscellaneous and bug fixes
    * Minimum required version of OS X is now OS X 10.11 .
    * The "loyal" trait is now displayed in the help browser, even though no normal unit has it.
+   * The player can recruit even if their recruit list includes an unknown unit type. This will now show an error dialog and then the recruitment dialog with the known units.
  ### Packaging
    * macOS package distributed through SourceForge is now a UDIF lzfse-compressed image. The image size may be slightly larger but opening and copying from this image is much faster.
 
