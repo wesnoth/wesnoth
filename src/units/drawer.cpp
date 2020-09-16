@@ -55,6 +55,11 @@ unit_drawer::unit_drawer(display & thedisp) :
 	if(const game_display* game_display = dynamic_cast<class game_display*>(&disp)) {
 		units_that_can_reach_goal = game_display->units_that_can_reach_goal();
 	}
+
+	// This used to be checked in the drawing code, where it simply triggered skipping some logic.
+	// However, I think it's obsolete, and that the initialization of viewing_team_ref would already
+	// be undefined behavior in the situation where this assert fails.
+	assert(disp.team_valid());
 }
 
 void unit_drawer::redraw_unit (const unit & u) const
@@ -69,8 +74,6 @@ void unit_drawer::redraw_unit (const unit & u) const
 	map_location::DIRECTION facing = u.facing();
 	int hitpoints = u.hitpoints();
 	int max_hitpoints = u.max_hitpoints();
-	int movement_left = u.movement_left();
-	int total_movement = u.total_movement();
 
 	bool can_recruit = u.can_recruit();
 	bool can_advance = u.can_advance();
@@ -230,8 +233,6 @@ void unit_drawer::redraw_unit (const unit & u) const
 			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
 	}
 	if(draw_bars) {
-		const image::locator* orb_img = nullptr;
-
 		const auto& type_cfg = u.type().get_cfg();
 		const auto& cfg_offset_x = type_cfg["bar_offset_x"];
 		const auto& cfg_offset_y = type_cfg["bar_offset_y"];
@@ -247,53 +248,25 @@ void unit_drawer::redraw_unit (const unit & u) const
 			yoff = cfg_offset_y.to_int();
 		}
 
-		/*static*/ const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
-						preferences::partial_color() + ")"  );
-		/*static*/ const image::locator moved_orb(game_config::images::orb + "~RC(magenta>" +
-						preferences::moved_color() + ")"  );
-		/*static*/ const image::locator ally_orb(game_config::images::orb + "~RC(magenta>" +
-						preferences::allied_color() + ")"  );
-		/*static*/ const image::locator enemy_orb(game_config::images::orb + "~RC(magenta>" +
-						preferences::enemy_color() + ")"  );
-		/*static*/ const image::locator unmoved_orb(game_config::images::orb + "~RC(magenta>" +
-						preferences::unmoved_color() + ")"  );
-
 		const std::string* energy_file = &game_config::images::energy;
 
-		if(std::size_t(side) != viewing_team+1) {
-			if(disp.team_valid() &&
-			   viewing_team_ref.is_enemy(side)) {
-				if (preferences::show_enemy_orb() && !u.incapacitated())
-					orb_img = &enemy_orb;
-				else
-					orb_img = nullptr;
-			} else {
-				if (preferences::show_allied_orb())
-					orb_img = &ally_orb;
-				else orb_img = nullptr;
-			}
-		} else {
-			if (preferences::show_moved_orb())
-				orb_img = &moved_orb;
-			else orb_img = nullptr;
-
-			if(playing_team == viewing_team && !u.user_end_turn()) {
-				if (movement_left == total_movement) {
-					if (preferences::show_unmoved_orb())
-						orb_img = &unmoved_orb;
-					else orb_img = nullptr;
-				} else if ( dc.unit_can_move(u) ) {
-					if (preferences::show_partial_orb())
-						orb_img = &partmoved_orb;
-					else orb_img = nullptr;
-				}
-			}
+		using namespace orb_status_helper;
+		std::unique_ptr<image::locator> orb_img = nullptr;
+		if(std::size_t(side) != viewing_team + 1) {
+			if(viewing_team_ref.is_enemy(side)) {
+				if(preferences::show_enemy_orb() && !u.incapacitated())
+					orb_img = get_orb_image(orb_status::enemy);
+			} else if(preferences::show_allied_orb())
+				orb_img = get_orb_image(orb_status::allied);
+		} else if(playing_team == viewing_team && !u.user_end_turn()) {
+			auto os = dc.unit_orb_status(u);
+			if(prefs_show_orb(os))
+				orb_img = get_orb_image(os);
 		}
 
-		if (orb_img != nullptr) {
-			surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
-			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-				loc, xsrc + xoff, ysrc + yoff + adjusted_params.y, orb);
+		if(orb_img != nullptr) {
+			surface orb(image::get_image(*orb_img, image::SCALED_TO_ZOOM));
+			disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xsrc + xoff, ysrc + yoff + adjusted_params.y, orb);
 		}
 
 		double unit_energy = 0.0;

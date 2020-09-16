@@ -3348,6 +3348,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Units\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Units\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\units\orb_status.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Units\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\units\race.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Units\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Units\</ObjectFileName>
@@ -4117,6 +4124,7 @@
     <ClInclude Include="..\..\src\units\id.hpp" />
     <ClInclude Include="..\..\src\units\make.hpp" />
     <ClInclude Include="..\..\src\units\map.hpp" />
+    <ClInclude Include="..\..\src\units\orb_status.hpp" />
     <ClInclude Include="..\..\src\units\ptr.hpp" />
     <ClInclude Include="..\..\src\units\race.hpp" />
     <ClInclude Include="..\..\src\units\types.hpp" />

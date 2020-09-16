@@ -47,6 +47,7 @@
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/drawer.hpp"
+#include "units/orb_status.hpp"
 #include "whiteboard/manager.hpp"
 #include "show_dialog.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -1880,24 +1881,16 @@ void display::draw_minimap_units()
 		int side = u.side();
 		color_t col = team::get_minimap_color(side);
 
-		if (!preferences::minimap_movement_coding()) {
-
-			if (dc_->teams()[currentTeam_].is_enemy(side)) {
-				col = game_config::color_info(preferences::enemy_color()).rep();
+		if(!preferences::minimap_movement_coding()) {
+			auto status = orb_status::allied;
+			if(dc_->teams()[currentTeam_].is_enemy(side)) {
+				status = orb_status::enemy;
+			} else if(currentTeam_ + 1 == static_cast<unsigned>(side)) {
+				status = dc_->unit_orb_status(u);
 			} else {
-
-				if (currentTeam_ +1 == static_cast<unsigned>(side)) {
-
-					if (u.movement_left() == u.total_movement())
-						col = game_config::color_info(preferences::unmoved_color()).rep();
-					else if (u.movement_left() == 0)
-						col = game_config::color_info(preferences::moved_color()).rep();
-					else
-						col = game_config::color_info(preferences::partial_color()).rep();
-
-				} else
-					col = game_config::color_info(preferences::allied_color()).rep();
+				// no-op, status is already set to orb_status::allied;
 			}
+			col = game_config::color_info(orb_status_helper::get_orb_color(status)).rep();
 		}
 
 		double u_x = u.get_location().x * xscaling;
