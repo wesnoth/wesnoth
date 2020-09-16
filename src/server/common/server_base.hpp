@@ -20,6 +20,7 @@
 #pragma once
 
 #include "exceptions.hpp"
+#include "server/common/simple_wml.hpp"
 
 #include <map>
 
@@ -82,8 +83,8 @@ protected:
 std::string client_address(socket_ptr socket);
 bool check_error(const boost::system::error_code& error, socket_ptr socket);
 
-typedef std::map<std::string, std::string> info_table;
+void async_send_doc_queued(socket_ptr socket, simple_wml::document& doc);
 
+typedef std::map<std::string, std::string> info_table;
 void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "", const info_table& info = {});
 void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
-void async_send_message(socket_ptr socket, const std::string& msg, const info_table& info = {});

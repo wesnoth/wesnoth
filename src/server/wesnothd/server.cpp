@@ -649,7 +649,7 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 					redirect.set_attr_dup(attr.first.c_str(), attr.second.str().c_str());
 				}
 
-				send_to_player(socket, response);
+				async_send_doc_queued(socket, response);
 				return;
 			}
 		}
@@ -662,7 +662,7 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 
 		simple_wml::node& reject = response.root().add_child("reject");
 		reject.set_attr_dup("accepted_versions", utils::join(accepted_versions_).c_str());
-		send_to_player(socket, response);
+		async_send_doc_queued(socket, response);
 	} else {
 		LOG_SERVER << client_address(socket) << "\tclient didn't send its version: rejecting\n";
 	}
@@ -702,6 +702,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	if(username.size() > 20) {
 		async_send_error(socket, "The nickname '" + username + "' is too long. Nicks must be 20 characters or less.",
 			MP_NAME_TOO_LONG_ERROR);
+
 		return false;
 	}
 
@@ -710,6 +711,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		if(utils::wildcard_string_match(utf8::lowercase(username), utf8::lowercase(d))) {
 			async_send_error(socket, "The nickname '" + username + "' is reserved and cannot be used by players",
 				MP_NAME_RESERVED_ERROR);
+			
 			return false;
 		}
 	}
@@ -879,9 +881,7 @@ bool server::authenticate(
 			async_send_warning(socket,
 				"The nickname '" + username + "' is inactive. You cannot claim ownership of this "
 				"nickname until you activate your account via email or ask an administrator to do it for you.",
-				MP_NAME_INACTIVE_WARNING
-			);
-			// registered = false;
+				MP_NAME_INACTIVE_WARNING);
 		} else if(exists) {
 			// This name is registered and no password provided
 			if(password.empty()) {
@@ -940,8 +940,7 @@ bool server::authenticate(
 					LOG_SERVER << ban_manager_.ban(login_ip.ip, now + failed_login_ban_,
 						"Maximum login attempts exceeded", "automatic", "", username);
 
-					async_send_error(socket,
-						"You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
+					async_send_error(socket, "You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
 				} else {
 					send_password_request(socket,
 						"The password you provided for the nickname '" + username + "' was incorrect.", username,version,source,
@@ -1019,7 +1018,7 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 	std::tie(std::ignore, inserted) = player_connections_.insert(player_connections::value_type(socket, player));
 	assert(inserted);
 
-	send_to_player(socket, games_and_users_list_);
+	async_send_doc_queued(socket, games_and_users_list_);
 
 	if(!motd_.empty()) {
 		send_server_message(socket, motd_+'\n'+announcements_+tournaments_, "motd");
@@ -1055,7 +1054,7 @@ void server::handle_read_from_player(socket_ptr socket, std::shared_ptr<simple_w
 
 	// DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output() << std::endl;
 	if(doc->child("refresh_lobby")) {
-		send_to_player(socket, games_and_users_list_);
+		async_send_doc_queued(socket, games_and_users_list_);
 		return;
 	}
 
@@ -1110,7 +1109,7 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 			simple_wml::INIT_COMPRESSED
 		);
 
-		send_to_player(socket, data);
+		async_send_doc_queued(socket, data);
 		return;
 	}
 
@@ -1136,7 +1135,7 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 	const simple_wml::string_span& msg = trunc_whisper["message"];
 	chat_message::truncate_message(msg, trunc_whisper);
 
-	send_to_player(receiver_iter->socket(), cwhisper);
+	async_send_doc_queued(receiver_iter->socket(), cwhisper);
 }
 
 void server::handle_query(socket_ptr socket, simple_wml::node& query)
@@ -1282,13 +1281,13 @@ void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game
 {
 	if(graceful_restart) {
 		static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-		send_to_player(socket, leave_game_doc);
+		async_send_doc_queued(socket, leave_game_doc);
 
 		send_server_message(socket,
 			"This server is shutting down. You aren't allowed to make new games. Please "
 			"reconnect to the new server.", "error");
 
-		send_to_player(socket, games_and_users_list_);
+		async_send_doc_queued(socket, games_and_users_list_);
 		return;
 	}
 
@@ -1377,38 +1376,38 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 	if(!g) {
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to join unknown game:\t" << game_id << ".\n";
-		async_send_doc(socket, leave_game_doc);
+		async_send_doc_queued(socket, leave_game_doc);
 		send_server_message(socket, "Attempt to join unknown game.", "error");
-		async_send_doc(socket, games_and_users_list_);
+		async_send_doc_queued(socket, games_and_users_list_);
 		return;
 	} else if(!g->level_init()) {
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to join uninitialized game:\t\"" << g->name() << "\" (" << game_id << ").\n";
-		async_send_doc(socket, leave_game_doc);
+		async_send_doc_queued(socket, leave_game_doc);
 		send_server_message(socket, "Attempt to join an uninitialized game.", "error");
-		async_send_doc(socket, games_and_users_list_);
+		async_send_doc_queued(socket, games_and_users_list_);
 		return;
 	} else if(player_connections_.find(socket)->info().is_moderator()) {
 		// Admins are always allowed to join.
 	} else if(g->registered_users_only() && !player_connections_.find(socket)->info().registered()) {
-		async_send_doc(socket, leave_game_doc);
+		async_send_doc_queued(socket, leave_game_doc);
 		send_server_message(socket, "Only registered users are allowed to join this game.", "error");
-		async_send_doc(socket, games_and_users_list_);
+		async_send_doc_queued(socket, games_and_users_list_);
 		return;
 	} else if(g->player_is_banned(socket, player_connections_.find(socket)->info().name())) {
 		DBG_SERVER << client_address(socket)
 				   << "\tReject banned player: " << player_connections_.find(socket)->info().name()
 				   << "\tfrom game:\t\"" << g->name() << "\" (" << game_id << ").\n";
-		async_send_doc(socket, leave_game_doc);
+		async_send_doc_queued(socket, leave_game_doc);
 		send_server_message(socket, "You are banned from this game.", "error");
-		async_send_doc(socket, games_and_users_list_);
+		async_send_doc_queued(socket, games_and_users_list_);
 		return;
 	} else if(!g->password_matches(password)) {
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to join game:\t\"" << g->name() << "\" (" << game_id << ") with bad password\n";
-		async_send_doc(socket, leave_game_doc);
+		async_send_doc_queued(socket, leave_game_doc);
 		send_server_message(socket, "Incorrect password.", "error");
-		async_send_doc(socket, games_and_users_list_);
+		async_send_doc_queued(socket, games_and_users_list_);
 		return;
 	}
 
@@ -1417,13 +1416,13 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to observe game:\t\"" << g->name() << "\" (" << game_id
 				   << ") which doesn't allow observers.\n";
-		async_send_doc(socket, leave_game_doc);
+		async_send_doc_queued(socket, leave_game_doc);
 
 		send_server_message(socket,
 			"Attempt to observe a game that doesn't allow observers. (You probably joined the "
 			"game shortly after it filled up.)", "error");
 
-		async_send_doc(socket, games_and_users_list_);
+		async_send_doc_queued(socket, games_and_users_list_);
 		return;
 	}
 
@@ -1729,7 +1728,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			}
 
 			// Send the player who has quit the gamelist.
-			send_to_player(socket, games_and_users_list_);
+			async_send_doc_queued(socket, games_and_users_list_);
 		}
 
 		return;
@@ -1804,7 +1803,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			send_to_lobby(gamelist_diff, socket);
 
 			// Send the removed user the lobby game list.
-			send_to_player(user, games_and_users_list_);
+			async_send_doc_queued(user, games_and_users_list_);
 		}
 
 		return;
@@ -1868,30 +1867,6 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			   << data.output();
 }
 
-using SendQueue = std::map<socket_ptr, std::queue<std::shared_ptr<simple_wml::document>>>;
-SendQueue send_queue;
-
-static void handle_send_to_player(socket_ptr socket)
-{
-	if(send_queue[socket].empty()) {
-		send_queue.erase(socket);
-	} else {
-		async_send_doc(socket, *(send_queue[socket].front()), handle_send_to_player, handle_send_to_player);
-		send_queue[socket].pop();
-	}
-}
-
-void send_to_player(socket_ptr socket, simple_wml::document& doc)
-{
-	auto iter = send_queue.find(socket);
-	if(iter == send_queue.end()) {
-		send_queue[socket];
-		async_send_doc(socket, doc, handle_send_to_player, handle_send_to_player);
-	} else {
-		send_queue[socket].emplace(doc.clone());
-	}
-}
-
 void send_server_message(socket_ptr socket, const std::string& message, const std::string& type)
 {
 	simple_wml::document server_message;
@@ -1900,7 +1875,7 @@ void send_server_message(socket_ptr socket, const std::string& message, const st
 	msg.set_attr_dup("message", message.c_str());
 	msg.set_attr_dup("type", type.c_str());
 
-	send_to_player(socket, server_message);
+	async_send_doc_queued(socket, server_message);
 }
 
 void server::remove_player(socket_ptr socket)
@@ -1961,7 +1936,7 @@ void server::send_to_lobby(simple_wml::document& data, socket_ptr exclude) const
 {
 	for(const auto& player : player_connections_.get<game_t>().equal_range(0)) {
 		if(player.socket() != exclude) {
-			send_to_player(player.socket(), data);
+			async_send_doc_queued(player.socket(), data);
 		}
 	}
 }
@@ -2250,7 +2225,7 @@ void server::adminmsg_handler(
 	for(const auto& player : player_connections_) {
 		if(player.info().is_moderator()) {
 			++n;
-			send_to_player(player.socket(), data);
+			async_send_doc_queued(player.socket(), data);
 		}
 	}
 
@@ -2305,7 +2280,7 @@ void server::pm_handler(
 			continue;
 		}
 
-		send_to_player(player.socket(), data);
+		async_send_doc_queued(player.socket(), data);
 		*out << "Message to " << receiver << " successfully sent.";
 		return;
 	}
@@ -2953,11 +2928,11 @@ void server::delete_game(int gameid, const std::string& reason)
 		if(reason != "") {
 			simple_wml::document leave_game_doc_reason("[leave_game]\n[/leave_game]\n", simple_wml::INIT_STATIC);
 			leave_game_doc_reason.child("leave_game")->set_attr_dup("reason", reason.c_str());
-			send_to_player(it->socket(), leave_game_doc_reason);
+			async_send_doc_queued(it->socket(), leave_game_doc_reason);
 		} else {
-			send_to_player(it->socket(), leave_game_doc);
+			async_send_doc_queued(it->socket(), leave_game_doc);
 		}
-		send_to_player(it->socket(), games_and_users_list_);
+		async_send_doc_queued(it->socket(), games_and_users_list_);
 	}
 }
 

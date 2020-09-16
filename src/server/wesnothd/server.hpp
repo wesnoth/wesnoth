@@ -242,8 +242,6 @@ private:
 	void handle_lan_server_shutdown(const boost::system::error_code& error);
 };
 
-void send_to_player(socket_ptr socket, simple_wml::document& doc);
-
 void send_server_message(socket_ptr socket, const std::string& message, const std::string& type);
 
 }

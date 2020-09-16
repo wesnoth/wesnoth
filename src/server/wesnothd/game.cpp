@@ -78,7 +78,7 @@ void send_to_players(simple_wml::document& data, const Container& players, socke
 {
 	for(const auto& player : players) {
 		if(player != exclude) {
-			send_to_player(player, data);
+			async_send_doc_queued(player, data);
 		}
 	}
 }
@@ -396,7 +396,7 @@ bool game::send_taken_side(simple_wml::document& cfg, const simple_wml::node* si
 	cfg.root().set_attr_dup("side", (*side)["side"]);
 
 	// Tell the host which side the new player should take.
-	send_to_player(owner_, cfg);
+	async_send_doc_queued(owner_, cfg);
 	return true;
 }
 
@@ -658,7 +658,7 @@ void game::change_controller(
 	// side_drop already.)
 	if(!player_left) {
 		change.set_attr("is_local", "yes");
-		send_to_player(sock, response);
+		async_send_doc_queued(sock, response);
 	}
 }
 
@@ -669,7 +669,7 @@ void game::notify_new_host()
 	cfg.root().add_child("host_transfer");
 
 	std::string message = owner_name + " has been chosen as the new host.";
-	send_to_player(owner_, cfg);
+	async_send_doc_queued(owner_, cfg);
 	send_and_record_server_message(message);
 }
 
@@ -811,7 +811,7 @@ void game::unmute_observer(const simple_wml::node& unmute, const socket_ptr& unm
 void game::send_leave_game(const socket_ptr& user) const
 {
 	static simple_wml::document leave_game("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-	send_to_player(user, leave_game);
+	async_send_doc_queued(user, leave_game);
 }
 
 socket_ptr game::kick_member(const simple_wml::node& kick, const socket_ptr& kicker)
@@ -1231,7 +1231,7 @@ void game::handle_controller_choice(const simple_wml::node& req)
 
 	// Calling send_to_one to 0 connect causes the package to be sent to all clients.
 	if(sides_[side_index] != 0) {
-		send_to_player(sides_[side_index], *mdata);
+		async_send_doc_queued(sides_[side_index], *mdata);
 	}
 
 	change_controller_wml.set_attr("is_local", "no");
@@ -1443,12 +1443,12 @@ bool game::add_player(const socket_ptr& player, bool observer)
 	DBG_GAME << debug_player_info();
 
 	// Send the user the game data.
-	send_to_player(player, level_);
+	async_send_doc_queued(player, level_);
 
 	if(started_) {
 		// Tell this player that the game has started
 		static simple_wml::document start_game_doc("[start_game]\n[/start_game]\n", simple_wml::INIT_COMPRESSED);
-		send_to_player(player, start_game_doc);
+		async_send_doc_queued(player, start_game_doc);
 
 		// Send observer join of all the observers in the game to the new player
 		// only once the game started. The client forgets about it anyway otherwise.
@@ -1576,7 +1576,7 @@ bool game::remove_player(const socket_ptr& player, const bool disconnect, const 
 
 		DBG_GAME << "*** sending side drop: \n" << drop.output() << std::endl;
 
-		send_to_player(owner_, drop);
+		async_send_doc_queued(owner_, drop);
 	}
 
 	if(ai_transfer) {
@@ -1668,8 +1668,8 @@ void game::load_next_scenario(const socket_ptr& user)
 		cfg_controller.set_attr("is_local", side_user == user ? "yes" : "no");
 	}
 
-	send_to_player(user, cfg_scenario);
-	send_to_player(user, doc_controllers);
+	async_send_doc_queued(user, cfg_scenario);
+	async_send_doc_queued(user, doc_controllers);
 
 	players_not_advanced_.erase(user);
 
@@ -1769,7 +1769,7 @@ void game::send_observerjoins(const socket_ptr& sock) const
 			send_data(cfg, ob);
 		} else {
 			// Send to the (new) user.
-			send_to_player(sock, cfg);
+			async_send_doc_queued(sock, cfg);
 		}
 	}
 }
@@ -1804,7 +1804,7 @@ void game::send_history(const socket_ptr& socket) const
 		simple_wml::document* doc = new simple_wml::document(buf.c_str(), simple_wml::INIT_STATIC);
 		doc->compress();
 
-		send_to_player(socket, *doc);
+		async_send_doc_queued(socket, *doc);
 
 		history_.clear();
 		history_.push_back(doc);
@@ -2051,7 +2051,7 @@ void game::send_server_message(const char* message, const socket_ptr& sock, simp
 	}
 
 	if(sock) {
-		send_to_player(sock, doc);
+		async_send_doc_queued(sock, doc);
 	}
 }
 

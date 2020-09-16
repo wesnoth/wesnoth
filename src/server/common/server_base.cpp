@@ -18,6 +18,8 @@
 #include "log.hpp"
 #include "utils/functional.hpp"
 
+#include <queue>
+
 static lg::log_domain log_server("server");
 #define ERR_SERVER LOG_STREAM(err, log_server)
 #define WRN_SERVER LOG_STREAM(warn, log_server)
@@ -224,6 +226,30 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
 
 }
 
+using SendQueue = std::map<socket_ptr, std::queue<std::shared_ptr<simple_wml::document>>>;
+SendQueue send_queue;
+
+static void handle_async_send_doc_queued(socket_ptr socket)
+{
+	if(send_queue[socket].empty()) {
+		send_queue.erase(socket);
+	} else {
+		async_send_doc(socket, *(send_queue[socket].front()), handle_async_send_doc_queued, handle_async_send_doc_queued);
+		send_queue[socket].pop();
+	}
+}
+
+void async_send_doc_queued(socket_ptr socket, simple_wml::document& doc)
+{
+	auto iter = send_queue.find(socket);
+	if(iter == send_queue.end()) {
+		send_queue[socket];
+		async_send_doc(socket, doc, handle_async_send_doc_queued, handle_async_send_doc_queued);
+	} else {
+		send_queue[socket].emplace(doc.clone());
+	}
+}
+
 void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info)
 {
 	simple_wml::document doc;
@@ -233,7 +259,7 @@ void async_send_error(socket_ptr socket, const std::string& msg, const char* err
 	}
 	info_table_into_simple_wml(doc, "error", info);
 
-	async_send_doc(socket, doc);
+	async_send_doc_queued(socket, doc);
 }
 
 void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info)
@@ -245,16 +271,7 @@ void async_send_warning(socket_ptr socket, const std::string& msg, const char* w
 	}
 	info_table_into_simple_wml(doc, "warning", info);
 
-	async_send_doc(socket, doc);
-}
-
-void async_send_message(socket_ptr socket, const std::string& msg, const info_table& info)
-{
-	simple_wml::document doc;
-	doc.root().add_child("message").set_attr_dup("message", msg.c_str());
-	info_table_into_simple_wml(doc, "message", info);
-
-	async_send_doc(socket, doc);
+	async_send_doc_queued(socket, doc);
 }
 
 // This is just here to get it to build without the deprecation_message function
