@@ -21,9 +21,10 @@
 
 #pragma once
 
+#include "units/orb_status.hpp"
+#include "units/ptr.hpp"
 #include <string>
 #include <vector>
-#include "units/ptr.hpp"
 
 class team;
 class gamemap;
@@ -63,11 +64,28 @@ public:
 	const unit * get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false) const;
 	unit_const_ptr get_visible_unit_shared_ptr(const map_location &loc, const team &current_team, bool see_all = false) const;
 
-	// From actions:: namespace
+	/**
+	 * True if, and only if, at least one of the following is true:
+	 *
+	 * (a) the unit can move to another hex, taking account of ZoC and
+	 * terrain costs vs current movement points.
+	 *
+	 * (b) the unit can make an attack from the hex that it's currently on,
+	 * requires attack points and a non-petrified enemy in an adjacent hex.
+	 *
+	 * This does not check which player's turn is currently active, the result is calculated
+	 * assuming that the unit's owner is currently active.
+	 */
+	bool unit_can_move(const unit& u) const;
 
-	bool unit_can_move(const unit & u) const;
-
-	// From class team
+	/**
+	 * Returns an enumurated summary of whether this unit can move and/or attack.
+	 *
+	 * This does not check which player's turn is currently active, the result is calculated
+	 * assuming that the unit's owner is currently active. For this reason this never returns
+	 * orb_status::enemy nor orb_status::allied.
+	 */
+	orb_status unit_orb_status(const unit& u) const;
 
 	/**
 	 * Given the location of a village, will return the 1-based number

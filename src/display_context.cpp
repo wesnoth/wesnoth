@@ -71,11 +71,6 @@ unit_const_ptr display_context::get_visible_unit_shared_ptr(const map_location &
 	return u.get_shared_ptr();
 }
 
-/**
- * Will return true iff the unit @a u has any possible moves
- * it can do (including attacking etc).
- */
-
 bool display_context::unit_can_move(const unit &u) const
 {
 	if(!u.attacks_left() && u.movement_left()==0)
@@ -105,7 +100,20 @@ bool display_context::unit_can_move(const unit &u) const
 		}
 	}
 
+	// This should probably check if the unit can teleport too
+
 	return false;
+}
+
+orb_status display_context::unit_orb_status(const unit& u) const
+{
+	if(u.user_end_turn())
+		return orb_status::moved;
+	if(u.movement_left() == u.total_movement() && u.attacks_left() == u.max_attacks())
+		return orb_status::unmoved;
+	if(unit_can_move(u))
+		return orb_status::partial;
+	return orb_status::moved;
 }
 
 int display_context::village_owner(const map_location& loc) const
