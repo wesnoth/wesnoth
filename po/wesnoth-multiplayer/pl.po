@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-08-22 04:14 UTC\n"
-"PO-Revision-Date: 2020-08-31 10:14+0200\n"
+"PO-Revision-Date: 2020-09-16 14:11+0200\n"
 "Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
 "Language: pl_PL\n"
@@ -42,8 +42,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
-"Standardowa era trybu gry wieloosobowej w Wesnoth. Zawiera sześć frakcji i "
-"jest raczej zbalansowana."
+"Standardowa era gry wieloosobowej w Wesnoth. Zawiera sześć frakcji i jest "
+"raczej zbalansowana."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:75
@@ -77,7 +77,7 @@ msgid ""
 "problems that arise."
 msgstr ""
 "Era dodająca dodatkową frakcję do sześciu podstawowych z ery Domyślnej. "
-"Jednostki ludów pustyni polegają na uważnym wykorzystaniu terenu i "
+"Jednostki Ludów pustyni polegają na uważnym wykorzystaniu terenu i "
 "skoordynowanych atakach o zmierzchu i świcie.\n"
 "\n"
 "Ta era jest ciągle w fazie rozwoju, więc prosimy o zgłaszanie wszelkich "
@@ -99,7 +99,7 @@ msgid ""
 "problems that arise."
 msgstr ""
 "Era dodająca dodatkową frakcję do sześciu podstawowych z ery Wieku "
-"Bohaterów. Jednostki ludów pustyni polegają na uważnym wykorzystaniu terenu "
+"Bohaterów. Jednostki Ludów pustyni polegają na uważnym wykorzystaniu terenu "
 "i skoordynowanych atakach o zmierzchu i świcie.\n"
 "\n"
 "Ta era jest ciągle w fazie rozwoju, więc prosimy o zgłaszanie wszelkich "
@@ -127,7 +127,7 @@ msgstr "Łącznie: <b>%d</b>"
 #. [lua]: f
 #: data/multiplayer/eras.lua:93
 msgid "Sides %s and %d are tied."
-msgstr ""
+msgstr "Strony %s i %d są związane."
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:95
@@ -152,13 +152,13 @@ msgid ""
 "mobility but low defense, leading to unusual tactics for a "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
-"<bold>text='Smoki'</bold> to frakcja podobnych do smoków z legend "
-"<ref>text='Smoków' dst='..race_drake'</ref> i ich <ref>text='jaszczurzych' "
+"<bold>text='Smoki'</bold> to frakcja podobnych do tych z legend "
+"<ref>text='smoków' dst='..race_drake'</ref> i ich <ref>text='jaszczurzych' "
 "dst='..race_lizard'</ref> sojuszników. Choć są potomkami dawnych smoków, to "
 "są mniejsze od nich. Jaszczury są znacznie mniejsze od smoków i zgoła innego "
-"pochodzenia. Frakcja smoków jest bardzo mobilna, ale ma niską obronę, co "
-"wymaga taktyki odmiennej od pozostałych frakcji z <ref>text='ery domyślnej' "
-"dst='..era_era_default'</ref>."
+"pochodzenia. Frakcja smoków jest bardzo mobilna, ale ma niską obronę "
+"terenową, co wymaga taktyki odmiennej od pozostałych frakcji z "
+"<ref>text='ery domyślnej' dst='..era_era_default'</ref>."
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
@@ -287,6 +287,16 @@ msgid ""
 "advantage of their high forest defense, mastery of ranged attacks, and the "
 "elves’ neutral alignment."
 msgstr ""
+"<bold>text='Buntownicy'</bold> to frakcja <ref>text='elfów' dst='.."
+"race_elf'</ref> i ich różnych leśnych sojuszników. Ich ludzka nazwa, "
+"Buntownicy, pochodzi z czasów Następcy Trony, gdy rozpoczęli bunt przeciwko "
+"złowrogiej Królowej Asheviere. Elfy to magiczna rasa, mistrzowie łucznictwa, "
+"zdolni żyć wiele lat dłużej od ludzi. W harmonii z przyrodą, elfy zawierają "
+"sojusze z <ref>text='ludzkimi' dst='..race_human'</ref> magami, pewnymi "
+"<ref>text='mermenami' dst='..race_merman'</ref>, a także "
+"<ref>text='drzewcami' dst='..race_wose'</ref>. Buntownikami najlepiej grać, "
+"wykorzystując wysoką obronę w lesie, biegłość w walce na dystans i neutralny "
+"charakter elfów."
 
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
@@ -307,6 +317,14 @@ msgid ""
 "Undead are a very aggressive faction and the most powerful "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction at nighttime."
 msgstr ""
+"<bold>text='Nieumarli\"</bold> są frakcją <ref>text='nieumarłych' dst='.."
+"race_undead'</ref> stworzeń oraz <ref>text='ludzkich' dst='..race_human'</"
+"ref> praktyków mrocznych sztuk, którzy zwykle im towarzyszą. Często, owi "
+"\"mroczni adepci\" są jednostkami, które zadają najwięcej obrażeń we "
+"frakcji, ale mają duży słaby punkt —praktykowanie tej zakazanej, złej mafii "
+"pochłonęło całą ich energię, więc nie mają wcale ataku wręcz. Nieumarli są "
+"bardzo agresywną frakcją, najsilniejszą w nocy frakcją <ref>text='Ery "
+"Domyślnej' dst='..era_era_default'</ref>."
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
@@ -329,7 +347,7 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
-"Dawno, dawno temu Wielka Magini Sulla został uwięziona w Aethermaw — wirze "
+"Dawno, dawno temu Wielka Magini Sulla została uwięziona w Aethermaw — wirze "
 "magicznej energii, którego chaotyczna natura miała jej uniemożliwić "
 "ucieczkę. Na przestrzeni wielu wieków Sulla zdołała jednak stopniowo "
 "dostroić swoje moce magiczne do otchłani zamętu, jaką jest Aethermaw, a "
@@ -428,6 +446,8 @@ msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr ""
+"Wielka Magini Sulla przetransportowała wasze armie do tego dziwnego wymiaru, "
+"i żąda abyście ją zabawiali, rozgrywając bitwę."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:295
@@ -435,6 +455,8 @@ msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr ""
+"Jednostki nie mogą wchodzić na pole z kamiennym kopcem. Mogą jednak być na "
+"nim rekrutowane i schodzić z takich pól."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:298
@@ -442,6 +464,8 @@ msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
+"Począwszy od tury 4, Wielka Magini Sulla zacznie łączyć w jedno dwie połowy "
+"pola walki. Proces ten potrwa do tury 6."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:311
@@ -570,9 +594,9 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
-"Te jaskinie zamieszkiwał niegdyś Chak'kso Ney'yks, legendarny Stary "
-"Bazyliszek. Skamieniałe postacie jego ofiar stanowią pomniki jego okrutnej "
-"mocy."
+"Te jaskinie zamieszkiwał niegdyś Chak'kso Ney'yks, legendarny Starszy "
+"Bazyliszek. Skamieniałe formy jego ofiar pozostały jako pomniki jego "
+"okrutnej mocy."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
@@ -841,7 +865,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:162
 msgid "Turin's Monster of the Lake"
-msgstr ""
+msgstr "Turina Potwór z Jeziora"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:165
@@ -957,7 +981,7 @@ msgid ""
 "Marshal Aethec Corryn, but the two men never found one another."
 msgstr ""
 "Generał Talael Ryndoc przybył w to miejsce na pojedynek z Wielkim "
-"Marszałkiem Aethekiem Corrynem, lecz do spotkania między nimi nie doszło. "
+"Marszałkiem Aethekiem Corrynem, lecz do spotkania między nimi nie doszło."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:211
@@ -980,7 +1004,7 @@ msgstr ""
 "do pojedynku! Hańba będzie dla ciebie karą dotkliwszą nawet, niż śmierć, "
 "którą niechybnie byłbym ci zadał!\"\n"
 "\n"
-"Nie powinien był krzyczeć tak głośno... "
+"Być może nie powinien był krzyczeć tak głośno..."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:220
@@ -1052,7 +1076,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:7
 msgid "2p — Clearing Gushes"
-msgstr "2p — Czyszczące strumienie"
+msgstr "2p — Czyszczące Strumienie"
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:8
@@ -1065,6 +1089,13 @@ msgid ""
 "rigorous discipline and organization of Wesnoth's armies are in no small "
 "part driven by a constant need to patrol and defend these prosperous lands."
 msgstr ""
+"Brzegi Wielkiej Rzeki stanowią jedne z najbardziej żyznych ziem w całym "
+"znanych świecie. Wiosna i lato przynoszą powodzie wzdłuż rzeki, ubogacając "
+"glebę i zapewniając obfite zbiory każdej jesieni. Królestwo Wesnoth zmieniło "
+"te ziemie w motor napędowy bogactwa i dobrobytu, przez co stały się celem "
+"niezliczonych najazdów i ataków. Rygorystyczna dyscyplina i organizacja "
+"armii Wesnoth są w znacznym stopniu spowodowane stałą koniecznością "
+"patrolowania i obrony tych dostatnich ziem."
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
@@ -1077,13 +1108,13 @@ msgid ""
 "Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove "
 "the necromancers from these lands in 961 YW."
 msgstr ""
-"Prowincja Cynsuan została tak nazwana w imię Wojowniczej Królowej Cynsuan "
+"Prowincja Cynsaun została tak nazwana w imię Wojowniczej Królowej Cynsaun "
 "Pierwszej, która w 961 RW wypędziła nekromantów z tych ziem."
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p — Dark Forecast (Survival)"
-msgstr "2g — Mroczna przepowiednia (Przeżycie)"
+msgstr "2g — Mroczna Przepowiednia (Przeżycie)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
@@ -1109,7 +1140,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:21
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:33
 msgid "teamname^Revolt"
-msgstr "Rebelianci"
+msgstr "Rewolta"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:50
@@ -1306,7 +1337,7 @@ msgstr "Śnieżyce"
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p — Den of Onis"
-msgstr "2g — Kryjówka Onisa"
+msgstr "2g — Kryjówka Onich"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:7
@@ -1320,10 +1351,12 @@ msgid ""
 "creators."
 msgstr ""
 "Ta wyjątkowa jaskinia znana była kiedyś pod nazwą Komnaty Chichoczących "
-"Diabłów i była częścią wewnętrznej cytadeli Kah Ruuk Oni. Kah Ruuk byli rasą "
-"dziwacznych i chytrych ludożernych demonów, które przez prawie czterysta lat "
-"terroryzowały ludzi Wschodnich Krain, by nagle zniknąć z Irdyi nie "
-"zostawiając po sobie żadnego śladu."
+"Diabłów i była częścią wewnętrznej cytadeli Kah Ruuk Onich. Kah Ruuk byli "
+"rasą dziwacznych i chytrych ludożernych demonów, które przez prawie "
+"czterysta lat terroryzowały ludzi Wschodnich Krain, by nagle zniknąć z Irdyi "
+"nie zostawiając po sobie żadnego śladu. Od tego czasu, wiele frakcji "
+"walczyło o władzę nad Kryjówką Onich, mając nadzieję na wyzwolenie dziwnej i "
+"tajemniczej magii jej twórców."
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
@@ -1375,7 +1408,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:7
 msgid "2p — Hellhole"
-msgstr "2g — Piekło"
+msgstr "2g — Piekielna Dziura"
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:8
@@ -1388,11 +1421,19 @@ msgid ""
 "eternal scar on the land that to this day summons forth legions of wandering "
 "undead."
 msgstr ""
+"Kiedyś miejscowość Myrilel była spokojną wioską i najdalej wysuniętym na "
+"wschód miejscem zamieszanym przez ludzi. To zmieniło się na zawsze wraz z "
+"powstaniem liczego władcy, Mal-Ravanala, który rozpruł bramę "
+"niewypowiedzianego czarnoksięstwa w centrum miasta, czyniąc z niej pierwsze "
+"miejsce spotkania dla swoich armii śmierci. Choć Mal-Ravanal został "
+"pokonany, Myrilel pozostało opustoszałym i zrujnowanym miejscem, a brama, "
+"wieczna blizna tej ziemi, po dziś dzień przywołuje legiony włóczących się "
+"nieumarłych."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
 msgid "2p — Hornshark Island"
-msgstr "2g — Wyspa rekinów"
+msgstr "2g — Wyspa Rekinów"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:28
@@ -1464,7 +1505,7 @@ msgstr "Sorrek, Wybraniec Śmierci"
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:735
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:859
 msgid "Big Baby Dro"
-msgstr "Dzieciak Dro"
+msgstr "Duży Dzieciak Dro"
 
 #. [unit]: type=Drake Fighter
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:522
@@ -1532,6 +1573,14 @@ msgid ""
 "molten brimstone lies land kept pristine and untouched — yet mysteriously "
 "abandoned nonetheless."
 msgstr ""
+"Daleki zachód od dawna słynie jako ojczyzna wszystkich żywych istot, "
+"zrujnowana później przez nawał katastrof. Legendy opowiadają o pomysłowości "
+"starożytnych w ich ostatnich godzinach życia, gdy z trudem walczyli z "
+"gwałtownymi burzami ognia i popiołu. Dopiero niedawno tajne wyprawy do tej "
+"krainy ujawniły prawdę o tych historiach — co najbardziej zdumiewające, "
+"odkryły pewien kanał ogromnych zaczarowanych ścian. Między potężnymi "
+"wulkanicznymi wyspami i rozległymi morzami stopionej siarki leży ziemia "
+"utrzymana w nienaruszonym stanie - a mimo to tajemniczo opuszczona."
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:7
@@ -1583,7 +1632,7 @@ msgstr "Zmiennokształtny"
 #. [unit]: type=Tentacle of the Deep
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:52
 msgid "Nani the Shapeshifter"
-msgstr "Nani zmiennokształtny"
+msgstr "Nani Zmiennokształtny"
 
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
@@ -1689,6 +1738,17 @@ msgid ""
 "great strategic value means it is fiercely contested by all with military "
 "aims in the Great Continent's heart."
 msgstr ""
+"Na północ od Wielkiej Rzeki leży Bagno Grozy, ogromne, nieprzyjazne moczary "
+"przeklęte przez plugawą magię. Istnieje tylko kilka tras, które nie "
+"gwarantują ugrzęźnięcia w bagnie i śmierci. Niemniej jednak, są one "
+"intensywnie poszukiwane jako dochodowe połączenia między południowymi "
+"równinami i górzystą północą, a nieustraszeni odkrywcy przemierzają "
+"niebezpieczne torfowiska, rozglądając się za korzystnymi miejscami do "
+"stworzenia punktów handlowych. Największa z tych tras, Przełęcz Areth, jest "
+"obszarem spornym i znaną przeprawą od pierwszych starożytnych wojen między "
+"elfami i krasnoludami. Pomimo jałowej ziemi i ograniczonych zasobów, jej "
+"wielka wartość strategiczna sprawia, że interesują się nią wszyscy, którzy "
+"mają cele militarne w centrum Wielkiego Kontynentu."
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
@@ -1731,11 +1791,21 @@ msgid ""
 "Pyrennis have proved astoundingly indestructible both to time and war — that "
 "is, what scattered segments of it were actually completed."
 msgstr ""
+"Kiedy hordy orków po raz pierwszy zaczęły tłumnie przybywać na Wielki "
+"Kontynent, jeden nieustraszony władca znany jako Żelazny Król Olgor "
+"postanowił zjednoczyć skłócone orcze plemiona. Dążył do tego, aby podbić "
+"cały kontynent pod rządami orków i rozkazał budowę ogromnej fortecy Pyrennis "
+"jako pomnika swojej potęgi. Ale to właśnie ta cytadela stała się jego zgubą "
+"- jego wasale, nie chcąc dokończyć budowy bez ukończenia przeznaczonego im "
+"podboju, zwrócili się przeciwko Olgorowi i zabili go, rozpraszając oddziały "
+"orków na wieki. Mury Pyrennis okazały się zdumiewająco niezniszczalne "
+"zarówno dla czasu, jak i dla wojny — to znaczy, porozdzielane fragmenty "
+"cytadeli, które zostały faktycznie ukończone."
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
 msgid "2p — Thousand Stings Garrison"
-msgstr "2g — Garnizon tysiąca żądeł"
+msgstr "2g — Garnizon Tysiąca Żądeł"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
@@ -1826,6 +1896,11 @@ msgid ""
 "whispering amongst the withered trees of this barren landscape. Unconcerned "
 "by their gloomy surroundings, your leaders have chosen this place to clash."
 msgstr ""
+"Setki lat temu, pokonany Czarnoksiężnik Kesorak został tu złożony do grobu, "
+"wraz z licznymi naśladowcami. Nieświęty chłód otacza teraz grobowca, a wielu "
+"wierzy, że nadal można usłyszeć tu głos Kesoraka, szepczący wśród zwiędłych "
+"drzew w tym jałowym krajobrazie. Nie zwracając uwagi na ponure otoczenie, "
+"wasi przywódcy wybrali do miejsce do walki."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:159
@@ -1833,6 +1908,8 @@ msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
 msgstr ""
+"Ta mapa zawiera grobowce i ogniska, które zmieniają porę dnia o jeden krok w "
+"stronę odpowiednio nocy i dnia."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:162
@@ -1840,6 +1917,8 @@ msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
 msgstr ""
+"Pole w centrum, zawierające urnę tytułowego nekromanty, jest zawsze okryte "
+"czarną jak smoła mgłą."
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1925,7 +2004,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Bath_of_Glory
 #: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:7
 msgid "4p — Bath of Glory"
-msgstr "4g — Kąpiel Chwały"
+msgstr "4g — Łaźnia Chwały"
 
 #. [multiplayer]: id=multiplayer_Bath_of_Glory
 #: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:9
@@ -1939,6 +2018,15 @@ msgid ""
 "wealthy nobles can turn into veritable battlegrounds — but even this has "
 "become a form of entertainment woven into the allure of the Bath."
 msgstr ""
+"Odległe, legendarne miasto Malisat słynie z licznych wielkich dzieł — wśród "
+"nich najbardziej ceniony jest gigantyczny kompleks znany jako Łaźnia Chwały. "
+"Stworzona jako raj relaksu dla utrudzonych żołnierzy wracających do domu, "
+"Łaźnia jest niezwykłą oazą zbudowaną tam, gdzie niegdyś nie było nic oprócz "
+"piasku. Z biegiem czasu, stała się oddzielnym miastem, z własną sztuką "
+"rozwijającą się wokół dzikiej kultury z kąpielą w centrum. Ogrom kompleksu "
+"sprawia, że wybuchowe temperamenty bogatych arystokratów zmieniają czasem to "
+"miejsce w prawdziwe pole bitwy - ale nawet to stało się formą rozrywki "
+"wplecioną w urok Łaźni."
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
@@ -2166,7 +2254,7 @@ msgstr "Kto wyjdzie cało ze starcia na tym niebezpiecznym polu bitwy?"
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p — Paths of Daggers"
-msgstr "4g — Ścieżki sztyletów"
+msgstr "4g — Ścieżki Sztyletów"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
@@ -2217,7 +2305,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
 msgid "4p — Underworld"
-msgstr "4g — Zaświaty"
+msgstr "4g — Podziemny Świat"
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
@@ -2276,7 +2364,7 @@ msgstr "Pięć armii walczy o zwycięstwo w różnorodnym krajobrazie."
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:57
 msgid "5p — The Wilderlands"
-msgstr "5g — Pustkowia"
+msgstr "5g — Dziki Kraj"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
@@ -2415,7 +2503,7 @@ msgstr "Tura 5: Knalganie"
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:396
 msgid "Turn 8: Rebels"
-msgstr "Tura 8: Rebelianci"
+msgstr "Tura 8: Buntownicy"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:401
@@ -2549,7 +2637,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p — Merkwuerdigliebe"
-msgstr "9g — Strangelove"
+msgstr "9g — Merkwuerdigliebe"
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
@@ -2638,7 +2726,7 @@ msgstr ""
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
 msgid "Wesnoth Benchmark: AI"
-msgstr "Test wydajności Wesnoth: SI"
+msgstr "Test wydajności Wesnoth: AI"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:10
@@ -2661,7 +2749,7 @@ msgid ""
 "--exit-at-end."
 msgstr ""
 "Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
-"scenario=wesbench_scroll --exit-at-end"
+"scenario=wesbench_scroll --exit-at-end."
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
@@ -2675,7 +2763,7 @@ msgid ""
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
 "Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end"
+"scenario=wesbench_shroud_walk --exit-at-end."
 
 #. [multiplayer]: id=multiplayer_test_lua_mapgen
 #: data/multiplayer/scenarios/test_lua_mapgen.cfg:16
