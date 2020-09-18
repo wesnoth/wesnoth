@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-09-12 04:35-0300\n"
-"PO-Revision-Date: 2020-08-31 09:42+0200\n"
+"PO-Revision-Date: 2020-09-16 14:24+0200\n"
 "Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
@@ -3740,7 +3740,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tbridge_type=Most|Skrzyżowanie\n"
+"\t\tbridge_type=Most|Przeprawa\n"
 "\t\tmain={bridge_type} $base{!}\n"
 "\t"
 
@@ -3809,7 +3809,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tmain=Szczyt $base{!}|Góra $name\n"
+"\t\tmain=Szczyt $base{!}|Góra $base\n"
 "\t"
 
 #. [naming]
@@ -3823,7 +3823,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tsuffix=Bagna|Mokradła|Moczary\n"
-"\t\tmain=$base{!} {suffix}\n"
+"\t\tmain={suffix} $base{!}\n"
 "\n"
 "\t"
 
@@ -3871,7 +3871,7 @@ msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
 "\t\triver=$river{!}|rzeką\n"
-"\t\tsuffix=ów|owo|owice| nad {river}\n"
+"\t\tsuffix=ów|obrzeże|obrzeg| nad {river}\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -3887,7 +3887,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
-"\t\tsuffix=owy Most|owy Most|ów|owice\n"
+"\t\tsuffix=omost|omost|ów|owice\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -3901,7 +3901,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=ów|owo|owe Pole\n"
+"\t\tsuffix=ów|owo|opole\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -3917,7 +3917,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$forest{!}\n"
-"\t\tsuffix=ów|owo|owice|owy Las\n"
+"\t\tsuffix=ów|owo|olas|olesie\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -3931,7 +3931,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=ów|owice|owo|gród|owe Wzgórze\n"
+"\t\tsuffix=ów|owice|owo|owzgórze|ogóra\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -4079,7 +4079,7 @@ msgstr ""
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:187
 msgid "(Note: You should use $replacement instead in new code)"
-msgstr "(Uwaga: w nowym kodzie powinien być używany $replacement)"
+msgstr "(Uwaga: w nowym kodzie zamiast tego powinien być używany $replacement)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
@@ -4321,7 +4321,7 @@ msgstr "PD"
 #. [label]: id=label-mp
 #: data/themes/default.cfg:161
 msgid "MP"
-msgstr "WG"
+msgstr "PR"
 
 #. [label]: id=label-def
 #: data/themes/default.cfg:169
