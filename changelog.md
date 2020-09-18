@@ -1,29 +1,40 @@
 ## Version 1.15.4+dev
+ ### Add-ons client
+   * Fix: when using the "system default language", add-ons' titles and descriptions were always shown in English (PR #5109)
  ### Campaigns
-   * Delfador's Memoirs:
-   * Liberty:
-   * Northern Rebirth
+   * Northern Rebirth:
      * Removed the campaign's evil branch. Not a player-visible change, as there was no way to access this branch.
-   * Sceptre of Fire:
-   * The South Guard:
+   * Secrets of the Ancients:
+     * Use new gui2 widgets API in the custom zombie-recruitment dialog
    * Under the Burning Suns:
    * World Conquest:
+     * Clean-up of spelling, grammar and other issues in translatable strings.
+     * use new lua gui2 api in WC mapgen settings
+   * Mass convert of `*^Uf` terrain for SP.
+     * Updates DW, DM, DiD, HttT, LoW, SotA, THoT and TSG
  ### Language and i18n
    * Updated translations: British English, Catalan, Chinese (Simplified), Esperanto,
      French, Hungarian, Polish, Portuguese (Brazil), Russian, Spanish, Turkish
  ### Lua API
+ ### Multiplayer
+   * A New Land:
+     * Peasants can harvest mushrooms (a bug introduced in 1.15.4 was noticed and fixed in PR #5137)
  ### Terrain
+   * Made single-hex mushrooms smaller (PR #5136)
  ### Units
  ### User interface
    * Help browser: fix inconsistent behavior for single-clicks opening and closing sections (PR #5110)
-   * Added [race]help_taxonomy=, creating links between the per-race topic pages.
+   * Added `[race]help_taxonomy=`, creating links between the per-race topic pages.
  ### WML engine
  ### Miscellaneous and bug fixes
    * Minimum required version of OS X is now OS X 10.11 .
    * The "loyal" trait is now displayed in the help browser, even though no normal unit has it.
    * The player can recruit even if their recruit list includes an unknown unit type. This will now show an error dialog and then the recruitment dialog with the known units.
+   * Fix `[micro_ai]` when called from lua (issue #5134)
+   * Fix `[load_resource]` not marking an add-on as used for the "ignore global tags set by add-ons that are not used" feature.
  ### Packaging
    * macOS package distributed through SourceForge is now a UDIF lzfse-compressed image. The image size may be slightly larger but opening and copying from this image is much faster.
+   * Another fix if the credits (including all add-ons) are extremely long. There are still known issues with this.
 
 ## Version 1.15.4
  ### Add-ons client
@@ -35,7 +46,7 @@
      * S12: Fix a few case where dialog and events sound odd or fire out of order (issue #4614).
    * Liberty:
      * Revised dialogue and added miscellaneous new events to all scenarios.
-   * Northern Rebirth
+   * Northern Rebirth:
      * S5a: Fixed a bug where enemies could trigger a hidden door.
    * Sceptre of Fire:
      * Fixed a bug where the new rune shop was not working as intended; added an event to tell players of the existance of the runeshop (S3).
