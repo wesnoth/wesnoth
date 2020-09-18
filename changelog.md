@@ -1,4 +1,6 @@
 ## Version 1.14.14+dev
+ ### Language and i18n
+   * Updated translations: Catalan
 
 ## Version 1.14.14
  ### Add-ons client
