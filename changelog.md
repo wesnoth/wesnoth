@@ -7,6 +7,8 @@
    * Secrets of the Ancients:
      * Use new gui2 widgets API in the custom zombie-recruitment dialog
    * Under the Burning Suns:
+     * Quenoth Elves now appear as a separate group in the help pages
+     * Fixed ghost spawning code in S02 (this means more ghosts will spawn)
    * World Conquest:
      * Clean-up of spelling, grammar and other issues in translatable strings.
      * use new lua gui2 api in WC mapgen settings
