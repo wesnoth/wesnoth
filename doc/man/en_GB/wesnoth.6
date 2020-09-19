@@ -97,9 +97,9 @@ mode).
 enables some Lua debugging mechanisms
 .TP 
 \fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
-diffs the two WML files; does not preprocess them first (to do that, run
-them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
-to the file indicated by \fI\-\-output\fP.
+compares the two WML files; does not pre\-process them first (to do that, run
+them through \fB\-p\fP first). Outputs the difference as DiffWML on standard
+output or to the file indicated by \fI\-\-output\fP.
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
@@ -192,7 +192,7 @@ don't try to validate replay of unit test. Only relevant when used with
 runs the game without sounds and music.
 .TP 
 \fB\-\-output\fP\fI\ file\fP
-output to the specified file. Applicable to diffing operations.
+output to the specified file. Applicable to diff operations.
 .TP 
 \fB\-\-password\fP\fI\ password\fP
 uses \fIpassword\fP when connecting to a server, ignoring other
@@ -204,8 +204,8 @@ preferences. Unsafe.
 co\-routine and periodically woken up with updates.
 .TP 
 \fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
-applies a DiffWML patch to a WML file; does not preprocess either of the
-files.  Outputs the patched WML to standard output or to the file indicated
+applies a DiffWML patch to a WML file; does not pre\-process either of the
+files. Outputs the patched WML to standard output or to the file indicated
 by \fI\-\-output\fP.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
@@ -413,12 +413,12 @@ Normal exit status is 0.  An exit status of 1 indicates an (SDL, video,
 fonts, etc) initialization error. An exit status of 2 indicates an error
 with the command line options.
 .br
-When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
-status of 0 indicates that the test passed, and 1 indicates that the test
-failed. An exit status of 3 indicates that the test passed, but produced an
-invalid replay file. An exit status of 4 indicates that the test passed, but
-the replay produced errors. These latter two are only returned if
-\fB\-\-noreplaycheck\fP is not passed.
+When running unit tests (with \fB\ \-u\fP), the exit status is different. An
+exit status of 0 indicates that the test passed, and 1 indicates that the
+test failed. An exit status of 3 indicates that the test passed, but
+produced an invalid replay file. An exit status of 4 indicates that the test
+passed, but the replay produced errors. These latter two are only returned
+if \fB\-\-noreplaycheck\fP is not passed.
 .
 .SH AUTHOR
 .

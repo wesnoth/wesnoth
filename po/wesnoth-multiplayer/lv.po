@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.10\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-22 04:14 UTC\n"
+"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
 "PO-Revision-Date: 2015-03-29 14:36+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -1059,19 +1059,19 @@ msgstr "Ienaidnieks"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:50
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:70
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:76
 msgid "teamname^Human"
 msgstr "Spēlētājs"
 
-#. [then]
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:114
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:275
 msgid "Death of your leader"
 msgstr "Tava līdera nāve"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:106
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:115
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
@@ -1079,28 +1079,28 @@ msgstr ""
 "Tākā komandā ir tikai viens līderis, pretinieku uzbrukumi nebūs pilnā spēkā."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:109
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:118
 msgid "Death of both of your team’s leaders"
 msgstr "Mirst abi komanda līderi"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:110
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:119
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr "Tākā komandā ir divi līderi, pretinieku uzbrukumi būs pilnā spēkā."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:131
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:140
 msgid "Survive and defeat all enemy waves"
 msgstr "Izturi visus pretinieka uzbrukumus"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:151
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:160
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Tumšā prognoze — nejaušs izdzīvošanas scenārijs"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:156
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:165
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -1145,12 +1145,12 @@ msgstr ""
 "• WML realizācija"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:176
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:185
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Šī ir tā ieleja — tikai pastiep roku un būs kārtība."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:180
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:189
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1160,7 +1160,7 @@ msgstr ""
 "un mūsu klātbūtne te netiks akceptēta. Mums jābūt gataviem uz pārsteigumiem."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:184
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:193
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -1168,21 +1168,21 @@ msgstr ""
 "Tad uzmetīsim aci, kas te notiek... un parādīsim, kurš te ir saimnieks."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:203
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:212
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr "ahh! Kā tas var būt? Barbari mani piebeidza! Dievi mani pameta..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:217
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:226
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr "Ienaidnieku gaviles ir pēdējais ko Tu dzirdi, krītot nāves skavās..."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:239
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:248
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1192,7 +1192,7 @@ msgstr ""
 "jau ir beigušās..."
 
 #. [slider]: id=enemey_gold_factor
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:252
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:261
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 
@@ -1793,19 +1793,19 @@ msgstr "Vesnotas dižajās kaujās šis apgabals spēlēja apgādes ceļa lomu."
 msgid "3p — Alirok Marsh"
 msgstr "3s — Aliroka slīknājs"
 
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2332,85 +2332,85 @@ msgstr "Ienaidnieks"
 
 #. [side]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:280
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:294
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:308
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:322
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:336
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:350
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:300
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:334
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:351
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:368
 msgid "Defender"
 msgstr "Aizsardzība"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:369
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:390
 msgid "Survive all enemy attacks"
 msgstr "Izturēt visus ienaidnieka uzbrukumus"
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:396
 msgid "Death of your team leaders"
 msgstr "Visu komandu līderu nāve"
 
 #. [note]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:401
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
 "Ieteikums: iegaumē ienaidnieka parādīšanās punktus, (katram tipam) tas "
 "noteikti palīdzēs."
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:386
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:407
 msgid "Turn 2: Loyalists"
 msgstr "Gājiens 2: Lojālisti"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:391
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:412
 msgid "Turn 5: Knalgans"
 msgstr "Gājiens 5: Kangari"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:396
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:417
 msgid "Turn 8: Rebels"
 msgstr "Gājiens 8: Dumpinieki"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:401
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:422
 msgid "Turn 11: Northerners"
 msgstr "Gājiens 11: Ziemeļnieki"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:406
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:427
 msgid "Turn 14: Drakes"
 msgstr "Gājiens 14: Dreiki"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:411
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:432
 msgid "Turn 17: Undead"
 msgstr "Gājiens 17: Nedzīvie"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:416
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:437
 msgid "Tower of Doom"
 msgstr "Ļaunuma Tornis"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:523
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:544
 msgid "Faery"
 msgstr "Bailīgi"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:524
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:545
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:538
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:559
 msgid "Death"
 msgstr "Nāve"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:540
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:561
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
@@ -2628,16 +2628,6 @@ msgid ""
 msgstr ""
 "Vesnotas izejas punkts izmanto --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#. [multiplayer]: id=multiplayer_test_lua_mapgen
-#: data/multiplayer/scenarios/test_lua_mapgen.cfg:16
-msgid "Lua Mapgen Maritime"
-msgstr ""
-
-#. [multiplayer]: id=multiplayer_test_lua_mapgen
-#: data/multiplayer/scenarios/test_lua_mapgen.cfg:17
-msgid "Testing new lua mapgen features"
-msgstr ""
 
 #~ msgid "Default + Khalifate"
 #~ msgstr "Noklusēti + Kalifāts"

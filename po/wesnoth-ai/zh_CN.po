@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 09:30 UTC\n"
+"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
 "PO-Revision-Date: 2020-08-10 20:09+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -62,8 +62,8 @@ msgstr "开发用AI：默认 + 使毒（公式AI）"
 msgid "The Elves Besieged"
 msgstr "精灵受困"
 
-#. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
+#. [side]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -88,10 +88,10 @@ msgstr "黎伐多"
 msgid "Urug-Telfar"
 msgstr "乌鲁戈-特尔法"
 
+#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:113
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:132
@@ -317,10 +317,10 @@ msgstr "动物"
 msgid "Rutburt"
 msgstr "拉特巴特"
 
+#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
-#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -363,10 +363,10 @@ msgstr "狼"
 msgid "Whelps"
 msgstr "幼兽"
 
-#. [set_menu_item]: id=m01_end_swarm
-#. [set_menu_item]: id=m04_end_animals
-#. [event]
 #. [set_menu_item]: id=m01_end_animals
+#. [event]
+#. [set_menu_item]: id=m04_end_animals
+#. [set_menu_item]: id=m01_end_swarm
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -514,9 +514,9 @@ msgstr "又大又坏的兽人"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "好了，伙计们。得制止这些兽人。"
 
-#. [message]: speaker=Another Bad Orc
-#. [message]: speaker=Vanak
 #. [message]: speaker=Big Bad Orc
+#. [message]: speaker=Vanak
+#. [message]: speaker=Another Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:573
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:142
@@ -591,8 +591,8 @@ msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
 msgstr "我可能是倒下了，但我们将继续守卫通路直到最后一人！"
 
-#. [event]
 #. [test]: id=dragon
+#. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -764,8 +764,8 @@ msgstr "艾萨博雷士官"
 msgid "Place Side 1 Footpad"
 msgstr "放置阵营1的走卒"
 
-#. [set_menu_item]: id=m05_kill_unit
 #. [set_menu_item]: id=m02_kill_unit
+#. [set_menu_item]: id=m05_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
@@ -1002,8 +1002,8 @@ msgstr "我们都到达了角落，让我们重聚吧。"
 msgid "We're back together, let's head out to the corners again."
 msgstr "我们重聚了，让我们再出发去角落吧。"
 
-#. [test]: id=guardians
 #. [event]
+#. [test]: id=guardians
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -1678,9 +1678,9 @@ msgstr "信使护送"
 msgid "Vanak"
 msgstr "凡纳克"
 
-#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1772,8 +1772,8 @@ msgstr "我做到了！现在我们的人民安全了。"
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "不！全完了。现在我们再也不可能阻止兽人了！"
 
-#. [event]
 #. [test]: id=patrols
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -1967,8 +1967,8 @@ msgstr "呵，挺有趣的！现在我就呆在这儿，看那两个伙计走啊
 msgid "Let's go home, chaps."
 msgstr "我们回家，伙计们。"
 
-#. [event]
 #. [test]: id=protect_unit
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2186,8 +2186,8 @@ msgstr "虚弱者格隆克"
 msgid "team_name^Grnk"
 msgstr "格隆克"
 
-#. [test]: id=swarm
 #. [event]
+#. [test]: id=swarm
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"

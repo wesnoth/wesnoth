@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.13\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-22 04:14 UTC\n"
+"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
 "PO-Revision-Date: 2020-01-16 07:51+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth-spanish\n"
@@ -1156,19 +1156,19 @@ msgstr "Revuelta"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:50
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:70
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:76
 msgid "teamname^Human"
 msgstr "Humanos"
 
-#. [then]
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:114
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:275
 msgid "Death of your leader"
 msgstr "Muerte de su líder"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:106
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:115
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
@@ -1177,12 +1177,12 @@ msgstr ""
 "fuerza reducida."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:109
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:118
 msgid "Death of both of your team’s leaders"
 msgstr "Muerte de ambos líderes de su equipo"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:110
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:119
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
@@ -1190,18 +1190,18 @@ msgstr ""
 "fuerza completa."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:131
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:140
 msgid "Survive and defeat all enemy waves"
 msgstr "Sobrevive a todos los ataques enemigos"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:151
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:160
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Pronóstico oscuro — un escenario de supervivencia aleatorio"
 
 # Suena raro decir que un archienemigo sea "final", ya que los archienemigos son (incluso en la elaboración de historias) únicos, con su propio caracter. Supuse que el final significaba que "venían" al final.
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:156
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:165
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -1247,12 +1247,12 @@ msgstr ""
 "— implementación WML"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:176
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:185
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Así que este es el valle maldito — una tierra libre para tomarla."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:180
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:189
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1263,7 +1263,7 @@ msgstr ""
 "las sorpresas en esta tierra."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:184
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:193
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -1272,7 +1272,7 @@ msgstr ""
 "nuestra demanda."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:203
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:212
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -1281,7 +1281,7 @@ msgstr ""
 "me han abandonado..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:217
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:226
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1290,7 +1290,7 @@ msgstr ""
 "hacia la muerte... su alegría llena tus últimos momentos con puro odio."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:239
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:248
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1301,7 +1301,7 @@ msgstr ""
 "cuenta de que tu tiempo en esta tierra ha terminado."
 
 #. [slider]: id=enemey_gold_factor
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:252
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:261
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 "Cambia el valor en oro de la generación de enemigos en un cierto porcentaje."
@@ -1966,19 +1966,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3 jug. — Pantano de Alirok"
 
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2498,73 +2498,73 @@ msgstr "Atacante"
 
 #. [side]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:280
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:294
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:308
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:322
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:336
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:350
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:300
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:334
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:351
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:368
 msgid "Defender"
 msgstr "Defensor"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:369
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:390
 msgid "Survive all enemy attacks"
 msgstr "Sobrevive a todos los ataques enemigos"
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:396
 msgid "Death of your team leaders"
 msgstr "Muerte de los líderes de su equipo"
 
 #. [note]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:401
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
 "Pista: Aprender dónde recluta el enemigo sus unidades y de que tipo son "
 "puede serle de mucha ayuda."
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:386
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:407
 msgid "Turn 2: Loyalists"
 msgstr "Turno 2: Leales"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:391
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:412
 msgid "Turn 5: Knalgans"
 msgstr "Turno 5: Knalganos"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:396
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:417
 msgid "Turn 8: Rebels"
 msgstr "Turno 8: Rebeldes"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:401
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:422
 msgid "Turn 11: Northerners"
 msgstr "Turno 11: Norteños"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:406
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:427
 msgid "Turn 14: Drakes"
 msgstr "Turno 14: Dracos"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:411
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:432
 msgid "Turn 17: Undead"
 msgstr "Turno 17: No muertos"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:416
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:437
 msgid "Tower of Doom"
 msgstr "Torre de la Perdición"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:523
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:544
 msgid "Faery"
 msgstr "Feérico"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:524
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:545
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible!"
@@ -2572,12 +2572,12 @@ msgstr ""
 "¡Enhorabuena por sobrevivir al mapa que tanta gente considera imposible!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:538
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:559
 msgid "Death"
 msgstr "Muerte"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:540
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:561
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
@@ -2799,16 +2799,6 @@ msgid ""
 msgstr ""
 "Una prueba de rendimiento de wesnoth, usa --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#. [multiplayer]: id=multiplayer_test_lua_mapgen
-#: data/multiplayer/scenarios/test_lua_mapgen.cfg:16
-msgid "Lua Mapgen Maritime"
-msgstr ""
-
-#. [multiplayer]: id=multiplayer_test_lua_mapgen
-#: data/multiplayer/scenarios/test_lua_mapgen.cfg:17
-msgid "Testing new lua mapgen features"
-msgstr ""
 
 #, fuzzy
 #~| msgid "Defeat all enemy leaders"

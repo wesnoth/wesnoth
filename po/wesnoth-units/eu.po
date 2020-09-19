@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-22 04:15 UTC\n"
+"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -347,6 +347,7 @@ msgid "saber"
 msgstr "makulu"
 
 #. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -358,7 +359,6 @@ msgstr "makulu"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:108
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:123
@@ -406,8 +406,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:36
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:36
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:111
@@ -491,8 +491,8 @@ msgstr "Jokalariak:"
 msgid "curse"
 msgstr "madarikazioa"
 
-#. [attack]: type=blade
 #. [attack]: type=pierce
+#. [attack]: type=blade
 #. [unit_type]: id=SotA Walking Corpse_Wolf
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Flying Corpse_Bat
@@ -1032,8 +1032,8 @@ msgid ""
 "‘pierce’ attacks."
 msgstr ""
 
-#. [attack]: type=blade
 #. [attack]: type=pierce
+#. [attack]: type=blade
 #: data/core/units/drakes/Arbiter.cfg:31 data/core/units/drakes/Arbiter.cfg:40
 #: data/core/units/drakes/Warden.cfg:32 data/core/units/drakes/Warden.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:32
@@ -3823,7 +3823,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Bandit.cfg:29
 #: data/core/units/humans/Outlaw_Fugitive.cfg:29
 #: data/core/units/humans/Outlaw_Highwayman.cfg:24
-#: data/core/units/humans/Royal_Warrior.cfg:28
+#: data/core/units/humans/Royal_Warrior.cfg:29
 #, fuzzy
 msgid "morning star"
 msgstr "Sortu izarra"
@@ -4032,7 +4032,7 @@ msgid "Royal Warrior"
 msgstr "Troll gudaria"
 
 #. [unit_type]: id=Royal Warrior, race=human
-#: data/core/units/humans/Royal_Warrior.cfg:24
+#: data/core/units/humans/Royal_Warrior.cfg:25
 msgid ""
 "The kings and princes of human nobility are still often trained rigorously "
 "in the combat arts, partly out of tradition from when their ancestors made "
@@ -4691,9 +4691,9 @@ msgstr ""
 msgid "Wolf"
 msgstr ""
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19

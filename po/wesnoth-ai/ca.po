@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 09:30 UTC\n"
+"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
 "PO-Revision-Date: 2020-09-14 20:03+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -63,8 +63,8 @@ msgstr "Multiplayer_AI^IA des.: per defecte + enverinament (IA fórmula)"
 msgid "The Elves Besieged"
 msgstr "Els elfs assetjats"
 
-#. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
+#. [side]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -89,10 +89,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
+#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:113
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:132
@@ -343,10 +343,10 @@ msgstr "Animals"
 msgid "Rutburt"
 msgstr "Rutburt"
 
+#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
-#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -389,10 +389,10 @@ msgstr "Llops"
 msgid "Whelps"
 msgstr "Cries de trol"
 
-#. [set_menu_item]: id=m01_end_swarm
-#. [set_menu_item]: id=m04_end_animals
-#. [event]
 #. [set_menu_item]: id=m01_end_animals
+#. [event]
+#. [set_menu_item]: id=m04_end_animals
+#. [set_menu_item]: id=m01_end_swarm
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -549,9 +549,9 @@ msgstr "Gran orc dolent"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "D'acord, nois. Cal aturar aquests orcs."
 
-#. [message]: speaker=Another Bad Orc
-#. [message]: speaker=Vanak
 #. [message]: speaker=Big Bad Orc
+#. [message]: speaker=Vanak
+#. [message]: speaker=Another Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:573
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:142
@@ -632,8 +632,8 @@ msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
 msgstr "Jo he caigut, però continuarem defensant el pas fins a l'últim home!"
 
-#. [event]
 #. [test]: id=dragon
+#. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -818,8 +818,8 @@ msgstr "Sergent Aethubry"
 msgid "Place Side 1 Footpad"
 msgstr "Col·loca un saltejador del bàndol 1"
 
-#. [set_menu_item]: id=m05_kill_unit
 #. [set_menu_item]: id=m02_kill_unit
+#. [set_menu_item]: id=m05_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
@@ -1080,8 +1080,8 @@ msgstr "Tots hem arribat a les cantonades; tornem a ajuntar-nos de nou."
 msgid "We're back together, let's head out to the corners again."
 msgstr "Ja som tots junts de nou; tornem a les cantonades."
 
-#. [test]: id=guardians
 #. [event]
+#. [test]: id=guardians
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -1811,9 +1811,9 @@ msgstr "Messenger Escort"
 msgid "Vanak"
 msgstr "Vanak"
 
-#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1912,8 +1912,8 @@ msgstr "Ho he aconseguit!  Ara la nostra gent serà estàlvia."
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "No!  Ho hem perdut tot. Mai aturarem els orcs!"
 
-#. [event]
 #. [test]: id=patrols
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -2120,8 +2120,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr "Anem a casa, nois."
 
-#. [event]
 #. [test]: id=protect_unit
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2356,8 +2356,8 @@ msgstr "Grnk el Feble"
 msgid "team_name^Grnk"
 msgstr "team_name^Grnk"
 
-#. [test]: id=swarm
 #. [event]
+#. [test]: id=swarm
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"

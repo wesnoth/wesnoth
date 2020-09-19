@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-22 00:14-0400\n"
+"POT-Creation-Date: 2020-09-19 20:34+0300\n"
 "PO-Revision-Date: 2019-01-29 15:03+0200\n"
 "Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
 "Language-Team: \n"
@@ -21,8 +21,8 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=fence
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:479
 msgid "Fence"
@@ -2163,8 +2163,8 @@ msgid ""
 msgstr "Налаштувати параметри для вибраних модифікацій."
 
 #. [button]: id=reset_option_values
-#. [button]: id=orb_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
@@ -2183,8 +2183,8 @@ msgstr "Виберіть гравця"
 #. [toggle_button]: id=sort_0
 #. [label]
 #. [toggle_button]: id=sort_name
-#. [toggle_button]: id=sort_1
 #. [label]: id=name
+#. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:231
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_connect.cfg:159
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2501,8 +2501,8 @@ msgstr "Вихід"
 msgid "Choose the add-ons you want to remove."
 msgstr "Виберіть які аддони треба видалити."
 
-#. [button]: id=ok
 #. [button]: id=remove
+#. [button]: id=ok
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/preferences/05_multiplayer.cfg:289
 msgid "Remove"
@@ -2563,22 +2563,6 @@ msgstr "Атакуючий"
 msgid "Defender"
 msgstr "Захисник"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
-#: data/gui/window/browse_url_prompt.cfg:39
-#: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:791 src/gui/dialogs/file_dialog.cpp:305
-#: src/gui/dialogs/file_dialog.cpp:731
-msgid "Confirm"
-msgstr "Підтвердити"
-
-#. [label]
-#: data/gui/window/browse_url_prompt.cfg:54
-#, fuzzy
-#| msgid "Do you want to open this link?"
-msgid "Are you sure you want to open this link? "
-msgstr "Ви дійсно хочете відкрити це посилання?"
-
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:173
 msgid "Play a Campaign"
@@ -2602,7 +2586,7 @@ msgstr "Сортувати за приблизним хронологічним 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:284
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:464
 msgid "Modifications"
 msgstr "Модифікації"
 
@@ -2626,10 +2610,10 @@ msgstr ""
 msgid "game^Play"
 msgstr ""
 
-#. [slider]: id=enemey_gold_factor
 #. [label]: id=title
+#. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:250
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:259
 msgid "Difficulty"
 msgstr "Складність"
 
@@ -2653,8 +2637,8 @@ msgstr "Сторінка:"
 msgid "Last"
 msgstr "Остання"
 
-#. [button]: id=previous_tip
 #. [button]: id=previous_page
+#. [button]: id=previous_tip
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Попередня"
@@ -2664,8 +2648,8 @@ msgstr "Попередня"
 msgid "Previous page"
 msgstr "Попередня сторінка"
 
-#. [button]: id=next_tip
 #. [button]: id=next_page
+#. [button]: id=next_tip
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Наступна"
@@ -2717,31 +2701,31 @@ msgstr "Завантажити компоненти"
 msgid "OK"
 msgstr "Гаразд"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Копіювати"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Копіювати цей шлях до буфера обміну"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "Оглянути"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2814,6 +2798,14 @@ msgstr "Новий ЧД"
 #: data/gui/window/custom_tod.cfg:418
 msgid "Delete ToD"
 msgstr "Видалити ЧД"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/window/depcheck_confirm_change.cfg:40
+#: src/gui/dialogs/addon/manager.cpp:791 src/gui/dialogs/file_dialog.cpp:305
+#: src/gui/dialogs/file_dialog.cpp:731
+msgid "Confirm"
+msgstr "Підтвердити"
 
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:98
@@ -2915,7 +2907,7 @@ msgstr "Опис:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid "Experience modifier:"
 msgstr "Модифікатор досвіду:"
 
@@ -2977,7 +2969,7 @@ msgstr "Золото:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid "Gold per village:"
 msgstr "Золота на село:"
 
@@ -3048,7 +3040,7 @@ msgstr "Виберіть генератор карт:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -3068,15 +3060,15 @@ msgstr "Створити"
 msgid "New Map"
 msgstr "Нова карта"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Ширина:"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3158,9 +3150,9 @@ msgstr "Додати в закладки поточну теку"
 msgid "Removes the current bookmark"
 msgstr "Видалити поточну закладку"
 
+#. [button]: id=server_delete
 #. [button]: id=delete
 #. [button]: id=delete_file
-#. [button]: id=server_delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:513
 #: data/gui/window/mp_connect.cfg:284
 msgid "Delete"
@@ -3228,8 +3220,8 @@ msgid "Execution trace"
 msgstr "Трейс виконання"
 
 #. [button]: id=cancel
-#. [grid]
 #. [button]: id=quit_without_surrender
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:258
 msgid "Quit"
@@ -3318,8 +3310,8 @@ msgid "Date"
 msgstr "Датою"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=lblTitle
 #. [button]: id=load_game
+#. [label]: id=lblTitle
 #: data/gui/window/game_load.cfg:292 data/gui/window/mp_create_game.cfg:898
 #: src/hotkey/hotkey_command.cpp:102
 msgid "Load Game"
@@ -3365,8 +3357,8 @@ msgstr "Скасувати всі заплановані рухи бійців �
 msgid "Open saves folder"
 msgstr "Відкрити теку зі зюереженнями"
 
-#. [button]: id=ok
 #. [grid]
+#. [button]: id=ok
 #: data/gui/window/game_load.cfg:614 data/gui/window/title_screen.cfg:253
 msgid "Load"
 msgstr "Завантажити"
@@ -3379,8 +3371,8 @@ msgid "Save Game"
 msgstr "Зберегти гру"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
 #. [button]: id=save
+#. [button]: id=ok
 #: data/gui/window/game_save.cfg:120
 #: data/gui/window/screenshot_notification.cfg:203
 #: src/gui/dialogs/file_dialog.cpp:183
@@ -3621,8 +3613,8 @@ msgstr "Інспектор стану гри"
 msgid "Copy this report to clipboard"
 msgstr "Копіювати цей звіт до буфера обміну"
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3759,8 +3751,8 @@ msgid "Create Game"
 msgstr "Створити гру"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [label]: id=title
+#. [grid]
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:574
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:256
@@ -4395,7 +4387,7 @@ msgstr "Встановлює пароль, який повинні ввести 
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:183
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid "Map size:"
 msgstr "Розмір карти:"
 
@@ -4446,8 +4438,8 @@ msgstr "Виберіть собі фракцію"
 msgid "Starting position:"
 msgstr "Початкова позиція:"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4531,8 +4523,8 @@ msgstr "Зберігати пароль локально (зашифровано
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#. [grid]
 #. [widget]: id=label
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/game_load.cpp:436
@@ -5597,8 +5589,8 @@ msgstr "Помилка"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:215
-#: src/gui/dialogs/multiplayer/lobby.cpp:231 src/gui/dialogs/wml_error.cpp:197
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:218
+#: src/gui/dialogs/multiplayer/lobby.cpp:234 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr "Деталі:"
 
@@ -5700,7 +5692,7 @@ msgstr "uk,ru"
 msgid "The maximum text width is less than 1."
 msgstr "Максимальна ширина тексту менше 1."
 
-#: src/font/text.cpp:775
+#: src/font/text.cpp:781
 msgid "The text contains invalid Pango markup: "
 msgstr "Текст містить неприпустиму розмітку Pango: "
 
@@ -5848,8 +5840,8 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr "Пов'язана група '$id' визначена більше одного разу."
 
 #: src/gui/core/window_builder.cpp:317 src/gui/widgets/addon_list.cpp:439
-#: src/gui/widgets/chatbox.cpp:813 src/gui/widgets/listbox.cpp:806
-#: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
+#: src/gui/widgets/chatbox.cpp:813 src/gui/widgets/listbox.cpp:809
+#: src/gui/widgets/multi_page.cpp:199 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
 #: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:241
 #: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:304
@@ -6149,7 +6141,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Атакуючий вразливий до"
 
 #: src/gui/dialogs/campaign_selection.cpp:324
-#: src/gui/dialogs/multiplayer/lobby.cpp:466
+#: src/gui/dialogs/multiplayer/lobby.cpp:469
 msgid "active_modifications^None"
 msgstr "Немає"
 
@@ -6355,12 +6347,12 @@ msgid "Unknown"
 msgstr "Невідомо"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "no"
 msgstr "ні"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "yes"
 msgstr "так"
 
@@ -6503,11 +6495,11 @@ msgstr "Інші ігри"
 msgid "Do you really want to log out?"
 msgstr "Ви дійсно хочете вийти?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:211
+#: src/gui/dialogs/multiplayer/lobby.cpp:214
 msgid "Incompatible User-made Content."
 msgstr "Несумісний користувацький контент."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:212
+#: src/gui/dialogs/multiplayer/lobby.cpp:215
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6516,11 +6508,11 @@ msgstr ""
 "До гри неможливо приєднатися, оскільки у хоста стара версія аддону і вона "
 "несумісна з вашою. Ви можете запропонувати хосту оновити його аддони."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:227
+#: src/gui/dialogs/multiplayer/lobby.cpp:230
 msgid "Missing User-made Content."
 msgstr "Відсутній користувацький контент."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:228
+#: src/gui/dialogs/multiplayer/lobby.cpp:231
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6530,43 +6522,43 @@ msgstr ""
 "аддонів.\n"
 "Бажаєте спробувати встановити їх зараз?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:401
+#: src/gui/dialogs/multiplayer/lobby.cpp:404
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Ігри: показано $num_shown з $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:421
+#: src/gui/dialogs/multiplayer/lobby.cpp:424
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Ера: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "era_or_mod^not installed"
 msgstr "не встановлений"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Era"
 msgstr "Ера"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 msgid "Reloaded:"
 msgstr "Перезавантажено:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:487
+#: src/gui/dialogs/multiplayer/lobby.cpp:490
 msgid "Shared vision:"
 msgstr "Спільний огляд:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:488
+#: src/gui/dialogs/multiplayer/lobby.cpp:491
 msgid "Shuffle sides:"
 msgstr "Перемішати сторони:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:489
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid "Time limit:"
 msgstr "Обмеження ходів:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:490
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid "Use map settings:"
 msgstr "Задано картою:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:498
+#: src/gui/dialogs/multiplayer/lobby.cpp:501
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6574,19 +6566,19 @@ msgstr ""
 "Для того щоб приєднатися до гри\n"
 "необхідно встановити один або більше аддонів."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:523
+#: src/gui/dialogs/multiplayer/lobby.cpp:526
 msgid "Observers allowed"
 msgstr "Спостереження дозволене"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:526
+#: src/gui/dialogs/multiplayer/lobby.cpp:529
 msgid "Observers not allowed"
 msgstr "Спостереження не дозволене"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:805
+#: src/gui/dialogs/multiplayer/lobby.cpp:808
 msgid "lobby"
 msgstr "фойє"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:973
+#: src/gui/dialogs/multiplayer/lobby.cpp:976
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6964,23 +6956,23 @@ msgstr "Ви дійсно хочете відкрити це посилання?
 msgid "Copied link!"
 msgstr "Посилання скопійовано!"
 
-#: src/gui/widgets/listbox.cpp:916 src/gui/widgets/multi_page.cpp:282
+#: src/gui/widgets/listbox.cpp:919 src/gui/widgets/multi_page.cpp:285
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' повинен містити стільки ж стовпців, скільки і 'list_definition'."
 
-#: src/gui/widgets/listbox.cpp:960 src/gui/widgets/listbox.cpp:1065
-#: src/gui/widgets/listbox.cpp:1170 src/gui/widgets/scrollbar_panel.cpp:147
+#: src/gui/widgets/listbox.cpp:963 src/gui/widgets/listbox.cpp:1068
+#: src/gui/widgets/listbox.cpp:1173 src/gui/widgets/scrollbar_panel.cpp:147
 msgid "No list defined."
 msgstr "Список не визначений."
 
-#: src/gui/widgets/listbox.cpp:965 src/gui/widgets/listbox.cpp:1070
-#: src/gui/widgets/listbox.cpp:1175
+#: src/gui/widgets/listbox.cpp:968 src/gui/widgets/listbox.cpp:1073
+#: src/gui/widgets/listbox.cpp:1178
 msgid "A 'list_definition' should contain one row."
 msgstr "У 'list_definition' має бути один рядок."
 
-#: src/gui/widgets/multi_page.cpp:258
+#: src/gui/widgets/multi_page.cpp:261
 msgid "No page defined."
 msgstr "Сторінка не визначена."
 
@@ -7961,7 +7953,7 @@ msgstr "Показати консоль Lua"
 msgid "Unrecognized Command"
 msgstr "Невідома команда"
 
-#: src/preferences/display.cpp:122 src/preferences_display0.cpp:107
+#: src/preferences/display.cpp:122
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Невідома тема. Спробуйте поміняти в існуючій грі."
 
@@ -7990,12 +7982,6 @@ msgstr "[%H:%M]"
 #: src/preferences/game.cpp:911
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
-
-#: src/preferences_display0.cpp:172
-#, fuzzy
-#| msgid "Find $filename server binary to host networked games"
-msgid "Find $filename server binary"
-msgstr "Знайти сервер $filename, на якому будуть хоститься мережеві ігри"
 
 #: src/terrain/translation.cpp:714
 #, fuzzy
@@ -8045,6 +8031,16 @@ msgid ""
 msgstr ""
 "Клавіша '$deprecated_key' перейменована в '$key'. Вона буде видалена у "
 "версії $removal_version."
+
+#, fuzzy
+#~| msgid "Do you want to open this link?"
+#~ msgid "Are you sure you want to open this link? "
+#~ msgstr "Ви дійсно хочете відкрити це посилання?"
+
+#, fuzzy
+#~| msgid "Find $filename server binary to host networked games"
+#~ msgid "Find $filename server binary"
+#~ msgstr "Знайти сервер $filename, на якому будуть хоститься мережеві ігри"
 
 #~ msgid "Event"
 #~ msgstr "Подія"

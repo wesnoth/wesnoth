@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 09:30 UTC\n"
+"POT-Creation-Date: 2020-09-19 17:34 UTC\n"
 "PO-Revision-Date: 2011-09-28 14:55+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -12,8 +12,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. [campaign]: id=Descent_into_Darkness
 #. [scenario]: id=09_Descent_into_Darkness
+#. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:13
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:5
 msgid "Descent into Darkness"
@@ -196,8 +196,8 @@ msgid ""
 msgstr ""
 
 #. [side]
-#. [side]: type=General, id=Taylor
 #. [side]: type=Sergeant, id=Drogan
+#. [side]: type=General, id=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:80
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:129
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:125
@@ -210,12 +210,12 @@ msgid "Defenders"
 msgstr ""
 
 #. [side]: type=Orcish Warlord, id=Borth
+#. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
+#. [side]: type=Orcish Warlord, type=Orcish Warrior, id=Gron'r Hronk
+#. [side]: type=Orcish Warlord, id=K'rrlar Oban
 #. [side]: type=Orcish Warlord, id=P'Gareth
 #. [side]: type=Orcish Warlord, id=K'Vark
 #. [modify_side]
-#. [side]: type=Orcish Warlord, type=Orcish Warrior, id=Gron'r Hronk
-#. [side]: type=Orcish Warlord, id=K'rrlar Oban
-#. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:103
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:58
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:91
@@ -235,8 +235,8 @@ msgstr ""
 
 #. [side]: type=Lieutenant, id=Drogan
 #. [unit]: type=Ghoul DiD, id=DroganGhoul
-#. [unit]: id=Drogan, type=Lieutenant
 #. [side]: type=Sergeant, id=Drogan
+#. [unit]: id=Drogan, type=Lieutenant
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:135
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:100
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:959
@@ -738,8 +738,8 @@ msgstr ""
 msgid "A necromancer must always use whatever supplies he is given. Do it."
 msgstr ""
 
-#. [message]: speaker=Malin Keshar
 #. [message]: speaker=Mal Keshar
+#. [message]: speaker=Malin Keshar
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:223
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:281
@@ -1970,8 +1970,8 @@ msgid ""
 "And what of the rest of you? Dela, at least you don’t believe that, do you?"
 msgstr ""
 
-#. [message]: speaker=Dela Keshar
 #. [message]: speaker=Mal Keshar
+#. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:352
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:3042
 msgid "I..."
@@ -2948,8 +2948,8 @@ msgid ""
 "day, finally emerging as the last rays of sunlight sink below the horizon."
 msgstr ""
 
-#. [unit]: type=Necromancer, id=Darken Volk
 #. [side]
+#. [unit]: type=Necromancer, id=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:62
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1437
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:35
@@ -3688,9 +3688,9 @@ msgstr ""
 msgid "... by emptiness."
 msgstr ""
 
-#. [side]
 #. [modify_side]
 #. [unit]: type=Lich, id=Fake Mal Keshar
+#. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1690
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:3005
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:3105
@@ -5326,160 +5326,150 @@ msgstr "그림자 파동"
 msgid "Allied undead units within a 5 hex radius are hidden."
 msgstr ""
 
-#. [hides]: id=did_shadow_veil_helper
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:144
-msgid "veiled"
-msgstr ""
-
-#. [hides]: id=did_shadow_veil_helper
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:145
-msgid "This unit is hidden."
-msgstr ""
-
 #. [dummy]: id=did_frost_nova
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:230
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:231
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:238
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:239
 msgid "frost nova"
 msgstr ""
 
 #. [dummy]: id=did_frost_nova
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:232
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:233
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:240
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:241
 msgid ""
 "On offense, this attack will additionally deal 70% of its damage in cold "
 "damage to all enemies adjacent to the target."
 msgstr ""
 
 #. [damage]: id=did_spellbind
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:299
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:300
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:307
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:308
 msgid "spell bind"
 msgstr ""
 
 #. [damage]: id=did_spellbind
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:301
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:302
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:309
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:310
 msgid ""
 "When this attack is used, the damage taken from fire, cold, and arcane "
 "attacks will be reduced by 60%."
 msgstr ""
 
 #. [drains]: id=did_reap
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:317
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:325
 msgid "reap"
 msgstr ""
 
 #. [drains]: id=did_reap
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:318
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:326
 msgid "This unit heals for 70% of the damage this attack deals."
 msgstr ""
 
 #. [dummy]: id=did_soul_rend
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:325
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:326
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:333
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:334
 msgid "soul rend"
 msgstr ""
 
 #. [dummy]: id=did_soul_rend
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:327
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:328
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:335
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:336
 msgid ""
 "Every turn, this unit loses 5 hitpoints, but drains 4 hitpoints from each "
 "adjacent enemy."
 msgstr ""
 
 #. [damage]: id=did_malevolence
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:421
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:422
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:429
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:430
 msgid "malevolence"
 msgstr ""
 
 #. [damage]: id=did_malevolence
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:423
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:424
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:431
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:432
 msgid ""
 "This attack gains 50% damage on offense, but causes this unit to lose 1 hp "
 "per hit."
 msgstr ""
 
 #. [swarm]: id=did_hysteria
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:438
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:446
 msgid "hysteria"
 msgstr ""
 
 #. [swarm]: id=did_hysteria
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:439
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:447
 msgid "This attack gains up to 10 strikes when this unit is wounded."
 msgstr ""
 
 #. [leadership]: id=sorrow
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:449
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:465
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:457
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:473
 msgid "sorrow"
 msgstr ""
 
 #. [leadership]: id=sorrow
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:450
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:458
 msgid "Adjacent enemy units do 20% less damage."
 msgstr ""
 
 #. [leadership]: id=sorrow
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:466
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:474
 msgid "Adjacent enemy units do 40% less damage."
 msgstr ""
 
 #. [heal_on_hit]: id=did_vitalize1
 #. [heal_on_hit]: id=did_vitalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:482
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:491
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:490
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:499
 msgid "vitalize"
 msgstr ""
 
 #. [heal_on_hit]: id=did_vitalize1
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:483
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:491
 msgid "This unit heals 2 HP every time this attack hits."
 msgstr ""
 
 #. [heal_on_hit]: id=did_vitalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:492
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:500
 msgid "This unit heals 4 HP every time this attack hits."
 msgstr ""
 
 #. [attacks]: id=did_fervor
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:499
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:500
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:507
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:508
 msgid "fervor"
 msgstr ""
 
 #. [attacks]: id=did_fervor
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:501
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:502
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:509
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:510
 msgid ""
 "This attack gains 2 attacks on offense, but causes this unit to lose 4 hp "
 "per hit."
 msgstr ""
 
 #. [attacks]: id=did_impetuity
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:516
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:517
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:524
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:525
 msgid "impetuity"
 msgstr ""
 
 #. [attacks]: id=did_impetuity
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:518
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:519
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:526
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:527
 msgid ""
 "This attack loses one strike on offense but deals three times the normal "
 "damage."
 msgstr ""
 
 #. [attacks]: id=did_corpse_launcher
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:533
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:541
 msgid "corpse launcher"
 msgstr ""
 
 #. [attacks]: id=did_corpse_launcher
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:534
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:542
 msgid ""
 "On offense, enemies cannot retaliate against this attack. This attack "
 "consumes 3 HP from each nearby allied corpse to deal 11 impact damage (per "
@@ -5487,93 +5477,93 @@ msgid ""
 msgstr ""
 
 #. [leadership]: id=did_consumption
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:660
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:668
 msgid "consumption"
 msgstr ""
 
 #. [leadership]: id=did_consumption
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:661
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:669
 msgid ""
 "At night, this unit and adjacent allied undead gain 25% damage. However, "
 "this unit loses 2 HP per turn."
 msgstr ""
 
 #. [heals]: id=did_corpse_master
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:722
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:730
 msgid "corpse master"
 msgstr ""
 
 #. [heals]: id=did_corpse_master
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:723
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:731
 msgid ""
 "Adjacent allied corpses heal 6 HP per turn and gain 20% resistance to blade, "
 "impact, and pierce."
 msgstr ""
 
 #. [leadership]: id=did_zombie_frenzy
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:757
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:765
 msgid "zombie frenzy"
 msgstr ""
 
 #. [leadership]: id=did_zombie_frenzy
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:758
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:766
 msgid "Adjacent allied corpses gain 30% damage and are berserk."
 msgstr ""
 
 #. [regenerate]: id=did_cannibalize1
 #. [regenerate]: id=did_cannibalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:788
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:873
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:796
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:881
 msgid "cannibalize"
 msgstr ""
 
 #. [regenerate]: id=did_cannibalize1
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:789
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:797
 msgid ""
 "On each turn, this unit regenerates 2 HP per adjacent allied ghoul-type "
 "unit, but consumes 1 HP from each ally in the process."
 msgstr ""
 
 #. [regenerate]: id=did_cannibalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:874
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:882
 msgid ""
 "On each turn, this unit regenerates 4 HP per adjacent allied ghoul-type "
 "unit, but consumes 2 HP from each ally in the process."
 msgstr ""
 
 #. [dummy]: id=did_death_cloud
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:956
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:964
 msgid "death cloud"
 msgstr ""
 
 #. [dummy]: id=did_death_cloud
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:957
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:965
 msgid ""
 "This unit poisons all nearby enemy units on the start of every new turn."
 msgstr ""
 
 #. [resistance]: id=did_drunk
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1002
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1010
 msgid "drunk"
 msgstr ""
 
 #. [resistance]: id=did_drunk
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1003
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1011
 msgid "female^drunk"
 msgstr ""
 
 #. [resistance]: id=did_drunk
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1004
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1012
 msgid "This unit is drunk and has 10% increased resistances."
 msgstr ""
 
 #. [berserk]: id=did_drunken_rage
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1012
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1020
 msgid "drunken rage"
 msgstr ""
 
 #. [berserk]: id=did_drunken_rage
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1013
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1021
 msgid "On offense, this attack presses the engagement for 4 rounds of attacks."
 msgstr ""
 

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-25 23:55 UTC\n"
+"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
 "PO-Revision-Date: 2020-08-25 23:55 UTC\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: tl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tl\n"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:4
 msgid "heroic"
@@ -62,10 +62,10 @@ msgstr ""
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:10
 msgid ""
 "Units are defined as pairs in recruit list: Every time a unit is recruited, "
-"it is remplaced by its pair. This era is designed to be balanced playing "
+"it is replaced by its pair. This era is designed to be balanced playing "
 "World Conquest II.\n"
-"Includes an in-game help to know pairs status, with a right-click on an emty "
-"hex."
+"Includes an in-game help to know pairs status, with a right-click on an "
+"empty hex."
 msgstr ""
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:14
@@ -129,7 +129,7 @@ msgid "Lose your leader and all your commanders"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:10
-msgid "An in-game help is available: rightclick on any empty hex."
+msgid "An in-game help is available: right-click on any empty hex."
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:13
@@ -148,12 +148,12 @@ msgid "You are not using a WC2 faction."
 msgstr ""
 
 #. [lua]: artifacts.give_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:144
+#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:146
 msgid "I cannot pick up that item."
 msgstr ""
 
 #. [lua]: wesnoth.wml_actions.wc2_show_item_info
-#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:226
+#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:228
 msgid "Remind me what this item does"
 msgstr ""
 
@@ -168,14 +168,14 @@ msgid "$name's $type"
 msgstr ""
 
 #. [lua]: bonus.found_artifact
-#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:147
+#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:149
 msgid "Hey, I found some treasure!"
 msgstr ""
 
 #. [lua]: bonus.found_hero
 #. [lua]: bonus.found_training
-#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:162
-#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:194
+#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:164
+#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:196
 msgid "Someone is here!"
 msgstr ""
 
@@ -496,7 +496,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:13
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:17
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:63
-msgid "Cementery"
+msgid "Cemetery"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
@@ -1038,7 +1038,7 @@ msgstr ""
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:39
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:65
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
 msgid "Artifacts"
 msgstr ""
 
@@ -1050,7 +1050,7 @@ msgstr ""
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:63
 msgid ""
-"Commanders will take your leaders place when the leader dies, possible "
+"Commanders will take your leader’s place when the leader dies, possible "
 "commanders:"
 msgstr ""
 
@@ -1076,7 +1076,7 @@ msgstr ""
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:108
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:63
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
 msgid "Training"
 msgstr ""
 
@@ -1120,7 +1120,7 @@ msgid "You got"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_tellunit.lua:48
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 #. [lua]: show_dialog
@@ -1143,7 +1143,7 @@ msgid "No! This is the end!"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/promote_commander.lua:6
-msgid "Don't lose heart comrades, we can still win this battle."
+msgid "Don’t lose heart comrades, we can still win this battle."
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/random_names.lua:3
@@ -1464,8 +1464,8 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:5
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:61
 msgid ""
-"You guys look like you could use some help. Mind if I join in? It's been a "
-"while since I had a good fight!"
+"You look like you could use some help. Mind if I join in? It’s been a while "
+"since I had a good fight!"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:6
@@ -1479,7 +1479,7 @@ msgid "Excellent. We could always use more help."
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:9
-msgid "'bout time. Been forever since I had a good fight, eh?"
+msgid "’bout time. Been forever since I had a good fight, eh?"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:14
@@ -1493,7 +1493,7 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:24
-msgid "Heya, boss. Looks like you've got some guys need killing."
+msgid "Hey boss. Looks like you’ve got some prey that need killing."
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:29
@@ -1501,14 +1501,14 @@ msgid "I hunts. I join you, I hunts good for you!"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:34
-msgid "Ok. But take care where your dog does its stuff."
+msgid "Very well. But take care where your dog does its stuff."
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:38
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:376
 msgid ""
 "Heh, looks like you whelps might be getting in over your heads. Good thing "
-"I'm here now to win this fight for ya, huh?"
+"I’m here now to win this fight for ya, huh?"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:43
@@ -1536,7 +1536,7 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:71
-msgid "Yea, flower power!"
+msgid "Yeah, flower power!"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:75
@@ -1564,8 +1564,8 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:103
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:141
 msgid ""
-"You're not from around here, but I seem to find myself between employers at "
-"the moment and I'm not picky. I'll fight for you, if you'll have me."
+"You’re not from around here, but I seem to find myself between employers at "
+"the moment and I’m not picky. I’ll fight for you, if you’ll have me."
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:108
@@ -1588,14 +1588,14 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:126
 msgid ""
-"Looks like you're a bit down on your luck, my friends. But now that I am "
-"here, there's nothing to worry about!"
+"Looks like you’re a bit down on your luck, my friends. But now that I am "
+"here, there’s nothing to worry about!"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:131
 msgid ""
-"Finally reinforcements are here! I've been pinned down for days. Help me "
-"fight my way out of here and I'll gladly follow you!"
+"Finally reinforcements are here! I’ve been pinned down for days. Help me "
+"fight my way out of here and I’ll gladly follow you!"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:136
@@ -1620,13 +1620,13 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:160
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:214
-msgid "Having trouble, eh? Never worry, lads, we'll sort 'em out soon enough!"
+msgid "Having trouble, eh? Never worry, lads, we’ll sort ’em out soon enough!"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:165
 msgid ""
-"You've got me, guv, it's a fair cop! Just lemme work for you instead. You "
-"won't regret it, guv, I promise!"
+"You’ve got me, guv, it’s a fair cop! Just lemme work for you instead. You "
+"won’t regret it, guv, I promise!"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:170
@@ -1638,7 +1638,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:175
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:310
 msgid ""
-"What, you want my help? A guy like me? Huh, that's rich. Oh well... let's "
+"What, you want my help? A guy like me? Huh, that’s rich. Oh well... let’s "
 "give it a shot, eh?"
 msgstr ""
 
@@ -1650,8 +1650,8 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:185
 msgid ""
-"Hey, hey, easy there! I done nothin' to hurt you. We're all friends here, "
-"right? Looks like you might be in a tight spot, but don't worry. No one's "
+"Hey, hey, easy there! I done nothin’ to hurt you. We’re all friends here, "
+"right? Looks like you might be in a tight spot, but don’t worry. No one’s "
 "better at getting out of tight spots than me, boss!"
 msgstr ""
 
@@ -1668,7 +1668,7 @@ msgid "Brave words. Welcome little big man."
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:202
-msgid "Need a hand? Me an' me bird can get just about anywheres you need."
+msgid "Need a hand? Me an’ me bird can get just about anywheres you need."
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:207
@@ -1699,7 +1699,7 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:234
-msgid "Perfect. We can always use more fire power."
+msgid "Perfect. We can always use more firepower."
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:238
@@ -1713,8 +1713,8 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:247
 msgid ""
-"You may be out to take over the land and the seas, but you'll never get "
-"anywhere without control of the skies. Fortunately I'm here to help you!"
+"You may be out to take over the land and the seas, but you’ll never get "
+"anywhere without control of the skies. Fortunately I’m here to help you!"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:256
@@ -1725,7 +1725,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:261
 msgid ""
-"Don't hit me! I'm just your average regular friendly talking skeleton, see? "
+"Don’t hit me! I’m just your average regular friendly talking skeleton, see? "
 "Looks like you fellows could use some help!"
 msgstr ""
 
@@ -1737,8 +1737,8 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:271
 msgid ""
-"I say, old sport! It looks like you've got a spot of bother. Well, chin up, "
-"I say! I'm sure we'll make a simply smashing team-up. We can sort this lot "
+"I say, old sport! It looks like you’ve got a spot of bother. Well, chin up, "
+"I say! I’m sure we’ll make a simply smashing team-up. We can sort this lot "
 "out and be done by tea, what?"
 msgstr ""
 
@@ -1794,7 +1794,7 @@ msgid "..."
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:331
-msgid "Odd, it doesn't seem to attack. I wonder if we can use it?"
+msgid "Odd, it doesn’t seem to attack. I wonder if we can use it?"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:339
@@ -1808,190 +1808,191 @@ msgid "...fine. I guess."
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:36
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:17
 msgid "Game Mechanics"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:38
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:19
 msgid "<b>Gold</b>:\n"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:39
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:20
 msgid ""
-"Carryover is 15%, comunitary and avoid negative amounts. Early finish bonus "
-"is superior to village control, but it is not directly related to their "
-"amount.\n"
+"Carryover rate is 15% and split evenly among players. Negative amounts will "
+"not carry over. Early finish bonus is superior to village control, but it is "
+"not directly related to the carryover amount.\n"
 "\n"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:40
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:21
 msgid "<b>Autorecall</b>:\n"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:41
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:61
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:22
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:42
 msgid ""
-"Units with trait HEROIC are recalled at start of each scenario with no cost "
-"(up to castle size).\n"
+"Units with trait HEROIC are recalled at the start of each scenario with no "
+"cost (up to castle size).\n"
 "\n"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:42
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:23
 msgid "<b>Recall Cost</b>:\n"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:24
 msgid ""
 "Units costing less than 17 gold are cheaper to recall.\n"
 "\n"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
-msgid "<b>Trainings</b>:\n"
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:25
+msgid "<b>Training</b>:\n"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:26
 msgid ""
-"Every time you recruit a new unit, your trainings levels will be applied. "
-"Every chance will do different dice rolls, if a unit gains training "
-"beneficts, you can see them in a trait \"trained\".\n"
+"Every time you recruit a new unit, your training levels will be applied. If "
+"a unit gains training benefits, you can see them with the trait \"trained\". "
+"Each unit’s chance of gaining training benefits is independent of "
+"another’s.\n"
 "\n"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:27
 msgid "<b>Upkeep</b>:\n"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:47
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:28
 msgid ""
 "Units with trait HEROIC or holding any magic ITEM have FREE upkeep.\n"
 "\n"
 msgstr ""
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:48
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:29
 msgid "<b>Bonus Points</b>:\n"
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:30
+msgid ""
+"In every scenario the game generates as many bonus points on the map as "
+"there are players in the game, the bonus points can be picked up by player "
+"units and either contain artifacts, loyal units, or training.\n"
+"\n"
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:31
+msgid "<b>Army discipline</b>:\n"
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:32
+msgid ""
+"At scenarios 1 to 3, for each training level players already own, trainers "
+"found have 2% to 4% chance to become advanced trainers (provide 2 levels). "
+"Becomes irrelevant from scenario 4 onwards because all trainers will always "
+"be advanced.\n"
+"\n"
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:34
+msgid "Feedback"
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:36
+msgid "<b>Feedback</b>:\n"
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:37
+msgid ""
+"For feedback please either post in the World Conquest II thread in the "
+"official Wesnoth forum https://r.wesnoth.org/t39651 or file an issue at "
+"GitHub https://github.com/gfgtdf/World_Conquest_II/issues .\n"
+"\n"
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:39
+msgid "Abilities"
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:41
+msgid "Ability <b>Autorecall</b>:\n"
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
+msgid ""
+"<b>Training</b>\n"
+"Training improves newly recruited units, it has no effect on already "
+"recruited units. The following list shows all available training, the "
+"training you currently have is marked in green."
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:47
+msgid ""
+"<b>Items</b>\n"
+"Items can be given to units to make them stronger. You can get artifacts in "
+"three ways: 1) By choosing an item as your starting bonus; 2) By finding it "
+"on a map in a bonus point; 3) By dropping from enemies in later scenarios. "
+"Note, however, that not all units can pick up all items."
+msgstr ""
+
+#. [lua]: preshow
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:48
+msgid "Factions"
 msgstr ""
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:49
 msgid ""
-"In every scenario the game generates as many bonus points on the map as "
-"there are players in the game, the bonus points can be picked up by player "
-"units and either contain artifacts, loyal units or training.\n"
-"\n"
+"<b>Factions</b>\n"
+" The World Conquest II era consists of factions that are built from pairs of "
+"mainline factions. One faction will have a healer available (Drakes, Rebels "
+"and Loyalists) and one will not (Orcs, Dwarves and Undead). The recruit list "
+"is also organized in pairs so that sometimes you will have to recruit a "
+"different unit before you can recruit the units that you want. The available "
+"heroes, deserters, and random leaders also depend on your factions; the "
+"items you can get do not depend on the faction you choose."
 msgstr ""
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:50
-msgid "<b>Army discipline</b>:\n"
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:51
-msgid ""
-"At scenarios 1 to 3, for each training level player already own, trainers "
-"found have 2% to 4% chance to become advanced trainers (provide 2 levels). "
-"Becomes irrelevant from scenario 4 because all trainers always will be "
-"advanced.\n"
-"\n"
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:53
-msgid "Feedback"
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:55
-msgid "<b>Feedback</b>:\n"
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:56
-msgid ""
-"For feedback plase either post in the Word conquest II thread in the "
-"official wesnoth forum https://r.wesnoth.org/t39651 or file an issue at "
-"github https://github.com/gfgtdf/World_Conquest_II/issues .\n"
-"\n"
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:58
-msgid "Abilities"
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:60
-msgid "Ability <b>Autorecall</b>:\n"
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:64
-msgid ""
-"<b>Training</b>\n"
-"Training improves newly recruited units, it has no effect on already "
-"recruited units. The follwing list shows all available trainings, the "
-"training you currently have is marked in green."
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:66
-msgid ""
-"<b>Items</b>\n"
-"Items can be given to units to make them stronger. You can get artifcats in "
-"three ways: 1) By choosing an item as your starting bonus, 2) By finding it "
-"on a map in a bonus point, 3) By dropping from enemies in later scenarios. "
-"Note however that not all units can pickup all items."
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:67
-msgid "Factions"
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:68
-msgid ""
-"<b>Factions</b>\n"
-" The Word Conquest 2 era consists of faction that are build of pairs of "
-"mainline faction of which at one has a healer available (Drakes, Rebels and "
-"Loyalists), and one does not (Orcs, Dwarves and Undead) the recruilist is "
-"also organized in pairs so that you sometimes have to recruit a different "
-"units before you can recruit the units that you want. The available heroes, "
-"desertes and random leaders also depend on your factions, the items you can "
-"get do not depend on the faction you choose."
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:69
 msgid "Settings"
 msgstr ""
 
 #. [lua]: type_icon
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:181
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:176
 msgid " (not available for enemies)"
 msgstr ""
 
 #. [lua]: type_icon
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:182
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:177
 msgid " (not available for players)"
 msgstr ""
 
-#. [lua]: type_icon
+#. [lua]: root_node.callback
 #. [lua]: GUI_FORCE_WIDGET_MINIMUM_SIZE
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:261
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help_dialog.lua:78
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:250
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help_dialog.lua:79
 msgid "WoCopedia"
 msgstr ""
 
@@ -2035,7 +2036,7 @@ msgstr ""
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:44
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:58
-msgid "Victory is ours! Let us take sail in search of new lands to conquer!"
+msgid "Victory is ours! Let us set sail in search of new lands to conquer!"
 msgstr ""
 
 #. [lua]: end_message
@@ -2045,13 +2046,13 @@ msgstr ""
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:48
-msgid "What's this?! Foreign invaders have set foot upon our shores!"
+msgid "What’s this?! Foreign invaders have set foot upon our shores!"
 msgstr ""
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:49
 msgid ""
-"We'll send them back to where they came from quick enough. All troops, to me!"
+"We’ll send them back to where they came from quick enough. All troops, to me!"
 msgstr ""
 
 #. [lua]: end_message
@@ -2070,7 +2071,7 @@ msgstr ""
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:54
 msgid ""
-"What's this? It is a long time since strangers have set foot upon Moragdu--"
+"What’s this? It is a long time since strangers have set foot upon Moragdu — "
 "and in such great numbers too!"
 msgstr ""
 
@@ -2084,8 +2085,8 @@ msgstr ""
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:56
 msgid ""
-"I don't know what the lizard is babbling about, but we'll sort these "
-"'destroyers' out quickly enough."
+"I don’t know what the lizard is babbling about, but we’ll sort these "
+"‘destroyers’ out quickly enough."
 msgstr ""
 
 #. [lua]: end_message
@@ -2108,7 +2109,7 @@ msgstr ""
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:64
 msgid ""
-"Hah! We didn't come all this way just to give up and go home. We will "
+"Hah! We didn’t come all this way just to give up and go home. We will "
 "destroy you as we have destroyed all that have stood before us!"
 msgstr ""
 
@@ -2119,7 +2120,7 @@ msgstr ""
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:66
-msgid "You are not the only ones with allies! We'll push on till the end!"
+msgid "You are not the only ones with allies! We’ll push on till the end!"
 msgstr ""
 
 #. [lua]: end_message
@@ -2131,14 +2132,14 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:69
 msgid ""
 "We have travelled great oceans and brought low mighty empires. Should we not "
-"wait until regain our forces?"
+"wait until our forces regain their strength?"
 msgstr ""
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:70
 msgid ""
 "One last effort! We better finish our campaign when we hold initiative, "
-"before Winter's arrive."
+"before Winter arrives."
 msgstr ""
 
 #. [lua]: end_message
@@ -2167,7 +2168,7 @@ msgstr ""
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
-msgid "That's it, our work is done here!"
+msgid "That’s it, our work is done here!"
 msgstr ""
 
 #. [lua]: end_message
@@ -2177,7 +2178,7 @@ msgstr ""
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:81
-msgid "It was hard, but I almost regreat the fun is over."
+msgid "It was hard, but I almost regret the fun is over."
 msgstr ""
 
 #. [lua]: end_message
@@ -2207,7 +2208,7 @@ msgstr ""
 #. [lua]: wesnoth.wml_actions.wc2_pya_pick
 #: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:41
 msgid ""
-"Currently I'm set to advance towards: $name \n"
+"Currently I’m set to advance towards: $name \n"
 "\n"
 "What are your new orders?"
 msgstr ""
@@ -2227,12 +2228,12 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:7
 msgid ""
-"The sturdy plates of this lightweight armor increase the user's physical "
+"The sturdy plates of this lightweight armor increase the user’s physical "
 "resistances (to a maximum of 10%) and grants the steadfast ability."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:10
-msgid "Assassin's ring"
+msgid "Assassin’s ring"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:13
@@ -2268,7 +2269,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:31
 msgid ""
-"This pulsing ring empowers the bearer's melee attacks with the ability to "
+"This pulsing ring empowers the bearer’s melee attacks with the ability to "
 "drain lifeforce from their victim."
 msgstr ""
 
@@ -2287,12 +2288,12 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:43
 msgid ""
-"This enchanted longbow enhances the wielder's ranged attacks with uncanny "
+"This enchanted longbow enhances the wielder’s ranged attacks with uncanny "
 "precision and increased damage."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:46
-msgid "Forbidden grimorie"
+msgid "Forbidden grimoire"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:49
@@ -2312,18 +2313,18 @@ msgstr ""
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:58
 msgid ""
 "Charged with intense magic, this shield generates a forcefield causing "
-"adjacent enemies to inflict less damage around wielder."
+"adjacent enemies to inflict less damage around the wielder."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:61
-msgid "Ghast's marrow"
+msgid "Ghast’s marrow"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:64
 msgid ""
 "This grisly concoction instills the drinker with an insatiable unholy hunger "
-"for more blood. Everytime a foe is slain, a part of his lifeforce is "
-"eternally claimed by the through arcane ghoulish powers."
+"for more blood. Every time a foe is slain, a part of his lifeforce is "
+"eternally claimed through arcane ghoulish powers."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:67
@@ -2332,7 +2333,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:70
 msgid ""
-" Dwarven Forged, this blunt weapon mimics the crushing power of the Wose."
+" Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:73
@@ -2342,7 +2343,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:76
 msgid ""
 "This enchanted spear drives the owner to commit himself to his rage. A "
-"unit's melee strikes are doubled in power when attacking, but the same is "
+"unit’s melee strikes are doubled in power when attacking, but the same is "
 "true for the retaliation strike of the defender."
 msgstr ""
 
@@ -2352,7 +2353,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:82
 msgid ""
-"This magic orb infuses the wielder's melee attacks with fiery power, "
+"This magic orb infuses the wielder’s melee attacks with fiery power, "
 "changing their damage type. It also improves fire resistance."
 msgstr ""
 
@@ -2362,7 +2363,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:88
 msgid ""
-"This holy armor of thin gold radiates pure light, illuminating the bearer's "
+"This holy armor of thin gold radiates pure light, illuminating the bearer’s "
 "body and soul. This effect will heal allies, blind evil, and preemptively "
 "smite those who seek to do harm."
 msgstr ""
@@ -2403,8 +2404,8 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:112
 msgid ""
-"This exotic drug of organic origin enhances user's vitality and awareness. "
-"It has no effect consumed by undead."
+"This exotic drug of organic origin enhances user’s vitality and awareness. "
+"It has no effect when consumed by undead."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:115
@@ -2413,7 +2414,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:118
 msgid ""
-"This frigid ring envelops the user's melee attacks with icy cold, changing "
+"This frigid ring envelops the user’s melee attacks with icy cold, changing "
 "their damage to cold and allowing them to inflict deathly chills that slow "
 "the enemy."
 msgstr ""
@@ -2434,7 +2435,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:130
 msgid ""
-"This magic sword empowers the wielder's melee attacks with the magical "
+"This magic sword empowers the wielder’s melee attacks with the magical "
 "property."
 msgstr ""
 
@@ -2504,7 +2505,7 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:175
-msgid "Trollsblood potion"
+msgid "Trolls blood potion"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:178
@@ -2512,12 +2513,12 @@ msgid "This foul-smelling potion allows the imbiber to regenerate health."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:181
-msgid "Oinment of venom"
+msgid "Ointment of venom"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:184
 msgid ""
-"This deadly poison envenoms the user's blade and pierce attacks, increasing "
+"This deadly poison envenoms the user’s blade and pierce attacks, increasing "
 "damage and allowing them to inflict poison."
 msgstr ""
 
@@ -2531,8 +2532,8 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:193
 msgid ""
-"This inspiring banner rallies the bearer's allies to war, imparting a damage "
-"bonus to the allied units around."
+"This inspiring banner rallies the bearer’s allies to war, imparting a damage "
+"bonus to the allied units around it."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:196
@@ -2547,7 +2548,7 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:202
-msgid "Winter's bloom"
+msgid "Winter’s bloom"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:205
@@ -2595,9 +2596,9 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:22
 msgid ""
-"This unit corrupts adjacent enemies at the beginning of our turn. Currupted "
-"units lose 6 HP or are reduced to 1 HP. Corruption can not, of itself, kill "
-"a unit."
+"This unit corrupts adjacent enemies at the beginning of our turn. Corrupted "
+"units lose 6 HP or are reduced to 1 HP. Corruption cannot, of itself, kill a "
+"unit."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:25
@@ -2606,9 +2607,9 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:28
 msgid ""
-"This unit darks the surrounding area, making chaotic units fight better, and "
-"lawful units fight worse. Any units adjacent to this unit will fight as if "
-"it were dusk when it is day, and as if it were night when it is dusk."
+"This unit darkens the surrounding area, making chaotic units fight better, "
+"and lawful units fight worse. Any units adjacent to this unit will fight as "
+"if it were dusk when it is day, and as if it were night when it is dusk."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:31
@@ -2625,7 +2626,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:40
 msgid ""
-"Full movement and up to 50 defenses in all terrains but cave or mushroom "
+"Full movement and up to 50% defense in all terrains but cave or mushroom "
 "grove."
 msgstr ""
 
@@ -2635,7 +2636,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:46
 msgid ""
-"Full movement and up to 60 defenses in water or swamp and up to 70 defense "
+"Full movement and up to 60% defense in water or swamp and up to 70% defense "
 "in reef."
 msgstr ""
 
@@ -2690,7 +2691,7 @@ msgid "improved defenses"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:85
-msgid "no undead^consumed by a living beign:"
+msgid "no undead^consumed by a living being:"
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/effects.cfg:88
@@ -2717,7 +2718,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:7
 msgid ""
-"Looks like you could use some help. A grizzled old veteran like me won't be "
+"Looks like you could use some help. A grizzled old veteran like me won’t be "
 "much use on the field, but I bet I can teach your men a thing or two about "
 "swordplay."
 msgstr ""
@@ -2739,9 +2740,9 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:19
 msgid ""
-"Looks like a pretty grim fight you've got up ahead. I've got too many "
-"troubles of my own to join in, but stick about a whiles and I'll put some "
-"steel in your backbone. When I'm through with you you'll be able to keep on "
+"Looks like a pretty grim fight you’ve got up ahead. I’ve got too many "
+"troubles of my own to join in, but stick about a while and I’ll put some "
+"steel in your backbone. When I’m through with you you’ll be able to keep on "
 "going no matter the odds!"
 msgstr ""
 
@@ -2751,10 +2752,10 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:25
 msgid ""
-"What, you want me to join the fight? Quite out of the question, old boy! I'm "
-"afraid battlefields just aren't my scene - no drama, no style, no romance! "
-"No finesse at all! You probably wouldn't understand, so let me show you. "
-"I'll teach you how to break out of those dreary marching formations and step "
+"What, you want me to join the fight? Quite out of the question, old boy! I’m "
+"afraid battlefields just aren’t my scene - no drama, no style, no romance! "
+"No finesse at all! You probably wouldn’t understand, so let me show you. "
+"I’ll teach you how to break out of those dreary marching formations and step "
 "light as a feather!"
 msgstr ""
 
@@ -2765,8 +2766,8 @@ msgstr ""
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:31
 msgid ""
 " Join the battle? Nay, lads, my talents would be wasted on the frontlines. "
-"Give me some raw recruits to work with, though, and I'll whip 'em into shape "
-"for you. I know what real battle is like; by the time I'm through with 'em, "
+"Give me some raw recruits to work with, though, and I’ll whip ’em into shape "
+"for you. I know what real battle is like; by the time I’m through with ’em, "
 "your newbies might have some idea of it too."
 msgstr ""
 
@@ -2776,6 +2777,6 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/training.cfg:37
 msgid ""
-"I haven't lived centuries fighting other's battles, but I could combat "
-"boredown teaching your men a couple of things about dark techniques."
+"I haven’t lived centuries fighting others’ battles, but I could combat "
+"boredom teaching your men a couple of things about dark techniques."
 msgstr ""

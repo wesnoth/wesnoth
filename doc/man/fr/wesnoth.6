@@ -70,7 +70,8 @@ L'identifiant du scénario de la campagne spécifiée. La valeur par défaut est
 le premier scénario.
 .TP 
 \fB\-c, \-\-campaign\-skip\-story\fP
-Skip [story] screens and dialog through the end of the \fBstart\fP event.
+Passe l'écran d'[histoire] et de dialogues jusqu'à la fin de l'événement
+\fBstart\fP
 .TP 
 \fB\-\-clock\fP
 Ajoute une option affichant une horloge pour tester les affichages dépendant
@@ -169,9 +170,11 @@ utilisées avec \fB\-\-multiplayer\fP\ comme expliqué ci\-dessous.
 Charge les scénarios de test multijoueurs.
 .TP 
 \fB\-\-new\-widgets\fP
-there is a new WIP widget toolkit, this option enables it. This is very
-experimental, don't fill bug reports since most are known. Parts of the
-library are deemed stable and will work without this switch.
+une nouvelle boîte à outils d'objets graphiques est en cours de
+développement, cette option l'active. Etant très expérimentale, ne saisissez
+pas de rapport de bogue, car ils sont généralement connus. Certaines parties
+de la bibliothèque sont réputées stables et fonctionneront sans ce
+paramètre.
 .TP 
 \fB\-\-nodelay\fP
 runs the game without any delays for graphic benchmarking. This is
@@ -207,9 +210,10 @@ Utilise \fImot de passe\fP lors de la connexion à un serveur, en ignorant
 d'autres préférences. Dangereux.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-(experimental) load a \fIscript\fP which defines a Wesnoth plugin. Similar to
-\fB\-\-script\fP, but Lua file should return a function which will be run as a
-coroutine and periodically woken up with updates.
+(expérimental) charge un \fIscript\fP qui défini un plugin Wesnoth. Similaire à
+\fB\-\-script\fP, mais le fichier Lua devrait retourner une fonction qui sera
+exécutée comme une coroutine et réveillée périodiquement avec des mises à
+jour.
 .TP 
 \fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 applies a DiffWML patch to a WML file; does not preprocess either of the
@@ -262,8 +266,9 @@ indique le \fImot de passe\fP du proxy.
 Définit la résolution de l'écran. Exemple\ : \fB\-r\fP \fB800x600\fP.
 .TP 
 \fB\-\-render\-image\fP\fI\ image\fP\fB\ \fP\fIsortie\fP
-takes a valid wesnoth 'image path string' with image path functions, and
-outputs to a .png file. Image path functions are documented at
+prend une « chaîne de caractères de chemin Wesnoth » valide, avec une
+fonction de chemin d'image, puis produit un fichier .png. Les fonctions de
+chemin d'image sont documentées à l'adresse :
 https://wiki.wesnoth.org/ImagePathFunctionWML.
 .TP 
 \fB\-R,\ \-\-report\fP
@@ -279,7 +284,7 @@ Sauvegarde une capture d'écran de \fIcarte\fP vers \fIsortie\fP sans initialise
 d'écran.
 .TP 
 \fB\-\-script\fP\fI\ fichier_d'entrée\fP
-(experimental)  \fIfile\fP containing a Lua script to control the client.
+(expérimental)  \fIfile\fP contenant un script Lua qui contrôle le client.
 .TP 
 \fB\-s[\fP\fIhôte\fP\fB],\ \-\-server[\fP\fI=hôte\fP\fB]\fP
 se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au
@@ -309,9 +314,10 @@ Lance le scénario de test indiqué comme un test unitaire. Implique
 \fB\-\-nogui\fP.
 .TP 
 \fB\-\-unsafe\-scripts\fP
-makes the \fBpackage\fP package available to lua scripts, so that they can load
-arbitrary packages. Do not do this with untrusted scripts! This action gives
-lua the same permissions as the wesnoth executable.
+rend le package \fBpackage\fP disponible aux scripts Lua, ainsi ils peuvent
+charger n'importe quel package. Ne faites cela qu'avec des scripts de
+confiance ! Cette action donne aux scripts Lua les mêmes permissions que
+l'exécutable de Wesnoth.
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ path\fP
 sets the WML schema for use with \fB\-V,\-\-validate\fP.
@@ -434,12 +440,12 @@ Le statut de sortie normal est 0. Un code de sortie de 1 indique une erreur
 (SDL, vidéo, police, etc.). Un code de sortie de 2 indique une erreur avec
 les options de ligne de commande.
 .br
-When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
-status of 0 indicates that the test passed, and 1 indicates that the test
-failed. An exit status of 3 indicates that the test passed, but produced an
-invalid replay file. An exit status of 4 indicates that the test passed, but
-the replay produced errors. These latter two are only returned if
-\fB\-\-noreplaycheck\fP is not passed.
+Lors de l'exécution des tests unitaires (avec \fB\ \-u\fP), le statut de sortie
+est différent. Un statut de 0 indique que le test est passé, de 1 indique
+que le test a échoué. Un statut de 3 indique que le test est passé, mais que
+le fichier de rejeu est invalide. Un statut de 4 indique que le test est
+passé, mais que le rejeu à produit des erreurs. Ces deux derniers statuts
+sont retournés si \fB\-\-noreplaycheck\fP n'est pas spécifié.
 .
 .SH AUTEUR
 .

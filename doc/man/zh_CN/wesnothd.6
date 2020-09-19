@@ -173,12 +173,8 @@ being used from logging in. (default: false)
 这个标签用于告诉服务器扮演代理服务器角色，把连接在本服务器上的用户的请求转发到指定的服务器。与\fB[redirect]\fP接受一样的主键。
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service. All additional tables that are
-needed for the \fBforum_user_handler\fP to function can be found in
-table_definitions.sql in the Wesnoth source repository.
+\fB[user_handler]\fP
+配置用户数据处理器。可设置的主键取决于通过\fBuser_handler\fP设置的用户数据处理器是哪一个。如果配置文件中没有\fB[user_handler]\fP小节，则服务器在运行中将不提供任何昵称注册服务。\fBforum_user_handler\fP正常运作所需的额外数据表可以在韦诺源代码库的table_definitions.sql中找到。
 .RS
 .TP 
 \fBdb_host\fP

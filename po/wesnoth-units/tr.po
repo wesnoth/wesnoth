@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-22 04:15 UTC\n"
+"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
 "PO-Revision-Date: 2020-08-05 03:56+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -340,6 +340,7 @@ msgid "saber"
 msgstr "eskrim kılıcı"
 
 #. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -351,7 +352,6 @@ msgstr "eskrim kılıcı"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:108
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:123
@@ -403,8 +403,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:36
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:36
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:111
@@ -486,8 +486,8 @@ msgstr "veba sopası"
 msgid "curse"
 msgstr "beddua"
 
-#. [attack]: type=blade
 #. [attack]: type=pierce
+#. [attack]: type=blade
 #. [unit_type]: id=SotA Walking Corpse_Wolf
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Flying Corpse_Bat
@@ -1104,8 +1104,8 @@ msgstr ""
 "Diğer ejderlerle karşılaştırıldığında, Zırhlı Ejder 'delme' saldırılarına "
 "daha dirençlidir."
 
-#. [attack]: type=blade
 #. [attack]: type=pierce
+#. [attack]: type=blade
 #: data/core/units/drakes/Arbiter.cfg:31 data/core/units/drakes/Arbiter.cfg:40
 #: data/core/units/drakes/Warden.cfg:32 data/core/units/drakes/Warden.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:32
@@ -4650,7 +4650,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Bandit.cfg:29
 #: data/core/units/humans/Outlaw_Fugitive.cfg:29
 #: data/core/units/humans/Outlaw_Highwayman.cfg:24
-#: data/core/units/humans/Royal_Warrior.cfg:28
+#: data/core/units/humans/Royal_Warrior.cfg:29
 msgid "morning star"
 msgstr "sabah yıldızı"
 
@@ -4906,7 +4906,7 @@ msgid "Royal Warrior"
 msgstr "Asil Savaşçı"
 
 #. [unit_type]: id=Royal Warrior, race=human
-#: data/core/units/humans/Royal_Warrior.cfg:24
+#: data/core/units/humans/Royal_Warrior.cfg:25
 msgid ""
 "The kings and princes of human nobility are still often trained rigorously "
 "in the combat arts, partly out of tradition from when their ancestors made "
@@ -5769,9 +5769,9 @@ msgstr ""
 msgid "Wolf"
 msgstr "Genç Kurt"
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19

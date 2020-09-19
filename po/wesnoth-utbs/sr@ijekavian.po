@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-utbs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-22 04:14 UTC\n"
+"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
 "PO-Revision-Date: 2012-01-07 13:20+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:11
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:249
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:242
 msgid "Under the Burning Suns"
 msgstr "Под ужареним сунцима"
 
@@ -74,8 +74,8 @@ msgstr "(нормално)"
 msgid "Challenging"
 msgstr "(изазовно)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [advancement]: id=warrior_1
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:44
 #, fuzzy
@@ -180,10 +180,10 @@ msgstr "Калех од квенотских вилењака"
 msgid "Monsters"
 msgstr "Немани"
 
+#. [side]
 #. [side]: id=Panok, type=Direwolf Rider, type=Goblin Knight
 #. [side]: id=Turg, type=Orcish Warrior, type=Orcish Warlord
 #. [side]: id=Ug'lok, type=Orcish Warrior, type=Orcish Warlord
-#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:98
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:55
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:101
@@ -3504,8 +3504,8 @@ msgstr ""
 "уплив натјера довдје, не знам зашто ми се учини да би од тога могло испасти "
 "ишта добро."
 
-#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #. [unit]: type=Dark Assassin1, id=Cloaked Figure
+#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #. [unit]: type=Dark Assassin3, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:966
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2067
@@ -4534,7 +4534,7 @@ msgstr "Осветиће ме..."
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2366
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:328
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1449
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1455
 msgid "Zurg"
 msgstr "Зург"
 
@@ -4763,7 +4763,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2637
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1786
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1781
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1787
 msgid ""
 "Oh no, we took too long and enemy reinforcements have arrived. We’ll surely "
 "be overwhelmed now!"
@@ -4912,10 +4912,10 @@ msgstr "Кад распоредите своје снаге на положај�
 msgid "Troll Brute"
 msgstr "трол-силеџија"
 
-#. [event]
 #. [unit]: type=Troll
 #. [unit]: type=Troll Rocklobber
 #. [unit]: type=Troll Whelp
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:480
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:483
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:487
@@ -4973,8 +4973,8 @@ msgstr "рањени патуљак"
 msgid "Tell us where your leader is hiding!"
 msgstr "Реци нам гдје се скрива ваш вођ!"
 
-#. [message]: speaker=Kaleh
 #. [message]: speaker=Wounded Dwarf
+#. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:631
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:600
 msgid "Never!"
@@ -5275,7 +5275,7 @@ msgstr "Аргх! Проклети били! Да не доживите да в�
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1463
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1412
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1418
 msgid "And so, at last, it ends."
 msgstr "И тако, напокон, с тим је готово."
 
@@ -5507,7 +5507,7 @@ msgstr "Ова штапић чини да јединица у блиској б�
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1761
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1753
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1759
 msgid "On second thought, it’s better to leave the dead in peace."
 msgstr "С друге стране, боље је оставити мртве у миру."
 
@@ -5525,10 +5525,10 @@ msgstr "У царству патуљака"
 msgid "Enemies"
 msgstr "Непријатељи"
 
+#. [side]: id=Great Leader Darmog, type=Great Troll
 #. [side]: id=King Thurongar, type=Dwarvish Lord
 #. [side]: id=Melusand, type=Mermaid Diviner
 #. [side]
-#. [side]: id=Great Leader Darmog, type=Great Troll
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:73
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:52
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:53
@@ -5636,17 +5636,17 @@ msgstr "Када се размјестите на положаје, Зург ћ�
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:469
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:470
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:471
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:970
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:971
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:972
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:974
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:975
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:976
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:979
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:977
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:978
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:980
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:981
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:983
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:982
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:985
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:987
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:989
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:993
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:995
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:181
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:195
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:209
@@ -5747,22 +5747,22 @@ msgstr ""
 "насједнем на такву зврчку?"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:665
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:671
 msgid "No, it’s an elf!"
 msgstr ""
 
 #. [message]: id=Dwarf Sergeant
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:675
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:681
 msgid "What...?! Right... First task, boys, kill the intruder!"
 msgstr ""
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:681
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:687
 msgid "I’m too young to die, save me!"
 msgstr "Премлад сам да умрем, спасите ме!"
 
 #. [message]: speaker=Dwarf Sergeant
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:691
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:697
 msgid ""
 "Oh, grow a backbone... Huh? Hey, for once the runt was telling the truth. "
 "Come on, boys, kill the intruder!"
@@ -5771,17 +5771,17 @@ msgstr ""
 "момци, средимо уљеза!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:713
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:719
 msgid "I love you, Sarge..."
 msgstr "Волим вас, наредниче..."
 
 #. [unit]: type=Troll, id=Grog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:738
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:744
 msgid "Grog"
 msgstr "Грог"
 
 #. [message]: speaker=Vengeful Dwarf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:753
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:759
 msgid ""
 "Ha, you’re trapped. I’ve got you right where I want you, and this time no "
 "one is gonna save you."
@@ -5790,12 +5790,12 @@ msgstr ""
 "неће спасити."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:758
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:764
 msgid "How did a troll get stuck all the way back here?"
 msgstr "Како је један трол заглавио скроз овамо?"
 
 #. [message]: speaker=Grog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:780
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:786
 msgid ""
 "Thank you. Grog got lost and there were so many smelly dwarves. If you "
 "hadn’t come Grog would have been killed. Grog owes you his life."
@@ -5805,22 +5805,22 @@ msgstr ""
 
 #. [message]: speaker=East Scout
 #. [message]: speaker=West Scout
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:817
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:894
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:823
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:900
 msgid "Here they come! Blow the charges!"
 msgstr "Ево их долазе! Активирајте пуњења!"
 
 #. [message]: speaker=East Scout
 #. [message]: speaker=West Scout
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:852
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:929
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:858
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:935
 msgid "They’re coming this way too! Blow the charges!"
 msgstr "Долазе и са ове стране! Дижи то у ваздух!"
 
 #. [message]: speaker=East Scout
 #. [message]: speaker=West Scout
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:864
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:941
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:870
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:947
 #, fuzzy
 #| msgid ""
 #| "What?! Nothing happened! Who in Moradin’s name rigged the darn charges "
@@ -5834,12 +5834,12 @@ msgstr ""
 
 # |, no-check-spell
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:967
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:973
 msgid "Jorgi"
 msgstr "Џорги"
 
 #. [message]: speaker=Jorgi
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:994
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1000
 msgid ""
 "It was a mistake to depend on trickery. We will defeat you fighting face to "
 "face. A true dwarf always looks his opponent in the eye when he kills him!"
@@ -5848,7 +5848,7 @@ msgstr ""
 "Прави патуљак увијек гледа противнику у очи када га убија!"
 
 #. [message]: speaker=Jorgi
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:999
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1005
 msgid ""
 "So I challenge you, man to man. If you are not cowards, step out onto these "
 "bridges and meet your fate!"
@@ -5857,7 +5857,7 @@ msgstr ""
 "мостове и сусретните своју судбину!"
 
 #. [message]: speaker=Jorgi
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1037
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1043
 msgid ""
 "I couldn’t do it. Blow the backup charges! If we can’t stop them then maybe "
 "the black lake will."
@@ -5866,7 +5866,7 @@ msgstr ""
 "можда црно језеро хоће."
 
 #. [message]: speaker=Jorgi
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1062
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1068
 msgid ""
 "They’ve crossed the chasm! Blow the backup charges! If we can’t stop them "
 "then maybe the black lake will."
@@ -5875,7 +5875,7 @@ msgstr ""
 "можда црно језеро хоће."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1086
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1092
 msgid ""
 "It’s a huge underground lake. The water looks dark and deep and is cold to "
 "the touch. There also seems to be some glowing moss on the walls which "
@@ -5886,17 +5886,17 @@ msgstr ""
 "може управљати около."
 
 #. [unit]: id=Extra Hairy Bat, type=Dread Bat
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1104
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1110
 msgid "Extra Hairy Bat"
 msgstr "врло длакав шишмиш"
 
 #. [unit]: type=Dwarvish Stalwart, id=Dwarf Hermit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1137
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1143
 msgid "Dwarf Hermit"
 msgstr "патуљ-пустињак"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1169
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1175
 msgid ""
 "Incoming! Ugh, it’s big, hairy, and nasty. I hate bats, I really hate bats."
 msgstr ""
@@ -5905,17 +5905,17 @@ msgstr ""
 
 # |, no-check-spell
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1183
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1189
 msgid "Graaawk!"
 msgstr "Грааавк!"
 
 #. [message]: speaker=$speaking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1189
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1195
 msgid "Good riddance."
 msgstr "И не враћај се."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1214
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1220
 msgid ""
 "The ledge just drops off here. The water might be shallow enough to wade "
 "across, but I think I vaguely see something moving underneath the surface. "
@@ -5926,17 +5926,17 @@ msgstr ""
 "некаква риба, али ми се не допада како изгледа."
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1288
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1294
 msgid "What are those?!"
 msgstr "Шта је сад па ово?!"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1296
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1302
 msgid "Here come more of them!"
 msgstr "Ево их још пристиже!"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1329
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1335
 msgid ""
 "The movement under the water has stopped. I think we killed the last of "
 "them. Whatever ‘them’ was."
@@ -5945,33 +5945,33 @@ msgstr ""
 "било."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1363
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1365
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1368
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1370
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1369
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1371
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1374
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1376
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1377
 msgid "Dwarf High Guard"
 msgstr "патуљ-гарда"
 
 #. [message]: speaker=Dwarf Chieftain
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1389
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1395
 msgid "So you’ve come at last. Let it end, here and now!"
 msgstr "Напокон сте дошли. Нека се оконча, овдје и сада!"
 
 #. [message]: speaker=Dwarf Chieftain
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1407
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1413
 msgid ""
 "Faugh! Even in death I curse you! You will never escape these tunnels alive!"
 msgstr ""
 "Фу! Чак и у смрти проклињем вас! Никад се нећете живи извући из ових тунела!"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1420
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1426
 msgid "The chieftain has fallen! Flee for your lives!"
 msgstr "Поглавица је готов! Спасавај се ко може!"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1457
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1463
 msgid ""
 "Little elves fight good. Zurg impressed. With dwarf chieftain dead, cowardly "
 "dwarves flee before us. Our struggle not over, still much more fighting, but "
@@ -5988,7 +5988,7 @@ msgstr ""
 "вас. Пођите са мном."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1462
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1468
 msgid ""
 "With their knowledge of all these secret tunnels, you’d think they could "
 "have led us straight here instead of making us go through those ‘light "
@@ -6001,7 +6001,7 @@ msgstr ""
 "коначно доспели до поглавице патуљака."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1467
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1473
 msgid ""
 "Perhaps they wanted to further test our prowess in battle. And besides, "
 "every dwarf we kill is one they don’t have to. Still, I think we caused a "
@@ -6013,7 +6013,7 @@ msgstr ""
 
 # well-spelled: Шшш
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1472
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1478
 msgid ""
 "Shh, you two. Yes, of course, we would be honored to come and meet the Great "
 "Leader. But first, we left many of our people back up near the entrance to "
@@ -6027,7 +6027,7 @@ msgstr ""
 
 # well-spelled: Хмм
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1477
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1483
 msgid ""
 "Hmm, yes, yes we can help. We have a few big caves you little people can "
 "stay in, and I get some big trolls to help escort you there. The Great "
@@ -6040,7 +6040,7 @@ msgstr ""
 "народ скрива, и помоћи ћемо вам да их премјестите у наше пећине."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1482
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1488
 msgid ""
 "I thank you. Come on people, no celebrating yet, we still have work left to "
 "do!"
@@ -6049,7 +6049,7 @@ msgstr ""
 "очекује!"
 
 #. [message]: speaker=Dwarf Hermit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1510
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1516
 msgid ""
 "They’ve come for my precious. It’s mine, yes it is. They shan’t have it, no "
 "they shan’t. We shall kill them all, yes, yes we will."
@@ -6058,12 +6058,12 @@ msgstr ""
 "Све ћемо их побити, да, да хоћемо."
 
 #. [message]: speaker=Dwarf Hermit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1523
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1529
 msgid "Curse them! We hates them!"
 msgstr "Проклети били! Ми мрзимо их!"
 
 #. [message]: speaker=$speaking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1529
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1535
 msgid ""
 "What’s this? His clothes were in rags, and yet he had this ancient jeweled "
 "amulet hanging around his neck. It contains a huge amethyst that seems to "
@@ -6075,7 +6075,7 @@ msgstr ""
 "свијетли чудним љубичастом сјајем. Питам се одакле му оваква стварчица?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1538
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1544
 msgid ""
 "Hey, wait a minute, that amulet glows the same color as this rune. Maybe if "
 "I put the amulet on and step into the rune..."
@@ -6084,7 +6084,7 @@ msgstr ""
 "амајлију и укорачим у руну..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1566
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1572
 msgid ""
 "Whoa. That was pretty impressive. The amulet stopped glowing and the rune is "
 "gone, but what have they revealed?"
@@ -6093,17 +6093,17 @@ msgstr ""
 "али шта су то открили?"
 
 #. [message]: speaker=Smaller Tentacle
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1626
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1632
 msgid "<i>Splash! Splash!</i>"
 msgstr "<i>Пљус! Пљус!</i>"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1632
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1638
 msgid "More tentacles?! What, did that thing have a baby?"
 msgstr "Још пипака?! Шта је сад, да није та ствар имала бебу?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1652
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1658
 msgid ""
 "What in Eloh’s name is this? Someone has carved a glowing purple rune in the "
 "floor at the end of this passage. It must be magical. And this passage ends "
@@ -6116,7 +6116,7 @@ msgstr ""
 "Питам се ко је и због чега урезао руну?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1677
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1683
 msgid ""
 "The rune is still there, glowing mysteriously. I still have no idea why it "
 "was put here, but it’s obviously powerful and magical, a combination of "
@@ -6127,7 +6127,7 @@ msgstr ""
 "којом не желим да се петљам."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1708
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1714
 msgid ""
 "Based on the runes covering the walls this must be the tomb of some ancient "
 "dwarf. The tomb seems empty except for this ornate stone coffin. The "
@@ -6147,12 +6147,12 @@ msgstr ""
 "и засигурно неће недостајати пређашњем власнику."
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1710
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1716
 msgid "I fear no ghosts, I’ll take it."
 msgstr "Не бојим се никаквих духова, узећу га."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1718
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1724
 msgid ""
 "The belt fits perfectly! Somehow I feel stronger and tougher. This is too "
 "easy, there seem to have been no traps set upon the coffin. Today’s my lucky "
@@ -6163,28 +6163,28 @@ msgstr ""
 "изгледа, срећан дан."
 
 #. [object]: id=DwarvenBelt
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1729
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1735
 msgid "Dwarven Belt"
 msgstr "патуљачки опасач"
 
 #. [object]: id=DwarvenBelt
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1730
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1736
 msgid ""
 "The maximum hit points of the unit who wears this belt will increase by 12."
 msgstr "Највећи број ударпоена јединице која носи опасач биће увећан за 12."
 
 #. [command]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1738
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1744
 msgid "Angry Ghost"
 msgstr "љутити дух"
 
 #. [message]: speaker=Angry Ghost
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1742
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1748
 msgid "You who disturb my rest, come and join me in death!"
 msgstr "Ти што реметиш мој починак, дођи и придружи ми се у смрти!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1747
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1753
 msgid "Then again, maybe I spoke too soon."
 msgstr "А онда, прерано се изланух."
 
@@ -7020,8 +7020,8 @@ msgstr "Па, што се брже извучемо одавдје, срећни
 msgid "Wait, did you feel that?"
 msgstr "Чекај, осјетисте ли то?"
 
-#. [message]: role=mystic_speaker
 #. [message]: speaker=Nym
+#. [message]: role=mystic_speaker
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:543
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1754
 msgid "What?"
@@ -8718,7 +8718,7 @@ msgstr ""
 "Коначно смо напољу. Скоро заборавих колико је небо и како вјетровито може "
 "бити."
 
-#. [message]: race=elf
+#. [message]: race=quenoth,elf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3135
 msgid "Can you see very far? Do you have any idea where we are?"
 msgstr "Колико далеко се може видјети? Икаквих назнака гдје смо?"
@@ -10422,7 +10422,7 @@ msgstr ""
 "Хвала вам што сте ме избавили. Ви вилењаци, врло сте вјешти у борбама на "
 "сувом копну. Завидим вам."
 
-#. [message]: speaker=$unit.id, race=elf
+#. [message]: speaker=$unit.id, race=quenoth,elf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:872
 msgid "As I envy your kind’s prowess when fighting in the water."
 msgstr "Као што и ја завидим срчаности твоје врсте када се борите у води."
@@ -15127,9 +15127,9 @@ msgstr ""
 msgid "Central Body"
 msgstr "средишње тијело"
 
-#. [unit_type]: id=Pulsing Spire, race=monster
 #. [unit_type]: id=Central Body Base, race=monster
 #. [unit_type]: id=Crawling Horror, race=monster
+#. [unit_type]: id=Pulsing Spire, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Minion.cfg:26
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Spire.cfg:33
@@ -15367,9 +15367,9 @@ msgstr "мали муљогмиз"
 msgid "Naga Guardian"
 msgstr "нага-чувар"
 
-#. [unit_type]: id=Naga Warden, race=naga
 #. [unit_type]: id=Naga Guardian, race=naga
 #. [unit_type]: id=Naga Sentinel, race=naga
+#. [unit_type]: id=Naga Warden, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardian.cfg:21
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Sentinel.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Warden.cfg:21
@@ -15412,12 +15412,12 @@ msgstr "нага-стражар"
 msgid "Naga Warden"
 msgstr "нага-надзорник"
 
-#. [unit_type]: id=Dark Assassin1, race=elf
+#. [unit_type]: id=Dark Assassin1, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/other/Dark_Assassin1.cfg:4
 msgid "Dark Assassin"
 msgstr "мрачни убица"
 
-#. [unit_type]: id=Dark Assassin1, race=elf
+#. [unit_type]: id=Dark Assassin1, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/other/Dark_Assassin1.cfg:36
 msgid ""
 "The Dark Assassin appears and disappears at a moment’s notice. No one knows "
@@ -15438,14 +15438,14 @@ msgstr ""
 msgid "throwing knives"
 msgstr ""
 
-#. [unit_type]: id=Quenoth Archer, race=elf
+#. [unit_type]: id=Quenoth Archer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:5
 #, fuzzy
 #| msgid "Desert Archer"
 msgid "Quenoth Archer"
 msgstr "пустињски стријелац"
 
-#. [unit_type]: id=Quenoth Archer, race=elf
+#. [unit_type]: id=Quenoth Archer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:21
 msgid ""
 "With the open sands providing much less protection than the old forests did, "
@@ -15456,14 +15456,14 @@ msgid ""
 "combat."
 msgstr ""
 
-#. [unit_type]: id=Quenoth Champion, race=elf
+#. [unit_type]: id=Quenoth Champion, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:5
 #, fuzzy
 #| msgid "Desert Champion"
 msgid "Quenoth Champion"
 msgstr "пустињски заточник"
 
-#. [unit_type]: id=Quenoth Champion, race=elf
+#. [unit_type]: id=Quenoth Champion, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:24
 msgid ""
 "Standing at the forefront of most Quenoth spear lines, Champions are those "
@@ -15483,12 +15483,12 @@ msgstr ""
 msgid "glaive"
 msgstr ""
 
-#. [unit_type]: id=Corrupted Quenoth Elf, race=elf
+#. [unit_type]: id=Corrupted Quenoth Elf, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:5
 msgid "Corrupted Elf"
 msgstr "искварени вилењак"
 
-#. [unit_type]: id=Corrupted Quenoth Elf, race=elf
+#. [unit_type]: id=Corrupted Quenoth Elf, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:19
 msgid ""
 "Imbued with a dark spirit these corrupted elves combine unhuman strength "
@@ -15506,12 +15506,12 @@ msgstr ""
 msgid "magic"
 msgstr "магичност"
 
-#. [unit_type]: id=Divine Avatar, race=elf
+#. [unit_type]: id=Divine Avatar, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:4
 msgid "female^Divine Avatar"
 msgstr "божански аватар"
 
-#. [unit_type]: id=Divine Avatar, race=elf
+#. [unit_type]: id=Divine Avatar, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:22
 msgid ""
 "Divine Avatars only appear in time of great need. Forms of the Gods "
@@ -15536,14 +15536,14 @@ msgstr ""
 "За божанска оваплоћења каже се да су најближа појава стварном присуству бога "
 "у овом свијету. Могу бити и страхопоштована и ужасавајућа."
 
-#. [unit_type]: id=Quenoth Druid, race=elf
+#. [unit_type]: id=Quenoth Druid, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:5
 #, fuzzy
 #| msgid "female^Desert Druid"
 msgid "female^Quenoth Druid"
 msgstr "пустињска друидка"
 
-#. [unit_type]: id=Quenoth Druid, race=elf
+#. [unit_type]: id=Quenoth Druid, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:22
 msgid ""
 "Worshippers of the Goddess of Light, Eloh, Druids are considered mysterious "
@@ -15570,14 +15570,14 @@ msgstr "Мелусанда"
 msgid "Dustbok"
 msgstr ""
 
-#. [unit_type]: id=Quenoth Fighter, race=elf
+#. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
 #, fuzzy
 #| msgid "Desert Fighter"
 msgid "Quenoth Fighter"
 msgstr "пустињски борац"
 
-#. [unit_type]: id=Quenoth Fighter, race=elf
+#. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
 msgid ""
 "Long ago, during more prosperous times, Elven warriors favored the use of "
@@ -15590,12 +15590,12 @@ msgid ""
 "frontal assault."
 msgstr ""
 
-#. [unit_type]: id=Quenoth Flanker, race=elf
+#. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
 msgid "Quenoth Flanker"
 msgstr ""
 
-#. [unit_type]: id=Quenoth Flanker, race=elf
+#. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:23
 msgid ""
 "Some fighters find that their true talents lie not within rigid spear ranks, "
@@ -15613,14 +15613,14 @@ msgstr ""
 msgid "blowgun"
 msgstr ""
 
-#. [unit_type]: id=Quenoth Marksman, race=elf
+#. [unit_type]: id=Quenoth Marksman, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:5
 #, fuzzy
 #| msgid "Desert Marksman"
 msgid "Quenoth Marksman"
 msgstr "пустињски оштроок"
 
-#. [unit_type]: id=Quenoth Marksman, race=elf
+#. [unit_type]: id=Quenoth Marksman, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:22
 msgid ""
 "In times past, the elves’ supremacy at archery was unquestioned among the "
@@ -15635,14 +15635,14 @@ msgid ""
 "the Sharpshooters of old, all while in full gallop on horseback."
 msgstr ""
 
-#. [unit_type]: id=Quenoth Mystic, race=elf
+#. [unit_type]: id=Quenoth Mystic, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:5
 #, fuzzy
 #| msgid "Kaleh of the Quenoth Elves"
 msgid "female^Quenoth Mystic"
 msgstr "Калех од квенотских вилењака"
 
-#. [unit_type]: id=Quenoth Mystic, race=elf
+#. [unit_type]: id=Quenoth Mystic, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:22
 msgid ""
 "Like their ancestors, Quenoth Mystics are those who devote themselves to the "
@@ -15653,14 +15653,14 @@ msgid ""
 "effect in their homes in the deserts."
 msgstr ""
 
-#. [unit_type]: id=Quenoth Outrider, race=elf
+#. [unit_type]: id=Quenoth Outrider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:5
 #, fuzzy
 #| msgid "Desert Outrider"
 msgid "Quenoth Outrider"
 msgstr "пустињски надјахач"
 
-#. [unit_type]: id=Quenoth Outrider, race=elf
+#. [unit_type]: id=Quenoth Outrider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:22
 msgid ""
 "Described as riders who ‘rush like the wind’, Outriders breeze across the "
@@ -15671,21 +15671,21 @@ msgid ""
 "are futile, a prospect that is only ruinous in the inhospitable desert."
 msgstr ""
 
-#. [effect]: type=impact
 #. [attack]: type=impact
+#. [effect]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:97
 msgid "bolas"
 msgstr "боласи"
 
-#. [unit_type]: id=Quenoth Pathfinder, race=elf
+#. [unit_type]: id=Quenoth Pathfinder, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:5
 #, fuzzy
 #| msgid "Desert Outrider"
 msgid "Quenoth Pathfinder"
 msgstr "пустињски надјахач"
 
-#. [unit_type]: id=Quenoth Pathfinder, race=elf
+#. [unit_type]: id=Quenoth Pathfinder, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:21
 msgid ""
 "In times past, turning and fleeing from an engagement was a risky tactic, "
@@ -15699,14 +15699,14 @@ msgid ""
 "chase — inevitably into many a deadly trap."
 msgstr ""
 
-#. [unit_type]: id=Quenoth Ranger, race=elf
+#. [unit_type]: id=Quenoth Ranger, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:5
 #, fuzzy
 #| msgid "Desert Ranger"
 msgid "Quenoth Ranger"
 msgstr "пустињски озочувар"
 
-#. [unit_type]: id=Quenoth Ranger, race=elf
+#. [unit_type]: id=Quenoth Ranger, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:24
 msgid ""
 "The title ‘Ranger’ is a little misleading, for these agile elves have little "
@@ -15721,14 +15721,14 @@ msgid ""
 "available."
 msgstr ""
 
-#. [unit_type]: id=Quenoth Scout, race=elf
+#. [unit_type]: id=Quenoth Scout, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:5
 #, fuzzy
 #| msgid "Human Scout"
 msgid "Quenoth Scout"
 msgstr "људски извиђач"
 
-#. [unit_type]: id=Quenoth Scout, race=elf
+#. [unit_type]: id=Quenoth Scout, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:18
 msgid ""
 "Riding the graceful, agile dustboks, Quenoth Scouts move with unmatched "
@@ -15737,14 +15737,14 @@ msgid ""
 "hunters and patrolmen."
 msgstr ""
 
-#. [unit_type]: id=Quenoth Shaman, race=elf
+#. [unit_type]: id=Quenoth Shaman, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:5
 #, fuzzy
 #| msgid "female^Desert Shaman"
 msgid "female^Quenoth Shaman"
 msgstr "пустињска врачарка"
 
-#. [unit_type]: id=Quenoth Shaman, race=elf
+#. [unit_type]: id=Quenoth Shaman, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:22
 msgid ""
 "Like the elves of old, many Quenoth elves seek to study the art of medicine "
@@ -15756,14 +15756,14 @@ msgid ""
 "might one day rise from its sandy grave and bloom again."
 msgstr ""
 
-#. [unit_type]: id=Quenoth Shyde, race=elf
+#. [unit_type]: id=Quenoth Shyde, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:5
 #, fuzzy
 #| msgid "female^Desert Shyde"
 msgid "female^Quenoth Shyde"
 msgstr "пустињска шејда"
 
-#. [unit_type]: id=Quenoth Shyde, race=elf
+#. [unit_type]: id=Quenoth Shyde, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:23
 msgid ""
 "From the teachings of Analia, the healer of the Emerald Blossom:\n"
@@ -15780,14 +15780,14 @@ msgid ""
 "from sand to earth, from scorched wasteland to life.”"
 msgstr ""
 
-#. [unit_type]: id=Quenoth Sun Singer, race=elf
+#. [unit_type]: id=Quenoth Sun Singer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:5
 #, fuzzy
 #| msgid "female^Desert Sentinel"
 msgid "female^Quenoth Sun Singer"
 msgstr "пустињска стражарка"
 
-#. [unit_type]: id=Quenoth Sun Singer, race=elf
+#. [unit_type]: id=Quenoth Sun Singer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:22
 msgid ""
 "Faerie and elven magic have oft been aptly associated with life, from which "
@@ -15800,14 +15800,14 @@ msgid ""
 "that are both life and life’s demise."
 msgstr ""
 
-#. [unit_type]: id=Quenoth Sun Sylph, race=elf
+#. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
 #, fuzzy
 #| msgid "female^Desert Shyde"
 msgid "female^Quenoth Sun Sylph"
 msgstr "пустињска шејда"
 
-#. [unit_type]: id=Quenoth Sun Sylph, race=elf
+#. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:25
 msgid ""
 "In times past, those who stepped beyond the boundary of the worlds of elf "
@@ -15844,14 +15844,14 @@ msgstr ""
 msgid "trample"
 msgstr ""
 
-#. [unit_type]: id=Tauroch Flagbearer, race=elf
+#. [unit_type]: id=Tauroch Flagbearer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Flagbearer.cfg:5
 #, fuzzy
 #| msgid "Troll Flamecaster"
 msgid "Tauroch Flagbearer"
 msgstr "трол-пламенохит"
 
-#. [unit_type]: id=Tauroch Flagbearer, race=elf
+#. [unit_type]: id=Tauroch Flagbearer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Flagbearer.cfg:32
 msgid ""
 "The prestigious Flagbearers spend years out in the open deserts leading "
@@ -15864,12 +15864,12 @@ msgid ""
 "scavengers or wild beasts."
 msgstr ""
 
-#. [unit_type]: id=Tauroch Protector, race=elf
+#. [unit_type]: id=Tauroch Protector, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Protector.cfg:5
 msgid "Tauroch Protector"
 msgstr ""
 
-#. [unit_type]: id=Tauroch Protector, race=elf
+#. [unit_type]: id=Tauroch Protector, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Protector.cfg:37
 msgid ""
 "From the journal of Syniel, the Sand Skipper:\n"
@@ -15899,12 +15899,12 @@ msgid ""
 "tongue. I am sure we will have many more adventures together."
 msgstr ""
 
-#. [unit_type]: id=Tauroch Rider, race=elf
+#. [unit_type]: id=Tauroch Rider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Rider.cfg:5
 msgid "Tauroch Rider"
 msgstr ""
 
-#. [unit_type]: id=Tauroch Rider, race=elf
+#. [unit_type]: id=Tauroch Rider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Rider.cfg:27
 msgid ""
 "Taurochs are huge, hardened beasts of the desert, considered untamable by "
@@ -15916,12 +15916,12 @@ msgid ""
 "powerful warden to protect elven villages and carvans."
 msgstr ""
 
-#. [unit_type]: id=Tauroch Stalwart, race=elf
+#. [unit_type]: id=Tauroch Stalwart, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Stalwart.cfg:5
 msgid "Tauroch Stalwart"
 msgstr ""
 
-#. [unit_type]: id=Tauroch Stalwart, race=elf
+#. [unit_type]: id=Tauroch Stalwart, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Stalwart.cfg:36
 msgid ""
 "When encountering wild Taurochs, Quenoth hunters often observe the curious "
@@ -15933,12 +15933,12 @@ msgid ""
 "displace the beast would be akin to trying to fight a stone wall."
 msgstr ""
 
-#. [unit_type]: id=Tauroch Vanguard, race=elf
+#. [unit_type]: id=Tauroch Vanguard, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:5
 msgid "Tauroch Vanguard"
 msgstr ""
 
-#. [unit_type]: id=Tauroch Vanguard, race=elf
+#. [unit_type]: id=Tauroch Vanguard, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:31
 msgid ""
 "The massive and fearless Taurochs are often employed not only to charge and "
@@ -15951,14 +15951,14 @@ msgid ""
 "for the many pillagers that rove the deserts."
 msgstr ""
 
-#. [unit_type]: id=Quenoth Warrior, race=elf
+#. [unit_type]: id=Quenoth Warrior, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:5
 #, fuzzy
 #| msgid "Arisen Warrior"
 msgid "Quenoth Warrior"
 msgstr "васкрсли ратник"
 
-#. [unit_type]: id=Quenoth Warrior, race=elf
+#. [unit_type]: id=Quenoth Warrior, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:23
 msgid ""
 "When compared to a spear, a glaive is often a shorter weapon with less "
@@ -16045,9 +16045,9 @@ msgstr ""
 msgid "Leader (choose only one): specialize in distracting enemies"
 msgstr ""
 
-#. [unit_type]: id=Quenoth Youth, race=elf, description={QUENOTH_YOUTH_DESCRIPTION}
-#. [unit_type]: id=Quenoth Youth 2, race=elf, description={QUENOTH_YOUTH_DESCRIPTION}
-#. [unit_type]: id=Quenoth Youth 3, race=elf, description={QUENOTH_YOUTH_DESCRIPTION}
+#. [unit_type]: id=Quenoth Youth, race=quenoth, description={QUENOTH_YOUTH_DESCRIPTION}
+#. [unit_type]: id=Quenoth Youth 2, race=quenoth, description={QUENOTH_YOUTH_DESCRIPTION}
+#. [unit_type]: id=Quenoth Youth 3, race=quenoth, description={QUENOTH_YOUTH_DESCRIPTION}
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:442
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:497
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:554
@@ -16249,6 +16249,34 @@ msgid ""
 msgstr ""
 "Некада велики ратници широм равница, ови јахачи са својим скелетним коњима "
 "бејаху издигнути из пијеска несветом магијом, да шире страх и уништење."
+
+#. [race]: id=quenoth
+#: data/campaigns/Under_the_Burning_Suns/units/units.cfg:5
+#, fuzzy
+#| msgid "Kaleh of the Quenoth Elves"
+msgid "race^Quenoth Elf"
+msgstr "Калех од квенотских вилењака"
+
+#. [race]: id=quenoth
+#: data/campaigns/Under_the_Burning_Suns/units/units.cfg:6
+#, fuzzy
+#| msgid "female^Desert Druid"
+msgid "race+female^Quenoth Elf"
+msgstr "пустињска друидка"
+
+#. [race]: id=quenoth
+#: data/campaigns/Under_the_Burning_Suns/units/units.cfg:7
+#, fuzzy
+#| msgid "Kaleh of the Quenoth Elves"
+msgid "race^Quenoth Elves"
+msgstr "Калех од квенотских вилењака"
+
+#. [race]: id=quenoth
+#: data/campaigns/Under_the_Burning_Suns/units/units.cfg:8
+msgid ""
+"Compared to the elves of the Great Continent around the time of Wesnoth, the "
+"Quenoth Elves are far more suited to life in the desert."
+msgstr ""
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94

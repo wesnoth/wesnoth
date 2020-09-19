@@ -213,12 +213,13 @@ reenvíe las solicitudes de los clientes conectados al servidor
 especificado.  Acepta las mismas opciones que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service. All additional tables that are
-needed for the \fBforum_user_handler\fP to function can be found in
-table_definitions.sql in the Wesnoth source repository.
+\fB[user_handler]\fP Configura el servicio de usuarios. Las opciones
+disponibles varían según cual servicio ha sido activado con la opción
+\fBuser_handler\fP. Si no hay ninguna sección \fB[user_handler]\fP en la
+configuración, el servidor funcionará sin ningún servicio de registro de
+usuarios. Todas las tablas adicionales que se necesitan para que funcione
+\fBforum_user_handler\fP pueden encontrarse en table_definitions.sql en el
+repositorio de fuentes de Wesnoth.
 .RS
 .TP 
 \fBdb_host\fP

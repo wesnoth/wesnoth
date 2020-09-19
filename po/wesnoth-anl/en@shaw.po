@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
+"POT-Creation-Date: 2020-09-19 17:34 UTC\n"
 "PO-Revision-Date: 2009-10-12 18:45-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -34,13 +34,15 @@ msgstr "4p — 𐑩 𐑯𐑿 𐑤𐑨𐑯𐑛"
 #| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
-"the land. The recommended starting gold is 100."
+"the land.\n"
+"\n"
+"For experienced players, it’s recommended to lower the starting gold to 75."
 msgstr ""
 "𐑞𐑦𐑕 4p 𐑕𐑻𐑝𐑲𐑝𐑩𐑤 𐑕𐑦𐑯𐑺𐑰𐑴 𐑩𐑤𐑬𐑟 𐑿 𐑑 𐑒𐑩𐑯𐑕𐑑𐑮𐑳𐑒𐑑 𐑚𐑦𐑤𐑛𐑦𐑙𐑟 𐑯 𐑑𐑺𐑩𐑓𐑹𐑥 𐑞 𐑤𐑨𐑯𐑛. 𐑿𐑟 𐑥𐑨𐑐 "
 "𐑕𐑧𐑑𐑦𐑙𐑟. 𐑮𐑧𐑒𐑩𐑥𐑧𐑯𐑛𐑩𐑛 𐑕𐑑𐑸𐑑𐑦𐑙 gold=100."
 
 #. [part]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:26
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:28
 msgid ""
 "In the aftermath of the great war the remnants of humanity fled to an "
 "obscure secluded glen. Though they knew they could not hide from the mighty "
@@ -52,10 +54,10 @@ msgstr ""
 "𐑤𐑰𐑛𐑼𐑟 𐑝 𐑞 𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕 𐑣𐑴𐑐𐑑 𐑴𐑯𐑤𐑦 𐑓𐑹 𐑦𐑯𐑳𐑓 𐑑𐑲𐑥 𐑑 𐑮𐑰𐑚𐑦𐑤𐑛 𐑞𐑺 𐑓𐑹𐑕𐑩𐑟."
 
 #. [side]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:46
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:62
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:78
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:94
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:48
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:72
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:93
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:114
 #, fuzzy
 #| msgid "teamname^Team 1"
 msgid "teamname^Settlers"
@@ -63,82 +65,82 @@ msgstr "𐑑𐑰𐑥 1"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:114
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:147
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:180
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:213
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:139
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:172
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:205
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:238
 #, fuzzy
 #| msgid "teamname^Team 1"
 msgid "teamname^Enemies"
 msgstr "𐑑𐑰𐑥 1"
 
 #. [side]: type=Death Knight
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:123
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
 msgid "Mal Sevu"
 msgstr ""
 
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:156
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:181
 msgid "Gol Goroth"
 msgstr ""
 
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:189
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:214
 msgid "Greg"
 msgstr ""
 
 #. [side]: type=Death Knight
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:222
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:247
 msgid "Mal Shiki"
 msgstr ""
 
 #. [side]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:250
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:275
 #, fuzzy
 #| msgid "teamname^Team 1"
 msgid "teamname^Prisoners"
 msgstr "𐑑𐑰𐑥 1"
 
 #. [side]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:274
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:299
 #, fuzzy
 #| msgid "teamname^Team 1"
 msgid "teamname^Monsters"
 msgstr "𐑑𐑰𐑥 1"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:473
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:498
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑯𐑹𐑔𐑢𐑧𐑕𐑑 𐑳𐑯𐑛𐑧𐑛 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:501
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:526
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑯𐑹𐑔𐑰𐑕𐑑 𐑹𐑒𐑕 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:529
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:554
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑕𐑬𐑔𐑢𐑧𐑕𐑑 𐑹𐑒𐑕 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:557
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:582
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑕𐑬𐑔𐑰𐑕𐑑 𐑳𐑯𐑛𐑧𐑛 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:672
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:697
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
 msgstr "𐑢𐑳𐑯 𐑝 𐑿𐑼 𐑐𐑧𐑟𐑩𐑯𐑑𐑕 𐑣𐑨𐑟 𐑣𐑨𐑐𐑩𐑯𐑛 𐑩𐑐𐑪𐑯 𐑕𐑳𐑥 𐑕𐑐𐑲𐑛𐑻𐑟 𐑯𐑧𐑕𐑑𐑕 𐑦𐑯 𐑞 𐑯𐑹𐑔 𐑯 𐑕𐑬𐑔."
 
 #. [message]: type=Peasant
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:678
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:703
 #, fuzzy
 #| msgid ""
 #| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
@@ -149,7 +151,7 @@ msgid ""
 msgstr "𐑲 𐑕𐑢𐑺 𐑲 𐑕𐑷 𐑕𐑳𐑥𐑚𐑪𐑛𐑦 𐑑𐑮𐑨𐑐𐑑 𐑦𐑯 𐑞 𐑕𐑐𐑲𐑛𐑻𐑟 𐑢𐑧𐑚. 𐑥𐑱𐑚𐑰 𐑢𐑰 𐑖𐑫𐑛 𐑮𐑧𐑕𐑒𐑿 𐑞𐑧𐑥?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:700
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:725
 msgid ""
 "Move any unit next to these captives and they will join your side. The "
 "spiders guarding each captive are currently wounded, the sooner you get "
@@ -159,13 +161,13 @@ msgstr ""
 "𐑒𐑨𐑐𐑑𐑦𐑝 𐑸 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑢𐑵𐑯𐑛𐑩𐑛, 𐑞 𐑕𐑵𐑯𐑼 𐑿 𐑜𐑧𐑑 𐑞𐑺 𐑞 𐑚𐑧𐑑𐑼 𐑗𐑭𐑯𐑕 𐑿 𐑣𐑨𐑝 𐑝 𐑒𐑦𐑤𐑦𐑙 𐑞𐑧𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:712
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:737
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr "𐑿𐑼 𐑥𐑧𐑯 𐑮𐑩𐑐𐑹𐑑 𐑕𐑑𐑮𐑱𐑯𐑡 𐑕𐑬𐑯𐑛𐑟 𐑒𐑳𐑥𐑦𐑙 𐑓𐑮𐑪𐑥 𐑕𐑳𐑥 𐑒𐑱𐑝𐑟 𐑑 𐑞 𐑰𐑕𐑑 𐑯 𐑢𐑧𐑕𐑑."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:718
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:743
 msgid ""
 "It would seem the enemy has built some underground mushroom mines nearby — "
 "it must be where the mainstay of their resources are produced. If we could "
@@ -176,7 +178,7 @@ msgstr ""
 "𐑕𐑴 𐑕𐑤𐑦𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:740
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:765
 msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
@@ -185,12 +187,12 @@ msgstr ""
 "𐑧𐑯𐑩𐑥𐑦'𐑟 𐑦𐑯𐑒𐑳𐑥 𐑚𐑲 10."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:753
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:778
 msgid "This battle is nearly at an end. Victory is close at hand!"
 msgstr "𐑞𐑦𐑕 𐑚𐑨𐑑𐑩𐑤 𐑦𐑟 𐑯𐑽𐑤𐑦 𐑨𐑑 𐑩𐑯 𐑧𐑯𐑛. 𐑝𐑦𐑒𐑑𐑼𐑦 𐑦𐑟 𐑒𐑤𐑴𐑟 𐑨𐑑 𐑣𐑨𐑯𐑛!"
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:765
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:790
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
@@ -198,27 +200,27 @@ msgstr ""
 "𐑢𐑰 𐑣𐑨𐑝 𐑕𐑻𐑝𐑲𐑝𐑛 𐑞 𐑪𐑯𐑕𐑤𐑪𐑑! 𐑞 𐑑𐑲𐑛 𐑝 𐑞 𐑚𐑨𐑑𐑩𐑤 𐑣𐑨𐑟 𐑑𐑻𐑯𐑛, 𐑝𐑦𐑒𐑑𐑼𐑦 𐑒𐑨𐑯𐑪𐑑 𐑦𐑤𐑵𐑛 𐑳𐑕 𐑯𐑬!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:769
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:794
 msgid "You have won the game, but you may continue if you wish..."
 msgstr "𐑿 𐑣𐑨𐑝 𐑢𐑳𐑯 𐑞 𐑜𐑱𐑥, 𐑚𐑳𐑑 𐑿 𐑥𐑱 𐑒𐑩𐑯𐑑𐑦𐑯𐑿 𐑦𐑓 𐑿 𐑢𐑦𐑖..."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:785
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:810
 msgid "I have fallen, but all is not lost!"
 msgstr "𐑲 𐑣𐑨𐑝 𐑓𐑷𐑤𐑩𐑯, 𐑚𐑳𐑑 𐑷𐑤 𐑦𐑟 𐑯𐑪𐑑 𐑤𐑪𐑕𐑑!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:798
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:823
 msgid "I am done for, but we have yet to lose this battle!"
 msgstr "𐑲 𐑨𐑥 𐑛𐑳𐑯 𐑓𐑹, 𐑚𐑳𐑑 𐑢𐑰 𐑣𐑨𐑝 𐑘𐑧𐑑 𐑑 𐑤𐑵𐑟 𐑞𐑦𐑕 𐑚𐑨𐑑𐑩𐑤!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:811
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:836
 msgid "Comrades, avenge me!"
 msgstr "𐑒𐑪𐑥𐑮𐑩𐑛𐑟, 𐑩𐑝𐑧𐑯𐑡 𐑥𐑰!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:824
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:849
 msgid "Do not fear, there is hope for us still!"
 msgstr "𐑛𐑵 𐑯𐑪𐑑 𐑓𐑽, 𐑞𐑺 𐑦𐑟 𐑣𐑴𐑐 𐑓𐑹 𐑳𐑕 𐑕𐑑𐑦𐑤!"
 
@@ -328,9 +330,9 @@ msgstr ""
 "𐑦𐑯 𐑿𐑯𐑦𐑝𐑻𐑕𐑩𐑑𐑦𐑟 𐑷𐑑𐑩𐑥𐑨𐑑𐑦𐑒𐑤𐑦 𐑨𐑛 𐑑 𐑞 𐑕𐑑𐑳𐑛𐑦 𐑐𐑮𐑩𐑜𐑮𐑧𐑕 𐑝 𐑿𐑼 𐑗𐑴𐑟𐑩𐑯 𐑮𐑰𐑕𐑻𐑗 𐑑𐑸𐑜𐑧𐑑. 𐑮𐑲𐑑-"
 "𐑒𐑤𐑦𐑒 𐑪𐑯 𐑩 𐑥𐑱𐑡 𐑦𐑯 𐑩 𐑿𐑯𐑦𐑝𐑻𐑕𐑩𐑑𐑦 𐑑 𐑗𐑱𐑯𐑡 𐑮𐑰𐑕𐑻𐑗 𐑑𐑸𐑜𐑧𐑑."
 
-#. [set_menu_item]: id=anl_diplomacy
 #. [message]: speaker=narrator
 #. [option]
+#. [set_menu_item]: id=anl_diplomacy
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
@@ -662,8 +664,8 @@ msgstr ""
 "𐑕𐑑𐑳𐑛𐑦 𐑐𐑮𐑩𐑜𐑮𐑧𐑕: $player_$side_number|.farming.progress|/$player_$side_number|."
 "farming.target"
 
-#. [research]
 #. [command]
+#. [research]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:99
 msgid "agriculture"
@@ -763,7 +765,7 @@ msgstr "𐑒𐑩𐑯𐑝𐑻𐑑 𐑑 𐑜𐑮𐑨𐑕𐑤𐑨𐑯𐑛"
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:65
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:84
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:369
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:578
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:582
 msgid "Cost: 0g"
 msgstr "𐑒𐑪𐑕𐑑: 0g"
 
@@ -789,7 +791,7 @@ msgstr "𐑚𐑦𐑤𐑛 𐑒𐑨𐑕𐑩𐑤"
 
 #. [option]: description=<span size='small'>
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:124
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:525
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:529
 msgid "Cost: 6g"
 msgstr "𐑒𐑪𐑕𐑑: 6g"
 
@@ -885,22 +887,22 @@ msgid "Earns: 3g"
 msgstr "𐑻𐑯𐑟: 3g"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:524
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:528
 msgid "Build a Keep"
 msgstr "𐑚𐑦𐑤𐑛 𐑩 𐑒𐑰𐑐"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:550
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:554
 msgid "Establish University"
 msgstr "𐑩𐑕𐑑𐑨𐑚𐑤𐑦𐑖 𐑿𐑯𐑦𐑝𐑻𐑕𐑩𐑑𐑦"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:551
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:555
 msgid "Cost: 7g"
 msgstr "𐑒𐑪𐑕𐑑: 7g"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:577
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:581
 msgid "Clear the Ground"
 msgstr "𐑒𐑤𐑽 𐑞 𐑜𐑮𐑬𐑯𐑛"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-22 00:14-0400\n"
+"POT-Creation-Date: 2020-09-19 20:34+0300\n"
 "PO-Revision-Date: 2020-02-01 11:04+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -20,8 +20,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.2.4\n"
 
-#. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=fence
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:479
 msgid "Fence"
@@ -2162,8 +2162,8 @@ msgstr ""
 "Konfiguriere Einstellungen für ausgewählte benutzerdefinierte Modifikationen."
 
 #. [button]: id=reset_option_values
-#. [button]: id=orb_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
@@ -2180,8 +2180,8 @@ msgstr "Angemeldete Spieler"
 #. [toggle_button]: id=sort_0
 #. [label]
 #. [toggle_button]: id=sort_name
-#. [toggle_button]: id=sort_1
 #. [label]: id=name
+#. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:231
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_connect.cfg:159
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2498,8 +2498,8 @@ msgstr "Beenden"
 msgid "Choose the add-ons you want to remove."
 msgstr "Wählt die Erweiterung, die Ihr entfernen möchtet."
 
-#. [button]: id=ok
 #. [button]: id=remove
+#. [button]: id=ok
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/preferences/05_multiplayer.cfg:289
 msgid "Remove"
@@ -2560,22 +2560,6 @@ msgstr "Angreifer"
 msgid "Defender"
 msgstr "Verteidiger"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
-#: data/gui/window/browse_url_prompt.cfg:39
-#: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:791 src/gui/dialogs/file_dialog.cpp:305
-#: src/gui/dialogs/file_dialog.cpp:731
-msgid "Confirm"
-msgstr "Bestätigen"
-
-#. [label]
-#: data/gui/window/browse_url_prompt.cfg:54
-#, fuzzy
-#| msgid "Do you want to open this link?"
-msgid "Are you sure you want to open this link? "
-msgstr "Wollt Ihr diesen Link wirklich öffnen?"
-
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:173
 msgid "Play a Campaign"
@@ -2599,7 +2583,7 @@ msgstr "Sortiert nach den Geschehnissen in chronologischer Reihenfolge"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:284
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:464
 msgid "Modifications"
 msgstr "Modifikationen"
 
@@ -2623,10 +2607,10 @@ msgstr ""
 msgid "game^Play"
 msgstr ""
 
-#. [slider]: id=enemey_gold_factor
 #. [label]: id=title
+#. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:250
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:259
 msgid "Difficulty"
 msgstr "Schwierigkeitsgrad"
 
@@ -2650,8 +2634,8 @@ msgstr "Seite:"
 msgid "Last"
 msgstr "Letzte"
 
-#. [button]: id=previous_tip
 #. [button]: id=previous_page
+#. [button]: id=previous_tip
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Zurück"
@@ -2661,8 +2645,8 @@ msgstr "Zurück"
 msgid "Previous page"
 msgstr "Vorherige Seite"
 
-#. [button]: id=next_tip
 #. [button]: id=next_page
+#. [button]: id=next_tip
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Weiter"
@@ -2714,31 +2698,31 @@ msgstr "Lade Kern"
 msgid "OK"
 msgstr "Okay"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Kopieren"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Verzeichnis in Zwischenablage kopieren"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "Anzeigen"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2812,6 +2796,14 @@ msgstr "Neuer Tagesablauf"
 #: data/gui/window/custom_tod.cfg:418
 msgid "Delete ToD"
 msgstr "Lösche Tagesablauf"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/window/depcheck_confirm_change.cfg:40
+#: src/gui/dialogs/addon/manager.cpp:791 src/gui/dialogs/file_dialog.cpp:305
+#: src/gui/dialogs/file_dialog.cpp:731
+msgid "Confirm"
+msgstr "Bestätigen"
 
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:98
@@ -2913,7 +2905,7 @@ msgstr "Beschreibung:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid "Experience modifier:"
 msgstr "Erfahrungsmodifikator:"
 
@@ -2975,7 +2967,7 @@ msgstr "Gold:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid "Gold per village:"
 msgstr "Einnahmen pro Dorf:"
 
@@ -3046,7 +3038,7 @@ msgstr "Wählt einen Zufallskartengenerator:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -3066,15 +3058,15 @@ msgstr "Erzeugen"
 msgid "New Map"
 msgstr "Neue Karte"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Breite:"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3156,9 +3148,9 @@ msgstr "Lesezeichen zum aktuellen Ordner"
 msgid "Removes the current bookmark"
 msgstr "Entferne aktuelles Lesezeichen"
 
+#. [button]: id=server_delete
 #. [button]: id=delete
 #. [button]: id=delete_file
-#. [button]: id=server_delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:513
 #: data/gui/window/mp_connect.cfg:284
 msgid "Delete"
@@ -3226,8 +3218,8 @@ msgid "Execution trace"
 msgstr "Aufrufstapel"
 
 #. [button]: id=cancel
-#. [grid]
 #. [button]: id=quit_without_surrender
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:258
 msgid "Quit"
@@ -3316,8 +3308,8 @@ msgid "Date"
 msgstr "Datum"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=lblTitle
 #. [button]: id=load_game
+#. [label]: id=lblTitle
 #: data/gui/window/game_load.cfg:292 data/gui/window/mp_create_game.cfg:898
 #: src/hotkey/hotkey_command.cpp:102
 msgid "Load Game"
@@ -3365,8 +3357,8 @@ msgstr ""
 msgid "Open saves folder"
 msgstr "Öffne Ordner mit gespeicherten Spielständen"
 
-#. [button]: id=ok
 #. [grid]
+#. [button]: id=ok
 #: data/gui/window/game_load.cfg:614 data/gui/window/title_screen.cfg:253
 msgid "Load"
 msgstr "Laden"
@@ -3379,8 +3371,8 @@ msgid "Save Game"
 msgstr "Spiel speichern"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
 #. [button]: id=save
+#. [button]: id=ok
 #: data/gui/window/game_save.cfg:120
 #: data/gui/window/screenshot_notification.cfg:203
 #: src/gui/dialogs/file_dialog.cpp:183
@@ -3623,8 +3615,8 @@ msgstr "Spielzustandsanzeige"
 msgid "Copy this report to clipboard"
 msgstr "Bericht in Zwischenablage kopieren"
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3761,8 +3753,8 @@ msgid "Create Game"
 msgstr "Partie eröffnen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [label]: id=title
+#. [grid]
 #. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:574
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:256
@@ -4393,7 +4385,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:183
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid "Map size:"
 msgstr "Kartengröße:"
 
@@ -4444,8 +4436,8 @@ msgstr "Wählt Eure Fraktion"
 msgid "Starting position:"
 msgstr "Startposition:"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4529,8 +4521,8 @@ msgstr "Speichert das Passwort in der Konfigurationsdatei (verschlüsselt)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#. [grid]
 #. [widget]: id=label
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/game_load.cpp:436
@@ -5604,8 +5596,8 @@ msgstr "Fehler"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:215
-#: src/gui/dialogs/multiplayer/lobby.cpp:231 src/gui/dialogs/wml_error.cpp:197
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:218
+#: src/gui/dialogs/multiplayer/lobby.cpp:234 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr "Details:"
 
@@ -5705,7 +5697,7 @@ msgstr "de"
 msgid "The maximum text width is less than 1."
 msgstr "Die maximale Textlänge ist kleiner als 1."
 
-#: src/font/text.cpp:775
+#: src/font/text.cpp:781
 msgid "The text contains invalid Pango markup: "
 msgstr "Der Text enthält ungültiges Pango Markup: "
 
@@ -5853,8 +5845,8 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr "Referenzierte Gruppe »$id« wurde mehrfach definiert."
 
 #: src/gui/core/window_builder.cpp:317 src/gui/widgets/addon_list.cpp:439
-#: src/gui/widgets/chatbox.cpp:813 src/gui/widgets/listbox.cpp:806
-#: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
+#: src/gui/widgets/chatbox.cpp:813 src/gui/widgets/listbox.cpp:809
+#: src/gui/widgets/multi_page.cpp:199 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
 #: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:241
 #: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:304
@@ -6157,7 +6149,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Angreiferanfälligkeit gegen"
 
 #: src/gui/dialogs/campaign_selection.cpp:324
-#: src/gui/dialogs/multiplayer/lobby.cpp:466
+#: src/gui/dialogs/multiplayer/lobby.cpp:469
 msgid "active_modifications^None"
 msgstr "Keine"
 
@@ -6363,12 +6355,12 @@ msgid "Unknown"
 msgstr "Unbekannt"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "no"
 msgstr "Nein"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "yes"
 msgstr "Ja"
 
@@ -6511,11 +6503,11 @@ msgstr "Andere Partien"
 msgid "Do you really want to log out?"
 msgstr "Wollt Ihr Euch wirklich abmelden?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:211
+#: src/gui/dialogs/multiplayer/lobby.cpp:214
 msgid "Incompatible User-made Content."
 msgstr "Inkompatibler von Nutzern erstellter Inhalt."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:212
+#: src/gui/dialogs/multiplayer/lobby.cpp:215
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6525,11 +6517,11 @@ msgstr ""
 "von Erweiterungen hat, die nicht mit Euren kompatibel sind. Ihr könnt dem "
 "Host vorschlagen, seine Erweiterungen zu aktualisieren."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:227
+#: src/gui/dialogs/multiplayer/lobby.cpp:230
 msgid "Missing User-made Content."
 msgstr "Fehlende Erweiterungen"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:228
+#: src/gui/dialogs/multiplayer/lobby.cpp:231
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6539,44 +6531,44 @@ msgstr ""
 "beitreten zu können.\n"
 "Möchtet Ihr diese installieren?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:401
+#: src/gui/dialogs/multiplayer/lobby.cpp:404
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Spiele: $num_shown von $num_total angezeigt"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:421
+#: src/gui/dialogs/multiplayer/lobby.cpp:424
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Epoche: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "era_or_mod^not installed"
 msgstr "Nicht installiert"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Era"
 msgstr "Epoche"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 msgid "Reloaded:"
 msgstr "Geladen:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:487
+#: src/gui/dialogs/multiplayer/lobby.cpp:490
 msgid "Shared vision:"
 msgstr "Sicht teilen:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:488
+#: src/gui/dialogs/multiplayer/lobby.cpp:491
 msgid "Shuffle sides:"
 msgstr "Zufallsmodus:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:489
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid "Time limit:"
 msgstr "Zeitbegrenzung:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:490
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid "Use map settings:"
 msgstr "Vorgaben nutzen:"
 
 # Wird in der Lobby angezeigt, beim Mouseover über das (i) Symbol eines Spiels.
-#: src/gui/dialogs/multiplayer/lobby.cpp:498
+#: src/gui/dialogs/multiplayer/lobby.cpp:501
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6584,19 +6576,19 @@ msgstr ""
 "Eine oder mehrere Erweiterungen müssen installiert\n"
 "werden, um dieser Partie beitreten zu können."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:523
+#: src/gui/dialogs/multiplayer/lobby.cpp:526
 msgid "Observers allowed"
 msgstr "Beobachter zugelassen"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:526
+#: src/gui/dialogs/multiplayer/lobby.cpp:529
 msgid "Observers not allowed"
 msgstr "Beobachter nicht zugelassen"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:805
+#: src/gui/dialogs/multiplayer/lobby.cpp:808
 msgid "lobby"
 msgstr "Lobby"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:973
+#: src/gui/dialogs/multiplayer/lobby.cpp:976
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6984,24 +6976,24 @@ msgstr "Wollt Ihr diesen Link wirklich öffnen?"
 msgid "Copied link!"
 msgstr "Link kopiert!"
 
-#: src/gui/widgets/listbox.cpp:916 src/gui/widgets/multi_page.cpp:282
+#: src/gui/widgets/listbox.cpp:919 src/gui/widgets/multi_page.cpp:285
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "Die Anzahl von Spalten eines »Listeneintrags« muss jener der "
 "»Listendefinition« entsprechen."
 
-#: src/gui/widgets/listbox.cpp:960 src/gui/widgets/listbox.cpp:1065
-#: src/gui/widgets/listbox.cpp:1170 src/gui/widgets/scrollbar_panel.cpp:147
+#: src/gui/widgets/listbox.cpp:963 src/gui/widgets/listbox.cpp:1068
+#: src/gui/widgets/listbox.cpp:1173 src/gui/widgets/scrollbar_panel.cpp:147
 msgid "No list defined."
 msgstr "Keine Liste definiert."
 
-#: src/gui/widgets/listbox.cpp:965 src/gui/widgets/listbox.cpp:1070
-#: src/gui/widgets/listbox.cpp:1175
+#: src/gui/widgets/listbox.cpp:968 src/gui/widgets/listbox.cpp:1073
+#: src/gui/widgets/listbox.cpp:1178
 msgid "A 'list_definition' should contain one row."
 msgstr "Eine »Listendefinition« sollte nur eine Zeile enthalten."
 
-#: src/gui/widgets/multi_page.cpp:258
+#: src/gui/widgets/multi_page.cpp:261
 msgid "No page defined."
 msgstr "Keine Seite definiert."
 
@@ -7983,7 +7975,7 @@ msgstr "Lua Konsole anzeigen"
 msgid "Unrecognized Command"
 msgstr "Unbekanntes Kommando"
 
-#: src/preferences/display.cpp:122 src/preferences_display0.cpp:107
+#: src/preferences/display.cpp:122
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Keine Grafikthemen gefunden. Versucht die Einstellungen in einem laufenden "
@@ -8014,11 +8006,6 @@ msgstr "[%H:%M]"
 #: src/preferences/game.cpp:911
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
-
-#: src/preferences_display0.cpp:172
-#, fuzzy
-msgid "Find $filename server binary"
-msgstr "Sucht den $filename Server, um Mehrspielerpartien auszurichten"
 
 #: src/terrain/translation.cpp:714
 #, fuzzy
@@ -8072,6 +8059,15 @@ msgid ""
 msgstr ""
 "Der Schlüssel »$deprecated_key« wurde in »$key« umbenannt. Unterstützung für "
 "»$deprecated_key« wird in Version $removal_version entfernt."
+
+#, fuzzy
+#~| msgid "Do you want to open this link?"
+#~ msgid "Are you sure you want to open this link? "
+#~ msgstr "Wollt Ihr diesen Link wirklich öffnen?"
+
+#, fuzzy
+#~ msgid "Find $filename server binary"
+#~ msgstr "Sucht den $filename Server, um Mehrspielerpartien auszurichten"
 
 #~ msgid "Event"
 #~ msgstr "Event"
