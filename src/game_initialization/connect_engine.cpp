@@ -184,7 +184,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 		return translation::compare(lhs["name"].str(), rhs["name"].str()) < 0;
 	});
 
-	game_config::add_color_info(scenario());
+	game_config::add_color_info(game_config_view::wrap(scenario()));
 
 	// Create side engines.
 	int index = 0;

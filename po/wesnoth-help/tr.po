@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-03-09 20:11-0300\n"
-"PO-Revision-Date: 2020-01-14 14:40+0300\n"
+"POT-Creation-Date: 2020-08-22 00:14-0400\n"
+"PO-Revision-Date: 2020-08-05 03:31+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -29,6 +29,8 @@ msgstr "Yeraltı"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:65
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "tedavi +4"
@@ -59,6 +61,8 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:71
 #: data/core/macros/abilities.cfg:28
 msgid "heals +8"
 msgstr " tedavi +8"
@@ -88,6 +92,271 @@ msgstr ""
 "Zehirlenmiş bir birim şifacıdan antidot alamaz, bu iş için bir köy ya da "
 "ilaç verebilen bir birim aramalıdır."
 
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:62
+#, fuzzy
+#| msgid "heals +4"
+msgid "heals +12"
+msgstr "tedavi +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:63
+#, fuzzy
+#| msgid "female^heals +4"
+msgid "female^heals +12"
+msgstr "+4 tedavi"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:64
+#, fuzzy
+#| msgid ""
+#| "This unit combines herbal remedies with magic to heal units more quickly "
+#| "than is normally possible on the battlefield.\n"
+#| "\n"
+#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#| "poison from taking effect for that turn.\n"
+#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#| "the care of a village or a unit that can cure."
+msgid ""
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 12 HP per turn, or stop "
+"poison from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Bu birim savaş alanında bitkilerle sihri birleştirerek birimleri normalde "
+"mümkün olandan çok daha hızlı iyileştirir.\n"
+"\n"
+"Bu birim her el en fazla 8 YP puanı iyileşme sağlayabilir veya zehrin "
+"etkisini sadece o el için durdurabilir.\n"
+"Zehirlenmiş bir birim şifacıdan antidot alamaz, bu iş için bir köy ya da "
+"ilaç verebilen bir birim aramalıdır."
+
+#. [trait]: id=healthy
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
+#: data/core/macros/traits.cfg:229
+msgid "Always rest heals"
+msgstr "Dinlenme daima iyileştirir"
+
+#. [hides]: id=ambush
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:14
+#: data/core/macros/abilities.cfg:251
+msgid "ambush"
+msgstr "pusu"
+
+#. [damage]: id=backstab
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:17
+#: data/core/macros/abilities.cfg:352
+msgid "backstab"
+msgstr "destekli"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:20
+msgid "Castle"
+msgstr ""
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
+msgid "Cave"
+msgstr ""
+
+#. [damage]: id=charge
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
+#: data/core/macros/abilities.cfg:448
+msgid "charge"
+msgstr "yükleme"
+
+#. [hides]: id=concealment
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:29
+#: data/core/macros/abilities.cfg:289
+msgid "concealment"
+msgstr "gizlenir"
+
+#. [heals]: id=curing
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:137
+#: data/core/macros/abilities.cfg:47
+msgid "cures"
+msgstr "ilaç verir"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
+#: src/help/help_topic_generators.cpp:702
+msgid "Defense"
+msgstr ""
+
+#. [drains]: id=drains
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
+#: data/core/macros/abilities.cfg:461
+msgid "drains"
+msgstr "sömürür"
+
+#. [trait]: id=fearless
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "korkusuz"
+
+#. [dummy]: id=feeding
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
+#: data/core/macros/abilities.cfg:328
+msgid "feeding"
+msgstr "beslenme"
+
+#. [dummy]: id=feeding
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:47
+#: data/core/macros/abilities.cfg:330
+msgid ""
+"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
+"except units that are immune to plague."
+msgstr ""
+"Vebaya bağışık olmayan yaşayan bir birimi öldürdüğünde bu birimin yaşam "
+"puanı 1 arttırılır."
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:50
+#: data/lua/feeding.lua:31 data/lua/feeding.lua:44
+msgid "+1 max HP"
+msgstr "+1 azami YP"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
+#, fuzzy
+#| msgid "first strike"
+msgid "firststrike"
+msgstr "ilk vuruş"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:56
+msgid "Flat"
+msgstr ""
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:59
+msgid "Forest"
+msgstr ""
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:62
+msgid "Frozen"
+msgstr ""
+
+#. [trait]: id=healthy
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:74
+#: data/core/macros/traits.cfg:227
+msgid "healthy"
+msgstr "sağlıklı"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:77
+msgid "Hills"
+msgstr ""
+
+#. [illuminates]: id=illumination
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:80
+#: data/core/macros/abilities.cfg:206
+msgid "illuminates"
+msgstr "aydınlatır"
+
+#. [leadership]: id=leadership
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:83
+#: data/core/macros/abilities.cfg:172
+msgid "leadership"
+msgstr "liderlik"
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:86
+#: data/core/macros/abilities.cfg:426
+msgid "magical"
+msgstr "sihirli"
+
+#. [chance_to_hit]: id=marksman
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:89
+#: data/core/macros/abilities.cfg:413
+msgid "marksman"
+msgstr "nişancı"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:92
+msgid "Mushroom Grove"
+msgstr ""
+
+#. [hides]: id=nightstalk
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:95
+#: data/core/macros/abilities.cfg:270 data/core/macros/abilities.cfg:271
+msgid "nightstalk"
+msgstr "karabasan"
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
+#: data/core/macros/abilities.cfg:371 data/core/macros/abilities.cfg:382
+msgid "plague"
+msgstr "veba"
+
+#. [poison]: id=poison
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:101
+#: data/core/macros/abilities.cfg:481
+msgid "poison"
+msgstr "zehirler"
+
+#. [regenerate]: id=regenerates
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:104
+#: data/core/macros/abilities.cfg:70
+msgid "regenerates"
+msgstr "iyileşir"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
+#: src/help/help_topic_generators.cpp:663
+msgid "Resistances"
+msgstr ""
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:110
+msgid "Sand"
+msgstr ""
+
+#. [skirmisher]: id=skirmisher
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:113
+#: data/core/macros/abilities.cfg:191
+msgid "skirmisher"
+msgstr "avcı"
+
+#. [slow]: id=slow
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:116
+#: data/core/macros/abilities.cfg:393
+msgid "slows"
+msgstr "yavaşlatır"
+
+#. [resistance]: id=steadfast
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
+#: data/core/macros/abilities.cfg:104
+msgid "steadfast"
+msgstr "sarsılmaz"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
+#: src/help/help_topic_generators.cpp:582
+msgid "Strikes"
+msgstr ""
+
+#. [hides]: id=submerge
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:125
+#: data/core/macros/abilities.cfg:308
+msgid "submerge"
+msgstr "dalış"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:128
+msgid "Swamp"
+msgstr ""
+
+#. [teleport]: id=teleport
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:131
+#: data/core/macros/abilities.cfg:220
+msgid "teleport"
+msgstr "ışınlanma"
+
+#. [trait]: id=undead
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:134
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "yarı ölü"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:140
+msgid "Village"
+msgstr ""
+
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
@@ -95,7 +364,7 @@ msgstr "Harita ve Senaryo Düzenleyici"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:272
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:274
 msgid "Terrain Editor"
 msgstr "Arazi Düzenleyici"
 
@@ -307,7 +576,7 @@ msgstr "Etiketleme Aracı"
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:128 data/core/editor/help.cfg:136
 #: data/core/editor/help.cfg:154 data/core/editor/help.cfg:162
-#: data/core/editor/help.cfg:293
+#: data/core/editor/help.cfg:295
 msgid "TODO"
 msgstr "YAPILACAK"
 
@@ -349,12 +618,25 @@ msgstr "İsimli Alanlar"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:170
+#, fuzzy
+#| msgid ""
+#| "Named Areas are sets of gamefields which can be addressed during scenario "
+#| "scripting by a given name.\n"
+#| "\n"
+#| "It can be used to abstract between the implementation of an effect and "
+#| "the map specific setting.\n"
+#| "This is a very powerful mechanism since it allows generic scenario "
+#| "codings working with different maps providing the needed named locations."
 msgid ""
-"Named Areas are sets of gamefields which can be addressed during scenario "
-"scripting by a given name.\n"
+"This tool can create [time_area]s, unlike the name suggestes these do not "
+"need to have a specific timezone assigned to them.\n"
+"    [time_area]s are sets of tiles which can be addressed during scenario "
+"scripting by a thieir id. [time_area]s can optitionaly have a custom\n"
+"    time zome assigned to them. The simplest way to adress a [time_aera] via "
+"scenario scripting is the `aera=` attribute in standard location filters.\n"
 "\n"
-"It can be used to abstract between the implementation of an effect and the "
-"map specific setting.\n"
+"This tool can be used to abstract between the implementation of an effect "
+"and the map specific setting.\n"
 "This is a very powerful mechanism since it allows generic scenario codings "
 "working with different maps providing the needed named locations."
 msgstr ""
@@ -367,12 +649,12 @@ msgstr ""
 "kodlamalarını sağlayan çok güçlü bir mekanizmadır."
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:180
+#: data/core/editor/help.cfg:182
 msgid "Playlist Manager"
 msgstr "Oynatma Listesi Yöneticisi"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:181
+#: data/core/editor/help.cfg:183
 msgid ""
 "Saves a list of music tracks defining a random playlist to the scenario.\n"
 "\n"
@@ -384,12 +666,12 @@ msgstr ""
 "Ek müzik parçalarını kullanmak için eklenti sunucusuna bir göz atın."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:190
+#: data/core/editor/help.cfg:192
 msgid "Map/Scenario Editor"
 msgstr "Harita / Senaryo Düzenleyici"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:192
+#: data/core/editor/help.cfg:194
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -432,7 +714,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:221
+#: data/core/editor/help.cfg:223
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -459,12 +741,12 @@ msgstr ""
 "• <ref>dst='editor_clipboard' text='Düzenleyici Panosu'</ref>"
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:231
+#: data/core/editor/help.cfg:233
 msgid "Editing Modes"
 msgstr "Düzenleme Kipleri"
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:232
+#: data/core/editor/help.cfg:234
 msgid ""
 "The editor features two modes of operation:\n"
 "\n"
@@ -488,12 +770,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:249
+#: data/core/editor/help.cfg:251
 msgid "Editor Tools"
 msgstr "Düzenleyici Araçları"
 
 #. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:250
+#: data/core/editor/help.cfg:252
 #, fuzzy
 #| msgid ""
 #| "The editor provides several tools for editing your maps and scenarios. At "
@@ -553,7 +835,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:273
+#: data/core/editor/help.cfg:275
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -567,12 +849,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:284
+#: data/core/editor/help.cfg:286
 msgid "Editor Mask Usage"
 msgstr "Düzenleyici Maske Kullanımı"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:285
+#: data/core/editor/help.cfg:287
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -581,17 +863,17 @@ msgstr ""
 "haritaya uygulanabilir."
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:292
+#: data/core/editor/help.cfg:294
 msgid "Time Schedule Editor"
 msgstr "Zaman Çizelgesi Düzenleyicisi"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:300
+#: data/core/editor/help.cfg:302
 msgid "Editor Palette"
 msgstr "Düzenleyici Paleti"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:301
+#: data/core/editor/help.cfg:303
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -607,32 +889,32 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:306
+#: data/core/editor/help.cfg:308
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:307
+#: data/core/editor/help.cfg:309
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:308
+#: data/core/editor/help.cfg:310
 msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:318
+#: data/core/editor/help.cfg:320
 msgid "Wesnoth Map Format"
 msgstr "Vesnot Harita Düzenleyici"
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:319
+#: data/core/editor/help.cfg:321
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:321
+#: data/core/editor/help.cfg:323
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -663,7 +945,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:334
+#: data/core/editor/help.cfg:336
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -683,7 +965,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:342
+#: data/core/editor/help.cfg:344
 msgid ""
 "<bold>text='Using Embedded Format in Scenario Mode'</bold>\n"
 "\n"
@@ -710,8 +992,39 @@ msgstr "Ansiklopedi"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-msgid "<ref>dst='..geography' text='Geography'</ref>"
+#, fuzzy
+#| msgid "<ref>dst='..geography' text='Geography'</ref>"
+msgid ""
+"<ref>dst='..calendar' text='Calendar'</ref>\n"
+"<ref>dst='..geography' text='Geography'</ref>"
 msgstr "<ref>dst='..geography' text='Coğrafya'</ref>"
+
+#. [section]: id=calendar
+#. [topic]: id=..calendar
+#: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:12
+msgid "Calendar"
+msgstr ""
+
+#. [topic]: id=..calendar
+#: data/core/encyclopedia/calendar.cfg:13
+msgid ""
+"Each year in the Wesnoth calendar is composed of 12 months. These are, in "
+"order:\n"
+"\n"
+"Whitefire\n"
+"Bleeding Moon\n"
+"Scatterseed\n"
+"Deeproot\n"
+"Scryer’s Bloom\n"
+"Thorntress\n"
+"Summit Star\n"
+"Kindlefire\n"
+"Stillseed\n"
+"Reaper’s Moon\n"
+"Verglas Bloom\n"
+"Blackfire\n"
+"\n"
+msgstr ""
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -741,12 +1054,6 @@ msgstr "Büyük Nehir"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
-#, fuzzy
-#| msgid ""
-#| "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
-#| "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
-#| "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
-#| "text='ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgid ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
@@ -1022,25 +1329,6 @@ msgstr "Elensefar"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
-#, fuzzy
-#| msgid ""
-#| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
-#| "text='Wesnoth'</ref>, at times an independent country, and at times in a "
-#| "treaty federation with Wesnoth. Its borders are the "
-#| "<ref>dst='great_river' text='Great River'</ref> to the north, a loosely "
-#| "defined line with Wesnoth to the east, the Bay of Pearls to the south, "
-#| "and the <ref>dst='great_ocean' text='ocean'</ref> to the west. More "
-#| "information is found in the historical narrative of Wesnoth.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Elensefar: The capital, located on an island in the Great River "
-#| "delta.\n"
-#| "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with "
-#| "Wesnoth.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
-#| "this point, and only ships can cross it."
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -1081,48 +1369,6 @@ msgstr "Kuzey Toprakları"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:120
-#, fuzzy
-#| msgid ""
-#| "There is no government of the Northlands. Various groups of orcs, "
-#| "dwarves, barbarian men and even elves populate the region. The northern "
-#| "and eastern borders are not defined, the southern border is the "
-#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
-#| "is the <ref>dst='great_ocean' text='ocean'</ref>.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Glamdrol: An Orcish tribal capital.\n"
-#| "    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
-#| "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga "
-#| "in the southern Heart Mountains. A major trade center.\n"
-#| "    • Dallben and Delwyn: Human villages originally built by settlers who "
-#| "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
-#| "abandoned. The forested area northeast of <ref>dst='elensefar' "
-#| "text='Elensefar'</ref>, where these villages were located, was named the "
-#| "Annuvin province by men but was known by the elves as Wesmere.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A "
-#| "virtually impassable barrier between the river country and the Northern "
-#| "Plains.\n"
-#| "    • Heartfangs: the particularly forbidding stretch of high peaks "
-#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
-#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
-#| "madmen, and mages live there.\n"
-#| "    • Swamp of Dread: a very large bog located between the Heart "
-#| "Mountains and the Great River. A notoriously dangerous place.\n"
-#| "    • Lake Vrug: A large mountain lake whose river carves the only "
-#| "pathway through the Northern Mountains.\n"
-#| "    • <ref>dst='arkan_thoria' text='Arkan-thoria'</ref>: The river that "
-#| "comes out of Lake Vrug. This is the elvish name; among humans it is "
-#| "called Longlier.\n"
-#| "    • River Listra: The south-running tributary of the Great River into "
-#| "which the Arkan-thoria empties.\n"
-#| "    • Lintanir Forest: The southernmost portion of the Great Northern "
-#| "Forest, a gigantic wood whose eastern and northern boundaries are known "
-#| "only to the elves. Their capital, Elensiria, has only seldom been visited "
-#| "by humans.\n"
-#| "    • <ref>dst='great_river' text='Great River'</ref>: The origin of this "
-#| "river is somewhere in the east of the northern lands."
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -1170,7 +1416,7 @@ msgstr ""
 "batısında <ref>dst='great_ocean' text='okyanus'</ref> bulunur.\n"
 "\n"
 "<header>text='Önemli şehirler:'</header>\n"
-"     • Glamdrol: Bir Orc kabile başkenti.\n"
+"     • Glamdrol: Orc kabile başkenti.\n"
 "     • Vesmer: Elfler Konseyi Kalya'nın bulunduğu yer.\n"
 "     • Cüce Kapıları: Kalp Dağlarının güneyindeki Kanalga bölgesinde insan/"
 "cüce karması bir kasaba. Büyük bir ticaret merkezidir.\n"
@@ -1210,24 +1456,6 @@ msgstr "Güneybatı Elf Toprakları"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:142
-#, fuzzy
-#| msgid ""
-#| "The Wood Elves are separate from those of the north, and have only "
-#| "intermittent relations with them and most other countries. Its borders "
-#| "are the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black "
-#| "River to the south and southeast, the lands of Wesnoth to the north and "
-#| "the Kerlath province to the east.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • None known.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Aethenwood: The largest southern forest, it extends far to the "
-#| "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
-#| "the elves make no such distinction, the southern part of the forest has "
-#| "been named Southwood by denizens of Kerlath.\n"
-#| "    • Black Forest: An ancient forest of which very little is known, "
-#| "abandoned by the elves long ago."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -1327,7 +1555,7 @@ msgstr ""
 "krallığa hükmettikleri söylenir.\n"
 "\n"
 "<header>text='Önemli şehirler:'</header>\n"
-"    • Barag Gor Ork Konsryinin bulunduğu şehir\n"
+"    • Barag Gor, Ork Konseyinin bulunduğu şehir\n"
 "    • Bitok\n"
 "    • Borstep\n"
 "    • Farzi\n"
@@ -1369,7 +1597,7 @@ msgstr "Oynanış"
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:460
+#: data/core/help.cfg:29 data/core/help.cfg:455
 #: src/help/help_topic_generators.cpp:439
 #: src/help/help_topic_generators.cpp:462
 msgid "Traits"
@@ -1401,39 +1629,24 @@ msgstr "Çağlar"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:70 data/core/help.cfg:475
+#: data/core/help.cfg:70 data/core/help.cfg:470
 msgid "Terrains"
 msgstr "Araziler"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:78 data/core/help.cfg:528
+#: data/core/help.cfg:78 data/core/help.cfg:523
 msgid "Add-ons"
 msgstr "Eklentiler"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:84 data/core/help.cfg:601
+#: data/core/help.cfg:84 data/core/help.cfg:596
 msgid "Commands"
 msgstr "Komutlar"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:96
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-#| "strategy game somewhat unusual among modern strategy games. While other "
-#| "games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
-#| "strives for simplicity of both rules and gameplay. This does not make the "
-#| "game simple, however — from these simple rules arises a wealth of "
-#| "strategy, making the game easy to learn but a challenge to master.\n"
-#| "\n"
-#| "The following pages outline all you need to know to play Wesnoth. As you "
-#| "play, new information is added to the various categories as you come "
-#| "across new aspects of the game. For more detailed information on special "
-#| "situations and exceptions, follow the included links."
 msgid ""
 "\n"
 "\n"
@@ -1837,14 +2050,6 @@ msgstr "Gelir ve Gider"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Income is simple. You have a base income of 2 gold per turn. For every "
-#| "village you control, you gain one additional gold each turn. Thus, if you "
-#| "have ten villages, you would normally gain 12 gold each turn. Your upkeep "
-#| "costs are subtracted from this income, as detailed below."
 msgid ""
 "\n"
 "\n"
@@ -2213,9 +2418,42 @@ msgstr "Kayıttan yükleme"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:288
+#, fuzzy
+#| msgid ""
+#| "Random numbers are part of Wesnoth, attacks can fail and units can die "
+#| "due to bad luck. This is an expected part of the game, and one of the "
+#| "aims of the game is that a sufficiently skilled player should be able to "
+#| "complete all of the mainline campaigns, on hard, without needing to save-"
+#| "load. Going back to a previous turn to try a different strategy is a part "
+#| "of learning the game, but we recommend against reloading merely to try "
+#| "the same strategy again while hoping for better luck."
 msgid ""
-"\n"
-"\n"
+"Random numbers are part of Wesnoth, attacks can fail and units can die due "
+"to bad luck — this is an expected part of the game. Going back to a previous "
+"turn to try a different strategy is a part of learning the game, but we "
+"recommend against reloading merely to try the same strategy again while "
+"hoping for better luck."
+msgstr ""
+"Rastgele sayılar oyun mekaniğinin bir parçasıdır, kötü şans nedeniyle "
+"saldırılar başarısız olabilir veya birimler ölebilir. Bu, oyunun beklenen "
+"bir parçasıdır ve oyunun amaçlarından biri, yeterli düzeyde yetenekli bir "
+"oyuncunun, tüm ana seferberlikleri, kayıttan yüklemeye gerek kalmadan, zor "
+"da olsa tamamlayabilmesidir. Farklı bir strateji denemek için önceki ele "
+"geri dönmek, oyunu öğrenmenin bir parçasıdır, ancak daha iyi şans umarak "
+"aynı stratejiyi tekrar denemek için yeniden yüklemeye karşıyız."
+
+#. [topic]: id=saveload
+#: data/core/help.cfg:290
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "One of the challenges of the game is to work out how to protect your "
+#| "heroes. Small risks quickly build up: if you have five important units, "
+#| "and they each have just a 1% chance of death each turn, you can "
+#| "<italic>text='expect'</italic> one of them to die about every 20 turns. "
+#| "So, you’ll rarely make it through a scenario without having it happen."
+msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
 "each have just a 1% chance of death each turn, you can "
@@ -2231,68 +2469,35 @@ msgstr ""
 "olmadan bir senaryoyu atlatırsınız."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:288
+#: data/core/help.cfg:293
 msgid ""
-"Random numbers are part of Wesnoth, attacks can fail and units can die due "
-"to bad luck. This is an expected part of the game, and one of the aims of "
-"the game is that a sufficiently skilled player should be able to complete "
-"all of the mainline campaigns, on hard, without needing to save-load. Going "
-"back to a previous turn to try a different strategy is a part of learning "
-"the game, but we recommend against reloading merely to try the same strategy "
-"again while hoping for better luck."
+"Small risks build up for your non-hero units too. While the story and "
+"dialogue usually aim to give you some emotional bond with your troops, the "
+"game mechanics reward remembering that it’s just a game — there is rarely "
+"any penalty for letting these units die, other than being unable to recall "
+"them in future scenarios. Your battle plan should distribute the risks based "
+"on which troops you want to recall later."
 msgstr ""
-"Rastgele sayılar oyun mekaniğinin bir parçasıdır, kötü şans nedeniyle "
-"saldırılar başarısız olabilir veya birimler ölebilir. Bu, oyunun beklenen "
-"bir parçasıdır ve oyunun amaçlarından biri, yeterli düzeyde yetenekli bir "
-"oyuncunun, tüm ana seferberlikleri, kayıttan yüklemeye gerek kalmadan, zor "
-"da olsa tamamlayabilmesidir. Farklı bir strateji denemek için önceki ele "
-"geri dönmek, oyunu öğrenmenin bir parçasıdır, ancak daha iyi şans umarak "
-"aynı stratejiyi tekrar denemek için yeniden yüklemeye karşıyız."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:290
+#: data/core/help.cfg:295
 msgid ""
-"\n"
-"\n"
-"The following points are under discussion on the forums. At least for the "
-"1.15.x series before 1.16.0 please assume that the forum threads are more "
-"authoritative than the text on this page."
+"The difficulty levels are balanced assuming that the player won’t save-load. "
+"In the mainline campaigns, harder difficulties generally have more enemies "
+"and thus more experience points available; this leads to them being balanced "
+"assuming that the player will be able to train enough troops to cope with "
+"losing some level two or level three units."
 msgstr ""
-"\n"
-"\n"
-"Aşağıdaki konular forumlarda tartışılmaktadır. En azından 1.16.0 öncesi 1.15."
-"x serisi için lütfen forum konularının bu sayfadaki metinden daha yetkin "
-"olduğunu varsayalım."
-
-#. [topic]: id=saveload
-#: data/core/help.cfg:292
-msgid ""
-"\n"
-"\n"
-"In the mainline campaigns, on hard:\n"
-"• A sufficiently skilled player will have a good chance to win each scenario "
-"on the first time that they see that scenario, without foreknowledge of what "
-"will happen.\n"
-"• This assumes that the player picks up all of the clues given in the "
-"dialogue.\n"
-"• There are more experience points available than on easy, and the player "
-"will be able to train enough troops to cope with losing some L2 or L3 units."
-msgstr ""
-"\n"
-"\n"
-"Oyuniçi sefarberliklerde, zor da olsa:\n"
-"• Yeterince yetenekli her oyuncunun, bir senaryoyu gördüğünde ne olacağını "
-"bilmese dahi, her senaryoyu kazanabilme şansı vardır.\n"
-"• Bunun için, oyuncunun senaryo amaçlarında verilen tüm ipuçlarını aldığı "
-"varsayılır.\n"
-"• Deneyim puanları kolayca kazanılabileceğinden oyuncu 2. ve 3. seviye "
-"birimlerden kazanmaya yetecek kadarını eğitebilecektir."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:297
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "That said, it’s a game; the best way to play it is whichever way gives "
+#| "you the most enjoyment."
 msgid ""
-"\n"
-"\n"
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
@@ -2301,12 +2506,12 @@ msgstr ""
 "Yani, bu bir oyun; oynamak için en iyi yol sizin en hoşlandığınız yoldur."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:306
+#: data/core/help.cfg:304
 msgid "Learning from Losses"
 msgstr "Yenilerek Öğrenmek"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:307
+#: data/core/help.cfg:305
 msgid ""
 "<italic>text='Why did I lose that scenario?'</italic>\n"
 "\n"
@@ -2319,7 +2524,7 @@ msgstr ""
 "anlamaktır."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:309
+#: data/core/help.cfg:307
 msgid ""
 "\n"
 "\n"
@@ -2337,7 +2542,7 @@ msgstr ""
 "yeniden başlatın'</ref>, olmazsa bunu yineleyin."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:311
+#: data/core/help.cfg:309
 msgid ""
 "\n"
 "\n"
@@ -2348,7 +2553,7 @@ msgstr ""
 "Bir senaryoda yenilmenizin sebepleri şunlardan biri olabilir:"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:313
+#: data/core/help.cfg:311
 msgid ""
 "\n"
 "\n"
@@ -2362,7 +2567,7 @@ msgstr ""
 "seviyesinde oynamayı deneyin."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:315
+#: data/core/help.cfg:313
 msgid ""
 "\n"
 "\n"
@@ -2378,7 +2583,7 @@ msgstr ""
 "olabilirsiniz."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:317
+#: data/core/help.cfg:315
 msgid ""
 "\n"
 "\n"
@@ -2395,7 +2600,7 @@ msgstr ""
 "büyücünüz varsa önerilerini dinlemeye çalışın; belki hayatınızı kurtarır."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:319
+#: data/core/help.cfg:317
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2414,16 +2619,16 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"• Barely scraping a victory in a previous scenario. At all difficulties "
-"except “Beginner” (TODO: and “Easy”?), campaigns assume that you will have "
-"some <italic>text='carryover gold'</italic> and some advanced units on your "
-"<italic>text='recall list.'</italic> (These concepts are explained in the "
-"tutorial.) If you win a scenario but lose most of your advanced units and "
-"much of your gold, the following scenario may be very difficult to beat, "
-"even for a more experienced player. If you find yourself in this situation, "
-"you may try to go back a scenario or two and win them more convincingly, or "
-"change to an easier difficulty. (However, remember that <italic>text='some'</"
-"italic> losses are expected, particularly at higher difficulties.)"
+"• Barely scraping a victory in a previous scenario. Campaigns generally "
+"assume that you will have some <italic>text='carryover gold'</italic> and "
+"some experienced units on your <italic>text='recall list.'</italic> (These "
+"concepts are explained in the tutorial.) If you win a scenario but lose most "
+"of your experienced units and much of your gold, the following scenario may "
+"be very difficult to beat, even for a more experienced player. If you find "
+"yourself in this situation, you may try to go back a scenario or two and win "
+"them more convincingly, or change to an easier difficulty. (However, "
+"remember that <italic>text='some'</italic> losses are expected, particularly "
+"at higher difficulties.)"
 msgstr ""
 "\n"
 "\n"
@@ -2441,7 +2646,7 @@ msgstr ""
 "dahilinde olduğunu unutmayın.)"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:321
+#: data/core/help.cfg:319
 msgid ""
 "\n"
 "\n"
@@ -2462,7 +2667,7 @@ msgstr ""
 "konusuna çok iyi bir örnek olurdu.)"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:323
+#: data/core/help.cfg:321
 msgid ""
 "\n"
 "\n"
@@ -2473,7 +2678,7 @@ msgstr ""
 "<header>text='Zorlanmış sebepler'</header>"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:325
+#: data/core/help.cfg:323
 msgid ""
 "\n"
 "\n"
@@ -2486,7 +2691,7 @@ msgstr ""
 "zorlanmış denebilecek birkaç sebep daha vardır. Bunlar:"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:327
+#: data/core/help.cfg:325
 msgid ""
 "\n"
 "\n"
@@ -2501,7 +2706,7 @@ msgstr ""
 "aktarmış olabilirsiniz."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:329
+#: data/core/help.cfg:327
 msgid ""
 "\n"
 "\n"
@@ -2522,7 +2727,7 @@ msgstr ""
 "gerektirdiğinden bir yazılım hatası olarak ele alınır.)"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:331
+#: data/core/help.cfg:329
 msgid ""
 "\n"
 "\n"
@@ -2556,7 +2761,7 @@ msgstr ""
 "durumudur."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:333
+#: data/core/help.cfg:331
 msgid ""
 "\n"
 "\n"
@@ -2575,7 +2780,7 @@ msgstr ""
 "düşünüyorsanız, elbette, bunu bildirin!"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:335
+#: data/core/help.cfg:333
 msgid ""
 "\n"
 "\n"
@@ -2593,23 +2798,13 @@ msgstr ""
 "ilerlemenin kritik noktalarında küçük şanslar aramakla elde edeceklerinizi, "
 "istatistikleri okuyarak elde edemezsiniz."
 
-#. [topic]: id=whylost
-#: data/core/help.cfg:337
-msgid ""
-"\n"
-"\n"
-"TODO: link to a forum thread where new players can post their replays and "
-"get review/corrections (like https://forums.wesnoth.org/viewtopic.php?"
-"f=3&t=39944 but specifically for new players)?\n"
-msgstr ""
-
 #. [topic]: id=combat
-#: data/core/help.cfg:347
+#: data/core/help.cfg:342
 msgid "Combat"
 msgstr "Çarpışma"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:348
+#: data/core/help.cfg:343
 msgid ""
 "\n"
 "\n"
@@ -2620,7 +2815,7 @@ msgstr ""
 "<header>text='Vuruşların Sırası ve Sayısı'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:348
+#: data/core/help.cfg:343
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2644,7 +2839,7 @@ msgstr ""
 "silahları kapsayan menzilli."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:350
+#: data/core/help.cfg:345
 msgid ""
 "\n"
 "\n"
@@ -2666,7 +2861,7 @@ msgstr ""
 "isabeti 9 hasar gücünde)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:352
+#: data/core/help.cfg:347
 msgid ""
 "\n"
 "\n"
@@ -2677,7 +2872,7 @@ msgstr ""
 "<header>text='İsabet Şansı'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:354
+#: data/core/help.cfg:349
 msgid ""
 "\n"
 "\n"
@@ -2700,7 +2895,7 @@ msgstr ""
 "alakalıdır."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:356
+#: data/core/help.cfg:351
 msgid ""
 "\n"
 "\n"
@@ -2720,7 +2915,7 @@ msgstr ""
 "sahiptirler."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:358
+#: data/core/help.cfg:353
 msgid ""
 "\n"
 "\n"
@@ -2731,7 +2926,7 @@ msgstr ""
 "<header>text='Hasar'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:360
+#: data/core/help.cfg:355
 msgid ""
 "\n"
 "\n"
@@ -2753,7 +2948,7 @@ msgstr ""
 "menüsünden <bold>text='Hasar Hesaplamaları'</bold>nı seçiniz."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:362
+#: data/core/help.cfg:357
 msgid ""
 "\n"
 "\n"
@@ -2770,12 +2965,12 @@ msgstr ""
 "sahip birim ister saldırsın ister savunsun verdiği hasar ikiye katlanır."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:370
+#: data/core/help.cfg:365
 msgid "Damage Types and Resistance"
 msgstr "Hasar Türleri ve Direnç"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:371
+#: data/core/help.cfg:366
 msgid ""
 "\n"
 "\n"
@@ -2794,7 +2989,7 @@ msgstr ""
 "türüyle vurulduğu zaman %100 daha fazla hasar alır."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:371
+#: data/core/help.cfg:366
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2811,7 +3006,7 @@ msgstr ""
 "olabilir."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:373
+#: data/core/help.cfg:368
 msgid ""
 "\n"
 "\n"
@@ -2826,7 +3021,7 @@ msgstr ""
 "zayıftır."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:375
+#: data/core/help.cfg:370
 msgid ""
 "\n"
 "\n"
@@ -2840,12 +3035,12 @@ msgstr ""
 "karşı tarafın o hasar türüne %100 direnci olsa da geçerlidir."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:383
+#: data/core/help.cfg:378
 msgid "Orbs"
 msgstr "Küreler"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:384
+#: data/core/help.cfg:379
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2854,19 +3049,19 @@ msgstr ""
 "Yönetiminizdeki birimler için bu küre:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:386
+#: data/core/help.cfg:381
 msgid " green if it hasn’t moved this turn,"
 msgstr "yeşil; birim o el hiç hareket etmemişse yeşildir,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:387
+#: data/core/help.cfg:382
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 " sarı; birim hareket etmiş ama devam edebilecek veya saldırabilecekse "
 "sarıdır,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:388
+#: data/core/help.cfg:383
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
@@ -2874,22 +3069,22 @@ msgstr ""
 "sırasını sonlandırırsa kırmızı olur."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:389
+#: data/core/help.cfg:384
 msgid " blue if the unit is an ally you do not control."
 msgstr " mavi; birim idarende olmayan bir müttefikse mavidir."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:390
+#: data/core/help.cfg:385
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " Düşman birimlerinin enerji çubuğunun üstünde küre yoktur."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:397
+#: data/core/help.cfg:392
 msgid "Time of Day"
 msgstr "Günün saati"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:398
+#: data/core/help.cfg:393
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -2919,7 +3114,7 @@ msgstr ""
 "• <bold>text='İntikalî'</bold> birimler gündüz ve gece -%25 hasar alır."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:403
+#: data/core/help.cfg:398
 msgid ""
 "\n"
 "\n"
@@ -2937,21 +3132,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:407 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:402 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Şafak"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:408 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:403 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Sabah"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:409 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:404 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Öğle"
@@ -2959,27 +3154,27 @@ msgstr "Öğle"
 #. [time]: id=dusk
 #. [topic]: id=time_of_day
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:410 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:405 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Akşam"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:411 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:406 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Gece"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:412 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:407 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Sabaha Karşı"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:414
+#: data/core/help.cfg:409
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
@@ -2988,7 +3183,7 @@ msgstr ""
 "aklınızda bulunsun!\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:416
+#: data/core/help.cfg:411
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
@@ -2997,7 +3192,7 @@ msgstr ""
 "gündüz sayılırlar.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:418
+#: data/core/help.cfg:413
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
@@ -3006,7 +3201,7 @@ msgstr ""
 "düzey sayılır.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:420
+#: data/core/help.cfg:415
 msgid ""
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
@@ -3018,12 +3213,12 @@ msgstr ""
 "gibi arazi özellikleri, birimlerin günün saati ödülünü değiştirir."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:427
+#: data/core/help.cfg:422
 msgid "Healing"
 msgstr "Tedavi"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:428
+#: data/core/help.cfg:423
 msgid ""
 "\n"
 "\n"
@@ -3036,7 +3231,7 @@ msgstr ""
 "saldırılmayan her birim bir sonraki elde 2 YP iyileşir."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:428
+#: data/core/help.cfg:423
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -3047,7 +3242,7 @@ msgstr ""
 "hepsi birden uygulanmaz, her el sadece biri uygulanır."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:430
+#: data/core/help.cfg:425
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -3060,7 +3255,7 @@ msgstr ""
 "iyileşmez, sadece zehiri giderilir."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:431
+#: data/core/help.cfg:426
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -3072,7 +3267,7 @@ msgstr ""
 "Bazı birimler (troller gibi) her el kendiliğinden 8 YP iyileşir."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:432
+#: data/core/help.cfg:427
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -3089,7 +3284,7 @@ msgstr ""
 "kadar iyileştirir veya zehirin etkisini ortadan kaldırır."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:433
+#: data/core/help.cfg:428
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -3104,7 +3299,7 @@ msgstr ""
 "kendi zehirini gideremez)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:434
+#: data/core/help.cfg:429
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -3117,7 +3312,7 @@ msgstr ""
 "yeterli deneyim kazanır kazanmaz gerçekleşir."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:435
+#: data/core/help.cfg:430
 msgid ""
 "\n"
 "\n"
@@ -3132,7 +3327,7 @@ msgstr ""
 "birimler senaryolar arasında tamamen iyileşir."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:437
+#: data/core/help.cfg:432
 msgid ""
 "\n"
 "\n"
@@ -3143,7 +3338,7 @@ msgstr ""
 "<bold>text='Kapsamlı'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:439
+#: data/core/help.cfg:434
 msgid ""
 "\n"
 "\n"
@@ -3162,12 +3357,12 @@ msgstr ""
 "müttefik tarafların sırası geldikçe her şifacıdan şifa alır."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:447
+#: data/core/help.cfg:442
 msgid "Wrap Up"
 msgstr "Konuyu toparlama"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:448
+#: data/core/help.cfg:443
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -3183,12 +3378,12 @@ msgstr ""
 "şanslar!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:453
+#: data/core/help.cfg:448
 msgid "License"
 msgstr "Lisans"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:462
+#: data/core/help.cfg:457
 msgid ""
 "\n"
 "\n"
@@ -3205,7 +3400,7 @@ msgstr ""
 "Ulu Ağaçların ise hiçbir mizacı yoktur. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:462
+#: data/core/help.cfg:457
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -3217,7 +3412,7 @@ msgstr ""
 "mizaçlar büyük ölçüde <italic>text='ırkına'</italic> göre belirlenir."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:464
+#: data/core/help.cfg:459
 msgid ""
 "\n"
 "\n"
@@ -3234,7 +3429,7 @@ msgstr ""
 "birimlerce kullanılabilir."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:466
+#: data/core/help.cfg:461
 msgid ""
 "\n"
 "\n"
@@ -3257,7 +3452,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:476
+#: data/core/help.cfg:471
 msgid ""
 "\n"
 "\n"
@@ -3270,7 +3465,7 @@ msgstr ""
 "italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:476
+#: data/core/help.cfg:471
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -3279,7 +3474,7 @@ msgstr ""
 "dirençlerini etkileyen farklı arazi türlerinden oluşur."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:478
+#: data/core/help.cfg:473
 msgid ""
 "\n"
 "\n"
@@ -3290,7 +3485,7 @@ msgstr ""
 "<header>text='Temel Arazi Türleri'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:480
+#: data/core/help.cfg:475
 msgid ""
 "\n"
 "\n"
@@ -3307,7 +3502,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:484
+#: data/core/help.cfg:479
 msgid ""
 "\n"
 "\n"
@@ -3323,7 +3518,7 @@ msgstr ""
 "özelliklere de sahip olabilir."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:486
+#: data/core/help.cfg:481
 msgid ""
 "\n"
 "\n"
@@ -3334,7 +3529,7 @@ msgstr ""
 "<header>text='Karma Arazi Türleri'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:488
+#: data/core/help.cfg:483
 msgid ""
 "\n"
 "\n"
@@ -3357,7 +3552,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:492
+#: data/core/help.cfg:487
 msgid ""
 "\n"
 "\n"
@@ -3383,7 +3578,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:496
+#: data/core/help.cfg:491
 msgid ""
 "\n"
 "\n"
@@ -3400,7 +3595,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:500
+#: data/core/help.cfg:495
 msgid ""
 "\n"
 "\n"
@@ -3417,7 +3612,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:504
+#: data/core/help.cfg:499
 msgid ""
 "\n"
 "\n"
@@ -3432,7 +3627,7 @@ msgstr ""
 "gösterilen arazi türü simgelerini inceleyerek görebilirsiniz."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:506
+#: data/core/help.cfg:501
 msgid ""
 "\n"
 "\n"
@@ -3449,7 +3644,7 @@ msgstr ""
 "görebilirsiniz."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:508
+#: data/core/help.cfg:503
 msgid ""
 "\n"
 "\n"
@@ -3460,7 +3655,7 @@ msgstr ""
 "<header>text='Savunma Kapasitesi'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:510
+#: data/core/help.cfg:505
 msgid ""
 "\n"
 "\n"
@@ -3475,7 +3670,7 @@ msgstr ""
 "arazilerde bir ceza alır — savunma kapasitesini aşamaz."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:512
+#: data/core/help.cfg:507
 msgid ""
 "\n"
 "\n"
@@ -3492,7 +3687,7 @@ msgstr ""
 "%40 yerine %30'luk bir savunma oranına sahiptir."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:514
+#: data/core/help.cfg:509
 msgid ""
 "\n"
 "\n"
@@ -3505,7 +3700,7 @@ msgstr ""
 "kapasitesi o alandaki savunma oranıyla daima aynı olur (daha büyük olamaz)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:516
+#: data/core/help.cfg:511
 msgid ""
 "\n"
 "\n"
@@ -3518,7 +3713,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:529
+#: data/core/help.cfg:524
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3531,12 +3726,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:539
+#: data/core/help.cfg:534
 msgid "Using Add-ons"
 msgstr "Eklentilerin Kullanılması"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:540
+#: data/core/help.cfg:535
 msgid ""
 "\n"
 "\n"
@@ -3547,7 +3742,7 @@ msgstr ""
 "<header>text='Seferberlikler ve Senaryolar'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:540
+#: data/core/help.cfg:535
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -3556,7 +3751,7 @@ msgstr ""
 "destekler."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:542
+#: data/core/help.cfg:537
 msgid ""
 "\n"
 "\n"
@@ -3573,7 +3768,7 @@ msgstr ""
 "italic> düğmesinden erişilebilir."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:544
+#: data/core/help.cfg:539
 msgid ""
 "\n"
 "\n"
@@ -3585,7 +3780,7 @@ msgstr ""
 "header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:546
+#: data/core/help.cfg:541
 msgid ""
 "\n"
 "\n"
@@ -3600,7 +3795,7 @@ msgstr ""
 "Çok oyunculu çeşitli senaryolar içeren bireysel paketler de vardır."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:548
+#: data/core/help.cfg:543
 msgid ""
 "\n"
 "\n"
@@ -3611,7 +3806,7 @@ msgstr ""
 "<header>text='Çok Oyunculu Çağlar ve Birlikler'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:550
+#: data/core/help.cfg:545
 msgid ""
 "\n"
 "\n"
@@ -3636,7 +3831,7 @@ msgstr ""
 "dönemin mevcut birlikleri arasından seçim yapabilir."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:554
+#: data/core/help.cfg:549
 msgid ""
 "\n"
 "\n"
@@ -3649,7 +3844,7 @@ msgstr ""
 "ref> bölümünde  görebilirsiniz."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:556
+#: data/core/help.cfg:551
 msgid ""
 "\n"
 "\n"
@@ -3660,7 +3855,7 @@ msgstr ""
 "<header>text='Değişiklikler'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:558
+#: data/core/help.cfg:553
 msgid ""
 "\n"
 "\n"
@@ -3675,7 +3870,7 @@ msgstr ""
 "oluştururken değişiklikleri seçebilir ve yapılandırabilirsiniz."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:560
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "\n"
@@ -3686,7 +3881,7 @@ msgstr ""
 "<header>text='Çekirdekler'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:562
+#: data/core/help.cfg:557
 msgid ""
 "\n"
 "\n"
@@ -3711,7 +3906,7 @@ msgstr ""
 "bile olabilir."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:566
+#: data/core/help.cfg:561
 msgid ""
 "\n"
 "\n"
@@ -3722,7 +3917,7 @@ msgstr ""
 "<header>text='Tasarımcı Kaynakları'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:568
+#: data/core/help.cfg:563
 msgid ""
 "\n"
 "\n"
@@ -3741,12 +3936,12 @@ msgstr ""
 "olabilir ve indirme sırasında kurulumları önerilebilir veya istenebilir."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:577
+#: data/core/help.cfg:572
 msgid "Installing Add-ons"
 msgstr "Eklentilerin Kurulumu"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:578
+#: data/core/help.cfg:573
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3794,12 +3989,12 @@ msgstr ""
 "ek ayrıntılar sağlar."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:591
+#: data/core/help.cfg:586
 msgid "Removing Add-ons"
 msgstr "Eklentilerin Kaldırılması"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:592
+#: data/core/help.cfg:587
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3821,14 +4016,14 @@ msgstr ""
 "kullanarak bilgi dosyalarını veya eklentileri elle kendiniz silmelisiniz."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:607
+#: data/core/help.cfg:602
 msgid "General Commands"
 msgstr "Genel Komutlar"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:609 data/core/help.cfg:652 data/core/help.cfg:690
+#: data/core/help.cfg:604 data/core/help.cfg:647 data/core/help.cfg:685
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3841,7 +4036,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:611
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3852,7 +4047,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:614
+#: data/core/help.cfg:609
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3867,7 +4062,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:618
+#: data/core/help.cfg:613
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3886,7 +4081,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:621
+#: data/core/help.cfg:616
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3897,7 +4092,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:624
+#: data/core/help.cfg:619
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3909,7 +4104,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:627
+#: data/core/help.cfg:622
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3920,7 +4115,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:630
+#: data/core/help.cfg:625
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3931,7 +4126,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:633
+#: data/core/help.cfg:628
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3942,7 +4137,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:636
+#: data/core/help.cfg:631
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3953,7 +4148,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:639
+#: data/core/help.cfg:634
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3964,7 +4159,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:642
+#: data/core/help.cfg:637
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3973,12 +4168,12 @@ msgstr ""
 "Oyunu kayıt et ve senaryodan çık (sormaksızın)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:651
+#: data/core/help.cfg:646
 msgid "Multiplayer Commands"
 msgstr "Çok Oyuncu Komutları"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:654
+#: data/core/help.cfg:649
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3994,7 +4189,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:657
+#: data/core/help.cfg:652
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -4015,7 +4210,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:660
+#: data/core/help.cfg:655
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -4028,7 +4223,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:663
+#: data/core/help.cfg:658
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -4041,7 +4236,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:666
+#: data/core/help.cfg:661
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -4057,7 +4252,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:669
+#: data/core/help.cfg:664
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -4071,7 +4266,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:672
+#: data/core/help.cfg:667
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -4084,7 +4279,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:675
+#: data/core/help.cfg:670
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -4095,7 +4290,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:678
+#: data/core/help.cfg:673
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -4108,7 +4303,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:681
+#: data/core/help.cfg:676
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -4119,12 +4314,12 @@ msgstr ""
 "sessizleştirilmiş izleyiciler listesi temizlenir."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:689
+#: data/core/help.cfg:684
 msgid "Debug Mode Commands"
 msgstr "Hata Ayıklama Kipi Komutları"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:692
+#: data/core/help.cfg:687
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -4137,7 +4332,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:695
+#: data/core/help.cfg:690
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -4148,7 +4343,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:698
+#: data/core/help.cfg:693
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -4159,7 +4354,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:701
+#: data/core/help.cfg:696
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -4170,7 +4365,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:704
+#: data/core/help.cfg:699
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -4181,7 +4376,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:707
+#: data/core/help.cfg:702
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -4192,7 +4387,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:710
+#: data/core/help.cfg:705
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -4203,7 +4398,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:713
+#: data/core/help.cfg:708
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -4214,7 +4409,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:716
+#: data/core/help.cfg:711
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4227,7 +4422,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:719
+#: data/core/help.cfg:714
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4273,11 +4468,6 @@ msgstr ""
 "ilaç verebilen bir birim aramalıdır."
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:47
-msgid "cures"
-msgstr "ilaç verir"
-
-#. [heals]: id=curing
 #: data/core/macros/abilities.cfg:48
 msgid "female^cures"
 msgstr " ilaç verir"
@@ -4290,11 +4480,6 @@ msgid ""
 msgstr ""
 "Bir ilaç verme sırasında, zehirlenmiş bir birimin zehiri giderilir ama bu "
 "birim o el için iyileştirilmez."
-
-#. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:70
-msgid "regenerates"
-msgstr "iyileşir"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:71
@@ -4338,11 +4523,6 @@ msgstr ""
 "yerine sadece zehirden kurtulur"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:104
-msgid "steadfast"
-msgstr "sarsılmaz"
-
-#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:105
 msgid "female^steadfast"
 msgstr " sarsılmaz"
@@ -4356,18 +4536,44 @@ msgstr ""
 "Bu birim savunma yaptığı zaman direnci %50’yi geçmemek üzere iki katına "
 "çıkar. Zaaflar bundan etkilenmez."
 
-#. [leadership]: id=leadership
+#. [chance_to_hit]: id=diversion
+#: data/core/macros/abilities.cfg:118
+msgid "diversion"
+msgstr ""
+
+#. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:119
-msgid "leadership"
-msgstr "liderlik"
+#, fuzzy
+#| msgid "female^leadership"
+msgid "female^diversion"
+msgstr " liderlik"
+
+#. [chance_to_hit]: id=diversion
+#: data/core/macros/abilities.cfg:120
+#, fuzzy
+#| msgid ""
+#| " If there is an enemy of the target on the opposite side of the target "
+#| "while attacking it, this unit may backstab, inflicting double damage by "
+#| "creeping around behind that enemy."
+msgid ""
+"If there is an enemy of the target on the opposite side of the target, this "
+"unit diverts the target’s attention and reduces its chance to hit by 20%."
+msgstr ""
+" Bu saldırı, hedef birimin saldırı yönüne göre tam arkasında düşmanı varsa "
+"saldırgan birimin iki kat hasar vermesine sebep olur."
+
+#. [chance_to_hit]: id=diversion
+#: data/core/macros/abilities.cfg:121
+msgid "This is inactive for now."
+msgstr ""
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:120
+#: data/core/macros/abilities.cfg:173
 msgid "female^leadership"
 msgstr " liderlik"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:121
+#: data/core/macros/abilities.cfg:174
 msgid ""
 "This unit can lead your own units that are next to it, making them fight "
 "better.\n"
@@ -4385,17 +4591,12 @@ msgstr ""
 "daha fazla hasar yapar."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:138
-msgid "skirmisher"
-msgstr "avcı"
-
-#. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:139
+#: data/core/macros/abilities.cfg:192
 msgid "female^skirmisher"
 msgstr " avcı"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:140
+#: data/core/macros/abilities.cfg:193
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -4404,17 +4605,12 @@ msgstr ""
 "düşmalarının yanından geçme yeteneğine sahiptir."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:153
-msgid "illuminates"
-msgstr "aydınlatır"
-
-#. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:154
+#: data/core/macros/abilities.cfg:207
 msgid "female^illuminates"
 msgstr " aydınlatır"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:155
+#: data/core/macros/abilities.cfg:208
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4429,17 +4625,12 @@ msgstr ""
 "ise gündüz gibi savaşır."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:167
-msgid "teleport"
-msgstr "ışınlanma"
-
-#. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:168
+#: data/core/macros/abilities.cfg:221
 msgid "female^teleport"
 msgstr " ışınlanır"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:169
+#: data/core/macros/abilities.cfg:222
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -4448,17 +4639,12 @@ msgstr ""
 "sırasında sadece 1 HP kullanarak hareket edebilir."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:198
-msgid "ambush"
-msgstr "pusu"
-
-#. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:199
+#: data/core/macros/abilities.cfg:252
 msgid "female^ambush"
 msgstr " gizlenir"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:200
+#: data/core/macros/abilities.cfg:253
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4473,12 +4659,7 @@ msgstr ""
 "puanları sıfırlanır."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:217 data/core/macros/abilities.cfg:218
-msgid "nightstalk"
-msgstr "karabasan"
-
-#. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:219
+#: data/core/macros/abilities.cfg:272
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4493,17 +4674,12 @@ msgstr ""
 "puanları sıfırlanır."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:236
-msgid "concealment"
-msgstr "gizlenir"
-
-#. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:237
+#: data/core/macros/abilities.cfg:290
 msgid "female^concealment"
 msgstr " saklanır"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:238
+#: data/core/macros/abilities.cfg:291
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -4520,17 +4696,12 @@ msgstr ""
 "puanları sıfırlanır."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:255
-msgid "submerge"
-msgstr "dalış"
-
-#. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:256
+#: data/core/macros/abilities.cfg:309
 msgid "female^submerge"
 msgstr " dalar"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:257
+#: data/core/macros/abilities.cfg:310
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4545,31 +4716,17 @@ msgstr ""
 "puanları sıfırlanır."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:274
-msgid "feeding"
-msgstr "beslenme"
-
-#. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:275
+#: data/core/macros/abilities.cfg:329
 msgid "female^feeding"
 msgstr " beslenir"
 
-#. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:276
-msgid ""
-"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
-"except units that are immune to plague."
-msgstr ""
-"Vebaya bağışık olmayan yaşayan bir birimi öldürdüğünde bu birimin yaşam "
-"puanı 1 arttırılır."
-
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:287
+#: data/core/macros/abilities.cfg:341
 msgid "berserk"
 msgstr "cinnet"
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:288
+#: data/core/macros/abilities.cfg:342
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -4578,12 +4735,7 @@ msgstr ""
 "veya 30 saldırıya denk olana kadar devam eder."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:298
-msgid "backstab"
-msgstr "destekli"
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:299
+#: data/core/macros/abilities.cfg:353
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4594,13 +4746,7 @@ msgstr ""
 "çevrilmiş veya sersemlemiş) değilse, hedefe iki misli hasar verir."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:317 data/core/macros/abilities.cfg:328
-msgid "plague"
-msgstr "veba"
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:318
+#: data/core/macros/abilities.cfg:372
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -4611,7 +4757,7 @@ msgstr ""
 "birimler için çalışmaz."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:329
+#: data/core/macros/abilities.cfg:383
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4622,12 +4768,7 @@ msgstr ""
 "köylerdeki birimler için çalışmaz."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:339
-msgid "slows"
-msgstr "yavaşlatır"
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:340
+#: data/core/macros/abilities.cfg:394
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4640,12 +4781,12 @@ msgstr ""
 "sümüklü böcek simgesi gösterilir."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:349
+#: data/core/macros/abilities.cfg:403
 msgid "petrifies"
 msgstr "taşlaştırır"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:350
+#: data/core/macros/abilities.cfg:404
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -4654,12 +4795,7 @@ msgstr ""
 "saldıramaz."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:359
-msgid "marksman"
-msgstr "nişancı"
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:360
+#: data/core/macros/abilities.cfg:414
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
@@ -4667,12 +4803,7 @@ msgstr ""
 "sahiptir."
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:372
-msgid "magical"
-msgstr "sihirli"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:373
+#: data/core/macros/abilities.cfg:427
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -4680,12 +4811,12 @@ msgstr ""
 "Bu saldırı her zaman (saldırı ve savunmada) %70 isabet şansına sahiptir."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:384
+#: data/core/macros/abilities.cfg:438
 msgid "swarm"
 msgstr "kaynaşma"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:385
+#: data/core/macros/abilities.cfg:439
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -4697,12 +4828,7 @@ msgstr ""
 "yaşam puanının 3/4’üne sahip birim, normalin 3/4’ü oranında vuruş yapabilir."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:394
-msgid "charge"
-msgstr "yükleme"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:395
+#: data/core/macros/abilities.cfg:449
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -4711,12 +4837,7 @@ msgstr ""
 "Bununla beraber, bu birim hedefin misillemesinden de çifte hasar alır."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:407
-msgid "drains"
-msgstr "sömürür"
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:408
+#: data/core/macros/abilities.cfg:462
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4725,24 +4846,19 @@ msgstr ""
 "yuvarlanmış) yarısı kadar iyileşir."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:417
+#: data/core/macros/abilities.cfg:471
 msgid "first strike"
 msgstr "ilk vuruş"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:418
+#: data/core/macros/abilities.cfg:472
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Bu birim bu saldırısıyla, savunmadayken bile, her zaman ilk vuruşu yapar."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:427
-msgid "poison"
-msgstr "zehirler"
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:428
+#: data/core/macros/abilities.cfg:482
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -4944,7 +5060,7 @@ msgstr "Uzun Karanlık (3)"
 msgid "The Long Dark (4)"
 msgstr "Uzun Karanlık (4)"
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:549
+#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:565
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5293,6 +5409,21 @@ msgid ""
 "village."
 msgstr " Bu birim yanında köyü taşıyormuşçasına her el iyileşir."
 
+#. [special_note]
+#: data/core/macros/special-notes.cfg:300
+#, fuzzy
+#| msgid ""
+#| " If there is an enemy of the target on the opposite side of the target "
+#| "while attacking it, this unit may backstab, inflicting double damage by "
+#| "creeping around behind that enemy."
+msgid ""
+"If there is an enemy of the target on the opposite side of the target while "
+"attacking it, this unit diverts the target's attention and reduces its "
+"chance to hit."
+msgstr ""
+" Bu saldırı, hedef birimin saldırı yönüne göre tam arkasında düşmanı varsa "
+"saldırgan birimin iki kat hasar vermesine sebep olur."
+
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
@@ -5339,11 +5470,6 @@ msgstr ""
 "<italic>text='Sadık'</italic> birimlerin gideri yoktur. Çoğu birim el "
 "sonunda seviyelerine eşit bir gidere yol açar. Sadık birimler bu gidere yol "
 "açmaz."
-
-#. [trait]: id=undead
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "yarı ölü"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -5635,19 +5761,9 @@ msgstr ""
 "seviye için fazladan 1 yaşam puanı vardır."
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:227
-msgid "healthy"
-msgstr "sağlıklı"
-
-#. [trait]: id=healthy
 #: data/core/macros/traits.cfg:228
 msgid "female^healthy"
 msgstr "sağlıklı"
-
-#. [trait]: id=healthy
-#: data/core/macros/traits.cfg:229
-msgid "Always rest heals"
-msgstr "Dinlenme daima iyileştirir"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:230
@@ -5672,11 +5788,6 @@ msgid ""
 msgstr ""
 "Dayanıklılıkları ile tanınan cücelerin bazıları diğerlerinden daha sağlam "
 "bünyeli olup yolculuk ederken bile dinlenebilir."
-
-#. [trait]: id=fearless
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "korkusuz"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:253 data/core/macros/traits.cfg:270
@@ -6157,93 +6268,83 @@ msgid ""
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
 "differences between humans and elves are more pronounced than the Elves’ "
 "unusually long life — most, unless claimed by illness, accident or war, live "
-"a full two and a half centuries. While some elves possessing a high magical "
-"aptitude have been known to live an additional full century, most elves "
-"begin to grow physically frail at some point between 250 and 300 years of "
-"age and pass away rapidly (generally within a year or two) thereafter.\n"
+"at least a full two centuries. While some elves possessing a high magical "
+"aptitude have been known to live longer, most elves begin to grow physically "
+"frail at some point between 250 and 300 years of age and pass away rapidly "
+"thereafter.\n"
 "\n"
-"Elves are naturally imbued with magic to a small degree. Though most are "
-"unable to channel it directly, its latent presence gives them their keen "
-"senses and long life. Many elves have magic-driven talents such as "
-"marksmanship or stealth, allowing them to achieve tasks that most normal "
-"beings would find astonishing. Those elves that learn to wield this power in "
-"more general ways can become truly formidable in its use. Many choose to use "
-"their gift to heal others.\n"
-"\n"
-"A few elves, venturing far down the paths of magic and mysticism, become "
-"sensitive to the presence of cold iron and can even be burned by it. Elvish "
-"legend hints that this was more common in the far past.\n"
-"\n"
-"Elves spend much of their time honing their talents and skills. Those not "
-"adept at the magical arts typically devote their time honing their physical "
-"skills. As a result, elves excel at archery, which is perhaps their most "
-"important method of warfare. Most elvish troops carry a bow and no other "
-"race can rival their archers in speed and accuracy. All elves also share an "
-"intense affection for unspoiled nature. They often feel uncomfortable in "
-"open, unvegetated spaces. They live primarily in the forests of the Great "
-"Continent; the Aethenwood in the southwest, Wesmere in the northwest, and "
-"the great northern woods of which the Lintanir Forest is the southernmost "
-"edge.\n"
+"Most elves share an intense affection for unspoiled nature and find "
+"themselves uncomfortable in open, unvegetated places. They live primarily in "
+"the forests of the Great Continent, the Aethenwood in the southwest, Wesmere "
+"in the northwest, and the great northern woods of which the Lintanir Forest "
+"is the southernmost edge.\n"
 "\n"
 "Elves are the eldest race of the continent, with the possible exception of "
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
-"having existed for over a millennium."
+"having existed for several millennia.\n"
+"\n"
+"<header>text='Magic'</header>\n"
+"While elves are fundamentally different creatures than the fabled fair folk, "
+"their magic has some connection to the faerie and is the source of their "
+"unusually keen senses as well as their long lives. Elven magic is split "
+"between two different paths, one focused on manipulation of the mundane or "
+"natural world, and one focused on divination into the arcane plane. More "
+"common is the the way of corporeal alteration, which has more tangible "
+"effects than its antithesis in the arcane. Though elven nature magic is ill-"
+"suited toward combat, its potent ability to harness earthly energies to "
+"nurture and protect is the primary reason for the effectiveness of elven "
+"healing as well as the beauty and vitality of their forests.\n"
+"\n"
+"Those who follow the mystic path are also well-regarded by other elves, but "
+"their motives and abilities are often unclear to those outside of their "
+"order. Some who venture far down the path of mysticism take on more faerie-"
+"like traits, gaining extraordinary insight and longevity, but also becoming "
+"sensitive to and even burned by the presence of cold iron.\n"
+"\n"
+"<header>text='Culture'</header>\n"
+"Elves spend much of their time honing their talents and skills. Those not "
+"adept at the magical arts typically devote their time honing their physical "
+"skills, often for sporting purposes. As a result, elves excel at archery, a "
+"craft that is readily and effectively applied to warfare. Elves are also "
+"renowned musicians, particularly skilled at wind and plucked string "
+"instruments in small ensembles. The Aeolian harps of the Aethenwood, for "
+"example, are crafted from the fine wood of Elven yew trees and are legendary "
+"for their soft, gentle tone.\n"
+"\n"
+"<header>text='Society'</header>\n"
+"Elvish society is roughly divided into three factions: a pseudo-military "
+"faction responsible for defending their forests, peaceful civilians who are "
+"usually craftsmen and artists, and healers and mystics who maintain the "
+"elves’ connection to the faerie. Responsible for governing these different "
+"aspects is the nobility, who are treated as servants to the broader social "
+"order, rather than as strict rulers of their people. The process for "
+"selecting these nobles differs between the various elven conclaves, with the "
+"governing council of Wesmere — the Ka’lian — being elected and the nobility "
+"in Lintanir usually being inherited.\n"
+"\n"
+"In times of strife, the hierarchy of command becomes more adaptable, with "
+"the ordinary aristocracy deferring to more war-minded marshals. By "
+"tradition, in both Wesmere and Lintanir, an enchantress from the order of "
+"elven mystics is also called upon to facilitate the transition of power."
 msgstr ""
-"İnsanlarla karşılaştırıldığında elfler biraz daha uzun, daha çevik ama daha "
-"az sağlamdır. Hafif sivri kulakları, soluk derisi ve genellikle sarı saçları "
-"vardır. İnsanlar ve elfler arasındaki önemli bir farklılık, Elflerin "
-"olağandışı uzun ömürlerinde ortaya çıkar — çoğu, hastalık, kaza veya savaşla "
-"karşılaşmadığı sürece, tam iki buçuk yüzyıl yaşar. Yüksek bir sihir "
-"kabiliyetine sahip bazı elflerin bir yüzyıl daha yaşadıkları biliniyor olsa "
-"da, çoğu elf 250 ila 300 yaşları arasındaki bir noktada fiziksel olarak "
-"zayıflamaya başlar ve daha sonra hızlı bir şekilde (genellikle bir veya iki "
-"yıl içinde) hayatlarını kaybederler.\n"
-"\n"
-"Elfler, doğal olarak sihirle küçük bir dereceye kadar iç içe geçmişlerdir. "
-"Çoğu doğrudan onu kanalize edemese de, gizli varlığı onlara keskin "
-"duyularını ve uzun ömürlerini verir. Birçok elf, normal insanların şaşırtıcı "
-"bulduğu görevleri yerine getirmelerine olanak tanıyan, nişancılık veya "
-"gizlilik gibi sihir odaklı yeteneklere sahiptir. Bu gücü daha genel bir "
-"şekilde kullanmayı öğrenen elfler, kullanımında gerçekten zorlu hale "
-"gelebilirler. Birçoğu yeteneklerini başkalarını iyileştirmek için kullanmayı "
-"seçer.\n"
-"\n"
-"Büyü ve gizemin karanlık yollarına sapan bazı elfler, soğuk demirin "
-"varlığına karşı duyarlı hale gelir ve hatta bundan dolayı yanabilir. Elf "
-"efsanesi, bunun geçmişte daha yaygın olduğuyla ilgili ipuçları içerir.\n"
-"\n"
-"Elfler zamanlarının çoğunu yeteneklerini ve becerilerini geliştirmek için "
-"harcarlar. Büyülü sanatlara kapılmamış olanlar, genellikle zamanlarını "
-"fiziksel becerilerini geliştirmeye ayırırlar. Sonuç olarak, elfler belki de "
-"en önemli savaş yöntemi olan okçulukta öne çıkar. Çoğu elf askeri bir yay "
-"taşır ve başka hiçbir okçu bu ırkın okçularına hız ve nişancılıkta rakip "
-"olamaz. Tüm elfler ayrıca bozulmamış doğaya için yoğun bir sevgiyi besler. "
-"Açık, yeşermemiş alanlarda genellikle kendilerini rahatsız hissederler. "
-"Başlıca yaşam alanları Büyük Kıta ormanlarıdır; güneybatıda Eten, "
-"kuzeybatıda Vesmer ve Lintanir Ormanı'nın en güney kenarı olduğu büyük kuzey "
-"ormanları.\n"
-"\n"
-"Elfler, troller hariç, kıtanın en eski ırkıdır. Yerleşim yerlerinin birçoğu "
-"güvenilir şekilde tarihlenemez, muhtemelen bin yıldan fazla bir süreyle var "
-"olmuşlardır."
 
 #. [race]: id=falcon
-#: data/core/units.cfg:128
+#: data/core/units.cfg:137
 msgid "race^Falcon"
 msgstr "Şahin"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:129
+#: data/core/units.cfg:138
 msgid "race+female^Falcon"
 msgstr "Şahin-Dişi"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:130
+#: data/core/units.cfg:139
 msgid "race^Falcons"
 msgstr "Şahinler"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:131
+#: data/core/units.cfg:140
 msgid ""
 "Falcons are birds of prey, noted for their exceptional speed and agility. "
 "Lighter and with less powerful talons than other raptors, falcons instead "
@@ -6265,22 +6366,22 @@ msgstr ""
 "bir ordunun idaresine yardımcı olan yararlı bir varlık haline getirilir."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:141
+#: data/core/units.cfg:150
 msgid "race^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:142
+#: data/core/units.cfg:151
 msgid "race+female^Goblin"
 msgstr "Goblin-Dişi"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:143
+#: data/core/units.cfg:152
 msgid "race^Goblins"
 msgstr "Goblinler"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:144
+#: data/core/units.cfg:153
 msgid ""
 "\n"
 "\n"
@@ -6308,22 +6409,22 @@ msgstr ""
 "büyük bölümünü onlar gerçekleştirir. "
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:161
+#: data/core/units.cfg:170
 msgid "race^Gryphon"
 msgstr "Grifin"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:162
+#: data/core/units.cfg:171
 msgid "race+female^Gryphon"
 msgstr "Grifin-Dişi"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:163
+#: data/core/units.cfg:172
 msgid "race^Gryphons"
 msgstr "Grifinler"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:164
+#: data/core/units.cfg:173
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -6343,22 +6444,22 @@ msgstr ""
 "bir tartışma konusu olmuştur, ancak kökenleri kadar gizemli kalmıştır."
 
 #. [race]: id=human
-#: data/core/units.cfg:182
+#: data/core/units.cfg:191
 msgid "race^Human"
 msgstr "İnsan"
 
 #. [race]: id=human
-#: data/core/units.cfg:183
+#: data/core/units.cfg:192
 msgid "race+female^Human"
 msgstr "İnsan-Dişi"
 
 #. [race]: id=human
-#: data/core/units.cfg:184
+#: data/core/units.cfg:193
 msgid "race^Humans"
 msgstr "İnsanlar"
 
 #. [race]: id=human
-#: data/core/units.cfg:185
+#: data/core/units.cfg:194
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -6435,22 +6536,22 @@ msgstr ""
 "örgütlüdür ve bu grupların güçlü ve zayıf yönleri birbirini tamamlar."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:200
+#: data/core/units.cfg:209
 msgid "race^Dunefolk Human"
 msgstr "Kumul İnsanı"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:201
+#: data/core/units.cfg:210
 msgid "race+female^Dunefolk Human"
 msgstr "Kumul İnsanı-Dişi"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:202
+#: data/core/units.cfg:211
 msgid "race+plural^Dunefolk"
 msgstr "Kumul Halkı"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:203
+#: data/core/units.cfg:212
 #, fuzzy
 #| msgid ""
 #| "An offshoot of a forgotten nomadic civilization, the Dunefolk humans lay "
@@ -6622,22 +6723,22 @@ msgstr ""
 "köşelerindeki uzak geçmişinin mirasına dayanmaktadır."
 
 #. [race]: id=lizard
-#: data/core/units.cfg:224
+#: data/core/units.cfg:233
 msgid "race^Saurian"
 msgstr "Sürüngen"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:225
+#: data/core/units.cfg:234
 msgid "race+female^Saurian"
 msgstr "Sürüngen-Dişi"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:226
+#: data/core/units.cfg:235
 msgid "race^Saurians"
 msgstr "Sürüngenler"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:227
+#: data/core/units.cfg:236
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -6769,17 +6870,17 @@ msgstr ""
 "yamyamlık yapmak da hoşlarına gider."
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:253
+#: data/core/units.cfg:262
 msgid "race^Mechanical"
 msgstr "Mekanik"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:254
+#: data/core/units.cfg:263
 msgid "race+plural^Mechanical"
 msgstr "Mekanik"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:255
+#: data/core/units.cfg:264
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -6792,22 +6893,22 @@ msgstr ""
 "büyüden dolayı bunları yapabilmektedir."
 
 #. [race]: id=merman
-#: data/core/units.cfg:264
+#: data/core/units.cfg:273
 msgid "race^Merman"
 msgstr "Susal"
 
 #. [race]: id=merman
-#: data/core/units.cfg:265
+#: data/core/units.cfg:274
 msgid "race^Mermaid"
 msgstr "Deniz Kızı"
 
 #. [race]: id=merman
-#: data/core/units.cfg:266
+#: data/core/units.cfg:275
 msgid "race^Merfolk"
 msgstr "Susallar"
 
 #. [race]: id=merman
-#: data/core/units.cfg:268
+#: data/core/units.cfg:277
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -6831,22 +6932,22 @@ msgstr ""
 "çaba harcarlar."
 
 #. [race]: id=monster
-#: data/core/units.cfg:276
+#: data/core/units.cfg:285
 msgid "race^Monster"
 msgstr "Yaratık"
 
 #. [race]: id=monster
-#: data/core/units.cfg:277
+#: data/core/units.cfg:286
 msgid "race+female^Monster"
 msgstr "Yaratık-Dişi"
 
 #. [race]: id=monster
-#: data/core/units.cfg:278
+#: data/core/units.cfg:287
 msgid "race^Monsters"
 msgstr "Yaratıklar"
 
 #. [race]: id=monster
-#: data/core/units.cfg:279
+#: data/core/units.cfg:288
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -6857,22 +6958,22 @@ msgstr ""
 "ölçüde müdavimlerin masallarında ve kabuslarında rastlanırlar."
 
 #. [race]: id=naga
-#: data/core/units.cfg:286
+#: data/core/units.cfg:295
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:287
+#: data/core/units.cfg:296
 msgid "race^Nagini"
 msgstr "Naga-Dişi"
 
 #. [race]: id=naga
-#: data/core/units.cfg:288
+#: data/core/units.cfg:297
 msgid "race^Nagas"
 msgstr "Nagalar"
 
 #. [race]: id=naga
-#: data/core/units.cfg:289
+#: data/core/units.cfg:298
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6903,22 +7004,22 @@ msgstr ""
 "bataklık ve nehirleri açık suya tercih eder."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:297
+#: data/core/units.cfg:306
 msgid "race^Ogre"
 msgstr "Tepegöz"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:298
+#: data/core/units.cfg:307
 msgid "race+female^Ogre"
 msgstr "Tepegöz-Dişi"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:299
+#: data/core/units.cfg:308
 msgid "race^Ogres"
 msgstr "Tepegözler"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:300
+#: data/core/units.cfg:309
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6951,22 +7052,22 @@ msgstr ""
 "mı olduğu bilinmiyor."
 
 #. [race]: id=orc
-#: data/core/units.cfg:308
+#: data/core/units.cfg:317
 msgid "race^Orc"
 msgstr "Ork"
 
 #. [race]: id=orc
-#: data/core/units.cfg:309
+#: data/core/units.cfg:318
 msgid "race+female^Orc"
 msgstr "Ork-Dişi"
 
 #. [race]: id=orc
-#: data/core/units.cfg:310
+#: data/core/units.cfg:319
 msgid "race^Orcs"
 msgstr "Orklar"
 
 #. [race]: id=orc
-#: data/core/units.cfg:311
+#: data/core/units.cfg:320
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7065,7 +7166,7 @@ msgstr ""
 "\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:322
+#: data/core/units.cfg:331
 msgid ""
 "\n"
 "\n"
@@ -7078,22 +7179,22 @@ msgstr ""
 "becerilerde uzmanlaşma eğilimindedir."
 
 #. [race]: id=troll
-#: data/core/units.cfg:331
+#: data/core/units.cfg:340
 msgid "race^Troll"
 msgstr "Trol"
 
 #. [race]: id=troll
-#: data/core/units.cfg:332
+#: data/core/units.cfg:341
 msgid "race+female^Troll"
 msgstr "Trol-Dişi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:333
+#: data/core/units.cfg:342
 msgid "race^Trolls"
 msgstr "Troller"
 
 #. [race]: id=troll
-#: data/core/units.cfg:334
+#: data/core/units.cfg:343
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -7116,16 +7217,17 @@ msgstr "Troller"
 #| "turn into lifeless statues of stone.\n"
 #| "\n"
 #| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by orcs "
-#| "to persuade trolls to join their armies. Because they are rather simple "
-#| "and do not understand the ways of other races or sometimes cannot even "
-#| "tell them apart, it is usually easy for an orcish band to convince a "
-#| "group of trolls that by joining them they get to exact revenge on those "
-#| "that have before hunted them. These new recruits are then directed to "
-#| "attack whoever the orcs themselves are currently in conflict with, "
-#| "whether previously a foe of the trolls or not, accumulating even more "
-#| "enemies for the misled trolls. The most common enemy of trolls are "
-#| "dwarves, and the animosity between these two races is ancient.\n"
+#| "savage monsters. This common misconception is in part perpetuated by "
+#| "orcish successes in persuading trolls to join their armies. Because they "
+#| "are rather simple and do not understand the ways of other races or "
+#| "sometimes cannot even tell them apart, it is usually easy for an orcish "
+#| "band to convince a group of trolls that by joining them they get to exact "
+#| "revenge on those that have before hunted them. These new recruits are "
+#| "then directed to attack whoever the orcs themselves are currently in "
+#| "conflict with, whether previously a foe of the trolls or not, "
+#| "accumulating even more enemies for the misled trolls. The most common "
+#| "enemy of trolls are dwarves, and the animosity between these two races is "
+#| "ancient.\n"
 #| "\n"
 #| "<header>text='Geography'</header>\n"
 #| "Trolls have inhabited the mountains of the Great Continent longer than "
@@ -7198,33 +7300,67 @@ msgstr ""
 "gezindiği  dağlarda yaşarlar."
 
 #. [race]: id=undead
-#: data/core/units.cfg:354
+#: data/core/units.cfg:363
 msgid "race^Undead"
 msgstr "Yarı ölü"
 
 #. [race]: id=undead
-#: data/core/units.cfg:355
+#: data/core/units.cfg:364
 msgid "race+female^Undead"
 msgstr "Yarı ölü"
 
 #. [race]: id=undead
-#: data/core/units.cfg:356
+#: data/core/units.cfg:365
 msgid "race+plural^Undead"
 msgstr "Yarı ölüler"
 
 #. [race]: id=undead
-#: data/core/units.cfg:357
+#: data/core/units.cfg:366
+#, fuzzy
+#| msgid ""
+#| "Undead are not really a single race of creatures, although often treated "
+#| "as such. Almost any dead creature can, by a sufficiently skilled "
+#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
+#| "most part unnatural but mindless constructs, obeying whoever created them "
+#| "without question nor thought. A greater mystery of necromancy is in how "
+#| "constructs are sustained without continuous effort from the necromancer. "
+#| "An undead creature does not require the constant attention of the "
+#| "necromancer to command and sustain, but can work autonomously according "
+#| "to the commands of its master. Only rarely, perhaps once every few "
+#| "months, does the necromancer need to maintain his creation.\n"
+#| "\n"
+#| "Necromancy is almost solely limited to humans. Even the legends of "
+#| "magically apt races like elves and merfolk tell of very few of their kind "
+#| "who have ever delved in the dark arts. It is surmised that necromantic "
+#| "magic requires great adaptability and a flexible mind, extremes of which "
+#| "are most commonly found in humans. The ultimate goal of most necromancers "
+#| "is to turn the same art of preserving and imbuing life upon themselves, "
+#| "to alter themselves at whatever cost, to ultimately escape death by "
+#| "preserving their own mind and spirit.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "While undead lords arrived on the Great Continent in considerable numbers "
+#| "only in the wake of Haldric I, they were not completely unheard of by "
+#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
-"such. Almost any dead creature can, by a sufficiently skilled necromancer, "
-"be reanimated and rise again in undeath. Undead are for the most part "
-"unnatural but mindless constructs, obeying whoever created them without "
-"question nor thought. A greater mystery of necromancy is in how constructs "
-"are sustained without continuous effort from the necromancer. An undead "
-"creature does not require the constant attention of the necromancer to "
-"command and sustain, but can work autonomously according to the commands of "
-"its master. Only rarely, perhaps once every few months, does the necromancer "
-"need to maintain his creation.\n"
+"such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
+"reanimated into constructs of varying character — resurrection of the "
+"physical form often results in a minion that obeys its master without "
+"question, while manifestation of a soul usually produces a servant with at "
+"least a modicum of thought. A great mystery of necromancy is how these "
+"constructs are sustained and controlled without continuous effort from the "
+"necromancer. Most dark magi do not provide constant attention or maintenance "
+"to their creations, instead allowing them a small degree of independence to "
+"function autonomously in line with the provided commands. However, when left "
+"unchecked, some undead gain enough sovereignty to break free from and even "
+"turn on their masters. Accordingly, while even lesser undead require "
+"periodic maintenance, this is especially true for more powerful undead, "
+"particularly greater spirits or death knights, who possess a high degree of "
+"inherent will. In these cases, necromancy becomes a battle of resolve "
+"between mage and minion. The necromancer must maintain a delicate balance "
+"between control over their servants and alloting them free will — the source "
+"of their individual powers.\n"
 "\n"
 "Necromancy is almost solely limited to humans. Even the legends of magically "
 "apt races like elves and merfolk tell of very few of their kind who have "
@@ -7262,22 +7398,22 @@ msgstr ""
 "Daha önce elfler ve cüceler zamanında böyle bir şey hiç duyulmamıştı."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:370
+#: data/core/units.cfg:379
 msgid "race^Wolf"
 msgstr "Kurt"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:371
+#: data/core/units.cfg:380
 msgid "race+female^Wolf"
 msgstr "Kurt-Dişi"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:372
+#: data/core/units.cfg:381
 msgid "race^Wolves"
 msgstr "Kurtlar"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:373
+#: data/core/units.cfg:382
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -7294,17 +7430,17 @@ msgstr ""
 "köylere saldırdıkları da olur."
 
 #. [race]: id=wose
-#: data/core/units.cfg:382
+#: data/core/units.cfg:391
 msgid "race^Wose"
 msgstr "Ulu Ağaç"
 
 #. [race]: id=wose
-#: data/core/units.cfg:383
+#: data/core/units.cfg:392
 msgid "race^Woses"
 msgstr "Ulu Ağaçlar"
 
 #. [race]: id=wose
-#: data/core/units.cfg:384
+#: data/core/units.cfg:393
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -7380,19 +7516,15 @@ msgstr ""
 "memnun olan ulu ağaç, yalnızca doğal dünyanın ve onu çağıran ormanların "
 "savunmasına ayak uydurmaya çalışacaktır."
 
-#: data/lua/feeding.lua:31 data/lua/feeding.lua:44
-msgid "+1 max HP"
-msgstr "+1 azami YP"
-
-#: src/help/help.cpp:180
+#: src/help/help.cpp:179
 msgid "Close"
 msgstr "Kapat"
 
-#: src/help/help.cpp:183
+#: src/help/help.cpp:182
 msgid "The Battle for Wesnoth Help"
 msgstr "Vesnot Savaşı Yardımı"
 
-#: src/help/help.cpp:237 src/help/help.cpp:241
+#: src/help/help.cpp:236 src/help/help.cpp:240
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
@@ -7464,128 +7596,116 @@ msgstr ""
 msgid "Abilities: "
 msgstr "Yetenekler"
 
-#: src/help/help_topic_generators.cpp:490
+#: src/help/help_topic_generators.cpp:498
 msgid "Ability Upgrades: "
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:512
+#: src/help/help_topic_generators.cpp:528
 msgid "HP:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:516
+#: src/help/help_topic_generators.cpp:532
 msgid "Moves:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:521
+#: src/help/help_topic_generators.cpp:537
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:543
 msgid "Jamming:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:548
 msgid "Cost:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:552
 msgid "Alignment:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:559
 msgid "Required XP:"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:558
+#: src/help/help_topic_generators.cpp:574
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:565
+#: src/help/help_topic_generators.cpp:581
 msgid "unit help^Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:566
-msgid "Strikes"
-msgstr ""
-
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:583
 msgid "Range"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:568
+#: src/help/help_topic_generators.cpp:584
 msgid "Type"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:569
+#: src/help/help_topic_generators.cpp:585
 #, fuzzy
 #| msgid "Weapon Specials"
 msgid "Special"
 msgstr "Silah Özellikleri"
 
-#: src/help/help_topic_generators.cpp:647
-msgid "Resistances"
-msgstr ""
-
-#: src/help/help_topic_generators.cpp:651
+#: src/help/help_topic_generators.cpp:667
 msgid "Attack Type"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:652
+#: src/help/help_topic_generators.cpp:668
 msgid "Resistance"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:681
+#: src/help/help_topic_generators.cpp:697
 #, fuzzy
 #| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
 msgstr "Arazi Düzenleyici"
 
-#: src/help/help_topic_generators.cpp:685
+#: src/help/help_topic_generators.cpp:701
 #, fuzzy
 #| msgid "Terrains"
 msgid "Terrain"
 msgstr "Araziler"
 
-#: src/help/help_topic_generators.cpp:686
-msgid "Defense"
-msgstr ""
-
-#: src/help/help_topic_generators.cpp:687
+#: src/help/help_topic_generators.cpp:703
 #, fuzzy
 #| msgid "Movement"
 msgid "Movement Cost"
 msgstr "Hareket"
 
-#: src/help/help_topic_generators.cpp:691
+#: src/help/help_topic_generators.cpp:707
 msgid "Defense Cap"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:696
+#: src/help/help_topic_generators.cpp:712
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:700
+#: src/help/help_topic_generators.cpp:716
 msgid "Jamming Cost"
 msgstr ""
 
@@ -7875,6 +7995,118 @@ msgstr ""
 
 #~ msgid "Scenario Format"
 #~ msgstr "Senaryo Biçimi"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "The following points are under discussion on the forums. At least for the "
+#~ "1.15.x series before 1.16.0 please assume that the forum threads are more "
+#~ "authoritative than the text on this page."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Aşağıdaki konular forumlarda tartışılmaktadır. En azından 1.16.0 öncesi "
+#~ "1.15.x serisi için lütfen forum konularının bu sayfadaki metinden daha "
+#~ "yetkin olduğunu varsayalım."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "In the mainline campaigns, on hard:\n"
+#~ "• A sufficiently skilled player will have a good chance to win each "
+#~ "scenario on the first time that they see that scenario, without "
+#~ "foreknowledge of what will happen.\n"
+#~ "• This assumes that the player picks up all of the clues given in the "
+#~ "dialogue.\n"
+#~ "• There are more experience points available than on easy, and the player "
+#~ "will be able to train enough troops to cope with losing some L2 or L3 "
+#~ "units."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Oyuniçi sefarberliklerde, zor da olsa:\n"
+#~ "• Yeterince yetenekli her oyuncunun, bir senaryoyu gördüğünde ne "
+#~ "olacağını bilmese dahi, her senaryoyu kazanabilme şansı vardır.\n"
+#~ "• Bunun için, oyuncunun senaryo amaçlarında verilen tüm ipuçlarını aldığı "
+#~ "varsayılır.\n"
+#~ "• Deneyim puanları kolayca kazanılabileceğinden oyuncu 2. ve 3. seviye "
+#~ "birimlerden kazanmaya yetecek kadarını eğitebilecektir."
+
+#~ msgid ""
+#~ "Compared to humans, elves are somewhat taller, more agile but less "
+#~ "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
+#~ "Few differences between humans and elves are more pronounced than the "
+#~ "Elves’ unusually long life — most, unless claimed by illness, accident or "
+#~ "war, live a full two and a half centuries. While some elves possessing a "
+#~ "high magical aptitude have been known to live an additional full century, "
+#~ "most elves begin to grow physically frail at some point between 250 and "
+#~ "300 years of age and pass away rapidly (generally within a year or two) "
+#~ "thereafter.\n"
+#~ "\n"
+#~ "Elves are naturally imbued with magic to a small degree. Though most are "
+#~ "unable to channel it directly, its latent presence gives them their keen "
+#~ "senses and long life. Many elves have magic-driven talents such as "
+#~ "marksmanship or stealth, allowing them to achieve tasks that most normal "
+#~ "beings would find astonishing. Those elves that learn to wield this power "
+#~ "in more general ways can become truly formidable in its use. Many choose "
+#~ "to use their gift to heal others.\n"
+#~ "\n"
+#~ "A few elves, venturing far down the paths of magic and mysticism, become "
+#~ "sensitive to the presence of cold iron and can even be burned by it. "
+#~ "Elvish legend hints that this was more common in the far past.\n"
+#~ "\n"
+#~ "Elves spend much of their time honing their talents and skills. Those not "
+#~ "adept at the magical arts typically devote their time honing their "
+#~ "physical skills. As a result, elves excel at archery, which is perhaps "
+#~ "their most important method of warfare. Most elvish troops carry a bow "
+#~ "and no other race can rival their archers in speed and accuracy. All "
+#~ "elves also share an intense affection for unspoiled nature. They often "
+#~ "feel uncomfortable in open, unvegetated spaces. They live primarily in "
+#~ "the forests of the Great Continent; the Aethenwood in the southwest, "
+#~ "Wesmere in the northwest, and the great northern woods of which the "
+#~ "Lintanir Forest is the southernmost edge.\n"
+#~ "\n"
+#~ "Elves are the eldest race of the continent, with the possible exception "
+#~ "of trolls. Many of their settlements cannot be reliably dated, "
+#~ "undoubtedly having existed for over a millennium."
+#~ msgstr ""
+#~ "İnsanlarla karşılaştırıldığında elfler biraz daha uzun, daha çevik ama "
+#~ "daha az sağlamdır. Hafif sivri kulakları, soluk derisi ve genellikle sarı "
+#~ "saçları vardır. İnsanlar ve elfler arasındaki önemli bir farklılık, "
+#~ "Elflerin olağandışı uzun ömürlerinde ortaya çıkar — çoğu, hastalık, kaza "
+#~ "veya savaşla karşılaşmadığı sürece, tam iki buçuk yüzyıl yaşar. Yüksek "
+#~ "bir sihir kabiliyetine sahip bazı elflerin bir yüzyıl daha yaşadıkları "
+#~ "biliniyor olsa da, çoğu elf 250 ila 300 yaşları arasındaki bir noktada "
+#~ "fiziksel olarak zayıflamaya başlar ve daha sonra hızlı bir şekilde "
+#~ "(genellikle bir veya iki yıl içinde) hayatlarını kaybederler.\n"
+#~ "\n"
+#~ "Elfler, doğal olarak sihirle küçük bir dereceye kadar iç içe "
+#~ "geçmişlerdir. Çoğu doğrudan onu kanalize edemese de, gizli varlığı onlara "
+#~ "keskin duyularını ve uzun ömürlerini verir. Birçok elf, normal insanların "
+#~ "şaşırtıcı bulduğu görevleri yerine getirmelerine olanak tanıyan, "
+#~ "nişancılık veya gizlilik gibi sihir odaklı yeteneklere sahiptir. Bu gücü "
+#~ "daha genel bir şekilde kullanmayı öğrenen elfler, kullanımında gerçekten "
+#~ "zorlu hale gelebilirler. Birçoğu yeteneklerini başkalarını iyileştirmek "
+#~ "için kullanmayı seçer.\n"
+#~ "\n"
+#~ "Büyü ve gizemin karanlık yollarına sapan bazı elfler, soğuk demirin "
+#~ "varlığına karşı duyarlı hale gelir ve hatta bundan dolayı yanabilir. Elf "
+#~ "efsanesi, bunun geçmişte daha yaygın olduğuyla ilgili ipuçları içerir.\n"
+#~ "\n"
+#~ "Elfler zamanlarının çoğunu yeteneklerini ve becerilerini geliştirmek için "
+#~ "harcarlar. Büyülü sanatlara kapılmamış olanlar, genellikle zamanlarını "
+#~ "fiziksel becerilerini geliştirmeye ayırırlar. Sonuç olarak, elfler belki "
+#~ "de en önemli savaş yöntemi olan okçulukta öne çıkar. Çoğu elf askeri bir "
+#~ "yay taşır ve başka hiçbir okçu bu ırkın okçularına hız ve nişancılıkta "
+#~ "rakip olamaz. Tüm elfler ayrıca bozulmamış doğaya için yoğun bir sevgiyi "
+#~ "besler. Açık, yeşermemiş alanlarda genellikle kendilerini rahatsız "
+#~ "hissederler. Başlıca yaşam alanları Büyük Kıta ormanlarıdır; güneybatıda "
+#~ "Eten, kuzeybatıda Vesmer ve Lintanir Ormanı'nın en güney kenarı olduğu "
+#~ "büyük kuzey ormanları.\n"
+#~ "\n"
+#~ "Elfler, troller hariç, kıtanın en eski ırkıdır. Yerleşim yerlerinin "
+#~ "birçoğu güvenilir şekilde tarihlenemez, muhtemelen bin yıldan fazla bir "
+#~ "süreyle var olmuşlardır."
 
 #~ msgid "This race does not have a description yet."
 #~ msgstr "Bu ırkın henüz bir aöıklaması yok."

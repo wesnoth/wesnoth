@@ -13,7 +13,6 @@ find data/ -type f "${args[@]}" ! -name "test_cve_2018_1999023_2.cfg" -print0 | 
 find po/ -type f -print0 | xargs -0 isutf8 -- || exit_code=1
 
 isutf8 changelog.md || exit_code=1
-isutf8 RELEASE_NOTES || exit_code=1
 
 if [ $exit_code != 0 ]; then
     echo "Found invalid UTF8 file(s)!"

@@ -162,7 +162,7 @@ attack_callable::attack_callable(const map_location& move_from,
 				    const map_location& src, const map_location& dst, int weapon)
 	: move_from_(move_from), src_(src), dst_(dst),
 	bc_(resources::gameboard->units(), src, dst, weapon, -1, 1.0, nullptr,
-		&*resources::gameboard->units().find(move_from))
+		resources::gameboard->units().find(move_from).get_shared_ptr())
 {
       type_ = ATTACK_C;
 }

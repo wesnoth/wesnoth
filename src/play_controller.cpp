@@ -186,7 +186,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 
 	persist_.start_transaction();
 
-	game_config::add_color_info(level);
+	game_config::add_color_info(game_config_view::wrap(level));
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 	try {

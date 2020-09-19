@@ -48,7 +48,7 @@ const unsigned int attack_predictions::graph_width = 270;
 const unsigned int attack_predictions::graph_height = 170;
 const unsigned int attack_predictions::graph_max_rows = 10;
 
-attack_predictions::attack_predictions(battle_context& bc, const unit& attacker, const unit& defender)
+attack_predictions::attack_predictions(battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender)
 	: attacker_data_(attacker, bc.get_attacker_combatant(), bc.get_attacker_stats())
 	, defender_data_(defender, bc.get_defender_combatant(), bc.get_defender_stats())
 {
@@ -127,11 +127,11 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 
 	// Set specials context (for safety, it should not have changed normally).
 	const_attack_ptr weapon = attacker.stats_.weapon, opp_weapon = defender.stats_.weapon;
-	auto ctx = weapon->specials_context(&attacker.unit_, &defender.unit_, attacker.unit_.get_location(), defender.unit_.get_location(), attacker.stats_.is_attacker, opp_weapon);
+	auto ctx = weapon->specials_context(attacker.unit_, defender.unit_, attacker.unit_->get_location(), defender.unit_->get_location(), attacker.stats_.is_attacker, opp_weapon);
 	boost::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(&defender.unit_, &attacker.unit_, defender.unit_.get_location(), attacker.unit_.get_location(), defender.stats_.is_attacker, weapon));
+		opp_ctx.emplace(opp_weapon->specials_context(defender.unit_, attacker.unit_, defender.unit_->get_location(), attacker.unit_->get_location(), defender.stats_.is_attacker, weapon));
 	}
 
 	// Get damage modifiers.
@@ -187,7 +187,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	ss.str("");
 
 	// Resistance modifier.
-	const int resistance_modifier = defender.unit_.damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_.get_location(), opp_weapon);
+	const int resistance_modifier = defender.unit_->damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_->get_location(), opp_weapon);
 	if(resistance_modifier != 100) {
 		if(attacker.stats_.is_attacker) {
 			if(resistance_modifier < 100) {
@@ -218,7 +218,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	// TODO: color format the modifiers
 
 	// Time of day modifier.
-	const unit& u = attacker.unit_;
+	const unit& u = *attacker.unit_;
 
 	const int tod_modifier = combat_modifier(resources::gameboard->units(), resources::gameboard->map(),
 		u.get_location(), u.alignment(), u.is_fearless());
@@ -230,7 +230,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	}
 
 	// Leadership bonus.
-	const int leadership_bonus = under_leadership(attacker.unit_, attacker.unit_.get_location(), weapon, opp_weapon);
+	const int leadership_bonus = under_leadership(*attacker.unit_, attacker.unit_->get_location(), weapon, opp_weapon);
 
 	if(leadership_bonus != 0) {
 		set_label_helper("leadership_modifier", utils::signed_percent(leadership_bonus));

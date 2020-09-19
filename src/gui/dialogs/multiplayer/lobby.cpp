@@ -116,6 +116,9 @@ bool mp_lobby::logout_prompt()
 	return show_prompt(_("Do you really want to log out?"));
 }
 
+std::string mp_lobby::announcements_ = "";
+std::string mp_lobby::server_information_ = "";
+
 mp_lobby::mp_lobby(const game_config_view& game_config, mp::lobby_info& info, wesnothd_connection &connection)
 	: quit_confirmation(&mp_lobby::logout_prompt)
 	, game_config_(game_config)

@@ -82,7 +82,7 @@ return {
         end
 
         function get_best_defense(unit)
-            local terrain_archetypes = { "Wo", "Ww", "Wwr", "Ss", "Gt", "Ds", "Ft", "Hh", "Mm", "Vi", "Ch", "Uu", "At", "Qt", "^Uf", "Xt" }
+            local terrain_archetypes = { "Wo", "Ww", "Wwr", "Ss", "Gt", "Ds", "Ft", "Hh", "Mm", "Vi", "Ch", "Uu", "At", "Qt", "^Uf", "Xt", "Tb" }
             local best_defense = 100
 
             for i, terrain in ipairs(terrain_archetypes) do

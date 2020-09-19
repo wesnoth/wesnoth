@@ -1594,51 +1594,6 @@ std::string sanitize_path(const std::string& path)
 	return canonicalized;
 }
 
-namespace {
-	// Check if localized file is up-to-date according to l10n track index.
-	// Make sure only that the image is not explicitly recorded as fuzzy,
-	// in order to be able to use non-tracked images (e.g. from UMC).
-	std::set<std::string> fuzzy_localized_files;
-	bool localized_file_uptodate(const std::string& loc_file)
-	{
-		if(fuzzy_localized_files.empty()) {
-			// First call, parse track index to collect fuzzy files by path.
-			std::string fsep = "\xC2\xA6"; // UTF-8 for "broken bar"
-			std::string trackpath = filesystem::get_binary_file_location("", "l10n-track");
-
-			// l10n-track file not present. Assume image is up-to-date.
-			if(trackpath.empty()) {
-				return true;
-			}
-
-			std::string contents = filesystem::read_file(trackpath);
-
-			for(const std::string& line : utils::split(contents, '\n')) {
-				std::size_t p1 = line.find(fsep);
-				if(p1 == std::string::npos) {
-					continue;
-				}
-
-				std::string state = line.substr(0, p1);
-				boost::trim(state);
-				if(state == "fuzzy") {
-					std::size_t p2 = line.find(fsep, p1 + fsep.length());
-					if(p2 == std::string::npos) {
-						continue;
-					}
-
-					std::string relpath = line.substr(p1 + fsep.length(), p2 - p1 - fsep.length());
-					fuzzy_localized_files.insert(game_config::path + '/' + relpath);
-				}
-			}
-
-			fuzzy_localized_files.insert(""); // make sure not empty any more
-		}
-
-		return fuzzy_localized_files.count(loc_file) == 0;
-	}
-}
-
 // Return path to localized counterpart of the given file, if any, or empty string.
 // Localized counterpart may also be requested to have a suffix to base name.
 std::string get_localized_path(const std::string& file, const std::string& suff)
@@ -1673,7 +1628,7 @@ std::string get_localized_path(const std::string& file, const std::string& suff)
 	langs.push_back("en_US");
 	for(const std::string& lang : langs) {
 		std::string loc_file = dir + "/" + "l10n" + "/" + lang + "/" + loc_base;
-		if(filesystem::file_exists(loc_file) && localized_file_uptodate(loc_file)) {
+		if(filesystem::file_exists(loc_file)) {
 			return loc_file;
 		}
 	}

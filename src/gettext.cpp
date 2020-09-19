@@ -527,4 +527,9 @@ bool ci_search(const std::string& s1, const std::string& s2)
 	                   ls2.begin(), ls2.end()) != ls1.end();
 }
 
+const boost::locale::info& get_effective_locale_info()
+{
+	std::lock_guard<std::mutex> lock(get_mutex());
+	return std::use_facet<boost::locale::info>(get_manager().get_locale());
+}
 }

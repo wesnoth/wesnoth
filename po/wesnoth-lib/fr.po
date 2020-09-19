@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-03-09 20:11-0300\n"
+"POT-Creation-Date: 2020-08-22 00:14-0400\n"
 "PO-Revision-Date: 2020-06-01 10:53+0200\n"
 "Last-Translator: Clémence\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -34,7 +34,7 @@ msgstr "Clôture"
 #. [terrain_type]: id=deep_water_tropical
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:23 data/core/terrain.cfg:34 data/core/terrain.cfg:45
-#: data/core/terrain.cfg:3018 data/core/terrain.cfg:3019
+#: data/core/terrain.cfg:3055 data/core/terrain.cfg:3056
 msgid "Deep Water"
 msgstr "Eau profonde"
 
@@ -58,7 +58,7 @@ msgstr "Eau profonde tropicale"
 #. [terrain_type]: id=tropical_water
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:56 data/core/terrain.cfg:67 data/core/terrain.cfg:78
-#: data/core/terrain.cfg:2977 data/core/terrain.cfg:2978
+#: data/core/terrain.cfg:3014 data/core/terrain.cfg:3015
 msgid "Shallow Water"
 msgstr "Eau peu profonde"
 
@@ -103,8 +103,8 @@ msgstr ""
 #. [terrain_type]: id=tropical_reef
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:101 data/core/terrain.cfg:112
-#: data/core/terrain.cfg:123 data/core/terrain.cfg:2933
-#: data/core/terrain.cfg:2934
+#: data/core/terrain.cfg:123 data/core/terrain.cfg:2970
+#: data/core/terrain.cfg:2971
 msgid "Coastal Reef"
 msgstr "Récif"
 
@@ -127,7 +127,7 @@ msgstr "Récif tropical"
 #. [terrain_type]: id=quagmire
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:136 data/core/terrain.cfg:147
-#: data/core/terrain.cfg:2961 data/core/terrain.cfg:2962
+#: data/core/terrain.cfg:2998 data/core/terrain.cfg:2999
 msgid "Swamp"
 msgstr "Marais"
 
@@ -199,8 +199,8 @@ msgstr "Terre battue sèche"
 #. [terrain_type]: id=flagstones_dark
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:239 data/core/terrain.cfg:250
-#: data/core/terrain.cfg:260 data/core/terrain.cfg:933
-#: data/core/terrain.cfg:943
+#: data/core/terrain.cfg:260 data/core/terrain.cfg:943
+#: data/core/terrain.cfg:953
 msgid "Road"
 msgstr "Route"
 
@@ -263,7 +263,7 @@ msgstr ""
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:307 data/core/terrain.cfg:2920
+#: data/core/terrain.cfg:307 data/core/terrain.cfg:2957
 msgid "Sand"
 msgstr "Sable"
 
@@ -274,7 +274,7 @@ msgstr "Sables de plage"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:312 data/core/terrain.cfg:2924
+#: data/core/terrain.cfg:312 data/core/terrain.cfg:2961
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -442,8 +442,8 @@ msgstr "Arbre séculaire mort"
 #: data/core/terrain.cfg:660 data/core/terrain.cfg:672
 #: data/core/terrain.cfg:684 data/core/terrain.cfg:696
 #: data/core/terrain.cfg:708 data/core/terrain.cfg:720
-#: data/core/terrain.cfg:732 data/core/terrain.cfg:3044
-#: data/core/terrain.cfg:3045
+#: data/core/terrain.cfg:732 data/core/terrain.cfg:3081
+#: data/core/terrain.cfg:3082
 msgid "Forest"
 msgstr "Forêt"
 
@@ -527,8 +527,8 @@ msgstr "Forêt mixte enneigée"
 #. [terrain_type]: id=snow_hills
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:748 data/core/terrain.cfg:758
-#: data/core/terrain.cfg:778 data/core/terrain.cfg:2948
-#: data/core/terrain.cfg:2949
+#: data/core/terrain.cfg:778 data/core/terrain.cfg:2985
+#: data/core/terrain.cfg:2986
 msgid "Hills"
 msgstr "Collines"
 
@@ -563,9 +563,9 @@ msgstr "Collines enneigées"
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:793 data/core/terrain.cfg:803
 #: data/core/terrain.cfg:813 data/core/terrain.cfg:824
-#: data/core/terrain.cfg:1163 data/core/terrain.cfg:1173
-#: data/core/terrain.cfg:1184 data/core/terrain.cfg:1194
-#: data/core/terrain.cfg:3004 data/core/terrain.cfg:3005
+#: data/core/terrain.cfg:1189 data/core/terrain.cfg:1199
+#: data/core/terrain.cfg:1210 data/core/terrain.cfg:1220
+#: data/core/terrain.cfg:3041 data/core/terrain.cfg:3042
 msgid "Mountains"
 msgstr "Montagnes"
 
@@ -590,7 +590,8 @@ msgid "Desert Mountains"
 msgstr "Montagnes désertiques"
 
 #. [terrain_type]: id=regular_stone_floor
-#: data/core/terrain.cfg:836
+#. [terrain_type]: id=ancient_stone_floor
+#: data/core/terrain.cfg:836 data/core/terrain.cfg:846
 msgid "Stone Floor"
 msgstr "Sol en pierre"
 
@@ -599,79 +600,86 @@ msgstr "Sol en pierre"
 msgid "Basic Stone Floor"
 msgstr "Sol en pierre basique"
 
+#. [terrain_type]: id=ancient_stone_floor
+#: data/core/terrain.cfg:849
+#, fuzzy
+#| msgid "Stone Floor"
+msgid "Ancient Stone Floor"
+msgstr "Sol en pierre"
+
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
 #. [terrain_type]: id=rug3_floor
-#: data/core/terrain.cfg:846 data/core/terrain.cfg:856
-#: data/core/terrain.cfg:866
+#: data/core/terrain.cfg:856 data/core/terrain.cfg:866
+#: data/core/terrain.cfg:876
 msgid "Rug"
 msgstr "Rocaille"
 
 #. [terrain_type]: id=rug_floor
-#: data/core/terrain.cfg:849
+#: data/core/terrain.cfg:859
 msgid "Royal Rug"
 msgstr "Rocaille royale"
 
 #. [terrain_type]: id=rug2_floor
-#: data/core/terrain.cfg:859
+#: data/core/terrain.cfg:869
 msgid "Normal Rug"
 msgstr "Rocaille normale"
 
 #. [terrain_type]: id=rug3_floor
-#: data/core/terrain.cfg:869
+#: data/core/terrain.cfg:879
 msgid "Cave Rug"
 msgstr "Rocaille caverneuse"
 
 #. [terrain_type]: id=wood_floor
-#: data/core/terrain.cfg:876
+#: data/core/terrain.cfg:886
 msgid "Wooden Floor"
 msgstr "Sol en bois"
 
 #. [terrain_type]: id=wood_floor
-#: data/core/terrain.cfg:879
+#: data/core/terrain.cfg:889
 msgid "Basic Wooden Floor"
 msgstr "Sol en bois basique"
 
 #. [terrain_type]: id=old_wood_floor
-#: data/core/terrain.cfg:886 data/core/terrain.cfg:889
+#: data/core/terrain.cfg:896 data/core/terrain.cfg:899
 msgid "Old Wooden Floor"
 msgstr "Vieux sol en bois"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:902
+#: data/core/terrain.cfg:912
 msgid "Lit"
 msgstr "Éclairé"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:903
+#: data/core/terrain.cfg:913
 msgid "Beam of Light"
 msgstr "Rayon de lumière"
 
 #. [terrain_type]: id=cave_floor
 #. [terrain_type]: id=cave_earthy
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:913 data/core/terrain.cfg:923
-#: data/core/terrain.cfg:2905 data/core/terrain.cfg:2906
+#: data/core/terrain.cfg:923 data/core/terrain.cfg:933
+#: data/core/terrain.cfg:2942 data/core/terrain.cfg:2943
 msgid "Cave"
 msgstr "Caverne"
 
 #. [terrain_type]: id=cave_floor
-#: data/core/terrain.cfg:914
+#: data/core/terrain.cfg:924
 msgid "Cave Floor"
 msgstr "Sol de caverne"
 
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:924
+#: data/core/terrain.cfg:934
 msgid "Earthy Cave Floor"
 msgstr "Sol de caverne terreux"
 
 #. [terrain_type]: id=flagstones_dark
-#: data/core/terrain.cfg:934
+#: data/core/terrain.cfg:944
 msgid "Dark Flagstones"
 msgstr "Dalles sombres"
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:944
+#: data/core/terrain.cfg:954
 msgid "Cave Path"
 msgstr "Chemin de caverne"
 
@@ -679,14 +687,14 @@ msgstr "Chemin de caverne"
 #. [terrain_type]: id=fungus_beam_old
 #. [terrain_type]: id=fungus_grove
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:953 data/core/terrain.cfg:972
-#: data/core/terrain.cfg:992 data/core/terrain.cfg:993
-#: data/core/terrain.cfg:1004
+#: data/core/terrain.cfg:963 data/core/terrain.cfg:982
+#: data/core/terrain.cfg:1002 data/core/terrain.cfg:1003
+#: data/core/terrain.cfg:1014
 msgid "Mushroom Grove"
 msgstr "Forêt de champignons"
 
 #. [terrain_type]: id=fungus_grove_old
-#: data/core/terrain.cfg:954
+#: data/core/terrain.cfg:964
 #, fuzzy
 #| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
@@ -696,7 +704,7 @@ msgstr "Forêt de champignons éclairée"
 #. [terrain_type]: id=fungus_beam_old
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
-#: data/core/terrain.cfg:962 data/core/terrain.cfg:982
+#: data/core/terrain.cfg:972 data/core/terrain.cfg:992
 msgid ""
 "editor^The overlays '^Uf' and '^Ufi' are deprecated because, although the "
 "graphics show an overlay with another terrain underneath, the movement and "
@@ -711,7 +719,7 @@ msgstr ""
 #. [terrain_type]: id=fungus_beam_old
 #. this is only shown when the player opens the help by asking for the terrain description of a old mushroom terrain (^Uf or ^Ufi)
 #. this is only shown when the player opens the help by asking for the terrain description of a old mushroom terrain (^Uf or ^Ufi)
-#: data/core/terrain.cfg:965 data/core/terrain.cfg:985
+#: data/core/terrain.cfg:975 data/core/terrain.cfg:995
 msgid ""
 "Dwarven tales describe different types of mushrooms — with some types the "
 "difficulty of walking on the spongy floor has no relation to the ground "
@@ -721,29 +729,32 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=fungus_beam_old
-#: data/core/terrain.cfg:973
+#: data/core/terrain.cfg:983
 #, fuzzy
 #| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
 msgstr "Forêt de champignons éclairée"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:1005
+#: data/core/terrain.cfg:1015
 msgid "Lit Mushroom Grove"
 msgstr "Forêt de champignons éclairée"
 
 #. [terrain_type]: id=fungus_floor
-#: data/core/terrain.cfg:1017 data/core/terrain.cfg:1018
+#: data/core/terrain.cfg:1027 data/core/terrain.cfg:1028
 msgid "Mycelium"
 msgstr ""
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:1027 data/core/terrain.cfg:1028
+#. [terrain_type]: id=earthy_rocky_cave
+#: data/core/terrain.cfg:1037 data/core/terrain.cfg:1038
+#: data/core/terrain.cfg:1053
 msgid "Rockbound Cave"
 msgstr "Caverne accidentée"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:1033
+#. [terrain_type]: id=earthy_rocky_cave
+#: data/core/terrain.cfg:1043 data/core/terrain.cfg:1059
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -771,11 +782,18 @@ msgstr ""
 "\n"
 "Parfois les cavernes sont <ref>text='illuminées'</ref>."
 
+#. [terrain_type]: id=earthy_rocky_cave
+#: data/core/terrain.cfg:1054
+#, fuzzy
+#| msgid "Rockbound Cave"
+msgid "Earthy Rockbound Cave"
+msgstr "Caverne accidentée"
+
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
 #. [terrain_type]: id=mine_railsdiag2
-#: data/core/terrain.cfg:1045 data/core/terrain.cfg:1057
-#: data/core/terrain.cfg:1070
+#: data/core/terrain.cfg:1071 data/core/terrain.cfg:1083
+#: data/core/terrain.cfg:1096
 msgid "Mine Rail"
 msgstr "Rail minier"
 
@@ -783,38 +801,38 @@ msgstr "Rail minier"
 #. [terrain_type]: id=chasm_earthy
 #. [terrain_type]: id=abyss
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1088 data/core/terrain.cfg:1099
-#: data/core/terrain.cfg:1110 data/core/terrain.cfg:1121
+#: data/core/terrain.cfg:1114 data/core/terrain.cfg:1125
+#: data/core/terrain.cfg:1136 data/core/terrain.cfg:1147
 msgid "Chasm"
 msgstr "Abîme"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:1089
+#: data/core/terrain.cfg:1115
 msgid "Regular Chasm"
 msgstr "Gouffre ordinaire"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:1100
+#: data/core/terrain.cfg:1126
 msgid "Earthy Chasm"
 msgstr "Gouffre terreux"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:1111
+#: data/core/terrain.cfg:1137
 msgid "Ethereal Abyss"
 msgstr "Gouffre éthéré"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1122
+#: data/core/terrain.cfg:1148
 msgid "Lava Chasm"
 msgstr "Gouffre de lave"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1134 data/core/terrain.cfg:1135
+#: data/core/terrain.cfg:1160 data/core/terrain.cfg:1161
 msgid "Lava"
 msgstr "Lave"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1141
+#: data/core/terrain.cfg:1167
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -833,97 +851,105 @@ msgstr ""
 "bonus des unités chaotiques."
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:1148
+#: data/core/terrain.cfg:1174
 msgid "Volcano"
 msgstr "Volcan"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1164
+#: data/core/terrain.cfg:1190
 msgid "Regular Impassable Mountains"
 msgstr "Montagnes infranchissables ordinaires"
 
 #. [terrain_type]: id=cloud_dry
-#: data/core/terrain.cfg:1174
+#: data/core/terrain.cfg:1200
 msgid "Dry Impassable Mountains"
 msgstr "Montagnes infranchissables arides"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1185
+#: data/core/terrain.cfg:1211
 msgid "Snowy Impassable Mountains"
 msgstr "Montagnes infranchissables enneigées"
 
 #. [terrain_type]: id=cloud_desert
-#: data/core/terrain.cfg:1195
+#: data/core/terrain.cfg:1221
 msgid "Desert Impassable Mountains"
 msgstr "Montagnes infranchissables désertiques"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_earthy
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1205 data/core/terrain.cfg:1227
-#: data/core/terrain.cfg:1241
+#: data/core/terrain.cfg:1231 data/core/terrain.cfg:1253
+#: data/core/terrain.cfg:1267
 msgid "Cave Wall"
 msgstr "Mur de caverne"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1206
+#: data/core/terrain.cfg:1232
 msgid "Natural Cave Wall"
 msgstr "Mur de caverne naturel"
 
 #. [terrain_type]: id=minewall
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1216 data/core/terrain.cfg:1217
-#: data/core/terrain.cfg:1275
+#: data/core/terrain.cfg:1242 data/core/terrain.cfg:1243
+#: data/core/terrain.cfg:1301
 msgid "Mine Wall"
 msgstr "Mur minier"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1228
+#: data/core/terrain.cfg:1254
 msgid "Natural Earthy Cave Wall"
 msgstr "Mur de caverne terreux naturel"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
 #. [terrain_type]: id=wall_stone_clean
-#: data/core/terrain.cfg:1252 data/core/terrain.cfg:1262
-#: data/core/terrain.cfg:1297
+#. [terrain_type]: id=wall_stone_ancient
+#: data/core/terrain.cfg:1278 data/core/terrain.cfg:1288
+#: data/core/terrain.cfg:1323 data/core/terrain.cfg:1334
 msgid "Stone Wall"
 msgstr "Mur de pierre"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1263
+#: data/core/terrain.cfg:1289
 msgid "Lit Stone Wall"
 msgstr "Mur de pierre éclairé"
 
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1276
+#: data/core/terrain.cfg:1302
 msgid "Straight Mine Wall"
 msgstr "Mur minier droit"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1286
+#: data/core/terrain.cfg:1312
 msgid "Interior Wall"
 msgstr "Mur intérieur"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1287
+#: data/core/terrain.cfg:1313
 msgid "Straight White Wall"
 msgstr "Mur blanc droit"
 
 #. [terrain_type]: id=wall_stone_clean
-#: data/core/terrain.cfg:1298
+#: data/core/terrain.cfg:1324
 msgid "Clean Stone Wall"
 msgstr "Mur de pierre propre"
 
+#. [terrain_type]: id=wall_stone_ancient
+#: data/core/terrain.cfg:1335
+#, fuzzy
+#| msgid "Lit Stone Wall"
+msgid "Ancient Stone Wall"
+msgstr "Mur de pierre éclairé"
+
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1308
+#: data/core/terrain.cfg:1345
 #, fuzzy
 #| msgid "Cave Wall"
 msgid "Catacombs Wall"
 msgstr "Mur de caverne"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1309
+#: data/core/terrain.cfg:1346
 #, fuzzy
 #| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
@@ -935,17 +961,17 @@ msgstr "Mur de pierre propre"
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1325 data/core/terrain.cfg:1338
-#: data/core/terrain.cfg:1352 data/core/terrain.cfg:1409
-#: data/core/terrain.cfg:1421 data/core/terrain.cfg:1434
+#: data/core/terrain.cfg:1362 data/core/terrain.cfg:1375
+#: data/core/terrain.cfg:1389 data/core/terrain.cfg:1446
+#: data/core/terrain.cfg:1458 data/core/terrain.cfg:1471
 msgid "Gate"
 msgstr "Porte"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
 #. [terrain_type]: id=portal_gate_rusty_n
-#: data/core/terrain.cfg:1326 data/core/terrain.cfg:1339
-#: data/core/terrain.cfg:1353
+#: data/core/terrain.cfg:1363 data/core/terrain.cfg:1376
+#: data/core/terrain.cfg:1390
 msgid "Rusty Gate"
 msgstr "Porte rouillée"
 
@@ -955,53 +981,53 @@ msgstr "Porte rouillée"
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1366 data/core/terrain.cfg:1379
-#: data/core/terrain.cfg:1393 data/core/terrain.cfg:1447
-#: data/core/terrain.cfg:1459 data/core/terrain.cfg:1472
+#: data/core/terrain.cfg:1403 data/core/terrain.cfg:1416
+#: data/core/terrain.cfg:1430 data/core/terrain.cfg:1484
+#: data/core/terrain.cfg:1496 data/core/terrain.cfg:1509
 msgid "Door"
 msgstr "Porte"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
 #. [terrain_type]: id=portal_door_wooden_n
-#: data/core/terrain.cfg:1367 data/core/terrain.cfg:1380
-#: data/core/terrain.cfg:1394
+#: data/core/terrain.cfg:1404 data/core/terrain.cfg:1417
+#: data/core/terrain.cfg:1431
 msgid "Wooden Door"
 msgstr "Porte en bois"
 
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1410 data/core/terrain.cfg:1422
-#: data/core/terrain.cfg:1435
+#: data/core/terrain.cfg:1447 data/core/terrain.cfg:1459
+#: data/core/terrain.cfg:1472
 msgid "Open Rusty Gate"
 msgstr "Porte rouillée ouverte"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1448 data/core/terrain.cfg:1460
-#: data/core/terrain.cfg:1473
+#: data/core/terrain.cfg:1485 data/core/terrain.cfg:1497
+#: data/core/terrain.cfg:1510
 msgid "Open Wooden Door"
 msgstr "Porte en bois ouverte"
 
 # Compte tenu du fait que ces chaînes sont destinées à être affichées dans l'éditeur de cartes, il me semble important de faire court. Si l'utilisateur ne sait pas à quoi sert une surcouche, ce n'est pas dans le libellé qu'il va l'apprendre.
 # Laurent
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1488
+#: data/core/terrain.cfg:1525
 msgid "Impassable Overlay"
 msgstr "Surcouche infranchissable"
 
 # Compte tenu du fait que ces chaînes sont destinées à être affichées dans l'éditeur de cartes, il me semble important de faire court. Si l'utilisateur ne sait pas à quoi sert une surcouche, ce n'est pas dans le libellé qu'il va l'apprendre.
 # Laurent
 #. [terrain_type]: id=unwalkable_overlay
-#: data/core/terrain.cfg:1501
+#: data/core/terrain.cfg:1538
 msgid "Unwalkable Overlay"
 msgstr "Surcouche impraticable"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1513 data/core/terrain.cfg:2833
+#: data/core/terrain.cfg:1550 data/core/terrain.cfg:2870
 msgid "Void"
 msgstr "Vide"
 
@@ -1036,29 +1062,29 @@ msgstr "Vide"
 #. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1529 data/core/terrain.cfg:1542
-#: data/core/terrain.cfg:1555 data/core/terrain.cfg:1568
-#: data/core/terrain.cfg:1583 data/core/terrain.cfg:1596
-#: data/core/terrain.cfg:1611 data/core/terrain.cfg:1624
-#: data/core/terrain.cfg:1639 data/core/terrain.cfg:1652
-#: data/core/terrain.cfg:1665 data/core/terrain.cfg:1678
-#: data/core/terrain.cfg:1691 data/core/terrain.cfg:1704
-#: data/core/terrain.cfg:1717 data/core/terrain.cfg:1730
-#: data/core/terrain.cfg:1743 data/core/terrain.cfg:1756
-#: data/core/terrain.cfg:1769 data/core/terrain.cfg:1782
-#: data/core/terrain.cfg:1797 data/core/terrain.cfg:1810
-#: data/core/terrain.cfg:1823 data/core/terrain.cfg:1836
-#: data/core/terrain.cfg:1849 data/core/terrain.cfg:1862
-#: data/core/terrain.cfg:1875 data/core/terrain.cfg:1890
-#: data/core/terrain.cfg:1903 data/core/terrain.cfg:1921
-#: data/core/terrain.cfg:3069 data/core/terrain.cfg:3070
+#: data/core/terrain.cfg:1566 data/core/terrain.cfg:1579
+#: data/core/terrain.cfg:1592 data/core/terrain.cfg:1605
+#: data/core/terrain.cfg:1620 data/core/terrain.cfg:1633
+#: data/core/terrain.cfg:1648 data/core/terrain.cfg:1661
+#: data/core/terrain.cfg:1676 data/core/terrain.cfg:1689
+#: data/core/terrain.cfg:1702 data/core/terrain.cfg:1715
+#: data/core/terrain.cfg:1728 data/core/terrain.cfg:1741
+#: data/core/terrain.cfg:1754 data/core/terrain.cfg:1767
+#: data/core/terrain.cfg:1780 data/core/terrain.cfg:1793
+#: data/core/terrain.cfg:1806 data/core/terrain.cfg:1819
+#: data/core/terrain.cfg:1834 data/core/terrain.cfg:1847
+#: data/core/terrain.cfg:1860 data/core/terrain.cfg:1873
+#: data/core/terrain.cfg:1886 data/core/terrain.cfg:1899
+#: data/core/terrain.cfg:1912 data/core/terrain.cfg:1927
+#: data/core/terrain.cfg:1940 data/core/terrain.cfg:1958
+#: data/core/terrain.cfg:3106 data/core/terrain.cfg:3107
 msgid "Village"
 msgstr "Village"
 
 # Adobe est un terme technique (qui n'est pas anglais mais espagnol). Je pense qu'il ne faudrait pas le traduire.
 # Laurent
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1530
+#: data/core/terrain.cfg:1567
 msgid "Adobe Village"
 msgstr "Village d'adobe"
 
@@ -1066,147 +1092,147 @@ msgstr "Village d'adobe"
 # Laurent
 # Je pense aussi qu'il ne faut pas le traduire
 #. [terrain_type]: id=desert_village_ruin
-#: data/core/terrain.cfg:1543
+#: data/core/terrain.cfg:1580
 msgid "Ruined Adobe Village"
 msgstr "Village d'adobe en ruine"
 
 #. [terrain_type]: id=desert_village_tent
-#: data/core/terrain.cfg:1556
+#: data/core/terrain.cfg:1593
 msgid "Desert Tent Village"
 msgstr "Village en tente du désert"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1569
+#: data/core/terrain.cfg:1606
 msgid "Tent Village"
 msgstr "Village en tente"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1584
+#: data/core/terrain.cfg:1621
 msgid "Orcish Village"
 msgstr "Village orc"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1597
+#: data/core/terrain.cfg:1634
 msgid "Snowy Orcish Village"
 msgstr "Village orc enneigé"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1612
+#: data/core/terrain.cfg:1649
 msgid "Snowy Elven Village"
 msgstr "Village elfe enneigé"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1625
+#: data/core/terrain.cfg:1662
 msgid "Elven Village"
 msgstr "Village elfe"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1640
+#: data/core/terrain.cfg:1677
 msgid "Cottage"
 msgstr "Maisonnette"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1653
+#: data/core/terrain.cfg:1690
 msgid "Snowy Cottage"
 msgstr "Maisonnette enneigée"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1666
+#: data/core/terrain.cfg:1703
 msgid "Ruined Cottage"
 msgstr "Maisonnette en ruine"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1679
+#: data/core/terrain.cfg:1716
 msgid "Human City"
 msgstr "Cité humaine"
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1692
+#: data/core/terrain.cfg:1729
 msgid "Windmill Village"
 msgstr "Village à moulin à vent"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1705
+#: data/core/terrain.cfg:1742
 msgid "Snowy Human City"
 msgstr "Cité humaine enneigée"
 
 #. [terrain_type]: id=city_village_ruin
-#: data/core/terrain.cfg:1718
+#: data/core/terrain.cfg:1755
 msgid "Ruined Human City"
 msgstr "Cité humaine en ruine"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1731
+#: data/core/terrain.cfg:1768
 msgid "Hill Stone Village"
 msgstr "Village en pierre"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1744
+#: data/core/terrain.cfg:1781
 msgid "Snowy Hill Stone Village"
 msgstr "Village en pierre enneigé"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1757
+#: data/core/terrain.cfg:1794
 msgid "Ruined Hill Stone Village"
 msgstr "Village en pierre en ruine"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1770
+#: data/core/terrain.cfg:1807
 msgid "Tropical Village"
 msgstr "Forêt tropicale"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1783
+#: data/core/terrain.cfg:1820
 msgid "Drake Village"
 msgstr "Village dracan"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1798
+#: data/core/terrain.cfg:1835
 msgid "Cave Village"
 msgstr "Village de caverne"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1811
+#: data/core/terrain.cfg:1848
 msgid "Dwarven Village"
 msgstr "Village nain"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1824
+#: data/core/terrain.cfg:1861
 msgid "Hut"
 msgstr "Hutte"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1837
+#: data/core/terrain.cfg:1874
 msgid "Snowy Hut"
 msgstr "Hutte enneigée"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:1850
+#: data/core/terrain.cfg:1887
 msgid "Log Cabin"
 msgstr "Cabane en rondins"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:1863
+#: data/core/terrain.cfg:1900
 msgid "Snowy Log Cabin"
 msgstr "Cabane en rondins enneigée"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:1876
+#: data/core/terrain.cfg:1913
 msgid "Igloo"
 msgstr "Igloo"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:1891
+#: data/core/terrain.cfg:1928
 msgid "Swamp Village"
 msgstr "Village des marais"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:1904
+#: data/core/terrain.cfg:1941
 msgid "Merfolk Village"
 msgstr "Village ondin"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:1905
+#: data/core/terrain.cfg:1942
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1229,7 +1255,7 @@ msgstr ""
 "alors que les unités terrestrers ont généralement une faible défense."
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:1922
+#: data/core/terrain.cfg:1959
 msgid "Village Overlay"
 msgstr "Surcouche village"
 
@@ -1238,19 +1264,19 @@ msgstr "Surcouche village"
 #. [terrain_type]: id=encampment_snow
 #. [terrain_type]: id=troll_encampment
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:1938 data/core/terrain.cfg:1939
-#: data/core/terrain.cfg:1950 data/core/terrain.cfg:1962
-#: data/core/terrain.cfg:2167 data/core/terrain.cfg:2179
+#: data/core/terrain.cfg:1975 data/core/terrain.cfg:1976
+#: data/core/terrain.cfg:1987 data/core/terrain.cfg:1999
+#: data/core/terrain.cfg:2204 data/core/terrain.cfg:2216
 msgid "Encampment"
 msgstr "Campement"
 
 #. [terrain_type]: id=encampment_ruin
-#: data/core/terrain.cfg:1951
+#: data/core/terrain.cfg:1988
 msgid "Ruined Encampment"
 msgstr "Campement en ruine"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1963
+#: data/core/terrain.cfg:2000
 msgid "Snowy Encampment"
 msgstr "Campement enneigé"
 
@@ -1269,75 +1295,75 @@ msgstr "Campement enneigé"
 #. [terrain_type]: id=aquatic_castle
 #. [terrain_type]: id=castle_overlay
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:1974 data/core/terrain.cfg:1986
-#: data/core/terrain.cfg:1998 data/core/terrain.cfg:2010
-#: data/core/terrain.cfg:2021 data/core/terrain.cfg:2033
-#: data/core/terrain.cfg:2045 data/core/terrain.cfg:2057
-#: data/core/terrain.cfg:2069 data/core/terrain.cfg:2081
-#: data/core/terrain.cfg:2093 data/core/terrain.cfg:2143
-#: data/core/terrain.cfg:2192 data/core/terrain.cfg:2508
-#: data/core/terrain.cfg:2988 data/core/terrain.cfg:2989
+#: data/core/terrain.cfg:2011 data/core/terrain.cfg:2023
+#: data/core/terrain.cfg:2035 data/core/terrain.cfg:2047
+#: data/core/terrain.cfg:2058 data/core/terrain.cfg:2070
+#: data/core/terrain.cfg:2082 data/core/terrain.cfg:2094
+#: data/core/terrain.cfg:2106 data/core/terrain.cfg:2118
+#: data/core/terrain.cfg:2130 data/core/terrain.cfg:2180
+#: data/core/terrain.cfg:2229 data/core/terrain.cfg:2545
+#: data/core/terrain.cfg:3025 data/core/terrain.cfg:3026
 msgid "Castle"
 msgstr "Château"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1975
+#: data/core/terrain.cfg:2012
 msgid "Orcish Castle"
 msgstr "Château orc"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1987
+#: data/core/terrain.cfg:2024
 msgid "Snowy Orcish Castle"
 msgstr "Château orc enneigé"
 
 #. [terrain_type]: id=human_castle
-#: data/core/terrain.cfg:1999
+#: data/core/terrain.cfg:2036
 msgid "Human Castle"
 msgstr "Château humain"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:2011
+#: data/core/terrain.cfg:2048
 msgid "Snowy Human Castle"
 msgstr "Château humain enneigé"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:2022
+#: data/core/terrain.cfg:2059
 msgid "Elven Castle"
 msgstr "Château elfique"
 
 #. [terrain_type]: id=elven_castle_ruin
-#: data/core/terrain.cfg:2034
+#: data/core/terrain.cfg:2071
 msgid "Elven Castle Ruin"
 msgstr "Château elfique en ruine"
 
 #. [terrain_type]: id=elven_castle_winter
-#: data/core/terrain.cfg:2046
+#: data/core/terrain.cfg:2083
 #, fuzzy
 #| msgid "Elven Castle"
 msgid "Winter Elven Castle"
 msgstr "Château elfique"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:2058
+#: data/core/terrain.cfg:2095
 #, fuzzy
 #| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
 msgstr "Château nain"
 
 #. [terrain_type]: id=dwarven_castle2
-#: data/core/terrain.cfg:2070
+#: data/core/terrain.cfg:2107
 msgid "Dwarven Castle"
 msgstr "Château nain"
 
 #. [terrain_type]: id=dwarven_castle_ruin
-#: data/core/terrain.cfg:2082
+#: data/core/terrain.cfg:2119
 #, fuzzy
 #| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
 msgstr "Château nain"
 
 #. [terrain_type]: id=dwarven_castle_winter
-#: data/core/terrain.cfg:2094
+#: data/core/terrain.cfg:2131
 #, fuzzy
 #| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
@@ -1347,33 +1373,33 @@ msgstr "Château nain"
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2105 data/core/terrain.cfg:2117
-#: data/core/terrain.cfg:2130 data/core/terrain.cfg:2155
+#: data/core/terrain.cfg:2142 data/core/terrain.cfg:2154
+#: data/core/terrain.cfg:2167 data/core/terrain.cfg:2192
 msgid "Ruined Castle"
 msgstr "Château en ruine"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:2106
+#: data/core/terrain.cfg:2143
 msgid "Ruined Human Castle"
 msgstr "Château humain en ruine"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:2118
+#: data/core/terrain.cfg:2155
 msgid "Sunken Human Ruin"
 msgstr "Ruine humaine engloutie"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:2131
+#: data/core/terrain.cfg:2168
 msgid "Swamp Human Ruin"
 msgstr "Ruine humaine des marais"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:2144
+#: data/core/terrain.cfg:2181
 msgid "Desert Castle"
 msgstr "Château du désert"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2156
+#: data/core/terrain.cfg:2193
 msgid "Ruined Desert Castle"
 msgstr "Château du désert en ruine"
 
@@ -1381,17 +1407,17 @@ msgstr "Château du désert en ruine"
 # Laurent
 # Pourquoi pas QG pour 'keep'
 #. [terrain_type]: id=troll_encampment
-#: data/core/terrain.cfg:2168
+#: data/core/terrain.cfg:2205
 msgid "Troll Encampment"
 msgstr "Campement troll"
 
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2180
+#: data/core/terrain.cfg:2217
 msgid "Aquatic Encampment"
 msgstr "Campement aquatique"
 
 #. [terrain_type]: id=aquatic_castle
-#: data/core/terrain.cfg:2193
+#: data/core/terrain.cfg:2230
 msgid "Aquatic Castle"
 msgstr "Château aquatique"
 
@@ -1401,28 +1427,28 @@ msgstr "Château aquatique"
 #. [terrain_type]: id=encampment_snow_keep
 #. [terrain_type]: id=merman_campkeep
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2209 data/core/terrain.cfg:2233
-#: data/core/terrain.cfg:2246 data/core/terrain.cfg:2467
-#: data/core/terrain.cfg:2480
+#: data/core/terrain.cfg:2246 data/core/terrain.cfg:2270
+#: data/core/terrain.cfg:2283 data/core/terrain.cfg:2504
+#: data/core/terrain.cfg:2517
 msgid "Encampment Keep"
 msgstr "Tente de commandement"
 
 # Benoît : « Donjon » ça va pas avec campement, et c'est une tente...
 #. [terrain_type]: id=encampment_ruin_keep
-#: data/core/terrain.cfg:2221
+#: data/core/terrain.cfg:2258
 msgid "Ruined Encampment Keep"
 msgstr "Tente de commandement en ruine"
 
 # Il y a un problème avec ces différentes traductions de 'keep': on perd de vue qu'il s'agit d'abord du seul type d'endroit où le leader peut recruter.
 # Laurent
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:2234
+#: data/core/terrain.cfg:2271
 msgid "Tall Encampment Keep"
 msgstr "Tente de commandement surélevée"
 
 # Benoît : « Donjon » ça va pas avec campement, et c'est une tente...
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:2247
+#: data/core/terrain.cfg:2284
 msgid "Snowy Encampment Keep"
 msgstr "Tente de commandement enneigée"
 
@@ -1443,74 +1469,74 @@ msgstr "Tente de commandement enneigée"
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=merman_castlekeep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2259 data/core/terrain.cfg:2272
-#: data/core/terrain.cfg:2285 data/core/terrain.cfg:2298
-#: data/core/terrain.cfg:2311 data/core/terrain.cfg:2324
-#: data/core/terrain.cfg:2337 data/core/terrain.cfg:2350
-#: data/core/terrain.cfg:2363 data/core/terrain.cfg:2376
-#: data/core/terrain.cfg:2389 data/core/terrain.cfg:2441
-#: data/core/terrain.cfg:2493 data/core/terrain.cfg:2521
+#: data/core/terrain.cfg:2296 data/core/terrain.cfg:2309
+#: data/core/terrain.cfg:2322 data/core/terrain.cfg:2335
+#: data/core/terrain.cfg:2348 data/core/terrain.cfg:2361
+#: data/core/terrain.cfg:2374 data/core/terrain.cfg:2387
+#: data/core/terrain.cfg:2400 data/core/terrain.cfg:2413
+#: data/core/terrain.cfg:2426 data/core/terrain.cfg:2478
+#: data/core/terrain.cfg:2530 data/core/terrain.cfg:2558
 msgid "Keep"
 msgstr "Donjon"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:2260
+#: data/core/terrain.cfg:2297
 msgid "Orcish Keep"
 msgstr "Donjon orc"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:2273
+#: data/core/terrain.cfg:2310
 msgid "Snowy Orcish Keep"
 msgstr "Donjon orc enneigé"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:2286
+#: data/core/terrain.cfg:2323
 msgid "Human Castle Keep"
 msgstr "Donjon de château humain"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:2299
+#: data/core/terrain.cfg:2336
 msgid "Snowy Human Castle Keep"
 msgstr "Donjon de château humain enneigé"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:2312
+#: data/core/terrain.cfg:2349
 msgid "Elven Castle Keep"
 msgstr "Donjon de château elfe"
 
 #. [terrain_type]: id=elven_keep_ruin
-#: data/core/terrain.cfg:2325
+#: data/core/terrain.cfg:2362
 msgid "Elven Keep Ruin"
 msgstr "Donjon de château elfe en ruine"
 
 #. [terrain_type]: id=elven_keep_winter
-#: data/core/terrain.cfg:2338
+#: data/core/terrain.cfg:2375
 #, fuzzy
 #| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
 msgstr "Donjon de château elfe en ruine"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:2351
+#: data/core/terrain.cfg:2388
 #, fuzzy
 #| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
 msgstr "Donjon de château nain"
 
 #. [terrain_type]: id=dwarven_keep2
-#: data/core/terrain.cfg:2364
+#: data/core/terrain.cfg:2401
 msgid "Dwarven Castle Keep"
 msgstr "Donjon de château nain"
 
 #. [terrain_type]: id=dwarven_keep_ruin
-#: data/core/terrain.cfg:2377
+#: data/core/terrain.cfg:2414
 #, fuzzy
 #| msgid "Dwarven Castle Keep"
 msgid "Dwarven Ruin Keep"
 msgstr "Donjon de château nain"
 
 #. [terrain_type]: id=dwarven_keep_winter
-#: data/core/terrain.cfg:2390
+#: data/core/terrain.cfg:2427
 #, fuzzy
 #| msgid "Dwarven Castle Keep"
 msgid "Winter Dwarven Keep"
@@ -1520,62 +1546,62 @@ msgstr "Donjon de château nain"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2402 data/core/terrain.cfg:2415
-#: data/core/terrain.cfg:2428 data/core/terrain.cfg:2454
+#: data/core/terrain.cfg:2439 data/core/terrain.cfg:2452
+#: data/core/terrain.cfg:2465 data/core/terrain.cfg:2491
 msgid "Ruined Keep"
 msgstr "Donjon en ruine"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:2403
+#: data/core/terrain.cfg:2440
 msgid "Ruined Human Castle Keep"
 msgstr "Donjon de château humain en ruine"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:2416
+#: data/core/terrain.cfg:2453
 msgid "Sunken Human Castle Keep"
 msgstr "Donjon de château humain englouti"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:2429
+#: data/core/terrain.cfg:2466
 msgid "Swamp Human Castle Keep"
 msgstr "Donjon de château humain des marais"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:2442
+#: data/core/terrain.cfg:2479
 msgid "Desert Keep"
 msgstr "Donjon du désert"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2455
+#: data/core/terrain.cfg:2492
 msgid "Ruined Desert Keep"
 msgstr "Donjon du désert en ruine"
 
 # Il y a un problème avec ces différentes traductions de 'keep': on perd de vue qu'il s'agit d'abord du seul type d'endroit où le leader peut recruter.
 # Laurent
 #. [terrain_type]: id=merman_campkeep
-#: data/core/terrain.cfg:2468
+#: data/core/terrain.cfg:2505
 msgid "Aquatic Encampment Keep"
 msgstr "Donjon aquatique"
 
 # Il y a un problème avec ces différentes traductions de 'keep': on perd de vue qu'il s'agit d'abord du seul type d'endroit où le leader peut recruter.
 # Laurent
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2481
+#: data/core/terrain.cfg:2518
 msgid "Troll Encampment Keep"
 msgstr "Tente de commandement troll"
 
 #. [terrain_type]: id=merman_castlekeep
-#: data/core/terrain.cfg:2494
+#: data/core/terrain.cfg:2531
 msgid "Aquatic Keep"
 msgstr "Donjon aquatique"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:2509
+#: data/core/terrain.cfg:2546
 msgid "Castle Overlay"
 msgstr "Surcouche château"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2522
+#: data/core/terrain.cfg:2559
 msgid "Keep Overlay"
 msgstr "Surcouche donjon"
 
@@ -1600,30 +1626,30 @@ msgstr "Surcouche donjon"
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2540 data/core/terrain.cfg:2555
-#: data/core/terrain.cfg:2568 data/core/terrain.cfg:2581
-#: data/core/terrain.cfg:2593 data/core/terrain.cfg:2606
-#: data/core/terrain.cfg:2621 data/core/terrain.cfg:2633
-#: data/core/terrain.cfg:2646 data/core/terrain.cfg:2661
-#: data/core/terrain.cfg:2673 data/core/terrain.cfg:2687
-#: data/core/terrain.cfg:2704 data/core/terrain.cfg:2718
-#: data/core/terrain.cfg:2732 data/core/terrain.cfg:2746
-#: data/core/terrain.cfg:2760 data/core/terrain.cfg:2774
-#: data/core/terrain.cfg:2788 data/core/terrain.cfg:2802
-#: data/core/terrain.cfg:2816
+#: data/core/terrain.cfg:2577 data/core/terrain.cfg:2592
+#: data/core/terrain.cfg:2605 data/core/terrain.cfg:2618
+#: data/core/terrain.cfg:2630 data/core/terrain.cfg:2643
+#: data/core/terrain.cfg:2658 data/core/terrain.cfg:2670
+#: data/core/terrain.cfg:2683 data/core/terrain.cfg:2698
+#: data/core/terrain.cfg:2710 data/core/terrain.cfg:2724
+#: data/core/terrain.cfg:2741 data/core/terrain.cfg:2755
+#: data/core/terrain.cfg:2769 data/core/terrain.cfg:2783
+#: data/core/terrain.cfg:2797 data/core/terrain.cfg:2811
+#: data/core/terrain.cfg:2825 data/core/terrain.cfg:2839
+#: data/core/terrain.cfg:2853
 msgid "Bridge"
 msgstr "Pont"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2541 data/core/terrain.cfg:2556
-#: data/core/terrain.cfg:2569
+#: data/core/terrain.cfg:2578 data/core/terrain.cfg:2593
+#: data/core/terrain.cfg:2606
 msgid "Wooden Bridge"
 msgstr "Pont de bois"
 
 #. [terrain_type]: id=bridge
-#: data/core/terrain.cfg:2547
+#: data/core/terrain.cfg:2584
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -1652,87 +1678,87 @@ msgstr ""
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
-#: data/core/terrain.cfg:2582 data/core/terrain.cfg:2594
-#: data/core/terrain.cfg:2607
+#: data/core/terrain.cfg:2619 data/core/terrain.cfg:2631
+#: data/core/terrain.cfg:2644
 msgid "Rotting Bridge"
 msgstr "Pont délabré"
 
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:2622 data/core/terrain.cfg:2634
-#: data/core/terrain.cfg:2647
+#: data/core/terrain.cfg:2659 data/core/terrain.cfg:2671
+#: data/core/terrain.cfg:2684
 msgid "Basic Stone Bridge"
 msgstr "Pont de pierre ordinaire"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2662 data/core/terrain.cfg:2674
-#: data/core/terrain.cfg:2688
+#: data/core/terrain.cfg:2699 data/core/terrain.cfg:2711
+#: data/core/terrain.cfg:2725
 msgid "Cave Chasm Bridge"
 msgstr "Pont souterrain"
 
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
 #. [terrain_type]: id=hangingbridge
-#: data/core/terrain.cfg:2705 data/core/terrain.cfg:2719
-#: data/core/terrain.cfg:2733
+#: data/core/terrain.cfg:2742 data/core/terrain.cfg:2756
+#: data/core/terrain.cfg:2770
 msgid "Hanging Bridge"
 msgstr "Pont suspendu"
 
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #. [terrain_type]: id=stonechasmbridge
-#: data/core/terrain.cfg:2747 data/core/terrain.cfg:2761
-#: data/core/terrain.cfg:2775
+#: data/core/terrain.cfg:2784 data/core/terrain.cfg:2798
+#: data/core/terrain.cfg:2812
 msgid "Stone Chasm Bridge"
 msgstr "Pont de pierre souterrain"
 
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2789 data/core/terrain.cfg:2803
-#: data/core/terrain.cfg:2817
+#: data/core/terrain.cfg:2826 data/core/terrain.cfg:2840
+#: data/core/terrain.cfg:2854
 msgid "Plank Bridge"
 msgstr "Pont de planche"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2834
+#: data/core/terrain.cfg:2871
 msgid "Off Map"
 msgstr "En dehors de la carte"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2845
+#: data/core/terrain.cfg:2882
 msgid "Fake Map Border"
 msgstr "Faux bord de carte"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
 #. [toggle_button]: id=sort_7
-#: data/core/terrain.cfg:2856 data/gui/window/editor_edit_side.cfg:180
+#: data/core/terrain.cfg:2893 data/gui/window/editor_edit_side.cfg:180
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:388
 msgid "Shroud"
 msgstr "Voile"
 
 #. [terrain_type]: id=fake_shroud_overlay
-#: data/core/terrain.cfg:2867
+#: data/core/terrain.cfg:2904
 msgid "Fake Shroud"
 msgstr "Faux voile"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
-#: data/core/terrain.cfg:2878 data/gui/window/game_stats.cfg:370
+#: data/core/terrain.cfg:2915 data/gui/window/game_stats.cfg:370
 msgid "Fog"
 msgstr "Brouillard"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:2893 data/core/terrain.cfg:2894
+#: data/core/terrain.cfg:2930 data/core/terrain.cfg:2931
 msgid "Fungus"
 msgstr "Champignons"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:2897
+#: data/core/terrain.cfg:2934
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
@@ -1769,7 +1795,7 @@ msgstr ""
 "champignons, alors que la cavalerie n'a que 20%."
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:2908
+#: data/core/terrain.cfg:2945
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1806,12 +1832,12 @@ msgstr ""
 "ont 50%."
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:2921
+#: data/core/terrain.cfg:2958
 msgid "Sands"
 msgstr "Sable"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:2938
+#: data/core/terrain.cfg:2975
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1830,7 +1856,7 @@ msgstr ""
 "Les ondins et les nagas ont 70% de défense sur les récifs côtiers."
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:2952
+#: data/core/terrain.cfg:2989
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
@@ -1864,7 +1890,7 @@ msgstr ""
 "cavalerie est limitée à 40%. Les nains n'ont pas moins de 60% de défense."
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:2966
+#: data/core/terrain.cfg:3003
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1888,7 +1914,7 @@ msgstr ""
 "nagas, et les sauriens ont généralement 60%."
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:2979
+#: data/core/terrain.cfg:3016
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1912,7 +1938,7 @@ msgstr ""
 "l'eau peu profonde, alors que les nagas et les ondins ont 60%."
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:2994
+#: data/core/terrain.cfg:3031
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification.\n"
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -1934,7 +1960,7 @@ msgstr ""
 "La plupart des unités ont autour de 60% de défense dans un château."
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:3008
+#: data/core/terrain.cfg:3045
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1958,7 +1984,7 @@ msgstr ""
 "La plupart des unités ont 60% de défense en montagne ; les nains ont 70%."
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:3020
+#: data/core/terrain.cfg:3057
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -1976,12 +2002,12 @@ msgstr ""
 "déplacent normalement."
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3031 data/core/terrain.cfg:3032
+#: data/core/terrain.cfg:3068 data/core/terrain.cfg:3069
 msgid "Flat"
 msgstr "Plat"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3033
+#: data/core/terrain.cfg:3070
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild.\n"
@@ -2002,7 +2028,7 @@ msgstr ""
 "La plupart des unités ont une défense de 30 ou 40% en prairie."
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:3046
+#: data/core/terrain.cfg:3083
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2035,12 +2061,12 @@ msgstr ""
 "cheval. Les nains n'ont que 30% de défense en forêt."
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3056 data/core/terrain.cfg:3057
+#: data/core/terrain.cfg:3093 data/core/terrain.cfg:3094
 msgid "Frozen"
 msgstr "Gelé"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3059
+#: data/core/terrain.cfg:3096
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice.\n"
@@ -2059,7 +2085,7 @@ msgstr ""
 "La plupart des unités ont 20% à 40% de défense sur les terrains gelés."
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:3072
+#: data/core/terrain.cfg:3109
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise.\n"
@@ -2084,12 +2110,12 @@ msgstr ""
 "cavalerie a 40%."
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3082 data/core/terrain.cfg:3083
+#: data/core/terrain.cfg:3119 data/core/terrain.cfg:3120
 msgid "Impassable"
 msgstr "Infranchissable"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3085
+#: data/core/terrain.cfg:3122
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2104,12 +2130,12 @@ msgstr ""
 "farouche des trolls ne peut pas enfoncer d'épais murs de pierre."
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3092 data/core/terrain.cfg:3093
+#: data/core/terrain.cfg:3129 data/core/terrain.cfg:3130
 msgid "Unwalkable"
 msgstr "Impraticable"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3095
+#: data/core/terrain.cfg:3132
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -2122,12 +2148,12 @@ msgstr ""
 "peuvent traverser ce type de terrain."
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3102 data/core/terrain.cfg:3103
+#: data/core/terrain.cfg:3139 data/core/terrain.cfg:3140
 msgid "Rails"
 msgstr "Rails"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3105
+#: data/core/terrain.cfg:3142
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
@@ -2157,7 +2183,7 @@ msgstr ""
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
-#: data/gui/window/mp_alerts_options.cfg:234
+#: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/preferences/02_hotkeys.cfg:296
 #: data/gui/window/select_orb_colors.cfg:102
 msgid "Defaults"
@@ -2224,7 +2250,7 @@ msgstr "Mettre à jour les extensions"
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:270
-#: src/gui/widgets/addon_list.cpp:254
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "Publier l'extension"
 
@@ -2232,7 +2258,7 @@ msgstr "Publier l'extension"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:802
+#: src/gui/dialogs/addon/manager.cpp:818
 msgid "Uninstall add-on"
 msgstr "Désinstaller des extensions"
 
@@ -2255,9 +2281,10 @@ msgstr "Messages en attente"
 #: data/gui/window/help_browser.cfg:188
 #: data/gui/window/lobby_player_info.cfg:294
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
-#: data/gui/window/mp_alerts_options.cfg:249
+#: data/gui/window/mp_alerts_options.cfg:242
 #: data/gui/window/preferences.cfg:429
 #: data/gui/window/screenshot_notification.cfg:216
+#: data/gui/window/server_info.cfg:252
 #: data/gui/window/statistics_dialog.cfg:615
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
@@ -2321,7 +2348,7 @@ msgstr "Se connecter"
 #: data/gui/window/file_dialog.cfg:450 data/gui/window/folder_create.cfg:133
 #: data/gui/window/game_load.cfg:627 data/gui/window/game_save.cfg:134
 #: data/gui/window/label_settings.cfg:149
-#: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:177
+#: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:269
 #: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:216
 #: data/gui/window/mp_connect.cfg:314
 #: data/gui/window/mp_create_game/default_resolution.cfg:464
@@ -2336,7 +2363,7 @@ msgstr "Se connecter"
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
-#: data/gui/window/unit_attack.cfg:233 data/gui/window/unit_create.cfg:290
+#: data/gui/window/unit_attack.cfg:233 data/gui/window/unit_create.cfg:305
 #: data/gui/window/unit_recall.cfg:462 data/gui/window/unit_recruit.cfg:243
 #: src/hotkey/hotkey_command.cpp:73
 msgid "Cancel"
@@ -2355,7 +2382,7 @@ msgstr "Version :"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:590
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:591
 msgid "No description available."
 msgstr "Aucune description disponible."
 
@@ -2403,7 +2430,7 @@ msgstr "Dépendances :"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:887
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:903
 msgid "addon_dependencies^None"
 msgstr "Aucune"
 
@@ -2414,7 +2441,7 @@ msgstr "Traductions :"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:901
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:917
 msgid "translations^None"
 msgstr "Aucune"
 
@@ -2470,8 +2497,8 @@ msgstr "Gestionnaire d'extensions"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:454
-#: src/gui/dialogs/addon/manager.cpp:641
+#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:463
+#: src/gui/dialogs/addon/manager.cpp:650
 msgid "Addon Details"
 msgstr "Détails de l'extension"
 
@@ -2552,6 +2579,22 @@ msgstr "Attaquant"
 msgid "Defender"
 msgstr "Défenseur"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/window/browse_url_prompt.cfg:39
+#: data/gui/window/depcheck_confirm_change.cfg:40
+#: src/gui/dialogs/addon/manager.cpp:791 src/gui/dialogs/file_dialog.cpp:305
+#: src/gui/dialogs/file_dialog.cpp:731
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. [label]
+#: data/gui/window/browse_url_prompt.cfg:54
+#, fuzzy
+#| msgid "Do you want to open this link?"
+msgid "Are you sure you want to open this link? "
+msgstr "Voulez-vous ouvrir ce lien ?"
+
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:173
 msgid "Play a Campaign"
@@ -2575,7 +2618,7 @@ msgstr "Trier par ordre chronologique approximatif des évènement de l'histoire
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:284
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "Modifications"
 msgstr "Modifications"
 
@@ -2677,7 +2720,7 @@ msgstr "Charger le noyau"
 #: data/gui/window/editor_set_starting_position.cfg:162
 #: data/gui/window/file_dialog.cfg:437 data/gui/window/folder_create.cfg:119
 #: data/gui/window/label_settings.cfg:137
-#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:167
+#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
 #: data/gui/window/mp_change_control.cfg:203
 #: data/gui/window/mp_faction_select.cfg:388
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
@@ -2686,7 +2729,7 @@ msgstr "Charger le noyau"
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
-#: data/gui/window/unit_create.cfg:279 data/gui/window/wml_error.cfg:162
+#: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
 #: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:181
 #: src/gui/dialogs/message.cpp:188
 msgid "OK"
@@ -2790,14 +2833,6 @@ msgstr "Nouvelle heure"
 msgid "Delete ToD"
 msgstr "Supprimer heure"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
-#: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:775 src/gui/dialogs/file_dialog.cpp:305
-#: src/gui/dialogs/file_dialog.cpp:731
-msgid "Confirm"
-msgstr "Confirmer"
-
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:98
 msgid "Would you like to apply the changes?"
@@ -2898,7 +2933,7 @@ msgstr "Description :"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Experience modifier:"
 msgstr "Modificateur d'expérience :"
 
@@ -2962,7 +2997,7 @@ msgstr "Or :"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Gold per village:"
 msgstr "Or par village :"
 
@@ -3033,7 +3068,7 @@ msgstr "Choix du générateur de carte :"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -3731,14 +3766,14 @@ msgid "Invert filter"
 msgstr "Inverser le filtre"
 
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:390 data/gui/window/lobby_main.cfg:535
+#: data/gui/window/lobby_main.cfg:390 data/gui/window/lobby_main.cfg:548
 msgid "Log Out"
 msgstr "Déconnexion"
 
 #. [label]
 #. [button]: id=ok
 #. [button]: id=create
-#: data/gui/window/lobby_main.cfg:407 data/gui/window/lobby_main.cfg:573
+#: data/gui/window/lobby_main.cfg:407 data/gui/window/lobby_main.cfg:586
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:449
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
@@ -3752,50 +3787,57 @@ msgstr "Créer un jeu"
 #. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
-#: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:561
+#: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:574
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:118
 msgid "Preferences"
 msgstr "Préférences"
 
 #. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:430 data/gui/window/lobby_main.cfg:585
+#: data/gui/window/lobby_main.cfg:430 data/gui/window/lobby_main.cfg:598
 msgid "Join"
 msgstr "Rejoindre"
 
 #. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:440 data/gui/window/lobby_main.cfg:597
+#: data/gui/window/lobby_main.cfg:440 data/gui/window/lobby_main.cfg:621
 msgid "Observe"
 msgstr "Observer"
 
+#. [button]: id=server_info
+#: data/gui/window/lobby_main.cfg:456 data/gui/window/lobby_main.cfg:609
+#, fuzzy
+#| msgid "Map Information"
+msgid "Information"
+msgstr "Information de la carte"
+
 #. [option]
-#: data/gui/window/lobby_main.cfg:459 data/gui/window/lobby_main.cfg:612
+#: data/gui/window/lobby_main.cfg:472 data/gui/window/lobby_main.cfg:636
 msgid "Normal Replays"
 msgstr "Films normaux"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:463 data/gui/window/lobby_main.cfg:616
+#: data/gui/window/lobby_main.cfg:476 data/gui/window/lobby_main.cfg:640
 msgid "Quick Replays"
 msgstr "Films accélérés"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:464 data/gui/window/lobby_main.cfg:617
+#: data/gui/window/lobby_main.cfg:477 data/gui/window/lobby_main.cfg:641
 msgid "Skip quickly to the active turn when observing"
 msgstr "En tant qu'observateur, passer rapidement au tour en cours"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:468 data/gui/window/lobby_main.cfg:621
+#: data/gui/window/lobby_main.cfg:481 data/gui/window/lobby_main.cfg:645
 msgid "Enter Blindfolded"
 msgstr "Entrer les yeux bandés"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:469 data/gui/window/lobby_main.cfg:622
+#: data/gui/window/lobby_main.cfg:482 data/gui/window/lobby_main.cfg:646
 msgid "Do not show the map until given control of a side"
 msgstr ""
 "Ne pas afficher la carte tant que le contrôle d'un camp n'a pas été donné"
 
 #. [label]
-#: data/gui/window/lobby_main.cfg:523 data/gui/window/lobby_main.cfg:729
+#: data/gui/window/lobby_main.cfg:536 data/gui/window/lobby_main.cfg:753
 msgid "Multiplayer Lobby"
 msgstr "Vestibule multijoueur"
 
@@ -3863,35 +3905,62 @@ msgstr "Éjecter + Exclure"
 msgid "Stop Game"
 msgstr "Arrêter une partie"
 
-#. [label]
-#: data/gui/window/logging.cfg:93
-msgid "Logging Options"
-msgstr "Options de connexion"
-
-#. [row]
-#: data/gui/window/logging.cfg:136
+#: data/gui/window/logging.cfg:20
 msgid "Debug level logging: maximum information"
 msgstr "Niveau de journalisation « Debug » : information maximum"
 
-#. [row]
-#: data/gui/window/logging.cfg:137
+#: data/gui/window/logging.cfg:22
 msgid "Info level logging: more information"
 msgstr "Niveau de journalisation « Info » : plus d'information"
 
-#. [row]
-#: data/gui/window/logging.cfg:138
+#: data/gui/window/logging.cfg:24
 msgid "Warning level logging: less information"
 msgstr "Niveau de journalisation « Warning » : moins d'information"
 
-#. [row]
-#: data/gui/window/logging.cfg:139
+#: data/gui/window/logging.cfg:26
 msgid "Error level logging: minimum information"
 msgstr "Niveau de journalisation « Error » : information minimum"
 
-#. [row]
-#: data/gui/window/logging.cfg:140
+#: data/gui/window/logging.cfg:28
 msgid "Disable logging"
 msgstr "Désactiver la journalisation"
+
+#. [label]
+#: data/gui/window/logging.cfg:145
+msgid "Logging Options"
+msgstr "Options de connexion"
+
+#. [label]
+#: data/gui/window/logging.cfg:192
+#, fuzzy
+#| msgid "Log Cabin"
+msgid "Log Domain"
+msgstr "Cabane en rondins"
+
+#. [row]
+#: data/gui/window/logging.cfg:196
+msgid "log_level^Debug"
+msgstr ""
+
+#. [row]
+#: data/gui/window/logging.cfg:197
+msgid "log_level^Info"
+msgstr ""
+
+#. [row]
+#: data/gui/window/logging.cfg:198
+msgid "log_level^Warning"
+msgstr ""
+
+#. [row]
+#: data/gui/window/logging.cfg:199
+msgid "log_level^Error"
+msgstr ""
+
+#. [row]
+#: data/gui/window/logging.cfg:200
+msgid "log_level^None"
+msgstr ""
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -3920,130 +3989,145 @@ msgstr ""
 "affichant une notification sur le bureau (si la fenêtre du jeu est inactive "
 "ou minimisée)."
 
-#. [label]
-#: data/gui/window/mp_alerts_options.cfg:139
-msgid "Event"
-msgstr "Événement"
-
 #. [widget]: id=label
 #. [label]
-#: data/gui/window/mp_alerts_options.cfg:154
+#: data/gui/window/mp_alerts_options.cfg:147
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
 msgstr "Son"
 
 #. [label]: id=notification_label
-#: data/gui/window/mp_alerts_options.cfg:170
+#: data/gui/window/mp_alerts_options.cfg:163
 msgid "Desktop Notification"
 msgstr "Notification du bureau"
 
 #. [label]
-#: data/gui/window/mp_alerts_options.cfg:185
+#: data/gui/window/mp_alerts_options.cfg:178
 msgid "In Lobby"
 msgstr "Dans le vestibule"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:191
-msgid "Player joins:"
+#: data/gui/window/mp_alerts_options.cfg:184
+#, fuzzy
+#| msgid "Player joins:"
+msgid "Player joins"
 msgstr "Arrivée du joueur :"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:191
+#: data/gui/window/mp_alerts_options.cfg:184
 msgid "When a player joins the lobby or game"
 msgstr "Lorsqu'un joueur rejoint le salon ou une partie"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:192
-msgid "Player leaves:"
+#: data/gui/window/mp_alerts_options.cfg:185
+#, fuzzy
+#| msgid "Player leaves:"
+msgid "Player leaves"
 msgstr "Départ du joueur :"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:192
+#: data/gui/window/mp_alerts_options.cfg:185
 msgid "When a player leaves the lobby or game"
 msgstr "Lorsqu'un joueur quitte le salon ou une partie"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:193
+#: data/gui/window/mp_alerts_options.cfg:186
 msgid "When a whisper is received"
 msgstr "Lorsqu'un message privé est reçu"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:193
-msgid "Whisper:"
+#: data/gui/window/mp_alerts_options.cfg:186
+#, fuzzy
+#| msgid "Whisper:"
+msgid "Whisper"
 msgstr "Murmure :"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:194
-msgid "Friend message:"
+#: data/gui/window/mp_alerts_options.cfg:187
+#, fuzzy
+#| msgid "Friend message:"
+msgid "Friend message"
 msgstr "Message d'un ami :"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:194
+#: data/gui/window/mp_alerts_options.cfg:187
 msgid "When a message from a friend is received"
 msgstr "Lorsqu'un message d'un ami est reçu"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:195
-msgid "Public message:"
+#: data/gui/window/mp_alerts_options.cfg:188
+#, fuzzy
+#| msgid "Public message:"
+msgid "Public message"
 msgstr "Message public :"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:195
+#: data/gui/window/mp_alerts_options.cfg:188
 msgid "When a public message is received"
 msgstr "Lorsqu'un message public est reçu"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:196
-msgid "Server message:"
+#: data/gui/window/mp_alerts_options.cfg:189
+#, fuzzy
+#| msgid "Server message:"
+msgid "Server message"
 msgstr "Message du serveur :"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:196
+#: data/gui/window/mp_alerts_options.cfg:189
 msgid "When a server message is received"
 msgstr "Lorsqu'un message du serveur est reçu"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:197
-msgid "Ready to start:"
+#: data/gui/window/mp_alerts_options.cfg:190
+#, fuzzy
+#| msgid "Ready to start:"
+msgid "Ready to start"
 msgstr "Prêt à commencer :"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:197
+#: data/gui/window/mp_alerts_options.cfg:190
 msgid "When the game you are hosting is ready to start"
 msgstr "Lorsque la partie dont vous êtes l'hôte est prête à commencer"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:198
-msgid "Game has begun:"
+#: data/gui/window/mp_alerts_options.cfg:191
+#, fuzzy
+#| msgid "Game has begun:"
+msgid "Game has begun"
 msgstr "La partie a commencé :"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:198
+#: data/gui/window/mp_alerts_options.cfg:191
 msgid "When the host (not you) has started the game"
 msgstr "Lorsque l'hôte (pas vous) a commencé la partie"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:199
-msgid "Turn changed:"
+#: data/gui/window/mp_alerts_options.cfg:192
+#, fuzzy
+#| msgid "Turn changed:"
+msgid "Turn changed"
 msgstr "Changement de tour :"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:199
+#: data/gui/window/mp_alerts_options.cfg:192
 msgid "When a new turn has begun"
 msgstr "Lorsqu'un nouveau tour a commencé"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:200
-msgid "Game created:"
+#: data/gui/window/mp_alerts_options.cfg:193
+#, fuzzy
+#| msgid "Game created:"
+msgid "Game created"
 msgstr "Partie créée :"
 
 #. [grid]
-#: data/gui/window/mp_alerts_options.cfg:200
+#: data/gui/window/mp_alerts_options.cfg:193
 msgid "When a new game has been created"
 msgstr "Lorsqu'une nouvelle partie a commencé"
 
 #. [button]: id=revert_to_defaults
-#: data/gui/window/mp_alerts_options.cfg:235
+#: data/gui/window/mp_alerts_options.cfg:228
 msgid "Reset all options to their default values"
 msgstr "Réinitialiser toutes les options aux valeurs par défaut"
 
@@ -4244,7 +4328,7 @@ msgstr "Temps pour chaque attaque, recrutement et capture"
 #. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
-#: src/hotkey/hotkey_command.cpp:38
+#: data/gui/window/server_info.cfg:180 src/hotkey/hotkey_command.cpp:38
 msgid "General"
 msgstr "Général"
 
@@ -4338,7 +4422,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:183
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "Map size:"
 msgstr "Taille de la carte :"
 
@@ -4349,7 +4433,6 @@ msgstr "Chef :"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:170
-#: data/gui/window/unit_create.cfg:215
 msgid "Gender:"
 msgstr "Genre :"
 
@@ -4364,14 +4447,14 @@ msgstr "Aléatoire"
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
-#: data/gui/window/unit_create.cfg:227
+#: data/gui/window/unit_create.cfg:225
 msgid "Male"
 msgstr "Masculin"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:180
-#: data/gui/window/unit_create.cfg:239
+#: data/gui/window/unit_create.cfg:236
 msgid "Female"
 msgstr "Féminin"
 
@@ -4479,7 +4562,7 @@ msgstr "Sauvegarder le mot de passe en local (chiffré)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:435
+#: src/gui/dialogs/game_load.cpp:436
 msgid "Multiplayer"
 msgstr "Multijoueur"
 
@@ -4745,7 +4828,7 @@ msgstr "Raccourci clavier"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:135
-#: src/gui/dialogs/preferences_dialog.cpp:816
+#: src/gui/dialogs/preferences_dialog.cpp:817
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -4758,7 +4841,7 @@ msgstr "Disponible en jeu"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:148
-#: src/gui/dialogs/preferences_dialog.cpp:817
+#: src/gui/dialogs/preferences_dialog.cpp:818
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -4771,7 +4854,7 @@ msgstr "Disponible dans l'éditeur"
 #. [toggle_button]: id=sort_4
 #. Translate T as the initial letter for Title Screen
 #: data/gui/window/preferences/02_hotkeys.cfg:161
-#: src/gui/dialogs/preferences_dialog.cpp:818
+#: src/gui/dialogs/preferences_dialog.cpp:819
 msgid "titlescreen_hotkeys^T"
 msgstr "T"
 
@@ -5163,6 +5246,20 @@ msgstr "Afficher les orbes alliées"
 msgid "Show enemy orb"
 msgstr "Afficher les orbes ennemies"
 
+#. [label]: id=asdf
+#: data/gui/window/server_info.cfg:78
+#, fuzzy
+#| msgid "Map Information"
+msgid "Server Information"
+msgstr "Information de la carte"
+
+#. [widget]: id=tab_label
+#: data/gui/window/server_info.cfg:167
+#, fuzzy
+#| msgid "Advancements"
+msgid "Announcements"
+msgstr "Avancements"
+
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
 msgid "Configure Options"
@@ -5430,11 +5527,12 @@ msgstr "Attaquer"
 msgid "Attack Enemy"
 msgstr "Attaquer l'ennemi"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/unit_create.cfg:55 src/hotkey/hotkey_command.cpp:115
-msgid "Create Unit (Debug!)"
-msgstr "Créer une unité (débug !)"
+#: data/gui/window/unit_create.cfg:55
+#, fuzzy
+#| msgid "Delete Unit"
+msgid "Create Unit"
+msgstr "Supprimer l'unité"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/unit_create.cfg:134
@@ -5525,39 +5623,39 @@ msgstr "Recruter"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
-#: src/gui/dialogs/preferences_dialog.cpp:263
+#: src/gui/dialogs/preferences_dialog.cpp:264
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "Erreur"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:214
-#: src/gui/dialogs/multiplayer/lobby.cpp:230 src/gui/dialogs/wml_error.cpp:197
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:215
+#: src/gui/dialogs/multiplayer/lobby.cpp:231 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr "Détails :"
 
-#: src/build_info.cpp:271
+#: src/build_info.cpp:275
 msgid "feature^JPEG screenshots"
 msgstr "Capture d'écran au format JPEG"
 
-#: src/build_info.cpp:278
+#: src/build_info.cpp:282
 msgid "feature^Lua console completion"
 msgstr "Complétion de la console Lua"
 
-#: src/build_info.cpp:283
+#: src/build_info.cpp:287
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Ancien rendu bidirectionnel"
 
-#: src/build_info.cpp:290
+#: src/build_info.cpp:294
 msgid "feature^D-Bus notifications back end"
 msgstr "Notifications via le back-end D-Bus"
 
-#: src/build_info.cpp:299
+#: src/build_info.cpp:303
 msgid "feature^Win32 notifications back end"
 msgstr "Notifications via le back-end Win32"
 
-#: src/build_info.cpp:305
+#: src/build_info.cpp:309
 msgid "feature^Cocoa notifications back end"
 msgstr "Notifications via le back-end Cocoa"
 
@@ -5594,22 +5692,22 @@ msgid "operating_system^<unknown>"
 msgstr "<inconnu>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:640
+#: src/filesystem.cpp:641
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr ""
 
-#: src/filesystem.cpp:643
+#: src/filesystem.cpp:644
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:708 src/filesystem.cpp:729
+#: src/filesystem.cpp:709 src/filesystem.cpp:730
 msgid "--userdata-dir=<relative path>"
 msgstr ""
 
-#: src/filesystem.cpp:711 src/filesystem.cpp:732
+#: src/filesystem.cpp:712 src/filesystem.cpp:733
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -5625,7 +5723,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1667
+#: src/filesystem.cpp:1623
 msgid "language code for localized resources^en_US"
 msgstr "fr"
 
@@ -5770,7 +5868,7 @@ msgstr "Le texte ne commence pas dans le cadre."
 msgid "No state or draw section defined."
 msgstr "Aucun état ou zone de dessin défini."
 
-#: src/gui/core/widget_definition.cpp:176 src/gui/core/window_builder.cpp:176
+#: src/gui/core/widget_definition.cpp:179 src/gui/core/window_builder.cpp:176
 msgid "No resolution defined."
 msgstr "Aucune résolution définie."
 
@@ -5778,8 +5876,8 @@ msgstr "Aucune résolution définie."
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Le groupe lié « $id » a plusieurs définitions."
 
-#: src/gui/core/window_builder.cpp:317 src/gui/widgets/addon_list.cpp:429
-#: src/gui/widgets/chatbox.cpp:804 src/gui/widgets/listbox.cpp:806
+#: src/gui/core/window_builder.cpp:317 src/gui/widgets/addon_list.cpp:439
+#: src/gui/widgets/chatbox.cpp:813 src/gui/widgets/listbox.cpp:806
 #: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
 #: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:241
@@ -5796,185 +5894,185 @@ msgstr "Une ligne doit avoir au moins une colonne."
 msgid "Number of columns differ."
 msgstr "Le nombre de colonnes diffère."
 
-#: src/gui/dialogs/addon/manager.cpp:184
+#: src/gui/dialogs/addon/manager.cpp:193
 msgid "addons_view^All Add-ons"
 msgstr "Toutes"
 
-#: src/gui/dialogs/addon/manager.cpp:185
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_view^Installed"
 msgstr "Installées"
 
-#: src/gui/dialogs/addon/manager.cpp:186
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_view^Upgradable"
 msgstr "Mises à jour disponibles"
 
-#: src/gui/dialogs/addon/manager.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:196
 msgid "addons_view^Publishable"
 msgstr "Publiable"
 
-#: src/gui/dialogs/addon/manager.cpp:188
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_view^Not Installed"
 msgstr "Non installées"
 
-#: src/gui/dialogs/addon/manager.cpp:192
+#: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_of_type^Campaigns"
 msgstr "Campagnes"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Scenarios"
 msgstr "Scénarios"
 
-#: src/gui/dialogs/addon/manager.cpp:194
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "Campagnes MJ/Solo"
 
-#: src/gui/dialogs/addon/manager.cpp:195
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_of_type^MP campaigns"
 msgstr "Campagnes MJ"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^MP scenarios"
 msgstr "Scénarios MJ"
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:206
 msgid "addons_of_type^MP map-packs"
 msgstr "Cartes additionnelles MJ"
 
-#: src/gui/dialogs/addon/manager.cpp:198
+#: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_of_type^MP eras"
 msgstr "Ères MJ"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:208
 msgid "addons_of_type^MP factions"
 msgstr "Factions MJ"
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:209
 msgid "addons_of_type^Modifications"
 msgstr "Modifications"
 
-#: src/gui/dialogs/addon/manager.cpp:201
+#: src/gui/dialogs/addon/manager.cpp:210
 msgid "addons_of_type^Cores"
 msgstr "Noyaux"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:211
 msgid "addons_of_type^Resources"
 msgstr "Ressources"
 
-#: src/gui/dialogs/addon/manager.cpp:204
+#: src/gui/dialogs/addon/manager.cpp:213
 msgid "addons_of_type^Other"
 msgstr "Autres"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:214
 msgid "addons_of_type^Unknown"
 msgstr "Inconnu"
 
-#: src/gui/dialogs/addon/manager.cpp:209
+#: src/gui/dialogs/addon/manager.cpp:218
 msgid "addons_order^Name ($order)"
 msgstr "Nom ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:212
+#: src/gui/dialogs/addon/manager.cpp:221
 msgid "addons_order^Author ($order)"
 msgstr "Auteur ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:215
+#: src/gui/dialogs/addon/manager.cpp:224
 msgid "addons_order^Size ($order)"
 msgstr "Taille ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:218
+#: src/gui/dialogs/addon/manager.cpp:227
 msgid "addons_order^Downloads ($order)"
 msgstr "Téléchargements ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:221
+#: src/gui/dialogs/addon/manager.cpp:230
 msgid "addons_order^Type ($order)"
 msgstr "Type ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:224
+#: src/gui/dialogs/addon/manager.cpp:233
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Dernière mise à jour ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:227
+#: src/gui/dialogs/addon/manager.cpp:236
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "Date d'envoi initiale ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:256 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Non installée"
 
-#: src/gui/dialogs/addon/manager.cpp:257 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Publiée, non installée"
 
-#: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Installée"
 
-#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:271 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Publiée"
 
-#: src/gui/dialogs/addon/manager.cpp:266
+#: src/gui/dialogs/addon/manager.cpp:275
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Installée, pas de suivi de la version locale"
 
-#: src/gui/dialogs/addon/manager.cpp:269
+#: src/gui/dialogs/addon/manager.cpp:278
 msgid "addon_state^Published, not tracking local version"
 msgstr "Publiée, pas de suivi de la version locale"
 
-#: src/gui/dialogs/addon/manager.cpp:273
+#: src/gui/dialogs/addon/manager.cpp:282
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Installée ($local_version|), mise à jour disponible"
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:283
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Publiée, ($local_version| installée), mise à jour disponible"
 
-#: src/gui/dialogs/addon/manager.cpp:280
+#: src/gui/dialogs/addon/manager.cpp:289
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Installée ($local_version|), obsolète sur le serveur"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:290
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Publiée ($local_version| installée), obsolète sur le serveur"
 
-#: src/gui/dialogs/addon/manager.cpp:287 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Installée, pas en état de publier"
 
-#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Prête à être publiée"
 
-#: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Installée, corrompue"
 
-#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Publiée, corrompue"
 
-#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:305 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Inconnu"
 
-#: src/gui/dialogs/addon/manager.cpp:358
+#: src/gui/dialogs/addon/manager.cpp:367
 msgid "ascending"
 msgstr "Croissant(e)"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:360
+#: src/gui/dialogs/addon/manager.cpp:369
 msgid "oldest to newest"
 msgstr "du plus ancien au plus récent"
 
-#: src/gui/dialogs/addon/manager.cpp:363
+#: src/gui/dialogs/addon/manager.cpp:372
 msgid "descending"
 msgstr "Décroissant(e)"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:365
+#: src/gui/dialogs/addon/manager.cpp:374
 msgid "newest to oldest"
 msgstr "du plus récent au plus ancien"
 
-#: src/gui/dialogs/addon/manager.cpp:383 src/gui/dialogs/chat_log.cpp:416
+#: src/gui/dialogs/addon/manager.cpp:392 src/gui/dialogs/chat_log.cpp:416
 #: src/gui/dialogs/game_cache_options.cpp:105
 #: src/gui/dialogs/game_version_dialog.cpp:182
 #: src/gui/dialogs/gamestate_inspector.cpp:429
@@ -5985,25 +6083,25 @@ msgid "Clipboard support not found, contact your packager"
 msgstr ""
 "Le support du presse-papier n'a pas été trouvé, contactez votre empaqueteur"
 
-#: src/gui/dialogs/addon/manager.cpp:451
+#: src/gui/dialogs/addon/manager.cpp:460
 msgid "addons^Back to List"
 msgstr "Retour à la liste"
 
-#: src/gui/dialogs/addon/manager.cpp:463
+#: src/gui/dialogs/addon/manager.cpp:472
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "Une erreur est survenue lors du téléchargement de la liste des extensions à "
 "partir du serveur"
 
-#: src/gui/dialogs/addon/manager.cpp:499
+#: src/gui/dialogs/addon/manager.cpp:508
 msgid "No Add-ons Available"
 msgstr "Aucune extension disponible"
 
-#: src/gui/dialogs/addon/manager.cpp:499
+#: src/gui/dialogs/addon/manager.cpp:508
 msgid "There are no add-ons available for download from this server."
 msgstr "Il n'y a aucune extension disponible au téléchargement sur ce serveur."
 
-#: src/gui/dialogs/addon/manager.cpp:674
+#: src/gui/dialogs/addon/manager.cpp:683
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6011,15 +6109,15 @@ msgstr ""
 "Les extensions suivantes semblent avoir des informations de publication ou "
 "de contrôle de version enregistrées localement et ne seront pas supprimées :"
 
-#: src/gui/dialogs/addon/manager.cpp:682
+#: src/gui/dialogs/addon/manager.cpp:691
 msgid "The following add-on could not be deleted properly:"
 msgstr "Les extensions suivantes ne peuvent pas être supprimées proprement :"
 
-#: src/gui/dialogs/addon/manager.cpp:728
+#: src/gui/dialogs/addon/manager.cpp:744
 msgid "Warning"
 msgstr "Avertissement"
 
-#: src/gui/dialogs/addon/manager.cpp:729
+#: src/gui/dialogs/addon/manager.cpp:745
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6027,27 +6125,27 @@ msgstr ""
 "La version distante de cette extension est supérieure ou égale à la version "
 "en cours d'envoi. Voulez-vous vraiment continuer ?"
 
-#: src/gui/dialogs/addon/manager.cpp:738
+#: src/gui/dialogs/addon/manager.cpp:754
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Chemin pour les icônes invalide. Vérifiez que le chemin pointe vers une "
 "image valide."
 
-#: src/gui/dialogs/addon/manager.cpp:741 src/gui/dialogs/addon/manager.cpp:744
-#: src/gui/dialogs/addon/manager.cpp:783
+#: src/gui/dialogs/addon/manager.cpp:757 src/gui/dialogs/addon/manager.cpp:760
+#: src/gui/dialogs/addon/manager.cpp:799
 msgid "The server responded with an error:"
 msgstr "Le serveur a répondu avec une erreur :"
 
-#: src/gui/dialogs/addon/manager.cpp:742
+#: src/gui/dialogs/addon/manager.cpp:758
 msgid "Terms"
 msgstr "Conditions"
 
-#: src/gui/dialogs/addon/manager.cpp:759 src/gui/dialogs/addon/manager.cpp:786
+#: src/gui/dialogs/addon/manager.cpp:775 src/gui/dialogs/addon/manager.cpp:802
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:502
 msgid "Response"
 msgstr "Réponse"
 
-#: src/gui/dialogs/addon/manager.cpp:771
+#: src/gui/dialogs/addon/manager.cpp:787
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6056,7 +6154,7 @@ msgstr ""
 "téléchargements et d'envois sur le serveur des extensions. Voulez-vous "
 "vraiment continuer ?"
 
-#: src/gui/dialogs/addon/manager.cpp:803
+#: src/gui/dialogs/addon/manager.cpp:819
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Voulez-vous désinstaller « $addon| » ?"
 
@@ -6081,7 +6179,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Vulnérabilité de l'attaquant contre"
 
 #: src/gui/dialogs/campaign_selection.cpp:324
-#: src/gui/dialogs/multiplayer/lobby.cpp:465
+#: src/gui/dialogs/multiplayer/lobby.cpp:466
 msgid "active_modifications^None"
 msgstr "Aucune"
 
@@ -6226,57 +6324,57 @@ msgstr "Le cache des données du jeu a été purgé."
 msgid "The game data cache could not be purged."
 msgstr "Le cache des données du jeu ne peut pas être purgé."
 
-#: src/gui/dialogs/game_load.cpp:168
+#: src/gui/dialogs/game_load.cpp:169
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:173
+#: src/gui/dialogs/game_load.cpp:174
 #, fuzzy
 #| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
 msgstr "Version $version"
 
-#: src/gui/dialogs/game_load.cpp:310
+#: src/gui/dialogs/game_load.cpp:311
 msgid "The selected file is corrupt: "
 msgstr "Le fichier sélectionné est corrompu : "
 
-#: src/gui/dialogs/game_load.cpp:389
+#: src/gui/dialogs/game_load.cpp:390
 msgid "(Invalid)"
 msgstr "(Invalide)"
 
-#: src/gui/dialogs/game_load.cpp:426
+#: src/gui/dialogs/game_load.cpp:427
 msgid "Campaign: $campaign_name"
 msgstr "Campagne : $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:438
+#: src/gui/dialogs/game_load.cpp:439
 msgid "Tutorial"
 msgstr "Tutoriel"
 
-#: src/gui/dialogs/game_load.cpp:441
+#: src/gui/dialogs/game_load.cpp:442
 msgid "Test scenario"
 msgstr "Tester un scénario"
 
-#: src/gui/dialogs/game_load.cpp:451
+#: src/gui/dialogs/game_load.cpp:452
 msgid "Replay"
 msgstr "Film"
 
-#: src/gui/dialogs/game_load.cpp:453
+#: src/gui/dialogs/game_load.cpp:454
 msgid "Turn"
 msgstr "Tour"
 
-#: src/gui/dialogs/game_load.cpp:455
+#: src/gui/dialogs/game_load.cpp:456
 msgid "Scenario start"
 msgstr "Début du scénario"
 
-#: src/gui/dialogs/game_load.cpp:458
+#: src/gui/dialogs/game_load.cpp:459
 msgid "Difficulty: "
 msgstr "Difficulté : "
 
-#: src/gui/dialogs/game_load.cpp:462
+#: src/gui/dialogs/game_load.cpp:463
 msgid "Version: "
 msgstr "Version : "
 
-#: src/gui/dialogs/game_load.cpp:467
+#: src/gui/dialogs/game_load.cpp:468
 msgid "Modifications: "
 msgstr "Modifications : "
 
@@ -6293,12 +6391,12 @@ msgid "Unknown"
 msgstr "Inconnu"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "no"
 msgstr "non"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "yes"
 msgstr "oui"
 
@@ -6421,31 +6519,31 @@ msgstr ""
 msgid "lua console"
 msgstr "Console Lua"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:103
+#: src/gui/dialogs/multiplayer/lobby.cpp:104
 msgid "Selected Game"
 msgstr "Partie sélectionnée"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:104
+#: src/gui/dialogs/multiplayer/lobby.cpp:105
 msgid "Lobby"
 msgstr "Vestibule"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:106
+#: src/gui/dialogs/multiplayer/lobby.cpp:107
 msgid "Current Room"
 msgstr "Salle active"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:108
+#: src/gui/dialogs/multiplayer/lobby.cpp:109
 msgid "Other Games"
 msgstr "Autres parties"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:115
+#: src/gui/dialogs/multiplayer/lobby.cpp:116
 msgid "Do you really want to log out?"
 msgstr "Voulez-vous réellement vous déconnecter ?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:210
+#: src/gui/dialogs/multiplayer/lobby.cpp:211
 msgid "Incompatible User-made Content."
 msgstr "Contenu non officiel incompatible."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:211
+#: src/gui/dialogs/multiplayer/lobby.cpp:212
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6455,11 +6553,11 @@ msgstr ""
 "extension qui est incompatible avec la vôtre. Vous pourriez suggérer à "
 "l'hôte de mettre à jour ses extensions."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:226
+#: src/gui/dialogs/multiplayer/lobby.cpp:227
 msgid "Missing User-made Content."
 msgstr "Contenu non officiel manquant."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:227
+#: src/gui/dialogs/multiplayer/lobby.cpp:228
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6469,43 +6567,43 @@ msgstr ""
 "extensions non officielles pour la rejoindre.\n"
 "Voulez-vous essayer de les installer ?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:400
+#: src/gui/dialogs/multiplayer/lobby.cpp:401
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Parties : $num_shown affichées sur $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:420
+#: src/gui/dialogs/multiplayer/lobby.cpp:421
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Ère: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "era_or_mod^not installed"
 msgstr "Non installée"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Era"
 msgstr "Ère :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid "Reloaded:"
 msgstr "Rechargé :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid "Shared vision:"
 msgstr "Vue partagée :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:487
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid "Shuffle sides:"
 msgstr "Mélange des camps :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:488
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 msgid "Time limit:"
 msgstr "Limite de temps :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:489
+#: src/gui/dialogs/multiplayer/lobby.cpp:490
 msgid "Use map settings:"
 msgstr "Utiliser les paramètres de la carte :"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:497
+#: src/gui/dialogs/multiplayer/lobby.cpp:498
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6513,19 +6611,19 @@ msgstr ""
 "Une ou plusieurs extensions doivent être installées\n"
 "pour rejoindre cette partie."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:522
+#: src/gui/dialogs/multiplayer/lobby.cpp:523
 msgid "Observers allowed"
 msgstr "Observateurs autorisés"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:525
+#: src/gui/dialogs/multiplayer/lobby.cpp:526
 msgid "Observers not allowed"
 msgstr "Observateurs interdits"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:800
+#: src/gui/dialogs/multiplayer/lobby.cpp:805
 msgid "lobby"
 msgstr "Vestibule"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:960
+#: src/gui/dialogs/multiplayer/lobby.cpp:973
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6551,76 +6649,83 @@ msgstr "Camp $side"
 msgid "Add Server"
 msgstr "Serveur :"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
 msgid "Scenarios"
 msgstr "Scénarios"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
 msgid "Multiplayer Campaigns"
 msgstr "Campagnes multijoueurs"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:106
 msgid "Singleplayer Campaigns"
 msgstr "Campagnes solo"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:106
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:107
 msgid "Custom Maps"
 msgstr "Cartes personnalisées"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:107
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:108
 msgid "Custom Scenarios"
 msgstr "Scénarios personnalisés"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:108
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:109
 msgid "Random Maps"
 msgstr "Cartes aléatoires"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:182
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:183
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:184
 msgid "No games found."
 msgstr "Aucune partie trouvée."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:250
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:251
 msgid "No eras found."
 msgstr "Aucune ère trouvée."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:251
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:252
 msgid "No eras found"
 msgstr "Aucune ère trouvée"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
 msgid "Independent: Random factions assigned independently"
 msgstr ""
 "Indépendant : les factions aléatoires sont assignées de manière indépendante"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
 "Aucun miroir : une même faction ne sera pas donnée à deux joueurs différents"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 "Aucun allié miroir : une même faction ne sera pas donnée à deux joueurs dans "
 "le même camp"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:536
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:537
 msgid "No eras available for this game."
 msgstr "Aucune ère disponible pour cette partie."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:743
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:739
 msgid "number of players^$min to $max"
 msgstr "$min à $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:840
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:836
 msgid "The selected game has no sides!"
 msgstr "Le jeu sélectionné n'a pas de camps !"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:906
+#. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:843
+#, fuzzy
+#| msgid "The selected game can not be created."
+msgid "The selected game cannot be created."
+msgstr "Le jeu sélectionné ne peut être créé."
+
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:912
 msgid "Choose Starting Scenario"
 msgstr "Choisissez le scénario de départ"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:906
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:912
 msgid "Select at which point to begin this campaign."
 msgstr "Sélectionnez où commencer la campagne."
 
@@ -6662,33 +6767,33 @@ msgstr "En attente du choix de faction des joueurs..."
 msgid "The End"
 msgstr "Fin"
 
-#: src/gui/dialogs/preferences_dialog.cpp:186
+#: src/gui/dialogs/preferences_dialog.cpp:187
 msgid "friend"
 msgstr "ami"
 
-#: src/gui/dialogs/preferences_dialog.cpp:191
+#: src/gui/dialogs/preferences_dialog.cpp:192
 msgid "ignored"
 msgstr "ignoré"
 
-#: src/gui/dialogs/preferences_dialog.cpp:245
-#: src/gui/dialogs/preferences_dialog.cpp:305
+#: src/gui/dialogs/preferences_dialog.cpp:246
+#: src/gui/dialogs/preferences_dialog.cpp:306
 msgid "No username specified"
 msgstr "Aucun nom d'utilisateur indiqué"
 
-#: src/gui/dialogs/preferences_dialog.cpp:263
+#: src/gui/dialogs/preferences_dialog.cpp:264
 msgid "Invalid username"
 msgstr "Nom d'utilisateur incorrect"
 
-#: src/gui/dialogs/preferences_dialog.cpp:310
+#: src/gui/dialogs/preferences_dialog.cpp:311
 msgid "Not on friends or ignore lists"
 msgstr "Absent de la liste des amis ou des ignorés"
 
-#: src/gui/dialogs/preferences_dialog.cpp:852
-#: src/gui/dialogs/preferences_dialog.cpp:922
+#: src/gui/dialogs/preferences_dialog.cpp:853
+#: src/gui/dialogs/preferences_dialog.cpp:923
 msgid "No hotkey selected"
 msgstr "Aucun raccourci sélectionné"
 
-#: src/gui/dialogs/preferences_dialog.cpp:883
+#: src/gui/dialogs/preferences_dialog.cpp:884
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6697,20 +6802,20 @@ msgstr ""
 "».\n"
 "Voulez-vous le réattribuer à « <b>$new_hotkey_action|</b> » ?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:889
+#: src/gui/dialogs/preferences_dialog.cpp:890
 msgid "Reassign Hotkey"
 msgstr "Réassigner raccourci clavier"
 
-#: src/gui/dialogs/preferences_dialog.cpp:906
+#: src/gui/dialogs/preferences_dialog.cpp:907
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 "Tous les raccourcis clavier ont été réinitialisés à leurs valeurs par défaut."
 
-#: src/gui/dialogs/preferences_dialog.cpp:906
+#: src/gui/dialogs/preferences_dialog.cpp:907
 msgid "Hotkeys Reset"
 msgstr "Raccourcis clavier réinitialisés"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1040
+#: src/gui/dialogs/preferences_dialog.cpp:1041
 msgid "∞"
 msgstr "∞"
 
@@ -6793,6 +6898,10 @@ msgstr "Capture d'écran"
 msgid "Choose Test"
 msgstr "Choix du test"
 
+#: src/gui/dialogs/unit_create.cpp:227
+msgid "unit_variation^Default Variation"
+msgstr ""
+
 #: src/gui/dialogs/unit_recall.cpp:225
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
@@ -6855,7 +6964,7 @@ msgstr "Installée, obsolète sur le serveur"
 msgid "addon_state^Published, outdated on server"
 msgstr "Publiée, obsolète sur le serveur"
 
-#: src/gui/widgets/addon_list.cpp:285
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "Supprimer l'extension du serveur"
 
@@ -6957,7 +7066,7 @@ msgstr ""
 msgid "No stack layers defined."
 msgstr "Aucune pile de couches définie."
 
-#: src/gui/widgets/styled_widget.cpp:667
+#: src/gui/widgets/styled_widget.cpp:676
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Widget avec une aide contextuelle sans support détecté."
 
@@ -7029,12 +7138,12 @@ msgstr "PM : "
 msgid "Abilities"
 msgstr "Capacités"
 
-#: src/gui/widgets/window.cpp:938
+#: src/gui/widgets/window.cpp:934
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Rejet nécessite un clic du bouton « click_dismiss » ou « ok »."
 
-#: src/gui/widgets/window.cpp:963 src/gui/widgets/window.cpp:1000
-#: src/tests/gui/test_gui2.cpp:560
+#: src/gui/widgets/window.cpp:959 src/gui/widgets/window.cpp:996
+#: src/tests/gui/test_gui2.cpp:563
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 "Impossible d'afficher une boîte de dialogue qui ne tient pas dans l'écran."
@@ -7234,6 +7343,10 @@ msgstr "Rendre silencieux"
 #: src/hotkey/hotkey_command.cpp:114
 msgid "Speak"
 msgstr "Parler"
+
+#: src/hotkey/hotkey_command.cpp:115
+msgid "Create Unit (Debug!)"
+msgstr "Créer une unité (débug !)"
 
 #: src/hotkey/hotkey_command.cpp:116
 msgid "Change Side (Debug!)"
@@ -7920,11 +8033,11 @@ msgstr "Rechercher le serveur d’application"
 msgid "Select"
 msgstr "Sélectionner"
 
-#: src/preferences/game.cpp:909
+#: src/preferences/game.cpp:908
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:912
+#: src/preferences/game.cpp:911
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -7935,10 +8048,14 @@ msgid "Find $filename server binary"
 msgstr ""
 "Trouve le serveur $filename pour héberger des parties réseau multijoueur."
 
-#: src/terrain/translation.cpp:715
+#: src/terrain/translation.cpp:714
+#, fuzzy
+#| msgid ""
+#| "A terrain with a string with more than 4 characters has been found, the "
+#| "affected terrain is :"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
-"affected terrain is :"
+"affected terrain is:"
 msgstr ""
 "Un terrain représenté par une chaîne de plus de 4 caractères a été trouvé, "
 "il s'agit de :"
@@ -7985,6 +8102,9 @@ msgid ""
 msgstr ""
 "La clef « $deprecated_key » a été remplacée par « $key ». « $deprecated_key "
 "» ne sera plus maintenue à partir de la version $removal_version."
+
+#~ msgid "Event"
+#~ msgstr "Événement"
 
 #~ msgid "Nearest Neighbor"
 #~ msgstr "Plus Proche Voisin"
@@ -8055,9 +8175,6 @@ msgstr ""
 
 #~ msgid "No matching widget found for scaling option"
 #~ msgstr "Aucun widget trouvé pour l'option de redimensionnement"
-
-#~ msgid "The selected game can not be created."
-#~ msgstr "Le jeu sélectionné ne peut être créé."
 
 #~ msgid "No server has been defined."
 #~ msgstr "Aucun serveur n'a été défini."

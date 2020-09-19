@@ -1,7 +1,7 @@
 addon/validation.cpp
-campaign_server/addon_utils.cpp
-campaign_server/blacklist.cpp
-campaign_server/campaign_server.cpp
-campaign_server/fs_commit.cpp
-server/server_base.cpp
-server/simple_wml.cpp
+server/common/server_base.cpp
+server/common/simple_wml.cpp
+server/campaignd/addon_utils.cpp
+server/campaignd/blacklist.cpp
+server/campaignd/fs_commit.cpp
+server/campaignd/server.cpp

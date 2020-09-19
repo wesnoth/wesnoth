@@ -67,6 +67,9 @@ install:
 script:
     - ./utils/travis/steps/script.sh
 
+before_cache:
+    - echo "Starting caching..."
+
 notifications:
     email: false
     irc:

@@ -9,7 +9,7 @@ import os, glob, sys
 import re
 
 """
-NOTE: You should use wmlparser2.py instead which uses the C++
+NOTE: You should use wmlparser3.py instead which uses the C++
 preprocessor.
 
 Module implementing a WML parser in pure python.

@@ -85,7 +85,6 @@ void music_track::resolve()
 		OggVorbis_File vf;
 		if(ov_fopen(file_path_.c_str(), &vf) < 0) {
 			LOG_AUDIO << "Error opening file '" << file_path_ << "' for track identification\n";
-			ov_clear(&vf);
 			return;
 		}
 

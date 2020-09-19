@@ -90,7 +90,7 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 		else
 			disp.scroll_to_tile(a, game_display::ONSCREEN, true, false);
 		unit_animator animator;
-		animator.add_animation(&temp_unit,"pre_teleport",a);
+		animator.add_animation(temp_unit.shared_from_this(),"pre_teleport",a);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
@@ -104,7 +104,7 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 		else
 			disp.scroll_to_tile(b, game_display::ONSCREEN, true, false);
 		unit_animator animator;
-		animator.add_animation(&temp_unit,"post_teleport",b);
+		animator.add_animation(temp_unit.shared_from_this(),"post_teleport",b);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
@@ -145,7 +145,7 @@ int move_unit_between(const map_location& a,
 	temp_unit->set_location(a);
 	disp.invalidate(a);
 	temp_unit->set_facing(a.get_relative_dir(b));
-	animator.replace_anim_if_invalid(temp_unit.get(),"movement",a,b,step_num,
+	animator.replace_anim_if_invalid(temp_unit,"movement",a,b,step_num,
 			false,"",{0,0,0},unit_animation::hit_type::INVALID,nullptr,nullptr,step_left);
 	animator.start_animations();
 	animator.pause_animation();
@@ -293,7 +293,7 @@ void unit_mover::start(unit_ptr u)
 	}
 
 	// extra immobile movement animation for take-off
-	animator_.add_animation(temp_unit_ptr_.get(), "pre_movement", path_[0], path_[1]);
+	animator_.add_animation(temp_unit_ptr_.get_unit_ptr(), "pre_movement", path_[0], path_[1]);
 	animator_.start_animations();
 	animator_.wait_for_end();
 	animator_.clear();
@@ -462,7 +462,7 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
 		temp_unit_ptr_->set_facing(final_dir);
 
 		// Animation
-		animator_.add_animation(temp_unit_ptr_.get(), "post_movement", end_loc);
+		animator_.add_animation(temp_unit_ptr_.get_unit_ptr(), "post_movement", end_loc);
 		animator_.start_animations();
 		animator_.wait_for_end();
 		animator_.clear();
@@ -522,7 +522,7 @@ void move_unit(const std::vector<map_location>& path, unit_ptr u,
 void reset_helpers(const unit *attacker,const unit *defender);
 
 void unit_draw_weapon(const map_location& loc, unit& attacker,
-		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& defender_loc,unit* defender)
+		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& defender_loc, unit_ptr defender)
 {
 	display* disp = display::get_singleton();
 	if(do_not_show_anims(disp) || disp->fogged(loc) || !preferences::show_combat()) {
@@ -531,16 +531,18 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 	unit_animator animator;
 	attacker.set_facing(loc.get_relative_dir(defender_loc));
 	defender->set_facing(defender_loc.get_relative_dir(loc));
-	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,true,"",{0,0,0},unit_animation::hit_type::HIT,attack,secondary_attack,0);
-	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,true,"",{0,0,0},unit_animation::hit_type::MISS,secondary_attack,attack,0);
+	animator.add_animation(attacker.shared_from_this(),"draw_weapon",loc,defender_loc,0,true,"",{0,0,0},unit_animation::hit_type::HIT,attack,secondary_attack,0);
+	if(defender) {
+		animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,true,"",{0,0,0},unit_animation::hit_type::MISS,secondary_attack,attack,0);
+	}
 	animator.start_animations();
 	animator.wait_for_end();
 
 }
 
 
-void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
-		const_attack_ptr primary_attack,const_attack_ptr secondary_attack, const map_location& secondary_loc,unit* secondary_unit)
+void unit_sheath_weapon(const map_location& primary_loc, unit_ptr primary_unit,
+		const_attack_ptr primary_attack,const_attack_ptr secondary_attack, const map_location& secondary_loc,unit_ptr secondary_unit)
 {
 	display* disp = display::get_singleton();
 	if(do_not_show_anims(disp) || disp->fogged(primary_loc) || !preferences::show_combat()) {
@@ -564,13 +566,13 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 	if(secondary_unit) {
 		secondary_unit->anim_comp().set_standing();
 	}
-	reset_helpers(primary_unit,secondary_unit);
+	reset_helpers(primary_unit.get(),secondary_unit.get());
 
 }
 
 
 void unit_die(const map_location& loc, unit& loser,
-		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& winner_loc,unit* winner)
+		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& winner_loc, unit_ptr winner)
 {
 	display* disp = display::get_singleton();
 	if(do_not_show_anims(disp) || disp->fogged(loc) || !preferences::show_combat()) {
@@ -578,14 +580,16 @@ void unit_die(const map_location& loc, unit& loser,
 	}
 	unit_animator animator;
 	// hide the hp/xp bars of the loser (useless and prevent bars around an erased unit)
-	animator.add_animation(&loser,"death",loc,winner_loc,0,false,"",{0,0,0},unit_animation::hit_type::KILL,attack,secondary_attack,0);
+	animator.add_animation(loser.shared_from_this(),"death",loc,winner_loc,0,false,"",{0,0,0},unit_animation::hit_type::KILL,attack,secondary_attack,0);
 	// but show the bars of the winner (avoid blinking and show its xp gain)
-	animator.add_animation(winner,"victory",winner_loc,loc,0,true,"",{0,0,0},
+	if(winner) {
+		animator.add_animation(winner,"victory",winner_loc,loc,0,true,"",{0,0,0},
 			unit_animation::hit_type::KILL,secondary_attack,attack,0);
+	}
 	animator.start_animations();
 	animator.wait_for_end();
 
-	reset_helpers(winner, &loser);
+	reset_helpers(winner.get(), &loser);
 
 	if(events::mouse_handler* mousehandler = events::mouse_handler::get_singleton()) {
 		mousehandler->invalidate_reachmap();
@@ -636,7 +640,7 @@ void unit_attack(display * disp, game_board & board,
 
 	unit_animator animator;
 
-	animator.add_animation(&attacker, "attack", att->get_location(), def->get_location(), damage, true, text_2,
+	animator.add_animation(attacker.shared_from_this(), "attack", att->get_location(), def->get_location(), damage, true, text_2,
 		(drain_amount >= 0) ? color_t(0, 255, 0) : color_t(255, 0, 0), hit_type, attack.shared_from_this(),
 		secondary_attack, swing);
 
@@ -644,7 +648,7 @@ void unit_attack(display * disp, game_board & board,
 	const unit_animation* defender_anim = def->anim_comp().choose_animation(*disp, def->get_location(), "defend",
 		att->get_location(), damage, hit_type, attack.shared_from_this(), secondary_attack, swing);
 
-	animator.add_animation(&defender, defender_anim, def->get_location(), true, text, {255, 0, 0});
+	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
 	for(const unit_ability& ability : attacker.get_abilities_weapons("leadership", attack.shared_from_this(), secondary_attack)) {
 		if(ability.teacher_loc == a) {
@@ -658,7 +662,7 @@ void unit_attack(display * disp, game_board & board,
 		unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
 		assert(leader.valid());
 		leader->set_facing(ability.teacher_loc.get_relative_dir(a));
-		animator.add_animation(&*leader, "leading", ability.teacher_loc,
+		animator.add_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
 			att->get_location(), damage, true,  "", {0,0,0},
 			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
@@ -675,7 +679,7 @@ void unit_attack(display * disp, game_board & board,
 		unit_map::const_iterator helper = board.units().find(ability.teacher_loc);
 		assert(helper.valid());
 		helper->set_facing(ability.teacher_loc.get_relative_dir(b));
-		animator.add_animation(&*helper, "resistance", ability.teacher_loc,
+		animator.add_animation(helper.get_shared_ptr(), "resistance", ability.teacher_loc,
 			def->get_location(), damage, true,  "", {0,0,0},
 			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
@@ -765,13 +769,13 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 		if (leader != disp->get_units().end()) {
 			leader->set_facing(leader_loc.get_relative_dir(loc));
 			if (leader_visible) {
-				animator.add_animation(&*leader, "recruiting", leader_loc, loc, 0, true);
+				animator.add_animation(leader.get_shared_ptr(), "recruiting", leader_loc, loc, 0, true);
 			}
 		}
 
 		disp->draw();
 	}
-	animator.add_animation(&*u, "recruited", loc, leader_loc);
+	animator.add_animation(u.get_shared_ptr(), "recruited", loc, leader_loc);
 	animator.start_animations();
 	animator.wait_for_end();
 	animator.set_all_standing();
@@ -798,22 +802,22 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
 
 	for (unit *h : healers) {
 		h->set_facing(h->get_location().get_relative_dir(healed_loc));
-		animator.add_animation(h, "healing", h->get_location(),
+		animator.add_animation(h->shared_from_this(), "healing", h->get_location(),
 			healed_loc, healing);
 	}
 
 	if (healing < 0) {
-		animator.add_animation(&healed, "poisoned", healed_loc,
+		animator.add_animation(healed.shared_from_this(), "poisoned", healed_loc,
 		                       map_location::null_location(), -healing, false,
 		                       number_and_text(-healing, extra_text),
 		                       {255,0,0});
 	} else if ( healing > 0 ) {
-		animator.add_animation(&healed, "healed", healed_loc,
+		animator.add_animation(healed.shared_from_this(), "healed", healed_loc,
 		                       map_location::null_location(), healing, false,
 		                       number_and_text(healing, extra_text),
 		                       {0,255,0});
 	} else {
-		animator.add_animation(&healed, "healed", healed_loc,
+		animator.add_animation(healed.shared_from_this(), "healed", healed_loc,
 		                       map_location::null_location(), 0, false,
 		                       extra_text, {0,255,0});
 	}

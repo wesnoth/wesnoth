@@ -214,7 +214,7 @@ void unit_type::build_full(
 
 	zoc_ = get_cfg()["zoc"].to_bool(level_ > 0);
 
-	game_config::add_color_info(get_cfg());
+	game_config::add_color_info(game_config_view::wrap(get_cfg()));
 
 	hp_bar_scaling_ = get_cfg()["hp_bar_scaling"].to_double(game_config::hp_bar_scaling);
 	xp_bar_scaling_ = get_cfg()["xp_bar_scaling"].to_double(game_config::xp_bar_scaling);
@@ -257,7 +257,6 @@ void unit_type::build_help_index(
 	usage_ = cfg["usage"].str();
 	undead_variation_ = cfg["undead_variation"].str();
 	default_variation_ = cfg["variation"].str();
-	image_ = cfg["image"].str();
 	icon_ = cfg["image_icon"].str();
 	small_profile_ = cfg["small_profile"].str();
 	profile_ = cfg["profile"].str();
@@ -409,6 +408,8 @@ void unit_type::build_created()
 	experience_needed_ = cfg["experience"].to_int(500);
 	cost_ = cfg["cost"].to_int(1);
 
+	//needed by the editor.
+	image_ = cfg["image"].str();
 	build_status_ = CREATED;
 }
 
@@ -976,6 +977,7 @@ void unit_type::fill_variations()
 		std::unique_ptr<unit_type> var = create_sub_type(var_cfg, false);
 
 		var->built_cfg_->remove_children("variation", [](const config&){return true;});
+		var->variation_id_ = var_cfg["variation_id"].str();
 		var->debug_id_ = debug_id_ + " [" + var->variation_id_ + "]";
 
 		variations_map::iterator ut;

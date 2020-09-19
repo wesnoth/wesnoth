@@ -105,6 +105,9 @@ unsigned multi_page::get_page_count() const
 
 void multi_page::select_page(const unsigned page, const bool select)
 {
+	if(page >= get_page_count()) {
+		throw std::invalid_argument("invalid page index");
+	}
 	assert(generator_);
 	generator_->select_item(page, select);
 }

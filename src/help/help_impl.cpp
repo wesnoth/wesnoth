@@ -18,6 +18,7 @@
 #include "actions/attack.hpp"           // for time_of_day bonus
 #include "display.hpp"                  // for display
 #include "display_context.hpp"          // for display_context
+#include "formula/string_utils.hpp"     // for VGETTEXT
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "game_config_manager.hpp"      // for game_config_manager
 #include "preferences/game.hpp"         // for encountered_terrains, etc
@@ -151,7 +152,6 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 	}
 	else if (section_cfg != nullptr) {
 		const std::vector<std::string> sections = utils::quoted_split((*section_cfg)["sections"]);
-		sec.level = level;
 		std::string id = level == 0 ? "toplevel" : (*section_cfg)["id"].str();
 		if (level != 0) {
 			if (!is_valid_id(id)) {
@@ -681,7 +681,8 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
 	{
 		const unit_type &type = i.second;
-		if (description_type(type) == FULL_DESCRIPTION) {
+		const auto desc_type = description_type(type);
+		if (desc_type == FULL_DESCRIPTION || desc_type == HIDDEN_BUT_SHOW_MACROS) {
 			if (config::const_child_itors traits = type.possible_traits()) {
 				for (const config & trait : traits) {
 					const std::string trait_id = trait["id"];
@@ -885,7 +886,7 @@ void generate_terrain_sections(section& sec, int /*level*/)
 	}
 }
 
-void generate_unit_sections(const config* /*help_cfg*/, section& sec, int level, const bool /*sort_generated*/, const std::string& race)
+void generate_unit_sections(const config* /*help_cfg*/, section& sec, int /*level*/, const bool /*sort_generated*/, const std::string& race)
 {
 	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types()) {
 		const unit_type &type = i.second;
@@ -913,7 +914,6 @@ void generate_unit_sections(const config* /*help_cfg*/, section& sec, int level,
 
 		base_unit.id = ref_id;
 		base_unit.title = type_name;
-		base_unit.level = level +1;
 
 		sec.add_section(base_unit);
 	}
@@ -959,9 +959,11 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::string race_id = "..race_"+race;
 	std::string race_name;
 	std::string race_description;
+	std::string race_help_taxonomy;
 	if (const unit_race *r = unit_types.find_race(race)) {
 		race_name = r->plural_name();
 		race_description = r->description();
+		race_help_taxonomy = r->help_taxonomy();
 		// if (description.empty()) description =  _("No description Available");
 		for (const config &additional_topic : r->additional_topics())
 		  {
@@ -976,6 +978,17 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	} else {
 		race_name = _ ("race^Miscellaneous");
 		// description =  _("Here put the description of the Miscellaneous race");
+	}
+
+	// Find any other races whose [race]help_taxonomy points to the current race
+	std::map<std::string, t_string> subgroups;
+	for (const auto &r : unit_types.races()) {
+		if (r.second.help_taxonomy() == race) {
+			if (!r.second.plural_name().empty())
+				subgroups[r.first] = r.second.plural_name();
+			else
+				subgroups[r.first] = r.first;
+		}
 	}
 
 	std::stringstream text;
@@ -993,9 +1006,40 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		text << "\n\n";
 	}
 
-	text << _("<header>text='Units of this race'</header>") << "\n";
-	for (std::set<std::string, string_less>::iterator u = race_units.begin(); u != race_units.end(); ++u) {
-		text << font::unicode_bullet << " " << (*u) << "\n";
+	if (!race_help_taxonomy.empty()) {
+		utils::string_map symbols;
+		symbols["topic_id"] = "..race_"+race_help_taxonomy;
+		if (const unit_race *r = unit_types.find_race(race_help_taxonomy)) {
+			symbols["help_taxonomy"] = r->plural_name();
+		} else {
+			// Fall back to using showing the race id for the race that we couldn't find.
+			// Not great, but probably useful if UMC has a broken link.
+			symbols["help_taxonomy"] = race_help_taxonomy;
+		}
+		// TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
+		// or "[Quenoth Elves are] a group of units, all of whom are Elves".
+		text << VGETTEXT("This is a group of units, all of whom are <ref>dst='$topic_id' text='$help_taxonomy'</ref>", symbols) << "\n\n";
+	}
+
+	if (!subgroups.empty()) {
+		if (!race_help_taxonomy.empty()) {
+			text << _("<header>text='Subgroups of units within this group'</header>") << "\n";
+		} else {
+			text << _("<header>text='Groups of units within this race'</header>") << "\n";
+		}
+		for (const auto &sg : subgroups) {
+			text << font::unicode_bullet << " " << make_link(sg.second, "..race_" + sg.first) << "\n";
+		}
+		text << "\n";
+	}
+
+	if (!race_help_taxonomy.empty()) {
+		text << _("<header>text='Units of this group'</header>") << "\n";
+	} else {
+		text << _("<header>text='Units of this race'</header>") << "\n";
+	}
+	for (const auto &u : race_units) {
+		text << font::unicode_bullet << " " << u << "\n";
 	}
 
 	topics.emplace_back(race_name, race_id, text.str());
@@ -1017,6 +1061,12 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 	if (encountered_units.find(type.id()) != encountered_units.end()) {
 		return FULL_DESCRIPTION;
 	}
+
+	// See the docs of HIDDEN_BUT_SHOW_MACROS
+	if (type.id() == "Fog Clearer") {
+		return HIDDEN_BUT_SHOW_MACROS;
+	}
+
 	return NO_DESCRIPTION;
 }
 
@@ -1109,8 +1159,6 @@ void section::clear()
 	sections.clear();
 }
 
-
-
 const topic *find_topic(const section &sec, const std::string &id)
 {
 	topic_list::const_iterator tit =
@@ -1141,6 +1189,11 @@ const section *find_section(const section &sec, const std::string &id)
 		}
 	}
 	return nullptr;
+}
+
+section *find_section(section &sec, const std::string &id)
+{
+	return const_cast<section *>(find_section(const_cast<const section &>(sec), id));
 }
 
 std::vector<std::string> parse_text(const std::string &text)

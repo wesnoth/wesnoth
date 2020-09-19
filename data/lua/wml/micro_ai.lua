@@ -8,7 +8,7 @@ wesnoth.require("ai/micro_ais/mai-defs")
 function wesnoth.wml_actions.micro_ai(cfg)
     local CA_path = 'ai/micro_ais/cas/'
 
-    cfg = cfg.__shallow_parsed
+    cfg = wml.shallow_parsed(cfg)
 
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then wml.error("[micro_ai] is missing required ai_type= key") end

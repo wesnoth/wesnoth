@@ -161,9 +161,6 @@ void playsingle_controller::play_scenario_main_loop()
 {
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks()) << "\n";
 
-
-	// Avoid autosaving after loading, but still
-	// allow the first turn to have an autosave.
 	ai_testing::log_game_start();
 	if(gamestate().board_.teams().empty())
 	{

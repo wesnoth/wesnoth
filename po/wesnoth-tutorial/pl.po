@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-03-09 23:11 UTC\n"
-"PO-Revision-Date: 2018-04-23 00:30+0200\n"
+"PO-Revision-Date: 2020-09-15 20:24+0200\n"
 "Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
 "Language: pl_PL\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. [campaign]: id=Tutorial
@@ -108,18 +108,24 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:124
 msgid "Destroy a fierce enemy"
-msgstr "Zniszczenie okrutnego wroga"
+msgstr "Zniszcz okrutnego wroga"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:128
 msgid "Get yourself killed"
-msgstr "Twoja śmierć"
+msgstr "Pozwól się zabić"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:136
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
+"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
+"wioski!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:145
@@ -149,7 +155,7 @@ msgid ""
 "of the screen."
 msgstr ""
 "W tym samouczku grasz jako Konrad. Stoisz w twierdzy, a twój mentor Delfador "
-"stoi po wschodniej stronie rzeki. Możesz umieścić kursor myszy nad "
+"stoi po wschodniej stronie rzeki. Możesz umieścić kursor myszy nad "
 "jednostką, by wyświetlić po prawej stronie podsumowanie jej statystyk i "
 "umiejętności."
 
@@ -162,7 +168,7 @@ msgid ""
 "of the screen."
 msgstr ""
 "W tym samouczku grasz jako Li'sar. Stoisz w twierdzy, a twój mentor Delfador "
-"stoi po wschodniej stronie rzeki. Możesz umieścić kursor myszy nad "
+"stoi po wschodniej stronie rzeki. Możesz umieścić kursor myszy nad "
 "jednostką, by wyświetlić po prawej stronie podsumowanie jej statystyk i "
 "umiejętności."
 
@@ -180,6 +186,8 @@ msgstr "Kliknij Li'sar"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:318
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
+"Aby cofnąć ostatni ruch, naciśnij <b>u</b> albo użyj menu pod prawym "
+"przyciskiem myszy."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:359
@@ -189,14 +197,6 @@ msgstr "Ruch"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:361
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Konrad, the places he can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex on flat terrain uses one movement point. To move, simply "
-#| "click on your destination. (You can press <b>u</b> to undo a move if you "
-#| "move to the wrong place.)"
 msgid ""
 "When you hover over or select a unit, in this case Konrad, the places he can "
 "move to are highlighted. All units have a certain number of <i>movement "
@@ -205,23 +205,16 @@ msgid ""
 "simply click on Konrad and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
-"Gdy wybierasz jednostkę, w tym przypadku Konrada, podświetlone zostają pola, "
-"do których może ona dotrzeć. Wszystkie jednostki mają pewną liczbę "
-"<i>punktów ruchu</i>, które określają o ile pól mogą przemieścić się każdej "
-"tury. Zazwyczaj przejście jednego pola płaskiego terenu kosztuje jeden punkt "
-"ruchu. Aby ruszyć jednostkę, po prostu kliknij na docelowe pole. Możesz "
-"nacisnąć <b>u</b>, aby cofnąć ruch jeśli ruszyłeś się na niewłaściwe miejsce."
+"Gdy wybierasz jednostkę, w tym przypadku Konrada, podświetlone zostają pola, "
+"do których może on dotrzeć. Wszystkie jednostki mają pewną liczbę <i>punktów "
+"ruchu</i>, które określają o ile pól mogą przemieścić się każdej tury. "
+"Zazwyczaj przejście jednego pola płaskiego terenu kosztuje jeden punkt "
+"ruchu. Aby ruszyć się, po prostu kliknij na Konrada, a następnie na docelowe "
+"pole. (Możesz nacisnąć <b>u</b>, aby cofnąć ruch jeśli ruszyłeś się na "
+"niewłaściwe miejsce.)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:369
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Li’sar, the places she can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex on flat terrain uses one movement point. To move, simply "
-#| "click on your destination. (You can press <b>u</b> to undo a move if you "
-#| "move to the wrong place.)"
 msgid ""
 "When you hover over or select a unit, in this case Li’sar, the places she "
 "can move to are highlighted. All units have a certain number of <i>movement "
@@ -230,27 +223,23 @@ msgid ""
 "simply click on Li’sar and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
-"Gdy wybierasz jednostkę, w tym przypadku Li'sar, podświetlone zostają pola, "
-"do których może ona dotrzeć zostają podświetlone. Wszystkie jednostki mają "
-"pewną liczbę <i>punktów ruchu</i>, które określają o ile heksów mogą "
-"przemieścić się każdej tury. Zazwyczaj przejście jednego heksa płaskiego "
-"terenu kosztuje jeden punkt ruchu. Aby ruszyć jednostkę, po prostu kliknij "
-"na docelowe pole. Możesz nacisnąć <b>u</b>, aby cofnąć ruch jeśli ruszyłeś "
-"się na niewłaściwe miejsce."
+"Gdy wybierasz jednostkę, w tym przypadku Konrada, podświetlone zostają pola, "
+"do których może on dotrzeć. Wszystkie jednostki mają pewną liczbę <i>punktów "
+"ruchu</i>, które określają o ile pól mogą przemieścić się każdej tury. "
+"Zazwyczaj przejście jednego pola płaskiego terenu kosztuje jeden punkt "
+"ruchu. Aby ruszyć się, po prostu kliknij na Li'sar, a następnie na docelowe "
+"pole. (Możesz nacisnąć <b>u</b>, aby cofnąć ruch jeśli ruszyłeś się na "
+"niewłaściwe miejsce.)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:380
-#, fuzzy
-#| msgid "Move Konrad next to Delfador."
 msgid "Move Konrad next to Delfador"
-msgstr "Przesuń Konrada na pole obok Delfadora."
+msgstr "Przesuń Konrada na pole obok Delfadora"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:382
-#, fuzzy
-#| msgid "Move Li’sar next to Delfador."
 msgid "Move Li’sar next to Delfador"
-msgstr "Przesuń Li'sar na pole obok Delfadora."
+msgstr "Przesuń Li'sar na pole obok Delfadora"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:399
@@ -323,40 +312,36 @@ msgstr "Atakowanie"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:514
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Konrad), then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Konrad will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
 "Aby zaatakować atrapę, najpierw wybierz atakującego (Konrada), a następnie "
-"wskaż cel (atrapę). Zobaczysz opis ataku. Gdy klikniesz <b>OK</b>, Konrad "
-"zaatakuje."
+"wskaż cel (atrapę). Zobaczysz opis ataku. Naciśnij <b>Atakuj</b>, gdy "
+"będziesz gotowy."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:521
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Li’sar), then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Li’sar will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
 "Aby zaatakować atrapę, najpierw wybierz atakującego (Li’sar), a następnie "
-"wskaż cel (atrapę). Zobaczysz opis ataku. Gdy klikniesz <b>OK</b>, Li’sar "
-"zaatakuje."
+"wskaż cel (atrapę). Zobaczysz opis ataku. Naciśnij <b>Atakuj</b>, gdy "
+"będziesz gotowy."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:526
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
 msgstr ""
+"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
+"wioski!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:540
@@ -371,7 +356,7 @@ msgstr "Hmm, może powinniśmy byli zacząć od kukły."
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
 msgid "Should I retreat?"
-msgstr "Czy powinienem się wycofać?"
+msgstr "Czy powinienem się wycofać?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:551
@@ -399,7 +384,7 @@ msgid ""
 "to keep him safe!"
 msgstr ""
 "Ta malutka złota korona nad twoim bohaterem (Konradem) oznacza, że jest on "
-"przywódcą strony. W większości scenariuszy przegrasz jeśli twój przywódca "
+"przywódcą strony. W większości scenariuszy przegrasz, jeśli twój przywódca "
 "zostanie zabity. Strzeż go jak oka w głowie!"
 
 #. [message]: speaker=narrator
@@ -410,7 +395,7 @@ msgid ""
 "to keep her safe!"
 msgstr ""
 "Ta malutka złota korona nad twoją bohaterką (Li'sar) oznacza, że jest ona "
-"przywódczynią strony. W większości scenariuszy przegrasz jeśli twój "
+"przywódczynią strony. W większości scenariuszy przegrasz, jeśli twój "
 "przywódca zostanie zabity. Strzeż jej jak oka w głowie!"
 
 #. [message]: speaker=Delfador
@@ -456,7 +441,7 @@ msgstr ""
 "wykonania ruchu. Gdy zrealizujesz swój plan na daną turę, kliknij na "
 "przycisku <b>Zakończ turę</b> znajdującym się w prawym-dolnym rogu ekranu. "
 "Wtedy inne drużyny, czy to kontrolowane przez SI, czy przez ludzkich graczy, "
-"wykonają swoje ruchy. Niektóre scenariusze muszą zostać ukończone przed "
+"wykonają swoje ruchy. Niektóre scenariusze muszą zostać ukończone przed "
 "upływem określonej liczby tur. Numer tury, a także ewentualny limit, "
 "zobaczysz obok obrazka flagi na górze ekranu."
 
@@ -471,9 +456,15 @@ msgstr "Zakończ turę"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:630
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
+"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
+"wioski!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:641
@@ -483,7 +474,7 @@ msgstr "Oj! Potrzebuję leczenia! Zostało mi tylko $student_hp punktów życia!
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "Oj! Potrzebuję leczenia! Zostało mi tylko $student_hp punktów życia!"
+msgstr "Auć! Potrzebuję leczenia! Zostało mi tylko $student_hp punktów życia!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:647
@@ -491,7 +482,7 @@ msgid ""
 "There are two villages within your reach. Visiting villages is a good idea, "
 "and ending your turn on one will heal you. To a village!"
 msgstr ""
-"W twoim zasięgu znajdują się dwie wioski. Odwiedzanie wiosek to dobry "
+"W twoim zasięgu znajdują się dwie wioski. Odwiedzanie wiosek to dobry "
 "pomysł, bo rozpoczęcie tury w jednej z nich uleczy cię. Do wioski!"
 
 #. [label]
@@ -530,9 +521,15 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:697
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
+"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
+"wioski!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:706
@@ -561,7 +558,7 @@ msgstr "Powołam do służby kilka elfów!"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
 msgid "female^I’ll recruit some elves!"
-msgstr "Powołam do służby kilku elfów!"
+msgstr "Zrekrutuję kilku elfów!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:722
@@ -620,13 +617,6 @@ msgstr "Cechy"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:787
-#, fuzzy
-#| msgid ""
-#| "Be sure to examine the <i>traits</i> of your new recruits. They are "
-#| "listed under its race in the sidebar. Traits can subtly affect how you "
-#| "use your troops. For example, units with the <i>quick</i> trait can move "
-#| "a extra hex each turn, and units with the <i>intelligent</i> trait "
-#| "require 20% less experience to level up."
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -635,16 +625,22 @@ msgid ""
 "experience to level up."
 msgstr ""
 "Koniecznie zbadaj <i>cechy</i> nowych rekrutów. Wypisane są na pasku z boku "
-"ekranu, tuż pod ich rasą. Cechy subtelnie wpływają na użyteczność twoich "
-"żołnierzy. Na przykład, jednostki z cechą <i>szybki</i> poruszają się o "
+"ekranu, tuż pod ich rasą. Cechy subtelnie wpływają na użyteczność twoich "
+"żołnierzy. Na przykład, jednostki z cechą <i>szybki</i> poruszają się o "
 "jedno pole więcej na turę, a te z cechą <i>inteligentny</i> potrzebują 20% "
 "mniej doświadczenia, by awansować."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:829
+#, fuzzy
+#| msgid ""
+#| "You cannot end your turn until you have recruited troops and captured a "
+#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
+"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
+"wioski!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:838
@@ -849,7 +845,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1036
 msgid "You had really better finish off that quintain."
-msgstr "Lepiej wykończ już tę atrapę."
+msgstr "Lepiej wykończ już tę atrapę."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1046
@@ -959,7 +955,7 @@ msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
-"Cóż, chyba już rozumiem podstawy. Naprzód! Może teraz zawalczę w prawdziwej "
+"Cóż, chyba już rozumiem podstawy. Naprzód! Może teraz zawalczę w prawdziwej "
 "bitwie?"
 
 #. [message]: speaker=student
@@ -968,7 +964,7 @@ msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
-"Cóż, chyba już rozumiem podstawy. Naprzód! Może teraz zawalczę w prawdziwej "
+"Cóż, chyba już rozumiem podstawy. Naprzód! Może teraz zawalczę w prawdziwej "
 "bitwie?"
 
 #. [message]: speaker=narrator
@@ -1034,12 +1030,12 @@ msgstr "Lepiej się wycofam, zanim dopadnie mnie z tak niskim zdrowiem!"
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:128
 msgid "female^I hope I have a chance to retreat after this!"
-msgstr "Mam nadzieję, że będę miała szansę się po tym wycofać!"
+msgstr "Mam nadzieję, że będę miała szansę się po tym wycofać!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:129
 msgid "female^One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr "Jeden fortunny atak orka rębacza i już po mnie!"
+msgstr "Jeden fartowny atak orka rębacza i już po mnie!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:130
@@ -1078,6 +1074,8 @@ msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
 msgstr ""
+"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
+"wioski!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
@@ -1105,8 +1103,8 @@ msgid ""
 "female^Ho, Galdrad! Has Delfador conjured something else to beat me with? A "
 "flock of scarecrows, perhaps?"
 msgstr ""
-"Bądź pozdrowiony, Galdradzie! Czy Delfador wyczarował dziś dla mnie innego "
-"przeciwnika? Może stado strachów na wróble?"
+"Ho ho, Galdradzie! Czy Delfador wyczarował dziś dla mnie innego przeciwnika? "
+"Może stado strachów na wróble?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
@@ -1117,7 +1115,7 @@ msgid ""
 "will advise you."
 msgstr ""
 "To nie gra, Konradzie! Orki obozują po drugiej stronie rzeki. To jest kraj "
-"elfów - głupio zrobili zjawiając się tu. My, elfy, poruszamy się w lasach "
+"elfów - głupio zrobili zjawiając się tu. My, elfy, poruszamy się w lasach "
 "szybko i trudno nas w nich trafić. Musisz pokonać ich przywódcę, aby nigdy "
 "więcej nie mogli nam zagrozić. Będę ci doradzać."
 
@@ -1130,7 +1128,7 @@ msgid ""
 "will advise you."
 msgstr ""
 "To nie gra, Li'sar! Orki obozują po drugiej stronie rzeki. To jest kraj "
-"elfów - głupio zrobili zjawiając się tu. My, elfy, poruszamy się w lasach "
+"elfów - głupio zrobili zjawiając się tu. My, elfy, poruszamy się w lasach "
 "szybko i trudno nas w nich trafić. Musisz pokonać ich przywódcę, aby nigdy "
 "więcej nie mogli nam zagrozić. Będę ci doradzać."
 
@@ -1164,23 +1162,17 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the east; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
 "the north; but we could stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
-"Widzisz tę ciemnoniebieską wodę? Jest zbyt głęboka, by ją przekroczyć. Orki "
-"mogłyby wprawdzie powoli przeprawić się w bród korzystając z tego wąskiego "
-"pasa płytkiej, błękitnej wody na wschodzie, ale wtedy musieliby walczyć "
-"stojąc w wodzie, podatni na ataki, a nas chroniłby las."
+"Widzisz tę ciemnoniebieską wodę? Jest zbyt głęboka, by którakolwiek ze stron "
+"mogła nią przejść. Orkowie mogliby co prawda powoli brnąć przez tamten wąski "
+"pas płytkiej, jasnoniebieskiej wody na północy, ale my moglibyśmy stanąć na "
+"brzegu i zmusić ich, aby walczyli z nami z wody, gdzie są odsłonięci, "
+"podczas gdy nas ochrania las."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:231
@@ -1202,7 +1194,7 @@ msgstr "Ruszam! Do ataku!"
 #. The "us" in "let's" refers to Galdrad and Li'sar.
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:237
 msgid "female^Let’s go! Attack!"
-msgstr "Ruszam! Do ataku!"
+msgstr "Ruszajmy! Do ataku!"
 
 #. [message]: speaker=Galdrad
 #. Addressing Konrad
@@ -1211,22 +1203,16 @@ msgid ""
 "Hang on! You need to gather your forces. Or do you intend to fight the orcs "
 "single-handedly?"
 msgstr ""
-"Zaczekaj! Musisz zebrać swoje siły. A może chcesz samotnie stawić czoła tym "
+"Zaczekaj! Musisz zebrać swoje siły. A może chcesz samotnie stawić czoła tym "
 "orkom?"
 
 #. [message]: speaker=Galdrad
 #. Addressing Li'sar
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:250
-#, fuzzy
-#| msgid ""
-#| "Hang on! You need to gather your forces. Or do you intend to fight the "
-#| "orcs single-handedly?"
 msgid ""
 "female^Hang on! You need to gather your forces. Or do you intend to fight "
 "the orcs single-handedly?"
-msgstr ""
-"Zaczekaj! Musisz zebrać swoje siły. A może chcesz samotnie stawić czoła tym "
-"orkom?"
+msgstr "Zaczekaj! Musisz zebrać swoje siły. Czy chcesz walczyć z orkami sama?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:264
@@ -1238,8 +1224,8 @@ msgid ""
 msgstr ""
 "Widzę, że masz żołnierzy, którzy zdobyli doświadczenie podczas treningu. "
 "Warto ich <i>przywołać</i>, by zacząć bitwę z bardziej doświadczonymi "
-"jednostkami. Zastanów się jednak: jeśli jednostka ma mało doświadczenia, to "
-"bardziej może opłacać się ją rekrutować."
+"jednostkami. Zastanów się jednak: jeśli jednostka ma mało doświadczenia, to "
+"bardziej może opłacać się ją rekrutować."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:270
@@ -1279,14 +1265,14 @@ msgid ""
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
-"W dodatku do rekrutowania nowych jednostek, w każdym scenariuszu można "
-"też <i>przywołać</i> doświadczonych weteranów z poprzednich scenariuszy, "
-"płacąc za każdego 20 sztuk złota. Pozwala to na przestrzeni wielu "
-"scenariuszy skompletować groźną armię, przywołując żołnierzy o najwyższym "
-"poziomie, albo takich, którzy mają dobre kombinacje cech i umiejętności. Aby "
-"przywołać jednostkę, kliknij prawym przyciskiem myszy, gdy twój przywódca "
-"stoi w twierdzy i wybierz opcję <i>Przywołaj</i>. Pamiętaj, że oprócz tego "
-"możesz rekrutować nowe jednostki."
+"W dodatku do rekrutowania nowych jednostek, w każdym scenariuszu można też "
+"<i>przywołać</i> doświadczonych weteranów z poprzednich scenariuszy, płacąc "
+"za każdego 20 sztuk złota. Pozwala to na przestrzeni wielu scenariuszy "
+"skompletować groźną armię, przywołując żołnierzy o najwyższym poziomie, albo "
+"takich, którzy mają dobre kombinacje cech i umiejętności. Aby przywołać "
+"jednostkę, kliknij prawym przyciskiem myszy, gdy twój przywódca stoi w "
+"twierdzy i wybierz opcję <i>Przywołaj</i>. Pamiętaj, że oprócz tego możesz "
+"rekrutować nowe jednostki."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:299
@@ -1316,26 +1302,22 @@ msgstr "Elficka szamanka"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
-#, fuzzy
-#| msgid ""
-#| "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
-#| "friendly units around her. She also has a special attack which <i>slows</"
-#| "i> enemies, halving the damage they do for one turn."
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
-"Szamanka jest dość słabą jednostką, ale posiada umiejętność <i>leczenia</i> "
-"otaczających ją sprzymierzonych jednostek. Dysponuje też specjalnym atakiem, "
-"który <i>spowalnia</i> wrogów, na jedną turę zmniejszając o połowę zadawane "
-"przez nich obrażenia."
+"Szamanka posiada umiejętność <i>leczenia</i> otaczających ją sprzymierzonych "
+"jednostek. Dysponuje też specjalnym atakiem, który <i>spowalnia</i> wrogów, "
+"zmniejszając o połowę zadawane przez nich obrażenia przez jedną turę. Jednak "
+"jest ona fizycznie słabsza od wojowników i łuczników, więc bądź ostrożny "
+"wysyłając ją do bitwy."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "Umiejętność <i>leczy</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
@@ -1349,28 +1331,22 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"Na początku każdej tury, sprzymierzone jednostki sąsiadujące z szamanką "
+"odzyskają 4 punkty życia, czyli połowę punktów życia, które dałaby wioska. "
+"Szamanka nie otrzymuje doświadczenia za leczenie, a jedynie za walkę, ale "
+"warto ją awansować — jej awans na drugi poziom, elficka druidka, ma zdolność "
+"leczenia równą wiosce.\n"
+"\n"
+"Szczegółowe wyjaśnienie leczenia można znaleźć w sekcji <i>Rozgrywka</i> "
+"pomocy gry (domyślny skrót: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid "Abilities and Weapon Specials"
 msgid "Weapon Specials"
-msgstr "Umiejętności i bronie specjalizowane"
+msgstr "Ataki specjalne"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1382,22 +1358,22 @@ msgid ""
 "A full list of abilities and weapons specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
-"Bronie specjalizowane zapewniają wyjątkowe modyfikatory ataków, które czynią "
-"je mocniejszymi. Wracając do przykładu szamanki, jej oplątujący atak "
-"spowalnia. Gdy ten atak zostanie skutecznie użyty, obniży o połowę obrażenia "
-"zadawane przez przeciwnika na czas jednej tury. Inne specjalizacje to "
-"pierwsze uderzenie, dzięki której cios zawsze zadawany jest pierwszy, bez "
-"względu na to, kto atakuje. Specjalne są też ataki magiczne, które zawsze "
-"mają 70% szansę trafienia.\n"
+"Ataki specjalne zapewniają wyjątkowe modyfikatory ataków, które czynią je "
+"mocniejszymi. Wracając do przykładu szamanki, jej oplątujący atak spowalnia. "
+"Gdy ten atak zostanie skutecznie użyty, obniży o połowę obrażenia zadawane "
+"przez przeciwnika na czas jednej tury. Inne specjalizacje to pierwsze "
+"uderzenie, dzięki której cios zawsze zadawany jest pierwszy, bez względu na "
+"to, kto atakuje. Specjalne są też ataki magiczne, które zawsze mają 70% "
+"szansę trafienia.\n"
 "\n"
-"Pełną listę umiejętności i specjalizowanych broni, a także cech, znajdziesz "
-"w systemie pomocy."
+"Pełną listę umiejętności i ataków specjalnych, a także cech, znajdziesz w "
+"systemie pomocy."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 msgid "Multiple Healers"
-msgstr ""
+msgstr "Wielu lekarzy"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1411,6 +1387,13 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"Masz teraz dwóch lekarzy. Jednak każda jednostka może otrzymać leczenie "
+"tylko od jednego lekarza — jednostka nadal będzie leczona tylko 4 punkty "
+"życia na turę, nawet gdy sąsiaduje z obiema szamankami.\n"
+"\n"
+"Jeśli którakolwiek z szamanek awansuje na druidkę, będzie mogła leczyć "
+"sąsiednie jednostki o 8 punktów na turę. Jednostka stojąca obok kilku "
+"lekarzy jest leczona przez najbardziej zaawansowanego z nich."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1421,11 +1404,15 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"Masz teraz dwóch lekarzy. Twoja druidka może leczyć sąsiednie jednostki o 8 "
+"punktów życia na turę, podczas gdy szamanka — o 4. Jednak każda jednostka "
+"może otrzymać leczenie tylko od jednego lekarza — jednostka stojąca obok "
+"kilku lekarzy jest leczona przez najbardziej zaawansowanego z nich."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
 msgid "Healers and Villages"
-msgstr ""
+msgstr "Lekarze i wioski"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:384
@@ -1433,6 +1420,8 @@ msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
 msgstr ""
+"Jednostka w wiosce otrzyma leczenie z wioski zamiast od sąsiadujących "
+"lekarzy."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
@@ -1442,6 +1431,11 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"Posiadanie więcej niż jednego lekarza pozwala im leczyć się nawzajem lub "
+"pokrywać osobne obszary pola walki. Pozwala również na lepsze ruchy "
+"taktyczne — 2 punkty życia z leczenia przez odpoczynek łączy się z innymi "
+"źródłami leczenia, więc często jest lepiej ruszyć lekarza zamiast rannej "
+"jednostki."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:403
@@ -1478,7 +1472,7 @@ msgid ""
 "more income; there are some villages near the keep you can capture."
 msgstr ""
 "Żadna z rekrutowanych jednostek nie może się jeszcze ruszyć, ale ty możesz. "
-"Potrzebujesz zwiększyć swój dochód - w pobliżu twierdzy znajduje się kilka "
+"Potrzebujesz zwiększyć swój dochód - w pobliżu twierdzy znajduje się kilka "
 "wiosek, które możesz przejąć."
 
 #. [event]
@@ -1490,28 +1484,22 @@ msgstr "Zajmij wioskę"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:448
-#, fuzzy
-#| msgid "Capture a village"
 msgid "You still have to capture a village!"
-msgstr "Zajmij wioskę"
+msgstr "Nadal musisz zająć wioskę!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:479
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Don’t forget, you can press <b>u</b> to undo most things if you make a "
-#| "mistake."
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"Pamiętaj, że jeśli zrobisz błąd, to większość poleceń możesz cofnąć "
-"klawiszem <b>u</b>."
+"Zapomniałeś zrekrutować żołnierzy! Możesz wcisnąć <b>u</b>, aby cofnąć swój "
+"ostatni ruch."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "Nadal musisz zrekrutować żołnierzy!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:490
@@ -1520,7 +1508,7 @@ msgid ""
 "one unit and provide you with 1 extra gold per turn."
 msgstr ""
 "Doskonale! Tak jak wspominał wcześniej Delfador, każda zdobyta wioska będzie "
-"utrzymywała jedną jednostkę i zapewni co turę dodatkową sztukę złota."
+"utrzymywała jedną jednostkę i zapewni co turę dodatkową sztukę złota."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:495
@@ -1536,12 +1524,12 @@ msgid ""
 "per turn. Be careful, as owning too many units can cause you to have "
 "negative income and lose gold each turn!"
 msgstr ""
-"Każdej tury otrzymasz 2 sztuki złota, plus jedną za każdą "
-"kontrolowaną wioskę. Od tego odejmuje się koszt <i>utrzymania</i>. Możesz "
-"utrzymać tyle jednostek (w przeliczeniu na poziomy doświadczenia), ile "
-"posiadasz wiosek. Za każdą ponad to musisz zapłacić co turę 1 sztukę złota. "
-"Uważaj, bo kontrolowanie zbyt wielu jednostek może doprowadzić do tego, że "
-"co turę będzie ubywać ci złota!"
+"Każdej tury otrzymasz 2 sztuki złota, plus jedną za każdą kontrolowaną "
+"wioskę. Od tego odejmuje się koszt <i>utrzymania</i>. Możesz utrzymać tyle "
+"jednostek (w przeliczeniu na poziomy doświadczenia), ile posiadasz wiosek. "
+"Za każdą ponad to musisz zapłacić co turę 1 sztukę złota. Uważaj, bo "
+"kontrolowanie zbyt wielu jednostek może doprowadzić do tego, że co turę "
+"będzie ubywać ci złota!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:502
@@ -1550,12 +1538,6 @@ msgstr "Tabela stanu"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:504
-#, fuzzy
-#| msgid ""
-#| "The Status Table details the sides’ current status and starting "
-#| "conditions. Fog and shroud will affect what you can see in this table, "
-#| "and occasionally a side may be hidden. It is useful to check this table "
-#| "when a scenario begins."
 msgid ""
 "The Status Table details the sides’ current status and starting conditions. "
 "Fog and shroud will affect what you can see in this table, and occasionally "
@@ -1564,21 +1546,17 @@ msgid ""
 msgstr ""
 "Tabela stanu opisuje obecny stan każdej strony oraz jej warunki początkowe. "
 "Mgła i całun wpływają na wartości, które widzisz w tej tabeli, a czasem "
-"jakaś strona może być ukryta. Warto sprawdzać tę tabelkę na początku "
-"scenariusza."
+"jakaś strona może być ukryta. Mimo to, warto sprawdzać tę tabelkę na "
+"początku scenariusza. Możesz się do niej dostać przez menu <b>Menu</b>."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:568
-#, fuzzy
-#| msgid ""
-#| "You moved to the wrong place! After this message, you can press <b>u</b> "
-#| "to undo, then try again."
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"Nie na to pole masz się ruszyć. Po zamknięciu tej wiadomości możesz nacisnąć "
-"<b>u</b>, aby cofnąć ruch i spróbować ponownie."
+"Zapomniałeś zająć wioskę! Możesz wcisnąć <b>u</b>, aby cofnąć swój ostatni "
+"ruch."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
@@ -1586,7 +1564,7 @@ msgid ""
 "Now, young man, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
-"Teraz, młodzieńcze, czas porozmawiać o strategii. Twoje jednostki są gotowe "
+"Teraz, młodzieńcze, czas porozmawiać o strategii. Twoje jednostki są gotowe "
 "do ataku, a przywódca orków zaczął zbierać swoich żołnierzy."
 
 #. [message]: speaker=Galdrad
@@ -1595,7 +1573,7 @@ msgid ""
 "Now, young lady, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
-"Teraz, młoda damo, czas porozmawiać o strategii. Twoje jednostki są gotowe "
+"Teraz, młoda damo, czas porozmawiać o strategii. Twoje jednostki są gotowe "
 "do ataku, a przywódca orków zaczął zbierać swoich żołnierzy."
 
 #. [message]: speaker=student
@@ -1604,7 +1582,7 @@ msgid ""
 "Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
 "him quickly."
 msgstr ""
-"Galdradzie, jeśli przejdę brodem, to mógłbym wykorzystać element zaskoczenia "
+"Galdradzie, jeśli przejdę brodem, to mógłbym wykorzystać element zaskoczenia "
 "i szybko go wyeliminować."
 
 #. [message]: speaker=student
@@ -1613,18 +1591,11 @@ msgid ""
 "female^Galdrad, if I go by the ford, I could sneak up near his keep and "
 "dispatch him quickly."
 msgstr ""
-"Galdradzie, jeśli przejdę brodem, to mógłabym wykorzystać element "
+"Galdradzie, jeśli przejdę brodem, to mógłabym wykorzystać element "
 "zaskoczenia i szybko go wyeliminować."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:604
-#, fuzzy
-#| msgid ""
-#| "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
-#| "You’ll be more vulnerable as you try to wade slowly across the ford; the "
-#| "enemy will have an 80% chance to hit you. Since elves have good defense "
-#| "in the forest, I would advise you keep to the trees and attack the orcs "
-#| "from there; you’ll only have a 40% chance of being hit in return."
 msgid ""
 "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
 "You’ll be more vulnerable as you try to wade slowly across the ford; the "
@@ -1633,11 +1604,12 @@ msgid ""
 "there; your Fighters will only suffer a 40% chance of being hit in return, "
 "while Shamans and Archers will only incur a 30% chance."
 msgstr ""
-"To możliwe. Jednak elfy (jak i orkowie) mają w wodzie kiepską <i>obronę</i>. "
-"Będą bardziej narażone powoli brnąc przez bród, wróg będzie miał 80% szansę "
-"na trafienie. Ponieważ elfy mają dobrą obronę w lesie, to radzę trzymać się "
-"blisko drzew i stamtąd atakować orków, dzięki czemu będą mieli tylko 40% "
-"szansy na trafienie w odwecie."
+"To możliwe. Jednak elfy (jak i orkowie) mają w wodzie kiepską <i>obronę "
+"terenową</i>. Będą bardziej narażone powoli brnąc przez bród, wróg będzie "
+"miał 80% szansy na trafienie. Ponieważ elfy mają dobrą obronę w lesie, to "
+"radzę trzymać się blisko drzew i stamtąd atakować orków, twoi wojownicy będą "
+"mieli tylko 40% szans na bycie trafionymi, a szamanki i łucznicy zaledwie "
+"30%."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:609
@@ -1673,11 +1645,11 @@ msgid ""
 "villages on this side of the river. You should secure them for income and "
 "healing."
 msgstr ""
-"Ten ork rębacz blokuje nam przejście. Nie potrafi atakować na odległość, "
+"Ten ork rębacz blokuje nam przejście. Nie potrafi atakować na odległość, "
 "więc twoi łucznicy powinni być w stanie wejść z nim w starcie niewiele "
 "ryzykując. Niestety twoje jednostki nie dotrą do niego w tej turze, ale nie "
 "pozwól im się wlec! Ustaw je tak, by mogły zaatakować w kolejnej turze. Po "
-"tej stronie rzeki znajdują się też inne wioski. Powinny zostać przejęte, by "
+"tej stronie rzeki znajdują się też inne wioski. Powinny zostać przejęte, by "
 "zapewnić dochód i leczenie."
 
 #. [message]: speaker=narrator
@@ -1723,7 +1695,7 @@ msgid ""
 msgstr ""
 "Robisz postępy, Konradzie. Faktycznie, na wczesnym etapie rozgrywki dobrze "
 "jest trzymać swojego przywódcę w bezpiecznym sąsiedztwie twierdzy. Los bitwy "
-"może się szybko zmienić, a nie chciałbyś nagle znaleźć się odcięty od "
+"może się szybko zmienić, a nie chciałbyś nagle znaleźć się odcięty od "
 "możliwości rekrutowania posiłków."
 
 #. [message]: speaker=Galdrad
@@ -1736,13 +1708,13 @@ msgid ""
 msgstr ""
 "Robisz postępy, Li'sar. Faktycznie, na wczesnym etapie rozgrywki dobrze jest "
 "trzymać swoją przywódczynię w bezpiecznym sąsiedztwie twierdzy. Los bitwy "
-"może się szybko zmienić, a nie chciałabyś nagle znaleźć się odcięta od "
+"może się szybko zmienić, a nie chciałabyś nagle znaleźć się odcięta od "
 "możliwości rekrutowania posiłków."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:711
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "Ten samouczek nie ma być aż tak trudny"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
@@ -1753,6 +1725,11 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"Ork na wyspie miał się ruszyć nad most, tak by mógł zostać zaatakowany przez "
+"kilku elfów naraz. Coś się zepsuło z zaskryptowanym zdarzeniem, co sprawia, "
+"że scenariusz staje się trudniejszy, gdy ork stoi w obronnej pozycji.\n"
+"\n"
+"Proszę, zgłoś ten błąd."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:726
@@ -1773,7 +1750,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:731
 msgid "We must occupy that island before the Wolf Riders reach it!"
-msgstr "Musimy zająć tę wyspę, nim dotrą do niej jeźdźcy wilków!"
+msgstr "Musimy zająć tę wyspę, nim dotrą do niej jeźdźcy wilków!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:736
@@ -1815,57 +1792,41 @@ msgid ""
 msgstr ""
 "Pola bezpośrednio otaczające jednostkę stanowią jej <i>strefę kontroli</i>. "
 "Gdy wroga jednostka wejdzie na te pola, straci możliwość dalszego ruchu w "
-"tej turze (wyjątek stanowią jednostki z umiejętnością <i>harcownik</i>, na "
+"tej turze (wyjątek stanowią jednostki z umiejętnością <i>harcownik</i>, na "
 "które strefa kontroli nie ma wpływu). Można jej użyć do stworzenia blokady, "
 "która uniemożliwi silniejszym jednostkom przeciwnika dotarcie do kluczowych "
 "miejsc, takich jak wioski, nawet jeśli masz ograniczone zasoby ludzkie."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:778
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
 "move everyone closer for next turn."
 msgstr ""
-"Mam nadzieję, że moje jednostki przetrwają kontratak jeśli nie uda "
-"się wyeliminować tego rębacza w tej turze. Jeśli to możliwe, to lepiej "
-"przejmę więcej wiosek i przesunę wszystkich bliżej w przygotowaniu do "
-"następnej tury."
+"Mam nadzieję, że przetrwam kontratak jeśli moje jednostki nie dadzą rady "
+"wyeliminować tego rębacza w tej turze. Powinienem im rozkazać, by jeśli mogą "
+"zajęły więcej wiosek i przesunąć wszystkich bliżej na następną turę."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:783
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Jeśli jedna z twoich szamanek stoi za twoją ranną jednostką, to uleczy jej 4 "
-"punkty życia na początku następnej tury."
+"Jeśli jedna z twoich szamanek stoi zaraz za tobą, to uleczy cię o 4 punkty "
+"życia na początku następnej tury."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
-#, fuzzy
-#| msgid ""
-#| "I hope my units survive the counter-attack if I can’t take this grunt out "
-#| "this turn. I’d better grab more villages if I can and move everyone "
-#| "closer for next turn."
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
 "closer for next turn."
 msgstr ""
-"Mam nadzieję, że moje jednostki przetrwają kontratak jeśli nie uda "
-"się wyeliminować tego rębacza w tej turze. Jeśli to możliwe, to lepiej "
-"przejmę więcej wiosek i przesunę wszystkich bliżej w przygotowaniu do "
-"następnej tury."
+"Mam nadzieję, że moje jednostki przetrwają kontratak jeśli nie uda się "
+"wyeliminować tego rębacza w tej turze. Jeśli mogę, to lepiej przejmę więcej "
+"wiosek i przesunę wszystkich bliżej w przygotowaniu do następnej tury."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
@@ -1902,7 +1863,7 @@ msgid ""
 "will overwhelm you with their numbers."
 msgstr ""
 "Ostrożnie! Stojąc na moście, wystawiasz się na ataki z wielu kierunków! Choć "
-"orkowie mają w wodzie małą obronę, to zmiażdżą cię swoją liczbą."
+"orkowie mają w wodzie małą obronę, to zmiażdżą cię swoją liczbą."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:868
@@ -1913,9 +1874,9 @@ msgid ""
 "good defense."
 msgstr ""
 "Dobra robota! Wioska na wyspie jest nasza. Możesz użyć tych drzew, żeby "
-"zablokować orkom drogę. Muszą iść mostem gęsiego, jeśli chcą uniknąć "
-"brodzenia w wodzie, a twoje jednostki będą bezpieczne w terenie z "
-"dobrą obroną."
+"zablokować orkom drogę. Muszą iść mostem gęsiego, jeśli chcą uniknąć "
+"brodzenia w wodzie, a twoje jednostki będą bezpieczne w terenie z dobrą "
+"obroną."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:880
@@ -1945,24 +1906,19 @@ msgid ""
 "You’re venturing away from your keep. You might need recruit more units, and "
 "I doubt the orc leader will let you use his! Careful!"
 msgstr ""
-"Trzymaj się blisko twierdzy! Może pojawić się konieczność rekrutowania "
+"Trzymaj się blisko twierdzy! Może pojawić się konieczność rekrutowania "
 "nowych jednostek, a wątpię, by przywódca orków użyczył ci swojej! Ostrożnie!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:940
-#, fuzzy
-#| msgid ""
-#| "We need to occupy that village, otherwise they will take it next turn! "
-#| "Move a unit into the village to stop the orcs capturing it. Whichever "
-#| "unit you choose will benefit from the village’s healing, too."
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"Musimy zająć tę wioskę — w przeciwnym razie w następnej turze zrobią to oni! "
-"Wprowadź jednostkę do wioski, aby zająć ją przed orkami. Wybrana jednostka "
-"będzie też w wiosce leczona."
+"Musimy zająć tę wioskę — inaczej zaraz zrobią to oni! Wprowadź jednostkę do "
+"wioski, by powstrzymać orków przed jej zajęciem. Jakąkolwiek jednostkę "
+"wybierzesz, skorzysta ona również z leczenia w wiosce."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:946
@@ -1985,13 +1941,6 @@ msgstr "<big>Pora dnia</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:952
-#, fuzzy
-#| msgid ""
-#| "During a scenario, the time of day will shift as turns pass. There are "
-#| "four <i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or "
-#| "Liminal. Each alignment gets a different bonus or handicap depending on "
-#| "the time of day. You can mouse over the landscape image below the minimap "
-#| "on the right to see the current time of day and who has the advantage."
 msgid ""
 "During a scenario, the time of day will shift as turns pass. There are four "
 "<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
@@ -2002,9 +1951,9 @@ msgstr ""
 "W trakcie scenariusza, wraz z mijającymi turami zmienia się pora dnia. "
 "Jednostki w grze mają jeden z czterech <i>charakterów</i>: praworządny, "
 "neutralny, chaotyczny lub półmroczny. Każdy z nich daje premię lub stanowi "
-"utrudnienie, w zależności od pory dnia. Możesz umieścić kursor myszy nad "
-"obrazkiem przedstawiającym krajobraz, znajdującym się pod minimapą, aby "
-"zobaczyć obecną porę dnia i sprawdzić komu daje ona przewagę."
+"utrudnienie, w zależności od pory dnia. Możesz umieścić kursor myszy nad "
+"obrazkiem nieba, znajdującym się pod minimapą po prawej stronie, aby "
+"zobaczyć obecną porę dnia i sprawdzić, komu daje ona przewagę."
 
 #. [then]
 #. [else]
@@ -2023,6 +1972,18 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"Pamiętaj, aby wycofywać swoje ranne jednostki do wiosek. Szamanki leczą "
+"tylko 4 punkty życia na turę, podczas gdy wioski mogą leczyć szybciej: 8 na "
+"turę.\n"
+"\n"
+"Różne źródła leczenia zwykle się nie łączą. Jeśli jednostka zaczyna turę "
+"obok kilku lekarzy, lub w wiosce obok lekarza, nadal zostanie uleczona tylko "
+"raz.\n"
+"\n"
+"Leczenie przez odpoczynek jest wyjątkiem od tej zasady — jeśli jednostka nie "
+"robi nic przez turę, będzie się leczyć o 2 punkty życia poza jakimkolwiek "
+"leczeniem które otrzymuje od lekarzy lub wiosek, łącząc do maksymalnie 10 "
+"punktów życia na turę."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
@@ -2052,11 +2013,6 @@ msgstr "<big>Warunki zwycięstwa</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1012
-#, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in  "
-#| "<b>Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
@@ -2069,7 +2025,7 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1021
 msgid "Hurry up and defeat the orcs before they become entrenched!"
-msgstr "Pośpiesz się i pokonaj orków zanim się obwarują!"
+msgstr "Pośpiesz się i pokonaj orków zanim się obwarują!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1049
@@ -2145,25 +2101,21 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1203
-#, fuzzy
-#| msgid ""
-#| "You are close to killing their leader! The unit who finishes him will "
-#| "gain 16 experience points because he is second level. Choose your "
-#| "attacking unit carefully!"
 msgid ""
 "You are close to killing their leader! Because he is second level, the unit "
 "who finishes him will gain 16 experience points. In a campaign, it’s "
 "important to decide which units you want to advance, and give those units "
 "the best chances to gain experience."
 msgstr ""
-"Jesteś blisko pokonania ich przywódcy! Jednostka, która tego dokona, otrzyma "
-"16 punktów doświadczenia, ponieważ jest on jednostką drugiego poziomu. "
-"Wybierz ją rozważnie!"
+"Jesteś blisko zabicia ich przywódcy! Ponieważ jest on drugiego poziomu, "
+"jednostka która go dobije, zyska 16 punktów doświadczenia. W kampanii, jest "
+"istotne, aby zdecydować, które jednostki chcesz awansować i dawać tym "
+"jednostkom najlepsze szanse na zyskanie doświadczenia."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1207
 msgid "You have almost finished the tutorial"
-msgstr ""
+msgstr "Prawie ukończyłeś samouczek"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1209
@@ -2171,6 +2123,8 @@ msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
 msgstr ""
+"W kampanii możesz mieć dziesięć lub nawet dwadzieścia scenariuszy do "
+"budowania swojej armii, ale ten samouczek skończy się, gdy pokonasz Thraga."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1235
@@ -2210,16 +2164,12 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1293
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. Goodbye, $unit."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr ""
-"Jednostki wyższych poziomów są mocne, ale nie niepokonane! Żegnaj, $unit."
-"name|."
+"Jednostki wyższych poziomów są mocne, ale nie niepokonane! Będziemy za Tobą "
+"tęsknić, $unit.name|."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1307
@@ -2250,9 +2200,9 @@ msgid ""
 msgstr ""
 "Dzięki osiągnięciu kolejnego poziomu całkowicie wyzdrowiałam! Mogę teraz "
 "leczyć jednostki dodając im każdej tury 8 punktów życia zamiast 4, a ponadto "
-"mogę też uzdrowić je z zatrucia jeśli nie mogą dotrzeć do wioski. Zdobyłam "
+"mogę też uzdrowić je z zatrucia jeśli nie mogą dotrzeć do wioski. Zdobyłam "
 "też nowy atak, który jest <i>magiczny</i>, ma więc zawsze 70% szans "
-"trafienia, ale nie jest tak potężny jak podobny atak, którym posługują się "
+"trafienia, ale nie jest tak potężny jak podobny atak, którym posługują się "
 "elfickie czrodziejki."
 
 #. [message]: speaker=unit
@@ -2264,46 +2214,36 @@ msgid ""
 "damage each for 4 strikes. It also has the <i>magical</i> weapon special, "
 "meaning it always has a 70% chance to hit."
 msgstr ""
-"Dzięki osiągnięciu kolejnego poziomu całkowicie wyzdrowiałam! Nie mogę już "
-"leczyć sąsiadujących jednostek, ale za to mogę teraz atakować potężnym "
+"Dzięki osiągnięciu kolejnego poziomu całkowicie wyzdrowiałam! Nie mogę już "
+"leczyć sąsiadujących jednostek, ale za to mogę teraz atakować potężnym "
 "ogniem wróżek, który zadaje 7 punktów obrażeń każdym z 4 uderzeń. Jest to "
 "też atak <i>magiczny</i>, dzięki czemu zawsze ma 70% szans trafienia."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1363
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I always have a 60% chance of "
-#| "hitting with my <i>Marksman</i> ability, and I deal 9 damage each for 4 "
-#| "attacks. Use me to dislodge hard-to-hit units."
 msgid ""
 "Advancing a level has fully healed me! When attacking, I always have at "
 "least a 60% chance of hitting with my longbow thanks to my <i>Marksman</i> "
 "ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
 "hit units."
 msgstr ""
-"Osiągnięcie następnego poziomu w pełni mnie uzdrowiło! Dzięki umiejętności "
-"<i>strzelec wyborowy</i> mam zawsze 60% szansy na trafienie i zadaję 9 "
-"punktów obrażeń każdym z moich 4 ataków. Używaj mnie do unieszkodliwiania "
-"trudnych do trafienia jednostek."
+"Osiągnięcie następnego poziomu w pełni mnie uleczyło! Gdy atakuję, mam "
+"zawsze 60% szansy na trafienie dzięki umiejętności <i>strzelec wyborowy</i> "
+"i zadaję 9 punktów obrażeń każdym z moich 4 ataków. Używaj mnie do "
+"unieszkodliwiania trudnych do trafienia jednostek."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1364
-#, fuzzy
-#| msgid ""
-#| "female^Advancing a level has fully healed me! I always have a 60% chance "
-#| "of hitting with my <i>Marksman</i> ability, and I deal 9 damage each for "
-#| "4 attacks. Use me to dislodge hard-to-hit units."
 msgid ""
 "female^Advancing a level has fully healed me! When attacking, I always have "
 "at least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
 "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-"
 "to-hit units."
 msgstr ""
-"Osiągnięcie następnego poziomu w pełni mnie uzdrowiło! Dzięki umiejętności "
-"<i>strzelec wyborowy</i> mam zawsze 60% szansy na trafienie i zadaję 9 "
-"punktów obrażeń każdym z moich 4 ataków. Używaj mnie do unieszkodliwiania "
-"trudnych do trafienia jednostek."
+"Osiągnięcie następnego poziomu w pełni mnie uleczyło! Gdy atakuję, mam "
+"zawsze 60% szansy na trafienie dzięki umiejętności <i>strzelec wyborowy</i> "
+"i zadaję 9 punktów obrażeń każdym z moich 4 ataków. Używaj mnie do "
+"unieszkodliwiania trudnych do trafienia jednostek."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1377
@@ -2339,7 +2279,7 @@ msgid ""
 msgstr ""
 "Osiągnięcie kolejnego poziomu w pełni mnie uleczyło! Dobrze walczę zarówno "
 "łukiem, jak i mieczem, ale mam też specjalną umiejętność: <i>dowodzenie</i>. "
-"Choć zadaję mniej obrażeń niż elficki bohater, to dzięki niej moi sojusznicy "
+"Choć zadaję mniej obrażeń niż elficki bohater, to dzięki niej moi sojusznicy "
 "walczą lepiej. Otaczająca mnie jednostki pierwszego poziomu będą zadawały o "
 "25% więcej obrażeń, więc ustawiaj mnie rozważnie."
 
@@ -2358,12 +2298,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1418
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I am particularly good with the "
-#| "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
-#| "abilities of the Elvish Captain, my superior fighting skills allow my "
-#| "attacks to do more damage!"
 msgid ""
 "Advancing a level has fully healed me! I have become better at using the "
 "sword, dealing 9 damage in 4 attacks. Although I do not have any special "
@@ -2371,18 +2305,12 @@ msgid ""
 "damage!"
 msgstr ""
 "Osiągnięcie kolejnego poziomu w pełni mnie uleczyło! Szczególnie dobrze "
-"walczę mieczem, którym zadaję 4 ciosy, po 8 obrażeń każdy. Choć nie potrafię "
-"dowodzić tak jak elficki kapitan, to nadrabiam to umiejętnością walki, "
-"dzięki której moje ataki zadają więcej obrażeń!"
+"walczę mieczem, którym zadaję 4 ciosy, po 9 obrażeń każdy. Choć nie mam "
+"żadnych zdolności specjalnych, to nadrabiam to umiejętnością walki, dzięki "
+"której pokonam orków, zadając więcej obrażeń!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1419
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I am particularly good with the "
-#| "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
-#| "abilities of the Elvish Captain, my superior fighting skills allow my "
-#| "attacks to do more damage!"
 msgid ""
 "female^Advancing a level has fully healed me! I have become better at using "
 "the sword, dealing 9 damage in 4 attacks. Although I do not have any special "
@@ -2390,9 +2318,9 @@ msgid ""
 "damage!"
 msgstr ""
 "Osiągnięcie kolejnego poziomu w pełni mnie uleczyło! Szczególnie dobrze "
-"walczę mieczem, którym zadaję 4 ciosy, po 8 obrażeń każdy. Choć nie potrafię "
-"dowodzić tak jak elficki kapitan, to nadrabiam to umiejętnością walki, "
-"dzięki której moje ataki zadają więcej obrażeń!"
+"walczę mieczem, którym zadaję 4 ciosy, po 9 obrażeń każdy. Choć nie mam "
+"żadnych zdolności specjalnych, to nadrabiam to umiejętnością walki, dzięki "
+"której pokonam orków, zadając więcej obrażeń!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1428
@@ -2413,7 +2341,7 @@ msgstr "To było... głupie. Następnym razem będę ostrożniejsza."
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1463
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "Agh! Kto teraz poprowadzi cię do zwycięstwa?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
@@ -2422,6 +2350,9 @@ msgid ""
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
 "is the easiest and is the recommended first campaign."
 msgstr ""
+"Pokonałeś orków! Możesz chcieć teraz wybrać jedną z kampanii dla "
+"początkujących, które zawierają wskazówki strategiczne. <i>Opowieść o Dwóch "
+"Braciach</i> jest najłatwiejszą i polecaną pierwszą kampanią."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1483
@@ -2429,11 +2360,13 @@ msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."
 msgstr ""
+"Możesz również odnieść się do pomocy wewnątrz gry, jeśli będziesz "
+"kiedykolwiek potrzebować odświeżyć swoją wiedzę na temat mechaniki gry."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
-msgstr "Wojownik"
+msgstr "Żołnierz"
 
 #. [unit_type]: id=Fighteress, race=human
 #. [unit_type]: id=Fighter, race=human
@@ -2444,14 +2377,14 @@ msgid ""
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
-"Młodzi i nieokrzesani wojownicy dobrze walczą mieczem, ale są dość narażeni "
+"Młodzi i nieokrzesani żołnierze dobrze walczą mieczem, ale są dość narażeni "
 "na ataki wrogów. Mimo tego mają potencjał, by pewnego dnia stać się wielkimi "
 "wojownikami."
 
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
-msgstr "Wojowniczka"
+msgstr "Żołnierka"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:4
@@ -2470,7 +2403,7 @@ msgstr ""
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:4
 msgid "Warrior"
-msgstr ""
+msgstr "Wojownik"
 
 #. [unit_type]: id=Warrioress, race=human
 #. [unit_type]: id=Warrior, race=human
@@ -2480,11 +2413,11 @@ msgid ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
 msgstr ""
+"Z większym doświadczeniem, żołnierze szlifują swoje zdolności posługiwania "
+"się mieczem i stają się potężnymi wojownikami."
 
 #. [unit_type]: id=Warrioress, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
-#, fuzzy
-#| msgid "female^Fighter"
 msgid "female^Warrior"
 msgstr "Wojowniczka"
 
@@ -2519,14 +2452,14 @@ msgstr ""
 #~ "especially ones like Heal, can be very useful, so be careful when sending "
 #~ "them into battle."
 #~ msgstr ""
-#~ "Niektóre jednostki mają specjalnie <i>zdolności</i>. W przeciwieństwie do "
+#~ "Niektóre jednostki mają specjalnie <i>zdolności</i>. W przeciwieństwie do "
 #~ "cech, które zazwyczaj delikatnie wzmacniają lub osłabiają jednostkę, "
 #~ "zdolności pozwalają jednostkom robić coś, czego nie mogą normalne "
 #~ "jednostki. W przypadku elfickiej szamanki jest to umiejętność leczenia, "
 #~ "która pozwala jej na początku każdej tury wyleczyć sąsiadujące z nią "
 #~ "sprzymierzone jednostki z 4 punktów obrażeń. Typy jednostek posiadające "
 #~ "zdolności, takie jak leczenie, potrafią być bardzo użyteczne, więc wykaż "
-#~ "się rozsądkiem rzucając je do bitwy."
+#~ "się rozsądkiem rzucając je do bitwy."
 
 #~ msgid ""
 #~ "Remember to retreat your wounded units to villages. Healers can only heal "
@@ -2538,7 +2471,7 @@ msgstr ""
 #~ "maksymalną wartością leczenia)."
 
 #~ msgid "Agh! Now who will teach you how to defeat these orcs!"
-#~ msgstr "Ach! Kto teraz nauczy cię jak pokonać tych orków!"
+#~ msgstr "Ach! Kto teraz nauczy cię jak pokonać tych orków!"
 
 #~ msgid ""
 #~ "You have beaten the orcs! You may want to try one of the novice-level "
@@ -2551,9 +2484,9 @@ msgstr ""
 #~ "Udało ci się pokonać orków! Teraz proponujemy zmierzyć się z jedną z "
 #~ "kampanii dla początkujących, jak na przykład <i>Opowieść o dwóch "
 #~ "braciach</i>, <i>Najazd orków</i> lub <i>Południowa straż</i>. Konrad, "
-#~ "Li'sar i Delfador są postaciami z <i>Następcy tronu</i>. Jeśli "
-#~ "potrzebujesz przypomnieć sobie jakiś szczegół związany z mechaniką gry, "
-#~ "możesz skorzystać z wbudowanego w grę systemu pomocy."
+#~ "Li'sar i Delfador są postaciami z <i>Następcy tronu</i>. Jeśli "
+#~ "potrzebujesz przypomnieć sobie jakiś szczegół związany z mechaniką gry, "
+#~ "możesz skorzystać z wbudowanego w grę systemu pomocy."
 
 #~ msgid "End Scenario"
 #~ msgstr "Zakończ scenariusz"

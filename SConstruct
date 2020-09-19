@@ -639,6 +639,7 @@ for env in [test_env, client_env, env]:
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI
         env.Append(FRAMEWORKS = "Security")         # commonCrypto (after OpenSSL replacement on Mac)
         env.Append(FRAMEWORKS = "IOKit")            # IOKit
+        env.Append(FRAMEWORKS = "CoreGraphics")     # CoreGraphics
 
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
@@ -717,7 +718,7 @@ else:
     env["localedir"] = "$datadir/$localedirname"
 
 pythontools = Split("wmlscope wmllint wmlindent wesnoth_addon_manager")
-pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py __init__.py")
+pythonmodules = Split("wmltools3.py wmlparser.py wmlparser3.py wmldata.py wmliterator3.py campaignserver_client.py __init__.py")
 
 def CopyFilter(fn):
     "Filter out data-tree things that shouldn't be installed."
@@ -745,7 +746,6 @@ env.InstallData("datadir", "wesnoth", [Dir(sub) for sub in installable_subs])
 env.InstallData("docdir",  "wesnoth", [Glob("doc/manual/*.html"), Dir("doc/manual/styles"), Dir("doc/manual/images")])
 if env["nls"]:
     env.InstallData("localedir", "wesnoth", Dir("translations"), copy_filter = MoFileFilter)
-    env.InstallData("datadir", "wesnoth", "l10n-track")
 InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("icondir", "wesnoth", "packaging/icons")

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: secrets_of_the_ancients\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-03-09 23:11 UTC\n"
-"PO-Revision-Date: 2020-05-14 21:09+0200\n"
+"POT-Creation-Date: 2020-08-08 09:30 UTC\n"
+"PO-Revision-Date: 2020-09-04 08:21+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:10
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:68
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:69
 msgid "Secrets of the Ancients"
 msgstr "Az Ősök Titkai"
 
@@ -36,38 +36,37 @@ msgid "SotA"
 msgstr "AŐT"
 
 #. [campaign]: id=Secrets of the Ancients
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:17
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:18
 msgid "Normal"
-msgstr "közepes"
+msgstr "átlagos"
 
 #. [campaign]: id=Secrets of the Ancients
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:17
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:18
 msgid "Unpleasant"
 msgstr "Kellemetlen"
 
 #. [campaign]: id=Secrets of the Ancients
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:18
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:19
 msgid "Challenging"
 msgstr "kihívást jelentő"
 
 #. [campaign]: id=Secrets of the Ancients
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:18
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:19
 msgid "Corrupt"
 msgstr "Korrupt"
 
 #. [campaign]: id=Secrets of the Ancients
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:19
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:20
 msgid "Diabolic"
 msgstr "Ördögi"
 
 #. [campaign]: id=Secrets of the Ancients
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:19
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:20
 msgid "Difficult"
 msgstr "nehéz"
 
-# középhaladó a hard?
 #. [campaign]: id=Secrets of the Ancients
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:21
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:22
 msgid ""
 "Rediscover the secrets known by the lich lords of the Green Isle. They knew "
 "how to live forever, so why can't you?\n"
@@ -80,17 +79,17 @@ msgstr ""
 "(Nehéz szint, 18 pálya.)\n"
 
 #. [about]
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:28
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:29
 msgid "Campaign Design, Programming, and Artwork"
 msgstr "Hadjárattervezés, programozás, és artwork"
 
 #. [about]
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:34
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:35
 msgid "Campaign Maintenance"
 msgstr "Hadjárat karbantartása"
 
 #. [about]
-#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:41
+#: data/campaigns/Secrets_of_the_Ancients/_main.cfg:42
 msgid "Additional Artwork"
 msgstr "További illusztrációk"
 
@@ -898,13 +897,12 @@ msgstr "Legénység"
 msgid "Rudic"
 msgstr "Rudic kapitány"
 
+# két felső fedélzet = tat és előrész
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:212
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:127
-#, fuzzy
-#| msgid "You can recruit from anywhere in the Hall of Heroes."
 msgid "You can recruit from anywhere on the two highest decks."
-msgstr "A Hősök Tárnáján belül bárhol toborozhatsz."
+msgstr "A két felső fedélzeten bárhol toborozhatsz."
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:215
@@ -1370,7 +1368,7 @@ msgstr "És még viccelődik is! Na gyerünk."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:605
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:542
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:545
 msgid "You have no more time."
 msgstr "Nincs több időd."
 
@@ -1700,7 +1698,6 @@ msgstr "Ne is emlékeztessen. Az apám dobott ebbe a féreglyukba."
 msgid "You stay out of this, son."
 msgstr "Maradj ki ebből, fiú!"
 
-# put you in your place - ráncba szed, helyretesz? - de itt nem nagyon találom, hogy lenne jó
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:274
 msgid ""
@@ -1818,7 +1815,7 @@ msgstr "Most már toborozhatsz Árnyak tanítványait!"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:426
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:412
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:415
 msgid ""
 "This has taken too long. We will surely miss our meeting with Ardonna now."
 msgstr "Túl sokáig húzódik ez el. Le fogjuk késni a találkozót Ardonnával."
@@ -1865,7 +1862,7 @@ msgstr "Mind az öt árnyak tanítványa meghal"
 
 #. [objective]: condition=lose
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:148
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:537
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:538
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:104
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:116
 msgid "Death of Ras-Tabahn"
@@ -1881,7 +1878,7 @@ msgstr ""
 "későbbi pályákon elérhető lesz"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:350
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:353
 msgid ""
 "What happened here, I wonder. Well, no matter. What was bad for these "
 "families is good for us. I will animate them, and you will attack. Practice "
@@ -1899,42 +1896,42 @@ msgstr ""
 # Nézhetsz.
 # Esetleg "Te csak figyelj?"
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:358
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:361
 msgid "plural^You may watch."
 msgstr "Te figyelhetsz."
 
 #. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:362
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:365
 msgid "Can we help?"
 msgstr "Segíthetünk?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:366
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:369
 msgid "plural^As you wish. (<i>Cough, cough</i>)"
 msgstr "Ahogy akarod. (<i>köhög, köhög</i>)"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:376
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:379
 msgid "You may watch."
 msgstr "Te figyelhetsz."
 
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:380
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:383
 msgid "Can I help?"
 msgstr "Segíthetek?"
 
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:381
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:384
 msgid "self_female^Can I help?"
 msgstr "Segíthetek?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:385
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:388
 msgid "As you wish. (<i>Cough, cough</i>)"
 msgstr "Ahogy akarod. (<i>köhög, köhög</i>)"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:393
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:396
 msgid ""
 "You can recruit from in front of each dark adept during the first turn only."
 msgstr "Csak az első körben toborozhatsz, minden egyes tanítvány elől."
@@ -1967,94 +1964,94 @@ msgid "Okean"
 msgstr "Okean"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:131
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:134
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:160
 msgid "Bones. Claws and wings."
 msgstr "Csontok. Karmok, és szárnyak."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:138
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:141
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:167
 msgid "There are some large bones here. I can see claws and wings."
 msgstr "Van itt néhány nagy csont. Látok karmokat és szárnyakat."
 
 #. [message]: speaker=$other_human
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:183
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:186
 msgid "How odd. I wonder what are they from. A gryphon perhaps?"
 msgstr "Milyen különös. Vajon kihez tartoztak...egy griffé talán?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:187
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:190
 msgid "A large flightless bird would be my guess."
 msgstr "Egy nagy röpképtelen madár lenne a tippem."
 
 #. [message]: speaker=$other_human
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:191
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:194
 msgid "Well, there is an easy way to find out."
 msgstr "Nos, ezt könnyen kideríthetjük."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:195
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:198
 msgid "Indeed. Let us see."
 msgstr "Csakugyan. Lássuk hát!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:201
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:204
 msgid ""
 "I wonder what are they from. A large flightless bird perhaps? Let us see."
 msgstr "Vajon kihez tartoztak...egy nagy röpképtelen madár talán? Lássuk hát!"
 
 #. [message]: speaker=$other_human
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:243
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:246
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:243
 msgid "Oh, you were right!"
 msgstr "Ó, igazad volt!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:248
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:251
 msgid "I wonder if it could carry someone light. A skeleton maybe."
 msgstr ""
 "Azon gondolkodom, el tudna-e cipelni valaki könnyűt. Egy csontvázat esetleg."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:306
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:309
 msgid "Splendid! These birds could be quite useful."
 msgstr "Remek ötlet! Ezek a madarak nagyon hasznosak lesznek!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:315
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:318
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:340
 msgid "You can now recruit chocobones!"
 msgstr "Most már toborzhatsz Csontlovasokat!"
 
 #. [set_variable]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:360
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:363
 msgid "Hopefully this will be enough gold."
 msgstr "Remélem ennyi arany elég lesz!"
 
 #. [set_variable]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:371
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:374
 msgid "We have won, but I am afraid this may not be enough gold."
 msgstr "Győztünk, de attól félek ennyi arany nem lesz elég."
 
 #. [set_variable]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:384
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:387
 msgid "Good. We ended with a fair amount of gold."
 msgstr "Remek. Elég arannyal végeztünk."
 
 #. [message]: speaker=Okean
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:437
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:440
 msgid "You! You have destroyed the town of Carcyn!"
 msgstr "Te! Te romboltad le Carcyn városát!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:441
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:444
 msgid "The town is hardly destroyed. I just encouraged a change of leadership."
 msgstr "Aligha. Én csupán vezetőváltozást kezdeményeztem."
 
 #. [message]: speaker=Okean
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:445
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:448
 msgid ""
 "Your words mock us. Those humans were valuable trading partners of ours. We "
 "will have justice!"
@@ -2063,7 +2060,7 @@ msgstr ""
 "veszünk!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:449
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:452
 msgid ""
 "Actually, I expect you will follow them into the ground if you try to harm "
 "us."
@@ -2072,7 +2069,7 @@ msgstr ""
 "nekünk."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:457
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:460
 msgid ""
 "addressed_plural^This is going to cost us, but I want to keep some gold "
 "around for emergencies — I think 50 is about right. You help me collect "
@@ -2082,49 +2079,49 @@ msgstr ""
 "esetére - 50 elég lesz. Segítsetek összegyűjteni! (<i>Köhög, köhög.</i>)"
 
 #. [message]: speaker=Carcyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:461
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:464
 msgid "Right away sir."
 msgstr "Igenis uram!"
 
 #. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:465
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:468
 msgid "Are you feeling well?"
 msgstr "Jól érzi magát?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:469
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:503
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:472
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:506
 msgid "Yes, yes. I’m quite all right."
 msgstr "Igen, persze."
 
 #. [message]: speaker=Shynal
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:473
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:507
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:476
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:510
 msgid "I don’t fancy wading in the water to fight these things."
 msgstr "Nem szeretnék a vízben gázolva harcolni ezekkel az izékkel."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:477
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:512
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:480
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:515
 msgid "No problem. We can lure them onto land."
 msgstr "Nem gond. Kicsalhatjuk őket a partra."
 
 #. [message]: speaker=Shynal
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:481
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:516
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:484
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:519
 msgid "How?"
 msgstr "Hogyan?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:485
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:488
 msgid ""
 "addressed_plural^Have you never been fishing before? With bait of course."
 msgstr "Te még sohasem horgásztál? Hát bizony csalival."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:495
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:498
 msgid ""
 "This is going to cost us, but I want to keep some gold around for "
 "emergencies — I think 50 is about right. Help me collect some. (<i>Cough, "
@@ -2134,22 +2131,22 @@ msgstr ""
 "esetére - 50 elég lesz. Segítsetek összegyűjteni! (<i>köhög,köhög,köhög</i>)"
 
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:499
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:502
 msgid "Right away sir. Are you feeling well?"
 msgstr "Igenis, uram. Jól érzi magát?"
 
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:508
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:511
 msgid "self_female^I don’t fancy wading in the water to fight these things."
 msgstr "Nem szeretnék a vízben gázolva harcolni ezekkel az izékkel."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:520
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:523
 msgid "Have you never been fishing before? With bait of course."
 msgstr "Te még sohasem horgásztál? Hát bizony csalival."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:530
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:533
 msgid ""
 "This is going to cost me, but I want to keep some gold around for "
 "emergencies — I think 50 is about right. I’d better send someone to collect "
@@ -2262,7 +2259,7 @@ msgstr "Blianxkep"
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:106
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:115
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/19_Lava_and_Stone.cfg:100
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:529
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:530
 msgid "Defeat all enemy leaders"
 msgstr "Győzd le az összes ellenséges vezért"
 
@@ -2442,7 +2439,7 @@ msgstr "Erdő"
 
 #. [unit]: type=Elvish Enchantress, id=Isthiniel
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:55
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:764
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:765
 msgid "Isthiniel"
 msgstr "Isthiniel"
 
@@ -2543,14 +2540,14 @@ msgstr ""
 "úton, így hamar megérkeztünk a megbeszélt helyre, ahol Ras-Tabahn már várt."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:142
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:145
 msgid ""
 "Greetings Ardonna! (<i>Cough</i>) I was successful, and I see that you were "
 "as well."
 msgstr "Üdv, Ardonna! (<i>Köhög</i>) Sikerrel jártam, és látom, te is."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:146
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:149
 msgid ""
 "Well met, Ras-Tabahn. Yes I was. Now, can you explain the mission you spoke "
 "of?"
@@ -2559,7 +2556,7 @@ msgstr ""
 "amiről beszéltél?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:150
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:153
 msgid ""
 "Gladly. I assume you studied the great mage Crelanu in history class. He "
 "fought with King Haldric the First. Since he faced the immortal lords of the "
@@ -2572,7 +2569,7 @@ msgstr ""
 "módszereikről. Nemrég megtudtam, hol tudjuk őt megtalálni."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:154
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:157
 msgid ""
 "Of course I know about Crelanu. But can we force him to reveal his knowledge "
 "to us?"
@@ -2580,7 +2577,7 @@ msgstr ""
 "Persze hogy tanultunk Crelanuról. De hogy vesszük rá, hogy átadja a tudását?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:158
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:161
 msgid ""
 "That shouldn’t be necessary. I have also learned that he wrote a book "
 "containing all his secrets, which must include all he knows of immortality. "
@@ -2594,14 +2591,14 @@ msgstr ""
 "nem lesz különösebb nehézség."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:162
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:165
 msgid ""
 "Yes, that seems like a plan with a good chance of success. I will join you "
 "in your effort."
 msgstr "Igen, erre szerintem is jó esélyeink vannak. Támogatlak mindenben."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:166
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:169
 msgid ""
 "I thought as much. We must cross the Great River, and head north into the "
 "Heart Mountains."
@@ -2610,7 +2607,7 @@ msgstr ""
 "hegység felé venni az irányt."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:175
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:178
 msgid ""
 "Before we leave, I have an unrelated question. Vendraxis here has said that "
 "my name is untrue. Do you have an idea what could that mean?"
@@ -2619,7 +2616,7 @@ msgstr ""
 "nevem hamis. Van ötleted, hogy mit jelenthet ez?"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:181
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:184
 msgid ""
 "Before we leave, I have an unrelated question. I met a mystic who said that "
 "my name was untrue. Do you have an idea what could that mean?"
@@ -2628,7 +2625,7 @@ msgstr ""
 "mondta, hogy a nevem hamis. Van ötleted, hogy mit jelenthet ez?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:187
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:190
 msgid ""
 "Possibly. When an academy mage completes his studies, he is granted "
 "syllables of power, which become his new name. You are well beyond that "
@@ -2643,7 +2640,7 @@ msgstr ""
 "használom."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:191
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:194
 msgid ""
 "I suppose you are right. I am no longer the ordinary girl Ardonna, and "
 "Vendraxis was correct. From now I shall be... Ardryn-Na."
@@ -2652,14 +2649,14 @@ msgstr ""
 "igaza volt. Mostantól... Ardryn-Na vagyok."
 
 #. [modify_unit]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:198
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:201
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:49
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:56
 msgid "Ardryn-Na"
 msgstr "Ardryn-Na"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:202
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:205
 msgid "Well then Ardryn-Na, let us head north."
 msgstr "Nos akkor Ardryn-Na, induljunk északnak."
 
@@ -2675,21 +2672,6 @@ msgstr "<i>Harmadik Fejezet:</i> A Halál Meghódítása"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:29
-#, fuzzy
-#| msgid ""
-#| "24 IV, 23 YW\n"
-#| "\n"
-#| "We reached the Ford of Abez as the dawn light spread behind the mountain "
-#| "peaks to the north. As we waded across, the dark water reached to our "
-#| "waists, which made for slow going. I dared not imagine what manner of "
-#| "creature lurked below, but we completed the crossing without incident. "
-#| "The water was chill with snowmelt, so our teeth were chattering when we "
-#| "reached the far shore. The rising sun was warm though, and had us dried "
-#| "in short order. Despite this, Ras-Tabahn was not well off. He collapsed "
-#| "in the sand and went into a paroxysm of coughing the like of which I had "
-#| "never seen. When he could speak again, he assured me that it was only on "
-#| "account of the cold, and I should not be unduly troubled. I am uneasy all "
-#| "the same."
 msgid ""
 "24 IV, 23 YW\n"
 "\n"
@@ -2709,11 +2691,11 @@ msgstr ""
 "\n"
 "A hegyek csúcsai mögött kelő nap első sugarainál értük el az Abezi-gázlót. "
 "Átkelés közben a sötét víz a derekunkig ért, így csak lassan haladtunk. Nem "
-"mertem belegondolni milyen élőlények lehetnek odalent, de probléma nélkül "
-"átjutottunk. A víz csípősen hideg volt az olvdó hótól, és vacogtak a fogaink "
-"mire partot értünk. A felkelő nap azonban meleg volt, és hamar "
-"megszáradtunk. Ennek ellenére, Ras-Tabahn nem érezte jól magát. A homokba "
-"rogyott, és olyan erős köhögőroham jött rá amilyet még nem láttam. Mikor "
+"mertem belegondolni, milyen csápos élőlények lehetnek odalent, de probléma "
+"nélkül átjutottunk. A víz csípősen hideg volt az olvadó hótól, és vacogtak a "
+"fogaink mire partot értünk. A felkelő nap azonban meleg volt, és hamar "
+"megszáradtunk. Ennek ellenére Ras-Tabahn nem érezte jól magát. A homokba "
+"rogyott, és olyan erős köhögőroham jött rá, amilyet még nem láttam. Mikor "
 "újra tudott beszélni, biztosított arról, hogy ez csak a hideg miatt történt "
 "és ne aggódjak. Ettől persze én még aggódok."
 
@@ -2991,18 +2973,12 @@ msgstr "Győzd le Crelanut"
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:85
-#, fuzzy
-#| msgid ""
-#| "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every "
-#| "turn. He will die if he reaches zero. Villages will heal him four points, "
-#| "and he will lose only two if he is resting."
 msgid ""
 "Ras-Tabahn is slowed and will lose four hitpoints every turn. He will die if "
 "he reaches zero."
 msgstr ""
-"Ras-Tabahn beteg. Le van lassulva, és minden körben négy életerőpontot "
-"veszít. Meghal, ha eléri a nullát. A falvak és gyógyítók négy életerő pontot "
-"gyógyítanak rajta, és csak kettőt veszít amikor pihen."
+"Ras-Tabahn lelassult, és minden körben négy életerőpontot veszít. Meghal, ha "
+"életereje nullára csökken."
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:88
@@ -3105,8 +3081,8 @@ msgid ""
 "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every turn. "
 "He will die if he reaches zero."
 msgstr ""
-"Ras-Tabahn beteg. Le van lassulva, és minden körben négy életerőpontot "
-"veszít. Meghal, ha eléri a nullát."
+"Ras-Tabahn beteg. Lelassult, és minden körben négy életerőpontot veszít. "
+"Meghal, ha életereje nullára csökken."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:397
@@ -3319,7 +3295,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:49
-#, fuzzy
 msgid ""
 "17 VI, 23 YW\n"
 "\n"
@@ -3334,13 +3309,15 @@ msgid ""
 msgstr ""
 "Wesnoth 23. évében, június 17.\n"
 "\n"
-"A folyamat lezajlott mindkettőnk részéről. Nem érzem magam másnak, de "
-"gondolom ijesztő lehetek. Áh, mindegy is. Az elsődleges célomat elértem! Nem "
-"halhatok meg! Persze gondolom szanaszét törhetik a csontjaimat mint egy "
-"csontváznak, esetleg megégethetnek, de nem félek ezektől a valószínűtlen "
-"eshetőségektől: olyan hatalmam van a szellemvilág által, hogy bármikor "
-"megvédhetem magam! A következő célom ezt a tudást megosztani a világgal, "
-"hogy <i>senkinek</i> se kelljen többé meghalnia."
+"A folyamat lezajlott mindkettőnk részéről. Őrt állíttattam, hogy semmi ne "
+"lephessen meg legyöngült állapotomban, és nem is történt semmi. Rendbe "
+"jöttem. Nem érzem magam másnak, de gondolom ijesztő lehetek. Áh, mindegy is. "
+"Az elsődleges célomat elértem! Nem halhatok meg! Persze gondolom szanaszét "
+"törhetik a csontjaimat mint egy csontváznak, esetleg megégethetnek, de nem "
+"félek ezektől a valószínűtlen eshetőségektől: olyan hatalmam van a "
+"szellemvilág által, hogy bármikor megvédhetem magam! A következő célom ezt a "
+"tudást megosztani a világgal, hogy <i>senkinek</i> se kelljen többé "
+"meghalnia."
 
 #. [side]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:70
@@ -3371,24 +3348,20 @@ msgid "You can only do this in a castle."
 msgstr "Ezt csak várban hajthatod végre."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:424
-#, fuzzy
-#| msgid ""
-#| "You can now advance dark sorcerers to liches! You can also right-click on "
-#| "an existing necromancer to turn it into a lich as long as it is in a "
-#| "castle."
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:429
 msgid ""
 "You can now advance dark sorcerers to liches! For the rest of the campaign, "
 "you can also right-click on an existing necromancer to turn it into a lich "
 "as long as it is in a castle. If the necromancer has gained enough "
 "experience, it will immediately level into an ancient lich!"
 msgstr ""
-"Sötét varázslóid most már Delevénnyé is szintet léphetnek! Továbbá, ha egy "
-"létező Holtidéződre klikkelsz a jobb egérgombbal, Delevénnyé alakíthatod, ha "
-"várban áll."
+"Sötét varázslóid szintlépésnél most már delevénnyé is válhatnak! A hadjárat "
+"további részében ha egy létező holtidéződre kattintasz a jobb egérgombbal, "
+"delevénnyé alakíthatod, ha várban áll. Ha elég tapasztalatra tett szert, "
+"egyből ősi delevénnyé válik!"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:429
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:434
 msgid ""
 "We have conquered death! Let us bring the news back to Wesnoth. We should to "
 "let them know that nobody ever need die again."
@@ -3397,7 +3370,7 @@ msgstr ""
 "nem kell többé meghalnia!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:433
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:438
 msgid ""
 "I was planning to go that direction myself, so I have no objection. But, let "
 "us not go over those wretched mountain passes again. These tunnels should "
@@ -3408,32 +3381,32 @@ msgstr ""
 "vezetnek, és egyenesen Wesnothba visznek."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:437
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:442
 msgid "Why would the Dwarvish empire abandon an outpost like this?"
 msgstr "Miért hagynának el a törpök egy ilyen erődítést?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:441
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:446
 msgid "We may find out. We should proceed cautiously."
 msgstr "Talán megtudjuk. Óvatosnak kell lennünk."
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:457
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:462
 msgid "Giant spidersss! That explainsss the cobwebsss everywhere."
 msgstr "Óriásssssz pókok! Ezzzz megmagyarásssza a hálókat!"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:463
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:468
 msgid "Giant spiders! That explains the cobwebs everywhere."
 msgstr "Óriás pókok! Ez magyarázat a rengeteg hálóra!"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:469
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:474
 msgid "They are not moving much. Hopefully they continue to stay sleepy."
 msgstr "Úgy nézem nem mozognak. Talán nem ébresztettük fel őket."
 
 #. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:475
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:480
 msgid "They’re waking up now. Watch out."
 msgstr "Ezek bizony felkeltek! Figyeljetek!"
 
@@ -3470,7 +3443,6 @@ msgstr ""
 # Wesnoth proper: az igazi/tényleges Wesnoth? (vs. birtok)
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/19_Lava_and_Stone.cfg:25
-#, fuzzy
 msgid ""
 "Ras-Tabahn has tried to persuade me to join him in his endeavor, but I have "
 "serious misgivings about his plan. I am not positive he can defeat the city "
@@ -3483,17 +3455,16 @@ msgid ""
 "clash, but that will be a worry for another time, and for now, we each "
 "continue to regard the other as an ally."
 msgstr ""
-"Ras-Tabahn megpróbált rábeszélni, hogy csatlakozzak hozzá az "
-"erőfeszítésében, de komoly aggodalmaim vannak a tervével kapcsolatban. Nem "
-"vagyok benne biztos, hogy képes legyőzni a város őreit, a lakosság "
-"rabszolgasorba döntése pedig az egyik oka a régi wesfolki vezetők rossz "
-"hírnevének. Úgy vélem, hogy egy jóindulatúbb megközelítésnek nagyobb esélye "
-"van örökségünk biztosítására. Terjesszük el sikerünk hírét és ösztökéljük az "
-"állampolgárokat, hogy önként csatlakozzanak hozzánk. Délre utazom a Wesnoth "
-"birtokra. Meglátogatom Dan’Tonkot és Weldynt. Valamikor a távoli jövőben "
-"valószínűleg összecsapnak újdonsült barátaim Ras-Tabahn lakosságával, de "
-"amiatt még ráérünk aggódni. Most pedig tekintsünk egymásra szövetségesként a "
-"továbbiakban is."
+"Ras-Tabahn megpróbált rábeszélni, hogy csatlakozzak hozzá fáradozásában, de "
+"komoly aggodalmaim vannak a tervével kapcsolatban. Nem vagyok benne biztos, "
+"hogy képes legyőzni a város őreit, a lakosság rabszolgasorba döntése pedig "
+"az egyik oka a régi wesfolki vezetők rossz hírnevének. Úgy vélem, hogy egy "
+"szelídebb megközelítésnek nagyobb esélye van örökségünk biztosítására. "
+"Terjesszük el sikerünk hírét és ösztökéljük a városlakókat, hogy önként "
+"csatlakozzanak hozzánk. Délre utazom a tényleges Wesnothba. Meglátogatom "
+"Dan’Tonkot és Weldynt. Valamikor a távoli jövőben valószínűleg összecsapnak "
+"újdonsült barátaim Ras-Tabahn népével, de amiatt még ráérünk aggódni. "
+"Egyelőre maradjunk szövetségesek."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/19_Lava_and_Stone.cfg:32
@@ -3628,12 +3599,12 @@ msgstr ""
 "kövekkel!"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:680
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:708
 msgid "Now, where are we?"
 msgstr "Nos, hol is vagyunk?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:684
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:712
 msgid ""
 "We are in a Dwarvish burial chamber it seems. That is good. We could always "
 "use some more soldiers."
@@ -3642,12 +3613,12 @@ msgstr ""
 "jönni!"
 
 #. [unit]: type=Dwarvish Sentinel, id=Aigondur
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:696
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:724
 msgid "Aigondur"
 msgstr "Aigondur"
 
 #. [message]: speaker=Aigondur
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:701
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:729
 msgid ""
 "Human invaders be comin’ through the Hall o’ Heroes! I’m closin’ th’ Troll "
 "Gate!"
@@ -3655,12 +3626,12 @@ msgstr ""
 "Ember betolakodók jönnek a Hősök Tárnáján keresztül! Becs'kom a Troll Kaput!"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:741
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:769
 msgid "Well, we are not going that way."
 msgstr "Na, erre már nem megyünk ma."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:745
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:773
 msgid ""
 "But look. There is a large crack in the wall to our left! I’m certain we "
 "could squeeze through."
@@ -3668,17 +3639,17 @@ msgstr ""
 "Nézd. Itt egy repedés a falban, balra. Ott át tudjuk préselni magunkat."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:749
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:777
 msgid "We’ll just remove the statue..."
 msgstr "Csak arréb dobjuk a szobrot...."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:784
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:812
 msgid "... and push the coffin out of the way."
 msgstr "...és odébb toljuk a koporsót."
 
 #. [message]: speaker=spotter
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:812
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:840
 msgid "Ach! Th’ invaders have made it inna the Crystal Caves!"
 msgstr "Ajj! A betolakodók a Kristály Barlangba' vannak!"
 
@@ -3796,18 +3767,18 @@ msgstr ""
 "Felperzselni őket!"
 
 #. [objective]: condition=lose
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:533
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:534
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:112
 msgid "Death of Ardryn-Na"
 msgstr "Ardryn-Na elesik"
 
 #. [unit]: type=Saurian Flanker, id=Fizztsars
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:571
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:572
 msgid "Fizztsars"
 msgstr "Fizztsars"
 
 #. [message]: speaker=Fizztsars
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:578
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:579
 msgid ""
 "We have arrived, Taxsstrimon. We will fight bessside you. They will pay for "
 "killing our malesss!"
@@ -3816,67 +3787,67 @@ msgstr ""
 "lemészárlásáért!"
 
 #. [message]: speaker=Taxtrimon
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:582
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:583
 msgid "Well met Fizztsars. Now these creatures will certainly fall."
 msgstr "Örvendek, Fizztsars. Ezek a lények most már biztos elesnek."
 
 #. [message]: speaker=Fizztsars
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:591
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:592
 msgid "Except for the male of oursss with them. He will come with usss."
 msgstr ""
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:595
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:596
 msgid "No! I will not return yet, I still have sssecrets to learn!"
 msgstr ""
 
 #. [unit]: type=Dwarvish Dragonguard, id=Thrigalurd
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:622
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:623
 msgid "Thrigalurd"
 msgstr "Thrigalurd"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:637
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:638
 msgid "Look! The dwarves circled around in front of us."
 msgstr "Nézd! A törpék megkerültek és elénk vágtak!"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:641
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:642
 msgid "That’s why getting through Knalga was so easy."
 msgstr "Hát ezért volt az átjutás Knalgán ilyen könnyű."
 
 #. [unit]: type=Great Mage, id=Carmyna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:699
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:700
 msgid "Carmyna"
 msgstr "Carmyna"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:718
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:719
 msgid "They just keep coming! Has nobody even considered what we offer?"
 msgstr "Egyfolytában csak jönnek! Senki sem figyel arra, hogy mit is ajánlunk?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:728
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:729
 msgid "Well. That was intense."
 msgstr "Hát. Ez masszív volt."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:732
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:733
 msgid "At last we are victorious!"
 msgstr "De végre győztünk!"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:783
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:784
 msgid "The whole world is against us."
 msgstr "Az egész világ ellenünk van."
 
 #. [unit]: type=Paladin, id=Gwendir
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:821
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:822
 msgid "Gwendir"
 msgstr "Gwendir"
 
 #. [message]: speaker=adviser
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:845
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:846
 msgid ""
 "This is the place Crelanu’s gryphon told us to come, and yon party has an "
 "ill-favored look."
@@ -3885,19 +3856,19 @@ msgstr ""
 "csapat ott nem néz ki bíztatóan."
 
 #. [message]: speaker=Gwendir
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:849
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:850
 msgid "Yes, I believe that is our quarry."
 msgstr "Igen, úgy vélem megtaláltuk őket."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:853
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:854
 msgid "Crelanu! Still he haunts us. Remind me again why we didn’t kill him."
 msgstr ""
 "Crelanu! Még mindig kísért minket. Emlékeztess, hogy adandó alkalommal "
 "intézzem el. Végleg."
 
 #. [message]: speaker=Gwendir
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:857
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:858
 msgid ""
 "Ardonna of Tarrynth and Rassin Tabin, you stand convicted of necromancy, and "
 "are sentenced to death!"
@@ -3906,7 +3877,7 @@ msgstr ""
 "találtattok, és az ítélet halál!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:861
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:862
 msgid ""
 "Is that all? Death holds no terror for us as we have died already. You will "
 "follow shortly."
@@ -3915,17 +3886,17 @@ msgstr ""
 "tartani, amíg ti is holtan végzitek."
 
 #. [message]: speaker=Gwendir
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:865
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:866
 msgid "The blessed swords of our order will soon give you cause to fear again."
 msgstr "Az rendünk megáldott kardjai félelmet fog kelteni bennetek!"
 
 #. [message]: speaker=adviser
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:869
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:870
 msgid "Sir, the magi have not yet arrived."
 msgstr "Uram, a mágusok még nem érkeztek meg!"
 
 #. [message]: speaker=Gwendir
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:873
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:874
 msgid ""
 "No matter. We need not fear this darkness, and we need not wait on the "
 "schoolteachers."
@@ -3933,12 +3904,12 @@ msgstr ""
 "Nem számít. Nem kell félnünk a sötétséget, és nem kell megvárnunk őket."
 
 #. [unit]: type=Naga Myrmidon, id=Taxtrimon
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:886
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:887
 msgid "Taxtrimon"
 msgstr "Taxtrimon"
 
 #. [message]: speaker=Taxtrimon
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:903
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:904
 msgid ""
 "We have found them! These magi destroyed a profitable business venture. We "
 "will take vengeance. You horse humans can assist us."
@@ -3948,17 +3919,17 @@ msgstr ""
 "szegíthetnétek!"
 
 #. [unit]: type=Merman Hoplite, id=Mauapan
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:916
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:917
 msgid "Mauapan"
 msgstr "Mauapan"
 
 #. [message]: speaker=Mauapan
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:922
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:923
 msgid "I will also assist. Too many innocents have died. This ends today."
 msgstr "Mi is jövünk. Túl sok ártatlan halt meg. Ennek ma vége."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:926
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:927
 msgid "We are surrounded. We must defeat this horde."
 msgstr "Körbevettek. El kell pusztítanunk az egész hordát."
 
@@ -3969,17 +3940,6 @@ msgstr "Epilógus"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:16
-#, fuzzy
-#| msgid ""
-#| "10 VII, 23 YW — Final Entry\n"
-#| "\n"
-#| "We prevailed today on the field, but our victory was somewhat bitter. "
-#| "<i>Everyone</i> was afraid or angry and immediately attacked us instead "
-#| "of listening to our news. I realize now...the world is not ready for our "
-#| "knowledge. I give up on all of them. I am going to live in the old troll "
-#| "city and learn the applications of mountain fire. In some future time, "
-#| "less conservative attitudes will dominate, and I can certainly afford to "
-#| "wait. In the meantime, we are doing what we can to hasten that day."
 msgid ""
 "10 VII, 23 YW — Final Entry\n"
 "\n"
@@ -3997,27 +3957,19 @@ msgid ""
 msgstr ""
 "Wesnoth 23. évében, július 10. - Utolsó bejegyzések\n"
 "\n"
-"Ma győzedelmeskedtünk a csatatéren, de az íze keserű volt. <i>Mindenki</i> "
-"vagy félt vagy dühös volt, és azonnal megtámadott, ahelyett, hogy "
-"meghallgatott volna. Most már megértem...a világ nem kész a tudásunkra. "
-"Feladom. Az öreg troll városban fogok meghúzódni, és a hegyi tűz "
+"Ma győzedelmeskedtünk a csatatéren, de a győzelem íze keserű volt. "
+"<i>Mindenki</i> félt vagy dühös volt, és azonnal támadott, ahelyett, hogy "
+"meghallgatott volna. Most már megértem... a világ nem áll készen a "
+"tudásunkra. Nem érthetik meg, hogy legyőztük az ősi félelmet: a halált. "
+"Helyette kinézetünk miatt gondolkodás nélkül ránk támadnak. Feladom. "
+"Egyelőre vissza kell húzódnom — talán az öreg troll városba, és a hegyi tűz "
 "felhasználási módjait fogom kutatni. Valamikor a jövőben talán a nyíltabb "
-"hozzáállás lesz meghatározó a világban, és nekem megéri várni. Addig is, "
-"megteszünk mindent amit tudunk, hogy siettessük azt a napot."
+"hozzáállás lesz meghatározó a világban, és tudásunkat jóra lehet használni. "
+"És én sokat tudok várni. Addig is, megteszünk mindent amit tudunk, hogy "
+"siettessük azt a napot."
 
 #. [then]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. He "
-#| "plans to take over the city and make it a haven for magi such as us. Most "
-#| "of the others are going with him. I wish them success. Vendraxis now "
-#| "knows what he must learn to replicate our metamorphosis. He will use the "
-#| "years left to him in study and practice while he attempts to change the "
-#| "attitudes of his people. As for me, I have placed some spells on my "
-#| "journal to help keep it from harm, and I will make it conspicuous on this "
-#| "battlefield. I hope that it will eventually make its way into the hands "
-#| "of someone in Tath who is willing to learn the secrets of the ancients."
 msgid ""
 "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. Most "
 "of the others are going with him. I wish them success. Vendraxis now knows "
@@ -4030,19 +3982,18 @@ msgid ""
 "open-minded. Tath, in particular, is home to many mages. It only takes one "
 "who is willing to learn the secrets of the ancients."
 msgstr ""
-"Ras-Tabahn újjáépíti az erejét, és továbbmegy Elensefarba. Át akarja venni a "
-"várost, és a magunkfajtáknak adni. A többiek is vele mennek. Remélem "
-"sikerrel járnak. Vendraxis most már tudja, hogyan vigye véghez az "
-"átalakulást. Van még benne annyi év, hogy addig tanuljon és gyakoroljon, és "
-"megváltoztassa népe hiedelmeit. Rólam még annyit, hogy átkokat helyeztem a "
-"naplómra, hogy megóvjam a tolvajoktól, és elrejtem ezen a csatamezőn. "
-"Remélem, hogy valaki olyan tath-i ember találja meg, aki szintén meg akarja "
-"tanulni az Ősök Titkait."
+"Ras-Tabahn visszanyeri az erejét, és továbbmegy Elensefarba. A többség vele "
+"tart. Remélem sikerrel járnak. Vendraxis most már tudja, mit kell "
+"megtanulnia, hogy hozzánk hasonlóan véghez vihesse az átalakulást. Van még "
+"benne annyi év, hogy tanuljon, gyakoroljon és megváltoztassa népe "
+"hiedelmeit. Rólam még annyit, hogy szembetűnő helyre rejtem a naplómat a "
+"csatatéren. Úgy gondolom, legtöbben félnek majd tönkretenni, de védőátkokat "
+"helyeztem rá, hogy megóvjam. Remélem, ily módon elég hosszú ideig megmarad, "
+"hogy valami nyíltabb gondolkodású egyénhez kerüljön. Tath kifejezetten sok "
+"mágus otthona. Egy is elegendő, aki hajlandó megtanulni az ősök titkait."
 
-# még vannak különbségek!
 #. [else]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:34
-#, fuzzy
 msgid ""
 "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. Most "
 "of the others are going with him. I wish them success. As for me, I will "
@@ -4053,16 +4004,15 @@ msgid ""
 "to many mages. It only takes one who is willing to learn the secrets of the "
 "ancients."
 msgstr ""
-"Ras-Tabahn újjáépíti az erejét, és továbbmegy Elensefarba. Át akarja venni a "
-"várost, és a magunkfajtáknak adni. A többiek túlnyomó része is vele tart. "
-"Remélem sikerrel járnak. Rólam még annyit, hogy átkokat helyeztem a "
-"naplómra, hogy megóvjam a tolvajoktól, és elrejtem ezen a csatamezőn. "
-"Remélem, hogy valaki olyan tath-i ember találja meg, aki szintén meg akarja "
-"tanulni az Ősök Titkait."
+"Ras-Tabahn visszanyeri az erejét, és továbbmegy Elensefarba. A többség vele "
+"tart. Rólam még annyit, hogy szembetűnő helyre rejtem a naplómat a "
+"csatatéren. Úgy gondolom, legtöbben félnek majd tönkretenni, de védőátkokat "
+"helyeztem rá, hogy megóvjam. Remélem, ily módon elég hosszú ideig megmarad, "
+"hogy valami nyíltabb gondolkodású egyénhez kerüljön. Tath kifejezetten sok "
+"mágus otthona. Egy is elegendő, aki hajlandó megtanulni az ősök titkait."
 
 #. [unit_type]: id=Bone Bird, race=undead, description=
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Bird.cfg:4
-#, fuzzy
 msgid "Bone Bird"
 msgstr "Csontmadár"
 
@@ -4087,18 +4037,16 @@ msgstr ""
 msgid "Delinquent"
 msgstr "Delikvens"
 
-# "bűnhöz nyúlnak" - elég fura, de nem találtam jobbat még
 #. [unit_type]: id=Delinquent, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:18
-#, fuzzy
 msgid ""
 "Some girls shun the typical life planned for them by society, and fall in "
 "with the criminal element. Though they may end up in jail, that seems "
 "preferable to them than tying themselves to a husband."
 msgstr ""
 "Néhány lány elveti a társadalom által számukra elrendelt szokványos életet, "
-"és a bűnhöz nyúlnak. Bár lehet, hogy börtönben végzik egy nap, ezt még "
-"mindig jobb jövőnek tartják, mint hogy megházasodjanak."
+"és rossz társaságba keverednek. Bár lehet, hogy börtönben végzik egy nap, "
+"ezt még mindig jobbnak tartják a házasságnál."
 
 #. [unit_type]: id=Dunefolk, race=dunefolk
 #. [unit_type]: id=Noble, race=human
@@ -4344,17 +4292,15 @@ msgstr ""
 msgid "Don't worry, my pet. I can save you."
 msgstr ""
 
-# Aww -> Óóó? itt és következőnél
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:424
-#, fuzzy
 msgid "Aww. I wanted to be a mage like Shynal."
-msgstr "Hűha. Olyan mágus szerettem volna lenni, mint Shynal."
+msgstr "Óóó, olyan mágus szerettem volna lenni, mint Shynal."
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:430
 msgid "Aww. I wanted to be a mage like Carcyn."
-msgstr "Hűha. Olyan mágus szerettem volna lenni, mint Carcyn."
+msgstr "Óóó, olyan mágus szerettem volna lenni, mint Carcyn."
 
 #. [option]
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:437
@@ -4373,22 +4319,22 @@ msgstr "Átgondoltam. Lehet, hogy egy nap nagyon erős leszel."
 msgid "Thanks!"
 msgstr "Köszönöm!"
 
-# Nem áll össze a szöveg számomra. Talán ha látnám milyen szövegkörnyezetben van, az segítene.
+# Ha szintet lépsz Carcynnal vagy Shynallal, választhatsz, hogy útonálló (C esetén akár gyilkos) vagy árnyak tanítványa legyen. Ha nem árnyak tanítványát választasz, akkor felveti, hogy olyan mágus akart lenni mint te, és itt még meggondolhatod magad, vagy azt mondhatod neki, hogy "ne akard, hogy megbánjam".
+# Ha egyik árnyak tanítványa lett, a másikat pedig ezt követően útonállóvá tennéd a szintlépésekor, azt mondja," Óóó, olyan mágus szerettem volna lenni, mint [a másik]..."
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:466
 msgid ""
 "Hey, I wanted to be a wizard like you and live forever when you figure it "
 "out! I know I could be super-powerful in the end."
 msgstr ""
-"Hé! Olyan varázsló akartam lenni mint te, és örökké élni, amint rájössz, "
-"hogyan lehet! Tudom, hogy végül hihetetlenül hatalmas lennék."
+"Hé! Pont olyan varázsló akartam lenni mint te, és örökké élni! Tudom, hogy "
+"végül hihetetlenül hatalmas lennék."
 
 #. [option]
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:472
 msgid "Hold your tongue. You will do as I command."
 msgstr "Tartsd a szád! Azt teszed, amit parancsolok!"
 
-# Szerintem ez a dark adept, amit máshol árnyak tanítványának hívnak
 #. [option]
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:481
 msgid "Very well. Having more adepts might be a good idea after all."

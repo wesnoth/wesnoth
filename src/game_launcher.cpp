@@ -672,6 +672,7 @@ bool game_launcher::load_game()
 			return false;
 		}
 
+		load.set_gamestate();
 		try {
 			game_config_manager::get()->
 				load_game_config_for_game(state_.classification(), state_.get_scenario_id());
@@ -679,7 +680,6 @@ bool game_launcher::load_game()
 			return false;
 		}
 
-		load.set_gamestate();
 
 	} catch(const config::error& e) {
 		if(e.message.empty()) {

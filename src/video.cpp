@@ -25,6 +25,11 @@
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
 
+#ifdef TARGET_OS_OSX
+#include "desktop/apple_video.hpp"
+#include "game_version.hpp"
+#endif
+
 #include <cassert>
 #include <vector>
 
@@ -404,6 +409,24 @@ std::pair<float, float> CVideo::get_dpi() const
 {
 	float hdpi, vdpi;
 	if(window && SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi) == 0) {
+#ifdef TARGET_OS_OSX
+		// SDL 2.0.12 changes SDL_GetDisplayDPI. Function now returns DPI
+		// multiplied by screen's scale factor. This part of code reverts
+		// this multiplication.
+		//
+		// For more info see issue: https://github.com/wesnoth/wesnoth/issues/5019
+		SDL_version sdl_version;
+		SDL_GetVersion(&sdl_version);
+		
+		const version_info sdl_version_info(sdl_version.major, sdl_version.minor, sdl_version.patch);
+		const version_info version_to_compare(2, 0, 12);
+		
+		if (sdl_version_info >= version_to_compare) {
+			float scale_factor = desktop::apple::get_scale_factor(window->get_display_index());
+			hdpi /= scale_factor;
+			vdpi /= scale_factor;
+		}
+#endif
 		return { hdpi, vdpi };
 	}
 	// SDL doesn't know the screen dpi, there's a configuration issue, or we

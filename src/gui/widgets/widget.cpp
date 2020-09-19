@@ -28,7 +28,8 @@ namespace gui2
 /***** ***** ***** Constructor and destructor. ***** ***** *****/
 
 widget::widget()
-	: id_("")
+	: enable_lua_ptr<widget>(this)
+	, id_("")
 	, parent_(nullptr)
 	, x_(-1)
 	, y_(-1)
@@ -50,7 +51,8 @@ widget::widget()
 }
 
 widget::widget(const builder_widget& builder)
-	: id_(builder.id)
+	: enable_lua_ptr<widget>(this)
+	, id_(builder.id)
 	, parent_(nullptr)
 	, x_(-1)
 	, y_(-1)

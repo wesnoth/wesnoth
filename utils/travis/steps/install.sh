@@ -73,3 +73,5 @@ else
 
     docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH" .
 fi
+
+echo "Install step complete!"

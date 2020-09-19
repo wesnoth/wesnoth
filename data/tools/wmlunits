@@ -374,7 +374,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     wesnoth.batchlist = batchlist
     wesnoth.cid = cid
 
-    wesnoth.parser.parse_text("{core/units.cfg}", "NORMAL")
+    wesnoth.parser.parse_text("{core/units.cfg}", "__WMLUNITS__,NORMAL")
     wesnoth.add_units("mainline")
 
     if define == "MULTIPLAYER":
@@ -640,7 +640,7 @@ if __name__ == '__main__':
         parser = wmlparser3.Parser(options.wesnoth,
                                    options.config_dir,
                                    options.data_dir)
-        parser.parse_text("{languages}")
+        parser.parse_text("{languages}", "__WMLUNITS__")
 
         for locale in parser.get_all(tag="locale"):
             isocode = locale.get_text_val("locale")
