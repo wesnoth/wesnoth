@@ -1,4 +1,4 @@
-## Version 1.15.4+dev
+## Version 1.15.5
  ### Add-ons client
    * Fix: when using the "system default language", add-ons' titles and descriptions were always shown in English (PR #5109)
  ### Campaigns
