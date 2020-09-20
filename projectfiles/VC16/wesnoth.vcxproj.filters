@@ -1568,10 +1568,25 @@
     <ClCompile Include="..\..\src\scripting\lua_terrainmap.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\scripting\lua_color.cpp" />
-    <ClCompile Include="..\..\src\scripting\lua_wml.cpp" />
-    <ClCompile Include="..\..\src\scripting\lua_stringx.cpp" />
     <ClCompile Include="..\..\src\game_config_view.cpp" />
+    <ClCompile Include="..\..\src\scripting\lua_stringx.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_widget.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_widget_attributes.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_widget_methods.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_wml.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_color.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3050,10 +3065,25 @@
     <ClInclude Include="..\..\src\scripting\lua_terrainmap.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\scripting\lua_color.hpp" />
-    <ClInclude Include="..\..\src\scripting\lua_wml.hpp" />
-    <ClInclude Include="..\..\src\scripting\lua_stringx.hpp" />
     <ClInclude Include="..\..\src\game_config_view.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_stringx.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_widget.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_widget_attributes.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_widget_methods.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_wml.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_color.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
