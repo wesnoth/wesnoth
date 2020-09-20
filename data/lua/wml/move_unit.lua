@@ -112,8 +112,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 			}
 			local x2, y2 = current_unit.x, current_unit.y
 			current_unit.x, current_unit.y = x, y
-			current_unit:to_map()
-
+			current_unit:to_map(false)
 			if unshroud then
 				wesnoth.wml_actions.redraw {clear_shroud=true}
 			end

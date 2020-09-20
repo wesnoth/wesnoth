@@ -58,7 +58,7 @@ local status_anim_update = function(is_undo)
 		    changed_something = true
                     ec_unit.status.diversion = true
                     ec_unit:extract()
-                    ec_unit:to_map()
+                    ec_unit:to_map(false)
                     wesnoth.wml_actions.animate_unit {
                             flag = "launching",
                             with_bars = true,
@@ -79,7 +79,7 @@ local status_anim_update = function(is_undo)
 		    changed_something = true
                     ec_unit.status.diversion = false
                     ec_unit:extract()
-                    ec_unit:to_map()
+                    ec_unit:to_map(false)
                     wesnoth.wml_actions.animate_unit {
                             flag = "landing",
                             with_bars = true,

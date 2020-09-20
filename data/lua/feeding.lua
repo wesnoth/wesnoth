@@ -26,7 +26,7 @@ wesnoth.game_events.add_repeating("die", function()
 			effect.increase_total = effect.increase_total + 1
 			u_killer_cfg.max_hitpoints = u_killer_cfg.max_hitpoints + 1
 			u_killer_cfg.hitpoints = u_killer_cfg.hitpoints + 1
-			wesnoth.units.to_map(u_killer_cfg)
+			wesnoth.units.to_map(u_killer_cfg, false)
 			wesnoth.interface.float_label(ec.x2, ec.y2, _ "+1 max HP", "0,255,0")
 			return
 		end
