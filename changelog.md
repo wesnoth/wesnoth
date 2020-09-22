@@ -1,4 +1,6 @@
 ## Version 1.15.5+dev
+ ### Language and i18n
+   * Updated translations: Portuguese (Brazil)
  ### Units
    * added Tusker line Gorer and Tusklet (by TSI 2009)
    * revised Falcon and Elder Falcon sprites
@@ -7,7 +9,8 @@
      * Cave Bear
      * Icemonax
      * Giant Stoat
-     * Fire Ant 
+     * Fire Ant
+
 ## Version 1.15.5
  ### Add-ons client
    * Fix: when using the "system default language", add-ons' titles and descriptions were always shown in English (PR #5109)
