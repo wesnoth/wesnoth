@@ -226,7 +226,6 @@ void game_display::post_draw() {
 
 void game_display::draw_invalidated()
 {
-	halo_man_->unrender(invalidated_);
 	display::draw_invalidated();
 	if (fake_unit_man_->empty()) {
 		return;
