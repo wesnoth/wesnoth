@@ -252,13 +252,21 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 		using namespace orb_status_helper;
 		std::unique_ptr<image::locator> orb_img = nullptr;
-		if(std::size_t(side) != viewing_team + 1) {
-			if(viewing_team_ref.is_enemy(side)) {
-				if(preferences::show_enemy_orb() && !u.incapacitated())
-					orb_img = get_orb_image(orb_status::enemy);
-			} else if(preferences::show_allied_orb())
-				orb_img = get_orb_image(orb_status::allied);
-		} else if(playing_team == viewing_team && !u.user_end_turn()) {
+		if(viewing_team_ref.is_enemy(side)) {
+			if(preferences::show_enemy_orb() && !u.incapacitated())
+				orb_img = get_orb_image(orb_status::enemy);
+		} else if(static_cast<std::size_t>(side) != playing_team + 1) {
+			// We're looking at either the player's own unit or an ally's unit, but either way it
+			// doesn't belong to the playing_team and isn't expected to move until after its next
+			// turn refresh.
+			auto os = orb_status::moved;
+			if(static_cast<std::size_t>(side) != viewing_team + 1)
+				os = orb_status::allied;
+			if(prefs_show_orb(os))
+				orb_img = get_orb_image(os);
+		} else {
+			// We're looking at either the player's own unit, or an ally's unit, during the unit's
+			// owner's turn.
 			auto os = dc.unit_orb_status(u);
 			if(prefs_show_orb(os))
 				orb_img = get_orb_image(os);
