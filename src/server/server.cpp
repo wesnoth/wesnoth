@@ -818,7 +818,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 
 	std::shared_ptr<game> last_sent;
 	for(const auto& record : player_connections_.get<game_t>()) {
-		auto g_ptr { record.get_game() };
+		auto g_ptr = record.get_game();
 		if(g_ptr != last_sent) {
 			// Note: This string is parsed by the client to identify lobby join messages!
 			if(g_ptr->started()) {
