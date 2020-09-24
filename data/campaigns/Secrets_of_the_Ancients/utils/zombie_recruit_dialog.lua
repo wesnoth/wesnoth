@@ -75,8 +75,7 @@ local zombie_recruit_dialog = { maximum_height=676, minimum_height=608,
     }
 }
 
-local function preshow()
-    local dialog = gui.widget.find()
+local function preshow(dialog)
 
     local function select()
         -- TODO: why not use unit_preview_pane widget ?
