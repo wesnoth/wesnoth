@@ -3,6 +3,7 @@
  ### Language and i18n
  ### Lua API
  ### Multiplayer
+   * During allies' turns, use orb colors to show which ones can still move (issue #1424). Also enabled for allied AI sides in singleplayer.
  ### Terrain
  ### Units
  ### User interface
