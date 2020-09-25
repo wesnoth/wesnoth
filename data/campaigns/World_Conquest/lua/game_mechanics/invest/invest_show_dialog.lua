@@ -165,7 +165,7 @@ function wc2_show_invest_dialog_impl(args)
 			res = selected_data.res
 		end
 	end
-	local d_res = wesnoth.show_dialog(dialog_wml, preshow)
+	local d_res = gui.show_dialog(dialog_wml, preshow)
 	return d_res, res
 end
 

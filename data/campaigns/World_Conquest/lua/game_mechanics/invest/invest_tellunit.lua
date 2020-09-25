@@ -61,12 +61,12 @@ function invest_tellunit.execute(unit_type)
 	if not wesnoth.sides[wesnoth.current.side].is_local then
 		return
 	end
-	local function preshow()
-		wesnoth.set_dialog_value(wc2_color.tc_image(unit_type.image), "icon")
-		wesnoth.set_dialog_value(unit_type.name, "name")
+	local function preshow(dialog)
+		dialog.icon.label = wc2_color.tc_image(unit_type.image)
+		dialog.name.label = unit_type.name
 	end
 
-	wesnoth.show_dialog(invest_tellunit.dialog_wml, preshow)
+	gui.show_dialog(invest_tellunit.dialog_wml, preshow)
 end
 
 return invest_tellunit

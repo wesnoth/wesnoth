@@ -280,8 +280,8 @@ function wc2_debug_settings(nplayers)
 
 		sl_scenario.value = globals.settings.scenario_num or 1
 		sl_map.value = globals.settings.map_num or 1
-		sl_scenario.callback = on_set_scenario
-		sl_map.callback = on_set_map
+		sl_scenario.on_modified = on_set_scenario
+		sl_map.on_modified = on_set_map
 
 		on_set_map()
 	end
@@ -299,5 +299,5 @@ function wc2_debug_settings(nplayers)
 		globals.settings.ncastles = window.sl_ncastles.value
 
 	end
-	wesnoth.show_dialog(dialog_wml, preshow, postshow)
+	gui.show_dialog(dialog_wml, preshow, postshow)
 end
