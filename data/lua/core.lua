@@ -313,6 +313,13 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	function wml.error(m)
 		error("~wml:" .. m, 0)
 	end
+	
+	--- Calling wesnoth.fire isn't the same as calling wesnoth.wml_actions[name] due to the passed vconfig userdata
+	--- which also provides "constness" of the passed wml object from the point of view of the caller.
+	--- So please don't remove since it's not deprecated.
+	function wesnoth.fire(name, cfg)
+		wesnoth.wml_actions[name](wml.tovconfig(cfg or {}))
+	end
 
 	--[========[Basic variable access]========]
 
@@ -681,6 +688,94 @@ function gui.get_user_choice(attr, options)
 	return result
 end
 
+-- These functions are initially declared local, then assigned into the wesnoth table.
+-- This is a compatibility path for the old GUI2 API.
+-- It can be removed if the old API is ever removed.
+local open_dialogs = {}
+
+local function reorder_dialog_args(t, n)
+	local res = {}
+	for i = 1, n do
+		table.insert( res, t[1])
+		table.remove( t, 1 )
+	end
+	local w = open_dialogs[1]:find(unpack(t))
+	return w, res
+end
+
+local function set_dialog_callback(...)
+	local w, args = reorder_dialog_args({...}, 1)
+	w.callback = args[1]
+end
+
+local function set_dialog_tooltip(...)
+	local w, args = reorder_dialog_args({...}, 1)
+	w.tooltip = args[1]
+end
+
+local function set_dialog_markup(...)
+	local w, args = reorder_dialog_args({...}, 1)
+	w.use_markup = args[1]
+end
+
+local function set_dialog_canvas(...)
+	local w, args = reorder_dialog_args({...}, 2)
+	w:set_canvas(unpack(args))
+end
+
+local function set_dialog_focus(...)
+	local w, args = reorder_dialog_args({...}, 0)
+	w:focus()
+end
+
+local function set_dialog_active(...)
+	local w, args = reorder_dialog_args({...}, 1)
+	w.enabled = args[1]
+end
+
+local function set_dialog_visible(...)
+	local w, args = reorder_dialog_args({...}, 1)
+	w.visible = args[1]
+end
+
+local function set_dialog_value(...)
+	local w, args = reorder_dialog_args({...}, 1)
+	w.value_compat = args[1]
+end
+
+local function get_dialog_value(...)
+	local w, args = reorder_dialog_args({...}, 0)
+	return w.value_compat
+end
+
+local function add_dialog_tree_node(...)
+	local w, args = reorder_dialog_args({...}, 2)
+	w:add_item_of_type(unpack(args))
+end
+
+local function remove_dialog_item(...)
+	local w, args = reorder_dialog_args({...}, 2)
+	w:remove_items_at(unpack(args))
+end
+
+local old_show_dialog = gui.show_dialog
+function gui.show_dialog(dialog_wml, preshow, postshow)
+	
+	local res = old_show_dialog(
+		dialog_wml,
+		function(dialog)
+			table.insert(open_dialogs, 1, dialog)
+			if preshow then
+				preshow(dialog)
+			end
+		end,
+		postshow
+	)
+	table.remove( open_dialogs, 1 )
+	return res
+end
+-- End of GUI2 compatibility path
+
 -- Some C++ functions are deprecated; apply the messages here.
 -- Note: It must happen AFTER the C++ functions are reassigned above to their new location.
 -- These deprecated functions will probably never be removed.
@@ -752,6 +847,10 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.delete_ai_component = wesnoth.deprecate_api('wesnoth.delete_ai_component', 'wesnoth.sides.delete_ai_component', 1, nil, wesnoth.sides.delete_ai_component)
 	wesnoth.change_ai_component = wesnoth.deprecate_api('wesnoth.change_ai_component', 'wesnoth.sides.change_ai_component', 1, nil, wesnoth.sides.change_ai_component)
 	wesnoth.get_sides = wesnoth.deprecate_api('wesnoth.get_sides', 'wesnoth.sides.find', 1, nil, wesnoth.sides.find)
+	-- wesnoth.wml_actions.music doesn't exist yet at this point, so create a helper function instead.
+	wesnoth.set_music = wesnoth.deprecate_api('wesnoth.set_music', 'wesnoth.music_list', 1, nil, function(cfg)
+		wesnoth.wml_actions.music(cfg)
+	end)
 end
 wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 1, nil, wml.tovconfig)
 wesnoth.debug = wesnoth.deprecate_api('wesnoth.debug', 'wml.tostring', 1, nil, wml.tostring)
@@ -765,6 +864,19 @@ wesnoth.alert = wesnoth.deprecate_api('wesnoth.alert', 'gui.alert', 1, nil, gui.
 wesnoth.confirm = wesnoth.deprecate_api('wesnoth.confirm', 'gui.confirm', 1, nil, gui.confirm)
 wesnoth.show_lua_console = wesnoth.deprecate_api('wesnoth.show_lua_console', 'gui.show_lua_console', 1, nil, gui.show_lua_console)
 wesnoth.add_widget_definition = wesnoth.deprecate_api('wesnoth.add_widget_definition', 'gui.add_widget_definition', 1, nil, gui.add_widget_definition)
+wesnoth.set_dialog_callback = wesnoth.deprecate_api('wesnoth.set_dialog_callback', '<widget>.callback', 1, nil, set_dialog_callback)
+wesnoth.set_dialog_tooltip = wesnoth.deprecate_api('wesnoth.set_dialog_tooltip', '<widget>.tooltip', 1, nil, set_dialog_tooltip)
+wesnoth.set_dialog_markup = wesnoth.deprecate_api('wesnoth.set_dialog_markup', '<widget>.use_markup', 1, nil, set_dialog_markup)
+wesnoth.set_dialog_canvas = wesnoth.deprecate_api('wesnoth.set_dialog_canvas', '<widget>:set_canvas', 1, nil, set_dialog_canvas)
+wesnoth.set_dialog_focus = wesnoth.deprecate_api('wesnoth.set_dialog_focus', '<widget>:focus', 1, nil, set_dialog_focus)
+wesnoth.set_dialog_active = wesnoth.deprecate_api('wesnoth.set_dialog_active', '<widget>:enabled', 1, nil, set_dialog_active)
+wesnoth.set_dialog_visible = wesnoth.deprecate_api('wesnoth.set_dialog_visible', '<widget>.visible', 1, nil, set_dialog_visible)
+local value_attributes = '<container>.selected_index or <toggle>.selected or <text_widget>.text or <slider>.value or <progress_bar>.percentage or <tree_view>.selected_item_path or <tree_node>.unfolded or <unit_preview>.unit or <widget>.label'
+wesnoth.set_dialog_value = wesnoth.deprecate_api('wesnoth.set_dialog_value', value_attributes, 1, nil, set_dialog_value)
+wesnoth.get_dialog_value = wesnoth.deprecate_api('wesnoth.get_dialog_value', value_attributes, 1, nil, get_dialog_value)
+wesnoth.add_dialog_tree_node = wesnoth.deprecate_api('wesnoth.add_dialog_tree_node', '<widget>:add_item_of_type', 1, nil, add_dialog_tree_node)
+wesnoth.remove_dialog_item = wesnoth.deprecate_api('wesnoth.remove_dialog_item', '<widget>:remove_items_at', 1, nil, remove_dialog_item)
+wesnoth.show_dialog = wesnoth.deprecate_api('wesnoth.show_dialog', 'gui.show_dialog', 1, nil, gui.show_dialog)
 -- StringX module
 wesnoth.format = wesnoth.deprecate_api('wesnoth.format', 'stringx.vformat', 1, nil, stringx.vformat)
 wesnoth.format_conjunct_list = wesnoth.deprecate_api('wesnoth.format_conjunct_list', 'stringx.format_conjunct_list', 1, nil, stringx.format_conjunct_list)
