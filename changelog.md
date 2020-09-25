@@ -12,7 +12,7 @@
      * Cost of Gigant Rat changed from 6 to 5.
      * Cost of Gigant Scorpionling changed from 13 to 12.
      * Cost of Fire Guardian changed from 16 to 11.
-     * Cost of Gigant Mudcrawler changed from 11.	 
+     * Cost of Gigant Mudcrawler changed from 11.
      * Cost of Gigant Scorpion changed from 22 to 16.
      * Cost of Wolf changed from 17 to 15.
      * Cost of Chocobone changed from 38 to 28.
@@ -22,8 +22,9 @@
      * Cost of Water Serpent changed from 26 to 23.
      * Cost of Direwolf changed from 36 to 33.
      * Cost of Sea Serpent changed from 40 to 55.
-     * Cost of Wyvern changed from 54 to 75.
+     * Cost of Wild Wyvern changed from 54 to 75.
      * Cost of Wyvern Rider changed from 80 to 102.
+
 ## Version 1.15.5
  ### Add-ons client
    * Fix: when using the "system default language", add-ons' titles and descriptions were always shown in English (PR #5109)
