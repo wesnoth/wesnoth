@@ -87,13 +87,13 @@ local function preshow(dialog)
         dialog.damage_type.label     = "<span color='#a69275'>     melee–" .. unit_type.attacks[1].type .. "</span>"
     end
 
-    dialog.unit_list.callback = select
+    dialog.unit_list.on_modified = select
 
-    function dialog.help_button.callback()
+    function dialog.help_button.on_button_click()
         W.open_help { topic="recruit_and_recall" }
     end
 
-    function dialog.unit_help_button.callback()
+    function dialog.unit_help_button.on_button_click()
         W.open_help { topic="unit_" .. listedZombies[dialog.unit_list.selected_index] }
     end
     
@@ -120,8 +120,8 @@ local function preshow(dialog)
     select()
 end
 
-local function postshow()
-    recruitedType = listedZombies[wesnoth.get_dialog_value "unit_list"]
+local function postshow(dialog)
+    recruitedType = listedZombies[dialog.unit_list.selected_index]
     recruitCost = wesnoth.unit_types[ recruitedType ].cost
 end
 
@@ -145,7 +145,7 @@ if zExists==false then
     gui.show_prompt("", _ "There are no corpses available.", "")
 else
     --TODO: this seems not to be synced.
-    local returned = wesnoth.show_dialog(zombie_recruit_dialog, preshow, postshow)
+    local returned = gui.show_dialog(zombie_recruit_dialog, preshow, postshow)
     if  returned ~= -2 and sides[1].gold  < recruitCost then
         gui.show_prompt("", _ "You do not have enough gold to recruit that unit", "")
     elseif returned ~= -2 and (sides[1].gold ) >= recruitCost then

@@ -83,7 +83,7 @@ local function show_dialog(unit, item_image)
 		dialog.item_icon.label = item_image
 		dialog.res_yes:focus()
 	end
-	local res = wesnoth.show_dialog(dialog_wml, preshow)
+	local res = gui.show_dialog(dialog_wml, preshow)
 	return res == 1 or res == -1
 end
 

@@ -84,7 +84,7 @@ function wml_actions.select_character()
 		}
 	}
 
-	local character = wesnoth.show_dialog(character_selection_dialog)
+	local character = gui.show_dialog(character_selection_dialog)
 	local unit = wml.variables.student_store
 
 	if character == 2 then

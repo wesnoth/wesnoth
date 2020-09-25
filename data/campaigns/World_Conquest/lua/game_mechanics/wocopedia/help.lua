@@ -220,7 +220,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 			page.label_version.marked_up_text = wml.variables["wc2_host_version"] or "unknown"
 			page.label_difficulty.marked_up_text = wml.variables["wc2_difficulty.name"] or "unknown"
 
-			function page.checkbox_show_pickup_confirmation.callback()
+			function page.checkbox_show_pickup_confirmation.on_modified()
 				wc2_utils.global_vars.skip_pickup_dialog = not page.checkbox_show_pickup_confirmation.selected
 			end
 		end
@@ -234,7 +234,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 
 		root_node:focus()
 
-		function root_node.callback()
+		function root_node.on_modified()
 			local selected_index = index_map[table.concat(root_node.selected_item_path, '_')]
 			if selected_index ~= nil then
 				details.selected_index = selected_index
@@ -242,7 +242,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 		end
 	end
 
-	wesnoth.show_dialog(dialog, preshow)
+	gui.show_dialog(dialog, preshow)
 end
 
 wc2_utils.menu_item {
