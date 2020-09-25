@@ -25,6 +25,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
 #include "gui/core/gui_definition.hpp"
+#include "scripting/lua_widget_methods.hpp" //intf_show_dialog
 
 #include "config.hpp"
 #include "log.hpp"
@@ -280,6 +281,7 @@ int luaW_open(lua_State* L)
 		{ "show_story",         &show_story },
 		{ "show_prompt",        &show_message_box },
 		{ "add_widget_definition",    &intf_add_widget_definition },
+		{ "show_dialog",              &intf_show_dialog   },
 		{ nullptr, nullptr },
 	};
 	std::vector<lua_cpp::Reg> const cpp_gui_callbacks {
