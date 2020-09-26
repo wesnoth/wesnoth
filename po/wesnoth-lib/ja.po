@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 05:20-0400\n"
+"POT-Creation-Date: 2020-09-26 23:34+0300\n"
 "PO-Revision-Date: 2018-05-06 10:15+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=fence
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:464
 msgid "Fence"
@@ -1893,10 +1893,10 @@ msgid "Search"
 msgstr "検索"
 
 #. [toggle_button]: id=sort_0
-#. [label]
-#. [toggle_button]: id=sort_name
 #. [label]: id=name
+#. [label]
 #. [toggle_button]: id=sort_1
+#. [toggle_button]: id=sort_name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:243
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -1965,8 +1965,8 @@ msgstr "アドオンのアンインストール"
 msgid "Messages waiting"
 msgstr "メッセージ待機中"
 
-#. [button]: id=close_window
 #. [button]: id=click_dismiss
+#. [button]: id=close_window
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
@@ -1995,8 +1995,8 @@ msgstr "閉じる"
 msgid "Profile"
 msgstr "プロフィール"
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/addon_connect.cfg:40 data/gui/window/mp_connect.cfg:41
 #: data/gui/window/mp_method_selection.cfg:254
 #: data/gui/window/mp_server_list.cfg:49
@@ -2013,16 +2013,16 @@ msgstr "アドオンをダウンロードするためにサーバーに接続し
 msgid "Server:"
 msgstr "サーバー："
 
-#. [label]
 #. [button]: id=remove_addons
+#. [label]
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
 msgstr "アドオンの削除"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=help
 #. [button]: id=show_help
+#. [button]: id=help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:174
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Help"
@@ -2420,8 +2420,8 @@ msgid ""
 "reloading a game"
 msgstr "ゲームを再開した場合でも、乱数生成器が同じ値を出すようになります。"
 
-#. [slider]: id=enemey_gold_factor
 #. [label]: id=title
+#. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
@@ -2485,31 +2485,31 @@ msgstr "ログをクリップボードにコピーします"
 msgid "Load Core"
 msgstr "コアの読み込み"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "コピー"
 
-#. [button]: id=copy
 #. [button]: id=copy_
+#. [button]: id=copy
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "パスをクリップボードにコピーします"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "ブラウズ"
 
-#. [button]: id=browse
 #. [button]: id=browse_
+#. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2843,15 +2843,15 @@ msgstr "生成"
 msgid "New Map"
 msgstr "新規マップ"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "幅："
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -2933,14 +2933,14 @@ msgstr "現在のフォルダをブックマークに追加します"
 msgid "Removes the current bookmark"
 msgstr "選択中のブックマークを削除します"
 
-#. [button]: id=delete
 #. [button]: id=delete_file
+#. [button]: id=delete
 #: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:482
 msgid "Delete"
 msgstr "削除"
 
-#. [label]: id=title
 #. [button]: id=new_dir
+#. [label]: id=title
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "新しいフォルダ"
@@ -3001,8 +3001,8 @@ msgid "Execution trace"
 msgstr "実行トレース"
 
 #. [button]: id=cancel
-#. [grid]
 #. [button]: id=quit_without_surrender
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:261
 msgid "Quit"
@@ -3197,17 +3197,17 @@ msgid "Upkeep"
 msgstr "維持費"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
-#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
 msgid "Income"
 msgstr "収入"
 
-#. [label]: id=side_title
 #. [toggle_button]: id=sort_1
+#. [label]: id=side_title
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "陣営"
@@ -3372,8 +3372,8 @@ msgstr "ゲーム状態インスペクタ"
 msgid "Copy this report to clipboard"
 msgstr "このリポートをクリップボードにコピーします"
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
@@ -3444,8 +3444,8 @@ msgstr "希望のホットキーを押して下さい （Escでキャンセル�
 msgid "Show or Hide Labels"
 msgstr "ラベルの表示・非表示"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:258
 msgid "Language"
@@ -3803,8 +3803,8 @@ msgstr ""
 msgid "When a new game has been created"
 msgstr ""
 
-#. [button]: id=orb_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=orb_defaults
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:296
@@ -4137,8 +4137,8 @@ msgstr "党派を選択してください"
 msgid "Starting position:"
 msgstr "開始地点："
 
-#. [widget]: id=name
 #. [label]
+#. [widget]: id=name
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4221,8 +4221,8 @@ msgid "Save password locally (encrypted)"
 msgstr "パスワードを暗号化して保存する"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
 #. [grid]
+#. [label]
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253

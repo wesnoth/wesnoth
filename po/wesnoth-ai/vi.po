@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 09:20 UTC\n"
+"POT-Creation-Date: 2020-09-26 20:34 UTC\n"
 "PO-Revision-Date: 2014-06-24 22:26+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -63,8 +63,8 @@ msgstr ""
 msgid "The Elves Besieged"
 msgstr "Thần tiên bị bao vây"
 
-#. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
+#. [side]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -89,10 +89,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
+#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:99
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:114
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:133
@@ -346,8 +346,8 @@ msgstr ""
 "của nhau và để yên lẫn nhau, minh họa khả năng tự kiểm soát của một con chó "
 "chăn cừu được huấn luyện tốt."
 
-#. [test]: id=animals
 #. [event]
+#. [test]: id=animals
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -358,10 +358,10 @@ msgstr "Động vật"
 msgid "Rutburt"
 msgstr "Rutburt"
 
+#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
-#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -390,8 +390,8 @@ msgstr "Nhện"
 msgid "Yetis"
 msgstr "Người tuyết"
 
-#. [side]
 #. [event]
+#. [side]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -404,10 +404,10 @@ msgstr "Chó sói"
 msgid "Whelps"
 msgstr "Bé con"
 
-#. [set_menu_item]: id=m01_end_swarm
-#. [set_menu_item]: id=m04_end_animals
-#. [event]
 #. [set_menu_item]: id=m01_end_animals
+#. [event]
+#. [set_menu_item]: id=m04_end_animals
+#. [set_menu_item]: id=m01_end_swarm
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -564,9 +564,9 @@ msgstr "Đại ca người thú"
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "Được rồi, bọn bay. Lũ người thú đó phải bị ngăn chặn."
 
-#. [message]: speaker=Another Bad Orc
-#. [message]: speaker=Vanak
 #. [message]: speaker=Big Bad Orc
+#. [message]: speaker=Vanak
+#. [message]: speaker=Another Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:573
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:140
@@ -790,8 +790,8 @@ msgid ""
 "or for your own tests."
 msgstr ""
 
-#. [test]: id=goto
 #. [event]
+#. [test]: id=goto
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
@@ -847,8 +847,8 @@ msgstr "Trung sĩ Aethubry"
 msgid "Place Side 1 Footpad"
 msgstr "Đặt kẻ cướp cạn cho phe 1"
 
-#. [set_menu_item]: id=m05_kill_unit
 #. [set_menu_item]: id=m02_kill_unit
+#. [set_menu_item]: id=m05_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
@@ -1121,8 +1121,8 @@ msgstr "Tất cả chúng tôi đã đến các góc, hãy tập hợp trở l�
 msgid "We're back together, let's head out to the corners again."
 msgstr "Chúng ta đã tập hợp trở lại, hãy tiến ra các góc một lần nữa."
 
-#. [test]: id=guardians
 #. [event]
+#. [test]: id=guardians
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -2369,8 +2369,8 @@ msgstr "Tôi đã cầm cự lâu hết mức có thể."
 msgid "I made it"
 msgstr "Tôi đã làm được"
 
-#. [test]: id=recruiting
 #. [event]
+#. [test]: id=recruiting
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
@@ -2456,8 +2456,8 @@ msgstr "Grnk Yếu Đuối"
 msgid "team_name^Grnk"
 msgstr "Grnk"
 
-#. [test]: id=swarm
 #. [event]
+#. [test]: id=swarm
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"

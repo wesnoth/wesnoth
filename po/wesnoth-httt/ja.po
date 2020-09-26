@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 09:20 UTC\n"
+"POT-Creation-Date: 2020-09-26 20:34 UTC\n"
 "PO-Revision-Date: 2018-09-12 07:30+0000\n"
 "Last-Translator: 堀 秀幸 <Hide.HORI@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -201,8 +201,6 @@ msgid "Konrad"
 msgstr "Konrad"
 
 #. [side]: type=Commander, id=Konrad
-#. [side]: type=Ancient Wose, id=Haralamdum
-#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #. [side]: type=Grand Knight, id=Kaylan
 #. [side]: type=Fighter, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
@@ -210,6 +208,8 @@ msgstr "Konrad"
 #. [side]: id=Relgorn, type=Dwarvish Lord
 #. [side]: id=Geldar, type=Dwarvish Lord
 #. [side]
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:80
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:240
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:259
@@ -255,23 +255,23 @@ msgstr "Urug-Telfar"
 #. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #. [side]: type=Orcish Warrior, id=Gorlak
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
+#. [side]: type=Orcish Warlord, id=Urug-Tan
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Goblin Rouser
+#. [side]: type=Orcish Warlord
+#. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #. [side]: type=Orcish Warlord, id=Kior-Dal
 #. [side]: type=Orcish Warlord, id=Kojun Herolm
 #. [side]: type=Orcish Warrior, id=Mokho Kimer
-#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
-#. [side]: type=Orcish Warlord, id=Urug-Tan
-#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
-#. [side]: type=Orcish Warrior, id=Usadar Q'kai
-#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
-#. [side]: type=Orcish Warrior, id=Managa'Gwin
 #. [side]: type=Orcish Warlord, id=Gaga-Breuk
-#. [side]: type=Orcish Warlord, id=Urag-Tifer
-#. [side]: type=Goblin Rouser
-#. [side]: type=Orcish Warlord
-#. [side]: type=Troll Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:181
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:194
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:215
@@ -1547,19 +1547,19 @@ msgstr "Muff Malal を倒す"
 msgid "Muff Malal"
 msgstr "Muff Malal"
 
-#. [side]: type=Death Knight, id=Clarustus
-#. [side]: type=Death Knight, id=Merlunius
-#. [side]: type=Lich, id=Aimucasur
-#. [side]: type=Death Knight, id=Secadius
-#. [side]: type=Death Knight, id=Dafeis
-#. [side]: type=Ancient Lich, id=Muff Argulak
 #. [side]: type=Dark Sorcerer, id=Muff Malal
-#. [side]: type=Death Knight, id=Unan-Ka'tall
 #. [side]: type=Lich, id=Galga
 #. [side]: type=Lich, id=Na-alga
 #. [side]: type=Lich, id=Selda-Mana
 #. [side]: id=Haf-Mal, type=Lich
 #. [side]: id=Jarmal-Gorg, type=Lich
+#. [side]: type=Death Knight, id=Clarustus
+#. [side]: type=Death Knight, id=Merlunius
+#. [side]: type=Lich, id=Aimucasur
+#. [side]: type=Death Knight, id=Secadius
+#. [side]: type=Death Knight, id=Dafeis
+#. [side]: type=Death Knight, id=Unan-Ka'tall
+#. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:79
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:148
@@ -1907,10 +1907,10 @@ msgid "Agadla"
 msgstr "Agadla"
 
 #. [side]: type=Troll Warrior, id=Haaf-Garga
-#. [side]: id=Brugg, type=Troll Warrior
-#. [side]: id=Lionel, type=Death Knight
 #. [side]: type=Orcish Warlord, id=Agadla
 #. [side]: type=Dark Sorcerer, id=Muff Jaanal
+#. [side]: id=Brugg, type=Troll Warrior
+#. [side]: id=Lionel, type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:116
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:91
@@ -2514,12 +2514,12 @@ msgstr "Elbridge"
 msgid "Li’sar"
 msgstr "Li’sar"
 
+#. [side]: type=General, id=Robryn
 #. [side]: type=Princess, id=Li'sar
 #. [side]: type=General, id=Honber
 #. [side]: type=General, id=Josephus
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=General, id=Malatus
-#. [side]: type=General, id=Robryn
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm

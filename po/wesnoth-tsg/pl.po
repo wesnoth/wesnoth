@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 09:20 UTC\n"
+"POT-Creation-Date: 2020-09-26 20:35 UTC\n"
 "PO-Revision-Date: 2016-01-10 11:43+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
@@ -158,11 +158,11 @@ msgstr "Południowa Straż"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Outlaw, id=Urza Nalmath
-#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -1433,8 +1433,8 @@ msgstr "Linderion"
 msgid "Mithalwe"
 msgstr "Mithalwe"
 
-#. [unit]: type=Elvish Marshal, id=Ithelden
 #. [event]
+#. [unit]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:384
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1212
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:433
@@ -1697,13 +1697,13 @@ msgstr "Dolina Łez"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #. [side]: type=Soulless, id=Gruth
 #. [side]: type=Lich, id=Mal M'Brin
 #. [side]
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
-#. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
-#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:97
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:143
@@ -1976,9 +1976,9 @@ msgstr "Przynajmniej ty nie będziesz nam już sprawiał problemów!"
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Jesteś tam? Przybyliśmy szukać twojej pomocy!"
 
+#. [message]: speaker=Kramak
 #. [message]: speaker=Ethiliel
 #. [message]: speaker=narrator
-#. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:642
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:653
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:395
@@ -5074,8 +5074,8 @@ msgid ""
 "enraged. More will surely come to attack."
 msgstr ""
 
-#. [scenario]: id=10a_Elf_Epilogue
 #. [scenario]: id=09b_Bandit_Epilogue
+#. [scenario]: id=10a_Elf_Epilogue
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:5
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:5
 msgid "Epilogue"
