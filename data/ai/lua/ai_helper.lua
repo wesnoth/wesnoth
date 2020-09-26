@@ -765,17 +765,21 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
     local to_bottom_right = M.distance_between(hex[1], hex[2], width+1, height+1)
     if (to_bottom_right > max_distance) then max_distance = to_bottom_right end
 
+    -- If the hex is supposed to be passable for a unit, it cannot be on the map border
+    local include_borders
+    if unit then include_borders = 'no' end
+
     local radius = 0
     while (radius <= max_distance) do
         local loc_filter = {}
         if (radius == 0) then
             loc_filter = {
-                { "and", { x = hex[1], y = hex[2], radius = radius } },
+                { "and", { x = hex[1], y = hex[2], include_borders = include_borders, radius = radius } },
                 { "and", location_filter }
             }
         else
             loc_filter = {
-                { "and", { x = hex[1], y = hex[2], radius = radius } },
+                { "and", { x = hex[1], y = hex[2], include_borders = include_borders, radius = radius } },
                 { "not", { x = hex[1], y = hex[2], radius = radius - 1 } },
                 { "and", location_filter }
             }
