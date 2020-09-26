@@ -209,7 +209,7 @@ local dialog_wml = {
 											horizontal_grow = true,
 											vertical_grow = true,
 											T.scroll_label {
-												id = "label",
+												id = "info_label",
 												label = "Text",
 												use_markup = true,
 											},
@@ -223,7 +223,7 @@ local dialog_wml = {
 											vertical_grow = true,
 											T.unit_preview_pane {
 												definition = "default",
-												id = "unit",
+												id = "unit_info",
 												linked_group = "unit_panel",
 											} ,
 										},

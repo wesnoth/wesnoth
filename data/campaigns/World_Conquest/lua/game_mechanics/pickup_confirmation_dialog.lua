@@ -77,11 +77,11 @@ local function show_dialog(unit, item_image)
 		},
 
 	}
-	local function preshow()
-		wesnoth.set_dialog_value(wc2_color.tc_image(wesnoth.unit_types[unit.type].image), "unit_icon")
-		wesnoth.set_dialog_value(wc2_color.tc_text(" → "), "arrow")
-		wesnoth.set_dialog_value(item_image, "item_icon")
-		wesnoth.set_dialog_focus("res_yes")
+	local function preshow(dialog)
+		dialog.unit_icon.label = wc2_color.tc_image(wesnoth.unit_types[unit.type].image)
+		dialog.arrow.label = wc2_color.tc_text(" → ")
+		dialog.item_icon.label = item_image
+		dialog.res_yes:focus()
 	end
 	local res = wesnoth.show_dialog(dialog_wml, preshow)
 	return res == 1 or res == -1

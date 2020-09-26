@@ -21,91 +21,101 @@ function wc2_show_invest_dialog_impl(args)
 	local res = nil
 
 	local index_map = {}
-	local details_index_counter = 1
-	local function add_index(page, r)
-		index_map[page] = {page_num = details_index_counter, res = r}
-		details_index_counter = details_index_counter + 1
-		if res == nil then
-			res = r
-		end
-	end
 
-	local function preshow()
+	local function preshow(dialog)
+
+		local details = dialog.details
+		local root_node = dialog.left_tree
+
+		function gui.widget.add_invest_categopry(parent_node, name)			
+			local node = parent_node:add_item_of_type("category")
+			node.category_name.label = name
+			node.unfolded = true
+			return node
+		end
+
+		function gui.widget.add_invest_item(parent_node, args)
+			local node_type = args.desc and "item_desc" or "item"
+			local page_type = args.page_type or ""
+			
+			local node = parent_node:add_item_of_type(node_type)
+			local details_page = details:add_item_of_type(page_type)
+
+			node.image.label = args.icon
+			node.name.label = args.name
+			if args.desc then
+				node.desc.label = args.desc
+			end
+
+			index_map[table.concat(node.path, "_")] = { page_num = details.item_count, res = args.result }
+			return node, details_page
+		end
+
 		local cati_current = 0
-		if show_artifacts then
-			cati_current = cati_current + 1
-			wesnoth.add_dialog_tree_node("category", cati_current, "left_tree")
-			wesnoth.set_dialog_value(true, "left_tree", cati_current)
-			wesnoth.set_dialog_value(_ "Artifacts", "left_tree", cati_current, "category_name")
+		if show_artifacts then			
+			local node = root_node:add_invest_categopry(_ "Artifacts")
+
 			for i,v in ipairs(available_artifacts) do
 				local artifact_info = wc2_artifacts.get_artifact(tonumber(v))
 				if not artifact_info then
 					error("invalid item id'" .. v .. "'")
 				end
-				wesnoth.add_dialog_tree_node("item_desc", i, "left_tree", cati_current)
-				wesnoth.set_dialog_value(artifact_info.icon, "left_tree", cati_current, i, "image")
-				wesnoth.set_dialog_value(artifact_info.name, "left_tree", cati_current, i, "name")
-				wesnoth.set_dialog_value(wc2_color.tc_text(artifact_info.description), "left_tree", cati_current, i, "desc")
 
-				wesnoth.add_dialog_tree_node("", -1, "details")
-				wesnoth.set_dialog_value(artifact_info.info, "details", details_index_counter, "label")
-				add_index(cati_current .. "_" .. i, { pick = "item", type=v })
+				local subnode, page = node:add_invest_item {
+					icon = artifact_info.icon,
+					name = artifact_info.name,
+					desc = wc2_color.tc_text(artifact_info.description),
+					result = { pick = "item", type=v }
+				}
+				page.info_label.label = artifact_info.info
 			end
 		end
 
 		if show_heroes then
-			cati_current = cati_current + 1
-			wesnoth.add_dialog_tree_node("category", cati_current, "left_tree")
-			wesnoth.set_dialog_value(true, "left_tree", cati_current)
-			wesnoth.set_dialog_value(_ "Heroes", "left_tree", cati_current, "category_name")
-			local i = 1
+			local node = root_node:add_invest_categopry(_ "Heroes")
+		
 			if available_commanders then
 				local desc = _ "Commanders will take your leader’s place when the leader dies, possible commanders:"
 				for j,v in ipairs(available_commanders) do
 					desc = desc .. "\n" .. wesnoth.unit_types[v].name
 				end
 
-				wesnoth.add_dialog_tree_node("item", i, "left_tree", cati_current)
-				wesnoth.set_dialog_value(wc2_color.tc_image("units/unknown-unit.png"), "left_tree", cati_current, i, "image")
-				wesnoth.set_dialog_value(_ "Commander" .. "\n" .. wc2_color.tc_text(_ "promote to leader"), "left_tree", cati_current, i, "name")
-
-				wesnoth.add_dialog_tree_node("", -1, "details")
-				wesnoth.set_dialog_value(desc, "details", details_index_counter, "label")
-				add_index(cati_current .. "_" .. i, { pick = "hero", type="wc2_commander" })
-				i = i + 1
+				local subnode, page = node:add_invest_item {
+					icon = wc2_color.tc_image("units/unknown-unit.png"),
+					name = _ "Commander" .. "\n" .. wc2_color.tc_text(_ "promote to leader"),
+					result = { pick = "hero", type= "wc2_commander" }
+				}
+				page.info_label.label = desc
 			end
 			for j,v in ipairs(available_heroes) do
 				unit_type = wesnoth.unit_types[v]
 
-				wesnoth.add_dialog_tree_node("item", i, "left_tree", cati_current)
-				wesnoth.set_dialog_value(wc2_color.tc_image(unit_type.image), "left_tree", cati_current, i, "image")
-				wesnoth.set_dialog_value(unit_type.name, "left_tree", cati_current, i, "name")
 
-				wesnoth.add_dialog_tree_node("hero", -1, "details")
-				wesnoth.set_dialog_value(unit_type, "details", details_index_counter, "unit")
-				add_index(cati_current .. "_" .. i, { pick = "hero", type=v })
-				i = i + 1
+				local subnode, page = node:add_invest_item {
+					page_type = "hero",
+					icon = wc2_color.tc_image(unit_type.image),
+					name = unit_type.name,
+					result = { pick = "hero", type= v }
+				}
+				page.unit_info.unit = unit_type
 			end
 			if available_deserters then
 				local desc = "<b>" .. _ "possible units:" .. "</b>"
 				for j,v in ipairs(available_deserters) do
 					desc = desc .. "\n" .. wesnoth.unit_types[v].name
 				end
-				wesnoth.add_dialog_tree_node("item", i, "left_tree", cati_current)
-				wesnoth.set_dialog_value(wc2_color.tc_image("units/unknown-unit.png"), "left_tree", cati_current, i, "image")
-				wesnoth.set_dialog_value(_ "Deserter" .. "\n" .. wc2_color.tc_text("+15 gold"), "left_tree", cati_current, i, "name")
 
-				wesnoth.add_dialog_tree_node("", -1, "details")
-				wesnoth.set_dialog_value(desc, "details", details_index_counter, "label")
-				add_index(cati_current .. "_" .. i, { pick = "hero", type="wc2_deserter" })
+				local subnode, page = node:add_invest_item {
+					icon = wc2_color.tc_image("units/unknown-unit.png"),
+					name = _ "Deserter" .. "\n" .. wc2_color.tc_text("+15 gold"),
+					result = { pick = "hero", type= "wc2_deserter" }
+				}
+				page.info_label.label = desc
 			end
 		end
 
 		if show_training then
-			cati_current = cati_current + 1
-			wesnoth.add_dialog_tree_node("category", cati_current, "left_tree")
-			wesnoth.set_dialog_value(true, "left_tree", cati_current)
-			wesnoth.set_dialog_value(_ "Training", "left_tree", cati_current, "category_name")
+			local node = root_node:add_invest_categopry(_ "Training")
 			for i,v in ipairs(available_training) do
 				local current_grade = wc2_training.get_level(side_num, v)
 				local training_info = wc2_training.get_trainer(v)
@@ -115,51 +125,45 @@ function wc2_show_invest_dialog_impl(args)
 				local title = wesnoth.format(_ "$name Training", { name = training_info.name })
 				local desc = wc2_training.describe_training_level2(current_grade, #training_info.grade) .. wc2_color.tc_text(" → ") .. wc2_training.describe_training_level2(current_grade + 1, #training_info.grade)
 
-				wesnoth.add_dialog_tree_node("item_desc", i, "left_tree", cati_current)
-				wesnoth.set_dialog_value(training_info.image, "left_tree", cati_current, i, "image")
-				wesnoth.set_dialog_value(title, "left_tree", cati_current, i, "name")
-				wesnoth.set_dialog_value(desc, "left_tree", cati_current, i, "desc")
 
-				wesnoth.add_dialog_tree_node("", -1, "details")
-				local label  = wc2_color.tc_text("<big>" .. _ "Before:" .. "</big>\n") .. train_message_before.message .. wc2_color.tc_text("\n<big>" .. _ "After:" .. "</big>\n") .. train_message.message
-				wesnoth.set_dialog_value(label , "details", details_index_counter, "label")
-				--wesnoth.set_dialog_value(train_message.message, "details", details_index_counter, "training_after")
-				add_index(cati_current .. "_" .. i, { pick = "training", type=v })
-
+				local subnode, page = node:add_invest_item {
+					icon = training_info.image,
+					name = title,
+					desc = desc,
+					result = { pick = "training", type=v }
+				}
+				page.info_label.label  = wc2_color.tc_text("<big>" .. _ "Before:" .. "</big>\n") .. train_message_before.message .. wc2_color.tc_text("\n<big>" .. _ "After:" .. "</big>\n") .. train_message.message
 			end
 		end
 
 		if show_other then
-			cati_current = cati_current + 1
-			wesnoth.add_dialog_tree_node("category", cati_current, "left_tree")
-			wesnoth.set_dialog_value(true, "left_tree", cati_current)
-			wesnoth.set_dialog_value(_ "Other", "left_tree", cati_current, "category_name")
+			local node = root_node:add_invest_categopry(_ "Other")
 
 
 
 			local colored_galleon = wc2_color.tc_image("units/transport/transport-galleon.png")
 			local supplies_image = "misc/blank-hex.png~SCALE(90,80)~BLIT(" .. colored_galleon .. ",9,4)"
 			local supplies_text = wc2_color.tc_text(_ "+70 gold and +1 village")
-			--"+{STR_COLOR_PLAYER ("+70 "+{STR_GOLD}+{STR_AND}+"+1 "+{STR_VILLAGE})}
 
-			wesnoth.add_dialog_tree_node("item_desc", 1, "left_tree", cati_current)
-			wesnoth.set_dialog_value(supplies_image, "left_tree", cati_current, 1, "image")
-			wesnoth.set_dialog_value(_"Stock up supplies", "left_tree", cati_current, 1, "name")
-			wesnoth.set_dialog_value(supplies_text, "left_tree", cati_current, 1, "desc")
 
-			wesnoth.add_dialog_tree_node("", -1, "details")
-			wesnoth.set_dialog_value(_"Gives 70 gold and places a village on your keep.", "details", details_index_counter, "label")
-			add_index(cati_current .. "_" .. 1, { pick = "gold" })
+			local subnode, page = node:add_invest_item {
+				icon = supplies_image,
+				name = _"Stock up supplies",
+				desc = supplies_text,
+				result = { pick = "gold" }
+			}
+
+			page.info_label.label = _"Gives 70 gold and places a village on your keep."
 		end
 
-		wesnoth.set_dialog_callback(function()
-			local selected = wesnoth.get_dialog_value("left_tree")
+		function root_node.on_modified()
+			local selected = root_node.selected_item_path
 			local selected_data = index_map[table.concat(selected, '_')]
 			if selected_data ~= nil then
-				wesnoth.set_dialog_value(selected_data.page_num, "details")
+				details.selected_index = selected_data.page_num
 			end
 			res = selected_data.res
-		end, "left_tree")
+		end
 	end
 	local d_res = wesnoth.show_dialog(dialog_wml, preshow)
 	return d_res, res
