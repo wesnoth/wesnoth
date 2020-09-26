@@ -221,7 +221,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 			page.label_difficulty.marked_up_text = wml.variables["wc2_difficulty.name"] or "unknown"
 
 			function page.checkbox_show_pickup_confirmation.callback()
-				wc2_utils.global_vars.skip_pickup_dialog = page.checkbox_show_pickup_confirmation.selected
+				wc2_utils.global_vars.skip_pickup_dialog = not page.checkbox_show_pickup_confirmation.selected
 			end
 		end
 		if show_help_feedback then
