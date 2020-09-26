@@ -305,6 +305,11 @@ WIDGET_GETTER("item_count", int, gui2::multi_page)
 	return w.get_page_count();
 }
 
+WIDGET_GETTER("item_count", int, gui2::listbox)
+{
+	return w.get_item_count();
+}
+
 WIDGET_SETTER("use_markup", bool, gui2::styled_widget)
 {
 	w.set_use_markup(value);
