@@ -79,7 +79,7 @@ local function preshow(dialog)
 
     local function select()
         -- TODO: why not use unit_preview_pane widget ?
-        local unit_type = wesnoth.unit_types[ listedZombies[dialog.unit_list.value] ]
+        local unit_type = wesnoth.unit_types[ listedZombies[dialog.unit_list.selected_index] ]
         dialog.large_unit_sprite.label = unit_type.image .. "~RC(magenta>red)~XBRZ(2)"
         dialog.large_unit_type.label = "<span size='large'>" .. unit_type.name .. "</span>"
         dialog.unit_points.label     = "<span color='#20dc00'><b>".. _"HP: ".. "</b>" .. unit_type.max_hitpoints .. "</span> | <span color='#00a0e1'><b>".. _"XP: ".. "</b>" .. unit_type.max_experience .. "</span> | <b>".. _"MP: ".. "</b>" .. unit_type.max_moves
@@ -94,7 +94,7 @@ local function preshow(dialog)
     end
 
     function dialog.unit_help_button.callback()
-        W.open_help { topic="unit_" .. listedZombies[dialog.unit_list.value] }
+        W.open_help { topic="unit_" .. listedZombies[dialog.unit_list.selected_index] }
     end
     
     for i,z in ipairs(zombies) do
@@ -112,10 +112,11 @@ local function preshow(dialog)
             list_item.unit_sprite.label = unit_type.image .. "~RC(magenta>red)"
             list_item.unit_cost.label   = afford_color_span_start .. unit_type.cost .. afford_color_span_end
 
-            listedZombies[ dialog.unit_list.size ] = z.type
+            print("dialog.unit_list.size", dialog.unit_list.item_count)
+            listedZombies[ dialog.unit_list.item_count ] = z.type
         end
     end
-    dialog.unit_list.selectzed_index = 1
+    dialog.unit_list.selected_index = 1
     select()
 end
 
