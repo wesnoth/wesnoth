@@ -436,7 +436,7 @@ WIDGET_SETTER("on_modified", lua_index_raw, gui2::widget)
 	}
 	lua_pushvalue(L, value.index);
 	if (!luaW_setwidgetcallback(L, &w, wd, "on_modified")) {
-		connect_signal_notify_modified(w, std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "callback"));
+		connect_signal_notify_modified(w, std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "on_modified"));
 	}
 }
 
@@ -448,7 +448,7 @@ WIDGET_SETTER("on_left_click", lua_index_raw, gui2::widget)
 	}
 	lua_pushvalue(L, value.index);
 	if (!luaW_setwidgetcallback(L, &w, wd, "on_left_click")) {
-		connect_signal_notify_modified(w, std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "callback"));
+		connect_signal_notify_modified(w, std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "on_left_click"));
 	}
 }
 
