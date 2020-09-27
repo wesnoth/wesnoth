@@ -1388,7 +1388,7 @@ REPORT_GENERATOR(turn, rc)
 
 	tooltip << _("Turn Number");
 	if(nb != -1) {
-		tooltip << "\n\n" << _("When the game reaches the number of turns indicated by the second number, it will end.");
+		tooltip << "\n\n" << _("When the game exceeds the number of turns indicated by the second number, it will end.");
 	}
 	return text_report(str.str(), tooltip.str());
 }
