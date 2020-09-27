@@ -405,8 +405,8 @@ static void write_difference(config& pack, const config& from, const config& to,
 }
 
 /**
- * &from, &to are top-dirs of their structures; addlist/removelist are equal to [dir]
- * #TODO: make a clientside function to allow incremental uploadpacks using hash request from server
+ * &from, &to are the top directories of their structures; addlist/removelist tag is treated as [dir]
+ *
  * Does it worth it to archive and write the pack on the fly using config_writer?
  * #TODO: clientside verification?
  */
