@@ -307,12 +307,12 @@ std::string unencode_binary(const std::string& str)
 	return res;
 }
 
-static const std::string file_hash_raw(const config& file)
+static std::string file_hash_raw(const config& file)
 {
 	return utils::md5(file["contents"].str()).base64_digest();
 }
 
-const std::string file_hash(const config& file)
+std::string file_hash(const config& file)
 {
 	std::string hash = file["hash"].str();
 	if(hash.empty()) {

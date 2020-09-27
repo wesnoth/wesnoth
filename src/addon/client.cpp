@@ -283,7 +283,7 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 	return !this->update_last_error(archive_cfg);
 }
 
-static inline std::string write_info_contents(const addon_info& info)
+static std::string write_info_contents(const addon_info& info)
 {
 	LOG_ADDONS << "generating version info for add-on '" << info.id << "'\n";
 
