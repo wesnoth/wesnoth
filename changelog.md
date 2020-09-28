@@ -26,6 +26,10 @@
      * Cost of Sea Serpent changed from 40 to 55.
      * Cost of Wild Wyvern changed from 54 to 75.
      * Cost of Wyvern Rider changed from 80 to 102.
+ ### Lua API
+  * Implement new GUI2 widget userdata for working with custom dialogs.
+  * Renamed wesnoth.show_dialog to gui.show_dialog. The preshow and postshow now take a single parameter - a widget userdata.
+  * All other dialog functions (such as wesnoth.get_dialog_value and wesnoth.set_dialog_value) are now deprecated.
 
 ## Version 1.15.5
  ### Add-ons client
