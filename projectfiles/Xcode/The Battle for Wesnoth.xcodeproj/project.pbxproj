@@ -1039,6 +1039,7 @@
 		91E3570A1CACC9B200774252 /* playcampaign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600B1A048E210018C9D6 /* playcampaign.cpp */; };
 		91E3570B1CACC9B200774252 /* singleplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600C1A048E220018C9D6 /* singleplayer.cpp */; };
 		91ECD5D21BA11A5200B25CF1 /* unit_creator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91ECD5D01BA11A5200B25CF1 /* unit_creator.cpp */; };
+		91F8E12E260A25E2002312BA /* lua_mathx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F8E12D260A25E1002312BA /* lua_mathx.cpp */; };
 		91FAC70A1C7FBC3400DAB2C3 /* lua_formula_bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */; };
 		91FBBAD81CB6BC3F00470BFE /* filesystem_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */; };
 		91FBBADB1CB6D1B700470BFE /* markov_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD91CB6D1B700470BFE /* markov_generator.cpp */; };
@@ -2232,6 +2233,8 @@
 		91ECD5D11BA11A5200B25CF1 /* unit_creator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_creator.hpp; sourceTree = "<group>"; };
 		91EF6BFC1C9E22E400E2A733 /* const_clone.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = const_clone.hpp; sourceTree = "<group>"; };
 		91EF6C001C9E22E400E2A733 /* reference_counter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = reference_counter.hpp; sourceTree = "<group>"; };
+		91F8E12C260A25E1002312BA /* lua_mathx.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_mathx.hpp; sourceTree = "<group>"; };
+		91F8E12D260A25E1002312BA /* lua_mathx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_mathx.cpp; sourceTree = "<group>"; };
 		91FAC7081C7F931900DAB2C3 /* lua_formula_bridge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_formula_bridge.hpp; sourceTree = "<group>"; };
 		91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_formula_bridge.cpp; sourceTree = "<group>"; };
 		91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_sdl.cpp; sourceTree = "<group>"; };
@@ -4681,6 +4684,8 @@
 				91B621E91B76BB1500B00E0F /* lua_kernel_base.hpp */,
 				ECA4A6791A1EC319006BCCF2 /* lua_map_location_ops.cpp */,
 				91B621EA1B76BB1800B00E0F /* lua_map_location_ops.hpp */,
+				91F8E12D260A25E1002312BA /* lua_mathx.cpp */,
+				91F8E12C260A25E1002312BA /* lua_mathx.hpp */,
 				9190B73A1CA0554900B0EF66 /* lua_pathfind_cost_calculator.hpp */,
 				ECFB61831DA0A0C50055D3F8 /* lua_preferences.cpp */,
 				ECFB61841DA0A0C50055D3F8 /* lua_preferences.hpp */,
@@ -5344,6 +5349,7 @@
 				46685C9D219D518B0009CFFE /* schema_validator.cpp in Sources */,
 				ECF0F80123A09929004A2011 /* lua_stringx.cpp in Sources */,
 				46F92DE72174F6A400602C1C /* game_delete.cpp in Sources */,
+				91F8E12E260A25E2002312BA /* lua_mathx.cpp in Sources */,
 				6295C3C4150FC9750077D8C5 /* map_fragment.cpp in Sources */,
 				EC4E3B1D19B2D7AD0049CBD7 /* map_generator.cpp in Sources */,
 				B5599B2C0EC62181008DD061 /* label.cpp in Sources */,
