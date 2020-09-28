@@ -34,7 +34,7 @@ namespace {
 }
 
 fuh::fuh(const config& c)
-	: conn(c)
+	: conn_(c)
 	, db_users_table_(c["db_users_table"].str())
 	, db_extra_table_(c["db_extra_table"].str())
 	, mp_mod_group_(0)
@@ -109,11 +109,11 @@ void fuh::user_logged_in(const std::string& name) {
 }
 
 bool fuh::user_exists(const std::string& name) {
-	return conn.user_exists(name);
+	return conn_.user_exists(name);
 }
 
 bool fuh::user_is_active(const std::string& name) {
-	int user_type = conn.get_user_int(db_users_table_, "user_type", name);
+	int user_type = conn_.get_user_int(db_users_table_, "user_type", name);
 	return user_type != USER_INACTIVE && user_type != USER_IGNORE;
 }
 
@@ -121,14 +121,14 @@ bool fuh::user_is_moderator(const std::string& name) {
 	if(!user_exists(name)){
 		return false;
 	}
-	return conn.get_user_int(db_extra_table_, "user_is_moderator", name) == 1 || (mp_mod_group_ != 0 && conn.is_user_in_group(name, mp_mod_group_));
+	return conn_.get_user_int(db_extra_table_, "user_is_moderator", name) == 1 || (mp_mod_group_ != 0 && conn_.is_user_in_group(name, mp_mod_group_));
 }
 
 void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 	if(!user_exists(name)){
 		return;
 	}
-	conn.write_user_int("user_is_moderator", name, is_moderator);
+	conn_.write_user_int("user_is_moderator", name, is_moderator);
 }
 
 fuh::ban_info fuh::user_is_banned(const std::string& name, const std::string& addr)
@@ -139,7 +139,7 @@ fuh::ban_info fuh::user_is_banned(const std::string& name, const std::string& ad
 	//       prepared SQL statement API right now. However, they are basically
 	//       never used on forums.wesnoth.org, so this shouldn't be a problem
 	//       for the time being.
-	ban_check b = conn.get_ban_info(name, addr);
+	ban_check b = conn_.get_ban_info(name, addr);
 	switch(b.get_ban_type())
 	{
 		case BAN_NONE:
@@ -188,47 +188,55 @@ std::string fuh::user_info(const std::string& name) {
 }
 
 std::string fuh::get_hash(const std::string& user) {
-	return conn.get_user_string(db_users_table_, "user_password", user);
+	return conn_.get_user_string(db_users_table_, "user_password", user);
 }
 
 std::time_t fuh::get_lastlogin(const std::string& user) {
-	return std::time_t(conn.get_user_int(db_extra_table_, "user_lastvisit", user));
+	return std::time_t(conn_.get_user_int(db_extra_table_, "user_lastvisit", user));
 }
 
 std::time_t fuh::get_registrationdate(const std::string& user) {
-	return std::time_t(conn.get_user_int(db_users_table_, "user_regdate", user));
+	return std::time_t(conn_.get_user_int(db_users_table_, "user_regdate", user));
 }
 
 void fuh::set_lastlogin(const std::string& user, const std::time_t& lastlogin) {
-	conn.write_user_int("user_lastvisit", user, static_cast<int>(lastlogin));
+	conn_.write_user_int("user_lastvisit", user, static_cast<int>(lastlogin));
 }
 
 std::string fuh::get_uuid(){
-	return conn.get_uuid();
+	return conn_.get_uuid();
 }
 
 std::string fuh::get_tournaments(){
-	return conn.get_tournaments();
+	return conn_.get_tournaments();
 }
 
 void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password, const std::string& map_source, const std::string& map_version, const std::string& era_source, const std::string& era_version){
-	conn.insert_game_info(uuid, game_id, version, name, map_name, era_name, reload, observers, is_public, has_password, map_source, map_version, era_source, era_version);
+	conn_.insert_game_info(uuid, game_id, version, name, map_name, era_name, reload, observers, is_public, has_password, map_source, map_version, era_source, era_version);
 }
 
 void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location){
-	conn.update_game_end(uuid, game_id, replay_location);
+	conn_.update_game_end(uuid, game_id, replay_location);
 }
 
 void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user){
-	conn.insert_game_player_info(uuid, game_id, username, side_number, is_host, faction, version, source, current_user);
+	conn_.insert_game_player_info(uuid, game_id, username, side_number, is_host, faction, version, source, current_user);
 }
 
 void fuh::db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name, const std::string& modification_source, const std::string& modification_version){
-	conn.insert_modification_info(uuid, game_id, modification_name, modification_source, modification_version);
+	conn_.insert_modification_info(uuid, game_id, modification_name, modification_source, modification_version);
 }
 
 void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
-	conn.set_oos_flag(uuid, game_id);
+	conn_.set_oos_flag(uuid, game_id);
+}
+
+void fuh::async_test_query(boost::asio::io_service& io_service, int limit) {
+	boost::asio::post([this, limit, &io_service] { 
+		ERR_UH << "async test query starts!" << std::endl;
+		int i = conn_.async_test_query(limit);
+		boost::asio::post(io_service, [i]{ ERR_UH << "async test query output: " << i << std::endl; });
+	 });
 }
 
 #endif //HAVE_MYSQLPP

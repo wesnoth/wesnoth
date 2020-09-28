@@ -21,6 +21,8 @@ class config;
 #include <ctime>
 #include <string>
 
+#include <boost/asio.hpp>
+
 /**
  * An interface class to handle nick registration
  * To activate it put a [user_handler] section into the
@@ -141,4 +143,5 @@ class user_handler {
 		virtual void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user) =0;
 		virtual void db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name, const std::string& modification_source, const std::string& modification_version) =0;
 		virtual void db_set_oos_flag(const std::string& uuid, int game_id) =0;
+		virtual void async_test_query(boost::asio::io_service& io_service, int limit) =0;
 };

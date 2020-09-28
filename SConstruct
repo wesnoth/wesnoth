@@ -184,7 +184,11 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-boost_version = '1.56.0'
+# boost::asio::post is new with 1.66
+if env["forum_user_handler"]:
+    boost_version = "1.66"
+else:
+    boost_version = "1.56"
 
 
 def SortHelpText(a, b):

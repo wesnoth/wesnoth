@@ -1,5 +1,4 @@
-﻿
-# set minimum version
+﻿# set minimum version
 cmake_minimum_required(VERSION 3.1)
 
 project(wesnoth)
@@ -58,6 +57,13 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
+# boost::asio::post is new with 1.66
+if(ENABLE_MYSQL)
+	set(BOOST_VERSION "1.66")
+else()
+	set(BOOST_VERSION "1.56")
+endif(ENABLE_MYSQL)
+
 # set what std version to use
 if(NOT CXX_STD)
 	set(CXX_STD "14")
@@ -80,7 +86,7 @@ else()
 	set(CRYPTO_LIBRARY "-framework Security")
 endif()
 
-find_package(Boost 1.56 REQUIRED COMPONENTS iostreams program_options regex system thread random)
+find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
@@ -535,7 +541,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 endif(ENABLE_GAME OR ENABLE_TESTS)
 
 if(ENABLE_TESTS)
-	find_package( Boost 1.56 REQUIRED COMPONENTS unit_test_framework )
+	find_package( Boost ${BOOST_VERSION} REQUIRED COMPONENTS unit_test_framework )
 endif(ENABLE_TESTS)
 
 if(ENABLE_GAME)
@@ -567,8 +573,8 @@ if(ENABLE_GAME)
 	endif(ENABLE_HISTORY AND HISTORY_FOUND)
 endif(ENABLE_GAME)
 
-find_package(Boost 1.56 REQUIRED COMPONENTS filesystem)
-find_package(Boost 1.56 REQUIRED COMPONENTS locale)
+find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS filesystem)
+find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS locale)
 
 if(ENABLE_POT_UPDATE_TARGET)
 	find_package(TranslationTools REQUIRED)
