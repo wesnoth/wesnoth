@@ -122,24 +122,31 @@ else
 
         ccache -s
         ccache -z
+# remove once 1804 isn't used anymore
+    elif [ "$IMAGE" == "1804" ]; then
+        scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
+              ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
+              extra_flags_config="-pipe" strict="$STRICT" forum_user_handler=false \
+              nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
+        BUILD_RET=$?
     else
         scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
               ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
               extra_flags_config="-pipe" strict="$STRICT" forum_user_handler=true \
               nls="$NLS" enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time
         BUILD_RET=$?
-
-# rename debug executables to what the tests expect
-        if [ "$CFG" == "debug" ]; then
-            mv wesnoth-debug wesnoth
-            mv wesnothd-debug wesnothd
-            mv campaignd-debug campaignd
-            mv boost_unit_tests-debug boost_unit_tests
-        fi
     fi
 
     if [ $BUILD_RET != 0 ]; then
         exit $BUILD_RET
+    fi
+
+# rename debug executables to what the tests expect
+    if [ "$CFG" == "debug" ]; then
+        mv wesnoth-debug wesnoth
+        mv wesnothd-debug wesnothd
+        mv campaignd-debug campaignd
+        mv boost_unit_tests-debug boost_unit_tests
     fi
 
     if [ "$UPLOAD_ID" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then

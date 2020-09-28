@@ -31,6 +31,9 @@ class dbconn
 {
 	public:
 		dbconn(const config& c);
+
+		int async_test_query(int limit);
+
 		std::string get_uuid();
 		std::string get_tournaments();
 		bool user_exists(const std::string& name);
@@ -60,27 +63,28 @@ class dbconn
 		std::string db_tournament_query_;
 
 		void log_sql_exception(const std::string& text, const mariadb::exception::base& e);
+		mariadb::connection_ref create_connection();
 
 		template<typename... Args>
-		void get_complex_results(rs_base& base, const std::string& sql, Args&&... args);
+		void get_complex_results(mariadb::connection_ref connection, rs_base& base, const std::string& sql, Args&&... args);
 
 		template<typename... Args>
-		std::string get_single_string(const std::string& sql, Args&&... args);
+		std::string get_single_string(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		template<typename... Args>
-		int get_single_int(const std::string& sql, Args&&... args);
+		long get_single_long(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		template<typename... Args>
-		bool exists(const std::string& sql, Args&&... args);
+		bool exists(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		template<typename... Args>
-		mariadb::result_set_ref select(const std::string& sql, Args&&... args);
+		mariadb::result_set_ref select(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		template<typename... Args>
-		int modify(const std::string& sql, Args&&... args);
+		int modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		template<typename... Args>
-		mariadb::statement_ref query(const std::string& sql, Args&&... args);
+		mariadb::statement_ref query(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		template<typename Arg, typename... Args>
 		void prepare(mariadb::statement_ref stmt, int i, Arg arg, Args&&... args);

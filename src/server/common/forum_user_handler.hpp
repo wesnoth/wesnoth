@@ -74,8 +74,10 @@ class fuh : public user_handler {
 		void db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name, const std::string& modification_source, const std::string& modification_version);
 		void db_set_oos_flag(const std::string& uuid, int game_id);
 
+		void async_test_query(boost::asio::io_service& io_service, int limit);
+
 	private:
-		dbconn conn;
+		dbconn conn_;
 		std::string db_users_table_;
 		std::string db_extra_table_;
 		int mp_mod_group_;
