@@ -71,9 +71,29 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 	return elem
 end
 
+local function compare_versions(a, op, b)
+	local V = wesnoth.version
+	if op == '==' then
+		return V(a) == V(b)
+	elseif op == '!=' then
+		return V(a) ~= V(b)
+	elseif op == '<' then
+		return V(a) < V(b)
+	elseif op == '<=' then
+		return V(a) <= V(b)
+	elseif op == '>' then
+		return V(a) > V(b)
+	elseif op == '>=' then
+		return V(a) >= V(b)
+	else
+		error(string.format('Invalid operator %s for comparing versions', op))
+	end
+end
+
 unpack = wesnoth.deprecate_api('unpack', 'table.unpack', 3, '1.17', table.unpack)
 math.pow = wesnoth.deprecate_api('math.pow', '^', 3, '1.17', function(a,b) return a ^ b end)
 wesnoth.get_time_stamp = wesnoth.deprecate_api('wesnoth.get_time_stamp', 'wesnoth.ms_since_init', 1, nil, wesnoth.ms_since_init)
+wesnoth.compare_versions = wesnoth.deprecate_api('wesnoth.compare_versions', 'wesnoth.version', 1, nil, compare_versions, 'Use wesnoth.version to construct a version object and compare using the normal Lua comparison operators')
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	-- wesnoth.wml_actions.music doesn't exist yet at this point, so create a helper function instead.
 	wesnoth.set_music = wesnoth.deprecate_api('wesnoth.set_music', 'wesnoth.music_list', 1, nil, function(cfg)
