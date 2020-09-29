@@ -206,7 +206,7 @@ namespace
 			{
 				res = advance_unit_dialog(loc_);
 			}
-			else if(t.is_local_ai() || t.is_network_ai() || t.is_empty())
+			else if(is_current_side && (t.is_local_ai() || t.is_network_ai() || t.is_empty()))
 			{
 				res = randomness::generator->get_random_int(0, nb_options_-1);
 
