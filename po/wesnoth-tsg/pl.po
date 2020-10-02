@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-09-26 20:35 UTC\n"
-"PO-Revision-Date: 2016-01-10 11:43+0100\n"
+"PO-Revision-Date: 2020-09-29 17:36+0200\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
 "Language: pl_PL\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
@@ -34,6 +34,12 @@ msgid ""
 "remaining men of the derelict South Guard to defend his country.\n"
 "\n"
 msgstr ""
+"Młody rycerz, Deoran, zostaje wysłany do Kerlath, południowej prowincji "
+"Wesnoth, aby zbadać spustoszone miasta na granicy. Niespodziewanie "
+"wepchnięty w pechowy konflikt przeciwko grasującym bandytom, Deoran musi "
+"zmobilizować pozostałych ludzi z rozpadłej Południowej Straży, aby bronić "
+"swojego kraju.\n"
+"\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:21
@@ -215,6 +221,7 @@ msgstr "Śmierć Sir Gerricka"
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:173
 msgid "Upon arrival, Deoran found the land completely overrun by bandits."
 msgstr ""
+"Przybywszy, Deoran zastał ziemię całkowicie spustoszoną przez bandytów."
 
 #. [unit]: id=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:187
@@ -809,53 +816,35 @@ msgstr "Kryminalista"
 
 #. [do]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:169
-#, fuzzy
-#| msgid "female^resilient"
 msgid "female^Criminal"
-msgstr "wytrzymała"
+msgstr "Kryminalistka"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:202
-#, fuzzy
-#| msgid ""
-#| "Look! There is smoke coming from Westin. That can only mean that bandits "
-#| "have overrun the garrison and are sacking the city!"
 msgid ""
 "Look there! Smoke rises from Westin! The bandits must have already overrun "
 "the garrison and are sacking the city!"
 msgstr ""
-"Patrzcie! Nad Westin unosi się dym. To może oznaczać tylko jedno - bandyci "
+"Patrzcie! Nad Westin unosi się dym! To może oznaczać tylko jedno - bandyci "
 "pokonali garnizon i plądrują miasto!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:206
-#, fuzzy
-#| msgid ""
-#| "If too much time passes and they are unchecked, they will leave the city "
-#| "in ruins and make a great slaughter of all who live therein. We must act "
-#| "quickly."
 msgid ""
 "Then we must make haste before they leave the city in ruins and slaughter "
 "all who live therein."
 msgstr ""
-"Jeśli minie za dużo czasu i nikt ich nie powstrzyma, to zostawią miasto w "
-"ruinach i przeprowadzą wielką rzeź wszystkich jego mieszkańców. Musimy "
-"działać szybko."
+"Musimy się pospieszyć, zanim zostawią miasto w ruinach i wyrąbią w pień "
+"wszystkich mieszkańców."
 
 #. [message]: speaker=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:213
-#, fuzzy
-#| msgid ""
-#| "What?! If there are soldiers of Wesnoth coming from the northern forts, "
-#| "then my brother Mathin is surely dead... They will pay for his death, "
-#| "just as Sir Loris paid for his pride!"
 msgid ""
 "What?! Those soldiers come from the northern forts... this can only mean my "
 "brother Mathin is dead. Those fiends! They will pay for his death!"
 msgstr ""
-"Co takiego?! Skoro żołnierze Wesnoth przybywają z północnych fortów, to "
-"znaczy, że mój brat Mathin z pewnością zginął... Zapłacą nam za jego śmierć, "
-"tak jak Sir Loris zapłacił za swoją dumę!"
+"Co takiego?! Żołnierze przyszli z północnych fortów... to może oznaczać "
+"tylko to, że mój brat Mathin zginął. Diabelstwa! Zapłacą za jego śmierć!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:225
@@ -864,10 +853,8 @@ msgstr "Doprowadź Deorana do Cytadeli Westin"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:234
-#, fuzzy
-#| msgid "Kill Urza Nalmath, the bandit leader"
 msgid "Defeat Urza Nalmath, the bandit leader"
-msgstr "Zabij Urza Nalmatha, przywódcę bandytów"
+msgstr "Zabij Urzę Nalmatha, przywódcę bandytów"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:251
@@ -881,7 +868,7 @@ msgstr "Śmierć pastora Hylasa"
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:284
 msgid "I have reached the citadel!"
-msgstr ""
+msgstr "Dotarłem do cytadeli!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:288
@@ -897,10 +884,8 @@ msgstr "Pastor Hylas"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:332
-#, fuzzy
-#| msgid "The master of the undead is defeated!"
 msgid "More bandits?! Prepare to die!"
-msgstr "Władca nieumarłych został pokonany!"
+msgstr "Więcej bandytów?! Przygotujcie się na śmierć!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:336
@@ -1005,10 +990,8 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:442
-#, fuzzy
-#| msgid "We’re too late! They’re burning the city..."
 msgid "We’re too late! They have burned the whole city..."
-msgstr "Przybyliśmy za późno! Palą miasto..."
+msgstr "Przybyliśmy za późno! Spalili całe miasto..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:447
@@ -1109,17 +1092,13 @@ msgstr "Pomścimy śmierć twojego brata!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:639
-#, fuzzy
-#| msgid "They are burning our villages! We must stop them!"
 msgid "They are burning our homes! We must stop them!"
-msgstr "Palą nasze wioski! Musimy ich powstrzymać!"
+msgstr "Palą nasze domy! Musimy ich powstrzymać!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:682
-#, fuzzy
-#| msgid "My brother has died unavenged! What have we done?!"
 msgid "My brother has died unavenged! I have failed!"
-msgstr "Nie pomściliśmy śmierci mojego brata! Co żeśmy zrobili?!"
+msgstr "Nie pomściliśmy śmierci mojego brata! To moja porażka!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:692
@@ -1334,9 +1313,9 @@ msgid ""
 "a force strong enough to drive off the bandits before moving Deoran from his "
 "encampment!"
 msgstr ""
-"Musisz zaprowadzić Deorana do centrum elfickiej cytadeli. Upewnij się, że "
-"zanim wyprowadzisz Deorana z obozu, rekrutowałeś dość sił, by odeprzeć "
-"bandytów."
+"Musisz zaprowadzić Deorana do centrum elfickiej cytadeli. Upewnij się, żeby "
+"zanim wyprowadzisz Deorana z obozu, zrekrutować dość sił, by odeprzeć "
+"bandytów!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:256
@@ -3555,7 +3534,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:423
 msgid "Find the source of the undead under the citadel"
-msgstr "Znajdź pod cytadelą źródło nieumarłych."
+msgstr "Znajdź źródło nieumarłych pod cytadelą"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:461
@@ -3989,10 +3968,8 @@ msgstr "Mitche"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:137
-#, fuzzy
-#| msgid "Lt. Illan"
 msgid "Illan"
-msgstr "Porucznik Illan"
+msgstr "Illan"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:138
@@ -4006,10 +3983,8 @@ msgstr "Jul"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:143
-#, fuzzy
-#| msgid "Lt. Meris"
 msgid "Meris"
-msgstr "Porucznik Meris"
+msgstr "Meris"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:144
@@ -4256,7 +4231,7 @@ msgstr "Powrót do Kerlath"
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:28
 msgid "Move Deoran into Kerlath Province"
-msgstr "Dotrzyj Deoranem do prowincji Kerlath"
+msgstr "Przemieść Deorana do prowincji Kerlath"
 
 #. [message]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:209
@@ -4487,17 +4462,13 @@ msgstr "Strażnik prowincji"
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:198
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:200
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:202
-#, fuzzy
-#| msgid "Death Guard"
 msgid "Merman Guard"
-msgstr "Strażnik śmierci"
+msgstr "Mermen strażnik"
 
 #. [value]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:208
-#, fuzzy
-#| msgid "Lt. Nilaf"
 msgid "Nilaf"
-msgstr "Porucznik Nilaf"
+msgstr "Nilaf"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:398
