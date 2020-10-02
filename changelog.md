@@ -1,6 +1,6 @@
 ## Version 1.15.5+dev
  ### Language and i18n
-   * Updated translations: British English, Czech, Portuguese (Brazil)
+   * Updated translations: British English, Czech, French, Portuguese (Brazil)
  ### Units
    * Added Tusker line - Gorer and Tusklet (by TSI 2009)
    * Revised Falcon and Elder Falcon sprites

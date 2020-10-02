@@ -1,12 +1,13 @@
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2012.
 # Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
 # Gérard Bodin <gbodin.qc@gmail.com>, 2018.
+# Mathieu Guilbaud <mathieu@guim.info>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: Under_the_Burning_Suns-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-09-19 17:35 UTC\n"
-"PO-Revision-Date: 2018-11-18 18:39+0100\n"
+"PO-Revision-Date: 2020-09-25 16:42+0200\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -14,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -329,14 +330,6 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:262
-#, fuzzy
-#| msgid ""
-#| "Come on, Kaleh, we have to go see if anyone is hurt or needs help. I "
-#| "think I hear people calling from the south. Now is not a time for fear, "
-#| "we must be strong. After all you are the nephew of Tanuil, our leader, "
-#| "and you must answer to the call of duty. Perhaps in the light of day "
-#| "things won’t be as bad as you think. Let’s explore the village and see "
-#| "who else has survived the night."
 msgid ""
 "Come on, Kaleh, we have to go see if anyone is hurt or needs help. I think I "
 "hear people calling from the south. Now is not a time for fear, we must be "
@@ -1139,6 +1132,8 @@ msgid ""
 "Your units become dehydrated during the day, losing hitpoints and damage "
 "when they are not on a water hex"
 msgstr ""
+"Vos unités se déshydratent pendant le jour, perdant des points de vie et des "
+"dommages lorsqu'elles ne sont pas sur un hexagone d'eau"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:235
@@ -1146,16 +1141,21 @@ msgid ""
 "Units are refreshed at the start of your turn when they are on a water or "
 "oasis hex"
 msgstr ""
+"Vos unités sont rafraichies au début de votre tour lorsqu'elles sont un "
+"hexagone d'eau ou une oasis"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:238
 msgid "Healers can prevent dehydration from getting worse, but cannot heal it"
 msgstr ""
+"Les soigneurs peuvent empêcher la déshydratation d'empirer, mais ne peuvent "
+"la guérir"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:241
 msgid "Healers are unable to heal adjacent units during the day"
 msgstr ""
+"Les soigneurs ne peuvent soigner les unités adjacentes pendant la journée"
 
 #. [label]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:265
@@ -1698,19 +1698,14 @@ msgstr ""
 
 #. [message]: speaker=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1223
-#, fuzzy
-#| msgid ""
-#| "Elf with a bow, I remember you. You thought me defeated, but I am back "
-#| "even more powerful than before. Death reigns eternal, your scorched bones "
-#| "and lifeless body will join my host."
 msgid ""
 "Elf of the sands, I remember you. You thought me defeated, but I am back "
 "even more powerful than before. Death reigns eternal, your scorched bones "
 "and lifeless body will join my host."
 msgstr ""
-"Elfe à l'arc, je me souviens de toi. Tu m'as vaincu, mais je suis de retour "
-"encore plus puissant qu'avant. La mort règne, éternelle, et bientôt tes os "
-"noircis et ton corps sans vie serviront dans mon armée !"
+"Elfe des sables, je me souviens de toi. Tu m'as vaincu, mais je suis de "
+"retour encore plus puissant qu'avant. La mort règne, éternelle, et bientôt "
+"tes os noircis et ton corps sans vie serviront dans mon armée !"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1228
@@ -2359,7 +2354,7 @@ msgstr ""
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:701
 msgid "righteous rage"
-msgstr ""
+msgstr "juste rage"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
@@ -2368,11 +2363,14 @@ msgid ""
 "attack presses the engagement until one of the combatants is slain, or 30 "
 "rounds of attacks have occurred."
 msgstr ""
+"Utilisée offensivement ou défensivement contre les champions Grak ou Zur, "
+"cette attaque pousse l'engagement jusqu'à ce qu'un des combattants soit "
+"terrassé, ou bien que 30 rounds d'attaques aient eu lieu."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:712
 msgid "true strike"
-msgstr ""
+msgstr "frappe vértiable"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:714
@@ -2380,6 +2378,8 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
 msgstr ""
+"Cette attaque a toujours 70% de chance de toucher quelle que soit la "
+"capacité défensive du champion visé."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:778
@@ -4024,16 +4024,12 @@ msgstr "Tenez bon les garçons, les voilà !"
 
 #. [message]: speaker=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:993
-#, fuzzy
-#| msgid ""
-#| "You invade our tunnels, you slaughter our women and children, by Griknagh "
-#| "we will make you pay!"
 msgid ""
 "You invade our tunnels, you slaughter our people, by Griknagh we will make "
 "you pay!"
 msgstr ""
-"Vous envahissez nos tunnels, vous massacrez nos femmes et nos enfants, par "
-"Griknagh nous vous le ferons payer !"
+"Vous envahissez nos tunnels, vous massacrez notre peuple, par Griknagh nous "
+"vous le ferons payer !"
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:998
@@ -7846,10 +7842,8 @@ msgstr ""
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2051
-#, fuzzy
-#| msgid "Break the circle"
 msgid "Break the circle."
-msgstr "Casser le cercle"
+msgstr "Casser le cercle."
 
 #. [command]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2070
@@ -11086,18 +11080,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1796
-#, fuzzy
-#| msgid ""
-#| "She claims to be the one who has shepherded us during his journey, but "
-#| "who protected you across the harsh sands, who fought the orcs and led you "
-#| "under the mountains, who led you out again, against all odds? I did. I "
-#| "have bled for you, every step of the way. If you will not trust me based "
-#| "on my words, then trust me based on my actions. I have done the best I "
-#| "could for my people, and I stand by my actions. I believe that the "
-#| "merfolk are our friends, as the dwarves were. I refuse to bow down to "
-#| "harsh words and threats; we elves have always been free to make our own "
-#| "choices. We are not slaves, and will not blindly follow either humans or "
-#| "some false god."
 msgid ""
 "She claims to be the one who has shepherded us during this journey, but who "
 "protected you across the harsh sands, who fought the orcs and led you under "
@@ -11154,18 +11136,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1810
-#, fuzzy
-#| msgid ""
-#| "She claims to be the one who has shepherded us during his journey, but "
-#| "who protected you across the harsh sands, who fought the orcs and led you "
-#| "under the mountains, who led you out again, against all odds? I did. I "
-#| "have bled for you, every step of the way. If you will not trust me based "
-#| "on my words, then trust me based on my actions. I have done the best I "
-#| "could for my people, and I stand by my actions. I believe that the "
-#| "merfolk are our friends, as the trolls were. I refuse to bow down to "
-#| "harsh words and threats; we elves have always been free to make our own "
-#| "choices. We are not slaves, and will not blindly follow either the humans "
-#| "or some false god."
 msgid ""
 "She claims to be the one who has shepherded us during this journey, but who "
 "protected you across the harsh sands, who fought the orcs and led you under "
@@ -11214,10 +11184,6 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1824
-#, fuzzy
-#| msgid ""
-#| "I have followed you this far Kaleh, I will not abandon you now. But I "
-#| "admit that my faith is shaken. If that is not our god, than what is it?"
 msgid ""
 "I have followed you this far Kaleh, I will not abandon you now. But I admit "
 "that my faith is shaken. If that is not our god, then what is it?"
@@ -15680,14 +15646,6 @@ msgstr "Archer de Quenoth"
 
 #. [unit_type]: id=Quenoth Archer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:21
-#, fuzzy
-#| msgid ""
-#| "With the open sands providing much less protection than their old forests "
-#| "did, the wide ranks of elvish archers that could once have stopped an "
-#| "advancing orcish horde in its tracks have all but disappeared. Instead, "
-#| "the few who still choose to dedicate themselves to the traditional weapon "
-#| "of their ancestors practise the art from the saddle, easily avoiding the "
-#| "perils of melee combat."
 msgid ""
 "With the open sands providing much less protection than the old forests did, "
 "the wide ranks of elvish archers that once formed the core of the elvish "
@@ -15696,12 +15654,12 @@ msgid ""
 "from the saddle, allowing them to more easily avoid the perils of melee "
 "combat."
 msgstr ""
-"Comme les déserts de sable offrent bien moins de couvert que leurs anciennes "
-"forêts, les vastes armées d'archers elfes qui pouvaient alors tenir tête à "
-"une horde d'orcs ont quasiment disparu. Maintenant, les rares qui "
-"choisissent toujours de se consacrer à l'arme traditionnelle de leurs "
-"ancêtres combattent avec une monture, évitant ainsi les dangers du combat au "
-"corps-à-corps."
+"Comme les déserts de sable offrent bien moins de couvert que les anciennes "
+"forêts, les vastes armées d'archers elfes, qui constituaient le coeur de "
+"l'armée elfe, ont quasiment disparu. Maintenant, les rares qui choisissent "
+"toujours de se consacrer à l'arme traditionnelle de leurs ancêtres "
+"combattent avec une monture, évitant ainsi les dangers du combat au corps-à-"
+"corps."
 
 #. [unit_type]: id=Quenoth Champion, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:5
@@ -15717,6 +15675,11 @@ msgid ""
 "with raw power and can force their way through all but the most secure of "
 "defenses."
 msgstr ""
+"Positionnés au front de la plupart des lignes de lances de Quenoth, les "
+"Champions ont maitrisé le glaive à la limite de la perfection. Avec, peut-"
+"être, une lacune dans la finesse de leur stratégie, ces elfes ont compensé "
+"avec une force brute et peuvent tracer leur chemin à travers les plus "
+"sécurisées des défenses."
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -15798,6 +15761,10 @@ msgid ""
 "for combat and survival, these elves are the few who remain as healers and "
 "caretakers."
 msgstr ""
+"Adoratrice de la Déesse de la Lumière, Eloh, les Druidesses restent "
+"mystérieuses, même aux yeux des elfes de leur ordre. En partie à cause, de "
+"la connexion inhabituelle des Druidesses à la nature, quelque chose qui est "
+"quasiment absent d'un monde perverti par le sable brûlant."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:41
@@ -15830,6 +15797,14 @@ msgid ""
 "weaponry by forming robust spear ranks capable of repelling nearly any "
 "frontal assault."
 msgstr ""
+"Jadis, en des temps plus prospères, les guerriers elfes favorisaient l'épées "
+"pour son élégance et sa polyvalence comparées aux autres armes de mêlée. "
+"Récemment, cependant, la raréfaction de l'approvisionnement pour les forges "
+"a réduit la capacité à forger des épées, nécessitant le façonnage d'armes "
+"bon marché, facilement réparables. Les Combattants de Quenoth sont très "
+"doués en groupes coordonnés, lorsqu'ils peuvent compenser le manque d'armes "
+"sophistiquées en formant des rangs de lances capable de repousser n'importe "
+"quel assaut frontal."
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -15838,12 +15813,6 @@ msgstr "Tirailleur de Quenoth"
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Some fighters find that their true talents lie not within rigid spear "
-#| "ranks, but out in the sands, striking at the flanks and rear of enemy "
-#| "forces. Fast and nimble, these elves can take advantage of the smallest "
-#| "weaknesses in enemy formations."
 msgid ""
 "Some fighters find that their true talents lie not within rigid spear ranks, "
 "but out in the sands, striking at the flanks and rear of enemy forces. Fast "
@@ -15855,8 +15824,11 @@ msgid ""
 msgstr ""
 "Certains guerriers révèlent leur talent non pas derrière un mur de lances, "
 "mais dans les sables, en frappant les flancs et l'arrière des forces "
-"ennemies. Rapides et agiles, ces elfes savent exploiter la moindre faiblesse "
-"dans les formations ennemies."
+"ennemies. Rapides et agiles, ces elfes savent exploiter les faiblesses dans "
+"les formations ennemies pour disperser leurs lignes et semer le chaos sur le "
+"champ de bataille. Dans les conflits les plus féroces, les tirailleurs usent "
+"même de poisons, un outil mal vu par leurs ancêtres, pour estropier leurs "
+"ennemis avant de les charger pour les finir."
 
 #. [attack]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:43
@@ -15883,6 +15855,17 @@ msgid ""
 "ancestors, these master archers can achieve the same speed and precision as "
 "the Sharpshooters of old, all while in full gallop on horseback."
 msgstr ""
+"Jadis, la suprématie des elfes à l'arc était incontestée de toutes les "
+"autres races du Grand Continent. L'archerie devenant de moins en moins "
+"viable dans un environnement à découvert, l'habileté des quelques archers "
+"restants devint suspecte, au point que leurs semblables virent en cette "
+"discipline une relique du passé plutôt qu'un outil utile au combat.\n"
+"\n"
+"Un simple regard aux Tireurs d'élite de Quenoth en action est suffisant pour "
+"dissiper cette idée folle. Capable des mêmes faits légendaires que leurs "
+"ancêtres, ces maîtres archers peuvent atteindre la même vitesse et précision "
+"que les anciens tireurs d'élite, tout en étant au triple galop à dos de "
+"cheval."
 
 #. [unit_type]: id=Quenoth Mystic, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:5
@@ -15899,6 +15882,12 @@ msgid ""
 "sun are the source of the elves’ new powers, which they employ to great "
 "effect in their homes in the deserts."
 msgstr ""
+"Tout comme leurs ancêtres, les Mystiques de Quenoth ont dévoué leur vie à "
+"l'énergie naturelle qui coule à travers Irdya. Dans les friches rudes et "
+"stériles, cependant, ces elfes ne peuvent plus compter sur les vastes forêts "
+"dont leurs ancêtres tiraient l'essentiel de leur force. A la place, le "
+"soleil et le sable sont la source de nouveaux pouvoirs pour ces elfes, "
+"qu'elles emploient à grand effet dans leurs maisons dans les déserts."
 
 #. [unit_type]: id=Quenoth Outrider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:5
@@ -15915,6 +15904,13 @@ msgid ""
 "riders is especially dangerous, for against them, both retreat and attrition "
 "are futile, a prospect that is only ruinous in the inhospitable desert."
 msgstr ""
+"Décrit comme des cavaliers « aussi rapides que le vent ». Les escorteurs "
+"traversent le désert à des vitesses inégalées. À la différence de leurs "
+"semblables, les escorteurs s'entrainent au combat direct, portant épée et "
+"bolas pour frapper des unités blessées et les flancs exposés des ennemis où "
+"les lignes ennemies sont les plus faibles. La dangerosité d'un simple groupe "
+"de ces cavaliers est telle que la retraite ou l'usure sont futiles, des "
+"processus ruineux dans un environnement inhospitalier comme le désert."
 
 #. [attack]: type=impact
 #. [effect]: type=impact
@@ -15941,6 +15937,15 @@ msgid ""
 "tries the patience of their enemies, who are provoked into recklessly giving "
 "chase — inevitably into many a deadly trap."
 msgstr ""
+"Jadis, la retraite et la fuite d'un combat était une tactique risquée, car "
+"il y avait peu de moyens d'éviter ou de bloquer les archers ennemis tirant "
+"dans le dos. Dans le désert, par contre, l'instabilité et l'absence de "
+"couverture rend bien plus difficile les attaques à distance. L'insaisissable "
+"avant-garde profite de cela en chevauchant des Ammoryx exceptionnellement "
+"agiles, qui sont hautement adaptés pour traverser les dunes et s'évader de "
+"la plupart des attaques avec leurs mouvements rapides. La difficulté à "
+"toucher ces cavaliers, pousse à bout la patience de leurs ennemis, qui "
+"finissent pas donner la chasse… tombant inévitablement dans un piège mortel."
 
 #. [unit_type]: id=Quenoth Ranger, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:5
@@ -15961,6 +15966,16 @@ msgid ""
 "deadly in the harsh desert terrain, where fewer options to retreat are "
 "available."
 msgstr ""
+"Le titre « Rôdeur » est un peu trompeur, car ces elfes agiles ont peu en "
+"commun avec les explorateurs pacifiques de la nature qui portent parfois le "
+"même titre. Ils sont plutôt des combattants experts qui cherchent "
+"spécialement l'affrontement pour affiner leur habilité à l'escarmouche. Bien "
+"qu'il ne possède pas la force brute des guerriers, les Rôdeurs de Quenoth "
+"sont à l'aise pour naviguer dans des batailles chaotiques et sont capables "
+"de se faufiler à travers les lignes ennemies pour assassiner une cible "
+"blessée. Leur maîtrise du poison et leur habileté dans le maniement de "
+"l'épée rendent ces elfes terriblement mortels sur rude terrain désertique, "
+"où les possibilités de retraite sont très minces."
 
 #. [unit_type]: id=Quenoth Scout, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:5
@@ -15975,6 +15990,10 @@ msgid ""
 "useful abilities to harry enemies and allows them to act as effective "
 "hunters and patrolmen."
 msgstr ""
+"Chevauchant les gracieux et agiles Ammoryx, les éclaireurs de Quenoth se "
+"déplace à une vitesse inégalée à travers le désert. Leur compétence pratique "
+"à l'épée et à la fronde sont des capacités utiles pour harceler les ennemis, "
+"chasser et patrouiller."
 
 #. [unit_type]: id=Quenoth Shaman, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:5
@@ -16111,6 +16130,15 @@ msgid ""
 "times of need, when the elves are threatened by something more than mere "
 "scavengers or wild beasts."
 msgstr ""
+"Les prestigieux porteurs de drapeaux passent des années dans l'étendue "
+"désertique, menant leurs semblables lors de patrouilles ou de chasses, "
+"pendant lesquelles ils amènent les vivres tout en défendant leurs villages "
+"des brigands. Ils sont invariablement les maîtres des escarmouches et de la "
+"tactique, hautement capable de se déplacer dans le désert inhospitalier. "
+"Rarement en charge de grands villages ou d'armées, les porteurs de drapeaux "
+"sont cependant suffisamment compétents et charismatiques pour diriger en cas "
+"de besoin, lorsque les elfes sont menacés par autre chose que de simples "
+"charognards ou bêtes sauvages."
 
 #. [unit_type]: id=Tauroch Protector, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Protector.cfg:5
@@ -16726,7 +16754,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:244
 #, fuzzy
 #| msgid ""
-#| "This unit is capable of distracting opponents, allowing allied units to "
+#| " This unit is capable of distracting opponents, allowing allied units to "
 #| "trespass their Zones of Control and move unhindered around them."
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
@@ -17861,75 +17889,8 @@ msgstr "Donjon hanté"
 #~ msgid "Scorpion"
 #~ msgstr "Scorpion"
 
-#~ msgid "Sssslay them all! In the name of the Ssscaled One!"
-#~ msgstr "Massssacrez-les tous ! Au nom du couvert d'écailles !"
-
-#~ msgid "Sylestria"
-#~ msgstr "Sylestria"
-
-#~ msgid "Keratur"
-#~ msgstr "Keratur"
-
-#~ msgid ""
-#~ "All the other scouting parties have returned, except for one. Tanstafaal "
-#~ "and his scouts haven’t reported back yet. I’m starting to get worried."
-#~ msgstr ""
-#~ "Tous les éclaireurs sont revenus, sauf un groupe. Tanstafaal et ceux qui "
-#~ "l'accompagnaient ne sont pas venus faire leur rapport. Je commence à "
-#~ "m'inquiéter."
-
-#~ msgid "Ulothanir"
-#~ msgstr "Ulothanir"
-
-#~ msgid "Elonea"
-#~ msgstr "Elonea"
-
-#~ msgid "Eagath"
-#~ msgstr "Eagath"
-
-#~ msgid "Alusan"
-#~ msgstr "Alusan"
-
-# Damien : l'outil pour faucher
-#~ msgid "scythe"
-#~ msgstr "faux"
-
-#~ msgid "darts"
-#~ msgstr "dards"
-
-#~ msgid ""
-#~ "We have often spied on the humans and have picked up some knowledge of "
-#~ "piloting. We also have some magical skills that allow us to control the "
-#~ "winds and thus we can easily propel the ships in the right direction. "
-#~ "Once out on the open sea we should be safe from danger. Besides, our "
-#~ "master lives far out in the waters. Trying to find her and bearing her "
-#~ "back here would take too long and there is no other way to get you to her."
-#~ msgstr ""
-#~ "Nous avons souvent espionné les humains et avons quelques connaissances "
-#~ "de navigation. Nous avons aussi quelques dons magiques pour contrôler les "
-#~ "vents et nous pouvons donc facilement déplacer les navires dans la bonne "
-#~ "direction. Dès que nous aurons gagné la haute mer, vous serez en "
-#~ "sécurité. En plus, notre maîtresse vit en haute mer et il n'y a pas "
-#~ "d'autre moyen de la rejoindre : chercher à la retrouver et la faire venir "
-#~ "ici prendrait trop de temps."
-
-#~ msgid "Lrea"
-#~ msgstr "Lrea"
-
-#~ msgid "Frea"
-#~ msgstr "Frea"
-
-#~ msgid "Seela"
-#~ msgstr "Seela"
-
-#~ msgid "Nisa"
-#~ msgstr "Nisa"
-
 #~ msgid "New Objectives:"
 #~ msgstr "Nouveaux objectifs :"
-
-#~ msgid "Lyia"
-#~ msgstr "Lyia"
 
 #~ msgid ""
 #~ "Maybe I spoke too soon. Curse Uria, they have even blotted out the stars, "
@@ -17968,8 +17929,245 @@ msgstr "Donjon hanté"
 #~ "jusqu'aux étoiles, nous plongeant totalement dans les ténèbres. Kaleh, "
 #~ "notre voie est toute tracée, il nous faut détruire cette abomination."
 
+#~ msgid "Sssslay them all! In the name of the Ssscaled One!"
+#~ msgstr "Massssacrez-les tous ! Au nom du couvert d'écailles !"
+
 #~ msgid "Defeat enemy leaders"
 #~ msgstr "Vaincre les chefs ennemis"
+
+#~ msgid "Sylestria"
+#~ msgstr "Sylestria"
+
+#~ msgid "Keratur"
+#~ msgstr "Keratur"
+
+#~ msgid ""
+#~ "All the other scouting parties have returned, except for one. Tanstafaal "
+#~ "and his scouts haven’t reported back yet. I’m starting to get worried."
+#~ msgstr ""
+#~ "Tous les éclaireurs sont revenus, sauf un groupe. Tanstafaal et ceux qui "
+#~ "l'accompagnaient ne sont pas venus faire leur rapport. Je commence à "
+#~ "m'inquiéter."
+
+#~ msgid "Ulothanir"
+#~ msgstr "Ulothanir"
+
+#~ msgid "Elonea"
+#~ msgstr "Elonea"
+
+#~ msgid ""
+#~ "We have often spied on the humans and have picked up some knowledge of "
+#~ "piloting. We also have some magical skills that allow us to control the "
+#~ "winds and thus we can easily propel the ships in the right direction. "
+#~ "Once out on the open sea we should be safe from danger. Besides, our "
+#~ "master lives far out in the waters. Trying to find her and bearing her "
+#~ "back here would take too long and there is no other way to get you to her."
+#~ msgstr ""
+#~ "Nous avons souvent espionné les humains et avons quelques connaissances "
+#~ "de navigation. Nous avons aussi quelques dons magiques pour contrôler les "
+#~ "vents et nous pouvons donc facilement déplacer les navires dans la bonne "
+#~ "direction. Dès que nous aurons gagné la haute mer, vous serez en "
+#~ "sécurité. En plus, notre maîtresse vit en haute mer et il n'y a pas "
+#~ "d'autre moyen de la rejoindre : chercher à la retrouver et la faire venir "
+#~ "ici prendrait trop de temps."
+
+#~ msgid "Eagath"
+#~ msgstr "Eagath"
+
+#~ msgid "Alusan"
+#~ msgstr "Alusan"
+
+# Damien : l'outil pour faucher
+#~ msgid "scythe"
+#~ msgstr "faux"
+
+#~ msgid "darts"
+#~ msgstr "dards"
+
+#~ msgid ""
+#~ "Fighters make up the bulk of the Quenoth warriors. Aside from being "
+#~ "proficient in the use of the spear, they are remarkably skilled in "
+#~ "working together and coordinating defense."
+#~ msgstr ""
+#~ "Les combattants forment le gros des troupes de Quenoth. Non seulement ils "
+#~ "savent manier la lance, mais ils sont aussi remarquablement doués pour "
+#~ "assurer leur défense en équipe."
+
+#~ msgid ""
+#~ "Carrying the banners of the Quenoth elves into battle, the prestigious "
+#~ "Flagbearers are also masters of tactics. Any enemy commander intending on "
+#~ "besting them on the battlefield must invariably possess vastly superior "
+#~ "numbers."
+#~ msgstr ""
+#~ "Chargés de porter les bannières des elfes de Quenoth au combat, les "
+#~ "prestigieux porteurs de drapeau sont aussi des maîtres en tactique. Nul "
+#~ "commandant ne peut espérer les vaincre sur un champ de bataille sans "
+#~ "disposer d'une large supériorité numérique."
+
+#~ msgid ""
+#~ "A marksman can loose volleys of arrows at their enemies with deadly "
+#~ "accuracy, even at full gallop."
+#~ msgstr ""
+#~ "Un tireur d'élite peut envoyer des volées de flèches sur l'ennemi avec "
+#~ "une précision mortelle, même en plein galop."
+
+#~ msgid ""
+#~ "Like their ancestors, Quenoth Mystics have the potential to become great "
+#~ "wielders of magic. It is a testament to the resilience of elves that they "
+#~ "are able to accomplish this in a world devoid of the vast forests from "
+#~ "which their forebears drew much of their strength from."
+#~ msgstr ""
+#~ "Comme leurs ancêtres, les mystiques de Quenoth ont un potentiel pour "
+#~ "devenir maîtresses en magie. Ce qu'elles peuvent accomplir dans un monde "
+#~ "privé des vastes forêts desquelles leurs aïeules tiraient leur force est "
+#~ "la preuve de la résilience de l'héritage des elfes."
+
+#~ msgid ""
+#~ "Riding like the wind, Outriders breeze across the sands to strike at "
+#~ "weaker units and exposed flanks, before flying off into the sands to "
+#~ "evade response."
+#~ msgstr ""
+#~ "Les escorteurs de Quenoth chevauchent comme le vent à travers les sables "
+#~ "pour attaquer les unités plus faibles et les flancs mal défendus, avant "
+#~ "de s'évanouir dans les sables pour éviter toute riposte."
+
+#~ msgid ""
+#~ "In most cases, turning and fleeing from an engagement is a risky tactic. "
+#~ "These elusive Pathfinders, however, are masters of weakening an enemy "
+#~ "while at the same time provoking them to give chase — often into a trap."
+#~ msgstr ""
+#~ "Normalement, battre en retraite n'est pas la meilleure des tactiques de "
+#~ "combat. Sauf pour cette avant-garde insaisissable, qui est experte pour "
+#~ "affaiblir l'ennemi tout en l'incitant à la prendre en chasse — souvent "
+#~ "droit dans un piège."
+
+#~ msgid ""
+#~ "It is told that once, an elf fleeing from an orcish hunting party came "
+#~ "across a young stray tauroch on a small oasis. Understanding that neither "
+#~ "meant any harm to the other, they are said to have fought side by side "
+#~ "through a long night, driving off the orcs at sunrise. Afterwards, as the "
+#~ "elf had mended the tauroch's wounds and finally collapsed from "
+#~ "exhaustion, the beast had gently picked her up with its horns and carried "
+#~ "back to her village.\n"
+#~ "\n"
+#~ "Whether the story is true is unknown, but the loyalty and resolve of "
+#~ "these mounts and riders both is undeniable."
+#~ msgstr ""
+#~ "On dit qu'il était une fois un elfe pourchassé par des orcs qui croisa un "
+#~ "jeune tauroch errant dans une petite oasis. On raconte qu'en comprenant "
+#~ "que leurs destins étaient liés, ils combattirent côte à côte toute la "
+#~ "nuit durant et finirent par repousser les orcs au lever du soleil. Après "
+#~ "cela, comme l'elfe avait soigné les blessures du tauroch avant de "
+#~ "s'écrouler de fatigue, la bête l'a mis doucement sur son dos avec ses "
+#~ "cornes pour le ramener au village.\n"
+#~ "\n"
+#~ "On ignore quelle est la part de vérité dans cette histoire, mais la "
+#~ "loyauté et la détermination de ces montures et de leurs cavaliers ne fait "
+#~ "aucun doute."
+
+#~ msgid ""
+#~ "The Quenoth Scouts move swiftly across the sands. Their riding skill are "
+#~ "unmatched, and these they use to harry and incapacitate enemies."
+#~ msgstr ""
+#~ "Les éclaireurs de Quenoth se déplacent à leur aise sur les sables. Leur "
+#~ "habilité à cheval est inégalée, ce qu'ils mettent à profit pour harceler "
+#~ "et bloquer l'ennemi."
+
+#~ msgid ""
+#~ "Shamans seek to maintain the elves' traditional connection with the "
+#~ "natural world. Using their vast knowledge of plants of the desert to heal "
+#~ "allies and their magical abilities to bolster crops, they serve an "
+#~ "invaluable role among the Quenoth elves."
+#~ msgstr ""
+#~ "Les chamanes cherchent à préserver le lien ancestral des elfes avec le "
+#~ "monde naturel. En faisant appel à leur vaste connaissance des plantes du "
+#~ "désert pour soigner les alliés et à leur capacités magiques pour faire de "
+#~ "meilleures récoltes, elles jouent un rôle inestimable dans la communauté "
+#~ "des elfes de Quenoth."
+
+#~ msgid ""
+#~ "It is difficult enough to dislodge a stubborn wild tauroch. When one has "
+#~ "made common cause with a skilled javelineer on its back, however, it is "
+#~ "wiser to seek another path."
+#~ msgstr ""
+#~ "C'est déjà assez difficile d'affronter un tauroch sauvage décidé. Alors "
+#~ "quand on en rencontre un qui a fait cause commune avec un javeliste "
+#~ "habile sur son dos, mieux vaut rebrousser chemin."
+
+#~ msgid ""
+#~ "Elves may be slower to adapt than many other races, but when they do, the "
+#~ "results can be surprising. Where the elves of old may have sang the song "
+#~ "of the woodlands, these elves have found their spiritual home in the "
+#~ "light of the twin suns."
+#~ msgstr ""
+#~ "Les elfes ont peut-être besoin de plus de temps que beaucoup d'autres "
+#~ "races pour s'adapter mais, quand ils le font, les résultats peuvent être "
+#~ "surprenants. Alors que les elfes d'antan chantaient la chanson des "
+#~ "forêts, ces elfes ont trouvé un refuge spirituel dans la lumière des "
+#~ "soleils jumeaux."
+
+#~ msgid ""
+#~ "Stepping beyond what may have once been thought of as the boundaries of "
+#~ "the faerie world, these elves have transformed into beings of light and "
+#~ "fire. Not having spent centuries exploring and perfecting their abilities "
+#~ "as their ancestors did, it is unknown what may yet be achieved by "
+#~ "elvenkind in the new world."
+#~ msgstr ""
+#~ "Allant au-delà de ce qu'on pensait être les limites du monde féérique, "
+#~ "ces elfes se sont transformées en êtres de lumière et de feu. Sans les "
+#~ "siècles d'Histoire que leurs ancêtres ont passé à étudier et "
+#~ "perfectionner leurs capacités, on ignore ce dont les elfes peuvent être "
+#~ "capables dans le nouveau monde."
+
+#~ msgid ""
+#~ "The massive and fearless taurochs are often employed not only to hold "
+#~ "ground, but also to lead a charge to break enemy formations. Shielding "
+#~ "and inspiring infantry behind them, these commanders can survive the "
+#~ "thick of battle better than those on foot or on more slender mounts."
+#~ msgstr ""
+#~ "On utilise les gros taurochs sans peur non seulement pour tenir le "
+#~ "terrain, mais aussi pour lancer une charge afin de briser les formations "
+#~ "ennemies. Tout en protégeant et en inspirant l'infanterie derrière eux, "
+#~ "ces commandants peuvent survivre au cœur de la bataille plus facilement "
+#~ "que ceux à pied ou avec une monture plus tendre."
+
+#~ msgid ""
+#~ "When hit with this attack, an enemy suffers a 10% penalty both to their "
+#~ "defense and chance to hit for one turn, except for magical attacks."
+#~ msgstr ""
+#~ "Quand il est touché par cette attaque, un ennemi souffre d'un malus de "
+#~ "-10 % aussi bien pour sa défense que pour ses chances de toucher pendant "
+#~ "un tour, excepté pour les attaques magiques."
+
+#~ msgid "Lrea"
+#~ msgstr "Lrea"
+
+#~ msgid "Frea"
+#~ msgstr "Frea"
+
+#~ msgid "Seela"
+#~ msgstr "Seela"
+
+#~ msgid "Nisa"
+#~ msgstr "Nisa"
+
+#~ msgid "Lyia"
+#~ msgstr "Lyia"
+
+#, fuzzy
+#~| msgid "female^Desert Shyde"
+#~ msgid "female^Quenoth Moon Shyde"
+#~ msgstr "Nymphe lunaire de Quenoth"
+
+#, fuzzy
+#~| msgid "chill wave"
+#~ msgid "chill gale"
+#~ msgstr "bourrasque de froid"
+
+#, fuzzy
+#~| msgid "female^Desert Ranger"
+#~ msgid "female^Quenoth Moon Singer"
+#~ msgstr "Chanteuse lunaire de Quenoth"
 
 #~ msgid "Rescue Surviving Elves"
 #~ msgstr "Sauver les elfes survivants"
@@ -18358,11 +18556,6 @@ msgstr "Donjon hanté"
 #~ "SPECIAL_NOTE^ This unit can fly across any terrain except deep water."
 #~ msgstr " Cette unité peut survoler tous les terrains sauf l'eau profonde."
 
-#, fuzzy
-#~| msgid "female^Desert Shaman"
-#~ msgid "female^Desert Star"
-#~ msgstr "Chamane du désert"
-
 #~ msgid ""
 #~ "Desert Stars are Shydes that have becomes so powerful and holy that they "
 #~ "shine forth the light of Eloh, even in the darkest places. They are "
@@ -18465,183 +18658,8 @@ msgstr "Donjon hanté"
 #~ "aussi rebelle à l'esprit rapide et à la volonté farouche. Sa bonne humeur "
 #~ "est une réelle bénédiction pendant les heures difficiles."
 
-#~ msgid ""
-#~ "Fighters make up the bulk of the Quenoth warriors. Aside from being "
-#~ "proficient in the use of the spear, they are remarkably skilled in "
-#~ "working together and coordinating defense."
-#~ msgstr ""
-#~ "Les combattants forment le gros des troupes de Quenoth. Non seulement ils "
-#~ "savent manier la lance, mais ils sont aussi remarquablement doués pour "
-#~ "assurer leur défense en équipe."
-
-#~ msgid ""
-#~ "Carrying the banners of the Quenoth elves into battle, the prestigious "
-#~ "Flagbearers are also masters of tactics. Any enemy commander intending on "
-#~ "besting them on the battlefield must invariably possess vastly superior "
-#~ "numbers."
-#~ msgstr ""
-#~ "Chargés de porter les bannières des elfes de Quenoth au combat, les "
-#~ "prestigieux porteurs de drapeau sont aussi des maîtres en tactique. Nul "
-#~ "commandant ne peut espérer les vaincre sur un champ de bataille sans "
-#~ "disposer d'une large supériorité numérique."
-
-#~ msgid ""
-#~ "In most cases, turning and fleeing from an engagement is a risky tactic. "
-#~ "These elusive Pathfinders, however, are masters of weakening an enemy "
-#~ "while at the same time provoking them to give chase — often into a trap."
-#~ msgstr ""
-#~ "Normalement, battre en retraite n'est pas la meilleure des tactiques de "
-#~ "combat. Sauf pour cette avant-garde insaisissable, qui est experte pour "
-#~ "affaiblir l'ennemi tout en l'incitant à la prendre en chasse — souvent "
-#~ "droit dans un piège."
-
-#~ msgid ""
-#~ "A marksman can loose volleys of arrows at their enemies with deadly "
-#~ "accuracy, even at full gallop."
-#~ msgstr ""
-#~ "Un tireur d'élite peut envoyer des volées de flèches sur l'ennemi avec "
-#~ "une précision mortelle, même en plein galop."
-
-#, fuzzy
-#~| msgid "female^Desert Shyde"
-#~ msgid "female^Quenoth Moon Shyde"
-#~ msgstr "Nymphe lunaire de Quenoth"
-
-#, fuzzy
-#~| msgid "chill wave"
-#~ msgid "chill gale"
-#~ msgstr "bourrasque de froid"
-
-#, fuzzy
-#~| msgid "female^Desert Ranger"
-#~ msgid "female^Quenoth Moon Singer"
-#~ msgstr "Chanteuse lunaire de Quenoth"
-
-#~ msgid ""
-#~ "Like their ancestors, Quenoth Mystics have the potential to become great "
-#~ "wielders of magic. It is a testament to the resilience of elves that they "
-#~ "are able to accomplish this in a world devoid of the vast forests from "
-#~ "which their forebears drew much of their strength from."
-#~ msgstr ""
-#~ "Comme leurs ancêtres, les mystiques de Quenoth ont un potentiel pour "
-#~ "devenir maîtresses en magie. Ce qu'elles peuvent accomplir dans un monde "
-#~ "privé des vastes forêts desquelles leurs aïeules tiraient leur force est "
-#~ "la preuve de la résilience de l'héritage des elfes."
-
-#~ msgid ""
-#~ "Riding like the wind, Outriders breeze across the sands to strike at "
-#~ "weaker units and exposed flanks, before flying off into the sands to "
-#~ "evade response."
-#~ msgstr ""
-#~ "Les escorteurs de Quenoth chevauchent comme le vent à travers les sables "
-#~ "pour attaquer les unités plus faibles et les flancs mal défendus, avant "
-#~ "de s'évanouir dans les sables pour éviter toute riposte."
-
-#~ msgid ""
-#~ "It is told that once, an elf fleeing from an orcish hunting party came "
-#~ "across a young stray tauroch on a small oasis. Understanding that neither "
-#~ "meant any harm to the other, they are said to have fought side by side "
-#~ "through a long night, driving off the orcs at sunrise. Afterwards, as the "
-#~ "elf had mended the tauroch's wounds and finally collapsed from "
-#~ "exhaustion, the beast had gently picked her up with its horns and carried "
-#~ "back to her village.\n"
-#~ "\n"
-#~ "Whether the story is true is unknown, but the loyalty and resolve of "
-#~ "these mounts and riders both is undeniable."
-#~ msgstr ""
-#~ "On dit qu'il était une fois un elfe pourchassé par des orcs qui croisa un "
-#~ "jeune tauroch errant dans une petite oasis. On raconte qu'en comprenant "
-#~ "que leurs destins étaient liés, ils combattirent côte à côte toute la "
-#~ "nuit durant et finirent par repousser les orcs au lever du soleil. Après "
-#~ "cela, comme l'elfe avait soigné les blessures du tauroch avant de "
-#~ "s'écrouler de fatigue, la bête l'a mis doucement sur son dos avec ses "
-#~ "cornes pour le ramener au village.\n"
-#~ "\n"
-#~ "On ignore quelle est la part de vérité dans cette histoire, mais la "
-#~ "loyauté et la détermination de ces montures et de leurs cavaliers ne fait "
-#~ "aucun doute."
-
-#~ msgid ""
-#~ "The Quenoth Scouts move swiftly across the sands. Their riding skill are "
-#~ "unmatched, and these they use to harry and incapacitate enemies."
-#~ msgstr ""
-#~ "Les éclaireurs de Quenoth se déplacent à leur aise sur les sables. Leur "
-#~ "habilité à cheval est inégalée, ce qu'ils mettent à profit pour harceler "
-#~ "et bloquer l'ennemi."
-
-#~ msgid ""
-#~ "Shamans seek to maintain the elves' traditional connection with the "
-#~ "natural world. Using their vast knowledge of plants of the desert to heal "
-#~ "allies and their magical abilities to bolster crops, they serve an "
-#~ "invaluable role among the Quenoth elves."
-#~ msgstr ""
-#~ "Les chamanes cherchent à préserver le lien ancestral des elfes avec le "
-#~ "monde naturel. En faisant appel à leur vaste connaissance des plantes du "
-#~ "désert pour soigner les alliés et à leur capacités magiques pour faire de "
-#~ "meilleures récoltes, elles jouent un rôle inestimable dans la communauté "
-#~ "des elfes de Quenoth."
-
-#~ msgid ""
-#~ "It is difficult enough to dislodge a stubborn wild tauroch. When one has "
-#~ "made common cause with a skilled javelineer on its back, however, it is "
-#~ "wiser to seek another path."
-#~ msgstr ""
-#~ "C'est déjà assez difficile d'affronter un tauroch sauvage décidé. Alors "
-#~ "quand on en rencontre un qui a fait cause commune avec un javeliste "
-#~ "habile sur son dos, mieux vaut rebrousser chemin."
-
-#~ msgid ""
-#~ "Stepping beyond what may have once been thought of as the boundaries of "
-#~ "the faerie world, these elves have transformed into beings of light and "
-#~ "fire. Not having spent centuries exploring and perfecting their abilities "
-#~ "as their ancestors did, it is unknown what may yet be achieved by "
-#~ "elvenkind in the new world."
-#~ msgstr ""
-#~ "Allant au-delà de ce qu'on pensait être les limites du monde féérique, "
-#~ "ces elfes se sont transformées en êtres de lumière et de feu. Sans les "
-#~ "siècles d'Histoire que leurs ancêtres ont passé à étudier et "
-#~ "perfectionner leurs capacités, on ignore ce dont les elfes peuvent être "
-#~ "capables dans le nouveau monde."
-
-#~ msgid ""
-#~ "Elves may be slower to adapt than many other races, but when they do, the "
-#~ "results can be surprising. Where the elves of old may have sang the song "
-#~ "of the woodlands, these elves have found their spiritual home in the "
-#~ "light of the twin suns."
-#~ msgstr ""
-#~ "Les elfes ont peut-être besoin de plus de temps que beaucoup d'autres "
-#~ "races pour s'adapter mais, quand ils le font, les résultats peuvent être "
-#~ "surprenants. Alors que les elfes d'antan chantaient la chanson des "
-#~ "forêts, ces elfes ont trouvé un refuge spirituel dans la lumière des "
-#~ "soleils jumeaux."
-
-#~ msgid ""
-#~ "The massive and fearless taurochs are often employed not only to hold "
-#~ "ground, but also to lead a charge to break enemy formations. Shielding "
-#~ "and inspiring infantry behind them, these commanders can survive the "
-#~ "thick of battle better than those on foot or on more slender mounts."
-#~ msgstr ""
-#~ "On utilise les gros taurochs sans peur non seulement pour tenir le "
-#~ "terrain, mais aussi pour lancer une charge afin de briser les formations "
-#~ "ennemies. Tout en protégeant et en inspirant l'infanterie derrière eux, "
-#~ "ces commandants peuvent survivre au cœur de la bataille plus facilement "
-#~ "que ceux à pied ou avec une monture plus tendre."
-
-#~ msgid ""
-#~ "When hit with this attack, an enemy suffers a 10% penalty both to their "
-#~ "defense and chance to hit for one turn, except for magical attacks."
-#~ msgstr ""
-#~ "Quand il est touché par cette attaque, un ennemi souffre d'un malus de "
-#~ "-10 % aussi bien pour sa défense que pour ses chances de toucher pendant "
-#~ "un tour, excepté pour les attaques magiques."
-
 #~ msgid "stunned"
 #~ msgstr "étourdi"
-
-#, fuzzy
-#~| msgid "female^Desert Hunter"
-#~ msgid "female^stunned"
-#~ msgstr "Chasseuse du désert"
 
 #~ msgid ""
 #~ "Very few people who have ever faced an Ixthala Demon have survived to "
