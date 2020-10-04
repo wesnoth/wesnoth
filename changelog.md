@@ -30,6 +30,8 @@
   * Implement new GUI2 widget userdata for working with custom dialogs.
   * Renamed wesnoth.show_dialog to gui.show_dialog. The preshow and postshow now take a single parameter - a widget userdata.
   * All other dialog functions (such as wesnoth.get_dialog_value and wesnoth.set_dialog_value) are now deprecated.
+ ### Terrain
+  * New wall variation: Overgrown stone walls ('Xof')
 
 ## Version 1.15.5
  ### Add-ons client
