@@ -19,6 +19,7 @@
 #include "serialization/string_utils.hpp"
 #include "game_version.hpp"
 #include "game_config_manager.hpp"
+#include "utils/general.hpp"
 
 #include <list>
 
@@ -48,7 +49,7 @@ game_classification::game_classification(const config& cfg)
 	, abbrev(cfg["abbrev"])
 	, end_credits(cfg["end_credits"].to_bool(true))
 	, end_text(cfg["end_text"])
-	, end_text_duration(cfg["end_text_duration"])
+	, end_text_duration(utils::clamp<unsigned>(cfg["end_text_duration"].to_unsigned(0), 0, 5000))
 	, difficulty(cfg["difficulty"].empty() ? DEFAULT_DIFFICULTY : cfg["difficulty"].str())
 	, random_mode(cfg["random_mode"])
 	, oos_debug(cfg["oos_debug"].to_bool(false))
@@ -159,4 +160,3 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 	}
 	return res;
 }
-
