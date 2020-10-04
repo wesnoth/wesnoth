@@ -15,9 +15,9 @@
 #include "about.hpp"
 
 #include "config.hpp"
+#include "game_config_view.hpp"
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
-#include "game_config_view.hpp"
 
 #include <map>
 
@@ -41,7 +41,7 @@ void gather_images(const config& from, std::vector<std::string>& to)
 	}
 }
 
-} // end anon namespace
+} // namespace
 
 credits_group::credits_group(const config& cfg, bool is_campaign_credits)
 	: sections()
@@ -81,7 +81,7 @@ credits_group::about_group::about_group(const config& cfg)
 	names.reserve(cfg.child_count("entry"));
 
 	for(const config& entry : cfg.child_range("entry")) {
-		names.push_back(entry["name"].str());
+		names.emplace_back(entry["name"].str(), entry["comment"].str());
 	}
 }
 
@@ -97,7 +97,7 @@ const credits_data& get_credits_data()
 
 std::vector<std::string> get_background_images(const std::string& campaign)
 {
-	if(!campaign.empty() && !images_campaigns[campaign].empty()){
+	if(!campaign.empty() && !images_campaigns[campaign].empty()) {
 		return images_campaigns[campaign];
 	}
 

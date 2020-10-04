@@ -73,8 +73,8 @@ void end_credits::pre_show(window& window)
 		for(const about::credits_group::about_group& about : group.sections) {
 			group_stream << "\n" << "<span size='x-large'>" << about.title << "</span>" << "\n";
 
-			for(const std::string& entry : about.names) {
-				group_stream << entry << "\n";
+			for(const auto& entry : about.names) {
+				group_stream << entry.first << "\n";
 			}
 		}
 	}

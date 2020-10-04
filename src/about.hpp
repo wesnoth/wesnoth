@@ -16,8 +16,8 @@
 
 #include "tstring.hpp"
 
-#include <vector>
 #include <string>
+#include <vector>
 
 class config;
 class game_config_view;
@@ -31,7 +31,7 @@ struct credits_group
 		explicit about_group(const config& cfg);
 
 		/** Contributor names. */
-		std::vector<std::string> names;
+		std::vector<std::pair<std::string, std::string>> names;
 
 		/** The section title. */
 		t_string title;
@@ -65,4 +65,4 @@ std::vector<std::string> get_background_images(const std::string& campaign);
  */
 void set_about(const game_config_view& cfg);
 
-}
+} // namespace about
