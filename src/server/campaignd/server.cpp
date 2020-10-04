@@ -889,12 +889,17 @@ void server::handle_request_campaign_hash(const server::request& req)
 		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
 		return;
 	} else {
-		auto version = version_map.find(version_info(campaign["version"].str()));
+		std::string version_str = campaign["version"].str();
+		auto version = version_map.find(version_info(version_str));
 		if(version != version_map.end()) {
 			filename += version->second["filename"].str();
 		} else {
 			// Selecting the latest version before the selected version or the overall latest version if unspecified
-			filename += version_map.upper_bound(version_info(campaign["version"].str()))->second["filename"].str();
+			if(version_str.empty()) {
+				filename += version_map.rbegin()->second["filename"].str();
+			} else {
+				filename += (--version_map.upper_bound(version_info(version_str)))->second["filename"].str();
+			}
 		}
 
 		filename += ".hash";
@@ -1167,11 +1172,15 @@ void server::handle_upload(const server::request& req)
 				return;
 			}
 
-			std::string old_version = (*campaign)["from"].str();
-			auto version = version_map.find(version_info(old_version));
-			if(version == version_map.end()){
-				// Selecting the latest version before the selected version or the overall latest version if unspecified
-				old_version = version_map.upper_bound(version_info(old_version))->first;
+			std::string old_version = upload["from"].str();
+			if(old_version.empty()) {
+				old_version = version_map.rbegin()->first;
+			} else {
+				auto version = version_map.find(version_info(old_version));
+				if(version == version_map.end()) {
+					// Selecting the latest version before the selected version or the overall latest version if unspecified
+					old_version = (--version_map.upper_bound(version_info(old_version)))->first;
+				}
 			}
 
 			// Remove the update pack landing on the new version if it's present
