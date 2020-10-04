@@ -359,11 +359,15 @@ bool contains_hashlist(const config& from, const config& to)
 	for(const config& d : to.child_range("dir")) {
 		const config& origin_dir = from.find_child("dir", "name", d["name"]);
 		if(origin_dir) {
-			return contains_hashlist(origin_dir, d);
+			if(!contains_hashlist(origin_dir, d)) {
+				return false;
+			}
 		} else {
 			// The case of empty new subdirectories
 			const config dummy_dir = config("name", d["name"]);
-			return contains_hashlist(dummy_dir, d);
+			if(!contains_hashlist(dummy_dir, d)) {
+				return false;
+			}
 		}
 	}
 
