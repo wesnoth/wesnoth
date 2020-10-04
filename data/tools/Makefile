@@ -31,12 +31,12 @@ utils-unused:
 	@echo "# Report on unused utility macros"
 	@./wmlscope --crossreference --from $(DATA)/core/macros --refcount 0 $(MAINLINE) $(UMC)
 
-validate:
+validate: wmlvalidator
 	# Check WML for meaning and references.
 	# No UMC testing until $$(UMC) is fixed
 	./wmlvalidator -p $(DATA) #-u $(UMC)
 
-validate-gui:
+validate-gui: wmlvalidator
 	# Check GUI WML for meaning and references.
 	./wmlvalidator -p $(DATA) -s $(DATA)/schema-gui.cfg $(DATA)/gui/default.cfg
 
