@@ -375,9 +375,10 @@ bool contains_hashlist(const config& from, const config& to)
 }
 
 //! Surround with [dir][/dir]
-static void write_difference(config& pack, const config& from, const config& to, bool with_content)
+static bool write_difference(config& pack, const config& from, const config& to, bool with_content)
 {
 	pack["name"] = to["name"];
+	bool has_changes = false;
 
 	for(const config& f : to.child_range("file")) {
 		bool found = false;
@@ -393,19 +394,28 @@ static void write_difference(config& pack, const config& from, const config& to,
 				file["contents"] = f["contents"];
 				file["hash"] = file_hash(f);
 			}
+			has_changes = true;
 		}
 	}
 
 	for(const config& d : to.child_range("dir")) {
 		const config& origin_dir = from.find_child("dir", "name", d["name"]);
-		config& dir = pack.add_child("dir");
+		config dir;
 		if(origin_dir) {
-			write_difference(dir, origin_dir, d, with_content);
+			if(write_difference(dir, origin_dir, d, with_content)) {
+				pack.add_child("dir", dir);
+				has_changes = true;
+			}
 		} else {
 			const config dummy_dir = config("name", d["name"]);
-			write_difference(dir, dummy_dir, d, with_content);
+			if(write_difference(dir, dummy_dir, d, with_content)) {
+				pack.add_child("dir", dir);
+				has_changes = true;
+			}
 		}
 	}
+
+	return has_changes;
 }
 
 /**
