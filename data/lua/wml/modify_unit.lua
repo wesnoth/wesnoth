@@ -121,7 +121,7 @@ local function simple_modify_unit(cfg)
 			u.status.guardian = true
 		end
 		if cfg.profile ~= nil then
-			u.portrait = profile
+			u.portrait = cfg.profile
 		end
 		if cfg.unrenamable ~= nil then
 			u.renamable = not cfg.unrenamable
