@@ -68,7 +68,6 @@ outro::outro(const game_classification& info)
 					ss << "\n<span size='xx-small'>" << about.names[k].first << "</span>";
 				}
 
-				std::cerr << "pushing back " << ss.str() << std::endl;
 				text_.push_back(ss.str());
 			}
 		}
