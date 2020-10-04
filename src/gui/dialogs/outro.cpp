@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/outro.hpp"
 
+#include "about.hpp"
 #include "formula/variant.hpp"
 #include "game_classification.hpp"
 #include "gettext.hpp"
@@ -31,26 +32,59 @@ namespace dialogs
 REGISTER_DIALOG(outro)
 
 outro::outro(const game_classification& info)
-	: text_(info.end_text)
+	: text_()
+	, current_text_()
 	, duration_(info.end_text_duration)
 	, fade_step_(0)
 	, fading_in_(true)
 	, timer_id_(0)
 	, next_draw_(0)
 {
-	if(text_.empty()) {
-		text_ = _("The End");
+	if(!info.end_text.empty()) {
+		text_.push_back(info.end_text);
+	} else {
+		text_.push_back(_("The End"));
 	}
 
+	text_.push_back("<span size='large'>" + info.campaign_name + "</span>");
+
+	// We only show the end text and the title if credits were turned off
+	if(info.end_credits) {
+		const auto& credits = about::get_credits_data();
+		const auto campaign_credits = std::find_if(credits.begin(), credits.end(),
+			[&info](const about::credits_group& group) { return group.id == info.campaign; });
+
+		for(const about::credits_group::about_group& about : campaign_credits->sections) {
+			// Split the names into chunks of 5
+			static const unsigned chunk_size = 5;
+			const unsigned num_names = about.names.size();
+			const unsigned num_chunks = std::max<unsigned>(1, std::ceil(num_names / chunk_size));
+
+			for(std::size_t i = 0; i < num_chunks; ++i) {
+				std::stringstream ss;
+				ss << about.title << "\n";
+
+				for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k) {
+					ss << "\n<span size='xx-small'>" << about.names[k].first << "</span>";
+				}
+
+				std::cerr << "pushing back " << ss.str() << std::endl;
+				text_.push_back(ss.str());
+			}
+		}
+	}
+
+	current_text_ = text_.begin();
+
 	if(!duration_) {
-		duration_ = 3500;
+		duration_ = 3500; // 3.5 seconds
 	}
 }
 
 void outro::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
-	window.get_canvas(0).set_variable("outro_text", wfl::variant(text_));
+	window.get_canvas(0).set_variable("outro_text", wfl::variant(*current_text_));
 
 	connect_signal_on_draw(window, std::bind(&outro::draw_callback, this, std::ref(window)));
 
@@ -86,13 +120,27 @@ void outro::draw_callback(window& window)
 		return;
 	}
 
+	canvas& window_canvas = window.get_canvas(0);
+
 	// If we've faded fully out...
 	if(!fading_in_ && fade_step_ < 0) {
-		window.close();
-		return;
-	}
+		std::advance(current_text_, 1);
 
-	canvas& window_canvas = window.get_canvas(0);
+		// ...and we've just showed the last text bit, close the window.
+		if(current_text_ == text_.end()) {
+			window.close();
+			return;
+		}
+
+		// ...else show the next bit.
+		window_canvas.set_variable("outro_text", wfl::variant(*current_text_));
+
+		fading_in_ = true;
+		fade_step_ = 0;
+
+		remove_timer(timer_id_);
+		timer_id_ = 0;
+	}
 
 	window_canvas.set_variable("fade_step", wfl::variant(fade_step_));
 	window_canvas.set_is_dirty(true);

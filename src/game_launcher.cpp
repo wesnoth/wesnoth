@@ -27,7 +27,6 @@
 #include "game_config_manager.hpp"      // for game_config_manager
 #include "generators/map_generator.hpp" // for mapgen_exception
 #include "gettext.hpp"                  // for _
-#include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/language_selection.hpp"  // for language_selection
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp" //for show error message
@@ -1031,10 +1030,6 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
 
 			gui2::dialogs::outro::display(state_.classification());
-
-			if(state_.classification().end_credits) {
-				gui2::dialogs::end_credits::display(state_.classification().campaign);
-			}
 		}
 	} catch (const savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));

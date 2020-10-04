@@ -53,7 +53,8 @@ private:
 
 	void draw_callback(window& window);
 
-	std::string text_;
+	std::vector<std::string> text_;
+	std::vector<std::string>::iterator current_text_;
 
 	unsigned int duration_;
 	int fade_step_;
