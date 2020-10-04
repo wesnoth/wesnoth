@@ -1030,7 +1030,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
 
-			gui2::dialogs::outro::display(state_.classification().end_text, state_.classification().end_text_duration);
+			gui2::dialogs::outro::display(state_.classification());
 
 			if(state_.classification().end_credits) {
 				gui2::dialogs::end_credits::display(state_.classification().campaign);

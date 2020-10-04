@@ -17,6 +17,7 @@
 #include "gui/dialogs/outro.hpp"
 
 #include "formula/variant.hpp"
+#include "game_classification.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
@@ -27,12 +28,11 @@ namespace gui2
 {
 namespace dialogs
 {
-
 REGISTER_DIALOG(outro)
 
-outro::outro(const std::string& text, unsigned int duration)
-	: text_(text)
-	, duration_(duration)
+outro::outro(const game_classification& info)
+	: text_(info.end_text)
+	, duration_(info.end_text_duration)
 	, fade_step_(0)
 	, fading_in_(true)
 	, timer_id_(0)
@@ -100,9 +100,9 @@ void outro::draw_callback(window& window)
 	window.set_is_dirty(true);
 
 	if(fading_in_) {
-		fade_step_ ++;
+		fade_step_++;
 	} else {
-		fade_step_ --;
+		fade_step_--;
 	}
 
 	set_next_draw();

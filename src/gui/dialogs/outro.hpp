@@ -16,16 +16,17 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+class game_classification;
+
 namespace gui2
 {
 namespace dialogs
 {
-
 /** Dialog to display 'The End' at the end of a campaign. */
 class outro : public modal_dialog
 {
 public:
-	outro(const std::string& text, unsigned int duration);
+	outro(const game_classification& info);
 
 	/**
 	 * Displays a simple fading screen with any user-provided text.
