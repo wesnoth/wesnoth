@@ -178,7 +178,7 @@ bool data_apply_removelist(config& data, const config& removelist)
 		}
 	}
 
-	return data.has_child("file");
+	return data.has_child("file") || data.has_child("dir");
 }
 
 void data_apply_addlist(config& data, const config& addlist)
