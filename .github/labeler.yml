@@ -1,8 +1,10 @@
 AI:
   - data/ai/**/*
+  - data/campaigns/*/ai/**
   - src/ai/**/*
 
 Audio:
+  - data/campaigns/*/sounds/**
   - data/core/music/*
   - data/core/sounds/**/*
   - sounds/*
@@ -40,6 +42,7 @@ Editor:
 
 Graphics:
   - images/**/*
+  - data/campaigns/*/images/**
   - data/core/images/**/*
 
 Help:
@@ -77,16 +80,15 @@ SCons:
   - src/SConstruct
 
 Services:
-  - src/campaign_server/*
-  - src/server/*
-  - utils/mp-server/*
+  - utils/mp-server/**
 
 Terrain:
   - src/terrain/**/*
+  - data/campaigns/*/images/terrain/**
+  - data/core/images/terrain/**
   - data/core/terrain.cfg
   - data/core/terrain-graphics.cfg
   - data/core/terrain_graphics/*
-  - data/images/terrain/**/*
 
 Translations:
   - po/**/*
@@ -106,6 +108,7 @@ Unit Tests:
 
 Units:
   - src/units/**/*
+  - data/campaigns/*/units/**
   - data/core/units/**/*
   - data/core/images/units/**/*
 
