@@ -85,10 +85,12 @@ Services:
 Terrain:
   - src/terrain/**/*
   - data/campaigns/*/images/terrain/**
+  - data/campaigns/**/terrain.cfg
+  - data/campaigns/**/terrain_graphics.cfg
   - data/core/images/terrain/**
   - data/core/terrain.cfg
   - data/core/terrain-graphics.cfg
-  - data/core/terrain_graphics/*
+  - data/core/terrain-graphics/**
 
 Translations:
   - po/**/*
