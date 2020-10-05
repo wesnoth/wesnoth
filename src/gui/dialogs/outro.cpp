@@ -62,7 +62,11 @@ outro::outro(const game_classification& info)
 
 			for(std::size_t i = 0; i < num_chunks; ++i) {
 				std::stringstream ss;
-				ss << about.title << "\n";
+
+				// Only include section title on first chunk
+				if(i == 0) {
+					ss << about.title << "\n";
+				}
 
 				for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k) {
 					ss << "\n<span size='xx-small'>" << about.names[k].first << "</span>";
