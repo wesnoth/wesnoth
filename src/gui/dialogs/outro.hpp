@@ -49,8 +49,6 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void set_next_draw();
-
 	void draw_callback(window& window);
 
 	std::vector<std::string> text_;
@@ -62,7 +60,6 @@ private:
 	bool fading_in_;
 
 	std::size_t timer_id_;
-	std::size_t next_draw_;
 };
 
 } // namespace dialogs
