@@ -53,16 +53,16 @@ struct credits_group
 
 using credits_data = std::vector<credits_group>;
 
-/**
- * General getter methods for the credits config and image lists by campaign id
- */
+/** Gets all credits data. */
 const credits_data& get_credits_data();
 
+/** Gets credits for a given campaign. */
+credits_data::const_iterator get_campaign_credits(const std::string& campaign);
+
+/** Gets credit background images for a given campaaign. */
 std::vector<std::string> get_background_images(const std::string& campaign);
 
-/**
- * Regenerates the credits config
- */
+/** Regenerates the credits data. */
 void set_about(const game_config_view& cfg);
 
 } // namespace about
