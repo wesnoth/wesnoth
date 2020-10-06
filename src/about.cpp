@@ -15,6 +15,7 @@
 #include "about.hpp"
 
 #include "config.hpp"
+#include "font/pango/escape.hpp"
 #include "game_config_view.hpp"
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
@@ -81,7 +82,7 @@ credits_group::about_group::about_group(const config& cfg)
 	names.reserve(cfg.child_count("entry"));
 
 	for(const config& entry : cfg.child_range("entry")) {
-		names.emplace_back(entry["name"].str(), entry["comment"].str());
+		names.emplace_back(font::escape_text(entry["name"].str()), font::escape_text(entry["comment"].str()));
 	}
 }
 
@@ -93,6 +94,12 @@ bool credits_group::about_group::operator<(const about_group& o) const
 const credits_data& get_credits_data()
 {
 	return parsed_credits_data;
+}
+
+credits_data::const_iterator get_campaign_credits(const std::string& campaign)
+{
+	return std::find_if(parsed_credits_data.begin(), parsed_credits_data.end(),
+		[&campaign](const credits_group& group) { return group.id == campaign; });
 }
 
 std::vector<std::string> get_background_images(const std::string& campaign)

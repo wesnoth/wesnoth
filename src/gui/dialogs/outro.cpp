@@ -50,13 +50,14 @@ outro::outro(const game_classification& info)
 
 	// We only show the end text and the title if credits were turned off
 	if(info.end_credits) {
-		const auto& credits = about::get_credits_data();
-		const auto campaign_credits = std::find_if(credits.begin(), credits.end(),
-			[&info](const about::credits_group& group) { return group.id == info.campaign; });
+		for(const auto& about : about::get_campaign_credits(info.campaign)->sections) {
+			if(about.names.empty()) {
+				continue;
+			}
 
-		for(const about::credits_group::about_group& about : campaign_credits->sections) {
 			// Split the names into chunks of 5
 			static const unsigned chunk_size = 5;
+
 			const unsigned num_names = about.names.size();
 			const unsigned num_chunks = std::max<unsigned>(1, std::ceil(num_names / chunk_size));
 
@@ -65,14 +66,18 @@ outro::outro(const game_classification& info)
 
 				// Only include section title on first chunk
 				if(i == 0) {
-					ss << about.title << "\n";
+					ss << about.title << "\n\n";
 				}
 
 				for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k) {
-					ss << "\n<span size='xx-small'>" << about.names[k].first << "</span>";
+					ss << "<span size='xx-small'>" << about.names[k].first << "</span>\n";
 				}
 
-				text_.push_back(ss.str());
+				// Clean up the trailing newline
+				std::string section_text = ss.str();
+				section_text.pop_back();
+
+				text_.push_back(std::move(section_text));
 			}
 		}
 	}
