@@ -202,15 +202,10 @@ loading_screen::~loading_screen()
 
 void loading_screen::display(std::function<void()> f)
 {
-	const bool use_loadingscreen_animation = !preferences::disable_loadingscreen_animation();
-
 	if(singleton_ || CVideo::get_singleton().faked()) {
 		f();
-	} else if(use_loadingscreen_animation) {
-		loading_screen(f).show();
 	} else {
-		loading_screen(std::function<void()>()).show();
-		f();
+		loading_screen(f).show();
 	}
 }
 

@@ -925,16 +925,6 @@ void set_disable_auto_moves(bool value)
 	preferences::set("disable_auto_moves", value);
 }
 
-bool disable_loadingscreen_animation()
-{
-	return get("disable_loadingscreen_animation", false);
-}
-
-void set_disable_loadingscreen_animation(bool value)
-{
-	set("disable_loadingscreen_animation", value);
-}
-
 bool damage_prediction_allow_monte_carlo_simulation()
 {
 	return get("damage_prediction_allow_monte_carlo_simulation", true);
