@@ -93,9 +93,6 @@ private:
 	/** Inherited from events::pump_monitor. */
 	virtual void process(events::pump_info&) override;
 
-	/** Checks whether the worker thread has returned and loading is complete. */
-	bool loading_complete() const;
-
 	/** Callback to handle drawing the progress animation. */
 	void draw_callback();
 
@@ -105,8 +102,6 @@ private:
 	std::function<void()> load_func_;
 	std::future<void> worker_result_;
 	std::unique_ptr<cursor::setter> cursor_setter_;
-
-	std::exception_ptr exception_;
 
 	label* progress_stage_label_;
 	label* animation_label_;

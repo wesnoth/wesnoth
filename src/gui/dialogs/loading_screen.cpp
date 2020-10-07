@@ -111,14 +111,7 @@ void loading_screen::pre_show(window& window)
 	if(load_func_) {
 		// Run the load function in its own thread.
 		try {
-			worker_result_ = std::async(std::launch::async, [this]() {
-				try {
-					load_func_();
-				} catch(...) {
-					// TODO: guard this with a mutex.
-					exception_ = std::current_exception();
-				}
-			});
+			worker_result_ = std::async(std::launch::async, load_func_);
 		} catch(const std::system_error& e) {
 			ERR_LS << "Failed to create worker thread: " << e.what() << "\n";
 			throw;
@@ -147,9 +140,13 @@ void loading_screen::progress(loading_stage stage)
 
 void loading_screen::process(events::pump_info&)
 {
-	if(!load_func_ || loading_complete()) {
-		if(exception_) {
-			std::rethrow_exception(exception_);
+	using namespace std::chrono_literals;
+
+	if(!load_func_ || worker_result_.wait_for(0ms) == std::future_status::ready) {
+		// The worker returns void, so this is only to handle any exceptions thrown from the worker.
+		// worker_result_.valid() will return false after.
+		if(worker_result_.valid()) {
+			worker_result_.get();
 		}
 
 		get_window()->close();
@@ -184,12 +181,8 @@ loading_screen::~loading_screen()
 	 * happened because the window was closed, which is not necessarily the case (other
 	 * possibilities might be a 'dialog doesn't fit on screen' exception caused by resizing
 	 * the window).
-	 *
-	 * Another approach might be to add exit points (boost::this_thread::interruption_point())
-	 * to the worker functions (filesystem.cpp, config parsing code, etc.) and then use that
-	 * to end the thread faster.
 	 */
-	if(!loading_complete()) {
+	if(worker_result_.valid()) {
 #if defined(_LIBCPP_VERSION) || defined(__MINGW32__)
 		std::_Exit(0);
 #else
@@ -207,12 +200,6 @@ void loading_screen::display(std::function<void()> f)
 	} else {
 		loading_screen(f).show();
 	}
-}
-
-bool loading_screen::loading_complete() const
-{
-	using namespace std::chrono_literals;
-	return worker_result_.wait_for(0ms) == std::future_status::ready;
 }
 
 } // namespace dialogs
