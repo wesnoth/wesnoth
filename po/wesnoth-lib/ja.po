@@ -6582,9 +6582,9 @@ msgstr "選択したゲームには陣営がありません！"
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:843
 #, fuzzy
-#| msgid "The selected game has no sides!"
+#| msgid "The file or folder $path cannot be created."
 msgid "The selected game cannot be created."
-msgstr "選択したゲームには陣営がありません！"
+msgstr "ファイル/フォルダ「 $path 」を作成できません。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:912
 msgid "Choose Starting Scenario"
@@ -7946,14 +7946,6 @@ msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
 
-#, fuzzy
-#~| msgid "Do you want to open this link?"
-#~ msgid "Are you sure you want to open this link? "
-#~ msgstr "このリンクを開きますか？"
-
-#~ msgid "Event"
-#~ msgstr "イベント"
-
 #~ msgid "Nearest Neighbor"
 #~ msgstr "Nearest Neighbor"
 
@@ -7998,6 +7990,9 @@ msgstr ""
 
 #~ msgid "Sort by:"
 #~ msgstr "並び順："
+
+#~ msgid "Event"
+#~ msgstr "イベント"
 
 #~ msgid "You will now connect to the multiplayer server."
 #~ msgstr "マルチプレイヤーサーバーに接続します。"
