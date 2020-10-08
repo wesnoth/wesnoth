@@ -6,7 +6,8 @@
 #
 # Translators:
 # 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
-# RatArmy <broadbarredfirefish@gmail.com>, 2019
+# 堀 秀幸 <Hide.HORI@gmail.com>, 2020
+# RatArmy <broadbarredfirefish@gmail.com>, 2020
 #
 #, fuzzy
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-09-26 23:34+0300\n"
 "PO-Revision-Date: 2018-05-06 10:15+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -698,6 +699,16 @@ msgid ""
 "\n"
 "Occasionally caves are <italic>text='illuminated'</italic>."
 msgstr ""
+"<italic>text='岩に囲まれた洞窟'</italic>は、風雨の働きによって岩石が侵食され"
+"て形作られました。でこぼこの地下洞窟に似ており、ほとんどのユニットにとって、"
+"回避率は上がるものの、通過するのは困難な地形です。ドワーフとトロルのような洞"
+"窟の住人のみ、この地形をうまく通過する十分な能力を有しています。\n"
+"\n"
+"岩に囲まれた洞窟において、ほとんどのユニットの回避率は50%前後となり、騎兵は"
+"40%に制限されます。しかし、ドワーフはその短身により、60%の回避率の恩恵に与る"
+"ことができます。\n"
+"\n"
+"時折、洞窟の中には<italic>text='照らされている'</italic>場所があります。"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1590,6 +1601,20 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"<italic>text='洞窟'</italic>地形は、１体のユニットが通るには充分な空間がある"
+"地下の洞窟です。\n"
+"ほとんどのユニットはこの地形に全く慣れておらず、そのために移動は遅くなり、防"
+"御は妨げられます。洞窟を住み処とするドワーフとトロルは、比較的容易にこの地形"
+"を移動することができ、特にドワーフはその小さな体軀を活かして、他の種族が通行"
+"できないような難所を潜り抜けます。洞窟には時折<italic>text='照らされている'</"
+"italic>場所があります。\n"
+"\n"
+"地下世界は暗闇ではありますが、まれに地表から降り注ぐ光に照らされているところ"
+"があります。そのような場所では、秩序ユニットには攻撃ボーナスが与えられ、混沌"
+"ユニットの攻撃ボーナスは失われます。その他の効果については、通常の洞窟地形と"
+"同じです。\n"
+"\n"
+"ほとんどのユニットは 20〜40% の回避率ですが、ドワーフは 50% となります。"
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2745
@@ -2193,7 +2218,7 @@ msgstr "状態："
 #. [label]
 #: data/gui/window/addon_manager.cfg:760
 msgid "Order:"
-msgstr "指示："
+msgstr "並び順："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:846 data/gui/window/addon_manager.cfg:1021
@@ -3598,7 +3623,7 @@ msgstr "管理者の操作"
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
 msgid "Reason:"
-msgstr ""
+msgstr "理由："
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:198
@@ -3623,7 +3648,7 @@ msgstr "キック + バン"
 #. [button]: id=stopgame
 #: data/gui/window/lobby_player_info.cfg:274
 msgid "Stop Game"
-msgstr ""
+msgstr "ゲームを停止"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
@@ -3796,12 +3821,12 @@ msgstr "新しいターンが始まった時"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
 msgid "Game created:"
-msgstr ""
+msgstr "ゲームが作成された時："
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
 msgid "When a new game has been created"
-msgstr ""
+msgstr "新しいゲームが作成された時"
 
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
@@ -4056,11 +4081,11 @@ msgstr "out-of-sync（同期失敗）エラーを厳格にチェックします"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Private Replay"
-msgstr ""
+msgstr "非公開リプレイ"
 
 #: data/gui/window/mp_create_game.cfg:945
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "リプレイの公開・非公開を切り替えます"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:961
@@ -4303,7 +4328,7 @@ msgstr "陣営が属するチームを変更します"
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
 msgid "This side’s color"
-msgstr ""
+msgstr "陣営の色です"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
@@ -5238,7 +5263,7 @@ msgstr "ユニットの召還"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:341
 msgid "Search for unit name, unit type name, unit level, or trait."
-msgstr ""
+msgstr "ユニットの名前、種類、レベル、特性で検索します。"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:393
@@ -5284,7 +5309,7 @@ msgstr "情報："
 
 #: src/build_info.cpp:272
 msgid "feature^JPEG screenshots"
-msgstr ""
+msgstr "JPEG スクリーンショット"
 
 #: src/build_info.cpp:279
 msgid "feature^Lua console completion"
@@ -5782,11 +5807,11 @@ msgstr "防御側の耐性："
 
 #: src/gui/dialogs/attack_predictions.cpp:191
 msgid "Defender vulnerability vs"
-msgstr ""
+msgstr "防御側の弱点："
 
 #: src/gui/dialogs/attack_predictions.cpp:195
 msgid "Attacker resistance vs"
-msgstr ""
+msgstr "攻撃側の耐性："
 
 #: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Attacker vulnerability vs"
@@ -6304,7 +6329,7 @@ msgstr "選択したゲームには陣営がありません！"
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:842
 msgid "The selected game can not be created."
-msgstr ""
+msgstr "選択したゲームは作成されませんでした。"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:911
 msgid "Choose Starting Scenario"
@@ -6376,7 +6401,7 @@ msgstr "友人・無視リストに含まれていません"
 #: src/gui/dialogs/preferences_dialog.cpp:853
 #: src/gui/dialogs/preferences_dialog.cpp:923
 msgid "No hotkey selected"
-msgstr ""
+msgstr "ホットキーが選択されていません"
 
 #: src/gui/dialogs/preferences_dialog.cpp:884
 msgid ""
@@ -6466,10 +6491,12 @@ msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"計画中のこの時点では、ゴールドが不足しているためこのユニットを召還できませ"
+"ん。"
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "ゴールドが不足しているため、このユニットを召還することはできません。"
 
 #: src/gui/dialogs/unit_recall.cpp:319 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
@@ -6968,15 +6995,15 @@ msgstr "次の動きをリプレイ"
 
 #: src/hotkey/hotkey_command.cpp:138
 msgid "View: Full Map"
-msgstr ""
+msgstr "視点：マップ全体"
 
 #: src/hotkey/hotkey_command.cpp:139
 msgid "View: Each Team"
-msgstr ""
+msgstr "視点：各チーム"
 
 #: src/hotkey/hotkey_command.cpp:140
 msgid "View: Human Team"
-msgstr ""
+msgstr "視点：コンピュータ以外のチーム"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Skip Animation"

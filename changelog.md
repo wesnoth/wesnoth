@@ -1,6 +1,6 @@
 ## Version 1.14.14+dev
  ### Language and i18n
-   * Updated translations: Catalan, French, Polish, Portuguese (Brazil)
+   * Updated translations: Catalan, French, Japanese, Polish, Portuguese (Brazil)
 
 ## Version 1.14.14
  ### Add-ons client

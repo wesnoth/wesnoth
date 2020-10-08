@@ -5144,12 +5144,15 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"同盟している２つの陣営のヒーラーに隣接しているユニットは、双方の陣営のターン"
+"で回復の恩恵を受けることができる。この方法を用いれば、本来の限界よりも早く回"
+"復させることが可能になる。"
 
 #. [tip]
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:267
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr ""
+msgstr "Galun 飛族の Vank、Wesnoth 歴 6 年"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5199,7 +5202,7 @@ msgstr "雇用を行えるリーダーがいません。"
 
 #: src/actions/create.cpp:478
 msgid "None of your leaders are able to recruit this unit."
-msgstr ""
+msgstr "このユニットを雇用できるリーダーはあなたの陣営にはいません。"
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -5979,7 +5982,7 @@ msgstr "ローカルプレイヤー"
 
 #: src/game_initialization/connect_engine.cpp:1293
 msgid "Nobody"
-msgstr ""
+msgstr "空席"
 
 #: src/game_initialization/connect_engine.cpp:1296
 msgid "Reserved"
@@ -6511,23 +6514,23 @@ msgstr "このシナリオのみで有効です。"
 
 #: src/help/help_impl.cpp:358 src/help/help_impl.cpp:394
 msgid "Time of Day Schedule"
-msgstr ""
+msgstr "時刻スケジュール"
 
 #: src/help/help_impl.cpp:385
 msgid "Lawful Bonus:"
-msgstr ""
+msgstr "秩序ボーナス："
 
 #: src/help/help_impl.cpp:386
 msgid "Neutral Bonus:"
-msgstr ""
+msgstr "中立ボーナス："
 
 #: src/help/help_impl.cpp:387
 msgid "Chaotic Bonus:"
-msgstr ""
+msgstr "混沌ボーナス："
 
 #: src/help/help_impl.cpp:388
 msgid "Liminal Bonus:"
-msgstr ""
+msgstr "薄明ボーナス："
 
 #: src/help/help_impl.cpp:389
 msgid "Schedule"
@@ -6877,6 +6880,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<command>]\n"
+"“all” = 全コマンドの概要, <command> = 特定のコマンド名（コマンドの詳細を表"
+"示）"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -6912,7 +6918,7 @@ msgstr "使用方法："
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
+msgstr[0] "エイリアス："
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -6944,15 +6950,15 @@ msgstr "雇用できるユニットがいません。"
 
 #: src/menu_events.cpp:284
 msgid "No unit recruited."
-msgstr ""
+msgstr "ユニットはリクルートされませんでした。"
 
 #: src/menu_events.cpp:309
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "内部エラーです。バグ報告をお願いします！詳細：\n"
 
 #: src/menu_events.cpp:315
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "現在、 $unit_type_name を雇用することはできません。"
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:329
@@ -6960,14 +6966,16 @@ msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
 msgstr ""
+"このタイミングでは、このユニットを雇用するために必要なゴールドを所持していま"
+"せん。"
 
 #: src/menu_events.cpp:331
 msgid "You do not have enough gold to recruit this unit."
-msgstr ""
+msgstr "このユニットを雇用するにはゴールドが足りません。"
 
 #: src/menu_events.cpp:374
 msgid "You are separated from your soldiers and may not recall them."
-msgstr ""
+msgstr "戦士達は遠くにいるため、召還することはできません。"
 
 #: src/menu_events.cpp:395
 msgid ""
@@ -6979,16 +6987,16 @@ msgstr ""
 
 #: src/menu_events.cpp:399
 msgid "You currently can't recall at the highlighted location."
-msgstr ""
+msgstr "現在、ハイライトされた場所には召還できません。"
 
 #: src/menu_events.cpp:411
 msgid "No unit recalled."
-msgstr ""
+msgstr "ユニットは召還されませんでした。"
 
 #: src/menu_events.cpp:428
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] ""
+msgstr[0] "このユニットを召還するには、最低 $cost ゴールド必要です。"
 
 #: src/menu_events.cpp:572
 msgid "You cannot end your turn yet!"
@@ -7061,6 +7069,8 @@ msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
+"[<side> [on/off]]\n"
+"“on” = AIにコントロールを移す, “off” = プレイヤーがコントロールを取得"
 
 #: src/menu_events.cpp:1222
 msgid "Switch a side to/from idle state."
@@ -7071,11 +7081,11 @@ msgstr "陣営の待機状態を切り替えます。"
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1226
 msgid "command_idle^[<side> [on/off]]"
-msgstr ""
+msgstr "[<side> [on/off]]"
 
 #: src/menu_events.cpp:1227
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "ゲーム内テーマを変更する。"
 
 #: src/menu_events.cpp:1229
 msgid "<side> <nickname>"
@@ -7107,7 +7117,7 @@ msgstr "マウス下の地形レイヤーをデバッグします。"
 
 #: src/menu_events.cpp:1236
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "fps を表示する。"
 
 #: src/menu_events.cpp:1238
 msgid "Save game."
@@ -7228,6 +7238,8 @@ msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
+"ユニット変数を変更します。（トップレベルのキーのみサポートされており、 "
+"advances=<数値>です。）"
 
 #: src/menu_events.cpp:1283
 msgid "Discover all units in help."
@@ -7239,7 +7251,7 @@ msgstr "ヘルプで全てのユニットを未発見に戻します。"
 
 #: src/menu_events.cpp:1285
 msgid "<unit type id>"
-msgstr ""
+msgstr "<unit type id>"
 
 #: src/menu_events.cpp:1285
 msgid "Create a unit."
@@ -7255,7 +7267,7 @@ msgstr "現在のプレイヤーの幕を切り換えます。"
 
 #: src/menu_events.cpp:1288
 msgid "<amount>"
-msgstr ""
+msgstr "<ゴールドの量>"
 
 #: src/menu_events.cpp:1288
 msgid "Give gold to the current player."
@@ -7263,7 +7275,7 @@ msgstr "現在のプレイヤーにゴールドを与えます。"
 
 #: src/menu_events.cpp:1289
 msgid "<event name>"
-msgstr ""
+msgstr "<event name>"
 
 #: src/menu_events.cpp:1289
 msgid "Fire a game event."
@@ -7437,7 +7449,7 @@ msgstr "同盟ミラー防止"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "ゲーム（$name|, $scenario|）が作成されました"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7520,12 +7532,16 @@ msgid ""
 "\n"
 "Do you want to save the game?"
 msgstr ""
+"\n"
+"ゲームを保存しますか？"
 
 #: src/playmp_controller.cpp:265 src/playsingle_controller.cpp:349
 msgid ""
 "This game has been ended.\n"
 "Reason: "
 msgstr ""
+"ゲームは終了しました。\n"
+"理由："
 
 #: src/playmp_controller.cpp:368
 msgid ""
@@ -7894,6 +7910,11 @@ msgid ""
 "cost of upkeep, including that covered by villages — in other words, the "
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
+"自軍を維持するために、毎ターンの終了時に支払う費用です。最初の数字は支払われ"
+"るゴールドの量です。この数値は、全ユニットのレベルの合計から村による支援額を"
+"差し引いたものです。2番目の数値は、維持費の総計です。維持費は、全ユニットのレ"
+"ベルの合計と等しいです。もしあなたがすべての村の所有権を失った場合にはこの金"
+"額を支払うことになります。"
 
 #: src/reports.cpp:1345
 msgid "Upkeep"
@@ -7901,13 +7922,14 @@ msgstr "維持費"
 
 #: src/reports.cpp:1382
 msgid "Net Income"
-msgstr ""
+msgstr "純利益"
 
 #: src/reports.cpp:1382
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
+"各ターンのゴールドの変化量です。村からの収入と維持費によって決まります。"
 
 #: src/reports.cpp:1550
 msgid "Observers:"

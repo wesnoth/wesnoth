@@ -1,7 +1,8 @@
 #
 # Translators:
-# RatArmy <broadbarredfirefish@gmail.com>, 2019
 # tamanegi, 2019
+# 堀 秀幸 <Hide.HORI@gmail.com>, 2020
+# RatArmy <broadbarredfirefish@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
@@ -9,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-09-26 20:35 UTC\n"
 "PO-Revision-Date: 2018-09-12 07:31+0000\n"
-"Last-Translator: tamanegi, 2019\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -37,6 +38,11 @@ msgid ""
 "remaining men of the derelict South Guard to defend his country.\n"
 "\n"
 msgstr ""
+"若き騎士 Deoran は Wesnoth 南部の Kerlath 州に派遣され、掠奪の被害に遭った辺"
+"境の町を調査することになった。不運にも何の準備も無しに野蛮な無法者との抗戦に"
+"突入することになった Deoran は、支援を受けられぬままに崩壊した南部防衛隊を再"
+"編し、国土を守らねばならない。\n"
+"\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:21
@@ -44,6 +50,8 @@ msgid ""
 "This campaign is designed as an introduction to Wesnoth. The ‘Civilian’ "
 "difficulty level is aimed at first-time players."
 msgstr ""
+"このキャンペーンは Wesnoth の入門者向けにデザインされています。初めてプレイす"
+"る人には「一般市民」の難易度がお勧めです。"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:23
@@ -442,6 +450,8 @@ msgid ""
 "You may now recruit Merman Hunters. Merfolk are aquatic creatures and fight "
 "best in rivers and swamps. They are much less effective on dry land."
 msgstr ""
+"マーマンの漁師を雇うことができるようになりました。彼らマーフォークは水中や沼"
+"地に適応した種族です。そのため、乾いた土地では活躍できないでしょう。"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:490
@@ -1095,9 +1105,9 @@ msgid ""
 "then we should make haste toward the Aethenwood to find the elves."
 msgstr ""
 "それは頼もしい。それと、陛下に援軍を頼むには時間がかかりすぎるだろうが、ここ"
-"から馬で２、３日のところに小さな基地があったはずだ。そこに伝令を送って、騎兵"
-"を何騎か援軍として出してもらおう。その作業が済み次第、我々はエルフを見つける"
-"ため、急いで Aethen の森へ向かう。"
+"から馬で２、３日のところに小さな駐屯地があったはずだ。そこに伝令を送って、騎"
+"兵を何騎か援軍として出してもらおう。その作業が済み次第、我々はエルフを見つけ"
+"るため、急いで Aethen の森へ向かう。"
 
 #. [scenario]: id=03_A_Desperate_Errand
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:5
@@ -1801,12 +1811,12 @@ msgstr "Mebrin！どこにいるのですか？！"
 msgid ""
 "His home is empty... There are several sets of footprints leading away to "
 "the south..."
-msgstr ""
+msgstr "家は空っぽね…… そして南に向かう足跡がいくつか……"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:664
 msgid "Perhaps he was taken by the undead?"
-msgstr ""
+msgstr "ひょっとすると、彼はアンデッドに連れ去られたのか？"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:669
@@ -1815,11 +1825,13 @@ msgid ""
 "it had been the undead, I suspect they would have slain him and made him one "
 "of them."
 msgstr ""
+"それはどうだろう。ここには血痕が無く、争った形跡もほとんど見られない。アン"
+"デッドの仕業だとすれば、彼を殺害して自分達の仲間にしていそうなものだが。"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:674
 msgid "Then maybe the bandits who have been summoning the undead took him?"
-msgstr ""
+msgstr "ならば、無法者どもがアンデッドに命じて連れ去ったとか？"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:679
@@ -1828,6 +1840,9 @@ msgid ""
 "he were ambushed or taken by surprise, he may not have had the chance. "
 "Ethiliel, what do you think?"
 msgstr ""
+"どうもはっきりしないな。そんなことがあれば、彼は何らかの抵抗を試みるはずだ。"
+"だが、待ち伏せに遭ったとか、不意を突かれたのだとすれば、その機会を得られな"
+"かった可能性もある。Ethiliel 、あなたはどう考える？"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:684
@@ -1861,6 +1876,8 @@ msgid ""
 "late. We will stop them here and prevent them from reclaiming the knowledge "
 "that was once theirs!"
 msgstr ""
+"ほう、やっとエルフが谷を守りに来たのか。しかし残念、遅すぎたな。我等がここで"
+"足止めするからには、奴らが失った知識を取り戻そうとしても無駄なことだ！"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:743
@@ -1910,7 +1927,7 @@ msgstr "？"
 #. only a single one
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:198
 msgid "Monster"
-msgstr ""
+msgstr "モンスター"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:239
@@ -2383,6 +2400,8 @@ msgid ""
 "Urza Afalas’s troops are exhausted from battle and cannot attack this turn, "
 "but are still able to withdraw and reposition themselves."
 msgstr ""
+"Urza Afalas の部隊は戦闘で疲弊しているため、このターン中は攻撃することができ"
+"ませんが、退却して再配置することは可能です。"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:933
@@ -2929,7 +2948,7 @@ msgstr "長駆"
 #. Another elvish side.
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:123
 msgid "Ambushers"
-msgstr ""
+msgstr "伏兵"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:510
@@ -3172,7 +3191,7 @@ msgid ""
 "us back to Wesnoth, and that is a good start."
 msgstr ""
 "お前の過去の罪をそう簡単に見過ごすことはできん。それはこれからの働き次第と"
-"言ったところだ。とは言え、Deoran 卿の言う通り、お前を我々を Wesnoth に帰すと"
+"言ったところだ。とは言え、Deoran 卿の言う通り、お前は我々を Wesnoth に帰すと"
 "いう約束を果たしてくれた。その点についてまずは素直に評価しよう。"
 
 #. [message]: speaker=Urza Afalas
@@ -3799,8 +3818,8 @@ msgid ""
 "without rest, but we cannot. They will certainly overtake us before we reach "
 "Westin."
 msgstr ""
-"しかし、我々は永遠にこのように逃げることができない… 馬も、兵も、そして私も疲"
-"れている。アンデッドを昼夜を問わず、休憩無しで行軍を続けられるが、我々には無"
+"しかし、我々は永遠にこのように逃げることはできない… 馬も、兵も、そして私も疲"
+"れている。アンデッドは昼夜を問わず、休憩無しで行軍を続けられるが、我々には無"
 "理だ。このままでは Westin に着く前に確実に追いつかれる。"
 
 #. [message]: speaker=Sir Gerrick
@@ -3939,6 +3958,8 @@ msgid ""
 "Alas, for each casualty we suffer, the ranks of the undead grow. We must "
 "hold fast and survive as long as we can!"
 msgstr ""
+"ああ、犠牲者を出すごとにアンデッドどもの階級が上がっていく。少しでも長く生き"
+"延びなければ！"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:484
@@ -4426,6 +4447,8 @@ msgid ""
 "Every unit you lose will give the undead gold. Protect your troops and "
 "sustain as few losses as possible!"
 msgstr ""
+"ユニットを失うたび、アンデッドに資金が追加されます。可能な限りユニットを失わ"
+"ないようにしましょう！"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:614
@@ -5164,6 +5187,13 @@ msgid ""
 "King Haldric knighted Deoran and tasked him with riding to Westin to demand "
 "accounting from Sir Loris."
 msgstr ""
+"Haldric 王は将来を嘱望される若い士官 Deoran にその任務を課すことにしました。"
+"あまり知られていませんが、Deoran の家系は Wesnoth の軍隊において輝かしい実績"
+"を残しています ── 士官として 30 年という長き年月を勤め上げた父 Leonard も見事"
+"なものですが、曾祖父 Haldiel に至ってはかの Konrad I世が王位を取り戻す戦いに"
+"従軍して大きな功績を残しているのです。そのため、Haldirc 王は若き Deoran にも"
+"全幅の信頼を寄せていました。そういうわけで Deoran は騎士として叙勲され、"
+"Loris 卿に説明を求めるために Westin へと駆けることになりました。"
 
 #. [part]
 #. Intro to scenario 2
@@ -5405,6 +5435,9 @@ msgid ""
 "farmlands belonging to you humans. No more will the elves send ambassadors "
 "or councilors to Westin, and no more will men wander the green woods.”</i>"
 msgstr ""
+"「ここに和平の条項を述べます。一つ、人間は Aethen の森や丘に立ち入らぬこと。"
+"一つ、エルフは人間の土地である平原や農地に立ち入らぬこと。一つ、エルフは "
+"Westin に使節や評議員を送らぬこと。」"
 
 #. [part]
 #. Epilogue A
@@ -5431,6 +5464,11 @@ msgid ""
 "palpable tension at the forest border, the truce was maintained without "
 "incident."
 msgstr ""
+"こうして、人間とエルフの間に不安定な和平が成立しました。それから数週間、南部"
+"防衛隊はエルフの森との境界領域のパトロールを行い、再生していく農地や村々を見"
+"守りました。何が起こってもおかしくない距離感であったものの、村人達はエルフを"
+"恐れて Aethen の森に近づこうとはしないため、意外にも停戦条約は問題無く守られ"
+"ていきました。"
 
 #. [part]
 #. Is part of both Epilogues
@@ -5546,3 +5584,6 @@ msgid ""
 "normalcy began to return to Kerlath Province as Westin was restored and the "
 "South Guard began to patrol the villages once again."
 msgstr ""
+"Deoran も負傷者の見舞いやボロボロになった城壁や防衛設備の再建を指揮するなど、"
+"忙しい日々を過ごしています。そして、南部防衛隊も今一度村の見回りを再開し、"
+"ゆっくりながら、Kerlath 州と Westin は日常を取り戻しつつあります。"
