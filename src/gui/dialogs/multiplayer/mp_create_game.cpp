@@ -68,7 +68,7 @@ namespace prefs = preferences;
 
 REGISTER_DIALOG(mp_create_game)
 
-mp_create_game::mp_create_game(const game_config_view& cfg, saved_game& state, bool local_mode, mp::user_info* host_info)
+mp_create_game::mp_create_game(const game_config_view& cfg, saved_game& state, bool local_mode)
 	: cfg_(cfg)
 	, create_engine_(state)
 	, config_engine_()
@@ -97,7 +97,6 @@ mp_create_game::mp_create_game(const game_config_view& cfg, saved_game& state, b
 	, mod_list_()
 	, eras_menu_button_()
 	, local_mode_(local_mode)
-	, host_info_(host_info)
 {
 	level_types_ = {
 		{ng::level::TYPE::SCENARIO, _("Scenarios")},

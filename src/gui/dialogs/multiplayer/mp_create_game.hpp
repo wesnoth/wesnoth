@@ -26,11 +26,6 @@
 class config;
 class game_config_view;
 
-namespace mp
-{
-struct user_info;
-}
-
 namespace gui2
 {
 class toggle_button;
@@ -45,7 +40,7 @@ class mp_create_game : public modal_dialog, private plugin_executor
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 
 public:
-	mp_create_game(const game_config_view& cfg, saved_game& state, bool local_mode, mp::user_info* host_info = nullptr);
+	mp_create_game(const game_config_view& cfg, saved_game& state, bool local_mode);
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
@@ -117,8 +112,6 @@ private:
 	menu_button* eras_menu_button_;
 
 	bool local_mode_;
-
-	mp::user_info* host_info_;
 
 	template<typename widget>
 	void on_filter_change(window& window, const std::string& id, bool do_select);
