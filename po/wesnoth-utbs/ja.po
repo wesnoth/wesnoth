@@ -1,7 +1,8 @@
 #
 # Translators:
 # tamanegi, 2019
-# RatArmy <broadbarredfirefish@gmail.com>, 2019
+# 堀 秀幸 <Hide.HORI@gmail.com>, 2020
+# RatArmy <broadbarredfirefish@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
@@ -9,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-09-19 17:35 UTC\n"
 "PO-Revision-Date: 2018-05-06 10:25+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -792,7 +793,7 @@ msgid ""
 "danger came. I shudder to imagine what may have become of them."
 msgstr ""
 "仲間の一部は村が手狭であると感じて、開けた砂地の上で生活したがった。危険が来"
-"れば壁の中の安全に逃げることができる、彼らはそう考えていた。そんな彼等がどう"
+"れば壁の中に安全に逃げることができる、彼らはそう考えていた。そんな彼等がどう"
 "なったのかを考えると、身震いせずにはいられなかった。"
 
 #. [message]: speaker=Kaleh
@@ -1103,16 +1104,19 @@ msgid ""
 "Units are refreshed at the start of your turn when they are on a water or "
 "oasis hex"
 msgstr ""
+"ターンの開始時に浅瀬かオアシスのヘクスにいるユニットは、脱水症状から回復しま"
+"す。"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:238
 msgid "Healers can prevent dehydration from getting worse, but cannot heal it"
 msgstr ""
+"ヒーラーは脱水症状の悪化を防ぐことはできますが、回復させることはできません。"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:241
 msgid "Healers are unable to heal adjacent units during the day"
-msgstr ""
+msgstr "日中、ヒーラーは隣接するユニットを回復させることはできません。"
 
 #. [label]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:265
@@ -1640,6 +1644,9 @@ msgid ""
 "even more powerful than before. Death reigns eternal, your scorched bones "
 "and lifeless body will join my host."
 msgstr ""
+"砂漠のエルフめ、覚えているぞ。お前は俺を倒したと思っていただろうが、俺はさら"
+"に強くなって戻ってきたのだ。死は永遠だ。お前の骨は乾き、精気の抜けた肉体と"
+"なって俺の軍団に加わるのだ。"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1228
@@ -2121,7 +2128,9 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:404
 msgid "... think so. You really know how to pick a campsite, Kaleh."
-msgstr "……思うわ。ねぇ、なんでアタシ達こんな場所に野営したの？Kaleh。"
+msgstr ""
+"……ねぇ、思うんだけど。ずいぶんと素敵な場所を野営地に選んでくれたようね、"
+"Kaleh 。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:408
@@ -2275,18 +2284,13 @@ msgstr "義憤"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
-#, fuzzy
-#| msgid ""
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the champions is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "If used offensively or defensively against champions Grak or Zur, this "
 "attack presses the engagement until one of the combatants is slain, or 30 "
 "rounds of attacks have occurred."
 msgstr ""
-"攻撃時・防御時の両方において、この攻撃が戦いで使われた場合、いずれかの戦士が"
-"倒れるまで交戦をやめません。もしくは、 30 回の攻撃が行われると終了します。"
+"Grak または Zur と戦闘する場合、いずれかの戦闘ユニットが倒れるまで交戦をやめ"
+"ません。もしくは、 30 回の攻撃が行われると終了します。"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:712
@@ -3892,6 +3896,8 @@ msgid ""
 "You invade our tunnels, you slaughter our people, by Griknagh we will make "
 "you pay!"
 msgstr ""
+"お前たち、俺たちの坑道に侵入した、仲間殺した。Griknagh の名にかけて、俺たち、"
+"お前たちに償いをさせる！"
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:998
@@ -4033,7 +4039,7 @@ msgid ""
 "betrayal. Taste dwarven steel!"
 msgstr ""
 "やっぱりエルフは信用ならねえ。バカなガキどもめ、俺たちに背いたことを後悔させ"
-"てやる。俺達の鋼をとこと味わえ！"
+"てやる。俺達の鋼をとことん味わえ！"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1129
@@ -4229,8 +4235,8 @@ msgid ""
 "Our leader sent us to help you. We fight for you until all the dwarves are "
 "dead. We will avenge the deaths of our people!"
 msgstr ""
-"俺達のリーダー、お前たちを助けるため俺達を寄越した。俺達、ドワーフが皆殺しに"
-"するまで戦う。俺達、仲間たちの死の報いをする！"
+"俺達のリーダー、お前たちを助けるため俺達を寄越した。俺達、ドワーフがみんな死"
+"ぬまで戦う。俺達、仲間たちの死の報いをする！"
 
 #. [message]: role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1915
@@ -7582,7 +7588,7 @@ msgstr ""
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2051
 msgid "Break the circle."
-msgstr ""
+msgstr "魔方陣を破る"
 
 #. [command]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2070
@@ -9286,8 +9292,8 @@ msgid ""
 msgstr ""
 "うん、すぐに谷を離れた方が良いな。だが、私たちは周囲の地理を把握していない。"
 "案内人無しではどんな危険があるかすら分からない。何が待ち受けているかも知らな"
-"いまま、仲間を未知の場所送り込むような事はやりたくない。ここに来るまでに多数"
-"の民が亡くなっている。それを考えると、ここは慎重に行動するべきだろう。"
+"いまま、仲間を未知の場所へ送り込むような事はやりたくない。ここに来るまでに多"
+"数の民が亡くなっている。それを考えると、ここは慎重に行動するべきだろう。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4106
@@ -9552,8 +9558,8 @@ msgid ""
 "problem is that I don’t know where she is hiding."
 msgstr ""
 "ありがとうございます。それで、ちょっとお願いがあります。我々への指示は、あな"
-"たを発見し、あなたとその民を私の主と会わせるさせることでした。しかし一つ問題"
-"があって、私は主がどこに隠れているか知らないのです。"
+"たを発見し、あなたとその民を私の主と会わせることでした。しかし一つ問題があっ"
+"て、私は主がどこに隠れているか知らないのです。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4587
@@ -9645,7 +9651,7 @@ msgid ""
 "Things are coming to a head, Tanstafaal and our new friends are in trouble.  "
 "Time is of the essence, so let’s move out as soon as possible."
 msgstr ""
-"重要な局面だな。Tanstafaal 達とあなた方マーフォークの仲間が心配だ。時間は無題"
+"重要な局面だな。Tanstafaal 達とあなた方マーフォークの仲間が心配だ。時間は無駄"
 "にできない、可能な限り速やかに出発しよう。"
 
 #. [scenario]: id=09_Blood_is_Thicker_Than_Water
@@ -10722,6 +10728,16 @@ msgid ""
 "threats; we elves have always been free to make our own choices. We are not "
 "slaves, and will not blindly follow either humans or some false god."
 msgstr ""
+"彼女は自分こそがこの旅で我等を導いたのだと言うが、あの過酷な砂漠の踏破を守り"
+"抜いたのは誰だ？ オークと戦い、山脈の地下へと導いたのは誰だ？ そして、困難を"
+"乗り越えて、再び外の世界へと導いたのは誰だ？ 私ではないか。私はあらゆる場面で"
+"皆のために血を流してきた。もしも私の言葉を信じないと言うのなら、これまでの行"
+"動を信じて欲しい。私は皆のために最善を尽くしてきた。そして、どんな批判を浴び"
+"ようともその態度を改めるつもりはない。マーフォークは、ドワーフがそうであった"
+"ように、信頼に足る者たちだと確信している。私は辛辣な言葉や脅しなどには決して"
+"屈しはしない。我等エルフは、いかなる時も自由な意思に基づいて選択をしてきた。"
+"我等は奴隷ではないのだ。だから、我等は盲目的に従いはしない。人間にも、偽りの"
+"神にも。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1802
@@ -10766,6 +10782,16 @@ msgid ""
 "threats; we elves have always been free to make our own choices. We are not "
 "slaves, and will not blindly follow either the humans or some false god."
 msgstr ""
+"彼女は自分こそがこの旅で我等を導いたのだと言うが、あの過酷な砂漠の踏破を守り"
+"抜いたのは誰だ？ オークと戦い、山脈の地下へと導いたのは誰だ？ そして、困難を"
+"乗り越えて、再び外の世界へと導いたのは誰だ？ 私ではないか。私はあらゆる場面で"
+"皆のために血を流してきた。もしも私の言葉を信じないと言うのなら、これまでの行"
+"動を信じて欲しい。私は皆のために最善を尽くしてきた。そして、どんな批判を浴び"
+"ようともその態度を改めるつもりはない。マーフォークは、トロルがそうであったよ"
+"うに、信頼に足る者たちだと確信している。私は辛辣な言葉や脅しなどには決して屈"
+"しはしない。我等エルフは、いかなる時も自由な意思に基づいて選択をしてきた。我"
+"等は奴隷ではないのだ。だから、我等は盲目的に従いはしない。人間にも、偽りの神"
+"にも。"
 
 #. [message]: speaker=Tanstafaal
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1816
@@ -10795,6 +10821,9 @@ msgid ""
 "I have followed you this far Kaleh, I will not abandon you now. But I admit "
 "that my faith is shaken. If that is not our god, then what is it?"
 msgstr ""
+"Kaleh、こんなとこまで一緒に来たんだから、アタシは今更見捨てたりなんかしない"
+"わ。でも信頼がちょっと揺らいでしまったのも事実ね。それで、アタシ達の神でない"
+"のなら、彼女は一体何なの？"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1828
@@ -13913,8 +13942,8 @@ msgstr ""
 "事実、Yechnagoth の死と共に、彼女の眷属だった者達も本来の気質に戻ったようだっ"
 "た。幸運な事に、我々は既に島に居た敵対者の大半を撃破していたし、残った者たち"
 "も統制がとれていなかった。結果として、オークやアンデットの残敵を掃討するのに"
-"さした手間は掛からなかった。ナーガ達は我々の前から消え失せ、以後我々を悩ます"
-"事は無かった。これで我々もやっと差し迫った危険から解放された。"
+"さしたる手間は掛からなかった。ナーガ達は我々の前から消え失せ、以後我々を悩ま"
+"す事は無かった。これで我々もやっと差し迫った危険から解放された。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:71
@@ -15457,6 +15486,12 @@ msgid ""
 "this new magic sing of the dual nature of these embodiments of fire: flames "
 "that are both life and life’s demise."
 msgstr ""
+"妖精やエルフの魔法は、その力の根源である生命と密接な関係を持ってきました。し"
+"かしながら、 Irdya の植物の大量死により、Quenoth のエルフは魔力の源を他に求め"
+"ざるを得なかったのです。やがて彼女らは、二つの太陽 Sela と Naia から力を引き"
+"出す術を学びました。かつて Irdya の森を灰にした二つの太陽ですが、生命の躍動に"
+"必要なエネルギーをほとばしらせてもいます。この新たな魔術を習得した者は、炎の"
+"持つ二面性、即ち、生と死の両面を歌い上げるのです。"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15582,6 +15617,29 @@ msgid ""
 "Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
 "tongue. I am sure we will have many more adventures together."
 msgstr ""
+"砂の船長 Syniel の日誌より:\n"
+"\n"
+"薄明かりの中、オアシスの近くで突然オークの襲撃を受けた。俺は砂漠に逃げたが、"
+"連中の狼を撒くことはできなかった。そこから数時間走りに走ったが、当然のことな"
+"がら足の感覚がほとんどなくなってしまった。やがて連中は明るい月の下、俺の居場"
+"所を嗅ぎつけた。俺はこれで終わりだと思った。しかし、Eloh のご加護があったの"
+"か、その時不意に群れからはぐれたと思しき一頭の若い牝牛が現れた。彼女は俺の危"
+"機を感知したのか、するっと俺の元へ来て俺と一緒に戦ってくれたのだ。長い夜が明"
+"けるまでずっと。限界を越えて戦った結果、俺たちはなんとか１ダースはいたオーク"
+"と狼を追い払うことができた。夜が明けた時には二人ぼっち。傷つき、疲れ果てて、"
+"視界の全ては砂。それからなけなしの力と物資を振り絞って牛の傷の手当てをして、"
+"そこで限界が来て意識を失った。それ以降のことはほとんど覚えちゃいない。\n"
+"\n"
+"-----------------------\n"
+"\n"
+"俺は今日村で目を覚ました。疲れてはいたが、生きてはいた。ダチが言うには、あの"
+"牛は何時間もかけて俺をここまで運ぶという多大な苦労をしてくれたらしい。そして"
+"その結果、到着した時には俺よりもずっとヤバい状態だったらしい。あの夜を生き延"
+"びることができたことには心から感謝している。きっと Eloh があの忠実な仲間を遣"
+"わしてくれたに違いない。彼女は私の命の恩人で、優秀な守護者、そして Eloh の祝"
+"福を受けているのだ。そこで、私は彼女のことを Nala と呼ぶことにした。俺たちの"
+"言葉で「守護者（Protector）」という意味だ。彼女とはこれから一緒にたくさんの冒"
+"険をすることになるだろう。"
 
 #. [unit_type]: id=Tauroch Rider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Rider.cfg:5
@@ -16169,12 +16227,16 @@ msgstr ""
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:244
+#, fuzzy
+#| msgid ""
+#| " This unit is capable of distracting opponents, allowing allied units to "
+#| "trespass their Zones of Control and move unhindered around them."
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
-"このユニットは敵を撹乱することができて、味方ユニットが敵の ZOC に妨害されない"
-"ようにできます。"
+"このユニットは、敵を撹乱させる能力があります。同盟ユニットに敵の支配領域への"
+"侵入を可能にさせ、敵の周囲への移動が妨げられなくなります。"
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:297
@@ -16958,11 +17020,11 @@ msgstr ""
 "最後の砂丘の頂上までたどりついたその時、私は彼女がなぜああ言ったのかを理解で"
 "きた。きらめく青が地平線全てを埋め尽くしていた。その光景を目にした私は、畏敬"
 "の念に打たれて思わずひざまずいた。今まで、これほどの量の水が一ヶ所に集まって"
-"いることは見たことがなかった。この時の驚嘆と衝撃は筆舌に尽くしがたい、それほ"
-"どの衝撃であった。私が生まれ育った砂漠では、水が金と同等に貴重であった。そん"
-"な私の視界を何マイルにも及ぶ水が埋めつくしたのだから。それと同時にマーフォー"
-"クが何処から来たのかも理解できた。高い山、途方もない質量の岩々の地下にあるト"
-"ンネル、私もこれまで色々と変わった場所を巡って来たが、この水の世界ほど我々"
+"いるのは見たことがなかった。この時の驚嘆と衝撃は筆舌に尽くしがたい、それほど"
+"の衝撃であった。私が生まれ育った砂漠では、水が金と同等に貴重であった。そんな"
+"私の視界を何マイルにも及ぶ水が埋めつくしたのだから。それと同時にマーフォーク"
+"が何処から来たのかも理解できた。高い山、途方もない質量の岩々の地下にあるトン"
+"ネル、私もこれまで色々と変わった場所を巡って来たが、この水の世界ほど我々に"
 "とって異質なものはなかった。"
 
 #. [part]
