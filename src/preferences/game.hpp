@@ -98,9 +98,6 @@ class acquaintance;
 	bool allow_observers();
 	void set_allow_observers(bool value);
 
-	bool registered_users_only();
-	void set_registered_users_only(bool value);
-
 	bool shuffle_sides();
 	void set_shuffle_sides(bool value);
 

@@ -101,7 +101,6 @@ private:
 	field_bool* time_limit_;
 	field_bool* shuffle_sides_;
 	field_bool* observers_;
-	field_bool* registered_users_;
 	field_bool* strict_sync_;
 	field_bool* private_replay_;
 

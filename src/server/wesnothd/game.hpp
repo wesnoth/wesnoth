@@ -80,7 +80,6 @@ public:
 	}
 
 	bool allow_observers() const;
-	bool registered_users_only() const;
 	bool is_observer(const socket_ptr& player) const;
 	bool is_player(const socket_ptr& player) const;
 

@@ -84,7 +84,6 @@ mp_create_game::mp_create_game(const game_config_view& cfg, saved_game& state, b
 		std::bind(&mp_create_game::update_map_settings, this)))
 	, shuffle_sides_(register_bool("shuffle_sides", true, prefs::shuffle_sides, prefs::set_shuffle_sides))
 	, observers_(register_bool("observers", true, prefs::allow_observers, prefs::set_allow_observers))
-	, registered_users_(register_bool("registered_users", true, prefs::registered_users_only, prefs::set_registered_users_only))
 	, strict_sync_(register_bool("strict_sync", true))
 	, private_replay_(register_bool("private_replay", true))
 	, turns_(register_integer("turn_count", true, prefs::turns, prefs::set_turns))
@@ -311,11 +310,6 @@ void mp_create_game::pre_show(window& win)
 	// Disable certain settings if we're playing a local game.
 	//
 
-	// Don't allow a 'registered users only' game if the host themselves isn't registered.
-	if(local_mode_ || (host_info_ && !host_info_->registered)) {
-		registered_users_->widget_set_enabled(win, false, false);
-	}
-
 	if(local_mode_) {
 		find_widget<text_box>(&win, "game_name", false).set_active(false);
 		find_widget<text_box>(&win, "game_password", false).set_active(false);
@@ -382,7 +376,6 @@ void mp_create_game::pre_show(window& win)
 		UPDATE_ATTRIBUTE(reservoir, to_int);
 		UPDATE_ATTRIBUTE(action_bonus, to_int);
 		UPDATE_ATTRIBUTE(observers, to_bool);
-		UPDATE_ATTRIBUTE(registered_users, to_bool);
 		UPDATE_ATTRIBUTE(strict_sync, to_bool);
 		UPDATE_ATTRIBUTE(private_replay, to_bool);
 		UPDATE_ATTRIBUTE(shuffle_sides, to_bool);
@@ -943,7 +936,6 @@ void mp_create_game::post_show(window& window)
 		config_engine_->set_mp_countdown_action_bonus(action_bonus_->get_widget_value(window));
 
 		config_engine_->set_allow_observers(observers_->get_widget_value(window));
-		config_engine_->set_registered_users_only(registered_users_->get_widget_value(window));
 		config_engine_->set_private_replay(private_replay_->get_widget_value(window));
 		config_engine_->set_oos_debug(strict_sync_->get_widget_value(window));
 		config_engine_->set_shuffle_sides(shuffle_sides_->get_widget_value(window));

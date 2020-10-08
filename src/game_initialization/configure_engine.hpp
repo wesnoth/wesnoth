@@ -116,11 +116,6 @@ public:
 		return parameters_.allow_observers;
 	}
 
-	bool registered_users_only() const
-	{
-		return parameters_.registered_users_only;
-	}
-
 	bool shuffle_sides() const
 	{
 		return parameters_.shuffle_sides;
@@ -220,11 +215,6 @@ public:
 		parameters_.allow_observers = val;
 	}
 
-	void set_registered_users_only(bool val)
-	{
-		parameters_.registered_users_only = val;
-	}
-
 	void set_private_replay(bool val)
 	{
 		parameters_.private_replay = val;
@@ -266,7 +256,6 @@ public:
 	bool fog_game_default() const;
 	bool shroud_game_default() const;
 	bool allow_observers_default() const;
-	bool registered_users_only_default() const;
 	bool shuffle_sides_default() const;
 	mp_game_settings::RANDOM_FACTION_MODE random_faction_mode_default() const;
 	const config& options_default() const;
