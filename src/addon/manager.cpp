@@ -169,7 +169,7 @@ std::map<std::string, std::string> installed_addons_and_versions()
 		if(have_addon_pbl_info(addon_id)) {
 			try {
 				addons[addon_id] = get_addon_pbl_info(addon_id)["version"].str();
-			} catch(const invalid_pbl_exception& e) {
+			} catch(const invalid_pbl_exception&) {
 				addons[addon_id] = "Invalid pbl file, version unknown";
 			}
 		} else if(filesystem::file_exists(get_info_file_path(addon_id))) {
