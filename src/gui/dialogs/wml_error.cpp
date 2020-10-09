@@ -171,6 +171,39 @@ namespace dialogs
 
 REGISTER_DIALOG(wml_error)
 
+static void display_error_in_error(const std::string& title, const std::string& original_error, const std::string& error_in_error)
+{
+	std::string message = original_error;
+	message += "\n\n";
+	message += _("Additionally, the following error was encountered while handling this error:");
+	message += "\n\n";
+	message += error_in_error;
+	message += "\n\n";
+	message += _("Due to this subsequent error, the game will now exit.");
+	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, title.c_str(), message.c_str(), nullptr);
+}
+
+void wml_error::display(const std::string& summary,
+					const std::string& post_summary,
+					const std::vector<std::string>& files,
+					const std::string& details)
+{
+	bool have_error = false;
+	try {
+		wml_error error_dialog(summary, post_summary, files, details);
+		try {
+			error_dialog.show();
+		} catch(std::exception& error) {
+			have_error = true;
+			display_error_in_error("WML Error", error_dialog.report_, error.what());
+			throw;
+		}
+	} catch(std::exception& error) {
+		if(!have_error) display_error_in_error("WML Error", summary, error.what());
+		throw;
+	}
+}
+
 wml_error::wml_error(const std::string& summary,
 					   const std::string& post_summary,
 					   const std::vector<std::string>& files,

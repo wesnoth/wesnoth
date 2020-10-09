@@ -43,10 +43,7 @@ public:
 	static void display(const std::string& summary,
 						const std::string& post_summary,
 						const std::vector<std::string>& files,
-						const std::string& details)
-	{
-		wml_error(summary, post_summary, files, details).show();
-	}
+						const std::string& details);
 
 	/** The display function; see @ref modal_dialog for more information. */
 	static void display(const std::string& summary,
