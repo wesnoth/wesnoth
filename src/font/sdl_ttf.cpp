@@ -21,9 +21,9 @@
 #include "font/text_surface.hpp"
 
 #include "filesystem.hpp"
+#include "font/marked-up_text.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "font/marked-up_text.hpp"
 #include "preferences/general.hpp"
 #include "tooltips.hpp"
 
@@ -43,122 +43,82 @@ static lg::log_domain log_font("font");
 #define WRN_FT LOG_STREAM(warn, log_font)
 #define ERR_FT LOG_STREAM(err, log_font)
 
-namespace font {
-
-/***
- * Caches used to speed up font rendering
- */
-
+namespace font
+{
+namespace
+{
 // Record stored in the font table.
 // If the record for font_id (FOO, Bold + Underline) is a record (BAR, Bold),
 // it means that BAR is a Bold-styled version of FOO which we shipped with the
 // game, and now SDL_TTF should be used to style BAR as underline for the final results.
 struct ttf_record
 {
-	TTF_Font* font;
+	std::shared_ptr<TTF_Font> font;
 	int style;
 };
-
 static std::map<font_id, ttf_record> font_table;
+
+// The indices in these vectors correspond to the font_id.subset values in font_table.
 static std::vector<std::string> font_names;
 static std::vector<std::string> bold_names;
 static std::vector<std::string> italic_names;
 
-struct char_block_map
+struct family_record
 {
-	char_block_map()
-		: cbmap()
-	{
-	}
+	std::shared_ptr<const TTF_Font> font;
+	subset_id subset;
+	std::string name;
+};
+/**
+ * Used for implementing find_font_containing, the elements are in the same order as the arguments
+ * to set_font_list(). The fonts here are a subset of those in font_table, because
+ * find_font_containing doesn't need size-specific instances of a font.
+ *
+ * In most locales, the subset_ids will match the indices into this vector.  This is only a
+ * coincidence, and it won't be true (at the time of writing) in Chinese.
+ *
+ * \todo Are all variants of a font guaranteed to have exactly the same glyphs? For example, might
+ * an italic variant only contain the glyphs which are major improvements on an automatic skew of
+ * the non-italic version?
+ */
+std::vector<family_record> family_table;
 
-	typedef std::pair<int, subset_id> block_t;
-	typedef std::map<int, block_t> cbmap_t;
-	cbmap_t cbmap;
-	/** Associates not-associated parts of a range with a new font. */
-	void insert(int first, int last, subset_id id)
-	{
-		if (first > last) return;
-		cbmap_t::iterator i = cbmap.lower_bound(first);
-		// At this point, either first <= i->first or i is past the end.
-		if (i != cbmap.begin()) {
-			cbmap_t::iterator j = i;
-			--j;
-			if (first <= j->second.first /* prev.last */) {
-				insert(j->second.first + 1, last, id);
-				return;
-			}
+const auto no_font_found = family_record{nullptr, -1, ""};
+/**
+ * Given a unicode code point, returns the first (using the order passed to set_font_list) font
+ * that includes that code point. Returns no_font_found if none of the known fonts contain this value.
+ */
+const family_record& find_font_containing(int ch)
+{
+	for(const auto& i : family_table) {
+		if(TTF_GlyphIsProvided(i.font.get(), ch)) {
+			return i;
 		}
-		if (i != cbmap.end()) {
-			if (/* next.first */ i->first <= last) {
-				insert(first, i->first - 1, id);
-				return;
-			}
-		}
-		cbmap.emplace(first, block_t(last, id));
 	}
-	/**
-	 * Compresses map by merging consecutive ranges with the same font, even
-	 * if there is some unassociated ranges in-between.
-	 */
-	void compress()
+	LOG_FT << "Glyph " << ch << " not provided by any font\n";
+	return no_font_found;
+}
+
+// cache sizes of small text
+typedef std::map<std::string, SDL_Rect> line_size_cache_map;
+
+// map of styles -> sizes -> cache
+static std::map<int, std::map<int, line_size_cache_map>> line_size_cache;
+
+/**
+ * Destructor for using std::unique_ptr or std::shared_ptr as an RAII holder for a TTF_Font.
+ */
+struct font_deleter
+{
+	void operator()(TTF_Font* font)
 	{
-		LOG_FT << "Font map size before compression: " << cbmap.size() << " ranges\n";
-		cbmap_t::iterator i = cbmap.begin(), e = cbmap.end();
-		while (i != e) {
-			cbmap_t::iterator j = i;
-			++j;
-			if (j == e || i->second.second != j->second.second) {
-				i = j;
-				continue;
-			}
-			i->second.first = j->second.first;
-			cbmap.erase(j);
-		}
-		LOG_FT << "Font map size after compression: " << cbmap.size() << " ranges\n";
-	}
-	subset_id get_id(int ch)
-	{
-		cbmap_t::iterator i = cbmap.upper_bound(ch);
-		// At this point, either ch < i->first or i is past the end.
-		if (i != cbmap.begin()) {
-			--i;
-			if (ch <= i->second.first /* prev.last */)
-				return i->second.second;
-		}
-		return -1;
+		if(font != nullptr)
+			TTF_CloseFont(font);
 	}
 };
 
-static char_block_map char_blocks;
-
-//cache sizes of small text
-typedef std::map<std::string,SDL_Rect> line_size_cache_map;
-
-//map of styles -> sizes -> cache
-static std::map<int,std::map<int,line_size_cache_map>> line_size_cache;
-
-typedef std::map<std::pair<std::string, int>, TTF_Font*> open_font_cache;
-open_font_cache open_fonts;
-
-static TTF_Font* open_font_impl(const std::string & , int);
-
-// A wrapper which caches the results of open_font_impl.
-// Note that clear_fonts() is responsible to clean up all of these font pointers,
-// so to avoid memory leaks fonts should only be opened from this function.
-static TTF_Font* open_font(const std::string& fname, int size)
+std::shared_ptr<TTF_Font> open_font(const std::string& fname, int size)
 {
-	const std::pair<std::string, int> key = std::make_pair(fname, size);
-	const open_font_cache::iterator it = open_fonts.find(key);
-	if (it != open_fonts.end()) {
-		return it->second;
-	}
-
-	TTF_Font* result = open_font_impl(fname, size);
-	open_fonts.emplace(key, result);
-	return result;
-}
-
-static TTF_Font* open_font_impl(const std::string & fname, int size) {
 	std::string name;
 	if(!game_config::path.empty()) {
 		name = game_config::path + "/fonts/" + fname;
@@ -185,17 +145,20 @@ static TTF_Font* open_font_impl(const std::string & fname, int size) {
 	}
 
 	filesystem::rwops_ptr rwops = filesystem::make_read_RWops(name);
-	TTF_Font* font = TTF_OpenFontRW(rwops.release(), true, size); // SDL takes ownership of rwops
+	std::unique_ptr<TTF_Font, font_deleter> font;
+	font.reset(TTF_OpenFontRW(rwops.release(), true, size)); // SDL takes ownership of rwops
 	if(font == nullptr) {
-		ERR_FT << "Failed opening font: '" <<  fname << "'\n";
+		ERR_FT << "Failed opening font: '" << fname << "'\n";
 		ERR_FT << "TTF_OpenFont: " << TTF_GetError() << std::endl;
 		return nullptr;
 	}
 
-	DBG_FT << "Opened a font: " << fname << std::endl;
+	DBG_FT << "Opened a font: " << fname << ", in size " << size << std::endl;
 
 	return font;
 }
+
+} // anonymous namespace
 
 // Gets an appropriately configured TTF Font, for this font size and style.
 // Loads fonts if necessary. For styled fonts, we search for a ``shipped''
@@ -204,15 +167,10 @@ static TTF_Font* open_font_impl(const std::string & fname, int size) {
 // rapidly correct the remaining styling using SDL_TTF.
 //
 // Uses the font table for caching.
-TTF_Font* sdl_ttf::get_font(font_id id)
+std::shared_ptr<TTF_Font> sdl_ttf::get_font(font_id id)
 {
 	const auto it = font_table.find(id);
-	if(it != font_table.end()) {
-		if (it->second.font != nullptr) {
-			// If we found a valid record, use SDL_TTF to add in the difference
-			// between its intrinsic style and the desired style.
-			TTF_SetFontStyle(it->second.font, it->second.style ^ id.style);
-		}
+	if(it != font_table.end() && it->second.font != nullptr) {
 		return it->second.font;
 	}
 
@@ -223,38 +181,42 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 	}
 
 	// Favor to use the shipped Italic font over bold if both are present and are needed.
-	if ((id.style & TTF_STYLE_ITALIC) && italic_names[id.subset].size()) {
-		if (TTF_Font* font = open_font(italic_names[id.subset], id.size)) {
-			ttf_record rec {font, TTF_STYLE_ITALIC};
+	if((id.style & TTF_STYLE_ITALIC) && italic_names[id.subset].size()) {
+		if(auto font = open_font(italic_names[id.subset], id.size)) {
+			ttf_record rec{font, TTF_STYLE_ITALIC};
+			// The next line adds bold if needed
+			TTF_SetFontStyle(font.get(), id.style ^ TTF_STYLE_ITALIC);
 			font_table.emplace(id, rec);
-			return sdl_ttf::get_font(id);
+			return font;
 		}
 	}
 
 	// Now see if the shipped Bold font is useful and available.
-	if ((id.style & TTF_STYLE_BOLD) && bold_names[id.subset].size()) {
-		if (TTF_Font* font = open_font(bold_names[id.subset], id.size)) {
-			ttf_record rec {font, TTF_STYLE_BOLD};
+	if((id.style & TTF_STYLE_BOLD) && bold_names[id.subset].size()) {
+		if(auto font = open_font(bold_names[id.subset], id.size)) {
+			ttf_record rec{font, TTF_STYLE_BOLD};
+			// The next line adds italic if needed
+			TTF_SetFontStyle(font.get(), id.style ^ TTF_STYLE_BOLD);
 			font_table.emplace(id, rec);
-			return sdl_ttf::get_font(id);
+			return font;
 		}
 	}
 
 	// Try just to use the basic version of the font then.
-	if (font_names[id.subset].size()) {
-		if(TTF_Font* font = open_font(font_names[id.subset], id.size)) {
-			ttf_record rec {font, TTF_STYLE_NORMAL};
+	if(font_names[id.subset].size()) {
+		if(auto font = open_font(font_names[id.subset], id.size)) {
+			ttf_record rec{font, TTF_STYLE_NORMAL};
+			TTF_SetFontStyle(font.get(), id.style);
 			font_table.emplace(id, rec);
-			return sdl_ttf::get_font(id);
+			return font;
 		}
 	}
 
 	// Failed to find a font.
-	ttf_record rec {nullptr, TTF_STYLE_NORMAL};
+	ttf_record rec{nullptr, TTF_STYLE_NORMAL};
 	font_table.emplace(id, rec);
 	return nullptr;
 }
-
 
 /***
  * Interface to SDL_TTF
@@ -407,10 +369,10 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 int get_max_height(int size)
 {
 	// Only returns the maximal size of the first font
-	TTF_Font* const font = sdl_ttf::get_font(font_id(0, size));
+	const auto font = sdl_ttf::get_font(font_id(0, size));
 	if(font == nullptr)
 		return 0;
-	return TTF_FontHeight(font);
+	return TTF_FontHeight(font.get());
 }
 
 int line_width(const std::string& line, int font_size, int style)
@@ -471,20 +433,12 @@ std::string make_text_ellipsis(const std::string &text, int font_size,
 	return text; // Should not happen
 }
 
-void cache_mode(CACHE mode)
-{
-	if(mode == CACHE_LOBBY) {
-		text_cache::resize(1000);
-	} else {
-		text_cache::resize(50);
-	}
-}
-
 /***
  * Initialize and destruction
  */
 
-sdl_ttf::sdl_ttf() {
+sdl_ttf::sdl_ttf()
+{
 	const int res = TTF_Init();
 	if(res == -1) {
 		ERR_FT << "Could not initialize SDL_TTF" << std::endl;
@@ -494,94 +448,139 @@ sdl_ttf::sdl_ttf() {
 	}
 }
 
-static void clear_fonts() {
-	for(const auto & i : open_fonts) {
-		TTF_CloseFont(i.second);
-	}
-
-	open_fonts.clear();
-
+static void clear_fonts()
+{
+	// Ensure that the shared_ptr<TTF_Font>s' destructors run before TTF_Quit().
 	font_table.clear();
+	family_table.clear();
 
 	font_names.clear();
 	bold_names.clear();
 	italic_names.clear();
 
-	char_blocks.cbmap.clear();
 	line_size_cache.clear();
 }
 
-sdl_ttf::~sdl_ttf() {
+sdl_ttf::~sdl_ttf()
+{
 	clear_fonts();
 	TTF_Quit();
 }
 
-//sets the font list to be used.
+// sets the font list to be used.
 void sdl_ttf::set_font_list(const std::vector<subset_descriptor>& fontlist)
 {
+	// Wesnoth's startup sequence usually loads the same set of fonts twice.
+	// See if we can use the already-loaded fonts.
+	if(!font_names.empty()) {
+		std::vector<family_record> reordered_family_table;
+		bool found_all_fonts = true;
+		for(const auto& f : fontlist) {
+			// Ignore fonts if the font file doesn't exist - this matches the behavior of when we
+			// can't reuse the already-loaded fonts.
+			if(!check_font_file(f.name))
+				continue;
+			const auto& old_record = std::find_if(
+				family_table.cbegin(), family_table.cend(), [&f](family_record x) { return f.name == x.name; });
+			if(old_record == family_table.cend()) {
+				found_all_fonts = false;
+				break;
+			}
+			reordered_family_table.emplace_back(*old_record);
+		}
+		if(found_all_fonts) {
+			std::swap(family_table, reordered_family_table);
+			DBG_FT << "Reordered the font list, the order is now:\n";
+			for(const auto& x : family_table) {
+				DBG_FT << "[" << x.subset << "]:\t\tbase:\t'" << x.name << "'\n";
+			}
+			return;
+		}
+	}
+
+	// The existing fonts weren't sufficient, or this is the first time that this function has been
+	// called. Load all the fonts from scratch.
 	clear_fonts();
 
-	for(const auto & f : fontlist) {
-		if (!check_font_file(f.name)) continue;
+	// To access TTF_GlyphIsProvided, we need to create instances of each font. Choose a size that
+	// the GUI will want to use.
+	const auto default_size = preferences::font_scaled(font::SIZE_NORMAL);
+
+	for(const auto& f : fontlist) {
+		if(!check_font_file(f.name))
+			continue;
 		// Insert fonts only if the font file exists
 		const subset_id subset = font_names.size();
 		font_names.push_back(f.name);
 
-		if (f.bold_name && check_font_file(*f.bold_name)) {
+		if(f.bold_name && check_font_file(*f.bold_name)) {
 			bold_names.push_back(*f.bold_name);
 		} else {
 			bold_names.emplace_back();
 		}
 
-		if (f.italic_name && check_font_file(*f.italic_name)) {
+		if(f.italic_name && check_font_file(*f.italic_name)) {
 			italic_names.push_back(*f.italic_name);
 		} else {
 			italic_names.emplace_back();
 		}
 
-		for (const subset_descriptor::range &cp_range : f.present_codepoints) {
-			char_blocks.insert(cp_range.first, cp_range.second, subset);
-		}
+		auto font = sdl_ttf::get_font(font_id{subset, default_size});
+		family_table.push_back(family_record{std::move(font), subset, f.name});
 	}
-	char_blocks.compress();
 
 	assert(font_names.size() == bold_names.size());
 	assert(font_names.size() == italic_names.size());
 
 	DBG_FT << "Set the font list. The styled font families are:\n";
 
-	for (std::size_t i = 0; i < font_names.size(); ++i) {
-		DBG_FT << "[" << i << "]:\t\tbase:\t'" << font_names[i] << "'\tbold:\t'" << bold_names[i] << "'\titalic:\t'" << italic_names[i] << "'\n";
+	for(std::size_t i = 0; i < font_names.size(); ++i) {
+		DBG_FT << "[" << i << "]:\t\tbase:\t'" << font_names[i] << "'\tbold:\t'" << bold_names[i] << "'\titalic:\t'"
+			   << italic_names[i] << "'\n";
 	}
 }
 
-//Splits the UTF-8 text into text_chunks using the same font.
-std::vector<text_chunk> sdl_ttf::split_text(const std::string& utf8_text) {
-	text_chunk current_chunk(0);
+/**
+ * Splits the UTF-8 text into text_chunks using the same font.
+ *
+ * This uses a greedy-match - once we've found the start of a chunk,
+ * include as many characters as we can in the same chunk.
+ *
+ * If we've got a fallback font that contains all characters, and a
+ * preferred font that will only contains some of them, this means that
+ * we minimize the number of times that we switch from one font to the
+ * other - once we've had to use the fallback, keep using it.
+ *
+ * This also means that combining characters such as U+308 or U+FE00 are
+ * kept with the character that they should be modifying.
+ */
+std::vector<text_chunk> sdl_ttf::split_text(const std::string& utf8_text)
+{
 	std::vector<text_chunk> chunks;
 
-	if (utf8_text.empty())
+	if(utf8_text.empty())
 		return chunks;
 
 	try {
-		utf8::iterator ch(utf8_text);
-		int sub = char_blocks.get_id(*ch);
-		if (sub >= 0) current_chunk.subset = sub;
-		for(utf8::iterator end = utf8::iterator::end(utf8_text); ch != end; ++ch)
-		{
-			sub = char_blocks.get_id(*ch);
-			if (sub >= 0 && sub != current_chunk.subset) {
-				chunks.push_back(current_chunk);
-				current_chunk.text.clear();
-				current_chunk.subset = sub;
+		const auto end = utf8::iterator::end(utf8_text);
+		auto chunk_start = utf8::iterator(utf8_text);
+		while(chunk_start != end) {
+			auto& family = find_font_containing(*chunk_start);
+			if(family.subset >= 0) {
+				auto ch = chunk_start;
+				auto last_in_chunk = chunk_start;
+				while(ch != end && TTF_GlyphIsProvided(family.font.get(), *ch)) {
+					last_in_chunk = ch;
+					++ch;
+				}
+				chunks.emplace_back(
+					family.subset, std::string{chunk_start.substr().first, last_in_chunk.substr().second});
+				chunk_start = ch;
+			} else {
+				++chunk_start;
 			}
-			current_chunk.text.append(ch.substr().first, ch.substr().second);
 		}
-		if (!current_chunk.text.empty()) {
-			chunks.push_back(current_chunk);
-		}
-	}
-	catch(utf8::invalid_utf8_exception&) {
+	} catch(utf8::invalid_utf8_exception&) {
 		WRN_FT << "Invalid UTF-8 string: \"" << utf8_text << "\"" << std::endl;
 	}
 	return chunks;
