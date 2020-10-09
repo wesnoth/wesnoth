@@ -425,7 +425,7 @@ lua_kernel_base::lua_kernel_base()
 		lua_setfield(L, -3, function);
 	}
 	lua_pop(L, 1);
-	
+
 	// Delete dofile and loadfile.
 	lua_pushnil(L);
 	lua_setglobal(L, "dofile");

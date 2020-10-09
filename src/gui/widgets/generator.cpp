@@ -1027,7 +1027,7 @@ namespace select_action
 void selection::select(grid& grid, const bool select)
 {
 	selectable_item* selectable = dynamic_cast<selectable_item*>(grid.get_widget(0, 0));
-	//the check in selection::init is not strict enouth to guaranetee this. 
+	//the check in selection::init is not strict enouth to guaranetee this.
 	VALIDATE(selectable, "Only toggle buttons and panels are allowed as the cells of a list definition.");
 
 	selectable->set_value(select);

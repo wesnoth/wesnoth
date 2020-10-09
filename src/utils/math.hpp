@@ -54,7 +54,7 @@ inline int bounded_add(int base, int increment, int max_sum, int min_sum = 0)
 }
 
 
-/** 
+/**
  * @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
  */
 template<typename T>

@@ -479,12 +479,12 @@ int impl_widget_get(lua_State* L)
 {
 	gui2::widget& w = luaW_checkwidget(L, 1);
 	if(lua_isinteger(L, 2)) {
-		
+
 		if(auto pwidget = find_child_by_index(w, luaL_checkinteger(L, 2))) {
 			luaW_pushwidget(L, *pwidget);
 			return 1;
 		}
-		
+
 	}
 	utils::string_view str = lua_check<utils::string_view>(L, 2);
 

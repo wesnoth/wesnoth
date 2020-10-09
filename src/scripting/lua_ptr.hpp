@@ -33,7 +33,7 @@ class lua_ptr
 {
 public:
    lua_ptr(enable_lua_ptr<T>& o) : self_(o.self_) { }
-   T* get_ptr() 
+   T* get_ptr()
    {
       if(auto pp = self_.lock()) {
          return *pp;

@@ -110,10 +110,10 @@ DEFINE_WFL_FUNCTION(defense_on, 2, 2)
 
 	auto u_call = u.try_convert<unit_callable>();
 	auto u_type = u.try_convert<unit_type_callable>();
-	
+
 	const auto& tdata = resources::gameboard->map().tdata();
 	t_translation::terrain_code ter;
-	
+
 	if(loc_var.is_string()) {
 		ter = t_translation::read_terrain_code(loc_var.as_string());
 	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
@@ -159,10 +159,10 @@ DEFINE_WFL_FUNCTION(chance_to_hit, 2, 2)
 
 	auto u_call = u.try_convert<unit_callable>();
 	auto u_type = u.try_convert<unit_type_callable>();
-	
+
 	const auto& tdata = resources::gameboard->map().tdata();
 	t_translation::terrain_code ter;
-	
+
 	if(loc_var.is_string()) {
 		ter = t_translation::read_terrain_code(loc_var.as_string());
 	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
@@ -208,10 +208,10 @@ DEFINE_WFL_FUNCTION(movement_cost, 2, 2)
 	//we can pass to this function either unit_callable or unit_type callable
 	auto u_call = u.try_convert<unit_callable>();
 	auto u_type = u.try_convert<unit_type_callable>();
-	
+
 	const auto& tdata = resources::gameboard->map().tdata();
 	t_translation::terrain_code ter;
-	
+
 	if(loc_var.is_string()) {
 		ter = t_translation::read_terrain_code(loc_var.as_string());
 	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
@@ -257,10 +257,10 @@ DEFINE_WFL_FUNCTION(vision_cost, 2, 2)
 	//we can pass to this function either unit_callable or unit_type callable
 	auto u_call = u.try_convert<unit_callable>();
 	auto u_type = u.try_convert<unit_type_callable>();
-	
+
 	const auto& tdata = resources::gameboard->map().tdata();
 	t_translation::terrain_code ter;
-	
+
 	if(loc_var.is_string()) {
 		ter = t_translation::read_terrain_code(loc_var.as_string());
 	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
@@ -306,10 +306,10 @@ DEFINE_WFL_FUNCTION(jamming_cost, 2, 2)
 	//we can pass to this function either unit_callable or unit_type callable
 	auto u_call = u.try_convert<unit_callable>();
 	auto u_type = u.try_convert<unit_type_callable>();
-	
+
 	const auto& tdata = resources::gameboard->map().tdata();
 	t_translation::terrain_code ter;
-	
+
 	if(loc_var.is_string()) {
 		ter = t_translation::read_terrain_code(loc_var.as_string());
 	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {

@@ -125,7 +125,7 @@ private:
 #endif
 
 	std::string uuid_;
-	
+
 	const std::string config_file_;
 	config cfg_;
 

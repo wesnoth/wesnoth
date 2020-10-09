@@ -26,7 +26,7 @@ class ban_check : public rs_base
         int get_ban_duration();
         int get_user_id();
         std::string get_email();
-    
+
     private:
         long ban_type;
         int ban_duration;

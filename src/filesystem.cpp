@@ -869,7 +869,7 @@ std::vector<other_version_dir> find_other_version_saves_dirs()
 #elif defined(__APPLE__)
 		path = get_user_data_path().parent_path() / ("Wesnoth_" + suffix) / "saves";
 #endif
-		
+
 		if(bfs::exists(path)) {
 			result.emplace_back(suffix, path.string());
 		}

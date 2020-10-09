@@ -277,7 +277,7 @@ bool save_info_less_time::operator()(const save_info& a, const save_info& b) con
 	}
 }
 
-static filesystem::scoped_istream find_save_file(const std::string& dir, 
+static filesystem::scoped_istream find_save_file(const std::string& dir,
 		const std::string& name, const std::vector<std::string>& suffixes)
 {
 	for(const std::string& suf : suffixes) {

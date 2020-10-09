@@ -60,7 +60,7 @@ public:
 	{
 		// empty
 	}
-	
+
 	lua_object(const T& init)
 		: value_(std::make_shared<T>(init))
 	{
@@ -76,7 +76,7 @@ public:
 	{
 		this->value_ = to_type(L, lua_absindex(L, n));
 	}
-	
+
 	void push(lua_State* L)
 	{
 		from_type(L, this->value_);
@@ -89,7 +89,7 @@ protected:
 	{
 		return std::shared_ptr<T>();
 	}
-	
+
 	// A group of functions that deal with the translations of values back to Lua
 	void from_type(lua_State* L, std::shared_ptr<T>)
 	{

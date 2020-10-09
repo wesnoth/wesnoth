@@ -442,7 +442,7 @@ std::string register_tstring_metatable(lua_State *L)
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
-	
+
 	lua_createtable(L, 0, 1);
 	luaW_getglobal(L, "string", "format");
 	lua_setfield(L, -2, "format");

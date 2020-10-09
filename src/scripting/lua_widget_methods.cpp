@@ -386,7 +386,7 @@ static int intf_add_item_of_type(lua_State* L)
  */
 static int intf_add_dialog_item(lua_State* L)
 {
-	
+
 	gui2::widget* w = &luaW_checkwidget(L, 1);
 	gui2::widget* res = nullptr;
 	static const std::map<std::string, string_map> data;

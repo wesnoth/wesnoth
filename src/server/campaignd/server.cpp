@@ -674,17 +674,17 @@ void server::handle_request_campaign(const server::request& req)
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 		return;
 	}
-	
+
 	const int size = filesystem::file_size(campaign["filename"]);
 
 	if(size < 0) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
 		return;
 	}
-	
+
 	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << size/1024 << "KiB\n";
 	async_send_file(req.sock, campaign["filename"], std::bind(&server::handle_new_client, this, _1), null_handler);
-	
+
 	// Clients doing upgrades or some other specific thing shouldn't bump
 	// the downloads count. Default to true for compatibility with old
 	// clients that won't tell us what they are trying to do.

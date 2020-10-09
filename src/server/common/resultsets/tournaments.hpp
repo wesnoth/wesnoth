@@ -31,7 +31,7 @@ class tournaments : public rs_base
     public:
         void read(mariadb::result_set_ref rslt);
         std::string str();
-    
+
     private:
         std::vector<data> rows;
 };

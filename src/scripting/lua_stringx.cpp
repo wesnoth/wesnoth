@@ -352,7 +352,7 @@ int luaW_open(lua_State* L) {
 	lua_getglobal(L, "string");
 	lua_setfield(L, -2, "__index");
 	lua_setmetatable(L, -2);
-	
+
 	// Set the metatable of strings to index the stringx module instead of the string module
 	lua_pushliteral(L, "");
 	lua_getmetatable(L, -1);
@@ -360,7 +360,7 @@ int luaW_open(lua_State* L) {
 	lua_setfield(L, -2, "__index");
 	lua_setmetatable(L, -2);
 	lua_pop(L, 1);
-	
+
 	// Override string.format so it can accept a t_string
 	lua_getglobal(L, "string");
 	lua_getfield(L, -1, "format");

@@ -260,7 +260,7 @@ static int impl_side_variables_get(lua_State *L)
 	}
 	lua_rawgeti(L, 1, 1);
 	const team& side = luaW_checkteam(L, -1);
-	
+
 	char const *m = luaL_checkstring(L, 2);
 	return_cfgref_attrib("__cfg", side.variables());
 
@@ -281,7 +281,7 @@ static int impl_side_variables_set(lua_State *L)
 	}
 	lua_rawgeti(L, 1, 1);
 	team& side = luaW_checkteam(L, -1);
-	
+
 	char const *m = luaL_checkstring(L, 2);
 	if(strcmp(m, "__cfg") == 0) {
 		side.variables() = luaW_checkconfig(L, 3);
@@ -307,7 +307,7 @@ namespace lua_team {
 		std::ostringstream cmd_out;
 
 		cmd_out << "Adding getside metatable...\n";
-		
+
 		luaL_newmetatable(L, Team);
 
 		static luaL_Reg const callbacks[] {
@@ -332,7 +332,7 @@ namespace lua_team {
 		lua_setfield(L, -2, "__newindex");
 		lua_pushstring(L, "side variables");
 		lua_setfield(L, -2, "__metatable");
-		
+
 		return cmd_out.str();
 	}
 }

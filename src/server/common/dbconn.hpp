@@ -45,7 +45,7 @@ class dbconn
 		void insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
 		void insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name, const std::string& modification_source, const std::string& modification_version);
 		void set_oos_flag(const std::string& uuid, int game_id);
-	
+
 	private:
 		mariadb::account_ref account_;
 		mariadb::connection_ref connection_;

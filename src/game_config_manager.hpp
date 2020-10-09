@@ -78,7 +78,7 @@ private:
 
 	std::map<std::string, config> addon_cfgs_;
 	boost::optional<std::set<std::string>> active_addons_;
-	
+
 	preproc_map old_defines_map_;
 
 	filesystem::binary_paths_manager paths_manager_;

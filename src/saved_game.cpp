@@ -229,7 +229,7 @@ void saved_game::set_defaults()
 		bool require_campaign = campaign["require_campaign"].to_bool(true);
 		starting_point_["require_scenario"] = require_campaign;
 	}
-	
+
 	for(config& side : starting_point_.child_range("side")) {
 		// Set save_id default value directly after loading to its default to prevent different default behaviour in
 		// mp_connect code and sp code.
@@ -470,7 +470,7 @@ void saved_game::expand_map_file(config& scenario)
 		else {
 			//we have an plain map_data file
 			scenario["map_data"]= map_data;
-		}	
+		}
 	}
 }
 

@@ -2415,7 +2415,7 @@ static int intf_unit_resistance(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 	bool a = false;
 	map_location loc = u.get_location();
-	
+
 	if(lua_isboolean(L, 3)) {
 		a = luaW_toboolean(L, 3);
 		if(!lua_isnoneornil(L, 4)) {
@@ -4294,7 +4294,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	}
 
 	lua_setglobal(L, "wesnoth");
-	
+
 	lua_getglobal(L, "gui");
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_gamestate_inspector>);
 	lua_setfield(L, -2, "show_inspector");
@@ -4337,13 +4337,13 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "current");
 	lua_pop(L, 1);
-	
+
 	// Add tovconfig to the WML module
 	lua_getglobal(L, "wml");
 	lua_pushcfunction(L, &lua_common::intf_tovconfig);
 	lua_setfield(L, -2, "tovconfig");
 	lua_pop(L, 1);
-	
+
 	// Create the units module
 	cmd_log_ << "Adding units module...\n";
 	static luaL_Reg const unit_callbacks[] {
@@ -4356,14 +4356,14 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"to_map", &dispatch<&game_lua_kernel::intf_put_unit>},
 		{"to_recall", &dispatch<&game_lua_kernel::intf_put_recall_unit>},
 		{"transform", &intf_transform_unit},
-		
+
 		{"ability", &dispatch<&game_lua_kernel::intf_unit_ability>},
 		{"defense_on", &intf_unit_defense},
 		{"jamming_on", &intf_unit_jamming_cost},
 		{"movement_on", &intf_unit_movement_cost},
 		{"resistance_against", intf_unit_resistance},
 		{"vision_on", &intf_unit_vision_cost},
-		
+
 		{"add_modification", &intf_add_modification},
 		{"remove_modifications", &intf_remove_modifications},
 		// Static functions
@@ -4379,7 +4379,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	luaL_setfuncs(L, unit_callbacks, 0);
 	lua_setfield(L, -2, "units");
 	lua_pop(L, 1);
-	
+
 	// Create sides module
 	cmd_log_ << "Adding sides module...\n";
 	static luaL_Reg const side_callbacks[] {
@@ -4400,14 +4400,14 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"change_ai_component", std::bind(intf_modify_ai, _1, "change")},
 		{nullptr, nullptr}
 	};
-	
+
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	luaL_setfuncs(L, side_callbacks, 0);
 	lua_cpp::set_functions(L, cpp_side_callbacks);
 	lua_setfield(L, -2, "sides");
 	lua_pop(L, 1);
-	
+
 	// Create the interface module
 	cmd_log_ << "Adding interface module...\n";
 	static luaL_Reg const intf_callbacks[] {
@@ -4864,7 +4864,7 @@ bool game_lua_kernel::run_filter(char const *name, const map_location& l)
 */
 bool game_lua_kernel::run_filter(char const *name, const team& t)
 {
-	//TODO: instead of passing the lua team object we coudl also jsut pass its 
+	//TODO: instead of passing the lua team object we coudl also jsut pass its
 	//      number. then we wouldn't need this const cast.
 	luaW_pushteam(mState, const_cast<team&>(t));
 	return run_filter(name, 1);

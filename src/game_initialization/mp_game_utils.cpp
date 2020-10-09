@@ -47,7 +47,7 @@ static void add_multiplayer_classification(config& multiplayer, saved_game& stat
 	multiplayer["mp_campaign_name"] = state.classification().campaign_name;
 	multiplayer["mp_era"] = state.classification().era_id;
 	multiplayer["active_mods"] = utils::join(state.classification().active_mods, ",");
-	
+
 }
 
 config initial_level_config(saved_game& state)

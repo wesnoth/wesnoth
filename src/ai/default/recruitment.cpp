@@ -655,7 +655,7 @@ void recruitment::compare_cost_maps_and_update_important_hexes(
 				MAP_BORDER_THICKNESS * average_local_cost_[loc]) {
 			double border_movecost = (my_cost_average + enemy_cost_average) / 2;
 			important_hexes_candidates[loc] = border_movecost;
-		
+
 			if (border_movecost < smallest_border_movecost) {
 				smallest_border_movecost = border_movecost;
 			}

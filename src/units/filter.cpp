@@ -433,7 +433,7 @@ void unit_filter_compound::fill(vconfig cfg)
 				return gender == args.u.gender();
 			}
 		);
-		
+
 		create_attribute(literal["upkeep"],
 			[](const config::attribute_value& c) -> unit::upkeep_t
 			{

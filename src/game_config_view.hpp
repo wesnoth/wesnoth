@@ -44,7 +44,7 @@ public:
 
 	game_config_view merged_children_view(config_key_type key) const;
 
-   
+
    config_array_view& data()
    {
       return cfgs_;

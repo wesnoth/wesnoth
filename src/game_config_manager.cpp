@@ -149,8 +149,8 @@ void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG f
 			out << "\n Everything:";
 		}
 		out << "\n";
-	} 
-	
+	}
+
 
 	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",
 		game_config::debug || game_config::mp_debug);
@@ -512,7 +512,7 @@ void game_config_manager::load_addons_cfg()
 							{1, 17, 0},
 							_("Use [modify_unit_type]\n") + modify_unit_type.debug()  + "\n [/modify_unit_type] instead in [campaign]"
 						);
-	
+
 						advancefroms.add_child("modify_unit_type", modify_unit_type);
 					}
 					unit_type.remove_children("advancefrom", [](const config&){return true;});
@@ -726,7 +726,7 @@ void game_config_manager::set_enabled_addon(std::set<std::string> addon_ids)
 }
 void game_config_manager::set_enabled_addon_all()
 {
-	
+
 	auto& vec = game_config_view_.data();
 	vec.clear();
 	vec.push_back(game_config_);

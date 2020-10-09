@@ -32,7 +32,7 @@ server_info::server_info(const std::string& info, const std::string& announcemen
 : server_information_(info)
 , announcements_(announcements)
 {
-   
+
 }
 
 void server_info::pre_show(window& window)

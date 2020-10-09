@@ -253,7 +253,7 @@ bool side_filter::match_internal(const team &t) const
 			}
 		}
 	}
-	
+
 
 	return true;
 }

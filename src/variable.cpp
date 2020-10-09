@@ -49,7 +49,7 @@ namespace
 
 		return as_nonempty_range_default.child_range("_");
 	}
-	
+
 	struct : public variable_set
 	{
 		config::attribute_value get_variable_const(const std::string&) const override
