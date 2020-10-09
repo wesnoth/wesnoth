@@ -484,16 +484,6 @@ void set_allow_observers(bool value)
 	preferences::set("allow_observers", value);
 }
 
-bool registered_users_only()
-{
-	return preferences::get("registered_users_only", false);
-}
-
-void set_registered_users_only(bool value)
-{
-	preferences::set("registered_users_only", value);
-}
-
 bool shuffle_sides()
 {
 	return preferences::get("shuffle_sides", false);

@@ -907,7 +907,7 @@ struct dialog_tester<mp_create_game>
 	}
 	mp_create_game* create()
 	{
-		return new mp_create_game(game_config_view_, state, true, nullptr);
+		return new mp_create_game(game_config_view_, state, true);
 	}
 };
 

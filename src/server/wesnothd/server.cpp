@@ -711,7 +711,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		if(utils::wildcard_string_match(utf8::lowercase(username), utf8::lowercase(d))) {
 			async_send_error(socket, "The nickname '" + username + "' is reserved and cannot be used by players",
 				MP_NAME_RESERVED_ERROR);
-			
+
 			return false;
 		}
 	}
@@ -1389,11 +1389,6 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 		return;
 	} else if(player_connections_.find(socket)->info().is_moderator()) {
 		// Admins are always allowed to join.
-	} else if(g->registered_users_only() && !player_connections_.find(socket)->info().registered()) {
-		async_send_doc_queued(socket, leave_game_doc);
-		send_server_message(socket, "Only registered users are allowed to join this game.", "error");
-		async_send_doc_queued(socket, games_and_users_list_);
-		return;
 	} else if(g->player_is_banned(socket, player_connections_.find(socket)->info().name())) {
 		DBG_SERVER << client_address(socket)
 				   << "\tReject banned player: " << player_connections_.find(socket)->info().name()

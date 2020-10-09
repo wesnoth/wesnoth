@@ -144,11 +144,6 @@ bool configure_engine::allow_observers_default() const
 	return preferences::allow_observers();
 }
 
-bool configure_engine::registered_users_only_default() const
-{
-	return preferences::registered_users_only();
-}
-
 bool configure_engine::shuffle_sides_default() const
 {
 	return preferences::shuffle_sides();

@@ -502,9 +502,8 @@ void enter_create_mode(mp_workflow_helper_ptr helper)
 	bool dlg_ok = false;
 	{
 		bool local_mode = helper->connection == nullptr;
-		mp::user_info* host_info = helper->lobby_info->get_user(preferences::login());
 
-		gui2::dialogs::mp_create_game dlg(helper->game_config, helper->state, local_mode, host_info);
+		gui2::dialogs::mp_create_game dlg(helper->game_config, helper->state, local_mode);
 		dlg.show();
 
 		// The Create Game dialog also has a LOAD_GAME retval besides OK.
