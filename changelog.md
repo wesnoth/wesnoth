@@ -1,4 +1,7 @@
 ## Version 1.15.5+dev
+ ### Multiplayer
+   * Delay Advancements modification:
+     * The Delay Advancements modification allows changing how advancements are handled. With this enabled, units that previously would have advanced on another player's turn will instead not advance until it is again their side's turn. The benefit of this is that units will also not pick an advancement at random if they have multiple.
  ### Language and i18n
    * Updated translations: British English, Czech, French, Japanese, Polish,
      Portuguese (Brazil)
