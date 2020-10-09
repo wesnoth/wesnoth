@@ -136,13 +136,13 @@ void text_surface::measure() const
 
 	for(const text_chunk& chunk : chunks_)
 	{
-		TTF_Font* ttfont = sdl_ttf::get_font(font_id(chunk.subset, font_size_, style_));
+		auto ttfont = sdl_ttf::get_font(font_id(chunk.subset, font_size_, style_));
 		if(ttfont == nullptr) {
 			continue;
 		}
 
 		int w, h;
-		TTF_SizeUTF8(ttfont, chunk.text.c_str(), &w, &h);
+		TTF_SizeUTF8(ttfont.get(), chunk.text.c_str(), &w, &h);
 		w_ += w;
 		h_ = std::max<int>(h_, h);
 	}
@@ -182,9 +182,9 @@ const std::vector<surface>& text_surface::get_surfaces() const
 
 	for(const text_chunk& chunk : chunks_)
 	{
-		TTF_Font* ttfont = sdl_ttf::get_font(font_id(chunk.subset, font_size_, style_));
+		auto ttfont = sdl_ttf::get_font(font_id(chunk.subset, font_size_, style_));
 
-		surface s = surface(TTF_RenderUTF8_Blended(ttfont, chunk.text.c_str(), color_.to_sdl()));
+		surface s = surface(TTF_RenderUTF8_Blended(ttfont.get(), chunk.text.c_str(), color_.to_sdl()));
 		if(s)
 			surfs_.push_back(s);
 	}

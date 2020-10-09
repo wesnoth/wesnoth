@@ -19,6 +19,7 @@
 #include "font_description.hpp"
 #include "color.hpp"
 
+#include <memory>
 #include <string>
 
 #include <SDL2/SDL_ttf.h>
@@ -55,33 +56,32 @@ SDL_Rect line_size(const std::string& line, int font_size, int style=TTF_STYLE_N
 std::string make_text_ellipsis(const std::string& text, int font_size, int max_width,
 	int style = TTF_STYLE_NORMAL);
 
-
-enum CACHE { CACHE_LOBBY, CACHE_GAME };
-void cache_mode(CACHE mode);
-
-
-
-
 /***
- * RAII object which initializes and destroys SDL_TTF, and manages caches of open fonts
+ * Object which initializes and destroys SDL_TTF, and manages caches of open fonts.
+ *
+ * This isn't properly self-contained, the .cpp file (and the implementations
+ * of the other functions in this .hpp file) expect that there will be exactly
+ * one instance of this object.
  */
-struct sdl_ttf {
-  sdl_ttf();
-  ~sdl_ttf();
+struct sdl_ttf
+{
+	sdl_ttf();
+	~sdl_ttf();
 
-  sdl_ttf(const sdl_ttf &) = delete;
-  sdl_ttf & operator = (const sdl_ttf &) = delete;
+	sdl_ttf(const sdl_ttf&) = delete;
+	sdl_ttf& operator=(const sdl_ttf&) = delete;
 
-  // Load a font
-  static TTF_Font * get_font(font_id);
+	// Load a font
+	static std::shared_ptr<TTF_Font> get_font(font_id);
 
-  // Set the list of fonts
-  static void set_font_list(const std::vector<subset_descriptor>& fontlist);
+	/**
+	 * Set the list of fonts. The order denotes the priority - if text could be rendered with more than one of these
+	 * fonts, the one given earlier will be used.
+	 */
+	static void set_font_list(const std::vector<subset_descriptor>& fontlist);
 
-  // Split a utf8 string into text_chunks
-  static std::vector<text_chunk> split_text(const std::string & utf8_text);
-
+	// Split a utf8 string into text_chunks
+	static std::vector<text_chunk> split_text(const std::string& utf8_text);
 };
-
 
 } // end namespace font

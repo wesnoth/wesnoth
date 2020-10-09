@@ -27,12 +27,19 @@
  * Note: This is specific to SDL_TTF code path
  */
 
-namespace font {
-
-// Signed int. Negative values mean "no subset".
+namespace font
+{
+/**
+ * Font family, acts an an enumeration with each font loaded by stl_ttf::set_font_list getting an
+ * individual value. The values do not necessarily correspond to the order of the list passed to
+ * stl_ttf::set_font_list, all positive values should be treated as opaque data.
+ *
+ * Negative values are returned by sdl_ttf::split_text to denote chunks which can't be handled with
+ * the available fonts.
+ */
 typedef int subset_id;
 
-// Used as a key in the font table, which caches the get_font results.
+// Used as a key in requests to the functions in sdl_text.hpp (and the font table in sdl_text.cpp's implementation)
 struct font_id
 {
 	explicit font_id(subset_id subset, int size) : subset(subset), size(size), style(TTF_STYLE_NORMAL) {}
@@ -49,17 +56,23 @@ struct font_id
 
 	subset_id subset;
 	int size;
+	/**
+	 * Bitmask of the values TTF_STYLE_BOLD, TTF_STYLE_ITALIC.
+	 */
 	int style;
 };
 
-/***
+/**
+ * A string that should be rendered with a single font. Longer texts that need
+ * characters from multiple fonts are cut into these sub-strings.
+ *
  * Text chunk is used by text_surfaces and these are cached sometimes.
  */
 struct text_chunk
 {
-	text_chunk(subset_id subset)
+	text_chunk(subset_id subset, std::string&& text)
 		: subset(subset)
-		, text()
+		, text(std::move(text))
 	{
 	}
 

@@ -35,7 +35,6 @@ struct subset_descriptor
 		: name()
 		, bold_name()
 		, italic_name()
-		, present_codepoints()
 	{
 	}
 
@@ -43,7 +42,6 @@ struct subset_descriptor
 		: name(font["name"].str())
 		, bold_name()
 		, italic_name()
-		, present_codepoints()
 	{
 		if (font.has_attribute("bold_name")) {
 			bold_name = font["bold_name"].str();
@@ -52,29 +50,11 @@ struct subset_descriptor
 		if (font.has_attribute("italic_name")) {
 			italic_name = font["italic_name"].str();
 		}
-
-		std::vector<std::string> ranges = utils::split(font["codepoints"]);
-
-		for (const std::string & i : ranges) {
-			std::vector<std::string> r = utils::split(i, '-');
-			if(r.size() == 1) {
-				std::size_t r1 = lexical_cast_default<std::size_t>(r[0], 0);
-				present_codepoints.emplace_back(r1, r1);
-			} else if(r.size() == 2) {
-				std::size_t r1 = lexical_cast_default<std::size_t>(r[0], 0);
-				std::size_t r2 = lexical_cast_default<std::size_t>(r[1], 0);
-
-				present_codepoints.emplace_back(r1, r2);
-			}
-		}
 	}
 
 	std::string name;
 	boost::optional<std::string> bold_name; //If we are using another font for styled characters in this font, rather than SDL TTF method
 	boost::optional<std::string> italic_name;
-
-	typedef std::pair<int, int> range;
-	std::vector<range> present_codepoints;
 };
 
 } // end namespace font

@@ -5,6 +5,9 @@
  ### Language and i18n
    * Updated translations: British English, Czech, French, Japanese, Polish,
      Portuguese (Brazil)
+   * The font-handling now checks which glyphs are in each font, instead of using a list hardcoded in WML.
+     * A bug in the removed code treated the first font containing U+4E00 as having the whole CJK Unified Ideographs block.
+     * Fixes a bug where many Chinese characters were invisible if DroidSansJapanese was loaded before DroidSansFallbackFull (issue #5194).
  ### Units
    * Added Tusker line - Gorer and Tusklet (by TSI 2009)
    * Revised Falcon and Elder Falcon sprites
@@ -34,6 +37,8 @@
   * Implement new GUI2 widget userdata for working with custom dialogs.
   * Renamed wesnoth.show_dialog to gui.show_dialog. The preshow and postshow now take a single parameter - a widget userdata.
   * All other dialog functions (such as wesnoth.get_dialog_value and wesnoth.set_dialog_value) are now deprecated.
+ ### Miscellaneous and Bug Fixes
+  * Removed font-analysis utils: codecomp codeextract codeglyphs codelist
  ### Terrain
   * New wall variation: Overgrown stone walls ('Xof')
 
