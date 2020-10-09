@@ -58,6 +58,7 @@
 #include <utility>
 
 #include <boost/date_time/posix_time/posix_time_types.hpp>
+#include "formatter.hpp"
 
 using boost::posix_time::ptime;
 
@@ -112,12 +113,32 @@ void set_strict_severity(int severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
 
+// A little "magic" to surround the logging operation in a mutex.
+// This works by capturing the output first to a stringstream formatter, then
+// locking a mutex and dumping it to the stream all in one go.
+// By doing this we can avoid rare deadlocks if a function whose output is streamed
+// calls logging of its own.
+// We overload operator| only because it has lower precedence than operator<<
+// Any other lower-precedence operator would have worked just as well.
+class log_in_progress {
+	std::ostream& stream_;
+	int indent_ = 0;
+	bool timestamp_ = false;
+	std::string prefix_;
+public:
+	log_in_progress(std::ostream& stream);
+	void operator|(formatter&& message);
+	void set_indent(int level);
+	void enable_timestamp();
+	void set_prefix(const std::string& prefix);
+};
+
 class logger {
 	char const *name_;
 	int severity_;
 public:
 	logger(char const *name, int severity): name_(name), severity_(severity) {}
-	std::ostream &operator()(const log_domain& domain,
+	log_in_progress operator()(const log_domain& domain,
 		bool show_names = true, bool do_indent = false) const;
 
 	bool dont_log(const log_domain& domain) const
@@ -147,26 +168,25 @@ log_domain& general();
 class scope_logger
 {
 	ptime ticks_;
-	std::ostream *output_;
+	const log_domain& domain_;
 	std::string str_;
 public:
 	scope_logger(const log_domain& domain, const char* str) :
-		output_(nullptr)
+		domain_(domain)
 	{
-		if (!debug().dont_log(domain)) do_log_entry(domain, str);
+		if (!debug().dont_log(domain)) do_log_entry(str);
 	}
 	scope_logger(const log_domain& domain, const std::string& str) :
-		output_(nullptr)
+		domain_(domain)
 	{
-		if (!debug().dont_log(domain)) do_log_entry(domain, str);
+		if (!debug().dont_log(domain)) do_log_entry(str);
 	}
 	~scope_logger()
 	{
-		if (output_) do_log_exit();
+		if (!str_.empty()) do_log_exit();
 	}
-	void do_indent() const;
 private:
-	void do_log_entry(const log_domain& domain, const std::string& str) noexcept;
+	void do_log_entry(const std::string& str) noexcept;
 	void do_log_exit() noexcept;
 };
 
@@ -186,7 +206,14 @@ std::stringstream& wml_error();
 #define log_scope(description) lg::scope_logger scope_logging_object__(lg::general(), description);
 #define log_scope2(domain,description) lg::scope_logger scope_logging_object__(domain, description);
 
-#define LOG_STREAM(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain)
+#define LOG_STREAM(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain) | formatter()
+
+// Don't prefix the logdomain to messages on this stream
+#define LOG_STREAM_NAMELESS(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, false) | formatter()
 
 // When using log_scope/log_scope2 it is nice to have all output indented.
-#define LOG_STREAM_INDENT(level,domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, true, true)
+#define LOG_STREAM_INDENT(level,domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, true, true) | formatter()
+
+// If you have an explicit logger object and want to ignore the logging level, use this.
+// Meant for cases where you explicitly call dont_log to avoid an expensive operation if the logging is disabled.
+#define FORCE_LOG_TO(logger, domain) logger(domain) | formatter()

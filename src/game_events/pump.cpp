@@ -402,7 +402,7 @@ void wml_event_pump::show_wml_messages()
 void wml_event_pump::put_wml_message(
 		lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat)
 {
-	logger(log_wml) << message << std::endl;
+	FORCE_LOG_TO(logger, log_wml) << message << std::endl;
 	if(in_chat) {
 		impl_->wml_messages_stream << prefix << message << std::endl;
 	}
