@@ -377,16 +377,16 @@ LEVEL_RESULT campaign_controller::play_game()
 
 				state_.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool(!is_mp);
 
-				ng::connect_engine_ptr connect_engine(new ng::connect_engine(state_, false, mp_info_));
+				ng::connect_engine connect_engine(state_, false, mp_info_);
 
-				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
+				if (!connect_engine.can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 					// Opens staging dialog to allow users to make an adjustments for scenario.
-					if(!mp::goto_mp_connect(*connect_engine, mp_info_ ? &mp_info_->connection : nullptr)) {
+					if(!mp::goto_mp_connect(connect_engine, mp_info_ ? &mp_info_->connection : nullptr)) {
 						return LEVEL_RESULT::QUIT;
 					}
 				} else {
 					// Start the next scenario immediately.
-					connect_engine->start_game();
+					connect_engine.start_game();
 				}
 			}
 		}

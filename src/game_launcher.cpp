@@ -890,11 +890,9 @@ bool game_launcher::play_multiplayer(mp_selection res)
 		cursor::set(cursor::NORMAL);
 
 		if(res == MP_LOCAL) {
-			mp::start_local_game(
-			    game_config_manager::get()->game_config(), state_);
+			mp::start_local_game(state_);
 		} else {
-			mp::start_client(game_config_manager::get()->game_config(),
-				state_, multiplayer_server_);
+			mp::start_client(state_, multiplayer_server_);
 			multiplayer_server_.clear();
 		}
 

@@ -146,10 +146,16 @@ public:
 	{
 		return gamelist_initialized_;
 	}
+
+	void set_installed_addons(const std::vector<std::string>& new_list)
+	{
+		installed_addons_ = new_list;
+	}
+
 private:
 	void process_userlist();
 
-	const std::vector<std::string>& installed_addons_;
+	std::vector<std::string> installed_addons_;
 
 	config gamelist_;
 
