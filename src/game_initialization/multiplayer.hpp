@@ -32,12 +32,8 @@ const std::size_t max_login_size = 20;
  * This is the main entry points of multiplayer mode.
  */
 
-/** Starts a multiplayer game in single-user mode.
- *
- * @param game_config The global, top-level WML configuration for the game
- */
-void start_local_game(const game_config_view& game_config,
-	saved_game& state);
+/** Starts a multiplayer game in single-user mode. */
+void start_local_game(saved_game& state);
 
 /** Starts a multiplayer game in single-user mode.
  *
@@ -49,11 +45,9 @@ void start_local_game_commandline(const game_config_view& game_config,
 
 /** Starts a multiplayer game in client mode.
  *
- * @param game_config The global, top-level WML configuration for the game
  * @param host        The host to connect to.
  */
-void start_client(const game_config_view& game_config,
-	saved_game& state, const std::string& host);
+void start_client(saved_game& state, const std::string& host);
 
 /**
  * Opens mp::connect screen and sets game state according to the
