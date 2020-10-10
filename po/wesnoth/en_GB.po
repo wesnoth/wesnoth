@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-26 23:35+0300\n"
+"POT-Creation-Date: 2020-10-10 14:51-0300\n"
 "PO-Revision-Date: 2020-08-31 11:31+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -900,8 +900,8 @@ msgstr "Grain Sheaf"
 msgid "Runic Hammer"
 msgstr "Runic Hammer"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Holy Water"
@@ -942,8 +942,8 @@ msgstr "Green Potion"
 msgid "Gray Potion"
 msgstr "Grey Potion"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Poison"
@@ -1013,8 +1013,8 @@ msgstr "Staff"
 msgid "Stone Tablet"
 msgstr "Stone Tablet"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Storm Trident"
@@ -7901,8 +7901,12 @@ msgid "Turn Number"
 msgstr "Turn Number"
 
 #: src/reports.cpp:1286
+#, fuzzy
+#| msgid ""
+#| "When the game reaches the number of turns indicated by the second number, "
+#| "it will end."
 msgid ""
-"When the game reaches the number of turns indicated by the second number, it "
+"When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 "When the game reaches the number of turns indicated by the second number, it "

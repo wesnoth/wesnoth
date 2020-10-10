@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-26 23:35+0300\n"
+"POT-Creation-Date: 2020-10-10 14:51-0300\n"
 "PO-Revision-Date: 2018-05-06 10:17+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -903,8 +903,8 @@ msgstr "穀物の束"
 msgid "Runic Hammer"
 msgstr "ルーンの槌"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "聖水"
@@ -945,8 +945,8 @@ msgstr "緑の薬"
 msgid "Gray Potion"
 msgstr "灰色の薬"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "毒"
@@ -1016,8 +1016,8 @@ msgstr "杖"
 msgid "Stone Tablet"
 msgstr "石の銘板"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "ストームトライデント"
@@ -7872,8 +7872,12 @@ msgid "Turn Number"
 msgstr "ターン数"
 
 #: src/reports.cpp:1286
+#, fuzzy
+#| msgid ""
+#| "When the game reaches the number of turns indicated by the second number, "
+#| "it will end."
 msgid ""
-"When the game reaches the number of turns indicated by the second number, it "
+"When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr "ターン数が 2 番目の数字に到達した場合、ゲームは終了します。"
 

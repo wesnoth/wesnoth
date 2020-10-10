@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-26 23:35+0300\n"
+"POT-Creation-Date: 2020-10-10 14:51-0300\n"
 "PO-Revision-Date: 2020-09-16 14:24+0200\n"
 "Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
 "Language-Team: none\n"
@@ -902,8 +902,8 @@ msgstr "Snop zboża"
 msgid "Runic Hammer"
 msgstr "Młot Runiczny"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Woda święcona"
@@ -944,8 +944,8 @@ msgstr "Zielony Eliksir"
 msgid "Gray Potion"
 msgstr "Szary Eliksir"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Trucizna"
@@ -1015,8 +1015,8 @@ msgstr "Laska"
 msgid "Stone Tablet"
 msgstr "Kamienna Płyta"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Trójząb sztormów"
@@ -8000,8 +8000,12 @@ msgid "Turn Number"
 msgstr "Numer tury"
 
 #: src/reports.cpp:1286
+#, fuzzy
+#| msgid ""
+#| "When the game reaches the number of turns indicated by the second number, "
+#| "it will end."
 msgid ""
-"When the game reaches the number of turns indicated by the second number, it "
+"When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr "Gra skończy się, gdy osiągnie numer tury oznaczony przez drugą liczbę."
 

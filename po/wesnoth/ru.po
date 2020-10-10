@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-26 23:35+0300\n"
+"POT-Creation-Date: 2020-10-10 14:51-0300\n"
 "PO-Revision-Date: 2020-08-15 10:14+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: \n"
@@ -905,8 +905,8 @@ msgstr "Зерновой сноп"
 msgid "Runic Hammer"
 msgstr "Рунический молот"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Святая вода"
@@ -947,8 +947,8 @@ msgstr "Зеленое зелье"
 msgid "Gray Potion"
 msgstr "Серое зелье"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Яд"
@@ -1018,8 +1018,8 @@ msgstr "Посох"
 msgid "Stone Tablet"
 msgstr "Каменная табличка"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Штормовой Трезубец"
@@ -7971,8 +7971,12 @@ msgid "Turn Number"
 msgstr "Номер хода"
 
 #: src/reports.cpp:1286
+#, fuzzy
+#| msgid ""
+#| "When the game reaches the number of turns indicated by the second number, "
+#| "it will end."
 msgid ""
-"When the game reaches the number of turns indicated by the second number, it "
+"When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 "Когда игра достигнет количества ходов, указанного вторым номером, она "

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-26 23:35+0300\n"
+"POT-Creation-Date: 2020-10-10 14:51-0300\n"
 "PO-Revision-Date: 2020-02-10 20:32+0200\n"
 "Last-Translator: TheCoolPenguin <penguinsarecool1110@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -899,8 +899,8 @@ msgstr "viljapaisti"
 msgid "Runic Hammer"
 msgstr ""
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Pyhä vesi"
@@ -941,8 +941,8 @@ msgstr "vihreä taikajuoma"
 msgid "Gray Potion"
 msgstr "harmaa taikajuoma"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "myrkky"
@@ -1012,8 +1012,8 @@ msgstr "sauva"
 msgid "Stone Tablet"
 msgstr "kivilaatta"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "myrskyjen kolmikärki"
@@ -7974,8 +7974,12 @@ msgid "Turn Number"
 msgstr "Vuoro numero"
 
 #: src/reports.cpp:1286
+#, fuzzy
+#| msgid ""
+#| "When the game reaches the number of turns indicated by the second number, "
+#| "it will end."
 msgid ""
-"When the game reaches the number of turns indicated by the second number, it "
+"When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 "Kun peli saavuttaa vuoromäärän, jota merkataan toisella numerolla, se "
