@@ -8,6 +8,7 @@
    * The font-handling now checks which glyphs are in each font, instead of using a list hardcoded in WML.
      * A bug in the removed code treated the first font containing U+4E00 as having the whole CJK Unified Ideographs block.
      * Fixes a bug where many Chinese characters were invisible if DroidSansJapanese was loaded before DroidSansFallbackFull (issue #5194).
+   * Changing the language immediately updates the order of the fonts, instead of waiting for the next restart (issue #5194).
  ### Units
    * Added Tusker line - Gorer and Tusklet (by TSI 2009)
    * Revised Falcon and Elder Falcon sprites
