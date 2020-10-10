@@ -385,6 +385,7 @@ void title_screen::pre_show(window& win)
 				t_string::reset_translations();
 				::image::flush_cache();
 				sound::flush_cache();
+				font::load_font_config();
 				on_resize(win);
 			}
 		} catch(const std::runtime_error& e) {

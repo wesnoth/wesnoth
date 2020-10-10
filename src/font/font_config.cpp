@@ -127,8 +127,6 @@ t_string family_order_script;
 
 bool load_font_config()
 {
-	//read font config separately, so we do not have to re-read the whole
-	//config when changing languages
 	config cfg;
 	try {
 		const std::string& cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
