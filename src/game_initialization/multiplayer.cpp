@@ -518,12 +518,12 @@ void mp_manager::enter_staging_mode()
 
 	bool dlg_ok = false;
 	{
-		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, campaign_info.get()));
+		ng::connect_engine connect_engine(state, true, campaign_info.get());
 
-		gui2::dialogs::mp_staging dlg(*connect_engine, lobby_info, connection.get());
+		gui2::dialogs::mp_staging dlg(connect_engine, lobby_info, connection.get());
 		dlg.show();
 		dlg_ok = dlg.get_retval() == gui2::retval::OK;
-	} // end connect_engine_ptr, dlg scope
+	} // end connect_engine, dlg scope
 
 	if(dlg_ok) {
 		campaign_controller controller(state, game_config_manager::get()->terrain_types());
@@ -766,10 +766,10 @@ void start_local_game_commandline(const game_config_view& game_config, saved_gam
 	statistics::fresh_stats();
 
 	{
-		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, nullptr));
+		ng::connect_engine connect_engine(state, true, nullptr);
 
 		// Update the parameters to reflect game start conditions
-		connect_engine->start_game_commandline(cmdline_opts, game_config);
+		connect_engine.start_game_commandline(cmdline_opts, game_config);
 	}
 
 	if(resources::recorder && cmdline_opts.multiplayer_label) {
