@@ -486,13 +486,14 @@ void playsingle_controller::linger()
 	// the key to it is here.
 	gui_->set_game_mode(game_display::LINGER);
 
+	// Make all of the able-to-move units' orbs consistently red
+	gamestate().board_.set_all_units_user_end_turn();
+
 	// change the end-turn button text to its alternate label
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
 	gui_->invalidate_theme();
 	gui_->redraw_everything();
 
-	// End all unit moves
-	gamestate().board_.set_all_units_user_end_turn();
 	try {
 		// Same logic as single-player human turn, but
 		// *not* the same as multiplayer human turn.
