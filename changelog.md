@@ -43,6 +43,8 @@
   * [harm_unit] now calculates liminal damage by using the 1.15 algorithm
  ### Terrain
   * New wall variation: Overgrown stone walls ('Xof')
+ ### WML Engine
+  * Fix a bug with [set_variables][join] failing on boolean (yes/no) values
 
 ## Version 1.15.5
  ### Add-ons client
