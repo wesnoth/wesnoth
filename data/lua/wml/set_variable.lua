@@ -148,7 +148,16 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 				if #string_to_join > 0 then
 					string_to_join = string_to_join .. separator
 				end
-				string_to_join = string_to_join .. element[key_name]
+				local elem = element[key_name]
+				if type(elem) == 'boolean' then
+					-- Use yes/no instead of true/false for booleans
+					elem = elem and 'yes' or 'no'
+				elseif getmetatable(elem) ~= 'translatable string' then
+					-- Not entirely sure if this branch is necessary, since it probably only triggers for numbers
+					-- It certainly can't hurt, though.
+					elem = tostring(elem)
+				end
+				string_to_join = string_to_join .. elem
 			end
 		end
 
