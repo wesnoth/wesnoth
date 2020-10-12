@@ -40,6 +40,7 @@
   * All other dialog functions (such as wesnoth.get_dialog_value and wesnoth.set_dialog_value) are now deprecated.
  ### Miscellaneous and Bug Fixes
   * Removed font-analysis utils: codecomp codeextract codeglyphs codelist
+  * [harm_unit] now calculates liminal damage by using the 1.15 algorithm
  ### Terrain
   * New wall variation: Overgrown stone walls ('Xof')
 
