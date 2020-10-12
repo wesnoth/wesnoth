@@ -312,7 +312,7 @@ static void purge_dir(const std::string& path, const config& removelist)
 	}
 
 	for(const config& f : removelist.child_range("file")) {
-		filesystem::delete_file(path + '/' + f["name"].str());
+		filesystem::delete_file(dir + '/' + f["name"].str());
 	}
 
 	if(filesystem::dir_size(dir) < 1) {
