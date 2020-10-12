@@ -78,7 +78,7 @@ function wml_actions.harm_unit(cfg)
 				elseif alignment == "chaotic" then
 					damage_multiplier = damage_multiplier - tod_bonus
 				elseif alignment == "liminal" then
-					damage_multiplier = damage_multiplier - math.abs( tod_bonus )
+					damage_multiplier = damage_multiplier + math.max(0, wesnoth.get_max_liminal_bonus() - math.abs(tod_bonus))
 				else -- neutral, do nothing
 				end
 				local resistance_modified = resistance * modifier
