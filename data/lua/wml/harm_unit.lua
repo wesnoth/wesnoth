@@ -171,10 +171,10 @@ function wml_actions.harm_unit(cfg)
 				and wesnoth.sides.is_enemy( unit_to_harm.side, harmer.side )
 			then
 				if kill ~= false and unit_to_harm.hitpoints <= 0 then
-					harmer.experience = harmer.experience + calc_xp( unit_to_harm.__cfg.level )
+					harmer.experience = harmer.experience + calc_xp( unit_to_harm.level )
 				else
-					unit_to_harm.experience = unit_to_harm.experience + harmer.__cfg.level
-					harmer.experience = harmer.experience + wesnoth.game_config.combat_experience * unit_to_harm.__cfg.level
+					unit_to_harm.experience = unit_to_harm.experience + harmer.level
+					harmer.experience = harmer.experience + wesnoth.game_config.combat_experience * unit_to_harm.level
 				end
 			end
 
