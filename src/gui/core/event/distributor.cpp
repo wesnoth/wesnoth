@@ -461,8 +461,10 @@ void mouse_button<T>::signal_handler_sdl_button_up(const event::ui_event event, 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
 	if(!is_down_) {
+#ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 		WRN_GUI_E << LOG_HEADER << event
 				  << ". The mouse button is already up, we missed an event.\n";
+#endif
 		return;
 	}
 	is_down_ = false;
