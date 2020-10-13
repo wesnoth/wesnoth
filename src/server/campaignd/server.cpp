@@ -778,14 +778,19 @@ void server::handle_request_campaign(const server::request& req)
 		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
 		return;
 	} else {
-		auto version = version_map.find(version_info(to));
-		if(version != version_map.end()) {
-			full_pack += version->second["filename"].str();
-		} else {
-			WRN_CS << "The selected version (" << to << ") for the addon '" << req.cfg["name"].str()
-				   << "' has not been found or it is unspecified! Sending the latest version instead!\n";
+		if(to.empty()) {
+			//Sending the latest version if unspecified
 			to = version_map.rbegin()->first;
 			full_pack += version_map.rbegin()->second["filename"].str();
+		} else {
+			auto version = version_map.find(version_info(to));
+			if(version != version_map.end()) {
+				full_pack += version->second["filename"].str();
+			} else {
+				send_error("The selected version (" + to + ") of the addon '" + req.cfg["name"].str()
+					   + "' has not been found!\n", req.sock);
+				return;
+			}
 		}
 
 		full_pack_size = filesystem::file_size(full_pack);
