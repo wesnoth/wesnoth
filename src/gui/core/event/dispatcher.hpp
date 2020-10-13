@@ -216,8 +216,7 @@ using signal_mouse_function = dispatcher_callback_func<const point&>;
  * 6. Any applicable active modifer key.
  * 7. Any applicable text associated with the key.
  */
-using signal_keyboard_function =
-	dispatcher_callback_func<const SDL_Keycode, const SDL_Keymod, const std::string&>;
+using signal_keyboard_function = dispatcher_callback_func<const SDL_Keycode, const SDL_Keymod, const std::string&>;
 
 /**
  * Callback function signature.
@@ -355,9 +354,7 @@ public:
 	 * @param target                 The widget that should receive the event.
 	 * @param coordinate             The mouse position for the event.
 	 */
-	bool fire(const ui_event event,
-			  widget& target,
-			  const point& coordinate);
+	bool fire(const ui_event event, widget& target, const point& coordinate);
 
 	/**
 	 * Fires an event which takes keyboard parameters.
@@ -369,10 +366,10 @@ public:
 	 * @param unicode                The unicode value for the key pressed.
 	 */
 	bool fire(const ui_event event,
-			  widget& target,
-			  const SDL_Keycode key,
-			  const SDL_Keymod modifier,
-			  const std::string& unicode);
+		widget& target,
+		const SDL_Keycode key,
+		const SDL_Keymod modifier,
+		const std::string& unicode);
 
 	/**
 	 * Fires an event which takes touch-motion parameters.
@@ -382,11 +379,7 @@ public:
 	 * @param pos                    The location touched.
 	 * @param distance               The distance moved.
 	 */
-	bool fire(const ui_event event,
-			  widget& target,
-			  const point& pos,
-			  const point& distance);
-
+	bool fire(const ui_event event, widget& target, const point& pos, const point& distance);
 
 	/**
 	 * Fires an event which takes touch-gesture parameters.
@@ -398,13 +391,7 @@ public:
 	 * @param dDist                  The distance moved.
 	 * @param numFingers             Probably the number of fingers touching the screen.
 	 */
-	bool fire(const ui_event event,
-			  widget& target,
-			  const point& center,
-			  float dTheta,
-			  float dDist,
-			  uint8_t numFingers);
-
+	bool fire(const ui_event event, widget& target, const point& center, float dTheta, float dDist, uint8_t numFingers);
 
 	/**
 	 * Fires an event which takes notification parameters.
@@ -414,9 +401,7 @@ public:
 	 * @param event                  The event to fire.
 	 * @param target                 The widget that should receive the event.
 	 */
-	bool fire(const ui_event event,
-			  widget& target,
-			  void*);
+	bool fire(const ui_event event, widget& target, void*);
 
 	/**
 	 * Fires an event which takes message parameters.
@@ -429,9 +414,7 @@ public:
 	 *                               (or another widget in the chain) to handle
 	 *                               the message.
 	 */
-	bool fire(const ui_event event,
-			  widget& target,
-			  const message& msg);
+	bool fire(const ui_event event, widget& target, const message& msg);
 
 	/**
 	 * Fires an event that's a raw SDL event
@@ -441,9 +424,7 @@ public:
 	 *                              widget.
 	 * @param sdlevent 				The raw SDL event
 	 */
-	bool fire(const ui_event event,
-			  widget& target,
-			  const SDL_Event& sdlevent);
+	bool fire(const ui_event event, widget& target, const SDL_Event& sdlevent);
 
 	/**
 	 * Fires an event which takes text input parameters
@@ -455,11 +436,7 @@ public:
 	 * @param start                 The start point for IME editing
 	 * @param len                   The selection length for IME editing
 	 */
-	bool fire(const ui_event event,
-			  widget& target,
-			  const std::string& text,
-			  int32_t start,
-			  int32_t len);
+	bool fire(const ui_event event, widget& target, const std::string& text, int32_t start, int32_t len);
 
 	/**
 	 * The position where to add a new callback in the signal handler.
@@ -917,9 +894,7 @@ public:
 
 		std::map<ui_event, signal_type<T>> queue;
 
-		void connect_signal(const ui_event event,
-							const queue_position position,
-							const T& signal)
+		void connect_signal(const ui_event event, const queue_position position, const T& signal)
 		{
 			switch(position) {
 				case front_pre_child:
@@ -945,9 +920,7 @@ public:
 			}
 		}
 
-		void disconnect_signal(const ui_event event,
-							   const queue_position position,
-							   const T& signal)
+		void disconnect_signal(const ui_event event, const queue_position position, const T& signal)
 		{
 			signal_type<T>& signal_queue = queue[event];
 
@@ -994,8 +967,7 @@ public:
 	 * @param id                  The hotkey to register.
 	 * @param function            The callback function to call.
 	 */
-	void register_hotkey(const hotkey::HOTKEY_COMMAND id,
-						 const hotkey_function& function);
+	void register_hotkey(const hotkey::HOTKEY_COMMAND id, const hotkey_function& function);
 
 	/**
 	 * Executes a hotkey.
