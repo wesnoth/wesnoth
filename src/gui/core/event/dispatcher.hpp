@@ -241,7 +241,7 @@ using signal_touch_motion_function = dispatcher_callback_func<const point&, cons
  * 7. dDist
  * 8. numFingers
  */
-using signal_touch_gesture_function = dispatcher_callback_func<const point&, float, float, Uint8>;
+using signal_touch_gesture_function = dispatcher_callback_func<const point&, float, float, uint8_t>;
 
 /**
  * Callback function signature.
@@ -403,7 +403,7 @@ public:
 			  const point& center,
 			  float dTheta,
 			  float dDist,
-			  Uint8 numFingers);
+			  uint8_t numFingers);
 
 
 	/**

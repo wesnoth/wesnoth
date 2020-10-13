@@ -252,7 +252,7 @@ private:
 	 * @param dDist					the amount that the fingers pinched during this motion
 	 * @param numFingers			the number of fingers used in the gesture
 	 */
-	void touch_multi_gesture(const point& center, float dTheta, float dDist, Uint8 numFingers);
+	void touch_multi_gesture(const point& center, float dTheta, float dDist, uint8_t numFingers);
 
 	/**
 	 * Handles a hat motion event.
@@ -379,7 +379,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		return;
 	}
 
-	Uint8 button = event.button.button;
+	uint8_t button = event.button.button;
 	CVideo& video = dynamic_cast<window&>(*dispatchers_.back()).video();
 
 	switch(event.type) {
@@ -751,7 +751,7 @@ void sdl_event_handler::touch_down(const point& position)
 	}
 }
 
-void sdl_event_handler::touch_multi_gesture(const point& center, float dTheta, float dDist, Uint8 numFingers)
+void sdl_event_handler::touch_multi_gesture(const point& center, float dTheta, float dDist, uint8_t numFingers)
 {
 	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
 		dispatcher->fire(SDL_TOUCH_MULTI_GESTURE, dynamic_cast<widget&>(*dispatcher), center, dTheta, dDist, numFingers);

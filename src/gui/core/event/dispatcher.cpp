@@ -108,7 +108,7 @@ bool dispatcher::fire(const ui_event event, widget& target, const point& pos, co
 	return fire_event<signal_touch_motion_function>(event, this, &target, pos, distance);
 }
 
-bool dispatcher::fire(const ui_event event, widget& target, const point& center, float dTheta, float dDist, Uint8 numFingers)
+bool dispatcher::fire(const ui_event event, widget& target, const point& center, float dTheta, float dDist, uint8_t numFingers)
 {
 	assert(is_touch_gesture_event(event));
 	return fire_event<signal_touch_gesture_function>(event, this, &target, center, dTheta, dDist, numFingers);
