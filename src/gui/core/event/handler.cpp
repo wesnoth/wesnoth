@@ -170,7 +170,7 @@ private:
 
 	/** Fires a draw event. */
 	using events::sdl_handler::draw;
-	void draw();
+	void draw() override;
 	void draw_everything();
 
 	/**
