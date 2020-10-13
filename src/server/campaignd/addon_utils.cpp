@@ -153,9 +153,9 @@ void add_license(config& cfg)
 	copying["contents"] = contents;
 }
 
-std::map<version_info, config&> get_version_map(config& addon)
+std::map<version_info, config> get_version_map(config& addon)
 {
-	auto version_map = std::map<version_info, config&>();
+	std::map<version_info, config> version_map;
 
 	for(config& version : addon.child_range("version")) {
 		version_map.emplace(version_info(version["version"]), version);
