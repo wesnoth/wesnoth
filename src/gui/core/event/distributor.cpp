@@ -34,44 +34,6 @@ namespace event
 {
 
 /**
- * SDL_AddTimer() callback for the hover event.
- *
- * When this callback is called it pushes a new hover event in the event queue.
- *
- * @param interval                The time parameter of SDL_AddTimer.
- * @param param                   Pointer to a widget that's able to show the
- *                                tooltip (will be used as a dispatcher).
- *
- * @returns                       The new timer interval, 0 to stop.
- */
-
-#if 0
-/**
- * SDL_AddTimer() callback for the popup event.
- *
- * This event makes sure the popup is removed again.
- *
- * @param interval                The time parameter of SDL_AddTimer.
- * @param param                   Pointer to parameter structure.
- *
- * @returns                       The new timer interval, 0 to stop.
- */
-static uint32_t popup_callback(uint32_t /*interval*/, void* /*param*/)
-{
-	DBG_GUI_E << "Pushing popup removal event in queue.\n";
-
-	SDL_Event event;
-	sdl::UserEvent data(HOVER_REMOVE_POPUP_EVENT);
-
-	event.type = HOVER_REMOVE_POPUP_EVENT;
-	event.user = data;
-
-	SDL_PushEvent(&event);
-	return 0;
-}
-#endif
-
-/**
  * Small helper to keep a resource (boolean) locked.
  *
  * Some of the event handling routines can't be called recursively, this due to
@@ -576,14 +538,6 @@ distributor::distributor(widget& owner,
 	, mouse_button_left("left", owner, queue_position)
 	, mouse_button_middle("middle", owner, queue_position)
 	, mouse_button_right("right", owner, queue_position)
-#if 0
-	, hover_pending_(false)
-	, hover_id_(0)
-	, hover_box_()
-	, had_hover_(false)
-	, tooltip_(nullptr)
-	, help_popup_(nullptr)
-#endif
 	, keyboard_focus_(nullptr)
 	, keyboard_focus_chain_()
 {

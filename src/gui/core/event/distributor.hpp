@@ -318,24 +318,6 @@ private:
 	// make sure the appropriate things happens when we close.
 	layer layer_;
 
-#if 0
-	bool hover_pending_;			   /**< Is there a hover event pending? */
-	unsigned hover_id_;                /**< Id of the pending hover event. */
-	SDL_Rect hover_box_;               /**< The area the mouse can move in,
-										*   moving outside invalidates the
-										*   pending hover event.
-										*/
-
-	bool had_hover_;                   /**< A widget only gets one hover event
-	                                    *   per enter cycle.
-										*/
-
-	/** The widget of the currently active tooltip. */
-	widget* tooltip_;
-
-	/** The widget of the currently active help popup. */
-	widget* help_popup_;
-#endif
 	/** The widget that holds the keyboard focus_. */
 	widget* keyboard_focus_;
 
