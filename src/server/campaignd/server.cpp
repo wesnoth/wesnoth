@@ -264,19 +264,19 @@ void server::load_config()
 
 			const std::string file_hash = utils::md5(campaign["version"].str()).hex_digest();
 			config version_cfg = config("version", campaign["version"].str());
-			version_cfg["filename"] = "/full_pack_" + file_hash + ".gz";
+			version_cfg["filename"] = "full_pack_" + file_hash + ".gz";
 			campaign.add_child("version", version_cfg);
 
 			data.remove_attributes("title", "campaign_name", "author", "description", "version", "timestamp", "original_timestamp", "icon", "type", "tags");
 			filesystem::delete_file(filesystem::normalize_path(addon_file));
 			{
-				filesystem::atomic_commit campaign_file(addon_file + version_cfg["filename"].str());
+				filesystem::atomic_commit campaign_file(addon_file + "/" + version_cfg["filename"].str());
 				config_writer writer(*campaign_file.ostream(), true, compress_level_);
 				writer.write(data);
 				campaign_file.commit();
 			}
 			{
-				filesystem::atomic_commit campaign_hash_file(addon_file + version_cfg["filename"].str() + ".hash");
+				filesystem::atomic_commit campaign_hash_file(addon_file + "/" + version_cfg["filename"].str() + ".hash");
 				config_writer writer(*campaign_hash_file.ostream(), true, compress_level_);
 				config data_hash = config("name", "");
 				write_hashlist(data_hash, data);
@@ -781,11 +781,11 @@ void server::handle_request_campaign(const server::request& req)
 		if(to.empty()) {
 			//Sending the latest version if unspecified
 			to = version_map.rbegin()->first;
-			full_pack += version_map.rbegin()->second["filename"].str();
+			full_pack += "/" + version_map.rbegin()->second["filename"].str();
 		} else {
 			auto version = version_map.find(version_info(to));
 			if(version != version_map.end()) {
-				full_pack += version->second["filename"].str();
+				full_pack += "/" + version->second["filename"].str();
 			} else {
 				send_error("The selected version (" + to + ") of the addon '" + req.cfg["name"].str()
 					   + "' has not been found!\n", req.sock);
@@ -815,11 +815,11 @@ void server::handle_request_campaign(const server::request& req)
 					if(pack["from"].str() == prev_version["version"].str()
 							&& pack["to"].str() == next_version["version"].str()) {
 						config update_pack;
-						filesystem::scoped_istream in = filesystem::istream_file(campaign["filename"].str() + pack["filename"].str());
+						filesystem::scoped_istream in = filesystem::istream_file(campaign["filename"].str() + "/" + pack["filename"].str());
 						read_gz(update_pack, *in);
 						if(update_pack) {
 							pack_data.append(update_pack);
-							size += filesystem::file_size(campaign["filename"].str() + pack["filename"].str());
+							size += filesystem::file_size(campaign["filename"].str() + "/" + pack["filename"].str());
 						} else {
 							WRN_CS << "Unable to find an update pack sequence from version (" << from << ") to ("
 								   << to << ") for the addon '" << req.cfg["name"].str() << "'. A full pack will be sent instead!\n";
@@ -897,13 +897,13 @@ void server::handle_request_campaign_hash(const server::request& req)
 		std::string version_str = campaign["version"].str();
 		auto version = version_map.find(version_info(version_str));
 		if(version != version_map.end()) {
-			filename += version->second["filename"].str();
+			filename += "/" + version->second["filename"].str();
 		} else {
 			// Selecting the latest version before the selected version or the overall latest version if unspecified
 			if(version_str.empty()) {
-				filename += version_map.rbegin()->second["filename"].str();
+				filename += "/" + version_map.rbegin()->second["filename"].str();
 			} else {
-				filename += (--version_map.upper_bound(version_info(version_str)))->second["filename"].str();
+				filename += "/" + (--version_map.upper_bound(version_info(version_str)))->second["filename"].str();
 			}
 		}
 
@@ -1192,7 +1192,7 @@ void server::handle_upload(const server::request& req)
 			for(const config& pack : (*campaign).child_range("update_pack")) {
 					if(pack["to"].str() == new_version) {
 						const std::string& pack_filename = pack["filename"].str();
-						filesystem::delete_file(filename + pack_filename);
+						filesystem::delete_file(filename + "/" + pack_filename);
 						(*campaign).remove_children("update_pack", [&pack_filename](const config& child) 
 						{
 							return child["filename"].str() == pack_filename; 
@@ -1203,12 +1203,12 @@ void server::handle_upload(const server::request& req)
 
 			config pack_info = config("from", old_version, "to", new_version);
 			pack_info["expire"] = upload_ts + update_pack_lifespan_;
-			pack_info["filename"] = "/update_pack_" + utils::md5(old_version + new_version).hex_digest() + ".gz";
+			pack_info["filename"] = "update_pack_" + utils::md5(old_version + new_version).hex_digest() + ".gz";
 			(*campaign).add_child("update_pack", pack_info);
 
 			// Write the pack itself
 			{
-				filesystem::atomic_commit pack_file(filename + pack_info["filename"].str());
+				filesystem::atomic_commit pack_file(filename + "/" + pack_info["filename"].str());
 				config_writer writer(*pack_file.ostream(), true, compress_level_);
 				writer.open_child("removelist");
 				writer.write(removelist);
@@ -1220,7 +1220,7 @@ void server::handle_upload(const server::request& req)
 			}
 
 			// Apply it to the addon data to generate the next full pack
-			filesystem::scoped_istream in = filesystem::istream_file(filename + version_map.find(version_info(old_version))->second["filename"].str());
+			filesystem::scoped_istream in = filesystem::istream_file(filename + "/" + version_map.find(version_info(old_version))->second["filename"].str());
 			data.clear();
 			read_gz(data, *in);
 
@@ -1242,7 +1242,7 @@ void server::handle_upload(const server::request& req)
 
 		//#TODO: add gfgtdf's stuff about required_wesnoth_version here
 		config version_cfg = config("version", new_version);
-		version_cfg["filename"] = "/full_pack_" + file_hash + ".gz";
+		version_cfg["filename"] = "full_pack_" + file_hash + ".gz";
 
 		version_map.erase(version_info(new_version));
 		version_map.emplace(version_info(new_version), version_cfg);
@@ -1255,14 +1255,14 @@ void server::handle_upload(const server::request& req)
 
 		//Let's write the full_pack file
 		{
-			filesystem::atomic_commit campaign_file(filename + version_cfg["filename"].str());
+			filesystem::atomic_commit campaign_file(filename + "/" + version_cfg["filename"].str());
 			config_writer writer(*campaign_file.ostream(), true, compress_level_);
 			writer.write(data);
 			campaign_file.commit();
 		}
 		// Let's write its hashes
 		{
-			filesystem::atomic_commit campaign_hash_file(filename + version_cfg["filename"].str() + ".hash");
+			filesystem::atomic_commit campaign_hash_file(filename + "/" + version_cfg["filename"].str() + ".hash");
 			config_writer writer(*campaign_hash_file.ostream(), true, compress_level_);
 			config data_hash = config("name", "");
 			write_hashlist(data_hash, data);
@@ -1270,13 +1270,13 @@ void server::handle_upload(const server::request& req)
 			campaign_hash_file.commit();
 		}
 
-		(*campaign)["size"] = filesystem::file_size(filename + version_cfg["filename"].str());
+		(*campaign)["size"] = filesystem::file_size(filename + "/" + version_cfg["filename"].str());
 		
 		//Remove the update packs with expired lifespan
 		for(const config& pack : (*campaign).child_range("update_pack")) {
 			if(upload_ts > pack["expire"].to_time_t() || pack["from"].str() == new_version || (!is_upload_pack && pack["to"].str() == new_version)) {
 				const std::string& pack_filename = pack["filename"].str();
-				filesystem::delete_file(filename + pack_filename);
+				filesystem::delete_file(filename + "/" + pack_filename);
 				(*campaign).remove_children("update_pack", [&pack_filename](const config& child) 
 					{
 						return child["filename"].str() == pack_filename; 
@@ -1309,8 +1309,8 @@ void server::handle_upload(const server::request& req)
 			// If we found it (meaning it hasn't expired yet) leave it for now,
 			// else we'll bake a new pack
 			if(!found) {
-				if(filesystem::file_size(filename + prev_version["filename"].str()) <= 0
-						|| filesystem::file_size(filename + next_version["filename"].str()) <= 0) {
+				if(filesystem::file_size(filename + "/" + prev_version["filename"].str()) <= 0
+						|| filesystem::file_size(filename + "/" + next_version["filename"].str()) <= 0) {
 					ERR_CS << "Unable to create an update pack for the addon " << (*campaign)["filename"].str()
 							<< " when updating from version " << prev_version_name << " to " << next_version_name
 							<< "!\n";
@@ -1319,22 +1319,22 @@ void server::handle_upload(const server::request& req)
 				config pack_info = config("from", prev_version_name, "to", next_version_name);
 				pack_info["expire"] = upload_ts + update_pack_lifespan_;
 				pack_info["filename"]
-						= "/update_pack_" + utils::md5(prev_version_name + next_version_name).hex_digest() + ".gz";
+						= "update_pack_" + utils::md5(prev_version_name + next_version_name).hex_digest() + ".gz";
 				(*campaign).add_child("update_pack", pack_info);
 
 				// Gather the full packs and create an update
 				config pack;
 				config from;
 				config to;
-				filesystem::scoped_istream in = filesystem::istream_file(filename + prev_version["filename"].str());
+				filesystem::scoped_istream in = filesystem::istream_file(filename + "/" + prev_version["filename"].str());
 				read_gz(from, *in);
-				in = filesystem::istream_file(filename + next_version["filename"].str());
+				in = filesystem::istream_file(filename + "/" + next_version["filename"].str());
 				read_gz(to, *in);
 				make_updatepack(pack, from, to);
 
 				// Now write the update_pack archive in cached form
 				{
-					filesystem::atomic_commit pack_file(filename + pack_info["filename"].str());
+					filesystem::atomic_commit pack_file(filename + "/" + pack_info["filename"].str());
 					config_writer writer(*pack_file.ostream(), true, compress_level_);
 					writer.write(pack);
 					pack_file.commit();
