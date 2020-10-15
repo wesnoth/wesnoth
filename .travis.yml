@@ -19,6 +19,10 @@ env:
   global:
     secure: Fw9j5BpL8e5f2boEC2D8l0Cm+pCJx7lyvpZvockSM9cF2Cnt/QPbknJLXPryExLhweQO/lvi0MPuoMhRJv0QbChBjdXzJmR+uU1ejCHfpkTc6Cm/yo3tZMG3Zm7vHs00gla2ytK+XyFIVZLtFxyzy2fxjD64sFO3YrUp0KzSXp8=
 
+branches:
+  only:
+    - master
+
 jobs:
   include:
     - os: windows
