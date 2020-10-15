@@ -61,94 +61,94 @@ namespace {
 
 void addon_info_translation::read(const config& cfg)
 {
-	this->supported = cfg["supported"].to_bool(true);
-	this->title = cfg["title"].str();
-	this->description = cfg["description"].str();
+	supported = cfg["supported"].to_bool(true);
+	title = cfg["title"].str();
+	description = cfg["description"].str();
 }
 
 void addon_info_translation::write(config& cfg) const
 {
-	cfg["supported"] = this->supported;
-	cfg["title"] = this->title;
-	cfg["description"] = this->description;
+	cfg["supported"] = supported;
+	cfg["title"] = title;
+	cfg["description"] = description;
 }
 
 void addon_info::read(const config& cfg)
 {
-	this->id = cfg["name"].str();
-	this->title = cfg["title"].str();
-	this->description = cfg["description"].str();
-	this->icon = cfg["icon"].str();
-	this->version = cfg["version"].str();
-	this->author = cfg["author"].str();
-	this->size = cfg["size"];
-	this->downloads = cfg["downloads"];
-	this->uploads = cfg["uploads"];
-	this->type = get_addon_type(cfg["type"].str());
+	id = cfg["name"].str();
+	title = cfg["title"].str();
+	description = cfg["description"].str();
+	icon = cfg["icon"].str();
+	version = cfg["version"].str();
+	author = cfg["author"].str();
+	size = cfg["size"];
+	downloads = cfg["downloads"];
+	uploads = cfg["uploads"];
+	type = get_addon_type(cfg["type"].str());
 
 	const config::const_child_itors& locales_as_configs = cfg.child_range("translation");
 
 	for(const config& locale : locales_as_configs) {
 		if(locale["supported"].to_bool(true))
-			this->locales.emplace_back(locale["language"].str());
-		this->info_translations.emplace(locale["language"].str(), addon_info_translation(locale));
+			locales.emplace_back(locale["language"].str());
+		info_translations.emplace(locale["language"].str(), addon_info_translation(locale));
 	}
 
-	this->core = cfg["core"].str();
-	this->depends = utils::split(cfg["dependencies"].str());
-	this->tags = utils::split(cfg["tags"].str());
-	this->feedback_url = cfg["feedback_url"].str();
+	core = cfg["core"].str();
+	depends = utils::split(cfg["dependencies"].str());
+	tags = utils::split(cfg["tags"].str());
+	feedback_url = cfg["feedback_url"].str();
 
-	this->updated = cfg["timestamp"].to_time_t();
-	this->created = cfg["original_timestamp"].to_time_t();
+	updated = cfg["timestamp"].to_time_t();
+	created = cfg["original_timestamp"].to_time_t();
 
-	this->local_only = cfg["local_only"].to_bool();
+	local_only = cfg["local_only"].to_bool();
 }
 
 void addon_info::write(config& cfg) const
 {
-	cfg["id"] = this->id;
-	cfg["title"] = this->title;
-	cfg["description"] = this->description;
-	cfg["icon"] = this->icon;
-	cfg["version"] = this->version.str();
-	cfg["author"] = this->author;
-	cfg["size"] = this->size;
-	cfg["downloads"] = this->downloads;
-	cfg["uploads"] = this->uploads;
-	cfg["type"] = get_addon_type_string(this->type);
+	cfg["id"] = id;
+	cfg["title"] = title;
+	cfg["description"] = description;
+	cfg["icon"] = icon;
+	cfg["version"] = version.str();
+	cfg["author"] = author;
+	cfg["size"] = size;
+	cfg["downloads"] = downloads;
+	cfg["uploads"] = uploads;
+	cfg["type"] = get_addon_type_string(type);
 
-	for(const auto& element : this->info_translations) {
+	for(const auto& element : info_translations) {
 		config& locale = cfg.add_child("translation");
 		locale["language"] = element.first;
 		element.second.write(locale);
 	}
 
-	cfg["core"] = this->core;
-	cfg["dependencies"] = utils::join(this->depends);
-	cfg["tags"] = utils::join(this->tags);
-	cfg["feedback_url"] = this->feedback_url;
+	cfg["core"] = core;
+	cfg["dependencies"] = utils::join(depends);
+	cfg["tags"] = utils::join(tags);
+	cfg["feedback_url"] = feedback_url;
 
-	cfg["timestamp"] = this->updated;
-	cfg["original_timestamp"] = this->created;
+	cfg["timestamp"] = updated;
+	cfg["original_timestamp"] = created;
 }
 
 void addon_info::write_minimal(config& cfg) const
 {
-	cfg["version"] = this->version.str();
-	cfg["uploads"] = this->uploads;
-	cfg["type"] = get_addon_type_string(this->type);
-	cfg["title"] = this->title;
-	cfg["dependencies"] = utils::join(this->depends);
-	cfg["core"] = this->core;
+	cfg["version"] = version.str();
+	cfg["uploads"] = uploads;
+	cfg["type"] = get_addon_type_string(type);
+	cfg["title"] = title;
+	cfg["dependencies"] = utils::join(depends);
+	cfg["core"] = core;
 }
 
 std::string addon_info::display_title() const
 {
-	if(this->title.empty()) {
-		return font::escape_text(make_addon_title(this->id));
+	if(title.empty()) {
+		return font::escape_text(make_addon_title(id));
 	} else {
-		return font::escape_text(this->title);
+		return font::escape_text(title);
 	}
 }
 
@@ -186,7 +186,7 @@ addon_info_translation addon_info::translated_info() const
 
 std::string addon_info::display_title_translated() const
 {
-	addon_info_translation info = this->translated_info();
+	addon_info_translation info = translated_info();
 
 	if(info.valid()) {
 		return info.title;
@@ -203,13 +203,13 @@ std::string addon_info::display_title_translated_or_original() const
 
 std::string addon_info::description_translated() const
 {
-	addon_info_translation info = this->translated_info();
+	addon_info_translation info = translated_info();
 
 	if(info.valid() && !info.description.empty()) {
 		return info.description;
 	}
 
-	return this->description;
+	return description;
 }
 
 std::string addon_info::display_title_full() const
@@ -272,11 +272,11 @@ std::string addon_info::display_type() const
 std::set<std::string> addon_info::resolve_dependencies(const addons_list& addons) const
 {
 	std::set<std::string> deps;
-	resolve_deps_recursive(addons, this->id, deps);
+	resolve_deps_recursive(addons, id, deps);
 
-	if(deps.find(this->id) != deps.end()) {
-		LOG_AC << this->id << " depends upon itself; breaking circular dependency\n";
-		deps.erase(this->id);
+	if(deps.find(id) != deps.end()) {
+		LOG_AC << id << " depends upon itself; breaking circular dependency\n";
+		deps.erase(id);
 	}
 
 	return deps;

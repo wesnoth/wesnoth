@@ -67,7 +67,7 @@ void addons_client::connect()
 
 	conn_.reset(new network_asio::connection(host_, port_));
 
-	this->wait_for_transfer_done(
+	wait_for_transfer_done(
 		VGETTEXT("Connecting to $server_address|...", i18n_symbols),
 		transfer_mode::connect);
 }
@@ -81,12 +81,12 @@ bool addons_client::request_addons_list(config& cfg)
 	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
 	 */
 
-	this->send_simple_request("request_campaign_list", response_buf);
-	this->wait_for_transfer_done(_("Downloading list of add-ons..."));
+	send_simple_request("request_campaign_list", response_buf);
+	wait_for_transfer_done(_("Downloading list of add-ons..."));
 
 	std::swap(cfg, response_buf.child("campaigns"));
 
-	return !this->update_last_error(response_buf);
+	return !update_last_error(response_buf);
 }
 
 bool addons_client::request_distribution_terms(std::string& terms)
@@ -95,14 +95,14 @@ bool addons_client::request_distribution_terms(std::string& terms)
 
 	config response_buf;
 
-	this->send_simple_request("request_terms", response_buf);
-	this->wait_for_transfer_done(_("Requesting distribution terms..."));
+	send_simple_request("request_terms", response_buf);
+	wait_for_transfer_done(_("Requesting distribution terms..."));
 
 	if(const config& msg_cfg = response_buf.child("message")) {
 		terms = msg_cfg["message"].str();
 	}
 
-	return !this->update_last_error(response_buf);
+	return !update_last_error(response_buf);
 }
 
 bool addons_client::upload_addon(const std::string& id, std::string& response_message, config& cfg, bool local_only)
@@ -119,7 +119,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 
 	if(!addon_name_legal(id)){
 		i18n_symbols["addon_id"] = font::escape_text(id);
-		this->last_error_ =
+		last_error_ =
 			VGETTEXT("The add-on <i>$addon_title</i> has an invalid id '$addon_id' "
 				"and cannot be published.", i18n_symbols);
 		return false;
@@ -145,7 +145,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	try {
 		archive_addon(id, addon_data);
 	} catch(const utf8::invalid_utf8_exception&){
-		this->last_error_ =
+		last_error_ =
 			VGETTEXT("The add-on <i>$addon_title</i> has a file or directory "
 				"containing invalid characters and cannot be published.", i18n_symbols);
 		return false;
@@ -153,21 +153,21 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 
 	std::vector<std::string> badnames;
 	if(!check_names_legal(addon_data, &badnames)){
-		this->last_error_ =
+		last_error_ =
 			VGETTEXT("The add-on <i>$addon_title</i> has an invalid file or directory "
 				"name and cannot be published. "
 
 				"File or directory names may not contain '..' or end with '.' or be longer than 255 characters. "
 				"It also may not contain whitespace, control characters, or any of the following characters:\n\n&quot; * / : &lt; &gt; ? \\ | ~"
 				, i18n_symbols);
-		this->last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
+		last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
 		return false;
 	}
 	if(!check_case_insensitive_duplicates(addon_data, &badnames)){
-		this->last_error_ =
+		last_error_ =
 			VGETTEXT("The add-on <i>$addon_title</i> contains files or directories with case conflicts. "
 				"File or directory names may not be differently-cased versions of the same string.", i18n_symbols);
-		this->last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
+		last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
 		return false;
 	}
 
@@ -179,8 +179,8 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		// #TODO: Make a selection of the base version for the update ?
 		request_body["name"] = cfg["name"];
 		// request_body["from"] = ???
-		this->send_request(hash_request, hashlist);
-		this->wait_for_transfer_done(VGETTEXT("Requesting the older version composition for the add-on <i>$addon_title</i>...", i18n_symbols));
+		send_request(hash_request, hashlist);
+		wait_for_transfer_done(VGETTEXT("Requesting the older version composition for the add-on <i>$addon_title</i>...", i18n_symbols));
 
 		// A silent error check
 		if(!hashlist.child("error")) {
@@ -195,8 +195,8 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 				request_buf.add_child("upload", cfg).append(std::move(updatepack));
 				// #TODO: Make a selection of the base version for the update ? ,
 				// For now, if it's unspecified we'll use the latest avaible before the upload version
-				this->send_request(request_buf, response_buf);
-				this->wait_for_transfer_done(VGETTEXT("Sending an update pack for the add-on <i>$addon_title</i>...", i18n_symbols
+				send_request(request_buf, response_buf);
+				wait_for_transfer_done(VGETTEXT("Sending an update pack for the add-on <i>$addon_title</i>...", i18n_symbols
 				), transfer_mode::upload);
 
 				if(const config& message_cfg = response_buf.child("message")) {
@@ -204,7 +204,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 					LOG_ADDONS << "server response: " << response_message << '\n';
 				}
 
-				if(!this->update_last_error(response_buf))
+				if(!update_last_error(response_buf))
 					return true;
 			}
 		}
@@ -216,8 +216,8 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 
 	LOG_ADDONS << "sending " << id << '\n';
 
-	this->send_request(request_buf, response_buf);
-	this->wait_for_transfer_done(VGETTEXT("Sending add-on <i>$addon_title</i>...", i18n_symbols
+	send_request(request_buf, response_buf);
+	wait_for_transfer_done(VGETTEXT("Sending add-on <i>$addon_title</i>...", i18n_symbols
 	), transfer_mode::upload);
 
 	if(const config& message_cfg = response_buf.child("message")) {
@@ -225,7 +225,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		LOG_ADDONS << "server response: " << response_message << '\n';
 	}
 
-	return !this->update_last_error(response_buf);
+	return !update_last_error(response_buf);
 
 }
 
@@ -249,8 +249,8 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 
 	LOG_ADDONS << "requesting server to delete " << id << '\n';
 
-	this->send_request(request_buf, response_buf);
-	this->wait_for_transfer_done(VGETTEXT("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols
+	send_request(request_buf, response_buf);
+	wait_for_transfer_done(VGETTEXT("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols
 	));
 
 	if(const config& message_cfg = response_buf.child("message")) {
@@ -258,7 +258,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 		LOG_ADDONS << "server response: " << response_message << '\n';
 	}
 
-	return !this->update_last_error(response_buf);
+	return !update_last_error(response_buf);
 }
 
 bool addons_client::download_addon(config& archive_cfg, const std::string& id, const std::string& title, bool increase_downloads)
@@ -277,10 +277,10 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 
 	LOG_ADDONS << "downloading " << id << '\n';
 
-	this->send_request(request_buf, archive_cfg);
-	this->wait_for_transfer_done(VGETTEXT("Downloading add-on <i>$addon_title</i>...", i18n_symbols));
+	send_request(request_buf, archive_cfg);
+	wait_for_transfer_done(VGETTEXT("Downloading add-on <i>$addon_title</i>...", i18n_symbols));
 
-	return !this->update_last_error(archive_cfg);
+	return !update_last_error(archive_cfg);
 }
 
 static std::string write_info_contents(const addon_info& info)
@@ -577,13 +577,13 @@ addons_client::install_result addons_client::install_addon_with_checks(const add
 bool addons_client::update_last_error(config& response_cfg)
 {
 	if(const config& error = response_cfg.child("error")) {
-		this->last_error_ = font::escape_text(error["message"].str());
-		this->last_error_data_ = font::escape_text(error["extra_data"].str());
+		last_error_ = font::escape_text(error["message"].str());
+		last_error_data_ = font::escape_text(error["extra_data"].str());
 		ERR_ADDONS << "server error: " << error << '\n';
 		return true;
 	} else {
-		this->last_error_.clear();
-		this->last_error_data_.clear();
+		last_error_.clear();
+		last_error_data_.clear();
 		return false;
 	}
 }
@@ -602,14 +602,14 @@ void addons_client::send_request(const config& request, config& response)
 	check_connected();
 
 	response.clear();
-	this->conn_->transfer(request, response);
+	conn_->transfer(request, response);
 }
 
 void addons_client::send_simple_request(const std::string& request_string, config& response)
 {
 	config request;
 	request.add_child(request_string);
-	this->send_request(request, response);
+	send_request(request, response);
 }
 struct read_addon_connection_data : public network_transmission::connection_data
 {
