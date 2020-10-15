@@ -13,13 +13,14 @@
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
 # Michal Žejdl <lachim@emer.cz>, 2019 - 2020.
+# Tereza Žejdlová, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-09-19 17:35 UTC\n"
-"PO-Revision-Date: 2020-09-10 22:23+0200\n"
+"PO-Revision-Date: 2020-10-14 14:55+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -1533,10 +1534,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Alchemist"
-msgstr "Drakonidský mistr meče"
+msgstr "Pouštní alchymista"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:25
@@ -1551,16 +1550,25 @@ msgid ""
 "much so that almost every caravan will hire or train a few alchemists to "
 "maintain a reasonable level of threat at all times."
 msgstr ""
+"Pro pouštní lid je alchymie spíše rozšířením fytologie, kterou praktikují "
+"bylinkáři, než odvětvím filozofie či vědy. Na rozdíl od svých druhů, kteří "
+"se zaměřují na uzdravování a léčení, však mnoho alchymistů využívá různé "
+"rostliny a přirozeně se vyskytující zhouby k přípravě smrtelných jedů. "
+"Ačkoli je toto umění užitečné pro oslabení houževnatých nepřátel, je ze "
+"strany ostatních pouštních lidí sledováno s ostražitostí, kvůli svému "
+"možnému zneužití v intrikářských hrátkách. Tento nástroj také představuje "
+"obrovskou politickou výhodu. Až takovou, že téměř každá karavana najme nebo "
+"vycvičí několik alchymistů, aby vždy mohla disponovat přiměřenou hrozbou."
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Alchemist.cfg:46
 msgid "blowgun"
-msgstr ""
+msgstr "foukačka"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:8
 msgid "Dune Apothecary"
-msgstr ""
+msgstr "Pouštní apatykář"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:25
@@ -1577,13 +1585,21 @@ msgid ""
 "these men possess a special role in supporting the remedial arts of their "
 "kind."
 msgstr ""
+"V drsném pouštním prostředí lze běžně přijít k nemoci či zranění i mimo "
+"bitevní vřavu. Oproti léčitelům z jiných ras, to tak po léčitelích pouštního "
+"lidu vyžaduje zejména mít rozsáhlé znalosti bylin a medicíny. Nedostupnost "
+"magie spolu se skrovnou dostupnou flórou pouště činí velké potíže při léčbě "
+"mnoha nemocí a jedů, které sužují pouštní národy. Apatykáři jsou oproti svým "
+"méně zkušeným druhům obvykle vzdělanější a zcestovalejší, ale jejich "
+"skutečná dovednost spočívá v celkovém umění péče o cenné léčivé rostliny. "
+"Zcela zvláštní úloha těchto mužů při zajištění lékařských umění svého lidu "
+"tak plyne z toho, že pouštní lid by bez těchto nezbytných materií neměl "
+"žádné prostředky k léčení."
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:8
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Blademaster"
-msgstr "Drakonidský mistr meče"
+msgstr "Pouštní mistr šavle"
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:21
@@ -1607,6 +1623,22 @@ msgid ""
 "offensive swordsmanship and are capable of subverting even the strongest "
 "fortifications."
 msgstr ""
+"Pouštní bojovníci se šavlemi jsou známí tím, že hrají hru zvanou „Laeqad“. V "
+"té na sebe nechají vrhat Laeqads – tlusté a robustní rákosí o délce několika "
+"mečů – a pokouší se je rozseknout po délce během letu ve vzduchu. Trik hry "
+"spočívá v tom, že rákos není kruhově symetrický. Většina stonku je poměrně "
+"tvrdá, ale v průřezu se nachází tenká linie, která je měkčí a snáze se "
+"prořezává. Pro i zkušeného bojovníka se šavlí by rozdělení celého Laeqadu po "
+"jeho délce bylo mimořádným úspěchem, vzhledem k tomu, jak přesné zacílení "
+"čepele vůči měkkému místu na rákosu je třeba. Pro skutečného mistra čepele "
+"je však rozdělení několika Laeqadů v rychlém sledu zcela běžné. Někteří jsou "
+"dokonce schopni rozříznout dva nebo tři rákosy současně jediným máchnutím "
+"šavlí.\n"
+"\n"
+"Tato hra má praktičtější dopady i do skutečných bitev. Proti takovému mistru "
+"čepele se jen málokdy jeví obrana protivníka jako dostatečná, ať už je "
+"jakkoli hbitý či dobře obrněný. Takoví válečníci jsou nepochybně vládci "
+"útočného šermu a jsou schopni rozvrátit i ty nejsilnější formace."
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Blademaster.cfg:30
@@ -1615,14 +1647,12 @@ msgstr ""
 #: data/core/units/dunefolk/Soldier.cfg:26
 #: data/core/units/dunefolk/Warmaster.cfg:32
 msgid "scimitar"
-msgstr ""
+msgstr "šavle"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:8
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "Dune Burner"
-msgstr "Drakonid spalovač"
+msgstr "Pouštní podpalovač"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:21
@@ -1636,25 +1666,29 @@ msgid ""
 "applicability of such a substance to warfare and regularly employ fire "
 "spouting weapons to sow chaos among their enemies."
 msgstr ""
+"Často opomíjeným nebezpečím cestování pouští je mrazivý chlad, který v noci "
+"sestupuje na písek. Pouštní lid tomu čelí tím, že obvykle využívá vysoce "
+"hořlavou mízu stromu Sanbaar, která v malém množství hoří pomalu a "
+"kontrolovaně, poskytujíc tak skromné množství tepla a světla. Ve větším "
+"množství je však sanbaarská míza téměř výbušná a hoří extrémně prudce. "
+"Pouštní lidé si rychle uvědomili bojovou použitelnost takové substance a "
+"začali běžně využívat oheň chrlící zbraně k zasévání chaosu do nepřátelských "
+"řad."
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:41
 msgid "tar bomb"
-msgstr ""
+msgstr "dehtová bomba"
 
 #. [female]
 #: data/core/units/dunefolk/Burner.cfg:98
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "female^Dune Burner"
-msgstr "Drakonid spalovač"
+msgstr "Pouštní podpalovačka"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:8
-#, fuzzy
-#| msgid "Elvish Captain"
 msgid "Dune Captain"
-msgstr "Elfí kapitán"
+msgstr "Pouštní kapitán"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:23
@@ -1668,11 +1702,19 @@ msgid ""
 "for most soldiers, but they still readily follow the expert tactical "
 "direction of their captains."
 msgstr ""
+"Kapitáni, kteří tradičně pocházejí ze šlechtických nebo vojenských rodin, "
+"jsou jádrem většiny vojenských čet pouštního lidu. Většina důstojníků je "
+"obvykle vybírána spíše na základě původu než na základě zásluh. Proto jsou "
+"často relativně slabí při boji zblízka, nicméně jsou přiměřeně trénovaní v "
+"taktice. Jejich schopnosti spočívají spíše v dirigování přidělených jednotek "
+"na strategicky výhodné pozice, než v přímém zvyšování morálky. Přítomnost "
+"takového velitele je pro většinu vojáků jen málokdy inspirativní, ale stále "
+"se velmi ochotně podrobují odborným taktickým pokynům svých kapitánů."
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:8
 msgid "Dune Cataphract"
-msgstr ""
+msgstr "Pouštní katafrakt"
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:21
@@ -1689,7 +1731,19 @@ msgid ""
 "these riders in the slightest, and the displaced air of a descending mace is "
 "the last sound they hear."
 msgstr ""
+"Katafrakti patří mezi vynikající jezdce a to takové, kteří se namísto "
+"rychlosti nebo vytvrvalosti cele zaměřili na svou obrovskou údernou sílu. "
+"Tito válečníci, třímající kopí a pro ně tak typické palcáty, útočí "
+"nejčastěji v druhé útočné vlně. Poté, co jsou nepřátelské síly již dost "
+"zaměstnány a oslabeny útokem šermířů, se na ně chystá další děsivá zhouba, "
+"representovaná řadícími se katafrakty, kteří si již chystají svá kopí. Mezi "
+"řadami bojovníků pouštního lidu se vytvoří mezery a tito mocní jezdci jedním "
+"přímým nájezdem prorazí nepřátelské formace, rozsévajíce smrt. Ti, kdo se "
+"pokusí před nimi uprchnout, brzy zjistí, že ani písek, ani kopce tyto jezdce "
+"ani v nejmenším neodradí. A tak je svist dopadajícího palcátu posledním "
+"zvukem, který ti prchající uslyší."
 
+# Tento druh luku se opravdu nenazývá skládaný, ale kompozitní.
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Cataphract.cfg:59
 #: data/core/units/dunefolk/Explorer.cfg:43
@@ -1699,14 +1753,12 @@ msgstr ""
 #: data/core/units/dunefolk/Wayfarer.cfg:52
 #: data/core/units/dunefolk/Windbolt.cfg:40
 msgid "composite bow"
-msgstr "skládaný luk"
+msgstr "kompozitní luk"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:8
-#, fuzzy
-#| msgid "Dwarvish Explorer"
 msgid "Dune Explorer"
-msgstr "Trpasličí průzkumník"
+msgstr "Pouštní průzkumník"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:20
@@ -1719,13 +1771,19 @@ msgid ""
 "longer act only as scouts for probing enemies, but are skilled enough to be "
 "effective flankers or potent shock attackers."
 msgstr ""
+"Pomalu se pohybující karavany v otevřené poušti představují pro bandity či "
+"nájezdníky jasný cíl. Aby je ochránili, zaměstnávají pouštní lidé speciální "
+"válečníky, kteří provádějí průzkum a odrážejí potenciální hrozby. Tito "
+"pohybliví bojovníci při takové práci nejen že chrání své zranitelné "
+"karavany, ale také si pro sebe kradou zásoby domnělých lupičů. Jsou "
+"dostatečně zruční, aby při válečném nasazení nepůsobili jen jako průzkumníci "
+"nepřátelských pozic, ale aby mohli být účinně nasazeni při útoku na křídlech "
+"nebo při překvapivých úderech."
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:14
-#, fuzzy
-#| msgid "female^Necromancer"
 msgid "female^Dune Falconer"
-msgstr "Nekromantka"
+msgstr "Pouštní sokolnice"
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:37
@@ -1744,18 +1802,30 @@ msgid ""
 "the least, forcing them to abandon their efforts on offense in order to "
 "defend themselves properly."
 msgstr ""
+"Přestože je umění sokolnictví mezi pouštními lidmi značně respektováno, je "
+"relativně vzácné kvůli času a dovednostem potřebným k řádnému výcviku "
+"dravých ptáků. Sokolníci nejčastěji používají své ptáky pro sport nebo lov, "
+"zejména pro průzkum výskytu zvěře či vody na otevřených pouštních pláních a "
+"dunách. Stejná inteligence zvířete může být užitečná i pro válečné účely. "
+"Tedy pokud lze sokolníka přesvědčit, aby pro tyto účely riskoval své ceněné "
+"mazlíčky.\n"
+"\n"
+"Když se sokol zapojí do bitvy, může svému pánovi pomoci buď svými ostrými "
+"drápy nebo jej lze poslat výše do vzduchu, aby kroužil nad hlavami a udeřil, "
+"až nepřítel přesune pozornost. Rozdělení pozornosti nepřátelských válečníků "
+"mezi dvě různé fronty může být přinejmenším docela rušivé a lze je tak "
+"donutit k tomu, aby se soustředili na řádnou obranu a upustili tak od svých "
+"útočných snah."
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Falconer.cfg:153
-#, fuzzy
-#| msgid "Falcon"
 msgid "falcon"
-msgstr "Sokol"
+msgstr "sokol"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:8
 msgid "Dune Firetrooper"
-msgstr ""
+msgstr "Pouštní šiřitel ohně"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:22
@@ -1769,25 +1839,32 @@ msgid ""
 "of choice. The resulting destruction is more than enough to justify the use "
 "of such a hazardous chemical."
 msgstr ""
+"Pomocí velmi specifického destilačního procesu je možné vyrobit rafinací "
+"sanbaarské mízy mimořádně hořlavou naftu. Ta hoří ještě prudčeji než míza, "
+"ze které byla odvozena. Taková substance je samozřejmě kvůli svým vysoce "
+"vznětlivým vlastnostem extrémně nebezpečná. Proto se většina lidí vyhýbá "
+"jejímu použití, neboť potenciál vlastního zranění je značný. Přesto si "
+"několik odvážných duší vybralo vrhače plamene plněné naftou jako své zbraně. "
+"Výsledná destrukce je víc než dostatečná, aby zdůvodnila manipulaci s tak "
+"nebezpečnou chemikálií."
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Firetrooper.cfg:95
 #: data/core/units/dunefolk/Scorcher.cfg:42
 msgid "flamethrower"
-msgstr ""
+msgstr "vrhač plamene"
 
 #. [female]
 #: data/core/units/dunefolk/Firetrooper.cfg:149
 msgid "female^Dune Firetrooper"
-msgstr ""
+msgstr "Pouštní šiřitelka ohně"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:8
-#, fuzzy
-#| msgid "Drake Warrior"
 msgid "female^Dune Harrier"
-msgstr "Drakonidský válečník"
+msgstr "Pouštní běžkyně"
 
+# mluví se jen o běžkyních?
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:25
 msgid ""
@@ -1802,13 +1879,21 @@ msgid ""
 "thrust of spears is often enough to severely cripple the target, allowing "
 "the main Dunefolk force to close in and finish the job."
 msgstr ""
+"Ačkoli mohou běžci při operacích proti nepřátelům plnit podobnou roli jako "
+"chodci, jejich charakteristika je ve skutečnosti odvozena od jestřábů, které "
+"používají k udržování kontaktu s hlavními voji armád pouštních lidí. "
+"Nejčastěji je lze nalézt operující za nepřátelskými liniemi, kde mají "
+"obvykle za úkol získávat užitečné informace o pohybech nepřátelských vojsk. "
+"To samo o sobě postačuje k tomu, aby většina pouštních armád přechytračila "
+"své nepřátele. Když však k tomu situace uzraje, shromáždí se tito agilní "
+"válečníci a udeří do týlu slabě chráněných zásobovacích linií nebo na křídla "
+"vojsk. Déšť bolas doprovázený tlakem hrotů kopí je často dostatečný, aby "
+"vážně ochromil cíl a umožnil hlavním silám pouštních lidí dokončit práci."
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:8
-#, fuzzy
-#| msgid "Duelist"
 msgid "Dune Herbalist"
-msgstr "Duelista"
+msgstr "Pouštní bylinkář"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:25
@@ -1826,13 +1911,24 @@ msgid ""
 "of the various flora and fauna that supply their work. Hardened by their "
 "travels, many of these men are even able to heal themselves."
 msgstr ""
+"Jako osoby odpovědné za péči o nemocné a zraněné pouštního lidu, disponují "
+"bylinkáři jak dovednostmi k léčení různých potíží, tak dovednostmi pro "
+"hledání a sbírání podpůrných bylin. Jejich motivace je rozličná. Někteří to "
+"pojímají jako dobrodružství či jako stálý zdroj příjmů, zatímco jiní to "
+"berou jako povinnost vůči svému společenství. Bez ohledu na jejich motivaci "
+"jsou tito léčitelé neocenitelnou součástí pouštní society. Té jsou obzvláště "
+"užiteční pro svou schopnost zvládat rychlé ošetření uprostřed bitvy nebo při "
+"cestování v poušti.\n"
+"\n"
+"I v rámci kočovného pouštního lidu patří bylinkáři mezi ty nejzcestovalejší, "
+"neboť se hojně vydávají hledat nejrůznější flóru a faunu, využitelnou pro "
+"jejich práci. Zoceleni svými cestami, jsou mnozí tito muži schopni provádět "
+"i samoléčbu."
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:8
-#, fuzzy
-#| msgid "Drake Warrior"
 msgid "Dune Horse Archer"
-msgstr "Drakonidský válečník"
+msgstr "Pouštní jízdní lučištník"
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:20
@@ -1845,13 +1941,17 @@ msgid ""
 "long-ranged arrows is of great use to maintain communication among the "
 "Dunefolk armies."
 msgstr ""
+"I když je jich relativně málo, preferují někteří jezdci v bitvě lukostřelbu. "
+"Svižní a nepolapitelní, tito jezdci jsou experty v obtěžování méně "
+"pohyblivých nepřátel svým krupobitím šípů a v lovení prchajících nepřátel "
+"zdálky. I když obvykle nejsou vycvičeni pro infiltraci nebo špionáž, je "
+"schopnost těchto jezdců předávat zprávy, připevněné na jejich dalekonosné "
+"šípy, velmi užitečná pro udržení komunikace mezi armádami pouštního lidu."
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:8
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "Dune Luminary"
-msgstr "Drakonid spalovač"
+msgstr "Pouštní osvícenec"
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:25
@@ -1870,11 +1970,23 @@ msgid ""
 "proven, but the fact remains that some Luminaries seem to hold much more "
 "influence than their abilities should afford."
 msgstr ""
+"Na první pohled není zcela jasné, co odlišuje osvícence od jiných léčitelů "
+"pouštního lidu. Osvícenec může být ve srovnání s běžnými bylinkáři nebo "
+"apatykáři určitě o něco vzdělanější, zcestovalejší nebo bojově zdatnější, "
+"ale rozdíl je v nejlepším případě mírný. I přesto je „osvícený“ formální "
+"titul, udělovaný nejvyššímu řádu pouštních léčitelů, který přináší těmto "
+"mužům nejen obrovskou úctu, ale i závist.\n"
+"\n"
+"Existují určité spekulace, že mezi osvícenými existuje tajný řád. Tito "
+"takzvaní „eminenti“ shromažďují velké množství zakázaných znalostí a skrytě "
+"radí mnoha vůdcům pouštního lidu. Existence řádu nikdy nebyla prokázána. "
+"Nicméně existují náznaky, že někteří osvícení mají mnohem větší vliv, než by "
+"jim vzhledem k jejich schopnostem náleželo."
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:11
 msgid "Dune Marauder"
-msgstr ""
+msgstr "Pouštní nájezdník"
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:30
@@ -1891,6 +2003,17 @@ msgid ""
 "For this reason, they are sometimes hired by small armies or wealthier "
 "caravans as a deterrent to unwanted raids."
 msgstr ""
+"Jsou takoví, kterým vyhovuje žít životem nájezdníka. Takoví si mohou dokonce "
+"vytvořit své vlastní klany podobně smýšlejících jedinců. Stále šmejdí po "
+"poušti, hledají neopatrné cestovatele nebo zranitelné karavany a živí se "
+"unášením a kradením. Nájezdníci, nemajíce žádnou zvláštní specializaci, "
+"nejsou ani nejsilnějšími válečníky, ani nejobratnějšími lučištníky. Přesto "
+"patří kvůli svým skvělým manévrovacím schopnostem k jedněm z "
+"nejnebezpečnějších nepřátel v poušti. Koordinovaný útok nájezdníků může "
+"vyhladit středně velké tábory, dříve než se rozhoupou k reakci. A tam, kde "
+"jim proti silnějším nepřátelům chybí hrubá síla, pomůže partyzánská taktika. "
+"Z těchto důvodů si je někdy najímají jako odstrašující prostředek malé "
+"armády nebo bohatší karavany."
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Marauder.cfg:60
@@ -1901,10 +2024,8 @@ msgstr "louč"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
-#, fuzzy
-#| msgid "Dragoon"
 msgid "Dune Paragon"
-msgstr "Dragoun"
+msgstr "Předák pouštního lidu"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:22
@@ -1931,18 +2052,36 @@ msgid ""
 "acuity who may then be considered as candidates to lead the next generation "
 "of Dunefolk."
 msgstr ""
+"V mnoha pouštních městských státech je výběr nové generace vůdců dlouhý "
+"proces, který probíhá po mnoho let. V každé generaci je mezi šlechtou "
+"vybráno několik obzvláště talentovaných mladých lidí a je jim věnováno "
+"speciální úsilí. Jejich život je jen jídlo, spánek a trénink. Tito válečníci "
+"se šermem učí žít, učí dýchat. Šerm se tam stává víc než jen jejich "
+"dovedností, stává se jejich základní identitou. Od dospívání jsou po deset "
+"let intenzivním tréninkem připravováni k závěrečnému testu. Tím je série "
+"duelů na život a na smrt mezi dvojicemi těchto bojovníků. Když se prach "
+"zvířený bojem usadí a proces je u konce, zbyde posledních osm. Těmto mužům "
+"je pak udělen titul Kal či souhrnně Kalai.\n"
+"\n"
+"Zatímco se mezi pouštím lidem vyžaduje, aby velcí vůdci byli mistry čepele, "
+"vládnoucí kasta musí znát mnohem víc než pouhý šerm. Po drtivém drillu "
+"obvykle následuje buď několikaleté toulání se po pouštích, nebo trénování "
+"mysli v oblasti věd. Účelem toho je najít vlastní cestu k osvícení. Ať už si "
+"vybrali jakkýkoli způsob, na konci druhého tréninkového období se zbývající "
+"Kalai vrátí a předvádí své znalosti starším ze současné vládnoucí kasty. Ti, "
+"kteří jsou uznáni za tomu hodné, jsou pak nazýváni předními příslušníky, "
+"válečníky velké síly a soustředěnosti, kandidáty na vůdce následujících "
+"generací pouštního lidu."
 
 #. [attack]: type=impact
 #: data/core/units/dunefolk/Paragon.cfg:43
 msgid "pommel strike"
-msgstr ""
+msgstr "pěstní útok"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:11
-#, fuzzy
-#| msgid "Direwolf Rider"
 msgid "Dune Raider"
-msgstr "Jezdec na pravlku"
+msgstr "Pouštní lupič"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:29
@@ -1956,11 +2095,20 @@ msgid ""
 "Dunefolk, capable of outpacing nearly anything they might encounter in the "
 "sandy deserts."
 msgstr ""
+"I když je v organizovaných armádách nalezneme jen zřídka, jsou u pouštního "
+"lidu lupiči, kteří během nocí přepadávají karavany a tábory svých rivalů, "
+"obvyklou záležitostí. Během svých akcí jen vzácně používají konfrontaci "
+"přímou silou. Největší důraz kladou na rychlost. Používají rychlé šokující "
+"útoky, při kterých vytvářejí během chvilky co největší chaos. Ten jim slouží "
+"k tomu, aby se bleskově dostali dovnitř i ven z nepřátelských postavení bez "
+"rizika protiútoku. Lupiči patří k těm nejrychlejším z pouštních jezdců. Jsou "
+"schopni překonat téměř jakoukoli překážku, na níž mohou v pouštních dunách "
+"narazit."
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:8
 msgid "Dune Rider"
-msgstr "Dunový jezdec"
+msgstr "Pouštní jezdec"
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:20
@@ -1975,22 +2123,23 @@ msgid ""
 "is what allows these horsemen to be so effective and versatile out on the "
 "rolling dunes."
 msgstr ""
+"Pouštní lidé jsou proslavení chovatelé koní, kteří chovají mnoho různých "
+"plemen pro nejrůznější účely. Koně používaní na těžkou práci jsou chováni "
+"pro sílu, zatímco ti, kteří jsou používáni na cestách či v karavanách, jsou "
+"chováni pro vytrvalost. I když jsou pro válečné využití obvykle nejlepší "
+"koně s kombinací různých vlastností, tak schopnost snadného a rychlého "
+"pohybu v písku má zásadní význam. Jezdci na těchto koních fungují primárně "
+"jako zvědové a poslové, příležitostně pak jako podpůrné síly pro oslabené "
+"linie. Klíčovým rysem, který těmto jezdcům umožňuje být tak efektivní a "
+"všestranní na sypkých dunách, je manévrovatelnost."
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:8
 msgid "Dune Rover"
-msgstr ""
+msgstr "Pouštní tulák"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Jundi in many ways represent the ideal Khalifate unit; flexible, mobile, "
-#| "equally effective in defense and offense as well as in ranged or close "
-#| "combat. They are most comfortable operating in terrain and environments "
-#| "common to them; the deserts and hills of their southern lands. Moreover "
-#| "they fight best at dawn or dusk, corresponding to the time when desert "
-#| "temperatures are the most reasonable."
 msgid ""
 "Originating from the nomadic wanderers of the open deserts, rovers are the "
 "representation of the most well-balanced Dunefolk soldier: flexible, mobile, "
@@ -2001,16 +2150,19 @@ msgid ""
 "readily to warfare. Their unique trait of fighting best at dawn or dusk "
 "corresponds with the time when desert temperatures are the most habitable."
 msgstr ""
-"Judni je v mnoha směrech ideální jednotkou; přizpůsobivou, pohyblivou, "
-"účinnou stejnou měrou v útoku či obraně jak nablízko, tak na dálku. "
-"Nejraději se pohybují v krajině, která je jim blízká; pouště a hory jejich "
-"jižních zemí. Ještě raději mají boje na úsvitu či za soumraku, což odpovídá "
-"podmínkám, kdy je teplota v poušti nejpřijatelnější."
+"Pocházejíce z kočovných poutníků otevřených pouští, reprezentují tuláci tu "
+"nejvyváženější jednotku vojsk pouštních lidí. Jsou přispůsobiví, pohybliví a "
+"účinní stejnou měrou v útoku či obraně, jak nablízko, tak na dálku. Jsou to "
+"zkušení lovci a stopaři, otužilí obyvatelé pouští a kopců, co tvoří jejich "
+"domovinu. Jakkoli jim chybí výcvik pravidelných vojsk, dovednosti, které "
+"tito tuláci používají k přežití v poušti, se snadno přenesou do války. "
+"Jejich jedinečná vlastnost bojovat nejlépe za úsvitu nebo za soumraku, "
+"odpovídá době, kdy jsou teploty na poušti nejvíce snesitelné."
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:9
 msgid "Dune Scorcher"
-msgstr ""
+msgstr "Pouštní spalovač"
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:22
@@ -2023,20 +2175,24 @@ msgid ""
 "in their work, these archers relish igniting great swaths of flame on the "
 "battlefield, though this sometimes also results in unintended friendly fire."
 msgstr ""
+"Označení spalovač není odvozeno od zničující destrukce, kterou způsobují v "
+"nepřátelských formacích, ale od jejich vlastního sežehnutého zjevu. Při "
+"nekonečných experimentech se svým vybavením překročí v určitém okamžiku "
+"většina spalovačů nevyhnutelně své hranice a popálí se vysoce těkavou "
+"sanbaarskou mízou, kterou plní své zbraně. Tito lučištníci, nosíce své "
+"popáleniny jako známku hrdosti na svou práci, si na bojišti libují v chrlení "
+"velkých plamenů, jakkoli to někdy vede i k nezamýšleným ztrátám ve vlastních "
+"řadách."
 
 #. [female]
 #: data/core/units/dunefolk/Scorcher.cfg:95
-#, fuzzy
-#| msgid "female^Necromancer"
 msgid "female^Dune Scorcher"
-msgstr "Nekromantka"
+msgstr "Pouštní spalovačka"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:8
-#, fuzzy
-#| msgid "Saurian Skirmisher"
 msgid "female^Dune Skirmisher"
-msgstr "Ještěrácký rváč"
+msgstr "Pouštní rváčka"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:21
@@ -2077,13 +2233,14 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Sky_Hunter.cfg:151
 msgid "eagle"
-msgstr ""
+msgstr "orel"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:8
 msgid "Dune Soldier"
-msgstr "Dunový voják"
+msgstr "Pouštní voják"
 
+# Pravidelné postavení určitě není ten správný vojenský termín, ale lepší jsem nenašel ani nevymyslel.
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:20
 msgid ""
@@ -2096,11 +2253,19 @@ msgid ""
 "spaced pattern, allowing them to assault and overwhelm clustered enemy lines "
 "by engaging them in quasi-single combat."
 msgstr ""
+"Zatímco většina kast pouštních lidí nachází praktické uplatnění i mimo rámec "
+"války, existuje skupina vojáků, trénovaná obvykle městy a karavanami, která "
+"slouží bezvýhradně vojenským účelům. Intenzivním trénováním šermířských "
+"dovedností se tito válečníci učí orientovat v obtížných těsných soubojích na "
+"blízko a stávat se tak pány soubojů s nepřáteli. V typická formaci pouštních "
+"lidí se využívá tato obratnost tak, že vojáci jsou rozmístěni v pravidelném "
+"postavení, což jim umožňuje útočit a překonávat sevřené nepřátelské šiky "
+"jejich zatažením do souboje skoro jako muže proti muži."
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:8
 msgid "Dune Spearguard"
-msgstr ""
+msgstr "Pouštní kopinická stráž"
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:20
@@ -2116,13 +2281,21 @@ msgid ""
 "combat than their sword-wielding brethren, they are highly skilled with "
 "spear and shield and more than capable of repelling most advances."
 msgstr ""
+"Bitevní vřava vyžaduje různé úrovně zvládnutí útoku a obrany. Pouštní lid si "
+"bezpochyby z obou věcí cení více útoku a většinu svého úsilí obvykle "
+"zaměřuje na výcvik zručných šermířů. Přesto se v každé skupině válečníků "
+"najde malý počet vojáků, kteří se rozhodnou odložit šavle a místo útočení "
+"plnit nezbytnou roli obránců. Chráníce stěžejní zásobovací linie a "
+"strategická postavení, jsou kopinické stráže nejčastěji umístovány za hlavní "
+"linii a slouží jako podpůrná síla nebo odrazující prostředek při útocích na "
+"křídlech. I když tito bojovníci mají oproti svým šermířským bratřím menší "
+"tendenci vstupovat do bezprostředního boje, ovládají svá kopí a štíty velmi "
+"dovedně a jsou více než schopní odrazit většinu výpadů."
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:8
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Spearmaster"
-msgstr "Drakonidský mistr meče"
+msgstr "Pouštní mistr kopiník"
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:21
@@ -2146,14 +2319,32 @@ msgid ""
 "distinction, it is still a modicum of recognition for those who were "
 "prepared to die as nameless martyrs to protect their brethren."
 msgstr ""
+"V armádách pouštních lidí mají nejvyšší prestiž mistrovští šermíři, kteří "
+"vedou každý útok. Ti, kdo vládnou oštěpem a štítem, obvykle plní v boji "
+"nejméně atraktivní role a přestože jsou za svou bojovou službu ctěni, bývají "
+"do značné míry opomíjeni na poli slávy a uznání. Když útok pouštních lidí "
+"selže a musí být proveden ústup, je ke krytí nepřátelského protiútoku "
+"obvykle nasazena linie kopinické stráže. Jakkoli je jejich obrana "
+"impozantní, časem bývá linie štítů nevyhnutelně prolomena a většina obránců "
+"skončí v chřtánu smrti. A i když některý obránce náhodou přežije a podaří se "
+"mu dostat zpět k vlastním, do přeskupující se armády, je často pokárán za "
+"to, že nezůstal na pozici a nezemřel se zbytkem svých nejmenovaných bratří. "
+"Nicméně po menším vyplísnění je válečník přijat zpět, přinášeje si své těžce "
+"získané zkušenosti do další bitvy.\n"
+"\n"
+"Mistr kopiník není formální název. Je to ale název, kterým příslušníci "
+"kopinické stráže nazývají ty, kterým se podařilo vyváznout z obvykle "
+"sebevražedně nasazených obranných linií, co pouštní lidé používají k pokrytí "
+"ústupů. Ačkoli to sotva lze brát jako termín chvály či vyznamenání, skrývá "
+"se v něm alespoň špetka uznání pro ty, co byli pro ochranu svých bratří "
+"připraveni zemřít jako bezejmenní mučedníci."
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:8
-#, fuzzy
-#| msgid "female^Fugitive"
 msgid "female^Dune Strider"
-msgstr "Uprchlice"
+msgstr "Pouštní chodkyně"
 
+# Mluví se jen o chodkyních?
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:21
 msgid ""
@@ -2169,6 +2360,17 @@ msgid ""
 "striders are fairly fragile in direct combat and are easily taken down if "
 "left exposed."
 msgstr ""
+"Útočná vojenská síla pouštního lidu je limitována jednou hlavní nevýhodou. "
+"Organizované síly pouštního lidu bývají poměrně pomalé. Proto mají nepřátelé "
+"často možnost se přeskupit a přivolat posily. A pak je další útok mnohem "
+"obtížnější. Aby tomu čelili, vyměnili chodci své původní praky za těžká "
+"bola, kterými mohou ustupující linie druhé strany zpomalit a zabránit jim v "
+"nerušeném úniku. Stejný způsob boje lze použít i v opačném scénáři, při "
+"ústupu pouštních lidí. Postupující nepřátelská armáda může být zbržďována, "
+"což umožní zraněným pouštním válečníkům se vzpamatovat. Tato taktika nese "
+"své riziko, protože i když jsou chodci těžko polapitelní, tak v přímé "
+"konfrontaci jsou celkem křehcí a pokud jsou ponecháni bez krytí, lze je "
+"snadno přemoci."
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:8
@@ -2189,12 +2391,11 @@ msgid ""
 "stragglers."
 msgstr ""
 
+# Sice originál svádí k meči, ale dalších popisů se jedná o šavli.
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:8
-#, fuzzy
-#| msgid "Swordsman"
 msgid "Dune Swordsman"
-msgstr "Bojovník s mečem"
+msgstr "Pouštní bojovník se šavlí"
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:20
@@ -2211,16 +2412,28 @@ msgid ""
 "accuracy, a contingent of of swordsmen is enough to crack even the sternest "
 "of defenses."
 msgstr ""
+"V přímých střetech velkých armád čelí pouštní lid buď semknuté štítové "
+"hradbě nebo silně opevněným nepřátelským pozicím. Úder proti těmto vysoce "
+"organizovaným frontám může být docela náročný. V nepřátelských formacích "
+"mohou být mezi štíty a brněními jen malé a dočasné mezery, ve kterých hrozí "
+"protiúdery od oštěpů a projektilů obránců. Šermířské umění pouštního lidu "
+"tak klade velký důraz na sílu a ještě více na přesnost seku. Válečník může "
+"přijít jen k jedné šanci, kdy zaútočit na nepřítele. Ale zkušený bojovník se "
+"šavlí si dokáže počkat na příležitost a spočítat si, kdy udeřit. S "
+"vypilovanou, takřka nadpřirozenou přesností je tak jednotka bojovníků se "
+"šavlemi schopna prolomit i tu nejsevřenější obranu."
 
+# Nejsem odborník v šermířských technikách, může to být nepřesně.
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:27
 msgid "forceful scimitar strike"
-msgstr ""
+msgstr "útočný sek šavlí"
 
+# Nejsem odborník v šermířských technikách, může to být nepřesně.
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:36
 msgid "balanced scimitar slash"
-msgstr ""
+msgstr "odsek šavlí"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:8
@@ -2538,6 +2751,13 @@ msgid ""
 "Elvish archers are still effective combatants, especially when fighting from "
 "the safety of their forests."
 msgstr ""
+"Většina elfů, kteří jsou především sběrači a lovci, se od útlého věku učí "
+"střílet z luku, aby se stali zdatnými lučištníky. Kromě toho, že se jedná "
+"o praktickou dovednost, je lukostřelba běžnou kratochvílí a pro pobavení "
+"diváků i účastníků se pořádá hodně soutěží. V době války se tato schopnost "
+"snadno upotřebí v bitvě, protože mnoho elfů si vybere luk jako svou zbraň. "
+"I když elfí lučištníci nejsou tak statní, jako jejich protějšky u lidí nebo "
+"skřetů, přesto bojují účinně, zvlášť pokud útočí z bezpečí svých lesů."
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:80
@@ -2717,6 +2937,12 @@ msgid ""
 "react and counter. Most elves can learn the basics of swordplay relatively "
 "quickly and will readily pick up the blade when confronted with battle."
 msgstr ""
+"Šerm je mezi elfy nejčastěji využíván hraničáři a pomezními strážemi, které "
+"brání hlavně lesy a příležitostněji slouží jako čety, jež pronikají na jiná "
+"území. Elfské šermířství je známé pro svůj důraz na rychlé, hbité rány, "
+"které jsou sice slabší než od lidských nebo skřetích  válečníků, zato ale "
+"ponechávají méně času na reakci a odpor. Většina elfů se dokáže naučit "
+"základy šermu relativně rychle a když čelí bitvě, pohotově tasí čepel."
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
@@ -3011,6 +3237,18 @@ msgid ""
 "these riders are the oft unsung heroes of war, left supporting their "
 "brethren from the back lines."
 msgstr ""
+"Převaha partyzánské taktiky ve strategii elfů vede k velkému důrazu na "
+"zajištění vysoce pohyblivých jednotek, které jsou schopny bojovat na "
+"proměnlivém bitevním poli. Tento způsob vedení války vyžaduje rychlé spojení "
+"mezi nevelkými bojujícími skupinami a schopnost rychle přesouvat oddíly mezi "
+"oblastmi bojů. Zkušení elfí jezdci to dobře ví, a tak věnují většinu svého "
+"času zlepšování jezdeckého umění, spíše než jednotlivých bojových "
+"dovedností. Rychlost, kterou se ženou skrz les, by byla pro kterékoli jiné "
+"jezdectvo sebevražedná a oni jsou dost houževnatí na to, aby jeli bez "
+"odpočinku dva nebo tři dny v kuse. Přestože výzvědná služba a spojení, které "
+"tito jezdci zajišťují, jsou neocenitelné, nedostatek mimořádných bojových "
+"schopností a účasti v přední linii znamená, že jsou často neopěvovanými "
+"válečnými hrdiny, kterým zbývá podporovat své bratry ze zadních řad."
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
@@ -3031,6 +3269,16 @@ msgid ""
 "support units and are adept at quickly transferring information between "
 "patrols, whom they also reinforce when necessary."
 msgstr ""
+"I když jsou koně chovaní lesními elfy mnohem rychlejší a čilejší než koně "
+"běžní, mají sklon být výrazně těžší na zvládnutí. Zabere to mnoho let, "
+"vycvičit tyto vrtošivé poníky, ale jak jsou jednou ochočení, pak patří mezi "
+"nejvěrnější koně. Tato jedinečná zvířata umožňují elfím jezdcům v otevřeném "
+"terénu předstihnout většinu ostatního jezdectva a i skrze husté lesy jet "
+"v plném trysku. Ačkoli tito jezdci umí slušně zacházet s meči a luky, jejich "
+"největší účinnost spočívá v jejich schopnosti pátrat a vyzrát nad "
+"nepřátelskými silami. Elfí průzkumníci jsou nejčastěji využíváni jako "
+"poslové nebo podpůrné jednotky a jsou zdatní v rychlém přenosu zpráv mezi "
+"hlídkami, které v případě potřeby také posílí."
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
@@ -3690,6 +3938,13 @@ msgid ""
 "in ornate plate armor and granted some of the finest weaponry that human "
 "craftsmen can offer."
 msgstr ""
+"Generálové jako vůdci svých armád zodpovídají za ochranu velkých nebo "
+"důležitých oblastí v královstvích, kterým přísahali věrnost. Generálové, "
+"dobře obeznámení s válečným uměním, mohou nasměrovat i ty nejméně zkušené "
+"rekruty, aby strategicky udeřili tam, kde nejsou šance vysoké, a dosáhli "
+"vítězství. Uznáváni šlechtou i občany, jsou vybaveni zdobeným plátovým "
+"brněním a vyzbrojeni nejlepšími zbraněmi, které mohou lidští řemeslníci "
+"nabídnout."
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
@@ -3842,6 +4097,11 @@ msgid ""
 "more than made up for by their superior knowledge and training in military "
 "strategy."
 msgstr ""
+"Poručíci jsou velmi uznávaní velící důstojníci lidských armád. Často je "
+"vidět, jak vedou menší nájezdy a řídí úkony na bitevních polích. Jsou "
+"cvičeni jak v boji s mečem, tak ve střelbě kuší. Nevynikají ale ani v jednom "
+"a také jsou o něco méně odolní než válečníci jiných ras. To je však více než "
+"vyváženo jejich vynikajícími znalostmi a výcvikem ve vojenské strategii."
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
@@ -3978,7 +4238,7 @@ msgstr ""
 "primárním úkolem je ochrana královské rodiny a palácových prostor. Často "
 "jsou posíláni na mise velkého významu, spíše než nájemní žoldáci, neboť "
 "požívají veliké důvěry svých zaměstnavatelů. Jejich největším přínosem je "
-"jejich spolehlivost a mistrovství v boji na blízko, kterým jsou proslaveni. "
+"jejich spolehlivost a mistrovství v boji na blízko, kterými jsou proslaveni."
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:22
@@ -5252,22 +5512,16 @@ msgstr "Sokol"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/monsters/Falcon.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Seen as status symbols of the nobles, falcons are precious possessions "
-#| "normally used for sport. The same techniques are employed to rend and "
-#| "tear the enemies of the Khalifate, and their great speed is a boon to "
-#| "scouting out the land."
 msgid ""
 "Seen as status symbols of the nobles, falcons are precious possessions "
 "normally used for sport. The same techniques are employed to rend and tear "
 "foes on the battlefield, and their great speed is a boon to scouting out the "
 "land."
 msgstr ""
-"Chápáni jako symbol šlechty, sokoli jsou velmi cenným vlastnictcvím a "
-"používají se především pro lov. Stejně tak se ale používají pro trhání "
-"nepřátel Chalífátu a jejich velká rychlost je velkou výhodou při zkoumání "
-"terénu."
+"Sokoli, považovaní za stavovské symboly šlechty, jsou vzácným majetkem běžně "
+"používaným pro sport. Se stejným nasazením se ale využívají pro napadání a "
+"trhání nepřátel na bojišti, navíc je jejich velká rychlost přínosem i pro "
+"průzkum."
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
@@ -5425,6 +5679,17 @@ msgid ""
 "carapace is very resistant to normal blade strikes or piercing attacks, but "
 "can be broken with heavy blows."
 msgstr ""
+"Už i nedospělí obří škorpióni disponují jedním z nejúčinnějších známých "
+"jedů. Protože je jed škorpiónů velmi ceněn vrahy i apatykáři, vydávají se "
+"tato mláďata lovit do divočiny odvážní lovci, kteří v nich vidí výhodný "
+"zdroj, kterým se dá přijít k pěkným pár mincím. I v nedospělém věku však "
+"tyto škorpióňata mohou být rychlejší než většina mužů a zasadit smrtící "
+"bodnutí. Horší však je, že se mohou sdružovat do poměrně velkých doupat. "
+"Rozhněvání zdánlivě osamělého škorpioněte proto může vést k tomu, že se jich "
+"ze země vyplazí celý roj a rychle se tak z lovce stane lovený. Jsou chráněna "
+"pevnou skořápkou, která se stárnutím vytvrzuje a stává se odolnější. Tento "
+"krunýř je velmi odolný proti běžným sekům čepelí či proti bodnutím, ale může "
+"být zničen silnými údery."
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Giant_Spider.cfg:4
@@ -5450,14 +5715,12 @@ msgstr "pavučina"
 #. [unit_type]: id=Jinn, race=monster, description=
 #: data/core/units/monsters/Jinn.cfg:4
 msgid "Jinn"
-msgstr ""
+msgstr "Džin"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Jinn.cfg:25
-#, fuzzy
-#| msgid "faerie fire"
 msgid "desert fire"
-msgstr "kouzelný oheň"
+msgstr "pouštní oheň"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -5483,7 +5746,7 @@ msgstr ""
 #. [unit_type]: id=Roc, race=monster, description=
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
-msgstr ""
+msgstr "Pták Noh"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
@@ -5652,7 +5915,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/nagas/Dirkfang.cfg:38
 msgid "chakri"
-msgstr ""
+msgstr "čakri"
 
 # nagini - ženský rod
 #. [female]
@@ -5752,10 +6015,8 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Ophidian.cfg:28 data/core/units/nagas/Sicarius.cfg:30
-#, fuzzy
-#| msgid "war blade"
 msgid "curved blade"
-msgstr "válečná čepel"
+msgstr "zakřivená čepel"
 
 #. [female]
 #: data/core/units/nagas/Ophidian.cfg:88
@@ -5766,10 +6027,8 @@ msgstr "Myrmidoňanka"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Ringcaster"
-msgstr "Nága bojovník"
+msgstr "Nága vrhač prstenců"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:17
@@ -5779,28 +6038,29 @@ msgid ""
 "are useful for throwing, but the rejected blades make a good fist-load "
 "weapon, similar to a sharp-bladed tekko or knuckleduster."
 msgstr ""
+"Čakram, který je větší verzí kruhové čepele čakri, je charakteristickou "
+"zbraní jižních nág, včetně proslulých vrhačů prstenců. Dobře vyvážené "
+"čakramy jsou vhodné na vrhání. Ale i pro vrh nevhodné čepele udělají mnoho "
+"řemesla jako zbraň úderná, působící podobně jako jiné pěstní úderníky s "
+"ostrou čepelí."
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Ringcaster.cfg:33
 #: data/core/units/nagas/Ringcaster.cfg:42 data/core/units/nagas/Zephyr.cfg:50
 #: data/core/units/nagas/Zephyr.cfg:59
 msgid "chakram"
-msgstr ""
+msgstr "čakram"
 
 # nagini - ženský rod
 #. [female]
 #: data/core/units/nagas/Ringcaster.cfg:93
-#, fuzzy
-#| msgid "Nagini Fighter"
 msgid "Nagini Ringcaster"
-msgstr "Nagini bojovnice"
+msgstr "Nagini vrhačka prstenců"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:4
-#, fuzzy
-#| msgid "Naga Warrior"
 msgid "Naga Sicarius"
-msgstr "Nága válečník"
+msgstr "Sikarián"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
@@ -5816,13 +6076,21 @@ msgid ""
 "experienced mercenaries know perfectly well that the best methods for "
 "generating money are those that do not place themselves in danger."
 msgstr ""
+"I když se někdy sikariáni nechávají najímat do řad žoldnéřů pouštního lidu, "
+"častěji figurují jako strážci obchodních stezek a zdrojů surovin v blízkosti "
+"vodních cest. Za patřičný poplatek nebo výměnu zboží zaručí sikariáni "
+"bezpečné cestování nebo volný přístup k hodnotným zdrojům na svém území. "
+"Pokud se dohoda nezdaří, stává se sikarián hrůzostrašným nepřítelem. A to ne "
+"kvůli své vlastní bojové síle, nýbrž kvůli síle četných spojenců, které může "
+"povolat k potlačení jakékoli potenciální nepříjemnosti. Sikariáni jsou "
+"zkušení žoldnéři, kteří dokážou být v čase války, když je to nezbytné, i "
+"schopnými válečníky. A velmi dobře vědí, že nejlepšími metodami pro "
+"získávání peněz jsou ty, které je neohrožují."
 
 #. [female]
 #: data/core/units/nagas/Sicarius.cfg:90
-#, fuzzy
-#| msgid "Nagini Warrior"
 msgid "Nagini Sicarius"
-msgstr "Nagini válečnice"
+msgstr "Sikariánka"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
@@ -5870,11 +6138,10 @@ msgstr ""
 
 #. [unit_type]: id=Naga Zephyr, race=naga
 #: data/core/units/nagas/Zephyr.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Zephyr"
-msgstr "Nága bojovník"
+msgstr "Zefyrán"
 
+# V češtině nemáme výraz pro duch v ženském rodě (např. na rozdíl od hebrejštiny). A příběh o Zefře na mě působí žensky. Takže jsem musel zvolit jiný výraz pro Spirit.
 #. [unit_type]: id=Naga Zephyr, race=naga
 #: data/core/units/nagas/Zephyr.cfg:18
 msgid ""
@@ -5916,14 +6183,48 @@ msgid ""
 "thrown blade, this doesn't mean they are weak in melee combat, as the "
 "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgstr ""
+"Jižní nágy si vypráví zvláštní příběh o Osnově větru Zefře a éterickém "
+"čakramu:\n"
+"\n"
+"V dávné minulosti existoval držitel čakramů, který byl posedlý svými "
+"legendárními dovednostmi. Říká se, že dokázal rozbít samotné moře přívalem "
+"čepelí, porazit sto nepřátel, aniž by se k němu jediný přiblížil a odrazit "
+"tisíc šípů, aniž by ho jediný zasáhl. Byl nazýván Xylrix (Bouře) a byl to "
+"válečník, jehož arogance byla stejně veliká jako jeho talent. Byl vždy více "
+"než ochotný chlubit se svou zdatností každému jednomu z těch, kdo by ho "
+"sledovali. Jednoho dne, když se předváděl skupině mladých nagini, vybral si "
+"jako cíl posvátný strom Allnai.\n"
+"\n"
+"„Sledujte,“ zařval a rozdělil strom přímo na dvě části.\n"
+"\n"
+"V tu chvíli ho obklopil velký vítr a v jeho uších se ozval hlas Osnovy "
+"větru: „Myslíš si, že jsi mocný, když jsi zabil mého nešťastného potomka? I "
+"když máš talent, žádný smrtelník by si neměl pohrávat s božstvím, které ho "
+"vede. “\n"
+"\n"
+"Xylrix odpověděl: „Pojď, skrytá. Nebojím se. Žádná zbraň, ocel, voda ani "
+"vítr neobstojí před mými čepelemi.“\n"
+"\n"
+"Vítr vířil stále rychleji a v přívalu síly vichřice se točil a točil v "
+"krouživém tanci zuřivosti. Xylrix cítil, jak je zvedán ze země a otáčen "
+"ohromnou rychlostí, vydán na milost a nemilost hněvu Zefry. S tváří sevřenou "
+"hrůzou upustil své čepele. A najednou to ve vířící bouři uviděl – rotující "
+"pohyb kruhových čakramů, tvořených samotným větrem.\n"
+"\n"
+"Jak rychle bouře přišla, tak i zmizela. Zanechala Xylrixe, stojícího a "
+"zamyšleného nad svými rozbitými zbraněmi. Když se konečně o mnoho dní "
+"později vrátil domů, oznámil své nové jméno: od teď je Zefyr, válečník, "
+"který slouží větru, na kterém létají jeho čepele.\n"
+"\n"
+"I když staré příběhy vedou elitní válečníky této linie především k "
+"soustředění se na vrh čepelí, neznamená to, že v boji zblízka neobstojí. "
+"Neboť i nevyvážený čakram lze vylepšit hroty a menšími čepelemi.\n"
 
 # nagini - ženský rod
 #. [female]
 #: data/core/units/nagas/Zephyr.cfg:110
-#, fuzzy
-#| msgid "Nagini Fighter"
 msgid "Nagini Zephyr"
-msgstr "Nagini bojovnice"
+msgstr "Zefyránka"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
@@ -5978,6 +6279,14 @@ msgid ""
 "brethren to finish off on the frontlines. While typically poorly equipped "
 "themselves, these orcs can nonetheless be quite effective in large numbers."
 msgstr ""
+"Ačkoli jsou někdy luky mezi skřety považovány za zbabělou zbraň, pragmatická "
+"povaha skřetího válečného umění vede k jejich častému využití. Luky jsou "
+"obzvláště vhodné pro skřety s malým vzrůstem nebo slabší tělesnou "
+"konstitucí. Oblíbenou taktikou mezi skřetími lučištníky je použití zápalných "
+"šípů, kterými zasévají chaos do nepřátelských linií. Podlamují tak sevřené "
+"nepřátelské šiky a připravují tím půdu pro frontální útok svých větších a "
+"silnějších druhů. I když jsou obvykle tito skřeti jen špatně vyzbrojeni a "
+"vystrojeni, mohou být ve větším počtu poměrně efektivními bojovníky."
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
@@ -5995,6 +6304,13 @@ msgid ""
 "same weapon is readily turned to espionage and assassination, a commonplace "
 "occurrence between feuding orcish clans or even within a single clan itself."
 msgstr ""
+"I když je pro mnoho skřetů naprosto typické upřednostňování hrubé síly, "
+"vysoce praktická povaha jejich bojového stylu také podporuje vražedné "
+"taktiky, na které se jiné frakce dívají s nevolí. Jed je jedním z hlavních "
+"pilířů skřetí strategie, hojně využívaný k oslabení tuhých protivníků na "
+"bojišti a k ochromení nepřátelských sil bez rizika přímého útoku. Stejnou "
+"zbraň lze pohotově využít i v intrikářských hrách, což se běžně v půtkách "
+"mezi různými klany či dokonce v rámci jednoho klanu stává."
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
@@ -6072,7 +6388,6 @@ msgstr ""
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:4
-#, fuzzy
 msgid "Orcish Nightblade"
 msgstr "Skřetí šerobřit"
 
@@ -6089,6 +6404,15 @@ msgid ""
 "the cover of darkness. A contract with a nightblade is almost always a death "
 "sentence to the victim, making said expertise well worth its high price."
 msgstr ""
+"Nejzkušenější skřetí vrazi obvykle působí jako žoldáci specializující se na "
+"„řešení vnitřních konfliktů“ a jen zřídka se účastní větších bitev. Tito "
+"skřeti, které jejich činnost přivedla až k překvapivé zručnosti a "
+"ostřílenosti, málokdy spojují svou věrnost s nějakým konkrétním klanem.  "
+"Místo toho nabízejí své služby komukoli, kdo nabídne nejlepší cenu. Poté co "
+"dojde k dohodě a patřičnému plnění, vrah rychle a tiše udeří na svůj cíl a "
+"diskrétně ho pod rouškou tmy eliminuje. Kontrakt se šerobřitem znamená pro "
+"oběť téměř vždy rozsudek smrti, čímž uvedená odbornost vyvažuje svou vysokou "
+"cenu."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Nightblade.cfg:27
@@ -6144,18 +6468,6 @@ msgstr "Skřetí ostrostřelec"
 # faktografická revize?
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The basic design of a crossbow gives rise to the arbalest or ‘slurbow’; a "
-#| "much more intricate device, complete with a hand-turned cranequin to re-"
-#| "cock the weapon, and often with a multi-ply arc, of laminate wood or "
-#| "bone, driving the projectile. Such a device is much easier to work with, "
-#| "and much more powerful than simpler crossbows; it is also completely "
-#| "beyond orcish manufacture.\n"
-#| "\n"
-#| "Orcs prize any such weapons they can manage to plunder, and they "
-#| "invariably end up in the hands of their strongest and most cunning "
-#| "archers."
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or ‘slurbow’, a "
 "much more intricate device complete with a hand-turned cranequin to recock "
@@ -6167,13 +6479,14 @@ msgid ""
 "Orcs prize any such weapons they can manage to procure, and they invariably "
 "end up in the hands of their most cunning archers."
 msgstr ""
-"Základní konstrukci kuše je možno podstatně vylepšit; výsledkem je podstatně "
-"složitější a účinnější zbraň, využívající pro natahování mocného, dřevěného "
-"či kostěného lučiště malý vrátek. Tento přístroj je sice mnohem snadnější k "
-"použití, ale také zcela mimo skřetí možnosti výroby.\n"
+"Základní konstrukci kuše je možno podstatně vylepšit, kdy výsledkem je "
+"podstatně složitější konstrukce samostřílu. U té se využívá pro napínání "
+"kompozitního dřevěného či kostěného lučiště vrátek, což pak pomáhá dát "
+"výstřelu sílu. Takové zařízení je sice mnohem ovladatelnější a mnohem "
+"výkonější než jednodušší kuše, ale také zcela mimo skřetí možnosti výroby.\n"
 "\n"
-"Skřeti si těchto zbraní nesmírně cení, a když se jim je povede někde náhodou "
-"ukořistit, skončí v rukou jejich nejsilnějších a nejšikovnějších střelců."
+"Skřeti si těchto zbraní cení, a když se jim je povede někde ukořistit, "
+"skončí v rukou jejich nejschopnějších střelců."
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
@@ -6235,11 +6548,16 @@ msgid ""
 "fighters, who lack the training and finesse to act on more complex "
 "strategies."
 msgstr ""
+"Skřetí šermířské umění se zaměřuje téměř striktně ofenzivně. Při tomto "
+"způsobu se využívá přirozené výdrže skřetů, kdy se čelí protivníkům čistě "
+"jen odolností. Lze tedy běžně vidět ostřílenějšího skřetího válečníka, jak "
+"třímá dvě čepele a nepoužívá štít, spoléhajíc v boji zblízka na tvrdou "
+"výměnu zásahů. Ačkoli je to docela brutální taktika, tak pro tyto bojovníky, "
+"kterým chybí výcvik a vytříbenost ve složitějších technikách, je stále "
+"poměrně efektivní."
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
-#, fuzzy
-#| msgid "Saurian Ambusher"
 msgid "female^Saurian Ambusher"
 msgstr "Ještěrácké přepadové komando"
 
@@ -6279,10 +6597,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
-#, fuzzy
-#| msgid "Saurian Flanker"
 msgid "female^Saurian Flanker"
-msgstr "Ještěrácký ochránce"
+msgstr "Ještěrácká ochránkyně"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:19
@@ -6324,10 +6640,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
-#, fuzzy
-#| msgid "Saurian Skirmisher"
 msgid "female^Saurian Skirmisher"
-msgstr "Ještěrácký rváč"
+msgstr "Ještěrácká rváčka"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:18
@@ -6623,10 +6937,8 @@ msgstr "Ještěrák"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:174
 #: data/core/units/undead/Corpse_Walking.cfg:173
-#, fuzzy
-#| msgid "wc_variation^Swimmer"
 msgid "wc_variation^Spider"
-msgstr "Plavec"
+msgstr "Pavouk"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:183
@@ -7179,8 +7491,8 @@ msgid ""
 msgstr ""
 "Stromoví muži dokáží měnit svou stromovou podobu podle potřeby a s věkem "
 "také rostou. Příběhy vypráví o těch, kteří v tomto aspektu připomínají "
-"stromy - tím, jak se tyčí nad ostatními tvory. To je z větší části důvodem, "
-"proč jsou tak vzácně spatřeni - často spí ve stoje a tak se nepodobají "
+"stromy – tím, jak se tyčí nad ostatními tvory. To je z větší části důvodem, "
+"proč jsou tak vzácně spatřeni – často spí ve stoje a tak se nepodobají "
 "ničemu jinému než zvláštně tvarovanému stromu; dokáží tak oklamat i "
 "nepozorného elfa.\n"
 "\n"
@@ -7222,14 +7534,12 @@ msgstr ""
 #. [unit_type]: id=Wose Sapling, race=wose
 #: data/core/units/wose/Wose_Sapling.cfg:4
 msgid "Wose Sapling"
-msgstr ""
+msgstr "Sazenek"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
-#, fuzzy
-#| msgid "Troll Shaman"
 msgid "Wose Shaman"
-msgstr "Trollí šaman"
+msgstr "Stromový šaman"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:21
@@ -7237,6 +7547,8 @@ msgid ""
 "These woses are able to command forest plants such as vines and creepers to "
 "hinder their enemies."
 msgstr ""
+"Tito stromový muži jsou schopni přikázat lesním rostlinám, jako je réva a "
+"jiné popínavky, aby blokovaly nepřátele."
 
 #, fuzzy
 #~| msgid ""

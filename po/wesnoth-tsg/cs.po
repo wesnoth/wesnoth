@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-09-19 17:35 UTC\n"
-"PO-Revision-Date: 2020-09-14 21:32+0200\n"
+"PO-Revision-Date: 2020-09-28 09:59+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -2706,8 +2706,6 @@ msgstr "Mal Maul"
 
 #. ['unit name']
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:303
-#, fuzzy
-#| msgid "Mal Maul"
 msgid "female^Mal Maul"
 msgstr "Mal Maul"
 
@@ -3637,6 +3635,8 @@ msgid ""
 "These human beasts slew our people and murdered Mebrin! We must have "
 "vengeance for this vile atrocity. Burn their city to the ground!"
 msgstr ""
+"Tahle lidská zvěř zabila naše lidi a zavraždila Mebrina! Za tuto ohavnou "
+"krutost se musíme pomstít. Vypalte jejich město do základů!"
 
 #. [message]: speaker=Deoran
 #. Defeat message after time-over
@@ -3645,11 +3645,13 @@ msgid ""
 "The elves are attacking Westin! They'll surely destroy the city without us "
 "there to defend it..."
 msgstr ""
+"Elfové útočí na Westin! Když ho my nebudeme bránit, zcela jistě to město "
+"zničí..."
 
 #. [unit]: type=Lieutenant, id=Liryn
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:394
 msgid "Liryn"
-msgstr ""
+msgstr "Liryn"
 
 #. [message]: speaker=Liryn
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:400
@@ -3658,39 +3660,34 @@ msgstr "Stát! Kdo to přichází na hranice Wesnothu?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:405
-#, fuzzy
-#| msgid "It is I, Deoran, commander of the South Guard, and my men."
 msgid "It is I, Deoran, commander of the South Guard."
-msgstr "Jsem Deoran, velitel Jižní hlídky, a se mnou jdou mí muži."
+msgstr "To jsem já, Deoran, velitel Jižní hlídky."
 
 #. [message]: speaker=Liryn
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:410
 msgid ""
 "Deoran? It truly is you? We had thought you had been lost to the undead."
-msgstr ""
+msgstr "Deoran? Opravdu jsi to ty? Mysleli jsme si, že tě nemrtví porazili."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:415
-#, fuzzy
-#| msgid "We, and our elvish allies, have won a great battle against a lich."
 msgid ""
 "We and our elvish allies have won a great battle against a lich. The undead "
 "are no more."
-msgstr "S našimi elfími spojenci jsme vybojovali velké vítězství nad lichem."
+msgstr ""
+"S našimi elfími spojenci jsme vybojovali velké vítězství nad lichem. Těm "
+"nemrtvým je konec."
 
 #. [message]: speaker=Liryn
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:420
-#, fuzzy
-#| msgid ""
-#| "Elvish allies? I think you had best make haste to Westin. There are "
-#| "rumors of trouble with the elves of the Aethenwood."
 msgid ""
 "This is wonderful news, commander! I shall spread word about your heroic "
 "deed! But... I am afraid there is another problem. There are rumors of "
 "trouble with the elves of the Aethenwood."
 msgstr ""
-"Elfí spojenci? Pospěšte si do Westinu, proslýchá se, že jsou s elfy z "
-"Aethenwoodu potíže."
+"To jsou skvělé novinky, veliteli! Budu šířit zprávu o tvém hrdinském činu! "
+"Ale... obávám se, že je tu ještě jedna nesnáz. Jdou zvěsti o nepokojích "
+"s elfy z Aethenwoodu."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:425
@@ -3699,11 +3696,14 @@ msgid ""
 "we had best hurry back to your city. I will need to see what the "
 "circumstances are."
 msgstr ""
+"To mne nepřekvapuje, vzhledem k potížím se sem vůbec dostat. Deorane, "
+"nejlepší bude spěchat zpátky do vašeho města. Budu potřebovat zjistit, jaká "
+"je situace."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:430
 msgid "Very well, let us make haste to Westin."
-msgstr ""
+msgstr "Výborně, pospěšme do Westinu."
 
 #. [scenario]: id=07b_Pebbles_in_the_Flood
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:5
@@ -4029,7 +4029,7 @@ msgstr "Rozzuření elfové"
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:140
 msgid "Survive until end of turns"
-msgstr ""
+msgstr "Zůstaň naživu až do konce kol"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:169
@@ -4039,6 +4039,9 @@ msgid ""
 "will be peace in Westin. You have our thanks, Lady Ethiliel. We could not "
 "have accomplished this feat without you."
 msgstr ""
+"Konečně jsme se vrátili domů! Nemrtví i bandité jsou poraženi a zdá se, že "
+"obyvatelé města už ho začali znovu budovat. Teď snad bude ve Westinu mír. "
+"Máš naše díky, paní Ethiliel. Bez tebe bychom to nemohli uskutečnit."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:173
@@ -4049,6 +4052,10 @@ msgid ""
 "capable of courage and loyalty. About the trouble with my people, I will see "
 "what I can do—"
 msgstr ""
+"Ano... při zabíjení nemrtvých jste vykonali veliké skutky, ale byli to další "
+"z vašeho druhu, kteří na začátku to zlo způsobili. Nicméně nyní vidím, že "
+"všichni lidé nejsou stejní a že vy jste také schopni odvahy a věrnosti. Co "
+"se týče potíží s mým lidem, uvidím, co dokážu udělat —"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:177
@@ -4063,35 +4070,27 @@ msgstr "Ubohý farmář"
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:210
-#, fuzzy
-#| msgid "You must pay for killing Mebrin!"
 msgid "You will pay for Mebrin’s death!"
-msgstr "Zaplatíš za zabití Mebrina!"
+msgstr "Zaplatíš za Mebrinovu smrt!"
 
 #. [message]: speaker=Poor Farmer
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:214
-#, fuzzy
-#| msgid "I am just a farmer! What did I do?!"
 msgid "I am just a farmer! I never killed anyone!"
-msgstr "Jsem jen sedlák! Co jsem vám udělal?"
+msgstr "Jsem jenom sedlák! Nikdy jsem nikoho nezabil!"
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:218
-#, fuzzy
-#| msgid ""
-#| "What did you do?! Your people kidnapped and murdered our greatest leader! "
-#| "And now you will pay!"
 msgid ""
 "You lie! All humans are the same! Your people kidnapped and murdered our "
 "wisest sage! Now you will pay!"
 msgstr ""
-"Co jsi udělal? Tví lidé unesli a zavraždili našeho největšího vůdce! Teď za "
-"to zaplatíš!"
+"Lžeš! Všichni lidé jsou stejní! Tvoji lidé unesli a zavraždili "
+"nejmoudřejšího z našich mudrců! Teď zaplatíš!"
 
 #. [message]: role=observant
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:257
 msgid "He just killed that innocent farmer! We must stop him!"
-msgstr "Zabil toho nevinného sedláka! Musíme jej zastavit!"
+msgstr "Právě zabil toho nevinného sedláka! Musíme jej zastavit!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:261
@@ -4101,6 +4100,9 @@ msgid ""
 "have thus absolved themselves of any wrongdoing. No more innocent blood "
 "needs to be shed."
 msgstr ""
+"Zadrž, Eltenmire! Tito lidé nejsou těmi, kdo ublížili Mebrinovi. Pomohli mi "
+"pomstít se těm, kteří jsou zodpovědní za ten hrůzný čin a tudíž se sami "
+"zprostili jakéhokoli provinění. Není třeba prolévat další nevinnou krev."
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:265
@@ -4110,6 +4112,10 @@ msgid ""
 "felled our trees in the past, they have destroyed our homes, murdered our "
 "people, and killed Mebrin!"
 msgstr ""
+"Sotva můžu uvěřit vlastním uším. Vždycky jsi byla příliš měkká, Ethiliel, "
+"ale přidat se na stranu lidí? Všichni lidé jsou lůza a verbež! Stejně jako "
+"v minulosti poráželi naše stromy, tak zničili naše domovy, vraždili náš lid "
+"a zabili Mebrina!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:269
@@ -4120,6 +4126,11 @@ msgid ""
 "losing one that I cherished so. Still... still, even I recognize that these "
 "humans are not the ones to blame."
 msgstr ""
+"Mebrin byl můj učitel, Eltenmire! Jsem to <i>já</i>, kdo se nejvíc rmoutí! "
+"Strávila jsem nesčetné bezesné noci přemýšlením o jeho smrti a tak strašně "
+"mi chyběl, že mé srdce nikdy nepřestalo bolet. Ty víš, jak se musím cítit "
+"pro ztrátu toho, koho jsem si tolik vážila. Přesto... přesto i já uznávám, "
+"že tito lidé to nemají na svědomí."
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:273
@@ -4128,11 +4139,14 @@ msgid ""
 "theirs will be spilled in turn. If you stand against us, Ethiliel, we will "
 "attack you too. You had best stay out of this."
 msgstr ""
+"Na tom nezáleží. Lidé prolili krev našeho lidu, a teď zas poteče jejich. "
+"Jestli se postavíš proti nám, Ethiliel, zaútočíme i na tebe. Neměla ses do "
+"toho plést."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:277
 msgid "And what do you think Ithelden will have to say about that?"
-msgstr ""
+msgstr "A co myslíš, že na to řekne Ithelden?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:292
@@ -4140,6 +4154,8 @@ msgid ""
 "Eltenmir, answer me! You know you do not have the authority to be attacking "
 "the humans like this, much less me! Eltenmir!"
 msgstr ""
+"Eltenmire, odpověz mi! Víš, že nemáš pověření k takovému útoku na lidi, tím "
+"méně na mne! Eltenmire!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:300
@@ -4148,6 +4164,9 @@ msgid ""
 "long. I will send a messenger to Ithelden and hope he gets here in time "
 "before the city is overrun."
 msgstr ""
+"Vždycky tak paličatý. Deorane, nebudeme schopni s nimi moc dlouho bojovat. "
+"Pošlu k Itheldenovi posla a doufejme, že se sem dostane dřív, než bude město "
+"obsazeno."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:304
@@ -4155,15 +4174,17 @@ msgid ""
 "Are you sure that they’ll listen to Ithelden? Or that he’ll even try to stop "
 "them?"
 msgstr ""
+"Jsi si jistá, že budou Itheldena poslouchat? Nebo že se je vůbec pokusí "
+"zastavit?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:308
-#, fuzzy
-#| msgid "Perhaps not, but it is your only hope. I must reach Ithelden!"
 msgid ""
 "Perhaps not, but we have no other hope right now. We must survive until "
 "Ithelden arrives!"
-msgstr "Možná ne, ale je to naše jediná naděje. Musím se dostat k Itheldenovi!"
+msgstr ""
+"Možná, že ne, ale právě teď nemáme jinou naději. Musíme přežít, dokud se "
+"Ithelden neobjeví!"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:428
