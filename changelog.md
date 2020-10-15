@@ -45,6 +45,8 @@
   * New wall variation: Overgrown stone walls ('Xof')
  ### WML Engine
   * Fix a bug with [set_variables][join] failing on boolean (yes/no) values
+ ### Packaging
+  * When building wesnothd with database support enabled, Boost 1.66 is now the minimum required version.
 
 ## Version 1.15.5
  ### Add-ons client
