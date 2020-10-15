@@ -1193,9 +1193,9 @@ void server::handle_upload(const server::request& req)
 					if(pack["to"].str() == new_version) {
 						const std::string& pack_filename = pack["filename"].str();
 						filesystem::delete_file(filename + "/" + pack_filename);
-						(*campaign).remove_children("update_pack", [&pack_filename](const config& child) 
+						(*campaign).remove_children("update_pack", [&pack_filename](const config& child)
 						{
-							return child["filename"].str() == pack_filename; 
+							return child["filename"].str() == pack_filename;
 						}
 					);
 				}
@@ -1246,9 +1246,9 @@ void server::handle_upload(const server::request& req)
 
 		version_map.erase(version_info(new_version));
 		version_map.emplace(version_info(new_version), version_cfg);
-		(*campaign).remove_children("version", [&new_version](const config& old_cfg) 
+		(*campaign).remove_children("version", [&new_version](const config& old_cfg)
 			{
-				return old_cfg["version"].str() == new_version; 
+				return old_cfg["version"].str() == new_version;
 			}
 		);
 		(*campaign).add_child("version", version_cfg);
@@ -1271,21 +1271,21 @@ void server::handle_upload(const server::request& req)
 		}
 
 		(*campaign)["size"] = filesystem::file_size(filename + "/" + version_cfg["filename"].str());
-		
+
 		//Remove the update packs with expired lifespan
 		for(const config& pack : (*campaign).child_range("update_pack")) {
 			if(upload_ts > pack["expire"].to_time_t() || pack["from"].str() == new_version || (!is_upload_pack && pack["to"].str() == new_version)) {
 				const std::string& pack_filename = pack["filename"].str();
 				filesystem::delete_file(filename + "/" + pack_filename);
-				(*campaign).remove_children("update_pack", [&pack_filename](const config& child) 
+				(*campaign).remove_children("update_pack", [&pack_filename](const config& child)
 					{
-						return child["filename"].str() == pack_filename; 
+						return child["filename"].str() == pack_filename;
 					}
 				);
 			}
 		}
 
-		//Now let's fill in the gaps with missing incremental packs 
+		//Now let's fill in the gaps with missing incremental packs
 		//(which should mainly include the u-pack from the previous version to the present,
 		//and from the present to the future version if either of them exists)
 		auto iter = version_map.begin();
