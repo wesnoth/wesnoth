@@ -240,9 +240,9 @@ void server::load_config()
 
 	// Convert all legacy addons to the new format on load
 	if(cfg_.has_child("campaigns")) {
-		WRN_CS << "Old format addons have been detected in the config! They will be converted to the new file format! ";
 		config& campaigns = cfg_.child("campaigns");
-		WRN_CS << campaigns.child_count("campaign") << " entries to be processed.\n";
+		WRN_CS << "Old format addons have been detected in the config! They will be converted to the new file format! "
+		       << campaigns.child_count("campaign") << " entries to be processed.\n";
 		for(config& campaign : campaigns.child_range("campaign")) {
 			const std::string& addon_id = campaign["name"].str();
 			const std::string& addon_file = campaign["filename"].str();
