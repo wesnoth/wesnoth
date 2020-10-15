@@ -77,7 +77,7 @@ std::string deprecated_message(
 
 	if(log_ptr && !log_ptr->dont_log(log_deprecate)) {
 		const lg::logger& out_log = *log_ptr;
-		out_log(log_deprecate) << message << '\n';
+		FORCE_LOG_TO(out_log, log_deprecate) << message << '\n';
 
 		if(preferences::get("show_deprecation", false)) {
 			lg::wml_error() << message << '\n';

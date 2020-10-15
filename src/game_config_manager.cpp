@@ -134,7 +134,7 @@ void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG f
 	boost::optional<std::set<std::string>> active_addons)
 {
 	if (!lg::info().dont_log(log_config)) {
-		auto& out = lg::info()(log_config);
+		auto out = formatter();
 		out << "load_game_config: defines:";
 		for(const auto& pair : cache_.get_preproc_map()) {
 			out << pair.first << ",";
@@ -149,7 +149,8 @@ void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG f
 			out << "\n Everything:";
 		}
 		out << "\n";
-	}
+		FORCE_LOG_TO(lg::info(), log_config) << out.str();
+	} 
 
 
 	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",

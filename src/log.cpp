@@ -26,6 +26,7 @@
 #include <map>
 #include <sstream>
 #include <ctime>
+#include <mutex>
 
 #include "global.hpp"
 
@@ -44,6 +45,7 @@ static std::ostream null_ostream(new null_streambuf);
 static int indent = 0;
 static bool timestamp = true;
 static bool precise_timestamp = false;
+static std::mutex log_mutex;
 
 static boost::posix_time::time_facet facet("%Y%m%d %H:%M:%S%F ");
 static std::ostream *output_stream = nullptr;
@@ -207,7 +209,7 @@ static void print_precise_timestamp(std::ostream & out) noexcept
 	} catch(...) {}
 }
 
-std::ostream &logger::operator()(const log_domain& domain, bool show_names, bool do_indent) const
+log_in_progress logger::operator()(const log_domain& domain, bool show_names, bool do_indent) const
 {
 	if (severity_ > domain.domain_->second) {
 		return null_ostream;
@@ -218,33 +220,58 @@ std::ostream &logger::operator()(const log_domain& domain, bool show_names, bool
 			std::cerr << ss.str() << std::endl;
 			strict_threw_ = true;
 		}
-		std::ostream& stream = output();
+		log_in_progress stream = output();
 		if(do_indent) {
-			for(int i = 0; i != indent; ++i)
-				stream << "  ";
-			}
+			stream.set_indent(indent);
+		}
 		if (timestamp) {
-			if(precise_timestamp) {
-				print_precise_timestamp(stream);
-			} else {
-				stream << get_timestamp(std::time(nullptr));
-			}
+			stream.enable_timestamp();
 		}
 		if (show_names) {
-			stream << name_ << ' ' << domain.domain_->first << ": ";
+			stream.set_prefix(formatter() << name_ << ' ' << domain.domain_->first << ": ");
 		}
 		return stream;
 	}
 }
 
-void scope_logger::do_log_entry(const log_domain& domain, const std::string& str) noexcept
+log_in_progress::log_in_progress(std::ostream& stream)
+	: stream_(stream)
+{}
+
+void log_in_progress::operator|(formatter&& message)
 {
-	output_ = &debug()(domain, false, true);
+	std::lock_guard<std::mutex> lock(log_mutex);
+	for(int i = 0; i < indent; ++i)
+		stream_ << "  ";
+	if(timestamp_) {
+		if(precise_timestamp) {
+			print_precise_timestamp(stream_);
+		} else {
+			stream_ << get_timestamp(std::time(nullptr));
+		}
+	}
+	stream_ << prefix_ << message.str();
+}
+
+void log_in_progress::set_indent(int level) {
+	indent_ = level;
+}
+
+void log_in_progress::enable_timestamp() {
+	timestamp_ = true;
+}
+
+void log_in_progress::set_prefix(const std::string& prefix) {
+	prefix_ = prefix;
+}
+
+void scope_logger::do_log_entry(const std::string& str) noexcept
+{
 	str_ = str;
 	try {
 		ticks_ = boost::posix_time::microsec_clock::local_time();
 	} catch(...) {}
-	(*output_) << "{ BEGIN: " << str_ << "\n";
+	debug()(domain_, false, true) | formatter() << "{ BEGIN: " << str_ << "\n";
 	++indent;
 }
 
@@ -255,15 +282,10 @@ void scope_logger::do_log_exit() noexcept
 		ticks = (boost::posix_time::microsec_clock::local_time() - ticks_).total_milliseconds();
 	} catch(...) {}
 	--indent;
-	do_indent();
-	if (timestamp) (*output_) << get_timestamp(std::time(nullptr));
-	(*output_) << "} END: " << str_ << " (took " << ticks << "ms)\n";
-}
-
-void scope_logger::do_indent() const
-{
-	for(int i = 0; i != indent; ++i)
-		(*output_) << "  ";
+	auto output = debug()(domain_, false, true);
+	output.set_indent(indent);
+	if(timestamp) output.enable_timestamp();
+	output | formatter() << "} END: " << str_ << " (took " << ticks << "ms)\n";
 }
 
 std::stringstream& wml_error()

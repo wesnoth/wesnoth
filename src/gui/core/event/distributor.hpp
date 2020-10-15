@@ -155,41 +155,36 @@ private:
 /***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
 
 /**
- * Small helper metastruct to specialize mouse_button with and provide ui_event type
- * aliases without needing to make mouse_button take a million template types.
+ * Small helper metastruct to configure instances of mouse_button.
  */
-template<
-		ui_event sdl_button_down,
-		ui_event sdl_button_up,
-		ui_event button_down,
-		ui_event button_up,
-		ui_event button_click,
-		ui_event button_double_click>
-struct mouse_button_event_types_wrapper
+struct mouse_button_event_types
 {
-	static const ui_event sdl_button_down_event     = sdl_button_down;
-	static const ui_event sdl_button_up_event       = sdl_button_up;
-	static const ui_event button_down_event         = button_down;
-	static const ui_event button_up_event           = button_up;
-	static const ui_event button_click_event        = button_click;
-	static const ui_event button_double_click_event = button_double_click;
+	ui_event sdl_button_down_event;
+	ui_event sdl_button_up_event;
+	ui_event button_down_event;
+	ui_event button_up_event;
+	ui_event button_click_event;
+	ui_event button_double_click_event;
+	/** Bitmask corresponding to this button's bit in SDL_GetMouseState's return value */
+	int32_t mask;
+	/** used for debug messages. */
+	std::string name;
 };
 
-template<typename T>
 class mouse_button : public virtual mouse_motion
 {
 public:
-	mouse_button(const std::string& name_,
+	mouse_button(const mouse_button_event_types& events,
 				  widget& owner,
 				  const dispatcher::queue_position queue_position);
 
 	/**
 	 * Initializes the state of the button.
 	 *
-	 * @param is_down             The initial state of the button, if true down
-	 *                            else initialized as up.
+	 * @param button_state The initial state of all buttons, in which the bit corresponding to
+	 mouse_button_event_types.mask will be set if the button is down, or unset if it is up.
 	 */
-	void initialize_state(const bool is_down);
+	void initialize_state(int32_t button_state);
 
 protected:
 	/** The time of the last click used for double clicking. */
@@ -206,8 +201,8 @@ protected:
 	widget* focus_;
 
 private:
-	/** used for debug messages. */
-	const std::string name_;
+	/** Which set of SDL events correspond to this button. */
+	const mouse_button_event_types events_;
 
 	/** Is the button down? */
 	bool is_down_;
@@ -226,37 +221,47 @@ private:
 	void mouse_button_click(widget* widget);
 };
 
+/**
+ * Three subclasses of mouse_button, so that the distributor class can inherit from them;
+ * C++ doesn't allow multiple inheritance to directly use more than one instance of a
+ * superclass.
+ *
+ * It's a diamond inheritance, as all of these have virtual base class mouse_motion;
+ * refactoring that would allow these multiple classes to be replaced with a simple
+ * (distributor has-a std::array<mouse_button, 3>) relationship.
+ */
+struct mouse_button_left : public mouse_button
+{
+	mouse_button_left(const mouse_button_event_types& events,
+				  widget& owner,
+				  const dispatcher::queue_position queue_position)
+	: mouse_motion(owner, queue_position)
+	, mouse_button(events, owner, queue_position)
+	{
+	}
+};
+struct mouse_button_middle : public mouse_button
+{
+	mouse_button_middle(const mouse_button_event_types& events,
+				  widget& owner,
+				  const dispatcher::queue_position queue_position)
+	: mouse_motion(owner, queue_position)
+	, mouse_button(events, owner, queue_position)
+	{
+	}
+};
+struct mouse_button_right : public mouse_button
+{
+	mouse_button_right(const mouse_button_event_types& events,
+				  widget& owner,
+				  const dispatcher::queue_position queue_position)
+	: mouse_motion(owner, queue_position)
+	, mouse_button(events, owner, queue_position)
+	{
+	}
+};
+
 /***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
-
-using mouse_button_left = mouse_button<
-	mouse_button_event_types_wrapper<
-		SDL_LEFT_BUTTON_DOWN,
-		SDL_LEFT_BUTTON_UP,
-		LEFT_BUTTON_DOWN,
-		LEFT_BUTTON_UP,
-		LEFT_BUTTON_CLICK,
-		LEFT_BUTTON_DOUBLE_CLICK>
-	>;
-
-using mouse_button_middle = mouse_button<
-	mouse_button_event_types_wrapper<
-		SDL_MIDDLE_BUTTON_DOWN,
-		SDL_MIDDLE_BUTTON_UP,
-		MIDDLE_BUTTON_DOWN,
-		MIDDLE_BUTTON_UP,
-		MIDDLE_BUTTON_CLICK,
-		MIDDLE_BUTTON_DOUBLE_CLICK>
-	>;
-
-using mouse_button_right = mouse_button<
-	mouse_button_event_types_wrapper<
-		SDL_RIGHT_BUTTON_DOWN,
-		SDL_RIGHT_BUTTON_UP,
-		RIGHT_BUTTON_DOWN,
-		RIGHT_BUTTON_UP,
-		RIGHT_BUTTON_CLICK,
-		RIGHT_BUTTON_DOUBLE_CLICK>
-	>;
 
 
 /** The event handler class for the widget library. */
