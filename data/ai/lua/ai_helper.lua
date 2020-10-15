@@ -739,11 +739,12 @@ function ai_helper.get_locations_no_borders(location_filter)
     return locs
 end
 
-function ai_helper.get_closest_location(hex, location_filter, unit)
+function ai_helper.get_closest_location(hex, location_filter, unit, avoid_map)
     -- Get the location closest to @hex (in format { x, y })
     -- that matches @location_filter (in WML table format)
     -- @unit can be passed as an optional third parameter, in which case the
     -- terrain needs to be passable for that unit
+    -- @avoid_map (location set): if given, the hexes in avoid_map are excluded
     -- Returns nil if no terrain matching the filter was found
 
     -- Find the maximum distance from 'hex' that's possible on the map
@@ -779,6 +780,14 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
         end
 
         local locs = wesnoth.map.find(loc_filter)
+
+        if avoid_map then
+            for i = #locs,1,-1 do
+                if avoid_map:get(locs[i][1], locs[i][2]) then
+                    table.remove(locs, i)
+                end
+            end
+        end
 
         if unit then
             for _,loc in ipairs(locs) do
