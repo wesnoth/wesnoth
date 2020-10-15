@@ -276,7 +276,7 @@ void server::load_config()
 				campaign_file.commit();
 			}
 			{
-				filesystem::atomic_commit campaign_hash_file(addon_file + "/" + version_cfg["filename"].str() + ".hash");
+				filesystem::atomic_commit campaign_hash_file(addon_file + "/full_pack_" + file_hash + ".hash.gz");
 				config_writer writer(*campaign_hash_file.ostream(), true, compress_level_);
 				config data_hash = config("name", "");
 				write_hashlist(data_hash, data);
@@ -907,7 +907,9 @@ void server::handle_request_campaign_hash(const server::request& req)
 			}
 		}
 
-		filename += ".hash";
+		//The filename should not contain any dots before the .gz extension mark by design
+		filename.erase(filename.find_first_of('.') + 1, std::string::npos);
+		filename += ".hash.gz";
 		int file_size = filesystem::file_size(filename);
 
 		if(file_size < 0) {
@@ -1262,7 +1264,7 @@ void server::handle_upload(const server::request& req)
 		}
 		// Let's write its hashes
 		{
-			filesystem::atomic_commit campaign_hash_file(filename + "/" + version_cfg["filename"].str() + ".hash");
+			filesystem::atomic_commit campaign_hash_file(filename + "/full_pack_" + file_hash + ".hash.gz");
 			config_writer writer(*campaign_hash_file.ostream(), true, compress_level_);
 			config data_hash = config("name", "");
 			write_hashlist(data_hash, data);
