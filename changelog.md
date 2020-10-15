@@ -1,4 +1,16 @@
 ## Version 1.15.5+dev
+ ### Add-ons client
+   * Implemented support for incremental add-on downloads and uploads (issue #5046, PR #5038).
+ ### Add-ons server
+   * The server configuration no longer contains the add-ons list/metadata (PR #5038):
+     * Metadata is now stored in individual `data/<addon_name>/addon.cfg` files (PR #5038).
+     * Full add-on packs are now stored as `data/<addon_name>/full_pack_<version_md5>.gz` files instead of `data/<addon_name>`.
+     * Hash indexes of full add-on packs are stored as `data/<addon_name>/full_pack_<version_md5>.hash.gz`.
+   * Implemented support for incremental add-on downloads and uploads (issue #5046, PR #5038):
+     * Incremental update packs are stored as `data/<addon_name>/<version_from_to_md5>.gz`files.
+     * Incremental update packs are allowed to be sent by clients in `[upload]` and may be asked from the server in `[request_campaign]`.
+     * The server can generate an incremental update pack while servicing `[upload]` if the client doesn't send one (e.g. old clients).
+   * Previous versions of add-ons are stored on the server for a limited amount of time alongside update packs for older versions (30 days by default) (PR #5038).
  ### Language and i18n
    * Updated translations: British English, Czech, French, Japanese, Polish,
      Portuguese (Brazil)
