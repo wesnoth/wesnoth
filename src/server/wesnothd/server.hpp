@@ -233,7 +233,7 @@ private:
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
 #endif
 
-	boost::asio::deadline_timer timer_;
+	boost::asio::steady_timer timer_;
 	void handle_graceful_timeout(const boost::system::error_code& error);
 
 	boost::asio::steady_timer lan_server_timer_;
