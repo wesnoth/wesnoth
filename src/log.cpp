@@ -47,7 +47,6 @@ static bool timestamp = true;
 static bool precise_timestamp = false;
 static std::mutex log_mutex;
 
-static boost::posix_time::time_facet facet("%Y%m%d %H:%M:%S%F ");
 static std::ostream *output_stream = nullptr;
 
 static std::ostream& output()
@@ -198,14 +197,15 @@ std::string get_timespan(const std::time_t& t) {
 	return sout.str();
 }
 
-static void print_precise_timestamp(std::ostream & out) noexcept
+static void print_precise_timestamp(std::ostream& out) noexcept
 {
 	try {
-		facet.put(
-			std::ostreambuf_iterator<char>(out),
-			out,
-			' ',
-			boost::posix_time::microsec_clock::local_time());
+		int64_t micros = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+		std::time_t seconds = micros/1'000'000;
+		int fractional = micros-(seconds*1'000'000);
+		char c = out.fill('0');
+		out << std::put_time(std::localtime(&seconds), "%Y%m%d %H:%M:%S") << "." << std::setw(6) << fractional;
+		out.fill(c);
 	} catch(...) {}
 }
 
@@ -269,7 +269,7 @@ void scope_logger::do_log_entry(const std::string& str) noexcept
 {
 	str_ = str;
 	try {
-		ticks_ = boost::posix_time::microsec_clock::local_time();
+		ticks_ = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 	} catch(...) {}
 	debug()(domain_, false, true) | formatter() << "{ BEGIN: " << str_ << "\n";
 	++indent;
@@ -279,7 +279,7 @@ void scope_logger::do_log_exit() noexcept
 {
 	long ticks = 0;
 	try {
-		ticks = (boost::posix_time::microsec_clock::local_time() - ticks_).total_milliseconds();
+		ticks = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - ticks_;
 	} catch(...) {}
 	--indent;
 	auto output = debug()(domain_, false, true);
