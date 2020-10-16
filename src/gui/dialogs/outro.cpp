@@ -25,6 +25,8 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
+#include <cmath>
+
 namespace gui2
 {
 namespace dialogs

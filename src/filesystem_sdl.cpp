@@ -18,6 +18,7 @@
 #include "log.hpp"
 
 #include <algorithm>
+#include <cassert>
 
 static lg::log_domain log_filesystem("filesystem");
 #define ERR_FS LOG_STREAM(err, log_filesystem)

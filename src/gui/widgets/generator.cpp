@@ -20,6 +20,7 @@
 #include "wml_exception.hpp"
 
 #include <numeric>
+#include <cmath>
 
 namespace gui2
 {

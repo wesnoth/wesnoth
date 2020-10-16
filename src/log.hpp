@@ -56,11 +56,9 @@
 #include <sstream> // as above. iostream (actually, iosfwd) declares stringstream as an incomplete type, but does not define it
 #include <string>
 #include <utility>
+#include <ctime>
 
-#include <boost/date_time/posix_time/posix_time_types.hpp>
 #include "formatter.hpp"
-
-using boost::posix_time::ptime;
 
 namespace lg {
 
@@ -167,7 +165,7 @@ log_domain& general();
 
 class scope_logger
 {
-	ptime ticks_;
+	int64_t ticks_;
 	const log_domain& domain_;
 	std::string str_;
 public:
