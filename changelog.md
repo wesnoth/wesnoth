@@ -1,4 +1,13 @@
 ## Version 1.15.6+dev
+ ### Campaigns
+ ### Language and i18n
+ ### Lua API
+ ### Multiplayer
+ ### Terrain
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.6
  ### Add-ons client
