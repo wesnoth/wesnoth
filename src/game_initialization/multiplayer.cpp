@@ -483,7 +483,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 
 	bool dlg_ok = false;
 	{
-		gui2::dialogs::mp_join_game dlg(state, lobby_info, *connection, true, observe);
+		gui2::dialogs::mp_join_game dlg(state, *connection, true, observe);
 
 		if(!dlg.fetch_game_config()) {
 			connection->send_data(config("leave_game"));
@@ -520,7 +520,7 @@ void mp_manager::enter_staging_mode()
 	{
 		ng::connect_engine connect_engine(state, true, campaign_info.get());
 
-		gui2::dialogs::mp_staging dlg(connect_engine, lobby_info, connection.get());
+		gui2::dialogs::mp_staging dlg(connect_engine, connection.get());
 		dlg.show();
 		dlg_ok = dlg.get_retval() == gui2::retval::OK;
 	} // end connect_engine, dlg scope
@@ -651,16 +651,12 @@ void start_client(saved_game& state, const std::string& host)
 
 bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection)
 {
-	lobby_info li({});
-
-	return gui2::dialogs::mp_staging::execute(engine, li, connection);
+	return gui2::dialogs::mp_staging::execute(engine, connection);
 }
 
 bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool observe)
 {
-	lobby_info li({});
-
-	gui2::dialogs::mp_join_game dlg(state, li, *connection, false, observe);
+	gui2::dialogs::mp_join_game dlg(state, *connection, false, observe);
 
 	if(!dlg.fetch_game_config()) {
 		connection->send_data(config("leave_game"));

@@ -84,11 +84,6 @@ public:
 		active_window_changed_callback_ = f;
 	}
 
-	void set_lobby_info(mp::lobby_info& i)
-	{
-		lobby_info_ = &i;
-	}
-
 	void set_wesnothd_connection(wesnothd_connection& c)
 	{
 		wesnothd_connection_ = &c;
@@ -144,7 +139,7 @@ private:
 
 	std::function<void(void)> active_window_changed_callback_;
 
-	mp::lobby_info* lobby_info_;
+	mp::chat_info chat_info_;
 
 	wesnothd_connection* wesnothd_connection_;
 

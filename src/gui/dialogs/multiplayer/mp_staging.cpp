@@ -47,10 +47,9 @@ namespace dialogs
 
 REGISTER_DIALOG(mp_staging)
 
-mp_staging::mp_staging(ng::connect_engine& connect_engine, mp::lobby_info& lobby_info, wesnothd_connection* connection)
+mp_staging::mp_staging(ng::connect_engine& connect_engine, wesnothd_connection* connection)
 	: connect_engine_(connect_engine)
 	, ai_algorithms_(ai::configuration::get_available_ais())
-	, lobby_info_(lobby_info)
 	, network_connection_(connection)
 	, update_timer_(0)
 	, state_changed_(false)
@@ -117,8 +116,6 @@ void mp_staging::pre_show(window& window)
 	// Initialize chatbox and game rooms
 	//
 	chatbox& chat = find_widget<chatbox>(&window, "chat", false);
-
-	chat.set_lobby_info(lobby_info_);
 
 	if(network_connection_) {
 		chat.set_wesnothd_connection(*network_connection_);

@@ -92,35 +92,10 @@ public:
 	/** Const overload of @ref get_game_by_id. */
 	const game_info* get_game_by_id(int id) const;
 
-	/** Open a new chat room with the given name. */
-	void open_room(const std::string& name);
-
-	/** Close the chat room with the given name. */
-	void close_room(const std::string& name);
-
-	/** Returns whether a room with the given name has been opened. */
-	bool has_room(const std::string& name) const;
-
-	/** Returns info on room with the given name, or nullptr if it doesn't exist. */
-	room_info* get_room(const std::string& name);
-
-	/** Const overload of @ref get_room. */
-	const room_info* get_room(const std::string& name) const;
-
 	/** Returns info on the user with the given name, or nullptr if they don't eixst. */
 	user_info* get_user(const std::string& name);
 
-	chat_session& get_whisper_log(const std::string& name)
-	{
-		return whispers_[name];
-	}
-
 	void update_user_statuses(int game_id, const room_info* room);
-
-	const std::vector<room_info>& rooms() const
-	{
-		return rooms_;
-	}
 
 	const std::vector<game_info*>& games() const
 	{
@@ -161,21 +136,51 @@ private:
 
 	bool gamelist_initialized_;
 
-	std::vector<room_info> rooms_;
-
 	game_info_map games_by_id_;
 
 	std::vector<game_info*> games_;
 
 	std::vector<user_info> users_;
 
-	std::map<std::string, chat_session> whispers_;
-
 	std::vector<game_filter_func> game_filters_;
 
 	bool game_filter_invert_;
 
 	boost::dynamic_bitset<> games_visibility_;
+};
+
+class chat_info
+{
+public:
+	/** Open a new chat room with the given name. */
+	void open_room(const std::string& name);
+
+	/** Close the chat room with the given name. */
+	void close_room(const std::string& name);
+
+	/** Returns whether a room with the given name has been opened. */
+	bool has_room(const std::string& name) const;
+
+	/** Returns info on room with the given name, or nullptr if it doesn't exist. */
+	room_info* get_room(const std::string& name);
+
+	/** Const overload of @ref get_room. */
+	const room_info* get_room(const std::string& name) const;
+
+	chat_session& get_whisper_log(const std::string& name)
+	{
+		return whispers_[name];
+	}
+
+	const std::map<std::string, room_info>& rooms() const
+	{
+		return rooms_;
+	}
+
+private:
+	std::map<std::string, room_info> rooms_;
+
+	std::map<std::string, chat_session> whispers_;
 };
 
 enum notify_mode {

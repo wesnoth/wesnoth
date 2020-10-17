@@ -34,7 +34,7 @@ class faction_select;
 class mp_join_game : public modal_dialog, private plugin_executor
 {
 public:
-	mp_join_game(saved_game& state, mp::lobby_info& lobby_info, wesnothd_connection& connection,
+	mp_join_game(saved_game& state, wesnothd_connection& connection,
 		const bool first_scenario = true, const bool observe_game = false);
 
 	~mp_join_game();
@@ -74,8 +74,6 @@ private:
 	config level_;
 
 	saved_game& state_;
-
-	mp::lobby_info& lobby_info_;
 
 	wesnothd_connection& network_connection_;
 

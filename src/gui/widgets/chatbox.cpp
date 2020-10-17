@@ -61,7 +61,7 @@ chatbox::chatbox(const implementation::builder_chatbox& builder)
 	, chat_input_(nullptr)
 	, active_window_(0)
 	, active_window_changed_callback_()
-	, lobby_info_(nullptr)
+	, chat_info_()
 	, wesnothd_connection_(nullptr)
 	, log_(nullptr)
 {
@@ -148,6 +148,8 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 		return;
 	}
 
+	lobby_chat_window& t = open_windows_[active_window_];
+
 	switch(key) {
 	case SDLK_RETURN:
 	case SDLK_KP_ENTER: {
@@ -157,8 +159,6 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 			//       the other party without having to specify it's nick.
 			chat_handler::do_speak(input);
 		} else {
-			lobby_chat_window& t = open_windows_[active_window_];
-
 			if(t.whisper) {
 				send_whisper(t.name, input);
 				add_whisper_sent(t.name, input);
@@ -175,11 +175,13 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 	}
 
 	case SDLK_TAB: {
+		mp::room_info* ri = chat_info_.get_room(t.name);
+
 		// TODO: very inefficient! Very! D:
 		std::vector<std::string> matches;
-		for(const auto& ui : lobby_info_->users()) {
-			if(ui.name != preferences::login()) {
-				matches.push_back(ui.name);
+		for(const std::string& ui : ri->members()) {
+			if(ui != preferences::login()) {
+				matches.push_back(ui);
 			}
 		}
 
@@ -286,7 +288,7 @@ void chatbox::add_whisper_sent(const std::string& receiver, const std::string& m
 		add_active_window_whisper(VGETTEXT("whisper to $receiver", {{"receiver", receiver}}), message, true);
 	}
 
-	lobby_info_->get_whisper_log(receiver).add_message(preferences::login(), message);
+	chat_info_.get_whisper_log(receiver).add_message(preferences::login(), message);
 }
 
 void chatbox::add_whisper_received(const std::string& sender, const std::string& message)
@@ -294,7 +296,7 @@ void chatbox::add_whisper_received(const std::string& sender, const std::string&
 	bool can_go_to_active = !preferences::whisper_friends_only() || preferences::is_friend(sender);
 	bool can_open_new = preferences::auto_open_whisper_windows() && can_go_to_active;
 
-	lobby_info_->get_whisper_log(sender).add_message(sender, message);
+	chat_info_.get_whisper_log(sender).add_message(sender, message);
 
 	if(whisper_window_open(sender, can_open_new)) {
 		if(whisper_window_active(sender)) {
@@ -324,7 +326,7 @@ void chatbox::add_chat_room_message_sent(const std::string& room, const std::str
 	}
 
 	// Do not open room window here. The player should be in the room before sending messages
-	mp::room_info* ri = lobby_info_->get_room(room);
+	mp::room_info* ri = chat_info_.get_room(room);
 	assert(ri);
 
 	if(!room_window_active(room)) {
@@ -339,7 +341,7 @@ void chatbox::add_chat_room_message_received(const std::string& room,
 	const std::string& speaker,
 	const std::string& message)
 {
-	mp::room_info* ri = lobby_info_->get_room(room);
+	mp::room_info* ri = chat_info_.get_room(room);
 	if(!ri) {
 		LOG_LB << "Discarding message to room " << room << " from " << speaker << " (room not open)\n";
 		return;
@@ -420,7 +422,7 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	std::map<std::string, string_map> data{{"log_text", item}};
 
 	if(!whisper) {
-		lobby_info_->open_room(name);
+		chat_info_.open_room(name);
 	}
 
 	if(log_ != nullptr) {
@@ -557,9 +559,9 @@ void chatbox::close_window(std::size_t idx)
 	}
 
 	if(t.whisper) {
-		lobby_info_->get_whisper_log(t.name).clear();
+		chat_info_.get_whisper_log(t.name).clear();
 	} else {
-		lobby_info_->close_room(t.name);
+		chat_info_.close_room(t.name);
 	}
 
 	if(log_ != nullptr) {
@@ -608,7 +610,7 @@ mp::room_info* chatbox::active_window_room()
 		return nullptr;
 	}
 
-	return lobby_info_->get_room(t.name);
+	return chat_info_.get_room(t.name);
 }
 
 void chatbox::process_room_join(const ::config& data)
@@ -618,7 +620,7 @@ void chatbox::process_room_join(const ::config& data)
 
 	DBG_LB << "room join: " << room << " " << player << "\n";
 
-	mp::room_info* r = lobby_info_->get_room(room);
+	mp::room_info* r = chat_info_.get_room(room);
 	if(r) {
 		if(player == preferences::login()) {
 			if(const auto& members = data.child("members")) {
@@ -638,8 +640,8 @@ void chatbox::process_room_join(const ::config& data)
 		if(player == preferences::login()) {
 			lobby_chat_window* t = room_window_open(room, true);
 
-			lobby_info_->open_room(room);
-			r = lobby_info_->get_room(room);
+			chat_info_.open_room(room);
+			r = chat_info_.get_room(room);
 			assert(r);
 
 			if(const auto& members = data.child("members")) {
@@ -666,7 +668,7 @@ void chatbox::process_room_part(const ::config& data)
 
 	DBG_LB << "Room part: " << room << " " << player << "\n";
 
-	if(mp::room_info* r = lobby_info_->get_room(room)) {
+	if(mp::room_info* r = chat_info_.get_room(room)) {
 		r->remove_member(player);
 
 		/* TODO: add/use preference */
@@ -709,7 +711,7 @@ void chatbox::process_room_query_response(const ::config& data)
 			}
 
 			if(const ::config& members = data.child("members")) {
-				mp::room_info* r = lobby_info_->get_room(room);
+				mp::room_info* r = chat_info_.get_room(room);
 				assert(r);
 				r->process_room_members(members);
 				if(r == active_window_room()) {

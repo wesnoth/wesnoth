@@ -41,7 +41,7 @@ namespace dialogs
 class mp_staging : public modal_dialog, private plugin_executor
 {
 public:
-	mp_staging(ng::connect_engine& connect_engine, mp::lobby_info& lobby_info, wesnothd_connection* connection = nullptr);
+	mp_staging(ng::connect_engine& connect_engine, wesnothd_connection* connection = nullptr);
 
 	~mp_staging();
 
@@ -90,8 +90,6 @@ private:
 	ng::connect_engine& connect_engine_;
 
 	std::vector<ai::description*> ai_algorithms_;
-
-	mp::lobby_info& lobby_info_;
 
 	wesnothd_connection* network_connection_;
 

@@ -743,7 +743,6 @@ void mp_lobby::pre_show(window& window)
 
 	window.keyboard_capture(chatbox_);
 
-	chatbox_->set_lobby_info(lobby_info_);
 	chatbox_->set_wesnothd_connection(network_connection_);
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
 	chatbox_->load_log(default_chat_log, true);

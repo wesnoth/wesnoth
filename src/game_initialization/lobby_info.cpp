@@ -39,11 +39,9 @@ lobby_info::lobby_info(const std::vector<std::string>& installed_addons)
 	: installed_addons_(installed_addons)
 	, gamelist_()
 	, gamelist_initialized_(false)
-	, rooms_()
 	, games_by_id_()
 	, games_()
 	, users_()
-	, whispers_()
 	, game_filters_()
 	, game_filter_invert_(false)
 	, games_visibility_()
@@ -134,11 +132,11 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		// the gamelist is now corrupted, stop further processing and wait for a fresh list.
 		gamelist_initialized_ = false;
 		return false;
-	}
-	else {
+	} else {
 		return true;
 	}
 }
+
 bool lobby_info::process_gamelist_diff_impl(const config& data)
 {
 	SCOPE_LB;
@@ -284,29 +282,25 @@ const game_info* lobby_info::get_game_by_id(int id) const
 	return i == games_by_id_.end() ? nullptr : &i->second;
 }
 
-room_info* lobby_info::get_room(const std::string& name)
+room_info* chat_info::get_room(const std::string& name)
 {
-	for(auto& r : rooms_) {
-		if(r.name() == name) {
-			return &r;
-		}
+	try {
+		return &rooms_.at(name);
+	} catch(const std::out_of_range&) {
+		return nullptr;
 	}
-
-	return nullptr;
 }
 
-const room_info* lobby_info::get_room(const std::string& name) const
+const room_info* chat_info::get_room(const std::string& name) const
 {
-	for(const auto& r : rooms_) {
-		if(r.name() == name) {
-			return &r;
-		}
+	try {
+		return &rooms_.at(name);
+	} catch(const std::out_of_range&) {
+		return nullptr;
 	}
-
-	return nullptr;
 }
 
-bool lobby_info::has_room(const std::string& name) const
+bool chat_info::has_room(const std::string& name) const
 {
 	return get_room(name) != nullptr;
 }
@@ -322,20 +316,16 @@ user_info* lobby_info::get_user(const std::string& name)
 	return nullptr;
 }
 
-void lobby_info::open_room(const std::string& name)
+void chat_info::open_room(const std::string& name)
 {
-	if(!has_room(name)) {
-		rooms_.emplace_back(name);
-	}
+	// TODO: use try_emplace with C++20
+	rooms_.emplace(name, room_info(name));
 }
 
-void lobby_info::close_room(const std::string& name)
+void chat_info::close_room(const std::string& name)
 {
 	DBG_LB << "lobby info: closing room " << name << std::endl;
-
-	if(room_info* r = get_room(name)) {
-		rooms_.erase(rooms_.begin() + (r - &rooms_[0]));
-	}
+	rooms_.erase(name);
 }
 
 void lobby_info::make_games_vector()
