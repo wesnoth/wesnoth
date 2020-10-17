@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
+"POT-Creation-Date: 2020-10-17 04:28 UTC\n"
 "PO-Revision-Date: 2020-04-12 12:29-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
@@ -699,32 +699,32 @@ msgstr "T’baran"
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg, line: 190
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg, line: 224
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg, line: 82
-#. [modify_side]
-#. [side]: type=Troll Hero, type=Great Troll, id=Grugl
 #. [side]: id=Tbaran, type=Orcish Warrior
 #. [side]: id=Wrulf, type=Orcish Warrior
 #. [side]: type=Orcish Warrior, id=Qumseh
 #. [side]: type=Orcish Warrior, id=Graur-Tan
 #. [side]
+#. [modify_side]
+#. [side]: type=Troll Hero, type=Great Troll, id=Grugl
+#. [side]: id=Hraurg, type=Saurian Ambusher
+#. [side]: type=Saurian Ambusher, id=Spahr
 #. [side]: type=Saurian Ambusher, id=Shurm
 #. [side]: type=Saurian Ambusher, id=Trigr
 #. [side]: type=Orcish Warlord, id=Urug-Tar
 #. [side]: type=Orcish Warlord, id=Graur-Tan
 #. [side]: type=Troll Warrior, id=Traur
-#. [side]: id=Hraurg, type=Saurian Ambusher
-#. [side]: type=Saurian Ambusher, id=Spahr
-#. [side]: type=Troll Warrior, id=Tafrul
-#. [side]: type=Arch Mage, id=Aquagar
-#. [side]: type=Troll Warrior, id=Trigrul
-#. [side]: type=Saurian Flanker, id=Huurgh
-#. [side]: type=Saurian Oracle, id=Shhar
 #. [side]: type=Orcish Warlord, id=Kior-Pur
 #. [side]: type=Orcish Warlord, id=Mbiran
 #. [side]: type=Orcish Warlord, id=Tan-Durr
-#. [side]: type=Saurian Flanker, id=Spahr
-#. [side]: type=Saurian Flanker, id=Hgyr
+#. [side]: type=Saurian Flanker, id=Huurgh
+#. [side]: type=Saurian Oracle, id=Shhar
+#. [side]: type=Troll Warrior, id=Tafrul
+#. [side]: type=Arch Mage, id=Aquagar
+#. [side]: type=Troll Warrior, id=Trigrul
 #. [side]: type=Elvish Marshal, id=Crintil
 #. [side]: type=Elvish Captain, id=Oblil
+#. [side]: type=Saurian Flanker, id=Spahr
+#. [side]: type=Saurian Flanker, id=Hgyr
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:199
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:235
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:268
@@ -1976,8 +1976,8 @@ msgstr "Trigr"
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg, line: 194
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg, line: 256
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg, line: 274
-#. [objective]: condition=win
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:170
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:210
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:370
@@ -3123,8 +3123,8 @@ msgstr ""
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg, line: 29
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg, line: 54
 # File: data/campaigns/Legend_of_Wesmere/utils/characters.cfg, line: 23
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:574
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:41
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:51
@@ -3189,8 +3189,8 @@ msgstr "Kalenz"
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg, line: 81
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg, line: 60
 # File: data/campaigns/Legend_of_Wesmere/utils/characters.cfg, line: 41
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:580
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:61
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:81
@@ -3740,8 +3740,8 @@ msgstr "Shhar"
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg, line: 140
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg, line: 474
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg, line: 140
-#. [side]: type=Gryphon, id=Gryphon Leader
 #. [side]
+#. [side]: type=Gryphon, id=Gryphon Leader
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:197
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:153
 msgid "Creatures"

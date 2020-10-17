@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-19 20:35+0300\n"
+"POT-Creation-Date: 2020-10-17 01:28-0300\n"
 "PO-Revision-Date: 2015-08-08 13:56+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -640,7 +640,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Citi palīgi"
 
 #. [about]
-#: data/core/about.cfg:1796
+#: data/core/about.cfg:1799
 msgid "Bots"
 msgstr "Roboti"
 
@@ -1129,8 +1129,8 @@ msgstr "Graudu upuris"
 msgid "Runic Hammer"
 msgstr "Rūnu āmurs"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Svētītais ūdens"
@@ -1171,8 +1171,8 @@ msgstr "Zaļa dzira"
 msgid "Gray Potion"
 msgstr "Pelēka dzira"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Inde"
@@ -1242,8 +1242,8 @@ msgstr "Zizlis"
 msgid "Stone Tablet"
 msgstr "Akmens plāksne"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Vētras trijžuburis"
@@ -3454,7 +3454,7 @@ msgid "Weight of Revenge"
 msgstr "Spilgti oranža"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:652
+#: data/core/macros/utils.cfg:651
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Tu ieguvi $amount_gold gabalus zelta."
 
@@ -3635,14 +3635,14 @@ msgstr "Nepieejams"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:440
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
 msgid "Fog"
 msgstr "Migla"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:443
-#: src/game_initialization/lobby_data.cpp:446
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
+#: src/game_initialization/lobby_data.cpp:445
 msgid "Shroud"
 msgstr "Plīvurs"
 
@@ -4054,6 +4054,13 @@ msgstr[2] "(atlicis tikai šis gājiens)"
 msgid "$percent|% of gold carried over to the next scenario."
 msgstr "Uz nākamo scenāriju pārnesti %d%% zelta gabali."
 
+#. [modification]: id=delay_advancements, type=hybrid
+#: data/modifications.cfg:3
+#, fuzzy
+#| msgid "Advancements"
+msgid "Delay Advancements"
+msgstr "Attīstības"
+
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:339
 #, fuzzy
@@ -4152,21 +4159,13 @@ msgstr ""
 msgid "female^aura of death ("
 msgstr ""
 
-#: data/scenario-test.cfg:1253 src/game_initialization/depcheck.cpp:490
-msgid "OK"
-msgstr "Labi"
-
-#: data/scenario-test.cfg:1254
-msgid "Cancel"
-msgstr "Atcelt"
-
 #. [language]
-#: data/scenario-test.cfg:4340
+#: data/scenario-test.cfg:4395
 msgid "very long"
 msgstr "ļoti garš"
 
 #. [language]
-#: data/scenario-test.cfg:4341
+#: data/scenario-test.cfg:4396
 msgid "electrical"
 msgstr "elektrisks"
 
@@ -4608,12 +4607,19 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:76
+#, fuzzy
+#| msgid ""
+#| "Poisoned units will lose eight hitpoints every turn until they are one "
+#| "point from dying. They will then remain at death’s door until the poison "
+#| "is removed. Healers can prevent a poisoned unit from deteriorating, but "
+#| "the poison will not be removed unless the unit regenerates, or begins a "
+#| "turn in a village or next to a unit with the <i>Cures</i> ability."
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
 "removed. Healers can prevent a poisoned unit from deteriorating, but the "
 "poison will not be removed unless the unit regenerates, or begins a turn in "
-"a village or next to a unit with the <i>Cures</i> ability."
+"a village, in an oasis, or next to a unit with the <i>Cures</i> ability."
 msgstr ""
 "Saindētās vienības zaudēs astoņus veselības punktus katrā gājienā, līdz "
 "kamēr paliks viena punkta attālumā no nāves. Tās paliks pie nāves sliekšņa "
@@ -5382,19 +5388,33 @@ msgstr ""
 "Papildinājumam <i>$addon_title</i> ir nederīgs faila vai mapes nosaukums un "
 "to nevar uzstādīt."
 
-#: src/addon/client.cpp:180
+#: src/addon/client.cpp:183
+#, fuzzy
+#| msgid "Sending add-on <i>$addon_title</i>..."
+msgid ""
+"Requesting the older version composition for the add-on <i>$addon_title</"
+"i>..."
+msgstr "Sūta papildinājumu: $addon_title|..."
+
+#: src/addon/client.cpp:199
+#, fuzzy
+#| msgid "Sending add-on <i>$addon_title</i>..."
+msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
+msgstr "Sūta papildinājumu: $addon_title|..."
+
+#: src/addon/client.cpp:220
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Sūta papildinājumu: $addon_title|..."
 
-#: src/addon/client.cpp:213
+#: src/addon/client.cpp:253
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Aizvāc papildinājumu: $addon_title|..."
 
-#: src/addon/client.cpp:240
+#: src/addon/client.cpp:281
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Lejupielādē papildinājumu: $addon_title|..."
 
-#: src/addon/client.cpp:254
+#: src/addon/client.cpp:333 src/addon/client.cpp:359
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5402,7 +5422,7 @@ msgstr ""
 "Papildinājumam <i>$addon_title</i> ir nederīgs faila vai mapes nosaukums un "
 "to nevar uzstādīt."
 
-#: src/addon/client.cpp:260
+#: src/addon/client.cpp:338 src/addon/client.cpp:364
 #, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
@@ -5414,11 +5434,11 @@ msgstr ""
 "Papildinājumam <i>$addon_title</i> ir nederīgs faila vai mapes nosaukums un "
 "to nevar uzstādīt."
 
-#: src/addon/client.cpp:317
+#: src/addon/client.cpp:408
 msgid "The server responded with an error:"
 msgstr "Serveris atbildēja ar kļūdu:"
 
-#: src/addon/client.cpp:367
+#: src/addon/client.cpp:458
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5429,11 +5449,11 @@ msgstr[0] "Izvēlētajam pielikumam ir sekojoša atkarība. Vai vēlies turpinā
 msgstr[1] "Izvēlētajam pielikumam ir sekojošas atkarības. Vai vēlies turpināt?"
 msgstr[2] "Izvēlētajam pielikumam ir sekojošas atkarības. Vai vēlies turpināt?"
 
-#: src/addon/client.cpp:376
+#: src/addon/client.cpp:467
 msgid "Broken Dependencies"
 msgstr "Sabojāta atkarība"
 
-#: src/addon/client.cpp:416
+#: src/addon/client.cpp:507
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5444,11 +5464,11 @@ msgstr[0] "Šo atkarību nevar uzstādīt. Vai joprojām vēlies turpināt?"
 msgstr[1] "Šīs atkarības nevar uzstādīt. Vai joprojām vēlies turpināt?"
 msgstr[2] "Šīs atkarības nevar uzstādīt. Vai joprojām vēlies turpināt?"
 
-#: src/addon/client.cpp:420
+#: src/addon/client.cpp:511
 msgid "Dependencies Installation Failed"
 msgstr "Atkarību uzstādīšana neizdevās"
 
-#: src/addon/client.cpp:443
+#: src/addon/client.cpp:534
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5456,24 +5476,24 @@ msgstr ""
 "'$addon|' papildinājums jau ir uzstādīts ar papildus informāciju, kas tiks "
 "pazaudēta ja tu turpināsi:"
 
-#: src/addon/client.cpp:447
+#: src/addon/client.cpp:538
 msgid "Publishing information file (.pbl)"
 msgstr "Publiskais informācijas fails (.pbl)"
 
-#: src/addon/client.cpp:451
+#: src/addon/client.cpp:542
 msgid "Version control system (VCS) information"
 msgstr "Versijas kontroles sistēmas informācija (VCS)"
 
-#: src/addon/client.cpp:455
+#: src/addon/client.cpp:546
 msgid "Do you really wish to continue?"
 msgstr "Vai tiešām vēlies turpināt?"
 
-#: src/addon/client.cpp:457 src/addon/manager_ui.cpp:174
+#: src/addon/client.cpp:548 src/addon/manager_ui.cpp:174
 #: src/game_initialization/multiplayer.cpp:231
 msgid "Confirm"
 msgstr "Apstiprināt"
 
-#: src/addon/client.cpp:577
+#: src/addon/client.cpp:668
 msgid "Add-ons Manager"
 msgstr "Papildinājumu menedžeris"
 
@@ -5914,62 +5934,62 @@ msgstr "%b %d %y"
 msgid "Invalid color in range: "
 msgstr "Nederīgs krāsu diapazons: "
 
-#: src/game_config_manager.cpp:234 src/game_config_manager.cpp:243
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:237 src/game_config_manager.cpp:246
+#: src/game_config_manager.cpp:258
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:235
+#: src/game_config_manager.cpp:238
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:236 src/game_config_manager.cpp:246
-#: src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:239 src/game_config_manager.cpp:249
+#: src/game_config_manager.cpp:262
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:279
+#: src/game_config_manager.cpp:247 src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:282
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:245
+#: src/game_config_manager.cpp:248
 msgid "The ID is already in use."
 msgstr ""
 
-#: src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:260
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:258
+#: src/game_config_manager.cpp:261
 #, fuzzy
 #| msgid "Variable not found"
 msgid "File not found."
 msgstr "Mainīgie netika atrasti"
 
-#: src/game_config_manager.cpp:278 src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:281 src/game_config_manager.cpp:293
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:280
+#: src/game_config_manager.cpp:283
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:281
+#: src/game_config_manager.cpp:284
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:294
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:292
+#: src/game_config_manager.cpp:295
 #, fuzzy
 #| msgid "The game is over."
 msgid "The game will now exit."
 msgstr "Spēle ir beigusies."
 
-#: src/game_config_manager.cpp:343
+#: src/game_config_manager.cpp:346
 #, fuzzy
 #| msgid "Error loading game configuration files. The game will now exit."
 msgid ""
@@ -5977,7 +5997,7 @@ msgid ""
 "loading add-ons."
 msgstr "Kļūda ielādējot spēles konfigurācijas failus."
 
-#: src/game_config_manager.cpp:350
+#: src/game_config_manager.cpp:353
 #, fuzzy
 #| msgid "Error loading game configuration files. The game will now exit."
 msgid ""
@@ -5985,22 +6005,22 @@ msgid ""
 "default core files."
 msgstr "Kļūda ielādējot spēles konfigurācijas failus."
 
-#: src/game_config_manager.cpp:359
+#: src/game_config_manager.cpp:362
 #, fuzzy
 #| msgid "Error loading game configuration files. The game will now exit."
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "Kļūda ielādējot spēles konfigurācijas failus."
 
-#: src/game_config_manager.cpp:511
+#: src/game_config_manager.cpp:514
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:535
+#: src/game_config_manager.cpp:538
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:571
+#: src/game_config_manager.cpp:586
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Sekojošam papildinājumam atgadījās kļūdas, un to neizdevās ielādēt:"
@@ -6009,7 +6029,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Sekojošiem papildinājumiem atgadījās kļūdas un tos neizdevās ielādēt:"
 
-#: src/game_config_manager.cpp:575
+#: src/game_config_manager.cpp:590
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6017,7 +6037,7 @@ msgstr[0] "Paziņo to autoram kas izgatavoja papildinājumu."
 msgstr[1] "Paziņo to autoriem kas izgatavoja papildinājumu."
 msgstr[2] "Paziņo to autoriem kas izgatavoja papildinājumu."
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:954
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:951
 msgid "Error: "
 msgstr "Kļūda: "
 
@@ -6093,6 +6113,10 @@ msgstr ""
 msgid "Failed to resolve dependencies"
 msgstr "Neizdevās atrisināt atkarības"
 
+#: src/game_initialization/depcheck.cpp:490
+msgid "OK"
+msgstr "Labi"
+
 #: src/game_initialization/depcheck.cpp:515
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr "Scenārijs nevar būt aktivizēts. Trūkst atkarības: "
@@ -6134,81 +6158,81 @@ msgstr "Nav atrasts līdera tips frakcijai $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Nevar noteikt dzimumu $leader līderim"
 
-#: src/game_initialization/lobby_data.cpp:225
+#: src/game_initialization/lobby_data.cpp:224
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $name"
 msgstr "Iztrūkstošs arguments $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:227
+#: src/game_initialization/lobby_data.cpp:226
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Iztrūkstošs arguments $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:259
+#: src/game_initialization/lobby_data.cpp:258
 msgid "Unknown era"
 msgstr "Nezināma ēra"
 
-#: src/game_initialization/lobby_data.cpp:326
-#: src/game_initialization/lobby_data.cpp:359
+#: src/game_initialization/lobby_data.cpp:325
+#: src/game_initialization/lobby_data.cpp:358
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "Puse"
 
-#: src/game_initialization/lobby_data.cpp:345
+#: src/game_initialization/lobby_data.cpp:344
 msgid "Remote scenario"
 msgstr "Attālinatais scenārijs"
 
-#: src/game_initialization/lobby_data.cpp:367
-#: src/game_initialization/lobby_data.cpp:390
+#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:389
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:395
+#: src/game_initialization/lobby_data.cpp:394
 msgid "Unknown scenario"
 msgstr "Nezināms scenārijs"
 
-#: src/game_initialization/lobby_data.cpp:405
+#: src/game_initialization/lobby_data.cpp:404
 msgid "Reloaded game"
 msgstr "Pārlādēta spēle"
 
-#: src/game_initialization/lobby_data.cpp:420
+#: src/game_initialization/lobby_data.cpp:419
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Brīva vieta:"
 msgstr[1] "Brīvas vietas:"
 msgstr[2] "Brīvas vietas:"
 
-#: src/game_initialization/lobby_data.cpp:422
+#: src/game_initialization/lobby_data.cpp:421
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:433
-#: src/game_initialization/lobby_data.cpp:435 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:432
+#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:645
 msgid "Turn"
 msgstr "Gājiens"
 
-#: src/game_initialization/lobby_data.cpp:448
+#: src/game_initialization/lobby_data.cpp:447
 #, fuzzy
 #| msgid "vision: "
 msgid "vision^none"
 msgstr "vīzija: "
 
-#: src/game_initialization/lobby_data.cpp:457
+#: src/game_initialization/lobby_data.cpp:456
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Laika limits"
 
-#: src/game_initialization/lobby_data.cpp:501
+#: src/game_initialization/lobby_data.cpp:500
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:515
+#: src/game_initialization/lobby_data.cpp:514
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6269,15 +6293,15 @@ msgstr "Brīdinājums"
 msgid "Bad data received from server"
 msgstr "No servera saņemti slikti dati"
 
-#: src/game_initialization/multiplayer.cpp:310
+#: src/game_initialization/multiplayer.cpp:312
 msgid "You must login first."
 msgstr "Vispirms ir jāautorizējas."
 
-#: src/game_initialization/multiplayer.cpp:312
+#: src/game_initialization/multiplayer.cpp:314
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Lietotājvārds '$nick' jau ir aizņemts."
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:316
 #, fuzzy
 #| msgid ""
 #| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
@@ -6289,47 +6313,47 @@ msgstr ""
 "Lietotājvārds '$nick' satur neatļautas zīmes. Ir atļauti tikai burti, "
 "cipari, zemsvītras un domuzīmes."
 
-#: src/game_initialization/multiplayer.cpp:318
+#: src/game_initialization/multiplayer.cpp:320
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Lietotājvārds '$nick' ir pārāk garš. Lietotājvārds nedrīkst būt garāks par "
 "20 zīmēm."
 
-#: src/game_initialization/multiplayer.cpp:321
+#: src/game_initialization/multiplayer.cpp:322
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Lietotājvārds '$nick' ir rezervēts, un spēlētāji to nevar izmantot."
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:324
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Lietotājvārds '$nick' nav reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:324
+#: src/game_initialization/multiplayer.cpp:325
 msgid " This server disallows unregistered nicknames."
 msgstr " Šis serveris neatļauj nereģistrētus lietotājvārdus."
 
-#: src/game_initialization/multiplayer.cpp:327
+#: src/game_initialization/multiplayer.cpp:328
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:330
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:333
+#: src/game_initialization/multiplayer.cpp:334
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:336
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:339
+#: src/game_initialization/multiplayer.cpp:340
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
@@ -6337,19 +6361,19 @@ msgid ""
 "for $duration|."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:342
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:344
-#: src/game_initialization/multiplayer.cpp:346
+#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:347
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Lietotājvārds '$nick' ir reģistrēts uz šī servera."
 
-#: src/game_initialization/multiplayer.cpp:347
+#: src/game_initialization/multiplayer.cpp:348
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6357,7 +6381,7 @@ msgstr ""
 "BRĪDINĀJUMS: Viens lietotājs jau izmanto šo lietotājvārdu, ielogojošanās "
 "izsauks tā lietotāja izmešanu!"
 
-#: src/game_initialization/multiplayer.cpp:350
+#: src/game_initialization/multiplayer.cpp:351
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
@@ -6482,20 +6506,20 @@ msgstr "Sakāve"
 msgid "You have been defeated!"
 msgstr "Tu esi sakauts!"
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:907
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:904
 msgid "The game could not be loaded: "
 msgstr "Neizdevās ielādēt spēli: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:906
 msgid "Error while playing the game: "
 msgstr "Kļūde spēlējot spēli: "
 
-#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:946
+#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:943
 msgid "The game map could not be loaded: "
 msgstr "Neizdevās ielādēt spēles karti: "
 
-#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:911
-#: src/game_launcher.cpp:1045
+#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:908
+#: src/game_launcher.cpp:1038
 msgid "Map generator error: "
 msgstr ""
 
@@ -6522,29 +6546,29 @@ msgstr "Nezināms scenārijs: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Nav pieejama neviena kampaņa.\n"
 
-#: src/game_launcher.cpp:686 src/game_launcher.cpp:704
+#: src/game_launcher.cpp:685 src/game_launcher.cpp:703
 msgid "The file you have tried to load is corrupt"
 msgstr "Fails, kuru mēģinājāt ielādēt, ir sabojāts"
 
-#: src/game_launcher.cpp:689 src/game_launcher.cpp:707
+#: src/game_launcher.cpp:688 src/game_launcher.cpp:706
 #: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:156
 #: src/savegame.cpp:311
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Fails, kuru mēginājāt ielādēt, ir sabojāts: '"
 
-#: src/game_launcher.cpp:697
+#: src/game_launcher.cpp:696
 msgid "File I/O Error while reading the game"
 msgstr "Faila ievadizvades kļūda nolasot spēli"
 
-#: src/game_launcher.cpp:699
+#: src/game_launcher.cpp:698
 msgid "File I/O Error while reading the game: '"
 msgstr "Faila ievad/izvades kļūda lasot spēli: '"
 
-#: src/game_launcher.cpp:905
+#: src/game_launcher.cpp:902
 msgid "Error while starting server: "
 msgstr "Kļūda startējot serveri: "
 
-#: src/game_launcher.cpp:927
+#: src/game_launcher.cpp:924
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -7513,15 +7537,15 @@ msgstr ""
 msgid "This unit has no usable weapons."
 msgstr "Nav piemērota ierocis"
 
-#: src/mp_game_settings.hpp:75
+#: src/mp_game_settings.hpp:74
 msgid "Independent"
 msgstr ""
 
-#: src/mp_game_settings.hpp:76
+#: src/mp_game_settings.hpp:75
 msgid "No Mirror"
 msgstr ""
 
-#: src/mp_game_settings.hpp:77
+#: src/mp_game_settings.hpp:76
 msgid "No Ally Mirror"
 msgstr ""
 
@@ -7571,15 +7595,15 @@ msgstr "Sastapts apvidus ar pārvietošanās izmaksu mazāku par 1."
 msgid "waiting for^a global variable"
 msgstr ""
 
-#: src/play_controller.cpp:254
+#: src/play_controller.cpp:255
 msgid "time left for current turn"
 msgstr "pašreizējam gājienam atlikušais laiks"
 
-#: src/play_controller.cpp:256
+#: src/play_controller.cpp:257
 msgid "current local time"
 msgstr "pašreizējais vietējais laiks"
 
-#: src/play_controller.cpp:1017
+#: src/play_controller.cpp:1028
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7587,11 +7611,11 @@ msgstr ""
 "Spēle vairs nav sinhronizēta. Varētu nebūt liela jēga turpināt. Vai gribi "
 "saglabāt savu spēli?"
 
-#: src/play_controller.cpp:1018
+#: src/play_controller.cpp:1029
 msgid "Error details:"
 msgstr "Kļūdas detaļas:"
 
-#: src/play_controller.cpp:1306
+#: src/play_controller.cpp:1317
 msgid "No objectives available"
 msgstr "Neviens uzdevums nav pieejams"
 
@@ -7972,7 +7996,7 @@ msgstr "Gājiens "
 
 #: src/reports.cpp:1391
 msgid ""
-"When the game reaches the number of turns indicated by the second number, it "
+"When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
@@ -8469,17 +8493,17 @@ msgstr[0] "gājienā"
 msgstr[1] "gājienā"
 msgstr[2] "gājienā"
 
-#: src/units/helper.cpp:53
+#: src/units/helper.cpp:66
 msgid "Level: "
 msgstr "Līmenis: "
 
-#: src/units/helper.cpp:56
+#: src/units/helper.cpp:69
 #, fuzzy
 #| msgid "Advancements"
 msgid "Advancements:"
 msgstr "Attīstības"
 
-#: src/units/helper.cpp:69
+#: src/units/helper.cpp:82
 msgid "No advancement"
 msgstr "Nav attīstības"
 
@@ -8601,6 +8625,9 @@ msgstr "Paslēpt $player plānus"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Plānotāja iespējas"
+
+#~ msgid "Cancel"
+#~ msgstr "Atcelt"
 
 #, fuzzy
 #~| msgid "The Battle for Wesnoth"

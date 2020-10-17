@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-19 20:34+0300\n"
+"POT-Creation-Date: 2020-10-17 01:28-0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -642,17 +642,18 @@ msgstr ""
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:170
 msgid ""
-"This tool can create [time_area]s, unlike the name suggestes these do not "
-"need to have a specific timezone assigned to them.\n"
+"This tool can create [time_area]s, unlike the name suggests these do not "
+"need to have a specific time zone assigned to them.\n"
 "    [time_area]s are sets of tiles which can be addressed during scenario "
-"scripting by a thieir id. [time_area]s can optitionaly have a custom\n"
-"    time zome assigned to them. The simplest way to adress a [time_aera] via "
-"scenario scripting is the `aera=` attribute in standard location filters.\n"
+"scripting by a their id. [time_area]s can optionally have a custom\n"
+"    time zone assigned to them. The simplest way to address a [time_area] "
+"via scenario scripting is the `area=` attribute in standard location "
+"filters.\n"
 "\n"
 "This tool can be used to abstract between the implementation of an effect "
 "and the map specific setting.\n"
-"This is a very powerful mechanism since it allows generic scenario codings "
-"working with different maps providing the needed named locations."
+"This is a very powerful mechanism since it allows generic scenario code to "
+"work with different maps providing the needed named locations."
 msgstr ""
 
 #. [topic]: id=editor_playlist
@@ -921,14 +922,14 @@ msgid ""
 "TODO: add documentation about the scenario mode."
 msgstr ""
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
 msgid "Deep Underground"
 msgstr "𐑛𐑰𐑐 𐑳𐑯𐑛𐑼𐑜𐑮𐑬𐑯𐑛"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
 msgid "Indoors"
 msgstr ""
@@ -2626,8 +2627,8 @@ msgstr ""
 "𐑛𐑱/𐑯𐑲𐑑 𐑕𐑲𐑒𐑩𐑤, 𐑥𐑹𐑯𐑦𐑙 𐑯 𐑭𐑓𐑑𐑼𐑯𐑵𐑯 𐑒𐑬𐑯𐑑 𐑨𐑟 𐑛𐑱, 𐑓𐑻𐑕𐑑 𐑯 𐑕𐑧𐑒𐑩𐑯𐑛 𐑢𐑪𐑡 𐑒𐑬𐑯𐑑 𐑨𐑟 𐑯𐑲𐑑:\n"
 
 #. [time]: id=dawn
-#. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
+#. [time]: id=dawn_hour
 #: data/core/help.cfg:402 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
@@ -2648,8 +2649,8 @@ msgid "Afternoon"
 msgstr "𐑭𐑓𐑑𐑼𐑯𐑵𐑯"
 
 #. [time]: id=dusk
-#. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
+#. [time]: id=dusk_hour
 #: data/core/help.cfg:405 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
@@ -3393,30 +3394,16 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:613
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Set or toggle player on side between human and AI player. The player/"
-#| "client who controls that side needs to issue this command. If no second "
-#| "parameter is supplied, toggle bewteen human and AI. If it is ‘on’, set an "
-#| "AI controller. If it is ‘off’ set a human controller. Defaults to the "
-#| "currently active side if no parameter is supplied.\n"
-#| "\n"
 msgid ""
 "\n"
-"Set or toggle player on side between human and AI player. The player/client "
-"who controls that side needs to issue this command. If no second parameter "
-"is supplied, toggle between human and AI. If it is ‘on’, set an AI "
-"controller. If it is ‘off’ set a human controller. Defaults to the currently "
-"active side if no parameter is supplied.\n"
+"Switch a side between human and AI control. The second parameter can be "
+"‘off’ to bring the side under human control, ‘on’ to watch the AI make its "
+"moves, or ‘full’ to make the AI’s turn behave similarily to another player‘s "
+"turn. If no second parameter is supplied, it toggles between ‘on’ and ‘off’. "
+"Defaults to toggling the currently active side if no parameters are "
+"supplied.\n"
 "\n"
 msgstr ""
-"\n"
-"𐑕𐑧𐑑 𐑹 𐑑𐑪𐑜𐑩𐑤 𐑐𐑤𐑱𐑻 𐑪𐑯 𐑕𐑲𐑛 𐑚𐑦𐑑𐑢𐑰𐑯 𐑣𐑿𐑥𐑩𐑯 𐑯 AI 𐑐𐑤𐑱𐑻. 𐑞 𐑐𐑤𐑱𐑻/𐑒𐑤𐑲𐑩𐑯𐑑 𐑣𐑵 𐑒𐑩𐑯𐑑𐑮𐑴𐑤𐑟 "
-"𐑞𐑨𐑑 𐑕𐑲𐑛 𐑯𐑰𐑛𐑟 𐑑 𐑦𐑖𐑵 𐑞𐑦𐑕 𐑒𐑩𐑥𐑭𐑯𐑛. 𐑦𐑓 𐑯𐑴 𐑕𐑧𐑒𐑩𐑯𐑛 𐑐𐑼𐑨𐑥𐑩𐑑𐑼 𐑦𐑟 𐑕𐑩𐑐𐑤𐑲𐑛, 𐑑𐑪𐑜𐑩𐑤 bewteen "
-"𐑣𐑿𐑥𐑩𐑯 𐑯 AI. 𐑦𐑓 𐑦𐑑 𐑦𐑟 '𐑪𐑯', 𐑕𐑧𐑑 𐑩𐑯 AI 𐑒𐑩𐑯𐑑𐑮𐑴𐑤𐑼. 𐑦𐑓 𐑦𐑑 𐑦𐑟 '𐑪𐑓' 𐑕𐑧𐑑 𐑩 𐑣𐑿𐑥𐑩𐑯 "
-"𐑒𐑩𐑯𐑑𐑮𐑴𐑤𐑼. 𐑛𐑦𐑓𐑷𐑤𐑑𐑕 𐑑 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑨𐑒𐑑𐑦𐑝 𐑕𐑲𐑛 𐑦𐑓 𐑯𐑴 𐑐𐑼𐑨𐑥𐑩𐑑𐑼 𐑦𐑟 𐑕𐑩𐑐𐑤𐑲𐑛.\n"
-"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:616
@@ -6905,6 +6892,32 @@ msgstr ""
 #: src/help/help_topic_generators.cpp:716
 msgid "Jamming Cost"
 msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "Set or toggle player on side between human and AI player. The player/"
+#~| "client who controls that side needs to issue this command. If no second "
+#~| "parameter is supplied, toggle bewteen human and AI. If it is ‘on’, set "
+#~| "an AI controller. If it is ‘off’ set a human controller. Defaults to the "
+#~| "currently active side if no parameter is supplied.\n"
+#~| "\n"
+#~ msgid ""
+#~ "\n"
+#~ "Set or toggle player on side between human and AI player. The player/"
+#~ "client who controls that side needs to issue this command. If no second "
+#~ "parameter is supplied, toggle between human and AI. If it is ‘on’, set an "
+#~ "AI controller. If it is ‘off’ set a human controller. Defaults to the "
+#~ "currently active side if no parameter is supplied.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "𐑕𐑧𐑑 𐑹 𐑑𐑪𐑜𐑩𐑤 𐑐𐑤𐑱𐑻 𐑪𐑯 𐑕𐑲𐑛 𐑚𐑦𐑑𐑢𐑰𐑯 𐑣𐑿𐑥𐑩𐑯 𐑯 AI 𐑐𐑤𐑱𐑻. 𐑞 𐑐𐑤𐑱𐑻/𐑒𐑤𐑲𐑩𐑯𐑑 𐑣𐑵 𐑒𐑩𐑯𐑑𐑮𐑴𐑤𐑟 "
+#~ "𐑞𐑨𐑑 𐑕𐑲𐑛 𐑯𐑰𐑛𐑟 𐑑 𐑦𐑖𐑵 𐑞𐑦𐑕 𐑒𐑩𐑥𐑭𐑯𐑛. 𐑦𐑓 𐑯𐑴 𐑕𐑧𐑒𐑩𐑯𐑛 𐑐𐑼𐑨𐑥𐑩𐑑𐑼 𐑦𐑟 𐑕𐑩𐑐𐑤𐑲𐑛, 𐑑𐑪𐑜𐑩𐑤 "
+#~ "bewteen 𐑣𐑿𐑥𐑩𐑯 𐑯 AI. 𐑦𐑓 𐑦𐑑 𐑦𐑟 '𐑪𐑯', 𐑕𐑧𐑑 𐑩𐑯 AI 𐑒𐑩𐑯𐑑𐑮𐑴𐑤𐑼. 𐑦𐑓 𐑦𐑑 𐑦𐑟 '𐑪𐑓' 𐑕𐑧𐑑 "
+#~ "𐑩 𐑣𐑿𐑥𐑩𐑯 𐑒𐑩𐑯𐑑𐑮𐑴𐑤𐑼. 𐑛𐑦𐑓𐑷𐑤𐑑𐑕 𐑑 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑨𐑒𐑑𐑦𐑝 𐑕𐑲𐑛 𐑦𐑓 𐑯𐑴 𐑐𐑼𐑨𐑥𐑩𐑑𐑼 𐑦𐑟 "
+#~ "𐑕𐑩𐑐𐑤𐑲𐑛.\n"
+#~ "\n"
 
 #, fuzzy
 #~ msgid ""

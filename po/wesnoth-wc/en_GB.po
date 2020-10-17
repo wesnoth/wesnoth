@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
+"POT-Creation-Date: 2020-10-17 04:28 UTC\n"
 "PO-Revision-Date: 2020-09-24 23:49+1000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1045,19 +1045,20 @@ msgstr "WC2 Invest"
 msgid "Invest"
 msgstr "Invest"
 
+#. [lua]: gui.widget.add_invest_item
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:39
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:56
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
 msgid "Artifacts"
 msgstr "Artefacts"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:60
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:75
 msgid "Heroes"
 msgstr "Heroes"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:63
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:78
 msgid ""
 "Commanders will take your leader’s place when the leader dies, possible "
 "commanders:"
@@ -1065,64 +1066,65 @@ msgstr ""
 "Commanders will take your leader’s place when the leader dies, possible "
 "commanders:"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:70
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:85
 msgid "Commander"
 msgstr "Commander"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:70
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:85
 msgid "promote to leader"
 msgstr "promote to leader"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:90
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:103
 msgid "possible units:"
 msgstr "possible units:"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:96
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:110
 msgid "Deserter"
 msgstr "Deserter"
 
+#. [lua]: gui.widget.add_invest_item
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:108
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:118
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
 msgid "Training"
 msgstr "Training"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:115
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:125
 msgid "$name Training"
 msgstr "$name Training"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:124
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:135
 msgid "After:"
 msgstr "After:"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:124
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:135
 msgid "Before:"
 msgstr "Before:"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:136
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:140
 msgid "Other"
 msgstr "Other"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:142
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:146
 msgid "+70 gold and +1 village"
 msgstr "+70 gold and +1 village"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:147
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:151
 msgid "Stock up supplies"
 msgstr "Stock up supplies"
 
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:151
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:156
 msgid "Gives 70 gold and places a village on your keep."
 msgstr "Gives 70 gold and places a village on your keep."
 
@@ -2378,7 +2380,7 @@ msgstr " (not available for enemies)"
 msgid " (not available for players)"
 msgstr " (not available for players)"
 
-#. [lua]: root_node.callback
+#. [lua]: root_node.on_modified
 #. [lua]: GUI_FORCE_WIDGET_MINIMUM_SIZE
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:250
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help_dialog.lua:79

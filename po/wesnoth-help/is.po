@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-19 20:34+0300\n"
+"POT-Creation-Date: 2020-10-17 01:28-0300\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -641,17 +641,18 @@ msgstr ""
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:170
 msgid ""
-"This tool can create [time_area]s, unlike the name suggestes these do not "
-"need to have a specific timezone assigned to them.\n"
+"This tool can create [time_area]s, unlike the name suggests these do not "
+"need to have a specific time zone assigned to them.\n"
 "    [time_area]s are sets of tiles which can be addressed during scenario "
-"scripting by a thieir id. [time_area]s can optitionaly have a custom\n"
-"    time zome assigned to them. The simplest way to adress a [time_aera] via "
-"scenario scripting is the `aera=` attribute in standard location filters.\n"
+"scripting by a their id. [time_area]s can optionally have a custom\n"
+"    time zone assigned to them. The simplest way to address a [time_area] "
+"via scenario scripting is the `area=` attribute in standard location "
+"filters.\n"
 "\n"
 "This tool can be used to abstract between the implementation of an effect "
 "and the map specific setting.\n"
-"This is a very powerful mechanism since it allows generic scenario codings "
-"working with different maps providing the needed named locations."
+"This is a very powerful mechanism since it allows generic scenario code to "
+"work with different maps providing the needed named locations."
 msgstr ""
 
 #. [topic]: id=editor_playlist
@@ -920,14 +921,14 @@ msgid ""
 "TODO: add documentation about the scenario mode."
 msgstr ""
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
 msgid "Deep Underground"
 msgstr "Djúpt neðanjarðar"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
 msgid "Indoors"
 msgstr ""
@@ -2553,8 +2554,8 @@ msgstr ""
 "Seinni Vakt sem nótt:\n"
 
 #. [time]: id=dawn
-#. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
+#. [time]: id=dawn_hour
 #: data/core/help.cfg:402 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
@@ -2575,8 +2576,8 @@ msgid "Afternoon"
 msgstr "Síðdegi"
 
 #. [time]: id=dusk
-#. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
+#. [time]: id=dusk_hour
 #: data/core/help.cfg:405 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
@@ -3286,11 +3287,12 @@ msgstr ""
 #: data/core/help.cfg:613
 msgid ""
 "\n"
-"Set or toggle player on side between human and AI player. The player/client "
-"who controls that side needs to issue this command. If no second parameter "
-"is supplied, toggle between human and AI. If it is ‘on’, set an AI "
-"controller. If it is ‘off’ set a human controller. Defaults to the currently "
-"active side if no parameter is supplied.\n"
+"Switch a side between human and AI control. The second parameter can be "
+"‘off’ to bring the side under human control, ‘on’ to watch the AI make its "
+"moves, or ‘full’ to make the AI’s turn behave similarily to another player‘s "
+"turn. If no second parameter is supplied, it toggles between ‘on’ and ‘off’. "
+"Defaults to toggling the currently active side if no parameters are "
+"supplied.\n"
 "\n"
 msgstr ""
 

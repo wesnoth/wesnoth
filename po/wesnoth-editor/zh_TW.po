@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 05:30-0400\n"
+"POT-Creation-Date: 2020-10-17 01:28-0300\n"
 "PO-Revision-Date: 2020-02-10 01:06+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -305,11 +305,11 @@ msgstr "名字："
 msgid "Load Map"
 msgstr "載入地圖"
 
-#: src/editor/map/context_manager.cpp:271 src/editor/map/map_context.cpp:847
+#: src/editor/map/context_manager.cpp:271 src/editor/map/map_context.cpp:852
 msgid "New Map"
 msgstr "新地圖"
 
-#: src/editor/map/context_manager.cpp:284 src/editor/map/map_context.cpp:847
+#: src/editor/map/context_manager.cpp:284 src/editor/map/map_context.cpp:852
 msgid "New Scenario"
 msgstr "新章節"
 
@@ -432,15 +432,15 @@ msgid ""
 "an existing file"
 msgstr "這份地圖檔案像是一個章節，但是地圖資料連結一個不存在的檔案"
 
-#: src/editor/map/map_context.cpp:613
+#: src/editor/map/map_context.cpp:618
 msgid "Could not save the scenario: $msg"
 msgstr "無法儲存章節：$msg"
 
-#: src/editor/map/map_context.cpp:648
+#: src/editor/map/map_context.cpp:653
 msgid "Could not save into scenario"
 msgstr "無法儲存地圖"
 
-#: src/editor/map/map_context.cpp:658
+#: src/editor/map/map_context.cpp:663
 msgid "Could not save the map: $msg"
 msgstr "無法儲存地圖：$msg"
 
@@ -481,22 +481,41 @@ msgid "Delete"
 msgstr "刪除"
 
 #: src/editor/palette/terrain_palettes.cpp:231
-msgid "FG: "
-msgstr "前景地形： "
+msgid "Left-click: "
+msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:232
-msgid "BG: "
-msgstr "背景地形： "
+msgid "Right-click: "
+msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:137
+#. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
+#. because the logic of whether to show the "overlay only" or "base only" version depends on the
+#. terrain currently selected for the left button.
+#: src/editor/palette/terrain_palettes.cpp:237
+msgid "Shift + left-click: paint overlay layer only"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:239
+msgid "Shift + left-click: paint base layer only"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:242
+msgid "Cmd + click: copy terrain"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:244
+msgid "Ctrl + click: copy terrain"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:140
 msgid "Clipboard support not found, contact your packager"
 msgstr "沒有剪貼簿，請聯絡相關人員"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:201
+#: src/gui/dialogs/editor/custom_tod.cpp:204
 msgid "Choose File"
 msgstr "選擇檔案"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:202
+#: src/gui/dialogs/editor/custom_tod.cpp:205
 msgid "Select"
 msgstr "選擇"
 
@@ -507,6 +526,12 @@ msgstr "無"
 #: src/gui/dialogs/editor/set_starting_position.cpp:97
 msgid "Player $player_number"
 msgstr "玩家 $player_number"
+
+#~ msgid "FG: "
+#~ msgstr "前景地形： "
+
+#~ msgid "BG: "
+#~ msgstr "背景地形： "
 
 #~ msgid "Underground"
 #~ msgstr "地底"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6.4+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-19 17:34 UTC\n"
+"POT-Creation-Date: 2020-10-17 04:28 UTC\n"
 "PO-Revision-Date: 2019-04-14 17:39+0200\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <ai0867@gmail.com>\n"
@@ -186,8 +186,8 @@ msgstr "Dood van Konrad"
 msgid "Death of Delfador"
 msgstr "Dood van Delfador"
 
-#. [side]: type=Fighter, id=Konrad
 #. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:71
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:63
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:50
@@ -222,15 +222,15 @@ msgid "Konrad"
 msgstr "Konrad"
 
 #. [side]: type=Commander, id=Konrad
-#. [side]: type=Grand Knight, id=Kaylan
-#. [side]: id=Relgorn, type=Dwarvish Lord
-#. [side]: id=Geldar, type=Dwarvish Lord
-#. [side]
 #. [side]: type=Ancient Wose, id=Haralamdum
 #. [side]: type=Elvish Sylph, id=Bona-Melodia
+#. [side]: type=Grand Knight, id=Kaylan
 #. [side]: type=Fighter, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
+#. [side]: id=Relgorn, type=Dwarvish Lord
+#. [side]: id=Geldar, type=Dwarvish Lord
+#. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:80
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:237
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:256
@@ -276,25 +276,25 @@ msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
 #. [side]: type=Orcish Warrior, id=Mokolo Qimur
-#. [side]: type=Orcish Warrior, id=Usadar Q'kai
-#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
-#. [side]: type=Orcish Warrior, id=Managa'Gwin
 #. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #. [side]: type=Orcish Warrior, id=Gorlak
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: type=Orcish Warlord, id=Kior-Dal
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #. [side]: type=Orcish Warlord, id=Urug-Tan
 #. [side]: type=Orcish Sovereign, id=Shuuga-Mool
-#. [side]: type=Orcish Warlord, id=Urug-Telfar
-#. [side]: type=Orcish Warlord, id=Urag-Tifer
-#. [side]: type=Orcish Warlord, id=Kior-Dal
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
 #. [side]: type=Orcish Warlord, id=Gaga-Breuk
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #. [side]: type=Goblin Rouser
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
-#. [side]: type=Orcish Warlord, id=Knafa-Tan
-#. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: type=Orcish Warlord, id=Kojun Herolm
-#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:180
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:193
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:213
@@ -1205,8 +1205,8 @@ msgstr "De Parelbaai"
 msgid "Defeat one enemy leader, and resist the other until turns run out"
 msgstr "Dood één vijandige leider en overleef de ander tot de laatste beurt"
 
-#. [objectives]
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:26
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:24
@@ -1772,17 +1772,17 @@ msgstr "Versla Muff Malal"
 msgid "Muff Malal"
 msgstr "Muff Malal"
 
-#. [side]: type=Dark Sorcerer, id=Muff Malal
-#. [side]: type=Lich, id=Galga
-#. [side]: type=Lich, id=Na-alga
-#. [side]: type=Lich, id=Selda-Mana
-#. [side]: type=Death Knight, id=Unan-Ka'tall
 #. [side]: type=Death Knight, id=Clarustus
 #. [side]: type=Death Knight, id=Merlunius
 #. [side]: type=Lich, id=Aimucasur
 #. [side]: type=Death Knight, id=Secadius
 #. [side]: type=Death Knight, id=Dafeis
 #. [side]: type=Ancient Lich, id=Muff Argulak
+#. [side]: type=Dark Sorcerer, id=Muff Malal
+#. [side]: type=Death Knight, id=Unan-Ka'tall
+#. [side]: type=Lich, id=Galga
+#. [side]: type=Lich, id=Na-alga
+#. [side]: type=Lich, id=Selda-Mana
 #. [side]: id=Haf-Mal, type=Lich
 #. [side]: id=Jarmal-Gorg, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:78
@@ -2187,10 +2187,10 @@ msgid "Agadla"
 msgstr "Agadla"
 
 #. [side]: type=Troll Warrior, id=Haaf-Garga
-#. [side]: type=Orcish Warlord, id=Agadla
-#. [side]: type=Dark Sorcerer, id=Muff Jaanal
 #. [side]: id=Brugg, type=Troll Warrior
 #. [side]: id=Lionel, type=Death Knight
+#. [side]: type=Orcish Warlord, id=Agadla
+#. [side]: type=Dark Sorcerer, id=Muff Jaanal
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:115
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:88
@@ -2890,7 +2890,7 @@ msgstr "Elbrug"
 #. [unit]: id=Li'sar, type=Princess
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:87
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:68
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:751
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:752
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:93
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:718
 #, fuzzy
@@ -2902,11 +2902,11 @@ msgstr "Li’sar"
 #. [side]: type=General, id=Josephus
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=General, id=Malatus
+#. [side]: type=General, id=Robryn
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm
 #. [side]: type=Dark Queen, id=Asheviere
-#. [side]: type=General, id=Robryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:160
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:98
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:83
@@ -3403,7 +3403,7 @@ msgid "Excellent! We should be able to breed Gryphons for our own uses now!"
 msgstr "Uitstekend! Nu kunnen we griffioenen fokken!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:192
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:189
 #, fuzzy
 msgid ""
 "It appears that we are not the only ones interested in this mountain. Once "
@@ -3413,13 +3413,13 @@ msgstr ""
 "deze berg. Nogmaals probeert Asheviere ons tegen te houden."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:197
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:194
 #, fuzzy
 msgid "Quickly, men! Onward!"
 msgstr "Snel, mannen! Voorwaarts!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:212
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:209
 #, fuzzy
 msgid ""
 "Ha ha! We have killed this foul beast of the air, and can deny the rebels "
@@ -3429,13 +3429,13 @@ msgstr ""
 "rebellen haar eieren onthouden!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:258
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:255
 #, fuzzy
 msgid "We have defeated them! Now what do we do?"
 msgstr "We hebben ze verslagen! Wat doen we nu?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:259
 #, fuzzy
 msgid ""
 "We must continue north. It is too late to return to the safety of Elensefar "
@@ -3448,7 +3448,7 @@ msgstr ""
 "Snel, laat ons gaan!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:272
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:269
 #, fuzzy
 msgid ""
 "With these gryphon eggs we should be able to breed gryphons that will serve "
@@ -3458,7 +3458,7 @@ msgstr ""
 "kunnen we griffioenruiters inhuren!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:288
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:285
 #, fuzzy
 msgid ""
 "It is a shame we could not get those gryphon eggs. I am glad we did not "
@@ -3470,25 +3470,25 @@ msgstr ""
 "(kijkt om naar de berg). Maar toch..."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:292
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:289
 #, fuzzy
 msgid "Whoa!!"
 msgstr "Wauw!!"
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:349
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:346
 #, fuzzy
 msgid "Graik"
 msgstr "Graik"
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:350
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:347
 #, fuzzy
 msgid "Griak"
 msgstr "Griak"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:357
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:354
 #, fuzzy
 msgid ""
 "Indeed, the majestic beasts were now circling the mountain’s peak. Several "
@@ -3499,25 +3499,25 @@ msgstr ""
 "staarde in Konrad zijn richten, hun ogen op oneindig."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:397
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:394
 #, fuzzy
 msgid "Amazing! I have never before heard of such behavior in gryphons."
 msgstr "Geweldig! Ik heb nog nooit van zulk gedrag van griffioenen gehoord."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:401
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:398
 #, fuzzy
 msgid "What does it mean?"
 msgstr "Wat betekent het?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:405
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:402
 #, fuzzy
 msgid "I do not know. Come now, the show is over."
 msgstr "Ik weet het niet. Kom maar, de voorstelling is over."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:413
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:410
 #, fuzzy
 msgid ""
 "It is a shame we could not get those gryphon eggs — they would surely have "
@@ -3527,28 +3527,28 @@ msgstr ""
 "zouden ongetwijfeld ooit van pas zijn gekomen. Nu goed, we moeten verder."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:419
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:416
 #, fuzzy
 msgid "Let us continue onward!"
 msgstr "Laten we verder gaan!"
 
 #. [modify_unit]: type=Gryphon, id=Rampant Graak
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:457
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:506
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:454
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:503
 #, fuzzy
 msgid "Rampant Graak"
 msgstr "Woeste Graak"
 
 #. [modify_unit]: type=Gryphon, id=Rampant Grook
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:472
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:521
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:469
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:518
 #, fuzzy
 msgid "Rampant Grook"
 msgstr "Woeste Grook"
 
 #. [modify_unit]: type=Gryphon, id=Rampant Gruak
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:487
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:536
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:484
+#: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:533
 #, fuzzy
 msgid "Rampant Gruak"
 msgstr "Woeste Gruak"
@@ -3778,12 +3778,12 @@ msgid "Not her again! Quickly! We must hurry!"
 msgstr "Oh nee, zij weer! Snel! We moeten voortmaken!"
 
 #. [message]: type=Royal Guard
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:319
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:315
 msgid "Stop! You shall not pass!"
 msgstr ""
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:361
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:357
 #, fuzzy
 #| msgid ""
 #| "Stop! You shall not pass! Quick, reinforcements, protect the Princess!"
@@ -3791,51 +3791,51 @@ msgid "Quick, reinforcements, protect the Princess!"
 msgstr "Stop! Je zult niet passeren! Snel, versterkingen, bescherm de prinses!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:380
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:376
 msgid "Quick, reinforcements!"
 msgstr ""
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:400
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:396
 #, fuzzy
 #| msgid "female^Battle Princess"
 msgid "Protect the Princess!"
 msgstr "Oorlogsprinses"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:421
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:417
 #, fuzzy
 msgid "You drive me from the field, but you have not vanquished me, impostor!"
 msgstr ""
 "Je hebt me van het veld verdreven, maar je hebt me niet verslagen, bedrieger!"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:432
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:424
 #, fuzzy
 msgid "Water Serpent"
 msgstr "Zeeslang"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:435
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:706
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:427
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:707
 #, fuzzy
 msgid "Cuttle Fish"
 msgstr "Inktvis"
 
 #. [message]: type=Water Serpent
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:455
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:447
 #, fuzzy
 msgid "Ruaarrrrrrrr!"
 msgstr "Rrrroeaarr!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:459
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:451
 #, fuzzy
 msgid "What is that?"
 msgstr "Wat is dat?"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:463
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:455
 #, fuzzy
 msgid ""
 "Creatures of the deep are upon us! This may be very dangerous. Be quick! We "
@@ -3845,13 +3845,13 @@ msgstr ""
 "gevaarlijk worden. Wees snel! We moeten met spoed naar de overkant."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:478
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:470
 #, fuzzy
 msgid "We made it across the river safely! Where to now?"
 msgstr "We zijn veilig aan de overkant geraakt! Naar waar nu heen?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:483
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:475
 #, fuzzy
 #| msgid ""
 #| "If we are to have any hope of penetrating into Knalga, we must continue "
@@ -3864,7 +3864,7 @@ msgstr ""
 "noorden om de hulp te zoeken van de dwergen van de Hart Bergen."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:494
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:485
 #, fuzzy
 msgid ""
 "I cannot believe it. They have made it away! We must make chase. After them, "
@@ -3874,13 +3874,13 @@ msgstr ""
 "Voorwaarts! Snel over de rivier. We zullen elkaar terugzien, vuile bedrieger."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:499
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:490
 #, fuzzy
 msgid "Do you think she’s really going to chase us, Delfador?"
 msgstr "Denk je echt dat ze ons zal achternazitten, Delfador?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:504
+#: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:495
 #, fuzzy
 msgid ""
 "It surely looks like she will try. But many more creatures than we have "
@@ -4169,19 +4169,19 @@ msgid "Royal Guard"
 msgstr "Koninklijke Wacht"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:263
 #, fuzzy
 msgid "At last, this is the entrance to the dwarven tunnels."
 msgstr "Eindelijk, de toegang tot het Dwergenrijk."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:266
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:267
 #, fuzzy
 msgid "All I can see are ruins and poor villages."
 msgstr "Het enige wat zie zijn ruïnes en arme dorpen."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:270
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:271
 #, fuzzy
 msgid ""
 "The poor villagers that once lived here and traded with the dwarves are now "
@@ -4191,13 +4191,13 @@ msgstr ""
 "dreven zijn nu slaven van de orks."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:274
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:275
 #, fuzzy
 msgid "Slaves to the evil orcs? We must liberate them!"
 msgstr "Slaven van de orks? We moeten ze bevrijden!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:279
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:280
 #, fuzzy
 msgid ""
 "That would not be a wise choice, for our mission is to retrieve the Sceptre "
@@ -4207,7 +4207,7 @@ msgstr ""
 "hier langer blijven zullen horden orks ons omsingelen."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:283
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:284
 #, fuzzy
 msgid ""
 "Konrad, heed the words of Delfador. We shall return to wrest the grip of the "
@@ -4219,13 +4219,13 @@ msgstr ""
 "er zullen spoedig meer komen."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:287
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:288
 #, fuzzy
 msgid "This does not please me, but I will listen to your advice."
 msgstr "Dit bevalt me niet, maar ik zal je advies opvolgen."
 
 #. [message]: role=Rider
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:291
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:292
 #, fuzzy
 msgid ""
 "Sir, I should like to scout out the path ahead. It would be disaster for us "
@@ -4237,7 +4237,7 @@ msgstr ""
 "gebruikt door de vijanden."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:295
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:296
 #, fuzzy
 msgid "Excellent. We must find a way underground before we are overwhelmed."
 msgstr ""
@@ -4245,7 +4245,7 @@ msgstr ""
 "onder de voet worden gelopen."
 
 #. [message]: role=Outlaw_Advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:320
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:321
 #, fuzzy
 msgid ""
 "My uncle used to smuggle... err... I mean... trade food for the dwarves. He "
@@ -4255,13 +4255,13 @@ msgstr ""
 "kon graankarren onder de neuzen van de orks binnenbrengen."
 
 #. [message]: role=Outlaw_Advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:324
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:325
 #, fuzzy
 msgid "He must be hiding in one of those villages."
 msgstr "Hij zit vast en zeker verscholen in een van die dorpjes."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:338
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:339
 #, fuzzy
 msgid ""
 "The defense of the dwarves must have been strong. Look at those ruined "
@@ -4271,7 +4271,7 @@ msgstr ""
 "torenruïnes!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:342
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:343
 #, fuzzy
 msgid ""
 "The battle outside was fierce and lasted a full half-year. But, the battles "
@@ -4281,7 +4281,7 @@ msgstr ""
 "Maar de gevechten in de tunnels waren nog heviger..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:357
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:358
 #, fuzzy
 msgid ""
 "The pillars of Thunedain. He was a legendary dwarvish lord who made his last "
@@ -4291,7 +4291,7 @@ msgstr ""
 "laatste rustplaats vond. Dat wij moge zegevieren, waar hij gevallen is!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:361
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:362
 #, fuzzy
 msgid ""
 "I would settle for escape, though I know not which I dread more: foul orcs "
@@ -4301,45 +4301,45 @@ msgstr ""
 "banger ben voor de orks of voor de grotten."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:381
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:382
 #, fuzzy
 msgid "Back to the abyss, spawn of filth!"
 msgstr "Terug naar de hel, addergebroed!"
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:400
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:401
 #, fuzzy
 msgid "Uncle Somf"
 msgstr "Oom Somf"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:404
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:405
 #, fuzzy
 msgid "Who... who’s here?"
 msgstr "Halt! Wie gaat daar?"
 
 #. [message]: speaker=Uncle Somf
 #. The addressed person is the speaker's niece or nephew.
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:420
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:421
 #, fuzzy
 msgid "$outlaw_name|! How have you been? I haven’t seen you in years."
 msgstr "$outlaw_name|! Hoe gaat het met je? Ik heb je in geen jaren gezien."
 
 #. [message]: speaker=Uncle Somf
 #. The mentioned person, $outlaw_name, is the speaker's niece or nephew.
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:428
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:429
 #, fuzzy
 msgid "Haw! Any friend of $outlaw_name is a friend of mine too."
 msgstr "Haw! Een vriend van $outlaw_name is ook mijn vriend."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:435
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:436
 #, fuzzy
 msgid "We need to make it into the caves of the dwarves."
 msgstr "We moeten zien dat we in de dwergengrotten geraken."
 
 #. [message]: speaker=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:449
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:450
 #, fuzzy
 msgid ""
 "The mine entrances were all collapsed intentionally during the fighting. The "
@@ -4351,7 +4351,7 @@ msgstr ""
 "bestormen worden afgeslagen, maar jij kunt misschien ongezien binnensluipen."
 
 #. [message]: speaker=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:455
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:456
 #, fuzzy
 msgid ""
 "The best way is through the mine tunnels. The orcs have never found all the "
@@ -4362,31 +4362,31 @@ msgstr ""
 
 #. [message]: speaker=Uncle Somf
 #. The addressed person is the speaker's niece or nephew.
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:489
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:490
 #, fuzzy
 msgid "How are we doing, $outlaw_name|?"
 msgstr "Hoe staan we ervoor, $outlaw_name|?"
 
 #. [message]: speaker=$outlaw_advisor_store.id
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:493
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:494
 #, fuzzy
 msgid "The same as always, Uncle!"
 msgstr "Zoals altijd, oom!"
 
 #. [message]: speaker=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:497
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:498
 #, fuzzy
 msgid "That bad, huh?"
 msgstr "Zo slecht?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:528
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:529
 #, fuzzy
 msgid "The doors... they can be moved!"
 msgstr "De deuren... er zit beweging in!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:532
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:533
 #, fuzzy
 msgid "Quickly, now, let us slip inside and hope the dwarves do not object..."
 msgstr ""
@@ -4394,25 +4394,25 @@ msgstr ""
 "van maken..."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:536
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:537
 #, fuzzy
 msgid "... and that the orcs do not follow."
 msgstr "... en dat de orks ons niet volgen."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:542
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:543
 #, fuzzy
 msgid "The doors are closed and barred from the inside!"
 msgstr "De deuren zijn gesloten en van binnenuit vergrendeld."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:547
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:548
 #, fuzzy
 msgid "We can’t get in! What should we do now?"
 msgstr "We kunnen niet naar binnen! Wat moeten we nu doen?"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:551
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:552
 #, fuzzy
 msgid ""
 "It is said that the orcs used old mine tunnels to surprise the dwarves. "
@@ -4422,19 +4422,19 @@ msgstr ""
 "verrassen. Het moet die tunnel zijn in het noordoosten."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:555
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:556
 #, fuzzy
 msgid "Then we must make it to that tunnel!"
 msgstr "Dan moeten we snel naar die tunnel!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:579
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:580
 #, fuzzy
 msgid "This old mine seems to be connected to the main tunnels."
 msgstr "Deze oude mijnschacht lijkt verbonden te zijn met de hoofdtunnels."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:583
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:584
 #, fuzzy
 msgid "I am hesitant to enter. It will be so difficult in the darkness!"
 msgstr ""
@@ -4442,7 +4442,7 @@ msgstr ""
 "duisternis!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:588
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:589
 #, fuzzy
 msgid "There is no time for idle chatter or delay of any kind. Onward!"
 msgstr ""
@@ -4450,7 +4450,7 @@ msgstr ""
 "Voorwaarts!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:594
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:595
 #, fuzzy
 msgid ""
 "I have reached the mine entrance, but there is no tunnel here. Rock and "
@@ -4460,26 +4460,26 @@ msgstr ""
 "blokkeren de doorgang."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:598
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:599
 #, fuzzy
 msgid "I hope we can make it through the main doors, then."
 msgstr "Dan hoop ik dat de hoofdingang wel vrij is."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:602
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:603
 #, fuzzy
 msgid "It is our only choice now. Hurry!"
 msgstr "Dat is onze enige hoop. Laten we ons haasten."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:629
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:658
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:630
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:659
 #, fuzzy
 msgid "Pray that we live to see sunlight again."
 msgstr "Bid dat we ooit nog het zonlicht weerzien."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:676
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:677
 #, fuzzy
 msgid ""
 "We have defeated the foul orcs guarding this land, but we must continue "
@@ -4489,7 +4489,7 @@ msgstr ""
 "zonder aarzelen verder. Er zullen meer orks komen!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:686
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:687
 #, fuzzy
 msgid ""
 "Indeed we must not delay. Let us breach the great doors to the dwarven "
@@ -4499,7 +4499,7 @@ msgstr ""
 "Dwergenrijk inbeuken."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:692
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:693
 #, fuzzy
 msgid ""
 "Indeed we must not delay. The mines in the northeast are the best way to "
@@ -4509,19 +4509,19 @@ msgstr ""
 "noordoosten de beste weg naar Knalga zijn."
 
 #. [message]: speaker=Cuttle Fish
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:710
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:711
 #, fuzzy
 msgid "Ruarrrrr!!!"
 msgstr "Rrrroeaarr!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:714
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:715
 #, fuzzy
 msgid "A monster was hiding in that lake!"
 msgstr "Dat meer herbergde een monster!"
 
 #. [message]: role=whiner
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:738
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:739
 #, fuzzy
 msgid ""
 "The legend was true! There are always tentacled creatures hiding in the "
@@ -4531,14 +4531,14 @@ msgstr ""
 "meren rondom het Dwergenrijk. "
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:748
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:749
 #, fuzzy
 msgid "But Konrad’s party was not alone in entering the caves..."
 msgstr ""
 "Maar Konrad en zijn gevolg waren niet de enigen die de mijnen binnengingen."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:763
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:764
 #, fuzzy
 msgid ""
 "Whew! We made our way through the dangerous fog of the mountains, and now "

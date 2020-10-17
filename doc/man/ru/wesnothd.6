@@ -1,0 +1,284 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2018 wesnothd "Демон для игры по сети Battle for Wesnoth"
+.
+.SH ИМЯ
+.
+wesnothd \- скрытый процесс многопользовательской игры Битва за \fBВеснот\fP
+.
+.SH ОБЗОР
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIпуть\fP\|] [\|\fB\-p\fP \fIпорт\fP\|] [\|\fB\-t\fP
+\fIчисло\fP\|] [\|\fB\-T\fP \fIчисло\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH ОПИСАНИЕ
+.
+Управление многопользовательскими играми Битвы за
+Веснот. См. https://www.wesnoth.org/wiki/ServerAdministration (англ.), чтобы
+узнать, какие команды сервер может принимать через клиент Веснота (/query
+\&...) или через fifo.
+.
+.SH ПАРАМЕТРЫ
+.
+.TP 
+\fB\-c\ \fP\fIпуть\fP\fB,\ \-\-config\fP\fI\ путь\fP
+указавает конфигурационный файл wesnothd. См. раздел \fBКОНФИГУРАЦИЯ СЕРВЕРА\fP
+ниже для описания синтаксиса. Вы можете перезагрузить файл настроек отправив
+сигнал SIGHUP процессу сервера.
+.TP 
+\fB\-d, \-\-daemon\fP
+запустить wesnothd в качестве демона (скрытого процесса).
+.TP 
+\fB\-h, \-\-help\fP
+сообщает, что делают параметры командной строки.
+.TP 
+\fB\-\-log\-\fP\fIуровень\fP\fB=\fP\fIдомен1\fP\fB,\fP\fIдомен2\fP\fB,\fP\fI...\fP
+задает уровень для отладочных доменов.  \fBall\fP может соответствовать любому
+отладочному домену. Доступны уровни: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  По умолчанию используется уровень \fBerror\fP, а для домена
+\fBserver\fP — уровень \fBinfo\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ порт\fP
+привязывает сервер к указанному порту. Если порт не указан, используется
+порт \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ число\fP
+установить максимальное число рабочих потоков для сетевого ввода\-вывода в n
+(по умолчанию \fB5\fP, максимум  \fB30\fP).
+.TP 
+\fB\-T\ \fP\fIчисло\fP\fB,\ \-\-max\-threads\fP\fI\ число\fP
+установить максимальное число создаваемых рабочих потоков, если \fB0\fP, то
+ограничений нет (по умолчанию \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+вывести номер версии и выйти.
+.TP 
+\fB\-v, \-\-verbose\fP
+включить отладочный лог.
+.
+.SH "КОНФИГУРАЦИЯ СЕРВЕРА"
+.
+.SS "Основной синтаксис:"
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalue\fP"
+.IP
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Глобальные ключи:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Если установлено в \fBno\fP (по умолчанию), shut_down (завершение работы) и
+restart (перезагрузка) запросы будут проигнорированы, только если они не
+пришли из fifo.  Установите в \fByes\fP , чтобы разрешить удалённое выключение
+через /query администратором.
+.TP 
+\fBban_save_file\fP
+Полный или относительный путь к файлу (сжатому в gzip), который сервер может
+читать и записывать.  Баны будут сохраняться здесь и загружаться при
+загрузке сервера.
+.TP 
+\fBcompress_stored_rooms\fP
+Определяет, нужно ли читать и писать файлы комнат в сжатой форме. Значение
+по умолчанию — \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+Число разрешенных подключений от одного IP\-адреса. \fB0\fP значит \-
+неограниченно. (по умолчанию: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Имена/ники, не принимаемые сервером. Поддерживаются групповые шаблоны \fB*\fP и
+\fB?\fP. Подробности см. \fBglob\fP(7). Значения по умолчанию (используются, если
+ничего не указано):
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+Путь к fifo, куда можно направлять серверные команды (соответствует команде
+/query ... в wesnoth).  Если не задан, используется файл, заданный при
+компиляции (по умолчанию: \fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+Число разрешенных сообщений в \fBmessages_time_period\fP. (по умолчанию: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Временной отрезок (в секундах), в течение которого определяются сообщения
+флудеров. (по умолчанию: \fB10\fP секунд)
+.TP 
+\fBmotd\fP
+Сообщение дня.
+.TP 
+\fBnew_room_policy\fP
+Определяет, кто может создавать новые комнаты на сервере. Доступные значения
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP и \fBnobody\fP, они дают дают разрешение
+соответственно всем, зарегистрированным пользователям, администраторам или
+запрещает создание новых комнат. Стандартное значение \fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+Пароль доступа администра. (через \fB/query admin \fP\fIпароль\fP).
+.TP 
+\fBreplay_save_path\fP
+Директория, где сервер хранит повторы игр. (не забудьте завершающую косую
+черту /!) По умолчанию `'что означает директорию, где запущен wesnothd.
+.TP 
+\fBrestart_command\fP
+Команда, с помощью которой сервер запускает новый серверный процесс через
+команду \fBrestart\fP.  (Может быть подана только через fifo.  См. также
+\fBallow_remote_shutdown\fP.)
+.TP 
+\fBroom_save_file\fP
+Путь к файлу, в котором нужно сохранить информацию о комнате.  При запуске
+сервер читает этот файл, а позднее в него пишет.  Если файл пуст или не
+задан, комнаты не загружаются и не сохраняются.
+.TP 
+\fBsave_replays\fP
+Определяет будет ли сервер сохранять повторы игр (по умолчанию: \fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+Список версий принимаемых сервером, разделенные запятыми. Поддерживаются
+\fB*\fP и \fB?\fP в качестве группового символа.
+.br
+Пример: \fBversions_accepted="*"\fP принимает строку с любой версией.
+.TP 
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
+.
+.SS "Глобальные тэги:"
+.
+.P
+\fB[redirect]\fP тэг, указывающий перенаправление на сервер для определенной
+версии клиента.
+.RS
+.TP 
+\fBhost\fP
+Адрес сервера для перенаправления.
+.TP 
+\fBport\fP
+Порт подключения.
+.TP 
+\fBversion\fP
+Список версий, разделенных запятыми, для перенаправления. При использовании
+заполнителей поведение аналогично \fBversions_accepted\fP.
+.RE
+.P
+\fB[ban_time]\fP Тэг, который задает удобные ключевые слова для сроков
+временного бана.
+.RS
+.TP 
+\fBname\fP
+Имя, которое используется для указания на время бана.
+.TP 
+\fBtime\fP
+Определение длительности времени. Формат: %d[%s[%d%s[...]]] где %s
+(секунды), m (минуты), h (часы), D (дни), M (месяцы) or Y (годы) и %d это
+число. Если формат не указан, предполагается что время указано в минутах
+(m). Пример: \fBtime="1D12h30m"\fP приводит к бану на 1 день, 12 часов и 30
+минут.
+.RE
+.P
+\fB[proxy]\fP тэг указывает серверу работать в качестве прокси и передавать
+поступающие пользовательские запросы на указанный сервер. Принимает те же
+ключи, что и \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Настройка блока работы с пользователями. Доступные ключи
+зависят от того, какой именно блок задан ключом \fBuser_handler\fP. Если секции
+\fB[user_handler]\fP в конфигурационном файле нет, сервер запустится без службы
+регистрации ников. Все дополнительные таблицы, необходимые для работы
+\fBforum_user_handler\fP, можно найти в файле table_definitions.sql, что
+находится в репозитории исходного кода Веснота.
+.RS
+.TP 
+\fBdb_host\fP
+The hostname of the database server
+.TP 
+\fBdb_name\fP
+The name of the database
+.TP 
+\fBdb_user\fP
+The name of the user under which to log into the database
+.TP 
+\fBdb_password\fP
+This user's password
+.TP 
+\fBdb_users_table\fP
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+.TP 
+\fBdb_extra_table\fP
+The name of the table in which wesnothd will save its own data about users.
+.TP 
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
+.RE
+.
+.SH "КОД ВЫХОДА"
+.
+Если сервер закончил работу правильно, код выхода 0. Код выхода 2 означает
+что в параметрах командной строки были ошибки.
+.
+.SH АВТОР
+.
+Написана Дэвидом Уайтом (David White)
+<davidnwhite@verizon.net>. Отредактирована Нильсом Кнейпером (Nils
+Kneuper) <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton.de@gmail.com> и Томасом Баумхаером
+<thomas.baumhauer@gmail.com>. Эта страница изначально была написана
+Сирилом Бауторсом (Cyril Bouthors) <cyril@bouthors.org>.
+.br
+Посетите официальную страницу: https://www.wesnoth.org/
+.
+.SH "АВТОРСКОЕ ПРАВО"
+.
+Авторское право \(co Дэвид Уайт, 2003\-2018 <davidnwhite@verizon.net>
+.br
+Это — Свободное программное обеспечение; эта программа находится под
+лицензией GPL версии 2, опубликованной Фондом свободного программного
+обеспечения (Free Software Foundation).  НИКАКИХ гарантий не
+предоставляется; даже для КОММЕРЧЕСКОЙ ЦЕННОСТИ или для СООТВЕТСТВИЯ
+КАКОЙ\-ТО ЦЕЛИ.
+.
+.SH "СМ. ТАКЖЕ"
+.
+\fBwesnoth\fP(6)
+

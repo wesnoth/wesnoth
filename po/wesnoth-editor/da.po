@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 05:30-0400\n"
+"POT-Creation-Date: 2020-10-17 01:28-0300\n"
 "PO-Revision-Date: 2007-12-01 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -316,11 +316,11 @@ msgstr ""
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:271 src/editor/map/map_context.cpp:847
+#: src/editor/map/context_manager.cpp:271 src/editor/map/map_context.cpp:852
 msgid "New Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:284 src/editor/map/map_context.cpp:847
+#: src/editor/map/context_manager.cpp:284 src/editor/map/map_context.cpp:852
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "New Scenario"
@@ -452,18 +452,18 @@ msgid ""
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:613
+#: src/editor/map/map_context.cpp:618
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Kunne ikke gemme kortet: $msg"
 
-#: src/editor/map/map_context.cpp:648
+#: src/editor/map/map_context.cpp:653
 #, fuzzy
 msgid "Could not save into scenario"
 msgstr "Kunne ikke gemme kortet: $msg"
 
-#: src/editor/map/map_context.cpp:658
+#: src/editor/map/map_context.cpp:663
 msgid "Could not save the map: $msg"
 msgstr "Kunne ikke gemme kortet: $msg"
 
@@ -504,22 +504,41 @@ msgid "Delete"
 msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:231
-msgid "FG: "
+msgid "Left-click: "
 msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:232
-msgid "BG: "
+msgid "Right-click: "
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:137
+#. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
+#. because the logic of whether to show the "overlay only" or "base only" version depends on the
+#. terrain currently selected for the left button.
+#: src/editor/palette/terrain_palettes.cpp:237
+msgid "Shift + left-click: paint overlay layer only"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:239
+msgid "Shift + left-click: paint base layer only"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:242
+msgid "Cmd + click: copy terrain"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:244
+msgid "Ctrl + click: copy terrain"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:140
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:201
+#: src/gui/dialogs/editor/custom_tod.cpp:204
 msgid "Choose File"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:202
+#: src/gui/dialogs/editor/custom_tod.cpp:205
 msgid "Select"
 msgstr ""
 

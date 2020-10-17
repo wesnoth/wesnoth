@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
+"POT-Creation-Date: 2020-10-17 04:28 UTC\n"
 "PO-Revision-Date: 2020-08-05 03:56+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -40,6 +40,7 @@ msgstr "yumruk"
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Brawler.cfg:32
 #: data/core/units/monsters/Fire_Dragon.cfg:43
+#: data/core/units/monsters/Icemonax_Greater.cfg:78
 msgid "tail"
 msgstr "kuyruk"
 
@@ -307,7 +308,6 @@ msgid "bow"
 msgstr "yay"
 
 #. [attack]: type=blade
-#. [attack]: type=blade    
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
@@ -319,8 +319,12 @@ msgstr "yay"
 #: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
+#: data/core/units/monsters/Bear.cfg:51
 #: data/core/units/monsters/Elder_Falcon.cfg:35
-#: data/core/units/monsters/Falcon.cfg:34 data/core/units/monsters/Roc.cfg:36
+#: data/core/units/monsters/Falcon.cfg:91
+#: data/core/units/monsters/Icemonax.cfg:52
+#: data/core/units/monsters/Icemonax_Greater.cfg:60
+#: data/core/units/monsters/Roc.cfg:36
 #: data/core/units/monsters/Skeletal_Dragon.cfg:43
 #: data/core/units/undead/Corpse_Ghoul.cfg:33
 #: data/core/units/undead/Corpse_Necrophage.cfg:28
@@ -340,7 +344,6 @@ msgid "saber"
 msgstr "eskrim kılıcı"
 
 #. [unit_type]: id=Walking Corpse, race=undead
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -352,6 +355,7 @@ msgstr "eskrim kılıcı"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:108
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:123
@@ -403,8 +407,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=fire
 #. [attack]: type=cold
+#. [attack]: type=fire
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:36
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:36
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:111
@@ -486,8 +490,8 @@ msgstr "veba sopası"
 msgid "curse"
 msgstr "beddua"
 
-#. [attack]: type=pierce
 #. [attack]: type=blade
+#. [attack]: type=pierce
 #. [unit_type]: id=SotA Walking Corpse_Wolf
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Flying Corpse_Bat
@@ -501,13 +505,14 @@ msgstr "beddua"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:247
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:275
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Minion.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/units/monsters/Ant.cfg:24
 #: data/core/units/bats/Bat_Blood.cfg:118 data/core/units/bats/Bat_Dread.cfg:33
 #: data/core/units/bats/Bat_Vampire.cfg:117
 #: data/core/units/goblins/Direwolf_Rider.cfg:33
 #: data/core/units/goblins/Knight.cfg:34
 #: data/core/units/goblins/Pillager.cfg:33
 #: data/core/units/goblins/Wolf_Rider.cfg:46
+#: data/core/units/monsters/Ant.cfg:32 data/core/units/monsters/Bear.cfg:42
+#: data/core/units/monsters/Fire_Ant.cfg:63
 #: data/core/units/monsters/Giant_Spider.cfg:30
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:43
@@ -517,15 +522,21 @@ msgstr "beddua"
 msgid "fangs"
 msgstr "pençeleme"
 
+#. [attack]: type=cold
 #. [attack]: type=blade
+#. [attack]: type=pierce
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:298
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:261
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
+#: data/core/units/monsters/Crocodile.cfg:101
 #: data/core/units/monsters/Fire_Dragon.cfg:34
 #: data/core/units/monsters/Giant_Rat.cfg:30
+#: data/core/units/monsters/Giant_Stoat.cfg:62
+#: data/core/units/monsters/Icemonax.cfg:61
+#: data/core/units/monsters/Icemonax_Greater.cfg:69
 #: data/core/units/monsters/Wild_Wyvern.cfg:24
 #: data/core/units/undead/Corpse_Ghast.cfg:29
 msgid "bite"
@@ -1104,8 +1115,8 @@ msgstr ""
 "Diğer ejderlerle karşılaştırıldığında, Zırhlı Ejder 'delme' saldırılarına "
 "daha dirençlidir."
 
-#. [attack]: type=pierce
 #. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/core/units/drakes/Arbiter.cfg:31 data/core/units/drakes/Arbiter.cfg:40
 #: data/core/units/drakes/Warden.cfg:32 data/core/units/drakes/Warden.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:32
@@ -5378,6 +5389,78 @@ msgstr ""
 "ırkların askerleriyle kıyaslandığında bile etkileyici bir beceri ve "
 "titizlikle kullanırlar, ancak sualtı savaşının zorlukları iki kat fazladır."
 
+#. [unit_type]: id=Giant Ant, race=monster
+#: data/core/units/monsters/Ant.cfg:4
+#, fuzzy
+#| msgid "Giant Rat"
+msgid "Giant Ant"
+msgstr "Dev Sıçan"
+
+#. [unit_type]: id=Giant Ant, race=monster
+#: data/core/units/monsters/Ant.cfg:19
+msgid ""
+"Giant Ants are common in almost any environment, from caverns deep under the "
+"earth to the tops of tall mountains. Though normally not hostile, they can "
+"bite at close range."
+msgstr ""
+
+#. [unit_type]: id=Cave Bear, race=monster
+#: data/core/units/monsters/Bear.cfg:4
+msgid "Cave Bear"
+msgstr ""
+
+#. [unit_type]: id=Cave Bear, race=monster
+#: data/core/units/monsters/Bear.cfg:20
+msgid ""
+"Cave Bears are large, powerful beasts with sharp claws and large teeth.  "
+"Adapted to roaming the dark caves, they have a keen sense of smell and "
+"hearing, but poor eyesight.  When a rival predator, or some other threat, "
+"gets too close, a bear will reliably attack."
+msgstr ""
+
+#. [unit_type]: id=Swamp Lizard, race=monster
+#: data/core/units/monsters/Crocodile.cfg:9
+msgid "Swamp Lizard"
+msgstr ""
+
+#. [unit_type]: id=Swamp Lizard, race=monster
+#: data/core/units/monsters/Crocodile.cfg:74
+msgid ""
+"Swamps are vibrant environments, but often not friendly to humans or orcs.  "
+"Swamp Lizards are one of the more notable hazards, with their powerful jaws "
+"and armored hide.  Despite their primitive appearance, these lizards are not "
+"stupid, and after generations of being hunted for their hides, they have "
+"adopted a 'two legs bad' outlook and do not hesitate to avenge their "
+"ancestors."
+msgstr ""
+
+#. [special_note]
+#: data/core/units/monsters/Crocodile.cfg:76
+msgid ""
+"This unit can move unseen through swamp water, keeping most of its body "
+"submerged."
+msgstr ""
+
+#. [hides]: id=swamp_lurk
+#: data/core/units/monsters/Crocodile.cfg:86
+msgid "swamp lurk"
+msgstr ""
+
+#. [hides]: id=swamp_lurk
+#: data/core/units/monsters/Crocodile.cfg:87
+msgid "female^swamp lurk"
+msgstr ""
+
+#. [hides]: id=swamp_lurk
+#: data/core/units/monsters/Crocodile.cfg:88
+msgid ""
+"This unit can hide in swamp, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see this unit while it is in swamp, except if they have "
+"units next to it. Any enemy unit that first discovers this unit immediately "
+"loses all its remaining movement."
+msgstr ""
+
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
@@ -5416,7 +5499,7 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Elder_Falcon.cfg:27
-#: data/core/units/monsters/Falcon.cfg:26 data/core/units/monsters/Roc.cfg:28
+#: data/core/units/monsters/Falcon.cfg:83 data/core/units/monsters/Roc.cfg:28
 msgid "beak"
 msgstr "gaga"
 
@@ -5437,6 +5520,25 @@ msgstr ""
 "sporda kullanılan değerli hayvanlardır. Aynı teknikler savaş alanındaki "
 "düşmanları parçalamak ve yırtmak için de kullanılır ve büyük hızları araziyi "
 "keşfe çıkmak için bir nimettir."
+
+#. [unit_type]: id=Fire Ant, race=monster
+#: data/core/units/monsters/Fire_Ant.cfg:11
+#, fuzzy
+#| msgid "Fire Dragon"
+msgid "Fire Ant"
+msgstr "Ateş Ejderhası"
+
+#. [unit_type]: id=Fire Ant, race=monster
+#: data/core/units/monsters/Fire_Ant.cfg:46
+msgid "Lorem ipsem ..."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/monsters/Fire_Ant.cfg:72
+#, fuzzy
+#| msgid "fireball"
+msgid "fire"
+msgstr "ateş topu"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
@@ -5634,6 +5736,51 @@ msgstr ""
 msgid "web"
 msgstr "ağ"
 
+#. [unit_type]: id=Giant Stoat, race=monster
+#: data/core/units/monsters/Giant_Stoat.cfg:4
+#, fuzzy
+#| msgid "Giant Rat"
+msgid "Giant Stoat"
+msgstr "Dev Sıçan"
+
+#. [unit_type]: id=Giant Stoat, race=monster
+#: data/core/units/monsters/Giant_Stoat.cfg:20
+msgid ""
+"Giant Stoats are a devious rodent predominantly found in the frozen "
+"northlands, although they can survive anywhere.  They generally scavenge and "
+"hunt smaller animals, but are territorial and the young adults have been "
+"known to attack larger intruders, including humans and orcs."
+msgstr ""
+
+#. [unit_type]: id=Icemonax, race=monster
+#: data/core/units/monsters/Icemonax.cfg:4
+msgid "Icemonax"
+msgstr ""
+
+#. [unit_type]: id=Icemonax, race=monster
+#: data/core/units/monsters/Icemonax.cfg:33
+msgid ""
+"Icemonax are a strange beast of the frozen north, best described as a large, "
+"armored ground squirrel.  Their armor accummulates frost and snow, even in "
+"more temperate climates.  Most Icemonax are curious, often wandering into "
+"places they do not belong.  Despite this, efforts to study and domesticate "
+"them have failed, as they die soon after capture."
+msgstr ""
+
+#. [unit_type]: id=Great Icemonax, race=monster
+#: data/core/units/monsters/Icemonax_Greater.cfg:4
+msgid "Great Icemonax"
+msgstr ""
+
+#. [unit_type]: id=Great Icemonax, race=monster
+#: data/core/units/monsters/Icemonax_Greater.cfg:34
+msgid ""
+"Icemonax are a strange beast of the frozen north, best described as a large, "
+"armored ground squirrel.  Their armor accummulates ice and snow, even when "
+"the climate is warm and dry.  Some Icemonax grow to be quite large and "
+"powerful, guarding their smaller, younger kin."
+msgstr ""
+
 #. [unit_type]: id=Jinn, race=monster, description=
 #: data/core/units/monsters/Jinn.cfg:4
 msgid "Jinn"
@@ -5741,6 +5888,43 @@ msgstr ""
 "Dokunaçların bağlı olduğu hayvanlara yakalanma ve su altına çekilme korkusu "
 "yüzünden birçokları onlarla savaşmakta  tereddüt eder."
 
+#. [unit_type]: id=Gorer, race=monster
+#: data/core/units/monsters/Tusker_Gorer.cfg:4
+msgid "Gorer"
+msgstr ""
+
+#. [unit_type]: id=Gorer, race=monster
+#: data/core/units/monsters/Tusker_Gorer.cfg:34
+msgid ""
+"As Tuskers age, their already formidable teeth grow longer and more "
+"numerous.  A mature boar gorer is a valuable asset to any farmer.  And angry "
+"boar gorer is a challenge even to the best hunters"
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/monsters/Tusker_Gorer.cfg:50
+#: data/core/units/monsters/Tusker_Tusklet.cfg:48
+msgid "Tusks"
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Tusker_Gorer.cfg:102
+msgid "Tusk Charge"
+msgstr ""
+
+#. [unit_type]: id=Tusklet, race=monster
+#: data/core/units/monsters/Tusker_Tusklet.cfg:4
+msgid "Tusklet"
+msgstr ""
+
+#. [unit_type]: id=Tusklet, race=monster
+#: data/core/units/monsters/Tusker_Tusklet.cfg:33
+msgid ""
+"Young tuskers are as notoriously bad-tempered as the adults of the species, "
+"if a little less of a challenge.  But woe betide the unfortunate who comes "
+"between a Tusklet and its parents."
+msgstr ""
+
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
 msgid "Water Serpent"
@@ -5769,9 +5953,9 @@ msgstr ""
 msgid "Wolf"
 msgstr "Genç Kurt"
 
+#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
-#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19

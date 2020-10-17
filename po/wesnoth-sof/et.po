@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-19 17:35 UTC\n"
+"POT-Creation-Date: 2020-10-17 04:28 UTC\n"
 "PO-Revision-Date: 2011-12-29 13:02+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -130,8 +130,8 @@ msgid "Rugnur"
 msgstr "Rugnur"
 
 #. [side]: type=Dwarvish Fighter, id=Rugnur
-#. [side]: type=Dwarvish Lord, id=Durstorn
 #. [side]: type=Haldric II, id=Haldric II
+#. [side]: type=Dwarvish Lord, id=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:27
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:45
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:24
@@ -157,9 +157,9 @@ msgstr "Päkapikud"
 msgid "Haldric II"
 msgstr "Haldric II"
 
-#. [unit]: type=Elvish Marshal, id=Glildur
-#. [side]: type=Elvish Captain, id=Glildur
 #. [side]: type=Elvish Marshal, id=Glildur
+#. [side]: type=Elvish Captain, id=Glildur
+#. [unit]: type=Elvish Marshal, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:93
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:36
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:70
@@ -168,11 +168,11 @@ msgstr "Haldric II"
 msgid "Glildur"
 msgstr "Glildur"
 
-#. [side]
-#. [side]: type=Elvish Captain, id=Glildur
 #. [side]: type=Elvish Marshal, id=Glildur
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
+#. [side]: type=Elvish Captain, id=Glildur
+#. [side]
 #. [side]: type=Elvish Marshal, id=Crintil
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:113
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:43
@@ -263,7 +263,7 @@ msgstr "Haldric II surm"
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:139
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:187
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:209
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:101
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:102
 msgid "Death of Alanin"
 msgstr "Alanini surm"
 
@@ -491,8 +491,8 @@ msgstr ""
 "sinna. Ta jääb teie juurde, kuni te saua teete, ja vaatab, et te saate õigel "
 "ajal valmis. Ma tahan, et see valmiks enne minu valitsusaja lõppu."
 
-#. [side]
 #. [unit]: type=Dragoon, id=Alanin
+#. [side]
 #. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:472
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:27
@@ -1202,8 +1202,8 @@ msgstr ""
 msgid "In the Dwarven City"
 msgstr "Päkapikkude linnas"
 
-#. [side]: type=Dwarvish Lord, id=Durstorn
 #. [unit]: type=Dwarvish Lord, id=Durstorn
+#. [side]: type=Dwarvish Lord, id=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:31
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:31
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:31
@@ -3013,7 +3013,7 @@ msgstr ""
 
 #. [message]: speaker=Durstorn
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:891
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:892
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:61
 msgid "Gaanngh..."
 msgstr "Kõmmmm...."
@@ -3409,12 +3409,12 @@ msgid ""
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:97
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:98
 msgid "Reach the Wesnothian outpost in the south"
 msgstr "Jõua Wesnothi eelpostini lõunas"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:117
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:118
 #, fuzzy
 #| msgid ""
 #| "Well, the elves are behind me for now, but they will send riders to catch "
@@ -3427,7 +3427,7 @@ msgstr ""
 "nende hobused on kiiremad."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:121
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:122
 #, fuzzy
 #| msgid ""
 #| "My only hope is to convince the peasants to stop the elves from passing "
@@ -3440,32 +3440,32 @@ msgstr ""
 "maalt läbiminekul, et saaksin edumaad."
 
 #. [unit]: type=Elvish Outrider, id=Asaeri
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:127
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:128
 msgid "Lord Asaeri"
 msgstr "Isand Asaeri"
 
 #. [unit]: type=Elvish Outrider, id=Gaelir
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:138
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:139
 msgid "Gaelir"
 msgstr "Gaelir"
 
 #. [unit]: type=Elvish Outrider, id=Salira
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:149
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:150
 msgid "Salira"
 msgstr "Salira"
 
 #. [unit]: type=Elvish Outrider, id=Losnin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:161
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:162
 msgid "Losnin"
 msgstr "Losnin"
 
 #. [unit]: type=Elvish Outrider, id=Ealin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:173
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:174
 msgid "Ealin"
 msgstr "Ealin"
 
 #. [message]: speaker=Asaeri
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:188
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:189
 msgid ""
 "You cannot outride us, horseman of Wesnoth! Whatever message you are "
 "carrying, it will not be delivered!"
@@ -3474,51 +3474,51 @@ msgstr ""
 "kanna, see jääb viimata!"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:192
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:193
 msgid "We shall see about that!"
 msgstr "Vaatame seda!"
 
 #. [unit]: type=Elvish Outrider, id=Raesil
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:201
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:202
 msgid "Raesil"
 msgstr "Raesil"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:227
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:228
 msgid "Great, now there is no need to worry about those elves anymore!"
 msgstr ""
 
 #. [message]: role=newcomer
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:236
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:237
 msgid ""
 "Did you really think that you could escape us? Don’t underestimate us, "
 "inferior humans!"
 msgstr ""
 
 #. [message]: id=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:248
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:249
 msgid ""
 "Even though my chances have grown worse, I have to fulfil my duty. I do not "
 "owe them any less!"
 msgstr ""
 
 #. [message]: id=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:273
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:274
 msgid "Oh no, more of them? And there I thought I could catch my breath…"
 msgstr ""
 
 #. [message]: role=fighter
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:278
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:279
 msgid "Don’t worry sir, we’ll make it through this!"
 msgstr ""
 
 #. [message]: id=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:303
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:304
 msgid "Is there no end to their numbers?"
 msgstr ""
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:368
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:369
 msgid ""
 "The villagers here are loyal to Wesnoth. They should be willing to help me "
 "escape these elves!"
@@ -3527,34 +3527,34 @@ msgstr ""
 "eest põgeneda aitama!"
 
 #. [unit]: type=Spearman, id=Rolin    # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:373
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:374
 msgid "Rolin"
 msgstr "Rolin"
 
 #. [message]: speaker=Rolin   # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:383
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:384
 msgid "We will certainly help any warrior of Wesnoth who needs our help!"
 msgstr "Me aitame kindlasti iga Wesnothi sõdalast, kes meie abi vajab!"
 
 #. [message]: race=elf
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:439
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:440
 msgid ""
 "You slow humans took too long, our detachment has already caught up with you!"
 msgstr ""
 
 #. [unit]: type=Lieutenant, id=Hadlin   # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:561
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:562
 msgid "Hadlin"
 msgstr "Hadlin"
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:571
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:572
 msgid "Who goes there?"
 msgstr "Kes seal käib?"
 
 #. [message]: speaker=Alanin
 #. dragoon = his unit type
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:582
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:583
 #, fuzzy
 #| msgid ""
 #| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
@@ -3571,7 +3571,7 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #. cavalier = his unit type
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:589
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:590
 #, fuzzy
 #| msgid ""
 #| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
@@ -3587,7 +3587,7 @@ msgstr ""
 "tulema."
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:595
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:596
 msgid ""
 "I see. Well, come on in. I doubt they would be able to capture this fort, "
 "even if they did want to start a war, which I doubt."

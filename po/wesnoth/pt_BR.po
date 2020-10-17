@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-09-19 20:35+0300\n"
+"POT-Creation-Date: 2020-10-17 01:28-0300\n"
 "PO-Revision-Date: 2020-02-03 08:47-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -965,7 +965,7 @@ msgstr "Contribuidores Diversos"
 # File: data/core/about.cfg, line: 2947
 # File: data/core/about.cfg, line: 2947
 #. [about]
-#: data/core/about.cfg:1796
+#: data/core/about.cfg:1799
 msgid "Bots"
 msgstr "Bots"
 
@@ -1715,8 +1715,8 @@ msgstr "Martelo Rúnico"
 # File: data/core/macros/items.cfg, line: 270
 # File: data/core/macros/items.cfg, line: 270
 # File: data/core/macros/items.cfg, line: 270
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Água Benta"
@@ -1765,8 +1765,8 @@ msgstr "Poção Cinza"
 # File: data/core/macros/items.cfg, line: 242
 # File: data/core/macros/items.cfg, line: 242
 # File: data/core/macros/items.cfg, line: 242
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Veneno"
@@ -1862,8 +1862,8 @@ msgstr "Tabuinha de Pedra"
 # File: data/core/macros/items.cfg, line: 514
 # File: data/core/macros/items.cfg, line: 514
 # File: data/core/macros/items.cfg, line: 514
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Tridente da Tempestade"
@@ -4778,7 +4778,7 @@ msgstr "O Peso da Vingança"
 # File: data/core/macros/utils.cfg, line: 784
 # File: data/core/macros/utils.cfg, line: 784
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:652
+#: data/core/macros/utils.cfg:651
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Você recuperou $amount_gold peças de ouro."
 
@@ -5056,7 +5056,7 @@ msgstr "Impassável"
 # File: src/multiplayer_lobby.cpp, line: 601
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:440
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
 msgid "Fog"
 msgstr "Neblina"
 
@@ -5078,8 +5078,8 @@ msgstr "Neblina"
 # File: src/multiplayer_lobby.cpp, line: 611
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:443
-#: src/game_initialization/lobby_data.cpp:446
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
+#: src/game_initialization/lobby_data.cpp:445
 msgid "Shroud"
 msgstr "Escuridão"
 
@@ -5672,6 +5672,20 @@ msgid "$percent|% of gold carried over to the next scenario."
 msgstr "$percent|% do ouro transferido par ao próximo cenário."
 
 #
+# File: src/statistics_dialog.cpp, line: 125
+# File: src/statistics_dialog.cpp, line: 255
+# File: src/statistics_dialog.cpp, line: 125
+# File: src/statistics_dialog.cpp, line: 255
+# File: src/statistics_dialog.cpp, line: 125
+# File: src/statistics_dialog.cpp, line: 255
+#. [modification]: id=delay_advancements, type=hybrid
+#: data/modifications.cfg:3
+#, fuzzy
+#| msgid "Advancements:"
+msgid "Delay Advancements"
+msgstr "Avanços:"
+
+#
 # File: src/attack_prediction_display.cpp, line: 224
 # File: src/attack_prediction_display.cpp, line: 224
 # File: src/attack_prediction_display.cpp, line: 224
@@ -5794,60 +5808,11 @@ msgid "female^aura of death ("
 msgstr "aura da morte ("
 
 #
-# File: data/scenario-test.cfg, line: 857
-# File: src/dialogs.cpp, line: 1008
-# File: src/mp_depcheck.cpp, line: 458
-# File: src/mp_options.cpp, line: 227
-# File: src/multiplayer_create.cpp, line: 101
-# File: data/scenario-test.cfg, line: 857
-# File: src/dialogs.cpp, line: 1008
-# File: src/mp_depcheck.cpp, line: 458
-# File: src/mp_options.cpp, line: 227
-# File: src/multiplayer_create.cpp, line: 101
-# File: data/scenario-test.cfg, line: 857
-# File: src/dialogs.cpp, line: 1008
-# File: src/mp_depcheck.cpp, line: 458
-# File: src/mp_options.cpp, line: 227
-# File: src/multiplayer_create.cpp, line: 101
-#: data/scenario-test.cfg:1253 src/game_initialization/depcheck.cpp:490
-msgid "OK"
-msgstr "OK"
-
-#
-# File: data/scenario-test.cfg, line: 858
-# File: src/dialogs.cpp, line: 1009
-# File: src/dialogs.cpp, line: 1450
-# File: src/dialogs.cpp, line: 1556
-# File: src/mp_options.cpp, line: 232
-# File: src/multiplayer_connect.cpp, line: 1073
-# File: src/multiplayer_create.cpp, line: 100
-# File: src/multiplayer_wait.cpp, line: 179
-# File: data/scenario-test.cfg, line: 858
-# File: src/dialogs.cpp, line: 1009
-# File: src/dialogs.cpp, line: 1450
-# File: src/dialogs.cpp, line: 1556
-# File: src/mp_options.cpp, line: 232
-# File: src/multiplayer_connect.cpp, line: 1073
-# File: src/multiplayer_create.cpp, line: 100
-# File: src/multiplayer_wait.cpp, line: 179
-# File: data/scenario-test.cfg, line: 858
-# File: src/dialogs.cpp, line: 1009
-# File: src/dialogs.cpp, line: 1450
-# File: src/dialogs.cpp, line: 1556
-# File: src/mp_options.cpp, line: 232
-# File: src/multiplayer_connect.cpp, line: 1073
-# File: src/multiplayer_create.cpp, line: 100
-# File: src/multiplayer_wait.cpp, line: 179
-#: data/scenario-test.cfg:1254
-msgid "Cancel"
-msgstr "Cancelar"
-
-#
 # File: data/scenario-test.cfg, line: 3670
 # File: data/scenario-test.cfg, line: 3670
 # File: data/scenario-test.cfg, line: 3670
 #. [language]
-#: data/scenario-test.cfg:4340
+#: data/scenario-test.cfg:4395
 msgid "very long"
 msgstr "muito longo"
 
@@ -5856,7 +5821,7 @@ msgstr "muito longo"
 # File: data/scenario-test.cfg, line: 3671
 # File: data/scenario-test.cfg, line: 3671
 #. [language]
-#: data/scenario-test.cfg:4341
+#: data/scenario-test.cfg:4396
 msgid "electrical"
 msgstr "elétrico"
 
@@ -6769,12 +6734,19 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 64
 #. [tip]
 #: data/tips.cfg:76
+#, fuzzy
+#| msgid ""
+#| "Poisoned units will lose eight hitpoints every turn until they are one "
+#| "point from dying. They will then remain at death’s door until the poison "
+#| "is removed. Healers can prevent a poisoned unit from deteriorating, but "
+#| "the poison will not be removed unless the unit regenerates, or begins a "
+#| "turn in a village or next to a unit with the <i>Cures</i> ability."
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
 "removed. Healers can prevent a poisoned unit from deteriorating, but the "
 "poison will not be removed unless the unit regenerates, or begins a turn in "
-"a village or next to a unit with the <i>Cures</i> ability."
+"a village, in an oasis, or next to a unit with the <i>Cures</i> ability."
 msgstr ""
 "Unidades envenenadas perdem oito pontos de vida todo turno até que tenham "
 "apenas um ponto de vida. Veneno por si só não mata uma unidade, mas ele "
@@ -7923,7 +7895,29 @@ msgstr ""
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
-#: src/addon/client.cpp:180
+#: src/addon/client.cpp:183
+#, fuzzy
+#| msgid "Sending add-on <i>$addon_title</i>..."
+msgid ""
+"Requesting the older version composition for the add-on <i>$addon_title</"
+"i>..."
+msgstr "Enviando add-on <i>$addon_title</i>..."
+
+#
+# File: src/addon/client.cpp, line: 140
+# File: src/addon/client.cpp, line: 140
+# File: src/addon/client.cpp, line: 140
+#: src/addon/client.cpp:199
+#, fuzzy
+#| msgid "Sending add-on <i>$addon_title</i>..."
+msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
+msgstr "Enviando add-on <i>$addon_title</i>..."
+
+#
+# File: src/addon/client.cpp, line: 140
+# File: src/addon/client.cpp, line: 140
+# File: src/addon/client.cpp, line: 140
+#: src/addon/client.cpp:220
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Enviando add-on <i>$addon_title</i>..."
 
@@ -7931,7 +7925,7 @@ msgstr "Enviando add-on <i>$addon_title</i>..."
 # File: src/addon/client.cpp, line: 174
 # File: src/addon/client.cpp, line: 174
 # File: src/addon/client.cpp, line: 174
-#: src/addon/client.cpp:213
+#: src/addon/client.cpp:253
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Removendo add-on <i>$addon_title</i> do servidor..."
 
@@ -7939,7 +7933,7 @@ msgstr "Removendo add-on <i>$addon_title</i> do servidor..."
 # File: src/addon/client.cpp, line: 198
 # File: src/addon/client.cpp, line: 198
 # File: src/addon/client.cpp, line: 198
-#: src/addon/client.cpp:240
+#: src/addon/client.cpp:281
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Baixando add-on <i>$addon_title</i>..."
 
@@ -7947,7 +7941,7 @@ msgstr "Baixando add-on <i>$addon_title</i>..."
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/client.cpp:254
+#: src/addon/client.cpp:333 src/addon/client.cpp:359
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -7959,7 +7953,7 @@ msgstr ""
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/client.cpp:260
+#: src/addon/client.cpp:338 src/addon/client.cpp:364
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -7983,7 +7977,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 328
 # File: src/addon/manager_ui.cpp, line: 333
 # File: src/addon/manager_ui.cpp, line: 815
-#: src/addon/client.cpp:317
+#: src/addon/client.cpp:408
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu com um erro:"
 
@@ -7991,7 +7985,7 @@ msgstr "O servidor respondeu com um erro:"
 # File: src/addon/manager_ui.cpp, line: 148
 # File: src/addon/manager_ui.cpp, line: 148
 # File: src/addon/manager_ui.cpp, line: 148
-#: src/addon/client.cpp:367
+#: src/addon/client.cpp:458
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -8009,7 +8003,7 @@ msgstr[1] ""
 # File: src/addon/manager_ui.cpp, line: 157
 # File: src/addon/manager_ui.cpp, line: 157
 # File: src/addon/manager_ui.cpp, line: 157
-#: src/addon/client.cpp:376
+#: src/addon/client.cpp:467
 msgid "Broken Dependencies"
 msgstr "Dependências Quebradas"
 
@@ -8017,7 +8011,7 @@ msgstr "Dependências Quebradas"
 # File: src/addon/manager_ui.cpp, line: 252
 # File: src/addon/manager_ui.cpp, line: 252
 # File: src/addon/manager_ui.cpp, line: 252
-#: src/addon/client.cpp:416
+#: src/addon/client.cpp:507
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -8032,7 +8026,7 @@ msgstr[1] ""
 # File: src/addon/manager_ui.cpp, line: 256
 # File: src/addon/manager_ui.cpp, line: 256
 # File: src/addon/manager_ui.cpp, line: 256
-#: src/addon/client.cpp:420
+#: src/addon/client.cpp:511
 msgid "Dependencies Installation Failed"
 msgstr "A instalação das dependências falharam"
 
@@ -8040,7 +8034,7 @@ msgstr "A instalação das dependências falharam"
 # File: src/addon/manager_ui.cpp, line: 279
 # File: src/addon/manager_ui.cpp, line: 279
 # File: src/addon/manager_ui.cpp, line: 279
-#: src/addon/client.cpp:443
+#: src/addon/client.cpp:534
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -8052,7 +8046,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 283
 # File: src/addon/manager_ui.cpp, line: 283
 # File: src/addon/manager_ui.cpp, line: 283
-#: src/addon/client.cpp:447
+#: src/addon/client.cpp:538
 msgid "Publishing information file (.pbl)"
 msgstr "Arquivo de informação da publicação (.pbl)"
 
@@ -8060,7 +8054,7 @@ msgstr "Arquivo de informação da publicação (.pbl)"
 # File: src/addon/manager_ui.cpp, line: 287
 # File: src/addon/manager_ui.cpp, line: 287
 # File: src/addon/manager_ui.cpp, line: 287
-#: src/addon/client.cpp:451
+#: src/addon/client.cpp:542
 msgid "Version control system (VCS) information"
 msgstr "Informação de versão de controle do sistema (VCS)"
 
@@ -8068,7 +8062,7 @@ msgstr "Informação de versão de controle do sistema (VCS)"
 # File: src/addon/manager_ui.cpp, line: 291
 # File: src/addon/manager_ui.cpp, line: 291
 # File: src/addon/manager_ui.cpp, line: 291
-#: src/addon/client.cpp:455
+#: src/addon/client.cpp:546
 msgid "Do you really wish to continue?"
 msgstr "Você realmente deseja continuar?"
 
@@ -8085,7 +8079,7 @@ msgstr "Você realmente deseja continuar?"
 # File: src/addon/manager_ui.cpp, line: 304
 # File: src/addon/manager_ui.cpp, line: 970
 # File: src/multiplayer.cpp, line: 272
-#: src/addon/client.cpp:457 src/addon/manager_ui.cpp:174
+#: src/addon/client.cpp:548 src/addon/manager_ui.cpp:174
 #: src/game_initialization/multiplayer.cpp:231
 msgid "Confirm"
 msgstr "Confirmar"
@@ -8097,7 +8091,7 @@ msgstr "Confirmar"
 # File: src/addon/manager_ui.cpp, line: 682
 # File: src/addon/client.cpp, line: 300
 # File: src/addon/manager_ui.cpp, line: 682
-#: src/addon/client.cpp:577
+#: src/addon/client.cpp:668
 msgid "Add-ons Manager"
 msgstr "Gerenciador de Add-ons"
 
@@ -8958,30 +8952,30 @@ msgstr "%b %d %Y"
 msgid "Invalid color in range: "
 msgstr "Gama de cor inválida: "
 
-#: src/game_config_manager.cpp:234 src/game_config_manager.cpp:243
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:237 src/game_config_manager.cpp:246
+#: src/game_config_manager.cpp:258
 msgid "Error validating data core."
 msgstr "Erro ao validar a data do core."
 
-#: src/game_config_manager.cpp:235
+#: src/game_config_manager.cpp:238
 msgid "Found a core without id attribute."
 msgstr "Um core foi encontrado sem id atribuido."
 
-#: src/game_config_manager.cpp:236 src/game_config_manager.cpp:246
-#: src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:239 src/game_config_manager.cpp:249
+#: src/game_config_manager.cpp:262
 msgid "Skipping the core."
 msgstr "Pulando o core."
 
-#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:279
+#: src/game_config_manager.cpp:247 src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:282
 msgid "Core ID: "
 msgstr "Core ID: "
 
-#: src/game_config_manager.cpp:245
+#: src/game_config_manager.cpp:248
 msgid "The ID is already in use."
 msgstr "O ID já está em uso."
 
-#: src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:260
 msgid "Core Path: "
 msgstr "Caminho do Core: "
 
@@ -8989,23 +8983,23 @@ msgstr "Caminho do Core: "
 # File: src/menu_events.cpp, line: 2927
 # File: src/menu_events.cpp, line: 2926
 # File: src/menu_events.cpp, line: 2926
-#: src/game_config_manager.cpp:258
+#: src/game_config_manager.cpp:261
 msgid "File not found."
 msgstr "Arquivo não encontrado."
 
-#: src/game_config_manager.cpp:278 src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:281 src/game_config_manager.cpp:293
 msgid "Error loading core data."
 msgstr "Erro ao carregar a data do core."
 
-#: src/game_config_manager.cpp:280
+#: src/game_config_manager.cpp:283
 msgid "Error loading the core with named id."
 msgstr "Erro ao carregar o core com o id listado."
 
-#: src/game_config_manager.cpp:281
+#: src/game_config_manager.cpp:284
 msgid "Falling back to the default core."
 msgstr "Retornando ao core padrão."
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:294
 msgid "Can't locate the default core."
 msgstr "Não foi possível localizar o core padrão."
 
@@ -9013,7 +9007,7 @@ msgstr "Não foi possível localizar o core padrão."
 # File: src/game_controller.cpp, line: 1062
 # File: src/game_controller.cpp, line: 1062
 # File: src/game_controller.cpp, line: 1062
-#: src/game_config_manager.cpp:292
+#: src/game_config_manager.cpp:295
 msgid "The game will now exit."
 msgstr "O jogo agora será fechado."
 
@@ -9021,7 +9015,7 @@ msgstr "O jogo agora será fechado."
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
-#: src/game_config_manager.cpp:343
+#: src/game_config_manager.cpp:346
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -9033,7 +9027,7 @@ msgstr ""
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
-#: src/game_config_manager.cpp:350
+#: src/game_config_manager.cpp:353
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -9045,18 +9039,18 @@ msgstr ""
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
-#: src/game_config_manager.cpp:359
+#: src/game_config_manager.cpp:362
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
 "Erro ao carregar arquivos de configuração de jogo personalizado. O jogo "
 "agora fechará."
 
-#: src/game_config_manager.cpp:511
+#: src/game_config_manager.cpp:514
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:535
+#: src/game_config_manager.cpp:538
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
@@ -9064,13 +9058,13 @@ msgstr ""
 # File: src/game_controller.cpp, line: 1021
 # File: src/game_controller.cpp, line: 1021
 # File: src/game_controller.cpp, line: 1021
-#: src/game_config_manager.cpp:571
+#: src/game_config_manager.cpp:586
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "O seguinte add-on não pode ser carregado corretamente:"
 msgstr[1] "Os seguintes add-ons não poderam ser carregados corretamente:"
 
-#: src/game_config_manager.cpp:575
+#: src/game_config_manager.cpp:590
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -9082,7 +9076,7 @@ msgstr[1] ""
 # File: src/game_events.cpp, line: 187
 # File: src/game_events.cpp, line: 187
 # File: src/game_events.cpp, line: 187
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:954
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:951
 msgid "Error: "
 msgstr "Erro: "
 
@@ -9245,6 +9239,26 @@ msgid "Failed to resolve dependencies"
 msgstr "Falha ao resolver dependências"
 
 #
+# File: data/scenario-test.cfg, line: 857
+# File: src/dialogs.cpp, line: 1008
+# File: src/mp_depcheck.cpp, line: 458
+# File: src/mp_options.cpp, line: 227
+# File: src/multiplayer_create.cpp, line: 101
+# File: data/scenario-test.cfg, line: 857
+# File: src/dialogs.cpp, line: 1008
+# File: src/mp_depcheck.cpp, line: 458
+# File: src/mp_options.cpp, line: 227
+# File: src/multiplayer_create.cpp, line: 101
+# File: data/scenario-test.cfg, line: 857
+# File: src/dialogs.cpp, line: 1008
+# File: src/mp_depcheck.cpp, line: 458
+# File: src/mp_options.cpp, line: 227
+# File: src/multiplayer_create.cpp, line: 101
+#: src/game_initialization/depcheck.cpp:490
+msgid "OK"
+msgstr "OK"
+
+#
 # File: src/mp_depcheck.cpp, line: 484
 # File: src/mp_depcheck.cpp, line: 484
 # File: src/mp_depcheck.cpp, line: 484
@@ -9328,7 +9342,7 @@ msgstr "Não foi possível obter gênero para o líder inválido $leader"
 # File: src/menu_events.cpp, line: 1532
 # File: src/menu_events.cpp, line: 1532
 # File: src/menu_events.cpp, line: 1532
-#: src/game_initialization/lobby_data.cpp:225
+#: src/game_initialization/lobby_data.cpp:224
 msgid "Missing addon: $name"
 msgstr "Addon faltando: $name"
 
@@ -9336,7 +9350,7 @@ msgstr "Addon faltando: $name"
 # File: src/menu_events.cpp, line: 1532
 # File: src/menu_events.cpp, line: 1532
 # File: src/menu_events.cpp, line: 1532
-#: src/game_initialization/lobby_data.cpp:227
+#: src/game_initialization/lobby_data.cpp:226
 msgid "Missing addon: $id"
 msgstr "Addon faltando: $id"
 
@@ -9347,7 +9361,7 @@ msgstr "Addon faltando: $id"
 # File: src/multiplayer_lobby.cpp, line: 466
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 210
 # File: src/multiplayer_lobby.cpp, line: 466
-#: src/game_initialization/lobby_data.cpp:259
+#: src/game_initialization/lobby_data.cpp:258
 msgid "Unknown era"
 msgstr "Era desconhecida"
 
@@ -9358,8 +9372,8 @@ msgstr "Era desconhecida"
 # File: src/menu_events.cpp, line: 323
 # File: src/leader_scroll_dialog.cpp, line: 186
 # File: src/menu_events.cpp, line: 323
-#: src/game_initialization/lobby_data.cpp:326
-#: src/game_initialization/lobby_data.cpp:359
+#: src/game_initialization/lobby_data.cpp:325
+#: src/game_initialization/lobby_data.cpp:358
 msgid "scenario_abbreviation^S"
 msgstr "S"
 
@@ -9370,12 +9384,12 @@ msgstr "S"
 # File: src/multiplayer_lobby.cpp, line: 528
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 266
 # File: src/multiplayer_lobby.cpp, line: 528
-#: src/game_initialization/lobby_data.cpp:345
+#: src/game_initialization/lobby_data.cpp:344
 msgid "Remote scenario"
 msgstr "Cenário remoto"
 
-#: src/game_initialization/lobby_data.cpp:367
-#: src/game_initialization/lobby_data.cpp:390
+#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:389
 msgid "campaign_abbreviation^C"
 msgstr "C"
 
@@ -9386,7 +9400,7 @@ msgstr "C"
 # File: src/multiplayer_lobby.cpp, line: 539
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 279
 # File: src/multiplayer_lobby.cpp, line: 539
-#: src/game_initialization/lobby_data.cpp:395
+#: src/game_initialization/lobby_data.cpp:394
 msgid "Unknown scenario"
 msgstr "Cenário desconhecido"
 
@@ -9397,7 +9411,7 @@ msgstr "Cenário desconhecido"
 # File: src/multiplayer_lobby.cpp, line: 570
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 285
 # File: src/multiplayer_lobby.cpp, line: 570
-#: src/game_initialization/lobby_data.cpp:405
+#: src/game_initialization/lobby_data.cpp:404
 msgid "Reloaded game"
 msgstr "Jogo carregado"
 
@@ -9408,13 +9422,13 @@ msgstr "Jogo carregado"
 # File: src/multiplayer_lobby.cpp, line: 590
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 300
 # File: src/multiplayer_lobby.cpp, line: 590
-#: src/game_initialization/lobby_data.cpp:420
+#: src/game_initialization/lobby_data.cpp:419
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Espaço Vago:"
 msgstr[1] "Espaços Vagos:"
 
-#: src/game_initialization/lobby_data.cpp:422
+#: src/game_initialization/lobby_data.cpp:421
 msgid "mp_game_available_slots^Full"
 msgstr "Lotado"
 
@@ -9425,8 +9439,8 @@ msgstr "Lotado"
 # File: src/savegame.cpp, line: 1142
 # File: src/dialogs.cpp, line: 864
 # File: src/savegame.cpp, line: 1142
-#: src/game_initialization/lobby_data.cpp:433
-#: src/game_initialization/lobby_data.cpp:435 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:432
+#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:645
 msgid "Turn"
 msgstr "Turno"
 
@@ -9434,7 +9448,7 @@ msgstr "Turno"
 # File: src/reports.cpp, line: 560
 # File: src/reports.cpp, line: 560
 # File: src/reports.cpp, line: 560
-#: src/game_initialization/lobby_data.cpp:448
+#: src/game_initialization/lobby_data.cpp:447
 msgid "vision^none"
 msgstr "Nenhum"
 
@@ -9442,11 +9456,11 @@ msgstr "Nenhum"
 # File: src/multiplayer_create.cpp, line: 73
 # File: src/multiplayer_create.cpp, line: 73
 # File: src/multiplayer_create.cpp, line: 73
-#: src/game_initialization/lobby_data.cpp:457
+#: src/game_initialization/lobby_data.cpp:456
 msgid "time limit^none"
 msgstr "Nenhum"
 
-#: src/game_initialization/lobby_data.cpp:501
+#: src/game_initialization/lobby_data.cpp:500
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -9454,7 +9468,7 @@ msgstr ""
 "A versão do <i>$addon</i> do host não é compativel. Eles possuem a versão <b>"
 "$host_ver</b> enquanto que você possui a versão <b>$local_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:515
+#: src/game_initialization/lobby_data.cpp:514
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -9560,7 +9574,7 @@ msgstr "Dados corrompidos recebido do servidor"
 # File: src/multiplayer.cpp, line: 343
 # File: src/multiplayer.cpp, line: 343
 # File: src/multiplayer.cpp, line: 343
-#: src/game_initialization/multiplayer.cpp:310
+#: src/game_initialization/multiplayer.cpp:312
 msgid "You must login first."
 msgstr "Você precisa logar primeiro."
 
@@ -9568,7 +9582,7 @@ msgstr "Você precisa logar primeiro."
 # File: src/multiplayer.cpp, line: 345
 # File: src/multiplayer.cpp, line: 345
 # File: src/multiplayer.cpp, line: 345
-#: src/game_initialization/multiplayer.cpp:312
+#: src/game_initialization/multiplayer.cpp:314
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "O apelido '$nick' já está sendo usado."
 
@@ -9576,7 +9590,7 @@ msgstr "O apelido '$nick' já está sendo usado."
 # File: src/multiplayer.cpp, line: 347
 # File: src/multiplayer.cpp, line: 347
 # File: src/multiplayer.cpp, line: 347
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:316
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -9588,7 +9602,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 351
 # File: src/multiplayer.cpp, line: 351
 # File: src/multiplayer.cpp, line: 351
-#: src/game_initialization/multiplayer.cpp:318
+#: src/game_initialization/multiplayer.cpp:320
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "O apelido '$nick' é muito grande. Apelidos precisam ter 20 caracteres ou "
@@ -9598,7 +9612,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 354
 # File: src/multiplayer.cpp, line: 354
 # File: src/multiplayer.cpp, line: 354
-#: src/game_initialization/multiplayer.cpp:321
+#: src/game_initialization/multiplayer.cpp:322
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "O apelido '$nick' está reservado e não pode ser usado por jogadores."
 
@@ -9606,7 +9620,7 @@ msgstr "O apelido '$nick' está reservado e não pode ser usado por jogadores."
 # File: src/multiplayer.cpp, line: 356
 # File: src/multiplayer.cpp, line: 356
 # File: src/multiplayer.cpp, line: 356
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:324
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "O apelido '$nick' não está registrado neste servidor."
 
@@ -9614,7 +9628,7 @@ msgstr "O apelido '$nick' não está registrado neste servidor."
 # File: src/multiplayer.cpp, line: 357
 # File: src/multiplayer.cpp, line: 357
 # File: src/multiplayer.cpp, line: 357
-#: src/game_initialization/multiplayer.cpp:324
+#: src/game_initialization/multiplayer.cpp:325
 msgid " This server disallows unregistered nicknames."
 msgstr " Este servidor não permite apelidos não registrados."
 
@@ -9625,7 +9639,7 @@ msgstr " Este servidor não permite apelidos não registrados."
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:327
+#: src/game_initialization/multiplayer.cpp:328
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 "O apelido '$nick' está banido nos fóruns deste servidor por $duration|."
@@ -9637,16 +9651,16 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:330
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "O apelido '$nick' está banido nos fóruns deste servidor."
 
-#: src/game_initialization/multiplayer.cpp:333
+#: src/game_initialization/multiplayer.cpp:334
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
 "O seu endereço de IP está banido nos fóruns deste servidor por $duration|."
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:336
 msgid "Your IP address is banned on this server’s forums."
 msgstr "O seu endereço de IP está banido nos fóruns deste servidor."
 
@@ -9657,7 +9671,7 @@ msgstr "O seu endereço de IP está banido nos fóruns deste servidor."
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:339
+#: src/game_initialization/multiplayer.cpp:340
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -9672,7 +9686,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:342
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
@@ -9686,8 +9700,8 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:344
-#: src/game_initialization/multiplayer.cpp:346
+#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:347
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "O nick '$nick' está registrado neste servidor."
 
@@ -9695,7 +9709,7 @@ msgstr "O nick '$nick' está registrado neste servidor."
 # File: src/multiplayer.cpp, line: 362
 # File: src/multiplayer.cpp, line: 362
 # File: src/multiplayer.cpp, line: 362
-#: src/game_initialization/multiplayer.cpp:347
+#: src/game_initialization/multiplayer.cpp:348
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -9707,7 +9721,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 365
 # File: src/multiplayer.cpp, line: 365
 # File: src/multiplayer.cpp, line: 365
-#: src/game_initialization/multiplayer.cpp:350
+#: src/game_initialization/multiplayer.cpp:351
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
@@ -9911,7 +9925,7 @@ msgstr "Você foi derrotado!"
 # File: src/game_controller.cpp, line: 819
 # File: src/playcampaign.cpp, line: 214
 # File: src/playcampaign.cpp, line: 503
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:907
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:904
 msgid "The game could not be loaded: "
 msgstr "O jogo não pôde ser carregado: "
 
@@ -9925,7 +9939,7 @@ msgstr "O jogo não pôde ser carregado: "
 # File: src/game_controller.cpp, line: 821
 # File: src/playcampaign.cpp, line: 216
 # File: src/playcampaign.cpp, line: 506
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:906
 msgid "Error while playing the game: "
 msgstr "Erro durante o jogo: "
 
@@ -9939,12 +9953,12 @@ msgstr "Erro durante o jogo: "
 # File: src/game_controller.cpp, line: 839
 # File: src/playcampaign.cpp, line: 218
 # File: src/playcampaign.cpp, line: 509
-#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:946
+#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:943
 msgid "The game map could not be loaded: "
 msgstr "O mapa do jogo não pôde ser carregado: "
 
-#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:911
-#: src/game_launcher.cpp:1045
+#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:908
+#: src/game_launcher.cpp:1038
 msgid "Map generator error: "
 msgstr "Erro no gerador de mapa: "
 
@@ -9999,7 +10013,7 @@ msgstr "Não há campanhas disponíveis."
 # File: src/game_controller.cpp, line: 428
 # File: src/game_controller.cpp, line: 410
 # File: src/game_controller.cpp, line: 428
-#: src/game_launcher.cpp:686 src/game_launcher.cpp:704
+#: src/game_launcher.cpp:685 src/game_launcher.cpp:703
 msgid "The file you have tried to load is corrupt"
 msgstr "O Arquivo que você tentou carregar está corrompido"
 
@@ -10013,7 +10027,7 @@ msgstr "O Arquivo que você tentou carregar está corrompido"
 # File: src/game_controller.cpp, line: 413
 # File: src/game_controller.cpp, line: 431
 # File: src/savegame.cpp, line: 733
-#: src/game_launcher.cpp:689 src/game_launcher.cpp:707
+#: src/game_launcher.cpp:688 src/game_launcher.cpp:706
 #: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:156
 #: src/savegame.cpp:311
 msgid "The file you have tried to load is corrupt: '"
@@ -10023,7 +10037,7 @@ msgstr "O Arquivo que você tentou carregar está corrompido: '"
 # File: src/game_controller.cpp, line: 421
 # File: src/game_controller.cpp, line: 421
 # File: src/game_controller.cpp, line: 421
-#: src/game_launcher.cpp:697
+#: src/game_launcher.cpp:696
 msgid "File I/O Error while reading the game"
 msgstr "Erro de I/O ao ler o jogo"
 
@@ -10031,7 +10045,7 @@ msgstr "Erro de I/O ao ler o jogo"
 # File: src/game_controller.cpp, line: 423
 # File: src/game_controller.cpp, line: 423
 # File: src/game_controller.cpp, line: 423
-#: src/game_launcher.cpp:699
+#: src/game_launcher.cpp:698
 msgid "File I/O Error while reading the game: '"
 msgstr "Erro de I/O ao ler o jogo: '"
 
@@ -10039,7 +10053,7 @@ msgstr "Erro de I/O ao ler o jogo: '"
 # File: src/game_controller.cpp, line: 817
 # File: src/game_controller.cpp, line: 817
 # File: src/game_controller.cpp, line: 817
-#: src/game_launcher.cpp:905
+#: src/game_launcher.cpp:902
 msgid "Error while starting server: "
 msgstr "Erro ao iniciar o server: "
 
@@ -10053,7 +10067,7 @@ msgstr "Erro ao iniciar o server: "
 # File: src/multiplayer.cpp, line: 235
 # File: src/multiplayer.cpp, line: 320
 # File: src/multiplayer_ui.cpp, line: 84
-#: src/game_launcher.cpp:927
+#: src/game_launcher.cpp:924
 msgid "Connection failed: "
 msgstr "A conexão falhou: "
 
@@ -11656,15 +11670,15 @@ msgstr ""
 msgid "This unit has no usable weapons."
 msgstr "Esta unidade não possui nenhuma arma utilizavel."
 
-#: src/mp_game_settings.hpp:75
+#: src/mp_game_settings.hpp:74
 msgid "Independent"
 msgstr "Independente"
 
-#: src/mp_game_settings.hpp:76
+#: src/mp_game_settings.hpp:75
 msgid "No Mirror"
 msgstr "Sem facções iguais"
 
-#: src/mp_game_settings.hpp:77
+#: src/mp_game_settings.hpp:76
 msgid "No Ally Mirror"
 msgstr "Sem facções iguais entre aliados"
 
@@ -11732,7 +11746,7 @@ msgstr "uma variante global"
 # File: src/play_controller.cpp, line: 252
 # File: src/play_controller.cpp, line: 252
 # File: src/play_controller.cpp, line: 252
-#: src/play_controller.cpp:254
+#: src/play_controller.cpp:255
 msgid "time left for current turn"
 msgstr "tempo restante para o turno atual"
 
@@ -11743,7 +11757,7 @@ msgstr "tempo restante para o turno atual"
 # File: src/replay_controller.cpp, line: 142
 # File: src/play_controller.cpp, line: 254
 # File: src/replay_controller.cpp, line: 142
-#: src/play_controller.cpp:256
+#: src/play_controller.cpp:257
 msgid "current local time"
 msgstr "hora local atual"
 
@@ -11751,7 +11765,7 @@ msgstr "hora local atual"
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
-#: src/play_controller.cpp:1017
+#: src/play_controller.cpp:1028
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -11766,7 +11780,7 @@ msgstr ""
 # File: src/replay_controller.cpp, line: 334
 # File: src/play_controller.cpp, line: 1415
 # File: src/replay_controller.cpp, line: 334
-#: src/play_controller.cpp:1018
+#: src/play_controller.cpp:1029
 msgid "Error details:"
 msgstr "Detalhes do erro:"
 
@@ -11774,7 +11788,7 @@ msgstr "Detalhes do erro:"
 # File: src/dialogs.cpp, line: 451
 # File: src/dialogs.cpp, line: 451
 # File: src/dialogs.cpp, line: 451
-#: src/play_controller.cpp:1306
+#: src/play_controller.cpp:1317
 msgid "No objectives available"
 msgstr "Nenhum objetivo disponível"
 
@@ -12476,8 +12490,12 @@ msgid "Turn Number"
 msgstr "Número do Turno"
 
 #: src/reports.cpp:1391
+#, fuzzy
+#| msgid ""
+#| "When the game reaches the number of turns indicated by the second number, "
+#| "it will end."
 msgid ""
-"When the game reaches the number of turns indicated by the second number, it "
+"When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 "Quando o jogo o número do turno atual for igual ao segundo número, o jogo "
@@ -13347,7 +13365,7 @@ msgstr[1] ""
 # File: src/reports.cpp, line: 240
 # File: src/reports.cpp, line: 240
 # File: src/reports.cpp, line: 240
-#: src/units/helper.cpp:53
+#: src/units/helper.cpp:66
 msgid "Level: "
 msgstr "Nível: "
 
@@ -13358,7 +13376,7 @@ msgstr "Nível: "
 # File: src/statistics_dialog.cpp, line: 255
 # File: src/statistics_dialog.cpp, line: 125
 # File: src/statistics_dialog.cpp, line: 255
-#: src/units/helper.cpp:56
+#: src/units/helper.cpp:69
 msgid "Advancements:"
 msgstr "Avanços:"
 
@@ -13366,7 +13384,7 @@ msgstr "Avanços:"
 # File: src/reports.cpp, line: 243
 # File: src/reports.cpp, line: 243
 # File: src/reports.cpp, line: 243
-#: src/units/helper.cpp:69
+#: src/units/helper.cpp:82
 msgid "No advancement"
 msgstr "Sem avanços"
 
@@ -13549,6 +13567,34 @@ msgstr "Esconder planos para $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
+
+#
+# File: data/scenario-test.cfg, line: 858
+# File: src/dialogs.cpp, line: 1009
+# File: src/dialogs.cpp, line: 1450
+# File: src/dialogs.cpp, line: 1556
+# File: src/mp_options.cpp, line: 232
+# File: src/multiplayer_connect.cpp, line: 1073
+# File: src/multiplayer_create.cpp, line: 100
+# File: src/multiplayer_wait.cpp, line: 179
+# File: data/scenario-test.cfg, line: 858
+# File: src/dialogs.cpp, line: 1009
+# File: src/dialogs.cpp, line: 1450
+# File: src/dialogs.cpp, line: 1556
+# File: src/mp_options.cpp, line: 232
+# File: src/multiplayer_connect.cpp, line: 1073
+# File: src/multiplayer_create.cpp, line: 100
+# File: src/multiplayer_wait.cpp, line: 179
+# File: data/scenario-test.cfg, line: 858
+# File: src/dialogs.cpp, line: 1009
+# File: src/dialogs.cpp, line: 1450
+# File: src/dialogs.cpp, line: 1556
+# File: src/mp_options.cpp, line: 232
+# File: src/multiplayer_connect.cpp, line: 1073
+# File: src/multiplayer_create.cpp, line: 100
+# File: src/multiplayer_wait.cpp, line: 179
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
 
 #
 # File: src/game_controller.cpp, line: 886

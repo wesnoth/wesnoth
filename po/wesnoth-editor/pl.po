@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 05:30-0400\n"
+"POT-Creation-Date: 2020-10-17 01:28-0300\n"
 "PO-Revision-Date: 2016-02-21 15:53+0100\n"
 "Last-Translator: Paweł Jackowski <pjackowski@gmail.com>\n"
 "Language-Team: none\n"
@@ -319,13 +319,13 @@ msgstr "Imię:"
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:271 src/editor/map/map_context.cpp:847
+#: src/editor/map/context_manager.cpp:271 src/editor/map/map_context.cpp:852
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Nowa mapa)"
 
-#: src/editor/map/context_manager.cpp:284 src/editor/map/map_context.cpp:847
+#: src/editor/map/context_manager.cpp:284 src/editor/map/map_context.cpp:852
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -467,15 +467,15 @@ msgstr ""
 "Plik mapy wygląda na scenariusz, ale wartość map_data nie wskazuje na "
 "istniejący plik"
 
-#: src/editor/map/map_context.cpp:613
+#: src/editor/map/map_context.cpp:618
 msgid "Could not save the scenario: $msg"
 msgstr "Zapisanie scenariusza nie powiodło się: $msg"
 
-#: src/editor/map/map_context.cpp:648
+#: src/editor/map/map_context.cpp:653
 msgid "Could not save into scenario"
 msgstr "Zapisanie do scenariusza nie powiodło się"
 
-#: src/editor/map/map_context.cpp:658
+#: src/editor/map/map_context.cpp:663
 msgid "Could not save the map: $msg"
 msgstr "Zapisanie mapy nie powiodło się: $msg"
 
@@ -516,22 +516,41 @@ msgid "Delete"
 msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:231
-msgid "FG: "
-msgstr "Pierwszy plan:"
+msgid "Left-click: "
+msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:232
-msgid "BG: "
-msgstr "Tło:"
+msgid "Right-click: "
+msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:137
+#. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
+#. because the logic of whether to show the "overlay only" or "base only" version depends on the
+#. terrain currently selected for the left button.
+#: src/editor/palette/terrain_palettes.cpp:237
+msgid "Shift + left-click: paint overlay layer only"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:239
+msgid "Shift + left-click: paint base layer only"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:242
+msgid "Cmd + click: copy terrain"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:244
+msgid "Ctrl + click: copy terrain"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:140
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:201
+#: src/gui/dialogs/editor/custom_tod.cpp:204
 msgid "Choose File"
 msgstr "Wybierz plik"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:202
+#: src/gui/dialogs/editor/custom_tod.cpp:205
 msgid "Select"
 msgstr ""
 
@@ -542,6 +561,12 @@ msgstr "Brak"
 #: src/gui/dialogs/editor/set_starting_position.cpp:97
 msgid "Player $player_number"
 msgstr "Gracz $player_number"
+
+#~ msgid "FG: "
+#~ msgstr "Pierwszy plan:"
+
+#~ msgid "BG: "
+#~ msgstr "Tło:"
 
 #~ msgid "Underground"
 #~ msgstr "Podziemie"
