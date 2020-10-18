@@ -137,6 +137,8 @@
 		469853D024D3560900B0E93B /* server_info_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469853CD24D3560800B0E93B /* server_info_dialog.cpp */; };
 		469BDB55205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		469BDB56205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
+		469CA21D253C522C0045A0B3 /* orb_status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469CA21C253C522C0045A0B3 /* orb_status.cpp */; };
+		469CA21E253C522C0045A0B3 /* orb_status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469CA21C253C522C0045A0B3 /* orb_status.cpp */; };
 		46A72F3D24D6F6B30033B5A9 /* apple_video.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46A72F3C24D6F6B30033B5A9 /* apple_video.mm */; };
 		46A72F4424D710830033B5A9 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A72F4224D710720033B5A9 /* IOKit.framework */; };
 		46A72F4524D7108A0033B5A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A72F4324D710720033B5A9 /* CoreGraphics.framework */; };
@@ -1509,6 +1511,10 @@
 		469853CD24D3560800B0E93B /* server_info_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server_info_dialog.cpp; sourceTree = "<group>"; };
 		469853CE24D3560800B0E93B /* server_info_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = server_info_dialog.hpp; sourceTree = "<group>"; };
 		469BDB53205C357400DBF748 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
+		469CA216253C52120045A0B3 /* shared_reference.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shared_reference.hpp; sourceTree = "<group>"; };
+		469CA21B253C522B0045A0B3 /* orb_status.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = orb_status.hpp; sourceTree = "<group>"; };
+		469CA21C253C522C0045A0B3 /* orb_status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = orb_status.cpp; sourceTree = "<group>"; };
+		469CA22A253C524C0045A0B3 /* lua_ptr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_ptr.hpp; sourceTree = "<group>"; };
 		46A72F3B24D6F6B30033B5A9 /* apple_video.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = apple_video.hpp; path = ../../src/desktop/apple_video.hpp; sourceTree = "<group>"; };
 		46A72F3C24D6F6B30033B5A9 /* apple_video.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_video.mm; path = ../../src/desktop/apple_video.mm; sourceTree = "<group>"; };
 		46A72F4224D710720033B5A9 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -4127,6 +4133,7 @@
 				46B58F4121E097900070BB8E /* parse_network_address.cpp */,
 				46B58F4221E097900070BB8E /* parse_network_address.hpp */,
 				91EF6C001C9E22E400E2A733 /* reference_counter.hpp */,
+				469CA216253C52120045A0B3 /* shared_reference.hpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -4205,6 +4212,8 @@
 				ECF44F691FC8A82A00B404D6 /* make.hpp */,
 				B55999730EC62181008DD061 /* map.cpp */,
 				B55999720EC62181008DD061 /* map.hpp */,
+				469CA21C253C522C0045A0B3 /* orb_status.cpp */,
+				469CA21B253C522B0045A0B3 /* orb_status.hpp */,
 				91B6219C1B76735200B00E0F /* ptr.hpp */,
 				B55999C00EC62181008DD061 /* race.cpp */,
 				B55999BF0EC62181008DD061 /* race.hpp */,
@@ -4580,6 +4589,7 @@
 				91B621EE1B76BB2C00B00E0F /* lua_unit_type.hpp */,
 				9193FC801D5C2CF7004F6C07 /* lua_unit.cpp */,
 				9193FC811D5C2CF8004F6C07 /* lua_unit.hpp */,
+				46E2D99525022D46003D99F3 /* lua_ptr.hpp */,
 				46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */,
 				46E2D98A25022BF4003D99F3 /* lua_widget_attributes.hpp */,
 				46E2D98E25022BF5003D99F3 /* lua_widget_methods.cpp */,
@@ -5357,6 +5367,7 @@
 				EC84246D18F30D9100FC1EEF /* synced_commands.cpp in Sources */,
 				46F92E8B2174F6A400602C1C /* repeating_button.cpp in Sources */,
 				EC84246E18F30D9100FC1EEF /* synced_context.cpp in Sources */,
+				469CA21D253C522C0045A0B3 /* orb_status.cpp in Sources */,
 				ECDEAF77194FEA8500DB2F47 /* syncmp_handler.cpp in Sources */,
 				B5599AFC0EC62181008DD061 /* team.cpp in Sources */,
 				46F92E412174F6A400602C1C /* chat_log.cpp in Sources */,
@@ -5616,6 +5627,7 @@
 				46F92EA42174F6A400602C1C /* minimap.cpp in Sources */,
 				91E356531CACC62500774252 /* commandline_options.cpp in Sources */,
 				91E356541CACC62500774252 /* config_cache.cpp in Sources */,
+				469CA21E253C522C0045A0B3 /* orb_status.cpp in Sources */,
 				91E356551CACC62500774252 /* controller_base.cpp in Sources */,
 				91E356561CACC62500774252 /* countdown_clock.cpp in Sources */,
 				91E356581CACC67C00774252 /* display_chat_manager.cpp in Sources */,
