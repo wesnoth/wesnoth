@@ -31,16 +31,16 @@
      * Fixes a bug where many Chinese characters were invisible if DroidSansJapanese was loaded before DroidSansFallbackFull (issue #5194).
    * Changing the language immediately updates the order of the fonts, instead of waiting for the next restart (issue #5194).
  ### Lua API
-  * Implement new GUI2 widget userdata for working with custom dialogs.
-  * Renamed wesnoth.show_dialog to gui.show_dialog. The preshow and postshow now take a single parameter - a widget userdata.
-  * All other dialog functions (such as wesnoth.get_dialog_value and wesnoth.set_dialog_value) are now deprecated.
+   * Implement new GUI2 widget userdata for working with custom dialogs.
+   * Renamed wesnoth.show_dialog to gui.show_dialog. The preshow and postshow now take a single parameter - a widget userdata.
+   * All other dialog functions (such as wesnoth.get_dialog_value and wesnoth.set_dialog_value) are now deprecated.
  ### Multiplayer
    * Delay Advancements modification:
      * The Delay Advancements modification allows changing how advancements are handled. With this enabled, units that previously would have advanced on another player's turn will instead not advance until it is again their side's turn. The benefit of this is that units will also not pick an advancement at random if they have multiple.
  ### Packaging
-  * When building wesnothd with database support enabled, Boost 1.66 is now the minimum required version.
+   * When building wesnothd with database support enabled, Boost 1.66 is now the minimum required version.
  ### Terrain
-  * New wall variation: Overgrown stone walls ('Xof')
+   * New wall variation: Overgrown stone walls ('Xof')
  ### Units
    * Added Tusker line - Gorer and Tusklet (by TSI 2009)
    * Revised Falcon and Elder Falcon sprites
@@ -67,10 +67,10 @@
      * Cost of Wild Wyvern changed from 54 to 75.
      * Cost of Wyvern Rider changed from 80 to 102.
  ### WML Engine
-  * Fix a bug with [set_variables][join] failing on boolean (yes/no) values
+   * Fix a bug with [set_variables][join] failing on boolean (yes/no) values
  ### Miscellaneous and Bug Fixes
-  * Removed font-analysis utils: codecomp codeextract codeglyphs codelist
-  * [harm_unit] now calculates liminal damage by using the 1.15 algorithm
+   * Removed font-analysis utils: codecomp codeextract codeglyphs codelist
+   * [harm_unit] now calculates liminal damage by using the 1.15 algorithm
 
 ## Version 1.15.5
  ### Add-ons client
