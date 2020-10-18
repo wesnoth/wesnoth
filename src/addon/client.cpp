@@ -180,7 +180,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		request_body["name"] = cfg["name"];
 		// request_body["from"] = ???
 		send_request(hash_request, hashlist);
-		wait_for_transfer_done(VGETTEXT("Requesting the older version composition for the add-on <i>$addon_title</i>...", i18n_symbols));
+		wait_for_transfer_done(_("Requesting file index..."));
 
 		// A silent error check
 		if(!hashlist.child("error")) {
