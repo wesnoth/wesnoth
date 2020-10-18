@@ -21,6 +21,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 
@@ -56,11 +57,14 @@ lobby_player_info::~lobby_player_info()
 void lobby_player_info::pre_show(window& window)
 {
 	relation_ = find_widget<label>(&window, "relation_info", false, true);
-	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "start_whisper", false),
-			std::bind(&lobby_player_info::start_whisper_button_callback,
-						this,
-						std::ref(window)));
+
+	button& whisper = find_widget<button>(&window, "start_whisper", false);
+	if(info_.name != preferences::login()) {
+		connect_signal_mouse_left_click(whisper,
+			std::bind(&lobby_player_info::start_whisper_button_callback, this, std::ref(window)));
+	} else {
+		whisper.set_active(false);
+	}
 
 	add_to_friends_ = find_widget<button>(&window, "add_to_friends", false, true);
 	connect_signal_mouse_left_click(
