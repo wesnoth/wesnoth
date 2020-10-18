@@ -766,6 +766,7 @@ end
 
 function wml_actions.event(cfg)
 	if cfg.remove then
+		wesnoth.deprecated_message("[event]remove=yes", 2, "1.17.0", "Use [remove_event] instead of [event]remove=yes")
 		wml_actions.remove_event(cfg)
 	else
 		wesnoth.add_event_handler(cfg)
