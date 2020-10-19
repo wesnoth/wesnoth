@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-10-17 04:28 UTC\n"
-"PO-Revision-Date: 2020-10-10 14:11-0300\n"
+"PO-Revision-Date: 2020-10-17 15:08-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -25,7 +25,6 @@ msgstr "AGS"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:20
-#, fuzzy
 msgid ""
 "A young knight, Deoran, is dispatched to the southern Wesnoth province of "
 "Kerlath to investigate the ravaged towns at the border. Thrust quickly into "
@@ -34,7 +33,11 @@ msgid ""
 "\n"
 msgstr ""
 "Um jovem cavaleiro,Deoran, é enviado para a de Kerlath, no sul de Wesnoth, "
-"para investigar as cidades fronteiriças que foram devastadas.  \n"
+"para investigar as cidades fronteiriças que foram devastadas. Entrando de "
+"cabeça em um conflito desesperado contra bandidos, Deoran precisa reunir os "
+"soldados da Guarda Sul para defender a sua nação.\n"
+"\n"
+"\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -97,7 +100,6 @@ msgstr "Artwork e Design Gráfico"
 
 #. [scenario]: id=01_Born_to_the_Banner
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:5
-#, fuzzy
 msgid "Born to the Banner"
 msgstr "Nascido para liderar"
 
@@ -207,17 +209,14 @@ msgstr "Moreth"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:199
-#, fuzzy
-#| msgid ""
-#| "You’ll never take this village! I’ve seen your kind kill too many "
-#| "townsmen, and I’ll defend them to the death!"
 msgid ""
 "You will never take this village! I have watched too many of your kind "
 "ransack our homes and kill the townsfolk! I’ll defend them to the death if I "
 "must!"
 msgstr ""
-"Você nunca ocupará esta aldeia! Eu vi os de sua laia matarem aldeões demais, "
-"e eu os defenderei até morte!"
+"Você nunca vai tomar essa aldeia! Eu estou cansado de ver gente da sua laia "
+"saquear nosscas casas e matar as pessoas! Eu vou defender eles, custe o que "
+"custar!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:205
@@ -712,7 +711,6 @@ msgstr ""
 
 #. [scenario]: id=02_Proven_by_the_Sword
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:5
-#, fuzzy
 msgid "Proven by the Sword"
 msgstr "A Prova da Espada"
 
@@ -937,11 +935,13 @@ msgstr "Absu"
 
 #. [message]: speaker=Absu
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:487
-#, fuzzy
 msgid ""
 "The red and white banners of the South Guard! This is a welcome change from "
 "the bandits who have been trying to ransack my home."
-msgstr "Os estandartes vermelho e branco da Gurda do Sul!"
+msgstr ""
+"Os estandartes vermelho e branco da Gurda do Sul! É muito bom ver o "
+"estandarte novamente depois de tanto tempo dos bandidos tentando saquear o "
+"meu lar."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:491
@@ -949,8 +949,8 @@ msgid ""
 "Indeed, we have come to drive off these vile brigands. Would you like to "
 "join us in our battle to restore peace to Westin?"
 msgstr ""
-"Não duvido. Nós viemos para expulsar esses vís salteadores. Você gostaria de "
-"se juntar a nós em nossa batalha para restaurar paz em Westin?"
+"Imagino. Nós viemos para expulsar esses vís salteadores. Você gostaria de se "
+"juntar a nós em nossa batalha para restaurar paz em Westin?"
 
 #. [message]: speaker=Absu
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:495
@@ -1121,10 +1121,13 @@ msgid ""
 "days’ ride of here. I will send a message to them asking for a few riders, "
 "then we should make haste toward the Aethenwood to find the elves."
 msgstr ""
+"Muito bem. Embora eu ache que demorará demais para enviar uma mensagem "
+"pedindo reforços ao Rei, lembro que tem um pequeno posto avançado a alguns "
+"dias de cavalgada daqui. Vou enviar uma mensagem para eles pedindo alguns "
+"cavaleiros e depois iremos até Aethenwood para encontrar com os elfos."
 
 #. [scenario]: id=03_A_Desperate_Errand
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:5
-#, fuzzy
 msgid "A Desperate Errand"
 msgstr "Uma Missão Desesperada"
 
@@ -1151,12 +1154,12 @@ msgstr "Leve Deoran para a cidade dos Elfos nas florestas ocidentais"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:230
-#, fuzzy
-#| msgid "Deoran and his men came to the eastern border of the Aethenwood..."
 msgid ""
 "Deoran and his men came to the eastern border of the Aethenwood, where the "
 "towering trees of the elven forest loomed close overhead."
-msgstr "Deoran e os seus homens vieram aos limites da floresta dos elfos..."
+msgstr ""
+"Deoran e os seus homens foram até a fronteira leste de Aethenwood, onde as "
+"imensas árvores da floresta dos elfos pairavam muito acima de suas cabeças."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:236
@@ -1169,20 +1172,16 @@ msgstr ""
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:241
-#, fuzzy
-#| msgid ""
-#| "Be careful, Deoran. No man has set foot in the elvish woods for many a "
-#| "year. We do not know how they will receive us. Sir Loris thought that it "
-#| "was some trick of theirs trying to bring him into the woods..."
 msgid ""
 "I must advise caution, Sir Deoran. No man has set foot in the elvish woods "
 "for many a year. They have never been friendly toward humankind, and we do "
 "not know how they will receive us now, especially after Sir Loris spurned "
 "them."
 msgstr ""
-"Tenha cuidado, Deoran.  Nenhum homem colocou os pé nas florestas dos Elfos "
-"por muitos anos.  Nós não sabemos como eles vão nos receber.  Sir Loris "
-"pensou que era algum truque deles para tentar o trazer à floresta..."
+"Tenha cuidado, Sir Deoran. Faz muito tempo que nenhum homem entra nos "
+"bosques dos elfos. Eles nunca foram amigáveis para com a nossa espécie e não "
+"sabemos como eles irão nos recepcionar agora, principalmente depois do que "
+"Sir Loris fez."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:246
@@ -1193,6 +1192,12 @@ msgid ""
 "means to discover their source; we can only look to these elves for help, "
 "wary of men though they may be."
 msgstr ""
+"Nós não podemos temer e evitar tudo o que não entendemos! Sir Loris podia "
+"ser desconfiado dos elfos, mas ele não está mais entre nós, e ouzo dizer que "
+"por consequencia de sua tolice! Nós não possuimos a força necessária para "
+"enfrentar esses mortos-vivos, nem os meios para descobrir de onde eles vêm; "
+"nossa única opção é buscar a ajuda dos elfos, mesmo que eles não gostem de "
+"nós."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:251
@@ -1200,6 +1205,8 @@ msgid ""
 "Nevertheless, we musn’t charge in blindly. Even if the elves are unlikely to "
 "attack us, we do not know what else lies in these forests."
 msgstr ""
+"Mesmo assim não devemosa sair correndo em direção ao desconhecido. Mesmo que "
+"os elfos não nos ataquem, não fazemos ideia do que habita essas florestas."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:256
@@ -1213,6 +1220,9 @@ msgid ""
 "seems, may be more capable than I had thought. No matter. I will use my new "
 "powers against him and then surely he will fall!"
 msgstr ""
+"Eu perdi dois irmãos pra essa praga! Esse tal de Deoran, apesar de sua "
+"idade, parece ser mais capaz do que eu achava. Não importa. Vou usar meus "
+"novos poderes contra ele e então ele vai morrer!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:269
@@ -1503,23 +1513,17 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:524
-#, fuzzy
-#| msgid ""
-#| "Indeed you are brave to face such foes. But I fear that alone you will "
-#| "fail and fall. One elf now lives who remembers the secrets of the undead "
-#| "that we learned when Haldric I came to our land. His name is Mebrin, and "
-#| "he lives, secluded in the hills, near here. I will take you to him."
 msgid ""
 "These men are indeed brave to face such foes, but I fear that they will fall "
 "to the darkness if they fight it alone. There is one elf who still remembers "
 "the secrets of the undead that we learned when Haldric I came to our land. "
 "His name is Mebrin, and he lives secluded in the hills south of here."
 msgstr ""
-"Realmente você é valente para encarar tais inimigos.  Mas eu temo que você "
-"falhará e cairá. Apenas um elfo ainda vivo se lembra dos segredos dos mortos-"
-"vivos que nós aprendemos quando Haldric I veio para nossa terra.  O nome "
-"dele é Mebrin, e ele vive, isolado, nas colinas aqui perto.  Eu o levarei a "
-"ele."
+"Querer enfrentar tais oponentes demonstra a bravura destes homens, mas temo "
+"que eles cairão para as trevas se eles lutarem sozinhos. Ainda existe um "
+"elfo que se lembra dos segredos dos mortos-vivos que nós aprendemos quando "
+"Haldric I veio para essas terras. Seu nome é Mebrin, ele vive sozinho nas "
+"colinas ao sul daqui."
 
 #. [message]: speaker=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:529
@@ -2043,14 +2047,18 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:360
-#, fuzzy
 msgid ""
 "Caution, not fear, human. Anxious as I am to find the whereabouts of our "
 "great sage, it would do us no good to charge straight into the trap of the "
 "enemy. We will need help to scour woods as dangerous as these, and so I have "
 "asked some of my people to aid us. My soldiers and shamans will fight at "
 "your command."
-msgstr "Cuidado, não medo, humano."
+msgstr ""
+"Cuidado, não medo, humano. Ainda que eu esteja ansiosa para encontrar o "
+"nosso grande sábio, não é uma boa ideia correr diretamente para a armadilha "
+"do inimigo. Nós vamos precisar de ajuda para explorar essas perigosas "
+"florestas, e por isso eu pedi que alguns de meu povo nos ajudem. Meus "
+"soldados e xamãs estão às suas ordens."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:367
@@ -2061,7 +2069,7 @@ msgid ""
 msgstr ""
 "Agora você pode recrutar Guerreiros Élficos. Guerreiros Élficos são tropas "
 "hábeis tanto com a espada quanto com o arco. Eles se movem rapidamente e são "
-"especialmente eficazes em florestas. "
+"especialmente eficazes em florestas."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:372
@@ -2354,6 +2362,10 @@ msgid ""
 "know of these undead, you cannot ally yourself with these thugs. They are as "
 "evil as the undead!"
 msgstr ""
+"Pense na destruição que eles causaram! Lembre-se de que eles invadiram "
+"nossas terras e raptaram o nosso maior sábio! Não importa o que eles saibam "
+"sobre essesmortos-vivos, você não pode se aliar a esses criminosos. Eles são "
+"tão mal quanto os mortos-vivos!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:739
@@ -2390,24 +2402,14 @@ msgstr "Muito bem. Todos os homens devem se unir contra os mortos-vivos."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:822
-#, fuzzy
-#| msgid ""
-#| "We will now fight alongside you. Come, my thugs and footpads, rally to me!"
 msgid ""
 "Excellent, we will fight with you. Come, my thugs and footpads, rally to me!"
 msgstr ""
-"Nós lutaremos agora ao seu lado, e eu colocarei meus meliantes e "
-"trombadinhas à sua disposição."
+"Excelente, nós lutaremos ao seu lado. Venham, meus meliantes e salteadores, "
+"venham até mim!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:828
-#, fuzzy
-#| msgid ""
-#| "You are no better than these criminals! We shall see if you can find your "
-#| "own way out of the forest! Come, my people, let us return to our lands. "
-#| "We were foolish to ever have any dealings with these humans. Do not set "
-#| "foot in our land ever again, Deoran, for you have brought us nothing but "
-#| "grief."
 msgid ""
 "So it comes to this. All humans are the same! You are no better than these "
 "criminals, the very pigs who sacked your towns and burned your villages! If "
@@ -2417,11 +2419,13 @@ msgid ""
 "not set foot in our land ever again, humans, for you have brought us nothing "
 "but grief."
 msgstr ""
-"Você não é melhor que estes criminosos!  Nós veremos se você pode descobrir "
-"o caminho para fora da floresta!  Venham, meu povo, vamos voltar para nossas "
-"terras.  Nós fomos tolos em ter qualquer negócio com estes humanos.  Não "
-"coloque novamente o pé em nossa terra, Deoran. Você nos trouxe nada mais que "
-"aflição."
+"Então é isso. Vocês humanos são todos iguais! Vocês não são melhores do que "
+"esses criminosos, do que esses porcos que saquearam as suas cidades e "
+"queimaram suas vilas! Se vocês são corajosos o suficiente para rejeitar a "
+"ajuda dos elfos, então vocês são corajosos o suficiente se virarem nessa "
+"floresta. Venha, meu povo, vamos voltar para nossas terras. Fomos tolos de "
+"confiar nesses humanos. Jamais ponham os pés em nossas terras novamente, "
+"humanos, pois vocês só nos trouxeram mágoa e dor."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:840
@@ -2489,6 +2493,10 @@ msgid ""
 "their dark magic, or we will not be able to escape this harrowing place, "
 "much less find and defeat them."
 msgstr ""
+"Isto é obra dos mortos-vivos. Eles começaram a conjurar uma magia que irá "
+"sugar as nossas energias e nos prender nessa floresta. Precisamos correr "
+"antes que eles completem sua magia negra, ou não conseguiremos escapar deste "
+"lugar tenebroso, e muito menos encontrá-los e derrotá-los."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1012
@@ -2519,6 +2527,8 @@ msgid ""
 "The undead have ensnared us in their spell... we will not be able to escape "
 "now..."
 msgstr ""
+"Os mortos-vivos nos prenderam em sua magia... agora não teremos "
+"comoescapar..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1068
@@ -2536,20 +2546,16 @@ msgstr ""
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1077
-#, fuzzy
-#| msgid ""
-#| "I’m afraid it is not so. This was not the real Mebrin we destroyed, but a "
-#| "mere phantom. He resides in catacombs deep underneath the castle, but "
-#| "they cannot be entered without magical means."
 msgid ""
 "I’m afraid it is not so. This was merely a phantom of the true Mebrin. He "
 "resides in catacombs deep underneath the castle, but they cannot be entered "
 "without magical means. We would require elvish magic in order to dispel the "
 "barrier he has erected."
 msgstr ""
-"Temo que não seja bem assim. Nós não destruímos o verdadeiro Mebrin, mas "
-"apenas um fantasma. Ele reside nas catacumbas abaixo do castelo, mas só "
-"poderemos entrar nelas utilizando meios mágicos."
+"Temo que as aparências enganem. Isso não passava de um fantasma do "
+"verdadeiro Mebrin. Ele reside nas catacumbas do castelo, que não podem ser "
+"acessadas sem auxílio de magia. Nós precisariamos usar de magia élfica para "
+"romper as barreiras que ele criou."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1082
@@ -2575,27 +2581,17 @@ msgstr "Talvez devessemos corrigir o nosso erro agora."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1094
-#, fuzzy
-#| msgid ""
-#| "Then you would surely be lost in these woods forever at the mercy of the "
-#| "undead. I can lead you and your men back to the lands of Wesnoth if you "
-#| "will grant me pardon."
 msgid ""
 "Then you would surely be lost in these woods, hounded by the undead and made "
 "into their slaves. I can lead you and your men back to the lands of Wesnoth, "
 "but only if you promise to grant me pardon."
 msgstr ""
-"Então vocês ficariam perdidos nessa floresta eternamente, e à mercê dos "
-"mortos-vivos. Eu posso conduzi-los de volta para as terras de Wesnoth se "
-"você me conceder perdão."
+"Então vocês ficariam perdidos nessa floresta para sempre, perseguidos pelos "
+"mortos-vivos e transformados em seus escravos. Eu posso conduzi-los de volta "
+"para as terras de Wesnoth, se você me conceder perdão."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1099
-#, fuzzy
-#| msgid ""
-#| "Now that the elves have abandoned us, that would seem to be our only "
-#| "choice. But what about Mebrin? The undead will keep attacking our homes "
-#| "unless we root them out at the source."
 msgid ""
 "Ethiliel could have dispelled these magical wards if we had not fallen for "
 "your lies! But I foolishly spurned her advice and all the aid she had "
@@ -2604,9 +2600,12 @@ msgid ""
 "Mebrin? The undead will keep attacking our homes unless we root them out at "
 "the source."
 msgstr ""
-"Agora que os elfos nos abandonaram, essa é nossa única escolha. Mas, e "
-"Mebrin? Os mortos-vivos continuarão atacando nossos lares se nós não "
-"destruirmos a raiz de todo o mal."
+"Ethiliel poderia ter dissipado essas barreiras mágicas se não tivessemos "
+"sido enganados pelas suas mentiras! Eu fui tolo em não dar ouvidos ao seu "
+"conselho e recusar a sua ajuda. Estou inclidado a dar cabo na sua vida aqui "
+"e agora, mas como os elfos nos abandonaram... temo que não tenhamos escolha. "
+"Mas e quanto a Mebrin? Os mortos-vivos continuarão a atacar nossos lares "
+"enquanto não arrancarmos o mal pela raíz."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1103
@@ -2620,6 +2619,9 @@ msgid ""
 "Westin, and we will grant your pardon so long as you do not try any more "
 "trickery. But this does not solve the problem of the undead!"
 msgstr ""
+"Não é como se tivessemos outra opção. Muito bem, você noslevará de volta "
+"para Westin, e nós lhe concederemos perdão, contanto que não tente nenhum "
+"truque. Mas isso não resolve o problema dos mortos-vivos!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1111
@@ -2628,6 +2630,9 @@ msgid ""
 "While his power is great and his army vast, we have fought the undead before "
 "and know that they can be defeated. Deoran—"
 msgstr ""
+"Eu sei que Mebrin pretende levar os mortos-vivos para Westin e destruir a "
+"cidade. Emboraseus poderes sejam grandes e seu exército seja vasto, lutamos "
+"contra os mortos-vivos esabemos que eles podem ser derrotados.Deoran—"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1116
@@ -2642,6 +2647,10 @@ msgid ""
 "and fortify the city walls, we may be able to hold back the undead and even "
 "strike at the lich-sage himself."
 msgstr ""
+"Sim, sim, Sir Deoran! Será suicídio lutar contra os mortos-vivos nas "
+"planíces ou florestas. Mas, se prepararmos nossas desesas e fortificarmos as "
+"muralhas da cidade, talvez possamos derrotar os mortos-vivos e até mesmo "
+"acabar com o lich-sábio."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1125
@@ -2656,7 +2665,7 @@ msgstr ""
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1142
 msgid "Now to defeat those bandits!"
-msgstr ""
+msgstr "Agora, vamos derrotar esses bandidos!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1173
@@ -2665,26 +2674,14 @@ msgstr "Nós derrotamos ambos, criminosos e mortos-vivos!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1178
-#, fuzzy
-#| msgid ""
-#| "We should make haste to return to Wesnoth before the harvest. Fall "
-#| "arrived some time ago."
 msgid ""
 "We should make haste to return to Wesnoth. I think the fall harvest should "
 "be soon!"
 msgstr ""
-"Nós deveríamos nos apressar para voltar a Wesnoth antes da colheita.  O "
-"Outono já esteve sobre nós faz algum tempo."
+"Precisamos correr devolta para Wesnoth. A colheita de outono se aproxima!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1182
-#, fuzzy
-#| msgid ""
-#| "Do not be so hasty; great mages are no mere tricksters to be easily "
-#| "defeated. I fear that there are tunnels and catacombs buried beneath his "
-#| "fortress and that we have merely defeated a specter. If we wish to "
-#| "cleanse the land of his evil, we must enter the darkness and root him out "
-#| "from within."
 msgid ""
 "Do not be so hasty. Powerful mages are not so easily defeated, and those "
 "skilled in the dark arts are especially adept at misdirection. There are "
@@ -2692,11 +2689,11 @@ msgid ""
 "great, dark energy. If we wish to cleanse the land of this evil, we must "
 "enter the crypt and root it out from within."
 msgstr ""
-"Não seja tão precipitado - Grande magos não são malandros baratos que se "
-"deixam derrotar tão facilmente.  Eu temo que haja túneis e catacumbas "
-"enterradas em baixo da sua fortaleza e que nós derrotamos somente um "
-"espectro.  Se nós desejarmos limpar a terra do seu mal, nós temos que entrar "
-"na escuridão e temos que expulsar o mal pela raiz."
+"Não seja tão precipitado. Magos poderosos não são derrotados tão facilmente, "
+"e aqueles que são hábeis nas artes negras são especialmente bons em enganar "
+"os outros. Existem muitos túneis e catacumbar enterradas debaixo deste forte "
+"que emanam grande quantidade de energia malígna. Se quisermos limpar a terra "
+"deste mal, precisaremos adentrar as criptas e arrancar o mal pela raíz."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1186
@@ -2711,6 +2708,10 @@ msgid ""
 "and get what rest you can. We are likely to face fierce opposition once we "
 "enter the caverns."
 msgstr ""
+"Poderosas barreiras mágicas esconderam a entrada e barram o nosso caminho, "
+"mas eu sou capaz de dissipá-las. Isso vai demorar, então afaste-se e tente "
+"descansar um pouco. É provável que enfrentaremos intensa oposição quando "
+"entrarmos nas cavernas."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1194
@@ -2718,6 +2719,8 @@ msgid ""
 "Indeed. We will leave you to your work and prepare ourselves for the coming "
 "battle."
 msgstr ""
+"Verdade. Vamos deixar você trabalhar em paz enquanto nos preparamos para a "
+"próxima batalha."
 
 #. [scenario]: id=06a_Into_the_Depths
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:5
@@ -2770,7 +2773,7 @@ msgstr "Grek"
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:337
 msgid "Find the source of the undead under the citadel"
-msgstr "Encontre a origem dos mortos-vivos debaixo da cidadela "
+msgstr "Encontre a origem dos mortos-vivos debaixo da cidadela"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:406
@@ -2799,6 +2802,8 @@ msgid ""
 "Very well. We should all stay close and guard each others’ backs. Something "
 "sinister lurks in this darkness."
 msgstr ""
+"Muito bem. É melhor não nos afastarmos muito uns dos outros. Alguma coisa "
+"sinistra espreita nestas trevas."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:422
@@ -2820,16 +2825,12 @@ msgstr ""
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:450
-#, fuzzy
-#| msgid ""
-#| "What horrid creature may that be? I’ve seen many wicked things in my "
-#| "life, but never one such as that."
 msgid ""
 "What manner of horrid creature is this? I have seen many wicked things in my "
 "life, but never one so perverse."
 msgstr ""
-"Que coisa horrenda pode ser tal coisa? Eu já vi muitas coisas estranhas na "
-"minha vida, mas nunca algo como isso."
+"Mas que tipo de criatura horrível é essa? Eu vi muitas coisas crueis na "
+"minha vida, mas nunca algo tão perverso quanto isso."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:455
@@ -2838,6 +2839,10 @@ msgid ""
 "suspect that this is some other beast, twisted by the foul energy of this "
 "place. It must have been set here as a guardian."
 msgstr ""
+"Tais criaturas podem ser invocadas por um conjurador suficientemente hábil, "
+"mas eu suspeito que esta besta seja diferente. Suspeito que ela tenha sido "
+"transformada pela magia malígna deste lugar. Ela deve ter sido colocada aqui "
+"para agir como um guardião."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:495
@@ -2845,15 +2850,17 @@ msgid ""
 "Who go there? I see... I sees some humans and elfsies! What you doing in our "
 "caves?"
 msgstr ""
+"Quem vêm lá? Eu vejo... eu vejo humanos e elfos! O que vocês fazem em nossas "
+"cavernas?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:499
-#, fuzzy
-#| msgid "We mean no trespass. We are hunting the undead."
 msgid ""
 "We do not mean to trespass on your territory. We are hunting the undead and "
 "have no quarrel with you."
-msgstr "Nós não pretendemos invadir.  Nós estamos caçando um morto-vivo."
+msgstr ""
+"Não era nossa intenção invadir o seu território. Estamos caçando os mortos-"
+"vivos e não temos nenhuma richa com vocês."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:503
@@ -2861,6 +2868,8 @@ msgid ""
 "Undead! Pesky skeletons invade our home, drive us into hiding! They too "
 "stupid to find us here, but we no leave here either."
 msgstr ""
+"Mortos-vivos! Os squeletos intrometidos invadem nossas casas, nos forçam a "
+"nos esconder! Eles burros demais pra nos achar aqui, mas nós também não sair."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:507
@@ -2868,6 +2877,8 @@ msgid ""
 "It seems that we have a common enemy, then. Would you like to join forces to "
 "defeat the undead?"
 msgstr ""
+"Parece que temos um inimigo em comum, então. Você gostaria de nos ajudar a "
+"derrotar os mortos-vivos?"
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:511
@@ -2876,19 +2887,18 @@ msgid ""
 "We help you beat skeletons, but after they gone we take back our home and "
 "you leave. Okay?"
 msgstr ""
+"Ajudar? Ajudar os humanos eos elfos? Hmm. Tá. Humanos e elfos amigos. Nós "
+"ajudamos vocês a derrotar os esqueletos, mas depois disso voltamos pra nossa "
+"casa e vocês vão embora. Tá?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:515
-#, fuzzy
-#| msgid ""
-#| "What aid can you offer us? We are not well suited to fighting in the "
-#| "caves."
 msgid ""
 "Very well. Can you help guide us through these tunnels? We are not well "
 "suited to fighting in the caves."
 msgstr ""
-"Você pode nos oferecer qualquer ajuda contra os mortos-vivos?  Nós não "
-"estamos adequadamente preparados para lutar nas cavernas."
+"Combinado. Você poderia nos guiar por entre esses túneis? Nem todos nós "
+"conseguimos lutar bem em cavernas."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:519
@@ -2912,16 +2922,12 @@ msgstr "Ethi... Ethiliel?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:650
-#, fuzzy
-#| msgid ""
-#| "How did you come to be here, you of all people, shut away from the trees "
-#| "and the light of the sun?"
 msgid ""
 "Oh, it truly is you! How did you come to be here, shut away from the trees "
 "and the light of the sun?"
 msgstr ""
-"Como você veio para cá? Você e todo esse povo? Tão longe das árvores e da "
-"luz do sol?"
+"Ah, realmente é você! Como você veio parar aqui, isolado das árvores e daluz "
+"do sol?"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:655
@@ -2931,24 +2937,22 @@ msgid ""
 "tormenting me endlessly as they tried to pry the secrets of the undead from "
 "me!"
 msgstr ""
+"Eles me prenderam, os malditos humanos, eles me prenderam com ferro! Ahh, o "
+"ferro gelado em minha pele... eles me queimaram com ele por vários dias e "
+"várias noites, semanas, me atormentando sem parrar tentando arrancar de mim "
+"os segredos sobre os mortos-vivos!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:660
-#, fuzzy
-#| msgid "What is this? Elves bear steel swords."
 msgid ""
 "What is this? Elves bear steel swords! I had no idea iron would hurt your "
 "kind so."
-msgstr "O que é isso? Elfos suportam espadas de aço."
+msgstr ""
+"Mas o que? Elfos carregam espadas de aço! Eu não fazia ideia de que ferro "
+"fere os da sua raça."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:665
-#, fuzzy
-#| msgid ""
-#| "They are but warriors. All elves feel the shadow of iron, and to those "
-#| "who walk our higher paths it is a bane, interfering with our magic. But "
-#| "this touches on mysteries that are not for men to know, human. I bind you "
-#| "never to speak of it."
 msgid ""
 "All elves feel the shadow of iron, and to those who walk our higher paths, "
 "it is a bane that breaks the body and twists the mind. This touches on "
@@ -2956,10 +2960,11 @@ msgid ""
 "it. Cruel as those abominable brigands were, they could not have known the "
 "hurt they inflicted upon my master."
 msgstr ""
-"Eles são apenas guerreiros. Todos os elfos sentem a sombra do ferro, e para "
-"aqueles que percorrem pelos nossos mais altos caminhos ele é uma desgraça, "
-"interferindo em nossa magia. Mas isso tange nos mistérios que nunca um homem "
-"irá conhecer, humano. Você nunca deve falar sobre isso."
+"Todos os elfos sentem a sombra do ferro, e para aqueles que trilham os "
+"nossos mais altos caminhos, ele é um veneno que destroi o corpo e distorce a "
+"mente. Isto tange mistérios que não são dos homens para conhecer. Eu lhe "
+"ordeno nunca falar disso. Esses criminosos podem ser cruéis, mas eles "
+"nãoteriam como saber disso."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:670
@@ -2971,6 +2976,13 @@ msgid ""
 "my veins. Imagine! I, a great and powerful sage, crippled and defeated by "
 "nothing more than a rusted pair of bracelets... it was... humiliating..."
 msgstr ""
+"Eles sabiam, eles sabiam! Eles se deleitaram com meu sofrimento, saborearam "
+"cada um dos meus gritos de dor! Mesmo quando eu pedia...quando eu "
+"<i>implorava</i> por misericórdia, eles não paravam. Já não conseguia mais "
+"distinguir dia da noite; a luz das trevas, calor do frio, tudo era o mesmo e "
+"o ferro perfurava o meu corpo. Imagine só! Eu,um grande e poderoso sábio, "
+"derrotado por um simples par de algemas enferrujadas... isso foi... "
+"humilhante..."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:675
@@ -2987,6 +2999,13 @@ msgid ""
 "matter?! They had killed my brethren, taken my dignity, tortured me to the "
 "brink of death! What did I have left?! Nothing... nothing... but vengeance."
 msgstr ""
+"No meu momento de maior fraqueza, eu não aguentei mais. Eu finalmente cedi e "
+"disse que ensinaria eles a reanimar os mortos se eles tirassem as malditas "
+"algemas. Eu sabia... eu sabia que uma vez que o primeiro fio de magria negra "
+"deixasse as minhas mãos, não haveria mais volta. Eu sabia, mas do que isso "
+"importava? Eles mataram os meus irmãos, roubaram minha dignidade e me "
+"torturaram até a beira da morte! O que me restara? Nada... nada... apenas "
+"vingança."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:685
@@ -3000,6 +3019,15 @@ msgid ""
 "them. Even when I ascended to undeath, they never questioned my teachings "
 "until they had all become my mindless slaves!"
 msgstr ""
+"No final das contas, humanos são uma raça fraca. Eu lhes ensinei a invocar "
+"poderes e eles jamais conseguiriam controlar. Em sua ganância, eles não "
+"pararam parase perguntar se eles conseguiriam dominar essa feitiçaria, ou se "
+"ela é que dominaria eles. Contentes com meros truques, eles nem perceberam "
+"que eu estava aproveitando a energia que eles invocavam. Cada dia que "
+"passava o meu poder crescia, e ainda assim nenhum daqueles miseráveis "
+"assasinos de árvores me via como uma ameaça. Mesmo quando eu ascendi para a "
+"vida-em-morte, eles nunca questionaram os meus ensinamentos até todos eles "
+"terem se transformados em meus escravos!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:690
@@ -3014,6 +3042,10 @@ msgid ""
 "decrepit humans! Without them, I never would have found the courage to "
 "master the dark arts and uncover the secrets to immortality."
 msgstr ""
+"Você foi minha melhor aluna, Ethiliel. Certamente você reconhece como me "
+"tornei poderoso. Ha! Consegue acreditar que uma pequena parte de mim é grata "
+"por aqueles decrépitos humanos? Sem eles, eu jamais teriado encontrado a "
+"coragem para dominar as artes negras e descobrir os segredos da imortalidade."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:700
@@ -3037,16 +3069,14 @@ msgid ""
 "and... and corruption! Even you! Mebrin... you were the kindest and gentlest "
 "of the sages. How could you become something like this? Mebrin, answer me!"
 msgstr ""
+"Olhe para si! Preste atenção no que você se tornou! Os seus servos são "
+"abominações piores do que qualquer humano. Eles fedem a morte, magia "
+"corrompida e... ecorrupção! Até mesmo você! Mebrin... você era o mais "
+"bondoso e gentil dos sábios. Como você pode ter se transformado em algo "
+"assim? Mebrin, me responda!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:715
-#, fuzzy
-#| msgid ""
-#| "I am called Mal M’Brin now, Ethiliel, best student of mine. It is time "
-#| "for a new lesson. I was such as you, full of doubt and weakness, but now "
-#| "I have passed over and become more than you know. There is infinity in "
-#| "death; I have touched the void at the heart of all things. You, too, can "
-#| "partake of its boundless power."
 msgid ""
 "I am called Mal M’Brin now, Ethiliel. It is the name I took when I unchained "
 "myself from the shallow-mindedness of the elves and passed over into "
@@ -3055,45 +3085,38 @@ msgid ""
 "beyond what any living human or elf knows. You, too, can partake of its "
 "boundless power."
 msgstr ""
-"Eu me chamo MalM'Brin agora, Ethiliel, minha melhor aluna. E é tempo de uma "
-"nova lição. Eu era como você, cheio de dúvidas e fraco, mas agora eu evoluí "
-"e me tornei algo muito maior que você jamais imaginou. Existe infinitude na "
-"morte; Eu toquei o coração de todas as coisas. E você também pode adquirir "
-"esse poder ilimitado."
+"Eu me chamo MalM'Brin agora, Ethiliel. Este é o nome que eu adotei quando eu "
+"me libertei da visão superficial dos elfos e atravessei a barreira do "
+"conhecimento. Há infinidade aqui na morte; eu toquei o vazio que habita o "
+"coração detodas as coisas, e começei a sondar as artes místicas além das "
+"quais qualquer humano ou elfo vivo conhecem. Você, também, pode participar "
+"deste poder sem limites."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:720
 msgid "You have become evil!"
-msgstr ""
+msgstr "Você decaiu para a escuridão!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:725
-#, fuzzy
-#| msgid ""
-#| "Join me! Stand by my side! We shall rise and sweep the humans from the "
-#| "green world. Their corpses will serve us; their bones will dance for our "
-#| "pleasure."
 msgid ""
 "Join me! Stand by my side! We shall rise and eradicate the humans from the "
 "green world. Their corpses will serve us! Their bones will dance for our "
 "pleasure! We will make them into the mindless slaves that they deserve to be!"
 msgstr ""
-"Junte-se a mim! Lute ao meu lado! Nós subiremos e limparemos os humanos do "
-"nosso lindo mundo. Seus corpos nos servirão. Seus ossos irão dançar conforme "
-"nossa música."
+"Junte-se a mim! Fique ao meu lado! Nós erradicaremos os humanos deste mundo "
+"verde! Os seus corpos nos servirão! Os seus ossos dançarão para o nosso "
+"entreterimento! Nós faremos deles os escravos sem consciência que eles "
+"merecem ser!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:730
-#, fuzzy
-#| msgid ""
-#| "And when we were done, what would we have become? Unlife. Hungering "
-#| "shadows, devouring all we once cherished."
 msgid ""
 "And when that is done, what will we have become? Naught but hungering "
 "shadows, devouring all we once cherished."
 msgstr ""
-"E quando terminarmos, no que nós nos transformaremos? Mortos. Adoraremos a "
-"escuridão, aquilo que nós tanto evitávamos."
+"E quando isto estiver feito, no que teremos nos tornado? Nada além de trevas "
+"famintas que devoram tudo o qual um dia amaram."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:736
@@ -3101,22 +3124,20 @@ msgid ""
 "No... No. The sage Mebrin is dead. You are not the master I once revered. I "
 "will cleanse your soul and put you to rest, my beloved teacher."
 msgstr ""
+"Não... Não. O sábio Mebrin está morto. Você não é o mestre que um dia eu "
+"reverenciei. Eu purificarei sua alma e colocarei seu corpo para descansar, "
+"meu amado professor."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:742
-#, fuzzy
-#| msgid ""
-#| "Even a mere human can see that you have become a mockery of all that you "
-#| "once believed in. I will destroy you and your works if it’s the last "
-#| "thing I do!"
 msgid ""
 "Even a mere human can see that you have become a mockery of all that you "
 "once believed in. I will destroy you and bury your perverse ideals, even if "
 "it costs me my own life!"
 msgstr ""
-"Até um mero humano como eu consegue ver que você é um escárnio de tudo "
-"aquilo que um dia acreditou. Eu o destruirei e a seus trabalhos mesmo que "
-"seja a última coisa que eu faça!"
+"Até mesmo um mero humano consegue ver que você se tornou o oposto de tudo "
+"aquilo que um dia acreditou. Eu o destruirei e enterrarei os seus ideias "
+"perversos, mesmo que isso custe a minha própria vida!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:747
@@ -3124,6 +3145,8 @@ msgid ""
 "You? Destroy me? Your flesh will provide a fine feast for my ghouls, and "
 "once they are through with you, you will serve me forever in undeath!"
 msgstr ""
+"Você? Me destruir? Sua carne servirá de banquete aos meus carniçais, e "
+"quando eles tiverem terminado de se divertir você me servirá para sempre!"
 
 #. [message]: role=smartcombatant
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:794
@@ -3131,6 +3154,8 @@ msgid ""
 "I feel the touch of dark magic. This is quite a powerful spell — the very "
 "air feels thick and heavy."
 msgstr ""
+"Sinto a presença de magia negra. Esta é uma magia muito poderosa — o ar está "
+"pesado e carregado."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:798
@@ -3140,6 +3165,10 @@ msgid ""
 "purge negative emotions from the body. I imagine it will have exactly the "
 "opposite effect now."
 msgstr ""
+"Isso é obra de Mebrin. Eu reconheço essa energia, embora ela tenha sido "
+"corrompida pelo toque das artes negras. Ele costumava a usar essa magia para "
+"curar a mente e expurgar as emoções negativas do corpo. Imagino que agora "
+"ela terá o efeito inverso."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:810
@@ -3152,26 +3181,28 @@ msgid ""
 "We must hurry! Once Mebrin’s spell takes full effect, none of us will be "
 "able to stop him."
 msgstr ""
+"Precisamos correr! Quando a magia de Mebrin atingir seu pico, nenhum de nós "
+"será capaz de detê-lo."
 
 #. [message]: role=soldier
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:842
 msgid "I feel so weary... I can hardly grasp my weapon anymore..."
-msgstr ""
+msgstr "Eu me sinto tão cansado... mal conseguo empunhar minha arma..."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:855
 msgid "Taste the breath of oblivion!"
-msgstr ""
+msgstr "Sinta o sopro da eternidade!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:859
 msgid "Mebrin has caught us in his spell! We are doomed..."
-msgstr ""
+msgstr "Mebrin nós pegou com a sua magia! Estamos perdidos..."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:871
 msgid "Ouch! Me hurt! Me feel cold! Me dying..."
-msgstr ""
+msgstr "Ai! Mim doi! Mim frio! Mim morrendo..."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:883
@@ -3180,6 +3211,9 @@ msgid ""
 "We could build an empire together, where the humans are our slaves and you "
 "and I are the immortal rulers of the world!"
 msgstr ""
+"Ethiliel! Espere... pense bem sobre isso! Pense em tudo o que você está "
+"jogando fora! Nós poderiamos construir um império juntos, onde os humanos "
+"são nossos escravos e você e eu somos os governantes imortais do mundo!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:888
@@ -3188,6 +3222,9 @@ msgid ""
 "this, but you have been corrupted beyond saving. Still, I will fondly "
 "cherish the memories I had with the old you."
 msgstr ""
+"Ele não passaria de um império de miséria, Mebrin. Eu queria que as coisas "
+"fossem diferentes, mas não há como salvá-lo agora. Ainda assim, guardarei "
+"com carinho as memórias que tenho do você antigo."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:893
@@ -3214,6 +3251,8 @@ msgid ""
 "Indeed, the lich is destroyed. Let us not linger here any longer than we "
 "need to. This place is filled with only grief and sorrow."
 msgstr ""
+"Sim, o lich foi destruido. É melhor mão ficarmos aqui mais do que o "
+"necessário. Este lugar está repleto de aflição e tristeza."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:918
@@ -3221,6 +3260,7 @@ msgid ""
 "Yes... just let me gather my thoughts, and I will lead you back to your "
 "homes."
 msgstr ""
+"Sim... só me dê um minuto para me recompor e eu o levarei de volta para casa."
 
 #. [scenario]: id=06b_The_Long_March
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:5
@@ -3261,7 +3301,7 @@ msgid ""
 msgstr ""
 "Florestas, florestas, florestas! Florestas até onde os olhos conseguem ver! "
 "Estou ficando cansado dessa marcha sem fim por entre esses bosques. Tem "
-"certeza de que estamos indo na direção certa? "
+"certeza de que estamos indo na direção certa?"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:587
@@ -3280,6 +3320,8 @@ msgid ""
 "Would that I had listened to Ethiliel... we would be battling the undead by "
 "now, instead of crawling around in these woods like rats!"
 msgstr ""
+"Eu queria ter dado ouvidos a Ethiliel... agora estariamos enfrentando os "
+"mortos-vivos ao invés de correr por entre essas árvores como ratos!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:595
@@ -3314,19 +3356,14 @@ msgstr ""
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:610
-#, fuzzy
-#| msgid ""
-#| "Remember that these woods are crawling with elves, and I don’t think "
-#| "they’ll receive us too kindly. Stay on the path and perhaps we can avoid "
-#| "at least most of them."
 msgid ""
 "Also, remember that these woods are crawling with elves. Stay on the path "
 "and perhaps we can avoid at least most of them. If we do get seen, well, "
 "let’s hope they won’t attack us."
 msgstr ""
-"E lembrem-se que essas florestas são infestadas de elfos. E eu não acho que "
-"eles vão nos receber tão amigavelmente. Fiquem na trilha e talvez consigamos "
-"os evitar ao máximo."
+"Além disso, lembre-se que essas florestas são infestadas de elfos. Fique no "
+"caminho e com sorte conseguiremos evitar a maioria deles. E se formos "
+"vistos, bom, vamos torcer para que não nos ataquem."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:809
@@ -3369,6 +3406,10 @@ msgid ""
 "necromancy and commands an army of undead. He means to march on our land and "
 "slay all living souls, human and elf alike!"
 msgstr ""
+"Nós já lhe dissemos onde ele está! O seu grande sábio agora pratica "
+"necromancia e comanda um exército de mortos-vivos. Ele está se preparando "
+"para marchar sobre nossas terras e matar todos os seres vivos, sejam eles "
+"humanos ou elfos!"
 
 #. [message]: race=elf
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:993
@@ -3418,6 +3459,9 @@ msgid ""
 "you did, we would still dispatch of you for your heinous transgressions, you "
 "treacherous scum!"
 msgstr ""
+"Assim como o nosso Sábio Mebrin, o qual vocês ainda não nós devolveram! "
+"Mesmo que vocês devolvam, nós ainda assim daremos cabo de vocês por conta de "
+"suas transgressões hediondas, sua escória traiçoeira!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1059
@@ -3445,6 +3489,8 @@ msgid ""
 "So, these pitiful humans are still alive? Good. I will have the pleasure of "
 "crushing them myself."
 msgstr ""
+"Então os humanos ainda vivem? Excelente. Eu terei o prazer de destruí-los "
+"pessoalmente."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1227
@@ -3467,6 +3513,10 @@ msgid ""
 "your battle against the undead. I am sorry for my deception before, but that "
 "was truly only because I thought you would kill me!"
 msgstr ""
+"Meu bom cavaleiro, eu não soutão mal quanto você pensa que eu sou. Eu "
+"realmente quero ajudar na sua batalha contra os mortos-vivos. Sinto muito "
+"por ter te enganado antes, mas eu fiz isso por que achei que você fosse me "
+"matar!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1255
@@ -3475,6 +3525,9 @@ msgid ""
 "the coming battle. As Sir Deoran said, you have kept your word about leading "
 "us back to Wesnoth, and that is a good start."
 msgstr ""
+"Os seus crimes são difíceis de perdoar, mas precisamos da sua ajuda na "
+"batalha que está por vir. Como Sir Deoran disse, você manteve sua palavra "
+"sobre nós travessar de volta para Wesnoth, o que já é um bom começo."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1259
@@ -3485,9 +3538,8 @@ msgstr ""
 
 #. [scenario]: id=07a_Return_to_Kerlath
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:4
-#, fuzzy
 msgid "Return to Kerlath"
-msgstr "Volta à Kerlath"
+msgstr "De volta em Kerlath"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:28
@@ -3505,6 +3557,9 @@ msgid ""
 "We are finally back in familiar territory. Westin is no more than a couple "
 "days’ journey from here. Let us make haste back to our homes."
 msgstr ""
+"Finalmente restamos de volta em território familiar. Westin não fica a mais "
+"do que alguns dias de viagem daqui. Vamos nos apressar para voltar logo pras "
+"nossas casas."
 
 #. [message]: speaker=Kramak
 #. The ogre purposely has very bad grammar, because he is very stupid.
@@ -3548,12 +3603,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:274
-#, fuzzy
 msgid ""
 "Save those wishes for another life, cur! You kidnapped and slew the Sage "
 "Mebrin!"
 msgstr ""
-"Guarde os seus para uma outra vida, seu vira-lata! Você raptou e matou "
+"Guarde os seus para uma outra vida, seu vira-lata! Você raptou e matou o "
+"Sábio Mebrin!"
 
 #. [message]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:278
@@ -3566,11 +3621,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:282
-#, fuzzy
 msgid ""
 "How dare you! To accuse our beloved sage of such things... does the "
 "stupidity of humanity know no bounds?"
-msgstr "Como ouza! Como ouza acusar nosso amado"
+msgstr ""
+"Como ouza! Como ouza acusar nosso amado sábio detais atos... será que a "
+"estupidez dos homens não conhece limites?"
 
 #. [message]: id=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:286
@@ -3616,6 +3672,9 @@ msgid ""
 "have angered some of them greatly, perhaps to the point that they have "
 "become utterly irrational. Even so, this seems like madness to me.</i>"
 msgstr ""
+"<i>Eu não sei ao certo. Mebrin era muito amado pelo nosso povo. Sua morte "
+"deve ter deixado muitos zangados, ao ponto de ficarem totalmente fora de si. "
+"Mas, ainda assim, isso tudo me parece loucura.</i>"
 
 #. [message]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:311
@@ -3624,6 +3683,10 @@ msgid ""
 "student. You have the right to be the most angry of all, yet even you have "
 "made peace with us. Should they not recognize this?</i>"
 msgstr ""
+"<i>Mas para ficar irado a ponto de lhe atacar? E, além disso, você fora "
+"aprendiz dele. Você tem o direito de ser a pessoa mais furiosa por conta "
+"desta situação, e ainda assim você fez faz conosco. Eles não deveriam "
+"reconhecer isso?</i>"
 
 #. [message]: id=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:315
@@ -3635,6 +3698,12 @@ msgid ""
 "whom I very much doubt sent anyone to come hunt us down. Something else is "
 "going on.</i>"
 msgstr ""
+"<i>As coisas que aconteceram naquela caverna me causaram tamanha dor que não "
+"consigo mais ficar zangada com a situação. Mas, o resto do meu povo não "
+"estava lá para ver no que Mebrin tinha se tornado. E sobre me atacrem, não "
+"sou eu quem geralmente lidera nossos guerreiros; essa responsabilidade "
+"pertence a Ithelden, e duvido que ele tenha mandado elfos virem nos caçar. "
+"Há algo mais por detrás disso.</i>"
 
 #. [message]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:319
@@ -3648,6 +3717,10 @@ msgid ""
 "elves have suffered enough from this ordeal. I would not have our people be "
 "slaughtered needlessly as well.</i>"
 msgstr ""
+"<i>Lute para abrir caminha por entre nossos inimigos mas, se possível, lute "
+"para subjugá-los e não para matá-los. Nós elfos já sofremos demais com essa "
+"situação toda. Eu preferiria que meu povo não tivesse que morrer "
+"desnecessariamente.</i>"
 
 #. [message]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:327
@@ -3661,6 +3734,8 @@ msgid ""
 "These human beasts slew our people and murdered Mebrin! We must have "
 "vengeance for this vile atrocity. Burn their city to the ground!"
 msgstr ""
+"Estas bestas humanas mataram Mebrin! Precisamos nos vingar desta víl "
+"atrocidade. Queimem a cidade até não restar nada!"
 
 #. [message]: speaker=Deoran
 #. Defeat message after time-over
@@ -3669,6 +3744,8 @@ msgid ""
 "The elves are attacking Westin! They'll surely destroy the city without us "
 "there to defend it..."
 msgstr ""
+"Os elfos estão atacando Westin! Sem nós para defendê-la, a cidade será "
+"dewstruída..."
 
 #. [unit]: type=Lieutenant, id=Liryn
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:394
@@ -3704,17 +3781,14 @@ msgstr ""
 
 #. [message]: speaker=Liryn
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:420
-#, fuzzy
-#| msgid ""
-#| "Elvish allies? I think you had best make haste to Westin. There are "
-#| "rumors of trouble with the elves of the Aethenwood."
 msgid ""
 "This is wonderful news, commander! I shall spread word about your heroic "
 "deed! But... I am afraid there is another problem. There are rumors of "
 "trouble with the elves of the Aethenwood."
 msgstr ""
-"Aliados élficos? Eu achei que você tivesse mais amor a Westin. Existem "
-"rumores de problemas com os elfos de Aethenwood, a floresta ocidental."
+"Essas são ótimas notícias, comandante! Eu espalharei as novidades dos seus "
+"feitos heróicos! Mas... sinto informar que temos mais um problema. Há boatos "
+"de que algo está errado com os elfos de Aethenwood."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:425
@@ -3723,6 +3797,9 @@ msgid ""
 "we had best hurry back to your city. I will need to see what the "
 "circumstances are."
 msgstr ""
+"Considerando nossas dificuldades para chegar aqui, isso não me surpreende. "
+"Deoran, é melhor voltarmos logo para a sua cidade. Eu preciso ver quais são "
+"as circunstâncias."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Return_to_Kerlath.cfg:430
@@ -3807,16 +3884,14 @@ msgstr "Cinry"
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:156
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:157
-#, fuzzy
 msgid "Death Guard"
 msgstr "Guarda da Morte"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:215
-#, fuzzy
-#| msgid "Hold the line: Keep Sir Gerrick alive as long as possible"
 msgid "Hold the line: keep Sir Gerrick alive as long as possible"
-msgstr "Segure a frente: Mantenha Sir Gerrick vivo o maior tempo possível"
+msgstr ""
+"Mantenha a posição: Sir Gerrick deve sobreviver o maior tempo quanto possível"
 
 #. [note]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:224
@@ -3824,6 +3899,8 @@ msgid ""
 "Starting with turn 6, each additional turn you survive strengthens the "
 "defenses of Westin."
 msgstr ""
+"A começar pelo turno 6, cada turno adicional aumentará a força das defesas "
+"de Westin."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:260
@@ -3831,6 +3908,8 @@ msgid ""
 "We are finally back in Kerlath, but look! The undead have almost caught up "
 "to us!"
 msgstr ""
+"Finalmente voltamos para Kerlath, mas, olhem! Os mortos-vivos estão quase "
+"nos alcançando!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:264
@@ -3838,6 +3917,8 @@ msgid ""
 "These forts are ill-equipped for holding back so many undead. I am certain "
 "we will be slaughtered if we try to fight them here!"
 msgstr ""
+"Esses fortes não estão equipados para rechaçar tantos mortos-vivos. Não "
+"tenho dúvida de que seremos mortos se tentarmos enfrentá-los aqui!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:268
@@ -3847,26 +3928,28 @@ msgid ""
 "without rest, but we cannot. They will certainly overtake us before we reach "
 "Westin."
 msgstr ""
+"Mas não podemos fugir para sempre... os cavalos estão cansados, e os homens "
+"estão cansados, e eu também estou cansado. Os mortos-vivos podem marchar dia "
+"e noite sem precisar descansar, mas nós não. Eles vão nos ultrapassar antes "
+"de alcançarmos Westin."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:272
-#, fuzzy
-#| msgid ""
-#| "My lord, you must hasten back to Westin to prepare a defense against "
-#| "them. I will command the defense of the border forts."
 msgid ""
 "Then we have only one course of action to take. Deoran, you must hasten back "
 "to Westin to prepare a defense against them. I will command the defense of "
 "the border forts. Leave me a few men, and we will hold back the undead as "
 "long as we can."
 msgstr ""
-"Meu senhor, você tem que voltar às pressas para Westin para preparar uma "
-"defesa contra eles.  Eu comandarei a defesa dos fortes da fronteira."
+"Então só nos resta uma opção. Deoran, você precisa correr de volta pra "
+"Westin e preparar as defesas contra eles. Eu assumirei o comanda dos fortes "
+"da fronteira. Me dê alguns homens e nós atrasaremos os mortos-vivos até não "
+"conseguirmos mais."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:276
 msgid "But such a thing will mean certain death!"
-msgstr ""
+msgstr "Mas isso seria suicídio!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:280
@@ -3876,11 +3959,15 @@ msgid ""
 "undead will surely run us down and make short work of the city-folk. Then "
 "everything we have fought for will be lost!"
 msgstr ""
+"Deoran, você ainda é jovem e tem muito o que aprender. Em tempos difíceis, "
+"não há como evitar que sacrifícios sejam feitos. Se nós fugirmos com vocês, "
+"os mortos-vivos sem dúvida nós alcançarão e matarão todos. E então tudo pelo "
+"que lutamos estará perdido!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:284
 msgid "Even so..."
-msgstr ""
+msgstr "Ainda assim..."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:288
@@ -3888,11 +3975,14 @@ msgid ""
 "I will stand here with you, Sir Gerrick. You will need my help to slow down "
 "the undead, and I have a debt to repay to you for sparing my life."
 msgstr ""
+"Eu ficarei aqui com você, Sir Gerrick. Você precisará de ajuda para atrasar "
+"os mortos-vivos, e eu estou em dívida para com vocês por terem poupado a "
+"minha vida."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:292
 msgid "Those are brave words that I would not have expected from you, Afalas."
-msgstr ""
+msgstr "Bravas palavras que jamais esperaria de você, Afalas."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:296
@@ -3903,27 +3993,27 @@ msgid ""
 "think us criminals and outlaws, but we are still human and we still know "
 "loyalty and gratitude."
 msgstr ""
+"Tudo chega ao fim, de uma maneira ou de outra. Eu gostaria de ter visto "
+"minha casa em Westin mais uma vez, mas eu estou muito cansado. Cansado de "
+"correr, cansado de fugir desses mortos-vivos que corromperam e consumiram "
+"meus irmãos. Você pode só pensar em nós como criminosos e foras-da-lei, mas "
+"nós ainda somos humanos e sabemos o que é lealdade e gratidão."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:300
 msgid "You will not change our minds, Deoran. Go!"
-msgstr ""
+msgstr "Você não vai me fazer mudar de ideia, Deoran. Vá!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:304
-#, fuzzy
-#| msgid ""
-#| "Minister Hylas, ride with me to Westin — you must summon the Council of "
-#| "Westin while I prepare the city’s defenses. We shall return as soon as we "
-#| "can in force and relieve you."
 msgid ""
 "I... I understand. Minister Hylas, come ride with me to Westin. You must "
 "summon the city council while I prepare the defenses. Sir Gerrick, Afalas, "
 "we shall return as soon as we can and relieve you."
 msgstr ""
-"Ministro Hylas, venha comigo para Westin -- Você precisa chamar o Conselho "
-"de Westin enquanto eu preparo as defesas da cidade.  Nós retornaremos assim "
-"que pudermos com forças para ajudá-los."
+"Eu... eu entendo. Ministro Hylas, venha comigo até Westin. Você precisa "
+"invocar o conselho da cidade enquanto eu preparo as defesas. Sir Gerrick, "
+"Afalas, nós voltaremos assim que pudermos para lhes ajudar."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:308
@@ -3932,54 +4022,39 @@ msgid ""
 "our home from the undead and only ask you to remember those who fell "
 "defending our land. Farewell, Sir Deoran!"
 msgstr ""
+"Você sabe qual será o desfecho da batalha que acontecerá aqui. Eu confio que "
+"você protegerá nossos lares dos mortos-vivos e só peço quese lembre daqueles "
+"que morreram defendendo a nossa terra. Adeus, Sir Deoran!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:312
 msgid "The light shines upon your souls, brave warriors."
-msgstr ""
+msgstr "A luz brilha em suas almas, corajosos soldados."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:319
-#, fuzzy
-#| msgid ""
-#| "Your name will be sounded in the roll of heroes, and you will be avenged. "
-#| "Thank you, my friend."
 msgid "We will never forget your sacrifice here. Thank you, my friend."
-msgstr ""
-"Seu nome ecoará na lista de heróis, e você será vingado.  Obrigado, meu "
-"amigo."
+msgstr "Jamais esqueceremos de seu sacrifício aqui. Obrigado, amigo."
 
 #. [message]: speaker=Illan
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:353
-#, fuzzy
-#| msgid ""
-#| "We are yours to command, Sir Gerrick. Our men are not the great warriors "
-#| "that you and Deoran are, but we will hold our lines staunchly, until the "
-#| "bitter end."
 msgid ""
 "We are yours to command, Sir Gerrick. We will hold back the undead until the "
 "bitter end!"
 msgstr ""
-"Nós estamos ao seu comando, Sir Gerrick.  Nossos homens não são os grandes "
-"guerreiros que você e Deoran são, mas nós seguraremos nossas linhas, "
-"firmemente, até o fim."
+"Estamos às suas ordens,Sir Gerrick. Os mortos-vivos só sairão daqui por cima "
+"de nossos cadáveres!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:358
-#, fuzzy
-#| msgid ""
-#| "There is no way to win this scenario, and no way to lose. Hold off the "
-#| "undead hordes as long as you can. Keep Sir Gerrick alive as long as you "
-#| "can. Every turn that passes strengthens the defenses of Westin."
 msgid ""
 "Hold off the undead hordes and keep Sir Gerrick alive as long as you can. "
 "Starting on turn 6, every turn that passes strengthens the defenses of "
 "Westin."
 msgstr ""
-"Não há nenhum modo para ganhar este cenário, e nenhum modo para perder. "
-"Segure as hordas de mortos-vivos tanto quanto você puder.  Mantenha Sir "
-"Gerrick vivo o maior tempo possível.  Quanto mais turnos passam, mais as "
-"defesas de Westin se fortalecem."
+"Impeça o avanço das hordas demortos-vivos e mantenha Sir Gerrick vivo por "
+"tanto tempo quanto possível. A partir do turno 6, cada turno que passar "
+"deixará as defesas de Westin mais fortes."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:393
@@ -3987,22 +4062,19 @@ msgid ""
 "Alas, for each casualty we suffer, the ranks of the undead grow. We must "
 "hold fast and survive as long as we can!"
 msgstr ""
+"Cada baixa que sofremos deixa os mortos-vivos mais fortes. Precisamos ter "
+"coragem e sobreviver omáximo que conseguirmos!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:446
 msgid "So this is how it ends... I am coming to you, my brothers..."
 msgstr ""
+"Então é assim que minha vida termina... Em breve estarei com vocês, irmãos..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:458
-#, fuzzy
-#| msgid ""
-#| "I only hope we have bought Deoran enough time to secure Westin for the "
-#| "onslaught!"
 msgid "I only hope... we have bought enough time... for Deoran..."
-msgstr ""
-"Eu só espero que tenhamos conseguido segurar os mortos-vivos por tempo o "
-"suficiente para que Deoran prepare a defesa de Westin!"
+msgstr "Espero que... tenhamos compradotempo suficiente... para Deoran..."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:466
@@ -4011,6 +4083,9 @@ msgid ""
 "through your cities and raze them to the ground! March onward, my skeletons! "
 "We go to destroy Westin!"
 msgstr ""
+"Humanos insignificantes! Vocês só atrasaram o inevitável! Nós vamos varrer "
+"todas as suas cidades do mapa! Marchem,avante, meus esqueletos! Nós vamos "
+"destruir Westin!"
 
 #. [scenario]: id=08a_Vengeance
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:5
@@ -4053,7 +4128,6 @@ msgstr "Elfos enfurecidos"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:140
-#, fuzzy
 msgid "Survive until end of turns"
 msgstr "Sobreviva até os turnos acabarem"
 
@@ -4065,6 +4139,10 @@ msgid ""
 "will be peace in Westin. You have our thanks, Lady Ethiliel. We could not "
 "have accomplished this feat without you."
 msgstr ""
+"Finalmente, estamos de volta em casa! Tanto os mortos-vivos quanto os "
+"bandidos foram derrotados e, pelo visto, os aldeões já começaram o processo "
+"de reconstrução. Talvez agora Westin conheça a paz. Nós agredecemos a sua "
+"ajuda, Lady Ethiliel. Nós não estariamos aqui hoje se não fosse por você."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:173
@@ -4075,6 +4153,11 @@ msgid ""
 "capable of courage and loyalty. About the trouble with my people, I will see "
 "what I can do—"
 msgstr ""
+"Sim... vocês realizaram um enorme feito destruindo os mortos-vivos, mas no "
+"final das contas foram os seus que trouxeram esse mal para a terra. Porém, "
+"agora eu vejo que nem todos os humanos são iguais e que vocês, tambéms,são "
+"capazes de demonstrar coragem e lealdade. Com relação ao problema com o meu "
+"povo, verei o que eu posso fazer—"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:177
@@ -4089,37 +4172,27 @@ msgstr "Fazendeiro Pobre"
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:210
-#, fuzzy
-#| msgid "You must pay for killing Mebrin!"
 msgid "You will pay for Mebrin’s death!"
-msgstr "Você tem que pagar por matar Mebrin!"
+msgstr "Você pagará pela morte de Mebrin!"
 
 #. [message]: speaker=Poor Farmer
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:214
-#, fuzzy
-#| msgid "I am just a farmer! What did I do?!"
 msgid "I am just a farmer! I never killed anyone!"
-msgstr "Eu sou apenas um fazendeiro!  O que eu fiz?!"
+msgstr "Eu sou apenas um fazendeiro! Eu nunca matei ninguém!"
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:218
-#, fuzzy
-#| msgid ""
-#| "What did you do?! Your people kidnapped and murdered our greatest leader! "
-#| "And now you will pay!"
 msgid ""
 "You lie! All humans are the same! Your people kidnapped and murdered our "
 "wisest sage! Now you will pay!"
 msgstr ""
-"O que você fez?! Seu povo seqüestrou e assassinou nosso maior líder!  E "
-"agora você pagará!"
+"Você está mentindo! Todos os humanos são iguais! Vocês raptaram e mataram o "
+"nosso maior sábio! Agora você pagará!"
 
 #. [message]: role=observant
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:257
-#, fuzzy
 msgid "He just killed that innocent farmer! We must stop him!"
-msgstr ""
-"Ele acabou de matar aquele fazendeiro inocente!  Nós temos que o parar!"
+msgstr "Ele acabou de matar aquele fazendeiro inocente! Nós temos que detê-lo!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:261
@@ -4129,6 +4202,10 @@ msgid ""
 "have thus absolved themselves of any wrongdoing. No more innocent blood "
 "needs to be shed."
 msgstr ""
+"Pare, Eltenmir! Não foram esses humanos que machucaram Mebrin. Eles me "
+"ajudaram a me vingar dos responsáveis pelo ato terrível e, assim, absolveram "
+"a sua raça de qualquer culpa. Não há necessidade para que mais sangue de "
+"inocente seja derramado."
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:265
@@ -4138,6 +4215,10 @@ msgid ""
 "felled our trees in the past, they have destroyed our homes, murdered our "
 "people, and killed Mebrin!"
 msgstr ""
+"Não posso acreditar no que estou ouvindo. Você sempre foi muito mole, "
+"Ethiliel, mas tomar o partido dos humanos? Todos os humanos não passam de "
+"vermes! Eles cortaram nossas árvores, destruíram nossas casas, mataram nosso "
+"povo, e mataram Mebrin!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:269
@@ -4148,6 +4229,12 @@ msgid ""
 "losing one that I cherished so. Still... still, even I recognize that these "
 "humans are not the ones to blame."
 msgstr ""
+"Mebrin era meu mentor, Eltenmir! Sou <i>eu</i> quemmais sofro pela sua "
+"perda! Passei incontáveis noites sem dormir pensando na morte dele e sinto "
+"tanta falta dele que não se passa um instante sequer em que meu coração "
+"conhecepaz. Eu sei como devo me sentir com a perda de alguém que me era tão "
+"querido. Mas... mas mesmo assim, até eu reconheço que esses humanos não tem "
+"culpa."
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:273
@@ -4156,11 +4243,14 @@ msgid ""
 "theirs will be spilled in turn. If you stand against us, Ethiliel, we will "
 "attack you too. You had best stay out of this."
 msgstr ""
+"Não importa. Os humanos derramaram o sangue de nosso povo, então o deles "
+"deve ser derramado agora. Se você ficar em nosso caminho, Ethiliel, "
+"atacaremos você também. É melhor você ficar de fora disso."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:277
 msgid "And what do you think Ithelden will have to say about that?"
-msgstr ""
+msgstr "E o que você acha que Ithelden diria sobre isso?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:292
@@ -4168,6 +4258,8 @@ msgid ""
 "Eltenmir, answer me! You know you do not have the authority to be attacking "
 "the humans like this, much less me! Eltenmir!"
 msgstr ""
+"Eltenmir, me responda! Você sabe que você não tem autoridade para atacar os "
+"humanos assim, muito menos me atacar! Eltenmir!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:300
@@ -4176,6 +4268,9 @@ msgid ""
 "long. I will send a messenger to Ithelden and hope he gets here in time "
 "before the city is overrun."
 msgstr ""
+"Você sempre foi cabeça dura. Deoran, nós não vamos aguentar muito tempo. Eu "
+"mandarei um mensageiro para Ithelden na esperança de que ele chegará aqui "
+"antes da cidade cair."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:304
@@ -4183,27 +4278,27 @@ msgid ""
 "Are you sure that they’ll listen to Ithelden? Or that he’ll even try to stop "
 "them?"
 msgstr ""
+"Você tem certeza de que eles vão dar ouvidos a Ithelden? Ou que ele irá "
+"tentar pará-los?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:308
-#, fuzzy
-#| msgid "Perhaps not, but it is your only hope. I must reach Ithelden!"
 msgid ""
 "Perhaps not, but we have no other hope right now. We must survive until "
 "Ithelden arrives!"
 msgstr ""
-"Talvez não, mas é nossa única esperança.  Eu tenho que alcançar Ithelden!"
+"Talvez não, mas é a nossa única esperança. Precisamos sobreviver até que "
+"Ithelden chegue!"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:428
-#, fuzzy
 msgid "For every one of us you strike down, more will rise!"
-msgstr "Para cada um dos nossos que derrubar, mais surgirão!"
+msgstr "Para cada um dos nossos que você derrubar, mais surgirão!"
 
 #. [message]: speaker=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:458
 msgid "Eltenmir! What in the world is going on here?"
-msgstr ""
+msgstr "Eltenmir! Mas o que está acontecendo aqui?"
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:477
@@ -4211,6 +4306,8 @@ msgid ""
 "We are merely giving these human pigs what they deserve. If they wish to "
 "shed the blood of our people, we will do the same to them."
 msgstr ""
+"Nós só estamos dando a essesporcos humanos o que eles merecem. Se eles "
+"querem derramar o sangue de nosso povo, retribuiremos em g~enero."
 
 #. [message]: speaker=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:481
@@ -4219,11 +4316,14 @@ msgid ""
 "that nothing good can come of doing this. Especially not from attacking "
 "Ethiliel!"
 msgstr ""
+"Eu sei que você também está de luto pela morte de Mebrin, mas certamente "
+"você entende que nada de bom pode vir do que você está fazendo. "
+"Especialmente atacar Ethiliel!"
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:485
 msgid "Then suggest something, for we must have some form of retribution!"
-msgstr ""
+msgstr "Então sugira algo, pois temos sede de vingança!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:489
@@ -4231,6 +4331,8 @@ msgid ""
 "The ones who <i>effectively</i> killed Mebrin are dead. I saw to that "
 "personally. We should have no more qualms with the remaining humans here."
 msgstr ""
+"Os responsáveis por <i>matar</i> Mebrin estão mortos. Eu me certifiquei "
+"disso. Os humanos restantes não são responsáveis pelo que aconteceu."
 
 #. [message]: speaker=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:493
@@ -4239,11 +4341,14 @@ msgid ""
 "true, the death of a few bugs in the woods is hardly an equal trade for one "
 "of our greatest leaders!"
 msgstr ""
+"Como se isso pudesse nos satisfazer! Mesmo que você esteja dizendo a "
+"verdade, a morte de alguns insetos não compensa a morte de um dos nossos "
+"maiores líderes!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:497
 msgid "But the answer cannot be more death and destruction..."
-msgstr ""
+msgstr "Mas a solução não pode ser mais morte e destruição..."
 
 #. [message]: speaker=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:501
@@ -4254,11 +4359,16 @@ msgid ""
 "and discuss the issue with us, Ethiliel. You no longer belong with the "
 "humans."
 msgstr ""
+"Não, provavelmente não, mas Eltenmir está certo. Também não podemos fazer "
+"nada e simplesmente esquecer desta atrocidade. Se você quiser evitar um "
+"massacre aqui, você precisará encontrar alguma forma de apaziguar os dois "
+"lados. Enfim, você deveria vir conosco para discutirmos sobre essa situação, "
+"Ethiliel. Você não mais pertence aos humanos."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:505
 msgid "I... I suppose you are right. I will come."
-msgstr ""
+msgstr "Você... você tem razão. Já vou."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:532
@@ -4266,10 +4376,11 @@ msgid ""
 "Be careful, Deoran. The more blood you spill, the more my people will be "
 "enraged. More will surely come to attack."
 msgstr ""
+"Tome cuidado, Deoran. Quanto mais sangue você derramar, maior será a fúria "
+"de meu povo. Mais virão para atacar."
 
 #. [scenario]: id=08b_The_Tides_of_War
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:5
-#, fuzzy
 msgid "The Tides of War"
 msgstr "As Marés da Guerra"
 
@@ -4314,16 +4425,11 @@ msgstr "Mais aliados chegarão no turno $council_arrive_turn|."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:443
-#, fuzzy
-#| msgid ""
-#| "Look! The undead army has broken through Sir Gerrick’s lines! Alas, he is "
-#| "lost!"
 msgid ""
 "Look there! The undead have broken through Sir Gerrick’s line! Alas, he is "
 "lost!"
 msgstr ""
-"Olhe!  O exército de mortos-vivos penetrou as linhas de Sir Gerrick! Meu "
-"Deus, perdemos ele!"
+"Vejam! Os mortos-vivos romperam as defesas de Sir Gerrick! Ele está morto!"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:448
@@ -4332,61 +4438,57 @@ msgid ""
 "his bravery and courage for a long time and always aspired to be a warrior "
 "as mighty as he was. Today, we will defeat the undead and avenge him!"
 msgstr ""
+"Gerrick foi meu mentor e tomou conta de mim desde que eu era pequeno. Sempre "
+"admirei sua bravura e coragem, e sempre quis ser um guerreiro tãobom quanto "
+"ele. Hoje destruiremos os mortos-vivos e vingaremos a morte dele!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:463
-#, fuzzy
-#| msgid ""
-#| "But in the narrow window his valiant stand gave us, we have roused some "
-#| "of the provincial guard and reinforced our defenses!"
 msgid ""
 "He was a noble man to have sacrificed himself for us. I wish that it did not "
 "have to be so, but in the narrow window Gerrick’s valiant stand gave us, we "
 "have gathered some of the provincial guard and reinforced our defenses!"
 msgstr ""
-"Mas, no breve período que sua defesa valente nos deu, conseguimos reunir um "
-"pouco da guarda provinciana e reforçamos nossas defesas!"
+"Ele ter sacrificado sua vida por nós foi a última prova de sua nobreza. Eu "
+"queria que ele não precisase ter feito isso, mas no curto período de tempo "
+"que ele conseguiu manter os mortos-vivos ocupados, conseguimos reunir alguns "
+"guardas da província e reforçar nossas defesas!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:478
-#, fuzzy
-#| msgid ""
-#| "But in the narrow window his valiant stand gave us, we have roused the "
-#| "whole provincial guard and reinforced our defenses!"
 msgid ""
 "He was a noble man to have sacrificed himself for us. I wish that it did not "
 "have to be so, but in the narrow window Gerrick’s valiant stand gave us, we "
 "have gathered the whole provincial guard and reinforced our defenses!"
 msgstr ""
-"Mas, no breve período que sua defesa valente nos deu, conseguimos preparar "
-"toda a guarda provinciana e reforçamos nossas defesas!"
+"Ele ter sacrificado sua vida por nós foi a última prova de sua nobreza. Eu "
+"queria que ele não precisase ter feito isso, mas no curto período de tempo "
+"que ele conseguiu manter os mortos-vivos ocupados, conseguimos reunir toda a "
+"guardaprovincial e reforçar nossas defesas!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:494
-#, fuzzy
-#| msgid ""
-#| "But in the narrow window his valiant stand gave us, we have roused the "
-#| "whole provincial guard and fully embattled the city!"
 msgid ""
 "He was a noble man to have sacrificed himself for us. I wish that it did not "
 "have to be so, but in the narrow window Gerrick’s valiant stand gave us, we "
 "have gathered the whole provincial guard and fully embattled the city!"
 msgstr ""
-"Mas, no breve período que sua defesa valente nos deu, conseguimos preparar "
-"toda a guarda provinciana e enchemos a cidade com homens!"
+"Ele ter sacrificado sua vida por nós foi a última prova de sua nobreza. Eu "
+"queria que ele não precisase ter feito isso, mas no curto período de tempo "
+"que ele conseguiu manter os mortos-vivos ocupados, conseguimos reunir toda a "
+"guarda provincial e acidade está pronta para a batalha!"
 
 #. [message]: speaker=Nilaf
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:504
-#, fuzzy
-#| msgid "Indeed, Lord, we are ready to defend our homes!"
 msgid ""
 "Indeed, Sir Deoran, we have come to defend Westin from the undead menace!"
-msgstr "Realmente, Senhor, nós estamos prontos para defender nossas casas!"
+msgstr ""
+"Sim, Sir Deoran, nós viemos defender Westin contra a ameaça dos mortos-vivos!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:509
 msgid "Minister Hylas, what word is there from the allies of the Council?"
-msgstr ""
+msgstr "Ministro Hylas, novidades dos aliados do Conselho?"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:520
@@ -4398,24 +4500,20 @@ msgstr "O Conselho de Westin invocou a ajuda dos nossos aliados do norte!"
 #. [else]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:523
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:538
-#, fuzzy
 msgid "Minister Mefel"
 msgstr "Ministro Mefel"
 
 # É a fala do primeiro mago, ministro Mefel, do conselho ao chegar. Ele avisa que o resto do Conselho vai demorar...
 #. [message]: speaker=Minister Mefel
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:526
-#, fuzzy
-#| msgid ""
-#| "Hylas, I have made all possible haste, but my Council brethren are not as "
-#| "swift as I. It will take more time for them to arrive."
 msgid ""
 "We come to battle the unholy ones at your side. Hylas, I have made all "
 "possible haste, but the others are not as swift as I. It will take more time "
 "for them to arrive."
 msgstr ""
-"Hylas, fiz o possível, mas meus companheiros de Conselho não são tão ágeis "
-"como eu, um Mago Prateado. Demorarão um tempinho para chegar."
+"Viemos lutar contra os seres profanos ao seu lado. Hylas, cheguei o mais "
+"rápido que pude, mas os outros não são tão rápidos quanto eu. Vai demorar "
+"mais para que eles cheguem."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:535
@@ -4428,16 +4526,13 @@ msgstr ""
 
 #. [message]: speaker=Minister Mefel
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:545
-#, fuzzy
-#| msgid ""
-#| "We have heard your summons, and we shall send these dark foes back to the "
-#| "abyss that spawned them!"
 msgid ""
 "We heard your call for help and came as quickly as we could. These undead "
 "shall be sent back to the dark abyss that spawned them!"
 msgstr ""
-"Hylas, nós ouvimos sua convocação, e nós mandaremos de volta estes inimigos "
-"obscuros ao abismo que os gerou!"
+"Nós ouvimos o seu chamado por ajuda e viemos o mais rápido que pudemos. "
+"Esses mortos-vivos serão enviados de volta ao abismo sombrio de onde eles "
+"vieram!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:552
@@ -4448,6 +4543,12 @@ msgid ""
 "wicked creatures of darkness. We must stand fast against the undead and "
 "defend our homes! We fight for Sir Gerrick! We fight for Wesnoth!"
 msgstr ""
+"Então é isso. Sir Gerrick nos comprou tempo suficiente para que possamos "
+"juntar nossas forças e fortificar a cidade. Uma batalha muito importante "
+"está a nossa frente, mas assim como o amanhecer procede a noite, a coragem e "
+"o valor dos homens prevalecerá contra as perversas criaturas das trevas! Nós "
+"precisamos aguentar firme contra os mortos-vivos e defender nossos lares! "
+"Lutamos por Sir Gerrick! Lutamos por Wesnoth!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:564
@@ -4455,6 +4556,8 @@ msgid ""
 "So, the fleshbags have managed to mount a defense. It would seem that the "
 "pesky fly turned out to be more than a minor annoyance after all."
 msgstr ""
+"Vejo que os sacos de carne conseguiram montar uma defesa. No final das "
+"contas a mosca irritanto era um pouco mais problemática do que eu esperava."
 
 #. [message]: speaker=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:568
@@ -4467,6 +4570,8 @@ msgid ""
 "Slay them all! Even if we sustain heavy losses here, the city’s inhabitants "
 "will be more than enough to replenish our ranks."
 msgstr ""
+"Matem todos! Mesmo que soframos pesadas perdas aqui, os habitantes da cidade "
+"serão mais do que o suficiente para reabastecer nossas fileiras."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:608
@@ -4479,11 +4584,13 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:612
-#, fuzzy
 msgid ""
 "Hold fast, men of the South Guard! No matter how daunting the evil that "
 "opposes us, we must weather this darkness and defend our homes!"
-msgstr "Aguentem firme, homens da Guarda Sul!"
+msgstr ""
+"Aguentem firme, homens da Guarda Sul! Não importa o quão assustador seja o "
+"mal que se opõem a nós, precisamos resistir a escuridão e defender nossos "
+"lares!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:616
@@ -4493,6 +4600,10 @@ msgid ""
 "from your ruined homes will blot out the sky, and from the swamps and the "
 "black earth, your bones will rise again to serve me!"
 msgstr ""
+"Garoto tolo, você subestima a força desses camponeses decrepitos que você "
+"chama de soldados. Os rios ficarão vermelho com o seu sangue! A fumaça e "
+"cinzas dos seus lares arruinados escurecerão o céu, e dos pântanos e terra "
+"negra, os seus ossos serão reanimados para me servir novamente!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:621
@@ -4511,6 +4622,11 @@ msgid ""
 "dreadful fear. As surely as the sanctity of the psyche is shattered, so is "
 "the physical form, and all that is left is unthinking, unfeeling servitude."
 msgstr ""
+"A mortalha de trevas desceu novamente. A noite infiltra-se pelas fissuras e "
+"fendas da defesa dos humanos, aflingindo mentes e corpos com um medo "
+"mortífero. Assim como a santidade da psique é estraçalhada, também é a forma "
+"física, e tudo o que resta é uma casca vazia, sem mente, sem sentimento, só "
+"servitude."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:638
@@ -4518,6 +4634,8 @@ msgid ""
 "We do not fear your unholy power, lich. We will not succumb to your dark "
 "magics and we will not be turned into your undead slaves."
 msgstr ""
+"Não tememos os seus poderes profanos, lich. Não sucumbiremos às suas magias "
+"negras e não seremos transformados em escravos mortos-vivos."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:642
@@ -4530,6 +4648,8 @@ msgid ""
 "Dawn breaks over the horizon! We have weathered the night and can now begin "
 "our counterattack against the undead!"
 msgstr ""
+"O amanhecer está chegando! Sobrevivemos à noite e agora podemos começar "
+"nosso conra-ataque aos mortos-vivos!"
 
 #. [message]: speaker=Minister Romand
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:670
@@ -4542,39 +4662,34 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:674
-#, fuzzy
-#| msgid ""
-#| "We have heard your summons, and we shall send these dark foes back to the "
-#| "abyss that spawned them!"
 msgid ""
 "Your arrival could not be more timely. With you here, we shall send these "
 "undead back to the dark abyss that spawned them!"
 msgstr ""
-"Hylas, nós ouvimos sua convocação, e nós mandaremos de volta estes inimigos "
-"obscuros ao abismo que os gerou!"
+"Sua chegada não podia ter sido em melhor hora. Com a sua ajuda, enviaremos "
+"esses mortos-vivos de volta para o abismo sombrio de onde ele vieram!"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:682
-#, fuzzy
 msgid "Minister Romand"
 msgstr "Ministro Romand"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:683
-#, fuzzy
 msgid "Minister Alanafel"
 msgstr "Ministro Alanafel"
 
 #. [message]: speaker=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:712
 msgid "The shadows... they beckon..."
-msgstr ""
+msgstr "As sombras... me chamam..."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:723
 msgid ""
 "So, you have defeated my lackey. A great accomplishment, for ones so pitiful."
 msgstr ""
+"Então, você derrotou meu lacaio. Um grande feito, para alguém tão fraco."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:727
@@ -4585,6 +4700,12 @@ msgid ""
 "sorceries, I feel nothing but pity for the shambling shell you have become. "
 "Perhaps I can take solace in putting you out of your misery."
 msgstr ""
+"Me parte o coração ver o dano que você causou a si mesmo, aquele que um dia "
+"fora um sábio dentre os Elfos. Você decaíu para as artes negras, distorcido "
+"ecorrompido pelo seu uso. Embora você e is seus mortos-vivos tenham "
+"devastado nossas terras com a sua magia profana, eu não sinto nada além de "
+"pena pena casca vazia que você setornou. Será um consolo dar um fim a sua "
+"existência miserável."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:731
@@ -4593,6 +4714,9 @@ msgid ""
 "boy. Your foolish babble means nothing in the face of my insurmountable "
 "power! Rise, my warriors!"
 msgstr ""
+"Quão pouco você entender. Tais palavras pomposas não condizem com umgaroto "
+"tão ignorante. A sua tagarelice não quer dizer nada perante meu poder "
+"insuperável! Levantem-se, meus guerreiros!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:756
@@ -4600,6 +4724,8 @@ msgid ""
 "You dare strike me?! Puny humans, I am darkness incarnate! I am power beyond "
 "your comprehension!"
 msgstr ""
+"Você ouza me atacar?! Humanos insignificantes, eu sou as sombras encarnadas! "
+"Eu sou poder além da sua compreensão!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:761
@@ -4607,6 +4733,8 @@ msgid ""
 "You are merely a servant of the power that corrupted you, lich! You have not "
 "mastered the darkness; it, instead, has enslaved you."
 msgstr ""
+"Você não passa de um servo do poder que lhe corrompeu, lich! Você não é "
+"mestre das sombras; ela que é seu mestre."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:766
@@ -4614,6 +4742,9 @@ msgid ""
 "Fools! Imbeciles! You humans are a worthless blight upon this wretched "
 "world! I must purge you all— I must destroy all who live... I must..."
 msgstr ""
+"Tolos! Imbecis! Vocês humanos não passam de uma praga miserável neste mundo "
+"miserável! Eu preciso expurgar a todos — eu preciso matar todos aqueles que "
+"vivem...eu preciso..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:771
@@ -4621,11 +4752,13 @@ msgid ""
 "These worthless humans just bested you and your armies. Your time has come, "
 "once wise sage of the elves."
 msgstr ""
+"Esses humanos miseráveis acabam de derrotarvocê e oseu exército. A sua hora "
+"chegou, aquele que um dia já foi um sábio dos elfos."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:777
 msgid "Beaten... by mere mortals... how has it come to this..? Nooo..."
-msgstr "Derrotado... por merosmortais... como isso é possível..? Nãooo..."
+msgstr "Derrotado... por meros mortais... como isso é possível..? Nãooo..."
 
 #. [message]: speaker=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:791
@@ -4633,6 +4766,7 @@ msgid ""
 "The master is slain! With him gone... my soul... is unbound from... this "
 "body..."
 msgstr ""
+"O mestre está morto! Sem ele... minha alma... está livre... deste corpo..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:806
@@ -4648,23 +4782,22 @@ msgstr "Epílogo"
 
 #. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:4
-#, fuzzy
 msgid "Eyestalk"
-msgstr "Olho-falante"
+msgstr "Mau-olhado"
 
 #. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:25
-#, fuzzy
 msgid ""
 "Named ‘Eyestalks’ for obvious reasons, these plant-like creatures can focus "
 "their gaze onto an unsuspecting victim to draw life energy straight out of "
 "them to replenish their own. While almost defenseless against melee attacks, "
 "its deadly gaze from afar is not to be underestimated."
 msgstr ""
-"Chamado de 'Olho-falante- por razões óbvias, essa criatura com aspecto de "
-"planta pode focar seu olhar em sua vítima para drenar sua vitalidade e, com "
-"isso, recuperar a sua. Enquanto seja quase indefeso em ataques corpo a "
-"corpo, seu olhar mortal não deve ser subestimado."
+"Conhecido como \"Mau-olhado\" por razões óbvias, estas criaturas com "
+"aparência de planta fixam seu olhar em vítimas desavisadas para drenar a "
+"energia de suas vítimas enquanto recuperam sua própria energia. Embora "
+"praticamente não tenham defesa contra ataques físicos, seu mortal olhar fixo "
+"à distância não deve ser subestimado."
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:35
@@ -4673,9 +4806,8 @@ msgstr "esmagamento"
 
 #. [attack]: type=arcane
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:59
-#, fuzzy
 msgid "gaze"
-msgstr "olhar mortal"
+msgstr "olhar fixo"
 
 #. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:4
@@ -4690,6 +4822,10 @@ msgid ""
 "powerful warriors, these men patrol the countryside and eliminate any and "
 "all threats to peace in the frontier villages."
 msgstr ""
+"Líderes dos guardas de fronteira, comandantes montados comandam as "
+"guarnições que mantêm a paz nas províncias mais afastadas de Wesnoth. "
+"Líderes eficientes e poderosos guerreiros, estes homens patrulham as zonas "
+"rurais e eliminam toda e qualquer ameaça à paz nas vilas fronteiriças."
 
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
@@ -4708,7 +4844,6 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:32
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:30
-#, fuzzy
 msgid "glaive"
 msgstr "glaive"
 
@@ -4719,7 +4854,6 @@ msgstr "Tenente de Infantaria"
 
 #. [unit_type]: id=Infantry Lieutenant, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:25
-#, fuzzy
 msgid ""
 "Commanders of the infantry of Wesnoth are responsible for the garrison and "
 "defense of the border towns and villages. They are drawn from the ranks of "
@@ -4727,9 +4861,9 @@ msgid ""
 "battle."
 msgstr ""
 "Comandantes da infantaria de Wesnoth são responsáveis pela guarnição e "
-"defesa das cidades da fronteira e aldeias.  Eles são escolhidos dentre "
-"soldados veteranos, e não da nobreza, e todos mostraram liderança e coragem "
-"na batalha."
+"defesa das cidades e aldeias fronteiriças. Eles são selecionados dentre os "
+"soldados veteranos, e não dentre à nobreza, e todos demonstraram capacidade "
+"de liderança e coragem em batalha."
 
 #. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:4
@@ -4745,6 +4879,11 @@ msgid ""
 "Wesnoth' s army, where they gain experience leading fellow troops and honing "
 "their prowess in battle."
 msgstr ""
+"Tendo por volta de 17 ou 18 anos, escudeiros ainda não são cavaleiros, mas "
+"já possuem o conhecimento e a habilidade para dominarem suas montarias em "
+"plena panóplia. Escudeirostalentosos as vezes recebem o comando de pequenas "
+"unidades doexércitode Wesnoth, onde eles adquirem experiência liderando as "
+"tropas e aperfeiçoando suas habilidades em batalha."
 
 #. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
@@ -4762,6 +4901,14 @@ msgid ""
 "strength, however, lies in their ability to inspire great courage in their "
 "men, who fight fearlessly and tenaciously under their command."
 msgstr ""
+"Alternando perfeitamente entre a lança de justa e maça, generais montados "
+"são extremamente capazes em combate individual e conseguem se virar até "
+"mesmo contrao mais forte dos oponentes. Eles são verdadeiros mestres de suas "
+"montarias, sendo capazes de cobrir grandes distâncias rapidamente em suas "
+"patrulhas e possuem olhos afiados para detectar e eliminar todo tipo de "
+"perigo. Entretanto, sua maior força e sua capacidade de inspirar tamanha "
+"coragem nos seus homens, que lutam sem bravamente dando o melhor de si sob "
+"seu comando."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
@@ -4770,29 +4917,26 @@ msgstr "Eu falhei com o meu reino e o meu dever..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:35
-#, fuzzy
 msgid "Taste cold steel!"
 msgstr "Sinta a minha lâmina!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:50
-#, fuzzy
-#| msgid "I have lost all helping the humans... Now they will surely perish!"
 msgid ""
 "I have lost everything helping the humans... Now they will surely perish!"
-msgstr "Eu perdi tudo ajudando os humanos... Agora eles certamente perecerão!"
+msgstr ""
+"Eu perdi tudo que eu tinha ajudando os humanos... Agora eles certamente "
+"perecerão!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
-#, fuzzy
-#| msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgid "I have given all for my kingdom! Avenge me, Deoran!"
-msgstr "Eu dei tudo pelo meu reino!  Vingue-me, Deoran!"
+msgstr "Eu dei tudo o que tinha pelo meu reino! Me vingue, Deoran!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:81
 msgid "May the Light guide you where I have failed..."
-msgstr ""
+msgstr "Que a Luz lhe guie onde eu falhei..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:98
@@ -4808,51 +4952,32 @@ msgstr "Longe de casa eu morrerei - mas não em vão!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:29
-#, fuzzy
-#| msgid ""
-#| "Thugs are the mainstay of the bandit armies. They do not have a "
-#| "<i>ranged</i> attack, and are vulnerable to your archers. Deoran’s lance "
-#| "will also strike fear into their hearts! Like all of the bandit units, "
-#| "they are much more dangerous at night."
 msgid ""
 "Thugs are the mainstay of the bandit armies. They are powerful in melee "
 "combat, but do not have a <i>ranged</i> attack and are vulnerable to "
 "archers. Like all bandit units, they are much more dangerous at night."
 msgstr ""
-"Meliantes são o esteio dos exércitos de bandidos.  Eles não têm um ataque de "
-"longa distância, e são vulneráveis a seus arqueiros.  A lança de Deoran "
-"também colocará medo nos seus corações!  Como todas as unidades de bandidos, "
-"eles são muito mais perigosos à noite."
+"Meliantes são a base dos exércitos de bandidos. Eles são poderosos lutadores "
+"corpo-a-corpo mas não possuem nenhum ataque <i>à distância</i> e são "
+"vulneráveis contra arqueiros. Assim como todos os outros bandidos, eles são "
+"muito mais perigosos à noite."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:56
-#, fuzzy
-#| msgid ""
-#| "Thieves are more subtle than thugs. They try to surround your units and "
-#| "stab them in the back. Make sure that thieves never have an opportunity "
-#| "to attack when they have an ally directly behind the unit they are "
-#| "attacking — they’ll do double damage! Like thugs, thieves are vulnerable "
-#| "to the ranged attacks of your archers."
 msgid ""
 "Thieves are weak in one-on-one combat, but can be deadly if you allow them "
 "to surround your units. On offense, thieves will deal double damage when "
 "they have an ally directly behind the unit they are attacking! Like thugs, "
 "thieves are vulnerable to ranged attacks."
 msgstr ""
-"Ladrões são mais sutis que os assassinos.  Eles tentam cercar suas unidades "
-"e os apunhalar nas costas. Nunca dê oportunidade aos ladrões de atacar "
-"quando tiverem um aliado diretamente atrás da unidade que eles estão "
-"atacando - eles farão o dobro do dano! Como os assassinos, os ladrões são "
-"vulneráveis aos ataques à distância de seus arqueiros."
+"Gatunos são fracos em combate individual, mas são letais se você permiter "
+"que eles cerquem as suas unidades. Quando estão na ofensiva, gatunos causam "
+"o dobro de dano quando possuem uma unidade aliada diretamente atrás da "
+"unidade que eles estão atacando! Assim como meliantes, gatunos são "
+"vulneráveis a ataques à distância."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:83
-#, fuzzy
-#| msgid ""
-#| "Footpads are the scouts of the bandit armies. They are quick, and have "
-#| "both a <i>melee</i> attack and a <i>ranged</i> attack. Neither of their "
-#| "attacks is very strong, however, and your spearmen will make quick work "
-#| "of them during the day."
 msgid ""
 "Footpads are the scouts of the bandit armies. They are highly mobile, and "
 "have both a <i>melee</i> attack and a <i>ranged</i> attack, although neither "
@@ -4860,20 +4985,15 @@ msgid ""
 "attacks, but will take bonus damage from bladed, impact, or piercing weapons "
 "and can be easily killed during the day."
 msgstr ""
-"Trombadinhas são os exploradores dos exércitos de bandidos.  Eles são "
-"rápidos, e tem um ataque corpo a corpo e um ataque à distância.  Nenhum dos "
-"seus ataques são muito fortes, entretanto, e seus lanceiros acabarão "
-"tranquilamente com eles durante o dia."
+"Salteadores são os batedores dos exércitos de bandidos. Eles são altamente "
+"móveis e possuem tanto ataque <i>corpo-a-corpo</i> quanto ataque<i>à "
+"distância</i>, embora nenhum dos dois sejam particularmente fortes. É "
+"difícil acertar salteadores com ataques normais, mas eles levam dano extra "
+"de ataques cortante, de impacto e perfurante, e podem ser facilmente mortos "
+"urante o dia."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:110
-#, fuzzy
-#| msgid ""
-#| "Skeletons are the bones of fallen warriors raised by some dark magic. "
-#| "They are almost immune to piercing weapons like arrows and spears. Bladed "
-#| "attacks like swords will injure them, and Minister Hylas’s <i>arcane</i> "
-#| "attack is deadly against them. Like the rest of the bandits, they are "
-#| "more dangerous at night!"
 msgid ""
 "Skeletons are the bones of fallen warriors reanimated by dark sorcery. They "
 "are almost immune to piercing weapons like arrows and spears, but can be "
@@ -4881,10 +5001,11 @@ msgid ""
 "impact weapons. Minister Hylas’s <i>arcane</i> attack is extremely effective "
 "against them. Like bandits, they are much more dangerous at night!"
 msgstr ""
-"Esqueletos são os ossos de guerreiros mortos acordados por alguma magia "
-"negra.  Eles são quase imunes a armas penetrantes como flechas e lanças. "
-"Ataques cortantes como espadas os ferirão, e o ataque <i>arcano</i> do "
-"Ministro Hylas é mortal contra eles.  Como o resto dos bandidos, eles são "
+"Esqueletos são os ossos de guerreiros mortos reanimados por magia negra. "
+"Eles são quase imunes a armas perfurantes, como flechas e lanças, mas podem "
+"ser feridos por ataques cortantes como o de uma espada, e são especialmente "
+"vulneráveis a armas de impacto. O ataque <i>arcano</i> do Ministro Hylas é "
+"extremamente efetivo contra eles. Assim como os bandidos, eles são muito "
 "mais perigosos à noite!"
 
 #. [message]: speaker=narrator
@@ -4895,41 +5016,30 @@ msgid ""
 "and weak, although they can become dangerous in large groups. Any unit slain "
 "by a Walking Corpse will be plagued with undeath and become one as well."
 msgstr ""
+"Corpos ambulantes são geralmente empregados pelos praticantes mais fracos "
+"das artes negras, que furtam os corpos dos mortos para praticar suas magias "
+"profanas. Individualmente, eles são lentos e fracos, mas tornam-se perigosos "
+"em grande número. Qualquer unidade que for morta por um Corpo Ambulante será "
+"amaldiçoada com a não-morte se tranformará em um deles."
 
 #. [part]
 #. Intro to scenario 1
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:8
-#, fuzzy
-#| msgid ""
-#| "During the reign of Haldric VII, the land of Wesnoth was peaceful. Konrad "
-#| "I had driven off the orcs in the north. The eastern forts were quiet and "
-#| "almost deserted. The elves in the western forest kept to their own "
-#| "affairs. In the prosperous south men built new towns and farms."
 msgid ""
 "The reign of Haldric VII was a time of great prosperity and peace in "
 "Wesnoth. Konrad I had driven off the orcs in the north. The eastern forts "
 "were quiet and secure. The elves in the western forest kept to their own "
 "affairs. In the south, men built new towns and farms."
 msgstr ""
-"Durante o reinado de Haldric VII, Wesnoth era pacífica. Konrad I tinha "
-"partido para expulsar os orcs no norte.  Os fortes orientais estavam calmos "
-"e quase abandonados.  Os elfos na floresta ocidental cuidavam de seus "
-"próprios assuntos. Os homens prósperos do sul construíam novas cidades e "
-"fazendas."
+"O reinado de Haldric VII foi uma época de muita paz e prosperidade para "
+"Wesnoth. Konrad I expulsou os orcs que estavam causando problemas ao norte. "
+"Os fortes orientais estavam calmos e bem guarnecidos. Os elfos na floresta "
+"ao oeste só queriam saber dos seus próprios assuntos. Ao sul, homens "
+"construiam novas cidades e fazendas."
 
 #. [part]
 #. Intro to scenario 1
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:14
-#, fuzzy
-#| msgid ""
-#| "For eight years the South Guard had defended the farms and homes "
-#| "surrounding the city of Westin, the capital of Wesnoth’s frontier "
-#| "province of Kerlath in the furthermost south. The fiercest foe they had "
-#| "faced was the occasional bandit. The orcs were far to the north. In the "
-#| "Aethenwood to the west dreamed the elves, not foes of humankind but "
-#| "keeping aloof from men. Only scattered few outlaws lived in the wildlands "
-#| "south of Kerlath, a bastion of the ancient heart forest of the Great "
-#| "Continent so dense and gloomy that even elves forbore from dwelling there."
 msgid ""
 "For eight years, the South Guard had defended the farms and homes "
 "surrounding the city of Westin, the capital of Wesnoth’s frontier province "
@@ -4943,14 +5053,17 @@ msgid ""
 "in dense gloominess, ominous enough that even the elves eschewed entering, "
 "and only a few, scattered outlaws called it their home."
 msgstr ""
-"Por oito anos, a Guarda Sul defendeu as fazendas e casas ao redor da cidade "
-"de Westin, a capital de Kerlath, a província no limite sul de Wesnoth. A "
-"pior ameaça que enfrentavam eram alguns saqueadores ocasionais. Os orcs "
-"estavam muito ao norte. Na floresta ocidental, os elfos cuidavam de tudo, "
-"não mexendo com os humanos, se os humanos não mexessem com eles. Apenas "
-"alguns foras-da-lei viviam nas terras selvagens do sul de Kerlath, um "
-"bastião da antiga floresta do Grande Continente, tão densa e escura que até "
-"os elfos evitavam passar por lá."
+"Durante oito anos, a Guarda Sul defendera as fazendas e casas ao redor da "
+"cidade de Westin, capital da província fronteiriça Kerlath de Wesnothno "
+"extremo sul. Sob o comando de Sir Loris, a Guarda Sul manteve Westin livre "
+"de perigos, tendo apenas que dar cabo do raro bandido ou fera selvagem. "
+"Talvez a única preocupação fosse com Aethenwood ao oeste, onde os elfos "
+"viviam em desinteresse com o mundo exterior, indiferentes aos assuntos dos "
+"homens. Cruzar suas terras sem permissão era proibído, mas elfos raramente "
+"adentravam o território dos humanos. Ainda mais ao sul ficavam as terras "
+"selvagens, o antigo coração da floresta se espalhava em densa trevas, tão "
+"sinistro que até mesmo os elfos evitavam aquele lugar, e apenas poucos foras-"
+"das-lei desorganizados viviam por lá."
 
 #. [part]
 #. Intro to scenario 1
@@ -4961,6 +5074,11 @@ msgid ""
 "the ninth year, ceased altogether. Displeased with Sir Loris’ conduct, the "
 "king decided to send someone to investigate."
 msgstr ""
+"Com o passar do tempo, na falta de quaisquer perigo, a Guarda Sul se tornou "
+"complacente e preguiçosa. Os relatórios enviados para o Rei Haldric "
+"diminuiram e, na primavera do nono ano, pararam de ser enviados. Descontente "
+"com a conduta de Sir Loris, o rei decidiu enviar alguém para investigar a "
+"situação."
 
 #. [part]
 #. Intro to scenario 1
@@ -4974,26 +5092,28 @@ msgid ""
 "King Haldric knighted Deoran and tasked him with riding to Westin to demand "
 "accounting from Sir Loris."
 msgstr ""
+"Haldric invocou um jovem, mas promissor, oficial de cavalaria chamado Deoran "
+"para cumprir esta tarefa. Embora o rapaz não tivesse nenhuma distinção, a "
+"família de Deoran possuia uma história repleta de honras no exército de "
+"Wesnoth: o seu bisavô, Haldiel, lutara ao lado de Konrad I na guerra para "
+"reclamar o trono, e seu pai, Leonard, havia servido como oficial durante "
+"trinta anos. Assim, com total confiança no jovem oficial, Rei Haldric lhe "
+"conferiu o título de cavaleiro e lhe incumbiu de cavalgar para Westin para "
+"exigir que Sir Loris cumprisse com o seu dever."
 
 #. [part]
 #. Intro to scenario 2
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Having defeated Urza Mathin, Deoran immediately sent scouts out into the "
-#| "whole countryside. His men reported bandits roaming freely over the "
-#| "border, terrorizing the peasants and villagers. Nowhere did they find "
-#| "soldiers of the South Guard."
 msgid ""
 "Having defeated Urza Mathin, Deoran immediately sent out scouts into the "
 "whole countryside. His men reported bandits roaming freely through the land, "
 "terrorizing the peasants and villagers. Nowhere did they find soldiers of "
 "the South Guard."
 msgstr ""
-"Tendo derrotado Urza Mathin, Deoran imediatamente enviou batedores por toda "
-"a zona rural.  Seus homens informaram que bandidos vagavam livremente na "
-"fronteira, enquanto aterrorizavam os camponeses e aldeãos.  Em nenhuma parte "
-"eles encontraram os soldados da Guarda Sul."
+"Tendo derrotado Urza Mathin, Deoran imediatamente enviou batedores para toda "
+"a zona rural. Seus homens informaram que bandidos vagavam livremente por "
+"todos os cantos, aterrorizando os camponeses e aldeãos. Eles não encontraram "
+"nenhum soldado da Guarda Sul."
 
 #. [part]
 #. Intro to scenario 2
@@ -5005,6 +5125,12 @@ msgid ""
 "burning flesh and the shrill cries of screaming villagers. Troubled and "
 "concerned, Deoran hastened his pace toward the old city."
 msgstr ""
+"Deoran decidiu agir e exterminar os bandidos. Ele e Sir Gerrick juntaram "
+"seus homens e cavalgaram o mais rápido quanto possível para Westin. Ao se "
+"aproximarem, eles viram colunas de fumaça preta erguendo-se em direção ao "
+"céu, acompanhadas pelo fedor de carne queimada e pelos gritos estridentes de "
+"aldeões. Pertubado e preocupado, Deoran apressou o passo em direção à antiga "
+"cidade."
 
 #. [part]
 #. Intro to scenario 5
@@ -5018,15 +5144,18 @@ msgid ""
 "watch on the dense forest and on each other, wary of the foreboding "
 "ambience, and even the elves seemed rather disconcerted."
 msgstr ""
+"Ethiliel levou os homens da Guarda Sul até a floresta sul. A densa floresta "
+"que eles adentraram estava escurecida por sombras que não eram naturais, "
+"envolta em um silêncio misterioso e uma quietude sinistra. Uma escuridão "
+"cinza sugava toda as cores ao seu redor, deixando tudo turvo e sombrio, e "
+"todo o som e todo movimento mutado na densa neblina. A pequena companhia de "
+"Deoran se manteve alerta, prestando atenção nas árvoes e uns aos outros, "
+"recceosos do mau augouro que o ambiente transmitia. Até mesmo os elfos "
+"pareciam desconcertados."
 
 #. [part]
 #. Intro to scenario 5
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:59
-#, fuzzy
-#| msgid ""
-#| "For many weeks they marched down nameless paths that no man had trod "
-#| "before. From time to time they saw ghostly images of elven villages and "
-#| "halls in the deep woods, but as they advanced, even those became scarce."
 msgid ""
 "For many weeks they marched down nameless paths that no man had trod before. "
 "From time to time, Deoran fancied that he saw ghostly images of elven "
@@ -5035,25 +5164,24 @@ msgid ""
 "blurred day and night with the ever creeping chill of deathly shadow growing "
 "upon them."
 msgstr ""
-"Durante muitas semanas eles marcharam em caminhos sem nome que nenhum homem "
-"tinha ido antes.  De vez em quando eles viam imagens fantasmagóricas de "
-"aldeias de elfos e contruções nas profundezas da floresta, mas conforme eles "
-"avançavam, até mesmo essas ficaram escassas."
+"Durante muitas semanas eles marcharam por caminhos sem nome, os quais nenhum "
+"homem jamais havia atravessado. De tempos em tempos, Deoran achava ter visto "
+"silhuetas de aldeias e grandes prédios élficos floresta adentro mas, "
+"conforme eles avançavam, até mesmo estas visões se tornaram extremamente "
+"raras. Muito longe ma civilização, no coração da floresta, o tempo passava "
+"num borrão de dias e noites acompanhados do calafrio arrepiante da sombra "
+"que cada vez se aproximava mais deles."
 
 #. [part]
 #. Intro to scenario 5
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:65
-#, fuzzy
-#| msgid ""
-#| "Finally Ethiliel told the men to halt and pitch camp — they had reached "
-#| "the Black River, beyond which no elf or man would willingly pass."
 msgid ""
 "Finally, Ethiliel told the men to halt and pitch camp — they had reached the "
 "Black River, beyond which no elf or man would willingly pass."
 msgstr ""
-"Finalmente Ethiliel disse para os homens pararem e fazerem acampamento - "
-"eles tinham chegado ao grande rio, onde nenhum elfo ou o homem passaria "
-"voluntariamente."
+"Por fim, Ethiliel disse aos homens que parassem e montassem acampamento — "
+"eles haviam chegado no Rio Negro, além do qual nenhum homem ou elfo "
+"atravessaria sem um bom motivo."
 
 #. [part]
 #. Intro to scenario 6a
@@ -5064,6 +5192,10 @@ msgid ""
 "blue and black, cerulean and obsidian energies diffused out into the cold, "
 "dry air."
 msgstr ""
+"Na fortaleza dos mortos-vivos, Deoran assistia enquanto Ethiliel dissipava "
+"as barreiras mágicas que protegiam as catacumbas. Elas eram desfeitas uma a "
+"uma em flashes de energia azul e preta, cerúlea e obsidiana, difundidas no "
+"ar frio e seco."
 
 #. [part]
 #. Intro to scenario 6a
@@ -5075,6 +5207,12 @@ msgid ""
 "indeed true and that Mebrin had been corrupted by his dabbling in undead "
 "magic. Perhaps she simply hadn't come to terms with it."
 msgstr ""
+"Ele se perguntou brevemente por que ela havia parado de mencionar Mebrin e o "
+"seu paradeiro, mas algo lhe disse que agora não era hora para mencionar o "
+"nome do mago. Talvez, ele pensou consigo mesmo, ela suspeitava de que a "
+"história dos bandidos fosse realmente verdadeira e que Mebrin havia sido "
+"corrompido pela magia negra. Talvez ela simplesmente ainda não tivesse "
+"aceitado isso."
 
 #. [part]
 #. Intro to scenario 6a
@@ -5083,6 +5221,8 @@ msgid ""
 "Eventually, all the wards were gone, and with only a hushed word of "
 "beckoning, Ethiliel led the men down into the crypt."
 msgstr ""
+"Eventualmente, todas as barreiras tinham sido desfeitas e, com apenas uma "
+"palavra abafado chamando-os para ir, Ethiliel guiou os homens até as criptas."
 
 #. [part]
 #. Intro to scenario 7a
@@ -5098,6 +5238,15 @@ msgid ""
 "home, although the wearied, almost grieving mood of the elves was quite "
 "sombering."
 msgstr ""
+"Após derrotar Mal M’Brin, Deoran e os seus homens deixaram as cavernas "
+"desoladas para trás e retornaram para a superfície do forte, onde o sol "
+"começava a irromper por entre a densa neblina na floresta anciã. Ethiliel "
+"ficou para trás por um bom tempo, só saindo das cavernas depois da noite já "
+"estar avançada. Ela proferiu uma breve desculpa e não proferiu nenhuma outra "
+"palavra enquanto levou eles de volta para o norte em direção à Wesnoth. "
+"Deoran precisou confessar de que estava exaltado por eles terem conseguido "
+"derrotar os mortos-vivos e estarem voltando para casa, embora o ânimo "
+"cansado, quase como de dor, dols elfos fosse bem sombrio."
 
 #. [part]
 #. Intro to scenario 7a
@@ -5112,6 +5261,14 @@ msgid ""
 "his men emerged from the sprawling forest and returned to the lands of "
 "Wesnoth."
 msgstr ""
+"A roda do tempo deu mais uma volta e o outono deu lugar ao inverno. As "
+"últimas folhas coloridas caíram no chão, restando apenas árvores sem folhas "
+"e perenifólias. Forragem e caçaeram raros, mesmo com os mortos-vivos não "
+"estando presentes,e tanto ospensamentos dos homens quanto dos elfos voltou-"
+"se para osseus lares, onde eles poderiam encontrar paz e o calor de seus "
+"familiares. As longas semanas de marcha para o norte cobraçaram o seu preço "
+"mas, eventualmente, Deoran e seus homens emergiram da extensa floresta e "
+"retornaram às terras de Wesnoth."
 
 #. [part]
 #. Intro to scenario 7b
@@ -5126,6 +5283,15 @@ msgid ""
 "quickly upon them, the sinister darkness creeping toward the men of the "
 "South Guard."
 msgstr ""
+"Começou a nevar quando Deoran, Sir Gerrick, e Urza Afalas deixaram a grande "
+"floresta do sul. E ainda que eles estivessem voltando para a terra dos "
+"homens, a sinistra melancolia da floresta os seguiu. Lá no alto, o brilhante "
+"sol estava envolto em uma mortalha de brumas cinzentas, nublado por nuvens "
+"ondulantes que corriam pelo céu como uma corrente de cinzas escuras. Atrás, "
+"a sombra crepuscular se espalhava para fora da floresta, uma extensão não "
+"natural dos poderes que encontravam-se dento dela. Ela rapidamente se "
+"aproximava deles, as trevas sinistras que corriam em direção aos homens da "
+"Guarda Sul."
 
 #. [part]
 #. Intro to scenario 7b
@@ -5135,6 +5301,10 @@ msgid ""
 "they finally crossed back into Kerlath Province. Deoran and his men entered "
 "the forts guarding the border to Wesnoth, the undead close on their heels."
 msgstr ""
+"Eles cavalgaram rapidamente em direção aonorte. Dia e noite eles covalgaram "
+"sem descanso até finalmente chegarem na Província de Kerlath. Deoran e seus "
+"homens tomaram posição nos fortes que defendiam a fronteira de Wesnoth, os "
+"mortos-vivos logo atrás deles."
 
 #. [part]
 #. Epilogue A
@@ -5149,6 +5319,15 @@ msgid ""
 "from combat. The humans advanced cautiously, still in formation, still ready "
 "to strike at any sign of trouble."
 msgstr ""
+"Os homens da Guarda Sul defenderam bravamente muralhas de Westin, "
+"retribuindo na mesma moeda cada agressão dos elfos. A noite veio e foi e, ao "
+"amanhecer, a batalha ainda continuava, humanos defendendo as muralhas "
+"enquanto os elfos atacavam em números cada vez maiores. Conforme o sol "
+"começou a subir, a luz foi escurecida e uma grande neblina se espalhou pelo "
+"campo de batalha. Os sons de batalha foram diminuindo e não demorou muito "
+"para que cessasem por completo conforme os elfos iam se retirando do "
+"combate. Os humanos avançaram cautelosamente, ainda em formação, ainda "
+"prontos para atacar no menor sinal de perigo."
 
 #. [part]
 #. Epilogue A
@@ -5163,26 +5342,30 @@ msgid ""
 "human and elf alike. The injury you humans have done to the elves is great, "
 "but your service also was worthy. We have decided to make peace again.”</i>"
 msgstr ""
+"A neblina foi diminuindo e a luz do sol irrompeu por entre as núvens em "
+"raios espalhados. Deoran cavalgou à frente da linha de infantaria, "
+"aguardando ansiosamente. Finalmente, após vários minutos se passarem, a "
+"neblina foi embora e Ethiliel estava lá de pé, sozinha, perante a linha de "
+"lanças. No seu rosto, uma máscara de angústia e exaustão e, ainda assim, a "
+"sua voz saiu surpreendentemente quando ela se dirigiu aos homens de Wesnoth, "
+"dizendo, <i>“Parem! Já derramou-se sangue o suficiente, tanto de humanos "
+"quanto de elfos.Os danos que vocês humanos causaram aos elfos são enormes, "
+"mas o seu serviço teve o seu mérito. Nós decidimos fazer apaz novamente.”</i>"
 
 #. [part]
 #. Epilogue A
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:143
-#, fuzzy
-#| msgid ""
-#| "<i>“These are the terms of the peace between us: any man found in the "
-#| "forest or hills that belong to the elves will taste death. No more will "
-#| "the elves send ambassadors or councilors to Westin, and no more will men "
-#| "wander the green woods.”</i>"
 msgid ""
 "<i>“These are our terms: no human will be permitted in the forests or hills "
 "of the Aethenwood, and likewise, we elves will not traverse the plains and "
 "farmlands belonging to you humans. No more will the elves send ambassadors "
 "or councilors to Westin, and no more will men wander the green woods.”</i>"
 msgstr ""
-"<i>“Estas são as condições da paz entre nós:  qualquer homem achado na "
-"floresta ou colinas que pertencem aos elfos provará a morte.  Nenhum elfo "
-"mais será enviado como embaixador ou Conselheiro para Westin, e nenhum homem "
-"mais vagará nas verdes florestas.”</i>"
+"<i>“Estessão os nossos termos: nenhum humano será permitido nas florestas ou "
+"colinas de Aethenwood e, da mesma forma, nós elfos não cruzaremos as "
+"planíceis e fazendas que pertencem aos humanos. Os elfos não enviarão mais "
+"embaixadores ou conselheiros para Westin, e os homens não mais andarão pelos "
+"bosques verdes.”</i>"
 
 #. [part]
 #. Epilogue A
@@ -5193,16 +5376,14 @@ msgid ""
 "it, but it is the best I could do. This whole endeavor has brought me enough "
 "grief as it is. I will go now.”</i>"
 msgstr ""
+"Ethiliel se aproximou de Deoran e sua voz tornou-se um sussurrou <i>“Eu fiz "
+"o que podia para garantir a paz entre elfos e homens. Talvez você não goste "
+"disso, mas foi o melhor que eu consegui fazer. Tudo isso me trouxe muita "
+"dor. Agora, estou indo.”</i>"
 
 #. [part]
 #. Epilogue A
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:153
-#, fuzzy
-#| msgid ""
-#| "Thus an uneasy peace was consummated between man and elf. For many weeks "
-#| "the South Guard patrolled the borders of the elven woods and watched over "
-#| "the growing farms and villages. Finally, as the snow melted and the roads "
-#| "bore their burdens again, a messenger came from King Haldric."
 msgid ""
 "Thus, an uneasy peace was established between man and elf. For many weeks, "
 "the South Guard patrolled the borders of the elven woods and watched over "
@@ -5211,11 +5392,12 @@ msgid ""
 "palpable tension at the forest border, the truce was maintained without "
 "incident."
 msgstr ""
-"Assim, uma paz desconfortável foi consumada entre o homens e elfos.  Durante "
-"muitas semanas a Guarda Sul patrulhou as margens das florestas de elfos e "
-"observou as fazendas e aldeias crescentes.  Finalmente, quando a neve "
-"derreteu e as estradas agüentaram sua carga novamente, um mensageiro veio do "
-"rei Haldric."
+"Assim, uma paz frágil foi firmada entre homens e elfos. Durante muitas "
+"semanas, a Guarda Sul patrulhou as fronteiras das florestas dos elfos e "
+"ficaram de olho nas fazendas e aldeias humanas que voltavam a crescer. A "
+"ameaça de um possível ataque dos elfos foi o suficiente para fazer com que "
+"nenhum aldeão adentrasse a agora proibida, apesar da tensão paupável na "
+"borda da floresta, a paz foi mantida sem incidentes."
 
 #. [part]
 #. Is part of both Epilogues
@@ -5228,6 +5410,12 @@ msgid ""
 "years of rebuilding lay ahead for Kerlath, they would take place in peace "
 "thanks to Deoran’s leadership and the heroics of the South Guard."
 msgstr ""
+"Finalmente, a neve começou a derreter e o verde que brotava sinalizava a "
+"chegada da primavera. Deoran sabia que havia chegado a hora de reportar ao "
+"Rei Haldric. Ele se despediu do povo de Westin e viajou para o norte até "
+"Weldyn. Embora o esforço de reconstrução de Kerlath fosse demorar anos, ele "
+"seriamarcado pela paz, graças a liderança de Deoran e os atos heróicos da "
+"Guarda Sul."
 
 #. [part]
 #. Epilogue B
@@ -5243,43 +5431,41 @@ msgid ""
 "through the ashen clouds. As the sunlight broke through, the wind passed, "
 "and all was still."
 msgstr ""
+"Conforme os úlimos gritos de morte do lich ecoavam pelo campo de batalha, "
+"sua forma esquelética começou a desfazer-se. Ossos apodrecidos desintegraram-"
+"se em pó, sobrado para longe pela brisa frígida, outra alma imortal soprava "
+"devolta para o rumo sem fim do tempo. Com o poder de seu mestre desfeito, os "
+"soldados mortos-vivos voltaram para morte, desmoronando até virarem pilhas "
+"inanimadas de ossos. O vento sussurrante pairava pelo campo de batalha como "
+"um córrego gentil, carregando consigo as almas daqueles que caíram em "
+"batalha e ascendendo até o céu onde o sol começou a irromper por entre as "
+"núvens de pó. Quando o solbrilhou forte, o vento passou, e tudo estava "
+"parado."
 
 #. [part]
 #. Epilogue B
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:176
-#, fuzzy
-#| msgid ""
-#| "Exhausted, Deoran dropped his lance to the ground. The men around him "
-#| "slowly lifted their helmets from their brows. The moans of the wounded "
-#| "overshadowed the rustling of the north wind in the distance. The undead "
-#| "were gone."
 msgid ""
 "Deoran dropped his lance to the ground. The men around him slowly lifted "
 "their helmets from their brows. The battle was over. The undead were gone."
 msgstr ""
-"Exausto, Deoran derrubou sua lança no chão.  Os homens ao seu redor "
-"lentamente removiam seus capacetes.  Os gemidos dos feridos obscureciam o "
-"sussurrar do vento norte. Os mortos-vivos tinham desaparecido."
+"Deoran deixou sua lança de justa cair no chão. Os homens ao seu redor "
+"lentamente retiraram seus capacetes. A batalha havia terminado. Os mortos-"
+"vivos finalmente haviam sido derrotados."
 
 #. [part]
 #. Epilogue B
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:182
-#, fuzzy
-#| msgid ""
-#| "For days the healers of Westin worked feverishly to save as many of the "
-#| "valiant soldiers as they were able. Many mounds, though, were raised as "
-#| "homes for the fallen in the fields north of the city, and to the roll of "
-#| "fallen heroes many names were added."
 msgid ""
 "For several days, the healers of Westin worked feverishly to save as many of "
 "the wounded as they were able. The villagers set out to rebuild their homes "
 "and bury the dead to the north of the city, where many mounds joined the "
 "garden of graves already there."
 msgstr ""
-"Por dias os curandeiros de Westin trabalharam sem cessar, para salvar tantos "
-"quantos podiam dos valentes soldados. Ainda assim, muitos túmulos foram "
-"criados como lares para aqueles que caíram nos campos ao norte da cidade, e "
-"seus nomes foram adicionados à lista de heróis."
+"Por dias os curandeiros de Westin trabalharam sem cessar para salvar tantos "
+"feridos quantopossível. Os aldeões saíram para reconstruir seus lares e "
+"enterrar os mortos ao norte da cidade, onde muitos montes de terra se "
+"juntaram ao jardim de túmulos que já estava lá."
 
 #. [part]
 #. Epilogue B
@@ -5295,6 +5481,15 @@ msgid ""
 "Westin. Those he placed atop Gerrick’s mound, where they became a symbol of "
 "sacrifice, and loyalty, and valor."
 msgstr ""
+"Após a batalha,Deoranliderou uma expedição até os postos da fronteia ao sul, "
+"onde os fortes haviam sido destruídos e sangue e armas quebradas espalhadas "
+"por todos os cantos. Em silêncio ele amaldiçou o lich pela falta de corpos "
+"no local da batalha, mas lá no fundo ele sabia bem que esse seria o destino "
+"dos homens que haviam de bom grado dado suas vidas para que Westin pudesse "
+"sobreviver ao ataque dos mortos-vivos. Ainda assim, ele encontrou certo "
+"conforto em achar a espada e o escudo de Sir Gerrick e leva-los de volta com "
+"ele para Westin. Ele repousou ambos sobre o túmulo de Herrick, onde eles "
+"viriam a se tornar símbolos de sacrifício, lealdade e valor."
 
 #. [part]
 #. Epilogue B
@@ -5309,26 +5504,28 @@ msgid ""
 "against the undead, most were more than happy to come back in peace and help "
 "clean up the town."
 msgstr ""
+"Urza Afalas também fez por merecer o seu próprio túmulo, um montinho "
+"discreto perto de sua antiga casa, onde ele e os seus irmãos moravam antes "
+"de serem exilados por conta dos seus crimes. Sabendo que o fora-da-lei havia "
+"ajudado a defender a cidade contra o ataque dos mortos-vivos, o conselho de "
+"Westin absolveu os bandidos que sobreviveram de seus crimes e permitiu que "
+"elesvoltassem para as suas casas. Após tantos anos longe de casa e depois da "
+"difícil e aterrorizante luta contra os mortos-vivos, a maioria ficou feliz "
+"em passar o resto de suas vidas em paz e ajudando a reconstruir a cidade."
 
 #. [part]
 #. Epilogue B
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:200
-#, fuzzy
-#| msgid ""
-#| "Deoran spent his days visiting the wounded and directing the men as they "
-#| "rebuilt the shattered walls and ramparts of the city. Finally, as the "
-#| "snow melted and the roads bore their burdens again, a messenger came from "
-#| "King Haldric."
 msgid ""
 "Deoran spent his days visiting the wounded and directing the men as they "
 "rebuilt the shattered walls and ramparts of the city. Slowly, a sense of "
 "normalcy began to return to Kerlath Province as Westin was restored and the "
 "South Guard began to patrol the villages once again."
 msgstr ""
-"Deoran passou seus dias visitando os feridos e direcionando os homens para "
-"eles reconstruírem as paredes e plataformas derrubadas da cidade.  "
-"Finalmente, quando derreteram as neves e as estradas agüentaram a sua carga "
-"novamente, um mensageiro do rei Haldric veio."
+"Deoran passou os seus dias visitando os feridos e supervisionando a "
+"recontrução das muralhas e parapeitos destruidos da cidade. Pouco a pouco o "
+"sentimento de normalidade retornou a Província de Kerlath conforme Westin "
+"era recontruida e a Guarda Sul retornou a patrulhar novamente as aldeias."
 
 #~ msgid ""
 #~ "This campaign is designed as an introduction to Wesnoth. The ‘Civilian’ "
@@ -5379,13 +5576,6 @@ msgstr ""
 #~ msgid "Eliomir"
 #~ msgstr "Eliomir"
 
-#, fuzzy
-#~| msgid ""
-#~| "Sir Gerrick, you must make it back to Kerlath Province and warn your "
-#~| "people of the danger from the south. We will lead you through the forest "
-#~| "and clear any foes from your path. You may choose some of your veterans "
-#~| "to go with you as well, and any ones you leave behind will still have "
-#~| "time to join Ethiliel and Deoran."
 #~ msgid ""
 #~ "Sir Gerrick, you must return to Westin and warn your people of the danger "
 #~ "from the south. We will lead you through the forest and clear the foes "
@@ -5393,11 +5583,11 @@ msgstr ""
 #~ "journey. Any troops you leave behind will still have time to join "
 #~ "Ethiliel and Deoran."
 #~ msgstr ""
-#~ "Sir Gerrick, você tem que voltar a Kerlath Province e advertir seu povo "
-#~ "do perigo do sul.  Nós o conduziremos pela floresta e tiraremos qualquer "
-#~ "inimigo de seu caminho. Você pode escolher alguns de nossos veteranos "
-#~ "para ir com você, e qualquer um que você deixar para trás, ainda terá "
-#~ "tempo para lutar junto com Ethiliel e Deoran."
+#~ "Sir Gerrick, você precisa voltar para Westin e avisar o seu povo do "
+#~ "perigo que vem do sul. Nós o levaremos pela floresta e limparemos o seu "
+#~ "caminho de qualquer inimigo que apareça. Você pode escolher alguns dos "
+#~ "seus veteranos para companhá-lo em sua viagem. Quaisquer tropas você "
+#~ "deixar para trás se juntarão a Ethiliel e Deoran."
 
 #~ msgid ""
 #~ "With many of the bandits and undead vanquished already, few foes should "
@@ -5445,19 +5635,14 @@ msgstr ""
 #~ "Nós somos viajantes cansados, dirigindo-se para nossas casas. Se você nos "
 #~ "deixar passar..."
 
-#, fuzzy
-#~| msgid ""
-#~| "Hss... And humans! Humans drained our swamps and made them fields for "
-#~| "farms, and now they have found my winter nest. The Land-Walkers must "
-#~| "die! Hss..."
 #~ msgid ""
 #~ "Hss... And humans! Humans drained our swamps and destroyed our homes! Now "
 #~ "they have found my winter nest and seek to destroy me. The Land-Walkers "
 #~ "must die! Hss..."
 #~ msgstr ""
-#~ "Hss... E humanos!  Os humanos drenaram nossos pântanos e lhes fizeram "
-#~ "campos para fazendas, e agora eles acharam meu ninho de inverno. As "
-#~ "criaturas da terra têm que morrer!  Hss..."
+#~ "Hss... E humanos! Os humanos drenam nossos pântanos e destroem nossos "
+#~ "lares! E agora eles encontraram meu ninho de inverno e querem me "
+#~ "destruir. Os habitantes da terra-firme devem morrer! Hss..."
 
 #~ msgid ""
 #~ "She refuses to listen! If we leave these naga here, they will ambush "
@@ -5517,28 +5702,21 @@ msgstr ""
 #~ "Essas nagas ainda controlam a estrada. Precisamos barir caminho para "
 #~ "Deoran e Ethiliel!"
 
-#, fuzzy
-#~| msgid ""
-#~| "I will hasten back to Kerlath Province now and seek the advice of the "
-#~| "Council of Westin..."
 #~ msgid ""
 #~ "I must hasten back to Kerlath Province and seek the advice of the Council "
 #~ "of Westin. I pray that Deoran and Ethiliel find the strength to defeat "
 #~ "the undead on their own."
 #~ msgstr ""
-#~ "Eu apressarei a volta para Kerlath agora e buscarei informações do "
-#~ "Conselho de Westin..."
+#~ "Preciso me apressar e chegar na Província de Kerlath para buscar a ajuda "
+#~ "do Conselho de Westin. Rezo para que Deoran e Ethiliel consigam derrotar "
+#~ "os mortos-vivos sem mim."
 
-#, fuzzy
-#~| msgid ""
-#~| "We too will return to our councils. We have much to tell them... Much "
-#~| "indeed."
 #~ msgid ""
 #~ "We will return to our council as well. There is much we have to tell "
 #~ "them... much indeed."
 #~ msgstr ""
-#~ "Nós também retornaremos para nossos conselhos.  Nós temos muito para lhes "
-#~ "falar... Realmente muito."
+#~ "Nós também retornaremos para o nosso conselho. Nós temos muito para lhes "
+#~ "falar... muito mesmo."
 
 #~ msgid "Maybe whoever summoned these undead knows where he is?"
 #~ msgstr "Talvez quem chamou este morto-vivo saiba onde ele está?"
