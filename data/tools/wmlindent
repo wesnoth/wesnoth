@@ -70,7 +70,7 @@ opener_prefixes = ["{FOREACH "]
 def is_directive(str):
     "Identify things that shouldn't be indented."
     if "#endarg" in str: return True
-    return str.startswith(("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#ifver", "#ifnver", "#else", "#endif", "#define", "#enddef", "#undef", "#arg", "#endarg"))
+    return str.startswith(("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#ifver", "#ifnver", "#else", "#endif", "#define", "#enddef", "#undef", "#arg", "#endarg", "#deprecated"))
 
 def closer(str):
     "Are we looking at a closing tag?"
