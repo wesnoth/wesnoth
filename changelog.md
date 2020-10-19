@@ -61,7 +61,7 @@
      * Cost of Giant Rat changed from 6 to 5.
      * Cost of Giant Scorpling changed from 13 to 12.
      * Cost of Fire Guardian changed from 16 to 11.
-     * Cost of Giant Mudcrawler changed from 11.
+     * Cost of Giant Mudcrawler changed from 16 to 11.
      * Cost of Giant Scorpion changed from 22 to 16.
      * Cost of Wolf changed from 17 to 15.
      * Cost of Chocobone changed from 38 to 28.
