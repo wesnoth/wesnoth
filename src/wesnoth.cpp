@@ -14,6 +14,7 @@
 
 #include "addon/manager.hpp"
 #include "build_info.hpp"
+#include "commandline_argv.hpp"
 #include "commandline_options.hpp" // for commandline_options, etc
 #include "config.hpp"              // for config, config::error, etc
 #include "cursor.hpp"              // for set, CURSOR_TYPE::NORMAL, etc
@@ -944,58 +945,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 	}
 }
 
-#ifdef _WIN32
-static bool parse_commandline_argument(const char*& next, const char* end, std::string& res)
-{
-	// strip leading whitespace
-	while(next != end && *next == ' ') {
-		++next;
-	}
-
-	if(next == end) {
-		return false;
-	}
-
-	bool is_excaped = false;
-
-	for(; next != end; ++next) {
-		if(*next == ' ' && !is_excaped) {
-			break;
-		} else if(*next == '"' && !is_excaped) {
-			is_excaped = true;
-			continue;
-		} else if(*next == '"' && is_excaped && next + 1 != end && *(next + 1) == '"') {
-			res.push_back('"');
-			++next;
-			continue;
-		} else if(*next == '"' && is_excaped) {
-			is_excaped = false;
-			continue;
-		} else {
-			res.push_back(*next);
-		}
-	}
-
-	return true;
-}
-
-static std::vector<std::string> parse_commandline_arguments(std::string input)
-{
-	const char* start = &input[0];
-	const char* end = start + input.size();
-
-	std::string buffer;
-	std::vector<std::string> res;
-
-	while(parse_commandline_argument(start, end, buffer)) {
-		res.emplace_back();
-		res.back().swap(buffer);
-	}
-
-	return res;
-}
-#endif
-
 #ifndef _WIN32
 static void wesnoth_terminate_handler(int)
 {
@@ -1023,14 +972,10 @@ int wesnoth_main(int argc, char** argv)
 int main(int argc, char** argv)
 #endif
 {
+	auto args = read_argv(argc, argv);
+	assert(!args.empty());
+
 #ifdef _WIN32
-	UNUSED(argc);
-	UNUSED(argv);
-
-	// windows argv is ansi encoded by default
-	std::vector<std::string> args =
-		parse_commandline_arguments(unicode_cast<std::string>(std::wstring(GetCommandLineW())));
-
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
 	// turn it into a CLI application. Also, --wconsole in particular attaches
@@ -1068,14 +1013,7 @@ int main(int argc, char** argv)
 	}
 
 	lg::early_log_file_setup();
-#else
-	std::vector<std::string> args;
-	for(int i = 0; i < argc; ++i) {
-		args.push_back(std::string(argv[i]));
-	}
 #endif
-
-	assert(!args.empty());
 
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
