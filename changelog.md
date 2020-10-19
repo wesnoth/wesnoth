@@ -1,10 +1,14 @@
 ## Version 1.15.6+dev
  ### Campaigns
+   * Secrets of the Ancients:
+     * Revisions to Bone Captain
+     * Scenario 2 uses new Iron Fence terrain, in preparation for potential map revisions.
  ### Language and i18n
  ### Lua API
  ### Multiplayer
    * During allies' turns, use orb colors to show which ones can still move (issue #1424). Also enabled for allied AI sides in singleplayer.
  ### Terrain
+   * New barrier terrain:  Iron Fence (`^Eqf`) - similar layout to the existing wooden fence
  ### Units
  ### User interface
  ### WML Engine
