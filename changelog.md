@@ -2,6 +2,8 @@
  ### Language and i18n
    * Updated translations: British English, Catalan, French, Japanese, Polish,
      Portuguese (Brazil)
+ ### Miscellaneous and Bug Fixes
+   * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
 
 ## Version 1.14.14
  ### Add-ons client
