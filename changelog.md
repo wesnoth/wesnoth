@@ -17,6 +17,7 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
+   * Fixed precise log timestamps missing a space between the timestamp and the log severity label.
 
 ## Version 1.15.6
  ### Add-ons client
