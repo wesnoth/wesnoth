@@ -59,14 +59,6 @@ elif [ "$TRAVIS_OS_NAME" = "windows" ]; then
         ./utils/travis/windows-file-hasher.sh "projectfiles/$IMAGE/$CFG/filehashes.sqlite"
     fi
 else
-    # if not doing translations, save a bit of time by not copying them into the docker image
-    # otherwise, if this is the mingw job, the .git directory is needed for running the git archive command
-    if [ "$NLS" == "false" ]; then
-        echo "po/" >> .dockerignore
-    elif [ "$IMAGE" == "mingw" ]; then
-        rm .dockerignore
-    fi
-
     echo "FROM wesnoth/wesnoth:$IMAGE-$BRANCH" > utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
     echo "COPY ./ /home/wesnoth-travis/" >> utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
     echo "WORKDIR /home/wesnoth-travis" >> utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"

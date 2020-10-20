@@ -174,8 +174,14 @@ else
         fi
     }
 
+    checkindent() {
+        make -C data/tools reindent &&
+        git diff-index --quiet HEAD
+    }
+
     if [ "$VALIDATE" = "true" ]; then
         execute "WML validation" ./utils/travis/schema_validation.sh
+        execute "WML indentation check" checkindent
     fi
 
     if [ "$WML_TESTS" = "true" ]; then
