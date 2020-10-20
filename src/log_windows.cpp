@@ -486,7 +486,7 @@ void enable_native_console_output()
 
 bool using_own_console()
 {
-	return lfm->owns_console();
+	return lfm && lfm->owns_console();
 }
 
 void finish_log_file_setup()
