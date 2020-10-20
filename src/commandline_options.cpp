@@ -247,12 +247,12 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	po::options_description logging_opts("Logging options");
 	logging_opts.add_options()
 		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains (only the ones containing <arg> filter if such is provided) and exits.")
-		("log-error", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'error'. <arg> should be given as comma separated list of domains, wildcards are allowed. Example: --log-error=network,gui/*,engine/enemies")
+		("log-error", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'error'. <arg> should be given as a comma-separated list of domains, wildcards are allowed. Example: --log-error=network,gui/*,engine/enemies")
 		("log-warning", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'warning'. Similar to --log-error.")
 		("log-info", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
 		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
 		("log-none", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'none'. Similar to --log-error.")
-		("log-precise", "shows the timestamps in the logfile with more precision.")
+		("log-precise", "shows the timestamps in log output with more precision.")
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
