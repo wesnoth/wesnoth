@@ -282,6 +282,7 @@ log_file_manager::log_file_manager(bool native_console)
 	: fn_(unique_log_filename())
 	, cur_path_()
 	, use_wincon_(console_attached())
+	, created_wincon_(false)
 {
 	DBG_LS << "Early init message\n";
 
