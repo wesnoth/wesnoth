@@ -299,19 +299,10 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
 		;
 
-	po::options_description proxy_opts("Proxy options");
-	proxy_opts.add_options()
-		("proxy", "enables usage of proxy for network connections.")
-		("proxy-address", po::value<std::string>(), "specifies address of the proxy.")
-		("proxy-port", po::value<std::string>(), "specifies port of the proxy.")
-		("proxy-user", po::value<std::string>(), "specifies username to log in to the proxy.")
-		("proxy-password", po::value<std::string>(), "specifies password to log in to the proxy.")
-		;
-
 	//hidden_.add_options()
 	//	("example-hidden-option", "")
 	//	;
-	visible_.add(general_opts).add(campaign_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(testing_opts).add(parsing_opts).add(proxy_opts);
+	visible_.add(general_opts).add(campaign_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(testing_opts).add(parsing_opts);
 
 	all_.add(visible_).add(hidden_);
 
