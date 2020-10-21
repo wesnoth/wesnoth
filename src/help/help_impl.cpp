@@ -684,7 +684,8 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
 	{
 		const unit_type &type = i.second;
-		if (description_type(type) == FULL_DESCRIPTION) {
+		const auto desc_type = description_type(type);
+		if (desc_type == FULL_DESCRIPTION || desc_type == HIDDEN_BUT_SHOW_MACROS) {
 			if (config::const_child_itors traits = type.possible_traits()) {
 				for (const config & trait : traits) {
 					const std::string trait_id = trait["id"];
@@ -1020,6 +1021,12 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 	if (encountered_units.find(type.id()) != encountered_units.end()) {
 		return FULL_DESCRIPTION;
 	}
+
+	// See the docs of HIDDEN_BUT_SHOW_MACROS
+	if (type.id() == "Fog Clearer") {
+		return HIDDEN_BUT_SHOW_MACROS;
+	}
+
 	return NO_DESCRIPTION;
 }
 

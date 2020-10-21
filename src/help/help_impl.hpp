@@ -244,7 +244,20 @@ void generate_races_sections(const config *help_cfg, section &sec, int level);
 void generate_terrain_sections(const config* help_cfg, section &sec, int level);
 std::vector<topic> generate_unit_topics(const bool, const std::string& race);
 void generate_unit_sections(const config *help_cfg, section &sec, int level, const bool, const std::string& race);
-enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
+enum UNIT_DESCRIPTION_TYPE {
+	FULL_DESCRIPTION,
+	/** Ignore this unit for documentation purposes. */
+	NO_DESCRIPTION,
+	/**
+	 * Although the unit itself is hidden, traits reachable via this unit are not hidden.
+	 *
+	 * This is a bug workaround - traits are defined by WML macros, and therefore the help
+	 * system has to use a place where that macro is instanciated to provide the documentation.
+	 * None of the normal unit types has the "loyal" trait, but there is a hidden unit which
+	 * does, purely to support the help system.
+	 */
+	HIDDEN_BUT_SHOW_MACROS
+};
 /// Return the type of description that should be shown for a unit of
 /// the given kind. This method is intended to filter out information
 /// about units that should not be shown, for example due to not being
