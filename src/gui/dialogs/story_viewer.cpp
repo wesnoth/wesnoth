@@ -319,63 +319,58 @@ void story_viewer::display_part(window& window)
 void story_viewer::draw_floating_image(window& window, floating_image_list::const_iterator image_iter, int this_part_index)
 {
 	const auto& images = current_part_->get_floating_images();
-
-	// If the current part has changed or we're out of images to draw, exit the draw loop.
-	if((this_part_index != part_index_) || (image_iter == images.end())) {
-		timer_id_ = 0;
-		return;
-	}
-
-	const auto& floating_image = *image_iter;
-
-	std::ostringstream x_ss;
-	std::ostringstream y_ss;
-
-	// Floating images are scaled by the same factor as the background.
-	x_ss << "(trunc(fi_ref_x * base_scale_x) + base_origin.x";
-	y_ss << "(trunc(fi_ref_y * base_scale_y) + base_origin.y";
-
-	if(floating_image.centered()) {
-		x_ss << " - (image_original_width  / 2)";
-		y_ss << " - (image_original_height / 2)";
-	}
-
-	x_ss << " where fi_ref_x = " << floating_image.ref_x() << ")";
-	y_ss << " where fi_ref_y = " << floating_image.ref_y() << ")";
-
-	config cfg, image;
-
-	image["x"] = x_ss.str();
-	image["y"] = y_ss.str();
-	image["w"] = floating_image.autoscale() ? "(width)"  : "(image_width)";
-	image["h"] = floating_image.autoscale() ? "(height)" : "(image_height)";
-	image["name"] = floating_image.file();
-
-	// TODO: implement handling of the tiling options.
-	//image["resize_mode"] = "tile_centered"
-
-	cfg.add_child("image", std::move(image));
-
 	canvas& window_canvas = window.get_canvas(0);
 
-	// Needed to make the background redraw correctly.
-	window_canvas.append_cfg(cfg);
-	window_canvas.set_is_dirty(true);
+	// If the current part has changed or we're out of images to draw, exit the draw loop.
+	while((this_part_index == part_index_) && (image_iter != images.end())) {
+		const auto& floating_image = *image_iter;
+		++image_iter;
 
-	window.set_is_dirty(true);
+		std::ostringstream x_ss;
+		std::ostringstream y_ss;
 
-	++image_iter;
+		// Floating images' locations are scaled by the same factor as the background.
+		x_ss << "(trunc(" << floating_image.ref_x() << " * base_scale_x) + base_origin.x";
+		y_ss << "(trunc(" << floating_image.ref_y() << " * base_scale_y) + base_origin.y";
 
-	// If a delay is specified, schedule the next image draw. This *must* be a non-repeating timer!
-	// Else draw the next image immediately.
-	const unsigned int draw_delay = floating_image.display_delay();
+		if(floating_image.centered()) {
+			x_ss << " - (image_width  / 2)";
+			y_ss << " - (image_height / 2)";
+		}
 
-	if(draw_delay != 0) {
-		timer_id_ = add_timer(draw_delay,
-			std::bind(&story_viewer::draw_floating_image, this, std::ref(window), image_iter, this_part_index), false);
-	} else {
-		draw_floating_image(window, image_iter, this_part_index);
+		x_ss << ")";
+		y_ss << ")";
+
+		config image;
+		image["x"] = x_ss.str();
+		image["y"] = y_ss.str();
+
+		// Width and height don't need to be set unless the image needs to be scaled.
+		if(floating_image.resize_with_background()) {
+			image["w"] = "(image_original_width * base_scale_x)";
+			image["h"] = "(image_original_height * base_scale_y)";
+		}
+
+		image["name"] = floating_image.file();
+		config cfg{"image", std::move(image)};
+
+		cfg.add_child("image", std::move(image));
+		window_canvas.append_cfg(std::move(cfg));
+
+		// Needed to make the background redraw correctly.
+		window_canvas.set_is_dirty(true);
+		window.set_is_dirty(true);
+
+		// If a delay is specified, schedule the next image draw and break out of the loop.
+		const unsigned int draw_delay = floating_image.display_delay();
+		if(draw_delay != 0) {
+			// This must be a non-repeating timer
+			timer_id_ = add_timer(draw_delay, std::bind(&story_viewer::draw_floating_image, this, std::ref(window), image_iter, this_part_index), false);
+			return;
+		}
 	}
+
+	timer_id_ = 0;
 }
 
 void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)

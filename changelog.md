@@ -17,6 +17,9 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
+   * Fixed a potential crash when drawing many images on the story screens.
+   * Fixed the schema's list of attributes supported by IntroWML.
+   * Fixed and renamed IntroWML's `[image]resize_with_background=yes` to keep images proportional to the background.
    * Fixed precise log timestamps missing a space between the timestamp and the log severity label.
    * Improve the in-game help's topic about orbs, add crowns and ellipses.
    * Removed documentation for network proxy-related command line options previously removed in version 1.13.1 along with libana.
