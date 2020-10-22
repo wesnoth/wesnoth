@@ -24,39 +24,14 @@
 
 namespace storyscreen
 {
-floating_image::floating_image(const floating_image& fi)
-	: file_()
-	, x_(0)
-	, y_(0)
-	, delay_(0)
-	, autoscaled_(false)
-	, centered_(false)
-{
-	this->assign(fi);
-}
-
 floating_image::floating_image(const config& cfg)
 	: file_(cfg["file"])
 	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, delay_(cfg["delay"])
-	, autoscaled_(cfg["scaled"].to_bool())
+	, resize_with_background_(cfg["resize_with_background"].to_bool())
 	, centered_(cfg["centered"].to_bool())
 {
-}
-
-void floating_image::assign(const floating_image& fi)
-{
-	if(&fi == this) {
-		return;
-	}
-
-	file_ = fi.file_;
-	x_ = fi.x_;
-	y_ = fi.y_;
-	delay_ = fi.delay_;
-	autoscaled_ = fi.autoscaled_;
-	centered_ = fi.centered_;
 }
 
 background_layer::background_layer()

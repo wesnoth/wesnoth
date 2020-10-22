@@ -44,10 +44,8 @@ public:
 	 */
 	floating_image(const config& cfg);
 
-	/**
-	 * Copy constructor.
-	 */
-	floating_image(const floating_image& fi);
+	floating_image(const floating_image& fi) = default;
+	floating_image(floating_image&& fi) = default;
 
 	floating_image& operator=(const floating_image& fi)
 	{
@@ -79,12 +77,13 @@ public:
 	}
 
 	/**
-	 * Whether the image should be automatically scaled as much as
-	 * the storyscreen background is.
+	 * If true, the size of the image is changed in the same way that the ref_x
+	 * and ref_y are mapped to use the base layer's pixels as the coordinate
+	 * system.
 	 */
-	bool autoscale() const
+	bool resize_with_background() const
 	{
-		return autoscaled_;
+		return resize_with_background_;
 	}
 
 	/**
@@ -96,7 +95,10 @@ public:
 		return centered_;
 	}
 
-	/** Delay before displaying, in milliseconds. */
+	/**
+	 * Delay after displaying this image and before displaying the next image,
+	 * in milliseconds.
+	 */
 	int display_delay() const
 	{
 		return delay_;
@@ -106,7 +108,7 @@ private:
 	std::string file_;
 	int x_, y_; // referential (non corrected) x,y
 	int delay_;
-	bool autoscaled_;
+	bool resize_with_background_;
 	bool centered_;
 
 	/** Copy constructor and operator=() implementation details. */
