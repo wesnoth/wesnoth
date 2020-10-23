@@ -12,6 +12,15 @@
     <Filter Include="Server">
       <UniqueIdentifier>{8b7cb799-913f-4247-a713-5bd88a6885d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Server\Wesnothd">
+      <UniqueIdentifier>{7dc567bc-cee4-4802-9149-ce9f20ba7742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Common">
+      <UniqueIdentifier>{6f71af2b-f2e3-484d-8bce-fea83b18a267}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Common\Resultsets">
+      <UniqueIdentifier>{5063e352-be24-4c5a-a7ec-a3b5edd943f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\packaging\windows\wesnothd.rc">
@@ -22,91 +31,103 @@
     <None Include="..\..\src\filesystem_win32.ii">
       <Filter>Others</Filter>
     </None>
-    <None Include="..\..\src\server\send_receive_wml_helpers.ipp">
-      <Filter>Server</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\server\ban.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\forum_user_handler.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\game.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\metrics.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\dbconn.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\resultsets\tournaments.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\resultsets\ban_check.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\player.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\player_connection.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\player_network.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\server.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\server_base.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\simple_wml.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\server\user_handler.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\mt_rng.cpp" />
     <ClCompile Include="..\..\src\seed_rng.cpp" />
+    <ClCompile Include="..\..\src\server\wesnothd\ban.cpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\wesnothd\game.cpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\wesnothd\metrics.cpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\wesnothd\player.cpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\wesnothd\player_connection.cpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\wesnothd\player_network.cpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\wesnothd\server.cpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\common\resultsets\ban_check.cpp">
+      <Filter>Server\Common\Resultsets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\common\resultsets\tournaments.cpp">
+      <Filter>Server\Common\Resultsets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\common\dbconn.cpp">
+      <Filter>Server\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\common\forum_user_handler.cpp">
+      <Filter>Server\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\common\server_base.cpp">
+      <Filter>Server\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\common\simple_wml.cpp">
+      <Filter>Server\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\common\user_handler.cpp">
+      <Filter>Server\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\server\ban.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\server\forum_user_handler.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\server\game.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\server\metrics.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\server\player.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\server\player_connection.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\server\player_network.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\server\server.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\server\server_base.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\server\simple_wml.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\server\user_handler.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\mt_rng.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
+    <ClInclude Include="..\..\src\server\wesnothd\ban.hpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\wesnothd\game.hpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\wesnothd\metrics.hpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\wesnothd\player.hpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\wesnothd\player_connection.hpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\wesnothd\player_network.hpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\wesnothd\server.hpp">
+      <Filter>Server\Wesnothd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\common\resultsets\ban_check.hpp">
+      <Filter>Server\Common\Resultsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\common\resultsets\rs_base.hpp">
+      <Filter>Server\Common\Resultsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\common\resultsets\tournaments.hpp">
+      <Filter>Server\Common\Resultsets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\common\dbconn.hpp">
+      <Filter>Server\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\common\forum_user_handler.hpp">
+      <Filter>Server\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\common\send_receive_wml_helpers.ipp">
+      <Filter>Server\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\common\server_base.hpp">
+      <Filter>Server\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\common\simple_wml.hpp">
+      <Filter>Server\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\common\user_handler.hpp">
+      <Filter>Server\Common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
