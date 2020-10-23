@@ -372,6 +372,7 @@ if env["prereqs"]:
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
+        conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
 	CheckAsio(conf) & \
@@ -404,7 +405,6 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
     have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.22.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
-    have_client_prereqs = have_client_prereqs & conf.CheckBoost("program_options", require_version = boost_version)
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
     if not have_client_prereqs:
         Warning("Client prerequisites are not met. wesnoth cannot be built.")

@@ -35,6 +35,7 @@
 #include "server/campaignd/blacklist.hpp"
 #include "server/campaignd/control.hpp"
 #include "server/campaignd/fs_commit.hpp"
+#include "server/campaignd/options.hpp"
 #include "game_version.hpp"
 #include "hash.hpp"
 
@@ -1428,20 +1429,65 @@ void server::handle_change_passphrase(const server::request& req)
 
 } // end namespace campaignd
 
-int main()
+int run_campaignd(int argc, char** argv)
 {
+	campaignd::command_line cmdline{argc, argv};
 	game_config::path = filesystem::get_cwd();
+
+	//
+	// Log defaults
+	//
 
 	lg::set_log_domain_severity("campaignd", lg::info());
 	lg::set_log_domain_severity("server", lg::info());
 	lg::timestamps(true);
 
+	//
+	// Process command line
+	//
+
+	if(cmdline.help) {
+		std::cout << cmdline.help_text();
+		return 0;
+	}
+
+	if(cmdline.version) {
+		std::cout << "Wesnoth campaignd v" << game_config::revision << '\n';
+		return 0;
+	}
+
+	if(cmdline.show_log_domains) {
+		std::cout << lg::list_logdomains("");
+		return 0;
+	}
+
+	for(const auto& ldl : cmdline.log_domain_levels) {
+		if(!lg::set_log_domain_severity(ldl.first, ldl.second)) {
+			std::cerr << "Unknown log domain: " << ldl.first << '\n';
+			return 2;
+		}
+	}
+
+	if(cmdline.log_precise_timestamps) {
+		lg::precise_timestamps(true);
+	}
+
+	std::cerr << "Wesnoth campaignd v" << game_config::revision << " starting...\n";
+
+	const std::string cfg_path = filesystem::normalize_path("server.cfg");
+
+	campaignd::server(cfg_path).run();
+
+	return 0;
+}
+
+int main(int argc, char** argv)
+{
 	try {
-		std::cerr << "Wesnoth campaignd v" << game_config::revision << " starting...\n";
-
-		const std::string cfg_path = filesystem::normalize_path("server.cfg");
-
-		campaignd::server(cfg_path).run();
+		run_campaignd(argc, argv);
+	} catch(const boost::program_options::error& e) {
+		std::cerr << "Error in command line: " << e.what() << '\n';
+		return 10;
 	} catch(const config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
 		return 1;

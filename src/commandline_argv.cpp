@@ -15,6 +15,7 @@
 
 #ifdef _WIN32
 
+#include "global.hpp"
 #include "serialization/unicode_cast.hpp"
 
 #include <windows.h>
