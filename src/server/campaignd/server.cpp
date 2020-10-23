@@ -99,7 +99,7 @@ void set_passphrase(config& campaign, std::string passphrase)
 
 namespace campaignd {
 
-server::server(const std::string& cfg_file)
+server::server(const std::string& cfg_file, unsigned short port)
 	: server_base(default_campaignd_port, true)
 	, addons_()
 	, dirty_addons_()
@@ -127,7 +127,14 @@ server::server(const std::string& cfg_file)
 #endif
 	load_config();
 
-	LOG_CS << "Port: " << port_ << "\n";
+	// Command line config override. This won't get saved back to disk since we
+	// leave the WML intentionally untouched.
+	if(port != 0) {
+		port_ = port;
+	}
+
+	LOG_CS << "Port: " << port_ << '\n';
+	LOG_CS << "Server directory: " << game_config::path << " (" << addons_.size() << " add-ons)\n";
 
 	// Ensure all campaigns to use secure hash passphrase storage
 	if(!read_only_) {
@@ -1432,7 +1439,9 @@ void server::handle_change_passphrase(const server::request& req)
 int run_campaignd(int argc, char** argv)
 {
 	campaignd::command_line cmdline{argc, argv};
-	game_config::path = filesystem::get_cwd();
+	std::string server_path = filesystem::get_cwd();
+	std::string config_file = "server.cfg";
+	unsigned short port = 0;
 
 	//
 	// Log defaults
@@ -1456,6 +1465,27 @@ int run_campaignd(int argc, char** argv)
 		return 0;
 	}
 
+	if(cmdline.config_file) {
+		// Don't fully resolve the path, so that filesystem::ostream_file() can
+		// create path components as needed (dumb legacy behavior).
+		config_file = filesystem::normalize_path(*cmdline.config_file, true, false);
+	}
+
+	if(cmdline.server_dir) {
+		server_path = filesystem::normalize_path(*cmdline.server_dir, true, true);
+	}
+
+	if(cmdline.port) {
+		port = *cmdline.port;
+		// We use 0 as a placeholder for the default port for this version
+		// otherwise, hence this check must only exists in this code path. It's
+		// only meant to protect against user mistakes.
+		if(!port) {
+			std::cerr << "Invalid network port: " << port << '\n';
+			return 2;
+		}
+	}
+
 	if(cmdline.show_log_domains) {
 		std::cout << lg::list_logdomains("");
 		return 0;
@@ -1474,9 +1504,30 @@ int run_campaignd(int argc, char** argv)
 
 	std::cerr << "Wesnoth campaignd v" << game_config::revision << " starting...\n";
 
-	const std::string cfg_path = filesystem::normalize_path("server.cfg");
+	if(server_path.empty() || !filesystem::is_directory(server_path)) {
+		std::cerr << "Server directory '" << *cmdline.server_dir << "' does not exist or is not a directory.\n";
+		return 1;
+	}
 
-	campaignd::server(cfg_path).run();
+	if(filesystem::is_directory(config_file)) {
+		std::cerr << "Server configuration file '" << config_file << "' is not a file.\n";
+		return 1;
+	}
+
+	// Everything does file I/O with pwd as the implicit starting point, so we
+	// need to change it accordingly. We don't do this before because paths in
+	// the command line need to remain relative to the original pwd.
+	if(cmdline.server_dir && !filesystem::set_cwd(server_path)) {
+		std::cerr << "Bad server directory '" << server_path << "'.\n";
+		return 1;
+	}
+
+	game_config::path = server_path;
+
+	//
+	// Run the server
+	//
+	campaignd::server(config_file, port).run();
 
 	return 0;
 }

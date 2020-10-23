@@ -33,7 +33,8 @@ namespace campaignd {
 class server : public server_base
 {
 public:
-	explicit server(const std::string& cfg_file);
+	explicit server(const std::string& cfg_file,
+					unsigned short port = 0);
 	server(const config& server) = delete;
 	~server();
 
