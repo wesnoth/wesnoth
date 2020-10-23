@@ -16,8 +16,14 @@
 
 #ifdef _MSC_VER
 
-// Enable C99 support
+// Enable C99 support for lua
 #define STDC99
+
+#if _MSVC_LANG > 201402	// fallthrough only supported when MSVC targets later than C++14
+#define FALLTHROUGH [[fallthrough]]
+#else
+#define FALLTHROUGH
+#endif
 
 #endif //_MSC_VER
 
@@ -38,47 +44,14 @@
 #define HAVE_CXX17
 #endif
 
-// Some C++11 features are not available on all supported platforms
-#if defined(_MSC_VER)
-// MSVC supports these starting in MSVC 2015
-#if _MSC_VER >= 1900
-#else
-#endif
-// MSVC supports these starting in 2017?
-// Some sources claim MSVC 2015 supports them, but let's be safe...
-#if _MSC_VER >= 1910
-#define DEPRECATED(reason) [[deprecated(reason)]]
-#if _MSVC_LANG > 201402	// fallthrough only supported when MSVC targets later than C++14
-#define FALLTHROUGH [[fallthrough]]
-#else
-#define FALLTHROUGH
-#endif
-#else
-#define DEPRECATED(reason) __declspec(deprecated)
-#define FALLTHROUGH
-#endif
-#endif
-
 #if defined(__clang__)
-#include <ciso646> // To ensure standard library version macros are defined
 
 // All supported versions of clang have these
 #define FALLTHROUGH [[clang::fallthrough]]
-// Use GCC-style attribute because the __has_cpp_attribute feature-checking macro doesn't exist in clang 3.5
-#define DEPRECATED(reason) __attribute__((deprecated(reason)))
 
 #endif
 
 #if defined(__GNUC__) && !defined(__clang__)
-// GCC supports these from 4.8 up
-
-// Deprecated is supported from 4.9 up
-#if __GNUC__ >= 5 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 9)
-#define DEPRECATED(reason) [[deprecated(reason)]]
-#else
-#define DEPRECATED(reason) __attribute__((deprecated(reason)))
-#endif
-
 // Fallthrough is supported from GCC 7 up
 #if __GNUC__ >= 7
 #define FALLTHROUGH [[fallthrough]]
