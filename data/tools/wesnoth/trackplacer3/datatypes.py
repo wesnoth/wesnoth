@@ -45,6 +45,16 @@ class Waypoint:
     def __str__(self):
         return "<Waypoint '{action}' at {x},{y}>".format(action=self.action, x=self.x, y=self.y)
 
+class Label:
+    """Text written on the map, for example the name of a town or mountain"""
+    def __init__(self, text, x, y):
+        self.text = text
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return "<Label at {x},{y}, saying '{text}'>".format(text=self.text, x=self.x, y=self.y)
+
 class Track:
     """An ordered list of Waypoints, users are expected to directly access the data members."""
     def __init__(self, name):
@@ -84,6 +94,7 @@ class Journey:
     def __init__(self):
         self.mapfile = None # Map background of the journey
         self.tracks = [] # ordered list of Tracks
+        self.labels = [] # unordered list of Labels
 
     def findTrack(self, name):
         for track in self.tracks:
@@ -92,7 +103,8 @@ class Journey:
         return None
 
     def __str__(self):
-        return "<Journey based on map file '%s', with tracks {%s}>" % (self.mapfile,
+        return "<Journey based on map file '%s', with labels {%s} and tracks {%s}>" % (self.mapfile,
+            ",".join([label.text for label in self.labels]),
             ",".join([track.name for track in self.tracks]))
 
 class FileFormatHandler:

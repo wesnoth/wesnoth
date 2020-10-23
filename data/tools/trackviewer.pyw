@@ -72,6 +72,9 @@ class MapAndWaypointCanvas:
             with PIL.Image.open(wesnoth_data_dir + "/" + tp3.datatypes.selected_icon_dictionary[action]) as image:
                 self.action_image[action] = PIL.ImageTk.PhotoImage(image)
 
+        for label in reload_factory.load_labels():
+            self.draw_label(label)
+
         # start with all waypoints visible
         for (track, point) in reload_factory.load_waypoints():
             self.draw_waypoint(point)
@@ -83,6 +86,9 @@ class MapAndWaypointCanvas:
         """Returns an array of StringVars which will be updated with the details
         of the most recently drawn point."""
         return self.latest_drawn
+
+    def draw_label(self, label):
+        self.canvas.create_text((label.x, label.y), text=label.text)
 
     def draw_waypoint(self, point):
         if point.action in self.action_image:
@@ -190,6 +196,11 @@ class LoaderImpl(ReloadFactory):
     def load_journey(self):
         (journey, metadata) = self.reader.read(self.options.file)
         return journey
+
+    def load_labels(self):
+        journey = self.load_journey()
+        for point in journey.labels:
+            yield (point)
 
     def load_waypoints(self):
         journey = self.load_journey()

@@ -4,6 +4,7 @@
 # the main classes that are intended to be public.
 
 from wesnoth.trackplacer3.datatypes import Journey
+from wesnoth.trackplacer3.datatypes import Label
 from wesnoth.trackplacer3.datatypes import Track
 from wesnoth.trackplacer3.datatypes import Waypoint
 

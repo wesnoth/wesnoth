@@ -64,6 +64,7 @@ class CfgFileFormat(FileFormatHandler):
         selected_track = None
         if not fp.name.endswith(".cfg"):
             raise IOException("Cannot read this filetype.", fp.name)
+        label_re = re.compile('{INTRO_MAP_LABEL +([0-9]+) +([0-9]+) +\((.*)\)}');
         waypoint_re = re.compile("{NEW_(" + "|".join(icon_presentation_order) + ")" \
                                  + " +([0-9]+) +([0-9]+)}")
         property_re = re.compile("# *trackplacer: ([^=]+)=(.*)")
@@ -115,6 +116,22 @@ class CfgFileFormat(FileFormatHandler):
             if m:
                 metadata.properties[m.group(1)] = m.group(2)
                 continue
+            # Map labels are unsorted and aren't part of a track, at least in
+            # the current design. This could be changed if people want to have
+            # labels appear as a track is drawn.
+            m = re.search(label_re, line)
+            if m:
+                try:
+                    x = int(m.group(1))
+                    y = int(m.group(2))
+                    text = m.group(3)
+                    without_i18n = re.search('_ *"(map_label\^)?(.*)" *', text)
+                    if without_i18n:
+                        text = without_i18n.group(2)
+                    journey.labels.append(Label(text, x, y))
+                    continue
+                except ValueError:
+                    raise IOException("Invalid coordinate in map label.")
         if "map" in metadata.properties:
             journey.mapfile = metadata.properties['map']
         else:
@@ -150,6 +167,13 @@ class CfgFileFormat(FileFormatHandler):
             fp.write("# trackplacer: %s=%s\n" % (key, val))
         fp.write("#\n")
         definitions = []
+        if len(journey.labels) > 0:
+            fp.write("#define MAP_LABELS_AND_NAMED_LOCATIONS\n")
+            for label in journey.labels:
+                # todo: sanity-check or escape special characters
+                marker = '    {INTRO_MAP_LABEL %d %d (_ "map_label^%s")}\n' % (label.x, label.y, label.text)
+                fp.write(marker)
+            fp.write("#enddef\n\n")
         for track in journey.tracks:
             if len(track.waypoints) == 0:
                 print("Warning: track {name} has no waypoints".format(name=track.name))

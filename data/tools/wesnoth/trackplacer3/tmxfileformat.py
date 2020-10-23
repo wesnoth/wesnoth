@@ -126,6 +126,22 @@ class TmxFileFormat(FileFormatHandler):
         layer = ET.SubElement(tmxmap, "imagelayer", attrib={"id": "1", "name": "background"})
         ET.SubElement(layer, "image", attrib={"source": journey.mapfile})
 
+        if len(journey.labels) > 0:
+            layer = ET.SubElement(tmxmap, "objectgroup", attrib={"id": id_counter.get(), "name": "Map Labels"})
+            for label in journey.labels:
+                attrib = {}
+                attrib["id"] = id_counter.get()
+                # For the x coordinate, work around not knowing the string-width by assuming a very width box and using halign=center
+                width = 20 * len(label.text)
+                height = 20
+                attrib["x"] = str(label.x - width/2)
+                attrib["y"] = str(label.y)
+                attrib["width"] = str(width)
+                attrib["height"] = str(height)
+                o = ET.SubElement(layer, "object", attrib=attrib)
+                t = ET.SubElement(o, "text", {"halign": "center", "valign": "top"})
+                t.text=label.text
+
         # journey tracks
         for track in journey.tracks:
             name = track.name
@@ -204,16 +220,34 @@ class TmxFileFormat(FileFormatHandler):
         for layer in tmxmap.findall("objectgroup"):
             track = Track(layer.attrib["name"])
             for point in layer.findall("object"):
-                gid = point.attrib["gid"]
-                if gid not in tileset_to_action:
-                    raise KeyError("Unknown action gid: " + gid)
-                action = tileset_to_action[gid]
-                x = round(float(point.attrib["x"])) + image_offset[action][0]
-                y = round(float(point.attrib["y"])) + image_offset[action][1]
-                if added_in_tiled(point):
-                    track.insert_at_best_fit(Waypoint(action, x, y))
+                # special-case to handle map labels (placenames, etc)
+                if point.find("text") is not None:
+                    # the ElementTree library already handles unescaping special characters in the text
+                    text = point.find("text").text
+                    # convert coordinates from top-left to top-center
+                    x = round(float(point.attrib["x"]) + float(point.attrib["width"]) / 2)
+                    y = round(float(point.attrib["y"]))
+                    journey.labels.append(Label(text, x, y))
                 else:
-                    track.waypoints.append(Waypoint(action, x, y))
+                    gid = point.attrib["gid"]
+                    if gid not in tileset_to_action:
+                        raise KeyError("Unknown action gid: " + gid)
+                    action = tileset_to_action[gid]
+                    x = round(float(point.attrib["x"])) + image_offset[action][0]
+                    y = round(float(point.attrib["y"])) + image_offset[action][1]
+                    if added_in_tiled(point):
+                        track.insert_at_best_fit(Waypoint(action, x, y))
+                    else:
+                        track.waypoints.append(Waypoint(action, x, y))
+
+            # \todo nicer logic for ignoring the layer that was created just for holding map labels
+            if track.name == "Map Labels":
+                if len(track.waypoints) == 0:
+                    # silently avoid adding this to journey.tracks
+                    continue;
+                else:
+                    print("Warning: expected the 'Map Labels' track to just have labels, but it has waypoints too")
+
             journey.tracks.append(track)
 
         return (journey, None)
