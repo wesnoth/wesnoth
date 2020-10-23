@@ -45,6 +45,7 @@ extern const color_t
 	weapon_details_color,
 	inactive_details_color,
 	inactive_ability_color,
+	bigmap_label_color,
 	unit_type_color,
 	race_color;
 }

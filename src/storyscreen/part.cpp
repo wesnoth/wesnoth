@@ -26,6 +26,7 @@ namespace storyscreen
 {
 floating_image::floating_image(const config& cfg)
 	: file_(cfg["file"])
+	, label_(cfg["label"])
 	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, delay_(cfg["delay"])

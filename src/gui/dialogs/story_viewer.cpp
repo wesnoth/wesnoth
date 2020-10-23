@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/story_viewer.hpp"
 
+#include "font/standard_colors.hpp"
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "sdl/point.hpp"
@@ -325,36 +326,65 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		const auto& floating_image = *image_iter;
 		++image_iter;
 
-		std::ostringstream x_ss;
-		std::ostringstream y_ss;
+		if(!floating_image.file().empty()) {
+			std::ostringstream x_ss;
+			std::ostringstream y_ss;
 
-		// Floating images' locations are scaled by the same factor as the background.
-		x_ss << "(trunc(" << floating_image.ref_x() << " * base_scale_x) + base_origin_x";
-		y_ss << "(trunc(" << floating_image.ref_y() << " * base_scale_y) + base_origin_y";
+			// Floating images' locations are scaled by the same factor as the background.
+			x_ss << "(trunc(" << floating_image.ref_x() << " * base_scale_x) + base_origin_x";
+			y_ss << "(trunc(" << floating_image.ref_y() << " * base_scale_y) + base_origin_y";
 
-		if(floating_image.centered()) {
-			x_ss << " - (image_width  / 2)";
-			y_ss << " - (image_height / 2)";
+			if(floating_image.centered()) {
+				x_ss << " - (image_width  / 2)";
+				y_ss << " - (image_height / 2)";
+			}
+
+			x_ss << ")";
+			y_ss << ")";
+
+			config image;
+			image["x"] = x_ss.str();
+			image["y"] = y_ss.str();
+
+			// Width and height don't need to be set unless the image needs to be scaled.
+			if(floating_image.resize_with_background()) {
+				image["w"] = "(image_original_width * base_scale_x)";
+				image["h"] = "(image_original_height * base_scale_y)";
+			}
+
+			image["name"] = floating_image.file();
+			config cfg{"image", std::move(image)};
+			window_canvas.append_cfg(cfg);
 		}
 
-		x_ss << ")";
-		y_ss << ")";
+		if(!floating_image.label().empty()) {
+			// these are configuring a gui2::text_shape
+			config text;
+			std::ostringstream x_ss;
+			std::ostringstream y_ss;
+			// center horizontally but not vertically (so placenames on a map appear under the place's location)
+			x_ss << "(trunc(" << floating_image.ref_x() << " * base_scale_x) + base_origin_x - (text_width / 2))";
+			y_ss << "(trunc(" << floating_image.ref_y() << " * base_scale_y) + base_origin_y";
+			if(!floating_image.file().empty()) {
+				// this should probably depend on the size of the image, but just offset the text a little more
+				y_ss << " + text_height";
+			}
+			y_ss << ")";
+			text["x"] = x_ss.str();
+			text["y"] = y_ss.str();
+			text["w"] = "(text_width)";
+			text["h"] = "(text_height)";
+			text["text"] = floating_image.label();
+			text["font_family"] = "script";
+			text["font_style"] = "italic";
+			std::ostringstream font_size_ss;
+			font_size_ss << "(floor(" << font::SIZE_LARGE << " * base_scale_x))";
+			text["font_size"] = font_size_ss.str();
+			text["color"] = font::bigmap_label_color.to_rgb_string();
+			auto cfg = config{"text", std::move(text)};
 
-		config image;
-		image["x"] = x_ss.str();
-		image["y"] = y_ss.str();
-
-		// Width and height don't need to be set unless the image needs to be scaled.
-		if(floating_image.resize_with_background()) {
-			image["w"] = "(image_original_width * base_scale_x)";
-			image["h"] = "(image_original_height * base_scale_y)";
+			window_canvas.append_cfg(cfg);
 		}
-
-		image["name"] = floating_image.file();
-		config cfg{"image", std::move(image)};
-
-		cfg.add_child("image", std::move(image));
-		window_canvas.append_cfg(std::move(cfg));
 
 		// Needed to make the background redraw correctly.
 		window_canvas.set_is_dirty(true);

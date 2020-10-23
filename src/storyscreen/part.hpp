@@ -31,7 +31,7 @@ class vconfig;
 namespace storyscreen
 {
 /**
- * Represents and contains information about image labels used
+ * Represents and contains information about image and labels used
  * in story screen parts.
  */
 class floating_image
@@ -53,14 +53,28 @@ public:
 		return *this;
 	}
 
+	/**
+	 * The image to show. Can be empty if this object is being used to add a
+	 * caption without an image, such as a translatable name for a landmark
+	 * when landmark is already included in the background layer's image.
+	 */
 	std::string file() const
 	{
 		return file_;
 	}
 
 	/**
+	 * Translatable caption to draw on the map, for example the name of a city.
+	 */
+	std::string label() const
+	{
+		return label_;
+	}
+
+	/**
 	 * Returns the referential X coordinate of the image.
-	 * The actual (corrected) value is determined at render time.
+	 * The actual (corrected) value is determined at render time, based on the
+	 * background layer's scaling.
 	 */
 	int ref_x() const
 	{
@@ -87,8 +101,12 @@ public:
 	}
 
 	/**
-	 * Whether the image coordinates specify the location of its
-	 * center (true) or top-left corner (false).
+	 * If true, the values of ref_x() and ref_y() should be interpreted as the
+	 * location of the image's horizontal and vertical mid-point. When false,
+	 * those should be interpret as the location of the top-left corner.
+	 *
+	 * Not used for label(), which interprets ref_x() and ref_y() as the location
+	 * that the label applies to rather than the exact location of the label itself.
 	 */
 	bool centered() const
 	{
@@ -106,6 +124,7 @@ public:
 
 private:
 	std::string file_;
+	std::string label_;
 	int x_, y_; // referential (non corrected) x,y
 	int delay_;
 	bool resize_with_background_;

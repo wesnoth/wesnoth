@@ -28,6 +28,8 @@ const color_t
 	PETRIFIED_COLOR {160, 160, 160},
 	TITLE_COLOR     {186, 172, 125},
 	LABEL_COLOR     {107, 140, 255},
+	// Note: HelpWML and help_impl.cpp have hardcoded that "green", "red", and
+	// "white" correspond to GOOD, BAD and BIGMAP respectively.
 	BIGMAP_COLOR    {255, 255, 255};
 
 const color_t DISABLED_COLOR = PETRIFIED_COLOR.inverse();
@@ -39,6 +41,7 @@ const color_t
 	weapon_details_color   {196, 176, 147},
 	inactive_details_color { 86,  86,  86},
 	inactive_ability_color {146, 146, 146},
+	bigmap_label_color     { 10,   6,   5},
 	unit_type_color        {245, 230, 193},
 	race_color             {166, 146, 117};
 }
