@@ -35,11 +35,9 @@ command_line::command_line(int argc, char** argv)
 command_line::command_line(const std::vector<std::string>& args)
 	: help(false)
 	, version(false)
-#if 0
 	, config_file()
 	, server_dir()
-	, port(0)
-#endif
+	, port()
 	, show_log_domains(false)
 	, log_domain_levels()
 	, log_precise_timestamps(false)
@@ -53,14 +51,12 @@ command_line::command_line(const std::vector<std::string>& args)
 		("version,v", "displays the server version and exits.")
 		;
 
-#if 0
 	po::options_description opts_server{"Server configuration"};
 	opts_server.add_options()
-		("config,c", po::value<std::string>(), "specifies the path to the server configuration file.")
-		("server-dir,s",  po::value<std::string>(), "specifies the path to the server storage dir.")
+		("config,c", po::value<std::string>(), "specifies the path to the server configuration file. By default this is server.cfg in the server directory.")
+		("server-dir,s",  po::value<std::string>(), "specifies the path to the server directory. By default this is the process working directory.")
 		("port,p", po::value<unsigned short>(), "specifies the port number on which the server will listen for client connections.")
 		;
-#endif
 
 	po::options_description opts_log{"Logging options"};
 	opts_log.add_options()
@@ -74,7 +70,7 @@ command_line::command_line(const std::vector<std::string>& args)
 		;
 
 	po::options_description opts;
-	opts.add(opts_general).add(opts_log);
+	opts.add(opts_general).add(opts_server).add(opts_log);
 
 	static const int style = po::command_line_style::default_style ^ po::command_line_style::allow_guessing;
 
@@ -100,7 +96,6 @@ command_line::command_line(const std::vector<std::string>& args)
 		version = true;
 	}
 
-#if 0
 	if(vm.count("config")) {
 		config_file = vm["config"].as<std::string>();
 	}
@@ -110,7 +105,6 @@ command_line::command_line(const std::vector<std::string>& args)
 	if(vm.count("port")) {
 		port = vm["port"].as<unsigned short>();
 	}
-#endif
 
 	if(vm.count("logdomains")) {
 		show_log_domains = true;

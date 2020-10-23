@@ -49,14 +49,12 @@ public:
 	/** True if --version was passed. */
 	bool version;
 
-#if 0
 	/** Path to the add-ons server configuration file. */
 	boost::optional<std::string> config_file;
 	/** Path to the add-ons server storage dir. */
 	boost::optional<std::string> server_dir;
 	/** Port number on which the server will listen for incoming connections. */
 	boost::optional<unsigned short> port;
-#endif
 
 	/** True if --logdomains was passed. */
 	bool show_log_domains;
