@@ -200,6 +200,8 @@ struct other_version_dir
 std::vector<other_version_dir> find_other_version_saves_dirs();
 
 std::string get_cwd();
+bool set_cwd(const std::string& dir);
+
 std::string get_exe_dir();
 
 bool make_directory(const std::string& dirname);
