@@ -385,14 +385,14 @@ bool chatbox::room_window_active(const std::string& room)
 lobby_chat_window* chatbox::room_window_open(const std::string& room, const bool open_new, const bool allow_close)
 {
 	return find_or_create_window(room, false, open_new, allow_close,
-		VGETTEXT("Room <i>“$name”</i> joined", { { "name", translation::dsgettext("wesnoth-lib", room.c_str()) } }));
+		VGETTEXT("Joined <i>$name</i>", { { "name", translation::dsgettext("wesnoth-lib", room.c_str()) } }));
 }
 
 lobby_chat_window* chatbox::whisper_window_open(const std::string& name, bool open_new)
 {
 	return find_or_create_window(name, true, open_new, true,
-		VGETTEXT("Whisper session with <i>“$name”</i> started. "
-		"If you do not want to receive messages from this user, type <i>/ignore $name</i>", { { "name", name } }));
+		VGETTEXT("Started private message with <i>$name</i>. "
+		"If you do not want to receive messages from this player, type <i>/ignore $name</i>", { { "name", name } }));
 }
 
 lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
