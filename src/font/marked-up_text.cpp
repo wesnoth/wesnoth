@@ -416,7 +416,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	int style = TTF_STYLE_NORMAL;
 	utf8::iterator end = utf8::iterator::end(unwrapped_text);
 
-	while(1) {
+	while(true) {
 		if(start_of_line) {
 			line_width = 0;
 			format_string.clear();

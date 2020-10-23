@@ -100,4 +100,4 @@ struct tracer
 #define TRACER_COUNT(marker)                                                 \
 	do {                                                                     \
 		++tracer.counters[std::make_pair(__LINE__, marker)];                 \
-	} while(0)
+	} while(false)

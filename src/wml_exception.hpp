@@ -42,7 +42,7 @@
 		if(!(cond)) {                                                     \
 			throw_wml_exception(#cond, __FILE__, __LINE__, __func__, message);  \
 		}                                                                 \
-	} while(0)
+	} while(false)
 
 #define VALIDATE_WITH_DEV_MESSAGE(cond, message, dev_message)             \
 	do {                                                                  \
@@ -54,12 +54,12 @@
 					, message                                             \
 					, dev_message);                                       \
 		}                                                                 \
-	} while(0)
+	} while(false)
 
 #define FAIL(message)                                                     \
 	do {                                                                  \
 		throw_wml_exception(nullptr, __FILE__, __LINE__, __func__, message);       \
-	} while(0)
+	} while(false)
 
 #define FAIL_WITH_DEV_MESSAGE(message, dev_message)                       \
 	do {                                                                  \
@@ -69,7 +69,7 @@
 				, __func__                                                \
 				, message                                                 \
 				, dev_message);                                           \
-	} while(0)
+	} while(false)
 
 /**
  *  Helper function, don't call this directly.

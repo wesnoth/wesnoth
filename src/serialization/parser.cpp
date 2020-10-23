@@ -332,7 +332,7 @@ void parser::parse_variable()
 
 	bool ignore_next_newlines = false, previous_string = false;
 
-	while(1) {
+	while(true) {
 		tok_.next_token();
 		assert(curvar != variables.end());
 
