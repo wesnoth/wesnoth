@@ -891,6 +891,22 @@ std::string get_cwd()
 
 	return cwd.generic_string();
 }
+
+bool set_cwd(const std::string& dir)
+{
+	error_code ec;
+	bfs::current_path(bfs::path{dir}, ec);
+
+	if(ec) {
+		ERR_FS << "Failed to set current directory: " << ec.message() << '\n';
+		return false;
+	} else {
+		LOG_FS << "Process working directory set to " << dir << '\n';
+	}
+
+	return true;
+}
+
 std::string get_exe_dir()
 {
 #ifdef _WIN32
