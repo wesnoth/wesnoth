@@ -36,7 +36,7 @@ wml_tag::wml_tag(const config& cfg)
 	, links_()
 	, conditions_()
 	, super_refs_()
-	, fuzzy_(name_.find_first_of("*?") != std::string::npos)
+	, fuzzy_(name_.find_first_of("*?+") != std::string::npos)
 	, any_tag_(cfg["any_tag"].to_bool())
 {
 	if(max_ < 0) {
