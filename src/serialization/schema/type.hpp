@@ -20,6 +20,7 @@
 
 #pragma once
 
+#include <map>
 #include <regex>
 
 class config;

@@ -111,7 +111,7 @@ bool wml_type_list::matches(const std::string& value, const map& type_map) const
 {
 	std::sregex_token_iterator it(value.begin(), value.end(), split_, -1), end;
 	int n = 0;
-	bool result = std::all_of(it, end, [this, &type_map, &n](const boost::ssub_match& match){
+	bool result = std::all_of(it, end, [this, &type_map, &n](const std::ssub_match& match){
 		// Not sure if this is necessary?
 		if(!match.matched) return true;
 		n++;
