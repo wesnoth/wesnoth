@@ -1014,7 +1014,7 @@ theme::object* theme::refresh_title2(const std::string& id, const std::string& t
 	if(!cfg[title_tag].empty())
 		new_title = cfg[title_tag].str();
 
-	return refresh_title(id, new_title);
+	return refresh_title(id, new_title + cfg["title_literal"].str());
 }
 
 void theme::modify_label(const std::string& id, const std::string& text)
