@@ -128,6 +128,18 @@ static void wrong_path_error(const std::string& file,
 	print_output(ss.str(), flag_exception);
 }
 
+static void duplicate_tag_error(const std::string& file,
+		int line,
+		const std::string& tag,
+		const std::string& key,
+		const std::string& value,
+		bool flag_exception)
+{
+	std::ostringstream ss;
+	ss << "Duplicate or fully-overlapping tag definition '" << value << "' in key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
+	print_output(ss.str(), flag_exception);
+}
+
 static void wrong_type_error(const std::string & file, int line,
 		const std::string & tag,
 		const std::string & key,
@@ -446,10 +458,43 @@ bool schema_self_validator::tag_path_exists(const config& cfg, const reference& 
 	return false;
 }
 
+bool schema_self_validator::tag_matches(const std::string& pattern, const std::string& tag)
+{
+	for(const std::string& pat : utils::split(pattern)) {
+		if(utils::wildcard_string_match(tag, pat)) return true;
+	}
+	return false;
+}
+
 void schema_self_validator::validate(const config& cfg, const std::string& name, int start_line, const std::string& file)
 {
 	if(type_nesting_ == 1 && name == "type") {
 		defined_types_.insert(cfg["name"]);
+	} else if(name == "tag") {
+		bool first = true;
+		std::vector<std::string> tag_names;
+		for(auto current : cfg.all_children_range()) {
+			if(current.key != "tag" && current.key != "link") continue;
+			std::string tag_name = current.cfg["name"];
+			if(current.key == "link") {
+				tag_name.erase(0, tag_name.find_last_of('/') + 1);
+			}
+			if(first) {
+				tag_names.push_back(tag_name);
+				first = false;
+				continue;
+			}
+			auto split = utils::split(tag_name);
+			for(const std::string& pattern : tag_names) {
+				for(const std::string& tag : split) {
+					if(tag_matches(pattern, tag)) {
+						queue_message(current.cfg, DUPLICATE_TAG, file, start_line, 0, current.key, "name", tag_name);
+						continue;
+					}
+				}
+			}
+			tag_names.push_back(tag_name);
+		}
 	} else if(name == "wml_schema") {
 		using namespace std::placeholders;
 		std::vector<reference> missing_types = referenced_types_, missing_tags = referenced_tag_paths_;
@@ -550,6 +595,9 @@ void schema_self_validator::print(message_info& el)
 		break;
 	case WRONG_PATH:
 		wrong_path_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
+		break;
+	case DUPLICATE_TAG:
+		duplicate_tag_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
 		break;
 	}
 }
