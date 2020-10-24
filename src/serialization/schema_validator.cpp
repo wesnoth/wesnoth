@@ -157,8 +157,8 @@ schema_validator::~schema_validator()
 
 schema_validator::schema_validator(const std::string& config_file_name, bool validate_schema)
 	: abstract_validator(config_file_name)
-	, config_read_(false)
 	, create_exceptions_(strict_validation_enabled)
+	, config_read_(false)
 	, validate_schema_(validate_schema)
 {
 	if(!read_config_file(config_file_name)) {
