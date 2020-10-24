@@ -113,12 +113,12 @@ protected:
 
 	/** Controls the way to print errors. */
 	bool create_exceptions_;
+	
+	virtual void print(message_info&);
 private:
 
 	typedef std::deque<message_info> message_list;
 	typedef std::map<const config*, message_list> message_map;
-
-	virtual void print(message_info&);
 
 	/** Reads config from input. */
 	bool read_config_file(const std::string& filename);
