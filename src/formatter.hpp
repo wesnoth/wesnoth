@@ -69,29 +69,29 @@ public:
 	}
 	
 	// Support manipulators
-    formatter& operator<<(std::ostream&(*fn)(std::ostream&)) &
+	formatter& operator<<(std::ostream&(*fn)(std::ostream&)) &
 	{
-        fn(stream_);
+		fn(stream_);
 		return *this;
-    }
+	}
 	
-    formatter&& operator<<(std::ostream&(*fn)(std::ostream&)) &&
+	formatter&& operator<<(std::ostream&(*fn)(std::ostream&)) &&
 	{
 		fn(stream_);
 		return std::move(*this);
-    }
+	}
 	
-    formatter& operator<<(std::ios_base&(*fn)(std::ios_base&)) &
+	formatter& operator<<(std::ios_base&(*fn)(std::ios_base&)) &
 	{
 		fn(stream_);
 		return *this;
-    }
+	}
 
-    formatter&& operator<<(std::ios_base&(*fn)(std::ios_base&)) &&
+	formatter&& operator<<(std::ios_base&(*fn)(std::ios_base&)) &&
 	{
 		fn(stream_);
 		return std::move(*this);
-    }
+	}
 
 private:
 	std::ostringstream stream_;
