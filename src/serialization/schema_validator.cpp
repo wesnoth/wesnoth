@@ -140,6 +140,18 @@ static void duplicate_tag_error(const std::string& file,
 	print_output(ss.str(), flag_exception);
 }
 
+static void duplicate_key_error(const std::string& file,
+		int line,
+		const std::string& tag,
+		const std::string& pat,
+		const std::string& value,
+		bool flag_exception)
+{
+	std::ostringstream ss;
+	ss << "Duplicate or fully-overlapping key definition '" << value << "' (which is also matched by '" << pat << "') in tag [" << tag << "]\n" << at(file, line) << "\n";
+	print_output(ss.str(), flag_exception);
+}
+
 static void wrong_type_error(const std::string & file, int line,
 		const std::string & tag,
 		const std::string & key,
@@ -468,12 +480,25 @@ bool schema_self_validator::tag_path_exists(const config& cfg, const reference& 
 	return false;
 }
 
-bool schema_self_validator::tag_matches(const std::string& pattern, const std::string& tag)
+bool schema_self_validator::name_matches(const std::string& pattern, const std::string& name)
 {
 	for(const std::string& pat : utils::split(pattern)) {
-		if(utils::wildcard_string_match(tag, pat)) return true;
+		if(utils::wildcard_string_match(name, pat)) return true;
 	}
 	return false;
+}
+
+void schema_self_validator::check_for_duplicates(const std::string& name, std::vector<std::string>& seen, const config& cfg, message_type type, const std::string& file, int line, const std::string& tag) {
+	auto split = utils::split(name);
+	for(const std::string& pattern : seen) {
+		for(const std::string& key : split) {
+			if(name_matches(pattern, key)) {
+				queue_message(cfg, type, file, line, 0, tag, pattern, name);
+				continue;
+			}
+		}
+	}
+	seen.push_back(name);
 }
 
 void schema_self_validator::validate(const config& cfg, const std::string& name, int start_line, const std::string& file)
@@ -481,29 +506,29 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 	if(type_nesting_ == 1 && name == "type") {
 		defined_types_.insert(cfg["name"]);
 	} else if(name == "tag") {
-		bool first = true;
-		std::vector<std::string> tag_names;
+		bool first_tag = true, first_key = true;
+		std::vector<std::string> tag_names, key_names;
 		for(auto current : cfg.all_children_range()) {
-			if(current.key != "tag" && current.key != "link") continue;
-			std::string tag_name = current.cfg["name"];
-			if(current.key == "link") {
-				tag_name.erase(0, tag_name.find_last_of('/') + 1);
-			}
-			if(first) {
-				tag_names.push_back(tag_name);
-				first = false;
-				continue;
-			}
-			auto split = utils::split(tag_name);
-			for(const std::string& pattern : tag_names) {
-				for(const std::string& tag : split) {
-					if(tag_matches(pattern, tag)) {
-						queue_message(current.cfg, DUPLICATE_TAG, file, start_line, 0, current.key, "name", tag_name);
-						continue;
-					}
+			if(current.key == "tag" || current.key == "link") {
+				std::string tag_name = current.cfg["name"];
+				if(current.key == "link") {
+					tag_name.erase(0, tag_name.find_last_of('/') + 1);
 				}
+				if(first_tag) {
+					tag_names.push_back(tag_name);
+					first_tag = false;
+					continue;
+				}
+				check_for_duplicates(tag_name, tag_names, current.cfg, DUPLICATE_TAG, file, start_line, current.key);
+			} else if(current.key == "key") {
+				std::string key_name = current.cfg["name"];
+				if(first_key) {
+					key_names.push_back(key_name);
+					first_key = false;
+					continue;
+				}
+				check_for_duplicates(key_name, key_names, current.cfg, DUPLICATE_KEY, file, start_line, current.key);
 			}
-			tag_names.push_back(tag_name);
 		}
 	} else if(name == "wml_schema") {
 		using namespace std::placeholders;
@@ -609,6 +634,9 @@ void schema_self_validator::print(message_info& el)
 		break;
 	case DUPLICATE_TAG:
 		duplicate_tag_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
+		break;
+	case DUPLICATE_KEY:
+		duplicate_key_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
 		break;
 	}
 }
