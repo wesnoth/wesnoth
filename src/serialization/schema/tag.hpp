@@ -126,6 +126,8 @@ public:
 		: name_(name)
 		, min_(min)
 		, max_(max)
+		, min_children_(0)
+		, max_children_(INT_MAX)
 		, super_(super)
 		, tags_()
 		, keys_()
@@ -169,6 +171,16 @@ public:
 		return max_;
 	}
 
+	int get_min_children() const
+	{
+		return min_children_;
+	}
+
+	int get_max_children() const
+	{
+		return max_children_;
+	}
+
 	const std::string& get_super() const
 	{
 		return super_;
@@ -202,8 +214,21 @@ public:
 		max_ = o;
 	}
 
+	void set_min_children(int o)
+	{
+		min_children_ = o;
+	}
+
+	void set_max_children(int o)
+	{
+		max_children_ = o;
+	}
+
 	void set_min(const std::string& s);
 	void set_max(const std::string& s);
+
+	void set_min_children(const std::string& s);
+	void set_max_children(const std::string& s);
 
 	void set_super(const std::string& s)
 	{
@@ -302,11 +327,17 @@ private:
 	/** name of tag. */
 	std::string name_;
 
-	/** number of minimum occasions. */
+	/** minimum number of occurrences. */
 	int min_;
 
-	/** number of maximum occasions. */
+	/** maximum number of occurrences. */
 	int max_;
+
+	/** minimum number of children. */
+	int min_children_;
+
+	/** maximum number of children. */
+	int max_children_;
 
 	/**
 	 * name of tag to extend "super-tag"

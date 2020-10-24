@@ -30,6 +30,8 @@ wml_tag::wml_tag(const config& cfg)
 	: name_(cfg["name"].str())
 	, min_(cfg["min"].to_int())
 	, max_(cfg["max"].str() == "infinite" ? -1 : cfg["max"].to_int(1))
+	, min_children_(cfg["min_tags"].to_int())
+	, max_children_(cfg["max_tags"].str() == "infinite" ? -1 : cfg["max_tags"].to_int(-1))
 	, super_("")
 	, tags_()
 	, keys_()
@@ -41,6 +43,9 @@ wml_tag::wml_tag(const config& cfg)
 {
 	if(max_ < 0) {
 		max_ = INT_MAX;
+	}
+	if(max_children_ < 0) {
+		max_children_ = INT_MAX;
 	}
 
 	if(cfg.has_attribute("super")) {

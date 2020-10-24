@@ -231,6 +231,8 @@ void schema_validator::open_tag(const std::string& name, const config& parent, i
 				if(!addittion) {
 					counter& cnt = counter_.top()[name];
 					++cnt.cnt;
+					counter& total_cnt = counter_.top()[""];
+					++total_cnt.cnt;
 				}
 			}
 		}
@@ -271,7 +273,8 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 	// Please note that validating unknown tag keys the result will be false
 	// Checking all elements counters.
 	if(have_active_tag() && is_valid()) {
-		for(const auto& tag : active_tag().tags(cfg)) {
+		const wml_tag& active = active_tag();
+		for(const auto& tag : active.tags(cfg)) {
 			int cnt = counter_.top()[tag.first].cnt;
 
 			if(tag.second.get_min() > cnt) {
@@ -283,9 +286,16 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 				queue_message(cfg, EXTRA_TAG, file, start_line, tag.second.get_max(), tag.first, "", name);
 			}
 		}
+		
+		int total_cnt = counter_.top()[""].cnt;
+		if(active.get_min_children() > total_cnt) {
+			queue_message(cfg, MISSING_TAG, file, start_line, active.get_min_children(), "*", "", active.get_name());
+		} else if(active_tag().get_max_children() < total_cnt) {
+			queue_message(cfg, EXTRA_TAG, file, start_line, active.get_max_children(), "*", "", active.get_name());
+		}
 
 		// Checking if all mandatory keys are present
-		for(const auto& key : active_tag().keys(cfg)) {
+		for(const auto& key : active.keys(cfg)) {
 			if(key.second.is_mandatory()) {
 				if(cfg.get(key.first) == nullptr) {
 					queue_message(cfg, MISSING_KEY, file, start_line, 0, name, key.first);
