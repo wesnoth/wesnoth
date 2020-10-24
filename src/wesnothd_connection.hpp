@@ -44,7 +44,6 @@
 #include <queue>
 
 class config;
-enum class loading_stage;
 
 union data_union {
 	char binary[4];
@@ -70,8 +69,6 @@ public:
 	 * @param service Service identifier such as "80" or "http"
 	 */
 	wesnothd_connection(const std::string& host, const std::string& service);
-
-	bool fetch_data_with_loading_screen(config& cfg, loading_stage stage);
 
 	void send_data(const configr_of& request);
 

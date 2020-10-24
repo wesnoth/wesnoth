@@ -287,19 +287,18 @@ void playmp_controller::wait_for_upload()
 	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
 	while(true) {
 		try {
-			const bool res =
-				mp_info_->connection.fetch_data_with_loading_screen(cfg, loading_stage::next_scenario);
+			bool res = false;
+			gui2::dialogs::loading_screen::display([&]() {
+				gui2::dialogs::loading_screen::progress(loading_stage::next_scenario);
 
-			if(res) {
-				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
-					break;
-				}
-			}
-			else
-			{
+				res = mp_info_->connection.wait_and_receive_data(cfg);
+			});
+
+			if(res && turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
+				break;
+			} else {
 				throw_quit_game_exception();
 			}
-
 		} catch(const quit_game_exception&) {
 			network_reader_.set_source([this](config& cfg) { return receive_from_wesnothd(cfg);});
 			turn_data_.send_data();

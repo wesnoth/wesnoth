@@ -93,8 +93,13 @@ bool mp_join_game::fetch_game_config()
 	bool has_scenario_and_controllers = false;
 	while(!has_scenario_and_controllers) {
 		config revc;
-		const bool data_res =
-			network_connection_.fetch_data_with_loading_screen(revc, loading_stage::download_level_data);
+		bool data_res = false;
+
+		gui2::dialogs::loading_screen::display([&]() {
+			gui2::dialogs::loading_screen::progress(loading_stage::download_level_data);
+
+			data_res = network_connection_.wait_and_receive_data(revc);
+		});
 
 		if(!data_res) {
 			return false;

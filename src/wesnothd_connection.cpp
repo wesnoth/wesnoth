@@ -14,13 +14,10 @@
 
 #include "wesnothd_connection.hpp"
 
-#include "gui/dialogs/loading_screen.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "utils/functional.hpp"
-
-#include <SDL2/SDL_timer.h>
 
 #include <cstdint>
 #include <deque>
@@ -44,7 +41,6 @@ struct mptest_log
 	}
 };
 }
-
 #define MPTEST_LOG mptest_log mptest_log__(__func__)
 #else
 #define MPTEST_LOG ((void)0)
@@ -434,17 +430,3 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 
 	return receive_data(data);
 };
-
-bool wesnothd_connection::fetch_data_with_loading_screen(config& cfg, loading_stage stage)
-{
-	assert(stage != loading_stage::none);
-
-	bool res = false;
-	gui2::dialogs::loading_screen::display([&]() {
-		gui2::dialogs::loading_screen::progress(stage);
-
-		res = wait_and_receive_data(cfg);
-	});
-
-	return res;
-}
