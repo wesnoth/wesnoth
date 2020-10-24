@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-10-17 01:28-0300\n"
-"PO-Revision-Date: 2020-08-31 11:45+1000\n"
+"PO-Revision-Date: 2020-10-21 14:51+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -22,41 +22,37 @@ msgstr ""
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "Default AI (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr ""
+msgstr "Old Default AI (1.14 version)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Multiplayer Alerts"
+msgstr "Experimental AI"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Multiplayer Alerts"
+msgstr "Dev AI: Idle AI"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr ""
+msgstr "Dev AI: Default AI (RCA) with Alternate Recruiting"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr ""
+msgstr "Dev AI: Default + Experimental Recruitment (Formula AI)"
 
 #. [ai]: id=formula_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr ""
+msgstr "Dev AI: Default + Poisoning (Formula AI)"
 
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
@@ -987,17 +983,13 @@ msgstr "Catacombs Stone Wall"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1356
-#, fuzzy
-#| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
-msgstr "Overgrown Cobbles"
+msgstr "Overgrown Wall"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1357
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
-msgstr "Clean Stone Wall"
+msgstr "Overgrown Stone Wall"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -4546,7 +4538,7 @@ msgstr "I’m Ready"
 #. [text]
 #: data/gui/window/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr ""
+msgstr "Press ESC to skip"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
@@ -6430,10 +6422,8 @@ msgid "Do you really want to log out?"
 msgstr "Do you really want to log out?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:214
-#, fuzzy
-#| msgid "Incompatible User-made Content."
 msgid "Incompatible User-made Content"
-msgstr "Incompatible User-Made Content."
+msgstr "Incompatible User-made Content"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:215
 msgid ""
@@ -6446,10 +6436,8 @@ msgstr ""
 "add-ons be updated."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:230
-#, fuzzy
-#| msgid "Missing User-made Content."
 msgid "Missing User-made Content"
-msgstr "Missing User-Made Content."
+msgstr "Missing User-made Content"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:231
 msgid ""

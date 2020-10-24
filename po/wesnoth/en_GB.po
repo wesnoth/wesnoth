@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-10-17 01:28-0300\n"
-"PO-Revision-Date: 2020-09-24 23:31+1000\n"
+"PO-Revision-Date: 2020-10-21 14:41+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -4305,10 +4305,8 @@ msgstr "$percent|% of gold carried over to the next scenario."
 
 #. [modification]: id=delay_advancements, type=hybrid
 #: data/modifications.cfg:3
-#, fuzzy
-#| msgid "Advancements:"
 msgid "Delay Advancements"
-msgstr "Advancements:"
+msgstr "Delay Advancements"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:339
@@ -4841,13 +4839,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:76
-#, fuzzy
-#| msgid ""
-#| "Poisoned units will lose eight hitpoints every turn until they are one "
-#| "point from dying. They will then remain at death’s door until the poison "
-#| "is removed. Healers can prevent a poisoned unit from deteriorating, but "
-#| "the poison will not be removed unless the unit regenerates, or begins a "
-#| "turn in a village or next to a unit with the <i>Cures</i> ability."
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
@@ -4859,7 +4850,7 @@ msgstr ""
 "point from dying. They will then remain at death’s door until the poison is "
 "removed. Healers can prevent a poisoned unit from deteriorating, but the "
 "poison will not be removed unless the unit regenerates, or begins a turn in "
-"a village or next to a unit with the <i>Cures</i> ability."
+"a village, in an oasis, or next to a unit with the <i>Cures</i> ability."
 
 #. [tip]
 #: data/tips.cfg:80
@@ -5614,18 +5605,16 @@ msgstr ""
 "the same string."
 
 #: src/addon/client.cpp:183
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid ""
 "Requesting the older version composition for the add-on <i>$addon_title</"
 "i>..."
-msgstr "Sending add-on <i>$addon_title</i>..."
+msgstr ""
+"Requesting the older version composition for the add-on <i>$addon_title</"
+"i>..."
 
 #: src/addon/client.cpp:199
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
-msgstr "Sending add-on <i>$addon_title</i>..."
+msgstr "Sending an update pack for the add-on <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:220
 msgid "Sending add-on <i>$addon_title</i>..."
@@ -8071,15 +8060,11 @@ msgid "Turn Number"
 msgstr "Turn Number"
 
 #: src/reports.cpp:1391
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
-"When the game reaches the number of turns indicated by the second number, it "
+"When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 
 #: src/reports.cpp:1416
