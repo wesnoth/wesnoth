@@ -3866,7 +3866,7 @@ namespace {
 	{
 		lua_State *L = mState;
 		config cfg;
-		if (!luaW_getglobal(L, "wesnoth", "theme_items", name))
+		if (!luaW_getglobal(L, "wesnoth", "interface", "game_display", name))
 			return cfg;
 		if (!luaW_pcall(L, 0, 1)) return cfg;
 		luaW_toconfig(L, -1, cfg);
