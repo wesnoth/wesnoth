@@ -6,7 +6,7 @@
    * Sceptre of Fire:
      * Some revisions/bugfixes to Scenario 9 "Caverns of Flame"
  ### Language and i18n
-   * Updated translations: British English, Portuguese (Brazil) 
+   * Updated translations: British English, Polish, Portuguese (Brazil) 
  ### Lua API
  ### Multiplayer
    * During allies' turns, use orb colors to show which ones can still move (issue #1424). Also enabled for allied AI sides in singleplayer.
