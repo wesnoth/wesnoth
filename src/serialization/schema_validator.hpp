@@ -182,8 +182,10 @@ private:
 	std::multimap<std::string, std::string> derivations_;
 	int type_nesting_, condition_nesting_;
 	bool tag_path_exists(const config& cfg, const reference& ref);
+	static bool tag_matches(const std::string& pattern, const std::string& tag);
+	
 	void print(message_info& message) override;
-	enum { WRONG_TYPE = NEXT_ERROR, WRONG_PATH, NEXT_ERROR };
+	enum { WRONG_TYPE = NEXT_ERROR, WRONG_PATH, DUPLICATE_TAG, NEXT_ERROR };
 };
 
 } // namespace schema_validation{
