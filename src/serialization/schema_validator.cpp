@@ -367,12 +367,6 @@ void schema_validator::print(message_info& el)
 	case MISSING_KEY:
 		missing_key_error(el.file, el.line, el.tag, el.key, create_exceptions_);
 		break;
-	case WRONG_TYPE:
-		wrong_type_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
-		break;
-	case WRONG_PATH:
-		wrong_path_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
-		break;
 	}
 }
 
@@ -546,6 +540,18 @@ bool schema_self_validator::reference::can_find(const wml_tag& root, const confi
 {
 	// The problem is that the schema being validated is that of the schema!!!
 	return root.find_tag(value_, root, cfg) != nullptr;
+}
+
+void schema_self_validator::print(message_info& el)
+{
+	switch(el.type) {
+	case WRONG_TYPE:
+		wrong_type_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
+		break;
+	case WRONG_PATH:
+		wrong_path_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
+		break;
+	}
 }
 
 } // namespace schema_validation{

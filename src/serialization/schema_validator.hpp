@@ -77,9 +77,8 @@ private:
 	typedef std::stack<cnt_map> cnt_stack;
 
 protected:
-	enum message_type{ WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, WRONG_TYPE, WRONG_PATH };
-private:
-	// error_cache
+	using message_type = int;
+	enum { WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, NEXT_ERROR };
 
 	/**
 	 * Messages are cached.
@@ -112,19 +111,20 @@ private:
 		}
 	};
 
+	/** Controls the way to print errors. */
+	bool create_exceptions_;
+private:
+
 	typedef std::deque<message_info> message_list;
 	typedef std::map<const config*, message_list> message_map;
 
-	void print(message_info&);
+	virtual void print(message_info&);
 
 	/** Reads config from input. */
 	bool read_config_file(const std::string& filename);
 
 	/** Shows, if validator is initialized with schema file. */
 	bool config_read_;
-
-	/** Controls the way to print errors. */
-	bool create_exceptions_;
 
 	/** Root of schema information. */
 	wml_tag root_;
@@ -182,6 +182,8 @@ private:
 	std::multimap<std::string, std::string> derivations_;
 	int type_nesting_, condition_nesting_;
 	bool tag_path_exists(const config& cfg, const reference& ref);
+	void print(message_info& message) override;
+	enum { WRONG_TYPE = NEXT_ERROR, WRONG_PATH, NEXT_ERROR };
 };
 
 } // namespace schema_validation{
