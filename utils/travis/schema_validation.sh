@@ -43,6 +43,28 @@ function validate_misc()
     [ "$SUCCESS" == "Yes" ]
 }
 
+function validate_schema()
+{
+    SUCCESS="Yes"
+    NAME="$1"
+    FILE="$2"
+    
+    echo "------"
+    echo "Validating schema $NAME..."
+    
+    ./wesnoth --data-dir=. --validate-schema=data/schema/$FILE.cfg &> temp.log || SUCCESS="No"
+    if [ "$SUCCESS" == "No" ]; then
+        echo "$NAME failed validation!"
+        cat temp.log
+        rm temp.log
+    fi
+    
+    echo "$NAME validation complete!  Success: $SUCCESS"
+    echo "------"
+    
+    [ "$SUCCESS" == "Yes" ]
+}
+
 function validate_campaign()
 {
     SUCCESS="Yes"
@@ -79,6 +101,11 @@ function validate_campaign()
 
 RET=0
 
+validate_schema "WML Schema"   "schema"       || RET=1
+validate_schema "Game Config"  "game_config"  || RET=1
+validate_schema "GUI2"         "gui"          || RET=1
+validate_schema "Server Pbl"   "pbl"          || RET=1
+validate_schema "WML Diff"     "diff"         || RET=1
 validate_core "Core" || RET=1
 validate_misc "Editor"      "EDITOR" || RET=1
 validate_misc "Multiplayer" "MULTIPLAYER,MULTIPLAYER_A_NEW_LAND_LOAD" || RET=1
