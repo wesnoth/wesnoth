@@ -20,7 +20,7 @@
 
 #pragma once
 
-#include <boost/regex.hpp>
+#include <regex>
 
 class config;
 
@@ -49,7 +49,7 @@ public:
  * This type represents a simple pattern match.
  */
 class wml_type_simple : public wml_type {
-	boost::regex pattern_;
+	std::regex pattern_;
 public:
 	wml_type_simple(const std::string& name, const std::string& pattern) : wml_type(name), pattern_(pattern) {}
 	bool matches(const std::string& value, const map& type_map) const override;
@@ -107,7 +107,7 @@ public:
  * Represents a list type, where each list element is itself a union.
  */
 class wml_type_list : public wml_type_union {
-	boost::regex split_;
+	std::regex split_;
 	int min_ = 0, max_ = -1;
 public:
 	wml_type_list(const std::string& name, const std::string& pattern, int min, int max)

@@ -70,8 +70,8 @@ std::shared_ptr<wml_type> wml_type::from_config(const config& cfg)
 
 bool wml_type_simple::matches(const std::string& value, const map&) const
 {
-	boost::smatch sub;
-	return boost::regex_match(value, sub, pattern_);
+	std::smatch sub;
+	return std::regex_match(value, sub, pattern_);
 }
 
 bool wml_type_alias::matches(const std::string& value, const map& type_map) const
@@ -109,7 +109,7 @@ bool wml_type_intersection::matches(const std::string& value, const map& type_ma
 
 bool wml_type_list::matches(const std::string& value, const map& type_map) const
 {
-	boost::sregex_token_iterator it(value.begin(), value.end(), split_, -1), end;
+	std::sregex_token_iterator it(value.begin(), value.end(), split_, -1), end;
 	int n = 0;
 	bool result = std::all_of(it, end, [this, &type_map, &n](const boost::ssub_match& match){
 		// Not sure if this is necessary?
