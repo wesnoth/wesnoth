@@ -347,8 +347,6 @@ void game_load::filter_text_changed(text_box_base* textbox, const std::string& t
 
 	if(!text.empty()) {
 		for(unsigned int i = 0; i < list.get_item_count() && i < games_.size(); i++) {
-			grid* row = list.get_row_grid(i);
-
 			bool found = false;
 			for(const auto & word : words)
 			{
