@@ -30,7 +30,7 @@ dbconn::dbconn(const config& c)
 	, db_extra_table_(c["db_extra_table"].str())
 	, db_game_info_table_(c["db_game_info_table"].str())
 	, db_game_player_info_table_(c["db_game_player_info_table"].str())
-	, db_game_modification_info_table_(c["db_game_modification_info_table"].str())
+	, db_game_content_info_table_(c["db_game_content_info_table"].str())
 	, db_user_group_table_(c["db_user_group_table"].str())
 	, db_tournament_query_(c["db_tournament_query"].str())
 {
@@ -208,12 +208,12 @@ void dbconn::write_user_int(const std::string& column, const std::string& name, 
 	}
 }
 
-void dbconn::insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password, const std::string& map_source, const std::string& map_version, const std::string& era_source, const std::string& era_version)
+void dbconn::insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password)
 {
 	try
 	{
-		modify(connection_, "INSERT INTO `"+db_game_info_table_+"`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME, MAP_NAME, ERA_NAME, RELOAD, OBSERVERS, PUBLIC, PASSWORD, MAP_SOURCE_ADDON, MAP_VERSION, ERA_SOURCE_ADDON, ERA_VERSION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-			uuid, game_id, version, name, map_name, era_name, reload, observers, is_public, has_password, map_source, map_version, era_source, era_version);
+		modify(connection_, "INSERT INTO `"+db_game_info_table_+"`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME, RELOAD, OBSERVERS, PUBLIC, PASSWORD) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
+			uuid, game_id, version, name, reload, observers, is_public, has_password);
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -244,16 +244,16 @@ void dbconn::insert_game_player_info(const std::string& uuid, int game_id, const
 		log_sql_exception("Failed to insert game player info row for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
 	}
 }
-void dbconn::insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name, const std::string& modification_source, const std::string& modification_version)
+void dbconn::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& source, const std::string& version)
 {
 	try
 	{
-		modify(connection_, "INSERT INTO `"+db_game_modification_info_table_+"`(INSTANCE_UUID, GAME_ID, MODIFICATION_NAME, SOURCE_ADDON, VERSION) VALUES(?, ?, ?, ?, ?)",
-			uuid, game_id, modification_name, modification_source, modification_version);
+		modify(connection_, "INSERT INTO `"+db_game_content_info_table_+"`(INSTANCE_UUID, GAME_ID, TYPE, ID, SOURCE, VERSION) VALUES(?, ?, ?, ?, ?, ?)",
+			uuid, game_id, type, id, source, version);
 	}
 	catch(const mariadb::exception::base& e)
 	{
-		log_sql_exception("Failed to insert game modification info row for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
+		log_sql_exception("Failed to insert game content info row for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
 	}
 }
 void dbconn::set_oos_flag(const std::string& uuid, int game_id)
@@ -261,7 +261,7 @@ void dbconn::set_oos_flag(const std::string& uuid, int game_id)
 	try
 	{
 		modify(connection_, "UPDATE `"+db_game_info_table_+"` SET OOS = 1 WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
-		uuid, game_id);
+			uuid, game_id);
 	}
 	catch(const mariadb::exception::base& e)
 	{

@@ -66,12 +66,6 @@ create table game_info
     GAME_NAME        VARCHAR(255) NOT NULL,
     START_TIME       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     END_TIME         TIMESTAMP NULL DEFAULT NULL,
-    MAP_NAME         VARCHAR(255) NOT NULL,
-    MAP_SOURCE_ADDON VARCHAR(255) NOT NULL DEFAULT '',
-    MAP_VERSION      VARCHAR(255) NOT NULL DEFAULT '',
-    ERA_NAME         VARCHAR(255) NOT NULL,
-    ERA_SOURCE_ADDON VARCHAR(255) NOT NULL DEFAULT '',
-    ERA_VERSION      VARCHAR(255) NOT NULL DEFAULT '',
     REPLAY_NAME      VARCHAR(255),
     OOS              BIT(1) NOT NULL DEFAULT 0,
     RELOAD           BIT(1) NOT NULL,
@@ -104,13 +98,18 @@ create table game_player_info
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- information about any modifications that the game present in game_info has enabled
-create table game_modification_info
+-- information about the scenario/era/modifications for the game
+-- TYPE: one of era/scenario/modification
+-- ID: the id of the content
+-- SOURCE: the id of the add-on that the particular content came from
+-- VERSION: the version of the source add-on
+create table game_content_info
 (
     INSTANCE_UUID     CHAR(36) NOT NULL,
     GAME_ID           INT UNSIGNED NOT NULL,
-    MODIFICATION_NAME VARCHAR(255) NOT NULL,
-    SOURCE_ADDON      VARCHAR(255) NOT NULL DEFAULT '',
-    VERSION           VARCHAR(255) NOT NULL DEFAULT '',
-    PRIMARY KEY (INSTANCE_UUID, GAME_ID, MODIFICATION_NAME)
+    TYPE              VARCHAR(255) NOT NULL,
+    ID                VARCHAR(255) NOT NULL,
+    SOURCE            VARCHAR(255) NOT NULL,
+    VERSION           VARCHAR(255) NOT NULL,
+    PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

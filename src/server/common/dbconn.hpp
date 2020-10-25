@@ -43,10 +43,10 @@ class dbconn
 		int get_user_int(const std::string& table, const std::string& column, const std::string& name);
 		void write_user_int(const std::string& column, const std::string& name, int value);
 		ban_check get_ban_info(const std::string& name, const std::string& ip);
-		void insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password, const std::string& map_source, const std::string& map_version, const std::string& era_source, const std::string& era_version);
+		void insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password);
 		void update_game_end(const std::string& uuid, int game_id, const std::string& replay_location);
 		void insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
-		void insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name, const std::string& modification_source, const std::string& modification_version);
+		void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& source, const std::string& version);
 		void set_oos_flag(const std::string& uuid, int game_id);
 
 	private:
@@ -58,7 +58,7 @@ class dbconn
 		std::string db_extra_table_;
 		std::string db_game_info_table_;
 		std::string db_game_player_info_table_;
-		std::string db_game_modification_info_table_;
+		std::string db_game_content_info_table_;
 		std::string db_user_group_table_;
 		std::string db_tournament_query_;
 
