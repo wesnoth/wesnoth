@@ -131,12 +131,12 @@ static void wrong_path_error(const std::string& file,
 static void duplicate_tag_error(const std::string& file,
 		int line,
 		const std::string& tag,
-		const std::string& key,
+		const std::string& pat,
 		const std::string& value,
 		bool flag_exception)
 {
 	std::ostringstream ss;
-	ss << "Duplicate or fully-overlapping tag definition '" << value << "' in key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
+	ss << "Duplicate or fully-overlapping tag definition '" << value << "' (which is also matched by '" << pat << "') in tag [" << tag << "]\n" << at(file, line) << "\n";
 	print_output(ss.str(), flag_exception);
 }
 
