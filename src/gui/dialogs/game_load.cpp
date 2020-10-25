@@ -346,21 +346,18 @@ void game_load::filter_text_changed(text_box_base* textbox, const std::string& t
 	show_items.resize(list.get_item_count(), true);
 
 	if(!text.empty()) {
-		for(unsigned int i = 0; i < list.get_item_count(); i++) {
+		for(unsigned int i = 0; i < list.get_item_count() && i < games_.size(); i++) {
 			grid* row = list.get_row_grid(i);
-
-			grid::iterator it = row->begin();
-			label& filename_label = find_widget<label>(*it, "filename", false);
 
 			bool found = false;
 			for(const auto & word : words)
 			{
-				found = std::search(filename_label.get_label().str().begin(),
-									filename_label.get_label().str().end(),
+				found = std::search(games_[i].name().begin(),
+									games_[i].name().end(),
 									word.begin(),
 									word.end(),
 									chars_equal_insensitive)
-						!= filename_label.get_label().str().end();
+						!= games_[i].name().end();
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()
