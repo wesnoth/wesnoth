@@ -1649,32 +1649,13 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			const simple_wml::node& m = *g.level().root().child("multiplayer");
 			DBG_SERVER << simple_wml::node_to_string(m) << '\n';
 			// [addon] info handling
-			std::string scenario_addon_id = "";
-			std::string scenario_addon_version = "";
-			std::string scenario_id = "";
-			std::string era_addon_id = "";
-			std::string era_addon_version = "";
-			std::string era_id = "";
 			for(const auto& addon : m.children("addon")) {
 				for(const auto& content : addon->children("content")) {
-					const simple_wml::string_span& type = content->attr("type");
-					if(type == "scenario") {
-						scenario_addon_id = addon->attr("id").to_string();
-						scenario_addon_version = addon->attr("version").to_string();
-						scenario_id = content->attr("id").to_string();
-					} else if(type == "era") {
-						era_addon_id = addon->attr("id").to_string();
-						era_addon_version = addon->attr("version").to_string();
-						era_id = content->attr("id").to_string();
-					} else if(type == "modification") {
-						user_handler_->db_insert_modification_info(uuid_, g.db_id(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
-					} else {
-						WRN_SERVER << "[multiplayer][addon][content] sent with unknown type.\n" << simple_wml::node_to_string(*addon) << '\n';
-					}
+					user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
 				}
 			}
 
-			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), scenario_id, era_id, g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password(), scenario_addon_id, scenario_addon_version, era_addon_id, era_addon_version);
+			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {

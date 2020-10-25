@@ -211,8 +211,8 @@ std::string fuh::get_tournaments(){
 	return conn_.get_tournaments();
 }
 
-void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password, const std::string& map_source, const std::string& map_version, const std::string& era_source, const std::string& era_version){
-	conn_.insert_game_info(uuid, game_id, version, name, map_name, era_name, reload, observers, is_public, has_password, map_source, map_version, era_source, era_version);
+void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password){
+	conn_.insert_game_info(uuid, game_id, version, name, reload, observers, is_public, has_password);
 }
 
 void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location){
@@ -223,8 +223,8 @@ void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const
 	conn_.insert_game_player_info(uuid, game_id, username, side_number, is_host, faction, version, source, current_user);
 }
 
-void fuh::db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name, const std::string& modification_source, const std::string& modification_version){
-	conn_.insert_modification_info(uuid, game_id, modification_name, modification_source, modification_version);
+void fuh::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& source, const std::string& version){
+	conn_.db_insert_game_content_info(uuid, game_id, type, id, source, version);
 }
 
 void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
