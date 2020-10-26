@@ -1,5 +1,5 @@
 ## Version 1.14.14+dev
- ### Language and i18n
+ ### Translations
    * Updated translations: British English, Catalan, French, Japanese, Polish,
      Portuguese (Brazil)
  ### Miscellaneous and Bug Fixes
