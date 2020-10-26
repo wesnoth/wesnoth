@@ -401,7 +401,11 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		verified = false;
 	}
 
-	// Remove any newlines that might have been in game titles
+	// Remove any newlines that might have been in game names (the player-set ones)
+	// No idea how this could happen, but I've seen it (vultraz, 2020-10-26)
+	boost::erase_all(name, "\n");
+
+	// Remove any newlines that might have been in game titles (scenario/campaign name, etc.)
 	boost::replace_all(scenario, "\n", " " + font::unicode_em_dash + " ");
 
 	if(reloaded) {
