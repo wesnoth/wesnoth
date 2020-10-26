@@ -121,7 +121,7 @@
   LangString		LCode			${LANG_POLISH}			"pl"
   LangString		LEditor			${LANG_POLISH}			"Edytor map"
   LangString		LManual			${LANG_POLISH}			"Podręcznik użytkownika"
-  LangString		LWesnoth		${LANG_POLISH}			"Bitwy o Wesnoth"
+  LangString		LWesnoth		${LANG_POLISH}			"Bitwa o Wesnoth"
   LangString		LUserdata		${LANG_POLISH}			"Dane użytkownika"
 
   !insertmacro		MUI_LANGUAGE	"Portuguese"
