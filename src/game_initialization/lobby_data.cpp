@@ -214,8 +214,8 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 
 	// Parse the list of addons required to join this game.
 	for(const config& addon : game.child_range("addon")) {
-		if(addon.has_attribute("id")) {
-			if(std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end() && addon["require"].to_bool(false)) {
+		if(addon.has_attribute("id") && addon["require"].to_bool(false)) {
+			if(std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end()) {
 				required_addon r;
 				r.addon_id = addon["id"].str();
 				r.outcome = NEED_DOWNLOAD;
