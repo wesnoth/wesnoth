@@ -412,8 +412,8 @@ public:
 
 	/* Enters the mp loop. It consists of four screens:
 	 *
-	 * Host POV:   LOBBY <---> CREATE GAME ---> STAGING ------------------> GAME BEGINS
-	 * Player POV: LOBBY <---------------------------------> JOIN GAME ---> GAME BEGINS
+	 * Host POV:   LOBBY <---> CREATE GAME ---> STAGING -----> GAME BEGINS
+	 * Player POV: LOBBY <--------------------> JOIN GAME ---> GAME BEGINS
 	 */
 	void run_lobby_loop()
 	{
@@ -421,6 +421,11 @@ public:
 		// enter_create_mode should be accessed directly.
 		if(!connection) {
 			return;
+		}
+
+		// Seed initial data
+		if(!lobby_config.empty()) {
+			lobby_info.process_gamelist(lobby_config);
 		}
 
 		// A return of false means a config reload was requested, so do that and then loop.
@@ -449,6 +454,8 @@ private:
 	void enter_staging_mode();
 	void enter_wait_mode(int game_id, bool observe);
 
+	// TODO: refactor this out. It's really only passed through to the dialogs for the
+	// minimap and the preferences dialog. Shouldn't need to be kept here.
 	const game_config_view* game_config;
 
 	saved_game& state;
@@ -577,10 +584,6 @@ bool mp_manager::enter_lobby_mode()
 		} else {
 			sound::empty_playlist();
 			sound::stop_music();
-		}
-
-		if(!lobby_config.empty()) {
-			lobby_info.process_gamelist(lobby_config);
 		}
 
 		int dlg_retval = 0;
