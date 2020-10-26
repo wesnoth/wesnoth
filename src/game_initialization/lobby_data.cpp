@@ -179,6 +179,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	, map_data(game["map_data"])
 	, name(font::escape_text(game["name"]))
 	, scenario()
+	, type_marker()
 	, remote_scenario(false)
 	, map_info()
 	, map_size_info()
@@ -322,7 +323,8 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		}
 
 		if(*level_cfg) {
-			scenario = formatter() << make_game_type_marker(_("scenario_abbreviation^S"), false) << (*level_cfg)["name"].str();
+			type_marker = make_game_type_marker(_("scenario_abbreviation^S"), false);
+			scenario = (*level_cfg)["name"].str();
 			info_stream << scenario;
 
 			// Reloaded games do not match the original scenario hash, so it makes no sense
@@ -355,15 +357,17 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 			if(require) {
 				addons_outcome = std::max(addons_outcome, NEED_DOWNLOAD); // Elevate to most severe error level encountered so far
 			}
-			scenario = formatter() << make_game_type_marker(_("scenario_abbreviation^S"), true) << game["mp_scenario_name"].str();
+			type_marker = make_game_type_marker(_("scenario_abbreviation^S"), true);
+			scenario = game["mp_scenario_name"].str();
 			info_stream << scenario;
 			verified = false;
 		}
 	} else if(!game["mp_campaign"].empty()) {
 		if(const config& campaign_cfg = game_config.find_child("campaign", "id", game["mp_campaign"])) {
+			type_marker = make_game_type_marker(_("campaign_abbreviation^C"), false);
+
 			std::stringstream campaign_text;
 			campaign_text
-				<< make_game_type_marker(_("campaign_abbreviation^C"), false)
 				<< campaign_cfg["name"] << spaced_em_dash()
 				<< game["mp_scenario_name"];
 
@@ -386,7 +390,8 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			//}
 		} else {
-			scenario = formatter() << make_game_type_marker(_("campaign_abbreviation^C"), true) << game["mp_campaign_name"].str();
+			type_marker = make_game_type_marker(_("campaign_abbreviation^C"), true);
+			scenario = game["mp_campaign_name"].str();
 			info_stream << scenario;
 			verified = false;
 		}
