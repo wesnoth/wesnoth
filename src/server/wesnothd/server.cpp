@@ -358,7 +358,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 	const std::string res = process_command(cmd, "*socket*");
 
 	// Only mark the response if we fake the issuer (i.e. command comes from IRC or so)
-	if(cmd.at(0) == '+') {
+	if(!cmd.empty() && cmd.at(0) == '+') {
 		LOG_SERVER << "[admin_command_response]\n"
 				   << res << "\n"
 				   << "[/admin_command_response]\n";
@@ -1955,7 +1955,7 @@ std::string server::process_command(std::string query, std::string issuer_name)
 {
 	boost::trim(query);
 
-	if(issuer_name == "*socket*" && query.at(0) == '+') {
+	if(issuer_name == "*socket*" && !query.empty() && query.at(0) == '+') {
 		// The first argument might be "+<issuer>: ".
 		// In that case we use +<issuer>+ as the issuer_name.
 		// (Mostly used for communication with IRC.)
