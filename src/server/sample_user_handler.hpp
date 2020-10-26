@@ -68,10 +68,10 @@ class suh : public user_handler {
 		bool use_phpbb_encryption() const { return false; }
 
 		std::string get_uuid();
-		void db_insert_game_info(const std::string&, int, const std::string&, const std::string&, const std::string&, const std::string&, int, int, int, int, const std::string&, const std::string&, const std::string&, const std::string&){}
+		void db_insert_game_info(const std::string&, int, const std::string&, const std::string&, int, int, int, int){}
 		void db_update_game_end(const std::string&, int, const std::string&){}
 		void db_insert_game_player_info(const std::string&, int, const std::string&, int, int, const std::string&, const std::string&, const std::string&, const std::string&){}
-		void db_insert_modification_info(const std::string&, int, const std::string&, const std::string&, const std::string&){}
+		void db_insert_content_info(const std::string&, int, const std::string&, const std::string&, const std::string&, const std::string&){}
 		void db_set_oos_flag(const std::string&, int){}
 
 	private:

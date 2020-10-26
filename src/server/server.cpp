@@ -1752,7 +1752,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			// 1.14.9 and earlier also use whether observers are allowed to determine if the replay should be public
 			// 1.14.10+ have a separate attribute for that
 			bool is_public = m["private_replay"].to_string() == "" ? m["observer"].to_bool() : !m["private_replay"].to_bool();
-			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), is_public, g.has_password(), m["mp_scenario_addon_id"].to_string(), m["mp_scenario_addon_version"].to_string(), m["mp_era_addon_id"].to_string(), m["mp_era_addon_version"].to_string());
+			user_handler_->db_insert_game_info(uuid_, g.db_id(), game_config::wesnoth_version.str(), g.name(), g.is_reload(), m["observer"].to_bool(), is_public, g.has_password());
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
@@ -1783,13 +1783,18 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			if(!mod_info_present && (!mod_sources.empty() || !mod_versions.empty())) {
 				WRN_SERVER << "mod info mismatch for game " << g.id() << ", " << g.db_id() << " - mods: '" << m["active_mods"].to_string() << "', mod_versions: '" << m["active_mod_versions"].to_string() << "', mod_sources: '" << m["active_mod_addon_ids"].to_string() << "'";
 			}
+			// insert modifications
 			for(unsigned int i = 0; i < mods.size(); i++){
 				if(!mod_info_present) {
-					user_handler_->db_insert_modification_info(uuid_, g.db_id(), mods[i], "", "");
+					user_handler_->db_insert_content_info(uuid_, g.db_id(), "modification", mods[i], "", "");
 				} else {
-					user_handler_->db_insert_modification_info(uuid_, g.db_id(), mods[i], mod_sources[i], mod_versions[i]);
+					user_handler_->db_insert_content_info(uuid_, g.db_id(), "modification", mods[i], mod_sources[i], mod_versions[i]);
 				}
 			}
+			// scenario
+			user_handler_->db_insert_content_info(uuid_, g.db_id(), "scenario", m["mp_scenario"].to_string(), m["mp_scenario_addon_id"].to_string(), m["mp_scenario_addon_version"].to_string());
+			// era
+			user_handler_->db_insert_content_info(uuid_, g.db_id(), "era", m["mp_era"].to_string(), m["mp_era_addon_id"].to_string(), m["mp_era_addon_version"].to_string());
 		}
 
 		// update the game having changed in the lobby
