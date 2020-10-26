@@ -137,15 +137,4 @@ void level_to_gamestate(const config& level, saved_game& state)
 	state.classification().campaign_type = type;
 }
 
-void check_response(bool res, const config& data)
-{
-	if(!res) {
-		throw wesnothd_error(_("Connection timed out"));
-	}
-
-	if(const config& err = data.child("error")) {
-		throw wesnothd_error(err["message"]);
-	}
-}
-
 } // end namespace mp

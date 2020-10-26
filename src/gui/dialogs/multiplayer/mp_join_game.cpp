@@ -102,12 +102,15 @@ bool mp_join_game::fetch_game_config()
 		});
 
 		if(!data_res) {
+			// NOTE: there used to be a function after this that would throw wesnothd_error if data_res was false.
+			// However, this block here already handles that case. Dunno if we ever need this exception again.
+			// throw wesnothd_error(_("Connection timed out"));
 			return false;
 		}
 
-		mp::check_response(data_res, revc);
-
-		if(revc.child("leave_game")) {
+		if(const config& err = revc.child("error")) {
+			throw wesnothd_error(err["message"]);
+		} else if(revc.child("leave_game")) {
 			return false;
 		} else if(config& next_scenario = revc.child("next_scenario")) {
 			level_.swap(next_scenario);
