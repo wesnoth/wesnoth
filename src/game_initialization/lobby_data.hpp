@@ -145,6 +145,7 @@ struct game_info
 	std::string map_data;
 	std::string name;
 	std::string scenario;
+	std::string type_marker;
 	bool remote_scenario;
 	std::string map_info;
 	std::string map_size_info;
