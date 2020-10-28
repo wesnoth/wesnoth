@@ -953,16 +953,33 @@ function wesnoth.wml_actions.cancel_action(cfg)
 end
 
 function wesnoth.wml_actions.store_unit_defense(cfg)
+	wesnoth.deprecated_message("[store_unit_defense]", 3, "1.17.0", "This function returns the chance to be hit, high values represent bad defenses. Using [store_unit_defense_on] is recommended instead.")
+
 	local unit = wesnoth.units.find_on_map(cfg)[1] or wml.error "[store_unit_defense]'s filter didn't match any unit"
 	local terrain = cfg.terrain
 	local defense
 
 	if terrain then
-		defense = units:defense(terrain)
+		defense = unit:chance_to_be_hit(terrain)
 	elseif cfg.loc_x and cfg.loc_y then
-		defense = units:defense(wesnoth.get_terrain(cfg.loc_x, cfg.loc_y))
+		defense = unit:chance_to_be_hit(wesnoth.get_terrain(cfg.loc_x, cfg.loc_y))
 	else
-		defense = units:defense(wesnoth.get_terrain(unit.x, unit.y))
+		defense = unit:chance_to_be_hit(wesnoth.get_terrain(unit.x, unit.y))
+	end
+	wml.variables[cfg.variable or "terrain_defense"] = defense
+end
+
+function wesnoth.wml_actions.store_unit_defense_on(cfg)
+	local unit = wesnoth.units.find_on_map(cfg)[1] or wml.error "[store_unit_defense_on]'s filter didn't match any unit"
+	local terrain = cfg.terrain
+	local defense
+
+	if terrain then
+		defense = unit:defense_on(terrain)
+	elseif cfg.loc_x and cfg.loc_y then
+		defense = unit:defense_on(wesnoth.get_terrain(cfg.loc_x, cfg.loc_y))
+	else
+		defense = unit:defense_on(wesnoth.get_terrain(unit.x, unit.y))
 	end
 	wml.variables[cfg.variable or "terrain_defense"] = defense
 end
