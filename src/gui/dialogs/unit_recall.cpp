@@ -313,6 +313,10 @@ void unit_recall::rename_unit(window& window)
 	listbox& list = find_widget<listbox>(&window, "recall_list", false);
 
 	const int index = list.get_selected_row();
+	if (index == -1) {
+		return;
+	}
+
 	unit& selected_unit = const_cast<unit&>(*recall_list_[index].get());
 
 	std::string name = selected_unit.name();
@@ -343,6 +347,9 @@ void unit_recall::dismiss_unit(window& window)
 
 	listbox& list = find_widget<listbox>(&window, "recall_list", false);
 	const int index = list.get_selected_row();
+	if (index == -1) {
+		return;
+	}
 
 	const unit& u = *recall_list_[index].get();
 
@@ -464,6 +471,11 @@ void unit_recall::filter_text_changed(text_box_base* textbox, const std::string&
 	}
 
 	list.set_row_shown(show_items);
+
+	// Disable rename and dismiss buttons if no units are shown
+	const bool any_shown = list.any_rows_shown();
+	find_widget<button>(&window, "rename", false).set_active(any_shown);
+	find_widget<button>(&window, "dismiss", false).set_active(any_shown);
 }
 
 } // namespace dialogs
