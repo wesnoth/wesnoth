@@ -102,6 +102,11 @@ void context_manager::refresh_on_context_change()
 	resources::tod_manager = get_map_context().get_time_manager();
 	resources::classification = &get_map_context().get_classification();
 
+	// Reset side when switching to an existing scenario
+	if (gui().get_teams().size() > 0) {
+		gui().set_team(0, true);
+		gui().set_playing_team(0);
+	}
 	gui().init_flags();
 
 	reload_map();
@@ -970,6 +975,8 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 
 	// Give the new scenario an initial side.
 	get_map_context().new_side();
+	gui().set_team(0, true);
+	gui().set_playing_team(0);
 	gui_.init_flags();
 }
 
