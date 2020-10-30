@@ -406,8 +406,7 @@ private:
 
 	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
 
-	std::vector<std::string> find_links(utils::string_view text) const;
-	void format_links(std::string& text, const std::vector<std::string>& links) const;
+	std::string format_links(const std::string& text) const;
 };
 
 /**
