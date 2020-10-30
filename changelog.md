@@ -2,6 +2,8 @@
  ### Translations
    * Updated translations: British English, Catalan, French, Japanese, Polish,
      Portuguese (Brazil)
+ ### User interface
+   * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
  ### Miscellaneous and Bug Fixes
    * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
    * Removed documentation for network proxy-related command line options previously removed in version 1.13.1 along with libana.
