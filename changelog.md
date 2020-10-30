@@ -11,7 +11,7 @@
  ### Terrain
    * New barrier terrain:  Iron Fence (`^Eqf`) - similar layout to the existing wooden fence
  ### Translations
-   * Updated translations: British English, Polish, Portuguese (Brazil)
+   * Updated translations: British English, Catalan, Polish, Portuguese (Brazil)
  ### Units
  ### User interface
  ### WML Engine
