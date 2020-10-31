@@ -14,6 +14,7 @@
    * Updated translations: British English, Catalan, Polish, Portuguese (Brazil)
  ### Units
  ### User interface
+   * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
