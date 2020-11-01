@@ -32,33 +32,15 @@ editor_action* mouse_action_map_label::click_left(editor_display& disp, int x, i
 	click_ = true;
 	map_location hex = disp.hex_clicked_on(x, y);
 	clicked_on_ = hex;
-	last_draged_ = hex;
 	return nullptr;
 }
 
 editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, int y
-		, bool& partial, editor_action* /*last_undo*/)
+		, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
-
-	/* Cursor is still on old hex field */
-	if (hex == last_draged_)
-		return nullptr;
-	click_ = false;
-
-	editor_action_chain* chain = nullptr;
-	const terrain_label* label = disp.get_controller().get_current_map_context().get_labels().get_label(last_draged_);
-
-
-	if (label) {
-		partial = true;
-		chain = new editor_action_chain(new editor_action_label_delete(last_draged_));
-		chain->append_action(new editor_action_label(hex, label->text(), label->team_name(), label->color(),
-			label->visible_in_fog(), label->visible_in_shroud(), label->immutable(), label->category()));
-	}
-
-	last_draged_ = hex;
-	return chain;
+	click_ = (hex == clicked_on_);
+	return nullptr;
 }
 
 editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int y)
@@ -106,6 +88,47 @@ editor_action* mouse_action_map_label::up_right(editor_display& disp, int x, int
 	//	return nullptr;
 
 	return new editor_action_label_delete(hex);
+}
+
+editor_action* mouse_action_map_label::drag_end_left(editor_display& disp, int x, int y)
+{
+	if (click_) return nullptr;
+
+	map_location hex = disp.hex_clicked_on(x, y);
+	if (!disp.get_map().on_board(hex))
+		return nullptr;
+
+	const terrain_label* dragged_label = disp
+		.get_controller()
+		.get_current_map_context()
+		.get_labels()
+		.get_label(clicked_on_);
+
+	// Return nullptr if the dragged label doesn't exist
+	if (!dragged_label) {
+		return nullptr;
+	}
+
+	// Create action chain to:
+	// 1. Delete label in initial hex
+	// 2. Delete label in target hex if it exists, otherwise will no-op
+	// 3. Create label in target hex
+	editor_action_chain* chain = new editor_action_chain(new editor_action_label_delete(clicked_on_));
+	chain->append_action(new editor_action_label_delete(hex));
+	chain->append_action(
+		new editor_action_label(
+			hex,
+			dragged_label->text(),
+			dragged_label->team_name(),
+			dragged_label->color(),
+			dragged_label->visible_in_fog(),
+			dragged_label->visible_in_shroud(),
+			dragged_label->immutable(),
+			dragged_label->category()
+		)
+	);
+
+	return chain;
 }
 
 void mouse_action_map_label::set_mouse_overlay(editor_display& disp)
