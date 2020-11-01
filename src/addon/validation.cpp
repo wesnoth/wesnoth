@@ -25,46 +25,47 @@
 
 const unsigned short default_campaignd_port = 15015;
 
-namespace {
-	const std::array<std::string, ADDON_TYPES_COUNT> addon_type_strings {{
-		"unknown", "core", "campaign", "scenario", "campaign_sp_mp", "campaign_mp",
-		"scenario_mp", "map_pack", "era", "faction", "mod_mp", /*"gui", */ "media",
-		"other"
-	}};
+namespace
+{
 
-	// Reserved DOS device names on Windows XP and later.
-	const std::set<std::string> dos_device_names = {
-		"NUL", "CON", "AUX", "PRN",
-		// Console API devices
-		"CONIN$", "CONOUT$",
-		// Configuration-dependent devices
-		"COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
-		"LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9",
-	};
+const std::array<std::string, ADDON_TYPES_COUNT> addon_type_strings {{
+	"unknown", "core", "campaign", "scenario", "campaign_sp_mp", "campaign_mp",
+	"scenario_mp", "map_pack", "era", "faction", "mod_mp", /*"gui", */ "media",
+	"other"
+}};
 
-	struct addon_name_char_illegal
+// Reserved DOS device names on Windows XP and later.
+const std::set<std::string> dos_device_names = {
+	"NUL", "CON", "AUX", "PRN",
+	// Console API devices
+	"CONIN$", "CONOUT$",
+	// Configuration-dependent devices
+	"COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
+	"LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9",
+};
+
+struct addon_name_char_illegal
+{
+	/**
+	 * Returns whether the given add-on name char is not whitelisted.
+	 */
+	inline bool operator()(char c) const
 	{
-		/**
-		 * Returns whether the given add-on name char is not whitelisted.
-		 */
-		inline bool operator()(char c) const
-		{
-			switch(c)
-			{
-				case '-':		// hyphen-minus
-				case '_':		// low line
+		switch(c) {
+			case '-':		// hyphen-minus
+			case '_':		// low line
 				return false;
-				default:
-					return !isalnum(c);
-			}
+			default:
+				return !isalnum(c);
 		}
-	};
+	}
+};
 
-	struct addon_filename_ucs4char_illegal
+struct addon_filename_ucs4char_illegal
+{
+	inline bool operator()(char32_t c) const
 	{
-		inline bool operator()(char32_t c) const
-		{
-			switch(c){
+		switch(c) {
 			case ' ':
 			case '"':
 			case '*':
@@ -84,10 +85,11 @@ namespace {
 					(c >= 0x80 && c < 0xA0) ||  // C1 control characters
 					(c >= 0xD800 && c < 0xE000) // surrogate pairs
 				);
-			}
 		}
-	};
-}
+	}
+};
+
+} // end unnamed namespace
 
 bool addon_name_legal(const std::string& name)
 {
