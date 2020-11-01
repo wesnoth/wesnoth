@@ -28,16 +28,21 @@ class mouse_action_map_label : public mouse_action
 {
 public:
 	mouse_action_map_label(const CKey& key, empty_palette& palette)
-	: mouse_action(palette, key), click_(false), clicked_on_(), last_draged_()
+	: mouse_action(palette, key), click_(false), clicked_on_()
 	  {
 	  }
 
 	editor_action* click_left(editor_display& disp, int x, int y);
 
 	/**
-	 * Drag operation. A click should have occurred earlier. Defaults to no action.
+	 * Drags a label.
 	 */
 	editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+
+	/**
+	 * Replaces the label under the mouse with the dragged label.
+	 */
+	editor_action* drag_end_left(editor_display& disp, int x, int y);
 
 	/**
 	 * Left click displays a dialog that is used for entering the label string.
@@ -56,7 +61,6 @@ public:
 private:
 	bool click_;
 	map_location clicked_on_;
-	map_location last_draged_;
 };
 
 } //end namespace editor
