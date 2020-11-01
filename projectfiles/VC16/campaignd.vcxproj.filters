@@ -40,6 +40,9 @@
       <Filter>Server\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\hash.hpp" />
+    <ClInclude Include="..\..\src\server\campaignd\auth.hpp">
+      <Filter>Server\Campaignd</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\addon\validation.cpp">
@@ -64,5 +67,8 @@
       <Filter>Server\Common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\hash.cpp" />
+    <ClCompile Include="..\..\src\server\campaignd\auth.cpp">
+      <Filter>Server\Campaignd</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
