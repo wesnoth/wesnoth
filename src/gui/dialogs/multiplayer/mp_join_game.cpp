@@ -345,8 +345,6 @@ void mp_join_game::generate_side_list(window& window)
 
 	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
 
-	window.keyboard_capture(&tree);
-
 	tree.clear();
 	team_tree_map_.clear();
 	const std::map<std::string, string_map> empty_map;
