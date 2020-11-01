@@ -1,5 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Copyright (C) 2015 - 2020 by Iris Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -70,15 +71,74 @@ namespace campaignd {
 
 namespace {
 
-/* Secure password storage functions */
-bool authenticate(config& campaign, const config::attribute_value& passphrase)
+//
+// Auxiliary shortcut functions
+//
+
+/**
+ * WML version of campaignd::auth::verify_passphrase().
+ *
+ * The salt and hash are retrieved from the @a passsalt and @a passhash
+ * attributes, respectively.
+ */
+inline bool authenticate(config& campaign, const config::attribute_value& passphrase)
 {
 	return auth::verify_passphrase(passphrase, campaign["passsalt"], campaign["passhash"]);
 }
 
-void set_passphrase(config& campaign, std::string passphrase)
+/**
+ * WML version of campaignd::auth::generate_hash().
+ *
+ * The salt and hash are written into the @a passsalt and @a passhash
+ * attributes, respectively.
+ */
+inline void set_passphrase(config& campaign, const std::string& passphrase)
 {
 	std::tie(campaign["passsalt"], campaign["passhash"]) = auth::generate_hash(passphrase);
+}
+
+/**
+ * Returns the update pack filename for the specified old/new version pair.
+ *
+ * The filename is in the form @p "update_pack_<VERSION_MD5>.gz".
+ */
+inline std::string make_update_pack_filename(const std::string& old_version, const std::string& new_version)
+{
+	return "update_pack_" + utils::md5(old_version + new_version).hex_digest() + ".gz";
+}
+
+/**
+ * Returns the full pack filename for the specified version.
+ *
+ * The filename is in the form @p "full_pack_<VERSION_MD5>.gz".
+ */
+inline std::string make_full_pack_filename(const std::string& version)
+{
+	return "full_pack_" + utils::md5(version).hex_digest() + ".gz";
+}
+
+/**
+ * Returns the index filename for the specified version.
+ *
+ * The filename is in the form @p "full_pack_<VERSION_MD5>.hash.gz".
+ */
+inline std::string make_index_filename(const std::string& version)
+{
+	return "full_pack_" + utils::md5(version).hex_digest() + ".hash.gz";
+}
+
+/**
+ * Returns the index counterpart for the specified full pack file.
+ *
+ * The result is in the same form as make_index_filename().
+ */
+inline std::string index_from_full_pack_filename(std::string pack_fn)
+{
+	auto dot_pos = pack_fn.find_last_of('.');
+	if(dot_pos != std::string::npos) {
+		pack_fn.replace(dot_pos, std::string::npos, ".hash.gz");
+	}
+	return pack_fn;
 }
 
 } // end anonymous namespace
@@ -247,9 +307,8 @@ void server::load_config()
 				throw filesystem::io_exception("Couldn't read the content file for the legacy addon '" + addon_id + "'!\n");
 			}
 
-			const std::string file_hash = utils::md5(campaign["version"].str()).hex_digest();
 			config version_cfg = config("version", campaign["version"].str());
-			version_cfg["filename"] = "full_pack_" + file_hash + ".gz";
+			version_cfg["filename"] = make_full_pack_filename(campaign["version"]);
 			campaign.add_child("version", version_cfg);
 
 			data.remove_attributes("title", "campaign_name", "author", "description", "version", "timestamp", "original_timestamp", "icon", "type", "tags");
@@ -261,7 +320,7 @@ void server::load_config()
 				campaign_file.commit();
 			}
 			{
-				filesystem::atomic_commit campaign_hash_file(addon_file + "/full_pack_" + file_hash + ".hash.gz");
+				filesystem::atomic_commit campaign_hash_file(addon_file + "/" + make_index_filename(campaign["version"]));
 				config_writer writer(*campaign_hash_file.ostream(), true, compress_level_);
 				config data_hash = config("name", "");
 				write_hashlist(data_hash, data);
@@ -892,10 +951,9 @@ void server::handle_request_campaign_hash(const server::request& req)
 			}
 		}
 
-		//The filename should not contain any dots before the .gz extension mark by design
-		filename.erase(filename.find_first_of('.') + 1, std::string::npos);
-		filename += ".hash.gz";
-		int file_size = filesystem::file_size(filename);
+		filename = index_from_full_pack_filename(filename);
+
+		const int file_size = filesystem::file_size(filename);
 
 		if(file_size < 0) {
 			send_error("No pregenerated hash file for the add-on '" + req.cfg["name"].str() + "' has been found by the server.", req.sock);
@@ -1182,7 +1240,7 @@ void server::handle_upload(const server::request& req)
 
 			config pack_info = config("from", old_version, "to", new_version);
 			pack_info["expire"] = upload_ts + update_pack_lifespan_;
-			pack_info["filename"] = "update_pack_" + utils::md5(old_version + new_version).hex_digest() + ".gz";
+			pack_info["filename"] = make_update_pack_filename(old_version, new_version);
 			(*campaign).add_child("update_pack", pack_info);
 
 			// Write the pack itself
@@ -1217,11 +1275,9 @@ void server::handle_upload(const server::request& req)
 
 		add_license(data);
 
-		const std::string& file_hash = utils::md5(new_version).hex_digest();
-
 		//#TODO: add gfgtdf's stuff about required_wesnoth_version here
 		config version_cfg = config("version", new_version);
-		version_cfg["filename"] = "full_pack_" + file_hash + ".gz";
+		version_cfg["filename"] = make_full_pack_filename(new_version);
 
 		version_map.erase(version_info(new_version));
 		version_map.emplace(version_info(new_version), version_cfg);
@@ -1241,7 +1297,7 @@ void server::handle_upload(const server::request& req)
 		}
 		// Let's write its hashes
 		{
-			filesystem::atomic_commit campaign_hash_file(filename + "/full_pack_" + file_hash + ".hash.gz");
+			filesystem::atomic_commit campaign_hash_file(filename + "/" + make_index_filename(new_version));
 			config_writer writer(*campaign_hash_file.ostream(), true, compress_level_);
 			config data_hash = config("name", "");
 			write_hashlist(data_hash, data);
@@ -1271,8 +1327,7 @@ void server::handle_upload(const server::request& req)
 
 		while(std::distance(iter, version_map.end()) > 1) {
 			const config& prev_version = iter->second;
-			iter++;
-			const config& next_version = iter->second;
+			const config& next_version = (++iter)->second;
 			const std::string& prev_version_name = prev_version["version"].str();
 			const std::string& next_version_name = next_version["version"].str();
 
@@ -1297,8 +1352,7 @@ void server::handle_upload(const server::request& req)
 				}
 				config pack_info = config("from", prev_version_name, "to", next_version_name);
 				pack_info["expire"] = upload_ts + update_pack_lifespan_;
-				pack_info["filename"]
-						= "update_pack_" + utils::md5(prev_version_name + next_version_name).hex_digest() + ".gz";
+				pack_info["filename"] = make_update_pack_filename(prev_version_name, next_version_name);
 				(*campaign).add_child("update_pack", pack_info);
 
 				// Gather the full packs and create an update
