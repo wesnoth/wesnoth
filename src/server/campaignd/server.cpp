@@ -469,8 +469,8 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 
 			if(!campaign) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set attribute\n";
-			} else if(key == "name") {
-				ERR_CS << "setattr cannot be used to rename add-ons\n";
+			} else if(key == "name" || key == "version") {
+				ERR_CS << "setattr cannot be used to rename add-ons or change their version\n";
 			} else if(key == "passphrase" || key == "passhash"|| key == "passsalt") {
 				ERR_CS << "setattr cannot be used to set auth data -- use setpass instead\n";
 			} else if(!campaign.has_attribute(key)) {
