@@ -43,7 +43,6 @@
 #include "synced_context.hpp"
 #include "formula/string_utils.hpp"
 #include "events.hpp"
-#include "save_blocker.hpp"
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
 #include "statistics.hpp"
