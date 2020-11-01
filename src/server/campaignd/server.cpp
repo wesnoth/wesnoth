@@ -1098,20 +1098,12 @@ void server::handle_upload(const server::request& req)
 			campaign = &get_addon(upload["name"].str());
 		}
 
-		(*campaign)["title"] = upload["title"];
-		(*campaign)["name"] = upload["name"];
+		campaign->copy_attributes(upload,
+			"title", "name", "author", "description", "version", "icon",
+			"translate", "dependencies", "type", "tags", "email");
+
 		(*campaign)["filename"] = "data/" + upload["name"].str();
-		(*campaign)["author"] = upload["author"];
-		(*campaign)["description"] = upload["description"];
-		(*campaign)["version"] = upload["version"];
-		//#TODO: add the gfgtdf's suggested part of min wesnoth version support
-		(*campaign)["icon"] = upload["icon"];
-		(*campaign)["translate"] = upload["translate"];
-		(*campaign)["dependencies"] = upload["dependencies"];
 		(*campaign)["upload_ip"] = req.addr;
-		(*campaign)["type"] = upload["type"];
-		(*campaign)["tags"] = upload["tags"];
-		(*campaign)["email"] = upload["email"];
 
 		if(!existing_upload) {
 			set_passphrase(*campaign, upload["passphrase"]);
