@@ -32,6 +32,7 @@
 #include "game_config.hpp"
 #include "addon/validation.hpp"
 #include "server/campaignd/addon_utils.hpp"
+#include "server/campaignd/auth.hpp"
 #include "server/campaignd/blacklist.hpp"
 #include "server/campaignd/control.hpp"
 #include "server/campaignd/fs_commit.hpp"
@@ -65,38 +66,22 @@ static lg::log_domain log_server("server");
 
 #include "server/common/send_receive_wml_helpers.ipp"
 
+namespace campaignd {
+
 namespace {
 
 /* Secure password storage functions */
 bool authenticate(config& campaign, const config::attribute_value& passphrase)
 {
-	return utils::md5(passphrase, campaign["passsalt"]).base64_digest() == campaign["passhash"];
-}
-
-std::string generate_salt(std::size_t len)
-{
-	boost::mt19937 mt(std::time(0));
-	std::string salt = std::string(len, '0');
-	boost::uniform_int<> from_str(0, 63); // 64 possible values for base64
-	boost::variate_generator< boost::mt19937, boost::uniform_int<>> get_char(mt, from_str);
-
-	for(std::size_t i = 0; i < len; i++) {
-		salt[i] = crypt64::encode(get_char());
-	}
-
-	return salt;
+	return auth::verify_passphrase(passphrase, campaign["passsalt"], campaign["passhash"]);
 }
 
 void set_passphrase(config& campaign, std::string passphrase)
 {
-	std::string salt = generate_salt(16);
-	campaign["passsalt"] = salt;
-	campaign["passhash"] = utils::md5(passphrase, salt).base64_digest();
+	std::tie(campaign["passsalt"], campaign["passhash"]) = auth::generate_hash(passphrase);
 }
 
 } // end anonymous namespace
-
-namespace campaignd {
 
 server::server(const std::string& cfg_file)
 	: server_base(default_campaignd_port, true)
