@@ -461,6 +461,17 @@ public:
 		}
 	}
 
+	template<typename... T>
+	void copy_attributes(const config& from, T... keys)
+	{
+		for(const std::string& key : {keys...}) {
+			auto* attr = from.get(key);
+			if(attr) {
+				(*this)[key] = *attr;
+			}
+		}
+	}
+
 	const_attr_itors attribute_range() const;
 	attr_itors attribute_range();
 
