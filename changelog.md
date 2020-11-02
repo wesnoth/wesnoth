@@ -1,5 +1,7 @@
 ## Version 1.15.6+dev
  ### Campaigns
+   * A Tale of Two Brothers:
+     * S02: Changed the antagonists' motive and dialogue to sound more believable
    * Secrets of the Ancients:
      * Revisions to Bone Captain
      * Scenario 2 uses new Iron Fence terrain, in preparation for potential map revisions.
