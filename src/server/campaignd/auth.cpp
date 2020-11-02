@@ -17,6 +17,7 @@
 #include "hash.hpp"
 #include "serialization/base64.hpp"
 
+#include <ctime>
 #include <boost/random.hpp>
 #include <boost/generator_iterator.hpp>
 
