@@ -406,8 +406,6 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE));
 		case HOTKEY_EDITOR_SELECTION_ROTATE:
 		case HOTKEY_EDITOR_SELECTION_FLIP:
-		case HOTKEY_EDITOR_SELECTION_GENERATE:
-			return false; //not implemented
 		case HOTKEY_EDITOR_CLIPBOARD_PASTE:
 			return !context_manager_->clipboard_empty();
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
@@ -440,8 +438,6 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
 		case HOTKEY_EDITOR_REMOVE_LOCATION:
 			return true;
-		case HOTKEY_EDITOR_MAP_ROTATE:
-			return false; //not implemented
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 		case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
