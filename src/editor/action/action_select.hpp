@@ -40,17 +40,11 @@ public:
 	{
 	}
 
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_select* clone() const;
-
-	void extend(const editor_map& map, const std::set<map_location>& locs);
-
-	editor_action* perform(map_context& mc) const;
-
-	void perform_without_undo(map_context& mc) const;
-
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const std::string& get_name() const;
+	std::unique_ptr<editor_action> clone() const override;
+	void extend(const editor_map& map, const std::set<map_location>& locs) override;
+	std::unique_ptr<editor_action> perform(map_context& mc) const override;
+	void perform_without_undo(map_context& mc) const override;
+	const std::string& get_name() const override;
 };
 
 /**
@@ -64,17 +58,11 @@ public:
 	{
 	}
 
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_deselect* clone() const;
-
-	void extend(const editor_map& map, const std::set<map_location>& locs);
-
-	editor_action* perform(map_context& mc) const;
-
-	void perform_without_undo(map_context& mc) const;
-
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const std::string& get_name() const;
+	std::unique_ptr<editor_action> clone() const override;
+	void extend(const editor_map& map, const std::set<map_location>& locs) override;
+	std::unique_ptr<editor_action> perform(map_context& mc) const override;
+	void perform_without_undo(map_context& mc) const override;
+	const std::string& get_name() const override;
 };
 
 /**
@@ -87,15 +75,10 @@ public:
 	{
 	}
 
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_select_all* clone() const;
-
-	editor_action_select* perform(map_context& mc) const;
-
-	void perform_without_undo(map_context& mc) const;
-
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const std::string& get_name() const;
+	std::unique_ptr<editor_action> clone() const override;
+	std::unique_ptr<editor_action> perform(map_context& mc) const override;
+	void perform_without_undo(map_context& mc) const override;
+	const std::string& get_name() const override;
 };
 
 /**
@@ -108,15 +91,10 @@ public:
 	{
 	}
 
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_select_none* clone() const;
-
-	editor_action_select* perform(map_context& mc) const;
-
-	void perform_without_undo(map_context& mc) const;
-
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const std::string& get_name() const;
+	std::unique_ptr<editor_action> clone() const override;
+	std::unique_ptr<editor_action> perform(map_context& mc) const override;
+	void perform_without_undo(map_context& mc) const override;
+	const std::string& get_name() const override;
 };
 
 /**
@@ -129,15 +107,10 @@ public:
 	{
 	}
 
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_select_inverse* clone() const;
-
-	editor_action_select_inverse* perform(map_context& mc) const;
-
-	void perform_without_undo(map_context& mc) const;
-
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const std::string& get_name() const;
+	std::unique_ptr<editor_action> clone() const override;
+	std::unique_ptr<editor_action> perform(map_context& mc) const override;
+	void perform_without_undo(map_context& mc) const override;
+	const std::string& get_name() const override;
 };
 
 } // end namespace editor

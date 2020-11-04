@@ -43,15 +43,10 @@ public:
 	{
 	}
 
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_unit* clone() const;
-
-	editor_action* perform(map_context& mc) const;
-
-	void perform_without_undo(map_context& mc) const;
-
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const std::string& get_name() const;
+	std::unique_ptr<editor_action> clone() const override;
+	std::unique_ptr<editor_action> perform(map_context& mc) const override;
+	void perform_without_undo(map_context& mc) const override;
+	const std::string& get_name() const override;
 
 protected:
 	unit_ptr u_;
@@ -68,15 +63,10 @@ public:
 	{
 	}
 
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_unit_delete* clone() const;
-
-	editor_action* perform(map_context& mc) const;
-
-	void perform_without_undo(map_context& mc) const;
-
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const std::string& get_name() const;
+	std::unique_ptr<editor_action> clone() const override;
+	std::unique_ptr<editor_action> perform(map_context& mc) const override;
+	void perform_without_undo(map_context& mc) const override;
+	const std::string& get_name() const override;
 };
 
 class editor_action_unit_replace : public editor_action_location
@@ -88,15 +78,10 @@ public:
 	{
 	}
 
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_unit_replace* clone() const;
-
-	editor_action* perform(map_context& mc) const;
-
-	void perform_without_undo(map_context& mc) const;
-
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const std::string& get_name() const;
+	std::unique_ptr<editor_action> clone() const override;
+	std::unique_ptr<editor_action> perform(map_context& mc) const override;
+	void perform_without_undo(map_context& mc) const override;
+	const std::string& get_name() const override;
 
 protected:
 	map_location new_loc_;
@@ -113,15 +98,10 @@ public:
 	{
 	}
 
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_unit_facing* clone() const;
-
-	editor_action* perform(map_context& mc) const;
-
-	void perform_without_undo(map_context& mc) const;
-
-	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const std::string& get_name() const;
+	std::unique_ptr<editor_action> clone() const override;
+	std::unique_ptr<editor_action> perform(map_context& mc) const override;
+	void perform_without_undo(map_context& mc) const override;
+	const std::string& get_name() const override;
 
 protected:
 	map_location::DIRECTION new_direction_;

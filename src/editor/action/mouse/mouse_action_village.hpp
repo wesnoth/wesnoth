@@ -36,24 +36,24 @@ public:
 	/**
 	 * No action.
 	 */
-	editor_action* click_left(editor_display& /*disp*/, int /*x*/, int /*y*/) {return nullptr;}
+	std::unique_ptr<editor_action> click_left(editor_display& /*disp*/, int /*x*/, int /*y*/) override {return nullptr;}
 
 	/**
 	 * If clicked on a village hex field, assigns the ownership of it to the current side.
 	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
+	std::unique_ptr<editor_action> up_left(editor_display& disp, int x, int y) override;
 
 	/**
 	 * No action.
 	 */
-	editor_action* click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) {return nullptr;}
+	std::unique_ptr<editor_action> click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) override {return nullptr;}
 
 	/**
 	 * If clicked on a village hex field, unassigns it's ownership.
 	 */
-	editor_action* up_right(editor_display& disp, int x, int y);
+	std::unique_ptr<editor_action> up_right(editor_display& disp, int x, int y) override;
 
-	virtual void set_mouse_overlay(editor_display& disp);
+	virtual void set_mouse_overlay(editor_display& disp) override;
 };
 
 
