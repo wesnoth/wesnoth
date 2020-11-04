@@ -18,7 +18,6 @@
 #include "editor/action/action_item.hpp"
 
 #include "editor/editor_display.hpp"
-//#include "gui/dialogs/item_create.hpp"
 #include "tooltips.hpp"
 #include "gettext.hpp"
 
@@ -42,32 +41,10 @@ void mouse_action_item::move(editor_display& disp, const map_location& hex)
 
 		disp.invalidate(adjacent_set);
 		previous_move_hex_ = hex;
-
-	//	const item_map& items = disp.get_items();
-	//	const item_map::const_item_iterator item_it = items.find(hex);
-//		if (item_it != items.end()) {
-//
-//			disp.set_mouseover_hex_overlay(nullptr);
-//
-//			SDL_Rect rect;
-//			rect.x = disp.get_location_x(hex);
-//			rect.y = disp.get_location_y(hex);
-//			rect.h = disp.hex_size();
-//			rect.w = disp.hex_size();
-//			std::stringstream str;
-//			str << N_("ID: ")   << item_it->id()   << "\n"
-//				<< N_("Name: ") << item_it->name() << "\n"
-//				<< N_("Type: ") << item_it->type_name();
-//			tooltips::clear_tooltips();
-//			tooltips::add_tooltip(rect, str.str());
-//		}
-//		else {
-//			set_mouse_overlay(disp);
-//		}
 	}
 }
 
-editor_action* mouse_action_item::click_left(editor_display& disp, int x, int y)
+std::unique_ptr<editor_action> mouse_action_item::click_left(editor_display& disp, int x, int y)
 {
 	start_hex_ = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(start_hex_)) {
@@ -77,24 +54,18 @@ editor_action* mouse_action_item::click_left(editor_display& disp, int x, int y)
 	const overlay& item = item_palette_.selected_fg_item();
 	disp.add_overlay(start_hex_, item.image, item.halo, "", "", true);
 
-
-
-//	const item_map::const_item_iterator item_it = items.find(start_hex_);
-//	if (item_it != items.end())
-//		set_item_mouse_overlay(disp, item_it->type());
-
 	click_ = true;
 	return nullptr;
 }
 
-editor_action* mouse_action_item::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
+std::unique_ptr<editor_action> mouse_action_item::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	click_ = (hex == start_hex_);
 	return nullptr;
 }
 
-editor_action* mouse_action_item::up_left(editor_display& disp, int x, int y)
+std::unique_ptr<editor_action> mouse_action_item::up_left(editor_display& disp, int x, int y)
 {
 	if (!click_) return nullptr;
 	click_ = false;
@@ -123,13 +94,18 @@ editor_action* mouse_action_item::up_left(editor_display& disp, int x, int y)
 //	editor_action* action = new editor_action_item(hex, new_item);
 //	return action;
 
+// \todo in #5070: there's a load of commented-out code in this file, it should probably
+// all be deleted. For the function that this comment is in, I've left the commented-out
+// code in because it seems the not-commented code should also be reviewed. AFAICS, the
+// entire function (including the not-commented code) could be deleted, and fall back to
+// the parent class' implementation of just returning nullptr.
+
 	return nullptr;
 }
 
-editor_action* mouse_action_item::drag_end_left(editor_display& disp, int x, int y)
+std::unique_ptr<editor_action> mouse_action_item::drag_end_left(editor_display& disp, int x, int y)
 {
 	if (click_) return nullptr;
-	editor_action* action = nullptr;
 
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex))
@@ -140,88 +116,8 @@ editor_action* mouse_action_item::drag_end_left(editor_display& disp, int x, int
 //	if (item_it == items.end())
 //		return nullptr;
 
-	action = new editor_action_item_replace(start_hex_, hex);
-	return action;
+	return std::make_unique<editor_action_item_replace>(start_hex_, hex);
 }
-
-/*
-editor_action* mouse_action_item::click_right(editor_display& disp, int x, int y)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-	start_hex_ = hex;
-	previous_move_hex_ = hex;
-
-	const item_map& items = disp.get_items();
-	const item_map::const_item_iterator item_it = items.find(start_hex_);
-
-	if (item_it != items.end()) {
-		old_direction_ = item_it->facing();
-	}
-
-	click_ = true;
-	return nullptr;
-}
-*/
-
-//editor_action* mouse_action_item::drag_right(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
-//{
-//	map_location hex = disp.hex_clicked_on(x, y);
-//	if (previous_move_hex_ == hex)
-//		return nullptr;
-//
-//	click_ = (start_hex_ == hex);
-//	previous_move_hex_ = hex;
-//
-//	const item_map& items = disp.get_items();
-//
-//	const item_map::const_item_iterator item_it = items.find(start_hex_);
-//	if (item_it != items.end()) {
-//		for (map_location::DIRECTION new_direction = map_location::NORTH;
-//				new_direction <= map_location::NORTH_WEST;
-//				new_direction = map_location::DIRECTION(new_direction +1)){
-//			if (item_it->get_location().get_direction(new_direction, 1) == hex) {
-//				return new editor_action_item_facing(start_hex_, new_direction, old_direction_);
-//			}
-//		}
-//	}
-//
-//	return nullptr;
-//}
-
-//editor_action* mouse_action_item::up_right(editor_display& disp, int /*x*/, int /*y*/)
-//{
-//	if (!click_) return nullptr;
-//	click_ = false;
-//
-//	const item_map& items = disp.get_items();
-//	const item_map::const_item_iterator item_it = items.find(start_hex_);
-//	if (item_it != items.end()) {
-//		return new editor_action_item_delete(start_hex_);
-//	}
-//
-//	return nullptr;
-//}
-
-//editor_action* mouse_action_item::drag_end_right(editor_display& disp, int x, int y)
-//{
-//	if (click_) return nullptr;
-//
-//	map_location hex = disp.hex_clicked_on(x, y);
-//	if (!disp.get_map().on_board(hex))
-//		return nullptr;
-//
-//	if(new_direction_ != old_direction_) {
-//
-//	const item_map& items = disp.get_items();
-//	const item_map::const_item_iterator item_it = items.find(start_hex_);
-//		if (item_it != items.end()) {
-//			return new editor_action_item_facing(start_hex_, new_direction_, old_direction_);
-//		}
-//	}
-//
-//	return nullptr;
-//}
-
 
 void mouse_action_item::set_mouse_overlay(editor_display& disp)
 {

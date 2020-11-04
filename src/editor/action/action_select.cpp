@@ -33,7 +33,7 @@ void editor_action_select::extend(const editor_map& /*map*/, const std::set<map_
 	}
 }
 
-editor_action* editor_action_select::perform(map_context& mc) const
+std::unique_ptr<editor_action> editor_action_select::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
 	for(const map_location& loc : area_) {
@@ -42,7 +42,7 @@ editor_action* editor_action_select::perform(map_context& mc) const
 	}
 
 	perform_without_undo(mc);
-	return new editor_action_select(undo_locs);
+	return std::make_unique<editor_action_select>(undo_locs);
 }
 
 void editor_action_select::perform_without_undo(map_context& mc) const
@@ -66,7 +66,7 @@ void editor_action_deselect::extend(const editor_map& map, const std::set<map_lo
 	}
 }
 
-editor_action* editor_action_deselect::perform(map_context& mc) const
+std::unique_ptr<editor_action> editor_action_deselect::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
 	for(const map_location& loc : area_) {
@@ -77,7 +77,7 @@ editor_action* editor_action_deselect::perform(map_context& mc) const
 	}
 
 	perform_without_undo(mc);
-	return new editor_action_select(undo_locs);
+	return std::make_unique<editor_action_select>(undo_locs);
 }
 
 void editor_action_deselect::perform_without_undo(map_context& mc) const
@@ -90,7 +90,7 @@ void editor_action_deselect::perform_without_undo(map_context& mc) const
 
 IMPLEMENT_ACTION(select_all)
 
-editor_action_select* editor_action_select_all::perform(map_context& mc) const
+std::unique_ptr<editor_action> editor_action_select_all::perform(map_context& mc) const
 {
 	std::set<map_location> current = mc.map().selection();
 	mc.map().select_all();
@@ -102,7 +102,7 @@ editor_action_select* editor_action_select_all::perform(map_context& mc) const
 		all.begin(), all.end(), current.begin(), current.end(), std::inserter(undo_locs, undo_locs.begin()));
 
 	mc.set_everything_changed();
-	return new editor_action_select(undo_locs);
+	return std::make_unique<editor_action_select>(undo_locs);
 }
 
 void editor_action_select_all::perform_without_undo(map_context& mc) const
@@ -113,12 +113,12 @@ void editor_action_select_all::perform_without_undo(map_context& mc) const
 
 IMPLEMENT_ACTION(select_none)
 
-editor_action_select* editor_action_select_none::perform(map_context& mc) const
+std::unique_ptr<editor_action> editor_action_select_none::perform(map_context& mc) const
 {
 	std::set<map_location> current = mc.map().selection();
 	mc.map().clear_selection();
 	mc.set_everything_changed();
-	return new editor_action_select(current);
+	return std::make_unique<editor_action_select>(current);
 }
 
 void editor_action_select_none::perform_without_undo(map_context& mc) const
@@ -129,10 +129,10 @@ void editor_action_select_none::perform_without_undo(map_context& mc) const
 
 IMPLEMENT_ACTION(select_inverse)
 
-editor_action_select_inverse* editor_action_select_inverse::perform(map_context& mc) const
+std::unique_ptr<editor_action> editor_action_select_inverse::perform(map_context& mc) const
 {
 	perform_without_undo(mc);
-	return new editor_action_select_inverse();
+	return std::make_unique<editor_action_select_inverse>();
 }
 
 void editor_action_select_inverse::perform_without_undo(map_context& mc) const

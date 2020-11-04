@@ -685,7 +685,7 @@ void map_context::perform_action(const editor_action& action)
 {
 	LOG_ED << "Performing action " << action.get_id() << ": " << action.get_name() << ", actions count is "
 		   << action.get_instance_count() << std::endl;
-	editor_action* undo = action.perform(*this);
+	auto undo = action.perform(*this);
 	if(actions_since_save_ < 0) {
 		// set to a value that will make it impossible to get to zero, as at this point
 		// it is no longer possible to get back the original map state using undo/redo
@@ -694,7 +694,7 @@ void map_context::perform_action(const editor_action& action)
 
 	++actions_since_save_;
 
-	undo_stack_.emplace_back(undo);
+	undo_stack_.emplace_back(std::move(undo));
 
 	trim_stack(undo_stack_);
 
@@ -714,10 +714,10 @@ void map_context::perform_partial_action(const editor_action& action)
 		throw editor_logic_exception("Last undo action not a chain in perform_partial_action()");
 	}
 
-	editor_action* undo = action.perform(*this);
+	auto undo = action.perform(*this);
 
 	// actions_since_save_ += action.action_count();
-	undo_chain->prepend_action(undo);
+	undo_chain->prepend_action(std::move(undo));
 
 	redo_stack_.clear();
 }
@@ -809,7 +809,7 @@ void map_context::partial_undo()
 
 	// a partial undo performs the first action form the current action's action_chain that would be normally performed
 	// i.e. the *first* one.
-	const editor_action_ptr first_action_in_chain(undo_chain->pop_first_action());
+	const auto first_action_in_chain = undo_chain->pop_first_action();
 	if(undo_chain->empty()) {
 		actions_since_save_--;
 		undo_stack_.pop_back();
@@ -836,13 +836,13 @@ void map_context::perform_action_between_stacks(action_stack& from, action_stack
 {
 	assert(!from.empty());
 
-	editor_action_ptr action(nullptr);
+	std::unique_ptr<editor_action> action;
 	action.swap(from.back());
 
 	from.pop_back();
 
-	editor_action* reverse_action = action->perform(*this);
-	to.emplace_back(reverse_action);
+	auto reverse_action = action->perform(*this);
+	to.emplace_back(std::move(reverse_action));
 
 	trim_stack(to);
 }
