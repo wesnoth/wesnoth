@@ -343,6 +343,24 @@ void lobby_info::make_games_vector()
 	games_visibility_.flip();
 }
 
+bool lobby_info::is_game_visible(const game_info& game) {
+	bool show = true;
+
+	for(const auto& filter_func : game_filters_) {
+		show = filter_func(game);
+
+		if(!show) {
+			break;
+		}
+	}
+
+	if(game_filter_invert_) {
+		show = !show;
+	}
+
+	return show;
+}
+
 void lobby_info::apply_game_filter()
 {
 	// Since games_visibility_ is a visibility mask over games_,
@@ -350,21 +368,7 @@ void lobby_info::apply_game_filter()
 	assert(games_visibility_.size() == games_.size());
 
 	for(unsigned i = 0; i < games_.size(); ++i) {
-		bool show = true;
-
-		for(const auto& filter_func : game_filters_) {
-			show = filter_func(*games_[i]);
-
-			if(!show) {
-				break;
-			}
-		}
-
-		if(game_filter_invert_) {
-			show = !show;
-		}
-
-		games_visibility_[i] = show;
+		games_visibility_[i] = is_game_visible(*games_[i]);
 	}
 }
 
