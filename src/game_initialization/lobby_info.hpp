@@ -83,6 +83,9 @@ public:
 		game_filter_invert_ = value;
 	}
 
+	/** Returns whether the game would be visible after the game filters are applied */
+	bool is_game_visible(const game_info&);
+
 	/** Generates a new list of games that match the current filter functions and inversion setting. */
 	void apply_game_filter();
 
