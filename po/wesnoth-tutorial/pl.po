@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-10-17 04:28 UTC\n"
-"PO-Revision-Date: 2020-09-15 20:24+0200\n"
+"PO-Revision-Date: 2020-10-26 19:19+0100\n"
 "Last-Translator: Piotr Makarewicz <makpio@interia.pl>\n"
 "Language-Team: Language: pl_PL\n"
-"Language: \n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,15 +21,13 @@ msgstr ""
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
 msgid "Battle Training"
-msgstr ""
+msgstr "Trening bitewny"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:29
-#, fuzzy
-#| msgid "Wesnoth Tutorial"
 msgid "Tutorial"
-msgstr "Samouczek Wesnoth"
+msgstr "Samouczek"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:20
@@ -37,11 +35,13 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
 "time players."
 msgstr ""
+"Poznaj podstawy Wesnoth w samouczku. Zalecane dla grających w Wesnoth po raz "
+"pierwszy."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:30
 msgid "Beginner"
-msgstr ""
+msgstr "Początkujący"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:25
@@ -117,15 +117,10 @@ msgstr "Pozwól się zabić"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:136
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
-"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
-"wioski!"
+"Nie możesz zakończyć tury, dopóki nie ukończysz lekcji o ruchu jednostek!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:145
@@ -334,14 +329,8 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:526
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr ""
-"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
-"wioski!"
+msgstr "Nie możesz zakończyć tury, dopóki nie zaatakujesz atrapy!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:540
@@ -456,15 +445,9 @@ msgstr "Zakończ turę"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:630
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
-msgstr ""
-"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
-"wioski!"
+msgstr "Nie możesz zakończyć tury, dopóki nie ukończysz lekcji o leczeniu!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:641
@@ -521,15 +504,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:697
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
-msgstr ""
-"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
-"wioski!"
+msgstr "Nie możesz zakończyć tury, dopóki nie ukończysz lekcji o rekrutacji!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:706
@@ -632,15 +609,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:829
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
-msgstr ""
-"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
-"wioski!"
+msgstr "Nie możesz zakończyć tury, dopóki nie ukończysz lekcji o atakowaniu!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:838
@@ -715,19 +686,13 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:917
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), "
-#| "which is a <i>melee</i> attack. The quintain defended with its melee "
-#| "attack (3×5; or 3 damage on each hit, with 5 attacks). The ranged attack "
-#| "(the bow) would have been safer."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Twój elf użył miecza (5×4, czyli 5 punktów obrażeń na trafienie, 4 ciosy), "
+"Twój elf użył miecza (6×4, czyli 6 punktów obrażeń na trafienie, 4 ciosy), "
 "co było atakiem <i>wręcz</i>. Atrapa również broniła się wręcz (3×5, czyli 3 "
 "punkty obrażeń na trafienie, 5 ataków). Atak na odległość (łukiem) byłby "
 "bezpieczniejszy."
@@ -738,6 +703,8 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Elficcy wojownicy zazwyczaj zadają 5×4 obrażeń mieczem, ale ten elf ma cechę "
+"<i>silny</i>, która zwiększa obrażenia zadawane przez ataki wręcz."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:927
@@ -755,17 +722,12 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:948
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
-#| "each hit, with 3 attacks). The quintain has no ranged attack, only a "
-#| "melee attack, so it could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Twój elf użył łuku, co było atakiem <i>na odległość</i> (3×3, czyli 3 punkty "
+"Twój elf użył łuku, co było atakiem <i>na odległość</i> (4×3, czyli 4 punkty "
 "obrażeń na trafienie, 3 strzały). Atrapa potrafi walczyć wyłącznie wręcz i "
 "nie posiada ataku na odległość, więc nie mogła się bronić."
 
@@ -775,6 +737,9 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Elficcy wojownicy zazwyczaj zadają 3×3 obrażenia strzelając z łuku, ale ten "
+"elf ma cechę <i>zręczny</i>, która zwiększa obrażenia zadawane przez ataki "
+"dystansowe."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:958
@@ -1074,7 +1039,7 @@ msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
 msgstr ""
-"Nie możesz zakończyć tury dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
+"Nie możesz zakończyć tury, dopóki nie zrekrutujesz żołnierzy i nie zajmiesz "
 "wioski!"
 
 #. [message]: speaker=narrator
@@ -1094,8 +1059,8 @@ msgid ""
 "Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
 "of scarecrows, perhaps?"
 msgstr ""
-"Bądź pozdrowiony, Galdradzie! Czy Delfador wyczarował dziś dla mnie innego "
-"przeciwnika? Może stado strachów na wróble?"
+"Siema, Galdradzie! Czy Delfador wyczarował dziś dla mnie innego przeciwnika? "
+"Może stado strachów na wróble?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:204
@@ -1103,7 +1068,7 @@ msgid ""
 "female^Ho, Galdrad! Has Delfador conjured something else to beat me with? A "
 "flock of scarecrows, perhaps?"
 msgstr ""
-"Ho ho, Galdradzie! Czy Delfador wyczarował dziś dla mnie innego przeciwnika? "
+"Siema, Galdradzie! Czy Delfador wyczarował dziś dla mnie innego przeciwnika? "
 "Może stado strachów na wróble?"
 
 #. [message]: speaker=Galdrad
@@ -1114,10 +1079,10 @@ msgid ""
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
-"To nie gra, Konradzie! Orki obozują po drugiej stronie rzeki. To jest kraj "
-"elfów - głupio zrobili zjawiając się tu. My, elfy, poruszamy się w lasach "
-"szybko i trudno nas w nich trafić. Musisz pokonać ich przywódcę, aby nigdy "
-"więcej nie mogli nam zagrozić. Będę ci doradzać."
+"To nie zabawa, Konradzie! Orki obozują po drugiej stronie rzeki. To jest "
+"kraj elfów - głupio zrobili zjawiając się tu. My, elfy, poruszamy się w "
+"lasach szybko i trudno nas w nich trafić. Musisz pokonać ich przywódcę, aby "
+"nigdy więcej nie mogli nam zagrozić. Będę ci doradzać."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
@@ -1127,7 +1092,7 @@ msgid ""
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
-"To nie gra, Li’sar! Orki obozują po drugiej stronie rzeki. To jest kraj "
+"To nie zabawa, Li’sar! Orki obozują po drugiej stronie rzeki. To jest kraj "
 "elfów - głupio zrobili zjawiając się tu. My, elfy, poruszamy się w lasach "
 "szybko i trudno nas w nich trafić. Musisz pokonać ich przywódcę, aby nigdy "
 "więcej nie mogli nam zagrozić. Będę ci doradzać."
@@ -1188,13 +1153,13 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:235
 msgid "Let’s go! Attack!"
-msgstr "Ruszam! Do ataku!"
+msgstr "Chodźmy! Do ataku!"
 
 #. [message]: speaker=student
 #. The "us" in "let's" refers to Galdrad and Li'sar.
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:237
 msgid "female^Let’s go! Attack!"
-msgstr "Ruszajmy! Do ataku!"
+msgstr "Chodźmy! Do ataku!"
 
 #. [message]: speaker=Galdrad
 #. Addressing Konrad
@@ -1203,8 +1168,7 @@ msgid ""
 "Hang on! You need to gather your forces. Or do you intend to fight the orcs "
 "single-handedly?"
 msgstr ""
-"Zaczekaj! Musisz zebrać swoje siły. A może chcesz samotnie stawić czoła tym "
-"orkom?"
+"Zaczekaj! Musisz zebrać swoje siły, chyba że chcesz walczyć z orkami samemu."
 
 #. [message]: speaker=Galdrad
 #. Addressing Li'sar
@@ -1212,7 +1176,8 @@ msgstr ""
 msgid ""
 "female^Hang on! You need to gather your forces. Or do you intend to fight "
 "the orcs single-handedly?"
-msgstr "Zaczekaj! Musisz zebrać swoje siły. Czy chcesz walczyć z orkami sama?"
+msgstr ""
+"Zaczekaj! Musisz zebrać swoje siły, chyba że chcesz walczyć z orkami sama."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:264
@@ -1225,7 +1190,7 @@ msgstr ""
 "Widzę, że masz żołnierzy, którzy zdobyli doświadczenie podczas treningu. "
 "Warto ich <i>przywołać</i>, by zacząć bitwę z bardziej doświadczonymi "
 "jednostkami. Zastanów się jednak: jeśli jednostka ma mało doświadczenia, to "
-"bardziej może opłacać się ją rekrutować."
+"może lepiej zrekrutować nową."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:270

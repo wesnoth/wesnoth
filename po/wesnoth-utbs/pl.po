@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-10-17 04:28 UTC\n"
-"PO-Revision-Date: 2020-10-02 11:39+0200\n"
+"PO-Revision-Date: 2020-10-26 17:43+0100\n"
 "Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -680,7 +680,7 @@ msgid ""
 msgstr ""
 "Potrzebujemy waszej pomocy, by sprawdzić, czy zewnętrzne osiedla przetrwały. "
 "Kto wie, jakich zniszczeń doznały w nocy? Jeśli tam na pustyni ktoś przeżył, "
-"może udało im się wyłapać spłoszone konie."
+"może udało im się wyłapać spłoszone piaskolopki."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:877
@@ -1113,11 +1113,12 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:238
 msgid "Healers can prevent dehydration from getting worse, but cannot heal it"
 msgstr ""
+"Lekarze mogą zapobiec pogorszeniu się odwodnienia, ale nie mogą go uleczyć"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:241
 msgid "Healers are unable to heal adjacent units during the day"
-msgstr ""
+msgstr "Lekarze nie są w stanie leczyć sąsiednich jednostek za dnia"
 
 #. [label]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:265
@@ -2301,6 +2302,9 @@ msgid ""
 "attack presses the engagement until one of the combatants is slain, or 30 "
 "rounds of attacks have occurred."
 msgstr ""
+"Użyty ofensywnie bądź defensywnie przeciwko Garakowi lub Zur, ten atak "
+"przedłuża walkę, aż jeden z walczących zginie, bądź 30 serii ataków się "
+"zakończy."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:712
@@ -3945,7 +3949,7 @@ msgstr "Uch...."
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1013
 msgid "What by the names of my forefathers are they?"
-msgstr ""
+msgstr "Czym oni są, na imiona moich praojców?"
 
 #. [message]: speaker=first_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1018
@@ -4442,7 +4446,7 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2399
 msgid "The real fighting? I thought that was what we were waist-deep in?"
-msgstr "Prawdziwej walki? A myślałem, że właśnie w niej uczestniczymy."
+msgstr "Prawdziwej walki? Myślałam, że właśnie w niej uczestniczymy."
 
 #. [message]: speaker=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2405
@@ -11701,7 +11705,7 @@ msgstr ""
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:194
 msgid "Nog says thank you."
-msgstr "Nog mówić dziękuję"
+msgstr "Nog mówić dziękuję."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:200
@@ -16137,10 +16141,16 @@ msgstr " Ta jednostka może się przemieszczać albo przed, albo po ataku."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:238
+#, fuzzy
+#| msgid ""
+#| " This unit can daze its enemies, reducing their accuracy and defense "
+#| "until they end a turn."
 msgid ""
 "This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
 msgstr ""
+" Jednostka może oślepiać swoich wrogów, zmniejszając ich celność i obronę "
+"terenową, aż skończą turę."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:244
