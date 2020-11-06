@@ -45,6 +45,7 @@
 #include "formula/string_utils.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
+#include "help/help.hpp"
 #include "preferences/lobby.hpp"
 #include "playmp_controller.hpp"
 #include "wesnothd_connection.hpp"
@@ -171,6 +172,9 @@ mp_lobby::~mp_lobby()
 void mp_lobby::post_build(window& win)
 {
 	/*** Local hotkeys. ***/
+	win.register_hotkey(hotkey::HOTKEY_HELP,
+		std::bind(&mp_lobby::show_help_callback, this));
+
 	win.register_hotkey(hotkey::HOTKEY_PREFERENCES,
 		std::bind(&mp_lobby::show_preferences_button_callback, this, std::ref(win)));
 }
@@ -1040,6 +1044,12 @@ void mp_lobby::enter_selected_game(JOIN_MODE mode)
 void mp_lobby::refresh_lobby()
 {
 	network_connection_.send_data(config("refresh_lobby"));
+}
+
+void mp_lobby::show_help_callback()
+{
+	help::help_manager help_manager(&game_config_);
+	help::show_help();
 }
 
 void mp_lobby::show_preferences_button_callback(window& window)
