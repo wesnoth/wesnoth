@@ -457,7 +457,7 @@ static config unit_hp(reports::context& rc, const unit* u)
 	str << span_color(u->hp_color()) << u->hitpoints()
 		<< '/' << u->max_hitpoints() << naps;
 
-	std::set<std::string> resistances_table;
+	std::vector<std::string> resistances_table;
 
 	bool att_def_diff = false;
 	map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
@@ -480,7 +480,7 @@ static config unit_hp(reports::context& rc, const unit* u)
 			<< naps << '\n';
 			att_def_diff = true;
 		}
-		resistances_table.insert(line.str());
+		resistances_table.push_back(line.str());
 	}
 
 	tooltip << _("Resistances: ");
@@ -672,20 +672,21 @@ static config unit_moves(reports::context & rc, const unit* u, bool is_visible_u
 	for (const terrain_movement& tm : terrain_moves) {
 		tooltip << tm.name << ": ";
 
-		std::string color;
 		//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-		const bool cannot_move = tm.moves > u->total_movement();
-		if (cannot_move)		// cannot move in this terrain
-			color = "red";
-		else if (tm.moves > 1)
-			color = "yellow";
-		else
-			color = "white";
+		const bool cannot_move = tm.moves > u->total_movement();		// cannot move in this terrain
+		double movement_red_to_green = 0.0;
+		if (u->total_movement() != 0) {
+			movement_red_to_green = (100.0 * (u->total_movement() - tm.moves)) / u->total_movement();
+		}
+		// passing false to select the more saturated red-to-green scale
+		std::string color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
 		tooltip << "<span foreground=\"" << color << "\">";
 		// A 5 MP margin; if the movement costs go above
 		// the unit's max moves + 5, we replace it with dashes.
 		if (cannot_move && (tm.moves > u->total_movement() + 5)) {
 			tooltip << font::unicode_figure_dash;
+		} else if (cannot_move) {
+			tooltip << "(" << tm.moves << ")";
 		} else {
 			tooltip << tm.moves;
 		}
@@ -729,12 +730,17 @@ REPORT_GENERATOR(selected_unit_moves, rc)
 	return unit_moves(rc, u, false);
 }
 
+/**
+ * Maps resistance <= -100 (resistance value <= -100%) to intense red.
+ * Maps resistance >= 100 (resistance value >= 100%) to intense green.
+ * Intermediate values are affinely mapped to the red-to-green scale,
+ * with 0 (0%) being mapped to yellow.
+ * Compare unit_helper::resistance_color().
+ */
 static inline const color_t attack_info_percent_color(int resistance)
 {
-	// Compare unit_helper::resistance_color()
-	if (resistance < 0) return font::BAD_COLOR;
-	if (resistance > 0) return font::GOOD_COLOR;
-	return font::YELLOW_COLOR;
+	// Passing false to select the more saturated red-to-green scale.
+	return game_config::red_to_green(50.0 + 0.5 * resistance, false);
 }
 
 static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &hex, const unit* sec_u = nullptr, const_attack_ptr sec_u_weapon = nullptr)

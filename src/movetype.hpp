@@ -201,7 +201,7 @@ public:
 		explicit resistances(const config & cfg) : cfg_(cfg) {}
 
 		/// Returns a map from attack types to resistances.
-		utils::string_map damage_table() const;
+		utils::string_map_res damage_table() const;
 		/// Returns the resistance against the indicated attack.
 		int resistance_against(const attack_type & attack) const;
 		/// Returns the resistance against the indicated damage type.
@@ -274,7 +274,7 @@ public:
 	int resistance_against(const std::string & damage_type) const
 	{ return resist_.resistance_against(damage_type); }
 	/// Returns a map from attack types to resistances.
-	utils::string_map damage_table() const
+	utils::string_map_res damage_table() const
 	{ return resist_.damage_table(); }
 
 	/// Returns whether or not there are any terrain caps with respect to a set of terrains.

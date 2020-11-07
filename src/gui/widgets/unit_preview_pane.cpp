@@ -106,11 +106,11 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 	return child_node;
 }
 
-static inline std::string get_hp_tooltip(const utils::string_map& res, const std::function<int (const std::string&, bool)>& get)
+static inline std::string get_hp_tooltip(const utils::string_map_res& res, const std::function<int (const std::string&, bool)>& get)
 {
 	std::ostringstream tooltip;
 
-	std::set<std::string> resistances_table;
+	std::vector<std::string> resistances_table;
 
 	bool att_def_diff = false;
 	for(const utils::string_map::value_type &resist : res) {
@@ -129,7 +129,7 @@ static inline std::string get_hp_tooltip(const utils::string_map& res, const std
 			att_def_diff = true;
 		}
 
-		resistances_table.insert(line.str());
+		resistances_table.push_back(line.str());
 	}
 
 	tooltip << "<big>" << _("Resistances: ") << "</big>";
@@ -172,23 +172,21 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 		tooltip << '\n' << font::unicode_bullet << " " << tm.name << ": ";
 
 		// movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-		const bool cannot_move = tm.moves > total_movement;
-
-		std::string color;
-		if(cannot_move) {
-			// cannot move in this terrain
-			color = "red";
-		} else if(tm.moves > 1) {
-			color = "yellow";
-		} else {
-			color = "white";
+		const bool cannot_move = tm.moves > total_movement;     // cannot move in this terrain
+		double movement_red_to_green = 0.0;
+		if (total_movement != 0) {
+			movement_red_to_green = (100.0 * (total_movement - tm.moves)) / total_movement;
 		}
+		// passing false to select the more saturated red-to-green scale
+		std::string color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
 
 		tooltip << "<span color='" << color << "'>";
 
 		// A 5 MP margin; if the movement costs go above the unit's max moves + 5, we replace it with dashes.
 		if(cannot_move && (tm.moves > total_movement + 5)) {
 			tooltip << font::unicode_figure_dash;
+		} else if (cannot_move) {
+			tooltip << "(" << tm.moves << ")";
 		} else {
 			tooltip << tm.moves;
 		}

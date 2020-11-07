@@ -46,18 +46,17 @@ bool will_certainly_advance(const unit_map::iterator &u)
 	return u->advances() && number_of_possible_advances(*u) > 0;
 }
 
+/**
+ * Maps resistance <= -100 (resistance value <= -100%) to intense red.
+ * Maps resistance >= 100 (resistance value >= 100%) to intense green.
+ * Intermediate values are affinely mapped to the red-to-green scale,
+ * with 0 (0%) being mapped to yellow.
+ * Compare attack_info_percent_color() in reports.cpp.
+ */
 std::string resistance_color(const int resistance)
 {
-	if (resistance < 0)
-		return std::string("#FF0000");
-
-	if (resistance <= 20)
-		return std::string("#FFFF00");
-
-	if (resistance <= 40)
-		return std::string("#FFFFFF");
-
-	return std::string("#00FF00");
+	// Passing false to select the more saturated red-to-green scale.
+	return game_config::red_to_green(50.0 + 0.5 * resistance, false).to_hex_string();
 }
 
 std::string unit_level_tooltip(const int level, const std::vector<std::string> &adv_to_types, const std::vector<config> &adv_to_mods)
