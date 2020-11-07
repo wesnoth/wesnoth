@@ -158,7 +158,7 @@ private:
 	template<typename T>
 	using data_queue = std::queue<T, std::list<T>>;
 
-	data_queue<std::shared_ptr<boost::asio::streambuf>> send_queue_;
+	data_queue<std::unique_ptr<boost::asio::streambuf>> send_queue_;
 	data_queue<config> recv_queue_;
 
 	std::mutex recv_queue_mutex_;

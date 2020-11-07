@@ -194,16 +194,14 @@ void wesnothd_connection::send_data(const configr_of& request)
 {
 	MPTEST_LOG;
 
-	// C++11 doesn't allow lambda captuting by moving. This could maybe use std::unique_ptr in c++14;
-	std::shared_ptr<boost::asio::streambuf> buf_ptr(new boost::asio::streambuf());
+	auto buf_ptr = std::make_unique<boost::asio::streambuf>();
 
 	std::ostream os(buf_ptr.get());
 	write_gz(os, request);
 
-	// TODO: should I capture a shared_ptr for this?
-	io_service_.post([this, buf_ptr]() {
+	boost::asio::post(io_service_, [this, buf_ptr = std::move(buf_ptr)]() mutable {
 		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
-		send_queue_.push(buf_ptr);
+		send_queue_.push(std::move(buf_ptr));
 
 		if(send_queue_.size() == 1) {
 			send();
