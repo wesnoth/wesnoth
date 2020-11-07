@@ -600,27 +600,7 @@ theme::theme(const config& cfg, const SDL_Rect& screen)
 	set_resolution(screen);
 }
 
-theme& theme::operator=(theme&& other)
-{
-	theme_reset_event_ = other.theme_reset_event_;
-	cur_theme = std::move(other.cur_theme);
-	cfg_ = std::move(other.cfg_);
-	panels_ = std::move(other.panels_);
-	labels_ = std::move(other.labels_);
-	menus_ = std::move(other.menus_);
-	actions_ = std::move(other.actions_);
-	sliders_ = std::move(other.sliders_);
-	context_ = other.context_;
-	action_context_ = other.action_context_;
-	status_ = std::move(other.status_);
-	main_map_ = other.main_map_;
-	mini_map_ = other.mini_map_;
-	unit_image_ = other.unit_image_;
-	palette_ = other.palette_;
-	border_ = other.border_;
-
-	return *this;
-}
+theme& theme::operator=(theme&& other) = default;
 
 bool theme::set_resolution(const SDL_Rect& screen)
 {
