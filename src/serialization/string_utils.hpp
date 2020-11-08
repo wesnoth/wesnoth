@@ -33,7 +33,7 @@ namespace utils {
 
 using string_map = std::map<std::string, t_string>;
 
-const std::vector<std::string> res_order = {"blade", "pierce", "impact", "fire", "arcane", "cold"};
+const std::vector<std::string> res_order = {"blade", "pierce", "impact", "fire", "cold", "arcane"};
 
 struct res_compare {
 	/** Returns whether a < b, considering res_order. */
