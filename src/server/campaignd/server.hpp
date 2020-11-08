@@ -148,6 +148,11 @@ private:
 
 	void delete_addon(const std::string& id);
 
+	void mark_dirty(const std::string& addon)
+	{
+		dirty_addons_.emplace(addon);
+	}
+
 	/** Retrieves the contents of the [server_info] WML node. */
 	const config& server_info() const { return cfg_.child("server_info"); }
 

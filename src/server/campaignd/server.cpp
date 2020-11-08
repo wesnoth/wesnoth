@@ -329,7 +329,7 @@ void server::load_config()
 			}
 
 			addons_.emplace(addon_id, campaign);
-			dirty_addons_.emplace(addon_id);
+			mark_dirty(addon_id);
 		}
 		cfg_.clear_children("campaigns");
 		LOG_CS << "Legacy addons processing finished.\n";
@@ -432,7 +432,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd() << "\n";
 			} else {
 				campaign["hidden"] = ctl.cmd() == "hide";
-				dirty_addons_.emplace(addon_id);
+				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "Add-on '" << addon_id << "' is now " << (ctl.cmd() == "hide" ? "hidden" : "unhidden") << '\n';
 			}
@@ -452,7 +452,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				ERR_CS << "Add-on passphrases may not be empty!\n";
 			} else {
 				set_passphrase(campaign, newpass);
-				dirty_addons_.emplace(addon_id);
+				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "New passphrase set for '" << addon_id << "'\n";
 			}
@@ -483,7 +483,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				ERR_CS << "Attribute '" << value << "' is not a recognized add-on attribute\n";
 			} else {
 				campaign[key] = value;
-				dirty_addons_.emplace(addon_id);
+				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "Set attribute on add-on '" << addon_id << "':\n"
 				       << key << "=\"" << value << "\"\n";
@@ -917,7 +917,7 @@ void server::handle_request_campaign(const server::request& req)
 	if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
 		const int downloads = campaign["downloads"].to_int() + 1;
 		campaign["downloads"] = downloads;
-		dirty_addons_.emplace(req.cfg["name"]);
+		mark_dirty(req.cfg["name"]);
 	}
 }
 
