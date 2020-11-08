@@ -433,3 +433,141 @@ void make_updatepack(config& pack, const config& from, const config& to)
 	config& addlist = pack.add_child("addlist");
 	write_difference(addlist, from, to, true);
 }
+
+std::string addon_check_status_desc(unsigned int code)
+{
+	static const std::map<ADDON_CHECK_STATUS, std::string> message_table = {
+
+		//
+		// General errors
+		//
+
+		{
+			ADDON_CHECK_STATUS::SUCCESS,
+			"Success."
+		},
+		{
+			ADDON_CHECK_STATUS::UNAUTHORIZED,
+			"Incorrect add-on passphrase."
+		},
+		{
+			ADDON_CHECK_STATUS::DENIED,
+			"Upload denied. Please contact the server administration for assistance."
+		},
+		{
+			ADDON_CHECK_STATUS::UNEXPECTED_DELTA,
+			"Attempted to upload an update pack for a non-existent add-on."
+		},
+
+		//
+		// Structure errors
+		//
+
+		{
+			ADDON_CHECK_STATUS::EMPTY_PACK,
+			"No add-on data was supplied by the client."
+		},
+		{
+			ADDON_CHECK_STATUS::BAD_DELTA,
+			"Invalid upload pack."
+		},
+		{
+			ADDON_CHECK_STATUS::BAD_NAME,
+			"Invalid add-on name."
+		},
+		{
+			ADDON_CHECK_STATUS::NAME_HAS_MARKUP,
+			"Formatting character in add-on name."
+		},
+		{
+			ADDON_CHECK_STATUS::ILLEGAL_FILENAME,
+			"The add-on contains files or directories with illegal names.\n"
+			"\n"
+			"Names containing whitespace, control characters, or any of the following symbols are not allowed:\n"
+			"\n"
+			"    \" * / : < > ? \\ | ~\n"
+			"\n"
+			"Additionally, names may not be longer than 255 characters, contain '..', or end with '.'."
+		},
+		{
+			ADDON_CHECK_STATUS::FILENAME_CASE_CONFLICT,
+			"The add-on contains files or directories with case conflicts.\n"
+			"\n"
+			"Names in the same directory may not be differently-cased versions of each other."
+		},
+		{
+			ADDON_CHECK_STATUS::INVALID_UTF8_NAME,
+			"The add-on name contains an invalid UTF-8 sequence."
+		},
+
+		//
+		// .pbl errors
+		//
+
+		{
+			ADDON_CHECK_STATUS::NO_TITLE,
+			"No add-on title specified."
+		},
+		{
+			ADDON_CHECK_STATUS::NO_AUTHOR,
+			"No add-on author/maintainer name specified."
+		},
+		{
+			ADDON_CHECK_STATUS::NO_VERSION,
+			"No add-on version specified."
+		},
+		{
+			ADDON_CHECK_STATUS::NO_DESCRIPTION,
+			"No add-on description specified."
+		},
+		{
+			ADDON_CHECK_STATUS::NO_EMAIL,
+			"No add-on author/maintainer email specified."
+		},
+		{
+			ADDON_CHECK_STATUS::NO_PASSPHRASE,
+			"Missing passphrase."
+		},
+		{
+			ADDON_CHECK_STATUS::TITLE_HAS_MARKUP,
+			"Formatting character in add-on title."
+		},
+		{
+			ADDON_CHECK_STATUS::BAD_TYPE,
+			"Invalid or unspecified add-on type."
+		},
+		{
+			ADDON_CHECK_STATUS::INVALID_UTF8_ATTRIBUTE,
+			"The add-on publish information contains an invalid UTF-8 sequence."
+		},
+
+		//
+		// Server errors
+		//
+
+		{
+			ADDON_CHECK_STATUS::SERVER_UNSPECIFIED,
+			"Unspecified server error."
+		},
+		{
+			ADDON_CHECK_STATUS::SERVER_READ_ONLY,
+			"Server is in read-only mode."
+		},
+		{
+			ADDON_CHECK_STATUS::SERVER_ADDONS_LIST,
+			"Corrupted server add-ons list."
+		},
+		{
+			ADDON_CHECK_STATUS::SERVER_DELTA_NO_VERSIONS,
+			"Empty add-on version list on the server."
+		}
+	};
+
+	for(const auto& entry : message_table) {
+		if(static_cast<unsigned int>(entry.first) == code) {
+			return entry.second;
+		}
+	}
+
+	return "Unspecified validation failure.";
+};

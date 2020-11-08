@@ -28,6 +28,53 @@ class config;
  */
 extern const unsigned short default_campaignd_port;
 
+enum class ADDON_CHECK_STATUS : unsigned int
+{
+	//
+	// General errors
+	//
+	SUCCESS						= 0x0,			/**< No error */
+	UNAUTHORIZED				= 0x1,			/**< Authentication failed */
+	DENIED						= 0x2,			/**< Upload denied */
+	UNEXPECTED_DELTA			= 0xD,			/**< Delta for a non-existent add-on */
+	//
+	// Structure errors
+	//
+	EMPTY_PACK					= 0x100,		/**< Empty pack */
+	BAD_DELTA					= 0x101,		/**< Bad delta pack */
+	BAD_NAME					= 0x102,		/**< Bad add-on name */
+	NAME_HAS_MARKUP				= 0x104,		/**< Markup in add-on name */
+	ILLEGAL_FILENAME			= 0x10A,		/**< Bad filename */
+	FILENAME_CASE_CONFLICT		= 0x10B,		/**< Filename case conflict */
+	INVALID_UTF8_NAME			= 0x1FF,		/**< Invalid UTF-8 sequence in add-on name */
+	//
+	// .pbl errors
+	//
+	NO_TITLE					= 0x200,		/**< No title specified */
+	NO_AUTHOR					= 0x201,		/**< No author specified */
+	NO_VERSION					= 0x202,		/**< No version specified */
+	NO_DESCRIPTION				= 0x203,		/**< No description specified */
+	NO_EMAIL					= 0x204,		/**< No email specified */
+	NO_PASSPHRASE				= 0x205,		/**< No passphrase specified */
+	TITLE_HAS_MARKUP			= 0x206,		/**< Markup in add-on title */
+	BAD_TYPE					= 0x207,		/**< Bad add-on type */
+	INVALID_UTF8_ATTRIBUTE		= 0x2FF,		/**< Invalid UTF-8 sequence in add-on metadata */
+	//
+	// Server errors
+	//
+	SERVER_UNSPECIFIED			= 0xF000,		/**< Unspecified server error */
+	SERVER_READ_ONLY			= 0xF001,		/**< Server read-only mode on */
+	SERVER_ADDONS_LIST			= 0xF002,		/**< Corrupted server add-ons list */
+	SERVER_DELTA_NO_VERSIONS	= 0xF003,		/**< No versions to deltify against */
+};
+
+std::string addon_check_status_desc(unsigned int code);
+
+inline std::string addon_check_status_desc(ADDON_CHECK_STATUS code)
+{
+	return addon_check_status_desc(static_cast<unsigned int>(code));
+}
+
 /**
  * Values used for add-on classification; UI-only
  * at the moment, in the future it could be used for
