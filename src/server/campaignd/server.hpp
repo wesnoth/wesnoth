@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "addon/validation.hpp"
 #include "server/campaignd/blacklist.hpp"
 #include "server/common/server_base.hpp"
 #include "server/common/simple_wml.hpp"
@@ -65,10 +66,12 @@ private:
 		 *
 		 * @note Neither @a reqcmd nor @a reqcfg are copied into instances, so
 		 *       they are required to exist for as long as every @a request
-		 *       instance that uses them.
+		 *       instance that uses them. Furthermore, @a reqcfg MUST NOT REFER
+		 *       TO A CONST OBJECT, since some code may modify it directly for
+		 *       performance reasons.
 		 */
 		request(const std::string& reqcmd,
-				const config& reqcfg,
+				config& reqcfg,
 				socket_ptr reqsock)
 			: cmd(reqcmd)
 			, cfg(reqcfg)
@@ -153,6 +156,25 @@ private:
 		dirty_addons_.emplace(addon);
 	}
 
+	/**
+	 * Performs validation on an incoming add-on.
+	 *
+	 * @param req              Server request info, containing either a full
+	 *                         WML pack, or a delta update pack.
+	 * @param existing_addon   Used to store a pointer to the existing add-on
+	 *                         WML on the server if the add-on already exists.
+	 *                         nullptr is stored otherwise.
+	 * @param error_data       Used to store extra error data for status codes
+	 *                         other than ADDON_CHECK_STATUS::SUCCESS. Cleared
+	 *                         otherwise.
+	 *
+	 * @return ADDON_CHECK_STATUS::SUCCESS if the validation checks pass, a
+	 *         more relevant value otherwise.
+	 */
+	ADDON_CHECK_STATUS validate_addon(const server::request& req,
+									  config*& existing_addon,
+									  std::string& error_data);
+
 	/** Retrieves the contents of the [server_info] WML node. */
 	const config& server_info() const { return cfg_.child("server_info"); }
 
@@ -208,12 +230,13 @@ private:
 	 * Send a client an error message.
 	 *
 	 * The WML sent consists of a document containing a single @p [error] child
-	 * with a @a message attribute holding the value of @a msg, and an
-	 * @a extra_data attribute holding the value of @a extra_data. In addition
-	 * to sending the error to the client, a line with the client IP and
-	 * message is recorded to the server log.
+	 * with a @a message attribute holding the value of @a msg, an
+	 * @a extra_data attribute holding the value of @a extra_data, and a
+	 * @a status_code attribute holding the value of @a status_code. In
+	 * addition to sending the error to the client, a line with the client IP
+	 * and message is recorded to the server log.
 	 */
-	void send_error(const std::string& msg, const std::string& extra_data, socket_ptr sock);
+	void send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, socket_ptr sock);
 };
 
 } // end namespace campaignd
