@@ -51,34 +51,38 @@ outro::outro(const game_classification& info)
 
 	// We only show the end text and the title if credits were turned off
 	if(info.end_credits) {
-		for(const auto& about : about::get_campaign_credits(info.campaign)->sections) {
-			if(about.names.empty()) {
-				continue;
-			}
+		const auto campaign_credits = about::get_campaign_credits(info.campaign);
 
-			// Split the names into chunks of 5. Use float for proper ceil function!
-			static const float chunk_size = 5.0;
-
-			const unsigned num_names = about.names.size();
-			const unsigned num_chunks = std::ceil(num_names / chunk_size);
-
-			for(std::size_t i = 0; i < num_chunks; ++i) {
-				std::stringstream ss;
-
-				// Only include section title on first chunk
-				if(i == 0) {
-					ss << about.title << "\n\n";
+		if(campaign_credits != about::get_credits_data().end()) {
+			for(const auto& about : campaign_credits->sections) {
+				if(about.names.empty()) {
+					continue;
 				}
 
-				for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k) {
-					ss << "<span size='xx-small'>" << about.names[k].first << "</span>\n";
+				// Split the names into chunks of 5. Use float for proper ceil function!
+				static const float chunk_size = 5.0;
+
+				const unsigned num_names = about.names.size();
+				const unsigned num_chunks = std::ceil(num_names / chunk_size);
+
+				for(std::size_t i = 0; i < num_chunks; ++i) {
+					std::stringstream ss;
+
+					// Only include section title on first chunk
+					if(i == 0) {
+						ss << about.title << "\n\n";
+					}
+
+					for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k) {
+						ss << "<span size='xx-small'>" << about.names[k].first << "</span>\n";
+					}
+
+					// Clean up the trailing newline
+					std::string section_text = ss.str();
+					section_text.pop_back();
+
+					text_.push_back(std::move(section_text));
 				}
-
-				// Clean up the trailing newline
-				std::string section_text = ss.str();
-				section_text.pop_back();
-
-				text_.push_back(std::move(section_text));
 			}
 		}
 	}
