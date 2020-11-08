@@ -86,7 +86,8 @@ struct addon_info
 
 	std::string icon;
 
-	version_info version;
+	version_info current_version;
+	std::set<version_info, std::greater<version_info>> versions;
 
 	std::string author;
 
@@ -117,8 +118,8 @@ struct addon_info
 
 	addon_info()
 		: id(), title(), description(), icon()
-		, version(), author(), size(), downloads()
-		, uploads(), type(), tags(), locales()
+		, current_version(), versions(), author(), size()
+		, downloads(), uploads(), type(), tags(), locales()
 		, core()
 		, depends()
 		, feedback_url()
@@ -130,8 +131,8 @@ struct addon_info
 
 	explicit addon_info(const config& cfg)
 		: id(), title(), description(), icon()
-		, version(), author(), size(), downloads()
-		, uploads(), type(), tags(), locales()
+		, current_version(), versions(), author(), size()
+		, downloads(), uploads(), type(), tags(), locales()
 		, core()
 		, depends()
 		, feedback_url()
@@ -151,7 +152,8 @@ struct addon_info
 			this->title = o.title;
 			this->description = o.description;
 			this->icon = o.icon;
-			this->version = o.version;
+			this->current_version = o.current_version;
+			this->versions = o.versions;
 			this->author = o.author;
 			this->size = o.size;
 			this->downloads = o.downloads;

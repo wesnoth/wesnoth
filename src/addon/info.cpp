@@ -79,12 +79,17 @@ void addon_info::read(const config& cfg)
 	title = cfg["title"].str();
 	description = cfg["description"].str();
 	icon = cfg["icon"].str();
-	version = cfg["version"].str();
+	current_version = cfg["version"].str();
+	versions.emplace(cfg["version"].str());
 	author = cfg["author"].str();
 	size = cfg["size"];
 	downloads = cfg["downloads"];
 	uploads = cfg["uploads"];
 	type = get_addon_type(cfg["type"].str());
+
+	for(const config& version : cfg.child_range("version")) {
+		versions.emplace(version["version"].str());
+	}
 
 	const config::const_child_itors& locales_as_configs = cfg.child_range("translation");
 
@@ -111,12 +116,17 @@ void addon_info::write(config& cfg) const
 	cfg["title"] = title;
 	cfg["description"] = description;
 	cfg["icon"] = icon;
-	cfg["version"] = version.str();
+	cfg["version"] = current_version.str();
 	cfg["author"] = author;
 	cfg["size"] = size;
 	cfg["downloads"] = downloads;
 	cfg["uploads"] = uploads;
 	cfg["type"] = get_addon_type_string(type);
+
+	for(const version_info& version : versions) {
+		config& version_cfg = cfg.add_child("version");
+		version_cfg["version"] = version.str();
+	}
 
 	for(const auto& element : info_translations) {
 		config& locale = cfg.add_child("translation");
@@ -135,7 +145,7 @@ void addon_info::write(config& cfg) const
 
 void addon_info::write_minimal(config& cfg) const
 {
-	cfg["version"] = version.str();
+	cfg["version"] = current_version.str();
 	cfg["uploads"] = uploads;
 	cfg["type"] = get_addon_type_string(type);
 	cfg["title"] = title;

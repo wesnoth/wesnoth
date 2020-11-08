@@ -33,10 +33,10 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 	if(is_addon_installed(id)) {
 		if(t.can_publish) {
 			if(addon.local_only) {
-				t.installed_version = addon.version;
+				t.installed_version = addon.current_version;
 				//t.remote_version = version_info();
 			} else {
-				t.remote_version = addon.version;
+				t.remote_version = *addon.versions.begin();
 
 				// Try to obtain the version number from the .pbl first.
 				config pbl = get_addon_pbl_info(id);
@@ -50,7 +50,7 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 		} else {
 			// We normally use the _info.cfg version instead.
 			t.installed_version = get_addon_version_info(id);
-			t.remote_version = addon.version;
+			t.remote_version = *addon.versions.begin();
 		}
 
 		if(t.remote_version == t.installed_version) {
