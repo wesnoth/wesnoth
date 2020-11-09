@@ -1356,16 +1356,20 @@ void server::handle_upload(const server::request& req)
 		// Remove any existing update packs targeting the new version. This is
 		// really only needed if the server allows multiple uploads of an
 		// add-on with the same version number.
-		// FIXME: UB?
+
+		std::set<std::string> delete_packs;
 		for(const auto& pack : addon.child_range("update_pack")) {
 			if(pack["to"].str() == new_version) {
 				const auto& pack_filename = pack["filename"].str();
 				filesystem::delete_file(pathstem + '/' + pack_filename);
-				addon.remove_children("update_pack", [&pack_filename](const config& child)
-					{
-						return child["filename"].str() == pack_filename;
-					});
+				delete_packs.insert(pack_filename);
 			}
+		}
+
+		if(!delete_packs.empty()) {
+			addon.remove_children("update_pack", [&delete_packs](const config& p) {
+				return delete_packs.find(p["filename"].str()) != delete_packs.end();
+			});
 		}
 
 		const auto& update_pack_fn = make_update_pack_filename(prev_version, new_version);
@@ -1473,17 +1477,21 @@ void server::handle_upload(const server::request& req)
 
 	// Expire old update packs and delete them
 
+	std::set<std::string> expire_packs;
+
 	for(const config& pack : addon.child_range("update_pack")) {
 		if(upload_ts > pack["expire"].to_time_t() || pack["from"].str() == new_version || (!is_delta_upload && pack["to"].str() == new_version)) {
 			LOG_CS << "Expiring upate pack for " << pack["from"].str() << " -> " << pack["to"].str() << "\n";
 			const auto& pack_filename = pack["filename"].str();
 			filesystem::delete_file(pathstem + '/' + pack_filename);
-			// FIXME: UB?
-			addon.remove_children("update_pack", [&pack_filename](const config& child)
-				{
-					return child["filename"].str() == pack_filename;
-				});
+			expire_packs.insert(pack_filename);
 		}
+	}
+
+	if(!expire_packs.empty()) {
+		addon.remove_children("update_pack", [&expire_packs](const config& p) {
+			return expire_packs.find(p["filename"].str()) != expire_packs.end();
+		});
 	}
 
 	// Create any missing update packs between consecutive versions. This covers
