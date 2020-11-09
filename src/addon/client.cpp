@@ -581,8 +581,9 @@ bool addons_client::update_last_error(config& response_cfg)
 		if(error.has_attribute("status_code")) {
 			const auto& status_msg = translated_addon_check_status(error["status_code"].to_unsigned());
 			last_error_ = font::escape_text(status_msg);
+		} else {
+			last_error_ = font::escape_text(error["message"].str());
 		}
-		last_error_ = font::escape_text(error["message"].str());
 		last_error_data_ = font::escape_text(error["extra_data"].str());
 		ERR_ADDONS << "server error: " << error << '\n';
 		return true;
