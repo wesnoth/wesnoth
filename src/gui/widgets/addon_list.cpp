@@ -203,7 +203,7 @@ void addon_list::set_addons(const addons_list& addons)
 			ss << tracking_info.installed_version.str() << "\n";
 		}
 
-		ss << addon.version.str();
+		ss << (*addon.versions.begin()).str();
 
 		if(special_version_display) {
 			ss.str(colorize_addon_state_string(ss.str(), tracking_info.state, false));

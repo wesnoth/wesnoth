@@ -148,7 +148,7 @@ private:
 	* @param increase_downloads Whether to request the server to increase the add-on's
 	*                           download count or not (e.g. when upgrading).
 	*/
-	bool download_addon(config& archive_cfg, const std::string& id, const std::string& title, bool increase_downloads = true);
+	bool download_addon(config& archive_cfg, const std::string& id, const std::string& title, const version_info& version, bool increase_downloads = true);
 
 	/**
 	* Installs the specified add-on using an archive received from the server.

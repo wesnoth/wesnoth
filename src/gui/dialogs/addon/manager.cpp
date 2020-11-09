@@ -666,7 +666,16 @@ void addon_manager::execute_action_on_selected_addon(window& window)
 
 void addon_manager::install_addon(const addon_info& addon, window& window)
 {
-	addons_client::install_result result = client_.install_addon_with_checks(addons_, addon);
+	addon_info versioned_addon = addon;
+	widget* parent = &window;
+	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
+		parent = stk->get_layer_grid(1);
+	}
+	if(addon.id == find_widget<addon_list>(&window, "addons", false).get_selected_addon()->id) {
+		versioned_addon.current_version = find_widget<menu_button>(parent, "version_filter", false).get_value_string();
+	}
+
+	addons_client::install_result result = client_.install_addon_with_checks(addons_, versioned_addon);
 
 	// Take note if any wml_changes occurred
 	need_wml_cache_refresh_ |= result.wml_changed;
@@ -885,7 +894,7 @@ void addon_manager::on_addon_select(window& window)
 
 	find_widget<styled_widget>(parent, "title", false).set_label(info->display_title_translated_or_original());
 	find_widget<styled_widget>(parent, "description", false).set_label(info->description_translated());
-	find_widget<styled_widget>(parent, "version", false).set_label(info->version.str());
+	menu_button& version_filter = find_widget<menu_button>(parent, "version_filter", false);
 	find_widget<styled_widget>(parent, "author", false).set_label(info->author);
 	find_widget<styled_widget>(parent, "type", false).set_label(info->display_type());
 
@@ -929,6 +938,8 @@ void addon_manager::on_addon_select(window& window)
 	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;
 
 	stacked_widget& action_stack = find_widget<stacked_widget>(parent, "action_stack", false);
+	// #TODO: Add tooltips with upload time and pack size
+	std::vector<config> version_filter_entries;
 
 	if(!tracking_info_[info->id].can_publish) {
 		action_stack.select_layer(0);
@@ -943,13 +954,23 @@ void addon_manager::on_addon_select(window& window)
 		}
 
 		find_widget<button>(parent, "uninstall", false).set_active(installed);
+
+		for(const auto& f : info->versions) {
+			version_filter_entries.emplace_back("label", f.str());
+		}
+		version_filter.set_active(true);
 	} else {
 		action_stack.select_layer(1);
 
 		// Always enable the publish button, but disable the delete button if not yet published.
 		find_widget<button>(parent, "publish", false).set_active(true);
 		find_widget<button>(parent, "delete", false).set_active(!info->local_only);
+
+		// Show only the version to be published
+		version_filter_entries.emplace_back("label", info->current_version.str());
+		version_filter.set_active(false);
 	}
+	version_filter.set_values(version_filter_entries);
 }
 
 bool addon_manager::exit_hook(window& window)
