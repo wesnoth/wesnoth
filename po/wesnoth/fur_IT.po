@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-25 21:01+0300\n"
+"POT-Creation-Date: 2020-11-09 11:42+0300\n"
 "PO-Revision-Date: 2008-06-06 11:34+0200\n"
 "Last-Translator: noone\n"
 "Language-Team: fur_IT\n"
@@ -2900,14 +2900,14 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:468
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:473
 msgid "Fog"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:471
-#: src/game_initialization/lobby_data.cpp:474
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:476
+#: src/game_initialization/lobby_data.cpp:479
 msgid "Shroud"
 msgstr ""
 
@@ -5034,70 +5034,70 @@ msgstr ""
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:247
+#: src/game_initialization/lobby_data.cpp:248
 msgid "Missing addon: $name"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:249
+#: src/game_initialization/lobby_data.cpp:250
 msgid "Missing addon: $id"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:286
+#: src/game_initialization/lobby_data.cpp:287
 msgid "Unknown era"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:354
-#: src/game_initialization/lobby_data.cpp:387
+#: src/game_initialization/lobby_data.cpp:355
+#: src/game_initialization/lobby_data.cpp:389
 msgid "scenario_abbreviation^S"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:373
+#: src/game_initialization/lobby_data.cpp:375
 msgid "Remote scenario"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:395
-#: src/game_initialization/lobby_data.cpp:418
+#: src/game_initialization/lobby_data.cpp:396
+#: src/game_initialization/lobby_data.cpp:422
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:423
+#: src/game_initialization/lobby_data.cpp:428
 msgid "Unknown scenario"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:433
+#: src/game_initialization/lobby_data.cpp:438
 msgid "Reloaded game"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:448
+#: src/game_initialization/lobby_data.cpp:453
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:455
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:461
-#: src/game_initialization/lobby_data.cpp:463 src/savegame.cpp:618
+#: src/game_initialization/lobby_data.cpp:466
+#: src/game_initialization/lobby_data.cpp:468 src/savegame.cpp:618
 msgid "Turn"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:476
+#: src/game_initialization/lobby_data.cpp:481
 msgid "vision^none"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:485
+#: src/game_initialization/lobby_data.cpp:490
 msgid "time limit^none"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:525
+#: src/game_initialization/lobby_data.cpp:530
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:539
+#: src/game_initialization/lobby_data.cpp:544
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."

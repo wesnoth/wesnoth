@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-25 21:01+0300\n"
+"POT-Creation-Date: 2020-11-09 11:42+0300\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -3649,14 +3649,14 @@ msgstr "통과불능"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:468
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:473
 msgid "Fog"
 msgstr "안개"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:471
-#: src/game_initialization/lobby_data.cpp:474
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:476
+#: src/game_initialization/lobby_data.cpp:479
 msgid "Shroud"
 msgstr "장막"
 
@@ -6181,69 +6181,69 @@ msgstr "$faction 당파에 지휘관 타입 유닛을 찾을 수 없습니다"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Cannot obtain genders for invalid leader $leader"
 
-#: src/game_initialization/lobby_data.cpp:247
+#: src/game_initialization/lobby_data.cpp:248
 msgid "Missing addon: $name"
 msgstr "Missing addon: $name"
 
-#: src/game_initialization/lobby_data.cpp:249
+#: src/game_initialization/lobby_data.cpp:250
 msgid "Missing addon: $id"
 msgstr "Missing addon: $id"
 
-#: src/game_initialization/lobby_data.cpp:286
+#: src/game_initialization/lobby_data.cpp:287
 msgid "Unknown era"
 msgstr "알 수 없는 시대"
 
-#: src/game_initialization/lobby_data.cpp:354
-#: src/game_initialization/lobby_data.cpp:387
+#: src/game_initialization/lobby_data.cpp:355
+#: src/game_initialization/lobby_data.cpp:389
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:373
+#: src/game_initialization/lobby_data.cpp:375
 msgid "Remote scenario"
 msgstr "리모트 시나리오"
 
-#: src/game_initialization/lobby_data.cpp:395
-#: src/game_initialization/lobby_data.cpp:418
+#: src/game_initialization/lobby_data.cpp:396
+#: src/game_initialization/lobby_data.cpp:422
 msgid "campaign_abbreviation^C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:423
+#: src/game_initialization/lobby_data.cpp:428
 msgid "Unknown scenario"
 msgstr "알 수 없는 시나리오"
 
-#: src/game_initialization/lobby_data.cpp:433
+#: src/game_initialization/lobby_data.cpp:438
 msgid "Reloaded game"
 msgstr "불러온 게임"
 
-#: src/game_initialization/lobby_data.cpp:448
+#: src/game_initialization/lobby_data.cpp:453
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "빈 슬롯 수:"
 
-#: src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:455
 msgid "mp_game_available_slots^Full"
 msgstr "만석"
 
-#: src/game_initialization/lobby_data.cpp:461
-#: src/game_initialization/lobby_data.cpp:463 src/savegame.cpp:618
+#: src/game_initialization/lobby_data.cpp:466
+#: src/game_initialization/lobby_data.cpp:468 src/savegame.cpp:618
 msgid "Turn"
 msgstr "턴 수"
 
-#: src/game_initialization/lobby_data.cpp:476
+#: src/game_initialization/lobby_data.cpp:481
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "저장 파일 버전:"
 
-#: src/game_initialization/lobby_data.cpp:485
+#: src/game_initialization/lobby_data.cpp:490
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "시간 제한"
 
-#: src/game_initialization/lobby_data.cpp:525
+#: src/game_initialization/lobby_data.cpp:530
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6252,7 +6252,7 @@ msgstr ""
 "다.당신의 버전은 <b>$local_ver</b> 이고, 호스트측의 버전은 <b>$host_ver</b> "
 "입니다."
 
-#: src/game_initialization/lobby_data.cpp:539
+#: src/game_initialization/lobby_data.cpp:544
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."

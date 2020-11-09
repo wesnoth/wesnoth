@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-25 21:01+0300\n"
+"POT-Creation-Date: 2020-11-09 11:42+0300\n"
 "PO-Revision-Date: 2013-03-09 13:27+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -3461,14 +3461,14 @@ msgstr "Läbimatu ala"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:468
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:473
 msgid "Fog"
 msgstr "Udu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:471
-#: src/game_initialization/lobby_data.cpp:474
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:476
+#: src/game_initialization/lobby_data.cpp:479
 msgid "Shroud"
 msgstr "Pimendus"
 
@@ -5914,80 +5914,80 @@ msgstr "Rühmituse $faction jaoks ei leidu sobivat pealikut"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:247
+#: src/game_initialization/lobby_data.cpp:248
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $name"
 msgstr "Puuduv argument: $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:249
+#: src/game_initialization/lobby_data.cpp:250
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Puuduv argument: $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:286
+#: src/game_initialization/lobby_data.cpp:287
 msgid "Unknown era"
 msgstr "Tundmatu ajastu"
 
-#: src/game_initialization/lobby_data.cpp:354
-#: src/game_initialization/lobby_data.cpp:387
+#: src/game_initialization/lobby_data.cpp:355
+#: src/game_initialization/lobby_data.cpp:389
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "Osapool"
 
-#: src/game_initialization/lobby_data.cpp:373
+#: src/game_initialization/lobby_data.cpp:375
 msgid "Remote scenario"
 msgstr "Eemalt loetav stsenaarium"
 
-#: src/game_initialization/lobby_data.cpp:395
-#: src/game_initialization/lobby_data.cpp:418
+#: src/game_initialization/lobby_data.cpp:396
+#: src/game_initialization/lobby_data.cpp:422
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:423
+#: src/game_initialization/lobby_data.cpp:428
 msgid "Unknown scenario"
 msgstr "Tundmatu stsenaarium"
 
-#: src/game_initialization/lobby_data.cpp:433
+#: src/game_initialization/lobby_data.cpp:438
 msgid "Reloaded game"
 msgstr "Mäng laeti uuesti"
 
-#: src/game_initialization/lobby_data.cpp:448
+#: src/game_initialization/lobby_data.cpp:453
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vaba koht:"
 msgstr[1] "Vabad kohad:"
 
-#: src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:455
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:461
-#: src/game_initialization/lobby_data.cpp:463 src/savegame.cpp:618
+#: src/game_initialization/lobby_data.cpp:466
+#: src/game_initialization/lobby_data.cpp:468 src/savegame.cpp:618
 msgid "Turn"
 msgstr "Käik"
 
-#: src/game_initialization/lobby_data.cpp:476
+#: src/game_initialization/lobby_data.cpp:481
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "Versioon:"
 
-#: src/game_initialization/lobby_data.cpp:485
+#: src/game_initialization/lobby_data.cpp:490
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Ajapiirang"
 
-#: src/game_initialization/lobby_data.cpp:525
+#: src/game_initialization/lobby_data.cpp:530
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:539
+#: src/game_initialization/lobby_data.cpp:544
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."

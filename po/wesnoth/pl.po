@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-25 21:01+0300\n"
+"POT-Creation-Date: 2020-11-09 11:42+0300\n"
 "PO-Revision-Date: 2020-11-01 17:29+0100\n"
 "Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
 "Language-Team: none\n"
@@ -3601,14 +3601,14 @@ msgstr "Nie do przebycia"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:468
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:473
 msgid "Fog"
 msgstr "Mgła"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:471
-#: src/game_initialization/lobby_data.cpp:474
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:476
+#: src/game_initialization/lobby_data.cpp:479
 msgid "Shroud"
 msgstr "Całun"
 
@@ -6135,65 +6135,65 @@ msgstr "Nie można znaleźć jednostki-przywódcy dla strony $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Nie można uzyskać płci dla nieprawidłowego przywódcy $leader"
 
-#: src/game_initialization/lobby_data.cpp:247
+#: src/game_initialization/lobby_data.cpp:248
 msgid "Missing addon: $name"
 msgstr "Brakujący dodatek: $name"
 
-#: src/game_initialization/lobby_data.cpp:249
+#: src/game_initialization/lobby_data.cpp:250
 msgid "Missing addon: $id"
 msgstr "Brakujący dodatek: $id"
 
-#: src/game_initialization/lobby_data.cpp:286
+#: src/game_initialization/lobby_data.cpp:287
 msgid "Unknown era"
 msgstr "Nieznana era"
 
-#: src/game_initialization/lobby_data.cpp:354
-#: src/game_initialization/lobby_data.cpp:387
+#: src/game_initialization/lobby_data.cpp:355
+#: src/game_initialization/lobby_data.cpp:389
 msgid "scenario_abbreviation^S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:373
+#: src/game_initialization/lobby_data.cpp:375
 msgid "Remote scenario"
 msgstr "Zdalny scenariusz"
 
-#: src/game_initialization/lobby_data.cpp:395
-#: src/game_initialization/lobby_data.cpp:418
+#: src/game_initialization/lobby_data.cpp:396
+#: src/game_initialization/lobby_data.cpp:422
 msgid "campaign_abbreviation^C"
 msgstr "K"
 
-#: src/game_initialization/lobby_data.cpp:423
+#: src/game_initialization/lobby_data.cpp:428
 msgid "Unknown scenario"
 msgstr "Nieznany scenariusz"
 
-#: src/game_initialization/lobby_data.cpp:433
+#: src/game_initialization/lobby_data.cpp:438
 msgid "Reloaded game"
 msgstr "Gra wczytana ponownie"
 
-#: src/game_initialization/lobby_data.cpp:448
+#: src/game_initialization/lobby_data.cpp:453
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Wolne miejsce:"
 msgstr[1] "Wolne miejsca:"
 msgstr[2] "Wolnych miejsc:"
 
-#: src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:455
 msgid "mp_game_available_slots^Full"
 msgstr "Pełna"
 
-#: src/game_initialization/lobby_data.cpp:461
-#: src/game_initialization/lobby_data.cpp:463 src/savegame.cpp:618
+#: src/game_initialization/lobby_data.cpp:466
+#: src/game_initialization/lobby_data.cpp:468 src/savegame.cpp:618
 msgid "Turn"
 msgstr "Tura"
 
-#: src/game_initialization/lobby_data.cpp:476
+#: src/game_initialization/lobby_data.cpp:481
 msgid "vision^none"
 msgstr "wizja"
 
-#: src/game_initialization/lobby_data.cpp:485
+#: src/game_initialization/lobby_data.cpp:490
 msgid "time limit^none"
 msgstr "limit czasu"
 
-#: src/game_initialization/lobby_data.cpp:525
+#: src/game_initialization/lobby_data.cpp:530
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6201,7 +6201,7 @@ msgstr ""
 "Gospodarz ma dodatek w niewłaściwej wersji <i>$addon</i>. Ich wersja to <b>"
 "$host_ver</b>, a twoja to <b>$local_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:539
+#: src/game_initialization/lobby_data.cpp:544
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
