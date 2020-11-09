@@ -206,13 +206,11 @@ void wesnothd_connection::send_data(const configr_of& request)
 	// No idea why io_service::post doesn't like this lambda while asio::post does.
 #if BOOST_VERSION >= 106600
 	boost::asio::post(io_service_, [this, buf_ptr = std::move(buf_ptr)]() mutable {
-		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
-		send_queue_.push(std::move(buf_ptr));
 #else
 	io_service_.post([this, buf_ptr]() {
-		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
-		send_queue_.push(buf_ptr);
 #endif
+		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
+		send_queue_.push(std::move(buf_ptr));
 
 		if(send_queue_.size() == 1) {
 			send();
