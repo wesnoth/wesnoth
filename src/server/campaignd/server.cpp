@@ -83,9 +83,9 @@ namespace {
  * The salt and hash are retrieved from the @a passsalt and @a passhash
  * attributes, respectively.
  */
-inline bool authenticate(config& campaign, const config::attribute_value& passphrase)
+inline bool authenticate(config& addon, const config::attribute_value& passphrase)
 {
-	return auth::verify_passphrase(passphrase, campaign["passsalt"], campaign["passhash"]);
+	return auth::verify_passphrase(passphrase, addon["passsalt"], addon["passhash"]);
 }
 
 /**
@@ -94,9 +94,9 @@ inline bool authenticate(config& campaign, const config::attribute_value& passph
  * The salt and hash are written into the @a passsalt and @a passhash
  * attributes, respectively.
  */
-inline void set_passphrase(config& campaign, const std::string& passphrase)
+inline void set_passphrase(config& addon, const std::string& passphrase)
 {
-	std::tie(campaign["passsalt"], campaign["passhash"]) = auth::generate_hash(passphrase);
+	std::tie(addon["passsalt"], addon["passhash"]) = auth::generate_hash(passphrase);
 }
 
 /**
@@ -252,19 +252,21 @@ server::server(const std::string& cfg_file, unsigned short port)
 	LOG_CS << "Port: " << port_ << '\n';
 	LOG_CS << "Server directory: " << game_config::path << " (" << addons_.size() << " add-ons)\n";
 
-	// Ensure all campaigns to use secure hash passphrase storage
 	if(!read_only_) {
-		for(auto& addon : addons_) {
-			config& campaign = addon.second;
-			// Campaign already has a hashed password
-			if(campaign["passphrase"].empty()) {
+		// Migrate old add-ons to use hashed passphrases (1.12+)
+		for(auto& entry : addons_) {
+			auto& id = entry.first;
+			auto& addon = entry.second;
+
+			// Add-on already has a hashed password
+			if(addon["passphrase"].empty()) {
 				continue;
 			}
 
-			LOG_CS << "Addon '" << campaign["title"] << "' uses unhashed passphrase. Fixing.\n";
-			set_passphrase(campaign, campaign["passphrase"]);
-			campaign["passphrase"] = "";
-			dirty_addons_.emplace(addon.first);
+			LOG_CS << "Addon '" << addon["title"] << "' uses unhashed passphrase. Fixing.\n";
+			set_passphrase(addon, addon["passphrase"]);
+			addon["passphrase"] = "";
+			mark_dirty(id);
 		}
 		write_config();
 	}
@@ -511,12 +513,12 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			ERR_CS << "Incorrect number of arguments for '" << ctl.cmd() << "'\n";
 		} else {
 			const std::string& addon_id = ctl[1];
-			config& campaign = get_addon(addon_id);
+			config& addon = get_addon(addon_id);
 
-			if(!campaign) {
+			if(!addon) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd() << "\n";
 			} else {
-				campaign["hidden"] = ctl.cmd() == "hide";
+				addon["hidden"] = ctl.cmd() == "hide";
 				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "Add-on '" << addon_id << "' is now " << (ctl.cmd() == "hide" ? "hidden" : "unhidden") << '\n';
@@ -528,15 +530,15 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 		} else {
 			const std::string& addon_id = ctl[1];
 			const std::string& newpass = ctl[2];
-			config& campaign = get_addon(addon_id);
+			config& addon = get_addon(addon_id);
 
-			if(!campaign) {
+			if(!addon) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase\n";
 			} else if(newpass.empty()) {
 				// Shouldn't happen!
 				ERR_CS << "Add-on passphrases may not be empty!\n";
 			} else {
-				set_passphrase(campaign, newpass);
+				set_passphrase(addon, newpass);
 				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "New passphrase set for '" << addon_id << "'\n";
@@ -550,15 +552,15 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			const std::string& key = ctl[2];
 			const std::string& value = ctl[3];
 
-			config& campaign = get_addon(addon_id);
+			config& addon = get_addon(addon_id);
 
-			if(!campaign) {
+			if(!addon) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set attribute\n";
 			} else if(key == "name" || key == "version") {
 				ERR_CS << "setattr cannot be used to rename add-ons or change their version\n";
 			} else if(key == "passphrase" || key == "passhash"|| key == "passsalt") {
 				ERR_CS << "setattr cannot be used to set auth data -- use setpass instead\n";
-			} else if(!campaign.has_attribute(key)) {
+			} else if(!addon.has_attribute(key)) {
 				// NOTE: This is a very naive approach for validating setattr's
 				//       input, but it should generally work since add-on
 				//       uploads explicitly set all recognized attributes to
@@ -567,7 +569,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				//       the config serialization.
 				ERR_CS << "Attribute '" << value << "' is not a recognized add-on attribute\n";
 			} else {
-				campaign[key] = value;
+				addon[key] = value;
 				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "Set attribute on add-on '" << addon_id << "':\n"
@@ -673,7 +675,7 @@ void server::fire(const std::string& hook, const std::string& addon)
 	pid_t childpid;
 
 	if((childpid = fork()) == -1) {
-		ERR_CS << "fork failed while updating campaign " << addon << '\n';
+		ERR_CS << "fork failed while updating add-on " << addon << '\n';
 		return;
 	}
 
@@ -900,9 +902,9 @@ void server::handle_request_campaign_list(const server::request& req)
 
 void server::handle_request_campaign(const server::request& req)
 {
-	config& campaign = get_addon(req.cfg["name"]);
+	config& addon = get_addon(req.cfg["name"]);
 
-	if(!campaign || campaign["hidden"].to_bool()) {
+	if(!addon || addon["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 		return;
 	}
@@ -911,10 +913,10 @@ void server::handle_request_campaign(const server::request& req)
 	// the min_wesnoth_version in [version] children of the addon info (#TODO: gfgtdf's part)
 	std::string to = req.cfg["version"].str();
 	const std::string& from = req.cfg["from_version"].str();
-	std::string full_pack = campaign["filename"].str();
+	std::string full_pack = addon["filename"].str();
 	int full_pack_size;
 
-	auto version_map = get_version_map(campaign);
+	auto version_map = get_version_map(addon);
 
 	if(version_map.empty()) {
 		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
@@ -953,15 +955,15 @@ void server::handle_request_campaign(const server::request& req)
 				iter++;
 				const config& next_version = iter->second;
 
-				for(const config& pack : campaign.child_range("update_pack")) {
+				for(const config& pack : addon.child_range("update_pack")) {
 					if(pack["from"].str() == prev_version["version"].str()
 							&& pack["to"].str() == next_version["version"].str()) {
 						config update_pack;
-						filesystem::scoped_istream in = filesystem::istream_file(campaign["filename"].str() + "/" + pack["filename"].str());
+						filesystem::scoped_istream in = filesystem::istream_file(addon["filename"].str() + "/" + pack["filename"].str());
 						read_gz(update_pack, *in);
 						if(update_pack) {
 							pack_data.append(update_pack);
-							size += filesystem::file_size(campaign["filename"].str() + "/" + pack["filename"].str());
+							size += filesystem::file_size(addon["filename"].str() + "/" + pack["filename"].str());
 						} else {
 							WRN_CS << "Unable to find an update pack sequence from version (" << from << ") to ("
 								   << to << ") for the addon '" << req.cfg["name"].str() << "'. A full pack will be sent instead!\n";
@@ -1013,30 +1015,30 @@ void server::handle_request_campaign(const server::request& req)
 	// the downloads count. Default to true for compatibility with old
 	// clients that won't tell us what they are trying to do.
 	if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
-		const int downloads = campaign["downloads"].to_int() + 1;
-		campaign["downloads"] = downloads;
+		const int downloads = addon["downloads"].to_int() + 1;
+		addon["downloads"] = downloads;
 		mark_dirty(req.cfg["name"]);
 	}
 }
 
 void server::handle_request_campaign_hash(const server::request& req)
 {
-	config& campaign = get_addon(req.cfg["name"]);
+	config& addon = get_addon(req.cfg["name"]);
 
-	if(!campaign || campaign["hidden"].to_bool()) {
+	if(!addon || addon["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 		return;
 	}
 
-	std::string filename = campaign["filename"].str();
+	std::string filename = addon["filename"].str();
 
-	auto version_map = get_version_map(campaign);
+	auto version_map = get_version_map(addon);
 
 	if(version_map.empty()) {
 		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
 		return;
 	} else {
-		std::string version_str = campaign["version"].str();
+		std::string version_str = addon["version"].str();
 		auto version = version_map.find(version_info(version_str));
 		if(version != version_map.end()) {
 			filename += "/" + version->second["filename"].str();
@@ -1599,9 +1601,9 @@ void server::handle_delete(const server::request& req)
 
 	LOG_CS << req << "Deleting add-on '" << id << "'\n";
 
-	config& campaign = get_addon(id);
+	config& addon = get_addon(id);
 
-	if(!campaign) {
+	if(!addon) {
 		send_error("The add-on does not exist.", req.sock);
 		return;
 	}
@@ -1613,12 +1615,12 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
-	if(!authenticate(campaign, pass)) {
+	if(!authenticate(addon, pass)) {
 		send_error("The passphrase is incorrect.", req.sock);
 		return;
 	}
 
-	if(campaign["hidden"].to_bool()) {
+	if(addon["hidden"].to_bool()) {
 		LOG_CS << "Add-on removal denied - hidden add-on.\n";
 		send_error("Add-on deletion denied. Please contact the server administration for assistance.", req.sock);
 		return;
@@ -1639,20 +1641,20 @@ void server::handle_change_passphrase(const server::request& req)
 		return;
 	}
 
-	config& campaign = get_addon(cpass["name"]);
+	config& addon = get_addon(cpass["name"]);
 
-	if(!campaign) {
+	if(!addon) {
 		send_error("No add-on with that name exists.", req.sock);
-	} else if(!authenticate(campaign, cpass["passphrase"])) {
+	} else if(!authenticate(addon, cpass["passphrase"])) {
 		send_error("Your old passphrase was incorrect.", req.sock);
-	} else if(campaign["hidden"].to_bool()) {
+	} else if(addon["hidden"].to_bool()) {
 		LOG_CS << "Passphrase change denied - hidden add-on.\n";
 		send_error("Add-on passphrase change denied. Please contact the server administration for assistance.", req.sock);
 	} else if(cpass["new_passphrase"].empty()) {
 		send_error("No new passphrase was supplied.", req.sock);
 	} else {
-		set_passphrase(campaign, cpass["new_passphrase"]);
-		dirty_addons_.emplace(campaign["name"]);
+		set_passphrase(addon, cpass["new_passphrase"]);
+		dirty_addons_.emplace(addon["name"]);
 		write_config();
 		send_message("Passphrase changed.", req.sock);
 	}
