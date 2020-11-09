@@ -1085,6 +1085,11 @@ void server::handle_request_terms(const server::request& req)
 
 ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& existing_addon, std::string& error_data)
 {
+	if(read_only_) {
+		LOG_CS << "Validation error: uploads not permitted in read-only mode.\n";
+		return ADDON_CHECK_STATUS::SERVER_READ_ONLY;
+	}
+
 	const config& upload = req.cfg;
 
 	const config* data =  optional_wml_child(upload, "data");
@@ -1120,10 +1125,40 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		}
 	}
 
-	if(read_only_) {
-		LOG_CS << "Validation error: uploads not permitted in read-only mode.\n";
-		return ADDON_CHECK_STATUS::SERVER_READ_ONLY;
+	// Auth and block-list based checks go first
+
+	if(upload["passphrase"].empty()) {
+		LOG_CS << "Validation error: no passphrase specified\n";
+		return ADDON_CHECK_STATUS::NO_PASSPHRASE;
 	}
+
+	if(existing_addon && !authenticate(*existing_addon, upload["passphrase"])) {
+		LOG_CS << "Validation error: passphrase does not match\n";
+		return ADDON_CHECK_STATUS::UNAUTHORIZED;
+	}
+
+	if(existing_addon && (*existing_addon)["hidden"].to_bool()) {
+		LOG_CS << "Validation error: add-on is hidden\n";
+		return ADDON_CHECK_STATUS::DENIED;
+	}
+
+	try {
+		if(blacklist_.is_blacklisted(name,
+									 upload["title"].str(),
+									 upload["description"].str(),
+									 upload["author"].str(),
+									 req.addr,
+									 upload["email"].str()))
+		{
+			LOG_CS << "Validation error: blacklisted uploader or publish information\n";
+			return ADDON_CHECK_STATUS::DENIED;
+		}
+	} catch(const utf8::invalid_utf8_exception&) {
+		LOG_CS << "Validation error: invalid UTF-8 sequence in publish information while checking against the blacklist\n";
+		return ADDON_CHECK_STATUS::INVALID_UTF8_ATTRIBUTE;
+	}
+
+	// Structure and syntax checks follow
 
 	if(!is_upload_pack && !have_wml(data)) {
 		LOG_CS << "Validation error: no add-on data.\n";
@@ -1194,40 +1229,9 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::FILENAME_CASE_CONFLICT;
 	}
 
-	if(upload["passphrase"].empty()) {
-		LOG_CS << "Validation error: no passphrase specified\n";
-		return ADDON_CHECK_STATUS::NO_PASSPHRASE;
-	}
-
-	if(existing_addon && !authenticate(*existing_addon, upload["passphrase"])) {
-		LOG_CS << "Validation error: passphrase does not match\n";
-		return ADDON_CHECK_STATUS::UNAUTHORIZED;
-	}
-
-	if(existing_addon && (*existing_addon)["hidden"].to_bool()) {
-		LOG_CS << "Validation error: add-on is hidden\n";
-		return ADDON_CHECK_STATUS::DENIED;
-	}
-
 	if(is_upload_pack && !existing_addon) {
 		LOG_CS << "Validation error: attempted to send an update pack for a non-existent add-on\n";
 		return ADDON_CHECK_STATUS::UNEXPECTED_DELTA;
-	}
-
-	try {
-		if(blacklist_.is_blacklisted(name,
-									 upload["title"].str(),
-									 upload["description"].str(),
-									 upload["author"].str(),
-									 req.addr,
-									 upload["email"].str()))
-		{
-			LOG_CS << "Validation error: blacklisted uploader or publish information\n";
-			return ADDON_CHECK_STATUS::DENIED;
-		}
-	} catch(const utf8::invalid_utf8_exception&) {
-		LOG_CS << "Validation error: invalid UTF-8 sequence in publish information while checking against the blacklist\n";
-		return ADDON_CHECK_STATUS::INVALID_UTF8_ATTRIBUTE;
 	}
 
 	return ADDON_CHECK_STATUS::SUCCESS;
