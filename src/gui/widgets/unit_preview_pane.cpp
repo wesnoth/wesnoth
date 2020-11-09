@@ -113,7 +113,7 @@ static inline std::string get_hp_tooltip(const utils::string_map_res& res, const
 	std::vector<std::string> resistances_table;
 
 	bool att_def_diff = false;
-	for(const utils::string_map::value_type &resist : res) {
+	for(const utils::string_map_res::value_type &resist : res) {
 		std::ostringstream line;
 		line << translation::dgettext("wesnoth", resist.first.c_str()) << ": ";
 
