@@ -15,6 +15,7 @@
 
 #include "addon/validation.hpp"
 #include "config.hpp"
+#include "gettext.hpp"
 #include "serialization/unicode_cast.hpp"
 #include "hash.hpp"
 
@@ -444,19 +445,19 @@ std::string addon_check_status_desc(unsigned int code)
 
 		{
 			ADDON_CHECK_STATUS::SUCCESS,
-			"Success."
+			N_("Success.")
 		},
 		{
 			ADDON_CHECK_STATUS::UNAUTHORIZED,
-			"Incorrect add-on passphrase."
+			N_("Incorrect add-on passphrase.")
 		},
 		{
 			ADDON_CHECK_STATUS::DENIED,
-			"Upload denied. Please contact the server administration for assistance."
+			N_("Upload denied. Please contact the server administration for assistance.")
 		},
 		{
 			ADDON_CHECK_STATUS::UNEXPECTED_DELTA,
-			"Attempted to upload an update pack for a non-existent add-on."
+			N_("Attempted to upload an update pack for a non-existent add-on.")
 		},
 
 		//
@@ -465,39 +466,39 @@ std::string addon_check_status_desc(unsigned int code)
 
 		{
 			ADDON_CHECK_STATUS::EMPTY_PACK,
-			"No add-on data was supplied by the client."
+			N_("No add-on data was supplied by the client.")
 		},
 		{
 			ADDON_CHECK_STATUS::BAD_DELTA,
-			"Invalid upload pack."
+			N_("Invalid upload pack.")
 		},
 		{
 			ADDON_CHECK_STATUS::BAD_NAME,
-			"Invalid add-on name."
+			N_("Invalid add-on name.")
 		},
 		{
 			ADDON_CHECK_STATUS::NAME_HAS_MARKUP,
-			"Formatting character in add-on name."
+			N_("Formatting character in add-on name.")
 		},
 		{
 			ADDON_CHECK_STATUS::ILLEGAL_FILENAME,
-			"The add-on contains files or directories with illegal names.\n"
+			N_("The add-on contains files or directories with illegal names.\n"
 			"\n"
 			"Names containing whitespace, control characters, or any of the following symbols are not allowed:\n"
 			"\n"
 			"    \" * / : < > ? \\ | ~\n"
 			"\n"
-			"Additionally, names may not be longer than 255 characters, contain '..', or end with '.'."
+			"Additionally, names may not be longer than 255 characters, contain '..', or end with '.'.")
 		},
 		{
 			ADDON_CHECK_STATUS::FILENAME_CASE_CONFLICT,
-			"The add-on contains files or directories with case conflicts.\n"
+			N_("The add-on contains files or directories with case conflicts.\n"
 			"\n"
-			"Names in the same directory may not be differently-cased versions of each other."
+			"Names in the same directory may not be differently-cased versions of each other.")
 		},
 		{
 			ADDON_CHECK_STATUS::INVALID_UTF8_NAME,
-			"The add-on name contains an invalid UTF-8 sequence."
+			N_("The add-on name contains an invalid UTF-8 sequence.")
 		},
 
 		//
@@ -506,39 +507,39 @@ std::string addon_check_status_desc(unsigned int code)
 
 		{
 			ADDON_CHECK_STATUS::NO_TITLE,
-			"No add-on title specified."
+			N_("No add-on title specified.")
 		},
 		{
 			ADDON_CHECK_STATUS::NO_AUTHOR,
-			"No add-on author/maintainer name specified."
+			N_("No add-on author/maintainer name specified.")
 		},
 		{
 			ADDON_CHECK_STATUS::NO_VERSION,
-			"No add-on version specified."
+			N_("No add-on version specified.")
 		},
 		{
 			ADDON_CHECK_STATUS::NO_DESCRIPTION,
-			"No add-on description specified."
+			N_("No add-on description specified.")
 		},
 		{
 			ADDON_CHECK_STATUS::NO_EMAIL,
-			"No add-on author/maintainer email specified."
+			N_("No add-on author/maintainer email specified.")
 		},
 		{
 			ADDON_CHECK_STATUS::NO_PASSPHRASE,
-			"Missing passphrase."
+			N_("Missing passphrase.")
 		},
 		{
 			ADDON_CHECK_STATUS::TITLE_HAS_MARKUP,
-			"Formatting character in add-on title."
+			N_("Formatting character in add-on title.")
 		},
 		{
 			ADDON_CHECK_STATUS::BAD_TYPE,
-			"Invalid or unspecified add-on type."
+			N_("Invalid or unspecified add-on type.")
 		},
 		{
 			ADDON_CHECK_STATUS::INVALID_UTF8_ATTRIBUTE,
-			"The add-on publish information contains an invalid UTF-8 sequence."
+			N_("The add-on publish information contains an invalid UTF-8 sequence.")
 		},
 
 		//
@@ -547,19 +548,19 @@ std::string addon_check_status_desc(unsigned int code)
 
 		{
 			ADDON_CHECK_STATUS::SERVER_UNSPECIFIED,
-			"Unspecified server error."
+			N_("Unspecified server error.")
 		},
 		{
 			ADDON_CHECK_STATUS::SERVER_READ_ONLY,
-			"Server is in read-only mode."
+			N_("Server is in read-only mode.")
 		},
 		{
 			ADDON_CHECK_STATUS::SERVER_ADDONS_LIST,
-			"Corrupted server add-ons list."
+			N_("Corrupted server add-ons list.")
 		},
 		{
 			ADDON_CHECK_STATUS::SERVER_DELTA_NO_VERSIONS,
-			"Empty add-on version list on the server."
+			N_("Empty add-on version list on the server.")
 		}
 	};
 
@@ -569,5 +570,10 @@ std::string addon_check_status_desc(unsigned int code)
 		}
 	}
 
-	return "Unspecified validation failure.";
+	return N_("Unspecified validation failure.");
 };
+
+std::string translated_addon_check_status(unsigned int code)
+{
+	return _(addon_check_status_desc(code).c_str());
+}

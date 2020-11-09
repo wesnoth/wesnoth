@@ -75,6 +75,13 @@ inline std::string addon_check_status_desc(ADDON_CHECK_STATUS code)
 	return addon_check_status_desc(static_cast<unsigned int>(code));
 }
 
+std::string translated_addon_check_status(unsigned int code);
+
+inline std::string translated_addon_check_status(ADDON_CHECK_STATUS code)
+{
+	return translated_addon_check_status(static_cast<unsigned int>(code));
+}
+
 /**
  * Values used for add-on classification; UI-only
  * at the moment, in the future it could be used for
