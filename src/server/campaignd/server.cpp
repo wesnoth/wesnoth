@@ -418,6 +418,12 @@ void server::load_config()
 	LOG_CS << "Loaded addons metadata. " << addons_.size() << " addons found.\n";
 }
 
+std::ostream& operator<<(std::ostream& o, const server::request& r)
+{
+	o << '[' << r.addr << ' ' << r.cmd << "] ";
+	return o;
+}
+
 void server::handle_new_client(socket_ptr socket)
 {
 	async_receive_doc(socket,
@@ -710,7 +716,7 @@ void server::send_message(const std::string& msg, socket_ptr sock)
 
 void server::send_error(const std::string& msg, socket_ptr sock)
 {
-	ERR_CS << "[" << client_address(sock) << "]: " << msg << '\n';
+	ERR_CS << "[" << client_address(sock) << "] " << msg << '\n';
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", escaped_msg.c_str());
@@ -793,7 +799,7 @@ void server::register_handlers()
 
 void server::handle_request_campaign_list(const server::request& req)
 {
-	LOG_CS << "sending addons list to " << req.addr << " using gzip\n";
+	LOG_CS << req << "sending add-ons list\n";
 
 	std::time_t epoch = std::time(nullptr);
 	config addons_list;
@@ -980,7 +986,7 @@ void server::handle_request_campaign(const server::request& req)
 				simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 				doc.compress();
 
-				LOG_CS << "sending an update pack (" << from << "->" << to << ") for addon '" << req.cfg["name"] << "' to " << req.addr << " size: " << size / 1024 << "KiB\n";
+				LOG_CS << req << "sending an update pack (" << from << "->" << to << ") for addon '" << req.cfg["name"] << "' size: " << size / 1024 << "KiB\n";
 
 				async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 
@@ -999,7 +1005,7 @@ void server::handle_request_campaign(const server::request& req)
 			return;
 		}
 
-		LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << full_pack_size / 1024 << "KiB\n";
+		LOG_CS << req << "Sending add-on '" << req.cfg["name"] << "' size: " << full_pack_size / 1024 << "KiB\n";
 		async_send_file(req.sock, full_pack, std::bind(&server::handle_new_client, this, _1), null_handler);
 	}
 
@@ -1052,7 +1058,7 @@ void server::handle_request_campaign_hash(const server::request& req)
 			return;
 		}
 
-		LOG_CS << "sending the hash list of the campaign '" << req.cfg["name"] << "' to " << req.addr << " size: " << file_size / 1024 << "KiB\n";
+		LOG_CS << req << "Sending hash list for add-on '" << req.cfg["name"] << "' size: " << file_size / 1024 << " KiB\n";
 		async_send_file(req.sock, filename, std::bind(&server::handle_new_client, this, _1), null_handler);
 	}
 }
@@ -1078,7 +1084,7 @@ void server::handle_request_terms(const server::request& req)
     a) release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license; <b>and</b>
     b) release all other included content under the terms of the GPL; and that you choose to do so.)""";
 
-	LOG_CS << "sending terms " << req.addr << "\n";
+	LOG_CS << req << "sending license terms\n";
 	send_message(terms, req.sock);
 	LOG_CS << " Done\n";
 }
@@ -1243,7 +1249,7 @@ void server::handle_upload(const server::request& req)
 	const config& upload = req.cfg;
 	const auto& name = upload["name"].str();
 
-	LOG_CS << "Uploading add-on '" << name << "' from " << req.addr << "...\n";
+	LOG_CS << req << "Validating add-on '" << name << "'...\n";
 
 	config* addon_ptr = nullptr;
 	std::string val_error_data;
@@ -1255,6 +1261,8 @@ void server::handle_upload(const server::request& req)
 		send_error(msg, val_error_data, static_cast<unsigned int>(val_status), req.sock);
 		return;
 	}
+
+	LOG_CS << req << "Processing add-on '" << name << "'...\n";
 
 	const config* const full_pack    = optional_wml_child(upload, "data");
 	const config* const delta_remove = optional_wml_child(upload, "removelist");
@@ -1271,7 +1279,7 @@ void server::handle_upload(const server::request& req)
 
 	config& addon = *addon_ptr;
 
-	LOG_CS << "Upload type: "
+	LOG_CS << req << "Upload type: "
 		   << (is_delta_upload ? "delta" : "full") << ", "
 		   << (is_existing_upload ? "update" : "new") << '\n';
 
@@ -1571,7 +1579,7 @@ void server::handle_upload(const server::request& req)
 	mark_dirty(name);
 	write_config();
 
-	LOG_CS << "Finished uploading add-on '" << upload["name"] << "' from " << req.addr << '\n';
+	LOG_CS << req << "Finished uploading add-on '" << upload["name"] << "'\n";
 
 	send_message("Add-on accepted.", req.sock);
 
@@ -1584,12 +1592,12 @@ void server::handle_delete(const server::request& req)
 	const std::string& id = erase["name"].str();
 
 	if(read_only_) {
-		LOG_CS << "in read-only mode, request to delete '" << id << "' from " << req.addr << " denied\n";
+		LOG_CS << req << "in read-only mode, request to delete '" << id << "' denied\n";
 		send_error("Cannot delete add-on: The server is currently in read-only mode.", req.sock);
 		return;
 	}
 
-	LOG_CS << "deleting campaign '" << id << "' requested from " << req.addr << "\n";
+	LOG_CS << req << "Deleting add-on '" << id << "'\n";
 
 	config& campaign = get_addon(id);
 

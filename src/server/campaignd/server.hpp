@@ -26,6 +26,7 @@
 #include <boost/asio/steady_timer.hpp>
 
 #include <chrono>
+#include <iosfwd>
 
 namespace campaignd {
 
@@ -80,6 +81,8 @@ private:
 			, addr(client_address(sock))
 		{}
 	};
+
+	friend std::ostream& operator<<(std::ostream& o, const request& r);
 
 	typedef std::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;
