@@ -666,7 +666,16 @@ void addon_manager::execute_action_on_selected_addon(window& window)
 
 void addon_manager::install_addon(const addon_info& addon, window& window)
 {
-	addons_client::install_result result = client_.install_addon_with_checks(addons_, addon);
+	addon_info versioned_addon = addon;
+	widget* parent = &window;
+	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
+		parent = stk->get_layer_grid(1);
+	}
+	if(addon.id == find_widget<addon_list>(&window, "addons", false).get_selected_addon()->id) {
+		versioned_addon.current_version = find_widget<menu_button>(parent, "version_filter", false).get_value_string();
+	}
+
+	addons_client::install_result result = client_.install_addon_with_checks(addons_, versioned_addon);
 
 	// Take note if any wml_changes occurred
 	need_wml_cache_refresh_ |= result.wml_changed;

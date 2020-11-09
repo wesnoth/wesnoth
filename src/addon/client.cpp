@@ -261,7 +261,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	return !update_last_error(response_buf);
 }
 
-bool addons_client::download_addon(config& archive_cfg, const std::string& id, const std::string& title, bool increase_downloads)
+bool addons_client::download_addon(config& archive_cfg, const std::string& id, const std::string& title, const version_info& version, bool increase_downloads)
 {
 	archive_cfg.clear();
 
@@ -270,6 +270,7 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 
 	request_body["name"] = id;
 	request_body["increase_downloads"] = increase_downloads;
+	request_body["version"] = version.str();
 	request_body["from_version"] = get_addon_version_info(id);
 
 	utils::string_map i18n_symbols;
@@ -399,7 +400,7 @@ bool addons_client::try_fetch_addon(const addon_info & addon)
 	config archive;
 
 	if(!(
-		download_addon(archive, addon.id, addon.display_title_full(), !is_addon_installed(addon.id)) &&
+		download_addon(archive, addon.id, addon.display_title_full(), addon.current_version, !is_addon_installed(addon.id)) &&
 		install_addon(archive, addon)
 		)) {
 		const std::string& server_error = get_last_server_error();
