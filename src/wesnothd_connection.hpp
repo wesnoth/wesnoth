@@ -158,7 +158,11 @@ private:
 	template<typename T>
 	using data_queue = std::queue<T, std::list<T>>;
 
+#if BOOST_VERSION >= 106600
 	data_queue<std::unique_ptr<boost::asio::streambuf>> send_queue_;
+#else
+	data_queue<std::shared_ptr<boost::asio::streambuf>> send_queue_;
+#endif
 	data_queue<config> recv_queue_;
 
 	std::mutex recv_queue_mutex_;
