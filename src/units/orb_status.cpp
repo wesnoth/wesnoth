@@ -30,6 +30,7 @@ bool orb_status_helper::prefs_show_orb(orb_status os)
 		return preferences::show_enemy_orb();
 	default:
 		assert(!"expected to handle all the enum values");
+		return false;
 	}
 }
 
@@ -48,6 +49,7 @@ std::string orb_status_helper::get_orb_color(orb_status os)
 		return preferences::enemy_color();
 	default:
 		assert(!"expected to handle all the enum values");
+		return {};
 	}
 }
 
