@@ -43,6 +43,9 @@
     <ClInclude Include="..\..\src\server\campaignd\auth.hpp">
       <Filter>Server\Campaignd</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\server\campaignd\options.hpp">
+      <Filter>Server\Campaignd</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\addon\validation.cpp">
@@ -68,6 +71,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\hash.cpp" />
     <ClCompile Include="..\..\src\server\campaignd\auth.cpp">
+      <Filter>Server\Campaignd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\campaignd\options.cpp">
       <Filter>Server\Campaignd</Filter>
     </ClCompile>
   </ItemGroup>
