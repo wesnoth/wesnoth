@@ -133,6 +133,7 @@ namespace game_config
 			level,
 			ellipsis,
 			missing,
+			blank,
 			// notifications icon
 			app_icon;
 	} //images

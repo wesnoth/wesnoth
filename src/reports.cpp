@@ -908,8 +908,8 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 
 		// The icons are 16x16. We add 5px padding for alignment reasons (placement of the icon in relation to ascender and descender letters).
 		const std::string spacer = "misc/blank.png~CROP(0, 0, 16, 21)"; // 21 == 16+5
-		if (range_png_exists) add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
-		if (type_png_exists) add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
+		add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
+		add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
 		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
 		add_text(res, damage_versus.str, damage_versus.tooltip); // This string is usually empty
 

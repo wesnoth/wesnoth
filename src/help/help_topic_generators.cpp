@@ -609,7 +609,7 @@ std::string unit_topic_generator::operator()() const {
 			attack_ss.str(clear_stringstream);
 
 			// Range, with icon
-			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png";
+			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png~SCALE_INTO_SHARP(16,16)";
 			if (attack.min_range() > 1 || attack.max_range() > 1) {
 				attack_ss << attack.min_range() << "-" << attack.max_range() << ' ';
 			}
@@ -618,7 +618,7 @@ std::string unit_topic_generator::operator()() const {
 			attack_ss.str(clear_stringstream);
 
 			// Damage type, with icon
-			const std::string type_icon = "icons/profiles/" + attack.type() + ".png";
+			const std::string type_icon = "icons/profiles/" + attack.type() + ".png~SCALE_INTO_SHARP(16,16)";
 			push_tab_pair(row, lang_type, type_icon, padding);
 
 			// Show this attack's special, if it has any. Cross
@@ -681,7 +681,7 @@ std::string unit_topic_generator::operator()() const {
 		}
 		std::string color = unit_helper::resistance_color(resistance);
 		const std::string lang_type = string_table["type_" + dam_it.first];
-		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png";
+		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png~SCALE_INTO_SHARP(16,16)";
 		push_tab_pair(row, lang_type, type_icon, padding);
 		std::stringstream str;
 		str << "<format>color=\"" << color << "\" text='"<< resist << "'</format>";

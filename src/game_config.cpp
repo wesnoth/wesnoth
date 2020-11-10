@@ -224,6 +224,7 @@ std::string
 	level,
 	ellipsis,
 	missing,
+	blank,
 	// notifications icon
 	app_icon = "images/icons/icon-game.png";
 
@@ -354,6 +355,7 @@ void load_config(const config &v)
 		level      = i["level"].str();
 		ellipsis   = i["ellipsis"].str();
 		missing    = i["missing"].str();
+		blank      = i["blank"].str();
 	} // images
 
 	hp_bar_scaling  = v["hp_bar_scaling"].to_double(0.666);

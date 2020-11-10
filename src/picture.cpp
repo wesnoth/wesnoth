@@ -488,6 +488,8 @@ static surface load_image_file(const image::locator& loc)
 		ERR_DP << "could not open image '" << loc.get_filename() << "'" << std::endl;
 		if(game_config::debug && loc.get_filename() != game_config::images::missing)
 			return get_image(game_config::images::missing, UNSCALED);
+		if(loc.get_filename() != game_config::images::blank)
+			return get_image(game_config::images::blank, UNSCALED);
 	}
 
 	return res;
