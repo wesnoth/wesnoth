@@ -155,6 +155,14 @@
 		46BED4D3205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
+		46D6014E255AFA6000E072F0 /* auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014C255AFA6000E072F0 /* auth.cpp */; };
+		46D6014F255AFA6000E072F0 /* auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014C255AFA6000E072F0 /* auth.cpp */; };
+		46D60150255AFA6000E072F0 /* options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014D255AFA6000E072F0 /* options.cpp */; };
+		46D60151255AFA6000E072F0 /* options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014D255AFA6000E072F0 /* options.cpp */; };
+		46D60158255AFA7E00E072F0 /* commandline_argv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D60156255AFA7E00E072F0 /* commandline_argv.cpp */; };
+		46D60159255AFA7E00E072F0 /* commandline_argv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D60156255AFA7E00E072F0 /* commandline_argv.cpp */; };
+		46D60162255AFDE100E072F0 /* commandline_argv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D60156255AFA7E00E072F0 /* commandline_argv.cpp */; };
+		46D60168255B028200E072F0 /* libboost_program_options-mt-x64.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5213AD4E35003C701D /* libboost_program_options-mt-x64.dylib */; };
 		46E2D98F25022BF5003D99F3 /* lua_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98B25022BF5003D99F3 /* lua_widget.cpp */; };
 		46E2D99025022BF5003D99F3 /* lua_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98B25022BF5003D99F3 /* lua_widget.cpp */; };
 		46E2D99125022BF6003D99F3 /* lua_widget_attributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */; };
@@ -1514,7 +1522,6 @@
 		469CA216253C52120045A0B3 /* shared_reference.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shared_reference.hpp; sourceTree = "<group>"; };
 		469CA21B253C522B0045A0B3 /* orb_status.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = orb_status.hpp; sourceTree = "<group>"; };
 		469CA21C253C522C0045A0B3 /* orb_status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = orb_status.cpp; sourceTree = "<group>"; };
-		469CA22A253C524C0045A0B3 /* lua_ptr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_ptr.hpp; sourceTree = "<group>"; };
 		46A72F3B24D6F6B30033B5A9 /* apple_video.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = apple_video.hpp; path = ../../src/desktop/apple_video.hpp; sourceTree = "<group>"; };
 		46A72F3C24D6F6B30033B5A9 /* apple_video.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_video.mm; path = ../../src/desktop/apple_video.mm; sourceTree = "<group>"; };
 		46A72F4224D710720033B5A9 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -1529,6 +1536,12 @@
 		46BDBBE9217C6F6200D2820C /* lua_terrainmap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_terrainmap.hpp; sourceTree = "<group>"; };
 		46BED4D0205060EA00842FA5 /* crypt_blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt_blowfish.h; sourceTree = "<group>"; };
 		46BED4D1205060EA00842FA5 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
+		46D6014A255AFA5F00E072F0 /* auth.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = auth.hpp; sourceTree = "<group>"; };
+		46D6014B255AFA5F00E072F0 /* options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = options.hpp; sourceTree = "<group>"; };
+		46D6014C255AFA6000E072F0 /* auth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = auth.cpp; sourceTree = "<group>"; };
+		46D6014D255AFA6000E072F0 /* options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = options.cpp; sourceTree = "<group>"; };
+		46D60156255AFA7E00E072F0 /* commandline_argv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = commandline_argv.cpp; sourceTree = "<group>"; };
+		46D60157255AFA7E00E072F0 /* commandline_argv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commandline_argv.hpp; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
 		46E2D98925022BF4003D99F3 /* lua_widget_methods.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_widget_methods.hpp; sourceTree = "<group>"; };
@@ -2817,6 +2830,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46D60168255B028200E072F0 /* libboost_program_options-mt-x64.dylib in Frameworks */,
 				464C03722283622A007D2741 /* libSDL2-2.0.0.dylib in Frameworks */,
 				91C548C31D8866ED00FE6A7B /* CoreFoundation.framework in Frameworks */,
 				91C548E21D886E9000FE6A7B /* libboost_system-mt-x64.dylib in Frameworks */,
@@ -2967,6 +2981,8 @@
 				B5599AA90EC62181008DD061 /* color_range.hpp */,
 				915C68E81DF1DCB000594B07 /* color.cpp */,
 				915C68E91DF1DCB000594B07 /* color.hpp */,
+				46D60156255AFA7E00E072F0 /* commandline_argv.cpp */,
+				46D60157255AFA7E00E072F0 /* commandline_argv.hpp */,
 				F46C5DCB13A5074C00DD0816 /* commandline_options.cpp */,
 				F46C5DCA13A5074C00DD0816 /* commandline_options.hpp */,
 				EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */,
@@ -3281,11 +3297,15 @@
 			children = (
 				460D89AD24DC7862000B1ABC /* addon_utils.cpp */,
 				460D89B524DC7862000B1ABC /* addon_utils.hpp */,
+				46D6014C255AFA6000E072F0 /* auth.cpp */,
+				46D6014A255AFA5F00E072F0 /* auth.hpp */,
 				460D89B424DC7862000B1ABC /* blacklist.cpp */,
 				460D89B324DC7862000B1ABC /* blacklist.hpp */,
 				460D89B124DC7862000B1ABC /* control.hpp */,
 				460D89B024DC7862000B1ABC /* fs_commit.cpp */,
 				460D89B224DC7862000B1ABC /* fs_commit.hpp */,
+				46D6014D255AFA6000E072F0 /* options.cpp */,
+				46D6014B255AFA5F00E072F0 /* options.hpp */,
 				460D89AE24DC7862000B1ABC /* server.cpp */,
 				460D89AF24DC7862000B1ABC /* server.hpp */,
 			);
@@ -4571,7 +4591,6 @@
 				9190B73A1CA0554900B0EF66 /* lua_pathfind_cost_calculator.hpp */,
 				ECFB61831DA0A0C50055D3F8 /* lua_preferences.cpp */,
 				ECFB61841DA0A0C50055D3F8 /* lua_preferences.hpp */,
-				46E2D99525022D46003D99F3 /* lua_ptr.hpp */,
 				ECC2FFF91A51A00900023AF4 /* lua_race.cpp */,
 				91B621EB1B76BB1D00B00E0F /* lua_race.hpp */,
 				ECA4A67A1A1EC319006BCCF2 /* lua_rng.cpp */,
@@ -5437,6 +5456,7 @@
 				B52EE9AE1213640400CFBDAB /* validation.cpp in Sources */,
 				46F92D7D2174F6A300602C1C /* canvas.cpp in Sources */,
 				EC2864331967990500168DFF /* variable_info.cpp in Sources */,
+				46D60158255AFA7E00E072F0 /* commandline_argv.cpp in Sources */,
 				B5599AE60EC62181008DD061 /* variable.cpp in Sources */,
 				B5599AE50EC62181008DD061 /* variant.cpp in Sources */,
 				46F92E272174F6A400602C1C /* mp_create_game.cpp in Sources */,
@@ -5543,6 +5563,7 @@
 				460D89B924DC7863000B1ABC /* blacklist.cpp in Sources */,
 				91C548DE1D886E0A00FE6A7B /* config.cpp in Sources */,
 				91C548EC1D886FA800FE6A7B /* filesystem.cpp in Sources */,
+				46D6014F255AFA6000E072F0 /* auth.cpp in Sources */,
 				46685CAD219D643C0009CFFE /* tokenizer.cpp in Sources */,
 				46F57088205FCF7E007031BF /* config_attribute_value.cpp in Sources */,
 				460D89A024DC7843000B1ABC /* simple_wml.cpp in Sources */,
@@ -5550,10 +5571,12 @@
 				91C548F21D88707D00FE6A7B /* filesystem_common.cpp in Sources */,
 				46685CA8219D63FA0009CFFE /* preprocessor.cpp in Sources */,
 				46F57087205FCF5D007031BF /* filesystem_sdl.cpp in Sources */,
+				46D60162255AFDE100E072F0 /* commandline_argv.cpp in Sources */,
 				91C548EA1D886F7500FE6A7B /* game_config.cpp in Sources */,
 				460D89B724DC7863000B1ABC /* server.cpp in Sources */,
 				46685CAA219D64050009CFFE /* parser.cpp in Sources */,
 				91C548E41D886ECA00FE6A7B /* gettext.cpp in Sources */,
+				46D60151255AFA6000E072F0 /* options.cpp in Sources */,
 				46685CAC219D64120009CFFE /* unicode.cpp in Sources */,
 				46F57086205FCE79007031BF /* hash.cpp in Sources */,
 				91C548DF1D886E2100FE6A7B /* log.cpp in Sources */,
@@ -5760,6 +5783,7 @@
 				46F92D862174F6A300602C1C /* vertical_list.cpp in Sources */,
 				91E356B41CACC82D00774252 /* contexts.cpp in Sources */,
 				46F92DF02174F6A400602C1C /* install_dependencies.cpp in Sources */,
+				46D60150255AFA6000E072F0 /* options.cpp in Sources */,
 				91E356B51CACC82D00774252 /* engine.cpp in Sources */,
 				46685C9A219D518B0009CFFE /* type.cpp in Sources */,
 				91E356B61CACC82D00774252 /* goal.cpp in Sources */,
@@ -5786,6 +5810,7 @@
 				91E356C21CACC8B800774252 /* callable_objects.cpp in Sources */,
 				46685CA5219D57F60009CFFE /* battery_info.cpp in Sources */,
 				46F92E1C2174F6A400602C1C /* mp_join_game_password_prompt.cpp in Sources */,
+				46D60159255AFA7E00E072F0 /* commandline_argv.cpp in Sources */,
 				46F92F202174FEC000602C1C /* constants.cpp in Sources */,
 				91E356C31CACC8B800774252 /* candidates.cpp in Sources */,
 				46F92C192174F5D700602C1C /* help_menu.cpp in Sources */,
@@ -6019,6 +6044,7 @@
 				46F92D822174F6A300602C1C /* window_builder.cpp in Sources */,
 				91A2157D1CAD761100927AEA /* hotkey_handler_mp.cpp in Sources */,
 				46E2D99425022BF6003D99F3 /* lua_widget_methods.cpp in Sources */,
+				46D6014E255AFA6000E072F0 /* auth.cpp in Sources */,
 				91A2157E1CAD761100927AEA /* hotkey_handler_sp.cpp in Sources */,
 				46F92EA82174F6A400602C1C /* settings.cpp in Sources */,
 				91A215801CAD797900927AEA /* controller.cpp in Sources */,
