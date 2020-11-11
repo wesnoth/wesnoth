@@ -5,6 +5,7 @@
    * Secrets of the Ancients:
      * Revisions to Bone Captain
      * Scenario 2 uses new Iron Fence terrain, in preparation for potential map revisions.
+     * While the two leaders are separated, only the currently active one learns new zombie types.
    * Sceptre of Fire:
      * Some revisions/bugfixes to Scenario 9 "Caverns of Flame"
  ### Lua API
