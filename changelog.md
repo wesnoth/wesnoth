@@ -6,6 +6,8 @@
      * Revisions to Bone Captain
      * Scenario 2 uses new Iron Fence terrain, in preparation for potential map revisions.
    * Sceptre of Fire:
+     * Scenario 2p5: increased the turn limit by 1 and enhanced victory filter conditions
+     * Scenario 4: fixed a bug that prevented resources from spawning and added some small flavor adjustments
      * Some revisions/bugfixes to Scenario 9 "Caverns of Flame"
  ### Lua API
  ### Multiplayer
