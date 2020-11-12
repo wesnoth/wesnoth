@@ -122,21 +122,20 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	 * 0. Not a scenario or map file.
 	 *    0.1 File not found
 	 *    0.2 Map file empty
-	 *    0.3 No valid data
 	 * 1. It's a file containing only pure map data.
 	 *    * embedded_ = false
 	 *    * pure_map_ = true
-	 * 2. A scenario embedding the map
+	 * 2. The file contains an editor generated scenario file.
+	 *    * embedded_ = false
+	 *    * pure_map_ = false
+	 * 3. A scenario embedding the map
 	 *    * embedded_ = true
 	 *    * pure_map_ = true
 	 *    The data/scenario-test.cfg for example.
 	 *    The map is written back to the file.
-	 * 3. The map file is referenced by map_data={MACRO_ARGUEMENT}.
+	 * 4. The map file is referenced by map_data={MACRO_ARGUEMENT}.
 	 *    * embedded_ = false
 	 *    * pure_map_ = true
-	 * 4. The file contains an editor generated scenario file.
-	 *    * embedded_ = false
-	 *    * pure_map_ = false
 	 */
 
 	log_scope2(log_editor, "Loading file " + filename);
@@ -168,19 +167,23 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 		return;
 	}
 
-	// 2.0 Embedded map
 	const std::string& map_data = matched_map_data[1];
 
 	boost::regex rexpression_macro(R"""(\{(.+?)\})""");
 	boost::smatch matched_macro;
 
+// TODO: think about if there are any better ways to determine an editor generated scenario file vs a user generated scenario file
+//       now that it can't be done by checking for the presence of a top-level tag
+//       replace file contents inspection with extension checks
+//       * if .map -> pure map file
+//       * if .ed.cfg or file path containts "/editor/" -> editor generated scenario
+//       * if .cfg -> player created scenario
 	if(!boost::regex_search(map_data, matched_macro, rexpression_macro)) {
 		// We have a map_data string but no macro ---> embedded or scenario
 
-		boost::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer|tutorial)\])""");
-		if(!boost::regex_search(file_string, rexpression_scenario)) {
-			LOG_ED << "Loading generated scenario file" << std::endl;
-			// 4.0 editor generated scenario
+		if(file_string.find(editor_generated) == 0) {
+			// 2.0 Editor generated scenario
+			LOG_ED << "Loading generated scenario file from editor prior to top-level tags having been added" << std::endl;
 			try {
 				load_scenario(game_config);
 			} catch(const config::error& e) {
@@ -188,7 +191,8 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 				throw editor_map_load_exception("load_scenario", e.message);
 			}
 		} else {
-			LOG_ED << "Loading embedded map file" << std::endl;
+			// 3.0 Embedded map from non-editor generated scenario
+			LOG_ED << "Loading embedded map file from non-editor generated file" << std::endl;
 			embedded_ = true;
 			pure_map_ = true;
 			map_ = editor_map::from_string(game_config, map_data);
@@ -198,7 +202,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 		return;
 	}
 
-	// 3.0 Macro referenced pure map
+	// 4.0 Macro referenced pure map
 	const std::string& macro_argument = matched_macro[1];
 	LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}" << std::endl;
 
@@ -322,6 +326,11 @@ void map_context::load_scenario(const game_config_view& game_config)
 	} catch(const config::error& e) {
 		LOG_ED << "Caught a config error while parsing file: '" << filename_ << "'\n" << e.message << std::endl;
 		throw;
+	}
+
+	// previous editor format had no top-level tag
+	if(scenario.has_child("multiplayer")) {
+		scenario = scenario.child("multiplayer");
 	}
 
 	scenario_id_ = scenario["id"].str();
@@ -471,7 +480,8 @@ void map_context::reset_starting_position_labels(display& disp)
 
 config map_context::to_config()
 {
-	config scenario;
+	config cfg;
+	config& scenario = cfg.add_child("multiplayer");
 
 	scenario["id"] = scenario_id_;
 	scenario["name"] = t_string(scenario_name_);
@@ -533,9 +543,6 @@ config map_context::to_config()
 		side["team_name"] = t->team_name();
 		side["user_team_name"].write_if_not_empty(t->user_team_name());
 
-		// TODO
-		// side["allow_player"] = "yes";
-
 		side["fog"] = t->uses_fog();
 		side["shroud"] = t->uses_shroud();
 		side["share_vision"] = t->share_vision();
@@ -577,7 +584,7 @@ config map_context::to_config()
 		}
 	}
 
-	return scenario;
+	return cfg;
 }
 
 bool map_context::save_scenario()
@@ -595,7 +602,7 @@ bool map_context::save_scenario()
 	try {
 		std::stringstream wml_stream;
 		wml_stream
-			<< "# This file was generated using the scenario editor.\n"
+			<< editor_generated << "\n"
 			<< "#\n"
 			<< "# If you edit this file by hand, then you shouldn't use the\n"
 			<< "# scenario editor on it afterwards. The editor completely\n"

@@ -692,7 +692,12 @@ void create_engine::init_all_levels()
 				continue;
 			}
 
-			scenario_ptr new_scenario(new scenario(data));
+			// previous editor format had no top-level tag present
+			if(data.has_child("multiplayer"))
+			{
+				data = data.child("multiplayer");
+			}
+			std::shared_ptr<scenario> new_scenario = std::make_shared<scenario>(data);
 			if(new_scenario->id().empty()) continue;
 
 			type_map_[level::TYPE::USER_SCENARIO].games.push_back(std::move(new_scenario));
@@ -741,7 +746,7 @@ void create_engine::init_all_levels()
 		}
 
 		if(type == "sp" || type.empty() || (type == "hybrid" && !mp)) {
-			campaign_ptr new_sp_campaign(new campaign(data));
+			std::shared_ptr<campaign> new_sp_campaign = std::make_shared<campaign>(data);
 			new_sp_campaign->mark_if_completed();
 
 			type_map_[level::TYPE::SP_CAMPAIGN].games.push_back(std::move(new_sp_campaign));

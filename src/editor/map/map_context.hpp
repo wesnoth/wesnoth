@@ -516,6 +516,8 @@ private:
 	typedef std::map<map_location, std::vector<overlay>> overlay_map;
 	overlay_map overlays_;
 
+	const std::string editor_generated = "# This file was generated using the scenario editor.";
+
 public:
 
 	overlay_map& get_overlays() { return overlays_; }

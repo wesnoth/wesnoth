@@ -907,8 +907,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 		}
 
 		if(get_map_context().is_embedded()) {
-			const std::string& msg = _("Loaded embedded map data");
-			gui2::show_transient_message(_("Map loaded from scenario"), msg);
+			LOG_ED << "Loaded embedded map data\n";
 		} else {
 			if(get_map_context().get_filename() != filename) {
 				if(get_map_context().get_map_data_key().empty()) {
@@ -916,14 +915,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 						<< filename << " -> " << get_map_context().get_filename()
 						<< " with no apparent scenario load\n";
 				} else {
-					utils::string_map symbols;
-					symbols["old"] = filename;
-					const std::string& msg = _("Loaded referenced map file:\n$new");
-					symbols["new"] = get_map_context().get_filename();
-					symbols["map_data"] = get_map_context().get_map_data_key();
-					gui2::show_transient_message(_("Map loaded from scenario"),
-						//TODO: msg is already translated does vgettext make sense?
-						VGETTEXT(msg.c_str(), symbols));
+					LOG_ED << "Loaded referenced map file:\n"+get_map_context().get_filename();
 				}
 			}
 		}

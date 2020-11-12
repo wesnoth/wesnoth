@@ -289,10 +289,6 @@ public:
 	typedef std::shared_ptr<extras_metadata> extras_metadata_ptr;
 
 	typedef std::shared_ptr<level> level_ptr;
-	typedef std::shared_ptr<scenario> scenario_ptr;
-	typedef std::shared_ptr<user_map> user_map_ptr;
-	typedef std::shared_ptr<random_map> random_map_ptr;
-	typedef std::shared_ptr<campaign> campaign_ptr;
 
 	void init_generated_level_data();
 
