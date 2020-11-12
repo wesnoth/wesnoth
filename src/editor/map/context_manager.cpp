@@ -669,7 +669,7 @@ void context_manager::save_scenario_as_dialog()
 	dlg.set_title(_("Save Scenario As"))
 	   .set_save_mode(true)
 	   .set_path(input_name)
-	   .set_extension(".cfg");
+	   .set_extension(".ed.cfg");
 
 	if(!dlg.show()) {
 		return;

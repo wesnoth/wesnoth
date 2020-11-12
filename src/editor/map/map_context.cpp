@@ -30,6 +30,7 @@
 #include "terrain/type_data.hpp"
 #include "units/unit.hpp"
 #include "game_config_view.hpp"
+#include "gui/dialogs/transient_message.hpp"
 
 #include <boost/regex.hpp>
 
@@ -128,14 +129,14 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	 * 2. The file contains an editor generated scenario file.
 	 *    * embedded_ = false
 	 *    * pure_map_ = false
-	 * 3. A scenario embedding the map
+	 * 3. The map file is referenced by map_data={MACRO_ARGUMENT}.
+	 *    * embedded_ = false
+	 *    * pure_map_ = true
+	 * 4. A scenario embedding the map
 	 *    * embedded_ = true
 	 *    * pure_map_ = true
 	 *    The data/scenario-test.cfg for example.
 	 *    The map is written back to the file.
-	 * 4. The map file is referenced by map_data={MACRO_ARGUEMENT}.
-	 *    * embedded_ = false
-	 *    * pure_map_ = true
 	 */
 
 	log_scope2(log_editor, "Loading file " + filename);
@@ -154,12 +155,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	}
 
 	// 1.0 Pure map data
-	boost::regex rexpression_map_data(R"""(map_data\s*=\s*"(.+?)")""");
-	boost::smatch matched_map_data;
-
-	if(!boost::regex_search(
-		file_string, matched_map_data, rexpression_map_data, boost::regex_constants::match_not_dot_null)
-	) {
+	if(filesystem::ends_with(filename, ".map") || filesystem::ends_with(filename, ".mask")) {
 		map_ = editor_map::from_string(game_config, file_string); // throws on error
 		pure_map_ = true;
 
@@ -167,63 +163,64 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 		return;
 	}
 
-	const std::string& map_data = matched_map_data[1];
-
-	boost::regex rexpression_macro(R"""(\{(.+?)\})""");
-	boost::smatch matched_macro;
-
-// TODO: think about if there are any better ways to determine an editor generated scenario file vs a user generated scenario file
-//       now that it can't be done by checking for the presence of a top-level tag
-//       replace file contents inspection with extension checks
-//       * if .map -> pure map file
-//       * if .ed.cfg or file path containts "/editor/" -> editor generated scenario
-//       * if .cfg -> player created scenario
-	if(!boost::regex_search(map_data, matched_macro, rexpression_macro)) {
-		// We have a map_data string but no macro ---> embedded or scenario
-
-		if(file_string.find(editor_generated) == 0) {
-			// 2.0 Editor generated scenario
-			LOG_ED << "Loading generated scenario file from editor prior to top-level tags having been added" << std::endl;
-			try {
-				load_scenario(game_config);
-			} catch(const config::error& e) {
-				// We already caught and rethrew this exception in load_scenario
-				throw editor_map_load_exception("load_scenario", e.message);
-			}
-		} else {
-			// 3.0 Embedded map from non-editor generated scenario
-			LOG_ED << "Loading embedded map file from non-editor generated file" << std::endl;
-			embedded_ = true;
-			pure_map_ = true;
-			map_ = editor_map::from_string(game_config, map_data);
+	// 2.0 Editor generated scenario
+	if(filename.find("/editor/") != std::string::npos || filesystem::ends_with(filename, ".ed.cfg")) {
+		LOG_ED << "Loading editor generated scenario file" << std::endl;
+		try {
+			load_scenario(game_config);
+		} catch(const config::error& e) {
+			// We already caught and rethrew this exception in load_scenario
+			throw editor_map_load_exception("load_scenario", e.message);
 		}
+		add_to_recent_files();
+		return;
+	}
+
+	// 3.0 Macro referenced pure map
+	std::size_t map_data_macro_start = file_string.find("map_data=\"{");
+	if(filesystem::ends_with(filename, ".cfg") && map_data_macro_start != std::string::npos) {
+		std::size_t map_data_macro_end = file_string.find("}\"", map_data_macro_start+11);
+		const std::string& macro_argument = file_string.substr(map_data_macro_start+11, map_data_macro_end-(map_data_macro_start+11));
+
+		LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}" << std::endl;
+
+		std::string new_filename = filesystem::get_wml_location(macro_argument,
+			filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
+
+		if(new_filename.empty()) {
+			std::string message = _("The map file looks like a scenario, "
+									"but the map_data value does not point to an existing file")
+								+ std::string("\n") + macro_argument;
+			throw editor_map_load_exception(filename, message);
+		}
+
+		LOG_ED << "New filename is: " << new_filename << std::endl;
+
+		filename_ = new_filename;
+		file_string = filesystem::read_file(filename_);
+		map_ = editor_map::from_string(game_config, file_string);
+		pure_map_ = true;
 
 		add_to_recent_files();
 		return;
 	}
 
-	// 4.0 Macro referenced pure map
-	const std::string& macro_argument = matched_macro[1];
-	LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}" << std::endl;
+	// 4.0 Embedded map from non-editor generated scenario
+	std::size_t map_data_embedded_start = file_string.find("map_data=\"");
+	if(filesystem::ends_with(filename, ".cfg") && map_data_embedded_start != std::string::npos) {
+		std::size_t map_data_embedded_end = file_string.find("\"", map_data_embedded_start+10);
+		const std::string& map_data = file_string.substr(map_data_embedded_start+10, map_data_embedded_end-(map_data_embedded_start+10));
 
-	std::string new_filename = filesystem::get_wml_location(macro_argument,
-		filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
-
-	if(new_filename.empty()) {
-		std::string message = _("The map file looks like a scenario, "
-								"but the map_data value does not point to an existing file")
-							  + std::string("\n") + macro_argument;
-		throw editor_map_load_exception(filename, message);
+		LOG_ED << "Loading embedded map file from non-editor generated file" << std::endl;
+		embedded_ = true;
+		pure_map_ = true;
+		map_ = editor_map::from_string(game_config, map_data);
+		add_to_recent_files();
+		return;
 	}
 
-	LOG_ED << "New filename is: " << new_filename << std::endl;
-
-	filename_ = new_filename;
-	file_string = filesystem::read_file(filename_);
-	map_ = editor_map::from_string(game_config, file_string);
-	pure_map_ = true;
-
-	add_to_recent_files();
+	ERR_ED << "Unable to load file: " << filename << std::endl;
+	gui2::show_transient_message(_("Failed to load file"), _("Attempted to load an unknown type of file. Filenames must end in either '.map', '.cfg', or '.ed.cfg'."));
 }
 
 map_context::~map_context()
@@ -593,6 +590,11 @@ bool map_context::save_scenario()
 
 	if(scenario_id_.empty()) {
 		scenario_id_ = filesystem::base_name(filename_, true);
+		// base_name removes everything after the last period, not the first period
+		// so the .ed part needs to be removed manually
+		if(filesystem::ends_with(scenario_id_, ".ed")) {
+			scenario_id_ = filesystem::base_name(scenario_id_, true);
+		}
 	}
 
 	if(scenario_name_.empty()) {
@@ -602,7 +604,7 @@ bool map_context::save_scenario()
 	try {
 		std::stringstream wml_stream;
 		wml_stream
-			<< editor_generated << "\n"
+			<< "# This file was generated using the scenario editor.\n"
 			<< "#\n"
 			<< "# If you edit this file by hand, then you shouldn't use the\n"
 			<< "# scenario editor on it afterwards. The editor completely\n"
