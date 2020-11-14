@@ -41,6 +41,7 @@ command_line::command_line(const std::vector<std::string>& args)
 	, show_log_domains(false)
 	, log_domain_levels()
 	, log_precise_timestamps(false)
+	, report_timings(false)
 	, argv0_(args.at(0))
 	, args_(args.begin() + 1, args.end())
 	, help_text_()
@@ -67,6 +68,7 @@ command_line::command_line(const std::vector<std::string>& args)
 		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'.")
 		("log-none", po::value<std::string>(), "disables logging for the specified log domain(s).")
 		("log-precise", "shows the timestamps in log output with more precision.")
+		("timings", "outputs timings for serviced requests to stderr.")
 		;
 
 	po::options_description opts;
@@ -121,6 +123,9 @@ command_line::command_line(const std::vector<std::string>& args)
 	}
 	if(vm.count("log-precise")) {
 		log_precise_timestamps = true;
+	}
+	if(vm.count("timings")) {
+		report_timings = true;
 	}
 }
 
