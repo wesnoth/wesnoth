@@ -43,7 +43,6 @@ public:
 
 	server& operator=(const config& server) = delete;
 
-private:
 	/**
 	 * Client request information object.
 	 *
@@ -83,6 +82,8 @@ private:
 	};
 
 	friend std::ostream& operator<<(std::ostream& o, const request& r);
+
+private:
 
 	typedef std::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;

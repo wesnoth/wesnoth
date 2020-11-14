@@ -40,6 +40,7 @@
 #include "server/campaignd/options.hpp"
 #include "game_version.hpp"
 #include "hash.hpp"
+#include "utils/optimer.hpp"
 
 #include <csignal>
 #include <ctime>
@@ -72,6 +73,24 @@ static lg::log_domain log_server("server");
 namespace campaignd {
 
 namespace {
+
+bool timing_reports_enabled = false;
+
+void timing_report_function(const util::ms_optimer& tim, const campaignd::server::request& req, const std::string& label = {})
+{
+	if(timing_reports_enabled) {
+		if(label.empty()) {
+			LOG_CS << req << "Time elapsed: " << tim << " ms\n";
+		} else {
+			LOG_CS << req << "Time elapsed [" << label << "]: " << tim << " ms\n";
+		}
+	}
+}
+
+inline util::ms_optimer service_timer(const campaignd::server::request& req, const std::string& label = {})
+{
+	return util::ms_optimer{std::bind(timing_report_function, std::placeholders::_1, req, label)};
+}
 
 //
 // Auxiliary shortcut functions
@@ -449,7 +468,9 @@ void server::handle_request(socket_ptr socket, std::shared_ptr<simple_wml::docum
 
 		if(j != handlers_.end()) {
 			// Call the handler.
-			j->second(this, request(c.key, c.cfg, socket));
+			request req{c.key, c.cfg, socket};
+			auto st = service_timer(req);
+			j->second(this, req);
 		} else {
 			send_error("Unrecognized [" + c.key + "] request.",socket);
 		}
@@ -1726,6 +1747,10 @@ int run_campaignd(int argc, char** argv)
 
 	if(cmdline.log_precise_timestamps) {
 		lg::precise_timestamps(true);
+	}
+
+	if(cmdline.report_timings) {
+		campaignd::timing_reports_enabled = true;
 	}
 
 	std::cerr << "Wesnoth campaignd v" << game_config::revision << " starting...\n";
