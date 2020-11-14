@@ -1540,7 +1540,7 @@ void server::handle_upload(const server::request& req)
 			continue;
 		}
 
-		LOG_CS << "Automatically generating update pack for " << prev_version << " -> " << next_version_name << "...\n";
+		LOG_CS << "Automatically generating update pack for " << prev_version_name << " -> " << next_version_name << "...\n";
 
 		const auto& prev_path = pathstem + '/' + prev_version["filename"].str();
 		const auto& next_path = pathstem + '/' + next_version["filename"].str();
