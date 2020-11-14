@@ -19,6 +19,7 @@
  ### User interface
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
  ### WML Engine
+   * Add a overwrite_specials option for abilities like weapon could overwrite specials or other ablities like weapon
  ### Miscellaneous and Bug Fixes
    * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
    * Fixed a potential crash when drawing many images on the story screens.
