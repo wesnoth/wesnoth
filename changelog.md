@@ -16,6 +16,7 @@
    * Updated translations: British English, Catalan, Polish, Portuguese (Brazil)
  ### Units
    * Decreased Icemonax's advancement XP requirement from 26 to 25 to match other dead-end L0 units.
+   * Portrait and animation graphics for some of the new Wesnoth Fauna
  ### User interface
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
  ### WML Engine
