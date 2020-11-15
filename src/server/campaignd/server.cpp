@@ -1694,8 +1694,10 @@ int run_campaignd(int argc, char** argv)
 	// Log defaults
 	//
 
-	lg::set_log_domain_severity("campaignd", lg::info());
-	lg::set_log_domain_severity("server", lg::info());
+	for(auto domain : { "campaignd", "campaignd/blacklist", "server" }) {
+		lg::set_log_domain_severity(domain, lg::info());
+	}
+
 	lg::timestamps(true);
 
 	//
