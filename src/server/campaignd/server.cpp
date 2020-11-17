@@ -822,7 +822,7 @@ void server::register_handlers()
 
 void server::handle_request_campaign_list(const server::request& req)
 {
-	LOG_CS << req << "sending add-ons list\n";
+	LOG_CS << req << "Sending add-ons list\n";
 
 	std::time_t epoch = std::time(nullptr);
 	config addons_list;
@@ -1051,7 +1051,7 @@ void server::handle_request_campaign_hash(const server::request& req)
 		return;
 	}
 
-	std::string filename = addon["filename"].str();
+	std::string path = addon["filename"].str() + '/';
 
 	auto version_map = get_version_map(addon);
 
@@ -1059,30 +1059,30 @@ void server::handle_request_campaign_hash(const server::request& req)
 		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
 		return;
 	} else {
-		std::string version_str = addon["version"].str();
-		auto version = version_map.find(version_info(version_str));
+		const auto& version_str = addon["version"].str();
+		version_info version_parsed{version_str};
+		auto version = version_map.find(version_parsed);
 		if(version != version_map.end()) {
-			filename += "/" + version->second["filename"].str();
+			path += version->second["filename"].str();
 		} else {
 			// Selecting the latest version before the selected version or the overall latest version if unspecified
 			if(version_str.empty()) {
-				filename += "/" + version_map.rbegin()->second["filename"].str();
+				path += version_map.rbegin()->second["filename"].str();
 			} else {
-				filename += "/" + (--version_map.upper_bound(version_info(version_str)))->second["filename"].str();
+				path += (--version_map.upper_bound(version_parsed))->second["filename"].str();
 			}
 		}
 
-		filename = index_from_full_pack_filename(filename);
-
-		const int file_size = filesystem::file_size(filename);
+		path = index_from_full_pack_filename(path);
+		const int file_size = filesystem::file_size(path);
 
 		if(file_size < 0) {
-			send_error("No pregenerated hash file for the add-on '" + req.cfg["name"].str() + "' has been found by the server.", req.sock);
+			send_error("Missing index file for the add-on '" + req.cfg["name"].str() + "'.", req.sock);
 			return;
 		}
 
-		LOG_CS << req << "Sending hash list for add-on '" << req.cfg["name"] << "' size: " << file_size / 1024 << " KiB\n";
-		async_send_file(req.sock, filename, std::bind(&server::handle_new_client, this, _1), null_handler);
+		LOG_CS << req << "Sending add-on hash index for '" << req.cfg["name"] << "' size: " << file_size / 1024 << " KiB\n";
+		async_send_file(req.sock, path, std::bind(&server::handle_new_client, this, _1), null_handler);
 	}
 }
 
@@ -1107,9 +1107,8 @@ void server::handle_request_terms(const server::request& req)
     a) release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license; <b>and</b>
     b) release all other included content under the terms of the GPL; and that you choose to do so.)""";
 
-	LOG_CS << req << "sending license terms\n";
+	LOG_CS << req << "Sending license terms\n";
 	send_message(terms, req.sock);
-	LOG_CS << " Done\n";
 }
 
 ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& existing_addon, std::string& error_data)
