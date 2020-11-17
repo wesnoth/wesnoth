@@ -995,7 +995,7 @@ void server::handle_request_campaign(const server::request& req)
 					delivery_size += filesystem::file_size(update_pack_path);
 				} else {
 					ERR_CS << "Broken update sequence from version " << from << " to "
-							<< to << " for the add-on '" << req.cfg["name"].str() << "', sending a full pack instead\n";
+							<< to << " for the add-on '" << name << "', sending a full pack instead\n";
 					force_use_full = true;
 					break;
 				}
@@ -1019,7 +1019,7 @@ void server::handle_request_campaign(const server::request& req)
 			simple_wml::document doc(wml_text.c_str(), simple_wml::INIT_STATIC);
 			doc.compress();
 
-			LOG_CS << req << "Sending add-on '" << req.cfg["name"] << "' version: " << from << " -> " << to << " (delta))\n";
+			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta))\n";
 
 			async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 
@@ -1032,11 +1032,11 @@ void server::handle_request_campaign(const server::request& req)
 	// give up on the update pack option.
 	if(!full_pack_path.empty()) {
 		if(full_pack_size < 0) {
-			send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
+			send_error("Add-on '" + name + "' could not be read by the server.", req.sock);
 			return;
 		}
 
-		LOG_CS << req << "Sending add-on '" << req.cfg["name"] << "' version: " << to << " size: " << full_pack_size / 1024 << " KiB\n";
+		LOG_CS << req << "Sending add-on '" << name << "' version: " << to << " size: " << full_pack_size / 1024 << " KiB\n";
 		async_send_file(req.sock, full_pack_path, std::bind(&server::handle_new_client, this, _1), null_handler);
 	}
 
@@ -1045,7 +1045,7 @@ void server::handle_request_campaign(const server::request& req)
 	// clients that won't tell us what they are trying to do.
 	if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
 		addon["downloads"] = 1 + addon["downloads"].to_int();
-		mark_dirty(req.cfg["name"]);
+		mark_dirty(name);
 	}
 }
 
