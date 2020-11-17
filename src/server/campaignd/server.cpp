@@ -930,114 +930,112 @@ void server::handle_request_campaign(const server::request& req)
 		return;
 	}
 
-	// The desired version is selected on the client side considering
-	// the min_wesnoth_version in [version] children of the addon info (#TODO: gfgtdf's part)
-	std::string to = req.cfg["version"].str();
-	const std::string& from = req.cfg["from_version"].str();
-	std::string full_pack = addon["filename"].str();
-	int full_pack_size;
-
+	const auto& name = req.cfg["name"].str();
 	auto version_map = get_version_map(addon);
 
 	if(version_map.empty()) {
-		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
+		send_error("No versions of the add-on '" + name + "' are available on the server.", req.sock);
 		return;
-	} else {
-		if(to.empty()) {
-			//Sending the latest version if unspecified
-			to = version_map.rbegin()->first;
-			full_pack += "/" + version_map.rbegin()->second["filename"].str();
-		} else {
-			auto version = version_map.find(version_info(to));
-			if(version != version_map.end()) {
-				full_pack += "/" + version->second["filename"].str();
-			} else {
-				send_error("The selected version (" + to + ") of the addon '" + req.cfg["name"].str()
-					   + "' has not been found!\n", req.sock);
-				return;
+	}
+
+	// Base the payload against the latest version if no particular version is being requested
+	const auto& from = req.cfg["from_version"].str();
+	const auto& to = req.cfg["version"].str(version_map.rbegin()->first);
+
+	auto to_version_iter = version_map.find(version_info{to});
+	if(to_version_iter == version_map.end()) {
+		send_error("Could not find requested version " + to + " of the addon '" + name +
+					"'.", req.sock);
+		return;
+	}
+
+	auto full_pack_path = addon["filename"].str() + '/' + to_version_iter->second["filename"].str();
+	const int full_pack_size = filesystem::file_size(full_pack_path);
+
+	if(!from.empty() && version_map.count(version_info{from}) != 0) {
+		// Build a sequence of updates beginning from the client's old version to the
+		// requested version. Every pair of incrementing versions on the server should
+		// have an update pack written to disk during the original upload(s).
+		//
+		// TODO: consider merging update packs instead of building a linear
+		// and possibly redundant sequence out of them.
+
+		config delta;
+		int delivery_size = 0;
+		bool force_use_full = false;
+
+		for(auto iter = version_map.begin(); !force_use_full && std::distance(iter, version_map.end()) > 1;) {
+			const auto& prev_version_cfg = iter->second;
+			const auto& next_version_cfg = (++iter)->second;
+
+			for(const config& pack : addon.child_range("update_pack")) {
+				if(pack["from"].str() != prev_version_cfg["version"].str() ||
+				   pack["to"].str() != next_version_cfg["version"].str()) {
+					continue;
+				}
+
+				config step_delta;
+				const auto& update_pack_path = addon["filename"].str() + '/' + pack["filename"].str();
+				auto in = filesystem::istream_file(update_pack_path);
+
+				read_gz(step_delta, *in);
+
+				if(!step_delta.empty()) {
+					// Don't copy arbitrarily large data around
+					delta.append(std::move(step_delta));
+					delivery_size += filesystem::file_size(update_pack_path);
+				} else {
+					ERR_CS << "Broken update sequence from version " << from << " to "
+							<< to << " for the add-on '" << req.cfg["name"].str() << "', sending a full pack instead\n";
+					force_use_full = true;
+					break;
+				}
+
+				// No point in sending an overlarge delta update.
+				// FIXME: This doesn't take into account over-the-wire compression
+				// from async_send_doc() though, maybe some heuristics based on
+				// individual update pack size would be useful?
+				if(delivery_size > full_pack_size && full_pack_size > 0) {
+					force_use_full = true;
+					break;
+				}
 			}
 		}
 
-		full_pack_size = filesystem::file_size(full_pack);
+		if(!force_use_full && !delta.empty()) {
+			std::ostringstream ostr;
+			write(ostr, delta);
+			const auto& wml_text = ostr.str();
 
-		// Negotiate an update pack if possible
-		if(!from.empty() && version_map.count(version_info(from)) != 0) {
-			config pack_data;
-			// Make a line of consecutive updates beginning from the old version to the new one.
-			// Every pair of increasing versions on the server side should contain an update_pack
-			// transition guaranteed during the upload.
+			simple_wml::document doc(wml_text.c_str(), simple_wml::INIT_STATIC);
+			doc.compress();
 
-			auto iter = version_map.begin();
-			int size = 0;
-			bool failed = false;
+			LOG_CS << req << "Sending add-on '" << req.cfg["name"] << "' version: " << from << " -> " << to << " (delta))\n";
 
-			while(!failed && std::distance(iter, version_map.end()) > 1) {
-				const config& prev_version = iter->second;
-				iter++;
-				const config& next_version = iter->second;
+			async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 
-				for(const config& pack : addon.child_range("update_pack")) {
-					if(pack["from"].str() == prev_version["version"].str()
-							&& pack["to"].str() == next_version["version"].str()) {
-						config update_pack;
-						filesystem::scoped_istream in = filesystem::istream_file(addon["filename"].str() + "/" + pack["filename"].str());
-						read_gz(update_pack, *in);
-						if(update_pack) {
-							pack_data.append(update_pack);
-							size += filesystem::file_size(addon["filename"].str() + "/" + pack["filename"].str());
-						} else {
-							WRN_CS << "Unable to find an update pack sequence from version (" << from << ") to ("
-								   << to << ") for the addon '" << req.cfg["name"].str() << "'. A full pack will be sent instead!\n";
-							failed = true;
-							break;
-						}
-
-						// No point to send the update pack sequence if it gets larger than the full pack
-						if(size > full_pack_size && full_pack_size > 0) {
-							failed = true;
-							break;
-						}
-					}
-				}
-			}
-
-			if(!failed && !pack_data.empty()) {
-				std::ostringstream ostr;
-				write(ostr, pack_data);
-				std::string wml = ostr.str();
-
-				simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
-				doc.compress();
-
-				LOG_CS << req << "sending an update pack (" << from << "->" << to << ") for addon '" << req.cfg["name"] << "' size: " << size / 1024 << "KiB\n";
-
-				async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
-
-				// The pack was successfully formed, no full file needed
-				full_pack = "";
-			}
+			full_pack_path.clear();
 		}
 	}
 
-	if(!full_pack.empty()) {
-		// Send a full pack download if the previous version is not specified or is not present on the server, or if
-		// we're dealing with the old format (???)
-
+	// Send a full pack if the client's previous version was not specified, is
+	// not known by the server, or if any other condition above caused us to
+	// give up on the update pack option.
+	if(!full_pack_path.empty()) {
 		if(full_pack_size < 0) {
 			send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
 			return;
 		}
 
-		LOG_CS << req << "Sending add-on '" << req.cfg["name"] << "' size: " << full_pack_size / 1024 << "KiB\n";
-		async_send_file(req.sock, full_pack, std::bind(&server::handle_new_client, this, _1), null_handler);
+		LOG_CS << req << "Sending add-on '" << req.cfg["name"] << "' version: " << to << " size: " << full_pack_size / 1024 << " KiB\n";
+		async_send_file(req.sock, full_pack_path, std::bind(&server::handle_new_client, this, _1), null_handler);
 	}
 
 	// Clients doing upgrades or some other specific thing shouldn't bump
 	// the downloads count. Default to true for compatibility with old
 	// clients that won't tell us what they are trying to do.
 	if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
-		const int downloads = addon["downloads"].to_int() + 1;
-		addon["downloads"] = downloads;
+		addon["downloads"] = 1 + addon["downloads"].to_int();
 		mark_dirty(req.cfg["name"]);
 	}
 }
