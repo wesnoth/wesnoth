@@ -964,7 +964,16 @@ void server::handle_request_campaign(const server::request& req)
 		int delivery_size = 0;
 		bool force_use_full = false;
 
-		for(auto iter = version_map.begin(); !force_use_full && std::distance(iter, version_map.end()) > 1;) {
+		auto start_point = version_map.find(version_info{from}); // Already known to exist
+		auto end_point = std::next(to_version_iter, 1); // May be end()
+
+		if(std::distance(start_point, end_point) <= 1) {
+			// This should not happen, skip the sequence build entirely
+			ERR_CS << "Bad update sequence bounds in version " << from << " -> " << to << " update sequence for the add-on '" << name << "', sending a full pack instead\n";
+			force_use_full = true;
+		}
+
+		for(auto iter = start_point; !force_use_full && std::distance(iter, end_point) > 1;) {
 			const auto& prev_version_cfg = iter->second;
 			const auto& next_version_cfg = (++iter)->second;
 
