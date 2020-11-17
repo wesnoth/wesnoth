@@ -218,9 +218,7 @@ const std::string help_msg =
 
 server::server(int port,
 		bool keep_alive,
-		const std::string& config_file,
-		std::size_t /*min_threads*/,
-		std::size_t /*max_threads*/)
+		const std::string& config_file)
 	: server_base(port, keep_alive)
 	, ban_manager_()
 	, ip_log_()
@@ -540,6 +538,15 @@ void server::load_config()
 		tournaments_ = user_handler_->get_tournaments();
 	}
 #endif
+
+	// ssl setup
+	ssl_ = cfg_["ssl"].to_bool();
+	if(ssl_) {
+		setup_ssl(cfg_["crt"], cfg_["private_key"], cfg_["dhparam"]);
+		LOG_SERVER << "SSL enabled\n";
+	} else {
+		LOG_SERVER << "SSL not enabled\n";
+	}
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip) const
@@ -1898,8 +1905,12 @@ void server::remove_player(socket_ptr socket)
 
 	player_connections_.erase(iter);
 
-	if(socket->is_open()) {
-		socket->close();
+	if(socket->lowest_layer().is_open()) {
+		boost::system::error_code ec;
+		socket->shutdown(ec);
+		if(ec) {
+			ERR_SERVER << "Error shutting down ssl connection: " << ec.message() << "\n";
+		}
 	}
 
 	if(lan_server_ && player_connections_.size() == 0)
@@ -2926,8 +2937,6 @@ int main(int argc, char** argv)
 {
 	int port = 15000;
 	bool keep_alive = false;
-	std::size_t min_threads = 5;
-	std::size_t max_threads = 0;
 
 	srand(static_cast<unsigned>(std::time(nullptr)));
 
@@ -3023,13 +3032,6 @@ int main(int argc, char** argv)
 
 			setsid();
 #endif
-		} else if((val == "--threads" || val == "-t") && arg + 1 != argc) {
-			min_threads = atoi(argv[++arg]);
-			if(min_threads > 30) {
-				min_threads = 30;
-			}
-		} else if((val == "--max-threads" || val == "-T") && arg + 1 != argc) {
-			max_threads = atoi(argv[++arg]);
 		} else if(val == "--request_sample_frequency" && arg + 1 != argc) {
 			wesnothd::request_sample_frequency = atoi(argv[++arg]);
 		} else {
@@ -3039,7 +3041,7 @@ int main(int argc, char** argv)
 	}
 
 	try {
-		wesnothd::server(port, keep_alive, config_file, min_threads, max_threads).run();
+		wesnothd::server(port, keep_alive, config_file).run();
 	} catch(const std::exception& e) {
 		ERR_SERVER << "terminated by C++ exception: " << e.what() << std::endl;
 		return 1;

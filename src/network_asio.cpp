@@ -57,8 +57,9 @@ using boost::system::system_error;
 
 connection::connection(const std::string& host, const std::string& service)
 	: io_service_()
+	, ssl_ctx_(boost::asio::ssl::context::sslv23)
 	, resolver_(io_service_)
-	, socket_(io_service_)
+	, socket_(io_service_, ssl_ctx_)
 	, done_(false)
 	, write_buf_()
 	, read_buf_()
@@ -69,8 +70,12 @@ connection::connection(const std::string& host, const std::string& service)
 	, bytes_to_read_(0)
 	, bytes_read_(0)
 {
-	resolver_.async_resolve(
-		boost::asio::ip::tcp::resolver::query(host, service), std::bind(&connection::handle_resolve, this, _1, _2));
+	ssl_ctx_.set_default_verify_paths();
+	ssl_ctx_.load_verify_file("certs/"+host+".crt");
+	socket_.set_verify_mode(boost::asio::ssl::verify_fail_if_no_peer_cert);
+	socket_.set_verify_callback(boost::asio::ssl::rfc2818_verification(host));
+
+	resolver_.async_resolve(resolver::query(host, service), std::bind(&connection::handle_resolve, this, _1, _2));
 
 	LOG_NW << "Resolving hostname: " << host << '\n';
 }
@@ -86,7 +91,7 @@ void connection::handle_resolve(const boost::system::error_code& ec, resolver::i
 
 void connection::connect(resolver::iterator iterator)
 {
-	socket_.async_connect(*iterator, std::bind(&connection::handle_connect, this, _1, iterator));
+	boost::asio::async_connect(socket_.lowest_layer(), iterator, std::bind(&connection::handle_connect, this, _1, iterator));
 	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
 }
 
@@ -94,10 +99,14 @@ void connection::handle_connect(const boost::system::error_code& ec, resolver::i
 {
 	if(ec) {
 		WRN_NW << "Failed to connect to " << iterator->endpoint().address() << ": " << ec.message() << '\n';
-		socket_.close();
+		// TODO: need to test this part somehow
+		//       not sure if this works, or if I need to use shutdown() and create an entirely new socket
+		//       though the intention is to try multiple IPs through the same ssl context, so this sounds correct at least
+		socket_.lowest_layer().close();
 
 		if(++iterator == resolver::iterator()) {
 			ERR_NW << "Tried all IPs. Giving up" << std::endl;
+			socket_.shutdown();
 			throw system_error(ec);
 		} else {
 			connect(iterator);
@@ -112,11 +121,19 @@ void connection::handshake()
 {
 	static const uint32_t handshake = 0;
 
-	boost::asio::async_write(socket_, boost::asio::buffer(reinterpret_cast<const char*>(&handshake), 4),
-		std::bind(&connection::handle_write, this, _1, _2));
+	socket_.async_handshake(boost::asio::ssl::stream_base::client,
+		[this](const boost::system::error_code& hs_ec)
+		{
+			if(hs_ec) {
+				throw system_error(hs_ec);
+			} else {
+				boost::asio::async_write(socket_, boost::asio::buffer(reinterpret_cast<const char*>(&handshake), 4),
+					std::bind(&connection::handle_write, this, _1, _2));
 
-	boost::asio::async_read(socket_, boost::asio::buffer(&handshake_response_.binary, 4),
-		std::bind(&connection::handle_handshake, this, _1));
+				boost::asio::async_read(socket_, boost::asio::buffer(&handshake_response_.binary, 4),
+					std::bind(&connection::handle_handshake, this, _1));
+			}
+		});
 }
 
 void connection::handle_handshake(const boost::system::error_code& ec)
@@ -156,7 +173,7 @@ void connection::transfer(const config& request, config& response)
 
 void connection::cancel()
 {
-	if(socket_.is_open()) {
+	if(socket_.lowest_layer().is_open()) {
 		boost::system::error_code ec;
 
 #ifdef _MSC_VER
@@ -165,7 +182,7 @@ void connection::cancel()
 #pragma warning(push)
 #pragma warning(disable:4996)
 #endif
-		socket_.cancel(ec);
+		socket_.lowest_layer().cancel(ec);
 #ifdef _MSC_VER
 #pragma warning(pop)
 #endif

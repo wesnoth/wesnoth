@@ -34,7 +34,7 @@ namespace wesnothd
 class server : public server_base
 {
 public:
-	server(int port, bool keep_alive, const std::string& config_file, std::size_t, std::size_t);
+	server(int port, bool keep_alive, const std::string& config_file);
 
 private:
 	void handle_new_client(socket_ptr socket);

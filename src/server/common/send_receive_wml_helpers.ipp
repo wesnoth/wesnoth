@@ -107,8 +107,8 @@ struct sendfile_op
 	{
 		// Put the underlying socket into non-blocking mode.
 		if (!ec)
-			if (!sock_->native_non_blocking())
-				sock_->native_non_blocking(true, ec);
+			if (!sock_->lowest_layer().native_non_blocking())
+				sock_->lowest_layer().native_non_blocking(true, ec);
 
 		if (!ec)
 		{
@@ -116,7 +116,7 @@ struct sendfile_op
 			{
 				// Try the system call.
 				errno = 0;
-				int n = ::sendfile(sock_->native_handle(), fd_, &offset_, 65536);
+				int n = ::sendfile(sock_->lowest_layer().native_handle(), fd_, &offset_, 65536);
 				ec = boost::system::error_code(n < 0 ? errno : 0,
 											   boost::asio::error::get_system_category());
 				total_bytes_transferred_ += ec ? 0 : n;
@@ -187,7 +187,7 @@ struct sendfile_op
 		bool failed = false;
 		if (!pending_)
 		{
-			BOOL success = TransmitFile(sock_->native_handle(), file_, 0, 0, &overlap_, nullptr, 0);
+			BOOL success = TransmitFile(sock_->lowest_layer().native_handle(), file_, 0, 0, &overlap_, nullptr, 0);
 			if (!success)
 			{
 				int winsock_ec = WSAGetLastError();

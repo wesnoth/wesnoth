@@ -53,8 +53,9 @@ using boost::system::system_error;
 wesnothd_connection::wesnothd_connection(const std::string& host, const std::string& service)
 	: worker_thread_()
 	, io_service_()
+	, ssl_ctx_(boost::asio::ssl::context::sslv23)
 	, resolver_(io_service_)
-	, socket_(io_service_)
+	, socket_(io_service_, ssl_ctx_)
 	, last_error_()
 	, last_error_mutex_()
 	, handshake_finished_()
@@ -70,8 +71,26 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	, bytes_read_(0)
 {
 	MPTEST_LOG;
-	resolver_.async_resolve(boost::asio::ip::tcp::resolver::query(host, service),
-		std::bind(&wesnothd_connection::handle_resolve, this, _1, _2));
+
+	// TODO: have the client assume SSL if not LAN? or another way is needed?
+	//       maybe have it as a property in the configuration of the default list of servers that are provided with the game?
+
+	// TODO: windows needs special handling?
+	//      test, and if so, then see https://stackoverflow.com/questions/39772878/reliable-way-to-get-root-ca-certificates-on-windows
+	//                                https://stackoverflow.com/questions/40307541/boost-asio-ssl-context-not-verifying-certificates
+
+	// the boost unit tests silently fail with encryption disabled, but loudly fail with it enabled
+	// this is because they're actually trying to connect to a wesnothd instance that for hopefully obvious reasons doesn't exist
+	if(host != "") {
+		ssl_ctx_.set_default_verify_paths();
+
+		ssl_ctx_.load_verify_file("certs/"+host+".crt");
+		socket_.set_verify_mode(boost::asio::ssl::verify_fail_if_no_peer_cert);
+		socket_.set_verify_callback(boost::asio::ssl::rfc2818_verification(host));
+
+		resolver_.async_resolve(resolver::query(host, service),
+			std::bind(&wesnothd_connection::handle_resolve, this, _1, _2));
+	}
 
 	// Starts the worker thread. Do this *after* the above async_resolve call or it will just exit immediately!
 	worker_thread_ = std::thread([this]() {
@@ -117,7 +136,7 @@ void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterato
 void wesnothd_connection::connect(resolver::iterator iterator)
 {
 	MPTEST_LOG;
-	socket_.async_connect(*iterator, std::bind(&wesnothd_connection::handle_connect, this, _1, iterator));
+	boost::asio::async_connect(socket_.lowest_layer(), iterator, std::bind(&wesnothd_connection::handle_connect, this, _1, iterator));
 	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
 }
 
@@ -127,10 +146,14 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, re
 	MPTEST_LOG;
 	if(ec) {
 		WRN_NW << "Failed to connect to " << iterator->endpoint().address() << ": " << ec.message() << '\n';
-		socket_.close();
+		// TODO: need to test this part somehow
+		//       not sure if this works, or if I need to use shutdown() and create an entirely new socket
+		//       though the intention is to try multiple IPs through the same ssl context, so this sounds correct at least
+		socket_.lowest_layer().close();
 
 		if(++iterator == resolver::iterator()) {
 			ERR_NW << "Tried all IPs. Giving up" << std::endl;
+			socket_.shutdown();
 			throw system_error(ec);
 		} else {
 			connect(iterator);
@@ -147,11 +170,19 @@ void wesnothd_connection::handshake()
 	MPTEST_LOG;
 	static const uint32_t handshake = 0;
 
-	boost::asio::async_write(socket_, boost::asio::buffer(reinterpret_cast<const char*>(&handshake), 4),
-		[](const error_code& ec, std::size_t) { if(ec) { throw system_error(ec); } });
+	socket_.async_handshake(boost::asio::ssl::stream_base::client,
+		[this](const error_code& hs_ec)
+		{
+			if(hs_ec) {
+				throw system_error(hs_ec);
+			} else {
+				boost::asio::async_write(socket_, boost::asio::buffer(reinterpret_cast<const char*>(&handshake), 4),
+					[](const error_code& ec, std::size_t) { if(ec) { throw system_error(ec); } });
 
-	boost::asio::async_read(socket_, boost::asio::buffer(&handshake_response_.binary, 4),
-		std::bind(&wesnothd_connection::handle_handshake, this, _1));
+				boost::asio::async_read(socket_, boost::asio::buffer(&handshake_response_.binary, 4),
+					std::bind(&wesnothd_connection::handle_handshake, this, _1));
+			}
+		});
 }
 
 // worker thread
@@ -222,7 +253,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 void wesnothd_connection::cancel()
 {
 	MPTEST_LOG;
-	if(socket_.is_open()) {
+	if(socket_.lowest_layer().is_open()) {
 		boost::system::error_code ec;
 
 #ifdef _MSC_VER
@@ -231,7 +262,7 @@ void wesnothd_connection::cancel()
 #pragma warning(push)
 #pragma warning(disable:4996)
 #endif
-		socket_.cancel(ec);
+		socket_.lowest_layer().cancel(ec);
 #ifdef _MSC_VER
 #pragma warning(pop)
 #endif
@@ -245,8 +276,12 @@ void wesnothd_connection::cancel()
 // main thread
 void wesnothd_connection::stop()
 {
-	// TODO: wouldn't cancel() have the same effect?
 	MPTEST_LOG;
+	boost::system::error_code ec;
+	socket_.shutdown(ec);
+	if(ec) {
+		WRN_NW << "Unable to stop socket: " << ec.message() << "\n";
+	}
 	io_service_.stop();
 }
 

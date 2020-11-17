@@ -33,6 +33,7 @@
 #include "exceptions.hpp"
 
 #include <boost/asio.hpp>
+#include <boost/asio/ssl.hpp>
 
 class config;
 
@@ -120,10 +121,12 @@ public:
 private:
 	boost::asio::io_service io_service_;
 
+	boost::asio::ssl::context ssl_ctx_;
+
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;
 
-	typedef boost::asio::ip::tcp::socket socket;
+	typedef boost::asio::ssl::stream<boost::asio::ip::tcp::socket> socket;
 	socket socket_;
 
 	bool done_;

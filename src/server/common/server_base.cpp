@@ -32,10 +32,13 @@ static lg::log_domain log_config("config");
 
 #include "server/common/send_receive_wml_helpers.ipp"
 
+// TODO: test what happens when server gets unencrypted but expects encrypted and vice versa
+// TODO: move setup out of constructor so that options can be configured in the wesnothd/campaignd config files
 server_base::server_base(unsigned short port, bool keep_alive) :
 	port_(port),
 	keep_alive_(keep_alive),
 	io_service_(),
+	ssl_ctx_(boost::asio::ssl::context::sslv23),
 	acceptor_v6_(io_service_),
 	acceptor_v4_(io_service_),
 	#ifndef _WIN32
@@ -44,6 +47,17 @@ server_base::server_base(unsigned short port, bool keep_alive) :
 	#endif
 	sigs_(io_service_, SIGINT, SIGTERM)
 {
+}
+
+void server_base::setup_ssl(const std::string& crt, const std::string& private_key, const std::string& dhparam)
+{
+	ssl_ctx_.set_options(boost::asio::ssl::context::default_workarounds
+        | boost::asio::ssl::context::no_sslv2
+        | boost::asio::ssl::context::no_sslv3
+        | boost::asio::ssl::context::single_dh_use);
+	ssl_ctx_.use_certificate_chain_file(crt);
+	ssl_ctx_.use_private_key_file(private_key, boost::asio::ssl::context::pem);
+	ssl_ctx_.use_tmp_dh_file(dhparam);
 }
 
 void server_base::setup_acceptor(boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint)
@@ -79,8 +93,8 @@ void server_base::start_server()
 
 void server_base::serve(boost::asio::ip::tcp::acceptor& acceptor)
 {
-	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(io_service_);
-	acceptor.async_accept(*socket, [&acceptor, socket, this](const boost::system::error_code& error){
+	socket_ptr socket = std::make_shared<boost::asio::ssl::stream<boost::asio::ip::tcp::socket>>(io_service_, ssl_ctx_);
+	acceptor.async_accept(socket->lowest_layer(), [&acceptor, socket, this](const boost::system::error_code& error){
 		this->accept_connection(acceptor, error, socket);
 	});
 }
@@ -100,12 +114,12 @@ void server_base::accept_connection(boost::asio::ip::tcp::acceptor& acceptor, co
 #ifdef __linux__
 		int cnt = 10;
 		int interval = 30;
-		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
-		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
-		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
+		setsockopt(socket->lowest_layer().native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
+		setsockopt(socket->lowest_layer().native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
+		setsockopt(socket->lowest_layer().native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
 #endif
 #if defined(__APPLE__) && defined(__MACH__)
-		setsockopt(socket->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &timeout, sizeof(timeout));
+		setsockopt(socket->lowest_layer().native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &timeout, sizeof(timeout));
 #endif
 	}
 #endif
@@ -116,11 +130,19 @@ void server_base::accept_connection(boost::asio::ip::tcp::acceptor& acceptor, co
 
 void server_base::serverside_handshake(socket_ptr socket)
 {
-	boost::shared_array<char> handshake(new char[4]);
-	async_read(
-				*socket, boost::asio::buffer(handshake.get(), 4),
-				std::bind(&server_base::handle_handshake, this, _1, socket, handshake)
-				);
+	socket->async_handshake(boost::asio::ssl::stream_base::server,
+		[this, socket](const boost::system::error_code& error)
+		{
+			if(error) {
+				ERR_SERVER << "Handshake failed: " << error.message() << "\n";
+			} else {
+				boost::shared_array<char> handshake(new char[4]);
+				async_read(
+							*socket, boost::asio::buffer(handshake.get(), 4),
+							std::bind(&server_base::handle_handshake, this, _1, socket, handshake)
+							);
+			}
+		});
 }
 
 void server_base::handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<char> handshake)
@@ -191,7 +213,7 @@ void server_base::run() {
 std::string client_address(const socket_ptr socket)
 {
 	boost::system::error_code error;
-	std::string result = socket->remote_endpoint(error).address().to_string();
+	std::string result = socket->lowest_layer().remote_endpoint(error).address().to_string();
 	if(error)
 		return "<unknown address>";
 	else

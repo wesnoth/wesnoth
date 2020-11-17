@@ -179,6 +179,12 @@ else
         git diff-index --quiet HEAD
     }
 
+# needed for the MP and Boost tests
+      openssl genrsa -out certs/server.key 2048
+      openssl req -new -key certs/server.key -out certs/server.csr -subj "/C=we/ST=wesnoth/L=wesnoth/O=wesnoth/OU=wesnoth/CN=localhost"
+      openssl x509 -req -days 3650 -in certs/server.csr -signkey certs/server.key -out certs/localhost.crt
+      openssl dhparam -out certs/dh2048.pem 2048
+
     if [ "$VALIDATE" = "true" ]; then
         execute "WML validation" ./utils/travis/schema_validation.sh
         execute "WML indentation check" checkindent
