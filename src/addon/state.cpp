@@ -55,7 +55,7 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 
 		if(t.remote_version == t.installed_version) {
 			t.state = ADDON_INSTALLED;
-		} else if(t.remote_version > t.installed_version || t.remote_version < t.installed_version) {
+		} else if(t.remote_version > t.installed_version) {
 			t.state = ADDON_INSTALLED_UPGRADABLE;
 		} else if(t.remote_version == version_info()) {
 			// Remote version not set.
