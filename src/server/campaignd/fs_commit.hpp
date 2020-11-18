@@ -87,6 +87,8 @@ private:
 	scoped_ostream out_;
 #ifndef _WIN32
 	int outfd_;
+#else
+	void* handle_; // Actually a HANDLE
 #endif
 };
 
