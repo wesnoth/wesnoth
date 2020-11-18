@@ -31,7 +31,7 @@
    * Added the installable/upgradable version selection to the add-ons manager via a dropdown list
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
  ### WML Engine
-   * Extent special_id_active and special_type_active to abilities used like weapon and add a [filter_specials] and [filter_abilities] tags for specify the source when wml develloper need.
+   * Extent special_id_active and special_type_active to abilities used like weapon and add a [filter_specials] tag for specify the source when wml develloper need.
    * abilities used like weapon can call [leading_anim] now.
  ### Miscellaneous and Bug Fixes
    * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
