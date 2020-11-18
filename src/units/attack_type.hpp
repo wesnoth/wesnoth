@@ -90,7 +90,8 @@ public:
 	/// Returns list who contains list_ability and get_specials list for each ability type
 	unit_ability_list get_special_ability(const std::string& ability) const;
 	///return an boolean value for abilities like poison slow firstrike or petrifies
-	bool bool_ability(const std::string& ability) const;
+	bool get_special_ability_bool(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	bool bool_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
 
 	// In unit_types.cpp:
 
@@ -112,6 +113,17 @@ private:
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true, const std::string& filter_self ="filter_self") const;
+
+	bool check_abilities(const std::string& special) const;
+
+	static bool impl_check_abilities(
+		const std::string& special,
+		unit_const_ptr u,
+		const map_location& u_loc,
+		const_attack_ptr weapon,
+		const_attack_ptr other_weapon,
+		AFFECTS whom
+	);
 
 	static bool special_active_impl(
 		const_attack_ptr self_attack,
