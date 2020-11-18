@@ -1,4 +1,11 @@
 ## Version 1.15.6+dev
+ ### Add-ons server
+   * Added basic command line options.
+   * Add-on validation status responses can now be translated by the client.
+   * Fixed an issue where incremental downloads would always transmit a delta for updating from the very earliest available version of an add-on to the very latest, instead of using the current and target versions specified by the client.
+   * Incremental downloads are no longer allowed to cheat the download counts.
+ ### Add-ons client
+   * It is now possible to install previous versions of an add-on if present and not expired on the server.
  ### Campaigns
    * A Tale of Two Brothers:
      * S02: Changed the antagonists' motive and dialogue to sound more believable
