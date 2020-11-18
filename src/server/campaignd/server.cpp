@@ -373,7 +373,7 @@ void server::load_config()
 	for(const std::string& addon_dir : dirs) {
 		in = filesystem::istream_file(filesystem::normalize_path("data/" + addon_dir + "/addon.cfg"));
 		read(meta, *in);
-		if(meta) {
+		if(!meta.empty()) {
 			addons_.emplace(meta["name"].str(), meta);
 		} else {
 			throw filesystem::io_exception("Failed to load addon from dir '" + addon_dir + "'\n");
