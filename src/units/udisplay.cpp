@@ -600,7 +600,8 @@ void unit_die(const map_location& loc, unit& loser,
 void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const_attack_ptr secondary_attack,
-                 int swing,const std::string& hit_text,int drain_amount,const std::string& att_text, const std::vector<std::string>* extra_hit_sounds)
+                 int swing,const std::string& hit_text,int drain_amount,const std::string& att_text, const std::vector<std::string>* extra_hit_sounds,
+                 bool attacking)
 {
 	if(do_not_show_anims(disp) || (disp->fogged(a) && disp->fogged(b)) || !preferences::show_combat()) {
 		return;
@@ -621,6 +622,13 @@ void unit_attack(display * disp, game_board & board,
 	assert(def.valid());
 	unit &defender = *def;
 	int def_hitpoints = defender.hitpoints();
+	const_attack_ptr weapon = attack.shared_from_this();
+	auto ctx = weapon->specials_context(attacker.shared_from_this(), defender.shared_from_this(), a, b, attacking, secondary_attack);
+	boost::optional<decltype(ctx)> opp_ctx;
+
+	if(secondary_attack) {
+		opp_ctx.emplace(secondary_attack->specials_context(defender.shared_from_this(), attacker.shared_from_this(), b, a, !attacking, weapon));
+	}
 
 	att->set_facing(a.get_relative_dir(b));
 	def->set_facing(b.get_relative_dir(a));
@@ -641,33 +649,43 @@ void unit_attack(display * disp, game_board & board,
 	unit_animator animator;
 
 	animator.add_animation(attacker.shared_from_this(), "attack", att->get_location(), def->get_location(), damage, true, text_2,
-		(drain_amount >= 0) ? color_t(0, 255, 0) : color_t(255, 0, 0), hit_type, attack.shared_from_this(),
+		(drain_amount >= 0) ? color_t(0, 255, 0) : color_t(255, 0, 0), hit_type, weapon,
 		secondary_attack, swing);
 
 	// note that we take an anim from the real unit, we'll use it later
 	const unit_animation* defender_anim = def->anim_comp().choose_animation(*disp, def->get_location(), "defend",
-		att->get_location(), damage, hit_type, attack.shared_from_this(), secondary_attack, swing);
+		att->get_location(), damage, hit_type, weapon, secondary_attack, swing);
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	for(const unit_ability& ability : attacker.get_abilities_weapons("leadership", attack.shared_from_this(), secondary_attack)) {
-		if(ability.teacher_loc == a) {
-			continue;
-		}
+	const std::vector<std::string> leader_tags{"leadership", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+	if(!leader_tags.empty()) {
+		for(auto& special : leader_tags) {
+			unit_ability_list abilities(att->get_location());
+			if(special == "leadership" || !weapon){
+				abilities = attacker.get_abilities_weapons(special, weapon, secondary_attack);
+			} else if(weapon && special != "leadership"){
+				abilities = weapon->list_ability(special);
+			}
+			for(const unit_ability& ability : abilities) {
+				if(ability.teacher_loc == a) {
+					continue;
+				}
+				if(ability.teacher_loc == b) {
+					continue;
+				}
 
-		if(ability.teacher_loc == b) {
-			continue;
+				unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
+				assert(leader.valid());
+				leader->set_facing(ability.teacher_loc.get_relative_dir(a));
+				animator.add_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
+				att->get_location(), damage, true,  "", {0,0,0},
+				hit_type, weapon, secondary_attack, swing);
+			}
 		}
-
-		unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
-		assert(leader.valid());
-		leader->set_facing(ability.teacher_loc.get_relative_dir(a));
-		animator.add_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
-			att->get_location(), damage, true,  "", {0,0,0},
-			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
 
-	for(const unit_ability& ability : defender.get_abilities_weapons("resistance", secondary_attack, attack.shared_from_this())) {
+	for(const unit_ability& ability : defender.get_abilities_weapons("resistance", secondary_attack, weapon)) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
@@ -681,7 +699,7 @@ void unit_attack(display * disp, game_board & board,
 		helper->set_facing(ability.teacher_loc.get_relative_dir(b));
 		animator.add_animation(helper.get_shared_ptr(), "resistance", ability.teacher_loc,
 			def->get_location(), damage, true,  "", {0,0,0},
-			hit_type, attack.shared_from_this(), secondary_attack, swing);
+			hit_type, weapon, secondary_attack, swing);
 	}
 
 
@@ -718,18 +736,30 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	display* disp = display::get_singleton();
 	const unit_map& units = disp->get_units();
 	if(attacker) {
-		for(const unit_ability& ability : attacker->get_abilities("leadership")) {
-			unit_map::const_iterator leader = units.find(ability.teacher_loc);
-			assert(leader != units.end());
-			leader->anim_comp().set_standing();
+		const std::vector<std::string> leader_tags{"leadership", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+		if(!leader_tags.empty()) {
+			for(auto& special : leader_tags) {
+				for(const unit_ability& ability : attacker->get_abilities(special)) {
+					unit_map::const_iterator leader = units.find(ability.teacher_loc);
+					assert(leader != units.end());
+					leader->anim_comp().set_standing();
+				}
+			}
 		}
 	}
 
+
+
 	if(defender) {
-		for(const unit_ability& ability : defender->get_abilities("resistance")) {
-			unit_map::const_iterator helper = units.find(ability.teacher_loc);
-			assert(helper != units.end());
-			helper->anim_comp().set_standing();
+		const std::vector<std::string> helper_tags{"resistance", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+		if(!helper_tags.empty()) {
+			for(auto& special : helper_tags) {
+				for(const unit_ability& ability : defender->get_abilities(special)) {
+					unit_map::const_iterator helper = units.find(ability.teacher_loc);
+					assert(helper != units.end());
+					helper->anim_comp().set_standing();
+				}
+			}
 		}
 	}
 }

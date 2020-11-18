@@ -1098,7 +1098,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 			damage,
 			*attacker_stats->weapon, defender_stats->weapon,
 			abs_n, float_text.str(), drains_damage, "",
-			&extra_hit_sounds
+			&extra_hit_sounds, attacker_turn
 		);
 	}
 
