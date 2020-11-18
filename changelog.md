@@ -21,6 +21,7 @@
    * Decreased Icemonax's advancement XP requirement from 26 to 25 to match other dead-end L0 units.
    * Portrait and animation graphics for some of the new Wesnoth Fauna
  ### User interface
+   * Added the installable/upgradable version selection to the add-ons manager via a dropdown list
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
  ### WML Engine
  ### Miscellaneous and Bug Fixes
