@@ -678,6 +678,7 @@ class CrossRef:
                         state = "macro_body"
                 elif state == "macro_optional_argument" and "#endarg" in line:
                     state = "macro_header"
+                    continue
                 if state == "macro_header":
                     # Ignore macro header commends that are pragmas
                     if ("wmlscope" in line) or ("wmllint:" in line):
