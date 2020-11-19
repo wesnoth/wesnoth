@@ -32,29 +32,29 @@ public:
 	  {
 	  }
 
-	editor_action* click_left(editor_display& disp, int x, int y);
+	editor_action_ptr click_left(editor_display& disp, int x, int y);
 
 	/**
 	 * Drags a label.
 	 */
-	editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+	editor_action_ptr drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
 	 * Replaces the label under the mouse with the dragged label.
 	 */
-	editor_action* drag_end_left(editor_display& disp, int x, int y);
+	editor_action_ptr drag_end_left(editor_display& disp, int x, int y);
 
 	/**
 	 * Left click displays a dialog that is used for entering the label string.
 	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
+	editor_action_ptr up_left(editor_display& disp, int x, int y);
 
-	editor_action* click_right(editor_display& disp, int x, int y);
+	editor_action_ptr click_right(editor_display& disp, int x, int y);
 
 	/**
 	 * Right click erases the label under the mouse.
 	 */
-	editor_action* up_right(editor_display& disp, int x, int y);
+	editor_action_ptr up_right(editor_display& disp, int x, int y);
 
 	virtual void set_mouse_overlay(editor_display& disp);
 

@@ -44,9 +44,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_unit* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -69,9 +69,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_unit_delete* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -89,9 +89,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_unit_replace* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -114,9 +114,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_unit_facing* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 

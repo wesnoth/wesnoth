@@ -84,7 +84,7 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 	}
 }
 
-editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_unit::click_left(editor_display& disp, int x, int y)
 {
 	start_hex_ = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(start_hex_)) {
@@ -100,14 +100,14 @@ editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
 	return nullptr;
 }
 
-editor_action* mouse_action_unit::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
+editor_action_ptr mouse_action_unit::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	click_ = (hex == start_hex_);
 	return nullptr;
 }
 
-editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_unit::up_left(editor_display& disp, int x, int y)
 {
 	if (!click_) return nullptr;
 	click_ = false;
@@ -133,14 +133,14 @@ editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 	unit_race::GENDER gender = ut.genders().front();
 
 	unit_ptr new_unit = unit::create(ut, disp.viewing_side(), true, gender);
-	editor_action* action = new editor_action_unit(hex, *new_unit);
+	editor_action_ptr action(new editor_action_unit(hex, *new_unit));
 	return action;
 }
 
-editor_action* mouse_action_unit::drag_end_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_unit::drag_end_left(editor_display& disp, int x, int y)
 {
 	if (click_) return nullptr;
-	editor_action* action = nullptr;
+	editor_action_ptr action = nullptr;
 
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex))
@@ -151,7 +151,7 @@ editor_action* mouse_action_unit::drag_end_left(editor_display& disp, int x, int
 	if (unit_it == units.end())
 		return nullptr;
 
-	action = new editor_action_unit_replace(start_hex_, hex);
+	action.reset(new editor_action_unit_replace(start_hex_, hex));
 	return action;
 }
 

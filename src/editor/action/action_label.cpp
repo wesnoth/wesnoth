@@ -26,7 +26,7 @@ namespace editor
 {
 IMPLEMENT_ACTION(label)
 
-editor_action* editor_action_label::perform(map_context& mc) const
+editor_action_ptr editor_action_label::perform(map_context& mc) const
 {
 	editor_action_ptr undo;
 
@@ -47,7 +47,7 @@ editor_action* editor_action_label::perform(map_context& mc) const
 	}
 
 	perform_without_undo(mc);
-	return undo.release();
+	return undo;
 }
 
 void editor_action_label::perform_without_undo(map_context& mc) const
@@ -58,7 +58,7 @@ void editor_action_label::perform_without_undo(map_context& mc) const
 
 IMPLEMENT_ACTION(label_delete)
 
-editor_action* editor_action_label_delete::perform(map_context& mc) const
+editor_action_ptr editor_action_label_delete::perform(map_context& mc) const
 {
 	editor_action_ptr undo;
 
@@ -80,7 +80,7 @@ editor_action* editor_action_label_delete::perform(map_context& mc) const
 	);
 
 	perform_without_undo(mc);
-	return undo.release();
+	return undo;
 }
 
 void editor_action_label_delete::perform_without_undo(map_context& mc) const

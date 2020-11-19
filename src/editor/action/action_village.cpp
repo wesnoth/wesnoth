@@ -27,7 +27,7 @@ namespace editor
 {
 IMPLEMENT_ACTION(village)
 
-editor_action* editor_action_village::perform(map_context& mc) const
+editor_action_ptr editor_action_village::perform(map_context& mc) const
 {
 	if(!mc.map().is_village(loc_)) {
 		return nullptr;
@@ -52,7 +52,7 @@ editor_action* editor_action_village::perform(map_context& mc) const
 	}
 
 	perform_without_undo(mc);
-	return undo.release();
+	return undo;
 }
 
 void editor_action_village::perform_without_undo(map_context& mc) const
@@ -71,7 +71,7 @@ void editor_action_village::perform_without_undo(map_context& mc) const
 
 IMPLEMENT_ACTION(village_delete)
 
-editor_action* editor_action_village_delete::perform(map_context& mc) const
+editor_action_ptr editor_action_village_delete::perform(map_context& mc) const
 {
 	editor_action_ptr undo;
 
@@ -82,7 +82,7 @@ editor_action* editor_action_village_delete::perform(map_context& mc) const
 		}
 	}
 
-	return undo.release();
+	return undo;
 }
 
 void editor_action_village_delete::perform_without_undo(map_context& mc) const

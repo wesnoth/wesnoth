@@ -67,7 +67,7 @@ void mouse_action_item::move(editor_display& disp, const map_location& hex)
 	}
 }
 
-editor_action* mouse_action_item::click_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_item::click_left(editor_display& disp, int x, int y)
 {
 	start_hex_ = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(start_hex_)) {
@@ -87,14 +87,14 @@ editor_action* mouse_action_item::click_left(editor_display& disp, int x, int y)
 	return nullptr;
 }
 
-editor_action* mouse_action_item::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
+editor_action_ptr mouse_action_item::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	click_ = (hex == start_hex_);
 	return nullptr;
 }
 
-editor_action* mouse_action_item::up_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_item::up_left(editor_display& disp, int x, int y)
 {
 	if (!click_) return nullptr;
 	click_ = false;
@@ -126,10 +126,10 @@ editor_action* mouse_action_item::up_left(editor_display& disp, int x, int y)
 	return nullptr;
 }
 
-editor_action* mouse_action_item::drag_end_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_item::drag_end_left(editor_display& disp, int x, int y)
 {
 	if (click_) return nullptr;
-	editor_action* action = nullptr;
+	editor_action_ptr action;
 
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex))
@@ -140,7 +140,7 @@ editor_action* mouse_action_item::drag_end_left(editor_display& disp, int x, int
 //	if (item_it == items.end())
 //		return nullptr;
 
-	action = new editor_action_item_replace(start_hex_, hex);
+	action.reset(new editor_action_item_replace(start_hex_, hex));
 	return action;
 }
 

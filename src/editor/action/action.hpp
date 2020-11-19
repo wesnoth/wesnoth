@@ -43,7 +43,7 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_whole_map* clone() const;
+	editor_action_ptr clone() const;
 
 	void perform_without_undo(map_context& m) const;
 
@@ -103,14 +103,14 @@ public:
 	editor_action_chain& operator=(const editor_action_chain& other);
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_chain* clone() const;
+	editor_action_ptr clone() const;
 
 	/**
 	 * Create an action chain from a deque of action pointers.
 	 * Note: the action chain assumes ownership of the pointers.
 	 */
-	explicit editor_action_chain(std::deque<editor_action*> actions)
-		: actions_(actions)
+	explicit editor_action_chain(std::deque<editor_action_ptr> actions)
+		: actions_(std::move(actions))
 	{
 	}
 
@@ -118,9 +118,10 @@ public:
 	 * Create an action chain by wrapping around a single action pointer.
 	 * Note: the action chain assumes ownership of the pointer.
 	 */
-	explicit editor_action_chain(editor_action* action)
-		: actions_(1, action)
+	explicit editor_action_chain(editor_action_ptr action)
+		: actions_()
 	{
+		actions_.push_front(std::move(action));
 	}
 
 	/**
@@ -136,12 +137,12 @@ public:
 	/**
 	 * Add an action at the end of the chain
 	 */
-	void append_action(editor_action* a);
+	void append_action(editor_action_ptr a);
 
 	/**
 	 * Add an action at the beginning of the chain
 	 */
-	void prepend_action(editor_action* a);
+	void prepend_action(editor_action_ptr a);
 
 	/**
 	 * @return true when there are no actions in the chain. Empty
@@ -154,18 +155,18 @@ public:
 	 * Remove the last added action and return it, transferring
 	 * ownership to the caller
 	 */
-	editor_action* pop_last_action();
+	editor_action_ptr pop_last_action();
 
 	/**
 	 * Remove the first added action and return it, transferring
 	 * ownership to the caller
 	 */
-	editor_action* pop_first_action();
+	editor_action_ptr pop_first_action();
 
 	/**
 	 * Perform all the actions in order and create a undo action chain
 	 */
-	editor_action_chain* perform(map_context& m) const;
+	editor_action_ptr perform(map_context& m) const;
 
 	/**
 	 * Perform all the actions in order
@@ -179,7 +180,7 @@ protected:
 	/**
 	 * The action pointers owned by this action chain
 	 */
-	std::deque<editor_action*> actions_;
+	std::deque<editor_action_ptr> actions_;
 };
 
 /**
@@ -262,9 +263,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_paste* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action_paste* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -293,9 +294,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_paint_area* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action_paste* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -321,9 +322,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_fill* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action_paint_area* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -347,9 +348,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_starting_position* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -381,7 +382,7 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_resize_map* clone() const;
+	editor_action_ptr clone() const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -406,7 +407,7 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_apply_mask* clone() const;
+	editor_action_ptr clone() const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -425,7 +426,7 @@ public:
 	{
 	}
 
-	editor_action_create_mask* clone() const;
+	editor_action_ptr clone() const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -447,9 +448,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_shuffle_area* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action_paste* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 

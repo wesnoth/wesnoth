@@ -41,11 +41,11 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_select* clone() const;
+	editor_action_ptr clone() const;
 
 	void extend(const editor_map& map, const std::set<map_location>& locs);
 
-	editor_action* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -65,11 +65,11 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_deselect* clone() const;
+	editor_action_ptr clone() const;
 
 	void extend(const editor_map& map, const std::set<map_location>& locs);
 
-	editor_action* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -88,9 +88,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_select_all* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action_select* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -109,9 +109,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_select_none* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action_select* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
@@ -130,9 +130,9 @@ public:
 	}
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	editor_action_select_inverse* clone() const;
+	editor_action_ptr clone() const;
 
-	editor_action_select_inverse* perform(map_context& mc) const;
+	editor_action_ptr perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 

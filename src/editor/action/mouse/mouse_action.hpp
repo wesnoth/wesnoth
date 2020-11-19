@@ -67,39 +67,39 @@ public:
 	/**
 	 * A click, possibly the beginning of a drag. Must be overridden.
 	 */
-	virtual editor_action* click_left(editor_display& disp, int x, int y) = 0;
+	virtual editor_action_ptr click_left(editor_display& disp, int x, int y) = 0;
 
 	/**
 	 * A click, possibly the beginning of a drag. Must be overridden.
 	 */
-	virtual editor_action* click_right(editor_display& disp, int x, int y) = 0;
+	virtual editor_action_ptr click_right(editor_display& disp, int x, int y) = 0;
 
 	/**
 	 * Drag operation. A click should have occurred earlier. Defaults to no action.
 	 */
-	virtual editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+	virtual editor_action_ptr drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
 	 * Drag operation. A click should have occurred earlier. Defaults to no action.
 	 */
-	virtual editor_action* drag_right(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+	virtual editor_action_ptr drag_right(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
 	 * The end of dragging. Defaults to no action.
 	 */
-	virtual editor_action* drag_end_left(editor_display& disp, int x, int y);
+	virtual editor_action_ptr drag_end_left(editor_display& disp, int x, int y);
 
-	virtual editor_action* drag_end_right(editor_display& disp, int x, int y);
+	virtual editor_action_ptr drag_end_right(editor_display& disp, int x, int y);
 
-	virtual editor_action* up_left(editor_display& disp, int x, int y);
+	virtual editor_action_ptr up_left(editor_display& disp, int x, int y);
 
-	virtual editor_action* up_right(editor_display& disp, int x, int y);
+	virtual editor_action_ptr up_right(editor_display& disp, int x, int y);
 
 	/**
 	 * Function called by the controller on a key event for the current mouse action.
 	 * Defaults to starting position processing.
 	 */
-	virtual editor_action* key_event(editor_display& disp, const SDL_Event& e);
+	virtual editor_action_ptr key_event(editor_display& disp, const SDL_Event& e);
 
 	/**
 	 * Helper variable setter - pointer to a toolbar menu/button used for highlighting
@@ -180,40 +180,40 @@ public:
 	/**
 	 * The actual action function which is called by click() and drag(). Derived classes override this instead of click() and drag().
 	 */
-	virtual editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes) = 0;
+	virtual editor_action_ptr click_perform_left(editor_display& disp, const std::set<map_location>& hexes) = 0;
 
 	/**
 	 * The actual action function which is called by click() and drag(). Derived classes override this instead of click() and drag().
 	 */
-	virtual editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes) = 0;
+	virtual editor_action_ptr click_perform_right(editor_display& disp, const std::set<map_location>& hexes) = 0;
 
 	/**
 	 * Calls click_perform_left()
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
+	editor_action_ptr click_left(editor_display& disp, int x, int y);
 
 	/**
 	 * Calls click_perform_right()
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
+	editor_action_ptr click_right(editor_display& disp, int x, int y);
 
 	/**
 	 * Calls click_perform() for every new hex the mouse is dragged into.
 	 * @todo partial actions support and merging of many drag actions into one
 	 */
-	editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+	editor_action_ptr drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
 	 * Calls click_perform for every new hex the mouse is dragged into.
 	 * @todo partial actions support and merging of many drag actions into one
 	 */
-	editor_action* drag_right(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+	editor_action_ptr drag_right(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
 	 * End of dragging.
 	 * @todo partial actions (the entire drag should end up as one action)
 	 */
-	editor_action* drag_end(editor_display& disp, int x, int y);
+	editor_action_ptr drag_end(editor_display& disp, int x, int y);
 
 protected:
 	/** Brush accessor */
@@ -231,8 +231,8 @@ private:
 	 * The drags differ only in the worker function called, which should be
 	 * passed as the template parameter. This exists only to avoid copy-pasting code.
 	 */
-	template <editor_action* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<map_location>&)>
-	editor_action* drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+	template <editor_action_ptr (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<map_location>&)>
+	editor_action_ptr drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
 	 * Current brush handle. Currently a pointer-to-pointer with full constness.
@@ -259,22 +259,22 @@ public:
 	/**
 	 * Handle terrain sampling before calling generic handler
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y) override;
+	editor_action_ptr click_left(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Handle terrain sampling before calling generic handler
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y) override;
+	editor_action_ptr click_right(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes) override;
+	editor_action_ptr click_perform_left(editor_display& disp, const std::set<map_location>& hexes) override;
 
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes) override;
+	editor_action_ptr click_perform_right(editor_display& disp, const std::set<map_location>& hexes) override;
 
 	void set_mouse_overlay(editor_display& disp) override;
 
@@ -309,12 +309,12 @@ public:
 	/**
 	 * Return a paste with offset action
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y) override;
+	editor_action_ptr click_left(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Right click does nothing for now
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y) override;
+	editor_action_ptr click_right(editor_display& disp, int x, int y) override;
 
 	virtual void set_mouse_overlay(editor_display& disp) override;
 
@@ -346,12 +346,12 @@ public:
 	/**
 	 * Left / right click fills with the respective terrain
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
+	editor_action_ptr click_left(editor_display& disp, int x, int y);
 
 	/**
 	 * Left / right click fills with the respective terrain
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
+	editor_action_ptr click_right(editor_display& disp, int x, int y);
 
 	virtual void set_mouse_overlay(editor_display& disp);
 
@@ -375,16 +375,16 @@ public:
 	 * or returns nullptr if cancel was pressed or there would be no change.
 	 * Do this on mouse up to avoid drag issue.
 	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
+	editor_action_ptr up_left(editor_display& disp, int x, int y);
 
-	editor_action* click_left(editor_display& disp, int x, int y);
+	editor_action_ptr click_left(editor_display& disp, int x, int y);
 	/**
 	 * Right click only erases the starting position if there is one.
 	 * Do this on mouse up to avoid drag issue,
 	 */
-	editor_action* up_right(editor_display& disp, int x, int y);
+	editor_action_ptr up_right(editor_display& disp, int x, int y);
 
-	editor_action* click_right(editor_display& disp, int x, int y);
+	editor_action_ptr click_right(editor_display& disp, int x, int y);
 
 	virtual void set_mouse_overlay(editor_display& disp);
 

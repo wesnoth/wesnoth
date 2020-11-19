@@ -36,22 +36,22 @@ public:
 	/**
 	 * No action.
 	 */
-	editor_action* click_left(editor_display& /*disp*/, int /*x*/, int /*y*/) {return nullptr;}
+	editor_action_ptr click_left(editor_display& /*disp*/, int /*x*/, int /*y*/) {return nullptr;}
 
 	/**
 	 * If clicked on a village hex field, assigns the ownership of it to the current side.
 	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
+	editor_action_ptr up_left(editor_display& disp, int x, int y);
 
 	/**
 	 * No action.
 	 */
-	editor_action* click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) {return nullptr;}
+	editor_action_ptr click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) {return nullptr;}
 
 	/**
 	 * If clicked on a village hex field, unassigns it's ownership.
 	 */
-	editor_action* up_right(editor_display& disp, int x, int y);
+	editor_action_ptr up_right(editor_display& disp, int x, int y);
 
 	virtual void set_mouse_overlay(editor_display& disp);
 };

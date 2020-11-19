@@ -50,43 +50,43 @@ std::set<map_location> mouse_action::affected_hexes(
 	return res;
 }
 
-editor_action* mouse_action::drag_left(editor_display& /*disp*/,
+editor_action_ptr mouse_action::drag_left(editor_display& /*disp*/,
 		int /*x*/, int /*y*/, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	return nullptr;
 }
 
-editor_action* mouse_action::drag_right(editor_display& /*disp*/,
+editor_action_ptr mouse_action::drag_right(editor_display& /*disp*/,
 		int /*x*/, int /*y*/, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	return nullptr;
 }
 
-editor_action* mouse_action::drag_end_left(
+editor_action_ptr mouse_action::drag_end_left(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return nullptr;
 }
 
-editor_action* mouse_action::drag_end_right(
+editor_action_ptr mouse_action::drag_end_right(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return nullptr;
 }
 
-editor_action* mouse_action::up_right(
+editor_action_ptr mouse_action::up_right(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return nullptr;
 }
 
-editor_action* mouse_action::up_left(
+editor_action_ptr mouse_action::up_left(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return nullptr;
 }
 
-editor_action* mouse_action::key_event(
+editor_action_ptr mouse_action::key_event(
 	editor_display& disp, const SDL_Event& event)
 {
 	if (!has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9')) {
@@ -102,16 +102,16 @@ editor_action* mouse_action::key_event(
 	if (!disp.map().on_board(previous_move_hex_) || event.type != SDL_KEYUP) {
 		return nullptr;
 	}
-	editor_action* a = nullptr;
+	editor_action_ptr a = nullptr;
 	if ((has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9'))
 	|| event.key.keysym.sym == SDLK_DELETE) {
 		int res = event.key.keysym.sym - '0';
 		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
 		const std::string* old_id = disp.map().is_starting_position(previous_move_hex_);
 		if (res == 0 && old_id != nullptr) {
-			a = new editor_action_starting_position(map_location(), *old_id);
+			a.reset(new editor_action_starting_position(map_location(), *old_id));
 		} else if (res > 0 && (old_id == nullptr || *old_id == std::to_string(res))) {
-			a = new editor_action_starting_position(previous_move_hex_, std::to_string(res));
+			a.reset(new editor_action_starting_position(previous_move_hex_, std::to_string(res)));
 		}
 	}
 	return a;
@@ -201,40 +201,40 @@ std::set<map_location> brush_drag_mouse_action::affected_hexes(
 	return get_brush().project(hex);
 }
 
-editor_action* brush_drag_mouse_action::click_left(editor_display& disp, int x, int y)
+editor_action_ptr brush_drag_mouse_action::click_left(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	previous_drag_hex_ = hex;
 	return click_perform_left(disp, affected_hexes(disp, hex));
 }
 
-editor_action* brush_drag_mouse_action::click_right(editor_display& disp, int x, int y)
+editor_action_ptr brush_drag_mouse_action::click_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	previous_drag_hex_ = hex;
 	return click_perform_right(disp, affected_hexes(disp, hex));
 }
 
-editor_action* brush_drag_mouse_action::drag_left(editor_display& disp,
+editor_action_ptr brush_drag_mouse_action::drag_left(editor_display& disp,
 		int x, int y, bool& partial, editor_action* last_undo)
 {
 	return drag_generic<&brush_drag_mouse_action::click_perform_left>(disp, x, y, partial, last_undo);
 }
 
-editor_action* brush_drag_mouse_action::drag_right(editor_display& disp,
+editor_action_ptr brush_drag_mouse_action::drag_right(editor_display& disp,
 		int x, int y, bool& partial, editor_action* last_undo)
 {
 	return drag_generic<&brush_drag_mouse_action::click_perform_right>(disp, x, y, partial, last_undo);
 }
 
-editor_action* brush_drag_mouse_action::drag_end(
+editor_action_ptr brush_drag_mouse_action::drag_end(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return nullptr;
 }
 
-template <editor_action* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<map_location>&)>
-editor_action* brush_drag_mouse_action::drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo)
+template <editor_action_ptr (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<map_location>&)>
+editor_action_ptr brush_drag_mouse_action::drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	move(disp, hex);
@@ -242,7 +242,7 @@ editor_action* brush_drag_mouse_action::drag_generic(editor_display& disp, int x
 		editor_action_extendable* last_undo_x = dynamic_cast<editor_action_extendable*>(last_undo);
 		LOG_ED << "Last undo is " << last_undo << " and as x " << last_undo_x << "\n";
 		partial = true;
-		editor_action* a = (this->*perform_func)(disp, affected_hexes(disp, hex));
+		editor_action_ptr a = (this->*perform_func)(disp, affected_hexes(disp, hex));
 		previous_drag_hex_ = hex;
 		return a;
 	} else {
@@ -258,7 +258,7 @@ const brush& brush_drag_mouse_action::get_brush()
 }
 
 
-editor_action* mouse_action_paint::click_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_paint::click_left(editor_display& disp, int x, int y)
 {
 	if (has_ctrl_modifier()) {
 		map_location hex = disp.hex_clicked_on(x, y);
@@ -269,7 +269,7 @@ editor_action* mouse_action_paint::click_left(editor_display& disp, int x, int y
 	}
 }
 
-editor_action* mouse_action_paint::click_right(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_paint::click_right(editor_display& disp, int x, int y)
 {
 	if (has_ctrl_modifier()) {
 		map_location hex = disp.hex_clicked_on(x, y);
@@ -280,20 +280,20 @@ editor_action* mouse_action_paint::click_right(editor_display& disp, int x, int 
 	}
 }
 
-editor_action* mouse_action_paint::click_perform_left(
+editor_action_ptr mouse_action_paint::click_perform_left(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
 	if (has_ctrl_modifier()) return nullptr;
-	return new editor_action_chain(new editor_action_paint_area(
-			hexes, terrain_palette_.selected_fg_item(), has_shift_modifier()));
+	return editor_action_ptr(new editor_action_chain(editor_action_ptr(new editor_action_paint_area(
+			hexes, terrain_palette_.selected_fg_item(), has_shift_modifier()))));
 }
 
-editor_action* mouse_action_paint::click_perform_right(
+editor_action_ptr mouse_action_paint::click_perform_right(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
 	if (has_ctrl_modifier()) return nullptr;
-	return new editor_action_chain(new editor_action_paint_area(
-			hexes, terrain_palette_.selected_bg_item(), has_shift_modifier()));
+	return editor_action_ptr(new editor_action_chain(editor_action_ptr(new editor_action_paint_area(
+			hexes, terrain_palette_.selected_bg_item(), has_shift_modifier()))));
 }
 
 void mouse_action_paint::set_mouse_overlay(editor_display& disp)
@@ -317,14 +317,13 @@ std::set<map_location> mouse_action_paste::affected_hexes(
 	return paste_.get_offset_area(hex);
 }
 
-editor_action* mouse_action_paste::click_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_paste::click_left(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
-	editor_action_paste* a = new editor_action_paste(paste_, hex);
-	return a;
+	return editor_action_ptr(new editor_action_paste(paste_, hex));
 }
 
-editor_action* mouse_action_paste::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
+editor_action_ptr mouse_action_paste::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return nullptr;
 }
@@ -355,7 +354,7 @@ std::set<map_location> mouse_action_fill::affected_hexes(
 	return disp.map().get_contiguous_terrain_tiles(hex);
 }
 
-editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_fill::click_left(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (has_ctrl_modifier()) {
@@ -364,13 +363,13 @@ editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
 	} else {
 		/** @todo only take the base terrain into account when searching for contiguous terrain when painting base only */
 		//or use a different key modifier for that
-		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_.selected_fg_item(),
-				has_shift_modifier());
+		editor_action_ptr a(new editor_action_fill(hex, terrain_palette_.selected_fg_item(),
+				has_shift_modifier()));
 		return a;
 	}
 }
 
-editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_fill::click_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (has_ctrl_modifier()) {
@@ -379,8 +378,8 @@ editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y
 	} else {
 		/** @todo only take the base terrain into account when searching for contiguous terrain when painting base only */
 		//or use a different key modifier for that
-		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_.selected_bg_item(),
-				has_shift_modifier());
+		editor_action_ptr a(new editor_action_fill(hex, terrain_palette_.selected_bg_item(),
+				has_shift_modifier()));
 		return a;
 	}
 }
@@ -391,7 +390,7 @@ void mouse_action_fill::set_mouse_overlay(editor_display& disp)
 			terrain_palette_.selected_bg_item());
 }
 
-editor_action* mouse_action_starting_position::up_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_starting_position::up_left(editor_display& disp, int x, int y)
 {
 	if (!click_) return nullptr;
 	click_ = false;
@@ -409,15 +408,15 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 	}
 
 	std::string new_player_at_hex = location_palette_.selected_item();
-	editor_action* a = nullptr;
+	editor_action_ptr a = nullptr;
 
 	if(!player_starting_at_hex || new_player_at_hex != *player_starting_at_hex) {
 		// Set a starting position
-		a = new editor_action_starting_position(hex, new_player_at_hex);
+		a.reset(new editor_action_starting_position(hex, new_player_at_hex));
 	}
 	else {
 		// Erase current starting position
-		a = new editor_action_starting_position(map_location(), *player_starting_at_hex);
+		a.reset(new editor_action_starting_position(map_location(), *player_starting_at_hex));
 	}
 
 	update_brush_highlights(disp, hex);
@@ -425,24 +424,24 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 	return a;
 }
 
-editor_action* mouse_action_starting_position::click_left(editor_display& /*disp*/, int /*x*/, int /*y*/)
+editor_action_ptr mouse_action_starting_position::click_left(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	click_ = true;
 	return nullptr;
 }
 
-editor_action* mouse_action_starting_position::up_right(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_starting_position::up_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	auto player_starting_at_hex = disp.map().is_starting_position(hex);
 	if (player_starting_at_hex != nullptr) {
-		return new editor_action_starting_position(map_location(), *player_starting_at_hex);
+		return editor_action_ptr(new editor_action_starting_position(map_location(), *player_starting_at_hex));
 	} else {
 		return nullptr;
 	}
 }
 
-editor_action* mouse_action_starting_position::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
+editor_action_ptr mouse_action_starting_position::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return nullptr;
 }

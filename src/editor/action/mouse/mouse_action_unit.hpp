@@ -44,22 +44,22 @@ public:
 	/**
 	 * TODO
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
+	editor_action_ptr click_left(editor_display& disp, int x, int y);
 
 	/**
 	 * TODO
 	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
+	editor_action_ptr up_left(editor_display& disp, int x, int y);
 
-	editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+	editor_action_ptr drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
 	 * Drag end replaces the unit when clicked left, or adjusts
 	 * the facing when clicked right.
 	 */
-	editor_action* drag_end_left(editor_display& disp, int x, int y);
+	editor_action_ptr drag_end_left(editor_display& disp, int x, int y);
 
-	editor_action* click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) {
+	editor_action_ptr click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) {
 		return nullptr;
 	}
 

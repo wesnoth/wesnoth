@@ -29,30 +29,30 @@ std::set<map_location> mouse_action_select::affected_hexes(
 	}
 }
 
-editor_action* mouse_action_select::key_event(
+editor_action_ptr mouse_action_select::key_event(
 		editor_display& disp, const SDL_Event& event)
 {
-	editor_action* ret = mouse_action::key_event(disp, event);
+	editor_action_ptr ret(mouse_action::key_event(disp, event));
 	update_brush_highlights(disp, previous_move_hex_);
 	return ret;
 }
 
-editor_action* mouse_action_select::click_perform_left(
+editor_action_ptr mouse_action_select::click_perform_left(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
 	if (has_ctrl_modifier())
-		return new editor_action_chain(new editor_action_deselect(hexes));
+		return editor_action_ptr(new editor_action_chain(editor_action_ptr(new editor_action_deselect(hexes))));
 	else
-		return new editor_action_chain(new editor_action_select(hexes));
+		return editor_action_ptr(new editor_action_chain(editor_action_ptr(new editor_action_select(hexes))));
 }
 
-editor_action* mouse_action_select::click_perform_right(
+editor_action_ptr mouse_action_select::click_perform_right(
 		editor_display& /*disp*/, const std::set<map_location>& /*hexes*/)
 {
 	return nullptr;
 }
 
-editor_action* mouse_action_select::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
+editor_action_ptr mouse_action_select::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return nullptr;
 }

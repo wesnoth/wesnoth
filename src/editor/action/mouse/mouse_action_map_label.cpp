@@ -27,7 +27,7 @@
 
 namespace editor {
 
-editor_action* mouse_action_map_label::click_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_map_label::click_left(editor_display& disp, int x, int y)
 {
 	click_ = true;
 	map_location hex = disp.hex_clicked_on(x, y);
@@ -35,7 +35,7 @@ editor_action* mouse_action_map_label::click_left(editor_display& disp, int x, i
 	return nullptr;
 }
 
-editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, int y
+editor_action_ptr mouse_action_map_label::drag_left(editor_display& disp, int x, int y
 		, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
@@ -43,7 +43,7 @@ editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, in
 	return nullptr;
 }
 
-editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_map_label::up_left(editor_display& disp, int x, int y)
 {
 	if (!click_) return nullptr;
 	click_ = false;
@@ -64,21 +64,21 @@ editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int 
 
 	gui2::dialogs::editor_edit_label d(label, immutable, visible_fog, visible_shroud, color, category);
 
-	editor_action* a = nullptr;
+	editor_action_ptr a = nullptr;
 	if(d.show()) {
-		a = new editor_action_label(hex, label, team_name, color
-				, visible_fog, visible_shroud, immutable, category);
+		a.reset(new editor_action_label(hex, label, team_name, color
+				, visible_fog, visible_shroud, immutable, category));
 		update_brush_highlights(disp, hex);
 	}
 	return a;
 }
 
-editor_action* mouse_action_map_label::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
+editor_action_ptr mouse_action_map_label::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return nullptr;
 }
 
-editor_action* mouse_action_map_label::up_right(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_map_label::up_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 
@@ -87,10 +87,10 @@ editor_action* mouse_action_map_label::up_right(editor_display& disp, int x, int
 	//if (!clicked_label)
 	//	return nullptr;
 
-	return new editor_action_label_delete(hex);
+	return editor_action_ptr(new editor_action_label_delete(hex));
 }
 
-editor_action* mouse_action_map_label::drag_end_left(editor_display& disp, int x, int y)
+editor_action_ptr mouse_action_map_label::drag_end_left(editor_display& disp, int x, int y)
 {
 	if (click_) return nullptr;
 
@@ -113,9 +113,9 @@ editor_action* mouse_action_map_label::drag_end_left(editor_display& disp, int x
 	// 1. Delete label in initial hex
 	// 2. Delete label in target hex if it exists, otherwise will no-op
 	// 3. Create label in target hex
-	editor_action_chain* chain = new editor_action_chain(new editor_action_label_delete(clicked_on_));
-	chain->append_action(new editor_action_label_delete(hex));
-	chain->append_action(
+	std::unique_ptr<editor_action_chain> chain(new editor_action_chain(editor_action_ptr(new editor_action_label_delete(clicked_on_))));
+	chain->append_action(editor_action_ptr(new editor_action_label_delete(hex)));
+	chain->append_action(editor_action_ptr(
 		new editor_action_label(
 			hex,
 			dragged_label->text(),
@@ -126,7 +126,7 @@ editor_action* mouse_action_map_label::drag_end_left(editor_display& disp, int x
 			dragged_label->immutable(),
 			dragged_label->category()
 		)
-	);
+	));
 
 	return chain;
 }
