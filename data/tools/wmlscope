@@ -380,6 +380,8 @@ class CrossRefLister(CrossRef):
                 outstr += "<span class='macro-name'>" + header[0] + "</span>"
                 if header[1:]:
                     outstr += " <var class='macro-formals'>"+" ".join(header[1:])+"</var>"
+                if entry.optional_args:
+                    outstr += " Optional arguments: <var class='macro-formals'>" + " ".join(entry.optional_args) + "</var>"
                 outstr += "\n</code></dt>\n"
                 outstr += "<dd>\n"
                 if entry.deprecated:
