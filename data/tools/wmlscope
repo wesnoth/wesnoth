@@ -337,7 +337,7 @@ class CrossRefLister(CrossRef):
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.
-        doclist = [x for x in self.xref.keys() if self.xref[x][0].docstring.count("\n") > 1]
+        doclist = [x for x in self.xref.keys()]
         doclist.sort(key=lambda element: self.xref[element][0])
         outstr = ""
         filename = None
@@ -376,8 +376,6 @@ class CrossRefLister(CrossRef):
                 header = lines.pop(0).split()
                 if lines and not lines[-1]: # Ignore trailing blank lines
                     lines.pop()
-                if not lines: # Ignore definitions without a docstring
-                    continue
                 outstr += "\n<dt id='" + header[0] + "'>\n<code class='noframe'>"
                 outstr += "<span class='macro-name'>" + header[0] + "</span>"
                 if header[1:]:
@@ -390,7 +388,11 @@ class CrossRefLister(CrossRef):
                     if entry.removal_version:
                         outstr += " Scheduled for removal in " + entry.removal_version + "."
                     outstr += "</em></p>\n"
-                outstr += interpret(lines, "macro-explanation")
+                if lines:
+                    outstr += interpret(lines, "macro-explanation")
+                else:
+                    # Warn in output about definitions without a docstring
+                    outstr += "<p class='macro-missing-docs'><em>No documentation available for this macro.</em></p>\n"
                 outstr += "</dd>\n"
         outstr += "</dl>\n"
         outstr += "<p class='toplink'>[ <a href='#content'>top</a> ]</p>\n"
