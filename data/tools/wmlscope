@@ -384,6 +384,12 @@ class CrossRefLister(CrossRef):
                     outstr += " <var class='macro-formals'>"+" ".join(header[1:])+"</var>"
                 outstr += "\n</code></dt>\n"
                 outstr += "<dd>\n"
+                if entry.deprecated:
+                    outstr += "<p class='macro-deprecated'><strong>Deprecated macro.</strong>"
+                    outstr += " <em>Deprecation level: " + entry.deprecation_level + "."
+                    if entry.removal_version:
+                        outstr += " Scheduled for removal in " + entry.removal_version + "."
+                    outstr += "</em></p>\n"
                 outstr += interpret(lines, "macro-explanation")
                 outstr += "</dd>\n"
         outstr += "</dl>\n"
