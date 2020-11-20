@@ -32,5 +32,5 @@ docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f utils/dockerbuilds/travis/Doc
 docker run --cap-add=ALL --privileged \
     --volume ~/build-cache:/home/wesnoth-travis/build \
     --env BRANCH --env IMAGE --env NLS --env TOOL --env CC --env CXX \
-    --env CFG --env LTO \
+    --env CXX_STD --env CFG --env LTO \
     wesnoth-repo:"$IMAGE"-"$BRANCH" ./.github/workflows/ci-scripts/docker.sh

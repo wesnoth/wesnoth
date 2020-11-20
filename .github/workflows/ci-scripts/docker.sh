@@ -1,5 +1,16 @@
 #!/bin/bash
 
+echo "Using docker:"
+echo "BRANCH: $BRANCH"
+echo "IMAGE: $IMAGE"
+echo "NLS: $NLS"
+echo "TOOL: $TOOL"
+echo "CC: $CC"
+echo "CXX: $CXX"
+echo "CXXSTD: $CXXSTD"
+echo "CFG: $CFG"
+echo "LTO: $LTO"
+
 scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
     ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
     extra_flags_config="-pipe" strict=true forum_user_handler=true \
