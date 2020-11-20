@@ -43,4 +43,42 @@ jobs:
           key: linux-02-master
 
       - name: Ubuntu 20.04
-        run: ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false scons gcc g++ 14 release false
+        run: ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false scons clang clang++ 14 debug false
+
+  linux-03-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "true"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-03-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-03-master
+
+      - name: Ubuntu 20.04
+        run: ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false cmake clang clang++ 14 release false
+
+  linux-04-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "true"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-04-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-04-master
+
+      - name: Ubuntu 20.04
+        run: ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false cmake gcc g++ 14 debug false

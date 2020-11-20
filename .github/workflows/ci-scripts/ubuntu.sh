@@ -9,6 +9,7 @@ export CXX="$6"
 export CXX_STD="$7"
 export CFG="$8"
 export LTO="$9"
+export CACHE_DIR="/home/wesnoth-travis/build"
 
 echo "Using linux:"
 echo "BRANCH: $BRANCH"
@@ -20,6 +21,7 @@ echo "CXX: $CXX"
 echo "CXXSTD: $CXXSTD"
 echo "CFG: $CFG"
 echo "LTO: $LTO"
+echo "CACHE_DIR: $CACHE_DIR"
 
 echo FROM wesnoth/wesnoth:"$IMAGE"-"$BRANCH" > utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
 echo COPY ./ /home/wesnoth-travis/ >> utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
@@ -28,7 +30,7 @@ echo WORKDIR /home/wesnoth-travis >> utils/dockerbuilds/travis/Dockerfile-travis
 docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH" .
 
 docker run --cap-add=ALL --privileged \
-    --volume ~/build-cache:/home/wesnoth-travis/build \
+    --volume ~/build-cache:"$CACHE_DIR" \
     --env BRANCH --env IMAGE --env NLS --env TOOL --env CC --env CXX \
-    --env CXX_STD --env CFG --env LTO \
+    --env CXX_STD --env CFG --env LTO --env CACHE_DIR \
     wesnoth-repo:"$IMAGE"-"$BRANCH" ./.github/workflows/ci-scripts/docker.sh
