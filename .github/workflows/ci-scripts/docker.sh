@@ -39,13 +39,13 @@ checkindent() {
 EXIT_VAL=-1
 
 if [ "$NLS" == "only" ]; then
-
+    echo "TODO"
 elif [ "$IMAGE" == "flatpak" ]; then
-
+    echo "TODO"
 elif [ "$IMAGE" == "mingw" ]; then
-
+    echo "TODO"
 elif [ "$IMAGE" == "steamrt" ]; then
-
+    echo "TODO"
 else
     if [ "$TOOL" == "cmake" ]; then
         export CCACHE_MAXSIZE=3000M
