@@ -5,8 +5,6 @@ scons wesnoth wesnothd campaignd boost_unit_tests build=release \
     extra_flags_config="-pipe" strict=true forum_user_handler=true \
     nls=false enable_lto=true sanitize="" jobs=2 --debug=time
 
-ls -Al
-
 # set the fake display for unit tests
 export DISPLAY=:99.0
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24

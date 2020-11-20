@@ -15,6 +15,13 @@ jobs:
         with:
           submodules: "true"
 
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-01-cache
+        with:
+          path: ~/build-cache
+          key: linux-01
+
       - name: Ubuntu 20.04 - scons, gcc, LTO, unit tests
-        run: |
-          ./.github/workflows/ci-scripts/ubuntu.sh
+        run: ./.github/workflows/ci-scripts/ubuntu.sh
