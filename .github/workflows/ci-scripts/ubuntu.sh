@@ -6,7 +6,7 @@ export NLS="$3"
 export TOOL="$4"
 export CC="$5"
 export CXX="$6"
-export CXXSTD="$7"
+export CXX_STD="$7"
 export CFG="$8"
 export LTO="$9"
 
