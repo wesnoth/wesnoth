@@ -7,6 +7,17 @@ scons wesnoth wesnothd campaignd boost_unit_tests build=release \
 
 ls -Al
 
+# set the fake display for unit tests
+export DISPLAY=:99.0
+/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
+
+red=$(tput setaf 1)
+reset=$(tput sgr0)
+# print given message in red
+error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
+# print given message and exit
+die() { error "$*"; exit 1; }
+
 # print given message ($1) and execute given command; sets EXIT_VAL on failure
 execute() {
     local message=$1; shift
@@ -26,7 +37,7 @@ checkindent() {
 
 execute "WML validation" ./utils/travis/schema_validation.sh
 execute "WML indentation check" checkindent
-execute "WML tests" ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
+execute "WML tests" ./run_wml_tests -g -v -c -t 20
 execute "Play tests" ./utils/travis/play_test_executor.sh
 execute "Boost unit tests" ./utils/travis/test_executor.sh
 

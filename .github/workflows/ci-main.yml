@@ -6,22 +6,15 @@ on:
   pull_request:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  linux-01:
     runs-on: ubuntu-20.04
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
           submodules: "true"
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Ubuntu 20.04 - scons, gcc, LTO, unit tests
         run: |
-          echo "Ubuntu CI test"
           ./.github/workflows/ci-scripts/ubuntu.sh
