@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  linux-01:
+  linux-01-master:
     runs-on: ubuntu-20.04
 
     steps:
@@ -18,10 +18,29 @@ jobs:
       - name: Cache object files
         uses: actions/cache@v2
         env:
-          cache-name: linux-01-cache
+          cache-name: linux-01-cache-master
         with:
           path: ~/build-cache
-          key: linux-01
+          key: linux-01-master
 
       - name: Ubuntu 20.04 - scons, gcc, LTO, unit tests
         run: ./.github/workflows/ci-scripts/ubuntu.sh
+
+  linux-02-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "true"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-02-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-02-master
+
+      - name: failure test
+        run: exit 1
