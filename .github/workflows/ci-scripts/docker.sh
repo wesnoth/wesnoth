@@ -80,6 +80,14 @@ if [ $EXIT_VAL != 0 ]; then
     exit $EXIT_VAL
 fi
 
+# rename debug executables to what the tests expect
+if [ "$CFG" == "debug" ]; then
+    mv wesnoth-debug wesnoth
+    mv wesnothd-debug wesnothd
+    mv campaignd-debug campaignd
+    mv boost_unit_tests-debug boost_unit_tests
+fi
+
 execute "WML validation" ./utils/travis/schema_validation.sh
 execute "WML indentation check" checkindent
 execute "WML tests" ./run_wml_tests -g -v -c -t 20
