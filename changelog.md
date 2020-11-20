@@ -27,6 +27,12 @@
  ### Units
    * Decreased Icemonax's advancement XP requirement from 26 to 25 to match other dead-end L0 units.
    * Portrait and animation graphics for some of the new Wesnoth Fauna
+   * Balancing:
+     * Dune Rider xp changed from 42 to 47.
+     * Sunderer line defense on hills changed from 60% to 50%.
+     * Scorcher gold cost changed from 23 to 25.
+     * Dragoon gold cost changed from 27 to 28.
+     * Elvish Rider gold cost changed from 32 to 28.
  ### User interface
    * Added the installable/upgradable version selection to the add-ons manager via a dropdown list
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
