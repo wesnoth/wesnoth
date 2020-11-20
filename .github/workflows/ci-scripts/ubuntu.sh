@@ -1,14 +1,14 @@
 #!/bin/bash
 
-BRANCH="$1"
-IMAGE="$2"
-NLS="$3"
-TOOL="$4"
-CC="$5"
-CXX="$6"
-CXXSTD="$7"
-CFG="$8"
-LTO="$9"
+export BRANCH="$1"
+export IMAGE="$2"
+export NLS="$3"
+export TOOL="$4"
+export CC="$5"
+export CXX="$6"
+export CXXSTD="$7"
+export CFG="$8"
+export LTO="$9"
 
 echo "Using linux:"
 echo "BRANCH: $BRANCH"
@@ -20,8 +20,6 @@ echo "CXX: $CXX"
 echo "CXXSTD: $CXXSTD"
 echo "CFG: $CFG"
 echo "LTO: $LTO"
-
-date
 
 echo FROM wesnoth/wesnoth:"$IMAGE"-"$BRANCH" > utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
 echo COPY ./ /home/wesnoth-travis/ >> utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"

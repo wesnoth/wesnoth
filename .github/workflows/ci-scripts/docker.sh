@@ -20,11 +20,7 @@ scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
 export DISPLAY=:99.0
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
 
-red=$(tput setaf 1)
-reset=$(tput sgr0)
-# print given message in red
-error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
-# print given message and exit
+error() { printf '%s\n' "$*"; }
 die() { error "$*"; exit 1; }
 
 # print given message ($1) and execute given command; sets EXIT_VAL on failure
