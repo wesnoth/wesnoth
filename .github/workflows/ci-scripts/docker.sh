@@ -1,9 +1,9 @@
 #!/bin/bash
 
-scons wesnoth wesnothd campaignd boost_unit_tests build=release \
-    ctool=gcc cxxtool=g++ cxx_std=17 \
+scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
+    ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
     extra_flags_config="-pipe" strict=true forum_user_handler=true \
-    nls=false enable_lto=true sanitize="" jobs=2 --debug=time
+    nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time
 
 # set the fake display for unit tests
 export DISPLAY=:99.0
@@ -33,6 +33,8 @@ checkindent() {
     git diff-index --quiet HEAD
 }
 
+EXIT_VAL=0
+
 execute "WML validation" ./utils/travis/schema_validation.sh
 execute "WML indentation check" checkindent
 execute "WML tests" ./run_wml_tests -g -v -c -t 20
@@ -43,3 +45,5 @@ if [ -f "errors.log" ]; then
     error $'\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n'
     cat errors.log
 fi
+
+exit $EXIT_VAL

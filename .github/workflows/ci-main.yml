@@ -23,8 +23,8 @@ jobs:
           path: ~/build-cache
           key: linux-01-master
 
-      - name: Ubuntu 20.04 - scons, gcc, LTO, unit tests
-        run: ./.github/workflows/ci-scripts/ubuntu.sh
+      - name: Ubuntu 20.04
+        run: ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false scons gcc g++ 17 release true
 
   linux-02-master:
     runs-on: ubuntu-20.04
@@ -42,5 +42,5 @@ jobs:
           path: ~/build-cache
           key: linux-02-master
 
-      - name: failure test
-        run: exit 1
+      - name: Ubuntu 20.04
+        run: ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false scons gcc g++ 14 release false
