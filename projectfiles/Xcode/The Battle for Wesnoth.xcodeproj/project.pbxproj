@@ -84,6 +84,16 @@
 		464C03752283695A007D2741 /* libSDL2_ttf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */; };
 		464C03762283695D007D2741 /* libSDL2_mixer-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */; };
 		464C037722836961007D2741 /* libSDL2_image-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0362228361B5007D2741 /* libSDL2_image-2.0.0.dylib */; };
+		46515C302569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */; };
+		46515C312569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */; };
+		46515C322569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */; };
+		46515C332569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */; };
+		46515C342569CE0B00084CE2 /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */; };
+		46515C352569CE0B00084CE2 /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */; };
+		46515C362569CE0B00084CE2 /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */; };
+		46515C372569CE0B00084CE2 /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */; };
+		46515C402569CE2900084CE2 /* libssl.1.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46515C452569CE3400084CE2 /* libcrypto.1.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4664B9441F462ED9009E4881 /* irdya_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */; };
 		46685C89219D518B0009CFFE /* preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46685C6E219D51870009CFFE /* preprocessor.cpp */; };
 		46685C8A219D518B0009CFFE /* preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46685C6E219D51870009CFFE /* preprocessor.cpp */; };
@@ -1377,6 +1387,7 @@
 				91B6220C1B76C0A600B00E0F /* libffi.7.dylib in Copy Frameworks */,
 				91B6220D1B76C0A600B00E0F /* libfontconfig.1.dylib in Copy Frameworks */,
 				91B6220E1B76C0A600B00E0F /* libfreetype.6.dylib in Copy Frameworks */,
+				46515C402569CE2900084CE2 /* libssl.1.1.dylib in Copy Frameworks */,
 				91B6220F1B76C0A600B00E0F /* libglib-2.0.0.dylib in Copy Frameworks */,
 				46406DEA230DA7180069492E /* libSDL2_image-2.0.0.dylib in Copy Frameworks */,
 				46406DEF230DA7190069492E /* libvorbis.0.dylib in Copy Frameworks */,
@@ -1398,6 +1409,7 @@
 				91B6221A1B76C0A600B00E0F /* libpixman-1.0.dylib in Copy Frameworks */,
 				46F92F252174FF7500602C1C /* libboost_thread-mt-x64.dylib in Copy Frameworks */,
 				46406DEE230DA7180069492E /* libSDL2-2.0.0.dylib in Copy Frameworks */,
+				46515C452569CE3400084CE2 /* libcrypto.1.1.dylib in Copy Frameworks */,
 				46406DED230DA7180069492E /* libSDL2_ttf-2.0.0.dylib in Copy Frameworks */,
 				91B6221B1B76C0A600B00E0F /* libpng16.16.dylib in Copy Frameworks */,
 				4674EE9D24CD1E64007C18CE /* libfribidi.0.dylib in Copy Frameworks */,
@@ -1478,6 +1490,8 @@
 		464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_mixer-2.0.0.dylib"; path = "lib/libSDL2_mixer-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0369228361B7007D2741 /* libvorbisfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisfile.dylib; path = lib/libvorbisfile.dylib; sourceTree = "<group>"; };
+		46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.1.dylib; path = "lib/libssl.1.1.dylib"; sourceTree = "<group>"; };
+		46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = "lib/libcrypto.1.1.dylib"; sourceTree = "<group>"; };
 		46685C6B219D51870009CFFE /* utf8_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utf8_exception.hpp; sourceTree = "<group>"; };
 		46685C6C219D51870009CFFE /* ucs4_iterator_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ucs4_iterator_base.hpp; sourceTree = "<group>"; };
 		46685C6D219D51870009CFFE /* validator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = validator.hpp; sourceTree = "<group>"; };
@@ -2784,6 +2798,7 @@
 				464C036B228361B7007D2741 /* libogg.0.dylib in Frameworks */,
 				91B622211B76C0F400B00E0F /* libboost_random-mt-x64.dylib in Frameworks */,
 				91B622221B76C0F400B00E0F /* libboost_regex-mt-x64.dylib in Frameworks */,
+				46515C302569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */,
 				91B622231B76C0F400B00E0F /* libboost_system-mt-x64.dylib in Frameworks */,
 				EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */,
 				B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */,
@@ -2798,6 +2813,7 @@
 				EC5C244118EF07B4001FA499 /* libgobject-2.0.0.dylib in Frameworks */,
 				464C036D228361B7007D2741 /* libSDL2_net-2.0.0.dylib in Frameworks */,
 				EC5C244218EF07B4001FA499 /* libgraphite2.3.dylib in Frameworks */,
+				46515C342569CE0B00084CE2 /* libcrypto.1.1.dylib in Frameworks */,
 				46F92F232174FF6700602C1C /* libboost_thread-mt-x64.dylib in Frameworks */,
 				EC5C244318EF07B4001FA499 /* libgthread-2.0.0.dylib in Frameworks */,
 				4674EE9C24CD1E64007C18CE /* libfribidi.0.dylib in Frameworks */,
@@ -2831,12 +2847,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				46D60168255B028200E072F0 /* libboost_program_options-mt-x64.dylib in Frameworks */,
+				46515C332569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */,
 				464C03722283622A007D2741 /* libSDL2-2.0.0.dylib in Frameworks */,
 				91C548C31D8866ED00FE6A7B /* CoreFoundation.framework in Frameworks */,
 				91C548E21D886E9000FE6A7B /* libboost_system-mt-x64.dylib in Frameworks */,
 				91C548E81D886F1E00FE6A7B /* libboost_locale-mt-x64.dylib in Frameworks */,
 				91C548ED1D886FC500FE6A7B /* libboost_filesystem-mt-x64.dylib in Frameworks */,
 				91C548EE1D886FCE00FE6A7B /* libboost_iostreams-mt-x64.dylib in Frameworks */,
+				46515C372569CE0B00084CE2 /* libcrypto.1.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2852,6 +2870,7 @@
 				B597C51E0FACD56600CE81F5 /* libpixman-1.0.dylib in Frameworks */,
 				91E355631CACA1CE00774252 /* libboost_unit_test_framework-mt-x64.dylib in Frameworks */,
 				91A215281CAD699200927AEA /* libfontconfig.1.dylib in Frameworks */,
+				46515C362569CE0B00084CE2 /* libcrypto.1.1.dylib in Frameworks */,
 				4674EEA224CD208D007C18CE /* libgio-2.0.0.dylib in Frameworks */,
 				91A215DB1CAD970800927AEA /* libboost_program_options-mt-x64.dylib in Frameworks */,
 				91A215DC1CAD970800927AEA /* libboost_regex-mt-x64.dylib in Frameworks */,
@@ -2873,6 +2892,7 @@
 				916719071CADAC0D00B055A9 /* libboost_random-mt-x64.dylib in Frameworks */,
 				4674EE9E24CD1EC1007C18CE /* libfribidi.0.dylib in Frameworks */,
 				91C554691D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
+				46515C322569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2881,12 +2901,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */,
+				46515C312569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */,
 				ECF9D44119F4042700E6C9D9 /* libboost_filesystem-mt-x64.dylib in Frameworks */,
 				F4EF0D4D13AD4D53003C701D /* libboost_iostreams-mt-x64.dylib in Frameworks */,
 				EC4DF45B19FEA84A000EC086 /* libboost_locale-mt-x64.dylib in Frameworks */,
 				EC64D7681A085F4A0092EF75 /* libboost_random-mt-x64.dylib in Frameworks */,
 				ECF9D44219F4050E00E6C9D9 /* libboost_system-mt-x64.dylib in Frameworks */,
 				91C554681D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
+				46515C352569CE0B00084CE2 /* libcrypto.1.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3255,6 +3277,7 @@
 				91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt-x64.dylib */,
 				EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */,
 				B513B2270ED36BFB0006E551 /* libcairo.2.dylib */,
+				46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */,
 				EC5C242318EF07B4001FA499 /* libexpat.1.dylib */,
 				EC5C242418EF07B4001FA499 /* libffi.7.dylib */,
 				EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */,
@@ -3282,6 +3305,7 @@
 				464C0365228361B6007D2741 /* libSDL2_net-2.0.0.dylib */,
 				464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */,
 				464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */,
+				46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */,
 				464C0364228361B6007D2741 /* libvorbis.0.dylib */,
 				464C0369228361B7007D2741 /* libvorbisfile.dylib */,
 				EC5C243A18EF07B4001FA499 /* libz.1.dylib */,
