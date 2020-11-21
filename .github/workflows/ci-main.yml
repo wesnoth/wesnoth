@@ -306,3 +306,25 @@ jobs:
           export CFG=Release
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
+
+  macos-02-master:
+    runs-on: macos-10.15
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: macos-02-cache-master
+        with:
+          path: ~/build-cache
+          key: macos-02-master
+
+      - name: macOS Debug
+        run: |
+          export CFG=Debug
+          export CACHE_DIR=~/build-cache
+          ./.github/workflows/ci-scripts/macos.sh
