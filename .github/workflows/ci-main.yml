@@ -82,3 +82,22 @@ jobs:
 
       - name: Ubuntu 20.04
         run: ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false cmake gcc g++ 14 debug false
+
+  linux-04-master:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-05-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-05-master
+
+      - name: Ubuntu 18.04
+        run: ./.github/workflows/ci-scripts/ubuntu.sh master 1804 false scons gcc g++ 14 release false
