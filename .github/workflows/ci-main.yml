@@ -83,7 +83,7 @@ jobs:
       - name: Ubuntu 20.04
         run: ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false cmake gcc g++ 14 debug false
 
-  linux-04-master:
+  linux-05-master:
     runs-on: ubuntu-18.04
 
     steps:
