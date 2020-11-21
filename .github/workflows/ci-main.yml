@@ -328,3 +328,33 @@ jobs:
           export CFG=Debug
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
+
+  windows-01-master:
+    runs-on: windows-2019
+
+    defaults:
+      run:
+        shell: wsl-bash {0}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: windows-01-cache-master
+        with:
+          path: ~/build-cache
+          key: windows-01-master
+      
+      - uses: Vampire/setup-wsl@v1
+        with:
+          distribution: Ubuntu-20.04
+
+      - name: Windows Release
+        run: |
+          export CFG=Release
+          export CACHE_DIR=~/build-cache
+          ./.github/workflows/ci-scripts/windows.sh
