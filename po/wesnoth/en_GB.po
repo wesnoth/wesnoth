@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 01:40-0300\n"
-"PO-Revision-Date: 2020-10-21 14:41+1100\n"
+"PO-Revision-Date: 2020-11-21 20:05+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -5605,10 +5605,8 @@ msgstr ""
 "the same string."
 
 #: src/addon/client.cpp:183
-#, fuzzy
-#| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
-msgstr "Requesting distribution terms..."
+msgstr "Requesting file index..."
 
 #: src/addon/client.cpp:199
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
@@ -5851,39 +5849,36 @@ msgstr "Could not find an add-on matching id $addon_id on the add-on server."
 
 #: src/addon/validation.cpp:448
 msgid "Success."
-msgstr ""
+msgstr "Success."
 
 #: src/addon/validation.cpp:452
 msgid "Incorrect add-on passphrase."
-msgstr ""
+msgstr "Incorrect add-on passphrase."
 
 #: src/addon/validation.cpp:456
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr ""
+"Upload denied. Please contact the server administration for assistance."
 
 #: src/addon/validation.cpp:460
 msgid "Attempted to upload an update pack for a non-existent add-on."
-msgstr ""
+msgstr "Attempted to upload an update pack for a non-existent add-on."
 
 #: src/addon/validation.cpp:469
 msgid "No add-on data was supplied by the client."
-msgstr ""
+msgstr "No add-on data was supplied by the client."
 
 #: src/addon/validation.cpp:473
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Invalid upload pack."
-msgstr "Invalid location"
+msgstr "Invalid upload pack."
 
 #: src/addon/validation.cpp:477
-#, fuzzy
-#| msgid "Invalid tag name"
 msgid "Invalid add-on name."
-msgstr "Invalid tag name"
+msgstr "Invalid add-on name."
 
 #: src/addon/validation.cpp:481
 msgid "Formatting character in add-on name."
-msgstr ""
+msgstr "Formatting character in add-on name."
 
 #: src/addon/validation.cpp:485
 msgid ""
@@ -5897,90 +5892,87 @@ msgid ""
 "Additionally, names may not be longer than 255 characters, contain '..', or "
 "end with '.'."
 msgstr ""
+"The add-on contains files or directories with illegal names.\n"
+"\n"
+"Names containing white-space, control characters, or any of the following "
+"symbols are not allowed:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Additionally, names may not be longer than 255 characters, contain '..', or "
+"end with '.'."
 
 #: src/addon/validation.cpp:495
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> contains files or directories with case "
-#| "conflicts. File or directory names may not be differently-cased versions "
-#| "of the same string."
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
 "Names in the same directory may not be differently-cased versions of each "
 "other."
 msgstr ""
-"The add-on <i>$addon_title</i> contains files or directories with case "
-"conflicts. File or directory names may not be differently-cased versions of "
-"the same string."
+"The add-on contains files or directories with case conflicts.\n"
+"\n"
+"Names in the same directory may not be differently-cased versions of each "
+"other."
 
 #: src/addon/validation.cpp:501
 msgid "The add-on name contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "The add-on name contains an invalid UTF-8 sequence."
 
 #: src/addon/validation.cpp:510
-#, fuzzy
-#| msgid "Loading title screen"
 msgid "No add-on title specified."
-msgstr "Loading title screen"
+msgstr "No add-on title specified."
 
 #: src/addon/validation.cpp:514
 msgid "No add-on author/maintainer name specified."
-msgstr ""
+msgstr "No add-on author/maintainer name specified."
 
 #: src/addon/validation.cpp:518
 msgid "No add-on version specified."
-msgstr ""
+msgstr "No add-on version specified."
 
 #: src/addon/validation.cpp:522
-#, fuzzy
-#| msgid "No description available."
 msgid "No add-on description specified."
-msgstr "No description available."
+msgstr "No add-on description specified."
 
 #: src/addon/validation.cpp:526
 msgid "No add-on author/maintainer email specified."
-msgstr ""
+msgstr "No add-on author/maintainer e-mail specified."
 
 #: src/addon/validation.cpp:530
 msgid "Missing passphrase."
-msgstr ""
+msgstr "Missing passphrase."
 
 #: src/addon/validation.cpp:534
 msgid "Formatting character in add-on title."
-msgstr ""
+msgstr "Formatting character in add-on title."
 
 #: src/addon/validation.cpp:538
-#, fuzzy
-#| msgid "Invalid unit type"
 msgid "Invalid or unspecified add-on type."
-msgstr "Invalid unit type"
+msgstr "Invalid or unspecified add-on type."
 
 #: src/addon/validation.cpp:542
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "The add-on publish information contains an invalid UTF-8 sequence."
 
 #: src/addon/validation.cpp:551
 msgid "Unspecified server error."
-msgstr ""
+msgstr "Unspecified server error."
 
 #: src/addon/validation.cpp:555
 msgid "Server is in read-only mode."
-msgstr ""
+msgstr "Server is in read-only mode."
 
 #: src/addon/validation.cpp:559
-#, fuzzy
-#| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
-msgstr "You have no add-ons installed."
+msgstr "Corrupted server add-ons list."
 
 #: src/addon/validation.cpp:563
 msgid "Empty add-on version list on the server."
-msgstr ""
+msgstr "Empty add-on version list on the server."
 
 #: src/addon/validation.cpp:573
 msgid "Unspecified validation failure."
-msgstr ""
+msgstr "Unspecified validation failure."
 
 #: src/chat_command_handler.cpp:111
 msgid "Added to ignore list: $nick"

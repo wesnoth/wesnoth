@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 01:40-0300\n"
-"PO-Revision-Date: 2020-10-21 14:49+1100\n"
+"PO-Revision-Date: 2020-11-21 20:15+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -660,20 +660,6 @@ msgstr "Named Areas"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:160
-#, fuzzy
-#| msgid ""
-#| "This tool can create [time_area]s, unlike the name suggests these do not "
-#| "need to have a specific time zone assigned to them.\n"
-#| "    [time_area]s are sets of tiles which can be addressed during scenario "
-#| "scripting by a their id. [time_area]s can optionally have a custom\n"
-#| "    time zone assigned to them. The simplest way to address a [time_area] "
-#| "via scenario scripting is the `area=` attribute in standard location "
-#| "filters.\n"
-#| "\n"
-#| "This tool can be used to abstract between the implementation of an effect "
-#| "and the map specific setting.\n"
-#| "This is a very powerful mechanism since it allows generic scenario code "
-#| "to work with different maps providing the needed named locations."
 msgid ""
 "This tool can create [time_area]s, unlike the name suggests these do not "
 "need to have a specific time zone assigned to them.\n"
@@ -875,27 +861,6 @@ msgstr "Editor Tools"
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:242
-#, fuzzy
-#| msgid ""
-#| "The editor provides several tools for editing your maps and scenarios. At "
-#| "all times, one of the editor tools is active. The active tool’s context "
-#| "determines the content of the editor palette and context menu.\n"
-#| "\n"
-#| "These tools are available in both terrain-only mode and scenario mode:\n"
-#| "\n"
-#| "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_fill' text='Fill Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_starting' text='Starting Locations Tool'</ref>\n"
-#| "\n"
-#| "These tools are only available in scenario mode:\n"
-#| "\n"
-#| "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
 msgid ""
 "The editor provides several tools for editing your maps and scenarios. At "
 "all times, one of the editor tools is active. The active tool’s context "
@@ -932,7 +897,6 @@ msgstr ""
 "\n"
 "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
 "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-"• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
 "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
 "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
 
@@ -2556,16 +2520,8 @@ msgstr ""
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Multiplayer Eras and Factions'</header>"
+msgstr "<header>text='Multiplayer and undo'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -2577,6 +2533,12 @@ msgid ""
 "move. Chat messages and map labels are sent immediately, however they don’t "
 "cause the undoable moves to be sent."
 msgstr ""
+"In multiplayer games, moves that have been sent to the network can’t be "
+"undone; the game delays sending data to try to preserve your undo ability. "
+"When discussing with teammates, remember that the other players are usually "
+"looking at a snapshot from the time of the last combat or fog-revealing "
+"move. Chat messages and map labels are sent immediately, however they don’t "
+"cause the reversible moves to be sent."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
@@ -3167,7 +3129,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:382
 msgid "Orbs and ellipses"
-msgstr ""
+msgstr "Orbs and ellipses"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
@@ -3175,27 +3137,28 @@ msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
 msgstr ""
+"There are coloured indicators above the energy bars of some units, "
+"consisting of a coloured orb (and sometimes a <ref>dst='crowns' "
+"text='crown'</ref>)."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:387
 msgid "The orbs show whether the unit can move, and the standard colors are:"
-msgstr ""
+msgstr "The orbs show whether the unit can move, and the standard colours are:"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:388
-#, fuzzy
-#| msgid " green if it hasn’t moved this turn,"
 msgid "• <bold>text='Green'</bold> if it hasn’t moved this turn."
-msgstr " green if it hasn’t moved this turn,"
+msgstr "• <bold>text='Green'</bold> if it hasn’t moved this turn."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:389
-#, fuzzy
-#| msgid " yellow if it has moved, but could still move further or attack, or"
 msgid ""
 "• <bold>text='Yellow'</bold> if it has moved, but could still move further "
 "or attack."
-msgstr " yellow if it has moved, but could still move further or attack, or"
+msgstr ""
+"• <bold>text='Yellow'</bold> if it has moved, but could still move further "
+"or attack."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:390
@@ -3205,6 +3168,10 @@ msgid ""
 "in the middle of a multi-turn move (has been told to move further than it "
 "can in the current turn)."
 msgstr ""
+"• <bold>text='Red'</bold> if it can no longer move or attack.\n"
+"    • Red is also used after the ‘end unit turn’ command, and when a unit is "
+"in the middle of a multi-turn move (has been told to move further than it "
+"can in the current turn)."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:392
@@ -3214,6 +3181,10 @@ msgid ""
 "moves, and the corresponding orb changes, are delayed as explained in "
 "<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>."
 msgstr ""
+"• <bold>text='Blue'</bold> for allied units. During the ally’s own turn, "
+"their units will be shown with the green/yellow/red colours; however their "
+"moves, and the corresponding orb changes, are delayed as explained in "
+"<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:393
@@ -3221,19 +3192,13 @@ msgid ""
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
+"• Enemy units normally don’t have orbs, however these can be enabled in the "
+"advanced preference “Customize orb colours”."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:395
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Cores'</header>"
 msgid "<header>text='Ellipses'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Cores'</header>"
+msgstr "<header>text='Ellipses'</header>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:398
@@ -3241,6 +3206,8 @@ msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
 msgstr ""
+"A team-coloured shape is drawn on the ground under each unit. This is called "
+"the “ellipse”, although some units’ ellipses are not elliptical."
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -3255,11 +3222,19 @@ msgid ""
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
 "a ZoC, these units have a broken version of the seven-pointed star."
 msgstr ""
+"• Most units have a circular ellipse.\n"
+"• Units that can recruit have a seven-pointed star.\n"
+"• <ref>dst='crowns' text='Hero units'</ref> have a smaller variant of the "
+"seven-pointed star, these units can’t recruit.\n"
+"• Units without a <ref>dst='movement' text='zone of control'</ref> have a "
+"broken outline version of the shape.\n"
+"• Some campaigns start with a level zero leader. Able to recruit but lacking "
+"a ZoC, these units have a broken outline version of the seven-pointed star."
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:420
 msgid "Crowns and loyal markers"
-msgstr ""
+msgstr "Crowns and loyal markers"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:421
@@ -3268,6 +3243,9 @@ msgid ""
 "text='orb'</ref>, and a corresponding shape to their <ref>dst='orbs' "
 "text='ellipses'</ref>:"
 msgstr ""
+"Some units have an additional marker superimposed on their <ref>dst='orbs' "
+"text='orb'</ref>, and a corresponding shape to their <ref>dst='orbs' "
+"text='ellipses'</ref>:"
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
@@ -3293,6 +3271,25 @@ msgid ""
 "campaign, assuming it doesn’t end immediately.\n"
 "• These units will never occur as random recruits."
 msgstr ""
+"• Leaders are shown with a <bold>text='gold crown'</bold>.\n"
+"• Heroes have a <bold>text='blueish-silver crown'</bold>.\n"
+"• Expendable leaders are shown with a <bold>text='silver crown'</bold>.\n"
+"• <ref>dst='traits_loyal' text='Loyal units'</ref> have the "
+"<bold>text='loyal icon'</bold>.\n"
+"\n"
+"Of these categories, only leaders are built into the basic game rules. The "
+"others are found in campaigns, and are characters that form part of the "
+"narration. The exact rules for them are set by their campaign, which might "
+"deviate from these standard expectations about them:\n"
+"\n"
+"• The death of any hero leads to immediate defeat.\n"
+"• The death of an expendable leader doesn’t lead to immediate defeat, even "
+"though they can recruit.\n"
+"• All of these units have the main advantage of the loyal trait, that they "
+"cost no upkeep.\n"
+"• Losing any of these units causes a disadvantage for the remainder of the "
+"campaign, assuming it doesn’t end immediately.\n"
+"• These units will never occur as random recruits."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:454
@@ -4268,16 +4265,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:675
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Switch a side between human and AI control. The second parameter can be "
-#| "‘off’ to bring the side under human control, ‘on’ to watch the AI make "
-#| "its moves, or ‘full’ to make the AI’s turn behave similarily to another "
-#| "player‘s turn. If no second parameter is supplied, it toggles between "
-#| "‘on’ and ‘off’. Defaults to toggling the currently active side if no "
-#| "parameters are supplied.\n"
-#| "\n"
 msgid ""
 "\n"
 "Switch a side between human and AI control. The second parameter can be "

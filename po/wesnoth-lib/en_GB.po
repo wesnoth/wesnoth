@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 01:40-0300\n"
-"PO-Revision-Date: 2020-10-21 14:51+1100\n"
+"PO-Revision-Date: 2020-11-21 20:18+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -417,10 +417,8 @@ msgstr "Lit Brazier"
 
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:490
-#, fuzzy
-#| msgid "Fence"
 msgid "Iron Fence"
-msgstr "Fence"
+msgstr "Iron Fence"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:499
@@ -2356,10 +2354,8 @@ msgstr "Version:"
 
 #. [menu_button]: id=version_filter
 #: data/gui/window/addon_manager.cfg:133
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select the add-on version"
-msgstr "Delete add-on from server"
+msgstr "Select the add-on version"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
@@ -6051,7 +6047,7 @@ msgstr "Terms"
 
 #: src/gui/dialogs/addon/manager.cpp:806
 msgid "The add-on was rejected by the server:"
-msgstr ""
+msgstr "The add-on was rejected by the server:"
 
 #: src/gui/dialogs/addon/manager.cpp:821 src/gui/dialogs/addon/manager.cpp:848
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:506
@@ -6871,19 +6867,15 @@ msgstr "whisper to $receiver"
 
 #: src/gui/widgets/chatbox.cpp:388
 msgid "Joined <i>$name</i>"
-msgstr ""
+msgstr "Joined <i>$name</i>"
 
 #: src/gui/widgets/chatbox.cpp:394
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
-"Whisper session with <i>‘$name’</i> started. If you do not want to receive "
-"messages from this user, type <i>/ignore $name</i>"
+"Started private message with <i>$name</i>. If you do not want to receive "
+"messages from this player, type <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:633
 msgid "$player has entered the room"
@@ -7523,10 +7515,8 @@ msgid "Item Tool"
 msgstr "Item Tool"
 
 #: src/hotkey/hotkey_command.cpp:198
-#, fuzzy
-#| msgid "Left mouse button sets or drags a label, right clears."
 msgid "Left mouse button sets a new item."
-msgstr "Left mouse button sets or drags a label, right clears."
+msgstr "Left mouse button sets a new item."
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid ""
