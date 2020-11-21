@@ -357,4 +357,7 @@ jobs:
         run: |
           export CFG=Release
           export CACHE_DIR=~/build-cache
+          echo ~
+          echo $PWD
+          pwd
           ./.github/workflows/ci-scripts/windows.sh
