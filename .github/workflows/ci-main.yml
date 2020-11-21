@@ -5,6 +5,9 @@ name: CI
 #       gets it in a script, but that can't be done in the cache-name value
 #       also I assume the name can't have slashes in it
 
+# in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key
+# this will create a brand new cache and recompile the vcpkg dependencies from scratch
+
 on:
   push:
     branches: [ master ]
@@ -281,3 +284,25 @@ jobs:
           export LTO=false
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
+
+  macos-01-master:
+    runs-on: macos-10.15
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: macos-01-cache-master
+        with:
+          path: ~/build-cache
+          key: macos-01-master
+
+      - name: macOS Release
+        run: |
+          export CFG=release
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/macos.sh
