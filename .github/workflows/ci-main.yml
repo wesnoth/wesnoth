@@ -24,7 +24,11 @@ jobs:
           key: linux-01-master
 
       - name: Ubuntu 20.04
-        run: ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false scons gcc g++ 17 release true
+        run: |
+          export HI="hi"
+          echo "HI: $HI"
+          echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }'
+          ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false scons gcc g++ 17 release true
 
   linux-02-master:
     runs-on: ubuntu-20.04

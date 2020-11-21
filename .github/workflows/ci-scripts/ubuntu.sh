@@ -22,6 +22,7 @@ echo "CXX_STD: $CXX_STD"
 echo "CFG: $CFG"
 echo "LTO: $LTO"
 echo "CACHE_DIR: $CACHE_DIR"
+echo "HI: $HI"
 
 echo FROM wesnoth/wesnoth:"$IMAGE"-"$BRANCH" > utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
 echo COPY ./ /home/wesnoth-travis/ >> utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
