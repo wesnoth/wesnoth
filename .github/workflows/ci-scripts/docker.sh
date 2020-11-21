@@ -39,7 +39,23 @@ checkindent() {
 EXIT_VAL=-1
 
 if [ "$NLS" == "only" ]; then
-    echo "TODO"
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+
+    ./utils/travis/check_utf8.sh || exit 1
+    ./utils/travis/utf8_bom_dog.sh || exit 1
+
+    cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE
+    make update-po4a-man || exit 1
+    make update-po4a-manual || exit 1
+    make pot-update || exit 1
+    make mo-update || exit 1
+    make clean
+
+    scons translations build=release --debug=time nls=true jobs=2 || exit 1
+
+    scons pot-update update-po4a manual
 elif [ "$IMAGE" == "flatpak" ]; then
 # docker's --volume means the directory is on a separate filesystem
 # flatpak-builder doesn't support this

@@ -158,3 +158,22 @@ jobs:
 
       - name: Flatpak
         run: ./.github/workflows/ci-scripts/ubuntu.sh master flatpak false scons gcc g++ 14 release false
+
+  linux-09-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-09-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-09-master
+
+      - name: Translations
+        run: ./.github/workflows/ci-scripts/ubuntu.sh master 2004 only scons gcc g++ 14 release false
