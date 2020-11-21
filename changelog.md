@@ -1,4 +1,4 @@
-## Version 1.15.6+dev
+## Version 1.15.7
  ### Add-ons server
    * Added basic command line options.
    * Add-on validation status responses can now be translated by the client.
