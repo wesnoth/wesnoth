@@ -45,17 +45,27 @@ if [ "$NLS" == "only" ]; then
 
     ./utils/travis/check_utf8.sh || exit 1
     ./utils/travis/utf8_bom_dog.sh || exit 1
+    echo "Checked for invalod characters"
 
     cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE
     make update-po4a-man || exit 1
+    echo "Ran umake pdate-po4a-man"
     make update-po4a-manual || exit 1
+    echo "Ran make update-po4a-manual"
     make pot-update || exit 1
+    echo "Ran make pot-update"
     make mo-update || exit 1
+    echo "Ran make mo-update"
     make clean
 
     scons translations build=release --debug=time nls=true jobs=2 || exit 1
-
-    scons pot-update update-po4a manual
+    echo "Ran scons translations"
+    scons pot-update || exit 1
+    echo "Ran scons pot-update"
+    scons update-po4a || exit 1
+    echo "Ran scons update-po4a"
+    scons manual || exit 1
+    echo "Ran scons manual"
 elif [ "$IMAGE" == "flatpak" ]; then
 # docker's --volume means the directory is on a separate filesystem
 # flatpak-builder doesn't support this
