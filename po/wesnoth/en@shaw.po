@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 01:28-0300\n"
+"POT-Creation-Date: 2020-11-21 01:40-0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -3653,14 +3653,14 @@ msgstr "𐑦𐑥𐑐𐑨𐑕𐑩𐑚𐑩𐑤"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:448
 msgid "Fog"
 msgstr "𐑓𐑪𐑜"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
-#: src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:451
+#: src/game_initialization/lobby_data.cpp:454
 msgid "Shroud"
 msgstr "𐑖𐑮𐑬𐑛"
 
@@ -3985,7 +3985,7 @@ msgstr ""
 "Andagii.ttf,DejaVuSans.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:899
+#: data/lua/wml-tags.lua:900
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
@@ -4207,12 +4207,12 @@ msgid "female^aura of death ("
 msgstr "𐑣𐑧𐑤𐑔𐑦"
 
 #. [language]
-#: data/scenario-test.cfg:4395
+#: data/scenario-test.cfg:4396
 msgid "very long"
 msgstr ""
 
 #. [language]
-#: data/scenario-test.cfg:4396
+#: data/scenario-test.cfg:4397
 #, fuzzy
 msgid "electrical"
 msgstr "𐑥𐑩𐑒𐑨𐑯𐑦𐑒𐑩𐑤"
@@ -5394,11 +5394,9 @@ msgstr "𐑞 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑟 𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦�
 
 #: src/addon/client.cpp:183
 #, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
-msgid ""
-"Requesting the older version composition for the add-on <i>$addon_title</"
-"i>..."
-msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
+#| msgid "Requesting list of add-ons"
+msgid "Requesting file index..."
+msgstr "𐑮𐑦𐑒𐑢𐑧𐑕𐑑𐑦𐑙 𐑤𐑦𐑕𐑑 𐑝 𐑨𐑛-𐑭𐑯𐑟"
 
 #: src/addon/client.cpp:199
 #, fuzzy
@@ -5418,13 +5416,13 @@ msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 
-#: src/addon/client.cpp:281
+#: src/addon/client.cpp:282
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 
-#: src/addon/client.cpp:333 src/addon/client.cpp:359
+#: src/addon/client.cpp:334 src/addon/client.cpp:360
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5433,7 +5431,7 @@ msgid ""
 "cannot be installed."
 msgstr "𐑞 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑟 𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑓𐑲𐑤 𐑹 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯𐑱𐑥 𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/client.cpp:338 src/addon/client.cpp:364
+#: src/addon/client.cpp:339 src/addon/client.cpp:365
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5442,13 +5440,13 @@ msgid ""
 "conflicts. This may cause problems."
 msgstr "𐑞 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑟 𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑓𐑲𐑤 𐑹 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯𐑱𐑥 𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/client.cpp:408
+#: src/addon/client.cpp:409
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "𐑞 𐑕𐑻𐑝𐑻 𐑮𐑰𐑕𐑐𐑪𐑯𐑛𐑧𐑛 𐑢𐑦𐑞 𐑩𐑯 𐑻𐑹: \""
 
-#: src/addon/client.cpp:458
+#: src/addon/client.cpp:459
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5458,12 +5456,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:467
+#: src/addon/client.cpp:468
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "𐑛𐑦𐑐𐑧𐑯𐑛𐑩𐑯𐑕𐑰𐑟"
 
-#: src/addon/client.cpp:507
+#: src/addon/client.cpp:508
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5473,100 +5471,100 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:511
+#: src/addon/client.cpp:512
 msgid "Dependencies Installation Failed"
 msgstr ""
 
-#: src/addon/client.cpp:534
+#: src/addon/client.cpp:535
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:538
+#: src/addon/client.cpp:539
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:543
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:547
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you really wish to continue?"
 msgstr "𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑿𐑼 𐑜𐑱𐑥?"
 
-#: src/addon/client.cpp:548 src/addon/manager_ui.cpp:174
+#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:174
 #: src/game_initialization/multiplayer.cpp:231
 msgid "Confirm"
 msgstr "𐑒𐑪𐑯𐑓𐑻𐑥"
 
-#: src/addon/client.cpp:668
+#: src/addon/client.cpp:674
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
 msgstr "𐑨𐑛-𐑪𐑯 𐑦𐑯𐑕𐑑𐑷𐑤𐑛"
 
-#: src/addon/info.cpp:244
+#: src/addon/info.cpp:254
 msgid "addon_type^Campaign"
 msgstr "𐑒𐑨𐑥𐑐𐑱𐑯"
 
-#: src/addon/info.cpp:246
+#: src/addon/info.cpp:256
 msgid "addon_type^Scenario"
 msgstr "𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/addon/info.cpp:248
+#: src/addon/info.cpp:258
 #, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
 msgstr "MP 𐑒𐑨𐑥𐑐𐑱𐑯"
 
-#: src/addon/info.cpp:250
+#: src/addon/info.cpp:260
 msgid "addon_type^MP era"
 msgstr "MP 𐑽𐑩"
 
-#: src/addon/info.cpp:252
+#: src/addon/info.cpp:262
 msgid "addon_type^MP faction"
 msgstr "MP 𐑓𐑨𐑒𐑖𐑩𐑯"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:264
 msgid "addon_type^MP map-pack"
 msgstr "MP 𐑥𐑨𐑐-𐑐𐑨𐑒"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:266
 msgid "addon_type^MP scenario"
 msgstr "MP 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:268
 msgid "addon_type^MP campaign"
 msgstr "MP 𐑒𐑨𐑥𐑐𐑱𐑯"
 
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:270
 #, fuzzy
 #| msgid "addon_type^MP faction"
 msgid "addon_type^Modification"
 msgstr "MP 𐑓𐑨𐑒𐑖𐑩𐑯"
 
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:272
 #, fuzzy
 #| msgid "addon_type^Resources"
 msgid "addon_type^Core"
 msgstr "𐑮𐑦𐑟𐑹𐑕𐑩𐑟"
 
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:274
 msgid "addon_type^Resources"
 msgstr "𐑮𐑦𐑟𐑹𐑕𐑩𐑟"
 
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:276
 msgid "addon_type^Other"
 msgstr "𐑳𐑞𐑼"
 
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:278
 msgid "addon_type^(unknown)"
 msgstr "(𐑳𐑯𐑯𐑴𐑯)"
 
-#: src/addon/info.cpp:305
+#: src/addon/info.cpp:315
 msgid "unit_byte^B"
 msgstr ""
 
@@ -5654,6 +5652,132 @@ msgstr "𐑩𐑯 𐑻𐑹 𐑪𐑒𐑻𐑛 𐑢𐑲𐑤 𐑒𐑩𐑥𐑿𐑯𐑦
 #| msgid "Could not find any updated add-ons on this server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑓𐑲𐑯𐑛 𐑧𐑯𐑦 𐑳𐑐𐑛𐑱𐑑𐑩𐑛 𐑨𐑛-𐑭𐑯𐑟 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
+
+#: src/addon/validation.cpp:448
+msgid "Success."
+msgstr ""
+
+#: src/addon/validation.cpp:452
+msgid "Incorrect add-on passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:456
+msgid "Upload denied. Please contact the server administration for assistance."
+msgstr ""
+
+#: src/addon/validation.cpp:460
+msgid "Attempted to upload an update pack for a non-existent add-on."
+msgstr ""
+
+#: src/addon/validation.cpp:469
+msgid "No add-on data was supplied by the client."
+msgstr ""
+
+#: src/addon/validation.cpp:473
+#, fuzzy
+msgid "Invalid upload pack."
+msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑒𐑳𐑤𐑼"
+
+#: src/addon/validation.cpp:477
+#, fuzzy
+#| msgid "Invalid tag name"
+msgid "Invalid add-on name."
+msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑑𐑨𐑜 𐑯𐑱𐑥"
+
+#: src/addon/validation.cpp:481
+msgid "Formatting character in add-on name."
+msgstr ""
+
+#: src/addon/validation.cpp:485
+msgid ""
+"The add-on contains files or directories with illegal names.\n"
+"\n"
+"Names containing whitespace, control characters, or any of the following "
+"symbols are not allowed:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Additionally, names may not be longer than 255 characters, contain '..', or "
+"end with '.'."
+msgstr ""
+
+#: src/addon/validation.cpp:495
+#, fuzzy
+#| msgid ""
+#| "The add-on has an invalid file or directory name and cannot be installed."
+msgid ""
+"The add-on contains files or directories with case conflicts.\n"
+"\n"
+"Names in the same directory may not be differently-cased versions of each "
+"other."
+msgstr "𐑞 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑟 𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑓𐑲𐑤 𐑹 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯𐑱𐑥 𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
+
+#: src/addon/validation.cpp:501
+msgid "The add-on name contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:510
+#, fuzzy
+#| msgid "No add-ons to update"
+msgid "No add-on title specified."
+msgstr "𐑯𐑴 𐑨𐑛-𐑭𐑯𐑟 𐑑 𐑳𐑐𐑛𐑱𐑑"
+
+#: src/addon/validation.cpp:514
+msgid "No add-on author/maintainer name specified."
+msgstr ""
+
+#: src/addon/validation.cpp:518
+msgid "No add-on version specified."
+msgstr ""
+
+#: src/addon/validation.cpp:522
+#, fuzzy
+#| msgid "No description available."
+msgid "No add-on description specified."
+msgstr "𐑯𐑴 𐑛𐑦𐑕𐑒𐑮𐑦𐑐𐑖𐑩𐑯 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤."
+
+#: src/addon/validation.cpp:526
+msgid "No add-on author/maintainer email specified."
+msgstr ""
+
+#: src/addon/validation.cpp:530
+msgid "Missing passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:534
+msgid "Formatting character in add-on title."
+msgstr ""
+
+#: src/addon/validation.cpp:538
+#, fuzzy
+msgid "Invalid or unspecified add-on type."
+msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑑𐑨𐑜 𐑯𐑱𐑥"
+
+#: src/addon/validation.cpp:542
+msgid "The add-on publish information contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:551
+msgid "Unspecified server error."
+msgstr ""
+
+#: src/addon/validation.cpp:555
+msgid "Server is in read-only mode."
+msgstr ""
+
+#: src/addon/validation.cpp:559
+#, fuzzy
+#| msgid "You have no add-ons installed."
+msgid "Corrupted server add-ons list."
+msgstr "𐑿 𐑣𐑨𐑝 𐑯𐑴 𐑨𐑛-𐑭𐑯𐑟 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
+
+#: src/addon/validation.cpp:563
+msgid "Empty add-on version list on the server."
+msgstr ""
+
+#: src/addon/validation.cpp:573
+msgid "Unspecified validation failure."
+msgstr ""
 
 #: src/chat_command_handler.cpp:111
 #, fuzzy
@@ -6197,43 +6321,43 @@ msgstr "𐑳𐑯𐑱𐑚𐑩𐑤 𐑑 𐑓𐑲𐑯𐑛 𐑩 𐑤𐑰𐑛𐑻 �
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:224
+#: src/game_initialization/lobby_data.cpp:225
 msgid "Missing addon: $name"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:226
+#: src/game_initialization/lobby_data.cpp:227
 msgid "Missing addon: $id"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:258
+#: src/game_initialization/lobby_data.cpp:259
 msgid "Unknown era"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑽𐑩"
 
-#: src/game_initialization/lobby_data.cpp:325
-#: src/game_initialization/lobby_data.cpp:358
+#: src/game_initialization/lobby_data.cpp:326
+#: src/game_initialization/lobby_data.cpp:360
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "𐑕𐑲𐑛"
 
-#: src/game_initialization/lobby_data.cpp:344
+#: src/game_initialization/lobby_data.cpp:346
 msgid "Remote scenario"
 msgstr "𐑮𐑦𐑥𐑴𐑑 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/game_initialization/lobby_data.cpp:366
-#: src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:367
+#: src/game_initialization/lobby_data.cpp:393
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:394
+#: src/game_initialization/lobby_data.cpp:399
 msgid "Unknown scenario"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/game_initialization/lobby_data.cpp:404
+#: src/game_initialization/lobby_data.cpp:413
 msgid "Reloaded game"
 msgstr "𐑮𐑰𐑤𐑴𐑛𐑦𐑛 𐑜𐑱𐑥"
 
-#: src/game_initialization/lobby_data.cpp:419
+#: src/game_initialization/lobby_data.cpp:428
 #, fuzzy
 #| msgid "Vacant Slot:"
 #| msgid_plural "Vacant slots:"
@@ -6242,34 +6366,34 @@ msgid_plural "Vacant Slots:"
 msgstr[0] "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑪𐑑:"
 msgstr[1] "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑭𐑑𐑕:"
 
-#: src/game_initialization/lobby_data.cpp:421
+#: src/game_initialization/lobby_data.cpp:430
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:432
-#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:441
+#: src/game_initialization/lobby_data.cpp:443 src/savegame.cpp:645
 msgid "Turn"
 msgstr "𐑑𐑻𐑯"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:456
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
-#: src/game_initialization/lobby_data.cpp:456
+#: src/game_initialization/lobby_data.cpp:465
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "𐑑𐑲𐑥 𐑤𐑦𐑥𐑦𐑑"
 
-#: src/game_initialization/lobby_data.cpp:500
+#: src/game_initialization/lobby_data.cpp:509
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:514
+#: src/game_initialization/lobby_data.cpp:523
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6282,10 +6406,6 @@ msgstr "𐑛𐑦𐑓𐑰𐑑 𐑧𐑯𐑩𐑥𐑦 𐑤𐑰𐑛𐑻(𐑕)"
 #: src/game_initialization/mp_game_utils.cpp:104
 msgid "Cannot find era $era"
 msgstr "𐑒𐑨𐑯𐑪𐑑 𐑓𐑲𐑯𐑛 𐑽𐑩 $era"
-
-#: src/game_initialization/mp_game_utils.cpp:143
-msgid "Connection timed out"
-msgstr "𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑑𐑲𐑥𐑛 𐑬𐑑"
 
 #: src/game_initialization/multiplayer.cpp:74
 msgid "Invalid address specified for multiplayer server"
@@ -6571,7 +6691,7 @@ msgid "Error while reading the WML: "
 msgstr "𐑻𐑹 𐑢𐑲𐑤 𐑮𐑰𐑛𐑦𐑙 𐑞 WML: "
 
 #: src/game_initialization/playcampaign.cpp:348
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:308
 msgid "Game Over"
 msgstr "𐑜𐑱𐑥 𐑴𐑝𐑼"
 
@@ -6650,41 +6770,41 @@ msgstr[1] ""
 msgid "No visible sides found."
 msgstr "𐑯𐑴 𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑕𐑲𐑛𐑟 𐑓𐑬𐑯𐑛"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "In game:"
 msgstr "𐑦𐑯 𐑜𐑱𐑥:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:112
+#: src/gui/dialogs/multiplayer/player_info.cpp:116
 msgid "(observing)"
 msgstr "(𐑩𐑚𐑟𐑻𐑝𐑦𐑙)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:114
+#: src/gui/dialogs/multiplayer/player_info.cpp:118
 msgid "(playing)"
 msgstr "(𐑐𐑤𐑱𐑦𐑙)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:117
+#: src/gui/dialogs/multiplayer/player_info.cpp:121
 msgid "In lobby"
 msgstr "𐑦𐑯 𐑤𐑭𐑚𐑰"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:146
+#: src/gui/dialogs/multiplayer/player_info.cpp:150
 #, fuzzy
 msgid "On friends list"
 msgstr "𐑨𐑛𐑩𐑛 𐑑 𐑓𐑮𐑧𐑯𐑛𐑟 𐑤𐑦𐑕𐑑: "
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:151
+#: src/gui/dialogs/multiplayer/player_info.cpp:155
 #, fuzzy
 msgid "On ignores list"
 msgstr "𐑨𐑛𐑩𐑛 𐑑 𐑦𐑜𐑯𐑹 𐑤𐑦𐑕𐑑: "
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:156
+#: src/gui/dialogs/multiplayer/player_info.cpp:160
 msgid "Neither a friend nor ignored"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:161
+#: src/gui/dialogs/multiplayer/player_info.cpp:165
 msgid "You"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:164
+#: src/gui/dialogs/multiplayer/player_info.cpp:168
 msgid "Error"
 msgstr "𐑻𐑹"
 
@@ -7669,7 +7789,7 @@ msgstr "𐑯𐑴 𐑩𐑚𐑡𐑧𐑒𐑑𐑦𐑝𐑟 𐑩𐑝𐑱𐑤𐑩𐑚�
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "𐑳𐑯𐑛𐑵𐑦𐑙 𐑥𐑵𐑝𐑟 𐑯𐑪𐑑 𐑘𐑧𐑑 𐑑𐑮𐑨𐑯𐑕𐑥𐑦𐑑𐑩𐑛 𐑑 𐑞 𐑕𐑻𐑝𐑻."
 
-#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:349
+#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:348
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -7678,7 +7798,7 @@ msgstr ""
 "𐑩 𐑯𐑧𐑑𐑢𐑻𐑒 𐑛𐑦𐑕𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑣𐑨𐑟 𐑪𐑒𐑻𐑛, 𐑯 𐑞 𐑜𐑱𐑥\n"
 "𐑒𐑨𐑯𐑪𐑑 𐑒𐑩𐑯𐑑𐑦𐑯𐑿. 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑞 𐑜𐑱𐑥?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -7686,7 +7806,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑛𐑦𐑤𐑰𐑑 𐑞𐑦𐑕 𐑜𐑱𐑥?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -7694,7 +7814,7 @@ msgid ""
 "Reason: "
 msgstr "𐑞 𐑜𐑱𐑥 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑕𐑱𐑝𐑛"
 
-#: src/playmp_controller.cpp:369
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7710,31 +7830,31 @@ msgstr ""
 "\n"
 "𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑩𐑯 𐑻𐑹 𐑤𐑪𐑜 𐑝 𐑿𐑼 𐑜𐑱𐑥?"
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:153
+#: src/playsingle_controller.cpp:152
 #, fuzzy
 #| msgid "Error"
 msgid "Game Error"
 msgstr "𐑻𐑹"
 
-#: src/playsingle_controller.cpp:154
+#: src/playsingle_controller.cpp:153
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:308
 msgid "The game is over."
 msgstr "𐑞 𐑜𐑱𐑥 𐑦𐑟 𐑴𐑝𐑼."
 
-#: src/playsingle_controller.cpp:442
+#: src/playsingle_controller.cpp:441
 msgid "It is now $name|’s turn"
 msgstr "𐑦𐑑 𐑦𐑟 𐑯𐑬 $name|'s 𐑑𐑻𐑯"
 
@@ -8686,7 +8806,7 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnothd_connection.cpp:418
+#: src/wesnothd_connection.cpp:421
 #, fuzzy
 #| msgid "Connecting to Server..."
 msgid "Disconnected from server."
@@ -8715,6 +8835,16 @@ msgstr "𐑮𐑦𐑐𐑤𐑱𐑕 𐑢𐑦𐑞 $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Downloading add-on: $addon_title|..."
+#~ msgid ""
+#~ "Requesting the older version composition for the add-on <i>$addon_title</"
+#~ "i>..."
+#~ msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
+
+#~ msgid "Connection timed out"
+#~ msgstr "𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑑𐑲𐑥𐑛 𐑬𐑑"
 
 #~ msgid "Cancel"
 #~ msgstr "𐑒𐑨𐑯𐑕𐑩𐑤"
@@ -10897,9 +11027,6 @@ msgstr ""
 #~ msgstr[1] ""
 #~ "𐑕𐑳𐑥 𐑬𐑑𐑛𐑱𐑑𐑦𐑛 𐑤𐑴𐑒𐑩𐑤 𐑨𐑛-𐑭𐑯𐑟 𐑣𐑨𐑝 𐑐𐑳𐑚𐑤𐑦𐑖𐑦𐑙 𐑦𐑯𐑓𐑼𐑥𐑱𐑖𐑩𐑑𐑦𐑪𐑯 𐑩𐑑𐑨𐑗𐑑. 𐑞𐑱 𐑢𐑦𐑤 𐑯𐑪𐑑 𐑚𐑰 "
 #~ "𐑪𐑓𐑼𐑛 𐑓𐑹 𐑳𐑐𐑛𐑱𐑑𐑦𐑙."
-
-#~ msgid "No add-ons to update"
-#~ msgstr "𐑯𐑴 𐑨𐑛-𐑭𐑯𐑟 𐑑 𐑳𐑐𐑛𐑱𐑑"
 
 #~ msgid "Update succeeded"
 #~ msgstr "𐑳𐑐𐑛𐑱𐑑 𐑕𐑩𐑒𐑕𐑰𐑛𐑩𐑛"

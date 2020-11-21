@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 01:28-0300\n"
+"POT-Creation-Date: 2020-11-21 01:40-0300\n"
 "PO-Revision-Date: 2020-09-03 18:13+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -3900,14 +3900,14 @@ msgstr "Impassable"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:448
 msgid "Fog"
 msgstr "Boira"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
-#: src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:451
+#: src/game_initialization/lobby_data.cpp:454
 msgid "Shroud"
 msgstr "Ocult"
 
@@ -4302,7 +4302,7 @@ msgstr ""
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:899
+#: data/lua/wml-tags.lua:900
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "El nivell d'obsolescència no és vàlid (ha de ser 1-4)"
 
@@ -4519,12 +4519,12 @@ msgid "female^aura of death ("
 msgstr "sana"
 
 #. [language]
-#: data/scenario-test.cfg:4395
+#: data/scenario-test.cfg:4396
 msgid "very long"
 msgstr "molt llarg"
 
 #. [language]
-#: data/scenario-test.cfg:4396
+#: data/scenario-test.cfg:4397
 msgid "electrical"
 msgstr "elèctric"
 
@@ -5761,11 +5761,9 @@ msgstr ""
 
 #: src/addon/client.cpp:183
 #, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
-msgid ""
-"Requesting the older version composition for the add-on <i>$addon_title</"
-"i>..."
-msgstr "S'està enviant el complement <i>$addon_title</i>..."
+#| msgid "Requesting distribution terms..."
+msgid "Requesting file index..."
+msgstr "S'estan sol·licitant les condicions de distribució..."
 
 #: src/addon/client.cpp:199
 #, fuzzy
@@ -5781,11 +5779,11 @@ msgstr "S'està enviant el complement <i>$addon_title</i>..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "S'està eliminant el complement <i>$addon_title</i> del servidor..."
 
-#: src/addon/client.cpp:281
+#: src/addon/client.cpp:282
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "S'està descarregant el complement <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:333 src/addon/client.cpp:359
+#: src/addon/client.cpp:334 src/addon/client.cpp:360
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5793,7 +5791,7 @@ msgstr ""
 "El complement <i>$addon_title</i> té un nom de fitxer o directori no vàlid i "
 "no es pot publicar."
 
-#: src/addon/client.cpp:338 src/addon/client.cpp:364
+#: src/addon/client.cpp:339 src/addon/client.cpp:365
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5801,11 +5799,11 @@ msgstr ""
 "El complement <i>$addon_title</i> té noms de fitxer o directori amb "
 "conflictes de majúscules i minúscules. Això pot provocar problemes."
 
-#: src/addon/client.cpp:408
+#: src/addon/client.cpp:409
 msgid "The server responded with an error:"
 msgstr "El servidor ha respost amb un error:"
 
-#: src/addon/client.cpp:458
+#: src/addon/client.cpp:459
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5819,11 +5817,11 @@ msgstr[1] ""
 "El complement seleccionat té les dependències següents, que no estan "
 "instal·lades o disponibles al servidor. Voleu continuar?"
 
-#: src/addon/client.cpp:467
+#: src/addon/client.cpp:468
 msgid "Broken Dependencies"
 msgstr "Dependències trencades"
 
-#: src/addon/client.cpp:507
+#: src/addon/client.cpp:508
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5834,11 +5832,11 @@ msgstr[0] "No s'ha pogut instal·lar la dependència següent. Voleu continuar?"
 msgstr[1] ""
 "No s'han pogut instal·lar les dependències següents. Voleu continuar?"
 
-#: src/addon/client.cpp:511
+#: src/addon/client.cpp:512
 msgid "Dependencies Installation Failed"
 msgstr "Ha fallat la instal·lació de les dependències"
 
-#: src/addon/client.cpp:534
+#: src/addon/client.cpp:535
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5846,80 +5844,80 @@ msgstr ""
 "El complement «$addon|» ja està instal·lat i conté informació addicional que "
 "es perdrà definitivament si continueu:"
 
-#: src/addon/client.cpp:538
+#: src/addon/client.cpp:539
 msgid "Publishing information file (.pbl)"
 msgstr "S'està publicant el fitxer d'informació (. pbl)"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:543
 msgid "Version control system (VCS) information"
 msgstr "Informació del sistema de control de versions (VCS)"
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:547
 msgid "Do you really wish to continue?"
 msgstr "Segur que voleu continuar?"
 
-#: src/addon/client.cpp:548 src/addon/manager_ui.cpp:174
+#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:174
 #: src/game_initialization/multiplayer.cpp:231
 msgid "Confirm"
 msgstr "Confirma"
 
-#: src/addon/client.cpp:668
+#: src/addon/client.cpp:674
 msgid "Add-ons Manager"
 msgstr "Gestor de complements"
 
-#: src/addon/info.cpp:244
+#: src/addon/info.cpp:254
 msgid "addon_type^Campaign"
 msgstr "addon_type^Campanya"
 
-#: src/addon/info.cpp:246
+#: src/addon/info.cpp:256
 msgid "addon_type^Scenario"
 msgstr "addon_type^Escenari"
 
-#: src/addon/info.cpp:248
+#: src/addon/info.cpp:258
 msgid "addon_type^SP/MP Campaign"
 msgstr "addon_type^Campanya 1J/MJ"
 
-#: src/addon/info.cpp:250
+#: src/addon/info.cpp:260
 msgid "addon_type^MP era"
 msgstr "addon_type^Era MJ"
 
-#: src/addon/info.cpp:252
+#: src/addon/info.cpp:262
 msgid "addon_type^MP faction"
 msgstr "addon_type^Facció MJ"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:264
 msgid "addon_type^MP map-pack"
 msgstr "addon_type^Mapes MJ"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:266
 msgid "addon_type^MP scenario"
 msgstr "addon_type^Escenari MJ"
 
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:268
 msgid "addon_type^MP campaign"
 msgstr "addon_type^Campanya MJ"
 
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:270
 msgid "addon_type^Modification"
 msgstr "addon_type^Modificació"
 
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:272
 msgid "addon_type^Core"
 msgstr "addon_type^Nucli"
 
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:274
 msgid "addon_type^Resources"
 msgstr "addon_type^Recursos"
 
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:276
 msgid "addon_type^Other"
 msgstr "addon_type^Altres"
 
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:278
 msgid "addon_type^(unknown)"
 msgstr "addon_type^(desconegut)"
 
-#: src/addon/info.cpp:305
+#: src/addon/info.cpp:315
 msgid "unit_byte^B"
 msgstr "unit_byte^B"
 
@@ -6008,6 +6006,139 @@ msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 "No s'ha trobat cap complement que coincideixi amb l'identificador $addon_id "
 "al servidor de complements."
+
+#: src/addon/validation.cpp:448
+msgid "Success."
+msgstr ""
+
+#: src/addon/validation.cpp:452
+msgid "Incorrect add-on passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:456
+msgid "Upload denied. Please contact the server administration for assistance."
+msgstr ""
+
+#: src/addon/validation.cpp:460
+msgid "Attempted to upload an update pack for a non-existent add-on."
+msgstr ""
+
+#: src/addon/validation.cpp:469
+msgid "No add-on data was supplied by the client."
+msgstr ""
+
+#: src/addon/validation.cpp:473
+#, fuzzy
+#| msgid "Invalid location"
+msgid "Invalid upload pack."
+msgstr "Ubicació no vàlida"
+
+#: src/addon/validation.cpp:477
+#, fuzzy
+#| msgid "Invalid tag name"
+msgid "Invalid add-on name."
+msgstr "Nom d'etiqueta invàlid"
+
+#: src/addon/validation.cpp:481
+msgid "Formatting character in add-on name."
+msgstr ""
+
+#: src/addon/validation.cpp:485
+msgid ""
+"The add-on contains files or directories with illegal names.\n"
+"\n"
+"Names containing whitespace, control characters, or any of the following "
+"symbols are not allowed:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Additionally, names may not be longer than 255 characters, contain '..', or "
+"end with '.'."
+msgstr ""
+
+#: src/addon/validation.cpp:495
+#, fuzzy
+#| msgid ""
+#| "The add-on <i>$addon_title</i> contains files or directories with case "
+#| "conflicts. File or directory names may not be differently-cased versions "
+#| "of the same string."
+msgid ""
+"The add-on contains files or directories with case conflicts.\n"
+"\n"
+"Names in the same directory may not be differently-cased versions of each "
+"other."
+msgstr ""
+"El complement <i>$addon_title</i> conté fitxers o directoris amb conflictes "
+"de majúscules i minúscules. Els noms dels fitxers o directoris no poden ser "
+"versions de la mateixa cadena amb diferències de majúscules i minúscules."
+
+#: src/addon/validation.cpp:501
+msgid "The add-on name contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:510
+#, fuzzy
+#| msgid "No add-ons to update"
+msgid "No add-on title specified."
+msgstr "No hi ha complements per actualitzar"
+
+#: src/addon/validation.cpp:514
+msgid "No add-on author/maintainer name specified."
+msgstr ""
+
+#: src/addon/validation.cpp:518
+msgid "No add-on version specified."
+msgstr ""
+
+#: src/addon/validation.cpp:522
+#, fuzzy
+#| msgid "No description available."
+msgid "No add-on description specified."
+msgstr "No hi ha disponible."
+
+#: src/addon/validation.cpp:526
+msgid "No add-on author/maintainer email specified."
+msgstr ""
+
+#: src/addon/validation.cpp:530
+msgid "Missing passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:534
+msgid "Formatting character in add-on title."
+msgstr ""
+
+#: src/addon/validation.cpp:538
+#, fuzzy
+#| msgid "Invalid unit type"
+msgid "Invalid or unspecified add-on type."
+msgstr "Tipus d'unitat no vàlid"
+
+#: src/addon/validation.cpp:542
+msgid "The add-on publish information contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:551
+msgid "Unspecified server error."
+msgstr ""
+
+#: src/addon/validation.cpp:555
+msgid "Server is in read-only mode."
+msgstr ""
+
+#: src/addon/validation.cpp:559
+#, fuzzy
+#| msgid "You have no add-ons installed."
+msgid "Corrupted server add-ons list."
+msgstr "No teniu cap complement instal·lat."
+
+#: src/addon/validation.cpp:563
+msgid "Empty add-on version list on the server."
+msgstr ""
+
+#: src/addon/validation.cpp:573
+msgid "Unspecified validation failure."
+msgstr ""
 
 #: src/chat_command_handler.cpp:111
 msgid "Added to ignore list: $nick"
@@ -6514,64 +6645,64 @@ msgstr "No ha estat possible trobar un líder de la facció $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "No es poden obtenir els gèneres del líder no vàlid $leader"
 
-#: src/game_initialization/lobby_data.cpp:224
+#: src/game_initialization/lobby_data.cpp:225
 msgid "Missing addon: $name"
 msgstr "Manca el complement: $name"
 
-#: src/game_initialization/lobby_data.cpp:226
+#: src/game_initialization/lobby_data.cpp:227
 msgid "Missing addon: $id"
 msgstr "Manca el complement: $id"
 
-#: src/game_initialization/lobby_data.cpp:258
+#: src/game_initialization/lobby_data.cpp:259
 msgid "Unknown era"
 msgstr "Era desconeguda"
 
-#: src/game_initialization/lobby_data.cpp:325
-#: src/game_initialization/lobby_data.cpp:358
+#: src/game_initialization/lobby_data.cpp:326
+#: src/game_initialization/lobby_data.cpp:360
 msgid "scenario_abbreviation^S"
 msgstr "scenario_abbreviation^E"
 
-#: src/game_initialization/lobby_data.cpp:344
+#: src/game_initialization/lobby_data.cpp:346
 msgid "Remote scenario"
 msgstr "Escenari remot"
 
-#: src/game_initialization/lobby_data.cpp:366
-#: src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:367
+#: src/game_initialization/lobby_data.cpp:393
 msgid "campaign_abbreviation^C"
 msgstr "campaign_abbreviation^C"
 
-#: src/game_initialization/lobby_data.cpp:394
+#: src/game_initialization/lobby_data.cpp:399
 msgid "Unknown scenario"
 msgstr "Escenari desconegut"
 
-#: src/game_initialization/lobby_data.cpp:404
+#: src/game_initialization/lobby_data.cpp:413
 msgid "Reloaded game"
 msgstr "Partida recarregada"
 
-#: src/game_initialization/lobby_data.cpp:419
+#: src/game_initialization/lobby_data.cpp:428
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Plaça lliure:"
 msgstr[1] "Places lliures:"
 
-#: src/game_initialization/lobby_data.cpp:421
+#: src/game_initialization/lobby_data.cpp:430
 msgid "mp_game_available_slots^Full"
 msgstr "mp_game_available_slots^Ple"
 
-#: src/game_initialization/lobby_data.cpp:432
-#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:441
+#: src/game_initialization/lobby_data.cpp:443 src/savegame.cpp:645
 msgid "Turn"
 msgstr "Torn"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:456
 msgid "vision^none"
 msgstr "vision^cap"
 
-#: src/game_initialization/lobby_data.cpp:456
+#: src/game_initialization/lobby_data.cpp:465
 msgid "time limit^none"
 msgstr "time limit^cap"
 
-#: src/game_initialization/lobby_data.cpp:500
+#: src/game_initialization/lobby_data.cpp:509
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6579,7 +6710,7 @@ msgstr ""
 "La versió de l'amfitrió de <i>$addon</i> no és compatible. Teniu la versió "
 "<b>$local_ver</b>, mentre que l'amfitrió té la versió <b>$host_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:514
+#: src/game_initialization/lobby_data.cpp:523
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6594,10 +6725,6 @@ msgstr "Derrota els líders enemics"
 #: src/game_initialization/mp_game_utils.cpp:104
 msgid "Cannot find era $era"
 msgstr "No s'ha pogut trobar l'era $era"
-
-#: src/game_initialization/mp_game_utils.cpp:143
-msgid "Connection timed out"
-msgstr "S'ha esgotat el temps d'espera de la connexió"
 
 #: src/game_initialization/multiplayer.cpp:74
 msgid "Invalid address specified for multiplayer server"
@@ -6849,7 +6976,7 @@ msgid "Error while reading the WML: "
 msgstr "S'ha produït un error mentre es llegia el WML: "
 
 #: src/game_initialization/playcampaign.cpp:348
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:308
 msgid "Game Over"
 msgstr "Partida perduda"
 
@@ -6926,39 +7053,39 @@ msgstr[1] ""
 msgid "No visible sides found."
 msgstr "No s'ha trobat cap bàndol visible."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "In game:"
 msgstr "A la partida:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:112
+#: src/gui/dialogs/multiplayer/player_info.cpp:116
 msgid "(observing)"
 msgstr "(observant)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:114
+#: src/gui/dialogs/multiplayer/player_info.cpp:118
 msgid "(playing)"
 msgstr "(jugant)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:117
+#: src/gui/dialogs/multiplayer/player_info.cpp:121
 msgid "In lobby"
 msgstr "Al vestíbul"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:146
+#: src/gui/dialogs/multiplayer/player_info.cpp:150
 msgid "On friends list"
 msgstr "A la llista d'amics"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:151
+#: src/gui/dialogs/multiplayer/player_info.cpp:155
 msgid "On ignores list"
 msgstr "A la llista d'ignorats"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:156
+#: src/gui/dialogs/multiplayer/player_info.cpp:160
 msgid "Neither a friend nor ignored"
 msgstr "Ni amic ni ignorat"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:161
+#: src/gui/dialogs/multiplayer/player_info.cpp:165
 msgid "You"
 msgstr "Vós"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:164
+#: src/gui/dialogs/multiplayer/player_info.cpp:168
 msgid "Error"
 msgstr "Error"
 
@@ -7888,7 +8015,7 @@ msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 "S'estan desfent els moviments que encara no s'han transmès al servidor."
 
-#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:349
+#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:348
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7896,7 +8023,7 @@ msgstr ""
 "S'ha produït una desconnexió de la xarxa i la partida no pot continuar. "
 "Voleu desar la partida?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7904,7 +8031,7 @@ msgstr ""
 "\n"
 "Voleu desar la partida?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7912,7 +8039,7 @@ msgstr ""
 "S'ha finalitzat la partida.\n"
 "Motiu: "
 
-#: src/playmp_controller.cpp:369
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7929,7 +8056,7 @@ msgstr ""
 "\n"
 "Voleu desar un registre d'errors de la partida?"
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7939,11 +8066,11 @@ msgstr ""
 "a un altre controlador. Podeu utilitzar :droid, :control o :give_control, "
 "per exemple."
 
-#: src/playsingle_controller.cpp:153
+#: src/playsingle_controller.cpp:152
 msgid "Game Error"
 msgstr "Error del joc"
 
-#: src/playsingle_controller.cpp:154
+#: src/playsingle_controller.cpp:153
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -7953,11 +8080,11 @@ msgstr ""
 "sabeu què significa aquest missatge, és probable que algú estigui fent "
 "trampes o hagi recarregat una partida corrupta."
 
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:308
 msgid "The game is over."
 msgstr "La partida ha acabat."
 
-#: src/playsingle_controller.cpp:442
+#: src/playsingle_controller.cpp:441
 msgid "It is now $name|’s turn"
 msgstr "Ara és el torn de $name|"
 
@@ -8821,7 +8948,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnothd_connection.cpp:418
+#: src/wesnothd_connection.cpp:421
 msgid "Disconnected from server."
 msgstr "Desconnectat del servidor."
 
@@ -8844,6 +8971,16 @@ msgstr "Amaga els plans de $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Opcions de la pissarra"
+
+#, fuzzy
+#~| msgid "Sending add-on <i>$addon_title</i>..."
+#~ msgid ""
+#~ "Requesting the older version composition for the add-on <i>$addon_title</"
+#~ "i>..."
+#~ msgstr "S'està enviant el complement <i>$addon_title</i>..."
+
+#~ msgid "Connection timed out"
+#~ msgstr "S'ha esgotat el temps d'espera de la connexió"
 
 #~ msgid "Cancel"
 #~ msgstr "Cancel·la"
@@ -10938,9 +11075,6 @@ msgstr "Opcions de la pissarra"
 #, fuzzy
 #~ msgid "Downloading..."
 #~ msgstr "Descàrregues "
-
-#~ msgid "No add-ons to update"
-#~ msgstr "No hi ha complements per actualitzar"
 
 #~ msgid "Get add-ons"
 #~ msgstr "Obté complements"

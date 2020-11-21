@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 01:28-0300\n"
+"POT-Creation-Date: 2020-11-21 01:40-0300\n"
 "PO-Revision-Date: 2020-08-10 20:09+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -4144,14 +4144,14 @@ msgstr "不可通过"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:448
 msgid "Fog"
 msgstr "迷雾"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
-#: src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:451
+#: src/game_initialization/lobby_data.cpp:454
 msgid "Shroud"
 msgstr "战场黑幕"
 
@@ -4549,7 +4549,7 @@ msgstr ""
 "DroidSansJapanese.ttf,Junicode-Regular.ttf"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:899
+#: data/lua/wml-tags.lua:900
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "无效废弃级别（应为1-4）"
 
@@ -4734,12 +4734,12 @@ msgid "female^aura of death ("
 msgstr ""
 
 #. [language]
-#: data/scenario-test.cfg:4395
+#: data/scenario-test.cfg:4396
 msgid "very long"
 msgstr "非常长"
 
 #. [language]
-#: data/scenario-test.cfg:4396
+#: data/scenario-test.cfg:4397
 msgid "electrical"
 msgstr "电子"
 
@@ -5886,11 +5886,9 @@ msgstr ""
 
 #: src/addon/client.cpp:183
 #, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
-msgid ""
-"Requesting the older version composition for the add-on <i>$addon_title</"
-"i>..."
-msgstr "正在发送附加组件<b>$addon_title</b>……"
+#| msgid "Requesting distribution terms..."
+msgid "Requesting file index..."
+msgstr "正在请求分发条款……"
 
 #: src/addon/client.cpp:199
 #, fuzzy
@@ -5906,18 +5904,18 @@ msgstr "正在发送附加组件<b>$addon_title</b>……"
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "正在从服务器上移除附加组件<b>$addon_title</b>……"
 
-#: src/addon/client.cpp:281
+#: src/addon/client.cpp:282
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "正在下载附加组件<b>$addon_title</b>……"
 
-#: src/addon/client.cpp:333 src/addon/client.cpp:359
+#: src/addon/client.cpp:334 src/addon/client.cpp:360
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
 "附加组件<b>$addon_title</b>中的某个文件名或者目录名无效，因此无法安装。"
 
-#: src/addon/client.cpp:338 src/addon/client.cpp:364
+#: src/addon/client.cpp:339 src/addon/client.cpp:365
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5925,11 +5923,11 @@ msgstr ""
 "附加组件<b>$addon_title</b>中的某些文件名或者目录名的大小写冲突。这可能会造成"
 "问题。"
 
-#: src/addon/client.cpp:408
+#: src/addon/client.cpp:409
 msgid "The server responded with an error:"
 msgstr "服务器返回一个错误："
 
-#: src/addon/client.cpp:458
+#: src/addon/client.cpp:459
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5943,11 +5941,11 @@ msgstr[1] ""
 "这个附加组件有下列依赖项目。这些依赖项目尚未安装，且不存在于服务器上。希望继"
 "续吗？"
 
-#: src/addon/client.cpp:467
+#: src/addon/client.cpp:468
 msgid "Broken Dependencies"
 msgstr "损坏的依赖项目"
 
-#: src/addon/client.cpp:507
+#: src/addon/client.cpp:508
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5957,11 +5955,11 @@ msgid_plural ""
 msgstr[0] "下列依赖项目无法安装。仍然希望继续吗？"
 msgstr[1] "下列依赖项目无法安装。仍然希望继续吗？"
 
-#: src/addon/client.cpp:511
+#: src/addon/client.cpp:512
 msgid "Dependencies Installation Failed"
 msgstr "依赖项目安装失败"
 
-#: src/addon/client.cpp:534
+#: src/addon/client.cpp:535
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5969,80 +5967,80 @@ msgstr ""
 "附加组件“$addon|”已安装并包含有额外的信息，如果继续，则这些额外信息将永久丢"
 "失："
 
-#: src/addon/client.cpp:538
+#: src/addon/client.cpp:539
 msgid "Publishing information file (.pbl)"
 msgstr "发布信息文件（.pbl）"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:543
 msgid "Version control system (VCS) information"
 msgstr "版本控制系统（VCS）信息"
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:547
 msgid "Do you really wish to continue?"
 msgstr "真的希望继续吗？"
 
-#: src/addon/client.cpp:548 src/addon/manager_ui.cpp:174
+#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:174
 #: src/game_initialization/multiplayer.cpp:231
 msgid "Confirm"
 msgstr "确认"
 
-#: src/addon/client.cpp:668
+#: src/addon/client.cpp:674
 msgid "Add-ons Manager"
 msgstr "附加组件管理器"
 
-#: src/addon/info.cpp:244
+#: src/addon/info.cpp:254
 msgid "addon_type^Campaign"
 msgstr "战役"
 
-#: src/addon/info.cpp:246
+#: src/addon/info.cpp:256
 msgid "addon_type^Scenario"
 msgstr "场景"
 
-#: src/addon/info.cpp:248
+#: src/addon/info.cpp:258
 msgid "addon_type^SP/MP Campaign"
 msgstr "单人/多人游戏战役"
 
-#: src/addon/info.cpp:250
+#: src/addon/info.cpp:260
 msgid "addon_type^MP era"
 msgstr "多人游戏时代"
 
-#: src/addon/info.cpp:252
+#: src/addon/info.cpp:262
 msgid "addon_type^MP faction"
 msgstr "多人游戏派系"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:264
 msgid "addon_type^MP map-pack"
 msgstr "多人游戏地图包"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:266
 msgid "addon_type^MP scenario"
 msgstr "多人游戏场景"
 
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:268
 msgid "addon_type^MP campaign"
 msgstr "多人游戏战役"
 
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:270
 msgid "addon_type^Modification"
 msgstr "模组"
 
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:272
 msgid "addon_type^Core"
 msgstr "核心"
 
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:274
 msgid "addon_type^Resources"
 msgstr "资源"
 
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:276
 msgid "addon_type^Other"
 msgstr "其它"
 
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:278
 msgid "addon_type^(unknown)"
 msgstr "（未知）"
 
-#: src/addon/info.cpp:305
+#: src/addon/info.cpp:315
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -6123,6 +6121,136 @@ msgstr "从服务器上下载附加组件列表时发生错误。"
 #: src/addon/manager_ui.cpp:284
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "在附加组件服务器上无法找到与ID：$addon_id|匹配的附加组件。"
+
+#: src/addon/validation.cpp:448
+msgid "Success."
+msgstr ""
+
+#: src/addon/validation.cpp:452
+msgid "Incorrect add-on passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:456
+msgid "Upload denied. Please contact the server administration for assistance."
+msgstr ""
+
+#: src/addon/validation.cpp:460
+msgid "Attempted to upload an update pack for a non-existent add-on."
+msgstr ""
+
+#: src/addon/validation.cpp:469
+msgid "No add-on data was supplied by the client."
+msgstr ""
+
+#: src/addon/validation.cpp:473
+#, fuzzy
+#| msgid "Invalid location"
+msgid "Invalid upload pack."
+msgstr "无效位置"
+
+#: src/addon/validation.cpp:477
+#, fuzzy
+#| msgid "Invalid tag name"
+msgid "Invalid add-on name."
+msgstr "无效的标签名"
+
+#: src/addon/validation.cpp:481
+msgid "Formatting character in add-on name."
+msgstr ""
+
+#: src/addon/validation.cpp:485
+msgid ""
+"The add-on contains files or directories with illegal names.\n"
+"\n"
+"Names containing whitespace, control characters, or any of the following "
+"symbols are not allowed:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Additionally, names may not be longer than 255 characters, contain '..', or "
+"end with '.'."
+msgstr ""
+
+#: src/addon/validation.cpp:495
+#, fuzzy
+#| msgid ""
+#| "The add-on <i>$addon_title</i> contains files or directories with case "
+#| "conflicts. File or directory names may not be differently-cased versions "
+#| "of the same string."
+msgid ""
+"The add-on contains files or directories with case conflicts.\n"
+"\n"
+"Names in the same directory may not be differently-cased versions of each "
+"other."
+msgstr ""
+"附加组件<b>$addon_title</b>包含有大小写冲突的文件或目录名。文件或目录名不可以"
+"是仅有大小写不同的同一个字符串。"
+
+#: src/addon/validation.cpp:501
+msgid "The add-on name contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:510
+msgid "No add-on title specified."
+msgstr ""
+
+#: src/addon/validation.cpp:514
+msgid "No add-on author/maintainer name specified."
+msgstr ""
+
+#: src/addon/validation.cpp:518
+msgid "No add-on version specified."
+msgstr ""
+
+#: src/addon/validation.cpp:522
+#, fuzzy
+#| msgid "No description available."
+msgid "No add-on description specified."
+msgstr "无可用描述。"
+
+#: src/addon/validation.cpp:526
+msgid "No add-on author/maintainer email specified."
+msgstr ""
+
+#: src/addon/validation.cpp:530
+msgid "Missing passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:534
+msgid "Formatting character in add-on title."
+msgstr ""
+
+#: src/addon/validation.cpp:538
+#, fuzzy
+#| msgid "Invalid unit type"
+msgid "Invalid or unspecified add-on type."
+msgstr "无效单位类型"
+
+#: src/addon/validation.cpp:542
+msgid "The add-on publish information contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:551
+msgid "Unspecified server error."
+msgstr ""
+
+#: src/addon/validation.cpp:555
+msgid "Server is in read-only mode."
+msgstr ""
+
+#: src/addon/validation.cpp:559
+#, fuzzy
+#| msgid "You have no add-ons installed."
+msgid "Corrupted server add-ons list."
+msgstr "没有安装任何附加组件。"
+
+#: src/addon/validation.cpp:563
+msgid "Empty add-on version list on the server."
+msgstr ""
+
+#: src/addon/validation.cpp:573
+msgid "Unspecified validation failure."
+msgstr ""
 
 #: src/chat_command_handler.cpp:111
 msgid "Added to ignore list: $nick"
@@ -6612,64 +6740,64 @@ msgstr "无法找到$faction|派系的首领类型"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "无法获取无效的首领$leader|的性别"
 
-#: src/game_initialization/lobby_data.cpp:224
+#: src/game_initialization/lobby_data.cpp:225
 msgid "Missing addon: $name"
 msgstr "缺少附加组件：$name"
 
-#: src/game_initialization/lobby_data.cpp:226
+#: src/game_initialization/lobby_data.cpp:227
 msgid "Missing addon: $id"
 msgstr "缺少附加组件：$id"
 
-#: src/game_initialization/lobby_data.cpp:258
+#: src/game_initialization/lobby_data.cpp:259
 msgid "Unknown era"
 msgstr "未知时代"
 
-#: src/game_initialization/lobby_data.cpp:325
-#: src/game_initialization/lobby_data.cpp:358
+#: src/game_initialization/lobby_data.cpp:326
+#: src/game_initialization/lobby_data.cpp:360
 msgid "scenario_abbreviation^S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:344
+#: src/game_initialization/lobby_data.cpp:346
 msgid "Remote scenario"
 msgstr "远程场景"
 
-#: src/game_initialization/lobby_data.cpp:366
-#: src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:367
+#: src/game_initialization/lobby_data.cpp:393
 msgid "campaign_abbreviation^C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:394
+#: src/game_initialization/lobby_data.cpp:399
 msgid "Unknown scenario"
 msgstr "未知场景"
 
-#: src/game_initialization/lobby_data.cpp:404
+#: src/game_initialization/lobby_data.cpp:413
 msgid "Reloaded game"
 msgstr "重新载入了游戏"
 
-#: src/game_initialization/lobby_data.cpp:419
+#: src/game_initialization/lobby_data.cpp:428
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空闲槽位："
 msgstr[1] "空闲槽位："
 
-#: src/game_initialization/lobby_data.cpp:421
+#: src/game_initialization/lobby_data.cpp:430
 msgid "mp_game_available_slots^Full"
 msgstr "已满"
 
-#: src/game_initialization/lobby_data.cpp:432
-#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:441
+#: src/game_initialization/lobby_data.cpp:443 src/savegame.cpp:645
 msgid "Turn"
 msgstr "回合"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:456
 msgid "vision^none"
 msgstr "无"
 
-#: src/game_initialization/lobby_data.cpp:456
+#: src/game_initialization/lobby_data.cpp:465
 msgid "time limit^none"
 msgstr "无"
 
-#: src/game_initialization/lobby_data.cpp:500
+#: src/game_initialization/lobby_data.cpp:509
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6677,7 +6805,7 @@ msgstr ""
 "主机的<b>$addon|</b>版本不兼容。主机拥有的版本是<b>$host_ver|</b>而你拥有的版"
 "本是<b>$local_ver|</b>。"
 
-#: src/game_initialization/lobby_data.cpp:514
+#: src/game_initialization/lobby_data.cpp:523
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6692,10 +6820,6 @@ msgstr "击败敌方首领"
 #: src/game_initialization/mp_game_utils.cpp:104
 msgid "Cannot find era $era"
 msgstr "无法找到$era|时代"
-
-#: src/game_initialization/mp_game_utils.cpp:143
-msgid "Connection timed out"
-msgstr "连接超时"
 
 #: src/game_initialization/multiplayer.cpp:74
 msgid "Invalid address specified for multiplayer server"
@@ -6930,7 +7054,7 @@ msgid "Error while reading the WML: "
 msgstr "读取WML文件时出错： "
 
 #: src/game_initialization/playcampaign.cpp:348
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:308
 msgid "Game Over"
 msgstr "游戏结束"
 
@@ -7006,39 +7130,39 @@ msgstr[1] ""
 msgid "No visible sides found."
 msgstr "未找到可见的阵营。"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "In game:"
 msgstr "在游戏中："
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:112
+#: src/gui/dialogs/multiplayer/player_info.cpp:116
 msgid "(observing)"
 msgstr "（观察中）"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:114
+#: src/gui/dialogs/multiplayer/player_info.cpp:118
 msgid "(playing)"
 msgstr "（游戏中）"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:117
+#: src/gui/dialogs/multiplayer/player_info.cpp:121
 msgid "In lobby"
 msgstr "在大厅中"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:146
+#: src/gui/dialogs/multiplayer/player_info.cpp:150
 msgid "On friends list"
 msgstr "在好友列表中"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:151
+#: src/gui/dialogs/multiplayer/player_info.cpp:155
 msgid "On ignores list"
 msgstr "在忽略列表中"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:156
+#: src/gui/dialogs/multiplayer/player_info.cpp:160
 msgid "Neither a friend nor ignored"
 msgstr "非好友亦未忽略"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:161
+#: src/gui/dialogs/multiplayer/player_info.cpp:165
 msgid "You"
 msgstr "你"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:164
+#: src/gui/dialogs/multiplayer/player_info.cpp:168
 msgid "Error"
 msgstr "错误"
 
@@ -7947,13 +8071,13 @@ msgstr "没有可用的任务目标"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "正在撤销还没传输到服务器的操作。"
 
-#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:349
+#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:348
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "网络连接已断开，游戏无法继续进行。你想保存游戏吗？"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7961,7 +8085,7 @@ msgstr ""
 "\n"
 "你想要保存游戏吗？"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7969,7 +8093,7 @@ msgstr ""
 "游戏已结束。\n"
 "原因："
 
-#: src/playmp_controller.cpp:369
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7984,7 +8108,7 @@ msgstr ""
 "\n"
 "你要为你的游戏保存错误日志吗？"
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7993,11 +8117,11 @@ msgstr ""
 "此阵营处于空闲状态。若要继续游戏，必须指派另一位控制者来控制此阵营。例如，你"
 "可以使用:droid，:control或:give_control等命令。"
 
-#: src/playsingle_controller.cpp:153
+#: src/playsingle_controller.cpp:152
 msgid "Game Error"
 msgstr "游戏错误"
 
-#: src/playsingle_controller.cpp:154
+#: src/playsingle_controller.cpp:153
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -8006,11 +8130,11 @@ msgstr ""
 "此多人游戏使用了替代用的随机模式，如果你不知道这意味着什么，那就说明有人在作"
 "弊，或者重新载入了损坏的游戏存档。"
 
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:308
 msgid "The game is over."
 msgstr "游戏结束了。"
 
-#: src/playsingle_controller.cpp:442
+#: src/playsingle_controller.cpp:441
 msgid "It is now $name|’s turn"
 msgstr "现在是$name|的回合"
 
@@ -8845,7 +8969,7 @@ msgstr "崩前$year|年"
 msgid "$year AF"
 msgstr "崩后$year|年"
 
-#: src/wesnothd_connection.cpp:418
+#: src/wesnothd_connection.cpp:421
 msgid "Disconnected from server."
 msgstr "已与服务器断开链接。"
 
@@ -8868,6 +8992,16 @@ msgstr "隐藏$player的计划"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "白板选项"
+
+#, fuzzy
+#~| msgid "Sending add-on <i>$addon_title</i>..."
+#~ msgid ""
+#~ "Requesting the older version composition for the add-on <i>$addon_title</"
+#~ "i>..."
+#~ msgstr "正在发送附加组件<b>$addon_title</b>……"
+
+#~ msgid "Connection timed out"
+#~ msgstr "连接超时"
 
 #~ msgid "Cancel"
 #~ msgstr "取消"

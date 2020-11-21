@@ -120,7 +120,7 @@ gzip フォーマットのファイルを展開して .gz という拡張子を�
 レベルがほとんどのログ領域に使用されるが、 \fB\-d\fP オプションと組み合わせた場合を除いて \fBdeprecation\fPは \fBnone\fPである。
 .TP 
 \fB\-\-log\-precise\fP
-より正確なログファイルの時刻を表示する。
+shows the timestamps in log output with more precision.
 .TP 
 \fB\-\-log\-strict\fP
 ログ出力の厳密なレベルを設定する。このレベル以上に深刻なメッセージがログ領域に送られると、ユニットテストは勝利の結果にかかわらず失敗する。 \fB\-u\fP
@@ -197,21 +197,6 @@ by \fI\-\-output\fP.
 ターゲットのファイル内の前処理されたマクロを出力する。ファイルが指定されない場合、出力は前処理コマンド内のターゲットのディレクトリ内の「_MACROS_.cfg」ファイルとなる。出力ファイルは
 \fB\-\-preprocess\-input\-macros\fP に渡すこともできる。この切り替えは \fB\-\-preprocess\fP
 コマンドより前に記述されるべきである。
-.TP 
-\fB\-\-proxy\fP
-ネットワークコネクションにプロキシを使用する。
-.TP 
-\fB\-\-proxy\-address\fP\fI\ address\fP
-プロキシの \fIaddress\fP を指定する。
-.TP 
-\fB\-\-proxy\-port\fP\fI\ port\fP
-プロキシの \fIport\fP を指定する。
-.TP 
-\fB\-\-proxy\-user\fP\fI\ username\fP
-プロキシへのログイン用の \fIusername\fP を指定する。
-.TP 
-\fB\-\-proxy\-password\fP\fI\ password\fP
-プロキシへのログイン用の \fIpassword\fP を指定する。
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 画面解像度を指定する。例：\fB\-r\fP \fB800x600\fP
