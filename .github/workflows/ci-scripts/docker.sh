@@ -65,7 +65,7 @@ if [ "$NLS" == "only" ]; then
     scons update-po4a || exit 1
     echo "Ran scons update-po4a"
     scons manual || exit 1
-    echo "Ran scons manual"
+    exit 0
 elif [ "$IMAGE" == "flatpak" ]; then
 # docker's --volume means the directory is on a separate filesystem
 # flatpak-builder doesn't support this
