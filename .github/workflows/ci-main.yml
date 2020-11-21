@@ -25,10 +25,17 @@ jobs:
 
       - name: Ubuntu 20.04
         run: |
-          export HI="hi"
-          echo "HI: $HI"
-          echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }'
-          ./.github/workflows/ci-scripts/ubuntu.sh master 2004 false scons gcc g++ 17 release true
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=17
+          export CFG=release
+          export LTO=true
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
 
   linux-02-master:
     runs-on: ubuntu-20.04

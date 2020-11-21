@@ -1,16 +1,5 @@
 #!/bin/bash
 
-export BRANCH="$1"
-export IMAGE="$2"
-export NLS="$3"
-export TOOL="$4"
-export CC="$5"
-export CXX="$6"
-export CXX_STD="$7"
-export CFG="$8"
-export LTO="$9"
-export CACHE_DIR="/home/wesnoth-travis/build"
-
 echo "Using linux:"
 echo "BRANCH: $BRANCH"
 echo "IMAGE: $IMAGE"
@@ -22,7 +11,6 @@ echo "CXX_STD: $CXX_STD"
 echo "CFG: $CFG"
 echo "LTO: $LTO"
 echo "CACHE_DIR: $CACHE_DIR"
-echo "HI: $HI"
 
 echo FROM wesnoth/wesnoth:"$IMAGE"-"$BRANCH" > utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
 echo COPY ./ /home/wesnoth-travis/ >> utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
