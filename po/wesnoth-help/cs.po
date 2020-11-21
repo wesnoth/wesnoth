@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 01:40-0300\n"
-"PO-Revision-Date: 2020-10-10 14:10+0200\n"
+"PO-Revision-Date: 2020-11-16 18:41+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -1040,7 +1040,7 @@ msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
-"Řeka tekoucí ze <ref>dst='heart_mountains' text='Srdcových Hor'</ref>, která "
+"Řeka tekoucí ze <ref>dst='heart_mountains' text='Srdcových hor'</ref>, která "
 "se na západě vlévá do Listry."
 
 #. [topic]: id=great_river
@@ -1284,7 +1284,7 @@ msgstr ""
 "<header>text='Významná města'</header>:\n"
 "    • Weldyn: Hlavní město Wesnothu.\n"
 "    • Aldril: Město ležící v Zátoce perel.\n"
-"    • Přístav Temných Vod: Město ležící jižně od Zátoky perel.\n"
+"    • Přístav Temná Voda: Město ležící jižně od Zátoky perel.\n"
 "    • Carcyn: Leží mezi Šedým hvozdem a Vekou řekou.\n"
 "    • Dan’Tonk: Nejrozsáhlejší město Wesnothu ležící v centru země "
 "severozápadně od Weldynu.\n"
@@ -1312,7 +1312,7 @@ msgstr ""
 "ohraničená Glynovým lesem na západě a řekou Weldyn na východě; jižní část "
 "splývá s Centrální nížinou. Domov mocných klanů; nejlepší koně v celém "
 "Wesnothu se rodí tady.\n"
-"    • Východní Hory: Horské pásmo vystupující jižně od Velké řeky a východně "
+"    • Východní hory: Horské pásmo vystupující jižně od Velké řeky a východně "
 "od řeky Weldyn. Nejsevernější část, nejblíže řece Weldyn, byla mnohokrát "
 "osídlená lidmi z Wesnothu, ale kontrola nad touto oblastí je chatrná "
 "a ozbrojená přepadení jsou tu na denním pořádku.\n"
@@ -4769,8 +4769,8 @@ msgstr ""
 "Jednotka se dokáže ukrýt v hluboké vodě a zůstat nezpozorována svými "
 "nepřáteli.\n"
 "\n"
-"Nepřátelské jednotky nemohou tuto jednotku spatřit v hluboké vodě, pouze "
-"jsou-li na sousedních polích. Nepřátelská jednotka, která ji nalezne jako "
+"Nepřátelské jednotky nemohou tuto jednotku v hluboké vodě spatřit, dokud "
+"nejsou na sousedních polích. Nepřátelská jednotka, která ji nalezne jako "
 "první, ztrácí všechny své zbývající body pohybu."
 
 #. [dummy]: id=feeding
@@ -6624,7 +6624,7 @@ msgstr "Dunefolské ženy"
 #. [race]: id=dunefolk
 #: data/core/units.cfg:211
 msgid "race+plural^Dunefolk"
-msgstr "Dunefolkové"
+msgstr "Pouštní lidé"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:213
@@ -6857,19 +6857,16 @@ msgstr ""
 "divočině, hlubinách oceánu a dalších odlehlých místech světa. Většinou "
 "vystupují pouze v příbězích a snech obyvatel Wesnothu."
 
-# Nágy? Hadí lid?
 #. [race]: id=naga
 #: data/core/units.cfg:296
 msgid "race^Naga"
-msgstr "Naga"
+msgstr "Nága"
 
-# Nágy? Hadí lid?
 #. [race]: id=naga
 #: data/core/units.cfg:297
 msgid "race^Nagini"
-msgstr "Nagini"
+msgstr "Nága"
 
-# Nágy? Hadí lid?
 #. [race]: id=naga
 #: data/core/units.cfg:298
 msgid "race^Nagas"
@@ -7286,25 +7283,25 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 "Nemrtví nepředstavují opravdovou rasu tvorů, ale jsou tak často vnímáni. "
-"Dostatečně zkušený nekromancer dokáže oživit téměř každé mrtvé stvoření a "
-"učinit z něj nemrtvé. Nemrtví jsou nepřirozené výtvory, většinou bez vlastní "
-"vůle. Hlavní výhodou je, že poslouchají svého tvůrce bez pochyb a dotazů. "
-"Tajemstvím ovšem je, jak dokáží nekromanceři udržovat nemrtvé tvory bez "
-"nepřetržitého úsilí z jejich strany - nemrtví nevyžadují „údržbu“ častěji "
-"než jednou za několik měsíců, jinak slouží samostatně bez dalšího úsilí.\n"
+"Dostatečně zkušený nekromant dokáže oživit téměř každé mrtvé stvoření "
+"a učinit z něj nemrtvé. Nemrtví jsou nepřirozené výtvory, většinou bez "
+"vlastní vůle. Hlavní výhodou je, že poslouchají svého tvůrce bez pochyb "
+"a dotazů. Tajemstvím ovšem je, jak dokáží nekromanti udržovat nemrtvé tvory "
+"bez nepřetržitého úsilí z jejich strany – nemrtví nevyžadují „údržbu“ "
+"častěji než jednou za několik měsíců, jinak slouží samostatně bez dalšího "
+"úsilí.\n"
 "\n"
 "Nekromancii praktikují téměř bez výjimky pouze lidé. Ani legendy magicky "
-"zdatných ras, například elfů a mořského lidu, nezmiňují mnoho případů, kdy "
+"zdatných ras, například elfů a mořského lidu, nezmiňují mnoho případů, kdy "
 "by se do tajů temného učení ponořili jejich členové. Obecně je "
-"předpokládáno, že nekromancie vyžaduje velmi přizpůsobivou mysl - a tuto "
-"vlastnost vykazují nejvíce lidé. Cílem většiny nekromancerů je dokázat "
-"obrátit toto umění vdechování a udržování „života“ na sebe, i za jakoukoli "
-"cenu se transformovat a uprchnout tak navěky smrti uchováním vlastní mysli a "
-"ducha.\n"
+"předpokládáno, že nekromancie vyžaduje velmi přizpůsobivou mysl – a tuto "
+"vlastnost vykazují nejvíce lidé. Cílem většiny nekromantů je dokázat obrátit "
+"toto umění vdechování a udržování „života“ na sebe, i za jakoukoli cenu se "
+"transformovat a uprchnout tak navěky smrti uchováním vlastní mysli a ducha.\n"
 "\n"
 "<header>text='Zeměpis'</header>\n"
-"Ačkoli se Pánové nemrtvých na Velkém kontinentě objevili ve větších počtech "
-"až s příchodem Haldrika I., nebyli už předtím elfům a trpaslíkům neznámí."
+"Ačkoli se páni nemrtvých na Velkém kontinentě objevili ve větších počtech až "
+"s příchodem Haldrika I., nebyli už předtím elfům a trpaslíkům neznámí."
 
 #. [race]: id=wolf
 #: data/core/units.cfg:380

@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 01:40-0300\n"
-"PO-Revision-Date: 2020-10-11 09:09+0200\n"
+"PO-Revision-Date: 2020-11-12 21:21+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -4240,21 +4240,16 @@ msgstr "Prohra:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
-#| msgid_plural "(%d turns left)"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
-msgstr[0] "(zbývá tento tah)"
-msgstr[1] "(zbývají %d tahy)"
-msgstr[2] "(zbývá %d tahů)"
+msgstr[0] "(zbývá toto kolo)"
+msgstr[1] "(zbývají $remaining_turns kola)"
+msgstr[2] "(zbývá $remaining_turns kol)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
-#, fuzzy
-#| msgid "%d%% of gold carried over to the next scenario."
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr "%d%% zlata přeneseno do dalšího scénáře."
+msgstr "$percent % zlata přeneseno do dalšího scénáře."
 
 #. [modification]: id=delay_advancements, type=hybrid
 #: data/modifications.cfg:3
@@ -4584,7 +4579,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:17 data/tips.cfg:149
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>― Velký Mág Delfador, 516 R. W.</i>"
+msgstr "<i>― velký mág Delfador, 516 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:20
@@ -4627,7 +4622,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:25
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "<i>― Král Konrád, 536 R. W.</i>"
+msgstr "<i>― král Konrád, 536 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:28
@@ -4646,7 +4641,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>― Gweddryho záznamy, 627 R. W.</i>"
+msgstr "<i>― Gweddryho záznamy, 627 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:32
@@ -4686,7 +4681,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:226 data/tips.cfg:238
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>― Nejvyšší lord Kalenz, 470 R. W.</i>"
+msgstr "<i>― nejvyšší lord Kalenz, 470 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:44
@@ -4721,7 +4716,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:53
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "<i>― Komunita Wesnothu</i>"
+msgstr "<i>― komunita Wesnothu</i>"
 
 #. [tip]
 #: data/tips.cfg:56
@@ -4740,7 +4735,7 @@ msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
 msgstr ""
 "<i>― Královské kompendium válečné terminologie, svazek II (přetisk z r. 221 "
-"R. W.)</i>"
+"w. l.)</i>"
 
 #. [tip]
 #: data/tips.cfg:60
@@ -4752,7 +4747,7 @@ msgstr "I jinak skvělý plán selže, pokud zaútočíš v nevhodnou denní dob
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
 #: data/tips.cfg:230
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 R. W.</i>"
+msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:64
@@ -4860,7 +4855,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:89
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 R. W.</i>"
+msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:92
@@ -4909,7 +4904,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:105 data/tips.cfg:189
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "<i>― Sir Kaylan, 498 R. W.</i>"
+msgstr "<i>― sir Kaylan, 498 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:108
@@ -4924,7 +4919,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:109
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "<i>― Sir Kaylan, 502 R. W.</i>"
+msgstr "<i>― sir Kaylan, 502 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:112
@@ -4975,7 +4970,7 @@ msgstr "Neboj se ustoupit a přeskupit; je to často klíčem k vítězství."
 #. [tip]
 #: data/tips.cfg:129
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "<i>― Meneldur, 123 R. W.</i>"
+msgstr "<i>― Meneldur, 123 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:132
@@ -5051,7 +5046,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:153
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>― Kai Laudiss, 623 R. W.</i>"
+msgstr "<i>― Kai Laudiss, 623 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -5061,7 +5056,7 @@ msgstr "Chraň zraněné jednotky řadou jednotek, abys jim umožnil zotavit se.
 #. [tip]
 #: data/tips.cfg:157
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>― princezna Lisar, 515 R. W.</i>"
+msgstr "<i>― princezna Lisar, 515 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:160
@@ -5099,7 +5094,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:173 data/tips.cfg:218
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>― Svitky Chantal, 516 R. W.</i>"
+msgstr "<i>― Svitky Chantal, 516 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:176
@@ -5119,7 +5114,7 @@ msgstr "<i>Nezemské</i> útoky jsou velmi účinné proti nemrtvým."
 #. [tip]
 #: data/tips.cfg:181
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>― Velký mudřec Dacyn, 626 R. W.</i>"
+msgstr "<i>― velký mudřec Dacyn, 626 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:184
@@ -5179,7 +5174,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:201
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>― královna Lisar, 528 R. W.</i>"
+msgstr "<i>― královna Lisar, 528 w. l.</i>"
 
 #. [tip]
 #. Whiteboard is another name for the Planning Mode
@@ -5294,7 +5289,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:234 data/tips.cfg:246
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "<i>― Lord Hamel z Knalgy</i>"
+msgstr "<i>― lord Hamel z Knalgy</i>"
 
 #. [tip]
 #: data/tips.cfg:237
@@ -5359,7 +5354,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:254
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― královna Ašvíra, 503 R. W.</i>"
+msgstr "<i>― královna Ašvíra, 503 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:257
@@ -5380,21 +5375,21 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:262
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Sir Gerrick z Westinu, 607 R. W.</i>"
+msgstr "<i>― sir Gerrick z Westinu, 607 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:266
 msgid ""
 "Some types of terrain give unique bonuses, such as healing or illumination."
 msgstr ""
+"Některé typy terénu poskytují jedinečné bonusy jako uzdravování nebo "
+"osvětlení."
 
 #. [tip]
 #. Translate the word "Flight" as a collective noun for drakes
 #: data/tips.cfg:268
-#, fuzzy
-#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>― Vank z Galunovy letky, 6 R. W.</i>"
+msgstr "<i>― Galun, velitel letky, 5 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5409,10 +5404,8 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:272
-#, fuzzy
-#| msgid "<i>― Lord Hamel of Knalga</i>"
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr "<i>― Lord Hamel z Knalgy</i>"
+msgstr "<i>― lord Tallin z Knalgy, 538 w. l.</i>"
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -7973,7 +7966,7 @@ msgstr "Národ: "
 
 #: src/reports.cpp:232
 msgid "Side: <b>$side_name</b> ($color_name)"
-msgstr ""
+msgstr "Strana: <b>$side_name</b> ($color_name)"
 
 #: src/reports.cpp:310
 msgid "Trait: "
@@ -8210,14 +8203,10 @@ msgid "Turn Number"
 msgstr "Číslo kola"
 
 #: src/reports.cpp:1391
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
-msgstr "Když hra dosáhne počtu kol, který je dán druhým číslem, tak skončí."
+msgstr "Když hra přesáhne počet kol, který je dán druhým číslem, tak skončí."
 
 #: src/reports.cpp:1416
 msgid "Gold"
@@ -8771,22 +8760,22 @@ msgstr "$effect_description na úroveň"
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:59
 msgid "$year BW"
-msgstr "$year P. W."
+msgstr "$year př. w. l."
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr "$year R. W."
+msgstr "$year w. l."
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr "$year Př. P."
+msgstr "$year př. P."
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr "$year Po. P."
+msgstr "$year po P."
 
 #: src/wesnothd_connection.cpp:421
 msgid "Disconnected from server."

@@ -1,6 +1,6 @@
 ## Version 1.15.7+dev
  ### Translations
-   * Updated translations: British English
+   * Updated translations: British English, Czech
 
 ## Version 1.15.7
  ### Add-ons server
