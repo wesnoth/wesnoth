@@ -303,6 +303,6 @@ jobs:
 
       - name: macOS Release
         run: |
-          export CFG=release
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CFG=Release
+          export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh

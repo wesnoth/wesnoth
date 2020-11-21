@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo ~
+echo $PWD
+
 HOMEBREW_NO_AUTO_UPDATE=1 brew install ccache scons
 export PATH="/usr/local/opt/gettext/bin:/usr/local/opt/ccache/libexec:$PWD/utils/travis:$PATH"
 export CC=ccache-clang
