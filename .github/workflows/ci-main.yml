@@ -101,3 +101,60 @@ jobs:
 
       - name: Ubuntu 18.04
         run: ./.github/workflows/ci-scripts/ubuntu.sh master 1804 false scons gcc g++ 14 release false
+
+  linux-06-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-06-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-06-master
+
+      - name: Steam Runtime
+        run: ./.github/workflows/ci-scripts/ubuntu.sh master steamrt false scons gcc-5 g++-5 14 release false
+
+  linux-07-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-07-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-07-master
+
+      - name: MinGW Crosscompile
+        run: ./.github/workflows/ci-scripts/ubuntu.sh master mingw false scons gcc g++ 14 release false
+
+  linux-08-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-08-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-08-master
+
+      - name: Flatpak
+        run: ./.github/workflows/ci-scripts/ubuntu.sh master flatpak false scons gcc g++ 14 release false

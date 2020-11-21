@@ -41,11 +41,31 @@ EXIT_VAL=-1
 if [ "$NLS" == "only" ]; then
     echo "TODO"
 elif [ "$IMAGE" == "flatpak" ]; then
-    echo "TODO"
+# docker's --volume means the directory is on a separate filesystem
+# flatpak-builder doesn't support this
+# therefore manually move stuff between where flatpak needs it and where travis' caching can see it
+    rm -R .flatpak-builder/*
+    cp -R "$CACHE_DIR"/. .flatpak-builder/
+    jq '.modules[2].sources[0]={"type":"dir","path":"/home/wesnoth-travis"} | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > utils/dockerbuilds/travis/org.wesnoth.Wesnoth.json
+    flatpak-builder --ccache --force-clean --disable-rofiles-fuse wesnoth-app utils/dockerbuilds/travis/org.wesnoth.Wesnoth.json
+    EXIT_VAL=$?
+    rm -R "$CACHE_DIR"/*
+    cp -R .flatpak-builder/. "$CACHE_DIR"/
+    chmod -R 777 "$CACHE_DIR"/
+    exit $EXIT_VAL
 elif [ "$IMAGE" == "mingw" ]; then
-    echo "TODO"
+    scons wesnoth wesnothd build="$CFG" \
+        cxx_std=$CXX_STD strict=false \
+        nls=false enable_lto="$LTO" jobs=2 --debug=time \
+        arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32
+    EXIT_VAL=$?
+    exit $EXIT_VAL
 elif [ "$IMAGE" == "steamrt" ]; then
-    echo "TODO"
+    scons ctool=$CC cxxtool=$CXX boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt \
+        cxx_std=$CXX_STD strict=true nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time \
+        build="$CFG"
+    EXIT_VAL=$?
+    exit $EXIT_VAL
 else
     if [ "$TOOL" == "cmake" ]; then
         export CCACHE_MAXSIZE=3000M
