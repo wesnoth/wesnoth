@@ -357,4 +357,5 @@ jobs:
         run: |
           export CFG=Release
           export CACHE_DIR=~/build-cache
+          where choco
           ./.github/workflows/ci-scripts/windows.sh
