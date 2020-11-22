@@ -42,7 +42,7 @@ private:
 	/** Enable the addon remove button? */
 	bool allow_remove_;
 
-	void help_button_callback(window& window);
+	void help_button_callback();
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

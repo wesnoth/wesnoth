@@ -48,7 +48,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void damage_calc_callback(window& window);
+	void damage_calc_callback();
 
 	/** The index of the selected weapon. */
 	int selected_weapon_;

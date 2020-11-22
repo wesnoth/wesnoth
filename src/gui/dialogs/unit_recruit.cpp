@@ -116,7 +116,7 @@ void unit_recruit::pre_show(window& window)
 
 	listbox& list = find_widget<listbox>(&window, "recruit_list", false);
 
-	connect_signal_notify_modified(list, std::bind(&unit_recruit::list_item_clicked, this, std::ref(window)));
+	connect_signal_notify_modified(list, std::bind(&unit_recruit::list_item_clicked, this));
 
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&list);
@@ -161,19 +161,19 @@ void unit_recruit::pre_show(window& window)
 		}
 	}
 
-	list_item_clicked(window);
+	list_item_clicked();
 }
 
-void unit_recruit::list_item_clicked(window& window)
+void unit_recruit::list_item_clicked()
 {
 	const int selected_row
-		= find_widget<listbox>(&window, "recruit_list", false).get_selected_row();
+		= find_widget<listbox>(get_window(), "recruit_list", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
 	}
 
-	find_widget<unit_preview_pane>(&window, "recruit_details", false)
+	find_widget<unit_preview_pane>(get_window(), "recruit_details", false)
 		.set_displayed_type(*recruit_list_[selected_row]);
 }
 

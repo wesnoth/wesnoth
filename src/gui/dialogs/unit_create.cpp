@@ -115,7 +115,7 @@ void unit_create::pre_show(window& window)
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&list);
 
-	connect_signal_notify_modified(list, std::bind(&unit_create::list_item_clicked, this, std::ref(window)));
+	connect_signal_notify_modified(list, std::bind(&unit_create::list_item_clicked, this));
 
 	list.clear();
 
@@ -157,7 +157,7 @@ void unit_create::pre_show(window& window)
 	// Select the first entry on sort if no previous selection was provided.
 	list.set_active_sorting_option({0, preferences::SORT_ORDER::ASCENDING}, choice_.empty());
 
-	list_item_clicked(window);
+	list_item_clicked();
 }
 
 void unit_create::post_show(window& window)
@@ -207,10 +207,10 @@ void unit_create::update_displayed_type() const
 	find_widget<unit_preview_pane>(w, "unit_details", false).set_displayed_type(*ut);
 }
 
-void unit_create::list_item_clicked(window& window)
+void unit_create::list_item_clicked()
 {
 	const int selected_row
-		= find_widget<listbox>(&window, "unit_type_list", false).get_selected_row();
+		= find_widget<listbox>(get_window(), "unit_type_list", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
@@ -222,7 +222,7 @@ void unit_create::list_item_clicked(window& window)
 		return units_[selected_row]->has_gender_variation(gender);
 	});
 
-	menu_button& var_box = find_widget<menu_button>(&window, "variation_box", false);
+	menu_button& var_box = find_widget<menu_button>(get_window(), "variation_box", false);
 	std::vector<config> var_box_values;
 	var_box_values.emplace_back("label", _("unit_variation^Default Variation"), "variation_id", "");
 

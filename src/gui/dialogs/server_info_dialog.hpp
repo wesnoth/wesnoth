@@ -46,7 +46,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	void tab_switch_callback(window& window);
+	void tab_switch_callback();
 
 	const std::string& server_information_;
 	const std::string& announcements_;

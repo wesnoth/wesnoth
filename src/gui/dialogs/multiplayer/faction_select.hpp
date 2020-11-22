@@ -54,15 +54,15 @@ private:
 	virtual void post_show(window& window) override;
 
 	/** Callbacks */
-	void on_faction_select(window& window);
+	void on_faction_select();
 
-	void on_leader_select(window& window);
+	void on_leader_select();
 
-	void profile_button_callback(window& window);
+	void profile_button_callback();
 
-	void on_gender_select(window& window);
+	void on_gender_select();
 
-	void update_leader_image(window& window);
+	void update_leader_image();
 };
 
 } // namespace dialogs

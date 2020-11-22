@@ -66,14 +66,14 @@ namespace dialogs
 
 REGISTER_DIALOG(core_selection)
 
-void core_selection::core_selected(window& window)
+void core_selection::core_selected()
 {
 	const int selected_row
-			= find_widget<listbox>(&window, "core_list", false)
+			= find_widget<listbox>(get_window(), "core_list", false)
 					  .get_selected_row();
 
 	multi_page& pages
-			= find_widget<multi_page>(&window, "core_details", false);
+			= find_widget<multi_page>(get_window(), "core_details", false);
 
 	pages.select_page(selected_row);
 }
@@ -83,7 +83,7 @@ void core_selection::pre_show(window& window)
 	/***** Setup core list. *****/
 	listbox& list = find_widget<listbox>(&window, "core_list", false);
 
-	connect_signal_notify_modified(list, std::bind(&core_selection::core_selected, this, std::ref(window)));
+	connect_signal_notify_modified(list, std::bind(&core_selection::core_selected, this));
 
 	window.keyboard_capture(&list);
 
@@ -118,7 +118,7 @@ void core_selection::pre_show(window& window)
 	}
 	list.select_row(choice_, true);
 
-	core_selected(window);
+	core_selected();
 }
 
 void core_selection::post_show(window& window)

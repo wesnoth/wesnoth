@@ -41,7 +41,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	void on_topic_select(window& window);
+	void on_topic_select();
 };
 
 } // namespace dialogs

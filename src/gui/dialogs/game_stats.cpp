@@ -239,19 +239,19 @@ void game_stats::pre_show(window& window)
 
 	window.keyboard_capture(&tab_bar);
 
-	connect_signal_notify_modified(tab_bar, std::bind(&game_stats::on_tab_select, this, std::ref(window)));
+	connect_signal_notify_modified(tab_bar, std::bind(&game_stats::on_tab_select, this));
 
-	on_tab_select(window);
+	on_tab_select();
 }
 
-void game_stats::on_tab_select(window& window)
+void game_stats::on_tab_select()
 {
-	const int i = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
+	const int i = find_widget<listbox>(get_window(), "tab_bar", false).get_selected_row();
 
-	find_widget<stacked_widget>(&window, "pager", false).select_layer(i);
+	find_widget<stacked_widget>(get_window(), "pager", false).select_layer(i);
 
 	// There are only two tabs, so this is simple
-	find_widget<label>(&window, "title", false).set_label(
+	find_widget<label>(get_window(), "title", false).set_label(
 		i == 0 ? _("Current Status") : _("Scenario Settings")
 	);
 }

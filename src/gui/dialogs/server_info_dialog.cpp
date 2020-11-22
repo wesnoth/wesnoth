@@ -47,13 +47,13 @@ void server_info::pre_show(window& window)
 
 	VALIDATE(tab_bar.get_item_count() == pager.get_layer_count(), "Tab bar and container size mismatch");
 
-	connect_signal_notify_modified(tab_bar, std::bind(&server_info::tab_switch_callback, this, std::ref(window)));
+	connect_signal_notify_modified(tab_bar, std::bind(&server_info::tab_switch_callback, this));
 }
 
-void server_info::tab_switch_callback(window& window)
+void server_info::tab_switch_callback()
 {
-	stacked_widget& pager = find_widget<stacked_widget>(&window, "tabs_container", false);
-	listbox& tab_bar = find_widget<listbox>(&window, "tab_bar", false);
+	stacked_widget& pager = find_widget<stacked_widget>(get_window(), "tabs_container", false);
+	listbox& tab_bar = find_widget<listbox>(get_window(), "tab_bar", false);
 
 	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
 }
