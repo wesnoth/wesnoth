@@ -349,8 +349,9 @@ jobs:
         with:
           distribution: Ubuntu-20.04
 
-      - shell: cmd
-        run: where choco.exe
+      - name: Choco installing
+        shell: cmd
+        run: choco.exe install sqlite
 
       - name: Windows Release
         shell: wsl-bash {0}
