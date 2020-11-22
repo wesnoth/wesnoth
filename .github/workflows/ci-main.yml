@@ -332,10 +332,6 @@ jobs:
   windows-01-master:
     runs-on: windows-2019
 
-    defaults:
-      run:
-        shell: wsl-bash {0}
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -353,9 +349,11 @@ jobs:
         with:
           distribution: Ubuntu-20.04
 
+      - run: where choco.exe
+
       - name: Windows Release
+        shell: wsl-bash {0}
         run: |
           export CFG=Release
           export CACHE_DIR=~/build-cache
-          where choco
           ./.github/workflows/ci-scripts/windows.sh
