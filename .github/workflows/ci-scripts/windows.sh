@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-
 which choco
 which python
 which python2
