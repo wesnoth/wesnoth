@@ -362,4 +362,7 @@ jobs:
           export CFG=Release
           export CACHE_DIR=~/build-cache
           export PATH="/mnt/c/ProgramData/chocolatey/lib/SQLite/tools/sqlite-tools-win32-x86-3330000:$PATH"
+          sudo apt update
+          sudo apt install dos2unix
+          dos2unix .github/workflows/ci-scripts/windows.sh
           ./.github/workflows/ci-scripts/windows.sh
