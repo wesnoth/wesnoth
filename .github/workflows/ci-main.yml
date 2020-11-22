@@ -349,7 +349,8 @@ jobs:
         with:
           distribution: Ubuntu-20.04
 
-      - run: where choco.exe
+      - shell: cmd
+        run: where choco.exe
 
       - name: Windows Release
         shell: wsl-bash {0}
