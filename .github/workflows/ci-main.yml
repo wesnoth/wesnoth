@@ -358,5 +358,5 @@ jobs:
         run: |
           export CFG=Release
           export CACHE_DIR=~/build-cache
-          ls -Al /mnt/c/ProgramData/chocolatey/lib/SQLite/tools
+          ls -Al /mnt/c/ProgramData/chocolatey/lib/SQLite/tools/sqlite-tools-win32-x86-3330000
           ./.github/workflows/ci-scripts/windows.sh
