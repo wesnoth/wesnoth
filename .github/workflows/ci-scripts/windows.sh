@@ -3,4 +3,5 @@ echo "choco: $(which choco)"
 echo "python: $(which python)"
 echo "python2: $(which python2)"
 echo "python3: $(which python3)"
-echo "sqlite: $(which sqlite)"
+echo "sqlite3: $(which sqlite3)"
+find /mnt/c -name 'sqlite*'
