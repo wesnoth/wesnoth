@@ -75,7 +75,7 @@ private:
 
 	void mod_toggled();
 
-	void filter_text_changed(text_box_base* textbox, const std::string &text);
+	void filter_text_changed(const std::string &text);
 
 	ng::create_engine& engine_;
 

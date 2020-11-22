@@ -51,7 +51,7 @@ private:
 	/** Update (both internally and visually) the list of games. */
 	void populate_game_list(window& window);
 
-	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void filter_text_changed(const std::string& text);
 	void browse_button_callback();
 	void delete_button_callback(window& window);
 	void handle_dir_select(window& window);

@@ -167,7 +167,7 @@ void unit_recall::pre_show(window& window)
 			= find_widget<text_box>(&window, "filter_box", false, true);
 
 	filter->set_text_changed_callback(
-			std::bind(&unit_recall::filter_text_changed, this, _1, _2));
+			std::bind(&unit_recall::filter_text_changed, this, _2));
 
 	listbox& list = find_widget<listbox>(&window, "recall_list", false);
 
@@ -438,11 +438,9 @@ void unit_recall::post_show(window& window)
 	}
 }
 
-void unit_recall::filter_text_changed(text_box_base* textbox, const std::string& text)
+void unit_recall::filter_text_changed(const std::string& text)
 {
-	window& window = *textbox->get_window();
-
-	listbox& list = find_widget<listbox>(&window, "recall_list", false);
+	listbox& list = find_widget<listbox>(get_window(), "recall_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -474,8 +472,8 @@ void unit_recall::filter_text_changed(text_box_base* textbox, const std::string&
 
 	// Disable rename and dismiss buttons if no units are shown
 	const bool any_shown = list.any_rows_shown();
-	find_widget<button>(&window, "rename", false).set_active(any_shown);
-	find_widget<button>(&window, "dismiss", false).set_active(any_shown);
+	find_widget<button>(get_window(), "rename", false).set_active(any_shown);
+	find_widget<button>(get_window(), "dismiss", false).set_active(any_shown);
 }
 
 } // namespace dialogs

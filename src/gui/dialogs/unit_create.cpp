@@ -110,7 +110,7 @@ void unit_create::pre_show(window& window)
 			= find_widget<text_box>(&window, "filter_box", false, true);
 
 	filter->set_text_changed_callback(
-			std::bind(&unit_create::filter_text_changed, this, _1, _2));
+			std::bind(&unit_create::filter_text_changed, this, _2));
 
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&list);
@@ -264,11 +264,9 @@ void unit_create::list_item_clicked()
 	var_box.set_values(var_box_values, selection);
 }
 
-void unit_create::filter_text_changed(text_box_base* textbox, const std::string& text)
+void unit_create::filter_text_changed(const std::string& text)
 {
-	window& window = *textbox->get_window();
-
-	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
+	listbox& list = find_widget<listbox>(get_window(), "unit_type_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 

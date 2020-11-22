@@ -56,7 +56,7 @@ private:
 
 	/** Callbacks */
 	void list_item_clicked();
-	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void filter_text_changed(const std::string& text);
 	void rename_unit();
 	void dismiss_unit();
 	void show_help();

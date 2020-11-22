@@ -125,7 +125,7 @@ void game_load::pre_show(window& window)
 
 	text_box* filter = find_widget<text_box>(&window, "txtFilter", false, true);
 
-	filter->set_text_changed_callback(std::bind(&game_load::filter_text_changed, this, _1, _2));
+	filter->set_text_changed_callback(std::bind(&game_load::filter_text_changed, this, _2));
 
 	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
 
@@ -330,11 +330,9 @@ void game_load::display_savegame(window& window)
 	}
 }
 
-void game_load::filter_text_changed(text_box_base* textbox, const std::string& text)
+void game_load::filter_text_changed(const std::string& text)
 {
-	window& window = *textbox->get_window();
-
-	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
+	listbox& list = find_widget<listbox>(get_window(), "savegame_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -372,10 +370,10 @@ void game_load::filter_text_changed(text_box_base* textbox, const std::string& t
 	const bool any_shown = list.any_rows_shown();
 
 	// Disable Load button if no games are available
-	find_widget<button>(&window, "ok", false).set_active(any_shown);
+	find_widget<button>(get_window(), "ok", false).set_active(any_shown);
 
 	// Disable 'Enter' loading if no games are available
-	window.set_enter_disabled(!any_shown);
+	get_window()->set_enter_disabled(!any_shown);
 }
 
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)

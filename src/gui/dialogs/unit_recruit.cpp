@@ -66,11 +66,9 @@ static inline std::string gray_if_unrecruitable(const std::string& text, const b
 }
 
 // Compare unit_create::filter_text_change
-void unit_recruit::filter_text_changed(text_box_base* textbox, const std::string& text)
+void unit_recruit::filter_text_changed(const std::string& text)
 {
-	window& window = *textbox->get_window();
-
-	listbox& list = find_widget<listbox>(&window, "recruit_list", false);
+	listbox& list = find_widget<listbox>(get_window(), "recruit_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -112,7 +110,7 @@ void unit_recruit::pre_show(window& window)
 {
 	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
 	filter->set_text_changed_callback(
-			std::bind(&unit_recruit::filter_text_changed, this, _1, _2));
+			std::bind(&unit_recruit::filter_text_changed, this, _2));
 
 	listbox& list = find_widget<listbox>(&window, "recruit_list", false);
 

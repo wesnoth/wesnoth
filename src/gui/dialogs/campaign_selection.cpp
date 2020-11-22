@@ -232,7 +232,7 @@ void campaign_selection::toggle_sorting_selection(CAMPAIGN_ORDER order)
 	sort_campaigns(current_sorting_, currently_sorted_asc_);
 }
 
-void campaign_selection::filter_text_changed(text_box_base* textbox, const std::string& text)
+void campaign_selection::filter_text_changed(const std::string& text)
 {
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -248,7 +248,7 @@ void campaign_selection::pre_show(window& window)
 {
 	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
 	filter->set_text_changed_callback(
-			std::bind(&campaign_selection::filter_text_changed, this, _1, _2));
+			std::bind(&campaign_selection::filter_text_changed, this, _2));
 
 	/***** Setup campaign tree. *****/
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
