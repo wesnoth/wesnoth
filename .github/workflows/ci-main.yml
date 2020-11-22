@@ -353,6 +353,9 @@ jobs:
         shell: cmd
         run: choco.exe install sqlite
 
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
       - name: Windows Release
         shell: wsl-bash {0}
         run: |
