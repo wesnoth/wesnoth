@@ -1,4 +1,7 @@
 #!/usr/bin/bash
 
-echo "hello world"
-echo "CFG: $CFG"
+which choco
+which python
+which python2
+which python3
+which sqlite
