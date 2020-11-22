@@ -9,6 +9,7 @@
  ### Units
  ### User interface
  ### WML Engine
+   * Add a overwrite_specials option for abilities like weapon could overwrite specials or other ablities like weapon
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.15.7
@@ -48,8 +49,6 @@
  ### User interface
    * Added the installable/upgradable version selection to the add-ons manager via a dropdown list
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
- ### WML Engine
-   * Add a overwrite_specials option for abilities like weapon could overwrite specials or other ablities like weapon
  ### Miscellaneous and Bug Fixes
    * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
    * Fixed a potential crash when drawing many images on the story screens.
