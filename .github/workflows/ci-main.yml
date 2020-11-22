@@ -357,11 +357,4 @@ jobs:
         run: |
           export CFG=Release
           export CACHE_DIR=~/build-cache
-          echo ~
-          echo $PWD
-          pwd
-          ls -Al
-          ls -AlR .github/workflows/ci-scripts/
-          which bash
-          which wsl-bash
           ./.github/workflows/ci-scripts/windows.sh
