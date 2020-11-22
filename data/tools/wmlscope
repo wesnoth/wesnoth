@@ -364,7 +364,7 @@ class CrossRefLister(CrossRef):
                         line = line.lstrip()
                         if line and line.startswith("#textdomain"):
                             continue
-                        if line and line[0] == '#':
+                        if line and line[0] == '#' and (not line.startswith("#define")):
                             hdr.append(line[1:])
                         else:
                             break
