@@ -81,10 +81,10 @@ void mp_change_control::pre_show(window& window)
 	listbox& nicks_list = find_widget<listbox>(&window, "nicks_list", false);
 
 	connect_signal_notify_modified(sides_list,
-		std::bind(&mp_change_control::handle_sides_list_item_clicked, this, std::ref(window)));
+		std::bind(&mp_change_control::handle_sides_list_item_clicked, this));
 
 	connect_signal_notify_modified(nicks_list,
-		std::bind(&mp_change_control::handle_nicks_list_item_clicked, this, std::ref(window)));
+		std::bind(&mp_change_control::handle_nicks_list_item_clicked, this));
 
 	//
 	// Initialize sides list
@@ -147,25 +147,25 @@ void mp_change_control::pre_show(window& window)
 		nicks_list.add_row(data);
 	}
 
-	handle_sides_list_item_clicked(window);
-	handle_nicks_list_item_clicked(window);
+	handle_sides_list_item_clicked();
+	handle_nicks_list_item_clicked();
 }
 
-void mp_change_control::handle_sides_list_item_clicked(window& window)
+void mp_change_control::handle_sides_list_item_clicked()
 {
-	selected_side_ = find_widget<listbox>(&window, "sides_list", false).get_selected_row();
+	selected_side_ = find_widget<listbox>(get_window(), "sides_list", false).get_selected_row();
 
-	highlight_side_nick(window);
+	highlight_side_nick();
 }
 
-void mp_change_control::handle_nicks_list_item_clicked(window& window)
+void mp_change_control::handle_nicks_list_item_clicked()
 {
-	selected_nick_ = find_widget<listbox>(&window, "nicks_list", false).get_selected_row();
+	selected_nick_ = find_widget<listbox>(get_window(), "nicks_list", false).get_selected_row();
 }
 
-void mp_change_control::highlight_side_nick(window& window)
+void mp_change_control::highlight_side_nick()
 {
-	listbox& nicks_list = find_widget<listbox>(&window, "nicks_list", false);
+	listbox& nicks_list = find_widget<listbox>(get_window(), "nicks_list", false);
 	const auto& teams = menu_handler_.board().teams();
 
 	int i = 0;

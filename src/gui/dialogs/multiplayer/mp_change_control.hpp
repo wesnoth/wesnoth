@@ -46,10 +46,10 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void handle_sides_list_item_clicked(window& window);
-	void handle_nicks_list_item_clicked(window& window);
+	void handle_sides_list_item_clicked();
+	void handle_nicks_list_item_clicked();
 
-	void highlight_side_nick(window& window);
+	void highlight_side_nick();
 
 	events::menu_handler& menu_handler_;
 

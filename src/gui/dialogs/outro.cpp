@@ -99,10 +99,10 @@ void outro::pre_show(window& window)
 	window.set_enter_disabled(true);
 	window.get_canvas(0).set_variable("outro_text", wfl::variant(*current_text_));
 
-	connect_signal_on_draw(window, std::bind(&outro::draw_callback, this, std::ref(window)));
+	connect_signal_on_draw(window, std::bind(&outro::draw_callback, this));
 }
 
-void outro::draw_callback(window& window)
+void outro::draw_callback()
 {
 	/* If we've faded fully in...
 	 *
@@ -119,7 +119,7 @@ void outro::draw_callback(window& window)
 		return;
 	}
 
-	canvas& window_canvas = window.get_canvas(0);
+	canvas& window_canvas = get_window()->get_canvas(0);
 
 	// If we've faded fully out...
 	if(!fading_in_ && fade_step_ < 0) {
@@ -127,7 +127,7 @@ void outro::draw_callback(window& window)
 
 		// ...and we've just showed the last text bit, close the window.
 		if(current_text_ == text_.end()) {
-			window.close();
+			get_window()->close();
 			return;
 		}
 
@@ -144,7 +144,7 @@ void outro::draw_callback(window& window)
 	window_canvas.set_variable("fade_step", wfl::variant(fade_step_));
 	window_canvas.set_is_dirty(true);
 
-	window.set_is_dirty(true);
+	get_window()->set_is_dirty(true);
 
 	if(fading_in_) {
 		fade_step_++;

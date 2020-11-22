@@ -49,7 +49,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void draw_callback(window& window);
+	void draw_callback();
 
 	std::vector<std::string> text_;
 	std::vector<std::string>::iterator current_text_;

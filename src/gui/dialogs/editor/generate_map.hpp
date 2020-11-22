@@ -53,7 +53,7 @@ private:
 	virtual void pre_show(window& window) override;
 
 	/** Callback for generator list selection changes. */
-	void do_generator_selected(window& window);
+	void do_generator_selected();
 
 	/** Callback for the generator settings button. */
 	void do_settings();

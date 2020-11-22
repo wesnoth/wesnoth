@@ -54,27 +54,27 @@ private:
 
 	void update_current_part_ptr();
 
-	void display_part(window& window);
+	void display_part();
 
 	using floating_image_list = std::vector<storyscreen::floating_image>;
-	void draw_floating_image(window& window, floating_image_list::const_iterator image_iter, int this_part_index);
+	void draw_floating_image(floating_image_list::const_iterator image_iter, int this_part_index);
 
 	enum NAV_DIRECTION {
 		DIR_FORWARD,
 		DIR_BACKWARDS
 	};
 
-	void nav_button_callback(window& window, NAV_DIRECTION direction);
+	void nav_button_callback( NAV_DIRECTION direction);
 
-	void key_press_callback(window& window, const SDL_Keycode key);
+	void key_press_callback(const SDL_Keycode key);
 
 	void set_next_draw();
 	void begin_fade_draw(bool fade_in);
 	void halt_fade_draw();
 
-	void draw_callback(window& window);
+	void draw_callback();
 
-	void flag_stack_as_dirty(window& window);
+	void flag_stack_as_dirty();
 
 	storyscreen::controller controller_;
 

@@ -68,16 +68,16 @@ editor_generate_map::editor_generate_map(std::vector<std::unique_ptr<map_generat
 {
 }
 
-void editor_generate_map::do_generator_selected(window& window)
+void editor_generate_map::do_generator_selected()
 {
-	listbox& list = find_widget<listbox>(&window, "generators_list", false);
+	listbox& list = find_widget<listbox>(get_window(), "generators_list", false);
 	const int current = list.get_selected_row();
 
 	if(current == -1 || static_cast<unsigned>(current) > map_generators_.size()) {
 		return; // shouldn't happen!
 	}
 
-	button& settings = find_widget<button>(&window, "settings", false);
+	button& settings = find_widget<button>(get_window(), "settings", false);
 	settings.set_active(map_generators_[current]->allow_user_config());
 
 	current_map_generator_ = current;
@@ -127,11 +127,11 @@ void editor_generate_map::pre_show(window& window)
 		// We need to call this manually because it won't be called by
 		// list.select_row() even if we set the callback before
 		// calling it
-		this->do_generator_selected(window);
+		this->do_generator_selected();
 	}
 
 	connect_signal_notify_modified(list,
-		std::bind(&editor_generate_map::do_generator_selected, this, std::ref(window)));
+		std::bind(&editor_generate_map::do_generator_selected, this));
 
 	button& settings_button = find_widget<button>(&window, "settings", false);
 	connect_signal_mouse_left_click(

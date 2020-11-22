@@ -99,7 +99,7 @@ private:
 	 */
 	toggle_button* direction_buttons_[9];
 
-	void update_expand_direction(window& window);
+	void update_expand_direction();
 
 	void set_direction_icon(int index, std::string icon);
 

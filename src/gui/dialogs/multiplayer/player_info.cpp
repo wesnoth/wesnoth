@@ -61,7 +61,7 @@ void lobby_player_info::pre_show(window& window)
 	button& whisper = find_widget<button>(&window, "start_whisper", false);
 	if(info_.name != preferences::login()) {
 		connect_signal_mouse_left_click(whisper,
-			std::bind(&lobby_player_info::start_whisper_button_callback, this, std::ref(window)));
+			std::bind(&lobby_player_info::start_whisper_button_callback, this));
 	} else {
 		whisper.set_active(false);
 	}
@@ -84,27 +84,19 @@ void lobby_player_info::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "check_status", false),
-			std::bind(&lobby_player_info::check_status_button_callback,
-						this,
-						std::ref(window)));
+			std::bind(&lobby_player_info::check_status_button_callback, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "kick", false),
-			std::bind(&lobby_player_info::kick_button_callback,
-						this,
-						std::ref(window)));
+			std::bind(&lobby_player_info::kick_button_callback, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "kick_ban", false),
-			std::bind(&lobby_player_info::kick_ban_button_callback,
-						this,
-						std::ref(window)));
+			std::bind(&lobby_player_info::kick_ban_button_callback, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "stopgame", false),
-			std::bind(&lobby_player_info::stopgame_button_callback,
-						this,
-						std::ref(window)));
+			std::bind(&lobby_player_info::stopgame_button_callback, this));
 
 	find_widget<label>(&window, "player_name", false).set_label(info_.name);
 
@@ -190,34 +182,34 @@ void lobby_player_info::remove_from_list_button_callback()
 	update_relation();
 }
 
-void lobby_player_info::start_whisper_button_callback(window& w)
+void lobby_player_info::start_whisper_button_callback()
 {
 	result_open_whisper_ = true;
-	w.close();
+	get_window()->close();
 }
 
-void lobby_player_info::check_status_button_callback(window& w)
+void lobby_player_info::check_status_button_callback()
 {
 	chat_.send_command("query", "status " + info_.name);
-	w.close();
+	get_window()->close();
 }
 
-void lobby_player_info::kick_button_callback(window& w)
+void lobby_player_info::kick_button_callback()
 {
 	do_kick_ban(false);
-	w.close();
+	get_window()->close();
 }
 
-void lobby_player_info::kick_ban_button_callback(window& w)
+void lobby_player_info::kick_ban_button_callback()
 {
 	do_kick_ban(true);
-	w.close();
+	get_window()->close();
 }
 
-void lobby_player_info::stopgame_button_callback(window& w)
+void lobby_player_info::stopgame_button_callback()
 {
 	do_stopgame();
-	w.close();
+	get_window()->close();
 }
 
 void lobby_player_info::do_stopgame()
