@@ -1,0 +1,368 @@
+name: CI
+
+# TODO: how to give PRs separate caches from the master branch?
+#       echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }'
+#       gets it in a script, but that can't be done in the cache-name value
+#       also I assume the name can't have slashes in it
+
+# in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key
+# this will create a brand new cache and recompile the vcpkg dependencies from scratch
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  linux-01-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-01-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-01-master
+
+      - name: Ubuntu 20.04
+        run: |
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=17
+          export CFG=release
+          export LTO=true
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  linux-02-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-02-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-02-master
+
+      - name: Ubuntu 20.04
+        run: |
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=false
+          export TOOL=scons
+          export CC=clang
+          export CXX=clang++
+          export CXX_STD=14
+          export CFG=debug
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh master
+
+  linux-03-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-03-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-03-master
+
+      - name: Ubuntu 20.04
+        run: |
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=false
+          export TOOL=cmake
+          export CC=clang
+          export CXX=clang++
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  linux-04-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-04-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-04-master
+
+      - name: Ubuntu 20.04
+        run: |
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=false
+          export TOOL=cmake
+          export CC=clang
+          export CXX=clang++
+          export CXX_STD=14
+          export CFG=debug
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  linux-05-master:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-05-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-05-master
+
+      - name: Ubuntu 18.04
+        run: |
+          export BRANCH=master
+          export IMAGE=1804
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  linux-06-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-06-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-06-master
+
+      - name: Steam Runtime
+        run: |
+          export BRANCH=master
+          export IMAGE=steamrt
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc-5
+          export CXX=g++-5
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  linux-07-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-07-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-07-master
+
+      - name: MinGW Crosscompile
+        run: |
+          export BRANCH=master
+          export IMAGE=mingw
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  linux-08-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-08-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-08-master
+
+      - name: Flatpak
+        run: |
+          export BRANCH=master
+          export IMAGE=flatpak
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  linux-09-master:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: linux-09-cache-master
+        with:
+          path: ~/build-cache
+          key: linux-09-master
+
+      - name: Translations
+        run: |
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=only
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  macos-01-master:
+    runs-on: macos-10.15
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: macos-01-cache-master
+        with:
+          path: ~/build-cache
+          key: macos-01-master
+
+      - name: macOS Release
+        run: |
+          export CFG=Release
+          export CACHE_DIR=~/build-cache
+          ./.github/workflows/ci-scripts/macos.sh
+
+  macos-02-master:
+    runs-on: macos-10.15
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: macos-02-cache-master
+        with:
+          path: ~/build-cache
+          key: macos-02-master
+
+      - name: macOS Debug
+        run: |
+          export CFG=Debug
+          export CACHE_DIR=~/build-cache
+          ./.github/workflows/ci-scripts/macos.sh
+
+  windows-01-master:
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: windows-01-cache-master
+        with:
+          path: ~/build-cache
+          key: windows-01-master
+      
+      - uses: Vampire/setup-wsl@v1
+        with:
+          distribution: Ubuntu-20.04
+
+      - name: Choco installing
+        shell: cmd
+        run: choco.exe install sqlite
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: Windows Release
+        shell: wsl-bash {0}
+        run: |
+          export CFG=Release
+          export CACHE_DIR=~/build-cache
+          export PATH="/mnt/c/ProgramData/chocolatey/lib/SQLite/tools/sqlite-tools-win32-x86-3330000:$PATH"
+          sudo apt update
+          sudo apt install dos2unix
+          dos2unix .github/workflows/ci-scripts/windows.sh
+          ./.github/workflows/ci-scripts/windows.sh

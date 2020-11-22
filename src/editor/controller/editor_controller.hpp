@@ -188,13 +188,13 @@ class editor_controller : public controller_base,
 		 * Perform an action, then delete the action object.
 		 * The pointer can be nullptr, in which case nothing will happen.
 		 */
-		void perform_delete(editor_action* action);
+		void perform_delete(std::unique_ptr<editor_action> action);
 
 		/**
 		 * Peform an action on the current map_context, then refresh the display
 		 * and delete the pointer. The pointer can be nullptr, in which case nothing will happen.
 		 */
-		void perform_refresh_delete(editor_action* action, bool drag_part = false);
+		void perform_refresh_delete(std::unique_ptr<editor_action> action, bool drag_part = false);
 
 
 		virtual std::vector<std::string> additional_actions_pressed() override;

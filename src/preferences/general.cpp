@@ -935,4 +935,25 @@ void set_damage_prediction_allow_monte_carlo_simulation(bool value)
 	set("damage_prediction_allow_monte_carlo_simulation", value);
 }
 
+std::string addon_manager_saved_order_name()
+{
+	return get("addon_manager_saved_order_name");
+}
+
+void set_addon_manager_saved_order_name(const std::string& value)
+{
+	set("addon_manager_saved_order_name", value);
+}
+
+SORT_ORDER addon_manager_saved_order_direction()
+{
+	return SORT_ORDER::string_to_enum(get("addon_manager_saved_order_direction"), SORT_ORDER::NONE);
+}
+
+void set_addon_manager_saved_order_direction(SORT_ORDER value)
+{
+	set("addon_manager_saved_order_direction", SORT_ORDER::enum_to_string(value));
+}
+
+
 } // end namespace preferences

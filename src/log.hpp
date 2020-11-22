@@ -169,13 +169,17 @@ class scope_logger
 	const log_domain& domain_;
 	std::string str_;
 public:
-	scope_logger(const log_domain& domain, const char* str) :
-		domain_(domain)
+	scope_logger(const log_domain& domain, const char* str)
+		: ticks_(0)
+		, domain_(domain)
+		, str_()
 	{
 		if (!debug().dont_log(domain)) do_log_entry(str);
 	}
-	scope_logger(const log_domain& domain, const std::string& str) :
-		domain_(domain)
+	scope_logger(const log_domain& domain, const std::string& str)
+		: ticks_(0)
+		, domain_(domain)
+		, str_()
 	{
 		if (!debug().dont_log(domain)) do_log_entry(str);
 	}

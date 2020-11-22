@@ -1,13 +1,35 @@
-## Version 1.15.6+dev
+## Version 1.15.7+dev
+ ### Add-ons server
+   * Fixed inability to write files (including the server configuration file) on Windows.
+ ### Campaigns
+ ### Multiplayer
+ ### Terrain
+ ### Translations
+   * Updated translations: British English, Czech
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.15.7
+ ### Add-ons server
+   * Added basic command line options.
+   * Add-on validation status responses can now be translated by the client.
+   * Fixed an issue where incremental downloads would always transmit a delta for updating from the very earliest available version of an add-on to the very latest, instead of using the current and target versions specified by the client.
+   * Incremental downloads are no longer allowed to cheat the download counts.
+ ### Add-ons client
+   * It is now possible to install previous versions of an add-on if present and not expired on the server.
  ### Campaigns
    * A Tale of Two Brothers:
      * S02: Changed the antagonists' motive and dialogue to sound more believable
    * Secrets of the Ancients:
      * Revisions to Bone Captain
      * Scenario 2 uses new Iron Fence terrain, in preparation for potential map revisions.
+     * While the two leaders are separated, only the currently active one learns new zombie types.
    * Sceptre of Fire:
+     * Scenario 2p5: increased the turn limit by 1 and enhanced victory filter conditions
+     * Scenario 4: fixed a bug that prevented resources from spawning and added some small flavor adjustments
      * Some revisions/bugfixes to Scenario 9 "Caverns of Flame"
- ### Lua API
  ### Multiplayer
    * During allies' turns, use orb colors to show which ones can still move (issue #1424). Also enabled for allied AI sides in singleplayer.
  ### Terrain
@@ -16,7 +38,15 @@
    * Updated translations: British English, Catalan, Polish, Portuguese (Brazil)
  ### Units
    * Decreased Icemonax's advancement XP requirement from 26 to 25 to match other dead-end L0 units.
+   * Portrait and animation graphics for some of the new Wesnoth Fauna
+   * Balancing:
+     * Dune Rider xp changed from 42 to 47.
+     * Sunderer line defense on hills changed from 60% to 50%.
+     * Scorcher gold cost changed from 23 to 25.
+     * Dragoon gold cost changed from 27 to 28.
+     * Elvish Rider gold cost changed from 32 to 28.
  ### User interface
+   * Added the installable/upgradable version selection to the add-ons manager via a dropdown list
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
  ### WML Engine
    * Add a overwrite_specials option for abilities like weapon could overwrite specials or other ablities like weapon
@@ -110,17 +140,14 @@
  ### Language and i18n
    * Updated translations: British English, Catalan, Chinese (Simplified), Esperanto,
      French, Hungarian, Polish, Portuguese (Brazil), Russian, Spanish, Turkish
- ### Lua API
  ### Multiplayer
    * A New Land:
      * Peasants can harvest mushrooms (a bug introduced in 1.15.4 was noticed and fixed in PR #5137)
  ### Terrain
    * Made single-hex mushrooms smaller (PR #5136)
- ### Units
  ### User interface
    * Help browser: fix inconsistent behavior for single-clicks opening and closing sections (PR #5110)
    * Added `[race]help_taxonomy=`, creating links between the per-race topic pages.
- ### WML engine
  ### Miscellaneous and bug fixes
    * Minimum required version of OS X is now OS X 10.11 .
    * The "loyal" trait is now displayed in the help browser, even though no normal unit has it.

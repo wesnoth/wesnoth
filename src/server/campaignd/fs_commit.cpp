@@ -21,10 +21,24 @@
 #include <cstdio>
 #include <cstring>
 
-#ifndef _WIN32
-#include <unistd.h>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
+
+#ifndef _WIN32
+
+#include <unistd.h>
+
+#else
+
+#include "formatter.hpp"
+#include "serialization/unicode_cast.hpp"
+
+#include <boost/system/error_code.hpp>
+#include <boost/filesystem.hpp>
+
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+
 #endif
 
 static lg::log_domain log_filesystem("filesystem");
@@ -39,42 +53,143 @@ namespace filesystem
 
 namespace
 {
+namespace biostreams = boost::iostreams;
+
+// These types correspond to what's used by filesystem::ostream_file() in
+// filesystem.cpp.
+
+using sink_type = biostreams::file_descriptor_sink;
+using stream_type = biostreams::stream<sink_type>;
+using platform_file_handle_type = sink_type::handle_type;
+
+const platform_file_handle_type INVALID_FILE_HANDLE =
+#ifndef _WIN32
+	0
+#else
+	INVALID_HANDLE_VALUE
+#endif
+	;
 
 inline void atomic_fail(const std::string& step_description)
 {
 	const std::string errno_desc = std::strerror(errno);
-	ERR_FS << "Atomic commit failed (" << step_description << "): "
-		   << errno_desc << '\n';
+	ERR_FS << "Atomic commit failed (" << step_description << "): " << errno_desc << '\n';
 	throw filesystem::io_exception(std::string("Atomic commit failed (") + step_description + ")");
 }
 
-#ifndef _WIN32
-
 /**
- * Returns the POSIX file descriptor associated with the stream.
+ * Returns the real file descriptor/handle associated with the stream.
  *
  * This only makes sense for valid streams returned by ostream_file(). Anything
- * else will yield 0.
+ * else will yield an invalid value (e.g. 0 for POSIX, INVALID_HANDLE_VALUE for
+ * Windows).
  */
-int get_stream_file_descriptor(std::ostream& os)
+platform_file_handle_type get_stream_file_descriptor(std::ostream& os)
 {
-	// NOTE: This is insider knowledge of filesystem::ostream_file(), but it will
-	//       do for 1.12 at least.
-	typedef boost::iostreams::stream<boost::iostreams::file_descriptor_sink> fd_stream_type;
-	fd_stream_type* const real = dynamic_cast<fd_stream_type*>(&os);
-	return real ? (*real)->handle() : 0;
+	stream_type* const real = dynamic_cast<stream_type*>(&os);
+	return real ? (*real)->handle() : INVALID_FILE_HANDLE;
 }
 
-#endif // ! _WIN32
+#ifdef _WIN32
+
+/**
+ * Opens the specified file with FILE_SHARE_DELETE access.
+ *
+ * This is a drop-in replacement for filesystem::ostream_file. The special
+ * access is required on Windows to rename or delete the file while we hold
+ * handles to it.
+ */
+filesystem::scoped_ostream ostream_file_with_delete(const std::string& fname)
+{
+	LOG_FS << "streaming " << fname << " for writing with delete access.\n";
+
+	namespace bfs = boost::filesystem;
+	const auto& w_name = unicode_cast<std::wstring>(fname);
+
+	try {
+		HANDLE file = CreateFileW(w_name.c_str(),
+								  GENERIC_WRITE | DELETE,
+								  FILE_SHARE_WRITE | FILE_SHARE_DELETE,
+								  nullptr,
+								  CREATE_ALWAYS,
+								  FILE_ATTRIBUTE_NORMAL,
+								  nullptr);
+
+		if(file == INVALID_HANDLE_VALUE) {
+			throw BOOST_IOSTREAMS_FAILURE(formatter() << "CreateFile() failed: " << GetLastError());
+		}
+
+		// Transfer ownership to the sink post-haste
+		sink_type fd{file, biostreams::close_handle};
+		return std::make_unique<stream_type>(fd, 4096, 0);
+	} catch(const BOOST_IOSTREAMS_FAILURE& e) {
+		// Create directories if needed and try again
+		boost::system::error_code ec_unused;
+		if(bfs::create_directories(bfs::path{fname}.parent_path(), ec_unused)) {
+			return ostream_file_with_delete(fname);
+		}
+		// Creating directories was impossible, give up
+		throw filesystem::io_exception(e.what());
+	}
+}
+
+/**
+ * Renames an open file, potentially overwriting another (closed) existing file.
+ *
+ * @param new_name             New path for the open file.
+ * @param open_handle          Handle for the open file.
+ *
+ * @return @a true on success, @a false on failure. Passing an invalid handle
+ *         will always result in failure.
+ */
+bool rename_open_file(const std::string& new_name, HANDLE open_handle)
+{
+	if(open_handle == INVALID_HANDLE_VALUE) {
+		ERR_FS << "replace_open_file(): Bad handle\n";
+		return false;
+	}
+
+	const auto& w_name = unicode_cast<std::wstring>(new_name);
+	const std::size_t buf_size = w_name.length()*sizeof(wchar_t) + sizeof(FILE_RENAME_INFO);
+
+	// Avert your eyes, children
+
+	std::unique_ptr<BYTE[]> fileinfo_buf{new BYTE[buf_size]};
+	FILE_RENAME_INFO& fri = *reinterpret_cast<FILE_RENAME_INFO*>(fileinfo_buf.get());
+
+	SecureZeroMemory(fileinfo_buf.get(), buf_size);
+	fri.ReplaceIfExists = TRUE;
+	fri.RootDirectory = nullptr;
+	fri.FileNameLength = static_cast<DWORD>(w_name.length());
+	::wmemcpy(fri.FileName, w_name.c_str(), w_name.length());
+
+	// Okay, back to our regular programming
+
+	if(!SetFileInformationByHandle(open_handle,
+								   FileRenameInfo,
+								   fileinfo_buf.get(),
+								   static_cast<DWORD>(buf_size)))
+	{
+		ERR_FS << "replace_open_file(): SetFileInformationByHandle() " << GetLastError() << '\n';
+		return false;
+	}
+
+	return true;
+}
+
+#endif // !defined(_WIN32)
 
 } // unnamed namespace
 
 atomic_commit::atomic_commit(const std::string& filename)
 	: temp_name_(filename + ".new")
 	, dest_name_(filename)
-	, out_(filesystem::ostream_file(temp_name_))
 #ifndef _WIN32
+	, out_(filesystem::ostream_file(temp_name_))
 	, outfd_(filesystem::get_stream_file_descriptor(*out_))
+#else
+	, out_(filesystem::ostream_file_with_delete(temp_name_))
+	, handle_(filesystem::get_stream_file_descriptor(*out_))
 #endif
 {
 	LOG_FS << "Atomic write guard created for " << dest_name_ << " using " << temp_name_ << '\n';
@@ -95,23 +210,18 @@ void atomic_commit::commit()
 	}
 
 #ifdef _WIN32
-	// WARNING:
-	// Obviously not atomic at all. Perhaps there's an alternate way to achieve
-	// the same more securely using the Win32 API, but I don't think anyone
-	// cares about running campaignd on this platform, let alone making it
-	// resilient against environment errors. This is just here for reference.
-	if(filesystem::file_exists(dest_name_) && std::remove(dest_name_.c_str()) != 0) {
-		atomic_fail("remove");
+	if(!rename_open_file(dest_name_, handle_)) {
+		atomic_fail("rename");
 	}
 #else
 	if(fsync(outfd_) != 0) {
 		atomic_fail("fsync");
 	}
-#endif
 
 	if(std::rename(temp_name_.c_str(), dest_name_.c_str()) != 0) {
 		atomic_fail("rename");
 	}
+#endif
 
 	LOG_FS << "Atomic commit succeeded: " << temp_name_ << " -> " << dest_name_ << '\n';
 

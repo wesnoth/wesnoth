@@ -63,7 +63,7 @@ addon_connect::addon_connect(std::string& host_name,
 	register_text("host_name", false, host_name, true);
 }
 
-void addon_connect::help_button_callback(window& /*window*/)
+void addon_connect::help_button_callback()
 {
 	help::show_help("installing_addons");
 }
@@ -75,9 +75,7 @@ void addon_connect::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "show_help", false),
-			std::bind(&addon_connect::help_button_callback,
-						this,
-						std::ref(window)));
+			std::bind(&addon_connect::help_button_callback, this));
 }
 
 void addon_connect::post_show(window& window)

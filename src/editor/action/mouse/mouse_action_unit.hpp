@@ -35,35 +35,35 @@ public:
 	{
 	}
 
-	bool has_context_menu() const {
+	bool has_context_menu() const override {
 		return true;
 	}
 
-	void move(editor_display& disp, const map_location& hex);
+	void move(editor_display& disp, const map_location& hex) override;
 
 	/**
 	 * TODO
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
+	std::unique_ptr<editor_action> click_left(editor_display& disp, int x, int y) override;
 
 	/**
 	 * TODO
 	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
+	std::unique_ptr<editor_action> up_left(editor_display& disp, int x, int y) override;
 
-	editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+	std::unique_ptr<editor_action> drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo) override;
 
 	/**
 	 * Drag end replaces the unit when clicked left, or adjusts
 	 * the facing when clicked right.
 	 */
-	editor_action* drag_end_left(editor_display& disp, int x, int y);
+	std::unique_ptr<editor_action> drag_end_left(editor_display& disp, int x, int y) override;
 
-	editor_action* click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) {
+	std::unique_ptr<editor_action> click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) override {
 		return nullptr;
 	}
 
-	virtual void set_mouse_overlay(editor_display& disp);
+	virtual void set_mouse_overlay(editor_display& disp) override;
 	void set_unit_mouse_overlay(editor_display& disp, const unit_type& u);
 
 private:

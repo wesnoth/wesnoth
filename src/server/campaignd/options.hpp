@@ -62,6 +62,8 @@ public:
 	std::map<std::string, int> log_domain_levels;
 	/** Whether to use higher precision for log timestamps. */
 	bool log_precise_timestamps;
+	/** Whether to report timing information for server requests. */
+	bool report_timings;
 
 private:
 	std::string argv0_;

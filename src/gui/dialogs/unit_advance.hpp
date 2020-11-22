@@ -40,7 +40,7 @@ private:
 	virtual void pre_show(window& window) override;
 	virtual void post_show(window& window) override;
 
-	void list_item_clicked(window& window);
+	void list_item_clicked();
 
 	void show_help();
 

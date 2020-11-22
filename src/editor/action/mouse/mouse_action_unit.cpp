@@ -84,7 +84,7 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 	}
 }
 
-editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
+std::unique_ptr<editor_action> mouse_action_unit::click_left(editor_display& disp, int x, int y)
 {
 	start_hex_ = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(start_hex_)) {
@@ -100,14 +100,14 @@ editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
 	return nullptr;
 }
 
-editor_action* mouse_action_unit::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
+std::unique_ptr<editor_action> mouse_action_unit::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	click_ = (hex == start_hex_);
 	return nullptr;
 }
 
-editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
+std::unique_ptr<editor_action> mouse_action_unit::up_left(editor_display& disp, int x, int y)
 {
 	if (!click_) return nullptr;
 	click_ = false;
@@ -133,14 +133,13 @@ editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 	unit_race::GENDER gender = ut.genders().front();
 
 	unit_ptr new_unit = unit::create(ut, disp.viewing_side(), true, gender);
-	editor_action* action = new editor_action_unit(hex, *new_unit);
+	auto action = std::make_unique<editor_action_unit>(hex, *new_unit);
 	return action;
 }
 
-editor_action* mouse_action_unit::drag_end_left(editor_display& disp, int x, int y)
+std::unique_ptr<editor_action> mouse_action_unit::drag_end_left(editor_display& disp, int x, int y)
 {
 	if (click_) return nullptr;
-	editor_action* action = nullptr;
 
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex))
@@ -151,88 +150,8 @@ editor_action* mouse_action_unit::drag_end_left(editor_display& disp, int x, int
 	if (unit_it == units.end())
 		return nullptr;
 
-	action = new editor_action_unit_replace(start_hex_, hex);
-	return action;
+	return std::make_unique<editor_action_unit_replace>(start_hex_, hex);
 }
-
-/*
-editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-	start_hex_ = hex;
-	previous_move_hex_ = hex;
-
-	const unit_map& units = disp.units();
-	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-
-	if (unit_it != units.end()) {
-		old_direction_ = unit_it->facing();
-	}
-
-	click_ = true;
-	return nullptr;
-}
-*/
-
-//editor_action* mouse_action_unit::drag_right(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
-//{
-//	map_location hex = disp.hex_clicked_on(x, y);
-//	if (previous_move_hex_ == hex)
-//		return nullptr;
-//
-//	click_ = (start_hex_ == hex);
-//	previous_move_hex_ = hex;
-//
-//	const unit_map& units = disp.units();
-//
-//	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-//	if (unit_it != units.end()) {
-//		for (map_location::DIRECTION new_direction = map_location::NORTH;
-//				new_direction <= map_location::NORTH_WEST;
-//				new_direction = map_location::DIRECTION(new_direction +1)){
-//			if (unit_it->get_location().get_direction(new_direction, 1) == hex) {
-//				return new editor_action_unit_facing(start_hex_, new_direction, old_direction_);
-//			}
-//		}
-//	}
-//
-//	return nullptr;
-//}
-
-//editor_action* mouse_action_unit::up_right(editor_display& disp, int /*x*/, int /*y*/)
-//{
-//	if (!click_) return nullptr;
-//	click_ = false;
-//
-//	const unit_map& units = disp.units();
-//	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-//	if (unit_it != units.end()) {
-//		return new editor_action_unit_delete(start_hex_);
-//	}
-//
-//	return nullptr;
-//}
-
-//editor_action* mouse_action_unit::drag_end_right(editor_display& disp, int x, int y)
-//{
-//	if (click_) return nullptr;
-//
-//	map_location hex = disp.hex_clicked_on(x, y);
-//	if (!disp.get_map().on_board(hex))
-//		return nullptr;
-//
-//	if(new_direction_ != old_direction_) {
-//
-//	const unit_map& units = disp.units();
-//	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-//		if (unit_it != units.end()) {
-//			return new editor_action_unit_facing(start_hex_, new_direction_, old_direction_);
-//		}
-//	}
-//
-//	return nullptr;
-//}
-
 
 void mouse_action_unit::set_mouse_overlay(editor_display& disp)
 {

@@ -32,31 +32,31 @@ public:
 	  {
 	  }
 
-	editor_action* click_left(editor_display& disp, int x, int y);
+	std::unique_ptr<editor_action> click_left(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Drags a label.
 	 */
-	editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+	std::unique_ptr<editor_action> drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo) override;
 
 	/**
 	 * Replaces the label under the mouse with the dragged label.
 	 */
-	editor_action* drag_end_left(editor_display& disp, int x, int y);
+	std::unique_ptr<editor_action> drag_end_left(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Left click displays a dialog that is used for entering the label string.
 	 */
-	editor_action* up_left(editor_display& disp, int x, int y);
+	std::unique_ptr<editor_action> up_left(editor_display& disp, int x, int y) override;
 
-	editor_action* click_right(editor_display& disp, int x, int y);
+	std::unique_ptr<editor_action> click_right(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Right click erases the label under the mouse.
 	 */
-	editor_action* up_right(editor_display& disp, int x, int y);
+	std::unique_ptr<editor_action> up_right(editor_display& disp, int x, int y) override;
 
-	virtual void set_mouse_overlay(editor_display& disp);
+	virtual void set_mouse_overlay(editor_display& disp) override;
 
 private:
 	bool click_;

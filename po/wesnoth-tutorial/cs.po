@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-10-17 04:28 UTC\n"
-"PO-Revision-Date: 2020-08-28 10:00+0200\n"
-"Last-Translator: Martin Hrubý <hrubymar10@gmail.com>\n"
+"PO-Revision-Date: 2020-10-29 08:13+0100\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -32,13 +32,13 @@ msgstr ""
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
 msgid "Battle Training"
-msgstr ""
+msgstr "Bojový výcvik"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:29
 msgid "Tutorial"
-msgstr ""
+msgstr "Tutoriál"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:20
@@ -46,11 +46,12 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
 "time players."
 msgstr ""
+"Nauč se v tutoriálu základy hry Wesnoth. Doporučeno pro začínající hráče."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:30
 msgid "Beginner"
-msgstr ""
+msgstr "Začátečník"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:25
@@ -126,14 +127,9 @@ msgstr "Necháš se zapíchnout"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:136
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
-msgstr ""
-"Nemůžeš ukončit své kolo, dokud nenaverbuješ oddíly a neobsadíš vesnici!"
+msgstr "Nemůžeš ukončit své kolo, dokud jsi nedokončil úlohu o pohybu!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:145
@@ -336,13 +332,8 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:526
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr ""
-"Nemůžeš ukončit své kolo, dokud nenaverbuješ oddíly a neobsadíš vesnici!"
+msgstr "Nemůžeš ukončit své kolo, dokud jsi nezaútočil na panáka!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:540
@@ -458,14 +449,9 @@ msgstr "Ukonči své kolo"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:630
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
-msgstr ""
-"Nemůžeš ukončit své kolo, dokud nenaverbuješ oddíly a neobsadíš vesnici!"
+msgstr "Nemůžeš ukončit své kolo, dokud jsi nedokončil úlohu o léčení!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:641
@@ -523,14 +509,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:697
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
-msgstr ""
-"Nemůžeš ukončit své kolo, dokud nenaverbuješ oddíly a neobsadíš vesnici!"
+msgstr "Nemůžeš ukončit své kolo, dokud jsi nedokončil úlohu o verbování!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:706
@@ -633,14 +614,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:829
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
-msgstr ""
-"Nemůžeš ukončit své kolo, dokud nenaverbuješ oddíly a neobsadíš vesnici!"
+msgstr "Nemůžeš ukončit své kolo, dokud jsi nedokončil úlohu o útočení!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:838
@@ -713,19 +689,13 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:917
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), "
-#| "which is a <i>melee</i> attack. The quintain defended with its melee "
-#| "attack (3×5; or 3 damage on each hit, with 5 attacks). The ranged attack "
-#| "(the bow) would have been safer."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Tvůj elf použil meč (5×4 neboli zranění 5 při každém zásahu a 4 útoky), což "
+"Tvůj elf použil meč (6×4 neboli zranění 6 při každém zásahu a 4 útoky), což "
 "je útok <i>zblízka</i>. Panák se bránil svým útokem na blízko (3×5 čili "
 "zranění 3 při každém zásahu a 5 útoků). Útok na dálku (lukem) by byl "
 "bezpečnější."
@@ -736,6 +706,8 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Elfí bojovníci obvykle útočí na blízko rozsahem 5×4, ale tento elf má "
+"vlastnost <i>silný</i>, což zvyšuje zranění způsobené útoky na blízko."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:927
@@ -753,17 +725,12 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:948
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
-#| "each hit, with 3 attacks). The quintain has no ranged attack, only a "
-#| "melee attack, so it could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Tvůj elf použil luk, což je útok <i>na dálku</i> (3×3 neboli zranění 3 při "
+"Tvůj elf použil luk, což je útok <i>na dálku</i> (4×3 neboli zranění 4 při "
 "každém zásahu a 3 útoky). Panák nemá útok na dálku, jen zblízka, takže se "
 "nemohl bránit."
 
@@ -773,6 +740,8 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Elfí bojovníci obvykle útočí na na dálku rozsahem 3×3, ale tento elf má "
+"vlastnost <i>obratný</i>, což zvyšuje zranění způsobené útoky na dálku."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:958

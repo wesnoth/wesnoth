@@ -194,7 +194,10 @@ std::string os_version()
 	static const std::string base
 			= !on_wine() ? "Microsoft Windows" : "Wine/Microsoft Windows";
 
-	OSVERSIONINFOEX v { sizeof(OSVERSIONINFOEX) };
+	OSVERSIONINFOEX v;
+
+	SecureZeroMemory(&v, sizeof(OSVERSIONINFOEX));
+	v.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
 
 #ifdef _MSC_VER
 // GetVersionEx is rather problematic, but it works for our usecase.
@@ -265,6 +268,7 @@ std::string os_version()
 				}
 				break;
 			} // else fallback to default
+			FALLTHROUGH;
 		default:
 			if(v.wProductType != VER_NT_WORKSTATION) {
 				version = "Server";

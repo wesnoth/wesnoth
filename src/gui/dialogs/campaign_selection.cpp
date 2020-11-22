@@ -79,9 +79,9 @@ namespace dialogs
 
 REGISTER_DIALOG(campaign_selection)
 
-void campaign_selection::campaign_selected(window& window)
+void campaign_selection::campaign_selected()
 {
-	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
 	if(tree.empty()) {
 		return;
 	}
@@ -96,14 +96,14 @@ void campaign_selection::campaign_selected(window& window)
 			return;
 		}
 
-		multi_page& pages = find_widget<multi_page>(&window, "campaign_details", false);
+		multi_page& pages = find_widget<multi_page>(get_window(), "campaign_details", false);
 		pages.select_page(choice);
 
 		engine_.set_current_level(choice);
 	}
 }
 
-void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMPAIGN_ORDER order, bool ascending)
+void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order, bool ascending)
 {
 	using level_ptr = ng::create_engine::level_ptr;
 
@@ -147,7 +147,7 @@ void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMP
 		break;
 	}
 
-	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
 
 	// Remember which campaign was selected...
 	std::string was_selected;
@@ -182,7 +182,7 @@ void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMP
 	bool exists_in_filtered_result = false;
 	for(unsigned i = 0; i < levels.size(); ++i) {
 		if(show_items[i]) {
-			add_campaign_to_tree(window, levels[i]->data());
+			add_campaign_to_tree(levels[i]->data());
 
 			if (!exists_in_filtered_result) {
 				exists_in_filtered_result = levels[i]->id() == was_selected;
@@ -191,13 +191,13 @@ void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMP
 	}
 
 	if(!was_selected.empty() && exists_in_filtered_result) {
-		find_widget<tree_view_node>(&window, was_selected, false).select_node();
+		find_widget<tree_view_node>(get_window(), was_selected, false).select_node();
 	} else {
-		campaign_selected(window);
+		campaign_selected();
 	}
 }
 
-void campaign_selection::toggle_sorting_selection(window& window, CAMPAIGN_ORDER order)
+void campaign_selection::toggle_sorting_selection(CAMPAIGN_ORDER order)
 {
 	static bool force = false;
 	if(force) {
@@ -221,15 +221,15 @@ void campaign_selection::toggle_sorting_selection(window& window, CAMPAIGN_ORDER
 		force = true;
 
 		if(order == NAME) {
-			find_widget<toggle_button>(&window, "sort_time", false).set_value(0);
+			find_widget<toggle_button>(get_window(), "sort_time", false).set_value(0);
 		} else if(order == DATE) {
-			find_widget<toggle_button>(&window, "sort_name", false).set_value(0);
+			find_widget<toggle_button>(get_window(), "sort_name", false).set_value(0);
 		}
 
 		force = false;
 	}
 
-	sort_campaigns(window, current_sorting_, currently_sorted_asc_);
+	sort_campaigns(current_sorting_, currently_sorted_asc_);
 }
 
 void campaign_selection::filter_text_changed(text_box_base* textbox, const std::string& text)
@@ -241,8 +241,7 @@ void campaign_selection::filter_text_changed(text_box_base* textbox, const std::
 	}
 
 	last_search_words_ = words;
-	window& window = *textbox->get_window();
-	sort_campaigns(window, current_sorting_, currently_sorted_asc_);
+	sort_campaigns(current_sorting_, currently_sorted_asc_);
 }
 
 void campaign_selection::pre_show(window& window)
@@ -255,16 +254,16 @@ void campaign_selection::pre_show(window& window)
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
 
 	connect_signal_notify_modified(tree,
-		std::bind(&campaign_selection::campaign_selected, this, std::ref(window)));
+		std::bind(&campaign_selection::campaign_selected, this));
 
 	toggle_button& sort_name = find_widget<toggle_button>(&window, "sort_name", false);
 	toggle_button& sort_time = find_widget<toggle_button>(&window, "sort_time", false);
 
 	connect_signal_notify_modified(sort_name,
-		std::bind(&campaign_selection::toggle_sorting_selection, this, std::ref(window), NAME));
+		std::bind(&campaign_selection::toggle_sorting_selection, this, NAME));
 
 	connect_signal_notify_modified(sort_time,
-		std::bind(&campaign_selection::toggle_sorting_selection, this, std::ref(window), DATE));
+		std::bind(&campaign_selection::toggle_sorting_selection, this, DATE));
 
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&tree);
@@ -276,7 +275,7 @@ void campaign_selection::pre_show(window& window)
 		const config& campaign = level->data();
 
 		/*** Add tree item ***/
-		add_campaign_to_tree(window, campaign);
+		add_campaign_to_tree(campaign);
 
 		/*** Add detail item ***/
 		std::map<std::string, string_map> data;
@@ -318,18 +317,18 @@ void campaign_selection::pre_show(window& window)
 		mods_menu.set_values(mod_menu_values);
 		mods_menu.select_options(mod_states_);
 
-		connect_signal_notify_modified(mods_menu, std::bind(&campaign_selection::mod_toggled, this, std::ref(window)));
+		connect_signal_notify_modified(mods_menu, std::bind(&campaign_selection::mod_toggled, this));
 	} else {
 		mods_menu.set_active(false);
 		mods_menu.set_label(_("active_modifications^None"));
 	}
 
-	campaign_selected(window);
+	campaign_selected();
 }
 
-void campaign_selection::add_campaign_to_tree(window& window, const config& campaign)
+void campaign_selection::add_campaign_to_tree(const config& campaign)
 {
-	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
 	std::map<std::string, string_map> data;
 	string_map item;
 
@@ -395,10 +394,10 @@ void campaign_selection::post_show(window& window)
 	preferences::set_modifications(engine_.active_mods(), false);
 }
 
-void campaign_selection::mod_toggled(window& window)
+void campaign_selection::mod_toggled()
 {
 	boost::dynamic_bitset<> new_mod_states =
-		find_widget<multimenu_button>(&window, "mods_menu", false).get_toggle_states();
+		find_widget<multimenu_button>(get_window(), "mods_menu", false).get_toggle_states();
 
 	// Get a mask of any mods that were toggled, regardless of new state
 	mod_states_ = mod_states_ ^ new_mod_states;

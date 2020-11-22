@@ -117,7 +117,7 @@ to the file indicated by \fI\-\-output\fP.
 設定日誌記錄的類別。\fBall\fP可以用來支援任何日誌域的類別。可選的類別有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP。預設的類別是\fBwarning\fP，對\fBdeprecation\fP域預設類別是\fBnone\fP，除非和\fB\-d\fP選項一併使用。
 .TP 
 \fB\-\-log\-precise\fP
-在日誌檔案中顯示更詳細的時間記錄。
+shows the timestamps in log output with more precision.
 .TP 
 \fB\-\-log\-strict\fP
 設定日誌記錄器的嚴格等級。任何訊息傳送至此等級網域記錄或更高等級不論勝利與否單位測試都會失敗。只有在和 \fB\-u\fP 使用時才會有效。
@@ -191,21 +191,6 @@ https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor。
 只給 \fB\-\-preprocess\fP 指令使用。輸出所有預先處理過的巨集指令至目標檔案。如果沒有指定檔案將預先處理指令輸出成
 \&'_MACROS_.cfg' 到目標目錄。輸出的檔案可以傳至 \fB\-\-preprocess\-input\-macros\fP。必須在
 \fB\-\-preprocess\fP 指令之前使用。
-.TP 
-\fB\-\-proxy\fP
-開啟代理伺服器來進行網路連線。
-.TP 
-\fB\-\-proxy\-address\fP\fI\ address\fP
-指定代理伺服器的 \fIaddress\fP。
-.TP 
-\fB\-\-proxy\-port\fP\fI\ port\fP
-指定代理伺服器的 \fIport\fP。
-.TP 
-\fB\-\-proxy\-user\fP\fI\ username\fP
-指定用於登入代理伺服器的 \fIusername\fP。
-.TP 
-\fB\-\-proxy\-password\fP\fI\ password\fP
-指定用於登入代理伺服器的 \fIpassword\fP。
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 設定螢幕解析度。例如：\fB\-r\fP \fB800x600\fP。

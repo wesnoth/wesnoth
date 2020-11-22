@@ -26,13 +26,13 @@ namespace editor
 {
 IMPLEMENT_ACTION(label)
 
-editor_action* editor_action_label::perform(map_context& mc) const
+std::unique_ptr<editor_action> editor_action_label::perform(map_context& mc) const
 {
-	editor_action_ptr undo;
+	std::unique_ptr<editor_action> undo;
 
 	const terrain_label* old_label = mc.get_labels().get_label(loc_);
 	if(old_label) {
-		undo.reset(new editor_action_label(
+		undo = std::make_unique<editor_action_label>(
 			loc_,
 			old_label->text(),
 			old_label->team_name(),
@@ -40,14 +40,14 @@ editor_action* editor_action_label::perform(map_context& mc) const
 			old_label->visible_in_fog(),
 			old_label->visible_in_shroud(),
 			old_label->immutable(),
-			old_label->category())
+			old_label->category()
 		);
 	} else {
-		undo.reset(new editor_action_label_delete(loc_));
+		undo = std::make_unique<editor_action_label_delete>(loc_);
 	}
 
 	perform_without_undo(mc);
-	return undo.release();
+	return undo;
 }
 
 void editor_action_label::perform_without_undo(map_context& mc) const
@@ -58,17 +58,15 @@ void editor_action_label::perform_without_undo(map_context& mc) const
 
 IMPLEMENT_ACTION(label_delete)
 
-editor_action* editor_action_label_delete::perform(map_context& mc) const
+std::unique_ptr<editor_action> editor_action_label_delete::perform(map_context& mc) const
 {
-	editor_action_ptr undo;
-
 	const terrain_label* deleted = mc.get_labels().get_label(loc_);
 
 	if(!deleted) {
 		return nullptr;
 	}
 
-	undo.reset(new editor_action_label(
+	auto undo = std::make_unique<editor_action_label>(
 		loc_,
 		deleted->text(),
 		deleted->team_name(),
@@ -76,11 +74,11 @@ editor_action* editor_action_label_delete::perform(map_context& mc) const
 		deleted->visible_in_fog(),
 		deleted->visible_in_shroud(),
 		deleted->immutable(),
-		deleted->category())
+		deleted->category()
 	);
 
 	perform_without_undo(mc);
-	return undo.release();
+	return undo;
 }
 
 void editor_action_label_delete::perform_without_undo(map_context& mc) const

@@ -25,45 +25,45 @@ branches:
 
 jobs:
   include:
-    - os: windows
-      env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Debug UPLOAD=true
+#    - os: windows
+#      env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Debug UPLOAD=true
 
     - os: windows
       env: TOOL=msbuild NLS=false IMAGE=VC16 BRANCH=master CFG=Release
 
-    - os: osx
-      osx_image: xcode11.3
-      compiler: clang
-      env: TOOL=xcodebuild NLS=true CFG=Debug BRANCH=master UPLOAD=true
+#    - os: osx
+#      osx_image: xcode11.3
+#      compiler: clang
+#      env: TOOL=xcodebuild NLS=true CFG=Debug BRANCH=master UPLOAD=true
 
     - os: osx
       osx_image: xcode11.3
       compiler: clang
       env: TOOL=xcodebuild NLS=true CFG=Release BRANCH=master
 
-    - compiler: gcc
-      env: TOOL=scons CXXSTD=14 NLS=only IMAGE=2004 BRANCH=master CFG=release
+#    - compiler: gcc
+#      env: TOOL=scons CXXSTD=14 NLS=only IMAGE=2004 BRANCH=master CFG=release
 
-    - env: TOOL=scons CXXSTD=14 NLS=true IMAGE=mingw BRANCH=master CFG=release STRICT=false UPLOAD=true
+#    - env: TOOL=scons CXXSTD=14 NLS=true IMAGE=mingw BRANCH=master CFG=release STRICT=false UPLOAD=true
 
-    - env: TOOL=scons CXXSTD=14 NLS=false IMAGE=steamrt BRANCH=master CFG=release CC=gcc-5 CXX=g++-5
+#    - env: TOOL=scons CXXSTD=14 NLS=false IMAGE=steamrt BRANCH=master CFG=release CC=gcc-5 CXX=g++-5
 
-    - env: TOOL=scons NLS=true IMAGE=flatpak BRANCH=master
+#    - env: TOOL=scons NLS=true IMAGE=flatpak BRANCH=master
 
     - compiler: gcc
       env: TOOL=scons CXXSTD=17 NLS=false IMAGE=2004 BRANCH=master CFG=release VALIDATE=true LTO=true
 
-    - compiler: gcc
-      env: TOOL=scons CXXSTD=14 NLS=false IMAGE=2004 BRANCH=master CFG=debug UPLOAD=true
+#    - compiler: gcc
+#      env: TOOL=scons CXXSTD=14 NLS=false IMAGE=2004 BRANCH=master CFG=debug UPLOAD=true
 
-    - compiler: gcc
-      env: TOOL=cmake CXXSTD=14 NLS=false IMAGE=2004 BRANCH=master CFG=Release
+#    - compiler: gcc
+#      env: TOOL=cmake CXXSTD=14 NLS=false IMAGE=2004 BRANCH=master CFG=Release
 
-    - compiler: clang
-      env: TOOL=cmake CXXSTD=14 NLS=false IMAGE=2004 BRANCH=master CFG=Debug
+#    - compiler: clang
+#      env: TOOL=cmake CXXSTD=14 NLS=false IMAGE=2004 BRANCH=master CFG=Debug
 
-    - compiler: gcc
-      env: TOOL=scons CXXSTD=14 NLS=false IMAGE=1804 BRANCH=master CFG=debug UPLOAD=true
+#    - compiler: gcc
+#      env: TOOL=scons CXXSTD=14 NLS=false IMAGE=1804 BRANCH=master CFG=debug UPLOAD=true
 
 install:
     - . ./utils/travis/steps/install.sh

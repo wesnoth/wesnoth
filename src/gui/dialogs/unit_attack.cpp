@@ -81,9 +81,9 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 {
 }
 
-void unit_attack::damage_calc_callback(window& window)
+void unit_attack::damage_calc_callback()
 {
-	const std::size_t index = find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
+	const std::size_t index = find_widget<listbox>(get_window(), "weapon_list", false).get_selected_row();
 	attack_predictions::display(weapons_[index], attacker_itor_.get_shared_ptr(), defender_itor_.get_shared_ptr());
 }
 
@@ -91,7 +91,7 @@ void unit_attack::pre_show(window& window)
 {
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "damage_calculation", false),
-			std::bind(&unit_attack::damage_calc_callback, this, std::ref(window)));
+			std::bind(&unit_attack::damage_calc_callback, this));
 
 	find_widget<unit_preview_pane>(&window, "attacker_pane", false)
 		.set_displayed_unit(*attacker_itor_);
