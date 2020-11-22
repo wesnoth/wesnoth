@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 04:52 UTC\n"
-"PO-Revision-Date: 2020-02-01 12:46+0100\n"
+"PO-Revision-Date: 2020-11-22 23:19+0100\n"
 "Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Bookmarks: 596,1822,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
@@ -2416,20 +2416,15 @@ msgstr "Rechtschaffener Zorn"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
-#, fuzzy
-#| msgid ""
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the champions is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "If used offensively or defensively against champions Grak or Zur, this "
 "attack presses the engagement until one of the combatants is slain, or 30 "
 "rounds of attacks have occurred."
 msgstr ""
-"Gegen einen der Meisterkämpfer sind die Wut und Rachedurst dieser Einheit "
-"unbändig. Ob als Angreifer oder Verteidiger, sie ruht nicht eher, als bis "
-"der Tod die Entscheidung fällt oder im Kampfrausch 30 Runden verstrichen "
-"sind."
+"Gegen einen der Meisterkämpfer Grak oder Zur sind die Wut und Rachedurst "
+"dieser Einheit unbändig. Ob als Angreifer oder Verteidiger, sie ruht nicht "
+"eher, als bis der Tod die Entscheidung fällt oder im Kampfrausch 30 Runden "
+"verstrichen sind."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:697
@@ -15824,7 +15819,6 @@ msgstr "Quenoth-Bogenschütze"
 
 #. [unit_type]: id=Quenoth Archer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:21
-#, fuzzy
 msgid ""
 "With the open sands providing much less protection than the old forests did, "
 "the wide ranks of elvish archers that once formed the core of the elvish "
@@ -15834,8 +15828,8 @@ msgid ""
 "combat."
 msgstr ""
 "Da die offene Wüste weitaus weniger Schutz bietet als die alten Wälder, sind "
-"die großen Verbände elfischer Bogenschützen, die einst eine herannahende "
-"orkische Horde hätten stoppen können, allesamt verschwunden. Stattdessen "
+"die großen Verbände elfischer Bogenschützen, die einst das Gros der "
+"elfischen Truppen ausgemacht haben, allesamt verschwunden. Stattdessen "
 "praktizieren die einigen wenigen, welche ihr Leben noch immer dieser "
 "traditionelle Waffe ihrer Ahnen widmen, diese Kunst vom Sattel aus, von wo "
 "aus sie die Risiken des Nahkampfes leicht vermeiden können."
@@ -15993,12 +15987,6 @@ msgstr "Quenoth-Plänkler"
 
 #. [unit_type]: id=Quenoth Flanker, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Some fighters find that their true talents lie not within rigid spear "
-#| "ranks, but out in the sands, striking at the flanks and rear of enemy "
-#| "forces. Fast and nimble, these elves can take advantage of the smallest "
-#| "weaknesses in enemy formations."
 msgid ""
 "Some fighters find that their true talents lie not within rigid spear ranks, "
 "but out in the sands, striking at the flanks and rear of enemy forces. Fast "
@@ -16011,8 +15999,10 @@ msgstr ""
 "Manche Kämpfer sehen ihre Talente nicht darin, in starren Speerverbänden zu "
 "arbeiten, sondern draußen in der Wüste, wo sie die Flanken und hinteren "
 "Teile der feindlichen Truppen angreifen können. Diese Elfen sind schnell und "
-"geschickt und sie können einen Vorteil selbst aus den kleinsten "
-"Schwachstellen der feindlichen Formationen ziehen."
+"geschickt und sie können einen Vorteil aus den Schwachstellen der "
+"feindlichen Formationen ziehen. In besonders blutigen Konflikten verwenden "
+"Plänkler sogar Gifte um ihre Gegner zu schwächen – eine Technik, welche bei "
+"ihren Vorfahren verpönt war."
 
 #. [attack]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:41
@@ -16784,10 +16774,6 @@ msgstr ""
 "Präzision und Verteidigung bis sie eine Runde beenden."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:161
-#, fuzzy
-#| msgid ""
-#| "This unit is capable of distracting opponents, allowing allied units to "
-#| "trespass their Zones of Control and move unhindered around them."
 msgid ""
 " This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
