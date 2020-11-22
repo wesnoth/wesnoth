@@ -1,4 +1,6 @@
 ## Version 1.15.7+dev
+ ### Add-ons server
+   * Fixed inability to write files (including the server configuration file) on Windows.
  ### Translations
    * Updated translations: British English, Czech
 
