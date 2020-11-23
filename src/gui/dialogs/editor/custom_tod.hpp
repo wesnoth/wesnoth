@@ -48,25 +48,25 @@ private:
 	virtual void post_show(window& window) override;
 
 	/** Callback for the next tod button */
-	void do_next_tod(window& window);
-	void do_prev_tod(window& window);
+	void do_next_tod();
+	void do_prev_tod();
 
-	void do_new_tod(window& window);
-	void do_delete_tod(window& window);
+	void do_new_tod();
+	void do_delete_tod();
 
 	template<custom_tod::string_pair(*fptr)(const time_of_day&)>
-	void select_file(window& window, const std::string& default_dir);
+	void select_file(const std::string& default_dir);
 
-	void color_slider_callback(window& window);
+	void color_slider_callback();
 
-	void update_tod_display(window& window);
+	void update_tod_display();
 
-	void update_lawful_bonus(window& window);
+	void update_lawful_bonus();
 
 	void set_selected_tod(time_of_day tod);
 	const time_of_day& get_selected_tod() const;
 
-	void update_selected_tod_info(window& window);
+	void update_selected_tod_info();
 
 	void copy_to_clipboard_callback(tod_attribute_getter getter);
 

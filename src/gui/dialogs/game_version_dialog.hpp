@@ -77,7 +77,7 @@ private:
 	/**
 	 * Callback function called when switching tabs.
 	 */
-	void tab_switch_callback(window& window);
+	void tab_switch_callback();
 
 	/**
 	 * Callback function for the dialog-wide copy-to-clipboard button.

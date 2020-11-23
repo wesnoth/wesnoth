@@ -113,6 +113,8 @@ public:
 		: name_("")
 		, min_(0)
 		, max_(0)
+		, min_children_(0)
+		, max_children_(INT_MAX)
 		, super_("")
 		, tags_()
 		, keys_()

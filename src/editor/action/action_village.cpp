@@ -27,7 +27,7 @@ namespace editor
 {
 IMPLEMENT_ACTION(village)
 
-editor_action* editor_action_village::perform(map_context& mc) const
+std::unique_ptr<editor_action> editor_action_village::perform(map_context& mc) const
 {
 	if(!mc.map().is_village(loc_)) {
 		return nullptr;
@@ -43,16 +43,16 @@ editor_action* editor_action_village::perform(map_context& mc) const
 		// side_number_ was an invalid team index.
 	}
 
-	editor_action_ptr undo(new editor_action_village_delete(loc_));
+	auto undo = static_cast<std::unique_ptr<editor_action>>(std::make_unique<editor_action_village_delete>(loc_));
 
 	for(const team& t : teams) {
 		if(t.owns_village(loc_)) {
-			undo.reset(new editor_action_village(loc_, t.side() - 1));
+			undo = std::make_unique<editor_action_village>(loc_, t.side() - 1);
 		}
 	}
 
 	perform_without_undo(mc);
-	return undo.release();
+	return undo;
 }
 
 void editor_action_village::perform_without_undo(map_context& mc) const
@@ -71,18 +71,20 @@ void editor_action_village::perform_without_undo(map_context& mc) const
 
 IMPLEMENT_ACTION(village_delete)
 
-editor_action* editor_action_village_delete::perform(map_context& mc) const
+std::unique_ptr<editor_action> editor_action_village_delete::perform(map_context& mc) const
 {
-	editor_action_ptr undo;
+	// \todo: can this delete more than one village? If it can't, why isn't the return statement
+	// inside the loop? If it can, why doesn't it return an editor_action_chain of undo actions?
+	std::unique_ptr<editor_action> undo;
 
 	for(const team& t : mc.teams()) {
 		if(t.owns_village(loc_)) {
 			perform_without_undo(mc);
-			undo.reset(new editor_action_village(loc_, t.side() - 1));
+			undo = std::make_unique<editor_action_village>(loc_, t.side() - 1);
 		}
 	}
 
-	return undo.release();
+	return undo;
 }
 
 void editor_action_village_delete::perform_without_undo(map_context& mc) const

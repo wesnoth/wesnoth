@@ -76,24 +76,24 @@ mp_login::mp_login(const std::string& host, const std::string& label, const bool
 		&preferences::set_remember_password);
 }
 
-void mp_login::load_password(window& win) const
+void mp_login::load_password() const
 {
-	text_box& pwd = find_widget<text_box>(&win, "password", false);
-	pwd.set_value(preferences::password(host_, username_->get_widget_value(win)));
+	text_box& pwd = find_widget<text_box>(get_window(), "password", false);
+	pwd.set_value(preferences::password(host_, username_->get_widget_value(*get_window())));
 }
 
-void mp_login::save_password(window& win) const
+void mp_login::save_password() const
 {
-	password_box& pwd = find_widget<password_box>(&win, "password", false);
-	preferences::set_password(host_, username_->get_widget_value(win), pwd.get_real_value());
+	password_box& pwd = find_widget<password_box>(get_window(), "password", false);
+	preferences::set_password(host_, username_->get_widget_value(*get_window()), pwd.get_real_value());
 }
 
 void mp_login::pre_show(window& win)
 {
 	text_box& login = find_widget<text_box>(&win, "user_name", false);
-	login.connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(&mp_login::load_password, this, std::ref(win)));
+	login.connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(&mp_login::load_password, this));
 
-	load_password(win);
+	load_password();
 
 	if(focus_password_) {
 		win.keyboard_capture(find_widget<text_box>(&win, "password", false, true));
@@ -103,9 +103,9 @@ void mp_login::pre_show(window& win)
 	win.add_to_tab_order(find_widget<text_box>(&win, "password", false, true));
 }
 
-void mp_login::post_show(window& win) {
+void mp_login::post_show(window& /*win*/) {
 	if(get_retval() == retval::OK) {
-		save_password(win);
+		save_password();
 	}
 }
 

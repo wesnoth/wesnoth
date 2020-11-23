@@ -56,7 +56,7 @@ void help_browser::pre_show(window& window)
 	multi_page& topic_pages = find_widget<multi_page>(&window, "topic_text_pages", false);
 
 	connect_signal_notify_modified(topic_tree,
-		std::bind(&help_browser::on_topic_select, this, std::ref(window)));
+		std::bind(&help_browser::on_topic_select, this));
 
 	window.keyboard_capture(&topic_tree);
 
@@ -83,12 +83,12 @@ void help_browser::pre_show(window& window)
 		++id;
 	}
 
-	on_topic_select(window);
+	on_topic_select();
 }
 
-void help_browser::on_topic_select(window& window)
+void help_browser::on_topic_select()
 {
-	tree_view& tree = find_widget<tree_view>(&window, "topic_tree", false);
+	tree_view& tree = find_widget<tree_view>(get_window(), "topic_tree", false);
 
 	if(tree.empty()) {
 		return;
@@ -101,7 +101,7 @@ void help_browser::on_topic_select(window& window)
 	}
 
 	const unsigned topic_i = lexical_cast<unsigned>(tree.selected_item()->id());
-	find_widget<multi_page>(&window, "topic_text_pages", false).select_page(topic_i);
+	find_widget<multi_page>(get_window(), "topic_text_pages", false).select_page(topic_i);
 
 }
 

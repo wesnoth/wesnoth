@@ -14,39 +14,39 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-10-17 04:28 UTC\n"
-"PO-Revision-Date: 2020-08-28 10:00+0200\n"
-"Last-Translator: Martin Hrubý <hrubymar10@gmail.com>\n"
+"PO-Revision-Date: 2020-11-14 21:16+0100\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:4
 msgid "heroic"
-msgstr ""
+msgstr "hrdinný"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:7
 msgid "female^heroic"
-msgstr ""
+msgstr "hrdinná"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:10
 msgid "expert"
-msgstr ""
+msgstr "expert"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:13
 msgid "female^expert"
-msgstr ""
+msgstr "expertka"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:16
 msgid "epic"
-msgstr ""
+msgstr "epický"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:19
 msgid "female^epic"
-msgstr ""
+msgstr "epická"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:22
 msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
@@ -54,11 +54,11 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:25
 msgid "legendary"
-msgstr ""
+msgstr "legendární"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:28
 msgid "female^legendary"
-msgstr ""
+msgstr "legendární"
 
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:31
 msgid "Special advancement to Chocobone enabled."
@@ -83,47 +83,48 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:14
 msgid "The Horde"
-msgstr ""
+msgstr "Horda"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:17
 msgid "The Alliance"
-msgstr ""
+msgstr "Aliance"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:20
 msgid "The Guild"
-msgstr ""
+msgstr "Gilda"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:23
 msgid "The Trust"
-msgstr ""
+msgstr "Kartel"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:26
 msgid "The Gang"
-msgstr ""
+msgstr "Gang"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:29
 msgid "The Cult"
-msgstr ""
+msgstr "Kult"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:32
 msgid "The Militia"
-msgstr ""
+msgstr "Milice"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:35
 msgid "The Scourge"
-msgstr ""
+msgstr "Metla"
 
+# Hnát?
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:38
 msgid "The Hand"
-msgstr ""
+msgstr "Ruka"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:41
 msgid "The Empire"
-msgstr ""
+msgstr "Impérium"
 
 #: data/campaigns/World_Conquest/lua/campaign/difficulty.lua:6
 msgid "Choose difficulty level:"
-msgstr ""
+msgstr "Vyber obtížnost:"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -131,29 +132,33 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:5
 msgid "Defeat all enemy leaders and commanders"
-msgstr ""
+msgstr "Poraz všechny nepřátelské vůdce i velitele"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:6
 msgid "Turns run out"
-msgstr ""
+msgstr "Vyprší počet kol"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:7
 msgid "Lose your leader and all your commanders"
-msgstr ""
+msgstr "Tvůj vůdce i všichni velitelé zemřou"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:10
 msgid "An in-game help is available: right-click on any empty hex."
 msgstr ""
+"Kliknutím pravým tlačítkem na libovolné prázdné políčko lze ve hře zobrazit "
+"nápovědu."
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:13
 msgid "Tell me how my recruit works"
-msgstr ""
+msgstr "Vysvětli mi, jak mé verbování funguje"
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:14
 msgid ""
 "Every time you recruit a unit, it is replaced in your recruit list by its "
 "pair. The following pairs can also be found here:"
 msgstr ""
+"Pokaždé, když naverbuješ jednotku, je v tvém verbovacím seznamu nahrazena "
+"svou dvojicí. Následující dvojice najdeš také zde:"
 
 #. [lua]: wesnoth.wml_actions.wc2_recruit_info
 #: data/campaigns/World_Conquest/lua/era/era.lua:316
@@ -168,7 +173,7 @@ msgstr ""
 #. [lua]: wesnoth.wml_actions.wc2_show_item_info
 #: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:228
 msgid "Remind me what this item does"
-msgstr ""
+msgstr "Připomeň mi, jak tato možnost funguje"
 
 #. [lua]: wesnoth.wml_actions.wc2_place_bonus
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:24
@@ -183,14 +188,14 @@ msgstr ""
 #. [lua]: bonus.found_artifact
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:149
 msgid "Hey, I found some treasure!"
-msgstr ""
+msgstr "Hej, našel jsem nějaký poklad!"
 
 #. [lua]: bonus.found_hero
 #. [lua]: bonus.found_training
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:164
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:196
 msgid "Someone is here!"
-msgstr ""
+msgstr "Někdo tam je!"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
@@ -212,30 +217,30 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Bane"
-msgstr ""
+msgstr "Kletba"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 msgid "Cargo"
-msgstr ""
+msgstr "Náklad"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:13
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:15
 msgid "Disaster"
-msgstr ""
+msgstr "Pohroma"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:79
 msgid "Expedition"
-msgstr ""
+msgstr "Expedice"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:13
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:15
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:19
 msgid "Massacre"
-msgstr ""
+msgstr "Masakr"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
@@ -260,7 +265,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Point"
-msgstr ""
+msgstr "Bod"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
@@ -300,11 +305,11 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Rest"
-msgstr ""
+msgstr "Odpočinek"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 msgid "Rocks"
-msgstr ""
+msgstr "Skály"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
@@ -330,7 +335,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Route"
-msgstr ""
+msgstr "Trasa"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
@@ -354,7 +359,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Ruin"
-msgstr ""
+msgstr "Zřícenina"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
@@ -372,12 +377,12 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Vestige"
-msgstr ""
+msgstr "Stopa"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:59
 msgid "Waters"
-msgstr ""
+msgstr "Vodní plocha"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
@@ -400,7 +405,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Curse"
-msgstr ""
+msgstr "Prokletí"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
@@ -424,7 +429,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Exile"
-msgstr ""
+msgstr "Vyhnanství"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
@@ -457,7 +462,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Lair"
-msgstr ""
+msgstr "Doupě"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:5
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
@@ -493,61 +498,61 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Passage"
-msgstr ""
+msgstr "Průchod"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 msgid "Death"
-msgstr ""
+msgstr "Smrt"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:7
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:19
 msgid "Quagmire"
-msgstr ""
+msgstr "Bahnisko"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:13
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:17
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:63
 msgid "Cemetery"
-msgstr ""
+msgstr "Hřbitov"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 msgid "Desert"
-msgstr ""
+msgstr "Poušť"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:19
 msgid "Desolation"
-msgstr ""
+msgstr "Pustina"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 msgid "Despair"
-msgstr ""
+msgstr "Zoufalství"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:9
 msgid "Wasteland"
-msgstr ""
+msgstr "Pustina"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
 msgid "Destruction"
-msgstr ""
+msgstr "Zničení"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:17
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:51
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:83
 msgid "Cave"
-msgstr ""
+msgstr "Jeskyně"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:17
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:63
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:67
 msgid "Graveyard"
-msgstr ""
+msgstr "Hřbitov"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:17
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
@@ -557,31 +562,32 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:51
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:81
 msgid "Grotto"
-msgstr ""
+msgstr "Jeskyňka"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:19
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Bog"
-msgstr ""
+msgstr "Bažina"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:19
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:59
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:61
 msgid "Hideout"
-msgstr ""
+msgstr "Úkryt"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:49
 msgid "Den"
-msgstr ""
+msgstr "Pelech"
 
+# Žalář?
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 msgid "Dungeon"
-msgstr ""
+msgstr "Podzemí"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
@@ -589,7 +595,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:49
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:51
 msgid "Mine"
-msgstr ""
+msgstr "Důl"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
@@ -603,7 +609,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:83
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Secret"
-msgstr ""
+msgstr "Tajemství"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
@@ -614,11 +620,11 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Crypt"
-msgstr ""
+msgstr "Krypta"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
 msgid "Dream"
-msgstr ""
+msgstr "Sen"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
@@ -628,37 +634,37 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Mausoleum"
-msgstr ""
+msgstr "Mauzoleum"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:23
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:63
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:81
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Ossuary"
-msgstr ""
+msgstr "Kostnice"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:91
 msgid "Peak"
-msgstr ""
+msgstr "Vrchol"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:51
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 msgid "Quarry"
-msgstr ""
+msgstr "Lom"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:51
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:79
 msgid "Site"
-msgstr ""
+msgstr "Poloha"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 msgid "Destiny"
-msgstr ""
+msgstr "Osud"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:33
@@ -690,21 +696,21 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Domain"
-msgstr ""
+msgstr "Oblast"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 msgid "Door"
-msgstr ""
+msgstr "Dveře"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:27
 msgid "Gate"
-msgstr ""
+msgstr "Brána"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 msgid "Armory"
-msgstr ""
+msgstr "Zbrojnice"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
@@ -721,21 +727,21 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Enclave"
-msgstr ""
+msgstr "Enkláva"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:73
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 msgid "Fair"
-msgstr ""
+msgstr "Trh"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:73
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 msgid "Festival"
-msgstr ""
+msgstr "Slavnost"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
@@ -744,7 +750,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:89
 msgid "Market"
-msgstr ""
+msgstr "Obchod"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:33
@@ -755,7 +761,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 msgid "Path"
-msgstr ""
+msgstr "Stezka"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:33
@@ -766,14 +772,14 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 msgid "Road"
-msgstr ""
+msgstr "Cesta"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:29
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:73
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:75
 msgid "Tournament"
-msgstr ""
+msgstr "Turnaj"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:31
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:45
@@ -792,7 +798,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Refuge"
-msgstr ""
+msgstr "Útulek"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:35
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:37
@@ -802,96 +808,96 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:91
 msgid "Memory"
-msgstr ""
+msgstr "Vzpomínka"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:35
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:37
 msgid "Rock"
-msgstr ""
+msgstr "Skála"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:35
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:39
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:41
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:43
 msgid "Triumph"
-msgstr ""
+msgstr "Triumf"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:41
 msgid "Monolith"
-msgstr ""
+msgstr "Monolit"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:43
 msgid "Obelisk"
-msgstr ""
+msgstr "Obelisk"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:47
 msgid "Desire"
-msgstr ""
+msgstr "Touha"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:49
 msgid "Well"
-msgstr ""
+msgstr "Studna"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:53
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 msgid "Cliff"
-msgstr ""
+msgstr "Útes"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:53
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 msgid "Plateau"
-msgstr ""
+msgstr "Náhorní plošina"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Bay"
-msgstr ""
+msgstr "Záliv"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Coast"
-msgstr ""
+msgstr "Pobřeží"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Harbor"
-msgstr ""
+msgstr "Přístaviště"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 msgid "Lighthouse"
-msgstr ""
+msgstr "Maják"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Port"
-msgstr ""
+msgstr "Přístav"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Seaport"
-msgstr ""
+msgstr "Přístavní město"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Shore"
-msgstr ""
+msgstr "Pobřeží"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Beacon"
-msgstr ""
+msgstr "Signální oheň"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Signal"
-msgstr ""
+msgstr "Znamení"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:61
 msgid "Marsh"
-msgstr ""
+msgstr "Bažina"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:63
 msgid "Delirium"
-msgstr ""
+msgstr "Delirium"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:67
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:81
@@ -903,43 +909,43 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Conclave"
-msgstr ""
+msgstr "Konkláve"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Farm"
-msgstr ""
+msgstr "Farma"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Field"
-msgstr ""
+msgstr "Pole"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Granary"
-msgstr ""
+msgstr "Sýpka"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Grassland"
-msgstr ""
+msgstr "Pastvina"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Meadow"
-msgstr ""
+msgstr "Louka"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Prairie"
-msgstr ""
+msgstr "Step"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Shire"
-msgstr ""
+msgstr "Hrabství"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Windmill"
-msgstr ""
+msgstr "Větrný mlýn"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:71
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:73
@@ -947,15 +953,15 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:79
 msgid "Outpost"
-msgstr ""
+msgstr "Hláska"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 msgid "Shelter"
-msgstr ""
+msgstr "Útulek"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:81
 msgid "Altar"
-msgstr ""
+msgstr "Oltář"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:81
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
@@ -965,19 +971,19 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Oracle"
-msgstr ""
+msgstr "Věštírna"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:89
 msgid "Academy"
-msgstr ""
+msgstr "Akademie"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:89
 msgid "Library"
-msgstr ""
+msgstr "Knihovna"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
@@ -986,13 +992,13 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Sanctuary"
-msgstr ""
+msgstr "Svatyně"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:89
 msgid "School"
-msgstr ""
+msgstr "Škola"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
@@ -1000,7 +1006,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:91
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 msgid "Shrine"
-msgstr ""
+msgstr "Oltář"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
@@ -1008,36 +1014,36 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:91
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 msgid "Temple"
-msgstr ""
+msgstr "Chrám"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 msgid "Decay"
-msgstr ""
+msgstr "Rozklad"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Moor"
-msgstr ""
+msgstr "Vřešoviště"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:95
 msgid "Perversion"
-msgstr ""
+msgstr "Zvrácenost"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Glade"
-msgstr ""
+msgstr "Paseka"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Tree"
-msgstr ""
+msgstr "Strom"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Observatory"
-msgstr ""
+msgstr "Observatoř"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:99
 msgid "Tower"
-msgstr ""
+msgstr "Věž"
 
 #. [lua]: wc2_invest.invest
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest.lua:142
@@ -1054,12 +1060,12 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:56
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
 msgid "Artifacts"
-msgstr ""
+msgstr "Artefakty"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:75
 msgid "Heroes"
-msgstr ""
+msgstr "Hrdinové"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:78
@@ -1067,33 +1073,34 @@ msgid ""
 "Commanders will take your leader’s place when the leader dies, possible "
 "commanders:"
 msgstr ""
+"Pokud tvůj vůdce zemře, může ho nahradit jeden z velitelů. Dostupní velitelé:"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:85
 msgid "Commander"
-msgstr ""
+msgstr "Velitel"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:85
 msgid "promote to leader"
-msgstr ""
+msgstr "povýšit na vůdce"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:103
 msgid "possible units:"
-msgstr ""
+msgstr "dostupné jednotky:"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:110
 msgid "Deserter"
-msgstr ""
+msgstr "Zběh"
 
 #. [lua]: gui.widget.add_invest_item
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:118
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
 msgid "Training"
-msgstr ""
+msgstr "Výcvik"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:125
@@ -1103,36 +1110,36 @@ msgstr ""
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:135
 msgid "After:"
-msgstr ""
+msgstr "Po:"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:135
 msgid "Before:"
-msgstr ""
+msgstr "Před:"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:140
 msgid "Other"
-msgstr ""
+msgstr "Ostatní"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:146
 msgid "+70 gold and +1 village"
-msgstr ""
+msgstr "+ 70 zlatých a vesnice navíc"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:151
 msgid "Stock up supplies"
-msgstr ""
+msgstr "Doplnit zásoby"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:156
 msgid "Gives 70 gold and places a village on your keep."
-msgstr ""
+msgstr "Získáš 70 zlatých a vesnici do své tvrze."
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_tellunit.lua:20
 msgid "You got"
-msgstr ""
+msgstr "Získal jsi"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_tellunit.lua:48
 msgid "OK"
@@ -1141,21 +1148,21 @@ msgstr ""
 #. [lua]: show_dialog
 #: data/campaigns/World_Conquest/lua/game_mechanics/pickup_confirmation_dialog.lua:26
 msgid "Pick up item?"
-msgstr ""
+msgstr "Vzít si to?"
 
 #. [lua]: show_dialog
 #: data/campaigns/World_Conquest/lua/game_mechanics/pickup_confirmation_dialog.lua:61
 msgid "Yes (enter)"
-msgstr ""
+msgstr "Ano (Enter)"
 
 #. [lua]: show_dialog
 #: data/campaigns/World_Conquest/lua/game_mechanics/pickup_confirmation_dialog.lua:68
 msgid "No (esc)"
-msgstr ""
+msgstr "Ne (Esc)"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/promote_commander.lua:5
 msgid "No! This is the end!"
-msgstr ""
+msgstr "Ne! To je konec!"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/promote_commander.lua:6
 msgid "Don’t lose heart comrades, we can still win this battle."
@@ -1459,12 +1466,12 @@ msgstr ""
 #. [lua]: training.apply
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:221
 msgid "trained"
-msgstr ""
+msgstr "trénovaný"
 
 #. [lua]: training.apply
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:222
 msgid "female^trained"
-msgstr ""
+msgstr "trénovaná"
 
 #. [lua]: training.describe_bonus
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:274
@@ -1538,17 +1545,18 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:99
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:156
 msgid "Looks like we fished some tasty help."
-msgstr ""
+msgstr "Vypadá to, že jsme chytili nějakou vítanou pochoutku."
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:56
 msgid "Need a friendly blade?"
-msgstr ""
+msgstr "Potřebuješ pomocnou ruku?"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:66
 msgid ""
 "The mother forest sends you her blessings. Let us join together against her "
 "foes."
 msgstr ""
+"Mateřský les vám posílá svá požehnání. Spojme se proti jeho nepřátelům."
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:71
 msgid "Yeah, flower power!"
@@ -2015,7 +2023,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:34
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:38
 msgid "To war! Prepare to defend yourselves!"
-msgstr ""
+msgstr "Do boje! Připravte se na obranu!"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:35
@@ -2041,7 +2049,7 @@ msgstr ""
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:41
 msgid "Yes! We will drive them into the sea!"
-msgstr ""
+msgstr "Ano! Zaženeme je do moře!"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:42
@@ -2184,7 +2192,7 @@ msgstr ""
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
 msgid "That’s it, our work is done here!"
-msgstr ""
+msgstr "A je to. Jsme hotovi!"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:80
@@ -2199,22 +2207,22 @@ msgstr ""
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:85
 msgid "The End"
-msgstr ""
+msgstr "Konec"
 
 #. [lua]: _G.wct_map_generator
 #: data/campaigns/World_Conquest/lua/map/settings/settings_dialog.lua:47
 msgid "Map Settings"
-msgstr ""
+msgstr "Nastavení mapy"
 
 #. [lua]: _G.wct_map_generator
 #: data/campaigns/World_Conquest/lua/map/settings/settings_dialog.lua:68
 msgid " scenario: "
-msgstr ""
+msgstr " scénář: "
 
 #. [lua]: _G.wct_map_generator
 #: data/campaigns/World_Conquest/lua/map/settings/settings_dialog.lua:81
 msgid " map: "
-msgstr ""
+msgstr " mapa: "
 
 #: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:10
 msgid "Preset Advancement"
@@ -2239,27 +2247,31 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:4
 msgid "Adamant armor"
-msgstr ""
+msgstr "Adamantová zbroj"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:7
 msgid ""
 "The sturdy plates of this lightweight armor increase the user’s physical "
 "resistances (to a maximum of 10%) and grants the steadfast ability."
 msgstr ""
+"Robustní pláty tohoto lehkého brnění zvyšují odolnost nositele vůči fyzickým "
+"zraněním (na maximálně 10 %) a dále mu poskytují vytrvalost."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:10
 msgid "Assassin’s ring"
-msgstr ""
+msgstr "Vražedný prsten"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:13
 msgid ""
 "This plain ring with a pleasantly smooth and slippery surface gives its "
 "owner unmatched sneak attacking skills."
 msgstr ""
+"Tento nezdobený prsten s příjemně hladkým a kluzkým povrchem poskytuje "
+"majiteli unikátní potměšilé útočné schopnosti."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:16
 msgid "Azure pearl"
-msgstr ""
+msgstr "Blankytná perla"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:19
 msgid ""
@@ -2267,73 +2279,87 @@ msgid ""
 "was air, strongly improving their mobility in water and granting the "
 "submerge ability."
 msgstr ""
+"Tento úžasný drahokam umožňuje nositeli dýchat a pohybovat se pod vodou, "
+"výrazně zlepšuje jeho pohyblivost ve vodě a poskytuje mu schopnost ponoření."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:22
 msgid "Bezoar"
-msgstr ""
+msgstr "Bezoár"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:25
 msgid ""
 "This shamanic totem protects from poison, drain, and plague. Bearers of the "
 "totem are immune to fear and their vulnerabilities are reduced."
 msgstr ""
+"Tento šamanský symbol chrání před jedem, vysátím a nákazou. Nositel symbolu "
+"je imunní vůči strachu a jeho zranitelnost je snížena."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:28
 msgid "Blood ring"
-msgstr ""
+msgstr "Krvavý prsten"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:31
 msgid ""
 "This pulsing ring empowers the bearer’s melee attacks with the ability to "
 "drain lifeforce from their victim."
 msgstr ""
+"Tento pulzující prsten umožňuje nositeli, aby při útocích na blízko vysával "
+"ze svých protivníků životní sílu."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:34
 msgid "Cursed symbol of life"
-msgstr ""
+msgstr "Prokletý symbol života"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:37
 msgid ""
 "This vampiric amulet allows a unit to drain enemy life from a safe distance."
 msgstr ""
+"Tento upírský amulet umožňuje nositeli vysávat život nepřátel z bezpečné "
+"vzdálenosti."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:40
 msgid "Eagle eye longbow"
-msgstr ""
+msgstr "Odstřelovačský luk"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:43
 msgid ""
 "This enchanted longbow enhances the wielder’s ranged attacks with uncanny "
 "precision and increased damage."
 msgstr ""
+"Tento očarovaný dlouhý luk vylepšuje u držitele útoky na dálku záhadnou "
+"přesností a zvýšeným poškozením."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:46
 msgid "Forbidden grimoire"
-msgstr ""
+msgstr "Zapovězený grimoár"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:49
 msgid ""
 "This unholy manual gives the user the arcane knowledge to resurrect enemies "
 "slain in melee combat as the walking dead."
 msgstr ""
+"Tato nesvatá příručka poskytuje uživateli tajemné znalosti využitelné ke "
+"vzkříšení nepřátel zabitých v boji zblízka v podobě chodících mrtvol."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:52
 msgid "Forcefield"
-msgstr ""
+msgstr "Silové pole"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:55
 msgid "adjacent enemies do 13% less damage"
-msgstr ""
+msgstr "nepřátelské jednotky na sousedních polích způsobí o 13 % menší zranění"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:58
 msgid ""
 "Charged with intense magic, this shield generates a forcefield causing "
 "adjacent enemies to inflict less damage around the wielder."
 msgstr ""
+"Tento štít nabitý intenzivní magií generuje silové pole, které způsobuje, že "
+"nepřátelé v bezprostředním okolí držitele udílejí menší zranění."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:61
 msgid "Ghast’s marrow"
-msgstr ""
+msgstr "Příšernokoláda"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:64
 msgid ""
@@ -2341,6 +2367,9 @@ msgid ""
 "for more blood. Every time a foe is slain, a part of his lifeforce is "
 "eternally claimed through arcane ghoulish powers."
 msgstr ""
+"Tato příšerná směs naplní toho, kdo ji vypije, nenasytným bezbožným hladem "
+"po další krvi. Pokaždé, když zabije nepřítele, získá skrz tajemné démonské "
+"síly natrvalo část jeho životů."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:67
 msgid "Root of the Elder Wose"
@@ -2353,7 +2382,7 @@ msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:73
 msgid "Cruel spike"
-msgstr ""
+msgstr "Krutý bodec"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:76
 msgid ""
@@ -2361,20 +2390,26 @@ msgid ""
 "unit’s melee strikes are doubled in power when attacking, but the same is "
 "true for the retaliation strike of the defender."
 msgstr ""
+"Toto začarované kopí nutí svého držitele, aby podlehl své zuřivosti. Útoky "
+"jednotky na blízko se při útoku zdvojnásobí, ale to samé platí pro odvetné "
+"údery nepřátel."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:79
 msgid "Heart of fire"
-msgstr ""
+msgstr "Plamenné srdce"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:82
 msgid ""
 "This magic orb infuses the wielder’s melee attacks with fiery power, "
 "changing their damage type. It also improves fire resistance."
 msgstr ""
+"Tato kouzelná koule způsobí u držitele to, že jeho útoky na blízko jsou "
+"prodchnuty ohnivou silou a změní se jejich typ poškození. Zlepšuje také "
+"odolnost proti ohni."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:85
 msgid "Herald armor"
-msgstr ""
+msgstr "Zvěstovatelské brnění"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:88
 msgid ""
@@ -2382,50 +2417,63 @@ msgid ""
 "body and soul. This effect will heal allies, blind evil, and preemptively "
 "smite those who seek to do harm."
 msgstr ""
+"Toto svaté brnění z tenkého zlata vyzařuje čisté světlo, osvětlující tělo i "
+"duši nositele. Tento efekt ošetřuje spojence, oslepuje zlo a preventivně "
+"udeří ty, kteří se snaží nositeli ublížit."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:91
 msgid "Holy water"
-msgstr ""
+msgstr "Svěcená voda"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:94
 msgid ""
 "This sacred vial anoints melee attacks with arcane power, increasing their "
 "damage and changing their damage type. It also increases arcane resistance."
 msgstr ""
+"Tato posvěcená lahvička obsahuje vodu, která při nalití na zbraň pro boj "
+"zblízka tuto zbraň posvětí tajemnou silou. Útoky zbraní pak způsobí vyšší "
+"poškození a změní se jejich typ. Zlepšuje také odolnost proti nezemským "
+"útokům."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:97
 msgid "Ice bow"
-msgstr ""
+msgstr "Ledový luk"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:100
 msgid ""
 "Draw this magical bow summon an ice arrow that will freeze and slow its "
 "target upon hit."
 msgstr ""
+"Tento magický luk při natažení vyvolá ledový šíp, který po zásahu zmrazí a "
+"zpomalí svůj cíl."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:103
 msgid "Medicinal herbs"
-msgstr ""
+msgstr "Léčivé byliny"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:106
 msgid ""
 "These potent herbs give the bearer the ability to heal adjacent units and "
 "cure their poison."
 msgstr ""
+"Tyto účinné byliny dávají nositeli schopnost ošetřovat sousední jednotky a "
+"uzdravovat je z otravy."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:109
 msgid "Melange"
-msgstr ""
+msgstr "Melanž"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:112
 msgid ""
 "This exotic drug of organic origin enhances user’s vitality and awareness. "
 "It has no effect when consumed by undead."
 msgstr ""
+"Tato exotická droga organického původu zlepšuje vitalitu a povědomí "
+"uživatele. Pokud je zkonzumována nemrtvým, nemá žádný účinek."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:115
 msgid "Ring of frostbite"
-msgstr ""
+msgstr "Zmrazující prsten"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:118
 msgid ""
@@ -2433,6 +2481,9 @@ msgid ""
 "their damage to cold and allowing them to inflict deathly chills that slow "
 "the enemy."
 msgstr ""
+"Tento chladný prsten způsobí u držitele to, že jeho útoky na blízko jsou "
+"prodchnuty ledovým chladem a změní se jejich typ poškození. Také způsobí "
+"zasaženému nepříteli smrtelné zimnice, které ho zpomalí."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:121
 msgid "Ring of power"

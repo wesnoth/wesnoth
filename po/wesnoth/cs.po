@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 01:28-0300\n"
-"PO-Revision-Date: 2020-10-11 09:09+0200\n"
+"POT-Creation-Date: 2020-11-21 01:40-0300\n"
+"PO-Revision-Date: 2020-11-12 21:21+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -3849,14 +3849,14 @@ msgstr "Neschůdný"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:448
 msgid "Fog"
 msgstr "Mlha"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
-#: src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:451
+#: src/game_initialization/lobby_data.cpp:454
 msgid "Shroud"
 msgstr "Zahalení tmou"
 
@@ -4176,7 +4176,7 @@ msgstr ""
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:899
+#: data/lua/wml-tags.lua:900
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Neplatná úroveň zastarání (měla by být 1-4)"
 
@@ -4240,21 +4240,16 @@ msgstr "Prohra:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
-#| msgid_plural "(%d turns left)"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
-msgstr[0] "(zbývá tento tah)"
-msgstr[1] "(zbývají %d tahy)"
-msgstr[2] "(zbývá %d tahů)"
+msgstr[0] "(zbývá toto kolo)"
+msgstr[1] "(zbývají $remaining_turns kola)"
+msgstr[2] "(zbývá $remaining_turns kol)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
-#, fuzzy
-#| msgid "%d%% of gold carried over to the next scenario."
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr "%d%% zlata přeneseno do dalšího scénáře."
+msgstr "$percent % zlata přeneseno do dalšího scénáře."
 
 #. [modification]: id=delay_advancements, type=hybrid
 #: data/modifications.cfg:3
@@ -4362,12 +4357,12 @@ msgid "female^aura of death ("
 msgstr ""
 
 #. [language]
-#: data/scenario-test.cfg:4395
+#: data/scenario-test.cfg:4396
 msgid "very long"
 msgstr "velmi dlouhý"
 
 #. [language]
-#: data/scenario-test.cfg:4396
+#: data/scenario-test.cfg:4397
 msgid "electrical"
 msgstr "elektrický"
 
@@ -4584,7 +4579,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:17 data/tips.cfg:149
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>― Velký Mág Delfador, 516 R. W.</i>"
+msgstr "<i>― velký mág Delfador, 516 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:20
@@ -4627,7 +4622,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:25
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "<i>― Král Konrád, 536 R. W.</i>"
+msgstr "<i>― král Konrád, 536 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:28
@@ -4646,7 +4641,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>― Gweddryho záznamy, 627 R. W.</i>"
+msgstr "<i>― Gweddryho záznamy, 627 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:32
@@ -4686,7 +4681,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:226 data/tips.cfg:238
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>― Nejvyšší lord Kalenz, 470 R. W.</i>"
+msgstr "<i>― nejvyšší lord Kalenz, 470 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:44
@@ -4721,7 +4716,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:53
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "<i>― Komunita Wesnothu</i>"
+msgstr "<i>― komunita Wesnothu</i>"
 
 #. [tip]
 #: data/tips.cfg:56
@@ -4740,7 +4735,7 @@ msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
 msgstr ""
 "<i>― Královské kompendium válečné terminologie, svazek II (přetisk z r. 221 "
-"R. W.)</i>"
+"w. l.)</i>"
 
 #. [tip]
 #: data/tips.cfg:60
@@ -4752,7 +4747,7 @@ msgstr "I jinak skvělý plán selže, pokud zaútočíš v nevhodnou denní dob
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
 #: data/tips.cfg:230
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 R. W.</i>"
+msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:64
@@ -4860,7 +4855,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:89
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 R. W.</i>"
+msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:92
@@ -4909,7 +4904,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:105 data/tips.cfg:189
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "<i>― Sir Kaylan, 498 R. W.</i>"
+msgstr "<i>― sir Kaylan, 498 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:108
@@ -4924,7 +4919,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:109
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "<i>― Sir Kaylan, 502 R. W.</i>"
+msgstr "<i>― sir Kaylan, 502 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:112
@@ -4975,7 +4970,7 @@ msgstr "Neboj se ustoupit a přeskupit; je to často klíčem k vítězství."
 #. [tip]
 #: data/tips.cfg:129
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "<i>― Meneldur, 123 R. W.</i>"
+msgstr "<i>― Meneldur, 123 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:132
@@ -5051,7 +5046,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:153
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>― Kai Laudiss, 623 R. W.</i>"
+msgstr "<i>― Kai Laudiss, 623 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -5061,7 +5056,7 @@ msgstr "Chraň zraněné jednotky řadou jednotek, abys jim umožnil zotavit se.
 #. [tip]
 #: data/tips.cfg:157
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>― princezna Lisar, 515 R. W.</i>"
+msgstr "<i>― princezna Lisar, 515 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:160
@@ -5099,7 +5094,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:173 data/tips.cfg:218
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>― Svitky Chantal, 516 R. W.</i>"
+msgstr "<i>― Svitky Chantal, 516 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:176
@@ -5119,7 +5114,7 @@ msgstr "<i>Nezemské</i> útoky jsou velmi účinné proti nemrtvým."
 #. [tip]
 #: data/tips.cfg:181
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>― Velký mudřec Dacyn, 626 R. W.</i>"
+msgstr "<i>― velký mudřec Dacyn, 626 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:184
@@ -5179,7 +5174,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:201
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>― královna Lisar, 528 R. W.</i>"
+msgstr "<i>― královna Lisar, 528 w. l.</i>"
 
 #. [tip]
 #. Whiteboard is another name for the Planning Mode
@@ -5294,7 +5289,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:234 data/tips.cfg:246
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "<i>― Lord Hamel z Knalgy</i>"
+msgstr "<i>― lord Hamel z Knalgy</i>"
 
 #. [tip]
 #: data/tips.cfg:237
@@ -5359,7 +5354,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:254
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― královna Ašvíra, 503 R. W.</i>"
+msgstr "<i>― královna Ašvíra, 503 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:257
@@ -5380,21 +5375,21 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:262
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Sir Gerrick z Westinu, 607 R. W.</i>"
+msgstr "<i>― sir Gerrick z Westinu, 607 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:266
 msgid ""
 "Some types of terrain give unique bonuses, such as healing or illumination."
 msgstr ""
+"Některé typy terénu poskytují jedinečné bonusy jako uzdravování nebo "
+"osvětlení."
 
 #. [tip]
 #. Translate the word "Flight" as a collective noun for drakes
 #: data/tips.cfg:268
-#, fuzzy
-#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>― Vank z Galunovy letky, 6 R. W.</i>"
+msgstr "<i>― Galun, velitel letky, 5 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5409,10 +5404,8 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:272
-#, fuzzy
-#| msgid "<i>― Lord Hamel of Knalga</i>"
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr "<i>― Lord Hamel z Knalgy</i>"
+msgstr "<i>― lord Tallin z Knalgy, 538 w. l.</i>"
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5586,11 +5579,9 @@ msgstr ""
 
 #: src/addon/client.cpp:183
 #, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
-msgid ""
-"Requesting the older version composition for the add-on <i>$addon_title</"
-"i>..."
-msgstr "Stahuji rozšíření: <i>$addon_title|</i>..."
+#| msgid "Requesting distribution terms..."
+msgid "Requesting file index..."
+msgstr "Žádám o podmínky používání..."
 
 #: src/addon/client.cpp:199
 #, fuzzy
@@ -5606,11 +5597,11 @@ msgstr "Stahuji rozšíření: <i>$addon_title|</i>..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Odstraňuji rozšíření: <i>$addon_title|</i> ze serveru..."
 
-#: src/addon/client.cpp:281
+#: src/addon/client.cpp:282
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Stahuji rozšíření: <i>$addon_title|</i>..."
 
-#: src/addon/client.cpp:333 src/addon/client.cpp:359
+#: src/addon/client.cpp:334 src/addon/client.cpp:360
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5618,7 +5609,7 @@ msgstr ""
 "Rozšíření <i>$addon_title</i> obsahuje neplatný název souboru nebo složky a "
 "nebude instalováno."
 
-#: src/addon/client.cpp:338 src/addon/client.cpp:364
+#: src/addon/client.cpp:339 src/addon/client.cpp:365
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5626,11 +5617,11 @@ msgstr ""
 "Rozšíření <i>$addon_title</i> má názvy souborů nebo adresářů s kolizí malých "
 "a velkých písmen. To může způsobit problémy."
 
-#: src/addon/client.cpp:408
+#: src/addon/client.cpp:409
 msgid "The server responded with an error:"
 msgstr "Server odpověděl chybou:"
 
-#: src/addon/client.cpp:458
+#: src/addon/client.cpp:459
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5647,11 +5638,11 @@ msgstr[2] ""
 "Vybraná rozšíření závisí na dalším rozšíření, které není momentálně "
 "nainstalováno nebo není dostupné na serveru. Přejete si pokračovat?"
 
-#: src/addon/client.cpp:467
+#: src/addon/client.cpp:468
 msgid "Broken Dependencies"
 msgstr "Porušení závislostí"
 
-#: src/addon/client.cpp:507
+#: src/addon/client.cpp:508
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5664,11 +5655,11 @@ msgstr[1] ""
 msgstr[2] ""
 "Následující závislosti nebylo možné nainstalovat. Chcete pokračovat?"
 
-#: src/addon/client.cpp:511
+#: src/addon/client.cpp:512
 msgid "Dependencies Installation Failed"
 msgstr "Instalace závislostí selhala"
 
-#: src/addon/client.cpp:534
+#: src/addon/client.cpp:535
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5676,81 +5667,81 @@ msgstr ""
 "Rozšíření '$addon|' už je nainstalované a obsahuje dodatečné informace, "
 "které budou navždy ztraceny, jestli budete pokračovat:"
 
-#: src/addon/client.cpp:538
+#: src/addon/client.cpp:539
 msgid "Publishing information file (.pbl)"
 msgstr "Soubor pro publikace (.pbl)"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:543
 msgid "Version control system (VCS) information"
 msgstr "Informace o verzovacím systému (VCS)"
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:547
 msgid "Do you really wish to continue?"
 msgstr "Opravdu si přeješ pokračovat?"
 
-#: src/addon/client.cpp:548 src/addon/manager_ui.cpp:174
+#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:174
 #: src/game_initialization/multiplayer.cpp:231
 msgid "Confirm"
 msgstr "Potvrdit"
 
-#: src/addon/client.cpp:668
+#: src/addon/client.cpp:674
 msgid "Add-ons Manager"
 msgstr "Správce rozšíření"
 
-#: src/addon/info.cpp:244
+#: src/addon/info.cpp:254
 msgid "addon_type^Campaign"
 msgstr "Tažení"
 
-#: src/addon/info.cpp:246
+#: src/addon/info.cpp:256
 msgid "addon_type^Scenario"
 msgstr "Scénář"
 
-#: src/addon/info.cpp:248
+#: src/addon/info.cpp:258
 msgid "addon_type^SP/MP Campaign"
 msgstr "Tažení SP/MP"
 
-#: src/addon/info.cpp:250
+#: src/addon/info.cpp:260
 msgid "addon_type^MP era"
 msgstr "Éra MP"
 
-#: src/addon/info.cpp:252
+#: src/addon/info.cpp:262
 msgid "addon_type^MP faction"
 msgstr "Frakce MP"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:264
 msgid "addon_type^MP map-pack"
 msgstr "Soubor map MP"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:266
 msgid "addon_type^MP scenario"
 msgstr "Scénář hry MP"
 
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:268
 msgid "addon_type^MP campaign"
 msgstr "Tažení MP"
 
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:270
 msgid "addon_type^Modification"
 msgstr "Modifikace"
 
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:272
 msgid "addon_type^Core"
 msgstr "Jádro"
 
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:274
 msgid "addon_type^Resources"
 msgstr "Zdroje"
 
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:276
 msgid "addon_type^Other"
 msgstr "Jiný"
 
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:278
 msgid "addon_type^(unknown)"
 msgstr "(neznámý)"
 
 # jednotka informace "byte"
-#: src/addon/info.cpp:305
+#: src/addon/info.cpp:315
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -5841,6 +5832,140 @@ msgstr "Při stahování seznamu rozšíření ze serveru došlo k chybě."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 "Na tomto serveru nejsou dostupné žádné aktualizace rozšíření $addon_id."
+
+#: src/addon/validation.cpp:448
+msgid "Success."
+msgstr ""
+
+#: src/addon/validation.cpp:452
+msgid "Incorrect add-on passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:456
+msgid "Upload denied. Please contact the server administration for assistance."
+msgstr ""
+
+#: src/addon/validation.cpp:460
+msgid "Attempted to upload an update pack for a non-existent add-on."
+msgstr ""
+
+#: src/addon/validation.cpp:469
+msgid "No add-on data was supplied by the client."
+msgstr ""
+
+#: src/addon/validation.cpp:473
+#, fuzzy
+#| msgid "Invalid location"
+msgid "Invalid upload pack."
+msgstr "Neplatná lokace"
+
+#: src/addon/validation.cpp:477
+#, fuzzy
+#| msgid "Invalid tag name"
+msgid "Invalid add-on name."
+msgstr "Neplatný název značky"
+
+#: src/addon/validation.cpp:481
+msgid "Formatting character in add-on name."
+msgstr ""
+
+#: src/addon/validation.cpp:485
+msgid ""
+"The add-on contains files or directories with illegal names.\n"
+"\n"
+"Names containing whitespace, control characters, or any of the following "
+"symbols are not allowed:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Additionally, names may not be longer than 255 characters, contain '..', or "
+"end with '.'."
+msgstr ""
+
+#: src/addon/validation.cpp:495
+#, fuzzy
+#| msgid ""
+#| "The add-on <i>$addon_title</i> contains files or directories with case "
+#| "conflicts. File or directory names may not be differently-cased versions "
+#| "of the same string."
+msgid ""
+"The add-on contains files or directories with case conflicts.\n"
+"\n"
+"Names in the same directory may not be differently-cased versions of each "
+"other."
+msgstr ""
+"Rozšíření <i>$addon_title</i> obsahuje soubory nebo adresáře s kolizí malých "
+"a velkých písmen. Názvy souborů nebo adresářů nesmí být shodné řetězce znaků "
+"lišící se pouze velikostí písmen."
+
+#: src/addon/validation.cpp:501
+msgid "The add-on name contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:510
+#, fuzzy
+#| msgid "No add-ons to update"
+msgid "No add-on title specified."
+msgstr "Žádná rozšíření nepotřebují aktualizaci"
+
+#: src/addon/validation.cpp:514
+msgid "No add-on author/maintainer name specified."
+msgstr ""
+
+#: src/addon/validation.cpp:518
+msgid "No add-on version specified."
+msgstr ""
+
+# v nápovědě podrobnosti jednotky když k ní není žádný text
+#: src/addon/validation.cpp:522
+#, fuzzy
+#| msgid "No description available."
+msgid "No add-on description specified."
+msgstr "Žádné informace nejsou k dispozici."
+
+#: src/addon/validation.cpp:526
+msgid "No add-on author/maintainer email specified."
+msgstr ""
+
+#: src/addon/validation.cpp:530
+msgid "Missing passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:534
+msgid "Formatting character in add-on title."
+msgstr ""
+
+#: src/addon/validation.cpp:538
+#, fuzzy
+#| msgid "Invalid unit type"
+msgid "Invalid or unspecified add-on type."
+msgstr "Neplatný druh jednotky"
+
+#: src/addon/validation.cpp:542
+msgid "The add-on publish information contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:551
+msgid "Unspecified server error."
+msgstr ""
+
+#: src/addon/validation.cpp:555
+msgid "Server is in read-only mode."
+msgstr ""
+
+#: src/addon/validation.cpp:559
+#, fuzzy
+#| msgid "You have no add-ons installed."
+msgid "Corrupted server add-ons list."
+msgstr "Nejsou nainstalována žádná rozšíření."
+
+#: src/addon/validation.cpp:563
+msgid "Empty add-on version list on the server."
+msgstr ""
+
+#: src/addon/validation.cpp:573
+msgid "Unspecified validation failure."
+msgstr ""
 
 #: src/chat_command_handler.cpp:111
 msgid "Added to ignore list: $nick"
@@ -6349,66 +6474,66 @@ msgstr "Nemohu najít vůdčí typ pro frakci $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Nebylo možné zjistit pohlaví pro neplatného velitele $leader"
 
-#: src/game_initialization/lobby_data.cpp:224
+#: src/game_initialization/lobby_data.cpp:225
 msgid "Missing addon: $name"
 msgstr "Chybí rozšíření: $name"
 
-#: src/game_initialization/lobby_data.cpp:226
+#: src/game_initialization/lobby_data.cpp:227
 msgid "Missing addon: $id"
 msgstr "Chybí rozšíření: $id"
 
-#: src/game_initialization/lobby_data.cpp:258
+#: src/game_initialization/lobby_data.cpp:259
 msgid "Unknown era"
 msgstr "Neznámý věk"
 
-#: src/game_initialization/lobby_data.cpp:325
-#: src/game_initialization/lobby_data.cpp:358
+#: src/game_initialization/lobby_data.cpp:326
+#: src/game_initialization/lobby_data.cpp:360
 msgid "scenario_abbreviation^S"
 msgstr "scenario_abbreviation^S"
 
-#: src/game_initialization/lobby_data.cpp:344
+#: src/game_initialization/lobby_data.cpp:346
 msgid "Remote scenario"
 msgstr "Vzdálený scénář"
 
-#: src/game_initialization/lobby_data.cpp:366
-#: src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:367
+#: src/game_initialization/lobby_data.cpp:393
 msgid "campaign_abbreviation^C"
 msgstr "campaign_abbreviation^C"
 
-#: src/game_initialization/lobby_data.cpp:394
+#: src/game_initialization/lobby_data.cpp:399
 msgid "Unknown scenario"
 msgstr "Neznámý scénář"
 
 # jako že nezačala teď, ale dřív, byla přerušena a teď je načtená a pokračuje
-#: src/game_initialization/lobby_data.cpp:404
+#: src/game_initialization/lobby_data.cpp:413
 msgid "Reloaded game"
 msgstr "Načtená hra"
 
-#: src/game_initialization/lobby_data.cpp:419
+#: src/game_initialization/lobby_data.cpp:428
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Prázdná pozice:"
 msgstr[1] "Prázdné pozice:"
 msgstr[2] "Prázdných pozic:"
 
-#: src/game_initialization/lobby_data.cpp:421
+#: src/game_initialization/lobby_data.cpp:430
 msgid "mp_game_available_slots^Full"
 msgstr "Plný"
 
-#: src/game_initialization/lobby_data.cpp:432
-#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:441
+#: src/game_initialization/lobby_data.cpp:443 src/savegame.cpp:645
 msgid "Turn"
 msgstr "Kolo"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:456
 msgid "vision^none"
 msgstr "nikdo"
 
-#: src/game_initialization/lobby_data.cpp:456
+#: src/game_initialization/lobby_data.cpp:465
 msgid "time limit^none"
 msgstr "žádný"
 
-#: src/game_initialization/lobby_data.cpp:500
+#: src/game_initialization/lobby_data.cpp:509
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6416,7 +6541,7 @@ msgstr ""
 "Hostitelova verze <i>$addon</i> je nekompatibilní. Hostitelova verze je <b>"
 "$host_ver</b>, zatímco vaše je <b>$local_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:514
+#: src/game_initialization/lobby_data.cpp:523
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6431,10 +6556,6 @@ msgstr "Znič nepřátelské(ho) vůdce"
 #: src/game_initialization/mp_game_utils.cpp:104
 msgid "Cannot find era $era"
 msgstr "Nemohu najít následující věk - $era"
-
-#: src/game_initialization/mp_game_utils.cpp:143
-msgid "Connection timed out"
-msgstr "Časový limit pro připojení vypršel"
 
 #: src/game_initialization/multiplayer.cpp:74
 msgid "Invalid address specified for multiplayer server"
@@ -6681,7 +6802,7 @@ msgid "Error while reading the WML: "
 msgstr "Chyba při načítání WML: "
 
 #: src/game_initialization/playcampaign.cpp:348
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:308
 msgid "Game Over"
 msgstr "Konec hry"
 
@@ -6763,39 +6884,39 @@ msgstr[2] ""
 msgid "No visible sides found."
 msgstr "Nebyly nalezeny žádné viditelné strany."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "In game:"
 msgstr "Ve hře:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:112
+#: src/gui/dialogs/multiplayer/player_info.cpp:116
 msgid "(observing)"
 msgstr "(pozoruje)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:114
+#: src/gui/dialogs/multiplayer/player_info.cpp:118
 msgid "(playing)"
 msgstr "(hraje)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:117
+#: src/gui/dialogs/multiplayer/player_info.cpp:121
 msgid "In lobby"
 msgstr "V čekárně"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:146
+#: src/gui/dialogs/multiplayer/player_info.cpp:150
 msgid "On friends list"
 msgstr "V seznamu přátel"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:151
+#: src/gui/dialogs/multiplayer/player_info.cpp:155
 msgid "On ignores list"
 msgstr "V seznamu otrapů"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:156
+#: src/gui/dialogs/multiplayer/player_info.cpp:160
 msgid "Neither a friend nor ignored"
 msgstr "Ani přítel, ani otrapa"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:161
+#: src/gui/dialogs/multiplayer/player_info.cpp:165
 msgid "You"
 msgstr "Ty"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:164
+#: src/gui/dialogs/multiplayer/player_info.cpp:168
 msgid "Error"
 msgstr "Chyba"
 
@@ -7722,14 +7843,14 @@ msgstr "K dispozici nejsou žádné úkoly"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Vracení pohybu ještě nebylo odesláno na server."
 
-#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:349
+#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:348
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Síťové spojení bylo přerušeno a hra nemůže pokračovat. Chcete ji uložit?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7737,7 +7858,7 @@ msgstr ""
 "\n"
 "Chcete uložit hru?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7745,7 +7866,7 @@ msgstr ""
 "Tato hra byla ukončena.\n"
 "Důvod: "
 
-#: src/playmp_controller.cpp:369
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7760,7 +7881,7 @@ msgstr ""
 "\n"
 "Přeješ si uložit záznam chyb hry?"
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7769,11 +7890,11 @@ msgstr ""
 "Tato strana neodpovídá. Pro pokračování ve hře jí musíte přiřadit jinému "
 "hráči. Můžete například použít :droid, :control nebo :give_control."
 
-#: src/playsingle_controller.cpp:153
+#: src/playsingle_controller.cpp:152
 msgid "Game Error"
 msgstr "Chyba"
 
-#: src/playsingle_controller.cpp:154
+#: src/playsingle_controller.cpp:153
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -7783,11 +7904,11 @@ msgstr ""
 "co tato zpráva znamená, tak pravděpodobně někdo podvádí nebo znovunahrál "
 "poškozenou hru."
 
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:308
 msgid "The game is over."
 msgstr "Hra skončila."
 
-#: src/playsingle_controller.cpp:442
+#: src/playsingle_controller.cpp:441
 msgid "It is now $name|’s turn"
 msgstr "Na tahu je $name"
 
@@ -7845,7 +7966,7 @@ msgstr "Národ: "
 
 #: src/reports.cpp:232
 msgid "Side: <b>$side_name</b> ($color_name)"
-msgstr ""
+msgstr "Strana: <b>$side_name</b> ($color_name)"
 
 #: src/reports.cpp:310
 msgid "Trait: "
@@ -8082,14 +8203,10 @@ msgid "Turn Number"
 msgstr "Číslo kola"
 
 #: src/reports.cpp:1391
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
-msgstr "Když hra dosáhne počtu kol, který je dán druhým číslem, tak skončí."
+msgstr "Když hra přesáhne počet kol, který je dán druhým číslem, tak skončí."
 
 #: src/reports.cpp:1416
 msgid "Gold"
@@ -8643,24 +8760,24 @@ msgstr "$effect_description na úroveň"
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:59
 msgid "$year BW"
-msgstr "$year P. W."
+msgstr "$year př. w. l."
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr "$year R. W."
+msgstr "$year w. l."
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr "$year Př. P."
+msgstr "$year př. P."
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr "$year Po. P."
+msgstr "$year po P."
 
-#: src/wesnothd_connection.cpp:418
+#: src/wesnothd_connection.cpp:421
 msgid "Disconnected from server."
 msgstr "Odpojen od serveru."
 
@@ -8683,6 +8800,16 @@ msgstr "Skryj plány pro hráče $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
+
+#, fuzzy
+#~| msgid "Sending add-on <i>$addon_title</i>..."
+#~ msgid ""
+#~ "Requesting the older version composition for the add-on <i>$addon_title</"
+#~ "i>..."
+#~ msgstr "Stahuji rozšíření: <i>$addon_title|</i>..."
+
+#~ msgid "Connection timed out"
+#~ msgstr "Časový limit pro připojení vypršel"
 
 #~ msgid "Cancel"
 #~ msgstr "Zrušit"
@@ -11102,9 +11229,6 @@ msgstr "Nastavení plánovacího módu"
 #~ msgstr[2] ""
 #~ "Jsou přítomna zastaralá rozšíření se zveřejňovacími informacemi. Jejich "
 #~ "aktualizace nebudou nabízeny."
-
-#~ msgid "No add-ons to update"
-#~ msgstr "Žádná rozšíření nepotřebují aktualizaci"
 
 #~ msgid "Installation of some dependency failed"
 #~ msgstr "Instalace některé závislosti selhala"

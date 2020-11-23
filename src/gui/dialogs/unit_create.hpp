@@ -83,8 +83,8 @@ private:
 	virtual void post_show(window& window) override;
 
 	/** Callbacks */
-	void list_item_clicked(window& window);
-	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void list_item_clicked();
+	void filter_text_changed(const std::string& text);
 	void gender_toggle_callback();
 	void variation_menu_callback();
 

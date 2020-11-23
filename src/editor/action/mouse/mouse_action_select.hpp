@@ -40,23 +40,23 @@ public:
 	/**
 	 * Force a fake "move" event to update brush overlay on key event
 	 */
-	editor_action* key_event(editor_display& disp, const SDL_Event& e) override;
+	std::unique_ptr<editor_action> key_event(editor_display& disp, const SDL_Event& e) override;
 
 	/**
 	 * Left click/drag selects
 	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes) override;
+	std::unique_ptr<editor_action> click_perform_left(editor_display& disp, const std::set<map_location>& hexes) override;
 
 	/**
 	 * Right click does nothing for now
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y) override;
+	std::unique_ptr<editor_action> click_right(editor_display& disp, int x, int y) override;
 
 
 	/**
 	 * Right click/drag
 	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes) override;
+	std::unique_ptr<editor_action> click_perform_right(editor_display& disp, const std::set<map_location>& hexes) override;
 
 	virtual void set_mouse_overlay(editor_display& disp) override;
 

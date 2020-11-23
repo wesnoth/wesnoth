@@ -56,7 +56,7 @@ public:
 
 private:
 	/** Called when another campaign is selected. */
-	void campaign_selected(window& window);
+	void campaign_selected();
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
@@ -67,15 +67,15 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void sort_campaigns(window& window, CAMPAIGN_ORDER order, bool ascending);
+	void sort_campaigns(CAMPAIGN_ORDER order, bool ascending);
 
-	void add_campaign_to_tree(window& window, const config& campaign);
+	void add_campaign_to_tree(const config& campaign);
 
-	void toggle_sorting_selection(window& window, CAMPAIGN_ORDER order);
+	void toggle_sorting_selection(CAMPAIGN_ORDER order);
 
-	void mod_toggled(window& window);
+	void mod_toggled();
 
-	void filter_text_changed(text_box_base* textbox, const std::string &text);
+	void filter_text_changed(const std::string &text);
 
 	ng::create_engine& engine_;
 

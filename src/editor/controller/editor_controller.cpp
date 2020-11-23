@@ -792,7 +792,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 		case HOTKEY_DELETE_UNIT:
 		{
 			map_location loc = gui_->mouseover_hex();
-			perform_delete(new editor_action_unit_delete(loc));
+			perform_delete(std::make_unique<editor_action_unit_delete>(loc));
 		}
 		return true;
 		case HOTKEY_EDITOR_CLIPBOARD_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
@@ -984,7 +984,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 		case HOTKEY_EDITOR_REMOVE_LOCATION: {
 			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
 			if (lp) {
-				perform_delete(new editor_action_starting_position(map_location(), lp->selected_item()));
+				perform_delete(std::make_unique<editor_action_starting_position>(map_location(), lp->selected_item()));
 				// No idea if this is the right thing to call, but it ensures starting
 				// position labels get removed on delete.
 				context_manager_->refresh_after_action();
@@ -1211,18 +1211,16 @@ void editor_controller::export_selection_coords()
 	}
 }
 
-void editor_controller::perform_delete(editor_action* action)
+void editor_controller::perform_delete(std::unique_ptr<editor_action> action)
 {
 	if (action) {
-		const editor_action_ptr action_auto(action);
 		get_current_map_context().perform_action(*action);
 	}
 }
 
-void editor_controller::perform_refresh_delete(editor_action* action, bool drag_part /* =false */)
+void editor_controller::perform_refresh_delete(std::unique_ptr<editor_action> action, bool drag_part /* =false */)
 {
 	if (action) {
-		const editor_action_ptr action_auto(action);
 		context_manager_->perform_refresh(*action, drag_part);
 	}
 }
@@ -1259,9 +1257,11 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (get_current_map_context().map().on_board_with_border(drag_from_hex_) && is_dragging()) {
-		editor_action* a = nullptr;
+		std::unique_ptr<editor_action> a;
 		bool partial = false;
-		editor_action* last_undo = get_current_map_context().last_undo_action();
+		// last_undo is a non-owning pointer. Although it could have other uses, it seems to be
+		// mainly (only?) used for printing debugging information.
+		auto last_undo = get_current_map_context().last_undo_action();
 		if (dragging_left_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(1)) != 0) {
 			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_left(*gui_, x, y, partial, last_undo);
@@ -1273,7 +1273,6 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 		//last undo action and the controller shouldn't add
 		//anything to the undo stack (hence a different perform_ call)
 		if (a != nullptr) {
-			const editor_action_ptr aa(a);
 			if (partial) {
 				get_current_map_context().perform_partial_action(*a);
 			} else {
@@ -1314,24 +1313,28 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 		return true;
 
 	LOG_ED << "Left click action " << hex_clicked << "\n";
-	editor_action* a = get_mouse_action().click_left(*gui_, x, y);
-	perform_refresh_delete(a, true);
-	if (a) set_button_state();
+	auto a = get_mouse_action().click_left(*gui_, x, y);
+	if(a) {
+		perform_refresh_delete(std::move(a), true);
+		set_button_state();
+	}
 
 	return false;
 }
 
 void editor_controller::left_drag_end(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = get_mouse_action().drag_end_left(*gui_, x, y);
-	perform_delete(a);
+	auto a = get_mouse_action().drag_end_left(*gui_, x, y);
+	perform_delete(std::move(a));
 }
 
 void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = get_mouse_action().up_left(*gui_, x, y);
-	perform_delete(a);
-	if (a) set_button_state();
+	auto a = get_mouse_action().up_left(*gui_, x, y);
+	if(a) {
+		perform_delete(std::move(a));
+		set_button_state();
+	}
 	toolkit_->set_mouseover_overlay();
 	context_manager_->refresh_after_action();
 }
@@ -1344,16 +1347,18 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return true;
 	LOG_ED << "Right click action " << hex_clicked << "\n";
-	editor_action* a = get_mouse_action().click_right(*gui_, x, y);
-	perform_refresh_delete(a, true);
-	if (a) set_button_state();
+	auto a = get_mouse_action().click_right(*gui_, x, y);
+	if(a) {
+		perform_refresh_delete(std::move(a), true);
+		set_button_state();
+	}
 	return false;
 }
 
 void editor_controller::right_drag_end(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = get_mouse_action().drag_end_right(*gui_, x, y);
-	perform_delete(a);
+	auto a = get_mouse_action().drag_end_right(*gui_, x, y);
+	perform_delete(std::move(a));
 }
 
 void editor_controller::right_mouse_up(int x, int y, const bool browse)
@@ -1361,9 +1366,11 @@ void editor_controller::right_mouse_up(int x, int y, const bool browse)
 	// Call base method to handle context menus.
 	mouse_handler_base::right_mouse_up(x, y, browse);
 
-	editor_action* a = get_mouse_action().up_right(*gui_, x, y);
-	perform_delete(a);
-	if (a) set_button_state();
+	auto a = get_mouse_action().up_right(*gui_, x, y);
+	if(a) {
+		perform_delete(std::move(a));
+		set_button_state();
+	}
 	toolkit_->set_mouseover_overlay();
 	context_manager_->refresh_after_action();
 }
@@ -1380,8 +1387,8 @@ void editor_controller::terrain_description()
 
 void editor_controller::process_keyup_event(const SDL_Event& event)
 {
-	editor_action* a = get_mouse_action().key_event(gui(), event);
-	perform_refresh_delete(a);
+	auto a = get_mouse_action().key_event(gui(), event);
+	perform_refresh_delete(std::move(a));
 	toolkit_->set_mouseover_overlay();
 }
 

@@ -385,7 +385,7 @@ void addon_list::finalize_setup()
 	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
 	list.register_translatable_sorting_option(4, [this](const int i) { return addon_vector_[i]->display_type(); });
 
-	auto order = std::make_pair(0, gui2::listbox::SORT_ASCENDING);
+	auto order = std::make_pair(0, preferences::SORT_ORDER::ASCENDING);
 	list.set_active_sorting_option(order);
 }
 
@@ -408,16 +408,7 @@ void addon_list::select_first_addon()
 		// Happens in the dialog unit test.
 		return;
 	}
-
-	const addon_info* first_addon = addon_vector_[0];
-
-	for(const addon_info* a : addon_vector_) {
-		if(translation::icompare(a->display_title_full(), first_addon->display_title_full()) < 0) {
-			first_addon = a;
-		}
-	}
-
-	select_addon(first_addon->id);
+	get_listbox().select_row_at(0);
 }
 
 addon_list_definition::addon_list_definition(const config& cfg)

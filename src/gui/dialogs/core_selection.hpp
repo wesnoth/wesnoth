@@ -41,7 +41,7 @@ public:
 
 private:
 	/** Called when another core is selected. */
-	void core_selected(window& window);
+	void core_selected();
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

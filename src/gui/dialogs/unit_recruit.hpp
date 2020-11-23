@@ -44,8 +44,8 @@ private:
 	virtual void pre_show(window& window) override;
 	virtual void post_show(window& window) override;
 
-	void list_item_clicked(window& window);
-	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void list_item_clicked();
+	void filter_text_changed(const std::string& text);
 
 	void show_help();
 

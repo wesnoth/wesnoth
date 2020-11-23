@@ -1,4 +1,19 @@
-## Version 1.15.6+dev
+## Version 1.15.7+dev
+ ### Add-ons server
+   * Fixed inability to write files (including the server configuration file) on Windows.
+ ### Campaigns
+ ### Multiplayer
+ ### Terrain
+ ### Translations
+   * Updated translations: British English, Czech
+ ### Units
+ ### User interface
+ ### WML Engine
+   * Extent special_id_active and special_type_active to abilities used like weapon and add a [filter_specials] tag for specify the source when wml develloper need.
+   * abilities used like weapon can call [leading_anim] now.
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.15.7
  ### Add-ons server
    * Added basic command line options.
    * Add-on validation status responses can now be translated by the client.
@@ -17,7 +32,6 @@
      * Scenario 2p5: increased the turn limit by 1 and enhanced victory filter conditions
      * Scenario 4: fixed a bug that prevented resources from spawning and added some small flavor adjustments
      * Some revisions/bugfixes to Scenario 9 "Caverns of Flame"
- ### Lua API
  ### Multiplayer
    * During allies' turns, use orb colors to show which ones can still move (issue #1424). Also enabled for allied AI sides in singleplayer.
  ### Terrain
@@ -27,12 +41,15 @@
  ### Units
    * Decreased Icemonax's advancement XP requirement from 26 to 25 to match other dead-end L0 units.
    * Portrait and animation graphics for some of the new Wesnoth Fauna
+   * Balancing:
+     * Dune Rider xp changed from 42 to 47.
+     * Sunderer line defense on hills changed from 60% to 50%.
+     * Scorcher gold cost changed from 23 to 25.
+     * Dragoon gold cost changed from 27 to 28.
+     * Elvish Rider gold cost changed from 32 to 28.
  ### User interface
    * Added the installable/upgradable version selection to the add-ons manager via a dropdown list
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
- ### WML Engine
-   * Extent special_id_active and special_type_active to abilities used like weapon and add a [filter_specials] tag for specify the source when wml develloper need.
-   * abilities used like weapon can call [leading_anim] now.
  ### Miscellaneous and Bug Fixes
    * Fixed a rare issue on Windows that could result in wesnoth.exe sticking around waiting for console input after encountering an error despite not being launched with the `--wconsole` option.
    * Fixed a potential crash when drawing many images on the story screens.
@@ -123,17 +140,14 @@
  ### Language and i18n
    * Updated translations: British English, Catalan, Chinese (Simplified), Esperanto,
      French, Hungarian, Polish, Portuguese (Brazil), Russian, Spanish, Turkish
- ### Lua API
  ### Multiplayer
    * A New Land:
      * Peasants can harvest mushrooms (a bug introduced in 1.15.4 was noticed and fixed in PR #5137)
  ### Terrain
    * Made single-hex mushrooms smaller (PR #5136)
- ### Units
  ### User interface
    * Help browser: fix inconsistent behavior for single-clicks opening and closing sections (PR #5110)
    * Added `[race]help_taxonomy=`, creating links between the per-race topic pages.
- ### WML engine
  ### Miscellaneous and bug fixes
    * Minimum required version of OS X is now OS X 10.11 .
    * The "loyal" trait is now displayed in the help browser, even though no normal unit has it.

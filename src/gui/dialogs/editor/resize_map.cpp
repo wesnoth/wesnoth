@@ -111,16 +111,12 @@ void editor_resize_map::pre_show(window& window)
 	slider& height = find_widget<slider>(&window, "height", false);
 	connect_signal_notify_modified(
 			height,
-			std::bind(&editor_resize_map::update_expand_direction,
-						this,
-						std::ref(window)));
+			std::bind(&editor_resize_map::update_expand_direction, this));
 
 	slider& width = find_widget<slider>(&window, "width", false);
 	connect_signal_notify_modified(
 			width,
-			std::bind(&editor_resize_map::update_expand_direction,
-						this,
-						std::ref(window)));
+			std::bind(&editor_resize_map::update_expand_direction, this));
 
 	std::string name_prefix = "expand";
 	for(int i = 0; i < 9; ++i) {
@@ -129,10 +125,10 @@ void editor_resize_map::pre_show(window& window)
 				= find_widget<toggle_button>(&window, name, false, true);
 
 		connect_signal_notify_modified(*direction_buttons_[i],
-			std::bind(&editor_resize_map::update_expand_direction, this, std::ref(window)));
+			std::bind(&editor_resize_map::update_expand_direction, this));
 	}
 	direction_buttons_[0]->set_value(true);
-	update_expand_direction(window);
+	update_expand_direction();
 }
 
 /**
@@ -156,7 +152,7 @@ void editor_resize_map::set_direction_icon(int index, std::string icon)
 	}
 }
 
-void editor_resize_map::update_expand_direction(window& window)
+void editor_resize_map::update_expand_direction()
 {
 	for(int i = 0; i < 9; ++i) {
 		if(direction_buttons_[i]->get_value()
@@ -176,8 +172,8 @@ void editor_resize_map::update_expand_direction(window& window)
 		set_direction_icon(i, "none");
 	}
 
-	int xdiff = width_->get_widget_value(window) - old_width_;
-	int ydiff = height_->get_widget_value(window) - old_height_;
+	int xdiff = width_->get_widget_value(*get_window()) - old_width_;
+	int ydiff = height_->get_widget_value(*get_window()) - old_height_;
 	int x = static_cast<int>(expand_direction_) % 3;
 	int y = static_cast<int>(expand_direction_) / 3;
 	set_direction_icon(expand_direction_, "center");

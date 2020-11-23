@@ -269,15 +269,15 @@ void game_version::pre_show(window& window)
 	VALIDATE(tab_count == pager.get_layer_count(), "Tab bar and container size mismatch");
 
 	connect_signal_notify_modified(tab_bar,
-		std::bind(&game_version::tab_switch_callback, this, std::ref(window)));
+		std::bind(&game_version::tab_switch_callback, this));
 }
 
-void game_version::tab_switch_callback(window& window)
+void game_version::tab_switch_callback()
 {
 	stacked_widget& pager
-			= find_widget<stacked_widget>(&window, "tabs_container", false);
+			= find_widget<stacked_widget>(get_window(), "tabs_container", false);
 	listbox& tab_bar
-			= find_widget<listbox>(&window, "tab_bar", false);
+			= find_widget<listbox>(get_window(), "tab_bar", false);
 
 	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
 }

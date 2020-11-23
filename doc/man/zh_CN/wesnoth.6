@@ -115,7 +115,7 @@ to the file indicated by \fI\-\-output\fP.
 设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\ \fBdebug\fP, \ \fBnone\fP。对大多数日志域而言，默认日志级别是\fBwarning\fP，但\fBdeprecation\fP的默认级别是\fBnone\fP，除非和\fB\-d\fP选项并用。
 .TP 
 \fB\-\-log\-precise\fP
-在日志文件中显示更高精度的时间戳。
+shows the timestamps in log output with more precision.
 .TP 
 \fB\-\-log\-strict\fP
 设置日志记录器的严格度等级。若有任何信息记入此等级或更高等级日志域，则不论测试结果如何，单元测试都将失败。只有在和 \fB\-u\fP 共同使用时才有意义。
@@ -187,21 +187,6 @@ by \fI\-\-output\fP.
 仅供 \fB\-\-preprocess\fP
 命令使用。将会输出目标文件中所有经过了预处理的宏。如果没有指定文件，那么目标文件将是preprocess命令所指定的目标目录中的“_MACROS_.cfg”。输出文件可传递给
 \fB\-\-preprocess\-input\-macros\fP 。这个开关选项必须出现在 \fB\-\-preprocess\fP 命令之前。
-.TP 
-\fB\-\-proxy\fP
-启用代理服务器来进行网络连接。
-.TP 
-\fB\-\-proxy\-address\fP\fI\ address\fP
-指定代理服务器的\fB地址\fP。
-.TP 
-\fB\-\-proxy\-port\fP\fI\ port\fP
-指定代理服务器的\fB端口\fP。
-.TP 
-\fB\-\-proxy\-user\fP\fI\ username\fP
-指定用于登录代理服务器的\fB用户名\fP。
-.TP 
-\fB\-\-proxy\-password\fP\fI\ password\fP
-指定用于登录代理服务器的\fB密码\fP。
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 设定屏幕分辨率。例如：\fB\-r\fP \fB800x600\fP。

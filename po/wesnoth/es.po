@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-10-17 01:28-0300\n"
+"POT-Creation-Date: 2020-11-21 01:40-0300\n"
 "PO-Revision-Date: 2020-01-19 15:42+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
@@ -3879,14 +3879,14 @@ msgstr "Intransitable"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:439
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:448
 msgid "Fog"
 msgstr "Niebla"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:442
-#: src/game_initialization/lobby_data.cpp:445
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:451
+#: src/game_initialization/lobby_data.cpp:454
 msgid "Shroud"
 msgstr "Oscuro"
 
@@ -4304,7 +4304,7 @@ msgstr ""
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:899
+#: data/lua/wml-tags.lua:900
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Nivel de exclusión no válido (debería ser 1-4)"
 
@@ -4490,12 +4490,12 @@ msgstr ""
 
 # Esta es una traducción literal, ya que puede tener varios significados en el idioma inglés.  Esto último se debe a que no tiene más palabras que de a entender a lo que se refiere en inglés.
 #. [language]
-#: data/scenario-test.cfg:4395
+#: data/scenario-test.cfg:4396
 msgid "very long"
 msgstr "demasiado largo"
 
 #. [language]
-#: data/scenario-test.cfg:4396
+#: data/scenario-test.cfg:4397
 msgid "electrical"
 msgstr "eléctrico"
 
@@ -5760,11 +5760,9 @@ msgstr ""
 
 #: src/addon/client.cpp:183
 #, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
-msgid ""
-"Requesting the older version composition for the add-on <i>$addon_title</"
-"i>..."
-msgstr "Enviando el complemento <i>$addon_title</i>..."
+#| msgid "Requesting distribution terms..."
+msgid "Requesting file index..."
+msgstr "Pidiendo términos para la distribución..."
 
 #: src/addon/client.cpp:199
 #, fuzzy
@@ -5780,11 +5778,11 @@ msgstr "Enviando el complemento <i>$addon_title</i>..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Borrando el complemento <i>$addon_title</i> del servidor..."
 
-#: src/addon/client.cpp:281
+#: src/addon/client.cpp:282
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Descargando el complemento <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:333 src/addon/client.cpp:359
+#: src/addon/client.cpp:334 src/addon/client.cpp:360
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5792,7 +5790,7 @@ msgstr ""
 "El complemento <i>$addon_title</i> tiene un nombre de archivo o directorio "
 "no válido y no se ha podido instalar."
 
-#: src/addon/client.cpp:338 src/addon/client.cpp:364
+#: src/addon/client.cpp:339 src/addon/client.cpp:365
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5800,11 +5798,11 @@ msgstr ""
 "El complemento <i>$addon_title</i> tiene un nombre de archivo o directorio "
 "con letras mayúsculas conflictivas. Esto puede ocasionar algunos problemas."
 
-#: src/addon/client.cpp:408
+#: src/addon/client.cpp:409
 msgid "The server responded with an error:"
 msgstr "El servidor devolvió un error:"
 
-#: src/addon/client.cpp:458
+#: src/addon/client.cpp:459
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5818,11 +5816,11 @@ msgstr[1] ""
 "El complemento seleccionado depende de los siguientes archivos, los cuales "
 "no están instalados o disponibles desde el servidor. ¿Desea continuar?"
 
-#: src/addon/client.cpp:467
+#: src/addon/client.cpp:468
 msgid "Broken Dependencies"
 msgstr "Dependencias de archivo rotas"
 
-#: src/addon/client.cpp:507
+#: src/addon/client.cpp:508
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5833,11 +5831,11 @@ msgstr[0] "La siguiente dependencia podría no instalarse. ¿Desea continuar?"
 msgstr[1] ""
 "Las siguientes dependencias podrían no instalarse. ¿Desea continuar?"
 
-#: src/addon/client.cpp:511
+#: src/addon/client.cpp:512
 msgid "Dependencies Installation Failed"
 msgstr "Algunas dependencias de la instalación han fallado"
 
-#: src/addon/client.cpp:534
+#: src/addon/client.cpp:535
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5845,80 +5843,80 @@ msgstr ""
 "El complemento '$addon|' ya está instalado y contiene información adicional "
 "que se perderá permanentemente si usted continua:"
 
-#: src/addon/client.cpp:538
+#: src/addon/client.cpp:539
 msgid "Publishing information file (.pbl)"
 msgstr "Fichero con información de la publicación (.pbl)"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:543
 msgid "Version control system (VCS) information"
 msgstr "Información del sistema de control de versión (VCS)"
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:547
 msgid "Do you really wish to continue?"
 msgstr "¿Desea continuar?"
 
-#: src/addon/client.cpp:548 src/addon/manager_ui.cpp:174
+#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:174
 #: src/game_initialization/multiplayer.cpp:231
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: src/addon/client.cpp:668
+#: src/addon/client.cpp:674
 msgid "Add-ons Manager"
 msgstr "Gestor de complementos"
 
-#: src/addon/info.cpp:244
+#: src/addon/info.cpp:254
 msgid "addon_type^Campaign"
 msgstr "Campaña"
 
-#: src/addon/info.cpp:246
+#: src/addon/info.cpp:256
 msgid "addon_type^Scenario"
 msgstr "Escenario"
 
-#: src/addon/info.cpp:248
+#: src/addon/info.cpp:258
 msgid "addon_type^SP/MP Campaign"
 msgstr "Campaña normal/multijugador"
 
-#: src/addon/info.cpp:250
+#: src/addon/info.cpp:260
 msgid "addon_type^MP era"
 msgstr "Era multijugador"
 
-#: src/addon/info.cpp:252
+#: src/addon/info.cpp:262
 msgid "addon_type^MP faction"
 msgstr "Facción multijugador"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:264
 msgid "addon_type^MP map-pack"
 msgstr "Paquete de mapas multijugador"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:266
 msgid "addon_type^MP scenario"
 msgstr "Escenario multijugador"
 
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:268
 msgid "addon_type^MP campaign"
 msgstr "Campaña multijugador"
 
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:270
 msgid "addon_type^Modification"
 msgstr "Modificación"
 
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:272
 msgid "addon_type^Core"
 msgstr "Módulo"
 
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:274
 msgid "addon_type^Resources"
 msgstr "Recursos"
 
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:276
 msgid "addon_type^Other"
 msgstr "Otro"
 
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:278
 msgid "addon_type^(unknown)"
 msgstr "(desconocido)"
 
-#: src/addon/info.cpp:305
+#: src/addon/info.cpp:315
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -6010,6 +6008,140 @@ msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 "No pudo encontrarse un complemento que coincida con el id $addon_id en el "
 "servidor de complementos."
+
+#: src/addon/validation.cpp:448
+msgid "Success."
+msgstr ""
+
+#: src/addon/validation.cpp:452
+msgid "Incorrect add-on passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:456
+msgid "Upload denied. Please contact the server administration for assistance."
+msgstr ""
+
+#: src/addon/validation.cpp:460
+msgid "Attempted to upload an update pack for a non-existent add-on."
+msgstr ""
+
+#: src/addon/validation.cpp:469
+msgid "No add-on data was supplied by the client."
+msgstr ""
+
+#: src/addon/validation.cpp:473
+#, fuzzy
+#| msgid "Invalid location"
+msgid "Invalid upload pack."
+msgstr "Ubicación inválida"
+
+#: src/addon/validation.cpp:477
+#, fuzzy
+#| msgid "Invalid tag name"
+msgid "Invalid add-on name."
+msgstr "Nombre de etiqueta inválido"
+
+#: src/addon/validation.cpp:481
+msgid "Formatting character in add-on name."
+msgstr ""
+
+#: src/addon/validation.cpp:485
+msgid ""
+"The add-on contains files or directories with illegal names.\n"
+"\n"
+"Names containing whitespace, control characters, or any of the following "
+"symbols are not allowed:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Additionally, names may not be longer than 255 characters, contain '..', or "
+"end with '.'."
+msgstr ""
+
+#: src/addon/validation.cpp:495
+#, fuzzy
+#| msgid ""
+#| "The add-on <i>$addon_title</i> contains files or directories with case "
+#| "conflicts. File or directory names may not be differently-cased versions "
+#| "of the same string."
+msgid ""
+"The add-on contains files or directories with case conflicts.\n"
+"\n"
+"Names in the same directory may not be differently-cased versions of each "
+"other."
+msgstr ""
+"El complemento <i>$addon_title</i> contiene un nombre de archivo o "
+"directorio con letras mayúsculas conflictivas. Los nombres de archivo o "
+"directorio no pueden ser versiones diferentes de la misma cadena de texto "
+"con letras mayúsculas para diferenciarlas."
+
+#: src/addon/validation.cpp:501
+msgid "The add-on name contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:510
+#, fuzzy
+#| msgid "No add-ons to update"
+msgid "No add-on title specified."
+msgstr "No hay complementos para actualizar"
+
+#: src/addon/validation.cpp:514
+msgid "No add-on author/maintainer name specified."
+msgstr ""
+
+#: src/addon/validation.cpp:518
+msgid "No add-on version specified."
+msgstr ""
+
+#: src/addon/validation.cpp:522
+#, fuzzy
+#| msgid "No description available."
+msgid "No add-on description specified."
+msgstr "No hay una descripción disponible."
+
+#: src/addon/validation.cpp:526
+msgid "No add-on author/maintainer email specified."
+msgstr ""
+
+#: src/addon/validation.cpp:530
+msgid "Missing passphrase."
+msgstr ""
+
+#: src/addon/validation.cpp:534
+msgid "Formatting character in add-on title."
+msgstr ""
+
+#: src/addon/validation.cpp:538
+#, fuzzy
+#| msgid "Invalid unit type"
+msgid "Invalid or unspecified add-on type."
+msgstr "Tipo de unidad inválido"
+
+#: src/addon/validation.cpp:542
+msgid "The add-on publish information contains an invalid UTF-8 sequence."
+msgstr ""
+
+#: src/addon/validation.cpp:551
+msgid "Unspecified server error."
+msgstr ""
+
+#: src/addon/validation.cpp:555
+msgid "Server is in read-only mode."
+msgstr ""
+
+#: src/addon/validation.cpp:559
+#, fuzzy
+#| msgid "You have no add-ons installed."
+msgid "Corrupted server add-ons list."
+msgstr "No tiene ningún complemento instalado."
+
+#: src/addon/validation.cpp:563
+msgid "Empty add-on version list on the server."
+msgstr ""
+
+#: src/addon/validation.cpp:573
+msgid "Unspecified validation failure."
+msgstr ""
 
 #: src/chat_command_handler.cpp:111
 msgid "Added to ignore list: $nick"
@@ -6521,64 +6653,64 @@ msgstr "No se encontró un tipo de líder para la facción $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "No se ha podido obtener el género para el líder no válido $leader"
 
-#: src/game_initialization/lobby_data.cpp:224
+#: src/game_initialization/lobby_data.cpp:225
 msgid "Missing addon: $name"
 msgstr "Complemento ausente: $name"
 
-#: src/game_initialization/lobby_data.cpp:226
+#: src/game_initialization/lobby_data.cpp:227
 msgid "Missing addon: $id"
 msgstr "Complemento ausente: $id"
 
-#: src/game_initialization/lobby_data.cpp:258
+#: src/game_initialization/lobby_data.cpp:259
 msgid "Unknown era"
 msgstr "Era desconocida"
 
-#: src/game_initialization/lobby_data.cpp:325
-#: src/game_initialization/lobby_data.cpp:358
+#: src/game_initialization/lobby_data.cpp:326
+#: src/game_initialization/lobby_data.cpp:360
 msgid "scenario_abbreviation^S"
 msgstr "E"
 
-#: src/game_initialization/lobby_data.cpp:344
+#: src/game_initialization/lobby_data.cpp:346
 msgid "Remote scenario"
 msgstr "Escenario remoto"
 
-#: src/game_initialization/lobby_data.cpp:366
-#: src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:367
+#: src/game_initialization/lobby_data.cpp:393
 msgid "campaign_abbreviation^C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:394
+#: src/game_initialization/lobby_data.cpp:399
 msgid "Unknown scenario"
 msgstr "Escenario desconocido"
 
-#: src/game_initialization/lobby_data.cpp:404
+#: src/game_initialization/lobby_data.cpp:413
 msgid "Reloaded game"
 msgstr "Partida recargada"
 
-#: src/game_initialization/lobby_data.cpp:419
+#: src/game_initialization/lobby_data.cpp:428
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Puesto vacante:"
 msgstr[1] "Puestos vacantes:"
 
-#: src/game_initialization/lobby_data.cpp:421
+#: src/game_initialization/lobby_data.cpp:430
 msgid "mp_game_available_slots^Full"
 msgstr "Completo"
 
-#: src/game_initialization/lobby_data.cpp:432
-#: src/game_initialization/lobby_data.cpp:434 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:441
+#: src/game_initialization/lobby_data.cpp:443 src/savegame.cpp:645
 msgid "Turn"
 msgstr "Turno"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:456
 msgid "vision^none"
 msgstr "ninguna"
 
-#: src/game_initialization/lobby_data.cpp:456
+#: src/game_initialization/lobby_data.cpp:465
 msgid "time limit^none"
 msgstr "ninguno"
 
-#: src/game_initialization/lobby_data.cpp:500
+#: src/game_initialization/lobby_data.cpp:509
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6586,7 +6718,7 @@ msgstr ""
 "La versión del servidor de <i>$addon</i> es incompatible. Tiene la versión "
 "<b>$host_ver</b> mientras que usted tiene la versión <b>$local_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:514
+#: src/game_initialization/lobby_data.cpp:523
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6601,10 +6733,6 @@ msgstr "Derrotar a los líderes enemigos"
 #: src/game_initialization/mp_game_utils.cpp:104
 msgid "Cannot find era $era"
 msgstr "No se puede encontrar la era $era"
-
-#: src/game_initialization/mp_game_utils.cpp:143
-msgid "Connection timed out"
-msgstr "Tiempo excedido en la conexión"
 
 #: src/game_initialization/multiplayer.cpp:74
 msgid "Invalid address specified for multiplayer server"
@@ -6864,7 +6992,7 @@ msgid "Error while reading the WML: "
 msgstr "Error leyendo el WML: "
 
 #: src/game_initialization/playcampaign.cpp:348
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:308
 msgid "Game Over"
 msgstr "Fin del juego"
 
@@ -6945,39 +7073,39 @@ msgstr[1] ""
 msgid "No visible sides found."
 msgstr "No se ha encontrado ningún bando visible."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "In game:"
 msgstr "En partida:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:112
+#: src/gui/dialogs/multiplayer/player_info.cpp:116
 msgid "(observing)"
 msgstr "(observando)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:114
+#: src/gui/dialogs/multiplayer/player_info.cpp:118
 msgid "(playing)"
 msgstr "(jugando)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:117
+#: src/gui/dialogs/multiplayer/player_info.cpp:121
 msgid "In lobby"
 msgstr "En sala de entrada"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:146
+#: src/gui/dialogs/multiplayer/player_info.cpp:150
 msgid "On friends list"
 msgstr "En lista de amigos"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:151
+#: src/gui/dialogs/multiplayer/player_info.cpp:155
 msgid "On ignores list"
 msgstr "En lista de jugadores ignorados"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:156
+#: src/gui/dialogs/multiplayer/player_info.cpp:160
 msgid "Neither a friend nor ignored"
 msgstr "Ni es un amigo ni es un jugador ignorado"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:161
+#: src/gui/dialogs/multiplayer/player_info.cpp:165
 msgid "You"
 msgstr "Usted"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:164
+#: src/gui/dialogs/multiplayer/player_info.cpp:168
 msgid "Error"
 msgstr "Error"
 
@@ -7940,7 +8068,7 @@ msgstr "No hay objetivos disponibles"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Deshaciendo movimientos que no han sido transmitidas al servidor aún."
 
-#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:349
+#: src/playmp_controller.cpp:264 src/playsingle_controller.cpp:348
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7948,7 +8076,7 @@ msgstr ""
 "Se ha desconectado de la red y la partida no puede continuar. ¿Desea guardar "
 "la partida?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7956,7 +8084,7 @@ msgstr ""
 "\n"
 "¿Quiere guardar la partida?"
 
-#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:351
+#: src/playmp_controller.cpp:266 src/playsingle_controller.cpp:350
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7964,7 +8092,7 @@ msgstr ""
 "Esta partida ha finalizado.\n"
 "Motivo: "
 
-#: src/playmp_controller.cpp:369
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7981,7 +8109,7 @@ msgstr ""
 "\n"
 "¿Desea guardar un registro de errores de la partida?"
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7991,11 +8119,11 @@ msgstr ""
 "ha de ser asignado a otro controlador. Usted podría usar :droid, :control o :"
 "give_control por ejemplo."
 
-#: src/playsingle_controller.cpp:153
+#: src/playsingle_controller.cpp:152
 msgid "Game Error"
 msgstr "Error del juego"
 
-#: src/playsingle_controller.cpp:154
+#: src/playsingle_controller.cpp:153
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -8006,11 +8134,11 @@ msgstr ""
 "esté haciendo trampas o que alguien haya cargado una partida con un archivo "
 "deteriorado."
 
-#: src/playsingle_controller.cpp:309
+#: src/playsingle_controller.cpp:308
 msgid "The game is over."
 msgstr "El juego se ha acabado."
 
-#: src/playsingle_controller.cpp:442
+#: src/playsingle_controller.cpp:441
 msgid "It is now $name|’s turn"
 msgstr "Es el turno de $name"
 
@@ -8894,7 +9022,7 @@ msgstr "$year AC"
 msgid "$year AF"
 msgstr "$year AñC"
 
-#: src/wesnothd_connection.cpp:418
+#: src/wesnothd_connection.cpp:421
 msgid "Disconnected from server."
 msgstr "Desconectado del servidor."
 
@@ -8917,6 +9045,16 @@ msgstr "Ocultar planes de $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Opciones del modo pizarra"
+
+#, fuzzy
+#~| msgid "Sending add-on <i>$addon_title</i>..."
+#~ msgid ""
+#~ "Requesting the older version composition for the add-on <i>$addon_title</"
+#~ "i>..."
+#~ msgstr "Enviando el complemento <i>$addon_title</i>..."
+
+#~ msgid "Connection timed out"
+#~ msgstr "Tiempo excedido en la conexión"
 
 #~ msgid "Cancel"
 #~ msgstr "Cancelar"
@@ -11071,9 +11209,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgstr[1] ""
 #~ "Algunos complementos locales, antiguos, poseen información de "
 #~ "publicación. No serán ofrecido para ser actualizados."
-
-#~ msgid "No add-ons to update"
-#~ msgstr "No hay complementos para actualizar"
 
 #~ msgid "Installation of some dependency failed"
 #~ msgstr "La instalación de algunos archivos de dependencia ha fallado."

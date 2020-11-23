@@ -60,15 +60,15 @@ private:
 
 	void remove_from_list_button_callback();
 
-	void start_whisper_button_callback(window& w);
+	void start_whisper_button_callback();
 
-	void check_status_button_callback(window& w);
+	void check_status_button_callback();
 
-	void kick_button_callback(window& w);
+	void kick_button_callback();
 
-	void kick_ban_button_callback(window& w);
+	void kick_ban_button_callback();
 
-	void stopgame_button_callback(window& w);
+	void stopgame_button_callback();
 
 	void do_stopgame();
 

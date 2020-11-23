@@ -49,18 +49,18 @@ private:
 	void set_save_dir_list(menu_button& dir_list);
 
 	/** Update (both internally and visually) the list of games. */
-	void populate_game_list(window& window);
+	void populate_game_list();
 
-	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void filter_text_changed(const std::string& text);
 	void browse_button_callback();
-	void delete_button_callback(window& window);
-	void handle_dir_select(window& window);
+	void delete_button_callback();
+	void handle_dir_select();
 
-	void display_savegame_internal(window& window);
-	void display_savegame(window& window);
+	void display_savegame_internal();
+	void display_savegame();
 	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
 
-	void key_press_callback(window& window, const SDL_Keycode key);
+	void key_press_callback(const SDL_Keycode key);
 
 	std::string& filename_;
 	std::shared_ptr<savegame::save_index_class>& save_index_manager_;

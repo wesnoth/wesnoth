@@ -38,8 +38,8 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void load_password(window& win) const;
-	void save_password(window& win) const;
+	void load_password() const;
+	void save_password() const;
 
 	const std::string host_;
 	field_text* username_;

@@ -55,10 +55,10 @@ private:
 	std::vector<std::string> last_words_;
 
 	/** Callbacks */
-	void list_item_clicked(window& window);
-	void filter_text_changed(text_box_base* textbox, const std::string& text);
-	void rename_unit(window& window);
-	void dismiss_unit(window& window);
+	void list_item_clicked();
+	void filter_text_changed(const std::string& text);
+	void rename_unit();
+	void dismiss_unit();
 	void show_help();
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

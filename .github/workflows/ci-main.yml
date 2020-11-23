@@ -1,0 +1,310 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  ubuntu-2004-scons-gcc-release-lto:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Ubuntu 20.04
+        run: |
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=17
+          export CFG=release
+          export LTO=true
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  ubuntu-2004-scons-clang-debug:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Ubuntu 20.04
+        run: |
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=false
+          export TOOL=scons
+          export CC=clang
+          export CXX=clang++
+          export CXX_STD=14
+          export CFG=debug
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh master
+
+  ubuntu-2004-cmake-clang-release:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Ubuntu 20.04
+        run: |
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=false
+          export TOOL=cmake
+          export CC=clang
+          export CXX=clang++
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  ubuntu-2004-cmake-gcc-debug:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Ubuntu 20.04
+        run: |
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=false
+          export TOOL=cmake
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=14
+          export CFG=debug
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  ubuntu-1804:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Ubuntu 18.04
+        run: |
+          export BRANCH=master
+          export IMAGE=1804
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  steam-runtime:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Steam Runtime
+        run: |
+          export BRANCH=master
+          export IMAGE=steamrt
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc-5
+          export CXX=g++-5
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  mingw:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: MinGW Crosscompile
+        run: |
+          export BRANCH=master
+          export IMAGE=mingw
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  flatpak:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Flatpak
+        run: |
+          export BRANCH=master
+          export IMAGE=flatpak
+          export NLS=false
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  translations:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Translations
+        run: |
+          export BRANCH=master
+          export IMAGE=2004
+          export NLS=only
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
+          export CXX_STD=14
+          export CFG=release
+          export LTO=false
+          export CACHE_DIR=/home/wesnoth-travis/build
+          ./.github/workflows/ci-scripts/ubuntu.sh
+
+  macos-master-release:
+    runs-on: macos-10.15
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: macOS Release
+        run: |
+          export CFG=Release
+          export CACHE_DIR=~/build-cache
+          ./.github/workflows/ci-scripts/macos.sh
+
+  macos-master-debug:
+    runs-on: macos-10.15
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: macOS Debug
+        run: |
+          export CFG=Debug
+          export CACHE_DIR=~/build-cache
+          ./.github/workflows/ci-scripts/macos.sh
+
+# in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
+# this will create a brand new cache and recompile the vcpkg dependencies from scratch
+
+  windows-release:
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: windows-release-cache-master
+        with:
+          path: D:/a/wesnoth/vcpkg
+          key: windows-release-master-N000
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: DOS1
+        shell: cmd
+        run: |
+          git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
+          %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
+
+      - name: DOS2
+        shell: cmd
+        run: |
+          %~dp0../wesnoth/vcpkg/vcpkg integrate install
+          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale:x64-windows boost-random:x64-windows boost-regex:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
+
+      - name: DOS3
+        shell: cmd
+        run: |
+          MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Release -p:Platform=Win64
+
+  windows-debug:
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: windows-debug-cache-master
+        with:
+          path: D:/a/wesnoth/vcpkg
+          key: windows-debug-master-N000
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: DOS1
+        shell: cmd
+        run: |
+          git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
+          %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
+
+      - name: DOS2
+        shell: cmd
+        run: |
+          %~dp0../wesnoth/vcpkg/vcpkg integrate install
+          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale:x64-windows boost-random:x64-windows boost-regex:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
+
+      - name: DOS3
+        shell: cmd
+        run: |
+          MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Debug -p:Platform=Win64

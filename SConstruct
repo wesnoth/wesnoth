@@ -545,6 +545,10 @@ for env in [test_env, client_env, env]:
 # #
 
         debug_flags = env["opt"]+"-DDEBUG -ggdb3"
+        if "mingw" in env["TOOLS"]:
+            debug_flags += " -Wa,-mbig-obj"
+            debug_flags = Split(debug_flags)
+            debug_flags.append("${ '-O3' if TARGET.name == 'gettext.o' else '' }") # workaround for "File too big" errors
 
         if env["glibcxx_debug"] == True:
             glibcxx_debug_flags = "_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC"

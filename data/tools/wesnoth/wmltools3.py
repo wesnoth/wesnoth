@@ -489,13 +489,17 @@ def argmatch(formals, optional_formals, actuals, optional_actuals):
 @total_ordering
 class Reference:
     "Describes a location by file and line."
-    def __init__(self, namespace, filename, lineno=None, docstring=None, args=None, optional_args=None):
+    def __init__(self, namespace, filename, lineno=None, docstring=None, args=None,
+                 optional_args=None, deprecated=False, deprecation_level=0, removal_version=None):
         self.namespace = namespace
         self.filename = filename
         self.lineno = lineno
         self.docstring = docstring
         self.args = args
         self.optional_args = optional_args
+        self.deprecated = deprecated
+        self.deprecation_level = deprecation_level
+        self.removal_version = removal_version
         self.references = collections.defaultdict(list)
         self.undef = None
 
@@ -674,9 +678,28 @@ class CrossRef:
                         state = "macro_body"
                 elif state == "macro_optional_argument" and "#endarg" in line:
                     state = "macro_header"
+                    continue
                 if state == "macro_header":
                     # Ignore macro header commends that are pragmas
-                    if "wmlscope" not in line and "wmllint:" not in line:
+                    if ("wmlscope" in line) or ("wmllint:" in line):
+                        continue
+                    # handle deprecated macros
+                    if "deprecated" in line:
+                        # There are three levels of macro deprecation (1, 2 and 3)
+                        # Sometimes they have a version number in which they're
+                        # scheduled for removal and sometimes they don't have it
+                        # This regex seems to match every deprecated macro in mainline
+                        # in version 1.15.6
+                        m = re.match(r"\s*#\s?deprecated\s(1|2|3)\s?([0-9.]*)\s?(.*)", line)
+                        if m:
+                            here.deprecated = True
+                            # leave them as strings: they'll be used for HTML output
+                            here.deprecation_level = m.group(1)
+                            here.removal_version = m.group(2)
+                            here.docstring += m.group(3)
+                        else:
+                            print("Deprecation line not matched found in {}, line {}".format(filename, n+1), file=sys.stderr)
+                    else:
                         here.docstring += line.lstrip()[1:]
                 if state in ("macro_header", "macro_optional_argument", "macro_body"):
                     here.hash.update(line.encode("utf8"))
