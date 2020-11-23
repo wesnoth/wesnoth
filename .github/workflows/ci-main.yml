@@ -1,13 +1,5 @@
 name: CI
 
-# TODO: how to give PRs separate caches from the master branch?
-#       echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }'
-#       gets it in a script, but that can't be done in the cache-name value
-#       also I assume the name can't have slashes in it
-
-# in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key
-# this will create a brand new cache and recompile the vcpkg dependencies from scratch
-
 on:
   push:
     branches: [ master ]
@@ -23,14 +15,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
-
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: linux-01-cache-master
-        with:
-          path: ~/build-cache
-          key: linux-01-master
 
       - name: Ubuntu 20.04
         run: |
@@ -54,14 +38,6 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: linux-02-cache-master
-        with:
-          path: ~/build-cache
-          key: linux-02-master
-
       - name: Ubuntu 20.04
         run: |
           export BRANCH=master
@@ -83,14 +59,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
-
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: linux-03-cache-master
-        with:
-          path: ~/build-cache
-          key: linux-03-master
 
       - name: Ubuntu 20.04
         run: |
@@ -114,14 +82,6 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: linux-04-cache-master
-        with:
-          path: ~/build-cache
-          key: linux-04-master
-
       - name: Ubuntu 20.04
         run: |
           export BRANCH=master
@@ -143,14 +103,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
-
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: linux-05-cache-master
-        with:
-          path: ~/build-cache
-          key: linux-05-master
 
       - name: Ubuntu 18.04
         run: |
@@ -174,14 +126,6 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: linux-06-cache-master
-        with:
-          path: ~/build-cache
-          key: linux-06-master
-
       - name: Steam Runtime
         run: |
           export BRANCH=master
@@ -203,14 +147,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
-
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: linux-07-cache-master
-        with:
-          path: ~/build-cache
-          key: linux-07-master
 
       - name: MinGW Crosscompile
         run: |
@@ -234,14 +170,6 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: linux-08-cache-master
-        with:
-          path: ~/build-cache
-          key: linux-08-master
-
       - name: Flatpak
         run: |
           export BRANCH=master
@@ -263,14 +191,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
-
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: linux-09-cache-master
-        with:
-          path: ~/build-cache
-          key: linux-09-master
 
       - name: Translations
         run: |
@@ -294,14 +214,6 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: macos-01-cache-master
-        with:
-          path: ~/build-cache
-          key: macos-01-master
-
       - name: macOS Release
         run: |
           export CFG=Release
@@ -316,16 +228,83 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: macos-02-cache-master
-        with:
-          path: ~/build-cache
-          key: macos-02-master
-
       - name: macOS Debug
         run: |
           export CFG=Debug
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
+
+# in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
+# this will create a brand new cache and recompile the vcpkg dependencies from scratch
+
+  windows-release:
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: windows-release-cache-master
+        with:
+          path: D:/a/wesnoth/vcpkg
+          key: windows-release-master-N000
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: DOS1
+        shell: cmd
+        run: |
+          git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
+          %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
+
+      - name: DOS2
+        shell: cmd
+        run: |
+          %~dp0../wesnoth/vcpkg/vcpkg integrate install
+          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale:x64-windows boost-random:x64-windows boost-regex:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
+
+      - name: DOS3
+        shell: cmd
+        run: |
+          MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Release -p:Platform=Win64
+
+  windows-debug:
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        uses: actions/cache@v2
+        env:
+          cache-name: windows-debug-cache-master
+        with:
+          path: D:/a/wesnoth/vcpkg
+          key: windows-debug-master-N000
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: DOS1
+        shell: cmd
+        run: |
+          git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
+          %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
+
+      - name: DOS2
+        shell: cmd
+        run: |
+          %~dp0../wesnoth/vcpkg/vcpkg integrate install
+          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale:x64-windows boost-random:x64-windows boost-regex:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
+
+      - name: DOS3
+        shell: cmd
+        run: |
+          MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Debug -p:Platform=Win64
