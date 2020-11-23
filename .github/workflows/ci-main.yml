@@ -13,9 +13,10 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
-  linux-01-master:
+  ubuntu-2004-scons-gcc-release-lto:
     runs-on: ubuntu-20.04
 
     steps:
@@ -45,7 +46,7 @@ jobs:
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  linux-02-master:
+  ubuntu-2004-scons-clang-debug:
     runs-on: ubuntu-20.04
 
     steps:
@@ -75,7 +76,7 @@ jobs:
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh master
 
-  linux-03-master:
+  ubuntu-2004-cmake-clang-release:
     runs-on: ubuntu-20.04
 
     steps:
@@ -105,7 +106,7 @@ jobs:
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  linux-04-master:
+  ubuntu-2004-cmake-gcc-debug:
     runs-on: ubuntu-20.04
 
     steps:
@@ -127,15 +128,15 @@ jobs:
           export IMAGE=2004
           export NLS=false
           export TOOL=cmake
-          export CC=clang
-          export CXX=clang++
+          export CC=gcc
+          export CXX=g++
           export CXX_STD=14
           export CFG=debug
           export LTO=false
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  linux-05-master:
+  ubuntu-1804:
     runs-on: ubuntu-18.04
 
     steps:
@@ -165,7 +166,7 @@ jobs:
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  linux-06-master:
+  steam-runtime:
     runs-on: ubuntu-20.04
 
     steps:
@@ -195,7 +196,7 @@ jobs:
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  linux-07-master:
+  mingw:
     runs-on: ubuntu-20.04
 
     steps:
@@ -225,7 +226,7 @@ jobs:
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  linux-08-master:
+  flatpak:
     runs-on: ubuntu-20.04
 
     steps:
@@ -255,7 +256,7 @@ jobs:
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  linux-09-master:
+  translations:
     runs-on: ubuntu-20.04
 
     steps:
@@ -285,7 +286,7 @@ jobs:
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  macos-01-master:
+  macos-master-release:
     runs-on: macos-10.15
 
     steps:
@@ -307,7 +308,7 @@ jobs:
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
 
-  macos-02-master:
+  macos-master-debug:
     runs-on: macos-10.15
 
     steps:
