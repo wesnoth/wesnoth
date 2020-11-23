@@ -23,6 +23,9 @@
  * All configuration files are stored in this format, and data is sent across
  * the network in this format.  It is thus used extensively throughout the
  * game.
+ *
+ * @note
+ * All operations that involves an invalid node would throw exception.
  */
 
 #pragma once
@@ -70,20 +73,16 @@ class config
 	friend bool operator==(const config& a, const config& b);
 	friend struct config_implementation;
 
-	static config invalid;
+	static config invalid; /**< The one and only invalid node */
 
-	/**
-	 * Raises an exception if @a this is not valid.
-	 */
+	/** Raise an exception if @a this is not valid. */
 	void check_valid() const;
 
-	/**
-	 * Raises an exception if @a this or @a cfg is not valid.
-	 */
+	/** Raise an exception if @a this or @a cfg is not valid. */
 	void check_valid(const config &cfg) const;
 
 public:
-	// Create an empty node.
+	/** Construct an empty node. */
 	config();
 
 	config(const config &);
@@ -92,13 +91,11 @@ public:
 	config(config &&);
 	config &operator=(config &&);
 
-	/**
-	 * Creates a config object with an empty child of name @a child.
-	 */
+	/** Construct a node with an empty child of name @a child. */
 	explicit config(config_key_type child);
 
 	/**
-	 * Creates a config with several attributes and children.
+	 * Construct a node with multiple attributes and children.
 	 * Pass the keys/tags and values/children alternately.
 	 * @example config("key", 42, "value", config())
 	 */
@@ -107,15 +104,17 @@ public:
 
 	~config();
 
-	// Verifies that the string can be used as a tag name
+	/** Check if the string is a valid tag name. */
 	static bool valid_tag(config_key_type name);
 
-	// Verifies that the string can be used as an attribute name
+	/** Check if the string is a valid attribute name. */
 	static bool valid_attribute(config_key_type name);
 
+	/** Check if this node is valid. */
 	explicit operator bool() const
 	{ return this != &invalid; }
 
+	/** Get the static invalid node. */
 	static config& get_invalid()
 	{ return invalid; }
 
@@ -289,153 +288,144 @@ public:
 	typedef boost::iterator_range<const_attribute_iterator> const_attr_itors;
 	typedef boost::iterator_range<attribute_iterator> attr_itors;
 
+	/** Make a range of all children with the @key. */
 	child_itors child_range(config_key_type key);
+	/** @copydoc child_range(config_key_type) */
 	const_child_itors child_range(config_key_type key) const;
+	/** Find the number of children with the @key. */
 	unsigned child_count(config_key_type key) const;
+	/** Find the number of children. */
 	unsigned all_children_count() const;
-	/** Count the number of non-blank attributes */
+	/** Find the number of non-blank attributes. */
 	unsigned attribute_count() const;
 
 	/**
-	 * Determine whether a config has a child or not.
-	 *
-	 * @param key                 The key of the child to find.
-	 *
-	 * @returns                   Whether a child is available.
+	 * Check if this node has at least one child with the @key.
+	 * @param  key The key of the child to find.
+	 * @return     Whether a child is available.
 	 */
 	bool has_child(config_key_type key) const;
 
 	/**
-	 * Returns the first child with the given @a key, or an empty config if there is none.
+	 * Get the first node in the list of children with the @key.
+	 * Return the empty node singleton if we can't find such a node.
+	 * @see    child(config_key_type, int)
 	 */
 	const config & child_or_empty(config_key_type key) const;
 
 	/**
-	 * Returns the nth child with the given @a key, or
-	 * a reference to an invalid config if there is none.
-	 * @note A negative @a n accesses from the end of the object.
-	 *       For instance, -1 is the index of the last child.
+	 * Get a node in the list of children with the @key.
+	 * Return the static invalid node if we can't find such a node.
+	 * @param   n The index of the node in the list.
+	 * @note      A negative @a n accesses from the end of the object.
+	 * @example   child("apple", -1) is the last child with the key "apple".
+	 * @see       child_or_empty(config_key_type)
 	 */
 	config &child(config_key_type key, int n = 0);
-
-	/**
-	 * Returns the nth child with the given @a key, or
-	 * a reference to an invalid config if there is none.
-	 * @note A negative @a n accesses from the end of the object.
-	 *       For instance, -1 is the index of the last child.
-	 */
+	/** @copydoc child(config_key_type, int) */
 	const config& child(config_key_type key, int n = 0) const
 	{ return const_cast<config *>(this)->child(key, n); }
+
 	/**
-	 * Returns a mandatory child node.
-	 *
-	 * If the child is not found a @ref wml_exception is thrown.
-	 *
-	 * @pre                       parent[0] == '['
-	 * @pre                       parent[parent.size() - 1] == ']'
-	 *
-	 * @param key                 The key of the child item to return.
-	 * @param parent              The section in which the child should reside.
-	 *                            This is only used for error reporting.
-	 *
-	 * @returns                   The wanted child node.
+	 * Get the mandatory first node in the list of children with the @key.
+	 * @pre          parent[0] == '[' && parent[parent.size() - 1] == ']'
+	 * @param parent The section in which the child should reside.
+	 *               This is only used for error reporting.
+	 * @throw        If the child with the key does not exist, throw a
+	 *               @ref wml_exception.
 	 */
 	config& child(config_key_type key, const std::string& parent);
+	/** @copydoc child(config_key_type, const std::string&) */
+	const config& child(config_key_type key, const std::string& parent) const;
 
 	/**
-	 * Returns a mandatory child node.
-	 *
-	 * If the child is not found a @ref wml_exception is thrown.
-	 *
-	 * @pre                       parent[0] == '['
-	 * @pre                       parent[parent.size() - 1] == ']'
-	 *
-	 * @param key                 The key of the child item to return.
-	 * @param parent              The section in which the child should reside.
-	 *                            This is only used for error reporting.
-	 *
-	 * @returns                   The wanted child node.
+	 * Append an empty node to the list of children with the @key.
+	 * @return The new child of this node.
 	 */
-	const config& child(
-		config_key_type key
-			, const std::string& parent) const;
-
 	config& add_child(config_key_type key);
+	/**
+	 * Append a new node to the list of children with the @key.
+	 * @param val Value of the new node.
+	 * @return    The new child of this node.
+	 * @warning   This method copies @p val.
+	 */
 	config& add_child(config_key_type key, const config& val);
+	/**
+	 * Append a new node to the list of children with the @key.
+	 * @param val Value of the new node.
+	 * @return    The new child of this node.
+	 * @warning   This method moves @p val. The move might not be free.
+	 */
+	config& add_child(config_key_type key, config &&val);
+
+	/**
+	 * Insert a node to the list of children with the @key.
+	 * @param val   Value of the node.
+	 * @param index Index of the node in the list, after the insertion.
+	 * @return      The new child of this node.
+	 * @warning     This method copies @p val.
+	 */
 	config& add_child_at(config_key_type key, const config &val, unsigned index);
 
-	config &add_child(config_key_type key, config &&val);
-
 	/**
-	 * Returns a reference to the attribute with the given @a key.
-	 * Creates it if it does not exist.
+	 * Get the attribute with @p key, or create it if it does not exist.
+	 * @return Value of the attribute
 	 */
 	attribute_value& operator[](config_key_type key);
 
 	/**
-	 * Returns a reference to the attribute with the given @a key
-	 * or to a dummy empty attribute if it does not exist.
+	 * Get the attribute with @p key, or an empty attribute singleton if it
+	 * does not exist.
+	 * @return Value of the attribute
 	 */
 	const attribute_value& operator[](config_key_type key) const;
 
-	/**
-	* Returns a reference to the attribute with the given @a key.
-	* Creates it if it does not exist.
-	*/
+	/** @copydoc operator[](config_key_type) */
 	attribute_value& operator[](const std::string& key)
 	{
 		return operator[](config_key_type(key));
 	}
 
-	/**
-	* Returns a reference to the attribute with the given @a key
-	* or to a dummy empty attribute if it does not exist.
-	*/
+	/** @copydoc operator[](config_key_type) const */
 	const attribute_value& operator[](const std::string& key) const
 	{
 		return operator[](config_key_type(key));
 	}
 
-	/**
-	* Returns a reference to the attribute with the given @a key.
-	* Creates it if it does not exist.
-	*/
+	/** @copydoc operator[](config_key_type) */
 	attribute_value& operator[](const char* key)
 	{
 		return operator[](config_key_type(key));
 	}
 
-	/**
-	* Returns a reference to the attribute with the given @a key
-	* or to a dummy empty attribute if it does not exist.
-	*/
+	/** @copydoc operator[](config_key_type) const */
 	const attribute_value& operator[](const char* key) const
 	{
 		return operator[](config_key_type(key));
 	}
 
 	/**
-	 * Returns a pointer to the attribute with the given @a key
-	 * or nullptr if it does not exist.
+	 * Get the attribute with the given @p key, or nullptr if it does not
+	 * exist.
+	 * @return Value of the attribute
 	 */
 	const attribute_value *get(config_key_type key) const;
 
 	/**
-	 * Function to handle backward compatibility
-	 * Get the value of key and if missing try old_key
-	 * and log msg as a WML error (if not empty)
-	*/
-	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& in_tag = "") const;
-	/**
-	 * Returns a reference to the first child with the given @a key.
-	 * Creates the child if it does not yet exist.
+	 * Get an attribute by trying the @p key and then the @p old_key.
+	 * If no attribute has the given keys and the @in_tag is not empty, log
+	 * a deprecation error.
+	 * @param in_tag Tag for the deprecation error message.
+	 * @warning      This method is for backward compatibility.
 	 */
+	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& in_tag = "") const;
 
 	/**
 	 * Inserts an attribute into the config
 	 * @param key The name of the attribute
 	 * @param value The attribute value
 	 */
+
 	template<typename T>
 	void insert(config_key_type key, T&& value)
 	{
@@ -449,7 +439,7 @@ public:
 	 * Function to handle backward compatibility
 	 * Check if has key or old_key
 	 * and log msg as a WML error (if not empty)
-	*/
+	 */
 	bool has_old_attribute(config_key_type key, const std::string &old_key, const std::string& msg = "") const;
 
 	void remove_attribute(config_key_type key);
@@ -514,6 +504,7 @@ public:
 	bool empty() const;
 
 	std::string debug() const;
+	/** @brief Calculate the hash for this node and all of its descendants */
 	std::string hash() const;
 
 	struct error : public game::error, public boost::exception {
@@ -643,8 +634,10 @@ public:
 		friend class config;
 	};
 
-	/// here pos is the index of the new child in _all_ childs, while in add_child_at
-	/// it is the index of the new child within all chils of type @key.
+	/**
+	 * here pos is the index of the new child in _all_ childs, while in add_child_at
+	 * it is the index of the new child within all chils of type @key.
+	 */
 	config& add_child_at_total(config_key_type key, const config &val, size_t pos);
 	size_t find_total_first_of(config_key_type key, size_t start = 0);
 
