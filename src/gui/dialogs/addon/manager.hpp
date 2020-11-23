@@ -65,11 +65,9 @@ private:
 		{}
 	};
 
-	void on_filtertext_changed(text_box_base* textbox);
-
 	std::vector<selectable_item*> orders_;
 
-	void on_addon_select(window& window);
+	void on_addon_select();
 	void toggle_details(button& btn, stacked_widget& stk);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
@@ -78,10 +76,10 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	void fetch_addons_list(window& window);
-	void load_addon_list(window& window);
+	void fetch_addons_list();
+	void load_addon_list();
 
-	void reload_list_and_reselect_item(const std::string id, window& window);
+	void reload_list_and_reselect_item(const std::string id);
 
 	/** Config which contains the list with the campaigns. */
 	config cfg_;
@@ -98,60 +96,60 @@ private:
 
 	bool need_wml_cache_refresh_;
 
-	template<void(addon_manager::*fptr)(const addon_info& addon, window& window)>
-	void execute_action_on_selected_addon(window& window);
+	template<void(addon_manager::*fptr)(const addon_info& addon)>
+	void execute_action_on_selected_addon();
 
-	void install_addon(const addon_info& addon, window& window);
-	void install_selected_addon(window& window)
+	void install_addon(const addon_info& addon);
+	void install_selected_addon()
 	{
-		execute_action_on_selected_addon<&addon_manager::install_addon>(window);
+		execute_action_on_selected_addon<&addon_manager::install_addon>();
 	}
 
-	void uninstall_addon(const addon_info& addon, window& window);
-	void uninstall_selected_addon(window& window)
+	void uninstall_addon(const addon_info& addon);
+	void uninstall_selected_addon()
 	{
-		execute_action_on_selected_addon<&addon_manager::uninstall_addon>(window);
+		execute_action_on_selected_addon<&addon_manager::uninstall_addon>();
 	}
 
-	void update_addon(const addon_info& addon, window& window);
-	void update_selected_addon(window& window)
+	void update_addon(const addon_info& addon);
+	void update_selected_addon()
 	{
-		execute_action_on_selected_addon<&addon_manager::update_addon>(window);
+		execute_action_on_selected_addon<&addon_manager::update_addon>();
 	}
 
-	void publish_addon(const addon_info& addon, window& window);
-	void publish_selected_addon(window& window)
+	void publish_addon(const addon_info& addon);
+	void publish_selected_addon()
 	{
-		execute_action_on_selected_addon<&addon_manager::publish_addon>(window);
+		execute_action_on_selected_addon<&addon_manager::publish_addon>();
 	}
 
-	void delete_addon(const addon_info& addon, window& window);
-	void delete_selected_addon(window& window)
+	void delete_addon(const addon_info& addon);
+	void delete_selected_addon()
 	{
-		execute_action_on_selected_addon<&addon_manager::delete_addon>(window);
+		execute_action_on_selected_addon<&addon_manager::delete_addon>();
 	}
 
-	void execute_default_action(const addon_info& addon, window& window);
-	void execute_default_action_on_selected_addon(window& window)
+	void execute_default_action(const addon_info& addon);
+	void execute_default_action_on_selected_addon()
 	{
-		execute_action_on_selected_addon<&addon_manager::execute_default_action>(window);
+		execute_action_on_selected_addon<&addon_manager::execute_default_action>();
 	}
 
-	void update_all_addons(window& window);
+	void update_all_addons();
 
 	void browse_url_callback(text_box& url_box);
 	void copy_url_callback(text_box& url_box);
 
-	void apply_filters(window& window);
-	void order_addons(window& window);
-	void on_order_changed(window& window, unsigned int sort_column, preferences::SORT_ORDER order);
+	void apply_filters();
+	void order_addons();
+	void on_order_changed(unsigned int sort_column, preferences::SORT_ORDER order);
 	void show_help();
 
-	boost::dynamic_bitset<> get_name_filter_visibility(const window& window) const;
-	boost::dynamic_bitset<> get_status_filter_visibility(const window& window) const;
-	boost::dynamic_bitset<> get_type_filter_visibility(const window& window) const;
+	boost::dynamic_bitset<> get_name_filter_visibility() const;
+	boost::dynamic_bitset<> get_status_filter_visibility() const;
+	boost::dynamic_bitset<> get_type_filter_visibility() const;
 
-	void on_selected_version_change(window& window);
+	void on_selected_version_change();
 	bool exit_hook(window& window);
 };
 
