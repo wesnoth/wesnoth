@@ -1125,6 +1125,8 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 				++i;
 			}
 		}
+		//this list below is used for determine if ability with "overwrite_specials" could be in the list
+		// If yes abil_list will be overwrited for what ability with "overwrite_specials" supercede the others
 		abil_over_list.append((*self_).get_abilities(ability, self_loc_));
 		for(unit_ability_list::iterator i = abil_over_list.begin(); i != abil_over_list.end();) {
 			if(!((*i->ability_cfg)["overwrite_specials"].to_bool() && special_active(*i->ability_cfg, AFFECT_SELF, ability, true, "filter_student"))) {
@@ -1166,6 +1168,8 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 unit_ability_list attack_type::get_special_ability(const std::string& ability) const
 {
 	unit_ability_list abil_list = list_ability(ability);
+	//this list below is used for determine if ability with "overwrite_specials" could be in the list_ability
+	// If yes get_specials(ability) don't added for what ability with "overwrite_specials" supercede the normal special
 	bool overwrite = false;
 	for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
 		if((*i->ability_cfg)["overwrite_specials"].to_bool()) {
