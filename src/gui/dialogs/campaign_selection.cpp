@@ -79,7 +79,7 @@ namespace dialogs
 
 REGISTER_DIALOG(campaign_selection)
 
-void campaign_selection::campaign_selected()
+void campaign_selection::campaign_selected() const
 {
 	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
 	if(tree.empty()) {
@@ -103,7 +103,7 @@ void campaign_selection::campaign_selected()
 	}
 }
 
-void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order, bool ascending)
+void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order, bool ascending) const
 {
 	using level_ptr = ng::create_engine::level_ptr;
 
@@ -326,7 +326,7 @@ void campaign_selection::pre_show(window& window)
 	campaign_selected();
 }
 
-void campaign_selection::add_campaign_to_tree(const config& campaign)
+void campaign_selection::add_campaign_to_tree(const config& campaign) const
 {
 	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
 	std::map<std::string, string_map> data;

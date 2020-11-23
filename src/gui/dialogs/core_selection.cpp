@@ -66,7 +66,7 @@ namespace dialogs
 
 REGISTER_DIALOG(core_selection)
 
-void core_selection::core_selected()
+void core_selection::core_selected() const
 {
 	const int selected_row
 			= find_widget<listbox>(get_window(), "core_list", false)

@@ -93,7 +93,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void mouse_up_callback(window& window, bool&, bool&, const point& coordinate);
+	void mouse_up_callback(window& window, bool&, bool&, const point& coordinate) const;
 
 	void mouse_down_callback();
 };

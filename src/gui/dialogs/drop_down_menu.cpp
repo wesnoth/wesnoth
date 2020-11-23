@@ -57,7 +57,7 @@ namespace
 	}
 }
 
-void drop_down_menu::mouse_up_callback(window& window, bool&, bool&, const point& coordinate)
+void drop_down_menu::mouse_up_callback(window& window, bool&, bool&, const point& coordinate) const
 {
 	if(!mouse_down_happened_) {
 		return;
