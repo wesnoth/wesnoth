@@ -78,11 +78,11 @@ private:
 	 */
 	std::vector<mp_game_settings::RANDOM_FACTION_MODE> rfm_types_;
 
-	void update_games_list(window& window);
-	void display_games_of_type(window& window, ng::level::TYPE type, const std::string& level);
+	void update_games_list();
+	void display_games_of_type(ng::level::TYPE type, const std::string& level);
 
-	void show_generator_settings(window& window);
-	void regenerate_random_map(window& window);
+	void show_generator_settings();
+	void regenerate_random_map();
 
 	/**
 	 * All fields are also in the normal field vector, but they need to be
@@ -114,22 +114,22 @@ private:
 	bool local_mode_;
 
 	template<typename widget>
-	void on_filter_change(window& window, const std::string& id, bool do_select);
+	void on_filter_change(const std::string& id, bool do_select);
 
-	void on_game_select(window& window);
-	void on_tab_select(window& window);
-	void on_era_select(window& window);
-	void on_mod_toggle(window& window, const int index, toggle_button* sender);
-	void on_random_faction_mode_select(window& window);
+	void on_game_select();
+	void on_tab_select();
+	void on_era_select();
+	void on_mod_toggle(const int index, toggle_button* sender);
+	void on_random_faction_mode_select();
 
 	std::vector<std::string> get_active_mods();
 	void set_active_mods(const std::vector<std::string>& val);
 
-	void sync_with_depcheck(window& window);
+	void sync_with_depcheck();
 
-	void show_description(window& window, const std::string& new_description);
+	void show_description(const std::string& new_description);
 
-	void update_details(window& window);
+	void update_details();
 	void update_map_settings();
 
 	/**
@@ -141,7 +141,7 @@ private:
 
 	int convert_to_game_filtered_index(const unsigned int initial_index);
 
-	void load_game_callback(window& window);
+	void load_game_callback();
 
 	enum tab { TAB_GENERAL, TAB_OPTIONS, TAB_SETTINGS };
 };
