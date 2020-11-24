@@ -55,7 +55,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: Upload
+          name: Ubuntu-Clang-Debug
           path: |
             ~/build-cache/wesnoth
             ~/build-cache/wesnothd
@@ -103,6 +103,14 @@ jobs:
           export LTO=false
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ubuntu-GCC-Debug
+          path: |
+            ~/build-cache/wesnoth
+            ~/build-cache/wesnothd
 
   ubuntu-1804:
     runs-on: ubuntu-18.04
