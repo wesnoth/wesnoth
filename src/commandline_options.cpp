@@ -424,17 +424,20 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	if (vm.count("preprocess"))
 	{
 		preprocess = true;
-		std::tie(preprocess_path, preprocess_target) = vm["preprocess"].as<two_strings>();
+		preprocess_path = vm["preprocess"].as<two_strings>().first;
+		preprocess_target = vm["preprocess"].as<two_strings>().second;
 	}
 	if (vm.count("diff"))
 	{
 		do_diff = true;
-		std::tie(diff_left, diff_right) = vm["diff"].as<two_strings>();
+		diff_left = vm["diff"].as<two_strings>().first;
+		diff_right = vm["diff"].as<two_strings>().second;
 	}
 	if (vm.count("patch"))
 	{
 		do_patch = true;
-		std::tie(diff_left, diff_right) = vm["patch"].as<two_strings>();
+		diff_left = vm["patch"].as<two_strings>().first;
+		diff_right = vm["patch"].as<two_strings>().second;
 	}
 	if (vm.count("output"))
 	{
@@ -454,12 +457,14 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		multiplayer_scenario = vm["scenario"].as<std::string>();
 	if (vm.count("render-image"))
 	{
-		std::tie(render_image, render_image_dst) = vm["render-image"].as<two_strings>();
+		render_image = vm["render-image"].as<two_strings>().first;
+		render_image_dst = vm["render-image"].as<two_strings>().second;
 	}
 	if (vm.count("screenshot"))
 	{
 		screenshot = true;
-		std::tie(screenshot_map_file, screenshot_output_file) = vm["screenshot"].as<two_strings>();
+		screenshot_map_file = vm["screenshot"].as<two_strings>().first;
+		screenshot_output_file = vm["screenshot"].as<two_strings>().second;
 	}
 	if (vm.count("script"))
 		script_file = vm["script"].as<std::string>();
