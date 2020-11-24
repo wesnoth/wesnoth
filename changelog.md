@@ -3,8 +3,8 @@
    * Descent into Darkness:
      * S11: recall ghosts if available and ensure the player gets one level 2 ghost.
  ### Translations
-   * Updated translations: British English, Catalan, French, Japanese, Polish,
-     Portuguese (Brazil)
+   * Updated translations: British English, Catalan, French, German, Japanese,
+     Polish, Portuguese (Brazil)
  ### User interface
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
  ### Miscellaneous and Bug Fixes
