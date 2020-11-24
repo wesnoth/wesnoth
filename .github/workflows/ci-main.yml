@@ -52,6 +52,14 @@ jobs:
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh master
 
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ job.container.id }}
+          path: |
+            ~/build-cache/wesnoth
+            ~/build-cache/wesnothd
+
   ubuntu-2004-cmake-clang-release:
     runs-on: ubuntu-20.04
 
