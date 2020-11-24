@@ -145,7 +145,7 @@ if [ -f "errors.log" ]; then
     cat errors.log
 fi
 
-mv "$CACHE_DIR"/wesnoth wesnoth
-mv "$CACHE_DIR"/wesnothd wesnothd
+mv wesnoth "$CACHE_DIR"/wesnoth
+mv wesnothd "$CACHE_DIR"/wesnothd
 
 exit $EXIT_VAL
