@@ -55,7 +55,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ job.container.id }}
+          name: ${{ job.id }}
           path: |
             ~/build-cache/wesnoth
             ~/build-cache/wesnothd
