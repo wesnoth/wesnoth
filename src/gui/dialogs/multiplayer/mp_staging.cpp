@@ -108,7 +108,7 @@ void mp_staging::pre_show(window& window)
 	//
 	for(const auto& side : connect_engine_.side_engines()) {
 		if(side->allow_player() || game_config::debug) {
-			add_side_node(window, side);;
+			add_side_node(side);;
 		}
 	}
 
@@ -157,7 +157,7 @@ int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
 	return position;
 }
 
-void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
+void mp_staging::add_side_node(ng::side_engine_ptr side)
 {
 	std::map<std::string, string_map> data;
 	string_map item;

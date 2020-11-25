@@ -57,7 +57,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void add_side_node(window& window, ng::side_engine_ptr side);
+	void add_side_node(ng::side_engine_ptr side);
 
 	/**
 	 * Find an appropriate position to insert a side node.
