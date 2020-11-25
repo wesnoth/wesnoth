@@ -1006,7 +1006,7 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 	}
 }
 
-void preferences_dialog::initialize_tabs(window& window, listbox& selector)
+void preferences_dialog::initialize_tabs(listbox& selector)
 {
 	//
 	// MULTIPLAYER TABS
@@ -1068,7 +1068,7 @@ void preferences_dialog::pre_show(window& window)
 			const int to_select = (ii == main_index ? tab_index : 0);
 
 			// Initialize tabs for this page
-			initialize_tabs(window, *tab_selector);
+			initialize_tabs(*tab_selector);
 
 			tab_selector->select_row(to_select);
 			tab_pager->select_layer(to_select);

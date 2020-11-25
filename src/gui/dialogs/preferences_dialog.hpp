@@ -92,7 +92,7 @@ private:
 	virtual void post_show(window& /*window*/) override;
 
 	/** Initializers */
-	void initialize_tabs(window& window, listbox& selector);
+	void initialize_tabs(listbox& selector);
 	void set_resolution_list(menu_button& res_list);
 	listbox& setup_hotkey_list();
 
