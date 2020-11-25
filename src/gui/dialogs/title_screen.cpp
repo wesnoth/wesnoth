@@ -168,9 +168,9 @@ static void launch_lua_console()
 	gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::APP);
 }
 
-static void make_screenshot(window& win)
+static void make_screenshot()
 {
-	surface screenshot = win.video().getSurface().clone();
+	surface screenshot = CVideo::get_singleton().getSurface().clone();
 	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
 		filename = filesystem::get_next_filename(filename, ".png");
@@ -233,7 +233,7 @@ void title_screen::pre_show(window& win)
 	// since the wrapper's signature doesn't exactly match what register_hotkey expects.
 	win.register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console));
 
-	win.register_hotkey(hotkey::HOTKEY_SCREENSHOT, std::bind(&make_screenshot, std::ref(win)));
+	win.register_hotkey(hotkey::HOTKEY_SCREENSHOT, std::bind(&make_screenshot));
 
 	//
 	// Background and logo images
