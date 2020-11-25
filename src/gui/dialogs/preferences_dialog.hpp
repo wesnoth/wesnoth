@@ -93,7 +93,7 @@ private:
 
 	/** Initializers */
 	void initialize_tabs(window& window, listbox& selector);
-	void set_resolution_list(menu_button& res_list, CVideo& video);
+	void set_resolution_list(menu_button& res_list);
 	listbox& setup_hotkey_list();
 
 	template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>

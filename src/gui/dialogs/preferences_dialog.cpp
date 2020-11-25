@@ -142,9 +142,9 @@ preferences_dialog::preferences_dialog(const game_config_view& game_cfg, const P
 }
 
 // Helper function to refresh resolution list
-void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& video)
+void preferences_dialog::set_resolution_list(menu_button& res_list)
 {
-	resolutions_ = video.get_available_resolutions(true);
+	resolutions_ = get_window()->video().get_available_resolutions(true);
 
 	std::vector<config> options;
 	for(const point& res : resolutions_) {
@@ -168,7 +168,7 @@ void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& vide
 	}
 
 	const unsigned current_res = std::distance(resolutions_.begin(), std::find(resolutions_.begin(), resolutions_.end(),
-		video.current_resolution()));
+		get_window()->video().current_resolution()));
 
 	res_list.set_values(options, current_res);
 }
@@ -433,7 +433,7 @@ void preferences_dialog::post_build(window& window)
 	res_list.set_use_markup(true);
 	res_list.set_active(!fullscreen());
 
-	set_resolution_list(res_list, window.video());
+	set_resolution_list(res_list);
 
 	connect_signal_notify_modified(res_list,
 		std::bind(&preferences_dialog::handle_res_select, this));
@@ -1093,7 +1093,7 @@ void preferences_dialog::fullscreen_toggle_callback()
 
 	menu_button& res_list = find_widget<menu_button>(get_window(), "resolution_set", false);
 
-	set_resolution_list(res_list, get_window()->video());
+	set_resolution_list(res_list);
 	res_list.set_active(!ison);
 }
 
@@ -1102,7 +1102,7 @@ void preferences_dialog::handle_res_select()
 	menu_button& res_list = find_widget<menu_button>(get_window(), "resolution_set", false);
 
 	if(get_window()->video().set_resolution(resolutions_[res_list.get_value()])) {
-		set_resolution_list(res_list, get_window()->video());
+		set_resolution_list(res_list);
 	}
 }
 
