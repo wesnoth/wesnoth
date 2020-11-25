@@ -331,3 +331,13 @@ jobs:
         shell: cmd
         run: |
           MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Debug -p:Platform=Win64
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows-Debug
+          path: |
+            D:/a/wesnoth/wesnoth/wesnoth.exe
+            D:/a/wesnoth/wesnoth/wesnothd.exe
+            D:/a/wesnoth/wesnoth/wesnoth.pdb
+            D:/a/wesnoth/wesnoth/wesnoth.pdb
