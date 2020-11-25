@@ -54,7 +54,7 @@ private:
 	/** @returns false if an error ocurred. */
 	bool show_flg_select(int side_num, bool first_time = false);
 
-	void generate_side_list(window& window);
+	void generate_side_list();
 
 	/**
 	 * Will close the Faction Select dialog if it's open.
@@ -67,7 +67,7 @@ private:
 	 */
 	void close_faction_select_dialog_if_open();
 
-	void network_handler(window& window);
+	void network_handler();
 
 	config& get_scenario();
 

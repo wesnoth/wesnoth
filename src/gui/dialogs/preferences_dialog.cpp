@@ -141,11 +141,6 @@ preferences_dialog::preferences_dialog(const game_config_view& game_cfg, const P
 	}
 }
 
-void preferences_dialog::on_filtertext_changed(text_box_base* textbox)
-{
-	hotkey_filter_callback(*textbox->get_window());
-}
-
 // Helper function to refresh resolution list
 void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& video)
 {
@@ -225,7 +220,7 @@ void preferences_dialog::on_friends_list_select(listbox& list, text_box& textbox
 	textbox.set_value(who->second.get_nick() + " " + who->second.get_notes());
 }
 
-void preferences_dialog::update_friends_list_controls(window& window, listbox& list)
+void preferences_dialog::update_friends_list_controls(listbox& list)
 {
 	const bool list_empty = list.get_item_count() == 0;
 
@@ -233,13 +228,13 @@ void preferences_dialog::update_friends_list_controls(window& window, listbox& l
 		list.select_row(std::min(static_cast<int>(list.get_item_count()) - 1, list.get_selected_row()));
 	}
 
-	find_widget<button>(&window, "remove", false).set_active(!list_empty);
+	find_widget<button>(get_window(), "remove", false).set_active(!list_empty);
 
-	find_widget<label>(&window, "no_friends_notice", false).set_visible(
+	find_widget<label>(get_window(), "no_friends_notice", false).set_visible(
 		list_empty ? widget::visibility::visible : widget::visibility::invisible);
 }
 
-void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& textbox, window& window)
+void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& textbox)
 {
 	std::string username = textbox.text();
 	if(username.empty()) {
@@ -267,7 +262,7 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 
 	textbox.clear();
 
-	listbox& list = find_widget<listbox>(&window, "friends_list", false);
+	listbox& list = find_widget<listbox>(get_window(), "friends_list", false);
 
 	//
 	// If this is a new entry, just add a new row. If it's not, we find the relevant
@@ -290,10 +285,10 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 		}
 	}
 
-	update_friends_list_controls(window, list);
+	update_friends_list_controls(list);
 }
 
-void preferences_dialog::remove_friend_list_entry(listbox& friends_list, text_box& textbox, window& window)
+void preferences_dialog::remove_friend_list_entry(listbox& friends_list, text_box& textbox)
 {
 	const int selected_row = std::max(0, friends_list.get_selected_row());
 
@@ -314,10 +309,10 @@ void preferences_dialog::remove_friend_list_entry(listbox& friends_list, text_bo
 
 	textbox.clear();
 
-	listbox& list = find_widget<listbox>(&window, "friends_list", false);
+	listbox& list = find_widget<listbox>(get_window(), "friends_list", false);
 	list.remove_row(selected_row);
 
-	update_friends_list_controls(window, list);
+	update_friends_list_controls(list);
 }
 
 template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
@@ -430,8 +425,7 @@ void preferences_dialog::post_build(window& window)
 
 	// We bind a special callback function, so setup_single_toggle() is not used
 	connect_signal_mouse_left_click(toggle_fullscreen, std::bind(
-			&preferences_dialog::fullscreen_toggle_callback,
-			this, std::ref(window)));
+			&preferences_dialog::fullscreen_toggle_callback, this));
 
 	/* SET RESOLUTION */
 	menu_button& res_list = find_widget<menu_button>(&window, "resolution_set", false);
@@ -442,7 +436,7 @@ void preferences_dialog::post_build(window& window)
 	set_resolution_list(res_list, window.video());
 
 	connect_signal_notify_modified(res_list,
-		std::bind(&preferences_dialog::handle_res_select, this, std::ref(window)));
+		std::bind(&preferences_dialog::handle_res_select, this));
 
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,
@@ -547,7 +541,7 @@ void preferences_dialog::post_build(window& window)
 		friends_list.add_row(get_friends_list_row_data(entry.second));
 	}
 
-	update_friends_list_controls(window, friends_list);
+	update_friends_list_controls(friends_list);
 
 	text_box& textbox = find_widget<text_box>(&window, "friend_name_box", false);
 
@@ -555,23 +549,20 @@ void preferences_dialog::post_build(window& window)
 		find_widget<button>(&window, "add_friend", false), std::bind(
 			&preferences_dialog::add_friend_list_entry,
 			this, true,
-			std::ref(textbox),
-			std::ref(window)));
+			std::ref(textbox)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "add_ignored", false), std::bind(
 			&preferences_dialog::add_friend_list_entry,
 			this, false,
-			std::ref(textbox),
-			std::ref(window)));
+			std::ref(textbox)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "remove", false), std::bind(
 			&preferences_dialog::remove_friend_list_entry,
 			this,
 			std::ref(friends_list),
-			std::ref(textbox),
-			std::ref(window)));
+			std::ref(textbox)));
 
 	connect_signal_notify_modified(friends_list, std::bind(
 			&preferences_dialog::on_friends_list_select,
@@ -752,12 +743,12 @@ void preferences_dialog::post_build(window& window)
 	hotkey_menu.set_values(hotkey_category_entries);
 
 	connect_signal_notify_modified(hotkey_menu,
-		std::bind(&preferences_dialog::hotkey_filter_callback, this, std::ref(window)));
+		std::bind(&preferences_dialog::hotkey_filter_callback, this));
 
-	listbox& hotkey_list = setup_hotkey_list(window);
+	listbox& hotkey_list = setup_hotkey_list();
 
 	text_box& filter = find_widget<text_box>(&window, "filter", false);
-	filter.set_text_changed_callback(std::bind(&preferences_dialog::on_filtertext_changed, this, _1));
+	filter.set_text_changed_callback(std::bind(&preferences_dialog::hotkey_filter_callback, this));
 
 	// Action column
 	hotkey_list.register_translatable_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
@@ -787,11 +778,10 @@ void preferences_dialog::post_build(window& window)
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "btn_reset_hotkeys", false), std::bind(
 			&preferences_dialog::default_hotkey_callback,
-			this,
-			std::ref(window)));
+			this));
 }
 
-listbox& preferences_dialog::setup_hotkey_list(window& window)
+listbox& preferences_dialog::setup_hotkey_list()
 {
 	const std::string& default_icon = "misc/empty.png~CROP(0,0,15,15)";
 
@@ -808,7 +798,7 @@ listbox& preferences_dialog::setup_hotkey_list(window& window)
 	t_string& row_is_t        = row_data["lbl_is_titlescreen"]["label"];
 	t_string& row_is_t_markup = row_data["lbl_is_titlescreen"]["use_markup"];
 
-	listbox& hotkey_list = find_widget<listbox>(&window, "list_hotkeys", false);
+	listbox& hotkey_list = find_widget<listbox>(get_window(), "list_hotkeys", false);
 
 	hotkey_list.clear();
 	visible_hotkeys_.clear();
@@ -902,7 +892,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	}
 }
 
-void preferences_dialog::default_hotkey_callback(window& window)
+void preferences_dialog::default_hotkey_callback()
 {
 	gui2::show_transient_message(_("Hotkeys Reset"), _("All hotkeys have been reset to their default values."),
 			std::string(), false, false, true);
@@ -910,10 +900,10 @@ void preferences_dialog::default_hotkey_callback(window& window)
 	clear_hotkeys();
 
 	// Set up the list again and reselect the default sorting option.
-	listbox& hotkey_list = setup_hotkey_list(window);
+	listbox& hotkey_list = setup_hotkey_list();
 	hotkey_list.set_active_sorting_option({0, preferences::SORT_ORDER::ASCENDING}, true);
 
-	find_widget<multimenu_button>(&window, "hotkey_category_menu", false).reset_toggle_states();
+	find_widget<multimenu_button>(get_window(), "hotkey_category_menu", false).reset_toggle_states();
 }
 
 void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
@@ -929,10 +919,10 @@ void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
 	find_widget<label>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.command));
 }
 
-void preferences_dialog::hotkey_filter_callback(window& window) const
+void preferences_dialog::hotkey_filter_callback() const
 {
-	const multimenu_button& hotkey_menu = find_widget<const multimenu_button>(&window, "hotkey_category_menu", false);
-	const text_box& name_filter = find_widget<const text_box>(&window, "filter", false);
+	const multimenu_button& hotkey_menu = find_widget<const multimenu_button>(get_window(), "hotkey_category_menu", false);
+	const text_box& name_filter = find_widget<const text_box>(get_window(), "filter", false);
 
 	boost::dynamic_bitset<> toggle_states = hotkey_menu.get_toggle_states();
 	boost::dynamic_bitset<> res(visible_hotkeys_.size());
@@ -977,7 +967,7 @@ void preferences_dialog::hotkey_filter_callback(window& window) const
 		}
 	}
 
-	find_widget<listbox>(&window, "list_hotkeys", false).set_row_shown(res);
+	find_widget<listbox>(get_window(), "list_hotkeys", false).set_row_shown(res);
 }
 
 void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
@@ -1022,7 +1012,7 @@ void preferences_dialog::initialize_tabs(window& window, listbox& selector)
 	// MULTIPLAYER TABS
 	//
 	connect_signal_notify_modified(selector,
-		std::bind(&preferences_dialog::on_tab_select, this, std::ref(window)));
+		std::bind(&preferences_dialog::on_tab_select, this));
 }
 
 void preferences_dialog::pre_show(window& window)
@@ -1053,7 +1043,7 @@ void preferences_dialog::pre_show(window& window)
 	pager.set_find_in_all_layers(true);
 
 	connect_signal_notify_modified(selector,
-		std::bind(&preferences_dialog::on_page_select, this, std::ref(window)));
+		std::bind(&preferences_dialog::on_page_select, this));
 
 	window.keyboard_capture(&selector);
 
@@ -1090,44 +1080,44 @@ void preferences_dialog::pre_show(window& window)
 	pager.select_layer(main_index);
 }
 
-void preferences_dialog::set_visible_page(window& window, unsigned int page, const std::string& pager_id)
+void preferences_dialog::set_visible_page(unsigned int page, const std::string& pager_id)
 {
-	find_widget<stacked_widget>(&window, pager_id, false).select_layer(page);
+	find_widget<stacked_widget>(get_window(), pager_id, false).select_layer(page);
 }
 
 // Special fullsceen callback
-void preferences_dialog::fullscreen_toggle_callback(window& window)
+void preferences_dialog::fullscreen_toggle_callback()
 {
-	const bool ison = find_widget<toggle_button>(&window, "fullscreen", false).get_value_bool();
-	window.video().set_fullscreen(ison);
+	const bool ison = find_widget<toggle_button>(get_window(), "fullscreen", false).get_value_bool();
+	get_window()->video().set_fullscreen(ison);
 
-	menu_button& res_list = find_widget<menu_button>(&window, "resolution_set", false);
+	menu_button& res_list = find_widget<menu_button>(get_window(), "resolution_set", false);
 
-	set_resolution_list(res_list, window.video());
+	set_resolution_list(res_list, get_window()->video());
 	res_list.set_active(!ison);
 }
 
-void preferences_dialog::handle_res_select(window& window)
+void preferences_dialog::handle_res_select()
 {
-	menu_button& res_list = find_widget<menu_button>(&window, "resolution_set", false);
+	menu_button& res_list = find_widget<menu_button>(get_window(), "resolution_set", false);
 
-	if(window.video().set_resolution(resolutions_[res_list.get_value()])) {
-		set_resolution_list(res_list, window.video());
+	if(get_window()->video().set_resolution(resolutions_[res_list.get_value()])) {
+		set_resolution_list(res_list, get_window()->video());
 	}
 }
 
-void preferences_dialog::on_page_select(window& window)
+void preferences_dialog::on_page_select()
 {
 	const int selected_row =
-		std::max(0, find_widget<listbox>(&window, "selector", false).get_selected_row());
-	set_visible_page(window, static_cast<unsigned int>(selected_row), "pager");
+		std::max(0, find_widget<listbox>(get_window(), "selector", false).get_selected_row());
+	set_visible_page(static_cast<unsigned int>(selected_row), "pager");
 }
 
-void preferences_dialog::on_tab_select(window& window)
+void preferences_dialog::on_tab_select()
 {
 	const int selected_row =
-		std::max(0, find_widget<listbox>(&window, "tab_selector", false).get_selected_row());
-	set_visible_page(window, static_cast<unsigned int>(selected_row), "tab_pager");
+		std::max(0, find_widget<listbox>(get_window(), "tab_selector", false).get_selected_row());
+	set_visible_page(static_cast<unsigned int>(selected_row), "tab_pager");
 }
 
 void preferences_dialog::post_show(window& /*window*/)

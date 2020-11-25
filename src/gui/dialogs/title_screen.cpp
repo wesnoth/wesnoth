@@ -218,7 +218,7 @@ void title_screen::pre_show(window& win)
 			event::dispatcher::front_child);
 #endif
 
-	win.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&title_screen::on_resize, this, std::ref(win)));
+	win.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&title_screen::on_resize, this));
 
 	//
 	// General hotkeys
@@ -227,7 +227,7 @@ void title_screen::pre_show(window& win)
 		std::bind(&gui2::window::set_retval, std::ref(win), RELOAD_GAME_DATA, true));
 
 	win.register_hotkey(hotkey::TITLE_SCREEN__TEST,
-		std::bind(&title_screen::hotkey_callback_select_tests, this, std::ref(win)));
+		std::bind(&title_screen::hotkey_callback_select_tests, this));
 
 	// A wrapper is needed here since the relevant display function is overloaded, and
 	// since the wrapper's signature doesn't exactly match what register_hotkey expects.
@@ -289,14 +289,14 @@ void title_screen::pre_show(window& win)
 			tip_pages->add_page(page);
 		}
 
-		update_tip(win, true);
+		update_tip(true);
 	}
 
 	register_button(win, "next_tip", hotkey::TITLE_SCREEN__NEXT_TIP,
-		std::bind(&title_screen::update_tip, this, std::ref(win), true));
+		std::bind(&title_screen::update_tip, this, true));
 
 	register_button(win, "previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
-		std::bind(&title_screen::update_tip, this, std::ref(win), false));
+		std::bind(&title_screen::update_tip, this, false));
 
 	//
 	// Help
@@ -386,7 +386,7 @@ void title_screen::pre_show(window& win)
 				::image::flush_cache();
 				sound::flush_cache();
 				font::load_font_config();
-				on_resize(win);
+				on_resize();
 			}
 		} catch(const std::runtime_error& e) {
 			gui2::show_error_message(e.what());
@@ -422,14 +422,14 @@ void title_screen::pre_show(window& win)
 	}
 }
 
-void title_screen::on_resize(window& win)
+void title_screen::on_resize()
 {
-	win.set_retval(REDRAW_BACKGROUND);
+	get_window()->set_retval(REDRAW_BACKGROUND);
 }
 
-void title_screen::update_tip(window& win, const bool previous)
+void title_screen::update_tip(const bool previous)
 {
-	multi_page* tip_pages = find_widget<multi_page>(&win, "tips", false, false);
+	multi_page* tip_pages = find_widget<multi_page>(get_window(), "tips", false, false);
 	if(tip_pages == nullptr) {
 		return;
 	}
@@ -459,7 +459,7 @@ void title_screen::update_tip(window& win, const bool previous)
 	 * Not entirely sure why, but since we plan to move to SDL2 that change
 	 * will probably fix this issue automatically.
 	 */
-	win.set_is_dirty(true);
+	get_window()->set_is_dirty(true);
 }
 
 void title_screen::show_debug_clock_window()
@@ -474,7 +474,7 @@ void title_screen::show_debug_clock_window()
 	}
 }
 
-void title_screen::hotkey_callback_select_tests(window& window)
+void title_screen::hotkey_callback_select_tests()
 {
 	game_config_manager::get()->load_game_config_for_create(false, true);
 
@@ -493,7 +493,7 @@ void title_screen::hotkey_callback_select_tests(window& window)
 	int choice = dlg.selected_index();
 	if(choice >= 0) {
 		game_.set_test(options[choice]);
-		window.set_retval(LAUNCH_GAME);
+		get_window()->set_retval(LAUNCH_GAME);
 	}
 }
 

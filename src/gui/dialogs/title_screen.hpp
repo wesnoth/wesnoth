@@ -75,20 +75,19 @@ private:
 
 	/***** ***** ***** ***** Callbacks ***** ***** ****** *****/
 
-	void on_resize(window& window);
+	void on_resize();
 
 	/**
 	 * Updates the tip of day widget.
 	 *
-	 * @param window              The window being shown.
 	 * @param previous            Show the previous tip, else shows the next one.
 	 */
-	void update_tip(window& window, const bool previous);
+	void update_tip(const bool previous);
 
 	/** Shows the debug clock. */
 	void show_debug_clock_window();
 
-	void hotkey_callback_select_tests(window& window);
+	void hotkey_callback_select_tests();
 
 	void button_callback_multiplayer(window& window);
 

@@ -70,7 +70,7 @@ private:
 	void on_controller_select(ng::side_engine_ptr side, grid& row_grid);
 	void on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu, const bool saved_game);
 	void on_color_select(ng::side_engine_ptr side, grid& row_grid);
-	void on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu);
+	void on_team_select(ng::side_engine_ptr side, menu_button& team_menu);
 
 	template<void(ng::side_engine::*fptr)(int)>
 	void on_side_slider_change(ng::side_engine_ptr side, slider& slider);
@@ -78,9 +78,9 @@ private:
 	void select_leader_callback(ng::side_engine_ptr side, grid& row_grid);
 
 	void update_leader_display(ng::side_engine_ptr side, grid& row_grid);
-	void update_status_label_and_buttons(window& window);
+	void update_status_label_and_buttons();
 
-	void network_handler(window& window);
+	void network_handler();
 
 	void set_state_changed()
 	{

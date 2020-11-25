@@ -57,13 +57,13 @@ namespace
 	}
 }
 
-void drop_down_menu::mouse_up_callback(window& window, bool&, bool&, const point& coordinate) const
+void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate) const
 {
 	if(!mouse_down_happened_) {
 		return;
 	}
 
-	listbox& list = find_widget<listbox>(&window, "list", true);
+	listbox& list = find_widget<listbox>(get_window(), "list", true);
 
 	/* Disregard clicks on scrollbars and toggle buttons so the dropdown menu can be scrolled or have an embedded
 	 * toggle button selected without the menu closing.
@@ -79,7 +79,7 @@ void drop_down_menu::mouse_up_callback(window& window, bool&, bool&, const point
 		return;
 	}
 
-	if(dynamic_cast<toggle_button*>(window.find_at(coordinate, true)) != nullptr) {
+	if(dynamic_cast<toggle_button*>(get_window()->find_at(coordinate, true)) != nullptr) {
 		return;
 	}
 
@@ -95,11 +95,11 @@ void drop_down_menu::mouse_up_callback(window& window, bool&, bool&, const point
 		list.select_row(sel, false);
 	}
 
-	SDL_Rect rect = window.get_rectangle();
+	SDL_Rect rect = get_window()->get_rectangle();
 	if(!sdl::point_in_rect(coordinate, rect)) {
-		window.set_retval(retval::CANCEL);
+		get_window()->set_retval(retval::CANCEL);
 	} else if(!keep_open_) {
-		window.set_retval(retval::OK);
+		get_window()->set_retval(retval::OK);
 	}
 }
 
@@ -190,10 +190,10 @@ void drop_down_menu::pre_show(window& window)
 
 	// Dismiss on clicking outside the window.
 	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(
-		std::bind(&drop_down_menu::mouse_up_callback, this, std::ref(window), _3, _4, _5), event::dispatcher::front_child);
+		std::bind(&drop_down_menu::mouse_up_callback, this, _3, _4, _5), event::dispatcher::front_child);
 
 	window.connect_signal<event::SDL_RIGHT_BUTTON_UP>(
-		std::bind(&drop_down_menu::mouse_up_callback, this, std::ref(window), _3, _4, _5), event::dispatcher::front_child);
+		std::bind(&drop_down_menu::mouse_up_callback, this, _3, _4, _5), event::dispatcher::front_child);
 
 	window.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
 		std::bind(&drop_down_menu::mouse_down_callback, this), event::dispatcher::front_child);

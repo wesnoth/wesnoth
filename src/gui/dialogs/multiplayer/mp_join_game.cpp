@@ -242,7 +242,7 @@ void mp_join_game::pre_show(window& window)
 	//
 	// Set up sides list
 	//
-	generate_side_list(window);
+	generate_side_list();
 
 	//
 	// Initialize chatbox and game rooms
@@ -263,7 +263,7 @@ void mp_join_game::pre_show(window& window)
 	//
 	// Set up the network handling
 	//
-	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&mp_join_game::network_handler, this, std::ref(window)), true);
+	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&mp_join_game::network_handler, this), true);
 
 	//
 	// Set up the Lua plugin context
@@ -337,13 +337,13 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 	return true;
 }
 
-void mp_join_game::generate_side_list(window& window)
+void mp_join_game::generate_side_list()
 {
 	if(stop_updates_) {
 		return;
 	}
 
-	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
+	tree_view& tree = find_widget<tree_view>(get_window(), "side_list", false);
 
 	tree.clear();
 	team_tree_map_.clear();
@@ -486,11 +486,11 @@ void mp_join_game::close_faction_select_dialog_if_open()
 	}
 }
 
-void mp_join_game::network_handler(window& window)
+void mp_join_game::network_handler()
 {
 	// If the game has already started, close the dialog immediately.
 	if(level_["started"].to_bool()) {
-		window.set_retval(retval::OK);
+		get_window()->set_retval(retval::OK);
 		return;
 	}
 
@@ -500,7 +500,7 @@ void mp_join_game::network_handler(window& window)
 	}
 
 	// Update chat
-	find_widget<chatbox>(&window, "chat", false).process_network_data(data);
+	find_widget<chatbox>(get_window(), "chat", false).process_network_data(data);
 
 	if(!data["message"].empty()) {
 		gui2::show_transient_message(_("Response") , data["message"]);
@@ -509,16 +509,16 @@ void mp_join_game::network_handler(window& window)
 	if(data["failed"].to_bool()) {
 		close_faction_select_dialog_if_open();
 
-		window.set_retval(retval::CANCEL);
+		get_window()->set_retval(retval::CANCEL);
 	} else if(data.child("start_game")) {
 		close_faction_select_dialog_if_open();
 
 		level_["started"] = true;
-		window.set_retval(retval::OK);
+		get_window()->set_retval(retval::OK);
 	} else if(data.child("leave_game")) {
 		close_faction_select_dialog_if_open();
 
-		window.set_retval(retval::CANCEL);
+		get_window()->set_retval(retval::CANCEL);
 	}
 
 	if(data.child("stop_updates")) {
@@ -527,7 +527,7 @@ void mp_join_game::network_handler(window& window)
 		// TODO: We should catch config::error and then leave the game.
 		level_.apply_diff(c);
 
-		generate_side_list(window);
+		generate_side_list();
 	} else if(const config& change = data.child("change_controller")) {
 		if(config& side_to_change = get_scenario().find_child("side", "side", change["side"])) {
 			side_to_change.merge_with(change);
@@ -539,7 +539,7 @@ void mp_join_game::network_handler(window& window)
 	} else if(data.has_child("scenario") || data.has_child("snapshot") || data.child("next_scenario")) {
 		level_ = first_scenario_ ? data : data.child("next_scenario");
 
-		generate_side_list(window);
+		generate_side_list();
 	}
 
 	if(data.has_child("turn")) {
