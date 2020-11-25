@@ -52,6 +52,14 @@ jobs:
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh master
 
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ubuntu-Clang-Debug
+          path: |
+            ~/build-cache/wesnoth
+            ~/build-cache/wesnothd
+
   ubuntu-2004-cmake-clang-release:
     runs-on: ubuntu-20.04
 
@@ -95,6 +103,14 @@ jobs:
           export LTO=false
           export CACHE_DIR=/home/wesnoth-travis/build
           ./.github/workflows/ci-scripts/ubuntu.sh
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ubuntu-GCC-Debug
+          path: |
+            ~/build-cache/wesnoth
+            ~/build-cache/wesnothd
 
   ubuntu-1804:
     runs-on: ubuntu-18.04
@@ -234,6 +250,13 @@ jobs:
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
 
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: macOS-Debug
+          path: |
+            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
+
 # in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
 # this will create a brand new cache and recompile the vcpkg dependencies from scratch
 
@@ -251,7 +274,7 @@ jobs:
           cache-name: windows-release-cache-master
         with:
           path: D:/a/wesnoth/vcpkg
-          key: windows-release-master-N000
+          key: windows-master-N000
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -287,7 +310,7 @@ jobs:
           cache-name: windows-debug-cache-master
         with:
           path: D:/a/wesnoth/vcpkg
-          key: windows-debug-master-N000
+          key: windows-master-N000
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -308,3 +331,13 @@ jobs:
         shell: cmd
         run: |
           MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Debug -p:Platform=Win64
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows-Debug
+          path: |
+            D:/a/wesnoth/wesnoth/wesnoth.exe
+            D:/a/wesnoth/wesnoth/wesnothd.exe
+            D:/a/wesnoth/wesnoth/wesnoth.pdb
+            D:/a/wesnoth/wesnoth/wesnothd.pdb

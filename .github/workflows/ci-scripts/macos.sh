@@ -22,4 +22,8 @@ EXIT_VAL=$?
 ccache -s
 ccache -z
 
+if [ "$CFG" = "Debug" ]; then
+    hdiutil create -volname "Wesnoth_${CFG}" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
+fi
+
 exit $EXIT_VAL
