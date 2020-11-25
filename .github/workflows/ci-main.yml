@@ -274,7 +274,7 @@ jobs:
           cache-name: windows-release-cache-master
         with:
           path: D:/a/wesnoth/vcpkg
-          key: windows-release-master-N000
+          key: windows-master-N000
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -310,7 +310,7 @@ jobs:
           cache-name: windows-debug-cache-master
         with:
           path: D:/a/wesnoth/vcpkg
-          key: windows-debug-master-N000
+          key: windows-master-N000
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
