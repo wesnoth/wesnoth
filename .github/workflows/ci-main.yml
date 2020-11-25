@@ -250,6 +250,13 @@ jobs:
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
 
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ubuntu-Clang-Debug
+          path: |
+            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
+
 # in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
 # this will create a brand new cache and recompile the vcpkg dependencies from scratch
 
