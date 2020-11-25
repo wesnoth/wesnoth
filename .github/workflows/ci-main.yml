@@ -253,7 +253,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: Ubuntu-Clang-Debug
+          name: macOS-Debug
           path: |
             ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
 
