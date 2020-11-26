@@ -19,6 +19,7 @@
 
 #include "units/types.hpp"
 
+#include "formula/callable_objects.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp" //thrown sometimes
 //#include "gettext.hpp"
@@ -32,7 +33,6 @@
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 
-#include <boost/regex.hpp>
 #include <boost/range/algorithm_ext/erase.hpp>
 
 #include <array>
@@ -870,37 +870,85 @@ void throw_base_unit_recursion_error(const std::vector<std::string>& base_tree, 
 	throw config::error(ss.str());
 }
 
-const boost::regex fai_identifier("[a-zA-Z_]+");
-
-template<typename MoveT>
-void patch_movetype(
-		MoveT& mt, const std::string& type, const std::string& new_key, const std::string& formula_str, int default_val, bool replace)
+/**
+ * Insert a new value into a movetype, possibly calculating the value based on
+ * the existing values in the target movetype.
+ */
+void patch_movetype(movetype& mt,
+	const std::string& type_to_patch,
+	const std::string& new_key,
+	const std::string& formula_str,
+	int default_val,
+	bool replace)
 {
-	config temp_cfg, original_cfg;
-	mt.write(original_cfg);
+	LOG_CONFIG << "Patching " << new_key << " into movetype." << type_to_patch << std::endl;
+	config mt_cfg;
+	mt.write(mt_cfg);
 
-	if(!replace && !original_cfg[new_key].blank()) {
+	// original_cfg can be blank, if a movetype similar to "none" exists.
+	// "none" is a real movetype defined in units.cfg for units that shouldn't
+	// be able to move.
+	const auto& original_cfg = mt_cfg.child(type_to_patch);
+	if(!replace && original_cfg.has_attribute(new_key)) {
 		// Don't replace if the key already exists in the config (even if empty).
 		return;
 	}
 
-	gui2::typed_formula<int> formula(formula_str);
-	wfl::map_formula_callable original;
+	// Make movement_costs.flat, defense.castle, etc available to the formula.
+	// The formula uses config_callables which take references to data in mt;
+	// the enclosing scope is to run all the destructors before calling mt's
+	// non-const merge() function. Probably unnecessary, but I'd rather write
+	// it this way than debug it afterwards.
+	config temp_cfg;
+	{
+		// Instances of wfl::config_callable take a reference to a config,
+		// which means that the "cumulative_values" variable below needs to be
+		// copied so that movement costs aren't overwritten by vision costs
+		// before the formula is evaluated.
+		std::list<config> config_copies;
 
-	boost::sregex_iterator m(formula_str.begin(), formula_str.end(), fai_identifier);
-	for(const boost::sregex_iterator::value_type& p : std::make_pair(m, boost::sregex_iterator())) {
-		const std::string var_name = p.str();
+		gui2::typed_formula<int> formula(formula_str, default_val);
+		wfl::map_formula_callable original;
 
-		wfl::variant val(original_cfg[var_name].to_int(default_val));
-		original.add(var_name, val);
+		// These three need to follow movetype's fallback system, where values for
+		// movement costs are used for vision too.
+		const auto fallback_children = std::array<std::string, 3>{{"movement_costs", "vision_costs", "jamming_costs"}};
+		config cumulative_values;
+		for(const auto& x : fallback_children) {
+			if(mt_cfg.has_child(x)) {
+				cumulative_values.merge_with(mt_cfg.child(x));
+			}
+			config_copies.emplace_back(cumulative_values);
+			auto val = std::make_shared<wfl::config_callable>(config_copies.back());
+			original.add(x, val);
+
+			// Allow "flat" to work as "vision_costs.flat" when patching vision_costs, etc
+			if(type_to_patch == x) {
+				original.set_fallback(val);
+			}
+		}
+
+		// These don't need the fallback system
+		const auto child_names = std::array<std::string, 2>{{"defense", "resistance"}};
+		for(const auto& x : child_names) {
+			if(mt_cfg.has_child(x)) {
+				const auto& subtag = mt_cfg.child(x);
+				auto val = std::make_shared<wfl::config_callable>(subtag);
+				original.add(x, val);
+
+				// Allow "arcane" to work as well as "resistance.arcane", etc
+				if(type_to_patch == x) {
+					original.set_fallback(val);
+				}
+			}
+		}
+
+		LOG_CONFIG << " formula=" << formula_str << ", resolves to " << formula(original) << std::endl;
+		temp_cfg[new_key] = formula(original);
 	}
-
-	temp_cfg[new_key] = formula(original);
-	mt.merge(temp_cfg, type, true);
+	mt.merge(temp_cfg, type_to_patch, true);
 }
 } // unnamed namespace
-
-
 
 /**
  * Modifies the provided config by merging all base units into it.
@@ -1036,9 +1084,9 @@ void unit_type_data::set_config(const game_config_view& cfg)
 	}
 
 	// Movetype resistance patching
+	DBG_CF << "Start of movetype patching" << std::endl;
 	for(const config& r : cfg.child_range("resistance_defaults")) {
 		const std::string& dmg_type = r["id"];
-		config temp_cfg;
 
 		for(const config::attribute& attr : r.attribute_range()) {
 			const std::string& mt = attr.first;
@@ -1047,7 +1095,8 @@ void unit_type_data::set_config(const game_config_view& cfg)
 				continue;
 			}
 
-			patch_movetype(movement_types_[mt], "resistances", dmg_type, attr.second, 100, true);
+			DBG_CF << "Patching specific movetype " << mt << std::endl;
+			patch_movetype(movement_types_[mt], "resistance", dmg_type, attr.second, 100, true);
 		}
 
 		if(r.has_attribute("default")) {
@@ -1056,25 +1105,40 @@ void unit_type_data::set_config(const game_config_view& cfg)
 				if(r.has_attribute(mt.first)) {
 					continue;
 				}
+				// The "none" movetype expects everything to have the default value (to be UNREACHABLE)
+				if(mt.first == "none") {
+					continue;
+				}
 
-				patch_movetype(mt.second, "resistances", dmg_type, r["default"], 100, false);
+				patch_movetype(mt.second, "resistance", dmg_type, r["default"], 100, false);
 			}
 		}
 	}
+	DBG_CF << "Split between resistance and cost patching" << std::endl;
 
 	// Movetype move/defend patching
 	for(const config& terrain : cfg.child_range("terrain_defaults")) {
 		const std::string& ter_type = terrain["id"];
-		config temp_cfg;
 
-		static const std::array<std::string, 4> terrain_info_tags {{"movement", "vision", "jamming", "defense"}};
+		struct ter_defs_to_movetype
+		{
+			/** The data to read from is in [terrain_defaults][subtag] */
+			std::string subtag;
+			int default_val;
+		};
+		const std::array<ter_defs_to_movetype, 4> terrain_info_tags{
+			ter_defs_to_movetype{{"movement_costs"}, movetype::UNREACHABLE},
+			ter_defs_to_movetype{{"vision_costs"}, movetype::UNREACHABLE},
+			ter_defs_to_movetype{{"jamming_costs"}, movetype::UNREACHABLE},
+			ter_defs_to_movetype{{"defense"}, 100}
+		};
 
-		for(const std::string& tag : terrain_info_tags) {
-			if(!terrain.has_child(tag)) {
+		for(const auto& cost_type : terrain_info_tags) {
+			if(!terrain.has_child(cost_type.subtag)) {
 				continue;
 			}
 
-			const config& info = terrain.child(tag);
+			const config& info = terrain.child(cost_type.subtag);
 
 			for(const config::attribute& attr : info.attribute_range()) {
 				const std::string& mt = attr.first;
@@ -1083,11 +1147,8 @@ void unit_type_data::set_config(const game_config_view& cfg)
 					continue;
 				}
 
-				if(tag == "defense") {
-					patch_movetype(movement_types_[mt], tag, ter_type, attr.second, 100, true);
-				} else {
-					patch_movetype(movement_types_[mt], tag, ter_type, attr.second, 99, true);
-				}
+				patch_movetype(
+					movement_types_[mt], cost_type.subtag, ter_type, attr.second, cost_type.default_val, true);
 			}
 
 			if(info.has_attribute("default")) {
@@ -1096,16 +1157,18 @@ void unit_type_data::set_config(const game_config_view& cfg)
 					if(info.has_attribute(mt.first)) {
 						continue;
 					}
-
-					if(tag == "defense") {
-						patch_movetype(mt.second, tag, ter_type, info["default"], 100, false);
-					} else {
-						patch_movetype(mt.second, tag, ter_type, info["default"], 99, false);
+					// The "none" movetype expects everything to have the default value
+					if(mt.first == "none") {
+						continue;
 					}
+
+					patch_movetype(
+						mt.second, cost_type.subtag, ter_type, info["default"], cost_type.default_val, false);
 				}
 			}
 		}
 	}
+	DBG_CF << "End of movetype patching" << std::endl;
 
 	for(const config& ut : cfg.child_range("unit_type")) {
 		// Every type is required to have an id.
