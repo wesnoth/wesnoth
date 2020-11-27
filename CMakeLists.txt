@@ -61,7 +61,7 @@ option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 if(ENABLE_MYSQL)
 	set(BOOST_VERSION "1.66")
 else()
-	set(BOOST_VERSION "1.56")
+	set(BOOST_VERSION "1.59")
 endif(ENABLE_MYSQL)
 
 # set what std version to use

@@ -188,7 +188,7 @@ if env['ccache']: env.Tool('ccache')
 if env["forum_user_handler"]:
     boost_version = "1.66"
 else:
-    boost_version = "1.56"
+    boost_version = "1.59"
 
 
 def SortHelpText(a, b):
