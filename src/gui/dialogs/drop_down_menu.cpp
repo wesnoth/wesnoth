@@ -15,13 +15,16 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/drop_down_menu.hpp"
-#include "gui/widgets/listbox.hpp"
+
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/event/dispatcher.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/integer_selector.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
@@ -78,6 +81,30 @@ namespace
 	{
 		window.set_retval(retval::CANCEL);
 	}
+}
+
+drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>& items, int selected_item, bool keep_open)
+	: parent_(parent)
+	, items_(items.begin(), items.end())
+	, button_pos_(parent->get_rectangle())
+	, selected_item_(selected_item)
+	, use_markup_(parent->get_use_markup())
+	, keep_open_(keep_open)
+	, mouse_down_happened_(false)
+{
+	set_restore(true);
+}
+
+drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
+	: parent_(nullptr)
+	, items_(items.begin(), items.end())
+	, button_pos_(button_pos)
+	, selected_item_(selected_item)
+	, use_markup_(use_markup)
+	, keep_open_(keep_open)
+	, mouse_down_happened_(false)
+{
+	set_restore(true);
 }
 
 void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate) const
@@ -174,8 +201,11 @@ void drop_down_menu::pre_show(window& window)
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(*entry.checkbox);
 
-			if(callback_toggle_state_change_ != nullptr) {
-				connect_signal_notify_modified(*checkbox, std::bind(callback_toggle_state_change_));
+			// Fire a NOTIFIED_MODIFIED event in the parent widget when the toggle state changes
+			if(parent_) {
+				connect_signal_notify_modified(*checkbox, std::bind([this]() {
+					parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr);
+				}));
 			}
 
 			mi_grid.swap_child("icon", checkbox, false);

@@ -26,27 +26,19 @@ class config;
 
 namespace gui2
 {
+class styled_widget;
+
 namespace dialogs
 {
 /** Used by the menu_button widget. */
 class drop_down_menu : public modal_dialog
 {
 public:
-	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open, std::function<void()> callback_toggle_state_change = nullptr)
-		: items_()
-		, button_pos_(button_pos)
-		, selected_item_(selected_item)
-		, use_markup_(use_markup)
-		, keep_open_(keep_open)
-		, mouse_down_happened_(false)
-		, callback_toggle_state_change_(callback_toggle_state_change)
-	{
-		set_restore(true);
+	/** Menu was invoked from a widget (currently a [multi]menu_button). Its position and markup settings will be derived from there. */
+	drop_down_menu(styled_widget* parent, const std::vector<config>& items, int selected_item, bool keep_open);
 
-		for(const config& cfg : items) {
-			items_.emplace_back(cfg);
-		}
-	}
+	/** Menu was invoked manually. Position and markup settings must be provided here. */
+	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open);
 
 	int selected_item() const
 	{
@@ -81,6 +73,9 @@ private:
 		t_string tooltip;
 	};
 
+	/** The widget that invoked this dialog, if applicable. */
+	styled_widget* parent_;
+
 	/** Configuration of each row. */
 	std::vector<entry_data> items_;
 
@@ -106,12 +101,6 @@ private:
 	 * This flag prevents that: the menu will only be closed on a mouse-up that follows a mouse-down.
 	 * */
 	bool mouse_down_happened_;
-
-	/**
-	 * If toggle buttons are used, this callback is called whenever the state of any toggle
-	 * button changes.
-	 */
-	std::function<void()> callback_toggle_state_change_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

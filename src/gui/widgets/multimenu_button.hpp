@@ -181,7 +181,7 @@ private:
 
 	void signal_handler_left_button_click(const event::ui_event event, bool& handled);
 
-	void toggle_state_changed();
+	void signal_handler_notify_changed();
 };
 
 // }---------- DEFINITION ---------{
