@@ -40,11 +40,11 @@ REGISTER_DIALOG(drop_down_menu)
 
 drop_down_menu::entry_data::entry_data(const config& cfg)
 	: checkbox()
-	, icon(cfg["icon"])
+	, icon(cfg["icon"].str())
 	, image()
-	, label(cfg["label"])
+	, label(cfg["label"].t_str())
 	, details()
-	, tooltip(cfg["tooltip"])
+	, tooltip(cfg["tooltip"].t_str())
 {
 	// Checkboxes take precedence in column 1
 	if(cfg.has_attribute("checkbox")) {
