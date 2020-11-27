@@ -35,6 +35,29 @@ namespace dialogs
 {
 REGISTER_DIALOG(drop_down_menu)
 
+drop_down_menu::entry_data::entry_data(const config& cfg)
+	: checkbox()
+	, icon(cfg["icon"])
+	, image()
+	, label(cfg["label"])
+	, details()
+	, tooltip(cfg["tooltip"])
+{
+	// Checkboxes take precedence in column 1
+	if(cfg.has_attribute("checkbox")) {
+		checkbox = cfg["checkbox"].to_bool(false);
+	}
+
+	// Images take precedence in column 2
+	if(cfg.has_attribute("image")) {
+		image = cfg["image"];
+	}
+
+	if(cfg.has_attribute("details")) {
+		details = cfg["details"];
+	}
+}
+
 namespace
 {
 	void callback_flip_embedded_toggle(window& window)
@@ -71,7 +94,7 @@ void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate) co
 	 * This works since this mouse_up_callback function is called before widgets' left-button-up handlers.
 	 *
 	 * Additionally, this is done before row deselection so selecting/deselecting a toggle button doesn't also leave
-	 * the list with no row visually selected. Oddly, the visial deselection doesn't seem to cause any crashes, and
+	 * the list with no row visually selected. Oddly, the visual deselection doesn't seem to cause any crashes, and
 	 * the previously selected row is reselected when the menu is opened again. Still, it's odd to see your selection
 	 * vanish.
 	 */
@@ -117,42 +140,26 @@ void drop_down_menu::pre_show(window& window)
 
 	listbox& list = find_widget<listbox>(&window, "list", true);
 
-	/* Each row's config can have the following keys. Note the containing [entry]
-	 * tag is for illustrative purposes and isn't actually present in the configs.
-	 *
-	 * [entry]
-	 *     icon = "path/to/image.png"          | Column 1 OR
-	 *     checkbox = yes/no                   | Column 1
-	 *     image = "path/to/image.png"         | Column 2 OR
-	 *     label = "text"                      | Column 2
-	 *     details = "text"                    | Column 3
-	 *     tooltip = "text"                    | Entire row
-	 * [/entry]
-	 */
 	for(const auto& entry : items_) {
 		std::map<std::string, string_map> data;
 		string_map item;
-
-		const bool has_image_key = entry.has_attribute("image");
-		const bool has_ckbox_key = entry.has_attribute("checkbox");
 
 		//
 		// These widgets can be initialized here since they don't require widget type swapping.
 		//
 		item["use_markup"] = utils::bool_string(use_markup_);
-
-		if(!has_ckbox_key) {
-			item["label"] = entry["icon"];
+		if(!entry.checkbox) {
+			item["label"] = entry.icon;
 			data.emplace("icon", item);
 		}
 
-		if(!has_image_key) {
-			item["label"] = entry["label"];
+		if(!entry.image) {
+			item["label"] = entry.label;
 			data.emplace("label", item);
 		}
 
-		if(entry.has_attribute("details")) {
-			item["label"] = entry["details"];
+		if(entry.details) {
+			item["label"] = *entry.details;
 			data.emplace("details", item);
 		}
 
@@ -160,12 +167,12 @@ void drop_down_menu::pre_show(window& window)
 		grid& mi_grid = find_widget<grid>(&new_row, "menu_item", false);
 
 		// Set the tooltip on the whole panel
-		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry["tooltip"]);
+		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry.tooltip);
 
-		if(has_ckbox_key) {
+		if(entry.checkbox) {
 			toggle_button* checkbox = build_single_widget_instance<toggle_button>();
 			checkbox->set_id("checkbox");
-			checkbox->set_value_bool(entry["checkbox"].to_bool(false));
+			checkbox->set_value_bool(*entry.checkbox);
 
 			if(callback_toggle_state_change_ != nullptr) {
 				connect_signal_notify_modified(*checkbox, std::bind(callback_toggle_state_change_));
@@ -174,9 +181,9 @@ void drop_down_menu::pre_show(window& window)
 			mi_grid.swap_child("icon", checkbox, false);
 		}
 
-		if(has_image_key) {
+		if(entry.image) {
 			image* img = build_single_widget_instance<image>();
-			img->set_label(entry["image"]);
+			img->set_label(*entry.image);
 
 			mi_grid.swap_child("label", img, false);
 		}
