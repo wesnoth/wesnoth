@@ -53,11 +53,11 @@ drop_down_menu::entry_data::entry_data(const config& cfg)
 
 	// Images take precedence in column 2
 	if(cfg.has_attribute("image")) {
-		image = cfg["image"];
+		image = cfg["image"].str();
 	}
 
 	if(cfg.has_attribute("details")) {
-		details = cfg["details"];
+		details = cfg["details"].t_str();
 	}
 }
 
