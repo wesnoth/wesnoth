@@ -33,7 +33,7 @@ using std::nullopt;
 using boost::optional;
 
 // Create a new nullopt object equivalent to boost::none to match the STL interface
-inline constexpr boost::none_t nullopt = boost::none;
+constexpr boost::none_t nullopt;
 
 #endif
 } // end namespace utils
