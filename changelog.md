@@ -7,6 +7,7 @@
  ### Translations
    * Updated translations: British English, Czech
  ### Units
+   * Undead variations for Falcon, Giant Rat, and Gorer/Tusklet
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
