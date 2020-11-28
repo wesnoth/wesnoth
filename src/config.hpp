@@ -73,7 +73,8 @@ class config
 	friend bool operator==(const config& a, const config& b);
 	friend struct config_implementation;
 
-	static config invalid; /**< The one and only invalid node */
+	/**< The one and only invalid node. */
+	static config invalid;
 
 	/** Raise an exception if @a this is not valid. */
 	void check_valid() const;
@@ -97,7 +98,7 @@ public:
 	/**
 	 * Construct a node with multiple attributes and children.
 	 * Pass the keys/tags and values/children alternately.
-	 * @example config("key", 42, "value", config())
+	 * @example config("attribute1", 42, "key_of_the_child", config())
 	 */
 	template<typename... T>
 	explicit config(config_key_type first, T&&... args);
@@ -288,7 +289,7 @@ public:
 	typedef boost::iterator_range<const_attribute_iterator> const_attr_itors;
 	typedef boost::iterator_range<attribute_iterator> attr_itors;
 
-	/** Make a range of all children with the @key. */
+	/** Create a range of all children with the @key. */
 	child_itors child_range(config_key_type key);
 	/** @copydoc child_range(config_key_type) */
 	const_child_itors child_range(config_key_type key) const;
@@ -299,25 +300,21 @@ public:
 	/** Find the number of non-blank attributes. */
 	unsigned attribute_count() const;
 
-	/**
-	 * Check if this node has at least one child with the @key.
-	 * @param  key The key of the child to find.
-	 * @return     Whether a child is available.
-	 */
+	/** Check if this node has at least one child with the @p key. */
 	bool has_child(config_key_type key) const;
 
 	/**
-	 * Get the first node in the list of children with the @key.
-	 * Return the empty node singleton if we can't find such a node.
-	 * @see    child(config_key_type, int)
+	 * Get the first child with the @p key.
+	 * Return the empty node singleton if there is no such child.
+	 * @see child(config_key_type, int)
 	 */
 	const config & child_or_empty(config_key_type key) const;
 
 	/**
-	 * Get a node in the list of children with the @key.
-	 * Return the static invalid node if we can't find such a node.
-	 * @param   n The index of the node in the list.
-	 * @note      A negative @a n accesses from the end of the object.
+	 * Get a child with the @p key.
+	 * Return the static invalid node if there is no such child.
+	 * @param   n The index to the list of children with the @key
+	 * @note      A negative @p n accesses from the end of the list.
 	 * @example   child("apple", -1) is the last child with the key "apple".
 	 * @see       child_or_empty(config_key_type)
 	 */
@@ -331,15 +328,15 @@ public:
 	 * @pre          parent[0] == '[' && parent[parent.size() - 1] == ']'
 	 * @param parent The section in which the child should reside.
 	 *               This is only used for error reporting.
-	 * @throw        If the child with the key does not exist, throw a
-	 *               @ref wml_exception.
+	 * @throw        If there is no such child, throw a @ref wml_exception.
 	 */
 	config& child(config_key_type key, const std::string& parent);
 	/** @copydoc child(config_key_type, const std::string&) */
 	const config& child(config_key_type key, const std::string& parent) const;
 
 	/**
-	 * Append an empty node to the list of children with the @key.
+	 * Create an empty child with the @key.
+	 * Appends the new child to the list of children with the key.
 	 * @return The new child of this node.
 	 */
 	config& add_child(config_key_type key);
@@ -374,7 +371,7 @@ public:
 	attribute_value& operator[](config_key_type key);
 
 	/**
-	 * Get the attribute with @p key, or an empty attribute singleton if it
+	 * Get the attribute with @p key, or the empty attribute singleton if it
 	 * does not exist.
 	 * @return Value of the attribute
 	 */
@@ -405,40 +402,46 @@ public:
 	}
 
 	/**
-	 * Get the attribute with the given @p key, or nullptr if it does not
-	 * exist.
-	 * @return Value of the attribute
+	 * Get the value of the attribute with the given @p key, or nullptr if
+	 * no such attribute exists.
 	 */
 	const attribute_value *get(config_key_type key) const;
 
 	/**
 	 * Get an attribute by trying the @p key and then the @p old_key.
-	 * If no attribute has the given keys and the @in_tag is not empty, log
-	 * a deprecation error.
+	 * If no such attribute exists and @p in_tag is not empty, log a
+	 * deprecation error with @p in_tag as a tag.
 	 * @param in_tag Tag for the deprecation error message.
-	 * @warning      This method is for backward compatibility.
+	 * @warning This method is for backward compatibility.
 	 */
 	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& in_tag = "") const;
 
 	/**
-	 * Inserts an attribute into the config
-	 * @param key The name of the attribute
-	 * @param value The attribute value
+	 * Create or set an attribute with the @p key.
+	 * @param key   The name of the attribute
+	 * @param value The value of the attribute
 	 */
-
 	template<typename T>
 	void insert(config_key_type key, T&& value)
 	{
 		operator[](key) = std::forward<T>(value);
 	}
 
+	/**
+	 * Get a child by @p key or append a new empty child with the @p key if
+	 * no such child exists.
+	 * @return the child
+	 * @warning Does not check if this node is invalid.
+	 */
 	config &child_or_add(config_key_type key);
 
+	/** Check if this node has an attribute with the @p key */
 	bool has_attribute(config_key_type key) const;
 	/**
-	 * Function to handle backward compatibility
-	 * Check if has key or old_key
-	 * and log msg as a WML error (if not empty)
+	 * Check if this node has an attribute with key or old key.
+	 * If no such
+	 * attribute exists and @msg is not empty, log @p msg as a WML error.
+	 * @warning This method is for backward compatibility.
 	 */
 	bool has_old_attribute(config_key_type key, const std::string &old_key, const std::string& msg = "") const;
 
@@ -504,7 +507,7 @@ public:
 	bool empty() const;
 
 	std::string debug() const;
-	/** @brief Calculate the hash for this node and all of its descendants */
+	/** Calculate the hash for this node and all of its descendants */
 	std::string hash() const;
 
 	struct error : public game::error, public boost::exception {
