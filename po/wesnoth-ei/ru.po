@@ -1,33 +1,35 @@
-# translation of ru.po to
-# #-#-#-#-#  wesnoth-ei.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
+# translation of ru.po to Russian
+# #-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 1.14)  #-#-#-#-#
 # Russian translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
+# Copyright (C) 2004-2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators:
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Azamat Hackimov (Izek) - azazello1984@mail.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
+# Artem Khrapov (kabachuha) - artemkhrapov2001@yandex.ru
 #
 #
 # Automatically generated, 2004.
-# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
-# Fedor Khodkov, 2014
+# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006,
+# Fedor Khodkov, 2014,
+# Artem Khrapov <artemkhrapov2001@yandex.ru>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-ei.po\n"
+"Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-10-17 04:28 UTC\n"
-"PO-Revision-Date: 2016-05-03 15:54+0400\n"
-"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: \n"
-"Language: ru_RU\n"
+"PO-Revision-Date: 2020-10-18 16:02+0300\n"
+"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [campaign]: id=Eastern_Invasion
@@ -43,27 +45,27 @@ msgstr "ВсВ"
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "Easy"
-msgstr "(Лёгкий)"
+msgstr "Лёгкий"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "Spearman"
-msgstr "Копейщик"
+msgstr "Копьеносец"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:19
 msgid "Normal"
-msgstr "(Нормальный)"
+msgstr "Нормальный"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:19
 msgid "Swordsman"
-msgstr "Мечник"
+msgstr "Меченосец"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
 msgid "Challenging"
-msgstr "(Сложный)"
+msgstr "Сложный"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
@@ -86,9 +88,9 @@ msgstr ""
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
 #, fuzzy
-#| msgid "(Intermediate level, 16 scenarios.)"
+#| msgid "(Novice level, 16 scenarios.)"
 msgid "(Intermediate level, 16 scenarios.)"
-msgstr "(Средний уровень, 16 сценариев)"
+msgstr "(Для начинающих, 16 сценариев.)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -564,26 +566,17 @@ msgstr "Где мы? Я не вижу, куда мы идём."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:192
-#, fuzzy
-#| msgid ""
-#| "This is an old escape tunnel for the outpost; unfortunately these caves "
-#| "are currently inhabited by trolls. Now hurry, we have to move quickly; "
-#| "the undead will surely follow us down here."
 msgid ""
 "This is an old escape route for the outpost. Unfortunately these caves are "
 "currently inhabited by trolls, who are blocking our path through the tunnel."
 msgstr ""
-"Это старый туннель для отхода с заставы; к сожалению, сейчас эти пещеры "
-"кишат троллями. Поспешим, нам нужно уходить быстро — нежить наверняка пойдёт "
-"за нами."
+"Это — старый туннель для отхода с заставы; к сожалению, сейчас эти пещеры "
+"кишат троллями, и они преграждают наш путь."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:245
-#, fuzzy
-#| msgid "Hurry up. We must get across before these undead slaughter us!"
 msgid "We must make haste to escape before the undead catch up."
-msgstr ""
-"Быстрее. Мы должны перейти на ту сторону, пока до нас не добрались мертвецы!"
+msgstr "Поспешим, нам нужно уходить быстро — нежить наверняка пойдёт за нами."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:250
@@ -659,6 +652,9 @@ msgid ""
 "Very well. The best of luck in your battle. Gweddry, we may be able to avoid "
 "the bulk of the trolls by going through the dwarves’ tunnel."
 msgstr ""
+"Что ж, как вам угодно. Желаем вам удачи в этом бою. Гведдри, возможно, нам "
+"получится избежать основную часть троллей, если мы вместо этого пройдём "
+"через гномий проход."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:380
@@ -666,7 +662,7 @@ msgid ""
 "It seems these trolls were hiding some gold. I think I can count fifty gold "
 "pieces!"
 msgstr ""
-"Похоже, эти тролли прятали здесь золото. Кажется, я вижу здесь 50 золотых "
+"Похоже, эти тролли прятали здесь золото. Кажется, я насчитал 50 золотых "
 "монет!"
 
 #. [unit]: type=Necromancer, id=Mal-Bakral
@@ -681,18 +677,14 @@ msgstr "Мы нашли тебя, мешок мяса! Готовься к см�
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:454
-#, fuzzy
-#| msgid ""
-#| "They follow us... we must get out of this tunnel. It looks like it is "
-#| "leading east. That is unfortunate, for it will take us beyond the borders "
-#| "of Wesnoth. But it is our only option."
 msgid ""
 "They follow us... we must escape through this tunnel. That is unfortunate, "
 "for it will take us into the Estmark hills, beyond the borders of Wesnoth. "
 "But it is our only option."
 msgstr ""
-"Они идут за нами... Мы должны выбраться из этого тоннеля. Кажется, он ведёт "
-"на восток. Это плохо — он уведёт нас за границы Веснота. Но у нас нет выбора."
+"Они пустились за нами в погоню... мы должны выбраться из этого тоннеля. "
+"Кажется, он ведёт на восток. Это плохо — он уведёт нас в Эстмаркские холмы, "
+"за границы Веснота. Но выбора у нас нет."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:491
@@ -767,30 +759,22 @@ msgstr "Теперь это твоя проблема."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:214
-#, fuzzy
-#| msgid ""
-#| "These undead are toying with us! This adept is weak — we may be able to "
-#| "take his fort."
 msgid ""
 "These undead are toying with us! This adept is weak — we should attack at "
 "once and take his fort."
 msgstr ""
-"Эти мертвецы решили поиграть с нами! Этот ученик слаб — мы можем захватить "
-"его форт."
+"Мертвецы играются с нами! Этот ученик слаб — мы можем захватить его форт."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:219
-#, fuzzy
-#| msgid ""
-#| "A good idea. Then, we must kill either of the dark sorcerers. I would "
-#| "prefer to attack the western one, so we can return to Wesnoth."
 msgid ""
 "Indeed, I see no better option. Then, we must kill either of the dark "
 "sorcerers. I would prefer to attack the western one, so we can return to "
 "Wesnoth."
 msgstr ""
-"Неплохая идея. Затем нам нужно убить одного из этих колдунов. Лучше "
-"атаковать западного, так мы сможем вернуться в Веснот."
+"Действительно, лучшего решения я и не вижу. Затем нам нужно убить одного из "
+"этих колдунов. Лично я напал бы на западного: так мы сможем вернуться в "
+"Веснот."
 
 #. [message]: speaker=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:231
@@ -1697,10 +1681,8 @@ msgstr "Граг"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:104
-#, fuzzy
-#| msgid "Move Gweddry and Owaec across the river"
 msgid "Move Gweddry, Owaec, and Dacyn across the river"
-msgstr "Переведите Гведдри и Оваека через реку"
+msgstr "Переведите Гведдри, Оваека и Дацина через реку"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:145
@@ -1721,19 +1703,14 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:153
-#, fuzzy
-#| msgid ""
-#| "Across this river lies the Northlands. If we can get there, we may be "
-#| "able to get some ogres to help us — but the orcs will definitely attack "
-#| "us before that happens."
 msgid ""
 "Across this river lie the Northlands. If we can get there, we may be able to "
 "get some ogres to help us — but the orcs will definitely attack us before "
 "that happens."
 msgstr ""
 "За рекой лежат Северные земли. Если мы войдем туда, возможно, мы сможем "
-"переманить на свою сторону несколько огров, чтобы они помогли нам, но орки "
-"определённо нападут на нас раньше."
+"переманить на свою сторону несколько огров, но орки определённо нападут на "
+"нас раньше."
 
 #. [message]: speaker=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:157
@@ -1860,11 +1837,6 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:121
-#, fuzzy
-#| msgid ""
-#| "Across this river lies the Northland. Ogres live there, as do orcs. We "
-#| "should proceed with caution. The undead are dangerous, but the orcs may "
-#| "be more dangerous still."
 msgid ""
 "Across this river lie the Northlands. Ogres live there, as do orcs. We "
 "should proceed with caution. The undead are dangerous, but the orcs may be "
@@ -2211,7 +2183,7 @@ msgstr "Проклятые эльфы! Возможно, стоило задру
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:393
 msgid "Let us forge onward toward Lake Vrug."
-msgstr ""
+msgstr "Пора продвигаться к озеру Вруг."
 
 #. [scenario]: id=10_Lake_Vrug
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:4
@@ -2266,8 +2238,6 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:150
-#, fuzzy
-#| msgid "But what happened to the people living on it?"
 msgid "But what happened to the people who lived there?"
 msgstr "Но что случилось с людьми, которые там жили?"
 
@@ -3082,19 +3052,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:35
-#, fuzzy
-#| msgid ""
-#| "His attack was swift and his power great, but through unwavering faith "
-#| "and no small skill I emerged victorious. As he lie there mortally wounded "
-#| "I prepared to excise the darkness in his soul."
 msgid ""
 "His attack was swift and his power great, but through unwavering faith and "
 "no small skill I emerged victorious. As he lay there mortally wounded I "
 "prepared to excise the darkness in his soul."
 msgstr ""
-"Его атаки были быстры, а мощь огромна, но благодаря неколебимой вере и не "
-"без помощи своих умений, я победил. Он лежал там, смертельно раненный, а я "
-"готовился изгнать тьму из его души."
+"Его атаки были быстры, а мощь огромна, но благодаря неколебимой вере и "
+"своему немалому мастерству, в конце концов победил я. И пока он лежал там, "
+"смертельно раненный, я готовился изгнать тьму из его души."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:38
@@ -3103,7 +3068,7 @@ msgid ""
 "Ravan died that day; yet death is a mere inconvenience to those most skilled "
 "in the arts of necromancy..."
 msgstr ""
-"Но я слишком долго ждал... Он просто исчез, телепортировался. В тот день "
+"Но я слишком долго медлил... Он просто исчез, телепортировался. В тот день "
 "умер маг Раван; но для тех, кто искушён в искусстве некромантии, смерть — "
 "лишь неудобство..."
 
@@ -3130,7 +3095,7 @@ msgid ""
 "mere lich!"
 msgstr ""
 "Очевидно, мы должны сражаться. Несомненно, могущество Веснота сможет "
-"победить какого-то Лича!"
+"победить какого-то лича!"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:114
@@ -3161,7 +3126,7 @@ msgid ""
 "That simply makes you cowards. True warriors would have stayed and fought to "
 "the death!"
 msgstr ""
-"Вы просто трусу. Истинные воины остались бы и бились бы до самой смерти!"
+"Вы просто трусы. Истинные воины остались бы и бились бы до самой смерти!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:126
@@ -3171,7 +3136,7 @@ msgid ""
 "necromancers, the lich Mal-Ravanal. With this Null Stone I can counteract "
 "his teleportation and finally put his tortured soul to rest."
 msgstr ""
-"Бессмысленная жертва и еще немного трупов, марширующих на Велдин. Мы поняли, "
+"Бессмысленная жертва и еще немного трупов, наступающих на Велдин. Мы поняли, "
 "что единственный путь к победе — уничтожить главного из этих некромантов, "
 "лича Мал-Раванала. Этим Камнем пустоты я помешаю ему телепортироваться, и мы "
 "наконец упокоим его измученную душу."
@@ -3465,7 +3430,7 @@ msgstr "?"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:176
 msgid "Kill $liches_to_kill liches to reveal Mal-Ravanal"
-msgstr ""
+msgstr "Уничтожьте $liches_to_kill личей, чтобы обнаружить Мал-Раванала"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:196
@@ -3491,7 +3456,7 @@ msgstr ""
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:260
 msgid "But how? We don't know which one of them he is."
-msgstr ""
+msgstr "Но как? Мы не знаем, кто из них он."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:265
@@ -3499,6 +3464,8 @@ msgid ""
 "They are channeling some dark magic to hide themselves. We have to kill some "
 "of them to break the spell."
 msgstr ""
+"Они призывают какое-то тёмное колдовство, чтобы скрыть себя. Нам придётся "
+"убить некоторых из них, чтобы разрушить заклятье."
 
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:273
@@ -3568,7 +3535,7 @@ msgstr "Я лично тебя уничтожу!"
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:525
 msgid "Their spell is broken! There he is!"
-msgstr ""
+msgstr "Чары разрушены! Вот он!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:680
@@ -3581,13 +3548,13 @@ msgid ""
 "They killed the royal family... now, even if we save Weldyn, Wesnoth has "
 "fallen."
 msgstr ""
-"Они убили королевскую семью... теперь, если даже мы спасём Велдин, Веснот "
+"Они убили королевскую семью... теперь, даже если мы спасём Велдин, Веснот "
 "обречен."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:699
 msgid "The Kingdom of Wesnoth dies with me!"
-msgstr "Королевство Веснота умирает со мной!"
+msgstr "Со мной умирает королевство Веснот!"
 
 #. [scenario]: id=18_Epilogue
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:4
@@ -3606,7 +3573,7 @@ msgid ""
 "Men let weapons fall from nerveless fingers and horses reared in terror as "
 "that great dark pall obscured the sun..."
 msgstr ""
-"Когда пал Мал-Раванал, его армия мертвецов просто рухнули, словно "
+"Когда пал Мал-Раванал, мертвецы его армии нежити просто рухнули, словно "
 "марионетки, у которых обрезали нити. Предсмертный вой лича эхом прокатился в "
 "воздухе, и из его трупа поднялся огромный тёмный столб, подобный дыму "
 "грязного костра; затем он разделился в самом верху на пять частей; казалось, "
@@ -3621,7 +3588,7 @@ msgid ""
 "... and then it thinned, and paled, and a breeze from the west dissolved it "
 "in tatters, and the light of day shone once again undiminished on Weldyn."
 msgstr ""
-"... а затем она развеялась, побледнела, а западный ветер разметал её в "
+"... а затем она развеялась, побледнела — западный ветер разметал её в "
 "клочья, и над Велдином снова воссиял дневной свет."
 
 #. [message]: speaker=Konrad II
@@ -3645,8 +3612,8 @@ msgid ""
 "Nor is our work yet complete. Mal-Ravanal’s host has been broken, but in its "
 "wake chaos and disorder prevail throughout the countryside."
 msgstr ""
-"И всё же наше дело ещё не завершено. Войско Мал-Раванала разбито, но они уже "
-"посеяли разруху и беспорядки в деревнях и селах."
+"И всё же наше дело ещё не завершено. Воинство Мал-Раванала разбито, но оно "
+"уже посеяло разруху и беспорядок в деревнях и селах."
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:115
@@ -3654,8 +3621,8 @@ msgid ""
 "We will be years... perhaps decades... recovering from the ill he has "
 "wrought."
 msgstr ""
-"Нам потребуются годы... Или десятилетия... Чтобы оправиться от тех бед, что "
-"он на нас навёл."
+"Потребуются годы... быть может, десятилетия... Чтобы оправиться от тех бед, "
+"что он на нас навёл."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:125
@@ -3690,8 +3657,8 @@ msgid ""
 "Sir Terraent, your service to the crown has been a beacon of light in these "
 "dark times. We are appointing you to command the River Guard in Estmark."
 msgstr ""
-"Сэр Терраэнт, твоя служба короне была как луч света в эти тёмные времена. Мы "
-"назначаем тебя командиром Речной стражи в Эстмарке."
+"Сэр Терраэнт, твоя служба короне была подобна лучу света в эти тёмные "
+"времена. Мы назначаем тебя командиром Речной стражи в Эстмарке."
 
 #. [message]: speaker=Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:152
@@ -3736,7 +3703,7 @@ msgid ""
 "skills to clear the wreckage and organize the reconstruction."
 msgstr ""
 "Инженер, Эстмарский регион почти весь лежит в руинах. Короне нужны твои "
-"навыки, чтобы расчистить разрушение и организовать восстановление."
+"навыки, чтобы расчистить развалины и руководить восстановлением."
 
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:193
@@ -3826,7 +3793,7 @@ msgstr "топтание"
 #. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
 msgid "Horse Lord"
-msgstr "Лорд Равнин"
+msgstr "Лорд равнин"
 
 #. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:19
@@ -3842,7 +3809,7 @@ msgstr ""
 #. [unit_type]: id=Lich Lord
 #: data/campaigns/Eastern_Invasion/units/Lich_Lord.cfg:7
 msgid "Lich Lord"
-msgstr "Повелитель личей"
+msgstr "Владыка-лич"
 
 #. [unit_type]: id=Mounted Fighter, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:4
@@ -3864,7 +3831,7 @@ msgstr ""
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
-msgstr "Воитель Равнин"
+msgstr "Воитель равнин"
 
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:18
@@ -3909,10 +3876,16 @@ msgstr ""
 
 #. [special_note]
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:21
+#, fuzzy
+#| msgid ""
+#| " This unit’s melee attack can overwhelm the defenses of enemies, "
+#| "preventing them from retaliating as effectively."
 msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
+" Атака этого бойца может сокрушить защиту врагов в ближнем бою, предотвращая "
+"их ответные действия."
 
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:15
 msgid "Dacyn"
@@ -3931,7 +3904,7 @@ msgstr "Мы обречены..."
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:48
 msgid "I... must— Argh...!"
-msgstr "Я... Должен... Ах!..."
+msgstr "Я... Должен— Ах!..."
 
 #. [message]: speaker=Grug
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:66
@@ -3950,8 +3923,8 @@ msgid ""
 "to see the grim tide of undead sweeping westward into Wesnoth, laying waste "
 "to all in its path."
 msgstr ""
-"Должно быть, для воинов из отряда Гведдри даже хорошо, что они не дожили до "
-"того, чтобы увидеть, как зловещая волна нежити пошла на запад, сметая и "
+"Быть может, то было и лучше для воинов из отряда Гведдри, что они не дожили "
+"до того, чтобы увидеть, как зловещая волна нежити пошла на запад, сметая и "
 "уничтожая всё на своём пути."
 
 #. [message]: speaker=narrator
@@ -3963,7 +3936,7 @@ msgid ""
 msgstr ""
 "В Весноте так никто никогда и не узнал судьбу отряда Гведдри, но вскоре они "
 "тоже испытали на себе злобу и ярость мародёрствующих орков и мертвецов в "
-"войне, которая должна была закончиться страданиями и смертью."
+"войне, что закончится лишь страданиями и смертью."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:116
@@ -3984,7 +3957,7 @@ msgid ""
 "of Mal-Ravanal."
 msgstr ""
 "Даже самые стойкие защитники Веснота потерпели поражение на своей родной "
-"земле, и когда-то великое королевство окончательно погрузилось во тьму под "
+"земле, и однажды великое королевство окончательно погрузилось во тьму под "
 "мстительной рукой Мал-Раванала."
 
 #. [message]: speaker=Dacyn
@@ -4010,7 +3983,7 @@ msgstr "Граг опять убивать!"
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:76
 msgid "Taste the steel of the Horse Clans!"
-msgstr "Почувствуй сталь Кланов всадников!"
+msgstr "Отведай сталь всадников Кланов!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:91

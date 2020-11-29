@@ -5,7 +5,7 @@
  ### Multiplayer
  ### Terrain
  ### Translations
-   * Updated translations: British English, Czech, Polish
+   * Updated translations: British English, Czech, Polish, Russian
  ### Units
    * Undead variations for Falcon, Giant Rat, and Gorer/Tusklet
  ### User interface
