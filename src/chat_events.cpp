@@ -101,6 +101,9 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 	else if (cmd == "report") {
 		data.add_child("query")["type"] = "report " + args;
 	}
+	else if (cmd == "roll") {
+		data.add_child("query")["type"] = "roll " + args;
+	}
 	else if (cmd == "join") {
 		data.add_child("room_join")["room"] = args;
 	}
