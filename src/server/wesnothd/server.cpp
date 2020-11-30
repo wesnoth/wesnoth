@@ -211,7 +211,7 @@ const std::string help_msg =
 	" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
 	" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
 	" netstats [all], [lobby]msg <message>, motd [<message>],"
-	" pm|privatemsg <nickname> <message>, requests, sample, searchlog <mask>,"
+	" pm|privatemsg <nickname> <message>, requests, roll <sides>, sample, searchlog <mask>,"
 	" signout, stats, status [<mask>], stopgame <nick> [<reason>], unban <ipmask>\n"
 	"Specific strings (those not in between <> like the command names)"
 	" are case insensitive.";
@@ -226,6 +226,7 @@ server::server(int port,
 	, ip_log_()
 	, failed_logins_()
 	, user_handler_(nullptr)
+	, die_(static_cast<unsigned>(std::time(nullptr)))
 #ifndef _WIN32
 	, input_path_()
 #endif
@@ -385,6 +386,7 @@ void server::setup_handlers()
 	SETUP_HANDLER("version", &server::version_handler);
 	SETUP_HANDLER("metrics", &server::metrics_handler);
 	SETUP_HANDLER("requests", &server::requests_handler);
+	SETUP_HANDLER("roll", &server::roll_handler);
 	SETUP_HANDLER("games", &server::games_handler);
 	SETUP_HANDLER("wml", &server::wml_handler);
 	SETUP_HANDLER("netstats", &server::netstats_handler);
@@ -1152,7 +1154,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 
 	const std::string& query_help_msg =
 		"Available commands are: adminmsg <msg>, help, games, metrics,"
-		" motd, netstats [all], requests, sample, stats, status, version, wml.";
+		" motd, netstats [all], requests, roll <sides>, sample, stats, status, version, wml.";
 
 	// Commands a player may issue.
 	if(command == "status") {
@@ -1167,6 +1169,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		command == "netstats all" ||
 		command.compare(0, 7, "version") == 0 ||
 		command == "requests" ||
+		command.compare(0, 4, "roll") == 0 ||
 		command == "sample" ||
 		command == "stats" ||
 		command == "status " + player.name() ||
@@ -2129,6 +2132,49 @@ void server::requests_handler(const std::string& /*issuer_name*/,
 {
 	assert(out != nullptr);
 	metrics_.requests(*out);
+}
+
+void server::roll_handler(const std::string& issuer_name,
+		const std::string& /*query*/,
+		std::string& parameters,
+		std::ostringstream* out)
+{
+	assert(out != nullptr);
+	if(parameters.empty()) {
+		return;
+	}
+	
+	int N;
+	try {
+		N = std::stoi(parameters);
+	} catch(const std::invalid_argument&) {
+		*out << "The number of die sides must be a number!";
+		return;
+	} catch(const std::out_of_range&) {
+		*out << "The number of sides is too big for the die!";
+		return;
+	}
+
+	if(N < 1) {
+		*out << "The die cannot have less than 1 side!";
+		return;
+	}
+	std::uniform_int_distribution<int> dice_distro(1, N);
+	std::string value = std::to_string(dice_distro(die_));
+
+	*out << "You rolled a die [1 - " + parameters + "] and got a " + value + ".";
+
+	auto player_ptr = player_connections_.get<name_t>().find(issuer_name);
+	if(player_ptr == player_connections_.get<name_t>().end()) {
+		return;
+	}
+
+	auto g_ptr = player_ptr->get_game();
+	if(g_ptr && g_ptr->is_member(player_ptr->socket())) {
+		g_ptr->send_server_message_to_all(issuer_name + " rolled a die [1 - " + parameters + "] and got a " + value + ".", player_ptr->socket());
+	} else {
+		*out << " (The result is shown to others only in a game.)";
+	}
 }
 
 void server::games_handler(const std::string& /*issuer_name*/,
