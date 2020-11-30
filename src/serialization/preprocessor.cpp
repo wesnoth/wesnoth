@@ -54,6 +54,12 @@ static std::string preprocessor_error_detail_prefix = "\n    ";
 
 static const char OUTPUT_SEPARATOR = '\xFE';
 
+static std::set<std::string> known_directives = {
+	"define", "enddef", "arg", "endarg", "undef",
+	"ifdef", "ifndef", "ifhave", "ifnhave", "ifver", "ifnver", "endif",
+	"error", "warning", "deprecated"
+};
+
 // get filename associated to this code
 static std::string get_filename(const std::string& file_code)
 {
@@ -1156,7 +1162,9 @@ bool preprocessor_data::get_chunk()
 
 			std::string symbol = items.front();
 			items.erase(items.begin());
-			int found_arg = 0, found_enddef = 0, found_deprecate = 0;
+			// int found_arg = 0, found_enddef = 0, found_deprecate = 0, found_if;
+			int found_directive = -1;
+			bool found_enddef = false, in_string = false, in_raw_string = false, saw_angle = false;
 			boost::optional<DEP_LEVEL> deprecation_level = boost::none;
 			std::string buffer, deprecation_detail;
 			version_info deprecation_version = game_config::wesnoth_version;
@@ -1164,104 +1172,121 @@ bool preprocessor_data::get_chunk()
 				if(in_.eof())
 					break;
 				char d = static_cast<char>(in_.get());
-				if(d == '\n')
-					++linenum_;
+				// Ignore carriage returns to simplify some logic
+				if(d == '\r') {
+					continue;
+				}
 				buffer += d;
-				if(d == '#') {
-					if(in_.peek() == 'a') {
-						found_arg = 1;
-					} else if(in_.peek() == 'd') {
-						found_deprecate = 1;
+				if(d != '<' && d != '>') {
+					saw_angle = false;
+				}
+				if(d == '\n') {
+					++linenum_;
+					if(found_directive > 0) {
+						found_directive = -1;
+					}
+				} else if(d == '"' && !in_raw_string) {
+					in_string = !in_string;
+				} else if(d == '<' && !in_string) {
+					if(saw_angle) {
+						in_string = true;
+						in_raw_string = true;
+						saw_angle = false;
 					} else {
-						found_enddef = 1;
+						saw_angle = true;
 					}
-				} else {
-					if(found_arg > 0 && ++found_arg == 4) {
-						if(std::equal(buffer.end() - 3, buffer.end(), "arg")) {
-							buffer.erase(buffer.end() - 4, buffer.end());
+				} else if(d == '>' && in_raw_string) {
+					if(saw_angle) {
+						in_string = false;
+						in_raw_string = false;
+						saw_angle = false;
+					} else {
+						saw_angle = true;
+					}
+				} else if(d == '#' && !in_string && found_directive < 0) {
+					found_directive = buffer.size();
+				}
+				if(!std::isalpha(in_.peek()) && found_directive >= 0) {
+					std::string directive = buffer.substr(found_directive, std::string::npos);
+					if(directive == "arg") {
+						buffer.erase(found_directive - 1, std::string::npos);
+						found_directive = -1;
 
-							skip_spaces();
-							std::string argname = read_word();
-							skip_eol();
+						skip_spaces();
+						std::string argname = read_word();
+						skip_eol();
 
-							std::string argbuffer;
+						std::string argbuffer;
 
-							int found_endarg = 0;
-							for(;;) {
-								if(in_.eof()) {
+						int found_endarg = 0;
+						for(;;) {
+							if(in_.eof()) {
+								break;
+							}
+
+							char e = static_cast<char>(in_.get());
+							if(e == '\n') {
+								++linenum_;
+							}
+
+							argbuffer += e;
+
+							if(e == '#') {
+								found_endarg = 1;
+							} else if(found_endarg > 0 && ++found_endarg == 7) {
+								if(std::equal(argbuffer.end() - 6, argbuffer.end(), "endarg")) {
+									argbuffer.erase(argbuffer.end() - 7, argbuffer.end());
+									optargs[argname] = argbuffer;
+									skip_eol();
 									break;
-								}
-
-								char e = static_cast<char>(in_.get());
-								if(e == '\n') {
-									++linenum_;
-								}
-
-								argbuffer += e;
-
-								if(e == '#') {
-									found_endarg = 1;
-								} else if(found_endarg > 0 && ++found_endarg == 7) {
-									if(std::equal(argbuffer.end() - 6, argbuffer.end(), "endarg")) {
-										argbuffer.erase(argbuffer.end() - 7, argbuffer.end());
-										optargs[argname] = argbuffer;
-										skip_eol();
-										break;
-									} else {
-										parent_.error("Unterminated #arg definition", linenum_);
-									}
-								}
-							}
-						}
-					}
-
-					if(found_deprecate > 0 && ++found_deprecate == 11) {
-						if(std::equal(buffer.end() - 10, buffer.end(), "deprecated")) {
-							buffer.erase(buffer.end() - 11, buffer.end());
-							skip_spaces();
-							try {
-								DEP_LEVEL level = DEP_LEVEL(std::stoi(read_word()));
-								if(deprecation_level) {
-									deprecation_level = std::max(*deprecation_level, level);
 								} else {
-									deprecation_level = level;
+									parent_.error("Unterminated #arg definition", linenum_);
 								}
-							} catch(const std::invalid_argument&) {
-								// Meh, fall back to default of PREEMPTIVE...
-								deprecation_level = DEP_LEVEL::PREEMPTIVE;
 							}
-							deprecation_version = game_config::wesnoth_version;
-							if(deprecation_level == DEP_LEVEL::PREEMPTIVE || deprecation_level == DEP_LEVEL::FOR_REMOVAL) {
-								skip_spaces();
-								deprecation_version = std::max(deprecation_version, version_info(read_word()));
+						}
+					} else if(directive == "deprecated") {
+						buffer.erase(found_directive - 1, std::string::npos);
+						found_directive = -1;
+						skip_spaces();
+						try {
+							DEP_LEVEL level = DEP_LEVEL(std::stoi(read_word()));
+							if(deprecation_level) {
+								deprecation_level = std::max(*deprecation_level, level);
+							} else {
+								deprecation_level = level;
 							}
+						} catch(const std::invalid_argument&) {
+							// Meh, fall back to default of PREEMPTIVE...
+							deprecation_level = DEP_LEVEL::PREEMPTIVE;
+						}
+						deprecation_version = game_config::wesnoth_version;
+						if(deprecation_level == DEP_LEVEL::PREEMPTIVE || deprecation_level == DEP_LEVEL::FOR_REMOVAL) {
 							skip_spaces();
-							if(!deprecation_detail.empty()){
-								deprecation_detail += '\n';
-							}
-							deprecation_detail += read_rest_of_line();
-							skip_eol();
+							deprecation_version = std::max(deprecation_version, version_info(read_word()));
 						}
-					}
-
-					if(found_enddef > 0 && ++found_enddef == 7) {
-						if(std::equal(buffer.end() - 6, buffer.end(), "enddef")) {
-							break;
-						} else {
-							found_enddef = 0;
-							if(std::equal(buffer.end() - 6, buffer.end(), "define")) { // TODO: Maybe add support for
-																					   // this? This would fill feature
-																					   // request #21343
-								parent_.error(
-										"Preprocessor error: #define is not allowed inside a #define/#enddef pair",
-										linenum);
-							}
+						skip_spaces();
+						if(!deprecation_detail.empty()){
+							deprecation_detail += '\n';
 						}
+						deprecation_detail += read_rest_of_line();
+						skip_eol();
+					} else if(directive == "enddef") {
+						buffer.erase(found_directive - 1, std::string::npos);
+						found_enddef = true;
+						break;
+					} else if(directive == "define") {
+						// TODO: Maybe add support for this? This would fill feature request #21343
+						parent_.error(
+								"Preprocessor error: #define is not allowed inside a #define/#enddef pair",
+								linenum);
+					} else if(known_directives.count(directive)) {
+						// If it's a directive other than the ones above, we need to leave it in the buffer for later processing when the macro is substituted
+						found_directive = -1;
 					}
 				}
 			}
 
-			if(found_enddef != 7) {
+			if(!found_enddef) {
 				parent_.error("Unterminated preprocessor definition", linenum_);
 			}
 
@@ -1279,7 +1304,6 @@ bool preprocessor_data::get_chunk()
 								<< "previously defined at " << lineno_string(old_pos.str()) << '\n';
 				}
 
-				buffer.erase(buffer.end() - 7, buffer.end());
 				(*parent_.defines_)[symbol]
 						= preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_,
 						deprecation_detail, deprecation_level, deprecation_version);
