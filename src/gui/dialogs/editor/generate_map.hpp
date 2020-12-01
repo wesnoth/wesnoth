@@ -15,8 +15,8 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "utils/optional_fwd.hpp"
 
-#include <boost/optional/optional.hpp>
 #include <cstdint>
 #include <memory>
 
@@ -43,7 +43,7 @@ public:
 
 	void select_map_generator(map_generator* mg);
 
-	boost::optional<uint32_t> get_seed();
+	utils::optional<uint32_t> get_seed();
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

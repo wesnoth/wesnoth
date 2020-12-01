@@ -69,19 +69,19 @@ std::size_t cave_map_generator::cave_map_generator_job::translate_y(std::size_t 
 	return y;
 }
 
-std::string cave_map_generator::create_map(boost::optional<uint32_t> randomseed)
+std::string cave_map_generator::create_map(utils::optional<uint32_t> randomseed)
 {
 	const config res = create_scenario(randomseed);
 	return res["map_data"];
 }
 
-config cave_map_generator::create_scenario(boost::optional<uint32_t> randomseed)
+config cave_map_generator::create_scenario(utils::optional<uint32_t> randomseed)
 {
 	cave_map_generator_job job(*this, randomseed);
 	return job.res_;
 }
 
-cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, boost::optional<uint32_t> randomseed)
+cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, utils::optional<uint32_t> randomseed)
 	: params(pparams)
 	, flipx_(false)
 	, flipy_(false)
@@ -101,7 +101,7 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 			"message", "Use the Lua cave generator instead, with scenario_generation=lua and create_scenario= (see wiki for details).",
 		},
 	});
-	uint32_t seed = randomseed.get_ptr() ? *randomseed.get_ptr() : seed_rng::next_seed();
+	uint32_t seed = randomseed ? randomseed.value() : seed_rng::next_seed();
 	rng_.seed(seed);
 	LOG_NG << "creating random cave with seed: " << seed << '\n';
 	flipx_ = static_cast<int>(rng_() % 100) < params.flipx_chance_;

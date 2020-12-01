@@ -19,9 +19,9 @@
 #include "config.hpp"
 #include "generators/map_generator.hpp"
 #include "terrain/translation.hpp"
+#include "utils/optional_fwd.hpp"
 
 #include <set>
-#include <boost/optional.hpp>
 #include <random>
 
 class cave_map_generator : public map_generator
@@ -33,13 +33,13 @@ public:
 
 	std::string config_name() const;
 
-	std::string create_map(boost::optional<uint32_t> randomseed = boost::none);
-	config create_scenario(boost::optional<uint32_t> randomseed = boost::none);
+	std::string create_map(utils::optional<uint32_t> randomseed = utils::nullopt);
+	config create_scenario(utils::optional<uint32_t> randomseed = utils::nullopt);
 
 private:
 	struct cave_map_generator_job
 	{
-		cave_map_generator_job(const cave_map_generator& params, boost::optional<uint32_t> randomseed = boost::none);
+		cave_map_generator_job(const cave_map_generator& params, utils::optional<uint32_t> randomseed = utils::nullopt);
 
 		struct chamber {
 			chamber()

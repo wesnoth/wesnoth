@@ -364,7 +364,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.log) {
-		for(const auto& log_pair : cmdline_opts.log.get()) {
+		for(const auto& log_pair : cmdline_opts.log.value()) {
 			const std::string log_domain = log_pair.second;
 			const int severity = log_pair.first;
 			if(!lg::set_log_domain_severity(log_domain, severity)) {
@@ -554,7 +554,8 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 		schema_validation::schema_validator validator(schema_path);
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
-		return handle_validate_command(*cmdline_opts.validate_wml, validator, boost::get_optional_value_or(cmdline_opts.preprocess_defines, {}));
+		return handle_validate_command(*cmdline_opts.validate_wml, validator,
+			cmdline_opts.preprocess_defines.value_or<decltype(cmdline_opts.preprocess_defines)::value_type>({}));
 	}
 
 	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path) {

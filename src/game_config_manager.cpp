@@ -131,7 +131,7 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 
 void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
 	game_classification const*,
-	boost::optional<std::set<std::string>> active_addons)
+	utils::optional<std::set<std::string>> active_addons)
 {
 	if (!lg::info().dont_log(log_config)) {
 		auto out = formatter();
@@ -150,7 +150,7 @@ void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG f
 		}
 		out << "\n";
 		FORCE_LOG_TO(lg::info(), log_config) << out.str();
-	} 
+	}
 
 
 	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",

@@ -17,15 +17,15 @@
 
 #pragma once
 
+#include "deprecation.hpp"
+#include "exceptions.hpp"
 #include "filesystem.hpp"
+#include "game_version.hpp"
+#include "utils/optional_fwd.hpp"
+
 #include <iosfwd>
 #include <map>
 #include <vector>
-#include <boost/optional.hpp>
-
-#include "exceptions.hpp"
-#include "game_version.hpp"
-#include "deprecation.hpp"
 
 class config_writer;
 class config;
@@ -61,7 +61,7 @@ struct preproc_define
 			int line,
 			const std::string& loc,
 			const std::string& dep_msg,
-			boost::optional<DEP_LEVEL> dep_lvl, const version_info& dep_ver)
+			utils::optional<DEP_LEVEL> dep_lvl, const version_info& dep_ver)
 		: value(val)
 		, arguments(args)
 		, optional_arguments(optargs)
@@ -88,12 +88,16 @@ struct preproc_define
 
 	std::string deprecation_message;
 
-	boost::optional<DEP_LEVEL> deprecation_level = boost::none;
+	utils::optional<DEP_LEVEL> deprecation_level;
 
 	version_info deprecation_version;
 
 	bool is_deprecated() const {
-		return deprecation_level != boost::none;
+#if defined HAVE_CXX17 || BOOST_VERSION >= 106800
+		return deprecation_level.has_value();
+#else
+		return deprecation_level != utils::nullopt;
+#endif
 	}
 
 	void write(config_writer&, const std::string&) const;

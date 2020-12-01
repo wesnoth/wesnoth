@@ -47,7 +47,6 @@
 #include <map>
 #include <utility>
 #include <vector>
-#include <boost/optional.hpp>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"

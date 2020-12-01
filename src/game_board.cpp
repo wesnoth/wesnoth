@@ -258,8 +258,8 @@ bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr
 	return true;
 }
 
-boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
-	boost::optional<std::string> ret = boost::optional<std::string> ();
+utils::optional<std::string> game_board::replace_map(const gamemap & newmap) {
+	utils::optional<std::string> ret;
 
 	/* Remember the locations where a village is owned by a side. */
 	std::map<map_location, int> villages;
@@ -273,7 +273,7 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 	for (unit_map::iterator itor = units_.begin(); itor != units_.end(); ) {
 		if (!newmap.on_board(itor->get_location())) {
 			if (!try_add_unit_to_recall_list(itor->get_location(), itor.get_shared_ptr())) {
-				*ret = std::string("replace_map: Cannot add a unit that would become off-map to the recall list\n");
+				ret = std::string("replace_map: Cannot add a unit that would become off-map to the recall list\n");
 			}
 			units_.erase(itor++);
 		} else {

@@ -32,8 +32,6 @@
 #include <sstream>
 #include <utility>
 
-#include <boost/optional.hpp>
-
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define LOG_G LOG_STREAM(info, lg::general())
