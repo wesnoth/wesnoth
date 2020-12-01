@@ -133,7 +133,7 @@ public:
 		gamestate().end_level_data_ = data;
 	}
 	void reset_end_level_data() {
-		gamestate().end_level_data_ = utils::nullopt;
+		gamestate().end_level_data_.reset();
 	}
 	bool is_regular_game_end() const {
 #if defined HAVE_CXX17 || BOOST_VERSION >= 106800

@@ -88,7 +88,7 @@ struct preproc_define
 
 	std::string deprecation_message;
 
-	utils::optional<DEP_LEVEL> deprecation_level = utils::nullopt;
+	utils::optional<DEP_LEVEL> deprecation_level;
 
 	version_info deprecation_version;
 
