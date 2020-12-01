@@ -35,8 +35,6 @@
 #include "formula/string_utils.hpp"
 #include "resources.hpp"
 
-#include <boost/optional.hpp>
-
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)

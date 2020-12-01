@@ -52,7 +52,6 @@
 #include <map>
 #include <utility>
 #include <vector>
-#include <boost/optional.hpp>
 
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
