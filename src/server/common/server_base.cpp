@@ -46,26 +46,13 @@ server_base::server_base(unsigned short port, bool keep_alive) :
 {
 }
 
-void server_base::setup_acceptor(boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint)
-{
-	acceptor.open(endpoint.protocol());
-	acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
-	acceptor.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive_));
-	if(endpoint.protocol() == boost::asio::ip::tcp::v6())
-		acceptor.set_option(boost::asio::ip::v6_only(true));
-	acceptor.bind(endpoint);
-	acceptor.listen();
-}
-
 void server_base::start_server()
 {
 	boost::asio::ip::tcp::endpoint endpoint_v6(boost::asio::ip::tcp::v6(), port_);
-	setup_acceptor(acceptor_v6_, endpoint_v6);
-	serve(acceptor_v6_);
+	boost::asio::spawn([this, endpoint_v6](boost::asio::yield_context yield) { serve(yield, acceptor_v6_, endpoint_v6); });
 
 	boost::asio::ip::tcp::endpoint endpoint_v4(boost::asio::ip::tcp::v4(), port_);
-	setup_acceptor(acceptor_v4_, endpoint_v4);
-	serve(acceptor_v4_);
+	boost::asio::spawn([this, endpoint_v4](boost::asio::yield_context yield) { serve(yield, acceptor_v4_, endpoint_v4); });
 
 	handshake_response_.connection_num = htonl(42);
 
@@ -77,21 +64,29 @@ void server_base::start_server()
 	sigs_.async_wait(std::bind(&server_base::handle_termination, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-void server_base::serve(boost::asio::ip::tcp::acceptor& acceptor)
+void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint)
 {
-	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(io_service_);
-	acceptor.async_accept(*socket, [&acceptor, socket, this](const boost::system::error_code& error){
-		this->accept_connection(acceptor, error, socket);
-	});
-}
+	if(!acceptor.is_open()) {
+		acceptor.open(endpoint.protocol());
+		acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+		acceptor.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive_));
+		if(endpoint.protocol() == boost::asio::ip::tcp::v6())
+			acceptor.set_option(boost::asio::ip::v6_only(true));
+		acceptor.bind(endpoint);
+		acceptor.listen();
+	}
 
-void server_base::accept_connection(boost::asio::ip::tcp::acceptor& acceptor, const boost::system::error_code& error, socket_ptr socket)
-{
-	if(accepting_connections())
-		serve(acceptor);
+	socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
+
+	boost::system::error_code error;
+	acceptor.async_accept(socket->lowest_layer(), yield[error]);
 	if(error) {
 		ERR_SERVER << "Accept failed: " << error.message() << "\n";
 		return;
+	}
+
+	if(accepting_connections()) {
+		boost::asio::spawn([this, &acceptor, endpoint](boost::asio::yield_context yield) { serve(yield, acceptor, endpoint); });
 	}
 
 #ifndef _WIN32
@@ -111,20 +106,9 @@ void server_base::accept_connection(boost::asio::ip::tcp::acceptor& acceptor, co
 #endif
 
 	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";
-	serverside_handshake(socket);
-}
 
-void server_base::serverside_handshake(socket_ptr socket)
-{
 	boost::shared_array<char> handshake(new char[4]);
-	async_read(
-				*socket, boost::asio::buffer(handshake.get(), 4),
-				std::bind(&server_base::handle_handshake, this, std::placeholders::_1, socket, handshake)
-				);
-}
-
-void server_base::handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<char> handshake)
-{
+	async_read(*socket, boost::asio::buffer(handshake.get(), 4), yield[error]);
 	if(check_error(error, socket))
 		return;
 
@@ -132,29 +116,26 @@ void server_base::handle_handshake(const boost::system::error_code& error, socke
 		ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
 		return;
 	}
-	async_write(
-				*socket, boost::asio::buffer(handshake_response_.buf, 4),
-				[=](const boost::system::error_code& error, std::size_t)
-					{
-						if(!check_error(error, socket)) {
-							const std::string ip = client_address(socket);
 
-							const std::string reason = is_ip_banned(ip);
-							if (!reason.empty()) {
-								LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
-								async_send_error(socket, "You are banned. Reason: " + reason);
-								return;
-							} else if (ip_exceeds_connection_limit(ip)) {
-								LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
-								async_send_error(socket, "Too many connections from your IP.");
-								return;
-							} else {
-								DBG_SERVER << ip << "\tnew connection fully accepted\n";
-								this->handle_new_client(socket);
-							}
-						}
-					}
-	);
+	async_write(*socket, boost::asio::buffer(handshake_response_.buf, 4), yield[error]);
+
+	if(!check_error(error, socket)) {
+		const std::string ip = client_address(socket);
+
+		const std::string reason = is_ip_banned(ip);
+		if (!reason.empty()) {
+			LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
+			async_send_error(socket, "You are banned. Reason: " + reason);
+				return;
+		} else if (ip_exceeds_connection_limit(ip)) {
+			LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
+			async_send_error(socket, "Too many connections from your IP.");
+			return;
+		} else {
+			DBG_SERVER << ip << "\tnew connection fully accepted\n";
+			this->handle_new_client(socket);
+		}
+	}
 }
 
 #ifndef _WIN32

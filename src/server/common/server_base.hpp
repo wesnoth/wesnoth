@@ -25,6 +25,7 @@
 #include <map>
 
 #include <boost/asio.hpp>
+#include <boost/asio/spawn.hpp>
 #include <boost/shared_array.hpp>
 
 typedef std::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
@@ -47,17 +48,13 @@ protected:
 	boost::asio::io_service io_service_;
 	boost::asio::ip::tcp::acceptor acceptor_v6_;
 	boost::asio::ip::tcp::acceptor acceptor_v4_;
-	void setup_acceptor(boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint);
 	void start_server();
-	void serve(boost::asio::ip::tcp::acceptor& acceptor);
-	void accept_connection(boost::asio::ip::tcp::acceptor& acceptor, const boost::system::error_code& error, socket_ptr socket);
+	void serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint);
 
 	union {
 		uint32_t connection_num;
 		char buf[4];
 	} handshake_response_;
-	void serverside_handshake(socket_ptr socket);
-	void handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<char> buf);
 
 	virtual void handle_new_client(socket_ptr socket) = 0;
 
