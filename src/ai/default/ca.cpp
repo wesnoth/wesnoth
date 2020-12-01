@@ -45,7 +45,6 @@ static lg::log_domain log_ai_testing_ai_default("ai/ca/testing_ai_default");
 #define WRN_AI_TESTING_AI_DEFAULT LOG_STREAM(warn, log_ai_testing_ai_default)
 #define ERR_AI_TESTING_AI_DEFAULT LOG_STREAM(err, log_ai_testing_ai_default)
 
-
 namespace ai {
 
 namespace ai_default_rca {
@@ -151,7 +150,6 @@ void goto_phase::execute()
 	}
 }
 
-
 //==============================================================
 
 combat_phase::combat_phase( rca_context &context, const config &cfg )
@@ -226,7 +224,6 @@ double combat_phase::evaluate()
 
 	time_taken = SDL_GetTicks() - ticks;
 	LOG_AI_TESTING_AI_DEFAULT << "analysis took " << time_taken << " ticks\n";
-
 
 	// suokko tested the rating against current_team().caution()
 	// Bad mistake -- the AI became extremely reluctant to attack anything.
@@ -567,7 +564,6 @@ double get_villages_phase::evaluate()
 	return BAD_SCORE;
 }
 
-
 void get_villages_phase::execute()
 {
 	unit_map &units_ = resources::gameboard->units();
@@ -642,7 +638,6 @@ void get_villages_phase::get_villages(
 			reachmap.emplace(u_itor->get_location(),	std::vector<map_location>());
 		}
 	}
-
 
 	DBG_AI_TESTING_AI_DEFAULT << reachmap.size() << " units found who can try to capture a village.\n";
 
@@ -1413,7 +1408,6 @@ retreat_phase::~retreat_phase()
 double retreat_phase::evaluate()
 {
 
-
 	// Get versions of the move map that assume that all units are at full movement
 	const unit_map& units_ = resources::gameboard->units();
 
@@ -1449,7 +1443,6 @@ double retreat_phase::evaluate()
 		}
 	}
 	//leader_adj_count = leaders_adj_v.size();
-
 
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 		if (i->side() == get_side() &&
@@ -1541,8 +1534,6 @@ void retreat_phase::execute()
 	}
 }
 
-
-
 bool retreat_phase::should_retreat(const map_location& loc, const unit_map::const_iterator& un,  const move_map &srcdst, const move_map &dstsrc, double caution)
 {
 	const move_map &enemy_dstsrc = get_enemy_dstsrc();
@@ -1565,14 +1556,12 @@ bool retreat_phase::should_retreat(const map_location& loc, const unit_map::cons
 	return caution*their_power*(1.0+exposure) > our_power;
 }
 
-
 //==============================================================
 
 leader_control_phase::leader_control_phase( rca_context &context, const config &cfg )
 	: candidate_action(context,cfg)
 {
 }
-
 
 leader_control_phase::~leader_control_phase()
 {
@@ -1583,8 +1572,6 @@ double leader_control_phase::evaluate()
 	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;
 	return BAD_SCORE;
 }
-
-
 
 void leader_control_phase::execute()
 {
@@ -1717,9 +1704,7 @@ void leader_shares_keep_phase::execute()
 	//ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;
 }
 
-
 //==============================================================
-
 
 } //end of namespace testing_ai_default
 

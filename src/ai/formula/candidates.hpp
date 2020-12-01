@@ -49,7 +49,6 @@ public:
 	//adds needed callable objects to callable map
 	virtual void update_callable_map(map_formula_callable& /*callable*/) {}
 
-
 	//return score of last evaluation
 	int get_score() const {return score_;}
 
@@ -68,7 +67,6 @@ protected:
 	const_formula_ptr action_;
 	int score_;
 };
-
 
 class candidate_action_with_filters : public base_candidate_action {
 public:

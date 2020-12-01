@@ -123,8 +123,6 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 	return res;
 }
 
-
-
 void aspect_attacks_base::do_attack_analysis(
 	                 const map_location& loc,
 	                 const move_map& srcdst, const move_map& dstsrc,
@@ -147,7 +145,6 @@ void aspect_attacks_base::do_attack_analysis(
 	const gamemap &map_ = resources::gameboard->map();
 	unit_map &units_ = resources::gameboard->units();
 	std::vector<team> &teams_ = resources::gameboard->teams();
-
 
 	const std::size_t max_positions = 1000;
 	if(result.size() > max_positions && !cur_analysis.movements.empty()) {
@@ -229,8 +226,6 @@ void aspect_attacks_base::do_attack_analysis(
                if((is_flanked && enemy_units_around > 2) || enemy_units_around >= accessible_tiles - 1)
                        is_surrounded = true;
 
-
-
 		double best_vulnerability = 0.0, best_support = 0.0;
 		int best_rating = 0;
 		int cur_position = -1;
@@ -290,7 +285,6 @@ void aspect_attacks_base::do_attack_analysis(
 						surround_bonus = 1.2;
 				}
 
-
 			}
 
 			// See if this position is the best rated we've seen so far.
@@ -335,7 +329,6 @@ void aspect_attacks_base::do_attack_analysis(
 		                   units,result,cur_analysis, current_team);
 			used_locations[cur_position] = false;
 
-
 			cur_analysis.vulnerability -= best_vulnerability;
 			cur_analysis.support -= best_support;
 
@@ -376,7 +369,6 @@ int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 
 	return rating;
 }
-
 
 config aspect_attacks::to_config() const
 {

@@ -88,24 +88,20 @@ void ai_composite::on_create()
 
 }
 
-
 void ai_composite::create_stage(std::vector<stage_ptr> &stages, const config &cfg)
 {
 	engine::parse_stage_from_config(*this,cfg,std::back_inserter(stages));
 }
-
 
 void ai_composite::create_goal(std::vector<goal_ptr> &goals, const config &cfg)
 {
 	engine::parse_goal_from_config(*this,cfg,std::back_inserter(goals));
 }
 
-
 void ai_composite::create_engine(std::vector<engine_ptr> &engines, const config &cfg)
 {
 	engine::parse_engine_from_config(*this,cfg,std::back_inserter(engines));
 }
-
 
 void ai_composite::replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, std::string id)
 {
@@ -117,7 +113,6 @@ void ai_composite::replace_aspect(std::map<std::string,aspect_ptr> &aspects, con
 ai_composite::~ai_composite()
 {
 }
-
 
 bool ai_composite::add_stage(const config &cfg)
 {
@@ -131,7 +126,6 @@ bool ai_composite::add_stage(const config &cfg)
 	return (j>0);
 }
 
-
 bool ai_composite::add_goal(const config &cfg)
 {
 	std::vector< goal_ptr > goals;
@@ -144,13 +138,11 @@ bool ai_composite::add_goal(const config &cfg)
 	return (j>0);
 }
 
-
 void ai_composite::play_turn(){
 	for (stage_ptr &s : stages_) {
 		s->play_stage();
 	}
 }
-
 
 std::string ai_composite::get_id() const
 {
@@ -158,18 +150,15 @@ std::string ai_composite::get_id() const
 }
 
 
-
 std::string ai_composite::get_name() const
 {
 	return cfg_["name"];
 }
 
-
 std::string ai_composite::get_engine() const
 {
 	return cfg_["engine"];
 }
-
 
 std::string ai_composite::evaluate(const std::string& str)
 {
@@ -183,7 +172,6 @@ std::string ai_composite::evaluate(const std::string& str)
 	return e_ptr->evaluate(str);
 }
 
-
 void ai_composite::new_turn()
 {
 	recalculate_move_maps();
@@ -192,7 +180,6 @@ void ai_composite::new_turn()
 	clear_additional_targets();
 	unit_stats_cache().clear();
 }
-
 
 int ai_composite::get_recursion_count() const
 {
@@ -208,7 +195,6 @@ ai_context& ai_composite::get_ai_context()
 {
 	return *this;
 }
-
 
 config ai_composite::to_config() const
 {

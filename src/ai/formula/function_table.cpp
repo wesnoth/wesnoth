@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-
 #include <queue>
 #include <set>
 #include <utility>
@@ -90,7 +89,6 @@ class unit_adapter {
 			}
 		}
 
-
 	private:
 		const unit_type *unit_type_;
 		const unit* unit_;
@@ -111,7 +109,6 @@ class unit_adapter {
 	};																												 \
 																													   \
 	variant name##_function::execute(const formula_callable& variables, formula_debugger* fdb) const
-
 
 DEFINE_FAI_FUNCTION(distance_to_nearest_unowned_village, 1, 1)
 {
@@ -930,7 +927,6 @@ DEFINE_FAI_FUNCTION(debug_label, 2, 2)
 	result.push_back(var1);
 	return variant(result);
 }
-
 
 DEFINE_WFL_FUNCTION(is_village, 2, 3)
 {

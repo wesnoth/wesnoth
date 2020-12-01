@@ -35,7 +35,6 @@
 #include "units/unit.hpp"
 #include "units/map.hpp"
 
-
 namespace ai {
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
@@ -77,7 +76,6 @@ public:
 
 		return result ? *result : 0.0;
 	}
-
 
 	virtual void execute()	{
 		if (execution_action_handler_) {
@@ -246,7 +244,6 @@ private:
 	config serialized_evaluation_state_;
 };
 
-
 /**
  * Note that initially we get access only to readonly context (engine is created rather early, when there's no way to move/attack.
  * We inject full ai_context later.
@@ -376,7 +373,6 @@ void engine_lua::do_parse_goal_from_config(const config &cfg, std::back_insert_i
 	}
 	*b = new_goal;
 }
-
 
 std::string engine_lua::evaluate(const std::string &/*str*/)
 {

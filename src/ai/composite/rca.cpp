@@ -51,12 +51,10 @@ candidate_action::~candidate_action()
 {
 }
 
-
 bool candidate_action::is_enabled() const
 {
 	return enabled_;
 }
-
 
 void candidate_action::enable()
 {
@@ -73,12 +71,10 @@ void candidate_action::disable()
 	enabled_ = false;
 }
 
-
 double candidate_action::get_score() const
 {
 	return score_;
 }
-
 
 double candidate_action::get_max_score() const
 {
@@ -97,7 +93,6 @@ bool candidate_action::is_allowed_unit(const unit& u) const
 	}
 	return true;
 }
-
 
 const std::string& candidate_action::get_type() const
 {

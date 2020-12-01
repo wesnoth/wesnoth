@@ -38,29 +38,22 @@ class engine : public component {
 public:
 	engine( readonly_context &context, const config &cfg );
 
-
 	virtual ~engine();
 
 	virtual bool is_ok() const;
 
 	static void parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr >> b );
 
-
 	static void parse_goal_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b );
-
 
 	static void parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b );
 
-
 	static void parse_engine_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b );
-
 
 	static void parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b );
 
-
 	//do not override that method in subclasses which cannot create aspects
 	virtual void do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr>> b );
-
 
 	//do not override that method in subclasses which cannot create candidate_actions
 	virtual void do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b );
@@ -70,7 +63,6 @@ public:
 
 	//do not override that method in subclasses which cannot create engines
 	virtual void do_parse_engine_from_config( const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b );
-
 
 	//do not override that method in subclasses which cannot create stages
 	virtual void do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b );
@@ -91,7 +83,6 @@ public:
 	 */
 	virtual config to_config() const;
 
-
 	virtual std::string get_id() const
 	{ return id_; }
 
@@ -110,7 +101,6 @@ protected:
 	std::string id_;
 	std::string name_;
 };
-
 
 class engine_factory;
 
@@ -143,7 +133,6 @@ public:
 
 	virtual ~engine_factory() {}
 };
-
 
 template<class ENGINE>
 class register_engine_factory : public engine_factory {

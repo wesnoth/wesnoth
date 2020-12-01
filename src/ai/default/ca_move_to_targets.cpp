@@ -42,8 +42,6 @@ static lg::log_domain log_ai_testing_ca_move_to_targets("ai/ca/move_to_targets")
 #define WRN_AI LOG_STREAM(warn, log_ai_testing_ca_move_to_targets)
 #define ERR_AI LOG_STREAM(err, log_ai_testing_ca_move_to_targets)
 
-
-
 struct move_cost_calculator : pathfind::cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
@@ -85,7 +83,6 @@ private:
 	const bool avoid_enemies_;
 };
 
-
 class remove_wrong_targets {
 public:
 	remove_wrong_targets(const readonly_context &context)
@@ -122,17 +119,14 @@ move_to_targets_phase::move_to_targets_phase( rca_context &context, const config
 {
 }
 
-
 move_to_targets_phase::~move_to_targets_phase()
 {
 }
-
 
 double move_to_targets_phase::evaluate()
 {
 	return get_score();
 }
-
 
 void move_to_targets_phase::execute()
 {
@@ -182,10 +176,6 @@ void move_to_targets_phase::execute()
 	}
 }
 
-
-
-
-
 // structure storing the maximal possible rating of a target
 struct rated_target{
 	rated_target(const std::vector<target>::iterator& t, double r) : tg(t), max_rating(r) {}
@@ -200,7 +190,6 @@ struct rated_target_comparer {
 		return a.max_rating > b.max_rating;
 	}
 };
-
 
 double move_to_targets_phase::rate_target(const target& tg, const unit_map::iterator& u,
 			const move_map& dstsrc, const move_map& enemy_dstsrc,
@@ -265,8 +254,6 @@ double move_to_targets_phase::rate_target(const target& tg, const unit_map::iter
 
 	return rating;
 }
-
-
 
 std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vector<target>& targets)
 {
@@ -649,14 +636,12 @@ void move_to_targets_phase::access_points(const move_map& srcdst, const map_loca
 	}
 }
 
-
 double move_to_targets_phase::compare_groups(const std::set<map_location>& our_group, const std::set<map_location>& their_group, const std::vector<map_location>& battlefield) const
 {
 	const double a = rate_group(our_group,battlefield);
 	const double b = std::max<double>(rate_group(their_group,battlefield),0.01);
 	return a/b;
 }
-
 
 void move_to_targets_phase::enemies_along_path(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
 {
@@ -671,7 +656,6 @@ void move_to_targets_phase::enemies_along_path(const std::vector<map_location>& 
 		}
 	}
 }
-
 
 map_location move_to_targets_phase::form_group(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
 {
@@ -714,7 +698,6 @@ map_location move_to_targets_phase::form_group(const std::vector<map_location>& 
 
 	return *i;
 }
-
 
 bool move_to_targets_phase::move_group(const map_location& dst, const std::vector<map_location>& route, const std::set<map_location>& units)
 {
@@ -791,7 +774,6 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 			move_result_ptr move_res = execute_move_action(*i,best_loc);
 			gamestate_changed |= move_res->is_gamestate_changed();
 
-
 			//if we were ambushed or something went wrong,  abort the group's movement.
 			if (!move_res->is_ok()) {
 				return gamestate_changed;
@@ -816,7 +798,6 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 
 	return gamestate_changed;
 }
-
 
 double move_to_targets_phase::rate_group(const std::set<map_location>& group, const std::vector<map_location>& battlefield) const
 {
@@ -851,8 +832,6 @@ double move_to_targets_phase::rate_group(const std::set<map_location>& group, co
 
 	return strength;
 }
-
-
 
 bool move_to_targets_phase::should_retreat(const map_location& loc, const unit_map::const_iterator& un,
 		const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc,

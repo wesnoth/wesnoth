@@ -235,7 +235,6 @@ public:
 	};
 };
 
-
 class outcome_callable : public formula_callable {
 	std::vector<variant> hitLeft_, prob_, status_;
 	variant get_value(const std::string& key) const override;

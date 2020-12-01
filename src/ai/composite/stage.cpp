@@ -87,13 +87,9 @@ std::string stage::get_name() const
 	return cfg_["name"];
 }
 
-
-
-
 // =======================================================================
 // COMPOSITE AI IDLE STAGE
 // =======================================================================
-
 
 idle_stage::idle_stage( ai_context &context, const config &cfg )
 	: stage(context,cfg)
@@ -109,7 +105,6 @@ bool idle_stage::do_play_stage(){
 	return false;
 }
 
-
 // This is defined in the source file so that it can easily access the logger
 bool stage_factory::is_duplicate(const std::string& name)
 {
@@ -119,6 +114,5 @@ bool stage_factory::is_duplicate(const std::string& name)
 	}
 	return false;
 }
-
 
 } //end of namespace ai

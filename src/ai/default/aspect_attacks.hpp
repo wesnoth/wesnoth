@@ -24,23 +24,18 @@
 
 namespace ai {
 
-
 namespace ai_default_rca {
 
 class aspect_attacks_base : public typesafe_aspect<attacks_vector> {
 public:
 	aspect_attacks_base(readonly_context &context, const config &cfg, const std::string &id);
 
-
 	virtual ~aspect_attacks_base() {}
-
 
 	virtual void recalculate() const;
 
-
 	virtual bool is_allowed_attacker(const unit& u) const = 0;
 	virtual bool is_allowed_enemy(const unit& u) const = 0;
-
 
 protected:
 	std::shared_ptr<attacks_vector> analyze_targets() const;

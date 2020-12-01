@@ -57,7 +57,6 @@ public:
 	}
 };
 
-
 template<>
 class config_value_translator<std::string> {
 public:
@@ -85,7 +84,6 @@ public:
 	}
 
 };
-
 
 template<>
 class config_value_translator<bool> {
@@ -273,8 +271,6 @@ public:
 	}
 };
 
-
-
 // variant value translator
 
 template<typename T>
@@ -335,7 +331,6 @@ public:
 	}
 };
 
-
 template<>
 class variant_value_translator<bool> {
 public:
@@ -365,8 +360,6 @@ public:
 	}
 };
 
-
-
 template<>
 class variant_value_translator<std::string> {
 public:
@@ -395,8 +388,6 @@ public:
 		return value;
 	}
 };
-
-
 
 template<>
 class variant_value_translator<attacks_vector> {
@@ -430,7 +421,6 @@ public:
 		return value;
 	}
 };
-
 
 template<>
 class variant_value_translator<terrain_filter> {

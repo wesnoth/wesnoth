@@ -48,11 +48,11 @@ namespace wfl {
 typedef std::pair< unit_map::unit_iterator, int> unit_formula_pair;
 
 struct unit_formula_compare {
-        bool operator() (const unit_formula_pair& left,
-                        const unit_formula_pair& right) const
-        {
-                return left.second > right.second;
-        }
+	bool operator() (const unit_formula_pair& left,
+					const unit_formula_pair& right) const
+	{
+			return left.second > right.second;
+	}
 };
 
 typedef std::multiset< unit_formula_pair, unit_formula_compare > unit_formula_set;
