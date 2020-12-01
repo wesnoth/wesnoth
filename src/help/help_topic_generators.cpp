@@ -30,9 +30,9 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/helper.hpp"             // for resistance_color
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
+#include "utils/optional_fwd.hpp"
 #include "video.hpp"                    // fore current_resolution
 
-#include <boost/optional.hpp>  // for optional
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, etc
 #include <set>
@@ -75,7 +75,7 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 	if (start == end) return "";
 	if (*start == t_translation::MINUS || *start == t_translation::PLUS) return print_behavior_description(start+1, end, tdata, first_level, *start == t_translation::PLUS); //absorb any leading mode changes by calling again, with a new default value begin_best.
 
-	boost::optional<ter_iter> last_change_pos;
+	utils::optional<ter_iter> last_change_pos;
 
 	bool best = begin_best;
 	for (ter_iter i = start; i != end; ++i) {
