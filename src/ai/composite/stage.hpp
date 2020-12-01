@@ -39,7 +39,6 @@ public:
 	 */
 	virtual	void on_create();
 
-
 	/**
 	 * Destructor
 	 */
@@ -51,12 +50,10 @@ public:
 	 */
 	bool play_stage();
 
-
 	/**
 	 * get the value of the recursion counter
 	 */
 	int get_recursion_count() const;
-
 
 	/**
 	 * serialize
@@ -80,7 +77,6 @@ protected:
 
 };
 
-
 class idle_stage : public stage {
 public:
 	idle_stage( ai_context &context, const config &cfg );
@@ -89,7 +85,6 @@ public:
 
 	virtual bool do_play_stage();
 };
-
 
 class stage_factory{
 	bool is_duplicate(const std::string &name);
@@ -119,7 +114,6 @@ public:
 
 	virtual ~stage_factory() {}
 };
-
 
 template<class STAGE>
 class register_stage_factory : public stage_factory {

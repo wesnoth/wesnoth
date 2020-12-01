@@ -26,7 +26,6 @@
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
 
-
 namespace wfl {
 
 base_candidate_action::base_candidate_action(const std::string& name,

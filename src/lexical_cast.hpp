@@ -54,8 +54,6 @@
 #include <sstream>
 #include <type_traits>
 
-#include <boost/mpl/set.hpp>
-
 #define DEBUG_THROW(id)
 #endif
 
@@ -194,7 +192,7 @@ struct lexical_caster<
 	  long long
 	, From
 	, void
-	, std::enable_if_t<boost::mpl::has_key<boost::mpl::set<char*, const char*> , From>::value>
+	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
 	>
 {
 	long long operator()(From value, utils::optional<long long> fallback) const
@@ -250,7 +248,7 @@ struct lexical_caster<
 	  To
 	, From
 	, std::enable_if_t<std::is_integral<To>::value && std::is_signed<To>::value && !std::is_same<To, long long>::value>
-	, std::enable_if_t<boost::mpl::has_key<boost::mpl::set<char*, const char*> , From>::value>
+	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
 	>
 {
 	To operator()(From value, utils::optional<To> fallback) const
@@ -308,7 +306,7 @@ struct lexical_caster<
 	  To
 	, From
 	, std::enable_if_t<std::is_floating_point<To>::value>
-	, std::enable_if_t<boost::mpl::has_key<boost::mpl::set<char*, const char*> , From>::value>
+	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
 	>
 {
 	To operator()(From value, utils::optional<To> fallback) const
@@ -377,7 +375,7 @@ struct lexical_caster<
 	  unsigned long long
 	, From
 	, void
-	, std::enable_if_t<boost::mpl::has_key<boost::mpl::set<char*, const char*> , From>::value>
+	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
 	>
 {
 	unsigned long long operator()(From value, utils::optional<unsigned long long> fallback) const
@@ -434,7 +432,7 @@ struct lexical_caster<
 	  To
 	, From
 	, std::enable_if_t<std::is_unsigned<To>::value && !std::is_same<To, unsigned long long>::value>
-	, std::enable_if_t<boost::mpl::has_key<boost::mpl::set<char*, const char*> , From>::value>
+	, std::enable_if_t<std::is_same<From, const char*>::value || std::is_same<From, char*>::value>
 	>
 {
 	To operator()(From value, utils::optional<To> fallback) const

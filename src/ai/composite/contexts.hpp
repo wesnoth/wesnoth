@@ -33,26 +33,21 @@ public:
 	 */
 	virtual ai_context& get_ai_context() = 0;
 
-
 };
-
 
 class rca_context;
 class rca_context : public virtual ai_context {
 public:
-
 
 	/**
 	 * Constructor
 	 */
 	rca_context();
 
-
 	/**
 	 * Destructor
 	 */
 	virtual ~rca_context();
-
 
 	/**
 	 * Unwrap
@@ -71,23 +66,19 @@ private:
 	static bool strategy_set_;
 };
 
-
 class candidate_action_context;
 class candidate_action_context : public virtual rca_context {
 public:
-
 
 	/**
 	 * Constructor
 	 */
 	candidate_action_context() {}
 
-
 	/**
 	 * Destructor
 	 */
 	virtual ~candidate_action_context() {}
-
 
 	/**
 	 * Unwrap
@@ -100,35 +91,28 @@ class ai_context_proxy : public virtual ai_context, public virtual default_ai_co
 public:
 	ai_context_proxy();
 
-
 	void init_ai_context_proxy(ai_context &target)
 	{
 		init_default_ai_context_proxy(target);
 		target_ = &target;
 	}
 
-
 	virtual	~ai_context_proxy();
-
 
 	ai_context& get_ai_context()
 	{
 		return target_->get_ai_context();
 	}
 
-
 private:
 	ai_context *target_;
 };
-
 
 class rca_context_proxy : public virtual rca_context, public virtual ai_context_proxy {
 public:
 	rca_context_proxy();
 
-
 	virtual ~rca_context_proxy();
-
 
 	void init_rca_context_proxy(rca_context &target)
 	{
@@ -136,16 +120,13 @@ public:
 		target_ = &target;
 	}
 
-
 	rca_context& get_rca_context()
 	{
 		return target_->get_rca_context();
 	}
 
-
 private:
 	rca_context *target_;
 };
-
 
 } //end of namespace ai

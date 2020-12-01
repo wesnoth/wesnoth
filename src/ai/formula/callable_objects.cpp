@@ -157,7 +157,6 @@ void outcome_callable::get_inputs(formula_input_vector& inputs) const {
 	add_input(inputs, "possible_status");
 }
 
-
 attack_callable::attack_callable(const map_location& move_from,
 				    const map_location& src, const map_location& dst, int weapon)
 	: move_from_(move_from), src_(src), dst_(dst),
@@ -166,7 +165,6 @@ attack_callable::attack_callable(const map_location& move_from,
 {
       type_ = ATTACK_C;
 }
-
 
 variant attack_callable::get_value(const std::string& key) const {
 	if(key == "attack_from") {
@@ -292,7 +290,6 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 		vars.emplace_back(item);
 	}
 }
-
 
 variant recall_callable::get_value(const std::string& key) const {
 	if( key == "id")

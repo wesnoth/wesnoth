@@ -65,7 +65,6 @@ static lg::log_domain log_formula_ai("ai/engine/fai");
 #define WRN_AI LOG_STREAM(warn, log_formula_ai)
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
 
-
 using namespace wfl;
 
 namespace ai {
@@ -95,7 +94,6 @@ ca_ptr formula_ai::load_candidate_action_from_config(const config& rc_action)
 int formula_ai::get_recursion_count() const{
 	return recursion_counter_.get_count();
 }
-
 
 formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	:
@@ -150,12 +148,10 @@ formula_ptr formula_ai::create_optional_formula(const std::string& formula_strin
 	}
 }
 
-
 void formula_ai::set_ai_context(ai_context *context)
 {
 	ai_ptr_ = context;
 }
-
 
 std::string formula_ai::evaluate(const std::string& formula_str)
 {
@@ -687,7 +683,6 @@ void formula_ai::on_create(){
 		}
 	}
 
-
 	vars_ = map_formula_callable();
 	if (const config &ai_vars = cfg_.child("vars"))
 	{
@@ -698,9 +693,7 @@ void formula_ai::on_create(){
 		}
 	}
 
-
 }
-
 
 void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
 {

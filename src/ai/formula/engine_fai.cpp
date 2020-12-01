@@ -44,13 +44,11 @@ public:
 
 	virtual ~fai_candidate_action_wrapper() {}
 
-
 	virtual double evaluate()
 	{
 		formula_ai_.evaluate_candidate_action(fai_ca_);
 		return fai_ca_->get_score();
 	}
-
 
 	virtual void execute()
 	{
@@ -74,11 +72,9 @@ engine_fai::engine_fai( readonly_context &context, const config &cfg )
 	formula_ai_->on_create();
 }
 
-
 engine_fai::~engine_fai()
 {
 }
-
 
 void engine_fai::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b ){
 	wfl::candidate_action_ptr fai_ca = formula_ai_->load_candidate_action_from_config(cfg);
@@ -122,7 +118,6 @@ std::string engine_fai::evaluate(const std::string &str)
 	return formula_ai_->evaluate(str);
 }
 
-
 void engine_fai::set_ai_context(ai_context *context)
 {
 	if (context!=nullptr) {
@@ -132,7 +127,6 @@ void engine_fai::set_ai_context(ai_context *context)
 	}
 	formula_ai_->set_ai_context(context);
 }
-
 
 config engine_fai::to_config() const
 {

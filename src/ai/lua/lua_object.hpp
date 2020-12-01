@@ -17,7 +17,6 @@
  * Lua object(value) wrapper implementation
  */
 
-
 #ifndef LUA_OBJECT_HPP_INCLUDED
 #define LUA_OBJECT_HPP_INCLUDED
 
@@ -36,9 +35,7 @@
 #include <string>
 #include <vector>
 
-
 namespace ai {
-
 
 class lua_object_base {
 
@@ -296,7 +293,6 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 		}
 		lua_pop(L, 1); // st n + 1
 
-
 		lua_pushstring(L, "value");
 		lua_rawget(L, -2);
 		int value = static_cast<int>(lua_tointeger(L, -1));
@@ -321,6 +317,5 @@ struct aspect_attacks_lua_filter;
 template <>
 std::shared_ptr<aspect_attacks_lua_filter> lua_object<aspect_attacks_lua_filter>::to_type(lua_State *L, int n);
 } // end of namespace ai
-
 
 #endif

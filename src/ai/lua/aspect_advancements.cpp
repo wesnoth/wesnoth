@@ -29,7 +29,6 @@
 struct lua_State;
 
 
-
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define LOG_LUA LOG_STREAM(info, log_ai_engine_lua)
 #define ERR_LUA LOG_STREAM(err, log_ai_engine_lua)
@@ -67,7 +66,6 @@ unit_advancements_aspect::~unit_advancements_aspect()
 
 const std::vector<std::string> unit_advancements_aspect::get_advancements(const unit_map::const_iterator& unit) const
 {
-
 
 	if(!unit.valid())
 	{
@@ -132,7 +130,6 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 
 	return utils::split(retval);
 }
-
 
 const std::string unit_advancements_aspect::get_value() const
 {
