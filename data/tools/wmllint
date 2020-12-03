@@ -2451,6 +2451,7 @@ def hack_syntax(filename, lines):
 
     # Ensure that every attack has a translatable description.
     in_filter_wml = False
+    attack_left_open = False
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
 
@@ -2466,7 +2467,14 @@ def hack_syntax(filename, lines):
                 if lines[j].strip().startswith("description"):
                     have_description = True
                 j += 1
-            if not have_description:
+                # unterminated [attack] tags, for example embedded in a macro,
+                # lead to a crash. Print an error message, skip this loop
+                # and the following one
+                if j >= len(lines):
+                    print("{}, line {}: [attack] tag not closed in this file".format(filename, i+1))
+                    attack_left_open = True
+                    break
+            if (not have_description) and (not attack_left_open):
                 j = i
                 while '[/attack]' not in lines[j]:
                     fields = lines[j].strip().split('#')
