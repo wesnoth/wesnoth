@@ -1286,33 +1286,24 @@ bool preprocessor_data::get_chunk()
 
 				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
 			}
-		} else if(command == "ifdef") {
+		} else if(command == "ifdef" || command == "ifndef") {
+			const bool negate = command[2] == 'n';
 			skip_spaces();
 			const std::string& symbol = read_word();
 			bool found = parent_.defines_->count(symbol) != 0;
 			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined") << '\n';
-			conditional_skip(!found);
-		} else if(command == "ifndef") {
-			skip_spaces();
-			const std::string& symbol = read_word();
-			bool found = parent_.defines_->count(symbol) != 0;
-			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined") << '\n';
-			conditional_skip(found);
-		} else if(command == "ifhave") {
+			conditional_skip(negate ? found : !found);
+		} else if(command == "ifhave" || command == "ifnhave") {
+			const bool negate = command[2] == 'n';
 			skip_spaces();
 			const std::string& symbol = read_word();
 			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
 			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found")
 						<< '\n';
-			conditional_skip(!found);
-		} else if(command == "ifnhave") {
-			skip_spaces();
-			const std::string& symbol = read_word();
-			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
-			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found")
-						<< '\n';
-			conditional_skip(found);
+			conditional_skip(negate ? found : !found);
 		} else if(command == "ifver" || command == "ifnver") {
+			const bool negate = command[2] == 'n';
+
 			skip_spaces();
 			const std::string& vsymstr = read_word();
 			skip_spaces();
@@ -1338,7 +1329,7 @@ bool preprocessor_data::get_chunk()
 				DBG_PREPROC << "testing version '" << version1.str() << "' against '" << version2.str() << "' ("
 							<< vopstr << "): " << (found ? "match" : "no match") << '\n';
 
-				conditional_skip(command == "ifver" ? !found : found);
+				conditional_skip(negate ? found : !found);
 			} else {
 				std::string err = "Undefined macro in #ifver/#ifnver first argument: '";
 				err += vsymstr;
