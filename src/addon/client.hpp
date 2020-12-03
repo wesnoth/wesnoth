@@ -19,6 +19,8 @@
 #include "gui/dialogs/network_transmission.hpp"
 #include "network_asio.hpp"
 
+#include <set>
+
 /**
  * Add-ons (campaignd) client class.
  *
@@ -127,6 +129,30 @@ public:
 	 */
 	bool delete_remote_addon(const std::string& id, std::string& response_message);
 
+	/**
+	 * Returns whether the server supports the given named capability.
+	 */
+	bool server_supports(const std::string& cap_id) const
+	{
+		return server_capabilities_.find(cap_id) != server_capabilities_.end();
+	}
+
+	/**
+	 * Returns whether the server supports incremental (delta) downloads and uploads.
+	 */
+	bool server_supports_delta() const
+	{
+		return server_supports("delta");
+	}
+
+	/**
+	 * Returns whether the server supports passphrase authentication on an add-on basis.
+	 */
+	bool server_supports_legacy_auth() const
+	{
+		return server_supports("auth:legacy");
+	}
+
 private:
 	enum class transfer_mode {download, connect, upload};
 
@@ -136,6 +162,9 @@ private:
 	std::unique_ptr<network_asio::connection> conn_;
 	std::string last_error_;
 	std::string last_error_data_;
+
+	std::string server_version_;
+	std::set<std::string> server_capabilities_;
 
 	/**
 	* Downloads the specified add-on from the server.
@@ -213,4 +242,6 @@ private:
 	void wait_for_transfer_done(const std::string& status_message, transfer_mode mode = transfer_mode::download);
 
 	bool update_last_error(config& response_cfg);
+
+	void clear_last_error();
 };
