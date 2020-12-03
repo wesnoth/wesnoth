@@ -208,11 +208,11 @@ private:
  * @param type                    The type id string of the window, this window
  *                                must be registered at startup.
  */
-window* build(const std::string& type);
+std::unique_ptr<window> build(const std::string& type);
 
 /**
  * Builds a window.
  */
-window* build(const builder_window::window_resolution& res);
+std::unique_ptr<window> build(const builder_window::window_resolution& res);
 
 } // namespace gui2

@@ -62,7 +62,7 @@ class distributor;
 class window : public panel
 {
 	friend class debug_layout_graph;
-	friend window* build(const builder_window::window_resolution&);
+	friend std::unique_ptr<window> build(const builder_window::window_resolution&);
 	friend struct window_implementation;
 	friend class invalidate_layout_blocker;
 	friend class pane;

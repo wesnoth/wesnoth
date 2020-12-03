@@ -74,7 +74,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 		return false;
 	}
 
-	window_.reset(build_window());
+	window_ = build_window();
 	assert(window_.get());
 
 	post_build(*window_);
@@ -218,7 +218,7 @@ field_label* modal_dialog::register_label(const std::string& id,
 	return field;
 }
 
-window* modal_dialog::build_window() const
+std::unique_ptr<window> modal_dialog::build_window() const
 {
 	return build(window_id());
 }
