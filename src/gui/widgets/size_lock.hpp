@@ -114,7 +114,7 @@ struct builder_size_lock : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	typed_formula<unsigned> width_;
 	typed_formula<unsigned> height_;

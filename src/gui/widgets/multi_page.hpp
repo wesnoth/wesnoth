@@ -244,7 +244,7 @@ struct builder_multi_page : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	std::map<std::string, builder_grid_const_ptr> builders;
 

@@ -102,7 +102,7 @@ struct builder_progress_bar : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 };
 
 } // namespace implementation

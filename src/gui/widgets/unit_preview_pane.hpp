@@ -138,7 +138,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 private:
 	const std::string image_mods_;

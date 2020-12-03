@@ -143,7 +143,7 @@ struct builder_scroll_label : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

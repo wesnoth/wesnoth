@@ -182,7 +182,7 @@ struct builder_label : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	bool wrap;
 

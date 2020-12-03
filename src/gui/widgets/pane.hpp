@@ -202,9 +202,9 @@ struct builder_pane : public builder_widget
 {
 	explicit builder_pane(const config& cfg);
 
-	widget* build() const;
+	virtual widget* build() const override;
 
-	widget* build(const replacements_map& replacements) const;
+	virtual widget* build(const replacements_map& replacements) const override;
 
 	placer_base::grow_direction grow_direction;
 

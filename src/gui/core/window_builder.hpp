@@ -120,8 +120,8 @@ public:
 	/** The widgets per grid cell. */
 	std::vector<builder_widget_ptr> widgets;
 
-	grid* build() const;
-	widget* build(const replacements_map& replacements) const;
+	virtual grid* build() const override;
+	virtual widget* build(const replacements_map& replacements) const override;
 
 	grid* build(grid* grid) const;
 	void build(grid& grid, const replacements_map& replacements) const;

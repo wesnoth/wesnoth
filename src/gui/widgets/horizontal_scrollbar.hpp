@@ -108,7 +108,7 @@ struct builder_horizontal_scrollbar : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 };
 
 } // namespace implementation

@@ -205,7 +205,7 @@ struct builder_stacked_widget : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	/** The builders for all layers of the stack .*/
 	std::vector<builder_grid> stack;
