@@ -28,14 +28,6 @@ namespace gui2
 
 class window;
 
-/**
- * Builds a window.
- *
- * @param type                    The type id string of the window, this window
- *                                must be registered at startup.
- */
-window* build(const std::string& type);
-
 /** Contains the info needed to instantiate a widget. */
 struct builder_widget
 {
@@ -212,7 +204,15 @@ private:
 
 /**
  * Builds a window.
+ *
+ * @param type                    The type id string of the window, this window
+ *                                must be registered at startup.
  */
-window* build(const builder_window::window_resolution* res);
+std::unique_ptr<window> build(const std::string& type);
+
+/**
+ * Builds a window.
+ */
+std::unique_ptr<window> build(const builder_window::window_resolution& res);
 
 } // namespace gui2
