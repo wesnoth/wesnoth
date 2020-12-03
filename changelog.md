@@ -11,6 +11,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed several possible crashes in wmllint
 
 ## Version 1.15.7
  ### Add-ons server
