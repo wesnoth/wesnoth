@@ -8,6 +8,29 @@ on:
   workflow_dispatch:
 
 jobs:
+# run after all other jobs have completed to check overall build status
+  discord-notification:
+    runs-on: ubuntu-20.04
+
+    name: Discord Notification
+
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, ubuntu-1804, steam-runtime, mingw, flatpak, translations, macos-master-release, macos-master-debug, windows-release, windows-debug]
+    if: always()
+
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: rjstone/discord-webhook-notify@v1
+        if: env.WORKFLOW_CONCLUSION == 'failure'
+        with:
+          severity: error
+          webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
+          details: |-
+            committer - ${{ github.actor }}
+            commit - ${{ github.sha }}
+            ref - ${{ github.ref }}
+            base_ref - ${{ github.base_ref }}
+            head_ref - ${{ github.head_ref }}
+
   ubuntu-2004-scons-gcc-release-lto:
     runs-on: ubuntu-20.04
 
@@ -249,14 +272,12 @@ jobs:
           export CFG=Debug
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
-
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
           name: macOS-Debug
           path: |
             ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
-
 # in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
 # this will create a brand new cache and recompile the vcpkg dependencies from scratch
 
@@ -284,18 +305,15 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
           %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
-
       - name: DOS2
         shell: cmd
         run: |
           %~dp0../wesnoth/vcpkg/vcpkg integrate install
           %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer[libvorbis,dynamic-load]:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale[icu]:x64-windows boost-random:x64-windows boost-regex[icu]:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
-
       - name: DOS3
         shell: cmd
         run: |
           MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Release -p:Platform=Win64
-
   windows-debug:
     runs-on: windows-2019
 
@@ -320,18 +338,15 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
           %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
-
       - name: DOS2
         shell: cmd
         run: |
           %~dp0../wesnoth/vcpkg/vcpkg integrate install
           %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer[libvorbis,dynamic-load]:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale[icu]:x64-windows boost-random:x64-windows boost-regex[icu]:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
-
       - name: DOS3
         shell: cmd
         run: |
           MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Debug -p:Platform=Win64
-
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
