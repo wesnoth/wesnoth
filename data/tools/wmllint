@@ -2150,9 +2150,13 @@ to be called on their own".format(filename, num))
                         present.append(args[1])
                 elif macname == 'CLEAR_VARIABLE':
                     (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
-                    for arg in [x.lstrip() for x in args[1].split(',')]:
-                        if arg in storedids:
-                            del storedids[arg]
+                    # having CLEAR_VARIABLE on a line and its arguments in the following lines
+                    # leads to an args list with length 1
+                    # skip the check and avoid a crash if that's the case
+                    if len(args) > 1:
+                        for arg in [x.lstrip() for x in args[1].split(',')]:
+                            if arg in storedids:
+                                del storedids[arg]
                 elif macname in whomacros:
                     (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     present.append(args[whomacros[macname]])
