@@ -985,7 +985,7 @@ widget* builder_listbox::build() const
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(header, footer, list_data);
 
@@ -1090,7 +1090,7 @@ widget* builder_horizontal_listbox::build() const
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(nullptr, nullptr, list_data);
 
@@ -1195,7 +1195,7 @@ widget* builder_grid_listbox::build() const
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(nullptr, nullptr, list_data);
 

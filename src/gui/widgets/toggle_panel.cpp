@@ -413,7 +413,7 @@ widget* builder_toggle_panel::build() const
 	DBG_GUI_G << "Window builder: placed toggle panel '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	widget->init_grid(grid);
+	widget->init_grid(*grid);
 	return widget;
 }
 

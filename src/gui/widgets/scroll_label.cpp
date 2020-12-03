@@ -279,7 +279,7 @@ widget* builder_scroll_label::build() const
 	const auto conf = widget->cast_config_to<scroll_label_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
 
 	DBG_GUI_G << "Window builder: placed scroll label '" << id

@@ -162,7 +162,7 @@ widget* builder_scrollbar_panel::build() const
 	const auto conf = panel->cast_config_to<scrollbar_panel_definition>();
 	assert(conf);
 
-	panel->init_grid(conf->grid);
+	panel->init_grid(*conf->grid);
 	panel->finalize_setup();
 
 	/*** Fill the content grid. ***/

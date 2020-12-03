@@ -836,7 +836,7 @@ widget* builder_chatbox::build() const
 	const auto conf = widget->cast_config_to<chatbox_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
 
 	return widget;

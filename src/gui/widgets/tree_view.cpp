@@ -395,7 +395,7 @@ widget* builder_tree_view::build() const
 	const auto conf = widget->cast_config_to<tree_view_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
 
 	return widget;

@@ -472,7 +472,7 @@ widget* builder_addon_list::build() const
 	const auto conf = widget->cast_config_to<addon_list_definition>();
 	assert(conf != nullptr);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->set_install_status_visibility(install_status_visibility_);
 	widget->set_install_buttons_visibility(install_buttons_visibility_);

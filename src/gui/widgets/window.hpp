@@ -665,7 +665,7 @@ private:
 	 *
 	 * @param content_grid        The new contents for the content grid.
 	 */
-	void finalize(const std::shared_ptr<builder_grid>& content_grid);
+	void finalize(const builder_grid& content_grid);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	debug_layout_graph* debug_layout_;

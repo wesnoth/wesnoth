@@ -299,7 +299,7 @@ widget* builder_multi_page::build() const
 	const auto conf = widget->cast_config_to<multi_page_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(data);
 

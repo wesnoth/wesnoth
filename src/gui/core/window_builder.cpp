@@ -69,10 +69,10 @@ window* build(const builder_window::window_resolution* definition)
 	assert(conf);
 
 	if(conf->grid) {
-		win->init_grid(conf->grid);
-		win->finalize(definition->grid);
+		win->init_grid(*conf->grid);
+		win->finalize(*definition->grid);
 	} else {
-		win->init_grid(definition->grid);
+		win->init_grid(*definition->grid);
 	}
 
 	win->add_to_keyboard_chain(win);

@@ -1186,9 +1186,9 @@ void window::redraw_windows_on_top() const
 	}
 }
 
-void window::finalize(const std::shared_ptr<builder_grid>& content_grid)
+void window::finalize(const builder_grid& content_grid)
 {
-	window_swap_grid(nullptr, &get_grid(), content_grid->build(), "_window_content_grid");
+	window_swap_grid(nullptr, &get_grid(), content_grid.build(), "_window_content_grid");
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS

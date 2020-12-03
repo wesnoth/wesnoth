@@ -292,7 +292,7 @@ widget* builder_stacked_widget::build() const
 	const auto conf = widget->cast_config_to<stacked_widget_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(stack);
 

@@ -172,7 +172,7 @@ widget* builder_size_lock::build() const
 	const auto conf = widget->cast_config_to<size_lock_definition>();
 	assert(conf != nullptr);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 	widget->finalize(content_);
 
 	return widget;
