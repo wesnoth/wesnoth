@@ -2777,9 +2777,8 @@ def translator(filename, mapxforms, textxform):
             if refname == refname.upper():
                 pass
             elif 'mask=' in line and not (refname.endswith("}") or refname.endswith(".mask")):
-                print('"%s", line %d: fatal error, mask file without .mask extension (%s)' \
+                print('"%s", line %d: mask file without .mask extension or not a mask file (%s)' \
                       % (filename, lineno+1, refname))
-                sys.exit(1)
         # Exclude map_data= lines that are just 1 line without
         # continuation, or which contain {}.  The former are
         # pathological and the parse won't handle them, the latter
