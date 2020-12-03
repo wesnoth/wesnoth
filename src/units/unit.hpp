@@ -21,6 +21,7 @@
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
 #include "units/alignment.hpp"
+#include "utils/optional_fwd.hpp"
 
 #include <bitset>
 #include <boost/dynamic_bitset_fwd.hpp>
@@ -34,21 +35,7 @@ class unit_formula_manager;
 class vconfig;
 struct color_t;
 
-namespace unit_detail
-{
-	template<typename T>
-	const T& get_or_default(const std::unique_ptr<T>& v)
-	{
-		if(v) {
-			return *v;
-		} else {
-			static const T def;
-			return def;
-		}
-	}
-}
-
-/// Data typedef for unit_ability_list.
+/** Data typedef for unit_ability_list. */
 struct unit_ability
 {
 	unit_ability(const config* ability_cfg, map_location student_loc, map_location teacher_loc)
@@ -56,15 +43,15 @@ struct unit_ability
 		, teacher_loc(teacher_loc)
 		, ability_cfg(ability_cfg)
 	{
-
 	}
+
 	/// Used by the formula in the ability.
-	/// The REAL location of the student (not the 'we are assiming the student is at this position' location)
+	/// The REAL location of the student (not the 'we are assuming the student is at this position' location)
 	/// once unit_ability_list can contain abilities from different 'students', as it contains abilities from
 	/// a unit aswell from its opponents (abilities with apply_to= opponent)
 	map_location student_loc;
 	/// The location of the teacher, that is the unit who owns the ability tags
-	/// (differnt from student because of [afect_adjacent])
+	/// (different from student because of [affect_adjacent])
 	map_location teacher_loc;
 	/// The contents of the ability tag, never nullptr.
 	const config* ability_cfg;
@@ -137,6 +124,7 @@ public:
 
 	/** The path to the leader crown overlay. */
 	static const std::string& leader_crown();
+
 private:
 	void init(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr);
 
@@ -145,12 +133,13 @@ private:
 	// Copy constructor
 	unit(const unit& u);
 
-
 	struct unit_ctor_t {};
+
 public:
 	//private default ctor, butusing constructor to allow calling make_shared<unit> in create().
 	unit(unit_ctor_t);
 	unit() = delete;
+
 private:
 	enum UNIT_ATTRIBUTE
 	{
@@ -176,16 +165,21 @@ private:
 		UA_UPKEEP,
 		UA_COUNT
 	};
+
 	void set_attr_changed(UNIT_ATTRIBUTE attr)
 	{
 		changed_attributes_[int(attr)] = true;
 	}
+
 	bool get_attacks_changed() const;
+
 	bool get_attr_changed(UNIT_ATTRIBUTE attr) const
 	{
 		return changed_attributes_[int(attr)];
 	}
+
 	void clear_changed_attributes();
+
 public:
 	/** Initializes a unit from a config */
 	static unit_ptr create(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr)
@@ -686,13 +680,13 @@ public:
 	 */
 	std::string usage() const
 	{
-		return unit_detail::get_or_default(usage_);
+		return usage_.value_or("");
 	}
 
 	/** Sets this unit's usage. */
 	void set_usage(const std::string& usage)
 	{
-		usage_.reset(new std::string(usage));
+		usage_ = usage;
 	}
 
 	/**
@@ -1355,7 +1349,7 @@ public:
 		loc_ = loc;
 	}
 
-	/** The current directin this unit is facing within its hex. */
+	/** The current direction this unit is facing within its hex. */
 	map_location::DIRECTION facing() const
 	{
 		return facing_;
@@ -1541,7 +1535,7 @@ public:
 	/** Get the unit's halo image. */
 	std::string image_halo() const
 	{
-		return unit_detail::get_or_default(halo_);
+		return halo_.value_or("");
 	}
 
 	/** Set the unit's halo image. */
@@ -1550,14 +1544,14 @@ public:
 	/** Get the unit's ellipse image. */
 	std::string image_ellipse() const
 	{
-		return unit_detail::get_or_default(ellipse_);
+		return ellipse_.value_or("");
 	}
 
 	/** Set the unit's ellipse image. */
 	void set_image_ellipse(const std::string& ellipse)
 	{
 		appearance_changed_ = true;
-		ellipse_.reset(new std::string(ellipse));
+		ellipse_ = ellipse;
 	}
 
 	/**
@@ -1893,9 +1887,9 @@ private:
 	t_string description_;
 	std::vector<t_string> special_notes_;
 
-	std::unique_ptr<std::string> usage_;
-	std::unique_ptr<std::string> halo_;
-	std::unique_ptr<std::string> ellipse_;
+	utils::optional<std::string> usage_;
+	utils::optional<std::string> halo_;
+	utils::optional<std::string> ellipse_;
 
 	bool random_traits_;
 	bool generate_name_;
