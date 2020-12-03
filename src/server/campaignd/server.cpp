@@ -71,6 +71,19 @@ namespace campaignd {
 
 namespace {
 
+/**
+ * campaignd capabilities supported by this version of the server.
+ *
+ * These are advertised to clients using the @a [server_id] command. They may
+ * be disabled or re-enabled at runtime.
+ */
+const std::set<std::string> cap_defaults = {
+	// Legacy item and passphrase-based authentication
+	"auth:legacy",
+	// Delta WML packs
+	"delta",
+};
+
 bool timing_reports_enabled = false;
 
 void timing_report_function(const util::ms_optimer& tim, const campaignd::server::request& req, const std::string& label = {})
@@ -233,6 +246,7 @@ std::string simple_wml_escape(const std::string& text)
 
 server::server(const std::string& cfg_file, unsigned short port)
 	: server_base(default_campaignd_port, true)
+	, capabilities_(cap_defaults)
 	, addons_()
 	, dirty_addons_()
 	, cfg_()
@@ -792,6 +806,7 @@ void server::delete_addon(const std::string& id)
 
 void server::register_handlers()
 {
+	REGISTER_CAMPAIGND_HANDLER(server_id);
 	REGISTER_CAMPAIGND_HANDLER(request_campaign_list);
 	REGISTER_CAMPAIGND_HANDLER(request_campaign);
 	REGISTER_CAMPAIGND_HANDLER(request_campaign_hash);
@@ -799,6 +814,23 @@ void server::register_handlers()
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
 	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
+}
+
+void server::handle_server_id(const server::request& req)
+{
+	DBG_CS << req << "Sending server identification\n";
+
+	std::ostringstream ostr;
+	write(ostr, config{"server_id", config{
+		"cap", utils::join(capabilities_),
+		"version", game_config::revision,
+	}});
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1));
 }
 
 void server::handle_request_campaign_list(const server::request& req)

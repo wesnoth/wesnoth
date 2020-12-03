@@ -25,6 +25,7 @@
 #include <chrono>
 #include <functional>
 #include <iosfwd>
+#include <set>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -87,6 +88,8 @@ private:
 
 	typedef std::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;
+
+	std::set<std::string> capabilities_;
 
 	/**The hash map of addons metadata*/
 	std::unordered_map<std::string, config> addons_;
@@ -207,6 +210,7 @@ private:
 	 */
 	void register_handlers();
 
+	void handle_server_id(const request&);
 	void handle_request_campaign_list(const request&);//#TODO: rename with 'addon' later?
 	void handle_request_campaign(const request&);
 	void handle_request_campaign_hash(const request&);
