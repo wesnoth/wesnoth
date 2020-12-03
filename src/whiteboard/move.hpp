@@ -20,6 +20,8 @@
 
 #include "action.hpp"
 
+#include <cassert>
+
 struct temporary_unit_mover;
 class unit;
 
