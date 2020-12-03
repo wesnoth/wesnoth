@@ -12,15 +12,12 @@
    See the COPYING file for more details.
 */
 
-// The purpose of this header is to forward declare the unit_ptr, if it
-// is an intrusive pointer then this requires some boilerplate taken
-// care of here.
-
 #pragma once
 
-#include <boost/intrusive_ptr.hpp>
-#include <memory>
 #include "utils/shared_reference.hpp"
+
+#include <memory>
+
 class unit;
 
 typedef utils::shared_reference<unit> nonempty_unit_ptr;
