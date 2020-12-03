@@ -50,6 +50,8 @@ addons_client::addons_client(const std::string& address)
 	, conn_(nullptr)
 	, last_error_()
 	, last_error_data_()
+	, server_version_()
+	, server_capabilities_()
 {
 	try {
 		std::tie(host_, port_) = parse_network_address(addr_, std::to_string(default_campaignd_port));
@@ -67,9 +69,36 @@ void addons_client::connect()
 
 	conn_.reset(new network_asio::connection(host_, port_));
 
-	wait_for_transfer_done(
-		VGETTEXT("Connecting to $server_address|...", i18n_symbols),
-		transfer_mode::connect);
+	const auto& msg = VGETTEXT("Connecting to $server_address|...", i18n_symbols);
+
+	wait_for_transfer_done(msg, transfer_mode::connect);
+
+	config response_buf;
+
+	send_simple_request("server_id", response_buf);
+	wait_for_transfer_done(msg);
+
+	if(!update_last_error(response_buf)) {
+		const auto& info = response_buf.child("server_id");
+		if(info) {
+			server_version_ = info["version"].str();
+			for(const auto& cap : utils::split(info["cap"].str())) {
+				server_capabilities_.insert(cap);
+			}
+		}
+	} else {
+		clear_last_error();
+	}
+
+	if(server_version_.empty()) {
+		LOG_ADDONS << "Server version 1.15.7 or earlier\n";
+		// An educated guess
+		server_capabilities_ = { "auth:legacy" };
+	} else {
+		LOG_ADDONS << "Server version " << server_version_ << '\n';
+	}
+
+	LOG_ADDONS << "Server supports: " << utils::join(server_capabilities_, " ") << '\n';
 }
 
 bool addons_client::request_addons_list(config& cfg)
@@ -592,6 +621,12 @@ bool addons_client::update_last_error(config& response_cfg)
 		last_error_data_.clear();
 		return false;
 	}
+}
+
+void addons_client::clear_last_error()
+{
+	last_error_.clear();
+	last_error_data_.clear();
 }
 
 void addons_client::check_connected() const
