@@ -22,9 +22,7 @@
 
 namespace gui2
 {
-
 struct builder_grid;
-typedef std::shared_ptr<const builder_grid> builder_grid_const_ptr;
 
 class grid;
 
@@ -176,7 +174,7 @@ public:
 	 * @returns                   A reference to the newly created grid.
 	 */
 	virtual grid& create_item(const int index,
-							   builder_grid_const_ptr list_builder,
+							   const builder_grid& list_builder,
 							   const string_map& item_data,
 							   const std::function<void(widget&)>& callback)
 			= 0;
@@ -200,7 +198,7 @@ public:
 	 */
 	virtual grid&
 	create_item(const int index,
-				builder_grid_const_ptr list_builder,
+				const builder_grid& list_builder,
 				const std::map<std::string /* widget id */, string_map>& data,
 				const std::function<void(widget&)>& callback) = 0;
 
@@ -220,7 +218,7 @@ public:
 	 *                            in the grid is (de)selected.
 	 */
 	virtual void create_items(const int index,
-							  builder_grid_const_ptr list_builder,
+							  const builder_grid& list_builder,
 							  const std::vector<string_map>& data,
 							  const std::function<void(widget&)>& callback)
 			= 0;
@@ -242,7 +240,7 @@ public:
 	 */
 	virtual void create_items(
 			const int index,
-			builder_grid_const_ptr list_builder,
+			const builder_grid& list_builder,
 			const std::vector<std::map<std::string /*widget id*/, string_map>>&
 					data,
 			const std::function<void(widget&)>& callback) = 0;

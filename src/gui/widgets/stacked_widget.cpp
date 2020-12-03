@@ -89,7 +89,7 @@ stacked_widget::finalize(std::vector<builder_grid_const_ptr> widget_builder)
 	string_map empty_data;
 	for(const auto & builder : widget_builder)
 	{
-		generator_->create_item(-1, builder, empty_data, nullptr);
+		generator_->create_item(-1, *builder, empty_data, nullptr);
 	}
 	swap_grid(nullptr, &get_grid(), generator_, "_content_grid");
 
