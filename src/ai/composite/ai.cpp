@@ -70,16 +70,16 @@ void ai_composite::on_create()
 	}
 
 	std::function<void(std::vector<engine_ptr>&, const config&)> factory_engines =
-		std::bind(&ai::ai_composite::create_engine,*this,_1,_2);
+		std::bind(&ai::ai_composite::create_engine, *this, std::placeholders::_1, std::placeholders::_2);
 
 	std::function<void(std::vector<goal_ptr>&, const config&)> factory_goals =
-		std::bind(&ai::ai_composite::create_goal,*this,_1,_2);
+		std::bind(&ai::ai_composite::create_goal, *this, std::placeholders::_1, std::placeholders::_2);
 
 	std::function<void(std::vector<stage_ptr>&, const config&)> factory_stages =
-		std::bind(&ai::ai_composite::create_stage,*this,_1,_2);
+		std::bind(&ai::ai_composite::create_stage, *this, std::placeholders::_1, std::placeholders::_2);
 
 	std::function<void(std::map<std::string,aspect_ptr>&, const config&, std::string)> factory_aspects =
-		std::bind(&ai::ai_composite::replace_aspect,*this,_1,_2,_3);
+		std::bind(&ai::ai_composite::replace_aspect,*this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 
 	register_vector_property(property_handlers(),"engine",get_engines(), factory_engines);
 	register_vector_property(property_handlers(),"goal",get_goals(), factory_goals);

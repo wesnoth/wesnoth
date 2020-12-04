@@ -110,7 +110,7 @@ void unit_create::pre_show(window& window)
 			= find_widget<text_box>(&window, "filter_box", false, true);
 
 	filter->set_text_changed_callback(
-			std::bind(&unit_create::filter_text_changed, this, _2));
+			std::bind(&unit_create::filter_text_changed, this, std::placeholders::_2));
 
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&list);

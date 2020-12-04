@@ -328,8 +328,8 @@ void preferences_dialog::initialize_sound_option_group(const std::string& id_suf
 	// the callback the setter callback is duplicated in the on-change callback. The field
 	// class could possibly use some reworking to make this less redundant, but for now it
 	// works well enough.
-	register_bool(toggle_widget_id, true, toggle_getter, std::bind(toggle_setter, _1),
-		std::bind(sound_toggle_on_change<toggle_setter>, std::ref(window), volume_widget_id, _1), true);
+	register_bool(toggle_widget_id, true, toggle_getter, std::bind(toggle_setter, std::placeholders::_1),
+		std::bind(sound_toggle_on_change<toggle_setter>, std::ref(window), volume_widget_id, std::placeholders::_1), true);
 
 	// Set up the volume slider. integer_field doesn't have a callback-on-changed mechanism.
 	// To add one would either mean adding it to the base field class or make it a proper
@@ -338,7 +338,7 @@ void preferences_dialog::initialize_sound_option_group(const std::string& id_suf
 
 	// Callback to actually immediately apply the volume effect.
 	connect_signal_notify_modified(find_widget<slider>(&window, volume_widget_id, false),
-		std::bind(volume_setter_on_change<vol_setter>, _1));
+		std::bind(volume_setter_on_change<vol_setter>, std::placeholders::_1));
 }
 
 /**
@@ -700,7 +700,7 @@ void preferences_dialog::post_build(window& window)
 				// We need to bind a lambda here since preferences::set is overloaded.
 				// A lambda alone would be more verbose because it'd need to specify all the parameters.
 				connect_signal_notify_modified(menu,
-					std::bind([=](widget& w) { set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]); }, _1));
+					std::bind([=](widget& w) { set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]); }, std::placeholders::_1));
 
 				gui2::bind_status_label<menu_button>(main_grid, "setter", [](menu_button& m)->std::string {
 					return m.get_value_string();

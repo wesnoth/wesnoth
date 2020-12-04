@@ -71,7 +71,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 {
 	MPTEST_LOG;
 	resolver_.async_resolve(boost::asio::ip::tcp::resolver::query(host, service),
-		std::bind(&wesnothd_connection::handle_resolve, this, _1, _2));
+		std::bind(&wesnothd_connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Starts the worker thread. Do this *after* the above async_resolve call or it will just exit immediately!
 	worker_thread_ = std::thread([this]() {
@@ -117,7 +117,7 @@ void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterato
 void wesnothd_connection::connect(resolver::iterator iterator)
 {
 	MPTEST_LOG;
-	socket_.async_connect(*iterator, std::bind(&wesnothd_connection::handle_connect, this, _1, iterator));
+	socket_.async_connect(*iterator, std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, iterator));
 	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
 }
 
@@ -151,7 +151,7 @@ void wesnothd_connection::handshake()
 		[](const error_code& ec, std::size_t) { if(ec) { throw system_error(ec); } });
 
 	boost::asio::async_read(socket_, boost::asio::buffer(&handshake_response_.binary, 4),
-		std::bind(&wesnothd_connection::handle_handshake, this, _1));
+		std::bind(&wesnothd_connection::handle_handshake, this, std::placeholders::_1));
 }
 
 // worker thread
@@ -384,8 +384,8 @@ void wesnothd_connection::send()
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
 
 	boost::asio::async_write(socket_, bufs,
-		std::bind(&wesnothd_connection::is_write_complete, this, _1, _2),
-		std::bind(&wesnothd_connection::handle_write, this, _1, _2));
+		std::bind(&wesnothd_connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
+		std::bind(&wesnothd_connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 // worker thread
@@ -394,8 +394,8 @@ void wesnothd_connection::recv()
 	MPTEST_LOG;
 
 	boost::asio::async_read(socket_, read_buf_,
-		std::bind(&wesnothd_connection::is_read_complete, this, _1, _2),
-		std::bind(&wesnothd_connection::handle_read, this, _1, _2));
+		std::bind(&wesnothd_connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
+		std::bind(&wesnothd_connection::handle_read, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 // main thread

@@ -227,10 +227,10 @@ void drop_down_menu::pre_show(window& window)
 
 	// Dismiss on clicking outside the window.
 	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(
-		std::bind(&drop_down_menu::mouse_up_callback, this, _3, _4, _5), event::dispatcher::front_child);
+		std::bind(&drop_down_menu::mouse_up_callback, this, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5), event::dispatcher::front_child);
 
 	window.connect_signal<event::SDL_RIGHT_BUTTON_UP>(
-		std::bind(&drop_down_menu::mouse_up_callback, this, _3, _4, _5), event::dispatcher::front_child);
+		std::bind(&drop_down_menu::mouse_up_callback, this, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5), event::dispatcher::front_child);
 
 	window.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
 		std::bind(&drop_down_menu::mouse_down_callback, this), event::dispatcher::front_child);

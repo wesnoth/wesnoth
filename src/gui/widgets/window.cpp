@@ -321,7 +321,7 @@ window::window(const builder_window::window_resolution& definition)
 	}
 
 	connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(
-			&window::signal_handler_sdl_video_resize, this, _2, _3, _5));
+			&window::signal_handler_sdl_video_resize, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 
 	connect_signal<event::SDL_ACTIVATE>(std::bind(
 			&event::distributor::initialize_state, event_distributor_.get()));
@@ -329,54 +329,54 @@ window::window(const builder_window::window_resolution& definition)
 	connect_signal<event::SDL_LEFT_BUTTON_UP>(
 			std::bind(&window::signal_handler_click_dismiss,
 						this,
-						_2,
-						_3,
-						_4,
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_4,
 						SDL_BUTTON_LMASK),
 			event::dispatcher::front_child);
 	connect_signal<event::SDL_MIDDLE_BUTTON_UP>(
 			std::bind(&window::signal_handler_click_dismiss,
 						this,
-						_2,
-						_3,
-						_4,
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_4,
 						SDL_BUTTON_MMASK),
 			event::dispatcher::front_child);
 	connect_signal<event::SDL_RIGHT_BUTTON_UP>(
 			std::bind(&window::signal_handler_click_dismiss,
 						this,
-						_2,
-						_3,
-						_4,
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_4,
 						SDL_BUTTON_RMASK),
 			event::dispatcher::front_child);
 
 	connect_signal<event::SDL_KEY_DOWN>(
 			std::bind(
-					&window::signal_handler_sdl_key_down, this, _2, _3, _5, _6, true),
+					&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, true),
 			event::dispatcher::back_post_child);
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&window::signal_handler_sdl_key_down, this, _2, _3, _5, _6, false));
+			&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, false));
 
 	connect_signal<event::MESSAGE_SHOW_TOOLTIP>(
 			std::bind(&window::signal_handler_message_show_tooltip,
 						this,
-						_2,
-						_3,
-						_5),
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_5),
 			event::dispatcher::back_pre_child);
 
 	connect_signal<event::MESSAGE_SHOW_HELPTIP>(
 			std::bind(&window::signal_handler_message_show_helptip,
 						this,
-						_2,
-						_3,
-						_5),
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_5),
 			event::dispatcher::back_pre_child);
 
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
-					&window::signal_handler_request_placement, this, _2, _3),
+					&window::signal_handler_request_placement, this, std::placeholders::_2, std::placeholders::_3),
 			event::dispatcher::back_pre_child);
 
 	connect_signal<event::CLOSE_WINDOW>(std::bind(&window::signal_handler_close_window, this));

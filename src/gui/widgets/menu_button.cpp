@@ -48,26 +48,26 @@ menu_button::menu_button(const implementation::builder_menu_button& builder)
 	values_.emplace_back("label", this->get_label());
 
 	connect_signal<event::MOUSE_ENTER>(
-		std::bind(&menu_button::signal_handler_mouse_enter, this, _2, _3));
+		std::bind(&menu_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::MOUSE_LEAVE>(
-		std::bind(&menu_button::signal_handler_mouse_leave, this, _2, _3));
+		std::bind(&menu_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&menu_button::signal_handler_left_button_down, this, _2, _3));
+		std::bind(&menu_button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_UP>(
-		std::bind(&menu_button::signal_handler_left_button_up, this, _2, _3));
+		std::bind(&menu_button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(
-		std::bind(&menu_button::signal_handler_left_button_click, this, _2, _3));
+		std::bind(&menu_button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::SDL_WHEEL_UP>(
-		std::bind(&menu_button::signal_handler_sdl_wheel_up, this, _2, _3),
+		std::bind(&menu_button::signal_handler_sdl_wheel_up, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_WHEEL_DOWN>(
-		std::bind(&menu_button::signal_handler_sdl_wheel_down, this, _2, _3),
+		std::bind(&menu_button::signal_handler_sdl_wheel_down, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 }
 

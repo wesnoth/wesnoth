@@ -265,7 +265,7 @@ public:
 		}
 
 		std::function<void(typesafe_aspect_vector<T>&, const config&)> factory_facets =
-                        std::bind(&ai::composite_aspect<T>::create_facet,*this,_1,_2);
+			std::bind(&ai::composite_aspect<T>::create_facet, *this, std::placeholders::_1, std::placeholders::_2);
 
 		register_facets_property(this->property_handlers(),"facet",facets_,default_, factory_facets);
 

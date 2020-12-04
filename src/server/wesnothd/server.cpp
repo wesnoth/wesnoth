@@ -289,7 +289,7 @@ void server::handle_sighup(const boost::system::error_code& error, int)
 	cfg_ = read_config();
 	load_config();
 
-	sighup_.async_wait(std::bind(&server::handle_sighup, this, _1, _2));
+	sighup_.async_wait(std::bind(&server::handle_sighup, this, std::placeholders::_1, std::placeholders::_2));
 }
 #endif
 
@@ -302,7 +302,7 @@ void server::handle_graceful_timeout(const boost::system::error_code& error)
 		throw server_shutdown("graceful shutdown timeout");
 	} else {
 		timer_.expires_from_now(std::chrono::seconds(1));
-		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
+		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 	}
 }
 
@@ -607,12 +607,12 @@ void server::refresh_tournaments(const boost::system::error_code& ec)
 
 void server::handle_new_client(socket_ptr socket)
 {
-	async_send_doc(socket, version_query_response_, std::bind(&server::handle_version, this, _1));
+	async_send_doc(socket, version_query_response_, std::bind(&server::handle_version, this, std::placeholders::_1));
 }
 
 void server::handle_version(socket_ptr socket)
 {
-	async_receive_doc(socket, std::bind(&server::read_version, this, _1, _2));
+	async_receive_doc(socket, std::bind(&server::read_version, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
@@ -626,12 +626,12 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 
 		// Check if it is an accepted version.
 		auto accepted_it = std::find_if(accepted_versions_.begin(), accepted_versions_.end(),
-			std::bind(&utils::wildcard_string_match, version_str, _1));
+			std::bind(&utils::wildcard_string_match, version_str, std::placeholders::_1));
 
 		if(accepted_it != accepted_versions_.end()) {
 			LOG_SERVER << client_address(socket) << "\tplayer joined using accepted version " << version_str
 					   << ":\ttelling them to log in.\n";
-			async_send_doc(socket, login_response_, std::bind(&server::login, this, _1, version_str, source_str));
+			async_send_doc(socket, login_response_, std::bind(&server::login, this, std::placeholders::_1, version_str, source_str));
 			return;
 		}
 
@@ -670,7 +670,7 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 
 void server::login(socket_ptr socket, std::string version, std::string source)
 {
-	async_receive_doc(socket, std::bind(&server::handle_login, this, _1, _2, version, source));
+	async_receive_doc(socket, std::bind(&server::handle_login, this, std::placeholders::_1, std::placeholders::_2, version, source));
 }
 
 void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, std::string version, std::string source)
@@ -1006,7 +1006,7 @@ void server::send_password_request(socket_ptr socket,
 		e.set_attr("error_code", error_code);
 	}
 
-	async_send_doc(socket, doc, std::bind(&server::login, this, _1, version, source));
+	async_send_doc(socket, doc, std::bind(&server::login, this, std::placeholders::_1, version, source));
 }
 
 void server::add_player(socket_ptr socket, const wesnothd::player& player)
@@ -1043,8 +1043,8 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 void server::read_from_player(socket_ptr socket)
 {
 	async_receive_doc(socket,
-		std::bind(&server::handle_read_from_player, this, _1, _2),
-		std::bind(&server::remove_player, this, _1)
+		std::bind(&server::handle_read_from_player, this, std::placeholders::_1, std::placeholders::_2),
+		std::bind(&server::remove_player, this, std::placeholders::_1)
 	);
 }
 
@@ -1292,7 +1292,7 @@ void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game
 	}
 
 	player_connections_.modify(
-		player_connections_.find(socket), std::bind(&server::create_game, this, _1, std::ref(create_game)));
+		player_connections_.find(socket), std::bind(&server::create_game, this, std::placeholders::_1, std::ref(create_game)));
 
 	return;
 }
@@ -1310,7 +1310,7 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 	// and set the player as the host/owner.
 	host_record.get_game().reset(
 		new wesnothd::game(player_connections_, host_record.socket(), game_name, save_replays_, replay_save_path_),
-		std::bind(&server::cleanup_game, this, _1)
+		std::bind(&server::cleanup_game, this, std::placeholders::_1)
 	);
 
 	wesnothd::game& g = *host_record.get_game();
@@ -1422,7 +1422,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 	}
 
 	player_connections_.modify(player_connections_.find(socket),
-		std::bind(&player_record::set_game, _1, player_connections_.get<game_t>().find(game_id)->get_game()));
+		std::bind(&player_record::set_game, std::placeholders::_1, player_connections_.get<game_t>().find(game_id)->get_game()));
 
 	g->describe_slots();
 
@@ -1689,7 +1689,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		} else {
 			auto description = g.description();
 
-			player_connections_.modify(player_connections_.find(socket), std::bind(&player_record::enter_lobby, _1));
+			player_connections_.modify(player_connections_.find(socket), std::bind(&player_record::enter_lobby, std::placeholders::_1));
 			if(!g_ptr.expired()) {
 				g.describe_slots();
 			}
@@ -1766,7 +1766,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			: g.kick_member(*data.child("kick"), socket));
 
 		if(user) {
-			player_connections_.modify(player_connections_.find(user), std::bind(&player_record::enter_lobby, _1));
+			player_connections_.modify(player_connections_.find(user), std::bind(&player_record::enter_lobby, std::placeholders::_1));
 			if(g.describe_slots()) {
 				update_game_in_lobby(g, user);
 			}
@@ -2025,7 +2025,7 @@ void server::shut_down_handler(
 		acceptor_v4_.close();
 
 		timer_.expires_from_now(std::chrono::seconds(10));
-		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
+		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 
 		process_command(
 			"msg The server is shutting down. You may finish your games but can't start new ones. Once all "
@@ -2056,7 +2056,7 @@ void server::restart_handler(const std::string& issuer_name,
 		acceptor_v6_.close();
 		acceptor_v4_.close();
 		timer_.expires_from_now(std::chrono::seconds(10));
-		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
+		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 
 		start_new_server();
 
@@ -2894,7 +2894,7 @@ void server::delete_game(int gameid, const std::string& reason)
 	// This will call cleanup_game() deleter since there won't
 	// be any references to that game from player_connections_ anymore
 	for(const auto& it : range_vctor) {
-		player_connections_.get<game_t>().modify(it, std::bind(&player_record::enter_lobby, _1));
+		player_connections_.get<game_t>().modify(it, std::bind(&player_record::enter_lobby, std::placeholders::_1));
 	}
 
 	// send users in the game a notification to leave the game since it has ended

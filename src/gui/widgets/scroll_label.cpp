@@ -46,7 +46,7 @@ scroll_label::scroll_label(const implementation::builder_scroll_label& builder)
 	, text_alignment_(builder.text_alignment)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&scroll_label::signal_handler_left_button_down, this, _2),
+		std::bind(&scroll_label::signal_handler_left_button_down, this, std::placeholders::_2),
 		event::dispatcher::back_pre_child);
 }
 

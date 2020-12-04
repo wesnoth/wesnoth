@@ -43,7 +43,7 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	, selected_item_(nullptr)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&tree_view::signal_handler_left_button_down, this, _2), event::dispatcher::back_pre_child);
+		std::bind(&tree_view::signal_handler_left_button_down, this, std::placeholders::_2), event::dispatcher::back_pre_child);
 }
 
 tree_view::~tree_view()

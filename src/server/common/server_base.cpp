@@ -74,7 +74,7 @@ void server_base::start_server()
 		[=](const boost::system::error_code& error, int sig)
 			{ this->handle_sighup(error, sig); });
 #endif
-	sigs_.async_wait(std::bind(&server_base::handle_termination, this, _1, _2));
+	sigs_.async_wait(std::bind(&server_base::handle_termination, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void server_base::serve(boost::asio::ip::tcp::acceptor& acceptor)
@@ -119,7 +119,7 @@ void server_base::serverside_handshake(socket_ptr socket)
 	boost::shared_array<char> handshake(new char[4]);
 	async_read(
 				*socket, boost::asio::buffer(handshake.get(), 4),
-				std::bind(&server_base::handle_handshake, this, _1, socket, handshake)
+				std::bind(&server_base::handle_handshake, this, std::placeholders::_1, socket, handshake)
 				);
 }
 

@@ -259,7 +259,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			if(publish_function_ != nullptr) {
 				connect_signal_mouse_left_click(publish_button,
-					std::bind(&addon_list::addon_action_wrapper, this, publish_function_, std::ref(addon), _3, _4));
+					std::bind(&addon_list::addon_action_wrapper, this, publish_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 
 				install_button.set_tooltip(_("Publish add-on"));
 			}
@@ -270,7 +270,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			if(update_function_ != nullptr) {
 				connect_signal_mouse_left_click(update_button,
-					std::bind(&addon_list::addon_action_wrapper, this, update_function_, std::ref(addon), _3, _4));
+					std::bind(&addon_list::addon_action_wrapper, this, update_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 			}
 		} else {
 			install_update_stack.select_layer(CONTROL_STACK_LAYER_INSTALL);
@@ -279,7 +279,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			if(install_function_ != nullptr) {
 				connect_signal_mouse_left_click(install_button,
-					std::bind(&addon_list::addon_action_wrapper, this, install_function_, std::ref(addon), _3, _4));
+					std::bind(&addon_list::addon_action_wrapper, this, install_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 			}
 		}
 
@@ -290,7 +290,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			if(!is_local && delete_function_ != nullptr) {
 				connect_signal_mouse_left_click(uninstall_button,
-					std::bind(&addon_list::addon_action_wrapper, this, delete_function_, std::ref(addon), _3, _4));
+					std::bind(&addon_list::addon_action_wrapper, this, delete_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 
 				uninstall_button.set_tooltip(_("Delete add-on from server"));
 			}
@@ -300,7 +300,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			if(is_installed && uninstall_function_ != nullptr) {
 				connect_signal_mouse_left_click(uninstall_button,
-					std::bind(&addon_list::addon_action_wrapper, this, uninstall_function_, std::ref(addon), _3, _4));
+					std::bind(&addon_list::addon_action_wrapper, this, uninstall_function_, std::ref(addon), std::placeholders::_3, std::placeholders::_4));
 			}
 		}
 

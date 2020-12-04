@@ -285,7 +285,7 @@ int luaW_open(lua_State* L)
 		{ nullptr, nullptr },
 	};
 	std::vector<lua_cpp::Reg> const cpp_gui_callbacks {
-		{"show_lua_console", std::bind(&lua_kernel_base::intf_show_lua_console, &lk, _1)},
+		{"show_lua_console", std::bind(&lua_kernel_base::intf_show_lua_console, &lk, std::placeholders::_1)},
 		{nullptr, nullptr}
 	};
 	lua_newtable(L);

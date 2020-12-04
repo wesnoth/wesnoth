@@ -110,7 +110,7 @@ void unit_recruit::pre_show(window& window)
 {
 	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
 	filter->set_text_changed_callback(
-			std::bind(&unit_recruit::filter_text_changed, this, _2));
+			std::bind(&unit_recruit::filter_text_changed, this, std::placeholders::_2));
 
 	listbox& list = find_widget<listbox>(&window, "recruit_list", false);
 

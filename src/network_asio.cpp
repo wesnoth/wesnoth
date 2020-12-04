@@ -70,7 +70,7 @@ connection::connection(const std::string& host, const std::string& service)
 	, bytes_read_(0)
 {
 	resolver_.async_resolve(
-		boost::asio::ip::tcp::resolver::query(host, service), std::bind(&connection::handle_resolve, this, _1, _2));
+		boost::asio::ip::tcp::resolver::query(host, service), std::bind(&connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 
 	LOG_NW << "Resolving hostname: " << host << '\n';
 }
@@ -86,7 +86,7 @@ void connection::handle_resolve(const boost::system::error_code& ec, resolver::i
 
 void connection::connect(resolver::iterator iterator)
 {
-	socket_.async_connect(*iterator, std::bind(&connection::handle_connect, this, _1, iterator));
+	socket_.async_connect(*iterator, std::bind(&connection::handle_connect, this, std::placeholders::_1, iterator));
 	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
 }
 
@@ -113,10 +113,10 @@ void connection::handshake()
 	static const uint32_t handshake = 0;
 
 	boost::asio::async_write(socket_, boost::asio::buffer(reinterpret_cast<const char*>(&handshake), 4),
-		std::bind(&connection::handle_write, this, _1, _2));
+		std::bind(&connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
 
 	boost::asio::async_read(socket_, boost::asio::buffer(&handshake_response_.binary, 4),
-		std::bind(&connection::handle_handshake, this, _1));
+		std::bind(&connection::handle_handshake, this, std::placeholders::_1));
 }
 
 void connection::handle_handshake(const boost::system::error_code& ec)
@@ -147,11 +147,11 @@ void connection::transfer(const config& request, config& response)
 
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
 
-	boost::asio::async_write(socket_, bufs, std::bind(&connection::is_write_complete, this, _1, _2),
-		std::bind(&connection::handle_write, this, _1, _2));
+	boost::asio::async_write(socket_, bufs, std::bind(&connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
+		std::bind(&connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
 
-	boost::asio::async_read(socket_, *read_buf_, std::bind(&connection::is_read_complete, this, _1, _2),
-		std::bind(&connection::handle_read, this, _1, _2, std::ref(response)));
+	boost::asio::async_read(socket_, *read_buf_, std::bind(&connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
+		std::bind(&connection::handle_read, this, std::placeholders::_1, std::placeholders::_2, std::ref(response)));
 }
 
 void connection::cancel()

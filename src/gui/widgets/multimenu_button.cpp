@@ -50,16 +50,16 @@ multimenu_button::multimenu_button(const implementation::builder_multimenu_butto
 	values_.emplace_back("label", this->get_label());
 
 	connect_signal<event::MOUSE_ENTER>(
-		std::bind(&multimenu_button::signal_handler_mouse_enter, this, _2, _3));
+		std::bind(&multimenu_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::MOUSE_LEAVE>(
-		std::bind(&multimenu_button::signal_handler_mouse_leave, this, _2, _3));
+		std::bind(&multimenu_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&multimenu_button::signal_handler_left_button_down, this, _2, _3));
+		std::bind(&multimenu_button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-		std::bind(&multimenu_button::signal_handler_left_button_up, this, _2, _3));
+		std::bind(&multimenu_button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(
-		std::bind(&multimenu_button::signal_handler_left_button_click, this, _2, _3));
+		std::bind(&multimenu_button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 
 	// TODO: might need to position this differently in the queue if it's called after
 	// dialog-specific callbacks.

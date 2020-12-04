@@ -426,7 +426,7 @@ std::ostream& operator<<(std::ostream& o, const server::request& r)
 void server::handle_new_client(socket_ptr socket)
 {
 	async_receive_doc(socket,
-					  std::bind(&server::handle_request, this, _1, _2)
+					  std::bind(&server::handle_request, this, std::placeholders::_1, std::placeholders::_2)
 					  );
 }
 
@@ -590,7 +590,7 @@ void server::handle_sighup(const boost::system::error_code&, int)
 
 	LOG_CS << "Reloaded configuration\n";
 
-	sighup_.async_wait(std::bind(&server::handle_sighup, this, _1, _2));
+	sighup_.async_wait(std::bind(&server::handle_sighup, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 #endif
@@ -598,7 +598,7 @@ void server::handle_sighup(const boost::system::error_code&, int)
 void server::flush_cfg()
 {
 	flush_timer_.expires_from_now(std::chrono::minutes(10));
-	flush_timer_.async_wait(std::bind(&server::handle_flush, this, _1));
+	flush_timer_.async_wait(std::bind(&server::handle_flush, this, std::placeholders::_1));
 }
 
 void server::handle_flush(const boost::system::error_code& error)
@@ -712,7 +712,7 @@ void server::send_message(const std::string& msg, socket_ptr sock)
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("message").set_attr_dup("message", escaped_msg.c_str());
-	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
+	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
 }
 
 void server::send_error(const std::string& msg, socket_ptr sock)
@@ -721,7 +721,7 @@ void server::send_error(const std::string& msg, socket_ptr sock)
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", escaped_msg.c_str());
-	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
+	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
 }
 
 void server::send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, socket_ptr sock)
@@ -742,7 +742,7 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 	err_cfg.set_attr_dup("extra_data", escaped_extra_data.c_str());
 	err_cfg.set_attr_dup("status_code", escaped_status_str.c_str());
 
-	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
+	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
 }
 
 config& server::get_addon(const std::string& id)
@@ -896,7 +896,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, _1));
+	async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1));
 }
 
 void server::handle_request_campaign(const server::request& req)
@@ -999,7 +999,7 @@ void server::handle_request_campaign(const server::request& req)
 
 			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta))\n";
 
-			async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
+			async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
 
 			full_pack_path.clear();
 		}
@@ -1015,7 +1015,7 @@ void server::handle_request_campaign(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on '" << name << "' version: " << to << " size: " << full_pack_size / 1024 << " KiB\n";
-		async_send_file(req.sock, full_pack_path, std::bind(&server::handle_new_client, this, _1), null_handler);
+		async_send_file(req.sock, full_pack_path, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
 	}
 
 	// Clients doing upgrades or some other specific thing shouldn't bump
@@ -1067,7 +1067,7 @@ void server::handle_request_campaign_hash(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on hash index for '" << req.cfg["name"] << "' size: " << file_size / 1024 << " KiB\n";
-		async_send_file(req.sock, path, std::bind(&server::handle_new_client, this, _1), null_handler);
+		async_send_file(req.sock, path, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
 	}
 }
 

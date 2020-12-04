@@ -214,7 +214,7 @@ void title_screen::pre_show(window& win)
 
 #ifdef DEBUG_TOOLTIP
 	win.connect_signal<event::SDL_MOUSE_MOTION>(
-			std::bind(debug_tooltip, std::ref(win), _3, _5),
+			std::bind(debug_tooltip, std::ref(win), std::placeholders::_3, std::placeholders::_5),
 			event::dispatcher::front_child);
 #endif
 

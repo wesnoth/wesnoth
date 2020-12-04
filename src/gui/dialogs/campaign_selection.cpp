@@ -248,7 +248,7 @@ void campaign_selection::pre_show(window& window)
 {
 	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
 	filter->set_text_changed_callback(
-			std::bind(&campaign_selection::filter_text_changed, this, _2));
+			std::bind(&campaign_selection::filter_text_changed, this, std::placeholders::_2));
 
 	/***** Setup campaign tree. *****/
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);

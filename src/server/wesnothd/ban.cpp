@@ -652,7 +652,7 @@ static lg::log_domain log_server("server");
 
 			out << *groups.begin();
 			std::ostream& (*fn)(std::ostream&,const std::string&) = &std::operator<<;
-			std::for_each( ++groups.begin(), groups.end(), std::bind(fn,std::bind(fn,std::ref(out),std::string(", ")),_1));
+			std::for_each( ++groups.begin(), groups.end(), std::bind(fn,std::bind(fn,std::ref(out),std::string(", ")),std::placeholders::_1));
 		}
 
 	}

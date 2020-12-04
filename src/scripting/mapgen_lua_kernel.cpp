@@ -243,9 +243,9 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 
 void mapgen_lua_kernel::run_generator(const char * prog, const config & generator)
 {
-	load_string(prog, "", std::bind(&lua_kernel_base::throw_exception, this, _1, _2));
+	load_string(prog, "", std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2));
 	luaW_pushconfig(mState, generator);
-	protected_call(1, 1, std::bind(&lua_kernel_base::throw_exception, this, _1, _2));
+	protected_call(1, 1, std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void mapgen_lua_kernel::user_config(const char * prog, const config & generator)

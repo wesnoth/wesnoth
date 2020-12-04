@@ -416,7 +416,7 @@ bool config_attribute_value::equals(const std::string& str) const
 	return *this == v;
 	// if c["a"] = "1" then this solution would have resulted in c["a"] == "1" being false
 	// because a["a"] is '1' and not '"1"'.
-	// return boost::apply_visitor(std::bind( equality_visitor(), _1, std::cref(str) ), value_);
+	// return boost::apply_visitor(std::bind( equality_visitor(), std::placeholders::_1, std::cref(str) ), value_);
 	// that's why we don't use it.
 }
 

@@ -50,8 +50,8 @@ label::label(const implementation::builder_label& builder)
 	, can_shrink_(false)
 	, text_alpha_(255)
 {
-	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, _2, _3));
-	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
+	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 bool label::can_wrap() const

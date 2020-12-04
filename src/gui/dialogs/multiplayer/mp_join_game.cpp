@@ -464,7 +464,7 @@ void mp_join_game::generate_side_list()
 					handled = halt = true;
 				};
 
-				connect_signal_mouse_left_click(*select_leader_button, std::bind(handler, _3, _4));
+				connect_signal_mouse_left_click(*select_leader_button, std::bind(handler, std::placeholders::_3, std::placeholders::_4));
 			} else {
 				select_leader_button->set_visible(widget::visibility::hidden);
 			}

@@ -298,7 +298,7 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 				queue_message(cfg, EXTRA_TAG, file, start_line, tag.second.get_max(), tag.first, "", name);
 			}
 		}
-		
+
 		int total_cnt = counter_.top()[""].cnt;
 		if(active.get_min_children() > total_cnt) {
 			queue_message(cfg, MISSING_TAG, file, start_line, active.get_min_children(), "*", "", active.get_name());
@@ -534,12 +534,12 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 		using namespace std::placeholders;
 		std::vector<reference> missing_types = referenced_types_, missing_tags = referenced_tag_paths_;
 		// Remove all the known types
-		missing_types.erase(std::remove_if(missing_types.begin(), missing_types.end(), std::bind(&reference::match, _1, std::cref(defined_types_))), missing_types.end());
+		missing_types.erase(std::remove_if(missing_types.begin(), missing_types.end(), std::bind(&reference::match, std::placeholders::_1, std::cref(defined_types_))), missing_types.end());
 		// Remove all the known tags. This is more complicated since links behave similar to a symbolic link.
 		// In other words, the presence of links means there may be more than one way to refer to a given tag.
 		// But that's not all! It's possible to refer to a tag through a derived tag even if it's actually defined in the base tag.
-		auto end = std::remove_if(missing_tags.begin(), missing_tags.end(), std::bind(&reference::match, _1, std::cref(defined_tag_paths_)));
-		missing_tags.erase(std::remove_if(missing_tags.begin(), end, std::bind(&schema_self_validator::tag_path_exists, this, std::ref(cfg), _1)), missing_tags.end());
+		auto end = std::remove_if(missing_tags.begin(), missing_tags.end(), std::bind(&reference::match, std::placeholders::_1, std::cref(defined_tag_paths_)));
+		missing_tags.erase(std::remove_if(missing_tags.begin(), end, std::bind(&schema_self_validator::tag_path_exists, this, std::ref(cfg), std::placeholders::_1)), missing_tags.end());
 		std::sort(missing_types.begin(), missing_types.end());
 		std::sort(missing_tags.begin(), missing_tags.end());
 		static const config dummy;

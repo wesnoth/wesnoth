@@ -741,7 +741,7 @@ void mp_lobby::pre_show(window& window)
 	window.set_enter_disabled(true);
 
 	// Exit hook to add a confirmation when quitting the Lobby.
-	window.set_exit_hook(std::bind(&mp_lobby::exit_hook, this, _1));
+	window.set_exit_hook(std::bind(&mp_lobby::exit_hook, this, std::placeholders::_1));
 
 	chatbox_ = find_widget<chatbox>(&window, "chat", false, true);
 
@@ -806,7 +806,7 @@ void mp_lobby::pre_show(window& window)
 
 	connect_signal_pre_key_press(
 			*filter_text_,
-			std::bind(&mp_lobby::game_filter_keypress_callback, this, _5));
+			std::bind(&mp_lobby::game_filter_keypress_callback, this, std::placeholders::_5));
 
 	chatbox_->room_window_open(N_("lobby"), true, false);
 	chatbox_->active_window_changed();

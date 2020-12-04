@@ -67,7 +67,7 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 grid& listbox::add_row(const string_map& item, const int index)
 {
 	assert(generator_);
-	grid& row = generator_->create_item(index, *list_builder_, item, std::bind(&listbox::list_item_clicked, this, _1));
+	grid& row = generator_->create_item(index, *list_builder_, item, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
 
 	resize_content(row);
 
@@ -77,7 +77,7 @@ grid& listbox::add_row(const string_map& item, const int index)
 grid& listbox::add_row(const std::map<std::string /* widget id */, string_map>& data, const int index)
 {
 	assert(generator_);
-	grid& row = generator_->create_item(index, *list_builder_, data, std::bind(&listbox::list_item_clicked, this, _1));
+	grid& row = generator_->create_item(index, *list_builder_, data, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
 
 	resize_content(row);
 
@@ -568,7 +568,7 @@ void listbox::finalize(builder_grid_const_ptr header,
 		//
 		if(toggle_button* selectable = find_widget<toggle_button>(&p, "sort_" + std::to_string(i), false, false)) {
 			// Register callback to sort the list.
-			connect_signal_notify_modified(*selectable, std::bind(&listbox::order_by_column, this, i, _1));
+			connect_signal_notify_modified(*selectable, std::bind(&listbox::order_by_column, this, i, std::placeholders::_1));
 
 			if(orders_.size() < max) {
 				orders_.resize(max);
@@ -582,7 +582,7 @@ void listbox::finalize(builder_grid_const_ptr header,
 		swap_grid(&get_grid(), content_grid(), footer->build(), "_footer_grid");
 	}
 
-	generator_->create_items(-1, *list_builder_, list_data, std::bind(&listbox::list_item_clicked, this, _1));
+	generator_->create_items(-1, *list_builder_, list_data, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
 	swap_grid(nullptr, content_grid(), generator_, "_list_grid");
 }
 

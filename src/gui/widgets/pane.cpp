@@ -113,7 +113,7 @@ pane::pane(const builder_grid_ptr item_builder)
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
-					&pane::signal_handler_request_placement, this, _1, _2, _3),
+					&pane::signal_handler_request_placement, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3),
 			event::dispatcher::back_pre_child);
 }
 
@@ -126,7 +126,7 @@ pane::pane(const implementation::builder_pane& builder)
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
-					&pane::signal_handler_request_placement, this, _1, _2, _3),
+					&pane::signal_handler_request_placement, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3),
 			event::dispatcher::back_pre_child);
 }
 
