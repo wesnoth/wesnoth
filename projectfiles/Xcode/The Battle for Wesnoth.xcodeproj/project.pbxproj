@@ -1490,8 +1490,8 @@
 		464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_mixer-2.0.0.dylib"; path = "lib/libSDL2_mixer-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0369228361B7007D2741 /* libvorbisfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisfile.dylib; path = lib/libvorbisfile.dylib; sourceTree = "<group>"; };
-		46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.1.dylib; path = "lib/libssl.1.1.dylib"; sourceTree = "<group>"; };
-		46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = "lib/libcrypto.1.1.dylib"; sourceTree = "<group>"; };
+		46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.1.dylib; path = lib/libssl.1.1.dylib; sourceTree = "<group>"; };
+		46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = lib/libcrypto.1.1.dylib; sourceTree = "<group>"; };
 		46685C6B219D51870009CFFE /* utf8_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utf8_exception.hpp; sourceTree = "<group>"; };
 		46685C6C219D51870009CFFE /* ucs4_iterator_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ucs4_iterator_base.hpp; sourceTree = "<group>"; };
 		46685C6D219D51870009CFFE /* validator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = validator.hpp; sourceTree = "<group>"; };
@@ -1523,6 +1523,9 @@
 		46685C88219D518A0009CFFE /* schema_validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = schema_validator.cpp; sourceTree = "<group>"; };
 		4674EE9B24CD1E64007C18CE /* libfribidi.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfribidi.0.dylib; path = lib/libfribidi.0.dylib; sourceTree = "<group>"; };
 		4674EE9F24CD207F007C18CE /* libgio-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgio-2.0.0.dylib"; path = "lib/libgio-2.0.0.dylib"; sourceTree = "<group>"; };
+		4675F091257A494E00ADF791 /* optional_fwd.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = optional_fwd.hpp; sourceTree = "<group>"; };
+		4675F092257A494E00ADF791 /* optimer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = optimer.hpp; sourceTree = "<group>"; };
+		4675F093257A495A00ADF791 /* scope_exit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = scope_exit.hpp; sourceTree = "<group>"; };
 		467D9DF0205EC3D200FA2FC4 /* userevent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userevent.hpp; sourceTree = "<group>"; };
 		467D9DF5205EC3DA00FA2FC4 /* surface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = surface.hpp; sourceTree = "<group>"; };
 		4685124824AE1535005B6EB1 /* game_config_view.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_config_view.cpp; sourceTree = "<group>"; };
@@ -2065,7 +2068,6 @@
 		915C68E81DF1DCB000594B07 /* color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = color.cpp; sourceTree = "<group>"; };
 		915C68E91DF1DCB000594B07 /* color.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = color.hpp; sourceTree = "<group>"; };
 		915C68F31DF1F78600594B07 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = lib/libintl.8.dylib; sourceTree = "<group>"; };
-		918056BE1CB1E4C0001A7F35 /* functional.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = functional.hpp; sourceTree = "<group>"; };
 		918C8A161D05F9AA009744A0 /* chat_command_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_command_handler.cpp; sourceTree = "<group>"; };
 		918C8A171D05F9AA009744A0 /* chat_command_handler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_command_handler.hpp; sourceTree = "<group>"; };
 		918C8A181D05F9AA009744A0 /* chat_events.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_events.cpp; sourceTree = "<group>"; };
@@ -4161,7 +4163,6 @@
 				91EF6BFC1C9E22E400E2A733 /* const_clone.hpp */,
 				91C55DA21CC078820040012E /* context_free_grammar_generator.cpp */,
 				91C55DA31CC078820040012E /* context_free_grammar_generator.hpp */,
-				918056BE1CB1E4C0001A7F35 /* functional.hpp */,
 				EC5012711E06185600C4DFC6 /* general.hpp */,
 				46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */,
 				46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */,
@@ -4174,9 +4175,12 @@
 				913D26751D3C9697002FF3AB /* name_generator_factory.cpp */,
 				913D26761D3C9697002FF3AB /* name_generator_factory.hpp */,
 				91C55DA11CC078780040012E /* name_generator.hpp */,
+				4675F092257A494E00ADF791 /* optimer.hpp */,
+				4675F091257A494E00ADF791 /* optional_fwd.hpp */,
 				46B58F4121E097900070BB8E /* parse_network_address.cpp */,
 				46B58F4221E097900070BB8E /* parse_network_address.hpp */,
 				91EF6C001C9E22E400E2A733 /* reference_counter.hpp */,
+				4675F093257A495A00ADF791 /* scope_exit.hpp */,
 				469CA216253C52120045A0B3 /* shared_reference.hpp */,
 			);
 			path = utils;
@@ -6447,11 +6451,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
 				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-include",
-					"../../src/boost-patched/bind/arg.hpp",
-				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -6491,11 +6491,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
 				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-include",
-					"$(PROJECT_DIR)/../../src/boost-patched/bind/arg.hpp",
-				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
