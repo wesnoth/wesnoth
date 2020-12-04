@@ -20,24 +20,10 @@ jobs:
     steps:
       - uses: technote-space/workflow-conclusion-action@v2
       - uses: rjstone/discord-webhook-notify@v1
-        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'pull_request'
-        with:
-          severity: error
-          webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
-          details: |-
-            committer - ${{ github.actor }}
-            commit - ${{ github.sha }}
-            ref - ${{ github.ref }}
-            base_ref - ${{ github.base_ref }}
-            head_ref - ${{ github.head_ref }}
-            committer - ${{ github.event_name }}
-      - uses: rjstone/discord-webhook-notify@v1
         if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
         with:
           severity: error
           webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
-          details: |-
-            committer - ${{ github.event_name }}
 
   ubuntu-2004-scons-gcc-release-lto:
     runs-on: ubuntu-20.04
