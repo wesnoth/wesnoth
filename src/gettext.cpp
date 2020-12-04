@@ -23,6 +23,7 @@
 #include <iterator>
 #include <fstream>
 #include <locale>
+#include <map>
 #include <mutex>
 #include <boost/locale.hpp>
 #include <set>

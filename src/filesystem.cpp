@@ -26,6 +26,7 @@
 #include "game_version.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/unicode_cast.hpp"
 

@@ -39,6 +39,18 @@ void blacklist_pattern_list::remove_blacklisted_files_and_dirs(std::vector<std::
 		directories.end());
 }
 
+bool blacklist_pattern_list::match_file(const std::string& name) const
+{
+	return std::any_of(file_patterns_.begin(), file_patterns_.end(),
+					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
+}
+
+bool blacklist_pattern_list::match_dir(const std::string& name) const
+{
+	return std::any_of(directory_patterns_.begin(), directory_patterns_.end(),
+					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
+}
+
 std::string get_prefs_file()
 {
 	return get_user_config_dir() + "/preferences";

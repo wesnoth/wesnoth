@@ -19,16 +19,13 @@
 
 #pragma once
 
-#include <algorithm>
 #include <ctime>
-#include <functional>
 #include <iosfwd>
 #include <memory>
 #include <string>
 #include <vector>
 
 #include "exceptions.hpp"
-#include "serialization/string_utils.hpp"
 
 class config;
 class game_config_view;
@@ -67,17 +64,9 @@ public:
 		: file_patterns_(file_patterns), directory_patterns_(directory_patterns)
 	{}
 
-	bool match_file(const std::string& name) const
-	{
-		return std::any_of(file_patterns_.begin(), file_patterns_.end(),
-			std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
-	}
+	bool match_file(const std::string& name) const;
 
-	bool match_dir(const std::string& name) const
-	{
-		return std::any_of(directory_patterns_.begin(), directory_patterns_.end(),
-			std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
-	}
+	bool match_dir(const std::string& name) const;
 
 	void add_file_pattern(const std::string& pattern)
 	{

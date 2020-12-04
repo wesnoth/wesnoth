@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
+#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "game_version.hpp"
 #include "sound.hpp"
