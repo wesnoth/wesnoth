@@ -8,6 +8,27 @@ on:
   workflow_dispatch:
 
 jobs:
+# run after all other jobs have completed to check overall build status
+  discord-notification:
+    runs-on: ubuntu-20.04
+
+    name: Discord Notification
+
+    needs: [ubuntu-1604-scons-gcc-release, ubuntu-1604-scons-clang-debug, ubuntu-1604-cmake-clang-debug, macos-master-release, macos-master-debug]
+    if: always()
+
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: rjstone/discord-webhook-notify@v1
+        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
+        with:
+          severity: error
+          webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
+          description: |-
+            pusher: ${{ github.actor }}
+            commit: ${{ github.event.head_commit.message }}
+            commit url: ${{ github.event.head_commit.url }}
+
   ubuntu-1604-scons-gcc-release:
     runs-on: ubuntu-20.04
 
