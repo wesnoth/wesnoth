@@ -22,24 +22,46 @@
 
 class surface;
 
-///this module manages the cache of images. With an image name, you can get
-///the surface corresponding to that image.
-//
+/**
+ * Functions to load and save images from/to disk.
+ *
+ * image::get_image() and other loading functions implement a pseudo-functional
+ * syntax to apply transformations to image files by including them as a suffix
+ * to the path (Image Path Functions). They also offer the option to choose
+ * between different rendering formats for a single image path according to the
+ * display intent -- unscaled, masked to hex, rescaled to zoom, etc.
+ *
+ * @code
+ * surface surf = image::get_image("units/elves-wood/shyde.png~TC(4,magenta)~FL()",
+ *                                 image::UNSCALED);
+ * @endcode
+ *
+ * Internally, all loading functions utilize a cache to avoid reading
+ * individual images from disk more than once, or wasting valuable CPU time
+ * applying potentially expensive transforms every time (e.g. team colors on
+ * animated units). The cache can be manually invalidated using
+ * image::flush_cache(). Certain functions will invalidate parts of the cache
+ * as needed when relevant configuration parameters change in a way that would
+ * be expected to alter the output (e.g. Time of Day-tinted images).
+ */
 namespace image {
 
 template<typename T>
 class cache_type;
 
-//a generic image locator. Abstracts the location of an image.
+/**
+ * Generic locator abstracting the location of an image.
+ *
+ * Constructing locators is somewhat slow, while accessing images through
+ * locators is fast. The general idea is that callers should store locators
+ * and not strings to construct new ones. (The latter will still work, of
+ * course, even if it is slower.)
+ */
 class locator
 {
 public:
 	enum type { NONE, FILE, SUB_FILE };
 
-	// Constructing locators is somewhat slow, accessing image
-	// through locators is fast. The idea is that calling functions
-	// should store locators, and not strings to construct locators
-	// (the second will work, of course, but will be slower)
 	locator();
 	locator(const locator& a, const std::string& mods = "");
 	locator(const char* filename);
@@ -62,17 +84,19 @@ public:
 	type get_type() const { return val_.type_; }
 	// const int get_index() const { return index_; };
 
-	// returns true if the locator does not correspond to any
-	// actual image
+	/**
+	 * Returns @a true if the locator does not correspond to an actual image.
+	 */
 	bool is_void() const { return val_.type_ == NONE; }
 
 	/**
-	 * Tests whether the file the locater points at exists.
+	 * Tests whether the file the locator points at exists.
 	 *
-	 * is_void doesn't seem to work before the image is loaded and also in
-	 * debug mode a placeholder is returned. So it's not possible to test
-	 * for the existence of a file. So this function does that. (Note it
-	 * tests for existence not whether or not it's a valid image.)
+	 * is_void does not work before the image is loaded, and also a placeholder
+	 * is returned instead in debug mode. Thus it's not possible to test for
+	 * the existence of an actual file without this function.
+	 *
+	 * @note This does not test whether the image is valid or not.
 	 *
 	 * @return                Whether or not the file exists.
 	 */
@@ -137,95 +161,150 @@ extern mini_terrain_cache_map mini_terrain_cache;
 extern mini_terrain_cache_map mini_fogged_terrain_cache;
 extern mini_terrain_cache_map mini_highlighted_terrain_cache;
 
-///light_string store colors info of central and adjacent hexes.
-///The structure is one or several 4 chars blocks (L,R,G,B)
-///where RGB is the color and L is the lightmap to use:
-///   -1: none
-///    0: full hex
-///  1-6: concave corners
-/// 7-12: convex half-corners 1
-///13-19: convex half-corners 2
+/**
+ * Type used to store color information of central and adjacent hexes.
+ *
+ * The structure is one or several 4-char blocks: [L,R,G,B]
+ * The R, G, B values represent the color, and L the lightmap to use:
+ *
+ *    -1: none
+ *     0: full hex
+ *   1-6: concave corners
+ *  7-12: convex half-corners 1
+ * 13-19: convex half-corners 2
+ */
 typedef std::basic_string<signed char> light_string;
 
-///return light_string of one light operation(see above)
-light_string get_light_string(int op, int r, int g, int b);
-
-// pair each light possibility with its lighted surface
+/** Type used to pair light possibilities with the corresponding lit surface. */
 typedef std::map<light_string, surface> lit_variants;
-// lighted variants for each locator
+
+/** Lit variants for each locator. */
 typedef cache_type<lit_variants> lit_cache;
 
+/**
+ * Returns the light_string for one light operation.
+ *
+ * See light_string for more information.
+ */
+light_string get_light_string(int op, int r, int g, int b);
+
+/**
+ * Purges all image caches.
+ */
 void flush_cache();
 
-///the image manager is responsible for setting up images, and destroying
-///all images when the program exits. It should probably
-///be created once for the life of the program
+/**
+ * Image cache manager.
+ *
+ * This class is responsible for setting up and flushing the image cache. No
+ * more than one instance of it should exist at a time.
+ */
 struct manager
 {
 	manager();
 	~manager();
 };
 
-///will make all scaled images have these rgb values added to all
-///their pixels. i.e. add a certain color hint to images. useful
-///for representing day/night. Invalidates all scaled images.
+/**
+ * Changes Time of Day color tint for all applicable image types.
+ *
+ * In particular this affects TOD_COLORED and BRIGHTENED images, as well as
+ * images with lightmaps applied. Changing the previous values automatically
+ * invalidates all cached images of those types. It also invalidates the
+ * internal cache used by reverse_image() (FIXME?).
+ */
 void set_color_adjustment(int r, int g, int b);
 
-///set the team colors used by the TC image modification
-///use a vector with one string for each team
-///using nullptr will reset to default TC
+/**
+ * Sets the team colors used by the ~TC() image modification.
+ *
+ * @param colors               TC list, ordered by side number. If null, team
+ *                             colors are reset to their defaults.
+ */
 void set_team_colors(const std::vector<std::string>* colors = nullptr);
 
 const std::vector<std::string>& get_team_colors();
 
-///sets the amount scaled images should be scaled. Invalidates all
-///scaled images.
+/**
+ * Sets the scaling factor for images.
+ *
+ * Changing the previous value automatically invalidates all cached scaled
+ * images.
+ */
 void set_zoom(unsigned int zoom);
 
-/// UNSCALED : image will be drawn "as is" without changing size, even in case of redraw
-/// SCALED_TO_ZOOM : image will be scaled taking zoom into account
-/// HEXED : the hex mask is applied on the image
-/// SCALED_TO_HEX : image will be scaled to fit into a hex, taking zoom into account
-/// TOD_COLORED : same as SCALED_TO_HEX but ToD coloring is also applied
-/// BRIGHTENED  : same as TOD_COLORED but also brightened
+/**
+ * Used to specify the rendering format of images.
+ */
 enum TYPE
 {
+	/** Unmodified original-size image. */
 	UNSCALED,
+	/** Image rescaled according to the zoom settings. */
 	SCALED_TO_ZOOM,
+	/** Standard hexagonal tile mask applied, removing portions that don't fit. */
 	HEXED,
+	/** Image rescaled to fit into a hexagonal tile according to the zoom settings. */
 	SCALED_TO_HEX,
+	/** Same as SCALED_TO_HEX, but with Time of Day color tint applied. */
 	TOD_COLORED,
+	/** Same as TOD_COLORED, but also brightened. */
 	BRIGHTENED
 };
 
-///function to get the surface corresponding to an image.
+/**
+ * Caches and returns an image.
+ *
+ * @param i_locator            Image path.
+ * @param type                 Rendering format.
+ */
 surface get_image(const locator& i_locator, TYPE type = UNSCALED);
 
-///function to get the surface corresponding to an image.
-///after applying the lightmap encoded in ls
-///type should be HEXED or SCALED_TO_HEX
+/**
+ * Caches and returns an image with a lightmap applied to it.
+ *
+ * @param i_locator            Image path.
+ * @param ls                   Light map to apply to the image.
+ * @param type                 This should be either HEXED or SCALED_TO_HEX.
+ */
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
 
-///function to get the standard hex mask
+/**
+ * Retrieves the standard hexagonal tile mask.
+ */
 surface get_hexmask();
 
-///function to check if an image fit into an hex
-///return false if the image has not the standard size.
+/**
+ * Checks if an image fits into a single hex.
+ */
 bool is_in_hex(const locator& i_locator);
 
-///function to check if an image is empty after hex cut
-///should be only used on terrain image (cache the hex cut version)
+/**
+ * Checks if an image is empty after hex masking.
+ *
+ * This should be only used on terrain images, and it will automatically cache
+ * the hex-masked version if necessary.
+ */
 bool is_empty_hex(const locator& i_locator);
 
-///function to reverse an image. The image MUST have originally been returned from
-///an image:: function. Returned images have the same semantics as for get_image()
+/**
+ * Horizontally flips an image.
+ *
+ * The input MUST have originally been returned from an image namespace function.
+ * Returned images have the same semantics as those obtained from get_image().
+ */
 surface reverse_image(const surface& surf);
 
-///returns true if the given image actually exists, without loading it.
+/**
+ * Returns @a true if the given image actually exists, without loading it.
+ */
 bool exists(const locator& i_locator);
 
-/// precache the existence of files in the subdir (ex: "terrain/")
+/**
+ * Precache the existence of files in a binary path subdirectory (e.g. "terrain/").
+ */
 void precache_file_existence(const std::string& subdir = "");
+
 bool precached_file_exists(const std::string& file);
 
 enum class save_result
