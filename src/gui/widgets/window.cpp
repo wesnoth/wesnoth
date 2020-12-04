@@ -275,7 +275,7 @@ window::window(const builder_window::window_resolution& definition)
 	: panel(implementation::builder_window(::config {"definition", definition.definition}), type())
 	, video_(CVideo::get_singleton())
 	, status_(NEW)
-	, show_mode_(none)
+	, show_mode_(show_mode::none)
 	, retval_(retval::NONE)
 	, owner_(nullptr)
 	, need_layout_(true)
@@ -410,7 +410,7 @@ window::~window()
 	 * Another issue is that on smallgui and an MP game the tooltip not
 	 * unrendered properly can capture the mouse and make playing impossible.
 	 */
-	if(show_mode_ == modal) {
+	if(show_mode_ == show_mode::modal) {
 		dialogs::tip::remove();
 	}
 
@@ -461,7 +461,7 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 	set_mouse_behavior(event::dispatcher::none);
 	set_want_keyboard_input(false);
 
-	show_mode_ = tooltip;
+	show_mode_ = show_mode::tooltip;
 
 	/*
 	 * Before show has been called, some functions might have done some testing
@@ -482,7 +482,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 	set_mouse_behavior(event::dispatcher::hit);
 
-	show_mode_ = modeless;
+	show_mode_ = show_mode::modeless;
 
 	/*
 	 * Before show has been called, some functions might have done some testing
@@ -505,7 +505,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	 */
 	dialogs::tip::remove();
 
-	show_mode_ = modal;
+	show_mode_ = show_mode::modal;
 	restore_ = restore;
 
 	log_scope2(log_gui_draw, LOG_SCOPE_HEADER);

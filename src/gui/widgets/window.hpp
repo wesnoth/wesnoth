@@ -430,7 +430,7 @@ public:
 		callback_next_draw_ = func;
 	}
 
-	enum show_mode {
+	enum class show_mode {
 		none,
 		modal,
 		modeless,
