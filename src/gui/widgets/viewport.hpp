@@ -33,10 +33,6 @@ class viewport : public widget
 {
 	friend struct viewport_implementation;
 
-public:
-	/** @deprecated use the second overload. */
-	explicit viewport(widget& widget);
-
 private:
 	viewport(const implementation::builder_viewport& builder,
 			  const builder_widget::replacements_map& replacements);

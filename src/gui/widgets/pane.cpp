@@ -104,19 +104,6 @@ struct pane_implementation
 	}
 };
 
-pane::pane(const builder_grid_ptr item_builder)
-	: widget()
-	, items_()
-	, item_builder_(item_builder)
-	, item_id_generator_(0)
-	, placer_(placer_base::build(placer_base::grow_direction::vertical, 1))
-{
-	connect_signal<event::REQUEST_PLACEMENT>(
-			std::bind(
-					&pane::signal_handler_request_placement, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3),
-			event::dispatcher::back_pre_child);
-}
-
 pane::pane(const implementation::builder_pane& builder)
 	: widget(builder)
 	, items_()

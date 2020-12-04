@@ -52,9 +52,6 @@ public:
 
 	typedef std::function<bool(const item&)> filter_functor_t;
 
-	/** @deprecated Use the second overload. */
-	explicit pane(const builder_grid_ptr item_builder);
-
 private:
 	explicit pane(const implementation::builder_pane& builder);
 
