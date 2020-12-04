@@ -22,8 +22,6 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/locale.hpp>
-
 static lg::log_domain log_addons_client("addons-client");
 #define ERR_AC LOG_STREAM(err ,  log_addons_client)
 #define LOG_AC LOG_STREAM(info,  log_addons_client)

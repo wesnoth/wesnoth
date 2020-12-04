@@ -37,7 +37,7 @@
 #include <string>
 #include <vector>
 #include <ctime>
-#include <boost/locale.hpp>
+#include <boost/locale/info.hpp>
 
 #ifndef GETTEXT_DOMAIN
 # define GETTEXT_DOMAIN PACKAGE
