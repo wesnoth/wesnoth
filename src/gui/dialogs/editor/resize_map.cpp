@@ -20,7 +20,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

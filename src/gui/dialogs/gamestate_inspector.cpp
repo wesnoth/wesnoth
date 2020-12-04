@@ -43,7 +43,7 @@
 #include "filter_context.hpp"
 
 #include <vector>
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace
 {

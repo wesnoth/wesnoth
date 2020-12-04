@@ -50,7 +50,7 @@
 #include "playmp_controller.hpp"
 #include "wesnothd_connection.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 static lg::log_domain log_lobby("lobby");
 #define DBG_LB LOG_STREAM(debug, log_lobby)

@@ -29,7 +29,7 @@
 
 #pragma once
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <SDL2/SDL_types.h>
 

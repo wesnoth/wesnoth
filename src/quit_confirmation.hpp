@@ -20,7 +20,7 @@ class CVideo;
 #include <vector>
 #include <string>
 
-#include "utils/functional.hpp"
+#include <functional>
 
 /**
  * Implements a quit confirmation dialog.

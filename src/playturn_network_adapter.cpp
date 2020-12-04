@@ -14,7 +14,7 @@
 #include "playturn_network_adapter.hpp"
 #include "log.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <iostream>
 #include <cassert>
 

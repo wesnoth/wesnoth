@@ -27,7 +27,7 @@
 
 #include "log.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <boost/algorithm/string/trim.hpp>
 

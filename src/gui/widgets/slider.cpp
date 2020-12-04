@@ -29,7 +29,7 @@
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #if BOOST_VERSION >= 106700
 #include <boost/integer/common_factor_rt.hpp>

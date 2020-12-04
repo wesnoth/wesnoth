@@ -43,7 +43,7 @@
 #include "resources.hpp"
 #include "replay.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <fstream>
 

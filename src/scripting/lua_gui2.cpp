@@ -39,7 +39,7 @@
 #include "game_data.hpp"
 #include "game_state.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/optional_fwd.hpp"
 
 #include <map>

@@ -29,7 +29,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/iterable_pair.hpp"
 #include "game_version.hpp"
 

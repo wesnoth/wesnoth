@@ -19,7 +19,7 @@
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

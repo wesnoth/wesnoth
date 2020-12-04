@@ -30,7 +30,7 @@
 
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace
 {

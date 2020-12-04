@@ -40,7 +40,7 @@
 #include "units/types.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "whiteboard/manager.hpp"
 
 #include <boost/dynamic_bitset.hpp>

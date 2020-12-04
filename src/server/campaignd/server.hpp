@@ -20,7 +20,7 @@
 #include "server/common/server_base.hpp"
 #include "server/common/simple_wml.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <unordered_map>
 #include <unordered_set>
 #include <boost/asio/steady_timer.hpp>

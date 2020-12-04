@@ -22,7 +22,7 @@
 
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string.hpp>
-#include "utils/functional.hpp"
+#include <functional>
 #include "game_config_view.hpp"
 #include <SDL2/SDL.h>
 #include <key.hpp>

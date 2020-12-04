@@ -33,7 +33,7 @@
 #include "units/ptr.hpp"
 #include "units/unit.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)

@@ -32,7 +32,7 @@
 #include "lexical_cast.hpp"
 #include "preferences/game.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/irdya_datetime.hpp"
 
 namespace gui2

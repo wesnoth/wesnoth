@@ -29,7 +29,7 @@
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

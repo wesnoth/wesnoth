@@ -25,7 +25,7 @@
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

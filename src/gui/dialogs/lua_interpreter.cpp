@@ -44,7 +44,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include "utils/functional.hpp"
+#include <functional>
 
 #ifdef HAVE_HISTORY
 #include "filesystem.hpp"

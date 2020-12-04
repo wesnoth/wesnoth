@@ -44,7 +44,7 @@
 #include "game_data.hpp"
 #include "game_state.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "serialization/string_utils.hpp"
 
 #include <boost/preprocessor/cat.hpp>

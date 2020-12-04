@@ -29,7 +29,7 @@
 #include "gui/widgets/window.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <iomanip>
 #include <iostream>

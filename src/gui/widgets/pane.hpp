@@ -18,7 +18,7 @@
 #include "gui/core/window_builder.hpp"
 #include "gui/core/placer.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <list>
 

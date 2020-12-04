@@ -16,7 +16,7 @@
 
 #include "gui/auxiliary/field-fwd.hpp"
 #include "gui/core/static_registry.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <string>
 #include <vector>

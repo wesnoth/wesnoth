@@ -30,7 +30,7 @@
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/text_box.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

@@ -25,7 +25,7 @@
 #include "utils/const_clone.hpp"
 #include "utils/general.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

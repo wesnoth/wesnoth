@@ -25,7 +25,7 @@
 
 #include <ostream>
 #include <string>
-#include "utils/functional.hpp"
+#include <functional>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"

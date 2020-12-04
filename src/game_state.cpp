@@ -33,7 +33,7 @@
 #include "whiteboard/manager.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <SDL2/SDL_timer.h>
 
 #include <algorithm>

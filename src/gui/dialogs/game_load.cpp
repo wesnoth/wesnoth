@@ -42,7 +42,7 @@
 #include "preferences/game.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "game_config_view.hpp"
 
 #include <cctype>

@@ -21,7 +21,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

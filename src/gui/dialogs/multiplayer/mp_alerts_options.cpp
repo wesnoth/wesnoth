@@ -28,7 +28,7 @@
 #include "mp_ui_alerts.hpp"
 #include "preferences/general.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include "gettext.hpp"
 

@@ -33,7 +33,7 @@
 #include "units/types.hpp"
 #include "whiteboard/manager.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

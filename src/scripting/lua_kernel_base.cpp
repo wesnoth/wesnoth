@@ -44,7 +44,7 @@
 #include "game_version.hpp"                  // for do_version_check, etc
 #include "picture.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"

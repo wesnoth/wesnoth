@@ -29,7 +29,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "sdl/rect.hpp"
 #include "wml_exception.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <algorithm>
 #include <iomanip>

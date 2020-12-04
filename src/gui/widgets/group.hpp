@@ -18,7 +18,7 @@
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/widget.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <map>
 #include <vector>

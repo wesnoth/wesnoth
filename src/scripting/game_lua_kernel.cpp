@@ -110,7 +110,7 @@
 #include "wml_exception.hpp"
 #include "deprecation.hpp"
 
-#include "utils/functional.hpp"               // for bind_t, bind
+#include <functional>               // for bind_t, bind
 #include <boost/range/algorithm/copy.hpp>    // boost::copy
 #include <boost/range/adaptors.hpp>     // boost::adaptors::filtered
 #include <array>

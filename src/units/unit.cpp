@@ -50,7 +50,7 @@
 #include "units/id.hpp"
 #include "units/map.hpp" // for unit_map, etc
 #include "units/types.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "variable.hpp" // for vconfig, etc
 
 #include <boost/dynamic_bitset.hpp>

@@ -26,7 +26,7 @@
 #include "sound.hpp"
 
 #include "formula/string_utils.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "gettext.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__

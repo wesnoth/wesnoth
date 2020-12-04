@@ -22,7 +22,7 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "wml_exception.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__

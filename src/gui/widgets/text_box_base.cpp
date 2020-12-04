@@ -22,7 +22,7 @@
 #include "gui/core/timer.hpp"
 #include "serialization/unicode.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <limits>
 

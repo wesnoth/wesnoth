@@ -26,7 +26,7 @@
 
 #include "log.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <boost/range/adaptor/reversed.hpp>
 

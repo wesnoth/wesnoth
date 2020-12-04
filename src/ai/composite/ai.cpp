@@ -29,7 +29,7 @@
 #include "actions/attack.hpp"
 #include "log.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace ai {
 

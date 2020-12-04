@@ -26,7 +26,7 @@
 #include "lexical_cast.hpp"
 #include "sdl/rect.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER "pane [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'

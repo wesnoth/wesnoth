@@ -41,7 +41,7 @@
 #include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <type_traits>
 #include <map>

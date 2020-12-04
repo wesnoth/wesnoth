@@ -53,7 +53,7 @@
 #include "game_config_manager.hpp"
 #include "quit_confirmation.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace {
 static std::vector<std::string> saved_windows_;

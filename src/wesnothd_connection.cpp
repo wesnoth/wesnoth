@@ -17,7 +17,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <cstdint>
 #include <deque>

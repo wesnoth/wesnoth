@@ -24,7 +24,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/const_clone.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <cstdlib>
 #include <cstring>

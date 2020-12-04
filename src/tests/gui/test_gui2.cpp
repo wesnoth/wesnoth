@@ -116,7 +116,7 @@
 #include "terrain/type_data.hpp"
 #include "tests/utils/fake_display.hpp"
 //#include "scripting/lua_kernel_base.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "video.hpp"
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"

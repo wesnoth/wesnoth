@@ -19,7 +19,7 @@
 #include "gui/widgets/grid.hpp"
 #include "color.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 class config;
 

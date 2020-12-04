@@ -64,7 +64,7 @@ namespace wb {
 
 #include <boost/circular_buffer.hpp>
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <chrono>
 #include <cstdint>
 #include <deque>

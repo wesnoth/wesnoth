@@ -50,7 +50,7 @@
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
 #include "statistics.hpp"              // for fresh_stats
-#include "utils/functional.hpp"
+#include <functional>
 #include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for CVideo
 #include "wesconfig.h"        // for PACKAGE

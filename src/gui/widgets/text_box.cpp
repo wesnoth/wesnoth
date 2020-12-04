@@ -23,7 +23,7 @@
 #include "gui/widgets/window.hpp"
 #include "preferences/game.hpp"
 #include "serialization/unicode.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'

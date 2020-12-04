@@ -23,7 +23,7 @@
 
 #include "server/wesnothd/ban.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace wesnothd {
 

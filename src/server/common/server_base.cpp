@@ -16,7 +16,7 @@
 
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <queue>
 

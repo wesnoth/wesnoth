@@ -23,7 +23,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "help/help.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

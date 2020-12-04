@@ -30,7 +30,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "sdl/rect.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

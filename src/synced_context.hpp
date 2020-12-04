@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "synced_commands.hpp"
 #include "synced_checkup.hpp"
 #include "replay.hpp"

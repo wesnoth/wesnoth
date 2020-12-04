@@ -27,7 +27,7 @@
 #include "preferences/lobby.hpp"
 #include "preferences/general.hpp"
 #include "preferences/display.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/general.hpp"
 #include "video.hpp"
 

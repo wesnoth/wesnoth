@@ -24,7 +24,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

@@ -51,7 +51,7 @@
 
 #include "config.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <iomanip>
 #include <sstream>

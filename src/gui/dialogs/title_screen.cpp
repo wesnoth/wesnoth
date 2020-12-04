@@ -52,7 +52,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "video.hpp"
 
 #include <algorithm>

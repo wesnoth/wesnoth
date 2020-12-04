@@ -33,7 +33,7 @@
 #include "../resources.hpp"
 #include "../playmp_controller.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <SDL2/SDL_image.h>
 

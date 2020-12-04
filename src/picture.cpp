@@ -33,7 +33,7 @@
 
 #include <SDL2/SDL_image.h>
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <boost/algorithm/string.hpp>
 #include <boost/functional/hash_fwd.hpp>

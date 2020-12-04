@@ -26,7 +26,7 @@
 #include "generators/map_generator.hpp"
 #include "lexical_cast.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 

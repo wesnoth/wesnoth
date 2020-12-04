@@ -25,7 +25,7 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "sdl/userevent.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

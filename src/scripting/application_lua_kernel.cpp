@@ -45,7 +45,7 @@
 #include <string>
 #include <utility>
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <boost/range/adaptors.hpp>
 #include <SDL2/SDL.h>
 

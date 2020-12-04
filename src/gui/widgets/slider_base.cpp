@@ -19,7 +19,7 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp" // Needed for invalidate_layout()
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/math.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__

@@ -34,7 +34,7 @@
 #include "play_controller.hpp"
 #include "units/types.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <boost/dynamic_bitset.hpp>
 
 static std::string last_chosen_type_id = "";

@@ -32,7 +32,7 @@
 #include "preferences/game.hpp"	// for encountered_units
 #include "units/types.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

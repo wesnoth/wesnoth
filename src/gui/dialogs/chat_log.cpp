@@ -33,7 +33,7 @@
 #include "replay.hpp"
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/iterable_pair.hpp"
 
 #include <vector>

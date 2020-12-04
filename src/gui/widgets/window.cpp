@@ -61,7 +61,7 @@
 #include "wml_exception.hpp"
 #include "sdl/userevent.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <algorithm>
 #include <iterator>

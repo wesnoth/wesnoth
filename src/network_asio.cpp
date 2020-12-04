@@ -16,7 +16,7 @@
 
 #include "log.hpp"
 #include "serialization/parser.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <algorithm>
 #include <cstdint>

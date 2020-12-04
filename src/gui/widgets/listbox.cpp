@@ -32,7 +32,7 @@
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/optional_fwd.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__

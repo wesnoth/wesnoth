@@ -18,7 +18,7 @@
 #include <exception>
 #include <string>
 
-#include "utils/functional.hpp"
+#include <functional>
 
 class config;
 
