@@ -8,6 +8,23 @@ on:
   workflow_dispatch:
 
 jobs:
+  discord-notification:
+    runs-on: ubuntu-20.04
+
+    name: Discord Notification
+
+    if: always()
+
+    steps:
+      - uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
+          description: |-
+            pusher: ${{ github.actor }}
+            commit: ${{ github.event.head_commit.message }}
+            commit url: ${{ github.event.head_commit.url }}
+
 # run after all other jobs have completed to check overall build status
   discord-notification:
     runs-on: ubuntu-20.04
