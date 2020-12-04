@@ -4,6 +4,7 @@
    * Dropped plain text passphrase migration, unused in production since version 1.12.7 and 1.13.0 (issue #5080).
  ### Campaigns
  ### Multiplayer
+   * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
  ### Terrain
  ### Translations
    * Updated translations: British English, Czech, Polish, Russian
