@@ -18,6 +18,7 @@
 #include "display_context.hpp"
 #include "formatter.hpp"
 #include "game_display.hpp"
+#include "picture.hpp"
 #include "preferences/game.hpp"
 #include "halo.hpp"
 #include "map/map.hpp"
@@ -33,6 +34,21 @@
 
 // Map of different energy bar surfaces and their dimensions.
 static std::map<surface, SDL_Rect> energy_bar_rects;
+
+namespace
+{
+/**
+ * Wrapper which will assemble the image path (including IPF for the color from get_orb_color) for a given orb.
+ * Returns nullptr if prefs_show_orb returns false.
+ */
+std::unique_ptr<image::locator> get_orb_image(orb_status os)
+{
+	if(!orb_status_helper::prefs_show_orb(os))
+		return nullptr;
+	auto color = orb_status_helper::get_orb_color(os);
+	return std::make_unique<image::locator>(game_config::images::orb + "~RC(magenta>" + color + ")");
+}
+}
 
 unit_drawer::unit_drawer(display & thedisp) :
 	disp(thedisp),
