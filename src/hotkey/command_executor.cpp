@@ -57,7 +57,7 @@ void make_screenshot(const std::string& name, bool map_screenshot)
 	surface screenshot = display::get_singleton()->screenshot(map_screenshot);
 	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
-		filename = filesystem::get_next_filename(filename, ".png");
+		filename = filesystem::get_next_filename(filename, ".jpg");
 		gui2::dialogs::screenshot_notification::display(filename, screenshot);
 	}
 }

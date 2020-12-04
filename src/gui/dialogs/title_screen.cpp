@@ -173,7 +173,7 @@ static void make_screenshot()
 	surface screenshot = CVideo::get_singleton().getSurface().clone();
 	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
-		filename = filesystem::get_next_filename(filename, ".png");
+		filename = filesystem::get_next_filename(filename, ".jpg");
 		gui2::dialogs::screenshot_notification::display(filename, screenshot);
 	}
 }
