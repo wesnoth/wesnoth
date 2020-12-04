@@ -38,15 +38,11 @@ public:
 private:
 	void handle_new_client(socket_ptr socket);
 
-	void handle_version(socket_ptr socket);
-	void read_version(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
-
-	void login(socket_ptr socket, std::string version, std::string source);
-	void handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, std::string version, std::string source);
-	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& version, const std::string& source);
-	bool authenticate(socket_ptr socket, const std::string& username, const std::string& password, const std::string& version, const std::string& source, bool name_taken, bool& registered);
+	void login_client(boost::asio::yield_context yield, socket_ptr socket);
+	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator);
+	bool authenticate(socket_ptr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
 	void send_password_request(socket_ptr socket, const std::string& msg,
-		const std::string& user, const std::string& version, const std::string& source, const char* error_code = "", bool force_confirmation = false);
+		const std::string& user, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
 
 	void add_player(socket_ptr socket, const wesnothd::player&);

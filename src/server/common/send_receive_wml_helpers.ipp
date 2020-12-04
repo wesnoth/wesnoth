@@ -35,6 +35,31 @@
 #include <memory>
 #include <stdexcept>
 
+inline void coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield)
+{
+	try {
+		std::unique_ptr<simple_wml::document> doc_copy{ doc.clone() };
+		simple_wml::string_span s = doc_copy->output_compressed();
+
+		union DataSize
+		{
+			uint32_t size;
+			char buf[4];
+		} data_size;
+		data_size.size = htonl(s.size());
+
+		std::vector<boost::asio::const_buffer> buffers;
+
+		buffers.push_back(boost::asio::buffer(data_size.buf, 4));
+		buffers.push_back(boost::asio::buffer(s.begin(), s.size()));
+
+		async_write(*socket, buffers, yield);
+	} catch (simple_wml::error& e) {
+		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
+		throw;
+	}
+}
+
 template<typename Handler, typename ErrorHandler>
 struct handle_doc
 {
@@ -284,6 +309,45 @@ inline void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler
 inline void async_send_doc(socket_ptr socket, simple_wml::document& doc)
 {
 	async_send_doc(socket, doc, null_handler, null_handler);
+}
+
+inline std::shared_ptr<simple_wml::document> coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield)
+{
+	union DataSize
+	{
+		uint32_t size;
+		char buf[4];
+	} data_size;
+	async_read(*socket, boost::asio::buffer(data_size.buf, 4), yield);
+	if(*yield.ec_) return {};
+	uint32_t size = ntohl(data_size.size);
+
+	if(size == 0) {
+		ERR_SERVER <<
+					  client_address(socket) <<
+					  "\treceived invalid packet with payload size 0" << std::endl;
+		return {};
+	}
+	if(size > simple_wml::document::document_size_limit) {
+		ERR_SERVER <<
+					  client_address(socket) <<
+					  "\treceived packet with payload size over size limit" << std::endl;
+		return {};
+	}
+
+	boost::shared_array<char> buffer{ new char[size] };
+	async_read(*socket, boost::asio::buffer(buffer.get(), size), yield);
+
+	try {
+		simple_wml::string_span compressed_buf(buffer.get(), size);
+		return std::shared_ptr<simple_wml::document> { new simple_wml::document(compressed_buf) };
+	}  catch (simple_wml::error& e) {
+		ERR_SERVER <<
+			client_address(socket) <<
+			"\tsimple_wml error in received data: " << e.message << std::endl;
+		async_send_error(socket, "Invalid WML received: " + e.message);
+		return {};
+	}
 }
 
 template<typename Handler, typename ErrorHandler>
