@@ -274,7 +274,7 @@ window* manager::get_window(const unsigned id)
 window::window(const builder_window::window_resolution& definition)
 	: panel(implementation::builder_window(::config {"definition", definition.definition}), type())
 	, video_(CVideo::get_singleton())
-	, status_(NEW)
+	, status_(status::NEW)
 	, show_mode_(show_mode::none)
 	, retval_(retval::NONE)
 	, owner_(nullptr)
@@ -456,7 +456,7 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 
 	generate_dot_file("show", SHOW);
 
-	assert(status_ == NEW);
+	assert(status_ == status::NEW);
 
 	set_mouse_behavior(event::dispatcher::none);
 	set_want_keyboard_input(false);
@@ -478,7 +478,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 	generate_dot_file("show", SHOW);
 
-	assert(status_ == NEW);
+	assert(status_ == status::NEW);
 
 	set_mouse_behavior(event::dispatcher::hit);
 
@@ -512,7 +512,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 	generate_dot_file("show", SHOW);
 
-	assert(status_ == NEW);
+	assert(status_ == status::NEW);
 
 	/*
 	 * Before show has been called, some functions might have done some testing
@@ -541,7 +541,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	{
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialized = false;
-		for(status_ = SHOWING; status_ != CLOSED;) {
+		for(status_ = status::SHOWING; status_ != status::CLOSED;) {
 			push_draw_event();
 
 			// process installed callback if valid, to allow e.g. network
@@ -563,8 +563,8 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 				mouse_button_state_initialized = true;
 			}
 
-			if(status_ == REQUEST_CLOSE) {
-				status_ = exit_hook_(*this) ? CLOSED : SHOWING;
+			if(status_ == status::REQUEST_CLOSE) {
+				status_ = exit_hook_(*this) ? status::CLOSED : status::SHOWING;
 			}
 
 			// Add a delay so we don't keep spinning if there's no event.

@@ -163,14 +163,11 @@ public:
 	}
 
 	/** The status of the window. */
-	enum status {
-		NEW,		   /**< The window is new and not yet shown. */
-		SHOWING,	   /**< The window is being shown. */
-		REQUEST_CLOSE, /**< The window has been requested to be
-						*   closed but still needs to evaluate the
-						*   request.
-						*/
-		CLOSED /**< The window has been closed. */
+	enum class status {
+		NEW,           /**< The window is new and not yet shown. */
+		SHOWING,       /**< The window is being shown. */
+		REQUEST_CLOSE, /**< The window has been requested to be closed but still needs to evaluate the request. */
+		CLOSED         /**< The window has been closed. */
 	};
 
 	/**
@@ -181,7 +178,7 @@ public:
 	 */
 	void close()
 	{
-		status_ = REQUEST_CLOSE;
+		status_ = status::REQUEST_CLOSE;
 	}
 
 	/**
