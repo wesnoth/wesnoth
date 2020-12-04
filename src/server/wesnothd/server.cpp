@@ -1124,7 +1124,7 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 	}
 
 	auto g = player_connections_.find(socket)->get_game();
-	if(g && g->started() && g->is_player(receiver_iter->socket()) && g->is_member(socket)) {
+	if(g && g->started() && g->is_player(receiver_iter->socket())) {
 		send_server_message(socket, "You cannot send private messages to players in a running game you observe.", "error");
 		return;
 	}
@@ -2170,7 +2170,7 @@ void server::roll_handler(const std::string& issuer_name,
 	}
 
 	auto g_ptr = player_ptr->get_game();
-	if(g_ptr && g_ptr->is_member(player_ptr->socket())) {
+	if(g_ptr) {
 		g_ptr->send_server_message_to_all(issuer_name + " rolled a die [1 - " + parameters + "] and got a " + value + ".", player_ptr->socket());
 	} else {
 		*out << " (The result is shown to others only in a game.)";
