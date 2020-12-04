@@ -1,6 +1,7 @@
 ## Version 1.15.7+dev
  ### Add-ons server
    * Fixed inability to write files (including the server configuration file) on Windows.
+   * Dropped plain text passphrase migration, unused in production since version 1.12.7 and 1.13.0 (issue #5080).
  ### Campaigns
  ### Multiplayer
  ### Terrain

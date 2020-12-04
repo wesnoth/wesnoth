@@ -268,25 +268,6 @@ server::server(const std::string& cfg_file, unsigned short port)
 	LOG_CS << "Port: " << port_ << '\n';
 	LOG_CS << "Server directory: " << game_config::path << " (" << addons_.size() << " add-ons)\n";
 
-	if(!read_only_) {
-		// Migrate old add-ons to use hashed passphrases (1.12+)
-		for(auto& entry : addons_) {
-			auto& id = entry.first;
-			auto& addon = entry.second;
-
-			// Add-on already has a hashed password
-			if(addon["passphrase"].empty()) {
-				continue;
-			}
-
-			LOG_CS << "Addon '" << addon["title"] << "' uses unhashed passphrase. Fixing.\n";
-			set_passphrase(addon, addon["passphrase"]);
-			addon["passphrase"] = "";
-			mark_dirty(id);
-		}
-		write_config();
-	}
-
 	register_handlers();
 
 	start_server();
@@ -576,7 +557,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set attribute\n";
 			} else if(key == "name" || key == "version") {
 				ERR_CS << "setattr cannot be used to rename add-ons or change their version\n";
-			} else if(key == "passphrase" || key == "passhash"|| key == "passsalt") {
+			} else if(key == "passhash"|| key == "passsalt") {
 				ERR_CS << "setattr cannot be used to set auth data -- use setpass instead\n";
 			} else if(!addon.has_attribute(key)) {
 				// NOTE: This is a very naive approach for validating setattr's
