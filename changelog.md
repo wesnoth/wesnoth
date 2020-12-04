@@ -5,6 +5,8 @@
  ### Campaigns
  ### Multiplayer
    * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
+ ### Packaging
+  * SDL_Image 2.0.2 or later is now required (was 2.0.0).
  ### Terrain
  ### Translations
    * Updated translations: British English, Czech, Polish, Russian

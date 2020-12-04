@@ -19,7 +19,7 @@ order to build Wesnoth:
    * System
  * SDL2 libraries:
    * SDL2                      >= 2.0.4
-   * SDL2_image                >= 2.0.0 (with PNG and JPEG support)
+   * SDL2_image                >= 2.0.2 (with PNG and JPEG support)
    * SDL2_mixer                >= 2.0.0 (with Ogg Vorbis support)
    * SDL2_ttf                  >= 2.0.12
  * Fontconfig                  >= 2.4.1

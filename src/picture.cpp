@@ -1092,16 +1092,12 @@ save_result save_image(const surface& surf, const std::string& filename)
 		return save_result::no_image;
 	}
 
-#ifdef SDL_IMAGE_VERSION_ATLEAST
-#if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
 	if(filesystem::ends_with(filename, ".jpeg") || filesystem::ends_with(filename, ".jpg") || filesystem::ends_with(filename, ".jpe")) {
 		LOG_DP << "Writing a JPG image to " << filename << std::endl;
 
 		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 75); // SDL takes ownership of the RWops
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
-#endif
-#endif
 
 	if(filesystem::ends_with(filename, ".png")) {
 		LOG_DP << "Writing a PNG image to " << filename << std::endl;
