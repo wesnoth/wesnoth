@@ -215,16 +215,6 @@ struct manager
 void set_color_adjustment(int r, int g, int b);
 
 /**
- * Sets the team colors used by the ~TC() image modification.
- *
- * @param colors               TC list, ordered by side number. If null, team
- *                             colors are reset to their defaults.
- */
-void set_team_colors(const std::vector<std::string>* colors = nullptr);
-
-const std::vector<std::string>& get_team_colors();
-
-/**
  * Sets the scaling factor for images.
  *
  * Changing the previous value automatically invalidates all cached scaled
