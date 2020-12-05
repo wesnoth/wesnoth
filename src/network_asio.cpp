@@ -56,9 +56,9 @@ namespace network_asio
 using boost::system::system_error;
 
 connection::connection(const std::string& host, const std::string& service)
-	: io_service_()
-	, resolver_(io_service_)
-	, socket_(io_service_)
+	: io_context_()
+	, resolver_(io_context_)
+	, socket_(io_context_)
 	, done_(false)
 	, write_buf_()
 	, read_buf_()
@@ -69,8 +69,8 @@ connection::connection(const std::string& host, const std::string& service)
 	, bytes_to_read_(0)
 	, bytes_read_(0)
 {
-	resolver_.async_resolve(
-		boost::asio::ip::tcp::resolver::query(host, service), std::bind(&connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
+	resolver_.async_resolve(boost::asio::ip::tcp::resolver::query(host, service),
+		std::bind(&connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 
 	LOG_NW << "Resolving hostname: " << host << '\n';
 }
@@ -130,7 +130,7 @@ void connection::handle_handshake(const boost::system::error_code& ec)
 
 void connection::transfer(const config& request, config& response)
 {
-	io_service_.reset();
+	io_context_.reset();
 	done_ = false;
 
 	write_buf_.reset(new boost::asio::streambuf);
@@ -147,10 +147,12 @@ void connection::transfer(const config& request, config& response)
 
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
 
-	boost::asio::async_write(socket_, bufs, std::bind(&connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
+	boost::asio::async_write(socket_, bufs,
+		std::bind(&connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
 		std::bind(&connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
 
-	boost::asio::async_read(socket_, *read_buf_, std::bind(&connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
+	boost::asio::async_read(socket_, *read_buf_,
+		std::bind(&connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
 		std::bind(&connection::handle_read, this, std::placeholders::_1, std::placeholders::_2, std::ref(response)));
 }
 

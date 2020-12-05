@@ -124,7 +124,8 @@ public:
 private:
 	std::thread worker_thread_;
 
-	boost::asio::io_service io_service_;
+	// TODO: make this of type io_context once we require Boost 1.66 or later
+	boost::asio::io_service io_context_;
 
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;

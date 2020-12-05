@@ -52,9 +52,9 @@ using boost::system::system_error;
 // main thread
 wesnothd_connection::wesnothd_connection(const std::string& host, const std::string& service)
 	: worker_thread_()
-	, io_service_()
-	, resolver_(io_service_)
-	, socket_(io_service_)
+	, io_context_()
+	, resolver_(io_context_)
+	, socket_(io_context_)
 	, last_error_()
 	, last_error_mutex_()
 	, handshake_finished_()
@@ -76,7 +76,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	// Starts the worker thread. Do this *after* the above async_resolve call or it will just exit immediately!
 	worker_thread_ = std::thread([this]() {
 		try {
-			io_service_.run();
+			io_context_.run();
 		} catch(const boost::system::system_error&) {
 			try {
 				// Attempt to pass the exception on to the handshake promise.
@@ -203,11 +203,11 @@ void wesnothd_connection::send_data(const configr_of& request)
 	std::ostream os(buf_ptr.get());
 	write_gz(os, request);
 
-	// No idea why io_service::post doesn't like this lambda while asio::post does.
+	// No idea why io_context::post doesn't like this lambda while asio::post does.
 #if BOOST_VERSION >= 106600
-	boost::asio::post(io_service_, [this, buf_ptr = std::move(buf_ptr)]() mutable {
+	boost::asio::post(io_context_, [this, buf_ptr = std::move(buf_ptr)]() mutable {
 #else
-	io_service_.post([this, buf_ptr]() {
+	io_context_.post([this, buf_ptr]() {
 #endif
 		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
 		send_queue_.push(std::move(buf_ptr));
@@ -247,7 +247,7 @@ void wesnothd_connection::stop()
 {
 	// TODO: wouldn't cancel() have the same effect?
 	MPTEST_LOG;
-	io_service_.stop();
+	io_context_.stop();
 }
 
 // worker thread
@@ -262,7 +262,7 @@ std::size_t wesnothd_connection::is_write_complete(const boost::system::error_co
 
 		LOG_NW << __func__ << " Error: " << ec << "\n";
 
-		io_service_.stop();
+		io_context_.stop();
 		return bytes_to_write_ - bytes_transferred;
 	}
 
@@ -286,7 +286,7 @@ void wesnothd_connection::handle_write(const boost::system::error_code& ec, std:
 
 		LOG_NW << __func__ << " Error: " << ec << "\n";
 
-		io_service_.stop();
+		io_context_.stop();
 		return;
 	}
 
@@ -308,7 +308,7 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 
 		LOG_NW << __func__ << " Error: " << ec << "\n";
 
-		io_service_.stop();
+		io_context_.stop();
 		return bytes_to_read_ - bytes_transferred;
 	}
 
@@ -349,7 +349,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 
 		LOG_NW << __func__ << " Error: " << ec << "\n";
 
-		io_service_.stop();
+		io_context_.stop();
 		return;
 	}
 

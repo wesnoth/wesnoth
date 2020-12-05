@@ -73,7 +73,7 @@ public:
 	std::size_t poll()
 	{
 		try {
-			return io_service_.poll();
+			return io_context_.poll();
 		} catch(const boost::system::system_error& err) {
 			if(err.code() == boost::asio::error::operation_aborted) {
 				return 1;
@@ -90,7 +90,7 @@ public:
 	 */
 	void run()
 	{
-		io_service_.run();
+		io_context_.run();
 	}
 
 	void cancel();
@@ -122,7 +122,8 @@ public:
 	}
 
 private:
-	boost::asio::io_service io_service_;
+	// TODO: make this of type io_context once we require Boost 1.66 or later
+	boost::asio::io_service io_context_;
 
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;
