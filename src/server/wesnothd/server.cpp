@@ -46,6 +46,7 @@
 #endif
 
 #include <boost/algorithm/string.hpp>
+#include <boost/scope_exit.hpp>
 
 #include <algorithm>
 #include <cassert>
@@ -697,16 +698,18 @@ void server::login_client(boost::asio::yield_context yield, socket_ptr socket)
 	if(check_error(ec, socket)) return;
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	add_player(socket, wesnothd::player(
-				username,
-				player_cfg,
-				registered,
-				client_version,
-				client_source,
-				default_max_messages_,
-				default_time_period_,
-				is_moderator
-			)
+	wesnothd::player new_player(
+		username,
+		player_cfg,
+		registered,
+		client_version,
+		client_source,
+		default_max_messages_,
+		default_time_period_,
+		is_moderator
+	);
+	boost::asio::spawn(io_service_,
+		[this, socket, new_player](boost::asio::yield_context yield) { handle_player(yield, socket, new_player); }
 	);
 
 	LOG_SERVER << client_address(socket) << "\t" << username << "\thas logged on"
@@ -1013,7 +1016,7 @@ void server::send_password_request(socket_ptr socket,
 	async_send_doc(socket, doc);
 }
 
-void server::add_player(socket_ptr socket, const wesnothd::player& player)
+void server::handle_player(boost::asio::yield_context yield, socket_ptr socket, const player& player)
 {
 	if(lan_server_)
 		abort_lan_server_timer();
@@ -1021,6 +1024,10 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 	bool inserted;
 	std::tie(std::ignore, inserted) = player_connections_.insert(player_connections::value_type(socket, player));
 	assert(inserted);
+
+	BOOST_SCOPE_EXIT_ALL(this, &socket) {
+		remove_player(socket);
+	};
 
 	async_send_doc_queued(socket, games_and_users_list_);
 
@@ -1036,51 +1043,38 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 		send_server_message(socket, "A newer Wesnoth version, " + recommended_version_ + ", is out!", "alert");
 	}
 
-	read_from_player(socket);
-
 	// Send other players in the lobby the update that the player has joined
 	simple_wml::document diff;
 	make_add_diff(games_and_users_list_.root(), nullptr, "user", diff);
 	send_to_lobby(diff, socket);
-}
 
-void server::read_from_player(socket_ptr socket)
-{
-	async_receive_doc(socket,
-		std::bind(&server::handle_read_from_player, this, std::placeholders::_1, std::placeholders::_2),
-		std::bind(&server::remove_player, this, std::placeholders::_1)
-	);
-}
+	while(true) {
+		boost::system::error_code ec;
+		auto doc { coro_receive_doc(socket, yield[ec]) };
+		if(check_error(ec, socket) || !doc) return;
 
-void server::handle_read_from_player(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
-{
-	read_from_player(socket);
+		// DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output() << std::endl;
+		if(doc->child("refresh_lobby")) {
+			async_send_doc_queued(socket, games_and_users_list_);
+		}
 
-	// DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output() << std::endl;
-	if(doc->child("refresh_lobby")) {
-		async_send_doc_queued(socket, games_and_users_list_);
-		return;
-	}
+		if(simple_wml::node* whisper = doc->child("whisper")) {
+			handle_whisper(socket, *whisper);
+		}
 
-	if(simple_wml::node* whisper = doc->child("whisper")) {
-		handle_whisper(socket, *whisper);
-		return;
-	}
+		if(simple_wml::node* query = doc->child("query")) {
+			handle_query(socket, *query);
+		}
 
-	if(simple_wml::node* query = doc->child("query")) {
-		handle_query(socket, *query);
-		return;
-	}
+		if(simple_wml::node* nickserv = doc->child("nickserv")) {
+			handle_nickserv(socket, *nickserv);
+		}
 
-	if(simple_wml::node* nickserv = doc->child("nickserv")) {
-		handle_nickserv(socket, *nickserv);
-		return;
-	}
-
-	if(!player_is_in_game(socket)) {
-		handle_player_in_lobby(socket, doc);
-	} else {
-		handle_player_in_game(socket, doc);
+		if(!player_is_in_game(socket)) {
+			handle_player_in_lobby(socket, doc);
+		} else {
+			handle_player_in_game(socket, doc);
+		}
 	}
 }
 

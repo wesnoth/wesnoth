@@ -45,9 +45,7 @@ private:
 		const std::string& user, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
 
-	void add_player(socket_ptr socket, const wesnothd::player&);
-	void read_from_player(socket_ptr socket);
-	void handle_read_from_player(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
+	void handle_player(boost::asio::yield_context yield, socket_ptr socket, const player& player);
 	void handle_player_in_lobby(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 	void handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
