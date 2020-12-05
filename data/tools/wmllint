@@ -2882,8 +2882,8 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = [x for x in line]
                     outmap.append(fields)
-                    if not maskwarn and maptype == 'map' and "_f" in line:
-                        print('"%s", line %d: warning, fog in map file' \
+                    if not maskwarn and maptype == 'map' and ("_f" in line or "_s" in line):
+                        print('"%s", line %d: warning, fog or shroud in map file' \
                               % (filename, lineno+1))
                         maskwarn = True
             # Deduce the map type
