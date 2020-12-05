@@ -1050,8 +1050,8 @@ static void precache_file_existence_internal(const std::string& dir, const std::
 
 	std::vector<std::string> files_found;
 	std::vector<std::string> dirs_found;
-	filesystem::get_files_in_dir(checked_dir, &files_found, &dirs_found, filesystem::FILE_NAME_ONLY,
-			filesystem::NO_FILTER, filesystem::DONT_REORDER);
+	filesystem::get_files_in_dir(checked_dir, &files_found, &dirs_found, filesystem::name_mode::FILE_NAME_ONLY,
+			filesystem::filter_mode::NO_FILTER, filesystem::reorder_mode::DONT_REORDER);
 
 	for(const auto& f : files_found) {
 		image_existence_map[subdir + f] = true;

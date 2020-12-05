@@ -484,7 +484,7 @@ void file_dialog::refresh_fileview()
 
 	// TODO: Need to detect and handle cases where we don't have search permission
 	//       on current_dir_, otherwise things may get weird.
-	filesystem::get_files_in_dir(current_dir_, &dir_files_, &dir_subdirs_, filesystem::FILE_NAME_ONLY);
+	filesystem::get_files_in_dir(current_dir_, &dir_files_, &dir_subdirs_, filesystem::name_mode::FILE_NAME_ONLY);
 	isort_dir_entries(dir_files_);
 	isort_dir_entries(dir_subdirs_);
 

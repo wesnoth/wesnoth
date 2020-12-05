@@ -267,10 +267,10 @@ create_engine::create_engine(saved_game& state)
 
 	// TODO: the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
-		nullptr, filesystem::FILE_NAME_ONLY);
+		nullptr, filesystem::name_mode::FILE_NAME_ONLY);
 
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/scenarios", &user_scenario_names_,
-		nullptr, filesystem::FILE_NAME_ONLY);
+		nullptr, filesystem::name_mode::FILE_NAME_ONLY);
 
 	DBG_MP << "initializing all levels, eras and mods\n";
 

@@ -750,9 +750,9 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::strin
 {
 	if(is_directory_) {
 		filesystem::get_files_in_dir(name, &files_, nullptr,
-			filesystem::ENTIRE_FILE_PATH,
-			filesystem::SKIP_MEDIA_DIR,
-			filesystem::DO_REORDER
+			filesystem::name_mode::ENTIRE_FILE_PATH,
+			filesystem::filter_mode::SKIP_MEDIA_DIR,
+			filesystem::reorder_mode::DO_REORDER
 		);
 
 		for(const std::string& fname : files_) {
@@ -1722,8 +1722,8 @@ void preprocess_resource(const std::string& res_name,
 	if(filesystem::is_directory(res_name)) {
 		std::vector<std::string> dirs, files;
 
-		filesystem::get_files_in_dir(res_name, &files, &dirs, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR,
-				filesystem::DO_REORDER);
+		filesystem::get_files_in_dir(res_name, &files, &dirs, filesystem::name_mode::ENTIRE_FILE_PATH, filesystem::filter_mode::SKIP_MEDIA_DIR,
+				filesystem::reorder_mode::DO_REORDER);
 
 		// Subdirectories
 		for(const std::string& dir : dirs) {

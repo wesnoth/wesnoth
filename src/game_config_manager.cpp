@@ -213,7 +213,7 @@ void game_config_manager::load_game_config(bool reload_everything)
 				const std::string user_campaign_dir = filesystem::get_addons_dir();
 				std::vector<std::string> user_files;
 				filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
-						filesystem::ENTIRE_FILE_PATH);
+						filesystem::name_mode::ENTIRE_FILE_PATH);
 			}
 			for (const std::string& umc : user_dirs) {
 				const std::string cores_file = umc + "/cores.cfg";
@@ -382,7 +382,7 @@ void game_config_manager::load_addons_cfg()
 	std::vector<std::string> user_files;
 
 	filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
-		filesystem::ENTIRE_FILE_PATH);
+		filesystem::name_mode::ENTIRE_FILE_PATH);
 
 	// Warn player about addons using the no-longer-supported single-file format.
 	for(const std::string& file : user_files) {
@@ -410,7 +410,7 @@ void game_config_manager::load_addons_cfg()
 	user_dirs.clear();
 
 	filesystem::get_files_in_dir(user_campaign_dir, nullptr, &user_dirs,
-		filesystem::FILE_NAME_ONLY);
+		filesystem::name_mode::FILE_NAME_ONLY);
 
 	// Load the addons.
 	for(const std::string& addon_id : user_dirs) {
