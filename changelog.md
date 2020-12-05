@@ -4,7 +4,7 @@
      * S11: fix low probability case of enemy being unreachable
      * S11: recall ghosts if available and ensure the player gets one level 2 ghost.
  ### Translations
-   * Updated translations: British English, Catalan, French, German, Japanese,
+   * Updated translations: British English, Catalan, French, German, Italian, Japanese,
      Polish, Portuguese (Brazil), Russian
  ### User interface
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
