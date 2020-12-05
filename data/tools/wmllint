@@ -168,6 +168,15 @@
 # You can disable this sanity check for the current line with the comment
 # "# wmllint: no ellipsecheck".
 #
+# In the 1.13 development series, the ability to implement custom conditional
+# tags by using Lua was added. wmllint, of course, doesn't handle Lua files,
+# so to avoid having them incorrectly recognized as "illegal child of [if]"
+# you can declare them with this magic comment:
+# # wmllint: conditional tag <tag_name>
+# Do not surround <tag_name> with square braces, because wmllint will do so
+# automatically; on the other hand, you can specify multiple tags to be
+# recognized as a comma-separated list.
+#
 #                              DEVELOPER INFORMATION
 #
 # All conversion logic for lifting WML and maps from older versions of the
@@ -1122,6 +1131,12 @@ storedids = {}
 # magic comment, "#wmllint: usagetype[s]".
 usage_types = ["scout", "fighter", "mixed fighter", "archer", "healer"]
 
+# Since 1.13, UMC authors can define their own conditional tags in Lua
+# This list can be populated by using the magic comment
+# # wmllint: conditional tag <tag_name>
+# It will be then used by local_sanity_check()
+custom_conditionals = []
+
 # These are accumulated by sanity_check() and examined by consistency_check()
 unit_types = []
 derived_units = []
@@ -1318,6 +1333,16 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     if ancestors:
         parent = ancestors[-1]
         ancestors = ancestors[:-1]
+    # Magic comment for adding custom conditional tags
+    # Placed here rather than in global_sanity_check(), because
+    # local_sanity_check() is used first
+    # Do not use square braces while listing the new tags
+    # they'll be automatically added by the code below
+    # this is done to prevent possible interactions with other parts of the code
+    m = re.search("# *wmllint: conditional tag +(.*)", nav.text)
+    if m:
+        for new_conditional in m.group(1).split(","):
+            custom_conditionals.append("[" + new_conditional.strip() + "]")
     # Check for things marked translated that aren't strings or name generators
     if "_" in nav.text and not ignored:
         m = re.search(r'[=(]\s*_\s+("|<<)?', nav.text)
@@ -1340,7 +1365,9 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if isOpener(nav.element) and nav.element not in ("[and]",
                            "[else]", "[elseif]", "[frame]", "[have_location]",
                            "[have_unit]", "[not]", "[or]", "[then]", "[lua]",
-                           "[variable]") and not nav.element.endswith("_frame]") and not nav.element.startswith("[filter"):
+                           "[variable]") and not nav.element.endswith("_frame]") \
+                           and not nav.element.startswith("[filter") and \
+                           nav.element not in custom_conditionals:
             print(errlead + 'illegal child of [if]:', nav.element)
     # Check for fluky credit parts
     if parent == "[entry]":
