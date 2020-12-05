@@ -21,7 +21,7 @@ class config;
 #include <ctime>
 #include <string>
 
-#include <boost/asio.hpp>
+#include <boost/asio/io_service.hpp>
 
 /**
  * An interface class to handle nick registration

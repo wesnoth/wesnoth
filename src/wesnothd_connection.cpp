@@ -17,10 +17,10 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
-#include <functional>
 
 #include <cstdint>
 #include <deque>
+#include <functional>
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)

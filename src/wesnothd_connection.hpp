@@ -33,15 +33,19 @@
 #include "configr_assign.hpp"
 #include "wesnothd_connection_error.hpp"
 
-#include <boost/asio.hpp>
+#include <boost/asio/io_service.hpp>
+#include <boost/asio/ip/tcp.hpp>
+#include <boost/asio/read.hpp>
+#include <boost/asio/streambuf.hpp>
+#include <boost/asio/write.hpp>
 
 #include <condition_variable>
 #include <deque>
 #include <future>
 #include <list>
-#include <thread>
 #include <mutex>
 #include <queue>
+#include <thread>
 
 class config;
 

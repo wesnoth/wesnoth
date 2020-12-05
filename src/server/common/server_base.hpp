@@ -25,7 +25,6 @@
 #include <map>
 
 #include <boost/asio.hpp>
-#include <boost/asio/signal_set.hpp>
 #include <boost/shared_array.hpp>
 
 typedef std::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;

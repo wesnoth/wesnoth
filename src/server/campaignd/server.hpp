@@ -23,7 +23,6 @@
 #include <functional>
 #include <unordered_map>
 #include <unordered_set>
-#include <boost/asio/steady_timer.hpp>
 
 #include <chrono>
 #include <iosfwd>

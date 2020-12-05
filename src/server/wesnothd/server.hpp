@@ -23,10 +23,8 @@
 #include "server/common/server_base.hpp"
 #include "server/wesnothd/player_connection.hpp"
 
-#include <boost/shared_array.hpp>
-
-#include <boost/asio/signal_set.hpp>
 #include <boost/asio/steady_timer.hpp>
+
 #include <random>
 
 namespace wesnothd

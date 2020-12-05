@@ -18,11 +18,6 @@
 #include "server/common/server_base.hpp"
 #include "server/common/simple_wml.hpp"
 
-#ifndef _WIN32
-#define BOOST_ASIO_DISABLE_THREADS
-#endif
-#include <boost/asio.hpp>
-
 #include <boost/multi_index/hashed_index.hpp>
 #include <boost/multi_index/mem_fun.hpp>
 #include <boost/multi_index/member.hpp>
