@@ -55,7 +55,7 @@ config preprocess_and_parse(const std::string& wml_str, preproc_map* macro_map)
 {
 	tmp_file tmp_f;
 	tmp_f.set(wml_str);
-	auto b = preprocess_file(tmp_f.path.native(), macro_map);
+	auto b = preprocess_file(tmp_f.path.string(), macro_map);
 	config actual;
 	read(actual, *b);
 	return actual;
