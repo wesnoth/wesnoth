@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: westnothsota\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 04:53 UTC\n"
+"POT-Creation-Date: 2020-12-05 20:44 UTC\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1434,7 +1434,7 @@ msgstr "Oh, es ist ein Magier, der auch Witze macht! Los geht´s."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:606
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:573
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:575
 msgid "You have no more time."
 msgstr "Ihr habt keine Zeit mehr."
 
@@ -1459,8 +1459,8 @@ msgstr ""
 "leichten Licht, das mich davon abhielt, allzu böse zu stürzen. Dann sah ich "
 "endlich ein helleres Licht weiter vorne."
 
-#. [unit]: type=Sacrifice, id=necromancer_on_altar
 #. [side]: type=Dark Sorcerer SotA, id=Ras-Tabahn
+#. [unit]: type=Sacrifice, id=necromancer_on_altar
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:36
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:38
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/17_Mortality.cfg:279
@@ -1644,9 +1644,11 @@ msgstr "Nun denn. Wir werden es so machen, wie du es vorgeschlagen hast."
 #. [label]
 #. [unit]: type=Ruffian SotA, id=Carcyn
 #. [scenario]: id=08_Carcyn
+#. The name of the city
+#. male name
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:13
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:158
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:271
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:161
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:280
 msgid "Carcyn"
 msgstr "Carcyn"
 
@@ -1702,57 +1704,64 @@ msgid "Inn"
 msgstr "Gasthaus"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:143
+#. or Fishing Supplies
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:144
 msgid "Tackle Shop"
 msgstr "Angelerladen"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:148
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:149
 msgid "Cemetery"
 msgstr "Friedhof"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:153
+#. the old word for "general store"
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:155
 msgid "Mercantile"
 msgstr "Kaufhaus"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:163
+#. the old word for "pub". "Bar" is about the same.
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:167
 msgid "Public House"
 msgstr "Dorftreff"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:168
+#. or prison, or just "Jail"
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:173
 msgid "Jailhouse"
 msgstr "Gefängnis"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:173
+#. or Boatyard
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:179
 msgid "Boatworks"
 msgstr "Bootswerke"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:178
+#. "Grange" in the American usage: farmers' association
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:185
 msgid "Grange Hall"
 msgstr "Gutshof"
 
 #. [unit]: type=Delinquent, id=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:251
+#. female name
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:259
 msgid "Shynal"
 msgstr "Shynal"
 
 #. [message]: speaker=Carcyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:281
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:290
 msgid "Carcyn Fisher at your service, and this is my friend Shynal."
 msgstr "Carcyn Fischer zu deinen Diensten und das ist mein Freund Shynal."
 
 #. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:285
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:294
 msgid "“Friend?” (<i>Giggle</i>) Oh, yes, we’re very good friends."
 msgstr "\"Freund?\" (<i>Kichern</i>) Oh, ja, wir sind sehr gute Freunde."
 
 #. [message]: speaker=Carcyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:289
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:298
 msgid ""
 "Or... you know. Thanks so much for getting us out, sir. We would be glad to "
 "follow you!"
@@ -1761,24 +1770,24 @@ msgstr ""
 "würden Euch gerne folgen!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:293
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:302
 msgid "You are Carcyn the Third I presume?"
 msgstr "Du bist Carcyn der Dritte, so wie es aussieht?"
 
 #. [message]: speaker=Carcyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:302
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:311
 msgid "Don’t remind me. My father is the one who threw me in this hole."
 msgstr ""
 "Erinnere mich nicht daran. Mein Vater ist derjenige, der mich in dieses Loch "
 "geschmissen hat."
 
 #. [message]: speaker=Carcyn Fisher
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:306
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:315
 msgid "You stay out of this, son."
 msgstr "Du hältst dich da raus, Sohn!"
 
 #. [message]: speaker=Carcyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:310
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:319
 msgid ""
 "Not a chance! I’ve waited all my life to see someone put you in your place. "
 "Here is someone you can’t push around!"
@@ -1787,12 +1796,12 @@ msgstr ""
 "deinen Platz zeigt. Das ist jemand, den du mal nicht herumschubsen kannst!"
 
 #. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:314
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:323
 msgid "And we’re leaving this stinking town!"
 msgstr "Und wir verlassen diese stinkende Stadt!"
 
 #. [message]: speaker=Carcyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:320
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:329
 msgid ""
 "The only Carcyn now. I’ve waited all my life to see someone to put my father "
 "in his place. I guess you did that."
@@ -1801,17 +1810,17 @@ msgstr ""
 "der meinem Vater mal zurechtweist. Ich schätze, das warst du."
 
 #. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:324
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:333
 msgid "You’re the only Carcyn for me."
 msgstr "Du bist der einzige Carcyn für mich."
 
 #. [message]: speaker=Raydah
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:337
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:346
 msgid "Look at that! He’s not from the Academy."
 msgstr "Sie mal einer an! Er ist nicht von der Akademie."
 
 #. [message]: speaker=Carcyn Fisher
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:341
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:350
 msgid ""
 "Hold your tongue! I can see that! I tolerate advisors but not when they only "
 "speak the obvious."
@@ -1820,17 +1829,17 @@ msgstr ""
 "wenn sie meinen, Offensichtliches sagen zu müssen."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:352
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:361
 msgid "I warned you not to defy me."
 msgstr "Ich habe dich gewarnt, dich mir nicht zu widersetzen."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:362
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:371
 msgid "Greetings! I am Ras-Tabahn the mage."
 msgstr "Grüße! Ich bin Ras-Tabahn, der Magier."
 
 #. [message]: speaker=Carcyn Fisher
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:366
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:375
 msgid ""
 "Greetings, traveler. I am Carcyn Fisher the Second. How can I be of service?"
 msgstr ""
@@ -1838,7 +1847,7 @@ msgstr ""
 "Ihnen helfen?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:370
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:379
 msgid ""
 "I come with an offer. An offer of training in the magical arts. An offer of "
 "learning, adventure, and escape from this town."
@@ -1848,7 +1857,7 @@ msgstr ""
 "beinhaltet."
 
 #. [message]: speaker=Carcyn Fisher
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:374
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:383
 msgid ""
 "No one in <i>my</i> town wishes to “escape”! We don’t care to hear your "
 "offer. Peddle your corruption elsewhere."
@@ -1857,7 +1866,7 @@ msgstr ""
 "für dein Angebot. Verbreitet Eure finsteren Angebote gefälligst woanders!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:378
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:387
 msgid ""
 "The offer is not intended for <i>you</i>, it is for your youth. I will send "
 "my agents to every house and public space in this town and repeat my offer. "
@@ -1868,7 +1877,7 @@ msgstr ""
 "dort mein Angebot wiederholen und du wirst das erlauben."
 
 #. [message]: speaker=Carcyn Fisher
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:382
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:391
 msgid ""
 "I will do no such thing! I will be dead before I allow you to ensorcell our "
 "children!"
@@ -1877,12 +1886,12 @@ msgstr ""
 "Zaubern in Kontakt zu bringen, sterbe ich lieber!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:386
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:395
 msgid "That may well be true."
 msgstr "So soll es geschehen."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:394
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:403
 msgid ""
 "Hmm. The youngsters most willing to leave may be the ones in the jailhouse. "
 "I should investigate."
@@ -1891,12 +1900,12 @@ msgstr ""
 "vielleicht die im Gefängnis. Ich sollte Nachforschungen anstellen."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:437
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:446
 msgid "You can now recruit dark adepts!"
 msgstr "Du kannst nun Dunkle Adepten rekrutieren!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:463
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:472
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:416
 msgid ""
 "This has taken too long. We will surely miss our meeting with Ardonna now."
@@ -2052,14 +2061,16 @@ msgid "Okean"
 msgstr "Okean"
 
 #. [message]: speaker=$unit.id
+#. Bones examined by a ghost, skeleton, ghoul, or corpse.
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:130
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:158
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:159
 msgid "Bones. Claws and wings."
 msgstr "Knochen. Klauen und Flügel."
 
 #. [message]: speaker=$unit.id
+#. Bones examined by a human.
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:137
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:165
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:166
 msgid "There are some large bones here. I can see claws and wings."
 msgstr "Hier sind ein paar große Knochen. Ich kann Klauen und Flügel sehen."
 
@@ -2095,7 +2106,7 @@ msgstr ""
 #. [message]: speaker=$other_human
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:242
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:241
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:242
 msgid "Oh, you were right!"
 msgstr "Oh, du hattest recht!"
 
@@ -2112,7 +2123,7 @@ msgstr "Großartig! Diese Vögel könnten sehr nützlich sein."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:314
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:338
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:339
 msgid "You can now recruit chocobones!"
 msgstr "Du kannst nun Knochenreiter rekrutieren!"
 
@@ -2162,7 +2173,8 @@ msgstr ""
 "uns zu schaden."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:488
+#. here "you" means both Carcyn and Shynal
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:489
 msgid ""
 "addressed_plural^This is going to cost us, but I want to keep some gold "
 "around for emergencies — I think 50 is about right. You help me collect "
@@ -2173,49 +2185,50 @@ msgstr ""
 "Sammeln. (<i>hust, hust</i>)"
 
 #. [message]: speaker=Carcyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:492
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:493
 msgid "Right away sir."
 msgstr "Schon unterwegs Sir."
 
 #. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:496
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:497
 msgid "Are you feeling well?"
 msgstr "Geht es Ihnen gut?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:500
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:534
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:501
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:536
 msgid "Yes, yes. I’m quite all right."
 msgstr "Ja ja. Mir geht es recht gut."
 
 #. [message]: speaker=Shynal
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:504
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:538
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:505
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:540
 msgid "I don’t fancy wading in the water to fight these things."
 msgstr "Ich mag es nicht im Wasser zu waten um gegen diese Dinger zu kämpfen."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:508
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:543
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:509
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:545
 msgid "No problem. We can lure them onto land."
 msgstr "Kein Problem. Wir können sie an Land locken."
 
 #. [message]: speaker=Shynal
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:512
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:547
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:513
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:549
 msgid "How?"
 msgstr "Wie?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:516
+#. here "you" means both Carcyn and Shynal, translating it as if "you" meant only Shynal is also ok
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:518
 msgid ""
 "addressed_plural^Have you never been fishing before? With bait of course."
 msgstr "Warst du noch nie angeln? Mit einem Köder natürlich."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:526
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:528
 msgid ""
 "This is going to cost us, but I want to keep some gold around for "
 "emergencies — I think 50 is about right. Help me collect some. (<i>Cough, "
@@ -2226,22 +2239,22 @@ msgstr ""
 "(<i>hust, hust</i>)"
 
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:530
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:532
 msgid "Right away sir. Are you feeling well?"
 msgstr "Schon unterwegs Sir. Geht es Ihnen gut?"
 
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:539
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:541
 msgid "self_female^I don’t fancy wading in the water to fight these things."
 msgstr "Ich mag es nicht im Wasser zu waten um gegen diese Dinger zu kämpfen."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:551
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:553
 msgid "Have you never been fishing before? With bait of course."
 msgstr "Warst du noch nie angeln? Mit einem Köder natürlich."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:561
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:563
 msgid ""
 "This is going to cost me, but I want to keep some gold around for "
 "emergencies — I think 50 is about right. I’d better send someone to collect "
@@ -2525,7 +2538,8 @@ msgid "Walking Trees"
 msgstr "Laufende Bäume"
 
 #. [part]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:21
+#. the "elf sorceress" is actually of the type Elvish Enchantress, not Elvish Sorceress
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:22
 msgid ""
 "17 IV, 23 YW\n"
 "\n"
@@ -2550,23 +2564,23 @@ msgstr ""
 "den Wäldern waren, begegneten wir einer Elfenzauberin."
 
 #. [side]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:42
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:43
 msgid "Forest"
 msgstr "Wald"
 
 #. [unit]: type=Elvish Enchantress, id=Isthiniel
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:50
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:51
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:749
 msgid "Isthiniel"
 msgstr "Isthiniel"
 
 #. [objective]: condition=win
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:101
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:102
 msgid "Move Ardonna to the northeast corner of the map"
 msgstr "Bringt Ardonna zur nordöstlichen Ecke der Karte"
 
 #. [message]: speaker=Isthiniel
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:315
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:316
 msgid ""
 "I felt our dead stirring and corruption descending on the forest. When I "
 "left to investigate, I expected to find grim, veiled forces at work. Instead "
@@ -2581,7 +2595,7 @@ msgstr ""
 "weiter zu stören und du musst die Toten entlassen, die du versklavt hast."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:319
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:320
 msgid ""
 "Well, that I won’t do. However, if you do not attack, you will be rid of me "
 "soon, as I only wish to leave these woods."
@@ -2590,7 +2604,7 @@ msgstr ""
 "bald los werden, da ich die Wälder lediglich verlassen will."
 
 #. [message]: speaker=Isthiniel
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:323
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:324
 msgid ""
 "Attack? No, I cannot. Most of my people won’t come here; it is only duty "
 "that drives me. However, the woods themselves are disturbed, and they will "
@@ -2602,23 +2616,23 @@ msgstr ""
 "erwachen."
 
 #. [unit]: type=Ancient Wose, id=Dolmathengalin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:340
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:341
 msgid "Dolmathengalin"
 msgstr "Dolmathengalin"
 
 #. [message]: speaker=Dolmathengalin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:347
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:348
 msgid "You are greeted daughter of elves. Why does the forest moan in despair?"
 msgstr ""
 "Sei gegrüßt, Tochter der Elfen. Warum stöhnt der Wald vor Verzweiflung auf?"
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:351
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:352
 msgid "That tree can talk!"
 msgstr "Der Baum kann sprechen!"
 
 #. [message]: speaker=Isthiniel
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:355
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:356
 msgid ""
 "That dark mage has woken our dead and stifles the air with her very "
 "presence. Please wake your people, Elder, and destroy her."
@@ -2627,12 +2641,12 @@ msgstr ""
 "durch ihre Präsenz. Bitte wecke deine Leute, Ältester, und vernichte sie."
 
 #. [message]: speaker=Dolmathengalin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:359
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:360
 msgid "This shall be done."
 msgstr "So soll es geschehen."
 
 #. [message]: speaker=Isthiniel
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:363
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:364
 msgid "I shall leave you. I have no wish to witness this violence."
 msgstr ""
 "Ich werde euch verlassen. Ich habe kein Interesse daran, dieses Blutbad "
@@ -2981,7 +2995,8 @@ msgid "Mountain Pass"
 msgstr "Gebirgspass"
 
 #. [part]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:22
+#. "consumption" is an old word for tuberculosis
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:23
 msgid ""
 "6 V, 23 YW\n"
 "\n"
@@ -3007,71 +3022,71 @@ msgstr ""
 "Ernsthaftigkeit des Problems leugnen."
 
 #. [side]: type=Gryphon
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:44
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:55
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:45
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:56
 msgid "Gryphons"
 msgstr "Greifen"
 
 #. [objective]: condition=win
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:71
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:72
 msgid "Move Ardryn-Na and Ras-Tabahn to level ground in the northeast corner"
 msgstr "Bringe Ardryn-Na und Ras-Tabahn zum Ort in der nordöstlichen Ecke"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:145
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:146
 msgid "There are some... large bones there. Claws and wings... I think."
 msgstr "Da sind … riesige Knochen. Ich glaube … Flügel und Klauen."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:174
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:175
 msgid "I wonder what are they from. A gryphon perhaps?"
 msgstr "Von was können die kommen, einem Greifen?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:178
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:179
 msgid "A large (<i>cough, cough</i>) flightless bird... would be my guess."
 msgstr ""
 "Ein großer (<i>hust, hust</i>) flugunfähiger Vogel… würde ich schätzen."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:182
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:183
 msgid "Well, there is an easy way to discover the truth."
 msgstr "Na ja, es gibt einen einfachen Weg es herauszufinden."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:251
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:252
 msgid "I wonder... if it could carry... someone light. Vendraxis perhaps."
 msgstr ""
 "Ich frage mich … ob es etwas tragen könnte … jemand leichtes. Vendraxis "
 "vielleicht."
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:255
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:256
 msgid "I will not climb on that ridiculous thing!"
 msgstr "Ich werd nicht auf das irre Ding steigen!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:261
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:262
 msgid "I wonder... if it could carry... someone light."
 msgstr "Ich frage mich … ob es etwas tragen könnte … jemand leichtes."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:268
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:269
 msgid "A skeleton could ride it I think."
 msgstr "Ein Skelett könnte drauf fliegen."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:329
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:330
 msgid "That’s fantastic! These birds could be quite useful."
 msgstr "Klasse! Diese Vögel können sehr hilfreich sein."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:348
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:349
 msgid "What dangers may lurk in this fog?"
 msgstr "Was für Gefahren mögen sich in dem Nebel verstecken?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:352
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:353
 msgid "Gryphons... live at this height. We should be cautious."
 msgstr "Greife … sie leben in diesen Höhen. Wir sollten achtsam sein."
 
@@ -3726,8 +3741,8 @@ msgstr ""
 "die Dunkelheit. Nach einer langen Reise wurden wir von einer Sackgasse im "
 "Tunnel aufgehalten… aber die Wand war nicht fest."
 
-#. [side]
 #. [side]: type=Dwarvish Lord, id=Golbanduth
+#. [side]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:38
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:94
 msgid "Dwarves"
