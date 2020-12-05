@@ -19,6 +19,8 @@
 #include "log.hpp"
 #include "config.hpp"
 
+#include <boost/asio/post.hpp>
+
 #include <cstdlib>
 #include <sstream>
 
