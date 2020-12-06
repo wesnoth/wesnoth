@@ -425,9 +425,13 @@ std::ostream& operator<<(std::ostream& o, const server::request& r)
 
 void server::handle_new_client(socket_ptr socket)
 {
-	async_receive_doc(socket,
-					  std::bind(&server::handle_request, this, std::placeholders::_1, std::placeholders::_2)
-					  );
+	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
+		boost::system::error_code ec;
+		auto doc { coro_receive_doc(socket, yield[ec]) };
+		if(check_error(ec, socket) || !doc) return;
+
+		handle_request(socket, doc);
+	});
 }
 
 void server::handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)

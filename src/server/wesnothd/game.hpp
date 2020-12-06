@@ -31,6 +31,7 @@ namespace wesnothd
 {
 typedef std::vector<socket_ptr> user_vector;
 typedef std::vector<socket_ptr> side_vector;
+class server;
 
 class game
 {
@@ -41,7 +42,7 @@ public:
 		(EMPTY, "null")
 	)
 
-	game(player_connections& player_connections,
+	game(wesnothd::server& server, player_connections& player_connections,
 			const socket_ptr& host,
 			const std::string& name = "",
 			bool save_replays = false,
@@ -243,8 +244,8 @@ public:
 	 */
 	bool describe_slots();
 
-	void send_server_message_to_all(const char* message, const socket_ptr& exclude = socket_ptr()) const;
-	void send_server_message_to_all(const std::string& message, const socket_ptr& exclude = socket_ptr()) const
+	void send_server_message_to_all(const char* message, const socket_ptr& exclude = socket_ptr());
+	void send_server_message_to_all(const std::string& message, const socket_ptr& exclude = socket_ptr())
 	{
 		send_server_message_to_all(message.c_str(), exclude);
 	}
@@ -264,8 +265,9 @@ public:
 		send_and_record_server_message(message.c_str(), exclude);
 	}
 
-	void send_data(
-			simple_wml::document& data, const socket_ptr& exclude = socket_ptr(), std::string packet_type = "") const;
+	template<typename Container>
+	void send_to_players(simple_wml::document& data, const Container& players, socket_ptr exclude = socket_ptr());
+	void send_data(simple_wml::document& data, const socket_ptr& exclude = socket_ptr(), std::string packet_type = "");
 
 	void clear_history();
 	void record_data(simple_wml::document* data);
@@ -396,7 +398,7 @@ private:
 	void send_data_sides(simple_wml::document& data,
 			const simple_wml::string_span& sides,
 			const socket_ptr& exclude = socket_ptr(),
-			std::string packet_type = "") const;
+			std::string packet_type = "");
 
 	void send_data_observers(
 			simple_wml::document& data, const socket_ptr& exclude = socket_ptr(), std::string packet_type = "") const;
@@ -405,8 +407,8 @@ private:
 	 * Send [observer] tags of all the observers in the game to the user or
 	 * everyone if none given.
 	 */
-	void send_observerjoins(const socket_ptr& sock = socket_ptr()) const;
-	void send_observerquit(const socket_ptr& observer) const;
+	void send_observerjoins(const socket_ptr& sock = socket_ptr());
+	void send_observerquit(const socket_ptr& observer);
 	void send_history(const socket_ptr& sock) const;
 
 	/** In case of a host transfer, notify the new host about its status. */
@@ -447,7 +449,7 @@ private:
 	 *
 	 * Only sends data if the game is initialized but not yet started.
 	 */
-	void send_user_list(const socket_ptr& exclude = socket_ptr()) const;
+	void send_user_list(const socket_ptr& exclude = socket_ptr());
 
 	/** Returns the name of the user or "(unfound)". */
 	std::string username(const socket_ptr& pl) const;
@@ -467,6 +469,7 @@ private:
 	/** Helps debugging controller tweaks. */
 	std::string debug_sides_info() const;
 
+	wesnothd::server& server;
 	player_connections& player_connections_;
 
 	// used for unique identification of game instances within wesnothd

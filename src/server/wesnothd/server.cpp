@@ -1308,7 +1308,7 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 	// Create the new game, remove the player from the lobby
 	// and set the player as the host/owner.
 	host_record.get_game().reset(
-		new wesnothd::game(player_connections_, host_record.socket(), game_name, save_replays_, replay_save_path_),
+		new wesnothd::game(*this, player_connections_, host_record.socket(), game_name, save_replays_, replay_save_path_),
 		std::bind(&server::cleanup_game, this, std::placeholders::_1)
 	);
 
@@ -1842,7 +1842,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			   << data.output();
 }
 
-void send_server_message(socket_ptr socket, const std::string& message, const std::string& type)
+void server::send_server_message(socket_ptr socket, const std::string& message, const std::string& type)
 {
 	simple_wml::document server_message;
 	simple_wml::node& msg = server_message.root().add_child("message");
@@ -1907,7 +1907,7 @@ void server::remove_player(socket_ptr socket)
 	if(game_ended) delete_game(g->id());
 }
 
-void server::send_to_lobby(simple_wml::document& data, socket_ptr exclude) const
+void server::send_to_lobby(simple_wml::document& data, socket_ptr exclude)
 {
 	for(const auto& player : player_connections_.get<game_t>().equal_range(0)) {
 		if(player.socket() != exclude) {
@@ -1916,7 +1916,7 @@ void server::send_to_lobby(simple_wml::document& data, socket_ptr exclude) const
 	}
 }
 
-void server::send_server_message_to_lobby(const std::string& message, socket_ptr exclude) const
+void server::send_server_message_to_lobby(const std::string& message, socket_ptr exclude)
 {
 	for(const auto& player : player_connections_.get<game_t>().equal_range(0)) {
 		if(player.socket() != exclude) {
@@ -1925,7 +1925,7 @@ void server::send_server_message_to_lobby(const std::string& message, socket_ptr
 	}
 }
 
-void server::send_server_message_to_all(const std::string& message, socket_ptr exclude) const
+void server::send_server_message_to_all(const std::string& message, socket_ptr exclude)
 {
 	for(const auto& player : player_connections_) {
 		if(player.socket() != exclude) {

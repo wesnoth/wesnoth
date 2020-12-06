@@ -193,7 +193,7 @@ bool check_error(const boost::system::error_code& error, socket_ptr socket)
 
 namespace {
 
-void info_table_into_simple_wml(simple_wml::document& doc, const std::string& parent_name, const info_table& info)
+void info_table_into_simple_wml(simple_wml::document& doc, const std::string& parent_name, const server_base::info_table& info)
 {
 	if(info.empty()) {
 		return;
@@ -207,31 +207,29 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
 
 }
 
-using SendQueue = std::map<socket_ptr, std::queue<std::shared_ptr<simple_wml::document>>>;
-SendQueue send_queue;
-
-static void handle_async_send_doc_queued(socket_ptr socket)
+void server_base::async_send_doc_queued(socket_ptr socket, simple_wml::document& doc)
 {
-	if(send_queue[socket].empty()) {
-		send_queue.erase(socket);
-	} else {
-		async_send_doc(socket, *(send_queue[socket].front()), handle_async_send_doc_queued, handle_async_send_doc_queued);
-		send_queue[socket].pop();
-	}
+	static boost::asio::strand<boost::asio::io_context::executor_type> strand { io_service_.get_executor() };
+	std::shared_ptr<simple_wml::document> doc_ptr { doc.clone() };
+
+	boost::asio::spawn(strand, [doc_ptr, socket](boost::asio::yield_context yield)
+	{
+		static std::map<socket_ptr, std::queue<std::shared_ptr<simple_wml::document>>> queues;
+
+		queues[socket].emplace(doc_ptr);
+		if(queues[socket].size() > 1) {
+			return;
+		}
+
+		while(queues[socket].size() > 0) {
+			coro_send_doc(socket, queues[socket].front(), yield);
+			queues[socket].pop();
+		}
+		queues.erase(socket);
+	});
 }
 
-void async_send_doc_queued(socket_ptr socket, simple_wml::document& doc)
-{
-	auto iter = send_queue.find(socket);
-	if(iter == send_queue.end()) {
-		send_queue[socket];
-		async_send_doc(socket, doc, handle_async_send_doc_queued, handle_async_send_doc_queued);
-	} else {
-		send_queue[socket].emplace(doc.clone());
-	}
-}
-
-void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info)
+void server_base::async_send_error(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
@@ -243,7 +241,7 @@ void async_send_error(socket_ptr socket, const std::string& msg, const char* err
 	async_send_doc_queued(socket, doc);
 }
 
-void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info)
+void server_base::async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());

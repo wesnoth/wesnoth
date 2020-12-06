@@ -42,6 +42,12 @@ public:
 	virtual ~server_base() {}
 	void run();
 
+	void async_send_doc_queued(socket_ptr socket, simple_wml::document& doc);
+
+	typedef std::map<std::string, std::string> info_table;
+	void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "", const info_table& info = {});
+	void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
+
 protected:
 	unsigned short port_;
 	bool keep_alive_;
@@ -78,9 +84,3 @@ protected:
 
 std::string client_address(socket_ptr socket);
 bool check_error(const boost::system::error_code& error, socket_ptr socket);
-
-void async_send_doc_queued(socket_ptr socket, simple_wml::document& doc);
-
-typedef std::map<std::string, std::string> info_table;
-void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "", const info_table& info = {});
-void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});

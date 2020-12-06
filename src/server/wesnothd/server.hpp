@@ -58,9 +58,10 @@ private:
 	void handle_join_game(socket_ptr socket, simple_wml::node& join);
 	void remove_player(socket_ptr socket);
 
-	void send_to_lobby(simple_wml::document& data, socket_ptr exclude = socket_ptr()) const;
-	void send_server_message_to_lobby(const std::string& message, socket_ptr exclude = socket_ptr()) const;
-	void send_server_message_to_all(const std::string& message, socket_ptr exclude = socket_ptr()) const;
+	void send_server_message(socket_ptr socket, const std::string& message, const std::string& type);
+	void send_to_lobby(simple_wml::document& data, socket_ptr exclude = socket_ptr());
+	void send_server_message_to_lobby(const std::string& message, socket_ptr exclude = socket_ptr());
+	void send_server_message_to_all(const std::string& message, socket_ptr exclude = socket_ptr());
 	bool player_is_in_game(socket_ptr socket) const {
 		return bool(player_connections_.find(socket)->get_game());
 	}
@@ -237,7 +238,5 @@ private:
 	void abort_lan_server_timer();
 	void handle_lan_server_shutdown(const boost::system::error_code& error);
 };
-
-void send_server_message(socket_ptr socket, const std::string& message, const std::string& type);
 
 }
