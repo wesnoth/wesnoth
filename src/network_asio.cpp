@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define BOOST_ASIO_NO_DEPRECATED
+
 #include "network_asio.hpp"
 
 #include "log.hpp"

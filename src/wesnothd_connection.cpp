@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define BOOST_ASIO_NO_DEPRECATED
+
 #include "wesnothd_connection.hpp"
 
 #include "gettext.hpp"
