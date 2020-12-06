@@ -35,9 +35,7 @@
 
 #include <boost/asio/io_service.hpp>
 #include <boost/asio/ip/tcp.hpp>
-#include <boost/asio/read.hpp>
 #include <boost/asio/streambuf.hpp>
-#include <boost/asio/write.hpp>
 
 #include <condition_variable>
 #include <deque>
@@ -142,8 +140,6 @@ private:
 	boost::asio::streambuf read_buf_;
 
 	void handle_resolve(const boost::system::error_code& ec, resolver::iterator iterator);
-
-	void connect(resolver::iterator iterator);
 	void handle_connect(const boost::system::error_code& ec, resolver::iterator iterator);
 
 	void handshake();

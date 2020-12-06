@@ -18,6 +18,10 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 
+#include <boost/asio/connect.hpp>
+#include <boost/asio/read.hpp>
+#include <boost/asio/write.hpp>
+
 #include <cstdint>
 #include <deque>
 #include <functional>
@@ -110,15 +114,8 @@ void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterato
 		throw system_error(ec);
 	}
 
-	connect(iterator);
-}
-
-// worker thread
-void wesnothd_connection::connect(resolver::iterator iterator)
-{
-	MPTEST_LOG;
-	socket_.async_connect(*iterator, std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, iterator));
-	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
+	boost::asio::async_connect(socket_, iterator,
+		std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 // worker thread
@@ -126,15 +123,8 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, re
 {
 	MPTEST_LOG;
 	if(ec) {
-		WRN_NW << "Failed to connect to " << iterator->endpoint().address() << ": " << ec.message() << '\n';
-		socket_.close();
-
-		if(++iterator == resolver::iterator()) {
-			ERR_NW << "Tried all IPs. Giving up" << std::endl;
-			throw system_error(ec);
-		} else {
-			connect(iterator);
-		}
+		ERR_NW << "Tried all IPs. Giving up" << std::endl;
+		throw system_error(ec);
 	} else {
 		LOG_NW << "Connected to " << iterator->endpoint().address() << '\n';
 		handshake();

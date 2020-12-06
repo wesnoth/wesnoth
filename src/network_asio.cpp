@@ -17,6 +17,10 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 
+#include <boost/asio/connect.hpp>
+#include <boost/asio/read.hpp>
+#include <boost/asio/write.hpp>
+
 #include <algorithm>
 #include <cstdint>
 #include <deque>
@@ -81,27 +85,15 @@ void connection::handle_resolve(const boost::system::error_code& ec, resolver::i
 		throw system_error(ec);
 	}
 
-	connect(iterator);
-}
-
-void connection::connect(resolver::iterator iterator)
-{
-	socket_.async_connect(*iterator, std::bind(&connection::handle_connect, this, std::placeholders::_1, iterator));
-	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
+	boost::asio::async_connect(socket_, iterator,
+		std::bind(&connection::handle_connect, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void connection::handle_connect(const boost::system::error_code& ec, resolver::iterator iterator)
 {
 	if(ec) {
-		WRN_NW << "Failed to connect to " << iterator->endpoint().address() << ": " << ec.message() << '\n';
-		socket_.close();
-
-		if(++iterator == resolver::iterator()) {
-			ERR_NW << "Tried all IPs. Giving up" << std::endl;
-			throw system_error(ec);
-		} else {
-			connect(iterator);
-		}
+		ERR_NW << "Tried all IPs. Giving up" << std::endl;
+		throw system_error(ec);
 	} else {
 		LOG_NW << "Connected to " << iterator->endpoint().address() << '\n';
 		handshake();
