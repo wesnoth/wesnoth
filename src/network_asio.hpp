@@ -134,8 +134,16 @@ private:
 	std::unique_ptr<boost::asio::streambuf> write_buf_;
 	std::unique_ptr<boost::asio::streambuf> read_buf_;
 
-	void handle_resolve(const boost::system::error_code& ec, resolver::iterator iterator);
-	void handle_connect(const boost::system::error_code& ec, resolver::iterator iterator);
+#if BOOST_VERSION >= 106600
+	using results_type = resolver::results_type;
+	using endpoint = const boost::asio::ip::tcp::endpoint&;
+#else
+	using results_type = resolver::iterator;
+	using endpoint = resolver::iterator;
+#endif
+
+	void handle_resolve(const boost::system::error_code& ec, results_type results);
+	void handle_connect(const boost::system::error_code& ec, endpoint endpoint);
 
 	void handshake();
 	void handle_handshake(const boost::system::error_code& ec);

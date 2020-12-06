@@ -110,7 +110,7 @@ wesnothd_connection::~wesnothd_connection()
 }
 
 // worker thread
-void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterator iterator)
+void wesnothd_connection::handle_resolve(const error_code& ec, results_type results)
 {
 	MPTEST_LOG;
 	if(ec) {
@@ -118,19 +118,23 @@ void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterato
 		throw system_error(ec);
 	}
 
-	boost::asio::async_connect(socket_, iterator,
+	boost::asio::async_connect(socket_, results,
 		std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 // worker thread
-void wesnothd_connection::handle_connect(const boost::system::error_code& ec, resolver::iterator iterator)
+void wesnothd_connection::handle_connect(const boost::system::error_code& ec, endpoint endpoint)
 {
 	MPTEST_LOG;
 	if(ec) {
 		ERR_NW << "Tried all IPs. Giving up" << std::endl;
 		throw system_error(ec);
 	} else {
-		LOG_NW << "Connected to " << iterator->endpoint().address() << '\n';
+#if BOOST_VERSION >= 106600
+		LOG_NW << "Connected to " << endpoint.address() << '\n';
+#else
+		LOG_NW << "Connected to " << endpoint->endpoint().address() << '\n';
+#endif
 		handshake();
 	}
 }

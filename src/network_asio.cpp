@@ -83,23 +83,27 @@ connection::connection(const std::string& host, const std::string& service)
 	LOG_NW << "Resolving hostname: " << host << '\n';
 }
 
-void connection::handle_resolve(const boost::system::error_code& ec, resolver::iterator iterator)
+void connection::handle_resolve(const boost::system::error_code& ec, results_type results)
 {
 	if(ec) {
 		throw system_error(ec);
 	}
 
-	boost::asio::async_connect(socket_, iterator,
+	boost::asio::async_connect(socket_, results,
 		std::bind(&connection::handle_connect, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-void connection::handle_connect(const boost::system::error_code& ec, resolver::iterator iterator)
+void connection::handle_connect(const boost::system::error_code& ec, endpoint endpoint)
 {
 	if(ec) {
 		ERR_NW << "Tried all IPs. Giving up" << std::endl;
 		throw system_error(ec);
 	} else {
-		LOG_NW << "Connected to " << iterator->endpoint().address() << '\n';
+#if BOOST_VERSION >= 106600
+		LOG_NW << "Connected to " << endpoint.address() << '\n';
+#else
+		LOG_NW << "Connected to " << endpoint->endpoint().address() << '\n';
+#endif
 		handshake();
 	}
 }
