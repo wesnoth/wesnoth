@@ -376,10 +376,10 @@ void wesnothd_connection::send()
 	bytes_written_ = 0;
 	payload_size_ = htonl(buf_size);
 
-	boost::asio::streambuf::const_buffers_type gzipped_data = buf.data();
-	std::deque<boost::asio::const_buffer> bufs(gzipped_data.begin(), gzipped_data.end());
-
-	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
+	std::deque<boost::asio::const_buffer> bufs {
+		boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4),
+		buf.data()
+	};
 
 	boost::asio::async_write(socket_, bufs,
 		std::bind(&wesnothd_connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
