@@ -46,7 +46,7 @@ std::deque<boost::asio::const_buffer> split_buffer(boost::asio::streambuf::const
 #if BOOST_VERSION >= 106600
 	const uint8_t* data = static_cast<const uint8_t*>(source_buffer.data());
 #else
-	const uint8_t* data = boost::asio::buffer_cast<const uint8_t*>(b);
+	const uint8_t* data = boost::asio::buffer_cast<const uint8_t*>(source_buffer);
 #endif
 
 	while(remaining_size > 0u) {
