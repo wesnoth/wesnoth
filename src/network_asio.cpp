@@ -34,25 +34,24 @@ static lg::log_domain log_network("network");
 
 namespace
 {
-std::deque<boost::asio::const_buffer> split_buffers(boost::asio::streambuf::const_buffers_type source_buffers)
+std::deque<boost::asio::const_buffer> split_buffer(boost::asio::streambuf::const_buffers_type source_buffer)
 {
 	const unsigned int chunk_size = 4096;
 
 	std::deque<boost::asio::const_buffer> buffers;
-	for(boost::asio::const_buffer b : source_buffers) {
-		unsigned int remaining_size = boost::asio::buffer_size(b);
+	unsigned int remaining_size = boost::asio::buffer_size(source_buffer);
+
 #if BOOST_VERSION >= 106600
-		const uint8_t* data = static_cast<const uint8_t*>(b.data());
+	const uint8_t* data = static_cast<const uint8_t*>(source_buffer.data());
 #else
-		const uint8_t* data = boost::asio::buffer_cast<const uint8_t*>(b);
+	const uint8_t* data = boost::asio::buffer_cast<const uint8_t*>(b);
 #endif
 
-		while(remaining_size > 0u) {
-			unsigned int size = std::min(remaining_size, chunk_size);
-			buffers.emplace_back(data, size);
-			data += size;
-			remaining_size -= size;
-		}
+	while(remaining_size > 0u) {
+		unsigned int size = std::min(remaining_size, chunk_size);
+		buffers.emplace_back(data, size);
+		data += size;
+		remaining_size -= size;
 	}
 
 	return buffers;
@@ -150,9 +149,7 @@ void connection::transfer(const config& request, config& response)
 	bytes_written_ = 0;
 	payload_size_ = htonl(bytes_to_write_ - 4);
 
-	boost::asio::streambuf::const_buffers_type gzipped_data = write_buf_->data();
-	auto bufs = split_buffers(gzipped_data);
-
+	auto bufs = split_buffer(write_buf_->data());
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
 
 	boost::asio::async_write(socket_, bufs,
