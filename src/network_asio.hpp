@@ -32,7 +32,11 @@
 
 #include "exceptions.hpp"
 
+#if BOOST_VERSION >= 106600
+#include <boost/asio/io_context.hpp>
+#else
 #include <boost/asio/io_service.hpp>
+#endif
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
 
@@ -120,8 +124,11 @@ public:
 	}
 
 private:
-	// TODO: make this of type io_context once we require Boost 1.66 or later
+#if BOOST_VERSION >= 106600
+	boost::asio::io_context io_context_;
+#else
 	boost::asio::io_service io_context_;
+#endif
 
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;
