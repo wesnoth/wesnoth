@@ -73,7 +73,11 @@ connection::connection(const std::string& host, const std::string& service)
 	, bytes_to_read_(0)
 	, bytes_read_(0)
 {
+#if BOOST_VERSION >= 106600
+	resolver_.async_resolve(host, service,
+#else
 	resolver_.async_resolve(boost::asio::ip::tcp::resolver::query(host, service),
+#endif
 		std::bind(&connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 
 	LOG_NW << "Resolving hostname: " << host << '\n';

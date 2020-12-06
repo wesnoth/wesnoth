@@ -74,7 +74,11 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	, bytes_read_(0)
 {
 	MPTEST_LOG;
+#if BOOST_VERSION >= 106600
+	resolver_.async_resolve(host, service,
+#else
 	resolver_.async_resolve(boost::asio::ip::tcp::resolver::query(host, service),
+#endif
 		std::bind(&wesnothd_connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Starts the worker thread. Do this *after* the above async_resolve call or it will just exit immediately!
