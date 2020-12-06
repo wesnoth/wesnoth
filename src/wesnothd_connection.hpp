@@ -193,5 +193,3 @@ private:
 	std::size_t bytes_to_read_;
 	std::size_t bytes_read_;
 };
-
-using wesnothd_connection_ptr = std::unique_ptr<wesnothd_connection>;

@@ -54,11 +54,10 @@ static lg::log_domain log_mp("mp/main");
 namespace
 {
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
-std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
+std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::string host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
-	wesnothd_connection_ptr sock(nullptr);
 	if(host.empty()) {
 		return std::make_pair(nullptr, config());
 	}
@@ -76,7 +75,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 	shown_hosts.insert(addr);
 
 	// Initializes the connection to the server.
-	sock = std::make_unique<wesnothd_connection>(addr.first, addr.second);
+	auto sock = std::make_unique<wesnothd_connection>(addr.first, addr.second);
 	if(!sock) {
 		return std::make_pair(nullptr, config());
 	}
@@ -213,7 +212,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 				warning_msg += _("Do you want to continue?");
 
 				if(gui2::show_message(_("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK) {
-					return std::make_pair(wesnothd_connection_ptr(), config());
+					return std::make_pair(nullptr, config());
 				} else {
 					continue;
 				}
@@ -368,7 +367,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 						break;
 					// Cancel
 					default:
-						return std::make_pair(wesnothd_connection_ptr(), config());
+						return std::make_pair(nullptr, config());
 				}
 
 			// If we have got a new username we have to start all over again
@@ -460,7 +459,7 @@ private:
 
 	saved_game& state;
 
-	wesnothd_connection_ptr connection;
+	std::unique_ptr<wesnothd_connection> connection;
 
 	config lobby_config;
 
