@@ -130,7 +130,11 @@ void connection::handle_handshake(const boost::system::error_code& ec)
 
 void connection::transfer(const config& request, config& response)
 {
+#if BOOST_VERSION >= 106600
+	io_context_.restart();
+#else
 	io_context_.reset();
+#endif
 	done_ = false;
 
 	write_buf_.reset(new boost::asio::streambuf);
