@@ -475,16 +475,16 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 
 	statistics::fresh_stats();
 
-	auto campaign_info = std::make_unique<mp_campaign_info>(*connection);
-	campaign_info->is_host = false;
+	mp_campaign_info campaign_info(*connection);
+	campaign_info.is_host = false;
 
 	if(lobby_info.get_game_by_id(game_id)) {
-		campaign_info->current_turn = lobby_info.get_game_by_id(game_id)->current_turn;
+		campaign_info.current_turn = lobby_info.get_game_by_id(game_id)->current_turn;
 	}
 
 	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
-		campaign_info->skip_replay = true;
-		campaign_info->skip_replay_blindfolded = preferences::blindfold_replay();
+		campaign_info.skip_replay = true;
+		campaign_info.skip_replay_blindfolded = preferences::blindfold_replay();
 	}
 
 	bool dlg_ok = false;
@@ -502,7 +502,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 
 	if(dlg_ok) {
 		campaign_controller controller(state, game_config_manager::get()->terrain_types());
-		controller.set_mp_info(campaign_info.get());
+		controller.set_mp_info(&campaign_info);
 		controller.play_game();
 	}
 
