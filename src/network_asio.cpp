@@ -41,7 +41,11 @@ std::deque<boost::asio::const_buffer> split_buffers(boost::asio::streambuf::cons
 	std::deque<boost::asio::const_buffer> buffers;
 	for(boost::asio::const_buffer b : source_buffers) {
 		unsigned int remaining_size = boost::asio::buffer_size(b);
+#if BOOST_VERSION >= 106600
+		const uint8_t* data = static_cast<const uint8_t*>(b.data());
+#else
 		const uint8_t* data = boost::asio::buffer_cast<const uint8_t*>(b);
+#endif
 
 		while(remaining_size > 0u) {
 			unsigned int size = std::min(remaining_size, chunk_size);
