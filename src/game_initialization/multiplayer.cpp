@@ -399,12 +399,17 @@ public:
 		: game_config(&game_config_manager::get()->game_config())
 		, state(state)
 		, connection(nullptr)
-		, lobby_config()
 		, lobby_info(::installed_addons())
 	{
 		if(!host.empty()) {
 			gui2::dialogs::loading_screen::display([&]() {
+				config lobby_config;
 				std::tie(connection, lobby_config) = open_connection(host);
+
+				// Seed initial data
+				if(!lobby_config.empty()) {
+					lobby_info.process_gamelist(lobby_config);
+				}
 			});
 		}
 	}
@@ -420,11 +425,6 @@ public:
 		// enter_create_mode should be accessed directly.
 		if(!connection) {
 			return;
-		}
-
-		// Seed initial data
-		if(!lobby_config.empty()) {
-			lobby_info.process_gamelist(lobby_config);
 		}
 
 		// A return of false means a config reload was requested, so do that and then loop.
@@ -460,8 +460,6 @@ private:
 	saved_game& state;
 
 	std::unique_ptr<wesnothd_connection> connection;
-
-	config lobby_config;
 
 	mp::lobby_info lobby_info;
 };
