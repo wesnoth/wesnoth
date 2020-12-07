@@ -32,6 +32,9 @@
 #include "filesystem.hpp"
 #include "serialization/unicode_cast.hpp" //only used in windows specific code.
 
+#include <boost/asio/read.hpp>
+#include <boost/asio/write.hpp>
+
 #include <memory>
 #include <stdexcept>
 

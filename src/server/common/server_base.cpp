@@ -16,8 +16,12 @@
 
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include <functional>
 
+#include <boost/asio/ip/v6_only.hpp>
+#include <boost/asio/read.hpp>
+#include <boost/asio/write.hpp>
+
+#include <functional>
 #include <queue>
 
 static lg::log_domain log_server("server");
