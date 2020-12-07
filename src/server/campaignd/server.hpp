@@ -114,6 +114,10 @@ private:
 
 	std::string feedback_url_format_;
 
+	std::string web_url_;
+	std::string license_notice_;
+	std::string license_url_;
+
 	blacklist blacklist_;
 	std::string blacklist_file_;
 
