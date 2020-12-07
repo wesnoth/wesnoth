@@ -84,6 +84,35 @@ const std::set<std::string> cap_defaults = {
 	"delta",
 };
 
+/**
+ * Default URL to the add-ons server web index.
+ */
+const std::string default_web_url = "https://add-ons.wesnoth.org/";
+
+/**
+ * Default URL to a page with additional information on license terms for content uploaded to the server.
+ */
+const std::string default_license_url = "https://wiki.wesnoth.org/Wesnoth:Copyrights";
+
+/**
+ * Default license terms for content uploaded to the server.
+ *
+ * This used by both the @a [server_id] command and @a [request_terms] in
+ * their responses.
+ *
+ * The text is intended for display on the client with Pango markup enabled and
+ * sent by the server as-is, so it ought to be formatted accordingly.
+ */
+const std::string default_license_notice = R"""(All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of graphics and audio explicitly denoted as released under a Creative Commons license either in:
+
+    a) a combined toplevel file, e.g. “My_Addon/ART_LICENSE”; <b>or</b>
+    b) a file with the same path as the asset with “.license” appended, e.g. “My_Addon/images/units/axeman.png.license”.
+
+<b>By uploading content to this server, you certify that you have the right to:</b>
+
+    a) release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license; <b>and</b>
+    b) release all other included content under the terms of the GPL; and that you choose to do so.)""";
+
 bool timing_reports_enabled = false;
 
 void timing_report_function(const util::ms_optimer& tim, const campaignd::server::request& req, const std::string& label = {})
@@ -258,6 +287,9 @@ server::server(const std::string& cfg_file, unsigned short port)
 	, hooks_()
 	, handlers_()
 	, feedback_url_format_()
+	, web_url_()
+	, license_notice_()
+	, license_url_()
 	, blacklist_()
 	, blacklist_file_()
 	, stats_exempt_ips_()
@@ -314,9 +346,11 @@ void server::load_config()
 	// One month probably will be fine (#TODO: testing needed)
 	update_pack_lifespan_ = cfg_["update_pack_lifespan"].to_time_t(30 * 24 * 60 * 60);
 
-	const config& svinfo_cfg = server_info();
-	if(svinfo_cfg) {
+	if(const auto& svinfo_cfg = server_info()) {
 		feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
+		web_url_ = svinfo_cfg["web_url"].str(default_web_url);
+		license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
+		license_url_ = svinfo_cfg["license_url"].str(default_license_url);
 	}
 
 	blacklist_file_ = cfg_["blacklist_file"].str();
@@ -822,8 +856,11 @@ void server::handle_server_id(const server::request& req)
 
 	std::ostringstream ostr;
 	write(ostr, config{"server_id", config{
-		"cap", utils::join(capabilities_),
-		"version", game_config::revision,
+		"cap",					utils::join(capabilities_),
+		"version",				game_config::revision,
+		"url",					web_url_,
+		"license_url",			license_url_,
+		"license_notice",		license_notice_,
 	}});
 
 	const auto& wml = ostr.str();
@@ -1116,19 +1153,8 @@ void server::handle_request_terms(const server::request& req)
 		return;
 	}
 
-	// TODO: possibly move to server.cfg
-	static const std::string terms = R"""(All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of graphics and audio explicitly denoted as released under a Creative Commons license either in:
-
-    a) a combined toplevel file, e.g. “My_Addon/ART_LICENSE”; <b>or</b>
-    b) a file with the same path as the asset with “.license” appended, e.g. “My_Addon/images/units/axeman.png.license”.
-
-<b>By uploading content to this server, you certify that you have the right to:</b>
-
-    a) release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license; <b>and</b>
-    b) release all other included content under the terms of the GPL; and that you choose to do so.)""";
-
 	LOG_CS << req << "Sending license terms\n";
-	send_message(terms, req.sock);
+	send_message(license_notice_, req.sock);
 }
 
 ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& existing_addon, std::string& error_data)
