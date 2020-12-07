@@ -19,6 +19,9 @@
 
 #include <boost/asio/ip/v6_only.hpp>
 #include <boost/asio/read.hpp>
+#ifndef _WIN32
+#include <boost/asio/read_until.hpp>
+#endif
 #include <boost/asio/write.hpp>
 
 #include <functional>
