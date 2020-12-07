@@ -67,30 +67,42 @@ public:
 
 	~wesnothd_connection();
 
-public:
 	/**
 	 * Constructor.
 	 *
-	 * @param host    Name of the host to connect to
-	 * @param service Service identifier such as "80" or "http"
+	 * @param host        Name of the host to connect to
+	 * @param service     Service identifier such as "80" or "http"
 	 */
 	wesnothd_connection(const std::string& host, const std::string& service);
 
+	/**
+	 * Queues the given data to be sent to the server.
+	 *
+	 * @param request     The data to send
+	 */
 	void send_data(const configr_of& request);
 
+	/**
+	 * Receives the next pending data pack from the server, if available.
+	 *
+	 * @param result      The object to which the received data will be written.
+	 * @returns           True if any data was available, false otherwise.
+	 */
 	bool receive_data(config& result);
 
 	/**
-	 * Helper function that spins until data has been received.
-	 * Should be used in tandem with the loading screen or other multi-threaded components.
+	 * Unlike @ref receive_data, waits until data is available instead of returning immediately.
+	 *
+	 * @param data        Config object passed to @ref receive_data
+	 * @returns           True, since data will always be available.
 	 */
 	bool wait_and_receive_data(config& data);
 
+	/** Waits until the server handshake is complete. */
 	void wait_for_handshake();
 
 	void cancel();
 
-	// Destroys this object.
 	void stop();
 
 	std::size_t bytes_to_write() const
