@@ -643,6 +643,15 @@ void addons_client::clear_last_error()
 	last_error_data_.clear();
 }
 
+void addons_client::clear_server_info()
+{
+	server_version_.clear();
+	server_capabilities_.clear();
+	server_url_.clear();
+	license_notice_.clear();
+	license_url_.clear();
+}
+
 void addons_client::check_connected() const
 {
 	assert(conn_ != nullptr);

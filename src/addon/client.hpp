@@ -62,7 +62,12 @@ public:
 	/**
 	 * Disconnect from the add-on server.
 	 */
-	void disconnect() { conn_.reset(); }
+	void disconnect()
+	{
+		conn_.reset();
+		clear_last_error();
+		clear_server_info();
+	}
 
 	/** Returns the last error message sent by the server, or an empty string. */
 	const std::string& get_last_server_error() const { return last_error_; }
@@ -263,4 +268,6 @@ private:
 	bool update_last_error(config& response_cfg);
 
 	void clear_last_error();
+
+	void clear_server_info();
 };
