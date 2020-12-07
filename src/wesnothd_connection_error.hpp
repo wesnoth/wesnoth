@@ -14,13 +14,18 @@
 
 #pragma once
 
-#include <boost/system/error_code.hpp>
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
-///An error occurred during when trying to coommunicate with the wesnothd server.
+
+#include <boost/system/error_code.hpp>
+
+/** An error occurred during when trying to communicate with the wesnothd server. */
 struct wesnothd_error : public game::error
 {
-	wesnothd_error(const std::string& error) : game::error(error) {}
+	wesnothd_error(const std::string& error)
+		: game::error(error)
+	{
+	}
 };
 
 /**
@@ -29,31 +34,46 @@ struct wesnothd_error : public game::error
  */
 struct wesnothd_rejected_client_error : public game::error
 {
-    wesnothd_rejected_client_error (const std::string& msg) : game::error (msg) {}
+	wesnothd_rejected_client_error(const std::string& msg)
+		: game::error(msg)
+	{
+	}
 };
 
-///We received invalid data from wesnothd during a game
-///This means we cannot continue with the game but we can stay connected to wesnothd and start a new game
-///TODO: find a short name
-struct ingame_wesnothd_error : public wesnothd_error ,public lua_jailbreak_exception
+/**
+ * We received invalid data from wesnothd during a game
+ * This means we cannot continue with the game but we can stay connected to wesnothd and start a new game.
+ * TODO: find a short name
+ */
+struct ingame_wesnothd_error : public wesnothd_error, public lua_jailbreak_exception
 {
-	ingame_wesnothd_error(const std::string& error) : wesnothd_error(error) {}
+	ingame_wesnothd_error(const std::string& error)
+		: wesnothd_error(error)
+	{
+	}
+
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(ingame_wesnothd_error)
 };
 
 struct leavegame_wesnothd_error : ingame_wesnothd_error
 {
-    leavegame_wesnothd_error(const std::string& error) : ingame_wesnothd_error(error) {}
+	leavegame_wesnothd_error(const std::string& error)
+		: ingame_wesnothd_error(error)
+	{
+	}
 };
 
-///an error occurred inside the underlying network communication code (boost asio)
-///TODO: find a short name
-struct wesnothd_connection_error : public wesnothd_error ,public lua_jailbreak_exception
+/**
+ * An error occurred inside the underlying network communication code (boost asio)
+ * TODO: find a short name
+ */
+struct wesnothd_connection_error : public wesnothd_error, public lua_jailbreak_exception
 {
 	wesnothd_connection_error(const boost::system::error_code& error, const std::string& msg = "")
 		: wesnothd_error(error.message())
 		, user_message(msg)
-	{}
+	{
+	}
 
 	/** User-friendly and potentially translated message for use in the UI. */
 	std::string user_message;
