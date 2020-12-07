@@ -84,9 +84,25 @@ public:
 	bool request_addons_list(config& cfg);
 
 	/**
+	 * Retrieves the add-ons server web URL if available.
+	 */
+	const std::string& server_url() const
+	{
+		return server_url_;
+	}
+
+	/**
 	 * Request the add-ons server distribution terms message.
 	 */
 	bool request_distribution_terms(std::string& terms);
+
+	/**
+	 * Retrieves the content licensing information page URL if available.
+	 */
+	const std::string& distribution_terms_url() const
+	{
+		return license_url_;
+	}
 
 	/**
 	* Do a 'smart' fetch of an add-on, checking to avoid overwrites for devs and resolving dependencies, using gui interaction to handle issues that arise
@@ -165,6 +181,9 @@ private:
 
 	std::string server_version_;
 	std::set<std::string> server_capabilities_;
+	std::string server_url_;
+	std::string license_notice_;
+	std::string license_url_;
 
 	/**
 	* Downloads the specified add-on from the server.

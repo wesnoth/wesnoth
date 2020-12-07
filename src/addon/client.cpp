@@ -52,6 +52,9 @@ addons_client::addons_client(const std::string& address)
 	, last_error_data_()
 	, server_version_()
 	, server_capabilities_()
+	, server_url_()
+	, license_notice_()
+	, license_url_()
 {
 	try {
 		std::tie(host_, port_) = parse_network_address(addr_, std::to_string(default_campaignd_port));
@@ -79,12 +82,16 @@ void addons_client::connect()
 	wait_for_transfer_done(msg);
 
 	if(!update_last_error(response_buf)) {
-		const auto& info = response_buf.child("server_id");
-		if(info) {
+		if(const auto& info = response_buf.child("server_id")) {
 			server_version_ = info["version"].str();
+
 			for(const auto& cap : utils::split(info["cap"].str())) {
 				server_capabilities_.insert(cap);
 			}
+
+			server_url_ = info["url"].str();
+			license_url_ = info["license_url"].str();
+			license_notice_ = info["license_notice"].str();
 		}
 	} else {
 		clear_last_error();
@@ -120,6 +127,13 @@ bool addons_client::request_addons_list(config& cfg)
 
 bool addons_client::request_distribution_terms(std::string& terms)
 {
+	if(!license_notice_.empty()) {
+		// Server identification supported, we already know the terms so this
+		// operation always succeeds without going through the server.
+		terms = license_notice_;
+		return true;
+	}
+
 	terms.clear();
 
 	config response_buf;
