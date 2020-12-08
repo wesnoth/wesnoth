@@ -538,6 +538,10 @@ std::string addon_check_status_desc(unsigned int code)
 			N_("Invalid or unspecified add-on type.")
 		},
 		{
+			ADDON_CHECK_STATUS::VERSION_NOT_INCREMENTED,
+			N_("Version number not greater than the latest uploaded version.")
+		},
+		{
 			ADDON_CHECK_STATUS::INVALID_UTF8_ATTRIBUTE,
 			N_("The add-on publish information contains an invalid UTF-8 sequence.")
 		},

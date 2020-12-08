@@ -240,6 +240,7 @@ server::server(const std::string& cfg_file, unsigned short port)
 	, read_only_(false)
 	, compress_level_(0)
 	, update_pack_lifespan_(0)
+	, strict_versions_(true)
 	, hooks_()
 	, handlers_()
 	, feedback_url_format_()
@@ -291,6 +292,8 @@ void server::load_config()
 	if(read_only_) {
 		LOG_CS << "READ-ONLY MODE ACTIVE\n";
 	}
+
+	strict_versions_ = cfg_["strict_versions"].to_bool(true);
 
 	// Seems like compression level above 6 is a waste of CPU cycles.
 	compress_level_ = cfg_["compress_level"].to_int(6);
@@ -1216,6 +1219,16 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 	if(upload["version"].empty()) {
 		LOG_CS << "Validation error: no add-on version specified\n";
 		return ADDON_CHECK_STATUS::NO_VERSION;
+	}
+
+	if(existing_addon) {
+		version_info new_version{upload["version"].str()};
+		version_info old_version{(*existing_addon)["version"].str()};
+
+		if(strict_versions_ ? new_version <= old_version : new_version < old_version) {
+			LOG_CS << "Validation error: add-on version not incremented\n";
+			return ADDON_CHECK_STATUS::VERSION_NOT_INCREMENTED;
+		}
 	}
 
 	if(upload["description"].empty()) {
