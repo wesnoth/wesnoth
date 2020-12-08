@@ -101,6 +101,8 @@ private:
 	int compress_level_; /**< Used for add-on archives. */
 	time_t update_pack_lifespan_;
 
+	bool strict_versions_;
+
 	/** Default upload size limit in bytes. */
 	static const std::size_t default_document_size_limit = 100 * 1024 * 1024;
 
