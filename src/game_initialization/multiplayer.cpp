@@ -21,8 +21,6 @@
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/playcampaign.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"
@@ -34,18 +32,19 @@
 #include "gui/widgets/settings.hpp"
 #include "hash.hpp"
 #include "log.hpp"
-#include "multiplayer_error_codes.hpp"
 #include "map_settings.hpp"
+#include "multiplayer_error_codes.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/game.hpp"
+#include "replay.hpp"
+#include "resources.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "utils/parse_network_address.hpp"
 #include "wesnothd_connection.hpp"
-#include "resources.hpp"
-#include "replay.hpp"
-
-#include <functional>
 
 #include <fstream>
+#include <functional>
 
 static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
@@ -168,12 +167,6 @@ std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::str
 			config* error = &data.child("error");
 			error_message = (*error)["message"].str();
 			throw wesnothd_rejected_client_error(error_message);
-		}
-
-		// The only message we should get here is the admin authentication message.
-		// It's sent after [join_lobby] and before the initial gamelist.
-		if(const config& message = data.child("message")) {
-			preferences::parse_admin_authentication(message["sender"], message["message"]);
 		}
 
 		// Continue if we did not get a direction to login
@@ -378,8 +371,11 @@ std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::str
 			if(!*error) break;
 		} // end login loop
 
-		if(data.has_child("join_lobby")) {
+		if(const config& join_lobby = data.child("join_lobby")) {
 			received_join_lobby = true;
+
+			// Flag us as authenticated, if applicable...
+			preferences::set_admin_authentication(join_lobby["is_moderator"].to_bool(false));
 
 			gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
 		}

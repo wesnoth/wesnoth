@@ -261,7 +261,6 @@ server::server(int port,
 	, failed_login_buffer_size_()
 	, version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED)
 	, login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED)
-	, join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED)
 	, games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC)
 	, metrics_()
 	, dump_stats_timer_(io_service_)
@@ -803,7 +802,10 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		}
 	}
 
-	async_send_doc(socket, join_lobby_response_, [this, username, registered, version, source](socket_ptr socket) {
+	simple_wml::document join_lobby_response;
+	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", is_moderator ? "yes" : "no");
+
+	async_send_doc(socket, join_lobby_response, [this, username, registered, version, source](socket_ptr socket) {
 		simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 		add_player(socket, wesnothd::player(
 				username,
@@ -829,16 +831,6 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 			g_ptr->send_server_message_to_all(username + " has logged into the lobby");
 			last_sent = g_ptr;
 		}
-	}
-
-	if(is_moderator) {
-		LOG_SERVER << "Admin automatically recognized: IP: " << client_address(socket) << "\tnick: " << username
-				   << std::endl;
-
-		// This string is parsed by the client!
-		send_server_message(socket,
-			"You are now recognized as an administrator. "
-			"If you no longer want to be automatically authenticated use '/query signout'.", "alert");
 	}
 
 	if(auth_ban.type) {
@@ -2143,7 +2135,7 @@ void server::roll_handler(const std::string& issuer_name,
 	if(parameters.empty()) {
 		return;
 	}
-	
+
 	int N;
 	try {
 		N = std::stoi(parameters);
