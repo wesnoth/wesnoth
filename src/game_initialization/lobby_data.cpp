@@ -110,8 +110,8 @@ void room_info::process_room_members(const config& data)
 user_info::user_info(const config& c)
 	: name(c["name"])
 	, game_id(c["game_id"])
-	, relation(ME)
-	, state(game_id == 0 ? LOBBY : GAME)
+	, relation(relation::ME)
+	, state(game_id == 0 ? state::LOBBY : state::GAME)
 	, registered(c["registered"].to_bool())
 	, observing(c["status"] == "observing")
 	, moderator(c["moderator"].to_bool(false))
@@ -124,15 +124,15 @@ void user_info::update_state(int selected_game_id,
 {
 	if(game_id != 0) {
 		if(game_id == selected_game_id) {
-			state = SEL_GAME;
+			state = state::SEL_GAME;
 		} else {
-			state = GAME;
+			state = state::GAME;
 		}
 	} else {
 		if(current_room != nullptr && current_room->is_member(name)) {
-			state = SEL_ROOM;
+			state = state::SEL_ROOM;
 		} else {
-			state = LOBBY;
+			state = state::LOBBY;
 		}
 	}
 	update_relation();
@@ -141,13 +141,13 @@ void user_info::update_state(int selected_game_id,
 void user_info::update_relation()
 {
 	if(name == preferences::login()) {
-		relation = ME;
+		relation = relation::ME;
 	} else if(preferences::is_ignored(name)) {
-		relation = IGNORED;
+		relation = relation::IGNORED;
 	} else if(preferences::is_friend(name)) {
-		relation = FRIEND;
+		relation = relation::FRIEND;
 	} else {
-		relation = NEUTRAL;
+		relation = relation::NEUTRAL;
 	}
 }
 

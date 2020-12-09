@@ -601,7 +601,7 @@ void mp_lobby::update_playerlist()
 		icon_ss << "lobby/status";
 		switch(user.state) {
 #ifdef ENABLE_ROOM_MEMBER_TREE
-			case mp::user_info::SEL_ROOM:
+			case mp::user_info::state::SEL_ROOM:
 				icon_ss << "-lobby";
 				target_list = &player_list_.active_room;
 				if(lobby) {
@@ -609,42 +609,40 @@ void mp_lobby::update_playerlist()
 				}
 				break;
 #endif
-			case mp::user_info::LOBBY:
+			case mp::user_info::state::LOBBY:
 				icon_ss << "-lobby";
 				target_list = &player_list_.other_rooms;
 				break;
-			case mp::user_info::SEL_GAME:
+			case mp::user_info::state::SEL_GAME:
 				name = colorize(name, {0, 255, 255});
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.active_game;
 				break;
-			case mp::user_info::GAME:
+			case mp::user_info::state::GAME:
 				name = colorize(name, font::BAD_COLOR);
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.other_games;
 				break;
 			default:
-				ERR_LB << "Bad user state in lobby: " << user.name << ": "
-					   << user.state << "\n";
+				ERR_LB << "Bad user state in lobby: " << user.name << ": " << static_cast<int>(user.state) << "\n";
 				continue;
 		}
 
 		switch(user.relation) {
-			case mp::user_info::ME:
+			case mp::user_info::relation::ME:
 				icon_ss << "-s";
 				break;
-			case mp::user_info::NEUTRAL:
+			case mp::user_info::relation::NEUTRAL:
 				icon_ss << "-n";
 				break;
-			case mp::user_info::FRIEND:
+			case mp::user_info::relation::FRIEND:
 				icon_ss << "-f";
 				break;
-			case mp::user_info::IGNORED:
+			case mp::user_info::relation::IGNORED:
 				icon_ss << "-i";
 				break;
 			default:
-				ERR_LB << "Bad user relation in lobby: " << user.relation
-					   << "\n";
+				ERR_LB << "Bad user relation in lobby: " << static_cast<int>(user.relation) << "\n";
 		}
 
 		// TODO: on the official server this results in every name being bold since we

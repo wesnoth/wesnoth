@@ -105,17 +105,18 @@ struct user_info
 {
 	explicit user_info(const config& c);
 
-	void update_state(int selected_game_id,
-					  const room_info* current_room = nullptr);
+	void update_state(int selected_game_id, const room_info* current_room = nullptr);
+
 	void update_relation();
 
-	enum user_relation {
+	enum class relation {
 		ME,
 		FRIEND,
 		NEUTRAL,
 		IGNORED
 	};
-	enum user_state {
+
+	enum class state {
 		LOBBY,
 		SEL_ROOM,
 		GAME,
@@ -126,8 +127,8 @@ struct user_info
 
 	std::string name;
 	int game_id;
-	user_relation relation;
-	user_state state;
+	relation relation;
+	state state;
 	bool registered;
 	bool observing;
 	bool moderator;
