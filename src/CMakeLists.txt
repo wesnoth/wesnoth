@@ -215,7 +215,7 @@ add_library(lua ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${lua_STAT_SRC})
 set_target_properties(lua
 	PROPERTIES
 	COMPILE_FLAGS
-	"-Wno-old-style-cast -Wno-useless-cast"
+	"-Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow"
 )
 
 
