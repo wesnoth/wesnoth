@@ -45,6 +45,8 @@
 
 #include <fstream>
 #include <functional>
+#include <future>
+#include <thread>
 
 static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
@@ -53,12 +55,12 @@ static lg::log_domain log_mp("mp/main");
 namespace
 {
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
-std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::string host)
+std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
 	if(host.empty()) {
-		return std::make_pair(nullptr, config());
+		return nullptr;
 	}
 
 	// shown_hosts is used to prevent the client being locked in a redirect loop.
@@ -76,7 +78,7 @@ std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::str
 	// Initializes the connection to the server.
 	auto sock = std::make_unique<wesnothd_connection>(addr.first, addr.second);
 	if(!sock) {
-		return std::make_pair(nullptr, config());
+		return nullptr;
 	}
 
 	// Start stage
@@ -88,15 +90,12 @@ std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::str
 	gui2::dialogs::loading_screen::progress(loading_stage::waiting);
 
 	config data;
-	config initial_lobby_config;
-
 	bool received_join_lobby = false;
-	bool received_gamelist = false;
 
 	// Then, log in and wait for the lobby/game join prompt.
 	do {
 		if(!sock) {
-			return std::make_pair(nullptr, config());
+			return nullptr;
 		}
 
 		data.clear();
@@ -153,15 +152,6 @@ std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::str
 			sock->send_data(res);
 		}
 
-		// Check for gamelist. This *must* be done before the mustlogin check
-		// or else this loop will run ad-infinitum.
-		if(data.has_child("gamelist")) {
-			received_gamelist = true;
-
-			// data should only contain the game and user lists at this point, so just swap it.
-			std::swap(initial_lobby_config, data);
-		}
-
 		if(data.has_child("error")) {
 			std::string error_message;
 			config* error = &data.child("error");
@@ -205,7 +195,7 @@ std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::str
 				warning_msg += _("Do you want to continue?");
 
 				if(gui2::show_message(_("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK) {
-					return std::make_pair(nullptr, config());
+					return nullptr;
 				} else {
 					continue;
 				}
@@ -360,7 +350,7 @@ std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::str
 						break;
 					// Cancel
 					default:
-						return std::make_pair(nullptr, config());
+						return nullptr;
 				}
 
 			// If we have got a new username we have to start all over again
@@ -376,12 +366,10 @@ std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::str
 
 			// Flag us as authenticated, if applicable...
 			preferences::set_admin_authentication(join_lobby["is_moderator"].to_bool(false));
-
-			gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
 		}
-	} while(!received_join_lobby || !received_gamelist);
+	} while(!received_join_lobby);
 
-	return std::make_pair(std::move(sock), std::move(initial_lobby_config));
+	return sock;
 }
 
 /** The main controller of the MP workflow. */
@@ -392,21 +380,54 @@ public:
 	friend void mp::start_local_game(saved_game&);
 
 	mp_manager(const std::string& host, saved_game& state)
-		: game_config(&game_config_manager::get()->game_config())
+		: network_worker()
+		, stop(false)
+		, game_config(&game_config_manager::get()->game_config())
 		, state(state)
 		, connection(nullptr)
 		, lobby_info(::installed_addons())
 	{
 		if(!host.empty()) {
 			gui2::dialogs::loading_screen::display([&]() {
-				config lobby_config;
-				std::tie(connection, lobby_config) = open_connection(host);
+				connection = open_connection(host);
 
-				// Seed initial data
-				if(!lobby_config.empty()) {
-					lobby_info.process_gamelist(lobby_config);
-				}
+				gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
+
+				std::promise<void> received_initial_gamelist;
+
+				network_worker = std::thread([this, &received_initial_gamelist]() {
+					config data;
+
+					while(!stop) {
+						connection->wait_and_receive_data(data);
+
+						if(data.has_child("gamelist")) {
+							lobby_info.process_gamelist(data);
+
+							try {
+								received_initial_gamelist.set_value();
+								// TODO: only here while we transition away from dialog-bound timer-based handling
+								return;
+							} catch(const std::future_error& e) {
+								if(e.code() == std::future_errc::promise_already_satisfied) {
+									// We only need this for the first gamelist
+								}
+							}
+						}
+					}
+				});
+
+				// Wait at the loading screen until the initial gamelist has been processed
+				received_initial_gamelist.get_future().wait();
 			});
+		}
+	}
+
+	~mp_manager()
+	{
+		if(network_worker.joinable()) {
+			stop = true;
+			network_worker.join();
 		}
 	}
 
@@ -448,6 +469,9 @@ private:
 	void enter_create_mode();
 	void enter_staging_mode();
 	void enter_wait_mode(int game_id, bool observe);
+
+	std::thread network_worker;
+	std::atomic_bool stop;
 
 	// TODO: refactor this out. It's really only passed through to the dialogs for the
 	// minimap and the preferences dialog. Shouldn't need to be kept here.
