@@ -21,6 +21,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 
@@ -121,7 +122,7 @@ void lobby_player_info::pre_show(window& window)
 
 	update_relation();
 
-	if(!info_.moderator) {
+	if(!preferences::is_authenticated()) {
 		widget* aw = window.find("admin", false);
 		aw->set_visible(widget::visibility::invisible);
 	}
