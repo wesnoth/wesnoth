@@ -54,7 +54,6 @@ addons_client::addons_client(const std::string& address)
 	, server_capabilities_()
 	, server_url_()
 	, license_notice_()
-	, license_url_()
 {
 	try {
 		std::tie(host_, port_) = parse_network_address(addr_, std::to_string(default_campaignd_port));
@@ -90,7 +89,6 @@ void addons_client::connect()
 			}
 
 			server_url_ = info["url"].str();
-			license_url_ = info["license_url"].str();
 			license_notice_ = info["license_notice"].str();
 		}
 	} else {
@@ -649,7 +647,6 @@ void addons_client::clear_server_info()
 	server_capabilities_.clear();
 	server_url_.clear();
 	license_notice_.clear();
-	license_url_.clear();
 }
 
 void addons_client::check_connected() const
