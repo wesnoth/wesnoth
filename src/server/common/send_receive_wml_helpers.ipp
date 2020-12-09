@@ -121,82 +121,59 @@ static void null_handler(socket_ptr)
 
 #ifdef HAVE_SENDFILE
 
-template <typename Handler, typename ErrorHandler>
-struct sendfile_op
+inline void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
-	socket_ptr sock_;
-	int fd_;
-	Handler handler_;
-	ErrorHandler error_handler_;
-	off_t offset_;
-	std::size_t total_bytes_transferred_;
+	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
+	int in_file { open(filename.c_str(), O_RDONLY) };
+	off_t offset { 0 };
+	std::size_t total_bytes_transferred { 0 };
 
-	// Function call operator meeting WriteHandler requirements.
-	// Used as the handler for the async_write_some operation.
-	void operator()(boost::system::error_code ec, std::size_t)
+	union DataSize
 	{
-		// Put the underlying socket into non-blocking mode.
-		if (!ec)
-			if (!sock_->native_non_blocking())
-				sock_->native_non_blocking(true, ec);
+		uint32_t size;
+		char buf[4];
+	} data_size;
+	data_size.size = htonl(filesize);
 
-		if (!ec)
+	async_write(*socket, boost::asio::buffer(data_size.buf), yield);
+	if(*(yield.ec_)) return;
+
+	// Put the underlying socket into non-blocking mode.
+	if(!socket->native_non_blocking())
+		socket->native_non_blocking(true, *yield.ec_);
+	if(*(yield.ec_)) return;
+
+	for (;;)
+	{
+		// Try the system call.
+		errno = 0;
+		int n = ::sendfile(socket->native_handle(), in_file, &offset, 65536);
+		*(yield.ec_) = boost::system::error_code(n < 0 ? errno : 0,
+									   boost::asio::error::get_system_category());
+		total_bytes_transferred += *(yield.ec_) ? 0 : n;
+
+		// Retry operation immediately if interrupted by signal.
+		if (*(yield.ec_) == boost::asio::error::interrupted)
+			continue;
+
+		// Check if we need to run the operation again.
+		if (*(yield.ec_) == boost::asio::error::would_block
+				|| *(yield.ec_) == boost::asio::error::try_again)
 		{
-			for (;;)
-			{
-				// Try the system call.
-				errno = 0;
-				int n = ::sendfile(sock_->native_handle(), fd_, &offset_, 65536);
-				ec = boost::system::error_code(n < 0 ? errno : 0,
-											   boost::asio::error::get_system_category());
-				total_bytes_transferred_ += ec ? 0 : n;
-
-				// Retry operation immediately if interrupted by signal.
-				if (ec == boost::asio::error::interrupted)
-					continue;
-
-				// Check if we need to run the operation again.
-				if (ec == boost::asio::error::would_block
-						|| ec == boost::asio::error::try_again)
-				{
-					// We have to wait for the socket to become ready again.
-					sock_->async_write_some(boost::asio::null_buffers(), *this);
-					return;
-				}
-
-				if (ec || n == 0)
-				{
-					// An error occurred, or we have reached the end of the file.
-					// Either way we must exit the loop so we can call the handler.
-					break;
-				}
-
-				// Loop around to try calling sendfile again.
-			}
+			// We have to wait for the socket to become ready again.
+			socket->async_write_some(boost::asio::null_buffers(), yield);
+			continue;
 		}
 
-		close(fd_);
+		if (*(yield.ec_) || n == 0)
+		{
+			// An error occurred, or we have reached the end of the file.
+			// Either way we must exit the loop.
+			break;
+		}
 
-		if(ec)
-			error_handler_(sock_);
-		else
-			handler_(sock_);
+		// Loop around to try calling sendfile again.
 	}
-};
-
-template<typename Handler, typename ErrorHandler>
-void async_send_file(socket_ptr socket, const std::string& filename, Handler handler, ErrorHandler error_handler)
-{
-	std::vector<boost::asio::const_buffer> buffers;
-
-	std::size_t filesize = filesystem::file_size(filename);
-	int in_file(open(filename.c_str(), O_RDONLY));
-
-	sendfile_op<Handler, ErrorHandler> op = { socket, in_file, handler, error_handler, 0, 0 };
-
-	handle_doc<Handler, ErrorHandler> handle_send_doc(socket, handler, error_handler, filesize, nullptr);
-	buffers.push_back(boost::asio::buffer(handle_send_doc.data_size->buf, 4));
-	async_write(*socket, buffers, op);
 }
 
 #elif defined(_WIN32)

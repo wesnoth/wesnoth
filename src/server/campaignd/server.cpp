@@ -426,37 +426,34 @@ std::ostream& operator<<(std::ostream& o, const server::request& r)
 void server::handle_new_client(socket_ptr socket)
 {
 	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		boost::system::error_code ec;
-		auto doc { coro_receive_doc(socket, yield[ec]) };
-		if(check_error(ec, socket) || !doc) return;
+		while(true) {
+			boost::system::error_code ec;
+			auto doc { coro_receive_doc(socket, yield[ec]) };
+			if(check_error(ec, socket) || !doc) return;
 
-		handle_request(socket, doc);
-	});
-}
+			config data;
+			read(data, doc->output());
 
-void server::handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
-{
-	config data;
-	read(data, doc->output());
+			config::all_children_iterator i = data.ordered_begin();
 
-	config::all_children_iterator i = data.ordered_begin();
+			if(i != data.ordered_end()) {
+				// We only handle the first child.
+				const config::any_child& c = *i;
 
-	if(i != data.ordered_end()) {
-		// We only handle the first child.
-		const config::any_child& c = *i;
+				request_handlers_table::const_iterator j
+					= handlers_.find(c.key);
 
-		request_handlers_table::const_iterator j
-				= handlers_.find(c.key);
-
-		if(j != handlers_.end()) {
-			// Call the handler.
-			request req{c.key, c.cfg, socket};
-			auto st = service_timer(req);
-			j->second(this, req);
-		} else {
-			send_error("Unrecognized [" + c.key + "] request.",socket);
+				if(j != handlers_.end()) {
+					// Call the handler.
+					request req{c.key, c.cfg, socket, yield};
+					auto st = service_timer(req);
+					j->second(this, req);
+				} else {
+					send_error("Unrecognized [" + c.key + "] request.",socket);
+				}
+			}
 		}
-	}
+	});
 }
 
 #ifndef _WIN32
@@ -716,7 +713,7 @@ void server::send_message(const std::string& msg, socket_ptr sock)
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("message").set_attr_dup("message", escaped_msg.c_str());
-	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
+	async_send_doc(sock, doc);
 }
 
 void server::send_error(const std::string& msg, socket_ptr sock)
@@ -725,7 +722,7 @@ void server::send_error(const std::string& msg, socket_ptr sock)
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", escaped_msg.c_str());
-	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
+	async_send_doc(sock, doc);
 }
 
 void server::send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, socket_ptr sock)
@@ -746,7 +743,7 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 	err_cfg.set_attr_dup("extra_data", escaped_extra_data.c_str());
 	err_cfg.set_attr_dup("status_code", escaped_status_str.c_str());
 
-	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
+	async_send_doc(sock, doc);
 }
 
 config& server::get_addon(const std::string& id)
@@ -900,7 +897,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1));
+	async_send_doc(req.sock, doc);
 }
 
 void server::handle_request_campaign(const server::request& req)
@@ -1003,7 +1000,9 @@ void server::handle_request_campaign(const server::request& req)
 
 			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta))\n";
 
-			async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
+			boost::system::error_code ec;
+			coro_send_doc(req.sock, doc, req.yield[ec]);
+			if(check_error(ec, req.sock)) return;
 
 			full_pack_path.clear();
 		}
@@ -1019,7 +1018,9 @@ void server::handle_request_campaign(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on '" << name << "' version: " << to << " size: " << full_pack_size / 1024 << " KiB\n";
-		async_send_file(req.sock, full_pack_path, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
+		boost::system::error_code ec;
+		coro_send_file(req.sock, full_pack_path, req.yield[ec]);
+		if(check_error(ec, req.sock)) return;
 	}
 
 	// Clients doing upgrades or some other specific thing shouldn't bump
@@ -1071,7 +1072,9 @@ void server::handle_request_campaign_hash(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on hash index for '" << req.cfg["name"] << "' size: " << file_size / 1024 << " KiB\n";
-		async_send_file(req.sock, path, std::bind(&server::handle_new_client, this, std::placeholders::_1), null_handler);
+		boost::system::error_code ec;
+		coro_send_file(req.sock, path, req.yield[ec]);
+		if(check_error(ec, req.sock)) return;
 	}
 }
 
