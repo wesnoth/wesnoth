@@ -48,10 +48,10 @@ inline void coro_send_doc(socket_ptr socket, std::shared_ptr<simple_wml::documen
 		} data_size;
 		data_size.size = htonl(s.size());
 
-		std::vector<boost::asio::const_buffer> buffers;
-
-		buffers.push_back({ data_size.buf, 4 });
-		buffers.push_back({ s.begin(), std::size_t(s.size()) });
+		std::vector<boost::asio::const_buffer> buffers {
+			{ data_size.buf, 4 },
+			{ s.begin(), std::size_t(s.size()) }
+		};
 
 		async_write(*socket, buffers, yield);
 	} catch (simple_wml::error& e) {
