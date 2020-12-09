@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -796,7 +797,7 @@ void addon_manager::publish_addon(const addon_info& addon)
 	} else if(!client_.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(
 			_("The server responded with an error:") + "\n" + client_.get_last_server_error());
-	} else if(gui2::show_message(_("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons, true) == gui2::retval::OK) {
+	} else if(gui2::dialogs::addon_license_prompt::execute(server_msg)) {
 		if(!client_.upload_addon(addon_id, server_msg, cfg, tracking_info_[addon_id].state == ADDON_INSTALLED_LOCAL_ONLY)) {
 			const std::string& msg = _("The add-on was rejected by the server:") +
 			                         "\n\n" + client_.get_last_server_error();
