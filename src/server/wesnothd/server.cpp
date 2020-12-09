@@ -261,7 +261,6 @@ server::server(int port,
 	, failed_login_buffer_size_()
 	, version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED)
 	, login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED)
-	, join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED)
 	, games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC)
 	, metrics_()
 	, dump_stats_timer_(io_service_)
@@ -803,7 +802,10 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		}
 	}
 
-	async_send_doc(socket, join_lobby_response_, [this, username, registered, version, source](socket_ptr socket) {
+	simple_wml::document join_lobby_response;
+	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", user_handler_->user_is_moderator(username) ? "yes" : "no");
+
+	async_send_doc(socket, join_lobby_response, [this, username, registered, version, source](socket_ptr socket) {
 		simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 		add_player(socket, wesnothd::player(
 				username,
@@ -951,13 +953,6 @@ bool server::authenticate(
 			// Reset the random seed
 			seeds_.erase(socket.get());
 			user_handler_->user_logged_in(username);
-
-			simple_wml::document login_success_doc("[login_success]\n[/login_success]\n", simple_wml::INIT_STATIC);
-
-			// Report admin auth status back to the client
-			login_success_doc.child("login_success")->set_attr("is_admin", user_handler_->user_is_moderator(username) ? "yes" : "no");
-
-			async_send_doc_queued(socket, login_success_doc);
 		}
 	}
 
