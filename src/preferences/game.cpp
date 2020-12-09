@@ -190,6 +190,11 @@ void parse_admin_authentication(const std::string& sender, const std::string& me
 	}
 }
 
+void set_admin_authentication(bool authed)
+{
+	authenticated = authed;
+}
+
 admin_authentication_reset::admin_authentication_reset()
 {
 }

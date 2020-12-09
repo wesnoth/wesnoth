@@ -831,16 +831,6 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		}
 	}
 
-	if(is_moderator) {
-		LOG_SERVER << "Admin automatically recognized: IP: " << client_address(socket) << "\tnick: " << username
-				   << std::endl;
-
-		// This string is parsed by the client!
-		send_server_message(socket,
-			"You are now recognized as an administrator. "
-			"If you no longer want to be automatically authenticated use '/query signout'.", "alert");
-	}
-
 	if(auth_ban.type) {
 		send_server_message(socket, "You are currently banned by the forum administration.", "alert");
 	}
@@ -961,6 +951,13 @@ bool server::authenticate(
 			// Reset the random seed
 			seeds_.erase(socket.get());
 			user_handler_->user_logged_in(username);
+
+			simple_wml::document login_success_doc("[login_success]\n[/login_success]\n", simple_wml::INIT_STATIC);
+
+			// Report admin auth status back to the client
+			login_success_doc.child("login_success")->set_attr("is_admin", user_handler_->user_is_moderator(username) ? "yes" : "no");
+
+			async_send_doc_queued(socket, login_success_doc);
 		}
 	}
 
@@ -2143,7 +2140,7 @@ void server::roll_handler(const std::string& issuer_name,
 	if(parameters.empty()) {
 		return;
 	}
-	
+
 	int N;
 	try {
 		N = std::stoi(parameters);
