@@ -21,7 +21,6 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 
@@ -59,7 +58,7 @@ void lobby_player_info::pre_show(window& window)
 	relation_ = find_widget<label>(&window, "relation_info", false, true);
 
 	button& whisper = find_widget<button>(&window, "start_whisper", false);
-	if(info_.name != preferences::login()) {
+	if(info_.relation != mp::user_info::ME) {
 		connect_signal_mouse_left_click(whisper,
 			std::bind(&lobby_player_info::start_whisper_button_callback, this));
 	} else {
@@ -122,7 +121,7 @@ void lobby_player_info::pre_show(window& window)
 
 	update_relation();
 
-	if(!preferences::is_authenticated()) {
+	if(!info_.moderator) {
 		widget* aw = window.find("admin", false);
 		aw->set_visible(widget::visibility::invisible);
 	}
