@@ -90,11 +90,6 @@ const std::set<std::string> cap_defaults = {
 const std::string default_web_url = "https://add-ons.wesnoth.org/";
 
 /**
- * Default URL to a page with additional information on license terms for content uploaded to the server.
- */
-const std::string default_license_url = "https://wiki.wesnoth.org/Wesnoth:Copyrights";
-
-/**
  * Default license terms for content uploaded to the server.
  *
  * This used by both the @a [server_id] command and @a [request_terms] in
@@ -289,7 +284,6 @@ server::server(const std::string& cfg_file, unsigned short port)
 	, feedback_url_format_()
 	, web_url_()
 	, license_notice_()
-	, license_url_()
 	, blacklist_()
 	, blacklist_file_()
 	, stats_exempt_ips_()
@@ -350,7 +344,6 @@ void server::load_config()
 		feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
 		web_url_ = svinfo_cfg["web_url"].str(default_web_url);
 		license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
-		license_url_ = svinfo_cfg["license_url"].str(default_license_url);
 	}
 
 	blacklist_file_ = cfg_["blacklist_file"].str();
@@ -859,7 +852,6 @@ void server::handle_server_id(const server::request& req)
 		"cap",					utils::join(capabilities_),
 		"version",				game_config::revision,
 		"url",					web_url_,
-		"license_url",			license_url_,
 		"license_notice",		license_notice_,
 	}});
 

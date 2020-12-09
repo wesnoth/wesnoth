@@ -102,14 +102,6 @@ public:
 	bool request_distribution_terms(std::string& terms);
 
 	/**
-	 * Retrieves the content licensing information page URL if available.
-	 */
-	const std::string& distribution_terms_url() const
-	{
-		return license_url_;
-	}
-
-	/**
 	* Do a 'smart' fetch of an add-on, checking to avoid overwrites for devs and resolving dependencies, using gui interaction to handle issues that arise
 	* Returns: outcome: abort in case the user chose to abort because of an issue
 	*                   failure in case we resolved checks and dependencies, but fetching this particular add-on failed
@@ -188,7 +180,6 @@ private:
 	std::set<std::string> server_capabilities_;
 	std::string server_url_;
 	std::string license_notice_;
-	std::string license_url_;
 
 	/**
 	* Downloads the specified add-on from the server.
