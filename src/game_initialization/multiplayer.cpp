@@ -278,6 +278,9 @@ std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::str
 
 					gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 
+					// FIXME: hacky! This needs to be null to break out of the outer loop on a successful login
+					error = &data.child("error");
+
 					if(const config& success = data.child("login_success")) {
 						// Flag us as authenticated, if applicable...
 						preferences::set_admin_authentication(success["is_admin"].to_bool(false));
@@ -285,11 +288,6 @@ std::pair<std::unique_ptr<wesnothd_connection>, config> open_connection(std::str
 						// ... and get out of the login loop
 						break;
 					}
-
-					error = &data.child("error");
-
-					// ... and get us out of here if the server is happy now
-					if(!*error) break;
 				}
 
 				// Providing a password either was not attempted because we did not
