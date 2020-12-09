@@ -114,6 +114,7 @@ user_info::user_info(const config& c)
 	, state(game_id == 0 ? LOBBY : GAME)
 	, registered(c["registered"].to_bool())
 	, observing(c["status"] == "observing")
+	, moderator(c["moderator"].to_bool(false))
 {
 	update_relation();
 }

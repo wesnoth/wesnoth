@@ -33,9 +33,9 @@ wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
 {
 	cfg_.set_attr_dup("name", n.c_str());
 	cfg_.set_attr("registered", registered ? "yes" : "no");
+	cfg_.set_attr("moderator", moderator ? "yes" : "no");
 	mark_available();
 }
-
 
 void wesnothd::player::set_status(wesnothd::player::STATUS status)
 {

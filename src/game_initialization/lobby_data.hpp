@@ -130,6 +130,7 @@ struct user_info
 	user_state state;
 	bool registered;
 	bool observing;
+	bool moderator;
 };
 
 /**
