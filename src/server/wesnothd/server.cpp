@@ -803,7 +803,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	}
 
 	simple_wml::document join_lobby_response;
-	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", user_handler_->user_is_moderator(username) ? "yes" : "no");
+	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", is_moderator ? "yes" : "no");
 
 	async_send_doc(socket, join_lobby_response, [this, username, registered, version, source](socket_ptr socket) {
 		simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
