@@ -212,9 +212,9 @@ std::string colorize(const std::string& str, const color_t& color)
 	return (formatter() << font::span_color(color) << str << "</span>").str();
 }
 
-bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
+bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::addon_req addon_outcome)
 {
-	if(addon_outcome == mp::game_info::CANNOT_SATISFY) {
+	if(addon_outcome == mp::game_info::addon_req::CANNOT_SATISFY) {
 		std::string e_title = _("Incompatible User-made Content");
 		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host's add-ons be updated.");
 
@@ -223,14 +223,14 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 		err_msg += "\n";
 
 		for(const mp::game_info::required_addon & a : reqs) {
-			if (a.outcome == mp::game_info::CANNOT_SATISFY) {
+			if (a.outcome == mp::game_info::addon_req::CANNOT_SATISFY) {
 				err_msg += font::unicode_bullet + " " + a.message + "\n";
 			}
 		}
 		gui2::show_message(e_title, err_msg, message::auto_close, true);
 
 		return false;
-	} else if(addon_outcome == mp::game_info::NEED_DOWNLOAD) {
+	} else if(addon_outcome == mp::game_info::addon_req::NEED_DOWNLOAD) {
 		std::string e_title = _("Missing User-made Content");
 		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join.\nDo you want to try to install them?");
 
@@ -240,7 +240,7 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 
 		std::vector<std::string> needs_download;
 		for(const mp::game_info::required_addon & a : reqs) {
-			if(a.outcome == mp::game_info::NEED_DOWNLOAD) {
+			if(a.outcome == mp::game_info::addon_req::NEED_DOWNLOAD) {
 				err_msg += font::unicode_bullet + " " + a.message + "\n";
 
 				needs_download.push_back(a.addon_id);
@@ -311,7 +311,7 @@ void mp_lobby::update_gamelist_diff()
 	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
 		const mp::game_info& game = *lobby_info_.games()[i];
 
-		if(game.display_status == mp::game_info::NEW) {
+		if(game.display_status == mp::game_info::display_status::NEW) {
 			// call void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
 			// sender will be the game_info.scenario (std::string) and message will be game_info.name (std::string)
 			do_notify(mp::NOTIFY_GAME_CREATED, game.scenario, game.name);
@@ -356,14 +356,14 @@ void mp_lobby::update_gamelist_diff()
 				return;
 			}
 
-			if(game.display_status == mp::game_info::UPDATED) {
+			if(game.display_status == mp::game_info::display_status::UPDATED) {
 				LOG_LB << "Modifying game in listbox " << game.id << " (row " << list_i << ")\n";
 				grid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
 				adjust_game_row_contents(game, grid, false);
 				++list_i;
 				next_gamelist_id_at_row.push_back(game.id);
-			} else if(game.display_status == mp::game_info::DELETED) {
+			} else if(game.display_status == mp::game_info::display_status::DELETED) {
 				LOG_LB << "Deleting game from listbox " << game.id << " (row "
 					   << list_i << ")\n";
 				gamelistbox_->remove_row(list_i);
@@ -972,7 +972,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	window& window = *get_window();
 
 	// Prompt user to download this game's required addons if its requirements have not been met
-	if(game.addons_outcome != mp::game_info::SATISFIED) {
+	if(game.addons_outcome != mp::game_info::addon_req::SATISFIED) {
 		if(game.required_addons.empty()) {
 			gui2::show_error_message(_("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at https://bugs.wesnoth.org."));
 			return;

@@ -182,26 +182,27 @@ struct game_info
 	bool has_friends;
 	bool has_ignored;
 
-	enum game_display_status {
+	enum class display_status {
 		CLEAN,
 		NEW,
 		UPDATED,
 		DELETED
 	};
-	game_display_status display_status;
 
-	enum ADDON_REQ { SATISFIED, NEED_DOWNLOAD, CANNOT_SATISFY };
+	display_status display_status;
+
+	enum class addon_req { SATISFIED, NEED_DOWNLOAD, CANNOT_SATISFY };
 
 	struct required_addon {
 		std::string addon_id;
-		ADDON_REQ outcome;
+		addon_req outcome;
 		std::string message;
 	};
 
 	std::vector<required_addon> required_addons;
-	ADDON_REQ addons_outcome;
+	addon_req addons_outcome;
 
-	ADDON_REQ check_addon_version_compatibility(const config& local_item, const config& game);
+	addon_req check_addon_version_compatibility(const config& local_item, const config& game);
 
 	const char* display_status_string() const;
 
