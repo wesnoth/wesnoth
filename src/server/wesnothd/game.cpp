@@ -545,6 +545,7 @@ void game::transfer_side_control(const socket_ptr& sock, const simple_wml::node&
 	const simple_wml::string_span& newplayer_name = cfg["player"];
 	const socket_ptr old_player = sides_[side_num - 1];
 	const auto oldplayer = player_connections_.find(old_player);
+	const std::string& controller_type = cfg["to"].to_string();
 	if(oldplayer == player_connections_.end()) {
 		missing_user(old_player, __func__);
 	}
@@ -579,10 +580,18 @@ void game::transfer_side_control(const socket_ptr& sock, const simple_wml::node&
 	}
 
 	if(newplayer == old_player) {
-		std::stringstream msg;
-		msg << "Side " << side_num << " is already controlled by " << newplayer_name << ".";
-		send_server_message(msg.str(), sock);
-		return;
+		// if the player is unchanged and the controller type (human or ai) is also unchanged then nothing to do
+		// else only need to change the controller type rather than the player who controls the side
+		if(CONTROLLER::string_to_enum(controller_type) == side_controllers_[side_num - 1]) {
+			std::stringstream msg;
+			msg << "Side " << side_num << " is already controlled by " << newplayer_name << ".";
+			send_server_message(msg.str(), sock);
+			return;
+		} else {
+			side_controllers_[side_num - 1] = CONTROLLER::string_to_enum(controller_type);
+			change_controller_type(side_num - 1, newplayer, player_connections_.find(newplayer)->info().name());
+			return;
+		}
 	}
 
 	sides_[side_num - 1].reset();
@@ -631,30 +640,37 @@ void game::change_controller(
 		}
 	}
 
-	simple_wml::document response;
-	simple_wml::node& change = response.root().add_child("change_controller");
+	auto response = change_controller_type(side_index, sock, player_name);
 
-	change.set_attr_dup("side", side.c_str());
-	change.set_attr_dup("player", player_name.c_str());
-
-	// Tell everyone but the new player that this side's controller changed.
-	change.set_attr_dup("controller", side_controllers_[side_index].to_cstring());
-	change.set_attr("is_local", "no");
-
-	send_data(response, sock);
-
-	if(started_) { // this is added instead of the if (started_) {...} below
+	if(started_) {
 		// the purpose of these records is so that observers, replay viewers, get controller updates correctly
-		record_data(response.clone());
+		record_data(response->clone());
 	}
 
 	// Tell the new player that he controls this side now.
 	// Just don't send it when the player left the game. (The host gets the
 	// side_drop already.)
 	if(!player_left) {
-		change.set_attr("is_local", "yes");
-		async_send_doc_queued(sock, response);
+		response->root().child("change_controller")->set_attr("is_local", "yes");
+		async_send_doc_queued(sock, *response.get());
 	}
+}
+
+std::unique_ptr<simple_wml::document> game::change_controller_type(const std::size_t side_index, const socket_ptr& sock, const std::string& player_name)
+{
+	const std::string& side = std::to_string(side_index + 1);
+	simple_wml::document response;
+	simple_wml::node& change = response.root().add_child("change_controller");
+
+	change.set_attr_dup("side", side.c_str());
+	change.set_attr_dup("player", player_name.c_str());
+
+	// Tell everyone but the source player that this side's controller changed.
+	change.set_attr_dup("controller", side_controllers_[side_index].to_cstring());
+	change.set_attr("is_local", "no");
+
+	send_data(response, sock);
+	return std::unique_ptr<simple_wml::document>(response.clone());
 }
 
 void game::notify_new_host()
