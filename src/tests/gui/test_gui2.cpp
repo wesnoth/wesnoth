@@ -34,6 +34,7 @@
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
+#include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
@@ -415,6 +416,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	/* The modal_dialog classes. */
 	test<addon_connect>();
+	test<addon_license_prompt>();
 	//test<addon_manager>();
 	//test<attack_predictions>();
 	test<campaign_difficulty>();
@@ -577,6 +579,18 @@ struct dialog_tester<addon_connect>
 	addon_connect* create()
 	{
 		return new addon_connect(host_name, true);
+	}
+};
+
+template<>
+struct dialog_tester<addon_license_prompt>
+{
+	std::string license_terms = R"""(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ante nibh, dignissim ullamcorper tristique eget, condimentum sit amet enim. Aenean dictum pulvinar lacinia. Etiam eleifend, leo sed efficitur consectetur, augue nulla ornare lectus, vitae molestie lacus risus vitae libero. Quisque odio nunc, porttitor eget fermentum sit amet, faucibus eu risus. Praesent sit amet lacus tortor. Suspendisse volutpat quam vitae ipsum fermentum, in vulputate metus egestas. Nulla id consequat ex. Nulla ac dignissim nisl, nec euismod lectus. Duis vitae dolor ornare, convallis justo in, porta dui.
+
+Sed faucibus nibh sit amet ligula porta, non malesuada nibh tristique. Maecenas aliquam diam non eros convallis mattis. Proin rhoncus condimentum leo, sed condimentum magna. Phasellus cursus condimentum lacus, sed sodales lacus. Sed pharetra dictum metus, eget dictum nibh lobortis imperdiet. Nunc tempus sollicitudin bibendum. In porttitor interdum orci. Curabitur vitae nibh vestibulum, condimentum lectus quis, condimentum dui. In quis cursus nisl. Maecenas semper neque eu ipsum aliquam, id porta ligula lacinia. Integer sed blandit ex, eu accumsan magna.)""";
+	addon_license_prompt* create()
+	{
+		return new addon_license_prompt(license_terms);
 	}
 };
 
