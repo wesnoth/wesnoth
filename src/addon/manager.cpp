@@ -14,24 +14,11 @@
 */
 
 #include "addon/manager.hpp"
-#include "addon/manager_ui.hpp"
+
 #include "filesystem.hpp"
-#include "preferences/game.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/addon/connect.hpp"
-#include "gui/dialogs/addon/manager.hpp"
-#include "gui/dialogs/addon/uninstall_list.hpp"
-#include "gui/dialogs/message.hpp"
-#include "gui/dialogs/simple_item_selector.hpp"
-#include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "game_version.hpp"
-#include "serialization/string_utils.hpp"
-#include "addon/client.hpp"
-#include "game_config_manager.hpp"
 
 #include <boost/algorithm/string.hpp>
 
