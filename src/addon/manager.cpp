@@ -107,7 +107,14 @@ void get_addon_install_info(const std::string& addon_name, config& cfg)
 	const std::string& info_path = get_info_file_path(addon_name);
 	filesystem::scoped_istream stream = filesystem::istream_file(info_path);
 	try {
-		read(cfg, *stream);
+		// The parser's read() API would normally do this at the start. This
+		// is a safeguard in case read() throws later
+		cfg.clear();
+		config envelope;
+		read(envelope, *stream);
+		if(config& info = envelope.child("info")) {
+			cfg = std::move(info);
+		}
 	} catch(const config::error& e) {
 		ERR_CFG << "Failed to read add-on installation information for '"
 				<< addon_name << "' from " << info_path << ":\n"
@@ -190,9 +197,9 @@ std::map<std::string, std::string> installed_addons_and_versions()
 				addons[addon_id] = "Invalid pbl file, version unknown";
 			}
 		} else if(filesystem::file_exists(get_info_file_path(addon_id))) {
-			config temp;
-			get_addon_install_info(addon_id, temp);
-			addons[addon_id] = !temp.empty() && temp.has_child("info") ? temp.child("info")["version"].str() : "Unknown";
+			config info_cfg;
+			get_addon_install_info(addon_id, info_cfg);
+			addons[addon_id] = !info_cfg.empty() ? info_cfg["version"].str() : "Unknown";
 		} else {
 			addons[addon_id] = "Unknown";
 		}
@@ -374,11 +381,10 @@ void refresh_addon_version_info_cache()
 		const std::string& info_file = addon_info_files[i];
 
 		if(filesystem::file_exists(info_file)) {
-			config cfg;
-			get_addon_install_info(addon, cfg);
+			config info_cfg;
+			get_addon_install_info(addon, info_cfg);
 
-			const config& info_cfg = cfg.child("info");
-			if(!info_cfg) {
+			if(info_cfg.empty()) {
 				continue;
 			}
 

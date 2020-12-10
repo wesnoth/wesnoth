@@ -107,12 +107,10 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 		if(have_addon_install_info(base)) {
 			// _info.cfg may have the add-on's title starting with 1.11.7,
 			// if the add-on was downloaded using the revised _info.cfg writer.
-			config cfg;
-			get_addon_install_info(base, cfg);
+			config info_cfg;
+			get_addon_install_info(base, info_cfg);
 
-			const config& info_cfg = cfg.child("info");
-
-			if(info_cfg && !info_cfg["title"].empty()) {
+			if(!info_cfg.empty() && !info_cfg["title"].empty()) {
 				file = info_cfg["title"].str();
 				continue;
 			}
