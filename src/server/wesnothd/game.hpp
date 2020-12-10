@@ -387,6 +387,9 @@ private:
 			const socket_ptr& sock,
 			const std::string& player_name,
 			const bool player_left = true);
+	std::unique_ptr<simple_wml::document> change_controller_type(const std::size_t side_num,
+			const socket_ptr& sock,
+			const std::string& player_name);
 	void transfer_ai_sides(const socket_ptr& player);
 	void send_leave_game(const socket_ptr& user) const;
 
