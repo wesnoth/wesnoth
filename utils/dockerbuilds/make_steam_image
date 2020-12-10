@@ -6,7 +6,7 @@ VALVE_SNAPSHOT=0.20201007.1
 
 DOCKERBASEIMAGE=steamrt_scout_amd64
 DOCKERLOCALIMAGE=wesnoth/wesnoth:steamrt-master
-DOCKERLOCALFILE=./travis/Dockerfile-base-steamrt
+DOCKERLOCALFILE=./CI/Dockerfile-base-steamrt
 
 if [ ! -f "$VALVEFILE" ]; then
     wget http://repo.steampowered.com/steamrt-images-scout/snapshots/"$VALVE_SNAPSHOT"/"$VALVEFILE"
