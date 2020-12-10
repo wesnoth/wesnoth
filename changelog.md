@@ -1,4 +1,6 @@
 ## Version 1.14.14+dev
+ ### Add-ons client
+   * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
  ### Campaigns
    * Descent into Darkness:
      * S11: fix low probability case of enemy being unreachable
