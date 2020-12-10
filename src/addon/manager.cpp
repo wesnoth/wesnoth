@@ -153,36 +153,43 @@ bool remove_local_addon(const std::string& addon)
 	return true;
 }
 
-std::vector<std::string> available_addons()
+namespace {
+
+enum ADDON_ENUM_CRITERIA
+{
+	ADDON_ANY,
+	ADDON_HAS_PBL,
+};
+
+std::vector<std::string> enumerate_addons_internal(ADDON_ENUM_CRITERIA filter)
 {
 	std::vector<std::string> res;
-	std::vector<std::string> files, dirs;
-	const std::string parentd = filesystem::get_addons_dir();
-	filesystem::get_files_in_dir(parentd,&files,&dirs);
+	std::vector<std::string> addon_dirnames;
 
-	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-		if (filesystem::file_exists(parentd + "/" + *i + "/_main.cfg") && have_addon_pbl_info(*i)) {
-			res.push_back(*i);
+	const auto& addons_root = filesystem::get_addons_dir();
+	filesystem::get_files_in_dir(addons_root, nullptr, &addon_dirnames);
+
+	for(const auto& addon_name : addon_dirnames) {
+		if(filesystem::file_exists(addons_root + "/" + addon_name + "/_main.cfg") &&
+		   (filter != ADDON_HAS_PBL || have_addon_pbl_info(addon_name)))
+		{
+			res.emplace_back(addon_name);
 		}
 	}
 
 	return res;
 }
 
+}
+
+std::vector<std::string> available_addons()
+{
+	return enumerate_addons_internal(ADDON_HAS_PBL);
+}
+
 std::vector<std::string> installed_addons()
 {
-	std::vector<std::string> res;
-	const std::string parentd = filesystem::get_addons_dir();
-	std::vector<std::string> files, dirs;
-	filesystem::get_files_in_dir(parentd,&files,&dirs);
-
-	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-		if(filesystem::file_exists(parentd + "/" + *i + "/_main.cfg")) {
-			res.push_back(*i);
-		}
-	}
-
-	return res;
+	return enumerate_addons_internal(ADDON_ANY);
 }
 
 std::map<std::string, std::string> installed_addons_and_versions()
