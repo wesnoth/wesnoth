@@ -20,7 +20,6 @@
 
 #include "game_initialization/create_engine.hpp"
 #include "game_initialization/configure_engine.hpp"
-#include "game_initialization/multiplayer.hpp"
 #include "mp_game_settings.hpp"
 
 class config;

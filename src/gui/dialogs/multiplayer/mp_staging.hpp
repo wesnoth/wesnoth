@@ -14,14 +14,11 @@
 #pragma once
 
 #include "game_initialization/connect_engine.hpp"
-#include "game_initialization/lobby_info.hpp"
-#include "game_initialization/multiplayer.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/dialogs/multiplayer/player_list_helper.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
-#include "mp_game_settings.hpp"
 
 class config;
+class wesnothd_connection;
 
 namespace ai
 {
@@ -30,10 +27,10 @@ namespace ai
 
 namespace gui2
 {
-
 class menu_button;
 class slider;
 class tree_view_node;
+class player_list_helper;
 
 namespace dialogs
 {

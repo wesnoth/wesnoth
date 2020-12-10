@@ -21,6 +21,7 @@
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
+#include "game_config_view.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
@@ -33,7 +34,6 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/status_label_helper.hpp"
@@ -45,7 +45,6 @@
 #include "preferences/game.hpp"
 #include "save_index.hpp"
 #include "savegame.hpp"
-#include "game_config_view.hpp"
 
 #include <boost/algorithm/string.hpp>
 
