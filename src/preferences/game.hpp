@@ -41,6 +41,7 @@ class acquaintance;
 
 	bool is_authenticated();
 	void parse_admin_authentication(const std::string& sender, const std::string& message);
+	void set_admin_authentication(bool authed);
 
 	/**
 	 * Used to reset is_authenticated flag after disconnecting.

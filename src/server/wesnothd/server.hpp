@@ -165,7 +165,6 @@ private:
 
 	simple_wml::document version_query_response_;
 	simple_wml::document login_response_;
-	simple_wml::document join_lobby_response_;
 	simple_wml::document games_and_users_list_;
 
 	metrics metrics_;

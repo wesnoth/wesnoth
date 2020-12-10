@@ -262,7 +262,6 @@ server::server(int port,
 	, failed_login_buffer_size_()
 	, version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED)
 	, login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED)
-	, join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED)
 	, games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC)
 	, metrics_()
 	, dump_stats_timer_(io_service_)
@@ -694,7 +693,9 @@ void server::login_client(boost::asio::yield_context yield, socket_ptr socket)
 		async_send_error(socket, "You must login first.", MP_MUST_LOGIN);
 	}
 
-	coro_send_doc(socket, join_lobby_response_, yield[ec]);
+	simple_wml::document join_lobby_response;
+	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", is_moderator ? "yes" : "no");
+	coro_send_doc(socket, join_lobby_response, yield[ec]);
 	if(check_error(ec, socket)) return;
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
@@ -2139,7 +2140,7 @@ void server::roll_handler(const std::string& issuer_name,
 	if(parameters.empty()) {
 		return;
 	}
-	
+
 	int N;
 	try {
 		N = std::stoi(parameters);

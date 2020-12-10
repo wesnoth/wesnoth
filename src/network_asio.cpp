@@ -12,10 +12,16 @@
    See the COPYING file for more details.
 */
 
+#define BOOST_ASIO_NO_DEPRECATED
+
 #include "network_asio.hpp"
 
 #include "log.hpp"
 #include "serialization/parser.hpp"
+
+#include <boost/asio/connect.hpp>
+#include <boost/asio/read.hpp>
+#include <boost/asio/write.hpp>
 
 #include <algorithm>
 #include <cstdint>
@@ -30,21 +36,24 @@ static lg::log_domain log_network("network");
 
 namespace
 {
-std::deque<boost::asio::const_buffer> split_buffers(boost::asio::streambuf::const_buffers_type source_buffers)
+std::deque<boost::asio::const_buffer> split_buffer(boost::asio::streambuf::const_buffers_type source_buffer)
 {
 	const unsigned int chunk_size = 4096;
 
 	std::deque<boost::asio::const_buffer> buffers;
-	for(boost::asio::const_buffer b : source_buffers) {
-		unsigned int remaining_size = boost::asio::buffer_size(b);
-		const uint8_t* data = boost::asio::buffer_cast<const uint8_t*>(b);
+	unsigned int remaining_size = boost::asio::buffer_size(source_buffer);
 
-		while(remaining_size > 0u) {
-			unsigned int size = std::min(remaining_size, chunk_size);
-			buffers.emplace_back(data, size);
-			data += size;
-			remaining_size -= size;
-		}
+#if BOOST_VERSION >= 106600
+	const uint8_t* data = static_cast<const uint8_t*>(source_buffer.data());
+#else
+	const uint8_t* data = boost::asio::buffer_cast<const uint8_t*>(source_buffer);
+#endif
+
+	while(remaining_size > 0u) {
+		unsigned int size = std::min(remaining_size, chunk_size);
+		buffers.emplace_back(data, size);
+		data += size;
+		remaining_size -= size;
 	}
 
 	return buffers;
@@ -56,9 +65,9 @@ namespace network_asio
 using boost::system::system_error;
 
 connection::connection(const std::string& host, const std::string& service)
-	: io_service_()
-	, resolver_(io_service_)
-	, socket_(io_service_)
+	: io_context_()
+	, resolver_(io_context_)
+	, socket_(io_context_)
 	, done_(false)
 	, write_buf_()
 	, read_buf_()
@@ -69,41 +78,37 @@ connection::connection(const std::string& host, const std::string& service)
 	, bytes_to_read_(0)
 	, bytes_read_(0)
 {
-	resolver_.async_resolve(
-		boost::asio::ip::tcp::resolver::query(host, service), std::bind(&connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
+#if BOOST_VERSION >= 106600
+	resolver_.async_resolve(host, service,
+#else
+	resolver_.async_resolve(boost::asio::ip::tcp::resolver::query(host, service),
+#endif
+		std::bind(&connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 
 	LOG_NW << "Resolving hostname: " << host << '\n';
 }
 
-void connection::handle_resolve(const boost::system::error_code& ec, resolver::iterator iterator)
+void connection::handle_resolve(const boost::system::error_code& ec, results_type results)
 {
 	if(ec) {
 		throw system_error(ec);
 	}
 
-	connect(iterator);
+	boost::asio::async_connect(socket_, results,
+		std::bind(&connection::handle_connect, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-void connection::connect(resolver::iterator iterator)
-{
-	socket_.async_connect(*iterator, std::bind(&connection::handle_connect, this, std::placeholders::_1, iterator));
-	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
-}
-
-void connection::handle_connect(const boost::system::error_code& ec, resolver::iterator iterator)
+void connection::handle_connect(const boost::system::error_code& ec, endpoint endpoint)
 {
 	if(ec) {
-		WRN_NW << "Failed to connect to " << iterator->endpoint().address() << ": " << ec.message() << '\n';
-		socket_.close();
-
-		if(++iterator == resolver::iterator()) {
-			ERR_NW << "Tried all IPs. Giving up" << std::endl;
-			throw system_error(ec);
-		} else {
-			connect(iterator);
-		}
+		ERR_NW << "Tried all IPs. Giving up" << std::endl;
+		throw system_error(ec);
 	} else {
-		LOG_NW << "Connected to " << iterator->endpoint().address() << '\n';
+#if BOOST_VERSION >= 106600
+		LOG_NW << "Connected to " << endpoint.address() << '\n';
+#else
+		LOG_NW << "Connected to " << endpoint->endpoint().address() << '\n';
+#endif
 		handshake();
 	}
 }
@@ -130,7 +135,11 @@ void connection::handle_handshake(const boost::system::error_code& ec)
 
 void connection::transfer(const config& request, config& response)
 {
-	io_service_.reset();
+#if BOOST_VERSION >= 106600
+	io_context_.restart();
+#else
+	io_context_.reset();
+#endif
 	done_ = false;
 
 	write_buf_.reset(new boost::asio::streambuf);
@@ -142,15 +151,15 @@ void connection::transfer(const config& request, config& response)
 	bytes_written_ = 0;
 	payload_size_ = htonl(bytes_to_write_ - 4);
 
-	boost::asio::streambuf::const_buffers_type gzipped_data = write_buf_->data();
-	auto bufs = split_buffers(gzipped_data);
-
+	auto bufs = split_buffer(write_buf_->data());
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
 
-	boost::asio::async_write(socket_, bufs, std::bind(&connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
+	boost::asio::async_write(socket_, bufs,
+		std::bind(&connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
 		std::bind(&connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
 
-	boost::asio::async_read(socket_, *read_buf_, std::bind(&connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
+	boost::asio::async_read(socket_, *read_buf_,
+		std::bind(&connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
 		std::bind(&connection::handle_read, this, std::placeholders::_1, std::placeholders::_2, std::ref(response)));
 }
 

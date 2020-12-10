@@ -71,6 +71,51 @@ namespace campaignd {
 
 namespace {
 
+/**
+ * campaignd capabilities supported by this version of the server.
+ *
+ * These are advertised to clients using the @a [server_id] command. They may
+ * be disabled or re-enabled at runtime.
+ */
+const std::set<std::string> cap_defaults = {
+	// Legacy item and passphrase-based authentication
+	"auth:legacy",
+	// Delta WML packs
+	"delta",
+};
+
+/**
+ * Default URL to the add-ons server web index.
+ */
+const std::string default_web_url = "https://add-ons.wesnoth.org/";
+
+/**
+ * Default license terms for content uploaded to the server.
+ *
+ * This used by both the @a [server_id] command and @a [request_terms] in
+ * their responses.
+ *
+ * The text is intended for display on the client with Pango markup enabled and
+ * sent by the server as-is, so it ought to be formatted accordingly.
+ */
+const std::string default_license_notice = R"""(<span size='x-large'>General Rules</span>
+
+The current version of the server rules can be found at: https://r.wesnoth.org/t51347
+
+<span color='#f88'>Any content that does not conform to the rules listed at the link above, as well as the licensing terms below, may be removed at any time without prior notice.</span>
+
+<span size='x-large'>Licensing</span>
+
+All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), version 2 or later, with the sole exception of graphics and audio explicitly denoted as released under a Creative Commons license either in:
+
+  a) a combined toplevel file, e.g. “<span font_family='monospace'>My_Addon/ART_LICENSE</span>”; <b>or</b>
+  b) a file with the same path as the asset with “<span font_family='monospace'>.license</span>” appended, e.g. “<span font_family='monospace'>My_Addon/images/units/axeman.png.license</span>”.
+
+<b>By uploading content to this server, you certify that you have the right to:</b>
+
+  a) release all included art and audio explicitly denoted with a Creative Commons license in the prescribed manner under that license; <b>and</b>
+  b) release all other included content under the terms of the chosen versions of the GNU GPL.)""";
+
 bool timing_reports_enabled = false;
 
 void timing_report_function(const util::ms_optimer& tim, const campaignd::server::request& req, const std::string& label = {})
@@ -233,6 +278,7 @@ std::string simple_wml_escape(const std::string& text)
 
 server::server(const std::string& cfg_file, unsigned short port)
 	: server_base(default_campaignd_port, true)
+	, capabilities_(cap_defaults)
 	, addons_()
 	, dirty_addons_()
 	, cfg_()
@@ -240,9 +286,12 @@ server::server(const std::string& cfg_file, unsigned short port)
 	, read_only_(false)
 	, compress_level_(0)
 	, update_pack_lifespan_(0)
+	, strict_versions_(true)
 	, hooks_()
 	, handlers_()
 	, feedback_url_format_()
+	, web_url_()
+	, license_notice_()
 	, blacklist_()
 	, blacklist_file_()
 	, stats_exempt_ips_()
@@ -292,14 +341,17 @@ void server::load_config()
 		LOG_CS << "READ-ONLY MODE ACTIVE\n";
 	}
 
+	strict_versions_ = cfg_["strict_versions"].to_bool(true);
+
 	// Seems like compression level above 6 is a waste of CPU cycles.
 	compress_level_ = cfg_["compress_level"].to_int(6);
 	// One month probably will be fine (#TODO: testing needed)
 	update_pack_lifespan_ = cfg_["update_pack_lifespan"].to_time_t(30 * 24 * 60 * 60);
 
-	const config& svinfo_cfg = server_info();
-	if(svinfo_cfg) {
+	if(const auto& svinfo_cfg = server_info()) {
 		feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
+		web_url_ = svinfo_cfg["web_url"].str(default_web_url);
+		license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
 	}
 
 	blacklist_file_ = cfg_["blacklist_file"].str();
@@ -790,6 +842,7 @@ void server::delete_addon(const std::string& id)
 
 void server::register_handlers()
 {
+	REGISTER_CAMPAIGND_HANDLER(server_id);
 	REGISTER_CAMPAIGND_HANDLER(request_campaign_list);
 	REGISTER_CAMPAIGND_HANDLER(request_campaign);
 	REGISTER_CAMPAIGND_HANDLER(request_campaign_hash);
@@ -797,6 +850,25 @@ void server::register_handlers()
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
 	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
+}
+
+void server::handle_server_id(const server::request& req)
+{
+	DBG_CS << req << "Sending server identification\n";
+
+	std::ostringstream ostr;
+	write(ostr, config{"server_id", config{
+		"cap",					utils::join(capabilities_),
+		"version",				game_config::revision,
+		"url",					web_url_,
+		"license_notice",		license_notice_,
+	}});
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1));
 }
 
 void server::handle_request_campaign_list(const server::request& req)
@@ -1088,19 +1160,8 @@ void server::handle_request_terms(const server::request& req)
 		return;
 	}
 
-	// TODO: possibly move to server.cfg
-	static const std::string terms = R"""(All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of graphics and audio explicitly denoted as released under a Creative Commons license either in:
-
-    a) a combined toplevel file, e.g. “My_Addon/ART_LICENSE”; <b>or</b>
-    b) a file with the same path as the asset with “.license” appended, e.g. “My_Addon/images/units/axeman.png.license”.
-
-<b>By uploading content to this server, you certify that you have the right to:</b>
-
-    a) release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license; <b>and</b>
-    b) release all other included content under the terms of the GPL; and that you choose to do so.)""";
-
 	LOG_CS << req << "Sending license terms\n";
-	send_message(terms, req.sock);
+	send_message(license_notice_, req.sock);
 }
 
 ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& existing_addon, std::string& error_data)
@@ -1223,6 +1284,16 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 	if(upload["version"].empty()) {
 		LOG_CS << "Validation error: no add-on version specified\n";
 		return ADDON_CHECK_STATUS::NO_VERSION;
+	}
+
+	if(existing_addon) {
+		version_info new_version{upload["version"].str()};
+		version_info old_version{(*existing_addon)["version"].str()};
+
+		if(strict_versions_ ? new_version <= old_version : new_version < old_version) {
+			LOG_CS << "Validation error: add-on version not incremented\n";
+			return ADDON_CHECK_STATUS::VERSION_NOT_INCREMENTED;
+		}
 	}
 
 	if(upload["description"].empty()) {

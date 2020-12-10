@@ -20,13 +20,10 @@ class config;
 class variable_set;
 
 #include <array>
-#include <cmath>
-#include <cstdlib>
 #include <set>
 #include <string>
 #include <tuple>
 #include <vector>
-#include <algorithm>
 #include <utility>
 
 struct wml_loc {};

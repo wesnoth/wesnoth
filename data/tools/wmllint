@@ -1356,8 +1356,8 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         else:
             actual_tag = nav.element
         if actual_tag not in ("[part]", "[background_layer]", "[image]", "[insert_tag]",
-                              "[if]", "[then]", "[else]", "[switch]", "[case]",
-                              "[variable]", "[deprecated_message]"):
+                              "[if]", "[then]", "[elseif]", "[else]", "[switch]", "[case]",
+                              "[variable]", "[deprecated_message]", "[wml_message]"):
             print(errlead + '%s not permitted within [part] tag' % nav.element)
     # Most tags are not permitted inside [if]
     if (len(ancestors) >= 1 and parent == "[if]") or \
@@ -1365,7 +1365,9 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if isOpener(nav.element) and nav.element not in ("[and]",
                            "[else]", "[elseif]", "[frame]", "[have_location]",
                            "[have_unit]", "[not]", "[or]", "[then]", "[lua]",
-                           "[variable]") and not nav.element.endswith("_frame]") \
+                           "[variable]", "[true]", "[false]", "[found_item]",
+                           "[proceed_to_next_scenario]") \
+                           and not nav.element.endswith("_frame]") \
                            and not nav.element.startswith("[filter") and \
                            nav.element not in custom_conditionals:
             print(errlead + 'illegal child of [if]:', nav.element)
@@ -2880,8 +2882,8 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = [x for x in line]
                     outmap.append(fields)
-                    if not maskwarn and maptype == 'map' and "_f" in line:
-                        print('"%s", line %d: warning, fog in map file' \
+                    if not maskwarn and maptype == 'map' and ("_f" in line or "_s" in line):
+                        print('"%s", line %d: warning, fog or shroud in map file' \
                               % (filename, lineno+1))
                         maskwarn = True
             # Deduce the map type
