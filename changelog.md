@@ -3,6 +3,8 @@
    * Fixed inability to write files (including the server configuration file) on Windows.
    * Dropped plain text passphrase migration, unused in production since version 1.12.7 and 1.13.0 (issue #5080).
    * Uploading add-ons with versions not greater than the latest uploaded version is no longer allowed (issue #5079).
+ ### Add-ons client
+   * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
  ### Campaigns
  ### Multiplayer
    * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
