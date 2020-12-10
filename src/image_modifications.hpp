@@ -22,7 +22,6 @@
 #include <functional>
 #include <map>
 #include <memory>
-#include <queue>
 
 namespace image {
 
