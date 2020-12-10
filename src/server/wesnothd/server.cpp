@@ -1014,7 +1014,7 @@ void server::send_password_request(socket_ptr socket,
 		e.set_attr("error_code", error_code);
 	}
 
-	async_send_doc(socket, doc);
+	async_send_doc_queued(socket, doc);
 }
 
 void server::handle_player(boost::asio::yield_context yield, socket_ptr socket, const player& player)

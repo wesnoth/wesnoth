@@ -765,7 +765,7 @@ void server::send_message(const std::string& msg, socket_ptr sock)
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("message").set_attr_dup("message", escaped_msg.c_str());
-	async_send_doc(sock, doc);
+	async_send_doc_queued(sock, doc);
 }
 
 void server::send_error(const std::string& msg, socket_ptr sock)
@@ -774,7 +774,7 @@ void server::send_error(const std::string& msg, socket_ptr sock)
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", escaped_msg.c_str());
-	async_send_doc(sock, doc);
+	async_send_doc_queued(sock, doc);
 }
 
 void server::send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, socket_ptr sock)
@@ -795,7 +795,7 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 	err_cfg.set_attr_dup("extra_data", escaped_extra_data.c_str());
 	err_cfg.set_attr_dup("status_code", escaped_status_str.c_str());
 
-	async_send_doc(sock, doc);
+	async_send_doc_queued(sock, doc);
 }
 
 config& server::get_addon(const std::string& id)
@@ -868,7 +868,7 @@ void server::handle_server_id(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, std::placeholders::_1));
+	async_send_doc_queued(req.sock, doc);
 }
 
 void server::handle_request_campaign_list(const server::request& req)
@@ -969,7 +969,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	async_send_doc(req.sock, doc);
+	async_send_doc_queued(req.sock, doc);
 }
 
 void server::handle_request_campaign(const server::request& req)
