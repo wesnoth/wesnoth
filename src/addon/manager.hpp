@@ -108,6 +108,15 @@ bool have_addon_install_info(const std::string& addon_name);
  */
 void get_addon_install_info(const std::string& addon_name, class config& cfg);
 
+/**
+ * Writes the installation info (_info.cfg) for an add-on to disk.
+ *
+ * @param addon_name              The add-on's main directory/file name.
+ * @param cfg                     A config object containing the add-on's
+ *                                properties.
+ */
+void write_addon_install_info(const std::string& addon_name, const class config& cfg);
+
 /** Returns a list of local add-ons that can be published. */
 std::vector<std::string> available_addons();
 
