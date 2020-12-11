@@ -46,7 +46,7 @@ label::label(const implementation::builder_label& builder)
 	, state_(ENABLED)
 	, can_wrap_(builder.wrap)
 	, characters_per_line_(builder.characters_per_line)
-	, link_aware_(false)
+	, link_aware_(builder.link_aware)
 	, link_color_(color_t::from_hex_string("ffff00"))
 	, can_shrink_(builder.can_shrink)
 	, text_alpha_(ALPHA_OPAQUE)
@@ -126,7 +126,6 @@ void label::signal_handler_left_button_click(bool& handled)
 		handled = true;
 		return;
 	}
-
 
 	point mouse = get_mouse_position();
 
@@ -272,7 +271,6 @@ label_definition::label_definition(const config& cfg)
  */
 label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, link_aware(cfg["link_aware"].to_bool(false))
 	, link_color(cfg["link_color"].empty() ? color_t::from_hex_string("ffff00") : color_t::from_rgba_string(cfg["link_color"].str()))
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
@@ -328,6 +326,7 @@ builder_label::builder_label(const config& cfg)
 	, characters_per_line(cfg["characters_per_line"])
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, can_shrink(cfg["can_shrink"].to_bool(false))
+	, link_aware(cfg["link_aware"].to_bool(false))
 {
 }
 
@@ -339,7 +338,6 @@ widget* builder_label::build() const
 	assert(conf);
 
 	lbl->set_text_alignment(text_alignment);
-	lbl->set_link_aware(conf->link_aware);
 	lbl->set_link_color(conf->link_color);
 
 	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"

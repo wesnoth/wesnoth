@@ -212,7 +212,6 @@ struct label_definition : public styled_widget_definition
 	{
 		explicit resolution(const config& cfg);
 
-		bool link_aware;
 		color_t link_color;
 	};
 };
@@ -237,6 +236,7 @@ struct builder_label : public builder_styled_widget
 	PangoAlignment text_alignment;
 
 	bool can_shrink;
+	bool link_aware;
 };
 
 } // namespace implementation

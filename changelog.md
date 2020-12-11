@@ -19,6 +19,7 @@
    * Undead variations for Falcon, Giant Rat, serpents, and Gorer/Tusklet
  ### User interface
    * Text labels now use the hyperlink mouse cursor while hovering links.
+   * Link awareness is now configured on a per-instance basis for labels/scroll labels instead of globally in their definition.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed several possible crashes in wmllint

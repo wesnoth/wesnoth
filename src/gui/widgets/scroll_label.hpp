@@ -99,6 +99,8 @@ private:
 
 	PangoAlignment text_alignment_;
 
+	bool link_aware_;
+
 	void finalize_subclass() override;
 
 	label* get_internal_label();
@@ -149,6 +151,7 @@ struct builder_scroll_label : public builder_styled_widget
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 	bool wrap_on;
 	const PangoAlignment text_alignment;
+	bool link_aware;
 };
 
 } // namespace implementation
