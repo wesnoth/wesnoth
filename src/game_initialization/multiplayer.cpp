@@ -16,6 +16,8 @@
 
 #include "addon/manager.hpp" // for installed_addons
 #include "build_info.hpp"
+#include "commandline_options.hpp"
+#include "connect_engine.hpp"
 #include "events.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
@@ -29,7 +31,6 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
-#include "gui/widgets/settings.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "map_settings.hpp"
@@ -38,6 +39,7 @@
 #include "preferences/game.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
+#include "saved_game.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "utils/parse_network_address.hpp"

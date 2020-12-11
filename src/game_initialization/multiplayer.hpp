@@ -14,14 +14,15 @@
 
 #pragma once
 
-#include "commandline_options.hpp"
-#include "connect_engine.hpp"
-#include "mp_game_settings.hpp"
-#include "scripting/plugins/context.hpp"
+#include <string>
 
+class commandline_options;
 class config;
-class wesnothd_connection;
 class game_config_view;
+class saved_game;
+class wesnothd_connection;
+
+namespace ng { class connect_engine; }
 
 namespace mp {
 
