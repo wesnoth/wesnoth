@@ -107,7 +107,7 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 	set_restore(true);
 }
 
-void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate) const
+void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 {
 	if(!mouse_down_happened_) {
 		return;
