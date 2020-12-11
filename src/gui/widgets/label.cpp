@@ -25,6 +25,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
 #include "gettext.hpp"
@@ -52,6 +53,8 @@ label::label(const implementation::builder_label& builder)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, std::placeholders::_2, std::placeholders::_3));
+	connect_signal<event::MOUSE_MOTION>(std::bind(&label::signal_handler_mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
+	connect_signal<event::MOUSE_LEAVE>(std::bind(&label::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 bool label::can_wrap() const
@@ -203,6 +206,51 @@ void label::signal_handler_right_button_click(const event::ui_event /* event */,
 	(void) show_message("", _("Copied link!"), dialogs::message::auto_close);
 
 	handled = true;
+}
+
+void label::signal_handler_mouse_motion(const event::ui_event /* event */, bool& handled, const point& coordinate)
+{
+	DBG_GUI_E << "label mouse motion" << std::endl;
+
+	if(!get_link_aware()) {
+		return; // without marking event as "handled"
+	}
+
+	point mouse = coordinate;
+
+	mouse.x -= get_x();
+	mouse.y -= get_y();
+
+	update_mouse_cursor(!get_label_link(mouse).empty());
+
+	handled = true;
+}
+
+void label::signal_handler_mouse_leave(const event::ui_event /*event*/, bool& handled)
+{
+	DBG_GUI_E << "label mouse leave" << std::endl;
+
+	if(!get_link_aware()) {
+		return; // without marking event as "handled"
+	}
+
+	// We left the widget, so just unconditionally reset the cursor
+	update_mouse_cursor(false);
+
+	handled = true;
+}
+
+void label::update_mouse_cursor(bool enable)
+{
+	// Someone else may set the mouse cursor for us to something unusual (e.g.
+	// the WAIT cursor) so we ought to mess with that only if it's set to
+	// NORMAL or HYPERLINK.
+
+	if(enable && cursor::get() == cursor::NORMAL) {
+		cursor::set(cursor::HYPERLINK);
+	} else if(!enable && cursor::get() == cursor::HYPERLINK) {
+		cursor::set(cursor::NORMAL);
+	}
 }
 
 // }---------- DEFINITION ---------{

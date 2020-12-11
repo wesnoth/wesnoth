@@ -60,6 +60,12 @@ public:
 	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
+	/** See @ref widget::can_mouse_focus. */
+	virtual bool can_mouse_focus() const override
+	{
+		return !tooltip().empty() || get_link_aware();
+	}
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_can_wrap(const bool wrap)
@@ -72,8 +78,6 @@ public:
 	void set_link_aware(bool l);
 
 	void set_link_color(const color_t& color);
-
-	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
 
 	void set_can_shrink(bool can_shrink)
 	{
@@ -153,6 +157,21 @@ private:
 	 * Right click signal handler: checks if we clicked on a hyperlink, copied to clipboard
 	 */
 	void signal_handler_right_button_click(const event::ui_event event, bool & handled);
+
+	/**
+	 * Mouse motion signal handler: checks if the cursor is on a hyperlink
+	 */
+	void signal_handler_mouse_motion(const event::ui_event event, bool& handled, const point& coordinate);
+
+	/**
+	 * Mouse leave signal handler: checks if the cursor left a hyperlink
+	 */
+	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
+
+	/**
+	 * Implementation detail for (re)setting the hyperlink cursor.
+	 */
+	void update_mouse_cursor(bool enable);
 };
 
 // }---------- DEFINITION ---------{
