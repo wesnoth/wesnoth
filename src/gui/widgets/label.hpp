@@ -94,7 +94,10 @@ public:
 		can_wrap_ = wrap;
 	}
 
-	void set_characters_per_line(const unsigned set_characters_per_line);
+	void set_characters_per_line(const unsigned characters_per_line)
+	{
+		characters_per_line_ = characters_per_line;
+	}
 
 	void set_link_aware(bool l);
 

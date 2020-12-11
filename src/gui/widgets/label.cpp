@@ -79,30 +79,22 @@ void label::set_active(const bool active)
 	}
 }
 
-void label::set_characters_per_line(const unsigned characters_per_line)
-{
-	characters_per_line_ = characters_per_line;
-}
-
 void label::set_link_aware(bool link_aware)
 {
-	if(link_aware == link_aware_) {
-		return;
+	if(link_aware != link_aware_) {
+		link_aware_ = link_aware;
+		update_canvas();
+		set_is_dirty(true);
 	}
-
-	link_aware_ = link_aware;
-	update_canvas();
-	set_is_dirty(true);
 }
 
 void label::set_link_color(const color_t& color)
 {
-	if(color == link_color_) {
-		return;
+	if(color != link_color_) {
+		link_color_ = color;
+		update_canvas();
+		set_is_dirty(true);
 	}
-	link_color_ = color;
-	update_canvas();
-	set_is_dirty(true);
 }
 
 void label::set_state(const state_t state)
