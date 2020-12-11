@@ -37,28 +37,49 @@ public:
 	explicit label(const implementation::builder_label& builder);
 
 	/** See @ref widget::can_wrap. */
-	virtual bool can_wrap() const override;
+	virtual bool can_wrap() const override
+	{
+		return can_wrap_ || characters_per_line_ != 0;
+	}
 
 	/** See @ref styled_widget::get_characters_per_line. */
-	virtual unsigned get_characters_per_line() const override;
+	virtual unsigned get_characters_per_line() const override
+	{
+		return characters_per_line_;
+	}
 
 	/** See @ref styled_widget::get_link_aware. */
-	virtual bool get_link_aware() const override;
+	virtual bool get_link_aware() const override
+	{
+		return link_aware_;
+	}
 
 	/** See @ref styled_widget::get_link_aware. */
-	virtual color_t get_link_color() const override;
+	virtual color_t get_link_color() const override
+	{
+		return link_color_;
+	}
 
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
 	/** See @ref styled_widget::get_active. */
-	virtual bool get_active() const override;
+	virtual bool get_active() const override
+	{
+		return state_ != DISABLED;
+	}
 
 	/** See @ref styled_widget::get_state. */
-	virtual unsigned get_state() const override;
+	virtual unsigned get_state() const override
+	{
+		return state_;
+	}
 
 	/** See @ref widget::disable_click_dismiss. */
-	bool disable_click_dismiss() const override;
+	bool disable_click_dismiss() const override
+	{
+		return false;
+	}
 
 	/** See @ref widget::can_mouse_focus. */
 	virtual bool can_mouse_focus() const override
@@ -151,22 +172,22 @@ private:
 	/**
 	 * Left click signal handler: checks if we clicked on a hyperlink
 	 */
-	void signal_handler_left_button_click(const event::ui_event event, bool & handled);
+	void signal_handler_left_button_click(bool& handled);
 
 	/**
 	 * Right click signal handler: checks if we clicked on a hyperlink, copied to clipboard
 	 */
-	void signal_handler_right_button_click(const event::ui_event event, bool & handled);
+	void signal_handler_right_button_click(bool& handled);
 
 	/**
 	 * Mouse motion signal handler: checks if the cursor is on a hyperlink
 	 */
-	void signal_handler_mouse_motion(const event::ui_event event, bool& handled, const point& coordinate);
+	void signal_handler_mouse_motion(bool& handled, const point& coordinate);
 
 	/**
 	 * Mouse leave signal handler: checks if the cursor left a hyperlink
 	 */
-	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
+	void signal_handler_mouse_leave(bool& handled);
 
 	/**
 	 * Implementation detail for (re)setting the hyperlink cursor.

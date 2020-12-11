@@ -51,30 +51,14 @@ label::label(const implementation::builder_label& builder)
 	, can_shrink_(false)
 	, text_alpha_(255)
 {
-	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
-	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, std::placeholders::_2, std::placeholders::_3));
-	connect_signal<event::MOUSE_MOTION>(std::bind(&label::signal_handler_mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
-	connect_signal<event::MOUSE_LEAVE>(std::bind(&label::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
-}
-
-bool label::can_wrap() const
-{
-	return can_wrap_ || characters_per_line_ != 0;
-}
-
-unsigned label::get_characters_per_line() const
-{
-	return characters_per_line_;
-}
-
-bool label::get_link_aware() const
-{
-	return link_aware_;
-}
-
-color_t label::get_link_color() const
-{
-	return link_color_;
+	connect_signal<event::LEFT_BUTTON_CLICK>(
+		std::bind(&label::signal_handler_left_button_click, this, std::placeholders::_3));
+	connect_signal<event::RIGHT_BUTTON_CLICK>(
+		std::bind(&label::signal_handler_right_button_click, this, std::placeholders::_3));
+	connect_signal<event::MOUSE_MOTION>(
+		std::bind(&label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
+	connect_signal<event::MOUSE_LEAVE>(
+		std::bind(&label::signal_handler_mouse_leave, this, std::placeholders::_3));
 }
 
 void label::set_text_alpha(unsigned short alpha)
@@ -93,21 +77,6 @@ void label::set_active(const bool active)
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
-}
-
-bool label::get_active() const
-{
-	return state_ != DISABLED;
-}
-
-unsigned label::get_state() const
-{
-	return state_;
-}
-
-bool label::disable_click_dismiss() const
-{
-	return false;
 }
 
 void label::set_characters_per_line(const unsigned characters_per_line)
@@ -144,7 +113,7 @@ void label::set_state(const state_t state)
 	}
 }
 
-void label::signal_handler_left_button_click(const event::ui_event /* event */, bool & handled)
+void label::signal_handler_left_button_click(bool& handled)
 {
 	DBG_GUI_E << "label click" << std::endl;
 
@@ -180,7 +149,7 @@ void label::signal_handler_left_button_click(const event::ui_event /* event */, 
 	handled = true;
 }
 
-void label::signal_handler_right_button_click(const event::ui_event /* event */, bool & handled)
+void label::signal_handler_right_button_click(bool& handled)
 {
 	DBG_GUI_E << "label right click" << std::endl;
 
@@ -208,7 +177,7 @@ void label::signal_handler_right_button_click(const event::ui_event /* event */,
 	handled = true;
 }
 
-void label::signal_handler_mouse_motion(const event::ui_event /* event */, bool& handled, const point& coordinate)
+void label::signal_handler_mouse_motion(bool& handled, const point& coordinate)
 {
 	DBG_GUI_E << "label mouse motion" << std::endl;
 
@@ -226,7 +195,7 @@ void label::signal_handler_mouse_motion(const event::ui_event /* event */, bool&
 	handled = true;
 }
 
-void label::signal_handler_mouse_leave(const event::ui_event /*event*/, bool& handled)
+void label::signal_handler_mouse_leave(bool& handled)
 {
 	DBG_GUI_E << "label mouse leave" << std::endl;
 
