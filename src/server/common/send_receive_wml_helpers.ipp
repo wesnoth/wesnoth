@@ -68,6 +68,10 @@ inline void coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::a
 
 #ifdef HAVE_SENDFILE
 
+/// Send contents of entire file directly to socket from within a coroutine
+/// @param socket
+/// @param filename
+/// @param yield The function will suspend on write operations using this yield context
 inline void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
 	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
