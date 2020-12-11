@@ -854,6 +854,9 @@ void mp_create_game::post_show(window& window)
 
 	if(get_retval() == LOAD_GAME) {
 		create_engine_.prepare_for_saved_game();
+
+		// We don't need the LOAD_GAME retval past this point. For convenience, reset it to OK so we can use the execute wrapper, then exit.
+		set_retval(retval::OK);
 		return;
 	}
 

@@ -516,8 +516,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 			return;
 		}
 
-		dlg.show();
-		dlg_ok = dlg.get_retval() == gui2::retval::OK;
+		dlg_ok = dlg.show();
 	}
 
 	if(dlg_ok) {
@@ -545,11 +544,8 @@ void mp_manager::enter_staging_mode()
 	bool dlg_ok = false;
 	{
 		ng::connect_engine connect_engine(state, true, campaign_info.get());
-
-		gui2::dialogs::mp_staging dlg(connect_engine, connection.get());
-		dlg.show();
-		dlg_ok = dlg.get_retval() == gui2::retval::OK;
-	} // end connect_engine, dlg scope
+		dlg_ok = gui2::dialogs::mp_staging::execute(connect_engine, connection.get());
+	} // end connect_engine
 
 	if(dlg_ok) {
 		campaign_controller controller(state, game_config_manager::get()->terrain_types());
@@ -566,19 +562,7 @@ void mp_manager::enter_create_mode()
 {
 	DBG_MP << "entering create mode" << std::endl;
 
-	bool dlg_ok = false;
-	{
-		bool local_mode = connection == nullptr;
-
-		gui2::dialogs::mp_create_game dlg(*game_config, state, local_mode);
-		dlg.show();
-
-		// The Create Game dialog also has a LOAD_GAME retval besides OK.
-		// Do a did-not-cancel check here to catch that
-		dlg_ok = dlg.get_retval() != gui2::retval::CANCEL;
-	}
-
-	if(dlg_ok) {
+	if(gui2::dialogs::mp_create_game::execute(*game_config, state, connection == nullptr)) {
 		enter_staging_mode();
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
