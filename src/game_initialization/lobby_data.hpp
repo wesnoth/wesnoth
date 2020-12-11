@@ -182,14 +182,14 @@ struct game_info
 	bool has_friends;
 	bool has_ignored;
 
-	enum class display_status {
+	enum class disp_status {
 		CLEAN,
 		NEW,
 		UPDATED,
 		DELETED
 	};
 
-	display_status display_status;
+	disp_status display_status;
 
 	enum class addon_req { SATISFIED, NEED_DOWNLOAD, CANNOT_SATISFY };
 

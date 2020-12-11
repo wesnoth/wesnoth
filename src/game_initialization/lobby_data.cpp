@@ -207,7 +207,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	, have_all_mods(true)
 	, has_friends(false)
 	, has_ignored(false)
-	, display_status(display_status::NEW)
+	, display_status(disp_status::NEW)
 	, required_addons()
 	, addons_outcome(addon_req::SATISFIED)
 {
@@ -548,13 +548,13 @@ bool game_info::can_observe() const
 const char* game_info::display_status_string() const
 {
 	switch(display_status) {
-		case game_info::display_status::CLEAN:
+		case game_info::disp_status::CLEAN:
 			return "clean";
-		case game_info::display_status::NEW:
+		case game_info::disp_status::NEW:
 			return "new";
-		case game_info::display_status::DELETED:
+		case game_info::disp_status::DELETED:
 			return "deleted";
-		case game_info::display_status::UPDATED:
+		case game_info::disp_status::UPDATED:
 			return "updated";
 		default:
 			ERR_CF << "BAD display_status " << static_cast<int>(display_status) << " in game " << id << "\n";
