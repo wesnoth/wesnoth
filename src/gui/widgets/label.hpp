@@ -87,6 +87,9 @@ public:
 		return !tooltip().empty() || get_link_aware();
 	}
 
+	/** See @ref styled_widget::update_canvas. */
+	virtual void update_canvas() override;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_can_wrap(const bool wrap)

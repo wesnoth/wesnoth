@@ -61,15 +61,23 @@ label::label(const implementation::builder_label& builder)
 		std::bind(&label::signal_handler_mouse_leave, this, std::placeholders::_3));
 }
 
-void label::set_text_alpha(unsigned short alpha)
+void label::update_canvas()
 {
-	text_alpha_ = alpha;
+	// Inherit.
+	styled_widget::update_canvas();
 
 	for(auto& tmp : get_canvases()) {
 		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
 	}
+}
 
-	set_is_dirty(true);
+void label::set_text_alpha(unsigned short alpha)
+{
+	if(alpha != text_alpha_) {
+		text_alpha_ = alpha;
+		update_canvas();
+		set_is_dirty(true);
+	}
 }
 
 void label::set_active(const bool active)
@@ -331,7 +339,6 @@ widget* builder_label::build() const
 	assert(conf);
 
 	lbl->set_text_alignment(text_alignment);
-	lbl->set_text_alpha(ALPHA_OPAQUE);
 	lbl->set_link_aware(conf->link_aware);
 	lbl->set_link_color(conf->link_color);
 
