@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-05 20:44 UTC\n"
-"PO-Revision-Date: 2020-09-08 19:25+0200\n"
+"PO-Revision-Date: 2020-09-26 21:27+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -3251,9 +3251,9 @@ msgid ""
 "more of them. That’s bad news for us, for they’ll go as fast in caves as we "
 "do."
 msgstr ""
-"To musí být jeden z těch Surghanských žoldáků. Vsadím se, že elfové si "
-"najali víc takových. To je pro nás špatná zpráva, teď se budou v jeskyních "
-"pohybovat stejně rychle jako my."
+"To musí být jeden z těch surghanských žoldáků. Vsadím se, že elfové si "
+"najali víc takových. To je pro nás špatná zpráva, protože se budou "
+"v jeskyních pohybovat stejně rychle jako my."
 
 #. [message]: speaker=Krawg
 #. "(excited bird cry) Look! Forge here!"
@@ -3320,7 +3320,7 @@ msgid ""
 "Good. Now, let’s get out of this cave, before the elves, dwarves or bats "
 "kill us!"
 msgstr ""
-"Dobrá. Teď vypadneme z téhle jeskyně dřív než nás elfové, trpaslíci či "
+"Dobrá. Teď vypadněme z téhle jeskyně dřív, než nás elfové, trpaslíci či "
 "netopýři zabijí!"
 
 #. [scenario]: id=9_Caverns_of_Flame
@@ -3344,20 +3344,22 @@ msgid ""
 "There was no exit for the dwarves. They had reached the realms of the orcs, "
 "with the elves hot on their trail. There was truly no exit from these caves."
 msgstr ""
-"Nebyl zde žádný východ pro trpaslíky. Dosáhli teritoria skřetů a za sebou "
-"měli elfy. A vskutku žádný východ."
+"Pro trpaslíky neexistoval žádný východ. Dostali se do říše skřetů a po "
+"jejich stopě se hnali elfové. Z těch jeskyní skutečně nebylo jak odejít."
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:164
 msgid ""
 "So the dwarves had no way out. They could not leave the caverns that they "
 "had entered."
-msgstr "Takže žádná cesta pryč. Nemohli opustit jeskyně, do kterých vstoupili."
+msgstr ""
+"Takže trpaslíci neměli východiska. Nemohli opustit jeskyně, do kterých "
+"vstoupili."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:184
 msgid "Explore as much of the cave as possible"
-msgstr "Prozkoumej tak velkou část jeskyně, jak je možné"
+msgstr "Prozkoumej co největší část jeskyně"
 
 #. [unit]: type=Troll, role=Guardian
 #. [unit]: type=Orcish Warrior, role=Guardian
@@ -3375,7 +3377,8 @@ msgstr "Strážce"
 msgid ""
 "Well, I think we’ve gotten a good distance ahead of the elves. What do we do "
 "now?"
-msgstr "Myslím, že jsme se od nich dostali dost daleko. Co budeme dělat?"
+msgstr ""
+"Dobrá, myslím, že jsme získali před elfy slušný náskok. Co teď podnikneme?"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:295
@@ -3384,9 +3387,10 @@ msgid ""
 "volcano? I think we should try to cause it to erupt. It will kill all the "
 "elves, and we might be able to find a safe place so the lava doesn’t kill us."
 msgstr ""
-"Měli bychom jít dál. Pamatujete jak Krakraš říkal, že tohle je sopka? Mohli "
-"bychom ji nechat vybuchnout. Zabije to všechny elfy a my bychom měli být "
-"schopni najít si bezpečné místo před smrtí v lávě."
+"Měli bychom jít dál. Pamatujete, jak Krakraš říkal, že tohle je sopka? "
+"Myslím, že bychom se měli pokusit zařídit, aby vybuchla. Zahubí to všechny "
+"elfy a nám by se mohlo podařit najít bezpečné místo tak, aby nás láva "
+"nezabila."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:299
@@ -3396,7 +3400,7 @@ msgstr "To nezní tak docela uhozeně..."
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:303
 msgid "Yes, an interesting plan. How do you propose we do this?"
-msgstr "Ano, zajímavý plán. Jak předpokládáš, že to máme udělat?"
+msgstr "Ano, zajímavý plán. Jak myslíš, že to máme udělat?"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:307
@@ -3446,13 +3450,13 @@ msgid ""
 "should draw the elves further into the caves, so they can’t escape when it "
 "does erupt."
 msgstr ""
-"Měli bychom spustit vulkán jakmile to bude možné. Zatím bychom měli elfy "
-"vést hlouběji do jeskyně, takže nebudou moci utéct až to vybuchne."
+"Mohli bychom se pokusit co nejdříve spustit vulkán. Zatím bychom měli elfy "
+"vést hlouběji do jeskyně, takže nebudou moci utéct, až to vybuchne."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:427
 msgid "These orcs appear to be guarding something."
-msgstr "Tito skřeti vypadají jako kdyby něco hlídali."
+msgstr "Tito skřeti vypadají, jako kdyby něco hlídali."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:431
@@ -3510,7 +3514,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:552
 msgid "Survive as long as possible"
-msgstr ""
+msgstr "Zůstaň naživu co nejdéle"
 
 #. [message]: role=smartelf
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:603
@@ -3518,7 +3522,8 @@ msgid ""
 "Wait, what’s going on? The volcano is going to erupt! Everyone, try to get "
 "out of these caves!"
 msgstr ""
-"Počkejte co se děje? Sopka se chystá vybuchnout! Všichni pryč z jeskyně!"
+"Počkat, co se děje? Sopka se chystá vybuchnout! Snažte se všichni vypadnout "
+"z těchhle jeskyní!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:632
@@ -3560,7 +3565,7 @@ msgid ""
 "But our tale is not yet complete. For Alanin lived still, as did Krawg the "
 "Gryphon."
 msgstr ""
-"A tak Rugnur zahynul - slavná smrt v očích trpasličích mudrců. Ale náš "
+"A tak Rugnur zahynul – slavná smrt v očích trpasličích mudrců. Ale náš "
 "příběh ještě neskončil. Alanin stále žil, stejně jako Krawg Gryfon."
 
 #. [part]
@@ -3623,13 +3628,13 @@ msgid ""
 "I bring tidings of the Sceptre of Fire, commissioned fifteen years ago by "
 "our king. I have been away for a long time, do not delay me even more."
 msgstr ""
-"Mám informace o Ohnivém žezle, které bylo před patnácti lety dáno vyrobit "
-"naším králem. Byl jsem pryč celé roky, nezdržujte mne ještě déle."
+"Mám informace o Ohnivém žezle, které bylo před patnácti lety naším králem "
+"zadáno vyrobit. Byl jsem pryč celé roky, nezdržujte mne ještě déle."
 
 #. [message]: speaker=Guard Captain
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:120
 msgid "Enter, Alanin, and give the king your message."
-msgstr "Vstup, Alanine, a předej králi tvou zprávu."
+msgstr "Vstup, Alanine, a předej králi svou zprávu."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:126
@@ -3637,8 +3642,8 @@ msgid ""
 "My King, fifteen years ago you sent me on a mission into the Northlands. I "
 "have returned. What do you wish to know of my mission?"
 msgstr ""
-"Můj Králi, před patnácti lety jsi mne poslal na misi do severních zemí. "
-"Vrátil jsem se. Co si přeješ znát o mém úkolu?"
+"Můj králi, před patnácti lety jsi mne poslal na misi do severních zemí. "
+"Vrátil jsem se. Co si přeješ znát o mém úkolu?"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:130
@@ -3660,8 +3665,7 @@ msgid ""
 "Why? Why was it not returned to me? Have the dwarves reneged on their "
 "promise, and kept it?"
 msgstr ""
-"Proč? Proč mi nebylo vráceno? Porušili trpaslíci jejich slib a ponechali si "
-"ho?"
+"Proč? Proč mi nebylo vráceno? Porušili trpaslíci svůj slib a ponechali si ho?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:142
@@ -3669,8 +3673,8 @@ msgid ""
 "My Lord, the dwarves are dead, slain by fire and smoke as lava poured out of "
 "one of the mountains. I saw the eruption from afar as I was returning to you."
 msgstr ""
-"Můj pane, trpaslíci jsou mrtví, zabiti ohněm a kouřem, když láva proudila "
-"ven z jedné z hor. Viděl jsem erupci v dálce, když se vracel k vám."
+"Můj pane, trpaslíci jsou mrtví, zabiti ohněm a kouřem, když láva proudila "
+"ven z jedné z hor. Cestou zpátky k vám jsem viděl v dálce erupci."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:146
@@ -3686,11 +3690,11 @@ msgid ""
 "completed, but he and all the rest of the dwarves went into the caves, and "
 "were immediately followed by hundreds of elves."
 msgstr ""
-"Byli jsme obleženi elfy v trpasličím hradě, který ale nebyl Rugnurova kmene. "
-"Žezlo tam i tak nemohlo být dokončeno, ale mohlo se tak stát v jeskyni "
-"ležící severovýchodně od hradu. Rugnur mne poslal zpátky se zprávou, že bude "
-"dokončeno, on a zbytek trpaslíků zamířili do jeskyně a byli následování "
-"stovkami elfů."
+"Byli jsme obleženi elfy v trpasličím hradě, který ale nebyl Rugnurova kmene. "
+"Žezlo tam nemohlo být dokončeno, ale mohlo se tak stát v jeskyni ležící "
+"severovýchodně od hradu. Rugnur mne poslal zpátky se zprávou, že bude "
+"dokončeno, ale on a zbytek trpaslíků zamířili do jeskyní a byli ihned "
+"následováni stovkami elfů."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:154
@@ -3704,7 +3708,7 @@ msgstr ""
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:158
 msgid "I will let Krawg explain that."
-msgstr "Nechám Krawga vysvětlit to."
+msgstr "Nechám to Krawga vysvětlit."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:162
@@ -3724,7 +3728,7 @@ msgid ""
 "No, that is my... friend Krawg. He went with Rugnur into the caves, but "
 "escaped through a hole in the roof right before the lava filled the cave."
 msgstr ""
-"Ne, to je můj... přítel Krawg. Odešel s Rugnurem do jeskyně, ale uprchl než "
+"Ne, to je můj... přítel Krawg. Odešel s Rugnurem do jeskyně, ale uprchl, než "
 "láva naplnila jeskyni."
 
 #. [message]: speaker=Krawg
@@ -3745,8 +3749,8 @@ msgid ""
 "caves. He came to tell you, so that you would know that the dwarves did "
 "fulfill their promise."
 msgstr ""
-"Říká, že viděl žezlo. Rugnur ho měl, ale ztratil jej v jeskyni. Přišel, aby "
-"vám to řekl, a aby jste věděl, že trpaslíci splnili slib."
+"Říká, že viděl žezlo. Rugnur ho měl, ale ztratil jej v jeskyních. Přišel, "
+"aby vám to řekl a abyste věděl, že trpaslíci splnili slib."
 
 #. [message]: speaker=Krawg
 #. "Kreeya! That’s right! Now I'm done. Bye."
@@ -3762,7 +3766,7 @@ msgid ""
 "probably already found it and hid it somewhere else."
 msgstr ""
 "Aha. Ale... co mám teď udělat? Žezlo je hotovo, ano, ale já nevím kde je, "
-"stvořitelé jsou mrtví a skřeti už ho nejspíš našli a skryli někde jinde."
+"tvůrci jsou mrtví a skřeti už ho nejspíš našli a skryli někde jinde."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:216
@@ -3785,9 +3789,10 @@ msgid ""
 "and even if you hadn’t, you’ve seen enough combat. So, go. Back to your "
 "village. You deserve a rest."
 msgstr ""
-"Tvá rada se mi zdá správná. Udělám tak. A ty i gryfon jste volní. Alanine, "
-"sloužil jsi dlouho v mé armádě, dost dlouho, aby ses unavil a i kdyby ne, "
-"viděl jsi dost bojů. Běž zpět do tvé vesnice. Zasloužíš si odpočinek."
+"Tvá rada se mi zdá správná. Učiním tak. A ty i gryfon jste volní. Alanine, "
+"sloužil jsi dlouho v mé armádě, dost dlouho, aby ses unavil a i kdyby ne, "
+"viděl jsi dost bojů. Tak tedy jdi. Zpět do své vesnice. Zasloužíš si "
+"odpočinek."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:224
@@ -3803,8 +3808,8 @@ msgid ""
 "understood its true power."
 msgstr ""
 "Žezlo nebude nalezeno po mnoho generací po Haldrikovi II., až do časů Temné "
-"královny Ašvíry. Po ten čas bude v jeskyních severu nenalezeno, nezničeno, "
-"přesunováno skřety, kteří nikdy nepochopí jeho skutečnou moc."
+"královny Ašvíry. Po ten čas bude zahálet v jeskyních severu, nenalezeno, ale "
+"nezničeno, přesouváno skřety, kteří nikdy nepochopí jeho skutečnou moc."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:241
@@ -3813,9 +3818,9 @@ msgid ""
 "Thursagan, most brilliant of the Dwarven Sages, and Rugnur, the greatest of "
 "the Dwarven Heroes of old."
 msgstr ""
-"Ale než bude nalezeno, vznikne o něm mnoho legend - a o jeho tvůrcích - "
-"Thursaganovi, nejlepším z trpasličích mudrců a Rugnurovi, největším z "
-"dávných trpasličích hrdinů."
+"Ale než bude nalezeno, vznikne o něm a jeho tvůrcích mnoho legend – "
+"o Thursaganovi, nejlepším z trpasličích mudrců a Rugnurovi, největším "
+"z dávných trpasličích hrdinů."
 
 #. [unit_type]: id=Caravan, race=mechanical
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:4

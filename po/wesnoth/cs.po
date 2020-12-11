@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-12-05 23:44+0300\n"
-"PO-Revision-Date: 2020-06-06 10:48+0200\n"
+"PO-Revision-Date: 2020-12-05 07:24+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -1537,7 +1537,7 @@ msgid ""
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"100% výsledného zlata je přeneseno do dalšího scénáře."
+"100 % výsledného zlata je přeneseno do dalšího scénáře."
 
 #: data/core/macros/deprecated-utils.cfg:116
 msgid ""
@@ -1545,7 +1545,7 @@ msgid ""
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"40% výsledného zlata je přeneseno do dalšího scénáře."
+"40 % výsledného zlata je přeneseno do dalšího scénáře."
 
 #: data/core/macros/deprecated-utils.cfg:121
 msgid ""
@@ -1553,7 +1553,7 @@ msgid ""
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"20% výsledného zlata je přeneseno do dalšího scénáře."
+"20 % výsledného zlata je přeneseno do dalšího scénáře."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:21
@@ -3659,8 +3659,8 @@ msgid ""
 msgstr ""
 "Zákonné jednotky bojují lépe ve dne a hůře v noci.\n"
 "\n"
-"Den: +25% poškození\n"
-"Noc: −25% poškození"
+"Den: +25 % poškození\n"
+"Noc: −25 % poškození"
 
 #. [language]
 #: data/english.cfg:12
@@ -3668,7 +3668,8 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
-"Neutrální jednotky nejsou ovlivněny střídáním dne a noci. Bojují vždy stejně."
+"Neutrální jednotky nejsou ovlivněny střídáním dne a noci. V každou denní "
+"dobu bojují stejně."
 
 #. [language]
 #: data/english.cfg:13
@@ -3680,8 +3681,8 @@ msgid ""
 msgstr ""
 "Chaotické jednotky bojují lépe v noci a hůře ve dne.\n"
 "\n"
-"Den: −25% poškození\n"
-"Noc: +25% poškození"
+"Den: −25 % poškození\n"
+"Noc: +25 % poškození"
 
 #. [language]
 #: data/english.cfg:17
@@ -3693,8 +3694,8 @@ msgid ""
 msgstr ""
 "Šeré jednotky dosahují svých plných schopností pouze během šera.\n"
 "\n"
-"Den: −25% poškození\n"
-"Noc: −25% poškození"
+"Den: −25 % poškození\n"
+"Noc: −25 % poškození"
 
 #. [language]
 #: data/english.cfg:23
@@ -4081,9 +4082,9 @@ msgstr "Prohra:"
 #: data/lua/wml/objectives.lua:57
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
-msgstr[0] "(zbývá tento tah)"
-msgstr[1] "(zbývají %d tahy)"
-msgstr[2] "(zbývá %d tahů)"
+msgstr[0] "(zbývá toto kolo)"
+msgstr[1] "(zbývají %d kola)"
+msgstr[2] "(zbývá %d kol)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -4305,7 +4306,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:17 data/tips.cfg:149
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>― Velký Mág Delfador, 516 R. W.</i>"
+msgstr "<i>― velký mág Delfador, 516 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:20
@@ -4315,7 +4316,7 @@ msgid ""
 "where they are). Use this to make sure the enemy can’t reach your weak or "
 "injured units on his next turn."
 msgstr ""
-"V menu <b>Akce</b> lze vybrat <b>Ukaž tahy nepřítele</b> ― zvýrazní se "
+"V menu <b>Akce</b> lze vybrat <b>Ukaž tahy nepřítele</b> – zvýrazní se "
 "všechna políčka, na něž se může dostat jakákoliv jednotka nepřítele (za "
 "předpokladu, že se již rozestavení tvých jednotek nezmění). Takto můžeš "
 "snadno kontrolovat, zda jsou určité jednotky (např. slabé nebo zraněné) mimo "
@@ -4347,7 +4348,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:25
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "<i>― Král Konrád, 536 R. W.</i>"
+msgstr "<i>― král Konrád, 536 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:28
@@ -4366,7 +4367,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>― Gweddryho záznamy, 627 R. W.</i>"
+msgstr "<i>― Gweddryho záznamy, 627 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:32
@@ -4378,7 +4379,7 @@ msgid ""
 msgstr ""
 "Příkazy pro <b>verbování</b> a <b>přivolávání</b> je možno aktivovat i z "
 "menu po kliknutí pravým tlačítkem na políčko hradu. To vám umožní přesně "
-"určit, kam umístit novou jednotku, což někdy může pomoci — například získat "
+"určit, kam umístit novou jednotku, což někdy může pomoci – například získat "
 "vesnici o tah dříve."
 
 #. [tip]
@@ -4406,7 +4407,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:226 data/tips.cfg:238
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>― Nejvyšší lord Kalenz, 470 R. W.</i>"
+msgstr "<i>― nejvyšší lord Kalenz, 470 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:44
@@ -4441,7 +4442,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:53
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "<i>― Komunita Wesnothu</i>"
+msgstr "<i>― komunita Wesnothu</i>"
 
 #. [tip]
 #: data/tips.cfg:56
@@ -4460,7 +4461,7 @@ msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
 msgstr ""
 "<i>― Královské kompendium válečné terminologie, svazek II (přetisk z r. 221 "
-"R. W.)</i>"
+"w. l.)</i>"
 
 #. [tip]
 #: data/tips.cfg:60
@@ -4472,7 +4473,7 @@ msgstr "I jinak skvělý plán selže, pokud zaútočíš v nevhodnou denní dob
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
 #: data/tips.cfg:230
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 R. W.</i>"
+msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:64
@@ -4573,7 +4574,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:89
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 R. W.</i>"
+msgstr "<i>― Příručka taktické analýzy, kniha I - Haldrik II., 42 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:92
@@ -4622,7 +4623,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:105 data/tips.cfg:189
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "<i>― Sir Kaylan, 498 R. W.</i>"
+msgstr "<i>― sir Kaylan, 498 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:108
@@ -4637,7 +4638,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:109
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "<i>― Sir Kaylan, 502 R. W.</i>"
+msgstr "<i>― sir Kaylan, 502 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:112
@@ -4688,7 +4689,7 @@ msgstr "Neboj se ustoupit a přeskupit; je to často klíčem k vítězství."
 #. [tip]
 #: data/tips.cfg:129
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "<i>― Meneldur, 123 R. W.</i>"
+msgstr "<i>― Meneldur, 123 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:132
@@ -4764,7 +4765,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:153
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>― Kai Laudiss, 623 R. W.</i>"
+msgstr "<i>― Kai Laudiss, 623 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -4774,7 +4775,7 @@ msgstr "Chraň zraněné jednotky řadou jednotek, abys jim umožnil zotavit se.
 #. [tip]
 #: data/tips.cfg:157
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>― princezna Lisar, 515 R. W.</i>"
+msgstr "<i>― princezna Lisar, 515 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:160
@@ -4812,7 +4813,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:173 data/tips.cfg:218
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>― Svitky Chantal, 516 R. W.</i>"
+msgstr "<i>― Svitky Chantal, 516 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:176
@@ -4832,7 +4833,7 @@ msgstr "<i>Nezemské</i> útoky jsou velmi účinné proti nemrtvým."
 #. [tip]
 #: data/tips.cfg:181
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>― Velký mudřec Dacyn, 626 R. W.</i>"
+msgstr "<i>― velký mudřec Dacyn, 626 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:184
@@ -4862,7 +4863,7 @@ msgid ""
 "lower-level units instead."
 msgstr ""
 "Namísto povyšování mají jednotky na nejvyšší úrovni schopnost <i>rozvoje po "
-"dosažení maximální úrovně</i> (<i>After Maximum Level Advancement — AMLA</"
+"dosažení maximální úrovně</i> (<i>After Maximum Level Advancement – AMLA</"
 "i>), která obvykle zvýší maximální počet životů o 3 a uzdraví je. Toto není "
 "velký zisk, a navíc každá dosažená AMLA ztíží podmínky pro dosažení další; "
 "proto je většinou vhodnější pokusit se povýšit jednotky nižší úrovně."
@@ -4892,7 +4893,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:201
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>― královna Lisar, 528 R. W.</i>"
+msgstr "<i>― královna Lisar, 528 w. l.</i>"
 
 #. [tip]
 #. Whiteboard is another name for the Planning Mode
@@ -4995,7 +4996,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:234 data/tips.cfg:246
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "<i>― Lord Hamel z Knalgy</i>"
+msgstr "<i>― lord Hamel z Knalgy</i>"
 
 #. [tip]
 #: data/tips.cfg:237
@@ -5060,7 +5061,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:254
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― královna Ašvíra, 503 R. W.</i>"
+msgstr "<i>― královna Ašvíra, 503 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:257
@@ -5081,7 +5082,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:262
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Sir Gerrick z Westinu, 607 R. W.</i>"
+msgstr "<i>― sir Gerrick z Westinu, 607 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:265
@@ -5098,7 +5099,7 @@ msgstr ""
 #. Translate the word "Flight" as in Wings of Victory
 #: data/tips.cfg:267
 msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-msgstr "<i>― Vank z Galunovy letky, 6 R. W.</i>"
+msgstr "<i>― Vank z Galunovy letky, 6 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5138,7 +5139,7 @@ msgstr "Musíš mít v tvrzi vůdce schopného přivolat tuto jednotku."
 #: src/actions/create.cpp:350
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr ""
-"Nejsou žádná volná políčka hradu, na kterých by se daly přivolávat jednotky."
+"Nejsou žádná volná políčka hradu, na která by se daly povolávat jednotky."
 
 #: src/actions/create.cpp:360 src/actions/create.cpp:496
 msgid "An unrecognized error has occurred."
@@ -5159,7 +5160,7 @@ msgstr "Musíš mít v tvrzi vůdce schopného verbovat tuto jednotku."
 #: src/actions/create.cpp:486
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr ""
-"Nejsou žádná volná políčka hradu, na kterých by se daly verbovat jednotky."
+"Nejsou žádná volná políčka hradu, na která by se daly verbovat jednotky."
 
 #: src/actions/heal.cpp:275
 msgid "cured"
@@ -6557,7 +6558,7 @@ msgstr "Vůdci"
 
 #: src/help/help_impl.cpp:657
 msgid "Recruits"
-msgstr "Naverbováno"
+msgstr "Rekruti"
 
 # v nápovědě podrobnosti jednotky když k ní není žádný text
 #: src/help/help_impl.cpp:719 src/units/types.cpp:479
@@ -6603,15 +6604,15 @@ msgstr "Nejhorší z"
 
 #: src/help/help_topic_generators.cpp:158
 msgid "Base Terrain: "
-msgstr "Terén: "
+msgstr "Základní terén: "
 
 #: src/help/help_topic_generators.cpp:177
 msgid "Movement properties: "
-msgstr "Pohyb stojí: "
+msgstr "Vlastnosti pohybu: "
 
 #: src/help/help_topic_generators.cpp:181
 msgid "Defense properties: "
-msgstr "Obranné vlastnosti: "
+msgstr "Vlastnosti obrany: "
 
 #: src/help/help_topic_generators.cpp:261
 msgid "Level"
@@ -6701,7 +6702,7 @@ msgstr "Příslušnost:"
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:559
 msgid "Required XP:"
-msgstr "Potřeba XP:"
+msgstr "Zkušenosti:"
 
 #: src/help/help_topic_generators.cpp:568
 msgid "unit help^Attacks"
@@ -6757,7 +6758,7 @@ msgstr "Cena pohybu"
 
 #: src/help/help_topic_generators.cpp:685
 msgid "Defense Cap"
-msgstr ""
+msgstr "Omezení obrany"
 
 #: src/help/help_topic_generators.cpp:690
 msgid "Vision Cost"
@@ -7865,15 +7866,10 @@ msgid "Turn Number"
 msgstr "Číslo kola"
 
 #: src/reports.cpp:1286
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
-msgstr ""
-"Když hra dosáhne počet kol, který je zobrazen ve druhým číslem, tak skončí."
+msgstr "Když hra přesáhne počet kol, který je dán druhým číslem, tak skončí."
 
 #: src/reports.cpp:1311
 msgid "Gold"
@@ -8338,11 +8334,11 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> bodů pohybu"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
-msgstr "chaotická"
+msgstr "chaotický"
 
 #: src/units/types.cpp:545 src/units/types.hpp:179
 msgid "lawful"
-msgstr "zákonná"
+msgstr "zákonný"
 
 #: src/units/types.cpp:545 src/units/types.hpp:182
 msgid "liminal"
@@ -8415,22 +8411,22 @@ msgstr "$effect_description na úroveň"
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:59
 msgid "$year BW"
-msgstr "$year P. W."
+msgstr "$year př. w. l."
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr "$year R. W."
+msgstr "$year w. l."
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr "$year Př. P."
+msgstr "$year př. P."
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr "$year Po. P."
+msgstr "$year po P."
 
 #: src/wesnothd_connection.cpp:402
 msgid "Disconnected from server."
