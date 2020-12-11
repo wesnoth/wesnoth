@@ -38,6 +38,10 @@
 #include <memory>
 #include <stdexcept>
 
+/// Send a WML document from within a coroutine
+/// @param socket
+/// @param doc
+/// @param yield The function will suspend on write operation using this yield context
 inline void coro_send_doc(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, boost::asio::yield_context yield)
 {
 	try {
@@ -231,6 +235,9 @@ void async_send_file(socket_ptr, const std::string&, Handler, ErrorHandler)
 
 #endif
 
+/// Receive WML document from a coroutine
+/// @param socket
+/// @param yield The function will suspend on read operation using this yield context
 inline std::shared_ptr<simple_wml::document> coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield)
 {
 	union DataSize
