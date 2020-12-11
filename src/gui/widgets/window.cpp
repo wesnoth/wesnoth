@@ -683,7 +683,7 @@ void window::draw()
 		assert(!item.empty());
 
 		const SDL_Rect dirty_rect
-				= new_widgets ? video().screen_area()
+				= new_widgets ? video_.screen_area()
 							  : item.back()->get_dirty_rectangle();
 
 // For testing we disable the clipping rect and force the entire screen to
