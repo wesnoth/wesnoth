@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 01:40-0300\n"
-"PO-Revision-Date: 2020-11-12 21:21+0100\n"
+"PO-Revision-Date: 2020-12-04 17:06+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -363,7 +363,7 @@ msgstr "Nepřátelé"
 #. [lua]: add_player_side
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
-msgstr ""
+msgstr "Spojenci"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:305
@@ -454,7 +454,7 @@ msgstr "čepel"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:156
 #: src/units/alignment.hpp:10
 msgid "chaotic"
-msgstr "chaotická"
+msgstr "chaotický"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:159
@@ -463,10 +463,8 @@ msgid "cold"
 msgstr "chlad"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:162
-#, fuzzy
-#| msgid "Damage"
 msgid "damage"
-msgstr "Zranění"
+msgstr "zranění"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:165
@@ -509,7 +507,7 @@ msgstr "úder"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:186
 #: src/units/alignment.hpp:8
 msgid "lawful"
-msgstr "zákonná"
+msgstr "zákonný"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:189
@@ -547,34 +545,33 @@ msgid "ranged"
 msgstr "na dálku"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:207
-#, fuzzy
-#| msgid " resistance vs "
 msgid " resistance vs "
 msgstr " odolnost vůči "
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:210
-#, fuzzy
-#| msgid "Strikes"
 msgid "strike"
-msgstr "Útoky"
+msgstr "útok"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:4
 msgid "World Conquest 1p"
-msgstr ""
+msgstr "Dobytí světa 1hr"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:7
 msgid "World Conquest 2p"
-msgstr ""
+msgstr "Dobytí světa 2hr"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:10
 msgid "World Conquest 3p"
-msgstr ""
+msgstr "Dobytí světa 3hr"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:13
 msgid ""
 "A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
+"Náhodně generovaná kampaň pro jednoho hráče. Lze nastavit 6 úrovní "
+"obtížnosti.\n"
+"(Úroveň expert, 5 scénářů.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
 msgid ""
@@ -582,6 +579,9 @@ msgid ""
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
+"Náhodně generovaná kooperativní kampaň pro dva hráče. Lze nastavit 6 úrovní "
+"obtížnosti.\n"
+"(Úroveň expert, 5 scénářů.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
 msgid ""
@@ -589,6 +589,9 @@ msgid ""
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
+"Náhodně generovaná kooperativní kampaň pro tři hráče. Lze nastavit 6 úrovní "
+"obtížnosti.\n"
+"(Úroveň expert, 5 scénářů.)"
 
 #. [about]
 #: data/core/about.cfg:4
@@ -658,10 +661,8 @@ msgstr "Afrikánský překlad"
 
 #. [about]
 #: data/core/about_i18n.cfg:24
-#, fuzzy
-#| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
-msgstr "Řecký překlad"
+msgstr "Starořecký překlad"
 
 #. [about]
 #: data/core/about_i18n.cfg:32
@@ -1765,7 +1766,7 @@ msgid ""
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"100% výsledného zlata je přeneseno do dalšího scénáře."
+"100 % výsledného zlata je přeneseno do dalšího scénáře."
 
 #: data/core/macros/deprecated-utils.cfg:68
 msgid ""
@@ -1773,7 +1774,7 @@ msgid ""
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"40% výsledného zlata je přeneseno do dalšího scénáře."
+"40 % výsledného zlata je přeneseno do dalšího scénáře."
 
 #: data/core/macros/deprecated-utils.cfg:73
 msgid ""
@@ -1781,7 +1782,7 @@ msgid ""
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"20% výsledného zlata je přeneseno do dalšího scénáře."
+"20 % výsledného zlata je přeneseno do dalšího scénáře."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:21
@@ -2951,6 +2952,15 @@ msgid ""
 "Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
 "Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
+"Abiha,Afaf,Ajša,Ajda,Alija,Amira,Ašraqat,Atikah,Azra,Boutheina,Bušra,Chaima,"
+"Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Fejrouz,Habiba,Hafsa,Hajra,"
+"Halima,Hamida,Hanifa,Hava,Hajat,Hessa,Ibtisam,Ibtissam,Inám,Jamila,Jawahir,"
+"Jena,Jumana,Karéna,Karima,Katya,Khadija,Khairunnisa,Khavula,Khavulah,Lama,"
+"Lamia,Latifa,Lajal,Lajan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,Malika,"
+"Marwa,Maryam,Maja,Majsón,Melissa,Nadia,Nafisa,Nahla,Naila,Najat,Nasim,Nasrin,"
+"Nejla,Nezha,Niuša,Qistina,Rahima,Rana,Rašida,Rém,Ruqaja,Sádia,Sabiha,Safija,"
+"Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Šahd,Šatha,Šerine,Šumaila,"
+"Sumaja,Taslima,Umm,Jara,Jasmin,Zahra,Zakija,Zajnab"
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:146
@@ -3885,8 +3895,8 @@ msgid ""
 msgstr ""
 "Zákonné jednotky bojují lépe ve dne a hůře v noci.\n"
 "\n"
-"Den: +25% poškození\n"
-"Noc: −25% poškození"
+"Den: +25 % poškození\n"
+"Noc: −25 % poškození"
 
 #. [language]
 #: data/english.cfg:12
@@ -3894,7 +3904,8 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
-"Neutrální jednotky nejsou ovlivněny střídáním dne a noci. Bojují vždy stejně."
+"Neutrální jednotky nejsou ovlivněny střídáním dne a noci. V každou denní "
+"dobu bojují stejně."
 
 #. [language]
 #: data/english.cfg:13
@@ -3906,26 +3917,19 @@ msgid ""
 msgstr ""
 "Chaotické jednotky bojují lépe v noci a hůře ve dne.\n"
 "\n"
-"Den: −25% poškození\n"
-"Noc: +25% poškození"
+"Den: −25 % poškození\n"
+"Noc: +25 % poškození"
 
 #. [language]
 #: data/english.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units fight best during the twilight times of day.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Zákonné jednotky bojují lépe ve dne a hůře v noci.\n"
+"Šeré jednotky bojují lépe během svítání a soumraku.\n"
 "\n"
-"Den: +25% poškození\n"
-"Noc: −25% poškození"
+"Svítání a soumrak: +25 % poškození"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -4284,14 +4288,12 @@ msgstr ""
 #. [resistance]: id=melee_steadfast
 #: data/scenario-test.cfg:366
 msgid "steadfast"
-msgstr ""
+msgstr "vytrvalost"
 
 #. [resistance]: id=melee_steadfast
 #: data/scenario-test.cfg:367
-#, fuzzy
-#| msgid "female^slowed"
 msgid "female^steadfast"
-msgstr "zpomalená"
+msgstr "vytrvalost"
 
 #. [resistance]: id=melee_steadfast
 #: data/scenario-test.cfg:368
@@ -4299,6 +4301,8 @@ msgid ""
 "This unit’s resistances are added to 20%, up to a maximum of 50%, when "
 "defending to melle attacks. Vulnerabilities are not affected."
 msgstr ""
+"Odolnost této jednotky je při obraně vůči útokům na blízko zvýšena o 20 %, "
+"až na maximum 50 %. Vlastní zranitelnost se ale nemění."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/scenario-test.cfg:403
@@ -6994,7 +6998,7 @@ msgstr "Vůdci"
 
 #: src/help/help_impl.cpp:654
 msgid "Recruits"
-msgstr "Naverbováno"
+msgstr "Rekruti"
 
 # v nápovědě podrobnosti jednotky když k ní není žádný text
 #: src/help/help_impl.cpp:716 src/units/types.cpp:488

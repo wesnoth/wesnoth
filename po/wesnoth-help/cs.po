@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 01:40-0300\n"
-"PO-Revision-Date: 2020-11-16 18:41+0100\n"
+"PO-Revision-Date: 2020-12-05 07:13+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -231,8 +231,6 @@ msgid "+1 max HP"
 msgstr "+1 max. HP"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
-#, fuzzy
-#| msgid "first strike"
 msgid "firststrike"
 msgstr "první úder"
 
@@ -478,22 +476,22 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Vybrat jedno políčko."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Vybrat 7 políček najednou."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Vybrat 19 políček najednou."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Vybrat 3 políčka v linii."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
@@ -519,22 +517,22 @@ msgstr ""
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Otočit o 60° po směru hodinových ručiček."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Otočit o 60° proti směru hodinových ručiček."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Převrátit horizontálně"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Převrátit vertikálně"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
@@ -988,19 +986,20 @@ msgstr "Encyklopedie"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='Zeměpis'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='Kalendář'</ref>\n"
+"<ref>dst='..geography' text='Zeměpis'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:12
 msgid "Calendar"
-msgstr ""
+msgstr "Kalendář"
 
+# Tady bych se opravdu inspiroval těmi indiánskými měsíci.
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:13
 msgid ""
@@ -1165,59 +1164,6 @@ msgstr "Wesnothské království"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
-#, fuzzy
-#| msgid ""
-#| "The Kingdom of Wesnoth is located in the north-central portion of the "
-#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-#| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
-#| "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
-#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast.\n"
-#| "\n"
-#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
-#| "region. It is bounded to the south (off-map) by dense woods of which the "
-#| "Aethenwood may be considered a northernmost extension.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Weldyn: The capital of Wesnoth.\n"
-#| "    • Aldril: City lying on the Bay of Pearls.\n"
-#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
-#| "country, just west and north of Weldyn.\n"
-#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-#| "confluence of the Weldyn River and the Great River.\n"
-#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
-#| "south road crossing the River Aethen.\n"
-#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
-#| "the wilderness country around the east of the Brown Hills and north to "
-#| "the Ford of Abez.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
-#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
-#| "controlled by Wesnothian forces.\n"
-#| "    • Weldyn River: It branches from the Great River and goes south.\n"
-#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
-#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
-#| "population.\n"
-#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
-#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
-#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
-#| "well-populated and occasionally very dangerous.\n"
-#| "    • Horse Plains: Region of rolling plains just south of the Great "
-#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
-#| "east; the southern reach merges into the Central Plain. Home of the "
-#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
-#| "    • Estmark Hills: Largish range rising south of the Great River and "
-#| "east of the Weldyn River. The northernmost portion, nearest the River "
-#| "Weldyn, has at various times been settled by Wesnothians, but the "
-#| "Kingdom’s control is tenuous at best and banditry is common.\n"
-#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
-#| "of Haldric II’s sons.\n"
-#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
-#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -1272,50 +1218,50 @@ msgid ""
 msgstr ""
 "Wesnothské království se rozprostírá ve středu severní části "
 "<ref>dst='great_continent' text='Velkého kontinentu'</ref>. Většina hlavních "
-"tažení se odehrává právě tam. Ze severu je ohraničena <ref>dst='great_river' "
+"tažení se odehrává právě zde. Ze severu je ohraničeno <ref>dst='great_river' "
 "text='Velkou řekou'</ref>, ze západu pobřežím <ref>dst='great_ocean' "
-"text='oceánu'</ref>, lesem Aethenwood z <ref>dst='southwest_elven_lands' "
+"text='oceánu'</ref>, Aethenským lesem z <ref>dst='southwest_elven_lands' "
 "text='jihozápadu'</ref> a Štiplavým močálem na jihovýchodě.\n"
 "\n"
 "Wesnothská hranice je za řekou Aethen, jižně od pevnosti Tahn. Na jihu (mimo "
 "mapu) je ohraničena hustými lesy, jejichž nejsevernější část je právě "
-"Aethenwood.\n"
+"Aethenský les.\n"
 "\n"
 "<header>text='Významná města'</header>:\n"
 "    • Weldyn: Hlavní město Wesnothu.\n"
 "    • Aldril: Město ležící v Zátoce perel.\n"
 "    • Přístav Temná Voda: Město ležící jižně od Zátoky perel.\n"
 "    • Carcyn: Leží mezi Šedým hvozdem a Vekou řekou.\n"
-"    • Dan’Tonk: Nejrozsáhlejší město Wesnothu ležící v centru země "
-"severozápadně od Weldynu.\n"
+"    • Dan Tonk: Největší město Wesnothu, ležící v centru země severozápadně "
+"od Weldynu.\n"
 "    • Soradok: Nejseverněji ležící pevnost Wesnothu, ovládající soutok řeky "
 "Weldyn a Velké řeky.\n"
 "    • Pevnost Tahn: Nejjižněji položená hraniční pevnost ovládající cestu "
 "z jihu na sever, která vede přes řeku Aethen.\n"
-"    • Tath: Důležité opevněné město severně od Dan’Tonk, které pomáhá "
-"kontrolovat divočinu na východ od Hnědých pahorků a severně od Brodu "
+"    • Tath: Důležité opevněné město severně od Dan Tonk, které pomáhá "
+"kontrolovat divočinu na východ od Hnědých pahorků a severně od brodu "
 "u Abezu.\n"
 "\n"
 "<header>text='Významné krajinné prvky:'</header>\n"
 "    • Hora gryfonů: Domov legendárních gryfonů.\n"
-"    • Brod u Abezu: Mělká část Velké řeky, obvykle kontrolovaná Wesnothskou "
+"    • brod u Abezu: Mělká část Velké řeky, obvykle kontrolovaná wesnothskou "
 "armádou.\n"
-"    • Řeka Weldyn: Rameno Velké řeky, které směřuje na jih.\n"
-"    • Velká centrální nížina: Oblast ohraničená Weldynem, městem Dan’Tonk "
-"a pevností Tahn, tato plocha je obilnicí Wesnothu a žije tu také nejvíc jeho "
+"    • řeka Weldyn: Rameno Velké řeky, které se stáčí na jih.\n"
+"    • Velká centrální nížina: Oblast ohraničená Weldynem, městem Dan Tonk "
+"a pevností Tahn. Tato plocha je obilnicí Wesnothu a žije tu také nejvíc jeho "
 "obyvatel.\n"
 "    • Dulatuské pahorky: Na této zvlněné ploše hraničící s Velkou centrální "
 "nížinou je soustředěna velká část zemědělství Wesnothu.\n"
 "    • Hnědé pahorky: Pustina obklopující Horu gryfonů. Není moc osídlená "
 "a tu a tam je i dost nebezpečná.\n"
 "    • Nížina koní: Zvlněná nížina vyvstávající jižně od Velké řeky, "
-"ohraničená Glynovým lesem na západě a řekou Weldyn na východě; jižní část "
-"splývá s Centrální nížinou. Domov mocných klanů; nejlepší koně v celém "
-"Wesnothu se rodí tady.\n"
-"    • Východní hory: Horské pásmo vystupující jižně od Velké řeky a východně "
-"od řeky Weldyn. Nejsevernější část, nejblíže řece Weldyn, byla mnohokrát "
-"osídlená lidmi z Wesnothu, ale kontrola nad touto oblastí je chatrná "
-"a ozbrojená přepadení jsou tu na denním pořádku.\n"
+"ohraničená Glynovým lesem na západě a řekou Weldyn na východě. Jižní část "
+"splývá s Centrální nížinou. Domov mocných klanů. Jsou tu chováni nejlepší "
+"koně v celém Wesnothu.\n"
+"    • Východní vrchy: Rozsáhlá pahorkatina vystupující jižně od Velké řeky "
+"a východně od řeky Weldyn. Nejsevernější část, nejblíže řece Weldyn, byla "
+"v různých dobách několikrát osídlena lidmi z Wesnothu. Kontrola nad touto "
+"oblastí je ale chatrná a ozbrojená přepadení jsou tu na denním pořádku.\n"
 "    • Glynův les: Někdy nazýván také Královský les, pojmenovaný po jednom ze "
 "synů Haldrika II.\n"
 "    • Šedý hvozd: Rozsáhlý les v srdci divočiny Wesnothu, který se nachází "
@@ -1366,6 +1312,7 @@ msgstr ""
 msgid "Northlands"
 msgstr "Severní země"
 
+# Wesmérie není město, ale oblast. Kalian je město. Chyba v originále.
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:120
 msgid ""
@@ -1416,7 +1363,7 @@ msgstr ""
 "\n"
 "<header>text='Významná města:'</header>\n"
 "    • Glamdrol: Hlavní město skřetů.\n"
-"    • Wesmérie: Místo konání Ka’lianu — Elfského koncilu.\n"
+"    • Wesmérie: Místo konání Kalianu – elfského koncilu.\n"
 "    • Trpasličí Dveře: Smíšené město lidí a trpaslíků blízko Knalgy na jihu "
 "Srdcových hor. Významné obchodní středisko.\n"
 "    • Dallben and Delwyn: Vesnice lidí postavené osadníky, kteří překročili "
@@ -1428,11 +1375,11 @@ msgstr ""
 " <header>text='Významné krajinné prvky:'</header>\n"
 "    • <ref>dst='heart_mountains' text='Srdcové hory'</ref>: Téměř "
 "nepřekročitelná hranice mezi okolím řeky a Severními pláněmi.\n"
-"    • Srdcové špičáky: obzvlášť zlověstná skupina horských štítů, které se "
+"    • Srdcové špičáky: Obzvlášť zlověstná skupina horských štítů, které se "
 "nachází jihovýchodně od jezera Vrug a severně od Wesmérie. Jde "
-"nejnebezpečnější a nejhůře obyvatelnou část Srdcových hor; žijí tu jen "
+"nejnebezpečnější a nejhůře obyvatelnou část Srdcových hor. Žijí tu jen "
 "poustevníci, mágové a pomatenci.\n"
-"    • Močály děsu: velmi rozlehlá bažina situovaná mezi Srdcovými horami "
+"    • Močály děsu: Velmi rozlehlá bažina situovaná mezi Srdcovými horami "
 "a Velkou řekou. Nechvalně proslulé a velmi nebezpečné místo.\n"
 "    • jezero Vrug: Rozlehlé horské jezero, jehož odtok vytesal jedinou cestu "
 "skrz Severní hory.\n"
@@ -1440,16 +1387,16 @@ msgstr ""
 "jezero Vrug. Jde o elfské jméno; mezi lidmi je nazývána Longlier.\n"
 "    • řeka Listra: Pravý přítok Velké řeky přitékající ze severu. Vlévá se "
 "do ní Arkan-thoria.\n"
-"    • les Lintanir: Nejjižnejší část Velkého severního lesa, obrovský les, "
-"jehož východní a severní hranice jsou známé jen elfům. Jejich hlavní město, "
-"Elensirie, bylo jen zřídka navštíveno lidmi.\n"
+"    • les Lintanir: Nejjižnejší část Velkého severního lesa, obrovského "
+"lesa, jehož východní a severní hranice jsou známé jen elfům. Jejich hlavní "
+"město, Elensirie, bylo jen zřídka navštíveno lidmi.\n"
 "    • <ref>dst='great_river' text='Velká řeka'</ref>: Pramen této řeky je "
 "někde na východě severních zemí."
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
 msgid "Southwest Elven Lands"
-msgstr "Jihozápadní elfské země"
+msgstr "Jihozápadní elfská země"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:142
@@ -1480,7 +1427,7 @@ msgstr ""
 "    • Žádná nejsou známa\n"
 "\n"
 "<header>text='Významné krajinné útvary:'</header>\n"
-"    • les Aethenwood: Velký hvozd na jihu, pokračující jižním směrem dále "
+"    • Aethenský les: Velký hvozd na jihu, pokračující jižním směrem dále, "
 "než bylo zmapováno. Je domovem <ref>dst='..race_elf' text='elfů'</ref>. "
 "Ačkoliv ho tak elfové nikdy nenazývali, jižní část tohoto lesa byla "
 "obyvateli Kerlathu pojmenována Jižní les.\n"
@@ -4589,8 +4536,8 @@ msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Odolnost této jednotky je při obraně zdvojena, až na maximum 50%. Výše "
-"zranění při zásahu ale není ovlivněna."
+"Odolnost této jednotky je při obraně zdvojena, až na maximum 50 %. Vlastní "
+"zranitelnost se ale nemění."
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:118
@@ -5118,383 +5065,251 @@ msgstr "Dlouhá temnota (3)"
 msgid "The Long Dark (4)"
 msgstr "Dlouhá temnota (4)"
 
-# tabulka útoků
 #: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:565
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
 msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Zvláštní rysy:"
+msgstr "Zvláštní rysy:"
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
-#| msgid ""
-#| " Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-" Duchové jsou neobyčejně odolní vůči běžným typům zranění a mohou se, byť "
-"velmi pomalu, pohybovat v hlubokých vodách."
+"Duchové jsou neobyčejně odolní vůči běžným typům zranění a mohou se, byť "
+"velmi pomalu, pohybovat v hlubokých vodách."
 
 #: data/core/macros/special-notes.cfg:18
-#, fuzzy
-#| msgid ""
-#| " This unit’s arcane attack deals tremendous damage to magical creatures, "
-#| "and even some to mundane creatures."
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Nezemský útok této jednotky působí zničující zranění jak nemrtvým, tak také "
-"některým živým stvořením."
+"Nezemský útok této jednotky působí zničující zranění magickým stvořením "
+"a také dost velké poškození těm obyčejným."
 
 #: data/core/macros/special-notes.cfg:21
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
-msgstr " Tato jednotka je schopna základní léčby."
+msgstr "Tato jednotka dokáže poskytnout základní ošetření."
 
 #: data/core/macros/special-notes.cfg:24
-#, fuzzy
-#| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
-msgstr " Tato jednotka je schopna rychlé léčby."
+msgstr "Tato jednotka dokáže poskytnout rychlé léčení."
 
 #: data/core/macros/special-notes.cfg:27
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" Tato jednotka je schopna jednak léčit, ale také uzdravit jednotky z otravy."
+"Tato jednotka je schopna jednak léčit, ale také uzdravit okolní jednotky "
+"z otravy."
 
 #: data/core/macros/special-notes.cfg:30
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of neutralizing the effects of poison in units "
-#| "around it."
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr " Tato jednotka dokáže uzdravovat okolní jednotky z otravy."
+msgstr "Tato jednotka dokáže uzdravovat okolní jednotky z otravy."
 
 #: data/core/macros/special-notes.cfg:33
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
-" Schopnost regenerace znamená, že je tato jednotka léčena stejně jako kdyby "
+"Schopnost regenerace znamená, že je tato jednotka léčena stejně, jako kdyby "
 "byla neustále ve vesnici."
 
 #: data/core/macros/special-notes.cfg:36
-#, fuzzy
-#| msgid ""
-#| " The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
-" Vytrvalost umožňuje této jednotce snížit účinky zranění způsobených "
+"Vytrvalost umožňuje této jednotce snížit účinky zranění způsobených "
 "některými typy útoků, ale pouze při obraně."
 
 #: data/core/macros/special-notes.cfg:39
-#, fuzzy
-#| msgid ""
-#| " The leadership of this unit enables adjacent units of the same side to "
-#| "deal more damage in combat, though this only applies to units of lower "
-#| "level."
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Schopnost velení této jednotky umožňuje jednotkám stejné strany v její "
-"těsné blízkosti způsobovat v boji větší poškození, i když toto platí pouze "
-"pro jednotky s nižší úrovní."
+"Schopnost velení této jednotky umožňuje jednotkám stejné strany v její těsné "
+"blízkosti způsobovat v boji větší poškození, i když toto platí pouze pro "
+"jednotky s nižší úrovní."
 
 #: data/core/macros/special-notes.cfg:42
-#, fuzzy
-#| msgid ""
-#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" Průbojnost umožňuje těmto jednotkám ignorovat oblasti kontroly "
-"nepřátelských jednotek, což jim umožňuje se mezi nimi volně pohybovat."
+"Průbojnost umožňuje těmto jednotkám ignorovat oblasti kontroly nepřátelských "
+"jednotek, což jim dovoluje se mezi nimi volně pohybovat."
 
 # blbé, ale jak jinak to udělat?
 #: data/core/macros/special-notes.cfg:45
-#, fuzzy
-#| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr " Osvětlení zvyšuje stupeň osvětlení na přilehlých polích."
+msgstr "Osvětlení zvyšuje stupeň osvětlení na přilehlých polích."
 
 #: data/core/macros/special-notes.cfg:48
-#, fuzzy
-#| msgid ""
-#| " This unit can use one move to teleport between any two empty villages "
-#| "controlled by its side."
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" Tato jednotka se dokáže v okamžiku přemístit z jedné spřátelené vesnice do "
+"Tato jednotka se dokáže v okamžiku přemístit z jedné spřátelené vesnice do "
 "druhé."
 
 #: data/core/macros/special-notes.cfg:51
-#, fuzzy
-#| msgid ""
-#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" Dovedností těchto jednotek je schopnost stát se v lesích neviditelnou, "
-"dokud nezaútočí nebo se nepřítel nepostaví hned vedle."
+"Dovedností této jednotky je schopnost stát se v lesích neviditelnou, dokud "
+"nezaútočí nebo se nepřítel nepostaví hned vedle."
 
 #: data/core/macros/special-notes.cfg:54
-#, fuzzy
-#| msgid ""
-#| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
-" Ve tmě se může tato jednotka dokonale skrýt a nezanechat po sobě žádné "
-"stopy."
+"Ve tmě se může tato jednotka dokonale skrýt a nezanechat po sobě žádné stopy."
 
 #: data/core/macros/special-notes.cfg:57
-#, fuzzy
-#| msgid ""
-#| " This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-" Tato jednotka se dokáže skrýt ve vesnicích (s výjimkou vodních) a zůstat "
+"Tato jednotka se dokáže skrýt ve vesnicích (s výjimkou vodních) a zůstat "
 "nepovšimnuta nepřáteli, pokud se nepostaví těsně vedle ní."
 
 #: data/core/macros/special-notes.cfg:60
-#, fuzzy
-#| msgid ""
-#| " This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-" V hluboké vodě se tato jednotka pohybuje neviděna, neboť nepotřebuje dýchat "
+"V hluboké vodě se tato jednotka pohybuje neviděna, neboť nepotřebuje dýchat "
 "vzduch."
 
 #: data/core/macros/special-notes.cfg:63
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" Vždy, když zabije nepřítele, zvyšuje tato jednotka maximum svých životů o 1."
+"Vždy, když zabije živého nepřítele, zvyšuje tato jednotka maximum svých "
+"životů o 1."
 
 #: data/core/macros/special-notes.cfg:66
-#, fuzzy
-#| msgid ""
-#| " Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Pokaždé, když tato jednotka použije útok „na život a na smrt“, pokračuje v "
-"útoku, dokud ona či její nepřítel nepadne v boji."
+"Pokaždé, když tato jednotka použije útok „na život a na smrt“, pokračuje "
+"v útoku, dokud ona či její nepřítel nepadne v boji."
 
 #: data/core/macros/special-notes.cfg:69
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Pokud právě nějaký spojenec zaměstnává nepřátelskou jednotku, tato jednotka "
+"Pokud právě nějaký spojenec zaměstnává nepřátelskou jednotku, tato jednotka "
 "se může připlížit a napadnout ji nečekaně zezadu (z opačné strany), což "
-"způsobí dvojnásobná zranění napadené jednotky. Platí to však pouze pro útok."
+"napadené jednotce způsobí dvojnásobná zranění. Platí to však pouze pro útok."
 
 # pův.: "procitnou "
 #: data/core/macros/special-notes.cfg:72
-#, fuzzy
-#| msgid ""
-#| " Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Nepřátelé, kteří padnou na následky nákazy, znova povstanou jako nemrtví – "
+"Nepřátelé, kteří padnou na následky nákazy, znova povstanou jako nemrtví – "
 "pokud ovšem nestojí na vesnici."
 
 #: data/core/macros/special-notes.cfg:75
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" Tato jednotka dokáže zpomalit své nepřátele, čímž do konce kola zmenší "
-"jejich pohyb a jimi způsobená poškození na polovinu."
+"Tato jednotka dokáže zpomalit své nepřátele, čímž do konce kola zmenší "
+"jejich pohyb a jimi způsobená poškození na polovinu."
 
 #: data/core/macros/special-notes.cfg:78
-#, fuzzy
-#| msgid ""
-#| " The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
-" Schopnost změnit živé tvory v kámen činí tuto jednotku extrémně nebezpečnou."
+"Schopnost změnit živé tvory v kámen činí tuto jednotku extrémně nebezpečnou."
 
 #: data/core/macros/special-notes.cfg:81
-#, fuzzy
-#| msgid ""
-#| " This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr ""
-" Střelecké umění dává této jednotce vyšší šanci zasáhnout nepřátele, ale "
+"Střelecké umění dává této jednotce vyšší šanci zasáhnout nepřátele, ale "
 "pouze při útoku."
 
 #: data/core/macros/special-notes.cfg:84
-#, fuzzy
-#| msgid ""
-#| " This unit has magical attacks, which always have a high chance of "
-#| "hitting an opponent."
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" Tato jednotka používá magické útoky, které mají vždy velkou šanci zasáhnout "
+"Tato jednotka používá magické útoky, které mají vždy velkou šanci zasáhnout "
 "protivníka."
 
 #: data/core/macros/special-notes.cfg:87
-#, fuzzy
-#| msgid ""
-#| " The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-" Útok hejna se stává méně smrtícím při zranění jednotlivých jedinců v tomto "
+"Útok hejna se stává méně smrtícím při zranění jednotlivých jedinců v tomto "
 "hejnu."
 
 #: data/core/macros/special-notes.cfg:90
-#, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-" Útok výpadem zdvojnásobuje velikost poškození rozdaného, tak přijatého. To "
-"se nevztahuje na defenzivní protivýpady."
+"Útok výpadem zdvojnásobuje velikost poškození jak rozdaného, tak přijatého. "
+"To se nevztahuje na defenzivní protivýpady."
 
 #: data/core/macros/special-notes.cfg:93
-#, fuzzy
-#| msgid ""
-#| " During battle, this unit can drain life from victims to renew its own "
-#| "health."
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
-msgstr " Během boje se dokáže tato jednotka léčit vysátím života z nepřítele."
+msgstr "Během boje se dokáže tato jednotka léčit vysátím života z nepřítele."
 
 #: data/core/macros/special-notes.cfg:96
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr ""
-" Délka zbraně umožňuje této jednotce zaútočit jako první, a to i tehdy, když "
+"Délka zbraně umožňuje této jednotce zaútočit jako první, a to i tehdy, když "
 "se brání."
 
 #: data/core/macros/special-notes.cfg:99
-#, fuzzy
-#| msgid ""
-#| " The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" Obětem otráveným jedem této jednotky neustále přibývají zranění, dokud není "
+"Obětem otráveným jedem této jednotky neustále přibývají zranění, dokud není "
 "oběť uzdravena ve vesnici nebo uzdravovatelem."
 
 #: data/core/macros/special-notes.cfg:102
-#, fuzzy
-#| msgid ""
-#| " This unit has a defense cap on certain terrain types — it cannot achieve "
-#| "a higher defense rating on mixed terrains with such terrain types."
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
-" Tato jednotka má obranný limit na určitý typ terénu — nemůže dosáhnout "
+"Tato jednotka má obranný limit na určitý typ terénu – nemůže dosáhnout "
 "vyššího obranného hodnocení na smíšených terénech, které se z tohoto typu "
 "terénu skládají."
 
 #. [special_note]
 #: data/core/macros/special-notes.cfg:156
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
 msgstr ""
-" Schopnost regenerace znamená, že je tato jednotka léčena stejně jako kdyby "
+"Schopnost regenerace znamená, že je tato jednotka léčena stejně, jako kdyby "
 "byla neustále ve vesnici."
 
 #. [special_note]
 #: data/core/macros/special-notes.cfg:300
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target's attention and reduces its "
 "chance to hit."
 msgstr ""
-" Pokud právě nějaký spojenec zaměstnává nepřátelskou jednotku, tato jednotka "
+"Pokud právě nějaký spojenec zaměstnává nepřátelskou jednotku, tato jednotka "
 "se může připlížit a napadnout ji nečekaně zezadu (z opačné strany), což "
-"způsobí dvojnásobná zranění napadené jednotky. Platí to však pouze pro útok."
+"napadené jednotce způsobí dvojnásobná zranění. Platí to však pouze pro útok."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -5893,7 +5708,7 @@ msgstr "divá"
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:287
 msgid "Receives only 50% defense in land-based villages"
-msgstr "V pozemních vesnicích získává obranu pouze 50%"
+msgstr "V pozemních vesnicích získává obranu pouze 50 %"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:288
@@ -5957,8 +5772,8 @@ msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
 msgstr ""
-"<italic>text='Pomalé'</italic> jednotky mají o 1 pohybový bod méně, ale o 5% "
-"více životů, než je obvyklé."
+"<italic>text='Pomalé'</italic> jednotky mají o 1 pohybový bod méně, ale o 5 "
+"% více životů, než je obvyklé."
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:343
@@ -5989,7 +5804,7 @@ msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
-"Jednotky s vlastností <italic>text='hloupý'</italic> vyžadují o 20% více "
+"Jednotky s vlastností <italic>text='hloupý'</italic> vyžadují o 20 % více "
 "zkušeností pro postup na další úroveň."
 
 #. [trait]: id=aged
@@ -6614,17 +6429,17 @@ msgstr ""
 #. [race]: id=dunefolk
 #: data/core/units.cfg:209
 msgid "race^Dunefolk Human"
-msgstr "Lidé Dunefolku"
+msgstr "Pouštní člověk"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:210
 msgid "race+female^Dunefolk Human"
-msgstr "Dunefolské ženy"
+msgstr "Pouštní žena"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:211
 msgid "race+plural^Dunefolk"
-msgstr "Pouštní lidé"
+msgstr "Pouštní lid"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:213
@@ -6683,6 +6498,60 @@ msgid ""
 "The origins of this tradition likely lie in the heritage of the Dunefolk’s "
 "distant past in the exotic far corners of Irdya."
 msgstr ""
+"Pouštní lid, odnož zapomenuté nomádské civilizace, si nárokuje území říčních "
+"údolí a oáz písečných pustin. Není známo, za jakých okolností osídlili tento "
+"vzdálený kout Velkého kontinentu. Jejich legendy vyprávějí o mnoha dlouhých "
+"a nebezpečných cestách po vzdálených zemích, ale skutečný původ těchto lidí "
+"je tématem nekonečných a vášnivých debat i mezi jejich vlastními "
+"nejučenějšími učenci.\n"
+"\n"
+"Ať se vzali, kde se vzali, pouštním lidem se daří. V jejich největších a "
+"nejúrodnějších regionech hrdě stojí rušná města. Páteř městské ekonomiky "
+"tvoří zkušení řemeslníci, skvělí kováři a bohatí obchodníci. Každé z těchto "
+"měst se také těší míře nezávislosti, která je u centralizovanějších národů "
+"na severu méně obvyklá. Mnohá z nich si dokonce udržují své vlastní stálé "
+"armády. Přesto se v dobách nouze dokáží sjednotit pod vedením vyšší autority "
+"určené k ochraně nadřazeného zájmu národa.\n"
+"\n"
+"Ti, kteří se neusadili v těchto městských centrech, stále dodržují životní "
+"styl svých předků. Toulají se po dunách a vodí svá stáda od jednoho "
+"napajedla k druhému. Nejaktivnější jsou během svítání a za soumraku, kdy "
+"nejsou pustiny ani příliš horké, ani příliš studené. Jejich dovednost "
+"pohybovat se po písku je vynikající, a to i dle měřítek pouštního lidu. "
+"Přestože na ně jejich městské protějšky někdy shlížejí s opovržením, "
+"poskytují neocenitelné služby jako mobilní, lehká vojska během válečného "
+"stavu nebo jako doprovod pro obchodní karavany v době míru.\n"
+"\n"
+"Díky sklonům pouštních lidí k obchodování a průzkumu nashromáždila jejich "
+"města obrovská bohatství, což je věc, která v ostatních rasách a národech "
+"vyvolává obdiv i závist. Vzájemné zájmy podpořily srdečné vztahy se "
+"sousedními kmeny nág. Ale tajnůstkářské rasy, jako jsou drakonidé či elfové, "
+"vždy považovali expedice pouštních lidí za příliš rušivé, zvláště, když se "
+"odehrávaly blízko územních hranic. Také není neobvyklé, že se karavany "
+"pouštních lidí stanou v horách kořistí trollích přepadů, což dalo vzniknout "
+"bezpočtu příběhů o nepředstavitelném pokladu hromaděném ve skrytých "
+"jeskyních.\n"
+"\n"
+"V důsledku toho, že pouštní lidé žili po staletí v nepřátelském prostředí, "
+"vyvinuli racionální metody zkoumání, pomocí nichž neustále zlepšují své "
+"chápání světa. Studium bylinné medicíny udržuje jejich válečníky a "
+"pracovníky čerstvé a zdravé. Znalosti alchymie jim umožňují zkrotit oheň a "
+"využívat ho jako smrtící zbraň v bitvě. Zároveň je toto analytické myšlení "
+"oddělilo od magického umění. Pro racionální mysl je magie nekontrolovatelná, "
+"nepředvídatelná, a proto nespolehlivá. Z tohoto důvodu se pouštním lidem "
+"obzvláště hnusí zvrácenosti nekromancie a temných umění, a to ještě více než "
+"jiným rasám.\n"
+"\n"
+"Zvídavá a objevitelská povaha pouštního lidu nevylučuje vojenskou sílu. "
+"Nejen, že je schopen do bitvy postavit hbité lehké jednotky, těžkou jízdu "
+"(katafrakty) i těžce obrněnou pěchotu, ale jeho pronikavé technologické "
+"znalosti mu poskytují rozhodující výhodu nad svými protivníky. Ale "
+"nejstrašnějším pohledem, co může vidět ten, kdo s pouštním lidem zápolí, je "
+"určitě pohled na jeho bojové nasazení divokých a bizarních zvířat, od "
+"majestátního ptáka Roha po impozantní wyvernu. Synergie pouštního lidu s "
+"těmito tvory mu umožňuje v boji velkou všestrannost. Počátky této tradice "
+"pravděpodobně spočívají v dědictví ze vzdálené minulosti pouštního lidu, "
+"která se odehrávala v exotických vzdálených koutech Irdye."
 
 #. [race]: id=lizard
 #: data/core/units.cfg:234
@@ -7445,33 +7314,27 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:157
 msgid "Base Terrain: "
-msgstr "Základní terén:"
+msgstr "Základní terén: "
 
 #: src/help/help_topic_generators.cpp:177
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "Movement properties: "
-msgstr "Bodů pohybu"
+msgstr "Vlastnosti pohybu: "
 
 #: src/help/help_topic_generators.cpp:181
 msgid "Defense properties: "
-msgstr ""
+msgstr "Vlastnosti obrany: "
 
 #: src/help/help_topic_generators.cpp:261
-#, fuzzy
-#| msgid "level"
 msgid "Level"
-msgstr "úroveň"
+msgstr "Úroveň"
 
 #: src/help/help_topic_generators.cpp:322
 msgid "Advances from: "
 msgstr "Povyšuje z: "
 
 #: src/help/help_topic_generators.cpp:324
-#, fuzzy
-#| msgid "Advances from: "
 msgid "Advances to: "
-msgstr "Povyšuje z: "
+msgstr "Povyšuje na: "
 
 #: src/help/help_topic_generators.cpp:353
 msgid "Base unit: "
@@ -7505,19 +7368,15 @@ msgstr "Vylepšení schopností: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:528
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "životů: "
+msgstr "Životy:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "kroků: "
+msgstr "Kroky:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -7541,28 +7400,22 @@ msgstr "Rušení:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:548
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Cena: "
+msgstr "Cena:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:552
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Příslušnost: "
+msgstr "Příslušnost:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:559
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "Potřebných zkušeností: "
+msgstr "Zkušenosti:"
 
 # malé nebo velké 1. písmeno
 #: src/help/help_topic_generators.cpp:574
@@ -7596,10 +7449,8 @@ msgid "Resistance"
 msgstr "Odolnost"
 
 #: src/help/help_topic_generators.cpp:697
-#, fuzzy
-#| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
-msgstr "Editor terénu"
+msgstr "Vliv terénu"
 
 #: src/help/help_topic_generators.cpp:701
 msgid "Terrain"
@@ -7610,10 +7461,8 @@ msgid "Movement Cost"
 msgstr "Bodů pohybu"
 
 #: src/help/help_topic_generators.cpp:707
-#, fuzzy
-#| msgid "Defense"
 msgid "Defense Cap"
-msgstr "Obrana"
+msgstr "Omezení obrany"
 
 #: src/help/help_topic_generators.cpp:712
 msgid "Vision Cost"
@@ -8960,4 +8809,4 @@ msgstr "Cena rušení"
 #~ "potřebnou volnost pohybu k boji. Nemrtví mají přirozenou zálibu v "
 #~ "rozkladu a proto mají houbové háje v oblibě.\n"
 #~ "\n"
-#~ "Většina jednotek získává obranný bonus 50% nebo 60%, jízda pouze 20%."
+#~ "Většina jednotek získává obranný bonus 50 % nebo 60 %, jízda pouze 20 %."
