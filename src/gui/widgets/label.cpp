@@ -44,12 +44,12 @@ REGISTER_WIDGET(label)
 label::label(const implementation::builder_label& builder)
 	: styled_widget(builder, type())
 	, state_(ENABLED)
-	, can_wrap_(false)
-	, characters_per_line_(0)
+	, can_wrap_(builder.wrap)
+	, characters_per_line_(builder.characters_per_line)
 	, link_aware_(false)
 	, link_color_(color_t::from_hex_string("ffff00"))
-	, can_shrink_(false)
-	, text_alpha_(255)
+	, can_shrink_(builder.can_shrink)
+	, text_alpha_(ALPHA_OPAQUE)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(
 		std::bind(&label::signal_handler_left_button_click, this, std::placeholders::_3));
@@ -330,11 +330,8 @@ widget* builder_label::build() const
 	const auto conf = lbl->cast_config_to<label_definition>();
 	assert(conf);
 
-	lbl->set_can_wrap(wrap);
-	lbl->set_characters_per_line(characters_per_line);
 	lbl->set_text_alignment(text_alignment);
 	lbl->set_text_alpha(ALPHA_OPAQUE);
-	lbl->set_can_shrink(can_shrink);
 	lbl->set_link_aware(conf->link_aware);
 	lbl->set_link_color(conf->link_color);
 
