@@ -14,7 +14,8 @@
   * SDL_Image 2.0.2 or later is now required (was 2.0.0).
  ### Terrain
  ### Translations
-   * Updated translations: British English, Czech, Polish, Portuguese (Brazil), Russian
+   * Updated translations: British English, Czech, Italian, Polish, Portuguese (Brazil),
+     Russian
  ### Units
    * Undead variations for Falcon, Giant Rat, serpents, and Gorer/Tusklet
  ### User interface

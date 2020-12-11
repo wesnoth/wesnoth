@@ -1,12 +1,12 @@
 # translation of it.po to Italian
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2008.
-# Antonio 'Antro' Rosella <arosella@yahoo.com>, 2008-2019
+# Antonio 'Antro' Rosella <arosella@yahoo.com>, 2008-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 04:40 UTC\n"
-"PO-Revision-Date: 2019-09-07 17:05+0200\n"
+"PO-Revision-Date: 2020-12-07 23:27+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -43,10 +43,8 @@ msgstr "Impegnativo"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
-#, fuzzy
-#| msgid "Knight"
 msgid "Grand Knight"
-msgstr "Cavaliere"
+msgstr "Gran Cavaliere"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
@@ -63,8 +61,6 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#, fuzzy
-#| msgid "(Rookie level, 4 scenarios.)"
 msgid "(Novice level, 4 scenarios.)"
 msgstr "(Livello per principianti, 4 scenari)"
 
@@ -192,7 +188,7 @@ msgid ""
 "spoken since that evil day at Toen Caric. If he will not come for me, "
 "perhaps he will return to aid our village in its hour of desperate need."
 msgstr ""
-"12 V, 363 EW\n"
+"12 V, 363 AW\n"
 "Estratto dal diario di Baran da Maghre\n"
 "\n"
 "Se solo potessi affrontare questo “Mordak”! Sono sicuro che la mia forza "
@@ -486,23 +482,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
-#, fuzzy
-#| msgid ""
-#| "16 V, 363 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "We’ve been searching three days for Baran, and turned up nothing. My best "
-#| "hunch was to head north into the borderlands, where the necromancer’s "
-#| "minions could safely hide; everywhere else is more farmland. At first I "
-#| "thought the search might be useless, but late in the first day we found a "
-#| "set of tracks. Some of them had been made by skeletal feet.\n"
-#| "\n"
-#| "We’re close enough to be certain now: those tracks are heading into the "
-#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
-#| "that forest in living memory. Stories have been passed down for "
-#| "generations warning against it. Supposedly the place is haunted by lost "
-#| "souls who hunger for the living, and anyone who dies there is doomed to "
-#| "join them."
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -521,7 +500,7 @@ msgid ""
 "warning against it. Supposedly the place is haunted by lost souls who hunger "
 "for the living, and anyone who dies there is doomed to join them."
 msgstr ""
-"16 V, 363 EW\n"
+"16 V, 363 AW\n"
 "Estratto dal diario di Arvith da Maghre\n"
 "\n"
 "Sono tre giorni che cerchiamo Baran dappertutto, e ancora niente. La mia "
@@ -557,7 +536,7 @@ msgid ""
 "\n"
 "Besides... I want my brother back."
 msgstr ""
-"16 V, 363 EW\n"
+"16 V, 363 AW\n"
 "Estratto dal diario di Arvith da Maghre\n"
 "\n"
 "Ma io ho superato le superstizioni; ho visto abbastanza cose di questo mondo "
@@ -660,6 +639,11 @@ msgid ""
 "murderer, and rest assured that the grey mages will release all of the souls "
 "that their prisoner’s evil magic has bound to this world."
 msgstr ""
+"Quegli uomini hanno sorpreso il loro prigioniero mentre praticava la "
+"negromanzia. Per il tuo bene, spero che non fosse tuo fratello. Considera "
+"l’uomo catturato come fosse l’assassino di tuo fratello, e stai sicuro che i "
+"maghi grigi libereranno tutte le anime che la magia malvagia del loro "
+"prigioniero ha legato a questo mondo."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
@@ -667,6 +651,8 @@ msgid ""
 "We killed the necromancer on the battlefield! I struck the killing blow "
 "myself."
 msgstr ""
+"Abbiamo ucciso il negromante sul campo di battaglia! Ho inflitto io stesso "
+"il colpo finale."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
@@ -674,6 +660,8 @@ msgid ""
 "We killed the necromancer on the battlefield! I saw the killing blow with my "
 "own eyes."
 msgstr ""
+"Abbiamo ucciso il negromante sul campo di battaglia! Ho visto il colpo "
+"finale con i miei occhi."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
@@ -687,18 +675,23 @@ msgid ""
 "Either way, nothing will be gained by your intrusion into our woods. Now "
 "advance no further, or you will die."
 msgstr ""
+"Abbiamo udito i rumori della battaglia, tre giorni or sono, ma il cattivo "
+"olezzo di morte al passaggio del prigioniero era inconfondibile. Se tuo "
+"fratello è davvero prigioniero allora anche egli è un negromante. Ricorda "
+"tuo fratello come tutti noi speriamo che fosse, e sappi che il destino del "
+"prigioniero sarà la vendetta più atroce che potrai desiderare.\n"
+"\n"
+"In ogni caso, non guadagnerai nulla da una intrusione nei nostri boschi. Non "
+"avanzare oltre, o morirai."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
-#, fuzzy
-#| msgid ""
-#| "So much for those ghost stories. Mere elves will not stop me from freeing "
-#| "Baran!"
 msgid ""
 "So much for those ghost stories, but even ghosts might have been more "
 "observant than these elves. Still, they will not stop me from freeing Baran!"
 msgstr ""
-"Ne ho abbastanza di storie di fantasmi. Dei semplici elfi non mi impediranno "
+"Ne ho abbastanza di storie di fantasmi, ma persino dei fantasmi avrebbero "
+"potuto essere più rispettosi di questi elfi. E comunque, non mi impediranno "
 "di liberare Baran!"
 
 #. [message]: role=Mercenary
@@ -741,7 +734,7 @@ msgstr ""
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:497
 msgid "Well, elves? Now do you see who the necromancers are?"
-msgstr ""
+msgstr "Allora, elfi? Adesso lo vedete chi sono i negromanti?"
 
 #. [message]: speaker=messenger_elf
 #. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
@@ -750,6 +743,8 @@ msgid ""
 "I heard sounds of battle, but did not expect to see this. I will inform the "
 "Council, they can work out who the necromancers are."
 msgstr ""
+"Ho sentito i rumori della battaglia, ma non mi aspettavo di vedere tutto "
+"questo. Ne informerò il Concilio, loro possono capire chi siano i negromanti."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:543
@@ -940,6 +935,8 @@ msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
 msgstr ""
+"Povero sciocco, stai salvando un negromante. Posso soltanto sperate che tu "
+"arrivi troppo tardi, e che le nostre anime riposino in pace."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:731
@@ -973,7 +970,7 @@ msgid ""
 "man rumored to be this mage’s brother. If that is true, he will stop at "
 "nothing, no more than would I if they held Mordak."
 msgstr ""
-"19 V, 363 EW\n"
+"19 V, 363 AW\n"
 "Estratto dal diario di Rotharik il Senzaclan\n"
 "\n"
 "L’ultimo dei servi di Mordak è arrivato stamattina, portando la notizia "
@@ -1010,7 +1007,7 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
-"19 V, 363 EW\n"
+"19 V, 363 AW\n"
 "Estratto dal diario di Rotharik il Senzaclan\n"
 "\n"
 "Ho fatto ciò che potevo per rinforzare questo castello diroccato. Gli orchi "
@@ -1467,7 +1464,7 @@ msgid ""
 "way around it we traveled through some truly beautiful countryside. It has "
 "given us plenty of time to talk."
 msgstr ""
-"27 V, 363 EW\n"
+"27 V, 363 AW\n"
 "Estratto dal diario di Baran da Maghre\n"
 "\n"
 "Siamo quasi a casa adesso. L’ultima settimana è stata per me un misto di "
@@ -1506,7 +1503,7 @@ msgid ""
 "merely a remnant of my time locked away in that dungeon, or is it a sign of "
 "something real?"
 msgstr ""
-"27 V, 363 EW\n"
+"27 V, 363 AW\n"
 "Estratto dal diario di Baran da Maghre\n"
 "\n"
 "Sebbene ora sia più a mio agio, i miei pensieri tornano spesso a Toen Caric. "
@@ -1744,7 +1741,7 @@ msgid ""
 "But as the company and I are passing through this part of the kingdom with a "
 "new patron, I have asked leave of him to visit my brother and he gave it."
 msgstr ""
-"22 IX, 355 EW\n"
+"22 IX, 355 AW\n"
 "Estratto dal diario di Arvith da Maghre\n"
 "\n"
 "Maghre mi sembra molto più bella dell’ultima volta che l’ho vista. Baran ha "
@@ -1772,7 +1769,7 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
-"22 IX, 365 EW\n"
+"22 IX, 365 AW\n"
 "Estratto dal diario di Arvith da Maghre\n"
 "\n"
 "Questo padrone è, chi l’avrebbe detto, un elfo. Non avrei mai pensato di "
