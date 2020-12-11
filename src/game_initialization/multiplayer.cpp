@@ -701,9 +701,11 @@ void start_local_game(saved_game& state)
 	mp_manager("", state).enter_create_mode();
 }
 
-void start_local_game_commandline(const game_config_view& game_config, saved_game& state, const commandline_options& cmdline_opts)
+void start_local_game_commandline(saved_game& state, const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting local MP game from commandline" << std::endl;
+
+	const game_config_view& game_config = game_config_manager::get()->game_config();
 
 	// The setup is done equivalently to lobby MP games using as much of existing
 	// code as possible.  This means that some things are set up that are not
