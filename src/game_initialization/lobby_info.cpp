@@ -237,10 +237,10 @@ void lobby_info::process_userlist()
 		}
 
 		switch(ui.relation) {
-		case user_info::relation::FRIEND:
+		case user_info::user_relation::FRIEND:
 			g->has_friends = true;
 			break;
-		case user_info::relation::IGNORED:
+		case user_info::user_relation::IGNORED:
 			g->has_ignored = true;
 			break;
 		default:

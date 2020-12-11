@@ -601,7 +601,7 @@ void mp_lobby::update_playerlist()
 		icon_ss << "lobby/status";
 		switch(user.state) {
 #ifdef ENABLE_ROOM_MEMBER_TREE
-			case mp::user_info::state::SEL_ROOM:
+			case mp::user_info::user_state::SEL_ROOM:
 				icon_ss << "-lobby";
 				target_list = &player_list_.active_room;
 				if(lobby) {
@@ -609,16 +609,16 @@ void mp_lobby::update_playerlist()
 				}
 				break;
 #endif
-			case mp::user_info::state::LOBBY:
+			case mp::user_info::user_state::LOBBY:
 				icon_ss << "-lobby";
 				target_list = &player_list_.other_rooms;
 				break;
-			case mp::user_info::state::SEL_GAME:
+			case mp::user_info::user_state::SEL_GAME:
 				name = colorize(name, {0, 255, 255});
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.active_game;
 				break;
-			case mp::user_info::state::GAME:
+			case mp::user_info::user_state::GAME:
 				name = colorize(name, font::BAD_COLOR);
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.other_games;
@@ -629,16 +629,16 @@ void mp_lobby::update_playerlist()
 		}
 
 		switch(user.relation) {
-			case mp::user_info::relation::ME:
+			case mp::user_info::user_relation::ME:
 				icon_ss << "-s";
 				break;
-			case mp::user_info::relation::NEUTRAL:
+			case mp::user_info::user_relation::NEUTRAL:
 				icon_ss << "-n";
 				break;
-			case mp::user_info::relation::FRIEND:
+			case mp::user_info::user_relation::FRIEND:
 				icon_ss << "-f";
 				break;
-			case mp::user_info::relation::IGNORED:
+			case mp::user_info::user_relation::IGNORED:
 				icon_ss << "-i";
 				break;
 			default:
