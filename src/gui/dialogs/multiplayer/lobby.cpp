@@ -311,7 +311,7 @@ void mp_lobby::update_gamelist_diff()
 	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
 		const mp::game_info& game = *lobby_info_.games()[i];
 
-		if(game.display_status == mp::game_info::display_status::NEW) {
+		if(game.status == mp::game_info::display_status::NEW) {
 			// call void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
 			// sender will be the game_info.scenario (std::string) and message will be game_info.name (std::string)
 			do_notify(mp::NOTIFY_GAME_CREATED, game.scenario, game.name);
@@ -356,14 +356,14 @@ void mp_lobby::update_gamelist_diff()
 				return;
 			}
 
-			if(game.display_status == mp::game_info::display_status::UPDATED) {
+			if(game.status == mp::game_info::display_status::UPDATED) {
 				LOG_LB << "Modifying game in listbox " << game.id << " (row " << list_i << ")\n";
 				grid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
 				adjust_game_row_contents(game, grid, false);
 				++list_i;
 				next_gamelist_id_at_row.push_back(game.id);
-			} else if(game.display_status == mp::game_info::display_status::DELETED) {
+			} else if(game.status == mp::game_info::display_status::DELETED) {
 				LOG_LB << "Deleting game from listbox " << game.id << " (row "
 					   << list_i << ")\n";
 				gamelistbox_->remove_row(list_i);

@@ -189,7 +189,7 @@ struct game_info
 		DELETED
 	};
 
-	display_status display_status;
+	display_status status;
 
 	enum class addon_req { SATISFIED, NEED_DOWNLOAD, CANNOT_SATISFY };
 
