@@ -229,7 +229,7 @@ void server_base::async_send_doc_queued(socket_ptr socket, simple_wml::document&
 		}
 
 		while(queues[socket].size() > 0) {
-			coro_send_doc(socket, queues[socket].front(), yield);
+			coro_send_doc(socket, *(queues[socket].front()), yield);
 			queues[socket].pop();
 		}
 		queues.erase(socket);

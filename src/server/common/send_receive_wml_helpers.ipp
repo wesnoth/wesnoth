@@ -42,11 +42,10 @@
 /// @param socket
 /// @param doc
 /// @param yield The function will suspend on write operation using this yield context
-inline void coro_send_doc(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, boost::asio::yield_context yield)
+inline void coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield)
 {
 	try {
-		//std::unique_ptr<simple_wml::document> doc_copy{ doc.clone() };
-		simple_wml::string_span s = doc->output_compressed();
+		simple_wml::string_span s = doc.output_compressed();
 
 		union DataSize
 		{
@@ -65,11 +64,6 @@ inline void coro_send_doc(socket_ptr socket, std::shared_ptr<simple_wml::documen
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 		throw;
 	}
-}
-
-inline void coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield)
-{
-	coro_send_doc(socket, std::shared_ptr<simple_wml::document>{ doc.clone() }, yield);
 }
 
 #ifdef HAVE_SENDFILE
