@@ -47,7 +47,7 @@ void hotkey_bind::sdl_event_callback(const SDL_Event &event)
 		new_binding_ = hotkey::create_hotkey(hotkey_id_, event);
 	}
 	if(new_binding_) {
-		get_window()->set_retval(retval::OK);
+		set_retval(retval::OK);
 	}
 }
 

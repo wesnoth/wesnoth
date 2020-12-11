@@ -491,7 +491,7 @@ void mp_join_game::network_handler()
 {
 	// If the game has already started, close the dialog immediately.
 	if(level_["started"].to_bool()) {
-		get_window()->set_retval(retval::OK);
+		set_retval(retval::OK);
 		return;
 	}
 
@@ -510,16 +510,16 @@ void mp_join_game::network_handler()
 	if(data["failed"].to_bool()) {
 		close_faction_select_dialog_if_open();
 
-		get_window()->set_retval(retval::CANCEL);
+		set_retval(retval::CANCEL);
 	} else if(data.child("start_game")) {
 		close_faction_select_dialog_if_open();
 
 		level_["started"] = true;
-		get_window()->set_retval(retval::OK);
+		set_retval(retval::OK);
 	} else if(data.child("leave_game")) {
 		close_faction_select_dialog_if_open();
 
-		get_window()->set_retval(retval::CANCEL);
+		set_retval(retval::CANCEL);
 	}
 
 	if(data.child("stop_updates")) {

@@ -511,7 +511,7 @@ void mp_staging::network_handler()
 	std::tie(quit_signal_received, std::ignore) = connect_engine_.process_network_data(data);
 
 	if(quit_signal_received) {
-		get_window()->set_retval(retval::CANCEL);
+		set_retval(retval::CANCEL);
 	}
 
 	// Update side leader displays

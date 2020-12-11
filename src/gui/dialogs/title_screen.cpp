@@ -424,7 +424,7 @@ void title_screen::pre_show(window& win)
 
 void title_screen::on_resize()
 {
-	get_window()->set_retval(REDRAW_BACKGROUND);
+	set_retval(REDRAW_BACKGROUND);
 }
 
 void title_screen::update_tip(const bool previous)
@@ -493,7 +493,7 @@ void title_screen::hotkey_callback_select_tests()
 	int choice = dlg.selected_index();
 	if(choice >= 0) {
 		game_.set_test(options[choice]);
-		get_window()->set_retval(LAUNCH_GAME);
+		set_retval(LAUNCH_GAME);
 	}
 }
 

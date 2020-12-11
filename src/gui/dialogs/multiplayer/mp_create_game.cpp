@@ -794,7 +794,7 @@ void mp_create_game::load_game_callback()
 		create_engine_.get_state().cancel_orders();
 	}
 
-	get_window()->set_retval(LOAD_GAME);
+	set_retval(LOAD_GAME);
 }
 
 std::vector<std::string> mp_create_game::get_active_mods()
