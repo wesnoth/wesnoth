@@ -43,7 +43,7 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 			return false;
 		}
 
-		std::string random_mode = "";
+		std::string random_mode = "", difficulty = "";
 
 		// No campaign selected from command line
 		if(jump_to_campaign.campaign_id_.empty()) {
@@ -60,9 +60,11 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 				return false;
 			}
 
-			if(dlg.get_deterministic()) {
+			if(dlg.get_rng_mode() != gui2::dialogs::campaign_selection::RNG_DEFAULT) {
 				random_mode = "deterministic";
 			}
+
+			difficulty = dlg.get_difficulty();
 		} else {
 			// Don't reset the campaign_id_ so we can know
 			// if we should quit the game or return to the main menu
@@ -83,7 +85,7 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 
 		state.classification().random_mode = random_mode;
 
-		const std::string selected_difficulty = create_eng.select_campaign_difficulty(jump_to_campaign.difficulty_);
+		const auto selected_difficulty = difficulty;
 
 		if(selected_difficulty == "FAIL") return false;
 		if(selected_difficulty == "CANCEL") {
