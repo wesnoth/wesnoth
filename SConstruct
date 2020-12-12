@@ -356,6 +356,7 @@ if env["prereqs"]:
         return have_libpthread & \
             conf.CheckBoost("system") & \
             conf.CheckBoost("asio", header_only = True) & \
+            conf.CheckBoost("context") & \
             conf.CheckBoost("coroutine")
 
     def have_sdl_other():
