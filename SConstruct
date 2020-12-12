@@ -429,6 +429,8 @@ if env["prereqs"]:
     if env["history"]:
         client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 
+    env.Append(CPPDEFINES = ["BOOST_COROUTINES_NO_DEPRECATION_WARNING"])
+
     if env["forum_user_handler"]:
         found_connector = False
         for sql_config in ["mariadb_config", "mysql_config"]:
