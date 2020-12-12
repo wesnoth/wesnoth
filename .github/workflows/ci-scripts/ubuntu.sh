@@ -12,11 +12,11 @@ echo "CFG: $CFG"
 echo "LTO: $LTO"
 echo "CACHE_DIR: $CACHE_DIR"
 
-echo FROM wesnoth/wesnoth:"$IMAGE"-"$BRANCH" > utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
-echo COPY ./ /home/wesnoth-travis/ >> utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
-echo WORKDIR /home/wesnoth-travis >> utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH"
+echo FROM wesnoth/wesnoth:"$IMAGE"-"$BRANCH" > utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH"
+echo COPY ./ /home/wesnoth-CI/ >> utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH"
+echo WORKDIR /home/wesnoth-CI >> utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH"
 
-docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f utils/dockerbuilds/travis/Dockerfile-travis-"$IMAGE"-"$BRANCH" .
+docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH" .
 
 docker run --cap-add=ALL --privileged \
     --volume ~/build-cache:"$CACHE_DIR" \

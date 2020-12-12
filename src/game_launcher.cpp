@@ -972,8 +972,7 @@ bool game_launcher::play_multiplayer_commandline()
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 
-	mp::start_local_game_commandline(
-	    game_config_manager::get()->game_config(), state_, cmdline_opts_);
+	mp::start_local_game_commandline(state_, cmdline_opts_);
 
 	return false;
 }

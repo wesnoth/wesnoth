@@ -19,14 +19,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 01:40-0300\n"
-"PO-Revision-Date: 2020-11-08 19:15+0100\n"
-"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
+"PO-Revision-Date: 2020-12-06 14:46+0100\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -379,10 +380,8 @@ msgstr "Kamínky"
 
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:386
-#, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "Sníh"
+msgstr "Sněhové zbytky"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:395
@@ -417,7 +416,7 @@ msgstr "Táborák"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:450
 msgid "Sconce"
-msgstr "Šikovnost"
+msgstr "Svícen"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:460
@@ -431,10 +430,8 @@ msgstr "Zapálený ohřívač"
 
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:490
-#, fuzzy
-#| msgid "Fence"
 msgid "Iron Fence"
-msgstr "Plot"
+msgstr "Železný plot"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:499
@@ -656,10 +653,8 @@ msgstr "Základní kamenná podlaha"
 
 #. [terrain_type]: id=ancient_stone_floor
 #: data/core/terrain.cfg:860
-#, fuzzy
-#| msgid "Stone Floor"
 msgid "Ancient Stone Floor"
-msgstr "Kamenná podlaha"
+msgstr "Starobylá kamenná podlaha"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -746,7 +741,7 @@ msgstr "Jeskynní stezka"
 #: data/core/terrain.cfg:1013 data/core/terrain.cfg:1014
 #: data/core/terrain.cfg:1025
 msgid "Mushroom Grove"
-msgstr "Houby, háj"
+msgstr "Houbový háj"
 
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:975
@@ -798,7 +793,7 @@ msgstr "Osvětlený houbový háj"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1038 data/core/terrain.cfg:1039
 msgid "Mycelium"
-msgstr ""
+msgstr "Mycelium"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
@@ -988,38 +983,28 @@ msgstr "Čistá kamenná zeď"
 
 #. [terrain_type]: id=wall_stone_ancient
 #: data/core/terrain.cfg:1346
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
-msgstr "Osvětlená kamenná zeď"
+msgstr "Starobylá kamenná zeď"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1356
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Catacombs Wall"
-msgstr "Jeskynní stěna"
+msgstr "Stěna katakomb"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1357
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Čistá kamenná zeď"
+msgstr "Kamenná stěna katakomb"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1367
-#, fuzzy
-#| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
-msgstr "Zarostlé kočičí hlavy"
+msgstr "Zarostlá stěna"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1368
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
-msgstr "Čistá kamenná zeď"
+msgstr "Zarostlá kamenná stěna"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1172,17 +1157,17 @@ msgstr "Skřetí vesnice"
 #. [terrain_type]: id=orcish_snow_village
 #: data/core/terrain.cfg:1656
 msgid "Snowy Orcish Village"
-msgstr "Skřetí zasněžená vesnice"
+msgstr "Zasněžená skřetí vesnice"
 
 #. [terrain_type]: id=elven_snow_village
 #: data/core/terrain.cfg:1671
 msgid "Snowy Elven Village"
-msgstr "Elfská zasněžená vesnice"
+msgstr "Zasněžená elfí vesnice"
 
 #. [terrain_type]: id=elven_village
 #: data/core/terrain.cfg:1684
 msgid "Elven Village"
-msgstr "Elfská vesnice"
+msgstr "Elfí vesnice"
 
 #. [terrain_type]: id=human_village
 #: data/core/terrain.cfg:1699
@@ -1302,14 +1287,14 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"<italic>text='Ponořené vesnice'</italic> jsou domovem Mořského lidu a Nág. "
+"<italic>text='Ponořené vesnice'</italic> jsou domovem mořského lidu a nág. "
 "Zatímco vodní tvorové se zde cítí doma, suchozemci mají s užíváním a obranou "
 "těchto vesnic problémy. I tak se zde nachází vše potřebné pro léčení zranění "
 "jakýchkoliv tvorů. Jednotka umístěná ve vesnici může být každé kolo buď "
-"uzdravena o osm životů nebo vyléčena z otravy jedem.\n"
+"uzdravena o 8 životů nebo vyléčena z otravy jedem.\n"
 "\n"
-"Mořský lid a nágy se v ponořených vesnicích těší obrannému bonusu 60%, "
-"zatímco pozemní jednotky obvykle nezískávají příliš velký bonus."
+"Mořský lid a nágy se v ponořených vesnicích těší obrannému bonusu 60 %, "
+"zatímco pozemní jednotky zde obvykle mají malý obranný bonus."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1981
@@ -1395,17 +1380,13 @@ msgstr "Ruiny elfského hradu"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2105
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Winter Elven Castle"
-msgstr "Elfský hrad"
+msgstr "Zimní elfí hrad"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2117
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
-msgstr "Trpasličí hrad"
+msgstr "Trpasličí podzemní hrad"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2129
@@ -1414,17 +1395,13 @@ msgstr "Trpasličí hrad"
 
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2141
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
-msgstr "Trpasličí hrad"
+msgstr "Ruiny trpasličího hradu"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2153
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
-msgstr "Trpasličí hrad"
+msgstr "Zimní trpasličí hrad"
 
 #. [terrain_type]: id=ruin
 #. [terrain_type]: id=sunkenruin
@@ -1463,7 +1440,7 @@ msgstr "Zřícený pouštní hrad"
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2227
 msgid "Troll Encampment"
-msgstr "Trolské ležení"
+msgstr "Trollí ležení"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2239
@@ -1548,26 +1525,22 @@ msgstr "Zasněžená lidská hradní tvrz"
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:2371
 msgid "Elven Castle Keep"
-msgstr "Elfská hradní tvrz"
+msgstr "Elfí hradní tvrz"
 
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2384
 msgid "Elven Keep Ruin"
-msgstr "Zřícená elfská tvrz"
+msgstr "Zřícená elfí tvrz"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2397
-#, fuzzy
-#| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
-msgstr "Zřícená elfská tvrz"
+msgstr "Zimní elfí tvrz"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2410
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
-msgstr "Trpasličí hradní tvrz"
+msgstr "Trpasličí podzemní tvrz"
 
 #. [terrain_type]: id=dwarven_keep2
 #: data/core/terrain.cfg:2423
@@ -1630,7 +1603,7 @@ msgstr "Tvrz vodního ležení"
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2540
 msgid "Troll Encampment Keep"
-msgstr "Tvrz trolského ležení"
+msgstr "Tvrz trollího ležení"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2553
@@ -1801,18 +1774,6 @@ msgstr "Houby"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2956
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1826,12 +1787,12 @@ msgid ""
 msgstr ""
 "<italic>text='Houbové háje'</italic> jsou rozlehlé podzemní porosty obřích "
 "hub, kterým se ve vlhké temnotě dobře daří. Většina jednotek má problémy s "
-"chůzi po měkkém povrchu nejmenších plodnic, ale na druhou stranu vzrostlejší "
-"kousky poskytují dobrý úkryt. Jízda ke své smůle nemá potřebnou volnost "
-"pohybu k boji. Nemrtví mají přirozenou zálibu v rozkladu a proto mají "
-"\"houbové háje v oblibě.\n"
+"chůzí po měkkém povrchu nejmenších plodnic, ale na druhou stranu jim "
+"vzrostlejší kousky poskytují dobrý úkryt. Jízda se zde hodně trápí, protože "
+"tu nemá potřebnou volnost pohybu k boji. Nemrtví mají přirozenou zálibu v "
+"rozkladu, a proto jsou v houbových hájích jako doma.\n"
 "\n"
-"Většina jednotek získává obranný bonus 50% nebo 60%, jízda pouze 20%."
+"Většina jednotek zde získává obranný bonus 50 % nebo 60 %, jízda pouze 20 %."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2967
@@ -2409,10 +2370,8 @@ msgstr "Verze:"
 
 #. [menu_button]: id=version_filter
 #: data/gui/window/addon_manager.cfg:133
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select the add-on version"
-msgstr "Smazat rozšíření ze serveru"
+msgstr "Vybrat verzi rozšíření"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
@@ -3829,10 +3788,8 @@ msgstr "Pozoruj hru"
 
 #. [button]: id=server_info
 #: data/gui/window/lobby_main.cfg:456 data/gui/window/lobby_main.cfg:609
-#, fuzzy
-#| msgid "Map Information"
 msgid "Information"
-msgstr "Informace o mapě"
+msgstr "Informace"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:472 data/gui/window/lobby_main.cfg:636
@@ -4031,10 +3988,8 @@ msgstr "V čekárně"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
-#, fuzzy
-#| msgid "Player joins:"
 msgid "Player joins"
-msgstr "Hráč se připojil:"
+msgstr "Hráč se připojil"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
@@ -4043,10 +3998,8 @@ msgstr "Když se hráč připojí do čekárny nebo do hry"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Player leaves:"
 msgid "Player leaves"
-msgstr "Hráč se odpojil:"
+msgstr "Hráč se odpojil"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
@@ -4061,17 +4014,13 @@ msgstr "Při obdržení zprávy šeptem"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:186
-#, fuzzy
-#| msgid "Whisper:"
 msgid "Whisper"
-msgstr "Šeptat:"
+msgstr "Šeptat"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
-#, fuzzy
-#| msgid "Friend message:"
 msgid "Friend message"
-msgstr "Zpráva od přítele:"
+msgstr "Zpráva od přítele"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
@@ -4080,10 +4029,8 @@ msgstr "Když obdržíte zprávu od přítele"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
-#, fuzzy
-#| msgid "Public message:"
 msgid "Public message"
-msgstr "Veřejná zpráva:"
+msgstr "Veřejná zpráva"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
@@ -4092,10 +4039,8 @@ msgstr "Když obdržíte veřejnou zpárvu"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
-#, fuzzy
-#| msgid "Server message:"
 msgid "Server message"
-msgstr "Zpráva od serveru:"
+msgstr "Zpráva od serveru"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
@@ -4116,10 +4061,8 @@ msgstr "Když je hra, kterou hostíte, připravená ke spuštění"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Game has begun:"
 msgid "Game has begun"
-msgstr "Hra začala:"
+msgstr "Hra začala"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
@@ -4140,10 +4083,8 @@ msgstr "Když začne další tah"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "Game created:"
 msgid "Game created"
-msgstr "Hra vytvořena:"
+msgstr "Hra vytvořena"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
@@ -4174,10 +4115,8 @@ msgstr "Přihlas se na oficiální herní server Wesnothu"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
-#, fuzzy
-#| msgid "Address"
 msgid "Address:"
-msgstr "Adresa"
+msgstr "Adresa:"
 
 #. [label]: id=address
 #: data/gui/window/mp_connect.cfg:176
@@ -4363,10 +4302,11 @@ msgstr "Vlastní možnosti"
 msgid "Game Settings"
 msgstr "Nastavení hry"
 
+# málo místa - musí to být hodně krátké
 #. [slider]: id=num_players
 #: data/gui/window/mp_create_game.cfg:702
 msgid "Any"
-msgstr "Jakýkoliv"
+msgstr "vše"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:835
@@ -4650,7 +4590,7 @@ msgstr "Jsem připraven"
 #. [text]
 #: data/gui/window/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr ""
+msgstr "Přeskočit stisknutím Esc"
 
 # Doslovný překlad „Klávesové zkratky“ nelze použít, protože se nevejde do vyhrazeného prostoru
 #. [widget]: id=label
@@ -5298,7 +5238,7 @@ msgstr "Statistiky"
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:549
 msgid "Damage"
-msgstr "Poškození"
+msgstr "Zranění"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:550
@@ -5310,6 +5250,11 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"Rozdíl mezi očekávaným a skutečným výsledkem v procentech.\n"
+"První číslo v závorce je očekávaná velikost uštědřenéno nebo utrženéno "
+"zranění.\n"
+"Součet (nebo rozdíl) dvou čísel v závorce je zranění skutečně uštědřené nebo "
+"utržené."
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:553
@@ -5319,7 +5264,7 @@ msgstr ""
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:568
 msgid "Hits"
-msgstr ""
+msgstr "Zásahy"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:571
@@ -5335,6 +5280,16 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
+"<i>Dosavadní</i> pravděpodobnost uštědření nebo utržení nanejvýš tolika "
+"zásahů v procentech.\n"
+"\n"
+"Intuitivně se jedná o míru toho, jak tuto stranu ovlivnila náhodnost.\n"
+"Hodnoty mezi 0 a 50 ukazují, že počet zásahů byl menší než očekávaný.\n"
+"Hodnoty mezi 50 a 100 ukazují, že počet zásahů byl větší než očekávaný.\n"
+"\n"
+"Zelené hodnoty naznačují, že se této straně dařilo lépe, než bylo "
+"očekáváno.\n"
+"Červené hodnoty naznačují, že se této straně dařilo hůře, než bylo očekáváno."
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -6633,10 +6588,8 @@ msgid "Side $side"
 msgstr "Strana $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:204
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Server:"
+msgstr "Přidat server"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
 msgid "Scenarios"
@@ -6645,11 +6598,11 @@ msgstr "Scénáře"
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
 msgid "Multiplayer Campaigns"
-msgstr "Scénáře pro více hráčů"
+msgstr "Tažení pro více hráčů"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
 msgid "Singleplayer Campaigns"
-msgstr "Scénáře pro jednoho hráče"
+msgstr "Tažení pro jednoho hráče"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
 msgid "Custom Maps"
@@ -6702,8 +6655,6 @@ msgstr "Vybraná hra nemá žádné strany!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:835
-#, fuzzy
-#| msgid "The selected game can not be created."
 msgid "The selected game cannot be created."
 msgstr "Vybraná hra nemůže být vytvořena."
 
@@ -6825,11 +6776,11 @@ msgstr "Toto kolo"
 
 #: src/gui/dialogs/statistics_dialog.cpp:217
 msgid "Actual hit rates, by chance to hit:"
-msgstr ""
+msgstr "Skutečná míra zásahů podle šance na zásah:"
 
 #: src/gui/dialogs/statistics_dialog.cpp:219
 msgid "(no attacks have taken place yet)"
-msgstr ""
+msgstr "(ještě nedošlo k žádným útokům)"
 
 #: src/gui/dialogs/statistics_dialog.cpp:328
 msgid ""
@@ -6840,6 +6791,10 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"Rozdíl mezi očekávaným a skutečným výsledkem v procentech.\n"
+"První číslo v závorce je očekávaný počet uštědřených nebo utržených zásahů.\n"
+"Součet (nebo rozdíl) dvou čísel v závorce je množství zásahů skutečně "
+"uštědřených nebo utržených."
 
 #: src/gui/dialogs/statistics_dialog.cpp:372
 msgid "Recruits"
@@ -6847,7 +6802,7 @@ msgstr "Naverbováno"
 
 #: src/gui/dialogs/statistics_dialog.cpp:373
 msgid "Recalls"
-msgstr "Přivoláno"
+msgstr "Povoláno"
 
 #: src/gui/dialogs/statistics_dialog.cpp:374
 msgid "Advancements"

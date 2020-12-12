@@ -6,16 +6,21 @@
  ### Add-ons client
    * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
  ### Campaigns
+   * Eastern Invasion:
+     * S03: fix the initial keep being blocked at the start
  ### Multiplayer
    * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
  ### Packaging
   * SDL_Image 2.0.2 or later is now required (was 2.0.0).
  ### Terrain
  ### Translations
-   * Updated translations: British English, Czech, Polish, Portuguese (Brazil), Russian
+   * Updated translations: British English, Czech, Italian, Polish, Portuguese (Brazil),
+     Russian
  ### Units
    * Undead variations for Falcon, Giant Rat, serpents, and Gorer/Tusklet
  ### User interface
+   * Text labels now use the hyperlink mouse cursor while hovering links.
+   * Link awareness is now configured on a per-instance basis for labels/scroll labels instead of globally in their definition.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed several possible crashes in wmllint

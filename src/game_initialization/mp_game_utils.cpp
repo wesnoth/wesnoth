@@ -19,8 +19,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "saved_game.hpp"
-#include "game_version.hpp"
-#include "wesnothd_connection_error.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -47,7 +45,6 @@ static void add_multiplayer_classification(config& multiplayer, saved_game& stat
 	multiplayer["mp_campaign_name"] = state.classification().campaign_name;
 	multiplayer["mp_era"] = state.classification().era_id;
 	multiplayer["active_mods"] = utils::join(state.classification().active_mods, ",");
-
 }
 
 config initial_level_config(saved_game& state)

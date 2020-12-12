@@ -59,7 +59,7 @@ void lobby_player_info::pre_show(window& window)
 	relation_ = find_widget<label>(&window, "relation_info", false, true);
 
 	button& whisper = find_widget<button>(&window, "start_whisper", false);
-	if(info_.relation != mp::user_info::relation::ME) {
+	if(info_.relation != mp::user_info::user_relation::ME) {
 		connect_signal_mouse_left_click(whisper,
 			std::bind(&lobby_player_info::start_whisper_button_callback, this));
 	} else {
@@ -138,22 +138,22 @@ void lobby_player_info::update_relation()
 	add_to_ignores_->set_active(false);
 	remove_from_list_->set_active(false);
 	switch(info_.relation) {
-		case mp::user_info::relation::FRIEND:
+		case mp::user_info::user_relation::FRIEND:
 			relation_->set_label(_("On friends list"));
 			add_to_ignores_->set_active(true);
 			remove_from_list_->set_active(true);
 			break;
-		case mp::user_info::relation::IGNORED:
+		case mp::user_info::user_relation::IGNORED:
 			relation_->set_label(_("On ignores list"));
 			add_to_friends_->set_active(true);
 			remove_from_list_->set_active(true);
 			break;
-		case mp::user_info::relation::NEUTRAL:
+		case mp::user_info::user_relation::NEUTRAL:
 			relation_->set_label(_("Neither a friend nor ignored"));
 			add_to_friends_->set_active(true);
 			add_to_ignores_->set_active(true);
 			break;
-		case mp::user_info::relation::ME:
+		case mp::user_info::user_relation::ME:
 			relation_->set_label(_("You"));
 			break;
 		default:
@@ -164,21 +164,21 @@ void lobby_player_info::update_relation()
 void lobby_player_info::add_to_friends_button_callback()
 {
 	preferences::add_acquaintance(info_.name, "friend", "");
-	info_.relation = mp::user_info::relation::FRIEND;
+	info_.relation = mp::user_info::user_relation::FRIEND;
 	update_relation();
 }
 
 void lobby_player_info::add_to_ignores_button_callback()
 {
 	preferences::add_acquaintance(info_.name, "ignore", "");
-	info_.relation = mp::user_info::relation::IGNORED;
+	info_.relation = mp::user_info::user_relation::IGNORED;
 	update_relation();
 }
 
 void lobby_player_info::remove_from_list_button_callback()
 {
 	preferences::remove_acquaintance(info_.name);
-	info_.relation = mp::user_info::relation::NEUTRAL;
+	info_.relation = mp::user_info::user_relation::NEUTRAL;
 	update_relation();
 }
 

@@ -16,6 +16,8 @@
 
 #include "addon/manager.hpp" // for installed_addons
 #include "build_info.hpp"
+#include "commandline_options.hpp"
+#include "connect_engine.hpp"
 #include "events.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
@@ -29,7 +31,6 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
-#include "gui/widgets/settings.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "map_settings.hpp"
@@ -38,6 +39,7 @@
 #include "preferences/game.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
+#include "saved_game.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "utils/parse_network_address.hpp"
@@ -514,8 +516,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 			return;
 		}
 
-		dlg.show();
-		dlg_ok = dlg.get_retval() == gui2::retval::OK;
+		dlg_ok = dlg.show();
 	}
 
 	if(dlg_ok) {
@@ -543,11 +544,8 @@ void mp_manager::enter_staging_mode()
 	bool dlg_ok = false;
 	{
 		ng::connect_engine connect_engine(state, true, campaign_info.get());
-
-		gui2::dialogs::mp_staging dlg(connect_engine, connection.get());
-		dlg.show();
-		dlg_ok = dlg.get_retval() == gui2::retval::OK;
-	} // end connect_engine, dlg scope
+		dlg_ok = gui2::dialogs::mp_staging::execute(connect_engine, connection.get());
+	} // end connect_engine
 
 	if(dlg_ok) {
 		campaign_controller controller(state, game_config_manager::get()->terrain_types());
@@ -564,19 +562,7 @@ void mp_manager::enter_create_mode()
 {
 	DBG_MP << "entering create mode" << std::endl;
 
-	bool dlg_ok = false;
-	{
-		bool local_mode = connection == nullptr;
-
-		gui2::dialogs::mp_create_game dlg(*game_config, state, local_mode);
-		dlg.show();
-
-		// The Create Game dialog also has a LOAD_GAME retval besides OK.
-		// Do a did-not-cancel check here to catch that
-		dlg_ok = dlg.get_retval() != gui2::retval::CANCEL;
-	}
-
-	if(dlg_ok) {
+	if(gui2::dialogs::mp_create_game::execute(*game_config, state, connection == nullptr)) {
 		enter_staging_mode();
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
@@ -699,9 +685,11 @@ void start_local_game(saved_game& state)
 	mp_manager("", state).enter_create_mode();
 }
 
-void start_local_game_commandline(const game_config_view& game_config, saved_game& state, const commandline_options& cmdline_opts)
+void start_local_game_commandline(saved_game& state, const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting local MP game from commandline" << std::endl;
+
+	const game_config_view& game_config = game_config_manager::get()->game_config();
 
 	// The setup is done equivalently to lobby MP games using as much of existing
 	// code as possible.  This means that some things are set up that are not

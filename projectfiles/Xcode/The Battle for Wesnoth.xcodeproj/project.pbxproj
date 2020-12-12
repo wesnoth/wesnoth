@@ -165,6 +165,8 @@
 		46BED4D3205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
+		46BFFC79258256C700643800 /* license_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC77258256C700643800 /* license_prompt.cpp */; };
+		46BFFC7E258257C800643800 /* license_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC77258256C700643800 /* license_prompt.cpp */; };
 		46D6014E255AFA6000E072F0 /* auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014C255AFA6000E072F0 /* auth.cpp */; };
 		46D6014F255AFA6000E072F0 /* auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014C255AFA6000E072F0 /* auth.cpp */; };
 		46D60150255AFA6000E072F0 /* options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014D255AFA6000E072F0 /* options.cpp */; };
@@ -1553,6 +1555,8 @@
 		46BDBBE9217C6F6200D2820C /* lua_terrainmap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_terrainmap.hpp; sourceTree = "<group>"; };
 		46BED4D0205060EA00842FA5 /* crypt_blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt_blowfish.h; sourceTree = "<group>"; };
 		46BED4D1205060EA00842FA5 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
+		46BFFC77258256C700643800 /* license_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = license_prompt.cpp; sourceTree = "<group>"; };
+		46BFFC78258256C700643800 /* license_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = license_prompt.hpp; sourceTree = "<group>"; };
 		46D6014A255AFA5F00E072F0 /* auth.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = auth.hpp; sourceTree = "<group>"; };
 		46D6014B255AFA5F00E072F0 /* options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = options.hpp; sourceTree = "<group>"; };
 		46D6014C255AFA6000E072F0 /* auth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = auth.cpp; sourceTree = "<group>"; };
@@ -3601,6 +3605,8 @@
 				46F92C9D2174F6A300602C1C /* connect.hpp */,
 				46F92C9C2174F6A300602C1C /* install_dependencies.cpp */,
 				46F92CA22174F6A300602C1C /* install_dependencies.hpp */,
+				46BFFC77258256C700643800 /* license_prompt.cpp */,
+				46BFFC78258256C700643800 /* license_prompt.hpp */,
 				46F92C9E2174F6A300602C1C /* manager.cpp */,
 				46F92CA02174F6A300602C1C /* manager.hpp */,
 				46F92C9B2174F6A300602C1C /* uninstall_list.cpp */,
@@ -5023,6 +5029,7 @@
 				6295C3B5150FC95C0077D8C5 /* action.cpp in Sources */,
 				46F92D972174F6A300602C1C /* handler.cpp in Sources */,
 				B54AC69C0FEA9E8F006F6FBD /* actions.cpp in Sources */,
+				46BFFC79258256C700643800 /* license_prompt.cpp in Sources */,
 				46F92E652174F6A400602C1C /* tree_view.cpp in Sources */,
 				46685C9B219D518B0009CFFE /* unicode.cpp in Sources */,
 				B54AC6D80FEA9EB5006F6FBD /* ai.cpp in Sources */,
@@ -5770,6 +5777,7 @@
 				91E356961CACC7CE00774252 /* heal.cpp in Sources */,
 				91E356971CACC7CE00774252 /* move.cpp in Sources */,
 				46F92E862174F6A400602C1C /* debug.cpp in Sources */,
+				46BFFC7E258257C800643800 /* license_prompt.cpp in Sources */,
 				91E356981CACC7CE00774252 /* shroud_clearing_action.cpp in Sources */,
 				91E356991CACC7CE00774252 /* undo.cpp in Sources */,
 				91E3569A1CACC7CE00774252 /* undo_action.cpp in Sources */,

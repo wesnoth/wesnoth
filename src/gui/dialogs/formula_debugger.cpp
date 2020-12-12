@@ -165,25 +165,25 @@ void formula_debugger::pre_show(window& window)
 void formula_debugger::callback_continue_button()
 {
 	fdb_.add_breakpoint_continue_to_end();
-	get_window()->set_retval(retval::OK);
+	set_retval(retval::OK);
 }
 
 void formula_debugger::callback_next_button()
 {
 	fdb_.add_breakpoint_next();
-	get_window()->set_retval(retval::OK);
+	set_retval(retval::OK);
 }
 
 void formula_debugger::callback_step_button()
 {
 	fdb_.add_breakpoint_step_into();
-	get_window()->set_retval(retval::OK);
+	set_retval(retval::OK);
 }
 
 void formula_debugger::callback_stepout_button()
 {
 	fdb_.add_breakpoint_step_out();
-	get_window()->set_retval(retval::OK);
+	set_retval(retval::OK);
 }
 
 } // namespace dialogs

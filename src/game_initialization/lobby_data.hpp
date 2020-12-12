@@ -109,14 +109,14 @@ struct user_info
 
 	void update_relation();
 
-	enum class relation {
+	enum class user_relation {
 		ME,
 		FRIEND,
 		NEUTRAL,
 		IGNORED
 	};
 
-	enum class state {
+	enum class user_state {
 		LOBBY,
 		SEL_ROOM,
 		GAME,
@@ -127,8 +127,8 @@ struct user_info
 
 	std::string name;
 	int game_id;
-	relation relation;
-	state state;
+	user_relation relation;
+	user_state state;
 	bool registered;
 	bool observing;
 	bool moderator;
@@ -182,14 +182,14 @@ struct game_info
 	bool has_friends;
 	bool has_ignored;
 
-	enum class display_status {
+	enum class disp_status {
 		CLEAN,
 		NEW,
 		UPDATED,
 		DELETED
 	};
 
-	display_status display_status;
+	disp_status display_status;
 
 	enum class addon_req { SATISFIED, NEED_DOWNLOAD, CANNOT_SATISFY };
 

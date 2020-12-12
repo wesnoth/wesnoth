@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 04:40 UTC\n"
-"PO-Revision-Date: 2020-11-15 16:32+0100\n"
+"PO-Revision-Date: 2020-12-08 23:41+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -62,8 +62,8 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
-"Věk obsahující jednotky na vyšších úrovních: velitele na úrovni tři schopné "
-"verbovat jednotky na úrovních jedna a dva. Sestává ze šesti frakcí. "
+"Věk obsahující jednotky na vyšších úrovních: velitele na třetí úrovni "
+"schopné verbovat jednotky na první i druhé úrovni. Sestává ze šesti frakcí. "
 "Nepokládá se za vyrovnaný."
 
 #. [era]: id=era_dunefolk
@@ -132,7 +132,7 @@ msgstr "Celkový součet: <b>%d</b>"
 #. [lua]: f
 #: data/multiplayer/eras.lua:93
 msgid "Sides %s and %d are tied."
-msgstr ""
+msgstr "Strany %s a %d jsou vyrovnané."
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:95
@@ -324,17 +324,17 @@ msgid ""
 msgstr ""
 "<bold>text='Nemrtví'</bold> jsou frakcí <ref>text='nemrtvých' dst='.."
 "race_undead'</ref> stvoření a <ref>text='lidí' dst='..race_human'</ref>, "
-"kteří propadli temným uměním a nemrtvé obvykle doprovází. Často jsou tito "
-"„temní učni“ právě silou, která ze jednotek nemrtvých způsobí nejvíce škod, "
-"ale mají jednu velkou slabost — praktikováním zakázané, temné magie přišli o "
-"všechnu fyzickou sílu a proto nejsou schopni útoku na blízko. Nemrtví jsou "
-"velice agresivní a ve <ref>text='Standardní éře' dst='..era_era_default'</"
-"ref> jsou nejobávanější frakcí když padne tma."
+"kteří propadli temným uměním a nemrtvé obvykle doprovází. Často jsou v rámci "
+"jednotek nemrtvých tito „temní učedníci“ právě tou silou, která způsobí "
+"nejvíce škod. Mají ale jednu velkou slabost – praktikováním zakázané, temné "
+"magie přišli o všechnu fyzickou sílu, a proto nejsou schopni útoku na "
+"blízko. Nemrtví jsou velice agresivní a ve <ref>text='Standardní éře' dst='.."
+"era_era_default'</ref> jsou během noci nejobávanější frakcí."
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
 msgid "2p — Aethermaw"
-msgstr "2p — Tlama Éteru"
+msgstr "2hr – Tlama Éteru"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -360,7 +360,7 @@ msgstr ""
 "realit a časů. Jak její vláda nad Tlamou roste, jednou snad Sulla dokáže "
 "překonat i to, co ji sem váže. Do té doby se bude bavit pořádáním bitev mezi "
 "tvory, kteří měli to neštěstí, že sem byli vtaženi.\n"
-"Navrhl Doc Patterson."
+"Navrhl Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -457,6 +457,8 @@ msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr ""
+"Jednotky se nemohou přesunout na políčka, na kterých je kamenná mohyla. "
+"Mohou však na takových políčcích být verbovány a přesouvat se z nich."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:298
@@ -464,6 +466,8 @@ msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
+"Na začátku čtvrtého kola začne velká magyně Sulla spojovat obě poloviny "
+"bitevního pole. Tento proces bude dokončen na konci šestého kola."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:311
@@ -474,7 +478,7 @@ msgstr "Tlama éteru zavrčela."
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
 msgid "2p — Arcanclave Citadel"
-msgstr "2p — Citadela Arcanclave"
+msgstr "2hr – Citadela Arcanclave"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
@@ -513,7 +517,7 @@ msgstr ""
 "od elementála. Doteď kolují povídačky o mnohých mocných předmětech "
 "a artefaktech, ukrytých či ztracených někde mezi žulovými a obsidiánovými "
 "zdmi citadely ještě za dob Neohroženého.\n"
-"Navrhl Doc Patterson."
+"Navrhl Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -583,7 +587,7 @@ msgstr "Zápaďané"
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:37
 msgid "2p — Caves of the Basilisk"
-msgstr "2p — Baziliškova sluje"
+msgstr "2hr – Baziliškovy sluje"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:39
@@ -593,8 +597,8 @@ msgid ""
 "savage power."
 msgstr ""
 "Tyto jeskyně byly kdysi doupětem Chak'kso Ney'ykse, legendárního obřího "
-"baziliška. Okolí naplňují zkamenělé formy jeho obětí a tvoří tak monument "
-"jeho síle."
+"baziliška. Zkamenělé formy obětí tu zůstavají jako pomníky jeho vražedné "
+"síly."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
@@ -924,23 +928,6 @@ msgstr "Bramwythl"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:196
-#, fuzzy
-#| msgid ""
-#| "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
-#| "other Woses. More than any other Wose, he enjoyed simply standing alone "
-#| "in the sun, arms upraised, admiring the beauty of the empty sky. Once, "
-#| "even, he confided in a fellow that his greatest wish was to be able to "
-#| "bask forever in the sun’s glory.\n"
-#| "However, not long after, the local wose community heard of the approach "
-#| "of a horrible monster, powerful enough to easily destroy the few woses "
-#| "that lived in the area. They quickly moved off (quickly for Woses, "
-#| "anyway), but Bramwythl was left behind — in their haste, no one had "
-#| "remembered to find him and tell him of the danger.\n"
-#| "He was taken quite unawares by the Basilisk, and turned to stone before "
-#| "he even recognized the beast. His petrified form still stands there "
-#| "today, warmed by the sun’s rays, under an open sky. His greatest wish has "
-#| "been granted.\n"
-#| "(inscribed by Elvish Pillager)"
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other woses. More than any other wose, he enjoyed simply standing alone in "
@@ -961,19 +948,19 @@ msgid ""
 "(inscribed by Elvish Pillager)"
 msgstr ""
 "Stromový muž Bramwythl byl považován za pomalého, nemluvného chlapíka, a to "
-"i dokonce ostatními soukmenovci. Více než kterýkoli jiný stromový muž, "
-"prostě jen tak stál sám na slunci s pozvednutými pažemi, obdivujíce se kráse "
-"prázdné oblohy. Jednou se dokonce svěřil příteli, že jeho největším přáním "
-"je těšit se navěky ze sluneční slávy.\n"
-"Nicméně, nedlouho poté, místní komunita stromových mužů zaslechla, že se "
-"blíží strašná příšera, mocná dost na to, aby snadno zahubila těch několik "
-"stromových mužů, kteří žili v dané oblasti. Rychle odjeli (rychle na své "
-"poměry, samozřejmě), ale Bramwythl zůstal pozadu – v tom spěchu si nikdo "
-"nevzpomněl, že by ho měli najít a říct mu o nebezpečí.\n"
-"Byl zcela nevarován zajat Baziliškem, a proměněn v kámen předtím, než si "
-"vůbec stačil toho netvora všimnout. Jeho zkamenělá podoba zde stále stojí, "
-"zahřívána slunečními paprsky, pod odkrytým nebem. Jeho největší přání bylo "
-"vyslyšeno.\n"
+"dokonce i svými ostatními soukmenovci. Prostě jen tak stál sám na slunci, "
+"strnuleji než kterýkoli jiný stromový muž, s pozvednutými pažemi, obdivuje "
+"se kráse jasné oblohy. Jednou se dokonce svěřil příteli, že jeho největším "
+"přáním je těšit se navěky ze sluneční slávy.\n"
+"Nicméně, nedlouho poté se místní komunita stromových mužů doslechla, že se "
+"blíží strašná příšera. Dostatečně mocná na to, aby snadno zahubila těch "
+"několik stromových mužů, kteří v dané oblasti žili. Všichni rychle uprchli "
+"(rychle na své poměry, samozřejmě), ale Bramwythl zůstal pozadu. V tom "
+"spěchu si nikdo nevzpomněl, že by ho měl najít a říct mu o nebezpečí.\n"
+"Zcela nevarován, byl zaskočen Baziliškem a proměněn v kámen předtím, než si "
+"vůbec stačil přítomnost toho netvora uvědomit. Jeho zkamenělá podoba zde "
+"stále stojí, zahřívána slunečními paprsky, pod jasným nebem. Jeho největší "
+"přání bylo vyslyšeno.\n"
 "(sepsal Elvish Pillager)"
 
 #. [side]
@@ -987,8 +974,8 @@ msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another."
 msgstr ""
-"Generál Talael Ryndoc sem přišel, aby si dal souboj s Velkým maršálem "
-"Aetekem Corrynem, ale ti dva se nikdy nenašli. "
+"Generál Talael Ryndoc sem přišel, aby se utkal v souboji s velkým maršálem "
+"Aetekem Corrynem. Ale ti dva se nikdy nenašli."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:211
@@ -1005,12 +992,12 @@ msgid ""
 "\n"
 "Perhaps he should not have shouted quite so loudly..."
 msgstr ""
-"Poslední slova Velkého maršála Aeteka Corryna: „Talaeli Ryndocu! Nehodlám tě "
-"tu hledat věčně! Půjdu zpět do Haldrikových síní a dám dvoru vědět, že ses "
-"jako zbabělec vyhnul souboji! Zařídím, aby to ponížení bylo horší než smrt, "
+"Poslední slova velkého maršála Aeteka Corryna byla: „Talaeli Ryndocu! "
+"Nehodlám tě tu hledat věčně! Půjdu zpět do Haldrikových síní a dám dvoru "
+"vědět, že ses jako zbabělec vyhnul souboji! To ponížení bude horší než smrt, "
 "která by tě čekala z mých rukou!“\n"
 "\n"
-"Asi neměl křičet tak nahlas... "
+"Asi neměl křičet tak nahlas..."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:220
@@ -1032,14 +1019,14 @@ msgid ""
 "enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
-"Tento slavný válečník, známý mezi Nagy jako Rilhon, slyšel vyprávění o "
-"bájném pokladu, který se ztratil v těchto vodních jeskyních – kopí, jehož "
-"hrot, jak znělo vyprávění, byl vytvarován ze zubu Chak´kso Ney´ykse, Dávného "
-"Baziliška zabitého před drahnou dobou Elfským hrdinou, Elorauduilem. Podle "
-"legendy, zbraň spočívala někde na dně tohoto jezera (Ruaskkolinova jezera, "
-"pojmenovaného po dobře známém Vodním Hadovi, který si z jezera udělal svůj "
+"Tento slavný válečník, mezi nágami známý jako Rilhon, slyšel vyprávění o "
+"bájném pokladu, který se ztratil v těchto vodních jeskyních. Šlo o kopí, "
+"jehož hrot byl dle zkazek vytvarován ze zubu Chak´kso Ney´ykse, pověstného "
+"Baziliška, zabitého před drahnou dobou elfím hrdinou Elorauduilem. Podle "
+"legendy zbraň spočívala někde na dně tohoto Ruaskkolinova jezera "
+"(pojmenovaného po dobře známém mořském hadovi, který si z jezera udělal svůj "
 "domov). Když se připravoval na bitvu s Hadem, setkal se Rilhon se dvěma "
-"velkými překvapeními. Prvním byla zkamenělá podoba Hada Ruaskkolina. Tím "
+"velkými překvapeními. Prvním byla zkamenělá podoba hada Ruaskkolina. Tím "
 "druhým byl až příliš živý Chak´kso Ney´yks, který byl, kupodivu, vybaven "
 "všemi svými zuby.\n"
 "(sepsal Paterson)"
@@ -1082,7 +1069,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:7
 msgid "2p — Clearing Gushes"
-msgstr "2p — Očistné přívaly"
+msgstr "2hr – Očistné přívaly"
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:8
@@ -1097,16 +1084,16 @@ msgid ""
 msgstr ""
 "Na březích Velké řeky se rozkládají jedny z nejúrodnějších zemí celého "
 "známého světa. Během jara a léta přináší řeka po celé své délce povodně, "
-"které obohacují půdu a zajišťují každý podzim bohatou úrodu. Království "
-"Wesnoth přeměnilo tuto zemi na zdroj svého bohatství a prosperity, což z ní "
-"dělá cíl nesčetných nájezdů a útoků. Důsledná disciplína a organizace armád "
-"Wesnothu není poháněna ničím menším než neustálou potřebou hlídat a bránit "
-"tyto prosperující země."
+"které obohacují půdu a zajišťují každý podzim bohatou úrodu. Wesnothské "
+"království přeměnilo tuto zemi na zdroj svého bohatství a prosperity, což z "
+"ní dělá cíl nesčetných nájezdů a útoků. Důsledná disciplína a organizace "
+"armád Wesnothu není poháněna ničím menším než neustálou potřebou hlídat a "
+"bránit tyto prosperující země."
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
 msgid "2p — Cynsaun Battlefield"
-msgstr "2p — Cynsaunské bitevní pole"
+msgstr "2hr – Cynsaunské bitevní pole"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:8
@@ -1120,7 +1107,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p — Dark Forecast (Survival)"
-msgstr "2p — Temná předpověď (přežití)"
+msgstr "2hr – Temná předpověď (přežití)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
@@ -1242,7 +1229,7 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
-"Proslýchá se, že obyvatele tvoří zvláštní spojenectví lidí a nestvůr; náš "
+"Proslýchá se, že obyvatele tvoří zvláštní spojenectví lidí a nestvůr. Náš "
 "zábor nezůstane bez odpovědi. Musíme se připravit na překvapení, které nám "
 "tato země přichystá."
 
@@ -1334,7 +1321,7 @@ msgstr "Sněhová vánice"
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p — Den of Onis"
-msgstr "2p — Oniovo doupě"
+msgstr "2hr – Oniovo doupě"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:7
@@ -1357,7 +1344,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
 msgid "2p — Elensefar Courtyard"
-msgstr "2p — Elensefarské nádvoří"
+msgstr "2hr – Elensefarské nádvoří"
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
@@ -1376,7 +1363,7 @@ msgstr "Podzemí"
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:7
 msgid "2p — Fallenstar Lake"
-msgstr "2p — Jezero Padlé hvězdy"
+msgstr "2hr – Jezero Padlé hvězdy"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:8
@@ -1390,7 +1377,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 msgid "2p — Hamlets"
-msgstr "2p — Vesnice"
+msgstr "2hr – Osady"
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:7
@@ -1399,12 +1386,12 @@ msgid ""
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
 "Válčení proměnilo prosté farmy a vesnice tohoto jinak poklidného regionu v "
-"rozdělená válečná pole. Navrhl Doc Patterson."
+"rozdělená válečná pole. Navrhl Doc Paterson."
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:7
 msgid "2p — Hellhole"
-msgstr "2p — Pekelná díra"
+msgstr "2hr – Pekelná díra"
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:8
@@ -1428,7 +1415,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
 msgid "2p — Hornshark Island"
-msgstr "2p — Ostrov Hornshark"
+msgstr "2hr – Ostrov Hornshark"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:28
@@ -1436,8 +1423,9 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
-"Aby přežili na tomto nejpozoruhodnějším z ostrovů, musí uzavřít zvláštní "
-"spojenectví s místními domorodci. Navrženo Doc Pattersonem."
+"Aby přežili na tomto nejpozoruhodnějším z ostrovů, musí příchozí uzavřít "
+"zvláštní spojenectví s místními domorodci.\n"
+"Navrženo Doc Patersonem."
 
 #. [unit]: type=Young Ogre
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:91
@@ -1540,7 +1528,7 @@ msgstr "Rukhos, vyvolený Smrti"
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p — Howling Ghost Badlands"
-msgstr "2p — Pustiny kvílivých duchů"
+msgstr "2hr – Pustiny kvílivých duchů"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
@@ -1554,7 +1542,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
 msgid "2p — Ruined Passage"
-msgstr "2p — Zničená pasáž"
+msgstr "2hr – Zničená pasáž"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:8
@@ -1579,7 +1567,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:7
 msgid "2p — Ruphus Isle"
-msgstr "2p — Rufusův ostrov"
+msgstr "2hr – Rufusův ostrov"
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:8
@@ -1593,7 +1581,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p — Sablestone Delta"
-msgstr "2p — Ústí řeky Sablestone"
+msgstr "2hr – Ústí řeky Sablestone"
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
@@ -1607,7 +1595,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p — Silverhead Crossing"
-msgstr "2p — Křižovatka Silverhead"
+msgstr "2hr – Křižovatka Silverhead"
 
 # "mnohotvárné": když čtu "měnící se", chápu to jako že mapa s v průběhu hry mění
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
@@ -1648,7 +1636,7 @@ msgstr "Toto je socha z kamene."
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:43
 msgid "2p — Sulla’s Ruins"
-msgstr "2p — Sulliny ruiny"
+msgstr "2hr – Sulliny ruiny"
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:44
@@ -1656,8 +1644,8 @@ msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
-"Z kdysi mocného království zde zůstaly pouze ruiny, voda a led bičované "
-"mořem a roztrhané zimními živly."
+"Z kdysi mocného království zůstaly v této krajině vody a ledu pouze ruiny, "
+"bičované mořem a trhané zimními živly."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:98
@@ -1685,15 +1673,16 @@ msgstr "Socha Lhun-dupa"
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
 msgstr "Kamenná podobizna Lhun-dupa, Sullina služebníka."
 
+# Méně koktavé.
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:107
 msgid "Statue of Ri-nzen"
-msgstr "Socha Ri-nzena"
+msgstr "Socha Rin-zena"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:109
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr "Kamenná podobizna Ri-nzena, Sullina služebníka."
+msgstr "Kamenná podobizna Rin-zena, Sullina služebníka."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:111
@@ -1705,22 +1694,21 @@ msgstr "Socha Ten-zina"
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
 msgstr "Kamenná podobizna Ten-zina, Sullina služebníka."
 
+# Méně koktavé.
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:115
 msgid "Statue of Lo-bsang"
-msgstr "Socha Lo-bsanga"
+msgstr "Socha Lob-sanga"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:117
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr "Kamenná podobizna Lo-bsanga, Sullina služebníka."
+msgstr "Kamenná podobizna Lob-sanga, Sullina služebníka."
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:7
-#, fuzzy
-#| msgid "2p — Sablestone Delta"
 msgid "2p — Swamp of Dread"
-msgstr "2p — Ústí řeky Sablestone"
+msgstr "2hr – Močály děsu"
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:8
@@ -1736,11 +1724,23 @@ msgid ""
 "great strategic value means it is fiercely contested by all with military "
 "aims in the Great Continent's heart."
 msgstr ""
+"Severně od Velké řeky leží Močály děsu, obrovská nehostinná blátivá oblast "
+"prokletá odpornou magií. Protíná je jen několik bezpečných cest. Mimo tyto "
+"cesty je v močálech téměř zaručeno uvíznutí a smrt. Jsou však poměrně často "
+"vyhledávanou oblastí, protože tvoří výhodnou spojnici mezi jižními rovinami "
+"a drsným severem. Neohrožení průzkumníci tu překonávají nebezpečná "
+"rašeliniště při hledání míst k založení výnosných obchodních stanic. "
+"Největší z těchto cest, vedoucí skrz Arethův průsmyk, representuje mnohokrát "
+"v různých sporech zmiňovaný a dobře známý přechod, který se používá již od "
+"prvních starověkých válek mezi elfy a trpaslíky. Navzdory chudé půdě a "
+"omezeným zdrojům má tato oblast velkou strategickou hodnotu, což znamená, že "
+"je v hledáčku všech, co operují s vojenskými úmysly v srdci Velkého "
+"kontinentu."
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
 msgid "2p — The Freelands"
-msgstr "2p — Země nikoho"
+msgstr "2hr – Země nikoho"
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:8
@@ -1760,10 +1760,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:7
-#, fuzzy
-#| msgid "2p — Den of Onis"
 msgid "2p — The Walls of Pyrennis"
-msgstr "2p — Oniovo doupě"
+msgstr "2hr – Zdi Pyrennisu"
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:8
@@ -1779,11 +1777,21 @@ msgid ""
 "Pyrennis have proved astoundingly indestructible both to time and war — that "
 "is, what scattered segments of it were actually completed."
 msgstr ""
+"Když začaly skřetí hordy houfně přicházet na Velký kontinent, pustil se "
+"jeden neohrožený vládce zvaný Železný král Olgor do prvního sjednocování "
+"hašteřivých skřetích klanů. Snažil se podmanit pod nadvládu skřetů celý "
+"kontinent a přikázal postavit obrovskou pevnost Pyrennis jako pomník své "
+"moci. Ale právě tato citadela se stala jeho zkázou. Jeho vazalové, neochotní "
+"dokončit stavbu, dokud nebude předurčené dobytí země dokončeno, se obrátili "
+"proti Olgorovi, zabili ho a způsobili tak rozvolnění svazku skřetů trvající "
+"celá další staletí. Zdi Pyrennisu se ukázaly být jako neuvěřitelně pevné, "
+"odolávající jak času, tak válečnému běsnění. Což vyniká zvlášť ve světle "
+"toho, jak roztroušené části pevnosti byly skutečně dokončeny."
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
 msgid "2p — Thousand Stings Garrison"
-msgstr "2p — Pevnost tisíce žihadel"
+msgstr "2hr – Pevnost tisíce žihadel"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
@@ -1863,7 +1871,7 @@ msgstr "Socha"
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:7
 msgid "2p — Tombs of Kesorak"
-msgstr "2p — Kesorakovy hrobky"
+msgstr "2hr – Kesorakovy hrobky"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:8
@@ -1900,7 +1908,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 msgid "2p — Weldyn Channel"
-msgstr "2p — Weldynský průplav"
+msgstr "2hr – Weldynský průplav"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
@@ -1914,7 +1922,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p — Alirok Marsh"
-msgstr "3p — Mokřina Alirok"
+msgstr "3hr – Mokřina Alirok"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #. [multiplayer]: id=multiplayer_Loris_River
@@ -1948,12 +1956,14 @@ msgstr " Doporučeným nastavením jsou 2 zlaté na vesnici."
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
-msgstr "Tři hráči, hlava na hlavě, na tomto vodou lemovaném válečném poli."
+msgstr ""
+"Tři hráči, hlava na hlavě, se střetávají na tomto vodou lemovaném válečném "
+"poli."
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p — Island of the Horatii"
-msgstr "3p — Ostrov Horáciů"
+msgstr "3hr – Ostrov Horáciů"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
@@ -1967,7 +1977,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p — Morituri"
-msgstr "3p — Morituri"
+msgstr "3hr – Morituri"
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1981,7 +1991,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Bath_of_Glory
 #: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:7
 msgid "4p — Bath of Glory"
-msgstr "4p — Lázně slávy"
+msgstr "4hr – Lázně slávy"
 
 #. [multiplayer]: id=multiplayer_Bath_of_Glory
 #: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:9
@@ -2008,7 +2018,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p — Blue Water Province"
-msgstr "4p — Provincie Modré vody"
+msgstr "4hr – Provincie Modré vody"
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
@@ -2018,9 +2028,9 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
-"Říká se, že provincie Modré Vody byla zničena a znovu postavena snad "
-"dvacetkrát. Nyní se zde na skalnatých říčkách a sněhem pokrytých horách zase "
-"scházejí armády, ale vesničané už si toho snad ani nevšímají."
+"Říká se, že provincie Modré vody byla zničena a znovu postavena snad "
+"dvacetkrát. Nyní, když se zde na skalnatých říčkách a sněhem pokrytých "
+"horách zase scházejí armády, si toho už vesničané snad ani nevšímají."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
@@ -2053,7 +2063,7 @@ msgstr "Tým 2"
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p — Castle Hopping Isle"
-msgstr "4p — Hrady Roztodivného ostrova"
+msgstr "4hr – Hrady Roztodivného ostrova"
 
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
@@ -2063,7 +2073,7 @@ msgstr "Přeskakujte z hradu do hradu během boje o centrální ostrov."
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p — Clash"
-msgstr "4p — Srážka"
+msgstr "4hr – Srážka"
 
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
@@ -2073,7 +2083,7 @@ msgstr "Malá mapa pro hru 2 proti 2."
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:7
 msgid "4p — Geothermal"
-msgstr "2p — Geotermál"
+msgstr "4hr – Geotermál"
 
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:9
@@ -2093,7 +2103,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p — Hamlets"
-msgstr "4p — Vesnice"
+msgstr "4hr – Osady"
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
@@ -2107,7 +2117,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p — Isar’s Cross"
-msgstr "4p — Isarova křižovatka"
+msgstr "4hr – Isarova křižovatka"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
@@ -2155,7 +2165,7 @@ msgstr "Severovýchodní"
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p — King of the Hill"
-msgstr "4p — Král vršku"
+msgstr "4hr – Král vršku"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #. [multiplayer]: id=multiplayer_Siege_Castles
@@ -2172,7 +2182,7 @@ msgid ""
 "player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "Ovládnutí prostoru kolem centrální tvrze je v rámci této mapy velmi "
-"výdělečné. Tato mapa pro 4 hráče byla navržena pro hru „všichni proti všem“, "
+"výdělečné. Tato mapa pro 4 hráče byla navržena pro hru všichni proti všem, "
 "ale je hratelná i v případě hry 2 proti 2. Na mapě je 36 vesnic."
 
 #. [side]
@@ -2202,7 +2212,7 @@ msgstr "Severozápadní"
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p — Loris River"
-msgstr "4p — Řeka Loris"
+msgstr "4hr – Řeka Loris"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
@@ -2217,7 +2227,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p — Morituri"
-msgstr "4p — Morituri"
+msgstr "4hr – Morituri"
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
@@ -2227,7 +2237,7 @@ msgstr "Kdo se vynoří z okrajů tohoto nebezpečného bitevního pole?"
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p — Paths of Daggers"
-msgstr "4p — Stezky dýk"
+msgstr "4hr – Stezky dýk"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
@@ -2249,7 +2259,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
 msgid "4p — Ruins of Terra-Dwelve"
-msgstr "4p — Ruiny Terra-Dwelve"
+msgstr "4hr – Ruiny Terra-Dwelve"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
@@ -2263,7 +2273,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid "4p — Siege Castles"
-msgstr "4p — Obležené hrady"
+msgstr "4hr – Obležené hrady"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
@@ -2278,7 +2288,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
 msgid "4p — Underworld"
-msgstr "4p — Podzemí"
+msgstr "4hr – Podzemí"
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
@@ -2290,7 +2300,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p — Xanthe Chaos"
-msgstr "4p — Chaos v Xanthu"
+msgstr "4hr – Chaos v Xanthu"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
@@ -2303,28 +2313,23 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid "5p — Auction-X"
-msgstr "5p — Aukce X"
+msgstr "5hr – Aukce X"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
-#, fuzzy
-#| msgid ""
-#| "4 players surround a central keep, play vs the AI survival style, or as a "
-#| "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
-#| "FFA, and the best way to determine how much is an auction, LOWEST bid "
-#| "wins. It is a very small map so 75 gold is recommended for the other "
-#| "players."
 msgid ""
 "4 players surround a central keep, play vs. the AI survival style, or as a "
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
-"Čtyři hráči obklopují centrální tvrz při hře na přežití proti AI, nebo volné "
-"hře 4 proti 1. Hráč uprostřed potřebuje více zlata, pokud proti němu stojí "
-"všichni ostatní. A nezapomínejte, že nejlepším způsobem jak zjistit, jak "
-"vysoká je sázka, je vsadit co nejméně! Tato mapa je velmi malá, pro ostatní "
-"hráče je doporučeno 75 zlatých."
+"Čtyři hráči obklopují centrální tvrz při hře na přežití proti UI, při hře "
+"všichni proti všem nebo volné hře 4 proti 1. Hráč v centru potřebuje více "
+"zlata, pokud proti němu stojí všichni ostatní nebo při hře všichni proti "
+"všem. A nezapomínejte, že nejlepším způsobem jak zjistit, jak vysoká je "
+"sázka, je vsadit co nejméně!\n"
+"Tato mapa je velmi malá, proto je pro ostatní hráče doporučeno nastavení 75 "
+"zlatých."
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:70
@@ -2334,7 +2339,7 @@ msgstr "Centrální"
 #. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p — Forest of Fear"
-msgstr "5p — Les strachu"
+msgstr "5hr – Les strachu"
 
 #. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
@@ -2344,7 +2349,7 @@ msgstr "V této různorodé krajině svede 5 armád boj o nadvládu."
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:57
 msgid "5p — The Wilderlands"
-msgstr "5p — Divočina"
+msgstr "5hr – Divočina"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
@@ -2405,7 +2410,7 @@ msgstr "Nemůžeš verbovat jednotky."
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p — Crusaders’ Field"
-msgstr "6p — Křižácké pole"
+msgstr "6hr – Křižácké pole"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
@@ -2421,18 +2426,17 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p — Hexcake"
-msgstr "6p — Hexcake"
+msgstr "6hr – Hexcake"
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Týmová hra 2 proti 2 nebo 3 proti 3."
 
-# pův.: "Přežívačka"
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:246
 msgid "6p — Team Survival"
-msgstr "6p — Týmové přežití"
+msgstr "6hr – Týmové přežití"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:248
@@ -2470,7 +2474,6 @@ msgstr "Vůdci tvých týmů zemřou"
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr "Tip: Hodně pomáhá zjistit, kde se objevují kteří nepřátelé."
 
-# Loajalisti?
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:407
 msgid "Turn 2: Loyalists"
@@ -2508,6 +2511,7 @@ msgid "Tower of Doom"
 msgstr "Věž zhouby"
 
 # opak smrtky - víla?
+# Tedy Živa nebo Živana? Víla Živana?
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:544
 msgid "Faery"
@@ -2541,7 +2545,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p — The Manzivan Traps"
-msgstr "6p — Manzivanské pasti"
+msgstr "6hr – Manzivanské pasti"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
@@ -2559,7 +2563,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
 msgid "6p — Volcano"
-msgstr "6p — Vulkán"
+msgstr "6hr – Vulkán"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
@@ -2573,7 +2577,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p — Waterloo Sunset"
-msgstr "6p — Západ slunce nad Waterloo"
+msgstr "6hr – Západ slunce nad Waterloo"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
@@ -2591,7 +2595,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 msgid "8p — Mokena Prairie"
-msgstr "8p — Mokenské prérie"
+msgstr "8hr – Mokenské prérie"
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
@@ -2605,7 +2609,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p — Morituri"
-msgstr "8p — Morituri"
+msgstr "8hr – Morituri"
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
@@ -2619,7 +2623,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p — Merkwuerdigliebe"
-msgstr "9p — Pozoruhodná láska"
+msgstr "9hr – Pozoruhodná láska"
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9

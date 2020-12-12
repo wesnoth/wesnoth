@@ -44,6 +44,7 @@ scroll_label::scroll_label(const implementation::builder_scroll_label& builder)
 	, state_(ENABLED)
 	, wrap_on_(builder.wrap_on)
 	, text_alignment_(builder.text_alignment)
+	, link_aware_(builder.link_aware)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 		std::bind(&scroll_label::signal_handler_left_button_down, this, std::placeholders::_2),
@@ -105,6 +106,8 @@ void scroll_label::set_text_alpha(unsigned short alpha)
 
 void scroll_label::set_link_aware(bool l)
 {
+	link_aware_ = l;
+
 	if(label* widget = get_internal_label()) {
 		widget->set_link_aware(l);
 	}
@@ -133,6 +136,7 @@ void scroll_label::finalize_subclass()
 	lbl->set_label(get_label());
 	lbl->set_can_wrap(wrap_on_);
 	lbl->set_text_alignment(text_alignment_);
+	lbl->set_link_aware(link_aware_);
 	lbl->set_use_markup(get_use_markup());
 }
 
@@ -266,6 +270,7 @@ builder_scroll_label::builder_scroll_label(const config& cfg)
 	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, wrap_on(cfg["wrap"].to_bool(true))
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
+	, link_aware(cfg["link_aware"].to_bool(false))
 {
 }
 

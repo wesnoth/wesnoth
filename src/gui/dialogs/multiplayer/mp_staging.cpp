@@ -23,13 +23,14 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
+#include "gui/dialogs/multiplayer/player_list_helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/chatbox.hpp"
 #include "gui/widgets/drawing.hpp"
-#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/image.hpp"
-#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/listbox.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/status_label_helper.hpp"
@@ -510,7 +511,7 @@ void mp_staging::network_handler()
 	std::tie(quit_signal_received, std::ignore) = connect_engine_.process_network_data(data);
 
 	if(quit_signal_received) {
-		get_window()->set_retval(retval::CANCEL);
+		set_retval(retval::CANCEL);
 	}
 
 	// Update side leader displays

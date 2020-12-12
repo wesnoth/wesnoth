@@ -402,7 +402,7 @@ void unit_recall::dismiss_unit()
 
 	// Close the dialog if all units are dismissed
 	if(list.get_item_count() == 0) {
-		get_window()->set_retval(retval::CANCEL);
+		set_retval(retval::CANCEL);
 	}
 }
 

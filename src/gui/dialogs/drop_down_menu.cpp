@@ -107,7 +107,7 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 	set_restore(true);
 }
 
-void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate) const
+void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 {
 	if(!mouse_down_happened_) {
 		return;
@@ -147,9 +147,9 @@ void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate) co
 
 	SDL_Rect rect = get_window()->get_rectangle();
 	if(!sdl::point_in_rect(coordinate, rect)) {
-		get_window()->set_retval(retval::CANCEL);
+		set_retval(retval::CANCEL);
 	} else if(!keep_open_) {
-		get_window()->set_retval(retval::OK);
+		set_retval(retval::OK);
 	}
 }
 

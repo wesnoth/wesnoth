@@ -118,6 +118,13 @@ bool modal_dialog::show(const unsigned auto_close_time)
 	return retval_ == retval::OK;
 }
 
+void modal_dialog::set_retval(int retval)
+{
+	if(window_) {
+		window_->set_retval(retval);
+	}
+}
+
 field_bool* modal_dialog::register_bool(
 		const std::string& id,
 		const bool mandatory,

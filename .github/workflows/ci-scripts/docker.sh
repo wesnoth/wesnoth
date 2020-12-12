@@ -43,8 +43,8 @@ if [ "$NLS" == "only" ]; then
     export LANG=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
 
-    ./utils/travis/check_utf8.sh || exit 1
-    ./utils/travis/utf8_bom_dog.sh || exit 1
+    ./utils/CI/check_utf8.sh || exit 1
+    ./utils/CI/utf8_bom_dog.sh || exit 1
     echo "Checked for invalod characters"
 
     cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE
@@ -69,11 +69,11 @@ if [ "$NLS" == "only" ]; then
 elif [ "$IMAGE" == "flatpak" ]; then
 # docker's --volume means the directory is on a separate filesystem
 # flatpak-builder doesn't support this
-# therefore manually move stuff between where flatpak needs it and where travis' caching can see it
+# therefore manually move stuff between where flatpak needs it and where CI caching can see it
     rm -R .flatpak-builder/*
     cp -R "$CACHE_DIR"/. .flatpak-builder/
-    jq '.modules[2].sources[0]={"type":"dir","path":"/home/wesnoth-travis"} | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > utils/dockerbuilds/travis/org.wesnoth.Wesnoth.json
-    flatpak-builder --ccache --force-clean --disable-rofiles-fuse wesnoth-app utils/dockerbuilds/travis/org.wesnoth.Wesnoth.json
+    jq '.modules[2].sources[0]={"type":"dir","path":"/home/wesnoth-CI"} | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > utils/dockerbuilds/CI/org.wesnoth.Wesnoth.json
+    flatpak-builder --ccache --force-clean --disable-rofiles-fuse wesnoth-app utils/dockerbuilds/CI/org.wesnoth.Wesnoth.json
     EXIT_VAL=$?
     rm -R "$CACHE_DIR"/*
     cp -R .flatpak-builder/. "$CACHE_DIR"/
@@ -134,11 +134,11 @@ if [ "$CFG" == "debug" ]; then
     mv boost_unit_tests-debug boost_unit_tests
 fi
 
-execute "WML validation" ./utils/travis/schema_validation.sh
+execute "WML validation" ./utils/CI/schema_validation.sh
 execute "WML indentation check" checkindent
 execute "WML tests" ./run_wml_tests -g -v -c -t 20
-execute "Play tests" ./utils/travis/play_test_executor.sh
-execute "Boost unit tests" ./utils/travis/test_executor.sh
+execute "Play tests" ./utils/CI/play_test_executor.sh
+execute "Boost unit tests" ./utils/CI/test_executor.sh
 
 if [ -f "errors.log" ]; then
     error $'\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n'
