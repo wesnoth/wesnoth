@@ -175,6 +175,8 @@
 		46D60159255AFA7E00E072F0 /* commandline_argv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D60156255AFA7E00E072F0 /* commandline_argv.cpp */; };
 		46D60162255AFDE100E072F0 /* commandline_argv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D60156255AFA7E00E072F0 /* commandline_argv.cpp */; };
 		46D60168255B028200E072F0 /* libboost_program_options-mt-x64.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5213AD4E35003C701D /* libboost_program_options-mt-x64.dylib */; };
+		46D6CA012586A176001F0464 /* advanced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6C9FF2586A175001F0464 /* advanced.cpp */; };
+		46D6CA022586A176001F0464 /* advanced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6C9FF2586A175001F0464 /* advanced.cpp */; };
 		46E2D98F25022BF5003D99F3 /* lua_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98B25022BF5003D99F3 /* lua_widget.cpp */; };
 		46E2D99025022BF5003D99F3 /* lua_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98B25022BF5003D99F3 /* lua_widget.cpp */; };
 		46E2D99125022BF6003D99F3 /* lua_widget_attributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */; };
@@ -1563,6 +1565,8 @@
 		46D6014D255AFA6000E072F0 /* options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = options.cpp; sourceTree = "<group>"; };
 		46D60156255AFA7E00E072F0 /* commandline_argv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = commandline_argv.cpp; sourceTree = "<group>"; };
 		46D60157255AFA7E00E072F0 /* commandline_argv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commandline_argv.hpp; sourceTree = "<group>"; };
+		46D6C9FF2586A175001F0464 /* advanced.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = advanced.cpp; path = preferences/advanced.cpp; sourceTree = "<group>"; };
+		46D6CA002586A176001F0464 /* advanced.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = advanced.hpp; path = preferences/advanced.hpp; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
 		46E2D98925022BF4003D99F3 /* lua_widget_methods.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_widget_methods.hpp; sourceTree = "<group>"; };
@@ -4775,6 +4779,8 @@
 		EC54017A1EBE0C2B00AE66EE /* preferences */ = {
 			isa = PBXGroup;
 			children = (
+				46D6C9FF2586A175001F0464 /* advanced.cpp */,
+				46D6CA002586A176001F0464 /* advanced.hpp */,
 				903F959B1ED5489500F1BDD3 /* credentials.cpp */,
 				903F959D1ED5489D00F1BDD3 /* credentials.hpp */,
 				EC54017B1EBE0C4500AE66EE /* display.cpp */,
@@ -5044,6 +5050,7 @@
 				46F92E052174F6A400602C1C /* preferences_dialog.cpp in Sources */,
 				46F92E992174F6A400602C1C /* slider.cpp in Sources */,
 				B59F96D5103478C900A57C1A /* aspect.cpp in Sources */,
+				46D6CA012586A176001F0464 /* advanced.cpp in Sources */,
 				B55BE03211234AAB00154E6C /* astarsearch.cpp in Sources */,
 				B5599B910EC62181008DD061 /* attack_prediction.cpp in Sources */,
 				B54AC6DF0FEA9EB5006F6FBD /* attack.cpp in Sources */,
@@ -6154,6 +6161,7 @@
 				46F92E1A2174F6A400602C1C /* mp_connect.cpp in Sources */,
 				4649B88020288DC600827CFB /* random.cpp in Sources */,
 				4649B88E20288F1E00827CFB /* lua_audio.cpp in Sources */,
+				46D6CA022586A176001F0464 /* advanced.cpp in Sources */,
 				916718FB1CADAA1200B055A9 /* fake_display.cpp in Sources */,
 				916718FD1CADAA1200B055A9 /* game_config_manager_tests.cpp in Sources */,
 				916718FF1CADAA1D00B055A9 /* fire_event.cpp in Sources */,
