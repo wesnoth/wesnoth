@@ -59,13 +59,13 @@ advanced_manager::option::option(const config& pref)
 	const std::string p_type = cfg["type"];
 
 	if(p_type == "boolean") {
-		type = type::TOGGLE;
+		type = avd_type::TOGGLE;
 	} else if(p_type == "int") {
-		type = type::SLIDER;
+		type = avd_type::SLIDER;
 	} else if(p_type == "combo") {
-		type = type::COMBO;
+		type = avd_type::COMBO;
 	} else if(p_type == "custom") {
-		type = type::SPECIAL;
+		type = avd_type::SPECIAL;
 	} else {
 		throw std::invalid_argument("Unknown type '" + p_type + "' for advanced preference " + name);
 	}

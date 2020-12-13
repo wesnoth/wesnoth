@@ -112,7 +112,7 @@ void volume_setter_on_change(widget& w)
 } // end anon namespace
 
 using namespace preferences;
-using avp = preferences::advanced_manager;
+using avp = preferences::advanced_manager::option;
 
 REGISTER_DIALOG(preferences_dialog)
 
@@ -605,7 +605,7 @@ void preferences_dialog::post_build(window& window)
 		}
 
 		switch(option.type) {
-			case avp::type::TOGGLE: {
+			case avp::avd_type::TOGGLE: {
 				//main_grid->remove_child("setter");
 
 				toggle_box.set_visible(widget::visibility::visible);
@@ -623,7 +623,7 @@ void preferences_dialog::post_build(window& window)
 				break;
 			}
 
-			case avp::type::SLIDER: {
+			case avp::avd_type::SLIDER: {
 				slider* setter_widget = build_single_widget_instance<slider>(config {"definition", "minimal"});
 				setter_widget->set_id("setter");
 				// Maximum must be set first or this will assert
@@ -647,7 +647,7 @@ void preferences_dialog::post_build(window& window)
 				break;
 			}
 
-			case avp::type::COMBO: {
+			case avp::avd_type::COMBO: {
 				std::vector<config> menu_data;
 				std::vector<std::string> option_ids;
 
@@ -693,7 +693,7 @@ void preferences_dialog::post_build(window& window)
 				break;
 			}
 
-			case avp::type::SPECIAL: {
+			case avp::avd_type::SPECIAL: {
 				//main_grid->remove_child("setter");
 
 				image* value_widget = build_single_widget_instance<image>();
@@ -959,7 +959,7 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 	const int selected_row = list.get_selected_row();
 	const auto& pref = adv_preferences_[selected_row];
 
-	if(pref.type == avp::type::SPECIAL) {
+	if(pref.type == avp::avd_type::SPECIAL) {
 		if(pref.field == "logging") {
 			gui2::dialogs::log_settings::display();
 		} else if(pref.field == "orb_color") {
@@ -973,7 +973,7 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 
 	const bool has_description = !pref.description.empty();
 
-	if(has_description || (pref.type != avp::type::SPECIAL && pref.type != avp::type::TOGGLE)) {
+	if(has_description || (pref.type != avp::avd_type::SPECIAL && pref.type != avp::avd_type::TOGGLE)) {
 		find_widget<widget>(get_advanced_row_grid(list, selected_row), "prefs_setter_grid", false)
 			.set_visible(widget::visibility::visible);
 	}
