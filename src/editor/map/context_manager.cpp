@@ -60,7 +60,7 @@ static const std::string get_menu_marker(const bool changed)
 		ss << "color='#f00' ";
 	}
 
-	ss << "size='large'>" << font::unicode_bullet << "</span>]";
+	ss << ">" << font::unicode_bullet << "</span>]";
 	return ss.str();
 }
 
