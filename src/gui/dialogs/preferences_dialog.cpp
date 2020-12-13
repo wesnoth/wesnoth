@@ -112,7 +112,7 @@ void volume_setter_on_change(widget& w)
 } // end anon namespace
 
 using namespace preferences;
-using avp = preferences::advanced_manager::option;
+using avp = preferences::advanced_manager;
 
 REGISTER_DIALOG(preferences_dialog)
 

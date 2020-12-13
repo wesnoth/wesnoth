@@ -25,7 +25,6 @@
 
 #include <boost/dynamic_bitset.hpp>
 
-class game_config_view;
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
 

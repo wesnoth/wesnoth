@@ -31,14 +31,14 @@ public:
 
 	~advanced_manager();
 
+	enum class type { TOGGLE, SLIDER, COMBO, SPECIAL };
+
 	struct option
 	{
 		option(const config& pref);
 
-		enum class type { TOGGLE, SLIDER, COMBO, SPECIAL };
-
 		/** The preference type. */
-		option::type type;
+		type type;
 
 		/** Displayed name. */
 		t_string name;
