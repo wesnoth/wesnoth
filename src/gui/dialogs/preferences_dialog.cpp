@@ -17,17 +17,17 @@
 
 #include "gui/dialogs/preferences_dialog.hpp"
 
-#include "gettext.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "preferences/game.hpp"
+#include "gettext.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include "lexical_cast.hpp"
 #include "preferences/credentials.hpp"
-#include "preferences/lobby.hpp"
-#include "preferences/general.hpp"
 #include "preferences/display.hpp"
-#include <functional>
+#include "preferences/game.hpp"
+#include "preferences/general.hpp"
+#include "preferences/lobby.hpp"
 #include "utils/general.hpp"
 #include "video.hpp"
 
@@ -57,14 +57,14 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "lexical_cast.hpp"
-#include "game_config_view.hpp"
 
 #if BOOST_VERSION >= 106700
 #include <boost/integer/common_factor_rt.hpp>
 #else
 #include <boost/math/common_factor_rt.hpp>
 #endif
+
+#include <functional>
 
 namespace gui2
 {
@@ -116,7 +116,7 @@ using avp = preferences::advanced_manager::option;
 
 REGISTER_DIALOG(preferences_dialog)
 
-preferences_dialog::preferences_dialog(const game_config_view& /*game_cfg*/, const PREFERENCE_VIEW& initial_view)
+preferences_dialog::preferences_dialog(const PREFERENCE_VIEW initial_view)
 	: adv_preferences_(preferences::get_advanced_preferences())
 	, resolutions_() // should be populated by set_resolution_list before use
 	, last_selected_item_(0)

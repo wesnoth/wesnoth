@@ -998,7 +998,7 @@ bool game_launcher::change_language()
 
 void game_launcher::show_preferences()
 {
-	gui2::dialogs::preferences_dialog::display(game_config_manager::get()->game_config());
+	gui2::dialogs::preferences_dialog::display();
 }
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)

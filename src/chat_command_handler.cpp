@@ -149,9 +149,7 @@ void chat_command_handler::do_remove()
 
 void chat_command_handler::do_display()
 {
-	// TODO: add game config argument to chat_command_handler?
-	gui2::dialogs::preferences_dialog::display(game_config_manager::get()->game_config(),
-		preferences::VIEW_FRIENDS);
+	gui2::dialogs::preferences_dialog::display(preferences::VIEW_FRIENDS);
 }
 
 void chat_command_handler::do_version() {

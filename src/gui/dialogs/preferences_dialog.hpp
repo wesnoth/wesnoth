@@ -72,13 +72,10 @@ namespace dialogs
 class preferences_dialog : public modal_dialog
 {
 public:
-	preferences_dialog(const game_config_view& game_cfg, const preferences::PREFERENCE_VIEW& initial_view);
+	preferences_dialog(const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT);
 
 	/** The display function -- see @ref modal_dialog for more information. */
-	static void display(const game_config_view& game_cfg, const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT)
-	{
-		preferences_dialog(game_cfg, initial_view).show();
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(preferences_dialog)
 
 	typedef std::vector<const hotkey::hotkey_command*> visible_hotkeys_t;
 
