@@ -754,7 +754,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-
 	check_fpu();
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
@@ -795,6 +794,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 	}
 
 	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms\n";
+
+	game->init_advanced_prefs_manager();
 
 	plugins_manager plugins_man(new application_lua_kernel);
 

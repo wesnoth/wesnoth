@@ -14,15 +14,15 @@
 
 #pragma once
 
-#include "editor/editor_main.hpp"       // for EXIT_STATUS
-#include "events.hpp"                   // for event_context
-#include "font/font_config.hpp"         // for manager
-#include "preferences/game.hpp"         // for manager
-#include "hotkey/hotkey_manager.hpp"    // for manager
-#include "picture.hpp"                    // for manager
-#include "saved_game.hpp"               // for saved_game
-#include "sound.hpp"                    // for music_thinker
-#include "game_end_exceptions.hpp"      // for LEVEL_RESULT, etc
+#include "editor/editor_main.hpp"    // for EXIT_STATUS
+#include "events.hpp"                // for event_context
+#include "font/font_config.hpp"      // for manager
+#include "game_end_exceptions.hpp"   // for LEVEL_RESULT, etc
+#include "hotkey/hotkey_manager.hpp" // for manager
+#include "picture.hpp"               // for manager
+#include "preferences/game.hpp"      // for manager
+#include "saved_game.hpp"            // for saved_game
+#include "sound.hpp"                 // for music_thinker
 
 #include <string>                       // for string
 #include <vector>                       // for vector
@@ -30,7 +30,10 @@
 class commandline_options;
 class config;
 class CVideo;
+
 namespace savegame { struct load_game_metadata; }
+namespace preferences { class advanced_manager; }
+
 struct jump_to_campaign_info
 {
 public:
@@ -77,6 +80,7 @@ public:
 	bool init_video();
 	bool init_language();
 	bool init_lua_script();
+	void init_advanced_prefs_manager();
 
 	bool play_test();
 	bool play_screenshot_mode();
@@ -134,6 +138,7 @@ private:
 
 	font::manager font_manager_;
 	const preferences::manager prefs_manager_;
+	std::unique_ptr<preferences::advanced_manager> advanced_prefs_manager_;
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;

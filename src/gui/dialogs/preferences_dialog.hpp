@@ -20,8 +20,8 @@
 #include "gui/widgets/group.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "hotkey/hotkey_command.hpp"
+#include "preferences/advanced.hpp"
 #include "preferences/game.hpp"
-#include "utils/make_enum.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
@@ -124,15 +124,9 @@ private:
 
 	group<preferences::LOBBY_JOINS> lobby_joins_group;
 
-	MAKE_ENUM(ADVANCED_PREF_TYPE,
-		(TOGGLE,  "boolean")
-		(SLIDER,  "int")
-		(COMBO,   "combo")
-		(SPECIAL, "custom")
-	)
+	const preferences::advanced_pref_list& adv_preferences_;
 
 	std::vector<point> resolutions_;
-	std::vector<config> adv_preferences_cfg_;
 
 	int last_selected_item_;
 
