@@ -35,7 +35,7 @@ advanced_manager::advanced_manager(const game_config_view& gc)
 		try {
 			prefs.emplace_back(pref);
 		} catch(const std::invalid_argument& e) {
-			std::cerr << e.what() << std::endl;
+			ERR_ADV << e.what() << std::endl;
 			continue;
 		}
 	}
