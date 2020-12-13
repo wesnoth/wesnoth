@@ -35,7 +35,7 @@ public:
 	{
 		option(const config& pref);
 
-		enum class type { NONE, TOGGLE, SLIDER, COMBO, SPECIAL };
+		enum class type { TOGGLE, SLIDER, COMBO, SPECIAL };
 
 		/** The preference type. */
 		option::type type;

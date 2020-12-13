@@ -50,7 +50,7 @@ advanced_manager::~advanced_manager()
 }
 
 advanced_manager::option::option(const config& pref)
-	: type(type::NONE)
+	: type()
 	, name(pref["name"].t_str())
 	, description(pref["description"].t_str())
 	, field(pref["field"].str())
