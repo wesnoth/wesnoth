@@ -22,6 +22,7 @@
    * Text labels now use the hyperlink mouse cursor while hovering links.
    * Link awareness is now configured on a per-instance basis for labels/scroll labels instead of globally in their definition.
  ### WML Engine
+   * Add a overwrite_specials option for abilities like weapon could overwrite specials or other ablities like weapon
  ### Miscellaneous and Bug Fixes
    * Fixed several possible crashes in wmllint
 

@@ -1117,10 +1117,21 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	if(self_) {
 		abil_list.append((*self_).get_abilities(ability, self_loc_));
 		for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-			if(!special_active(*i->ability_cfg, AFFECT_SELF, ability, true, "filter_student")) {
+			if(!((*i->ability_cfg)["overwrite_specials"].to_bool() && special_active(*i->ability_cfg, AFFECT_SELF, ability, true, "filter_student"))) {
 				i = abil_list.erase(i);
 			} else {
 				++i;
+			}
+		}
+
+		if(abil_list.empty()){
+			abil_list.append((*self_).get_abilities(ability, self_loc_));
+			for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
+				if(!special_active(*i->ability_cfg, AFFECT_SELF, ability, true, "filter_student")) {
+					i = abil_list.erase(i);
+				} else {
+					++i;
+				}
 			}
 		}
 	}
@@ -1128,10 +1139,20 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 	if(other_) {
 		abil_other_list.append((*other_).get_abilities(ability, other_loc_));
 		for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
-			if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, true, "filter_student")) {
+			if(!((*i->ability_cfg)["overwrite_specials"].to_bool() && special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, true, "filter_student"))) {
 				i = abil_other_list.erase(i);
 			} else {
 				++i;
+			}
+		}
+		if(abil_other_list.empty()){
+			abil_other_list.append((*other_).get_abilities(ability, other_loc_));
+			for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
+				if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, true, "filter_student")) {
+					i = abil_other_list.erase(i);
+				} else {
+					++i;
+				}
 			}
 		}
 	}
@@ -1142,6 +1163,12 @@ unit_ability_list attack_type::list_ability(const std::string& ability) const
 unit_ability_list attack_type::get_special_ability(const std::string& ability) const
 {
 	unit_ability_list abil_list = list_ability(ability);
+	for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
+		if((*i->ability_cfg)["overwrite_specials"].to_bool()) {
+			return abil_list;
+		}
+		++i;
+	}
 	abil_list.append(get_specials(ability));
 	return abil_list;
 }
