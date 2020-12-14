@@ -172,18 +172,18 @@ class random_server_choice : public synced_context::server_choice
 {
 public:
 	/** We are in a game with no mp server and need to do this choice locally. */
-	virtual config local_choice() const
+	virtual config local_choice() const override
 	{
 		return config{"new_seed", seed_rng::next_seed_str()};
 	}
 
 	/** The request which is sent to the mp server. */
-	virtual config request() const
+	virtual config request() const override
 	{
 		return config();
 	}
 
-	virtual const char* name() const
+	virtual const char* name() const override
 	{
 		return "random_seed";
 	}
