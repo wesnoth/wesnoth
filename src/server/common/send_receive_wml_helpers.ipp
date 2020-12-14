@@ -25,6 +25,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#include <boost/scope_exit.hpp>
 #endif
 
 #include "server/common/server_base.hpp"
@@ -132,7 +133,6 @@ inline void coro_send_file(socket_ptr socket, const std::string& filename, boost
 inline void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
 
-	HANDLE file;
 	OVERLAPPED overlap;
 	std::vector<boost::asio::const_buffer> buffers;
 
@@ -146,12 +146,18 @@ inline void coro_send_file(socket_ptr socket, const std::string& filename, boost
 	{
 		throw std::runtime_error("Failed to open the file");
 	}
+	BOOST_SCOPE_EXIT_ALL(in_file) {
+		CloseHandle(&in_file);
+	};
 
 	HANDLE event = CreateEvent(nullptr, TRUE, TRUE, nullptr);
 	if (GetLastError() != ERROR_SUCCESS)
 	{
 		throw std::runtime_error("Failed to create an event");
 	}
+	BOOST_SCOPE_EXIT_ALL(&overlap) {
+		CloseHandle(overlap.hEvent);
+	};
 
 	overlap.hEvent = event;
 
@@ -182,9 +188,6 @@ inline void coro_send_file(socket_ptr socket, const std::string& filename, boost
 			throw std::runtime_error("TransmitFile failed");
 		}
 	}
-
-	CloseHandle(file);
-	CloseHandle(overlap.hEvent);
 }
 
 #else
