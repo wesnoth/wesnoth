@@ -317,7 +317,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
+    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
