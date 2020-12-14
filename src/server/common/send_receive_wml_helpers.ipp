@@ -129,71 +129,11 @@ inline void coro_send_file(socket_ptr socket, const std::string& filename, boost
 
 #elif defined(_WIN32)
 
-template<typename Handler, typename ErrorHandler>
-struct sendfile_op
+inline void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
-	socket_ptr sock_;
-	HANDLE file_;
-	OVERLAPPED overlap_;
-	Handler handler_;
-	ErrorHandler error_handler_;
-	bool pending_;
-	std::shared_ptr<handle_doc<Handler, ErrorHandler>> handle_send_doc_;
 
-	void operator()(boost::system::error_code, std::size_t)
-	{
-		bool failed = false;
-		if (!pending_)
-		{
-			BOOL success = TransmitFile(sock_->native_handle(), file_, 0, 0, &overlap_, nullptr, 0);
-			if (!success)
-			{
-				int winsock_ec = WSAGetLastError();
-				if (winsock_ec == WSA_IO_PENDING || winsock_ec == ERROR_IO_PENDING)
-				{
-					// The request is pending. Wait until it completes.
-					pending_ = true;
-					sock_->async_write_some(boost::asio::null_buffers(), *this);
-					return;
-				}
-				else
-				{
-					failed = true;
-				}
-			}
-		}
-		else
-		{
-			DWORD win_ec = GetLastError();
-			if (win_ec != ERROR_IO_PENDING && win_ec != ERROR_SUCCESS)
-			{
-				failed = true;
-			}
-			else if (!HasOverlappedIoCompleted(&overlap_))
-			{
-				// Keep waiting.
-				sock_->async_write_some(boost::asio::null_buffers(), *this);
-				return;
-			}
-		}
-
-		CloseHandle(file_);
-		CloseHandle(overlap_.hEvent);
-
-		if (!failed)
-		{
-			handler_(sock_);
-		}
-		else
-		{
-			error_handler_(sock_);
-		}
-	}
-};
-
-template<typename Handler, typename ErrorHandler>
-void async_send_file(socket_ptr socket, const std::string& filename, Handler handler, ErrorHandler error_handler)
-{
+	HANDLE file;
+	OVERLAPPED overlap;
 	std::vector<boost::asio::const_buffer> buffers;
 
 	SetLastError(ERROR_SUCCESS);
@@ -207,27 +147,52 @@ void async_send_file(socket_ptr socket, const std::string& filename, Handler han
 		throw std::runtime_error("Failed to open the file");
 	}
 
-	sendfile_op<Handler, ErrorHandler> op = { socket, in_file, OVERLAPPED(), handler, error_handler, false, nullptr };
-
 	HANDLE event = CreateEvent(nullptr, TRUE, TRUE, nullptr);
 	if (GetLastError() != ERROR_SUCCESS)
 	{
 		throw std::runtime_error("Failed to create an event");
 	}
 
-	op.overlap_.hEvent = event;
-	op.handle_send_doc_.reset(new handle_doc<Handler, ErrorHandler>(socket, handler, error_handler, filesize, nullptr));
+	overlap.hEvent = event;
 
-	buffers.push_back(boost::asio::buffer(op.handle_send_doc_->data_size->buf, 4));
-	async_write(*socket, buffers, op);
+	union DataSize
+	{
+		uint32_t size;
+		char buf[4];
+	} data_size;
+	data_size.size = htonl(filesize);
+
+	async_write(*socket, boost::asio::buffer(data_size.buf, 4), yield);
+
+	BOOL success = TransmitFile(socket->native_handle(), in_file, 0, 0, &overlap, nullptr, 0);
+	if(!success) {
+		int winsock_ec = WSAGetLastError();
+		if(winsock_ec == WSA_IO_PENDING || winsock_ec == ERROR_IO_PENDING) {
+			while(true) {
+				// The request is pending. Wait until it completes.
+				socket->async_write_some(boost::asio::null_buffers(), yield);
+
+				DWORD win_ec = GetLastError();
+				if (win_ec != ERROR_IO_PENDING && win_ec != ERROR_SUCCESS)
+					throw std::runtime_error("TransmitFile failed");
+
+				if(HasOverlappedIoCompleted(&overlap)) break;
+			}
+		} else {
+			throw std::runtime_error("TransmitFile failed");
+		}
+	}
+
+	CloseHandle(file);
+	CloseHandle(overlap.hEvent);
 }
 
 #else
 
-// TODO: Implement this for systems without sendfile()
-template<typename Handler, typename ErrorHandler>
-void async_send_file(socket_ptr, const std::string&, Handler, ErrorHandler)
+
+inline void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
+// TODO: Implement this for systems without sendfile()
 	assert(false && "Not implemented yet");
 }
 
