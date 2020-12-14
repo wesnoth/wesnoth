@@ -129,7 +129,7 @@ for repo in Dir(".").repositories:
   # source code root and supplying this path with -Y option.
   toolpath.append(repo.abspath + "/scons")
 sys.path = toolpath + sys.path
-env = Environment(tools=["tar", "gettext_tool", "install", "python_devel", "scanreplace"], options = opts, toolpath = toolpath)
+env = Environment(tools=["tar", "gettext_tool", "install", "scanreplace"], options = opts, toolpath = toolpath)
 
 if env["lockfile"]:
     print("Creating lockfile")
