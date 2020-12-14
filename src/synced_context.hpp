@@ -128,13 +128,13 @@ public:
 	static void send_user_choice();
 
 	/** A function to be passed to run_in_synced_context to assert false on error (the default). */
-	static void default_error_function(const std::string& message, bool heavy);
+	static void default_error_function(const std::string& message);
 
 	/** A function to be passed to run_in_synced_context to log the error. */
-	static void just_log_error_function(const std::string& message, bool heavy);
+	static void just_log_error_function(const std::string& message);
 
 	/** A function to be passed to run_in_synced_context to ignore the error. */
-	static void ignore_error_function(const std::string& message, bool heavy);
+	static void ignore_error_function(const std::string& message);
 
 	/** @return A rng_deterministic if in determinsic mode otherwise a rng_synced. */
 	static std::shared_ptr<randomness::rng> get_rng_for_action();

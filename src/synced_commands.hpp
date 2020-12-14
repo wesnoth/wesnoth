@@ -27,11 +27,8 @@ class synced_command {
 		/*
 			the parameters or error handlers are
 			1) the message of the error
-			2) a boolean that indicates whether the error is heavy enough to make proceeding impossible.
-			TODO: remove the second argument because it isn't used.
-
 		*/
-		typedef std::function<void(const std::string&, bool)> error_handler_function;
+		typedef std::function<void(const std::string&)> error_handler_function;
 		/*
 			returns: true if the action succeeded correctly,
 

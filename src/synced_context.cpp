@@ -67,7 +67,7 @@ bool synced_context::run(const std::string& commandname,
 
 	synced_command::map::iterator it = synced_command::registry().find(commandname);
 	if(it == synced_command::registry().end()) {
-		error_handler("commandname [" + commandname + "] not found", true);
+		error_handler("commandname [" + commandname + "] not found");
 	} else {
 		bool success = it->second(data, use_undo, show, error_handler);
 		if(!success) {
@@ -138,7 +138,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	case(synced_context::SYNCED): {
 		synced_command::map::iterator it = synced_command::registry().find(commandname);
 		if(it == synced_command::registry().end()) {
-			error_handler("commandname [" + commandname + "] not found", true);
+			error_handler("commandname [" + commandname + "] not found");
 			return false;
 		} else {
 			return it->second(data, /*use_undo*/ false, show, error_handler);
@@ -150,18 +150,18 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	}
 }
 
-void synced_context::default_error_function(const std::string& message, bool /*heavy*/)
+void synced_context::default_error_function(const std::string& message)
 {
 	ERR_REPLAY << "Unexpected Error during synced execution" << message << std::endl;
 	assert(!"Unexpected Error during synced execution, more info in stderr.");
 }
 
-void synced_context::just_log_error_function(const std::string& message, bool /*heavy*/)
+void synced_context::just_log_error_function(const std::string& message)
 {
 	ERR_REPLAY << "Error during synced execution: " << message;
 }
 
-void synced_context::ignore_error_function(const std::string& message, bool /*heavy*/)
+void synced_context::ignore_error_function(const std::string& message)
 {
 	DBG_REPLAY << "Ignored during synced execution: " << message;
 }
