@@ -166,26 +166,6 @@ void synced_context::ignore_error_function(const std::string& message, bool /*he
 	DBG_REPLAY << "Ignored during synced execution: " << message;
 }
 
-synced_context::synced_state synced_context::get_synced_state()
-{
-	return state_;
-}
-
-bool synced_context::is_synced()
-{
-	return get_synced_state() == SYNCED;
-}
-
-bool synced_context::is_unsynced()
-{
-	return get_synced_state() == UNSYNCED;
-}
-
-void synced_context::set_synced_state(synced_state newstate)
-{
-	state_ = newstate;
-}
-
 namespace
 {
 class random_server_choice : public synced_context::server_choice
@@ -218,16 +198,6 @@ std::string synced_context::generate_random_seed()
 	return seed_val.str();
 }
 
-bool synced_context::is_simultaneously()
-{
-	return is_simultaneously_;
-}
-
-void synced_context::reset_is_simultaneously()
-{
-	is_simultaneously_ = false;
-}
-
 void synced_context::set_is_simultaneously()
 {
 	resources::undo_stack->clear();
@@ -240,11 +210,6 @@ bool synced_context::can_undo()
 	assert(is_synced());
 	// if we called the rng or if we sent data of this action over the network already, undoing is impossible.
 	return (!is_simultaneously_) && (randomness::generator->get_random_calls() == 0);
-}
-
-void synced_context::set_last_unit_id(int id)
-{
-	last_unit_id_ = id;
 }
 
 int synced_context::get_unit_id_diff()
@@ -371,11 +336,6 @@ config synced_context::ask_server_choice(const server_choice& sch)
 void synced_context::add_undo_commands(const config& commands, const game_events::queued_event& ctx)
 {
 	undo_commands_.emplace_front(commands, ctx);
-}
-
-void synced_context::reset_undo_commands()
-{
-	undo_commands_.clear();
 }
 
 set_scontext_synced_base::set_scontext_synced_base()

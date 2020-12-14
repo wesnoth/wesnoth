@@ -86,23 +86,34 @@ public:
 	 * @return Whether we are currently executing a synced action like recruit, start, recall, disband, movement,
 	 * attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar.
 	 */
-	static synced_state get_synced_state();
+	static synced_state get_synced_state()
+	{
+		return state_;
+	}
 
 	/**
 	 * @return Whether we are currently executing a synced action like recruit, start, recall, disband, movement,
 	 * attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar.
 	 */
-	static bool is_synced();
+	static bool is_synced()
+	{
+		return get_synced_state() == SYNCED;
+	}
 
 	/**
 	 * @return Whether we are not currently executing a synced action like recruit, start, recall, disband, movement,
 	 * attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar. and not doing a local choice.
 	 */
-
-	static bool is_unsynced();
+	static bool is_unsynced()
+	{
+		return get_synced_state() == UNSYNCED;
+	}
 
 	/** Should only be called form set_scontext_synced, set_scontext_local_choice */
-	static void set_synced_state(synced_state newstate);
+	static void set_synced_state(synced_state newstate)
+	{
+		state_ = newstate;
+	}
 
 	/** Generates a new seed for a synced event, by asking the 'server' */
 	static std::string generate_random_seed();
@@ -128,14 +139,17 @@ public:
 	/** @return A rng_deterministic if in determinsic mode otherwise a rng_synced. */
 	static std::shared_ptr<randomness::rng> get_rng_for_action();
 
-	/**
-	 * @return whether we already sent data about the current action to other clients. which means we cannot undo it.
-	 * returns is_simultaneously_
-	 */
-	static bool is_simultaneously();
+	/** @return whether we already sent data about the current action to other clients. which means we cannot undo it. */
+	static bool is_simultaneously()
+	{
+		return is_simultaneously_;
+	}
 
 	/** Sets is_simultaneously_ = false, called when entering the synced context. */
-	static void reset_is_simultaneously();
+	static void reset_is_simultaneously()
+	{
+		is_simultaneously_ = false;
+	}
 
 	/** Sets is_simultaneously_ = true, called using a user choice that is not the currently playing side. */
 	static void set_is_simultaneously();
@@ -143,7 +157,10 @@ public:
 	/** @return Whether there were recently no methods called that prevent undoing. */
 	static bool can_undo();
 
-	static void set_last_unit_id(int id);
+	static void set_last_unit_id(int id)
+	{
+		last_unit_id_ = id;
+	}
 
 	static int get_unit_id_diff();
 
@@ -174,7 +191,11 @@ public:
 	}
 
 	static void add_undo_commands(const config& commands, const game_events::queued_event& ctx);
-	static void reset_undo_commands();
+
+	static void reset_undo_commands()
+	{
+		undo_commands_.clear();
+	}
 
 private:
 	/** Weather we are in a synced move, in a user_choice, or none of them. */
