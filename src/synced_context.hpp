@@ -140,19 +140,19 @@ public:
 	static std::shared_ptr<randomness::rng> get_rng_for_action();
 
 	/** @return whether we already sent data about the current action to other clients. which means we cannot undo it. */
-	static bool is_simultaneously()
+	static bool is_simultaneous()
 	{
-		return is_simultaneously_;
+		return is_simultaneous_;
 	}
 
-	/** Sets is_simultaneously_ = false, called when entering the synced context. */
-	static void reset_is_simultaneously()
+	/** Sets is_simultaneous_ = false, called when entering the synced context. */
+	static void reset_is_simultaneous()
 	{
-		is_simultaneously_ = false;
+		is_simultaneous_ = false;
 	}
 
-	/** Sets is_simultaneously_ = true, called using a user choice that is not the currently playing side. */
-	static void set_is_simultaneously();
+	/** Sets is_simultaneous_ = true, called using a user choice that is not the currently playing side. */
+	static void set_is_simultaneous();
 
 	/** @return Whether there were recently no methods called that prevent undoing. */
 	static bool can_undo();
@@ -210,7 +210,7 @@ private:
 	 *
 	 * TODO: it would be better if the following variable were not static.
 	 */
-	static bool is_simultaneously_;
+	static bool is_simultaneous_;
 
 	/** Used to restore the unit id manager when undoing. */
 	static int last_unit_id_;

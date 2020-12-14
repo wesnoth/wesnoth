@@ -49,7 +49,7 @@ static lg::log_domain log_replay("replay");
 synced_context::synced_state synced_context::state_ = synced_context::UNSYNCED;
 int synced_context::last_unit_id_ = 0;
 synced_context::event_list synced_context::undo_commands_;
-bool synced_context::is_simultaneously_ = false;
+bool synced_context::is_simultaneous_ = false;
 
 bool synced_context::run(const std::string& commandname,
 	const config& data,
@@ -198,10 +198,10 @@ std::string synced_context::generate_random_seed()
 	return seed_val.str();
 }
 
-void synced_context::set_is_simultaneously()
+void synced_context::set_is_simultaneous()
 {
 	resources::undo_stack->clear();
-	is_simultaneously_ = true;
+	is_simultaneous_ = true;
 }
 
 bool synced_context::can_undo()
@@ -209,7 +209,7 @@ bool synced_context::can_undo()
 	// this method should only works in a synced context.
 	assert(is_synced());
 	// if we called the rng or if we sent data of this action over the network already, undoing is impossible.
-	return (!is_simultaneously_) && (randomness::generator->get_random_calls() == 0);
+	return (!is_simultaneous_) && (randomness::generator->get_random_calls() == 0);
 }
 
 int synced_context::get_unit_id_diff()
@@ -226,7 +226,7 @@ void synced_context::pull_remote_user_input()
 
 void synced_context::send_user_choice()
 {
-	assert(is_simultaneously_);
+	assert(is_simultaneous_);
 	syncmp_registry::send_user_choice();
 }
 
@@ -258,7 +258,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 		return sch.local_choice();
 	}
 
-	set_is_simultaneously();
+	set_is_simultaneous();
 	resources::controller->increase_server_request_number();
 	const bool is_mp_game = resources::controller->is_networked_mp();
 	bool did_require = false;
@@ -348,7 +348,7 @@ set_scontext_synced_base::set_scontext_synced_base()
 	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
 
 	synced_context::set_synced_state(synced_context::SYNCED);
-	synced_context::reset_is_simultaneously();
+	synced_context::reset_is_simultaneous();
 	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
 	synced_context::reset_undo_commands();
 
