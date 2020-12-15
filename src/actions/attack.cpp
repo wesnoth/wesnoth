@@ -865,7 +865,7 @@ attack::attack(const map_location& attacker,
 	, use_prng_(resources::classification->random_mode == "biased" && randomness::generator->is_networked() == false)
 {
 	if(use_prng_) {
-		std::cerr << "Using experimental PRNG for combat\n";
+		LOG_NG << "Using experimental PRNG for combat\n";
 	}
 }
 
