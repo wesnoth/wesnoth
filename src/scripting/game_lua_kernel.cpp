@@ -111,8 +111,6 @@
 #include "deprecation.hpp"
 
 #include <functional>               // for bind_t, bind
-#include <boost/range/algorithm/copy.hpp>    // boost::copy
-#include <boost/range/adaptors.hpp>     // boost::adaptors::filtered
 #include <array>
 #include <cassert>                      // for assert
 #include <cstring>                      // for strcmp
@@ -1879,10 +1877,6 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 	return 1;
 }
 
-static bool intf_find_cost_map_helper(const unit * ptr) {
-	return ptr->get_location().valid();
-}
-
 template<typename T> // This is only a template so I can avoid typing out the long typename. >_>
 static int load_fake_units(lua_State* L, int arg, T& fake_units)
 {
@@ -1952,7 +1946,11 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	}
 	else if (!filter.null())  // 1. arg - filter
 	{
-		boost::copy(unit_filter(filter).all_matches_on_map() | boost::adaptors::filtered(&intf_find_cost_map_helper), std::back_inserter(real_units));
+		for(const ::unit* match : unit_filter(filter).all_matches_on_map()) {
+			if(match->get_location().valid()) {
+				real_units.push_back(match);
+			}
+		}
 	}
 	else  // 1. arg - coordinates
 	{
