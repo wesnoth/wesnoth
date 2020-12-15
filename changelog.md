@@ -29,7 +29,7 @@
    * Link awareness is now configured on a per-instance basis for labels/scroll labels instead of globally in their definition.
  ### WML Engine
    * Add a overwrite_specials option for abilities like weapon could overwrite specials or other ablities like weapon
-   * Extent special_id_active and special_type_active to abilities used like weapon and add a [filter_specials] tag for specify the source when wml develloper need.
+   * Extent special_id_active and special_type_active to abilities used like weapon and add special_only_id_active and special_only_type_active for [specials] only.
    * abilities used like weapon can call [leading_anim] now.
  ### Miscellaneous and Bug Fixes
    * Fixed several possible crashes in wmllint
