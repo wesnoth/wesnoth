@@ -578,7 +578,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	// If cfg specifies [advancement]s, replace this [advancement]s with them.
 	if(cfg.has_child("advancement")) {
 		set_attr_changed(UA_ADVANCEMENTS);
-		this->advancements_.clear();
+		advancements_.clear();
 		for(const config& adv : cfg.child_range("advancement")) {
 			advancements_.push_back(adv);
 		}
@@ -590,7 +590,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_attr_changed(UA_ABILITIES);
 		abilities_.clear();
 		for(const config& abilities : cfg_range) {
-			this->abilities_.append(abilities);
+			abilities_.append(abilities);
 		}
 	}
 
@@ -1375,7 +1375,7 @@ void unit::set_state(const std::string& state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	for(const config::any_child &ab : this->abilities_.all_children_range()) {
+	for(const config::any_child &ab : abilities_.all_children_range()) {
 		if(ab.cfg["id"] == ability) {
 			return true;
 		}
@@ -1387,10 +1387,10 @@ bool unit::has_ability_by_id(const std::string& ability) const
 void unit::remove_ability_by_id(const std::string& ability)
 {
 	set_attr_changed(UA_ABILITIES);
-	config::all_children_iterator i = this->abilities_.ordered_begin();
-	while (i != this->abilities_.ordered_end()) {
+	config::all_children_iterator i = abilities_.ordered_begin();
+	while (i != abilities_.ordered_end()) {
 		if(i->cfg["id"] == ability) {
-			i = this->abilities_.erase(i);
+			i = abilities_.erase(i);
 		} else {
 			++i;
 		}
@@ -1563,7 +1563,7 @@ void unit::write(config& cfg, bool write_all) const
 	}
 	if(write_all || get_attr_changed(UA_ADVANCEMENTS)) {
 		cfg.clear_children("advancement");
-		for(const config& advancement : this->advancements_) {
+		for(const config& advancement : advancements_) {
 			if(!advancement.empty()) {
 				cfg.add_child("advancement", advancement);
 			}
@@ -2089,7 +2089,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 					to_append.add_child(ab.key, ab.cfg);
 				}
 			}
-			this->abilities_.append(to_append);
+			abilities_.append(to_append);
 		}
 	} else if(apply_to == "remove_ability") {
 		if(const config& ab_effect = effect.child("abilities")) {
