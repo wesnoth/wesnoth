@@ -219,7 +219,7 @@ void game_version::pre_show(window& window)
 		if(!dep[2].empty()) {
 			list_data["dep_rt_version"]["label"] = dep[2];
 		} else {
-			list_data["dep_rt_version"]["label"] = _("version^N/A");
+			list_data["dep_rt_version"]["label"] = font::unicode_em_dash;
 		}
 
 		deps_listbox.add_row(list_data);
