@@ -40,7 +40,7 @@ public:
 	{
 		RNG_DEFAULT,
 		RNG_SAVE_SEED,
-		RNG_USE_PRNG,
+		RNG_BIASED,
 	};
 
 	explicit campaign_selection(ng::create_engine& eng)
