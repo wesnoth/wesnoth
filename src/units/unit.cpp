@@ -54,7 +54,6 @@
 #include "variable.hpp" // for vconfig, etc
 
 #include <boost/dynamic_bitset.hpp>
-#include <boost/function_output_iterator.hpp>
 
 #ifdef _MSC_VER
 #pragma warning (push)
@@ -244,19 +243,6 @@ static unit_race::GENDER generate_gender(const unit_type& u_type, const config& 
 
 	return generate_gender(u_type, cfg["random_gender"].to_bool());
 }
-
-struct ptr_vector_pushback
-{
-	ptr_vector_pushback(boost::ptr_vector<config>& vec) : vec_(&vec) {}
-
-	void operator()(const config& cfg)
-	{
-		vec_->push_back(new config(cfg));
-	}
-
-	//Don't use reference to be copyable.
-	boost::ptr_vector<config>* vec_;
-};
 
 // Copy constructor
 unit::unit(const unit& o)
@@ -593,7 +579,9 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	if(cfg.has_child("advancement")) {
 		set_attr_changed(UA_ADVANCEMENTS);
 		this->advancements_.clear();
-		boost::copy(cfg.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
+		for(const config& adv : cfg.child_range("advancement")) {
+			advancements_.push_back(adv);
+		}
 	}
 
 	// Don't use the unit_type's abilities if this config has its own defined
@@ -919,7 +907,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	advancements_.clear();
 
 	for(const config& advancement : new_type.advancements()) {
-		advancements_.push_back(new config(advancement));
+		advancements_.push_back(advancement);
 	}
 
 	// If unit has specific profile, remember it and keep it after advancing
@@ -1801,11 +1789,7 @@ std::vector<config> unit::get_modification_advances() const
 void unit::set_advancements(std::vector<config> advancements)
 {
 	set_attr_changed(UA_ADVANCEMENTS);
-	this->advancements_.clear();
-	for(config& advancement : advancements) {
-		this->advancements_.push_back(new config());
-		this->advancements_.back().swap(advancement);
-	}
+	advancements_ = advancements;
 }
 
 const std::string& unit::type_id() const
@@ -2174,8 +2158,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 				advancements_.clear();
 			}
 
-			config temp = effect;
-			boost::copy(effect.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
+			for(const config& adv : effect.child_range("advancement")) {
+				advancements_.push_back(adv);
+			}
 		}
 	} else if(apply_to == "remove_advancement") {
 		const std::string& types = effect["types"];
