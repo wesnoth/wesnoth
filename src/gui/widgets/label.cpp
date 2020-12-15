@@ -328,6 +328,9 @@ builder_label::builder_label(const config& cfg)
 	, can_shrink(cfg["can_shrink"].to_bool(false))
 	, link_aware(cfg["link_aware"].to_bool(false))
 {
+	if(link_aware && !use_markup) {
+		WRN_GUI_L << "Link awareness enabled for label '" + id + "' but markup is disabled. Links will not be highlighted." << std::endl;
+	}
 }
 
 widget* builder_label::build() const
