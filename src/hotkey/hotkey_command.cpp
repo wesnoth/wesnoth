@@ -200,7 +200,6 @@ std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 
 	{ HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, "editor-toggle-canrecruit", N_("Can Recruit"), false, scope_editor, HKCAT_TOOLS, N_("Toggle the recruit attribute of a unit.") },
 	{ HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE, "editor-toggle-renameable", N_("Can be Renamed"), false, scope_editor, HKCAT_TOOLS, N_("Toggle the unit being renameable.") },
-	{ HOTKEY_EDITOR_UNIT_RECRUIT_ASSIGN, "editor-unit-recruit", N_("Assign Recruit List"), false, scope_editor, HKCAT_TOOLS, N_("Assign the selected unit set as recruit list to the unit.") },
 
 	{ HOTKEY_EDITOR_UNIT_CHANGE_ID, "editor-change-unitid", N_("Change Unit ID"), false, scope_editor, HKCAT_TOOLS, "" },
 	{ HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL, "editor-unit-toggle-loyal", N_("Loyal"), false, scope_editor, HKCAT_TOOLS, "" },
