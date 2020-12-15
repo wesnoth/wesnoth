@@ -863,6 +863,8 @@ attack::attack(const map_location& attacker,
 
 	//new experimental prng mode.
 	, use_prng_(resources::classification->random_mode == "biased" && randomness::generator->is_networked() == false)
+	, prng_attacker_()
+	, prng_defender_()
 {
 	if(use_prng_) {
 		LOG_NG << "Using experimental PRNG for combat\n";
