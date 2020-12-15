@@ -6,8 +6,14 @@
  ### Add-ons client
    * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
  ### Campaigns
+   * Dead Water
+     * Reduce campaign difficulty
    * Eastern Invasion:
      * S03: fix the initial keep being blocked at the start
+   * Heir to the Throne
+     * Tweak campaign difficulty
+   * The South Guard
+     * Reduce campaign difficulty
  ### Multiplayer
    * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
  ### Packaging
