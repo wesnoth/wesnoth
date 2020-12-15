@@ -61,8 +61,16 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 				return false;
 			}
 
-			if(dlg.get_rng_mode() != gui2::dialogs::campaign_selection::RNG_DEFAULT) {
-				random_mode = "deterministic";
+			switch(dlg.get_rng_mode()) {
+				case gui2::dialogs::campaign_selection::RNG_DEFAULT:
+					random_mode = "";
+					break;
+				case gui2::dialogs::campaign_selection::RNG_SAVE_SEED:
+					random_mode = "deterministic";
+					break;
+				case gui2::dialogs::campaign_selection::RNG_BIASED:
+					random_mode = "biased";
+					break;
 			}
 
 			difficulty = dlg.get_difficulty();
