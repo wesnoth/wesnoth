@@ -305,7 +305,6 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
-		case HOTKEY_EDITOR_UNIT_RECRUIT_ASSIGN:
 		case HOTKEY_EDITOR_UNIT_FACING:
 		case HOTKEY_UNIT_DESCRIPTION:
 		{
@@ -763,14 +762,6 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			change_unit_id();
 			return true;
 
-		case HOTKEY_EDITOR_UNIT_RECRUIT_ASSIGN:
-		{
-			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
-			const std::set<std::string>& recruit_set = toolkit_->get_palette_manager()->unit_palette_->get_selected_bg_items();
-			std::vector<std::string> recruits(recruit_set.begin(), recruit_set.end());
-			un->set_recruits(recruits);
-		}
 		return true;
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		{
