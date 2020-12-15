@@ -118,7 +118,7 @@ void campaign_selection::campaign_selected()
 
 		if(!diff_config.empty()) {
 			std::vector<config> entry_list;
-			unsigned n = 0, selection = 0;
+			unsigned n = 0, selection = 0, max_n = diff_config.child_count("difficulty");
 
 			for(const auto& cfg : diff_config.child_range("difficulty")) {
 				config entry;
@@ -126,6 +126,20 @@ void campaign_selection::campaign_selected()
 				// FIXME: description may have markup that will display weird on the menu_button proper
 				entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
 				entry["image"] = cfg["image"].str("misc/blank-hex.png");
+
+				if(preferences::is_campaign_completed(tree.selected_item()->id(), cfg["define"])) {
+					std::string laurel;
+
+					if(n + 1 >= max_n) {
+						laurel = game_config::images::victory_laurel_hardest;
+					} else if(n == 0) {
+						laurel = game_config::images::victory_laurel_easy;
+					} else {
+						laurel = game_config::images::victory_laurel;
+					}
+
+					entry["image"] = laurel + "~BLIT(" + entry["image"] + ")";
+				}
 
 				if(!cfg["description"].empty()) {
 					std::string desc;
