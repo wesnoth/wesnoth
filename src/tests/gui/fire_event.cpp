@@ -21,7 +21,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <sstream>
 

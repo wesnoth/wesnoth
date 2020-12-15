@@ -26,7 +26,7 @@
 
 #include "game_config.hpp"
 #include "preferences/general.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

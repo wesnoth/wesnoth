@@ -168,6 +168,15 @@
 # You can disable this sanity check for the current line with the comment
 # "# wmllint: no ellipsecheck".
 #
+# In the 1.13 development series, the ability to implement custom conditional
+# tags by using Lua was added. wmllint, of course, doesn't handle Lua files,
+# so to avoid having them incorrectly recognized as "illegal child of [if]"
+# you can declare them with this magic comment:
+# # wmllint: conditional tag <tag_name>
+# Do not surround <tag_name> with square braces, because wmllint will do so
+# automatically; on the other hand, you can specify multiple tags to be
+# recognized as a comma-separated list.
+#
 #                              DEVELOPER INFORMATION
 #
 # All conversion logic for lifting WML and maps from older versions of the
@@ -1122,6 +1131,12 @@ storedids = {}
 # magic comment, "#wmllint: usagetype[s]".
 usage_types = ["scout", "fighter", "mixed fighter", "archer", "healer"]
 
+# Since 1.13, UMC authors can define their own conditional tags in Lua
+# This list can be populated by using the magic comment
+# # wmllint: conditional tag <tag_name>
+# It will be then used by local_sanity_check()
+custom_conditionals = []
+
 # These are accumulated by sanity_check() and examined by consistency_check()
 unit_types = []
 derived_units = []
@@ -1318,6 +1333,16 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     if ancestors:
         parent = ancestors[-1]
         ancestors = ancestors[:-1]
+    # Magic comment for adding custom conditional tags
+    # Placed here rather than in global_sanity_check(), because
+    # local_sanity_check() is used first
+    # Do not use square braces while listing the new tags
+    # they'll be automatically added by the code below
+    # this is done to prevent possible interactions with other parts of the code
+    m = re.search("# *wmllint: conditional tag +(.*)", nav.text)
+    if m:
+        for new_conditional in m.group(1).split(","):
+            custom_conditionals.append("[" + new_conditional.strip() + "]")
     # Check for things marked translated that aren't strings or name generators
     if "_" in nav.text and not ignored:
         m = re.search(r'[=(]\s*_\s+("|<<)?', nav.text)
@@ -1331,8 +1356,8 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         else:
             actual_tag = nav.element
         if actual_tag not in ("[part]", "[background_layer]", "[image]", "[insert_tag]",
-                              "[if]", "[then]", "[else]", "[switch]", "[case]",
-                              "[variable]", "[deprecated_message]"):
+                              "[if]", "[then]", "[elseif]", "[else]", "[switch]", "[case]",
+                              "[variable]", "[deprecated_message]", "[wml_message]"):
             print(errlead + '%s not permitted within [part] tag' % nav.element)
     # Most tags are not permitted inside [if]
     if (len(ancestors) >= 1 and parent == "[if]") or \
@@ -1340,7 +1365,11 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if isOpener(nav.element) and nav.element not in ("[and]",
                            "[else]", "[elseif]", "[frame]", "[have_location]",
                            "[have_unit]", "[not]", "[or]", "[then]", "[lua]",
-                           "[variable]") and not nav.element.endswith("_frame]") and not nav.element.startswith("[filter"):
+                           "[variable]", "[true]", "[false]", "[found_item]",
+                           "[proceed_to_next_scenario]") \
+                           and not nav.element.endswith("_frame]") \
+                           and not nav.element.startswith("[filter") and \
+                           nav.element not in custom_conditionals:
             print(errlead + 'illegal child of [if]:', nav.element)
     # Check for fluky credit parts
     if parent == "[entry]":
@@ -1587,26 +1616,22 @@ def global_sanity_check(filename, lines):
                 elif key == "hitpoints":
                     hitpoints_specified = True
                 elif key == "usage":
-                    assert(unit_id)
-                    usage[unit_id] = value
+                    unit_usage = value
                 elif key == "movement_type":
                     if '{' not in value:
-                        assert(unit_id)
-                        unit_movetypes.append((unit_id, filename, nav.lineno + 1, value))
+                        temp_movetypes.append((filename, nav.lineno + 1, value))
                     if value == "undeadspirit":
                         spirit_note_needed = True
                     elif value == "mounted":
                         defense_cap_note_needed = True
                 elif key == "race":
                     if '{' not in value:
-                        assert(unit_id or base_unit)
                         unit_race = value
-                        unit_races.append((unit_id, filename, nav.lineno + 1, unit_race))
+                        temp_races.append((filename, nav.lineno + 1, unit_race))
                 elif key == "advances_to":
-                    assert(unit_id or base_unit)
                     advancements = value
                     if advancements.strip() != "null":
-                        advances.append((unit_id, filename, nav.lineno + 1, advancements))
+                        temp_advances.append((filename, nav.lineno + 1, advancements))
                 elif key == "type" and value == "arcane" and "[attack]" in nav.ancestors():
                     arcane_note_needed = True
                 elif "[defense]" in nav.ancestors() and re.match(r"\-\d+",value):
@@ -2154,9 +2179,13 @@ to be called on their own".format(filename, num))
                         present.append(args[1])
                 elif macname == 'CLEAR_VARIABLE':
                     (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
-                    for arg in [x.lstrip() for x in args[1].split(',')]:
-                        if arg in storedids:
-                            del storedids[arg]
+                    # having CLEAR_VARIABLE on a line and its arguments in the following lines
+                    # leads to an args list with length 1
+                    # skip the check and avoid a crash if that's the case
+                    if len(args) > 1:
+                        for arg in [x.lstrip() for x in args[1].split(',')]:
+                            if arg in storedids:
+                                del storedids[arg]
                 elif macname in whomacros:
                     (args, optional_args, brack, paren) = parse_macroref(0, leadmac.string)
                     present.append(args[whomacros[macname]])
@@ -2455,6 +2484,7 @@ def hack_syntax(filename, lines):
 
     # Ensure that every attack has a translatable description.
     in_filter_wml = False
+    attack_left_open = False
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
 
@@ -2470,7 +2500,14 @@ def hack_syntax(filename, lines):
                 if lines[j].strip().startswith("description"):
                     have_description = True
                 j += 1
-            if not have_description:
+                # unterminated [attack] tags, for example embedded in a macro,
+                # lead to a crash. Print an error message, skip this loop
+                # and the following one
+                if j >= len(lines):
+                    print("{}, line {}: [attack] tag not closed in this file".format(filename, i+1))
+                    attack_left_open = True
+                    break
+            if (not have_description) and (not attack_left_open):
                 j = i
                 while '[/attack]' not in lines[j]:
                     fields = lines[j].strip().split('#')
@@ -2781,9 +2818,8 @@ def translator(filename, mapxforms, textxform):
             if refname == refname.upper():
                 pass
             elif 'mask=' in line and not (refname.endswith("}") or refname.endswith(".mask")):
-                print('"%s", line %d: fatal error, mask file without .mask extension (%s)' \
+                print('"%s", line %d: mask file without .mask extension or not a mask file (%s)' \
                       % (filename, lineno+1, refname))
-                sys.exit(1)
         # Exclude map_data= lines that are just 1 line without
         # continuation, or which contain {}.  The former are
         # pathological and the parse won't handle them, the latter
@@ -2846,8 +2882,8 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = [x for x in line]
                     outmap.append(fields)
-                    if not maskwarn and maptype == 'map' and "_f" in line:
-                        print('"%s", line %d: warning, fog in map file' \
+                    if not maskwarn and maptype == 'map' and ("_f" in line or "_s" in line):
+                        print('"%s", line %d: warning, fog or shroud in map file' \
                               % (filename, lineno+1))
                         maskwarn = True
             # Deduce the map type

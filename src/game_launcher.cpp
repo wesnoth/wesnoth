@@ -45,6 +45,7 @@
 #include "game_initialization/multiplayer.hpp"              // for start_client, etc
 #include "game_initialization/create_engine.hpp"
 #include "game_initialization/playcampaign.hpp"             // for play_game, etc
+#include "preferences/advanced.hpp"  // for advanced_manager
 #include "preferences/general.hpp"              // for disable_preferences_save, etc
 #include "preferences/display.hpp"
 #include "savegame.hpp"                 // for clean_saves, etc
@@ -100,26 +101,27 @@ static lg::log_domain log_network("network");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-game_launcher::game_launcher(const commandline_options& cmdline_opts, const char *appname) :
-	cmdline_opts_(cmdline_opts),
-	video_(new CVideo()),
-	font_manager_(),
-	prefs_manager_(),
-	image_manager_(),
-	main_event_context_(),
-	hotkey_manager_(),
-	music_thinker_(),
-	music_muter_(),
-	test_scenarios_{"test"},
-	screenshot_map_(),
-	screenshot_filename_(),
-	state_(),
-	play_replay_(false),
-	multiplayer_server_(),
-	jump_to_multiplayer_(false),
-	jump_to_campaign_(false, false, -1, "", ""),
-	jump_to_editor_(false),
-	load_data_()
+game_launcher::game_launcher(const commandline_options& cmdline_opts, const char* appname)
+	: cmdline_opts_(cmdline_opts)
+	, video_(new CVideo())
+	, font_manager_()
+	, prefs_manager_()
+	, advanced_prefs_manager_()
+	, image_manager_()
+	, main_event_context_()
+	, hotkey_manager_()
+	, music_thinker_()
+	, music_muter_()
+	, test_scenarios_{"test"}
+	, screenshot_map_()
+	, screenshot_filename_()
+	, state_()
+	, play_replay_(false)
+	, multiplayer_server_()
+	, jump_to_multiplayer_(false)
+	, jump_to_campaign_(false, false, -1, "", "")
+	, jump_to_editor_(false)
+	, load_data_()
 {
 	bool no_music = false;
 	bool no_sound = false;
@@ -434,13 +436,17 @@ bool game_launcher::init_lua_script()
 	return !error;
 }
 
+void game_launcher::init_advanced_prefs_manager()
+{
+	advanced_prefs_manager_ = std::make_unique<preferences::advanced_manager>(game_config_manager::get()->game_config());
+}
+
 void game_launcher::set_test(const std::string& id)
 {
 	state_.clear();
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
 	state_.classification().campaign_define = "TEST";
 	state_.classification().era_id = "era_default";
-
 
 	state_.set_carryover_sides_start(
 		config {"next_scenario", id}
@@ -972,8 +978,7 @@ bool game_launcher::play_multiplayer_commandline()
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 
-	mp::start_local_game_commandline(
-	    game_config_manager::get()->game_config(), state_, cmdline_opts_);
+	mp::start_local_game_commandline(state_, cmdline_opts_);
 
 	return false;
 }
@@ -993,7 +998,7 @@ bool game_launcher::change_language()
 
 void game_launcher::show_preferences()
 {
-	gui2::dialogs::preferences_dialog::display(game_config_manager::get()->game_config());
+	gui2::dialogs::preferences_dialog::display();
 }
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)

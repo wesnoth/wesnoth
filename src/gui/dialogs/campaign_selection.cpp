@@ -32,7 +32,7 @@
 #include "lexical_cast.hpp"
 #include "preferences/game.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/irdya_datetime.hpp"
 
 namespace gui2
@@ -79,7 +79,7 @@ namespace dialogs
 
 REGISTER_DIALOG(campaign_selection)
 
-void campaign_selection::campaign_selected()
+void campaign_selection::campaign_selected() const
 {
 	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
 	if(tree.empty()) {
@@ -103,7 +103,7 @@ void campaign_selection::campaign_selected()
 	}
 }
 
-void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order, bool ascending)
+void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order, bool ascending) const
 {
 	using level_ptr = ng::create_engine::level_ptr;
 
@@ -248,7 +248,7 @@ void campaign_selection::pre_show(window& window)
 {
 	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
 	filter->set_text_changed_callback(
-			std::bind(&campaign_selection::filter_text_changed, this, _2));
+			std::bind(&campaign_selection::filter_text_changed, this, std::placeholders::_2));
 
 	/***** Setup campaign tree. *****/
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
@@ -326,7 +326,7 @@ void campaign_selection::pre_show(window& window)
 	campaign_selected();
 }
 
-void campaign_selection::add_campaign_to_tree(const config& campaign)
+void campaign_selection::add_campaign_to_tree(const config& campaign) const
 {
 	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
 	std::map<std::string, string_map> data;

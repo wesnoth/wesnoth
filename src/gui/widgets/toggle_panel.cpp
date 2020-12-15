@@ -25,7 +25,7 @@
 #include "sound.hpp"
 #include "wml_exception.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -46,34 +46,34 @@ toggle_panel::toggle_panel(const implementation::builder_toggle_panel& builder)
 	set_wants_mouse_left_double_click();
 
 	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&toggle_panel::signal_handler_mouse_enter, this, _2, _3));
+			&toggle_panel::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&toggle_panel::signal_handler_mouse_leave, this, _2, _3));
+			&toggle_panel::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 #if 0
 	connect_signal<event::LEFT_BUTTON_CLICK>(
 			std::bind(&toggle_panel::signal_handler_pre_left_button_click,
 						this,
-						_2),
+						std::placeholders::_2),
 			event::dispatcher::back_pre_child);
 #endif
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&toggle_panel::signal_handler_left_button_click, this, _2, _3));
+			&toggle_panel::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(
 			std::bind(&toggle_panel::signal_handler_left_button_click,
 						this,
-						_2,
-						_3),
+						std::placeholders::_2,
+						std::placeholders::_3),
 			event::dispatcher::back_post_child);
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(
 			std::bind(&toggle_panel::signal_handler_left_button_double_click,
 						this,
-						_2,
-						_3));
+						std::placeholders::_2,
+						std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(
 			std::bind(&toggle_panel::signal_handler_left_button_double_click,
 						this,
-						_2,
-						_3),
+						std::placeholders::_2,
+						std::placeholders::_3),
 			event::dispatcher::back_post_child);
 }
 
@@ -413,7 +413,7 @@ widget* builder_toggle_panel::build() const
 	DBG_GUI_G << "Window builder: placed toggle panel '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	widget->init_grid(grid);
+	widget->init_grid(*grid);
 	return widget;
 }
 

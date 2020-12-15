@@ -39,12 +39,12 @@
 #include "game_data.hpp"
 #include "game_state.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
+#include "utils/optional_fwd.hpp"
 
 #include <map>
 #include <utility>
 #include <vector>
-#include <boost/optional.hpp>
 
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
@@ -211,7 +211,7 @@ int show_message_box(lua_State* L) {
 	std::transform(button.begin(), button.end(), std::inserter(btn_style, btn_style.begin()), [](char c) { return std::tolower(c); });
 	bool markup = lua_isnoneornil(L, 3) ? luaW_toboolean(L, 3) : luaW_toboolean(L, 4);
 	using button_style = gui2::dialogs::message::button_style;
-	boost::optional<button_style> style;
+	utils::optional<button_style> style;
 	if(btn_style.empty()) {
 		style = button_style::auto_close;
 	} else if(btn_style == "ok") {
@@ -285,7 +285,7 @@ int luaW_open(lua_State* L)
 		{ nullptr, nullptr },
 	};
 	std::vector<lua_cpp::Reg> const cpp_gui_callbacks {
-		{"show_lua_console", std::bind(&lua_kernel_base::intf_show_lua_console, &lk, _1)},
+		{"show_lua_console", std::bind(&lua_kernel_base::intf_show_lua_console, &lk, std::placeholders::_1)},
 		{nullptr, nullptr}
 	};
 	lua_newtable(L);

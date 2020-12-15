@@ -261,7 +261,7 @@ WML_HANDLER_FUNCTION(clear_global_variable,,pcfg)
 		verify_and_clear_global_variable(pcfg);
 }
 
-static void on_replay_error(const std::string& message, bool /*b*/)
+static void on_replay_error(const std::string& message)
 {
 	ERR_NG << "Error via [do_command]:" << std::endl;
 	ERR_NG << message << std::endl;
@@ -627,7 +627,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		}
 	}
 
-	boost::optional<std::string> errmsg = resources::gameboard->replace_map(map);
+	utils::optional<std::string> errmsg = resources::gameboard->replace_map(map);
 
 	if (errmsg) {
 		lg::wml_error() << *errmsg << std::endl;

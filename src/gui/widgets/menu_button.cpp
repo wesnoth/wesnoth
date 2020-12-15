@@ -25,7 +25,7 @@
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -48,26 +48,26 @@ menu_button::menu_button(const implementation::builder_menu_button& builder)
 	values_.emplace_back("label", this->get_label());
 
 	connect_signal<event::MOUSE_ENTER>(
-		std::bind(&menu_button::signal_handler_mouse_enter, this, _2, _3));
+		std::bind(&menu_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::MOUSE_LEAVE>(
-		std::bind(&menu_button::signal_handler_mouse_leave, this, _2, _3));
+		std::bind(&menu_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&menu_button::signal_handler_left_button_down, this, _2, _3));
+		std::bind(&menu_button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_UP>(
-		std::bind(&menu_button::signal_handler_left_button_up, this, _2, _3));
+		std::bind(&menu_button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(
-		std::bind(&menu_button::signal_handler_left_button_click, this, _2, _3));
+		std::bind(&menu_button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::SDL_WHEEL_UP>(
-		std::bind(&menu_button::signal_handler_sdl_wheel_up, this, _2, _3),
+		std::bind(&menu_button::signal_handler_sdl_wheel_up, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_WHEEL_DOWN>(
-		std::bind(&menu_button::signal_handler_sdl_wheel_down, this, _2, _3),
+		std::bind(&menu_button::signal_handler_sdl_wheel_down, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 }
 
@@ -141,8 +141,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup(), this->keep_open_,
-		nullptr);
+	dialogs::drop_down_menu droplist(this, values_, selected_, keep_open_);
 
 	if(droplist.show()) {
 		const int selected = droplist.selected_item();

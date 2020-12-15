@@ -21,7 +21,7 @@
 #include <vector>
 #include <deque>
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include "typedefs.hpp"
 

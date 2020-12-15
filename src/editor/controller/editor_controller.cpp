@@ -53,7 +53,7 @@
 #include "game_config_manager.hpp"
 #include "quit_confirmation.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace {
 static std::vector<std::string> saved_windows_;
@@ -96,7 +96,7 @@ void editor_controller::init_gui()
 {
 	gui_->change_display_context(&get_current_map_context());
 	preferences::set_preference_display_settings();
-	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, _1));
+	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, std::placeholders::_1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
 	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());
@@ -1103,7 +1103,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
-	gui2::dialogs::preferences_dialog::display(game_config_);
+	gui2::dialogs::preferences_dialog::display();
 
 	gui_->redraw_everything();
 }

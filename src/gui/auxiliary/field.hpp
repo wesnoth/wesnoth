@@ -578,7 +578,7 @@ private:
 					callback_change_(*widget);
 				}
 
-				connect_signal_notify_modified(*widget, std::bind(callback_change_, _1));
+				connect_signal_notify_modified(*widget, std::bind(callback_change_, std::placeholders::_1));
 			}
 		}
 	}

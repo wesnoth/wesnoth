@@ -51,7 +51,7 @@
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <sstream>
 

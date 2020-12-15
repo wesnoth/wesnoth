@@ -1,6 +1,3 @@
-
-set(CXX_FLAGS_PROJECT "${CXX_FLAGS_PROJECT} -include boost-patched/bind/arg.hpp")
-
 # store the specified sources list in the specified variable
 function(GetSources source_list store_in_var)
 	file(STRINGS "../source_lists/${source_list}" sources)
@@ -218,7 +215,7 @@ add_library(lua ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${lua_STAT_SRC})
 set_target_properties(lua
 	PROPERTIES
 	COMPILE_FLAGS
-	"-Wno-old-style-cast -Wno-useless-cast"
+	"-Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow"
 )
 
 

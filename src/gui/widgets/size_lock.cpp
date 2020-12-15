@@ -14,14 +14,14 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "size_lock.hpp"
+#include "gui/widgets/size_lock.hpp"
 
-#include <gettext.hpp>
-#include <gui/core/layout_exception.hpp>
-#include <gui/core/register_widget.hpp>
-#include <gui/widgets/helper.hpp>
-#include <gui/widgets/settings.hpp>
-#include <wml_exception.hpp>
+#include "gettext.hpp"
+#include "gui/core/layout_exception.hpp"
+#include "gui/core/register_widget.hpp"
+#include "gui/widgets/helper.hpp"
+#include "gui/widgets/settings.hpp"
+#include "wml_exception.hpp"
 
 namespace gui2
 {
@@ -68,11 +68,11 @@ void size_lock::layout_children()
 	widget_->layout_children();
 }
 
-void size_lock::finalize(builder_widget_const_ptr widget_builder)
+void size_lock::finalize(const builder_widget& widget_builder)
 {
 	set_rows_cols(1u, 1u);
 
-	widget_ = widget_builder->build();
+	widget_ = widget_builder.build();
 	set_child(widget_, 0u, 0u, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0u);
 }
 
@@ -172,8 +172,8 @@ widget* builder_size_lock::build() const
 	const auto conf = widget->cast_config_to<size_lock_definition>();
 	assert(conf != nullptr);
 
-	widget->init_grid(conf->grid);
-	widget->finalize(content_);
+	widget->init_grid(*conf->grid);
+	widget->finalize(*content_);
 
 	return widget;
 }

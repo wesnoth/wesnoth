@@ -115,7 +115,7 @@ struct builder_spacer : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 private:
 	// We store these as strings since they could contain formulas.

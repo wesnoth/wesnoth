@@ -42,7 +42,7 @@
 #include "preferences/game.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "game_config_view.hpp"
 
 #include <cctype>
@@ -119,13 +119,13 @@ game_load::game_load(const game_config_view& cache_config, savegame::load_game_m
 void game_load::pre_show(window& window)
 {
 	// Allow deleting saves with the Delete key.
-	connect_signal_pre_key_press(window, std::bind(&game_load::key_press_callback, this, _5));
+	connect_signal_pre_key_press(window, std::bind(&game_load::key_press_callback, this, std::placeholders::_5));
 
 	find_widget<minimap>(&window, "minimap", false).set_config(&cache_config_);
 
 	text_box* filter = find_widget<text_box>(&window, "txtFilter", false, true);
 
-	filter->set_text_changed_callback(std::bind(&game_load::filter_text_changed, this, _2));
+	filter->set_text_changed_callback(std::bind(&game_load::filter_text_changed, this, std::placeholders::_2));
 
 	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
 
@@ -501,7 +501,7 @@ void game_load::delete_button_callback()
 
 		// Close the dialog if there are no more saves
 		if(list.get_item_count() == 0) {
-			get_window()->set_retval(retval::CANCEL);
+			set_retval(retval::CANCEL);
 		}
 
 		display_savegame();

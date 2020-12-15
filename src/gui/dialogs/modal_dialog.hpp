@@ -16,7 +16,7 @@
 
 #include "gui/auxiliary/field-fwd.hpp"
 #include "gui/core/static_registry.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <string>
 #include <vector>
@@ -170,7 +170,6 @@ public:
 	 */
 	bool show(const unsigned auto_close_time = 0);
 
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/** Returns a pointer to the dialog's window. Will be null if it hasn't been built yet. */
@@ -179,10 +178,14 @@ public:
 		return window_.get();
 	}
 
+	/** Returns the cached window exit code. */
 	int get_retval() const
 	{
 		return retval_;
 	}
+
+	/** Convenience wrapper to set the window's exit code. */
+	void set_retval(int retval);
 
 	void set_always_save_fields(const bool always_save_fields)
 	{
@@ -330,7 +333,16 @@ protected:
 	std::unique_ptr<window> window_;
 
 private:
-	/** Returns the window exit status, 0 means not shown. */
+	/**
+	 * The window's exit code (return value).
+	 *
+	 * We keep a copy here so it may be accessed even after the dialog is closed and
+	 * the window object is destroyed.
+	 *
+	 * This value is initially set to 0 (retval::NONE) meaning the dialog was not
+	 * shown. After @ref show returns, it will hold the most recent retval of the
+	 * window object, including any modifications made in @ref post_show.
+	 */
 	int retval_;
 
 	/**
@@ -392,7 +404,7 @@ private:
 	 *
 	 * @returns                   The window to show.
 	 */
-	window* build_window() const;
+	std::unique_ptr<window> build_window() const;
 
 	/**
 	 * Actions to be taken directly after the window is build.

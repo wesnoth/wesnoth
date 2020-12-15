@@ -29,7 +29,7 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "video.hpp"
 
 #include <chrono>

@@ -19,7 +19,7 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp" // Needed for invalidate_layout()
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/math.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
@@ -51,15 +51,15 @@ slider_base::slider_base(const implementation::builder_styled_widget& builder, c
 	, snap_(true)
 {
 	connect_signal<event::MOUSE_ENTER>(
-		std::bind(&slider_base::signal_handler_mouse_enter, this, _2, _3, _4));
+		std::bind(&slider_base::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4));
 	connect_signal<event::MOUSE_MOTION>(
-		std::bind(&slider_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
+		std::bind(&slider_base::signal_handler_mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
 	connect_signal<event::MOUSE_LEAVE>(
-		std::bind(&slider_base::signal_handler_mouse_leave, this, _2, _3));
+		std::bind(&slider_base::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&slider_base::signal_handler_left_button_down, this, _2, _3));
+		std::bind(&slider_base::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-		std::bind(&slider_base::signal_handler_left_button_up, this, _2, _3));
+		std::bind(&slider_base::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 void slider_base::scroll(const scroll_mode scroll)

@@ -110,7 +110,7 @@
 #include "wml_exception.hpp"
 #include "deprecation.hpp"
 
-#include "utils/functional.hpp"               // for bind_t, bind
+#include <functional>               // for bind_t, bind
 #include <boost/range/algorithm/copy.hpp>    // boost::copy
 #include <boost/range/adaptors.hpp>     // boost::adaptors::filtered
 #include <array>
@@ -3891,7 +3891,7 @@ int game_lua_kernel::impl_theme_item(lua_State *L, std::string m)
 int game_lua_kernel::impl_theme_items_get(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
-	lua_cpp::push_closure(L, std::bind(&game_lua_kernel::impl_theme_item, this, _1, std::string(m)), 0);
+	lua_cpp::push_closure(L, std::bind(&game_lua_kernel::impl_theme_item, this, std::placeholders::_1, std::string(m)), 0);
 	lua_pushvalue(L, 2);
 	lua_pushvalue(L, -2);
 	lua_rawset(L, 1);
@@ -4395,9 +4395,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ nullptr, nullptr }
 	};
 	std::vector<lua_cpp::Reg> const cpp_side_callbacks {
-		{"add_ai_component", std::bind(intf_modify_ai, _1, "add")},
-		{"delete_ai_component", std::bind(intf_modify_ai, _1, "delete")},
-		{"change_ai_component", std::bind(intf_modify_ai, _1, "change")},
+		{"add_ai_component", std::bind(intf_modify_ai, std::placeholders::_1, "add")},
+		{"delete_ai_component", std::bind(intf_modify_ai, std::placeholders::_1, "delete")},
+		{"change_ai_component", std::bind(intf_modify_ai, std::placeholders::_1, "change")},
 		{nullptr, nullptr}
 	};
 

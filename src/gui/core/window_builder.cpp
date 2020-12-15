@@ -29,7 +29,7 @@
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {
@@ -46,14 +46,14 @@ namespace gui2
  * be tuned. This page will describe what can be tuned.
  *
  */
-window* build(const builder_window::window_resolution* definition)
+std::unique_ptr<window> build(const builder_window::window_resolution& definition)
 {
 	// We set the values from the definition since we can only determine the
 	// best size (if needed) after all widgets have been placed.
-	window* win = new window(definition);
+	auto win = std::make_unique<window>(definition);
 	assert(win);
 
-	for(const auto& lg : definition->linked_groups) {
+	for(const auto& lg : definition.linked_groups) {
 		if(win->has_linked_size_group(lg.id)) {
 			t_string msg = VGETTEXT("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
 
@@ -63,27 +63,27 @@ window* build(const builder_window::window_resolution* definition)
 		win->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
 	}
 
-	win->set_click_dismiss(definition->click_dismiss);
+	win->set_click_dismiss(definition.click_dismiss);
 
 	const auto conf = win->cast_config_to<window_definition>();
 	assert(conf);
 
 	if(conf->grid) {
-		win->init_grid(conf->grid);
-		win->finalize(definition->grid);
+		win->init_grid(*conf->grid);
+		win->finalize(*definition.grid);
 	} else {
-		win->init_grid(definition->grid);
+		win->init_grid(*definition.grid);
 	}
 
-	win->add_to_keyboard_chain(win);
+	win->add_to_keyboard_chain(win.get());
 
 	return win;
 }
 
-window* build(const std::string& type)
+std::unique_ptr<window> build(const std::string& type)
 {
 	const builder_window::window_resolution& definition = get_window_builder(type);
-	window* window = build(&definition);
+	auto window = build(definition);
 	window->set_id(type);
 	return window;
 }
@@ -429,12 +429,24 @@ builder_grid::builder_grid(const config& cfg)
 			++col;
 		}
 
+		if(col == 0) {
+			const t_string msg = VGETTEXT("Grid '$grid' row $row must have at least one column.", {
+				{"grid", id}, {"row", std::to_string(rows)}
+			});
+
+			FAIL(msg);
+		}
+
 		++rows;
+
 		if(rows == 1) {
 			cols = col;
-		} else {
-			VALIDATE(col, _("A row must have a column."));
-			VALIDATE(col == cols, _("Number of columns differ."));
+		} else if(col != cols) {
+			const t_string msg = VGETTEXT("Grid '$grid' row $row has a differing number of columns ($found found, $expected expected)", {
+				{"grid", id}, {"row", std::to_string(rows)}, {"found", std::to_string(col)}, {"expected", std::to_string(cols)}
+			});
+
+			FAIL(msg);
 		}
 	}
 

@@ -28,11 +28,9 @@ ai_context_proxy::ai_context_proxy()
 {
 }
 
-
 ai_context_proxy::~ai_context_proxy()
 {
 }
-
 
 bool rca_context::is_offense_ = false;
 bool rca_context::is_defense_ = false;
@@ -41,17 +39,14 @@ rca_context::rca_context()
 {
 }
 
-
 rca_context::~rca_context()
 {
 }
-
 
 rca_context_proxy::rca_context_proxy()
 	: target_()
 {
 }
-
 
 rca_context_proxy::~rca_context_proxy()
 {

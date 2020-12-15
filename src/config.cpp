@@ -24,7 +24,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "utils/const_clone.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "deprecation.hpp"
 #include "game_version.hpp"
 #include "serialization/string_utils.hpp"

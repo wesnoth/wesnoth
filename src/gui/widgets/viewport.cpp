@@ -77,11 +77,6 @@ struct viewport_implementation
 	}
 };
 
-viewport::viewport(widget& widget) : widget_(widget), owns_widget_(false)
-{
-	widget_.set_parent(this);
-}
-
 viewport::viewport(const implementation::builder_viewport& builder,
 					 const builder_widget::replacements_map& replacements)
 	: widget(builder)

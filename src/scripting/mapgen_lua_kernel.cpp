@@ -25,7 +25,7 @@
 
 #include <ostream>
 #include <string>
-#include "utils/functional.hpp"
+#include <functional>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -243,9 +243,9 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 
 void mapgen_lua_kernel::run_generator(const char * prog, const config & generator)
 {
-	load_string(prog, "", std::bind(&lua_kernel_base::throw_exception, this, _1, _2));
+	load_string(prog, "", std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2));
 	luaW_pushconfig(mState, generator);
-	protected_call(1, 1, std::bind(&lua_kernel_base::throw_exception, this, _1, _2));
+	protected_call(1, 1, std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
@@ -261,7 +261,7 @@ int mapgen_lua_kernel::intf_get_variable(lua_State *L)
 	variable_access_const v(m, vars_ ? *vars_ : empty_cfg);
 	return luaW_pushvariable(L, v) ? 1 : 0;
 }
-std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
+std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());
@@ -277,7 +277,7 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 	return lua_tostring(mState, -1);
 }
 
-config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
+config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());
@@ -300,8 +300,8 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 
 uint32_t mapgen_lua_kernel::get_random_seed()
 {
-	if(uint32_t* pint = random_seed_.get_ptr()) {
-		return (*pint)++;
+	if(random_seed_) {
+		return random_seed_.value()++;
 	}
 	else {
 		return lua_kernel_base::get_random_seed();

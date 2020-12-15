@@ -59,7 +59,7 @@ public:
 	/// True if healing should be done at the beginning of the next side turn
 	bool do_healing_;
 
-	boost::optional<end_level_data> end_level_data_;
+	utils::optional<end_level_data> end_level_data_;
 	bool init_side_done_;
 	bool start_event_fired_;
 	// used to sync with the mpserver

@@ -181,7 +181,7 @@ private:
 
 	void signal_handler_left_button_click(const event::ui_event event, bool& handled);
 
-	void toggle_state_changed();
+	void signal_handler_notify_changed();
 };
 
 // }---------- DEFINITION ---------{
@@ -210,7 +210,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 private:
 	unsigned max_shown_;

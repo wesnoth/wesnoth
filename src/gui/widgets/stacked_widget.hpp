@@ -123,7 +123,7 @@ private:
 	 * @param widget_builder      The builder to build the contents of the
 	 *                            widget.
 	 */
-	void finalize(std::vector<builder_grid_const_ptr> widget_builder);
+	void finalize(const std::vector<builder_grid>& widget_builders);
 
 	/**
 	 * Contains a pointer to the generator.
@@ -205,10 +205,10 @@ struct builder_stacked_widget : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	/** The builders for all layers of the stack .*/
-	std::vector<builder_grid_const_ptr> stack;
+	std::vector<builder_grid> stack;
 };
 
 } // namespace implementation

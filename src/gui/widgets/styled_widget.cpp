@@ -29,7 +29,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "sdl/rect.hpp"
 #include "wml_exception.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <algorithm>
 #include <iomanip>
@@ -77,13 +77,13 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	set_wants_mouse_hover(!tooltip_.empty());
 
 	connect_signal<event::SHOW_TOOLTIP>(std::bind(
-			&styled_widget::signal_handler_show_tooltip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_tooltip, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 
 	connect_signal<event::SHOW_HELPTIP>(std::bind(
-			&styled_widget::signal_handler_show_helptip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_helptip, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 
 	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(std::bind(
-			&styled_widget::signal_handler_notify_remove_tooltip, this, _2, _3));
+			&styled_widget::signal_handler_notify_remove_tooltip, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 void styled_widget::set_members(const string_map& data)

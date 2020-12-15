@@ -24,35 +24,35 @@
 #include "display.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp" // for VGETTEXT
-#include "game_board.hpp"			// for game_board
-#include "game_config.hpp"			// for add_color_info, etc
+#include "game_board.hpp"           // for game_board
+#include "game_config.hpp"          // for add_color_info, etc
 #include "game_data.hpp"
-#include "game_errors.hpp"		   // for game_error
+#include "game_errors.hpp"         // for game_error
 #include "game_events/manager.hpp" // for add_events
-#include "preferences/game.hpp"	// for encountered_units
-#include "gettext.hpp"			   // for N_
+#include "game_version.hpp"
+#include "gettext.hpp" // for N_
 #include "lexical_cast.hpp"
-#include "log.hpp"						 // for LOG_STREAM, logger, etc
-#include "map/map.hpp"					 // for gamemap
-#include "random.hpp"				 // for generator, rng
-#include "resources.hpp"				 // for units, gameboard, teams, etc
+#include "log.hpp"                       // for LOG_STREAM, logger, etc
+#include "map/map.hpp"                   // for gamemap
+#include "preferences/game.hpp"          // for encountered_units
+#include "random.hpp"                    // for generator, rng
+#include "resources.hpp"                 // for units, gameboard, teams, etc
 #include "scripting/game_lua_kernel.hpp" // for game_lua_kernel
-#include "side_filter.hpp"				 // for side_filter
+#include "side_filter.hpp"               // for side_filter
 #include "synced_context.hpp"
-#include "team.hpp"						 // for team, get_teams, etc
-#include "terrain/filter.hpp"			 // for terrain_filter
-#include "units/abilities.hpp"			 // for effect, filter_base_matches
-#include "units/animation.hpp"			 // for unit_animation
+#include "team.hpp"                      // for team, get_teams, etc
+#include "terrain/filter.hpp"            // for terrain_filter
+#include "units/abilities.hpp"           // for effect, filter_base_matches
+#include "units/animation.hpp"           // for unit_animation
 #include "units/animation_component.hpp" // for unit_animation_component
 #include "units/filter.hpp"
 #include "units/formula_manager.hpp" // for unit_formula_manager
 #include "units/id.hpp"
+#include "units/map.hpp" // for unit_map, etc
 #include "units/types.hpp"
-#include "units/map.hpp"	   // for unit_map, etc
-#include "variable.hpp"		   // for vconfig, etc
-#include "game_version.hpp"
+#include <functional>
+#include "variable.hpp" // for vconfig, etc
 
-#include "utils/functional.hpp"
 #include <boost/dynamic_bitset.hpp>
 #include <boost/function_output_iterator.hpp>
 
@@ -200,12 +200,6 @@ namespace
 			++cur;
 		}
 	}
-
-	template<typename T>
-	T* copy_or_null(const std::unique_ptr<T>& ptr)
-	{
-		return ptr ? new T(*ptr) : nullptr;
-	}
 } // end anon namespace
 
 /**
@@ -329,9 +323,9 @@ unit::unit(const unit& o)
 	, advancements_(o.advancements_)
 	, description_(o.description_)
 	, special_notes_(o.special_notes_)
-	, usage_(copy_or_null(o.usage_))
-	, halo_(copy_or_null(o.halo_))
-	, ellipse_(copy_or_null(o.ellipse_))
+	, usage_(o.usage_)
+	, halo_(o.halo_)
+	, ellipse_(o.ellipse_)
 	, random_traits_(o.random_traits_)
 	, generate_name_(o.generate_name_)
 	, upkeep_(o.upkeep_)
@@ -1457,16 +1451,16 @@ void unit::write(config& cfg, bool write_all) const
 		}
 	}
 
-	if(halo_.get()) {
-		cfg["halo"] = *halo_;
+	if(halo_) {
+		cfg["halo"] = halo_.value();
 	}
 
-	if(ellipse_.get()) {
-		cfg["ellipse"] = *ellipse_;
+	if(ellipse_) {
+		cfg["ellipse"] = ellipse_.value();
 	}
 
-	if(usage_.get()) {
-		cfg["usage"] = *usage_;
+	if(usage_) {
+		cfg["usage"] = usage_.value();
 	}
 
 	write_upkeep(cfg["upkeep"]);
@@ -2640,7 +2634,7 @@ void unit::set_image_halo(const std::string& halo)
 {
 	appearance_changed_ = true;
 	anim_comp_->clear_haloes();
-	halo_.reset(new std::string(halo));
+	halo_ = halo;
 }
 
 void unit::parse_upkeep(const config::attribute_value& upkeep)

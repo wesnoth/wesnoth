@@ -20,7 +20,7 @@
 #include <string>
 #include <vector>
 
-#include "utils/functional.hpp"
+#include <functional>
 
 /**
  * Used to find units in vectors by their ID.

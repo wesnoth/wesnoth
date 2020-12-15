@@ -40,7 +40,7 @@
 #include "units/types.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "whiteboard/manager.hpp"
 
 #include <boost/dynamic_bitset.hpp>
@@ -167,7 +167,7 @@ void unit_recall::pre_show(window& window)
 			= find_widget<text_box>(&window, "filter_box", false, true);
 
 	filter->set_text_changed_callback(
-			std::bind(&unit_recall::filter_text_changed, this, _2));
+			std::bind(&unit_recall::filter_text_changed, this, std::placeholders::_2));
 
 	listbox& list = find_widget<listbox>(&window, "recall_list", false);
 
@@ -402,7 +402,7 @@ void unit_recall::dismiss_unit()
 
 	// Close the dialog if all units are dismissed
 	if(list.get_item_count() == 0) {
-		get_window()->set_retval(retval::CANCEL);
+		set_retval(retval::CANCEL);
 	}
 }
 

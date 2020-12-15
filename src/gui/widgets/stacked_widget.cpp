@@ -25,7 +25,7 @@
 #include "utils/const_clone.hpp"
 #include "utils/general.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {
@@ -82,12 +82,11 @@ void stacked_widget::layout_children()
 	}
 }
 
-void
-stacked_widget::finalize(std::vector<builder_grid_const_ptr> widget_builder)
+void stacked_widget::finalize(const std::vector<builder_grid>& widget_builders)
 {
 	assert(generator_);
 	string_map empty_data;
-	for(const auto & builder : widget_builder)
+	for(const auto & builder : widget_builders)
 	{
 		generator_->create_item(-1, builder, empty_data, nullptr);
 	}
@@ -278,7 +277,7 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 	VALIDATE(cfg.has_child("layer"), _("No stack layers defined."));
 	for(const auto & layer : cfg.child_range("layer"))
 	{
-		stack.emplace_back(std::make_shared<builder_grid>(layer));
+		stack.emplace_back(layer);
 	}
 }
 
@@ -292,7 +291,7 @@ widget* builder_stacked_widget::build() const
 	const auto conf = widget->cast_config_to<stacked_widget_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(stack);
 

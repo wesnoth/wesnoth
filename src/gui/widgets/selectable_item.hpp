@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <cassert>
 
 namespace gui2

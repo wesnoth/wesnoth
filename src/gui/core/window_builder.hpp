@@ -19,7 +19,7 @@
 #include "gui/widgets/grid.hpp"
 #include "color.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 class config;
 
@@ -27,14 +27,6 @@ namespace gui2
 {
 
 class window;
-
-/**
- * Builds a window.
- *
- * @param type                    The type id string of the window, this window
- *                                must be registered at startup.
- */
-window* build(const std::string& type);
 
 /** Contains the info needed to instantiate a widget. */
 struct builder_widget
@@ -128,8 +120,8 @@ public:
 	/** The widgets per grid cell. */
 	std::vector<builder_widget_ptr> widgets;
 
-	grid* build() const;
-	widget* build(const replacements_map& replacements) const;
+	virtual grid* build() const override;
+	virtual widget* build(const replacements_map& replacements) const override;
 
 	grid* build(grid* grid) const;
 	void build(grid& grid, const replacements_map& replacements) const;
@@ -212,7 +204,15 @@ private:
 
 /**
  * Builds a window.
+ *
+ * @param type                    The type id string of the window, this window
+ *                                must be registered at startup.
  */
-window* build(const builder_window::window_resolution* res);
+std::unique_ptr<window> build(const std::string& type);
+
+/**
+ * Builds a window.
+ */
+std::unique_ptr<window> build(const builder_window::window_resolution& res);
 
 } // namespace gui2

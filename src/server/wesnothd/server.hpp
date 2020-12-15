@@ -23,10 +23,9 @@
 #include "server/common/server_base.hpp"
 #include "server/wesnothd/player_connection.hpp"
 
-#include <boost/shared_array.hpp>
-
-#include <boost/asio/signal_set.hpp>
 #include <boost/asio/steady_timer.hpp>
+
+#include <random>
 
 namespace wesnothd
 {
@@ -108,6 +107,8 @@ private:
 	std::unique_ptr<user_handler> user_handler_;
 	std::map<socket_ptr::element_type*, std::string> seeds_;
 
+	std::mt19937 die_;
+
 	player_connections player_connections_;
 	std::deque<std::shared_ptr<game>> games() {
 		std::deque<std::shared_ptr<game>> result;
@@ -169,7 +170,6 @@ private:
 
 	simple_wml::document version_query_response_;
 	simple_wml::document login_response_;
-	simple_wml::document join_lobby_response_;
 	simple_wml::document games_and_users_list_;
 
 	metrics metrics_;
@@ -207,6 +207,7 @@ private:
 	void stats_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void metrics_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void requests_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void roll_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void games_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void wml_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void netstats_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);

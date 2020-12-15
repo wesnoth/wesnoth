@@ -43,7 +43,7 @@
 #include "filter_context.hpp"
 
 #include <vector>
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace
 {
@@ -380,14 +380,14 @@ public:
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&))
 	{
 		C& sub_controller = *get_controller<C>();
-		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1));
+		callbacks.emplace(node_path, std::bind(fcn, sub_controller, std::placeholders::_1));
 	}
 
 	template<typename C, typename T>
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&, T), T param)
 	{
 		C& sub_controller = *get_controller<C>();
-		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1, param));
+		callbacks.emplace(node_path, std::bind(fcn, sub_controller, std::placeholders::_1, param));
 	}
 
 	void bind(window& window)
@@ -399,7 +399,7 @@ public:
 		auto right_button = find_widget<button>(&window, "page_right", false, true);
 
 		connect_signal_notify_modified(*stuff_list,
-			std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, _1));
+			std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, std::placeholders::_1));
 
 		connect_signal_mouse_left_click(
 				*copy_button,

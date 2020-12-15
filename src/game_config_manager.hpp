@@ -14,14 +14,13 @@
 
 #pragma once
 
-#include <boost/optional.hpp>
-
 #include "commandline_options.hpp"
+#include "config.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
-#include "terrain/type_data.hpp"
-#include "config.hpp"
 #include "game_config_view.hpp"
+#include "terrain/type_data.hpp"
+#include "utils/optional_fwd.hpp"
 
 class game_classification;
 class game_config_manager
@@ -63,7 +62,7 @@ private:
 	void load_game_config(bool reload_everything);
 
 	void load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
-		game_classification const* classification = nullptr, boost::optional<std::set<std::string>> active_addons = boost::optional<std::set<std::string>>());
+		game_classification const* classification = nullptr, utils::optional<std::set<std::string>> active_addons = utils::nullopt);
 
 	// load_game_config() helper functions.
 	void load_addons_cfg();
@@ -77,7 +76,7 @@ private:
 	game_config_view game_config_view_;
 
 	std::map<std::string, config> addon_cfgs_;
-	boost::optional<std::set<std::string>> active_addons_;
+	utils::optional<std::set<std::string>> active_addons_;
 
 	preproc_map old_defines_map_;
 

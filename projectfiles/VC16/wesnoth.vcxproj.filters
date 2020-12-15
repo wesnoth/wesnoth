@@ -704,6 +704,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\addon\install_dependencies.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\license_prompt.cpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\addon\manager.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
@@ -1590,6 +1593,9 @@
     <ClCompile Include="..\..\src\units\orb_status.cpp">
       <Filter>Units</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\preferences\advanced.cpp">
+      <Filter>Preferences</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2150,6 +2156,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\addon\install_dependencies.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\addon\license_prompt.hpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\addon\manager.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
@@ -2481,9 +2490,6 @@
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\context_free_grammar_generator.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\functional.hpp">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\general.hpp">
@@ -3089,6 +3095,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\units\orb_status.hpp">
       <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\optional_fwd.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\preferences\advanced.hpp">
+      <Filter>Preferences</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

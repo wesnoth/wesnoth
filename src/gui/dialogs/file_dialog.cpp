@@ -259,7 +259,7 @@ void file_dialog::pre_show(window& window)
 
 	window.keyboard_capture(find_widget<text_box>(&window, "filename", false, true));
 	window.add_to_keyboard_chain(&filelist);
-	window.set_exit_hook(std::bind(&file_dialog::on_exit, this, _1));
+	window.set_exit_hook(std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
 }
 
 bool file_dialog::on_exit(window& window)
@@ -484,7 +484,7 @@ void file_dialog::refresh_fileview()
 
 	// TODO: Need to detect and handle cases where we don't have search permission
 	//       on current_dir_, otherwise things may get weird.
-	filesystem::get_files_in_dir(current_dir_, &dir_files_, &dir_subdirs_, filesystem::FILE_NAME_ONLY);
+	filesystem::get_files_in_dir(current_dir_, &dir_files_, &dir_subdirs_, filesystem::name_mode::FILE_NAME_ONLY);
 	isort_dir_entries(dir_files_);
 	isort_dir_entries(dir_subdirs_);
 

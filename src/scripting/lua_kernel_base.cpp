@@ -44,7 +44,7 @@
 #include "game_version.hpp"                  // for do_version_check, etc
 #include "picture.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
@@ -584,7 +584,7 @@ lua_kernel_base::lua_kernel_base()
 		//run "ilua.set_strict()"
 		lua_pushstring(L, "set_strict");
 		lua_gettable(L, -2);
-		if (!this->protected_call(0,0, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+		if (!this->protected_call(0,0, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
 			cmd_log_ << "Failed to activate strict mode.\n";
 		} else {
 			cmd_log_ << "Activated strict mode.\n";
@@ -630,13 +630,13 @@ void lua_kernel_base::throw_exception(char const * msg, char const * context)
 
 bool lua_kernel_base::protected_call(int nArgs, int nRets)
 {
-	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2 );
 	return this->protected_call(nArgs, nRets, eh);
 }
 
 bool lua_kernel_base::load_string(char const * prog, const std::string& name)
 {
-	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2 );
 	return this->load_string(prog, name, eh);
 }
 
@@ -723,7 +723,7 @@ void lua_kernel_base::run_lua_tag(const config& cfg)
 void lua_kernel_base::throwing_run(const char * prog, const std::string& name, int nArgs, bool in_interpreter)
 {
 	cmd_log_ << "$ " << prog << "\n";
-	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
 	this->load_string(prog, name, eh);
 	if(in_interpreter) {
 		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
@@ -751,7 +751,7 @@ void lua_kernel_base::interactive_run(char const * prog) {
 	experiment += prog;
 	int top = lua_gettop(mState);
 
-	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
 	luaW_getglobal(mState, "ilua", "_pretty_print");
 
 	try {
@@ -843,7 +843,7 @@ int lua_kernel_base::intf_require(lua_State* L)
 	}
 	DBG_LUA << "require: loaded a file, now calling it\n";
 
-	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
 		// historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
 		return 0;
     }

@@ -18,7 +18,7 @@
 #include "server/wesnothd/player.hpp"
 #include "server/common/simple_wml.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "log.hpp"
 
 extern lg::log_domain log_config_pn;

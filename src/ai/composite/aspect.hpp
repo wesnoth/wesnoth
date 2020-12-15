@@ -26,7 +26,7 @@
 
 #include "log.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <boost/range/adaptor/reversed.hpp>
 
@@ -45,36 +45,26 @@ public:
 		valid_lua_ = false;
 	}
 
-
 	virtual const wfl::variant& get_variant() const = 0;
-
 
 	virtual std::shared_ptr<wfl::variant> get_variant_ptr() const = 0;
 
-
 	virtual void get_lua(lua_State* L) const = 0;
-
 
 	virtual void recalculate() const = 0;
 
-
 	virtual void on_create();
-
 
 	virtual bool redeploy(const config &cfg, const std::string & id);
 
-
 	virtual config to_config() const;
 
-
 	virtual bool delete_all_facets();
-
 
 	void handle_generic_event(const std::string &/*event_name*/)
 	{
 		invalidate();
 	}
-
 
 	virtual bool active() const;
 
@@ -122,12 +112,10 @@ public:
 	{
 	}
 
-
 	virtual const T& get() const
 	{
 		return *get_ptr();
 	}
-
 
 	virtual const wfl::variant& get_variant() const
 	{
@@ -164,7 +152,6 @@ public:
 
 	virtual void recalculate() const = 0;
 
-
 	virtual std::shared_ptr<T> get_ptr() const
 	{
 		if (!valid_) {
@@ -193,27 +180,21 @@ protected:
 	mutable std::shared_ptr< lua_object<T>> value_lua_;
 };
 
-
 class known_aspect {
 public:
 	known_aspect(const std::string &name);
 
-
 	virtual ~known_aspect();
-
 
 	virtual void set(aspect_ptr a) = 0;
 
-
 	virtual void add_facet(const config &cfg) = 0;
-
 
 	const std::string& get_name() const;
 
 protected:
 	const std::string name_;
 };
-
 
 template<class T>
 class composite_aspect;
@@ -255,7 +236,6 @@ protected:
 	aspect_map &aspects_;
 };
 
-
 template<typename T>
 class composite_aspect : public typesafe_aspect<T> {
 public:
@@ -285,12 +265,11 @@ public:
 		}
 
 		std::function<void(typesafe_aspect_vector<T>&, const config&)> factory_facets =
-                        std::bind(&ai::composite_aspect<T>::create_facet,*this,_1,_2);
+			std::bind(&ai::composite_aspect<T>::create_facet, *this, std::placeholders::_1, std::placeholders::_2);
 
 		register_facets_property(this->property_handlers(),"facet",facets_,default_, factory_facets);
 
 	}
-
 
 	void create_facet(typesafe_aspect_vector<T>& facets, const config &cfg)
 	{
@@ -304,7 +283,6 @@ public:
 			facets.push_back(b);
 		}
 	}
-
 
 	virtual void recalculate() const
 	{
@@ -321,7 +299,6 @@ public:
 		}
 	}
 
-
 	virtual config to_config() const
 	{
 		config cfg = aspect::to_config();
@@ -333,7 +310,6 @@ public:
 		}
 		return cfg;
 	}
-
 
 	using typesafe_aspect<T>::add_facet;
 	virtual bool add_facet(int pos, const config &cfg)
@@ -354,7 +330,6 @@ public:
 		}
 		return (j>0);
 	}
-
 
 	virtual bool delete_all_facets()
 	{
@@ -391,13 +366,11 @@ public:
 		LOG_STREAM(debug, aspect::log()) << "standard aspect has value: "<< std::endl << config_value_translator<T>::value_to_cfg(this->get()) << std::endl;
 	}
 
-
 	void recalculate() const
 	{
 		//nothing to recalculate
 		this->valid_ = true;
 	}
-
 
 	config to_config() const
 	{
@@ -469,7 +442,6 @@ private:
 	const config params_;
 };
 
-
 class aspect_factory{
 	bool is_duplicate(const std::string &name);
 public:
@@ -498,7 +470,6 @@ public:
 
 	virtual ~aspect_factory() {}
 };
-
 
 template<class ASPECT>
 class register_aspect_factory : public aspect_factory {
@@ -556,6 +527,5 @@ public:
 		return a;
 	}
 };
-
 
 } //end of namespace ai

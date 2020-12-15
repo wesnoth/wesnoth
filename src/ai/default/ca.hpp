@@ -132,21 +132,17 @@ private:
 	typedef std::vector<std::pair<map_location /* destination */,
 		map_location /* start */ >> tmoves;
 
-
 	// The list of moves we want to make
 	tmoves moves_;
 
-
 	/** Dispatches all units to their best location. */
 	void dispatch(treachmap& reachmap, tmoves& moves);
-
 
 	/**
 	 * Dispatches all units who can reach one village.
 	 * Returns true if it modified reachmap isn't empty.
 	 */
 	bool dispatch_unit_simple(treachmap& reachmap, tmoves& moves);
-
 
 	/*
 	 * Dispatches units to villages which can only be reached by one unit.
@@ -155,34 +151,27 @@ private:
 	bool dispatch_village_simple(
 		treachmap& reachmap, tmoves& moves, std::size_t& village_count);
 
-
 	/** Removes a village for all units, returns true if anything is deleted. */
 	bool remove_village(
 		treachmap& reachmap, tmoves& moves, const map_location& village);
-
 
 	/** Removes a unit which can't reach any village anymore. */
 	treachmap::iterator remove_unit(
 		treachmap& reachmap, tmoves& moves, treachmap::iterator unit);
 
-
 	/** Dispatches the units to a village after the simple dispatching failed. */
 	void dispatch_complex(
 		treachmap& reachmap, tmoves& moves, const std::size_t village_count);
 
-
 	/** Dispatches all units to a village, every unit can reach every village. */
 	void full_dispatch(treachmap& reachmap, tmoves& moves);
-
 
 	/** Shows which villages every unit can reach (debug function). */
 	void dump_reachmap(treachmap& reachmap);
 
-
 	void get_villages(
 		const move_map &dstsrc, const move_map &enemy_dstsrc,
 		unit_map::const_iterator &leader);
-
 
 	void find_villages(
 		treachmap& reachmap,
@@ -229,7 +218,6 @@ private:
 
 };
 
-
 //============================================================================
 
 class leader_control_phase : public candidate_action {
@@ -244,7 +232,6 @@ public:
 	virtual void execute();
 };
 
-
 //============================================================================
 class leader_shares_keep_phase : public candidate_action {
 public:
@@ -257,7 +244,6 @@ public:
 
 	virtual void execute();
 };
-
 
 //============================================================================
 

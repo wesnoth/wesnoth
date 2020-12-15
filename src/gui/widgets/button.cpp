@@ -28,7 +28,7 @@
 
 #include "sound.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -47,16 +47,16 @@ button::button(const implementation::builder_button& builder)
 	, retval_(retval::NONE)
 {
 	connect_signal<event::MOUSE_ENTER>(
-			std::bind(&button::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::MOUSE_LEAVE>(
-			std::bind(&button::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&button::signal_handler_left_button_down, this, _2, _3));
+			&button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			std::bind(&button::signal_handler_left_button_up, this, _2, _3));
+			std::bind(&button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&button::signal_handler_left_button_click, this, _2, _3));
+			&button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 void button::set_active(const bool active)

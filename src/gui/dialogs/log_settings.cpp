@@ -90,7 +90,7 @@ void log_settings::pre_show(window& window)
 	}
 
 	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
-	filter->set_text_changed_callback(std::bind(&log_settings::filter_text_changed, this, _2));
+	filter->set_text_changed_callback(std::bind(&log_settings::filter_text_changed, this, std::placeholders::_2));
 
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&logger_box);

@@ -14,14 +14,14 @@
 
 #pragma once
 
-#include "commandline_options.hpp"
-#include "connect_engine.hpp"
-#include "mp_game_settings.hpp"
-#include "scripting/plugins/context.hpp"
+#include <string>
 
+class commandline_options;
 class config;
+class saved_game;
 class wesnothd_connection;
-class game_config_view;
+
+namespace ng { class connect_engine; }
 
 namespace mp {
 
@@ -40,8 +40,7 @@ void start_local_game(saved_game& state);
  * Same parameters as start_local_game plus:
  * cmdline_opts The commandline options
  */
-void start_local_game_commandline(const game_config_view& game_config,
-	saved_game& state, const commandline_options& cmdline_opts);
+void start_local_game_commandline(saved_game& state, const commandline_options& cmdline_opts);
 
 /** Starts a multiplayer game in client mode.
  *

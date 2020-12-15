@@ -19,16 +19,13 @@
 
 #pragma once
 
-#include <algorithm>
 #include <ctime>
-#include <functional>
 #include <iosfwd>
 #include <memory>
 #include <string>
 #include <vector>
 
 #include "exceptions.hpp"
-#include "serialization/string_utils.hpp"
 
 class config;
 class game_config_view;
@@ -52,9 +49,9 @@ struct io_exception : public game::error {
 
 struct file_tree_checksum;
 
-enum file_name_option { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
-enum file_filter_option { NO_FILTER, SKIP_MEDIA_DIR, SKIP_PBL_FILES };
-enum file_reorder_option { DONT_REORDER, DO_REORDER };
+enum class name_mode { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
+enum class filter_mode { NO_FILTER, SKIP_MEDIA_DIR, SKIP_PBL_FILES };
+enum class reorder_mode { DONT_REORDER, DO_REORDER };
 
 // A list of file and directory blacklist patterns
 class blacklist_pattern_list
@@ -67,17 +64,9 @@ public:
 		: file_patterns_(file_patterns), directory_patterns_(directory_patterns)
 	{}
 
-	bool match_file(const std::string& name) const
-	{
-		return std::any_of(file_patterns_.begin(), file_patterns_.end(),
-			std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
-	}
+	bool match_file(const std::string& name) const;
 
-	bool match_dir(const std::string& name) const
-	{
-		return std::any_of(directory_patterns_.begin(), directory_patterns_.end(),
-			std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
-	}
+	bool match_dir(const std::string& name) const;
 
 	void add_file_pattern(const std::string& pattern)
 	{
@@ -143,9 +132,9 @@ static const blacklist_pattern_list default_blacklist{
 void get_files_in_dir(const std::string &dir,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs=nullptr,
-                      file_name_option mode = FILE_NAME_ONLY,
-                      file_filter_option filter = NO_FILTER,
-                      file_reorder_option reorder = DONT_REORDER,
+                      name_mode mode = name_mode::FILE_NAME_ONLY,
+                      filter_mode filter = filter_mode::NO_FILTER,
+                      reorder_mode reorder = reorder_mode::DONT_REORDER,
                       file_tree_checksum* checksum = nullptr);
 
 std::string get_dir(const std::string &dir);

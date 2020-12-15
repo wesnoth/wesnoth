@@ -56,10 +56,6 @@ for environ in [test_env, client_env, env]:
         if not os.path.isabs(env['default_prefs_file']):
             environ.Append(CPPDEFINES = "HAS_RELATIVE_DEFPREF")
 
-# Inject boost::bind patch everywhere
-for environ in [test_env, client_env, env]:
-    environ.Append(CCFLAGS = Split("-include boost-patched/bind/arg.hpp"))
-
 for environ in [test_env, client_env, env]:
     environ.Append(CPPDEFINES = "$EXTRA_DEFINE")
 

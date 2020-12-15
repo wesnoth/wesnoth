@@ -29,7 +29,7 @@
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #if BOOST_VERSION >= 106700
 #include <boost/integer/common_factor_rt.hpp>
@@ -56,12 +56,12 @@ slider::slider(const implementation::builder_slider& builder)
 	, value_label_generator_()
 	, current_item_mouse_position_(0, 0)
 {
-	connect_signal<event::SDL_KEY_DOWN>(std::bind(&slider::signal_handler_sdl_key_down, this, _2, _3, _5));
+	connect_signal<event::SDL_KEY_DOWN>(std::bind(&slider::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 
 	// connect_signal<event::LEFT_BUTTON_DOWN>(
-	//		std::bind(&slider::signal_handler_left_button_down, this, _2, _3));
+	//		std::bind(&slider::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 
-	connect_signal<event::LEFT_BUTTON_UP>(std::bind(&slider::signal_handler_left_button_up, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_UP>(std::bind(&slider::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 point slider::calculate_best_size() const
@@ -247,7 +247,7 @@ static t_string default_value_label_generator(const std::vector<t_string>& value
 void slider::set_value_labels(const std::vector<t_string>& value_labels)
 {
 	// Don't use std::ref because we want to store value_labels in the closure.
-	set_value_labels(std::bind(&default_value_label_generator, value_labels, _1, _2));
+	set_value_labels(std::bind(&default_value_label_generator, value_labels, std::placeholders::_1, std::placeholders::_2));
 }
 
 

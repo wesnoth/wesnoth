@@ -24,7 +24,7 @@
 
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {
@@ -43,7 +43,7 @@ multi_page::multi_page(const implementation::builder_multi_page& builder)
 grid& multi_page::add_page(const string_map& item)
 {
 	assert(generator_);
-	grid& page = generator_->create_item(-1, page_builders_.begin()->second, item, nullptr);
+	grid& page = generator_->create_item(-1, *page_builders_.begin()->second, item, nullptr);
 
 	return page;
 }
@@ -53,14 +53,14 @@ grid& multi_page::add_page(const std::string& type, int insert_pos, const string
 	assert(generator_);
 	auto it_builder = page_builders_.find(type);
 	VALIDATE(it_builder != page_builders_.end(), "invalid page type '" + type + "'");
-	return generator_->create_item(insert_pos, it_builder->second, item, nullptr);
+	return generator_->create_item(insert_pos, *it_builder->second, item, nullptr);
 }
 
 grid& multi_page::add_page(
 	const std::map<std::string /* widget id */, string_map>& data)
 {
 	assert(generator_);
-	grid& page = generator_->create_item(-1, page_builders_.begin()->second, data, nullptr);
+	grid& page = generator_->create_item(-1, *page_builders_.begin()->second, data, nullptr);
 
 	return page;
 }
@@ -71,7 +71,7 @@ grid& multi_page::add_page(
 	assert(generator_);
 	auto it_builder = page_builders_.find(type);
 	VALIDATE(it_builder != page_builders_.end(), "invalid page type '" + type + "'");
-	return generator_->create_item(insert_pos, it_builder->second, data, nullptr);
+	return generator_->create_item(insert_pos, *it_builder->second, data, nullptr);
 }
 
 void multi_page::remove_page(const unsigned page, unsigned count)
@@ -143,7 +143,7 @@ unsigned multi_page::get_state() const
 void multi_page::finalize(const std::vector<string_map>& page_data)
 {
 	assert(generator_);
-	generator_->create_items(-1, page_builders_.begin()->second, page_data, nullptr);
+	generator_->create_items(-1, *page_builders_.begin()->second, page_data, nullptr);
 	swap_grid(nullptr, &get_grid(), generator_, "_content_grid");
 }
 
@@ -299,7 +299,7 @@ widget* builder_multi_page::build() const
 	const auto conf = widget->cast_config_to<multi_page_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(data);
 

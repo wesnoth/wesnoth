@@ -22,7 +22,7 @@
 #include "gui/widgets/status_label_helper.hpp"
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

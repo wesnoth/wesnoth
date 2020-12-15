@@ -27,7 +27,7 @@
 #include "terrain/type_data.hpp"
 #include "../../minimap.hpp" // We want the file in src/
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <algorithm>
 

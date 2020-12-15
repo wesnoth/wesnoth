@@ -31,15 +31,6 @@ utils-unused:
 	@echo "# Report on unused utility macros"
 	@./wmlscope --crossreference --from $(DATA)/core/macros --refcount 0 $(MAINLINE) $(UMC)
 
-validate:
-	# Check WML for meaning and references.
-	# No UMC testing until $$(UMC) is fixed
-	./wmlvalidator -p $(DATA) #-u $(UMC)
-
-validate-gui:
-	# Check GUI WML for meaning and references.
-	./wmlvalidator -p $(DATA) -s $(DATA)/schema-gui.cfg $(DATA)/gui/default.cfg
-
 # Beware of removing images listed in this report unless you know
 # UMC is not relying on them!
 #

@@ -41,7 +41,7 @@
 #include <cmath>
 #include <algorithm>
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace
 {

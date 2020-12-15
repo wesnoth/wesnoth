@@ -33,7 +33,7 @@
 
 #include <SDL2/SDL_image.h>
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <boost/algorithm/string.hpp>
 #include <boost/functional/hash_fwd.hpp>
@@ -179,9 +179,6 @@ std::set<std::string> precached_dirs;
 std::map<surface, surface> reversed_images_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
-
-/** List of colors used by the TC image modification */
-std::vector<std::string> team_colors;
 
 unsigned int zoom = tile_size;
 unsigned int cached_zoom = 0;
@@ -705,20 +702,6 @@ void set_color_adjustment(int r, int g, int b)
 	}
 }
 
-void set_team_colors(const std::vector<std::string>* colors)
-{
-	if(colors == nullptr) {
-		team_colors.clear();
-	} else {
-		team_colors = *colors;
-	}
-}
-
-const std::vector<std::string>& get_team_colors()
-{
-	return team_colors;
-}
-
 void set_zoom(unsigned int amount)
 {
 	if(amount != zoom) {
@@ -1067,8 +1050,8 @@ static void precache_file_existence_internal(const std::string& dir, const std::
 
 	std::vector<std::string> files_found;
 	std::vector<std::string> dirs_found;
-	filesystem::get_files_in_dir(checked_dir, &files_found, &dirs_found, filesystem::FILE_NAME_ONLY,
-			filesystem::NO_FILTER, filesystem::DONT_REORDER);
+	filesystem::get_files_in_dir(checked_dir, &files_found, &dirs_found, filesystem::name_mode::FILE_NAME_ONLY,
+			filesystem::filter_mode::NO_FILTER, filesystem::reorder_mode::DONT_REORDER);
 
 	for(const auto& f : files_found) {
 		image_existence_map[subdir + f] = true;
@@ -1109,16 +1092,12 @@ save_result save_image(const surface& surf, const std::string& filename)
 		return save_result::no_image;
 	}
 
-#ifdef SDL_IMAGE_VERSION_ATLEAST
-#if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
 	if(filesystem::ends_with(filename, ".jpeg") || filesystem::ends_with(filename, ".jpg") || filesystem::ends_with(filename, ".jpe")) {
 		LOG_DP << "Writing a JPG image to " << filename << std::endl;
 
 		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 75); // SDL takes ownership of the RWops
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
-#endif
-#endif
 
 	if(filesystem::ends_with(filename, ".png")) {
 		LOG_DP << "Writing a PNG image to " << filename << std::endl;

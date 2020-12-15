@@ -67,7 +67,7 @@
 #include "units/id.hpp"
 #include "whiteboard/manager.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 static lg::log_domain log_aitesting("ai/testing");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)

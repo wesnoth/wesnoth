@@ -21,7 +21,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {
@@ -93,7 +93,7 @@ void editor_edit_label::pre_show(window& win)
 void editor_edit_label::register_color_component(std::string widget_id, uint8_t color_t::* component) {
 	register_integer(widget_id, true,
 					 std::bind(&editor_edit_label::load_color_component, this, component),
-					 std::bind(&editor_edit_label::save_color_component, this, component, _1));
+					 std::bind(&editor_edit_label::save_color_component, this, component, std::placeholders::_1));
 }
 
 int editor_edit_label::load_color_component(uint8_t color_t::* component) {

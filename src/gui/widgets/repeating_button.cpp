@@ -23,7 +23,7 @@
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -42,14 +42,14 @@ repeating_button::repeating_button(const implementation::builder_repeating_butto
 	, repeat_timer_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&repeating_button::signal_handler_mouse_enter, this, _2, _3));
+			&repeating_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&repeating_button::signal_handler_mouse_leave, this, _2, _3));
+			&repeating_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&repeating_button::signal_handler_left_button_down, this, _2, _3));
+			&repeating_button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
-			&repeating_button::signal_handler_left_button_up, this, _2, _3));
+			&repeating_button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 repeating_button::~repeating_button()

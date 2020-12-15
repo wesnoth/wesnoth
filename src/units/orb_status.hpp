@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "picture.hpp"
-
 #include <memory>
 #include <string>
 
@@ -49,10 +47,4 @@ bool prefs_show_orb(orb_status os);
  * preference.
  */
 std::string get_orb_color(orb_status os);
-
-/**
- * Wrapper which will assemble the image path (including IPF for the color from get_orb_color) for a given orb.
- * Returns nullptr if prefs_show_orb returns false.
- */
-std::unique_ptr<image::locator> get_orb_image(orb_status os);
 } // namespace orb_status_helper

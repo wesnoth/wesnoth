@@ -30,7 +30,7 @@
 #include "gui/widgets/window.hpp"
 #include "picture.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include "gettext.hpp"
 

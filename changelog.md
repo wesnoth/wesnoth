@@ -1,17 +1,38 @@
 ## Version 1.15.7+dev
  ### Add-ons server
    * Fixed inability to write files (including the server configuration file) on Windows.
+   * Dropped plain text passphrase migration, unused in production since version 1.12.7 and 1.13.0 (issue #5080).
+   * Uploading add-ons with versions not greater than the latest uploaded version is no longer allowed (issue #5079).
+ ### Add-ons client
+   * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
  ### Campaigns
+   * Dead Water
+     * Reduce campaign difficulty
+   * Eastern Invasion:
+     * S03: fix the initial keep being blocked at the start
+   * Heir to the Throne
+     * Tweak campaign difficulty
+   * The South Guard
+     * Reduce campaign difficulty
  ### Multiplayer
+   * Added `/roll N` command to multiplayer games and game lobbies which produces a publicly visible random integer number ranged from 1 to N inclusively (issue #5221, PR #5326).
+ ### Packaging
+  * SDL_Image 2.0.2 or later is now required (was 2.0.0).
  ### Terrain
  ### Translations
-   * Updated translations: British English, Czech
+   * Updated translations: British English, Czech, Italian, Polish, Portuguese (Brazil),
+     Russian
  ### Units
+   * Undead variations for Falcon, Giant Rat, serpents, and Gorer/Tusklet
  ### User interface
+   * Text labels now use the hyperlink mouse cursor while hovering links.
+   * Link awareness is now configured on a per-instance basis for labels/scroll labels instead of globally in their definition.
  ### WML Engine
+   * Add a overwrite_specials option for abilities like weapon could overwrite specials or other ablities like weapon
    * Extent special_id_active and special_type_active to abilities used like weapon and add a [filter_specials] tag for specify the source when wml develloper need.
    * abilities used like weapon can call [leading_anim] now.
  ### Miscellaneous and Bug Fixes
+   * Fixed several possible crashes in wmllint
 
 ## Version 1.15.7
  ### Add-ons server

@@ -27,7 +27,7 @@
 #include "ai/gamestate_observer.hpp"
 #include "log.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace ai {
 

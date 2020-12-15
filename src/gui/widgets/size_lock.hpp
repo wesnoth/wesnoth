@@ -14,12 +14,12 @@
 
 #pragma once
 
-#include <gui/widgets/container_base.hpp>
+#include "gui/widgets/container_base.hpp"
 
-#include <gui/auxiliary/typed_formula.hpp>
-#include <gui/core/widget_definition.hpp>
-#include <gui/core/window_builder.hpp>
-#include <gui/widgets/generator.hpp>
+#include "gui/auxiliary/typed_formula.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+#include "gui/widgets/generator.hpp"
 
 namespace gui2
 {
@@ -76,7 +76,7 @@ private:
 	 * @param widget_builder      The builder to build the contents of the
 	 *                            widget.
 	 */
-	void finalize(builder_widget_const_ptr widget_builder);
+	void finalize(const builder_widget& widget_builder);
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -114,7 +114,7 @@ struct builder_size_lock : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	typed_formula<unsigned> width_;
 	typed_formula<unsigned> height_;

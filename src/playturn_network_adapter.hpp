@@ -15,7 +15,7 @@
 
 #include "config.hpp"
 #include <list>
-#include "utils/functional.hpp"
+#include <functional>
 /*
 	The purpose if this class is to preprocess incoming network data, and provide a steam that always returns just one command/action at a time.
 	Especially we want each replay command in his own [turn].

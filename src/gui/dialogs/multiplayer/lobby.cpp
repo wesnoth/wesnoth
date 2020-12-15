@@ -50,7 +50,7 @@
 #include "playmp_controller.hpp"
 #include "wesnothd_connection.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 static lg::log_domain log_lobby("lobby");
 #define DBG_LB LOG_STREAM(debug, log_lobby)
@@ -176,7 +176,7 @@ void mp_lobby::post_build(window& win)
 		std::bind(&mp_lobby::show_help_callback, this));
 
 	win.register_hotkey(hotkey::HOTKEY_PREFERENCES,
-		std::bind(&mp_lobby::show_preferences_button_callback, this, std::ref(win)));
+		std::bind(&mp_lobby::show_preferences_button_callback, this));
 }
 
 namespace
@@ -212,9 +212,9 @@ std::string colorize(const std::string& str, const color_t& color)
 	return (formatter() << font::span_color(color) << str << "</span>").str();
 }
 
-bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
+bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::addon_req addon_outcome)
 {
-	if(addon_outcome == mp::game_info::CANNOT_SATISFY) {
+	if(addon_outcome == mp::game_info::addon_req::CANNOT_SATISFY) {
 		std::string e_title = _("Incompatible User-made Content");
 		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host's add-ons be updated.");
 
@@ -223,14 +223,14 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 		err_msg += "\n";
 
 		for(const mp::game_info::required_addon & a : reqs) {
-			if (a.outcome == mp::game_info::CANNOT_SATISFY) {
+			if (a.outcome == mp::game_info::addon_req::CANNOT_SATISFY) {
 				err_msg += font::unicode_bullet + " " + a.message + "\n";
 			}
 		}
 		gui2::show_message(e_title, err_msg, message::auto_close, true);
 
 		return false;
-	} else if(addon_outcome == mp::game_info::NEED_DOWNLOAD) {
+	} else if(addon_outcome == mp::game_info::addon_req::NEED_DOWNLOAD) {
 		std::string e_title = _("Missing User-made Content");
 		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join.\nDo you want to try to install them?");
 
@@ -240,7 +240,7 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 
 		std::vector<std::string> needs_download;
 		for(const mp::game_info::required_addon & a : reqs) {
-			if(a.outcome == mp::game_info::NEED_DOWNLOAD) {
+			if(a.outcome == mp::game_info::addon_req::NEED_DOWNLOAD) {
 				err_msg += font::unicode_bullet + " " + a.message + "\n";
 
 				needs_download.push_back(a.addon_id);
@@ -311,7 +311,7 @@ void mp_lobby::update_gamelist_diff()
 	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
 		const mp::game_info& game = *lobby_info_.games()[i];
 
-		if(game.display_status == mp::game_info::NEW) {
+		if(game.display_status == mp::game_info::disp_status::NEW) {
 			// call void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
 			// sender will be the game_info.scenario (std::string) and message will be game_info.name (std::string)
 			do_notify(mp::NOTIFY_GAME_CREATED, game.scenario, game.name);
@@ -356,14 +356,14 @@ void mp_lobby::update_gamelist_diff()
 				return;
 			}
 
-			if(game.display_status == mp::game_info::UPDATED) {
+			if(game.display_status == mp::game_info::disp_status::UPDATED) {
 				LOG_LB << "Modifying game in listbox " << game.id << " (row " << list_i << ")\n";
 				grid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
 				adjust_game_row_contents(game, grid, false);
 				++list_i;
 				next_gamelist_id_at_row.push_back(game.id);
-			} else if(game.display_status == mp::game_info::DELETED) {
+			} else if(game.display_status == mp::game_info::disp_status::DELETED) {
 				LOG_LB << "Deleting game from listbox " << game.id << " (row "
 					   << list_i << ")\n";
 				gamelistbox_->remove_row(list_i);
@@ -601,7 +601,7 @@ void mp_lobby::update_playerlist()
 		icon_ss << "lobby/status";
 		switch(user.state) {
 #ifdef ENABLE_ROOM_MEMBER_TREE
-			case mp::user_info::SEL_ROOM:
+			case mp::user_info::user_state::SEL_ROOM:
 				icon_ss << "-lobby";
 				target_list = &player_list_.active_room;
 				if(lobby) {
@@ -609,42 +609,40 @@ void mp_lobby::update_playerlist()
 				}
 				break;
 #endif
-			case mp::user_info::LOBBY:
+			case mp::user_info::user_state::LOBBY:
 				icon_ss << "-lobby";
 				target_list = &player_list_.other_rooms;
 				break;
-			case mp::user_info::SEL_GAME:
+			case mp::user_info::user_state::SEL_GAME:
 				name = colorize(name, {0, 255, 255});
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.active_game;
 				break;
-			case mp::user_info::GAME:
+			case mp::user_info::user_state::GAME:
 				name = colorize(name, font::BAD_COLOR);
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.other_games;
 				break;
 			default:
-				ERR_LB << "Bad user state in lobby: " << user.name << ": "
-					   << user.state << "\n";
+				ERR_LB << "Bad user state in lobby: " << user.name << ": " << static_cast<int>(user.state) << "\n";
 				continue;
 		}
 
 		switch(user.relation) {
-			case mp::user_info::ME:
+			case mp::user_info::user_relation::ME:
 				icon_ss << "-s";
 				break;
-			case mp::user_info::NEUTRAL:
+			case mp::user_info::user_relation::NEUTRAL:
 				icon_ss << "-n";
 				break;
-			case mp::user_info::FRIEND:
+			case mp::user_info::user_relation::FRIEND:
 				icon_ss << "-f";
 				break;
-			case mp::user_info::IGNORED:
+			case mp::user_info::user_relation::IGNORED:
 				icon_ss << "-i";
 				break;
 			default:
-				ERR_LB << "Bad user relation in lobby: " << user.relation
-					   << "\n";
+				ERR_LB << "Bad user relation in lobby: " << static_cast<int>(user.relation) << "\n";
 		}
 
 		// TODO: on the official server this results in every name being bold since we
@@ -741,7 +739,7 @@ void mp_lobby::pre_show(window& window)
 	window.set_enter_disabled(true);
 
 	// Exit hook to add a confirmation when quitting the Lobby.
-	window.set_exit_hook(std::bind(&mp_lobby::exit_hook, this, std::ref(window)));
+	window.set_exit_hook(std::bind(&mp_lobby::exit_hook, this, std::placeholders::_1));
 
 	chatbox_ = find_widget<chatbox>(&window, "chat", false, true);
 
@@ -755,7 +753,7 @@ void mp_lobby::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_preferences", false),
-		std::bind(&mp_lobby::show_preferences_button_callback, this, std::ref(window)));
+		std::bind(&mp_lobby::show_preferences_button_callback, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "join_global", false),
@@ -784,7 +782,7 @@ void mp_lobby::pre_show(window& window)
 	}
 
 	connect_signal_notify_modified(replay_options,
-		std::bind(&mp_lobby::skip_replay_changed_callback, this, std::ref(window)));
+		std::bind(&mp_lobby::skip_replay_changed_callback, this));
 
 	filter_friends_ = find_widget<toggle_button>(&window, "filter_with_friends", false, true);
 	filter_ignored_ = find_widget<toggle_button>(&window, "filter_without_ignored", false, true);
@@ -806,7 +804,7 @@ void mp_lobby::pre_show(window& window)
 
 	connect_signal_pre_key_press(
 			*filter_text_,
-			std::bind(&mp_lobby::game_filter_keypress_callback, this, _5));
+			std::bind(&mp_lobby::game_filter_keypress_callback, this, std::placeholders::_5));
 
 	chatbox_->room_window_open(N_("lobby"), true, false);
 	chatbox_->active_window_changed();
@@ -974,7 +972,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	window& window = *get_window();
 
 	// Prompt user to download this game's required addons if its requirements have not been met
-	if(game.addons_outcome != mp::game_info::SATISFIED) {
+	if(game.addons_outcome != mp::game_info::addon_req::SATISFIED) {
 		if(game.required_addons.empty()) {
 			gui2::show_error_message(_("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at https://bugs.wesnoth.org."));
 			return;
@@ -1052,16 +1050,16 @@ void mp_lobby::show_help_callback()
 	help::show_help();
 }
 
-void mp_lobby::show_preferences_button_callback(window& window)
+void mp_lobby::show_preferences_button_callback()
 {
-	gui2::dialogs::preferences_dialog::display(game_config_);
+	gui2::dialogs::preferences_dialog::display();
 
 	/**
 	 * The screen size might have changed force an update of the size.
 	 *
 	 * @todo This might no longer be needed when gui2 is done.
 	 */
-	const SDL_Rect rect = window.video().screen_area();
+	const SDL_Rect rect = CVideo::get_singleton().screen_area();
 
 	gui2::settings::gamemap_width  += rect.w - gui2::settings::screen_width;
 	gui2::settings::gamemap_height += rect.h - gui2::settings::screen_height;
@@ -1073,7 +1071,7 @@ void mp_lobby::show_preferences_button_callback(window& window)
 	 *
 	 * @todo This might no longer be needed when gui2 is done.
 	 */
-	window.invalidate_layout();
+	get_window()->invalidate_layout();
 
 	refresh_lobby();
 }
@@ -1165,10 +1163,10 @@ void mp_lobby::user_dialog_callback(mp::user_info* info)
 	refresh_lobby();
 }
 
-void mp_lobby::skip_replay_changed_callback(window& window)
+void mp_lobby::skip_replay_changed_callback()
 {
 	// TODO: this prefence should probably be controlled with an enum
-	const int value = find_widget<menu_button>(&window, "replay_options", false).get_value();
+	const int value = find_widget<menu_button>(get_window(), "replay_options", false).get_value();
 	preferences::set_skip_mp_replay(value == 1);
 	preferences::set_blindfold_replay(value == 2);
 }

@@ -32,9 +32,8 @@
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
-#include "utils/functional.hpp"
-
-#include <boost/optional.hpp>
+#include <functional>
+#include "utils/optional_fwd.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -68,7 +67,7 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 grid& listbox::add_row(const string_map& item, const int index)
 {
 	assert(generator_);
-	grid& row = generator_->create_item(index, list_builder_, item, std::bind(&listbox::list_item_clicked, this, _1));
+	grid& row = generator_->create_item(index, *list_builder_, item, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
 
 	resize_content(row);
 
@@ -78,7 +77,7 @@ grid& listbox::add_row(const string_map& item, const int index)
 grid& listbox::add_row(const std::map<std::string /* widget id */, string_map>& data, const int index)
 {
 	assert(generator_);
-	grid& row = generator_->create_item(index, list_builder_, data, std::bind(&listbox::list_item_clicked, this, _1));
+	grid& row = generator_->create_item(index, *list_builder_, data, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
 
 	resize_content(row);
 
@@ -352,7 +351,7 @@ bool listbox::update_content_size()
 
 void listbox::place(const point& origin, const point& size)
 {
-	boost::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
+	utils::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
 
 	// Check if this is the first time placing the list box
 	if(get_origin() != point {-1, -1}) {
@@ -569,7 +568,7 @@ void listbox::finalize(builder_grid_const_ptr header,
 		//
 		if(toggle_button* selectable = find_widget<toggle_button>(&p, "sort_" + std::to_string(i), false, false)) {
 			// Register callback to sort the list.
-			connect_signal_notify_modified(*selectable, std::bind(&listbox::order_by_column, this, i, _1));
+			connect_signal_notify_modified(*selectable, std::bind(&listbox::order_by_column, this, i, std::placeholders::_1));
 
 			if(orders_.size() < max) {
 				orders_.resize(max);
@@ -583,7 +582,7 @@ void listbox::finalize(builder_grid_const_ptr header,
 		swap_grid(&get_grid(), content_grid(), footer->build(), "_footer_grid");
 	}
 
-	generator_->create_items(-1, list_builder_, list_data, std::bind(&listbox::list_item_clicked, this, _1));
+	generator_->create_items(-1, *list_builder_, list_data, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
 	swap_grid(nullptr, content_grid(), generator_, "_list_grid");
 }
 
@@ -986,7 +985,7 @@ widget* builder_listbox::build() const
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(header, footer, list_data);
 
@@ -1091,7 +1090,7 @@ widget* builder_horizontal_listbox::build() const
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(nullptr, nullptr, list_data);
 
@@ -1196,7 +1195,7 @@ widget* builder_grid_listbox::build() const
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 
 	widget->finalize(nullptr, nullptr, list_data);
 

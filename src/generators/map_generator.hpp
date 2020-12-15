@@ -20,8 +20,8 @@ class config;
 
 #include "exceptions.hpp"
 #include "map/location.hpp"
+#include "utils/optional_fwd.hpp"
 
-#include <boost/optional.hpp>
 #include <cstdint>
 
 struct mapgen_exception : public game::error
@@ -65,7 +65,7 @@ public:
 	 * Creates a new map and returns it.
 	 * args may contain arguments to the map generator.
 	 */
-	virtual std::string create_map(boost::optional<uint32_t> randomseed = boost::none) = 0;
+	virtual std::string create_map(utils::optional<uint32_t> randomseed = utils::nullopt) = 0;
 
-	virtual config create_scenario(boost::optional<uint32_t> randomseed = boost::none);
+	virtual config create_scenario(utils::optional<uint32_t> randomseed = utils::nullopt);
 };

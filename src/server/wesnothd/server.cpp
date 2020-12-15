@@ -29,7 +29,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/iterable_pair.hpp"
 #include "game_version.hpp"
 
@@ -211,7 +211,7 @@ const std::string help_msg =
 	" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
 	" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
 	" netstats [all], [lobby]msg <message>, motd [<message>],"
-	" pm|privatemsg <nickname> <message>, requests, sample, searchlog <mask>,"
+	" pm|privatemsg <nickname> <message>, requests, roll <sides>, sample, searchlog <mask>,"
 	" signout, stats, status [<mask>], stopgame <nick> [<reason>], unban <ipmask>\n"
 	"Specific strings (those not in between <> like the command names)"
 	" are case insensitive.";
@@ -226,6 +226,7 @@ server::server(int port,
 	, ip_log_()
 	, failed_logins_()
 	, user_handler_(nullptr)
+	, die_(static_cast<unsigned>(std::time(nullptr)))
 #ifndef _WIN32
 	, input_path_()
 #endif
@@ -260,7 +261,6 @@ server::server(int port,
 	, failed_login_buffer_size_()
 	, version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED)
 	, login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED)
-	, join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED)
 	, games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC)
 	, metrics_()
 	, dump_stats_timer_(io_service_)
@@ -289,7 +289,7 @@ void server::handle_sighup(const boost::system::error_code& error, int)
 	cfg_ = read_config();
 	load_config();
 
-	sighup_.async_wait(std::bind(&server::handle_sighup, this, _1, _2));
+	sighup_.async_wait(std::bind(&server::handle_sighup, this, std::placeholders::_1, std::placeholders::_2));
 }
 #endif
 
@@ -302,7 +302,7 @@ void server::handle_graceful_timeout(const boost::system::error_code& error)
 		throw server_shutdown("graceful shutdown timeout");
 	} else {
 		timer_.expires_from_now(std::chrono::seconds(1));
-		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
+		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 	}
 }
 
@@ -385,6 +385,7 @@ void server::setup_handlers()
 	SETUP_HANDLER("version", &server::version_handler);
 	SETUP_HANDLER("metrics", &server::metrics_handler);
 	SETUP_HANDLER("requests", &server::requests_handler);
+	SETUP_HANDLER("roll", &server::roll_handler);
 	SETUP_HANDLER("games", &server::games_handler);
 	SETUP_HANDLER("wml", &server::wml_handler);
 	SETUP_HANDLER("netstats", &server::netstats_handler);
@@ -607,12 +608,12 @@ void server::refresh_tournaments(const boost::system::error_code& ec)
 
 void server::handle_new_client(socket_ptr socket)
 {
-	async_send_doc(socket, version_query_response_, std::bind(&server::handle_version, this, _1));
+	async_send_doc(socket, version_query_response_, std::bind(&server::handle_version, this, std::placeholders::_1));
 }
 
 void server::handle_version(socket_ptr socket)
 {
-	async_receive_doc(socket, std::bind(&server::read_version, this, _1, _2));
+	async_receive_doc(socket, std::bind(&server::read_version, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
@@ -626,12 +627,12 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 
 		// Check if it is an accepted version.
 		auto accepted_it = std::find_if(accepted_versions_.begin(), accepted_versions_.end(),
-			std::bind(&utils::wildcard_string_match, version_str, _1));
+			std::bind(&utils::wildcard_string_match, version_str, std::placeholders::_1));
 
 		if(accepted_it != accepted_versions_.end()) {
 			LOG_SERVER << client_address(socket) << "\tplayer joined using accepted version " << version_str
 					   << ":\ttelling them to log in.\n";
-			async_send_doc(socket, login_response_, std::bind(&server::login, this, _1, version_str, source_str));
+			async_send_doc(socket, login_response_, std::bind(&server::login, this, std::placeholders::_1, version_str, source_str));
 			return;
 		}
 
@@ -670,7 +671,7 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 
 void server::login(socket_ptr socket, std::string version, std::string source)
 {
-	async_receive_doc(socket, std::bind(&server::handle_login, this, _1, _2, version, source));
+	async_receive_doc(socket, std::bind(&server::handle_login, this, std::placeholders::_1, std::placeholders::_2, version, source));
 }
 
 void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, std::string version, std::string source)
@@ -801,7 +802,10 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		}
 	}
 
-	async_send_doc(socket, join_lobby_response_, [this, username, registered, version, source](socket_ptr socket) {
+	simple_wml::document join_lobby_response;
+	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", is_moderator ? "yes" : "no");
+
+	async_send_doc(socket, join_lobby_response, [this, username, registered, version, source](socket_ptr socket) {
 		simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 		add_player(socket, wesnothd::player(
 				username,
@@ -827,16 +831,6 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 			g_ptr->send_server_message_to_all(username + " has logged into the lobby");
 			last_sent = g_ptr;
 		}
-	}
-
-	if(is_moderator) {
-		LOG_SERVER << "Admin automatically recognized: IP: " << client_address(socket) << "\tnick: " << username
-				   << std::endl;
-
-		// This string is parsed by the client!
-		send_server_message(socket,
-			"You are now recognized as an administrator. "
-			"If you no longer want to be automatically authenticated use '/query signout'.", "alert");
 	}
 
 	if(auth_ban.type) {
@@ -1006,7 +1000,7 @@ void server::send_password_request(socket_ptr socket,
 		e.set_attr("error_code", error_code);
 	}
 
-	async_send_doc(socket, doc, std::bind(&server::login, this, _1, version, source));
+	async_send_doc(socket, doc, std::bind(&server::login, this, std::placeholders::_1, version, source));
 }
 
 void server::add_player(socket_ptr socket, const wesnothd::player& player)
@@ -1043,8 +1037,8 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 void server::read_from_player(socket_ptr socket)
 {
 	async_receive_doc(socket,
-		std::bind(&server::handle_read_from_player, this, _1, _2),
-		std::bind(&server::remove_player, this, _1)
+		std::bind(&server::handle_read_from_player, this, std::placeholders::_1, std::placeholders::_2),
+		std::bind(&server::remove_player, this, std::placeholders::_1)
 	);
 }
 
@@ -1122,7 +1116,7 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 	}
 
 	auto g = player_connections_.find(socket)->get_game();
-	if(g && g->started() && g->is_player(receiver_iter->socket()) && g->is_member(socket)) {
+	if(g && g->started() && g->is_player(receiver_iter->socket())) {
 		send_server_message(socket, "You cannot send private messages to players in a running game you observe.", "error");
 		return;
 	}
@@ -1152,7 +1146,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 
 	const std::string& query_help_msg =
 		"Available commands are: adminmsg <msg>, help, games, metrics,"
-		" motd, netstats [all], requests, sample, stats, status, version, wml.";
+		" motd, netstats [all], requests, roll <sides>, sample, stats, status, version, wml.";
 
 	// Commands a player may issue.
 	if(command == "status") {
@@ -1167,6 +1161,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		command == "netstats all" ||
 		command.compare(0, 7, "version") == 0 ||
 		command == "requests" ||
+		command.compare(0, 4, "roll") == 0 ||
 		command == "sample" ||
 		command == "stats" ||
 		command == "status " + player.name() ||
@@ -1292,7 +1287,7 @@ void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game
 	}
 
 	player_connections_.modify(
-		player_connections_.find(socket), std::bind(&server::create_game, this, _1, std::ref(create_game)));
+		player_connections_.find(socket), std::bind(&server::create_game, this, std::placeholders::_1, std::ref(create_game)));
 
 	return;
 }
@@ -1310,7 +1305,7 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 	// and set the player as the host/owner.
 	host_record.get_game().reset(
 		new wesnothd::game(player_connections_, host_record.socket(), game_name, save_replays_, replay_save_path_),
-		std::bind(&server::cleanup_game, this, _1)
+		std::bind(&server::cleanup_game, this, std::placeholders::_1)
 	);
 
 	wesnothd::game& g = *host_record.get_game();
@@ -1422,7 +1417,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 	}
 
 	player_connections_.modify(player_connections_.find(socket),
-		std::bind(&player_record::set_game, _1, player_connections_.get<game_t>().find(game_id)->get_game()));
+		std::bind(&player_record::set_game, std::placeholders::_1, player_connections_.get<game_t>().find(game_id)->get_game()));
 
 	g->describe_slots();
 
@@ -1689,7 +1684,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		} else {
 			auto description = g.description();
 
-			player_connections_.modify(player_connections_.find(socket), std::bind(&player_record::enter_lobby, _1));
+			player_connections_.modify(player_connections_.find(socket), std::bind(&player_record::enter_lobby, std::placeholders::_1));
 			if(!g_ptr.expired()) {
 				g.describe_slots();
 			}
@@ -1766,7 +1761,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			: g.kick_member(*data.child("kick"), socket));
 
 		if(user) {
-			player_connections_.modify(player_connections_.find(user), std::bind(&player_record::enter_lobby, _1));
+			player_connections_.modify(player_connections_.find(user), std::bind(&player_record::enter_lobby, std::placeholders::_1));
 			if(g.describe_slots()) {
 				update_game_in_lobby(g, user);
 			}
@@ -2025,7 +2020,7 @@ void server::shut_down_handler(
 		acceptor_v4_.close();
 
 		timer_.expires_from_now(std::chrono::seconds(10));
-		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
+		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 
 		process_command(
 			"msg The server is shutting down. You may finish your games but can't start new ones. Once all "
@@ -2056,7 +2051,7 @@ void server::restart_handler(const std::string& issuer_name,
 		acceptor_v6_.close();
 		acceptor_v4_.close();
 		timer_.expires_from_now(std::chrono::seconds(10));
-		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
+		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 
 		start_new_server();
 
@@ -2129,6 +2124,49 @@ void server::requests_handler(const std::string& /*issuer_name*/,
 {
 	assert(out != nullptr);
 	metrics_.requests(*out);
+}
+
+void server::roll_handler(const std::string& issuer_name,
+		const std::string& /*query*/,
+		std::string& parameters,
+		std::ostringstream* out)
+{
+	assert(out != nullptr);
+	if(parameters.empty()) {
+		return;
+	}
+
+	int N;
+	try {
+		N = std::stoi(parameters);
+	} catch(const std::invalid_argument&) {
+		*out << "The number of die sides must be a number!";
+		return;
+	} catch(const std::out_of_range&) {
+		*out << "The number of sides is too big for the die!";
+		return;
+	}
+
+	if(N < 1) {
+		*out << "The die cannot have less than 1 side!";
+		return;
+	}
+	std::uniform_int_distribution<int> dice_distro(1, N);
+	std::string value = std::to_string(dice_distro(die_));
+
+	*out << "You rolled a die [1 - " + parameters + "] and got a " + value + ".";
+
+	auto player_ptr = player_connections_.get<name_t>().find(issuer_name);
+	if(player_ptr == player_connections_.get<name_t>().end()) {
+		return;
+	}
+
+	auto g_ptr = player_ptr->get_game();
+	if(g_ptr) {
+		g_ptr->send_server_message_to_all(issuer_name + " rolled a die [1 - " + parameters + "] and got a " + value + ".", player_ptr->socket());
+	} else {
+		*out << " (The result is shown to others only in a game.)";
+	}
 }
 
 void server::games_handler(const std::string& /*issuer_name*/,
@@ -2894,7 +2932,7 @@ void server::delete_game(int gameid, const std::string& reason)
 	// This will call cleanup_game() deleter since there won't
 	// be any references to that game from player_connections_ anymore
 	for(const auto& it : range_vctor) {
-		player_connections_.get<game_t>().modify(it, std::bind(&player_record::enter_lobby, _1));
+		player_connections_.get<game_t>().modify(it, std::bind(&player_record::enter_lobby, std::placeholders::_1));
 	}
 
 	// send users in the game a notification to leave the game since it has ended

@@ -380,7 +380,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 	}
 
 	uint8_t button = event.button.button;
-	CVideo& video = dynamic_cast<window&>(*dispatchers_.back()).video();
+	CVideo& video = CVideo::get_singleton();
 
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
@@ -598,9 +598,7 @@ void sdl_event_handler::draw()
 	}
 
 	if(!dispatchers_.empty()) {
-		CVideo& video = dynamic_cast<window&>(*dispatchers_.back()).video();
-
-		video.flip();
+		CVideo::get_singleton().flip();
 	}
 }
 

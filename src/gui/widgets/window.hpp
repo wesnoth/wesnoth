@@ -62,13 +62,13 @@ class distributor;
 class window : public panel
 {
 	friend class debug_layout_graph;
-	friend window* build(const builder_window::window_resolution*);
+	friend std::unique_ptr<window> build(const builder_window::window_resolution&);
 	friend struct window_implementation;
 	friend class invalidate_layout_blocker;
 	friend class pane;
 
 public:
-	explicit window(const builder_window::window_resolution* definition);
+	explicit window(const builder_window::window_resolution& definition);
 
 	~window();
 
@@ -163,14 +163,11 @@ public:
 	}
 
 	/** The status of the window. */
-	enum status {
-		NEW,		   /**< The window is new and not yet shown. */
-		SHOWING,	   /**< The window is being shown. */
-		REQUEST_CLOSE, /**< The window has been requested to be
-						*   closed but still needs to evaluate the
-						*   request.
-						*/
-		CLOSED /**< The window has been closed. */
+	enum class status {
+		NEW,           /**< The window is new and not yet shown. */
+		SHOWING,       /**< The window is being shown. */
+		REQUEST_CLOSE, /**< The window has been requested to be closed but still needs to evaluate the request. */
+		CLOSED         /**< The window has been closed. */
 	};
 
 	/**
@@ -181,7 +178,7 @@ public:
 	 */
 	void close()
 	{
-		status_ = REQUEST_CLOSE;
+		status_ = status::REQUEST_CLOSE;
 	}
 
 	/**
@@ -349,11 +346,6 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	CVideo& video()
-	{
-		return video_;
-	}
-
 	/**
 	 * Sets there return value of the window.
 	 *
@@ -430,7 +422,7 @@ public:
 		callback_next_draw_ = func;
 	}
 
-	enum show_mode {
+	enum class show_mode {
 		none,
 		modal,
 		modeless,
@@ -665,7 +657,7 @@ private:
 	 *
 	 * @param content_grid        The new contents for the content grid.
 	 */
-	void finalize(const std::shared_ptr<builder_grid>& content_grid);
+	void finalize(const builder_grid& content_grid);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	debug_layout_graph* debug_layout_;

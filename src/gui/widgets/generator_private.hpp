@@ -714,7 +714,7 @@ public:
 
 	/** Inherited from generator_base. */
 	grid& create_item(const int index,
-			builder_grid_const_ptr list_builder,
+			const builder_grid& list_builder,
 			const string_map& item_data,
 			const std::function<void(widget&)>& callback) override
 	{
@@ -726,15 +726,14 @@ public:
 
 	/** Inherited from generator_base. */
 	grid& create_item(const int index,
-			builder_grid_const_ptr list_builder,
+			const builder_grid& list_builder,
 			const std::map<std::string /* widget id */, string_map>& item_data,
 			const std::function<void(widget&)>& callback) override
 	{
-		assert(list_builder);
 		assert(index == -1 || static_cast<unsigned>(index) <= items_.size());
 
 		child* item = new child;
-		list_builder->build(&item->child_grid);
+		list_builder.build(&item->child_grid);
 
 		init(&item->child_grid, item_data, callback);
 
@@ -757,7 +756,7 @@ public:
 
 	/** Inherited from generator_base. */
 	virtual void create_items(const int index,
-			builder_grid_const_ptr list_builder,
+			const builder_grid& list_builder,
 			const std::vector<std::map<std::string /*widget id*/, string_map>>& data,
 			const std::function<void(widget&)>& callback) override
 	{
@@ -766,7 +765,7 @@ public:
 
 	/** Inherited from generator_base. */
 	virtual void create_items(const int index,
-			builder_grid_const_ptr list_builder,
+			const builder_grid& list_builder,
 			const std::vector<string_map>& data,
 			const std::function<void(widget&)>& callback) override
 	{
@@ -1072,7 +1071,7 @@ private:
 	 */
 	template<class T>
 	void impl_create_items(const int index,
-			builder_grid_const_ptr list_builder,
+			const builder_grid& list_builder,
 			const std::vector<T>& data,
 			const std::function<void(widget&)>& callback)
 	{

@@ -33,7 +33,7 @@
 #include "whiteboard/manager.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include <SDL2/SDL_timer.h>
 
 #include <algorithm>
@@ -273,7 +273,7 @@ void game_state::write(config& cfg) const
 	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
 	undo_stack_->write(cfg.add_child("undo_stack"));
 
-	if(end_level_data_.get_ptr() != nullptr) {
+	if(end_level_data_) {
 		end_level_data_->write(cfg.add_child("end_level_data"));
 	}
 }

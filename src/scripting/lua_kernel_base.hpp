@@ -17,7 +17,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include "utils/functional.hpp"
+#include <functional>
 #include <cstdint>
 
 struct lua_State;

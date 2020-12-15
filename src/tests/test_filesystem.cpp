@@ -132,7 +132,7 @@ BOOST_AUTO_TEST_CASE( test_fs_enum )
 	// FIXME: get_files_in_dir with mode == FILE_NAME_ONLY will fail to reorder
 	//        entries because the sorting code looks for forward slashes.
 	//        This affects both the BFS-based and legacy implementations.
-	get_files_in_dir(path, &files, &dirs, ENTIRE_FILE_PATH, NO_FILTER, DO_REORDER);
+	get_files_in_dir(path, &files, &dirs, name_mode::ENTIRE_FILE_PATH, filter_mode::NO_FILTER, reorder_mode::DO_REORDER);
 
 	BOOST_CHECK( files == expected_filepaths );
 	BOOST_CHECK( dirs  == expected_dirpaths  );

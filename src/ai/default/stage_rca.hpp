@@ -48,7 +48,6 @@ private:
 	const config &cfg_;
 };
 
-
 } // of namespace testing_ai_default
 
 } // of namespace ai

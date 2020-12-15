@@ -18,7 +18,7 @@
 #include "gui/core/window_builder.hpp"
 #include "gui/core/placer.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <list>
 
@@ -51,9 +51,6 @@ public:
 	typedef std::function<bool(const item&, const item&)> compare_functor_t;
 
 	typedef std::function<bool(const item&)> filter_functor_t;
-
-	/** @deprecated Use the second overload. */
-	explicit pane(const builder_grid_ptr item_builder);
 
 private:
 	explicit pane(const implementation::builder_pane& builder);
@@ -202,9 +199,9 @@ struct builder_pane : public builder_widget
 {
 	explicit builder_pane(const config& cfg);
 
-	widget* build() const;
+	virtual widget* build() const override;
 
-	widget* build(const replacements_map& replacements) const;
+	virtual widget* build(const replacements_map& replacements) const override;
 
 	placer_base::grow_direction grow_direction;
 

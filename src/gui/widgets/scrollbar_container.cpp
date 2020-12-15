@@ -26,7 +26,7 @@
 #include "sdl/rect.hpp"
 
 #include <algorithm>
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -81,31 +81,31 @@ scrollbar_container::scrollbar_container(
 	, content_visible_area_()
 {
 	connect_signal<event::SDL_KEY_DOWN>(
-		std::bind(&scrollbar_container::signal_handler_sdl_key_down, this, _2, _3, _5, _6));
+		std::bind(&scrollbar_container::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 
 	connect_signal<event::SDL_WHEEL_UP>(
-		std::bind(&scrollbar_container::signal_handler_sdl_wheel_up, this, _2, _3),
+		std::bind(&scrollbar_container::signal_handler_sdl_wheel_up, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_WHEEL_DOWN>(
-		std::bind(&scrollbar_container::signal_handler_sdl_wheel_down, this, _2, _3),
+		std::bind(&scrollbar_container::signal_handler_sdl_wheel_down, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_WHEEL_LEFT>(
-		std::bind(&scrollbar_container::signal_handler_sdl_wheel_left, this, _2, _3),
+		std::bind(&scrollbar_container::signal_handler_sdl_wheel_left, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_WHEEL_RIGHT>(
-		std::bind(&scrollbar_container::signal_handler_sdl_wheel_right, this, _2, _3),
+		std::bind(&scrollbar_container::signal_handler_sdl_wheel_right, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_TOUCH_MOTION>(
 			std::bind(&scrollbar_container::signal_handler_sdl_touch_motion,
 						this,
-						_2,
-						_3,
-						_5,
-						_6),
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_5,
+						std::placeholders::_6),
 			event::dispatcher::back_post_child);
 }
 

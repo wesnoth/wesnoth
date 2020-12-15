@@ -77,19 +77,19 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 		// This will be the case for AI recruits in replays saved
 		// before 1.11.2, so it is not more severe than a warning.
 		// EDIT: we broke compatibility with 1.11.2 anyway so we should give an error.
-		error_handler("Missing leader location for recruitment.\n", false);
+		error_handler("Missing leader location for recruitment.\n");
 	}
 	else if ( resources::gameboard->units().find(from) == resources::gameboard->units().end() ) {
 		// Sync problem?
 		std::stringstream errbuf;
 		errbuf << "Recruiting leader not found at " << from << ".\n";
-		error_handler(errbuf.str(), false);
+		error_handler(errbuf.str());
 	}
 
 	// Get the unit_type ID.
 	std::string type_id = child["type"];
 	if ( type_id.empty() ) {
-		error_handler("Recruitment is missing a unit type.", true);
+		error_handler("Recruitment is missing a unit type.");
 		return false;
 	}
 
@@ -97,7 +97,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 	if (!u_type) {
 		std::stringstream errbuf;
 		errbuf << "Recruiting illegal unit: '" << type_id << "'.\n";
-		error_handler(errbuf.str(), true);
+		error_handler(errbuf.str());
 		return false;
 	}
 
@@ -106,7 +106,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 	{
 		std::stringstream errbuf;
 		errbuf << "cannot recruit unit: " << res << "\n";
-		error_handler(errbuf.str(), true);
+		error_handler(errbuf.str());
 		return false;
 		//we are already oos because the unit wasn't created, no need to keep the bookkeeping right...
 	}
@@ -118,7 +118,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 		std::stringstream errbuf;
 		errbuf << "unit '" << type_id << "' is too expensive to recruit: "
 			<< u_type->cost() << "/" << beginning_gold << "\n";
-		error_handler(errbuf.str(), false);
+		error_handler(errbuf.str());
 	}
 
 	actions::recruit_unit(*u_type, current_team_num, loc, from, show, use_undo);
@@ -140,7 +140,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 	map_location from(child.child_or_empty("from"), resources::gamedata);
 
 	if ( !actions::recall_unit(unit_id, current_team, loc, from, map_location::NDIRECTIONS, show, use_undo) ) {
-		error_handler("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n", true);
+		error_handler("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 		//when recall_unit returned false nothing happened so we can safety return false;
 		return false;
 	}
@@ -154,12 +154,12 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	//check_checksums(*cfg);
 
 	if (!destination) {
-		error_handler("no destination found in attack\n", true);
+		error_handler("no destination found in attack\n");
 		return false;
 	}
 
 	if (!source) {
-		error_handler("no source found in attack \n", true);
+		error_handler("no source found in attack \n");
 		return false;
 	}
 
@@ -183,7 +183,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 
 	unit_map::iterator u = resources::gameboard->units().find(src);
 	if (!u.valid()) {
-		error_handler("unfound location for source of attack\n", true);
+		error_handler("unfound location for source of attack\n");
 		return false;
 	}
 
@@ -195,7 +195,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	}
 
 	if (static_cast<unsigned>(weapon_num) >= u->attacks().size()) {
-		error_handler("illegal weapon type in attack\n", true);
+		error_handler("illegal weapon type in attack\n");
 		return false;
 	}
 
@@ -204,7 +204,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	if (!tgt.valid()) {
 		std::stringstream errbuf;
 		errbuf << "unfound defender for attack: " << src << " -> " << dst << '\n';
-		error_handler(errbuf.str(), true);
+		error_handler(errbuf.str());
 		return false;
 	}
 
@@ -217,7 +217,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 
 	if (def_weapon_num >= static_cast<int>(tgt->attacks().size())) {
 
-		error_handler("illegal defender weapon type in attack\n", true);
+		error_handler("illegal defender weapon type in attack\n");
 		return false;
 	}
 
@@ -246,7 +246,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 	current_team.recall_list().erase_if_matches_id(unit_id);
 
 	if (old_size == current_team.recall_list().size()) {
-		error_handler("illegal disband\n", true);
+		error_handler("illegal disband\n");
 		return false;
 	}
 	return true;
@@ -294,7 +294,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		std::stringstream errbuf;
 		errbuf << "unfound location for source of movement: "
 			<< src << " -> " << dst << '\n';
-		error_handler(errbuf.str(), true);
+		error_handler(errbuf.str());
 		return false;
 	}
 	bool skip_sighted = false;
@@ -387,7 +387,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, e
 	assert(use_undo);
 	team &current_team = resources::controller->current_team();
 	if(current_team.auto_shroud_updates()) {
-		error_handler("Team has DSU disabled but we found an explicit shroud update", false);
+		error_handler("Team has DSU disabled but we found an explicit shroud update");
 	}
 	resources::undo_stack->commit_vision();
 	resources::undo_stack->add_update_shroud();
@@ -540,7 +540,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	const unit_race::GENDER gender = string_gender(child["gender"], unit_race::NUM_GENDERS);
 	const unit_type *u_type = unit_types.find(child["type"]);
 	if (!u_type) {
-		error_handler("Invalid unit type", true);
+		error_handler("Invalid unit type");
 		return false;
 	}
 

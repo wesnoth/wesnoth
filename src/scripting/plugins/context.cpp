@@ -18,7 +18,7 @@
 
 #include <cassert>
 #include <utility>
-#include "utils/functional.hpp"
+#include <functional>
 
 plugins_context::plugins_context(const std::string & name)
 	: callbacks_()

@@ -50,6 +50,7 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
+#include "utils/optional_fwd.hpp"
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
@@ -135,7 +136,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
-	boost::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
@@ -297,7 +298,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(*u_type, map_location::null_location(), attacking);
-	boost::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
@@ -877,7 +878,7 @@ void attack::fire_event(const std::string& n)
 	config& d_weapon_cfg = ev_data.add_child("second");
 
 	// Need these to ensure weapon filters work correctly
-	boost::optional<attack_type::specials_context_t> a_ctx, d_ctx;
+	utils::optional<attack_type::specials_context_t> a_ctx, d_ctx;
 
 	if(a_stats_->weapon != nullptr && a_.valid()) {
 		if(d_stats_->weapon != nullptr && d_.valid()) {

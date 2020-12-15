@@ -41,13 +41,12 @@
 #include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <type_traits>
 #include <map>
 #include <utility>
 #include <vector>
-#include <boost/optional.hpp>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -67,8 +66,7 @@ int intf_show_dialog(lua_State* L)
 	config def_cfg = luaW_checkconfig(L, 1);
 	gui2::builder_window::window_resolution def(def_cfg);
 
-	std::unique_ptr<gui2::window> wp;
-	wp.reset(gui2::build(&def));
+	std::unique_ptr<gui2::window> wp(gui2::build(def));
 
 	if(!lua_isnoneornil(L, 2)) {
 		lua_pushvalue(L, 2);
@@ -98,7 +96,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 		{
 			int v = lua_tointeger(L, i);
 			if(v < 1) {
-				throw std::invalid_argument("negavtive index");
+				throw std::invalid_argument("negative index");
 			}
 			int n = list->get_item_count();
 			if(v > n) {
@@ -114,7 +112,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 		} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
 			int v = lua_tointeger(L, i);
 			if(v < 1) {
-				throw std::invalid_argument("negavtive index");
+				throw std::invalid_argument("negative index");
 			}
 			int n = multi_page->get_page_count();
 			if(v > n) {
@@ -132,7 +130,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 			if(lua_isnumber(L, i)) {
 				int v = lua_tointeger(L, i);
 				if(v < 1) {
-					throw std::invalid_argument("negavtive index");
+					throw std::invalid_argument("negative index");
 				}
 				int n = tvn.count_children();
 				if(v > n) {
@@ -148,7 +146,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 			if(lua_isnumber(L, i)) {
 				int v = lua_tointeger(L, i);
 				if(v < 1) {
-					throw std::invalid_argument("negavtive index");
+					throw std::invalid_argument("negative index");
 				}
 				int n = tree_view_node->count_children();
 				if(v > n) {
@@ -164,7 +162,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 			if(lua_isnumber(L, i)) {
 				int v = lua_tointeger(L, i);
 				if(v < 1) {
-					throw std::invalid_argument("negavtive index");
+					throw std::invalid_argument("negative index");
 				}
 				int n = stacked_widget->get_layer_count();
 				if(v > n) {
@@ -258,7 +256,7 @@ namespace { // helpers of intf_set_dialog_callback()
 		}
 		gui2::window* wd = w->get_window();
 		if(!wd) {
-			ERR_LUA << "canot find window in eidgte callback\n";
+			ERR_LUA << "cannot find window in widget callback\n";
 			return;
 		}
 		luaW_callwidgetcallback(L, w, wd, id);
@@ -420,7 +418,7 @@ int luaW_open(lua_State* L)
 	auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
 	lk.add_log("Adding widgets module...\n");
 	static luaL_Reg const gui_callbacks[] = {
-		//TODO: the naming is a bit arbitaty: widgets with differnt
+		//TODO: the naming is a bit arbitrary: widgets with different
 		//      types of elements use add_node, eidgets with only
 		//      one type of element use add_element
 		{ "add_item_of_type",   &intf_add_item_of_type },

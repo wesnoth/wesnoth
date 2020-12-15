@@ -18,7 +18,7 @@
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/widget.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <map>
 #include <vector>
@@ -127,7 +127,7 @@ public:
 		};
 
 		for(auto& member : members_) {
-			event::connect_signal_notify_modified(dynamic_cast<widget&>(*member.second), std::bind(callback, _1));
+			event::connect_signal_notify_modified(dynamic_cast<widget&>(*member.second), std::bind(callback, std::placeholders::_1));
 		}
 	}
 

@@ -22,7 +22,7 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "wml_exception.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
@@ -43,7 +43,7 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	, selected_item_(nullptr)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&tree_view::signal_handler_left_button_down, this, _2), event::dispatcher::back_pre_child);
+		std::bind(&tree_view::signal_handler_left_button_down, this, std::placeholders::_2), event::dispatcher::back_pre_child);
 }
 
 tree_view::~tree_view()
@@ -395,7 +395,7 @@ widget* builder_tree_view::build() const
 	const auto conf = widget->cast_config_to<tree_view_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
 
 	return widget;

@@ -25,6 +25,7 @@
 #include "terrain/type_data.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
+#include "utils/optional_fwd.hpp"
 
 #include <set>
 
@@ -132,10 +133,14 @@ public:
 		gamestate().end_level_data_ = data;
 	}
 	void reset_end_level_data() {
-		gamestate().end_level_data_ = boost::none;
+		gamestate().end_level_data_.reset();
 	}
 	bool is_regular_game_end() const {
-		return gamestate().end_level_data_.get_ptr() != nullptr;
+#if defined HAVE_CXX17 || BOOST_VERSION >= 106800
+		return gamestate().end_level_data_.has_value();
+#else
+		return gamestate().end_level_data_ != utils::nullopt;
+#endif
 	}
 	const end_level_data& get_end_level_data_const() const {
 		return *gamestate().end_level_data_;

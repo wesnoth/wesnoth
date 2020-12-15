@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2015 by Iris Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2008 - 2020 by Iris Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,6 +12,18 @@
 
    See the COPYING file for more details.
 */
+
+/**
+ * @file
+ * Local add-on content management interface.
+ *
+ * This API only concerns local functionality dealing with enumerating and
+ * manipulating installed add-ons, as well as extracting add-ons in WML pack
+ * form, usually but not necessarily obtained through the networked client.
+ *
+ * It also includes functions for the handling of add-on versioning
+ * information (_info.cfg) and publishing information (_server.pbl).
+ */
 
 #pragma once
 
@@ -61,15 +73,22 @@ struct invalid_pbl_exception : public std::exception
 	}
 };
 
+/**
+ * Removes the specified add-on, deleting its full directory structure.
+ */
 bool remove_local_addon(const std::string& addon);
 
 /**
- * Returns true if there's a local .pbl file stored for the specified add-on.
+ * Returns whether a .pbl file is present for the specified add-on or not.
  */
 bool have_addon_pbl_info(const std::string& addon_name);
 
 /**
- * Returns true if the specified add-ons appear to be managed by a 'supported' VCS.
+ * Returns whether the specified add-on appears to be managed by a VCS or not.
+ *
+ * This is used by the add-ons client to prompt the user before overwriting
+ * add-ons that may currently be managed externally instead of through the
+ * built-in campaignd client.
  *
  * Currently supported VCSes are: Subversion, Git, Mercurial.
  */
@@ -86,7 +105,7 @@ bool have_addon_in_vcs_tree(const std::string& addon_name);
 config get_addon_pbl_info(const std::string& addon_name);
 
 /**
- * Sets the publish information for an add-on
+ * Sets the publish information for an add-on.
  *
  * @param addon_name              The add-on's main directory/file name.
  * @param cfg                     A config object from which the add-on's
@@ -107,6 +126,15 @@ bool have_addon_install_info(const std::string& addon_name);
  *                                properties.
  */
 void get_addon_install_info(const std::string& addon_name, class config& cfg);
+
+/**
+ * Writes the installation info (_info.cfg) for an add-on to disk.
+ *
+ * @param addon_name              The add-on's main directory/file name.
+ * @param cfg                     A config object containing the add-on's
+ *                                properties.
+ */
+void write_addon_install_info(const std::string& addon_name, const class config& cfg);
 
 /** Returns a list of local add-ons that can be published. */
 std::vector<std::string> available_addons();

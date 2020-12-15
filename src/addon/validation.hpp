@@ -58,6 +58,7 @@ enum class ADDON_CHECK_STATUS : unsigned int
 	NO_PASSPHRASE				= 0x205,		/**< No passphrase specified */
 	TITLE_HAS_MARKUP			= 0x206,		/**< Markup in add-on title */
 	BAD_TYPE					= 0x207,		/**< Bad add-on type */
+	VERSION_NOT_INCREMENTED		= 0x208,		/**< Version number is not an increment */
 	INVALID_UTF8_ATTRIBUTE		= 0x2FF,		/**< Invalid UTF-8 sequence in add-on metadata */
 	//
 	// Server errors

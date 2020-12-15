@@ -37,7 +37,7 @@ public:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	std::shared_ptr<view> get_view();
+	std::shared_ptr<view> get_view() const;
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

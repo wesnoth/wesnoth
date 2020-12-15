@@ -44,7 +44,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include "utils/functional.hpp"
+#include <functional>
 
 #ifdef HAVE_HISTORY
 #include "filesystem.hpp"
@@ -467,9 +467,9 @@ void lua_interpreter::controller::bind(window& window)
 			*text_entry,
 			std::bind(&lua_interpreter::controller::input_keypress_callback,
 						this,
-						_3,
-						_4,
-						_5,
+						std::placeholders::_3,
+						std::placeholders::_4,
+						std::placeholders::_5,
 						std::ref(window)));
 
 	copy_button = find_widget<button>(&window, "copy", false, true);

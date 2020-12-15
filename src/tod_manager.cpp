@@ -29,7 +29,7 @@
 
 #include <algorithm>
 #include <iterator>
-#include "utils/functional.hpp"
+#include <functional>
 #include "actions/attack.hpp"
 
 static lg::log_domain log_engine("engine");

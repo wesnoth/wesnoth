@@ -53,6 +53,7 @@ public:
 	 * @returns                   The grid of the newly added page.
 	 */
 	grid& add_page(const string_map& item);
+
 	/**
 	 * Adds single page to the grid.
 	 *
@@ -88,6 +89,7 @@ public:
 	 * @returns                   The grid of the newly added page.
 	 */
 	grid& add_page(const std::map<std::string /* widget id */, string_map>& data);
+
 	/**
 	 * Adds single page to the grid.
 	 *
@@ -103,7 +105,7 @@ public:
 	 *                            members. Having both empty and non-empty
 	 *                            id's gives undefined behavior.
 	 *
-	 * @param type                the id of the [page_definition] that shoduol be used
+	 * @param type                the id of the [page_definition] that should be used
 	 *
 	 * @param insert_pos          the position where th new page is inserted, usually
 	 *                            -1 for 'at end'
@@ -129,7 +131,7 @@ public:
 	unsigned get_page_count() const;
 
 	/**
-	 * Selectes a page.
+	 * Selects a page.
 	 *
 	 * @param page                The page to select.
 	 * @param select              Select or deselect the page.
@@ -172,6 +174,7 @@ public:
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
+private:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_page_builders(const std::map<std::string, builder_grid_const_ptr>& page_builders)
@@ -180,7 +183,6 @@ public:
 		page_builders_ = page_builders;
 	}
 
-private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
@@ -242,7 +244,7 @@ struct builder_multi_page : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	widget* build() const;
+	virtual widget* build() const override;
 
 	std::map<std::string, builder_grid_const_ptr> builders;
 

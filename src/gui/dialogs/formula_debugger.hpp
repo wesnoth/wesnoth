@@ -43,13 +43,13 @@ private:
 	virtual const std::string& window_id() const override;
 
 	/***** ***** button callbacks ***** *****/
-	void callback_continue_button(window& window);
+	void callback_continue_button();
 
-	void callback_next_button(window& window);
+	void callback_next_button();
 
-	void callback_step_button(window& window);
+	void callback_step_button();
 
-	void callback_stepout_button(window& window);
+	void callback_stepout_button();
 
 	wfl::formula_debugger& fdb_;
 };

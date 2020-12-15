@@ -313,7 +313,6 @@ void display::init_flags() {
 		side_colors.push_back(side_color);
 		init_flags_for_side_internal(t.side() - 1, side_color);
 	}
-	image::set_team_colors(&side_colors);
 }
 
 void display::reinit_flags_for_team(const team& t)

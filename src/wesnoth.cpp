@@ -50,7 +50,7 @@
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
 #include "statistics.hpp"              // for fresh_stats
-#include "utils/functional.hpp"
+#include <functional>
 #include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for CVideo
 #include "wesconfig.h"        // for PACKAGE
@@ -364,7 +364,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.log) {
-		for(const auto& log_pair : cmdline_opts.log.get()) {
+		for(const auto& log_pair : cmdline_opts.log.value()) {
 			const std::string log_domain = log_pair.second;
 			const int severity = log_pair.first;
 			if(!lg::set_log_domain_severity(log_domain, severity)) {
@@ -554,7 +554,8 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 		schema_validation::schema_validator validator(schema_path);
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
-		return handle_validate_command(*cmdline_opts.validate_wml, validator, boost::get_optional_value_or(cmdline_opts.preprocess_defines, {}));
+		return handle_validate_command(*cmdline_opts.validate_wml, validator,
+			cmdline_opts.preprocess_defines.value_or<decltype(cmdline_opts.preprocess_defines)::value_type>({}));
 	}
 
 	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path) {
@@ -753,7 +754,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-
 	check_fpu();
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
@@ -795,6 +795,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms\n";
 
+	game->init_advanced_prefs_manager();
+
 	plugins_manager plugins_man(new application_lua_kernel);
 
 	const plugins_context::reg_vec callbacks {
@@ -810,10 +812,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
 
 	for(;;) {
-		// reset the TC, since a game can modify it, and it may be used
-		// by images in add-ons or campaigns dialogs
-		image::set_team_colors();
-
 		statistics::fresh_stats();
 
 		if(!game->is_loading()) {

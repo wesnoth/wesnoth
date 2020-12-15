@@ -38,12 +38,10 @@ static lg::log_domain log_ai("ai/general");
 // =======================================================================
 namespace ai {
 
-
 // default ai context
 default_ai_context::default_ai_context()
 {
 }
-
 
 default_ai_context::~default_ai_context()
 {
@@ -64,7 +62,6 @@ void default_ai_context_proxy::init_default_ai_context_proxy(default_ai_context 
 default_ai_context_impl::~default_ai_context_impl()
 {
 }
-
 
 int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc, std::set<map_location> &checked_hexes)
 {
@@ -91,11 +88,9 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 	return ret;
 }
 
-
 default_ai_context& default_ai_context_impl::get_default_ai_context(){
 	return *this;
 }
-
 
 int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc) const
 {
@@ -277,18 +272,15 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 	return targets;
 }
 
-
 const std::vector<target>& default_ai_context_impl::additional_targets() const
 {
 	return additional_targets_;
 }
 
-
 void default_ai_context_impl::add_target(const target& t) const
 {
 	additional_targets_.push_back(t);
 }
-
 
 void default_ai_context_impl::clear_additional_targets() const
 {

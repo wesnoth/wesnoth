@@ -26,7 +26,7 @@
 #include "generators/map_generator.hpp"
 #include "lexical_cast.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 
@@ -139,13 +139,13 @@ void editor_generate_map::pre_show(window& window)
 			std::bind(&editor_generate_map::do_settings,this));
 }
 
-boost::optional<uint32_t> editor_generate_map::get_seed()
+utils::optional<uint32_t> editor_generate_map::get_seed()
 {
 	try {
 		return lexical_cast<uint32_t>(random_seed_);
 	}
 	catch(const bad_lexical_cast& ) {
-		return boost::none;
+		return utils::nullopt;
 	}
 }
 

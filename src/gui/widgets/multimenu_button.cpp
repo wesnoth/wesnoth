@@ -26,7 +26,7 @@
 #include "sound.hpp"
 
 #include "formula/string_utils.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 #include "gettext.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
@@ -50,16 +50,21 @@ multimenu_button::multimenu_button(const implementation::builder_multimenu_butto
 	values_.emplace_back("label", this->get_label());
 
 	connect_signal<event::MOUSE_ENTER>(
-			std::bind(&multimenu_button::signal_handler_mouse_enter, this, _2, _3));
+		std::bind(&multimenu_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::MOUSE_LEAVE>(
-			std::bind(&multimenu_button::signal_handler_mouse_leave, this, _2, _3));
+		std::bind(&multimenu_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
-	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&multimenu_button::signal_handler_left_button_down, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_DOWN>(
+		std::bind(&multimenu_button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			std::bind(&multimenu_button::signal_handler_left_button_up, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&multimenu_button::signal_handler_left_button_click, this, _2, _3));
+		std::bind(&multimenu_button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
+	connect_signal<event::LEFT_BUTTON_CLICK>(
+		std::bind(&multimenu_button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
+
+	// TODO: might need to position this differently in the queue if it's called after
+	// dialog-specific callbacks.
+	connect_signal<event::NOTIFY_MODIFIED>(
+		std::bind(&multimenu_button::signal_handler_notify_changed, this));
 }
 
 void multimenu_button::set_active(const bool active)
@@ -132,8 +137,7 @@ void multimenu_button::signal_handler_left_button_click(const event::ui_event ev
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, -1, this->get_use_markup(), true,
-		std::bind(&multimenu_button::toggle_state_changed, this));
+	dialogs::drop_down_menu droplist(this, values_, -1, true);
 
 	droplist_ = &droplist;
 	droplist.show();
@@ -191,12 +195,11 @@ void multimenu_button::reset_toggle_states()
 	update_label();
 }
 
-void multimenu_button::toggle_state_changed()
+void multimenu_button::signal_handler_notify_changed()
 {
 	assert(droplist_ != nullptr);
 
 	toggle_states_ = droplist_->get_toggle_states();
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	update_label();
 }
 

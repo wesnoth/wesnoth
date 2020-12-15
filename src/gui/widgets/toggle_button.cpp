@@ -23,7 +23,7 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "sound.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -43,17 +43,17 @@ toggle_button::toggle_button(const implementation::builder_toggle_button& builde
 	, icon_name_()
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&toggle_button::signal_handler_mouse_enter, this, _2, _3));
+			&toggle_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&toggle_button::signal_handler_mouse_leave, this, _2, _3));
+			&toggle_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&toggle_button::signal_handler_left_button_click, this, _2, _3));
+			&toggle_button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(std::bind(
 			&toggle_button::signal_handler_left_button_double_click,
 			this,
-			_2,
-			_3));
+			std::placeholders::_2,
+			std::placeholders::_3));
 }
 
 unsigned toggle_button::num_states() const

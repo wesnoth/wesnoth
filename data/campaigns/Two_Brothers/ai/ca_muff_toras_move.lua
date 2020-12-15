@@ -62,7 +62,7 @@ function muff_toras_move:execution()
         return rating
     end)
 
-    if ((go_to[1] ~= muff_toras.x) or (go_to[2] ~= muff_toras.y)) then
+    if go_to and ((go_to[1] ~= muff_toras.x) or (go_to[2] ~= muff_toras.y)) then
         AH.robust_move_and_attack(ai, muff_toras, go_to)
     end
 

@@ -2,13 +2,13 @@
 
 ## Prerequisites
 
-Wesnoth requires a compiler with sufficient C++14 support such as GCC 5.0 and
-later, or Clang 3.8 and later.
+Wesnoth requires a compiler with sufficient C++14 support such as GCC 5.4 and
+later, or a version of Clang with equivalent support.
 
 You'll need to have these libraries and their development headers installed in
 order to build Wesnoth:
 
- * Boost libraries             >= 1.56.0
+ * Boost libraries             >= 1.59.0
      Most headers plus the following binary libs:
    * Filesystem
    * Locale
@@ -19,7 +19,7 @@ order to build Wesnoth:
    * System
  * SDL2 libraries:
    * SDL2                      >= 2.0.4
-   * SDL2_image                >= 2.0.0 (with PNG and JPEG support)
+   * SDL2_image                >= 2.0.2 (with PNG and JPEG support)
    * SDL2_mixer                >= 2.0.0 (with Ogg Vorbis support)
    * SDL2_ttf                  >= 2.0.12
  * Fontconfig                  >= 2.4.1

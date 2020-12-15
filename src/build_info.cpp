@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
+#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "game_version.hpp"
 #include "sound.hpp"
@@ -271,13 +272,6 @@ version_table_manager::version_table_manager()
 	//
 	// Features table.
 	//
-
-	features.emplace_back(N_("feature^JPEG screenshots"));
-#ifdef SDL_IMAGE_VERSION_ATLEAST
-#if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
-	features.back().enabled = true;
-#endif
-#endif
 
 	features.emplace_back(N_("feature^Lua console completion"));
 #ifdef HAVE_HISTORY

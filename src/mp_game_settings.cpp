@@ -207,7 +207,7 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 	} else {
 		// Didn't find this addon-id in the map, so make a new entry without setting the min_version.
 		if(!new_data.required) {
-			new_data.min_version = boost::none;
+			new_data.min_version.reset();
 		}
 		addons.emplace(cfg["id"].str(), new_data);
 	}

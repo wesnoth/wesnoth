@@ -37,7 +37,7 @@ hotkey_bind::hotkey_bind(const std::string& hotkey_id)
 void hotkey_bind::pre_show(window& window)
 {
 	window.connect_signal<event::SDL_RAW_EVENT>(
-			std::bind(&hotkey_bind::sdl_event_callback, this, _5),
+			std::bind(&hotkey_bind::sdl_event_callback, this, std::placeholders::_5),
 			event::dispatcher::front_child);
 }
 
@@ -47,7 +47,7 @@ void hotkey_bind::sdl_event_callback(const SDL_Event &event)
 		new_binding_ = hotkey::create_hotkey(hotkey_id_, event);
 	}
 	if(new_binding_) {
-		get_window()->set_retval(retval::OK);
+		set_retval(retval::OK);
 	}
 }
 

@@ -72,7 +72,7 @@ chatbox::chatbox(const implementation::builder_chatbox& builder)
 	// loss itself when applicable. Nothing else happens in the interim while
 	// keyboard_focus_ equals `this` to warrent cleanup.
 	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(
-		std::bind(&chatbox::signal_handler_receive_keyboard_focus, this, _2));
+		std::bind(&chatbox::signal_handler_receive_keyboard_focus, this, std::placeholders::_2));
 }
 
 void chatbox::finalize_setup()
@@ -89,7 +89,7 @@ void chatbox::finalize_setup()
 	chat_input_ = find_widget<text_box>(this, "chat_input", false, true);
 
 	connect_signal_pre_key_press(*chat_input_,
-		std::bind(&chatbox::chat_input_keypress_callback, this, _5));
+		std::bind(&chatbox::chat_input_keypress_callback, this, std::placeholders::_5));
 }
 
 void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
@@ -456,7 +456,7 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 		close_button.set_visible(widget::visibility::hidden);
 	} else {
 		connect_signal_mouse_left_click(close_button,
-			std::bind(&chatbox::close_window_button_callback, this, open_windows_.back().name, _3, _4));
+			std::bind(&chatbox::close_window_button_callback, this, open_windows_.back().name, std::placeholders::_3, std::placeholders::_4));
 	}
 
 	return &open_windows_.back();
@@ -836,7 +836,7 @@ widget* builder_chatbox::build() const
 	const auto conf = widget->cast_config_to<chatbox_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
 
 	return widget;

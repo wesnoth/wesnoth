@@ -23,7 +23,7 @@
 #include "gui/widgets/window.hpp"
 #include "preferences/game.hpp"
 #include "serialization/unicode.hpp"
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -107,13 +107,13 @@ text_box::text_box(const implementation::builder_styled_widget& builder)
 	set_wants_mouse_left_double_click();
 
 	connect_signal<event::MOUSE_MOTION>(std::bind(
-			&text_box::signal_handler_mouse_motion, this, _2, _3, _5));
+			&text_box::signal_handler_mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&text_box::signal_handler_left_button_down, this, _2, _3));
+			&text_box::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
-			&text_box::signal_handler_left_button_up, this, _2, _3));
+			&text_box::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(std::bind(
-			&text_box::signal_handler_left_button_double_click, this, _2, _3));
+			&text_box::signal_handler_left_button_double_click, this, std::placeholders::_2, std::placeholders::_3));
 
 	const auto conf = cast_config_to<text_box_definition>();
 	assert(conf);

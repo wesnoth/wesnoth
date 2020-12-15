@@ -68,6 +68,12 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 
 	// Check if the thread is complete. If it is, loading is done.
 	if(poller_.wait_for(0ms) == std::future_status::ready) {
+		// The worker returns void, so this is only to handle any exceptions thrown from the worker.
+		// worker_result_.valid() will return false after.
+		if(poller_.valid()) {
+			poller_.get();
+		}
+
 		window_.get().set_retval(retval::OK);
 		return;
 	}

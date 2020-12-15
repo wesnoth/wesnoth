@@ -27,7 +27,7 @@
 #include "units/types.hpp"
 #include "help/help.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

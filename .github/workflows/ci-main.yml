@@ -8,6 +8,27 @@ on:
   workflow_dispatch:
 
 jobs:
+# run after all other jobs have completed to check overall build status
+  discord-notification:
+    runs-on: ubuntu-20.04
+
+    name: Discord Notification
+
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, ubuntu-1804, steam-runtime, mingw, flatpak, translations, macos-master-release, macos-master-debug, windows-release, windows-debug]
+    if: always()
+
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: rjstone/discord-webhook-notify@v1
+        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
+        with:
+          severity: error
+          webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
+          description: |-
+            pusher: ${{ github.actor }}
+            commit: ${{ github.event.head_commit.message }}
+            commit url: ${{ github.event.head_commit.url }}
+
   ubuntu-2004-scons-gcc-release-lto:
     runs-on: ubuntu-20.04
 
@@ -27,7 +48,7 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=true
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   ubuntu-2004-scons-clang-debug:
@@ -49,8 +70,16 @@ jobs:
           export CXX_STD=14
           export CFG=debug
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh master
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ubuntu-Clang-Debug
+          path: |
+            ~/build-cache/wesnoth
+            ~/build-cache/wesnothd
 
   ubuntu-2004-cmake-clang-release:
     runs-on: ubuntu-20.04
@@ -71,7 +100,7 @@ jobs:
           export CXX_STD=14
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   ubuntu-2004-cmake-gcc-debug:
@@ -93,8 +122,16 @@ jobs:
           export CXX_STD=14
           export CFG=debug
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ubuntu-GCC-Debug
+          path: |
+            ~/build-cache/wesnoth
+            ~/build-cache/wesnothd
 
   ubuntu-1804:
     runs-on: ubuntu-18.04
@@ -115,7 +152,7 @@ jobs:
           export CXX_STD=14
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   steam-runtime:
@@ -137,7 +174,7 @@ jobs:
           export CXX_STD=14
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   mingw:
@@ -159,7 +196,7 @@ jobs:
           export CXX_STD=14
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   flatpak:
@@ -181,7 +218,7 @@ jobs:
           export CXX_STD=14
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   translations:
@@ -203,7 +240,7 @@ jobs:
           export CXX_STD=14
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   macos-master-release:
@@ -233,7 +270,12 @@ jobs:
           export CFG=Debug
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
-
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: macOS-Debug
+          path: |
+            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
 # in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
 # this will create a brand new cache and recompile the vcpkg dependencies from scratch
 
@@ -251,7 +293,7 @@ jobs:
           cache-name: windows-release-cache-master
         with:
           path: D:/a/wesnoth/vcpkg
-          key: windows-release-master-N000
+          key: windows-master-N002
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -261,18 +303,15 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
           %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
-
       - name: DOS2
         shell: cmd
         run: |
           %~dp0../wesnoth/vcpkg/vcpkg integrate install
-          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale:x64-windows boost-random:x64-windows boost-regex:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
-
+          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer[libvorbis,dynamic-load]:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale[icu]:x64-windows boost-random:x64-windows boost-regex[icu]:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
       - name: DOS3
         shell: cmd
         run: |
           MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Release -p:Platform=Win64
-
   windows-debug:
     runs-on: windows-2019
 
@@ -287,7 +326,7 @@ jobs:
           cache-name: windows-debug-cache-master
         with:
           path: D:/a/wesnoth/vcpkg
-          key: windows-debug-master-N000
+          key: windows-master-N002
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -297,14 +336,21 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
           %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
-
       - name: DOS2
         shell: cmd
         run: |
           %~dp0../wesnoth/vcpkg/vcpkg integrate install
-          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale:x64-windows boost-random:x64-windows boost-regex:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
-
+          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer[libvorbis,dynamic-load]:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale[icu]:x64-windows boost-random:x64-windows boost-regex[icu]:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-ptr-container:x64-windows boost-logic:x64-windows boost-format:x64-windows
       - name: DOS3
         shell: cmd
         run: |
           MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Debug -p:Platform=Win64
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows-Debug
+          path: |
+            D:/a/wesnoth/wesnoth/wesnoth.exe
+            D:/a/wesnoth/wesnoth/wesnothd.exe
+            D:/a/wesnoth/wesnoth/wesnoth.pdb
+            D:/a/wesnoth/wesnoth/wesnothd.pdb

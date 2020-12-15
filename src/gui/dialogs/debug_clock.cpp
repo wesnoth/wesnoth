@@ -24,7 +24,7 @@
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/progress_bar.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <ctime>
 

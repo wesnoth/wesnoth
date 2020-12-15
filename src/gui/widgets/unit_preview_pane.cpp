@@ -43,7 +43,7 @@
 #include "units/helper.hpp"
 #include "units/unit.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {
@@ -630,7 +630,7 @@ widget* builder_unit_preview_pane::build() const
 	const auto conf = widget->cast_config_to<unit_preview_pane_definition>();
 	assert(conf);
 
-	widget->init_grid(conf->grid);
+	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
 	widget->set_image_mods(image_mods_);
 

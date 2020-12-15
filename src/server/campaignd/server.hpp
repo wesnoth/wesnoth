@@ -20,13 +20,14 @@
 #include "server/common/server_base.hpp"
 #include "server/common/simple_wml.hpp"
 
-#include "utils/functional.hpp"
-#include <unordered_map>
-#include <unordered_set>
-#include <boost/asio/steady_timer.hpp>
+#include <boost/asio/basic_waitable_timer.hpp>
 
 #include <chrono>
+#include <functional>
 #include <iosfwd>
+#include <set>
+#include <unordered_map>
+#include <unordered_set>
 
 namespace campaignd {
 
@@ -88,6 +89,8 @@ private:
 	typedef std::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;
 
+	std::set<std::string> capabilities_;
+
 	/**The hash map of addons metadata*/
 	std::unordered_map<std::string, config> addons_;
 	/**The set of unique addon names with pending metadata updates*/
@@ -101,6 +104,8 @@ private:
 	int compress_level_; /**< Used for add-on archives. */
 	time_t update_pack_lifespan_;
 
+	bool strict_versions_;
+
 	/** Default upload size limit in bytes. */
 	static const std::size_t default_document_size_limit = 100 * 1024 * 1024;
 
@@ -108,6 +113,9 @@ private:
 	request_handlers_table handlers_;
 
 	std::string feedback_url_format_;
+
+	std::string web_url_;
+	std::string license_notice_;
 
 	blacklist blacklist_;
 	std::string blacklist_file_;
@@ -205,6 +213,7 @@ private:
 	 */
 	void register_handlers();
 
+	void handle_server_id(const request&);
 	void handle_request_campaign_list(const request&);//#TODO: rename with 'addon' later?
 	void handle_request_campaign(const request&);
 	void handle_request_campaign_hash(const request&);

@@ -26,6 +26,7 @@
 #include "game_version.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/unicode_cast.hpp"
 
@@ -353,9 +354,9 @@ static bool create_directory_if_missing_recursive(const bfs::path& dirpath)
 void get_files_in_dir(const std::string& dir,
 		std::vector<std::string>* files,
 		std::vector<std::string>* dirs,
-		file_name_option mode,
-		file_filter_option filter,
-		file_reorder_option reorder,
+		name_mode mode,
+		filter_mode filter,
+		reorder_mode reorder,
 		file_tree_checksum* checksum)
 {
 	if(bfs::path(dir).is_relative() && !game_config::path.empty()) {
@@ -370,13 +371,13 @@ void get_files_in_dir(const std::string& dir,
 
 	const bfs::path dirpath(dir);
 
-	if(reorder == DO_REORDER) {
+	if(reorder == reorder_mode::DO_REORDER) {
 		LOG_FS << "searching for _main.cfg in directory " << dir << '\n';
 		const bfs::path maincfg = dirpath / maincfg_filename;
 
 		if(file_exists(maincfg)) {
 			LOG_FS << "_main.cfg found : " << maincfg << '\n';
-			push_if_exists(files, maincfg, mode == ENTIRE_FILE_PATH);
+			push_if_exists(files, maincfg, mode == name_mode::ENTIRE_FILE_PATH);
 			return;
 		}
 	}
@@ -400,13 +401,13 @@ void get_files_in_dir(const std::string& dir,
 		if(st.type() == bfs::regular_file) {
 			{
 				std::string basename = di->path().filename().string();
-				if(filter == SKIP_PBL_FILES && looks_like_pbl(basename))
+				if(filter == filter_mode::SKIP_PBL_FILES && looks_like_pbl(basename))
 					continue;
 				if(!basename.empty() && basename[0] == '.')
 					continue;
 			}
 
-			push_if_exists(files, di->path(), mode == ENTIRE_FILE_PATH);
+			push_if_exists(files, di->path(), mode == name_mode::ENTIRE_FILE_PATH);
 
 			if(checksum != nullptr) {
 				std::time_t mtime = bfs::last_write_time(di->path(), ec);
@@ -433,7 +434,7 @@ void get_files_in_dir(const std::string& dir,
 				continue;
 			}
 
-			if(filter == SKIP_MEDIA_DIR && (basename == "images" || basename == "sounds")) {
+			if(filter == filter_mode::SKIP_MEDIA_DIR && (basename == "images" || basename == "sounds")) {
 				continue;
 			}
 
@@ -442,12 +443,12 @@ void get_files_in_dir(const std::string& dir,
 
 			if(error_except_not_found(ec)) {
 				LOG_FS << "Failed to get file status of " << inner_main.string() << ": " << ec.message() << '\n';
-			} else if(reorder == DO_REORDER && main_st.type() == bfs::regular_file) {
+			} else if(reorder == reorder_mode::DO_REORDER && main_st.type() == bfs::regular_file) {
 				LOG_FS << "_main.cfg found : "
-					   << (mode == ENTIRE_FILE_PATH ? inner_main.string() : inner_main.filename().string()) << '\n';
-				push_if_exists(files, inner_main, mode == ENTIRE_FILE_PATH);
+					   << (mode == name_mode::ENTIRE_FILE_PATH ? inner_main.string() : inner_main.filename().string()) << '\n';
+				push_if_exists(files, inner_main, mode == name_mode::ENTIRE_FILE_PATH);
 			} else {
-				push_if_exists(dirs, di->path(), mode == ENTIRE_FILE_PATH);
+				push_if_exists(dirs, di->path(), mode == name_mode::ENTIRE_FILE_PATH);
 			}
 		}
 	}
@@ -460,7 +461,7 @@ void get_files_in_dir(const std::string& dir,
 		std::sort(dirs->begin(), dirs->end());
 	}
 
-	if(files != nullptr && reorder == DO_REORDER) {
+	if(files != nullptr && reorder == reorder_mode::DO_REORDER) {
 		// move finalcfg_filename, if present, to the end of the vector
 		for(unsigned int i = 0; i < files->size(); i++) {
 			if(ends_with((*files)[i], "/" + finalcfg_filename)) {
@@ -955,7 +956,7 @@ bool delete_directory(const std::string& dirname, const bool keep_pbl)
 	std::vector<std::string> dirs;
 	error_code ec;
 
-	get_files_in_dir(dirname, &files, &dirs, ENTIRE_FILE_PATH, keep_pbl ? SKIP_PBL_FILES : NO_FILTER);
+	get_files_in_dir(dirname, &files, &dirs, name_mode::ENTIRE_FILE_PATH, keep_pbl ? filter_mode::SKIP_PBL_FILES : filter_mode::NO_FILTER);
 
 	if(!files.empty()) {
 		for(const std::string& f : files) {

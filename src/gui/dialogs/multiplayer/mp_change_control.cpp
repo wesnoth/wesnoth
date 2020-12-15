@@ -32,7 +32,7 @@
 #include "menu_events.hpp"
 #include "team.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 static lg::log_domain log_gui("gui/dialogs/mp_change_control");
 #define ERR_GUI LOG_STREAM(err,   log_gui)

@@ -130,7 +130,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4503;4351;4250;4244;4127;4512;4003;4068;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalOptions>/utf-8 /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
@@ -169,7 +169,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DisableSpecificWarnings>4503;4351;4250;4244;4267</DisableSpecificWarnings>
-      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
       <AdditionalOptions>/utf-8 /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -210,7 +210,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4503;4351;4250;4244;4127;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalOptions>/utf-8 /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
@@ -248,7 +248,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DisableSpecificWarnings>4503;4351;4250;4244;</DisableSpecificWarnings>
-      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalOptions>/utf-8 /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
@@ -292,7 +292,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DisableSpecificWarnings>4503;4351;4250;4244;</DisableSpecificWarnings>
-      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalOptions>/utf-8 /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
@@ -1478,6 +1478,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\license_prompt.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\addon\manager.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
@@ -2553,6 +2560,7 @@
     <ClCompile Include="..\..\src\playturn.cpp" />
     <ClCompile Include="..\..\src\playturn_network_adapter.cpp" />
     <ClCompile Include="..\..\src\play_controller.cpp" />
+    <ClCompile Include="..\..\src\preferences\advanced.cpp" />
     <ClCompile Include="..\..\src\preferences\credentials.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Preferences\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Preferences\</ObjectFileName>
@@ -3803,6 +3811,7 @@
     <ClInclude Include="..\..\src\gui\core\window_builder\instance.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\addon\connect.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\addon\install_dependencies.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\addon\license_prompt.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\addon\manager.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\addon\uninstall_list.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\attack_predictions.hpp" />
@@ -3991,6 +4000,7 @@
     <ClInclude Include="..\..\src\playturn.hpp" />
     <ClInclude Include="..\..\src\playturn_network_adapter.hpp" />
     <ClInclude Include="..\..\src\play_controller.hpp" />
+    <ClInclude Include="..\..\src\preferences\advanced.hpp" />
     <ClInclude Include="..\..\src\preferences\credentials.hpp" />
     <ClInclude Include="..\..\src\preferences\display.hpp" />
     <ClInclude Include="..\..\src\preferences\editor.hpp" />
@@ -4132,7 +4142,6 @@
     <ClInclude Include="..\..\src\units\unit.hpp" />
     <ClInclude Include="..\..\src\utils\const_clone.hpp" />
     <ClInclude Include="..\..\src\utils\context_free_grammar_generator.hpp" />
-    <ClInclude Include="..\..\src\utils\functional.hpp" />
     <ClInclude Include="..\..\src\utils\general.hpp" />
     <ClInclude Include="..\..\src\utils\io.hpp" />
     <ClInclude Include="..\..\src\utils\irdya_datetime.hpp" />
@@ -4142,6 +4151,7 @@
     <ClInclude Include="..\..\src\utils\math.hpp" />
     <ClInclude Include="..\..\src\utils\name_generator.hpp" />
     <ClInclude Include="..\..\src\utils\name_generator_factory.hpp" />
+    <ClInclude Include="..\..\src\utils\optional_fwd.hpp" />
     <ClInclude Include="..\..\src\utils\parse_network_address.hpp" />
     <ClInclude Include="..\..\src\utils\reference_counter.hpp" />
     <ClInclude Include="..\..\src\utils\scope_exit.hpp" />

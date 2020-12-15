@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "sdl/rect.hpp"
+#include "utils/optional_fwd.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
@@ -25,23 +26,19 @@ class config;
 
 namespace gui2
 {
+class styled_widget;
+
 namespace dialogs
 {
-///Used by the menu_button widget.
+/** Used by the menu_button widget. */
 class drop_down_menu : public modal_dialog
 {
 public:
-	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open, std::function<void()> callback_toggle_state_change = nullptr)
-		: items_(items)
-		, button_pos_(button_pos)
-		, selected_item_(selected_item)
-		, use_markup_(use_markup)
-		, keep_open_(keep_open)
-		, mouse_down_happened_(false)
-		, callback_toggle_state_change_(callback_toggle_state_change)
-	{
-		set_restore(true);
-	}
+	/** Menu was invoked from a widget (currently a [multi]menu_button). Its position and markup settings will be derived from there. */
+	drop_down_menu(styled_widget* parent, const std::vector<config>& items, int selected_item, bool keep_open);
+
+	/** Menu was invoked manually. Position and markup settings must be provided here. */
+	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open);
 
 	int selected_item() const
 	{
@@ -52,8 +49,35 @@ public:
 	boost::dynamic_bitset<> get_toggle_states() const;
 
 private:
+	// TODO: evaluate exposing this publically via the [multi]menu_button widgets
+	struct entry_data
+	{
+		entry_data(const config& cfg);
+
+		/** If present, column 1 will have a toggle button. The value indicates its initial state. */
+		utils::optional<bool> checkbox;
+
+		/** If no checkbox is present, the icon at this path will be shown in column 1. */
+		std::string icon;
+
+		/** Is present, column 2 will display the image at this path. */
+		utils::optional<std::string> image;
+
+		/** If no image is present, this text will be shown in column 2. */
+		t_string label;
+
+		/** If present, this text will be shown in column 3. */
+		utils::optional<t_string> details;
+
+		/** Tooltip text for the entire row. */
+		t_string tooltip;
+	};
+
+	/** The widget that invoked this dialog, if applicable. */
+	styled_widget* parent_;
+
 	/** Configuration of each row. */
-	std::vector<config> items_;
+	std::vector<entry_data> items_;
 
 	/**
 	 * The screen location of the menu_button button that triggered this droplist.
@@ -78,12 +102,6 @@ private:
 	 * */
 	bool mouse_down_happened_;
 
-	/**
-	 * If toggle buttons are used, this callback is called whenever the state of any toggle
-	 * button changes.
-	 */
-	std::function<void()> callback_toggle_state_change_;
-
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
@@ -93,7 +111,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	void mouse_up_callback(window& window, bool&, bool&, const point& coordinate);
+	void mouse_up_callback(bool&, bool&, const point& coordinate);
 
 	void mouse_down_callback();
 };

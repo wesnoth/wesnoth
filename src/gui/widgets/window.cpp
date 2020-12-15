@@ -61,7 +61,7 @@
 #include "wml_exception.hpp"
 #include "sdl/userevent.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #include <algorithm>
 #include <iterator>
@@ -98,7 +98,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	widget* build() const
+	virtual widget* build() const override
 	{
 		return nullptr;
 	}
@@ -271,11 +271,11 @@ window* manager::get_window(const unsigned id)
 
 } // namespace
 
-window::window(const builder_window::window_resolution* definition)
-	: panel(implementation::builder_window(::config {"definition", definition->definition}), type())
+window::window(const builder_window::window_resolution& definition)
+	: panel(implementation::builder_window(::config {"definition", definition.definition}), type())
 	, video_(CVideo::get_singleton())
-	, status_(NEW)
-	, show_mode_(none)
+	, status_(status::NEW)
+	, show_mode_(show_mode::none)
 	, retval_(retval::NONE)
 	, owner_(nullptr)
 	, need_layout_(true)
@@ -285,19 +285,19 @@ window::window(const builder_window::window_resolution* definition)
 	, restore_(true)
 	, is_toplevel_(!is_in_dialog())
 	, restorer_()
-	, automatic_placement_(definition->automatic_placement)
-	, horizontal_placement_(definition->horizontal_placement)
-	, vertical_placement_(definition->vertical_placement)
-	, maximum_width_(definition->maximum_width)
-	, maximum_height_(definition->maximum_height)
-	, x_(definition->x)
-	, y_(definition->y)
-	, w_(definition->width)
-	, h_(definition->height)
-	, reevaluate_best_size_(definition->reevaluate_best_size)
-	, functions_(definition->functions)
-	, tooltip_(definition->tooltip)
-	, helptip_(definition->helptip)
+	, automatic_placement_(definition.automatic_placement)
+	, horizontal_placement_(definition.horizontal_placement)
+	, vertical_placement_(definition.vertical_placement)
+	, maximum_width_(definition.maximum_width)
+	, maximum_height_(definition.maximum_height)
+	, x_(definition.x)
+	, y_(definition.y)
+	, w_(definition.width)
+	, h_(definition.height)
+	, reevaluate_best_size_(definition.reevaluate_best_size)
+	, functions_(definition.functions)
+	, tooltip_(definition.tooltip)
+	, helptip_(definition.helptip)
 	, click_dismiss_(false)
 	, enter_disabled_(false)
 	, escape_disabled_(false)
@@ -321,7 +321,7 @@ window::window(const builder_window::window_resolution* definition)
 	}
 
 	connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(
-			&window::signal_handler_sdl_video_resize, this, _2, _3, _5));
+			&window::signal_handler_sdl_video_resize, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 
 	connect_signal<event::SDL_ACTIVATE>(std::bind(
 			&event::distributor::initialize_state, event_distributor_.get()));
@@ -329,54 +329,54 @@ window::window(const builder_window::window_resolution* definition)
 	connect_signal<event::SDL_LEFT_BUTTON_UP>(
 			std::bind(&window::signal_handler_click_dismiss,
 						this,
-						_2,
-						_3,
-						_4,
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_4,
 						SDL_BUTTON_LMASK),
 			event::dispatcher::front_child);
 	connect_signal<event::SDL_MIDDLE_BUTTON_UP>(
 			std::bind(&window::signal_handler_click_dismiss,
 						this,
-						_2,
-						_3,
-						_4,
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_4,
 						SDL_BUTTON_MMASK),
 			event::dispatcher::front_child);
 	connect_signal<event::SDL_RIGHT_BUTTON_UP>(
 			std::bind(&window::signal_handler_click_dismiss,
 						this,
-						_2,
-						_3,
-						_4,
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_4,
 						SDL_BUTTON_RMASK),
 			event::dispatcher::front_child);
 
 	connect_signal<event::SDL_KEY_DOWN>(
 			std::bind(
-					&window::signal_handler_sdl_key_down, this, _2, _3, _5, _6, true),
+					&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, true),
 			event::dispatcher::back_post_child);
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&window::signal_handler_sdl_key_down, this, _2, _3, _5, _6, false));
+			&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, false));
 
 	connect_signal<event::MESSAGE_SHOW_TOOLTIP>(
 			std::bind(&window::signal_handler_message_show_tooltip,
 						this,
-						_2,
-						_3,
-						_5),
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_5),
 			event::dispatcher::back_pre_child);
 
 	connect_signal<event::MESSAGE_SHOW_HELPTIP>(
 			std::bind(&window::signal_handler_message_show_helptip,
 						this,
-						_2,
-						_3,
-						_5),
+						std::placeholders::_2,
+						std::placeholders::_3,
+						std::placeholders::_5),
 			event::dispatcher::back_pre_child);
 
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
-					&window::signal_handler_request_placement, this, _2, _3),
+					&window::signal_handler_request_placement, this, std::placeholders::_2, std::placeholders::_3),
 			event::dispatcher::back_pre_child);
 
 	connect_signal<event::CLOSE_WINDOW>(std::bind(&window::signal_handler_close_window, this));
@@ -410,7 +410,7 @@ window::~window()
 	 * Another issue is that on smallgui and an MP game the tooltip not
 	 * unrendered properly can capture the mouse and make playing impossible.
 	 */
-	if(show_mode_ == modal) {
+	if(show_mode_ == show_mode::modal) {
 		dialogs::tip::remove();
 	}
 
@@ -456,12 +456,12 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 
 	generate_dot_file("show", SHOW);
 
-	assert(status_ == NEW);
+	assert(status_ == status::NEW);
 
 	set_mouse_behavior(event::dispatcher::none);
 	set_want_keyboard_input(false);
 
-	show_mode_ = tooltip;
+	show_mode_ = show_mode::tooltip;
 
 	/*
 	 * Before show has been called, some functions might have done some testing
@@ -478,11 +478,11 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 	generate_dot_file("show", SHOW);
 
-	assert(status_ == NEW);
+	assert(status_ == status::NEW);
 
 	set_mouse_behavior(event::dispatcher::hit);
 
-	show_mode_ = modeless;
+	show_mode_ = show_mode::modeless;
 
 	/*
 	 * Before show has been called, some functions might have done some testing
@@ -505,14 +505,14 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	 */
 	dialogs::tip::remove();
 
-	show_mode_ = modal;
+	show_mode_ = show_mode::modal;
 	restore_ = restore;
 
 	log_scope2(log_gui_draw, LOG_SCOPE_HEADER);
 
 	generate_dot_file("show", SHOW);
 
-	assert(status_ == NEW);
+	assert(status_ == status::NEW);
 
 	/*
 	 * Before show has been called, some functions might have done some testing
@@ -541,7 +541,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	{
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialized = false;
-		for(status_ = SHOWING; status_ != CLOSED;) {
+		for(status_ = status::SHOWING; status_ != status::CLOSED;) {
 			push_draw_event();
 
 			// process installed callback if valid, to allow e.g. network
@@ -563,8 +563,8 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 				mouse_button_state_initialized = true;
 			}
 
-			if(status_ == REQUEST_CLOSE) {
-				status_ = exit_hook_(*this) ? CLOSED : SHOWING;
+			if(status_ == status::REQUEST_CLOSE) {
+				status_ = exit_hook_(*this) ? status::CLOSED : status::SHOWING;
 			}
 
 			// Add a delay so we don't keep spinning if there's no event.
@@ -683,7 +683,7 @@ void window::draw()
 		assert(!item.empty());
 
 		const SDL_Rect dirty_rect
-				= new_widgets ? video().screen_area()
+				= new_widgets ? video_.screen_area()
 							  : item.back()->get_dirty_rectangle();
 
 // For testing we disable the clipping rect and force the entire screen to
@@ -1186,9 +1186,9 @@ void window::redraw_windows_on_top() const
 	}
 }
 
-void window::finalize(const std::shared_ptr<builder_grid>& content_grid)
+void window::finalize(const builder_grid& content_grid)
 {
-	window_swap_grid(nullptr, &get_grid(), content_grid->build(), "_window_content_grid");
+	window_swap_grid(nullptr, &get_grid(), content_grid.build(), "_window_content_grid");
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS

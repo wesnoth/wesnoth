@@ -20,7 +20,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/settings.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 namespace gui2
 {

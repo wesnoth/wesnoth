@@ -19,7 +19,7 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp" // Needed for invalidate_layout()
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -40,17 +40,17 @@ scrollbar_base::scrollbar_base(const implementation::builder_styled_widget& buil
 	, positioner_length_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&scrollbar_base::signal_handler_mouse_enter, this, _2, _3, _4));
+			&scrollbar_base::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4));
 	connect_signal<event::MOUSE_MOTION>(std::bind(
-			&scrollbar_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
+			&scrollbar_base::signal_handler_mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
 	connect_signal<event::SDL_TOUCH_MOTION>(std::bind(
-			&scrollbar_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
+			&scrollbar_base::signal_handler_mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&scrollbar_base::signal_handler_mouse_leave, this, _2, _3));
+			&scrollbar_base::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&scrollbar_base::signal_handler_left_button_down, this, _2, _3));
+			&scrollbar_base::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
-			&scrollbar_base::signal_handler_left_button_up, this, _2, _3));
+			&scrollbar_base::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 }
 
 void scrollbar_base::finalize_setup()

@@ -33,7 +33,7 @@
 #include "replay.hpp"
 #include "gettext.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 #include "utils/iterable_pair.hpp"
 
 #include <vector>
@@ -434,7 +434,7 @@ chat_log::chat_log(const vconfig& cfg, const replay& r) : view_()
 	LOG_CHAT_LOG << "Exiting chat_log::chat_log" << std::endl;
 }
 
-std::shared_ptr<chat_log::view> chat_log::get_view()
+std::shared_ptr<chat_log::view> chat_log::get_view() const
 {
 	return view_;
 }

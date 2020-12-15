@@ -14,18 +14,17 @@
 
 #pragma once
 
+#include "display_context.hpp"
 #include "editor/map/editor_map.hpp"
 #include "game_classification.hpp"
 #include "map/label.hpp"
 #include "mp_game_settings.hpp"
+#include "overlay.hpp"
 #include "sound_music_track.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/map.hpp"
-#include "overlay.hpp"
-#include "display_context.hpp"
-
-#include <boost/optional.hpp>
+#include "utils/optional_fwd.hpp"
 
 #include <vector>
 class game_config_view;
@@ -314,7 +313,7 @@ public:
 
 	const t_string get_default_context_name() const;
 
-	boost::optional<int> get_xp_mod() const { return xp_mod_; }
+	utils::optional<int> get_xp_mod() const { return xp_mod_; }
 
 	bool random_start_time() const { return random_time_; }
 	bool victory_defeated() const { return !victory_defeated_ || *victory_defeated_; }
@@ -496,8 +495,8 @@ private:
 
 	std::string scenario_id_, scenario_name_, scenario_description_;
 
-	boost::optional<int> xp_mod_;
-	boost::optional<bool> victory_defeated_;
+	utils::optional<int> xp_mod_;
+	utils::optional<bool> victory_defeated_;
 	bool random_time_;
 
 	int active_area_;

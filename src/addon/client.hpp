@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2015 by Iris Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2008 - 2020 by Iris Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,11 +13,21 @@
    See the COPYING file for more details.
 */
 
+/**
+ * @file
+ * Networked add-ons (campaignd) client interface.
+ *
+ * This API revolves around the campaignd client functionality. It depends on
+ * the add-ons management and Asio network APIs.
+ */
+
 #pragma once
 
 #include "addon/info.hpp"
 #include "gui/dialogs/network_transmission.hpp"
 #include "network_asio.hpp"
+
+#include <set>
 
 /**
  * Add-ons (campaignd) client class.
@@ -29,14 +39,6 @@
 class addons_client
 {
 public:
-	enum class install_outcome {success, failure, abort};
-
-	struct install_result
-	{
-		install_outcome outcome;
-		bool wml_changed;
-	};
-
 	struct invalid_server_address : public std::exception {};
 	struct not_connected_to_server : public std::exception {};
 	struct user_exit : public std::exception {};
@@ -48,19 +50,24 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param address Add-ons server host address (i.e. localhost:15999).
+	 * @param address Server address (e.g. "localhost:15999").
 	 */
 	explicit addons_client(const std::string& address);
 
 	/**
-	 * Try to establish a connection to the add-ons server.
+	 * Tries to establish a connection to the add-ons server.
 	 */
 	void connect();
 
 	/**
-	 * Disconnect from the add-on server.
+	 * Disconnects from the add-on server.
 	 */
-	void disconnect() { conn_.reset(); }
+	void disconnect()
+	{
+		conn_.reset();
+		clear_last_error();
+		clear_server_info();
+	}
 
 	/** Returns the last error message sent by the server, or an empty string. */
 	const std::string& get_last_server_error() const { return last_error_; }
@@ -82,21 +89,69 @@ public:
 	bool request_addons_list(config& cfg);
 
 	/**
+	 * Retrieves the add-ons server web URL if available.
+	 */
+	const std::string& server_url() const
+	{
+		return server_url_;
+	}
+
+	/**
 	 * Request the add-ons server distribution terms message.
 	 */
 	bool request_distribution_terms(std::string& terms);
 
 	/**
-	* Do a 'smart' fetch of an add-on, checking to avoid overwrites for devs and resolving dependencies, using gui interaction to handle issues that arise
-	* Returns: outcome: abort in case the user chose to abort because of an issue
-	*                   failure in case we resolved checks and dependencies, but fetching this particular add-on failed
-	*                   success otherwise
-	*          wml_changed: indicates if new wml content was installed at any point
-	*/
+	 * Installation outcome values.
+	 */
+	enum class install_outcome
+	{
+		/** The add-on was correctly installed. */
+		success,
+		/** The add-on could not be downloaded from the server. */
+		failure,
+		/** User aborted the operation because of an issue with dependencies or chose not to overwrite the add-on. */
+		abort,
+	};
+
+	/**
+	 * Contains the outcome of an add-on install operation.
+	 */
+	struct install_result
+	{
+		/**
+		 * Overall outcome of the operation.
+		 */
+		install_outcome outcome;
+
+		/**
+		 * Specifies if WML on disk was altered and needs to be reloaded.
+		 *
+		 * @note Failure to install an add-on properly may not necessarily mean
+		 * that WML on disk was left unchanged (e.g. if any dependencies were
+		 * succesfully installed first.)
+		 */
+		bool wml_changed;
+	};
+
+	/**
+	 * Performs an add-on download and install cycle.
+	 *
+	 * This checks and prompts the user through the UI before overwriting an
+	 * existing add-on with a .pbl file or version control system files (.git/,
+	 * .svn/, etc.). It also resolves add-on dependencies and downloads them
+	 * using the same system before downloading the original target add-on.
+	 *
+	 * @param addons             Add-ons list used for resolving dependencies.
+	 * @param addon              Identity of the singular add-on that will be
+	 *                           downloaded.
+	 *
+	 * @return An install_result with the outcome of the operation.
+	 */
 	install_result install_addon_with_checks(const addons_list& addons, const addon_info& addon);
 
 	/**
-	 * Requests the specified add-on to be uploaded.
+	 * Uploads an add-on to the server.
 	 *
 	 * This method reads the add-on upload passphrase and other data
 	 * from the associated .pbl file. If the .pbl file doesn't have a
@@ -127,6 +182,30 @@ public:
 	 */
 	bool delete_remote_addon(const std::string& id, std::string& response_message);
 
+	/**
+	 * Returns whether the server supports the given named capability.
+	 */
+	bool server_supports(const std::string& cap_id) const
+	{
+		return server_capabilities_.find(cap_id) != server_capabilities_.end();
+	}
+
+	/**
+	 * Returns whether the server supports incremental (delta) downloads and uploads.
+	 */
+	bool server_supports_delta() const
+	{
+		return server_supports("delta");
+	}
+
+	/**
+	 * Returns whether the server supports passphrase authentication on an add-on basis.
+	 */
+	bool server_supports_legacy_auth() const
+	{
+		return server_supports("auth:legacy");
+	}
+
 private:
 	enum class transfer_mode {download, connect, upload};
 
@@ -137,16 +216,22 @@ private:
 	std::string last_error_;
 	std::string last_error_data_;
 
+	std::string server_version_;
+	std::set<std::string> server_capabilities_;
+	std::string server_url_;
+	std::string license_notice_;
+
 	/**
 	* Downloads the specified add-on from the server.
 	*
 	* @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
 	*
-	* @param id          Add-on id.
-	* @param title       Add-on title, used for status display.
-	* @param archive_cfg Config object to hold the downloaded add-on archive data.
-	* @param increase_downloads Whether to request the server to increase the add-on's
-	*                           download count or not (e.g. when upgrading).
+	* @param archive_cfg         Config object to hold the downloaded add-on archive data.
+	* @param id                  Add-on id.
+	* @param title               Add-on title, used for status display.
+	* @param version             Specifies an add-on version to download.
+	* @param increase_downloads  Whether to request the server to increase the add-on's
+	*                            download count or not (e.g. when upgrading).
 	*/
 	bool download_addon(config& archive_cfg, const std::string& id, const std::string& title, const version_info& version, bool increase_downloads = true);
 
@@ -213,4 +298,8 @@ private:
 	void wait_for_transfer_done(const std::string& status_message, transfer_mode mode = transfer_mode::download);
 
 	bool update_last_error(config& response_cfg);
+
+	void clear_last_error();
+
+	void clear_server_info();
 };

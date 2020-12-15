@@ -325,7 +325,6 @@ static int cfun_ai_fallback_human(lua_State*)
 
 // Goals and targets
 
-
 static int cfun_ai_get_targets(lua_State *L)
 {
 	move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
@@ -339,7 +338,6 @@ static int cfun_ai_get_targets(lua_State *L)
 
 		//to factor out
 		lua_createtable(L, 3, 0);
-
 
 		lua_pushstring(L, "type");
 		lua_pushstring(L, it->type.to_string().c_str());
@@ -592,7 +590,6 @@ static void push_movements(lua_State *L, const std::vector< std::pair < map_loca
 
 		lua_rawseti(L, table_index, i); // setting  the pair as an element of the movements table
 	}
-
 
 }
 
@@ -1056,7 +1053,6 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 	// Create the proxy C++ action handler.
 	return new lua_ai_action_handler(L, context, length + 1);
 }
-
 
 int lua_ai_load::refcount = 0;
 

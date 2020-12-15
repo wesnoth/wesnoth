@@ -750,9 +750,9 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::strin
 {
 	if(is_directory_) {
 		filesystem::get_files_in_dir(name, &files_, nullptr,
-			filesystem::ENTIRE_FILE_PATH,
-			filesystem::SKIP_MEDIA_DIR,
-			filesystem::DO_REORDER
+			filesystem::name_mode::ENTIRE_FILE_PATH,
+			filesystem::filter_mode::SKIP_MEDIA_DIR,
+			filesystem::reorder_mode::DO_REORDER
 		);
 
 		for(const std::string& fname : files_) {
@@ -1157,7 +1157,7 @@ bool preprocessor_data::get_chunk()
 			std::string symbol = items.front();
 			items.erase(items.begin());
 			int found_arg = 0, found_enddef = 0, found_deprecate = 0;
-			boost::optional<DEP_LEVEL> deprecation_level = boost::none;
+			utils::optional<DEP_LEVEL> deprecation_level;
 			std::string buffer, deprecation_detail;
 			version_info deprecation_version = game_config::wesnoth_version;
 			for(;;) {
@@ -1286,33 +1286,24 @@ bool preprocessor_data::get_chunk()
 
 				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
 			}
-		} else if(command == "ifdef") {
+		} else if(command == "ifdef" || command == "ifndef") {
+			const bool negate = command[2] == 'n';
 			skip_spaces();
 			const std::string& symbol = read_word();
 			bool found = parent_.defines_->count(symbol) != 0;
 			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined") << '\n';
-			conditional_skip(!found);
-		} else if(command == "ifndef") {
-			skip_spaces();
-			const std::string& symbol = read_word();
-			bool found = parent_.defines_->count(symbol) != 0;
-			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined") << '\n';
-			conditional_skip(found);
-		} else if(command == "ifhave") {
+			conditional_skip(negate ? found : !found);
+		} else if(command == "ifhave" || command == "ifnhave") {
+			const bool negate = command[2] == 'n';
 			skip_spaces();
 			const std::string& symbol = read_word();
 			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
 			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found")
 						<< '\n';
-			conditional_skip(!found);
-		} else if(command == "ifnhave") {
-			skip_spaces();
-			const std::string& symbol = read_word();
-			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
-			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found")
-						<< '\n';
-			conditional_skip(found);
+			conditional_skip(negate ? found : !found);
 		} else if(command == "ifver" || command == "ifnver") {
+			const bool negate = command[2] == 'n';
+
 			skip_spaces();
 			const std::string& vsymstr = read_word();
 			skip_spaces();
@@ -1338,7 +1329,7 @@ bool preprocessor_data::get_chunk()
 				DBG_PREPROC << "testing version '" << version1.str() << "' against '" << version2.str() << "' ("
 							<< vopstr << "): " << (found ? "match" : "no match") << '\n';
 
-				conditional_skip(command == "ifver" ? !found : found);
+				conditional_skip(negate ? found : !found);
 			} else {
 				std::string err = "Undefined macro in #ifver/#ifnver first argument: '";
 				err += vsymstr;
@@ -1731,8 +1722,8 @@ void preprocess_resource(const std::string& res_name,
 	if(filesystem::is_directory(res_name)) {
 		std::vector<std::string> dirs, files;
 
-		filesystem::get_files_in_dir(res_name, &files, &dirs, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR,
-				filesystem::DO_REORDER);
+		filesystem::get_files_in_dir(res_name, &files, &dirs, filesystem::name_mode::ENTIRE_FILE_PATH, filesystem::filter_mode::SKIP_MEDIA_DIR,
+				filesystem::reorder_mode::DO_REORDER);
 
 		// Subdirectories
 		for(const std::string& dir : dirs) {

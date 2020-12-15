@@ -23,7 +23,7 @@
 #include "sdl/rect.hpp"
 #include "wml_exception.hpp"
 
-#include "utils/functional.hpp"
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -203,7 +203,7 @@ widget* builder_panel::build() const
 	DBG_GUI_G << "Window builder: placed panel '" << id << "' with definition '"
 			  << definition << "'.\n";
 
-	widget->init_grid(grid);
+	widget->init_grid(*grid);
 	return widget;
 }
 

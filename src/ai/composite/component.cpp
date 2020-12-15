@@ -41,7 +41,6 @@ static lg::log_domain log_ai_component("ai/component");
 #define LOG_AI_COMPONENT LOG_STREAM(info, log_ai_component)
 #define ERR_AI_COMPONENT LOG_STREAM(err, log_ai_component)
 
-
 /*
 [modify_ai]
     path = "stage[fallback]
@@ -67,7 +66,6 @@ static lg::log_domain log_ai_component("ai/component");
 [/modify_ai]
 */
 
-
 component* component::get_child(const path_element &child)
 {
 	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
@@ -76,7 +74,6 @@ component* component::get_child(const path_element &child)
 	}
 	return nullptr;
 }
-
 
 bool component::add_child(const path_element &child, const config &cfg)
 {
@@ -87,7 +84,6 @@ bool component::add_child(const path_element &child, const config &cfg)
 	return false;
 }
 
-
 bool component::change_child(const path_element &child, const config &cfg)
 {
 	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
@@ -97,7 +93,6 @@ bool component::change_child(const path_element &child, const config &cfg)
 	return false;
 }
 
-
 bool component::delete_child(const path_element &child)
 {
 	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
@@ -106,7 +101,6 @@ bool component::delete_child(const path_element &child)
 	}
 	return false;
 }
-
 
 std::vector<component*> component::get_children(const std::string &type)
 {
@@ -118,7 +112,6 @@ std::vector<component*> component::get_children(const std::string &type)
 	return std::vector<component*>();
 }
 
-
 std::vector<std::string> component::get_children_types()
 {
 	std::vector<std::string> types;
@@ -127,7 +120,6 @@ std::vector<std::string> component::get_children_types()
 	}
 	return types;
 }
-
 
 property_handler_map& component::property_handlers()
 {
@@ -185,7 +177,6 @@ static component *find_component(component *root, const std::string &path, path_
 
 }
 
-
 bool component_manager::add_component(component *root, const std::string &path, const config &cfg)
 {
 	path_element tail;
@@ -224,7 +215,6 @@ bool component_manager::delete_component(component *root, const std::string &pat
 	}
 	return c->delete_child(tail);
 }
-
 
 static void print_component(component *root, const std::string &type, std::stringstream &s, int offset)
 {
@@ -274,7 +264,6 @@ component* component_manager::get_component(component *root, const std::string &
 }
 
 } //end of namespace ai
-
 
 std::ostream &operator<<(std::ostream &o, const ai::path_element &e)
 {

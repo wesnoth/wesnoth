@@ -50,8 +50,6 @@ goal::goal(readonly_context &context, const config &cfg)
 	init_readonly_context_proxy(context);
 }
 
-
-
 void goal::on_create()
 {
 	LOG_AI_GOAL << "side " << get_side() << " : " << " created goal with name=[" << cfg_["name"] << "]" << std::endl;
@@ -68,17 +66,13 @@ void goal::unrecognized()
 	ok_ = false;
 }
 
-
 goal::~goal()
 {
 }
 
-
 void goal::add_targets(std::back_insert_iterator< std::vector< target >> /*target_list*/)
 {
 }
-
-
 
 config goal::to_config() const
 {
@@ -100,7 +94,6 @@ std::string goal::get_engine() const
 	return cfg_["engine"];
 }
 
-
 bool goal::redeploy(const config &cfg)
 {
 	cfg_ = cfg;
@@ -108,18 +101,15 @@ bool goal::redeploy(const config &cfg)
 	return true;
 }
 
-
 bool goal::ok() const
 {
 	return ok_;
 }
 
-
 bool goal::active() const
 {
 	return is_active(cfg_["time_of_day"],cfg_["turns"]);
 }
-
 
 void target_unit_goal::on_create()
 {
@@ -152,16 +142,13 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 		}
 	}
 
-
 }
-
 
 target_unit_goal::target_unit_goal(readonly_context &context, const config &cfg)
 	: goal(context,cfg)
 	, value_(0.0)
 {
 }
-
 
 void target_location_goal::on_create()
 {
@@ -205,8 +192,6 @@ target_location_goal::target_location_goal(readonly_context &context, const conf
 {
 }
 
-
-
 void protect_goal::on_create()
 {
 	goal::on_create();
@@ -230,9 +215,7 @@ void protect_goal::on_create()
 		filter_ptr_.reset(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 
-
 }
-
 
 void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
@@ -294,9 +277,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 		}
 	}
 
-
 }
-
 
 protect_goal::protect_goal(readonly_context &context, const config &cfg, bool protect_unit)
 	: goal(context,cfg)
@@ -345,7 +326,6 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> tar
 
 }
 
-
 // This is defined in the source file so that it can easily access the logger
 bool goal_factory::is_duplicate(const std::string& name)
 {
@@ -355,6 +335,5 @@ bool goal_factory::is_duplicate(const std::string& name)
 	}
 	return false;
 }
-
 
 } //end of namespace ai

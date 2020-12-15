@@ -129,7 +129,7 @@ for repo in Dir(".").repositories:
   # source code root and supplying this path with -Y option.
   toolpath.append(repo.abspath + "/scons")
 sys.path = toolpath + sys.path
-env = Environment(tools=["tar", "gettext_tool", "install", "python_devel", "scanreplace"], options = opts, toolpath = toolpath)
+env = Environment(tools=["tar", "gettext_tool", "install", "scanreplace"], options = opts, toolpath = toolpath)
 
 if env["lockfile"]:
     print("Creating lockfile")
@@ -188,7 +188,7 @@ if env['ccache']: env.Tool('ccache')
 if env["forum_user_handler"]:
     boost_version = "1.66"
 else:
-    boost_version = "1.56"
+    boost_version = "1.59"
 
 
 def SortHelpText(a, b):
@@ -317,7 +317,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
+    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 

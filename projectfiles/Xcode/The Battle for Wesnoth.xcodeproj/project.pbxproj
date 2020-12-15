@@ -165,6 +165,8 @@
 		46BED4D3205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
+		46BFFC79258256C700643800 /* license_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC77258256C700643800 /* license_prompt.cpp */; };
+		46BFFC7E258257C800643800 /* license_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC77258256C700643800 /* license_prompt.cpp */; };
 		46D6014E255AFA6000E072F0 /* auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014C255AFA6000E072F0 /* auth.cpp */; };
 		46D6014F255AFA6000E072F0 /* auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014C255AFA6000E072F0 /* auth.cpp */; };
 		46D60150255AFA6000E072F0 /* options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014D255AFA6000E072F0 /* options.cpp */; };
@@ -173,6 +175,8 @@
 		46D60159255AFA7E00E072F0 /* commandline_argv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D60156255AFA7E00E072F0 /* commandline_argv.cpp */; };
 		46D60162255AFDE100E072F0 /* commandline_argv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D60156255AFA7E00E072F0 /* commandline_argv.cpp */; };
 		46D60168255B028200E072F0 /* libboost_program_options-mt-x64.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5213AD4E35003C701D /* libboost_program_options-mt-x64.dylib */; };
+		46D6CA012586A176001F0464 /* advanced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6C9FF2586A175001F0464 /* advanced.cpp */; };
+		46D6CA022586A176001F0464 /* advanced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6C9FF2586A175001F0464 /* advanced.cpp */; };
 		46E2D98F25022BF5003D99F3 /* lua_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98B25022BF5003D99F3 /* lua_widget.cpp */; };
 		46E2D99025022BF5003D99F3 /* lua_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98B25022BF5003D99F3 /* lua_widget.cpp */; };
 		46E2D99125022BF6003D99F3 /* lua_widget_attributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */; };
@@ -1490,8 +1494,8 @@
 		464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_mixer-2.0.0.dylib"; path = "lib/libSDL2_mixer-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0369228361B7007D2741 /* libvorbisfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisfile.dylib; path = lib/libvorbisfile.dylib; sourceTree = "<group>"; };
-		46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.1.dylib; path = "lib/libssl.1.1.dylib"; sourceTree = "<group>"; };
-		46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = "lib/libcrypto.1.1.dylib"; sourceTree = "<group>"; };
+		46515C2E2569CE0B00084CE2 /* libssl.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.1.dylib; path = lib/libssl.1.1.dylib; sourceTree = "<group>"; };
+		46515C2F2569CE0B00084CE2 /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = lib/libcrypto.1.1.dylib; sourceTree = "<group>"; };
 		46685C6B219D51870009CFFE /* utf8_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utf8_exception.hpp; sourceTree = "<group>"; };
 		46685C6C219D51870009CFFE /* ucs4_iterator_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ucs4_iterator_base.hpp; sourceTree = "<group>"; };
 		46685C6D219D51870009CFFE /* validator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = validator.hpp; sourceTree = "<group>"; };
@@ -1523,6 +1527,9 @@
 		46685C88219D518A0009CFFE /* schema_validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = schema_validator.cpp; sourceTree = "<group>"; };
 		4674EE9B24CD1E64007C18CE /* libfribidi.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfribidi.0.dylib; path = lib/libfribidi.0.dylib; sourceTree = "<group>"; };
 		4674EE9F24CD207F007C18CE /* libgio-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgio-2.0.0.dylib"; path = "lib/libgio-2.0.0.dylib"; sourceTree = "<group>"; };
+		4675F091257A494E00ADF791 /* optional_fwd.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = optional_fwd.hpp; sourceTree = "<group>"; };
+		4675F092257A494E00ADF791 /* optimer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = optimer.hpp; sourceTree = "<group>"; };
+		4675F093257A495A00ADF791 /* scope_exit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = scope_exit.hpp; sourceTree = "<group>"; };
 		467D9DF0205EC3D200FA2FC4 /* userevent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userevent.hpp; sourceTree = "<group>"; };
 		467D9DF5205EC3DA00FA2FC4 /* surface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = surface.hpp; sourceTree = "<group>"; };
 		4685124824AE1535005B6EB1 /* game_config_view.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_config_view.cpp; sourceTree = "<group>"; };
@@ -1550,12 +1557,16 @@
 		46BDBBE9217C6F6200D2820C /* lua_terrainmap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_terrainmap.hpp; sourceTree = "<group>"; };
 		46BED4D0205060EA00842FA5 /* crypt_blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt_blowfish.h; sourceTree = "<group>"; };
 		46BED4D1205060EA00842FA5 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
+		46BFFC77258256C700643800 /* license_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = license_prompt.cpp; sourceTree = "<group>"; };
+		46BFFC78258256C700643800 /* license_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = license_prompt.hpp; sourceTree = "<group>"; };
 		46D6014A255AFA5F00E072F0 /* auth.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = auth.hpp; sourceTree = "<group>"; };
 		46D6014B255AFA5F00E072F0 /* options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = options.hpp; sourceTree = "<group>"; };
 		46D6014C255AFA6000E072F0 /* auth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = auth.cpp; sourceTree = "<group>"; };
 		46D6014D255AFA6000E072F0 /* options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = options.cpp; sourceTree = "<group>"; };
 		46D60156255AFA7E00E072F0 /* commandline_argv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = commandline_argv.cpp; sourceTree = "<group>"; };
 		46D60157255AFA7E00E072F0 /* commandline_argv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commandline_argv.hpp; sourceTree = "<group>"; };
+		46D6C9FF2586A175001F0464 /* advanced.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = advanced.cpp; path = preferences/advanced.cpp; sourceTree = "<group>"; };
+		46D6CA002586A176001F0464 /* advanced.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = advanced.hpp; path = preferences/advanced.hpp; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
 		46E2D98925022BF4003D99F3 /* lua_widget_methods.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_widget_methods.hpp; sourceTree = "<group>"; };
@@ -2065,7 +2076,6 @@
 		915C68E81DF1DCB000594B07 /* color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = color.cpp; sourceTree = "<group>"; };
 		915C68E91DF1DCB000594B07 /* color.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = color.hpp; sourceTree = "<group>"; };
 		915C68F31DF1F78600594B07 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = lib/libintl.8.dylib; sourceTree = "<group>"; };
-		918056BE1CB1E4C0001A7F35 /* functional.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = functional.hpp; sourceTree = "<group>"; };
 		918C8A161D05F9AA009744A0 /* chat_command_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_command_handler.cpp; sourceTree = "<group>"; };
 		918C8A171D05F9AA009744A0 /* chat_command_handler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_command_handler.hpp; sourceTree = "<group>"; };
 		918C8A181D05F9AA009744A0 /* chat_events.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_events.cpp; sourceTree = "<group>"; };
@@ -3599,6 +3609,8 @@
 				46F92C9D2174F6A300602C1C /* connect.hpp */,
 				46F92C9C2174F6A300602C1C /* install_dependencies.cpp */,
 				46F92CA22174F6A300602C1C /* install_dependencies.hpp */,
+				46BFFC77258256C700643800 /* license_prompt.cpp */,
+				46BFFC78258256C700643800 /* license_prompt.hpp */,
 				46F92C9E2174F6A300602C1C /* manager.cpp */,
 				46F92CA02174F6A300602C1C /* manager.hpp */,
 				46F92C9B2174F6A300602C1C /* uninstall_list.cpp */,
@@ -4161,7 +4173,6 @@
 				91EF6BFC1C9E22E400E2A733 /* const_clone.hpp */,
 				91C55DA21CC078820040012E /* context_free_grammar_generator.cpp */,
 				91C55DA31CC078820040012E /* context_free_grammar_generator.hpp */,
-				918056BE1CB1E4C0001A7F35 /* functional.hpp */,
 				EC5012711E06185600C4DFC6 /* general.hpp */,
 				46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */,
 				46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */,
@@ -4174,9 +4185,12 @@
 				913D26751D3C9697002FF3AB /* name_generator_factory.cpp */,
 				913D26761D3C9697002FF3AB /* name_generator_factory.hpp */,
 				91C55DA11CC078780040012E /* name_generator.hpp */,
+				4675F092257A494E00ADF791 /* optimer.hpp */,
+				4675F091257A494E00ADF791 /* optional_fwd.hpp */,
 				46B58F4121E097900070BB8E /* parse_network_address.cpp */,
 				46B58F4221E097900070BB8E /* parse_network_address.hpp */,
 				91EF6C001C9E22E400E2A733 /* reference_counter.hpp */,
+				4675F093257A495A00ADF791 /* scope_exit.hpp */,
 				469CA216253C52120045A0B3 /* shared_reference.hpp */,
 			);
 			path = utils;
@@ -4765,6 +4779,8 @@
 		EC54017A1EBE0C2B00AE66EE /* preferences */ = {
 			isa = PBXGroup;
 			children = (
+				46D6C9FF2586A175001F0464 /* advanced.cpp */,
+				46D6CA002586A176001F0464 /* advanced.hpp */,
 				903F959B1ED5489500F1BDD3 /* credentials.cpp */,
 				903F959D1ED5489D00F1BDD3 /* credentials.hpp */,
 				EC54017B1EBE0C4500AE66EE /* display.cpp */,
@@ -5019,6 +5035,7 @@
 				6295C3B5150FC95C0077D8C5 /* action.cpp in Sources */,
 				46F92D972174F6A300602C1C /* handler.cpp in Sources */,
 				B54AC69C0FEA9E8F006F6FBD /* actions.cpp in Sources */,
+				46BFFC79258256C700643800 /* license_prompt.cpp in Sources */,
 				46F92E652174F6A400602C1C /* tree_view.cpp in Sources */,
 				46685C9B219D518B0009CFFE /* unicode.cpp in Sources */,
 				B54AC6D80FEA9EB5006F6FBD /* ai.cpp in Sources */,
@@ -5033,6 +5050,7 @@
 				46F92E052174F6A400602C1C /* preferences_dialog.cpp in Sources */,
 				46F92E992174F6A400602C1C /* slider.cpp in Sources */,
 				B59F96D5103478C900A57C1A /* aspect.cpp in Sources */,
+				46D6CA012586A176001F0464 /* advanced.cpp in Sources */,
 				B55BE03211234AAB00154E6C /* astarsearch.cpp in Sources */,
 				B5599B910EC62181008DD061 /* attack_prediction.cpp in Sources */,
 				B54AC6DF0FEA9EB5006F6FBD /* attack.cpp in Sources */,
@@ -5766,6 +5784,7 @@
 				91E356961CACC7CE00774252 /* heal.cpp in Sources */,
 				91E356971CACC7CE00774252 /* move.cpp in Sources */,
 				46F92E862174F6A400602C1C /* debug.cpp in Sources */,
+				46BFFC7E258257C800643800 /* license_prompt.cpp in Sources */,
 				91E356981CACC7CE00774252 /* shroud_clearing_action.cpp in Sources */,
 				91E356991CACC7CE00774252 /* undo.cpp in Sources */,
 				91E3569A1CACC7CE00774252 /* undo_action.cpp in Sources */,
@@ -6142,6 +6161,7 @@
 				46F92E1A2174F6A400602C1C /* mp_connect.cpp in Sources */,
 				4649B88020288DC600827CFB /* random.cpp in Sources */,
 				4649B88E20288F1E00827CFB /* lua_audio.cpp in Sources */,
+				46D6CA022586A176001F0464 /* advanced.cpp in Sources */,
 				916718FB1CADAA1200B055A9 /* fake_display.cpp in Sources */,
 				916718FD1CADAA1200B055A9 /* game_config_manager_tests.cpp in Sources */,
 				916718FF1CADAA1D00B055A9 /* fire_event.cpp in Sources */,
@@ -6447,11 +6467,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
 				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-include",
-					"../../src/boost-patched/bind/arg.hpp",
-				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -6491,11 +6507,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
 				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-include",
-					"$(PROJECT_DIR)/../../src/boost-patched/bind/arg.hpp",
-				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
