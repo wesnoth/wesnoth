@@ -36,6 +36,8 @@ if(NOT MSVC)
 	add_definitions(${SDL_CFLAGS})
 endif(NOT MSVC)
 
+# Hide warnings when building with boost >= 1.73
+add_definitions(-DBOOST_BIND_GLOBAL_PLACEHOLDERS)
 
 #check for some compiler/arch specific things and export defines accordingly...
 INCLUDE (SearchForStuff)
