@@ -56,10 +56,10 @@ server_base::server_base(unsigned short port, bool keep_alive) :
 void server_base::start_server()
 {
 	boost::asio::ip::tcp::endpoint endpoint_v6(boost::asio::ip::tcp::v6(), port_);
-	boost::asio::spawn([this, endpoint_v6](boost::asio::yield_context yield) { serve(yield, acceptor_v6_, endpoint_v6); });
+	boost::asio::spawn(io_service_, [this, endpoint_v6](boost::asio::yield_context yield) { serve(yield, acceptor_v6_, endpoint_v6); });
 
 	boost::asio::ip::tcp::endpoint endpoint_v4(boost::asio::ip::tcp::v4(), port_);
-	boost::asio::spawn([this, endpoint_v4](boost::asio::yield_context yield) { serve(yield, acceptor_v4_, endpoint_v4); });
+	boost::asio::spawn(io_service_, [this, endpoint_v4](boost::asio::yield_context yield) { serve(yield, acceptor_v4_, endpoint_v4); });
 
 	handshake_response_.connection_num = htonl(42);
 
@@ -93,7 +93,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 	}
 
 	if(accepting_connections()) {
-		boost::asio::spawn([this, &acceptor, endpoint](boost::asio::yield_context yield) { serve(yield, acceptor, endpoint); });
+		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](boost::asio::yield_context yield) { serve(yield, acceptor, endpoint); });
 	}
 
 #ifndef _WIN32
@@ -216,10 +216,9 @@ void info_table_into_simple_wml(simple_wml::document& doc, const std::string& pa
 
 void server_base::async_send_doc_queued(socket_ptr socket, simple_wml::document& doc)
 {
-	static boost::asio::strand<boost::asio::io_context::executor_type> strand { io_service_.get_executor() };
 	std::shared_ptr<simple_wml::document> doc_ptr { doc.clone() };
 
-	boost::asio::spawn(strand, [doc_ptr, socket](boost::asio::yield_context yield)
+	boost::asio::spawn(io_service_, [doc_ptr, socket](boost::asio::yield_context yield)
 	{
 		static std::map<socket_ptr, std::queue<std::shared_ptr<simple_wml::document>>> queues;
 
