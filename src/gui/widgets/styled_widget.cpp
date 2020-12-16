@@ -329,6 +329,15 @@ void styled_widget::set_label(const t_string& label)
 	set_layout_size(point());
 	update_canvas();
 	set_is_dirty(true);
+
+	// FIXME: This isn't the most elegant solution. Typically, we don't rely on the text rendering
+	// cache for anything except size calculations, but since we have link awareness now we need to
+	// update its text else `get_label_link` will return old results. I'm not actually sure why the
+	// results seem to only remain one invocation of `set_label` behind the current text, but that
+	// is what testing revealed (see https://github.com/wesnoth/wesnoth/pull/5363).
+	//
+	// -- vultraz, 2020-12-17
+	renderer_.set_text(label_, use_markup_);
 }
 
 void styled_widget::set_use_markup(bool use_markup)
