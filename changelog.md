@@ -12,6 +12,8 @@
      * S03: fix the initial keep being blocked at the start
    * Heir to the Throne
      * Tweak campaign difficulty
+   * The Hammer of Thursagan
+     * Reduce campaign difficulty
    * The South Guard
      * Reduce campaign difficulty
  ### Multiplayer
