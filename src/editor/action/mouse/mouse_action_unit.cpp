@@ -60,7 +60,6 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 			rect.h = disp.hex_size();
 			rect.w = disp.hex_size();
 			std::stringstream str;
-			str << _("Identifier: ") << unit_it->id()     << "\n";
 			if(unit_it->name() != "") {
 				str	<< _("Name: ")    << unit_it->name()      << "\n";
 			}
