@@ -137,9 +137,6 @@ private:
 
 	void update_all_addons();
 
-	void browse_url_callback(text_box& url_box);
-	void copy_url_callback(text_box& url_box);
-
 	void apply_filters();
 	void order_addons();
 	void on_order_changed(unsigned int sort_column, preferences::SORT_ORDER order);
