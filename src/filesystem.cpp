@@ -246,7 +246,7 @@ static void push_if_exists(std::vector<std::string>* vec, const bfs::path& file,
 
 static inline bool error_except_not_found(const error_code& ec)
 {
-	return ec != boost::system::errc::no_such_file_or_directory;
+	return ec && ec != boost::system::errc::no_such_file_or_directory;
 }
 
 static bool is_directory_internal(const bfs::path& fpath)
