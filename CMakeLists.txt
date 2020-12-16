@@ -46,6 +46,9 @@ if(MSVC)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif(MSVC)
 
+# Hide warnings when building with boost >= 1.73
+add_definitions(-DBOOST_BIND_GLOBAL_PLACEHOLDERS)
+
 #check for some compiler/arch specific things and export defines accordingly...
 include(SearchForStuff)
 
