@@ -3,8 +3,10 @@
    * Fixed inability to write files (including the server configuration file) on Windows.
    * Dropped plain text passphrase migration, unused in production since version 1.12.7 and 1.13.0 (issue #5080).
    * Uploading add-ons with versions not greater than the latest uploaded version is no longer allowed (issue #5079).
+   * Implemented optional server information query used by connecting clients.
  ### Add-ons client
    * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
+   * Improved license information prompt for uploads.
  ### Campaigns
    * Dead Water
      * Reduce campaign difficulty
@@ -27,6 +29,7 @@
  ### Units
    * Undead variations for Falcon, Giant Rat, serpents, and Gorer/Tusklet
  ### User interface
+   * Minor streamlining on the Game Version and Add-ons Manager dialogs.
    * Text labels now use the hyperlink mouse cursor while hovering links.
    * Link awareness is now configured on a per-instance basis for labels/scroll labels instead of globally in their definition.
  ### WML Engine
