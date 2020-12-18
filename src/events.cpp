@@ -13,25 +13,26 @@
 */
 
 #include "events.hpp"
+
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "log.hpp"
 #include "quit_confirmation.hpp"
-#include "video.hpp"
 #include "sdl/userevent.hpp"
+#include "video.hpp"
 
 #if defined _WIN32
 #include "desktop/windows_tray_notification.hpp"
 #endif
 
 #include <algorithm>
-#include <atomic>
 #include <cassert>
 #include <deque>
+#include <future>
 #include <iterator>
+#include <thread>
 #include <utility>
 #include <vector>
-#include <thread>
 
 #include <SDL2/SDL.h>
 
@@ -45,8 +46,7 @@ struct invoked_function_data
 {
 	explicit invoked_function_data(const std::function<void(void)>& func)
 		: f(func)
-		, finished(false)
-		, thrown_exception()
+		, finished()
 	{
 	}
 
@@ -54,10 +54,7 @@ struct invoked_function_data
 	const std::function<void(void)>& f;
 
 	/** Whether execution in the main thread is complete. */
-	std::atomic_bool finished;
-
-	/** Stores any exception thrown during the execution of @ref f. */
-	std::exception_ptr thrown_exception;
+	std::promise<void> finished;
 
 	void call()
 	{
@@ -67,10 +64,11 @@ struct invoked_function_data
 			// Handle this exception in the main thread.
 			throw;
 		} catch(...) {
-			thrown_exception = std::current_exception();
+			finished.set_exception(std::current_exception());
+			return;
 		}
 
-		finished = true;
+		finished.set_value();
 	}
 };
 }
@@ -884,13 +882,8 @@ void call_in_main_thread(const std::function<void(void)>& f)
 
 	SDL_PushEvent(&sdl_event);
 
-	while(!fdata.finished) {
-		SDL_Delay(10);
-	}
-
-	if(fdata.thrown_exception) {
-		std::rethrow_exception(fdata.thrown_exception);
-	}
+	// Block until execution is complete in the main thread. Rethrows any exceptions.
+	fdata.finished.get_future().wait();
 }
 
 } // end events namespace
