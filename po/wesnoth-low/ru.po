@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: wescamp-i 18n\n"
+"Project-Id-Version: wesnoth-low\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-05 20:44 UTC\n"
-"PO-Revision-Date: 2016-05-03 14:38+0400\n"
-"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2020-11-21 04:53 UTC\n"
+"PO-Revision-Date: 2020-11-30 11:20+0300\n"
+"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:52
@@ -39,15 +39,13 @@ msgstr ""
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:56
-#, fuzzy
-#| msgid "(Intermediate level, 18 scenarios.)"
 msgid "(Hard level, 18 scenarios.)"
-msgstr "(Средний уровень, 18 сценариев)"
+msgstr "(Для опытных игроков, 18 сценариев.)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:58
 msgid "Easy"
-msgstr "(Лёгкий)"
+msgstr "Лёгкий"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:58
@@ -62,12 +60,12 @@ msgstr "Лорд"
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:59
 msgid "Normal"
-msgstr "(Нормальный)"
+msgstr "Нормальный"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:60
 msgid "Challenging"
-msgstr "(Сложный)"
+msgstr "Сложный"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:60
@@ -280,7 +278,7 @@ msgid ""
 "<i>Flight and Fight</i>"
 msgstr ""
 "Глава первая,\n"
-"<i>Беги и Бейся</i"
+"<i>Беги и Бейся</i>"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:38
@@ -379,34 +377,34 @@ msgstr "Велон"
 #. [side]: id=Tbaran, type=Orcish Warrior
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:197
 msgid "T’baran"
-msgstr "Т'баран"
+msgstr "Т’баран"
 
 #. [side]: id=Tbaran, type=Orcish Warrior
 #. [side]: id=Wrulf, type=Orcish Warrior
 #. [side]: type=Orcish Warrior, id=Qumseh
 #. [side]: type=Orcish Warrior, id=Graur-Tan
+#. [side]
 #. [modify_side]
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#. [side]
 #. [side]: id=Hraurg, type=Saurian Ambusher
 #. [side]: type=Saurian Ambusher, id=Spahr
+#. [side]: type=Saurian Ambusher, id=Shurm
+#. [side]: type=Saurian Ambusher, id=Trigr
 #. [side]: type=Orcish Warlord, id=Urug-Tar
 #. [side]: type=Orcish Warlord, id=Graur-Tan
 #. [side]: type=Troll Warrior, id=Traur
-#. [side]: type=Saurian Ambusher, id=Shurm
-#. [side]: type=Saurian Ambusher, id=Trigr
-#. [side]: type=Troll Warrior, id=Tafrul
-#. [side]: type=Arch Mage, id=Aquagar
-#. [side]: type=Troll Warrior, id=Trigrul
-#. [side]: type=Saurian Flanker, id=Huurgh
-#. [side]: type=Saurian Oracle, id=Shhar
 #. [side]: type=Orcish Warlord, id=Kior-Pur
 #. [side]: type=Orcish Warlord, id=Mbiran
 #. [side]: type=Orcish Warlord, id=Tan-Durr
-#. [side]: type=Saurian Flanker, id=Spahr
-#. [side]: type=Saurian Flanker, id=Hgyr
+#. [side]: type=Saurian Flanker, id=Huurgh
+#. [side]: type=Saurian Oracle, id=Shhar
+#. [side]: type=Troll Warrior, id=Tafrul
+#. [side]: type=Arch Mage, id=Aquagar
+#. [side]: type=Troll Warrior, id=Trigrul
 #. [side]: type=Elvish Marshal, id=Crintil
 #. [side]: type=Elvish Captain, id=Oblil
+#. [side]: type=Saurian Flanker, id=Spahr
+#. [side]: type=Saurian Flanker, id=Hgyr
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:199
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:236
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:271
@@ -762,18 +760,13 @@ msgstr ""
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:479
-#, fuzzy
-#| msgid ""
-#| "Our troubles will be yours, too, whether either of us will it or not. The "
-#| "orcs have come down from the north like a flood; if we squabble among "
-#| "ourselves they will feast on our discord."
 msgid ""
 "Our troubles will be yours, too, whether either of us wills it or not. The "
 "orcs have come down from the north like a flood; if we squabble among "
 "ourselves they will feast on our discord."
 msgstr ""
-"Наши беды станут и твоими, хочет этого кто-либо или нет. Орки идут с севера "
-"как лавина; мы сильно их обрадуем, если станем ссориться по пустякам."
+"Наши беды станут и твоими, хочет этого кто-нибудь или нет. Орки идут с "
+"севера как лавина; мы сильно их обрадуем, если станем ссориться по пустякам."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:483
@@ -1888,8 +1881,8 @@ msgstr ""
 " оставил добытое золото в эльфийской сокровищнице. Следующий сценарий вы "
 "начнёте с заданным запасом золота."
 
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:574
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:41
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:51
@@ -1931,8 +1924,8 @@ msgstr ""
 msgid "Kalenz"
 msgstr "Каленз"
 
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:580
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:61
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:81
@@ -2046,22 +2039,16 @@ msgstr "Эль-Изомифир"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:46
-#, fuzzy
-#| msgid ""
-#| "Leave the Humans out of this. King Haldric has broken the treaty we "
-#| "signed with him eleven years ago, and has sent back all our emissaries. "
-#| "When he arrived on our shore he was very humble, but now his arrogance "
-#| "knows no bounds. He believes the Orcs will not dare to fight him."
 msgid ""
 "Leave the Humans out of this. King Haldric has broken the treaty we signed "
 "with him eighteen years ago, and has sent back all our emissaries. When he "
 "arrived on our shore he was very humble, but now his arrogance knows no "
 "bounds. He believes the Orcs will not dare to fight him."
 msgstr ""
-"Оставим людей. Король Хальдрик разорвал договор, что мы подписали "
-"одиннадцать лет назад, и выслал всех наших послов. Когда он прибыл к нашим "
-"берегам, он был очень скромен, но теперь его высокомерие не знает границ. Он "
-"решил, что орки не посмеют пойти на него."
+"Я против вмешательства людей. Король Хальдрик разорвал договор, что мы "
+"подписали восемнадцать лет назад, и выслал всех наших послов. Когда он "
+"прибыл к нашим берегам, он был очень скромен, но теперь высокомерие короля "
+"не знает границ. Он решил, что орки не посмеют пойти на него."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:51
@@ -2293,8 +2280,8 @@ msgstr "Уурх"
 msgid "Shhar"
 msgstr "Шшар"
 
-#. [side]: type=Gryphon, id=Gryphon Leader
 #. [side]
+#. [side]: type=Gryphon, id=Gryphon Leader
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:197
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:153
 msgid "Creatures"
@@ -4775,16 +4762,16 @@ msgstr "Продержаться шесть дней"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:321
-#, fuzzy
-#| msgid "Survive for six days"
 msgid "Kalenz survives for six days"
-msgstr "Продержаться шесть дней"
+msgstr "Каленз остаётся в живых по прошествии шести дней"
 
 #. [note]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:332
 msgid ""
 "If you lose you still have a chance to defeat Kalenz in the next scenario."
 msgstr ""
+"Даже если вы проиграете, у вас всё ещё будет возможность победить Каленза в "
+"следующем сценарии."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:341
@@ -5037,7 +5024,7 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Великие Огры - гигантские создания, обычно живущие в глуши поодиночке; они "
+"Великие Огры — гигантские создания, обычно живущие в глуши поодиночке; они "
 "удивительно похожи на людей, но большие и уродливые. Их очень просто "
 "обмануть или убежать от них, но силу огров не стоит недооценивать."
 
@@ -5078,8 +5065,9 @@ msgid ""
 "increase for him. This allows Cleodil to give Kalenz extra points of healing "
 "at the beginning of your turn."
 msgstr ""
-"Если шида привязывается к кому-то, она может лучше его лечить. Клеодил может "
-"вылечить Калензу дополнительно 4 единицы здоровья в начале каждого хода."
+"Если лесная фея привязывается к кому-то, она может лучше его лечить. Клеодил "
+"может вылечить Калензу дополнительно 4 единицы здоровья в начале каждого "
+"хода."
 
 #: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:53
 msgid "Huraldur"

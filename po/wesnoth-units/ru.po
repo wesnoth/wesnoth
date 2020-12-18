@@ -9,21 +9,22 @@
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
 # Anthon Kolesov - <anthony.kolesov@gmail.com>
 # Fedor Khodkov — <fkhodkov@gmail.com>, 2009-2014
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth.po\n"
+"Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-12-05 20:44 UTC\n"
-"PO-Revision-Date: 2019-09-21 22:22+0400\n"
-"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: \n"
-"Language: ru_RU\n"
+"POT-Creation-Date: 2020-11-21 04:53 UTC\n"
+"PO-Revision-Date: 2020-11-30 11:44+0300\n"
+"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [attack]: type=impact
@@ -373,10 +374,10 @@ msgstr ""
 "неопасны для опытных солдат, но сам вид бывшего товарища в их рядах по "
 "меньшей мере устрашает."
 
-#. [attack]: type=arcane
 #. [attack]: type=impact
-#. [attack]: type=fire
+#. [attack]: type=arcane
 #. [attack]: type=cold
+#. [attack]: type=fire
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:27
@@ -963,6 +964,8 @@ msgid ""
 "Compared to other drakes, Drake Arbiters have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"По сравнению с остальными дрейками, Надзиратели менее восприимчивы к "
+"«колющим» атакам."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -1298,14 +1301,6 @@ msgstr "Ветролов"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:17
-#, fuzzy
-#| msgid ""
-#| "The lightweight ceramic armor that the Sky Drakes wear is a symbol of "
-#| "their rank, glazed silver to honor their connection to the air. As "
-#| "leaders of the hunt, they are often away from their homes for long "
-#| "periods of time. Each tries to bring as much game home as possible, "
-#| "competing to gain the respect of their tribe and, just possibly, time "
-#| "with one of the closely-guarded drake females."
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -1314,10 +1309,9 @@ msgid ""
 "of their tribe."
 msgstr ""
 "Лёгкие керамические доспехи, которые носят Ветроловы — символ их касты; их "
-"серебрянные украшения символизируют власть над воздухом. Как управляющие "
+"серебряные украшения символизируют власть над воздухом. Как управляющие "
 "охотой, они часто и надолго отлучаются из дома. Каждый из них стремится "
-"принести как можно больше добычи, завоевав уважение племени, и, возможно, "
-"право встретиться с одной из тщательно охраняемых самок."
+"принести как можно больше добычи, завоевав уважение племени."
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -1370,6 +1364,8 @@ msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"По сравнению с остальными дрейками, Прокураторы менее восприимчивы к "
+"«колющим» атакам."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -2174,7 +2170,7 @@ msgid ""
 "in the heat of battle, and their mastery of both battleaxe and warhammer "
 "make them imposing foes indeed."
 msgstr ""
-"Дружинники - воины гномов, закованные в самые прочные пластинчатые доспехи и "
+"Дружинники — воины гномов, закованные в самые прочные пластинчатые доспехи и "
 "кольчуги кузниц Кналга, являются элитой армий гномьих королей-Конунгов. Они "
 "известны своей стойкостью в пылу битвы, и их мастерство владения как боевым "
 "топором, так и боевым молотом, делает их действительно внушительными врагами."
@@ -2295,6 +2291,8 @@ msgid ""
 "Compared to other elves, Elvish Avengers have superior movement and defense "
 "on sand, shallow water, and mountains."
 msgstr ""
+"По сравнению с остальными эльфами, Мстители обладают повышенной защитой и "
+"подвижностью в горной и песчаной местности, а также на мелководье."
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:96
@@ -2698,6 +2696,8 @@ msgid ""
 "Compared to other elves, Elvish Rangers have superior movement and defense "
 "on sand, shallow water, and mountains."
 msgstr ""
+"По сравнению с остальными эльфами, Хранители леса обладают повышенной "
+"защитой и подвижностью в горной и песчаной местности, а также на мелководье."
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:93
@@ -3283,23 +3283,16 @@ msgstr "Кирасир"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Cavaliers are masters at the use of both sword and crossbow from "
-#| "horseback. Their combination of striking power and mobility is fearsome; "
-#| "and they have a reputation for dash and aggressiveness to match it. The "
-#| "daring deeds of Cavaliers are the subject of many a tale and song."
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome, and they have "
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
-"Перед боем Кирасиры облачаются в ярко сиющие на солнце нагрудные доспехи, по "
-"которым они и получили свое название. Кирасиры являются мастерами в "
-"использовании на скаку как меча, так и арбалета. Сочетание их ударной мощи и "
-"подвижности внушает страх, и они славятся своей дерзостью и агрессивностью. "
-"Дерзкие поступки Кирасиров - предмет многих сказаний и песен."
+"Кирасиры — мастера в использовании на скаку как меча, так и арбалета. "
+"Сочетание их ударной мощи и подвижности внушает страх, и они славятся своей "
+"дерзостью и агрессивностью. Дерзкие поступки Кирасиров — предмет многих "
+"сказаний и песен."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -3507,6 +3500,8 @@ msgid ""
 "Compared to other loyalists, Halberdiers have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"По сравнению с остальными верноподданными, Алебардщики менее восприимчивы к "
+"«колющим» атакам."
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
@@ -3708,6 +3703,8 @@ msgid ""
 "Compared to other loyalists, Pikemen have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"По сравнению с остальными верноподданными, Пикинёры менее восприимчивы к "
+"«колющим» атакам."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:32
@@ -3745,11 +3742,15 @@ msgid ""
 "Compared to other loyalists, Royal Guards have a higher resistance to "
 "‘blade’ and ‘impact’ attacks."
 msgstr ""
+"По сравнению с остальными верноподданными, Королевские гвардейцы менее "
+"восприимчивы к «режущим» и «крушащим» атакам."
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:20
 msgid "Compared to other loyalists, Royal Guards have more movepoints."
 msgstr ""
+"По сравнению с остальными верноподданными, Королевские гвардейцы обладают "
+"большей подвижностью."
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -3844,6 +3845,8 @@ msgid ""
 "Compared to other loyalists, Swordsmen have a higher resistance to ‘blade’ "
 "and ‘impact’ attacks."
 msgstr ""
+"По сравнению с остальными верноподданными, Меченосцы менее восприимчивы к "
+"«режущим» и «крушащим» атакам."
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
@@ -3940,6 +3943,8 @@ msgid ""
 "Compared to other mages, Arch Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"По сравнению с остальными магами, Архимаги менее восприимчивы к «огненным» "
+"атакам."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:45
@@ -4011,6 +4016,8 @@ msgid ""
 "Compared to other mages, Great Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"По сравнению с остальными магами, Великие маги менее восприимчивы к "
+"«огненным» атакам."
 
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:88
@@ -4056,6 +4063,8 @@ msgid ""
 "Compared to other mages, Red Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"По сравнению с остальными магами, Красные маги менее восприимчивы к "
+"«огненным» атакам."
 
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:96
@@ -4153,6 +4162,8 @@ msgid ""
 "Compared to other mages, White Mages have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"По сравнению с остальными магами, Белые маги менее восприимчивы к "
+"«мистическим» атакам."
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:103
@@ -4187,6 +4198,8 @@ msgid ""
 "Compared to other mages, Mages of Light have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"По сравнению с остальными магами, Светлые маги менее восприимчивы к "
+"«мистическим» атакам."
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:100
@@ -5247,9 +5260,9 @@ msgstr ""
 msgid "Wolf"
 msgstr "Волк"
 
-#. [unit_type]: id=Direwolf, race=wolf
-#. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Great Wolf, race=wolf
+#. [unit_type]: id=Wolf, race=wolf
+#. [unit_type]: id=Direwolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:25
 #: data/core/units/monsters/Wolf_Great.cfg:25
