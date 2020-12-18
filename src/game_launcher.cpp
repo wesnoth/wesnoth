@@ -102,7 +102,7 @@ static lg::log_domain log_network("network");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-game_launcher::game_launcher(const commandline_options& cmdline_opts, const char* appname)
+game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	: cmdline_opts_(cmdline_opts)
 	, video_(new CVideo())
 	, font_manager_()
@@ -143,9 +143,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		font_manager_.~manager();
 		new (&font_manager_) font::manager();
 	}
-
-	const std::string app_basename = filesystem::base_name(appname);
-	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
 
 	if(cmdline_opts_.core_id) {
 		preferences::set_core_id(*cmdline_opts_.core_id);
