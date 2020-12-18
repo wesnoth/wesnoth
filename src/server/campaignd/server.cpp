@@ -65,8 +65,6 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_server("server");
 #define ERR_SERVER LOG_STREAM(err, log_server)
 
-#include "server/common/send_receive_wml_helpers.ipp"
-
 namespace campaignd {
 
 namespace {

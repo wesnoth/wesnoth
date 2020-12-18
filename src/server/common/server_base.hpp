@@ -22,6 +22,10 @@
 #include "exceptions.hpp"
 #include "server/common/simple_wml.hpp"
 
+#ifdef _WIN32
+#include "serialization/unicode_cast.hpp"
+#endif
+
 #include <boost/asio/io_service.hpp>
 #include <boost/asio/ip/tcp.hpp>
 #ifndef _WIN32
@@ -47,6 +51,21 @@ public:
 	server_base(unsigned short port, bool keep_alive);
 	virtual ~server_base() {}
 	void run();
+
+	/// Send a WML document from within a coroutine
+	/// @param socket
+	/// @param doc
+	/// @param yield The function will suspend on write operation using this yield context
+	void coro_send_doc(socket_ptr socket, simple_wml::document& doc, boost::asio::yield_context yield);
+	/// Send contents of entire file directly to socket from within a coroutine
+	/// @param socket
+	/// @param filename
+	/// @param yield The function will suspend on write operations using this yield context
+	void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
+	/// Receive WML document from a coroutine
+	/// @param socket
+	/// @param yield The function will suspend on read operation using this yield context
+	std::shared_ptr<simple_wml::document> coro_receive_doc(socket_ptr socket, boost::asio::yield_context yield);
 
 	void async_send_doc_queued(socket_ptr socket, simple_wml::document& doc);
 

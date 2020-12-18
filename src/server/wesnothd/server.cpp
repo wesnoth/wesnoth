@@ -79,8 +79,6 @@ static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 
-#include "server/common/send_receive_wml_helpers.ipp"
-
 namespace wesnothd
 {
 // we take profiling info on every n requests
