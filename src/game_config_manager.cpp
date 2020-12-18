@@ -119,8 +119,8 @@ namespace
 /// returns true if every define in special is also defined in general
 bool map_includes(const preproc_map& general, const preproc_map& special)
 {
-	for(const preproc_map::value_type& pair : special) {
-		preproc_map::const_iterator it = general.find(pair.first);
+	for(const auto& pair : special) {
+		auto it = general.find(pair.first);
 		if(it == general.end() || it->second != pair.second) {
 			return false;
 		}
@@ -525,13 +525,13 @@ void game_config_manager::load_addons_cfg()
 				}
 			}
 
-			// hardcoded list of 1.14 advancement macros, just used for the werro mesage below.
-			std::set<std::string> deprecated_defeines = {
+			// hardcoded list of 1.14 advancement macros, just used for the error mesage below.
+			static const std::set<std::string> deprecated_defines {
 				"ENABLE_PARAGON",
 				"DISABLE_GRAND_MARSHAL",
 				"ENABLE_ARMAGEDDON_DRAKE",
 				"ENABLE_DWARVISH_ARCANISTER",
-				"ENABLE_DWARVISH_RUNESMITH ",
+				"ENABLE_DWARVISH_RUNESMITH",
 				"ENABLE_WOLF_ADVANCEMENT",
 				"ENABLE_NIGHTBLADE",
 				"ENABLE_TROLL_SHAMAN",
@@ -544,8 +544,8 @@ void game_config_manager::load_addons_cfg()
 				campaign.append_children(std::move(advancefroms));
 
 				for(auto str : utils::split(campaign["extra_defines"])) {
-					if(deprecated_defeines.count(str) > 0) {
-						//TODO: we could try to implement a compatabiltiy path by
+					if(deprecated_defines.count(str) > 0) {
+						//TODO: we could try to implement a compatibility path by
 						//      somehow getting the content of that macro from the
 						//      cache_ object, but considering that 1) the breakage
 						//      isn't that bad (just one disabled unit) and 2)
@@ -676,16 +676,14 @@ void game_config_manager::load_game_config_for_game(
 	// NOTE: these deques aren't used here, but the objects within are utilized as RAII helpers.
 	//
 
-	typedef std::unique_ptr<game_config::scoped_preproc_define> define;
-
-	std::deque<define> extra_defines;
+	std::deque<game_config::scoped_preproc_define> extra_defines;
 	for(const std::string& extra_define : classification.campaign_xtra_defines) {
-		extra_defines.emplace_back(new game_config::scoped_preproc_define(extra_define));
+		extra_defines.emplace_back(extra_define);
 	}
 
-	std::deque<define> modification_defines;
+	std::deque<game_config::scoped_preproc_define> modification_defines;
 	for(const std::string& mod_define : classification.mod_defines) {
-		modification_defines.emplace_back(new game_config::scoped_preproc_define(mod_define, !mod_define.empty()));
+		modification_defines.emplace_back(mod_define, !mod_define.empty());
 	}
 
 	try {
@@ -693,9 +691,9 @@ void game_config_manager::load_game_config_for_game(
 	} catch(const game::error&) {
 		cache_.clear_defines();
 
-		std::deque<define> previous_defines;
+		std::deque<game_config::scoped_preproc_define> previous_defines;
 		for(const preproc_map::value_type& preproc : old_defines_map_) {
-			previous_defines.emplace_back(new game_config::scoped_preproc_define(preproc.first));
+			previous_defines.emplace_back(preproc.first);
 		}
 
 		load_game_config_with_loadscreen(NO_FORCE_RELOAD);
@@ -714,20 +712,19 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", is_mp);
 	game_config::scoped_preproc_define test("TEST", is_test);
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest && is_mp);
-	/// During an mp game the default difficuly define is also defined so better already load it now if we alreeady must
+	/// During an mp game the default difficulty define is also defined so better already load it now if we already must
 	/// reload config cache.
 	game_config::scoped_preproc_define normal(
 		DEFAULT_DIFFICULTY, !map_includes(old_defines_map_, cache_.get_preproc_map()));
 
-	typedef std::unique_ptr<game_config::scoped_preproc_define> define;
 	try {
 		load_game_config_with_loadscreen(NO_INCLUDE_RELOAD);
 	} catch(const game::error&) {
 		cache_.clear_defines();
 
-		std::deque<define> previous_defines;
+		std::deque<game_config::scoped_preproc_define> previous_defines;
 		for (const preproc_map::value_type& preproc : old_defines_map_) {
-			previous_defines.emplace_back(new game_config::scoped_preproc_define(preproc.first));
+			previous_defines.emplace_back(preproc.first);
 		}
 
 		load_game_config_with_loadscreen(NO_FORCE_RELOAD);
