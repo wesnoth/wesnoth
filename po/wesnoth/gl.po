@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:40-0300\n"
+"POT-Creation-Date: 2020-12-18 22:26-0300\n"
 "PO-Revision-Date: 2018-05-16 07:07+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -244,7 +244,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1075
 msgid "poisoned"
 msgstr "Envelenado"
 
@@ -1145,7 +1145,7 @@ msgstr "Martelo con runas"
 
 #. [object]
 #. [item]: id=holly-water
-#: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
+#: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "Auga bendita"
 
@@ -1187,7 +1187,7 @@ msgstr "Poción gris"
 
 #. [object]: id={ID}
 #. [item]: id=potion-poison
-#: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
+#: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "Veleno"
 
@@ -1258,7 +1258,7 @@ msgstr "Lousa"
 
 #. [object]
 #. [item]: id=storm-trident
-#: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
+#: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "Tridente da tormenta"
 
@@ -1750,26 +1750,26 @@ msgstr ""
 "currently_doing_special_description"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:34
+#: data/core/macros/deprecated-utils.cfg:35
 msgid "This unit has been renamed to: "
 msgstr "Esta unidade renomeouse como:"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:52 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "Hai bonificación por rematar cedo."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:56 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "Non hai bonificación por rematar cedo."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr "Non se conserva ouro para o seguinte escenario."
 
-#: data/core/macros/deprecated-utils.cfg:63
+#: data/core/macros/deprecated-utils.cfg:64
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1777,7 +1777,7 @@ msgstr ""
 "\n"
 "Conservarase todo o ouro co que se remate para o seguinte escenario."
 
-#: data/core/macros/deprecated-utils.cfg:68
+#: data/core/macros/deprecated-utils.cfg:69
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1785,7 +1785,7 @@ msgstr ""
 "\n"
 "Conservarase o 40% do ouro co que se remate para o seguinte escenario."
 
-#: data/core/macros/deprecated-utils.cfg:73
+#: data/core/macros/deprecated-utils.cfg:74
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -1795,17 +1795,17 @@ msgstr ""
 "escenario."
 
 #. [message]: speaker=narrator
-#: data/core/macros/items.cfg:21
+#: data/core/macros/items.cfg:23
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr "Atopaches un pozo dos desexos. Que vas pedir?"
 
 #. [option]
-#: data/core/macros/items.cfg:24
+#: data/core/macros/items.cfg:26
 msgid "A swift victory"
 msgstr "Unha vitoria rápida"
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:32
+#: data/core/macros/items.cfg:34
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
@@ -1814,51 +1814,51 @@ msgstr ""
 "segura."
 
 #. [option]
-#: data/core/macros/items.cfg:38
+#: data/core/macros/items.cfg:40
 msgid "Lots of gold"
 msgstr "Moreas de ouro"
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:46
+#: data/core/macros/items.cfg:48
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Quero que esta moeda de ouro se transforme noutras dez."
 
 #. [option]
-#: data/core/macros/items.cfg:52
+#: data/core/macros/items.cfg:54
 msgid "Peace throughout Wesnoth."
 msgstr "A paz no Noroeste"
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:60
+#: data/core/macros/items.cfg:62
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "A única cousa que paga a pena desexar é paz para todos."
 
 #. [option]
-#: data/core/macros/items.cfg:66
+#: data/core/macros/items.cfg:68
 msgid "Don’t make a wish."
 msgstr "Non pedir nada"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:204
+#: data/core/macros/items.cfg:207
 msgid "Potion of Healing"
 msgstr "Poción da vida"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:207
+#: data/core/macros/items.cfg:210
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "Un sentimento de benestar apodérase de quen a bebe."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:208
+#: data/core/macros/items.cfg:211
 msgid "You are not worthy of healing."
 msgstr "Non es digno de sandar."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:245
+#: data/core/macros/items.cfg:249
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Nestes momentos o veleno esta filtrándose polas veas desta unidade."
 
-#: data/core/macros/items.cfg:273
+#: data/core/macros/items.cfg:278
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
@@ -1866,21 +1866,21 @@ msgstr ""
 "Bañar as armas corpo a corpo con esta auga fará que inflixan dano de tipo "
 "<i>arcano</i> mentres dure este escenario. Queres que $unit.name a utilice?"
 
-#: data/core/macros/items.cfg:274
+#: data/core/macros/items.cfg:279
 msgid "holy water^Take it"
 msgstr "Collela"
 
-#: data/core/macros/items.cfg:275
+#: data/core/macros/items.cfg:280
 msgid "holy water^Leave it"
 msgstr "Deixala"
 
 # Procurei que a mensaxe fose unisex.
-#: data/core/macros/items.cfg:276
+#: data/core/macros/items.cfg:281
 msgid "$unit.name has no need for this Holy Water! Let another take it."
 msgstr "$unit.name non necesita desta auga bendita! Que a colla outra unidade."
 
 #. [object]
-#: data/core/macros/items.cfg:281
+#: data/core/macros/items.cfg:286
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
@@ -1889,73 +1889,73 @@ msgstr ""
 "i> mentres dure este escenario."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:310
+#: data/core/macros/items.cfg:316
 msgid "Potion of Strength"
 msgstr "Poción da forza"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:313
+#: data/core/macros/items.cfg:319
 msgid "Strength is given to the drinker."
 msgstr "Dálle forza a quen a bebe."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:353
+#: data/core/macros/items.cfg:360
 msgid "Potion of Decay"
 msgstr "Poción do decaemento"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:356
+#: data/core/macros/items.cfg:363
 msgid "This poor unit drank something really bad."
 msgstr "Esta pobre unidade bebeu algo realmente malo."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:390
+#: data/core/macros/items.cfg:398
 msgid "Ring of Regeneration"
 msgstr "Anel da rexeneración"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:393
+#: data/core/macros/items.cfg:401
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Este anel sandará o seu portador un pouco cada rolda."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:429
+#: data/core/macros/items.cfg:438
 msgid "Ring of Slowness"
 msgstr "Anel da lentitude"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:432
+#: data/core/macros/items.cfg:441
 msgid "The bearer of this ring is slowed."
 msgstr "O portador deste anel vólvese máis lento."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:466
+#: data/core/macros/items.cfg:476
 msgid "Staff of Swiftness"
 msgstr "Bastón da axilidade"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:469
+#: data/core/macros/items.cfg:479
 msgid "This staff will grant the bearer swift movement."
 msgstr "Este bastón garántelle axilidade ao portador."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:470
+#: data/core/macros/items.cfg:480
 msgid "Only magical beings can wield such an object."
 msgstr "Só os seres máxicos poden portar estes obxectos."
 
-#: data/core/macros/items.cfg:513
+#: data/core/macros/items.cfg:524
 msgid "Should $unit.name pick up the trident?"
 msgstr "Debería $unit.name coller o tridente?"
 
-#: data/core/macros/items.cfg:514
+#: data/core/macros/items.cfg:525
 msgid "storm trident^Take it"
 msgstr "Collelo"
 
-#: data/core/macros/items.cfg:515
+#: data/core/macros/items.cfg:526
 msgid "storm trident^Leave it"
 msgstr "Deixalo"
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:527
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
@@ -1964,7 +1964,7 @@ msgstr ""
 "sirénido, que saberá usalo."
 
 #. [object]
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:532
 #, fuzzy
 #| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
@@ -1973,17 +1973,17 @@ msgstr ""
 "Este tridente permitiralle a un sirénido lanzarlle raios aos seus inimigos!"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:536
 msgid "storm trident"
 msgstr "tridente da tormenta"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:548
+#: data/core/macros/items.cfg:560
 msgid "sceptre of fire"
 msgstr "cetro de lume"
 
 # Véxase o ficheiro de «Nomes». Estes son os de draconián.
-#: data/core/macros/names.cfg:18
+#: data/core/macros/names.cfg:19
 msgid ""
 "Egar,Elch,Ga’ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart’lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -2005,7 +2005,7 @@ msgstr ""
 "Veramo,Veraz,Verdin,Vercon,Verlín,Verman,Vertin,Blanir"
 
 # Véxase o ficheiro de «Nomes». Estes son os de draconiá.
-#: data/core/macros/names.cfg:19
+#: data/core/macros/names.cfg:20
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
@@ -2016,7 +2016,7 @@ msgstr ""
 "Velin Ca,Vexar,Vuxín"
 
 #. Generator for male drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:21
+#: data/core/macros/names.cfg:22
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}’{suffix}|{prefix}{suffix} {short_name}\n"
@@ -2035,7 +2035,7 @@ msgstr ""
 "rusté|xit|nic|raz|dit|con|mad|tic|nir\n"
 
 #. Generator for female drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:28
+#: data/core/macros/names.cfg:29
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{suffix} {short_name}\n"
@@ -2050,7 +2050,7 @@ msgstr ""
 "short_name=Mal|Ca|Emez|Dar|Exi\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de ananos.
-#: data/core/macros/names.cfg:37
+#: data/core/macros/names.cfg:38
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
 "Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
@@ -2137,7 +2137,7 @@ msgstr ""
 "Trizas,Trizail,Trizain,Trizasol,Trizaus"
 
 #. Generator for male dwarf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:39
+#: data/core/macros/names.cfg:40
 msgid ""
 "\n"
 "main={long_name}\n"
@@ -2160,7 +2160,7 @@ msgstr ""
 "centre=lal|mal|ra|dur|dal|das|ma|gal|dau|ga|is|ma|ca|la|ral|dur|bur\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de elfos.
-#: data/core/macros/names.cfg:50
+#: data/core/macros/names.cfg:51
 msgid ""
 "Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
 "Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
@@ -2276,7 +2276,7 @@ msgstr ""
 "Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vilas,Vildor"
 
 # Véxase o ficheiro de «Nomes». Estes son os de elfas.
-#: data/core/macros/names.cfg:51
+#: data/core/macros/names.cfg:52
 msgid ""
 "Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
 "Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
@@ -2403,7 +2403,7 @@ msgstr ""
 "Vidran,Vidranel,Vigüel,Vödia,Vön,Vonficha,Vonfin,Vonfiriz,Vonfigüel,Vögüen"
 
 #. Generator for male elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:53
+#: data/core/macros/names.cfg:54
 msgid ""
 "\n"
 "main={generated_prefix}{consonnant}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2436,7 +2436,7 @@ msgstr ""
 "nin|nol|bris|lar|rier|ra|fil|dran|man\n"
 
 #. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:67
+#: data/core/macros/names.cfg:68
 msgid ""
 "\n"
 "main={generated_prefix_v}{centre_v}{suffix_v}|{generated_prefix_c}{centre_c}"
@@ -2480,18 +2480,18 @@ msgstr ""
 "short_centre_c=en|all|an|ith|el|il|an|ol|ar|ól|ár|ir|if|in|ion|iu|én|un|iu\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de grifón macho.
-#: data/core/macros/names.cfg:87
+#: data/core/macros/names.cfg:88
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgstr ""
 "Gra,Grac,Grea,Grec,Gre,Cac,Cas,Quec,Ques,Groc,Gro,Croc,Crac,Cru,Sar,Sur"
 
 # Véxase o ficheiro de «Nomes». Estes son os de grifón femia.
-#: data/core/macros/names.cfg:88
+#: data/core/macros/names.cfg:89
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Crasa,Casa,Caia,Caias,Queia,Quenia,Quira,Cora,Cura"
 
 #. Generator for male gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:90
+#: data/core/macros/names.cfg:91
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2505,7 +2505,7 @@ msgstr ""
 "suffix=co|so|io|nio|án\n"
 
 #. Generator for female gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:97
+#: data/core/macros/names.cfg:98
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2519,7 +2519,7 @@ msgstr ""
 "suffix=ca|sa|ia|nia|á\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de humano.
-#: data/core/macros/names.cfg:106
+#: data/core/macros/names.cfg:107
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -2579,7 +2579,7 @@ msgstr ""
 "Miguel,Pablo,Pascual, Pedro,Roberto,Santiago,Sebastián,Xesús,Xoán,Xosé"
 
 # Véxase o ficheiro de «Nomes». Estes son os de humana.
-#: data/core/macros/names.cfg:107
+#: data/core/macros/names.cfg:108
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -2636,7 +2636,7 @@ msgstr ""
 "Sara, Tareixa"
 
 #. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:109
+#: data/core/macros/names.cfg:110
 msgid ""
 "\n"
 "main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
@@ -2675,7 +2675,7 @@ msgstr ""
 "centre_v=rae|ra|dar|ui\n"
 
 #. Generator for female Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:125
+#: data/core/macros/names.cfg:126
 msgid ""
 "\n"
 "main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
@@ -2713,7 +2713,7 @@ msgstr ""
 "centre_c=il|in|ol|ur|un|ean|eal|on|al|ir\n"
 "centre_v=na|lla|na|ri|li|ni|rae|bri\n"
 
-#: data/core/macros/names.cfg:143
+#: data/core/macros/names.cfg:144
 msgid ""
 "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
 "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
@@ -2861,7 +2861,7 @@ msgstr ""
 "Iacid,Iunus,Iuxua,Iusri,Iusuf,Zafar,Zafir,Zaid,Zair,Zaid,Zain,Zain,Zarif,"
 "Zacarria,Zaqui,Zagüan,Ziad,Zubair,Zuair"
 
-#: data/core/macros/names.cfg:144
+#: data/core/macros/names.cfg:145
 msgid ""
 "Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
 "Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
@@ -2875,7 +2875,7 @@ msgid ""
 msgstr ""
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:146
+#: data/core/macros/names.cfg:147
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -2905,7 +2905,7 @@ msgstr ""
 "centre=ʿ|ʾ|i|sa|car|da|na|ia|tai|qui|ai|sau\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:157
+#: data/core/macros/names.cfg:158
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -2959,7 +2959,7 @@ msgstr ""
 "ail|air|a|en|in|aid|ud|ra|uá|nan|as|ir|ba|ni|iad|rás|suc|ide|mal|quibe\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de saurio.
-#: data/core/macros/names.cfg:177
+#: data/core/macros/names.cfg:179
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -2984,7 +2984,7 @@ msgstr ""
 "Zilrix,Zisas,Eslap,Salcos,Supde"
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:179
+#: data/core/macros/names.cfg:181
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3003,7 +3003,7 @@ msgstr ""
 "centre=is|sa|tra|na|an|es|sa|si|us\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de sirénido.
-#: data/core/macros/names.cfg:188
+#: data/core/macros/names.cfg:190
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -3023,7 +3023,7 @@ msgstr ""
 "Tritón,Visi,Vagallón,Vonic,Vourucasa"
 
 # Véxase o ficheiro de «Nomes». Estes son os de sirénida.
-#: data/core/macros/names.cfg:189
+#: data/core/macros/names.cfg:191
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -3037,7 +3037,7 @@ msgstr ""
 "Maris,Telxiepia,Tirgata,Batea,Vaga,Vedava,Vinemo,Vetema"
 
 #. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:191
+#: data/core/macros/names.cfg:193
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3056,7 +3056,7 @@ msgstr ""
 "centre=la|ma|ri|sei|te|ca|li|cer|tu|ni|qui|na|ga|si\n"
 
 #. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:198
+#: data/core/macros/names.cfg:200
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3073,7 +3073,7 @@ msgstr ""
 "centre=ofe|fri|tri|fro|di|si|xie|ce|ti|la|me|ro|co|mar|ran|den|la|ga\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de naga macho.
-#: data/core/macros/names.cfg:207
+#: data/core/macros/names.cfg:209
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -3090,7 +3090,7 @@ msgstr ""
 "Xinas,Xamos,Xocon,Salse,Glec,Sec,Seque"
 
 # Véxase o ficheiro de «Nomes». Estes son os de naga femia.
-#: data/core/macros/names.cfg:208
+#: data/core/macros/names.cfg:210
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -3108,7 +3108,7 @@ msgstr ""
 "Blanisa,Xabran,Xamalia,Xina,Ximnasia,Xanas,Xoque,Salsa,Glec,Sec,Seque"
 
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:210
+#: data/core/macros/names.cfg:212
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3126,7 +3126,7 @@ msgstr ""
 "sal|ol|quil|os|ail|al|nis|raque|lel|nas|con|eque\n"
 
 #. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:216
+#: data/core/macros/names.cfg:218
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3145,7 +3145,7 @@ msgstr ""
 "bra|a|lia|lai|laila|na|quene|alsa|epe\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de ogro.
-#: data/core/macros/names.cfg:224
+#: data/core/macros/names.cfg:226
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -3162,7 +3162,7 @@ msgstr ""
 "Trabuco,Tracon,Urcar"
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:226
+#: data/core/macros/names.cfg:228
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3177,7 +3177,7 @@ msgstr ""
 "suffix=ar|or|al|arme|cuco|caque|uco|naque|ta|que|roque|rar|con|gaque|nique\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de orco.
-#: data/core/macros/names.cfg:234
+#: data/core/macros/names.cfg:236
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -3245,7 +3245,7 @@ msgstr ""
 "Budis,Bur,Bules,Bulo,Bunar,Buras,Burbas,BVures,Busnar"
 
 #. Generator for orc names
-#: data/core/macros/names.cfg:236
+#: data/core/macros/names.cfg:238
 msgid ""
 "\n"
 "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
@@ -3273,7 +3273,7 @@ msgstr ""
 "ending_vowel=o|u\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de troll.
-#: data/core/macros/names.cfg:248
+#: data/core/macros/names.cfg:250
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -3286,7 +3286,7 @@ msgstr ""
 "Son,Tu,Tucru,Ugu,Urco,Urgü,Urgo,Urin,Van,Zogu,Zun"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:250
+#: data/core/macros/names.cfg:252
 msgid ""
 "\n"
 "main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
@@ -3307,7 +3307,7 @@ msgstr ""
 "suffix=r|que|refe|ca|ga|ce|rego\n"
 
 # Véxase o ficheiro de «Nomes». Estes son os de wose.
-#: data/core/macros/names.cfg:261
+#: data/core/macros/names.cfg:263
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -3335,7 +3335,7 @@ msgstr ""
 "Tuntonongatun,Tuntungantonton,Guonrunmaldin,Gudadunopel"
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:263
+#: data/core/macros/names.cfg:265
 msgid ""
 "\n"
 "main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
@@ -3363,7 +3363,7 @@ msgstr ""
 "ruque|relme|diume|nume|dan|dume|tume|din\n"
 
 # Véxase o ficheiro de «Topónimos».
-#: data/core/macros/names.cfg:272
+#: data/core/macros/names.cfg:275
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3395,7 +3395,7 @@ msgstr ""
 
 # Nomes base
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:274
+#: data/core/macros/names.cfg:277
 msgid ""
 "\n"
 "main={prefix}{middle}{suffix}\n"
@@ -3482,33 +3482,33 @@ msgstr ""
 "final_mp=cos|dos|los|mos|ncos|nos|nzos|ños|os|rdos|ros|sgos\n"
 
 #. [objective]: condition=lose
-#: data/core/macros/objective-utils.cfg:6
+#: data/core/macros/objective-utils.cfg:7
 msgid "Turns run out"
 msgstr "Que se esgoten as roldas."
 
-#: data/core/macros/objective-utils.cfg:14
+#: data/core/macros/objective-utils.cfg:20
 msgid "(early finish bonus)"
 msgstr "(hai bonificación por rematar cedo)"
 
-#: data/core/macros/objective-utils.cfg:22
+#: data/core/macros/objective-utils.cfg:25
 msgid "Alternative objective:"
 msgstr "Obxectivo alternativo:"
 
-#: data/core/macros/objective-utils.cfg:26
+#: data/core/macros/objective-utils.cfg:30
 msgid "Bonus objective:"
 msgstr "Obxectivo con bonificación:"
 
-#: data/core/macros/objective-utils.cfg:30
+#: data/core/macros/objective-utils.cfg:35
 msgid "Optional objective:"
 msgstr "Obxectivo opcional:"
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:52
+#: data/core/macros/objective-utils.cfg:60
 msgid "This is the last scenario."
 msgstr "Este é o último escenario."
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:58
+#: data/core/macros/objective-utils.cfg:67
 msgid "No turn limit"
 msgstr "Non hai límite de quendas."
 
@@ -3687,7 +3687,7 @@ msgid "Weight of Revenge"
 msgstr "O peso da vinganza"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:651
+#: data/core/macros/utils.cfg:659
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Obtés $amount_gold moedas de ouro."
 
@@ -3869,14 +3869,14 @@ msgstr "Infranqueábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:448
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:449
 msgid "Fog"
 msgstr "Néboa da guerra"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:451
-#: src/game_initialization/lobby_data.cpp:454
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:452
+#: src/game_initialization/lobby_data.cpp:455
 msgid "Shroud"
 msgstr "Manto do descoñecido"
 
@@ -4916,32 +4916,32 @@ msgstr "Nivel de caducidade incorrecto (debería estar entre 1 e 4)."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1075
 msgid "female^poisoned"
 msgstr "Envelenada"
 
 # “ralentizada” non é unha palabra normativa, pero dada a súa popularidade (por efecto do castelán?) e maila falta de boas alternativas (frear, refrear, entorpecer, desacelerar...) paréceme a mellor escolla.
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1081
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1082
 msgid "female^slowed"
 msgstr "Ralentizada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1081
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1082
 msgid "slowed"
 msgstr "Ralentizado"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1087
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1088
 msgid "female^petrified"
 msgstr "Petrificada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1087
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1088
 msgid "petrified"
 msgstr "Petrificado"
 
@@ -4957,14 +4957,14 @@ msgstr "Insandábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2899
-#: src/scripting/game_lua_kernel.cpp:2934
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2897
+#: src/scripting/game_lua_kernel.cpp:2932
 msgid "input"
 msgstr "entrada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:77
+#: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
 msgstr "Vitoria:"
 
@@ -6263,7 +6263,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "Non pode avanzar."
 
-#: src/actions/attack.cpp:604 src/actions/attack.cpp:1364
+#: src/actions/attack.cpp:605 src/actions/attack.cpp:1365
 msgid "An invalid attacker weapon got selected."
 msgstr "Seleccionouse un ataque incorrecto como atacante."
 
@@ -6354,19 +6354,19 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(preme $hotkey para continuar o desprazamento)"
 
 # Mensaxe que aparece ao intentar conectarse a un servidor. Véxase «Varios xogadores → Conectarse ao servidor oficial».
-#: src/addon/client.cpp:71
+#: src/addon/client.cpp:74
 msgid "Connecting to $server_address|..."
 msgstr "Conectándose a $server_address|…"
 
-#: src/addon/client.cpp:85
+#: src/addon/client.cpp:119
 msgid "Downloading list of add-ons..."
 msgstr "Descargando a lista de complementos…"
 
-#: src/addon/client.cpp:99
+#: src/addon/client.cpp:140
 msgid "Requesting distribution terms..."
 msgstr "Solicitando as condicións de distribución…"
 
-#: src/addon/client.cpp:123
+#: src/addon/client.cpp:164
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -6374,7 +6374,7 @@ msgstr ""
 "O complemento «$addon_title» ten un identificador incorrecto, «$addon_id», e "
 "non pode publicarse."
 
-#: src/addon/client.cpp:149
+#: src/addon/client.cpp:190
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -6382,7 +6382,7 @@ msgstr ""
 "O complemento «$addon_title» ten un ficheiro ou cartafol que contén "
 "caracteres incorrectos e non pode publicarse."
 
-#: src/addon/client.cpp:157
+#: src/addon/client.cpp:198
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -6399,7 +6399,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:168
+#: src/addon/client.cpp:209
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -6410,35 +6410,35 @@ msgstr ""
 "cartafol nun mesmo cartafol que sexan idénticos salvo polo uso de maiúsculas "
 "e minúsculas."
 
-#: src/addon/client.cpp:183
+#: src/addon/client.cpp:224
 #, fuzzy
 #| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
 msgstr "Solicitando as condicións de distribución…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:199
+#: src/addon/client.cpp:240
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Enviando «<i>$addon_title</i>»…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:220
+#: src/addon/client.cpp:261
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Enviando «<i>$addon_title</i>»…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:253
+#: src/addon/client.cpp:294
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Eliminando «<i>$addon_title</i>» do servidor…"
 
 # Facilita máis a visualización que «Decargando o complemento: BlaBlaBla...»·
-#: src/addon/client.cpp:282
+#: src/addon/client.cpp:323
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Descargando «<i>$addon_title</i>»…"
 
-#: src/addon/client.cpp:334 src/addon/client.cpp:360
+#: src/addon/client.cpp:342 src/addon/client.cpp:368
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -6446,7 +6446,7 @@ msgstr ""
 "A ruta ao complemento «<i>$addon_title</i>» contén caracteres incorrectos, "
 "así que non é posíbel instalalo."
 
-#: src/addon/client.cpp:339 src/addon/client.cpp:365
+#: src/addon/client.cpp:347 src/addon/client.cpp:373
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -6454,11 +6454,11 @@ msgstr ""
 "O complemento «$addon_title» ten nomes de ficheiro ou de cartafol con "
 "conflictos de maiúsculas e minúsculas. Isto pode causar problemas."
 
-#: src/addon/client.cpp:409
+#: src/addon/client.cpp:406
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu cun erro:"
 
-#: src/addon/client.cpp:459
+#: src/addon/client.cpp:456
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -6472,11 +6472,11 @@ msgstr[1] ""
 "O complemento escollido ten as seguintes dependencias, que non están nin "
 "instaladas nin dispoñíbeis no servidor. Queres continuar?"
 
-#: src/addon/client.cpp:468
+#: src/addon/client.cpp:465
 msgid "Broken Dependencies"
 msgstr "Dependencias rotas"
 
-#: src/addon/client.cpp:508
+#: src/addon/client.cpp:505
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -6487,11 +6487,11 @@ msgstr[0] "Non foi posíbel instalar a seguinte dependencia. Queres continuar?"
 msgstr[1] ""
 "Non foi posíbel instalar as seguintes dependencias. Queres continuar?"
 
-#: src/addon/client.cpp:512
+#: src/addon/client.cpp:509
 msgid "Dependencies Installation Failed"
 msgstr "Non se instalaron as dependencias"
 
-#: src/addon/client.cpp:535
+#: src/addon/client.cpp:532
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -6499,99 +6499,99 @@ msgstr ""
 "O complemento «$addon|» xa está instalado e contén información adicional que "
 "se perderá de maneira permanente se continúas:"
 
-#: src/addon/client.cpp:539
+#: src/addon/client.cpp:536
 msgid "Publishing information file (.pbl)"
 msgstr "Ficheiro de publicación de información (.pbl)"
 
-#: src/addon/client.cpp:543
+#: src/addon/client.cpp:540
 msgid "Version control system (VCS) information"
 msgstr "Información do sistema de control de versións (VCS)"
 
-#: src/addon/client.cpp:547
+#: src/addon/client.cpp:544
 msgid "Do you really wish to continue?"
 msgstr "Queres continuar?"
 
-#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:231
+#: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
+#: src/game_initialization/multiplayer.cpp:202
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: src/addon/client.cpp:674
+#: src/addon/client.cpp:685
 msgid "Add-ons Manager"
 msgstr "Xestor de complementos"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:252
 msgid "addon_type^Campaign"
 msgstr "Campaña"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:254
 msgid "addon_type^Scenario"
 msgstr "Escenario"
 
 # Optimizado para baixas resolucións.
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:256
 msgid "addon_type^SP/MP Campaign"
 msgstr "Campaña ind./mult."
 
 # Optimizado para baixas resolucións.
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:258
 msgid "addon_type^MP era"
 msgstr "Era mult."
 
 # Optimizado para baixas resolucións.
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:260
 msgid "addon_type^MP faction"
 msgstr "Facción mult."
 
 # Optimizado para baixas resolucións.
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:262
 msgid "addon_type^MP map-pack"
 msgstr "Mapas mult."
 
 # Optimizado para baixas resolucións.
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:264
 msgid "addon_type^MP scenario"
 msgstr "Escenario mult."
 
 # Optimizado para baixas resolucións.
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:266
 msgid "addon_type^MP campaign"
 msgstr "Campaña mult."
 
 # Optimizado para baixas resolucións.
-#: src/addon/info.cpp:270
+#: src/addon/info.cpp:268
 msgid "addon_type^Modification"
 msgstr "Modificación"
 
-#: src/addon/info.cpp:272
+#: src/addon/info.cpp:270
 msgid "addon_type^Core"
 msgstr "Núcleo"
 
-#: src/addon/info.cpp:274
+#: src/addon/info.cpp:272
 msgid "addon_type^Resources"
 msgstr "Recursos"
 
-#: src/addon/info.cpp:276
+#: src/addon/info.cpp:274
 msgid "addon_type^Other"
 msgstr "Outro"
 
-#: src/addon/info.cpp:278
+#: src/addon/info.cpp:276
 msgid "addon_type^(unknown)"
 msgstr "(descoñecido)"
 
-#: src/addon/info.cpp:315
+#: src/addon/info.cpp:313
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:293
+#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:291
 msgid "Network communication error."
 msgstr "Erro de comunicación a través da rede."
 
-#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:296
+#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:294
 msgid "Remote host disconnected."
 msgstr "O servidor remoto desconectouse."
 
-#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:299
+#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:297
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -6599,7 +6599,7 @@ msgstr ""
 "Houbo un problema ao crear os ficheiros necesarios para instalar o "
 "complemento."
 
-#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:308
+#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:306
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -6612,7 +6612,7 @@ msgstr ""
 "Ficheiro: $path\n"
 "Mensaxe de erro: $msg"
 
-#: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:312
 msgid "The add-ons server address specified is not valid."
 msgstr "O enderezo indicado do servidor de complementos non é correcto."
 
@@ -6620,13 +6620,13 @@ msgstr "O enderezo indicado do servidor de complementos non é correcto."
 msgid "You have no add-ons installed."
 msgstr "Non tes ningún complemento instalado."
 
-#: src/addon/manager_ui.cpp:169
+#: src/addon/manager_ui.cpp:167
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Seguro que queres eliminar este complemento?"
 msgstr[1] "Seguro que queres eliminar estes complementos?"
 
-#: src/addon/manager_ui.cpp:195
+#: src/addon/manager_ui.cpp:193
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6640,29 +6640,29 @@ msgstr[1] ""
 "Estes complementos parecen conter información local de publicación ou "
 "control de versións, e non se eliminarán:"
 
-#: src/addon/manager_ui.cpp:205
+#: src/addon/manager_ui.cpp:203
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Non foi posíbel eliminar correctamente o seguinte complemento:"
 msgstr[1] "Non foi posíbel eliminar correctamente os seguintes complementos:"
 
-#: src/addon/manager_ui.cpp:212
+#: src/addon/manager_ui.cpp:210
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Complemento eliminado"
 msgstr[1] "Complementos eliminados"
 
-#: src/addon/manager_ui.cpp:214
+#: src/addon/manager_ui.cpp:212
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "O seguinte complemento eliminouse correctamente:"
 msgstr[1] "Os seguintes complementos elimináronse correctamente:"
 
-#: src/addon/manager_ui.cpp:270
+#: src/addon/manager_ui.cpp:268
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Houbo un erro ao descargar a lista de complementos do servidor."
 
-#: src/addon/manager_ui.cpp:284
+#: src/addon/manager_ui.cpp:282
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 "Non foi posíbel atopar un complemento co identificador «$addon_id» no "
@@ -6777,28 +6777,32 @@ msgid "Invalid or unspecified add-on type."
 msgstr "Tipo de unidade incorrecto."
 
 #: src/addon/validation.cpp:542
+msgid "Version number not greater than the latest uploaded version."
+msgstr ""
+
+#: src/addon/validation.cpp:546
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:551
+#: src/addon/validation.cpp:555
 msgid "Unspecified server error."
 msgstr ""
 
-#: src/addon/validation.cpp:555
+#: src/addon/validation.cpp:559
 msgid "Server is in read-only mode."
 msgstr ""
 
-#: src/addon/validation.cpp:559
+#: src/addon/validation.cpp:563
 #, fuzzy
 #| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
 msgstr "Non tes ningún complemento instalado."
 
-#: src/addon/validation.cpp:563
+#: src/addon/validation.cpp:567
 msgid "Empty add-on version list on the server."
 msgstr ""
 
-#: src/addon/validation.cpp:573
+#: src/addon/validation.cpp:577
 msgid "Unspecified validation failure."
 msgstr ""
 
@@ -6830,15 +6834,15 @@ msgstr "Eliminouse a $nick da lista."
 msgid "friends and ignores list"
 msgstr "lista de amigos e de ignorados"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:156
 msgid "version"
 msgstr "versión"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:168
 msgid "nick registration"
 msgstr "rexistro de alcume"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:168
 msgid "requesting information for user $nick"
 msgstr "solicitando información do usuario $nick|."
 
@@ -6872,7 +6876,7 @@ msgstr ""
 #: src/chat_command_handler.hpp:83 src/chat_command_handler.hpp:85
 #: src/chat_command_handler.hpp:87 src/chat_command_handler.hpp:108
 #: src/chat_command_handler.hpp:110 src/chat_command_handler.hpp:112
-#: src/chat_command_handler.hpp:116
+#: src/chat_command_handler.hpp:118
 msgid "<nickname>"
 msgstr "<alcume>"
 
@@ -6962,47 +6966,55 @@ msgid "Remove a nickname from your ignores or friends list."
 msgstr "Elimina un alcume da lista de amigos ou de ignorados."
 
 #: src/chat_command_handler.hpp:114
+msgid "<N>"
+msgstr ""
+
+#: src/chat_command_handler.hpp:114
+msgid "Get a random number between 1 and N visible in the game setup lobby."
+msgstr ""
+
+#: src/chat_command_handler.hpp:116
 msgid "Display version information."
 msgstr "Mostrar información da versión."
 
-#: src/chat_command_handler.hpp:116
+#: src/chat_command_handler.hpp:118
 msgid "Request information about a nickname."
 msgstr "Solicitar información sobre un alcume."
 
-#: src/chat_command_handler.hpp:118 src/chat_command_handler.hpp:121
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:120 src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:125
 msgid "<room>"
 msgstr "<sala>"
 
-#: src/chat_command_handler.hpp:118
+#: src/chat_command_handler.hpp:120
 msgid "Join a room."
 msgstr "Entrar nunha sala."
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:123
 msgid "Part a room."
 msgstr "Saír dunha sala."
 
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:125
 msgid "List room members."
 msgstr "Listar os membros da sala."
 
-#: src/chat_command_handler.hpp:125
+#: src/chat_command_handler.hpp:127
 msgid "List available rooms."
 msgstr "Listar as salas dispoñíbeis."
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:129
 msgid "<room> <msg>"
 msgstr "<sala> <mensaxe>"
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:129
 msgid "Room message."
 msgstr "Mensaxe da sala."
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:131
 msgid "<room> <type> [value]"
 msgstr "<sala> <tipo> [valor]"
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:131
 msgid "Room query."
 msgstr "Petición da sala."
 
@@ -7022,11 +7034,11 @@ msgstr "Dominio de depuración descoñecido: «$domain|»."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Cambiouse o dominio «$domain|» ao nivel «$level|»."
 
-#: src/chat_events.cpp:152
+#: src/chat_events.cpp:155
 msgid "whisper to $receiver"
 msgstr "bisbarlle a $receiver"
 
-#: src/chat_events.cpp:159
+#: src/chat_events.cpp:162
 msgid "whisper: $sender"
 msgstr "bisba: $sender"
 
@@ -7100,58 +7112,58 @@ msgstr "%d/%m/%y"
 msgid "Invalid color in range: "
 msgstr "Cor incorrecta no intervalo:"
 
-#: src/game_config_manager.cpp:237 src/game_config_manager.cpp:246
-#: src/game_config_manager.cpp:258
+#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
+#: src/game_config_manager.cpp:265
 msgid "Error validating data core."
 msgstr "Produciuse un erro ao validar o núcleo dos datos."
 
-#: src/game_config_manager.cpp:238
+#: src/game_config_manager.cpp:244
 msgid "Found a core without id attribute."
 msgstr "Atopouse un núcleo sen o atributo «id»."
 
-#: src/game_config_manager.cpp:239 src/game_config_manager.cpp:249
-#: src/game_config_manager.cpp:262
+#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
+#: src/game_config_manager.cpp:269
 msgid "Skipping the core."
 msgstr "Saltándose o núcleo."
 
-#: src/game_config_manager.cpp:247 src/game_config_manager.cpp:259
-#: src/game_config_manager.cpp:282
+#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
+#: src/game_config_manager.cpp:289
 msgid "Core ID: "
 msgstr "Identificador do núcleo: "
 
-#: src/game_config_manager.cpp:248
+#: src/game_config_manager.cpp:255
 msgid "The ID is already in use."
 msgstr "O identificador xa está collido."
 
-#: src/game_config_manager.cpp:260
+#: src/game_config_manager.cpp:267
 msgid "Core Path: "
 msgstr "Ruta do núcleo: "
 
-#: src/game_config_manager.cpp:261
+#: src/game_config_manager.cpp:268
 msgid "File not found."
 msgstr "Non se atopou o ficheiro."
 
-#: src/game_config_manager.cpp:281 src/game_config_manager.cpp:293
+#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
 msgid "Error loading core data."
 msgstr "Produciuse un erro ao cargar os datos do núcleo."
 
-#: src/game_config_manager.cpp:283
+#: src/game_config_manager.cpp:290
 msgid "Error loading the core with named id."
 msgstr "Produciuse un erro ao cargar o núcleo co identificador indicado."
 
-#: src/game_config_manager.cpp:284
+#: src/game_config_manager.cpp:291
 msgid "Falling back to the default core."
 msgstr "Retornando ao núcleo predeterminado."
 
-#: src/game_config_manager.cpp:294
+#: src/game_config_manager.cpp:301
 msgid "Can't locate the default core."
 msgstr "Non é posíbel atopar o núcleo predeterminado."
 
-#: src/game_config_manager.cpp:295
+#: src/game_config_manager.cpp:302
 msgid "The game will now exit."
 msgstr "O xogo pecharase."
 
-#: src/game_config_manager.cpp:346
+#: src/game_config_manager.cpp:351
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -7159,7 +7171,7 @@ msgstr ""
 "Produciuse un erro ao cargar os ficheiros de configuración do xogo "
 "personalizados. O xogo intentará iniciarse sen cargar complementos."
 
-#: src/game_config_manager.cpp:353
+#: src/game_config_manager.cpp:358
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -7167,35 +7179,35 @@ msgstr ""
 "Produciuse un erro ao cargar os ficheiros de configuración do xogo. O xogo "
 "retornará aos ficheiros do núcleo predeterminado."
 
-#: src/game_config_manager.cpp:362
+#: src/game_config_manager.cpp:367
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
 "Produciuse un erro ao cargar os ficheiros de configuración do xogo do núcleo "
 "predeterminado. O xogo non pode iniciarse."
 
-#: src/game_config_manager.cpp:514
+#: src/game_config_manager.cpp:519
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:538
+#: src/game_config_manager.cpp:558
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:586
+#: src/game_config_manager.cpp:609
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "O seguinte complemento ten erros e non foi posíbel cargalo:"
 msgstr[1] "Os seguintes complementos teñen erros e non foi posíbel cargalos:"
 
-#: src/game_config_manager.cpp:590
+#: src/game_config_manager.cpp:613
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] "Informe disto ao autor ou ao mantedor do complemento."
 msgstr[1] "Informe disto aos autores ou aos mantedores dos complementos."
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:951
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:952
 msgid "Error: "
 msgstr "Houbo un erro: "
 
@@ -7317,67 +7329,67 @@ msgstr "Non se atopou ningún tipo de líder para a facción $faction|."
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Non é posíbel obter o sexo co líder $leader. O líder non é valido."
 
-#: src/game_initialization/lobby_data.cpp:225
+#: src/game_initialization/lobby_data.cpp:226
 msgid "Missing addon: $name"
 msgstr "Falta o complemento «$name»."
 
-#: src/game_initialization/lobby_data.cpp:227
+#: src/game_initialization/lobby_data.cpp:228
 msgid "Missing addon: $id"
 msgstr "Falta o complemento «$id»."
 
-#: src/game_initialization/lobby_data.cpp:259
+#: src/game_initialization/lobby_data.cpp:260
 msgid "Unknown era"
 msgstr "Era descoñecida"
 
-#: src/game_initialization/lobby_data.cpp:326
-#: src/game_initialization/lobby_data.cpp:360
+#: src/game_initialization/lobby_data.cpp:327
+#: src/game_initialization/lobby_data.cpp:361
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "Bando"
 
-#: src/game_initialization/lobby_data.cpp:346
+#: src/game_initialization/lobby_data.cpp:347
 msgid "Remote scenario"
 msgstr "Escenario remoto"
 
-#: src/game_initialization/lobby_data.cpp:367
-#: src/game_initialization/lobby_data.cpp:393
+#: src/game_initialization/lobby_data.cpp:368
+#: src/game_initialization/lobby_data.cpp:394
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:399
+#: src/game_initialization/lobby_data.cpp:400
 msgid "Unknown scenario"
 msgstr "Escenario descoñecido"
 
-#: src/game_initialization/lobby_data.cpp:413
+#: src/game_initialization/lobby_data.cpp:414
 msgid "Reloaded game"
 msgstr "Partida recargada"
 
-#: src/game_initialization/lobby_data.cpp:428
+#: src/game_initialization/lobby_data.cpp:429
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Posto vacante:"
 msgstr[1] "Postos vacantes:"
 
-#: src/game_initialization/lobby_data.cpp:430
+#: src/game_initialization/lobby_data.cpp:431
 msgid "mp_game_available_slots^Full"
 msgstr "Chea"
 
 # En referencia á rolda en que está a partida (unha rolda é o grupo formado por unha quenda de cada xogador).
-#: src/game_initialization/lobby_data.cpp:441
-#: src/game_initialization/lobby_data.cpp:443 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:442
+#: src/game_initialization/lobby_data.cpp:444 src/savegame.cpp:645
 msgid "Turn"
 msgstr "Rolda"
 
-#: src/game_initialization/lobby_data.cpp:456
+#: src/game_initialization/lobby_data.cpp:457
 msgid "vision^none"
 msgstr "ningunha"
 
-#: src/game_initialization/lobby_data.cpp:465
+#: src/game_initialization/lobby_data.cpp:466
 msgid "time limit^none"
 msgstr "ningún"
 
-#: src/game_initialization/lobby_data.cpp:509
+#: src/game_initialization/lobby_data.cpp:510
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
@@ -7385,7 +7397,7 @@ msgstr ""
 "A versión de <i>$addon</i> que ten o anfitrión é incompatíbel. O anfitrión "
 "ten a versión <b>$host_ver</b>, ti tes a <b>$local_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:523
+#: src/game_initialization/lobby_data.cpp:524
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -7393,19 +7405,19 @@ msgstr ""
 "A túa versión de <i>$addon</i> é incompatíbel. Tes a versión <b>$local_ver</"
 "b>, o anfitrión ten a <b>$host_ver</b>."
 
-#: src/game_initialization/mp_game_utils.cpp:79
+#: src/game_initialization/mp_game_utils.cpp:76
 msgid "Defeat enemy leader(s)"
 msgstr "Derrota aos líderes inimigos."
 
-#: src/game_initialization/mp_game_utils.cpp:104
+#: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
 msgstr "Non foi posíbel atopar a era $era|."
 
-#: src/game_initialization/multiplayer.cpp:74
+#: src/game_initialization/multiplayer.cpp:76
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:121
+#: src/game_initialization/multiplayer.cpp:112
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -7413,11 +7425,11 @@ msgstr ""
 "O servidor acepta as versións «$required_version», pero ti estás a usar a "
 "versión «$your_version»."
 
-#: src/game_initialization/multiplayer.cpp:131
+#: src/game_initialization/multiplayer.cpp:125
 msgid "Server-side redirect loop"
 msgstr "Bucle de ligazón no servidor."
 
-#: src/game_initialization/multiplayer.cpp:204
+#: src/game_initialization/multiplayer.cpp:175
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -7426,29 +7438,29 @@ msgstr ""
 "O alcume «$nick|» está inactivo. Non podes reclamalo ata que actives a conta "
 "por correo electrónico, ou llo pidas a un dos administradores."
 
-#: src/game_initialization/multiplayer.cpp:213
+#: src/game_initialization/multiplayer.cpp:184
 msgid "Do you want to continue?"
 msgstr "Queres continuar?"
 
-#: src/game_initialization/multiplayer.cpp:215
+#: src/game_initialization/multiplayer.cpp:186
 msgid "Warning"
 msgstr "Advertencia"
 
-#: src/game_initialization/multiplayer.cpp:258
-#: src/game_initialization/multiplayer.cpp:274
-#: src/game_initialization/multiplayer.cpp:277
+#: src/game_initialization/multiplayer.cpp:228
+#: src/game_initialization/multiplayer.cpp:249
+#: src/game_initialization/multiplayer.cpp:252
 msgid "Bad data received from server"
 msgstr "Recibíronse datos incorrectos do servidor."
 
-#: src/game_initialization/multiplayer.cpp:312
+#: src/game_initialization/multiplayer.cpp:287
 msgid "You must login first."
 msgstr "Antes debes identificarte."
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:289
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "O alcume «$nick|» xa está collido."
 
-#: src/game_initialization/multiplayer.cpp:316
+#: src/game_initialization/multiplayer.cpp:291
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -7457,46 +7469,46 @@ msgstr ""
 "alfanuméricos latinos (nin tiles nin eñes), guións e guións baixos. "
 "Requírese polo menos un carácter."
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:295
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "O alcume «$nick|» é longo de máis. Os alcumes non poden ter máis de vinte "
 "caracteres."
 
-#: src/game_initialization/multiplayer.cpp:322
+#: src/game_initialization/multiplayer.cpp:297
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "O alcume «$nick|» está reservado e ningún xogador pode usalo."
 
-#: src/game_initialization/multiplayer.cpp:324
+#: src/game_initialization/multiplayer.cpp:299
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "O alcume «$nick|» non está rexistrado neste servidor."
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:300
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 " Este servidor non permite empregar alcumes sen rexistralos previamente."
 
-#: src/game_initialization/multiplayer.cpp:328
+#: src/game_initialization/multiplayer.cpp:303
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "O alcume «$nick|» está expulsado dos foros deste servidor."
 
-#: src/game_initialization/multiplayer.cpp:330
+#: src/game_initialization/multiplayer.cpp:305
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "O alcume «$nick|» está expulsado dos foros deste servidor."
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:309
 #, fuzzy
 #| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "O seu enderezo IP está expulsado dos foros deste servidor."
 
-#: src/game_initialization/multiplayer.cpp:336
+#: src/game_initialization/multiplayer.cpp:311
 msgid "Your IP address is banned on this server’s forums."
 msgstr "O seu enderezo IP está expulsado dos foros deste servidor."
 
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:315
 #, fuzzy
 #| msgid ""
 #| "The email address for the nickname ‘$nick’ is banned on this server’s "
@@ -7508,19 +7520,19 @@ msgstr ""
 "O enderezo de correo electrónico do alcume «$nick|» está expulsado dos foros "
 "deste servidor."
 
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:317
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "O enderezo de correo electrónico do alcume «$nick|» está expulsado dos foros "
 "deste servidor."
 
-#: src/game_initialization/multiplayer.cpp:345
-#: src/game_initialization/multiplayer.cpp:347
+#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:322
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "O alcume «$nick|» xa está rexistrado neste servidor."
 
-#: src/game_initialization/multiplayer.cpp:348
+#: src/game_initialization/multiplayer.cpp:323
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -7528,17 +7540,17 @@ msgstr ""
 "ADVERTENCIA: xa hai un usuario empregando ese alcume, se te identificas con "
 "el botarase ao usuario do servidor!"
 
-#: src/game_initialization/multiplayer.cpp:351
+#: src/game_initialization/multiplayer.cpp:326
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Houbo un erro ao identificarse (o servidor non tiña semente para a conexión)."
 
-#: src/game_initialization/multiplayer.cpp:353
+#: src/game_initialization/multiplayer.cpp:328
 msgid "The password you provided was incorrect."
 msgstr "O contrasinal é incorrecto."
 
-#: src/game_initialization/multiplayer.cpp:355
+#: src/game_initialization/multiplayer.cpp:330
 msgid "You have made too many login attempts."
 msgstr "Intentou identificarse demasiadas veces sen conseguilo."
 
@@ -7633,20 +7645,20 @@ msgstr "Derrota"
 msgid "You have been defeated!"
 msgstr "Derrotáronte!"
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:904
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:905
 msgid "The game could not be loaded: "
 msgstr "Non foi posíbel cargar a partida: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:906
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:907
 msgid "Error while playing the game: "
 msgstr "Houbo un erro mentres se xogaba a partida: "
 
-#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:943
+#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:944
 msgid "The game map could not be loaded: "
 msgstr "Non foi posíbel cargar o mapa da partida: "
 
-#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:908
-#: src/game_launcher.cpp:1038
+#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:909
+#: src/game_launcher.cpp:1036
 msgid "Map generator error: "
 msgstr "Erro do xerador de mapas: "
 
@@ -7667,33 +7679,33 @@ msgstr "Este escenario rematou. Queres continuar a campaña?"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenario descoñecido: «$scenario|»."
 
-#: src/game_initialization/singleplayer.cpp:42
+#: src/game_initialization/singleplayer.cpp:43
 msgid "No campaigns are available."
 msgstr "Non hai campañas dispoñíbeis."
 
-#: src/game_launcher.cpp:685 src/game_launcher.cpp:703
+#: src/game_launcher.cpp:692 src/game_launcher.cpp:711
 msgid "The file you have tried to load is corrupt"
 msgstr "O ficheiro que intentaches cargar non está ben."
 
-#: src/game_launcher.cpp:688 src/game_launcher.cpp:706
+#: src/game_launcher.cpp:694 src/game_launcher.cpp:713
 #: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:156
 #: src/savegame.cpp:311
 msgid "The file you have tried to load is corrupt: '"
 msgstr "O ficheiro que intentaches cargar non está ben: «"
 
-#: src/game_launcher.cpp:696
+#: src/game_launcher.cpp:703
 msgid "File I/O Error while reading the game"
 msgstr "Houbo problemas co ficheiro da partida mentres se lía."
 
-#: src/game_launcher.cpp:698
+#: src/game_launcher.cpp:705
 msgid "File I/O Error while reading the game: '"
 msgstr "Houbo problemas co ficheiro da partida mentres se lía: '"
 
-#: src/game_launcher.cpp:902
+#: src/game_launcher.cpp:903
 msgid "Error while starting server: "
 msgstr "Houbo un erro ao iniciar o servidor: "
 
-#: src/game_launcher.cpp:924
+#: src/game_launcher.cpp:925
 msgid "Connection failed: "
 msgstr "Fallou a conexión: "
 
@@ -7732,40 +7744,40 @@ msgstr[1] ""
 msgid "No visible sides found."
 msgstr "No se atoparon bandos visíbeis."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:114
+#: src/gui/dialogs/multiplayer/player_info.cpp:106
 msgid "In game:"
 msgstr "Na partida:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:116
+#: src/gui/dialogs/multiplayer/player_info.cpp:108
 msgid "(observing)"
 msgstr "(observando)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:118
+#: src/gui/dialogs/multiplayer/player_info.cpp:110
 msgid "(playing)"
 msgstr "(xogando)"
 
 # Aparece na nova interface da sala de espera para partidas con varios xogadores, ao premer dúas veces seguidas sobre un xogador que está na sala de espera.
-#: src/gui/dialogs/multiplayer/player_info.cpp:121
+#: src/gui/dialogs/multiplayer/player_info.cpp:113
 msgid "In lobby"
 msgstr "Na sala de espera."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:150
+#: src/gui/dialogs/multiplayer/player_info.cpp:142
 msgid "On friends list"
 msgstr "Na lista de amigos"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:155
+#: src/gui/dialogs/multiplayer/player_info.cpp:147
 msgid "On ignores list"
 msgstr "Na lista de ignorados"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:160
+#: src/gui/dialogs/multiplayer/player_info.cpp:152
 msgid "Neither a friend nor ignored"
 msgstr "Nin amigo nin ignorado"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:165
+#: src/gui/dialogs/multiplayer/player_info.cpp:157
 msgid "You"
 msgstr "Ti"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:168
+#: src/gui/dialogs/multiplayer/player_info.cpp:160
 msgid "Error"
 msgstr "Houbo un erro"
 
@@ -8651,15 +8663,15 @@ msgstr ""
 msgid "This unit has no usable weapons."
 msgstr "Esta unidade non ten armas que poida usar."
 
-#: src/mp_game_settings.hpp:74
+#: src/mp_game_settings.hpp:73
 msgid "Independent"
 msgstr "Independente"
 
-#: src/mp_game_settings.hpp:75
+#: src/mp_game_settings.hpp:74
 msgid "No Mirror"
 msgstr "Non repetir"
 
-#: src/mp_game_settings.hpp:76
+#: src/mp_game_settings.hpp:75
 msgid "No Ally Mirror"
 msgstr "Non repetir aliados"
 
@@ -9636,45 +9648,45 @@ msgstr "caótica"
 msgid "female^liminal"
 msgstr "crepuscular"
 
-#: src/units/unit.cpp:1871
+#: src/units/unit.cpp:1846
 msgid "$attack_list|: $effect_description"
 msgstr "$effect_description con $attack_list"
 
-#: src/units/unit.cpp:1877
+#: src/units/unit.cpp:1852
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> de vida"
 
-#: src/units/unit.cpp:1887
+#: src/units/unit.cpp:1862
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movemento"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> movementos"
 
-#: src/units/unit.cpp:1893
+#: src/units/unit.cpp:1868
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> de visión"
 
-#: src/units/unit.cpp:1897
+#: src/units/unit.cpp:1872
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> de atranco"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1877
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> de exp. para avanzar"
 
-#: src/units/unit.cpp:1906
+#: src/units/unit.cpp:1881
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ataque por quenda"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques por quenda"
 
-#: src/units/unit.cpp:1913
+#: src/units/unit.cpp:1888
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> de custo de reincorporación"
 
-#: src/units/unit.cpp:2334
+#: src/units/unit.cpp:2310
 msgid "$effect_description per level"
 msgstr "$effect_description por nivel"
 

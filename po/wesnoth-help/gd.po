@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:40-0300\n"
+"POT-Creation-Date: 2020-12-18 22:26-0300\n"
 "PO-Revision-Date: 2020-01-13 12:16+0000\n"
 "Last-Translator: GunChleoc, 2019\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -27,7 +27,7 @@ msgstr ""
 #. [time]: id=underground
 #. [editor_times]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
-#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:109
+#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Fon talamh"
 
@@ -965,13 +965,13 @@ msgstr ""
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
+#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Fada fon talamh"
 
 #. [time]: id=indoors
 #. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
+#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "Taobh a-staigh"
 
@@ -3174,9 +3174,9 @@ msgid ""
 "• <ref>dst='crowns' text='Hero units'</ref> have a smaller variant of the "
 "seven-pointed star, these units can’t recruit.\n"
 "• Units without a <ref>dst='movement' text='zone of control'</ref> have a "
-"broken version of the shape.\n"
+"broken outline version of the shape.\n"
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
-"a ZoC, these units have a broken version of the seven-pointed star."
+"a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
 
 #. [topic]: id=crowns
@@ -3275,21 +3275,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:464 data/core/macros/schedules.cfg:14
-#: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
+#: data/core/help.cfg:464 data/core/macros/schedules.cfg:16
+#: data/core/macros/schedules.cfg:290 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Camhanach"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:465 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:465 data/core/macros/schedules.cfg:28
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Madainn"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:466 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:466 data/core/macros/schedules.cfg:46
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Feasgar"
@@ -3297,21 +3297,21 @@ msgstr "Feasgar"
 #. [time]: id=dusk
 #. [topic]: id=time_of_day
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:467 data/core/macros/schedules.cfg:53
-#: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
+#: data/core/help.cfg:467 data/core/macros/schedules.cfg:55
+#: data/core/macros/schedules.cfg:411 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Ciaradh"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:468 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:468 data/core/macros/schedules.cfg:67
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "A’ chiad fhaire"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:469 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:469 data/core/macros/schedules.cfg:91
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "An dàrna faire"
@@ -5059,188 +5059,188 @@ msgstr "Duais PhB as motha +3, PE as motha +20%"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
+#: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
 msgstr "Meadhan-latha"
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
+#: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
 msgstr "Meadhan-oidhche"
 
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:203
+#: data/core/macros/schedules.cfg:218
 msgid "Second Watch — First Hour"
 msgstr "An dàrna faire – a’ chiad uair"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:215
+#: data/core/macros/schedules.cfg:230
 msgid "Second Watch — Second Hour"
 msgstr "An dàrna faire – an dàrna uair"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:227
+#: data/core/macros/schedules.cfg:242
 msgid "Second Watch — Third Hour"
 msgstr "An dàrna faire – an treas uair"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:239
+#: data/core/macros/schedules.cfg:254
 msgid "Second Watch — Fourth Hour"
 msgstr "An dàrna faire – a’ cheathramh uair"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:251
+#: data/core/macros/schedules.cfg:266
 msgid "Second Watch — Fifth Hour"
 msgstr "An dàrna faire – a’ chòigeamh uair"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:263
+#: data/core/macros/schedules.cfg:278
 msgid "Second Watch — Sixth Hour"
 msgstr "An dàrna faire – an t-siathamh uair"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:287
+#: data/core/macros/schedules.cfg:302
 msgid "Morning — First Hour"
 msgstr "Madainn – a’ chiad uair"
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:299
+#: data/core/macros/schedules.cfg:314
 msgid "Morning — Second Hour"
 msgstr "Madainn – an dàrna uair"
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:311
+#: data/core/macros/schedules.cfg:326
 msgid "Morning — Third Hour"
 msgstr "Madainn – an treas uair"
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:320
+#: data/core/macros/schedules.cfg:335
 msgid "Morning — Fourth Hour"
 msgstr "Madainn – a’ cheathramh uair"
 
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:338
+#: data/core/macros/schedules.cfg:353
 msgid "Afternoon — First Hour"
 msgstr "Feasgar – a’ chiad uair"
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:347
+#: data/core/macros/schedules.cfg:362
 msgid "Afternoon — Second Hour"
 msgstr "Feasgar – an dàrna uair"
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:356
+#: data/core/macros/schedules.cfg:371
 msgid "Afternoon — Third Hour"
 msgstr "Feasgar – an treas uair"
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:365
+#: data/core/macros/schedules.cfg:380
 msgid "Afternoon — Fourth Hour"
 msgstr "Feasgar – a’ cheathramh uair"
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:374
+#: data/core/macros/schedules.cfg:389
 msgid "Afternoon — Fifth Hour"
 msgstr "Feasgar – a’ chòigeamh uair"
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:385
+#: data/core/macros/schedules.cfg:400
 msgid "Afternoon — Sixth Hour"
 msgstr "Feasgar – an t-siathamh uair"
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:408
+#: data/core/macros/schedules.cfg:423
 msgid "First Watch — First Hour"
 msgstr "A’ chiad fhaire – a’ chiad uair"
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:420
+#: data/core/macros/schedules.cfg:435
 msgid "First Watch — Second Hour"
 msgstr "A’ chiad fhaire – an dàrna uair"
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:432
+#: data/core/macros/schedules.cfg:447
 msgid "First Watch — Third Hour"
 msgstr "A’ chiad fhaire – an treas uair"
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:444
+#: data/core/macros/schedules.cfg:459
 msgid "First Watch — Fourth Hour"
 msgstr "A’ chiad fhaire – a’ cheathramh uair"
 
 #. [time]: id=dawn1
-#: data/core/macros/schedules.cfg:498
+#: data/core/macros/schedules.cfg:514
 msgid "First Dawn"
 msgstr "A’ chiad chamhanach"
 
 #. [time]: id=dawn2
-#: data/core/macros/schedules.cfg:509
+#: data/core/macros/schedules.cfg:525
 msgid "Second Dawn"
 msgstr "An dàrna camhanach"
 
 #. [time]: id=morning1
-#: data/core/macros/schedules.cfg:520
+#: data/core/macros/schedules.cfg:536
 msgid "First Morning"
 msgstr "A’ chiad madainn"
 
 #. [time]: id=morning2
-#: data/core/macros/schedules.cfg:532
+#: data/core/macros/schedules.cfg:548
 msgid "Second Morning"
 msgstr "An dàrna madainn"
 
 #. [time]: id=midday1
-#: data/core/macros/schedules.cfg:544
+#: data/core/macros/schedules.cfg:560
 msgid "First Midday"
 msgstr "A’ chiad mheadhan-latha"
 
 #. [time]: id=midday2
-#: data/core/macros/schedules.cfg:556
+#: data/core/macros/schedules.cfg:572
 msgid "Second Midday"
 msgstr "An dàrna meadhan-latha"
 
 #. [time]: id=afternoon1
-#: data/core/macros/schedules.cfg:568
+#: data/core/macros/schedules.cfg:584
 msgid "First Afternoon"
 msgstr "A’ chiad fheasgar"
 
 #. [time]: id=afternoon2
-#: data/core/macros/schedules.cfg:580
+#: data/core/macros/schedules.cfg:596
 msgid "Second Afternoon"
 msgstr "An dàrna feasgar"
 
 #. [time]: id=dusk1
-#: data/core/macros/schedules.cfg:592
+#: data/core/macros/schedules.cfg:608
 msgid "First Dusk"
 msgstr "A’ chiad chiaradh"
 
 #. [time]: id=dusk2
-#: data/core/macros/schedules.cfg:603
+#: data/core/macros/schedules.cfg:619
 msgid "Second Dusk"
 msgstr "An dàrna ciaradh"
 
 #. [time]: id=short_dark
-#: data/core/macros/schedules.cfg:614
+#: data/core/macros/schedules.cfg:630
 msgid "The Short Dark"
 msgstr "An dorchadas goirid"
 
 #. [time]: id=long_dark1
-#: data/core/macros/schedules.cfg:626
+#: data/core/macros/schedules.cfg:642
 msgid "The Long Dark (1)"
 msgstr "An dorchadas fada (1)"
 
 #. [time]: id=long_dark2
-#: data/core/macros/schedules.cfg:638
+#: data/core/macros/schedules.cfg:654
 msgid "The Long Dark (2)"
 msgstr "An dorchadas fada (2)"
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:650
+#: data/core/macros/schedules.cfg:666
 msgid "The Long Dark (3)"
 msgstr "An dorchadas fada (3)"
 
 #. [time]: id=long_dark4
-#: data/core/macros/schedules.cfg:664
+#: data/core/macros/schedules.cfg:680
 msgid "The Long Dark (4)"
 msgstr "An dorchadas fada (4)"
 
@@ -5256,7 +5256,7 @@ msgstr ""
 "\n"
 "An aire gu sònraichte:"
 
-#: data/core/macros/special-notes.cfg:15
+#: data/core/macros/special-notes.cfg:17
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -5268,7 +5268,7 @@ msgstr ""
 " Tha comas-seasaimh neo-àbhaisteach aig spioradan an aghaidh dochainn is "
 "gluaisidh iad gu slaodach thar uisgeachan fosgailte."
 
-#: data/core/macros/special-notes.cfg:18
+#: data/core/macros/special-notes.cfg:20
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -5280,19 +5280,19 @@ msgstr ""
 " Nì an ionnsaigh dhìomhair aig an aonad seo droch dhochann air creutairean "
 "draoidheach is fiù ’s cuid dheth air creutairean àbhaisteach."
 
-#: data/core/macros/special-notes.cfg:21
+#: data/core/macros/special-notes.cfg:23
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " Tha comas-slànachaidh bunasach air an aonad seo."
 
-#: data/core/macros/special-notes.cfg:24
+#: data/core/macros/special-notes.cfg:26
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " Tha comas-slànachaidh luath air an aonad seo."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:29
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -5303,7 +5303,7 @@ msgstr ""
 " Tha an t-aonad seo comasach air an fheadhainn mu chuairt a shlànachadh is "
 "an leigheas bho phuinsean."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:32
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -5315,7 +5315,7 @@ msgstr ""
 " Tha an t-aonad seo comasach air na buaidhean aig puinsean a thoirt air "
 "falbh bho aonadan mu chuairt."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:35
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5327,7 +5327,7 @@ msgstr ""
 " Tha ath-ghintinn aig an aonad seo is slànaichidh e an-còmhnaidh mar an robh "
 "e ann am baile."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:38
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -5339,7 +5339,7 @@ msgstr ""
 " Lùghdaichidh seasmhachd an aonaid seo an dochann bho cuid a "
 "dh’ionnsaighean, ach a-mhàin nuair a bhios e a’ dìon."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:41
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -5353,7 +5353,7 @@ msgstr ""
 "leanas an aon taobh barrachd dochainn a thoirt seachad ann an sabaid, ged "
 "nach obraich seo ach do dh’aonadan air ìre ìosal."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:44
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -5365,13 +5365,13 @@ msgstr ""
 " Tha an t-aonad seo eòlach air streupaireachd is faodaidh e raon-smachd a "
 "nàimhdean fhàgail don dàrna taobh is gluasad mu thimcheall orra gun bhacadh."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:47
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " Cuiridh soillseachadh solas a bharrachd air na raointean mun cuairt."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:50
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -5383,7 +5383,7 @@ msgstr ""
 " ’S urrainn don aonad seo gluasad a chleachdadh gus tele-phortadh eadar dà "
 "bhaile falamh a tha fo ùghdarras an taobh aige."
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:53
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -5396,14 +5396,14 @@ msgstr ""
 "aonad seo mus eil e dìreach ri an taobh no mus tàinig e am follais le "
 "ionnsaigh."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:56
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr " ’S urrainn dhan aonad seo falach air an oidhche gun lorgan air."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:59
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -5415,7 +5415,7 @@ msgstr ""
 " ’S urrainn don aonad seo falach ann am bailtean (ach bailtean uisge) is a "
 "chumail neo-mhothaichte le a nàimhdean ach an fheadhainn dìreach ri thaobh."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:62
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -5426,7 +5426,7 @@ msgstr ""
 " ’S urrainn don aonad seo a ghluasad ann an uisge domhainn is chan fhaic "
 "duine e, gun fheum air adhar bhon uachdar."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:65
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -5438,7 +5438,7 @@ msgstr ""
 " Gheibh an t-aonad seo 1 phuing-bheatha as motha a bharrachd gach turas a "
 "mharbhas e aonad beò."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:68
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -5450,7 +5450,7 @@ msgstr ""
 " Gach turas a ghabhas an t-aonad seo mire-chatha, leanaidh e air a’ toirt "
 "ionnsaigh gus am bi e fhèin no a nàmhaid marbh."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:71
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -5465,7 +5465,7 @@ msgstr ""
 "aonad seo ionnsaigh, faodaidh an t-aonad seo cùl-shàthadh a dhèanamh is "
 "dochann dùbailte adhbharachadh a’ snàgadh gu cùlaibh an nàmhad aige."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:74
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -5477,7 +5477,7 @@ msgstr ""
 " Èiridh an fheadhainn a chailleas am beatha don phlàigh a-rithist ’nan "
 "closach mura h-eil iad ’nan seasamh ann am baile."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:77
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -5490,7 +5490,7 @@ msgstr ""
 "bhith ach leth-phàirt den astar is dochann ionnsaighe aca gu deireadh na "
 "cuairte."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:80
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -5500,7 +5500,7 @@ msgid ""
 msgstr ""
 " Nì an comas gus an fheadhainn beò a reòthadh an t-aonad seo glè chunnartach."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:83
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -5512,7 +5512,7 @@ msgstr ""
 " Leigidh gìomanachd an aonaid seo leis nàimhdean a bhualadh le deagh sheans, "
 "ach a-mhàin nuair a bheir e fhèin ionnsaigh."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:86
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
@@ -5524,7 +5524,7 @@ msgstr ""
 " Tha ionnsaighean draoidheach aig an aonad seo aig a bheil an-còmhnaidh "
 "deagh sheans bualaidh air an nàmhaid."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:89
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -5536,7 +5536,7 @@ msgstr ""
 " Caillidh ionnsaighean sgaotha an aonaid seo pàirt den cumhachd aca nuair a "
 "thèid a bhuill a leònadh."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:92
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -5548,7 +5548,7 @@ msgstr ""
 " Le ionnsaigh brùchdaidh, nì is gheibh thu dà uimhir de dhochann. Cha toir "
 "seo buaidh air dìoladh dìona."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:95
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -5559,7 +5559,7 @@ msgstr ""
 " Ann an sabaid, ’s urrainn dhan aonad seo beatha a shùgh air falbh bho "
 "ìobairtean gus e fhèin a shlànachadh."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:98
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -5571,7 +5571,7 @@ msgstr ""
 " Leigidh faide an airm aig an aonaid seo leis bualadh an toiseach ann an "
 "cath dlùth, fiù ’s nuair a bhios e ’ga dhìon fhèin."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:101
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -5583,7 +5583,7 @@ msgstr ""
 " Gabhaidh na h-ìobairtean aig puinsean an aonaid seo dochann gu cunbhalach "
 "gus tèid an leigheas ann am baile no le aonad aig a bheil leigheas."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:104
 #, fuzzy
 #| msgid ""
 #| " This unit has a defense cap on certain terrain types — it cannot achieve "
@@ -5597,7 +5597,7 @@ msgstr ""
 "bheil cruthan-tìre dhen leithid."
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:156
+#: data/core/macros/special-notes.cfg:160
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5610,7 +5610,7 @@ msgstr ""
 "e ann am baile."
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:300
+#: data/core/macros/special-notes.cfg:304
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "

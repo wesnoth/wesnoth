@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:41-0300\n"
+"POT-Creation-Date: 2020-12-18 22:27-0300\n"
 "PO-Revision-Date: 2019-02-09 01:45+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -233,33 +233,25 @@ msgstr "Grojaraštis"
 msgid "Assign Time Schedule"
 msgstr "Priskirti paros laiką"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
-msgid "(Unknown unit type: $type)"
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:72
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Identifier: "
 msgstr "Identifikatorius: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:73
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Name: "
 msgstr "Vardas: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:74
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Type: "
 msgstr "Tipas: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:75
+#: src/editor/action/mouse/mouse_action_unit.cpp:68
 msgid "Level: "
 msgstr "Lygis: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:76
+#: src/editor/action/mouse/mouse_action_unit.cpp:69
 msgid "Cost: "
 msgstr "Kaina: "
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:77
-msgid "Recruit: "
-msgstr "Samdyti:"
 
 #: src/editor/controller/editor_controller.cpp:179
 msgid "Fatal error"
@@ -289,19 +281,19 @@ msgstr ""
 msgid "No editor time-of-day found."
 msgstr "Nerastas dienos-laiko redaktorius."
 
-#: src/editor/controller/editor_controller.cpp:1144
+#: src/editor/controller/editor_controller.cpp:1135
 msgid "Change Unit ID"
 msgstr "Keisti kario ID"
 
-#: src/editor/controller/editor_controller.cpp:1145
+#: src/editor/controller/editor_controller.cpp:1136
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1161
+#: src/editor/controller/editor_controller.cpp:1152
 msgid "Rename Unit"
 msgstr "Pervadinti karį"
 
-#: src/editor/controller/editor_controller.cpp:1162
+#: src/editor/controller/editor_controller.cpp:1153
 msgid "Name:"
 msgstr "Vardas:"
 
@@ -534,6 +526,9 @@ msgstr "Joks"
 #: src/gui/dialogs/editor/set_starting_position.cpp:97
 msgid "Player $player_number"
 msgstr "Žaidėjas $player_number"
+
+#~ msgid "Recruit: "
+#~ msgstr "Samdyti:"
 
 #~ msgid "FG: "
 #~ msgstr "Priešakinis planas: "

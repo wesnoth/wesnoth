@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:41-0300\n"
+"POT-Creation-Date: 2020-12-18 22:27-0300\n"
 "PO-Revision-Date: 2020-02-03 08:58-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -368,39 +368,31 @@ msgstr "Playlist"
 msgid "Assign Time Schedule"
 msgstr "Especificar Período do Dia"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
-msgid "(Unknown unit type: $type)"
-msgstr "(Tipo de unidade desconhecido: $type)"
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:72
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Identifier: "
 msgstr "Identificador: "
 
 #
 # File: src/editor/action/mouse/mouse_action_unit.cpp, line: 59
 # File: src/editor/action/mouse/mouse_action_unit.cpp, line: 59
-#: src/editor/action/mouse/mouse_action_unit.cpp:73
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Name: "
 msgstr "Nome: "
 
 #
 # File: src/editor/action/mouse/mouse_action_unit.cpp, line: 60
 # File: src/editor/action/mouse/mouse_action_unit.cpp, line: 60
-#: src/editor/action/mouse/mouse_action_unit.cpp:74
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Type: "
 msgstr "Tipo: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:75
+#: src/editor/action/mouse/mouse_action_unit.cpp:68
 msgid "Level: "
 msgstr "Nível: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:76
+#: src/editor/action/mouse/mouse_action_unit.cpp:69
 msgid "Cost: "
 msgstr "Custo: "
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:77
-msgid "Recruit: "
-msgstr "Recrutar: "
 
 #
 # File: src/editor/editor_controller.cpp, line: 170
@@ -454,7 +446,7 @@ msgstr "Nenhum editor de período do dia foi encontrado."
 # File: src/editor/editor_controller.cpp, line: 906
 # File: src/editor/editor_controller.cpp, line: 949
 # File: src/editor/editor_controller.cpp, line: 949
-#: src/editor/controller/editor_controller.cpp:1144
+#: src/editor/controller/editor_controller.cpp:1135
 msgid "Change Unit ID"
 msgstr "Mudar ID da Unidade"
 
@@ -462,7 +454,7 @@ msgstr "Mudar ID da Unidade"
 # File: src/editor/editor_controller.cpp, line: 907
 # File: src/editor/editor_controller.cpp, line: 950
 # File: src/editor/editor_controller.cpp, line: 950
-#: src/editor/controller/editor_controller.cpp:1145
+#: src/editor/controller/editor_controller.cpp:1136
 msgid "ID:"
 msgstr "ID:"
 
@@ -470,7 +462,7 @@ msgstr "ID:"
 # File: src/editor/editor_controller.cpp, line: 923
 # File: src/editor/editor_controller.cpp, line: 966
 # File: src/editor/editor_controller.cpp, line: 966
-#: src/editor/controller/editor_controller.cpp:1161
+#: src/editor/controller/editor_controller.cpp:1152
 msgid "Rename Unit"
 msgstr "Renomear Unidade"
 
@@ -478,7 +470,7 @@ msgstr "Renomear Unidade"
 # File: src/editor/editor_controller.cpp, line: 924
 # File: src/editor/editor_controller.cpp, line: 967
 # File: src/editor/editor_controller.cpp, line: 967
-#: src/editor/controller/editor_controller.cpp:1162
+#: src/editor/controller/editor_controller.cpp:1153
 msgid "Name:"
 msgstr "Nome:"
 
@@ -862,6 +854,12 @@ msgstr "nenhum"
 #: src/gui/dialogs/editor/set_starting_position.cpp:97
 msgid "Player $player_number"
 msgstr "Jogador $player_number"
+
+#~ msgid "(Unknown unit type: $type)"
+#~ msgstr "(Tipo de unidade desconhecido: $type)"
+
+#~ msgid "Recruit: "
+#~ msgstr "Recrutar: "
 
 #
 # Assim mesmo?

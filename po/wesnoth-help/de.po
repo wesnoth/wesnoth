@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:40-0300\n"
+"POT-Creation-Date: 2020-12-18 22:26-0300\n"
 "PO-Revision-Date: 2020-11-24 04:01+0100\n"
 "Last-Translator: Whiskeyjack\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. [time]: id=underground
 #. [editor_times]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
-#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:109
+#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Unter Tage"
 
@@ -961,13 +961,13 @@ msgstr ""
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
+#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Tiefer Untergrund"
 
 #. [time]: id=indoors
 #. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
+#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "Innen"
 
@@ -1602,6 +1602,7 @@ msgstr "Einführung"
 msgid "Gameplay"
 msgstr "Spielregeln"
 
+#. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:517
@@ -3207,9 +3208,9 @@ msgid ""
 "• <ref>dst='crowns' text='Hero units'</ref> have a smaller variant of the "
 "seven-pointed star, these units can’t recruit.\n"
 "• Units without a <ref>dst='movement' text='zone of control'</ref> have a "
-"broken version of the shape.\n"
+"broken outline version of the shape.\n"
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
-"a ZoC, these units have a broken version of the seven-pointed star."
+"a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
 
 #. [topic]: id=crowns
@@ -3300,21 +3301,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:464 data/core/macros/schedules.cfg:14
-#: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
+#: data/core/help.cfg:464 data/core/macros/schedules.cfg:16
+#: data/core/macros/schedules.cfg:290 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Morgengrauen"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:465 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:465 data/core/macros/schedules.cfg:28
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Vormittag"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:466 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:466 data/core/macros/schedules.cfg:46
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Nachmittag"
@@ -3322,21 +3323,21 @@ msgstr "Nachmittag"
 #. [time]: id=dusk
 #. [topic]: id=time_of_day
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:467 data/core/macros/schedules.cfg:53
-#: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
+#: data/core/help.cfg:467 data/core/macros/schedules.cfg:55
+#: data/core/macros/schedules.cfg:411 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Abenddämmerung"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:468 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:468 data/core/macros/schedules.cfg:67
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Erste Wache"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:469 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:469 data/core/macros/schedules.cfg:91
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Zweite Wache"
@@ -5146,188 +5147,188 @@ msgstr "Max. LP +3, Max. EP +20%"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
+#: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
 msgstr "Mittag"
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
+#: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
 msgstr "Mitternacht"
 
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:203
+#: data/core/macros/schedules.cfg:218
 msgid "Second Watch — First Hour"
 msgstr "Zweite Wache – Erste Stunde"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:215
+#: data/core/macros/schedules.cfg:230
 msgid "Second Watch — Second Hour"
 msgstr "Zweite Wache – Zweite Stunde"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:227
+#: data/core/macros/schedules.cfg:242
 msgid "Second Watch — Third Hour"
 msgstr "Zweite Wache – Dritte Stunde"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:239
+#: data/core/macros/schedules.cfg:254
 msgid "Second Watch — Fourth Hour"
 msgstr "Zweite Wache – Vierte Stunde"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:251
+#: data/core/macros/schedules.cfg:266
 msgid "Second Watch — Fifth Hour"
 msgstr "Zweite Wache – Fünfte Stunde"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:263
+#: data/core/macros/schedules.cfg:278
 msgid "Second Watch — Sixth Hour"
 msgstr "Zweite Wache – Sechste Stunde"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:287
+#: data/core/macros/schedules.cfg:302
 msgid "Morning — First Hour"
 msgstr "Morgen – Erste Stunde"
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:299
+#: data/core/macros/schedules.cfg:314
 msgid "Morning — Second Hour"
 msgstr "Morgen – Zweite Stunde"
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:311
+#: data/core/macros/schedules.cfg:326
 msgid "Morning — Third Hour"
 msgstr "Morgen – Dritte Stunde"
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:320
+#: data/core/macros/schedules.cfg:335
 msgid "Morning — Fourth Hour"
 msgstr "Morgen – Vierte Stunde"
 
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:338
+#: data/core/macros/schedules.cfg:353
 msgid "Afternoon — First Hour"
 msgstr "Nachmittag – Erste Stunde"
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:347
+#: data/core/macros/schedules.cfg:362
 msgid "Afternoon — Second Hour"
 msgstr "Nachmittag – Zweite Stunde"
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:356
+#: data/core/macros/schedules.cfg:371
 msgid "Afternoon — Third Hour"
 msgstr "Nachmittag – Dritte Stunde"
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:365
+#: data/core/macros/schedules.cfg:380
 msgid "Afternoon — Fourth Hour"
 msgstr "Nachmittag – Vierte Stunde"
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:374
+#: data/core/macros/schedules.cfg:389
 msgid "Afternoon — Fifth Hour"
 msgstr "Nachmittag – Fünfte Stunde"
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:385
+#: data/core/macros/schedules.cfg:400
 msgid "Afternoon — Sixth Hour"
 msgstr "Nachmittag – Sechste Stunde"
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:408
+#: data/core/macros/schedules.cfg:423
 msgid "First Watch — First Hour"
 msgstr "Erste Wache – Erste Stunde"
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:420
+#: data/core/macros/schedules.cfg:435
 msgid "First Watch — Second Hour"
 msgstr "Erste Wache – Zweite Stunde"
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:432
+#: data/core/macros/schedules.cfg:447
 msgid "First Watch — Third Hour"
 msgstr "Erste Wache – Dritte Stunde"
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:444
+#: data/core/macros/schedules.cfg:459
 msgid "First Watch — Fourth Hour"
 msgstr "Erste Wache – Vierte Stunde"
 
 #. [time]: id=dawn1
-#: data/core/macros/schedules.cfg:498
+#: data/core/macros/schedules.cfg:514
 msgid "First Dawn"
 msgstr "Erstes Morgengrauen"
 
 #. [time]: id=dawn2
-#: data/core/macros/schedules.cfg:509
+#: data/core/macros/schedules.cfg:525
 msgid "Second Dawn"
 msgstr "Zweites Morgengrauen"
 
 #. [time]: id=morning1
-#: data/core/macros/schedules.cfg:520
+#: data/core/macros/schedules.cfg:536
 msgid "First Morning"
 msgstr "Erster Vormittag"
 
 #. [time]: id=morning2
-#: data/core/macros/schedules.cfg:532
+#: data/core/macros/schedules.cfg:548
 msgid "Second Morning"
 msgstr "Zweiter Vormittag"
 
 #. [time]: id=midday1
-#: data/core/macros/schedules.cfg:544
+#: data/core/macros/schedules.cfg:560
 msgid "First Midday"
 msgstr "Erster Mittag"
 
 #. [time]: id=midday2
-#: data/core/macros/schedules.cfg:556
+#: data/core/macros/schedules.cfg:572
 msgid "Second Midday"
 msgstr "Zweiter Mittag"
 
 #. [time]: id=afternoon1
-#: data/core/macros/schedules.cfg:568
+#: data/core/macros/schedules.cfg:584
 msgid "First Afternoon"
 msgstr "Erster Nachmittag"
 
 #. [time]: id=afternoon2
-#: data/core/macros/schedules.cfg:580
+#: data/core/macros/schedules.cfg:596
 msgid "Second Afternoon"
 msgstr "Zweiter Nachmittag"
 
 #. [time]: id=dusk1
-#: data/core/macros/schedules.cfg:592
+#: data/core/macros/schedules.cfg:608
 msgid "First Dusk"
 msgstr "Erste Abenddämmerung"
 
 #. [time]: id=dusk2
-#: data/core/macros/schedules.cfg:603
+#: data/core/macros/schedules.cfg:619
 msgid "Second Dusk"
 msgstr "Zweite Abenddämmerung"
 
 #. [time]: id=short_dark
-#: data/core/macros/schedules.cfg:614
+#: data/core/macros/schedules.cfg:630
 msgid "The Short Dark"
 msgstr "Kurze Dunkelheit"
 
 #. [time]: id=long_dark1
-#: data/core/macros/schedules.cfg:626
+#: data/core/macros/schedules.cfg:642
 msgid "The Long Dark (1)"
 msgstr "Lange Finsternis (1)"
 
 #. [time]: id=long_dark2
-#: data/core/macros/schedules.cfg:638
+#: data/core/macros/schedules.cfg:654
 msgid "The Long Dark (2)"
 msgstr "Lange Finsternis (2)"
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:650
+#: data/core/macros/schedules.cfg:666
 msgid "The Long Dark (3)"
 msgstr "Lange Finsternis (3)"
 
 #. [time]: id=long_dark4
-#: data/core/macros/schedules.cfg:664
+#: data/core/macros/schedules.cfg:680
 msgid "The Long Dark (4)"
 msgstr "Lange Finsternis (4)"
 
@@ -5335,7 +5336,7 @@ msgstr "Lange Finsternis (4)"
 msgid "Special Notes:"
 msgstr "Info:"
 
-#: data/core/macros/special-notes.cfg:15
+#: data/core/macros/special-notes.cfg:17
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
@@ -5343,7 +5344,7 @@ msgstr ""
 "Geister haben sehr ungewöhnliche Widerstandsfähigkeiten und bewegen sich nur "
 "recht langsam über offenes Wasser."
 
-#: data/core/macros/special-notes.cfg:18
+#: data/core/macros/special-notes.cfg:20
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -5351,15 +5352,15 @@ msgstr ""
 "Der arkane Angriff dieser Einheit fügt Untoten und Zauberwesen furchtbaren "
 "Schaden zu, selbst Normalsterbliche sind davor nicht immer sicher."
 
-#: data/core/macros/special-notes.cfg:21
+#: data/core/macros/special-notes.cfg:23
 msgid "This unit is capable of basic healing."
 msgstr "Diese Einheit beherrscht die Grundlagen der Heilkunst."
 
-#: data/core/macros/special-notes.cfg:24
+#: data/core/macros/special-notes.cfg:26
 msgid "This unit is capable of rapid healing."
 msgstr "Diese Einheit beherrscht die Fähigkeiten der Heilkunst."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:29
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
@@ -5367,7 +5368,7 @@ msgstr ""
 "Einheiten von ihren Wunden zu heilen oder von der Wirkung eines Giftes zu "
 "kurieren."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:32
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
@@ -5375,7 +5376,7 @@ msgstr ""
 "Diese Einheit kann die Wunden der Umstehenden heilen und hält die Wirkung "
 "eines Giftes auf."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:35
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
@@ -5383,7 +5384,7 @@ msgstr ""
 "Diese Einheit kann sich regenerieren. Durch Selbstheilung gesundet sie auf "
 "die gleiche Weise wie bei einem Aufenthalt in einem Dorf."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:38
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
@@ -5391,7 +5392,7 @@ msgstr ""
 "Diese Einheit erleidet dank ihrer Zähigkeit bei einigen Angriffen weniger "
 "Schaden, jedoch nur bei der Verteidigung."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:41
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -5399,7 +5400,7 @@ msgstr ""
 "Die Führungsqualität dieser Einheit bewirkt, dass benachbarte Gleichgesinnte "
 "niederer Ränge im Kampf größere Schäden anrichten."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:44
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -5408,13 +5409,13 @@ msgstr ""
 "feindliche Stellungen zu umgehen und dabei jegliche Kontrollzone zu "
 "ignorieren."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:47
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr ""
 "Diese Einheit ist von einer gleißenden Lichtaura umgeben, womit sie bessere "
 "Sichtverhältnisse in ihrer Umgebung schafft."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:50
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
@@ -5422,7 +5423,7 @@ msgstr ""
 "Durch Magie ist es dieser Einheit möglich, sich im Bruchteil eines "
 "Augenblickes von einem in ein anderes eigenes, freies Dorf zu versetzen."
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:53
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -5432,7 +5433,7 @@ msgstr ""
 "zu Gesicht, wenn er auf ein benachbartes Feld gelangt oder sie sich selbst "
 "durch einen Angriff zu erkennen gibt."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:56
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 "Diese Einheit vermag nachts mit der sie umgebenden Finsternis spurlos zu "
@@ -5440,7 +5441,7 @@ msgstr ""
 "unsichtbar – es sei denn, sie offenbart sich durch einen Angriff ohne "
 "Warnung."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:59
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -5450,14 +5451,14 @@ msgstr ""
 "auf einem direkt benachbarten Feld stehen. Zudem wird sie sichtbar, sobald "
 "sie angreift."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:62
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 "Diese Einheit kann sich ungesehen in tiefem Wasser fortbewegen und braucht "
 "nicht aufzutauchen um Luft zu holen."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:65
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
@@ -5465,7 +5466,7 @@ msgstr ""
 "Da diese Einheit sich die Kadaver ihrer Opfer einverleibt und daran stärkt, "
 "erhält sie mit jeder Tötung einen zusätzlichen LP zu ihrem Maximalwert."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:68
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -5473,7 +5474,7 @@ msgstr ""
 "Im Kampfrausch kennt diese Einheit kein Erbarmen und ruht erst, wenn sie "
 "selbst oder der Gegner tot am Boden liegt."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:71
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -5483,7 +5484,7 @@ msgstr ""
 "ihren Vorteil rücksichtslos aus und überfällt das abgelenkte Opfer aus dem "
 "Hinterhalt – das Überraschungsmoment verhilft zu doppeltem Schaden."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:74
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -5493,7 +5494,7 @@ msgstr ""
 "kämpft ab sofort an ihrer Seite. Nur Opfer, die sich gerade in einem Dorf "
 "aufhalten, entrinnen solchem Schicksal."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:77
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -5502,14 +5503,14 @@ msgstr ""
 "im Kampf als auch die Bewegungsfähigkeit bis zum Ende der Runde um die "
 "Hälfte reduziert werden."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:80
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 "Die Fähigkeit, Lebende in Stein zu verwandeln, macht diese Einheit zu einem "
 "extrem gefährlichen Gegner."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:83
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -5518,7 +5519,7 @@ msgstr ""
 "mit hoher Wahrscheinlichkeit zu treffen. Dies gilt jedoch nur in der "
 "Offensive."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:86
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -5526,7 +5527,7 @@ msgstr ""
 "Diese Einheit verfügt über Angriffe magischer Natur, welche immer eine hohe "
 "Trefferwahrscheinlichkeit aufweisen."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:89
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
@@ -5534,7 +5535,7 @@ msgstr ""
 "Mit steigender Verwundung ihrer Tentakel wird der Angriff dieser Einheit "
 "immer weniger gefährlich."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:92
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -5544,14 +5545,14 @@ msgstr ""
 "Gegner doppelt so viel einzustecken – im Verteidigungsfall kommt dieser "
 "Nachteil jedoch nicht zum Tragen."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:95
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
 "Mittels einer Berührung oder eines Bisses entzieht die Einheit ihrem Opfer "
 "Lebenskraft, die sie sich zur eigenen Heilung einverleibt."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:98
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
@@ -5559,7 +5560,7 @@ msgstr ""
 "Wegen der Länge ihrer Waffe führt diese Einheit stets den ersten Schlag, "
 "selbst wenn sie sich nur verteidigt."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:101
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -5567,7 +5568,7 @@ msgstr ""
 "Vergiftungsopfer nehmen kontinuierlich Schaden, bis sie in einem Dorf oder "
 "von einem Heiler kuriert werden."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:104
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -5577,7 +5578,7 @@ msgstr ""
 "diesen Geländefeldtypen beinhalten."
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:156
+#: data/core/macros/special-notes.cfg:160
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
@@ -5586,7 +5587,7 @@ msgstr ""
 "die gleiche Weise wie bei einem Aufenthalt in einem Dorf."
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:300
+#: data/core/macros/special-notes.cfg:304
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target's attention and reduces its "

@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:41-0300\n"
+"POT-Creation-Date: 2020-12-18 22:27-0300\n"
 "PO-Revision-Date: 2020-11-29 18:51+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -248,33 +248,25 @@ msgstr "Плейлист"
 msgid "Assign Time Schedule"
 msgstr "Назначить расписание"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
-msgid "(Unknown unit type: $type)"
-msgstr "(Неизвестный тип бойца: $type)"
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:72
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Identifier: "
 msgstr "Идентификатор:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:73
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Name: "
 msgstr "Имя:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:74
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Type: "
 msgstr "Вид:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:75
+#: src/editor/action/mouse/mouse_action_unit.cpp:68
 msgid "Level: "
 msgstr "Уровень:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:76
+#: src/editor/action/mouse/mouse_action_unit.cpp:69
 msgid "Cost: "
 msgstr "Цена:"
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:77
-msgid "Recruit: "
-msgstr "Найм:"
 
 #: src/editor/controller/editor_controller.cpp:179
 msgid "Fatal error"
@@ -304,19 +296,19 @@ msgstr ""
 msgid "No editor time-of-day found."
 msgstr "Редактор времени суток не найден."
 
-#: src/editor/controller/editor_controller.cpp:1144
+#: src/editor/controller/editor_controller.cpp:1135
 msgid "Change Unit ID"
 msgstr "Сменить ИД бойца"
 
-#: src/editor/controller/editor_controller.cpp:1145
+#: src/editor/controller/editor_controller.cpp:1136
 msgid "ID:"
 msgstr "ИД:"
 
-#: src/editor/controller/editor_controller.cpp:1161
+#: src/editor/controller/editor_controller.cpp:1152
 msgid "Rename Unit"
 msgstr "Переименовать бойца"
 
-#: src/editor/controller/editor_controller.cpp:1162
+#: src/editor/controller/editor_controller.cpp:1153
 msgid "Name:"
 msgstr "Имя:"
 
@@ -549,6 +541,12 @@ msgstr "Нет"
 #: src/gui/dialogs/editor/set_starting_position.cpp:97
 msgid "Player $player_number"
 msgstr "Игрок $player_number"
+
+#~ msgid "(Unknown unit type: $type)"
+#~ msgstr "(Неизвестный тип бойца: $type)"
+
+#~ msgid "Recruit: "
+#~ msgstr "Найм:"
 
 #~ msgid "FG: "
 #~ msgstr "ПП: "

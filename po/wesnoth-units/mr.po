@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.9+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 04:41 UTC\n"
+"POT-Creation-Date: 2020-12-19 01:27 UTC\n"
 "PO-Revision-Date: 2009-02-01 17:59+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -310,9 +310,9 @@ msgstr ""
 #: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
-#: data/core/units/monsters/Bear.cfg:50
-#: data/core/units/monsters/Elder_Falcon.cfg:35
-#: data/core/units/monsters/Falcon.cfg:84
+#: data/core/units/monsters/Bear.cfg:51
+#: data/core/units/monsters/Elder_Falcon.cfg:36
+#: data/core/units/monsters/Falcon.cfg:85
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:61
 #: data/core/units/monsters/Roc.cfg:36
@@ -359,7 +359,7 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:268
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:283
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:299
-#: data/core/units/undead/Corpse_Walking.cfg:57
+#: data/core/units/undead/Corpse_Walking.cfg:75
 msgid "Walking Corpse"
 msgstr ""
 
@@ -367,7 +367,7 @@ msgstr ""
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
-#: data/core/units/undead/Corpse_Walking.cfg:67
+#: data/core/units/undead/Corpse_Walking.cfg:85
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one’s "
@@ -419,8 +419,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:26
-#: data/core/units/undead/Corpse_Soulless.cfg:74
-#: data/core/units/undead/Corpse_Walking.cfg:73
+#: data/core/units/undead/Corpse_Soulless.cfg:92
+#: data/core/units/undead/Corpse_Walking.cfg:91
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:33
 #: data/core/units/undead/Necro_Lich.cfg:39
 #: data/core/units/undead/Spirit_Ghost.cfg:60
@@ -498,8 +498,8 @@ msgstr ""
 #: data/core/units/goblins/Knight.cfg:34
 #: data/core/units/goblins/Pillager.cfg:33
 #: data/core/units/goblins/Wolf_Rider.cfg:46
-#: data/core/units/monsters/Ant.cfg:32 data/core/units/monsters/Bear.cfg:41
-#: data/core/units/monsters/Fire_Ant.cfg:63
+#: data/core/units/monsters/Ant.cfg:33 data/core/units/monsters/Bear.cfg:42
+#: data/core/units/monsters/Fire_Ant.cfg:64
 #: data/core/units/monsters/Giant_Spider.cfg:30
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:43
@@ -512,6 +512,7 @@ msgstr ""
 #. [attack]: type=cold
 #. [attack]: type=blade
 #. [attack]: type=pierce
+#. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
@@ -521,17 +522,19 @@ msgstr ""
 #: data/core/units/monsters/Crocodile.cfg:101
 #: data/core/units/monsters/Fire_Dragon.cfg:34
 #: data/core/units/monsters/Giant_Rat.cfg:30
-#: data/core/units/monsters/Giant_Stoat.cfg:61
+#: data/core/units/monsters/Giant_Stoat.cfg:62
 #: data/core/units/monsters/Icemonax.cfg:62
 #: data/core/units/monsters/Icemonax_Greater.cfg:70
 #: data/core/units/monsters/Wild_Wyvern.cfg:24
 #: data/core/units/undead/Corpse_Ghast.cfg:29
+#: data/core/units/undead/Corpse_Soulless.cfg:235
+#: data/core/units/undead/Corpse_Walking.cfg:234
 msgid "bite"
 msgstr ""
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:14
-#: data/core/units/undead/Corpse_Soulless.cfg:68
+#: data/core/units/undead/Corpse_Soulless.cfg:86
 msgid ""
 "The technique of animating a dead body is unfortunately well-known in the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -568,7 +571,7 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:246
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:260
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:273
-#: data/core/units/undead/Corpse_Soulless.cfg:57
+#: data/core/units/undead/Corpse_Soulless.cfg:75
 msgid "Soulless"
 msgstr ""
 
@@ -4389,8 +4392,8 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/monsters/Elder_Falcon.cfg:27
-#: data/core/units/monsters/Falcon.cfg:93 data/core/units/monsters/Roc.cfg:28
+#: data/core/units/monsters/Elder_Falcon.cfg:28
+#: data/core/units/monsters/Falcon.cfg:94 data/core/units/monsters/Roc.cfg:28
 msgid "beak"
 msgstr ""
 
@@ -4400,7 +4403,7 @@ msgid "Falcon"
 msgstr ""
 
 #. [unit_type]: id=Falcon, race=falcon
-#: data/core/units/monsters/Falcon.cfg:18
+#: data/core/units/monsters/Falcon.cfg:19
 msgid ""
 "Seen as status symbols of the nobles, falcons are precious possessions "
 "normally used for sport. The same techniques are employed to rend and tear "
@@ -4419,7 +4422,7 @@ msgid "Lorem ipsem ..."
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/monsters/Fire_Ant.cfg:72
+#: data/core/units/monsters/Fire_Ant.cfg:73
 msgid "fire"
 msgstr ""
 
@@ -4589,7 +4592,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=cold
-#: data/core/units/monsters/Giant_Stoat.cfg:70
+#: data/core/units/monsters/Giant_Stoat.cfg:71
 msgid "ice claw"
 msgstr ""
 
@@ -4711,7 +4714,7 @@ msgid "Gorer"
 msgstr ""
 
 #. [unit_type]: id=Gorer, race=monster
-#: data/core/units/monsters/Tusker_Gorer.cfg:34
+#: data/core/units/monsters/Tusker_Gorer.cfg:35
 msgid ""
 "As Tuskers age, their already formidable teeth grow longer and more "
 "numerous. A mature boar gorer is a valuable asset to any farmer. And an "
@@ -4719,13 +4722,13 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Tusker_Gorer.cfg:50
+#: data/core/units/monsters/Tusker_Gorer.cfg:51
 #: data/core/units/monsters/Tusker_Tusklet.cfg:48
 msgid "Tusks"
 msgstr ""
 
 #. [attack]: type=pierce
-#: data/core/units/monsters/Tusker_Gorer.cfg:102
+#: data/core/units/monsters/Tusker_Gorer.cfg:103
 msgid "Tusk Charge"
 msgstr ""
 
@@ -5561,74 +5564,104 @@ msgid ""
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:100
-#: data/core/units/undead/Corpse_Walking.cfg:99
+#: data/core/units/undead/Corpse_Soulless.cfg:118
+#: data/core/units/undead/Corpse_Walking.cfg:117
 msgid "wc_variation^Drake"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:115
-#: data/core/units/undead/Corpse_Walking.cfg:114
+#: data/core/units/undead/Corpse_Soulless.cfg:133
+#: data/core/units/undead/Corpse_Walking.cfg:132
 msgid "wc_variation^Dwarf"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:128
-#: data/core/units/undead/Corpse_Walking.cfg:127
+#: data/core/units/undead/Corpse_Soulless.cfg:146
+#: data/core/units/undead/Corpse_Walking.cfg:145
+msgid "wc_variation^Falcon"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:180
+#: data/core/units/undead/Corpse_Walking.cfg:179
 msgid "wc_variation^Goblin"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:138
-#: data/core/units/undead/Corpse_Walking.cfg:153
+#: data/core/units/undead/Corpse_Soulless.cfg:190
+#: data/core/units/undead/Corpse_Walking.cfg:212
 msgid "wc_variation^Mounted"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:148
-#: data/core/units/undead/Corpse_Walking.cfg:137
+#: data/core/units/undead/Corpse_Soulless.cfg:200
+#: data/core/units/undead/Corpse_Walking.cfg:189
 msgid "wc_variation^Gryphon"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:164
-#: data/core/units/undead/Corpse_Walking.cfg:163
+#: data/core/units/undead/Corpse_Soulless.cfg:223
+#: data/core/units/undead/Corpse_Walking.cfg:222
+msgid "wc_variation^Rat"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:240
+#: data/core/units/undead/Corpse_Walking.cfg:239
 msgid "wc_variation^Saurian"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:174
-#: data/core/units/undead/Corpse_Walking.cfg:173
+#: data/core/units/undead/Corpse_Soulless.cfg:250
+#: data/core/units/undead/Corpse_Walking.cfg:249
 msgid "wc_variation^Spider"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:183
-#: data/core/units/undead/Corpse_Walking.cfg:182
+#: data/core/units/undead/Corpse_Soulless.cfg:259
+#: data/core/units/undead/Corpse_Walking.cfg:258
+msgid "wc_variation^Serpent"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:276
+#: data/core/units/undead/Corpse_Walking.cfg:275
 msgid "wc_variation^Swimmer"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:201
-#: data/core/units/undead/Corpse_Walking.cfg:200
+#: data/core/units/undead/Corpse_Soulless.cfg:294
+#: data/core/units/undead/Corpse_Walking.cfg:293
 msgid "wc_variation^Troll"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:210
-#: data/core/units/undead/Corpse_Walking.cfg:209
+#: data/core/units/undead/Corpse_Soulless.cfg:303
+#: data/core/units/undead/Corpse_Walking.cfg:302
+msgid "wc_variation^Tusker"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:311
+#: data/core/units/undead/Corpse_Walking.cfg:310
+msgid "tusk"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:316
+#: data/core/units/undead/Corpse_Walking.cfg:315
 msgid "wc_variation^Wose"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:222
-#: data/core/units/undead/Corpse_Walking.cfg:221
+#: data/core/units/undead/Corpse_Soulless.cfg:328
+#: data/core/units/undead/Corpse_Walking.cfg:327
 msgid "wc_variation^Wolf"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:235
-#: data/core/units/undead/Corpse_Walking.cfg:234
+#: data/core/units/undead/Corpse_Soulless.cfg:341
+#: data/core/units/undead/Corpse_Walking.cfg:340
 msgid "wc_variation^Bat"
 msgstr ""
 

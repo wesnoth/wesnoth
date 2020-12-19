@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:41-0300\n"
+"POT-Creation-Date: 2020-12-18 22:27-0300\n"
 "PO-Revision-Date: 2018-05-06 10:18+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -240,33 +240,25 @@ msgstr "プレイリスト"
 msgid "Assign Time Schedule"
 msgstr "タイムスケジュールを指定する"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
-msgid "(Unknown unit type: $type)"
-msgstr "（不明なユニットタイプ： $type ）"
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:72
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Identifier: "
 msgstr "id: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:73
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Name: "
 msgstr "名前: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:74
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Type: "
 msgstr "タイプ: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:75
+#: src/editor/action/mouse/mouse_action_unit.cpp:68
 msgid "Level: "
 msgstr "レベル: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:76
+#: src/editor/action/mouse/mouse_action_unit.cpp:69
 msgid "Cost: "
 msgstr "コスト: "
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:77
-msgid "Recruit: "
-msgstr "雇用リスト: "
 
 #: src/editor/controller/editor_controller.cpp:179
 msgid "Fatal error"
@@ -294,19 +286,19 @@ msgstr ""
 msgid "No editor time-of-day found."
 msgstr "エディタの時刻設定が見つかりません。"
 
-#: src/editor/controller/editor_controller.cpp:1144
+#: src/editor/controller/editor_controller.cpp:1135
 msgid "Change Unit ID"
 msgstr "ユニットIDを変更"
 
-#: src/editor/controller/editor_controller.cpp:1145
+#: src/editor/controller/editor_controller.cpp:1136
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1161
+#: src/editor/controller/editor_controller.cpp:1152
 msgid "Rename Unit"
 msgstr "ユニット名を変更"
 
-#: src/editor/controller/editor_controller.cpp:1162
+#: src/editor/controller/editor_controller.cpp:1153
 msgid "Name:"
 msgstr "名前:"
 
@@ -539,6 +531,12 @@ msgstr "選択を解除"
 #: src/gui/dialogs/editor/set_starting_position.cpp:97
 msgid "Player $player_number"
 msgstr "プレイヤー $player_number"
+
+#~ msgid "(Unknown unit type: $type)"
+#~ msgstr "（不明なユニットタイプ： $type ）"
+
+#~ msgid "Recruit: "
+#~ msgstr "雇用リスト: "
 
 #~ msgid "FG: "
 #~ msgstr "前景："
