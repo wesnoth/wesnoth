@@ -25,7 +25,7 @@
  ### Terrain
  ### Translations
    * Updated translations: British English, Czech, Italian, Polish, Portuguese (Brazil),
-     Russian
+     Russian, Turkish
  ### Units
    * Undead variations for Falcon, Giant Rat, serpents, and Gorer/Tusklet
  ### User interface

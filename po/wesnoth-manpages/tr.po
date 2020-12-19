@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2020-11-21 01:41-0300\n"
-"PO-Revision-Date: 2020-08-05 03:42+0300\n"
+"PO-Revision-Date: 2020-12-14 11:39+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -498,10 +498,8 @@ msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
-#, fuzzy
-#| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
-msgstr "günlük dosyasında zaman damgaları daha ayrıntılı gösterilir."
+msgstr "günlük çıktısında zaman damgaları daha ayrıntılı gösterilir."
 
 # type: TP
 #. type: TP
@@ -2504,41 +2502,7 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
 # type: TP
-#~ msgid "B<--proxy>"
-#~ msgstr "B<--proxy>"
-
-#~ msgid "enables usage of proxy for network connections."
-#~ msgstr "ağ bağlatıları için vekil kullanımını etkin kılar."
-
-# type: TP
-#~ msgid "B<--proxy-address>I<\\ address>"
-#~ msgstr "B<--proxy-address>I<\\ adres>"
-
-#~ msgid "specifies I<address> of the proxy."
-#~ msgstr "vekil sunucu için I<adres> belirtir."
-
-# type: TP
-#~ msgid "B<--proxy-port>I<\\ port>"
-#~ msgstr "B<--proxy-port>I<\\ port>"
-
-#~ msgid "specifies I<port> of the proxy."
-#~ msgstr "vekil sunucu için I<port> belirtir."
-
-# type: TP
-#~ msgid "B<--proxy-user>I<\\ username>"
-#~ msgstr "B<--proxy-user>I<\\ kullanıcı>"
-
-#~ msgid "specifies I<username> to log in to the proxy."
-#~ msgstr "vekil sunucuya oturum açacak I<kullanıcı> belirtilir."
-
-# type: TP
-#~ msgid "B<--proxy-password>I<\\ password>"
-#~ msgstr "B<--proxy-password>I<\\ parola>"
-
-#~ msgid "specifies I<password> to log in to the proxy."
-#~ msgstr "vekil sunucuya oturum açacak I<parola> belirtilir."
-
-# type: TP
+#, no-wrap
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
@@ -2580,6 +2544,7 @@ msgstr "B<wesnoth>(6)"
 #~ "oluşturmanız gerekecek."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
@@ -2601,10 +2566,12 @@ msgstr "B<wesnoth>(6)"
 #~ "kullanılmaktadır."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
@@ -2613,10 +2580,12 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Posta sunucusuna girişte kullanılacak kullanıcı adı."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
@@ -2625,12 +2594,48 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Epostanızın yanıtlama adresi."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 
 # type: Plain text
 #~ msgid "The port on which your mail server is running. Default is 25."
 #~ msgstr "Eposta sunucunuzun dinlediği port. 25 öntanımlıdır."
+
+# type: TP
+#~ msgid "B<--proxy>"
+#~ msgstr "B<--proxy>"
+
+#~ msgid "enables usage of proxy for network connections."
+#~ msgstr "ağ bağlatıları için vekil kullanımını etkin kılar."
+
+# type: TP
+#~ msgid "B<--proxy-address>I<\\ address>"
+#~ msgstr "B<--proxy-address>I<\\ adres>"
+
+#~ msgid "specifies I<address> of the proxy."
+#~ msgstr "vekil sunucu için I<adres> belirtir."
+
+# type: TP
+#~ msgid "B<--proxy-port>I<\\ port>"
+#~ msgstr "B<--proxy-port>I<\\ port>"
+
+#~ msgid "specifies I<port> of the proxy."
+#~ msgstr "vekil sunucu için I<port> belirtir."
+
+# type: TP
+#~ msgid "B<--proxy-user>I<\\ username>"
+#~ msgstr "B<--proxy-user>I<\\ kullanıcı>"
+
+#~ msgid "specifies I<username> to log in to the proxy."
+#~ msgstr "vekil sunucuya oturum açacak I<kullanıcı> belirtilir."
+
+# type: TP
+#~ msgid "B<--proxy-password>I<\\ password>"
+#~ msgstr "B<--proxy-password>I<\\ parola>"
+
+#~ msgid "specifies I<password> to log in to the proxy."
+#~ msgstr "vekil sunucuya oturum açacak I<parola> belirtilir."
 
 # type: Plain text
 #~ msgid ""
