@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 01:40-0300\n"
-"PO-Revision-Date: 2020-02-03 08:47-0300\n"
+"PO-Revision-Date: 2020-12-15 08:01-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #
 # File: src/menu_events.cpp, line: 3119
@@ -339,7 +339,7 @@ msgstr "envenenado"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:236
 #: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
-msgstr "Ouro Transferido:"
+msgstr "Ouro transferido:"
 
 #
 # File: data/lua/wml/objectives.lua, line: 11917
@@ -12638,16 +12638,12 @@ msgid "Turn Number"
 msgstr "Número do Turno"
 
 #: src/reports.cpp:1391
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
-"Quando o jogo o número do turno atual for igual ao segundo número, o jogo "
-"terminará."
+"Quando o jogo excede o número de turnos indicado pelo segundo número, o jogo "
+"termina."
 
 #
 # File: src/leader_scroll_dialog.cpp, line: 47
@@ -13716,77 +13712,6 @@ msgstr "Esconder planos para $player"
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
 
-#
-# File: src/addon/client.cpp, line: 140
-# File: src/addon/client.cpp, line: 140
-# File: src/addon/client.cpp, line: 140
-#, fuzzy
-#~| msgid "Sending add-on <i>$addon_title</i>..."
-#~ msgid ""
-#~ "Requesting the older version composition for the add-on <i>$addon_title</"
-#~ "i>..."
-#~ msgstr "Enviando add-on <i>$addon_title</i>..."
-
-#
-# File: src/multiplayer.cpp, line: 235
-# File: src/multiplayer.cpp, line: 320
-# File: src/multiplayer_ui.cpp, line: 84
-# File: src/multiplayer.cpp, line: 235
-# File: src/multiplayer.cpp, line: 320
-# File: src/multiplayer_ui.cpp, line: 84
-# File: src/multiplayer.cpp, line: 235
-# File: src/multiplayer.cpp, line: 320
-# File: src/multiplayer_ui.cpp, line: 84
-#~ msgid "Connection timed out"
-#~ msgstr "A conexão expirou"
-
-#
-# File: data/scenario-test.cfg, line: 858
-# File: src/dialogs.cpp, line: 1009
-# File: src/dialogs.cpp, line: 1450
-# File: src/dialogs.cpp, line: 1556
-# File: src/mp_options.cpp, line: 232
-# File: src/multiplayer_connect.cpp, line: 1073
-# File: src/multiplayer_create.cpp, line: 100
-# File: src/multiplayer_wait.cpp, line: 179
-# File: data/scenario-test.cfg, line: 858
-# File: src/dialogs.cpp, line: 1009
-# File: src/dialogs.cpp, line: 1450
-# File: src/dialogs.cpp, line: 1556
-# File: src/mp_options.cpp, line: 232
-# File: src/multiplayer_connect.cpp, line: 1073
-# File: src/multiplayer_create.cpp, line: 100
-# File: src/multiplayer_wait.cpp, line: 179
-# File: data/scenario-test.cfg, line: 858
-# File: src/dialogs.cpp, line: 1009
-# File: src/dialogs.cpp, line: 1450
-# File: src/dialogs.cpp, line: 1556
-# File: src/mp_options.cpp, line: 232
-# File: src/multiplayer_connect.cpp, line: 1073
-# File: src/multiplayer_create.cpp, line: 100
-# File: src/multiplayer_wait.cpp, line: 179
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#
-# File: src/game_controller.cpp, line: 886
-# File: src/game_controller_abstract.cpp, line: 99
-# File: src/game_controller.cpp, line: 886
-# File: src/game_controller_abstract.cpp, line: 99
-# File: src/game_controller.cpp, line: 886
-# File: src/game_controller_abstract.cpp, line: 99
-#, fuzzy
-#~| msgid "The Battle for Wesnoth"
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "The Battle for Wesnoth"
-
-#
-# File: data/hardwired/tips.cfg, line: 13
-# File: data/hardwired/tips.cfg, line: 13
-# File: data/hardwired/tips.cfg, line: 13
-#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-#~ msgstr "<i>― Vank do Voo de Galun, 6YW</i>"
-
 #~ msgid "Graphics scaling options"
 #~ msgstr "Opções de dimensionamento dos gráficos"
 
@@ -13990,6 +13915,34 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "%d%% de ouro tranferido para o próximo cenário."
 
 #
+# File: data/scenario-test.cfg, line: 858
+# File: src/dialogs.cpp, line: 1009
+# File: src/dialogs.cpp, line: 1450
+# File: src/dialogs.cpp, line: 1556
+# File: src/mp_options.cpp, line: 232
+# File: src/multiplayer_connect.cpp, line: 1073
+# File: src/multiplayer_create.cpp, line: 100
+# File: src/multiplayer_wait.cpp, line: 179
+# File: data/scenario-test.cfg, line: 858
+# File: src/dialogs.cpp, line: 1009
+# File: src/dialogs.cpp, line: 1450
+# File: src/dialogs.cpp, line: 1556
+# File: src/mp_options.cpp, line: 232
+# File: src/multiplayer_connect.cpp, line: 1073
+# File: src/multiplayer_create.cpp, line: 100
+# File: src/multiplayer_wait.cpp, line: 179
+# File: data/scenario-test.cfg, line: 858
+# File: src/dialogs.cpp, line: 1009
+# File: src/dialogs.cpp, line: 1450
+# File: src/dialogs.cpp, line: 1556
+# File: src/mp_options.cpp, line: 232
+# File: src/multiplayer_connect.cpp, line: 1073
+# File: src/multiplayer_create.cpp, line: 100
+# File: src/multiplayer_wait.cpp, line: 179
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
+
+#
 # File: src/menu_events.cpp, line: 2372
 # File: src/menu_events.cpp, line: 2371
 # File: src/menu_events.cpp, line: 2371
@@ -14061,6 +14014,19 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Request a list of details you can set for your registered nickname."
 #~ msgstr ""
 #~ "Solicita a lista de detalhes que você pode definir para o seu apelido."
+
+#
+# File: src/multiplayer.cpp, line: 235
+# File: src/multiplayer.cpp, line: 320
+# File: src/multiplayer_ui.cpp, line: 84
+# File: src/multiplayer.cpp, line: 235
+# File: src/multiplayer.cpp, line: 320
+# File: src/multiplayer_ui.cpp, line: 84
+# File: src/multiplayer.cpp, line: 235
+# File: src/multiplayer.cpp, line: 320
+# File: src/multiplayer_ui.cpp, line: 84
+#~ msgid "Connection timed out"
+#~ msgstr "A conexão expirou"
 
 #
 # File: src/dialogs.cpp, line: 945
@@ -17085,6 +17051,18 @@ msgstr "Opções do Quadro-Branco"
 # File: src/menu_events.cpp, line: 2350
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "Não há jogadores em sua lista de amigos ou de ignorar."
+
+#
+# File: src/game_controller.cpp, line: 886
+# File: src/game_controller_abstract.cpp, line: 99
+# File: src/game_controller.cpp, line: 886
+# File: src/game_controller_abstract.cpp, line: 99
+# File: src/game_controller.cpp, line: 886
+# File: src/game_controller_abstract.cpp, line: 99
+#, fuzzy
+#~| msgid "The Battle for Wesnoth"
+#~ msgid "Battle for Wesnoth"
+#~ msgstr "The Battle for Wesnoth"
 
 #
 # out.2012

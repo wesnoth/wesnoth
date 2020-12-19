@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-21 01:41-0300\n"
-"PO-Revision-Date: 2020-08-01 09:39-0300\n"
+"PO-Revision-Date: 2020-12-15 07:35-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
 "Language: pt_BR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
 # type: TH
 #. type: TH
@@ -501,10 +501,8 @@ msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
-#, fuzzy
-#| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
-msgstr "mostra as timestamps nos logfiles com mais precisão."
+msgstr "mostra as timestamps no log de saída com mais precisão."
 
 # type: TP
 #. type: TP
@@ -1486,14 +1484,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:511
-#, fuzzy
-#| msgid ""
-#| "When running unit tests (withB<\\ -u>), the exit status is different. An "
-#| "exit status of 0 indicates that the test passed, and 1 indicates that the "
-#| "test failed. An exit status of 3 indicates that the test passed, but "
-#| "produced an invalid replay file. An exit status of 4 indicates that the "
-#| "test passed, but the replay produced errors. These latter two are only "
-#| "returned if B<--noreplaycheck> is not passed."
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -2246,14 +2236,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:223
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the B<forum_user_handler> to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2513,41 +2495,7 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
 # type: TP
-#~ msgid "B<--proxy>"
-#~ msgstr "B<--proxy>"
-
-#~ msgid "enables usage of proxy for network connections."
-#~ msgstr "permite a utilização de proxy para conexões em rede."
-
-# type: TP
-#~ msgid "B<--proxy-address>I<\\ address>"
-#~ msgstr "B<--proxy-address>I<\\ address>"
-
-#~ msgid "specifies I<address> of the proxy."
-#~ msgstr "especifica o I<address> da proxy."
-
-# type: TP
-#~ msgid "B<--proxy-port>I<\\ port>"
-#~ msgstr "B<--proxy-port>I<\\ port>"
-
-#~ msgid "specifies I<port> of the proxy."
-#~ msgstr "especifica a I<port> da proxy."
-
-# type: TP
-#~ msgid "B<--proxy-user>I<\\ username>"
-#~ msgstr "B<--proxy-user>I<\\ username>"
-
-#~ msgid "specifies I<username> to log in to the proxy."
-#~ msgstr "especifica I<username> para logar no proxy."
-
-# type: TP
-#~ msgid "B<--proxy-password>I<\\ password>"
-#~ msgstr "B<--proxy-password>I<\\ password>"
-
-#~ msgid "specifies I<password> to log in to the proxy."
-#~ msgstr "especifica I<password> para logar no proxy."
-
-# type: TP
+#, no-wrap
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
@@ -2588,6 +2536,7 @@ msgstr "B<wesnoth>(6)"
 #~ "sobre os usuários. Você terá que criar esta tabela manualmete."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
@@ -2609,10 +2558,12 @@ msgstr "B<wesnoth>(6)"
 #~ "usuários."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
@@ -2621,10 +2572,12 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "O nome de usuário usado para logar no server do email."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
@@ -2633,12 +2586,53 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "O seu endereço de e-mail em que chegará a resposta."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 
 # type: Plain text
 #~ msgid "The port on which your mail server is running. Default is 25."
 #~ msgstr "A porta na qual seu servidor de email está rodando. A padrão é 25."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy>"
+#~ msgstr "B<--proxy>"
+
+#~ msgid "enables usage of proxy for network connections."
+#~ msgstr "permite a utilização de proxy para conexões em rede."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy-address>I<\\ address>"
+#~ msgstr "B<--proxy-address>I<\\ address>"
+
+#~ msgid "specifies I<address> of the proxy."
+#~ msgstr "especifica o I<address> da proxy."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy-port>I<\\ port>"
+#~ msgstr "B<--proxy-port>I<\\ port>"
+
+#~ msgid "specifies I<port> of the proxy."
+#~ msgstr "especifica a I<port> da proxy."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy-user>I<\\ username>"
+#~ msgstr "B<--proxy-user>I<\\ username>"
+
+#~ msgid "specifies I<username> to log in to the proxy."
+#~ msgstr "especifica I<username> para logar no proxy."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy-password>I<\\ password>"
+#~ msgstr "B<--proxy-password>I<\\ password>"
+
+#~ msgid "specifies I<password> to log in to the proxy."
+#~ msgstr "especifica I<password> para logar no proxy."
 
 # type: TP
 #~ msgid "B<--path>"
