@@ -4,6 +4,7 @@
  ### Campaigns
  ### Multiplayer
  ### Packaging
+  * Boost 1.65 is now required (was 1.59).
  ### Terrain
  ### Translations
  ### Units
