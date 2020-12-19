@@ -1,4 +1,4 @@
-## Version 1.15.7+dev
+## Version 1.15.8
  ### Add-ons client
    * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
    * Improved license information prompt for uploads.
