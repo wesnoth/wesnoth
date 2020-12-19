@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:52-0300\n"
+"POT-Creation-Date: 2020-12-05 23:44+0300\n"
 "PO-Revision-Date: 2020-11-29 18:41+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -347,6 +347,7 @@ msgstr "Джойстик: номер тяговой оси"
 msgid "Joystick: deadzone of the thruster"
 msgstr "Джойстик: мертвая зона тягового джойстика"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
@@ -361,6 +362,7 @@ msgstr "отравлен"
 msgid "Gold carryover:"
 msgstr "Золота переносится:"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:272
@@ -904,8 +906,8 @@ msgstr "Зерновой сноп"
 msgid "Runic Hammer"
 msgstr "Рунический молот"
 
-#. [object]
 #. [item]: id=holly-water
+#. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Святая вода"
@@ -946,8 +948,8 @@ msgstr "Зеленое зелье"
 msgid "Gray Potion"
 msgstr "Серое зелье"
 
-#. [object]: id={ID}
 #. [item]: id=potion-poison
+#. [object]: id={ID}
 #: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Яд"
@@ -1017,8 +1019,8 @@ msgstr "Посох"
 msgid "Stone Tablet"
 msgstr "Каменная табличка"
 
-#. [object]
 #. [item]: id=storm-trident
+#. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Штормовой Трезубец"
@@ -3594,6 +3596,7 @@ msgstr "Пещера"
 msgid "Fungus"
 msgstr "Грибы"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
 #: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:176
 msgid "Village"
@@ -3624,11 +3627,13 @@ msgstr "Непроходимо"
 msgid "Impassable"
 msgstr "Недостижимо"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:473
 msgid "Fog"
 msgstr "Туман"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:476
 #: src/game_initialization/lobby_data.cpp:479
@@ -4061,6 +4066,7 @@ msgstr "Да"
 msgid "No"
 msgstr "Нет"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:627
@@ -4102,6 +4108,7 @@ msgid "(Note: You should use $replacement instead in new code)"
 msgstr ""
 "(Примечание: Вы должны использовать $replacement вместо этого в новом коде)"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:194 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
@@ -4112,26 +4119,31 @@ msgstr "Недопустимый уровень устаревания  $level (
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Недопустимый уровень устаревания  (должен быть 1-4)"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1061
 msgid "female^poisoned"
 msgstr "отравлена"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1068
 msgid "female^slowed"
 msgstr "замедлена"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1068
 msgid "slowed"
 msgstr "замедлен"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1074
 msgid "female^petrified"
 msgstr "окаменела"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1074
 msgid "petrified"
@@ -4147,12 +4159,14 @@ msgstr "неизлечима"
 msgid "unhealable"
 msgstr "неизлечимо"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
 #: data/lua/wml/message.lua:395 src/scripting/game_lua_kernel.cpp:2787
 #: src/scripting/game_lua_kernel.cpp:2822
 msgid "input"
 msgstr "ввод"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
