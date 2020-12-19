@@ -125,6 +125,8 @@ void screenshot_notification::save_screenshot()
 	boost::filesystem::path path(screenshots_dir_path_);
 	path /= filename;
 
+	path_ = path.string();
+
 	image::save_result res = image::save_image(screenshot_, path.string());
 	if(res == image::save_result::unsupported_format) {
 		gui2::show_error_message(_("Unsupported image format.\n\n"
@@ -144,7 +146,7 @@ void screenshot_notification::save_screenshot()
 			find_widget<button>(&window, "copy", false).set_active(true);
 		}
 
-		const int filesize = filesystem::file_size(path.string());
+		const int filesize = filesystem::file_size(path_);
 		const std::string sizetext = utils::si_string(filesize, true, _("unit_byte^B"));
 		find_widget<label>(&window, "filesize", false).set_label(sizetext);
 	}

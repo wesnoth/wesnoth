@@ -36,6 +36,8 @@
    * Add a overwrite_specials option for abilities like weapon could overwrite specials or other ablities like weapon
  ### Miscellaneous and Bug Fixes
    * Fixed several possible crashes in wmllint
+   * Screenshots now default to JPG instead of PNG
+   * Fixed screenshot popup sometimes using the wrong path when trying to open the screenshot after saving
 
 ## Version 1.15.7
  ### Add-ons server
