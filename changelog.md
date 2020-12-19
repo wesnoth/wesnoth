@@ -1,3 +1,16 @@
+## Version 1.15.8+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Multiplayer
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.15.8
  ### Add-ons client
    * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
