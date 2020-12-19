@@ -18,23 +18,20 @@
 
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
-#include "display.hpp"
 #include "filesystem.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "picture.hpp"
 
+#include <boost/filesystem/path.hpp>
+
 #include <functional>
-
-#include "gettext.hpp"
-
-#include <boost/filesystem.hpp>
 #include <stdexcept>
 
 namespace gui2
@@ -78,7 +75,6 @@ screenshot_notification::screenshot_notification(const std::string& path, surfac
 	, screenshots_dir_path_(filesystem::get_screenshot_dir())
 	, screenshot_(screenshot)
 {
-
 }
 
 void screenshot_notification::pre_show(window& window)
@@ -119,8 +115,7 @@ void screenshot_notification::pre_show(window& window)
 
 void screenshot_notification::save_screenshot()
 {
-	window& window = *get_window();
-	text_box& path_box = find_widget<text_box>(&window, "path", false);
+	text_box& path_box = find_widget<text_box>(get_window(), "path", false);
 	std::string filename = path_box.get_value();
 	boost::filesystem::path path(screenshots_dir_path_);
 	path /= filename;
@@ -139,16 +134,16 @@ void screenshot_notification::save_screenshot()
 		throw std::logic_error("Unexpected error while trying to save a screenshot");
 	} else {
 		path_box.set_active(false);
-		find_widget<button>(&window, "open", false).set_active(true);
-		find_widget<button>(&window, "save", false).set_active(false);
+		find_widget<button>(get_window(), "open", false).set_active(true);
+		find_widget<button>(get_window(), "save", false).set_active(false);
 
 		if(desktop::clipboard::available()) {
-			find_widget<button>(&window, "copy", false).set_active(true);
+			find_widget<button>(get_window(), "copy", false).set_active(true);
 		}
 
 		const int filesize = filesystem::file_size(path_);
 		const std::string sizetext = utils::si_string(filesize, true, _("unit_byte^B"));
-		find_widget<label>(&window, "filesize", false).set_label(sizetext);
+		find_widget<label>(get_window(), "filesize", false).set_label(sizetext);
 	}
 }
 
