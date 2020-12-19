@@ -9,7 +9,7 @@
      * S03: fix the initial keep being blocked at the start
  ### Translations
    * Updated translations: British English, Catalan, Czech, French, German, Italian,
-     Japanese, Polish, Portuguese (Brazil), Russian
+     Japanese, Polish, Portuguese (Brazil), Russian, Turkish
  ### User interface
    * Fixed formatting of hyperlinks when the same URL appears more than once in a block of text
  ### Miscellaneous and Bug Fixes
