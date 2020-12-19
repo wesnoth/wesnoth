@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:40-0300\n"
+"POT-Creation-Date: 2020-12-18 22:26-0300\n"
 "PO-Revision-Date: 2020-08-05 03:31+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -23,7 +23,7 @@ msgstr ""
 #. [time]: id=underground
 #. [editor_times]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
-#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:109
+#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Yeraltı"
 
@@ -958,13 +958,13 @@ msgstr ""
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
+#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Derin Yeraltı"
 
 #. [time]: id=indoors
 #. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
+#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "İçerde"
 
@@ -3131,9 +3131,9 @@ msgid ""
 "• <ref>dst='crowns' text='Hero units'</ref> have a smaller variant of the "
 "seven-pointed star, these units can’t recruit.\n"
 "• Units without a <ref>dst='movement' text='zone of control'</ref> have a "
-"broken version of the shape.\n"
+"broken outline version of the shape.\n"
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
-"a ZoC, these units have a broken version of the seven-pointed star."
+"a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
 
 #. [topic]: id=crowns
@@ -3228,21 +3228,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:464 data/core/macros/schedules.cfg:14
-#: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
+#: data/core/help.cfg:464 data/core/macros/schedules.cfg:16
+#: data/core/macros/schedules.cfg:290 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Şafak"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:465 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:465 data/core/macros/schedules.cfg:28
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Sabah"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:466 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:466 data/core/macros/schedules.cfg:46
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Öğle"
@@ -3250,21 +3250,21 @@ msgstr "Öğle"
 #. [time]: id=dusk
 #. [topic]: id=time_of_day
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:467 data/core/macros/schedules.cfg:53
-#: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
+#: data/core/help.cfg:467 data/core/macros/schedules.cfg:55
+#: data/core/macros/schedules.cfg:411 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Akşam"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:468 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:468 data/core/macros/schedules.cfg:67
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Gece"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:469 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:469 data/core/macros/schedules.cfg:91
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Sabaha Karşı"
@@ -4965,188 +4965,188 @@ msgstr "Azami YP ödülü +3, Azami TP +%20"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
+#: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
 msgstr "Öğlen"
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
+#: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
 msgstr "Gece Yarısı"
 
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:203
+#: data/core/macros/schedules.cfg:218
 msgid "Second Watch — First Hour"
 msgstr "Sabaha Karşı — Birinci Saat"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:215
+#: data/core/macros/schedules.cfg:230
 msgid "Second Watch — Second Hour"
 msgstr "Sabaha Karşı — İkinci Saat"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:227
+#: data/core/macros/schedules.cfg:242
 msgid "Second Watch — Third Hour"
 msgstr "Sabaha Karşı — Üçüncü Saat"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:239
+#: data/core/macros/schedules.cfg:254
 msgid "Second Watch — Fourth Hour"
 msgstr "Sabaha Karşı — Dördüncü Saat"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:251
+#: data/core/macros/schedules.cfg:266
 msgid "Second Watch — Fifth Hour"
 msgstr "Sabaha Karşı — Beşinci Saat"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:263
+#: data/core/macros/schedules.cfg:278
 msgid "Second Watch — Sixth Hour"
 msgstr "Sabaha Karşı — Altıncı Saat"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:287
+#: data/core/macros/schedules.cfg:302
 msgid "Morning — First Hour"
 msgstr "Sabah — Birinci Saat"
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:299
+#: data/core/macros/schedules.cfg:314
 msgid "Morning — Second Hour"
 msgstr "Sabah — İkinci Saat"
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:311
+#: data/core/macros/schedules.cfg:326
 msgid "Morning — Third Hour"
 msgstr "Sabah — Üçüncü Saat"
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:320
+#: data/core/macros/schedules.cfg:335
 msgid "Morning — Fourth Hour"
 msgstr "Sabah — Dördüncü Saat"
 
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:338
+#: data/core/macros/schedules.cfg:353
 msgid "Afternoon — First Hour"
 msgstr "Öğle — Birinci Saat"
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:347
+#: data/core/macros/schedules.cfg:362
 msgid "Afternoon — Second Hour"
 msgstr "Öğle — İkinci Saat"
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:356
+#: data/core/macros/schedules.cfg:371
 msgid "Afternoon — Third Hour"
 msgstr "Öğle — Üçüncü Saat"
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:365
+#: data/core/macros/schedules.cfg:380
 msgid "Afternoon — Fourth Hour"
 msgstr "Öğle — Dördüncü Saat"
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:374
+#: data/core/macros/schedules.cfg:389
 msgid "Afternoon — Fifth Hour"
 msgstr "Öğle — Beşinci Saat"
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:385
+#: data/core/macros/schedules.cfg:400
 msgid "Afternoon — Sixth Hour"
 msgstr "Öğle — Altıncı Saat"
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:408
+#: data/core/macros/schedules.cfg:423
 msgid "First Watch — First Hour"
 msgstr "Gece — Birinci Saat"
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:420
+#: data/core/macros/schedules.cfg:435
 msgid "First Watch — Second Hour"
 msgstr "Gece — İkinci Saat"
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:432
+#: data/core/macros/schedules.cfg:447
 msgid "First Watch — Third Hour"
 msgstr "Gece — Üçüncü Saat"
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:444
+#: data/core/macros/schedules.cfg:459
 msgid "First Watch — Fourth Hour"
 msgstr "Gece — Dördüncü Saat"
 
 #. [time]: id=dawn1
-#: data/core/macros/schedules.cfg:498
+#: data/core/macros/schedules.cfg:514
 msgid "First Dawn"
 msgstr "İlk Şafak"
 
 #. [time]: id=dawn2
-#: data/core/macros/schedules.cfg:509
+#: data/core/macros/schedules.cfg:525
 msgid "Second Dawn"
 msgstr "İkinci Şafak"
 
 #. [time]: id=morning1
-#: data/core/macros/schedules.cfg:520
+#: data/core/macros/schedules.cfg:536
 msgid "First Morning"
 msgstr "İlk Sabah"
 
 #. [time]: id=morning2
-#: data/core/macros/schedules.cfg:532
+#: data/core/macros/schedules.cfg:548
 msgid "Second Morning"
 msgstr "İkinci Sabah"
 
 #. [time]: id=midday1
-#: data/core/macros/schedules.cfg:544
+#: data/core/macros/schedules.cfg:560
 msgid "First Midday"
 msgstr "İlk Öğlen"
 
 #. [time]: id=midday2
-#: data/core/macros/schedules.cfg:556
+#: data/core/macros/schedules.cfg:572
 msgid "Second Midday"
 msgstr "İkinci Öğlen"
 
 #. [time]: id=afternoon1
-#: data/core/macros/schedules.cfg:568
+#: data/core/macros/schedules.cfg:584
 msgid "First Afternoon"
 msgstr "İlk Öğle"
 
 #. [time]: id=afternoon2
-#: data/core/macros/schedules.cfg:580
+#: data/core/macros/schedules.cfg:596
 msgid "Second Afternoon"
 msgstr "İkinci Öğle"
 
 #. [time]: id=dusk1
-#: data/core/macros/schedules.cfg:592
+#: data/core/macros/schedules.cfg:608
 msgid "First Dusk"
 msgstr "İlk Akşam"
 
 #. [time]: id=dusk2
-#: data/core/macros/schedules.cfg:603
+#: data/core/macros/schedules.cfg:619
 msgid "Second Dusk"
 msgstr "İkinci Akşam"
 
 #. [time]: id=short_dark
-#: data/core/macros/schedules.cfg:614
+#: data/core/macros/schedules.cfg:630
 msgid "The Short Dark"
 msgstr "Kısa Karanlık"
 
 #. [time]: id=long_dark1
-#: data/core/macros/schedules.cfg:626
+#: data/core/macros/schedules.cfg:642
 msgid "The Long Dark (1)"
 msgstr "Uzun Karanlık (1)"
 
 #. [time]: id=long_dark2
-#: data/core/macros/schedules.cfg:638
+#: data/core/macros/schedules.cfg:654
 msgid "The Long Dark (2)"
 msgstr "Uzun Karanlık (2)"
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:650
+#: data/core/macros/schedules.cfg:666
 msgid "The Long Dark (3)"
 msgstr "Uzun Karanlık (3)"
 
 #. [time]: id=long_dark4
-#: data/core/macros/schedules.cfg:664
+#: data/core/macros/schedules.cfg:680
 msgid "The Long Dark (4)"
 msgstr "Uzun Karanlık (4)"
 
@@ -5162,7 +5162,7 @@ msgstr ""
 "\n"
 "Özel Bilgiler:"
 
-#: data/core/macros/special-notes.cfg:15
+#: data/core/macros/special-notes.cfg:17
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -5174,7 +5174,7 @@ msgstr ""
 " Periler çok yararsız hasar dirençlerine sahiptirler ve açık su üzerinde "
 "oldukça yavaş hareket ederler."
 
-#: data/core/macros/special-notes.cfg:18
+#: data/core/macros/special-notes.cfg:20
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -5186,19 +5186,19 @@ msgstr ""
 " Bu birimin gizemli saldırısı yarı ölülere ve hatta bazı yaratıklara karşı "
 "çok büyük hasarlar verir."
 
-#: data/core/macros/special-notes.cfg:21
+#: data/core/macros/special-notes.cfg:23
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " Bu birim temel tedavileri yapabilir."
 
-#: data/core/macros/special-notes.cfg:24
+#: data/core/macros/special-notes.cfg:26
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " Bu birim hızla iyileşebilir."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:29
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -5207,7 +5207,7 @@ msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr " Bu birim etrafındakileri iyileştirebilir ve panzehir verebilir."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:32
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -5217,7 +5217,7 @@ msgid ""
 "it."
 msgstr " Bu birim komşu birimlerdeki zehrin etkisini yokeder."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:35
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5227,7 +5227,7 @@ msgid ""
 "a village."
 msgstr " Bu birim yanında köyü taşıyormuşçasına her el iyileşir."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:38
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -5239,7 +5239,7 @@ msgstr ""
 " Bu birimin sarsılmazlığı bazı saldırıların verdiği hasarı sadece savunma "
 "sırasında azaltır."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:41
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -5252,7 +5252,7 @@ msgstr ""
 " Bu birimin liderlik vasfı çevresindeki alt seviyeden dost birimlerin "
 "saldırı sırasında daha etkili vurmasını sağlar."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:44
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -5264,13 +5264,13 @@ msgstr ""
 " Bu birim avcılığı sayesinde düşmanlarının etki alanlarını yok sayar ve "
 "böylece aralarına sızabilir."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:47
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " Aydınlatma, komşu alanların ışık seviyesini arttırır."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:50
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -5282,7 +5282,7 @@ msgstr ""
 "Bu birim tarafının sahip olduğu iki boş köy arasında ışınlanarak ve ışınlama "
 "sırasında sadece 1 HP kullanarak hareket edebilir."
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:53
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -5294,14 +5294,14 @@ msgstr ""
 " Bu birim ağaçlık alanlarda hemen yanında düşman birim olmadıkça ve "
 "saldırarak kendini açığa vurmadıkça düşman tarafından farkedilmez."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:56
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr " Bu birim geceleyin varlığına dair bir iz bırakmadan gizlenebilir."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:59
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -5313,7 +5313,7 @@ msgstr ""
 " Bu birim köylerde gizlenebilir (sualtı köyleri hariç) ve köyün yanına "
 "gelene kadar düşmanları tarafından farkedilmez."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:62
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -5324,7 +5324,7 @@ msgstr ""
 " Bu birim derin suda yüzeyden hava almaya ihtiyaç duymadan ve görünmeksizin "
 "hareket edebilir."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:65
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -5335,7 +5335,7 @@ msgid ""
 msgstr ""
 " Yaşayan bir birimi öldürdüğünde bu birimin toplam yaşam puanı 1 arttırılır."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:68
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -5347,7 +5347,7 @@ msgstr ""
 " Bir çılgın saldırının her kullanılışında, birimin kendisi ya da düşmanı "
 "ölene kadar saldırı devam ettirilir."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:71
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -5361,7 +5361,7 @@ msgstr ""
 " Bu saldırı, hedef birimin saldırı yönüne göre tam arkasında düşmanı varsa "
 "saldırgan birimin iki kat hasar vermesine sebep olur."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:74
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -5373,7 +5373,7 @@ msgstr ""
 " Vebaya maruz kalarak hayatlarını kaybeden düşmanlar bir köyde "
 "bulunmadıkları takdirde yürüyen cesede dönüşürler."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:77
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -5385,7 +5385,7 @@ msgstr ""
 " Bu birim düşmanlarını yavaşlatabilir, hızları ve saldırı güçleri bir el "
 "boyunca yarıya düşer."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:80
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -5394,7 +5394,7 @@ msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr " Bu birimin yaşayanları taşa çevirmesi onu çok tehlikeli yapar."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:83
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -5406,7 +5406,7 @@ msgstr ""
 " Bu birimin nişancılığı düşmanına isabet şansını sadece saldırı sırasında "
 "arttırır."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:86
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
@@ -5417,7 +5417,7 @@ msgid ""
 msgstr ""
 " Bu birimin her zaman yüksek isabet şansına sahip sihirli saldırıları vardır."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:89
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -5428,7 +5428,7 @@ msgid ""
 msgstr ""
 " Bu birimin kaynaşma saldırıları birim yara aldıkça daha az ölümcül olur."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:92
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -5440,7 +5440,7 @@ msgstr ""
 " Yükleme saldırısının kullanılması verilen ve alınan hasarı ikiye katlar; "
 "ancak savunmada aynı tepkimeye yol açmaz."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:95
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -5451,7 +5451,7 @@ msgstr ""
 " Savaş sırasında bu birim kurbanlarının yaşam enerjisini emerek kendi "
 "yaşamını yeniler."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:98
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -5463,7 +5463,7 @@ msgstr ""
 " Bu birimin silahının uzunluğu savunmada dahi olsa yakın saldırıda ilk "
 "vuruşu yapmasını sağlar."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:101
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -5475,7 +5475,7 @@ msgstr ""
 " Bu birimin zehrinin kurbanları bir köyde veya bir ilaç veren tarafından "
 "iyileştirilene kadar sürekli olarak zehirden hasar görecektir."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:104
 #, fuzzy
 #| msgid ""
 #| " This unit has a defense cap on certain terrain types — it cannot achieve "
@@ -5489,7 +5489,7 @@ msgstr ""
 "elde edemez."
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:156
+#: data/core/macros/special-notes.cfg:160
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5500,7 +5500,7 @@ msgid ""
 msgstr " Bu birim yanında köyü taşıyormuşçasına her el iyileşir."
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:300
+#: data/core/macros/special-notes.cfg:304
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "

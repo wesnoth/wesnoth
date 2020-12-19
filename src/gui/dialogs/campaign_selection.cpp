@@ -16,10 +16,13 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "font/text_formatting.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/scroll_label.hpp"
@@ -39,6 +42,7 @@ namespace gui2
 {
 namespace dialogs
 {
+
 /*WIKI
  * @page = GUIWindowDefinitionWML
  * @order = 2_campaign_selection
@@ -79,7 +83,7 @@ namespace dialogs
 
 REGISTER_DIALOG(campaign_selection)
 
-void campaign_selection::campaign_selected() const
+void campaign_selection::campaign_selected()
 {
 	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
 	if(tree.empty()) {
@@ -100,10 +104,87 @@ void campaign_selection::campaign_selected() const
 		pages.select_page(choice);
 
 		engine_.set_current_level(choice);
+
+		styled_widget& background = find_widget<styled_widget>(get_window(), "campaign_background", false);
+		background.set_label(engine_.current_level().data()["background"].str());
+
+		// Rebuild difficulty menu
+		difficulties_.clear();
+
+		auto& diff_menu = find_widget<menu_button>(get_window(), "difficulty_menu", false);
+
+		const auto& diff_config = generate_difficulty_config(engine_.current_level().data());
+		diff_menu.set_active(diff_config.child_count("difficulty") > 1);
+
+		if(!diff_config.empty()) {
+			std::vector<config> entry_list;
+			unsigned n = 0, selection = 0, max_n = diff_config.child_count("difficulty");
+
+			for(const auto& cfg : diff_config.child_range("difficulty")) {
+				config entry;
+
+				// FIXME: description may have markup that will display weird on the menu_button proper
+				entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
+				entry["image"] = cfg["image"].str("misc/blank-hex.png");
+
+				if(preferences::is_campaign_completed(tree.selected_item()->id(), cfg["define"])) {
+					std::string laurel;
+
+					if(n + 1 >= max_n) {
+						laurel = game_config::images::victory_laurel_hardest;
+					} else if(n == 0) {
+						laurel = game_config::images::victory_laurel_easy;
+					} else {
+						laurel = game_config::images::victory_laurel;
+					}
+
+					entry["image"] = laurel + "~BLIT(" + entry["image"] + ")";
+				}
+
+				if(!cfg["description"].empty()) {
+					std::string desc;
+					if(cfg["auto_markup"].to_bool(true) == false) {
+						desc = cfg["description"].str();
+					} else {
+						//desc = "<small>";
+						if(!cfg["old_markup"].to_bool()) {
+							desc += font::span_color(font::GRAY_COLOR) + "(" + cfg["description"].str() + ")</span>";
+						} else {
+							desc += font::span_color(font::GRAY_COLOR) + cfg["description"].str() + "</span>";
+						}
+						//desc += "</small>";
+					}
+
+					// Icons get displayed instead of the labels on the dropdown menu itself,
+					// so we want to prepend each label to its description here
+					desc = cfg["label"].str() + "\n" + desc;
+
+					entry["details"] = std::move(desc);
+				}
+
+				entry_list.emplace_back(std::move(entry));
+				difficulties_.emplace_back(cfg["define"].str());
+
+				if(cfg["default"].to_bool(false)) {
+					selection = n;
+				}
+
+				++n;
+			}
+
+			diff_menu.set_values(entry_list);
+			diff_menu.set_selected(selection);
+		}
 	}
 }
 
-void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order, bool ascending) const
+void campaign_selection::difficulty_selected()
+{
+	const std::size_t selection = find_widget<menu_button>(get_window(), "difficulty_menu", false).get_value();
+	current_difficulty_ = difficulties_.at(std::min(difficulties_.size() - 1, selection));
+}
+
+void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order, bool ascending)
 {
 	using level_ptr = ng::create_engine::level_ptr;
 
@@ -323,6 +404,14 @@ void campaign_selection::pre_show(window& window)
 		mods_menu.set_label(_("active_modifications^None"));
 	}
 
+	//
+	// Set up Difficulty dropdown
+	//
+	menu_button& diff_menu = find_widget<menu_button>(get_window(), "difficulty_menu", false);
+
+	diff_menu.set_use_markup(true);
+	connect_signal_notify_modified(diff_menu, std::bind(&campaign_selection::difficulty_selected, this));
+
 	campaign_selected();
 }
 
@@ -389,7 +478,8 @@ void campaign_selection::post_show(window& window)
 		}
 	}
 
-	deterministic_ = find_widget<toggle_button>(&window, "checkbox_deterministic", false).get_value_bool();
+
+	rng_mode_ = RNG_MODE(utils::clamp<unsigned>(find_widget<menu_button>(&window, "rng_menu", false).get_value(), RNG_DEFAULT, RNG_BIASED));
 
 	preferences::set_modifications(engine_.active_mods(), false);
 }

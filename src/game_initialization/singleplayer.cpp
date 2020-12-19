@@ -14,6 +14,10 @@
 #include "game_initialization/singleplayer.hpp"
 
 #include "config.hpp"
+#include "game_initialization/configure_engine.hpp"
+#include "game_initialization/connect_engine.hpp"
+#include "game_initialization/create_engine.hpp"
+#include "game_launcher.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
@@ -26,13 +30,10 @@ static lg::log_domain log_engine("engine");
 
 namespace sp
 {
-bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign)
+bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 {
-	bool configure_canceled = false;
-
-	do {
+	while(true) {
 		ng::create_engine create_eng(state);
-
 		create_eng.set_current_level_type(ng::level::TYPE::SP_CAMPAIGN);
 
 		const std::vector<ng::create_engine::level_ptr> campaigns =
@@ -43,7 +44,7 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 			return false;
 		}
 
-		std::string random_mode = "";
+		std::string random_mode = "", difficulty = "";
 
 		// No campaign selected from command line
 		if(jump_to_campaign.campaign_id_.empty()) {
@@ -60,9 +61,19 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 				return false;
 			}
 
-			if(dlg.get_deterministic()) {
-				random_mode = "deterministic";
+			switch(dlg.get_rng_mode()) {
+				case gui2::dialogs::campaign_selection::RNG_DEFAULT:
+					random_mode = "";
+					break;
+				case gui2::dialogs::campaign_selection::RNG_SAVE_SEED:
+					random_mode = "deterministic";
+					break;
+				case gui2::dialogs::campaign_selection::RNG_BIASED:
+					random_mode = "biased";
+					break;
 			}
+
+			difficulty = dlg.get_difficulty();
 		} else {
 			// Don't reset the campaign_id_ so we can know
 			// if we should quit the game or return to the main menu
@@ -83,7 +94,7 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 
 		state.classification().random_mode = random_mode;
 
-		const std::string selected_difficulty = create_eng.select_campaign_difficulty(jump_to_campaign.difficulty_);
+		const auto selected_difficulty = difficulty;
 
 		if(selected_difficulty == "FAIL") return false;
 		if(selected_difficulty == "CANCEL") {
@@ -92,7 +103,7 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 			}
 
 			// Canceled difficulty dialog, relaunch the campaign selection dialog
-			return enter_create_mode(state, jump_to_campaign);
+			return select_campaign(state, jump_to_campaign);
 		}
 
 		create_eng.prepare_for_era_and_mods();
@@ -109,14 +120,15 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 			return false;
 		}
 
-		configure_canceled = !enter_configure_mode(state, create_eng);
-
-	} while (configure_canceled);
+		if(configure_campaign(state, create_eng)) {
+			break;
+		}
+	}
 
 	return true;
 }
 
-bool enter_configure_mode(saved_game& state, ng::create_engine& create_eng)
+bool configure_campaign(saved_game& state, ng::create_engine& create_eng)
 {
 	// We create the config engine here in order to ensure values like use_map_settings are set correctly
 	// TODO: should this be passed to this function instead of created here?
@@ -132,15 +144,10 @@ bool enter_configure_mode(saved_game& state, ng::create_engine& create_eng)
 	create_eng.get_parameters();
 	create_eng.prepare_for_new_level();
 
-	enter_connect_mode(state);
-
-	return true;
-}
-
-void enter_connect_mode(saved_game& state)
-{
 	ng::connect_engine connect_eng(state, true, nullptr);
 	connect_eng.start_game();
+
+	return true;
 }
 
 } // end namespace sp

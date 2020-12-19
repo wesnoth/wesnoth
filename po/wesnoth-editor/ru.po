@@ -1,4 +1,4 @@
-# translation of ru.po to Russian
+# translation of wesnoth-editor.po to Russian
 # #-#-#-#-#  wesnoth-editor.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Russian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
@@ -13,22 +13,23 @@
 # Automatically generated, 2004.
 # Azamat H. Hackimov <azazello1984@mail.ru>, 2005.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2007.
-# Fedor Khodkov <fkhodkov@gmail.com>, 2014
+# Fedor Khodkov <fkhodkov@gmail.com>, 2014.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: ru\n"
+"Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:41-0300\n"
-"PO-Revision-Date: 2019-09-19 15:46+0300\n"
-"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2020-12-18 22:27-0300\n"
+"PO-Revision-Date: 2020-11-29 18:51+0300\n"
+"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [brush]: id=brush-1
@@ -165,7 +166,7 @@ msgstr "24-часовое расписание"
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:66
 msgid "After the Fall"
-msgstr "После осени"
+msgstr "После Падения"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
@@ -247,33 +248,25 @@ msgstr "Плейлист"
 msgid "Assign Time Schedule"
 msgstr "Назначить расписание"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
-msgid "(Unknown unit type: $type)"
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:72
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Identifier: "
 msgstr "Идентификатор:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:73
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Name: "
 msgstr "Имя:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:74
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Type: "
 msgstr "Вид:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:75
+#: src/editor/action/mouse/mouse_action_unit.cpp:68
 msgid "Level: "
 msgstr "Уровень:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:76
+#: src/editor/action/mouse/mouse_action_unit.cpp:69
 msgid "Cost: "
 msgstr "Цена:"
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:77
-msgid "Recruit: "
-msgstr "Найм:"
 
 #: src/editor/controller/editor_controller.cpp:179
 msgid "Fatal error"
@@ -303,19 +296,19 @@ msgstr ""
 msgid "No editor time-of-day found."
 msgstr "Редактор времени суток не найден."
 
-#: src/editor/controller/editor_controller.cpp:1144
+#: src/editor/controller/editor_controller.cpp:1135
 msgid "Change Unit ID"
 msgstr "Сменить ИД бойца"
 
-#: src/editor/controller/editor_controller.cpp:1145
+#: src/editor/controller/editor_controller.cpp:1136
 msgid "ID:"
 msgstr "ИД:"
 
-#: src/editor/controller/editor_controller.cpp:1161
+#: src/editor/controller/editor_controller.cpp:1152
 msgid "Rename Unit"
 msgstr "Переименовать бойца"
 
-#: src/editor/controller/editor_controller.cpp:1162
+#: src/editor/controller/editor_controller.cpp:1153
 msgid "Name:"
 msgstr "Имя:"
 
@@ -337,7 +330,7 @@ msgstr "Нет Недавних Файлов"
 
 #: src/editor/map/context_manager.cpp:383
 msgid "Unnamed Area"
-msgstr "(Неназванная область)"
+msgstr "Неназванная область"
 
 #: src/editor/map/context_manager.cpp:414
 msgid "New Side"
@@ -548,6 +541,12 @@ msgstr "Нет"
 #: src/gui/dialogs/editor/set_starting_position.cpp:97
 msgid "Player $player_number"
 msgstr "Игрок $player_number"
+
+#~ msgid "(Unknown unit type: $type)"
+#~ msgstr "(Неизвестный тип бойца: $type)"
+
+#~ msgid "Recruit: "
+#~ msgstr "Найм:"
 
 #~ msgid "FG: "
 #~ msgstr "ПП: "

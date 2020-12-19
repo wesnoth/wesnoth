@@ -1,4 +1,17 @@
-## Version 1.15.7+dev
+## Version 1.15.8+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Multiplayer
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.15.8
  ### Add-ons client
    * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
    * Improved license information prompt for uploads.
@@ -11,6 +24,7 @@
    * Dead Water
      * Reduce campaign difficulty
    * Eastern Invasion:
+     * Tweak campaign difficulty
      * S03: fix the initial keep being blocked at the start
    * Heir to the Throne
      * Tweak campaign difficulty
@@ -25,7 +39,7 @@
  ### Terrain
  ### Translations
    * Updated translations: British English, Czech, Italian, Polish, Portuguese (Brazil),
-     Russian
+     Russian, Turkish
  ### Units
    * Undead variations for Falcon, Giant Rat, serpents, and Gorer/Tusklet
  ### User interface
@@ -33,9 +47,11 @@
    * Text labels now use the hyperlink mouse cursor while hovering links.
    * Link awareness is now configured on a per-instance basis for labels/scroll labels instead of globally in their definition.
  ### WML Engine
-   * Add a overwrite_specials option for abilities like weapon could overwrite specials or other ablities like weapon
+   * Add a overwrite_specials option for weapon special abilities to allow the effect of the ability to take precedence over the effect of any identical weapon special.
  ### Miscellaneous and Bug Fixes
    * Fixed several possible crashes in wmllint
+   * Screenshots now default to JPG instead of PNG
+   * Fixed screenshot popup sometimes using the wrong path when trying to open the screenshot after saving
 
 ## Version 1.15.7
  ### Add-ons server
