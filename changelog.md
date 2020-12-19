@@ -24,6 +24,7 @@
    * Dead Water
      * Reduce campaign difficulty
    * Eastern Invasion:
+     * Tweak campaign difficulty
      * S03: fix the initial keep being blocked at the start
    * Heir to the Throne
      * Tweak campaign difficulty
