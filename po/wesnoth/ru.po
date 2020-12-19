@@ -1,20 +1,20 @@
 # Russian translations for Battle for Wesnoth package.
 # Copyright (C) 2007-2013 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+# Translators:
 # Automatically generated, 2004.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
-# Translators:
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
 # O_o <mm-94@mail.ru>, 2010.
 # Fedor Khodkov, 2014
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth.po\n"
+"Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 01:40-0300\n"
-"PO-Revision-Date: 2020-08-17 23:14+0300\n"
+"PO-Revision-Date: 2020-11-29 18:41+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -143,12 +143,16 @@ msgstr "Показывать в справке всех бойцов"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
+#, fuzzy
+#| msgid ""
+#| "Show all unit types in the help (requires restart). This does not alter "
+#| "the list of encountered units"
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
-"Показывать в справке все типы бойцов (нужен перезапуск). Если не включено, "
-"будут показаны только встреченные бойцы."
+"Показывать в справке все типы бойцов (нужен перезапуск). Не влияет на список "
+"встреченных бойцов"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:125
@@ -656,8 +660,10 @@ msgstr "Перевод на африкаанс"
 
 #. [about]
 #: data/core/about_i18n.cfg:24
+#, fuzzy
+#| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
-msgstr "Древнегреческий перевод"
+msgstr "Греческий перевод"
 
 #. [about]
 #: data/core/about_i18n.cfg:32
@@ -2959,15 +2965,6 @@ msgid ""
 "Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
 "Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
-"Абина,Афаф,Аиша,Айда,Алия,Амира,Ашракат,Атика,Азра,Бутейна,Бушра,Чайма,"
-"Цинтия,Далал,Далия,Элиана,Исма,Фарида,Фатима,Фейруз,Хабиба,Хафса,Хажра,"
-"Халима,Хамида,Ханифа,Хавва,Хаят,Хесса,Ибтиссам,Инаам,Ямила,Яванир,Ена,Юмана,"
-"Карина,Карима,Катя,Хадия,Хайрунисса,Хавла,Хавлах,Лама,Ламия,Латифа,Лаял,Лаян,"
-"Лейла,Лина,Люлва,Мадиха,Маха,Махмуна,Май,Малика,Марва,Марям,Мая,Майсун,"
-"Мелисса,Надя,Нафиса,Нахла,Найла,Наят,Назим,Назрин,Нейла,Нежа,Нюша,Кистина,"
-"Рахима,Рана,Рашида,Рим,Рукайя,Садия,Сабина,Сафия,Сахар,Саяда,Сайида,Сахра,"
-"Салма,Самира,Сара,Шад,Шата,Шерина,Шумайла,Сумая,Талисма,Умм,Яра,Ясмин,Захра,"
-"Закия,Зайнаб"
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:146
@@ -3932,14 +3929,21 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Lawful units fight better during the day, and worse at night.\n"
+#| "\n"
+#| "Day: +25% Damage\n"
+#| "Night: −25% Damage"
 msgid ""
 "Liminal units fight best during the twilight times of day.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Теневые бойцы лучше всего сражаются в сумерках.\n"
+"Порядочные бойцы лучше сражаются днем и хуже ночью.\n"
 "\n"
-"Сумерки: +25% ущерба"
+"День: +25% ущерба\n"
+"Ночь: −25% ущерба"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -4333,16 +4337,21 @@ msgstr "Поражение:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
+#, fuzzy
+#| msgid "(this turn left)"
+#| msgid_plural "(%d turns left)"
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
-msgstr[0] "(остался $remaining_turns ход)"
-msgstr[1] "(осталось $remaining_turns хода)"
-msgstr[2] "(осталось $remaining_turns ходов)"
+msgstr[0] "(остался %d ход)"
+msgstr[1] "(осталось %d хода)"
+msgstr[2] "(осталось %d ходов)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
+#, fuzzy
+#| msgid "%d%% of gold carried over to the next scenario."
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr "В следующий сценарий переносится $percent|% золота."
+msgstr "В следующий сценарий переносится %d%% золота."
 
 #. [modification]: id=delay_advancements, type=hybrid
 #: data/modifications.cfg:3
@@ -4353,13 +4362,15 @@ msgstr "Продвижения:"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:339
+#, fuzzy
+#| msgid "Leadership"
 msgid "magical leadership"
-msgstr "волшебное лидерство"
+msgstr "Лидерство"
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:340
 msgid "female^magical leadership"
-msgstr "волшебное лидерство"
+msgstr ""
 
 #. [leadership]: id=magical_leadership
 #: data/scenario-test.cfg:341
@@ -4371,22 +4382,18 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"Этот боец может повести в бой ближайших к нему бойцов тем самым он заставит "
-"их лучше сражаться магическим оружием.\n"
-"\n"
-"Соседние союзные бойцы меньшего уровня нанесут в битве больше урона. Когда "
-"соседний боец меньшего уровня и той же стороны, что и лидер, ввязывается в "
-"сражение, его атаки нанесут на 25% больше урона за каждый уровень в разнице."
 
 #. [resistance]: id=melee_steadfast
 #: data/scenario-test.cfg:366
 msgid "steadfast"
-msgstr "стойкий"
+msgstr ""
 
 #. [resistance]: id=melee_steadfast
 #: data/scenario-test.cfg:367
+#, fuzzy
+#| msgid "female^slowed"
 msgid "female^steadfast"
-msgstr "стойкая"
+msgstr "замедлена"
 
 #. [resistance]: id=melee_steadfast
 #: data/scenario-test.cfg:368
@@ -4394,13 +4401,11 @@ msgid ""
 "This unit’s resistances are added to 20%, up to a maximum of 50%, when "
 "defending to melle attacks. Vulnerabilities are not affected."
 msgstr ""
-"Сопротивляемость такого бойца, при защите от ближних атак, увеличивается на "
-"20%, но не более, чем на 50%. Уязвимости не затрагиваются."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/scenario-test.cfg:403
 msgid "plague"
-msgstr "чума"
+msgstr ""
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/scenario-test.cfg:404
@@ -4409,14 +4414,13 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Когда боец убит чумой, он трансформируется и переходит на сторону "
-"противника. Это не работает для нежити или для бойцов, находящихся в "
-"деревнях."
 
 #. [firststrike]: id=initiative
 #: data/scenario-test.cfg:465
+#, fuzzy
+#| msgid " (inactive)"
 msgid "initiative"
-msgstr "инициатива"
+msgstr " (неактивно)"
 
 #. [firststrike]: id=initiative
 #: data/scenario-test.cfg:466
@@ -4424,36 +4428,35 @@ msgid ""
 "All adjacent friendly units will strike first in melee combat, even when "
 "defending."
 msgstr ""
-"Все ближайшие союзные бойцы в ближнем бою нанесут удар первыми, даже при "
-"защите."
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:478
 msgid "cantor"
-msgstr "наводчик"
+msgstr ""
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:479
+#, fuzzy
+#| msgid "female^chaotic"
 msgid "female^cantor"
-msgstr "наводчица"
+msgstr "хаотичная"
 
 #. [chance_to_hit]: id=marksman_leadership
 #: data/scenario-test.cfg:480
 msgid "This unit grants marksman to all ranged attacks of all adjacent allies."
 msgstr ""
-"Этот боец придает меткость всем атакам ближнего боя соседних союзных бойцов."
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1066 data/scenario-test.cfg:1094
 msgid "aura of death ("
-msgstr "аура смерти ("
+msgstr ""
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:1067 data/scenario-test.cfg:1095
 msgid "female^aura of death ("
-msgstr "аура смерти ("
+msgstr ""
 
 #. [language]
 #: data/scenario-test.cfg:4396
@@ -4467,8 +4470,10 @@ msgstr "электрический"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:428
+#, fuzzy
+#| msgid "replay"
 msgid "replay^Play"
-msgstr "Проигрывание"
+msgstr "повтор"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
@@ -4477,8 +4482,10 @@ msgstr "непрерывный повтор"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:443
+#, fuzzy
+#| msgid "replay"
 msgid "replay^Stop"
-msgstr "Остановка"
+msgstr "повтор"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:444
@@ -4487,8 +4494,10 @@ msgstr "пауза после текущего хода"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:459
+#, fuzzy
+#| msgid "replay"
 msgid "replay^Reset"
-msgstr "Перезапуск"
+msgstr "повтор"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
@@ -5323,30 +5332,42 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:221
+#, fuzzy
+#| msgid ""
+#| "Try to operate units with a small number of powerful attacks—such as Dark "
+#| "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or "
+#| "threes. This gives you another try whenever your first devastating attack "
+#| "misses — as inevitably happens from time to time."
 msgid ""
 "Try to operate units with a small number of powerful attacks — such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
-"Старайтесь использовать бойцов с небольшим числом мощных атак — к примеру, "
-"Темных адептов, Всадников, Пехотинцев орков или Громовержцев гномов — "
-"группами по два или по три. Это даст Вам возможность попробовать ударить ещё "
-"раз, если первая сокрушительная атака не произвела никакого действия — такое "
+"Старайтесь использовать бойцов с небольшим числом мощных атак, таких как "
+"Темные адепты, Всадники, Пехотинцы орков, или Громовержцы гномов, группами "
+"по два или по три. Это даст Вам возможность попробовать атаковать повторно, "
+"если первая сокрушительная атака не возымела никакого эффекта — такое "
 "случается время от времени."
 
 #. [tip]
 #: data/tips.cfg:225
+#, fuzzy
+#| msgid ""
+#| "Units with three or more attacks—especially magical attacks—are ideal for "
+#| "finishing off enemies with only a few hitpoints remaining. Be sure to use "
+#| "leadership—or a strong or dextrous unit—whenever the extra point or two "
+#| "of damage makes a one-hit kill possible."
 msgid ""
 "Units with three or more attacks — especially magical attacks — are ideal "
 "for finishing off enemies with only a few hitpoints remaining. Be sure to "
 "use leadership — or a strong or dextrous unit — whenever the extra point or "
 "two of damage makes a one-hit kill possible."
 msgstr ""
-"Бойцы с тремя или более атаками — особенно магическими — превосходный выбор, "
-"чтобы добить полудохлых врагов. Постарайтесь использовать лидерство — или "
-"сильного, или ловкого бойца — если благодаря одному-двум лишним очкам урона "
-"Вы получите возможность убить врага за один удар."
+"Бойцы с тремя или более атаками, особенно магическими, идеально подходят для "
+"добивания врагов, которые уже почти мертвы. Обязательно используйте "
+"лидерство — или сильного, или ловкого бойца — если благодаря одному-двум "
+"лишним очкам урона Вы получите возможность убить врага за один удар."
 
 #. [tip]
 #: data/tips.cfg:229
@@ -5469,14 +5490,14 @@ msgstr "<i>— Сир Гаррик из Вестина, 607 ЭВ</i>"
 msgid ""
 "Some types of terrain give unique bonuses, such as healing or illumination."
 msgstr ""
-"Некоторые виды местности дают Вам особое преимущество, например лечение или "
-"освещение."
 
 #. [tip]
 #. Translate the word "Flight" as a collective noun for drakes
 #: data/tips.cfg:268
+#, fuzzy
+#| msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
 msgid "<i>― Galun, Flight Leader, 5YW</i>"
-msgstr "<i>— Галун, Властелин Полёта, 5 ЭВ</i>"
+msgstr "<i>— Ванк из Полёта Галуна, 6 ЭВ</i>"
 
 #. [tip]
 #: data/tips.cfg:271
@@ -5491,8 +5512,10 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:272
+#, fuzzy
+#| msgid "<i>― Lord Hamel of Knalga</i>"
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr "<i>—Таллин, Лорд Кналга, 538 ЭВ</i>"
+msgstr "<i>—Хамель, Лорд Кналга</i>"
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5502,9 +5525,6 @@ msgid ""
 "Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
 "Game</i> screen when loading start-of-scenario save files."
 msgstr ""
-"Знали ли Вы, что во время игры в кампанию можно поменять уровень сложности? "
-"Для этого нужно выбрать флажок <i>Сменить сложность</i> внизу экрана "
-"<i>Загрузить игру</i> при загрузке сохранений начала сценария."
 
 #. [tip]
 #: data/tips.cfg:281
@@ -6155,8 +6175,6 @@ msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
-"Отправить данные на сервер. Можно использовать, чтобы проверить сетевое "
-"соединение и заметить отключение."
 
 #: src/chat_command_handler.hpp:93
 msgid ""
@@ -6175,12 +6193,16 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Отправить эмоцию или действие в чате."
 
 #: src/chat_command_handler.hpp:100
+#, fuzzy
+#| msgid ""
+#| "Sends a private message. You cannot send private messages to players in a "
+#| "running game you observe or play in."
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
-"Отправить приватное сообщение. Вы не можете отправлять сообщения игрокам в "
-"запущенной игре, за которой вы наблюдаете или в которой участвуете."
+"Отправить приватное сообщение. Вы не можете отправлять сообщения игрокам, "
+"играющим в или наблюдающим за Вашей партией."
 
 #: src/chat_command_handler.hpp:102
 msgid "<nickname> <message>"
@@ -6416,11 +6438,11 @@ msgstr ""
 
 #: src/game_config_manager.cpp:514
 msgid "Use [modify_unit_type]\n"
-msgstr "Используйте [modify_unit_type]\n"
+msgstr ""
 
 #: src/game_config_manager.cpp:538
 msgid "instead, use the macro with the same name in the [campaign] tag"
-msgstr "вместо этого, используйте макрос с тем же именем под тегом [campaign]"
+msgstr ""
 
 #: src/game_config_manager.cpp:586
 msgid "The following add-on had errors and could not be loaded:"
@@ -6644,7 +6666,7 @@ msgstr "Не могу найти эру $era"
 
 #: src/game_initialization/multiplayer.cpp:74
 msgid "Invalid address specified for multiplayer server"
-msgstr "Указан неправильный адресс сервера совместной игры"
+msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:121
 msgid ""
@@ -7452,23 +7474,26 @@ msgstr "Отдать управление над стороной ИИ или ч
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1242
+#, fuzzy
+#| msgid ""
+#| "[<side> [on/off]]\n"
+#| "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
 "[<сторона> [on/off]]\n"
-"“on” = включить, но сохранить наблюдение; “off” = сторона управляется другим "
-"игроком"
+"“on” = передать управление ИИ, “off” = сторона управляется игроком"
 
 #: src/menu_events.cpp:1243
 msgid "Change terrain type of current hex"
-msgstr "Поменяйте тип местности текущего поля"
+msgstr ""
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
 #: src/menu_events.cpp:1245
 msgid "<terrain type> [both|base|overlay]"
-msgstr "<тип местности> [both|base|overlay]"
+msgstr ""
 
 #: src/menu_events.cpp:1246
 msgid "Switch a side to/from idle state."
@@ -7722,23 +7747,27 @@ msgid "Side '$side' controller is now controlled by: human."
 msgstr "Сторону '$side' теперь контролирует: человек."
 
 #: src/menu_events.cpp:1517
+#, fuzzy
+#| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already not droided."
-msgstr "Сторона '$side' уже не управляется ботом."
+msgstr "Сторона '$side' уже контролируется ботом."
 
 #: src/menu_events.cpp:1524
+#, fuzzy
+#| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side '$side' controller is now fully controlled by: AI."
-msgstr "Сторона '$side' теперь полностью управляется ИИ."
+msgstr "Сторону '$side' теперь контролирует: бот."
 
 #: src/menu_events.cpp:1526
+#, fuzzy
+#| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already fully AI controlled."
-msgstr "Сторона '$side' уже полностью управляется ИИ."
+msgstr "Сторона '$side' уже контролируется ботом."
 
 #: src/menu_events.cpp:1541
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
-"Для стороны '$side' предоставлено недопустимое действие. Допустимые "
-"действия: on, off, null."
 
 #: src/menu_events.cpp:1583
 msgid "Can't idle invalid side: '$side'."
@@ -8053,7 +8082,7 @@ msgstr "Раса: "
 
 #: src/reports.cpp:232
 msgid "Side: <b>$side_name</b> ($color_name)"
-msgstr "Сторона: <b>$side_name</b> ($color_name)"
+msgstr ""
 
 #: src/reports.cpp:310
 msgid "Trait: "
@@ -8247,11 +8276,13 @@ msgstr[2] "Атаки"
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
 #: src/reports.cpp:1124
 msgid "Remaining: $left/$max"
-msgstr "Остаётся: $left/$max"
+msgstr ""
 
 #: src/reports.cpp:1128
+#, fuzzy
+#| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
-msgstr "Этот боец может атаковать несколько раз за ход."
+msgstr "Это не мультиплеерное сохранение."
 
 #: src/reports.cpp:1220
 msgid "Time of day schedule:"
@@ -8282,15 +8313,11 @@ msgid "Turn Number"
 msgstr "Номер хода"
 
 #: src/reports.cpp:1391
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
-"Когда игра достигнет количества ходов, указанного вторым номером, она "
+"Когда количество ходов превысит значение, указанное вторым числом, игра "
 "закончится."
 
 #: src/reports.cpp:1416
@@ -8660,7 +8687,7 @@ msgstr "ввода"
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
 #: src/team.cpp:995
 msgid "“$color_id”"
-msgstr "“$color_id”"
+msgstr ""
 
 #: src/terrain/terrain.cpp:192
 msgid "Allied village"
@@ -8880,32 +8907,6 @@ msgstr "Скрыть план $player"
 msgid "Whiteboard Options"
 msgstr "Настройки планировщика"
 
-#, fuzzy
-#~| msgid "Sending add-on <i>$addon_title</i>..."
-#~ msgid ""
-#~ "Requesting the older version composition for the add-on <i>$addon_title</"
-#~ "i>..."
-#~ msgstr "Отправка аддона <i>$addon_title</i>..."
-
-#~ msgid "Connection timed out"
-#~ msgstr "Превышен лимит времени подключения"
-
-#~ msgid "Cancel"
-#~ msgstr "Отмена"
-
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Битва за Веснот"
-
-#~ msgid ""
-#~ "This may indicate an issue with your game configuration. If the problem "
-#~ "persists, contact the development team for technical support, including "
-#~ "the full contents of this message (copy with CTRL+C)."
-#~ msgstr ""
-#~ "Это может свидетельствовать о неполадке с настройкой Вашей игры. Если "
-#~ "проблема сохранится и дальше, сообщите об этом команде разработчиков, "
-#~ "чтобы получить техническую помощь, прикрепив полное содержание этого "
-#~ "сообщения (копировать CTRL+C)."
-
 #~ msgid "Graphics scaling options"
 #~ msgstr "Параметры масштабирования графики"
 
@@ -9004,6 +9005,9 @@ msgstr "Настройки планировщика"
 #~ "(Примечание: Вы должны использовать $replacement вместо этого в новом "
 #~ "коде)"
 
+#~ msgid "Cancel"
+#~ msgstr "Отмена"
+
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "регистрация с паролем *** и без е-мэйла"
 
@@ -9035,6 +9039,9 @@ msgstr "Настройки планировщика"
 
 #~ msgid "Request a list of details you can set for your registered nickname."
 #~ msgstr "Запросить, какие данные можно менять для своего ника."
+
+#~ msgid "Connection timed out"
+#~ msgstr "Превышен лимит времени подключения"
 
 #~ msgid "No Saved Games"
 #~ msgstr "Нет сохранённых игр"
@@ -10414,6 +10421,12 @@ msgstr "Настройки планировщика"
 
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "В ваших списках друзей или игноре никого нет."
+
+# ?
+#, fuzzy
+#~| msgid "The Battle for Wesnoth"
+#~ msgid "Battle for Wesnoth"
+#~ msgstr "Битва за Веснот"
 
 #~ msgid "save_compression_short^gzip"
 #~ msgstr "gzip"

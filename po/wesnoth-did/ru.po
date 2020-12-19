@@ -3,22 +3,22 @@
 # Anthony Kolesov <anthony.kolesov@gmail.com>, 2007-2008.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2007.
 # Fedor Khodkov <fkhodkov@gmail.com>, 2014
-# BabylonAS <BabylonAS@yandex.ru>, 2019
+# BabylonAS <BabylonAS@yandex.ru>, 2019-2020
 msgid ""
 msgstr ""
-"Project-Id-Version: ru\n"
+"Project-Id-Version: wesnoth-did\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2020-11-21 04:41 UTC\n"
-"PO-Revision-Date: 2019-11-09 23:15+0300\n"
+"PO-Revision-Date: 2020-12-12 22:30+0300\n"
 "Last-Translator: BabylonAS <BabylonAS@yandex.ru>\n"
-"Language-Team: \n"
+"Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #. [scenario]: id=09_Descent_into_Darkness
@@ -81,7 +81,7 @@ msgstr ""
 #, fuzzy
 #| msgid "(Intermediate level, 12 scenarios.)"
 msgid "(Intermediate level, 10 scenarios.)"
-msgstr "(Уровень опытности игрока: Подмастерье, 12 сценариев)"
+msgstr "(Средний уровень сложности, 12 сценариев)"
 
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:27
@@ -136,7 +136,7 @@ msgstr ""
 "Малин Кешар родился через десять лет после смерти Халдрика Четвёртого. "
 "Второй ребёнок и старший сын городского главы, он вырос в городе Парфин, "
 "расположенном на северной границе страны. Каждое лето, когда горные тропы и "
-"перевалы теряли свои зимние снежные покровы, из-за северных холмов "
+"перевалы высвобождались из-под покровов снега, из-за северных холмов "
 "вторгались орки, разоряя окраинные поселения. Каждый год жители города во "
 "главе с отцом Малина отражали набеги и заставляли орков отступать обратно к "
 "северу."
@@ -177,7 +177,7 @@ msgid ""
 "too reckless, the mages expelled him from Alduin."
 msgstr ""
 "Хотя его жизнь на Алдуине была мирной и роскошной, наставления учёных магов "
-"показались Малину слишком философскими. Его мысли все время возвращались к "
+"показались Малину слишком философскими. Его мысли все время обращались к "
 "Парфину, где для борьбы с орками была нужна грубая сила, а не отвлечённые "
 "размышления. В это время Малин начал самостоятельно изучать магию, но его "
 "эксперименты за недостатком опыта раз за разом оборачивались неудачей. Один "
@@ -550,7 +550,7 @@ msgid ""
 "now! I’ll not stand by and allow the orcs to destroy my home while I have "
 "the power to prevent it!"
 msgstr ""
-"Нет! Нет... это была какая-то глупость, чего не стоило делать... но это всё "
+"Нет! Нет... это была какая-то глупость, досадная ошибка... но это всё "
 "неважно! Я не буду стоять и смотреть, как орки разрушают мой родной город, "
 "если я могу остановить это с помощью своих умений!"
 
@@ -727,7 +727,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Begone, Malin. I’ve no wish to see your face around here ever again."
 msgid "Begone, Malin. I’ve no wish to see yer face around here ever again."
-msgstr "Сгинь, Малин. Я больше никогда не хочу видеть тебя здесь."
+msgstr "Сгинь, Малин. Я больше не хочу тебя видеть здесь. Никогда."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:616
@@ -997,7 +997,7 @@ msgstr ""
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:157
 msgid "... It will be a worthwhile test of your skills."
-msgstr "...Это будет подходящей проверкой твоих навыков."
+msgstr "...Это станет подходящей проверкой твоих навыков."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:171
@@ -1324,7 +1324,7 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:520
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:708
 msgid "Very well."
-msgstr "Хорошо."
+msgstr "Понял. Сейчас."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:538
@@ -1343,9 +1343,9 @@ msgid ""
 "the flesh. A little remaining is fine; too much will hamper your skeletons’ "
 "movement."
 msgstr ""
-"Это достанется упырям, когда у нас будут силы, чтобы содержать их здесь. "
-"Теперь отдели всю плоть. Можно немного оставить, но не слишком много, чтобы "
-"не мешать движению скелета."
+"Эту работу можно будет поручить упырям, как только у нас будут силы их "
+"содержать. Теперь отдели всю плоть. Можно немного оставить, но не слишком "
+"много, чтобы не мешать движению скелета."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:568
@@ -1403,8 +1403,8 @@ msgid ""
 "It seems that raising skeletons is already a trivial matter for you now. You "
 "are indeed... talented."
 msgstr ""
-"Похоже, поднимать скелетов ты можешь уже с легкостью. У тебя правда есть... "
-"талант."
+"Похоже, поднимать скелетов ты можешь уже с легкостью. У тебя и правда... "
+"есть талант."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:743
@@ -2316,11 +2316,11 @@ msgid ""
 "creature. Exactly what one would expect from an orc.’</i> Malin thinks "
 "carefully and quickly realizes what he should do."
 msgstr ""
-"<i>‘Этому вождю совершенно незачем звать на помощь в борьбе со мной весь "
+"<i>«Этому вождю совершенно незачем звать на помощь в борьбе со мной весь "
 "свой остальной клан. Думаю, он считает, что я буду нападать на остальных "
 "Белых Клыков и не буду гнаться за ним самим; пока его сородичи будут заняты "
 "мной, ему самому удастся разорить больше поселений без особых проблем для "
-"себя. Эгоист. Именно этого и стоило ожидать от орка.’</i> Малин тщательно "
+"себя. Эгоист. Именно этого и стоило ожидать от орка.»</i> Малин тщательно "
 "обдумал всё и понял, что ему нужно сделать."
 
 #. [part]
@@ -2392,7 +2392,7 @@ msgstr ""
 #| msgid ""
 #| "Banishment or not, I am here to help defend the town against the orcs!"
 msgid "Banishment or not, I’m here to help defend my home against the orcs!"
-msgstr "Изгнание или нет, но мне нужно защитить город от орков!"
+msgstr "Пусть изгнание, но мне нужно защитить город от орков!"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:261
@@ -2595,7 +2595,7 @@ msgid ""
 "me from protecting Parthyn. I’ll defend my home no matter the cost, even if "
 "it means I must cut you down first."
 msgstr ""
-"Деоран - ты предатель. Ты не даёшь мне защитить Парфин! Я буду защищать свой "
+"Дроган — ты предатель. Ты не даёшь мне защитить Парфин! Я буду защищать свой "
 "дом любой ценой, и если мне сперва придётся убить тебя, то так тому и быть."
 
 #. [message]: speaker=Malin Keshar
@@ -2947,7 +2947,7 @@ msgid ""
 "and secured Parthyn against further raids, I will hunt you down and I will "
 "kill you. You are my brother no longer."
 msgstr ""
-"Беги пока можешь, Малин Окаянный! Когда разберусь с этими орками и сделаю "
+"Беги пока можешь, Малин Проклятый! Когда разберусь с этими орками и сделаю "
 "всё, чтобы на Парфин больше не нападали, поверь мне, я тебя выслежу и "
 "прикончу. Ты мне больше не брат."
 
@@ -2963,7 +2963,7 @@ msgid ""
 "against further raids, I will hunt you down and I will kill you. You are my "
 "brother no longer."
 msgstr ""
-"Беги пока можешь, Малин Окаянный! Когда сделаю всё, чтобы на Парфин больше "
+"Беги пока можешь, Малин Проклятый! Когда сделаю всё, чтобы на Парфин больше "
 "не нападали, поверь мне, я тебя выслежу и прикончу. Ты мне больше не брат."
 
 #. [message]: speaker=Malin Keshar
@@ -3045,7 +3045,7 @@ msgstr ""
 "слепы. Я не сожалею ни о чём, мною совершённом. Не сожалею...»</i> Он "
 "заглушил этот голос. Наконец пришёл сон, длинные отрывки беспробудной "
 "темноты, прерванные ненадолго кошмарными, искажёнными образами, которые "
-"шептались до жути знакомыми голосами. <i>Ты проклят, Малин Окаянный! "
+"шептались до жути знакомыми голосами. <i>Ты проклят, Малин! Ты проклят! "
 "Проклят! Проклят. Проклят...</i> Они продолжали звучать снова и снова, "
 "сначала хором, потом парой мужских голосов, а затем остался лишь один, один "
 "голос во тьме."
@@ -3116,10 +3116,8 @@ msgstr "Грабители"
 
 #. [side]: type=General, id=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07a_A_Small_Favor.cfg:152
-#, fuzzy
-#| msgid "General Taylor"
 msgid "Taylor"
-msgstr "Генерал Тейлор"
+msgstr "Тейлор"
 
 #. [side]: type=General, id=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07a_A_Small_Favor.cfg:161
@@ -3183,10 +3181,8 @@ msgstr "Переместите Малина и Тёмного Волька в у
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/07a_A_Small_Favor.cfg:427
-#, fuzzy
-#| msgid "OR: Defeat General Taylor"
 msgid "Defeat General Taylor"
-msgstr "Или: Убейте генерала Тейлора"
+msgstr "Убейте генерала Тейлора"
 
 #. [note]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07a_A_Small_Favor.cfg:446
@@ -4025,7 +4021,7 @@ msgid ""
 "Fighting the orcs is your ambition, not mine. You cannot expect me to help "
 "you in an endeavor that does not concern me at all."
 msgstr ""
-"Довольно пустой болтовни, мальчишка. Борьба с орками - твоя цель, но не моя. "
+"Довольно пустой болтовни, мальчишка. Борьба с орками — твоя цель, но не моя. "
 "Не стоит тебе ждать от меня помощи в деле, которое меня совершенно не "
 "касается."
 
@@ -4398,7 +4394,7 @@ msgid ""
 "entire army is destroyed and he is badly injured by a poisoned dagger. Malin "
 "retreats and finds refuge in a small cave."
 msgstr ""
-"<i>«Мне всё равно больше ничего не остается»</i>. - подумал Малин, и призвал "
+"<i>«Мне всё равно больше ничего не остается»</i>. — подумал Малин, и призвал "
 "своих мертвецов идти в атаку на лагерь. За считанные минуты почти всё войско "
 "было потеряно, а сам Малин был страшно ранен отравленным кинжалом. Он "
 "отступил и нашёл убежище в маленькой пещере."
@@ -4429,8 +4425,8 @@ msgid ""
 "Perhaps it would be a suitable end. The orcs were the ones who provoked this "
 "journey of mine. Would it not be fitting for them to end my quest as well?"
 msgstr ""
-"Подходящий конец, я так думаю. Все мои похождения начались из-за орков. "
-"Разве не они и должны были покончить со всем этим?"
+"Достойный конец, я так думаю. Все мои похождения начались из-за орков. Разве "
+"не они и должны были покончить со всем этим?"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:390
@@ -4487,7 +4483,7 @@ msgstr "Плоть Малина Кешара"
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:624
 msgid "I feel... different. Where am I?"
-msgstr "Я чувствую себя... как-то по другому. Где я?"
+msgstr "Я чувствую себя... непривычно. Где я?"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:629
@@ -4536,7 +4532,7 @@ msgstr "Плоть умирает, и затем..."
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:836
 msgid "Drain the blood, strip away the meat, and all that is left is the bone."
-msgstr "Выпустить кровь, отсечь всё мясо, и остаются всего лишь кости."
+msgstr "Выпустить кровь, отсечь всю плоть, и остаются всего лишь кости."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:863
@@ -4858,7 +4854,7 @@ msgstr "Какая-то необычная летучая мышь."
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:2125
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:2151
 msgid "Yes! I can draw energy from even these insignificant creatures."
-msgstr "Да! Я могу отбирать жизненные силы у этих никчёмных существ."
+msgstr "Да! Я могу отбирать жизненные силы даже у этих никчёмных существ."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:2174
@@ -4995,12 +4991,12 @@ msgid ""
 "Then, the key is found and the lid opened,\n"
 "And the tongue of fire begets ashen repose.</i>"
 msgstr ""
-"< i>Кости, небрежно разбросанные по полу,\n"
+"<i>Кости, небрежно разбросанные по полу,\n"
 "Остаются лежать без отдыха,\n"
 "Живут за пределами своего гроба, заперты,\n"
 "В вечном бодрствовании.\n"
 "Затем ключ найден и крышка открыта,\n"
-"И язык огня дает покой пеплу.</я>"
+"И язык огня дает покой пеплу.</i>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:2986
@@ -5277,11 +5273,11 @@ msgid ""
 "orcs, removing all human, elven, and dwarven patrols that impede them. Every "
 "year, the undead inflict some damage before being repelled."
 msgstr ""
-"Шли годы. Каждое лето, когда горные тропы и перевалы снимали с себя зимние "
-"покровы снега, лич посылал своих воинов против орков, позволяя им уничтожать "
-"все отряды людей, гномов и эльфов, которые вставали у них на пути. Каждый "
-"год мертвецы наносили кое-какой вред, прежде чем отступить под ответными "
-"ударами живых существ."
+"Шли годы. Каждое лето, когда горные тропы и перевалы высвобождались из-под "
+"покровов снега, лич посылал своих воинов против орков, позволяя им "
+"уничтожать все отряды людей, гномов и эльфов, которые вставали у них на "
+"пути. Каждый год мертвецы наносили кое-какой вред, прежде чем отступить под "
+"ответными ударами живых существ."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:29
@@ -5354,7 +5350,7 @@ msgstr ""
 "что мы одолели тот первородный страх: страх смерти. Вместо этого они смотрят "
 "на нас и отдаются безумному ужасу, едва увидев наш облик. Мне с ними не по "
 "пути. [...] Когда-нибудь в будущем, менее консервативный настрой может "
-"возобладать, и наше знание может быть использовано во благо . Я определённо "
+"возобладать, и наше знание может быть использовано во благо. Я определённо "
 "смогу дождаться до этого. А пока, мы делаем то, чтобы приблизить этот "
 "день.»</i>"
 
@@ -5688,8 +5684,8 @@ msgid ""
 msgstr ""
 "Белые клыки! Это вы разорили мою родину и сожгли мой дом. Это из-за вас я "
 "обратился к некромантии, чтобы защитить себя. Это вы закончили мою смертную "
-"жизнь и заставили меня обратиться в лича. И вы ищете возмездия? Ха! Я бы "
-"умер в истерике от иронии, если бы вообще смог ощущать это чувство."
+"жизнь и заставили меня обратиться в лича. И вы ищете возмездия? Ха! Я бы от "
+"иронии умер в истерике, если бы вообще мог ей поддаваться."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1078
@@ -5771,7 +5767,7 @@ msgid ""
 "Aye, but the lich still seems ta be hurtin’. Let’s take it ’n retreat. Maybe "
 "tha forge ken destroy it."
 msgstr ""
-"Ага, лич, кажется, ранен. Давайте возьмем ее и отступим. Может быть, мы "
+"Ага, но лич, кажется, ранен. Давай возьмем её и отступим. Может быть, мы "
 "сожжем книгу в кузнице."
 
 #. [message]: speaker=unit
@@ -5852,8 +5848,8 @@ msgid ""
 "orcish raiders. Undead no longer trouble the watches and memories of the "
 "lich fade to mere legend."
 msgstr ""
-"Шли годы. Каждое лето, когда горные тропы и перевалы снимали с себя зимние "
-"покровы снега, люди, эльфы и гномы шли на вылазку, пытаясь защитить себя от "
+"Шли годы. Каждое лето, когда горные тропы и перевалы высвобождались из-под "
+"покровов снега, люди, эльфы и гномы шли на вылазку, пытаясь защитить себя от "
 "орочьих набегов. Мертвецы больше не тревожили патрули, и история о личе "
 "превратилась в очередную легенду."
 
@@ -6023,7 +6019,7 @@ msgstr ""
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1560
 msgid "Slain by those who were once my countrymen..."
-msgstr "Убит теми, кто когда-то был моим соотечественником..."
+msgstr "Убит теми, кто когда-то были моими соотечественниками..."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1570
@@ -6143,7 +6139,7 @@ msgstr ""
 #. regular english - the lich is nothing but a pile of bones now
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1680
 msgid "Tha lich be nae but a pile o’ bones now."
-msgstr "Теперь этот лич - просто груда костей."
+msgstr "Теперь этот лич — просто груда костей."
 
 #. [message]: role=second
 #. regular english - I wonder what kind of human he was in life
@@ -6159,14 +6155,14 @@ msgid ""
 "’is slaves. Why else d’ye think tha lad woul’ turn ta dark magic?"
 msgstr ""
 "Думаю, что он был каким-то спятившим магом, который хотел сделать других "
-"людей своими рабами. А почему еще, ты думаешь, этот парень обратился бы к "
+"людей своими рабами. А почему ещё, ты думаешь, этот парень обратился бы к "
 "темной магии?"
 
 #. [message]: role=second
 #. regular english - I don't know. You think the lich's castle can be useful
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1698
 msgid "I dinna know. Ye think tha lich’s castle ken be useful?"
-msgstr "Да черт его знает. Ты думаешь, логово лича может нам пригодиться?"
+msgstr "Да чёрт его знает. Ты думаешь, логово лича может нам пригодиться?"
 
 #. [message]: role=speakinghero
 #. regular english - Yes. Let's get to work.
@@ -6189,7 +6185,6 @@ msgstr "Лич мёртв! Я наконец отомстил за своего 
 msgid "Who you think he was, boss?"
 msgstr "Кем он, по-твоему, мог быть, владыка?"
 
-# «мажок» — презрительно-уменшительное от «маг», подобно словам «божок» и «бог»
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1732
 msgid ""
@@ -6328,7 +6323,7 @@ msgstr ""
 #. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:6
 msgid "female^Frontier Baroness"
-msgstr "female^Приграничная баронесса"
+msgstr "Приграничная баронесса"
 
 #. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
@@ -7031,46 +7026,11 @@ msgid ""
 "<italic>text='Maimed'</italic> units have 3 less movement points than usual."
 msgstr ""
 
-#~ msgid ""
-#~ "Fear is the path to the dark side. Fear leads to anger. Anger leads to "
-#~ "hate. Hate leads to suffering."
-#~ msgstr ""
-#~ "Страх ведёт к тёмной стороне. Страх ведёт к злости. Злость — к ненависти. "
-#~ "Ненависть — к страданиям."
-
-#, fuzzy
-#~| msgid "Enemy units have reduced vision (radius 3)"
-#~ msgid "Enemy units have reduced vision (radius 3)."
-#~ msgstr "У вражеских юнитов уменьшен обзор (радиус 3)"
-
-#~ msgid "The only thing we have to fear is fear itself."
-#~ msgstr "Единственное, чего стоит бояться — это самого страха."
-
-#~ msgid "<i>... nameless, unreasoning, unjustified terror...</i>"
-#~ msgstr "<i>... безымянного, беспричинного, неоправданного ужаса...</i>"
-
-#~ msgid ""
-#~ "Such an old, worn book. It does not seem like much, but at least we’ve "
-#~ "got it now."
-#~ msgstr ""
-#~ "Книга такая старая, ветхая. Она уже и не выглядит такой важной, но, по "
-#~ "крайней мере, мы её нашли."
-
-#~ msgid "... So... how do we get out of here?"
-#~ msgstr "... Ну... и как нам отсюда выбираться?"
+#~ msgid "Difficult"
+#~ msgstr "Очень сложный"
 
 #~ msgid "Dialogue Comments and Revisions"
 #~ msgstr "Комментарии к диалогу и его правки"
-
-#~ msgid ""
-#~ "This unit will 40 HP every turn. If it is poisoned, it will remove the "
-#~ "poison instead of healing."
-#~ msgstr ""
-#~ "Юнит исцеляется каждый ход на 40 очков здоровья. Если он отравлен, то "
-#~ "снимается яд вместо исцеления."
-
-#~ msgid "Difficult"
-#~ msgstr "Очень сложный"
 
 #~ msgid ""
 #~ "You say it will ensure our survival, but at what price? Defiling the "
@@ -7078,6 +7038,13 @@ msgstr ""
 #~ msgstr ""
 #~ "По-твоему это поможет нам выжить, но какой ценой? Осквернишь тела тех из "
 #~ "нас, кто уже мёртв? Душу свою продашь тьме?"
+
+#~ msgid ""
+#~ "Fear is the path to the dark side. Fear leads to anger. Anger leads to "
+#~ "hate. Hate leads to suffering."
+#~ msgstr ""
+#~ "Страх ведёт к тёмной стороне. Страх ведёт к злости. Злость — к ненависти. "
+#~ "Ненависть — к страданиям."
 
 #~ msgid ""
 #~ "It sickens me to be of the same blood as a necromancer. Father would turn "
@@ -7106,15 +7073,18 @@ msgstr ""
 #~ "year. No more needless deaths, no more senseless bloodshed, no more "
 #~ "fear..."
 #~ msgstr ""
-#~ "Они должны будут быть благодарными. Представь себе. Больше не придётся "
-#~ "заново отстраивать наши дома год за годом. Больше не будет ненужных "
-#~ "смертей, не будет литься кровь, не будет одолевать страх..."
+#~ "Они будут мне благодарны. Представь себе. Больше не придётся заново "
+#~ "отстраивать наши дома год за годом. Больше не будет ненужных смертей, не "
+#~ "будет литься кровь, не будет одолевать страх..."
 
 #~ msgid "The goblin knight is dead, master."
 #~ msgstr "Гоблин-рыцарь мёртв, учитель."
 
 #~ msgid "Excellent. I’m eager to move on to some real foes."
 #~ msgstr "Отлично. Я жажду встретиться с настоящим врагом."
+
+#~ msgid "Monsters"
+#~ msgstr "Монстры"
 
 #~ msgid "This cave is infested with giant scorpions!"
 #~ msgstr "В этой пещере водятся гигантские скорпионы!"
@@ -7201,7 +7171,7 @@ msgstr ""
 #~ "try the other one now."
 #~ msgstr ""
 #~ "Думаю, мне удалось вернуть его под свой контроль. Ух... он меня почти "
-#~ "достала. Теперь попробую с другим."
+#~ "достал. Теперь попробую с другим."
 
 #~ msgid "No mishaps this time, but you will need to practice more."
 #~ msgstr "На этот раз пронесло, но тебе ещё нужно тренироваться."
@@ -7315,8 +7285,8 @@ msgstr ""
 #~ "female^I joined Malin of my own free will! You fools simply do not "
 #~ "understand the power that necromancy holds."
 #~ msgstr ""
-#~ "female^Я присоединилась к Малину по своей воле! Глупцы, вы просто не "
-#~ "понимаете, какую силу таит в себе тёмная магия."
+#~ "Я присоединилась к Малину по своей воле! Глупцы, вы просто не понимаете, "
+#~ "какую силу таит в себе тёмная магия."
 
 #~ msgid ""
 #~ "I understand it well enough to know that it makes all who embrace it evil."
@@ -7352,8 +7322,8 @@ msgstr ""
 #~ "female^I joined Malin of my own free will! The orcs would have overrun "
 #~ "you if not for Malin’s powers!"
 #~ msgstr ""
-#~ "female^Я перешла к Малину по своей воле! Если бы не его способности, орки "
-#~ "бы растерзали всех нас!"
+#~ "Я перешла к Малину по своей воле! Если бы не его способности, орки бы "
+#~ "растерзали всех нас!"
 
 #~ msgid ""
 #~ "You necromancers defile the bodies of the dead and slaughter the innocent "
@@ -7399,6 +7369,9 @@ msgstr ""
 #~ msgid "This scenario takes place entirely at night."
 #~ msgstr "Этот сценарий протекает целиком ночью."
 
+#~ msgid "Enemy units have reduced vision (radius 3)."
+#~ msgstr "У вражеских юнитов уменьшен обзор (радиус 3)."
+
 #~ msgid "What was that?!"
 #~ msgstr "Что это такое было?!"
 
@@ -7410,6 +7383,12 @@ msgstr ""
 #~ "Это было действие того, что среди простых людей известно как святая вода. "
 #~ "Её готовят в ходе сложной процедуры, известной лишь немногим священникам. "
 #~ "Как ты можешь видеть, против мертвецов она весьма эффективна."
+
+#~ msgid "The only thing we have to fear is fear itself."
+#~ msgstr "Единственное, чего стоит бояться — это самого страха."
+
+#~ msgid "<i>... nameless, unreasoning, unjustified terror...</i>"
+#~ msgstr "<i>... безымянного, беспричинного, неоправданного ужаса...</i>"
 
 #~ msgid "How... dare you..."
 #~ msgstr "Как... ты... смеешь..."
@@ -7423,6 +7402,16 @@ msgstr ""
 #~ msgid "I have found the book, master!"
 #~ msgstr "Я нашёл книгу, учитель!"
 
+#~ msgid ""
+#~ "Such an old, worn book. It does not seem like much, but at least we’ve "
+#~ "got it now."
+#~ msgstr ""
+#~ "Книга такая старая, ветхая. Она уже и не выглядит такой важной, но, по "
+#~ "крайней мере, мы её нашли."
+
+#~ msgid "... So... how do we get out of here?"
+#~ msgstr "... Ну... и как нам отсюда выбираться?"
+
 #~ msgid "... have I really just been a pawn all this time?"
 #~ msgstr ""
 #~ "... всё время я был всего лишь тем, кто делал кому-то грязную работу?"
@@ -7433,6 +7422,9 @@ msgstr ""
 #~ msgstr ""
 #~ "Ты же не думал, что я не сдержу своё слово? В атаку, ребята! Не дайте "
 #~ "изменнику сбежать!"
+
+#~ msgid "Opposers"
+#~ msgstr "Противники"
 
 #~ msgid "I’m ready. Do it."
 #~ msgstr "Я готов. Начинай."
@@ -7465,10 +7457,17 @@ msgstr ""
 #~ "transformation."
 #~ msgstr ""
 #~ "Мал Кешар нашёл время изучить книгу и обрёл знания, как его ученики "
-#~ "смогут стать личами не испытывая судьбу, как это сделал сам Малин."
+#~ "смогут стать личами, не испытывая судьбу, как это сделал сам Малин."
 
 #~ msgid "Lich"
 #~ msgstr "Лич"
+
+#~ msgid ""
+#~ "This unit will 40 HP every turn. If it is poisoned, it will remove the "
+#~ "poison instead of healing."
+#~ msgstr ""
+#~ "Юнит исцеляется каждый ход на 40 очков здоровья. Если он отравлен, то "
+#~ "снимается яд вместо исцеления."
 
 #~ msgid ""
 #~ "Learn the dark arts of necromancy in order to save your people from an "
