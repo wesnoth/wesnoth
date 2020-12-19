@@ -1,3 +1,10 @@
+## Version 1.14.15+dev
+ ### Add-ons client
+ ### Campaigns
+ ### Translations
+ ### User interface
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.14.15
  ### Add-ons client
    * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
