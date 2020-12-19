@@ -1091,7 +1091,7 @@ struct dialog_tester<title_screen>
 	std::vector<std::string> args;
 	commandline_options opts;
 	game_launcher game;
-	dialog_tester() : opts(args), game(opts, "unit_tests") {}
+	dialog_tester() : opts(args), game(opts) {}
 	title_screen* create()
 	{
 		return new title_screen(game);

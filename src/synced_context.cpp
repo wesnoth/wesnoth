@@ -233,7 +233,7 @@ void synced_context::send_user_choice()
 std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 {
 	const std::string& mode = resources::classification->random_mode;
-	if(mode == "deterministic") {
+	if(mode == "deterministic" || mode == "biased") {
 		return std::make_shared<randomness::rng_deterministic>(resources::gamedata->rng());
 	} else {
 		return std::make_shared<randomness::synced_rng>(generate_random_seed);

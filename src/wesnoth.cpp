@@ -724,7 +724,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return finished;
 	}
 
-	const auto game = std::make_unique<game_launcher>(cmdline_opts, args[0].c_str());
+	const auto game = std::make_unique<game_launcher>(cmdline_opts);
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();

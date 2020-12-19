@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:40-0300\n"
+"POT-Creation-Date: 2020-12-18 22:26-0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -239,7 +239,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1075
 msgid "poisoned"
 msgstr "otrovan"
 
@@ -1162,7 +1162,7 @@ msgstr ""
 
 #. [object]
 #. [item]: id=holly-water
-#: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
+#: data/core/editor/items.cfg:282 data/core/macros/items.cfg:283
 msgid "Holy Water"
 msgstr "sveta vodica"
 
@@ -1206,7 +1206,7 @@ msgstr ""
 
 #. [object]: id={ID}
 #. [item]: id=potion-poison
-#: data/core/editor/items.cfg:336 data/core/macros/items.cfg:242
+#: data/core/editor/items.cfg:336 data/core/macros/items.cfg:246
 msgid "Poison"
 msgstr "otrov"
 
@@ -1285,7 +1285,7 @@ msgstr ""
 
 #. [object]
 #. [item]: id=storm-trident
-#: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
+#: data/core/editor/items.cfg:420 data/core/macros/items.cfg:529
 msgid "Storm Trident"
 msgstr "olujni trozubac"
 
@@ -1792,28 +1792,28 @@ msgstr ""
 "currently_doing_special_description"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:34
+#: data/core/macros/deprecated-utils.cfg:35
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has been renamed to: "
 msgstr "bez pogodnog oružja"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:52 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "Bonus za rani završetak."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:56 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "Bez bonusa za rani završetak."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr "Zlato se ne prenosi u sljedeći scenario."
 
-#: data/core/macros/deprecated-utils.cfg:63
+#: data/core/macros/deprecated-utils.cfg:64
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1821,7 +1821,7 @@ msgstr ""
 "\n"
 "100% zlata na kraju prenosi se u sljedeći scenario."
 
-#: data/core/macros/deprecated-utils.cfg:68
+#: data/core/macros/deprecated-utils.cfg:69
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1829,7 +1829,7 @@ msgstr ""
 "\n"
 "40% zlata na kraju prenosi se u sljedeći scenario."
 
-#: data/core/macros/deprecated-utils.cfg:73
+#: data/core/macros/deprecated-utils.cfg:74
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -1838,17 +1838,17 @@ msgstr ""
 "20% zlata na kraju prenosi se u sljedeći scenario."
 
 #. [message]: speaker=narrator
-#: data/core/macros/items.cfg:21
+#: data/core/macros/items.cfg:23
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr "Nabasa na bunar želja. Koja ti je želja?"
 
 #. [option]
-#: data/core/macros/items.cfg:24
+#: data/core/macros/items.cfg:26
 msgid "A swift victory"
 msgstr "Brza pobjeda"
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:32
+#: data/core/macros/items.cfg:34
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
@@ -1856,51 +1856,51 @@ msgstr ""
 "Ovim zlatnim novčićem, želim da se bitka okonča brzom i sigurnom pobjedom."
 
 #. [option]
-#: data/core/macros/items.cfg:38
+#: data/core/macros/items.cfg:40
 msgid "Lots of gold"
 msgstr "Brdo zlata"
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:46
+#: data/core/macros/items.cfg:48
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Želim da mi se ovaj jedan zlatni novčić vrati desetostruko."
 
 #. [option]
-#: data/core/macros/items.cfg:52
+#: data/core/macros/items.cfg:54
 msgid "Peace throughout Wesnoth."
 msgstr "Mir u cijelom Vesnotu."
 
 #. [message]: speaker=unit
-#: data/core/macros/items.cfg:60
+#: data/core/macros/items.cfg:62
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "Jedino vrijedno želje jeste mir u čitavoj zemlji."
 
 #. [option]
-#: data/core/macros/items.cfg:66
+#: data/core/macros/items.cfg:68
 msgid "Don’t make a wish."
 msgstr "Ne poželi ništa."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:204
+#: data/core/macros/items.cfg:207
 msgid "Potion of Healing"
 msgstr "napitak izlječenja"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:207
+#: data/core/macros/items.cfg:210
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "Osjećaj dobrostanja obli ispijača."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:208
+#: data/core/macros/items.cfg:211
 msgid "You are not worthy of healing."
 msgstr "Ne zavređuješ iscjeljenje."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:245
+#: data/core/macros/items.cfg:249
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Otrov teče venama ove jedinice baš u ovom trenutku."
 
-#: data/core/macros/items.cfg:273
+#: data/core/macros/items.cfg:278
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
@@ -1908,22 +1908,22 @@ msgstr ""
 "Poprskana ovom vodom, oružja za blisku borbu nanose <i>volšebni</i> vid "
 "štete do kraja tekućeg scenarija. Da li da je $unit.name upotrebi?"
 
-#: data/core/macros/items.cfg:274
+#: data/core/macros/items.cfg:279
 msgid "holy water^Take it"
 msgstr "Uzmi"
 
-#: data/core/macros/items.cfg:275
+#: data/core/macros/items.cfg:280
 msgid "holy water^Leave it"
 msgstr "Ostavi"
 
-#: data/core/macros/items.cfg:276
+#: data/core/macros/items.cfg:281
 #, fuzzy
 #| msgid "I am not suited to the use of this item! Let another take it."
 msgid "$unit.name has no need for this Holy Water! Let another take it."
 msgstr "Nisam pogodan da nosim ovo! Neka je drugi uzme."
 
 #. [object]
-#: data/core/macros/items.cfg:281
+#: data/core/macros/items.cfg:286
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
@@ -1932,80 +1932,80 @@ msgstr ""
 "tekućeg scenarija."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:310
+#: data/core/macros/items.cfg:316
 msgid "Potion of Strength"
 msgstr "napitak snage"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:313
+#: data/core/macros/items.cfg:319
 msgid "Strength is given to the drinker."
 msgstr "Daje snagu ispijaču."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:353
+#: data/core/macros/items.cfg:360
 msgid "Potion of Decay"
 msgstr "napitak raspada"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:356
+#: data/core/macros/items.cfg:363
 msgid "This poor unit drank something really bad."
 msgstr "Ova jadna jedinica ispi nešto zaista loše."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:390
+#: data/core/macros/items.cfg:398
 msgid "Ring of Regeneration"
 msgstr "prsten obnavljanja"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:393
+#: data/core/macros/items.cfg:401
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Ovaj prsten će pomalo liječiti nosioca u svakom potezu."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:429
+#: data/core/macros/items.cfg:438
 msgid "Ring of Slowness"
 msgstr "prsten usporenja"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:432
+#: data/core/macros/items.cfg:441
 msgid "The bearer of this ring is slowed."
 msgstr "Nosilac ovo prstena biva usporen."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:466
+#: data/core/macros/items.cfg:476
 msgid "Staff of Swiftness"
 msgstr "štap žustrine"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:469
+#: data/core/macros/items.cfg:479
 msgid "This staff will grant the bearer swift movement."
 msgstr "Ovaj štap će podariti nosiocu žustrinu kretanja."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:470
+#: data/core/macros/items.cfg:480
 msgid "Only magical beings can wield such an object."
 msgstr "Samo magična stvorenja mogu koristiti takav predmet."
 
-#: data/core/macros/items.cfg:513
+#: data/core/macros/items.cfg:524
 msgid "Should $unit.name pick up the trident?"
 msgstr "Treba li $unit.name da pokupi trozubac?"
 
-#: data/core/macros/items.cfg:514
+#: data/core/macros/items.cfg:525
 msgid "storm trident^Take it"
 msgstr "Uzmi"
 
-#: data/core/macros/items.cfg:515
+#: data/core/macros/items.cfg:526
 msgid "storm trident^Leave it"
 msgstr "Ostavi"
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:527
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:532
 #, fuzzy
 #| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
@@ -2014,17 +2014,17 @@ msgstr ""
 "Ovim trozupcem morejac može ispaljivati električne munje na neprijatelje!"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:536
 msgid "storm trident"
 msgstr "olujni trozubac"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:548
+#: data/core/macros/items.cfg:560
 msgid "sceptre of fire"
 msgstr "vatreno žezlo"
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:18
+#: data/core/macros/names.cfg:19
 msgid ""
 "Egar,Elch,Ga’ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart’lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -2046,7 +2046,7 @@ msgstr ""
 "Veralon,Veramo,Verat,Verdit,Verkon,Verlin,Vermad,Vertik,Vladnir"
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:19
+#: data/core/macros/names.cfg:20
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
@@ -2057,7 +2057,7 @@ msgstr ""
 "Ka,Veštar,Vuštin"
 
 #. Generator for male drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:21
+#: data/core/macros/names.cfg:22
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}’{suffix}|{prefix}{suffix} {short_name}\n"
@@ -2069,7 +2069,7 @@ msgid ""
 msgstr ""
 
 #. Generator for female drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:28
+#: data/core/macros/names.cfg:29
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{suffix} {short_name}\n"
@@ -2079,7 +2079,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:37
+#: data/core/macros/names.cfg:38
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
 "Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
@@ -2167,7 +2167,7 @@ msgstr ""
 "Tridurlol,Tridursil,Tridurus,Tritas,Tritajil,Tritajing,Tritasol,Tritaus"
 
 #. Generator for male dwarf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:39
+#: data/core/macros/names.cfg:40
 msgid ""
 "\n"
 "main={long_name}\n"
@@ -2181,7 +2181,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:50
+#: data/core/macros/names.cfg:51
 msgid ""
 "Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
 "Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
@@ -2301,7 +2301,7 @@ msgstr ""
 "Vulas,Vuldur,Vundujil,Vilas,Vildor"
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:51
+#: data/core/macros/names.cfg:52
 msgid ""
 "Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
 "Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
@@ -2434,7 +2434,7 @@ msgstr ""
 "Vitranijel,Vivijel,Vodija,Vong,Vorfiklija,Vorfing,Vorfirit,Vorfivijel,Vovijen"
 
 #. Generator for male elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:53
+#: data/core/macros/names.cfg:54
 msgid ""
 "\n"
 "main={generated_prefix}{consonnant}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2453,7 +2453,7 @@ msgid ""
 msgstr ""
 
 #. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:67
+#: data/core/macros/names.cfg:68
 msgid ""
 "\n"
 "main={generated_prefix_v}{centre_v}{suffix_v}|{generated_prefix_c}{centre_c}"
@@ -2478,17 +2478,17 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:87
+#: data/core/macros/names.cfg:88
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgstr "Graa,Greaa,Gree,Kaa,Kaaš,Keeš,Koro,Kraa,Kuu,Kzaa,Kzuu"
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:88
+#: data/core/macros/names.cfg:89
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kaja,Keja,Kiira,Kora"
 
 #. Generator for male gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:90
+#: data/core/macros/names.cfg:91
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2498,7 +2498,7 @@ msgid ""
 msgstr ""
 
 #. Generator for female gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:97
+#: data/core/macros/names.cfg:98
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2508,7 +2508,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:106
+#: data/core/macros/names.cfg:107
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -2604,7 +2604,7 @@ msgstr ""
 "Irodri,Irulin,Irumir,Irunin,Irunvan,Irilin,Irimir,Irinik,Irirsin"
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:107
+#: data/core/macros/names.cfg:108
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -2699,7 +2699,7 @@ msgstr ""
 "Isoda,Isongven,Isonoik,Isura,Isuaniver,Isikla,Isila,Isilijan,Isirka,Isasa"
 
 #. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:109
+#: data/core/macros/names.cfg:110
 msgid ""
 "\n"
 "main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
@@ -2721,7 +2721,7 @@ msgid ""
 msgstr ""
 
 #. Generator for female Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:125
+#: data/core/macros/names.cfg:126
 msgid ""
 "\n"
 "main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
@@ -2743,7 +2743,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:143
+#: data/core/macros/names.cfg:144
 msgid ""
 "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
 "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
@@ -2892,7 +2892,7 @@ msgstr ""
 "Junus,Jušua,Jusri,Jusuf,Zafar,Zafir,Zahid,Zahir,Zajd,Zajim,Zajn,Zarif,"
 "Zakarija,Zaki,Zakvan,Zijad,Zubajir,Zuhajir"
 
-#: data/core/macros/names.cfg:144
+#: data/core/macros/names.cfg:145
 msgid ""
 "Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
 "Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
@@ -2906,7 +2906,7 @@ msgid ""
 msgstr ""
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:146
+#: data/core/macros/names.cfg:147
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -2924,7 +2924,7 @@ msgid ""
 msgstr ""
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:157
+#: data/core/macros/names.cfg:158
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -2955,7 +2955,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:177
+#: data/core/macros/names.cfg:179
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -2980,7 +2980,7 @@ msgstr ""
 "Zandler,Zedriks,Zilriks,Zizaz,Zlap,Zalks,Zupde"
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:179
+#: data/core/macros/names.cfg:181
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2992,7 +2992,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:188
+#: data/core/macros/names.cfg:190
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -3011,7 +3011,7 @@ msgstr ""
 "Vodnik,Vorukasa"
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:189
+#: data/core/macros/names.cfg:191
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -3024,7 +3024,7 @@ msgstr ""
 "Maris,Telksijepija,Tirgata,Vateja,Ved-ava,Ven-emo,Vete-ema"
 
 #. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:191
+#: data/core/macros/names.cfg:193
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3036,7 +3036,7 @@ msgid ""
 msgstr ""
 
 #. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:198
+#: data/core/macros/names.cfg:200
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3047,7 +3047,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:207
+#: data/core/macros/names.cfg:209
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -3064,7 +3064,7 @@ msgstr ""
 "Vlanis,Ksabrak,Ksamalel,Ksinas,Ksnamos,Ksopkon,Zalsp,Zlek,Zepsek,Zekp"
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:208
+#: data/core/macros/names.cfg:210
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -3083,7 +3083,7 @@ msgstr ""
 "Ksopkne,Zalsp,Zlek,Zepsek,Zekp"
 
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:210
+#: data/core/macros/names.cfg:212
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3095,7 +3095,7 @@ msgid ""
 msgstr ""
 
 #. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:216
+#: data/core/macros/names.cfg:218
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3107,7 +3107,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:224
+#: data/core/macros/names.cfg:226
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -3123,7 +3123,7 @@ msgstr ""
 "Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakon,Urkar,Irkark"
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:226
+#: data/core/macros/names.cfg:228
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3133,7 +3133,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:234
+#: data/core/macros/names.cfg:236
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -3201,7 +3201,7 @@ msgstr ""
 "Vurbag,Vurg,Vušnak"
 
 #. Generator for orc names
-#: data/core/macros/names.cfg:236
+#: data/core/macros/names.cfg:238
 msgid ""
 "\n"
 "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
@@ -3218,7 +3218,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:248
+#: data/core/macros/names.cfg:250
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -3231,7 +3231,7 @@ msgstr ""
 "Trok,Tsok,Tuh,Tuk,Ruh,Ug,Uh,Urg,Urgh,Urk,Vak,Zog,Zug"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:250
+#: data/core/macros/names.cfg:252
 msgid ""
 "\n"
 "main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
@@ -3244,7 +3244,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:261
+#: data/core/macros/names.cfg:263
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -3273,7 +3273,7 @@ msgstr ""
 "Vudadunopl"
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:263
+#: data/core/macros/names.cfg:265
 msgid ""
 "\n"
 "main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
@@ -3289,7 +3289,7 @@ msgid ""
 msgstr ""
 
 # |, no-check-spell
-#: data/core/macros/names.cfg:272
+#: data/core/macros/names.cfg:275
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3298,7 +3298,7 @@ msgstr ""
 "Olf,Oul,Oks,Rok,Ruk,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Voter,Vet,Jork"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:274
+#: data/core/macros/names.cfg:277
 msgid ""
 "\n"
 "main={prefix}{middle}{suffix}\n"
@@ -3308,35 +3308,35 @@ msgid ""
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/core/macros/objective-utils.cfg:6
+#: data/core/macros/objective-utils.cfg:7
 msgid "Turns run out"
 msgstr "Isteknu li potezi"
 
-#: data/core/macros/objective-utils.cfg:14
+#: data/core/macros/objective-utils.cfg:20
 msgid "(early finish bonus)"
 msgstr "(bonus za rani završetak)"
 
-#: data/core/macros/objective-utils.cfg:22
+#: data/core/macros/objective-utils.cfg:25
 msgid "Alternative objective:"
 msgstr "Alternativni cilj:"
 
-#: data/core/macros/objective-utils.cfg:26
+#: data/core/macros/objective-utils.cfg:30
 msgid "Bonus objective:"
 msgstr "Bonus cilj:"
 
-#: data/core/macros/objective-utils.cfg:30
+#: data/core/macros/objective-utils.cfg:35
 #, fuzzy
 #| msgid "Bonus objective:"
 msgid "Optional objective:"
 msgstr "Bonus cilj:"
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:52
+#: data/core/macros/objective-utils.cfg:60
 msgid "This is the last scenario."
 msgstr "Ovo je poslednji scenario."
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:58
+#: data/core/macros/objective-utils.cfg:67
 msgid "No turn limit"
 msgstr ""
 
@@ -3521,7 +3521,7 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:651
+#: data/core/macros/utils.cfg:659
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -3708,14 +3708,14 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:448
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:449
 msgid "Fog"
 msgstr "magla"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:451
-#: src/game_initialization/lobby_data.cpp:454
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:452
+#: src/game_initialization/lobby_data.cpp:455
 msgid "Shroud"
 msgstr "pokrov"
 
@@ -4056,31 +4056,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1075
 msgid "female^poisoned"
 msgstr "otrovana"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1081
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1082
 msgid "female^slowed"
 msgstr "usporena"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1081
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1082
 msgid "slowed"
 msgstr "usporen"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1087
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1088
 msgid "female^petrified"
 msgstr "okamenjena"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1087
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1088
 msgid "petrified"
 msgstr "okamenjen"
 
@@ -4096,14 +4096,14 @@ msgstr "neiscjeljiv"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2899
-#: src/scripting/game_lua_kernel.cpp:2934
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:2897
+#: src/scripting/game_lua_kernel.cpp:2932
 msgid "input"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:77
+#: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
 msgstr "pobjeda:"
 
@@ -5311,7 +5311,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "bez napredovanja"
 
-#: src/actions/attack.cpp:604 src/actions/attack.cpp:1364
+#: src/actions/attack.cpp:605 src/actions/attack.cpp:1365
 msgid "An invalid attacker weapon got selected."
 msgstr "Izabrano je loše oružje za napadača."
 
@@ -5413,25 +5413,25 @@ msgstr[3] "Uočena saveznička jedinica"
 msgid "(press $hotkey to keep moving)"
 msgstr "(pritisnite $hotkey da produži)"
 
-#: src/addon/client.cpp:71
+#: src/addon/client.cpp:74
 #, fuzzy
 #| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
 msgstr "Povezujem se sa serverom..."
 
-#: src/addon/client.cpp:85
+#: src/addon/client.cpp:119
 #, fuzzy
 #| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
 msgstr "Tražim spisak dodataka"
 
-#: src/addon/client.cpp:99
+#: src/addon/client.cpp:140
 #, fuzzy
 #| msgid "Requesting terms"
 msgid "Requesting distribution terms..."
 msgstr "Tražim uslove"
 
-#: src/addon/client.cpp:123
+#: src/addon/client.cpp:164
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5440,7 +5440,7 @@ msgid ""
 "published."
 msgstr "Dodatak ima loše ime datoteke ili fascikle i ne može se instalirati."
 
-#: src/addon/client.cpp:149
+#: src/addon/client.cpp:190
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5449,7 +5449,7 @@ msgid ""
 "characters and cannot be published."
 msgstr "Dodatak ima loše ime datoteke ili fascikle i ne može se instalirati."
 
-#: src/addon/client.cpp:157
+#: src/addon/client.cpp:198
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5459,7 +5459,7 @@ msgid ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
 
-#: src/addon/client.cpp:168
+#: src/addon/client.cpp:209
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5469,37 +5469,37 @@ msgid ""
 "the same string."
 msgstr "Dodatak ima loše ime datoteke ili fascikle i ne može se instalirati."
 
-#: src/addon/client.cpp:183
+#: src/addon/client.cpp:224
 #, fuzzy
 #| msgid "Requesting terms"
 msgid "Requesting file index..."
 msgstr "Tražim uslove"
 
-#: src/addon/client.cpp:199
+#: src/addon/client.cpp:240
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Preuzimam dodatak: $addon_title|..."
 
-#: src/addon/client.cpp:220
+#: src/addon/client.cpp:261
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Preuzimam dodatak: $addon_title|..."
 
-#: src/addon/client.cpp:253
+#: src/addon/client.cpp:294
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Preuzimam dodatak: $addon_title|..."
 
-#: src/addon/client.cpp:282
+#: src/addon/client.cpp:323
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Preuzimam dodatak: $addon_title|..."
 
-#: src/addon/client.cpp:334 src/addon/client.cpp:360
+#: src/addon/client.cpp:342 src/addon/client.cpp:368
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5508,7 +5508,7 @@ msgid ""
 "cannot be installed."
 msgstr "Dodatak ima loše ime datoteke ili fascikle i ne može se instalirati."
 
-#: src/addon/client.cpp:339 src/addon/client.cpp:365
+#: src/addon/client.cpp:347 src/addon/client.cpp:373
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5517,13 +5517,13 @@ msgid ""
 "conflicts. This may cause problems."
 msgstr "Dodatak ima loše ime datoteke ili fascikle i ne može se instalirati."
 
-#: src/addon/client.cpp:409
+#: src/addon/client.cpp:406
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "Server je odgovorio greškom: \""
 
-#: src/addon/client.cpp:459
+#: src/addon/client.cpp:456
 #, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency. Do you want to install "
@@ -5547,13 +5547,13 @@ msgstr[3] ""
 "Izabrani dodatak ima sledeću zavisnost. Želite li da je instalirate?"
 
 # >> @title:window
-#: src/addon/client.cpp:468
+#: src/addon/client.cpp:465
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Broken Dependencies"
 msgstr "Instaliranje zavisnosti"
 
-#: src/addon/client.cpp:508
+#: src/addon/client.cpp:505
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5565,129 +5565,129 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/addon/client.cpp:512
+#: src/addon/client.cpp:509
 #, fuzzy
 #| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
 msgstr "Instaliranje nije uspelo"
 
-#: src/addon/client.cpp:535
+#: src/addon/client.cpp:532
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:539
+#: src/addon/client.cpp:536
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:543
+#: src/addon/client.cpp:540
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:547
+#: src/addon/client.cpp:544
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
 msgstr "Želite li da nastavite?"
 
 # >> @title:window
-#: src/addon/client.cpp:549 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:231
+#: src/addon/client.cpp:546 src/addon/manager_ui.cpp:172
+#: src/game_initialization/multiplayer.cpp:202
 msgid "Confirm"
 msgstr "Potvrda"
 
-#: src/addon/client.cpp:674
+#: src/addon/client.cpp:685
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
 msgstr "Dodatak instaliran"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:252
 msgid "addon_type^Campaign"
 msgstr "pohod"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:254
 msgid "addon_type^Scenario"
 msgstr "scenario"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:256
 #, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
 msgstr "vigr. pohod"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:258
 msgid "addon_type^MP era"
 msgstr "vigr. razdoblje"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:260
 msgid "addon_type^MP faction"
 msgstr "vigr. frakcija"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:262
 msgid "addon_type^MP map-pack"
 msgstr "vigr. paketa mapa"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:264
 msgid "addon_type^MP scenario"
 msgstr "vigr. scenario"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:266
 msgid "addon_type^MP campaign"
 msgstr "vigr. pohod"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:270
+#: src/addon/info.cpp:268
 #, fuzzy
 #| msgid "addon_type^MP faction"
 msgid "addon_type^Modification"
 msgstr "vigr. frakcija"
 
-#: src/addon/info.cpp:272
+#: src/addon/info.cpp:270
 #, fuzzy
 #| msgid "addon_type^Resources"
 msgid "addon_type^Core"
 msgstr "resursi"
 
-#: src/addon/info.cpp:274
+#: src/addon/info.cpp:272
 msgid "addon_type^Resources"
 msgstr "resursi"
 
-#: src/addon/info.cpp:276
+#: src/addon/info.cpp:274
 msgid "addon_type^Other"
 msgstr "drugo"
 
-#: src/addon/info.cpp:278
+#: src/addon/info.cpp:276
 msgid "addon_type^(unknown)"
 msgstr "(nepoznato)"
 
-#: src/addon/info.cpp:315
+#: src/addon/info.cpp:313
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:293
+#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:291
 msgid "Network communication error."
 msgstr "Greška u mrežnoj komunikaciji."
 
-#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:296
+#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:294
 msgid "Remote host disconnected."
 msgstr "Udaljeni domaćin je prekinuo vezu."
 
-#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:299
+#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:297
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr ""
 "Problem pri stvaranju datoteka neophodnih za instaliranje ovog dodatka."
 
-#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:308
+#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:306
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -5695,7 +5695,7 @@ msgid ""
 "Error message: $msg"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:312
 msgid "The add-ons server address specified is not valid."
 msgstr ""
 
@@ -5703,7 +5703,7 @@ msgstr ""
 msgid "You have no add-ons installed."
 msgstr "Nema instaliranih dodataka."
 
-#: src/addon/manager_ui.cpp:169
+#: src/addon/manager_ui.cpp:167
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Želite li zaista da uklonite sledeće instalirane dodatke?"
@@ -5711,7 +5711,7 @@ msgstr[1] "Želite li zaista da uklonite sledeće instalirane dodatke?"
 msgstr[2] "Želite li zaista da uklonite sledeće instalirane dodatke?"
 msgstr[3] "Želite li zaista da uklonite sledeći instalirani dodatak?"
 
-#: src/addon/manager_ui.cpp:195
+#: src/addon/manager_ui.cpp:193
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5731,7 +5731,7 @@ msgstr[3] ""
 "Za sledeći dodatak izgleda da sadrži lokalne podatke o izdavanju ili "
 "upravljanju verzijama, pa neće biti uklonjen:"
 
-#: src/addon/manager_ui.cpp:205
+#: src/addon/manager_ui.cpp:203
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Sledeće dodatke nije bilo moguće pravilno obrisati:"
@@ -5739,7 +5739,7 @@ msgstr[1] "Sledeće dodatke nije bilo moguće pravilno obrisati:"
 msgstr[2] "Sledeće dodatke nije bilo moguće pravilno obrisati:"
 msgstr[3] "Sledeći dodatak nije bilo moguće pravilno obrisati:"
 
-#: src/addon/manager_ui.cpp:212
+#: src/addon/manager_ui.cpp:210
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Dodaci obrisani"
@@ -5747,7 +5747,7 @@ msgstr[1] "Dodaci obrisani"
 msgstr[2] "Dodaci obrisani"
 msgstr[3] "Dodatak obrisan"
 
-#: src/addon/manager_ui.cpp:214
+#: src/addon/manager_ui.cpp:212
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "Sledeći dodaci uspešno su obrisani:"
@@ -5755,13 +5755,13 @@ msgstr[1] "Sledeći dodaci uspešno su obrisani:"
 msgstr[2] "Sledeći dodaci uspešno su obrisani:"
 msgstr[3] "Sledeći dodatak uspešno je obrisan:"
 
-#: src/addon/manager_ui.cpp:270
+#: src/addon/manager_ui.cpp:268
 #, fuzzy
 #| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Greška u komunikaciji sa serverom."
 
-#: src/addon/manager_ui.cpp:284
+#: src/addon/manager_ui.cpp:282
 #, fuzzy
 #| msgid "Could not find any updated add-ons on this server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
@@ -5870,28 +5870,32 @@ msgid "Invalid or unspecified add-on type."
 msgstr "Loš tip jedinice"
 
 #: src/addon/validation.cpp:542
+msgid "Version number not greater than the latest uploaded version."
+msgstr ""
+
+#: src/addon/validation.cpp:546
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:551
+#: src/addon/validation.cpp:555
 msgid "Unspecified server error."
 msgstr ""
 
-#: src/addon/validation.cpp:555
+#: src/addon/validation.cpp:559
 msgid "Server is in read-only mode."
 msgstr ""
 
-#: src/addon/validation.cpp:559
+#: src/addon/validation.cpp:563
 #, fuzzy
 #| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
 msgstr "Nema instaliranih dodataka."
 
-#: src/addon/validation.cpp:563
+#: src/addon/validation.cpp:567
 msgid "Empty add-on version list on the server."
 msgstr ""
 
-#: src/addon/validation.cpp:573
+#: src/addon/validation.cpp:577
 msgid "Unspecified validation failure."
 msgstr ""
 
@@ -5923,15 +5927,15 @@ msgstr "Uklonjen sa spiska: $nick"
 msgid "friends and ignores list"
 msgstr "spisak prijatelja i ignorisanih"
 
-#: src/chat_command_handler.cpp:158
+#: src/chat_command_handler.cpp:156
 msgid "version"
 msgstr "verzija"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:168
 msgid "nick registration"
 msgstr "registrujem nadimak"
 
-#: src/chat_command_handler.cpp:170
+#: src/chat_command_handler.cpp:168
 msgid "requesting information for user $nick"
 msgstr "tražim podatke o korisniku $nick"
 
@@ -5964,7 +5968,7 @@ msgstr ""
 #: src/chat_command_handler.hpp:83 src/chat_command_handler.hpp:85
 #: src/chat_command_handler.hpp:87 src/chat_command_handler.hpp:108
 #: src/chat_command_handler.hpp:110 src/chat_command_handler.hpp:112
-#: src/chat_command_handler.hpp:116
+#: src/chat_command_handler.hpp:118
 msgid "<nickname>"
 msgstr "<nadimak>"
 
@@ -6047,47 +6051,55 @@ msgid "Remove a nickname from your ignores or friends list."
 msgstr "Uklanja igrača sa spiska ignorisanih ili prijatelja."
 
 #: src/chat_command_handler.hpp:114
+msgid "<N>"
+msgstr ""
+
+#: src/chat_command_handler.hpp:114
+msgid "Get a random number between 1 and N visible in the game setup lobby."
+msgstr ""
+
+#: src/chat_command_handler.hpp:116
 msgid "Display version information."
 msgstr "Prikazuje podatak o verziji."
 
-#: src/chat_command_handler.hpp:116
+#: src/chat_command_handler.hpp:118
 msgid "Request information about a nickname."
 msgstr "Zatražite podatke o nadimku."
 
-#: src/chat_command_handler.hpp:118 src/chat_command_handler.hpp:121
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:120 src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:125
 msgid "<room>"
 msgstr "<soba>"
 
-#: src/chat_command_handler.hpp:118
+#: src/chat_command_handler.hpp:120
 msgid "Join a room."
 msgstr "Pridruži se sobi."
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:123
 msgid "Part a room."
 msgstr "Napusti sobu."
 
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:125
 msgid "List room members."
 msgstr "Nabroji članove sobe."
 
-#: src/chat_command_handler.hpp:125
+#: src/chat_command_handler.hpp:127
 msgid "List available rooms."
 msgstr "Nabroji dostupne sobe."
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:129
 msgid "<room> <msg>"
 msgstr "<soba> <poruka>"
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:129
 msgid "Room message."
 msgstr "Poruka sobe."
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:131
 msgid "<room> <type> [value]"
 msgstr "<soba> <tip> [vrednost]"
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:131
 msgid "Room query."
 msgstr "Upit sobe."
 
@@ -6107,11 +6119,11 @@ msgstr "Nepoznat ispravljački domen: ‘$domain|’."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Domen prebačen: ‘$domain|’ na nivo: ‘$level|’."
 
-#: src/chat_events.cpp:152
+#: src/chat_events.cpp:155
 msgid "whisper to $receiver"
 msgstr "šapat za $receiver"
 
-#: src/chat_events.cpp:159
+#: src/chat_events.cpp:162
 msgid "whisper: $sender"
 msgstr "šapat: $sender"
 
@@ -6190,64 +6202,64 @@ msgstr "%b %d %y"
 msgid "Invalid color in range: "
 msgstr "Loš opseg boja: "
 
-#: src/game_config_manager.cpp:237 src/game_config_manager.cpp:246
-#: src/game_config_manager.cpp:258
+#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
+#: src/game_config_manager.cpp:265
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:238
+#: src/game_config_manager.cpp:244
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:239 src/game_config_manager.cpp:249
-#: src/game_config_manager.cpp:262
+#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
+#: src/game_config_manager.cpp:269
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:247 src/game_config_manager.cpp:259
-#: src/game_config_manager.cpp:282
+#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
+#: src/game_config_manager.cpp:289
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:248
+#: src/game_config_manager.cpp:255
 #, fuzzy
 #| msgid "The map is invalid."
 msgid "The ID is already in use."
 msgstr "Mapa je nepravilna."
 
-#: src/game_config_manager.cpp:260
+#: src/game_config_manager.cpp:267
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:261
+#: src/game_config_manager.cpp:268
 #, fuzzy
 #| msgid "Variable not found"
 msgid "File not found."
 msgstr "Promjenljiva nije nađena"
 
-#: src/game_config_manager.cpp:281 src/game_config_manager.cpp:293
+#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:283
+#: src/game_config_manager.cpp:290
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:284
+#: src/game_config_manager.cpp:291
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:294
+#: src/game_config_manager.cpp:301
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:295
+#: src/game_config_manager.cpp:302
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
 msgstr "' (igra će se sad ugasiti)"
 
-#: src/game_config_manager.cpp:346
+#: src/game_config_manager.cpp:351
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -6255,7 +6267,7 @@ msgid ""
 "loading add-ons."
 msgstr "Greška pri učitavanju postavnih datoteka igre: '"
 
-#: src/game_config_manager.cpp:353
+#: src/game_config_manager.cpp:358
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -6263,22 +6275,22 @@ msgid ""
 "default core files."
 msgstr "Greška pri učitavanju postavnih datoteka igre: '"
 
-#: src/game_config_manager.cpp:362
+#: src/game_config_manager.cpp:367
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "Greška pri učitavanju postavnih datoteka igre: '"
 
-#: src/game_config_manager.cpp:514
+#: src/game_config_manager.cpp:519
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:538
+#: src/game_config_manager.cpp:558
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:586
+#: src/game_config_manager.cpp:609
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Sljedeći dodaci imaju grešku i ne mogu se učitati:"
@@ -6286,7 +6298,7 @@ msgstr[1] "Sljedeći dodaci imaju grešku i ne mogu se učitati:"
 msgstr[2] "Sljedeći dodaci imaju grešku i ne mogu se učitati:"
 msgstr[3] "Sljedeći dodatak ima grešku i ne može se učitati:"
 
-#: src/game_config_manager.cpp:590
+#: src/game_config_manager.cpp:613
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6295,7 +6307,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/game_events/pump.cpp:476 src/game_launcher.cpp:951
+#: src/game_events/pump.cpp:476 src/game_launcher.cpp:952
 msgid "Error: "
 msgstr "Greška: "
 
@@ -6431,47 +6443,47 @@ msgstr "Ne mogu da nađem tip vođa za frakciju $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:225
+#: src/game_initialization/lobby_data.cpp:226
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $name"
 msgstr "Nedostaje argument $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:227
+#: src/game_initialization/lobby_data.cpp:228
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Nedostaje argument $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:259
+#: src/game_initialization/lobby_data.cpp:260
 msgid "Unknown era"
 msgstr "nepoznata epoha"
 
-#: src/game_initialization/lobby_data.cpp:326
-#: src/game_initialization/lobby_data.cpp:360
+#: src/game_initialization/lobby_data.cpp:327
+#: src/game_initialization/lobby_data.cpp:361
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "strana"
 
-#: src/game_initialization/lobby_data.cpp:346
+#: src/game_initialization/lobby_data.cpp:347
 msgid "Remote scenario"
 msgstr "udaljeni scenario"
 
-#: src/game_initialization/lobby_data.cpp:367
-#: src/game_initialization/lobby_data.cpp:393
+#: src/game_initialization/lobby_data.cpp:368
+#: src/game_initialization/lobby_data.cpp:394
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:399
+#: src/game_initialization/lobby_data.cpp:400
 msgid "Unknown scenario"
 msgstr "nepoznat scenario"
 
-#: src/game_initialization/lobby_data.cpp:413
+#: src/game_initialization/lobby_data.cpp:414
 msgid "Reloaded game"
 msgstr "učitana pozicija"
 
-#: src/game_initialization/lobby_data.cpp:428
+#: src/game_initialization/lobby_data.cpp:429
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "slobodna mjesta:"
@@ -6479,52 +6491,52 @@ msgstr[1] "slobodna mjesta:"
 msgstr[2] "slobodna mjesta:"
 msgstr[3] "slobodno mjesto:"
 
-#: src/game_initialization/lobby_data.cpp:430
+#: src/game_initialization/lobby_data.cpp:431
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:441
-#: src/game_initialization/lobby_data.cpp:443 src/savegame.cpp:645
+#: src/game_initialization/lobby_data.cpp:442
+#: src/game_initialization/lobby_data.cpp:444 src/savegame.cpp:645
 msgid "Turn"
 msgstr "potez"
 
-#: src/game_initialization/lobby_data.cpp:456
+#: src/game_initialization/lobby_data.cpp:457
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "Verzija: "
 
-#: src/game_initialization/lobby_data.cpp:465
+#: src/game_initialization/lobby_data.cpp:466
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "vremenski limit"
 
-#: src/game_initialization/lobby_data.cpp:509
+#: src/game_initialization/lobby_data.cpp:510
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:523
+#: src/game_initialization/lobby_data.cpp:524
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 
-#: src/game_initialization/mp_game_utils.cpp:79
+#: src/game_initialization/mp_game_utils.cpp:76
 msgid "Defeat enemy leader(s)"
 msgstr "Poraziš li protivničke vođe"
 
-#: src/game_initialization/mp_game_utils.cpp:104
+#: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
 msgstr "Ne mogu da nađem epohu $era"
 
-#: src/game_initialization/multiplayer.cpp:74
+#: src/game_initialization/multiplayer.cpp:76
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:121
+#: src/game_initialization/multiplayer.cpp:112
 #, fuzzy
 #| msgid ""
 #| "The server requires version '$version1' while you are using version "
@@ -6534,11 +6546,11 @@ msgid ""
 "'$your_version'"
 msgstr "Server zahtijeva verziju '$version1', dok je vaša '$version2'."
 
-#: src/game_initialization/multiplayer.cpp:131
+#: src/game_initialization/multiplayer.cpp:125
 msgid "Server-side redirect loop"
 msgstr "Petlja preusmjeravanja na strani servera"
 
-#: src/game_initialization/multiplayer.cpp:204
+#: src/game_initialization/multiplayer.cpp:175
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6548,29 +6560,29 @@ msgstr ""
 "dok ne aktivirate svoj nalog, preko e-pošte ili zahtevom administratoru da "
 "to uradi za vas."
 
-#: src/game_initialization/multiplayer.cpp:213
+#: src/game_initialization/multiplayer.cpp:184
 msgid "Do you want to continue?"
 msgstr "Želite li da nastavite?"
 
-#: src/game_initialization/multiplayer.cpp:215
+#: src/game_initialization/multiplayer.cpp:186
 msgid "Warning"
 msgstr "Upozorenje"
 
-#: src/game_initialization/multiplayer.cpp:258
-#: src/game_initialization/multiplayer.cpp:274
-#: src/game_initialization/multiplayer.cpp:277
+#: src/game_initialization/multiplayer.cpp:228
+#: src/game_initialization/multiplayer.cpp:249
+#: src/game_initialization/multiplayer.cpp:252
 msgid "Bad data received from server"
 msgstr "Loši podaci primljeni sa servera"
 
-#: src/game_initialization/multiplayer.cpp:312
+#: src/game_initialization/multiplayer.cpp:287
 msgid "You must login first."
 msgstr "Morate se prvo prijaviti."
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:289
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Nadimak „$nick“ već je zauzet."
 
-#: src/game_initialization/multiplayer.cpp:316
+#: src/game_initialization/multiplayer.cpp:291
 #, fuzzy
 #| msgid ""
 #| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
@@ -6582,45 +6594,45 @@ msgstr ""
 "Nadimak „$nick“ sadrži loše znakove. Dozvoljena su samo slova, brojevi, "
 "podvlake i crtice."
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:295
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "Nadimak „$nick“ je predugačak. Ne može imati više od 20 znakova."
 
-#: src/game_initialization/multiplayer.cpp:322
+#: src/game_initialization/multiplayer.cpp:297
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Nadimak „$nick“ je rezervisan i igrači ga ne mogu uzeti."
 
-#: src/game_initialization/multiplayer.cpp:324
+#: src/game_initialization/multiplayer.cpp:299
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Nadimak „$nick“ nije registrovan na ovom serveru."
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:300
 msgid " This server disallows unregistered nicknames."
 msgstr " Ovaj server ne dozvoljava neregistrovane nadimke."
 
-#: src/game_initialization/multiplayer.cpp:328
+#: src/game_initialization/multiplayer.cpp:303
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
-#: src/game_initialization/multiplayer.cpp:330
+#: src/game_initialization/multiplayer.cpp:305
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
-#: src/game_initialization/multiplayer.cpp:334
+#: src/game_initialization/multiplayer.cpp:309
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
-#: src/game_initialization/multiplayer.cpp:336
+#: src/game_initialization/multiplayer.cpp:311
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:315
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
@@ -6628,19 +6640,19 @@ msgid ""
 "for $duration|."
 msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
-#: src/game_initialization/multiplayer.cpp:342
+#: src/game_initialization/multiplayer.cpp:317
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
-#: src/game_initialization/multiplayer.cpp:345
-#: src/game_initialization/multiplayer.cpp:347
+#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:322
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
-#: src/game_initialization/multiplayer.cpp:348
+#: src/game_initialization/multiplayer.cpp:323
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6648,16 +6660,16 @@ msgstr ""
 "UPOZORENJE: Jedan klijent već ima ovaj nadimak, prijavljivanjem ćete ga "
 "izbaciti!"
 
-#: src/game_initialization/multiplayer.cpp:351
+#: src/game_initialization/multiplayer.cpp:326
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Greška u postupku prijavljivanja (server nema seme za vašu vezu)."
 
-#: src/game_initialization/multiplayer.cpp:353
+#: src/game_initialization/multiplayer.cpp:328
 msgid "The password you provided was incorrect."
 msgstr "Dali ste neispravnu lozinku."
 
-#: src/game_initialization/multiplayer.cpp:355
+#: src/game_initialization/multiplayer.cpp:330
 msgid "You have made too many login attempts."
 msgstr "Previše puta ste pokušali da se prijavite."
 
@@ -6779,20 +6791,20 @@ msgstr "Poraz"
 msgid "You have been defeated!"
 msgstr "Poraženi ste!"
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:904
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:905
 msgid "The game could not be loaded: "
 msgstr "Poziciju nije moguće učitati: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:906
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:907
 msgid "Error while playing the game: "
 msgstr "Greška prilikom igranja partije: "
 
-#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:943
+#: src/game_initialization/playcampaign.cpp:306 src/game_launcher.cpp:944
 msgid "The game map could not be loaded: "
 msgstr "Mapu igre nije moguće učitati: "
 
-#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:908
-#: src/game_launcher.cpp:1038
+#: src/game_initialization/playcampaign.cpp:309 src/game_launcher.cpp:909
+#: src/game_launcher.cpp:1036
 msgid "Map generator error: "
 msgstr ""
 
@@ -6813,35 +6825,35 @@ msgstr "Scenario je okončan. Želite li da nastavite pohod?"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nepoznat scenario: ‘$scenario|’"
 
-#: src/game_initialization/singleplayer.cpp:42
+#: src/game_initialization/singleplayer.cpp:43
 #, fuzzy
 #| msgid "No campaigns are available.\n"
 msgid "No campaigns are available."
 msgstr "Nema nijednog pohoda.\n"
 
-#: src/game_launcher.cpp:685 src/game_launcher.cpp:703
+#: src/game_launcher.cpp:692 src/game_launcher.cpp:711
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka koju ste pokušali da otvorite iskvarena je"
 
-#: src/game_launcher.cpp:688 src/game_launcher.cpp:706
+#: src/game_launcher.cpp:694 src/game_launcher.cpp:713
 #: src/hotkey/hotkey_handler_sp.cpp:315 src/savegame.cpp:156
 #: src/savegame.cpp:311
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka koju ste pokušali da učitate iskvarena je: '"
 
-#: src/game_launcher.cpp:696
+#: src/game_launcher.cpp:703
 msgid "File I/O Error while reading the game"
 msgstr "U/I greška u datoteci prilikom čitanja pozicije"
 
-#: src/game_launcher.cpp:698
+#: src/game_launcher.cpp:705
 msgid "File I/O Error while reading the game: '"
 msgstr "U/I greška u datoteci prilikom čitanja pozicije: '"
 
-#: src/game_launcher.cpp:902
+#: src/game_launcher.cpp:903
 msgid "Error while starting server: "
 msgstr "Greška pri pokretanju servera: "
 
-#: src/game_launcher.cpp:924
+#: src/game_launcher.cpp:925
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -6894,39 +6906,39 @@ msgstr[3] ""
 msgid "No visible sides found."
 msgstr "Nema višeigračkih strana"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:114
+#: src/gui/dialogs/multiplayer/player_info.cpp:106
 msgid "In game:"
 msgstr "u igri:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:116
+#: src/gui/dialogs/multiplayer/player_info.cpp:108
 msgid "(observing)"
 msgstr "(posmatra)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:118
+#: src/gui/dialogs/multiplayer/player_info.cpp:110
 msgid "(playing)"
 msgstr "(igra)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:121
+#: src/gui/dialogs/multiplayer/player_info.cpp:113
 msgid "In lobby"
 msgstr "u holu"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:150
+#: src/gui/dialogs/multiplayer/player_info.cpp:142
 msgid "On friends list"
 msgstr "na spisku prijatelja"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:155
+#: src/gui/dialogs/multiplayer/player_info.cpp:147
 msgid "On ignores list"
 msgstr "na spisku ignorisanih"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:160
+#: src/gui/dialogs/multiplayer/player_info.cpp:152
 msgid "Neither a friend nor ignored"
 msgstr "ni prijatelj ni ignorisan"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:165
+#: src/gui/dialogs/multiplayer/player_info.cpp:157
 msgid "You"
 msgstr "ja"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:168
+#: src/gui/dialogs/multiplayer/player_info.cpp:160
 msgid "Error"
 msgstr "Greška"
 
@@ -7840,15 +7852,15 @@ msgstr ""
 msgid "This unit has no usable weapons."
 msgstr "bez pogodnog oružja"
 
-#: src/mp_game_settings.hpp:74
+#: src/mp_game_settings.hpp:73
 msgid "Independent"
 msgstr ""
 
-#: src/mp_game_settings.hpp:75
+#: src/mp_game_settings.hpp:74
 msgid "No Mirror"
 msgstr ""
 
-#: src/mp_game_settings.hpp:76
+#: src/mp_game_settings.hpp:75
 msgid "No Ally Mirror"
 msgstr ""
 
@@ -8863,17 +8875,17 @@ msgstr "haotična"
 msgid "female^liminal"
 msgstr "dvojstvena"
 
-#: src/units/unit.cpp:1871
+#: src/units/unit.cpp:1846
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1877
+#: src/units/unit.cpp:1852
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:1887
+#: src/units/unit.cpp:1862
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8883,25 +8895,25 @@ msgstr[1] "po potezu"
 msgstr[2] "po potezu"
 msgstr[3] "po potezu"
 
-#: src/units/unit.cpp:1893
+#: src/units/unit.cpp:1868
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:1897
+#: src/units/unit.cpp:1872
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1877
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:1906
+#: src/units/unit.cpp:1881
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8912,13 +8924,13 @@ msgstr[1] "po potezu"
 msgstr[2] "po potezu"
 msgstr[3] "po potezu"
 
-#: src/units/unit.cpp:1913
+#: src/units/unit.cpp:1888
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:2334
+#: src/units/unit.cpp:2310
 msgid "$effect_description per level"
 msgstr "$effect_description po nivou"
 

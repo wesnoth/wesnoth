@@ -60,21 +60,13 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 			rect.h = disp.hex_size();
 			rect.w = disp.hex_size();
 			std::stringstream str;
-			const auto& recruits = unit_it->recruits();
-			std::vector<t_string> recruit_type_names;
-			std::transform(recruits.begin(), recruits.end(), std::back_inserter(recruit_type_names),
-				[](const std::string& type_id) -> t_string {
-					const unit_type *new_unit_type = unit_types.find(type_id);
-					if(!new_unit_type) return VGETTEXT("(Unknown unit type: $type)", { { "type", type_id } });
-					return new_unit_type->type_name();
-				}
-			);
-			str << _("Identifier: ") << unit_it->id()     << "\n"
-				<< _("Name: ")    << unit_it->name()      << "\n"
-				<< _("Type: ")    << unit_it->type_name() << "\n"
+			str << _("Identifier: ") << unit_it->id()     << "\n";
+			if(unit_it->name() != "") {
+				str	<< _("Name: ")    << unit_it->name()      << "\n";
+			}
+			str	<< _("Type: ")    << unit_it->type_name() << "\n"
 				<< _("Level: ")   << unit_it->level()     << "\n"
-				<< _("Cost: ")    << unit_it->cost()      << "\n"
-				<< _("Recruit: ") << utils::join(recruit_type_names) << "\n";
+				<< _("Cost: ")    << unit_it->cost()      << "\n";
 			tooltips::clear_tooltips();
 			tooltips::add_tooltip(rect, str.str());
 		}

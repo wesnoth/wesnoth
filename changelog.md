@@ -1,17 +1,38 @@
-## Version 1.15.7+dev
+## Version 1.15.8+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Multiplayer
+ ### Packaging
+  * Boost 1.65 is now required (was 1.59).
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+   * Extent special_id_active and special_type_active to abilities used like weapon and add special_only_id_active and special_only_type_active for [specials] only.
+   * abilities used like weapon can call [leading_anim] now.
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.15.8
+ ### Add-ons client
+   * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
+   * Improved license information prompt for uploads.
  ### Add-ons server
    * Fixed inability to write files (including the server configuration file) on Windows.
    * Dropped plain text passphrase migration, unused in production since version 1.12.7 and 1.13.0 (issue #5080).
    * Uploading add-ons with versions not greater than the latest uploaded version is no longer allowed (issue #5079).
- ### Add-ons client
-   * Fix potential crashes when working with installed add-ons that have a corrupted _info.cfg file.
+   * Implemented optional server information query used by connecting clients.
  ### Campaigns
    * Dead Water
      * Reduce campaign difficulty
    * Eastern Invasion:
+     * Tweak campaign difficulty
      * S03: fix the initial keep being blocked at the start
    * Heir to the Throne
      * Tweak campaign difficulty
+   * The Hammer of Thursagan
+     * Reduce campaign difficulty
    * The South Guard
      * Reduce campaign difficulty
  ### Multiplayer
@@ -21,18 +42,19 @@
  ### Terrain
  ### Translations
    * Updated translations: British English, Czech, Italian, Polish, Portuguese (Brazil),
-     Russian
+     Russian, Turkish
  ### Units
    * Undead variations for Falcon, Giant Rat, serpents, and Gorer/Tusklet
  ### User interface
+   * Minor streamlining on the Game Version and Add-ons Manager dialogs.
    * Text labels now use the hyperlink mouse cursor while hovering links.
    * Link awareness is now configured on a per-instance basis for labels/scroll labels instead of globally in their definition.
  ### WML Engine
-   * Add a overwrite_specials option for abilities like weapon could overwrite specials or other ablities like weapon
-   * Extent special_id_active and special_type_active to abilities used like weapon and add special_only_id_active and special_only_type_active for [specials] only.
-   * abilities used like weapon can call [leading_anim] now.
+   * Add a overwrite_specials option for weapon special abilities to allow the effect of the ability to take precedence over the effect of any identical weapon special.
  ### Miscellaneous and Bug Fixes
    * Fixed several possible crashes in wmllint
+   * Screenshots now default to JPG instead of PNG
+   * Fixed screenshot popup sometimes using the wrong path when trying to open the screenshot after saving
 
 ## Version 1.15.7
  ### Add-ons server

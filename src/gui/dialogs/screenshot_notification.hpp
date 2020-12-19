@@ -41,7 +41,7 @@ public:
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(screenshot_notification)
 
 private:
-	const std::string path_;
+	std::string path_;
 	const std::string screenshots_dir_path_;
 	surface screenshot_;
 

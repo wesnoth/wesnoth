@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2020-11-21 01:41-0300\n"
-"PO-Revision-Date: 2020-09-06 17:08+0300\n"
+"PO-Revision-Date: 2020-11-29 18:35+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 # type: TH
 #. type: TH
@@ -503,8 +503,6 @@ msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
-#, fuzzy
-#| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
 msgstr "выводить временные метки в файл логов с большей точностью."
 
@@ -2511,39 +2509,7 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
 # type: TP
-#~ msgid "B<--proxy>"
-#~ msgstr "B<--proxy>"
-
-#~ msgid "enables usage of proxy for network connections."
-#~ msgstr "включить использование прокси сервера для подключения к сети."
-
-# type: TP
-#~ msgid "B<--proxy-address>I<\\ address>"
-#~ msgstr "B<--proxy-address>I<\\ адрес>"
-
-#~ msgid "specifies I<address> of the proxy."
-#~ msgstr "задать I<адрес> прокси."
-
-# type: TP
-#~ msgid "B<--proxy-port>I<\\ port>"
-#~ msgstr "B<--proxy-port>I<\\ порт>"
-
-#~ msgid "specifies I<port> of the proxy."
-#~ msgstr "задать I<порт> прокси."
-
-#~ msgid "B<--proxy-user>I<\\ username>"
-#~ msgstr "B<--proxy-user>I<\\ имя пользователя>"
-
-#~ msgid "specifies I<username> to log in to the proxy."
-#~ msgstr "задать I<имя пользователя> для входа в прокси."
-
-#~ msgid "B<--proxy-password>I<\\ password>"
-#~ msgstr "B<--proxy-password>I<\\ пароль>"
-
-#~ msgid "specifies I<password> to log in to the proxy."
-#~ msgstr "задать I<пароль> для входа в прокси."
-
-# type: TP
+#, no-wrap
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
@@ -2583,6 +2549,7 @@ msgstr "B<wesnoth>(6)"
 #~ "свои данные о пользователях. Вам необходимо создать эту таблицу вручную."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
@@ -2604,10 +2571,12 @@ msgstr "B<wesnoth>(6)"
 #~ "блоком-заглушкой."
 
 # type: TP
+#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
@@ -2616,10 +2585,12 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Логин для подключения к почтовому серверу"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
@@ -2628,12 +2599,51 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Адрес для ответа (reply-to) вашего письма"
 
 # type: TP
+#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 
 # type: Plain text
 #~ msgid "The port on which your mail server is running. Default is 25."
 #~ msgstr "Порт, на котором запущен ваш почтовый сервер. По умолчанию 25."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy>"
+#~ msgstr "B<--proxy>"
+
+#~ msgid "enables usage of proxy for network connections."
+#~ msgstr "включить использование прокси сервера для подключения к сети."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy-address>I<\\ address>"
+#~ msgstr "B<--proxy-address>I<\\ адрес>"
+
+#~ msgid "specifies I<address> of the proxy."
+#~ msgstr "задать I<адрес> прокси."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy-port>I<\\ port>"
+#~ msgstr "B<--proxy-port>I<\\ порт>"
+
+#~ msgid "specifies I<port> of the proxy."
+#~ msgstr "задать I<порт> прокси."
+
+#, no-wrap
+#~ msgid "B<--proxy-user>I<\\ username>"
+#~ msgstr "B<--proxy-user>I<\\ имя пользователя>"
+
+#~ msgid "specifies I<username> to log in to the proxy."
+#~ msgstr "задать I<имя пользователя> для входа в прокси."
+
+#, no-wrap
+#~ msgid "B<--proxy-password>I<\\ password>"
+#~ msgstr "B<--proxy-password>I<\\ пароль>"
+
+#~ msgid "specifies I<password> to log in to the proxy."
+#~ msgstr "задать I<пароль> для входа в прокси."
 
 # type: Plain text
 #~ msgid ""

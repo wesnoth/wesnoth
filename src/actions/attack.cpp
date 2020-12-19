@@ -25,6 +25,7 @@
 #include "ai/lua/aspect_advancements.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
+#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
@@ -861,10 +862,12 @@ attack::attack(const map_location& attacker,
 	, OOS_error_(false)
 
 	//new experimental prng mode.
-	, use_prng_(preferences::get("use_prng") == "yes" && randomness::generator->is_networked() == false)
+	, use_prng_(resources::classification->random_mode == "biased" && randomness::generator->is_networked() == false)
+	, prng_attacker_()
+	, prng_defender_()
 {
 	if(use_prng_) {
-		std::cerr << "Using experimental PRNG for combat\n";
+		LOG_NG << "Using experimental PRNG for combat\n";
 	}
 }
 

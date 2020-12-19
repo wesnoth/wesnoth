@@ -54,10 +54,8 @@ public:
 class game_launcher
 {
 public:
-	game_launcher(const commandline_options& cmdline_opts, const char* appname);
+	game_launcher(const commandline_options& cmdline_opts);
 	~game_launcher();
-
-	CVideo& video() { return *video_; }
 
 	enum mp_selection {MP_CONNECT, MP_HOST, MP_LOCAL};
 

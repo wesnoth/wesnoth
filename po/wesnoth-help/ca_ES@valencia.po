@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:40-0300\n"
+"POT-Creation-Date: 2020-12-18 22:26-0300\n"
 "PO-Revision-Date: 2009-01-31 21:25+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 #. [time]: id=underground
 #. [editor_times]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
-#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:109
+#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Sota terra"
 
@@ -911,13 +911,13 @@ msgstr ""
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
+#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Profunditats terrestres"
 
 #. [time]: id=indoors
 #. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
+#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr ""
 
@@ -2654,9 +2654,9 @@ msgid ""
 "• <ref>dst='crowns' text='Hero units'</ref> have a smaller variant of the "
 "seven-pointed star, these units can’t recruit.\n"
 "• Units without a <ref>dst='movement' text='zone of control'</ref> have a "
-"broken version of the shape.\n"
+"broken outline version of the shape.\n"
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
-"a ZoC, these units have a broken version of the seven-pointed star."
+"a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
 
 #. [topic]: id=crowns
@@ -2740,21 +2740,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:464 data/core/macros/schedules.cfg:14
-#: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
+#: data/core/help.cfg:464 data/core/macros/schedules.cfg:16
+#: data/core/macros/schedules.cfg:290 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Alba"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:465 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:465 data/core/macros/schedules.cfg:28
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Matí"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:466 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:466 data/core/macros/schedules.cfg:46
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Migdia"
@@ -2762,21 +2762,21 @@ msgstr "Migdia"
 #. [time]: id=dusk
 #. [topic]: id=time_of_day
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:467 data/core/macros/schedules.cfg:53
-#: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
+#: data/core/help.cfg:467 data/core/macros/schedules.cfg:55
+#: data/core/macros/schedules.cfg:411 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Vespre"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:468 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:468 data/core/macros/schedules.cfg:67
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Nit"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:469 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:469 data/core/macros/schedules.cfg:91
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Matinada"
@@ -4423,220 +4423,220 @@ msgstr "Bonificació HP màxim +3, XP màxim +20%"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
+#: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
 msgstr ""
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
+#: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
 msgstr ""
 
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:203
+#: data/core/macros/schedules.cfg:218
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — First Hour"
 msgstr "Matinada"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:215
+#: data/core/macros/schedules.cfg:230
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
 msgstr "Matinada"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:227
+#: data/core/macros/schedules.cfg:242
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
 msgstr "Matinada"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:239
+#: data/core/macros/schedules.cfg:254
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
 msgstr "Matinada"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:251
+#: data/core/macros/schedules.cfg:266
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
 msgstr "Matinada"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:263
+#: data/core/macros/schedules.cfg:278
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
 msgstr "Matinada"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:287
+#: data/core/macros/schedules.cfg:302
 msgid "Morning — First Hour"
 msgstr ""
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:299
+#: data/core/macros/schedules.cfg:314
 msgid "Morning — Second Hour"
 msgstr ""
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:311
+#: data/core/macros/schedules.cfg:326
 msgid "Morning — Third Hour"
 msgstr ""
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:320
+#: data/core/macros/schedules.cfg:335
 msgid "Morning — Fourth Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:338
+#: data/core/macros/schedules.cfg:353
 msgid "Afternoon — First Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:347
+#: data/core/macros/schedules.cfg:362
 msgid "Afternoon — Second Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:356
+#: data/core/macros/schedules.cfg:371
 msgid "Afternoon — Third Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:365
+#: data/core/macros/schedules.cfg:380
 msgid "Afternoon — Fourth Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:374
+#: data/core/macros/schedules.cfg:389
 msgid "Afternoon — Fifth Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:385
+#: data/core/macros/schedules.cfg:400
 msgid "Afternoon — Sixth Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:408
+#: data/core/macros/schedules.cfg:423
 msgid "First Watch — First Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:420
+#: data/core/macros/schedules.cfg:435
 msgid "First Watch — Second Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:432
+#: data/core/macros/schedules.cfg:447
 msgid "First Watch — Third Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:444
+#: data/core/macros/schedules.cfg:459
 msgid "First Watch — Fourth Hour"
 msgstr ""
 
 #. [time]: id=dawn1
-#: data/core/macros/schedules.cfg:498
+#: data/core/macros/schedules.cfg:514
 #, fuzzy
 #| msgid "First Watch"
 msgid "First Dawn"
 msgstr "Nit"
 
 #. [time]: id=dawn2
-#: data/core/macros/schedules.cfg:509
+#: data/core/macros/schedules.cfg:525
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dawn"
 msgstr "Matinada"
 
 #. [time]: id=morning1
-#: data/core/macros/schedules.cfg:520
+#: data/core/macros/schedules.cfg:536
 #, fuzzy
 #| msgid "Morning"
 msgid "First Morning"
 msgstr "Matí"
 
 #. [time]: id=morning2
-#: data/core/macros/schedules.cfg:532
+#: data/core/macros/schedules.cfg:548
 #, fuzzy
 #| msgid "Morning"
 msgid "Second Morning"
 msgstr "Matí"
 
 #. [time]: id=midday1
-#: data/core/macros/schedules.cfg:544
+#: data/core/macros/schedules.cfg:560
 #, fuzzy
 #| msgid "First Watch"
 msgid "First Midday"
 msgstr "Nit"
 
 #. [time]: id=midday2
-#: data/core/macros/schedules.cfg:556
+#: data/core/macros/schedules.cfg:572
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Midday"
 msgstr "Matinada"
 
 #. [time]: id=afternoon1
-#: data/core/macros/schedules.cfg:568
+#: data/core/macros/schedules.cfg:584
 #, fuzzy
 #| msgid "Afternoon"
 msgid "First Afternoon"
 msgstr "Migdia"
 
 #. [time]: id=afternoon2
-#: data/core/macros/schedules.cfg:580
+#: data/core/macros/schedules.cfg:596
 #, fuzzy
 #| msgid "Afternoon"
 msgid "Second Afternoon"
 msgstr "Migdia"
 
 #. [time]: id=dusk1
-#: data/core/macros/schedules.cfg:592
+#: data/core/macros/schedules.cfg:608
 #, fuzzy
 #| msgid "firststrike"
 msgid "First Dusk"
 msgstr "iniciatiu"
 
 #. [time]: id=dusk2
-#: data/core/macros/schedules.cfg:603
+#: data/core/macros/schedules.cfg:619
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dusk"
 msgstr "Matinada"
 
 #. [time]: id=short_dark
-#: data/core/macros/schedules.cfg:614
+#: data/core/macros/schedules.cfg:630
 msgid "The Short Dark"
 msgstr ""
 
 #. [time]: id=long_dark1
-#: data/core/macros/schedules.cfg:626
+#: data/core/macros/schedules.cfg:642
 msgid "The Long Dark (1)"
 msgstr ""
 
 #. [time]: id=long_dark2
-#: data/core/macros/schedules.cfg:638
+#: data/core/macros/schedules.cfg:654
 msgid "The Long Dark (2)"
 msgstr ""
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:650
+#: data/core/macros/schedules.cfg:666
 msgid "The Long Dark (3)"
 msgstr ""
 
 #. [time]: id=long_dark4
-#: data/core/macros/schedules.cfg:664
+#: data/core/macros/schedules.cfg:680
 msgid "The Long Dark (4)"
 msgstr ""
 
@@ -4652,7 +4652,7 @@ msgstr ""
 "\n"
 "Notes especials:"
 
-#: data/core/macros/special-notes.cfg:15
+#: data/core/macros/special-notes.cfg:17
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -4664,7 +4664,7 @@ msgstr ""
 " Els esperits tenen unes resistències molt inusuals, i es mouen prou "
 "lentament sobre l'aigua."
 
-#: data/core/macros/special-notes.cfg:18
+#: data/core/macros/special-notes.cfg:20
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -4676,19 +4676,19 @@ msgstr ""
 " L'atac arcà d'esta unitat causa un mal enorme contra criatures màgiques, i "
 "fins i tot també contra certes unitats vivents."
 
-#: data/core/macros/special-notes.cfg:21
+#: data/core/macros/special-notes.cfg:23
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " Esta unitat és capaç de fer cures bàsiques."
 
-#: data/core/macros/special-notes.cfg:24
+#: data/core/macros/special-notes.cfg:26
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of rapid healing."
 msgstr " Esta unitat és capaç de fer cures bàsiques."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:29
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -4699,7 +4699,7 @@ msgstr ""
 " Esta unitat és capaç de guarir les unitats al seu voltant i curar-les del "
 "verí."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:32
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -4711,7 +4711,7 @@ msgstr ""
 " Esta unitat és capaç de neutralitzar els efectes del verí en unitats que "
 "estiguen al seu voltant."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:35
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -4723,7 +4723,7 @@ msgstr ""
 " Esta unitat regenera, cosa que li permet recuperar-se com si sempre "
 "estigués en un llogaret."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:38
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -4735,7 +4735,7 @@ msgstr ""
 " La fermesa d'esta unitat reduïx el dany rebut d'alguns atacs, però només "
 "quan defensa."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:41
 #, fuzzy
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
@@ -4745,7 +4745,7 @@ msgstr ""
 "causar més dany en combat, encara que açò només s'aplica a unitats de nivell "
 "inferior."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:44
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -4757,13 +4757,13 @@ msgstr ""
 " L'habilitat d'esta unitat d'esquivar li permet ignorar les 'zones de "
 "control' enemigues i, per tant, moure's sense cap problema al seu voltant."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:47
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " La il·luminació incrementa el nivell de llum al voltant."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:50
 #, fuzzy
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
@@ -4773,7 +4773,7 @@ msgstr ""
 "Esta unitat pot teletransportar-se entre dos llogarets amics de manera "
 "instantània."
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:53
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -4786,7 +4786,7 @@ msgstr ""
 "invisible als enemics, excepte si està immediatament adjacent o no ha "
 "revelat la seua posició atacant."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:56
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
@@ -4795,7 +4795,7 @@ msgstr ""
 " Esta unitat es pot amagar de nit, sense deixar cap senyal de la seua "
 "presència."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:59
 #, fuzzy
 #| msgid ""
 #| "Submerge:\n"
@@ -4817,7 +4817,7 @@ msgstr ""
 "unitat enemiga descobrix la submersió, perdrà immediatament el moviment "
 "restant."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:62
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -4828,7 +4828,7 @@ msgstr ""
 " Esta unitat es pot moure sense ser vista per aigües profundes, ja que no "
 "requerix aire de la superfície."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:65
 #, fuzzy
 #| msgid ""
 #| "Feeding:\n"
@@ -4842,7 +4842,7 @@ msgstr ""
 "Esta unitat guanya 1 punt extra de vida cada vegada que mata una unitat "
 "vivent."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:68
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -4854,7 +4854,7 @@ msgstr ""
 " Cada vegada que s'empra el seu atac berserk, esta unitat continua atacant "
 "fins que ella o l'enemic jeu mort."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:71
 #, fuzzy
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
@@ -4864,7 +4864,7 @@ msgstr ""
 " Si algú del mateix equip distrau l'enemic, este unitat pot apunyalar, "
 "infligint el doble de dany, si apareix per darrere d'este enemic."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:74
 #, fuzzy
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
@@ -4873,7 +4873,7 @@ msgstr ""
 " Els enemics que perden la seua vida front a la plaga tornaran a alçar-se en "
 "la no vida."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:77
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -4885,7 +4885,7 @@ msgstr ""
 " Esta unitat es capaç d'alentir els seus enemics, dividint per dos el seu "
 "moviment i dany causat fins que acaben un torn."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:80
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -4896,7 +4896,7 @@ msgstr ""
 " L'habilitat de convertir als vius en pedra fa d'esta unitat un enemic "
 "extremadament perillós."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:83
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -4908,7 +4908,7 @@ msgstr ""
 " L'habilitat de tirador d'esta unitat li dóna una gran probabilitat "
 "d'encertar els seus enemics, encara que només a l'atac."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:86
 #, fuzzy
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
@@ -4917,7 +4917,7 @@ msgstr ""
 " Els atacs a distància d'esta unitat són màgics, i sempre tenen un gran "
 "probabilitat d'encertar un enemic."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:89
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -4929,7 +4929,7 @@ msgstr ""
 " Els atacs d'eixam d'esta unitat esdevindran menys mortífers segons els seus "
 "membres siguen ferits."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:92
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -4941,7 +4941,7 @@ msgstr ""
 " Un atac de càrrega dobla tant el dany causat com el rebut; açò, tanmateix, "
 "no afecta els contraatacs quan la unitat defensa."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:95
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -4952,7 +4952,7 @@ msgstr ""
 " Durant la batalla, esta unitat pot drenar vida de les seues víctimes per "
 "recuperar la seua."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:98
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -4964,7 +4964,7 @@ msgstr ""
 " La llargària de l'arma d'esta unitat li permet atacar primer en melé, fins "
 "i tot quan defensa."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:101
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -4976,14 +4976,14 @@ msgstr ""
 " Les víctimes del verí d'esta unitat continuaran rebent dany fins que siguen "
 "curats en un llogaret o per alguna unitat que cure."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:104
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:156
+#: data/core/macros/special-notes.cfg:160
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -4996,7 +4996,7 @@ msgstr ""
 "estigués en un llogaret."
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:300
+#: data/core/macros/special-notes.cfg:304
 #, fuzzy
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "

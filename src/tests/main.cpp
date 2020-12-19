@@ -21,17 +21,10 @@
 #error Compiler misconfiguration - must define BOOST_TEST_DYN_LINK
 #endif
 
-#include <boost/version.hpp>
-
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_monitor.hpp>
-#if BOOST_VERSION >= 105900
 #include <boost/test/unit_test_parameters.hpp>
-#else
-#include <boost/test/detail/unit_test_parameters.hpp>
-#endif
 #include <boost/test/results_reporter.hpp>
-
 
 #include <fstream>
 
@@ -82,31 +75,13 @@ struct wesnoth_global_fixture {
 		gui2::init();
 		static const gui2::event::manager gui_event_manager;
 
-
-
 		// Set more report as default
-#if BOOST_VERSION >= 106400
 		if(runtime_config::get<log_level>(runtime_config::btrt_log_level) == invalid_log_level)
 			unit_test_log.set_threshold_level(log_messages);
 		if(runtime_config::get<report_level>(runtime_config::btrt_report_level) == INV_REPORT_LEVEL)
 			results_reporter::set_level(SHORT_REPORT);
 		unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
 		unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
-#elif BOOST_VERSION >= 106000
-		if(runtime_config::get<log_level>(runtime_config::LOG_LEVEL) == invalid_log_level)
-			unit_test_log.set_threshold_level(log_messages);
-		if(runtime_config::get<report_level>(runtime_config::REPORT_LEVEL) == INV_REPORT_LEVEL)
-			results_reporter::set_level(SHORT_REPORT);
-		unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
-		unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
-#else
-		if(runtime_config::log_level() == invalid_log_level)
-			unit_test_log.set_threshold_level(log_messages);
-		if(runtime_config::report_level() == INV_REPORT_LEVEL)
-			results_reporter::set_level(SHORT_REPORT);
-		unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
-		unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
-#endif
 	}
 	~wesnoth_global_fixture()
 	{

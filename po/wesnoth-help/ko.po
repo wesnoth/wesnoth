@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-11-21 01:40-0300\n"
+"POT-Creation-Date: 2020-12-18 22:26-0300\n"
 "PO-Revision-Date: 2013-10-25 16:24+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -21,7 +21,7 @@ msgstr ""
 #. [time]: id=underground
 #. [editor_times]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
-#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:109
+#: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "지하"
 
@@ -881,13 +881,13 @@ msgstr ""
 
 #. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:121
+#: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "지하 심층"
 
 #. [time]: id=indoors
 #. [editor_times]: id=indoors
-#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:101
+#: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "건물 내부"
 
@@ -2700,9 +2700,9 @@ msgid ""
 "• <ref>dst='crowns' text='Hero units'</ref> have a smaller variant of the "
 "seven-pointed star, these units can’t recruit.\n"
 "• Units without a <ref>dst='movement' text='zone of control'</ref> have a "
-"broken version of the shape.\n"
+"broken outline version of the shape.\n"
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
-"a ZoC, these units have a broken version of the seven-pointed star."
+"a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
 
 #. [topic]: id=crowns
@@ -2798,21 +2798,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:464 data/core/macros/schedules.cfg:14
-#: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
+#: data/core/help.cfg:464 data/core/macros/schedules.cfg:16
+#: data/core/macros/schedules.cfg:290 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "새벽"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:465 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:465 data/core/macros/schedules.cfg:28
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "아침"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:466 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:466 data/core/macros/schedules.cfg:46
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "오후"
@@ -2820,21 +2820,21 @@ msgstr "오후"
 #. [time]: id=dusk
 #. [topic]: id=time_of_day
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:467 data/core/macros/schedules.cfg:53
-#: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
+#: data/core/help.cfg:467 data/core/macros/schedules.cfg:55
+#: data/core/macros/schedules.cfg:411 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "황혼"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:468 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:468 data/core/macros/schedules.cfg:67
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "초경"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:469 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:469 data/core/macros/schedules.cfg:91
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "삼경"
@@ -4378,208 +4378,208 @@ msgstr "최대 HP 3 증가, 필요 XP 20% 증가"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
+#: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
 msgstr "정오"
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
+#: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
 msgstr "자정"
 
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:203
+#: data/core/macros/schedules.cfg:218
 msgid "Second Watch — First Hour"
 msgstr "삼경 제 1시"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:215
+#: data/core/macros/schedules.cfg:230
 msgid "Second Watch — Second Hour"
 msgstr "삼경 제 2시"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:227
+#: data/core/macros/schedules.cfg:242
 msgid "Second Watch — Third Hour"
 msgstr "삼경 제 3시"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:239
+#: data/core/macros/schedules.cfg:254
 msgid "Second Watch — Fourth Hour"
 msgstr "삼경 제 4시"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:251
+#: data/core/macros/schedules.cfg:266
 msgid "Second Watch — Fifth Hour"
 msgstr "삼경 제 5시"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:263
+#: data/core/macros/schedules.cfg:278
 msgid "Second Watch — Sixth Hour"
 msgstr "삼경 제 6시"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:287
+#: data/core/macros/schedules.cfg:302
 msgid "Morning — First Hour"
 msgstr "아침 제 1시"
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:299
+#: data/core/macros/schedules.cfg:314
 msgid "Morning — Second Hour"
 msgstr "아침 제 2시"
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:311
+#: data/core/macros/schedules.cfg:326
 msgid "Morning — Third Hour"
 msgstr "아침 제 3시"
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:320
+#: data/core/macros/schedules.cfg:335
 msgid "Morning — Fourth Hour"
 msgstr "아침 제 4시"
 
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:338
+#: data/core/macros/schedules.cfg:353
 msgid "Afternoon — First Hour"
 msgstr "오후 제 1시"
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:347
+#: data/core/macros/schedules.cfg:362
 msgid "Afternoon — Second Hour"
 msgstr "오후 제 2시"
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:356
+#: data/core/macros/schedules.cfg:371
 msgid "Afternoon — Third Hour"
 msgstr "오후 제 3시"
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:365
+#: data/core/macros/schedules.cfg:380
 msgid "Afternoon — Fourth Hour"
 msgstr "오후 제 4시"
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:374
+#: data/core/macros/schedules.cfg:389
 msgid "Afternoon — Fifth Hour"
 msgstr "오후 제 5시"
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:385
+#: data/core/macros/schedules.cfg:400
 msgid "Afternoon — Sixth Hour"
 msgstr "오후 제 6시"
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:408
+#: data/core/macros/schedules.cfg:423
 msgid "First Watch — First Hour"
 msgstr "초경 제 1시"
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:420
+#: data/core/macros/schedules.cfg:435
 msgid "First Watch — Second Hour"
 msgstr "초경 제 2시"
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:432
+#: data/core/macros/schedules.cfg:447
 msgid "First Watch — Third Hour"
 msgstr "초경 제 3시"
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:444
+#: data/core/macros/schedules.cfg:459
 msgid "First Watch — Fourth Hour"
 msgstr "초경 제 4시"
 
 #. [time]: id=dawn1
-#: data/core/macros/schedules.cfg:498
+#: data/core/macros/schedules.cfg:514
 #, fuzzy
 #| msgid "First Watch"
 msgid "First Dawn"
 msgstr "초경"
 
 #. [time]: id=dawn2
-#: data/core/macros/schedules.cfg:509
+#: data/core/macros/schedules.cfg:525
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dawn"
 msgstr "삼경"
 
 #. [time]: id=morning1
-#: data/core/macros/schedules.cfg:520
+#: data/core/macros/schedules.cfg:536
 #, fuzzy
 #| msgid "Morning"
 msgid "First Morning"
 msgstr "아침"
 
 #. [time]: id=morning2
-#: data/core/macros/schedules.cfg:532
+#: data/core/macros/schedules.cfg:548
 #, fuzzy
 #| msgid "Morning"
 msgid "Second Morning"
 msgstr "아침"
 
 #. [time]: id=midday1
-#: data/core/macros/schedules.cfg:544
+#: data/core/macros/schedules.cfg:560
 #, fuzzy
 #| msgid "Midday"
 msgid "First Midday"
 msgstr "정오"
 
 #. [time]: id=midday2
-#: data/core/macros/schedules.cfg:556
+#: data/core/macros/schedules.cfg:572
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Midday"
 msgstr "삼경"
 
 #. [time]: id=afternoon1
-#: data/core/macros/schedules.cfg:568
+#: data/core/macros/schedules.cfg:584
 #, fuzzy
 #| msgid "Afternoon"
 msgid "First Afternoon"
 msgstr "오후"
 
 #. [time]: id=afternoon2
-#: data/core/macros/schedules.cfg:580
+#: data/core/macros/schedules.cfg:596
 #, fuzzy
 #| msgid "Afternoon"
 msgid "Second Afternoon"
 msgstr "오후"
 
 #. [time]: id=dusk1
-#: data/core/macros/schedules.cfg:592
+#: data/core/macros/schedules.cfg:608
 #, fuzzy
 #| msgid "first strike"
 msgid "First Dusk"
 msgstr "선공"
 
 #. [time]: id=dusk2
-#: data/core/macros/schedules.cfg:603
+#: data/core/macros/schedules.cfg:619
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dusk"
 msgstr "삼경"
 
 #. [time]: id=short_dark
-#: data/core/macros/schedules.cfg:614
+#: data/core/macros/schedules.cfg:630
 msgid "The Short Dark"
 msgstr ""
 
 #. [time]: id=long_dark1
-#: data/core/macros/schedules.cfg:626
+#: data/core/macros/schedules.cfg:642
 msgid "The Long Dark (1)"
 msgstr ""
 
 #. [time]: id=long_dark2
-#: data/core/macros/schedules.cfg:638
+#: data/core/macros/schedules.cfg:654
 msgid "The Long Dark (2)"
 msgstr ""
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:650
+#: data/core/macros/schedules.cfg:666
 msgid "The Long Dark (3)"
 msgstr ""
 
 #. [time]: id=long_dark4
-#: data/core/macros/schedules.cfg:664
+#: data/core/macros/schedules.cfg:680
 msgid "The Long Dark (4)"
 msgstr ""
 
@@ -4595,7 +4595,7 @@ msgstr ""
 "\n"
 "특별히 참고할 것:"
 
-#: data/core/macros/special-notes.cfg:15
+#: data/core/macros/special-notes.cfg:17
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -4607,7 +4607,7 @@ msgstr ""
 " 영혼들은 타격에 대해 비범한 저항력을 가지고 있으며, 물 위에서는 상당히 느려"
 "진다."
 
-#: data/core/macros/special-notes.cfg:18
+#: data/core/macros/special-notes.cfg:20
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -4619,19 +4619,19 @@ msgstr ""
 " 이 유닛의 신령 공격은 마법적인 생물들에게 심대한 타격을 주며, 현실 생물들에"
 "게도 어느 정도의 타격을 줍니다."
 
-#: data/core/macros/special-notes.cfg:21
+#: data/core/macros/special-notes.cfg:23
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " 이 유닛은 기본적인 치료를 할 수 있습니다."
 
-#: data/core/macros/special-notes.cfg:24
+#: data/core/macros/special-notes.cfg:26
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " 이 유닛은 신속한 치료를 할 수 있습니다."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:29
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -4640,7 +4640,7 @@ msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr " 이 유닛은 주변의 유닛들을 치료하며, 독을 치유할 수 있습니다."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:32
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -4650,7 +4650,7 @@ msgid ""
 "it."
 msgstr " 이 유닛은 주변의 유닛들이 독에 걸렸을 경우 그것을 중화할 수 있습니다."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:35
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -4662,7 +4662,7 @@ msgstr ""
 " 이 유닛은 재생 능력을 가지고 있어 항상 마을에 있는 것과 같은 회복능력을 발휘"
 "합니다."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:38
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -4674,7 +4674,7 @@ msgstr ""
 " 이 유닛은 꿋꿋한 방어자세로 어떤 종류의 공격으로 받는 피해를 줄일 수 있습니"
 "다. 이것은 방어시에만 적용됩니다."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:41
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -4687,7 +4687,7 @@ msgstr ""
 " 이 유닛의 통솔력에 기대는 근처의 같은 편 유닛들은 전투에서 더 강력한 위력을 "
 "발휘합니다. 이것은 더 낮은 레벨의 유닛들에게만 적용됩니다."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:44
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -4699,13 +4699,13 @@ msgstr ""
 " 이 유닛은 척후 능력으로 적의 통제 권역을 무시하여 적 주변에서 제약없이 이동"
 "할 수 있습니다."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:47
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " 광휘는 주변 지역의 광도를 높입니다."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:50
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -4716,7 +4716,7 @@ msgid ""
 msgstr ""
 " 이 유닛은 이동력 1을 써서 아군 세력의 빈 마을들 사이를 이동할 수 있습니다."
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:53
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -4728,14 +4728,14 @@ msgstr ""
 " 이 유닛은 기습 기술을 써서 숲 속에서는 적에게 보이지 않기 때문에 바로 곁에 "
 "가거나 공격받지 않는 한 찾을 수 없습니다."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:56
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr " 이 유닛은 야간에는 자신의 흔적을 전혀 남기지 않습니다."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:59
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -4747,7 +4747,7 @@ msgstr ""
 " 이 유닛은 마을(수중 마을 빼고)에 숨어서 적이 바로 곁에 오지 않는 한 들키지 "
 "않을 수 있습니다."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:62
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -4758,7 +4758,7 @@ msgstr ""
 " 이 유닛은 물 밖에서 숨 쉴 필요가 없어서 깊은 물 속에서 보이지 않고 이동할 "
 "수 있습니다."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:65
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -4768,7 +4768,7 @@ msgid ""
 "unit."
 msgstr " 이 유닛은 생체 유닛을 하나 죽일때마다 최대 HP를 1 얻습니다."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:68
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -4780,7 +4780,7 @@ msgstr ""
 " 일단 광전사의 공격이 시작되면 그 자신이나 적 둘 중 하나가 죽기 전까지는 멈추"
 "지 않습니다."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:71
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -4794,7 +4794,7 @@ msgstr ""
 " 공격시에 목표물이 반대편에서 적을 상대하고 있으면, 이 유닛은 목표물의 뒤에"
 "서 몰래 움직여 뒷치기로 두 배의 피해를 줄 수 있습니다."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:74
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -4804,7 +4804,7 @@ msgid ""
 "they are standing on a village."
 msgstr " 마을 밖에서 역병에 당해 목숨을 잃은 적은 언데드로 환생하게 됩니다."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:77
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -4816,7 +4816,7 @@ msgstr ""
 " 이 유닛은 적을 둔화시켜 적의 턴이 끝날 때까지 이동 속도와 공격력을 반감시킵"
 "니다."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:80
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -4825,7 +4825,7 @@ msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr " 이 유닛은 산 자를 돌로 만드는 능력이 있어 엄청나게 위험합니다."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:83
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -4837,7 +4837,7 @@ msgstr ""
 " 이 유닛은 저격능력을 가지고 있어 목표한 적을 높은 명중률로 맞힐 수 있지만, "
 "방어시에는 이 능력을 쓸 수 없습니다."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:86
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
@@ -4847,7 +4847,7 @@ msgid ""
 "opponent."
 msgstr " 이 유닛은 언제나 높은 명중률을 보장받는 마법 공격을 가지고 있습니다."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:89
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -4857,7 +4857,7 @@ msgid ""
 "are wounded."
 msgstr " 이 유닛의 난무공격은 이 유닛이 상처를 입을 수록 위험도가 덜해집니다."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:92
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -4869,7 +4869,7 @@ msgstr ""
 " 돌격 공격은 주고 받는 피해량 전부를 배가시킵니다. 이 능력은 반격시에는 적용"
 "되지 않습니다."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:95
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -4880,7 +4880,7 @@ msgstr ""
 " 이 유닛은 전투 중에 상대로부터 생명력을 빨아들여 자신의 체력을 보강할 수 있"
 "습니다."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:98
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -4891,7 +4891,7 @@ msgid ""
 msgstr ""
 " 이 유닛은 무기의 길이 덕에 방어할 때에도 근접공격의 우선권을 갖습니다."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:101
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -4903,14 +4903,14 @@ msgstr ""
 " 이 유닛의 독에 당하면 마을에서 혹은 치유능력을 가진 유닛을 통해 치유받기 전"
 "까지 계속 피해를 입게 됩니다."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:104
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:156
+#: data/core/macros/special-notes.cfg:160
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -4923,7 +4923,7 @@ msgstr ""
 "합니다."
 
 #. [special_note]
-#: data/core/macros/special-notes.cfg:300
+#: data/core/macros/special-notes.cfg:304
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "

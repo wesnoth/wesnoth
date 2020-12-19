@@ -401,22 +401,10 @@ void addon_manager::pre_show(window& window)
 	connect_signal_notify_modified(order_dropdown,
 		std::bind(&addon_manager::order_addons, this));
 
-	button& url_go_button = find_widget<button>(&window, "url_go", false);
-	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
-	text_box& url_textbox = find_widget<text_box>(&window, "url", false);
+	label& url_label = find_widget<label>(&window, "url", false);
 
-	url_textbox.set_active(false);
-
-	if(!desktop::clipboard::available()) {
-		url_copy_button.set_active(false);
-		url_copy_button.set_tooltip(_("Clipboard support not found, contact your packager"));
-	}
-
-	if(!desktop::open_object_is_supported()) {
-		// No point in displaying the button on platforms that can't do
-		// open_object().
-		url_go_button.set_visible(widget::visibility::invisible);
-	}
+	url_label.set_use_markup(true);
+	url_label.set_link_aware(true);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "install", false),
@@ -441,14 +429,6 @@ void addon_manager::pre_show(window& window)
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "update_all", false),
 		std::bind(&addon_manager::update_all_addons, this));
-
-	connect_signal_mouse_left_click(
-		url_go_button,
-		std::bind(&addon_manager::browse_url_callback, this, std::ref(url_textbox)));
-
-	connect_signal_mouse_left_click(
-		url_copy_button,
-		std::bind(&addon_manager::copy_url_callback, this, std::ref(url_textbox)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_help", false),
@@ -882,17 +862,6 @@ void addon_manager::show_help()
 	help::show_help("installing_addons");
 }
 
-void addon_manager::browse_url_callback(text_box& url_box)
-{
-	/* TODO: ask for confirmation */
-	desktop::open_object(url_box.get_value());
-}
-
-void addon_manager::copy_url_callback(text_box& url_box)
-{
-	desktop::clipboard::copy_to_clipboard(url_box.get_value(), false);
-}
-
 static std::string format_addon_time(std::time_t time)
 {
 	if(time) {
@@ -959,13 +928,7 @@ void addon_manager::on_addon_select()
 	find_widget<styled_widget>(parent, "translations", false).set_label(!languages.empty() ? languages : _("translations^None"));
 
 	const std::string& feedback_url = info->feedback_url;
-
-	if(!feedback_url.empty()) {
-		find_widget<stacked_widget>(parent, "feedback_stack", false).select_layer(1);
-		find_widget<text_box>(parent, "url", false).set_value(feedback_url);
-	} else {
-		find_widget<stacked_widget>(parent, "feedback_stack", false).select_layer(0);
-	}
+	find_widget<label>(parent, "url", false).set_label(!feedback_url.empty() ? feedback_url : _("url^None"));
 
 	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
 	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;
