@@ -190,7 +190,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if(cmdline_opts_.fullscreen)
-		video().set_fullscreen(true);
+		video_->set_fullscreen(true);
 	if(cmdline_opts_.load)
 		load_data_.reset(
 			new savegame::load_game_metadata{savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load});
@@ -261,7 +261,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		test_scenarios_ = cmdline_opts_.unit_test;
 	}
 	if(cmdline_opts_.windowed)
-		video().set_fullscreen(false);
+		video_->set_fullscreen(false);
 	if(cmdline_opts_.with_replay && load_data_)
 		load_data_->show_replay = true;
 	if(cmdline_opts_.translation_percent)
@@ -323,21 +323,21 @@ bool game_launcher::init_video()
 			std::cerr << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags\n";
 			return false;
 		}
-		video().make_fake();
+		video_->make_fake();
 		game_config::no_delay = true;
 		return true;
 	}
 
 	// Initialize a new window
-	video().init_window();
+	video_->init_window();
 
 	// Set window title and icon
-	video().set_window_title(game_config::get_default_title_string());
+	video_->set_window_title(game_config::get_default_title_string());
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
 	if(icon != nullptr) {
-		video().set_window_icon(icon);
+		video_->set_window_icon(icon);
 	}
 #endif
 	return true;
@@ -984,7 +984,7 @@ bool game_launcher::change_language()
 	}
 
 	if(!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
-		video().set_window_title(game_config::get_default_title_string());
+		video_->set_window_title(game_config::get_default_title_string());
 	}
 
 	return true;
