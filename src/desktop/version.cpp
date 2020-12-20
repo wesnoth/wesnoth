@@ -137,13 +137,21 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 
 std::string os_version()
 {
+#if defined(__APPLE__) || defined(_X11)
+	utsname u;
+
+	if(uname(&u) != 0) {
+		ERR_DU << "os_version: uname error (" << strerror(errno) << ")\n";
+	}
+#endif
+
 #if defined(__APPLE__)
 
 	//
 	// Standard Mac OS X version
 	//
 
-	return desktop::apple::os_version();
+	return desktop::apple::os_version() + " " + u.machine;
 
 #elif defined(_X11)
 
@@ -166,19 +174,13 @@ std::string os_version()
 
 		// Check this again in case we got "" above for some weird reason.
 		if(!ver.empty()) {
-			return ver;
+			return ver + " " + u.machine;
 		}
 	}
 
 	//
 	// POSIX uname version fallback.
 	//
-
-	utsname u;
-
-	if(uname(&u) != 0) {
-		ERR_DU << "os_version: uname error (" << strerror(errno) << ")\n";
-	}
 
 	return formatter() << u.sysname << ' '
 						<< u.release << ' '
