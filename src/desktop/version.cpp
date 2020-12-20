@@ -107,7 +107,7 @@ std::string windows_runtime_arch()
 		case PROCESSOR_ARCHITECTURE_IA64:
 			return "ia64";
 		default:
-			return "unknown";
+			return _("cpu_archictecture^<unknown>");
 	}
 }
 
