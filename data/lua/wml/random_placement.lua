@@ -13,7 +13,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 	local math_abs = math.abs
 	local locs = wesnoth.get_locations(filter)
 	if type(num_items) == "string" then
-		if num_items:match('^%s%(.*%)%s$') then
+		if num_items:match('^%s*%(.*%)%s*$') then
 			local params = {size = #locs}
 			local result = wesnoth.eval_formula(num_items, params)
 			num_items = math.floor(tonumber(result))
