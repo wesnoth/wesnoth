@@ -55,6 +55,12 @@ namespace apple {
 		version_string += [[version_array objectAtIndex:1] UTF8String];
 		version_string += " (";
 		version_string += [[version_array objectAtIndex:3] UTF8String];
+		
+#if defined(__aarch64__)
+		version_string += " arm64";
+#elif defined(__x86_64__)
+		version_string += " x86_64";
+#endif
 
 		return version_string;
 	}
