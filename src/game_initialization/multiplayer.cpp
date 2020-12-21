@@ -552,7 +552,7 @@ void mp_manager::enter_create_mode()
 {
 	DBG_MP << "entering create mode" << std::endl;
 
-	if(gui2::dialogs::mp_create_game::execute(*game_config, state, connection == nullptr)) {
+	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
 		enter_staging_mode();
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
@@ -582,7 +582,7 @@ bool mp_manager::enter_lobby_mode()
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;
 		{
-			gui2::dialogs::mp_lobby dlg(*game_config, lobby_info, *connection, dlg_joined_game_id);
+			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
 		}

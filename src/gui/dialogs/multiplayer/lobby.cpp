@@ -43,6 +43,7 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_config_manager.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -120,9 +121,9 @@ bool mp_lobby::logout_prompt()
 std::string mp_lobby::announcements_ = "";
 std::string mp_lobby::server_information_ = "";
 
-mp_lobby::mp_lobby(const game_config_view& game_config, mp::lobby_info& info, wesnothd_connection &connection, int& joined_game)
+mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& joined_game)
 	: quit_confirmation(&mp_lobby::logout_prompt)
-	, game_config_(game_config)
+	, game_config_(game_config_manager::get()->game_config())
 	, gamelistbox_(nullptr)
 	, lobby_info_(info)
 	, chatbox_(nullptr)

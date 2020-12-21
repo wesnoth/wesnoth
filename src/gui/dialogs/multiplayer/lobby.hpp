@@ -64,7 +64,7 @@ struct player_list
 class mp_lobby : public modal_dialog, public quit_confirmation, private plugin_executor
 {
 public:
-	mp_lobby(const game_config_view& game_config, mp::lobby_info& info, wesnothd_connection &connection, int& joined_game);
+	mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& joined_game);
 
 	~mp_lobby();
 

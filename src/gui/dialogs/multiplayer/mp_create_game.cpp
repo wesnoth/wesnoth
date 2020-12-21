@@ -21,7 +21,6 @@
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
-#include "game_config_view.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
@@ -67,8 +66,8 @@ namespace prefs = preferences;
 
 REGISTER_DIALOG(mp_create_game)
 
-mp_create_game::mp_create_game(const game_config_view& cfg, saved_game& state, bool local_mode)
-	: cfg_(cfg)
+mp_create_game::mp_create_game(saved_game& state, bool local_mode)
+	: cfg_(game_config_manager::get()->game_config())
 	, create_engine_(state)
 	, config_engine_()
 	, options_manager_()
