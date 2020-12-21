@@ -846,13 +846,14 @@ struct dialog_tester<mp_lobby>
 	wesnothd_connection connection;
 	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
+	int selected_game;
 	dialog_tester() : connection("", ""), li(installed_addons)
 	{
 		gc_view = game_config_view::wrap(game_config);
 	}
 	mp_lobby* create()
 	{
-		return new mp_lobby(gc_view, li, connection);
+		return new mp_lobby(gc_view, li, connection, selected_game);
 	}
 };
 
