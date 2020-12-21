@@ -1,0 +1,154 @@
+***************
+*** 4,10 ****
+      id=18_The_Portal_of_Doom
+      next_scenario=19_Showdown_in_the_Northern_Swamp
+      {MEMOIRS_MAP 18_The_Portal_of_Doom.map}
+-     turns=40
+      victory_when_enemies_defeated=no
+      {DEFAULT_SCHEDULE}
+  
+--- 4,10 ----
+      id=18_The_Portal_of_Doom
+      next_scenario=19_Showdown_in_the_Northern_Swamp
+      {MEMOIRS_MAP 18_The_Portal_of_Doom.map}
++     {TURNS 44 42 40}
+      victory_when_enemies_defeated=no
+      {DEFAULT_SCHEDULE}
+  
+***************
+*** 53,59 ****
+          recruit={LOYALISTS}
+          team_name=allies
+          user_team_name= _ "Loyalists"
+-         {GOLD 200 180 160}
+          {FLAG_VARIANT loyalist}
+      [/side]
+      [event]
+--- 53,60 ----
+          recruit={LOYALISTS}
+          team_name=allies
+          user_team_name= _ "Loyalists"
++         {GOLD 220 190 160}
++         {INCOME 3 2 1}
+          {FLAG_VARIANT loyalist}
+      [/side]
+      [event]
+***************
+*** 88,108 ****
+  #endif
+          [ai]
+              aggression=0.0
+-             #recruitment_pattern=scout, mixed fighter, archer
+              # there are a lot of close villages
+-             #villages_per_scout=6
+  
+-             # attack Delfador   heavily
+-             leader_value=2.0
+              [goal]
+                  name=target
+                  [criteria]
+                      id=Delfador
+                  [/criteria]
+-                 value=3.0
+              [/goal]
+          [/ai]
+-         {GOLD 200 200 250}
+          team_name=enemies
+          user_team_name= _ "Undead"
+          {FLAG_VARIANT undead}
+--- 89,111 ----
+  #endif
+          [ai]
+              aggression=0.0
++ #ifdef CUSTOMIZED_AI
++             recruitment_pattern=scout, mixed fighter, archer
+              # there are a lot of close villages
++             villages_per_scout=6
++ #endif
+  
++             # attack Delfador heavily
++             leader_value={ON_DIFFICULTY 1.9 2.0 2.1}
+              [goal]
+                  name=target
+                  [criteria]
+                      id=Delfador
+                  [/criteria]
++                 value={ON_DIFFICULTY 2.9 3.0 3.1}
+              [/goal]
+          [/ai]
++         {GOLD 150 200 250}
+          team_name=enemies
+          user_team_name= _ "Undead"
+          {FLAG_VARIANT undead}
+***************
+*** 128,148 ****
+  #endif
+          [ai]
+              aggression=0.0
+-             #recruitment_pattern=scout, mixed fighter, archer
+              # there are a lot of close villages
+-             #villages_per_scout=6
+  
+-             # attack Delfador   heavily
+-             leader_value=2.0
+              [goal]
+                  name=target
+                  [criteria]
+                      id=Delfador
+                  [/criteria]
+-                 value=3.0
+              [/goal]
+          [/ai]
+-         {GOLD 200 200 250}
+          team_name=enemies
+          user_team_name= _ "Undead"
+          {FLAG_VARIANT undead}
+--- 131,153 ----
+  #endif
+          [ai]
+              aggression=0.0
++ #ifdef CUSTOMIZED_AI
++             recruitment_pattern=scout, mixed fighter, archer
+              # there are a lot of close villages
++             villages_per_scout=6
++ #endif
+  
++             # attack Delfador heavily
++             leader_value={ON_DIFFICULTY 1.9 2.0 2.1}
+              [goal]
+                  name=target
+                  [criteria]
+                      id=Delfador
+                  [/criteria]
++                 value={ON_DIFFICULTY 2.9 3.0 3.1}
+              [/goal]
+          [/ai]
++         {GOLD 150 200 250}
+          team_name=enemies
+          user_team_name= _ "Undead"
+          {FLAG_VARIANT undead}
+***************
+*** 427,436 ****
+      #############################
+      # closing dialog
+      #############################
+-     #    [event]
+-     #        name=victory
+-     #
+-     #    [/event]
+  
+      [event]
+          name=iliah-malal
+--- 432,443 ----
+      #############################
+      # closing dialog
+      #############################
++ #ifdef CLOSING_DIALOG
++     [event]
++         name=victory
++         # TODO
++     [/event]
++ #endif
+  
+      [event]
+          name=iliah-malal

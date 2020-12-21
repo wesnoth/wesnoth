@@ -1,0 +1,89 @@
+***************
+*** 4,10 ****
+      id=03_The_Road_to_Weldyn
+      next_scenario=04_Leollyn
+      {MEMOIRS_MAP 03_The_Road_to_Weldyn.map}
+-     turns=24
+      {DEFAULT_SCHEDULE}
+  
+      {SCENARIO_MUSIC wanderer.ogg} # No story text, so no intro music
+--- 4,10 ----
+      id=03_The_Road_to_Weldyn
+      next_scenario=04_Leollyn
+      {MEMOIRS_MAP 03_The_Road_to_Weldyn.map}
++     {TURNS 26 25 24}
+      {DEFAULT_SCHEDULE}
+  
+      {SCENARIO_MUSIC wanderer.ogg} # No story text, so no intro music
+***************
+*** 24,29 ****
+          team_name=allies
+          user_team_name= _ "Mages"
+          {FLAG_VARIANT long}
+      [/side]
+  
+      [side]
+--- 24,31 ----
+          team_name=allies
+          user_team_name= _ "Mages"
+          {FLAG_VARIANT long}
++         # 100 is the default when left unspecified:
++         {GOLD 120 110 100}
+      [/side]
+  
+      [side]
+***************
+*** 39,64 ****
+          recruit=Orcish Grunt,Troll Whelp,Wolf Rider
+  #endif
+          {GOLD 150 200 250}
+-         {INCOME 0 2 2}
+          team_name=enemies
+          user_team_name= _ "Pillagers"
+          # make them more aggressive at night
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
+-             aggression=0.7
+-             caution=0.25
+          [/ai]
+          [ai]
+              time_of_day=morning,afternoon
+-             aggression=0.0
+-             caution=0.50
+          [/ai]
+          {FLAG_VARIANT6 ragged}
+      [/side]
+  
+      {MEMOIRS_DEATHS}
+  
+-     {STARTING_VILLAGES 1 10}
+  
+      [label]
+          x,y=9,4
+--- 41,66 ----
+          recruit=Orcish Grunt,Troll Whelp,Wolf Rider
+  #endif
+          {GOLD 150 200 250}
++         {INCOME 0 1 2}
+          team_name=enemies
+          user_team_name= _ "Pillagers"
+          # make them more aggressive at night
+          [ai]
+              time_of_day=dusk,first_watch,second_watch
++             aggression={ON_DIFFICULTY 0.5 0.6 0.7}
++             caution={ON_DIFFICULTY 0.27 0.26 0.25}
+          [/ai]
+          [ai]
+              time_of_day=morning,afternoon
++             aggression={ON_DIFFICULTY 0.2 0.1 0.0}
++             caution={ON_DIFFICULTY 0.51 0.52 0.53}
+          [/ai]
+          {FLAG_VARIANT6 ragged}
+      [/side]
+  
+      {MEMOIRS_DEATHS}
+  
++     {STARTING_VILLAGES 1 {ON_DIFFICULTY 12 11 10}}
+  
+      [label]
+          x,y=9,4
