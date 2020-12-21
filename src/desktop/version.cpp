@@ -24,6 +24,10 @@
 
 #include <cstring>
 
+#if defined(__APPLE__) || defined(_X11)
+#include <sys/utsname.h>
+#endif
+
 #if defined(__APPLE__)
 
 #include "apple_version.hpp"
@@ -31,7 +35,6 @@
 #elif defined(_X11)
 
 #include <cerrno>
-#include <sys/utsname.h>
 
 #endif
 
