@@ -8,6 +8,7 @@
  ### Terrain
  ### Translations
  ### Units
+   * New Fauna/monster unit: Horned Scarab
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
