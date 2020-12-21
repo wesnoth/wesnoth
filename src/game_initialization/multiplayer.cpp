@@ -374,7 +374,6 @@ public:
 	mp_manager(const std::string& host, saved_game& state)
 		: network_worker()
 		, stop(false)
-		, game_config(&game_config_manager::get()->game_config())
 		, state(state)
 		, connection(nullptr)
 		, lobby_info(::installed_addons())
@@ -442,10 +441,6 @@ public:
 			gcm->reload_changed_game_config();
 			gcm->load_game_config_for_create(true); // NOTE: Using reload_changed_game_config only doesn't seem to work here
 
-			// Update gc pointer.
-			// TODO: is this needed? The GCM is a singleton so it should always point to the same object, shouldn't it?
-			game_config = &gcm->game_config();
-
 			// This function does not refer to an addon database, it calls filesystem functions.
 			// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
 			// even if the user changes the contents of the addon directory in the meantime.
@@ -464,10 +459,6 @@ private:
 
 	std::thread network_worker;
 	std::atomic_bool stop;
-
-	// TODO: refactor this out. It's really only passed through to the dialogs for the
-	// minimap and the preferences dialog. Shouldn't need to be kept here.
-	const game_config_view* game_config;
 
 	saved_game& state;
 
@@ -568,7 +559,7 @@ bool mp_manager::enter_lobby_mode()
 
 	// We use a loop here to allow returning to the lobby if you, say, cancel game creation.
 	while(true) {
-		if(const config& cfg = game_config->child("lobby_music")) {
+		if(const config& cfg = game_config_manager::get()->game_config().child("lobby_music")) {
 			for(const config& i : cfg.child_range("music")) {
 				sound::play_music_config(i);
 			}
