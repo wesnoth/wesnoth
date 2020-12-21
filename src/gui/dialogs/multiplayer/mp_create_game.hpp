@@ -39,7 +39,7 @@ class mp_create_game : public modal_dialog, private plugin_executor
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 
 public:
-	mp_create_game(const game_config_view& cfg, saved_game& state, bool local_mode);
+	mp_create_game(saved_game& state, bool local_mode);
 
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_create_game);

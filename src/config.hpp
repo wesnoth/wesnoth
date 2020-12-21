@@ -46,8 +46,6 @@
 #include <boost/exception/exception.hpp>
 #include <boost/range/iterator_range.hpp>
 #include <boost/utility/string_view.hpp>
-#include <boost/variant/apply_visitor.hpp>
-#include <boost/variant/variant.hpp>
 
 using config_key_type = boost::string_view;
 

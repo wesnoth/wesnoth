@@ -15,7 +15,6 @@
 
 #include <string>
 #include "config.hpp"
-#include <boost/variant.hpp>
 
 //Similar to config_of but it stores references to configs (instead of cyoping them).
 struct configr_of

@@ -66,22 +66,20 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 	}
 
 	// shown_hosts is used to prevent the client being locked in a redirect loop.
-	using hostpair = std::pair<std::string, std::string>;
+	std::set<std::pair<std::string, std::string>> shown_hosts;
+	auto addr = shown_hosts.end();
 
-	std::set<hostpair> shown_hosts;
-	hostpair addr;
 	try {
-		addr = parse_network_address(host, "15000");
+		std::tie(addr, std::ignore) = shown_hosts.insert(parse_network_address(host, "15000"));
 	} catch(const std::runtime_error&) {
 		throw wesnothd_error(_("Invalid address specified for multiplayer server"));
 	}
-	shown_hosts.insert(addr);
-
-	// Initializes the connection to the server.
-	auto conn = std::make_unique<wesnothd_connection>(addr.first, addr.second);
 
 	// Start stage
 	gui2::dialogs::loading_screen::progress(loading_stage::connect_to_server);
+
+	// Initializes the connection to the server.
+	auto conn = std::make_unique<wesnothd_connection>(addr->first, addr->second);
 
 	// First, spin until we get a handshake from the server.
 	conn->wait_for_handshake();
@@ -198,9 +196,9 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 			do {
 				std::string password = preferences::password(host, login);
 
-				const bool fall_through = (*error)["force_confirmation"].to_bool() ?
-					(gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::retval::CANCEL) :
-					false;
+				const bool fall_through = (*error)["force_confirmation"].to_bool()
+					? (gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::retval::CANCEL)
+					: false;
 
 				const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
 
@@ -376,7 +374,6 @@ public:
 	mp_manager(const std::string& host, saved_game& state)
 		: network_worker()
 		, stop(false)
-		, game_config(&game_config_manager::get()->game_config())
 		, state(state)
 		, connection(nullptr)
 		, lobby_info(::installed_addons())
@@ -444,10 +441,6 @@ public:
 			gcm->reload_changed_game_config();
 			gcm->load_game_config_for_create(true); // NOTE: Using reload_changed_game_config only doesn't seem to work here
 
-			// Update gc pointer.
-			// TODO: is this needed? The GCM is a singleton so it should always point to the same object, shouldn't it?
-			game_config = &gcm->game_config();
-
 			// This function does not refer to an addon database, it calls filesystem functions.
 			// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
 			// even if the user changes the contents of the addon directory in the meantime.
@@ -466,10 +459,6 @@ private:
 
 	std::thread network_worker;
 	std::atomic_bool stop;
-
-	// TODO: refactor this out. It's really only passed through to the dialogs for the
-	// minimap and the preferences dialog. Shouldn't need to be kept here.
-	const game_config_view* game_config;
 
 	saved_game& state;
 
@@ -528,7 +517,7 @@ void mp_manager::enter_staging_mode()
 
 	// If we have a connection, set the appropriate info. No connection means we're in local game mode.
 	if(connection) {
-		campaign_info.reset(new mp_campaign_info(*connection));
+		campaign_info = std::make_unique<mp_campaign_info>(*connection);
 		campaign_info->connected_players.insert(preferences::login());
 		campaign_info->is_host = true;
 	}
@@ -554,7 +543,7 @@ void mp_manager::enter_create_mode()
 {
 	DBG_MP << "entering create mode" << std::endl;
 
-	if(gui2::dialogs::mp_create_game::execute(*game_config, state, connection == nullptr)) {
+	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
 		enter_staging_mode();
 	} else if(connection) {
 		connection->send_data(config("refresh_lobby"));
@@ -570,7 +559,7 @@ bool mp_manager::enter_lobby_mode()
 
 	// We use a loop here to allow returning to the lobby if you, say, cancel game creation.
 	while(true) {
-		if(const config& cfg = game_config->child("lobby_music")) {
+		if(const config& cfg = game_config_manager::get()->game_config().child("lobby_music")) {
 			for(const config& i : cfg.child_range("music")) {
 				sound::play_music_config(i);
 			}
@@ -584,42 +573,20 @@ bool mp_manager::enter_lobby_mode()
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;
 		{
-			gui2::dialogs::mp_lobby dlg(*game_config, lobby_info, *connection);
+			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
-			dlg_joined_game_id = dlg.get_joined_game_id();
 		}
 
-		switch(dlg_retval) {
+		try {
+			switch(dlg_retval) {
 			case gui2::dialogs::mp_lobby::CREATE:
-				try {
-					enter_create_mode();
-				} catch(const config::error& error) {
-					if(!error.message.empty()) {
-						gui2::show_error_message(error.message);
-					}
-
-					// Update lobby content
-					connection->send_data(config("refresh_lobby"));
-				}
-
+				enter_create_mode();
 				break;
 			case gui2::dialogs::mp_lobby::JOIN:
+				FALLTHROUGH;
 			case gui2::dialogs::mp_lobby::OBSERVE:
-				try {
-					enter_wait_mode(
-						dlg_joined_game_id,
-						dlg_retval == gui2::dialogs::mp_lobby::OBSERVE
-					);
-				} catch(const config::error& error) {
-					if(!error.message.empty()) {
-						gui2::show_error_message(error.message);
-					}
-
-					// Update lobby content
-					connection->send_data(config("refresh_lobby"));
-				}
-
+				enter_wait_mode(dlg_joined_game_id, dlg_retval == gui2::dialogs::mp_lobby::OBSERVE);
 				break;
 			case gui2::dialogs::mp_lobby::RELOAD_CONFIG:
 				// Let this function's caller reload the config and re-call.
@@ -627,6 +594,14 @@ bool mp_manager::enter_lobby_mode()
 			default:
 				// Needed to handle the Quit signal and exit the loop
 				return true;
+			}
+		} catch(const config::error& error) {
+			if(!error.message.empty()) {
+				gui2::show_error_message(error.message);
+			}
+
+			// Update lobby content
+			connection->send_data(config("refresh_lobby"));
 		}
 	}
 

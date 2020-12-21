@@ -842,17 +842,16 @@ template<>
 struct dialog_tester<mp_lobby>
 {
 	config game_config;
-	game_config_view gc_view;
 	wesnothd_connection connection;
 	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
+	int selected_game;
 	dialog_tester() : connection("", ""), li(installed_addons)
 	{
-		gc_view = game_config_view::wrap(game_config);
 	}
 	mp_lobby* create()
 	{
-		return new mp_lobby(gc_view, li, connection);
+		return new mp_lobby(li, connection, selected_game);
 	}
 };
 
@@ -921,7 +920,7 @@ struct dialog_tester<mp_create_game>
 	}
 	mp_create_game* create()
 	{
-		return new mp_create_game(game_config_view_, state, true);
+		return new mp_create_game(state, true);
 	}
 };
 

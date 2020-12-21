@@ -24,6 +24,10 @@
 
 #include <cstring>
 
+#if defined(__APPLE__) || defined(_X11)
+#include <sys/utsname.h>
+#endif
+
 #if defined(__APPLE__)
 
 #include "apple_version.hpp"
@@ -31,7 +35,6 @@
 #elif defined(_X11)
 
 #include <cerrno>
-#include <sys/utsname.h>
 
 #endif
 
@@ -89,6 +92,28 @@ std::string windows_release_id()
 	return std::string{res == ERROR_SUCCESS ? buf : ""};
 }
 
+std::string windows_runtime_arch()
+{
+	SYSTEM_INFO si;
+	SecureZeroMemory(&si, sizeof(SYSTEM_INFO));
+	GetNativeSystemInfo(&si);
+
+	switch(si.wProcessorArchitecture) {
+		case PROCESSOR_ARCHITECTURE_INTEL:
+			return "x86";
+		case PROCESSOR_ARCHITECTURE_AMD64:
+			return "x86_64";
+		case PROCESSOR_ARCHITECTURE_ARM:
+			return "arm";
+		case PROCESSOR_ARCHITECTURE_ARM64:
+			return "arm64";
+		case PROCESSOR_ARCHITECTURE_IA64:
+			return "ia64";
+		default:
+			return _("cpu_archictecture^<unknown>");
+	}
+}
+
 #endif
 
 #if defined(_X11)
@@ -137,13 +162,21 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 
 std::string os_version()
 {
+#if defined(__APPLE__) || defined(_X11)
+	utsname u;
+
+	if(uname(&u) != 0) {
+		ERR_DU << "os_version: uname error (" << strerror(errno) << ")\n";
+	}
+#endif
+
 #if defined(__APPLE__)
 
 	//
 	// Standard Mac OS X version
 	//
 
-	return desktop::apple::os_version();
+	return desktop::apple::os_version() + " " + u.machine;
 
 #elif defined(_X11)
 
@@ -166,19 +199,13 @@ std::string os_version()
 
 		// Check this again in case we got "" above for some weird reason.
 		if(!ver.empty()) {
-			return ver;
+			return ver + " " + u.machine;
 		}
 	}
 
 	//
 	// POSIX uname version fallback.
 	//
-
-	utsname u;
-
-	if(uname(&u) != 0) {
-		ERR_DU << "os_version: uname error (" << strerror(errno) << ")\n";
-	}
 
 	return formatter() << u.sysname << ' '
 						<< u.release << ' '
@@ -288,7 +315,7 @@ std::string os_version()
 			<< v.dwBuildNumber;
 	version += ")";
 
-	return base + " " + version;
+	return base + " " + version + " " + windows_runtime_arch();
 
 #else
 

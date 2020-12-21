@@ -43,6 +43,7 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_config_manager.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -120,9 +121,9 @@ bool mp_lobby::logout_prompt()
 std::string mp_lobby::announcements_ = "";
 std::string mp_lobby::server_information_ = "";
 
-mp_lobby::mp_lobby(const game_config_view& game_config, mp::lobby_info& info, wesnothd_connection &connection)
+mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& joined_game)
 	: quit_confirmation(&mp_lobby::logout_prompt)
-	, game_config_(game_config)
+	, game_config_(game_config_manager::get()->game_config())
 	, gamelistbox_(nullptr)
 	, lobby_info_(info)
 	, chatbox_(nullptr)
@@ -142,7 +143,7 @@ mp_lobby::mp_lobby(const game_config_view& game_config, mp::lobby_info& info, we
 	, gamelist_id_at_row_()
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
-	, joined_game_id_(0)
+	, joined_game_id_(joined_game)
 {
 	// Need to set this in the constructor, pre_show() is too late
 	set_show_even_without_video(true);
@@ -433,7 +434,7 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 	item["label"] = game.vacant_slots > 0 ? colorize(game.name, color_string) : game.name;
 	data.emplace("name", item);
 
-	item["label"] = colorize("<i>" + game.type_marker + scenario_text + "</i>", font::GRAY_COLOR);
+	item["label"] = colorize(game.type_marker + "<i>" + scenario_text + "</i>", font::GRAY_COLOR);
 	data.emplace("scenario", item);
 
 	item["label"] = colorize(game.status, color_string);
