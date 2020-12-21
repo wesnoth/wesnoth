@@ -66,22 +66,20 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 	}
 
 	// shown_hosts is used to prevent the client being locked in a redirect loop.
-	using hostpair = std::pair<std::string, std::string>;
+	std::set<std::pair<std::string, std::string>> shown_hosts;
+	auto addr = shown_hosts.end();
 
-	std::set<hostpair> shown_hosts;
-	hostpair addr;
 	try {
-		addr = parse_network_address(host, "15000");
+		std::tie(addr, std::ignore) = shown_hosts.insert(parse_network_address(host, "15000"));
 	} catch(const std::runtime_error&) {
 		throw wesnothd_error(_("Invalid address specified for multiplayer server"));
 	}
-	shown_hosts.insert(addr);
-
-	// Initializes the connection to the server.
-	auto conn = std::make_unique<wesnothd_connection>(addr.first, addr.second);
 
 	// Start stage
 	gui2::dialogs::loading_screen::progress(loading_stage::connect_to_server);
+
+	// Initializes the connection to the server.
+	auto conn = std::make_unique<wesnothd_connection>(addr->first, addr->second);
 
 	// First, spin until we get a handshake from the server.
 	conn->wait_for_handshake();
@@ -198,9 +196,9 @@ std::unique_ptr<wesnothd_connection> open_connection(std::string host)
 			do {
 				std::string password = preferences::password(host, login);
 
-				const bool fall_through = (*error)["force_confirmation"].to_bool() ?
-					(gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::retval::CANCEL) :
-					false;
+				const bool fall_through = (*error)["force_confirmation"].to_bool()
+					? (gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::retval::CANCEL)
+					: false;
 
 				const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
 
@@ -528,7 +526,7 @@ void mp_manager::enter_staging_mode()
 
 	// If we have a connection, set the appropriate info. No connection means we're in local game mode.
 	if(connection) {
-		campaign_info.reset(new mp_campaign_info(*connection));
+		campaign_info = std::make_unique<mp_campaign_info>(*connection);
 		campaign_info->connected_players.insert(preferences::login());
 		campaign_info->is_host = true;
 	}
@@ -584,42 +582,20 @@ bool mp_manager::enter_lobby_mode()
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;
 		{
-			gui2::dialogs::mp_lobby dlg(*game_config, lobby_info, *connection);
+			gui2::dialogs::mp_lobby dlg(*game_config, lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
-			dlg_joined_game_id = dlg.get_joined_game_id();
 		}
 
-		switch(dlg_retval) {
+		try {
+			switch(dlg_retval) {
 			case gui2::dialogs::mp_lobby::CREATE:
-				try {
-					enter_create_mode();
-				} catch(const config::error& error) {
-					if(!error.message.empty()) {
-						gui2::show_error_message(error.message);
-					}
-
-					// Update lobby content
-					connection->send_data(config("refresh_lobby"));
-				}
-
+				enter_create_mode();
 				break;
 			case gui2::dialogs::mp_lobby::JOIN:
+				FALLTHROUGH;
 			case gui2::dialogs::mp_lobby::OBSERVE:
-				try {
-					enter_wait_mode(
-						dlg_joined_game_id,
-						dlg_retval == gui2::dialogs::mp_lobby::OBSERVE
-					);
-				} catch(const config::error& error) {
-					if(!error.message.empty()) {
-						gui2::show_error_message(error.message);
-					}
-
-					// Update lobby content
-					connection->send_data(config("refresh_lobby"));
-				}
-
+				enter_wait_mode(dlg_joined_game_id, dlg_retval == gui2::dialogs::mp_lobby::OBSERVE);
 				break;
 			case gui2::dialogs::mp_lobby::RELOAD_CONFIG:
 				// Let this function's caller reload the config and re-call.
@@ -627,6 +603,14 @@ bool mp_manager::enter_lobby_mode()
 			default:
 				// Needed to handle the Quit signal and exit the loop
 				return true;
+			}
+		} catch(const config::error& error) {
+			if(!error.message.empty()) {
+				gui2::show_error_message(error.message);
+			}
+
+			// Update lobby content
+			connection->send_data(config("refresh_lobby"));
 		}
 	}
 

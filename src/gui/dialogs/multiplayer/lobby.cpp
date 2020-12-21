@@ -120,7 +120,7 @@ bool mp_lobby::logout_prompt()
 std::string mp_lobby::announcements_ = "";
 std::string mp_lobby::server_information_ = "";
 
-mp_lobby::mp_lobby(const game_config_view& game_config, mp::lobby_info& info, wesnothd_connection &connection)
+mp_lobby::mp_lobby(const game_config_view& game_config, mp::lobby_info& info, wesnothd_connection &connection, int& joined_game)
 	: quit_confirmation(&mp_lobby::logout_prompt)
 	, game_config_(game_config)
 	, gamelistbox_(nullptr)
@@ -142,7 +142,7 @@ mp_lobby::mp_lobby(const game_config_view& game_config, mp::lobby_info& info, we
 	, gamelist_id_at_row_()
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
-	, joined_game_id_(0)
+	, joined_game_id_(joined_game)
 {
 	// Need to set this in the constructor, pre_show() is too late
 	set_show_even_without_video(true);
