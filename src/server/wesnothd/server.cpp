@@ -536,6 +536,8 @@ void server::load_config()
 		tournaments_ = user_handler_->get_tournaments();
 	}
 #endif
+
+	load_tls_config(cfg_);
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip) const
@@ -612,6 +614,12 @@ void server::refresh_tournaments(const boost::system::error_code& ec)
 void server::handle_new_client(socket_ptr socket)
 {
 	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); });
+}
+
+void server::handle_new_client(tls_socket_ptr /*socket*/)
+{
+	//boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); });
+	throw std::runtime_error("Not implemented");
 }
 
 void server::login_client(boost::asio::yield_context yield, socket_ptr socket)

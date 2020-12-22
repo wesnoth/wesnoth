@@ -38,6 +38,7 @@ public:
 
 private:
 	void handle_new_client(socket_ptr socket);
+	void handle_new_client(tls_socket_ptr socket);
 
 	void login_client(boost::asio::yield_context yield, socket_ptr socket);
 	bool is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator);

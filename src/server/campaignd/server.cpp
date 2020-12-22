@@ -466,6 +466,8 @@ void server::load_config()
 		user_handler_.reset(new fuh(user_handler));
 	}
 #endif
+
+	load_tls_config(cfg_);
 }
 
 std::ostream& operator<<(std::ostream& o, const server::request& r)

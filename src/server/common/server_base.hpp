@@ -33,14 +33,20 @@
 #endif
 #include <boost/asio/signal_set.hpp>
 #include <boost/asio/streambuf.hpp>
+#include <boost/asio/ssl.hpp>
 #include <boost/asio/spawn.hpp>
 #include <boost/shared_array.hpp>
+#include <utils/variant.hpp>
 
 #include <map>
 
 extern bool dump_wml;
 
+class config;
+
 typedef std::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
+typedef std::shared_ptr<boost::asio::ssl::stream<socket_ptr::element_type>> tls_socket_ptr;
+typedef utils::variant<socket_ptr, tls_socket_ptr> any_socket_ptr;
 
 struct server_shutdown : public game::error
 {
@@ -93,8 +99,13 @@ protected:
 	unsigned short port_;
 	bool keep_alive_;
 	boost::asio::io_service io_service_;
+	boost::asio::ssl::context tls_context_ { boost::asio::ssl::context::sslv23 };
+	bool tls_enabled_ { false };
 	boost::asio::ip::tcp::acceptor acceptor_v6_;
 	boost::asio::ip::tcp::acceptor acceptor_v4_;
+
+	void load_tls_config(const config& cfg);
+
 	void start_server();
 	void serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint);
 
@@ -104,6 +115,7 @@ protected:
 	} handshake_response_;
 
 	virtual void handle_new_client(socket_ptr socket) = 0;
+	virtual void handle_new_client(tls_socket_ptr socket) = 0;
 
 	virtual bool accepting_connections() const { return true; }
 	virtual std::string is_ip_banned(const std::string&) { return std::string(); }

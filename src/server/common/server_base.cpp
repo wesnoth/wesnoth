@@ -15,6 +15,7 @@
 #include "server/common/server_base.hpp"
 
 #include "log.hpp"
+#include "serialization/parser.hpp"
 #include "filesystem.hpp"
 
 #ifdef HAVE_CONFIG_H
@@ -98,6 +99,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 	}
 
 	socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
+	bool use_tls { false };
 
 	boost::system::error_code error;
 	acceptor.async_accept(socket->lowest_layer(), yield[error]);
@@ -128,30 +130,57 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 
 	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";
 
-	boost::shared_array<char> handshake(new char[4]);
-	async_read(*socket, boost::asio::buffer(handshake.get(), 4), yield[error]);
+	union {
+		uint32_t number;
+		char buf[4];
+	} protocol_version;
+
+	async_read(*socket, boost::asio::buffer(protocol_version.buf), yield[error]);
 	if(check_error(error, socket))
 		return;
 
-	if(memcmp(handshake.get(), "\0\0\0\0", 4) != 0) {
-		ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
-		return;
+	switch(ntohl(protocol_version.number)) {
+		case 0:
+			async_write(*socket, boost::asio::buffer(handshake_response_.buf, 4), yield[error]);
+			if(check_error(error, socket)) return;
+			break;
+		case 1:
+			if(!tls_enabled_) {
+				ERR_SERVER << client_address(socket) << "\tTLS requested by client but not enabled on server\n";
+				async_send_error(socket, "TLS support disabled on server.");
+				return;
+			}
+			use_tls = true;
+
+			break;
+		default:
+			ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
+			return;
 	}
 
-	async_write(*socket, boost::asio::buffer(handshake_response_.buf, 4), yield[error]);
+	const std::string ip = client_address(socket);
 
-	if(!check_error(error, socket)) {
-		const std::string ip = client_address(socket);
-
-		const std::string reason = is_ip_banned(ip);
-		if (!reason.empty()) {
-			LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
-			async_send_error(socket, "You are banned. Reason: " + reason);
-				return;
-		} else if (ip_exceeds_connection_limit(ip)) {
-			LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
-			async_send_error(socket, "Too many connections from your IP.");
+	const std::string reason = is_ip_banned(ip);
+	if (!reason.empty()) {
+		LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
+		async_send_error(socket, "You are banned. Reason: " + reason);
 			return;
+	} else if (ip_exceeds_connection_limit(ip)) {
+		LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
+		async_send_error(socket, "Too many connections from your IP.");
+		return;
+	} else {
+		if(use_tls) {
+			async_send_warning(socket, "Go TLS.");
+			tls_socket_ptr tls_socket { new tls_socket_ptr::element_type(std::move(*socket), tls_context_) };
+			tls_socket->async_handshake(boost::asio::ssl::stream_base::server, yield[error]);
+			if(error) {
+				ERR_SERVER << "TLS handshake failed: " << error.message() << "\n";
+				return;
+			}
+
+			DBG_SERVER << ip << "\tnew encrypted connection fully accepted\n";
+			this->handle_new_client(tls_socket);
 		} else {
 			DBG_SERVER << ip << "\tnew connection fully accepted\n";
 			this->handle_new_client(socket);
@@ -471,6 +500,23 @@ void server_base::async_send_warning(socket_ptr socket, const std::string& msg, 
 	info_table_into_simple_wml(doc, "warning", info);
 
 	async_send_doc_queued(socket, doc);
+}
+
+void server_base::load_tls_config(const config& cfg)
+{
+	tls_enabled_ = cfg["tls_enabled"].to_bool(false);
+	if(!tls_enabled_) return;
+
+	tls_context_.set_options(
+		boost::asio::ssl::context::default_workarounds
+		| boost::asio::ssl::context::no_sslv2
+		| boost::asio::ssl::context::no_sslv3
+		| boost::asio::ssl::context::single_dh_use
+	);
+
+	tls_context_.use_certificate_chain_file(cfg["tls_fullchain"].str());
+	tls_context_.use_private_key_file(cfg["tls_private_key"].str(), boost::asio::ssl::context::pem);
+	if(!cfg["tls_dh"].str().empty()) tls_context_.use_tmp_dh_file(cfg["tls_dh"].str());
 }
 
 // This is just here to get it to build without the deprecation_message function

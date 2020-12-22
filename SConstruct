@@ -386,7 +386,7 @@ if env["prereqs"]:
 
     if(env["PLATFORM"] != 'darwin'):
         # Otherwise, use Security.framework
-        have_server_prereqs = have_server_prereqs & conf.CheckLib("libcrypto")
+        have_server_prereqs = have_server_prereqs & conf.CheckLib("libcrypto") & conf.CheckLib("ssl")
 
     env = conf.Finish()
 
