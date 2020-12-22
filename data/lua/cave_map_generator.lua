@@ -37,6 +37,29 @@ function callbacks.generate_map(params)
 	local chambers = {}
 	local chambers_by_id = {}
 	local passages = {}
+	local flip_x = false
+	local flip_y = false
+
+	if type(params.transform) == "string" then
+		local chance = params.transform_chance or 100
+		if random(100) <= chance then
+			local transforms = {}
+			for t in params.transform:gmatch("[^%s,][^,]*") do
+				if MG.is_valid_transform(t) then
+					table.insert(transforms, t)
+				else
+					wml.error("Unknown transformation '" .. t .. "'")
+				end
+			end
+			local flip = transforms[random(#transforms)]
+			if flip == 'flip_x' or flip == 'flip_xy' then
+				flip_x = true
+			end
+			if flip == 'flip_y' or flip == 'flip_xy' then
+				flip_y = true
+			end
+		end
+	end
 
 	for chamber in wml.child_range(params, "chamber") do
 		local chance = tonumber(chamber.chance) or 100
@@ -57,6 +80,12 @@ function callbacks.generate_map(params)
 		if type(y) == "string" then
 			local y_min, y_max = y:match("(%d+)-(%d+)")
 			y = random(tonumber(y_min), tonumber(y_max))
+		end
+		if flip_x then
+			x = map.w - x - 1
+		end
+		if flip_y then
+			y = map.h - y - 1
 		end
 		local locs_set = LS.create()
 		build_chamber(x, y, locs_set, chamber.size or 3, chamber.jagged or 0)
@@ -142,21 +171,6 @@ function callbacks.generate_map(params)
 			end
 		end
 
-	end
-
-	if type(params.transform) == "string" then
-		local chance = params.transform_chance or 100
-		if random(100) <= chance then
-			local transforms = {}
-			for t in params.transform:gmatch("[^%s,][^,]*") do
-				if MG.is_valid_transform(t) then
-					table.insert(transforms, t)
-				else
-					wml.error("Unknown transformation '" .. t .. "'")
-				end
-			end
-			map[transforms[random(#transforms)]](map)
-		end
 	end
 
 	return tostring(map)
