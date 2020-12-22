@@ -56,24 +56,7 @@ function map_mt.__index.flip_x(map)
 		for x = 0, map.w - 1 do
 			local i = loc_to_index(map, x, y)
 			local j = loc_to_index(map, map.w - x - 1, y)
-			if x > map.w - x - 1 then
-				break
-			end
 			map[i], map[j] = map[j], map[i]
-			if map.locations then
-				local i = map.locations:get(x, y)
-				local j = map.locations:get(map.w - x - 1, y)
-				if i then
-					map.locations:remove(x, y)
-				end
-				if j then
-					map.locations:remove(map.w - x - 1, y)
-					map.locations:insert(x, y, j)
-				end
-				if i then
-					map.locations:insert(map.w - x - 1, y, i)
-				end
-			end
 		end
 	end
 end
@@ -83,24 +66,7 @@ function map_mt.__index.flip_y(map)
 		for y = 0, map.h - 1 do
 			local i = loc_to_index(map, x, y)
 			local j = loc_to_index(map, x, map.h - y - 1)
-			if y > map.h - y - 1 then
-				break
-			end
 			map[i], map[j] = map[j], map[i]
-			if map.locations then
-				local i = map.locations:get(x, y)
-				local j = map.locations:get(x, map.h - y - 1)
-				if i then
-					map.locations:remove(x, y)
-				end
-				if j then
-					map.locations:remove(x, map.h - y - 1)
-					map.locations:insert(x, y, j)
-				end
-				if i then
-					map.locations:insert(x, map.h - y - 1, i)
-				end
-			end
 		end
 	end
 end
