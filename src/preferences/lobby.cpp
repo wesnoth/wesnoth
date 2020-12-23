@@ -69,7 +69,6 @@ void set_fi_friends_in_game(bool value)
 
 bool fi_blocked_in_game()
 {
-	// FIXME: still sorting out defaults and behavior for this...
 	return preferences::get("fi_blocked_in_game", false);
 }
 
