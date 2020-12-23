@@ -2,6 +2,7 @@
  ### Add-ons client
  ### Campaigns
  ### Translations
+   * Updated translations: Portuguese (Brazil)
  ### User interface
  ### Miscellaneous and Bug Fixes
 
