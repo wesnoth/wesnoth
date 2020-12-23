@@ -1736,7 +1736,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		see_all = luaW_table_get_def<bool>(L, arg, "see_all", false);
 		ignore_teleport = luaW_table_get_def<bool>(L, arg, "ignore_teleport", false);
 
-		stop_at = luaW_table_get_def<double>(L, arg, "max_cost", luaW_table_get_def<double>(L, arg, "stop_at", stop_at));
+		stop_at = luaW_table_get_def<double>(L, arg, "max_cost", stop_at);
 
 
 		lua_pushstring(L, "viewing_side");
